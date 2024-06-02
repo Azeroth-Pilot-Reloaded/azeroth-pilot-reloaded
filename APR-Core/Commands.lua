@@ -25,11 +25,11 @@ function APR.command:SlashCmd(input)
     elseif (inputText == "skip" or inputText == "s" or inputText == "skippiedoodaa") then
         -- Command for skipping the current quest step
         print("APR: " .. L["SKIP"])
-        NextQuestStep()
+        APR:NextQuestStep()
     elseif (inputText == "rollback" or inputText == "rb") then
         -- Command for rollback the current quest step
         print("APR: " .. L["ROLLBACK"])
-        PreviousQuestStep()
+        APR:PreviousQuestStep()
     elseif (inputText == "qol") then
         APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
         APR.questOrderList:RefreshFrameAnchor()

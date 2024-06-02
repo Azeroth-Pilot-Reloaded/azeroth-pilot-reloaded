@@ -14,7 +14,7 @@ function APR:CheckPurchaseCompletion()
             return
         end
     end
-    UpdateNextStep()
+    self:UpdateNextStep()
 end
 
 function APR:UpdatePurchaseTracking(itemID, quantity)

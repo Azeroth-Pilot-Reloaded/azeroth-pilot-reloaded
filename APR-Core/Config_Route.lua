@@ -482,7 +482,7 @@ function SetRouteListTab(widget, name)
 
     -- Copy the routes into a new table for sorting
     for fileName, routeName in pairs(routes) do
-        if not Contains(APRCustomPath[APR.PlayerID], routeName) then
+        if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
             tinsert(sortedRoutes, { fileName = fileName, routeName = routeName })
         end
     end
@@ -530,7 +530,7 @@ function SetRouteListTab(widget, name)
                 status = L["ROUTE_COMPLETED"]
             elseif APRData[APR.PlayerID][route.fileName] then
                 if not APRData[APR.PlayerID][route.fileName .. '-TotalSteps'] then
-                    _G.GetTotalSteps(route.fileName)
+                    APR:GetTotalSteps(route.fileName)
                 end
                 status = APRData[APR.PlayerID][route.fileName] ..
                     "/" .. APRData[APR.PlayerID][route.fileName .. '-TotalSteps']
@@ -638,7 +638,7 @@ end
 function IsRouteDisabled(tab, routeName)
     if string.find(tab, "Dragonflight") and (APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"]) then
         return true
-    elseif routeName == "01-10 Exile's Reach" and not Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
+    elseif routeName == "01-10 Exile's Reach" and not APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         return true
     end
     return false
@@ -659,7 +659,7 @@ end
 function APR.routeconfig:GetStartingZonePrefab()
     if APR.ClassId == APR.Classes["Dracthyr"] then
         tinsert(APRCustomPath[APR.PlayerID], "Dracthyr Start")
-    elseif Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
+    elseif APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         tinsert(APRCustomPath[APR.PlayerID], "01-10 Exile's Reach")
     elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and APR.Level < APR.MinBoostLvl then -- first quest from Exile's Reach + boost
         --None skipable starting zone
@@ -849,11 +849,8 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
     end
     if not self:HasRouteInCustomPaht() then
         APR.ActiveRoute = nil
-        APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
-
+        APR.currentStep:Reset()
         APR.currentStep:AddExtraLineText("NO_ROUTE", L["NO_ROUTE"], true)
-        APR.currentStep:ButtonDisable()
-        APR.currentStep:ProgressBar()
         APR:SendMessage("APR_MAP_UPDATE")
         APR.map:RemoveMapLine()
         APR.map:RemoveMinimapLine()
@@ -869,9 +866,9 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "PLAYER_LEVEL_UP") then
         local arg1, _ = ...;
         APR.Level = arg1
-        if not IsTableEmpty(APRCustomPath[APR.PlayerID]) then
+        if not APR:IsTableEmpty(APRCustomPath[APR.PlayerID]) then
             local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
-            if Contains(notSkippableRoute, currentRouteName) then
+            if APR:Contains(notSkippableRoute, currentRouteName) then
                 return
             elseif APR.Level == 10 then
                 APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_SPEEDRUN"], APR.Level), function()

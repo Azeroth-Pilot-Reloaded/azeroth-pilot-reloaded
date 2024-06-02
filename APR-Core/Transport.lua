@@ -24,17 +24,17 @@ function APR.transport:GetMeToRightZone()
         return
     end
 
-    _G.UpdateQuestAndStep()
+    APR:UpdateQuestAndStep()
     local farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
-    if CheckIsInRouteZone() and not farAway then
+    if APR:CheckIsInRouteZone() and not farAway then
         APR.IsInRouteZone = true
         -- To avoid unwanted auto taxi
         APR.transport.wrongZoneDestTaxiName = nil
         return
     else
-        -- reset the is in route bool
+        -- reset IsInRouteZone
         APR.IsInRouteZone = false
-        APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
+        APR.currentStep:Reset()
         local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
         if not CurStep then
             return
@@ -324,7 +324,7 @@ APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 APR.transport.eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 APR.transport.eventFrame:RegisterEvent("WAYPOINT_UPDATE")
 APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
-    local steps = APR.ActiveRoute and GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
+    local steps = APR.ActiveRoute and APR:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
     if APR.settings.profile.showEvent then
         print("EVENT: Transport - ", event)
     end
@@ -366,7 +366,7 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
         if steps then
             if steps.UseFlightPath or APR.transport.wrongZoneDestTaxiName then
                 if APR.transport.CurrentTaxiNode.nodeID == APR.transport.StepTaxiNode.nodeId then
-                    NextQuestStep()
+                    APR:NextQuestStep()
                 elseif not IsModifierKeyDown() then
                     for taxiIndex = 1, _G.NumTaxiNodes() do
                         local name = _G.TaxiNodeName(taxiIndex)
@@ -396,7 +396,7 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
                     end
                 end
                 if steps and steps.UseFlightPath and not APR.transport.wrongZoneDestTaxiName then
-                    UpdateNextStep()
+                    APR:UpdateNextStep()
                 end
                 -- reset
                 APR.transport.wrongZoneDestTaxiName = nil

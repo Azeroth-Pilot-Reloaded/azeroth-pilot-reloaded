@@ -320,7 +320,7 @@ if APR.Faction == "Alliance" then
         { Range = 19.7,                                    Waypoint = 34728,                                   Coord = { y = -31.4, x = -1631 } },
         { Qpart = { [34728] = { 3 } },                     Fillers = { [34728] = { 1, 2 } },                   Range = 0.75,                       Coord = { y = -141.7, x = -1939.6 } },
         { Qpart = { [34728] = { 1, 2 } },                  Range = 46.02,                                      Coord = { y = -223.4, x = -1796.5 } },
-        { DoIHaveFlight = 1,                               UseHS = 35556,                                      Coord = { y = -216.2, x = -1672.5 } },
+        { UseHS = 35556,                                   Coord = { y = -216.2, x = -1672.5 } },
         { UseGarrisonHS = 35556,                           LeaveQuests = { 35556, 33533, 36632, 59564, 35033 } },
         {
             ExtraLineText = "CALL_BOARD",

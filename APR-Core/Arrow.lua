@@ -79,7 +79,7 @@ APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -40)
 APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
     APR.ArrowFrame.Button:Hide()
     print("APR: " .. L["SKIP_WAYPOINT"])
-    _G.NextQuestStep()
+    APR:NextQuestStep()
     APR.Arrow.x = 0
     APR.Arrow.y = 0
 end)
@@ -161,7 +161,7 @@ function APR.Arrow:SetQPTT()
         return
     end
 
-    if (APR.Arrow.currentStep ~= CurStep and step.Coord and CheckIsInRouteZone()) then
+    if (APR.Arrow.currentStep ~= CurStep and step.Coord and APR:CheckIsInRouteZone()) then
         self:SetArrowActive(true, step.Coord.x, step.Coord.y)
         APR.Arrow.currentStep = CurStep
     end
@@ -190,7 +190,7 @@ function APR.Arrow:CalculPosition()
 
         if trigger.Range > distance then
             APR.Arrow.currentStep = 0
-            _G.NextQuestStep()
+            APR:NextQuestStep()
             return
         end
     end
@@ -218,7 +218,7 @@ function APR.Arrow:CalculPosition()
             APR.Arrow.x = 0
             if questStep.Waypoint then
                 APR.Arrow.currentStep = 0
-                _G.NextQuestStep()
+                APR:NextQuestStep()
             end
             return
         end

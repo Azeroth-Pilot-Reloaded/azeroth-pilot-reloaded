@@ -82,5 +82,5 @@ end
 --- @param mapIds number
 --- @param mapId Array<number>
 function APR:IsInExpansionRouteMaps(mapIds, mapId)
-    return Contains(mapIds, mapId)
+    return self:Contains(mapIds, mapId)
 end

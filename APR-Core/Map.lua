@@ -275,7 +275,7 @@ function APR.map:CreatePin(index, step, size, color, textColor, textScale)
 
     -- GameTooltip
     -- pinFrame:SetScript("OnEnter", function(self)
-    --     local string, key = GetStepString(step)
+    --     local string, key = APR:GetStepString(step)
     --     GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
     --     GameTooltip:AddLine(index .. " - " .. string)
     --     GameTooltip:AddLine(step[key],
@@ -328,7 +328,7 @@ end
 function APR.map:AddMapPins()
     self:RemoveMapIcons()
     self:RemoveMiniMapIcons()
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.mapshowNextSteps and not APR.settings.profile.minimapshowNextSteps or not CheckIsInRouteZone() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.mapshowNextSteps and not APR.settings.profile.minimapshowNextSteps or not APR:CheckIsInRouteZone() then
         return
     end
 

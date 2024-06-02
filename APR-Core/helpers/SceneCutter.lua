@@ -3,7 +3,7 @@ local _G = _G
 -- Likely deals with automatically skipping cutscenes using PlayMovie_hook
 local PlayMovie_hook = MovieFrame_PlayMovie
 MovieFrame_PlayMovie = function(...)
-    local step = GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
+    local step = APR:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
 
     if IsModifierKeyDown() or not APR.settings.profile.autoSkipCutScene or (step and step.Dontskipvidthen) then
         PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
@@ -31,7 +31,7 @@ APR.SceneCutterEventFrame = CreateFrame("Frame")
 APR.SceneCutterEventFrame:RegisterEvent("CINEMATIC_START")
 APR.SceneCutterEventFrame:SetScript("OnEvent", function(self, event, ...)
     if not APR.settings.profile.enableAddon or not APR.settings.profile.autoSkipCutScene or IsModifierKeyDown() then return end
-    local step = GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
+    local step = APR:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
     if step and step.Dontskipvid then
         return
     end
