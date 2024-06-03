@@ -1,0 +1,3 @@
+<Bindings>
+    <Binding name="CLICK APR_ItemButton:LeftButton" header="Use Items" category="BINDING_HEADER_APR"/>
+</Bindings>

@@ -634,7 +634,7 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
         return
     end
 
-    local IconButton = CreateFrame("Button", "$parentIconButton", container,
+    local IconButton = CreateFrame("Button", "APR_ItemButton", container,
         "SecureActionButtonTemplate, BackdropTemplate")
     IconButton:SetSize(25, 25)
     PositionStepButtons(container, IconButton)
