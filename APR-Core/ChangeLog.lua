@@ -79,7 +79,7 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v3.3.0", "2024-06-03" },
+        { "v3.3.1", "2024-06-03" },
         "#Features",
         "- Reduce the number of renderings of the Quest Order Liste Frame to no longer cause freezes",
         "- Reduce the number of renderings of the Current Step Frame to no longer cause freezes",
@@ -87,12 +87,12 @@ function APR.changelog:SetChangeLog()
 
         "#Bug",
         "- Fixed update of Qpart objective during combat",
+        "- Fixed TOC addon version to display",
         "- Removed unwanted Qpart 29765-1 (Cryin' My Eyes Out)",
-        "- Fix TOC addon version to display",
         "- Updated Pickup 31261 to dropQuest (Captain Jack's Dead)",
         "- Merged quest 29717 with 29716 pickup step in Jade forest (Down Kitty!)",
-        "- Fixed waypoint questID for Jade forest",
         "- Added 81638 and 81976 quest for mop remix in horde Jade forest (Home Is Where the Hearthstone Is, Bazaar, Isn't It?)",
+        "- Fixed Waypoint, UseHS, UseFlightPath questID if you reset ou forceReset your routes",
 
         { "v3.2.9", "2024-06-01" },
         "#Features",

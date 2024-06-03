@@ -954,6 +954,8 @@ if APR.Faction == "Horde" then
             Range = 5,
             Zone = 371
         },
+        { Coord = { x = -2476.6999511719, y = 839.29998779297 }, Done = { 29998 },          Zone = 371 },
+        { Coord = { x = -2476.6999511719, y = 839.29998779297 }, PickUp = { 30001, 30002 }, Zone = 371 },
         {
             Coord = { x = -2457.1999511719, y = 843.90002441406 },
             Fillers = { [30005] = { 1 } },
@@ -961,8 +963,6 @@ if APR.Faction == "Horde" then
             Range = 5,
             Zone = 371
         },
-        { Coord = { x = -2476.6999511719, y = 839.29998779297 }, Done = { 29998 },          Zone = 371 },
-        { Coord = { x = -2476.6999511719, y = 839.29998779297 }, PickUp = { 30001, 30002 }, Zone = 371 },
         {
             Coord = { x = -2467.3000488281, y = 856.10003662109 },
             ExtraLineText = "CLICK_ON_THE_INFESTED_BOOKS_THEN_CLICK_ON_THE_BOOKWORMS_THAT_COME_OUT_TO_SQUISH_THEM",

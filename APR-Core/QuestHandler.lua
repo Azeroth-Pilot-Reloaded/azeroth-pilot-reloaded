@@ -1757,7 +1757,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             if (UnitGUID("mouseover") and UnitName("mouseover")) then
                 local targetGUID, targetName = UnitGUID("mouseover"), UnitName("mouseover")
                 local targetID = select(6, strsplit("-", targetGUID))
-                if (type == "Creature" and steps.DroppableQuest.MobId == tonumber(targetID)) then
+                if (targetID and steps.DroppableQuest.MobId == tonumber(targetID)) then
                     tinsert(APRData.NPCList[targetID], targetName)
                 end
             end
