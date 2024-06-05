@@ -539,15 +539,21 @@ local function APR_UpdateStep()
                 end
             end
         elseif (steps.Waypoint) then
-            IdList = steps.Waypoint
-            if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
-                if (APR.settings.profile.debug) then
-                    print("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+            if (APR.settings.profile.autoSkipAllWaypoints) then
+                APR.command:SlashCmd('skip')
+            elseif (APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and APR:CheckFlySkill()) then
+                APR.command:SlashCmd('skip')
+            else
+                IdList = steps.Waypoint
+                if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
+                    if (APR.settings.profile.debug) then
+                        print("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                    end
+                    APR:NextQuestStep()
+                    return
+                elseif APR.IsInRouteZone then
+                    APR.currentStep:AddExtraLineText("Waypoint" .. IdList, APR.CheckWaypointText(), true)
                 end
-                APR:NextQuestStep()
-                return
-            elseif APR.IsInRouteZone then
-                APR.currentStep:AddExtraLineText("Waypoint" .. IdList, APR.CheckWaypointText(), true)
             end
         elseif (steps.Treasure) then
             IdList = steps.Treasure
