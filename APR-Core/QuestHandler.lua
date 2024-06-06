@@ -540,9 +540,9 @@ local function APR_UpdateStep()
             end
         elseif (steps.Waypoint) then
             if (APR.settings.profile.autoSkipAllWaypoints) then
-                APR.command:SlashCmd('skip')
+                APR:NextQuestStep()
             elseif (APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and not IsIndoors() and APR:CheckFlySkill()) then
-                APR.command:SlashCmd('skip')
+                APR:NextQuestStep()
             else
                 IdList = steps.Waypoint
                 if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
