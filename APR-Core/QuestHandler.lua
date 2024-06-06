@@ -541,7 +541,7 @@ local function APR_UpdateStep()
         elseif (steps.Waypoint) then
             if (APR.settings.profile.autoSkipAllWaypoints) then
                 APR.command:SlashCmd('skip')
-            elseif (APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and APR:CheckFlySkill()) then
+            elseif (APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and not IsIndoors() and APR:CheckFlySkill()) then
                 APR.command:SlashCmd('skip')
             else
                 IdList = steps.Waypoint

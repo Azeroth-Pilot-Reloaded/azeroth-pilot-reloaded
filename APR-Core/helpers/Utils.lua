@@ -31,11 +31,9 @@ end
 
 -- Checks if the Player have flying rank 1, 2 or 3
 function APR:CheckFlySkill()
-    if (IsSpellKnown(34090) or IsSpellKnown(34091) or IsSpellKnown(90265)) then
-        return true
-    end
-    return false
+    return IsSpellKnown(34090) or IsSpellKnown(34091) or IsSpellKnown(90265)
 end
+
 function APR:GetTargetID(unit)
     unit = unit or "target"
     local targetGUID = UnitGUID(unit)
