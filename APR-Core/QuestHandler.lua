@@ -539,15 +539,21 @@ local function APR_UpdateStep()
                 end
             end
         elseif (steps.Waypoint) then
-            IdList = steps.Waypoint
-            if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
-                if (APR.settings.profile.debug) then
-                    print("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
-                end
+            if (APR.settings.profile.autoSkipAllWaypoints) then
                 APR:NextQuestStep()
-                return
-            elseif APR.IsInRouteZone then
-                APR.currentStep:AddExtraLineText("Waypoint" .. IdList, APR.CheckWaypointText(), true)
+            elseif (APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and not IsIndoors() and APR:CheckFlySkill()) then
+                APR:NextQuestStep()
+            else
+                IdList = steps.Waypoint
+                if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
+                    if (APR.settings.profile.debug) then
+                        print("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                    end
+                    APR:NextQuestStep()
+                    return
+                elseif APR.IsInRouteZone then
+                    APR.currentStep:AddExtraLineText("Waypoint" .. IdList, APR.CheckWaypointText(), true)
+                end
             end
         elseif (steps.Treasure) then
             IdList = steps.Treasure
@@ -1758,7 +1764,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 local targetGUID, targetName = UnitGUID("mouseover"), UnitName("mouseover")
                 local targetID = select(6, strsplit("-", targetGUID))
                 if (targetID and steps.DroppableQuest.MobId == tonumber(targetID)) then
-                    tinsert(APRData.NPCList[targetID], targetName)
+                    APRData.NPCList[targetID] = targetName
                 end
             end
         elseif not IsInInstance() and GetRaidTargetIndex("mouseover") then
