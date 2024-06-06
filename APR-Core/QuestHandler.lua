@@ -1764,7 +1764,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 local targetGUID, targetName = UnitGUID("mouseover"), UnitName("mouseover")
                 local targetID = select(6, strsplit("-", targetGUID))
                 if (targetID and steps.DroppableQuest.MobId == tonumber(targetID)) then
-                    tinsert(APRData.NPCList[targetID], targetName)
+                    APRData.NPCList[targetID] = targetName
                 end
             end
         elseif not IsInInstance() and GetRaidTargetIndex("mouseover") then
