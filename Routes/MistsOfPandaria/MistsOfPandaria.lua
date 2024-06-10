@@ -581,7 +581,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     {
         Coord = { x = -555.79998779297, y = 419.20001220703 },
         ExtraLineText = "CLICK_ON_MARMOTS_AROUND_YOU_BEFORE_CLICKING_ON_HOLES_OTHERWISE_THEY_WILL_INTERRUPT_YOU",
-        Qpart = { [29910] = { 2 } },
+        Qpart = { [29910] = { 1, 2 } },
         Range = 15,
         Zone = 376
     },
