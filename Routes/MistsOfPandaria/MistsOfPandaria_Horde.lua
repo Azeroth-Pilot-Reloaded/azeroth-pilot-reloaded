@@ -1097,7 +1097,7 @@ if APR.Faction == "Horde" then
             Zone = 371
         },
         {
-            Button = { ["30502-1"] = 80074, ["30504-1"] = 86467 },
+            Button = { ["30502-1"] = 80074, ["30504-2"] = 86467 },
             Coord = { x = -1847.5999755859, y = 742.5 },
             ExtraLineText = "PICK_UP_THE_JADE_CHUNKS_AND_USE_THEM_TO_WEAKEN_THE_ELITES",
             Fillers = { [30500] = { 1 }, [30502] = { 1 } },
@@ -1106,7 +1106,7 @@ if APR.Faction == "Horde" then
             Zone = 371
         },
         {
-            Button = { ["30502-1"] = 80074, ["30504-1"] = 86467 },
+            Button = { ["30502-1"] = 80074, ["30504-3"] = 86467 },
             Coord = { x = -1821.3000488281, y = 827.20001220703 },
             ExtraLineText = "PICK_UP_THE_JADE_CHUNKS_AND_USE_THEM_TO_WEAKEN_THE_ELITES",
             Fillers = { [30500] = { 1 }, [30502] = { 1 } },
@@ -1115,7 +1115,7 @@ if APR.Faction == "Horde" then
             Zone = 371
         },
         {
-            Button = { ["30502-1"] = 80074, ["30504-1"] = 86467 },
+            Button = { ["30502-1"] = 80074, ["30504-4"] = 86467 },
             Coord = { x = -1901.2000732422, y = 902.29998779297 },
             ExtraLineText = "PICK_UP_THE_JADE_CHUNKS_AND_USE_THEM_TO_WEAKEN_THE_ELITES",
             Fillers = { [30500] = { 1 }, [30502] = { 1 } },
@@ -1606,7 +1606,6 @@ if APR.Faction == "Horde" then
         { Coord = { x = 360.10000610352, y = 1745 },            PickUp = { 30511 },          Zone = 379 },
         { Coord = { x = 355.80001831055, y = 1733.2000732422 }, Done = { 30511 },            ExtraLineText = "UPSTAIRS", Zone = 379 },
         { Coord = { x = 355.80001831055, y = 1733.2000732422 }, PickUp = { 30513 },          Zone = 379 },
-        { Coord = { x = 292, y = 1767.3000488281 },             SetHS = 30513,               Zone = 379 },
         { Coord = { x = 147.90000915527, y = 1910.8000488281 }, PickUp = { 30467, 30469 },   Zone = 379 },
         { Coord = { x = 158.60000610352, y = 1918.8000488281 }, PickUp = { 30468 },          Zone = 379 },
         { Coord = { x = 137.30000305176, y = 1949.7000732422 }, PickUp = { 30496, 30967 },   Zone = 379 },
