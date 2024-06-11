@@ -79,6 +79,12 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.3.3", "2024-06-11" },
+        "#Bug",
+        "- Fixed missing button for quest 30504 (Emergency Response)",
+        "- Added missing qpart for quest 29910 (Rampaging Rodents)",
+        "- Fixed Mop remix Jade Forest quest",
+
         { "v3.3.2", "2024-06-06" },
         "#Features",
         "- Added two auto skip options for waypoints (full or only if you can fly)",
