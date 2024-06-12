@@ -71,7 +71,7 @@ QuestOrderListFrame_ScrollFrame:SetScrollChild(QuestOrderListFrame_ScrollChild)
 
 -- Create the frame header
 local QuestOrderListFrame_StepHolderHeader = CreateFrame("Frame", "QuestOrderListFrame_StepHolderHeader",
-    QuestOrderListFrame, "ObjectiveTrackerHeaderTemplate")
+    QuestOrderListFrame, "ObjectiveTrackerContainerHeaderTemplate")
 QuestOrderListFrame_StepHolderHeader:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, 0)
 QuestOrderListFrame_StepHolderHeader.Text:SetText(L["QUEST_ORDER_LIST"])
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:Hide()

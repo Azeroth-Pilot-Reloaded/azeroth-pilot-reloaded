@@ -34,7 +34,7 @@ local BuffFrame_body = CreateFrame("Frame", "BuffFrame_body", BuffFrame, "Backdr
 BuffFrame_body:SetAllPoints()
 
 -- Create the frame header
-local BuffFrameHeader = CreateFrame("Frame", "BuffFrameHeader", BuffFrame, "ObjectiveTrackerHeaderTemplate")
+local BuffFrameHeader = CreateFrame("Frame", "BuffFrameHeader", BuffFrame, "ObjectiveTrackerContainerHeaderTemplate")
 BuffFrameHeader:SetPoint("bottom", BuffFrame, "top", 0, -20)
 BuffFrameHeader.Text:SetText(L["BUFF"])
 BuffFrameHeader.MinimizeButton:Hide()

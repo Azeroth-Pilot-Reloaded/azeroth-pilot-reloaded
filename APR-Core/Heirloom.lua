@@ -28,7 +28,8 @@ local HeirloomFrame_body = CreateFrame("Frame", "HeirloomFrame_body", HeirloomFr
 HeirloomFrame_body:SetAllPoints()
 
 -- Create the frame header
-local HeirloomFrameHeader = CreateFrame("Frame", "HeirloomFrameHeader", HeirloomFrame, "ObjectiveTrackerHeaderTemplate")
+local HeirloomFrameHeader = CreateFrame("Frame", "HeirloomFrameHeader", HeirloomFrame,
+    "ObjectiveTrackerContainerHeaderTemplate")
 HeirloomFrameHeader:SetPoint("bottom", HeirloomFrame, "top", 0, -20)
 HeirloomFrameHeader.Text:SetText(L["HEIRLOOM"])
 HeirloomFrameHeader.MinimizeButton:Hide()

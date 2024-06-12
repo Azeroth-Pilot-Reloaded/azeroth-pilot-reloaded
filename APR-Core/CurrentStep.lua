@@ -44,7 +44,7 @@ CurrentStepFrame_StepHolder:SetAllPoints()
 
 -- Create the frame header
 local CurrentStepFrameHeader = CreateFrame("Frame", "CurrentStepFrameHeader", CurrentStepFrame,
-    "ObjectiveTrackerHeaderTemplate")
+    "ObjectiveTrackerContainerHeaderTemplate")
 CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- Replace with APR.title if needed
 
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
@@ -309,14 +309,14 @@ local On_ObjectiveTracker_Update = function()
     APR.currentStep:RefreshCurrentStepFrameAnchor()
 end
 
-hooksecurefunc("ObjectiveTracker_Update", function(reason, id)
-    On_ObjectiveTracker_Update()
-    CurrentStepFrameHeader.Text:SetText(APR.title)
-end)
+-- hooksecurefunc("QuestLogQuests_Update", function(reason, id)
+--     On_ObjectiveTracker_Update()
+--     CurrentStepFrameHeader.Text:SetText(APR.title)
+-- end)
 
-ObjectiveTrackerFrame.HeaderMenu.MinimizeButton:HookScript("OnClick", function()
-    On_ObjectiveTracker_Update()
-end)
+-- ObjectiveTrackerFrame.HeaderMenu.MinimizeButton:HookScript("OnClick", function()
+--     On_ObjectiveTracker_Update()
+-- end)
 
 -- Helper function to create a button
 local function CreateButton(name, parent, width, height, text, script)

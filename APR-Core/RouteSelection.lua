@@ -22,7 +22,7 @@ RouteSelectionFrame:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
 
 -- Create the frame header
 local RouteSelectionFrameHeader = CreateFrame("Frame", "RouteSelectionFrameHeader", RouteSelectionFrame,
-    "ObjectiveTrackerHeaderTemplate")
+    "ObjectiveTrackerContainerHeaderTemplate")
 RouteSelectionFrameHeader:SetPoint("bottom", RouteSelectionFrame, "top", 0, -20)
 RouteSelectionFrameHeader.Text:SetText(L["ROUTE_SELECTION"])
 RouteSelectionFrameHeader.MinimizeButton:Hide()

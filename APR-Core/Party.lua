@@ -33,7 +33,7 @@ local PartyFrame_TeamHolder = CreateFrame("Frame", "PartyFrame_TeamHolder", Part
 PartyFrame_TeamHolder:SetAllPoints()
 
 -- Create the frame header
-local PartyFrameHeader = CreateFrame("Frame", "PartyFrameHeader", PartyFrame, "ObjectiveTrackerHeaderTemplate")
+local PartyFrameHeader = CreateFrame("Frame", "PartyFrameHeader", PartyFrame, "ObjectiveTrackerContainerHeaderTemplate")
 PartyFrameHeader:SetPoint("bottom", PartyFrame, "top", 0, -20)
 PartyFrameHeader.Text:SetText(L["GROUP"])
 
