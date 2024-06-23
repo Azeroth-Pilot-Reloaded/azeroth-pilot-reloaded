@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v3.3.4", "2024-06-23" },
+        "#Bug",
+        "- Fixed wrong coords for last MoP Remix quest (Horde)",
+
         { "v3.3.3", "2024-06-11" },
         "#Bug",
         "- Fixed missing button for quest 30504 (Emergency Response)",
