@@ -45,7 +45,7 @@ CurrentStepFrame_StepHolder:SetAllPoints()
 -- Create the frame header
 local CurrentStepFrameHeader = CreateFrame("Frame", "CurrentStepFrameHeader", CurrentStepFrame,
     "ObjectiveTrackerContainerHeaderTemplate")
-CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- Replace with APR.title if needed
+CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- don't replace it with APR.title
 
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
 CurrentStepFrameHeader:SetScript("OnDragStart", function(self)
@@ -79,38 +79,24 @@ end)
 
 
 -- Create the minimize button
-local minimizeButton = CreateFrame("Button", "CurrentStepFrameHeaderMinimizeButton", CurrentStepFrame, "BackdropTemplate")
-local minimizeButtonText = minimizeButton:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 
-CurrentStepFrameHeader.MinimizeButton:Hide()
-minimizeButtonText:SetText(APR.title)
-minimizeButtonText:SetPoint("right", minimizeButton, "left", -3, 1)
-minimizeButtonText:Hide()
-
-CurrentStepFrame.MinimizeButton = minimizeButton
-minimizeButton:SetSize(16, 16)
-minimizeButton:SetPoint("topright", CurrentStepFrameHeader, "topright", 0, -4)
-minimizeButton:SetScript("OnClick", function()
-    if (CurrentStepFrame.collapsed) then
+CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
+    if CurrentStepFrame.collapsed then
+        APR.currentStep:ButtonShow()
+        APR.currentStep.progressBar:Show()
         APR.currentStep:SetDefaultDisplay()
+        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-collapse-all")
+        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-collapse-all-pressed")
     else
         CurrentStepFrame.collapsed = true
-        minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0, 0.5)
-        minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0, 0.5)
         CurrentStepFrame_StepHolder:Hide()
-        CurrentStepFrameHeader:Hide()
-        minimizeButtonText:Show()
-        minimizeButtonText:SetText(APR.title)
         APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
+        APR.currentStep:ButtonHide()
+        APR.currentStep.progressBar:Hide()
+        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-expand-all")
+        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-expand-all-pressed")
     end
 end)
-
-minimizeButton:SetNormalTexture([[Interface\Buttons\UI-Panel-QuestHideButton]])
-minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
-minimizeButton:SetPushedTexture([[Interface\Buttons\UI-Panel-QuestHideButton]])
-minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
-minimizeButton:SetHighlightTexture([[Interface\Buttons\UI-Panel-MinimizeButton-Highlight]])
-minimizeButton:SetDisabledTexture([[Interface\Buttons\UI-Panel-QuestHideButton-disabled]])
 
 ---------------------------------------------------------------------------------------
 ---------------------------- Function Current Step Frames -----------------------------
@@ -139,12 +125,9 @@ end
 
 function APR.currentStep:SetDefaultDisplay()
     CurrentStepFrame.collapsed = false
-    minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
-    minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
     CurrentStepFrame_StepHolder:Show()
     CurrentStepFrameHeader:Show()
-    minimizeButtonText:Hide()
-    APR.currentStep:UpdateBackgroundColorAlpha()
+    self:UpdateBackgroundColorAlpha()
 end
 
 -- Update the frame scale
@@ -292,6 +275,16 @@ function APR.currentStep:PreviousNextStepButton()
     skipButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
     skipButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
     CurrentStepFrame_StepHolder.skipButton = skipButton
+
+    self.ButtonHide = function()
+        rollbackButton:Hide()
+        skipButton:Hide()
+    end
+
+    self.ButtonShow = function()
+        rollbackButton:Show()
+        skipButton:Show()
+    end
 
     self.ButtonDisable = function()
         rollbackButton:Disable()
@@ -640,6 +633,7 @@ end
 
 --- Disable Button, Reset ProgressBar and Remove all quest and extra line
 function APR.currentStep:Reset()
+    self:ButtonShow()
     self:ButtonDisable()
     self:ProgressBar()
     self:RemoveQuestStepsAndExtraLineTexts()
