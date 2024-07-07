@@ -79,10 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "ALPHA TTW - v3.4.0", "2024-06-12" },
+        { "BETA TWW - 02", "2024-07-08" },
         "#Work In Progress",
 
-        { "v3.3.3", "2024-06-11" },
+        { "v3.3.3",        "2024-06-11" },
         "#Bug",
         "- Fixed missing button for quest 30504 (Emergency Response)",
         "- Added missing qpart for quest 29910 (Rampaging Rodents)",

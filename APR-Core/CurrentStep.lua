@@ -79,7 +79,6 @@ end)
 
 
 -- Create the minimize button
-
 CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
     if CurrentStepFrame.collapsed then
         APR.currentStep:ButtonShow()

@@ -32,12 +32,9 @@ local HeirloomFrameHeader = CreateFrame("Frame", "HeirloomFrameHeader", Heirloom
     "ObjectiveTrackerContainerHeaderTemplate")
 HeirloomFrameHeader:SetPoint("bottom", HeirloomFrame, "top", 0, -20)
 HeirloomFrameHeader.Text:SetText(L["HEIRLOOM"])
-HeirloomFrameHeader.MinimizeButton:Hide()
-
-local closeButton = CreateFrame("Button", "HeirloomFrameCloseButton", HeirloomFrame, "UIPanelCloseButton")
-closeButton:SetSize(16, 16)
-closeButton:SetPoint("topright", HeirloomFrame, "topright", 0, 0)
-closeButton:SetScript("OnClick", function()
+HeirloomFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
+HeirloomFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
+HeirloomFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
     HeirloomPanel:Hide()
     APR.settings.profile.heirloomWarning = true
 end)

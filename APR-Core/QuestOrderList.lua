@@ -55,7 +55,7 @@ end)
 local QuestOrderListFrame_StepHolder = CreateFrame("Frame", "QuestOrderListFrame_StepHolder", QuestOrderListFrame,
     "BackdropTemplate")
 QuestOrderListFrame_StepHolder:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
-QuestOrderListFrame_StepHolder:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, -20)
+QuestOrderListFrame_StepHolder:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, -25)
 
 -- Create a scroll frame for the step holder
 local QuestOrderListFrame_ScrollFrame = CreateFrame("ScrollFrame", "QuestOrderListFrame_ScrollFrame",
@@ -74,12 +74,9 @@ local QuestOrderListFrame_StepHolderHeader = CreateFrame("Frame", "QuestOrderLis
     QuestOrderListFrame, "ObjectiveTrackerContainerHeaderTemplate")
 QuestOrderListFrame_StepHolderHeader:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, 0)
 QuestOrderListFrame_StepHolderHeader.Text:SetText(L["QUEST_ORDER_LIST"])
-QuestOrderListFrame_StepHolderHeader.MinimizeButton:Hide()
-
-local closeButton = CreateFrame("Button", "QuestOrderListFrameCloseButton", QuestOrderListFrame, "UIPanelCloseButton")
-closeButton:SetSize(16, 16)
-closeButton:SetPoint("TOPRIGHT", QuestOrderListFrame, "TOPRIGHT", 0, -5)
-closeButton:SetScript("OnClick", function()
+QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
+QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
+QuestOrderListFrame_StepHolderHeader.MinimizeButton:SetScript("OnClick", function(self)
     QuestOrderListPanel:Hide()
     APR.settings.profile.showQuestOrderList = false
 end)

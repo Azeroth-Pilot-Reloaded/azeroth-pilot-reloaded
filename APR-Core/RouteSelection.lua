@@ -25,13 +25,9 @@ local RouteSelectionFrameHeader = CreateFrame("Frame", "RouteSelectionFrameHeade
     "ObjectiveTrackerContainerHeaderTemplate")
 RouteSelectionFrameHeader:SetPoint("bottom", RouteSelectionFrame, "top", 0, -20)
 RouteSelectionFrameHeader.Text:SetText(L["ROUTE_SELECTION"])
-RouteSelectionFrameHeader.MinimizeButton:Hide()
-
--- Close button
-local closeButton = CreateFrame("Button", "RouteSelectionFrameCloseButton", RouteSelectionFrame, "UIPanelCloseButton")
-closeButton:SetSize(16, 16)
-closeButton:SetPoint("topright", RouteSelectionFrame, "topright", 0, 0)
-closeButton:SetScript("OnClick", function()
+RouteSelectionFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
+RouteSelectionFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
+RouteSelectionFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
     RouteSelectionPanel:Hide()
     APRData[APR.PlayerID].FirstLoad = false
 end)

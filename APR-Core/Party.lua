@@ -38,37 +38,18 @@ PartyFrameHeader:SetPoint("bottom", PartyFrame, "top", 0, -20)
 PartyFrameHeader.Text:SetText(L["GROUP"])
 
 -- Create the minimize button
-local minimizeButton = CreateFrame("Button", "PartyFrameHeaderMinimizeButton", PartyFrame, "BackdropTemplate")
-local minimizeButtonText = minimizeButton:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-
-PartyFrameHeader.MinimizeButton:Hide()
-minimizeButtonText:SetText(L["GROUP"])
-minimizeButtonText:SetPoint("right", minimizeButton, "left", -3, 1)
-minimizeButtonText:Hide()
-
-PartyFrame.MinimizeButton = minimizeButton
-minimizeButton:SetSize(16, 16)
-minimizeButton:SetPoint("topright", PartyFrameHeader, "topright", 0, -4)
-minimizeButton:SetScript("OnClick", function()
-    if (PartyFrame.collapsed) then
+CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
+    if PartyFrame.collapsed then
         APR.party:SetDefaultDisplay()
+        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-collapse-all")
+        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-collapse-all-pressed")
     else
         PartyFrame.collapsed = true
-        minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0, 0.5)
-        minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0, 0.5)
         PartyFrame_TeamHolder:Hide()
-        PartyFrameHeader:Hide()
-        minimizeButtonText:Show()
-        minimizeButtonText:SetText(L["GROUP"])
+        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-expand-all")
+        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-expand-all-pressed")
     end
 end)
-
-minimizeButton:SetNormalTexture([[Interface\Buttons\UI-Panel-QuestHideButton]])
-minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
-minimizeButton:SetPushedTexture([[Interface\Buttons\UI-Panel-QuestHideButton]])
-minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
-minimizeButton:SetHighlightTexture([[Interface\Buttons\UI-Panel-MinimizeButton-Highlight]])
-minimizeButton:SetDisabledTexture([[Interface\Buttons\UI-Panel-QuestHideButton-disabled]])
 
 ---------------------------------------------------------------------------------------
 ------------------------------ Function Party Frames ----------------------------------
@@ -88,9 +69,6 @@ end
 
 function APR.party:SetDefaultDisplay()
     PartyFrame.collapsed = false
-    minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
-    minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
-    minimizeButtonText:Hide()
     PartyScreenPanel:SetPoint("center", UIParent, "center", 0, 0)
     PartyFrame_TeamHolder:Show()
     PartyFrameHeader:Show()
