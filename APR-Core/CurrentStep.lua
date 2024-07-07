@@ -16,7 +16,7 @@ APR.currentStep.previousState = {}
 
 
 --Local constant
-local FRAME_WIDTH = 235
+local FRAME_WIDTH = 250
 local FRAME_HEADER_OPFFSET = -50
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 local isDragging = false
@@ -65,72 +65,7 @@ CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
         self:GetParent():StartMoving()
         isDragging = true
     elseif button == "RightButton" then
-        local menu = CreateFrame("Frame", "CurrentStepHeaderContextMenu", UIParent, "UIDropDownMenuTemplate")
-        local toggleAddon = ''
-        if APR.settings.profile.enableAddon then
-            toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
-        else
-            toggleAddon = "|c33ecc00f " .. L["ENABLE"] .. "|r"
-        end
-        local menuList = {
-            { text = APR.title,         isTitle = true, notCheckable = true },
-            {
-                text = L["SHOW_MENU"],
-                func = function()
-                    APR.settings:OpenSettings(APR.title)
-                end
-            },
-            {
-                text = L["ROUTE"],
-                func = function()
-                    APR.settings:OpenSettings(L["ROUTE"])
-                end
-            },
-            {
-                text = L["PROFILES"],
-                func = function()
-                    APR.settings:OpenSettings(L["PROFILES"])
-                end
-            },
-            {
-                text = L["ABOUT_HELP"],
-                func = function()
-                    APR.settings:OpenSettings(L["ABOUT_HELP"])
-                end
-            },
-            {
-                text = toggleAddon .. " " .. L["ADDON"],
-                func = function()
-                    APR.settings.profile.enableAddon = not APR.settings.profile.enableAddon
-                    APR.settings:ToggleAddon()
-                end
-            },
-            { text = L["CURRENT_STEP"], isTitle = true, notCheckable = true },
-            {
-                text = L["QLIST_ATTACH_QUESTLOG"],
-                func = function()
-                    APR.settings.profile.currentStepAttachFrameToQuestLog = not APR.settings.profile
-                        .currentStepAttachFrameToQuestLog
-                    APR.currentStep:RefreshCurrentStepFrameAnchor()
-                end
-            },
-            {
-                text = L["LOCK_WINDOW"],
-                func = function()
-                    APR.settings.profile.currentStepLock = not APR.settings.profile
-                        .currentStepLock
-                    APR.currentStep:RefreshCurrentStepFrameAnchor()
-                end
-            },
-            {
-                text = L["RESET_CURRENT_STEP_FRAME_POSITION"],
-                func = function()
-                    APR.currentStep:ResetPosition()
-                end
-            },
-
-        }
-        EasyMenu(menuList, menu, "cursor", 0, 0, "MENU", 5)
+        MenuUtil.CreateContextMenu(UIParent, APR.GetMenu)
     end
 end)
 
@@ -287,17 +222,17 @@ end
 -- Hook on update for ObjectiveTrackerFrame (quests log)
 local On_ObjectiveTracker_Update = function()
     local blizzObjectiveTracker = ObjectiveTrackerFrame
-    if (not blizzObjectiveTracker.initialized) then
+    if (not blizzObjectiveTracker.init) then
         return
     end
 
     APR.currentStep.FrameAttachToModule = nil
 
-    if (blizzObjectiveTracker.collapsed) then
+    if (blizzObjectiveTracker.isCollapsed) then
         APR.currentStep.FrameHeight = 20
     else
-        for moduleId = #blizzObjectiveTracker.MODULES_UI_ORDER, 1, -1 do
-            local module = blizzObjectiveTracker.MODULES_UI_ORDER[moduleId]
+        for moduleId = #blizzObjectiveTracker.modules, 1, -1 do
+            local module = blizzObjectiveTracker.modules[moduleId]
             if (module.Header:IsShown()) then
                 APR.currentStep.FrameAttachToModule = module
                 APR.currentStep.FrameHeight = module.contentsHeight
@@ -309,14 +244,14 @@ local On_ObjectiveTracker_Update = function()
     APR.currentStep:RefreshCurrentStepFrameAnchor()
 end
 
--- hooksecurefunc("QuestLogQuests_Update", function(reason, id)
---     On_ObjectiveTracker_Update()
---     CurrentStepFrameHeader.Text:SetText(APR.title)
--- end)
+function APR.currentStep:UpdateObjectiveTracker()
+    On_ObjectiveTracker_Update()
+    CurrentStepFrameHeader.Text:SetText(APR.title)
+end
 
--- ObjectiveTrackerFrame.HeaderMenu.MinimizeButton:HookScript("OnClick", function()
---     On_ObjectiveTracker_Update()
--- end)
+ObjectiveTrackerFrame.Header.MinimizeButton:HookScript("OnClick", function()
+    On_ObjectiveTracker_Update()
+end)
 
 -- Helper function to create a button
 local function CreateButton(name, parent, width, height, text, script)
@@ -340,7 +275,7 @@ function APR.currentStep:PreviousNextStepButton()
         function()
             APR.command:SlashCmd('rollback')
         end)
-    rollbackButton:SetPoint("BOTTOMLEFT", CurrentStepFrameHeader, "BOTTOMLEFT", 5, -30)
+    rollbackButton:SetPoint("BOTTOMLEFT", CurrentStepFrameHeader, "BOTTOMLEFT", 10, -30)
     rollbackButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Up]])
     rollbackButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Down]])
     rollbackButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled]])
@@ -351,7 +286,7 @@ function APR.currentStep:PreviousNextStepButton()
         function()
             APR.command:SlashCmd('skip')
         end)
-    skipButton:SetPoint("BOTTOMRIGHT", CurrentStepFrameHeader, "BOTTOMRIGHT", -5, -30)
+    skipButton:SetPoint("BOTTOMRIGHT", CurrentStepFrameHeader, "BOTTOMRIGHT", -10, -30)
     skipButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Up]])
     skipButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Down]])
     skipButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
@@ -708,4 +643,54 @@ function APR.currentStep:Reset()
     self:ButtonDisable()
     self:ProgressBar()
     self:RemoveQuestStepsAndExtraLineTexts()
+end
+
+function APR.GetMenu(owner, rootDescription)
+    local toggleAddon = ''
+    if APR.settings.profile.enableAddon then
+        toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
+    else
+        toggleAddon = "|c33ecc00f " .. L["ENABLE"] .. "|r"
+    end
+
+    rootDescription:CreateTitle(APR.title)
+
+    rootDescription:CreateButton(L["SHOW_MENU"], function()
+        APR.settings:OpenSettings(APR.title)
+    end)
+
+    rootDescription:CreateButton(L["ROUTE"], function()
+        APR.settings:OpenSettings(L["ROUTE"])
+    end)
+
+    rootDescription:CreateButton(L["PROFILES"], function()
+        APR.settings:OpenSettings(L["PROFILES"])
+    end)
+
+    rootDescription:CreateButton(L["ABOUT_HELP"], function()
+        APR.settings:OpenSettings(L["ABOUT_HELP"])
+    end)
+
+    rootDescription:CreateButton(toggleAddon .. " " .. L["ADDON"], function()
+        APR.settings.profile.enableAddon = not APR.settings.profile.enableAddon
+        APR.settings:ToggleAddon()
+    end)
+
+    rootDescription:CreateDivider()
+    rootDescription:CreateTitle(L["CURRENT_STEP"])
+
+    rootDescription:CreateButton(L["QLIST_ATTACH_QUESTLOG"], function()
+        APR.settings.profile.currentStepAttachFrameToQuestLog = not APR.settings.profile
+            .currentStepAttachFrameToQuestLog
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
+    end)
+
+    rootDescription:CreateButton(L["LOCK_WINDOW"], function()
+        APR.settings.profile.currentStepLock = not APR.settings.profile.currentStepLock
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
+    end)
+
+    rootDescription:CreateButton(L["RESET_CURRENT_STEP_FRAME_POSITION"], function()
+        APR.currentStep:ResetPosition()
+    end)
 end
