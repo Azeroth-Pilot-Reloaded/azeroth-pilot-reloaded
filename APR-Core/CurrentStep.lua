@@ -18,6 +18,7 @@ APR.currentStep.previousState = {}
 --Local constant
 local FRAME_WIDTH = 250
 local FRAME_HEADER_OPFFSET = -30
+local FRAME_ATTACH_OPFFSET = -35
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 local isDragging = false
 
@@ -150,30 +151,23 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
     if InCombatLockdown() then
         return
     end
-    if (not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInInstanceQuest()) then
+    if not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInInstanceQuest() then
         CurrentStepScreenPanel:Hide()
         return
     end
 
-    if (APR.settings.profile.currentStepAttachFrameToQuestLog) then
+    if APR.settings.profile.currentStepAttachFrameToQuestLog then
         CurrentStepScreenPanel:EnableMouse(false)
         CurrentStepScreenPanel:ClearAllPoints()
         CurrentStepFrame:SetScale(1)
 
-        for i = 1, ObjectiveTrackerFrame:GetNumPoints() do
-            local point, relativeTo, relativePoint, xOfs, yOfs = ObjectiveTrackerFrame:GetPoint(i)
-            CurrentStepScreenPanel:SetPoint(point, relativeTo, relativePoint, -10 + xOfs,
-                yOfs + FRAME_STEP_HOLDER_HEIGHT - 40)
-        end
-
-        if (APR.currentStep.FrameAttachToModule) then
-            CurrentStepScreenPanel:ClearAllPoints()
-            CurrentStepScreenPanel:SetPoint("top", APR.currentStep.FrameAttachToModule.Header, "bottom", 0,
-                -APR.currentStep.FrameHeight +
-                (FRAME_STEP_HOLDER_HEIGHT == FRAME_HEADER_OPFFSET and 0 or FRAME_STEP_HOLDER_HEIGHT) + 20)
+        if APR.currentStep.FrameAttachToModule then
+            CurrentStepScreenPanel:SetPoint("TOP", APR.currentStep.FrameAttachToModule, "BOTTOM", 0, FRAME_ATTACH_OPFFSET)
+        elseif ObjectiveTrackerFrame.Header then
+            CurrentStepScreenPanel:SetPoint("TOP", ObjectiveTrackerFrame.Header, "BOTTOM", 0, FRAME_ATTACH_OPFFSET)
         end
     else
-        if (not APR.settings.profile.currentStepLock) then
+        if not APR.settings.profile.currentStepLock then
             CurrentStepScreenPanel:EnableMouse(true)
         else
             CurrentStepScreenPanel:EnableMouse(false)
@@ -183,7 +177,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         self:UpdateFrameScale()
     end
     CurrentStepFrameHeader:ClearAllPoints()
-    CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -1)
+    CurrentStepFrameHeader:SetPoint("BOTTOM", CurrentStepFrame, "TOP", 0, -1)
 
     CurrentStepScreenPanel:Show()
 end
@@ -196,38 +190,27 @@ function APR.currentStep:ResetPosition()
 end
 
 -- Hook on update for ObjectiveTrackerFrame (quests log)
-local On_ObjectiveTracker_Update = function()
-    local blizzObjectiveTracker = ObjectiveTrackerFrame
-    if (not blizzObjectiveTracker.init) then
-        return
-    end
+hooksecurefunc(ObjectiveTrackerFrame, "Update",
+    function()
+        if not ObjectiveTrackerFrame and not CurrentStepScreenPanel then
+            return
+        end
 
-    APR.currentStep.FrameAttachToModule = nil
+        local modules = ObjectiveTrackerFrame.modules
+        local lastModule = nil
 
-    if (blizzObjectiveTracker.isCollapsed) then
-        APR.currentStep.FrameHeight = 20
-    else
-        for moduleId = #blizzObjectiveTracker.modules, 1, -1 do
-            local module = blizzObjectiveTracker.modules[moduleId]
-            if (module.Header:IsShown()) then
-                APR.currentStep.FrameAttachToModule = module
-                APR.currentStep.FrameHeight = module.contentsHeight
-                break
+        if modules then
+            for i = #modules, 1, -1 do
+                if modules[i]:IsShown() then
+                    lastModule = modules[i]
+                    break
+                end
             end
         end
-    end
 
-    APR.currentStep:RefreshCurrentStepFrameAnchor()
-end
-
-function APR.currentStep:UpdateObjectiveTracker()
-    On_ObjectiveTracker_Update()
-    CurrentStepFrameHeader.Text:SetText(APR.title)
-end
-
-ObjectiveTrackerFrame.Header.MinimizeButton:HookScript("OnClick", function()
-    On_ObjectiveTracker_Update()
-end)
+        APR.currentStep.FrameAttachToModule = lastModule
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
+    end)
 
 -- Helper function to create a button
 local function CreateButton(name, parent, width, height, text, script)

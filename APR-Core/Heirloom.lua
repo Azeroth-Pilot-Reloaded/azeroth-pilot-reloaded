@@ -11,7 +11,7 @@ APR.heirloom.buttons = {}
 ---------------------------------------------------------------------------------------
 
 local HeirloomFrame = CreateFrame("Frame", "HeirloomPanel", UIParent, "BackdropTemplate")
-HeirloomFrame:SetSize(250, 0)
+HeirloomFrame:SetSize(250, 75)
 HeirloomFrame:SetFrameStrata("LOW")
 HeirloomFrame:SetClampedToScreen(true)
 HeirloomFrame:SetBackdrop({
@@ -41,7 +41,6 @@ HeirloomFrameHeader:SetScript("OnMouseUp", function(self, button)
     LibWindow.SavePosition(HeirloomPanel)
 end)
 
-
 HeirloomFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
 HeirloomFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
 HeirloomFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
@@ -58,7 +57,6 @@ function APR.heirloom:HeirloomOnInit()
     LibWindow.RegisterConfig(HeirloomPanel, APR.settings.profile.heirloomFrame)
     HeirloomPanel.RegisteredForLibWindow = true
     LibWindow.MakeDraggable(HeirloomPanel)
-    LibWindow.MakeDraggable(HeirloomFrameHeader)
     -- Set default display
     self:SetDefaultDisplay()
     self:RefreshFrameAnchor()

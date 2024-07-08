@@ -1728,7 +1728,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             Updateblock = 1
             C_Timer.After(1, APR_UpdQuestThing)
         end
-        APR.currentStep:UpdateObjectiveTracker()
     end
 
     if event == "UNIT_SPELLCAST_SUCCEEDED" then
