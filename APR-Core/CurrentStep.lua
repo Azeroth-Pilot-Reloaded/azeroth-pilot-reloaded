@@ -17,7 +17,7 @@ APR.currentStep.previousState = {}
 
 --Local constant
 local FRAME_WIDTH = 250
-local FRAME_HEADER_OPFFSET = -50
+local FRAME_HEADER_OPFFSET = -30
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 local isDragging = false
 
@@ -27,7 +27,7 @@ local isDragging = false
 
 -- Create the main current step frame
 local CurrentStepFrame = CreateFrame("Frame", "CurrentStepScreenPanel", UIParent, "BackdropTemplate")
-CurrentStepFrame:SetSize(FRAME_WIDTH, 50)
+CurrentStepFrame:SetSize(FRAME_WIDTH, 30)
 CurrentStepFrame:SetFrameStrata("MEDIUM")
 CurrentStepFrame:SetClampedToScreen(true)
 CurrentStepFrame:SetBackdrop({
@@ -172,11 +172,6 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
                 -APR.currentStep.FrameHeight +
                 (FRAME_STEP_HOLDER_HEIGHT == FRAME_HEADER_OPFFSET and 0 or FRAME_STEP_HOLDER_HEIGHT) + 20)
         end
-
-        CurrentStepFrameHeader:ClearAllPoints()
-        CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -20)
-
-        CurrentStepScreenPanel:Show()
     else
         if (not APR.settings.profile.currentStepLock) then
             CurrentStepScreenPanel:EnableMouse(true)
@@ -186,12 +181,11 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
 
         LibWindow.RestorePosition(CurrentStepScreenPanel)
         self:UpdateFrameScale()
-
-        CurrentStepFrameHeader:ClearAllPoints()
-        CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -20)
-
-        CurrentStepScreenPanel:Show()
     end
+    CurrentStepFrameHeader:ClearAllPoints()
+    CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -1)
+
+    CurrentStepScreenPanel:Show()
 end
 
 -- Reset the frame position
@@ -313,7 +307,7 @@ function APR.currentStep:ProgressBar(key, total, current)
     if not self.progressBar then
         local progressBar = CreateFrame("StatusBar", "CurrentStepFrame_StepHolder_ProgressBar", CurrentStepFrameHeader,
             "BackdropTemplate")
-        progressBar:SetSize(155, 20)
+        progressBar:SetSize(175, 20)
         progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
         progressBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
         progressBar:SetStatusBarColor(unpack(APR.Color.blue))
@@ -552,8 +546,8 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
             local itemName, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
             return itemName, itemTexture
         else
-            local name, _, icon = GetSpellInfo(itemID)
-            return name, icon
+            local spellInfo = C_Spell.GetSpellInfo(itemID)
+            return spellInfo.name, spellInfo.iconID
         end
     end
     local iconName, iconTexture = iconName()

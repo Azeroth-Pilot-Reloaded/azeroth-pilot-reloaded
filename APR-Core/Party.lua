@@ -9,7 +9,7 @@ local AceSerializer = _G.LibStub("AceSerializer-3.0")
 --Local constant
 local FRAME_WIDTH = 250
 local FRAME_HEIGHT = 100
-local FRAME_OFFSET = -18
+local FRAME_OFFSET = 1
 local FRAME_MATE_HOLDER_HEIGHT = -18
 
 -- Init list
@@ -34,11 +34,11 @@ PartyFrame_TeamHolder:SetAllPoints()
 
 -- Create the frame header
 local PartyFrameHeader = CreateFrame("Frame", "PartyFrameHeader", PartyFrame, "ObjectiveTrackerContainerHeaderTemplate")
-PartyFrameHeader:SetPoint("bottom", PartyFrame, "top", 0, -20)
+PartyFrameHeader:SetPoint("bottom", PartyFrame, "top", 0, 0)
 PartyFrameHeader.Text:SetText(L["GROUP"])
 
 -- Create the minimize button
-CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
+PartyFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
     if PartyFrame.collapsed then
         APR.party:SetDefaultDisplay()
         self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-collapse-all")
@@ -50,6 +50,17 @@ CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
         self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-expand-all-pressed")
     end
 end)
+
+PartyFrameHeader:SetScript("OnMouseDown", function(self, button)
+    self:GetParent():StartMoving()
+end)
+
+PartyFrameHeader:SetScript("OnMouseUp", function(self, button)
+    self:GetParent():StopMovingOrSizing()
+    LibWindow.SavePosition(PartyScreenPanel)
+end)
+
+
 
 ---------------------------------------------------------------------------------------
 ------------------------------ Function Party Frames ----------------------------------
@@ -125,7 +136,7 @@ local AddTeamMate = function(username, currentStep, totalSteps, isSameRoute, col
         tile = true,
         tileSize = 16
     })
-    container:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+    container:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
 
     return container
 end

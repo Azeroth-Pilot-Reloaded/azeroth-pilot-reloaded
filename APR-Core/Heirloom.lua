@@ -11,7 +11,7 @@ APR.heirloom.buttons = {}
 ---------------------------------------------------------------------------------------
 
 local HeirloomFrame = CreateFrame("Frame", "HeirloomPanel", UIParent, "BackdropTemplate")
-HeirloomFrame:SetSize(250, 75)
+HeirloomFrame:SetSize(250, 0)
 HeirloomFrame:SetFrameStrata("LOW")
 HeirloomFrame:SetClampedToScreen(true)
 HeirloomFrame:SetBackdrop({
@@ -30,8 +30,18 @@ HeirloomFrame_body:SetAllPoints()
 -- Create the frame header
 local HeirloomFrameHeader = CreateFrame("Frame", "HeirloomFrameHeader", HeirloomFrame,
     "ObjectiveTrackerContainerHeaderTemplate")
-HeirloomFrameHeader:SetPoint("bottom", HeirloomFrame, "top", 0, -20)
+HeirloomFrameHeader:SetPoint("bottom", HeirloomFrame, "top", 0, -1)
 HeirloomFrameHeader.Text:SetText(L["HEIRLOOM"])
+HeirloomFrameHeader:SetScript("OnMouseDown", function(self, button)
+    self:GetParent():StartMoving()
+end)
+
+HeirloomFrameHeader:SetScript("OnMouseUp", function(self, button)
+    self:GetParent():StopMovingOrSizing()
+    LibWindow.SavePosition(HeirloomPanel)
+end)
+
+
 HeirloomFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
 HeirloomFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
 HeirloomFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
@@ -48,7 +58,7 @@ function APR.heirloom:HeirloomOnInit()
     LibWindow.RegisterConfig(HeirloomPanel, APR.settings.profile.heirloomFrame)
     HeirloomPanel.RegisteredForLibWindow = true
     LibWindow.MakeDraggable(HeirloomPanel)
-
+    LibWindow.MakeDraggable(HeirloomFrameHeader)
     -- Set default display
     self:SetDefaultDisplay()
     self:RefreshFrameAnchor()
@@ -186,7 +196,7 @@ function APR.heirloom:AddHeirloomIcons()
     }
 
     local xOffset = 5
-    local yOffset = -22.5
+    local yOffset = -5
     local maxElementsPerLine = 4
     local elementsCount = 0
 
@@ -218,5 +228,6 @@ function APR.heirloom:AddHeirloomIcons()
             end
         end
     end
-    HeirloomFrame:SetSize(250, (elementsCount > 4 and 55 or 0) + (-yOffset))
+
+    HeirloomFrame:SetSize(250, 55 + (-yOffset))
 end

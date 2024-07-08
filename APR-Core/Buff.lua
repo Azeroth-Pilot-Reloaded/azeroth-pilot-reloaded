@@ -5,12 +5,12 @@ local LibWindow = LibStub("LibWindow-1.1")
 -- Initialize module
 APR.Buff = APR:NewModule("Buff")
 
-local FRAME_WIDTH = 235
-local FRAME_HEIGHT = 55
+local FRAME_WIDTH = 250
+local FRAME_HEIGHT = 40
 local FRAME_OFFSET_DEFAULT = 5
 local FRAME_OFFSET = 35
 local xOffset = 5
-local yOffset = -22
+local yOffset = -5
 
 APR.Buff.auras = {}
 
@@ -35,9 +35,18 @@ BuffFrame_body:SetAllPoints()
 
 -- Create the frame header
 local BuffFrameHeader = CreateFrame("Frame", "BuffFrameHeader", BuffFrame, "ObjectiveTrackerContainerHeaderTemplate")
-BuffFrameHeader:SetPoint("bottom", BuffFrame, "top", 0, -20)
+BuffFrameHeader:SetPoint("bottom", BuffFrame, "top", 0, -1)
 BuffFrameHeader.Text:SetText(L["BUFF"])
 BuffFrameHeader.MinimizeButton:Hide()
+BuffFrameHeader:SetScript("OnMouseDown", function(self, button)
+    self:GetParent():StartMoving()
+end)
+
+BuffFrameHeader:SetScript("OnMouseUp", function(self, button)
+    self:GetParent():StopMovingOrSizing()
+    LibWindow.SavePosition(BuffFrameScreen)
+end)
+
 
 
 ---------------------------------------------------------------------------------------
@@ -109,7 +118,7 @@ end
 
 function APR.Buff:AddBuffIcon(buff)
     local aura = C_UnitAuras.GetPlayerAuraBySpellID(buff.spellId)
-    local icon = aura and aura.icon or select(3, GetSpellInfo(buff.spellId))
+    local icon = aura and aura.icon or C_Spell.GetSpellInfo(buff.spellId).iconID
     local isDisabled = not aura
     local auraInstanceID = aura and aura.auraInstanceID or nil
 
