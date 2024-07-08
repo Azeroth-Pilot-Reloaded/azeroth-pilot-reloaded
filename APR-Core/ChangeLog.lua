@@ -79,10 +79,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "BETA TWW", "2024-07-08" },
+        { "BETA TWW", "2024" },
         "#Work In Progress - BETA",
+        "- Taxi Nodes",
+        "- Lib (alpha version)",
+        "- Fix for the position of the current stage frame when attached to the questlog",
+        "- Fix Header of all frame + button (close, minimize)",
+        "- Fix shortcut to open settings",
+        "- Rework of the menu with the new menu template",
+        "- Fix BG overlapping on frame header",
 
-        { "v3.3.4", "2024-06-23" },
+        { "v3.3.4",   "2024-06-23" },
         "#Bug",
         "- Fixed wrong coords for last MoP Remix quest (Horde)",
 
