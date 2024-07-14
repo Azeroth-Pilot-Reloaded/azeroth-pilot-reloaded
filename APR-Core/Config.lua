@@ -1354,7 +1354,11 @@ function APR.settings:CreateMiniMapButton()
                 self.profile.enableAddon = not self.profile.enableAddon
                 self:ToggleAddon()
             else
-                APR.settings:OpenSettings(APR.title)
+                if SettingsPanel:IsShown() then
+                    self:CloseSettings()
+                else
+                    self:OpenSettings(APR.title)
+                end
             end
         end,
         OnTooltipShow = function(tooltip)
