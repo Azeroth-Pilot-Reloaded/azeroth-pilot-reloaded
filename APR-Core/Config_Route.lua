@@ -636,9 +636,7 @@ function APR.routeconfig:InitRouteConfig()
 end
 
 function IsRouteDisabled(tab, routeName)
-    if string.find(tab, "Dragonflight") and (APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"]) then
-        return true
-    elseif routeName == "01-10 Exile's Reach" and not APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
+    if routeName == "01-10 Exile's Reach" and not APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         return true
     end
     return false
