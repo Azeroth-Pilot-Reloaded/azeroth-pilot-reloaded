@@ -588,7 +588,7 @@ function APR.currentStep:UpdateStepButtonCooldowns()
             if IconButton:IsShown() then
                 local start, duration
                 if IconButton.attribute == 'spell' then
-                    start, duration = GetSpellCooldown(tonumber(IconButton.itemID))
+                    start, duration = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))
                 else
                     start, duration = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
                 end
