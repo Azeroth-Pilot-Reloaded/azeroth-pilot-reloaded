@@ -8,7 +8,7 @@ MovieFrame_PlayMovie = function(...)
     if IsModifierKeyDown() or not APR.settings.profile.autoSkipCutScene or (step and step.Dontskipvidthen) then
         PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
     else
-        GameMovieFinished()
+        CinematicFinished(Enum.CinematicType.GameMovie, true, false)
     end
 end
 
@@ -19,6 +19,7 @@ CinematicFrame:HookScript("OnKeyDown", function(self, key)
         end
     end
 end)
+
 CinematicFrame:HookScript("OnKeyUp", function(self, key)
     if key == "SPACE" or key == "ESCAPE" or key == "ENTER" then
         if CinematicFrame:IsShown() and CinematicFrame.closeDialog and CinematicFrameCloseDialogConfirmButton then
