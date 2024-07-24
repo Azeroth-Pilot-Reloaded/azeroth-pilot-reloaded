@@ -79,6 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.0.2", "2024-07-24" },
+        "#Bug",
+        "- Fixed ACE dropdown dependency causing lua error",
+        "- Fixed deprecated Spell Cooldown function",
+
         { "v4.0.1", "2024-07-24" },
         "#Bug",
         "- Fix skip cinematic lua error (GameMovieFinished to CinematicFinished)",
