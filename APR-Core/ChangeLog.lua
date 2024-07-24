@@ -79,6 +79,12 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.0.1", "2024-07-24" },
+        "#Bug",
+        "- Fix skip cinematic lua error (GameMovieFinished to CinematicFinished)",
+        "- Enable Df route for new character",
+        "- Fix starting quest of DF route",
+
         { "v4.0.0", "2024-07-24" },
         "#Features",
         "- Added Taxi Nodes for TWW",

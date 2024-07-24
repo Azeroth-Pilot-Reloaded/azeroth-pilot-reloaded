@@ -1,42 +1,52 @@
 if APR.Faction == "Horde" then
     APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
-        { Done = { 65435 },            Coord = { y = 2046.2, x = -4273.0 }, Zone = 85 },
-        { PickUp = { 65437 },          Coord = { y = 2046.2, x = -4273.0 }, Zone = 85 },
-        { Qpart = { [65437] = { 1 } }, Coord = { y = 2046.2, x = -4273.0 }, Range = 0.5, Gossip = 1, Zone = 85 },
-        { Done = { 65437 },            Coord = { y = 2046.2, x = -4273.0 }, Zone = 85 },
-        { PickUp = { 65443 },          Coord = { y = 2048.6, x = -4274.9 }, Zone = 85 },
-        { PickUp = { 72256 },          Coord = { y = 2043.0, x = -4272.0 }, Zone = 85 },
+        { Coord = { x = -4273, y = 2046.2 },                     Done = { 65435 },          Zone = 85 },
+        { Coord = { x = -4273, y = 2046.2 },                     PickUp = { 65437 },        Zone = 85 },
+        { Coord = { x = -4273, y = 2046.2 },                     Gossip = 1,                Qpart = { [65437] = { 1 } }, Range = 0.5, Zone = 85 },
+        { Coord = { x = -4273, y = 2046.2 },                     Done = { 65437 },          Zone = 85 },
+        { Coord = { x = -4273.3002929688, y = 2046.2000732422 }, PickUp = { 65443, 72256 }, Zone = 85 },
         {
-            Qpart = { [65443] = { 2 } },
-            Coord = { y = 1826.4, x = -4177.5 },
-            Range = 0.5,
-            ExtraLineText = "ON_TOP_OF_A_ROCK",
-            Gossip = 1,
-            Zone = 85
-        },
-        { Qpart = { [65443] = { 1 } }, Coord = { y = 1859.0, x = -4499.6 }, Range = 0.5,                           Gossip = 1,                          Zone = 85 },
-        {
+            Coord = { x = -4271.3999023438, y = 2036.3000488281 },
+            ExtraLineText = "USE_GATE",
+            Range = 2,
             Waypoint = 65443,
-            Coord = { y = 1920.5, x = -4726.4 },
-            Range = 10,
-            ExtraLineText = "HEAD_WYVERNS_TAIL_INN",
             Zone = 85
         },
         {
-            Qpart = { [65443] = { 3 } },
-            Coord = { y = 1899.5, x = -4749.1 },
-            Range = 0.5,
-            ExtraLineText = "UPSTAIRS",
-            Gossip = 1,
-            Zone = 85
+            Coord = { x = -4818.3999023438, y = 1348.4000244141 },
+            GossipOptionIDs = { 53882 },
+            Qpart = { [65443] = { 2 } },
+            Zone = 1
         },
-        { Qpart = { [72256] = { 1 } }, Coord = { y = 1447.5, x = -4464.4 }, Range = 0.5,                           Gossip = 1,                          Zone = 85 },
-        { Done = { 65443, 72256 },     Coord = { y = 1362.0, x = -4913.5 }, ExtraLineText = "HEAD_ZEPPELIN_TOWER", Zone = 1 },
-        { PickUp = { 65439 },          Coord = { y = 1363.9, x = -4919.0 }, Zone = 1 },
-        { Qpart = { [65439] = { 1 } }, Coord = { y = 1363.9, x = -4919.0 }, Range = 0.5,                           Gossip = 1,                          Zone = 1 },
-        { Done = { 65439 },            Coord = { y = 1359.8, x = -4915.3 }, Zone = 1 },
-        { PickUp = { 65444 },          Coord = { y = 1362.0, x = -4913.5 }, Zone = 1 },
-        { Waypoint = 65444,            Coord = { y = 1343.4, x = -4922.5 }, Range = 10,                            ExtraLineText = "WAIT_FOR_ZEPPELIN", Zone = 1 },
+        {
+            Coord = { x = -4824.1000976562, y = 1460.8000488281 },
+            GossipOptionIDs = { 107450 },
+            Qpart = { [72256] = { 1 } },
+            Zone = 1
+        },
+        {
+            Coord = { x = -4879.8999023438, y = 1398.0999755859 },
+            GossipOptionIDs = { 53883 },
+            Qpart = { [65443] = { 1 } },
+            Zone = 1
+        },
+        {
+            Coord = { x = -4921.8999023438, y = 1342.5999755859 },
+            GossipOptionIDs = { 54035 },
+            Qpart = { [65443] = { 3 } },
+            Zone = 1
+        },
+        {
+            Coord = { x = -4913.6000976562, y = 1362.2000732422 },
+            Done = { 65443, 72256 },
+            ExtraLineText = "HEAD_ZEPPELIN_TOWER",
+            Zone = 1
+        },
+        { Coord = { x = -4919.2001953125, y = 1364 },            GossipOptionIDs = { 55626 },         PickUp = { 65439 }, Zone = 1 },
+        { Coord = { x = -4919.2001953125, y = 1364 },            Qpart = { [65439] = { 1 } },         Range = 30,         Zone = 1 },
+        { Coord = { x = -4915.3002929688, y = 1358.9000244141 }, Done = { 65439 },                    Zone = 1 },
+        { Coord = { x = -4913.6000976562, y = 1362.0999755859 }, PickUp = { 65444 },                  Zone = 1 },
+        { Waypoint = 65444,                                      Coord = { y = 1343.4, x = -4922.5 }, Range = 10,         ExtraLineText = "WAIT_FOR_ZEPPELIN", Zone = 1 },
         {
             Qpart = { [65444] = { 1 } },
             Coord = { y = 1343.4, x = -4922.5 },
