@@ -1,5 +1,5 @@
-## Interface: 100207
-## X-Min-Interface: 100205
+## Interface: 110002
+## X-Min-Interface: 110000
 
 ## Title: Azeroth Pilot Reloaded
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.

@@ -9,7 +9,7 @@ local AceSerializer = _G.LibStub("AceSerializer-3.0")
 --Local constant
 local FRAME_WIDTH = 250
 local FRAME_HEIGHT = 100
-local FRAME_OFFSET = -18
+local FRAME_OFFSET = 1
 local FRAME_MATE_HOLDER_HEIGHT = -18
 
 -- Init list
@@ -33,42 +33,34 @@ local PartyFrame_TeamHolder = CreateFrame("Frame", "PartyFrame_TeamHolder", Part
 PartyFrame_TeamHolder:SetAllPoints()
 
 -- Create the frame header
-local PartyFrameHeader = CreateFrame("Frame", "PartyFrameHeader", PartyFrame, "ObjectiveTrackerHeaderTemplate")
-PartyFrameHeader:SetPoint("bottom", PartyFrame, "top", 0, -20)
+local PartyFrameHeader = CreateFrame("Frame", "PartyFrameHeader", PartyFrame, "ObjectiveTrackerContainerHeaderTemplate")
+PartyFrameHeader:SetPoint("bottom", PartyFrame, "top", 0, 0)
 PartyFrameHeader.Text:SetText(L["GROUP"])
 
 -- Create the minimize button
-local minimizeButton = CreateFrame("Button", "PartyFrameHeaderMinimizeButton", PartyFrame, "BackdropTemplate")
-local minimizeButtonText = minimizeButton:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-
-PartyFrameHeader.MinimizeButton:Hide()
-minimizeButtonText:SetText(L["GROUP"])
-minimizeButtonText:SetPoint("right", minimizeButton, "left", -3, 1)
-minimizeButtonText:Hide()
-
-PartyFrame.MinimizeButton = minimizeButton
-minimizeButton:SetSize(16, 16)
-minimizeButton:SetPoint("topright", PartyFrameHeader, "topright", 0, -4)
-minimizeButton:SetScript("OnClick", function()
-    if (PartyFrame.collapsed) then
+PartyFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
+    if PartyFrame.collapsed then
         APR.party:SetDefaultDisplay()
+        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-collapse-all")
+        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-collapse-all-pressed")
     else
         PartyFrame.collapsed = true
-        minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0, 0.5)
-        minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0, 0.5)
         PartyFrame_TeamHolder:Hide()
-        PartyFrameHeader:Hide()
-        minimizeButtonText:Show()
-        minimizeButtonText:SetText(L["GROUP"])
+        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-expand-all")
+        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-expand-all-pressed")
     end
 end)
 
-minimizeButton:SetNormalTexture([[Interface\Buttons\UI-Panel-QuestHideButton]])
-minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
-minimizeButton:SetPushedTexture([[Interface\Buttons\UI-Panel-QuestHideButton]])
-minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
-minimizeButton:SetHighlightTexture([[Interface\Buttons\UI-Panel-MinimizeButton-Highlight]])
-minimizeButton:SetDisabledTexture([[Interface\Buttons\UI-Panel-QuestHideButton-disabled]])
+PartyFrameHeader:SetScript("OnMouseDown", function(self, button)
+    self:GetParent():StartMoving()
+end)
+
+PartyFrameHeader:SetScript("OnMouseUp", function(self, button)
+    self:GetParent():StopMovingOrSizing()
+    LibWindow.SavePosition(PartyScreenPanel)
+end)
+
+
 
 ---------------------------------------------------------------------------------------
 ------------------------------ Function Party Frames ----------------------------------
@@ -88,9 +80,6 @@ end
 
 function APR.party:SetDefaultDisplay()
     PartyFrame.collapsed = false
-    minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
-    minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
-    minimizeButtonText:Hide()
     PartyScreenPanel:SetPoint("center", UIParent, "center", 0, 0)
     PartyFrame_TeamHolder:Show()
     PartyFrameHeader:Show()
@@ -147,7 +136,7 @@ local AddTeamMate = function(username, currentStep, totalSteps, isSameRoute, col
         tile = true,
         tileSize = 16
     })
-    container:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+    container:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
 
     return container
 end

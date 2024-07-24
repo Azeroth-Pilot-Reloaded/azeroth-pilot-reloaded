@@ -567,7 +567,7 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["ADVANCED_AUTOMATION"],
                 args = {
-                    subgroup_advanced_automation= {
+                    subgroup_advanced_automation = {
                         order = 8.1,
                         type = "group",
                         inline = true,
@@ -1223,6 +1223,9 @@ function APR.settings:createBlizzOptions()
 
     -- Add about to bliz option
     APR.settings:CreateAboutOption()
+
+    local category, layout = Settings.RegisterCanvasLayoutCategory(APR, APR.title);
+    APR.settings.category = category
 end
 
 function APR.settings:CreateAboutOption()
@@ -1351,7 +1354,11 @@ function APR.settings:CreateMiniMapButton()
                 self.profile.enableAddon = not self.profile.enableAddon
                 self:ToggleAddon()
             else
-                APR.settings:OpenSettings(APR.title)
+                if SettingsPanel:IsShown() then
+                    self:CloseSettings()
+                else
+                    self:OpenSettings(APR.title)
+                end
             end
         end,
         OnTooltipShow = function(tooltip)
@@ -1392,7 +1399,11 @@ end
 
 function APR.settings:OpenSettings(name)
     if name == APR.title then
-        InterfaceOptionsFrame_OpenToCategory(APR.title)
+        if InterfaceOptionsFrame_OpenToCategory then
+            InterfaceOptionsFrame_OpenToCategory(APR.title)
+        else
+            Settings.OpenToCategory(self.category.ID)
+        end
         APR.settings:OpenSettings(L["ROUTE"])
     end
     if APR.Options then
@@ -1417,6 +1428,8 @@ function APR.settings:OpenSettings(name)
                 InterfaceOptionsFrame_OpenToCategory(APR.OptionsRoute)
             end
             return
+        else
+            Settings.OpenToCategory(self.category.ID)
         end
     end
 end

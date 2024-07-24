@@ -375,7 +375,7 @@ local function APR_UpdateStep()
                 APR:NextQuestStep()
                 return
             end
-            local name = GetSpellInfo(spellID)
+            local name = C_Spell.GetSpellInfo(spellID).name
             APR.currentStep:AddExtraLineText("LEARN_PROFESSION", format(L["LEARN_PROFESSION_DETAILS"], name))
         end
         if (steps.LeaveQuest) then

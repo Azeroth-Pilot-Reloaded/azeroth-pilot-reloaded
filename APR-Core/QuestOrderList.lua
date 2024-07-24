@@ -11,7 +11,7 @@ APR.questOrderList.updateTimer = nil
 APR.questOrderList.pendingUpdate = false
 
 -- Local constants
-local FRAME_WIDTH = 250
+local FRAME_WIDTH = 258
 local FRAME_HEIGHT = 300
 local FRAME_MIN_WIDTH = FRAME_WIDTH
 local FRAME_MIN_HEIGHT = 100
@@ -26,7 +26,6 @@ local QuestOrderListFrame = CreateFrame("Frame", "QuestOrderListPanel", UIParent
 QuestOrderListFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 QuestOrderListFrame:SetFrameStrata("MEDIUM")
 QuestOrderListFrame:SetClampedToScreen(true)
-QuestOrderListFrame:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
 QuestOrderListFrame:SetBackdrop({
     bgFile = "Interface\\BUTTONS\\WHITE8X8",
     tile = true,
@@ -55,13 +54,13 @@ end)
 local QuestOrderListFrame_StepHolder = CreateFrame("Frame", "QuestOrderListFrame_StepHolder", QuestOrderListFrame,
     "BackdropTemplate")
 QuestOrderListFrame_StepHolder:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
-QuestOrderListFrame_StepHolder:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, -20)
+QuestOrderListFrame_StepHolder:SetAllPoints()
 
 -- Create a scroll frame for the step holder
 local QuestOrderListFrame_ScrollFrame = CreateFrame("ScrollFrame", "QuestOrderListFrame_ScrollFrame",
     QuestOrderListFrame_StepHolder, "UIPanelScrollFrameTemplate")
-QuestOrderListFrame_ScrollFrame:SetPoint("TOPLEFT", QuestOrderListFrame_StepHolder, "TOPLEFT", 0, -5)
-QuestOrderListFrame_ScrollFrame:SetPoint("BOTTOMRIGHT", QuestOrderListFrame_StepHolder, "BOTTOMRIGHT", -22, 20)
+QuestOrderListFrame_ScrollFrame:SetPoint("TOPLEFT", QuestOrderListFrame_StepHolder, "TOPLEFT", 0, 0)
+QuestOrderListFrame_ScrollFrame:SetPoint("BOTTOMRIGHT", QuestOrderListFrame_StepHolder, "BOTTOMRIGHT", -22, 0)
 
 -- Create a child frame for the scroll frame
 local QuestOrderListFrame_ScrollChild = CreateFrame("Frame", "QuestOrderListFrame_ScrollChild",
@@ -71,18 +70,25 @@ QuestOrderListFrame_ScrollFrame:SetScrollChild(QuestOrderListFrame_ScrollChild)
 
 -- Create the frame header
 local QuestOrderListFrame_StepHolderHeader = CreateFrame("Frame", "QuestOrderListFrame_StepHolderHeader",
-    QuestOrderListFrame, "ObjectiveTrackerHeaderTemplate")
-QuestOrderListFrame_StepHolderHeader:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, 0)
+    QuestOrderListFrame, "ObjectiveTrackerContainerHeaderTemplate")
+QuestOrderListFrame_StepHolderHeader:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, 30)
 QuestOrderListFrame_StepHolderHeader.Text:SetText(L["QUEST_ORDER_LIST"])
-QuestOrderListFrame_StepHolderHeader.MinimizeButton:Hide()
-
-local closeButton = CreateFrame("Button", "QuestOrderListFrameCloseButton", QuestOrderListFrame, "UIPanelCloseButton")
-closeButton:SetSize(16, 16)
-closeButton:SetPoint("TOPRIGHT", QuestOrderListFrame, "TOPRIGHT", 0, -5)
-closeButton:SetScript("OnClick", function()
+QuestOrderListFrame_StepHolderHeader:SetScript("OnMouseDown", function(self)
+    if not APR.settings.profile.questOrderListLock then
+        self:GetParent():StartMoving()
+    end
+end)
+QuestOrderListFrame_StepHolderHeader:SetScript("OnMouseUp", function(self)
+    self:GetParent():StopMovingOrSizing()
+    LibWindow.SavePosition(QuestOrderListPanel)
+end)
+QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
+QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
+QuestOrderListFrame_StepHolderHeader.MinimizeButton:SetScript("OnClick", function(self)
     QuestOrderListPanel:Hide()
     APR.settings.profile.showQuestOrderList = false
 end)
+
 
 local resizeButton = CreateFrame("Button", "QuestOrderListFrameResizeHandle", QuestOrderListFrame)
 resizeButton:SetSize(16, 16)
@@ -528,7 +534,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
             elseif step.LearnProfession then
                 local spellID = step.LearnProfession
-                local name = GetSpellInfo(spellID)
+                local name = C_Spell.GetSpellInfo(spellID).name
                 local questInfo = { { questID = name } }
                 local color = IsSpellKnown(spellID) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, L["LEARN_PROFESSION"], questInfo, color)

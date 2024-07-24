@@ -16,8 +16,9 @@ APR.currentStep.previousState = {}
 
 
 --Local constant
-local FRAME_WIDTH = 235
-local FRAME_HEADER_OPFFSET = -50
+local FRAME_WIDTH = 250
+local FRAME_HEADER_OPFFSET = -30
+local FRAME_ATTACH_OPFFSET = -35
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
 local isDragging = false
 
@@ -27,7 +28,7 @@ local isDragging = false
 
 -- Create the main current step frame
 local CurrentStepFrame = CreateFrame("Frame", "CurrentStepScreenPanel", UIParent, "BackdropTemplate")
-CurrentStepFrame:SetSize(FRAME_WIDTH, 50)
+CurrentStepFrame:SetSize(FRAME_WIDTH, 30)
 CurrentStepFrame:SetFrameStrata("MEDIUM")
 CurrentStepFrame:SetClampedToScreen(true)
 CurrentStepFrame:SetBackdrop({
@@ -44,8 +45,8 @@ CurrentStepFrame_StepHolder:SetAllPoints()
 
 -- Create the frame header
 local CurrentStepFrameHeader = CreateFrame("Frame", "CurrentStepFrameHeader", CurrentStepFrame,
-    "ObjectiveTrackerHeaderTemplate")
-CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- Replace with APR.title if needed
+    "ObjectiveTrackerContainerHeaderTemplate")
+CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- don't replace it with APR.title
 
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
 CurrentStepFrameHeader:SetScript("OnDragStart", function(self)
@@ -65,72 +66,7 @@ CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
         self:GetParent():StartMoving()
         isDragging = true
     elseif button == "RightButton" then
-        local menu = CreateFrame("Frame", "CurrentStepHeaderContextMenu", UIParent, "UIDropDownMenuTemplate")
-        local toggleAddon = ''
-        if APR.settings.profile.enableAddon then
-            toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
-        else
-            toggleAddon = "|c33ecc00f " .. L["ENABLE"] .. "|r"
-        end
-        local menuList = {
-            { text = APR.title,         isTitle = true, notCheckable = true },
-            {
-                text = L["SHOW_MENU"],
-                func = function()
-                    APR.settings:OpenSettings(APR.title)
-                end
-            },
-            {
-                text = L["ROUTE"],
-                func = function()
-                    APR.settings:OpenSettings(L["ROUTE"])
-                end
-            },
-            {
-                text = L["PROFILES"],
-                func = function()
-                    APR.settings:OpenSettings(L["PROFILES"])
-                end
-            },
-            {
-                text = L["ABOUT_HELP"],
-                func = function()
-                    APR.settings:OpenSettings(L["ABOUT_HELP"])
-                end
-            },
-            {
-                text = toggleAddon .. " " .. L["ADDON"],
-                func = function()
-                    APR.settings.profile.enableAddon = not APR.settings.profile.enableAddon
-                    APR.settings:ToggleAddon()
-                end
-            },
-            { text = L["CURRENT_STEP"], isTitle = true, notCheckable = true },
-            {
-                text = L["QLIST_ATTACH_QUESTLOG"],
-                func = function()
-                    APR.settings.profile.currentStepAttachFrameToQuestLog = not APR.settings.profile
-                        .currentStepAttachFrameToQuestLog
-                    APR.currentStep:RefreshCurrentStepFrameAnchor()
-                end
-            },
-            {
-                text = L["LOCK_WINDOW"],
-                func = function()
-                    APR.settings.profile.currentStepLock = not APR.settings.profile
-                        .currentStepLock
-                    APR.currentStep:RefreshCurrentStepFrameAnchor()
-                end
-            },
-            {
-                text = L["RESET_CURRENT_STEP_FRAME_POSITION"],
-                func = function()
-                    APR.currentStep:ResetPosition()
-                end
-            },
-
-        }
-        EasyMenu(menuList, menu, "cursor", 0, 0, "MENU", 5)
+        MenuUtil.CreateContextMenu(UIParent, APR.GetMenu)
     end
 end)
 
@@ -142,40 +78,24 @@ CurrentStepFrameHeader:SetScript("OnMouseUp", function(self, button)
     end
 end)
 
-
 -- Create the minimize button
-local minimizeButton = CreateFrame("Button", "CurrentStepFrameHeaderMinimizeButton", CurrentStepFrame, "BackdropTemplate")
-local minimizeButtonText = minimizeButton:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-
-CurrentStepFrameHeader.MinimizeButton:Hide()
-minimizeButtonText:SetText(APR.title)
-minimizeButtonText:SetPoint("right", minimizeButton, "left", -3, 1)
-minimizeButtonText:Hide()
-
-CurrentStepFrame.MinimizeButton = minimizeButton
-minimizeButton:SetSize(16, 16)
-minimizeButton:SetPoint("topright", CurrentStepFrameHeader, "topright", 0, -4)
-minimizeButton:SetScript("OnClick", function()
-    if (CurrentStepFrame.collapsed) then
+CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
+    if CurrentStepFrame.collapsed then
+        APR.currentStep:ButtonShow()
+        APR.currentStep.progressBar:Show()
         APR.currentStep:SetDefaultDisplay()
+        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-collapse-all")
+        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-collapse-all-pressed")
     else
         CurrentStepFrame.collapsed = true
-        minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0, 0.5)
-        minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0, 0.5)
         CurrentStepFrame_StepHolder:Hide()
-        CurrentStepFrameHeader:Hide()
-        minimizeButtonText:Show()
-        minimizeButtonText:SetText(APR.title)
         APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
+        APR.currentStep:ButtonHide()
+        APR.currentStep.progressBar:Hide()
+        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-expand-all")
+        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-expand-all-pressed")
     end
 end)
-
-minimizeButton:SetNormalTexture([[Interface\Buttons\UI-Panel-QuestHideButton]])
-minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
-minimizeButton:SetPushedTexture([[Interface\Buttons\UI-Panel-QuestHideButton]])
-minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
-minimizeButton:SetHighlightTexture([[Interface\Buttons\UI-Panel-MinimizeButton-Highlight]])
-minimizeButton:SetDisabledTexture([[Interface\Buttons\UI-Panel-QuestHideButton-disabled]])
 
 ---------------------------------------------------------------------------------------
 ---------------------------- Function Current Step Frames -----------------------------
@@ -204,12 +124,9 @@ end
 
 function APR.currentStep:SetDefaultDisplay()
     CurrentStepFrame.collapsed = false
-    minimizeButton:GetNormalTexture():SetTexCoord(0, 0.5, 0.5, 1)
-    minimizeButton:GetPushedTexture():SetTexCoord(0.5, 1, 0.5, 1)
     CurrentStepFrame_StepHolder:Show()
     CurrentStepFrameHeader:Show()
-    minimizeButtonText:Hide()
-    APR.currentStep:UpdateBackgroundColorAlpha()
+    self:UpdateBackgroundColorAlpha()
 end
 
 -- Update the frame scale
@@ -233,35 +150,23 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
     if InCombatLockdown() then
         return
     end
-    if (not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInInstanceQuest()) then
+    if not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInInstanceQuest() then
         CurrentStepScreenPanel:Hide()
         return
     end
 
-    if (APR.settings.profile.currentStepAttachFrameToQuestLog) then
+    if APR.settings.profile.currentStepAttachFrameToQuestLog then
         CurrentStepScreenPanel:EnableMouse(false)
         CurrentStepScreenPanel:ClearAllPoints()
         CurrentStepFrame:SetScale(1)
 
-        for i = 1, ObjectiveTrackerFrame:GetNumPoints() do
-            local point, relativeTo, relativePoint, xOfs, yOfs = ObjectiveTrackerFrame:GetPoint(i)
-            CurrentStepScreenPanel:SetPoint(point, relativeTo, relativePoint, -10 + xOfs,
-                yOfs + FRAME_STEP_HOLDER_HEIGHT - 40)
+        if APR.currentStep.FrameAttachToModule then
+            CurrentStepScreenPanel:SetPoint("TOP", APR.currentStep.FrameAttachToModule, "BOTTOM", 0, FRAME_ATTACH_OPFFSET)
+        elseif ObjectiveTrackerFrame.Header then
+            CurrentStepScreenPanel:SetPoint("TOP", ObjectiveTrackerFrame.Header, "BOTTOM", 0, FRAME_ATTACH_OPFFSET)
         end
-
-        if (APR.currentStep.FrameAttachToModule) then
-            CurrentStepScreenPanel:ClearAllPoints()
-            CurrentStepScreenPanel:SetPoint("top", APR.currentStep.FrameAttachToModule.Header, "bottom", 0,
-                -APR.currentStep.FrameHeight +
-                (FRAME_STEP_HOLDER_HEIGHT == FRAME_HEADER_OPFFSET and 0 or FRAME_STEP_HOLDER_HEIGHT) + 20)
-        end
-
-        CurrentStepFrameHeader:ClearAllPoints()
-        CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -20)
-
-        CurrentStepScreenPanel:Show()
     else
-        if (not APR.settings.profile.currentStepLock) then
+        if not APR.settings.profile.currentStepLock then
             CurrentStepScreenPanel:EnableMouse(true)
         else
             CurrentStepScreenPanel:EnableMouse(false)
@@ -269,12 +174,11 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
 
         LibWindow.RestorePosition(CurrentStepScreenPanel)
         self:UpdateFrameScale()
-
-        CurrentStepFrameHeader:ClearAllPoints()
-        CurrentStepFrameHeader:SetPoint("bottom", CurrentStepFrame, "top", 0, -20)
-
-        CurrentStepScreenPanel:Show()
     end
+    CurrentStepFrameHeader:ClearAllPoints()
+    CurrentStepFrameHeader:SetPoint("BOTTOM", CurrentStepFrame, "TOP", 0, -1)
+
+    CurrentStepScreenPanel:Show()
 end
 
 -- Reset the frame position
@@ -285,38 +189,27 @@ function APR.currentStep:ResetPosition()
 end
 
 -- Hook on update for ObjectiveTrackerFrame (quests log)
-local On_ObjectiveTracker_Update = function()
-    local blizzObjectiveTracker = ObjectiveTrackerFrame
-    if (not blizzObjectiveTracker.initialized) then
-        return
-    end
+hooksecurefunc(ObjectiveTrackerFrame, "Update",
+    function()
+        if not ObjectiveTrackerFrame and not CurrentStepScreenPanel then
+            return
+        end
 
-    APR.currentStep.FrameAttachToModule = nil
+        local modules = ObjectiveTrackerFrame.modules
+        local lastModule = nil
 
-    if (blizzObjectiveTracker.collapsed) then
-        APR.currentStep.FrameHeight = 20
-    else
-        for moduleId = #blizzObjectiveTracker.MODULES_UI_ORDER, 1, -1 do
-            local module = blizzObjectiveTracker.MODULES_UI_ORDER[moduleId]
-            if (module.Header:IsShown()) then
-                APR.currentStep.FrameAttachToModule = module
-                APR.currentStep.FrameHeight = module.contentsHeight
-                break
+        if modules then
+            for i = #modules, 1, -1 do
+                if modules[i]:IsShown() then
+                    lastModule = modules[i]
+                    break
+                end
             end
         end
-    end
 
-    APR.currentStep:RefreshCurrentStepFrameAnchor()
-end
-
-hooksecurefunc("ObjectiveTracker_Update", function(reason, id)
-    On_ObjectiveTracker_Update()
-    CurrentStepFrameHeader.Text:SetText(APR.title)
-end)
-
-ObjectiveTrackerFrame.HeaderMenu.MinimizeButton:HookScript("OnClick", function()
-    On_ObjectiveTracker_Update()
-end)
+        APR.currentStep.FrameAttachToModule = lastModule
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
+    end)
 
 -- Helper function to create a button
 local function CreateButton(name, parent, width, height, text, script)
@@ -340,7 +233,7 @@ function APR.currentStep:PreviousNextStepButton()
         function()
             APR.command:SlashCmd('rollback')
         end)
-    rollbackButton:SetPoint("BOTTOMLEFT", CurrentStepFrameHeader, "BOTTOMLEFT", 5, -30)
+    rollbackButton:SetPoint("BOTTOMLEFT", CurrentStepFrameHeader, "BOTTOMLEFT", 10, -30)
     rollbackButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Up]])
     rollbackButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Down]])
     rollbackButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled]])
@@ -351,12 +244,22 @@ function APR.currentStep:PreviousNextStepButton()
         function()
             APR.command:SlashCmd('skip')
         end)
-    skipButton:SetPoint("BOTTOMRIGHT", CurrentStepFrameHeader, "BOTTOMRIGHT", -5, -30)
+    skipButton:SetPoint("BOTTOMRIGHT", CurrentStepFrameHeader, "BOTTOMRIGHT", -10, -30)
     skipButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Up]])
     skipButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Down]])
     skipButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
     skipButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
     CurrentStepFrame_StepHolder.skipButton = skipButton
+
+    self.ButtonHide = function()
+        rollbackButton:Hide()
+        skipButton:Hide()
+    end
+
+    self.ButtonShow = function()
+        rollbackButton:Show()
+        skipButton:Show()
+    end
 
     self.ButtonDisable = function()
         rollbackButton:Disable()
@@ -386,7 +289,7 @@ function APR.currentStep:ProgressBar(key, total, current)
     if not self.progressBar then
         local progressBar = CreateFrame("StatusBar", "CurrentStepFrame_StepHolder_ProgressBar", CurrentStepFrameHeader,
             "BackdropTemplate")
-        progressBar:SetSize(155, 20)
+        progressBar:SetSize(175, 20)
         progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
         progressBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
         progressBar:SetStatusBarColor(unpack(APR.Color.blue))
@@ -625,8 +528,8 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
             local itemName, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
             return itemName, itemTexture
         else
-            local name, _, icon = GetSpellInfo(itemID)
-            return name, icon
+            local spellInfo = C_Spell.GetSpellInfo(itemID)
+            return spellInfo.name, spellInfo.iconID
         end
     end
     local iconName, iconTexture = iconName()
@@ -705,7 +608,58 @@ end
 
 --- Disable Button, Reset ProgressBar and Remove all quest and extra line
 function APR.currentStep:Reset()
+    self:ButtonShow()
     self:ButtonDisable()
     self:ProgressBar()
     self:RemoveQuestStepsAndExtraLineTexts()
+end
+
+function APR.GetMenu(owner, rootDescription)
+    local toggleAddon = ''
+    if APR.settings.profile.enableAddon then
+        toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
+    else
+        toggleAddon = "|c33ecc00f " .. L["ENABLE"] .. "|r"
+    end
+
+    rootDescription:CreateTitle(APR.title)
+
+    rootDescription:CreateButton(L["SHOW_MENU"], function()
+        APR.settings:OpenSettings(APR.title)
+    end)
+
+    rootDescription:CreateButton(L["ROUTE"], function()
+        APR.settings:OpenSettings(L["ROUTE"])
+    end)
+
+    rootDescription:CreateButton(L["PROFILES"], function()
+        APR.settings:OpenSettings(L["PROFILES"])
+    end)
+
+    rootDescription:CreateButton(L["ABOUT_HELP"], function()
+        APR.settings:OpenSettings(L["ABOUT_HELP"])
+    end)
+
+    rootDescription:CreateButton(toggleAddon .. " " .. L["ADDON"], function()
+        APR.settings.profile.enableAddon = not APR.settings.profile.enableAddon
+        APR.settings:ToggleAddon()
+    end)
+
+    rootDescription:CreateDivider()
+    rootDescription:CreateTitle(L["CURRENT_STEP"])
+
+    rootDescription:CreateButton(L["QLIST_ATTACH_QUESTLOG"], function()
+        APR.settings.profile.currentStepAttachFrameToQuestLog = not APR.settings.profile
+            .currentStepAttachFrameToQuestLog
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
+    end)
+
+    rootDescription:CreateButton(L["LOCK_WINDOW"], function()
+        APR.settings.profile.currentStepLock = not APR.settings.profile.currentStepLock
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
+    end)
+
+    rootDescription:CreateButton(L["RESET_CURRENT_STEP_FRAME_POSITION"], function()
+        APR.currentStep:ResetPosition()
+    end)
 end

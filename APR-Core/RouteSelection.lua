@@ -10,7 +10,7 @@ APR.RouteSelection = APR:NewModule("RouteSelection")
 ---------------------------------------------------------------------------------------
 
 local RouteSelectionFrame = CreateFrame("Frame", "RouteSelectionPanel", UIParent, "BackdropTemplate")
-RouteSelectionFrame:SetSize(250, 75)
+RouteSelectionFrame:SetSize(250, 55)
 RouteSelectionFrame:SetFrameStrata("LOW")
 RouteSelectionFrame:SetClampedToScreen(true)
 RouteSelectionFrame:SetBackdrop({
@@ -22,24 +22,28 @@ RouteSelectionFrame:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
 
 -- Create the frame header
 local RouteSelectionFrameHeader = CreateFrame("Frame", "RouteSelectionFrameHeader", RouteSelectionFrame,
-    "ObjectiveTrackerHeaderTemplate")
-RouteSelectionFrameHeader:SetPoint("bottom", RouteSelectionFrame, "top", 0, -20)
+    "ObjectiveTrackerContainerHeaderTemplate")
+RouteSelectionFrameHeader:SetPoint("bottom", RouteSelectionFrame, "top", 0, -1)
 RouteSelectionFrameHeader.Text:SetText(L["ROUTE_SELECTION"])
-RouteSelectionFrameHeader.MinimizeButton:Hide()
-
--- Close button
-local closeButton = CreateFrame("Button", "RouteSelectionFrameCloseButton", RouteSelectionFrame, "UIPanelCloseButton")
-closeButton:SetSize(16, 16)
-closeButton:SetPoint("topright", RouteSelectionFrame, "topright", 0, 0)
-closeButton:SetScript("OnClick", function()
+RouteSelectionFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
+RouteSelectionFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
+RouteSelectionFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
     RouteSelectionPanel:Hide()
     APRData[APR.PlayerID].FirstLoad = false
+end)
+RouteSelectionFrameHeader:SetScript("OnMouseDown", function(self, button)
+    self:GetParent():StartMoving()
+end)
+
+RouteSelectionFrameHeader:SetScript("OnMouseUp", function(self, button)
+    self:GetParent():StopMovingOrSizing()
+    LibWindow.SavePosition(RouteSelectionPanel)
 end)
 
 -- Open settings button
 local openSettingsButton = CreateFrame("Button", "OpenSettingsButton", RouteSelectionFrame, "UIPanelButtonTemplate")
 openSettingsButton:SetSize(150, 25)
-openSettingsButton:SetPoint("center", RouteSelectionFrame, "center", 0, -7)
+openSettingsButton:SetPoint("center", RouteSelectionFrame, "center", 0, 0)
 openSettingsButton:SetText(L["OPEN_ROUTE_OPTIONS"])
 
 openSettingsButton.Text:SetWordWrap(true)

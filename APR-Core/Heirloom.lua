@@ -28,15 +28,22 @@ local HeirloomFrame_body = CreateFrame("Frame", "HeirloomFrame_body", HeirloomFr
 HeirloomFrame_body:SetAllPoints()
 
 -- Create the frame header
-local HeirloomFrameHeader = CreateFrame("Frame", "HeirloomFrameHeader", HeirloomFrame, "ObjectiveTrackerHeaderTemplate")
-HeirloomFrameHeader:SetPoint("bottom", HeirloomFrame, "top", 0, -20)
+local HeirloomFrameHeader = CreateFrame("Frame", "HeirloomFrameHeader", HeirloomFrame,
+    "ObjectiveTrackerContainerHeaderTemplate")
+HeirloomFrameHeader:SetPoint("bottom", HeirloomFrame, "top", 0, -1)
 HeirloomFrameHeader.Text:SetText(L["HEIRLOOM"])
-HeirloomFrameHeader.MinimizeButton:Hide()
+HeirloomFrameHeader:SetScript("OnMouseDown", function(self, button)
+    self:GetParent():StartMoving()
+end)
 
-local closeButton = CreateFrame("Button", "HeirloomFrameCloseButton", HeirloomFrame, "UIPanelCloseButton")
-closeButton:SetSize(16, 16)
-closeButton:SetPoint("topright", HeirloomFrame, "topright", 0, 0)
-closeButton:SetScript("OnClick", function()
+HeirloomFrameHeader:SetScript("OnMouseUp", function(self, button)
+    self:GetParent():StopMovingOrSizing()
+    LibWindow.SavePosition(HeirloomPanel)
+end)
+
+HeirloomFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
+HeirloomFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
+HeirloomFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
     HeirloomPanel:Hide()
     APR.settings.profile.heirloomWarning = true
 end)
@@ -50,7 +57,6 @@ function APR.heirloom:HeirloomOnInit()
     LibWindow.RegisterConfig(HeirloomPanel, APR.settings.profile.heirloomFrame)
     HeirloomPanel.RegisteredForLibWindow = true
     LibWindow.MakeDraggable(HeirloomPanel)
-
     -- Set default display
     self:SetDefaultDisplay()
     self:RefreshFrameAnchor()
@@ -188,7 +194,7 @@ function APR.heirloom:AddHeirloomIcons()
     }
 
     local xOffset = 5
-    local yOffset = -22.5
+    local yOffset = -5
     local maxElementsPerLine = 4
     local elementsCount = 0
 
@@ -220,5 +226,6 @@ function APR.heirloom:AddHeirloomIcons()
             end
         end
     end
-    HeirloomFrame:SetSize(250, (elementsCount > 4 and 55 or 0) + (-yOffset))
+
+    HeirloomFrame:SetSize(250, 55 + (-yOffset))
 end

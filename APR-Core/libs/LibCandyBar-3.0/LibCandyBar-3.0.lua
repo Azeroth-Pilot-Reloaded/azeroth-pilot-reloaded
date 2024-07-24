@@ -21,7 +21,7 @@ local CreateFrame, error, setmetatable, UIParent = CreateFrame, error, setmetata
 if not LibStub then error("LibCandyBar-3.0 requires LibStub.") end
 local cbh = LibStub:GetLibrary("CallbackHandler-1.0")
 if not cbh then error("LibCandyBar-3.0 requires CallbackHandler-1.0") end
-local lib = LibStub:NewLibrary("LibCandyBar-3.0", 101) -- Bump minor on changes
+local lib = LibStub:NewLibrary("LibCandyBar-3.0", 104) -- Bump minor on changes
 if not lib then return end
 lib.callbacks = lib.callbacks or cbh:New(lib)
 local cb = lib.callbacks
@@ -54,6 +54,9 @@ local function stopBar(bar)
 	bar.funcs = nil
 	bar.running = nil
 	bar.paused = nil
+	bar.pauseWhenDone = nil
+	bar.timeCallback = nil
+	bar.timeCallbackTrigger = nil
 	bar:Hide()
 	bar:SetParent(UIParent)
 end
@@ -66,7 +69,15 @@ local function barUpdate(updater)
 	local bar = updater.parent
 	local t = GetTime()
 	if t >= bar.exp then
-		bar:Stop()
+		if bar.pauseWhenDone then
+			bar:Pause()
+			bar.candyBarBar:SetMinMaxValues(-1, 0)
+			bar.candyBarBar:SetValue(0)
+			bar:SetDuration(0)
+			bar:SetTimeVisibility(false)
+		else
+			bar:Stop()
+		end
 	else
 		local time = bar.exp - t
 		bar.remaining = time
@@ -88,6 +99,12 @@ local function barUpdate(updater)
 			bar.candyBarDuration:SetFormattedText(tformat4, time)
 		end
 
+		if bar.timeCallback and time < bar.timeCallbackTrigger then
+			bar.timeCallbackTrigger = 0
+			bar.timeCallback(bar)
+			bar.timeCallback = nil
+		end
+
 		if bar.funcs then
 			for i = 1, #bar.funcs do
 				bar.funcs[i](bar)
@@ -104,7 +121,15 @@ local function barUpdateApprox(updater)
 	local bar = updater.parent
 	local t = GetTime()
 	if t >= bar.exp then
-		bar:Stop()
+		if bar.pauseWhenDone then
+			bar:Pause()
+			bar.candyBarBar:SetMinMaxValues(-1, 0)
+			bar.candyBarBar:SetValue(0)
+			bar:SetDuration(0)
+			bar:SetTimeVisibility(false)
+		else
+			bar:Stop()
+		end
 	else
 		local time = bar.exp - t
 		bar.remaining = time
@@ -124,6 +149,12 @@ local function barUpdateApprox(updater)
 			bar.candyBarDuration:SetFormattedText(atformat3, time)
 		else -- 10 seconds to one minute
 			bar.candyBarDuration:SetFormattedText(atformat4, time)
+		end
+
+		if bar.timeCallback and time < bar.timeCallbackTrigger then
+			bar.timeCallbackTrigger = 0
+			bar.timeCallback(bar)
+			bar.timeCallback = nil
 		end
 
 		if bar.funcs then
@@ -232,6 +263,21 @@ function barPrototype:SetShadowColor(...)
 	self.candyBarLabel:SetShadowColor(...)
 	self.candyBarDuration:SetShadowColor(...)
 end
+--- Sets the shadow offset of the bar label and bar duration text.
+-- @number offsetX
+-- @number offsetY
+function barPrototype:SetShadowOffset(...)
+	self.candyBarLabel:SetShadowOffset(...)
+	self.candyBarDuration:SetShadowOffset(...)
+end
+--- Sets the font of the bar label and bar duration text.
+-- @string fontFile
+-- @number height
+-- @string flags
+function barPrototype:SetFont(...)
+	self.candyBarLabel:SetFont(...)
+	self.candyBarDuration:SetFont(...)
+end
 --- Sets the texture of the bar.
 -- This should only be needed on running bars that get changed on the fly.
 -- @param texture Path to the bar texture.
@@ -323,6 +369,19 @@ function barPrototype:SetLabelVisibility(bool)
 	else
 		self.candyBarLabel:Hide()
 	end
+end
+--- Sets wether or not the bar should pause when its done.
+-- It will show as full and the time label will be hidden
+-- @param bool true to pause the bar when done
+function barPrototype:SetPauseWhenDone(bool)
+	self.pauseWhenDone = bool
+end
+--- Sets a one-time callback to fire after reaching a certain time remaining on the bar
+-- @param func The callback function to fire
+-- @number time The time the bar will have remaining when the callback triggers
+function barPrototype:SetTimeCallback(func, time)
+	self.timeCallback = func
+	self.timeCallbackTrigger = time
 end
 --- Sets the duration of the bar.
 -- This can also be used while the bar is running to adjust the time remaining, within the bounds of the original duration.
@@ -490,6 +549,7 @@ function lib:New(texture, width, height)
 
 	bar:SetBackgroundColor(0.5, 0.5, 0.5, 0.3)
 	bar:SetColor(0.5, 0.5, 0.5, 1)
+	bar:SetTextColor(1,1,1,1)
 	bar:ClearAllPoints()
 	SetWidth(bar, width)
 	SetHeight(bar, height)
@@ -498,21 +558,15 @@ function lib:New(texture, width, height)
 	bar:SetAlpha(1)
 	bar:SetClampedToScreen(false)
 	bar:EnableMouse(false)
+	bar:SetFont(_fontName, _fontSize)
+	bar:SetShadowOffset(_fontShadowX, _fontShadowY)
+	bar:SetShadowColor(_fontShadowR, _fontShadowG, _fontShadowB, _fontShadowA)
 
-	bar.candyBarLabel:SetTextColor(1,1,1,1)
 	bar.candyBarLabel:SetJustifyH("LEFT")
 	bar.candyBarLabel:SetJustifyV("MIDDLE")
-	bar.candyBarLabel:SetFont(_fontName, _fontSize)
-	bar.candyBarLabel:SetShadowOffset(_fontShadowX, _fontShadowY)
-	bar.candyBarLabel:SetShadowColor(_fontShadowR, _fontShadowG, _fontShadowB, _fontShadowA)
 
-	bar.candyBarDuration:SetTextColor(1,1,1,1)
 	bar.candyBarDuration:SetJustifyH("RIGHT")
 	bar.candyBarDuration:SetJustifyV("MIDDLE")
-	bar.candyBarDuration:SetFont(_fontName, _fontSize)
-	bar.candyBarDuration:SetShadowOffset(_fontShadowX, _fontShadowY)
-	bar.candyBarDuration:SetShadowColor(_fontShadowR, _fontShadowG, _fontShadowB, _fontShadowA)
-
 
 	bar:SetLabel()
 	bar:SetIcon()
