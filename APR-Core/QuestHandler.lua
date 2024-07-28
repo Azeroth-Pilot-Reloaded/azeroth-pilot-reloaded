@@ -610,7 +610,7 @@ local function APR_UpdateStep()
                     "Done")
             end
         elseif (steps.WarMode) then
-            if (C_QuestLog.IsQuestFlaggedCompleted(steps.WarMode) or C_PvP.IsWarModeDesired() == true) then
+            if C_QuestLog.IsQuestFlaggedCompleted(steps.WarMode) or C_PvP.IsWarModeActive() then
                 if APR.settings.profile.debug then
                     print("APR.UpdateStep:WarMode:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
@@ -618,7 +618,7 @@ local function APR_UpdateStep()
                 return
             elseif APR.IsInRouteZone then
                 APR.currentStep:AddQuestSteps(steps.WarMode, L["TURN_ON_WARMODE"], "WarMode")
-                if (C_PvP.IsWarModeDesired() == false and C_PvP.CanToggleWarModeInArea()) then
+                if not C_PvP.IsWarModeActive() and C_PvP.CanToggleWarModeInArea() then
                     C_PvP.ToggleWarMode()
                     APR.BookingList["UpdateStep"] = true
                 end
@@ -721,7 +721,36 @@ local function APR_UpdateStep()
                 APR:UpdateNextStep()
                 return
             end
+        elseif (steps.GossipOptionIDs or steps.GossipOptionID) and steps.NPCIDs then
+            APR.currentStep:AddExtraLineText("TALK_NPC-" .. next(steps.NPCIDs), L["TALK_NPC"])
         end
+
+        if steps.Scenario then
+            local scenario = steps.Scenario
+            local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
+            if not scenarioInfo then
+                local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
+                APR.currentStep:AddExtraLineText("SCENARIO-" .. scenario.criteriaID,
+                    format(L["SCENARIO_ERROR"], scenarioStepInfo.title))
+            else
+                local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
+                if criteriaInfo.completed then
+                    APR:UpdateNextStep()
+                    return
+                else
+                    APR.currentStep:AddQuestSteps(scenario.scenarioID, criteriaInfo.description, scenario.criteriaID)
+                end
+            end
+            -- elseif steps.ScenarioDone then
+            --     local scenario = steps.Scenario
+            --     local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
+            --     if not scenarioInfo then
+            --         local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
+            --         APR.currentStep:AddExtraLineText("SCENARIO-" .. scenario.criteriaID,
+            --             foramt(L["SCENARIO_ERROR"], scenarioStepInfo.title))
+            --     end
+        end
+
         if steps.DroppableQuest then
             local questData = steps.DroppableQuest
             local Qid = questData.Qid
@@ -856,6 +885,24 @@ function APR.CheckWaypointText()
     end
 
     return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
+end
+
+function APR:UpdateScenario(scenario)
+    if APR.settings.profile.debug then
+        print("Function: UpdateScenario()")
+    end
+    local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
+    if not scenarioInfo then
+        APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
+        local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
+
+        APR.currentStep:AddExtraLineText("SCENARIO-" .. scenario.criteriaID,
+            foramt(L["SCENARIO_ERROR"], scenarioStepInfo.title))
+    else
+        APR.currentStep:RemoveQuestStepsAndExtraLineTexts(true)
+        local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
+        APR.currentStep:UpdateQuestStep(scenario.scenarioID, criteriaInfo.description, scenario.criteriaID)
+    end
 end
 
 local function APR_UpdateQuest()
@@ -1139,6 +1186,7 @@ APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:RegisterEvent("QUEST_PROGRESS")
 APR_QH_EventFrame:RegisterEvent("QUEST_REMOVED")
 APR_QH_EventFrame:RegisterEvent("REQUEST_CEMETERY_LIST_RESPONSE")
+APR_QH_EventFrame:RegisterEvent("SCENARIO_CRITERIA_UPDATE")
 APR_QH_EventFrame:RegisterEvent("TAXIMAP_OPENED")
 APR_QH_EventFrame:RegisterEvent("UI_INFO_MESSAGE")
 APR_QH_EventFrame:RegisterEvent("UNIT_AURA")
@@ -1148,9 +1196,18 @@ APR_QH_EventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 APR_QH_EventFrame:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
+    if not APR:IsInstanceWithUI() then
+        if APR.settings.profile.debug then
+            print("APR: EventFrame - IsInstanceWithUI : ", APR:IsInstanceWithUI())
+        end
+        APR.settings:ToggleAddon()
+        return
+    end
+
     if APR.settings.profile.showEvent then
         print("EVENT: QuestHandler - ", event)
     end
+
     if not APR.settings.profile.enableAddon then
         return
     end
@@ -1687,6 +1744,24 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.BookingList["UpdateMapId"] = true
         APR.Arrow.currentStep = 0
         APR.BookingList["SetQPTT"] = true
+    end
+
+    if event == "SCENARIO_CRITERIA_UPDATE" then
+        local criteriaID = ...
+        if steps and steps.Scenario then
+            local stepInfo = C_ScenarioInfo.GetScenarioStepInfo()
+            for i = 1, stepInfo.numCriteria do
+                local criteria = C_ScenarioInfo.GetCriteriaInfoByStep(stepInfo.stepID, i)
+                if criteria.criteriaID == criteriaID then
+                    if criteria.completed then
+                        APR:UpdateNextStep()
+                    else
+                        APR:UpdateScenario(steps.Scenario)
+                    end
+                    break
+                end
+            end
+        end
     end
 
     if (event == "TAXIMAP_OPENED") then

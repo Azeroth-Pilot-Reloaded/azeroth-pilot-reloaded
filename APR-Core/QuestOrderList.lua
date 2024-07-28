@@ -124,7 +124,7 @@ function APR.questOrderList:QuestOrderListFrameOnInit()
 end
 
 function APR.questOrderList:RefreshFrameAnchor()
-    if (not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInInstanceQuest()) then
+    if (not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInstanceWithUI()) then
         QuestOrderListPanel:Hide()
         return
     end
@@ -287,7 +287,7 @@ function APR.questOrderList:UpdateFrameContents()
 end
 
 function APR.questOrderList:AddStepFromRoute(forceRendering)
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or not APR.routeconfig:HasRouteInCustomPaht() or not APR:IsInInstanceQuest() then
+    if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or not APR.routeconfig:HasRouteInCustomPaht() or not APR:IsInstanceWithUI() then
         self:RemoveSteps()
         APR.questOrderList.questID = nil
         return
@@ -508,6 +508,32 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 else
                     AddStepFrameWithQuest(stepIndex, L["TURN_IN_Q"], questInfo, "gray")
                 end
+            elseif step.Scenario then
+                local scenario = step.Scenario
+                local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
+                if not scenarioInfo then
+                    if CurStep > stepIndex then
+                        AddStepFrame(stepIndex, L["SCENARIO"], "green")
+                    else
+                        local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
+                        local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario
+                            .criteriaIndex)
+                        local questInfo = { { questID = scenarioStepInfo.title, questName = criteriaInfo.description } }
+                        AddStepFrameWithQuest(stepIndex, L["SCENARIO"], questInfo, "gray")
+                    end
+                else
+                    local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
+                    local color = criteriaInfo.completed or CurStep > stepIndex and "green" or "gray";
+                    local questInfo = { { questID = scenario.criteriaIndex, questName = criteriaInfo.description } }
+                    AddStepFrameWithQuest(stepIndex,
+                        L["SCENARIO"] .. " - " .. scenarioInfo.name, questInfo, color)
+                end
+            elseif step.ScenarioDone then
+                local scenarioID = step.ScenarioDone
+                local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
+                local questInfo = { { questID = scenarioID, questName = scenarioInfo and scenarioInfo.name or '' } }
+                local color = CurStep > stepIndex and "green" or "gray"
+                AddStepFrameWithQuest(stepIndex, L["SCENARIO_DONE"], questInfo, color)
             elseif step.Waypoint then
                 local questID = step.Waypoint
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
@@ -539,9 +565,13 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local color = IsSpellKnown(spellID) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, L["LEARN_PROFESSION"], questInfo, color)
             elseif step.WarMode then
-                AddStepFrame(stepIndex, L["TURN_ON_WARMODE"], "gray")
+                local color = C_PvP.IsWarModeActive() and "green" or "gray"
+                AddStepFrame(stepIndex, L["TURN_ON_WARMODE"], color)
             elseif step.Grind then
-                AddStepFrame(stepIndex, L["GRIND"] .. " " .. step.Grind, "gray")
+                local color = UnitLevel("player") <= step.Grind and "green" or "gray"
+                AddStepFrame(stepIndex, L["GRIND"] .. " " .. step.Grind, color)
+            elseif (step.GossipOptionIDs or step.GossipOptionID) and step.NPCIDs then
+                AddStepFrame(stepIndex, L["TALK_NPC"], "gray")
             elseif step.ZoneDoneSave then
                 AddStepFrame(stepIndex, L["ROUTE_COMPLETED"], "gray")
             end

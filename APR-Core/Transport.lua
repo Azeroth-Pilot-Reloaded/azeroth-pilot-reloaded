@@ -20,7 +20,7 @@ function APR.transport:GetMeToRightZone()
         APR.routeconfig:CheckIsCustomPathEmpty()
         return
     end
-    if not APR:IsInInstanceQuest() or not APRCustomPath[APR.PlayerID] then
+    if not APR:IsInstanceWithUI() or not APRCustomPath[APR.PlayerID] then
         return
     end
 

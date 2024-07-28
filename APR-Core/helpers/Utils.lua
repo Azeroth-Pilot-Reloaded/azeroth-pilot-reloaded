@@ -141,13 +141,22 @@ function APR:Love()
     end
 end
 
-function APR:IsInInstanceQuest()
-    local steps = APR.ActiveRoute and self:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
-    local isIntance, type = IsInInstance()
-    if steps and steps.InstanceQuest then
-        return isIntance and type == "scenario"
+--- Check if we keep UI in instance
+--- @return boolean true by default for open world
+function APR:IsInstanceWithUI()
+    local steps = APR.ActiveRoute and self:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
+    local isInstance, instanceType = IsInInstance()
+
+    if isInstance then
+        return (steps and steps.InstanceQuest and instanceType == "scenario") or false
     end
-    return not isIntance
+
+    return true
+end
+
+function APR:IsScenarioInstance()
+    local isIntance, type = IsInInstance()
+    return isIntance and type == "scenario"
 end
 
 function APR:getStatus()

@@ -250,7 +250,7 @@ function APR.party:SendGroupMessage(forceSend)
     forceSend = forceSend or false
     if not APR.ActiveRoute then return end
     local curStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if ((IsInGroup(LE_PARTY_CATEGORY_HOME) and curStep and (self.LastSent ~= curStep)) or forceSend) or not APR:IsInInstanceQuest() then
+    if ((IsInGroup(LE_PARTY_CATEGORY_HOME) and curStep and (self.LastSent ~= curStep)) or forceSend) or not APR:IsInstanceWithUI() then
         local dataToSend = {
             route = APR.ActiveRoute,
             currentStep = curStep,
