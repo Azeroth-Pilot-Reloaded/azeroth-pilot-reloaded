@@ -49,7 +49,7 @@ local function GetConfigOptionTable()
             },
             WoD_prefab = {
                 order = 1.2,
-                name = "Warlords of Draenor - " .. L["ONLY"],
+                name = "Warlords of Draenor",
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -63,7 +63,7 @@ local function GetConfigOptionTable()
             },
             BFA_prefab = {
                 order = 1.3,
-                name = "Battle for Azeroth - " .. L["ONLY"],
+                name = "Battle for Azeroth",
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -76,7 +76,7 @@ local function GetConfigOptionTable()
             },
             SL_prefab = {
                 order = 1.4,
-                name = "Shadowlands - " .. L["ONLY"],
+                name = "Shadowlands",
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -89,16 +89,12 @@ local function GetConfigOptionTable()
             },
             DF_prefab = {
                 order = 1.5,
-                name = "Dragonflight - " .. L["ONLY"],
+                name = "Dragonflight",
                 type = "execute",
                 width = optionsWidth,
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetDFPrefab()
-                end,
-                hidden = function()
-                    return (APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"]) or
-                        not next(APR.RouteList.Dragonflight)
                 end
             },
             reset_custom_path = {
