@@ -729,9 +729,13 @@ local function APR_UpdateStep()
             local scenario = steps.Scenario
             local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
             if not scenarioInfo then
-                local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
-                APR.currentStep:AddExtraLineText("SCENARIO-" .. scenario.criteriaID,
-                    format(L["SCENARIO_ERROR"], scenarioStepInfo.title))
+                if APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID) then
+                    APR:UpdateNextStep()
+                else
+                    local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
+                    APR.currentStep:AddExtraLineText("SCENARIO-" .. scenario.criteriaID,
+                        format(L["SCENARIO_ERROR"], scenarioStepInfo.title))
+                end
             else
                 local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
                 if criteriaInfo.completed then
@@ -741,14 +745,6 @@ local function APR_UpdateStep()
                     APR.currentStep:AddQuestSteps(scenario.scenarioID, criteriaInfo.description, scenario.criteriaID)
                 end
             end
-            -- elseif steps.ScenarioDone then
-            --     local scenario = steps.Scenario
-            --     local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
-            --     if not scenarioInfo then
-            --         local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
-            --         APR.currentStep:AddExtraLineText("SCENARIO-" .. scenario.criteriaID,
-            --             foramt(L["SCENARIO_ERROR"], scenarioStepInfo.title))
-            --     end
         end
 
         if steps.DroppableQuest then
@@ -1749,14 +1745,20 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if event == "SCENARIO_CRITERIA_UPDATE" then
         local criteriaID = ...
         if steps and steps.Scenario then
+            local scenario = steps.Scenario
             local stepInfo = C_ScenarioInfo.GetScenarioStepInfo()
             for i = 1, stepInfo.numCriteria do
                 local criteria = C_ScenarioInfo.GetCriteriaInfoByStep(stepInfo.stepID, i)
                 if criteria.criteriaID == criteriaID then
                     if criteria.completed then
+                        APRScenarioCompleted[APR.PlayerID][scenario.scenarioID] = APRScenarioCompleted[APR.PlayerID]
+                            [scenario.scenarioID] or {}
+                        tinsert(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID],
+                            { stepID = stepInfo.stepID, criteriaID = criteriaID })
+
                         APR:UpdateNextStep()
                     else
-                        APR:UpdateScenario(steps.Scenario)
+                        APR:UpdateScenario(scenario)
                     end
                     break
                 end

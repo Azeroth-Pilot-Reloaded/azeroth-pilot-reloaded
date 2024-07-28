@@ -86,9 +86,11 @@ function APR:OnInitialize()
     APRTaxiNodes = APRTaxiNodes or {}
     APRTaxiNodesTimer = APRTaxiNodesTimer or {}
     APRZoneCompleted = APRZoneCompleted or {}
+    APRScenarioCompleted = APRScenarioCompleted or {}
     APRTaxiNodes[APR.PlayerID] = APRTaxiNodes[APR.PlayerID] or {}
     APRCustomPath[APR.PlayerID] = APRCustomPath[APR.PlayerID] or {}
     APRZoneCompleted[APR.PlayerID] = APRZoneCompleted[APR.PlayerID] or {}
+    APRScenarioCompleted[APR.PlayerID] = APRScenarioCompleted[APR.PlayerID] or {}
 
     -- Init current step frame
     APR.currentStep:CurrentStepFrameOnInit()

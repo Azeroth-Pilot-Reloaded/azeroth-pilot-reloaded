@@ -195,3 +195,13 @@ function APR:IsMoPRemixCharacter()
     local aura = C_UnitAuras.GetPlayerAuraBySpellID(424143)
     return aura ~= nil
 end
+
+function APR:ContainsScenarioStepCriteria(table, stepID, criteriaID)
+    if not table then return false end
+    for _, v in ipairs(table) do
+        if v.stepID == stepID and v.criteriaID == criteriaID then
+            return true
+        end
+    end
+    return false
+end
