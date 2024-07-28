@@ -150,7 +150,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
     if InCombatLockdown() then
         return
     end
-    if not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInInstanceQuest() then
+    if not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInstanceWithUI() then
         CurrentStepScreenPanel:Hide()
         return
     end
@@ -484,7 +484,8 @@ function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
 end
 
 -- Remove all  quest steps and extra line texts
-function APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
+function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
+    removeTextOnly = removeTextOnly or false
     if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
@@ -495,8 +496,10 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
             questContainer = nil
         end
     end
-    ResetList(self.questsList)
-    self.questsList = {}
+    if not removeTextOnly then
+        ResetList(self.questsList)
+        self.questsList = {}
+    end
     ResetList(self.questsExtraTextList)
     self.questsExtraTextList = {}
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET

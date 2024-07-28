@@ -59,7 +59,7 @@ end
 function APR:getStatusReportInfos()
     local coordinates
     local worldCoordinates
-    if not IsInInstance() then
+    if APR:IsInstanceWithUI() and UnitPosition("player") then
         local playerPosition = C_Map.GetPlayerMapPosition(C_Map.GetBestMapForUnit("player"), "player")
         coordinates = APR.coordinate:RoundCoords(playerPosition.x * 100, playerPosition.y * 100, 2)
         local worldPosY, worldPosX = UnitPosition("player")
