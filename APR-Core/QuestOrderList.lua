@@ -528,12 +528,6 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     AddStepFrameWithQuest(stepIndex,
                         L["SCENARIO"] .. " - " .. scenarioInfo.name, questInfo, color)
                 end
-            elseif step.ScenarioDone then
-                local scenarioID = step.ScenarioDone
-                local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
-                local questInfo = { { questID = scenarioID, questName = scenarioInfo and scenarioInfo.name or '' } }
-                local color = CurStep > stepIndex and "green" or "gray"
-                AddStepFrameWithQuest(stepIndex, L["SCENARIO_DONE"], questInfo, color)
             elseif step.Waypoint then
                 local questID = step.Waypoint
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
