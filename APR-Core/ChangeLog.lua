@@ -79,6 +79,22 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+
+        { "v4.1.0", "2024-07-28" },
+        "#Features",
+        "- Support for Scenario Steps",
+        "    - Support for MoP scenarios (no route available)",
+        "    - Support for TWW Delves (no route available due to the temporary removal of beta servers)",
+        "    - Support for instances flagged as scenarios (mainly storyline quests)",
+        "- Adding the ability to have Gossip as main step action (to avoid bugs with the Route Recorder)",
+
+        "#Bug",
+        "- Enable prefab route button for DF",
+
+        { "v4.0.3", "2024-07-26" },
+        "#Bug",
+        "- Fix deprecated version issue",
+
         { "v4.0.2", "2024-07-24" },
         "#Bug",
         "- Fixed ACE dropdown dependency causing lua error",
