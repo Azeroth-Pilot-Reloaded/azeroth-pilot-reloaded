@@ -263,8 +263,22 @@ local function GetConfigOptionTable()
                     },
                 }
             },
-            Custom = {
+            TheWarWithin = {
                 order = 13,
+                name = "The War Within",
+                type = "group",
+                childGroups = "tree",
+                inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "TheWarWithin",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            Custom = {
+                order = 14,
                 name = "Custom",
                 type = "group",
                 childGroups = "tree",

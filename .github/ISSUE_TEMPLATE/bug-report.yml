@@ -22,7 +22,7 @@ body:
       description: What version of World of Warcraft are are you running?
       options:
         - Retail (Default)
-        - Beta (Dragonflight)
+        - Beta (The War Within)
     validations:
       required: true
 

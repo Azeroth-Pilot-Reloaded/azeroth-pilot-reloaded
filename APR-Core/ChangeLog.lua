@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.1.1", "2024-07-28" },
+        "#Route",
+        "- Added TWW section in route settings",
+        "- Added Pre-patch TWW intro route",
 
         { "v4.1.0", "2024-07-28" },
         "#Features",
