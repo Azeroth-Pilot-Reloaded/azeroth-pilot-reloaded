@@ -189,9 +189,9 @@ function APR.map:UpdateMinimapLine()
     end
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if CurStep and APR.ActiveRoute and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] then
-        local steps = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
-        if steps and steps.Coord then
-            PositionMinimapLine(steps.Coord.x, steps.Coord.y)
+        local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
+        if step and step.Coord then
+            PositionMinimapLine(step.Coord.x, step.Coord.y)
             return
         end
     end
@@ -212,31 +212,29 @@ function APR.map:UpdateLine()
     end
 
     local mapID = WorldMapFrame:GetMapID()
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if CurStep and APR.ActiveRoute and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] then
-        local steps = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
-        if steps and steps.Coord then
-            local mapHeight, mapWidth = WorldMapButton:GetHeight(), WorldMapButton:GetWidth()
-            local playerPos = C_Map.GetPlayerMapPosition(mapID, "player")
+    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
 
-            local ox, oy
-            if APR.Arrow.Active then
-                ox, oy = APR:GetPlayerMapPos(mapID, APR.Arrow.y, APR.Arrow.x)
-            else
-                ox, oy = APR:GetPlayerMapPos(mapID, steps.Coord.y, steps.Coord.x)
-            end
-            if not playerPos then
-                self:RemoveMapLine()
-                return
-            end
+    if step and step.Coord then
+        local mapHeight, mapWidth = WorldMapButton:GetHeight(), WorldMapButton:GetWidth()
+        local playerPos = C_Map.GetPlayerMapPosition(mapID, "player")
 
-            MapStartPoint:ClearAllPoints()
-            MapEndPoint:ClearAllPoints()
-            MapStartPoint:SetPoint('CENTER', WorldMapButton, 'TOPLEFT', playerPos.x * mapWidth, playerPos.y * -mapHeight)
-            MapEndPoint:SetPoint('CENTER', WorldMapButton, 'TOPLEFT', ox * mapWidth, oy * -mapHeight)
-            MapLine:Show()
+        local ox, oy
+        if APR.Arrow.Active then
+            ox, oy = APR:GetPlayerMapPos(mapID, APR.Arrow.y, APR.Arrow.x)
+        else
+            ox, oy = APR:GetPlayerMapPos(mapID, step.Coord.y, step.Coord.x)
+        end
+        if not playerPos then
+            self:RemoveMapLine()
             return
         end
+
+        MapStartPoint:ClearAllPoints()
+        MapEndPoint:ClearAllPoints()
+        MapStartPoint:SetPoint('CENTER', WorldMapButton, 'TOPLEFT', playerPos.x * mapWidth, playerPos.y * -mapHeight)
+        MapEndPoint:SetPoint('CENTER', WorldMapButton, 'TOPLEFT', ox * mapWidth, oy * -mapHeight)
+        MapLine:Show()
+        return
     end
 end
 
@@ -275,7 +273,7 @@ function APR.map:CreatePin(index, step, size, color, textColor, textScale)
 
     -- GameTooltip
     -- pinFrame:SetScript("OnEnter", function(self)
-    --     local string, key = APR:GetStepString(step)
+    --     local string, key = APR:GetSteptring(step)
     --     GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
     --     GameTooltip:AddLine(index .. " - " .. string)
     --     GameTooltip:AddLine(step[key],
@@ -348,22 +346,22 @@ function APR.map:AddMapPins()
         local minimapshowNextStepsCount = APR.settings.profile.minimapshowNextStepsCount
         local mapStepDisplayed = 0
         local minimapStepDisplayed = 0
-        for stepIndex, steps in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
-            if steps.Coord and (stepIndex >= CurStep) and (stepIndex <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
+        for stepIndex, step in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
+            if step.Coord and (stepIndex >= CurStep) and (stepIndex <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
                 if not self.pinlist[stepIndex] then
-                    self.pinlist[stepIndex] = self:CreatePin(stepIndex, steps, APR.settings.profile.mapshowNextStepsSize,
+                    self.pinlist[stepIndex] = self:CreatePin(stepIndex, step, APR.settings.profile.mapshowNextStepsSize,
                         APR.settings.profile.mapshowNextStepsColor, APR.settings.profile.mapshowNextStepsColorText,
                         APR.settings.profile.mapshowNextStepsTextScale)
                 end
                 if not self.minimapPinlist[stepIndex] then
-                    self.minimapPinlist[stepIndex] = self:CreatePin(stepIndex, steps,
+                    self.minimapPinlist[stepIndex] = self:CreatePin(stepIndex, step,
                         APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile.minimapshowNextStepsColor,
                         APR.settings.profile.minimapshowNextStepsColorText,
                         APR.settings.profile.minimapshowNextStepsTextScale)
                 end
 
-                local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, steps.Coord.y,
-                    steps.Coord.x)
+                local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, step.Coord.y,
+                    step.Coord.x)
                 if x and y then
                     if APR.settings.profile.mapshowNextSteps and needDisplayWorldPin then
                         if mapshowNextStepsCount > mapStepDisplayed then

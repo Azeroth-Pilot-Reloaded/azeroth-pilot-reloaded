@@ -48,7 +48,7 @@ function GetCurrentStepInfo()
     local currentStepID = APRData[APR.PlayerID][APR.ActiveRoute]
     local routeStep = NO_ACTIVE
     if currentStepID then
-        local step = APR:GetSteps(currentStepID)
+        local step = APR:GetStep(currentStepID)
         local _, key = APR:GetStepString(step)
         routeStep = currentStepID .. ", " .. key
     end

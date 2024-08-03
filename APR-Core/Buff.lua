@@ -180,10 +180,10 @@ end
 APR.Buff.Event = CreateFrame("Frame")
 APR.Buff.Event:RegisterEvent("UNIT_AURA")
 APR.Buff.Event:SetScript("OnEvent", function(self, event, ...)
-    local steps = APR:GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
+    local step = APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
     if event == "UNIT_AURA" then
         local target, info = ...;
-        if steps and steps.Buffs then
+        if step and step.Buffs then
             if info.addedAuras then
                 for _, aura in pairs(info.addedAuras) do
                     APR.Buff:UpdateBuffIcon(aura)

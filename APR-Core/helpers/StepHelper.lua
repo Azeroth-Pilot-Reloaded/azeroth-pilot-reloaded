@@ -71,17 +71,17 @@ function APR:PreviousQuestStep()
 
     while true do
         userMapData[activeMap] = userMapData[activeMap] - 1
-        local steps = questStepList[userMapData[activeMap]]
+        local step = questStepList[userMapData[activeMap]]
 
-        if not ((steps.Faction and steps.Faction ~= faction) or
-                (steps.Race and steps.Race ~= race) or
-                (steps.Gender and steps.Gender ~= gender) or
-                (steps.Class and steps.Class ~= className) or
-                (steps.HasAchievement and not self:HasAchievement(steps.HasAchievement)) or
-                (steps.DontHaveAchievement and self:HasAchievement(steps.DontHaveAchievement)) or
-                (steps.HasAura and not self:HasAura(steps.HasAura)) or
-                (steps.DontHaveAura and self:HasAura(steps.DontHaveAura)) or
-                steps.Waypoint) then
+        if not ((step.Faction and step.Faction ~= faction) or
+                (step.Race and step.Race ~= race) or
+                (step.Gender and step.Gender ~= gender) or
+                (step.Class and step.Class ~= className) or
+                (step.HasAchievement and not self:HasAchievement(step.HasAchievement)) or
+                (step.DontHaveAchievement and self:HasAchievement(step.DontHaveAchievement)) or
+                (step.HasAura and not self:HasAura(step.HasAura)) or
+                (step.DontHaveAura and self:HasAura(step.DontHaveAura)) or
+                step.Waypoint) then
             break
         end
     end
@@ -120,24 +120,32 @@ function APR:CheckIsInRouteZone()
         return
     end
     local routeZoneMapIDs, mapid, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
-    local parentMapID = APR:GetPlayerParentMapID(Enum.UIMapType.Continent)
+    local parentContinentMapID = APR:GetPlayerParentMapID(Enum.UIMapType.Continent)
+    local parenttMapID = APR:GetPlayerParentMapID()
     local currentMapID = C_Map.GetBestMapForUnit("player")
-    local isSameContinent, nextContinent = APR.transport:IsSameContinent(mapid)
-    local step = self:GetSteps(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
-    if not currentMapID or not isSameContinent then
+    local step = self:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
+    if not currentMapID or not step then
+        return false
+    end
+    local isSameContinent, nextContinent = APR.transport:IsSameContinent(step.Zone or mapid)
+    if not isSameContinent then
         return false
     end
 
-    if step and (step.Zone == parentMapID or step.Zone == currentMapID) then
+    local mapIDs = { parentContinentMapID, currentMapID, parenttMapID }
+
+    if step and APR:Contains({ parentContinentMapID, currentMapID, parenttMapID }, step.Zone) then
         return true
     end
 
-    if APR:IsInExpansionRouteMaps(routeZoneMapIDs, parentMapID) or APR:IsInExpansionRouteMaps(routeZoneMapIDs, currentMapID) then
-        return true
+    for _, mapID in ipairs(mapIDs) do
+        if APR:IsInExpansionRouteMaps(routeZoneMapIDs, mapID) then
+            return true
+        end
     end
 
-    if parentMapID then
-        local childrenMap = C_Map.GetMapChildrenInfo(parentMapID)
+    if parentContinentMapID then
+        local childrenMap = C_Map.GetMapChildrenInfo(parentContinentMapID)
         if not childrenMap then
             return false
         end
@@ -152,17 +160,17 @@ function APR:CheckIsInRouteZone()
     return false
 end
 
-function APR:GetSteps(CurStep)
-    if (CurStep and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]) then
-        return APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
+function APR:GetStep(index)
+    if (index and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]) then
+        return APR.RouteQuestStepList[APR.ActiveRoute][index]
     end
     return nil
 end
 
 function APR:IsARouteQuest(questId)
-    local steps = self:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
-    if (steps) then
-        if self:Contains(steps.PickUp, questId) or self:Contains(steps.PickUpDB, questId) then
+    local step = self:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    if (step) then
+        if self:Contains(step.PickUp, questId) or self:Contains(step.PickUpDB, questId) then
             return true
         end
     end
@@ -170,9 +178,9 @@ function APR:IsARouteQuest(questId)
 end
 
 function APR:IsPickupStep()
-    local steps = self:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
-    if (steps) then
-        if steps.PickUp or steps.PickUpDB then
+    local step = self:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    if (step) then
+        if step.PickUp or step.PickUpDB then
             return true
         end
     end
@@ -232,5 +240,47 @@ function APR:LoadCustomRoutes()
     for name, steps in pairs(APRData.CustomRoute) do
         APR.RouteQuestStepList[name] = steps
         APR.RouteList.Custom[name] = name:match("%d+-(.*)")
+    end
+end
+
+function APR:MissingQuest(questId, objectiveId)
+    local questTextToAdd
+    if APR:Contains(APR.BonusObj, questId) then
+        questTextToAdd = L["DO_BONUS_OBJECTIVE"] .. ": " .. questId
+    else
+        questTextToAdd = L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questId
+    end
+    APR.currentStep:AddQuestSteps(questId, questTextToAdd, objectiveId)
+end
+
+function APR:UpdateQpartPart()
+    local step = self:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil) or {}
+    local IdList = step.QpartPart or {}
+    for questId, objectives in pairs(IdList) do
+        for _, objectiveId in ipairs(objectives) do
+            local qid = questId .. "-" .. objectiveId
+            local questText = APR.ActiveQuests[qid]
+            if not questText then return end
+
+            for key, value in pairs(step) do
+                if string.match(key, "TrigText+") then
+                    if value and string.find(questText, value) then
+                        self:UpdateNextStep()
+                        return
+                    end
+                end
+            end
+        end
+    end
+end
+
+function APR:UpdateQpartPartWithQuesText(step, questText)
+    for key, value in pairs(step) do
+        if string.match(key, "TrigText+") then
+            if value and questText and string.find(questText, value) then
+                self:UpdateNextStep()
+                return
+            end
+        end
     end
 end
