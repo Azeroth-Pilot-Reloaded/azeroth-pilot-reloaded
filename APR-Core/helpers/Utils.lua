@@ -44,11 +44,11 @@ function APR:GetTargetID(unit)
     return nil
 end
 
-function APR:CheckDenyNPC(steps)
-    if (steps and steps.DenyNPC) then
+function APR:CheckDenyNPC(step)
+    if (step and step.DenyNPC) then
         local npc_id, name = self:GetTargetID(), UnitName("target")
         if (npc_id and name) then
-            if (npc_id == steps.DenyNPC) then
+            if (npc_id == step.DenyNPC) then
                 C_GossipInfo.CloseGossip()
                 C_Timer.After(0.3, APR_CloseQuest)
                 print("APR: " .. L["NOT_YET"])
@@ -75,23 +75,6 @@ function APR:IsTableEmpty(table)
         return next(table) == nil
     end
     return false
-end
-
--- //TODO: Remove this shit
-function PairsByKeys(t, f)
-    local a = {}
-    for n in pairs(t) do table.insert(a, n) end
-    table.sort(a, f)
-    local i = 0
-    local iter = function()
-        i = i + 1
-        if a[i] == nil then
-            return nil
-        else
-            return a[i], t[a[i]]
-        end
-    end
-    return iter
 end
 
 function APR_AcceptQuest()
@@ -144,11 +127,11 @@ end
 --- Check if we keep UI in instance
 --- @return boolean true by default for open world
 function APR:IsInstanceWithUI()
-    local steps = APR.ActiveRoute and self:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute])
+    local step = APR.ActiveRoute and self:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
     local isInstance, instanceType = IsInInstance()
 
     if isInstance then
-        return (steps and steps.InstanceQuest and instanceType == "scenario") or false
+        return (step and step.InstanceQuest and instanceType == "scenario") or false
     end
 
     return true

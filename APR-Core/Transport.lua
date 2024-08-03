@@ -324,7 +324,7 @@ APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 APR.transport.eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 APR.transport.eventFrame:RegisterEvent("WAYPOINT_UPDATE")
 APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
-    local steps = APR.ActiveRoute and APR:GetSteps(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
+    local step = APR.ActiveRoute and APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
     if APR.settings.profile.showEvent then
         print("EVENT: Transport - ", event)
     end
@@ -354,8 +354,8 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
             if node.state == Enum.FlightPathState.Current then
                 APR.transport.CurrentTaxiNode = node
             end
-            if steps then
-                if steps.NodeID == node.nodeID then
+            if step then
+                if step.NodeID == node.nodeID then
                     APR.transport.StepTaxiNode = node
                 end
             end
@@ -363,8 +363,8 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
         -------------------------------------------
         --------------- Auto Flight----------------
         -------------------------------------------
-        if steps then
-            if steps.UseFlightPath or APR.transport.wrongZoneDestTaxiName then
+        if step then
+            if step.UseFlightPath or APR.transport.wrongZoneDestTaxiName then
                 if APR.transport.CurrentTaxiNode.nodeID == APR.transport.StepTaxiNode.nodeId then
                     APR:NextQuestStep()
                 elseif not IsModifierKeyDown() then
@@ -383,8 +383,8 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
     elseif event == "PLAYER_CONTROL_LOST" then
         C_Timer.After(2, function()
             if UnitOnTaxi("player") then
-                if steps and steps.ETA then
-                    APR.AFK:SetAfkTimer(steps.ETA)
+                if step and step.ETA then
+                    APR.AFK:SetAfkTimer(step.ETA)
                 elseif next(APR.transport.CurrentTaxiNode) and next(APR.transport.StepTaxiNode) then
                     -- Reccord timer or play if already in the table
                     local timer = APRTaxiNodesTimer
@@ -395,7 +395,7 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
                         APR.AFK:SetAfkTimer(timer)
                     end
                 end
-                if steps and steps.UseFlightPath and not APR.transport.wrongZoneDestTaxiName then
+                if step and step.UseFlightPath and not APR.transport.wrongZoneDestTaxiName then
                     APR:UpdateNextStep()
                 end
                 -- reset
