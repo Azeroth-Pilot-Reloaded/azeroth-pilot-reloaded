@@ -79,6 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.1.3", "2024-08-03" },
+        "#Bug",
+        "- Fixed empty current step frame with new route",
+        "- Fixed arrow for NoArrow step with a wrong zone error",
+
         { "v4.1.2", "2024-08-03" },
         "#Bug",
         "- Fixed Qpartpart step option detection",
