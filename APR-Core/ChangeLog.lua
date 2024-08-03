@@ -79,7 +79,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.1.1", "2024-07-28" },
+        { "v4.1.2", "2024-08-03" },
+        "#Bug",
+        "- Fixed Qpartpart step option detection",
+        "- Added new zone detection for some indoor zone",
+        "- Fixed some step syntax",
+
+        "#Route",
+        "- Fixed Pre-patch TWW intro route",
+
+        { "v4.1.1", "2024-08-01" },
         "#Route",
         "- Added TWW section in route settings",
         "- Added Pre-patch TWW intro route",
