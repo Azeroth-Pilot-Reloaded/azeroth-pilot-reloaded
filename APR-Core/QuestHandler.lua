@@ -55,12 +55,12 @@ local function SkipStepCondition(step)
     return false
 end
 
-local function APR_UpdateStep()
+function APR:UpdateStep()
     if not APR.settings.profile.enableAddon then
         return
     end
     if (APR.settings.profile.debug) then
-        print("Function: APR_UpdateStep()")
+        print("Function: APR:UpdateStep()")
     end
     if (APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute]) then
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
@@ -942,7 +942,7 @@ local function APR_LoopBookingFunc() -- Main loop
         AddQuest = function() APR_AddQuest(APR.BookingList["AddQuest"]) end,
         RemoveQuest = function() APR_RemoveQuest(APR.BookingList["RemoveQuest"]) end,
         UpdateQuest = function() APR_UpdateQuest() end,
-        UpdateStep = function() APR_UpdateStep() end,
+        UpdateStep = function() APR:UpdateStep() end,
         SetQPTT = function() APR.Arrow:SetQPTT() end
     }
 

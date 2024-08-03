@@ -4,7 +4,17 @@ APR.RouteQuestStepList["81-TWW-Intro-prepatch"] = {
         PickUp = {
             78713,
         },
-        Zone = 12,
+        Zone = 85,
+        Faction = "Horde",
+        _index = 1,
+    },
+    {
+        NoArrow = 1,
+        PickUp = {
+            78713,
+        },
+        Zone = 84,
+        Faction = "Alliance",
         _index = 1,
     },
     {
@@ -19,7 +29,24 @@ APR.RouteQuestStepList["81-TWW-Intro-prepatch"] = {
                 2,
             },
         },
-        Zone = 12,
+        Zone = 85,
+        Faction = "Horde",
+        _index = 2,
+    },
+    {
+        Button = {
+            ["78713-1"] = 227669,
+            ["78713-2"] = 227669,
+        },
+        NoArrow = 1,
+        Qpart = {
+            [78713] = {
+                1,
+                2,
+            },
+        },
+        Zone = 84,
+        Faction = "Alliance",
         _index = 2,
     },
     {
@@ -93,7 +120,7 @@ APR.RouteQuestStepList["81-TWW-Intro-prepatch"] = {
         },
         TrigText = "1/3",
         Zone = 81,
-        _index = 9,
+        _index = 8,
     },
     {
         Coord = {
@@ -107,7 +134,7 @@ APR.RouteQuestStepList["81-TWW-Intro-prepatch"] = {
         },
         TrigText = "2/3",
         Zone = 81,
-        _index = 10,
+        _index = 9,
     },
     {
         Coord = {
@@ -121,7 +148,7 @@ APR.RouteQuestStepList["81-TWW-Intro-prepatch"] = {
         },
         TrigText = "3/3",
         Zone = 81,
-        _index = 11,
+        _index = 10,
     },
     {
         Coord = {
