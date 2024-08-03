@@ -100,7 +100,7 @@ if (APR.Faction == "Alliance") then
         ["2025-DF06A-Thaldraszus"] = "DF06 - Thaldraszus",
     }
     APR.RouteList.TheWarWithin = {
-        ["2112-TWW-Intro-prepatch"] = "TWW - PrePatch",
+        ["81-TWW-Intro-prepatch"] = "TWW - PrePatch",
     }
     APR.RouteList.Custom = {}
 

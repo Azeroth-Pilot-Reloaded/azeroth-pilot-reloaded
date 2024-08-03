@@ -1,10 +1,10 @@
-APR.RouteQuestStepList["2112-TWW-Intro-prepatch"] = {
+APR.RouteQuestStepList["81-TWW-Intro-prepatch"] = {
     {
         NoArrow = 1,
         PickUp = {
             78713,
         },
-        Zone = 2025,
+        Zone = 12,
         _index = 1,
     },
     {
@@ -55,7 +55,7 @@ APR.RouteQuestStepList["2112-TWW-Intro-prepatch"] = {
                 1,
             },
         },
-        Range = 5,
+        Range = 1,
         Zone = 81,
         _index = 5,
     },
@@ -91,7 +91,6 @@ APR.RouteQuestStepList["2112-TWW-Intro-prepatch"] = {
                 1,
             },
         },
-        Range = 5,
         TrigText = "1/3",
         Zone = 81,
         _index = 9,
@@ -106,7 +105,6 @@ APR.RouteQuestStepList["2112-TWW-Intro-prepatch"] = {
                 1,
             },
         },
-        Range = 5,
         TrigText = "2/3",
         Zone = 81,
         _index = 10,
@@ -121,7 +119,6 @@ APR.RouteQuestStepList["2112-TWW-Intro-prepatch"] = {
                 1,
             },
         },
-        Range = 5,
         TrigText = "3/3",
         Zone = 81,
         _index = 11,
