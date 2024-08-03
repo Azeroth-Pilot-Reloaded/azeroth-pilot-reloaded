@@ -405,8 +405,8 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                         return true
                     end
                     local questObjectiveId = questID .. '-' .. objectiveIndex
-                    -- //TODO Remove or add APR_BonusObj from quest handler
-                    if (isMaxLevel and APR_BonusObj and APR:Contains(APR_BonusObj, questObjectiveId)) or APRData[APR.PlayerID].BonusSkips[questID] then
+                    -- //TODO Remove or add APR.BonusObj from quest handler
+                    if (isMaxLevel and APR.BonusObj and APR:Contains(APR.BonusObj, questObjectiveId)) or APRData[APR.PlayerID].BonusSkips[questID] then
                         return true
                     end
                     if APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C" then
@@ -453,7 +453,16 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     for _, objectiveIndex in pairs(objectives) do
                         total = total + 1
                         local questObjectiveId = questID .. '-' .. objectiveIndex
-                        if C_QuestLog.IsQuestFlaggedCompleted(questID) or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
+                        local questText = APR.ActiveQuests[questObjectiveId]
+                        for key, value in pairs(step) do
+                            if string.match(key, "TrigText+") then
+                                if value and questText and string.find(questText, value) then
+                                    flagged = flagged + 1
+                                end
+                            end
+                        end
+                        local objective = C_QuestLog.GetQuestObjectives(questID)
+                        if C_QuestLog.IsQuestFlaggedCompleted(questID) or objective[objectiveIndex].finished or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
                             flagged = flagged + 1
                         else
                             table.insert(questInfo,
