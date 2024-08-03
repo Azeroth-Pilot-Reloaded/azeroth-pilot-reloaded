@@ -638,6 +638,9 @@ function APR.routeconfig:InitRouteConfig()
             APR.settings:OpenSettings(L["ROUTE"])
         end
         -- to trigger the frame
+        local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
+        APR.ActiveRoute = routeName
+        APR:UpdateStep()
         APR.BookingList["UpdateMapId"] = true
     end)
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
