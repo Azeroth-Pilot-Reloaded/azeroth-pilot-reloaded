@@ -131,7 +131,7 @@ function APR:IsInstanceWithUI()
     local isInstance, instanceType = IsInInstance()
 
     if isInstance then
-        return (step and step.InstanceQuest and instanceType == "scenario") or false
+        return (step and step.InstanceQuest) or false
     end
 
     return true
