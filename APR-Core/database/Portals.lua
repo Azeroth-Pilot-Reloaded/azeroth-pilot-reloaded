@@ -18,6 +18,7 @@ APR.Portals.Coords = {
             ["Ashran"] = { x = 888.1, y = -9061.7 },
             ["Oribos"] = { x = 895.4, y = -9095 },
             ["Valdrakken"] = { x = 875.2, y = -9079.1 },
+            ["Dornogal"] = { x = 1014.2, y = -9070.8 },
             ["DarkPortal Talk"] = { x = 869.6, y = -9007.7 },
             ["DarkPortal"] = { x = -3207.5, y = -11902.7 }
         },
@@ -52,7 +53,8 @@ APR.Portals.Coords = {
             ["Vol'dun"] = { x = 4312, y = 2804.5 }
         },
         [1550] = { ["Stormwind"] = { x = 1538.4, y = -1808.8 }, ["OribosInMaldraxxus"] = { x = -2517.7, y = 2573.5 } },
-        [1978] = { ["Stormwind"] = { x = -1066.8, y = 246.5 } }
+        [1978] = { ["Stormwind"] = { x = -1066.8, y = 246.5 } },
+        [2274] = { ["Stormwind"] = { x = -2397.7, y = 2982.1 } },
     },
     ["Horde"] = {
         [12] = {
@@ -73,7 +75,8 @@ APR.Portals.Coords = {
             ["DarkPortal Talk"] = { x = -4500.3, y = 1434.8 },
             ["AzsunaLegion"] = { x = -4484.9, y = 1423.8 },
             ["Oribos"] = { x = -4519.3, y = 1466.5 },
-            ["Valdrakken"] = { x = -4499.9, y = 1472.5 }
+            ["Valdrakken"] = { x = -4499.9, y = 1472.5 },
+            ["Dornogal"] = { x = -4512.3, y = 1444.7 }
         },
         [13] = {
             ["Orgrimmar"] = { x = 289.3, y = 2070.5 },
@@ -110,7 +113,8 @@ APR.Portals.Coords = {
             ["TiragardeSound"] = { x = 762.9, y = -2173.9 }
         },
         [1550] = { ["Orgrimmar"] = { x = 1539.3, y = -1859.5 }, ["OribosInMaldraxxus"] = { x = -2517.7, y = 2573.5 } },
-        [1978] = { ["Orgrimmar"] = { x = -1023, y = 278 } }
+        [1978] = { ["Orgrimmar"] = { x = -1023, y = 278 } },
+        [2274] = { ["Orgrimmar"] = { x = -2334.7, y = 2919.1 } },
     }
 }
 
@@ -128,6 +132,7 @@ APR.Portals.SwitchCont = {
         { continent = 13,   nextContinent = 876,  nextZone = 1161, portalKey = "BoralusBFA",              closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 1550, nextZone = 1670, portalKey = "Oribos",                  closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 1978, nextZone = 2112, portalKey = "Valdrakken",              closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 2274, nextZone = 2248, portalKey = "Dornogal",                closestTaxiNode = "Stormwind, Elwynn" },
 
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "The Exodar" },
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Exodar",                  closestTaxiNode = "Darnassus, Teldrassil" },
@@ -156,6 +161,9 @@ APR.Portals.SwitchCont = {
         { continent = 876,  nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",                closestTaxiNode = "Tradewinds Market, Tiragarde Sound",              extraText = "SAIL_TO" },
         { continent = 876,  nextContinent = 875,  nextZone = 863,  portalKey = "Nazmir",                  closestTaxiNode = "Tradewinds Market, Tiragarde Sound",              extraText = "SAIL_TO" },
         { continent = 876,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                 closestTaxiNode = "Tradewinds Market, Tiragarde Sound",              extraText = "SAIL_TO" },
+        { continent = 876,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                 closestTaxiNode = "Tradewinds Market, Tiragarde Sound",              extraText = "SAIL_TO" },
+
+        { continent = 2274, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dornogal, Isle of Dorn", },
     },
     ["Horde"] = {
         { continent = 12,   nextContinent = 13,   nextZone = 224,  portalKey = "STVZep",                 closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "USE_ZEPPELIN_TO" },
@@ -170,6 +178,7 @@ APR.Portals.SwitchCont = {
         { continent = 12,   nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",               closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 1550, nextZone = 1670, portalKey = "Oribos",                 closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 1978, nextZone = 2112, portalKey = "Valdrakken",             closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 2274, nextZone = 2248, portalKey = "Dornogal",               closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS" },
 
         { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar" },
         { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal" },
@@ -201,5 +210,7 @@ APR.Portals.SwitchCont = {
         { continent = 876,  nextContinent = 876,  nextZone = 942,  portalKey = "StormsongValleySail",    closestTaxiNode = "Warfang Hold, Stormsong Valley",                extraText = "TALK_TO" },
         { continent = 876,  nextContinent = 876,  nextZone = 895,  portalKey = "TiragardeSoundSail",     closestTaxiNode = "Plunder Harbor, Tiragarde Sound",               extraText = "TALK_TO" },
         { continent = 1550, nextContinent = 1550, nextZone = 1536, portalKey = "OribosInMaldraxxus",     closestTaxiNode = "Theater of Pain, Maldraxxus" },
+
+        { continent = 2274, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dornogal, Isle of Dorn", },
     },
 }
