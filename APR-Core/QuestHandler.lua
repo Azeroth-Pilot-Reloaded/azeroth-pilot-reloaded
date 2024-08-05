@@ -579,7 +579,7 @@ function APR:UpdateStep()
             local scenario = step.Scenario
             local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
             if not scenarioInfo then
-                if APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID) then
+                if APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID, scenario.criteriaIndex) then
                     APR:UpdateNextStep()
                 else
                     local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
@@ -587,6 +587,11 @@ function APR:UpdateStep()
                         format(L["SCENARIO_ERROR"], scenarioStepInfo.title))
                 end
             else
+                if APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID, scenario.criteriaIndex) then
+                    APR:UpdateNextStep()
+                    return
+                end
+
                 local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
                 if criteriaInfo.completed then
                     APR:UpdateNextStep()
@@ -727,24 +732,6 @@ function APR.CheckWaypointText()
     end
 
     return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
-end
-
-function APR:UpdateScenario(scenario)
-    if APR.settings.profile.debug then
-        print("Function: UpdateScenario()")
-    end
-    local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
-    if not scenarioInfo then
-        APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
-        local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
-
-        APR.currentStep:AddExtraLineText("SCENARIO-" .. scenario.criteriaID,
-            foramt(L["SCENARIO_ERROR"], scenarioStepInfo.title))
-    else
-        APR.currentStep:RemoveQuestStepsAndExtraLineTexts(true)
-        local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
-        APR.currentStep:UpdateQuestStep(scenario.scenarioID, criteriaInfo.description, scenario.criteriaID)
-    end
 end
 
 local function APR_UpdateQuest()
@@ -1590,23 +1577,26 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if event == "SCENARIO_CRITERIA_UPDATE" then
         local criteriaID = ...
         if step and step.Scenario then
+            local isCompleted = false
             local scenario = step.Scenario
             local stepInfo = C_ScenarioInfo.GetScenarioStepInfo()
+            if not stepInfo then return end
             for i = 1, stepInfo.numCriteria do
                 local criteria = C_ScenarioInfo.GetCriteriaInfoByStep(stepInfo.stepID, i)
                 if criteria.criteriaID == criteriaID then
                     if criteria.completed then
                         APRScenarioCompleted[APR.PlayerID][scenario.scenarioID] = APRScenarioCompleted[APR.PlayerID]
                             [scenario.scenarioID] or {}
-                        tinsert(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID],
-                            { stepID = stepInfo.stepID, criteriaID = criteriaID })
-
-                        APR:UpdateNextStep()
-                    else
-                        APR:UpdateScenario(scenario)
+                        if not APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], stepInfo.stepID, criteriaID, i) then
+                            tinsert(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID],
+                                { stepID = stepInfo.stepID, criteriaID = criteriaID, criteriaIndex = i })
+                            isCompleted = true
+                        end
                     end
-                    break
                 end
+            end
+            if isCompleted then
+                APR.BookingList["UpdateStep"] = true
             end
         end
     end

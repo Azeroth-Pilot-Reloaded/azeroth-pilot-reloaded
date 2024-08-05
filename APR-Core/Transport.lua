@@ -15,6 +15,9 @@ function APR.transport:GetMeToRightZone()
     local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
     if (routeZoneMapIDs and mapID and routeName) then
         APR.ActiveRoute = routeName
+        if not APR.currentStep:IsShown() then
+            APR.currentStep:RefreshCurrentStepFrameAnchor()
+        end
     end
     if not APR.ActiveRoute or not next(APRCustomPath[APR.PlayerID]) then
         APR.routeconfig:CheckIsCustomPathEmpty()
