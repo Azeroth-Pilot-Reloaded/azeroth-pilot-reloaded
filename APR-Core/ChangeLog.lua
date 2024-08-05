@@ -79,6 +79,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.1.4", "2024-08-06" },
+        "#Bug",
+        "- Enabled instance quest ui for every type of instance,",
+        "- Fixed lua error if missing objectif on QpartPart step",
+        "- Fixed update of the scenario step",
+
+        "#TWW",
+        "- Added new portals for Dornogal/capital",
+        "- Added new Taxi for TWW continent",
+
         { "v4.1.3", "2024-08-03" },
         "#Bug",
         "- Fixed empty current step frame with new route",
