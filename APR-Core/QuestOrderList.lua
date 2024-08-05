@@ -462,7 +462,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                             end
                         end
                         local objective = C_QuestLog.GetQuestObjectives(questID)
-                        if C_QuestLog.IsQuestFlaggedCompleted(questID) or objective[objectiveIndex].finished or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
+                        if C_QuestLog.IsQuestFlaggedCompleted(questID) or (objective[objectiveIndex] and objective[objectiveIndex].finished) or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
                             flagged = flagged + 1
                         else
                             table.insert(questInfo,
