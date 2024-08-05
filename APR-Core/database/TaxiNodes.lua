@@ -881,12 +881,12 @@ APR.TaxiNodes = {
         [2657] = {
             [2933] = { x = -396.56298828125, y = -2843.1201171875, Name = "Grand Rampart" },
             [2934] = { x = -334.16299438477, y = -2962.4399414062, Name = "The Pulsing Pit" },
-            [2935] = { x = -374.34399414063, y = -3536, Name = "Terrace of Majesty" },
+            [2935] = { x = -379.0710144043, y = -3529.8400878906, Name = "Terrace of Majesty" },
             [2936] = { x = -110.16100311279, y = -3006.1101074219, Name = "The Swaying Span (One-way)" },
             [2937] = { x = 103.30899810791, y = -3264.0200195312, Name = "The Narthex" },
-            [2938] = { x = -111.01899719238, y = -3005.9399414062, Name = "The Swaying Span" },
             [2971] = { x = -251.26699829102, y = -2917.0500488281, Name = "The Pulsing Pit (One-way)" },
-            [2984] = { x = -112.17199707031, y = -3505.7700195312, Name = "The Ascending Reach" }
+            [2984] = { x = -112.17199707031, y = -3505.7700195312, Name = "The Ascending Reach" },
+            [2987] = { x = -217.84199523926, y = -3373.3200683594, Name = "The Congealing Pool (One-way)" }
         }
     }
 }
