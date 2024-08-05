@@ -179,10 +179,10 @@ function APR:IsMoPRemixCharacter()
     return aura ~= nil
 end
 
-function APR:ContainsScenarioStepCriteria(table, stepID, criteriaID)
+function APR:ContainsScenarioStepCriteria(table, stepID, criteriaID, criteriaIndex)
     if not table then return false end
     for _, v in ipairs(table) do
-        if v.stepID == stepID and v.criteriaID == criteriaID then
+        if v.stepID == stepID and v.criteriaID == criteriaID and v.criteriaIndex == criteriaIndex then
             return true
         end
     end

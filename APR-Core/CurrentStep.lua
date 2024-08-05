@@ -666,3 +666,7 @@ function APR.GetMenu(owner, rootDescription)
         APR.currentStep:ResetPosition()
     end)
 end
+
+function APR.currentStep:IsShown()
+    return CurrentStepScreenPanel:IsShown()
+end
