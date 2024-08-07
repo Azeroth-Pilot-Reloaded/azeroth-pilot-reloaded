@@ -79,7 +79,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.1.4", "2024-08-06" },
+        { "vBETA TWW", "2024-08-07" },
+        "#Bug",
+        "- Added missing extra button message",
+
+        "#TWW",
+        "- Added TWW - Isle of dorn route (~70-72/73)",
+
+        { "v4.1.4",    "2024-08-06" },
         "#Bug",
         "- Enabled instance quest ui for every type of instance,",
         "- Fixed lua error if missing objectif on QpartPart step",
