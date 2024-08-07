@@ -146,6 +146,10 @@ function APR:UpdateStep()
             end
         end
 
+        if step.ExtraActionB then
+            APR.currentStep:AddExtraLineText("USE_EXTRAACTIONBUTTON", L["USE_EXTRAACTIONBUTTON"])
+        end
+
         -- //TODO REWORK ExtraLine
         if (step.ExtraLine and APR.IsInRouteZone) then
             local APRExtraLine = step.ExtraLine
