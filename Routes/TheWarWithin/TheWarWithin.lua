@@ -333,8 +333,29 @@ APR.RouteQuestStepList["81-TWW-Intro-prepatch"] = {
 
 APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
     {
-        Pickup = { 78529 },
-        NoArrow = 1,
+        GossipOptionIDs = { 121670, },
+        Coord = { x = -4400.3999023438, y = 1572, },
+        ExtraLineText = "BETA_START",
+        ExtraLineText2 = "MANUAL_SKIP",
+        Faction = "Horde",
+        NPCIDs = { 216841, },
+        Zone = 85,
+        _index = 0,
+    },
+    {
+        GossipOptionIDs = { 121670, },
+        Coord = { x = 607.90002441406, y = -8844.1005859375 },
+        ExtraLineText = "BETA_START",
+        ExtraLineText2 = "MANUAL_SKIP",
+        Faction = "Alliance",
+        NPCIDs = { 216841, },
+        Zone = 84,
+        _index = 0,
+    },
+    {
+        PickUp = { 78529, },
+        Coord = { x = -808.20001220703, y = 2034.4000244141, },
+        Zone = 2248,
         _index = 1,
     },
     {
