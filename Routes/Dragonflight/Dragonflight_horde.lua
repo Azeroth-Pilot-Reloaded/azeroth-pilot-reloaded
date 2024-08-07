@@ -975,7 +975,7 @@ if APR.Faction == "Horde" then
             Qpart = { [65613] = { 3 } },
             Coord = { y = 2046.4887695312, x = -4272.896484375 },
             Range = 1,
-            ExtraLineText = "CLICK_EXTRAACTIONBUTTON",
+            ExtraLineText = "USE_EXTRAACTIONBUTTON",
             Zone = 85
         },
         { Done = { 65613 }, Coord = { y = 2046.2570800781, x = -4273.244140625 }, Zone = 85 },

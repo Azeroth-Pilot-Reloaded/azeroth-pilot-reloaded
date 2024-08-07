@@ -180,7 +180,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
         Qpart = { [70132] = { 1 } },
         Coord = { y = 1818.4, x = 39.3 },
         Range = 1,
-        ExtraLineText = "CLICK_EXTRAACTIONBUTTON",
+        ExtraLineText = "USE_EXTRAACTIONBUTTON",
         SpellButton = { ["70132-1"] = 383740 },
         ExtraActionB = 1
     },
@@ -964,7 +964,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         Qpart = { [66834] = { 3 } },
         Coord = { y = -1501.7, x = 3776.2 },
         Range = 1,
-        ExtraLineText = "CLICK_EXTRAACTIONBUTTON",
+        ExtraLineText = "USE_EXTRAACTIONBUTTON",
         SpellButton = { ["66834-3"] = 384389 },
         ExtraActionB = 1
     },
@@ -973,7 +973,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         Qpart = { [66834] = { 5 } },
         Coord = { y = -1496.0, x = 3786.7 },
         Range = 1,
-        ExtraLineText = "CLICK_EXTRAACTIONBUTTON",
+        ExtraLineText = "USE_EXTRAACTIONBUTTON",
         SpellButton = { ["66834-5"] = 384564 },
         ExtraActionB = 1
     },
@@ -982,7 +982,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         Qpart = { [66834] = { 7 } },
         Coord = { y = -1493.9, x = 3787.8 },
         Range = 1,
-        ExtraLineText = "CLICK_EXTRAACTIONBUTTON",
+        ExtraLineText = "USE_EXTRAACTIONBUTTON",
         SpellButton = { ["66834-7"] = 384588 },
         ExtraActionB = 1
     },
@@ -1097,7 +1097,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
     { PickUp = { 66680 },          Coord = { y = -1554.8, x = 683.9 } },
     { SetHS = 66680,               Coord = { y = -1572.8, x = 660.6 }, ExtraLineText = "PINEWOOD_POST_HS", Gossip = 1 },
     { Qpart = { [66680] = { 1 } }, Coord = { y = -1545.8, x = 712.6 }, Range = 2,                          BuyMerchant = { { itemID = 193890, quantity = 1, questID = 66680 } }, Gossip = 1 },
-    { Qpart = { [66680] = { 2 } }, Coord = { y = -1584.7, x = 682.9 }, Range = 2,                          ExtraLineText = "CLICK_DOG",                                         Gossip = 1 },
+    { Qpart = { [66680] = { 2 } }, Coord = { y = -1584.7, x = 682.9 }, Range = 2,                          ExtraLineText = "CLICK_DOG",                                          Gossip = 1 },
     {
         DropQuest = 66689,
         DroppableQuest = { Text = "PINEHOOF_DOE", Qid = 66689, MobId = 191496 },
