@@ -85,6 +85,7 @@ function APR.changelog:SetChangeLog()
 
         "#TWW",
         "- Added TWW - Isle of dorn route (~70-72/73)",
+        "- Added TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
 
         { "v4.1.4",    "2024-08-06" },
         "#Bug",
