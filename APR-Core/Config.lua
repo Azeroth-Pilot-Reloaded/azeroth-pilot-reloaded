@@ -1364,7 +1364,7 @@ function APR.settings:CreateAboutOption()
                 width = "full",
                 fontSize = "medium",
                 name = L["WELCOME_ZYRR"] ..
-                    " " .. L["LEGACY_TEAM"] .. "Deathmessinger, DesMephisto, BrutallStatic",
+                    " " .. L["LEGACY_TEAM"] .. " " .. "Deathmessinger, DesMephisto, BrutallStatic",
             },
         }
     }

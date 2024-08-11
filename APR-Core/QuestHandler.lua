@@ -423,7 +423,7 @@ function APR:UpdateStep()
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
-                    APR.currentStep:AddExtraLineText("Waypoint" .. IdList, APR.CheckWaypointText(), true)
+                    APR.currentStep:AddExtraLineText("Waypoint" .. IdList, APR.CheckWaypointText())
                 end
             end
         elseif (step.Treasure) then

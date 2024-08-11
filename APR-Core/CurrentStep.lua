@@ -336,7 +336,7 @@ function APR.currentStep:SetProgressBar(CurStep)
 end
 
 -- Displaying quest information
-local function AddStepsFrame(questDesc, extraLineText, noStars)
+local function AddStepsFrame(questDesc, extraLineText)
     local textTemplate = "GameFontHighlight" -- white color
     if extraLineText then
         textTemplate = "GameFontNormal"      -- yellow color
@@ -348,11 +348,8 @@ local function AddStepsFrame(questDesc, extraLineText, noStars)
     font:SetWordWrap(true)
     font:SetWidth(FRAME_WIDTH)
     font:SetPoint("TOPLEFT", 5, -5)
-    if extraLineText then
-        font:SetText(APR:TextWithStars(extraLineText, noStars and 0 or 2))
-    else
-        font:SetText('- ' .. questDesc)
-    end
+    font:SetText('- ' .. (extraLineText or questDesc))
+
     font:SetJustifyH("LEFT")
     -- Set the size of the container based on the text length
     container:SetWidth(FRAME_WIDTH)
@@ -369,8 +366,8 @@ local function AddStepsFrame(questDesc, extraLineText, noStars)
 end
 
 -- Displaying extra line text information
-local function AddExtraLineTextFrame(extraLineText, noStars)
-    return AddStepsFrame(nil, extraLineText, noStars)
+local function AddExtraLineTextFrame(extraLineText)
+    return AddStepsFrame(nil, extraLineText)
 end
 
 -- Add/Update quest steps
@@ -429,7 +426,7 @@ end
 --- Add a new Extra line text
 ---@param key string Locale table key
 ---@param text string L[key]
-function APR.currentStep:AddExtraLineText(key, text, noStars)
+function APR.currentStep:AddExtraLineText(key, text)
     if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
@@ -444,7 +441,7 @@ function APR.currentStep:AddExtraLineText(key, text, noStars)
         self.questsExtraTextList[key] = nil
     end
 
-    local extraLineTextContainer = AddExtraLineTextFrame(text, noStars)
+    local extraLineTextContainer = AddExtraLineTextFrame(text)
     extraLineTextContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
     extraLineTextContainer.key = key
     self.questsExtraTextList[key] = extraLineTextContainer

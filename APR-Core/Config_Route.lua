@@ -861,7 +861,7 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
     if not self:HasRouteInCustomPaht() then
         APR.ActiveRoute = nil
         APR.currentStep:Reset()
-        APR.currentStep:AddExtraLineText("NO_ROUTE", L["NO_ROUTE"], true)
+        APR.currentStep:AddExtraLineText("NO_ROUTE", L["NO_ROUTE"])
         APR:SendMessage("APR_MAP_UPDATE")
         APR.map:RemoveMapLine()
         APR.map:RemoveMinimapLine()
