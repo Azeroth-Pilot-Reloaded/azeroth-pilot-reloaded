@@ -442,7 +442,6 @@ function APR:UpdateStep()
                     APR.currentStep:AddExtraLineText("Waypoint" .. questID, APR.CheckWaypointText())
                 end
             end
-            APR:TrackQuest(questID)
         elseif (step.Treasure) then
             local questID = step.Treasure
             if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
