@@ -380,40 +380,49 @@ function APR:UpdateStep()
         elseif (step.PickUp) then
             local questIDs = step.PickUp
             local pickUpDB = step.PickUpDB
+            if APR.settings.profile.debug then
+                print("APR.UpdateStep:PickUp:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+            end
+
             if pickUpDB then
-                local flaggedQuest = 0
+                local hasQuestCompleted = false
+                local myQuestID = nil
+
                 for _, questID in ipairs(pickUpDB) do
+                    local questName = C_QuestLog.GetTitleForQuestID(questID)
+                    if questName then
+                        myQuestID = questID
+                    end
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
-                        flaggedQuest = questID
+                        hasQuestCompleted = true
                         break
                     end
                 end
-                if flaggedQuest > 0 then
+                if hasQuestCompleted then
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
-                    APR.currentStep:AddQuestSteps(step.PickUp[1], L["PICK_UP_Q"] .. ": 1", "PickUp")
+                    APR.currentStep:AddQuestStepsWithDetails("PickUp", L["PICK_UP_Q"], { myQuestID })
                 end
             else
-                local pickupLeft = #questIDs
-                local Flagged = 0
+                local completedCount = 0
+                local uncompletedIDs = {}
                 for _, questID in ipairs(questIDs) do
                     if not (APR.ActiveQuests[questID] or C_QuestLog.IsQuestFlaggedCompleted(questID)) then
-                        pickupLeft = pickupLeft - 1
+                        tinsert(uncompletedIDs, questID)
                     end
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
-                        Flagged = Flagged + 1
+                        completedCount = completedCount + 1
                     end
                 end
-                if #questIDs == Flagged then
+                if #questIDs == completedCount then
                     if APR.settings.profile.debug then
                         print("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                     end
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
-                    APR.currentStep:AddQuestSteps(step.PickUp[1],
-                        L["PICK_UP_Q"] .. ": " .. pickupLeft .. "/" .. #questIDs, "PickUp")
+                    APR.currentStep:AddQuestStepsWithDetails("PickUp", L["PICK_UP_Q"], uncompletedIDs)
                 end
             end
         elseif (step.Waypoint) then
@@ -460,39 +469,51 @@ function APR:UpdateStep()
             local questToHighlight = nil
 
             if doneDBList then
-                for _, questID in ipairs(doneDBList) do
-                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
-                        doneList = { questID }
-                        break
-                    end
-                end
-            end
+                local hasQuestCompleted = false
+                local myQuestID = nil
 
-            local questLeft = #doneList
-            local Flagged = 0
-
-            for _, questID in ipairs(doneList) do
-                if APR.ActiveQuests[questID] then
-                    questLeft = questLeft - 1
-                end
-                if C_QuestLog.IsQuestFlaggedCompleted(questID) then
-                    Flagged = Flagged + 1
-                else
-                    questToHighlight = questToHighlight or questID
-                end
-            end
-
-            if #doneList == Flagged then
                 if APR.settings.profile.debug then
                     print("APR.UpdateStep:Done:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
-                APR:UpdateNextStep()
-                return
-            elseif APR.IsInRouteZone then
-                APR.currentStep:AddQuestSteps(doneList[1], L["TURN_IN_Q"] .. ": " .. questLeft .. "/" .. #doneList,
-                    "Done")
-            end
 
+                for _, questID in ipairs(doneDBList) do
+                    local questName = C_QuestLog.GetTitleForQuestID(questID)
+                    if questName then
+                        myQuestID = questID
+                    end
+                    if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
+                        hasQuestCompleted = true
+                        break
+                    end
+                end
+                if hasQuestCompleted then
+                    APR:NextQuestStep()
+                    return
+                elseif APR.IsInRouteZone then
+                    APR.currentStep:AddQuestStepsWithDetails("Done", L["TURN_IN_Q"], { myQuestID })
+                    questToHighlight = myQuestID
+                end
+            else
+                local completedCount = 0
+                local uncompletedIDs = {}
+
+                for _, questID in ipairs(doneList) do
+                    if APR.ActiveQuests[questID] then
+                        tinsert(uncompletedIDs, questID)
+                        questToHighlight = questToHighlight or questID
+                    end
+                    if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                        completedCount = completedCount + 1
+                    end
+                end
+
+                if #doneList == completedCount then
+                    APR:UpdateNextStep()
+                    return
+                elseif APR.IsInRouteZone then
+                    APR.currentStep:AddQuestStepsWithDetails("Done", L["TURN_IN_Q"], uncompletedIDs)
+                end
+            end
             if questToHighlight then
                 APR:TrackQuest(questToHighlight)
             end
