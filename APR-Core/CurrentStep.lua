@@ -375,6 +375,7 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex)
     if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
+
     -- Check if questsExtraTextList or questsList are empty to reset to the default height
     if not next(self.questsExtraTextList) or not next(self.questsList) then
         FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
@@ -411,6 +412,7 @@ function APR.currentStep:UpdateQuestStep(questID, textObjective, objectiveIndex)
     if not existingContainer then
         return
     end
+
     existingContainer.font:SetText('- ' .. textObjective)
 end
 
@@ -421,6 +423,55 @@ local getExtraLineHeight = function()
         height = height - textContainer:GetHeight()
     end
     return height
+end
+
+
+function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
+    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+        return
+    end
+
+    -- Check if questsExtraTextList or questsList are empty to reset to the default height
+    if not next(self.questsExtraTextList) or not next(self.questsList) then
+        FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+    end
+
+    local existingContainer = self.questsList[id]
+
+    -- Remove if it already exists
+    if existingContainer then
+        existingContainer:Hide()
+        existingContainer:ClearAllPoints()
+        self.questsList[id] = nil
+    end
+
+    -- Create the main container for the text
+    local container = AddStepsFrame(text .. ":")
+    container:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
+
+    -- Add the sub-container for each quest in the list
+    local questFontHeight = 0
+    for _, questID in ipairs(questIDList) do
+        local questName = C_QuestLog.GetTitleForQuestID(questID) or UNKNOWN
+        local questText = "- " .. questID .. " - " .. questName
+
+        local questFont = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        questFont:SetWordWrap(true)
+        questFont:SetWidth(FRAME_WIDTH - 20) -- Indent for sub-items
+        questFont:SetPoint("TOPLEFT", container, "TOPLEFT", 25,
+            -(container.font:GetStringHeight() + 10 + questFontHeight))
+        questFont:SetText(questText)
+        questFont:SetJustifyH("LEFT")
+        questFontHeight = questFontHeight + questFont:GetStringHeight()
+    end
+
+    -- Adjust container height based on the number of quests
+    container:SetHeight(container.font:GetStringHeight() + questFontHeight + 15)
+    self.questsList[id] = container
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - container:GetHeight()
+
+    -- Update the quest order display
+    self:ReOrderQuestSteps()
 end
 
 --- Add a new Extra line text
