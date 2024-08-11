@@ -79,7 +79,20 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "vBETA TWW", "2024-08-07" },
+        { "vBETA TWW - w33", "2024-08-12" },
+        "#Features",
+        "- Added /apr about command to open the about & help menu",
+        "- Update of the content of the About & Help menu",
+        "- Removed the ** from the Extra line text",
+        "- Display of the quest name for PickUp and Done step in the Current Step frame",
+        "- Added auto tracking of the quest for Qpart and Done step to highlight the right quest",
+        "- Added tooltips on quest in the Current Step frame to display more details about the quest",
+
+        "#TWW",
+        "- Fixed TWW - Isle of dorn route Alliance first quest order",
+        "- Fixed TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
+
+        { "vBETA TWW - w32", "2024-08-07" },
         "#Bug",
         "- Added missing extra button message",
 
@@ -87,7 +100,7 @@ function APR.changelog:SetChangeLog()
         "- Added TWW - Isle of dorn route (~70-72/73)",
         "- Added TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
 
-        { "v4.1.4",    "2024-08-06" },
+        { "v4.1.4", "2024-08-06" },
         "#Bug",
         "- Enabled instance quest ui for every type of instance,",
         "- Fixed lua error if missing objectif on QpartPart step",
