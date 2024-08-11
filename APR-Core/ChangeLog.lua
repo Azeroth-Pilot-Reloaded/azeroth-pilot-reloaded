@@ -79,7 +79,12 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "vBETA TWW - w33", "2024-08-12" },
+        { "vBETA TWW - w33 - b ", "2024-08-12" },
+        "#Bug",
+        "- Fixed lua error on waypoint with tracking function",
+        "- Added wrap option on objective in quest tooltips",
+
+        { "vBETA TWW - w33 - a ", "2024-08-12" },
         "#Features",
         "- Added /apr about command to open the about & help menu",
         "- Update of the content of the About & Help menu",
@@ -100,7 +105,7 @@ function APR.changelog:SetChangeLog()
         "- Added TWW - Isle of dorn route (~70-72/73)",
         "- Added TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
 
-        { "v4.1.4", "2024-08-06" },
+        { "v4.1.4",          "2024-08-06" },
         "#Bug",
         "- Enabled instance quest ui for every type of instance,",
         "- Fixed lua error if missing objectif on QpartPart step",
