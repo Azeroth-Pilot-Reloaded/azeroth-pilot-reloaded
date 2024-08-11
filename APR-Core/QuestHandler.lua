@@ -84,7 +84,6 @@ function APR:UpdateStep()
 
     if (APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep]) then
         local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
-        local IdList
 
         APR.currentStep:ButtonEnable()
         APR:SendMessage("APR_MAP_UPDATE")
@@ -312,7 +311,9 @@ function APR:UpdateStep()
             APR.currentStep:AddExtraLineText("SCARE_SPIDER_INTO_LUMBERMILL", L["SCARE_SPIDER_INTO_LUMBERMILL"])
         end
         if (step.Qpart) then
-            local IdList = step.Qpart
+            local questIDs = step.Qpart
+            local questToHighlight = nil
+
             if (step.QpartDB) then
                 local wantedQuestId = 0
                 for index = 1, getn(step.QpartDB) do
@@ -323,18 +324,18 @@ function APR:UpdateStep()
                     end
                 end
                 local newList = {}
-                for _, questID in pairs(IdList) do
+                for _, questID in pairs(questIDs) do
                     newList = questID
                     break
                 end
-                IdList = nil
-                IdList = {}
-                IdList[wantedQuestId] = newList
+                questIDs = nil
+                questIDs = {}
+                questIDs[wantedQuestId] = newList
             end
 
             local Flagged = 0
             local Total = 0
-            for questID, objectives in pairs(IdList) do
+            for questID, objectives in pairs(questIDs) do
                 for _, objectiveIndex in pairs(objectives) do
                     Total = Total + 1
                     local qid = questID .. "-" .. objectiveIndex
@@ -353,6 +354,8 @@ function APR:UpdateStep()
                                 APR.currentStep:AddQuestSteps(questID, APR.ActiveQuests[qid], objectiveIndex)
                             end
                         end
+
+                        questToHighlight = questToHighlight or questID
                     elseif (not APR.ActiveQuests[questID] and not MissingQs[questID]) then
                         if (APR.IsInRouteZone) then
                             APR:MissingQuest(questId, objectiveId)
@@ -365,13 +368,17 @@ function APR:UpdateStep()
                 APR:UpdateNextStep()
                 return
             end
+
+            if questToHighlight then
+                APR:TrackQuest(questToHighlight)
+            end
         elseif (step.ExitTutorial) then
             if C_QuestLog.IsOnQuest(step.ExitTutorial) then
                 APR:NextQuestStep()
                 return
             end
         elseif (step.PickUp) then
-            IdList = step.PickUp
+            local questIDs = step.PickUp
             local pickUpDB = step.PickUpDB
             if pickUpDB then
                 local flaggedQuest = 0
@@ -388,9 +395,9 @@ function APR:UpdateStep()
                     APR.currentStep:AddQuestSteps(step.PickUp[1], L["PICK_UP_Q"] .. ": 1", "PickUp")
                 end
             else
-                local pickupLeft = #IdList
+                local pickupLeft = #questIDs
                 local Flagged = 0
-                for _, questID in ipairs(IdList) do
+                for _, questID in ipairs(questIDs) do
                     if not (APR.ActiveQuests[questID] or C_QuestLog.IsQuestFlaggedCompleted(questID)) then
                         pickupLeft = pickupLeft - 1
                     end
@@ -398,7 +405,7 @@ function APR:UpdateStep()
                         Flagged = Flagged + 1
                     end
                 end
-                if #IdList == Flagged then
+                if #questIDs == Flagged then
                     if APR.settings.profile.debug then
                         print("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                     end
@@ -406,7 +413,7 @@ function APR:UpdateStep()
                     return
                 elseif APR.IsInRouteZone then
                     APR.currentStep:AddQuestSteps(step.PickUp[1],
-                        L["PICK_UP_Q"] .. ": " .. pickupLeft .. "/" .. #IdList, "PickUp")
+                        L["PICK_UP_Q"] .. ": " .. pickupLeft .. "/" .. #questIDs, "PickUp")
                 end
             end
         elseif (step.Waypoint) then
@@ -415,31 +422,32 @@ function APR:UpdateStep()
             elseif (APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and not IsIndoors() and APR:CheckFlySkill()) then
                 APR:NextQuestStep()
             else
-                IdList = step.Waypoint
-                if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
+                local questID = step.Waypoint
+                if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
                     if (APR.settings.profile.debug) then
                         print("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                     end
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
-                    APR.currentStep:AddExtraLineText("Waypoint" .. IdList, APR.CheckWaypointText())
+                    APR.currentStep:AddExtraLineText("Waypoint" .. questID, APR.CheckWaypointText())
                 end
             end
+            APR:TrackQuest(questID)
         elseif (step.Treasure) then
-            IdList = step.Treasure
-            if (C_QuestLog.IsQuestFlaggedCompleted(IdList)) then
+            local questID = step.Treasure
+            if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
                 if (APR.settings.profile.debug) then
                     print("APR.UpdateStep:Treasure:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
                 APR:NextQuestStep()
                 return
             elseif APR.IsInRouteZone then
-                APR.currentStep:AddQuestSteps(IdList, L["GET_TREASURE"], "Treasure")
+                APR.currentStep:AddQuestSteps(questID, L["GET_TREASURE"], "Treasure")
             end
         elseif (step.DropQuest) then
-            IdList = step.DropQuest
-            if (C_QuestLog.IsQuestFlaggedCompleted(IdList) or APR.ActiveQuests[IdList]) then
+            local questID = step.DropQuest
+            if (C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]) then
                 if (APR.settings.profile.debug) then
                     print("APR.UpdateStep:DropQuest:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
@@ -449,6 +457,8 @@ function APR:UpdateStep()
         elseif (step.Done) then
             local doneList = step.Done
             local doneDBList = step.DoneDB
+            local questToHighlight = nil
+
             if doneDBList then
                 for _, questID in ipairs(doneDBList) do
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID] then
@@ -467,6 +477,8 @@ function APR:UpdateStep()
                 end
                 if C_QuestLog.IsQuestFlaggedCompleted(questID) then
                     Flagged = Flagged + 1
+                else
+                    questToHighlight = questToHighlight or questID
                 end
             end
 
@@ -479,6 +491,10 @@ function APR:UpdateStep()
             elseif APR.IsInRouteZone then
                 APR.currentStep:AddQuestSteps(doneList[1], L["TURN_IN_Q"] .. ": " .. questLeft .. "/" .. #doneList,
                     "Done")
+            end
+
+            if questToHighlight then
+                APR:TrackQuest(questToHighlight)
             end
         elseif (step.WarMode) then
             if C_QuestLog.IsQuestFlaggedCompleted(step.WarMode) or C_PvP.IsWarModeActive() then
@@ -552,9 +568,10 @@ function APR:UpdateStep()
                 APR_QAskPopWanted()
             end
         elseif step.QpartPart then
-            local IdList = step.QpartPart
+            local questIDs = step.QpartPart
+            local questToHighlight = nil
 
-            for questId, objectives in pairs(IdList) do
+            for questId, objectives in pairs(questIDs) do
                 for _, objectiveId in ipairs(objectives) do
                     local qid = questId .. "-" .. objectiveId
                     local questText = APR.ActiveQuests[qid]
@@ -570,10 +587,15 @@ function APR:UpdateStep()
                             APR:MissingQuest(questId, objectiveId)
                             MissingQs[questId] = 1
                         end
+                        questToHighlight = questToHighlight or questId
                     end
 
                     APR:UpdateQpartPartWithQuesText(step, questText)
                 end
+            end
+
+            if questToHighlight then
+                APR:TrackQuest(questToHighlight)
             end
         elseif (step.GossipOptionIDs or step.GossipOptionID) and step.NPCIDs then
             APR.currentStep:AddExtraLineText("TALK_NPC-" .. next(step.NPCIDs), L["TALK_NPC"])
@@ -622,8 +644,8 @@ function APR:UpdateStep()
         end
 
         if step.Fillers then
-            local IdList = step.Fillers
-            for questId, objectives in pairs(IdList) do
+            local questIDs = step.Fillers
+            for questId, objectives in pairs(questIDs) do
                 for _, objectiveId in pairs(objectives) do
                     local qid = questId .. "-" .. objectiveId
                     if C_QuestLog.IsQuestFlaggedCompleted(questId) == false and not APRData[APR.PlayerID].BonusSkips[questId] then
@@ -874,10 +896,10 @@ local function APR_RemoveQuest(questID)
         end
     end
 
-    local IdList, StepP = APR_QuestStepIds()
+    local questIDs, StepP = APR_QuestStepIds()
     if StepP == "Done" then
         local NrLeft = 0
-        for _, questId in pairs(IdList) do
+        for _, questId in pairs(questIDs) do
             if not C_QuestLog.IsQuestFlaggedCompleted(questId) and questID ~= questId then
                 NrLeft = NrLeft + 1
             end
@@ -896,10 +918,10 @@ end
 
 local function APR_AddQuest(questID)
     APR.ActiveQuests[questID] = "P"
-    local IdList, StepP = APR_QuestStepIds()
+    local questIDs, StepP = APR_QuestStepIds()
     if StepP == "PickUp" then
         local NrLeft = 0
-        for _, questId in pairs(IdList) do
+        for _, questId in pairs(questIDs) do
             if (not APR.ActiveQuests[questId]) then
                 NrLeft = NrLeft + 1
             end

@@ -284,3 +284,8 @@ function APR:UpdateQpartPartWithQuesText(step, questText)
         end
     end
 end
+
+function APR:TrackQuest(questID)
+    C_QuestLog.AddQuestWatch(questID)            -- to add to the quest log
+    C_SuperTrack.SetSuperTrackedQuestID(questID) -- to serlect the quest to highlight
+end
