@@ -401,7 +401,7 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex)
         GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. C_QuestLog.GetTitleForQuestID(questID),
             unpack(APR.Color.white))
         GameTooltip:AddLine("|c33ecc00f" .. OBJECTIVES_LABEL .. "|r: " .. objectiveIndex .. " - " .. textObjective,
-            unpack(APR.Color.white))
+            1, 1, 1, true)
         GameTooltip:AddLine("|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
             (APR:IsCampaignQuest(questID) and "|cff00ff00" .. YES .. "|r" or "|ccce0000f" .. NO .. "|r"),
             unpack(APR.Color.white))
