@@ -48,11 +48,15 @@ function APR.command:SlashCmd(input)
         APR.coordinate:RefreshFrameAnchor()
     elseif inputText == 'route' then
         APR.settings:OpenSettings(L["ROUTE"])
+    elseif inputText == 'about' then
+        APR.settings:OpenSettings(L["ABOUT_HELP"])
     elseif inputText == '42' then
         PlaySoundFile("Interface\\Addons\\APR\\APR-Core\\assets\\42.mp3")
         UIErrorsFrame:AddMessage(L["42_COMMAND"], 1.0, 1.0, 0.0, 1.0, UIERRORS_HOLD_TIME)
     elseif (inputText == "help" or inputText == "h") then
         print(L["COMMAND_LIST"] .. ":")
+        print("|cffeda55f/apr |r- " .. L["SHOW_MENU"])
+        print("|cffeda55f/apr about |r- " .. L["SHOW_ABOUT"])
         print("|cffeda55f/apr coord |r- " .. L["COORD_COMMAND"])
         print("|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"])
         print("|cffeda55f/apr forcereset, fr |r- " .. L["FORCERESET_COMMAND"])
