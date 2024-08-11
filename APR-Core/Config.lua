@@ -1233,65 +1233,54 @@ function APR.settings:CreateAboutOption()
         name = L["ABOUT_HELP"],
         type = "group",
         args = {
-            dev = {
+            author = {
                 order = 1,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["WELCOME_DEV"] .. ": |r" .. "Neogeekmo, Rycia, 8goldbow",
+                name = "|cffeda55f" .. L["AUTHOR"] .. ": |r" .. "Neogeekmo",
+            },
+            dev = {
+                order = 2,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = "|cffeda55f" .. L["DEV"] .. ": |r" .. "Neogeekmo, Kamian",
             },
             route_designer = {
-                order = 1.1,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = "|cffeda55f" .. L["ROUTE_DESIGNER"] .. ": |r" .. "Pahonix, Ola",
-            },
-            support = {
-                order = 1.2,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = "|cffeda55f" .. L["WELCOME_SUP"] .. ": |r" .. "NightofStarrs, Pahonix",
-            },
-            version = {
-                order = 1.2,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = "|cffeda55f" .. L["VERSION"] .. ": |r" .. APR.version,
-            },
-            header_help = {
-                order = 2,
-                type = "header",
-                width = "full",
-                name = L["HELP"],
-            },
-            blank0 = {
                 order = 2.1,
                 type = "description",
                 width = "full",
-                name = " ",
+                fontSize = "medium",
+                name = "|cffeda55f" .. L["ROUTE_DESIGNER"] .. ": |r" .. "Pahonix, Ola, Clara",
             },
-            command = {
+            support = {
                 order = 2.2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr reset, r |r- " .. L["RESET_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr forcereset, fr |r- " .. L["FORCERESET_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr skip, s, skippiedoodaa |r- " .. L["SKIP_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr rollback, rb |r- " .. L["ROLLBACK_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr scribe, writer |r- ;) \n" ..
-                    "|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr github |r- " .. L["GITHUB_COMMAND"]
+                name = "|cffeda55f" .. L["SUPPORT"] .. ": |r" .. "NightofStarrs, Pahonix",
             },
-            blank01 = {
+            graphic = {
                 order = 2.3,
                 type = "description",
                 width = "full",
-                name = " ",
+                fontSize = "medium",
+                name = "|cffeda55f" .. L["GRAPHIC"] .. ": |r" .. "Rycia, Neogeekmo",
+            },
+            Translator = {
+                order = 2.4,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = "|cffeda55f" .. L["TRANSLATOR"] .. ": |r" .. "Neogeekmo, Kamian, Mania ",
+            },
+            version = {
+                order = 2.5,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = "|cffeda55f" .. L["VERSION"] .. ": |r" .. APR.version,
             },
             header_disable_Auto = {
                 order = 3,
@@ -1318,24 +1307,64 @@ function APR.settings:CreateAboutOption()
                 width = "full",
                 name = " ",
             },
-            header_Credit_legacy = {
+            header_help = {
                 order = 4,
                 type = "header",
                 width = "full",
-                name = L["LEGACY"],
+                name = L["HELP"],
             },
-            blank2 = {
+            blank0 = {
                 order = 4.1,
                 type = "description",
                 width = "full",
                 name = " ",
             },
-            Zyrrael = {
+            command = {
                 order = 4.2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = L["WELCOME_ZYRR"] .. " " .. L["LEGACY_TEAM"] .. " Deathmessinger, DesMephisto, BrutallStatic",
+                name = "|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr |r- " .. L["SHOW_MENU"] .. "\n" ..
+                    "|cffeda55f/apr about |r- " .. L["SHOW_ABOUT"] .. "\n" ..
+                    "|cffeda55f/apr coord |r- " .. L["COORD_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr forcereset, fr |r- " .. L["FORCERESET_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr github |r- " .. L["GITHUB_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr qol |r- " .. L["QOL_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr reset, r |r- " .. L["RESET_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr resetcustom |r- " .. L["RESET_CUSTOM_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr rollback, rb |r- " .. L["ROLLBACK_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr route |r- " .. L["ROUTE_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr scribe, writer, 42 |r- ;)" .. "\n" ..
+                    "|cffeda55f/apr skip, s, skippiedoodaa |r- " .. L["SKIP_COMMAND"] .. "\n" ..
+                    "|cffeda55f/apr status |r- " .. L["STATUS_COMMAND"]
+            },
+            blank01 = {
+                order = 4.3,
+                type = "description",
+                width = "full",
+                name = " ",
+            },
+            header_Credit_legacy = {
+                order = 5,
+                type = "header",
+                width = "full",
+                name = L["LEGACY"],
+            },
+            blank2 = {
+                order = 5.1,
+                type = "description",
+                width = "full",
+                name = " ",
+            },
+            Zyrrael = {
+                order = 5.2,
+                type = "description",
+                width = "full",
+                fontSize = "medium",
+                name = L["WELCOME_ZYRR"] ..
+                    " " .. L["LEGACY_TEAM"] .. "Deathmessinger, DesMephisto, BrutallStatic",
             },
         }
     }
