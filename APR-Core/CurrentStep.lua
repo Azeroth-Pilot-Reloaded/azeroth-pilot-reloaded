@@ -394,6 +394,21 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex)
     local objectiveContainer = AddStepsFrame(textObjective)
     objectiveContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
     objectiveContainer.questID = questID
+    objectiveContainer:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+        GameTooltip:AddLine(L["QUEST_INFO"])
+        GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questID, unpack(APR.Color.white))
+        GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. C_QuestLog.GetTitleForQuestID(questID),
+            unpack(APR.Color.white))
+        GameTooltip:AddLine("|c33ecc00f" .. OBJECTIVES_LABEL .. "|r: " .. objectiveIndex .. " - " .. textObjective,
+            unpack(APR.Color.white))
+        GameTooltip:AddLine("|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
+            (APR:IsCampaignQuest(questID) and "|cff00ff00" .. YES .. "|r" or "|ccce0000f" .. NO .. "|r"),
+            unpack(APR.Color.white))
+        GameTooltip:Show()
+    end)
+
+    objectiveContainer:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
     self.questsList[questKey] = objectiveContainer
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - objectiveContainer:GetHeight()
 
@@ -446,14 +461,14 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
     end
 
     -- Create the main container for the text
-    local container = AddStepsFrame(text .. ":")
+    local container = AddExtraLineTextFrame(text .. ":")
     container:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
 
     -- Add the sub-container for each quest in the list
     local questFontHeight = 0
     for _, questID in ipairs(questIDList) do
-        local questName = C_QuestLog.GetTitleForQuestID(questID) or UNKNOWN
-        local questText = "- " .. questID .. " - " .. questName
+        local questName = C_QuestLog.GetTitleForQuestID(questID)
+        local questText = questName and ("- " .. questName) or ("- " .. questID .. " - " .. UNKNOWN)
 
         local questFont = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         questFont:SetWordWrap(true)
@@ -463,6 +478,14 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
         questFont:SetText(questText)
         questFont:SetJustifyH("LEFT")
         questFontHeight = questFontHeight + questFont:GetStringHeight()
+        questFont:SetScript("OnEnter", function(self)
+            GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+            GameTooltip:AddLine(L["QUEST_INFO"])
+            GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questID, unpack(APR.Color.white))
+            GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. questName, unpack(APR.Color.white))
+            GameTooltip:Show()
+        end)
+        questFont:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
     end
 
     -- Adjust container height based on the number of quests
@@ -670,7 +693,7 @@ function APR.GetMenu(owner, rootDescription)
     if APR.settings.profile.enableAddon then
         toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
     else
-        toggleAddon = "|c33ecc00f " .. L["ENABLE"] .. "|r"
+        toggleAddon = "|cff00ff00 " .. L["ENABLE"] .. "|r"
     end
 
     rootDescription:CreateTitle(APR.title)

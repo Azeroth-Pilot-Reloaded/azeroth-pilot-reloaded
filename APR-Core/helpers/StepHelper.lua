@@ -289,3 +289,9 @@ function APR:TrackQuest(questID)
     C_QuestLog.AddQuestWatch(questID)            -- to add to the quest log
     C_SuperTrack.SetSuperTrackedQuestID(questID) -- to serlect the quest to highlight
 end
+
+function APR:IsCampaignQuest(questID)
+    local questIndex = C_QuestLog.GetLogIndexForQuestID(questID)
+    local questInfo = C_QuestLog.GetInfo(questIndex)
+    return questInfo and questInfo.campaignID ~= nil
+end

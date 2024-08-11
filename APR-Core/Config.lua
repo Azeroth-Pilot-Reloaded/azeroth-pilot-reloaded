@@ -1395,7 +1395,7 @@ function APR.settings:CreateMiniMapButton()
             if self.profile.enableAddon then
                 toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
             else
-                toggleAddon = "|c33ecc00f " .. L["ENABLE"] .. "|r"
+                toggleAddon = "|cff00ff00 " .. L["ENABLE"] .. "|r"
             end
             tooltip:AddLine(APR.title)
             tooltip:AddLine(L["LEFT_CLICK"] .. ": |cffeda55f" .. L["SHOW_MENU"] .. "|r", unpack(APR.Color.white))
