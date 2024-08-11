@@ -2269,43 +2269,31 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2248,
     },
     {
-        Coord = {
-            x = -2553.6999511719,
-            y = 2457.6000976562,
-        },
+        Waypoint = 80434,
+        Coord = { x = -2553.7, y = 2457.6 },
         ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
         Range = 10,
-        Waypoint = 80434,
         Zone = 2248,
     },
     {
-        Coord = {
-            x = -2586.1000976562,
-            y = 2288.8000488281,
-        },
+        Waypoint = 80434,
+        Coord = { x = -2586.1, y = 2288.8 },
         ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
         Range = 10,
-        Waypoint = 80434,
         Zone = 2248,
     },
     {
-        Coord = {
-            x = -2244.6999511719,
-            y = 2257.8000488281,
-        },
+        Waypoint = 80434,
+        Coord = { x = -2244.7, y = 2257.8 },
         ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
         Range = 10,
-        Waypoint = 80434,
         Zone = 2214,
     },
     {
-        Coord = {
-            x = -2224.8000488281,
-            y = 2401,
-        },
+        Waypoint = 80434,
+        Coord = { x = -2224.8, y = 2401.0 },
         ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
         Range = 10,
-        Waypoint = 80434,
         Zone = 2214,
     },
     {
@@ -2385,11 +2373,8 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2214,
     },
     {
-        Coord = {
-            x = -2812.5,
-            y = 2283.8000488281,
-        },
         SetHS = 78838,
+        Coord = { x = -2812.5, y = 2283.8 },
         Zone = 2214,
     },
     {
@@ -2550,11 +2535,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     {
         Qpart = { [80405] = { 4 } },
         Coord = { x = -2652.9, y = 1839.5 },
-        Fillers = {
-            [82615] = {
-                1,
-            },
-        },
+        Fillers = { [82615] = { 1 } },
         Range = 100,
         Zone = 2214,
     },
@@ -2578,31 +2559,15 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     {
         Qpart = { [80407] = { 1 } },
         Coord = { x = -2544.4, y = 1573.4 },
-        Fillers = {
-            [80406] = { 1 },
-            [82615] = {
-                1,
-                2,
-            },
-        },
+        Fillers = { [80406] = { 1 }, [82615] = { 1, 2 } },
         RaidIcon = 219797,
         ExtraLineText = "INSIDE",
         Range = 10,
         Zone = 2214,
     },
     {
-        Qpart = {
-            [80406] = { 1 },
-            [82615] = {
-                1,
-                2,
-                3
-            },
-        },
+        Qpart = { [80406] = { 1 }, [82615] = { 1, 2, 3 } },
         Coord = { x = -2598.9, y = 1741.3 },
-        Fillers = {
-
-        },
         Range = 230,
         Zone = 2214,
     },
@@ -2620,87 +2585,45 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2214,
     },
     {
-        Coord = {
-            x = 313.60000610352,
-            y = 38.700000762939,
-        },
-        GossipOptionIDs = {
-            120018,
-        },
+        Scenario = { criteriaID = 63492, criteriaIndex = 1, scenarioID = 2354, stepID = 6757 },
+        Coord = { x = 313.6, y = 38.7 },
+        GossipOptionIDs = { 120018 },
         InstanceQuest = true,
-        Scenario = {
-            criteriaID = 63492,
-            criteriaIndex = 1,
-            scenarioID = 2354,
-            stepID = 6757,
-        },
         Zone = 2214,
     },
     {
-        Coord = {
-            x = 313.89999389648,
-            y = 45.600002288818,
-        },
+        Scenario = { criteriaID = 62401, criteriaIndex = 2, scenarioID = 2354, stepID = 6757 },
+        Coord = { x = 313.9, y = 45.6 },
         InstanceQuest = true,
         Range = 5,
-        Scenario = {
-            criteriaID = 62401,
-            criteriaIndex = 2,
-            scenarioID = 2354,
-            stepID = 6757,
-        },
         Zone = 2214,
     },
     {
-        Coord = {
-            x = 265.5,
-            y = -492.60000610352,
-        },
+        Scenario = { criteriaID = 63493, criteriaIndex = 1, scenarioID = 2354, stepID = 6758 },
+        Coord = { x = 265.5, y = -492.6 },
         InstanceQuest = true,
         Range = 600,
-        Scenario = {
-            criteriaID = 63493,
-            criteriaIndex = 1,
-            scenarioID = 2354,
-            stepID = 6758,
-        },
         Zone = 2214,
     },
     {
-        Coord = {
-            x = 288.20001220703,
-            y = -752.29998779297,
-        },
+        Scenario = { criteriaID = 63494, criteriaIndex = 1, scenarioID = 2354, stepID = 6759 },
+        Coord = { x = 288.2, y = -752.3 },
         InstanceQuest = true,
         Range = 20,
-        Scenario = {
-            criteriaID = 63494,
-            criteriaIndex = 1,
-            scenarioID = 2354,
-            stepID = 6759,
-        },
         Zone = 2214,
     },
     {
-        Coord = {
-            x = 314.89999389648,
-            y = -868.79998779297,
-        },
+        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869 },
+        Coord = { x = 314.9, y = -868.8 },
         InstanceQuest = true,
         Range = 5,
-        Scenario = {
-            criteriaID = 64984,
-            criteriaIndex = 1,
-            scenarioID = 2387,
-            stepID = 6869,
-        },
         Zone = 2214,
     },
     {
         Done = { 83749 },
+        Coord = { x = -2680.1, y = 1523.2 },
         ExtraLineText = "LEAVE_DELVE",
         InstanceQuest = true,
-        Coord = { x = -2680.1, y = 1523.2 },
         Zone = 2214,
     },
     {
@@ -2789,25 +2712,35 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2214,
     },
     {
-        Done = { 78634, 78839, 79206 },
+        Done = { 78634, 78839 },
         Coord = { x = -3509.2, y = 2429.2 },
         Zone = 2214,
     },
     {
-        PickUp = { 78638, 78637 },
+        Done = { 79206 },
         Coord = { x = -3509.2, y = 2429.2 },
+        Zone = 2214,
+    },
+    {
+        PickUp = { 78638 },
+        Coord = { x = -3509.2, y = 2429.2 },
+        Zone = 2214,
+    },
+    {
+        PickUp = { 78637 },
+        Coord = { x = -3511.1, y = 2428.9 },
         Zone = 2214,
     },
     {
         Waypoint = 78637,
-        Coord = { x = -3496.9, y = 2670 },
+        Coord = { x = -3496.9, y = 2670.0 },
         ExtraLineText = "ENTER_STORAGE_DEPOT",
         Range = 5,
         Zone = 2214,
     },
     {
         Qpart = { [78637] = { 1, 2 } },
-        Coord = { x = -3379.6, y = 2823 },
+        Coord = { x = -3381.1, y = 2925.2 },
         Fillers = { [78638] = { 2 } },
         Range = 5,
         Zone = 2214,
@@ -2819,8 +2752,13 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2214,
     },
     {
-        Done = { 78637, 78638 },
+        Done = { 78637 },
         Coord = { x = -3511.1, y = 2428.9 },
+        Zone = 2214,
+    },
+    {
+        Done = { 78638 },
+        Coord = { x = -3509.2, y = 2429.2 },
         Zone = 2214,
     },
     {
@@ -2897,7 +2835,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     },
     {
         Qpart = { [78641] = { 1 } },
-        Coord = { x = -4201.10, y = 2469.9 },
+        Coord = { x = -4201.1, y = 2469.9 },
         RaidIcon = 212993,
         Fillers = { [79267] = { 1 } },
         Range = 10,
@@ -2910,8 +2848,13 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2214,
     },
     {
-        Done = { 79267, 78641 },
+        Done = { 79267 },
         Coord = { x = -3786.9, y = 2292.7 },
+        Zone = 2214,
+    },
+    {
+        Done = { 78641 },
+        Coord = { x = -3787.3, y = 2291.0 },
         Zone = 2214,
     },
     {
@@ -2944,7 +2887,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     },
     {
         Scenario = { criteriaID = 64779, criteriaIndex = 1, scenarioID = 2352, stepID = 6843 },
-        Coord = { x = -154.4, y = 413 },
+        Coord = { x = -154.4, y = 413.0 },
         ExtraActionB = 1,
         ExtraLineText = "REMOVE_DISGUISE",
         InstanceQuest = true,
@@ -2953,7 +2896,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     },
     {
         Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844 },
-        Coord = { x = -155.0, y = 223 },
+        Coord = { x = -155.0, y = 223.0 },
         ExtraLineText = "DISGUISE_YOURSELF",
         ExtraActionB = 1,
         InstanceQuest = true,
@@ -3005,14 +2948,24 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2214,
     },
     {
-        PickUp = { 79683, 80079 },
+        PickUp = { 80079 },
+        Coord = { x = -2750.1, y = 2233.0 },
+        Zone = 2214,
+    },
+    {
+        PickUp = { 79683 },
         Coord = { x = -2750.1, y = 2230.8 },
         Zone = 2214,
         Range = 2,
     },
     {
-        PickUp = { 80058, 81999 },
+        PickUp = { 80058 },
         Coord = { x = -2797.7, y = 2129.4 },
+        Zone = 2214,
+    },
+    {
+        PickUp = { 81999 },
+        Coord = { x = -2796.1, y = 2128.7 },
         Zone = 2214,
     },
     {
@@ -3195,7 +3148,13 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Qpart = { [79556] = { 1 } },
         Coord = { x = -2756.7, y = 2311.0 },
         GossipOptionID = 121058,
+        Zone = 2214,
+    },
+    {
+        Qpart = { [79556] = { 2 } },
+        Coord = { x = -2756.7, y = 2311.0 },
         ExtraLineText = "ON_JOB_TRAINING",
+        Range = 20,
         Zone = 2214,
     },
     {
@@ -3517,7 +3476,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Qpart = { [79368] = { 1 }, [79369] = { 1 }, [79481] = { 1 } },
         Coord = { x = -4208.5, y = 1761.5 },
         Faction = "Horde",
-        Range = 60,
+        Range = 70,
         Zone = 2214,
     },
     {
@@ -3629,61 +3588,56 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     },
     {
         Scenario = { criteriaID = 0, criteriaIndex = 1, scenarioID = 2415, stepID = 7059 },
-        Coord = { x = -168.6, y = -282 },
+        Coord = { x = -168.6, y = -282.0 },
         GossipOptionIDs = { 121508 },
         Range = 200,
         InstanceQuest = true,
         Zone = 2214,
     },
     {
+        Scenario = { criteriaID = 69236, criteriaIndex = 1, scenarioID = 2415, stepID = 7798 },
         Coord = { x = -190.0, y = -235.1 },
         GossipOptionIDs = { 123392 },
         InstanceQuest = true,
         Range = 5,
-        Scenario = { criteriaID = 69236, criteriaIndex = 1, scenarioID = 2415, stepID = 7798 },
         Zone = 2214,
     },
     {
+        Scenario = { criteriaID = 66450, criteriaIndex = 2, scenarioID = 2415, stepID = 7060 },
         Coord = { x = -193.7, y = -371.0 },
         InstanceQuest = true,
         ExtraActionB = 1,
         Range = 5,
-        Scenario = { criteriaID = 66450, criteriaIndex = 2, scenarioID = 2415, stepID = 7060 },
         Zone = 2214,
     },
     {
+        Scenario = { criteriaID = 69809, criteriaIndex = 1, scenarioID = 2415, stepID = 7060 },
         Coord = { x = -324.0, y = -199.4 },
         InstanceQuest = true,
         ExtraActionB = 1,
         Range = 5,
-        Scenario = { criteriaID = 69809, criteriaIndex = 1, scenarioID = 2415, stepID = 7060 },
         Zone = 2214,
     },
     {
+        Scenario = { criteriaID = 66452, criteriaIndex = 1, scenarioID = 2415, stepID = 7062 },
         Coord = { x = -224.4, y = -89.4 },
         InstanceQuest = true,
         Range = 5,
-        Scenario = { criteriaID = 66452, criteriaIndex = 1, scenarioID = 2415, stepID = 7062 },
         Zone = 2214,
     },
     {
+        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869 },
         Coord = { x = -212.3, y = -23.6, },
         InstanceQuest = true,
         Range = 5,
-        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869 },
         Zone = 2214,
     },
     {
+        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6870 },
         Coord = { x = -207.4, y = -36.5 },
         ExtraLineText = "LEAVE_DELVE",
         InstanceQuest = true,
         Range = 1,
-        Scenario = {
-            criteriaID = 64984,
-            criteriaIndex = 1,
-            scenarioID = 2387,
-            stepID = 6870,
-        },
         Zone = 2214,
     },
     {
@@ -3884,6 +3838,34 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Waypoint = 78703,
         Coord = { x = -4225.1, y = 849.8 },
         Range = 10,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -4242.7, y = 854.3 },
+        Qpart = { [78703] = { 1 } },
+        Range = 10,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -4288.3, y = 813.2 },
+        Qpart = { [78703] = { 2 } },
+        Range = 10,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -4288.3, y = 807.4 },
+        Qpart = { [78703] = { 3 } },
+        Range = 10,
+        Zone = 2214,
+    },
+    {
+        NoArrow = 1,
+        Done = { 78703 },
+        Zone = 2214,
+    },
+    {
+        NoArrow = 1,
+        PickUp = { 78704 },
         Zone = 2214,
     },
 }
