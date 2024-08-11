@@ -370,7 +370,22 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Done = { 78529 },
         Coord = { x = -854.2, y = 2004 },
         Zone = 2248,
+        Faction = "Horde",
         _index = 3,
+    },
+    {
+        Done = { 78529 },
+        Coord = { x = -858.8, y = 2007.4 },
+        Zone = 2248,
+        Faction = "Alliance",
+        _index = 3,
+    },
+    {
+        PickUp = { 78530 },
+        Coord = { x = -858.8, y = 2007.4 },
+        Zone = 2248,
+        Faction = "Alliance",
+        _index = 5,
     },
     {
         PickUp = { 78531 },
@@ -382,6 +397,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         PickUp = { 78530 },
         Coord = { x = -858.8, y = 2007.4 },
         Zone = 2248,
+        Faction = "Horde",
         _index = 5,
     },
     {
