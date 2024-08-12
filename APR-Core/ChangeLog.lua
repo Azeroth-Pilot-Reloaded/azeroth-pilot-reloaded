@@ -79,6 +79,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "vBETA TWW - w33 - c ", "2024-08-13" },
+        "#Bug",
+        "- Removal of raidIcon reset function causing conflict with manual raidIcon",
+        "- Fixed lua error with current step frame in scenario due to new tooltips",
+        "- Added current step frame tooltips for scenario data",
+
+        "#TWW",
+        "- Optimized quest order for the first TWW zone route",
+
         { "vBETA TWW - w33 - b ", "2024-08-12" },
         "#Bug",
         "- Fixed lua error on waypoint with tracking function",
