@@ -1364,33 +1364,6 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 95,
     },
     {
-        Qpart = { [83081] = { 1 } },
-        Coord = { x = -2213.3, y = 1616.2 },
-        Fillers = { [83082] = { 1, 2 } },
-        Range = 165,
-        Zone = 2248,
-        _index = 96,
-    },
-    {
-        Qpart = { [83082] = { 1, 2 } },
-        Coord = { x = -2296.6, y = 1636.5 },
-        Range = 225,
-        Zone = 2248,
-        _index = 97,
-    },
-    {
-        Done = { 83082 },
-        Coord = { x = -2169, y = 1478.9000244141 },
-        Zone = 2248,
-        _index = 98,
-    },
-    {
-        Done = { 83081 },
-        Coord = { x = -2167.3000488281, y = 1471 },
-        Zone = 2248,
-        _index = 99,
-    },
-    {
         Done = { 82796 },
         Coord = { x = -2380.9001464844, y = 1631.2000732422 },
         Zone = 2248,
@@ -1434,6 +1407,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
     {
         Qpart = { [82798] = { 1 }, [82799] = { 1 } },
         Coord = { x = -2439, y = 1649.8 },
+        Fillers = { [83082] = { 1, 2 } },
         Range = 80,
         Zone = 2248,
         _index = 107,
@@ -1473,6 +1447,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
     {
         Waypoint = 82801,
         Coord = { x = -2266.4001464844, y = 1720.0999755859 },
+        Fillers = { [83081] = { 1 }, [83082] = { 1, 2 } },
         Range = 5,
         Zone = 2248,
         _index = 113,
@@ -1480,9 +1455,18 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
     {
         Qpart = { [83335] = { 1 } },
         Coord = { x = -2223, y = 1986 },
+        Fillers = { [83081] = { 1 }, [83082] = { 1, 2 } },
         Range = 30,
         Zone = 2248,
         _index = 114,
+    },
+    {
+        Qpart = { [83081] = { 1 }, [83082] = { 1, 2 } },
+        Coord = { x = -2213.3, y = 1616.2 },
+        Fillers = { [82801] = { 1 } },
+        Range = 165,
+        Zone = 2248,
+        _index = 96,
     },
     {
         Qpart = { [82801] = { 1 } },
@@ -1491,6 +1475,18 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Range = 30,
         Zone = 2248,
         _index = 115,
+    },
+    {
+        Done = { 83082 },
+        Coord = { x = -2169, y = 1478.9000244141 },
+        Zone = 2248,
+        _index = 98,
+    },
+    {
+        Done = { 83081 },
+        Coord = { x = -2167.3000488281, y = 1471 },
+        Zone = 2248,
+        _index = 99,
     },
     {
         Done = { 82801 },
@@ -1588,18 +1584,11 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
     {
         Qpart = { [78573] = { 1, 2 } },
         Button = { ["78573-1"] = 215158 },
-        Fillers = { [78618] = { 1, }, },
+        Fillers = { [78618] = { 1 }, },
         Coord = { x = -2845, y = 1269 },
         Range = 215,
         Zone = 2248,
         _index = 131,
-    },
-    {
-        Qpart = { [78618] = { 1 } },
-        Coord = { x = -2845, y = 1269 },
-        Range = 215,
-        Zone = 2248,
-        _index = 131.2,
     },
     {
         Done = { 78573 },
@@ -1617,6 +1606,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Qpart = { [78574] = { 2 } },
         Button = { ["78574-1"] = 215142 },
         Coord = { x = -2884.5, y = 1266.6 },
+        Fillers = { [78618] = { 1 }, },
         Range = 50,
         Zone = 2248,
         _index = 134,
@@ -1626,6 +1616,13 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Coord = { x = -2971.6999511719, y = 1421.2000732422 },
         Zone = 2248,
         _index = 135,
+    },
+    {
+        Qpart = { [78618] = { 1 } },
+        Coord = { x = -2845, y = 1269 },
+        Range = 215,
+        Zone = 2248,
+        _index = 131.2,
     },
     {
         Waypoint = 83758,
@@ -1642,6 +1639,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             y = -488.60000610352,
         },
         InstanceQuest = true,
+        GossipOptionID = 111366,
         Scenario = {
             criteriaID = 62061,
             criteriaIndex = 1,
@@ -1812,12 +1810,6 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Coord = { x = -3082.4001464844, y = 1957.7000732422 },
         Zone = 2248,
         _index = 152,
-    },
-    {
-        UseHS = 78471,
-        ExtraLineText = "HEARTHSTONE_TO_STONELIGHT_REST",
-        Zone = 2248,
-        _index = 153,
     },
     {
         Waypoint = 78471,
