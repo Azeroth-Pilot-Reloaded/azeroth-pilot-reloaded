@@ -371,7 +371,7 @@ local function AddExtraLineTextFrame(extraLineText)
 end
 
 -- Add/Update quest steps
-function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex)
+function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, isScenario)
     if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
@@ -397,16 +397,31 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex)
     objectiveContainer:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
         GameTooltip:AddLine(L["QUEST_INFO"])
-        GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questID, unpack(APR.Color.white))
-        GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. C_QuestLog.GetTitleForQuestID(questID),
-            unpack(APR.Color.white))
-        GameTooltip:AddLine("|c33ecc00f" .. OBJECTIVES_LABEL .. "|r: " .. objectiveIndex .. " - " .. textObjective,
-            1, 1, 1, true)
-        GameTooltip:AddLine("|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
-            (APR:IsCampaignQuest(questID) and "|cff00ff00" .. YES .. "|r" or "|ccce0000f" .. NO .. "|r"),
-            unpack(APR.Color.white))
+
+        if isScenario then
+            print(questID)
+            print(textObjective)
+            print(objectiveIndex)
+            GameTooltip:AddLine("|c33ecc00f" .. SCENARIOS .. " " .. ID .. ": |r" .. questID, unpack(APR.Color.white))
+            GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. C_ScenarioInfo.GetScenarioStepInfo().title,
+                unpack(APR.Color.white))
+            GameTooltip:AddLine("|c33ecc00fStepID|r: " .. C_ScenarioInfo.GetScenarioStepInfo().stepID,
+                unpack(APR.Color.white))
+            GameTooltip:AddLine("|c33ecc00f" .. OBJECTIVES_LABEL .. "|r: " .. objectiveIndex .. " - " .. textObjective,
+                1, 1, 1, true)
+        else
+            GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questID, unpack(APR.Color.white))
+            GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. C_QuestLog.GetTitleForQuestID(questID),
+                unpack(APR.Color.white))
+            GameTooltip:AddLine("|c33ecc00f" .. OBJECTIVES_LABEL .. "|r: " .. objectiveIndex .. " - " .. textObjective,
+                1, 1, 1, true)
+            GameTooltip:AddLine("|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
+                (APR:IsCampaignQuest(questID) and "|cff00ff00" .. YES .. "|r" or "|ccce0000f" .. NO .. "|r"),
+                unpack(APR.Color.white))
+        end
         GameTooltip:Show()
     end)
+
 
     objectiveContainer:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
     self.questsList[questKey] = objectiveContainer
