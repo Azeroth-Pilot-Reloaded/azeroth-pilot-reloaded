@@ -1725,8 +1725,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     APRData.NPCList[targetID] = targetName
                 end
             end
-        elseif not IsInInstance() and GetRaidTargetIndex("mouseover") then
-            SetRaidTarget("mouseover", 0)
         end
 
         DoEmoteStep(step)
