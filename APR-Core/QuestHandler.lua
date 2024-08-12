@@ -643,7 +643,8 @@ function APR:UpdateStep()
                     APR:UpdateNextStep()
                     return
                 else
-                    APR.currentStep:AddQuestSteps(scenario.scenarioID, criteriaInfo.description, scenario.criteriaID)
+                    APR.currentStep:AddQuestSteps(scenario.scenarioID, criteriaInfo.description, scenario.criteriaID,
+                        true)
                 end
             end
         end
