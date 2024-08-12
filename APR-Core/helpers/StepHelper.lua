@@ -245,12 +245,13 @@ end
 
 function APR:MissingQuest(questId, objectiveId)
     local questTextToAdd
+    questId = questId or UNKNOWN
     if APR:Contains(APR.BonusObj, questId) then
         questTextToAdd = L["DO_BONUS_OBJECTIVE"] .. ": " .. questId
     else
         questTextToAdd = L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questId
     end
-    APR.currentStep:AddQuestSteps(questId, questTextToAdd, objectiveId)
+    APR.currentStep:AddQuestSteps(questId, questTextToAdd, objectiveId, false, true)
 end
 
 function APR:UpdateQpartPart()

@@ -358,8 +358,8 @@ function APR:UpdateStep()
                         questToHighlight = questToHighlight or questID
                     elseif (not APR.ActiveQuests[questID] and not MissingQs[questID]) then
                         if (APR.IsInRouteZone) then
-                            APR:MissingQuest(questId, objectiveId)
-                            MissingQs[questId] = 1
+                            APR:MissingQuest(questID, objectiveIndex)
+                            MissingQs[questID] = 1
                         end
                     end
                 end
@@ -591,23 +591,23 @@ function APR:UpdateStep()
             local questIDs = step.QpartPart
             local questToHighlight = nil
 
-            for questId, objectives in pairs(questIDs) do
-                for _, objectiveId in ipairs(objectives) do
-                    local qid = questId .. "-" .. objectiveId
+            for questID, objectives in pairs(questIDs) do
+                for _, objectiveIndex in ipairs(objectives) do
+                    local qid = questID .. "-" .. objectiveIndex
                     local questText = APR.ActiveQuests[qid]
-                    if questText == "C" or C_QuestLog.IsQuestFlaggedCompleted(questId) then
+                    if questText == "C" or C_QuestLog.IsQuestFlaggedCompleted(questID) then
                         APR:UpdateNextStep()
                         return
                     end
 
                     if APR.IsInRouteZone then
                         if questText then
-                            APR.currentStep:AddQuestSteps(questId, questText, objectiveId)
-                        elseif not MissingQs[questId] then
-                            APR:MissingQuest(questId, objectiveId)
-                            MissingQs[questId] = 1
+                            APR.currentStep:AddQuestSteps(questID, questText, objectiveIndex)
+                        elseif not MissingQs[questID] then
+                            APR:MissingQuest(questID, objectiveIndex)
+                            MissingQs[questID] = 1
                         end
-                        questToHighlight = questToHighlight or questId
+                        questToHighlight = questToHighlight or questID
                     end
 
                     APR:UpdateQpartPartWithQuesText(step, questText)
