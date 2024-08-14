@@ -1,11 +1,17 @@
-<h3 style="text-align: center;"><img src="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/69440fdb-b89b-430e-b9ce-1313f33fe758" width="1400" height="350" /></h3>
+[![GitHub](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/69440fdb-b89b-430e-b9ce-1313f33fe758)](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded)
+
 <h3 style="text-align: center;"><span style="font-size: 24px; font-family: arial;">The continuation of <em>Azeroth Auto Pilot</em>, a leveling Add-On with a legacy.<br />Rebirthed and remastered from the ashes of something great!</span></h3>
-<p style="text-align: center;"><span style="font-size: 12px;"><span style="font-family: arial;"><br /><a href="https://discord.gg/YgcdybKdWX" target="_blank" rel="noopener noreferrer"><img src="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/f9fc38ba-26b0-4669-a584-ce56f0bf57d6" alt="Discord" width="1400" height="100" /></a><a href="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded" target="_blank" rel="noopener noreferrer"><img src="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/2c9d96ac-f38a-4442-9dfc-cc6b3ce36981" alt="GitHub" width="1400" height="100" /></a><a href="https://www.patreon.com/AzerothPilotReloaded" target="_blank" rel="noopener noreferrer"><img src="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/8431a849-5507-4489-b6ab-f3b7993ef4ef" alt="Patreon" width="1400" height="100" /></a></span></span></p>
 <p style="text-align: center;">&nbsp;</p>
+
+[![Discord](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/f9fc38ba-26b0-4669-a584-ce56f0bf57d6)](https://discord.gg/YgcdybKdWX)
+[![GitHub](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/2c9d96ac-f38a-4442-9dfc-cc6b3ce36981)](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded)
+[![CurseForge](https://github.com/user-attachments/assets/1bae5d08-d88b-403a-b902-ad3aa5c55248)](https://www.curseforge.com/wow/addons/azeroth-pilot-reloaded)
+[![Patreon](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/8431a849-5507-4489-b6ab-f3b7993ef4ef)](https://www.patreon.com/AzerothPilotReloaded)
+
 <p style="text-align: center;"><span style="font-size: 24px; font-family: arial;"><strong><span style="font-size: 14px;"><em><a href="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded"><span style="font-family: arial;">If you wish to contribute to our development, head to our GitHub!</span></a></em></span><em><span style="font-size: 12px;"><span style="font-family: arial;"><br /><a href="https://discord.gg/YgcdybKdWX" target="_blank" rel="noopener noreferrer">Visit our Discord for support and translation contribution!</a></span></span><br /></em></strong></span></p>
-<p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 36px; font-family: arial;"><strong><img src="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/6075238f-4042-4403-8fdc-014b4c479a49" alt="Features" width="1400" height="100" /></strong></span></p>
+
+![Features](https://github.com/user-attachments/assets/a3af1185-9b5d-411a-8b14-60a0a21249f9)
+
 <p style="text-align: left;"><span style="font-family: arial; font-size: 16px;"><strong><u>Waypoint Arrow</u></strong></span></p>
 <p style="text-align: left;"><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">Directs you using built in coordinates without the need for TomTom.</span><br /></span></p>
 <p style="text-align: left;">&nbsp;</p>
@@ -41,10 +47,10 @@
 <p>&nbsp;</p>
 <p><span style="font-size: 14px;"><em><strong><span style="font-family: arial;">Note: </span></strong><span style="font-family: arial;">The Auto Quest Pickup and Hand In, Gossip/NPC Chatting, and cutscene skips can be temporarily disabled by holding down the '<strong>Control</strong>' key when interacting with an NPC.</span></em></span></p>
 <p>&nbsp;</p>
-<p>&nbsp;</p>
-<p><img src="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/ef2d04b1-05f9-4828-a259-f486d59409a7" alt="Settings &amp; Commands" width="1400" height="100" /></p>
+
+![Settings & Commands](https://github.com/user-attachments/assets/f691f4d2-d9ee-4a14-8135-2d85a0334c6b)
+
 <p style="text-align: left;"><span style="font-family: arial; font-size: 16px;"><strong>Settings</strong> can be found through "<em>Interface &gt; Addons &gt; Azeroth Pilot Reloaded"</em> or by launching the <em>Options</em> panel via <strong><em>/apr</em></strong>.</span></p>
-<p style="text-align: left;">&nbsp;</p>
 <p style="text-align: left;"><span style="font-size: 16px;"><span style="font-family: arial;">Using the <em><strong>/apr</strong></em> prefix, the below commands are available.</span><span style="font-family: arial;"><br /></span></span><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;"><em><strong>Note:</strong> These commands are displayed with their shorthand versions, variations may be omitted from this list.</em></span></span></p>
 <ul>
 <li style="text-align: left;"><span style="font-family: arial; font-size: 16px;"><em><strong><span style="font-size: 14px;">/apr help, h</span></strong></em><span style="font-size: 14px;"> - Displays the <em>(up-to-date)</em> commands in-game.</span><br /></span></li>
@@ -62,8 +68,9 @@
 <li><span style="font-size: 14px;"><span style="font-family: arial;"><em><strong>/apr&nbsp;</strong></em><strong>42</strong>&nbsp;- ;)</span></span></li>
 </ul>
 <p>&nbsp;</p>
-<p><img src="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/c410925a-a3c4-4d7d-8b92-765dbc828c56" alt="Credits" width="1400" height="100" /></p>
-<p style="text-align: center;">&nbsp;</p>
+
+![Credits](https://github.com/user-attachments/assets/e1e2c4f3-9e84-40fe-af3b-618a0d2a948f)
+
 <p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;"><strong>Note:</strong> Names are all based off of user Discord or GitHub aliasas.</span></em></span></p>
 <p style="text-align: center;"><span style="font-size: 16px;"><em><span style="font-family: arial;"><strong>Core Developers</strong></span></em></span></p>
 <p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;">Periodic &amp; consistant contributors to the addon's code.</span></em></span></p>
