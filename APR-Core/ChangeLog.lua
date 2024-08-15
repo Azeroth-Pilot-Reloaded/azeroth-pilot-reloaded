@@ -79,6 +79,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "vBETA TWW - w33 - d ", "2024-08-15" },
+        "#Bug",
+        "- Fix for some error lua with objective bonus when you leave the zone",
+
+        "#TWW",
+        "- Added end of Ringing Deeps route",
+        "- Added Alliance quests section in Ringing Deeps route",
+
         { "vBETA TWW - w33 - c ", "2024-08-13" },
         "#Bug",
         "- Removal of raidIcon reset function causing conflict with manual raidIcon",
