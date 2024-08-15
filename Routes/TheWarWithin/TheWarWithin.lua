@@ -3145,6 +3145,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     {
         Qpart = { [79556] = { 2 } },
         Coord = { x = -2756.7, y = 2311.0 },
+        GossipOptionID = 121058,
         ExtraLineText = "ON_JOB_TRAINING",
         Range = 20,
         Zone = 2214,
@@ -3557,6 +3558,203 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2214,
     },
     {
+        Coord = { x = -3871.1999511719, y = 1635.8000488281 },
+        Faction = "Alliance",
+        PickUp = { 80508 },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.5, y = 1852.7000732422 },
+        Faction = "Alliance",
+        Qpart = { [80508] = { 1 } },
+        Range = 5,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.5, y = 1852.7000732422 },
+        Done = { 80508 },
+        Faction = "Alliance",
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.5, y = 1852.7000732422 },
+        Faction = "Alliance",
+        PickUp = { 80509, 80510 },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4391.8999023438, y = 2028.2000732422 },
+        Faction = "Alliance",
+        Qpart = { [80509] = { 1 }, [80510] = { 1 } },
+        Range = 30,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.2001953125, y = 1853.0999755859 },
+        Faction = "Alliance",
+        GossipOptionIDs = { 121872 },
+        Qpart = { [80509] = { 2 } },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4369.8002929688, y = 1850.0999755859 },
+        Faction = "Alliance",
+        Qpart = { [80509] = { 3 } },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.2001953125, y = 1852.8000488281 },
+        Done = { 80509, 80510 },
+        Faction = "Alliance",
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.2001953125, y = 1852.8000488281 },
+        Faction = "Alliance",
+        PickUp = { 80511 },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.2001953125, y = 1852.8000488281 },
+        ExtraActionB = 1,
+        ExtraLineText = "USE_DISGUISE",
+        Faction = "Alliance",
+        Qpart = { [80511] = { 1 } },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4269.8999023438, y = 1949 },
+        ExtraActionB = 1,
+        Qpart = { [80511] = { 2 } },
+        Range = 5,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4185.6000976562, y = 1996.9000244141 },
+        Qpart = { [80511] = { 3 } },
+        Range = 5,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4167.5, y = 1960.4000244141 },
+        Faction = "Alliance",
+        Qpart = { [80511] = { 4 } },
+        Range = 5,
+        Zone = 2214
+    },
+    {
+        Done = { 80511 },
+        Faction = "Alliance",
+        NoArrow = 1,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4169, y = 1959.8000488281 },
+        Faction = "Alliance",
+        PickUp = { 80512, 80513 },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4182, y = 1964.9000244141 },
+        Faction = "Alliance",
+        Qpart = { [80513] = { 1, 2 } },
+        Range = 40,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4231.6000976562, y = 1925.9000244141 },
+        Faction = "Alliance",
+        Fillers = { [80513] = { 1, 2 } },
+        Qpart = { [80512] = { 2 } },
+        Range = 5,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4215.8999023438, y = 2003.2000732422 },
+        Faction = "Alliance",
+        Fillers = { [80513] = { 1, 2 } },
+        Qpart = { [80512] = { 3 } },
+        Range = 5,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4182, y = 1964.9000244141 },
+        Faction = "Alliance",
+        Qpart = { [80513] = { 1, 2 } },
+        Range = 40,
+        Zone = 2214
+    },
+    {
+        Done = { 80512, 80513 },
+        Faction = "Alliance",
+        NoArrow = 1,
+        Zone = 2214
+    },
+    {
+        Faction = "Alliance",
+        NoArrow = 1,
+        PickUp = { 80514 },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4175.1000976562, y = 1941.8000488281 },
+        Faction = "Alliance",
+        GossipOptionIDs = { 121909 },
+        Qpart = { [80514] = { 1 } },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4304.8999023438, y = 1934 },
+        ExtraLineText = "ESCORTS_NPC",
+        Faction = "Alliance",
+        Qpart = { [80514] = { 2 } },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4373.7001953125, y = 1863.5 },
+        Done = { 80514 },
+        Faction = "Alliance",
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.6000976562, y = 1852.0999755859 },
+        Faction = "Alliance",
+        PickUp = { 80515 },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4541.3999023438, y = 1939.5999755859 },
+        Faction = "Alliance",
+        Qpart = { [80515] = { 1 }, [81981] = { 1 } },
+        Range = 30,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.3999023438, y = 1852.4000244141 },
+        Done = { 80515 },
+        Faction = "Alliance",
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4373.7001953125, y = 1863.4000244141 },
+        Faction = "Alliance",
+        PickUp = { 80516 },
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4680.2001953125, y = 2165.1999511719 },
+        Faction = "Alliance",
+        Qpart = { [80516] = { 1 } },
+        Range = 10,
+        Zone = 2214
+    },
+    {
+        Coord = { x = -4374.3002929688, y = 1852.3000488281 },
+        Done = { 80516 },
+        Faction = "Alliance",
+        Zone = 2214
+    },
+    {
         Waypoint = 78685,
         Coord = { x = -4657, y = 1978 },
         ExtraLineText = "ENTER_DREAD_PIT_DELVE",
@@ -3581,6 +3779,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     {
         Scenario = { criteriaID = 0, criteriaIndex = 1, scenarioID = 2415, stepID = 7059 },
         Coord = { x = -168.6, y = -282.0 },
+        ExtraLineText = "MANUAL_SKIP",
         GossipOptionIDs = { 121508 },
         Range = 200,
         InstanceQuest = true,
@@ -3624,22 +3823,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Range = 5,
         Zone = 2214,
     },
-    {
-        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6870 },
-        Coord = { x = -207.4, y = -36.5 },
-        ExtraLineText = "LEAVE_DELVE",
-        InstanceQuest = true,
-        Range = 1,
-        Zone = 2214,
-    },
-    {
-        Waypoint = 78685,
-        Coord = { x = -90.9, y = -282.5 },
-        InstanceQuest = true,
-        ExtraLineText = "LEAVE_DELVE",
-        Range = 5,
-        Zone = 2214,
-    },
+
     {
         Waypoint = 78685,
         Coord = { x = -4662.7, y = 1986.8 },
@@ -3812,12 +3996,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2214,
     },
     {
-        Done = { 78701 },
-        NoArrow = 1,
-        Zone = 2214,
-    },
-    {
-        Done = { 78700 },
+        Done = { 78701, 78700 },
         NoArrow = 1,
         Zone = 2214,
     },
@@ -3859,5 +4038,298 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         NoArrow = 1,
         PickUp = { 78704 },
         Zone = 2214,
+    },
+    {
+        Coord = { x = -4287.1, y = 742.8 },
+        Qpart = { [78704] = { 1 } },
+        ExtraLineText = "UP_RAMP",
+        RaidIcon = 213658,
+        Zone = 2214,
+    },
+    {
+        NoArrow = 1,
+        Done = { 78704 },
+        Zone = 2214,
+    },
+    {
+        NoArrow = 1,
+        PickUp = { 78705 },
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -4297.6, y = 732.2 },
+        Qpart = { [78705] = { 1 } },
+        Range = 5,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -4297.6, y = 732.2 },
+        Qpart = { [78705] = { 2 } },
+        ETA = 54,
+        Range = 5,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -4297.6, y = 732.2 },
+        Done = { 78705 },
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -4297.6, y = 732.2 },
+        PickUp = { 78706 },
+        Zone = 2214,
+    },
+    {
+        UseHS = 78706,
+        Zone = 2248,
+    },
+    {
+        Coord = { x = -2754.6, y = 2188.1 },
+        Done = { 78706 },
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2754.6, y = 2188.1 },
+        PickUp = { 78738 },
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2750.7, y = 2835.6 },
+        Done = { 78738 },
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2750.7, y = 2835.6 },
+        PickUp = { 78741, 78742 },
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2972.3, y = 2821.5 },
+        Qpart = { [78741] = { 1 } },
+        Fillers = { [78742] = { 1 } },
+        GossipOptionIDs = { 121209 },
+        RaidIcon = 213674,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2655.0, y = 3155.7 },
+        Qpart = { [78741] = { 2 } },
+        Fillers = { [78742] = { 1 } },
+        GossipOptionIDs = { 121212 },
+        RaidIcon = 213673,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2880.0, y = 3001.1 },
+        Qpart = { [78741] = { 3 } },
+        Fillers = { [78742] = { 1 } },
+        GossipOptionIDs = { 121212 },
+        RaidIcon = 213673,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2886.9, y = 2998.6 },
+        Done = { 78741 },
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2918.8, y = 2885.4 },
+        Qpart = { [78742] = { 1 } },
+        Range = 30,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2747.4, y = 2835.2 },
+        Done = { 78742 },
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2747.4, y = 2835.2 },
+        PickUp = { 78760 },
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2747.4, y = 2835.2 },
+        Qpart = { [78760] = { 1 } },
+        GossipOptionIDs = { 120506 },
+        ETA = 10,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2926.6, y = 3139.1 },
+        Qpart = { [78760] = { 2 } },
+        RaidIcon = 223263,
+        Range = 10,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2729.1, y = 3154.9 },
+        Qpart = { [78760] = { 3, 4 } },
+        Range = 10,
+        Zone = 2214,
+    },
+    {
+        Coord = { x = -2719.5, y = 3337.7 },
+        Done = { 78760 },
+        Zone = 2214,
+    },
+
+
+
+
+
+
+
+
+    {
+        Coord = { x = -2720, y = 3337.5, },
+        IsCampaignQuest = true,
+        PickUp = { 78761, },
+        Zone = 2214,
+        _index = 1,
+    },
+    {
+        Coord = { x = -2698.1999511719, y = 3409.8000488281, },
+        InstanceQuest = true,
+        IsCampaignQuest = true,
+        Qpart = { [78761] = { 1, }, },
+        Zone = 2214,
+        _index = 3,
+    },
+    {
+        Coord = { x = 333.39999389648, y = 1432.3000488281,
+        },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = { criteriaID = 65229, criteriaIndex = 1, scenarioID = 2338, stepID = 6719, },
+        Zone = 2248,
+        _index = 3,
+    },
+    {
+        Coord = { x = 303.80001831055, y = 1432.8000488281,
+        },
+        ExtraActionB = 1,
+        InstanceQuest = true,
+        Range = 30,
+        Scenario = { criteriaID = 66417, criteriaIndex = 2, scenarioID = 2338, stepID = 6720, },
+        Zone = 2248,
+        _index = 4,
+    },
+    {
+        Coord = { x = 303.70001220703, y = 1432.5, },
+        InstanceQuest = true,
+        Range = 30,
+        Scenario = { criteriaID = 66045, criteriaIndex = 1, scenarioID = 2338, stepID = 6720, },
+        Zone = 2248,
+        _index = 5,
+    },
+    {
+        Coord = { x = 201.19999694824, y = 1432.5, },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = { criteriaID = 65469, criteriaIndex = 1, scenarioID = 2338, stepID = 6941, },
+        Zone = 2248,
+        _index = 6,
+    },
+    {
+        Coord = { x = 152, y = 1458.4000244141, },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = { criteriaID = 65423, criteriaIndex = 1, scenarioID = 2338, stepID = 6729, },
+        Zone = 2248,
+        _index = 7,
+    },
+    {
+        Coord = { x = 55, y = 1431.5999755859, },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = { criteriaID = 65482, criteriaIndex = 1, scenarioID = 2338, stepID = 6732, },
+        Zone = 2248,
+        _index = 8,
+    },
+    {
+        Coord = { x = 5.7000002861023, y = 1430.4000244141, },
+        InstanceQuest = true,
+        Range = 10,
+        Scenario = { criteriaID = 65444, criteriaIndex = 2, scenarioID = 2338, stepID = 6732, },
+        Zone = 2248,
+        _index = 9,
+    },
+    {
+        Coord = { x = 5.7000002861023, y = 1430.4000244141, },
+        InstanceQuest = true,
+        Range = 10,
+        Scenario = { criteriaID = 65446, criteriaIndex = 3, scenarioID = 2338, stepID = 6732, },
+        Zone = 2248,
+        _index = 10,
+    },
+    {
+        Coord = { x = -174.5, y = 1432.8000488281, },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = { criteriaID = 65497, criteriaIndex = 1, scenarioID = 2338, stepID = 6943, },
+        Zone = 2248,
+        _index = 11,
+    },
+    {
+        Coord = { x = -231, y = 1433, },
+        InstanceQuest = true,
+        Range = 10,
+        Scenario = { criteriaID = 65464, criteriaIndex = 1, scenarioID = 2338, stepID = 6738, },
+        Zone = 2248,
+        _index = 12,
+    },
+    {
+        Coord = { x = -244.40000915527, y = 1432.7000732422, },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = { criteriaID = 67289, criteriaIndex = 1, scenarioID = 2338, stepID = 6739, },
+        Zone = 2248,
+        _index = 13,
+    },
+    {
+        Coord = { x = -2752.8000488281, y = 2190.1000976562, },
+        Done = { 78761, },
+        IsCampaignQuest = true,
+        Zone = 2214,
+        _index = 14,
+    },
+    {
+        Coord = { x = -2752.8000488281, y = 2190.1000976562, },
+        IsCampaignQuest = true,
+        PickUp = { 79354, },
+        Zone = 2214,
+        _index = 15,
+    },
+    {
+        Coord = { x = -2752.8000488281, y = 2190.1000976562, },
+        Done = { 79354, },
+        IsCampaignQuest = true,
+        Zone = 2214,
+        _index = 16,
+    },
+    {
+        Coord = { x = -2752.8000488281, y = 2190.1000976562, },
+        IsCampaignQuest = true,
+        PickUp = { 81689, },
+        Zone = 2214,
+        _index = 17,
+    },
+    {
+        Coord = { x = -2762.3000488281, y = 2247.1999511719, },
+        IsCampaignQuest = true,
+        Qpart = { [81689] = { 1, }, },
+        Zone = 2214,
+        _index = 18,
+    },
+    {
+        Coord = { x = -2753.1000976562, y = 2190, },
+        Done = { 81689, },
+        IsCampaignQuest = true,
+        Zone = 2214,
+        _index = 19,
+    },
+    {
+        ZoneDoneSave = 1,
     },
 }
