@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "vBETA TWW - w33 - e ", "2024-08-16" },
+        "#TWW",
+        "- Added first 50% of Hallowfall route",
+
         { "vBETA TWW - w33 - d ", "2024-08-15" },
         "#Bug",
         "- Fix for some error lua with objective bonus when you leave the zone",
@@ -114,7 +118,7 @@ function APR.changelog:SetChangeLog()
         "- Fixed TWW - Isle of dorn route Alliance first quest order",
         "- Fixed TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
 
-        { "vBETA TWW - w32", "2024-08-07" },
+        { "vBETA TWW - w32",      "2024-08-07" },
         "#Bug",
         "- Added missing extra button message",
 
@@ -122,7 +126,7 @@ function APR.changelog:SetChangeLog()
         "- Added TWW - Isle of dorn route (~70-72/73)",
         "- Added TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
 
-        { "v4.1.4",          "2024-08-06" },
+        { "v4.1.4", "2024-08-06" },
         "#Bug",
         "- Enabled instance quest ui for every type of instance,",
         "- Fixed lua error if missing objectif on QpartPart step",
