@@ -207,7 +207,7 @@ function APR.Arrow:CalculPosition()
 
     -- Set global distance for transport
     APR.Arrow.Distance = distance
-    if distance >= APR.Arrow.MaxDistanceWrongZone then
+    if distance >= APR.Arrow.MaxDistanceWrongZone and not questStep.InstanceQuest then
         APR.BookingList["UpdateMapId"] = true
         return
     end
