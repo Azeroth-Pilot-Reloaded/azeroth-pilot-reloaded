@@ -4310,7 +4310,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Coord = { x = -2746.8, y = 2281.2 },
         IsCampaignQuest = true,
         Zone = 2214,
-        _index = 1,
     },
     {
         Qpart = { [78658] = { 1 } },
@@ -4318,20 +4317,17 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 5,
         Zone = 2214,
-        _index = 2,
     },
     {
         Qpart = { [78658] = { 2 } },
         Coord = { x = -2008.2, y = 2560.3 },
         GossipOptionIDs = { 120906 },
         Zone = 2215,
-        _index = 3,
     },
     {
         PickUp = { 83769 },
         Coord = { x = -1317.9, y = 2481.7 },
         Zone = 2215,
-        _index = 4,
     },
     {
         Qpart = { [78658] = { 3 } },
@@ -4339,33 +4335,28 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 5,
         Zone = 2215,
-        _index = 5,
     },
     {
         PickUp = { 83768 },
         Coord = { x = -1227.8, y = 2412.6 },
         Zone = 2215,
-        _index = 8,
     },
     {
         Done = { 78658 },
         Coord = { x = -1280.4, y = 2443.6 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 6,
     },
     {
         PickUp = { 78659 },
         Coord = { x = -1280.4, y = 2443.6 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 7,
     },
     {
         GetFP = 2922,
         Coord = { x = -1202.8, y = 2470.2 },
         Zone = 2215,
-        _index = 9,
     },
     {
         Qpart = { [78659] = { 2 } },
@@ -4373,28 +4364,24 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 30,
         Zone = 2215,
-        _index = 11,
     },
     {
         Done = { 78659 },
         Coord = { x = -1544.9, y = 1753.8 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 12,
     },
     {
         PickUp = { 78665 },
         Coord = { x = -1544.9, y = 1753.8 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 13,
     },
     {
         PickUp = { 79999 },
         Coord = { x = -1542.8, y = 1754.0 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 14,
     },
     {
         QpartPart = { [78665] = { 1 } },
@@ -4402,7 +4389,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [79999] = { 1 } },
         TrigText = "1/6",
         Zone = 2215,
-        _index = 15,
     },
     {
         QpartPart = { [78665] = { 1 } },
@@ -4410,7 +4396,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [79999] = { 1 } },
         TrigText = "2/6",
         Zone = 2215,
-        _index = 16,
     },
     {
         QpartPart = { [78665] = { 1 } },
@@ -4418,7 +4403,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [79999] = { 1 } },
         TrigText = "3/6",
         Zone = 2215,
-        _index = 17,
     },
     {
         QpartPart = { [78665] = { 1 } },
@@ -4426,7 +4410,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [79999] = { 1 } },
         TrigText = "4/6",
         Zone = 2215,
-        _index = 18,
     },
     {
         QpartPart = { [78665] = { 1 } },
@@ -4434,7 +4417,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [79999] = { 1 } },
         TrigText = "5/6",
         Zone = 2215,
-        _index = 19,
     },
     {
         QpartPart = { [78665] = { 1 } },
@@ -4442,7 +4424,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [79999] = { 1 } },
         TrigText = "6/6",
         Zone = 2215,
-        _index = 20,
     },
     {
         Qpart = { [79999] = { 1 } },
@@ -4450,7 +4431,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 30,
         Zone = 2214,
-        _index = 21,
     },
     {
         Qpart = { [79999] = { 2 } },
@@ -4458,35 +4438,30 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 5,
         Zone = 2215,
-        _index = 22,
     },
     {
         Done = { 79999 },
         Coord = { x = -1421.9, y = 1565.5 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 23,
     },
     {
         Done = { 78665 },
         Coord = { x = -1417.5, y = 1547.6 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 24,
     },
     {
         PickUp = { 78666 },
         Coord = { x = -1417.5, y = 1547.6 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 25,
     },
     {
         PickUp = { 78667 },
         Coord = { x = -1422.6, y = 1564.7 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 26,
     },
     {
         Qpart = { [78666] = { 1 }, [78667] = { 1 } },
@@ -4494,28 +4469,24 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 30,
         Zone = 2215,
-        _index = 27,
     },
     {
         Done = { 78666 },
         Coord = { x = -1417.5, y = 1547.6 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 28,
     },
     {
         Done = { 78667 },
         Coord = { x = -1422.6, y = 1564.4 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 29,
     },
     {
         PickUp = { 78668 },
         Coord = { x = -1423.3, y = 1564.2 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 30,
     },
     {
         Waypoint = 78668,
@@ -4524,7 +4495,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         InstanceQuest = true,
         Range = 5,
         Zone = 2215,
-        _index = 31,
     },
     {
         Waypoint = 78668,
@@ -4533,7 +4503,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         InstanceQuest = true,
         Range = 5,
         Zone = 2215,
-        _index = 31,
     },
     {
         Scenario = { criteriaID = 66541, criteriaIndex = 1, scenarioID = 2422, stepID = 7029 },
@@ -4541,7 +4510,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         GossipOptionIDs = { 121408 },
         InstanceQuest = true,
         Zone = 2215,
-        _index = 32,
     },
     {
         Scenario = { criteriaID = 66542, criteriaIndex = 1, scenarioID = 2422, stepID = 7104 },
@@ -4549,7 +4517,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         InstanceQuest = true,
         Range = 250,
         Zone = 2215,
-        _index = 33,
     },
     {
         Scenario = { criteriaID = 68253, criteriaIndex = 1, scenarioID = 2422, stepID = 7105 },
@@ -4557,7 +4524,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         InstanceQuest = true,
         Range = 250,
         Zone = 2215,
-        _index = 34,
     },
     {
         Scenario = { criteriaID = 66546, criteriaIndex = 1, scenarioID = 2422, stepID = 7031 },
@@ -4565,7 +4531,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         InstanceQuest = true,
         Range = 5,
         Zone = 2215,
-        _index = 35,
     },
     {
         Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869 },
@@ -4573,7 +4538,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         InstanceQuest = true,
         Range = 5,
         Zone = 2215,
-        _index = 36,
     },
     {
         Coord = { x = -1124.0, y = 1520.4 },
@@ -4582,7 +4546,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Range = 5,
         Waypoint = 78668,
         Zone = 2215,
-        _index = 37,
     },
     {
         Coord = {
@@ -4594,14 +4557,12 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Range = 5,
         Waypoint = 78668,
         Zone = 2215,
-        _index = 38,
     },
     {
         Done = { 78668 },
         Coord = { x = -375.1, y = 1374.1 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 38,
     },
     {
         Coord = {
@@ -4613,7 +4574,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78670,
         },
         Zone = 2215,
-        _index = 39,
     },
     {
         Coord = {
@@ -4625,7 +4585,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78669,
         },
         Zone = 2215,
-        _index = 40,
     },
     {
         QpartPart = { [78670] = { 1 } },
@@ -4634,7 +4593,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         TrigText = "1/4",
         Range = 2,
         Zone = 2215,
-        _index = 41,
     },
     {
         QpartPart = { [78670] = { 1 } },
@@ -4643,7 +4601,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         TrigText = "2/4",
         Range = 2,
         Zone = 2215,
-        _index = 42,
     },
     {
         QpartPart = { [78670] = { 1 } },
@@ -4652,7 +4609,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         TrigText = "3/4",
         Range = 2,
         Zone = 2215,
-        _index = 43,
     },
     {
         QpartPart = { [78670] = { 1 } },
@@ -4661,7 +4617,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         TrigText = "4/4",
         Range = 2,
         Zone = 2215,
-        _index = 44,
     },
     {
         Qpart = { [78669] = { 1 } },
@@ -4669,7 +4624,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 60,
         Zone = 2215,
-        _index = 45,
     },
     {
         QpartPart = { [78670] = { 2 } },
@@ -4677,7 +4631,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         TrigText = "1/4",
         Range = 2,
         Zone = 2215,
-        _index = 46,
     },
     {
         QpartPart = { [78670] = { 2 } },
@@ -4685,7 +4638,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         TrigText = "2/4",
         Range = 2,
         Zone = 2215,
-        _index = 47,
     },
     {
         QpartPart = { [78670] = { 2 } },
@@ -4693,7 +4645,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         TrigText = "3/4",
         Range = 2,
         Zone = 2215,
-        _index = 48,
     },
     {
         QpartPart = { [78670] = { 2 } },
@@ -4701,21 +4652,18 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         TrigText = "4/4",
         Range = 2,
         Zone = 2215,
-        _index = 49,
     },
     {
         Done = { 78669, 78670 },
         Coord = { x = -378.8, y = 1379.6 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 50,
     },
     {
         Coord = { x = -378.8, y = 1379.6 },
         IsCampaignQuest = true,
         PickUp = { 82836 },
         Zone = 2215,
-        _index = 51,
     },
     {
         Coord = { x = -382.9, y = 1167.3 },
@@ -4724,42 +4672,36 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         RaidIcon = 224311,
         Range = 15,
         Zone = 2215,
-        _index = 52,
     },
     {
         Done = { 82836 },
         Coord = { x = -326.3, y = 1161.8 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 53,
     },
     {
         PickUp = { 78671 },
         Coord = { x = -326.3, y = 1161.8 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 54,
     },
     {
         Qpart = { [78671] = { 1 } },
         Coord = { x = -92.5, y = 1362.5 },
         GossipOptionIDs = { 120738 },
         Zone = 2215,
-        _index = 55,
     },
     {
         Done = { 78671 },
         Coord = { x = -93.5, y = 1359.5 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 56,
     },
     {
         PickUp = { 78672 },
         Coord = { x = -93.5, y = 1359.5 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 57,
     },
     {
         Qpart = { [78672] = { 1 } },
@@ -4768,30 +4710,21 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 3,
         Zone = 2215,
-        _index = 58,
     },
     {
         GetFP = 2943,
         Coord = { x = 381.8, y = 2687.5 },
         Zone = 2215,
-        _index = 59,
     },
     {
         PickUp = { 84392 },
         Coord = { x = 309.0, y = 2752.6 },
-        Zone = 2215,
-        _index = 61,
-    },
-    {
-        SetHS = 79297,
-        Coord = { x = 317.10000610352, y = 2752.5, },
         Zone = 2215,
     },
     {
         PickUp = { 83767 },
         Coord = { x = 355.3, y = 2751.2 },
         Zone = 2215,
-        _index = 60,
     },
 
     {
@@ -4799,21 +4732,18 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Coord = { x = -76, y = 3199.5 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 62,
     },
     {
         PickUp = { 78929 },
         Coord = { x = -76, y = 3199.5 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 63,
     },
     {
         PickUp = { 78932 },
         Coord = { x = -77.8, y = 3197 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 64,
     },
     {
         QpartPart = { [78929] = { 1 } },
@@ -4821,7 +4751,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [78932] = { 1 }, [81568] = { 1 } },
         TrigText = "1/5",
         Zone = 2215,
-        _index = 65,
     },
     {
         QpartPart = { [78929] = { 1 } },
@@ -4829,7 +4758,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [78932] = { 1 }, [81568] = { 1 } },
         TrigText = "2/5",
         Zone = 2215,
-        _index = 66,
     },
     {
         QpartPart = { [78929] = { 1 } },
@@ -4837,7 +4765,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [78932] = { 1 }, [81568] = { 1 } },
         TrigText = "3/5",
         Zone = 2215,
-        _index = 67,
     },
     {
         QpartPart = { [78929] = { 1 } },
@@ -4845,7 +4772,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [78932] = { 1 }, [81568] = { 1 } },
         TrigText = "4/5",
         Zone = 2215,
-        _index = 68,
     },
     {
         QpartPart = { [78929] = { 1 } },
@@ -4853,7 +4779,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Fillers = { [78932] = { 1 }, [81568] = { 1 } },
         TrigText = "5/5",
         Zone = 2215,
-        _index = 69,
     },
     {
         Qpart = { [78932] = { 1 } },
@@ -4862,28 +4787,24 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 30,
         Zone = 2215,
-        _index = 70,
     },
     {
         Coord = { x = -137.9, y = 3463.1 },
         Qpart = { [81568] = { 1 } },
         Range = 30,
         Zone = 2215,
-        _index = 71,
     },
     {
         Coord = { x = -76.7, y = 3236.9 },
         Done = { 78932 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 72,
     },
     {
         Coord = { x = -77.3, y = 3238.1 },
         IsCampaignQuest = true,
         PickUp = { 78934 },
         Zone = 2215,
-        _index = 73,
     },
     {
         Qpart = { [78934] = { 1 } },
@@ -4891,14 +4812,12 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         IsCampaignQuest = true,
         Range = 5,
         Zone = 2215,
-        _index = 74,
     },
     {
         PickUp = { 78936 },
         Coord = { x = -180.8, y = 3130.9 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 75,
     },
     {
         Qpart = { [78936] = { 2 } },
@@ -4907,7 +4826,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         RaidIcon = 216526,
         Range = 10,
         Zone = 2215,
-        _index = 76,
     },
     {
         QpartPart = { [78934] = { 2 } },
@@ -4915,7 +4833,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         TrigText = "1/6",
         ExtraActionB = 1,
         Zone = 2215,
-        _index = 77,
     },
     {
         QpartPart = { [78934] = { 2 } },
@@ -4923,7 +4840,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         ExtraActionB = 1,
         TrigText = "2/6",
         Zone = 2215,
-        _index = 78,
     },
     {
         Qpart = { [78936] = { 1 } },
@@ -4932,7 +4848,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         RaidIcon = 216536,
         Range = 30,
         Zone = 2215,
-        _index = 79,
     },
     {
         QpartPart = { [78934] = { 2 } },
@@ -4940,7 +4855,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         ExtraActionB = 1,
         TrigText = "3/6",
         Zone = 2215,
-        _index = 80,
     },
     {
         QpartPart = { [78934] = { 2 } },
@@ -4948,14 +4862,12 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         ExtraActionB = 1,
         TrigText = "4/6",
         Zone = 2215,
-        _index = 81,
     },
     {
         QpartPart = { [78934] = { 2 } },
         Coord = { x = -214.0, y = 3074.2 },
         TrigText = "5/6",
         Zone = 2215,
-        _index = 82,
     },
     {
         QpartPart = { [78934] = { 2 } },
@@ -4963,7 +4875,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         ExtraActionB = 1,
         TrigText = "6/6",
         Zone = 2215,
-        _index = 83,
     },
     {
         Qpart = { [78936] = { 3 } },
@@ -4972,28 +4883,24 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         RaidIcon = 216527,
         Range = 6,
         Zone = 2215,
-        _index = 84,
     },
     {
         Done = { 78936 },
         Coord = { x = -182.2, y = 3131.5 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 85,
     },
     {
         Done = { 78934 },
         Coord = { x = -179.6, y = 3131.4 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 86,
     },
     {
         PickUp = { 78937 },
         Coord = { x = -179.6, y = 3131.4 },
         IsCampaignQuest = true,
         Zone = 2215,
-        _index = 87,
     },
     {
         Coord = {
@@ -5013,8 +4920,8 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     },
     {
         Coord = {
-            x = -183.80000305176,
-            y = 3001.3000488281,
+            x = -230.69999694824,
+            y = 2653.8000488281,
         },
         Done = {
             78937,
@@ -5031,7 +4938,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78939,
         },
         Zone = 2215,
-        _index = 3,
     },
     {
         Coord = {
@@ -5045,7 +4951,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 2,
         Zone = 2215,
-        _index = 4,
     },
     {
         Coord = {
@@ -5060,7 +4965,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Range = 2,
         TrigText = "1/4",
         Zone = 2215,
-        _index = 6,
     },
     {
         Coord = {
@@ -5077,7 +4981,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         TrigText = "2/4",
         Zone = 2215,
-        _index = 6,
     },
     {
         Coord = {
@@ -5092,7 +4995,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Range = 2,
         TrigText = "3/4",
         Zone = 2215,
-        _index = 7,
     },
     {
         Coord = {
@@ -5107,7 +5009,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Range = 2,
         TrigText = "4/4",
         Zone = 2215,
-        _index = 8,
     },
     {
         Coord = {
@@ -5123,7 +5024,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             },
         },
         Zone = 2215,
-        _index = 9,
     },
     {
         Coord = {
@@ -5134,7 +5034,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78939,
         },
         Zone = 2215,
-        _index = 10,
     },
     {
         Coord = {
@@ -5145,7 +5044,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78951,
         },
         Zone = 2215,
-        _index = 11,
     },
     {
         Coord = {
@@ -5156,7 +5054,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Range = 5,
         Waypoint = 78951,
         Zone = 2215,
-        _index = 12,
     },
     {
         Coord = {
@@ -5171,7 +5068,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 30,
         Zone = 2215,
-        _index = 13,
     },
     {
         Coord = {
@@ -5182,7 +5078,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78951,
         },
         Zone = 2215,
-        _index = 14,
     },
     {
         Coord = {
@@ -5193,7 +5088,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78952,
         },
         Zone = 2215,
-        _index = 15,
     },
     {
         Coord = {
@@ -5208,7 +5102,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 5,
         Zone = 2215,
-        _index = 17,
     },
     {
         Coord = {
@@ -5219,7 +5112,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78952,
         },
         Zone = 2215,
-        _index = 17,
     },
     {
         Coord = {
@@ -5230,7 +5122,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             81690,
         },
         Zone = 2215,
-        _index = 18,
     },
     {
         Coord = {
@@ -5244,7 +5135,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             },
         },
         Zone = 2215,
-        _index = 19,
     },
     {
         Coord = {
@@ -5255,7 +5145,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             81690,
         },
         Zone = 2215,
-        _index = 20,
     },
     {
         Coord = {
@@ -5266,7 +5155,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78954,
         },
         Zone = 2215,
-        _index = 21,
     },
     {
         Coord = {
@@ -5282,7 +5170,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             },
         },
         Zone = 2215,
-        _index = 22,
     },
     {
         Coord = {
@@ -5293,7 +5180,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78954,
         },
         Zone = 2215,
-        _index = 23,
     },
     {
         Coord = {
@@ -5304,7 +5190,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78607,
         },
         Zone = 2215,
-        _index = 24,
     },
     {
         Coord = {
@@ -5315,7 +5200,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             84392,
         },
         Zone = 2215,
-        _index = 25,
     },
     {
         Coord = {
@@ -5326,7 +5210,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             82843,
         },
         Zone = 2215,
-        _index = 26,
     },
     {
         Coord = {
@@ -5340,7 +5223,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 30,
         Zone = 2215,
-        _index = 27,
     },
     {
         Coord = {
@@ -5351,7 +5233,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             82843,
         },
         Zone = 2215,
-        _index = 28,
     },
     {
         Coord = {
@@ -5362,7 +5243,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             82844,
         },
         Zone = 2215,
-        _index = 29,
     },
     {
         Coord = {
@@ -5376,7 +5256,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 30,
         Zone = 2215,
-        _index = 30,
     },
     {
         Coord = {
@@ -5390,7 +5269,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 30,
         Zone = 2215,
-        _index = 30,
     },
     {
         Coord = {
@@ -5401,7 +5279,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             82844,
         },
         Zone = 2215,
-        _index = 32,
     },
     {
         Coord = {
@@ -5412,7 +5289,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             82847,
         },
         Zone = 2215,
-        _index = 33,
     },
     {
         Coord = {
@@ -5426,7 +5302,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 5,
         Zone = 2215,
-        _index = 34,
     },
     {
         Coord = {
@@ -5440,7 +5315,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 5,
         Zone = 2215,
-        _index = 34,
     },
     {
         Coord = {
@@ -5451,7 +5325,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             82847,
         },
         Zone = 2215,
-        _index = 36,
     },
     {
         Coord = {
@@ -5462,7 +5335,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             82848,
         },
         Zone = 2215,
-        _index = 37,
     },
     {
         Coord = {
@@ -5476,7 +5348,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             },
         },
         Zone = 2215,
-        _index = 38,
     },
     {
         Coord = {
@@ -5487,7 +5358,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             82848,
         },
         Zone = 2215,
-        _index = 39,
     },
     {
         Coord = {
@@ -5499,7 +5369,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Range = 5,
         Waypoint = 78607,
         Zone = 2215,
-        _index = 40,
     },
     {
         Coord = {
@@ -5511,7 +5380,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Range = 5,
         Waypoint = 78607,
         Zone = 2215,
-        _index = 41,
     },
     {
         Coord = {
@@ -5529,7 +5397,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             stepID = 7152,
         },
         Zone = 2215,
-        _index = 43,
     },
     {
         InstanceQuest = true,
@@ -5541,7 +5408,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             stepID = 7094,
         },
         Zone = 2215,
-        _index = 43,
     },
     {
         Coord = {
@@ -5557,7 +5423,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             stepID = 7095,
         },
         Zone = 2215,
-        _index = 44,
     },
     {
         Coord = {
@@ -5573,14 +5438,16 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             stepID = 6869,
         },
         Zone = 2215,
-        _index = 45,
     },
     {
+        Coord = {
+            x = -183.5,
+            y = -833.3
+        },
         ExtraLineText = "LEAVE_DELVE",
         InstanceQuest = true,
         UseHS = 78607,
         Zone = 2248,
-        _index = 117,
     },
     {
         Coord = {
@@ -5591,7 +5458,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78607,
         },
         Zone = 2215,
-        _index = 49,
     },
     {
         Coord = {
@@ -5602,7 +5468,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78613,
         },
         Zone = 2215,
-        _index = 50,
     },
     {
         Coord = {
@@ -5612,7 +5477,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Range = 5,
         Waypoint = 78613,
         Zone = 2215,
-        _index = 51,
     },
     {
         Coord = {
@@ -5626,7 +5490,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 5,
         Zone = 2215,
-        _index = 52,
     },
     {
         BuyMerchant = {
@@ -5636,6 +5499,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
                 questID = 78613,
             },
         },
+        GossipOptionID = 120718,
         Coord = {
             x = 848.20001220703,
             y = 1850.5,
@@ -5646,7 +5510,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             },
         },
         Zone = 2215,
-        _index = 53,
     },
     {
         Coord = {
@@ -5660,7 +5523,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 2,
         Zone = 2215,
-        _index = 54,
     },
     {
         Coord = {
@@ -5671,7 +5533,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78613,
         },
         Zone = 2215,
-        _index = 55,
     },
     {
         Coord = {
@@ -5682,7 +5543,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             79297,
         },
         Zone = 2215,
-        _index = 56,
     },
     {
         Coord = {
@@ -5691,7 +5551,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         SetHS = 79297,
         Zone = 2215,
-        _index = 57,
     },
     {
         Coord = {
@@ -5705,7 +5564,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         TrigText = "1/8",
         Zone = 2215,
-        _index = 56,
     },
     {
         Coord = {
@@ -5719,7 +5577,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         TrigText = "2/8",
         Zone = 2215,
-        _index = 57,
     },
     {
         Coord = {
@@ -5733,7 +5590,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         TrigText = "3/8",
         Zone = 2215,
-        _index = 58,
     },
     {
         Coord = {
@@ -5747,7 +5603,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         TrigText = "4/8",
         Zone = 2215,
-        _index = 59,
     },
     {
         Coord = {
@@ -5761,7 +5616,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         TrigText = "5/8",
         Zone = 2215,
-        _index = 60,
     },
     {
         Coord = {
@@ -5775,7 +5629,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         TrigText = "6/8",
         Zone = 2215,
-        _index = 61,
     },
     {
         Coord = {
@@ -5789,7 +5642,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         TrigText = "7/8",
         Zone = 2215,
-        _index = 62,
     },
     {
         Coord = {
@@ -5803,7 +5655,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         TrigText = "8/8",
         Zone = 2215,
-        _index = 63,
     },
     {
         Coord = {
@@ -5817,7 +5668,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 5,
         Zone = 2215,
-        _index = 64,
     },
     {
         Coord = {
@@ -5828,7 +5678,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             83755,
         },
         Zone = 2215,
-        _index = 65,
     },
     {
         Coord = {
@@ -5842,7 +5691,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Range = 5,
         Zone = 2215,
-        _index = 66,
     },
     {
         Coord = {
@@ -5853,7 +5701,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             79297,
         },
         Zone = 2215,
-        _index = 67,
     },
     {
         Coord = {
@@ -5864,6 +5711,1473 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             78626,
         },
         Zone = 2215,
-        _index = 68,
+    },
+    {
+        Coord = {
+            x = 973.29998779297,
+            y = 2007.8000488281,
+        },
+        PickUp = {
+            82216,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 972.60003662109,
+            y = 2004.4000244141,
+        },
+        GossipOptionIDs = {
+            122432,
+        },
+        Qpart = {
+            [82216] = {
+                1,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 975,
+            y = 2000.4000244141,
+        },
+        GossipOptionIDs = {
+            122414,
+            122429,
+            122425,
+            122421,
+        },
+        Qpart = {
+            [82216] = {
+                2,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 972.60003662109,
+            y = 2004.0999755859,
+        },
+        Done = {
+            82216,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 972.60003662109,
+            y = 2004.0999755859,
+        },
+        PickUp = {
+            82213,
+            82214,
+            82215,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 923.20001220703,
+            y = 2054.6999511719,
+        },
+        GossipOptionIDs = {
+            120333,
+        },
+        Qpart = {
+            [78626] = {
+                1,
+            },
+        },
+        Range = 30,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 973.10003662109,
+            y = 2007.7000732422,
+        },
+        Done = {
+            78626,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 973.10003662109,
+            y = 2007.7000732422,
+        },
+        PickUp = {
+            78614,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 947.70001220703,
+            y = 2029.8000488281,
+        },
+        GetFP = 2941,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 910.10003662109,
+            y = 1872.4000244141,
+        },
+        GossipOptionIDs = {
+            122367,
+        },
+        QpartPart = {
+            [78614] = {
+                1,
+            },
+        },
+        TrigText = "1/3",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 919.40002441406,
+            y = 1866.7000732422,
+        },
+        QpartPart = {
+            [78614] = {
+                1,
+            },
+        },
+        TrigText = "2/3",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 926.5,
+            y = 1881.7000732422,
+        },
+        ExtraLineText = "KID_IS_BEHIND_HOUSE",
+        GossipOptionIDs = {
+            121459,
+        },
+        QpartPart = {
+            [78614] = {
+                1,
+            },
+        },
+        TrigText = "3/3",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 938.90002441406,
+            y = 1868,
+        },
+        Done = {
+            78614,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 931.60003662109,
+            y = 1861.8000488281,
+        },
+        PickUp = {
+            79151,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 938.40002441406,
+            y = 1868.2000732422,
+        },
+        PickUp = {
+            78615,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 56.5,
+            y = 2161.1000976562,
+        },
+        Qpart = {
+            [79151] = {
+                1,
+            },
+        },
+        Range = 2,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 47.400001525879,
+            y = 2162.6999511719,
+        },
+        GossipOptionIDs = {
+            120791,
+        },
+        Qpart = {
+            [79151] = {
+                2,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 47.400001525879,
+            y = 2162.6999511719,
+        },
+        Done = {
+            79151,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 47.400001525879,
+            y = 2162.6999511719,
+        },
+        PickUp = {
+            79152,
+            83182,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 169.40000915527,
+            y = 2299.6999511719,
+        },
+        Fillers = {
+            [79152] = {
+                1,
+            },
+        },
+        QpartPart = {
+            [83182] = {
+                1,
+            },
+        },
+        TrigText = "1/4",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 271.30001831055,
+            y = 2272,
+        },
+        Fillers = {
+            [79152] = {
+                1,
+            },
+        },
+        QpartPart = {
+            [83182] = {
+                1,
+            },
+        },
+        TrigText = "2/4",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 348.20001220703,
+            y = 2147.1999511719,
+        },
+        Fillers = {
+            [79152] = {
+                1,
+            },
+        },
+        QpartPart = {
+            [83182] = {
+                1,
+            },
+        },
+        TrigText = "3/4",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 244.80000305176,
+            y = 2003.3000488281,
+        },
+        Fillers = {
+            [79152] = {
+                1,
+            },
+        },
+        QpartPart = {
+            [83182] = {
+                1,
+            },
+        },
+        TrigText = "4/4",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 208.6,
+            y = 2043.4,
+        },
+        Qpart = {
+            [79152] = {
+                1,
+            },
+        },
+        Range = 30,
+        Zone = 2215,
+    },
+    {
+        Done = {
+            79152,
+            83182,
+        },
+        NoArrow = 1,
+        Zone = 2215,
+    },
+    {
+        NoArrow = 1,
+        PickUp = {
+            79153,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 351.89999389648,
+            y = 1958.5,
+        },
+        Qpart = {
+            [79153] = {
+                1,
+            },
+        },
+        Range = 10,
+        Zone = 2215,
+    },
+    {
+        Done = {
+            79153,
+        },
+        NoArrow = 1,
+        Zone = 2215,
+    },
+    {
+        NoArrow = 1,
+        PickUp = {
+            79154,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 80.099998474121,
+            y = 2154.5,
+        },
+        Qpart = {
+            [79154] = {
+                1,
+            },
+        },
+        Range = 1,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 180.60000610352,
+            y = 2149.1999511719,
+        },
+        ExtraLineText = "GO_DOWN_TO_BOTTOM_CHASM",
+        Range = 5,
+        Waypoint = 83768,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 192.10000610352,
+            y = 1977.9000244141,
+        },
+        ExtraLineText = "ENTER_SINKHOLE_DELVE",
+        InstanceQuest = true,
+        Range = 5,
+        Waypoint = 83768,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1659.5,
+            y = -417.20001220703,
+        },
+        InstanceQuest = true,
+        Range = 100,
+        Scenario = {
+            criteriaID = 66466,
+            criteriaIndex = 1,
+            scenarioID = 2409,
+            stepID = 7001,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1557.0999755859,
+            y = -593.20001220703,
+        },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = {
+            criteriaID = 66468,
+            criteriaIndex = 1,
+            scenarioID = 2409,
+            stepID = 7085,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1478,
+            y = -502.39999389648,
+        },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = {
+            criteriaID = 66469,
+            criteriaIndex = 1,
+            scenarioID = 2409,
+            stepID = 7086,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1437.2000732422,
+            y = -540.90002441406,
+        },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = {
+            criteriaID = 64984,
+            criteriaIndex = 1,
+            scenarioID = 2387,
+            stepID = 6869,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 192.19999694824,
+            y = 1980.5,
+        },
+        ExtraLineText = "LEAVE_DELVE",
+        Range = 5,
+        Waypoint = 83768,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 195.69999694824,
+            y = 2022.3000488281,
+        },
+        ExtraLineText = "LEAVE_DELVE",
+        Range = 5,
+        Waypoint = 83768,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -656.5,
+            y = 2361,
+        },
+        Qpart = {
+            [82213] = {
+                1,
+            },
+            [82214] = {
+                1,
+            },
+            [82215] = {
+                1,
+            },
+        },
+        Range = 80,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1245.9000244141,
+            y = 2493.3000488281,
+        },
+        Done = {
+            83768,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1280.3000488281,
+            y = 2473.3000488281,
+        },
+        Done = {
+            82213,
+            82214,
+            82215,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1279.9000244141,
+            y = 2469.9001464844,
+        },
+        PickUp = {
+            82217,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1279.9000244141,
+            y = 2469.9001464844,
+        },
+        Qpart = {
+            [82217] = {
+                1,
+                2,
+            },
+        },
+        Range = 10,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1286,
+            y = 2474.4001464844,
+        },
+        GossipOptionIDs = {
+            122462,
+        },
+        Qpart = {
+            [82217] = {
+                4,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1285.4000244141,
+            y = 2467.1999511719,
+        },
+        GossipOptionIDs = {
+            122455,
+            122453,
+        },
+        Qpart = {
+            [82217] = {
+                3,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1279.9000244141,
+            y = 2470.1999511719,
+        },
+        Done = {
+            82217,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -1344.4000244141,
+            y = 2416.3000488281,
+        },
+        Done = {
+            83769,
+        },
+        Zone = 2215,
+    },
+    {
+        UseHS = 83767,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 315.10000610352,
+            y = 2665.1999511719,
+        },
+        Done = {
+            83767,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1035.0999755859,
+            y = 2131.1999511719,
+        },
+        PickUp = {
+            82628,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 926.29998779297,
+            y = 1874.8000488281,
+        },
+        Done = {
+            79154,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 990.20001220703,
+            y = 1912.0999755859,
+        },
+        Qpart = {
+            [78615] = {
+                1,
+            },
+        },
+        Range = 5,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 990.20001220703,
+            y = 1912.0999755859,
+        },
+        Done = {
+            78615,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 990.20001220703,
+            y = 1911.9000244141,
+        },
+        PickUp = {
+            78620,
+            78621,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1829.7000732422,
+            y = 1862.5,
+        },
+        Done = {
+            82628,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1829.4000244141,
+            y = 1862.2000732422,
+        },
+        PickUp = {
+            79641,
+            79642,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1921.5999755859,
+            y = 1686.4000244141,
+        },
+        Qpart = {
+            [79641] = {
+                1,
+            },
+            [79642] = {
+                1,
+            },
+        },
+        Range = 30,
+        Zone = 2215,
+    },
+    {
+        Done = {
+            79642,
+            79641,
+        },
+        NoArrow = 1,
+        Zone = 2215,
+    },
+    {
+        NoArrow = 1,
+        PickUp = {
+            79643,
+        },
+        RaidIcon = 220302,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1985.5999755859,
+            y = 1513.2000732422,
+        },
+        Qpart = {
+            [79643] = {
+                1,
+            },
+        },
+        RaidIcon = 220302,
+        Range = 10,
+        Zone = 2215,
+    },
+    {
+        Done = {
+            79643,
+        },
+        NoArrow = 1,
+        Zone = 2215,
+    },
+    {
+        NoArrow = 1,
+        PickUp = {
+            79644,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1476.4000244141,
+            y = 2390.1999511719,
+        },
+        ExtraLineText = "ENTER_NIGHTFALL_SANCTUM_DELVE",
+        Range = 5,
+        Waypoint = 83755,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1551.9000244141,
+            y = 2321.3000488281,
+        },
+        ExtraLineText = "ENTER_NIGHTFALL_SANCTUM_DELVE",
+        InstanceQuest = true,
+        Range = 5,
+        Waypoint = 83755,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 97.599998474121,
+            y = -778.60003662109,
+        },
+        InstanceQuest = true,
+        Range = 150,
+        Scenario = {
+            criteriaID = 66008,
+            criteriaIndex = 1,
+            scenarioID = 2397,
+            stepID = 6944,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 114,
+            y = -794,
+        },
+        GossipOptionIDs = {
+            123325,
+        },
+        InstanceQuest = true,
+        Qpart = {
+            [83755] = {
+                1,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 141.10000610352,
+            y = -670.40002441406,
+        },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = {
+            criteriaID = 66021,
+            criteriaIndex = 1,
+            scenarioID = 2397,
+            stepID = 6949,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 123.20000457764,
+            y = -712.5,
+        },
+        ExtraLineText = "JUMP_OFF",
+        InstanceQuest = true,
+        Range = 5,
+        Waypoint = 83755,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 88.099998474121,
+            y = -730.10003662109,
+        },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = {
+            criteriaID = 66050,
+            criteriaIndex = 1,
+            scenarioID = 2397,
+            stepID = 6968,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 84.300003051758,
+            y = -722.5,
+        },
+        InstanceQuest = true,
+        Range = 5,
+        Scenario = {
+            criteriaID = 64984,
+            criteriaIndex = 1,
+            scenarioID = 2387,
+            stepID = 6869,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1550.8000488281,
+            y = 2323.8000488281,
+        },
+        ExtraLineText = "LEAVE_DELVE",
+        InstanceQuest = true,
+        Range = 5,
+        Waypoint = 83755,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1468.7000732422,
+            y = 2404.3000488281,
+        },
+        Done = {
+            83755,
+        },
+        ExtraLineText = "LEAVE_DELVE",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 983.60003662109,
+            y = 3076.6000976562,
+        },
+        GetFP = 2942,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1037.0999755859,
+            y = 3004.3000488281,
+        },
+        Done = {
+            79644,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1037.0999755859,
+            y = 3004.3000488281,
+        },
+        PickUp = {
+            79645,
+            79646,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1124.0999755859,
+            y = 3100.1000976562,
+        },
+        GossipOptionIDs = {
+            121794,
+        },
+        Qpart = {
+            [79646] = {
+                1,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1118.8000488281,
+            y = 3096.4001464844,
+        },
+        ExtraLineText = "FOLLOW_INSTRUCTIONS",
+        Qpart = {
+            [79646] = {
+                2,
+            },
+        },
+        Range = 2,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1101.5,
+            y = 3118.6000976562,
+        },
+        Qpart = {
+            [79645] = {
+                1,
+            },
+        },
+        Range = 30,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1037.0999755859,
+            y = 3004.3000488281,
+        },
+        Done = {
+            79645,
+            79646,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1037.0999755859,
+            y = 3004.3000488281,
+        },
+        PickUp = {
+            79647,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1116.5,
+            y = 2870,
+        },
+        GossipOptionIDs = {
+            121927,
+        },
+        Qpart = {
+            [79647] = {
+                1,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1117.5,
+            y = 2864.6999511719,
+        },
+        Qpart = {
+            [79647] = {
+                2,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1108.7000732422,
+            y = 2882.6999511719,
+        },
+        Done = {
+            79647,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1108.7000732422,
+            y = 2882.6999511719,
+        },
+        PickUp = {
+            79648,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1200,
+            y = 2847.6999511719,
+        },
+        Qpart = {
+            [79648] = {
+                1,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1109,
+            y = 2882.5,
+        },
+        Done = {
+            79648,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1109,
+            y = 2882.5,
+        },
+        PickUp = {
+            79649,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1081,
+            y = 2909,
+        },
+        GossipOptionIDs = {
+            121830,
+        },
+        Qpart = {
+            [79649] = {
+                1,
+            },
+        },
+        Range = 15,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1051,
+            y = 3008,
+        },
+        Done = {
+            79649,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1489.9000244141,
+            y = 1789.5999755859,
+        },
+        Fillers = {
+            [78620] = {
+                1,
+            },
+        },
+        Qpart = {
+            [78621] = {
+                2,
+            },
+        },
+        Range = 10,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1503.5999755859,
+            y = 1916.8000488281,
+        },
+        Fillers = {
+            [78620] = {
+                1,
+            },
+        },
+        Qpart = {
+            [78621] = {
+                1,
+            },
+        },
+        Range = 10,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1487,
+            y = 2040.0999755859,
+        },
+        Fillers = {
+            [78620] = {
+                1,
+            },
+        },
+        Qpart = {
+            [78621] = {
+                3,
+            },
+        },
+        Range = 10,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1497.8000488281,
+            y = 1913.9000244141,
+        },
+        Qpart = {
+            [78620] = {
+                1,
+            },
+        },
+        Range = 30,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1570.5,
+            y = 1912.5999755859,
+        },
+        Done = {
+            78621,
+            78620,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1570.5,
+            y = 1912.5999755859,
+        },
+        PickUp = {
+            78624,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1570.3000488281,
+            y = 1910.9000244141,
+        },
+        GossipOptionIDs = {
+            121810,
+        },
+        Qpart = {
+            [78624] = {
+                1,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1623.9000244141,
+            y = 1918.0999755859,
+        },
+        Qpart = {
+            [78624] = {
+                2,
+            },
+        },
+        Range = 10,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1607.2000732422,
+            y = 1916.2000732422,
+        },
+        Done = {
+            78624,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1607.2000732422,
+            y = 1916.2000732422,
+        },
+        PickUp = {
+            79089,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1610.2000732422,
+            y = 1907.4000244141,
+        },
+        PickUp = {
+            80049,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1460.7000732422,
+            y = 2022.3000488281,
+        },
+        Fillers = {
+            [79089] = {
+                1,
+            },
+        },
+        GossipOptionIDs = {
+            122717,
+        },
+        QpartPart = {
+            [80049] = {
+                1,
+            },
+        },
+        TrigText = "1/5",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1433.3000488281,
+            y = 1948.8000488281,
+        },
+        Fillers = {
+            [79089] = {
+                1,
+            },
+        },
+        GossipOptionIDs = {
+            122713,
+        },
+        QpartPart = {
+            [80049] = {
+                1,
+            },
+        },
+        TrigText = "2/5",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1330.9000244141,
+            y = 1907.8000488281,
+        },
+        Fillers = {
+            [79089] = {
+                1,
+            },
+        },
+        GossipOptionIDs = {
+            122712,
+        },
+        QpartPart = {
+            [80049] = {
+                1,
+            },
+        },
+        TrigText = "3/5",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1409,
+            y = 1839.9000244141,
+        },
+        Fillers = {
+            [79089] = {
+                1,
+            },
+        },
+        GossipOptionIDs = {
+            122720,
+        },
+        QpartPart = {
+            [80049] = {
+                1,
+            },
+        },
+        TrigText = "4/5",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1466.5999755859,
+            y = 1851.4000244141,
+        },
+        Fillers = {
+            [79089] = {
+                1,
+            },
+        },
+        GossipOptionIDs = {
+            122721,
+        },
+        QpartPart = {
+            [80049] = {
+                1,
+            },
+        },
+        TrigText = "5/5",
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1454.7000732422,
+            y = 1916.0999755859,
+        },
+        Qpart = {
+            [79089] = {
+                1,
+            },
+        },
+        Range = 60,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1607.4000244141,
+            y = 1916.4000244141,
+        },
+        Done = {
+            79089,
+            80049,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1607.4000244141,
+            y = 1916.4000244141,
+        },
+        PickUp = {
+            78627,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1040.0999755859,
+            y = 993.60003662109,
+        },
+        GetFP = 2924,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1163.5999755859,
+            y = 977.29998779297,
+        },
+        Qpart = {
+            [78627] = {
+                1,
+            },
+        },
+        Range = 10,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1163.5999755859,
+            y = 977.29998779297,
+        },
+        Done = {
+            78627,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1163.5999755859,
+            y = 977.29998779297,
+        },
+        PickUp = {
+            78628,
+            78629,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1232.8000488281,
+            y = 412,
+        },
+        GossipOptionIDs = {
+            120658,
+        },
+        Qpart = {
+            [78628] = {
+                1,
+            },
+            [78629] = {
+                1,
+            },
+        },
+        Range = 70,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1179.5,
+            y = 429,
+        },
+        Done = {
+            78628,
+            78629,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1179.5,
+            y = 429,
+        },
+        PickUp = {
+            78630,
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 1171.4000244141,
+            y = 425.39999389648,
+        },
+        Qpart = {
+            [78630] = {
+                1,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        NoArrow = 1,
+        Qpart = {
+            [78630] = {
+                2,
+            },
+        },
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 450.10000610352,
+            y = -386,
+        },
+        Done = {
+            78630,
+        },
+        Zone = 2255,
+    },
+    {
+        ZoneDoneSave = 1,
     },
 }
