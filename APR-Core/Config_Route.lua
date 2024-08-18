@@ -97,8 +97,18 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetDFPrefab()
                 end
             },
-            reset_custom_path = {
+            TWW_prefab = {
                 order = 1.6,
+                name = "The War Within",
+                type = "execute",
+                width = optionsWidth,
+                func = function()
+                    APRCustomPath[APR.PlayerID] = {}
+                    APR.routeconfig:GetTWWPrefab()
+                end
+            },
+            reset_custom_path = {
+                order = 1.7,
                 name = L["CLEAN_CUSTOM_PATH"],
                 type = "execute",
                 width = optionsWidth,
@@ -828,6 +838,14 @@ function APR.routeconfig:GetDFPrefab()
         tinsert(APRCustomPath[APR.PlayerID], "DF07 - Thaldraszus")
     end
     self:SendMessage("APR_Custom_Path_Update")
+end
+
+function APR.routeconfig:GetTWWPrefab()
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - 01 - Intro")
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - 02 - Isle of Dorn")
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - 03 - Ringing Deeps")
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - 04 - Hallowfall")
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - 05 - Azj-Kahet")
 end
 
 function APR.routeconfig:GetMoPRemixPrefab()
