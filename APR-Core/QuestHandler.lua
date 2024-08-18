@@ -91,6 +91,10 @@ function APR:UpdateStep()
         if (SkipStepCondition(step)) then
             return
         end
+
+        -- set the arrow coord before the step logic to avoid double completion
+        APR.Arrow:SetCoord()
+
         if (APR.ActiveRoute) then
             local function checkChromieTimeline(id)
                 if APR.Level >= APR.MaxLevelChromie then
@@ -708,7 +712,6 @@ function APR:UpdateStep()
 
         -- Set Quest Item Button
         APR.SetButton()
-        APR.BookingList["SetQPTT"] = true
         APR.questOrderList:DelayedUpdate()
         -- set Progress bar with the right total
         APR.currentStep:SetProgressBar(CurStep)
@@ -977,7 +980,7 @@ local function APR_LoopBookingFunc() -- Main loop
         RemoveQuest = function() APR_RemoveQuest(APR.BookingList["RemoveQuest"]) end,
         UpdateQuest = function() APR_UpdateQuest() end,
         UpdateStep = function() APR:UpdateStep() end,
-        SetQPTT = function() APR.Arrow:SetQPTT() end
+        SetArrowCoord = function() APR.Arrow:SetCoord() end
     }
 
     for action, func in pairs(bookingActions) do
@@ -1618,7 +1621,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if (event == "REQUEST_CEMETERY_LIST_RESPONSE") then
         APR.BookingList["UpdateMapId"] = true
         APR.Arrow.currentStep = 0
-        APR.BookingList["SetQPTT"] = true
+        APR.BookingList["SetArrowCoord"] = true
     end
 
     if event == "SCENARIO_CRITERIA_UPDATE" then

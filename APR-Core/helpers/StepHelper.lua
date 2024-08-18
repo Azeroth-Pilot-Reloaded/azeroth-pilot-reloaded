@@ -293,6 +293,7 @@ end
 
 function APR:IsCampaignQuest(questID)
     local questIndex = C_QuestLog.GetLogIndexForQuestID(questID)
+    if not questIndex then return false end
     local questInfo = C_QuestLog.GetInfo(questIndex)
     return questInfo and questInfo.campaignID ~= nil
 end
