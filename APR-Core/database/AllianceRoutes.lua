@@ -105,7 +105,10 @@ if (APR.Faction == "Alliance") then
         ["2248-TWW-Isle-of-Dorn"] = "TWW - 02 - Isle of Dorn",
         ["2214-TWW-Ringing-Deeps"] = "TWW - 03 - Ringing Deeps",
         ["2215-TWW-Hallowfall"] = "TWW - 04 - Hallowfall",
-        ["2255-TWW-Azj-Kahet"] = "TWW - 05 - Azj-Kahet"
+        ["2255-TWW-Azj-Kahet"] = "TWW - 05 - Azj-Kahet",
+        ["2248-TWW-Against-the-Current-storyline"] = "TWW - 06 - Against the Current Storyline",
+        ["2248-TWW-Ties-That-Bind-storyline"] = "TWW - 07 - Ties That Bind Storyline"
+
     }
     APR.RouteList.Custom = {}
 

@@ -39,13 +39,13 @@ local function GetConfigOptionTable()
             },
             Event_prefab = {
                 order = 1.1,
-                name = "MoP Remix",
+                name = "Event",
                 type = "execute",
                 width = optionsWidth,
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetMoPRemixPrefab()
-                end
+                end,
+                hidden = true
             },
             WoD_prefab = {
                 order = 1.2,
@@ -846,19 +846,8 @@ function APR.routeconfig:GetTWWPrefab()
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 03 - Ringing Deeps")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 04 - Hallowfall")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 05 - Azj-Kahet")
-end
-
-function APR.routeconfig:GetMoPRemixPrefab()
-    tinsert(APRCustomPath[APR.PlayerID], "MoP Remix - Intro")
-    tinsert(APRCustomPath[APR.PlayerID], "The Jade Forest")
-    tinsert(APRCustomPath[APR.PlayerID], "Valley of the four winds")
-    tinsert(APRCustomPath[APR.PlayerID], "Krasarang Wilds")
-    tinsert(APRCustomPath[APR.PlayerID], "Kun-Lai Summit")
-    tinsert(APRCustomPath[APR.PlayerID], "Townlong Steppes")
-    tinsert(APRCustomPath[APR.PlayerID], "Dread Wastes")
-    tinsert(APRCustomPath[APR.PlayerID], "Isle of Thunder")
-
-    self:SendMessage("APR_Custom_Path_Update")
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - 06 - Against the Current Storyline")
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - 07 - Ties That Bind Storyline")
 end
 
 ---------------------------------------------------------------------------------------
