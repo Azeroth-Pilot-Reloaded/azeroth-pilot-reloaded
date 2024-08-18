@@ -79,6 +79,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "vBETA TWW - w34 - A ", "2024-08-19" },
+        "#Bug",
+        "- Removed unwanted debug print on objective hover",
+
+        "#TWW",
+        "- Added Azj Kahet route (mostly the storyline, need to rerun with fresh character to check the xp)",
+        "- Added full HORDE Against the Current Storyline route (Alliace TBD)",
+        "- Added start of Ties That Bind Storyline",
+
         { "vBETA TWW - w33 - H ", "2024-08-18" },
         "#TWW",
         "- Added TWW Intro route",
