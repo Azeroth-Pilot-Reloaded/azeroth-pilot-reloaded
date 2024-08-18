@@ -80,7 +80,8 @@ if (APR.Faction == "Horde") then
         ["81-TWW-Intro"] = "TWW - 01 - Intro",
         ["2248-TWW-Isle-of-Dorn"] = "TWW - 02 - Isle of Dorn",
         ["2214-TWW-Ringing-Deeps"] = "TWW - 03 - Ringing Deeps",
-        ["2215-TWW-Hallowfall"] = "TWW - 04 - Hallowfall"
+        ["2215-TWW-Hallowfall"] = "TWW - 04 - Hallowfall",
+        ["2255-TWW-Azj-Kahet"] = "TWW - 05 - Azj-Kahet"
     }
     APR.RouteList.Custom = {}
 
