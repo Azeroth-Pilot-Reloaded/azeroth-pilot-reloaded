@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "vBETA TWW - w33 - H ", "2024-08-18" },
+        "#TWW",
+        "- Added TWW Intro route",
+
         { "vBETA TWW - w33 - G ", "2024-08-18" },
         "#Bug",
         "- Fixed unwanted auto skip of waypoint",
