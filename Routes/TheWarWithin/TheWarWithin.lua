@@ -4266,12 +4266,14 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     {
         Coord = { x = -2752.8000488281, y = 2190.1000976562, },
         Done = { 78761, },
+        InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2214,
     },
     {
         Coord = { x = -2752.8000488281, y = 2190.1000976562, },
         IsCampaignQuest = true,
+        InstanceQuest = true,
         PickUp = { 79354, },
         Zone = 2214,
     },
@@ -4714,6 +4716,11 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     {
         GetFP = 2943,
         Coord = { x = 381.8, y = 2687.5 },
+        Zone = 2215,
+    },
+    {
+        Coord = { x = 317.2, y = 2752.6 },
+        SetHS = 78672,
         Zone = 2215,
     },
     {
@@ -5546,14 +5553,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     },
     {
         Coord = {
-            x = 848.10003662109,
-            y = 1850.5999755859,
-        },
-        SetHS = 79297,
-        Zone = 2215,
-    },
-    {
-        Coord = {
             x = 866.79998779297,
             y = 1836.0999755859,
         },
@@ -6173,6 +6172,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             y = 1980.5,
         },
         ExtraLineText = "LEAVE_DELVE",
+        InstanceQuest = true,
         Range = 5,
         Waypoint = 83768,
         Zone = 2215,
@@ -6183,6 +6183,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
             y = 2022.3000488281,
         },
         ExtraLineText = "LEAVE_DELVE",
+        InstanceQuest = true,
         Range = 5,
         Waypoint = 83768,
         Zone = 2215,
@@ -6259,6 +6260,8 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         GossipOptionIDs = {
             122462,
+            122461,
+            122465,
         },
         Qpart = {
             [82217] = {
@@ -6275,6 +6278,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         GossipOptionIDs = {
             122455,
             122453,
+            122456,
         },
         Qpart = {
             [82217] = {
@@ -6579,6 +6583,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Done = {
             83755,
         },
+        InstanceQuest = true,
         ExtraLineText = "LEAVE_DELVE",
         Zone = 2215,
     },
