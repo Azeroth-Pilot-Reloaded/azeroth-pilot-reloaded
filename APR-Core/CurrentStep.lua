@@ -400,9 +400,6 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
             GameTooltip:AddLine(L["QUEST_INFO"])
 
             if isScenario then
-                print(questID)
-                print(textObjective)
-                print(objectiveIndex)
                 GameTooltip:AddLine("|c33ecc00f" .. SCENARIOS .. " " .. ID .. ": |r" .. questID, unpack(APR.Color.white))
                 GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. C_ScenarioInfo.GetScenarioStepInfo().title,
                     unpack(APR.Color.white))
