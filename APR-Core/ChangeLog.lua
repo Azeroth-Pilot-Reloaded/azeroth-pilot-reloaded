@@ -79,11 +79,24 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "vBETA TWW - w33 - e ", "2024-08-16" },
+        { "vBETA TWW - w33 - G ", "2024-08-18" },
+        "#Bug",
+        "- Fixed unwanted auto skip of waypoint",
+        "- Fixed wrong zone message for some delves",
+
+        "#TWW",
+        "- Fixed Set Hearthstone for Hallowfall route",
+        "- Added missing InstanceQuest step option in Hallowfall route after delves",
+
+        { "vBETA TWW - w33 - F ", "2024-08-17" },
+        "#TWW",
+        "- Added the Hallowfall route (will need to rerun it to check if everything if ok)",
+
+        { "vBETA TWW - w33 - E ", "2024-08-16" },
         "#TWW",
         "- Added first 50% of Hallowfall route",
 
-        { "vBETA TWW - w33 - d ", "2024-08-15" },
+        { "vBETA TWW - w33 - D ", "2024-08-15" },
         "#Bug",
         "- Fix for some error lua with objective bonus when you leave the zone",
 
@@ -91,7 +104,7 @@ function APR.changelog:SetChangeLog()
         "- Added end of Ringing Deeps route",
         "- Added Alliance quests section in Ringing Deeps route",
 
-        { "vBETA TWW - w33 - c ", "2024-08-13" },
+        { "vBETA TWW - w33 - C ", "2024-08-13" },
         "#Bug",
         "- Removal of raidIcon reset function causing conflict with manual raidIcon",
         "- Fixed lua error with current step frame in scenario due to new tooltips",
@@ -100,12 +113,12 @@ function APR.changelog:SetChangeLog()
         "#TWW",
         "- Optimized quest order for the first TWW zone route",
 
-        { "vBETA TWW - w33 - b ", "2024-08-12" },
+        { "vBETA TWW - w33 - B ", "2024-08-12" },
         "#Bug",
         "- Fixed lua error on waypoint with tracking function",
         "- Added wrap option on objective in quest tooltips",
 
-        { "vBETA TWW - w33 - a ", "2024-08-12" },
+        { "vBETA TWW - w33 - A ", "2024-08-12" },
         "#Features",
         "- Added /apr about command to open the about & help menu",
         "- Update of the content of the About & Help menu",
