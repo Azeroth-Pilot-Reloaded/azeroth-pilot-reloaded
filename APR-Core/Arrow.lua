@@ -143,9 +143,9 @@ local function CheckDistance()
     return 0
 end
 
-function APR.Arrow:SetQPTT()
+function APR.Arrow:SetCoord()
     if (APR.settings.profile.debug) then
-        print("Function: APR_SetQPTT()")
+        print("Function: APR.Arrow:SetCoord")
     end
     if not APR.ActiveRoute then
         return
