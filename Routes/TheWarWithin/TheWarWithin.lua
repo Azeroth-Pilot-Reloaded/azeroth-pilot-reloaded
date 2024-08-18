@@ -10422,6 +10422,93 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
     {
         Coord = {
             x = -2292,
+            y = 2175.3000488281,
+        },
+        Qpart = {
+            [79197] = {
+                2,
+            },
+        },
+        Range = 5,
+        Zone = 2248,
+        _index = 172,
+    },
+    {
+        Coord = {
+            x = -2292,
+            y = 2175.3000488281,
+        },
+        Done = {
+            79197,
+        },
+        Zone = 2248,
+        _index = 173,
+    },
+    {
+        Coord = {
+            x = -2292,
+            y = 2175.4001464844,
+        },
+        PickUp = {
+            84446,
+        },
+        Zone = 2248,
+        _index = 174,
+    },
+    {
+        Coord = {
+            x = -2500.8000488281,
+            y = 2605.1999511719,
+        },
+        Done = {
+            84446,
+        },
+        Zone = 2248,
+        _index = 175,
+    },
+    { ZoneDoneSave = 1 }
+}
+
+APR.RouteQuestStepList["2248-TWW-Against-the-Current-storyline"] = {
+    {
+        Coord = {
+            x = -1354.5,
+            y = -477.89999389648,
+        },
+        PickUp = {
+            79197,
+        },
+        Zone = 2255,
+        _index = 171,
+    },
+    {
+        Coord = {
+            x = -2292,
+            y = 2175.3000488281,
+        },
+        Qpart = {
+            [79197] = {
+                2,
+            },
+        },
+        Range = 5,
+        Zone = 2248,
+        _index = 172,
+    },
+    {
+        Coord = {
+            x = -2292,
+            y = 2175.3000488281,
+        },
+        Done = {
+            79197,
+        },
+        Zone = 2248,
+        _index = 173,
+    },
+    {
+        Coord = {
+            x = -2292,
             y = 2175.4001464844,
         },
         PickUp = {
@@ -10880,6 +10967,10 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         Zone = 2248,
         _index = 209,
     },
+    { ZoneDoneSave = 1 }
+}
+
+APR.RouteQuestStepList["2248-TWW-Ties-That-Bind-storyline"] = {
     {
         Coord = {
             x = -2195.5,
