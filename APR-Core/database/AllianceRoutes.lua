@@ -101,9 +101,10 @@ if (APR.Faction == "Alliance") then
     }
     APR.RouteList.TheWarWithin = {
         ["81-TWW-Intro-prepatch"] = "TWW - 00 - PrePatch",
-        ["2248-TWW-Isle-of-Dorn"] = "TWW - 01 - Isle of Dorn",
-        ["2214-TWW-Ringing-Deeps"] = "TWW - 02 - Ringing Deeps",
-        ["2215-TWW-Hallowfall"] = "TWW - 03 - Hallowfall"
+        ["81-TWW-Intro"] = "TWW - 01 - Intro",
+        ["2248-TWW-Isle-of-Dorn"] = "TWW - 02 - Isle of Dorn",
+        ["2214-TWW-Ringing-Deeps"] = "TWW - 03 - Ringing Deeps",
+        ["2215-TWW-Hallowfall"] = "TWW - 04 - Hallowfall"
     }
     APR.RouteList.Custom = {}
 
