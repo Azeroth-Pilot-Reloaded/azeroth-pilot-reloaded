@@ -848,6 +848,7 @@ function APR.routeconfig:GetTWWPrefab()
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 05 - Azj-Kahet")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 06 - Against the Current Storyline")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 07 - Ties That Bind Storyline")
+    self:SendMessage("APR_Custom_Path_Update")
 end
 
 ---------------------------------------------------------------------------------------
