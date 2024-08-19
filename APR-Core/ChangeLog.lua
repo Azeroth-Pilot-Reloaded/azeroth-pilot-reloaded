@@ -79,6 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "vBETA TWW - w34 - B ", "2024-08-19" },
+        "#Bug",
+        "- Added extraLineText missing on curseforge",
+        "- French translation",
+
         { "vBETA TWW - w34 - A ", "2024-08-19" },
         "#Bug",
         "- Removed unwanted debug print on objective hover",
@@ -144,7 +149,7 @@ function APR.changelog:SetChangeLog()
         "- Fixed TWW - Isle of dorn route Alliance first quest order",
         "- Fixed TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
 
-        { "vBETA TWW - w32",      "2024-08-07" },
+        { "vBETA TWW - w32", "2024-08-07" },
         "#Bug",
         "- Added missing extra button message",
 
@@ -152,7 +157,7 @@ function APR.changelog:SetChangeLog()
         "- Added TWW - Isle of dorn route (~70-72/73)",
         "- Added TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
 
-        { "v4.1.4", "2024-08-06" },
+        { "v4.1.4",          "2024-08-06" },
         "#Bug",
         "- Enabled instance quest ui for every type of instance,",
         "- Fixed lua error if missing objectif on QpartPart step",
