@@ -54,7 +54,12 @@ APR.Portals.Coords = {
         },
         [1550] = { ["Stormwind"] = { x = 1538.4, y = -1808.8 }, ["OribosInMaldraxxus"] = { x = -2517.7, y = 2573.5 } },
         [1978] = { ["Stormwind"] = { x = -1066.8, y = 246.5 } },
-        [2274] = { ["Stormwind"] = { x = -2397.7, y = 2982.1 } },
+        [2274] = {
+            ["Stormwind"] = { x = -2397.7, y = 2982.1 },
+            ["IsleOfDorn"] = { x = -1478.9, y = -362.5 },
+            ["AzjKahet"] = { x = -2869.2, y = 2567.7 }
+        },
+
     },
     ["Horde"] = {
         [12] = {
@@ -114,7 +119,11 @@ APR.Portals.Coords = {
         },
         [1550] = { ["Orgrimmar"] = { x = 1539.3, y = -1859.5 }, ["OribosInMaldraxxus"] = { x = -2517.7, y = 2573.5 } },
         [1978] = { ["Orgrimmar"] = { x = -1023, y = 278 } },
-        [2274] = { ["Orgrimmar"] = { x = -2334.7, y = 2919.1 } },
+        [2274] = {
+            ["Orgrimmar"] = { x = -2334.7, y = 2919.1 },
+            ["IsleOfDorn"] = { x = -1478.9, y = -362.5 },
+            ["AzjKahet"] = { x = -2869.2, y = 2567.7 }
+        },
     }
 }
 
@@ -164,6 +173,8 @@ APR.Portals.SwitchCont = {
         { continent = 876,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                 closestTaxiNode = "Tradewinds Market, Tiragarde Sound",              extraText = "SAIL_TO" },
 
         { continent = 2274, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dornogal, Isle of Dorn", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahet",                closestTaxiNode = "Dornogal, Isle of Dorn", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDorn",              closestTaxiNode = "Weaver's Lair, Azj-Kahet", },
     },
     ["Horde"] = {
         { continent = 12,   nextContinent = 13,   nextZone = 224,  portalKey = "STVZep",                 closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "USE_ZEPPELIN_TO" },
@@ -212,5 +223,7 @@ APR.Portals.SwitchCont = {
         { continent = 1550, nextContinent = 1550, nextZone = 1536, portalKey = "OribosInMaldraxxus",     closestTaxiNode = "Theater of Pain, Maldraxxus" },
 
         { continent = 2274, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dornogal, Isle of Dorn", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahet",               closestTaxiNode = "Dornogal, Isle of Dorn", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDorn",             closestTaxiNode = "Weaver's Lair, Azj-Kahet", },
     },
 }
