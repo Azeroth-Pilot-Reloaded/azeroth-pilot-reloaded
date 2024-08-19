@@ -10398,8 +10398,8 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
     },
     {
         Coord = {
-            x = -2292,
-            y = 2175.3000488281,
+            x = -1478.9,
+            y = -362.5,
         },
         Qpart = {
             [79197] = {
@@ -10407,7 +10407,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
             },
         },
         Range = 5,
-        Zone = 2248,
+        Zone = 2255,
         _index = 172,
     },
     {
@@ -10597,30 +10597,6 @@ APR.RouteQuestStepList["2248-TWW-Against-the-Current-storyline"] = {
     },
     {
         Coord = {
-            x = -2286.9001464844,
-            y = 2159.3000488281,
-        },
-        Done = {
-            79333,
-        },
-        Faction = "Alliance",
-        Zone = 2248,
-        _index = 178,
-    },
-    {
-        Coord = {
-            x = -2286.9001464844,
-            y = 2159.3000488281,
-        },
-        Faction = "Alliance",
-        PickUp = {
-            82153,
-        },
-        Zone = 2248,
-        _index = 179,
-    },
-    {
-        Coord = {
             x = -2170.5,
             y = 2414.5,
         },
@@ -10767,8 +10743,185 @@ APR.RouteQuestStepList["2248-TWW-Against-the-Current-storyline"] = {
         Done = {
             79328,
         },
+        Faction = "Horde",
         Zone = 2248,
         _index = 193,
+    },
+    {
+        Coord = {
+            x = -2286.9001464844,
+            y = 2159.3000488281,
+        },
+        Done = {
+            79333,
+        },
+        Faction = "Alliance",
+        Zone = 2248,
+        _index = 178,
+    },
+    {
+        Coord = {
+            x = -2286.9001464844,
+            y = 2159.3000488281,
+        },
+        Faction = "Alliance",
+        PickUp = {
+            82153,
+        },
+        Zone = 2248,
+        _index = 179,
+    },
+    {
+        Coord = {
+            x = -2170.4001464844,
+            y = 2515.6999511719,
+        },
+        Faction = "Alliance",
+        GossipOptionIDs = {
+            122277,
+        },
+        Qpart = {
+            [82153] = {
+                1,
+            },
+        },
+        Zone = 2248,
+        _index = 1,
+    },
+    {
+        Coord = {
+            x = -2166.1000976562,
+            y = 2509.1000976562,
+        },
+        Faction = "Alliance",
+        QpartPart = {
+            [82153] = {
+                2,
+            },
+        },
+        TrigText = "1/2",
+        Zone = 2248,
+        _index = 3,
+    },
+    {
+        Coord = {
+            x = -2177.1000976562,
+            y = 2520.1000976562,
+        },
+        Faction = "Alliance",
+        QpartPart = {
+            [82153] = {
+                2,
+            },
+        },
+        TrigText = "2/2",
+        Zone = 2248,
+        _index = 3,
+    },
+    {
+        Coord = {
+            x = -2139.1999511719,
+            y = 2585.1999511719,
+        },
+        Faction = "Alliance",
+        QpartPart = {
+            [82153] = {
+                3,
+            },
+        },
+        TrigText = "1/5",
+        Zone = 2248,
+        _index = 4,
+    },
+    {
+        Coord = {
+            x = -2117.1999511719,
+            y = 2601.1000976562,
+        },
+        Faction = "Alliance",
+        QpartPart = {
+            [82153] = {
+                3,
+            },
+        },
+        TrigText = "2/5",
+        Zone = 2248,
+        _index = 5,
+    },
+    {
+        Coord = {
+            x = -2112.6999511719,
+            y = 2601.9001464844,
+        },
+        Faction = "Alliance",
+        QpartPart = {
+            [82153] = {
+                3,
+            },
+        },
+        TrigText = "3/5",
+        Zone = 2248,
+        _index = 6,
+    },
+    {
+        Coord = {
+            x = -2108.6999511719,
+            y = 2599.9001464844,
+        },
+        Faction = "Alliance",
+        QpartPart = {
+            [82153] = {
+                3,
+            },
+        },
+        TrigText = "4/5",
+        Zone = 2248,
+        _index = 7,
+    },
+    {
+        Coord = {
+            x = -2086.6999511719,
+            y = 2577.8000488281,
+        },
+        Faction = "Alliance",
+        QpartPart = {
+            [82153] = {
+                3,
+            },
+        },
+        TrigText = "5/5",
+        Zone = 2248,
+        _index = 8,
+    },
+    {
+        Coord = {
+            x = -2128.8000488281,
+            y = 2557.3000488281,
+        },
+        Faction = "Alliance",
+        GossipOptionIDs = {
+            121721,
+            122281,
+        },
+        Qpart = {
+            [82153] = {
+                4,
+            },
+        },
+        Zone = 2248,
+        _index = 9,
+    },
+    {
+        Coord = {
+            x = -2200.5,
+            y = 2469,
+        },
+        Faction = "Alliance",
+        Done = {
+            82153,
+        },
+        Zone = 2248,
+        _index = 10,
     },
     {
         Coord = {
