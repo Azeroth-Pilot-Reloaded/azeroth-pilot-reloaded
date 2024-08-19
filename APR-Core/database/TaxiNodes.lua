@@ -850,15 +850,13 @@ APR.TaxiNodes = {
             [2905] = { x = 8216.580078125, y = -282.98300170898, Name = "Wellspring Overlook, The Emerald Dream" },
             [2915] = { x = 7073.8500976562, y = -1715.9699707031, Name = "Bel'ameth, Amirdrassil" }
         },
-        [2552] = {
+        [2274] = {
             [2928] = { x = -2473.3200683594, y = 2585.4399414062, Name = "Dornogal, Isle of Dorn" },
             [2929] = { x = -1847.6300048828, y = 985.46002197266, Name = "Freywold Village, Isle of Dorn" },
             [2931] = { x = -4099.7299804688, y = 2673.6599121094, Name = "Durgaz Cabin, Isle of Dorn" },
             [2932] = { x = -3394.8000488281, y = 3517.6201171875, Name = "Rambleshire, Isle of Dorn" },
             [2970] = { x = -873.32598876953, y = 1860.5, Name = "Tranquil Strand, Isle of Dorn" },
-            [2972] = { x = -1847.6300048828, y = 985.46002197266, Name = "Jeff the Flightmaster" }
-        },
-        [2601] = {
+            [2972] = { x = -1847.6300048828, y = 985.46002197266, Name = "Jeff the Flightmaster" },
             [2882] = { x = -1446.6400146484, y = -593.34997558594, Name = "Weaver's Lair, Azj-Kahet" },
             [2889] = { x = 876.14398193359, y = -796.04302978516, Name = "Wildcamp Or'lay, Azj-Kahet" },
             [2893] = { x = -975.33001708984, y = -2149.5600585938, Name = "The Burrows, Azj-Kahet" },
@@ -876,17 +874,12 @@ APR.TaxiNodes = {
             [2944] = { x = -692.19396972656, y = 3235.2600097656, Name = "Hillhelm Family Farm, Hallowfall" },
             [2950] = { x = -1522.8900146484, y = 1815.4899902344, Name = "The Aegis Wall, Hallowfall" },
             [2962] = { x = -2735.7900390625, y = 2224.3200683594, Name = "Gundargaz, The Ringing Deeps" },
-            [2963] = { x = -3782.6101074219, y = 1529.3000488281, Name = "Shadowvein Point, The Ringing Deeps" }
-        },
-        [2657] = {
+            [2963] = { x = -3782.6101074219, y = 1529.3000488281, Name = "Shadowvein Point, The Ringing Deeps" },
             [2933] = { x = -396.56298828125, y = -2843.1201171875, Name = "Grand Rampart" },
             [2934] = { x = -334.16299438477, y = -2962.4399414062, Name = "The Pulsing Pit" },
             [2935] = { x = -379.0710144043, y = -3529.8400878906, Name = "Terrace of Majesty" },
-            [2936] = { x = -110.16100311279, y = -3006.1101074219, Name = "The Swaying Span (One-way)" },
             [2937] = { x = 103.30899810791, y = -3264.0200195312, Name = "The Narthex" },
-            [2971] = { x = -251.26699829102, y = -2917.0500488281, Name = "The Pulsing Pit (One-way)" },
             [2984] = { x = -112.17199707031, y = -3505.7700195312, Name = "The Ascending Reach" },
-            [2987] = { x = -217.84199523926, y = -3373.3200683594, Name = "The Congealing Pool (One-way)" }
         }
     }
 }
