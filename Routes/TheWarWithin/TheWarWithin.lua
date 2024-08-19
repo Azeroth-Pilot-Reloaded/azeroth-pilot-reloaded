@@ -7717,8 +7717,8 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     },
     {
         Coord = {
-            x = 1489.9000244141,
-            y = 1789.5999755859,
+            x = 1487,
+            y = 2040.0999755859,
         },
         Fillers = {
             [78620] = {
@@ -7727,7 +7727,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Qpart = {
             [78621] = {
-                2,
+                3,
             },
         },
         Range = 10,
@@ -7753,8 +7753,8 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     },
     {
         Coord = {
-            x = 1487,
-            y = 2040.0999755859,
+            x = 1489.9000244141,
+            y = 1789.5999755859,
         },
         Fillers = {
             [78620] = {
@@ -7763,7 +7763,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         },
         Qpart = {
             [78621] = {
-                3,
+                2,
             },
         },
         Range = 10,
@@ -8182,7 +8182,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         },
         Qpart = {
             [79574] = {
-                2,
+                1,
             },
         },
         Zone = 2255,
