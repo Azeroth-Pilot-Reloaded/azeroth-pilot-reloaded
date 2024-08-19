@@ -79,6 +79,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "vBETA TWW - w34 - C ", "2024-08-19" },
+        "#Bug",
+        "- Added trigger on tww prefab button to launch the route",
+
+        "#TWW",
+        "- Fixed 79574 qpart objective index",
+        "- Added ETA on some step for TWW zone 4",
+        "- Added ally part for Against the Current Storyline route",
+        "- Added portal between Isle of Dorn and Azj Kahet",
+        "- Merged TWW taxi into the same continent id",
+
         { "vBETA TWW - w34 - B ", "2024-08-19" },
         "#Bug",
         "- Added extraLineText missing on curseforge",
