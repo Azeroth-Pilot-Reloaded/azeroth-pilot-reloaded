@@ -8445,6 +8445,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
             x = -571.90002441406,
             y = -1054.3000488281,
         },
+        ETA = 34,
         Done = {
             79139,
         },
@@ -9057,6 +9058,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
             x = -659.10003662109,
             y = 644.29998779297,
         },
+        ETA = 23,
         Done = {
             78237,
         },
