@@ -79,6 +79,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "vBETA TWW - w34 - D ", "2024-08-21" },
+        "#TWW",
+        "- Fixed 78669 qpart objective coord",
+        "- Added elevator portal between Isle of Dorn and Ringing Deeps",
+        "- Added full Ties that Bind storyline route",
+        "- Added Campaign only Routes",
+        "- Rework of Delve step => Enter in delve/Do delve/leave delve",
+
+        "#Dev",
+        "- Updated lib",
+
         { "vBETA TWW - w34 - C ", "2024-08-19" },
         "#Bug",
         "- Added trigger on tww prefab button to launch the route",
