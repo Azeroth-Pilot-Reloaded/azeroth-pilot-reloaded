@@ -107,7 +107,11 @@ if (APR.Faction == "Alliance") then
         ["2215-TWW-Hallowfall"] = "TWW - 04 - Hallowfall",
         ["2255-TWW-Azj-Kahet"] = "TWW - 05 - Azj-Kahet",
         ["2248-TWW-Against-the-Current-storyline"] = "TWW - 06 - Against the Current Storyline",
-        ["2248-TWW-Ties-That-Bind-storyline"] = "TWW - 07 - Ties That Bind Storyline"
+        ["2248-TWW-Ties-That-Bind-storyline"] = "TWW - 07 - Ties That Bind Storyline",
+        ["2248-TWW-Isle-of-Dorn-campaign-only"] = "TWW - Isle of Dorn - Campaign Only",
+        ["2214-TWW-Ringing-Deeps-campaign-only"] = "TWW - Ringing Deeps - Campaign Only",
+        ["2215-TWW-Hallowfall-campaign-only"] = "TWW - Hallowfall - Campaign Only",
+        ["2255-TWW-Azj-Kahet-campaign-only"] = "TWW - Azj Kahet - Campaign Only"
 
     }
     APR.RouteList.Custom = {}
