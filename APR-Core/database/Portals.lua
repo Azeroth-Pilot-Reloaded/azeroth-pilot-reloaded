@@ -57,7 +57,9 @@ APR.Portals.Coords = {
         [2274] = {
             ["Stormwind"] = { x = -2397.7, y = 2982.1 },
             ["IsleOfDorn"] = { x = -1478.9, y = -362.5 },
-            ["AzjKahet"] = { x = -2869.2, y = 2567.7 }
+            ["AzjKahet"] = { x = -2869.2, y = 2567.7 },
+            ["IsleOfDornElevator"] = { x = -3202.6, y = 1685.9 },
+            ["RingingDeepsElevator"] = { x = -4093.1, y = 3374.5 }
         },
 
     },
@@ -122,7 +124,9 @@ APR.Portals.Coords = {
         [2274] = {
             ["Orgrimmar"] = { x = -2334.7, y = 2919.1 },
             ["IsleOfDorn"] = { x = -1478.9, y = -362.5 },
-            ["AzjKahet"] = { x = -2869.2, y = 2567.7 }
+            ["AzjKahet"] = { x = -2869.2, y = 2567.7 },
+            ["IsleOfDornElevator"] = { x = -3202.6, y = 1685.9 },
+            ["RingingDeepsElevator"] = { x = -4093.1, y = 3374.5 }
         },
     }
 }
@@ -175,6 +179,8 @@ APR.Portals.SwitchCont = {
         { continent = 2274, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dornogal, Isle of Dorn", },
         { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahet",                closestTaxiNode = "Dornogal, Isle of Dorn", },
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDorn",              closestTaxiNode = "Weaver's Lair, Azj-Kahet", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator", },
     },
     ["Horde"] = {
         { continent = 12,   nextContinent = 13,   nextZone = 224,  portalKey = "STVZep",                 closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "USE_ZEPPELIN_TO" },
@@ -225,5 +231,7 @@ APR.Portals.SwitchCont = {
         { continent = 2274, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dornogal, Isle of Dorn", },
         { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahet",               closestTaxiNode = "Dornogal, Isle of Dorn", },
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDorn",             closestTaxiNode = "Weaver's Lair, Azj-Kahet", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator", },
     },
 }
