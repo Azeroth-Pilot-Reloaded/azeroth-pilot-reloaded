@@ -1647,6 +1647,28 @@
             [896] = { { x = 1165.5, y = -307.4 }, { x = 1803.2, y = 699.1 } },
             [895] = { { x = 1046, y = -374.9 }, { x = 1764.5, y = 763.7 }, { x = 68.5, y = 1843.9 } },
             [942] = { { x = 66.5, y = 1922.5 } }
+        },
+        [2274] = {
+            [2214] = { { x = -2365.3, y = 2449.9 }, { x = -2276.2, y = 2663.9 } },
+            [2215] = { { x = -2276.2, y = 2663.9 }, { x = 823.7, y = 228.1 } },
+            [2255] = { { x = 823.7, y = 228.1 } }
+        }
+    },
+    Scenarios = { --contientID / scenario MapID
+        [2274] = {
+            [2269] = { Coord = { x = -1631.8, y = 929.3 }, zone = 2248, name = "EARTHCRAWL MINES", type = "DELVE" },
+            [2249] = { Coord = { x = -2771.3, y = 1410.3 }, zone = 2248, name = "FUNGAL FOLLY", type = "DELVE" },
+            [2250] = { Coord = { x = -3650.2, y = 2707.8 }, zone = 2248, name = "KRIEGVALS REST", type = "DELVE" },
+            [2302] = { Coord = { x = -4719.5, y = 2043.7 }, zone = 2214, name = "DREAD PIT", type = "DELVE" },
+            [2251] = { Coord = { x = -2693.3, y = 1489.6 }, zone = 2214, name = "WATERWORKS", type = "DELVE" },
+            [2312] = { Coord = { x = -1526.0, y = 3214.8 }, zone = 2215, name = "MYCOMANCER CAVERN", type = "DELVE" },
+            [2310] = { Coord = { x = -1032.2, y = 1528.3 }, zone = 2215, name = "SKITTERING BREACH", type = "DELVE" },
+            [2301] = { Coord = { x = 190.6, y = 1975.7 }, zone = 2215, name = "SINKHOLE", type = "DELVE" },
+            [2277] = { Coord = { x = 1552.1, y = 2321.2 }, zone = 2215, name = "NIGHTFALL SANCTUM", type = "DELVE" },
+            [2347] = { Coord = { x = -627.6, y = 689.7 }, zone = 2255, name = "SPIRAL WEAVE", type = "DELVE" },
+            [2259] = { Coord = { x = -1308.6, y = -1827.7 }, zone = 2255, name = "TAK_RETHAN ABYSS", type = "DELVE" },
+            [2299] = { Coord = { x = -1091.3, y = -2500.5 }, zone = 2255, name = "UNDERKEEP", type = "DELVE" },
+            [0000] = { Coord = { x = 166.0, y = -1975.1 }, zone = 2255, name = "ZEKVIR LAIR", type = "DELVE" },
         }
     },
     ExtensionRouteMaps = { -- MapID for each Categorie
@@ -1690,4 +1712,6 @@
             TheWarWithin = {}
         }
     }
+
+
 }

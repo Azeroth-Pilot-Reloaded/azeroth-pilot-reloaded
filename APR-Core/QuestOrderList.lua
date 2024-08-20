@@ -537,6 +537,47 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     AddStepFrameWithQuest(stepIndex,
                         L["SCENARIO"] .. " - " .. scenarioInfo.name, questInfo, color)
                 end
+            elseif step.EnterScenario then
+                local scenarioMapID = step.EnterScenario
+                local currentMapID = C_Map.GetBestMapForUnit('player')
+                local scenarioContinentID = APR:GetContinent(scenarioMapID)
+                local mapInfo = C_Map.GetMapInfo(scenarioMapID)
+                local scenarioInfo = APR.ZonesData.Scenarios[scenarioContinentID][scenarioMapID]
+                local isCompleted = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
+
+                local color = (scenarioMapID == currentMapID or isCompleted or CurStep > stepIndex) and "green" or "gray";
+                local questInfo = { { questID = mapInfo.name } }
+                AddStepFrameWithQuest(stepIndex, format(L["ENTER_IN"], L[scenarioInfo.type]), questInfo, color)
+            elseif step.DoScenario then
+                local scenarioMapID = step.DoScenario
+                local scenarioContinentID = APR:GetContinent(scenarioMapID)
+                local mapInfo = C_Map.GetMapInfo(scenarioMapID)
+                local scenarioInfo = APR.ZonesData.Scenarios[scenarioContinentID][scenarioMapID]
+                local isCompleted = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
+                local hasQpartCompleted = false
+
+                if step.Qpart then
+                    local questID = next(step.Qpart)
+                    if (APR.ActiveQuests[questID] and APR.ActiveQuests[questID] == "C") and isCompleted then
+                        hasQpartCompleted = true
+                    end
+                end
+
+                local color = (hasQpartCompleted and isCompleted) or CurStep > stepIndex and "green" or "gray";
+                local questInfo = { { questID = mapInfo.name } }
+                AddStepFrameWithQuest(stepIndex, format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type]), questInfo, color)
+            elseif step.LeaveScenario then
+                local scenarioMapID       = step.LeaveScenario
+                local currentMapID        = C_Map.GetBestMapForUnit('player')
+                local scenarioContinentID = APR:GetContinent(scenarioMapID)
+                local mapInfo             = C_Map.GetMapInfo(scenarioMapID)
+                local scenarioInfo        = APR.ZonesData.Scenarios[scenarioContinentID][scenarioMapID]
+                local isCompleted         = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
+
+                local color               = ((scenarioMapID ~= currentMapID and isCompleted) or CurStep > stepIndex) and
+                    "green" or "gray";
+                local questInfo           = { { questID = mapInfo.name } }
+                AddStepFrameWithQuest(stepIndex, L["LEAVE_" .. scenarioInfo.type], questInfo, color)
             elseif step.Waypoint then
                 local questID = step.Waypoint
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
