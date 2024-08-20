@@ -6,7 +6,7 @@
 ## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
 ## Version: @project-version@
 
-## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted
+## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted
 
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
 ## X-Github: https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded

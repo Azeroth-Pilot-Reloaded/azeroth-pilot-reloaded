@@ -238,6 +238,69 @@ function APR:UpdateStep()
             return
         end
 
+        local function handleScenarioStep(stepType, scenarioMapID)
+            if APR.settings.profile.debug then
+                print(stepType .. " Step:" .. CurStep)
+            end
+
+            local currentMapID        = C_Map.GetBestMapForUnit('player')
+            local scenarioContinentID = APR:GetContinent(scenarioMapID)
+            local mapInfo             = C_Map.GetMapInfo(scenarioMapID)
+            local scenarioInfo        = APR.ZonesData.Scenarios[scenarioContinentID][scenarioMapID]
+            local isCompleted         = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
+
+            return currentMapID, scenarioInfo, mapInfo, isCompleted
+        end
+
+        if step.EnterScenario then
+            local scenarioMapID = step.EnterScenario
+            local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Enter Scenario", scenarioMapID)
+
+            if isCompleted or scenarioMapID == currentMapID then
+                APR:UpdateNextStep()
+            end
+
+            APR.currentStep:AddExtraLineText("ENTER_IN_" .. scenarioInfo.type,
+                format(L["ENTER_IN"], L[scenarioInfo.type]) .. ": " .. mapInfo.name)
+            step.Coord = scenarioInfo.Coord
+            APR.Arrow:SetCoord()
+        elseif step.DoScenario then
+            local scenarioMapID = step.DoScenario
+            local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Do Scenario", scenarioMapID)
+
+            if step.Qpart then
+                local questID = next(step.Qpart)
+                if (APR.ActiveQuests[questID] and APR.ActiveQuests[questID] == "C") and isCompleted then
+                    APR:UpdateNextStep()
+                end
+            elseif isCompleted then
+                APR:UpdateNextStep()
+            end
+
+            -- IF you're not inside the scenario, add coord to the entrance
+            if scenarioMapID ~= currentMapID then
+                step.Coord = scenarioInfo.Coord
+                step.NoArrow = nil
+            else
+                step.Coord = nil
+                step.NoArrow = 1
+            end
+            APR.Arrow:SetCoord()
+
+            APR.currentStep:AddExtraLineText("COMPLETE_SOMETHING_" .. scenarioInfo.type,
+                format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type]) .. ": " .. mapInfo.name)
+        elseif step.LeaveScenario then
+            local scenarioMapID                                    = step.LeaveScenario
+            local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Leave Scenario", scenarioMapID)
+
+            if isCompleted and scenarioMapID ~= currentMapID then
+                APR:UpdateNextStep()
+            end
+
+            APR.currentStep:AddExtraLineText("LEAVE_" .. scenarioInfo.type,
+                L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name)
+        end
+
         if step.Buffs then
             APR.Buff:RemoveAllBuffIcon()
             for _, buff in pairs(step.Buffs) do
@@ -1064,6 +1127,7 @@ APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:RegisterEvent("QUEST_PROGRESS")
 APR_QH_EventFrame:RegisterEvent("QUEST_REMOVED")
 APR_QH_EventFrame:RegisterEvent("REQUEST_CEMETERY_LIST_RESPONSE")
+APR_QH_EventFrame:RegisterEvent("SCENARIO_COMPLETED")
 APR_QH_EventFrame:RegisterEvent("SCENARIO_CRITERIA_UPDATE")
 APR_QH_EventFrame:RegisterEvent("TAXIMAP_OPENED")
 APR_QH_EventFrame:RegisterEvent("UI_INFO_MESSAGE")
@@ -1072,6 +1136,7 @@ APR_QH_EventFrame:RegisterEvent("UNIT_ENTERED_VEHICLE")
 APR_QH_EventFrame:RegisterEvent("UNIT_QUEST_LOG_CHANGED")
 APR_QH_EventFrame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
 APR_QH_EventFrame:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
+APR_QH_EventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if not APR:IsInstanceWithUI() then
@@ -1623,6 +1688,15 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.Arrow.currentStep = 0
         APR.BookingList["SetArrowCoord"] = true
     end
+    if event == "SCENARIO_COMPLETED" then
+        local currentMapID = C_Map.GetBestMapForUnit('player')
+        tinsert(APRScenarioMapIDCompleted[APR.PlayerID], currentMapID)
+        if step and step.DoScenario then
+            if step.DoScenario == currentMapID then
+                APR:UpdateNextStep()
+            end
+        end
+    end
 
     if event == "SCENARIO_CRITERIA_UPDATE" then
         local criteriaID = ...
@@ -1732,5 +1806,16 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
 
         DoEmoteStep(step)
+    end
+
+    if event == "ZONE_CHANGED_NEW_AREA" then
+        if step and step.LeaveScenario then
+            local scenarioMapID = step.LeaveScenario
+            local mapID = C_Map.GetBestMapForUnit('player')
+            local isCompleted = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
+            if scenarioMapID ~= mapID and isCompleted then
+                APR:UpdateNextStep()
+            end
+        end
     end
 end)
