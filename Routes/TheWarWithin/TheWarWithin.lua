@@ -1097,7 +1097,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 161.3
     },
     {
-        ExtraLineText = "LEAVE_THIS_INSTANCE",
+        ExtraLineText = "LEAVE_INSTANCE",
         InstanceQuest = true,
         NoArrow = 1,
         Qpart = { [80022] = { 3 } },
@@ -1108,7 +1108,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Done = { 80022 },
         Coord = { x = -2289.3, y = 2563 },
         InstanceQuest = true,
-        ExtraLineText = "LEAVE_THIS_INSTANCE",
+        ExtraLineText = "LEAVE_INSTANCE",
         Zone = 2248,
         _index = 163
     },
@@ -6349,7 +6349,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 161.3,
     },
     {
-        ExtraLineText = "LEAVE_THIS_INSTANCE",
+        ExtraLineText = "LEAVE_INSTANCE",
         InstanceQuest = true,
         NoArrow = 1,
         Qpart = {
@@ -6364,7 +6364,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         Done = { 80022 },
         Coord = { x = -2289.3, y = 2563 },
         InstanceQuest = true,
-        ExtraLineText = "LEAVE_THIS_INSTANCE",
+        ExtraLineText = "LEAVE_INSTANCE",
         Zone = 2248,
         _index = 163,
     },
