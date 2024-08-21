@@ -4613,22 +4613,11 @@ APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
     },
     {
         Coord = {
-            x = -2214.9001464844,
-            y = 2361.6999511719,
-        },
-        PickUp = {
-            82957,
-        },
-        Zone = 2214,
-        _index = 6,
-    },
-    {
-        Coord = {
             x = -2370.1000976562,
             y = 2467.1000976562,
         },
         Range = 5,
-        Waypoint = 82957,
+        Waypoint = 79022,
         Zone = 2214,
         _index = 7,
     },
