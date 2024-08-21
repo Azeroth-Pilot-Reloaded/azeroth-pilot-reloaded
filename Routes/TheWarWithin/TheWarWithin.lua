@@ -4549,7 +4549,873 @@ APR.RouteQuestStepList["2248-TWW-News-from-Below-storyline"] = {
     },
 }
 
-APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {}
+APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
+    {
+        Coord = {
+            x = -2474.4001464844,
+            y = 2648.8000488281,
+        },
+        SetHS = 79022,
+        Zone = 2248,
+        _index = 0,
+    },
+    {
+        Coord = {
+            x = -2195.9001464844,
+            y = 2464.9001464844,
+        },
+        PickUp = {
+            79022,
+        },
+        Zone = 2248,
+        _index = 1,
+    },
+    {
+        Coord = {
+            x = -2344.4001464844,
+            y = 2462.6999511719,
+        },
+        ExtraLineText = "GO_DOWN_INTO_COREWAY",
+        Range = 5,
+        Waypoint = 79022,
+        Zone = 2248,
+        _index = 2,
+    },
+    {
+        Coord = {
+            x = -2554,
+            y = 2447.1000976562,
+        },
+        Range = 5,
+        Waypoint = 79022,
+        Zone = 2248,
+        _index = 3,
+    },
+    {
+        Coord = {
+            x = -2583.3000488281,
+            y = 2305.8000488281,
+        },
+        Range = 5,
+        Waypoint = 79022,
+        Zone = 2248,
+        _index = 4,
+    },
+    {
+        Coord = {
+            x = -2259.9001464844,
+            y = 2260.4001464844,
+        },
+        Range = 5,
+        Waypoint = 79022,
+        Zone = 2248,
+        _index = 5,
+    },
+    {
+        Coord = {
+            x = -2214.9001464844,
+            y = 2361.6999511719,
+        },
+        PickUp = {
+            82957,
+        },
+        Zone = 2214,
+        _index = 6,
+    },
+    {
+        Coord = {
+            x = -2370.1000976562,
+            y = 2467.1000976562,
+        },
+        Range = 5,
+        Waypoint = 82957,
+        Zone = 2214,
+        _index = 7,
+    },
+    {
+        Coord = {
+            x = -3410,
+            y = 227,
+        },
+        Done = {
+            79022,
+        },
+        Zone = 2214,
+        _index = 8,
+    },
+    {
+        Coord = {
+            x = -3410,
+            y = 227,
+        },
+        GossipOptionIDs = {
+            120640,
+        },
+        PickUp = {
+            79023,
+        },
+        Zone = 2214,
+        _index = 9,
+    },
+    {
+        Coord = {
+            x = -3411.1999511719,
+            y = 228.10000610352,
+        },
+        Qpart = {
+            [79023] = {
+                1,
+            },
+        },
+        Zone = 2214,
+        _index = 10,
+    },
+    {
+        Coord = {
+            x = -3409.9001464844,
+            y = 226.80000305176,
+        },
+        Done = {
+            79023,
+        },
+        Zone = 2214,
+        _index = 11,
+    },
+    {
+        Coord = {
+            x = -3409.9001464844,
+            y = 226.80000305176,
+        },
+        GossipOptionIDs = {
+            121305,
+        },
+        PickUp = {
+            79024,
+        },
+        Zone = 2214,
+        _index = 12,
+    },
+    {
+        Coord = {
+            x = -3411.5,
+            y = 228.10000610352,
+        },
+        GossipOptionIDs = {
+            121305,
+        },
+        Qpart = {
+            [79024] = {
+                1,
+            },
+        },
+        Zone = 2214,
+        _index = 13,
+    },
+    {
+        Coord = {
+            x = -3431.1000976562,
+            y = 241.19999694824,
+        },
+        Range = 5,
+        Waypoint = 79024,
+        Zone = 2214,
+        _index = 14,
+    },
+    {
+        Coord = {
+            x = -3530.9001464844,
+            y = 181.30000305176,
+        },
+        Qpart = {
+            [79024] = {
+                2,
+            },
+        },
+        Zone = 2214,
+        _index = 15,
+    },
+    {
+        Coord = {
+            x = -3529.1999511719,
+            y = 137.10000610352,
+        },
+        Qpart = {
+            [79024] = {
+                3,
+            },
+        },
+        Range = 5,
+        Zone = 2214,
+        _index = 16,
+    },
+    {
+        Coord = {
+            x = -3476.3000488281,
+            y = 97.599998474121,
+        },
+        Range = 5,
+        Waypoint = 79024,
+        Zone = 2214,
+        _index = 17,
+    },
+    {
+        Coord = {
+            x = -3432.1999511719,
+            y = 97.800003051758,
+        },
+        Qpart = {
+            [79024] = {
+                4,
+            },
+        },
+        Range = 5,
+        Zone = 2214,
+        _index = 18,
+    },
+    {
+        Coord = {
+            x = -3477.9001464844,
+            y = 97.5,
+        },
+        Range = 5,
+        Waypoint = 79024,
+        Zone = 2214,
+        _index = 19,
+    },
+    {
+        Coord = {
+            x = -3478.3000488281,
+            y = 64.900001525879,
+        },
+        Qpart = {
+            [79024] = {
+                5,
+            },
+        },
+        Zone = 2214,
+        _index = 21,
+    },
+    {
+        Coord = {
+            x = -3544,
+            y = -12.800000190735,
+        },
+        Qpart = {
+            [79024] = {
+                6,
+            },
+        },
+        Range = 5,
+        Zone = 2214,
+        _index = 21,
+    },
+    {
+        Coord = {
+            x = -3562,
+            y = 146.90000915527,
+        },
+        Qpart = {
+            [79024] = {
+                7,
+            },
+        },
+        Range = 30,
+        Zone = 2214,
+        _index = 22,
+    },
+    {
+        Coord = {
+            x = -3413.3000488281,
+            y = 232.19999694824,
+        },
+        Qpart = {
+            [79024] = {
+                8,
+            },
+        },
+        Range = 5,
+        Zone = 2214,
+        _index = 23,
+    },
+    {
+        Coord = {
+            x = -3409.6999511719,
+            y = 227.19999694824,
+        },
+        Done = {
+            79024,
+        },
+        Zone = 2214,
+        _index = 24,
+    },
+    {
+        Coord = {
+            x = -3409.6999511719,
+            y = 227.19999694824,
+        },
+        PickUp = {
+            79217,
+        },
+        Zone = 2214,
+        _index = 25,
+    },
+    {
+        Coord = {
+            x = -2749.6000976562,
+            y = 2192.5,
+        },
+        Qpart = {
+            [79217] = {
+                1,
+            },
+        },
+        Range = 5,
+        Zone = 2214,
+        _index = 26,
+    },
+    {
+        Coord = {
+            x = -2748,
+            y = 2185,
+        },
+        Done = {
+            79217,
+        },
+        Zone = 2214,
+        _index = 27,
+    },
+    {
+        Coord = {
+            x = -2748,
+            y = 2185,
+        },
+        PickUp = {
+            79025,
+        },
+        Zone = 2214,
+        _index = 28,
+    },
+    {
+        Coord = {
+            x = -2747.8000488281,
+            y = 2185,
+        },
+        ExtraLineText = "CLICK_ON_MINIATURES_ON_TABLE",
+        Qpart = {
+            [79025] = {
+                1,
+                2,
+                3,
+            },
+        },
+        Range = 5,
+        Zone = 2214,
+        _index = 29,
+    },
+    {
+        Coord = {
+            x = -2747.8000488281,
+            y = 2185,
+        },
+        Done = {
+            79025,
+        },
+        Zone = 2214,
+        _index = 30,
+    },
+    {
+        Coord = {
+            x = -2747.8000488281,
+            y = 2185,
+        },
+        PickUp = {
+            79324,
+        },
+        Zone = 2214,
+        _index = 31,
+    },
+    {
+        Coord = {
+            x = -2762.9001464844,
+            y = 1792.5,
+        },
+        Done = {
+            79324,
+        },
+        Zone = 2214,
+        _index = 32,
+    },
+    {
+        Coord = {
+            x = -2762.9001464844,
+            y = 1792.5,
+        },
+        PickUp = {
+            79026,
+            79027,
+        },
+        Zone = 2214,
+        _index = 33,
+    },
+    {
+        Coord = {
+            x = -2842.1999511719,
+            y = 1615.8000488281,
+        },
+        QpartPart = {
+            [79026] = {
+                1,
+            },
+        },
+        TrigText = "1/2",
+        Zone = 2214,
+        _index = 34,
+    },
+    {
+        Coord = {
+            x = -2628.1999511719,
+            y = 1601.2000732422,
+        },
+        QpartPart = {
+            [79026] = {
+                1,
+            },
+        },
+        TrigText = "2/2",
+        Zone = 2214,
+        _index = 35,
+    },
+    {
+        Coord = {
+            x = -2732.6999511719,
+            y = 1655.5999755859,
+        },
+        Qpart = {
+            [79027] = {
+                1,
+            },
+        },
+        Range = 30,
+        Zone = 2214,
+        _index = 36,
+    },
+    {
+        Coord = {
+            x = -2688.1999511719,
+            y = 1514.5999755859,
+        },
+        InstanceQuest = true,
+        Range = 5,
+        Waypoint = 79027,
+        Zone = 2214,
+        _index = 37,
+    },
+    {
+        EnterScenario = 2251,
+        InstanceQuest = true,
+        Zone = 2214,
+    },
+    {
+        DoScenario = 2251,
+        InstanceQuest = true,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = 314.39999389648,
+            y = -776,
+        },
+        InstanceQuest = true,
+        Qpart = {
+            [79026] = {
+                3,
+            },
+        },
+        Zone = 2214,
+        _index = 40,
+    },
+    {
+        InstanceQuest = true,
+        LeaveScenario = 2251,
+        Zone = 2215,
+    },
+    {
+        Coord = {
+            x = -2757.1000976562,
+            y = 1793.5999755859,
+        },
+        ExtraLineText = "ACTIVATE_CONSOLE",
+        Qpart = {
+            [79026] = {
+                5,
+            },
+        },
+        Zone = 2214,
+        _index = 42,
+    },
+    {
+        Coord = {
+            x = -2762.9001464844,
+            y = 1792.3000488281,
+        },
+        Done = {
+            79026,
+            79027,
+        },
+        Zone = 2214,
+        _index = 43,
+    },
+    {
+        Coord = {
+            x = -2762.9001464844,
+            y = 1792.3000488281,
+        },
+        PickUp = {
+            79325,
+        },
+        Zone = 2214,
+        _index = 44,
+    },
+    {
+        Coord = {
+            x = -3368,
+            y = 1854.5999755859,
+        },
+        Done = {
+            79325,
+        },
+        Zone = 2214,
+        _index = 45,
+    },
+    {
+        Coord = {
+            x = -3368,
+            y = 1854.5999755859,
+        },
+        PickUp = {
+            79028,
+        },
+        Zone = 2214,
+        _index = 46,
+    },
+    {
+        Coord = {
+            x = -3368,
+            y = 1854.5999755859,
+        },
+        Qpart = {
+            [79028] = {
+                1,
+            },
+        },
+        Zone = 2214,
+        _index = 47,
+    },
+    {
+        Coord = {
+            x = -3420.3000488281,
+            y = 2052.4001464844,
+        },
+        Qpart = {
+            [79028] = {
+                2,
+            },
+        },
+        Zone = 2214,
+        _index = 48,
+    },
+    {
+        Coord = {
+            x = -3376.1000976562,
+            y = 2043.7000732422,
+        },
+        Qpart = {
+            [79028] = {
+                3,
+            },
+        },
+        Range = 5,
+        Zone = 2214,
+        _index = 49,
+    },
+    {
+        Coord = {
+            x = -3366,
+            y = 2038,
+        },
+        Range = 5,
+        Waypoint = 79028,
+        Zone = 2214,
+        _index = 50,
+    },
+    {
+        Coord = {
+            x = -3375.4001464844,
+            y = 2052,
+        },
+        ExtraLineText = "OPEN_PIPES",
+        ExtraLineText2 = "STEP_1_TOP_AND_MIDDLE",
+        ExtraLineText3 = "STEP_2_BOTTOM",
+        ExtraLineText4 = "STEP_3_TOP",
+        Qpart = {
+            [79028] = {
+                4,
+            },
+        },
+        Range = 30,
+        Zone = 2214,
+        _index = 51,
+    },
+    {
+        Coord = {
+            x = -3420.3000488281,
+            y = 2052.6999511719,
+        },
+        Qpart = {
+            [79028] = {
+                5,
+            },
+        },
+        Zone = 2214,
+        _index = 53,
+    },
+    {
+        Coord = {
+            x = -3627.8000488281,
+            y = 1857.3000488281,
+        },
+        Fillers = {
+            [79028] = {
+                6,
+            },
+        },
+        Qpart = {
+            [79028] = {
+                7,
+            },
+        },
+        Zone = 2214,
+        _index = 54,
+    },
+    {
+        Coord = {
+            x = -3389.1000976562,
+            y = 1941.5999755859,
+        },
+        ExtraActionB = 1,
+        Qpart = {
+            [79028] = {
+                6,
+            },
+        },
+        Range = 30,
+        Zone = 2214,
+        _index = 53,
+    },
+    {
+        Done = {
+            79028,
+        },
+        NoArrow = 1,
+        Zone = 2214,
+        _index = 55,
+    },
+    {
+        NoArrow = 1,
+        PickUp = {
+            80145,
+        },
+        Zone = 2214,
+        _index = 56,
+    },
+    {
+        Coord = {
+            x = -3573.6999511719,
+            y = 2091.8000488281,
+        },
+        ExtraLineText = "GO_INSIDE_CAVE",
+        Range = 5,
+        Waypoint = 80145,
+        Zone = 2214,
+        _index = 57,
+    },
+    {
+        Coord = {
+            x = -3575,
+            y = 2200.1999511719,
+        },
+        ExtraLineText = "INSIDE_CAVE",
+        Qpart = {
+            [80145] = {
+                1,
+            },
+        },
+        Zone = 2214,
+        _index = 58,
+    },
+    {
+        Coord = {
+            x = -3583.8000488281,
+            y = 2207.6999511719,
+        },
+        Qpart = {
+            [80145] = {
+                2,
+            },
+        },
+        Range = 5,
+        Zone = 2214,
+        _index = 59,
+    },
+    {
+        GossipOptionIDs = {
+            121561,
+        },
+        NoArrow = 1,
+        Qpart = {
+            [80145] = {
+                3,
+            },
+        },
+        Zone = 2214,
+        _index = 59,
+    },
+    {
+        Done = {
+            80145,
+        },
+        NoArrow = 1,
+        Zone = 2214,
+        _index = 61,
+    },
+    {
+        NoArrow = 1,
+        PickUp = {
+            80517,
+        },
+        Zone = 2214,
+        _index = 62,
+    },
+    {
+        Coord = {
+            x = -3573.6000976562,
+            y = 2096.4001464844,
+        },
+        ExtraLineText = "EXIT_CAVE",
+        Range = 5,
+        Waypoint = 80517,
+        Zone = 2214,
+        _index = 63,
+    },
+    {
+        Coord = {
+            x = -3409.8000488281,
+            y = 227.5,
+        },
+        Done = {
+            80517,
+        },
+        Zone = 2214,
+        _index = 64,
+    },
+    {
+        Coord = {
+            x = -3409.8000488281,
+            y = 227.5,
+        },
+        PickUp = {
+            79029,
+        },
+        Zone = 2214,
+        _index = 65,
+    },
+    {
+        Coord = {
+            x = -3568.6000976562,
+            y = 60,
+        },
+        Qpart = {
+            [79029] = {
+                1,
+            },
+        },
+        Range = 30,
+        Zone = 2214,
+        _index = 66,
+    },
+    {
+        Coord = {
+            x = -3394,
+            y = 97.200004577637,
+        },
+        GossipOptionIDs = {
+            121606,
+        },
+        Qpart = {
+            [79029] = {
+                2,
+            },
+        },
+        Zone = 2214,
+        _index = 67,
+    },
+    {
+        Coord = {
+            x = -3398.8000488281,
+            y = 97.400001525879,
+        },
+        Qpart = {
+            [79029] = {
+                3,
+            },
+        },
+        Range = 10,
+        Zone = 2214,
+        _index = 68,
+    },
+    {
+        Coord = {
+            x = -3394.5,
+            y = 97.300003051758,
+        },
+        Done = {
+            79029,
+        },
+        Zone = 2214,
+        _index = 69,
+    },
+    {
+        Coord = {
+            x = -3394.5,
+            y = 97.300003051758,
+        },
+        PickUp = {
+            79030,
+        },
+        Zone = 2214,
+        _index = 70,
+    },
+    {
+        UseHS = 79030,
+        Zone = 2214,
+        _index = 72,
+    },
+    {
+        Coord = {
+            x = -2195.8000488281,
+            y = 2464.6000976562,
+        },
+        Done = {
+            79030,
+        },
+        Zone = 2248,
+        _index = 73,
+    },
+    {
+        ZoneDoneSave = 1,
+        _index = 74,
+    },
+}
 
 APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
     {
