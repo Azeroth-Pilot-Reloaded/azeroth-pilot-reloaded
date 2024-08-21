@@ -79,107 +79,40 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "vBETA TWW - w34 - D ", "2024-08-21" },
-        "#TWW",
-        "- Fixed 78669 qpart objective coord",
-        "- Added elevator portal between Isle of Dorn and Ringing Deeps",
-        "- Added full Ties that Bind storyline route",
-        "- Added Campaign only Routes",
-        "- Rework of Delve step => Enter in delve/Do delve/leave delve",
-
-        "#Dev",
-        "- Updated lib",
-
-        { "vBETA TWW - w34 - C ", "2024-08-19" },
-        "#Bug",
-        "- Added trigger on tww prefab button to launch the route",
-
-        "#TWW",
-        "- Fixed 79574 qpart objective index",
-        "- Added ETA on some step for TWW zone 4",
-        "- Added ally part for Against the Current Storyline route",
-        "- Added portal between Isle of Dorn and Azj Kahet",
-        "- Merged TWW taxi into the same continent id",
-
-        { "vBETA TWW - w34 - B ", "2024-08-19" },
-        "#Bug",
-        "- Added extraLineText missing on curseforge",
-        "- French translation",
-
-        { "vBETA TWW - w34 - A ", "2024-08-19" },
-        "#Bug",
-        "- Removed unwanted debug print on objective hover",
-
-        "#TWW",
-        "- Added Azj Kahet route (mostly the storyline, need to rerun with fresh character to check the xp)",
-        "- Added full HORDE Against the Current Storyline route (Alliace TBD)",
-        "- Added start of Ties That Bind Storyline",
-
-        { "vBETA TWW - w33 - H ", "2024-08-18" },
-        "#TWW",
-        "- Added TWW Intro route",
-
-        { "vBETA TWW - w33 - G ", "2024-08-18" },
-        "#Bug",
-        "- Fixed unwanted auto skip of waypoint",
-        "- Fixed wrong zone message for some delves",
-
-        "#TWW",
-        "- Fixed Set Hearthstone for Hallowfall route",
-        "- Added missing InstanceQuest step option in Hallowfall route after delves",
-
-        { "vBETA TWW - w33 - F ", "2024-08-17" },
-        "#TWW",
-        "- Added the Hallowfall route (will need to rerun it to check if everything if ok)",
-
-        { "vBETA TWW - w33 - E ", "2024-08-16" },
-        "#TWW",
-        "- Added first 50% of Hallowfall route",
-
-        { "vBETA TWW - w33 - D ", "2024-08-15" },
-        "#Bug",
-        "- Fix for some error lua with objective bonus when you leave the zone",
-
-        "#TWW",
-        "- Added end of Ringing Deeps route",
-        "- Added Alliance quests section in Ringing Deeps route",
-
-        { "vBETA TWW - w33 - C ", "2024-08-13" },
-        "#Bug",
-        "- Removal of raidIcon reset function causing conflict with manual raidIcon",
-        "- Fixed lua error with current step frame in scenario due to new tooltips",
-        "- Added current step frame tooltips for scenario data",
-
-        "#TWW",
-        "- Optimized quest order for the first TWW zone route",
-
-        { "vBETA TWW - w33 - B ", "2024-08-12" },
-        "#Bug",
-        "- Fixed lua error on waypoint with tracking function",
-        "- Added wrap option on objective in quest tooltips",
-
-        { "vBETA TWW - w33 - A ", "2024-08-12" },
+        { "v4.2.0", "2024-08-22" },
         "#Features",
         "- Added /apr about command to open the about & help menu",
         "- Update of the content of the About & Help menu",
         "- Removed the ** from the Extra line text",
         "- Display of the quest name for PickUp and Done step in the Current Step frame",
         "- Added auto tracking of the quest for Qpart and Done step to highlight the right quest",
-        "- Added tooltips on quest in the Current Step frame to display more details about the quest",
+        "- Added tooltips on quest in the Current Step frame to display more details about the quest/step",
 
-        "#TWW",
-        "- Fixed TWW - Isle of dorn route Alliance first quest order",
-        "- Fixed TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
-
-        { "vBETA TWW - w32", "2024-08-07" },
         "#Bug",
-        "- Added missing extra button message",
+        "- Fixed missing extra button message",
+        "- Removal of raidIcon reset function causing conflict with manual raidIcon",
+        "- Fix for some error lua with objective bonus when you leave the zone",
+        "- Fixed unwanted auto skip of waypoint",
+        "- Merged TWW taxi into the same continent id",
 
         "#TWW",
-        "- Added TWW - Isle of dorn route (~70-72/73)",
-        "- Added TWW - Ringing Deeps route (Route blocked at the campaign quest 'Ghost of a Company Town' due to Blizzard issue)",
+        "- Added TWW - Intro route",
+        "- Added TWW - Isle of dorn route ",
+        "- Added TWW - Ringing Deeps route ",
+        "- Added TWW - Hallowfall route",
+        "- Added TWW - Azj Kahet route",
+        "- Added TWW - Against the Current Storyline route",
+        "- Added TWW - Ties That Bind Storyline route",
+        "- Added TWW - News from Below Storyline route",
+        "- Added TWW - The Machines March to War Storyline route",
+        "- Added Campaign only Routes (The route starting from level 70 doesn't allow reaching level 80)",
+        "- Added elevator portal between Isle of Dorn and Ringing Deeps",
+        "- Added portal between Isle of Dorn and Azj Kahet",
 
-        { "v4.1.4",          "2024-08-06" },
+        "#Dev",
+        "- Updated lib",
+
+        { "v4.1.4", "2024-08-06" },
         "#Bug",
         "- Enabled instance quest ui for every type of instance,",
         "- Fixed lua error if missing objectif on QpartPart step",
