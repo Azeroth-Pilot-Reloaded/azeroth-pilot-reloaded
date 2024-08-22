@@ -410,8 +410,10 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
                     1, 1, 1, true)
             else
                 GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questID, unpack(APR.Color.white))
-                GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. C_QuestLog.GetTitleForQuestID(questID),
-                    unpack(APR.Color.white))
+                local questTitle = C_QuestLog.GetTitleForQuestID(questID)
+                if questTitle then
+                    GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. questTitle, unpack(APR.Color.white))
+                end
                 GameTooltip:AddLine(
                     "|c33ecc00f" .. OBJECTIVES_LABEL .. "|r: " .. objectiveIndex .. " - " .. textObjective,
                     1, 1, 1, true)

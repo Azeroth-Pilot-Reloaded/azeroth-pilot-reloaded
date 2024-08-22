@@ -113,8 +113,8 @@ if (APR.Faction == "Alliance") then
         ["2248-TWW-Isle-of-Dorn-campaign-only"] = "TWW - Isle of Dorn - Campaign Only",
         ["2214-TWW-Ringing-Deeps-campaign-only"] = "TWW - Ringing Deeps - Campaign Only",
         ["2215-TWW-Hallowfall-campaign-only"] = "TWW - Hallowfall - Campaign Only",
-        ["2255-TWW-Azj-Kahet-campaign-only"] = "TWW - Azj Kahet - Campaign Only"
-
+        ["2255-TWW-Azj-Kahet-campaign-only"] = "TWW - Azj Kahet - Campaign Only",
+        ["2255-TWW-Allied-Races-Earthen"] = "TWW Allied Races Earthen"
     }
     APR.RouteList.Custom = {}
 
