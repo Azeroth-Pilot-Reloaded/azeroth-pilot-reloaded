@@ -670,11 +670,11 @@ end
 ---------------------------------------------------------------------------------------
 function APR.routeconfig:GetSpeedRunPrefab()
     self:GetStartingZonePrefab()
-    if APR.Level < 60 and APR.ClassId ~= APR.Classes["Dracthyr"] then
+    if APR.Level < 60 then
         self:GetWODPrefab()
-        self:GetSLPrefab()
+        self:GetDFPrefab()
     end
-    self:GetDFPrefab()
+    self:GetTWWPrefab()
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
@@ -896,10 +896,10 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSpeedRunPrefab()
                 end)
-            elseif APR.Level == 60 and APR.ClassId ~= APR.Classes["Dracthyr"] and not APR:IsMoPRemixCharacter() then
-                APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_DF"], APR.Level), function()
+            elseif APR.Level == 70 then
+                APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_TWW"], APR.Level), function()
                     APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetDFPrefab()
+                    APR.routeconfig:GetTWWPrefab()
                 end)
             end
         end
