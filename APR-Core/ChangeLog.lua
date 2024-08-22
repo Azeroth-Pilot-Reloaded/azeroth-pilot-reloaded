@@ -89,6 +89,9 @@ function APR.changelog:SetChangeLog()
         "- Fixed tooltip lua error for unknown questname",
         "- Fixed missing portal for Dalaran (Legion)",
 
+        "#TWW",
+        "- Added TWW - Allied Races Earthen route",
+
         { "v4.2.0", "2024-08-22" },
         "#Features",
         "- Added /apr about command to open the about & help menu",
