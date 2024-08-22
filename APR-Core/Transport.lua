@@ -202,25 +202,40 @@ end
 function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
     local function handlePortals(portalMappings)
         local closestPortal, closestPortalPosition, closestDistance = nil, nil, nil
+        local backupPortal, backupPortalPosition, backupDistance = nil, nil, nil
         local playerY, playerX = UnitPosition("player")
         if not playerY or not playerX then
             return
         end
 
         for _, portal in ipairs(portalMappings) do
-            if CurContinent == portal.continent and (nextContinent == portal.nextContinent or nextZone == portal.nextZone) then
+            if CurContinent == portal.continent and nextContinent == portal.nextContinent then
                 local portalPosition = APR.Portals.Coords[APR.Faction][portal.continent][portal.portalKey]
                 local distance = math.sqrt((playerX - portalPosition.x) ^ 2 + (playerY - portalPosition.y) ^ 2)
 
-                if closestDistance == nil or distance < closestDistance then
-                    closestPortal = portal
-                    closestPortalPosition = portalPosition
-                    closestDistance = distance
+                if nextZone == portal.nextZone then
+                    if closestDistance == nil or distance < closestDistance then
+                        closestPortal = portal
+                        closestPortalPosition = portalPosition
+                        closestDistance = distance
+                    end
+                else
+                    if backupDistance == nil or distance < backupDistance then
+                        backupPortal = portal
+                        backupPortalPosition = portalPosition
+                        backupDistance = distance
+                    end
                 end
             end
         end
 
-        return closestPortal, closestPortalPosition
+        if closestPortal then
+            return closestPortal, closestPortalPosition
+        elseif backupPortal then
+            return backupPortal, backupPortalPosition
+        end
+
+        return nil, nil
     end
 
     local function handlePortalsCapital(portalMappings, capitalNextContinent, capitalNextZone)
