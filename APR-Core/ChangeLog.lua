@@ -79,6 +79,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.2.1", "2024-08-22" },
+        "#Features",
+        "- Updated route config to remove Dracthyr restriction",
+        "- Change for lvl 70 next route detection with TWW",
+        "- Updated Speedrun prefab to WOD -> DF -> TWW (this will be change in the future)",
+
+        "#Bugs",
+        "- Fixed tooltip lua error for unknown questname",
+        "- Fixed missing portal for Dalaran (Legion)",
+
         { "v4.2.0", "2024-08-22" },
         "#Features",
         "- Added /apr about command to open the about & help menu",

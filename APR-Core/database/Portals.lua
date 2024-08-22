@@ -20,7 +20,8 @@ APR.Portals.Coords = {
             ["Valdrakken"] = { x = 875.2, y = -9079.1 },
             ["Dornogal"] = { x = 1014.2, y = -9070.8 },
             ["DarkPortal Talk"] = { x = 869.6, y = -9007.7 },
-            ["DarkPortal"] = { x = -3207.5, y = -11902.7 }
+            ["DarkPortal"] = { x = -3207.5, y = -11902.7 },
+            ["DalaranLegion"] = { x = 642.3, y = -8790.2 }
         },
         [101] = { ["Stormwind"] = { x = 5388.7, y = -1893.5 }, ["Stormwind DarkPortal"] = { x = 931.9, y = -274.6 } },
         [113] = { ["Stormwind"] = { x = 720.2, y = 5719.5 } },
@@ -83,6 +84,7 @@ APR.Portals.Coords = {
             ["AzsunaLegion"] = { x = -4484.9, y = 1423.8 },
             ["Oribos"] = { x = -4519.3, y = 1466.5 },
             ["Valdrakken"] = { x = -4499.9, y = 1472.5 },
+            ["DalaranLegion"] = { x = -4440.7, y = 1598.6 },
             ["Dornogal"] = { x = -4512.3, y = 1444.7 }
         },
         [13] = {
@@ -146,6 +148,7 @@ APR.Portals.SwitchCont = {
         { continent = 13,   nextContinent = 1550, nextZone = 1670, portalKey = "Oribos",                  closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 1978, nextZone = 2112, portalKey = "Valdrakken",              closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 2274, nextZone = 2248, portalKey = "Dornogal",                closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 619,  nextZone = 627,  portalKey = "DalaranLegion",           closestTaxiNode = "Stormwind, Elwynn" },
 
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "The Exodar" },
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Exodar",                  closestTaxiNode = "Darnassus, Teldrassil" },
@@ -196,6 +199,7 @@ APR.Portals.SwitchCont = {
         { continent = 12,   nextContinent = 1550, nextZone = 1670, portalKey = "Oribos",                 closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 1978, nextZone = 2112, portalKey = "Valdrakken",             closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 2274, nextZone = 2248, portalKey = "Dornogal",               closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS" },
+        { continent = 12,   nextContinent = 619,  nextZone = 627,  portalKey = "DalaranLegion",          closestTaxiNode = "Orgrimmar, Durotar" },
 
         { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar" },
         { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal" },
