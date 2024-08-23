@@ -1538,6 +1538,10 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             if (step.UseFlightPath or step.GetFP) and not step.NoAutoFlightMap and not (step.GossipOptionID or step.GossipOptionIDs) then
                 PickGossipByIcon(132057)
             end
+            -- BuyMerchant
+            if step.BuyMerchant and not (step.GossipOptionID or step.GossipOptionIDs) then
+                PickGossipByIcon(132060)
+            end
             ------------------------------------
             -- GOSSIP
             if step.Gossip or step.GossipOptionID or step.GossipOptionIDs then
