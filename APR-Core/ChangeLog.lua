@@ -79,6 +79,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.2.4", "2024-08-23" },
+        "#Features",
+        "- Added auto gossip to open merchant for BuyMerchant step",
+
+        "#Bugs",
+        "- Fixed wrong coord, missing gossip for TWW Allied race route",
+        "- Change the order of quest 78463, 79553, 79692 in isle of dorn route",
+        "- Fixed auto accept any quest with ''Accept only quest(s) from route'' enable and no route selected",
+
         { "v4.2.3", "2024-08-23" },
         "#Bugs",
         "- Fixed 80511 error for horde route in TWW",
