@@ -726,14 +726,14 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Zone = 2248,
         _index = 70
     },
-    { Done = { 78464 },                             Coord = { x = -1914.7, y = 1003 },   Zone = 2248, _index = 71 },
-    { PickUp = { 79553 },                           Coord = { x = -1914.7, y = 1003 },   Zone = 2248, _index = 72 },
-    { PickUp = { 78463 },                           Coord = { x = -1907.1, y = 1001.6 }, Zone = 2248, _index = 73 },
-    { Qpart = { [78463] = { 1 }, [79553] = { 1 } }, Coord = { x = -1425.6, y = 870.5 },  Range = 125, Zone = 2248, _index = 74 },
+    { Done = { 78464 },   Coord = { x = -1914.7, y = 1003 },   Zone = 2248, _index = 71 },
+    { PickUp = { 79553 }, Coord = { x = -1914.7, y = 1003 },   Zone = 2248, _index = 72 },
+    { PickUp = { 78463 }, Coord = { x = -1907.1, y = 1001.6 }, Zone = 2248, _index = 73 },
     {
         Waypoint = 78463,
         Coord = { x = -1334.9, y = 842.6 },
         ExtraLineText = "GO_INSIDE_CAVE",
+        Fillers = { [78463] = { 1 }, [79553] = { 1 } },
         Range = 10,
         Zone = 2248,
         _index = 75
@@ -760,10 +760,11 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Zone = 2248,
         _index = 77
     },
-    { Qpart = { [79692] = { 1 } }, Coord = { x = -1324.7, y = 871 },   Range = 100, Zone = 2248, _index = 78 },
-    { Done = { 78463 },            Coord = { x = -1906.1, y = 987.6 }, Zone = 2248, _index = 79 },
-    { Done = { 79553 },            Coord = { x = -1914.7, y = 1003 },  Zone = 2248, _index = 80 },
-    { PickUp = { 78462 },          Coord = { x = -1914.7, y = 1003 },  Zone = 2248, _index = 81 },
+    { Qpart = { [79692] = { 1 } },                  Coord = { x = -1324.7, y = 871 },   Range = 100, Zone = 2248, _index = 78 },
+    { Qpart = { [78463] = { 1 }, [79553] = { 1 } }, Coord = { x = -1425.6, y = 870.5 }, Range = 125, Zone = 2248, _index = 74 },
+    { Done = { 78463 },                             Coord = { x = -1906.1, y = 987.6 }, Zone = 2248, _index = 79 },
+    { Done = { 79553 },                             Coord = { x = -1914.7, y = 1003 },  Zone = 2248, _index = 80 },
+    { PickUp = { 78462 },                           Coord = { x = -1914.7, y = 1003 },  Zone = 2248, _index = 81 },
     {
         Coord = { x = -1905.3000488281, y = 1014.799987793 },
         QpartPart = { [78462] = { 1 } },
