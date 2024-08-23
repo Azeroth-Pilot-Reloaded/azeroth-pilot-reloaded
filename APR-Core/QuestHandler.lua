@@ -1489,7 +1489,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             if questID then
                 if QuestGetAutoAccept() then
                     C_Timer.After(0.2, APR_CloseQuest)
-                elseif (autoAcceptRoute and (APR:IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept then
+                elseif (autoAcceptRoute and APR:IsARouteQuest(questID)) or autoAccept then
                     C_Timer.After(0.2, APR_AcceptQuest)
                 elseif APR:IsPickupStep() then
                     C_Timer.After(0.2, APR_CloseQuest)
@@ -1642,7 +1642,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 local numAvailableQuests = GetNumAvailableQuests()
                 for i = 1, numAvailableQuests do
                     local _, _, _, _, questID = GetAvailableQuestInfo(i)
-                    if (autoAcceptRoute and (APR:IsARouteQuest(questID) or hasNoRouteMap)) or autoAccept then
+                    if (autoAcceptRoute and APR:IsARouteQuest(questID)) or autoAccept then
                         return SelectAvailableQuest(i)
                     elseif (i == numAvailableQuests and APR:IsPickupStep()) then
                         C_Timer.After(0.2, APR_CloseQuest)
@@ -1651,7 +1651,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             elseif availableQuests then
                 for titleIndex, questInfo in ipairs(availableQuests) do
                     if questInfo.questID then
-                        if (autoAcceptRoute and (APR:IsARouteQuest(questInfo.questID) or hasNoRouteMap)) or autoAccept then
+                        if (autoAcceptRoute and APR:IsARouteQuest(questInfo.questID)) or autoAccept then
                             return C_GossipInfo.SelectAvailableQuest(questInfo.questID)
                         end
                     end
