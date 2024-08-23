@@ -9708,8 +9708,8 @@ APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
     },
     {
         Coord = {
-            x = -3645.3000488281,
-            y = 2783.6999511719,
+            x = -3636.8,
+            y = 2761.7,
         },
         Fillers = {
             [78744] = {
@@ -9719,6 +9719,25 @@ APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
         Qpart = {
             [78744] = {
                 2,
+            },
+        },
+        Range = 2,
+        Zone = 2248,
+        _index = 8,
+    },
+    {
+        Coord = {
+            x = -3644.8,
+            y = 2783.7,
+        },
+        Fillers = {
+            [78744] = {
+                4,
+            },
+        },
+        Qpart = {
+            [78744] = {
+                1,
             },
         },
         Range = 2,
@@ -10827,7 +10846,7 @@ APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
             y = 2596.8000488281,
         },
         GossipOptionIDs = {
-            121805,
+            123489,
         },
         Qpart = {
             [79544] = {
@@ -11059,6 +11078,9 @@ APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
                 questID = 79176,
             },
         },
+        GossipOptionIDs = {
+            122742,
+        },
         Coord = {
             x = -2701.4001464844,
             y = 2596.9001464844,
@@ -11270,7 +11292,7 @@ APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
             x = -2690.5,
             y = 3210.8000488281,
         },
-        Range = 2,
+        Range = 3,
         Waypoint = 79529,
         Zone = 2248,
         _index = 124,
