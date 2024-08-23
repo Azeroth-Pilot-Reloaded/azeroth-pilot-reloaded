@@ -1778,8 +1778,8 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Qpart = { [80511] = { 1 } },
         Zone = 2214
     },
-    { Coord = { x = -4269.8999023438, y = 1949 },            ExtraActionB = 1,            Qpart = { [80511] = { 2 } }, Range = 5,  Zone = 2214 },
-    { Coord = { x = -4185.6000976562, y = 1996.9000244141 }, Qpart = { [80511] = { 3 } }, Range = 5,                   Zone = 2214 },
+    { Coord = { x = -4269.8999023438, y = 1949 },            Faction = "Alliance",ExtraActionB = 1,            Qpart = { [80511] = { 2 } }, Range = 5,  Zone = 2214 },
+    { Coord = { x = -4185.6000976562, y = 1996.9000244141 }, Faction = "Alliance",Qpart = { [80511] = { 3 } }, Range = 5,                   Zone = 2214 },
     { Coord = { x = -4167.5, y = 1960.4000244141 },          Faction = "Alliance",        Qpart = { [80511] = { 4 } }, Range = 5,  Zone = 2214 },
     { Done = { 80511 },                                      Faction = "Alliance",        NoArrow = 1,                 Zone = 2214 },
     { Coord = { x = -4169, y = 1959.8000488281 },            Faction = "Alliance",        PickUp = { 80512, 80513 },   Zone = 2214 },
@@ -2482,7 +2482,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     {
         LeaveScenario = 2312,
         InstanceQuest = true,
-        UseHS = 78607,
         Zone = 2215
     },
     {
