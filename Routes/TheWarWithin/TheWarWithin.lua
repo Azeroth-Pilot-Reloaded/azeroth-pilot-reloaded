@@ -235,6 +235,7 @@ APR.RouteQuestStepList["81-TWW-Intro"] = {
         _index = 38
     },
     {
+        Button = { ["78718-1"] = 220483 },
         Coord = { x = 4524, y = -770.20001220703 },
         ExtraActionB = 1,
         QpartPart = { [78719] = { 1 } },
@@ -873,6 +874,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Qpart = { [82798] = { 1 }, [82799] = { 1 } },
         Coord = { x = -2439, y = 1649.8 },
         Fillers = { [83082] = { 1, 2 } },
+        ExtraLineText = "COMPLETE_OBJECTIVES_WHILE_HEADING_BACK_TO_SURFACE",
         Range = 80,
         Zone = 2248,
         _index = 107
@@ -1778,11 +1780,11 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Qpart = { [80511] = { 1 } },
         Zone = 2214
     },
-    { Coord = { x = -4269.8999023438, y = 1949 },            Faction = "Alliance",ExtraActionB = 1,            Qpart = { [80511] = { 2 } }, Range = 5,  Zone = 2214 },
-    { Coord = { x = -4185.6000976562, y = 1996.9000244141 }, Faction = "Alliance",Qpart = { [80511] = { 3 } }, Range = 5,                   Zone = 2214 },
-    { Coord = { x = -4167.5, y = 1960.4000244141 },          Faction = "Alliance",        Qpart = { [80511] = { 4 } }, Range = 5,  Zone = 2214 },
-    { Done = { 80511 },                                      Faction = "Alliance",        NoArrow = 1,                 Zone = 2214 },
-    { Coord = { x = -4169, y = 1959.8000488281 },            Faction = "Alliance",        PickUp = { 80512, 80513 },   Zone = 2214 },
+    { Coord = { x = -4269.8999023438, y = 1949 },            Faction = "Alliance", ExtraActionB = 1,            Qpart = { [80511] = { 2 } }, Range = 5,  Zone = 2214 },
+    { Coord = { x = -4185.6000976562, y = 1996.9000244141 }, Faction = "Alliance", Qpart = { [80511] = { 3 } }, Range = 5,                   Zone = 2214 },
+    { Coord = { x = -4167.5, y = 1960.4000244141 },          Faction = "Alliance", Qpart = { [80511] = { 4 } }, Range = 5,                   Zone = 2214 },
+    { Done = { 80511 },                                      Faction = "Alliance", NoArrow = 1,                 Zone = 2214 },
+    { Coord = { x = -4169, y = 1959.8000488281 },            Faction = "Alliance", PickUp = { 80512, 80513 },   Zone = 2214 },
     {
         Coord = { x = -4182, y = 1964.9000244141 },
         Faction = "Alliance",
@@ -11665,4 +11667,3 @@ APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
         _index = 158,
     },
 }
-

@@ -79,6 +79,12 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.2.3", "2024-08-23" },
+        "#Bugs",
+        "- Fixed 80511 error for horde route in TWW",
+        "- Added missing button for quest 78718 in TWW intro",
+        "- Removed useHS on leave scenario step to avoid wrong zone error",
+
         { "v4.2.2", "2024-08-22" },
         "#Bugs",
         "- Fixed lua error on arrow if no questStep available",
