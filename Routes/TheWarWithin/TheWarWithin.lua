@@ -1372,12 +1372,12 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     { Qpart = { [78838] = { 1 } },    Coord = { x = -2731.7, y = 2226.8 }, GossipOptionID = 121192,       Zone = 2214 },
     { GetFP = 2962,                   Coord = { x = -2731.7, y = 2226.8 }, Zone = 2214 },
     { Qpart = { [78838] = { 2 } },    Coord = { x = -2737.5, y = 2272.6 }, GossipOptionID = 121195,       Zone = 2214 },
-    { SetHS = 78838,                  Coord = { x = -2812.5, y = 2283.8 }, Zone = 2214 },
     { Qpart = { [78838] = { 3 } },    Coord = { x = -2816.1, y = 2156.3 }, GossipOptionID = 121196,       Zone = 2214 },
     { Qpart = { [78838] = { 4 } },    Coord = { x = -2749.1, y = 2198.2 }, Range = 5,                     Zone = 2214 },
     { Done = { 78838 },               Coord = { x = -2754.7, y = 2188.0 }, Zone = 2214 },
     { PickUp = { 78631 },             Coord = { x = -2754.7, y = 2188.0 }, Zone = 2214 },
     { PickUp = { 83749 },             Coord = { x = -2750.9, y = 2298.1 }, Zone = 2214 },
+    { SetHS = 78838,                  Coord = { x = -2812.5, y = 2283.8 }, Zone = 2214 },
     { PickUp = { 80392 },             Coord = { x = -3047.9, y = 2377.6 }, Zone = 2214 },
     { Qpart = { [78631] = { 1 } },    Coord = { x = -3087.3, y = 2406.2 }, GossipOptionID = 120319,       Range = 30, Zone = 2214 },
     { Qpart = { [80392] = { 1, 2 } }, Coord = { x = -3164.1, y = 2134.7 }, Range = 275,                   Zone = 2214 },
@@ -2967,6 +2967,37 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
 }
 
 APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
+    {
+        PickUp = { 83543, },
+        Coord = { x = -2528.6999511719, y = 2678.3000488281, },
+        HasAchievement = 19559,
+        Zone = 2248
+    },
+    {
+        PickUp = { 83552 },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 19559,
+        Zone = 2248
+    },
+    {
+        Qpart = { [83543] = { 1, } },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 19559,
+        Zone = 2248
+    },
+    {
+        Done = { 83543, },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 40725,
+        Zone = 2248
+    },
+    {
+        Coord = { x = 450, y = -386.30001831055 },
+        PickUp = { 83552 },
+        HasAchievement = 40725,
+        Zone = 2255,
+        _index = 1
+    },
     { Coord = { x = 450, y = -386.30001831055 },             PickUp = { 78350 }, Zone = 2255, _index = 1 },
     { Coord = { x = 452.89999389648, y = -406.39999389648 }, PickUp = { 78384 }, Zone = 2255, _index = 2 },
     { Coord = { x = 447.39999389648, y = -361.10000610352 }, PickUp = { 79574 }, Zone = 2255, _index = 3 },
