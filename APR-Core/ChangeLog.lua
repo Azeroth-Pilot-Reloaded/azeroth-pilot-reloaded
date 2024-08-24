@@ -79,6 +79,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.2.5", "2024-08-24" },
+        "#TWW",
+        "- Added TWW - Allied Races Earthen starting zone route",
+        "- Added/Fixed TWW adventure map quests for your alt",
+
+        "#Community",
+        "- For those on EU servers, I've created an Azeroth Pilot Reloaded community: zWw7EWwFk97",
+
         { "v4.2.4", "2024-08-23" },
         "#Features",
         "- Added auto gossip to open merchant for BuyMerchant step",
@@ -99,9 +107,6 @@ function APR.changelog:SetChangeLog()
         "- Fixed lua error on arrow if no questStep available",
         "- Fixed azuna portal coord",
         "- Fixed priority portal selection for wrong zone",
-
-        "#Community",
-        "- For those on EU servers, I've created an Azeroth Pilot Reloaded community: zWw7EWwFk97",
 
         { "v4.2.1", "2024-08-22" },
         "#Features",
