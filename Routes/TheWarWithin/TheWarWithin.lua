@@ -2208,6 +2208,30 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
 }
 
 APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
+    {
+        PickUp = { 83543, },
+        Coord = { x = -2528.6999511719, y = 2678.3000488281, },
+        HasAchievement = 19559,
+        Zone = 2248
+    },
+    {
+        PickUp = { 83551 },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 19559,
+        Zone = 2248
+    },
+    {
+        Qpart = { [83543] = { 1, } },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 19559,
+        Zone = 2248
+    },
+    {
+        Done = { 83543, },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 40725,
+        Zone = 2248
+    },
     { PickUp = { 78658 },          Coord = { x = -2746.8, y = 2281.2 }, IsCampaignQuest = true,       Zone = 2214 },
     { Qpart = { [78658] = { 1 } }, Coord = { x = -2294.7, y = 2682.2 }, IsCampaignQuest = true,       Range = 5,  Zone = 2214 },
     { Qpart = { [78658] = { 2 } }, Coord = { x = -2008.2, y = 2560.3 }, GossipOptionIDs = { 120906 }, Zone = 2215 },
@@ -2215,6 +2239,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     { Qpart = { [78658] = { 3 } }, Coord = { x = -1296.1, y = 2451.4 }, IsCampaignQuest = true,       Range = 5,  Zone = 2215 },
     { PickUp = { 83768 },          Coord = { x = -1227.8, y = 2412.6 }, Zone = 2215 },
     { Done = { 78658 },            Coord = { x = -1280.4, y = 2443.6 }, IsCampaignQuest = true,       Zone = 2215 },
+    { Done = { 83551 },            Coord = { x = -1280.4, y = 2443.6 }, HasAchievement = 19559,       Zone = 2215 },
     { PickUp = { 78659 },          Coord = { x = -1280.4, y = 2443.6 }, IsCampaignQuest = true,       Zone = 2215 },
     { GetFP = 2922,                Coord = { x = -1202.8, y = 2470.2 }, Zone = 2215 },
     { Qpart = { [78659] = { 2 } }, Coord = { x = -1528.4, y = 1760.6 }, IsCampaignQuest = true,       Range = 30, Zone = 2215 },
