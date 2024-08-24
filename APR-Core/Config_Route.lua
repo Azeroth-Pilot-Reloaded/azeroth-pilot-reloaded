@@ -678,9 +678,7 @@ function APR.routeconfig:GetSpeedRunPrefab()
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
-    if APR.ClassId == APR.Classes["Dracthyr"] then
-        tinsert(APRCustomPath[APR.PlayerID], "Dracthyr Start")
-    elseif APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
+    if APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         tinsert(APRCustomPath[APR.PlayerID], "01-10 Exile's Reach")
     elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and APR.Level < APR.MinBoostLvl then -- first quest from Exile's Reach + boost
         --None skipable starting zone
@@ -723,6 +721,10 @@ function APR.routeconfig:GetStartingZonePrefab()
             tinsert(APRCustomPath[APR.PlayerID], "Mechagnome Start")
         elseif APR.Race == "KulTiran" then
             tinsert(APRCustomPath[APR.PlayerID], "Kul Tiran Start")
+        elseif APR.Race == "Dracthyr" then
+            tinsert(APRCustomPath[APR.PlayerID], "Dracthyr Start")
+        elseif APR.Race == "EarthenDwarf" then
+            tinsert(APRCustomPath[APR.PlayerID], "Earthen Dwarf Start")
         elseif APR.Level < 10 then -- Skipable starting zone
             -- HORDE
             if (APR.Race == "Orc") then
