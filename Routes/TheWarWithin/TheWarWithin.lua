@@ -1237,6 +1237,30 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
 }
 
 APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
+    {
+        PickUp = { 83543, },
+        Coord = { x = -2528.6999511719, y = 2678.3000488281, },
+        HasAchievement = 19559,
+        Zone = 2248,
+    },
+    {
+        PickUp = { 83550, },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 19559,
+        Zone = 2248,
+    },
+    {
+        Qpart = { [83543] = { 1 } },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 19559,
+        Zone = 2248,
+    },
+    {
+        Done = { 83543, },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 40725,
+        Zone = 2248,
+    },
     { PickUp = { 80434 },             Coord = { x = -2204.5, y = 2462.7 }, Zone = 2339 },
     {
         Qpart = { [80434] = { 1 } },
@@ -1246,9 +1270,26 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Zone = 2339
     },
     {
+        Waypoint = 83550,
+        Coord = { x = -2276.5, y = 2458.1 },
+        ExtraLineText = "GO_DOWN_INTO_COREWAY",
+        HasAchievement = 19559,
+        Range = 10,
+        Zone = 2339
+    },
+    {
         Waypoint = 80434,
         Coord = { x = -2360.4, y = 2462.9 },
         ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        DontHaveAchievement = 19559,
+        Range = 20,
+        Zone = 2248
+    },
+    {
+        Waypoint = 83550,
+        Coord = { x = -2360.4, y = 2462.9 },
+        ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        HasAchievement = 19559,
         Range = 20,
         Zone = 2248
     },
@@ -1256,6 +1297,15 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Waypoint = 80434,
         Coord = { x = -2553.7, y = 2457.6 },
         ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        DontHaveAchievement = 19559,
+        Range = 10,
+        Zone = 2248
+    },
+    {
+        Waypoint = 83550,
+        Coord = { x = -2553.7, y = 2457.6 },
+        ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        HasAchievement = 19559,
         Range = 10,
         Zone = 2248
     },
@@ -1263,6 +1313,15 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Waypoint = 80434,
         Coord = { x = -2586.1, y = 2288.8 },
         ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        DontHaveAchievement = 19559,
+        Range = 10,
+        Zone = 2248
+    },
+    {
+        Waypoint = 83550,
+        Coord = { x = -2586.1, y = 2288.8 },
+        ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        HasAchievement = 19559,
         Range = 10,
         Zone = 2248
     },
@@ -1270,6 +1329,15 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Waypoint = 80434,
         Coord = { x = -2244.7, y = 2257.8 },
         ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        DontHaveAchievement = 19559,
+        Range = 10,
+        Zone = 2214
+    },
+    {
+        Waypoint = 83550,
+        Coord = { x = -2244.7, y = 2257.8 },
+        ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        HasAchievement = 19559,
         Range = 10,
         Zone = 2214
     },
@@ -1277,10 +1345,20 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         Waypoint = 80434,
         Coord = { x = -2224.8, y = 2401.0 },
         ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        DontHaveAchievement = 19559,
+        Range = 10,
+        Zone = 2214
+    },
+    {
+        Waypoint = 83550,
+        Coord = { x = -2224.8, y = 2401.0 },
+        ExtraLineText = "FOLLOW_TUNNEL_INTO_RINGING_DEEPS",
+        HasAchievement = 19559,
         Range = 10,
         Zone = 2214
     },
     { Done = { 80434 },               Coord = { x = -2385.9, y = 2468.2 }, Zone = 2214 },
+    { Done = { 83550 },               Coord = { x = -2385.9, y = 2468.2 }, HasAchievement = 19559,        Zone = 2214 },
     { PickUp = { 78555 },             Coord = { x = -2385.9, y = 2468.2 }, Zone = 2214 },
     { PickUp = { 78557 },             Coord = { x = -2388.4, y = 2470.7 }, Zone = 2214 },
     { Qpart = { [78557] = { 1 } },    Coord = { x = -2517.6, y = 2393.2 }, Fillers = { [78555] = { 1 } }, Range = 10, Zone = 2214 },
