@@ -524,6 +524,30 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Zone = 2339,
         _index = 38
     },
+    {
+        PickUp = { 83543, },
+        Coord = { x = -2528.6999511719, y = 2678.3000488281, },
+        HasAchievement = 19559,
+        Zone = 2248
+    },
+    {
+        PickUp = { 83550, 83551, 83552, },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 19559,
+        Zone = 2248
+    },
+    {
+        Qpart = { [83543] = { 1, } },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 19559,
+        Zone = 2248
+    },
+    {
+        Done = { 83543, },
+        Coord = { x = -2546.5, y = 2686.5, },
+        HasAchievement = 40725,
+        Zone = 2248
+    },
     { PickUp = { 82747 },          Coord = { x = -2515.3, y = 2838.3 },                   Zone = 2339,             _index = 39 },
     { Qpart = { [78457] = { 5 } }, Coord = { x = -2354.3000488281, y = 2961.8000488281 }, Zone = 2339,             _index = 40 },
     { Done = { 78457 },            Coord = { x = -2370.8, y = 2935.5 },                   Zone = 2339,             _index = 41 },
