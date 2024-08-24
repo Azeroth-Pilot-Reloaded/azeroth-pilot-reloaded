@@ -143,6 +143,8 @@ if (APR.Faction == "Horde") then
         APR.RouteList.BattleForAzeroth["85-Vulpera-intro"] = "Vulpera Start"
     elseif APR.Race == "MagharOrc" then
         APR.RouteList.BattleForAzeroth["85-MagharOrc-intro"] = "Maghar Orc Start"
+    elseif APR.Race == "EarthenDwarf" then
+        APR.RouteList.TheWarWithin["2248-TWW-Earthen"] = "Earthen Dwarf Start"
     end
 
     -- Lumbermill Wod route

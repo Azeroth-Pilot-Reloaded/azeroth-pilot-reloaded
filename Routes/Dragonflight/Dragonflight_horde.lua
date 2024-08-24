@@ -470,10 +470,10 @@ if APR.Faction == "Horde" then
         { ZoneDoneSave = 1 }
     }
     APR.RouteQuestStepList["2118-DracthyrStart-H"] = {
-        { PickUp = { 64864 }, Coord = { y = 5787.2, x = -3073.3 } },
+        { PickUp = { 64864 }, Coord = { x = -3024.0, y = 5737.0 } },
         {
             Qpart = { [64864] = { 1 } },
-            Coord = { y = 5787.2, x = -3073.3 },
+            Coord = { x = -3024.0, y = 5737.0 },
             Range = 1,
             ExtraLineText = "INTERACT_WITH_KODETHI",
             RaidIcon = 187223

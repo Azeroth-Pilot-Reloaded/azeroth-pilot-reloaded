@@ -150,6 +150,10 @@ if (APR.Faction == "Alliance") then
         APR.RouteList.BattleForAzeroth["1573-Mechagnome-intro"] = "Mechagnome Start"
     elseif (APR.Race == "KulTiran") then
         APR.RouteList.BattleForAzeroth["1161-KulTiran-intro"] = "Kul Tiran Start"
+    elseif (APR.Race == "KulTiran") then
+        APR.RouteList.BattleForAzeroth["1161-KulTiran-intro"] = "Kul Tiran Start"
+    elseif (APR.Race == "EarthenDwarf") then
+        APR.RouteList.TheWarWithin["2248-TWW-Earthen"] = "Earthen Dwarf Start"
     end
 
     -- Lumbermill Wod route

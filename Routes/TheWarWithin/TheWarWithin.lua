@@ -11792,3 +11792,141 @@ APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
         _index = 158,
     },
 }
+
+APR.RouteQuestStepList["2248-TWW-Earthen"] = {
+    { Coord = { x = -261.60000610352, y = 1441.5 },          PickUp = { 79200 },          Zone = 2248,                 _index = 1 },
+    { Coord = { x = -240.30000305176, y = 1433.0999755859 }, Qpart = { [79200] = { 1 } }, Range = 1,                   Zone = 2248, _index = 3 },
+    { Coord = { x = -210.80000305176, y = 1365.5 },          Qpart = { [79200] = { 2 } }, Range = 1,                   Zone = 2248, _index = 3 },
+    { Coord = { x = -211.40000915527, y = 1501.4000244141 }, Qpart = { [79200] = { 3 } }, Range = 1,                   Zone = 2248, _index = 4 },
+    { Coord = { x = -211.40000915527, y = 1501.4000244141 }, ExtraActionB = 1,            Qpart = { [79200] = { 4 } }, Range = 1,   Zone = 2248, _index = 4 },
+    { Coord = { x = -24.5, y = 1431.9000244141 },            Done = { 79200 },            Zone = 2248,                 _index = 6 },
+    { Coord = { x = -24.300001144409, y = 1433.9000244141 }, PickUp = { 79201 },          Zone = 2248,                 _index = 7 },
+    {
+        Coord = { x = -13.5, y = 1447.9000244141 },
+        GossipOptionIDs = { 122137, 122227, 122214 },
+        Qpart = { [79201] = { 1 } },
+        Zone = 2248,
+        _index = 8
+    },
+    {
+        Coord = { x = -12.800000190735, y = 1418 },
+        GossipOptionIDs = { 122312, 122199, 123793 },
+        Qpart = { [79201] = { 2 } },
+        Zone = 2248,
+        _index = 9
+    },
+    {
+        Coord = { x = 22.89999961853, y = 1433 },
+        GossipOptionIDs = { 122313, 122219, 122223 },
+        Qpart = { [79201] = { 3 } },
+        Zone = 2248,
+        _index = 10
+    },
+    { Coord = { x = 107.20000457764, y = 1401.5 },          Done = { 79201 },             Zone = 2248,                 _index = 11 },
+    { Coord = { x = 107.20000457764, y = 1401.5 },          PickUp = { 79202 },           Zone = 2248,                 _index = 12 },
+    { Coord = { x = 125.70000457764, y = 1433.7000732422 }, GossipOptionIDs = { 122263 }, Qpart = { [79202] = { 1 } }, Range = 30,  Zone = 2248, _index = 13 },
+    { Coord = { x = 214.40000915527, y = 1432.5 },          Range = 5,                    Waypoint = 79202,            Zone = 2248, _index = 14 },
+    { Coord = { x = 257.80001831055, y = 1440.5 },          Done = { 79202 },             Zone = 2248,                 _index = 15 },
+    { Coord = { x = 256.39999389648, y = 1438.5999755859 }, PickUp = { 79203 },           Zone = 2248,                 _index = 16 },
+    { Coord = { x = 304, y = 1432.5 },                      Qpart = { [79203] = { 1 } },  Range = 10,                  Zone = 2248, _index = 17 },
+    { Coord = { x = 385.80001831055, y = 1441.2000732422 }, Done = { 79203 },             Zone = 2248,                 _index = 18 },
+    { Coord = { x = 385.89999389648, y = 1441 },            PickUp = { 79204 },           Zone = 2248,                 _index = 19 },
+    { Coord = { x = 453.60000610352, y = 1431.9000244141 }, Qpart = { [79204] = { 1 } },  Range = 5,                   Zone = 2248, _index = 20 },
+    { Coord = { x = 453.60000610352, y = 1431.9000244141 }, Done = { 79204 },             Zone = 2248,                 _index = 21 },
+    {
+        PickUp = { 81888 },
+        Coord = { x = 453.60000610352, y = 1431.9000244141 },
+        Faction = "Horde",
+        Zone = 2248,
+        _index = 22
+    },
+    {
+        Waypoint = 81888,
+        Coord = { x = 467.10000610352, y = 1413.5999755859 },
+        ExtraLineText = "USE_PORTAL",
+        Faction = "Horde",
+        Range = 2,
+        Zone = 2248,
+        _index = 24
+    },
+    {
+        Done = { 81888 },
+        Coord = { x = -4191.7001953125, y = 1563.7000732422 },
+        Zone = 85,
+        Faction = "Horde",
+        _index = 24
+    },
+    {
+        PickUp = { 81889 },
+        Coord = { x = -4191.5, y = 1563.8000488281 },
+        Zone = 85,
+        Faction = "Horde",
+        _index = 25
+    },
+    {
+        Qpart = { [81889] = { 1 } },
+        Coord = { x = -4216.3999023438, y = 1557.2000732422 },
+        RaidIcon = 167032,
+        Faction = "Horde",
+        Zone = 85,
+        _index = 26
+    },
+    {
+        Done = { 81889 },
+        Coord = { x = -4215.2001953125, y = 1554.7000732422 },
+        RaidIcon = 224807,
+        Faction = "Horde",
+        Zone = 85,
+        _index = 27
+    },
+    {
+        PickUp = { 81886 },
+        Coord = { x = 453.60000610352, y = 1432 },
+        Faction = "Alliance",
+        Zone = 2248,
+        _index = 29
+    },
+    {
+        Waypoint = 81886,
+        Coord = { x = 465.70001220703, y = 1452 },
+        ExtraLineText = "USE_PORTAL",
+        Faction = "Alliance",
+        Range = 2,
+        Zone = 2248,
+        _index = 30
+    },
+    {
+        Done = { 81886 },
+        Coord = { x = 801.20001220703, y = -8172.6000976562 },
+        Faction = "Alliance",
+        Zone = 84,
+        _index = 31
+    },
+    {
+        PickUp = { 81887 },
+        Coord = { x = 801.20001220703, y = -8172.6000976562 },
+        Faction = "Alliance",
+        Zone = 84,
+        _index = 32
+    },
+    {
+        Qpart = { [81887] = { 1 } },
+        Coord = { x = 745.40002441406, y = -8196.400390625 },
+        Faction = "Alliance",
+        RaidIcon = 167032,
+        Zone = 84,
+        _index = 33
+    },
+    {
+        Done = { 81887 },
+        Coord = { x = 746.5, y = -8200.6005859375 },
+        Faction = "Alliance",
+        RaidIcon = 224806,
+        Zone = 84,
+        _index = 34
+    },
+    {
+        ZoneDoneSave = 1,
+        _index = 35
+    }
+}
