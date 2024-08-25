@@ -2364,7 +2364,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     },
     {
         QpartPart = { [78670] = { 2 } },
-        Coord = { x = -530.8, y = 1317.6 },
+        Coord = { x = -557.4, y = 1212.8 },
         TrigText = "1/4",
         Fillers = { [78669] = { 1 } },
         Range = 2,
@@ -2372,7 +2372,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     },
     {
         QpartPart = { [78670] = { 2 } },
-        Coord = { x = -549.1, y = 1276.2 },
+        Coord = { x = -550.8, y = 1248.2 },
         TrigText = "2/4",
         Fillers = { [78669] = { 1 } },
         Range = 2,
@@ -2380,7 +2380,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     },
     {
         QpartPart = { [78670] = { 2 } },
-        Coord = { x = -550.8, y = 1248.2 },
+        Coord = { x = -549.1, y = 1276.2 },
         TrigText = "3/4",
         Fillers = { [78669] = { 1 } },
         Range = 2,
@@ -2388,7 +2388,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     },
     {
         QpartPart = { [78670] = { 2 } },
-        Coord = { x = -557.4, y = 1212.8 },
+        Coord = { x = -530.8, y = 1317.6 },
         TrigText = "4/4",
         Fillers = { [78669] = { 1 } },
         Range = 2,
@@ -7950,39 +7950,35 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall-campaign-only"] = {
     },
     {
         QpartPart = { [78670] = { 2 } },
-        Coord = { x = -530.8, y = 1317.6 },
+        Coord = { x = -557.4, y = 1212.8 },
         TrigText = "1/4",
         Fillers = { [78669] = { 1 } },
         Range = 2,
-        Zone = 2215,
-        _index = 47,
-    },
-    {
-        QpartPart = { [78670] = { 2 } },
-        Coord = { x = -549.1, y = 1276.2 },
-        TrigText = "2/4",
-        Fillers = { [78669] = { 1 } },
-        Range = 2,
-        Zone = 2215,
-        _index = 48,
+        Zone = 2215
     },
     {
         QpartPart = { [78670] = { 2 } },
         Coord = { x = -550.8, y = 1248.2 },
-        TrigText = "3/4",
+        TrigText = "2/4",
         Fillers = { [78669] = { 1 } },
         Range = 2,
-        Zone = 2215,
-        _index = 49,
+        Zone = 2215
     },
     {
         QpartPart = { [78670] = { 2 } },
-        Coord = { x = -557.4, y = 1212.8 },
+        Coord = { x = -549.1, y = 1276.2 },
+        TrigText = "3/4",
+        Fillers = { [78669] = { 1 } },
+        Range = 2,
+        Zone = 2215
+    },
+    {
+        QpartPart = { [78670] = { 2 } },
+        Coord = { x = -530.8, y = 1317.6 },
         TrigText = "4/4",
         Fillers = { [78669] = { 1 } },
         Range = 2,
-        Zone = 2215,
-        _index = 50,
+        Zone = 2215
     },
     {
         Qpart = { [78669] = { 1 } },
@@ -9060,12 +9056,6 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
         _index = 36,
     },
     {
-        PickUp = { 84664 },
-        Coord = { x = -1364.4000244141, y = -455.20001220703 },
-        Zone = 2255,
-        _index = 37,
-    },
-    {
         Qpart = { [78393] = { 1 } },
         Coord = { x = -1440.9000244141, y = -607.79998779297 },
         Zone = 2255,
@@ -9095,19 +9085,6 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
         Coord = { x = -1445.5, y = -230.60000610352 },
         Zone = 2255,
         _index = 43,
-    },
-    {
-        Qpart = { [84664] = { 1 } },
-        Coord = { x = -1338, y = -354.20001220703 },
-        BuyMerchant = { { itemID = 228913, quantity = 1, questID = 84664, } },
-        Zone = 2255,
-        _index = 44,
-    },
-    {
-        Done = { 84664 },
-        Coord = { x = -1365, y = -456.39999389648 },
-        Zone = 2255,
-        _index = 45,
     },
     {
         Done = { 78393 },
