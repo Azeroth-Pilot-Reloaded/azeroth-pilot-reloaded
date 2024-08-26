@@ -784,8 +784,8 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Zone = 2248,
         _index = 77
     },
-    { Qpart = { [79692] = { 1 } },                  Coord = { x = -1324.7, y = 871 },   Range = 100, Zone = 2248, _index = 78 },
-    { Qpart = { [78463] = { 1 }, [79553] = { 1 } }, Coord = { x = -1425.6, y = 870.5 }, Range = 125, Zone = 2248, _index = 74 },
+    { Qpart = { [79692] = { 1 } },                  Coord = { x = -1324.7, y = 871 },   Range = 100, Zone = 2248,                _index = 78 },
+    { Qpart = { [78463] = { 1 }, [79553] = { 1 } }, Coord = { x = -1425.6, y = 870.5 }, Range = 125, ExtraLineText = "OUT_CAVE", Zone = 2248, _index = 74 },
     { Done = { 78463 },                             Coord = { x = -1906.1, y = 987.6 }, Zone = 2248, _index = 79 },
     { Done = { 79553 },                             Coord = { x = -1914.7, y = 1003 },  Zone = 2248, _index = 80 },
     { PickUp = { 78462 },                           Coord = { x = -1914.7, y = 1003 },  Zone = 2248, _index = 81 },
@@ -874,8 +874,8 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         Zone = 2248,
         _index = 95
     },
-    { Done = { 82796 },   Coord = { x = -2380.9001464844, y = 1631.2000732422 }, Zone = 2248, _index = 101 },
-    { PickUp = { 82797 }, Coord = { x = -2380.9001464844, y = 1631.2000732422 }, Zone = 2248, _index = 102 },
+    { Done = { 82796 },   Coord = { x = -2380.9001464844, y = 1631.2000732422 }, ExtraLineText = "RUN_UP_HILL", Zone = 2248, _index = 101 },
+    { PickUp = { 82797 }, Coord = { x = -2380.9001464844, y = 1631.2000732422 }, Zone = 2248,                   _index = 102 },
     {
         Qpart = { [82797] = { 1 } },
         Coord = { x = -2381, y = 1628.7000732422 },
@@ -3841,7 +3841,8 @@ APR.RouteQuestStepList["2248-TWW-Ties-That-Bind-storyline"] = {
     { Coord = { x = -776.79998779297, y = 1665.0999755859 }, PickUp = { 79124 }, Zone = 2248, _index = 2 },
     {
         Coord = { x = -712.29998779297, y = 1740.0999755859 },
-        ExtraLineText = "UP_TOWER",
+        ExtraLineText = "CHEST_INSIDE_BUILDING",
+        ExtraLineText2 = "CLIMB_TOWER_STAIRS",
         GossipOptionIDs = { 122158 },
         Qpart = { [79124] = { 2 } },
         Zone = 2248,
