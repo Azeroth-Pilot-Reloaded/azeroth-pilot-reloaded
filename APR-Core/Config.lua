@@ -1273,7 +1273,10 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["TRANSLATOR"] .. ": |r" .. "Neogeekmo, Kamian, Mania ",
+                name = "|cffeda55f" .. L["TRANSLATOR"] .. ": |r\n" ..
+                    "      |cff5f9ea0" .. FRFR .. ": |rNeogeekmo, Mania\n" ..
+                    "      |cff5f9ea0" .. DEDE .. ": |rKamian, Movion\n" ..
+                    "      |cff5f9ea0" .. ESMX .. ": |rJean",
             },
             version = {
                 order = 2.5,
