@@ -96,11 +96,12 @@
 <p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><span style="text-decoration: underline;"><strong>NightOfStarrs</strong></span> - Support Team &amp; QA</span></em></span></p>
 <p style="text-align: center;">&nbsp;</p>
 <p style="text-align: center;"><span style="font-size: 16px;"><em><span style="font-family: arial;"><strong>Translation<br /></strong></span></em></span></p>
-<p style="text-align: center;"><em><span style="font-family: arial;">Want to support our efforts in translating APR?</span></em></p>
-<p style="text-align: center;"><em><span style="font-family: arial;">Please join our </span><span style="font-family: arial;"><a href="https://discord.gg/YgcdybKdWX">Discord!</a></span></em></p>
+<p style="text-align: center;"><em><span style="font-family: arial;">Want to support our efforts in translating APR? Please join our <a href="https://discord.gg/YgcdybKdWX">Discord!</a></span></em></p>
 <p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><strong><span style="text-decoration: underline;">Neogeekmo /&nbsp;Neoldric</span> </strong>- French Translator<strong><br /></strong></span></em></span></p>
 <p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><span style="text-decoration: underline;">Mania</span> </strong>- French Translator</span><span style="font-size: 14px;"><br /></span></em></p>
 <p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><span style="text-decoration: underline;">Kamian</span> </strong>- German Translator</span><span style="font-size: 14px;"><span style="font-family: arial;"><br /></span></span></em></p>
+<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><span style="text-decoration: underline;">Movion</span> </strong>- German Translator</span><span style="font-size: 14px;"><span style="font-family: arial;"><br /></span></span></em></p>
+<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><span style="text-decoration: underline;">Jean</span> </strong>- Latin American Spanish Translator</span><span style="font-size: 14px;"><span style="font-family: arial;"><br /></span></span></em></p>
 <p style="text-align: center;"><em><span style="font-size: 16px;"><strong><span style="font-family: arial;">&nbsp;</span></strong></span></em></p>
 <p style="text-align: center;"><span style="font-size: 16px;"><em><strong><span style="font-family: arial;">Azeroth Auto Pilot &amp; legacy</span></strong></em></span></p>
 <p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;">Here lies t</span><span style="font-family: arial;">he credits for legacy AAP development prior to APR.</span></em></span></p>
