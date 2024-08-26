@@ -9780,16 +9780,6 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
 APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
     {
         Coord = {
-            x = -3100.5,
-            y = 1948.0999755859,
-        },
-        ExtraLineText = "FINISH_CAMPAIGNS_BEFORE_UNLOCK_RACE",
-        Grind = 80,
-        Zone = 2248,
-        _index = 2,
-    },
-    {
-        Coord = {
             x = -3101.6999511719,
             y = 1948,
         },
@@ -11811,15 +11801,11 @@ APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
         _index = 156,
     },
     {
-        Coord = {
-            x = -2171.1000976562,
-            y = 2464.3000488281,
-        },
+        Coord = {    x = -2171.1000976562,    y = 2464.3000488281,},
         ExtraLineText = "FINISH_CAMPAIGNS_BEFORE_UNLOCK_RACE",
-        Range = 5,
-        Waypoint = 1,
+        Grind = 80,
         Zone = 2248,
-        _index = 157,
+        _index = 2,
     },
     {
         ZoneDoneSave = 1,
