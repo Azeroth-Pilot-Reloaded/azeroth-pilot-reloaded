@@ -134,16 +134,26 @@ function APR:CheckIsInRouteZone()
 
     local mapIDs = { parentContinentMapID, currentMapID, parenttMapID }
 
-    if step and APR:Contains({ parentContinentMapID, currentMapID, parenttMapID }, step.Zone) then
+    -- 1 - check if you are in the zone step or a direct child of zone step
+    if step and APR:Contains(mapIDs, step.Zone) then
         return true
     end
 
+    -- 2 - check if the zone step is in the zones for this route
+    if step and APR:Contains(routeZoneMapIDs, step.Zone) then
+        return true
+    elseif parentContinentMapID == 2274 then -- handle tww zone for isle of dorn
+        return false
+    end
+
+    -- 3 - check if your current current zone is in the zones for this route
     for _, mapID in ipairs(mapIDs) do
-        if APR:IsInExpansionRouteMaps(routeZoneMapIDs, mapID) then
+        if APR:Contains(routeZoneMapIDs, mapID) then
             return true
         end
     end
 
+    -- 4 -  handle other case if like when you have in cave, building with diff mapID
     if parentContinentMapID then
         local childrenMap = C_Map.GetMapChildrenInfo(parentContinentMapID)
         if not childrenMap then
@@ -151,11 +161,12 @@ function APR:CheckIsInRouteZone()
         end
 
         for _, map in ipairs(childrenMap) do
-            if APR:IsInExpansionRouteMaps(routeZoneMapIDs, map.mapID) or (step and step.Zone == map.mapID) then
+            if APR:Contains(routeZoneMapIDs, map.mapID) or (step and step.Zone == map.mapID) then
                 return true
             end
         end
     end
+
 
     return false
 end

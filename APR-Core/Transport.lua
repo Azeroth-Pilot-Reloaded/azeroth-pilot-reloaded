@@ -47,18 +47,13 @@ function APR.transport:GetMeToRightZone()
             return
         end
 
-        -- Stop and refresh if it's a instance step
-        if step.InstanceQuest then
-            APR.IsInRouteZone = true
-            APR.BookingList["UpdateStep"] = true
-            return
-        end
 
         local nextZone = step.Zone or mapID
         local mapInfo = C_Map.GetMapInfo(nextZone)
         if not mapInfo then
             return
         end
+
         local parentMapInfo = C_Map.GetMapInfo(mapInfo.parentMapID)
         if not parentMapInfo then
             return
@@ -77,15 +72,12 @@ function APR.transport:GetMeToRightZone()
         APR.Arrow.Active = false
         local currentContinent = APR:GetContinent()
         local isSameContinent, nextContinent = self:IsSameContinent(nextZone)
-        if not isSameContinent then
-            self:GetPortal(currentContinent, nextContinent, nextZone)
+        local portal = self:GetPortal(currentContinent, nextContinent, nextZone)
+        if portal then
+            --portal found donc need to check the closestTaxi
             return
-        else
-            local portal = self:GetPortal(currentContinent, nextContinent, nextZone)
-            if portal then
-                --portal found donc need to check the closestTaxi
-                return
-            end
+        end
+        if isSameContinent then
             local posY, posX = UnitPosition("player")
             local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
             if step.Coord then
@@ -99,21 +91,21 @@ function APR.transport:GetMeToRightZone()
                     APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
                     return
                 else
-                    local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(nextZone, playerMapInfo)
+                    local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(nextZone)
                     if zoneEntryMapID then
                         local zoneEntryMapInfo = C_Map.GetMapInfo(zoneEntryMapID)
                         APR.currentStep:AddExtraLineText("GO_TO" .. zoneEntryMapInfo.name,
-                            L["GO_TO"] .. ": " .. zoneEntryMapInfo.name)
+                            format(L["GO_TO"], zoneEntryMapInfo.name))
                         APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
                         return
                     end
                 end
             end
-            APR.currentStep:AddExtraLineText("ERROR_PATH_NOT_FOUND", L["ERROR"] ..
-                " - " .. L["PATH_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. mapID .. ")")
-            APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. mapInfo.name)
-            APR.Arrow:SetArrowActive(false, 0, 0)
         end
+        APR.currentStep:AddExtraLineText("ERROR_PATH_NOT_FOUND", L["ERROR"] ..
+            " - " .. L["PATH_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. mapID .. ")")
+        APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. mapInfo.name)
+        APR.Arrow:SetArrowActive(false, 0, 0)
     end
 end
 
@@ -150,7 +142,8 @@ end
 --- @return number zoneMoveOrder
 --- @return number closestX
 --- @return number closestY
-function APR.transport:GetZoneMoveOrder(nextMapId, currentMapID)
+function APR.transport:GetZoneMoveOrder(nextMapId)
+    local currentMapID = APR:GetPlayerParentMapID()
     local zoneMoveOrder = APR.ZonesData["ZoneMoveOrder"][currentMapID] and
         APR.ZonesData["ZoneMoveOrder"][currentMapID][nextMapId]
     if not zoneMoveOrder then
@@ -273,10 +266,11 @@ function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
 
     -- TaxiNode
     local posY, posX = UnitPosition("player")
-    local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
-    local portalTaxiNodeId, portalTaxiName, _, _ = self:ClosestTaxi(portalPosition.x, portalPosition.y)
+    local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY, playerDistance = self:ClosestTaxi(posX, posY)
+    local portalTaxiNodeId, portalTaxiName, _, _, portalDistance = self:ClosestTaxi(portalPosition.x, portalPosition.y)
+    local hasDraconicRidingskill = IsSpellKnown(90265) and IsSpellKnown(372608)
 
-    if playerTaxiNodeId == portalTaxiNodeId then
+    if playerTaxiNodeId == portalTaxiNodeId or (hasDraconicRidingskill and portalDistance < APR.Arrow.MaxDistanceWrongZone) then
         -- handle the Alliance portals room
         if APR.Faction == "Alliance" and CurContinent == 13 and (posY > -8981.3 and posX < 866.7) then
             APR.currentStep:AddExtraLineText("GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"])
@@ -285,7 +279,7 @@ function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
         else
             local extraText = portal.extraText or "USE_PORTAL_TO"
             APR.currentStep:AddExtraLineText(portal.portalKey,
-                L[extraText] .. " " .. C_Map.GetMapInfo(portal.nextZone).name)
+                format(L[extraText], C_Map.GetMapInfo(portal.nextZone).name))
             APR.Arrow:SetArrowActive(true, portalPosition.x, portalPosition.y)
         end
     else
@@ -335,9 +329,11 @@ function APR.transport:ClosestTaxi(posX, posY)
     local neutralNodeId, neutralName, neutralX, neutralY, neutralDistance = findClosestTaxi("Neutral")
 
     if neutralDistance < closestDistance then
-        return neutralNodeId, (APRTaxiNodes[APR.PlayerID][neutralNodeId] or neutralName), neutralX, neutralY
+        return neutralNodeId, (APRTaxiNodes[APR.PlayerID][neutralNodeId] or neutralName), neutralX, neutralY,
+            neutralDistance
     else
-        return closestNodeId, (APRTaxiNodes[APR.PlayerID][closestNodeId] or closestName), closestX, closestY
+        return closestNodeId, (APRTaxiNodes[APR.PlayerID][closestNodeId] or closestName), closestX, closestY,
+            closestDistance
     end
 end
 
@@ -362,7 +358,7 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
         or event == "ZONE_CHANGED_NEW_AREA"
         or event == "WAYPOINT_UPDATE"
         or event == "PLAYER_ENTERING_WORLD" then
-        if APR.IsInRouteZone then
+        if not APR.IsInRouteZone and APR.ActiveRoute then
             APR.transport:GetMeToRightZone()
         end
     elseif (event == "TAXIMAP_OPENED") then
