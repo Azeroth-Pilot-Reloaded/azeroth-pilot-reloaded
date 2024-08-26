@@ -161,7 +161,7 @@ function APR.Arrow:SetCoord()
         return
     end
 
-    if (APR.Arrow.currentStep ~= CurStep and step.Coord and APR:CheckIsInRouteZone()) then
+    if APR.Arrow.currentStep ~= CurStep and step.Coord and APR.IsInRouteZone then
         self:SetArrowActive(true, step.Coord.x, step.Coord.y)
         APR.Arrow.currentStep = CurStep
     end

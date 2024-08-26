@@ -78,9 +78,3 @@ function APR:GetPlayerCurrentTaxiNode()
     return {}
 end
 
--- check if the zone ID is in the route map IDs
---- @param mapIds number
---- @param mapId Array<number>
-function APR:IsInExpansionRouteMaps(mapIds, mapId)
-    return self:Contains(mapIds, mapId)
-end

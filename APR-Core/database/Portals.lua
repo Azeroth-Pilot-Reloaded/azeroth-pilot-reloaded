@@ -57,10 +57,26 @@ APR.Portals.Coords = {
         [1978] = { ["Stormwind"] = { x = -1066.8, y = 246.5 } },
         [2274] = {
             ["Stormwind"] = { x = -2397.7, y = 2982.1 },
-            ["IsleOfDorn"] = { x = -1478.9, y = -362.5 },
-            ["AzjKahet"] = { x = -2869.2, y = 2567.7 },
-            ["IsleOfDornElevator"] = { x = -3202.6, y = 1685.9 },
-            ["RingingDeepsElevator"] = { x = -4093.1, y = 3374.5 }
+            -- isle of dorn
+            ["RingingDeepsTunnel"] = { x = -2413.1, y = 2462.7 },
+            ["RingingDeepsElevator"] = { x = -4093.8, y = 3375.0 },
+            ["AzjKahetPortal"] = { x = -2869.2, y = 2567.7 },
+            -- Ringing Deeps
+            ["IsleOfDornTunnel"] = { x = -2250.7, y = 2430.6 },
+            ["IsleOfDornElevator"] = { x = -3199.5, y = 1686.2 },
+            ["HallowFallGate"] = { x = -2192.5, y = 2622.8 },
+            ["AzjKahetEast"] = { x = -2810.5, y = 601.1 },
+
+            -- hallowfall
+            ["RingingDeepsGate"] = { x = -2254.7, y = 2643.9 },
+            ["AzjKahetNothEast"] = { x = -1729.7, y = 1381.9 },
+            ["AzjKahetNothWest"] = { x = 831.8, y = 234.8 },
+
+            --Azj Kahet
+            ["RingingDeepsSouth"] = { x = -3010.1, y = 633.9 },
+            ["HallowFallNothEast"] = { x = -1617.4, y = 1474.1 },
+            ["HallowFallNothWest"] = { x = 887.5, y = 373.4 },
+            ["IsleOfDornPortal"] = { x = -1481.4, y = -360.8 },
         },
 
     },
@@ -125,10 +141,26 @@ APR.Portals.Coords = {
         [1978] = { ["Orgrimmar"] = { x = -1023, y = 278 } },
         [2274] = {
             ["Orgrimmar"] = { x = -2334.7, y = 2919.1 },
-            ["IsleOfDorn"] = { x = -1478.9, y = -362.5 },
-            ["AzjKahet"] = { x = -2869.2, y = 2567.7 },
-            ["IsleOfDornElevator"] = { x = -3202.6, y = 1685.9 },
-            ["RingingDeepsElevator"] = { x = -4093.1, y = 3374.5 }
+            -- isle of dorn
+            ["RingingDeepsTunnel"] = { x = -2413.1, y = 2462.7 },
+            ["RingingDeepsElevator"] = { x = -4093.8, y = 3375.0 },
+            ["AzjKahetPortal"] = { x = -2869.2, y = 2567.7 },
+            -- Ringing Deeps
+            ["IsleOfDornTunnel"] = { x = -2250.7, y = 2430.6 },
+            ["IsleOfDornElevator"] = { x = -3199.5, y = 1686.2 },
+            ["HallowFallGate"] = { x = -2192.5, y = 2622.8 },
+            ["AzjKahetEast"] = { x = -2810.5, y = 601.1 },
+
+            -- hallowfall
+            ["RingingDeepsGate"] = { x = -2254.7, y = 2643.9 },
+            ["AzjKahetNothEast"] = { x = -1729.7, y = 1381.9 },
+            ["AzjKahetNothWest"] = { x = 831.8, y = 234.8 },
+
+            --Azj Kahet
+            ["RingingDeepsSouth"] = { x = -3010.1, y = 633.9 },
+            ["HallowFallNothEast"] = { x = -1617.4, y = 1474.1 },
+            ["HallowFallNothWest"] = { x = 887.5, y = 373.4 },
+            ["IsleOfDornPortal"] = { x = -1481.4, y = -360.8 },
         },
     }
 }
@@ -158,7 +190,7 @@ APR.Portals.SwitchCont = {
         { continent = 101,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Shattrath, Terokkar Forest" },
         { continent = 101,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind DarkPortal",    closestTaxiNode = "Hellfire Peninsula, The Dark Portal" },
         { continent = 113,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dalaran" },
-        { continent = 424,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Blossom",       closestTaxiNode = "Shrine of Seven Stars, Vale of Eternal Blossoms", extraText = "UPSTAIRS" },
+        { continent = 424,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Blossom",       closestTaxiNode = "Shrine of Seven Stars, Vale of Eternal Blossoms", extraText = "UPSTAIRS_TO" },
         { continent = 424,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Jade Forest",   closestTaxiNode = "Paw'Don Village, Jade Forest" },
         { continent = 424,  nextContinent = 424,  nextZone = 504,  portalKey = "Isle of Thunder", },
         { continent = 424,  nextContinent = 424,  nextZone = 388,  portalKey = "Townlong Steppes", },
@@ -181,10 +213,25 @@ APR.Portals.SwitchCont = {
         { continent = 876,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                 closestTaxiNode = "Tradewinds Market, Tiragarde Sound",              extraText = "SAIL_TO" },
 
         { continent = 2274, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dornogal, Isle of Dorn", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahet",                closestTaxiNode = "Dornogal, Isle of Dorn", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDorn",              closestTaxiNode = "Weaver's Lair, Azj-Kahet", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator", },
+        -- Isle of dorn
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornTunnel",        extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator",      extraText = "USE_ELEVATOR" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornPortal" },
+        -- Ringing Deeps
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsTunnel",      extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",    extraText = "USE_ELEVATOR" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",        extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",       extraText = "GO_TO" },
+        -- Hallowfall
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "RingingDeepsTunnel",      extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallGate",          extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothEast",      extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothWest",      extraText = "GO_TO" },
+        --Azj Kahet
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetPortal",          closestTaxiNode = "Dornogal, Isle of Dorn", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetEast",            extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothEast",        extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothWest",        extraText = "GO_TO" },
     },
     ["Horde"] = {
         { continent = 12,   nextContinent = 13,   nextZone = 224,  portalKey = "STVZep",                 closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "USE_ZEPPELIN_TO" },
@@ -198,7 +245,7 @@ APR.Portals.SwitchCont = {
         { continent = 12,   nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",               closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 1550, nextZone = 1670, portalKey = "Oribos",                 closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 1978, nextZone = 2112, portalKey = "Valdrakken",             closestTaxiNode = "Orgrimmar, Durotar" },
-        { continent = 12,   nextContinent = 2274, nextZone = 2248, portalKey = "Dornogal",               closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS" },
+        { continent = 12,   nextContinent = 2274, nextZone = 2248, portalKey = "Dornogal",               closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS_TO" },
         { continent = 12,   nextContinent = 619,  nextZone = 627,  portalKey = "DalaranLegion",          closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 619,  nextZone = 629,  portalKey = "DalaranLegion",          closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 619,  nextZone = 630,  portalKey = "AzsunaLegion",           closestTaxiNode = "Orgrimmar, Durotar" },
@@ -212,7 +259,7 @@ APR.Portals.SwitchCont = {
         { continent = 101,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Shattrath, Terokkar Forest" },
         { continent = 101,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar DarkPortal",   closestTaxiNode = "Hellfire Peninsula, The Dark Portal" },
         { continent = 113,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dalaran" },
-        { continent = 424,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Blossom",      closestTaxiNode = "Shrine of Two Moons, Vale of Eternal Blossoms", extraText = "UPSTAIRS" },
+        { continent = 424,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Blossom",      closestTaxiNode = "Shrine of Two Moons, Vale of Eternal Blossoms", extraText = "UPSTAIRS_TO" },
         { continent = 424,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Jade Forest",  closestTaxiNode = "Honeydew Village, Jade Forest" },
         { continent = 424,  nextContinent = 424,  nextZone = 388,  portalKey = "Townlong Steppes", },
         { continent = 424,  nextContinent = 424,  nextZone = 504,  portalKey = "Isle of Thunder", },
@@ -235,9 +282,24 @@ APR.Portals.SwitchCont = {
         { continent = 1550, nextContinent = 1550, nextZone = 1536, portalKey = "OribosInMaldraxxus",     closestTaxiNode = "Theater of Pain, Maldraxxus" },
 
         { continent = 2274, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dornogal, Isle of Dorn", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahet",               closestTaxiNode = "Dornogal, Isle of Dorn", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDorn",             closestTaxiNode = "Weaver's Lair, Azj-Kahet", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator", },
+        -- Isle of dorn
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornTunnel",       extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator",     extraText = "USE_ELEVATOR" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornPortal" },
+        -- Ringing Deeps
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsTunnel",     extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",   extraText = "USE_ELEVATOR" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",       extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",      extraText = "GO_TO" },
+        -- Hallowfall
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "RingingDeepsTunnel",     extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallGate",         extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothEast",     extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothWest",     extraText = "GO_TO" },
+        --Azj Kahet
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetPortal",         closestTaxiNode = "Dornogal, Isle of Dorn", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetEast",           extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothEast",       extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothWest",       extraText = "GO_TO" },
     },
 }
