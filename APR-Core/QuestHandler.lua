@@ -769,7 +769,7 @@ function APR:UpdateStep()
             tremove(APRCustomPath[APR.PlayerID], index)
             APR.routeconfig:CheckIsCustomPathEmpty()
             APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-            APR.BookingList["UpdateMapId"] = true
+            C_Timer.After(1, APR.routeconfig:SendMessage("APR_Custom_Path_Update")) -- double send to try to avoid blank frame
             return
         end
 
