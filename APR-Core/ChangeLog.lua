@@ -79,13 +79,28 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.2.6", "2024-08-26" },
+        "#Features",
+        "- Update of Translator display in About menu",
+
+        "#Bugs",
+        "- Fix for zone transition in TWW (not optimal but this handle 90% of the cases)",
+        "- Added force rerender of Current step frame after an end of route (test to avoid blank frame)",
+        "- Added class check for ''Strength of One'' quest (9582) for Draenei starting zone",
+
+        "#TWW",
+        "- Remove 84664 quest from Campaign Only route of Azj Kahet",
+
+        "#Translation/Localizations",
+        "- Thanks to Jean, who joined the team to do the translation into Spanish (LATAM)",
+
+        "#Community",
+        "- For those on EU servers, I've created an Azeroth Pilot Reloaded community: zWw7EWwFk97",
+
         { "v4.2.5", "2024-08-24" },
         "#TWW",
         "- Added TWW - Allied Races Earthen starting zone route",
         "- Added/Fixed TWW adventure map quests for your alt",
-
-        "#Community",
-        "- For those on EU servers, I've created an Azeroth Pilot Reloaded community: zWw7EWwFk97",
 
         { "v4.2.4", "2024-08-23" },
         "#Features",
