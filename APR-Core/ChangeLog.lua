@@ -79,6 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.3.1", "2024-08-27" },
+        "#TWW",
+        "- Added missing end of Hidden Edicts storyline",
+        "- Added 'Not available yet' message for TWW storyline",
+
         { "v4.3.0", "2024-08-27" },
         "#Bugs",
         "- Fix for error after an end of route (oops my bad)",
