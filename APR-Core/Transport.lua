@@ -47,7 +47,6 @@ function APR.transport:GetMeToRightZone()
             return
         end
 
-
         local nextZone = step.Zone or mapID
         local mapInfo = C_Map.GetMapInfo(nextZone)
         if not mapInfo then
@@ -73,6 +72,12 @@ function APR.transport:GetMeToRightZone()
         local currentContinent = APR:GetContinent()
         local isSameContinent, nextContinent = self:IsSameContinent(nextZone)
         local portal = self:GetPortal(currentContinent, nextContinent, nextZone)
+        -- Stop and refresh if it's a instance step
+        if step.InstanceQuest then
+            APR.IsInRouteZone = true
+            APR.BookingList["UpdateStep"] = true
+            return
+        end
         if portal then
             --portal found donc need to check the closestTaxi
             return
