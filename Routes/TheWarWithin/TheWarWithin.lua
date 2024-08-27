@@ -4005,6 +4005,7 @@ APR.RouteQuestStepList["2248-TWW-News-from-Below-storyline"] = {
         PickUp = {
             79224,
         },
+        ExtraLineText = "NOT_AVAILABLE_YET",
         Zone = 2248,
         _index = 1,
     },
@@ -4715,6 +4716,7 @@ APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
             x = -2474.4001464844,
             y = 2648.8000488281,
         },
+        ExtraLineText = "NOT_AVAILABLE_YET",
         SetHS = 79022,
         Zone = 2248,
         _index = 0,
@@ -4724,6 +4726,7 @@ APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
             x = -2195.9001464844,
             y = 2464.9001464844,
         },
+        ExtraLineText = "NOT_AVAILABLE_YET",
         PickUp = {
             79022,
         },
