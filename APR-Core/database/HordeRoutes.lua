@@ -90,7 +90,8 @@ if (APR.Faction == "Horde") then
         ["2214-TWW-Ringing-Deeps-campaign-only"] = "TWW - Ringing Deeps - Campaign Only",
         ["2215-TWW-Hallowfall-campaign-only"] = "TWW - Hallowfall - Campaign Only",
         ["2255-TWW-Azj-Kahet-campaign-only"] = "TWW - Azj Kahet - Campaign Only",
-        ["2255-TWW-Allied-Races-Earthen"] = "TWW Allied Races Earthen"
+        ["2255-TWW-Allied-Races-Earthen"] = "TWW Allied Races Earthen",
+        ["2248-TWW-Isle-of-Dorn-Full"] = "TWW - Isle of Dorn - All quests",
     }
     APR.RouteList.Custom = {}
 
