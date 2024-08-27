@@ -79,6 +79,20 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.3.0", "2024-08-27" },
+        "#Bugs",
+        "- Fix for error after an end of route (oops my bad)",
+        "- Fixed message for quest 79124 in Ties That Bind Storyline",
+        "- Removed message from first step of Earthen route and added a correct we before the quest The Councilward's Summons",
+        "- Remove unavailble storyline from The War Within prefab route button",
+        "- Fix for wrong zone message in Delve due to rework of transport module for TWW",
+
+        "#TWW",
+        "- Added TWW - Isle of Dorn - All quests route",
+
+        "#Community",
+        "- For those on EU servers, I've created an Azeroth Pilot Reloaded community: zWw7EWwFk97",
+
         { "v4.2.6", "2024-08-26" },
         "#Features",
         "- Update of Translator display in About menu",
@@ -93,9 +107,6 @@ function APR.changelog:SetChangeLog()
 
         "#Translation/Localizations",
         "- Thanks to Jean, who joined the team to do the translation into Spanish (LATAM)",
-
-        "#Community",
-        "- For those on EU servers, I've created an Azeroth Pilot Reloaded community: zWw7EWwFk97",
 
         { "v4.2.5", "2024-08-24" },
         "#TWW",
