@@ -7,7 +7,7 @@ APR.RouteQuestStepList["81-TWW-Intro"] = {
         _index = 1,
     },
     {
-        PickUp = { 78713 },
+        PickUp = { 81930 },
         NoArrow = 1,
         Faction = "Alliance",
         Zone = 84,
@@ -22,8 +22,8 @@ APR.RouteQuestStepList["81-TWW-Intro"] = {
         _index = 3,
     },
     {
-        Qpart = { [78713] = { 1, 2 } },
-        Button = { ["78713-1"] = 227669, ["78713-2"] = 227669 },
+        Qpart = { [81930] = { 1, 2 } },
+        Button = { ["81930-1"] = 227669, ["81930-2"] = 227669 },
         NoArrow = 1,
         Faction = "Alliance",
         Zone = 84,
@@ -33,6 +33,14 @@ APR.RouteQuestStepList["81-TWW-Intro"] = {
         Done = { 78713 },
         Coord = { x = 1280.4, y = -7091.8 },
         Zone = 81,
+        Faction = "Horde",
+        _index = 5,
+    },
+    {
+        Done = { 81930 },
+        Coord = { x = 1281.8, y = -7093.6 },
+        Zone = 81,
+        Faction = "Alliance",
         _index = 5,
     },
     {
