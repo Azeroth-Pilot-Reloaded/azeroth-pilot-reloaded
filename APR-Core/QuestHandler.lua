@@ -1126,7 +1126,7 @@ APR_QH_EventFrame:RegisterEvent("GOSSIP_SHOW")
 APR_QH_EventFrame:RegisterEvent("GROUP_JOINED")
 APR_QH_EventFrame:RegisterEvent("GROUP_LEFT")
 APR_QH_EventFrame:RegisterEvent("HEARTHSTONE_BOUND")
-APR_QH_EventFrame:RegisterEvent("LEARNED_SPELL_IN_TAB")
+APR_QH_EventFrame:RegisterEvent("LEARNED_SPELL_IN_SKILL_LINE")
 APR_QH_EventFrame:RegisterEvent("MERCHANT_SHOW")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_CLOSE")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_OPENING_START")
@@ -1276,13 +1276,11 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
 
-    if (event == "LEARNED_SPELL_IN_TAB") then
+    if (event == "LEARNED_SPELL_IN_SKILL_LINE") then
+        local spellID, skillLineIndex = ...
         if step and step.LearnProfession then
-            local spellID, skillInfoIndex = ...
-            do
-                if spellID == step.LearnProfession then
-                    APR:UpdateNextStep()
-                end
+            if spellID == step.LearnProfession then
+                APR:UpdateNextStep()
             end
         end
     end
