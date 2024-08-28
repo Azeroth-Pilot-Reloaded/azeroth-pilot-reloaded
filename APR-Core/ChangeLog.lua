@@ -79,6 +79,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.4.0", "2024-08-28" },
+        "#Features",
+        "- Managed the route recorder extra line text on custom routes",
+        "- Added new `LootItem` step option",
+
+        "#Bugs",
+        "- Fixed Event for `Learn Profession` step option",
+        "- Fixed TWW intro for Alliance",
+        "- Improved route formatting with the new format in AprRC",
+        "- Added index on each step for better debugging and support",
+
         { "v4.3.1", "2024-08-27" },
         "#TWW",
         "- Added missing end of Hidden Edicts storyline",
