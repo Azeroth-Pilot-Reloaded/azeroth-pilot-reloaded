@@ -330,7 +330,7 @@ function APR:UpdateStep()
             end
         end
         if step.LearnProfession then
-            if (APR.settings.profile.debug) then
+            if APR.settings.profile.debug then
                 print("APR.UpdateStep:LearnProfession" .. APRData[APR.PlayerID][APR.ActiveRoute])
             end
             local spellID = step.LearnProfession
@@ -341,6 +341,22 @@ function APR:UpdateStep()
             local name = C_Spell.GetSpellInfo(spellID).name
             APR.currentStep:AddExtraLineText("LEARN_PROFESSION", format(L["LEARN_PROFESSION_DETAILS"], name))
         end
+
+        if step.LootItem then
+            if APR.settings.profile.debug then
+                print("APR.UpdateStep:Loot Item" .. APRData[APR.PlayerID][APR.ActiveRoute])
+            end
+            local itemID = step.LootItem
+
+            if tContains(APRItemLooted[APR.PlayerID], itemID) then
+                APR:NextQuestStep()
+                return
+            end
+            local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(itemID)
+            local name = itemName or UNKNOWN
+            APR.currentStep:AddExtraLineText("LOOT_ITEM", format(L["LOOT_ITEM"], name))
+        end
+
         if (step.LeaveQuest) then
             APR_LeaveQuest(step.LeaveQuest)
         end
@@ -1104,6 +1120,7 @@ APR_QH_EventFrame:RegisterEvent("ADVENTURE_MAP_OPEN")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_LOOT")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
+APR_QH_EventFrame:RegisterEvent("ENCOUNTER_LOOT_RECEIVED")
 APR_QH_EventFrame:RegisterEvent("GOSSIP_CLOSED")
 APR_QH_EventFrame:RegisterEvent("GOSSIP_SHOW")
 APR_QH_EventFrame:RegisterEvent("GROUP_JOINED")
@@ -1219,6 +1236,19 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                         DoEmote(emote)
                         break
                     end
+                end
+            end
+        end
+    end
+
+    if event == "ENCOUNTER_LOOT_RECEIVED" then
+        local encounterID, itemID, itemLink, quantity, playerName, classFileName = ...
+        do
+            if step and step.LootItem then
+                local stepItemID = step.LootItem
+                if stepItemID == itemID then
+                    tinsert(APRItemLooted[APR.PlayerID], itemID)
+                    APR:UpdateNextStep()
                 end
             end
         end
