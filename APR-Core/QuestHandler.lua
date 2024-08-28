@@ -143,9 +143,9 @@ function APR:UpdateStep()
         end
         table.sort(extraLines, function(a, b) return a.key < b.key end)
         for _, line in ipairs(extraLines) do
-            local APRExtraLine = line.text
-            if L[APRExtraLine] then
-                APR.currentStep:AddExtraLineText(APRExtraLine, L[APRExtraLine])
+            local message = rawget(L, line.text) or rawget(AprRCData.ExtraLineTexts, line.text)
+            if message then
+                APR.currentStep:AddExtraLineText(message, message)
             end
         end
 
@@ -155,7 +155,7 @@ function APR:UpdateStep()
 
         -- //TODO REWORK ExtraLine
         if (step.ExtraLine and APR.IsInRouteZone) then
-            local APRExtraLine = step.ExtraLine
+            local extraline = step.ExtraLine
             local fleetfootItemID = 44886
             local wildfireBottleItemID = 44967
             local harpysHornItemID = 9530
@@ -177,7 +177,7 @@ function APR:UpdateStep()
                 }
             }
             for questID, questInfo in pairs(extraLineQuests) do
-                if APRExtraLine == questID then
+                if extraline == questID then
                     local itemCount = C_Item.GetItemCount(questInfo.itemID)
                     if itemCount < questInfo.count then
                         APR.currentStep:AddQuestSteps(questID,
@@ -191,7 +191,7 @@ function APR:UpdateStep()
                 end
             end
 
-            if (APRExtraLine == 14358) then
+            if (extraline == 14358) then
                 local melonFruitItemID = 48106
                 local satyrFleshItemID = 48857
                 local satyrSaberItemID = 48943
