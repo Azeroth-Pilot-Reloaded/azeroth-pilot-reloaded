@@ -143,9 +143,10 @@ function APR:UpdateStep()
         end
         table.sort(extraLines, function(a, b) return a.key < b.key end)
         for i, line in ipairs(extraLines) do
-            local message = rawget(L, line.text) or rawget(AprRCData.ExtraLineTexts, line.text)
+            local key = line.text
+            local message = rawget(L, key) or rawget(AprRCData.ExtraLineTexts, key)
             if message then
-                APR.currentStep:AddExtraLineText(i .. "_" .. message, message)
+                APR.currentStep:AddExtraLineText(i .. "_" .. key, message)
             end
         end
 
