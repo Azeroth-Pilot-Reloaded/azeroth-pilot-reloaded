@@ -79,6 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.4.1", "2024-08-29" },
+        "#TWW",
+        "- Fixed TWW - News from Below Storyline route",
+        "- Fixed TWW - The Machines March to War Storyline route",
+
         { "v4.4.0", "2024-08-28" },
         "#Features",
         "- Managed the route recorder extra line text on custom routes",
