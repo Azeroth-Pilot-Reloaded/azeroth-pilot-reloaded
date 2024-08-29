@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.4.2", "2024-08-29" },
+        "#Bugs",
+        "- Fixed multi extra line text order",
+
         { "v4.4.1", "2024-08-29" },
         "#TWW",
         "- Fixed TWW - News from Below Storyline route",

@@ -546,12 +546,25 @@ function APR.currentStep:ReOrderExtraLineText()
     if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+
+    -- Convert the table into a sortable list
+    local sortedList = {}
     for id, textContainer in pairs(self.questsExtraTextList) do
+        table.insert(sortedList, textContainer)
+    end
+
+    -- Sort the list based on textContainer.key
+    table.sort(sortedList, function(a, b)
+        return a.key < b.key
+    end)
+
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+    for _, textContainer in ipairs(sortedList) do
         textContainer:ClearAllPoints()
         textContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
         FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - textContainer:GetHeight()
     end
+
     self:ReOrderQuestSteps(false)
 end
 
