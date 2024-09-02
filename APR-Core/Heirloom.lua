@@ -100,10 +100,11 @@ end
 local function CreateMapButton(parentFrame, itemID)
     local id, toyName, icon, isFavorite, hasFanfare, itemQuality = C_ToyBox.GetToyInfo(itemID)
 
+
     local button = CreateFrame("Button", "$parentIconButton", parentFrame,
         "SecureActionButtonTemplate, BackdropTemplate")
     button:SetSize(50, 50)
-    button:SetNormalTexture(icon)
+    button:SetNormalTexture(icon or [[Interface/icons/inv_misc_questionmark]])
     button:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
     button:RegisterForClicks("AnyUp", "AnyDown")
     button:SetAttribute("type1", "item")

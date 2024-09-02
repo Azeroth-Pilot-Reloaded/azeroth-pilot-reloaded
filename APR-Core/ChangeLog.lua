@@ -79,6 +79,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.4.3", "2024-09-02" },
+        "#Features",
+        "- Added new `WaypointDB` step option",
+
+        "#Bugs",
+        "- Fixed Lua error on `SetCooldown`",
+        "- Fixed Lua error with Heirloom on a new character",
+        "- Added some missing extra lines in WoD routes",
+        "- Fixed adventure map quests for characters who completed the Campaign",
+
+        "- Fixed multi extra line text order",
         { "v4.4.2", "2024-08-29" },
         "#Bugs",
         "- Fixed multi extra line text order",
