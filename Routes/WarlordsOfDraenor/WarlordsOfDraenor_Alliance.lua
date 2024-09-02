@@ -1702,6 +1702,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [34702] = { 1 } },
             Coord = { x = 1764.4, y = 5908.3 },
             Fillers = { [34012] = { 1 } },
+            ExtraLineText = "CLICK_GONG",
             Range = 0.75,
             _index = 41,
         },
@@ -2116,6 +2117,7 @@ if APR.Faction == "Alliance" then
         {
             Waypoint = 35128,
             Coord = { x = 1497.8, y = 6970.7 },
+            ExtraLineText = "BOTTOM_CAVE_FISSURE_FURY",
             Range = 15.66,
             _index = 109,
         },
