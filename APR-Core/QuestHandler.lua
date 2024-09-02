@@ -515,6 +515,15 @@ function APR:UpdateStep()
             elseif (APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and not IsIndoors() and APR:CheckFlySkill()) then
                 APR:NextQuestStep()
             else
+                if step.WaypointDB then
+                    local questIDs = step.WaypointDB
+                    for _, questID in ipairs(questIDs) do
+                        if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
+                            APR:NextQuestStep()
+                            return
+                        end
+                    end
+                end
                 local questID = step.Waypoint
                 if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
                     if (APR.settings.profile.debug) then
