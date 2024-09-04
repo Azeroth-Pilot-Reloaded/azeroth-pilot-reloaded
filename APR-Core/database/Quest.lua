@@ -4,7 +4,7 @@ APR.ProgressbarIgnore = {
     ["57724-2"] = 1,
 }
 
--- //TODO check what is that shit
+-- // Mandatory to avoid error on bonus quests
 APR.BonusObj = {
     ---- WoD Bonus Obj ----
     36473,

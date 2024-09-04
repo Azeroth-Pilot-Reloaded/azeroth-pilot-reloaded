@@ -405,7 +405,6 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                         return true
                     end
                     local questObjectiveId = questID .. '-' .. objectiveIndex
-                    -- //TODO Remove or add APR.BonusObj from quest handler
                     if (isMaxLevel and APR.BonusObj and APR:Contains(APR.BonusObj, questObjectiveId)) or APRData[APR.PlayerID].BonusSkips[questID] then
                         return true
                     end

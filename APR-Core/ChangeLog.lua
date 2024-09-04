@@ -79,6 +79,13 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.4.4", "2024-09-04" },
+        "#Features",
+        "- Added `Quest Order List` show/hide option in the current step menu",
+
+        "#TWW",
+        "- Added - TWW - Light in the Dark Storyline route",
+
         { "v4.4.3", "2024-09-02" },
         "#Features",
         "- Added new `WaypointDB` step option",
