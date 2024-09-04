@@ -85,8 +85,8 @@ end)
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:SetScript("OnClick", function(self)
-    QuestOrderListPanel:Hide()
     APR.settings.profile.showQuestOrderList = false
+    QuestOrderListPanel:Hide()
 end)
 
 
