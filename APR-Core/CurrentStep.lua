@@ -746,6 +746,11 @@ function APR.GetMenu(owner, rootDescription)
         APR.settings:OpenSettings(L["ABOUT_HELP"])
     end)
 
+    rootDescription:CreateButton(L["QOL_COMMAND"], function()
+        APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
+        APR.questOrderList:RefreshFrameAnchor()
+    end)
+
     rootDescription:CreateButton(toggleAddon .. " " .. L["ADDON"], function()
         APR.settings.profile.enableAddon = not APR.settings.profile.enableAddon
         APR.settings:ToggleAddon()
