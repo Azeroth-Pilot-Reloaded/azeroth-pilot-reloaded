@@ -109,6 +109,7 @@ if (APR.Faction == "Alliance") then
         ["2248-TWW-Ties-That-Bind-storyline"] = "TWW - 07 - Ties That Bind Storyline",
         ["2248-TWW-News-from-Below-storyline"] = "TWW - 08 - News from Below Storyline",
         ["2248-TWW-The-Machines-March-to-War-storyline"] = "TWW - 09 - The Machines March to War Storyline",
+        ["2248-TWW-Light-in-the-Dark-storyline"] = "TWW - 10 - Light in the Dark Storyline",
         ["2248-TWW-Isle-of-Dorn-campaign-only"] = "TWW - Isle of Dorn - Campaign Only",
         ["2214-TWW-Ringing-Deeps-campaign-only"] = "TWW - Ringing Deeps - Campaign Only",
         ["2215-TWW-Hallowfall-campaign-only"] = "TWW - Hallowfall - Campaign Only",
