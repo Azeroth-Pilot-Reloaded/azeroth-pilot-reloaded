@@ -74,7 +74,7 @@ function APR:getStatusReportInfos()
         clientLanguage = { "Language", GetLocale() },
         currentTime = { "Time & Date", date() },
         currentRoute = { "Route", APR.ActiveRoute or NO_ACTIVE },
-        currentStep = { "Step", currentStep or NO_ACTIVE },
+        currentStep = { "Index, Step", currentStep or NO_ACTIVE },
         currentZone = { "Zone", GetRealZoneText() or UNKNOWN },
         currentContinent = { "Continent", C_Map.GetMapInfo(APR:GetContinent()).name },
         currentCoords = { "Coordinates", coordinates or INSTANCE },
