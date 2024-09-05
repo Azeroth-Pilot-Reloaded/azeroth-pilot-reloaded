@@ -2243,7 +2243,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     {
         PickUp = { 83543 },
         PickUpDB = { 83543, 80434 },
-        Coord = { x = -2528, .7, y = 2678.3 },
+        Coord = { x = -2528.7, y = 2678.3 },
         HasAchievement = 19559,
         Zone = 2248,
         _index = 1,
