@@ -318,16 +318,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     local stepIndex = 1
     for id, step in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
         -- Hide step for Faction, Race, Class, Achievement
-        if (
-                (not step.Faction or step.Faction == APR.Faction) and
-                (not step.Race or step.Race == APR.Race) and
-                (not step.Gender or step.Gender == APR.Gender) and
-                (not step.Class or step.Class == APR.ClassName) and
-                (not step.HasAchievement or APR:HasAchievement(step.HasAchievement)) and
-                (not step.DontHaveAchievement or not APR:HasAchievement(step.DontHaveAchievement)) and
-                (not step.HasAura or APR:HasAura(step.HasAura)) and
-                (not step.DontHaveAura or not APR:HasAura(step.DontHaveAura))
-            ) then
+        if APR:StepFilterQoL(step) then
             if step.ExitTutorial then
                 local questID = step.ExitTutorial
                 local color = (C_QuestLog.IsOnQuest(questID) or CurStep > stepIndex) and "green" or "gray"

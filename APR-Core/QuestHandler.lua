@@ -36,16 +36,7 @@ end
 
 local function SkipStepCondition(step)
     -- Skip steps if not Faction or Race or Class or Achievement
-    if (
-            (step.Faction and step.Faction ~= APR.Faction) or
-            (step.Race and step.Race ~= APR.Race) or
-            (step.Gender and step.Gender ~= APR.Gender) or
-            (step.Class and step.Class ~= APR.ClassName) or
-            (step.HasAchievement and not APR:HasAchievement(step.HasAchievement)) or
-            (step.DontHaveAchievement and APR:HasAchievement(step.DontHaveAchievement)) or
-            (step.HasAura and not APR:HasAura(step.HasAura)) or
-            (step.DontHaveAura and APR:HasAura(step.DontHaveAura))
-        ) then
+    if APR:StepFilterQuestHandler(step) then
         -- Counter for skipper step in the current route
         APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] = (APRData[APR.PlayerID]
             [APR.ActiveRoute .. '-SkippedStep'] or 0) + 1
