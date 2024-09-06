@@ -64,24 +64,12 @@ function APR:PreviousQuestStep()
     local userMapData = APRData[APR.PlayerID]
     local activeMap = APR.ActiveRoute
     local questStepList = APR.RouteQuestStepList[activeMap]
-    local faction = APR.Faction
-    local race = APR.Race
-    local gender = APR.Gender
-    local className = APR.ClassName
 
     while true do
         userMapData[activeMap] = userMapData[activeMap] - 1
         local step = questStepList[userMapData[activeMap]]
 
-        if not ((step.Faction and step.Faction ~= faction) or
-                (step.Race and step.Race ~= race) or
-                (step.Gender and step.Gender ~= gender) or
-                (step.Class and step.Class ~= className) or
-                (step.HasAchievement and not self:HasAchievement(step.HasAchievement)) or
-                (step.DontHaveAchievement and self:HasAchievement(step.DontHaveAchievement)) or
-                (step.HasAura and not self:HasAura(step.HasAura)) or
-                (step.DontHaveAura and self:HasAura(step.DontHaveAura)) or
-                step.Waypoint) then
+        if not (APR:StepFilterQuestHandler(step) or step.Waypoint) then
             break
         end
     end
@@ -94,17 +82,8 @@ function APR:GetTotalSteps(route)
     route = route or APR.ActiveRoute
     local stepIndex = 0
     for id, step in pairs(APR.RouteQuestStepList[route]) do
-        -- Hide step for Faction, Race, Class, Achievement
-        if (
-                (not step.Faction or step.Faction == APR.Faction) and
-                (not step.Race or step.Race == APR.Race) and
-                (not step.Gender or step.Gender == APR.Gender) and
-                (not step.Class or step.Class == APR.ClassName) and
-                (not step.HasAchievement or self:HasAchievement(step.HasAchievement)) and
-                (not step.DontHaveAchievement or not self:HasAchievement(step.DontHaveAchievement)) and
-                (not step.HasAura or self:HasAura(step.HasAura)) and
-                (not step.DontHaveAura or not self:HasAura(step.DontHaveAura))
-            ) then
+        -- Hide step for Faction, Race, Class, Achievement,...
+        if APR:StepFilterQoL(step) then
             stepIndex = stepIndex + 1
         end
     end
@@ -311,9 +290,9 @@ end
 
 function APR:StepFilterQuestHandler(step)
     return (step.Faction and step.Faction ~= APR.Faction) or
-        (step.Race and step.Race ~= APR.Race) or
+        (step.Race and not tContains(step.Race, APR.Race)) or
         (step.Gender and step.Gender ~= APR.Gender) or
-        (step.Class and step.Class ~= APR.ClassName) or
+        (step.Class and not tContains(step.Class, APR.ClassName)) or
         (step.HasAchievement and not APR:HasAchievement(step.HasAchievement)) or
         (step.DontHaveAchievement and APR:HasAchievement(step.DontHaveAchievement)) or
         (step.HasAura and not APR:HasAura(step.HasAura)) or
@@ -323,9 +302,9 @@ end
 
 function APR:StepFilterQoL(step)
     return (not step.Faction or step.Faction == APR.Faction) and
-        (not step.Race or step.Race == APR.Race) and
+        (not step.Race or tContains(step.Race, APR.Race)) and
         (not step.Gender or step.Gender == APR.Gender) and
-        (not step.Class or step.Class == APR.ClassName) and
+        (not step.Class or  tContains(step.Class, APR.ClassName)) and
         (not step.HasAchievement or APR:HasAchievement(step.HasAchievement)) and
         (not step.DontHaveAchievement or not APR:HasAchievement(step.DontHaveAchievement)) and
         (not step.HasAura or APR:HasAura(step.HasAura)) and

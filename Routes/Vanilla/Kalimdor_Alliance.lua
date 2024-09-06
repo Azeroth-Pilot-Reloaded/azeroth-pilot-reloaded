@@ -235,7 +235,7 @@ if APR.Faction == "Alliance" then
         {
             PickUp = { 9582 },
             Coord = { x = -12535.8, y = -4165.8 },
-            Class = "WARRIOR",
+            Class = { "WARRIOR" },
             _index = 8,
         },
         {
@@ -386,7 +386,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = -12697.8, y = -3066.9 },
             Fillers = { [9560] = { 1 } },
             Range = 0.61,
-            Class = "WARRIOR",
+            Class = { "WARRIOR" },
             _index = 36,
         },
         {
@@ -515,7 +515,7 @@ if APR.Faction == "Alliance" then
         {
             Done = { 9582 },
             Coord = { x = -12535.2, y = -4164.5 },
-            Class = "WARRIOR",
+            Class = { "WARRIOR" },
             _index = 59,
         },
         {
