@@ -115,7 +115,7 @@ if (APR.Faction == "Alliance") then
         ["2215-TWW-Hallowfall-campaign-only"] = "TWW - Hallowfall - Campaign Only",
         ["2255-TWW-Azj-Kahet-campaign-only"] = "TWW - Azj Kahet - Campaign Only",
         ["2255-TWW-Allied-Races-Earthen"] = "TWW Allied Races Earthen",
-        ["2248-TWW-Isle-of-Dorn-Full"] = "TWW - Isle of Dorn - All quests",
+        ["2248-TWW-Isle-of-Dorn-Full"] = "TWW - Isle of Dorn - All quests - Sojourner",
     }
     APR.RouteList.Custom = {}
 
