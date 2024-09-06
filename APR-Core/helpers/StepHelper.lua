@@ -308,3 +308,27 @@ function APR:IsCampaignQuest(questID)
     local questInfo = C_QuestLog.GetInfo(questIndex)
     return questInfo and questInfo.campaignID ~= nil
 end
+
+function APR:StepFilterQuestHandler(step)
+    return (step.Faction and step.Faction ~= APR.Faction) or
+        (step.Race and step.Race ~= APR.Race) or
+        (step.Gender and step.Gender ~= APR.Gender) or
+        (step.Class and step.Class ~= APR.ClassName) or
+        (step.HasAchievement and not APR:HasAchievement(step.HasAchievement)) or
+        (step.DontHaveAchievement and APR:HasAchievement(step.DontHaveAchievement)) or
+        (step.HasAura and not APR:HasAura(step.HasAura)) or
+        (step.DontHaveAura and APR:HasAura(step.DontHaveAura)) or
+        (step.HasSpell and not IsSpellKnown(step.HasSpell))
+end
+
+function APR:StepFilterQoL(step)
+    return (not step.Faction or step.Faction == APR.Faction) and
+        (not step.Race or step.Race == APR.Race) and
+        (not step.Gender or step.Gender == APR.Gender) and
+        (not step.Class or step.Class == APR.ClassName) and
+        (not step.HasAchievement or APR:HasAchievement(step.HasAchievement)) and
+        (not step.DontHaveAchievement or not APR:HasAchievement(step.DontHaveAchievement)) and
+        (not step.HasAura or APR:HasAura(step.HasAura)) and
+        (not step.DontHaveAura or not APR:HasAura(step.DontHaveAura)) and
+        (not step.HasSpell and IsSpellKnown(step.HasSpell))
+end
