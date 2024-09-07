@@ -774,6 +774,13 @@ function APR:UpdateStep()
                 return
             end
         end
+        if step.ResetRoute then
+            APR.questionDialog:CreateQuestionPopup("RESET" .. "?", function()
+                APRData[APR.PlayerID][APR.ActiveRoute] = 1
+                print("|cff00bfffAPR|r Route Reseted")
+                APR:UpdateQuestAndStep()
+            end)
+        end
         if (step.ZoneDoneSave) then
             local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
 
@@ -1616,18 +1623,22 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     if next(info) then
                         if step.GossipOptionID then
                             C_GossipInfo.SelectOption(step.GossipOptionID)
+                            return
                         elseif step.GossipOptionIDs then
                             for _, g in pairs(step.GossipOptionIDs) do
                                 C_GossipInfo.SelectOption(g)
                             end
+                            return
                         else
                             for _, v in pairs(info) do
                                 if (v.orderIndex + 1 == step.Gossip) then
                                     C_GossipInfo.SelectOption(v.gossipOptionID)
                                 end
                             end
+                            return
                         end
                     end
+
                     --CHROMIE
                     if (step.ChromiePick) then
                         local target = APR:GetTargetID()
