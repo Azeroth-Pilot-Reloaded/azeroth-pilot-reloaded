@@ -67,6 +67,10 @@ function APR:PreviousQuestStep()
 
     while true do
         userMapData[activeMap] = userMapData[activeMap] - 1
+        if userMapData[activeMap] <= 0 then
+            userMapData[activeMap] = 1
+            break
+        end
         local step = questStepList[userMapData[activeMap]]
 
         if not (APR:StepFilterQuestHandler(step) or step.Waypoint) then
@@ -304,10 +308,10 @@ function APR:StepFilterQoL(step)
     return (not step.Faction or step.Faction == APR.Faction) and
         (not step.Race or tContains(step.Race, APR.Race)) and
         (not step.Gender or step.Gender == APR.Gender) and
-        (not step.Class or  tContains(step.Class, APR.ClassName)) and
+        (not step.Class or tContains(step.Class, APR.ClassName)) and
         (not step.HasAchievement or APR:HasAchievement(step.HasAchievement)) and
         (not step.DontHaveAchievement or not APR:HasAchievement(step.DontHaveAchievement)) and
         (not step.HasAura or APR:HasAura(step.HasAura)) and
         (not step.DontHaveAura or not APR:HasAura(step.DontHaveAura)) and
-        (not step.HasSpell and IsSpellKnown(step.HasSpell))
+        (not step.HasSpell or IsSpellKnown(step.HasSpell))
 end
