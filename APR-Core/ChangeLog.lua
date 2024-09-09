@@ -79,6 +79,20 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.4.5", "2024-09-09" },
+        "- Added `HasSpell` step option",
+        "- Added `ResetRoute` step option to auto reset the route (useful for farming routes ;) )",
+        "- Updated type of Race and Class to list format",
+
+        "#Bugs",
+        "- Fixed gossip for DF Horde quest `Whispers on the Winds` (65439)",
+        "- Removed end of `TWW - Isle of Dorn All Quests` to move it into the next zone route (WIP)",
+        "- Fixed typo on Step 1 of `TWW - Ringing Deeps`",
+        "- Renamed `TWW - Isle of Dorn - All Quests` to `TWW - Isle of Dorn - All quests - Sojourner`",
+        "- Fixed Rollback function to step before Step 1",
+        "- Added Waypoint step on `New Candle, New Hope` scenario quest objectives (78642)",
+        "- Renamed step to `Index, Step` in the status frame",
+
         { "v4.4.4", "2024-09-04" },
         "#Features",
         "- Added `Quest Order List` show/hide option in the current step menu",
