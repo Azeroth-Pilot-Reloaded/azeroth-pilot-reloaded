@@ -79,7 +79,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.5.0", "2024-09-20" },
+        "#Features",
+        "- Added Extre Line Text coloring option",
+
+        "#TWW",
+        "- Added - TWW - Ringing Deeps - All quests - Sojourner",
+
         { "v4.4.5", "2024-09-09" },
+        "#Features",
         "- Added `HasSpell` step option",
         "- Added `ResetRoute` step option to auto reset the route (useful for farming routes ;) )",
         "- Updated type of Race and Class to list format",
