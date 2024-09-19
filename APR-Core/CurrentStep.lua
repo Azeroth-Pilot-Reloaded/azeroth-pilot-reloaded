@@ -336,7 +336,7 @@ function APR.currentStep:SetProgressBar(CurStep)
 end
 
 -- Displaying quest information
-local function AddStepsFrame(questDesc, extraLineText)
+local function AddStepsFrame(questDesc, extraLineText, color)
     local textTemplate = "GameFontHighlight" -- white color
     if extraLineText then
         textTemplate = "GameFontNormal"      -- yellow color
@@ -349,8 +349,12 @@ local function AddStepsFrame(questDesc, extraLineText)
     font:SetWidth(FRAME_WIDTH)
     font:SetPoint("TOPLEFT", 5, -5)
     font:SetText('- ' .. (extraLineText or questDesc))
-
     font:SetJustifyH("LEFT")
+
+    if color then
+        font:SetTextColor(unpack(APR:HexaToRGBA(color)))
+    end
+
     -- Set the size of the container based on the text length
     container:SetWidth(FRAME_WIDTH)
     container:SetHeight(font:GetStringHeight() + 10)
@@ -366,8 +370,8 @@ local function AddStepsFrame(questDesc, extraLineText)
 end
 
 -- Displaying extra line text information
-local function AddExtraLineTextFrame(extraLineText)
-    return AddStepsFrame(nil, extraLineText)
+local function AddExtraLineTextFrame(extraLineText, color)
+    return AddStepsFrame(nil, extraLineText, color)
 end
 
 -- Add/Update quest steps
@@ -518,7 +522,7 @@ end
 --- Add a new Extra line text
 ---@param key string Locale table key
 ---@param text string L[key]
-function APR.currentStep:AddExtraLineText(key, text)
+function APR.currentStep:AddExtraLineText(key, text, color)
     if InCombatLockdown() or not APR.settings.profile.currentStepShow then
         return
     end
@@ -533,7 +537,7 @@ function APR.currentStep:AddExtraLineText(key, text)
         self.questsExtraTextList[key] = nil
     end
 
-    local extraLineTextContainer = AddExtraLineTextFrame(text)
+    local extraLineTextContainer = AddExtraLineTextFrame(text, color)
     extraLineTextContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
     extraLineTextContainer.key = key
     self.questsExtraTextList[key] = extraLineTextContainer

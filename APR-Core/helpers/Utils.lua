@@ -160,3 +160,30 @@ function APR:ContainsScenarioStepCriteria(table, stepID, criteriaID, criteriaInd
     end
     return false
 end
+
+function APR:HexaToRGBA(hex)
+    hex = hex:gsub("#", "")
+    if #hex ~= 6 and #hex ~= 8 then
+        return nil
+    end
+
+    local r = tonumber(hex:sub(1, 2), 16) / 255
+    local g = tonumber(hex:sub(3, 4), 16) / 255
+    local b = tonumber(hex:sub(5, 6), 16) / 255
+    local a = 1
+
+    if #hex == 8 then
+        a = tonumber(hex:sub(7, 8), 16) / 255
+    end
+
+    return { r, g, b, a }
+end
+
+function APR:ExtractColorAndText(text)
+    local colorHex, message = string.match(text, "^%[COLOR:#?(%x+)%]%s*(.+)")
+    if colorHex then
+        return colorHex, message
+    else
+        return nil, text
+    end
+end

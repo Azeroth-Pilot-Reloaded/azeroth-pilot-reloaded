@@ -137,7 +137,8 @@ function APR:UpdateStep()
             local key = line.text
             local message = rawget(L, key) or rawget(AprRCData.ExtraLineTexts, key)
             if message then
-                APR.currentStep:AddExtraLineText(i .. "_" .. key, message)
+                local colorHex, formattedMessage = APR:ExtractColorAndText(message)
+                APR.currentStep:AddExtraLineText(i .. "_" .. key, formattedMessage, colorHex)
             end
         end
 
