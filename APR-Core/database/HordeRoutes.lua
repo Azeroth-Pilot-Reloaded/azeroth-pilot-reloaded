@@ -16,15 +16,15 @@ if (APR.Faction == "Horde") then
     APR.RouteList.WrathOfTheLichKing = {}
     APR.RouteList.Cataclysm = {}
     APR.RouteList.MistsOfPandaria = {
-        ["554-MoP Remix Intro"]          = "MoP Remix - Intro",
-        ["85-MoP Intro"]                 = "MoP - Intro",
-        ["371-The Jade Forest"]          = "The Jade Forest",
+        ["554-MoP Remix Intro"] = "MoP Remix - Intro",
+        ["85-MoP Intro"] = "MoP - Intro",
+        ["371-The Jade Forest"] = "The Jade Forest",
         ["376-Valley of the four winds"] = "Valley of the four winds",
-        ["418-Krasarang Wilds"]          = "Krasarang Wilds",
-        ["379-Kun-Lai Summit"]           = "Kun-Lai Summit",
-        ["388-Townlong Steppes"]         = "Townlong Steppes",
-        ["390-Dread Wastes"]             = "Dread Wastes",
-        ["390-Isle of Thunder"]          = "Isle of Thunder",
+        ["418-Krasarang Wilds"] = "Krasarang Wilds",
+        ["379-Kun-Lai Summit"] = "Kun-Lai Summit",
+        ["388-Townlong Steppes"] = "Townlong Steppes",
+        ["390-Dread Wastes"] = "Dread Wastes",
+        ["390-Isle of Thunder"] = "Isle of Thunder",
     }
     APR.RouteList.WarlordsOfDraenor = {
         ["85-DesMephisto-Orgrimmar-p1"] = "WOD01 - Orgrimmar",

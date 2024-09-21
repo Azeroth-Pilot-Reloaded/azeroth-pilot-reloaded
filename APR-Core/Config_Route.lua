@@ -792,11 +792,10 @@ function APR.routeconfig:GetBFAPrefab()
         tinsert(APRCustomPath[APR.PlayerID], "BFA04 - Stormsong Valley")
     elseif APR.Faction == horde then
         tinsert(APRCustomPath[APR.PlayerID], "BFA01 - Intro")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA02 - Intro")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA03 - Zuldazar")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA04 - Nazmir")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA05 - Naz-end Vol-begin")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA06 - Vol'dun")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA02 - Zuldazar")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA03 - Nazmir")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA04 - Naz-end Vol-begin")
+        tinsert(APRCustomPath[APR.PlayerID], "BFA05 - Vol'dun")
     end
     self:SendMessage("APR_Custom_Path_Update")
 end
