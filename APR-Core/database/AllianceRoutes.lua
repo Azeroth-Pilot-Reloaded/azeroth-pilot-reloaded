@@ -68,8 +68,8 @@ if (APR.Faction == "Alliance") then
     APR.RouteList.BattleForAzeroth = {
         ["84-BFA-Stormwind"] = "BFA01 - Intro",
         ["895-Tiragarde Sound"] = "BFA02 - Tiragarde Sound",
-        ["942-Stormsong Valley"] = "BFA04 - Stormsong Valley",
         ["896-Dustvar"] = "BFA03 - Dustvar",
+        ["942-Stormsong Valley"] = "BFA04 - Stormsong Valley",
     }
     APR.RouteList.Shadowlands = {
         ["118-IntroQline"] = "SL - Intro",
