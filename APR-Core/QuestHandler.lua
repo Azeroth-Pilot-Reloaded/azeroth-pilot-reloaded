@@ -78,6 +78,7 @@ function APR:UpdateStep()
 
         APR.currentStep:ButtonEnable()
         APR:SendMessage("APR_MAP_UPDATE")
+        APR.AFK:HideFrame()
 
         if (SkipStepCondition(step)) then
             return

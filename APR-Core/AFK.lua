@@ -78,5 +78,6 @@ function APR.AFK:SetAfkTimer(duration)
 end
 
 function APR.AFK:HideFrame()
+    bar:Stop()
     AfkFrameScreen:Hide()
 end
