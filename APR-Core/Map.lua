@@ -346,16 +346,22 @@ function APR.map:AddMapPins()
         local minimapshowNextStepsCount = APR.settings.profile.minimapshowNextStepsCount
         local mapStepDisplayed = 0
         local minimapStepDisplayed = 0
-        for stepIndex, step in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
-            if step.Coord and (stepIndex >= CurStep) and (stepIndex <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
+        local unwantedStepIndex = 0
+        for stepId, step in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
+            if not APR:StepFilterQoL(step) then unwantedStepIndex = unwantedStepIndex + 1 end
+            if step.Coord and (stepId >= CurStep) and (stepId <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
+                local stepIndex = stepId - unwantedStepIndex
+
                 if not self.pinlist[stepIndex] then
-                    self.pinlist[stepIndex] = self:CreatePin(stepIndex, step, APR.settings.profile.mapshowNextStepsSize,
+                    self.pinlist[stepIndex] = self:CreatePin(stepIndex, step,
+                        APR.settings.profile.mapshowNextStepsSize,
                         APR.settings.profile.mapshowNextStepsColor, APR.settings.profile.mapshowNextStepsColorText,
                         APR.settings.profile.mapshowNextStepsTextScale)
                 end
                 if not self.minimapPinlist[stepIndex] then
                     self.minimapPinlist[stepIndex] = self:CreatePin(stepIndex, step,
-                        APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile.minimapshowNextStepsColor,
+                        APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile
+                        .minimapshowNextStepsColor,
                         APR.settings.profile.minimapshowNextStepsColorText,
                         APR.settings.profile.minimapshowNextStepsTextScale)
                 end
@@ -373,7 +379,8 @@ function APR.map:AddMapPins()
                     end
                     if APR.settings.profile.minimapshowNextSteps then
                         if minimapshowNextStepsCount > minimapStepDisplayed then
-                            hbdPins:AddMinimapIconMap(self.minimapPinlist, self.minimapPinlist[stepIndex], mapID, x, y,
+                            hbdPins:AddMinimapIconMap(self.minimapPinlist, self.minimapPinlist[stepIndex], mapID, x,
+                                y,
                                 true,
                                 true)
                             minimapStepDisplayed = minimapStepDisplayed + 1
