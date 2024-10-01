@@ -79,6 +79,12 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.5.1", "2024-10-01" },
+        "#Bugs",
+        "- Fixed prefab button for BFA in route selection",
+        "- Clear AFK frame on step update",
+        "- Fixed wrong step index on map/minimap blobs",
+
         { "v4.5.0", "2024-09-20" },
         "#Features",
         "- Added Extre Line Text coloring option",
