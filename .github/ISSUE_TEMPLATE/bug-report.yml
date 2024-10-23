@@ -74,6 +74,18 @@ body:
       label: Lua Error
       description: |
         Do you have an error log of what happened? If you don't see any errors, make sure that error reporting is enabled (`/console scriptErrors 1`) or install [BugSack](https://www.curseforge.com/wow/addons/bugsack) & [BugGrabber](https://www.curseforge.com/wow/addons/bug-grabber), yes both are needed.
+
+        If you are submitting an error, please wrap the error log in triple backticks (```), like this:
+
+        ```
+        Replace this text with the actual Lua error log.
+        ```
+
+        If no error, remove the triple backticks and this section.
+      placeholder: |
+        ```lua
+        Replace this text with the actual Lua error log.
+        ```
     validations:
       required: false
 
