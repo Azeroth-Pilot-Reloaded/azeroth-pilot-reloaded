@@ -1,4 +1,4 @@
-## Interface: 110000, 110002
+## Interface: 110000, 110002, 110005
 
 ## Title: Azeroth Pilot Reloaded
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
