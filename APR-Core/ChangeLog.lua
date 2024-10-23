@@ -79,6 +79,13 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.5.2", "2024-10-23" },
+        "#Bugs",
+        "- Fixed starting zone route for troll",
+        
+        "#WoW",
+        "- Update TOC Interface for 11.0.5",
+
         { "v4.5.1", "2024-10-01" },
         "#Bugs",
         "- Fixed prefab button for BFA in route selection",
