@@ -79,10 +79,18 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.5.3", "2024-10-29" },
+        "#Features",
+        "- Added new starting route for other Dracthyr classes",
+
+        "#Bugs",
+        "- Fixed starting coordinates for first quest of Dracthyr Evoker route",
+        "- Changed 'Scourge' to 'Undead' in route names",
+
         { "v4.5.2", "2024-10-23" },
         "#Bugs",
         "- Fixed starting zone route for troll",
-        
+
         "#WoW",
         "- Update TOC Interface for 11.0.5",
 
