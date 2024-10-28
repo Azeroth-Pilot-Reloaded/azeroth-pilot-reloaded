@@ -693,25 +693,26 @@ end
 function APR.currentStep:UpdateStepButtonCooldowns()
     for id, questContainer in pairs(self.questsList) do
         local IconButton = questContainer.IconButton
-        if IconButton then
-            if IconButton:IsShown() then
-                local start = 0
-                local duration = 0
-                if IconButton.attribute == 'spell' then
-                    start, duration = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))
-                else
-                    start, duration = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
-                end
-                if start then
-                    if IconButton.cooldown:GetCooldownDuration() == 0 or not IconButton.cooldown:IsShown() then
-                        IconButton.cooldown:SetCooldown(start, duration)
-                    end
-                else
-                    IconButton.cooldown:Clear()
-                end
+        if IconButton and IconButton:IsShown() then
+            local startTime, duration, enable = 0, 0, 0
+            local isCooldownShown = IconButton.cooldown:IsShown()
+            local cooldownDuration = IconButton.cooldown:GetCooldownDuration()
+
+            if IconButton.attribute == 'spell' then
+                local spellCooldownInfo = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))
+                startTime, duration = spellCooldownInfo.startTime, spellCooldownInfo.duration
+                enable = spellCooldownInfo.isEnabled and 1 or 0
+            else
+                startTime, duration, enable = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
+            end
+
+            if enable > 0 and startTime > 0 and (cooldownDuration == 0 or not isCooldownShown) then
+                IconButton.cooldown:SetCooldown(start, duration)
             else
                 IconButton.cooldown:Clear()
             end
+        elseif IconButton then
+            IconButton.cooldown:Clear()
         end
     end
 end
