@@ -96,63 +96,85 @@ if (APR.Faction == "Horde") then
     }
     APR.RouteList.Custom = {}
 
-
-    -- WARNING Class before race
-    if (APR.ClassId == APR.Classes["Demon Hunter"]) then
-        APR.RouteList.Legion["672-Mardum"] = "Demon Hunter Start"
-    elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
-        APR.RouteList.WrathOfTheLichKing["118-Allied_Icecrown Citadel"] = "Allied Death Knight Start"
-    elseif (APR.ClassId == APR.Classes["Death Knight"]) then
-        APR.RouteList.WrathOfTheLichKing["23-ScarletEnclave"] = "Death Knight Start"
-    elseif (APR.Race == "Dracthyr") then
-        APR.RouteList.Dragonflight["2118-DracthyrStart-H"] = "Dracthyr Start"
-    elseif (APR.Race == "Orc") then
-        APR.RouteList.Vanilla["1-ValleyOfTrialsOrc"] = "Orc Start"
-    elseif (APR.Race == "Tauren") then
-        APR.RouteList.Vanilla["462-MulgoreTauren"] = "Tauren Start"
-    elseif (APR.ClassId == APR.Classes["Warrior"] and APR.Race == "Troll") then
-        APR.RouteList.Vanilla["463-EchoIslesTrollWar"] = "Troll Start"
-    elseif (APR.ClassId == APR.Classes["Hunter"] and APR.Race == "Troll") then
-        APR.RouteList.Vanilla["463-EchoIslesTrollHunter"] = "Troll Start"
-    elseif (APR.ClassId == APR.Classes["Rogue"] and APR.Race == "Troll") then
-        APR.RouteList.Vanilla["463-EchoIslesTrollRogue"] = "Troll Start"
-    elseif (APR.ClassId == APR.Classes["Priest"] and APR.Race == "Troll") then
-        APR.RouteList.Vanilla["463-EchoIslesTrollPriest"] = "Troll Start"
-    elseif (APR.ClassId == APR.Classes["Shaman"] and APR.Race == "Troll") then
-        APR.RouteList.Vanilla["463-EchoIslesTrollShaman"] = "Troll Start"
-    elseif (APR.ClassId == APR.Classes["Mage"] and APR.Race == "Troll") then
-        APR.RouteList.Vanilla["463-EchoIslesTrollMage"] = "Troll Start"
-    elseif (APR.ClassId == APR.Classes["Warlock"] and APR.Race == "Troll") then
-        APR.RouteList.Vanilla["463-EchoIslesTrollWarlock"] = "Troll Start"
-    elseif (APR.ClassId == APR.Classes["Monk"] and APR.Race == "Troll") then
-        APR.RouteList.Vanilla["463-EchoIslesTrollMonk"] = "Troll Start"
-    elseif (APR.ClassId == APR.Classes["Druid"] and APR.Race == "Troll") then
-        APR.RouteList.Vanilla["463-EchoIslesTrollDruid"] = "Troll Start"
-    elseif (APR.Race == "Scourge") then --Undead
-        APR.RouteList.Vanilla["465-TirisfalGladesUndead"] = "Scourge Start"
-    elseif (APR.Race == "BloodElf") then
-        APR.RouteList.TheBurningCrusade["467-BloodElf-intro"] = "Blood Elf Start"
-    elseif (APR.Race == "Goblin") then
-        APR.RouteList.Cataclysm["194-Kezan"] = "Goblin Start"
-        APR.RouteList.Cataclysm["174-LostIsles"] = "Goblin - Lost Isles"
-    elseif APR.Race == "Nightborne" then
-        APR.RouteList.Legion["680-Nightborne-intro"] = "Nightborne Start"
-    elseif APR.Race == "HighmountainTauren" then
-        APR.RouteList.Legion["652-HighmountainTauren-intro"] = "Highmountain Tauren Start"
-    elseif APR.Race == "ZandalariTroll" then
-        APR.RouteList.BattleForAzeroth["1165-Zandalari-intro"] = "Zandalari Troll Start"
-    elseif APR.Race == "Vulpera" then
-        APR.RouteList.BattleForAzeroth["85-Vulpera-intro"] = "Vulpera Start"
-    elseif APR.Race == "MagharOrc" then
-        APR.RouteList.BattleForAzeroth["85-MagharOrc-intro"] = "Maghar Orc Start"
-    elseif APR.Race == "EarthenDwarf" then
-        APR.RouteList.TheWarWithin["2248-TWW-Earthen"] = "Earthen Dwarf Start"
+    -- Starting Route or custom
+    ---
+    local function assignRoute(expansion, key, label)
+        APR.RouteList[expansion][key] = label
     end
 
+    local startRoutes = {
+        Orc = { expansion = "Vanilla", key = "1-ValleyOfTrialsOrc", label = "Orc Start" },
+        Scourge = { expansion = "Vanilla", key = "465-TirisfalGladesUndead", label = "Undead Start" },
+        Tauren = { expansion = "Vanilla", key = "462-MulgoreTauren", label = "Tauren Start" },
+        Troll = {
+            Warrior = { expansion = "Vanilla", key = "463-EchoIslesTrollWar", label = "Troll Start" },
+            Hunter = { expansion = "Vanilla", key = "463-EchoIslesTrollHunter", label = "Troll Start" },
+            Rogue = { expansion = "Vanilla", key = "463-EchoIslesTrollRogue", label = "Troll Start" },
+            Priest = { expansion = "Vanilla", key = "463-EchoIslesTrollPriest", label = "Troll Start" },
+            Shaman = { expansion = "Vanilla", key = "463-EchoIslesTrollShaman", label = "Troll Start" },
+            Mage = { expansion = "Vanilla", key = "463-EchoIslesTrollMage", label = "Troll Start" },
+            Warlock = { expansion = "Vanilla", key = "463-EchoIslesTrollWarlock", label = "Troll Start" },
+            Monk = { expansion = "Vanilla", key = "463-EchoIslesTrollMonk", label = "Troll Start" },
+            Druid = { expansion = "Vanilla", key = "463-EchoIslesTrollDruid", label = "Troll Start" }
+        },
+        BloodElf = { expansion = "TheBurningCrusade", key = "467-BloodElf-intro", label = "Blood Elf Start" },
+        ["Death Knight"] = {
+            default = { expansion = "WrathOfTheLichKing", key = "23-ScarletEnclave", label = "Death Knight Start" },
+            allied = { expansion = "WrathOfTheLichKing", key = "118-Allied_Icecrown Citadel", label = "Allied Death Knight Start" }
+        },
+        Goblin = {
+            main = { expansion = "Cataclysm", key = "194-Kezan", label = "Goblin Start" },
+            secondary = { expansion = "Cataclysm", key = "174-LostIsles", label = "Goblin - Lost Isles" }
+        },
+        ["Demon Hunter"] = { expansion = "Legion", key = "672-Mardum", label = "Demon Hunter Start" },
+        HighmountainTauren = { expansion = "Legion", key = "652-HighmountainTauren-intro", label = "Highmountain Tauren Start" },
+        Nightborne = { expansion = "Legion", key = "680-Nightborne-intro", label = "Nightborne Start" },
+        MagharOrc = { expansion = "BattleForAzeroth", key = "85-MagharOrc-intro", label = "Maghar Orc Start" },
+        Vulpera = { expansion = "BattleForAzeroth", key = "85-Vulpera-intro", label = "Vulpera Start" },
+        ZandalariTroll = { expansion = "BattleForAzeroth", key = "1165-Zandalari-intro", label = "Zandalari Troll Start" },
+        Dracthyr = {
+            evoker = { expansion = "Dragonflight", key = "2118-DracthyrStart-Evo", label = "Dracthyr Start" },
+            default = { expansion = "Dragonflight", key = "2118-DracthyrStart-Other", label = "Dracthyr Start" }
+        },
+        EarthenDwarf = { expansion = "TheWarWithin", key = "2248-TWW-Earthen", label = "Earthen Dwarf Start" }
+    }
+
+    -- WARNING Class before race
+    ---
+    local function applyStartingRoute()
+        local route
+        if APR.ClassId == APR.Classes["Demon Hunter"] then
+            route = startRoutes["Demon Hunter"]
+        elseif APR.ClassId == APR.Classes["Death Knight"] then
+            -- Use allied start if race ID is >= 23; otherwise, default Death Knight start
+            route = APR.RaceID >= 23 and startRoutes["Death Knight"].allied or startRoutes["Death Knight"].default
+        elseif APR.Race == "Dracthyr" then
+            -- Check for Dracthyr Evoker-specific start, else use general Dracthyr start
+            route = APR.ClassId == APR.Classes.Evoker and startRoutes.Dracthyr.evoker or
+                startRoutes.Dracthyr.default
+        elseif APR.Race == "Goblin" then
+            local gob = startRoutes.Goblin
+            assignRoute(gob.main.expansion, gob.main.key, gob.main.label)
+            route = gob.secondary
+        elseif APR.Race == "Troll" and startRoutes.Troll[APR.ClassId] then
+            local trollRoute = startRoutes.Troll[APR.ClassId]
+            assignRoute(trollRoute.expansion, trollRoute.key, trollRoute.label)
+        else
+            route = startRoutes[APR.Race]
+        end
+        if route then
+            assignRoute(route.expansion, route.key, route.label)
+        end
+    end
+
+    -- Apply starting route based on class and race
+    applyStartingRoute()
+
     -- Lumbermill Wod route
-    if C_QuestLog.IsQuestFlaggedCompleted(34992) then
-        APR.RouteList.WarlordsOfDraenor["543-DesMephisto-Gorgrond-Lumbermill"] = "WOD04 - Gorgrond"
+    -- Special case for Warlords of Draenor route based on quest completion
+    if C_QuestLog.IsQuestFlaggedCompleted(35049) then
+        assignRoute("WarlordsOfDraenor", "543-DesMephisto-Gorgrond-Lumbermill", "WOD04 - Gorgrond")
     else
-        APR.RouteList.WarlordsOfDraenor["543-DesMephisto-Gorgrond-p1"] = "WOD04 - Gorgrond"
+        assignRoute("WarlordsOfDraenor", "543-DesMephisto-Gorgrond-p1", "WOD04 - Gorgrond")
     end
 end

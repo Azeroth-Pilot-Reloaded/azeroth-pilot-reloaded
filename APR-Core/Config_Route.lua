@@ -736,7 +736,7 @@ function APR.routeconfig:GetStartingZonePrefab()
                 tinsert(APRCustomPath[APR.PlayerID], "Troll Start")
                 tinsert(APRCustomPath[APR.PlayerID], "Durotar")
             elseif (APR.Race == "Scourge") then --Undead
-                tinsert(APRCustomPath[APR.PlayerID], "Scourge Start")
+                tinsert(APRCustomPath[APR.PlayerID], "Undead Start")
             elseif (APR.Race == "BloodElf") then
                 tinsert(APRCustomPath[APR.PlayerID], "Blood Elf Start") -- missing part 2
                 -- ALLIANCE
