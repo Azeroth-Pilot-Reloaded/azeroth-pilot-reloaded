@@ -11,5 +11,5 @@ APR.Classes = {
     Monk = 10,
     Druid = 11,
     ["Demon Hunter"] = 12,
-    Dracthyr = 13,
+    Evoker = 13,
 }

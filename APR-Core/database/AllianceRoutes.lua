@@ -120,48 +120,65 @@ if (APR.Faction == "Alliance") then
     }
     APR.RouteList.Custom = {}
 
-
-    -- WARNING Class before race
-    if (APR.ClassId == APR.Classes["Demon Hunter"]) then
-        APR.RouteList.Legion["672-Mardum"] = "Demon Hunter Start"
-    elseif (APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23) then
-        APR.RouteList.WrathOfTheLichKing["118-Allied_Icecrown Citadel"] = "Allied Death Knight Start"
-    elseif (APR.ClassId == APR.Classes["Death Knight"]) then
-        APR.RouteList.WrathOfTheLichKing["23-ScarletEnclave"] = "Death Knight Start"
-    elseif (APR.Race == "Dracthyr") then
-        APR.RouteList.Dragonflight["2118-DracthyrStart-A"] = "Dracthyr Start"
-    elseif (APR.Race == "NightElf") then
-        APR.RouteList.Vanilla["57-ShadowglenNightElf"] = "Night Elf Start"
-    elseif (APR.Race == "Dwarf") then
-        APR.RouteList.Vanilla["27-ColdridgeValleyDwarf"] = "Dwarf Start"
-    elseif (APR.Race == "Human") then
-        APR.RouteList.Vanilla["37-NorthshireHuman"] = "Human Start"
-    elseif (APR.Race == "Gnome") then
-        APR.RouteList.Vanilla["30-NewTinkertown"] = "Gnome Start"
-    elseif (APR.Race == "Draenei") then
-        APR.RouteList.TheBurningCrusade["97-AmmenVale"] = "Draenei Start"
-    elseif (APR.Race == "Worgen") then
-        APR.RouteList.Cataclysm["179-Gilneas"] = "Worgen Start"
-    elseif (APR.Race == "VoidElf") then
-        APR.RouteList.Legion["971-VoidElf-intro"] = "Void Elf Start"
-    elseif (APR.Race == "LightforgedDraenei") then
-        APR.RouteList.Legion["940-LightforgedDraenei-intro"] = "Lightforged Draenei Start"
-    elseif (APR.Race == "DarkIronDwarf") then
-        APR.RouteList.BattleForAzeroth["1186-DarkIronDwarf-intro"] = "DarkIron Dwarf Start"
-    elseif (APR.Race == "Mechagnome") then
-        APR.RouteList.BattleForAzeroth["1573-Mechagnome-intro"] = "Mechagnome Start"
-    elseif (APR.Race == "KulTiran") then
-        APR.RouteList.BattleForAzeroth["1161-KulTiran-intro"] = "Kul Tiran Start"
-    elseif (APR.Race == "KulTiran") then
-        APR.RouteList.BattleForAzeroth["1161-KulTiran-intro"] = "Kul Tiran Start"
-    elseif (APR.Race == "EarthenDwarf") then
-        APR.RouteList.TheWarWithin["2248-TWW-Earthen"] = "Earthen Dwarf Start"
+    -- Starting Route or custom
+    ---
+    local function assignRoute(expansion, key, label)
+        APR.RouteList[expansion][key] = label
     end
 
+    local startRoutes = {
+        Dwarf = { expansion = "Vanilla", key = "27-ColdridgeValleyDwarf", label = "Dwarf Start" },
+        Gnome = { expansion = "Vanilla", key = "30-NewTinkertown", label = "Gnome Start" },
+        Human = { expansion = "Vanilla", key = "37-NorthshireHuman", label = "Human Start" },
+        NightElf = { expansion = "Vanilla", key = "57-ShadowglenNightElf", label = "Night Elf Start" },
+        Draenei = { expansion = "TheBurningCrusade", key = "97-AmmenVale", label = "Draenei Start" },
+        ["Death Knight"] = {
+            allied = { expansion = "WrathOfTheLichKing", key = "118-Allied_Icecrown Citadel", label = "Allied Death Knight Start" },
+            default = { expansion = "WrathOfTheLichKing", key = "23-ScarletEnclave", label = "Death Knight Start" }
+        },
+        Worgen = { expansion = "Cataclysm", key = "179-Gilneas", label = "Worgen Start" },
+        ["Demon Hunter"] = { expansion = "Legion", key = "672-Mardum", label = "Demon Hunter Start" },
+        LightforgedDraenei = { expansion = "Legion", key = "940-LightforgedDraenei-intro", label = "Lightforged Draenei Start" },
+        VoidElf = { expansion = "Legion", key = "971-VoidElf-intro", label = "Void Elf Start" },
+        DarkIronDwarf = { expansion = "BattleForAzeroth", key = "1186-DarkIronDwarf-intro", label = "Dark Iron Dwarf Start" },
+        KulTiran = { expansion = "BattleForAzeroth", key = "1161-KulTiran-intro", label = "Kul Tiran Start" },
+        Mechagnome = { expansion = "BattleForAzeroth", key = "1573-Mechagnome-intro", label = "Mechagnome Start" },
+        Dracthyr = {
+            evoker = { expansion = "Dragonflight", key = "2118-DracthyrStart-Evo", label = "Dracthyr Start" },
+            default = { expansion = "Dragonflight", key = "2118-DracthyrStart-Other", label = "Dracthyr Start" }
+        },
+        EarthenDwarf = { expansion = "TheWarWithin", key = "2248-TWW-Earthen", label = "Earthen Dwarf Start" }
+    }
+
+    -- WARNING Class before race
+    ---
+    local function applyStartingRoute()
+        local route
+        if APR.ClassId == APR.Classes["Demon Hunter"] then
+            route = startRoutes["Demon Hunter"]
+        elseif APR.ClassId == APR.Classes["Death Knight"] then
+            -- Use allied start if race ID is >= 23; otherwise, default Death Knight start
+            route = APR.RaceID >= 23 and startRoutes["Death Knight"].allied or startRoutes["Death Knight"].default
+        elseif APR.Race == "Dracthyr" then
+            -- Check for Dracthyr Evoker-specific start, else use general Dracthyr start
+            route = APR.ClassId == APR.Classes.Evoker and startRoutes.Dracthyr.evoker or
+                startRoutes.Dracthyr.default
+        else
+            route = startRoutes[APR.Race]
+        end
+        if route then
+            assignRoute(route.expansion, route.key, route.label)
+        end
+    end
+
+    -- Apply starting route based on class and race
+    applyStartingRoute()
+
     -- Lumbermill Wod route
+    -- Special case for Warlords of Draenor route based on quest completion
     if C_QuestLog.IsQuestFlaggedCompleted(35049) then
-        APR.RouteList.WarlordsOfDraenor["543-DesMephisto-Gorgrond-Lumbermill"] = "WOD04 - Gorgrond"
+        assignRoute("WarlordsOfDraenor", "543-DesMephisto-Gorgrond-Lumbermill", "WOD04 - Gorgrond")
     else
-        APR.RouteList.WarlordsOfDraenor["543-DesMephisto-Gorgrond"] = "WOD04 - Gorgrond"
+        assignRoute("WarlordsOfDraenor", "543-DesMephisto-Gorgrond", "WOD04 - Gorgrond")
     end
 end
