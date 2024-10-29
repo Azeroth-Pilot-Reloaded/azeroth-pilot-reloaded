@@ -502,7 +502,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
         _index = 84,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 85,
     },
 }
@@ -818,7 +818,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
         _index = 48,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 49,
     },
 }
@@ -2526,7 +2526,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         _index = 284,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 285,
     },
 }
@@ -2587,7 +2587,7 @@ APR.RouteQuestStepList["1670-Z3-Oribos-Story"] = {
         _index = 10,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 11,
     },
 }
@@ -4054,7 +4054,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         _index = 237,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 238,
     },
 }
@@ -4089,7 +4089,7 @@ APR.RouteQuestStepList["1670-Z5-Oribos-Story"] = {
         _index = 5,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 6,
     },
 }
@@ -4283,7 +4283,7 @@ APR.RouteQuestStepList["1960-Z6-TheMaw-Story"] = {
         _index = 33,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 34,
     },
 }
@@ -4340,7 +4340,7 @@ APR.RouteQuestStepList["1670-Z7-Oribos-Story"] = {
         _index = 9,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 10,
     },
 }
@@ -4407,7 +4407,7 @@ APR.RouteQuestStepList["1536-Z8-Maldraxxus-Story"] = {
         _index = 10,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 11,
     },
 }
@@ -4501,7 +4501,7 @@ APR.RouteQuestStepList["1670-Z9-Oribos-Story"] = {
         _index = 15,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 16,
     },
 }
@@ -4556,7 +4556,7 @@ APR.RouteQuestStepList["1670-Z9-Oribos-Storyx2"] = {
         _index = 9,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 10,
     },
 }
@@ -7074,7 +7074,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         _index = 394,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 395,
     },
 }
@@ -7110,7 +7110,7 @@ APR.RouteQuestStepList["1670-Z11-Oribos-Story"] = {
         _index = 5,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 6,
     },
 }
@@ -8981,7 +8981,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         _index = 312,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 313,
     },
 }
@@ -9054,7 +9054,7 @@ APR.RouteQuestStepList["1543-Z13-TheMaw-Story"] = {
         _index = 12,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 13,
     },
 }
@@ -9197,7 +9197,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
         _index = 23,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 24,
     },
 }
@@ -9279,7 +9279,7 @@ APR.RouteQuestStepList["1670-Z15-Oribos-Story"] = {
         _index = 12,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 13,
     },
 }

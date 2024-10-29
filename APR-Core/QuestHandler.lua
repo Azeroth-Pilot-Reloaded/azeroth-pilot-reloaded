@@ -783,7 +783,7 @@ function APR:UpdateStep()
                 APR:UpdateQuestAndStep()
             end)
         end
-        if (step.ZoneDoneSave) then
+        if (step.RouteCompleted) then
             local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
 
             -- Force reset heirloom to show heirloom taximap (not avalaible in exile reach)

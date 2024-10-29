@@ -521,7 +521,7 @@ APR.RouteQuestStepList["81-TWW-Intro"] = {
         _index = 75,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 76,
     },
 }
@@ -2234,7 +2234,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 244,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 245,
     },
 }
@@ -4656,7 +4656,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 337,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 338,
     },
 }
@@ -6503,7 +6503,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         _index = 264,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 265,
     },
 }
@@ -7667,7 +7667,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 174,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 175,
     },
 }
@@ -8012,7 +8012,7 @@ APR.RouteQuestStepList["2248-TWW-Against-the-Current-storyline"] = {
         _index = 48,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 49,
     },
 }
@@ -8391,7 +8391,7 @@ APR.RouteQuestStepList["2248-TWW-Ties-That-Bind-storyline"] = {
         _index = 55,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 56,
     },
 }
@@ -8750,7 +8750,7 @@ APR.RouteQuestStepList["2248-TWW-News-from-Below-storyline"] = {
         _index = 53,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 54,
     },
 }
@@ -9266,7 +9266,7 @@ APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
         _index = 76,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 77,
     },
 }
@@ -9518,7 +9518,7 @@ APR.RouteQuestStepList["2248-TWW-Light-in-the-Dark-storyline"] = {
         _index = 34,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 35,
     },
 }
@@ -10652,7 +10652,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 159,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 160,
     },
 }
@@ -11780,7 +11780,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 157,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 158,
     },
 }
@@ -12951,7 +12951,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall-campaign-only"] = {
         _index = 161,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 162,
     },
 }
@@ -13874,7 +13874,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
         _index = 138,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 139,
     },
 }
@@ -14928,7 +14928,7 @@ APR.RouteQuestStepList["2255-TWW-Allied-Races-Earthen"] = {
         _index = 157,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 158,
     },
 }
@@ -15166,7 +15166,7 @@ APR.RouteQuestStepList["2248-TWW-Earthen"] = {
         _index = 33,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 34,
     },
 }
@@ -19013,7 +19013,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 565,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 566,
     },
 }
@@ -23083,7 +23083,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 584,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 585,
     },
 }

@@ -189,7 +189,7 @@ if APR.Faction == "Alliance" then
             _index = 35,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 36,
         },
     }
@@ -673,7 +673,7 @@ if APR.Faction == "Alliance" then
             _index = 86,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 87,
         },
     }
@@ -1552,7 +1552,7 @@ if APR.Faction == "Alliance" then
             _index = 158,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 159,
         },
     }
@@ -2649,7 +2649,7 @@ if APR.Faction == "Alliance" then
             _index = 190,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 191,
         },
     }
@@ -4008,7 +4008,7 @@ if APR.Faction == "Alliance" then
             _index = 238,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 239,
         },
     }
@@ -4944,7 +4944,7 @@ if APR.Faction == "Alliance" then
             _index = 163,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 164,
         },
     }
@@ -5825,7 +5825,7 @@ if APR.Faction == "Alliance" then
             _index = 157,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 158,
         },
     }
@@ -6653,7 +6653,7 @@ if APR.Faction == "Alliance" then
             _index = 147,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 148,
         },
     }
@@ -7415,7 +7415,7 @@ if APR.Faction == "Alliance" then
             _index = 134,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 135,
         },
     }
@@ -8346,7 +8346,7 @@ if APR.Faction == "Alliance" then
             _index = 167,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 168,
         },
     }
@@ -9231,7 +9231,7 @@ if APR.Faction == "Alliance" then
             _index = 155,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 156,
         },
     }
@@ -10003,7 +10003,7 @@ if APR.Faction == "Alliance" then
             _index = 135,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 136,
         },
     }
@@ -11152,7 +11152,7 @@ if APR.Faction == "Alliance" then
             _index = 199,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 200,
         },
     }
@@ -11813,7 +11813,7 @@ if APR.Faction == "Alliance" then
             _index = 118,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 119,
         },
     }
@@ -12616,7 +12616,7 @@ if APR.Faction == "Alliance" then
             _index = 135,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 136,
         },
     }
@@ -13016,7 +13016,7 @@ if APR.Faction == "Alliance" then
             _index = 68,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 69,
         },
     }
@@ -13686,7 +13686,7 @@ if APR.Faction == "Alliance" then
             _index = 114,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 115,
         },
     }

@@ -18,7 +18,7 @@ function APR:GetStepString(step)
         GetFP = L["GET_FLIGHTPATH"],
         UseFlightPath = L["USE_FLIGHTPATH"],
         WarMode = L["TURN_ON_WARMODE"],
-        ZoneDoneSave = L["ROUTE_COMPLETED"]
+        RouteCompleted = L["ROUTE_COMPLETED"]
     }
 
     for key, _ in pairs(step) do

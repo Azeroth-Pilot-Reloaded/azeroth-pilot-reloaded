@@ -131,7 +131,7 @@ if APR.Faction == "Horde" then
             _index = 19,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 20,
         },
     }
@@ -468,7 +468,7 @@ if APR.Faction == "Horde" then
             _index = 53,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 54,
         },
     }
@@ -1455,7 +1455,7 @@ if APR.Faction == "Horde" then
             _index = 162,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 163,
         },
     }

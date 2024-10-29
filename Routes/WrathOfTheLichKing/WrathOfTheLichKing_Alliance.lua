@@ -781,7 +781,7 @@ if APR.Faction == "Alliance" then
             _index = 142,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 143,
         },
     }
@@ -899,7 +899,7 @@ if APR.Faction == "Alliance" then
             _index = 17,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 18,
         },
     }

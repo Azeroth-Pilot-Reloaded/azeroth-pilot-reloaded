@@ -1616,7 +1616,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
         _index = 251,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 252,
     },
 }
@@ -3410,7 +3410,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         _index = 293,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 294,
     },
 }
@@ -5550,7 +5550,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
         _index = 358,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 359,
     },
 }
@@ -6647,7 +6647,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         _index = 161,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 162,
     },
 }
@@ -6685,7 +6685,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Other"] = {
         _index = 4,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 5,
     },
 }
