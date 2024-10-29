@@ -79,6 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.5.4", "2024-10-29" },
+        "#Bugs",
+        "- Fixed starting route assign function causing lua error",
+        "- Changed 'ZoneDoneSave' to 'RouteCompleted'",
+
         { "v4.5.3", "2024-10-29" },
         "#Features",
         "- Added new starting route for other Dracthyr classes",
