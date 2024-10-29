@@ -739,7 +739,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
         _index = 125,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 126,
     },
 }

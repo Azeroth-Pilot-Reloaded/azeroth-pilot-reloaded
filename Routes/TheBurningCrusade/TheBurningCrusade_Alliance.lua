@@ -199,7 +199,7 @@ if (APR.Faction == "Alliance") then
             _index = 37,
         },
         {
-            ZoneDoneSave = 1,
+            RouteCompleted = 1,
             _index = 38,
         },
     }

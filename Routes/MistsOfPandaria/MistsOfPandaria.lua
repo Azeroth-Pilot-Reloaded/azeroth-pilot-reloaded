@@ -1116,7 +1116,7 @@ APR.RouteQuestStepList["378-WanderingIsle"] = {
         _index = 202,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 203,
     },
 }
@@ -2698,7 +2698,7 @@ APR.RouteQuestStepList["378-Panda Starting Zone"] = {
         _index = 239,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 240,
     },
 }
@@ -2853,7 +2853,7 @@ APR.RouteQuestStepList["554-MoP Remix Intro"] = {
         _index = 23,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 24,
     },
 }
@@ -4539,7 +4539,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         _index = 245,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 246,
     },
 }
@@ -5840,7 +5840,7 @@ APR.RouteQuestStepList["388-Townlong Steppes"] = {
         _index = 195,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 196,
     },
 }
@@ -7329,7 +7329,7 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
         _index = 221,
     },
     {
-        ZoneDoneSave = 1,
+        RouteCompleted = 1,
         _index = 222,
     },
 }
