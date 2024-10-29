@@ -83,7 +83,7 @@ function APR:getStatusReportInfos()
         charName = { "Name", APR.Username },
         charRealm = { "Realm", GetRealmName() },
         charLevel = { "Level", APR.Level },
-        charClass = { "Class", APR.ClassName }
+        charClass = { "Class", APR:titleCase(APR.ClassName) }
     }
 
     return infoTable

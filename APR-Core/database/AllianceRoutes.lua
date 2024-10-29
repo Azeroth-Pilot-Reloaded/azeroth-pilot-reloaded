@@ -152,27 +152,24 @@ if (APR.Faction == "Alliance") then
 
     -- WARNING Class before race
     ---
-    local function applyStartingRoute()
-        local route
-        if APR.ClassId == APR.Classes["Demon Hunter"] then
-            route = startRoutes["Demon Hunter"]
-        elseif APR.ClassId == APR.Classes["Death Knight"] then
-            -- Use allied start if race ID is >= 23; otherwise, default Death Knight start
-            route = APR.RaceID >= 23 and startRoutes["Death Knight"].allied or startRoutes["Death Knight"].default
-        elseif APR.Race == "Dracthyr" then
-            -- Check for Dracthyr Evoker-specific start, else use general Dracthyr start
-            route = APR.ClassId == APR.Classes.Evoker and startRoutes.Dracthyr.evoker or
-                startRoutes.Dracthyr.default
-        else
-            route = startRoutes[APR.Race]
-        end
-        if route then
-            assignRoute(route.expansion, route.key, route.label)
-        end
+
+    local route
+    if APR.ClassId == APR.Classes["Demon Hunter"] then
+        route = startRoutes["Demon Hunter"]
+    elseif APR.ClassId == APR.Classes["Death Knight"] then
+        -- Use allied start if race ID is >= 23; otherwise, default Death Knight start
+        route = APR.RaceID >= 23 and startRoutes["Death Knight"].allied or startRoutes["Death Knight"].default
+    elseif APR.Race == "Dracthyr" then
+        -- Check for Dracthyr Evoker-specific start, else use general Dracthyr start
+        route = APR.ClassId == APR.Classes.Evoker and startRoutes.Dracthyr.evoker or
+            startRoutes.Dracthyr.default
+    else
+        route = startRoutes[APR.Race]
+    end
+    if route and route.expansion and route.key and route.label then
+        assignRoute(route.expansion, route.key, route.label)
     end
 
-    -- Apply starting route based on class and race
-    applyStartingRoute()
 
     -- Lumbermill Wod route
     -- Special case for Warlords of Draenor route based on quest completion

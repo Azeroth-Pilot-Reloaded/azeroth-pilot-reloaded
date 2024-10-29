@@ -187,3 +187,9 @@ function APR:ExtractColorAndText(text)
         return nil, text
     end
 end
+
+function APR:titleCase(str)
+    return (str:gsub("(%a)([%w_']*)", function(first, rest)
+        return first:upper() .. rest:lower()
+    end))
+end
