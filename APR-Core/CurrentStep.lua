@@ -707,7 +707,7 @@ function APR.currentStep:UpdateStepButtonCooldowns()
             end
 
             if enable > 0 and startTime > 0 and (cooldownDuration == 0 or not isCooldownShown) then
-                IconButton.cooldown:SetCooldown(start, duration)
+                IconButton.cooldown:SetCooldown(startTime, duration)
             else
                 IconButton.cooldown:Clear()
             end
