@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.5.5", "2024-11-23" },
+        "#WoW",
+        "- Update TOC Interface for 11.0.7",
+
         { "v4.5.4", "2024-10-29" },
         "#Bugs",
         "- Fixed starting route assign function causing lua error",
