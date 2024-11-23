@@ -80,6 +80,9 @@ end
 function APR.changelog:SetChangeLog()
     local news = {
         { "v4.5.5", "2024-11-23" },
+        "#Bugs",
+        "- Fixed error when using quest item from the quest tracker",
+
         "#WoW",
         "- Update TOC Interface for 11.0.7",
 
