@@ -84,6 +84,7 @@ function APR.transport:GetMeToRightZone()
         end
         if isSameContinent then
             local posY, posX = UnitPosition("player")
+            if not posY or not posX then return end
             local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
             if step.Coord then
                 local _, objectiveTaxiName, _, _ = self:ClosestTaxi(step.Coord.x, step.Coord.y)
@@ -271,6 +272,7 @@ function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
 
     -- TaxiNode
     local posY, posX = UnitPosition("player")
+    if not posY or not posX then return end
     local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY, playerDistance = self:ClosestTaxi(posX, posY)
     local portalTaxiNodeId, portalTaxiName, _, _, portalDistance = self:ClosestTaxi(portalPosition.x, portalPosition.y)
     local hasDraconicRidingskill = IsSpellKnown(90265) and IsSpellKnown(372608)

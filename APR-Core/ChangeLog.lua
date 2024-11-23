@@ -82,6 +82,7 @@ function APR.changelog:SetChangeLog()
         { "v4.5.5", "2024-11-23" },
         "#Bugs",
         "- Fixed error when using quest item from the quest tracker",
+        "- Fixed closest taxi posX error",
 
         "#WoW",
         "- Update TOC Interface for 11.0.7",
