@@ -7655,20 +7655,8 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 172,
     },
     {
-        PickUp = { 84446 },
-        Coord = { x = -2292, y = 2175.4 },
-        Zone = 2248,
-        _index = 173,
-    },
-    {
-        Done = { 84446 },
-        Coord = { x = -2500.8, y = 2605.2 },
-        Zone = 2248,
-        _index = 174,
-    },
-    {
         RouteCompleted = 1,
-        _index = 175,
+        _index = 173,
     },
 }
 
@@ -7691,18 +7679,6 @@ APR.RouteQuestStepList["2248-TWW-Against-the-Current-storyline"] = {
         Coord = { x = -2292, y = 2175.3 },
         Zone = 2248,
         _index = 3,
-    },
-    {
-        PickUp = { 84446 },
-        Coord = { x = -2292, y = 2175.4 },
-        Zone = 2248,
-        _index = 4,
-    },
-    {
-        Done = { 84446 },
-        Coord = { x = -2500.8, y = 2605.2 },
-        Zone = 2248,
-        _index = 5,
     },
     {
         PickUp = { 79333 },
