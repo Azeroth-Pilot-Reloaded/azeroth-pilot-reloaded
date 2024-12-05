@@ -2886,7 +2886,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     },
     {
         Qpart = { [78637] = { 1, 2 } },
-        Coord = { x = -3381.1, y = 2925.2 },
+        Coord = { x = -3380.7, y = 2822.6 },
         Fillers = { [78638] = { 2 } },
         Range = 5,
         Zone = 2214,
@@ -10944,7 +10944,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
     },
     {
         Qpart = { [78637] = { 1, 2 } },
-        Coord = { x = -3381.1, y = 2925.2 },
+        Coord = { x = -3380.7, y = 2822.6 },
         Fillers = { [78638] = { 2 } },
         Range = 5,
         Zone = 2214,
@@ -20035,7 +20035,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
     },
     {
         Qpart = { [78637] = { 1, 2 } },
-        Coord = { x = -3381.1, y = 2925.2 },
+        Coord = { x = -3380.7, y = 2822.6 },
         Fillers = { [78638] = { 2 } },
         Range = 5,
         Zone = 2214,
