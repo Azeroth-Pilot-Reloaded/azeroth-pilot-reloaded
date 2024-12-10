@@ -79,6 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.5.6", "2024-12-10" },
+        "#Bugs",
+        "- Removed `Renown of Khaz Algar` quest (84446)",
+        "- Fixed coords for Cogchewer NPC for `Cracking Cogchewer` quest (78637)",
+
         { "v4.5.5", "2024-11-23" },
         "#Bugs",
         "- Fixed error when using quest item from the quest tracker",
