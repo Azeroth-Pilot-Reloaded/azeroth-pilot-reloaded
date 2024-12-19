@@ -79,6 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.6.0", "2024-12-20" },
+        "#TWW",
+        "- Added Lingering Shadow Storyline route",
+        "- Added Siren Isle Intro route",
+
         { "v4.5.6", "2024-12-10" },
         "#Bugs",
         "- Removed `Renown of Khaz Algar` quest (84446)",
