@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.6.1", "2024-12-22" },
+        "#Guides",
+        "- Added new custom lvl 10-70 route by EclipseGlaives",
+
         { "v4.6.0", "2024-12-20" },
         "#TWW",
         "- Added Lingering Shadow Storyline route",
