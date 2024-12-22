@@ -1124,7 +1124,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [26720] = { 1 } },
             Coord = { x = 250.6, y = -11033.5 },
             Button = { ["26720-1"] = 60206 },
-            ExtraLineText = "20_HP",
+            ExtraLineText = "WORGEN_20_HP",
             Range = 30,
             Zone = 47,
             _index = 175,
