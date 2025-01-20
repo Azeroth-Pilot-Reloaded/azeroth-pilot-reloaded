@@ -670,7 +670,9 @@ end
 ---------------------------------------------------------------------------------------
 function APR.routeconfig:GetSpeedRunPrefab()
     self:GetStartingZonePrefab()
-    if APR.Level < 60 then
+    if APR.Level >= APR.MinBoostLvl and APR.Level < APR.MaxLevelChromie then
+        self:GetDFPrefab()
+    elseif APR.Level < APR.MinBoostLvl then
         self:GetWODPrefab()
         self:GetDFPrefab()
     end
@@ -680,11 +682,11 @@ end
 function APR.routeconfig:GetStartingZonePrefab()
     if APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         tinsert(APRCustomPath[APR.PlayerID], "01-10 Exile's Reach")
-    elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and APR.Level < APR.MinBoostLvl then -- first quest from Exile's Reach + boost
+    elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and (APR.Level < APR.MinBoostLvl or APR.Level < 10) then -- first quest from Exile's Reach + boost
         --None skipable starting zone
-        if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then                                                              -- Allied DK
+        if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then                                                                                  -- Allied DK
             tinsert(APRCustomPath[APR.PlayerID], "Allied Death Knight Start")
-        elseif APR.ClassId == APR.Classes["Death Knight"] then                                                                               -- DK
+        elseif APR.ClassId == APR.Classes["Death Knight"] then                                                                                                   -- DK
             tinsert(APRCustomPath[APR.PlayerID], "Death Knight Start")
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
             tinsert(APRCustomPath[APR.PlayerID], "Demon Hunter Start")
@@ -898,7 +900,7 @@ APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSpeedRunPrefab()
                 end)
-            elseif APR.Level == 70 then
+            elseif APR.Level == APR.MaxLevelChromie then
                 APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_TWW"], APR.Level), function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetTWWPrefab()

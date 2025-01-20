@@ -79,10 +79,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.6.4", "2025-01-21" },
+        "#Bugs",
+        "- Fix level requirements for speedrun routes (a lvl 60 will no longer be sent to TWW)",
+
         { "v4.6.3", "2025-01-01" },
         "#Bugs",
         "- Majorly updated new custom lvl 10-70 route by EclipseGlaives",
-        
+
         { "v4.6.2", "2024-12-22" },
         "#Bugs",
         "- Fixed new custom lvl 10-70 route by EclipseGlaives",
