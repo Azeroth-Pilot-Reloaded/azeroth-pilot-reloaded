@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.7.1", "2025-02-16" },
+        "#Bugs",
+        "- Fix Siren Isle Intro route typo",
+
         { "v4.7.0", "2025-02-16" },
         "#Bugs",
         "- Fix Lingering Shadow Storyline route",
