@@ -23762,6 +23762,7 @@ APR.RouteQuestStepList["2248-TWW-Siren-Isle-Intro"] = {
         _index = 45,
     },
     {
+        Waypoint = 84726,
         Coord = { x = 43.4, y = 1784.1 },
         Range = 5,
         Zone = 2369,
