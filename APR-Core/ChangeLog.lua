@@ -79,6 +79,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.7.0", "2025-02-16" },
+        "#Bugs",
+        "- Fix Lingering Shadow Storyline route",
+        "- Fix Siren Isle Intro route",
+
+        "#Guides",
+        "- Added Fate of the Kirin Tor Storyline route",
+        "- Added Lingering Shadow, Fate of the Kirin Tor and Siren Isle routes to TWW prefab button",
+
         { "v4.6.4", "2025-01-21" },
         "#Bugs",
         "- Fix level requirements for speedrun routes (a lvl 60 will no longer be sent to TWW)",
