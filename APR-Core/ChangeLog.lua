@@ -79,6 +79,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.7.0", "2025-02-16" },
+        "#Bugs",
+        "- Fix Lingering Shadow Storyline route",
+        "- Fix Siren Isle Intro route",
+
+        "#Guides",
+        "- Added Witness of the Kirin Tor route",
+
         { "v4.6.4", "2025-01-21" },
         "#Bugs",
         "- Fix level requirements for speedrun routes (a lvl 60 will no longer be sent to TWW)",
