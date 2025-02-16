@@ -87,6 +87,7 @@ if (APR.Faction == "Horde") then
         ["2248-TWW-The-Machines-March-to-War-storyline"] = "TWW - 09 - The Machines March to War Storyline",
         ["2248-TWW-Light-in-the-Dark-storyline"] = "TWW - 10 - Light in the Dark Storyline",
         ["2248-TWW-Lingering-Shadow-Storyline"] = "TWW - 11 - Lingering Shadow Storyline",
+        ["2248-TWW-Fate-of-the-Kirin-Tor"] = "TWW - 12 - Fate of the Kirin Tor",
         ["2248-TWW-Siren-Isle-Intro"] = "TWW - Siren Isle Intro",
         ["2248-TWW-Isle-of-Dorn-campaign-only"] = "TWW - Isle of Dorn - Campaign Only",
         ["2214-TWW-Ringing-Deeps-campaign-only"] = "TWW - Ringing Deeps - Campaign Only",

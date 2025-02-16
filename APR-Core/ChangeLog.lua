@@ -85,7 +85,7 @@ function APR.changelog:SetChangeLog()
         "- Fix Siren Isle Intro route",
 
         "#Guides",
-        "- Added Witness of the Kirin Tor route",
+        "- Added Fate of the Kirin Tor Storyline route",
 
         { "v4.6.4", "2025-01-21" },
         "#Bugs",
