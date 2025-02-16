@@ -86,6 +86,7 @@ function APR.changelog:SetChangeLog()
 
         "#Guides",
         "- Added Fate of the Kirin Tor Storyline route",
+        "- Added Lingering Shadow, Fate of the Kirin Tor and Siren Isle routes to TWW prefab button",
 
         { "v4.6.4", "2025-01-21" },
         "#Bugs",
