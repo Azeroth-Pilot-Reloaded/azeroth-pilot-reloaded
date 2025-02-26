@@ -79,6 +79,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.8", "2025-02-27" },
+        "#Bugs",
+        "- Added missing 11.1.0 taxi nodes",
+        "- Added missing portal to undermine",
+
+        "#Guides",
+        "- Added Undermine Part 1 (Sorry for the delay, I'm in the middle of moving)",
+
         { "v4.7.1", "2025-02-16" },
         "#Bugs",
         "- Fix Siren Isle Intro route typo",

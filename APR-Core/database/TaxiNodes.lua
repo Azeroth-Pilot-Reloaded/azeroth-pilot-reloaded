@@ -735,7 +735,7 @@ APR.TaxiNodes = {
             [2584] = { x = 650.75500488281, y = -5993.7202148438, Name = "Glitterfall Basin, Ardenweald" },
             [2585] = { x = -207.12800598145, y = -6143.7797851562, Name = "Tirna Vaal, Ardenweald" },
             [2586] = { x = 15.22220039368, y = -6903.6298828125, Name = "Hibernal Hollow, Ardenweald" },
-            [2587] = { x = 1006.9099731445, y = -6788.580078125, Name = "Heart of the Forest, Ardenweald" },
+            [2587] = { x = 1006.799987793, y = -6788.5600585938, Name = "Heart of the Forest, Ardenweald" },
             [2588] = { x = 1804.9000244141, y = -6821.2299804688, Name = "Root-Home, Ardenweald" },
             [2589] = { x = 657.875, y = -7747.3999023438, Name = "Claw's Edge, Ardenweald" },
             [2590] = { x = 798.73297119141, y = -6828.4799804688, Name = "Refugee Camp, Ardenweald" },
@@ -855,7 +855,7 @@ APR.TaxiNodes = {
             [2929] = { x = -1847.6300048828, y = 985.46002197266, Name = "Freywold Village, Isle of Dorn" },
             [2931] = { x = -4099.7299804688, y = 2673.6599121094, Name = "Durgaz Cabin, Isle of Dorn" },
             [2932] = { x = -3394.8000488281, y = 3517.6201171875, Name = "Rambleshire, Isle of Dorn" },
-            [2970] = { x = -873.32598876953, y = 1860.5, Name = "Tranquil Strand, Isle of Dorn" },
+            [2970] = { x = -879.71899414063, y = 1820.6899414062, Name = "Tranquil Strand, Isle of Dorn" },
             [2972] = { x = -1847.6300048828, y = 985.46002197266, Name = "Jeff the Flightmaster" },
             [2882] = { x = -1446.6400146484, y = -593.34997558594, Name = "Weaver's Lair, Azj-Kahet" },
             [2889] = { x = 876.14398193359, y = -796.04302978516, Name = "Wildcamp Or'lay, Azj-Kahet" },
@@ -880,6 +880,13 @@ APR.TaxiNodes = {
             [2935] = { x = -379.0710144043, y = -3529.8400878906, Name = "Terrace of Majesty" },
             [2937] = { x = 103.30899810791, y = -3264.0200195312, Name = "The Narthex" },
             [2984] = { x = -112.17199707031, y = -3505.7700195312, Name = "The Ascending Reach" },
+            [3000] = { x = -4803.2700195312, y = -180.31300354004, Name = "Gutterville, The Ringing Deeps" },
+            [3003] = { x = 468.37298583984, y = -3585.3999023438, Name = "The Crown of Shadows" },
+            [2988] = { x = 535.78497314453, y = 65.56770324707, Name = "The Incontinental Hotel" },
+            [2996] = { x = 519.48602294922, y = -385.97900390625, Name = "The Heaps" },
+            [2997] = { x = 914.70697021484, y = -18.04170036316, Name = "Slam Central Station" },
+            [2998] = { x = 225.82600402832, y = 576.26702880859, Name = "Demolition Dome" },
+            [2999] = { x = 153.47599792481, y = 38.32989883423, Name = "The Gallagio" }
         }
     }
 }
