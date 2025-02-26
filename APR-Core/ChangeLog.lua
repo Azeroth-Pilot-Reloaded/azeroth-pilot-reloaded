@@ -79,7 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.8", "2025-02-27" },
+        { "v4.8.1", "2025-02-27" },
+        "#WoW",
+        "- Update TOC Interface for 11.1.0",
+
+        { "v4.8.0", "2025-02-27" },
         "#Bugs",
         "- Added missing 11.1.0 taxi nodes",
         "- Added missing portal to undermine",
