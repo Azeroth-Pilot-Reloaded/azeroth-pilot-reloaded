@@ -8,6 +8,18 @@
 
 ## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted
 
+## Category-enUS: Quests
+## Category-deDE: Quests
+## Category-esES: Misiones
+## Category-esMX: Misiones
+## Category-frFR: Quêtes
+## Category-itIT: Missioni
+## Category-koKR: 퀘스트
+## Category-ptBR: Missões
+## Category-ruRU: Задания
+## Category-zhCN: 任务
+## Category-zhTW: 任務
+
 ## X-License: All Rights Reserved: You are free to fork and modify on GitHub, please ask us about anything else.
 ## X-Github: https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded
 ## X-Discord: https://discord.gg/YgcdybKdWX
