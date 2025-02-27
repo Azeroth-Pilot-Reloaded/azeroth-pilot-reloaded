@@ -79,6 +79,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.8.2", "2025-02-27" },
+        "#WoW",
+        "- Added Addon Quest category in addon list",
+
         { "v4.8.1", "2025-02-27" },
         "#WoW",
         "- Update TOC Interface for 11.1.0",

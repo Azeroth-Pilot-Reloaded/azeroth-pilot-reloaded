@@ -230,6 +230,7 @@ APR.Portals.SwitchCont = {
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",    extraText = "USE_ELEVATOR" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",        extraText = "GO_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",       extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",          extraText = "TALK_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2346, portalKey = "EnterUndermine",          extraText = "TALK_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "ExitUndermine",           extraText = "TALK_TO" },
         -- Hallowfall
@@ -301,6 +302,7 @@ APR.Portals.SwitchCont = {
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",   extraText = "USE_ELEVATOR" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",       extraText = "GO_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",      extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",         extraText = "TALK_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2346, portalKey = "EnterUndermine",         extraText = "TALK_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "ExitUndermine",          extraText = "TALK_TO" },
         -- Hallowfall
