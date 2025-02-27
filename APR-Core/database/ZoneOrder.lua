@@ -1664,6 +1664,8 @@
             [2259] = { Coord = { x = -1308.6, y = -1827.7 }, zone = 2255, name = "TAK_RETHAN ABYSS", type = "DELVE" },
             [2299] = { Coord = { x = -1091.3, y = -2500.5 }, zone = 2255, name = "UNDERKEEP", type = "DELVE" },
             [0000] = { Coord = { x = 166.0, y = -1975.1 }, zone = 2255, name = "ZEKVIR LAIR", type = "DELVE" },
+            -- Undermine
+            [2423] = { Coord = { x = 694.7, y = -13 }, zone = 2214, name = "SIDESTREET SLUICE", type = "DELVE" },
         }
     },
     ExtensionRouteMaps = { -- MapID for each Categorie

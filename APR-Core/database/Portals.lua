@@ -62,6 +62,7 @@ APR.Portals.Coords = {
             ["RingingDeepsTunnel"] = { x = -2413.1, y = 2462.7 },
             ["RingingDeepsElevator"] = { x = -4093.8, y = 3375.0 },
             ["AzjKahetPortal"] = { x = -2869.2, y = 2567.7 },
+            ["EnterUndermineTP"] = { x = -2633.4, y = 2595.4 },
 
             -- Ringing Deeps
             ["IsleOfDornTunnel"] = { x = -2250.7, y = 2430.6 },
@@ -70,6 +71,7 @@ APR.Portals.Coords = {
             ["AzjKahetEast"] = { x = -2810.5, y = 601.1 },
             ["EnterUndermine"] = { x = -4913.4, y = 310.2 },
             ["ExitUndermine"] = { x = 1062, y = 3.3 },
+            ["ExitUndermineTP"] = { x = 846.9, y = -42.6 },
 
             -- hallowfall
             ["RingingDeepsGate"] = { x = -2254.7, y = 2643.9 },
@@ -150,6 +152,7 @@ APR.Portals.Coords = {
             ["RingingDeepsTunnel"] = { x = -2413.1, y = 2462.7 },
             ["RingingDeepsElevator"] = { x = -4093.8, y = 3375.0 },
             ["AzjKahetPortal"] = { x = -2869.2, y = 2567.7 },
+            ["EnterUndermineTP"] = { x = -2633.4, y = 2595.4 },
 
             -- Ringing Deeps
             ["IsleOfDornTunnel"] = { x = -2250.7, y = 2430.6 },
@@ -158,6 +161,7 @@ APR.Portals.Coords = {
             ["AzjKahetEast"] = { x = -2810.5, y = 601.1 },
             ["EnterUndermine"] = { x = -4913.4, y = 310.2 },
             ["ExitUndermine"] = { x = 1062, y = 3.3 },
+            ["ExitUndermineTP"] = { x = 846.9, y = -42.6 },
 
             -- hallowfall
             ["RingingDeepsGate"] = { x = -2254.7, y = 2643.9 },
@@ -225,14 +229,17 @@ APR.Portals.SwitchCont = {
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornTunnel",        extraText = "FOLLOW_TUNNEL_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator",      extraText = "USE_ELEVATOR" },
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornPortal" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",          extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "ExitUndermineTP",         extraText = "USE_TELEPORT" },
+
         -- Ringing Deeps
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsTunnel",      extraText = "FOLLOW_TUNNEL_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",    extraText = "USE_ELEVATOR" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",        extraText = "GO_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",       extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",          extraText = "TALK_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2346, portalKey = "EnterUndermine",          extraText = "TALK_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "ExitUndermine",           extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "EnterUndermineTP",        extraText = "USE_TELEPORT" },
         -- Hallowfall
         { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "RingingDeepsTunnel",      extraText = "FOLLOW_TUNNEL_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallGate",          extraText = "GO_TO" },
@@ -297,14 +304,18 @@ APR.Portals.SwitchCont = {
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornTunnel",       extraText = "FOLLOW_TUNNEL_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator",     extraText = "USE_ELEVATOR" },
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornPortal" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",         extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "ExitUndermineTP",        extraText = "USE_TELEPORT" },
+
         -- Ringing Deeps
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsTunnel",     extraText = "FOLLOW_TUNNEL_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",   extraText = "USE_ELEVATOR" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",       extraText = "GO_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",      extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",         extraText = "TALK_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2346, portalKey = "EnterUndermine",         extraText = "TALK_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "ExitUndermine",          extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "EnterUndermineTP",       extraText = "USE_TELEPORT" },
+
         -- Hallowfall
         { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "RingingDeepsTunnel",     extraText = "FOLLOW_TUNNEL_TO" },
         { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallGate",         extraText = "GO_TO" },
