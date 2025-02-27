@@ -79,6 +79,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.8.4", "2025-02-27" },
+        "#Bugs",
+        "- Updated IsQuestCompletedOnAccount / IsQuestUncompletedOnAccoun to use questId lists",
+        "- Adding other IDs to the No More Walkin' Here quest",
+
         { "v4.8.3", "2025-02-27" },
         "#Bugs",
         "-  Added missing portal Dornogal/Undermine",
