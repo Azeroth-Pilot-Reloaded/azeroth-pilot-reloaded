@@ -30,6 +30,10 @@ function APR:GetStepString(step)
     return ''
 end
 
+function APR:IsQuestCompletedOnAccount(questID)
+    return C_QuestLog.IsQuestFlaggedCompletedOnAccount(questID)
+end
+
 function APR:HasAchievement(achievementID)
     local id, name, _, completed = _G.GetAchievementInfo(achievementID)
     return completed
@@ -301,7 +305,9 @@ function APR:StepFilterQuestHandler(step)
         (step.DontHaveAchievement and APR:HasAchievement(step.DontHaveAchievement)) or
         (step.HasAura and not APR:HasAura(step.HasAura)) or
         (step.DontHaveAura and APR:HasAura(step.DontHaveAura)) or
-        (step.HasSpell and not IsSpellKnown(step.HasSpell))
+        (step.HasSpell and not IsSpellKnown(step.HasSpell)) or
+        (step.IsQuestCompletedOnAccount and not APR:IsQuestCompletedOnAccount(step.IsQuestCompletedOnAccount)) or
+        (step.IsQuestUncompletedOnAccount and APR:IsQuestCompletedOnAccount(step.IsQuestUncompletedOnAccount))
 end
 
 function APR:StepFilterQoL(step)
@@ -313,5 +319,7 @@ function APR:StepFilterQoL(step)
         (not step.DontHaveAchievement or not APR:HasAchievement(step.DontHaveAchievement)) and
         (not step.HasAura or APR:HasAura(step.HasAura)) and
         (not step.DontHaveAura or not APR:HasAura(step.DontHaveAura)) and
-        (not step.HasSpell or IsSpellKnown(step.HasSpell))
+        (not step.HasSpell or IsSpellKnown(step.HasSpell)) and
+        (not step.IsQuestCompletedOnAccount or APR:IsQuestCompletedOnAccount(step.IsQuestCompletedOnAccount)) and
+        (not step.IsQuestUncompletedOnAccount or not APR:IsQuestCompletedOnAccount(step.IsQuestUncompletedOnAccount))
 end

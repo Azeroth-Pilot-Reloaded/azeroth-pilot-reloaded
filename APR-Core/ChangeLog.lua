@@ -79,6 +79,19 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.8.3", "2025-02-27" },
+        "#Bugs",
+        "-  Added missing portal Dornogal/Undermine",
+        "- Added quest to unlock portal Dornogal/Undermine",
+        "- Added quest to unlock the mount G-99",
+        "- Fix Quest ID on waypoint in undermine route",
+        "- Added missing gossip for Quest Snitches Get Stitches (85409)",
+        "- Added missing Sidestreet Sluice delve Coords",
+
+        "#Guides",
+        "- Added new IsQuestCompletedOnAccount / IsQuestUncompletedOnAccount step options",
+        "- Added Undermine Part 1 route to the sopeedrun and TWW prefab route button",
+
         { "v4.8.2", "2025-02-27" },
         "#WoW",
         "- Added Addon Quest category in addon list",
