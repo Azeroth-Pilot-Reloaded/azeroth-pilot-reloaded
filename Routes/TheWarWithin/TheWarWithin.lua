@@ -26287,10 +26287,11 @@ APR.RouteQuestStepList["2346-TWW-Undermine-part-2"]= {
         _index = 20,
     },
     {
-        Qpart = { [83198] = { 1, 2 } },
+        Qpart = { [83198] = { 2 } },
         Coord = { x = 201.1, y = 316.6 },
         Fillers = { [83199] = { 1 } },
-        ExtraLineText = "COLLECT_LIMES_FROM_GROUND_OR_BY_KILLING_MOBS",
+        ExtraLineText = "COLLECT_CANNONBALL_FROM_GROUND_OR_BY_KILLING_MOBS",
+        ExtraLineText2 = "COLLECT_LIMES_FROM_GROUND_OR_BY_KILLING_MOBS",
         GossipOptionIDs = { 125254 },
         Range = 30,
         Zone = 2214,
