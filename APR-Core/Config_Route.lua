@@ -858,6 +858,8 @@ function APR.routeconfig:GetTWWPrefab()
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 12 - Fate of the Kirin Tor")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - Siren Isle Intro")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - Undermine Part 1")
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - Undermine Part 2")
+    -- tinsert(APRCustomPath[APR.PlayerID], "TWW - Undermine Part 3")
     self:SendMessage("APR_Custom_Path_Update")
 end
 
