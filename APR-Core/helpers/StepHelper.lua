@@ -30,8 +30,17 @@ function APR:GetStepString(step)
     return ''
 end
 
-function APR:IsQuestCompletedOnAccount(questID)
-    return C_QuestLog.IsQuestFlaggedCompletedOnAccount(questID)
+function APR:IsQuestCompletedOnAccount(questIds)
+    if not questIds or #questIds == 0 then
+        return false
+    end
+    for i = 1, #questIds do
+        if C_QuestLog.IsQuestFlaggedCompletedOnAccount(questIds[i]) then
+            return true
+        end
+    end
+
+    return false
 end
 
 function APR:HasAchievement(achievementID)
