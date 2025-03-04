@@ -79,11 +79,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.8.5", "2025-03-04" },
+        "#Guides",
+        "- Added `Liberation of Undermine: The House Loses` quest to the route (required to unlock chapter 6)",
+
         { "v4.8.4", "2025-03-04" },
         "#Bugs",
         "- Updated IsQuestCompletedOnAccount / IsQuestUncompletedOnAccoun to use questId lists",
         "- Adding other IDs to the No More Walkin' Here quest",
-        
+
         "#Guides",
         "- Added Undermine Part 2 route (Ignite the Fuel of Change Storyline)",
 

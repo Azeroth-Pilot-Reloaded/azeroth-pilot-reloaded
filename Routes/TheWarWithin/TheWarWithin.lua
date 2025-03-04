@@ -26580,6 +26580,19 @@ APR.RouteQuestStepList["2346-TWW-Undermine-part-2"]= {
         _index = 62,
     },
     {
+        PickUp = { 86204 },
+        Coord = { x = 522, y = -0.1 },
+        Zone = 2214,
+        _index = 63,
+    },
+    {
+        Done = { 86204 },
+        Coord = { x = 522, y = -0.1 },
+        ExtraLineText = "COMPLETE_THIS_QUEST_TO_UNLOCK_NEXT_CAMPAIGN_CHAPTER",
+        Zone = 2214,
+        _index = 63,
+    },
+    {
         RouteCompleted = 1,
         _index = 63,
     },
