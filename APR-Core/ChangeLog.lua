@@ -79,9 +79,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.8.7", "2025-03-05" },
+        "#Bugs",
+        "- Removed `End Campaign` message from `Undermine Part 1` route",
+        "- Added German translation of `Undermine` routes",
+
         { "v4.8.6", "2025-03-05" },
         "#Bugs",
-        "- Fixed Backyard Navy qust (83198) for the optional qpart",
+        "- Fixed Backyard Navy quest (83198) for the optional qpart",
 
         { "v4.8.5", "2025-03-04" },
         "#Guides",

@@ -26145,7 +26145,6 @@ APR.RouteQuestStepList["2248-TWW-Undermine-part-1"] = {
     {
         Done = { 83130 },
         Coord = { x = 616.2, y = 359.2 },
-        ExtraLineText = "END_CAMPAIGN_FOR_NOW_REST_WILL_BE_AVAILABLE_WITH_RELEASE_SEASON_2",
         Zone = 2214,
         _index = 248,
     },
@@ -26155,7 +26154,7 @@ APR.RouteQuestStepList["2248-TWW-Undermine-part-1"] = {
     },
 }
 
-APR.RouteQuestStepList["2346-TWW-Undermine-part-2"]= {
+APR.RouteQuestStepList["2346-TWW-Undermine-part-2"] = {
     {
         PickUp = { 83138 },
         Coord = { x = 617.2, y = 359 },
