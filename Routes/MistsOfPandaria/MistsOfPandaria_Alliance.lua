@@ -3667,7 +3667,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 30675,
-            DroppableQuest = { MobId = 60299, Qid = 30675, Text = "UngaFish-Getter" },
+            DroppableQuest = { MobId = 60299, Qid = 30675, Text = "Unga Fish-Getter" },
             Coord = { x = 700.1, y = -2833.4 },
             Range = 30,
             Zone = 418,
@@ -4847,7 +4847,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 30582,
-            DroppableQuest = { MobId = 59335, Qid = 30582, Text = "BurilgiDespoiler" },
+            DroppableQuest = { MobId = 59335, Qid = 30582, Text = "Burilgi Despoiler" },
             Coord = { x = 437.8, y = 2604.5 },
             Range = 45,
             Zone = 379,

@@ -277,7 +277,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
     },
     {
         DropQuest = 70648,
-        DroppableQuest = { MobId = 195915, Qid = 70648, Text = "FIRAVA_REKINDLER" },
+        DroppableQuest = { MobId = 195915, Qid = 70648, Text = "Firava the Rekindler" },
         Coord = { x = 154.9, y = 4075.9 },
         Fillers = { [65998] = { 1, 2 }, [65999] = { 1 }, [66000] = { 1 }, [70648] = { 1 } },
         ExtraLineText = "KILL_FIRAVA_REKINDLER_RESPAWNS_WITHIN_A_MINUTE_WANDERS_AROUND_THE_AREA",
@@ -2992,7 +2992,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
     },
     {
         DropQuest = 66689,
-        DroppableQuest = { MobId = 191496, Qid = 66689, Text = "PINEHOOF_DOE" },
+        DroppableQuest = { MobId = 191496, Qid = 66689, Text = "Pinehoof Doe" },
         Coord = { x = 650.9, y = -1878 },
         Fillers = { [66680] = { 3 }, [66681] = { 1 } },
         ExtraLineText = "LOOT_STORMTOUCHED_SHARDS_START_A_QUEST",

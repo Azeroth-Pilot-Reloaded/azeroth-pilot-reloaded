@@ -355,7 +355,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 24979,
-            DroppableQuest = { MobId = 1535, Qid = 24979, Text = "AScarletLetter" },
+            DroppableQuest = { MobId = 1535, Qid = 24979, Text = "A Scarlet Letter" },
             Coord = { x = 1483.8, y = 2388.5 },
             _index = 63,
         },
@@ -497,7 +497,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [24981] = { 1, 2, 3 } },
             DropQuest = 24992,
-            DroppableQuest = { MobId = 1547, Qid = 24992, Text = "EscapeFromGilneas" },
+            DroppableQuest = { MobId = 1547, Qid = 24992, Text = "Escape From Gilneas" },
             Coord = { x = 622.9, y = 1805 },
             Fillers = { [24988] = { 1 }, [24990] = { 1 } },
             Range = 1,
@@ -1139,7 +1139,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [27345] = { 1 } },
-            DroppableQuest = { MobId = 45301, Qid = 27322, Text = "KoroktheColossus" },
+            DroppableQuest = { MobId = 45301, Qid = 27322, Text = "Korokthe Colossus" },
             Coord = { x = 2000.5, y = -993.5 },
             Fillers = { [27333] = { 1 } },
             Range = 0.69,
@@ -1147,7 +1147,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 27322,
-            DroppableQuest = { MobId = 45301, Qid = 27322, Text = "KoroktheColossus" },
+            DroppableQuest = { MobId = 45301, Qid = 27322, Text = "Korokthe Colossus" },
             Coord = { x = 2000.5, y = -993.5 },
             Fillers = { [27333] = { 1 } },
             _index = 6,
@@ -1405,7 +1405,7 @@ if APR.Faction == "Horde" then
     APR.RouteQuestStepList["25-DEV-DALARAN_CRATER"] = {
         {
             DropQuest = 27480,
-            DroppableQuest = { MobId = 136490, Qid = 27480, Text = "ArcaneRemnant" },
+            DroppableQuest = { MobId = 136490, Qid = 27480, Text = "Arcane Remnant" },
             Coord = { x = 115, y = 422 },
             _index = 1,
         },
@@ -1594,7 +1594,7 @@ if APR.Faction == "Horde" then
     APR.RouteQuestStepList["25-Hillsbrad"] = {
         {
             Qpart = { [27478] = { 1 }, [27483] = { 1 } },
-            DroppableQuest = { MobId = 136490, Qid = 27480, Text = "ArcaneRemnant" },
+            DroppableQuest = { MobId = 136490, Qid = 27480, Text = "Arcane Remnant" },
             Coord = { x = 115, y = 422 },
             Fillers = { [27480] = { 1 } },
             Range = 1000.69,
@@ -1602,7 +1602,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 27480,
-            DroppableQuest = { MobId = 136490, Qid = 27480, Text = "ArcaneRemnant" },
+            DroppableQuest = { MobId = 136490, Qid = 27480, Text = "Arcane Remnant" },
             Coord = { x = 115, y = 422 },
             _index = 2,
         },
@@ -1817,7 +1817,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [28197] = { 2 } },
-            DroppableQuest = { MobId = 47789, Qid = 28196, Text = "ClerkHorraceWhitesteed" },
+            DroppableQuest = { MobId = 47789, Qid = 28196, Text = "Clerk Horrace Whitesteed" },
             Coord = { x = 19.8, y = -575.3 },
             Fillers = { [28199] = { 1 } },
             Range = 0.75,
@@ -1825,7 +1825,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 28196,
-            DroppableQuest = { MobId = 47789, Qid = 28196, Text = "ClerkHorraceWhitesteed" },
+            DroppableQuest = { MobId = 47789, Qid = 28196, Text = "Clerk Horrace Whitesteed" },
             Coord = { x = 19.8, y = -575.3 },
             _index = 38,
         },
@@ -1996,7 +1996,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 28329,
-            DroppableQuest = { MobId = 48319, Qid = 28329, Text = "AngryBlightSlime" },
+            DroppableQuest = { MobId = 48319, Qid = 28329, Text = "Angry Blight Slime" },
             Coord = { x = -535.3, y = -750.5 },
             Fillers = { [28324] = { 1 }, [28325] = { 1 } },
             Button = { ["28324-1"] = 63426 },
@@ -2089,7 +2089,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [28354] = { 1 } },
-            DroppableQuest = { MobId = 2373, Qid = 28355, Text = "MudsnoutShaman" },
+            DroppableQuest = { MobId = 2373, Qid = 28355, Text = "Mudsnout Shaman" },
             Coord = { x = -976.7, y = -918.7 },
             Fillers = { [28355] = { 1 } },
             Range = 32.98,
@@ -2097,7 +2097,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 28355,
-            DroppableQuest = { MobId = 2373, Qid = 28355, Text = "MudsnoutShaman" },
+            DroppableQuest = { MobId = 2373, Qid = 28355, Text = "Mudsnout Shaman" },
             Coord = { x = -976.7, y = -918.7 },
             _index = 86,
         },
@@ -2850,7 +2850,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [28197] = { 2 } },
-            DroppableQuest = { MobId = 47789, Qid = 28196, Text = "ClerkHorraceWhitesteed" },
+            DroppableQuest = { MobId = 47789, Qid = 28196, Text = "Clerk Horrace Whitesteed" },
             Coord = { x = 19.8, y = -575.3 },
             Fillers = { [28199] = { 1 } },
             Range = 0.75,
@@ -2858,7 +2858,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 28196,
-            DroppableQuest = { MobId = 47789, Qid = 28196, Text = "ClerkHorraceWhitesteed" },
+            DroppableQuest = { MobId = 47789, Qid = 28196, Text = "Clerk Horrace Whitesteed" },
             Coord = { x = 19.8, y = -575.3 },
             _index = 212,
         },
@@ -3029,7 +3029,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 28329,
-            DroppableQuest = { MobId = 48319, Qid = 28329, Text = "AngryBlightSlime" },
+            DroppableQuest = { MobId = 48319, Qid = 28329, Text = "Angry Blight Slime" },
             Coord = { x = -535.3, y = -750.5 },
             Fillers = { [28324] = { 1 }, [28325] = { 1 } },
             Button = { ["28324-1"] = 63426 },
@@ -3122,7 +3122,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [28354] = { 1 } },
-            DroppableQuest = { MobId = 2373, Qid = 28355, Text = "MudsnoutShaman" },
+            DroppableQuest = { MobId = 2373, Qid = 28355, Text = "Mudsnout Shaman" },
             Coord = { x = -976.7, y = -918.7 },
             Fillers = { [28355] = { 1 } },
             Range = 32.98,
@@ -3130,7 +3130,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 28355,
-            DroppableQuest = { MobId = 2373, Qid = 28355, Text = "MudsnoutShaman" },
+            DroppableQuest = { MobId = 2373, Qid = 28355, Text = "Mudsnout Shaman" },
             Coord = { x = -976.7, y = -918.7 },
             _index = 260,
         },

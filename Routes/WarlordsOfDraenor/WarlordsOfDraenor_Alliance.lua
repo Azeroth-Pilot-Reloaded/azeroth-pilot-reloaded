@@ -2399,7 +2399,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 35642,
-            DroppableQuest = { MobId = 80714, Qid = 35642, Text = "FungalLurcher" },
+            DroppableQuest = { MobId = 80714, Qid = 35642, Text = "Fungal Lurcher" },
             Coord = { x = 200.6, y = 6432.8 },
             Fillers = { [35633] = { 1 }, [35640] = { 1 } },
             _index = 157,

@@ -8696,7 +8696,7 @@ if APR.Faction == "Horde" then
         },
         {
             Waypoint = 48329,
-            DroppableQuest = { MobId = 130603, Qid = 48329, Text = "BeastbreakerHakid" },
+            DroppableQuest = { MobId = 130603, Qid = 48329, Text = "Beastbreaker Hakid" },
             Coord = { x = 3413.6, y = 2546.3 },
             Fillers = { [49141] = { 1 }, [50748] = { 1 } },
             Range = 8.95,
@@ -8704,7 +8704,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 48329,
-            DroppableQuest = { MobId = 130603, Qid = 48329, Text = "BeastbreakerHakid" },
+            DroppableQuest = { MobId = 130603, Qid = 48329, Text = "Beastbreaker Hakid" },
             Coord = { x = 3413.6, y = 2546.3 },
             Fillers = { [49141] = { 1 }, [50748] = { 1 } },
             _index = 344,

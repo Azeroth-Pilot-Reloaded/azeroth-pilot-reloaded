@@ -112,7 +112,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 123,
-            DroppableQuest = { MobId = 13159, Qid = 123, Text = "JamesClark" },
+            DroppableQuest = { MobId = 13159, Qid = 123, Text = "James Clark" },
             Coord = { x = -1195.5, y = -9493.4 },
             Zone = 37,
             _index = 18,
@@ -339,7 +339,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 26519,
-            DroppableQuest = { MobId = 446, Qid = 26519, Text = "RedridgeBasher" },
+            DroppableQuest = { MobId = 446, Qid = 26519, Text = "Redridge Basher" },
             Coord = { x = -2212.6, y = -9137.4 },
             Zone = 49,
             _index = 53,
@@ -3527,7 +3527,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [35050] = { 2 } },
             Coord = { x = 348, y = 6631 },
-                ssipOptionIDs = { 42546 },
+            ssipOptionIDs = { 42546 },
             Zone = 543,
             _index = 538,
         },
@@ -4125,7 +4125,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 35642,
-            DroppableQuest = { MobId = 80714, Qid = 35642, Text = "FungalLurcher" },
+            DroppableQuest = { MobId = 80714, Qid = 35642, Text = "Fungal Lurcher" },
             Coord = { x = 222.8, y = 6392.8 },
             Zone = 543,
             _index = 626,

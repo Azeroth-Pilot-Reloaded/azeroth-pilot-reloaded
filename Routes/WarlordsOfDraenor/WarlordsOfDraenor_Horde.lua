@@ -3487,7 +3487,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 35021,
-            DroppableQuest = { MobId = 80714, Qid = 35021, Text = "FungalLurcher" },
+            DroppableQuest = { MobId = 80714, Qid = 35021, Text = "Fungal Lurcher" },
             Coord = { x = 545.2, y = 6089 },
             Fillers = { [35016] = { 1 }, [35017] = { 1 } },
             _index = 153,

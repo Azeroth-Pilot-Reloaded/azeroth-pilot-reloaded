@@ -3696,7 +3696,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     },
     {
         DropQuest = 30275,
-        DroppableQuest = { MobId = 58755, Qid = 30275, Text = "Manglemaw'sMother" },
+        DroppableQuest = { MobId = 58755, Qid = 30275, Text = "Manglemaw's Mother" },
         Coord = { x = 425.3, y = 414.4 },
         ExtraLineText = "KILL_BABY_TO_MAKE_MOTHER_APPEAR",
         Zone = 376,
@@ -6146,7 +6146,7 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
     },
     {
         DropQuest = 31023,
-        DroppableQuest = { MobId = 61970, Qid = 31023, Text = "MistbladeRipper" },
+        DroppableQuest = { MobId = 61970, Qid = 31023, Text = "Mistblade Ripper" },
         Coord = { x = 2510.9, y = -737.8 },
         Zone = 422,
         _index = 46,

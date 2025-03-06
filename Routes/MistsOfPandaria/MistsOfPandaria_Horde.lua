@@ -1012,7 +1012,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 31261,
-            DroppableQuest = { MobId = 63809, Qid = 31261, Text = "JackArrow" },
+            DroppableQuest = { MobId = 63809, Qid = 31261, Text = "Jack Arrow" },
             Coord = { x = -699.3, y = 1717.9 },
             RaidIcon = 63809,
             Zone = 371,
@@ -3977,7 +3977,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 30675,
-            DroppableQuest = { MobId = 60299, Qid = 30675, Text = "UngaFish-Getter" },
+            DroppableQuest = { MobId = 60299, Qid = 30675, Text = "Unga Fish-Getter" },
             Coord = { x = 700.1, y = -2833.4 },
             Range = 30,
             Zone = 418,
@@ -4798,7 +4798,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 30582,
-            DroppableQuest = { MobId = 59718, Qid = 30582, Text = "BurilgiDespoiler" },
+            DroppableQuest = { MobId = 59718, Qid = 30582, Text = "Burilgi Despoiler" },
             Coord = { x = 490.8, y = 2513.2 },
             Range = 15,
             Zone = 379,

@@ -388,7 +388,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [37492] = { 1 } },
-            DroppableQuest = { MobId = 109174, Qid = 38407, Text = "Salteyemobs" },
+            DroppableQuest = { MobId = 109174, Qid = 38407, Text = "Salteye Spearguard" },
             Coord = { x = 6424.2, y = 200 },
             Fillers = { [37257] = { 1 } },
             Range = 0.75,
@@ -396,7 +396,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [37728] = { 1 } },
-            DroppableQuest = { MobId = 109174, Qid = 38407, Text = "Salteyemobs" },
+            DroppableQuest = { MobId = 109174, Qid = 38407, Text = "Salteye Spearguard" },
             Coord = { x = 6420, y = 363.7 },
             Fillers = { [37257] = { 1 }, [37727] = { 1 } },
             Range = 8.46,
@@ -404,14 +404,14 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [37257] = { 1 }, [37727] = { 1 } },
-            DroppableQuest = { MobId = 109174, Qid = 38407, Text = "Salteyemobs" },
+            DroppableQuest = { MobId = 109174, Qid = 38407, Text = "Salteye Spearguard" },
             Coord = { x = 6418.2, y = 361.1 },
             Range = 37.28,
             _index = 70,
         },
         {
             DropQuest = 38407,
-            DroppableQuest = { MobId = 109174, Qid = 38407, Text = "Salteyemobs" },
+            DroppableQuest = { MobId = 109174, Qid = 38407, Text = "Salteye Spearguard" },
             Coord = { x = 6474.2, y = 278.3 },
             _index = 71,
         },
@@ -2037,7 +2037,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [40220] = { 1 }, [40221] = { 1 } },
-            DroppableQuest = { MobId = 91472, Qid = 38862, Text = "ThistleleafMenace" },
+            DroppableQuest = { MobId = 91472, Qid = 38862, Text = "Thistleleaf Menace" },
             Coord = { x = 6625.7, y = 2003.5 },
             Fillers = { [38842] = { 1 } },
             Range = 22.41,
@@ -2095,7 +2095,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [38246] = { 1 } },
-            DroppableQuest = { MobId = 91318, Qid = 38146, Text = "ChieftainGraw" },
+            DroppableQuest = { MobId = 91318, Qid = 38146, Text = "Chieftain Graw" },
             Coord = { x = 6914.7, y = 1711.5 },
             Fillers = { [38455] = { 1 } },
             Range = 0.75,
@@ -2103,7 +2103,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 38146,
-            DroppableQuest = { MobId = 91318, Qid = 38146, Text = "ChieftainGraw" },
+            DroppableQuest = { MobId = 91318, Qid = 38146, Text = "Chieftain Graw" },
             Coord = { x = 6920.3, y = 1717.3 },
             _index = 77,
         },
@@ -3253,7 +3253,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [39590] = { 3 } },
-            DroppableQuest = { MobId = 96236, Qid = 39595, Text = "MightstoneSavage" },
+            DroppableQuest = { MobId = 96236, Qid = 39595, Text = "Mightstone Savage" },
             Coord = { x = 2403.8, y = 3321.1 },
             Fillers = { [38442] = { 1 } },
             Range = 0.75,
@@ -3261,7 +3261,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [39590] = { 2 } },
-            DroppableQuest = { MobId = 96236, Qid = 39595, Text = "MightstoneSavage" },
+            DroppableQuest = { MobId = 96236, Qid = 39595, Text = "Mightstone Savage" },
             Coord = { x = 2585.8, y = 3394 },
             Fillers = { [38442] = { 1 } },
             Range = 0.75,
@@ -3269,7 +3269,7 @@ if APR.Faction == "Horde" then
         },
         {
             Qpart = { [39590] = { 1 } },
-            DroppableQuest = { MobId = 96236, Qid = 39595, Text = "MightstoneSavage" },
+            DroppableQuest = { MobId = 96236, Qid = 39595, Text = "Mightstone Savage" },
             Coord = { x = 2434.9, y = 3603.6 },
             Fillers = { [38442] = { 1 } },
             Range = 0.75,
@@ -3277,7 +3277,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 39595,
-            DroppableQuest = { MobId = 96236, Qid = 39595, Text = "MightstoneSavage" },
+            DroppableQuest = { MobId = 96236, Qid = 39595, Text = "Mightstone Savage" },
             Coord = { x = 2459.6, y = 3581 },
             Fillers = { [38442] = { 1 } },
             _index = 33,
