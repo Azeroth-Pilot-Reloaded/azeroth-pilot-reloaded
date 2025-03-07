@@ -790,8 +790,8 @@ if APR.Faction == "Horde" then
             Waypoint = 1,
             Coord = { x = 12.2, y = -1198.9 },
             ExtraLineText = "TAKE_FLY_FOR_ORGRIMMAR_IF_YOU_HAVE_IT",
-            Range = 5,
             ExtraLineText2 = "OTHERWISE_TAKE_ZEPPLIN",
+            Range = 5,
             Zone = 88,
             _index = 124
         },

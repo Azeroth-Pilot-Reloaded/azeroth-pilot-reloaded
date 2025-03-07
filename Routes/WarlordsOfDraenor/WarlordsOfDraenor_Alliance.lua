@@ -794,8 +794,8 @@ if APR.Faction == "Alliance" then
             Coord = { x = 338.2, y = 2340.3 },
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             ExtraLineText = "GO_NORTH_WEST_GARRISON",
-            Range = 0.75,
             ExtraLineText2 = "TREASURE_NORTH_SHIP",
+            Range = 0.75,
             _index = 20,
         },
         {

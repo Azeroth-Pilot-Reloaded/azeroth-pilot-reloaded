@@ -1794,8 +1794,8 @@ if APR.Faction == "Horde" then
             Qpart = { [47438] = { 1 } },
             Coord = { x = 1012.6, y = -433.2 },
             ExtraLineText = "LOA_INFO_1",
-            Range = 0.69,
             ExtraLineText2 = "LOA_INFO_2",
+            Range = 0.69,
             _index = 206,
         },
         {
