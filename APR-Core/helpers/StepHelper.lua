@@ -354,7 +354,8 @@ function APR:CheckRouteChanges(route)
                 APRData[APR.PlayerID][currentRoute] = 1
                 APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = 0
                 if currentRoute == APR.ActiveRoute then
-                    APR.command:SlashCmd('reset')
+                    APR.transport:GetMeToRightZone()
+                    APR:PrintInfo(L["RESET_ROUTE"])
                 end
             end
         )

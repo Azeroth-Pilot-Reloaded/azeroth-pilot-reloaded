@@ -84,6 +84,8 @@ function APR.changelog:SetChangeLog()
 
         "#Bugs",
         "- Fixed index display in the route selection frame",
+        "- Fixed reset route command",
+        "- Fixed the index dsplayed in the route selection frame",
 
         "#Guides",
         "- Merged `Undermine Part 1` and `Part 2` routes and added the final chapter",
