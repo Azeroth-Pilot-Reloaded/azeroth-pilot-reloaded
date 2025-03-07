@@ -11,9 +11,11 @@ function APR.command:SlashCmd(input)
     end
     if (inputText == "reset" or inputText == "r") then
         --Command for making the quest rescan on completion and reset, including previously skipped steps
-        print("APR: " .. L["RESET_ZONE"])
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
-        C_UI.Reload()
+        APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] = 0
+        APR:GetTotalSteps(currentRoute)
+        APR.transport:GetMeToRightZone()
+        APR:PrintInfo(L["RESET_ROUTE"])
     elseif inputText == "resetcustom" then
         APRData.CustomRoute = {}
         C_UI.Reload()

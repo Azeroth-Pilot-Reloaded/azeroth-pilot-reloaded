@@ -576,7 +576,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 9514,
-            DroppableQuest = { MobId = 17194, Qid = 9514, Text = "WrathscaleMyrmidon" },
+            DroppableQuest = { MobId = 17194, Qid = 9514, Text = "Wrathscale Myrmidon" },
             Coord = { x = -11870.2, y = -4893.5 },
             _index = 70,
         },
@@ -1695,7 +1695,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 13557,
-            DroppableQuest = { MobId = 33021, Qid = 13557, Text = "VileGrell" },
+            DroppableQuest = { MobId = 33021, Qid = 13557, Text = "Vile Grell" },
             Coord = { x = -643.5, y = 6776.2 },
             _index = 25,
         },
@@ -1901,7 +1901,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 13506,
-            DroppableQuest = { MobId = 32863, Qid = 13506, Text = "ShatterspearOverseer" },
+            DroppableQuest = { MobId = 32863, Qid = 13506, Text = "Shatterspear Overseer" },
             Coord = { x = -921.2, y = 7254.3 },
             _index = 61,
         },
@@ -2048,7 +2048,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 13591,
-            DroppableQuest = { MobId = 32862, Qid = 13591, Text = "Jor'kiltheSoulripper" },
+            DroppableQuest = { MobId = 32862, Qid = 13591, Text = "Jor'kil the Soulripper" },
             Coord = { x = -1691.5, y = 7444.5 },
             _index = 86,
         },
@@ -3478,7 +3478,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 26443,
-            DroppableQuest = { MobId = 6115, Qid = 26443, Text = "RoamingFelguard" },
+            DroppableQuest = { MobId = 6115, Qid = 26443, Text = "Roaming Felguard" },
             Coord = { x = -3138.7, y = 1662.9 },
             _index = 145,
         },
@@ -3881,7 +3881,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 13868,
-            DroppableQuest = { MobId = 3925, Qid = 13868, Text = "ThistlefurAvenger" },
+            DroppableQuest = { MobId = 3925, Qid = 13868, Text = "Thistlefur Avenger" },
             Coord = { x = -223.2, y = 3178.1 },
             ExtraLineText = "DROPS_FROM_THISTLEFURS",
             _index = 216,
@@ -5005,7 +5005,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 28656,
-            DroppableQuest = { MobId = 7441, Qid = 28656, Text = "WinterfallTotemic" },
+            DroppableQuest = { MobId = 7441, Qid = 28656, Text = "Winterfall Totemic" },
             Coord = { x = -2469.2, y = 6815.7 },
             ExtraLineText = "KILL_WINTERFALL_MOBS",
             _index = 10,
@@ -5050,7 +5050,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 28471,
-            DroppableQuest = { MobId = 10738, Qid = 28471, Text = "HighChiefWinterfall" },
+            DroppableQuest = { MobId = 10738, Qid = 28471, Text = "High Chief Winterfall" },
             Coord = { x = -3262.5, y = 6514.5 },
             _index = 18,
         },
@@ -5962,7 +5962,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 25647,
-            DroppableQuest = { MobId = 40904, Qid = 25647, Text = "Krom'garPeon" },
+            DroppableQuest = { MobId = 40904, Qid = 25647, Text = "Krom'gar Peon" },
             Coord = { x = -357.9, y = 981 },
             _index = 25,
         },
@@ -7232,7 +7232,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 24606,
-            DroppableQuest = { MobId = 37660, Qid = 24606, Text = "RazormaneWarfrenzy" },
+            DroppableQuest = { MobId = 37660, Qid = 24606, Text = "Razormane Warfrenzy" },
             Coord = { x = -1878.1, y = -3878.5 },
             _index = 102,
         },
@@ -8496,7 +8496,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 14362,
-            DroppableQuest = { MobId = 4664, Qid = 14362, Text = "BurningBladeReaver" },
+            DroppableQuest = { MobId = 4664, Qid = 14362, Text = "Burning BladeReaver" },
             Coord = { x = 1743.8, y = -508.4 },
             _index = 26,
         },
@@ -9112,7 +9112,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 14376,
-            DroppableQuest = { MobId = 35591, Qid = 14376, Text = "LesserInfernal" },
+            DroppableQuest = { MobId = 35591, Qid = 14376, Text = "Lesser Infernal" },
             Coord = { x = 1830.7, y = -1941.6 },
             Fillers = { [14373] = { 1 }, [14374] = { 1 } },
             _index = 135,
@@ -9525,7 +9525,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 25451,
-            DroppableQuest = { MobId = 39896, Qid = 25451, Text = "FeralScarYeti" },
+            DroppableQuest = { MobId = 39896, Qid = 25451, Text = "Feral Scar Yeti" },
             Coord = { x = 1501.8, y = -4995.4 },
             _index = 52,
         },

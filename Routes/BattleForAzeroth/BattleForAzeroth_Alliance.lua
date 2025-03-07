@@ -4684,7 +4684,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50594] = { 1 } },
-            DroppableQuest = { MobId = 130116, Qid = 50593, Text = "Tideblood" },
+            DroppableQuest = { MobId = 130116, Qid = 50593, Text = "Frothing Tideblood" },
             Coord = { x = -480, y = 3480.1 },
             Fillers = { [50593] = { 1 }, [50595] = { 1, 2 } },
             Button = { ["50594-1"] = 158211 },
@@ -4693,7 +4693,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50594] = { 2 } },
-            DroppableQuest = { MobId = 130116, Qid = 50593, Text = "Tideblood" },
+            DroppableQuest = { MobId = 130116, Qid = 50593, Text = "Frothing Tideblood" },
             Coord = { x = -399.7, y = 3578.6 },
             Fillers = { [50593] = { 1 }, [50595] = { 1, 2 } },
             Button = { ["50594-2"] = 158211 },
@@ -4702,7 +4702,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50594] = { 3 } },
-            DroppableQuest = { MobId = 130116, Qid = 50593, Text = "Tideblood" },
+            DroppableQuest = { MobId = 130116, Qid = 50593, Text = "Frothing Tideblood" },
             Coord = { x = -494, y = 3562.1 },
             Fillers = { [50593] = { 1 }, [50595] = { 1, 2 } },
             Button = { ["50594-3"] = 158211 },
@@ -4711,7 +4711,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50593] = { 1 }, [50595] = { 1, 2 } },
-            DroppableQuest = { MobId = 130116, Qid = 50593, Text = "Tideblood" },
+            DroppableQuest = { MobId = 130116, Qid = 50593, Text = "Frothing Tideblood" },
             Coord = { x = -495.9, y = 3560.3 },
             Range = 37.76,
             _index = 97,
@@ -5547,7 +5547,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [51752] = { 1 } },
-            DroppableQuest = { MobId = 138521, Qid = 51881, Text = "MineTechnician" },
+            DroppableQuest = { MobId = 138521, Qid = 51881, Text = "Mine Technician" },
             Coord = { x = 856.9, y = 3807.1 },
             Fillers = { [51711] = { 3, 2 }, [51726] = { 1 } },
             Range = 5.93,
@@ -5556,7 +5556,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [51711] = { 3, 2 }, [51726] = { 1 } },
-            DroppableQuest = { MobId = 138521, Qid = 51881, Text = "MineTechnician" },
+            DroppableQuest = { MobId = 138521, Qid = 51881, Text = "Mine Technician" },
             Coord = { x = 856.9, y = 3807.1 },
             Range = 50.93,
             ExtraActionB = 1,
@@ -5564,7 +5564,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 51881,
-            DroppableQuest = { MobId = 138521, Qid = 51881, Text = "MineTechnician" },
+            DroppableQuest = { MobId = 138521, Qid = 51881, Text = "Mine Technician" },
             Coord = { x = 3757.6, y = 865.7 },
             ExtraActionB = 1,
             _index = 238,
@@ -6081,7 +6081,7 @@ if APR.Faction == "Alliance" then
         },
         {
             PickUp = { 50111 },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 844.5, y = 2422.8 },
             Fillers = { [50111] = { 1, 2, 3, 4 }, [50353] = { 1 }, [50354] = { 1 }, [50367] = { 1 } },
             Button = { ["50354-1"] = 156516 },
@@ -6089,7 +6089,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50353] = { 2 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 722.7, y = 2438.5 },
             Fillers = { [50111] = { 1, 2, 3, 4 }, [50353] = { 1 }, [50354] = { 1 }, [50367] = { 1 } },
             Button = { ["50354-1"] = 156516 },
@@ -6098,7 +6098,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50111] = { 1, 2, 3, 4 }, [50353] = { 1 }, [50354] = { 1 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 726.2, y = 2441 },
             Fillers = { [50367] = { 1 } },
             Button = { ["50354-1"] = 156516 },
@@ -6114,7 +6114,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Waypoint = 50354,
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 731.4, y = 2351 },
             Fillers = { [50367] = { 1 } },
             Range = 14.69,
@@ -6122,7 +6122,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Waypoint = 50354,
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 709.7, y = 2349.3 },
             Fillers = { [50367] = { 1 } },
             Range = 10.67,
@@ -6130,21 +6130,21 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 50354, 50353, 50111 },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 696.7, y = 2368.3 },
             Fillers = { [50367] = { 1 } },
             _index = 330,
         },
         {
             PickUp = { 50363, 50365 },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 696.7, y = 2368.3 },
             Fillers = { [50367] = { 1 } },
             _index = 331,
         },
         {
             Waypoint = 50363,
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 723.9, y = 2304.6 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 10.26,
@@ -6152,14 +6152,14 @@ if APR.Faction == "Alliance" then
         },
         {
             PickUp = { 50340 },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 718.6, y = 2253.3 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             _index = 333,
         },
         {
             Waypoint = 50340,
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 699.9, y = 2246.4 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 5.42,
@@ -6167,7 +6167,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Waypoint = 50340,
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 672.9, y = 2251.5 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 8.42,
@@ -6175,7 +6175,7 @@ if APR.Faction == "Alliance" then
         },
         {
             QpartPart = { [50340] = { 1 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 649.2, y = 2242.8 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 0.75,
@@ -6184,7 +6184,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Waypoint = 50340,
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 719.1, y = 2247.1 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 6.45,
@@ -6192,7 +6192,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Waypoint = 50365,
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 746.1, y = 2254.1 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 10.19,
@@ -6200,7 +6200,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Waypoint = 50365,
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 782.6, y = 2249.1 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 8.8,
@@ -6208,7 +6208,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Waypoint = 50365,
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 797.4, y = 2236.8 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 12.37,
@@ -6216,7 +6216,7 @@ if APR.Faction == "Alliance" then
         },
         {
             QpartPart = { [50340] = { 1 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 805.9, y = 2181.6 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 0.69,
@@ -6225,7 +6225,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50365] = { 2 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 804.7, y = 2170.6 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 0.61,
@@ -6261,7 +6261,7 @@ if APR.Faction == "Alliance" then
         },
         {
             QpartPart = { [50340] = { 1 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 705.6, y = 2189.1 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 0.69,
@@ -6270,7 +6270,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50365] = { 1 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 681.7, y = 2147.3 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 0.75,
@@ -6292,7 +6292,7 @@ if APR.Faction == "Alliance" then
         },
         {
             QpartPart = { [50340] = { 1 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 714.5, y = 2141.9 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 0.75,
@@ -6322,7 +6322,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50340] = { 1 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 894.2, y = 2174.8 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 0.69,
@@ -6330,7 +6330,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50365] = { 3 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 929.2, y = 2166 },
             Fillers = { [50363] = { 1 }, [50367] = { 1 } },
             Range = 0.69,
@@ -6338,7 +6338,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [50363] = { 1 }, [50367] = { 1 } },
-            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Packmaster" },
+            DroppableQuest = { MobId = 134141, Qid = 50367, Text = "Briarback Packmaster" },
             Coord = { x = 868.1, y = 2193 },
             Range = 18.04,
             _index = 357,
@@ -7910,7 +7910,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [48521] = { 1 } },
-            DroppableQuest = { MobId = 126144, Qid = 48522, Text = "SisterAshwell" },
+            DroppableQuest = { MobId = 126144, Qid = 48522, Text = "Sister Ashwell" },
             Coord = { x = 1330.7, y = -1161 },
             Fillers = { [48525] = { 1 } },
             Button = { ["48521-1"] = 152590 },
@@ -7919,7 +7919,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 48522,
-            DroppableQuest = { MobId = 126144, Qid = 48522, Text = "SisterAshwell" },
+            DroppableQuest = { MobId = 126144, Qid = 48522, Text = "Sister Ashwell" },
             Coord = { x = 1370.4, y = -1165.3 },
             Fillers = { [48525] = { 1 } },
             _index = 145,
@@ -8311,7 +8311,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [48943] = { 2 } },
-            DroppableQuest = { MobId = 136490, Qid = 51134, Text = "Undead" },
+            DroppableQuest = { MobId = 136490, Qid = 51134, Text = "Awakened Dead" },
             Coord = { x = 2720.3, y = 21 },
             Fillers = { [48942] = { 1 }, [51134] = { 1 } },
             Range = 4.11,
@@ -8319,7 +8319,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [48943] = { 3 } },
-            DroppableQuest = { MobId = 136490, Qid = 51134, Text = "Undead" },
+            DroppableQuest = { MobId = 136490, Qid = 51134, Text = "Awakened Dead" },
             Coord = { x = 2805.3, y = 87.5 },
             Fillers = { [48942] = { 1 }, [51134] = { 1 } },
             Range = 2.99,
@@ -8327,7 +8327,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [48943] = { 4 } },
-            DroppableQuest = { MobId = 136490, Qid = 51134, Text = "Undead" },
+            DroppableQuest = { MobId = 136490, Qid = 51134, Text = "Awakened Dead" },
             Coord = { x = 2693.4, y = 114 },
             Fillers = { [48942] = { 1 }, [51134] = { 1 } },
             Range = 3.53,
@@ -8335,7 +8335,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [48942] = { 1 }, [51134] = { 1 } },
-            DroppableQuest = { MobId = 136490, Qid = 51134, Text = "Undead" },
+            DroppableQuest = { MobId = 136490, Qid = 51134, Text = "Awakened Dead" },
             Coord = { x = 2696.1, y = 115.4 },
             Range = 17.29,
             _index = 209,
@@ -8539,7 +8539,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [49803] = { 1 } },
-            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "UnmaskedWitch" },
+            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "Corlain Refugee" },
             Coord = { x = 3150.3, y = -601.8 },
             Fillers = { [49804] = { 1 }, [49805] = { 1 } },
             Button = { ["49804-1"] = 156518 },
@@ -8549,7 +8549,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [49803] = { 3 } },
-            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "UnmaskedWitch" },
+            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "Corlain Refugee" },
             Coord = { x = 3016.4, y = -653.8 },
             Fillers = { [49804] = { 1 }, [49805] = { 1 } },
             Button = { ["49804-1"] = 156518 },
@@ -8559,7 +8559,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [49803] = { 4 } },
-            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "UnmaskedWitch" },
+            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "Corlain Refugee" },
             Coord = { x = 3065.8, y = -703.5 },
             Fillers = { [49804] = { 1 }, [49805] = { 1 } },
             Button = { ["49804-1"] = 156518 },
@@ -8569,7 +8569,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [49803] = { 5 } },
-            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "UnmaskedWitch" },
+            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "Corlain Refugee" },
             Coord = { x = 3081.9, y = -740.8 },
             Fillers = { [49804] = { 1 }, [49805] = { 1 } },
             Button = { ["49804-1"] = 156518 },
@@ -8604,7 +8604,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [49804] = { 1 }, [49805] = { 1 } },
-            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "UnmaskedWitch" },
+            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "Corlain Refugee" },
             Coord = { x = 3116.1, y = -744 },
             Button = { ["49804-1"] = 156518 },
             Range = 4.61,
@@ -8612,7 +8612,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Qpart = { [49803] = { 2 } },
-            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "UnmaskedWitch" },
+            DroppableQuest = { MobId = 129575, Qid = 49806, Text = "Corlain Refugee" },
             Coord = { x = 3280.4, y = -766.8 },
             Range = 1.06,
             Gossip = 1,

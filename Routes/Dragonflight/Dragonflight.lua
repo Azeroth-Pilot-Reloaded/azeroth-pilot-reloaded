@@ -277,7 +277,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
     },
     {
         DropQuest = 70648,
-        DroppableQuest = { MobId = 195915, Qid = 70648, Text = "FIRAVA_REKINDLER" },
+        DroppableQuest = { MobId = 195915, Qid = 70648, Text = "Firava the Rekindler" },
         Coord = { x = 154.9, y = 4075.9 },
         Fillers = { [65998] = { 1, 2 }, [65999] = { 1 }, [66000] = { 1 }, [70648] = { 1 } },
         ExtraLineText = "KILL_FIRAVA_REKINDLER_RESPAWNS_WITHIN_A_MINUTE_WANDERS_AROUND_THE_AREA",
@@ -2992,7 +2992,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
     },
     {
         DropQuest = 66689,
-        DroppableQuest = { MobId = 191496, Qid = 66689, Text = "PINEHOOF_DOE" },
+        DroppableQuest = { MobId = 191496, Qid = 66689, Text = "Pinehoof Doe" },
         Coord = { x = 650.9, y = -1878 },
         Fillers = { [66680] = { 3 }, [66681] = { 1 } },
         ExtraLineText = "LOOT_STORMTOUCHED_SHARDS_START_A_QUEST",
@@ -5788,8 +5788,8 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -3287.5, y = 6397.9 },
         SpellButton = { ["64872-3"] = 363898 },
         ExtraLineText = "RESET_COOLDOWN_BY_CLICKING_ON_THE_FIRE_BREATH_INFUSERS",
-        Range = 1,
         ExtraLineText2 = "HOLD_IT_UNTIL_YOU_REACH_LAST_EMPOWEREMENT_SECTION",
+        Range = 1,
         _index = 35,
     },
     {
@@ -5797,8 +5797,8 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -3287.5, y = 6397.9 },
         SpellButton = { ["64872-2"] = 363898 },
         ExtraLineText = "RESET_COOLDOWN_BY_CLICKING_ON_THE_FIRE_BREATH_INFUSERS",
-        Range = 1,
         ExtraLineText2 = "HOLD_IT_UNTIL_YOU_REACH_SECOND_EMPOWEREMENT_SECTION",
+        Range = 1,
         _index = 36,
     },
     {
@@ -5812,8 +5812,8 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -3304.6, y = 6464.1 },
         SpellButton = { ["64872-1"] = 363898 },
         ExtraLineText = "RESET_COOLDOWN_BY_CLICKING_ON_THE_FIRE_BREATH_INFUSERS",
-        Range = 1,
         ExtraLineText2 = "DONT_HOLD_DOWN_BUTTON",
+        Range = 1,
         _index = 38,
     },
     {
@@ -5850,8 +5850,8 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Qpart = { [64873] = { 2 } },
         Coord = { x = -3313.3, y = 6463.7 },
         SpellButton = { ["64873-2"] = 369536 },
+        ExtraLineText = "CAST_SOAR",
         Range = 2,
-        ExtraLineText2 = "CAST_SOAR",
         _index = 44,
     },
     {
@@ -5881,7 +5881,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -3038.3, y = 6609.7 },
         SpellButton = { ["64873-5"] = 369536 },
         Range = 1,
-        ExtraLineText2 = "CAST_SOAR",
+        ExtraLineText = "CAST_SOAR",
         _index = 48,
     },
     {
@@ -5889,7 +5889,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -3312.8, y = 6463.9 },
         SpellButton = { ["64873-6"] = 369536 },
         Range = 1,
-        ExtraLineText2 = "CAST_SOAR",
+        ExtraLineText = "CAST_SOAR",
         _index = 49,
     },
     {
@@ -5897,7 +5897,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -3531.7, y = 6862.7 },
         SpellButton = { ["64873-7"] = 369536 },
         Range = 1,
-        ExtraLineText2 = "CAST_SOAR",
+        ExtraLineText = "CAST_SOAR",
         _index = 50,
     },
     {
@@ -5909,7 +5909,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         PickUp = { 65036 },
         Coord = { x = -3312.8, y = 6464.1 },
         SpellButton = { ["65036"] = 369536 },
-        ExtraLineText2 = "CAST_SOAR",
+        ExtraLineText = "CAST_SOAR",
         _index = 52,
     },
     {
@@ -5917,14 +5917,14 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -3312.8, y = 6464.1 },
         SpellButton = { ["65036-1"] = 369536 },
         Range = 1,
-        ExtraLineText2 = "CAST_SOAR",
+        ExtraLineText = "CAST_SOAR",
         _index = 53,
     },
     {
         Done = { 65036 },
         Coord = { x = -3299.7, y = 6400.3 },
         SpellButton = { ["65036"] = 369536 },
-        ExtraLineText2 = "CAST_SOAR",
+        ExtraLineText = "CAST_SOAR",
         _index = 54,
     },
     {
@@ -5937,7 +5937,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -3089, y = 6917.8 },
         SpellButton = { ["65060-1"] = 369536 },
         Range = 1,
-        ExtraLineText2 = "CAST_SOAR",
+        ExtraLineText = "CAST_SOAR",
         Gossip = 1,
         _index = 56,
     },
@@ -5946,7 +5946,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -2610.2, y = 7220.2 },
         SpellButton = { ["65060"] = 369536 },
         Range = 1,
-        ExtraLineText2 = "CAST_SOAR",
+        ExtraLineText = "CAST_SOAR",
         _index = 57,
     },
     {
@@ -6121,8 +6121,8 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -2397.1, y = 7310.1 },
         Fillers = { [66324] = { 3 } },
         ExtraLineText = "USE_ITEM_ON_COOLDOWN_REDUCE_TOXICITY",
-        Range = 1,
         ExtraLineText2 = "PICK_UP_CRYSTAL_KEY_ON_THE_GROUND",
+        Range = 1,
         _index = 83,
     },
     {
@@ -6130,8 +6130,8 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Coord = { x = -2389.6, y = 7337.9 },
         Button = { ["66324-3"] = 191729 },
         ExtraLineText = "ONLY_USE_ITEM_STAY_AT_LIKE_5060",
-        Range = 5,
         ExtraLineText2 = "PLACE_CRYSTAL_KEY_IN_THE_CRYSTAL_LOCK",
+        Range = 5,
         _index = 84,
     },
     {
@@ -6176,7 +6176,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Done = { 65045 },
         Coord = { x = -4010.4, y = 6342.6 },
         SpellButton = { ["65045"] = 369536 },
-        ExtraLineText2 = "CAST_SOAR_AND_FOLLOW_ARROW",
+        ExtraLineText = "CAST_SOAR_AND_FOLLOW_ARROW",
         _index = 92,
     },
     {
@@ -6209,7 +6209,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Fillers = { [65049] = { 1 }, [65050] = { 1 } },
         SpellButton = { ["65046-2"] = 369536 },
         Range = 2,
-        ExtraLineText2 = "CAST_SOAR_AND_FOLLOW_ARROW",
+        ExtraLineText = "CAST_SOAR_AND_FOLLOW_ARROW",
         _index = 97,
     },
     {
@@ -6289,7 +6289,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Done = { 65084 },
         Coord = { x = -3638.5, y = 6996.7 },
         SpellButton = { ["65084"] = 369536 },
-        ExtraLineText2 = "CAST_SOAR_AND_FOLLOW_ARROW",
+        ExtraLineText = "CAST_SOAR_AND_FOLLOW_ARROW",
         _index = 111,
     },
     {
@@ -6319,8 +6319,8 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Qpart = { [65097] = { 1 } },
         Coord = { x = -3375.4, y = 6863.9 },
         ExtraLineText = "IMMEDIATELY_START_RUNNING_AND_GET_WRATHION",
-        Range = 2,
         ExtraLineText2 = "SPAMMING_SPACE_IS_FASTER_THAN_WALKING_NORMALLY",
+        Range = 2,
         _index = 116,
     },
     {

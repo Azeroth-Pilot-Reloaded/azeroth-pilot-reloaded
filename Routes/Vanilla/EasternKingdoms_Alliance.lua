@@ -1963,7 +1963,7 @@ if (APR.Faction == "Alliance") then
         },
         {
             DropQuest = 123,
-            DroppableQuest = { MobId = 13159, Qid = 123, Text = "JamesClark" },
+            DroppableQuest = { MobId = 13159, Qid = 123, Text = "James Clark" },
             Coord = { x = -1193.4, y = -9494.2 },
             _index = 52,
         },
@@ -2113,7 +2113,7 @@ if (APR.Faction == "Alliance") then
         },
         {
             DropQuest = 26353,
-            DroppableQuest = { MobId = 515, Qid = 26353, Text = "MurlocRaider" },
+            DroppableQuest = { MobId = 515, Qid = 26353, Text = "Murloc Raider" },
             Coord = { x = 1435.9, y = -9590.7 },
             _index = 7,
         },
@@ -11015,7 +11015,7 @@ if (APR.Faction == "Alliance") then
         },
         {
             DropQuest = 26519,
-            DroppableQuest = { MobId = 446, Qid = 26519, Text = "RedridgeBasher" },
+            DroppableQuest = { MobId = 446, Qid = 26519, Text = "Redridge Basher" },
             Coord = { x = -2402.2, y = -9050.7 },
             Fillers = { [26513] = { 1 }, [26514] = { 1 } },
             Range = 32.12,
@@ -13033,7 +13033,7 @@ if (APR.Faction == "Alliance") then
         },
         {
             DropQuest = 26738,
-            DroppableQuest = { MobId = 940, Qid = 26738, Text = "KurzenMedicineMan" },
+            DroppableQuest = { MobId = 940, Qid = 26738, Text = "Kurzen Medicine Man" },
             Coord = { x = -647, y = -11578 },
             _index = 7,
         },

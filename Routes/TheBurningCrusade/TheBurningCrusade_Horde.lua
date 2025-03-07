@@ -166,7 +166,7 @@ if APR.Faction == "Horde" then
         },
         {
             DropQuest = 8338,
-            DroppableQuest = { MobId = 15298, Qid = 8338, Text = "TaintedArcaneWraith" },
+            DroppableQuest = { MobId = 15298, Qid = 8338, Text = "Tainted Arcane Wraith" },
             Coord = { x = -6003.8, y = 10140.6 },
             _index = 29,
         },

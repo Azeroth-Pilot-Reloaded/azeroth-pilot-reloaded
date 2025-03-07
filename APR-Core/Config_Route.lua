@@ -552,7 +552,7 @@ function SetRouteListTab(widget, name)
                 if not APRData[APR.PlayerID][route.fileName .. '-TotalSteps'] then
                     APR:GetTotalSteps(route.fileName)
                 end
-                status = APRData[APR.PlayerID][route.fileName] ..
+                status = (APRData[APR.PlayerID][route.fileName] - (APRData[APR.PlayerID][route.fileName .. '-SkippedStep'] or 0)) ..
                     "/" .. APRData[APR.PlayerID][route.fileName .. '-TotalSteps']
             end
             statusText:SetText(status)
@@ -572,6 +572,11 @@ function SetRouteListTab(widget, name)
             end)
             lineContainer:SetScript("OnMouseDown", function(self, button)
                 if button == "RightButton" then
+                    -- Check is the route is up to date
+                    if APRData[APR.PlayerID][route.fileName] then
+                        APR:CheckRouteChanges(route.fileName)
+                    end
+
                     tinsert(APRCustomPath[APR.PlayerID], route.routeName)
                     APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end
@@ -647,6 +652,7 @@ function APR.routeconfig:InitRouteConfig()
             SetRouteListTab(tabRouteListWidget, currentTabName)
             APR.settings:OpenSettings(L["ROUTE"])
         end
+
         -- to trigger the frame
         local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
         APR.ActiveRoute = routeName
@@ -857,9 +863,7 @@ function APR.routeconfig:GetTWWPrefab()
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 11 - Lingering Shadow Storyline")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 12 - Fate of the Kirin Tor")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - Siren Isle Intro")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - Undermine Part 1")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - Undermine Part 2")
-    -- tinsert(APRCustomPath[APR.PlayerID], "TWW - Undermine Part 3")
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - Undermine")
     self:SendMessage("APR_Custom_Path_Update")
 end
 

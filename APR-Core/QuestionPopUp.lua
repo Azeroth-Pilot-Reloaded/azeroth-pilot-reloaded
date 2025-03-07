@@ -37,6 +37,23 @@ function APR.questionDialog:CreateMessagePopup(text, closeButtonText)
     StaticPopup_Show(dialogName)
 end
 
+function APR.questionDialog:CreateMandatoryAction(text, onAcceptFunction)
+    local dialogName = "MANDATORY_DIALOG"
+    StaticPopupDialogs[dialogName] = {
+        text = text or CONFIRM_CONTINUE,
+        button1 = OKAY,
+        OnAccept = onAcceptFunction,
+        timeout = 0,
+        whileDead = true,
+        hideOnEscape = false,
+        showAlert = true,
+        notClosableByLogout = true,
+        noCancelOnReuse = true,
+    }
+
+    StaticPopup_Show(dialogName)
+end
+
 function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxText)
     local dialogName = "EDITBOX_DIALOG"
     StaticPopupDialogs[dialogName] = {

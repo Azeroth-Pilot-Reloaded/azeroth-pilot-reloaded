@@ -164,7 +164,7 @@ if (APR.Faction == "Alliance") then
         },
         {
             DropQuest = 9798,
-            DroppableQuest = { MobId = 16522, Qid = 9798, Text = "SurveyorCandress" },
+            DroppableQuest = { MobId = 16522, Qid = 9798, Text = "Surveyor Candress" },
             Coord = { x = -13318.5, y = -4576.4 },
             _index = 31,
         },

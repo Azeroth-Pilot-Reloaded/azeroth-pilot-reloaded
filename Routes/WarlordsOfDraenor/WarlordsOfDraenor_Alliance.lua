@@ -794,8 +794,8 @@ if APR.Faction == "Alliance" then
             Coord = { x = 338.2, y = 2340.3 },
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             ExtraLineText = "GO_NORTH_WEST_GARRISON",
-            Range = 0.75,
             ExtraLineText2 = "TREASURE_NORTH_SHIP",
+            Range = 0.75,
             _index = 20,
         },
         {
@@ -2399,7 +2399,7 @@ if APR.Faction == "Alliance" then
         },
         {
             DropQuest = 35642,
-            DroppableQuest = { MobId = 80714, Qid = 35642, Text = "FungalLurcher" },
+            DroppableQuest = { MobId = 80714, Qid = 35642, Text = "Fungal Lurcher" },
             Coord = { x = 200.6, y = 6432.8 },
             Fillers = { [35633] = { 1 }, [35640] = { 1 } },
             _index = 157,
