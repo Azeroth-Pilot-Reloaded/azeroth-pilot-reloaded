@@ -98,7 +98,7 @@ end
 function APR:GetTotalSteps(route)
     route = route or APR.ActiveRoute
     local stepIndex = 0
-    for id, step in pairs(APR.RouteQuestStepList[route]) do
+    for id, step in pairs(APR.RouteQuestStepList[route] or {}) do
         -- Hide step for Faction, Race, Class, Achievement,...
         if APR:StepFilterQoL(step) then
             stepIndex = stepIndex + 1
@@ -331,4 +331,41 @@ function APR:StepFilterQoL(step)
         (not step.HasSpell or IsSpellKnown(step.HasSpell)) and
         (not step.IsQuestCompletedOnAccount or APR:IsQuestCompletedOnAccount(step.IsQuestCompletedOnAccount)) and
         (not step.IsQuestUncompletedOnAccount or not APR:IsQuestCompletedOnAccount(step.IsQuestUncompletedOnAccount))
+end
+
+function APR:CheckRouteChanges(route)
+    local currentRoute = route or APR.ActiveRoute or ''
+    local savedTotalSteps = APRData[APR.PlayerID][currentRoute .. '-TotalSteps']
+    local currentTotalSteps = APR:GetTotalSteps(currentRoute)
+
+    if not APR.RouteQuestStepList[currentRoute] then
+        APR.questionDialog:CreateMandatoryAction(
+            L["ROUTE_DELETED_NEED_RESET"],
+            function()
+                APR.command:SlashCmd('route')
+                APRCustomPath[APR.PlayerID] = {}
+                APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+            end
+        )
+    elseif savedTotalSteps ~= currentTotalSteps then
+        APR.questionDialog:CreateMandatoryAction(
+            L["ROUTE_UPDATED_NEED_RESET"],
+            function()
+                APRData[APR.PlayerID][currentRoute] = 1
+                APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = 0
+                if currentRoute == APR.ActiveRoute then
+                    APR.command:SlashCmd('reset')
+                end
+            end
+        )
+    end
+end
+
+-- Check is the current route is up to date
+function APR:CheckCurrentRouteUpToDate()
+    if APR.version ~= APR.settings.profile.lastRecordedVersion then
+        print("APR:CheckRouteChanges", APR.RouteQuestStepList[APR.ActiveRoute])
+        APR:CheckRouteChanges()
+        APR.settings.profile.lastRecordedVersion = APR.version
+    end
 end

@@ -15,6 +15,7 @@ function APR.transport:GetMeToRightZone()
     local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
     if (routeZoneMapIDs and mapID and routeName) then
         APR.ActiveRoute = routeName
+        APR:CheckCurrentRouteUpToDate()
         if not APR.currentStep:IsShown() then
             APR.currentStep:RefreshCurrentStepFrameAnchor()
         end

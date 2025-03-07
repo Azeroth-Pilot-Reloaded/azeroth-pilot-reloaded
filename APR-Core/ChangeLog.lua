@@ -68,7 +68,6 @@ function APR.changelog:OnInit()
         if APR.settings.profile.showChangeLog then
             self:ShowChangeLog()
         end
-        APR.settings.profile.lastRecordedVersion = APR.version
     end
 end
 
@@ -79,6 +78,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.9.0", "2025-03-06" },
+        "#Features",
+        "- Added a mechanism to check if your route is up to date after an APR update",
+
+        "#Bugs",
+        "- Fixed index display in the route selection frame",
+
+        "#Guides",
+        "- Merged `Undermine Part 1` and `Part 2` routes and added the final chapter",
+        "- Updated all mob names for droppable quests to their English version (the name will automatically update to your language after encountering the mob and will be saved for your other characters)",
+
         { "v4.8.7", "2025-03-05" },
         "#Bugs",
         "- Removed `End Campaign` message from `Undermine Part 1` route",
