@@ -13,9 +13,10 @@ function APR.transport:GetMeToRightZone()
     end
 
     local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
+    APR:CheckCurrentRouteUpToDate(routeName)
+
     if (routeZoneMapIDs and mapID and routeName) then
         APR.ActiveRoute = routeName
-        APR:CheckCurrentRouteUpToDate()
         if not APR.currentStep:IsShown() then
             APR.currentStep:RefreshCurrentStepFrameAnchor()
         end
@@ -128,7 +129,7 @@ function APR.transport:GetRouteMapIDsAndName()
 
     if not APRCustomPath or not APRCustomPath[APR.PlayerID] then
         APR:PrintError('No APRCustomPath')
-        return
+        return nil, 0, '', ''
     end
     -- Get the current Route wanted MapIDs and Route File
     local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
@@ -141,6 +142,7 @@ function APR.transport:GetRouteMapIDsAndName()
             end
         end
     end
+    return nil, 0, '', ''
 end
 
 --- Retrun the next MapIDs and worl position zone entry

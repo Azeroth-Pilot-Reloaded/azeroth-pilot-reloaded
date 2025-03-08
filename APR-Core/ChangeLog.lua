@@ -78,6 +78,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.9.1", "2025-03-08" },
+        "#Bugs",
+        "- Fixed patch note display on reload when no route is loaded",
+
         { "v4.9.0", "2025-03-06" },
         "#Features",
         "- Added a mechanism to check if your route is up to date after an APR update",
