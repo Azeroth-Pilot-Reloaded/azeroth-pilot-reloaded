@@ -337,8 +337,9 @@ function APR:CheckRouteChanges(route)
     local currentRoute = route or APR.ActiveRoute or ''
     local savedTotalSteps = APRData[APR.PlayerID][currentRoute .. '-TotalSteps']
     local currentTotalSteps = APR:GetTotalSteps(currentRoute)
+    local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
 
-    if not APR.RouteQuestStepList[currentRoute] then
+    if currentRouteName and not APR.RouteQuestStepList[currentRoute] then
         APR.questionDialog:CreateMandatoryAction(
             L["ROUTE_DELETED_NEED_RESET"],
             function()
@@ -363,10 +364,9 @@ function APR:CheckRouteChanges(route)
 end
 
 -- Check is the current route is up to date
-function APR:CheckCurrentRouteUpToDate()
+function APR:CheckCurrentRouteUpToDate(routeName)
     if APR.version ~= APR.settings.profile.lastRecordedVersion then
-        print("APR:CheckRouteChanges", APR.RouteQuestStepList[APR.ActiveRoute])
-        APR:CheckRouteChanges()
+        APR:CheckRouteChanges(routeName)
         APR.settings.profile.lastRecordedVersion = APR.version
     end
 end
