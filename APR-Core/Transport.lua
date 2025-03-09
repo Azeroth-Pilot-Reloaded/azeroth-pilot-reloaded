@@ -12,7 +12,7 @@ function APR.transport:GetMeToRightZone()
         print("Function: APR.transport:GetMeToRightZone()")
     end
 
-    local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
+    local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetCurrentRouteMapIDsAndName()
     APR:CheckCurrentRouteUpToDate(routeName)
 
     if (routeZoneMapIDs and mapID and routeName) then
@@ -122,7 +122,7 @@ end
 ---@return number mapID  the main mapid for the route
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name
-function APR.transport:GetRouteMapIDsAndName()
+function APR.transport:GetCurrentRouteMapIDsAndName()
     if (APR.settings.profile.debug) then
         print("Function: APR.transport:GetRouteMapIDAndName()")
     end
@@ -133,16 +133,7 @@ function APR.transport:GetRouteMapIDsAndName()
     end
     -- Get the current Route wanted MapIDs and Route File
     local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
-    for expansion, routeList in pairs(APR.RouteList) do
-        for routeFileName, routeName in pairs(routeList) do
-            if routeName == currentRouteName then
-                local mapID = string.match(routeFileName, "^(.-)-")
-                return APR.ZonesData.ExtensionRouteMaps[APR.Faction][expansion] or {}, tonumber(mapID, 10),
-                    routeFileName, expansion
-            end
-        end
-    end
-    return nil, 0, '', ''
+    return APR:GetRouteMapIDsAndName(currentRouteName)
 end
 
 --- Retrun the next MapIDs and worl position zone entry

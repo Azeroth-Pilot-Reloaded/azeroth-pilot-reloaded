@@ -115,7 +115,7 @@ function APR:CheckIsInRouteZone()
     if not APR.ActiveRoute then
         return
     end
-    local routeZoneMapIDs, mapid, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
+    local routeZoneMapIDs, mapid, routeName, expansion = APR.transport:GetCurrentRouteMapIDsAndName()
     local parentContinentMapID = APR:GetPlayerParentMapID(Enum.UIMapType.Continent)
     local parenttMapID = APR:GetPlayerParentMapID()
     local currentMapID = C_Map.GetBestMapForUnit("player")
@@ -333,6 +333,24 @@ function APR:StepFilterQoL(step)
         (not step.IsQuestUncompletedOnAccount or not APR:IsQuestCompletedOnAccount(step.IsQuestUncompletedOnAccount))
 end
 
+--- Get Route zone mapID and name
+---@return Array<number> routeZoneMapIDs MapIDs list of the mapid for the route
+---@return number mapID  the main mapid for the route
+---@return string routeFileName Route File Name
+---@return string expansion expansion name
+function APR:GetRouteMapIDsAndName(targetedRoute)
+    for expansion, routeList in pairs(APR.RouteList) do
+        for routeFileName, routeName in pairs(routeList) do
+            if routeName == targetedRoute then
+                local mapID = string.match(routeFileName, "^(.-)-")
+                return APR.ZonesData.ExtensionRouteMaps[APR.Faction][expansion] or {}, tonumber(mapID, 10),
+                    routeFileName, expansion
+            end
+        end
+    end
+    return nil, 0, '', ''
+end
+
 function APR:CheckRouteChanges(route)
     local currentRoute = route or APR.ActiveRoute or ''
     local savedTotalSteps = APRData[APR.PlayerID][currentRoute .. '-TotalSteps']
@@ -343,6 +361,11 @@ function APR:CheckRouteChanges(route)
         APR.questionDialog:CreateMandatoryAction(
             L["ROUTE_DELETED_NEED_RESET"],
             function()
+                APRZoneCompleted[APR.PlayerID][currentRoute] = nil
+                APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = nill
+                APRData[APR.PlayerID][currentRoute .. '-TotalSteps'] = nil
+                APRData[APR.PlayerID][currentRoute] = nil
+
                 APR.command:SlashCmd('route')
                 APRCustomPath[APR.PlayerID] = {}
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
@@ -366,6 +389,18 @@ end
 -- Check is the current route is up to date
 function APR:CheckCurrentRouteUpToDate(routeName)
     if APR.version ~= APR.settings.profile.lastRecordedVersion then
+        -- //TODO :  To be removed in the next version (v4.10.0 or v5.0.0)
+        if string.match(APR.settings.profile.lastRecordedVersion, "^v4%.[8-9]%.[0-9]+$") then
+            for route, _ in pairs(APRZoneCompleted[APR.PlayerID]) do
+                if string.find(route, "Undermine") then
+                    local _, _, routeName, _ = APR:GetRouteMapIDsAndName(route)
+                    local currentTotalSteps = APR:GetTotalSteps(routeName)
+                    if APRData[APR.PlayerID][routeName] < currentTotalSteps then
+                        APRZoneCompleted[APR.PlayerID][route] = nil
+                    end
+                end
+            end
+        end
         APR:CheckRouteChanges(routeName)
         APR.settings.profile.lastRecordedVersion = APR.version
     end

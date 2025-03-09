@@ -78,10 +78,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.10.0", "2025-03-09" },
-        "#Features",
+        { "v4.9.2", "2025-03-09" },
         "#Bugs",
         "- Fixed taxi node retrieval method",
+        "- Fixed the mechanism to check if your route is up to date after an APR update for previous completed routes",
+        "- ",
 
         { "v4.9.1", "2025-03-08" },
         "#Bugs",
