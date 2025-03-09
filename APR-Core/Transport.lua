@@ -376,8 +376,8 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
         --------------- Save FP ------------------
         ------------------------------------------
 
-        local playerMapID = APR:GetPlayerParentMapID()
-        local taxiNodes = C_TaxiMap.GetAllTaxiNodes(playerMapID)
+        local taxiMapID = GetTaxiMapID()
+        local taxiNodes = C_TaxiMap.GetAllTaxiNodes(taxiMapID)
 
         for _, node in ipairs(taxiNodes) do
             if node.state ~= Enum.FlightPathState.Unreachable and not APRTaxiNodes[APR.PlayerID][node.nodeID] then
