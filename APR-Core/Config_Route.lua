@@ -654,7 +654,7 @@ function APR.routeconfig:InitRouteConfig()
         end
 
         -- to trigger the frame
-        local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetRouteMapIDsAndName()
+        local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetCurrentRouteMapIDsAndName()
         APR.ActiveRoute = routeName
         APR:UpdateStep()
         APR.BookingList["UpdateMapId"] = true

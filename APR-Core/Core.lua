@@ -89,6 +89,7 @@ function APR:OnInitialize()
     APRScenarioMapIDCompleted = APRScenarioMapIDCompleted or {}
     APRScenarioCompleted = APRScenarioCompleted or {}
     APRItemLooted = APRItemLooted or {}
+
     APRTaxiNodes[APR.PlayerID] = APRTaxiNodes[APR.PlayerID] or {}
     APRCustomPath[APR.PlayerID] = APRCustomPath[APR.PlayerID] or {}
     APRZoneCompleted[APR.PlayerID] = APRZoneCompleted[APR.PlayerID] or {}
