@@ -563,7 +563,7 @@ function SetRouteListTab(widget, name)
                 if IsRouteDisabled(name, route.routeName) then
                     GameTooltip:AddLine(L["ROUTE_DISABLED"], 1, 1, 1, true)
                 else
-                    GameTooltip:AddLine(L["MOVE_ZONE_TO_CUSTOM_PATH"], 1, 1, 1, true)
+                    GameTooltip:AddLine(L["MOVE_ROUTE_TO_CUSTOM_PATH"], 1, 1, 1, true)
                 end
                 GameTooltip:Show()
             end)
@@ -572,11 +572,14 @@ function SetRouteListTab(widget, name)
             end)
             lineContainer:SetScript("OnMouseDown", function(self, button)
                 if button == "RightButton" then
-                    -- Check is the route is up to date
-                    if APRData[APR.PlayerID][route.fileName] then
-                        APR:CheckRouteChanges(route.fileName)
+                    if IsShiftKeyDown() then
+                        APR:ResetRoute(route.fileName)
+                    else
+                        -- Check is the route is up to date
+                        if APRData[APR.PlayerID][route.fileName] then
+                            APR:CheckRouteChanges(route.fileName)
+                        end
                     end
-
                     tinsert(APRCustomPath[APR.PlayerID], route.routeName)
                     APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end
@@ -654,7 +657,7 @@ function APR.routeconfig:InitRouteConfig()
         end
 
         -- to trigger the frame
-        local routeZoneMapIDs, mapID, routeName, expansion = APR.transport:GetCurrentRouteMapIDsAndName()
+        local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
         APR.ActiveRoute = routeName
         APR:UpdateStep()
         APR.BookingList["UpdateMapId"] = true

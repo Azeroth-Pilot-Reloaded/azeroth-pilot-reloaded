@@ -115,7 +115,7 @@ function APR:CheckIsInRouteZone()
     if not APR.ActiveRoute then
         return
     end
-    local routeZoneMapIDs, mapid, routeName, expansion = APR.transport:GetCurrentRouteMapIDsAndName()
+    local routeZoneMapIDs, mapid, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
     local parentContinentMapID = APR:GetPlayerParentMapID(Enum.UIMapType.Continent)
     local parenttMapID = APR:GetPlayerParentMapID()
     local currentMapID = C_Map.GetBestMapForUnit("player")
@@ -351,6 +351,25 @@ function APR:GetRouteMapIDsAndName(targetedRoute)
     return nil, 0, '', ''
 end
 
+--- Get Current Route zone mapID and name
+---@return Array<number> routeZoneMapIDs MapIDs list of the mapid for the route
+---@return number mapID  the main mapid for the route
+---@return string routeFileName Route File Name
+---@return string expansion expansion name
+function APR:GetCurrentRouteMapIDsAndName()
+    if (APR.settings.profile.debug) then
+        print("Function: APR.transport:GetRouteMapIDAndName()")
+    end
+
+    if not APRCustomPath or not APRCustomPath[APR.PlayerID] then
+        APR:PrintError('No APRCustomPath')
+        return nil, 0, '', ''
+    end
+    -- Get the current Route wanted MapIDs and Route File
+    local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
+    return APR:GetRouteMapIDsAndName(currentRouteName)
+end
+
 function APR:CheckRouteChanges(route)
     local currentRoute = route or APR.ActiveRoute or ''
     local savedTotalSteps = APRData[APR.PlayerID][currentRoute .. '-TotalSteps']
@@ -390,6 +409,7 @@ end
 function APR:CheckCurrentRouteUpToDate(routeName)
     if APR.version ~= APR.settings.profile.lastRecordedVersion then
         -- //TODO :  To be removed in the next version (v4.10.0 or v5.0.0)
+        -- To remove Undermine route from the completed list if the preview Undermine route was completed
         if string.match(APR.settings.profile.lastRecordedVersion, "^v4%.[8-9]%.[0-9]+$") then
             for route, _ in pairs(APRZoneCompleted[APR.PlayerID]) do
                 if string.find(route, "Undermine") then
