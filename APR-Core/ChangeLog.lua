@@ -81,8 +81,8 @@ function APR.changelog:SetChangeLog()
         { "v4.9.2", "2025-03-09" },
         "#Bugs",
         "- Fixed taxi node retrieval method",
-        "- Fixed the mechanism to check if your route is up to date after an APR update for previous completed routes",
-        "- ",
+        "- Fixed the route update verification mechanism after an APR update for previously completed routes",
+        "- Implemented a way to reset a route before adding it to your custom path (useful for already completed routes)",
 
         { "v4.9.1", "2025-03-08" },
         "#Bugs",

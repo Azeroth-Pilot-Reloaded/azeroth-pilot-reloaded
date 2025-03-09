@@ -193,3 +193,11 @@ function APR:titleCase(str)
         return first:upper() .. rest:lower()
     end))
 end
+
+function APR:ResetRoute(targetedRoute)
+    APRData[APR.PlayerID][targetedRoute] = 1
+    APRData[APR.PlayerID][targetedRoute .. '-SkippedStep'] = 0
+    APR:GetTotalSteps(targetedRoute)
+    APR.transport:GetMeToRightZone()
+    APR:PrintInfo(L["RESET_ROUTE"])
+end
