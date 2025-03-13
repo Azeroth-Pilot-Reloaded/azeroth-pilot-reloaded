@@ -22,8 +22,8 @@ function APR:CheckDenyNPC(step)
         if (npc_id and name) then
             if (npc_id == step.DenyNPC) then
                 C_GossipInfo.CloseGossip()
-                C_Timer.After(0.3, APR_CloseQuest)
-                APR:PrintInfo("APR: " .. L["NOT_YET"])
+                C_Timer.After(0.3, function() APR:CloseQuest() end)
+                print("APR: " .. L["NOT_YET"])
             end
         end
     end
@@ -57,11 +57,11 @@ function APR:IsTableEmpty(table)
     return false
 end
 
-function APR_AcceptQuest()
+function APR:AcceptQuest()
     AcceptQuest()
 end
 
-function APR_CloseQuest()
+function APR:CloseQuest()
     CloseQuest()
 end
 
@@ -208,4 +208,12 @@ function APR:ResetRoute(targetedRoute)
     APR:GetTotalSteps(targetedRoute)
     APR.transport:GetMeToRightZone()
     APR:PrintInfo(L["RESET_ROUTE"])
+end
+
+function APR:UpdateMapId()
+    if (APR.settings.profile.debug) then
+        print("Function: APR:UpdateMapId()")
+    end
+    APR:OverrideRouteData() -- Lumbermill Wod route
+    APR.transport:GetMeToRightZone()
 end

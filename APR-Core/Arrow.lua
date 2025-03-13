@@ -7,13 +7,14 @@ APR.Arrow = APR:NewModule("Arrow")
 
 APR.Arrow = {
     currentStep = 0,
-    UpdateFreq = 0,
     Active = false,
     x = 0,
     y = 0,
     Distance = 0,
-    MaxDistanceWrongZone = 4000
+    MaxDistanceWrongZone = 4000,
+    ticker = nill
 }
+
 
 ---------------------------------------------------------------------------------------
 ----------------------------------- Arrow Frames --------------------------------------
@@ -208,7 +209,7 @@ function APR.Arrow:CalculPosition()
     -- Set global distance for transport
     APR.Arrow.Distance = distance
     if distance >= APR.Arrow.MaxDistanceWrongZone and (questStep and not questStep.InstanceQuest) then
-        APR.BookingList["UpdateMapId"] = true
+        APR:UpdateMapId()
         return
     end
 
@@ -243,4 +244,20 @@ function APR.Arrow:SetArrowActive(isActive, x, y)
     APR.Arrow.Active = isActive
     APR.Arrow.x = x
     APR.Arrow.y = y
+end
+
+-- Function to start the periodic update
+function APR.Arrow:StartUpdating()
+    local interval = 1 / APR.settings.profile.arrowFPS
+    APR.Arrow.ticker = C_Timer.NewTicker(interval, function()
+        APR.Arrow:CalculPosition()
+    end)
+end
+
+-- Function to stop the periodic update
+function APR.Arrow:StopUpdating()
+    if APR.Arrow.ticker then
+        APR.Arrow.ticker:Cancel()
+        APR.Arrow.ticker = nil
+    end
 end
