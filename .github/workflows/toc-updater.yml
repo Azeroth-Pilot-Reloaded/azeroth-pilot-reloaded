@@ -25,7 +25,7 @@ jobs:
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
         with:
-          token: ${{ secrets.AZEROTH_PILOT_RELOADED }}
+          token: ${{ secrets.GIT_TOKEN }}
           title: "build(toc): updates supported interface versions"
           body: |
             ## Requirements
