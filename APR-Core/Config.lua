@@ -340,7 +340,7 @@ function APR.settings:createBlizzOptions()
                         set = function(info, value)
                             SetProfileOption(info, value)
                             -- Force Rerender
-                            APR.BookingList["UpdateMapId"] = true
+                            APR:UpdateMapId()
                         end,
                         disabled = function()
                             return not self.profile.currentStepShow
@@ -1416,9 +1416,11 @@ function APR.settings:ToggleAddon()
         self.profile.showArrow = false
         APR.AFK:HideFrame()
         APR.ArrowFrame:Hide()
+        APR.Arrow:StopUpdating()
     else
         -- settings
         self.profile.showArrow = true
+        APR.Arrow:StartUpdating()
     end
     APR.currentStep:RefreshCurrentStepFrameAnchor()
     APR.questOrderList:RefreshFrameAnchor()
