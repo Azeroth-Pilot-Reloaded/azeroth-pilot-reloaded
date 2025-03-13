@@ -59,9 +59,6 @@ function APR:UpdateStep()
 
     -- //TODO Return if not in the right zone (check why no data on zone change with the return)
     if APR.IsInRouteZone then
-        if APR.InCombat then
-            APR.BookUpdAfterCombat = true
-        end
         APR.currentStep:Reset()
     end
 
@@ -610,7 +607,7 @@ function APR:UpdateStep()
                 APR.currentStep:AddQuestSteps(step.WarMode, L["TURN_ON_WARMODE"], "WarMode")
                 if not C_PvP.IsWarModeActive() and C_PvP.CanToggleWarModeInArea() then
                     C_PvP.ToggleWarMode()
-                    APR.BookingList["UpdateStep"] = true
+                    APR:UpdateStep()
                 end
             end
         elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS then
@@ -870,7 +867,7 @@ function APR.CheckWaypointText()
     return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
 end
 
-local function APR_UpdateQuest()
+function APR:UpdateQuest()
     if APR.settings.profile.debug then
         APR:PrintInfo("Function: APR_UpdateQuest()")
     end
@@ -940,7 +937,7 @@ local function APR_UpdateQuest()
     APR:UpdateQpartPart()
 
     if updateStep then
-        APR.BookingList["UpdateStep"] = true
+        APR:UpdateStep()
     end
 end
 
@@ -977,7 +974,7 @@ function APR.GliderFunc()
     return itemName
 end
 
-local function APR_QuestStepIds()
+function APR:QuestStepIds()
     if not APR.RouteQuestStepList[APR.ActiveRoute] then
         return
     end
@@ -993,7 +990,7 @@ local function APR_QuestStepIds()
     end
 end
 
-local function APR_RemoveQuest(questID)
+function APR:RemoveQuest(questID)
     if not questID then
         return
     end
@@ -1006,7 +1003,7 @@ local function APR_RemoveQuest(questID)
         end
     end
 
-    local questIDs, StepP = APR_QuestStepIds()
+    local questIDs, StepP = APR:QuestStepIds()
     if StepP == "Done" then
         local NrLeft = 0
         for _, questId in pairs(questIDs) do
@@ -1022,72 +1019,11 @@ local function APR_RemoveQuest(questID)
         end
     end
 
-    APR.BookingList["UpdateMapId"] = true
-    APR.BookingList["UpdateStep"] = true
+    APR:UpdateMapId()
+    APR:UpdateStep()
 end
 
-local function APR_AddQuest(questID)
-    APR.ActiveQuests[questID] = "P"
-    local questIDs, StepP = APR_QuestStepIds()
-    if StepP == "PickUp" then
-        local NrLeft = 0
-        for _, questId in pairs(questIDs) do
-            if (not APR.ActiveQuests[questId]) then
-                NrLeft = NrLeft + 1
-            end
-        end
-        if (NrLeft == 0) then
-            APR:UpdateNextQuest()
-            if (APR.settings.profile.debug) then
-                APR:PrintInfo("APR.AddQuest:Plus" .. APRData[APR.PlayerID][APR.ActiveRoute])
-            end
-        end
-    end
-    APR.BookingList["UpdateStep"] = true
-end
-
-local function APR_UpdateMapId()
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR_UpdateMapId()")
-    end
-    APR:OverrideRouteData() -- Lumbermill Wod route
-    APR.BookingList["GetMeToRightZone"] = true
-end
-
-local function APR_LoopBookingFunc() -- Main loop
-    if not APR.settings.profile.enableAddon then
-        return
-    end
-    -- Actions list
-    local bookingActions = {
-        GetMeToRightZone = function() APR.transport:GetMeToRightZone() end,
-        UpdateMapId = function() APR_UpdateMapId() end,
-        AddQuest = function() APR_AddQuest(APR.BookingList["AddQuest"]) end,
-        RemoveQuest = function() APR_RemoveQuest(APR.BookingList["RemoveQuest"]) end,
-        UpdateQuest = function() APR_UpdateQuest() end,
-        UpdateStep = function() APR:UpdateStep() end,
-        SetArrowCoord = function() APR.Arrow:SetCoord() end
-    }
-
-    for action, func in pairs(bookingActions) do
-        if APR.BookingList[action] then
-            if APR.settings.profile.debug then
-                APR:PrintInfo("LoopBookingFunc:" .. action .. ":" .. (APRData[APR.PlayerID][APR.ActiveRoute] or ""))
-            end
-            APR.BookingList[action] = nil
-            func()
-        end
-    end
-
-    if APR.Arrow.UpdateFreq >= APR.settings.profile.arrowFPS then
-        APR.Arrow:CalculPosition()
-        APR.Arrow.UpdateFreq = 0
-    else
-        APR.Arrow.UpdateFreq = APR.Arrow.UpdateFreq + 1
-    end
-end
-
-local function APR_PopupFunc()
+function APR:PopupAutocompleteQuest()
     if (GetNumAutoQuestPopUps() > 0) then
         local questID, popUpType = GetAutoQuestPopUp(1)
         if (popUpType == "OFFER") then
@@ -1098,7 +1034,7 @@ local function APR_PopupFunc()
             ShowQuestComplete(questID)
         end
     else
-        C_Timer.After(1, APR_PopupFunc)
+        C_Timer.After(1, function() APR:PopupAutocompleteQuest() end)
     end
 end
 
@@ -1111,16 +1047,13 @@ local function DoEmoteStep(step)
     end
 end
 
-function APR_UpdQuestThing()
-    APR.BookingList["UpdateQuest"] = true
+function APR:UpdQuestThing()
+    APR:UpdateQuest()
     Updateblock = 0
     if (APR.settings.profile.debug) then
         APR:PrintInfo("Extra UpdQuestThing")
     end
 end
-
-APR.LoopBooking = CreateFrame("frame")
-APR.LoopBooking:SetScript("OnUpdate", APR_LoopBookingFunc)
 
 APR_QH_EventFrame = CreateFrame("Frame")
 APR_QH_EventFrame:RegisterEvent("ADVENTURE_MAP_OPEN")
@@ -1138,8 +1071,6 @@ APR_QH_EventFrame:RegisterEvent("MERCHANT_SHOW")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_CLOSE")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_OPENING_START")
 APR_QH_EventFrame:RegisterEvent("PLAYER_CHOICE_UPDATE")
-APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_DISABLED")
-APR_QH_EventFrame:RegisterEvent("PLAYER_REGEN_ENABLED")
 APR_QH_EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
 APR_QH_EventFrame:RegisterEvent("QUEST_ACCEPTED")
 APR_QH_EventFrame:RegisterEvent("QUEST_ACCEPT_CONFIRM")
@@ -1366,17 +1297,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
 
-    if (event == "PLAYER_REGEN_DISABLED") then
-        APR.InCombat = true
-    end
-
-    if (event == "PLAYER_REGEN_ENABLED") then
-        APR.InCombat = false
-        if (APR.BookUpdAfterCombat) then
-            APR.BookingList["UpdateStep"] = true
-        end
-    end
-
     if (event == "PLAYER_TARGET_CHANGED") then
         DoEmoteStep(step)
     end
@@ -1402,20 +1322,20 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (APR.settings.profile.debug) then
             APR:PrintInfo(L["Q_ACCEPTED"] .. ": " .. questID)
         end
-        C_Timer.After(0.2, APR_UpdateMapId)
+        C_Timer.After(0.2, function() APR:UpdateMapId() end)
     end
 
     if (event == "QUEST_ACCEPT_CONFIRM") then -- escort quest
         if IsModifierKeyDown() then return end
         if (autoAccept or autoAcceptRoute) then
-            C_Timer.After(0.2, APR_AcceptQuest)
+            C_Timer.After(0.2, function() APR:AcceptQuest() end)
         end
     end
 
     if (event == "QUEST_AUTOCOMPLETE") then
         if IsModifierKeyDown() then return end
         if (APR.settings.profile.autoHandIn) then
-            APR_PopupFunc()
+            APR:PopupAutocompleteQuest()
         end
     end
 
@@ -1522,12 +1442,12 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             local questID = GetQuestID()
             if questID then
                 if QuestGetAutoAccept() then
-                    C_Timer.After(0.2, APR_CloseQuest)
+                    C_Timer.After(0.2, function() APR:CloseQuest() end)
                 elseif (autoAcceptRoute and APR:IsARouteQuest(questID)) or autoAccept then
-                    C_Timer.After(0.2, APR_AcceptQuest)
+                    C_Timer.After(0.2, function() APR:CloseQuest() end)
                 elseif APR:IsPickupStep() then
-                    C_Timer.After(0.2, APR_CloseQuest)
-                    APR:PrintInfo("APR: " .. L["NOT_YET"])
+                    C_Timer.After(0.2, function() APR:CloseQuest() end)
+                    print("APR: " .. L["NOT_YET"])
                 else
                     -- Retry
                     C_Timer.After(0.2, handleQuestDetail)
@@ -1680,7 +1600,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     if (autoAcceptRoute and APR:IsARouteQuest(questID)) or autoAccept then
                         return SelectAvailableQuest(i)
                     elseif (i == numAvailableQuests and APR:IsPickupStep()) then
-                        C_Timer.After(0.2, APR_CloseQuest)
+                        C_Timer.After(0.2, function() APR:CloseQuest() end)
                     end
                 end
             elseif availableQuests then
@@ -1696,7 +1616,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
 
     if (event == "QUEST_LOG_UPDATE") then
-        C_Timer.After(0.2, APR_UpdQuestThing)
+        C_Timer.After(0.2, function() APR:UpdQuestThing() end)
     end
 
     if (event == "QUEST_PROGRESS") then
@@ -1713,19 +1633,19 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             APR:PrintInfo(L["Q_REMOVED"])
         end
         local questID = ...;
-        APR.BookingList["RemoveQuest"] = questID
+        APR:RemoveQuest(questID)
         if (APR.ActiveRoute == questID) then
-            APR.BookingList["UpdateMapId"] = true
             APRData[APR.PlayerID][questID] = nil
             APR.map:RemoveMapLine()
+            APR:UpdateMapId()
         end
         APRData[APR.PlayerID].QuestCounter2 = APRData[APR.PlayerID].QuestCounter2 + 1
     end
 
     if (event == "REQUEST_CEMETERY_LIST_RESPONSE") then
-        APR.BookingList["UpdateMapId"] = true
         APR.Arrow.currentStep = 0
-        APR.BookingList["SetArrowCoord"] = true
+        APR.Arrow:SetCoord()
+        APR:UpdateMapId()
     end
     if event == "SCENARIO_COMPLETED" then
         local currentMapID = C_Map.GetBestMapForUnit('player')
@@ -1759,7 +1679,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 end
             end
             if isCompleted then
-                APR.BookingList["UpdateStep"] = true
+                APR:UpdateStep()
             end
         end
     end
@@ -1789,7 +1709,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local unitTarget = ...;
         if (unitTarget == "player") then
             if (step and step.InVehicle) then
-                APR.BookingList["UpdateStep"] = true
+                APR:UpdateStep()
             end
         end
         if (step and step.MountVehicle) then
@@ -1801,7 +1721,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         local unitTarget = ...;
         if (unitTarget == "player" and Updateblock == 0) then
             Updateblock = 1
-            C_Timer.After(1, APR_UpdQuestThing)
+            C_Timer.After(1, function() APR:UpdQuestThing() end)
         end
     end
 

@@ -54,18 +54,18 @@ function APR:HasAura(spellID)
 end
 
 function APR:UpdateQuestAndStep()
-    APR.BookingList["UpdateQuest"] = true
-    APR.BookingList["UpdateStep"] = true
+    APR:UpdateQuest()
+    APR:UpdateStep()
 end
 
 function APR:UpdateNextQuest()
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
-    APR.BookingList["UpdateQuest"] = true
+    APR:UpdateQuest()
 end
 
 function APR:UpdateNextStep()
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
-    APR.BookingList["UpdateStep"] = true
+    APR:UpdateStep()
 end
 
 function APR:NextQuestStep()

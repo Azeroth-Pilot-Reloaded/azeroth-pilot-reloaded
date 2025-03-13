@@ -63,11 +63,6 @@ function APR:OnInitialize()
     APR.ActiveQuests = {}
     APR.IsInRouteZone = false
 
-    -- BookingList
-    APR.BookingList = {}
-    APR.InCombat = false
-    APR.BookUpdAfterCombat = false
-
     -- APR INIT NEW SETTING
     APR:Love()
     APR.settings:InitializeBlizOptions()
@@ -156,7 +151,7 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_LoadInTimer.anim:SetDuration(2)
         APR_LoadInTimer:SetLooping("NONE")
         APR_LoadInTimer:SetScript("OnFinished", function(self, event, ...)
-            APR.BookingList["UpdateMapId"] = true
+            APR:UpdateMapId()
 
             APR.RouteSelection:RefreshFrameAnchor()
             local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
@@ -177,8 +172,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR_QidsTimer:SetLooping("REPEAT")
         APR_QidsTimer:SetScript("OnLoop", function(self, event, ...)
             if (APRData[APR.PlayerID].QuestCounter2 ~= APRData[APR.PlayerID].QuestCounter) then
-                APR.BookingList["UpdateStep"] = true
                 APRData[APR.PlayerID].QuestCounter = APRData[APR.PlayerID].QuestCounter2
+                APR:UpdateStep()
             end
         end)
 
@@ -186,6 +181,8 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
         APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
             APR.settings.profile.arrowtop)
-        APR.BookingList["UpdateStep"] = true
+        APR.Arrow:StartUpdating()
+
+        APR:UpdateStep()
     end
 end)

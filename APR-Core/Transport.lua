@@ -96,7 +96,7 @@ function APR.transport:GetMeToRightZone(isRetry)
         -- Stop and refresh if it's a instance step
         if step.InstanceQuest then
             APR.IsInRouteZone = true
-            APR.BookingList["UpdateStep"] = true
+            APR:UpdateStep()
             return
         end
         if portal then
