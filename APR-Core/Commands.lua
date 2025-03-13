@@ -24,12 +24,12 @@ function APR.command:SlashCmd(input)
         -- Command for skipping the current quest step
         print("APR: " .. L["SKIP"])
         APR:NextQuestStep()
-        APR.BookingList["UpdateMapId"] = true
+        APR:UpdateMapId()
     elseif (inputText == "rollback" or inputText == "rb") then
         -- Command for rollback the current quest step
         print("APR: " .. L["ROLLBACK"])
         APR:PreviousQuestStep()
-        APR.BookingList["UpdateMapId"] = true
+        APR:UpdateMapId()
     elseif (inputText == "qol") then
         APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
         APR.questOrderList:RefreshFrameAnchor()
