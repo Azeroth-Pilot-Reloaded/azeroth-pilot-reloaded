@@ -45,5 +45,5 @@ jobs:
       #     git config user.email "<>"
       #     git add -u
       #     git commit -am "Apply Lua code formatting and linting" || true
-      #     git push --set-upstream https://${{ secrets.GIT_TOKEN }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded HEAD:dev
+      #     git push --set-upstream https://${{ secrets.AZEROTH_PILOT_RELOADED }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded HEAD:dev
 
