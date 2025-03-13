@@ -666,7 +666,7 @@ function APR.routeconfig:InitRouteConfig()
         local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
         APR.ActiveRoute = routeName
         APR:UpdateStep()
-        APR.BookingList["UpdateMapId"] = true
+        APR:UpdateMapId()
     end)
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
     InitDialogControlFrame("RouteListFrame", CreateRouteTableFrame, SetRouteListTab)
