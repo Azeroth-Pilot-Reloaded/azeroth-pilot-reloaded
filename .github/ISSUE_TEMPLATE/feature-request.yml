@@ -1,7 +1,7 @@
 name: "Feature request"
 description: Suggest an idea for Azeroth Pilot Reloaded.
 title: "[FEATURE] - "
-labels: 'Feature'
+labels: ["Feature"]
 
 body:
 - type: markdown
@@ -37,7 +37,5 @@ body:
     label: Any additional information?
     description: |
       If you have additional information that does not match the other fields
-    render: true
   validations:
     required: false
-

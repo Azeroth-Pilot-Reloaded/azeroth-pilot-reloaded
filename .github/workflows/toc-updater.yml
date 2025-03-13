@@ -14,7 +14,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone project
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
 
       - name: Update TOC Interface version
         uses: Mctalian/toc-interface-updater@v1
@@ -26,17 +26,15 @@ jobs:
         uses: peter-evans/create-pull-request@v6
         with:
           token: ${{ secrets.GIT_TOKEN }}
-          title: "build(toc): updates supported interface versions"
+          title: "Auto updates supported interface versions"
           body: |
             ## Requirements
 
-            - [ ] Download test package in the comments below
+            - [ ] Check [APi changelog](https://warcraft.wiki.gg/wiki/API_change_summaries)
             - [ ] Test for all applicable game clients
-              - [ ] Retail
-              - [ ] Retail PTR
 
             ----------------------------------------------------
             _This PR was automatically created to update the supported interface versions in APR.toc._
-          commit-message: "build(APR.toc): updates supported interface versions"
+          commit-message: "Auto updates supported interface versions"
           branch: interface-version
           delete-branch: true
