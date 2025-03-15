@@ -14,7 +14,6 @@ if (APR.Faction == "Neutral") then
 
 
     if (APR.Race == "Pandaren") then
-        APR.RouteList.MistsOfPandaria["378-WanderingIsle"] = "Pandaren Start"
-        APR.RouteList.MistsOfPandaria["378-Panda Starting Zone"] = "Pandaren Start From Route Recorder"
+        APR.RouteList.MistsOfPandaria["378-Panda Starting Zone"] = "Pandaren Neutral Start"
     end
 end

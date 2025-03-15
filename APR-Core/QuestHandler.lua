@@ -136,7 +136,9 @@ function APR:UpdateStep()
         table.sort(extraLines, function(a, b) return a.key < b.key end)
         for i, line in ipairs(extraLines) do
             local key = line.text
-            local message = rawget(L, key) or rawget(AprRCData.ExtraLineTexts, key)
+            local message = rawget(L, key) or
+            (AprRCData and AprRCData.ExtraLineTexts and rawget(AprRCData.ExtraLineTexts, key))
+
             if message then
                 local colorHex, formattedMessage = APR:ExtractColorAndText(message)
                 APR.currentStep:AddExtraLineText(i .. "_" .. key, formattedMessage, colorHex)

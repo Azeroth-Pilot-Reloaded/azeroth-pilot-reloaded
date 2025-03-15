@@ -21997,7 +21997,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
     {
         Qpart = { [81712] = { 2 } },
         Coord = { x = -4036.3, y = 1859.7 },
-        ExtraLineText = "KEEP_USING_WHISTLE_EVERY_TIME_LISKY_IS_DISTRACTED_TO_GET_HER_OUT_CAVE",
+        ExtraLineText = "KEEP_USING_WHISTLE_EVERY_TIME_LISKY_IS_DISTRACTED",
         Range = 5,
         Zone = 2214,
         _index = 427,

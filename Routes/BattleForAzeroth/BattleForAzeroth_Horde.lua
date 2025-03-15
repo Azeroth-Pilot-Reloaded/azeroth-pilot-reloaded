@@ -2297,7 +2297,12 @@ if APR.Faction == "Horde" then
             _index = 287,
         },
         {
-            Done = { 47312, 51980 },
+            Done = { 47312 },
+            Coord = { x = -131.2, y = -913.5 },
+            _index = 288,
+        },
+        {
+            Done = { 51980 },
             Coord = { x = -131.2, y = -913.5 },
             ExtraLineText = "ASSULT_SKIP2",
             _index = 288,
@@ -8887,7 +8892,7 @@ if APR.Faction == "Horde" then
             UseDalaHS = 50703,
             Coord = { x = 4845.3, y = 1950.9 },
             Button = { ["12112552-1"] = 140192 },
-            ExtraLineText = "ZONE_COMPLETE",
+            ExtraLineText = "ROUTE_COMPLETED",
             _index = 374,
         },
         {
