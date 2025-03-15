@@ -14,7 +14,7 @@ local customPathListeWidget = nil
 local tabRouteListWidget = nil
 local currentTabName = nil
 
-local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dracthyr Start", "Pandaren Start",
+local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dracthyr Start", "Pandaren Neutral Start",
     "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start", "Worgen Start" }
 ---------------------------------------------------------------------------------------
 ------------------------- Config functionality for Route ------------------------------
@@ -95,6 +95,9 @@ local function GetConfigOptionTable()
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetDFPrefab()
+                end,
+                hidden = function()
+                    return not next(APR.RouteList.Dragonflight)
                 end
             },
             TWW_prefab = {
@@ -105,6 +108,9 @@ local function GetConfigOptionTable()
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetTWWPrefab()
+                end,
+                hidden = function()
+                    return not next(APR.RouteList.TheWarWithin)
                 end
             },
             reset_custom_path = {
@@ -679,6 +685,8 @@ end
 ---------------------------------------------------------------------------------------
 function APR.routeconfig:GetSpeedRunPrefab()
     self:GetStartingZonePrefab()
+    -- Don't add other route if the player is neutral
+    if APR.Faction == "Neutral" then return end
     if APR.Level >= APR.MinBoostLvl and APR.Level < APR.MaxLevelChromie then
         self:GetDFPrefab()
     elseif APR.Level < APR.MinBoostLvl then
@@ -700,7 +708,7 @@ function APR.routeconfig:GetStartingZonePrefab()
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
             tinsert(APRCustomPath[APR.PlayerID], "Demon Hunter Start")
         elseif APR.Race == "Pandaren" then
-            tinsert(APRCustomPath[APR.PlayerID], "Pandaren Start")
+            tinsert(APRCustomPath[APR.PlayerID], "Pandaren Neutral Start")
         elseif APR.Race == "Goblin" then
             tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
             tinsert(APRCustomPath[APR.PlayerID], "Goblin - Lost Isles")
@@ -853,6 +861,9 @@ function APR.routeconfig:GetDFPrefab()
 end
 
 function APR.routeconfig:GetTWWPrefab()
+    -- Don't add TWW route if the player is neutral
+    if APR.Faction == "Neutral" then return end
+
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 01 - Intro")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 02 - Isle of Dorn")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - 03 - Ringing Deeps")

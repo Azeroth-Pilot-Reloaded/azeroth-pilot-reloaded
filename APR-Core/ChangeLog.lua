@@ -78,6 +78,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.9.3", "2025-03-15" },
+        "#Bugs",
+        "- Fixed Lua error due to missing `AprRCData` when the route recorder addon is not installed",
+        "- Fixed various translation issues (missing, incorrect, ...)",
+        "- Fixed speedrun route for neutral characters (Pandaren)",
+        "- Removed `BFA` and `TWW` prefab buttons in route selection for neutral characters (Pandaren)",
+        "- Removed duplicated route for the Pandaren starting zone",
+
         { "v4.9.2", "2025-03-09" },
         "#Bugs",
         "- Fixed taxi node retrieval method",
