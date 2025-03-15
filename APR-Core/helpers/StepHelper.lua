@@ -95,8 +95,13 @@ function APR:PreviousQuestStep()
     self:UpdateQuestAndStep()
 end
 
-function APR:GetTotalSteps(route)
+-- -Retrieves the total number of steps in a given route.
+--- @param route string The route for which to get the total steps.
+--- @param updateTotal boolean A boolean indicating whether to update the total steps count.
+--- @return  number total  The total number of steps in the specified route.
+function APR:GetTotalSteps(route, updateTotal)
     route = route or APR.ActiveRoute
+    updateTotal = updateTotal == nil
     local stepIndex = 0
     for id, step in pairs(APR.RouteQuestStepList[route] or {}) do
         -- Hide step for Faction, Race, Class, Achievement,...
@@ -104,7 +109,9 @@ function APR:GetTotalSteps(route)
             stepIndex = stepIndex + 1
         end
     end
-    APRData[APR.PlayerID][route .. '-TotalSteps'] = stepIndex
+    if updateTotal then
+        APRData[APR.PlayerID][route .. '-TotalSteps'] = stepIndex
+    end
     return stepIndex
 end
 
@@ -408,17 +415,12 @@ end
 -- Check is the current route is up to date
 function APR:CheckCurrentRouteUpToDate(currentRoute)
     if APR.version ~= APR.settings.profile.lastRecordedVersion then
-        -- //TODO :  To be removed in the next version (v4.10.0 or v5.0.0)
-        -- To remove Undermine route from the completed list if the preview Undermine route was completed
-        if string.match(APR.settings.profile.lastRecordedVersion, "^v4%.[8-9]%.[0-9]+$") then
-            for route, _ in pairs(APRZoneCompleted[APR.PlayerID]) do
-                if string.find(route, "Undermine") then
-                    local _, _, routeName, _ = APR:GetRouteMapIDsAndName(route)
-                    local currentTotalSteps = APR:GetTotalSteps(routeName)
-                    if APRData[APR.PlayerID][routeName] < currentTotalSteps then
-                        APRZoneCompleted[APR.PlayerID][route] = nil
-                    end
-                end
+        -- To remove updated route from the completed list if the preview route was completed
+        for route, _ in pairs(APRZoneCompleted[APR.PlayerID]) do
+            local _, _, routeName, _ = APR:GetRouteMapIDsAndName(route)
+            local currentTotalSteps = APR:GetTotalSteps(routeName, false)
+            if APRData[APR.PlayerID][routeName] < currentTotalSteps then
+                APRZoneCompleted[APR.PlayerID][route] = nil
             end
         end
         APR:CheckRouteChanges(currentRoute)
