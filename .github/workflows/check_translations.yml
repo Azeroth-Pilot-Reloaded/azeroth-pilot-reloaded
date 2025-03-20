@@ -22,6 +22,6 @@ jobs:
 
     - name: Run translation check script
       env:
-        CF_TOKEN: ${{ secrets.CF_TOKEN }}
+        CF_TOKEN: ${{ secrets.CF_API_KEY }}
       run: |
         python .github/scripts/check_translation_string.py
