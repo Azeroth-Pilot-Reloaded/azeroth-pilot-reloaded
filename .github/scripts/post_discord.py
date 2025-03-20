@@ -2,9 +2,12 @@ import os
 import sys
 import json
 import requests
+from dotenv import load_dotenv
+
+load_dotenv()
 
 # We read the Discord webhook URL from an environment variable
-DISCORD_WEBHOOK_URL = os.getenv["DISCORD_WEBHOOK_URL"]
+DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
 
 # We expect two arguments: the release tag and the release body
 if len(sys.argv) < 3:
