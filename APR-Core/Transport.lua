@@ -117,13 +117,11 @@ function APR.transport:GetMeToRightZone()
     end
 end
 
-
 --- Retrun the next MapIDs and worl position zone entry
 --- @param nextMapId number the wanted zone ID to reach
---- @param currentMapID number you current zone ID
---- @return number zoneMoveOrder
---- @return number closestX
---- @return number closestY
+--- @return number|nil zoneMoveOrder
+--- @return number|nil closestX
+--- @return number|nil closestY
 function APR.transport:GetZoneMoveOrder(nextMapId)
     local currentMapID = APR:GetPlayerParentMapID()
     local zoneMoveOrder = APR.ZonesData["ZoneMoveOrder"][currentMapID] and
@@ -135,7 +133,7 @@ function APR.transport:GetZoneMoveOrder(nextMapId)
     local continent = APR:GetContinent()
     local zoneEntries = APR.ZonesData["ZoneEntry"][continent] and APR.ZonesData["ZoneEntry"][continent][zoneMoveOrder]
     if not zoneEntries then
-        return
+        return nil, nil, nil
     end
 
     local closestDistance = math.huge
@@ -173,7 +171,7 @@ end
 --- Set the current step frame and arrow with the new continent data*
 ---@param CurContinent number the contient map ID
 ---@param nextContinent number the wanted reachable contient map ID
----@param nodeId number the wanted zone ID to reach in the nextContinent
+---@param nextZone number the wanted zone ID to reach in the nextContinent
 function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
     local function handlePortals(portalMappings)
         local closestPortal, closestPortalPosition, closestDistance = nil, nil, nil
@@ -275,10 +273,11 @@ end
 --- Get Closes TaxiNode
 --- @param posX number the world X position to find the closestDistance
 --- @param posY number the world Y position to find the closestDistance
---- @return string nodeId Taxi node id
---- @return string name Taxi node name
---- @return number x Taxi node X position
---- @return number y Taxi node Y position
+--- @return integer|nil nodeId Taxi node id
+--- @return string|nil name Taxi node name
+--- @return integer|nil x Taxi node X position
+--- @return integer|nil y Taxi node Y position
+--- @return integer|nil distance
 function APR.transport:ClosestTaxi(posX, posY)
     if (APR.settings.profile.debug) then
         print("Function: APR.transport:ClosestTaxi()")
