@@ -25,6 +25,4 @@ jobs:
       - name: Post release notes to Discord
         # We'll pass the release tag and body to the Python script
         run: |
-          python .github/scripts/post_discord.py \
-            "${{ github.event.release.tag_name }}" \
-            "${{ github.event.release.body }}"
+          python .github/scripts/post_discord.py ${{ github.event.release.tag_name }} ${{ github.event.release.body }}
