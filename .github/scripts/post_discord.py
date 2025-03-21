@@ -4,20 +4,21 @@ import json
 import requests
 import re
 from dotenv import load_dotenv
+import argparse
 
 load_dotenv()
 
 # We read the Discord webhook URL from an environment variable
 DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
 
-# We expect two arguments: the release tag and the release body
-if len(sys.argv) < 3:
-    print("Usage: python post_discord.py <tag_name> <release_body>")
-    sys.exit(1)
+# Parse command line arguments
+parser = argparse.ArgumentParser(description='Post release notes to Discord.')
+parser.add_argument('--tag', required=True, help='Release tag name')
+parser.add_argument('--body', required=True, help='Release body')
+args = parser.parse_args()
 
-tag_name = sys.argv[1]
-release_body = sys.argv[2]
-
+tag_name = args.tag
+release_body = args.body
 
 # Split release_body by lines
 lines = release_body.splitlines()
