@@ -402,11 +402,7 @@ function APR:UpdateStep()
                         break
                     end
                 end
-                local newList = {}
-                for _, questID in pairs(questIDs) do
-                    newList = questID
-                    break
-                end
+                local newList = questIDs[1]
                 questIDs = {}
                 questIDs[wantedQuestId] = newList
             end
@@ -962,8 +958,8 @@ function APR.GliderFunc()
 
     for bag = 0, 4 do
         for slot = 1, C_Container.GetContainerNumSlots(bag) do
-            local itemID = C_Container.GetContainerItemID(bag, slot) or 0
-            if (itemID == 109076) then
+            local containerItemID = C_Container.GetContainerItemID(bag, slot) or 0
+            if (containerItemID == 109076) then
                 DerpGot = 1
                 local itemLink = C_Container.GetContainerItemLink(bag, slot)
                 local itemID, itemType, itemSubType, itemEquipLoc, icon, classID, subClassID = C_Item.GetItemInfoInstant(

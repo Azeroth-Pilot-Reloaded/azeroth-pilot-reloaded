@@ -42,8 +42,8 @@ jobs:
       - name: Run Luacheck Routes
         run: luacheck ./Routes
 
-      # - name: Run Stylua
-      #   run: stylua --check .
+      - name: Run Stylua
+        run: stylua --check .
 
       - name: Commit and push changes
         run: |
