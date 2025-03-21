@@ -3,7 +3,7 @@ name: Lua Code Quality
 on: [pull_request]
 
 jobs:
-  lint-and-format:
+  Code_Linter:
     runs-on: ubuntu-latest
 
     steps:
@@ -17,10 +17,6 @@ jobs:
         with:
           luaVersion: '5.1'
 
-    # - name: Install and run Luacheck
-          # uses: nebularg/actions-luacheck@v1.1.2
-          # with:
-          #   args: "--no-color -q"
       - name: Set up Luarocks
         uses: leafo/gh-actions-luarocks@v4.3.0
 
@@ -29,27 +25,10 @@ jobs:
           sudo apt-get install luarocks
           sudo luarocks install luacheck
 
-      # - name: Install Stylua
-      #   run: |
-      #     wget -qO- "https://github.com/JohnnyMorganz/StyLua/releases/latest/download/stylua-linux.zip" > stylua.zip
-      #     unzip stylua.zip stylua
-      #     chmod +x stylua
-      #     sudo mv stylua /usr/local/bin/stylua
-
       - name: Run Luacheck APR-Core
         run: luacheck ./APR-Core
 
       - name: Run Luacheck Routes
         run: luacheck ./Routes
 
-      - name: Run Stylua
-        run: stylua --check .
-
-      - name: Commit and push changes
-        run: |
-          git config user.name "Neoldric"
-          git config user.email "<neogeekmo@live.fr>"
-          git add -u
-          git commit -am "Apply Lua code formatting and linting" || true
-          git push --set-upstream https://${{ secrets.GIT_TOKEN }}@github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded HEAD:dev
 
