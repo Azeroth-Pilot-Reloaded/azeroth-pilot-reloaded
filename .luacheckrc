@@ -2,9 +2,13 @@
 std = "lua51"
 max_line_length = false
 exclude_files = {
+    ".github/",
+    ".vscode/",
     "**/libs/**/*.lua",
     ".luacheckrc",
     "**/locales/*.lua",
+    "**/.luarocks/**/", -- Created by the GitHub Action
+    "**/.install/**/",  -- Created by the GitHub Action
 }
 ignore = {
     "1..", -- Everything related to globals
