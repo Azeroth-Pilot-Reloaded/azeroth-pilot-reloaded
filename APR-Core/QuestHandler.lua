@@ -137,7 +137,7 @@ function APR:UpdateStep()
         for i, line in ipairs(extraLines) do
             local key = line.text
             local message = rawget(L, key) or
-            (AprRCData and AprRCData.ExtraLineTexts and rawget(AprRCData.ExtraLineTexts, key))
+                (AprRCData and AprRCData.ExtraLineTexts and rawget(AprRCData.ExtraLineTexts, key))
 
             if message then
                 local colorHex, formattedMessage = APR:ExtractColorAndText(message)
@@ -407,7 +407,6 @@ function APR:UpdateStep()
                     newList = questID
                     break
                 end
-                questIDs = nil
                 questIDs = {}
                 questIDs[wantedQuestId] = newList
             end
