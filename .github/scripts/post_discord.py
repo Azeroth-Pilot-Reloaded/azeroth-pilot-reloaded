@@ -11,6 +11,11 @@ load_dotenv()
 # We read the Discord webhook URL from an environment variable
 DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
 
+# Check if the DISCORD_WEBHOOK_URL is set
+if not DISCORD_WEBHOOK_URL:
+    print("Error: DISCORD_WEBHOOK_URL environment variable is not set.")
+    sys.exit(1)
+
 # Parse command line arguments
 parser = argparse.ArgumentParser(description='Post release notes to Discord.')
 parser.add_argument('--tag', required=True, help='Release tag name')

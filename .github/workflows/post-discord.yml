@@ -23,6 +23,7 @@ jobs:
           python -m pip install requests python-dotenv
 
       - name: Post release notes to Discord
-        # We'll pass the release tag and body to the Python script
+        env:
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
         run: |
           python .github/scripts/post_discord.py --tag "${{ github.event.release.tag_name }}" --body "${{ github.event.release.body }}"
