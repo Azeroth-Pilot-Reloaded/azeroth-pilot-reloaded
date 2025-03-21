@@ -36,8 +36,11 @@ jobs:
       #     chmod +x stylua
       #     sudo mv stylua /usr/local/bin/stylua
 
-      - name: Run Luacheck
-        run: luacheck ./
+      - name: Run Luacheck APR-Core
+        run: luacheck ./APR-Core
+
+      - name: Run Luacheck Routes
+        run: luacheck ./Routes
 
       # - name: Run Stylua
       #   run: stylua --check .
