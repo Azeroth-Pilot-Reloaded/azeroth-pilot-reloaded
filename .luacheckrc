@@ -15,7 +15,9 @@ ignore = {
     "211", -- Unused local variable
     "212", -- Unused argument
     "213", -- Unused loop variable
+    "311", -- Reassigned variable
     -- "42.", -- Shadowing an upvalue argument (e.g. "self")
     "43.", -- Shadowing an upvalue
     "542", -- An empty if branch
+
 }

@@ -406,7 +406,7 @@ function APR:CheckRouteChanges(route)
 end
 
 -- Check is the current route is up to date
-function APR:CheckCurrentRouteUpToDate(routeName)
+function APR:CheckCurrentRouteUpToDate(currentRoute)
     if APR.version ~= APR.settings.profile.lastRecordedVersion then
         -- //TODO :  To be removed in the next version (v4.10.0 or v5.0.0)
         -- To remove Undermine route from the completed list if the preview Undermine route was completed
@@ -421,7 +421,7 @@ function APR:CheckCurrentRouteUpToDate(routeName)
                 end
             end
         end
-        APR:CheckRouteChanges(routeName)
+        APR:CheckRouteChanges(currentRoute)
         APR.settings.profile.lastRecordedVersion = APR.version
     end
 end

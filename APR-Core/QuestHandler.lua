@@ -962,8 +962,8 @@ function APR.GliderFunc()
 
     for bag = 0, 4 do
         for slot = 1, C_Container.GetContainerNumSlots(bag) do
-            local itemID = C_Container.GetContainerItemID(bag, slot)
-            if (itemID and itemID == 109076) then
+            local itemID = C_Container.GetContainerItemID(bag, slot) or 0
+            if (itemID == 109076) then
                 DerpGot = 1
                 local itemLink = C_Container.GetContainerItemLink(bag, slot)
                 local itemID, itemType, itemSubType, itemEquipLoc, icon, classID, subClassID = C_Item.GetItemInfoInstant(
@@ -1331,7 +1331,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 for bagSlots = 1, C_Container.GetContainerNumSlots(myBags) do
                     local CurrentItemId = C_Container.GetContainerItemID(myBags, bagSlots)
                     if CurrentItemId then
-                        local itemQuality = C_Item.GetItemQualityByID(CurrentItemId)
                         local _, _, itemQuality, _, _, _, _, _, _, _, sellPrice = C_Item.GetItemInfo(CurrentItemId)
                         local itemInfo = C_Container.GetContainerItemInfo(myBags, bagSlots)
                         if itemQuality == 0 and sellPrice > 0 and itemInfo.stackCount > 0 then
