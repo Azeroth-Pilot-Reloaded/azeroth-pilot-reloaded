@@ -508,35 +508,22 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         PickUp = { 38723 },
+        PickUpDB = { 38723, 40253 },
         Coord = { x = -292.2, y = 4239.1 },
         _index = 85,
     },
     {
         Qpart = { [38723] = { 1, 2 } },
+        QpartDB = { 38723, 40253 },
         Coord = { x = -297.4, y = 4051.3 },
         Range = 23.35,
         _index = 86,
     },
     {
         Done = { 38723 },
+        DoneDB = { 38723, 40253 },
         Coord = { x = -306.3, y = 4079 },
         _index = 87,
-    },
-    {
-        PickUp = { 40253 },
-        Coord = { x = -292.2, y = 4239.1 },
-        _index = 88,
-    },
-    {
-        Qpart = { [40253] = { 1, 2 } },
-        Coord = { x = -297.4, y = 4051.3 },
-        Range = 23.35,
-        _index = 89,
-    },
-    {
-        Done = { 40253 },
-        Coord = { x = -306.3, y = 4079 },
-        _index = 90,
     },
     {
         PickUp = { 39682 },
@@ -579,25 +566,16 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         PickUp = { 39683 },
+        PickUpDB = { 39683, 40254 },
         Coord = { x = -393.7, y = 4457.3 },
         _index = 98,
     },
     {
         Qpart = { [39683] = { 1 } },
+        QpartDB = { 39683, 40254 },
         Coord = { x = -451.2, y = 4658.3 },
         Range = 0.61,
         _index = 99,
-    },
-    {
-        PickUp = { 40254 },
-        Coord = { x = -393.7, y = 4457.3 },
-        _index = 100,
-    },
-    {
-        Qpart = { [40254] = { 1 } },
-        Coord = { x = -451.2, y = 4658.3 },
-        Range = 0.61,
-        _index = 101,
     },
     {
         Waypoint = 39684,
@@ -648,13 +626,9 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         Done = { 39683 },
+        DoneDB = { 39683, 40254 },
         Coord = { x = -393.5, y = 4458.3 },
         _index = 110,
-    },
-    {
-        Done = { 40254 },
-        Coord = { x = -393.5, y = 4458.3 },
-        _index = 111,
     },
     {
         PickUp = { 39686 },
@@ -697,7 +671,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         PickUp = { 39688 },
-        PickUpDB = { 39688, 40256 },
+        PickUpDB = { 39688, 39694, 40255, 40256 },
         Coord = { x = -451.2, y = 4283.7 },
         _index = 119,
     },
@@ -709,7 +683,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         Qpart = { [39688] = { 1 } },
-        QpartDB = { 39688, 40256 },
+        QpartDB = { 39688, 39694, 40255, 40256 },
         Coord = { x = -626.8, y = 4185.7 },
         Range = 0.69,
         _index = 121,
@@ -722,7 +696,7 @@ APR.RouteQuestStepList["672-Mardum"] = {
     },
     {
         Done = { 39688 },
-        DoneDB = { 39688, 40256 },
+        DoneDB = { 39688, 39694, 40255, 40256 },
         Coord = { x = -855, y = 4161.7 },
         _index = 123,
     },
