@@ -1,0 +1,27 @@
+name: Check Translations
+
+on: [pull_request]
+
+jobs:
+  check-translations:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v4.2.2
+
+    - name: Set up Python
+      uses: actions/setup-python@v5.4.0
+      with:
+        python-version: '3.x'
+
+    - name: Install dependencies
+      run: |
+        python -m pip install --upgrade pip
+        pip install requests python-dotenv termcolor
+
+    - name: Run translation check script
+      env:
+        CF_TOKEN: ${{ secrets.CF_API_KEY }}
+      run: |
+        python .github/scripts/check_translation_string.py

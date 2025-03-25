@@ -2,3 +2,4 @@ test*
 test 2*
 
 wordList.txt
+.env

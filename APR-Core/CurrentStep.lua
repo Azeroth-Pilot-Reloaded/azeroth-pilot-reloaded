@@ -632,7 +632,7 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     if not container then
         return
     end
-    local function iconName()
+    local function getIconName()
         if attribute == "item" then
             local itemName, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
             return itemName, itemTexture
@@ -641,7 +641,7 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
             return spellInfo.name, spellInfo.iconID
         end
     end
-    local iconName, iconTexture = iconName()
+    local iconName, iconTexture = getIconName()
     if not iconName and not iconTexture then
         return
     end

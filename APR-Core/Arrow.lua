@@ -127,14 +127,14 @@ local function CheckDistance()
             while true do
                 local oldx, oldy = step[curStepIndex].Coord.x, step[curStepIndex].Coord.y
                 curStepIndex = curStepIndex + 1
-                local step = step[curStepIndex]
-                if step and step.Coord then
-                    local newx, newy = step.Coord.x, step.Coord.y
+                local tmpStep = step[curStepIndex]
+                if tmpStep and tmpStep.Coord then
+                    local newx, newy = tmpStep.Coord.x, tmpStep.Coord.y
                     local deltaX, deltaY = oldx - newx, newy - oldy
                     local subDistance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
                     distance = distance + subDistance
                 end
-                if not step.Waypoint then
+                if not tmpStep.Waypoint then
                     return floor(distance + 0.5)
                 end
             end

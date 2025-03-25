@@ -29,10 +29,19 @@ function APR:CheckDenyNPC(step)
     end
 end
 
---- Contain data in list
----@param list array list
----@param x object object to check if in the list
----@return true|false Boolean
+
+--[[
+    Function: APR:Contains
+    Description:
+      Determines whether a specified value exists within a given list.
+
+    Parameters:
+      list (table) - A table representing the list to be searched.
+      x (any) - The value to locate in the list.
+
+    Returns:
+      boolean - True if the value x is found in the list, otherwise false.
+]]
 function APR:Contains(list, x)
     if list then
         for _, v in pairs(list) do
