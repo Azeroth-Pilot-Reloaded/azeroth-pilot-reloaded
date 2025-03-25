@@ -78,6 +78,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.9.4", "2025-03-25" },
+        "#Bugs",
+        "- Fixed Demon Hunter starting zone to remove duplicate quest pickups",
+
         { "v4.9.3", "2025-03-15" },
         "#Bugs",
         "- Fixed Lua error due to missing `AprRCData` when the route recorder addon is not installed",
