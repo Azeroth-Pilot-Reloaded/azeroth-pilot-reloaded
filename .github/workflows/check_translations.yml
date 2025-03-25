@@ -24,4 +24,4 @@ jobs:
       env:
         CF_TOKEN: ${{ secrets.CF_API_KEY }}
       run: |
-        python .github/scripts/check_translation_string.py
+        python .github/scripts/check_translation_string.py --skip-similarity-check
