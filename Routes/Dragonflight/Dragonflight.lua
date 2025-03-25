@@ -1121,7 +1121,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
         Qpart = { [66048] = { 4 } },
         Coord = { x = 1235.7, y = 1809.5 },
         Fillers = { [66078] = { 1 } },
-        ExtraLineText = "TALK_WITH_FORGEMASTER_BAZENTUS",
+        ExtraLineText = "TALK_FORGEMASTER_BAZENTUS",
         Range = 2,
         Gossip = 1,
         RaidIcon = 186493,
@@ -4560,7 +4560,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
     {
         Qpart = { [69872] = { 1 } },
         Coord = { x = 3615.6, y = -3957 },
-        ExtraLineText = "RARE__YOU_SHOULD_ONLY_HAVE_BRING_HIM_TO_40_HP_TO_DEFEAT_HIM",
+        ExtraLineText = "RARE_YOU_SHOULD_ONLY_HAVE_BRING_HIM_TO_40_HP_TO_DEFEAT_HIM",
         Range = 10,
         _index = 193,
     },
