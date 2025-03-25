@@ -338,7 +338,7 @@ local function CreateCustomPathTableFrame(name)
 
     local nameColumn = contentFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     nameColumn:SetPoint("TOPLEFT", idColumn, "TOPRIGHT", 50, 0)
-    nameColumn:SetText(L["ROUTE_NAME"])
+    nameColumn:SetText(L["NAME"])
 
     return frame
 end
@@ -479,11 +479,11 @@ local function CreateRouteTableFrame(name)
 
     local nameColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     nameColumn:SetPoint("TOPLEFT", 10, 0)
-    nameColumn:SetText(L["ROUTE_NAME"])
+    nameColumn:SetText(L["NAME"])
 
     local statusColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     statusColumn:SetPoint("TOPRIGHT", -10, 0)
-    statusColumn:SetText(L["ROUTE_STATUS"])
+    statusColumn:SetText(L["STATUS"])
 
     return frame
 end

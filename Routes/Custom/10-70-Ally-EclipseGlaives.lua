@@ -4567,7 +4567,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [35353] = { 1 } },
             Coord = { x = 2408.8, y = -677.9 },
-            ExtraLineText = "IN_THE_BASEMENT",
+            ExtraLineText = "IN_BASEMENT",
             Range = 1,
             Zone = 542,
             _index = 693,
