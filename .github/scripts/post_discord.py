@@ -8,7 +8,7 @@ import argparse
 
 load_dotenv()
 
-# We read the Discord webhook URL from an environment variable
+# Read the Discord webhook URL from an environment variable
 DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
 
 # Check if the DISCORD_WEBHOOK_URL is set
@@ -36,14 +36,19 @@ if lines:
 header_line = f"## Patch Note - Version {tag_name} <:apr:1271743726225719296>"
 
 # Rebuild the body with our custom first line
-new_release_body = header_line + "\n" + "\n".join(lines)
+new_release_body = header_line + "\n".join(lines)
 
-# Transform the last line to the desired format
+# Transform the Full Changelog URL to the desired markdown format
 new_release_body = re.sub(
     r'\*\*Full Changelog\*\*: https://github\.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/compare/([\w\.]+...[\w\.]+)',
     r'**Full Changelog**: [\1](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/compare/\1)',
     new_release_body
 )
+
+# Remove unnecessary newline(s) before header lines (lines starting with '#')
+# This regex replaces any occurrence of a newline, optional whitespace, and another newline
+# when it is immediately followed by a '#' with a single newline.
+new_release_body = re.sub(r'\n\s*\n(?=\#)', '\n', new_release_body)
 
 # Build the message to post on Discord
 message = new_release_body
