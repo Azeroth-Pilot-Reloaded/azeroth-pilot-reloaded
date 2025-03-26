@@ -78,6 +78,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.9.5", "2025-03-26" },
+        "#Bugs",
+        "- Fixed the ending part of the Undermine route (after the raid)",
+
         { "v4.9.4", "2025-03-25" },
         "#Bugs",
         "- Fixed Demon Hunter starting zone to remove duplicate quest pickups",
