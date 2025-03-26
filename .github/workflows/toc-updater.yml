@@ -16,11 +16,13 @@ jobs:
       - name: Clone project
         uses: actions/checkout@v4.2.2
 
-      - name: Update TOC Interface version
-        uses: Mctalian/toc-interface-updater@v1
+      - name: Set up Python
+        uses: actions/setup-python@v5.4.0
         with:
-          flavor: retail
-          ptr: true
+          python-version: "3.x"
+
+      - name: Update TOC Interface version
+        run: python .github/scripts/toc-updater.py --ptr
 
       - name: Create pull request
         uses: peter-evans/create-pull-request@v6
