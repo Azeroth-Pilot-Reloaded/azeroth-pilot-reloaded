@@ -78,6 +78,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.9.6", "2025-04-06" },
+        "#Bugs",
+        "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
+
         { "v4.9.5", "2025-03-26" },
         "#Bugs",
         "- Fixed the ending part of the Undermine route (after the raid)",
