@@ -78,7 +78,11 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.9.6", "2025-04-06" },
+        { "v4.10.0", "2025-04-20" },
+        "#Guides",
+        "- Added `Nightfall` route (new 11.1.5 scenario)",
+
+        { "v4.9.6",  "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
