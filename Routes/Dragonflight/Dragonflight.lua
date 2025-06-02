@@ -2852,7 +2852,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         Coord = { x = 2275.3, y = -472.1 },
         ExtraLineText = "TALK_NPC",
         Range = 2,
-        Gossip = 1,
+        GossipOptionID = 56420,
         _index = 205,
     },
     {
