@@ -55,6 +55,9 @@ APR-Core/Commands.lua
 APR-Core/ChangeLog.lua
 
 APR-Core/QuestHandler.lua
+APR-Core/QuestStep.lua
+APR-Core/QuestUpdate.lua
+APR-Core/QuestEvents.lua
 APR-Core/Transport.lua
 
 APR-Core/Arrow.lua

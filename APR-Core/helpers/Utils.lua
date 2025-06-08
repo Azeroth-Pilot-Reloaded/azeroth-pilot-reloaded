@@ -218,3 +218,36 @@ function APR:UpdateMapId()
     APR:OverrideRouteData() -- Lumbermill Wod route
     APR.transport:GetMeToRightZone()
 end
+
+function APR:GliderFunc()
+    if APR.settings.profile.debug then
+        print("Function: APR.GliderFunc()")
+    end
+
+    if APRData.GliderName then
+        return APRData.GliderName
+    end
+
+    local itemName = L["GOBLIN_GLIDER"]
+    local DerpGot = 0
+
+    for bag = 0, 4 do
+        for slot = 1, C_Container.GetContainerNumSlots(bag) do
+            local containerItemID = C_Container.GetContainerItemID(bag, slot) or 0
+            if containerItemID == 109076 then
+                DerpGot = 1
+                local itemLink = C_Container.GetContainerItemLink(bag, slot)
+                local _, _, _, _, _, _, _, _, _, _, itemEquipLoc = C_Item.GetItemInfoInstant(itemLink)
+                itemName = itemEquipLoc
+                break
+            end
+        end
+        if DerpGot == 1 then
+            APRData.GliderName = itemName
+            return itemName
+        end
+    end
+
+    return itemName
+end
+

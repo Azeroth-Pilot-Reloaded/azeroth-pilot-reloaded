@@ -427,3 +427,76 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
         APR.settings.profile.lastRecordedVersion = APR.version
     end
 end
+
+function APR:SetButton()
+    if InCombatLockdown() or not APR.IsInRouteZone then
+        return
+    end
+    if APR.settings.profile.debug then
+        print("Function: APR.SetButton()")
+    end
+
+    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    if not step then
+        return
+    end
+
+    if step.UseHS then
+        APR.currentStep:AddStepButton(step.UseHS .. "-" .. "UseHS", APR.hearthStoneItemId)
+    elseif step.UseGarrisonHS then
+        APR.currentStep:AddStepButton(step.UseGarrisonHS .. "-" .. "UseGarrisonHS", APR.garrisonHSItemID)
+    elseif step.Button then
+        for questKey, itemID in pairs(step.Button) do
+            local questID = select(1, APR:SplitQuestAndObjective(questKey))
+            if not C_QuestLog.ReadyForTurnIn(questID) then
+                APR.currentStep:AddStepButton(questKey, itemID, 'item')
+            end
+        end
+    elseif step.SpellButton then
+        for questKey, spellID in pairs(step.SpellButton) do
+            local questID = select(1, APR:SplitQuestAndObjective(questKey))
+            if not C_QuestLog.ReadyForTurnIn(questID) then
+                APR.currentStep:AddStepButton(questKey, spellID, 'spell')
+            end
+        end
+    end
+
+    APR.currentStep:UpdateStepButtonCooldowns()
+end
+
+function APR:CheckWaypointText()
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
+    local waypoints = {
+        FlightPath = L["GET_FLIGHTPATH"],
+        UseFlightPath = L["USE_FLIGHTPATH"],
+        Boat = L["USE_BOAT"],
+        PickUp = L["ACCEPT_Q"],
+        Done = L["TURN_IN_Q"],
+        Qpart = L["COMPLETE_Q"],
+        SetHS = L["SET_HEARTHSTONE"],
+        QpartPart = L["COMPLETE_Q"]
+    }
+
+    for i = CurStep, #APR.RouteQuestStepList[APR.ActiveRoute] do
+        local step = APR.RouteQuestStepList[APR.ActiveRoute][i]
+        if step then
+            for waypoint, _ in pairs(waypoints) do
+                if step[waypoint] then
+                    return "[" .. L["WAYPOINT"] .. "] - " .. waypoints[waypoint]
+                end
+            end
+        end
+    end
+
+    return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
+end
+
+function APR:DoEmoteStep(step)
+    if step and step.Emote then
+        local npc_id = APR:GetTargetID() or APR:GetTargetID("mouseover")
+        if npc_id == 153580 then
+            DoEmote(step.Emote)
+        end
+    end
+end
+
