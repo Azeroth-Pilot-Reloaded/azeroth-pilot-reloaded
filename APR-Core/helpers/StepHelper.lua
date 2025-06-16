@@ -110,7 +110,7 @@ end
 
 function APR:CheckIsInRouteZone()
     if (APR.settings.profile.debug) then
-        print("Function: APR step helper- CheckIsInRouteZone()")
+        APR:PrintInfo("Function: APR step helper- CheckIsInRouteZone()")
     end
     if not APR.ActiveRoute then
         return
@@ -358,7 +358,7 @@ end
 ---@return string expansion expansion name
 function APR:GetCurrentRouteMapIDsAndName()
     if (APR.settings.profile.debug) then
-        print("Function: APR.transport:GetRouteMapIDAndName()")
+        APR:PrintInfo("Function: APR.transport:GetRouteMapIDAndName()")
     end
 
     if not APRCustomPath or not APRCustomPath[APR.PlayerID] then

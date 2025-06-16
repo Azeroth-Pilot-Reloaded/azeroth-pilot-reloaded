@@ -6,10 +6,13 @@ APR.transport = APR:NewModule("Transport")
 APR.transport.CurrentTaxiNode = {}
 APR.transport.StepTaxiNode = {}
 
+-- Retry flag
+APR.transport._retryPending = false
+
 --- Guide the player to the right zone / continent / taxi / position
-function APR.transport:GetMeToRightZone()
+function APR.transport:GetMeToRightZone(isRetry)
     if (APR.settings.profile.debug) then
-        print("Function: APR.transport:GetMeToRightZone()")
+        APR:PrintInfo("Function: APR.transport:GetMeToRightZone()", isRetry and "(retry)" or "")
     end
 
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
@@ -35,6 +38,8 @@ function APR.transport:GetMeToRightZone()
         APR.IsInRouteZone = true
         -- To avoid unwanted auto taxi
         APR.transport.wrongZoneDestTaxiName = nil
+        -- Reset flag, we are in the right zone
+        APR.transport._retryPending = false
         return
     else
         -- reset IsInRouteZone
@@ -57,6 +62,20 @@ function APR.transport:GetMeToRightZone()
 
         local parentMapInfo = C_Map.GetMapInfo(mapInfo.parentMapID)
         if not parentMapInfo then
+            return
+        end
+
+        -- Retry system : if it's not already a retry, schedule one
+        if not isRetry and not APR.transport._retryPending then
+            APR.transport._retryPending = true
+            C_Timer.After(0.3, function()
+                APR.transport._retryPending = false
+                APR.transport:GetMeToRightZone(true)
+            end)
+
+            if APR.settings.profile.debug then
+                APR:PrintInfo("APR.transport:GetMeToRightZone() - retry scheduled in 300ms")
+            end
             return
         end
 
@@ -159,7 +178,7 @@ end
 --- @return number newContient new contient ID
 function APR.transport:IsSameContinent(mapID)
     if (APR.settings.profile.debug) then
-        print("Function: APR.transport:IsSameContinent()")
+        APR:PrintInfo("Function: APR.transport:IsSameContinent()")
     end
     local playerContinentID = APR:GetContinent()
     local mapContinentID = APR:GetContinent(mapID)
@@ -280,7 +299,7 @@ end
 --- @return integer|nil distance
 function APR.transport:ClosestTaxi(posX, posY)
     if (APR.settings.profile.debug) then
-        print("Function: APR.transport:ClosestTaxi()")
+        APR:PrintInfo("Function: APR.transport:ClosestTaxi()")
     end
 
     local continent = APR:GetContinent()
@@ -330,7 +349,7 @@ APR.transport.eventFrame:RegisterEvent("WAYPOINT_UPDATE")
 APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
     local step = APR.ActiveRoute and APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
     if APR.settings.profile.showEvent then
-        print("EVENT: Transport - ", event)
+        APR:PrintInfo("EVENT: Transport - " .. event)
     end
     if not APR.settings.profile.enableAddon then
         return

@@ -23,12 +23,11 @@ function APR:CheckDenyNPC(step)
             if (npc_id == step.DenyNPC) then
                 C_GossipInfo.CloseGossip()
                 C_Timer.After(0.3, APR_CloseQuest)
-                print("APR: " .. L["NOT_YET"])
+                APR:PrintInfo("APR: " .. L["NOT_YET"])
             end
         end
     end
 end
-
 
 --[[
     Function: APR:Contains
@@ -92,7 +91,7 @@ end
 --- @param infoMessage string
 function APR:PrintInfo(infoMessage)
     if (infoMessage and type(infoMessage) == "string") then
-        local lightBlueColorCode = "|cff00bfff"
+        local lightBlueColorCode = "|cff00ecff"
         DEFAULT_CHAT_FRAME:AddMessage(lightBlueColorCode .. "APR: " .. infoMessage .. "|r")
     end
 end

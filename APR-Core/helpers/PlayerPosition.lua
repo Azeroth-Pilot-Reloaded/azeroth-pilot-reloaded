@@ -6,7 +6,7 @@ local Vector2D = CreateVector2D(0, 0);
 --- Getting the continent the player is on and its info
 function APR:GetContinent(mapId)
     if (APR.settings.profile.debug) then
-        print("Function: APR.getContinent()")
+        APR:PrintInfo("Function: APR.getContinent()")
     end
     mapId = mapId or C_Map.GetBestMapForUnit("player")
     if (mapId == 378) then -- why ?  The Wandering Isle
@@ -77,4 +77,3 @@ function APR:GetPlayerCurrentTaxiNode()
     end
     return {}
 end
-

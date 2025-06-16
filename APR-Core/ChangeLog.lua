@@ -82,6 +82,9 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Rise of the Red Dawn` Storyline route (new 11.1.7 scenario)",
 
+        "#Bugs",
+        "- Added retry system on wrong zone errors to ensure it's not a false positive due to loading lag (e.g., after a portal)",
+
         { "v4.10.1", "2025-06-16" },
         "#Bugs",
         "- Fix gossip for `A Storm of Ill Tidings` quest (66259)",
@@ -93,7 +96,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6", "2025-04-06" },
+        { "v4.9.6",  "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 

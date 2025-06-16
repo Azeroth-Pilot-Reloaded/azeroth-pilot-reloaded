@@ -143,7 +143,7 @@ APR.CoreEventFrame = CreateFrame("Frame")
 APR.CoreEventFrame:RegisterEvent("ADDON_LOADED")
 APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
     if APR.settings.profile.showEvent then
-        print("EVENT: Core - ", event)
+        APR:PrintInfo("EVENT: Core - " .. event)
     end
     if (event == "ADDON_LOADED") then
         local arg1, arg2, arg3, arg4, arg5 = ...;
@@ -163,7 +163,9 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
             APRData[APR.PlayerID].QuestCounter = getn(CQIDs)
             APRData[APR.PlayerID].QuestCounter2 = APRData[APR.PlayerID].QuestCounter
             APR_QidsTimer:Play()
-            APR:PrintInfo("APR " .. L["LOADED"])
+            APR:PrintInfo("APR " ..
+                L["LOADED"] ..
+                " - Version: |cff00ff00" .. APR.version .. "|r | Interface: |cff00ff00" .. APR.interfaceVersion .. "|r")
             APR_LoadInTimer:Stop()
             APR.heirloom:RefreshFrameAnchor()
         end)
