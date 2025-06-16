@@ -78,11 +78,18 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.10.1", "2025-06-16" },
+        "#Bugs",
+        "- Fix gossip for `A Storm of Ill Tidings` quest (66259)",
+
+        "#WoW",
+        "- Update TOC Interface for 11.1.7",
+
         { "v4.10.0", "2025-04-20" },
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6",  "2025-04-06" },
+        { "v4.9.6", "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
