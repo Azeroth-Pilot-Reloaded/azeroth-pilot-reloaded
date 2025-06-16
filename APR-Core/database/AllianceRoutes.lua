@@ -115,6 +115,7 @@ if (APR.Faction == "Alliance") then
         ["2248-TWW-Siren-Isle-Intro"] = "TWW - Siren Isle Intro",
         ["2248-TWW-Undermine"] = "TWW - Undermine",
         ["2248-TWW-Nightfall"] = "TWW - Nightfall",
+        ["2248-TWW-Rise-of-the-Red-Dawn-Storyline"] = "TWW - Rise of the Red Dawn",
         ["2248-TWW-Isle-of-Dorn-campaign-only"] = "TWW - Isle of Dorn - Campaign Only",
         ["2214-TWW-Ringing-Deeps-campaign-only"] = "TWW - Ringing Deeps - Campaign Only",
         ["2215-TWW-Hallowfall-campaign-only"] = "TWW - Hallowfall - Campaign Only",
