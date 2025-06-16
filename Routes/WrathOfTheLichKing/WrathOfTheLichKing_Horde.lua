@@ -769,7 +769,7 @@ if APR.Faction == "Horde" then
         {
             Waypoint = 13189,
             Coord = { x = -5696.6, y = 2348.4 },
-            ExtraLineText = "TAKE_PORTAL_ORGRIMMAR",
+            ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 20,
             _index = 141,
         },

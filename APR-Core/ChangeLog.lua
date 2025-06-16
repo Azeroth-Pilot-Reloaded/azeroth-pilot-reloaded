@@ -78,6 +78,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.11.0", "2025-06-17" },
+        "#Guides",
+        "- Added `Rise of the Red Dawn` Storyline route (new 11.1.7 scenario)",
+
         { "v4.10.1", "2025-06-16" },
         "#Bugs",
         "- Fix gossip for `A Storm of Ill Tidings` quest (66259)",
