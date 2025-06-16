@@ -51,7 +51,7 @@ function APR:UpdateStep()
         return
     end
     if (APR.settings.profile.debug) then
-        print("Function: APR:UpdateStep()")
+        APR:PrintInfo("Function: APR:UpdateStep()")
     end
     if (APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute]) then
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
@@ -223,20 +223,20 @@ function APR:UpdateStep()
         if (step.PickedLoa and step.PickedLoa == 2 and (APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440))) then
             APR:UpdateNextStep()
             if (APR.settings.profile.debug) then
-                print("PickedLoa Skip 2 step:" .. CurStep)
+                APR:PrintInfo("PickedLoa Skip 2 step:" .. CurStep)
             end
             return
         elseif (step.PickedLoa and step.PickedLoa == 1 and (APR.ActiveQuests[47439] or C_QuestLog.IsQuestFlaggedCompleted(47439))) then
             APR:UpdateNextStep()
             if (APR.settings.profile.debug) then
-                print("PickedLoa Skip 1 step:" .. CurStep)
+                APR:PrintInfo("PickedLoa Skip 1 step:" .. CurStep)
             end
             return
         end
 
         local function handleScenarioStep(stepType, scenarioMapID)
             if APR.settings.profile.debug then
-                print(stepType .. " Step:" .. CurStep)
+                APR:PrintInfo(stepType .. " Step:" .. CurStep)
             end
 
             local currentMapID        = C_Map.GetBestMapForUnit('player')
@@ -307,7 +307,7 @@ function APR:UpdateStep()
         end
         if step.BuyMerchant then
             if (APR.settings.profile.debug) then
-                print("APR.UpdateStep:BuyMerchant" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                APR:PrintInfo("APR.UpdateStep:BuyMerchant" .. APRData[APR.PlayerID][APR.ActiveRoute])
             end
             local flagged = 0
 
@@ -327,7 +327,7 @@ function APR:UpdateStep()
         end
         if step.LearnProfession then
             if APR.settings.profile.debug then
-                print("APR.UpdateStep:LearnProfession" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                APR:PrintInfo("APR.UpdateStep:LearnProfession" .. APRData[APR.PlayerID][APR.ActiveRoute])
             end
             local spellID = step.LearnProfession
             if IsSpellKnown(spellID) then
@@ -340,7 +340,7 @@ function APR:UpdateStep()
 
         if step.LootItem then
             if APR.settings.profile.debug then
-                print("APR.UpdateStep:Loot Item" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                APR:PrintInfo("APR.UpdateStep:Loot Item" .. APRData[APR.PlayerID][APR.ActiveRoute])
             end
             local itemID = step.LootItem
 
@@ -455,7 +455,7 @@ function APR:UpdateStep()
             local questIDs = step.PickUp
             local pickUpDB = step.PickUpDB
             if APR.settings.profile.debug then
-                print("APR.UpdateStep:PickUp:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                APR:PrintInfo("APR.UpdateStep:PickUp:" .. APRData[APR.PlayerID][APR.ActiveRoute])
             end
 
             if pickUpDB then
@@ -491,7 +491,7 @@ function APR:UpdateStep()
                 end
                 if #questIDs == completedCount then
                     if APR.settings.profile.debug then
-                        print("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                        APR:PrintInfo("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                     end
                     APR:NextQuestStep()
                     return
@@ -517,7 +517,7 @@ function APR:UpdateStep()
                 local questID = step.Waypoint
                 if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
                     if (APR.settings.profile.debug) then
-                        print("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                        APR:PrintInfo("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                     end
                     APR:NextQuestStep()
                     return
@@ -529,7 +529,7 @@ function APR:UpdateStep()
             local questID = step.Treasure
             if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
                 if (APR.settings.profile.debug) then
-                    print("APR.UpdateStep:Treasure:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                    APR:PrintInfo("APR.UpdateStep:Treasure:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
                 APR:NextQuestStep()
                 return
@@ -540,7 +540,7 @@ function APR:UpdateStep()
             local questID = step.DropQuest
             if (C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]) then
                 if (APR.settings.profile.debug) then
-                    print("APR.UpdateStep:DropQuest:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                    APR:PrintInfo("APR.UpdateStep:DropQuest:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
                 APR:NextQuestStep()
                 return
@@ -555,7 +555,7 @@ function APR:UpdateStep()
                 local myQuestID = nil
 
                 if APR.settings.profile.debug then
-                    print("APR.UpdateStep:Done:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                    APR:PrintInfo("APR.UpdateStep:Done:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
 
                 for _, questID in ipairs(doneDBList) do
@@ -602,7 +602,7 @@ function APR:UpdateStep()
         elseif (step.WarMode) then
             if C_QuestLog.IsQuestFlaggedCompleted(step.WarMode) or C_PvP.IsWarModeActive() then
                 if APR.settings.profile.debug then
-                    print("APR.UpdateStep:WarMode:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                    APR:PrintInfo("APR.UpdateStep:WarMode:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 end
                 APR:UpdateNextStep()
                 return
@@ -776,7 +776,7 @@ function APR:UpdateStep()
         if step.ResetRoute then
             APR.questionDialog:CreateQuestionPopup("RESET" .. "?", function()
                 APRData[APR.PlayerID][APR.ActiveRoute] = 1
-                print("|cff00bfffAPR|r Route Reseted")
+                APR:PrintInfo("|cff00bfffAPR|r Route Reseted")
                 APR:UpdateQuestAndStep()
             end)
         end
@@ -811,7 +811,7 @@ function APR.SetButton()
         return
     end
     if (APR.settings.profile.debug) then
-        print("Function: APR.SetButton()")
+        APR:PrintInfo("Function: APR.SetButton()")
     end
 
     local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
@@ -872,7 +872,7 @@ end
 
 local function APR_UpdateQuest()
     if APR.settings.profile.debug then
-        print("Function: APR_UpdateQuest()")
+        APR:PrintInfo("Function: APR_UpdateQuest()")
     end
 
     local updateStep = false
@@ -889,7 +889,7 @@ local function APR_UpdateQuest()
 
                 if not APR.ActiveQuests[questID] then
                     if APR.settings.profile.debug then
-                        print("New Q:" .. questID)
+                        APR:PrintInfo("New Q:" .. questID)
                     end
                 end
 
@@ -909,7 +909,7 @@ local function APR_UpdateQuest()
                         if isObjectiveComplete then
                             if APR.ActiveQuests[objectiveKey] and APR.ActiveQuests[objectiveKey] ~= "C" then
                                 if APR.settings.profile.debug then
-                                    print("Update: C")
+                                    APR:PrintInfo("Update: C")
                                 end
                             end
                             APR.ActiveQuests[objectiveKey] = "C"
@@ -925,7 +925,7 @@ local function APR_UpdateQuest()
 
                             if APR.ActiveQuests[objectiveKey] and APR.ActiveQuests[objectiveKey] ~= objectiveText then
                                 if APR.settings.profile.debug then
-                                    print("Update: " .. objectiveText)
+                                    APR:PrintInfo("Update: " .. objectiveText)
                                 end
                             end
                             APR.ActiveQuests[objectiveKey] = objectiveText
@@ -946,7 +946,7 @@ end
 
 function APR.GliderFunc()
     if (APR.settings.profile.debug) then
-        print("Function: APR.GliderFunc()")
+        APR:PrintInfo("Function: APR.GliderFunc()")
     end
 
     if APRData.GliderName then
@@ -1017,7 +1017,7 @@ local function APR_RemoveQuest(questID)
         if NrLeft == 0 then
             APR:UpdateNextQuest()
             if APR.settings.profile.debug then
-                print("APR.RemoveQuest:Plus" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                APR:PrintInfo("APR.RemoveQuest:Plus" .. APRData[APR.PlayerID][APR.ActiveRoute])
             end
         end
     end
@@ -1039,7 +1039,7 @@ local function APR_AddQuest(questID)
         if (NrLeft == 0) then
             APR:UpdateNextQuest()
             if (APR.settings.profile.debug) then
-                print("APR.AddQuest:Plus" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                APR:PrintInfo("APR.AddQuest:Plus" .. APRData[APR.PlayerID][APR.ActiveRoute])
             end
         end
     end
@@ -1048,7 +1048,7 @@ end
 
 local function APR_UpdateMapId()
     if (APR.settings.profile.debug) then
-        print("Function: APR_UpdateMapId()")
+        APR:PrintInfo("Function: APR_UpdateMapId()")
     end
     APR:OverrideRouteData() -- Lumbermill Wod route
     APR.BookingList["GetMeToRightZone"] = true
@@ -1072,7 +1072,7 @@ local function APR_LoopBookingFunc() -- Main loop
     for action, func in pairs(bookingActions) do
         if APR.BookingList[action] then
             if APR.settings.profile.debug then
-                print("LoopBookingFunc:" .. action .. ":" .. (APRData[APR.PlayerID][APR.ActiveRoute] or ""))
+                APR:PrintInfo("LoopBookingFunc:" .. action .. ":" .. (APRData[APR.PlayerID][APR.ActiveRoute] or ""))
             end
             APR.BookingList[action] = nil
             func()
@@ -1115,7 +1115,7 @@ function APR_UpdQuestThing()
     APR.BookingList["UpdateQuest"] = true
     Updateblock = 0
     if (APR.settings.profile.debug) then
-        print("Extra UpdQuestThing")
+        APR:PrintInfo("Extra UpdQuestThing")
     end
 end
 
@@ -1165,14 +1165,14 @@ APR_QH_EventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     if not APR:IsInstanceWithUI() then
         if APR.settings.profile.debug then
-            print("APR: EventFrame - IsInstanceWithUI : ", APR:IsInstanceWithUI())
+            APR:PrintInfo("APR: EventFrame - IsInstanceWithUI : " .. APR:IsInstanceWithUI())
         end
         APR.settings:ToggleAddon()
         return
     end
 
     if APR.settings.profile.showEvent then
-        print("EVENT: QuestHandler - ", event)
+        APR:PrintInfo("EVENT: QuestHandler - " .. event)
     end
 
     if not APR.settings.profile.enableAddon then
@@ -1186,7 +1186,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
         if not APR:IsPickupStep() then
             C_AdventureMap.Close();
-            print("APR: " .. L["NOT_YET"])
+            APR:PrintInfo("APR: " .. L["NOT_YET"])
             return
         end
         C_Timer.After(0.3, function()
@@ -1238,7 +1238,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     local message = L[key]
                     if string.find(text, message) then
                         if APR.settings.profile.debug then
-                            print("APR: " .. L["DOING_EMOTE"] .. ": " .. emote)
+                            APR:PrintInfo("APR: " .. L["DOING_EMOTE"] .. ": " .. emote)
                         end
                         DoEmote(emote)
                         break
@@ -1315,7 +1315,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     end
                     if (repairAllCost <= GetMoney() and not guildRepairedItems) then
                         RepairAllItems(false);
-                        print("APR: " ..
+                        APR:PrintInfo("APR: " ..
                             L["REPAIR_EQUIPEMENT"] .. " " .. C_CurrencyInfo.GetCoinTextureString(repairAllCost))
                     end
                 end
@@ -1337,7 +1337,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 end
             end
             if APRtotal ~= 0 then
-                print("APR:" .. L["ITEM_SOLD"] .. " " .. C_CurrencyInfo.GetCoinTextureString(APRtotal))
+                APR:PrintInfo("APR:" .. L["ITEM_SOLD"] .. " " .. C_CurrencyInfo.GetCoinTextureString(APRtotal))
             end
         end
     end
@@ -1400,7 +1400,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end
         if (APR.settings.profile.debug) then
-            print(L["Q_ACCEPTED"] .. ": " .. questID)
+            APR:PrintInfo(L["Q_ACCEPTED"] .. ": " .. questID)
         end
         C_Timer.After(0.2, APR_UpdateMapId)
     end
@@ -1527,7 +1527,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                     C_Timer.After(0.2, APR_AcceptQuest)
                 elseif APR:IsPickupStep() then
                     C_Timer.After(0.2, APR_CloseQuest)
-                    print("APR: " .. L["NOT_YET"])
+                    APR:PrintInfo("APR: " .. L["NOT_YET"])
                 else
                     -- Retry
                     C_Timer.After(0.2, handleQuestDetail)
@@ -1710,7 +1710,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
 
     if (event == "QUEST_REMOVED") then
         if (APR.settings.profile.debug) then
-            print(L["Q_REMOVED"])
+            APR:PrintInfo(L["Q_REMOVED"])
         end
         local questID = ...;
         APR.BookingList["RemoveQuest"] = questID

@@ -414,7 +414,7 @@ APR.map.eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 APR.map.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if APR.settings.profile.showEvent then
-        print("EVENT: Map - ", event)
+        APR:PrintInfo("EVENT: Map - " .. event)
     end
     if not APR.settings.profile.enableAddon then
         APR.map:RemoveMapIcons()

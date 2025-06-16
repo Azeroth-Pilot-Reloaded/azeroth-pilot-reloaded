@@ -78,7 +78,7 @@ APR.ArrowFrame.Button:SetParent(APR.ArrowFrame)
 APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -40)
 APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
     APR.ArrowFrame.Button:Hide()
-    print("APR: " .. L["SKIP_WAYPOINT"])
+    APR:PrintInfo("APR: " .. L["SKIP_WAYPOINT"])
     APR:NextQuestStep()
     APR.Arrow.x = 0
     APR.Arrow.y = 0
@@ -145,7 +145,7 @@ end
 
 function APR.Arrow:SetCoord()
     if (APR.settings.profile.debug) then
-        print("Function: APR.Arrow:SetCoord")
+        APR:PrintInfo("Function: APR.Arrow:SetCoord")
     end
     if not APR.ActiveRoute then
         return
