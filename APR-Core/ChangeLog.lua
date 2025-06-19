@@ -78,6 +78,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.11.1", "2025-07-03" },
+        "#WoW",
+        "- Update TOC Interface for 11.2.0",
+
         { "v4.11.0", "2025-06-17" },
         "#Guides",
         "- Added `Rise of the Red Dawn` Storyline route (new 11.1.7 scenario)",
@@ -96,7 +100,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6",  "2025-04-06" },
+        { "v4.9.6", "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
