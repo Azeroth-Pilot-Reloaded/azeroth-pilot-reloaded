@@ -1416,11 +1416,9 @@ function APR.settings:ToggleAddon()
         self.profile.showArrow = false
         APR.AFK:HideFrame()
         APR.ArrowFrame:Hide()
-        APR.Arrow:StopUpdating()
     else
         -- settings
         self.profile.showArrow = true
-        APR.Arrow:StartUpdating()
     end
     APR.currentStep:RefreshCurrentStepFrameAnchor()
     APR.questOrderList:RefreshFrameAnchor()

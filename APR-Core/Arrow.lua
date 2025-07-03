@@ -12,9 +12,9 @@ APR.Arrow = {
     y = 0,
     Distance = 0,
     MaxDistanceWrongZone = 4000,
-    ticker = nill
+    arrowUpdateRate = 0,
+    frameTicker = 0
 }
-
 
 ---------------------------------------------------------------------------------------
 ----------------------------------- Arrow Frames --------------------------------------
@@ -29,6 +29,7 @@ APR.ArrowFrameM:SetWidth(1)
 APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 0, 0)
 APR.ArrowFrameM:EnableMouse(true)
 APR.ArrowFrameM:SetMovable(true)
+
 
 APR.ArrowFrame = CreateFrame("Button", "APR_Arrow", UIParent)
 APR.ArrowFrame:SetHeight(42)
@@ -74,6 +75,17 @@ APR.ArrowFrame:SetScript("OnHide", function(self)
     end
 end)
 
+APR.ArrowFrame:SetScript("OnUpdate", function(self, tick)
+    if not APR.ArrowFrame:IsShown() then return end
+
+    APR.Arrow.frameTicker = APR.Arrow.frameTicker + tick
+    if APR.Arrow.frameTicker < APR.Arrow.arrowUpdateRate then return end
+    APR.Arrow.frameTicker = 0
+
+    APR.Arrow:CalculPosition()
+end)
+
+
 APR.ArrowFrame.Button = CreateFrame("Button", "APR_ArrowActiveButton", APR.ArrowFrame)
 APR.ArrowFrame.Button:SetParent(APR.ArrowFrame)
 APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -40)
@@ -109,6 +121,14 @@ APR.ArrowFrame.Button:Hide()
 ---------------------------------------------------------------------------------------
 --------------------------------- Arrow Function --------------------------------------
 ---------------------------------------------------------------------------------------
+
+
+function APR.Arrow:Init()
+    -- Set Arrow scale and position
+    APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
+    APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
+        APR.settings.profile.arrowtop)
+end
 
 local function CheckDistance()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
@@ -182,14 +202,14 @@ function APR.Arrow:CalculPosition()
     end
 
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    local questStep = APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
+    local routeSteps = APR.RouteQuestStepList[APR.ActiveRoute]
+    local questStep = routeSteps and routeSteps[CurStep]
 
     if questStep and questStep.ZoneStepTrigger then -- to trigger a zone detection
         local trigger = questStep.ZoneStepTrigger
-        local deltaX, deltaY = playerX - trigger.x, trigger.y - playerY
-        local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
-
-        if trigger.Range > distance then
+        local dx, dy = playerX - trigger.x, trigger.y - playerY
+        local dist = (dx * dx + dy * dy) ^ 0.5
+        if trigger.Range > dist then
             APR.Arrow.currentStep = 0
             APR:NextQuestStep()
             return
@@ -199,11 +219,13 @@ function APR.Arrow:CalculPosition()
     APR.ArrowFrame:Show()
     APR.ArrowFrame.Button:Hide()
 
-    if not GetPlayerFacing() then return end
+    local facing = GetPlayerFacing()
+    if not facing then return end
+
     local x, y = APR.Arrow.x, APR.Arrow.y
-    local deltaX, deltaY = playerX - x, y - playerY
-    local distance = (deltaX * deltaX + deltaY * deltaY) ^ 0.5
-    local angle = math.atan2(-deltaX, deltaY) - GetPlayerFacing()
+    local dx, dy = playerX - x, y - playerY
+    local distance = (dx * dx + dy * dy) ^ 0.5
+    local angle = math.atan2(-dx, dy) - facing
     local perc = math.abs((math.pi - math.abs(angle)) / math.pi)
 
     -- Set global distance for transport
@@ -225,39 +247,35 @@ function APR.Arrow:CalculPosition()
         end
     end
 
+    -- Arrow color
+    local r, g, b
     if perc > 0.98 then
-        APR.ArrowFrame.arrow:SetVertexColor(0, 1, 0)
+        r, g, b = 0, 1, 0
     elseif perc > 0.49 then
-        APR.ArrowFrame.arrow:SetVertexColor((1 - perc) * 2, 1, 0)
+        r, g, b = (1 - perc) * 2, 1, 0
     else
-        APR.ArrowFrame.arrow:SetVertexColor(1, perc * 2, 0)
+        r, g, b = 1, perc * 2, 0
     end
+    APR.ArrowFrame.arrow:SetVertexColor(r, g, b)
 
+    -- Arrow texture
     local cell = math.floor(angle / (2 * math.pi) * 108 + 0.5) % 108
-    local col = cell % 9
-    local row = math.floor(cell / 9)
+    local col, row = cell % 9, math.floor(cell / 9)
     APR.ArrowFrame.arrow:SetTexCoord((col * 56) / 512, ((col + 1) * 56) / 512, (row * 42) / 512, ((row + 1) * 42) / 512)
+
+    -- Distance display
     APR.ArrowFrame.distance:SetText(math.floor(distance + CheckDistance()) .. " " .. L["YARDS"])
 end
 
 function APR.Arrow:SetArrowActive(isActive, x, y)
-    APR.Arrow.Active = isActive
-    APR.Arrow.x = x
-    APR.Arrow.y = y
-end
-
--- Function to start the periodic update
-function APR.Arrow:StartUpdating()
-    local interval = 1 / APR.settings.profile.arrowFPS
-    APR.Arrow.ticker = C_Timer.NewTicker(interval, function()
-        APR.Arrow:CalculPosition()
-    end)
-end
-
--- Function to stop the periodic update
-function APR.Arrow:StopUpdating()
-    if APR.Arrow.ticker then
-        APR.Arrow.ticker:Cancel()
-        APR.Arrow.ticker = nil
+    local a = APR.Arrow
+    a.arrowUpdateRate = APR.settings.profile.arrowFPS / 100 -- Update rate in seconds (ie: 2/100 = 0.02 seconds)
+    a.Active = isActive
+    a.x = x
+    a.y = y
+    if isActive then
+        APR.ArrowFrame:Show()
+    else
+        APR.ArrowFrame:Hide()
     end
 end
