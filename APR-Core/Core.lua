@@ -132,6 +132,8 @@ function APR:OnInitialize()
 
     -- Load saved custom routes
     APR:LoadCustomRoutes()
+
+    APR.Arrow:Init()
 end
 
 APR.CoreEventFrame = CreateFrame("Frame")
@@ -176,12 +178,6 @@ APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR:UpdateStep()
             end
         end)
-
-        -- //TODO ARROW REWORK
-        APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
-        APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
-            APR.settings.profile.arrowtop)
-        APR.Arrow:StartUpdating()
 
         APR:UpdateStep()
     end
