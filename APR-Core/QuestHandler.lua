@@ -1,7 +1,6 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-local ETAStep = 0
 local Updateblock = 0
 local APRGOSSIPCOUNT = 0
 
@@ -75,7 +74,10 @@ function APR:UpdateStep()
 
         APR.currentStep:ButtonEnable()
         APR:SendMessage("APR_MAP_UPDATE")
-        APR.AFK:HideFrame()
+        -- Hide the AFK frame only if the step has changed
+        if APR.AFK.lastStep ~= CurStep then
+            APR.AFK:HideFrame()
+        end
 
         if (SkipStepCondition(step)) then
             return
@@ -367,9 +369,9 @@ function APR:UpdateStep()
             return
         end
         if (step.ETA and not step.UseFlightPath and not step.SpecialETAHide) then
-            if (ETAStep ~= CurStep) then
+            if (APR.AFK.lastStep ~= CurStep) then
                 APR.AFK:SetAfkTimer(step.ETA)
-                ETAStep = CurStep
+                APR.AFK.lastStep = CurStep
             end
         end
         if (step.SpecialETAHide) then
