@@ -6,6 +6,8 @@ local candy = LibStub("LibCandyBar-3.0")
 -- Initialize module
 APR.AFK = APR:NewModule("AFK")
 
+APR.AFK.lastStep = nil
+
 local FRAME_WIDTH = 250
 local FRAME_HEIGHT = 30
 
