@@ -165,9 +165,8 @@ local function CheckDistance()
 end
 
 function APR.Arrow:SetCoord()
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR.Arrow:SetCoord")
-    end
+    APR:Debug("Function: APR.Arrow:SetCoord")
+
     if not APR.ActiveRoute then
         return
     end

@@ -12,7 +12,7 @@ APR.transport._retryPending = false
 --- Guide the player to the right zone / continent / taxi / position
 function APR.transport:GetMeToRightZone(isRetry)
     if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR.transport:GetMeToRightZone()", isRetry and "(retry)" or "")
+        APR:Debug("Function: APR.transport:GetMeToRightZone()", isRetry and "(retry)" or "")
     end
 
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
@@ -73,9 +73,7 @@ function APR.transport:GetMeToRightZone(isRetry)
                 APR.transport:GetMeToRightZone(true)
             end)
 
-            if APR.settings.profile.debug then
-                APR:PrintInfo("APR.transport:GetMeToRightZone() - retry scheduled in 300ms")
-            end
+            APR:Debug("APR.transport:GetMeToRightZone() - retry scheduled in 300ms")
             return
         end
 
@@ -177,9 +175,7 @@ end
 --- @return boolean isSameContinent true if the mapID is on the same continent as the player, false otherwise.
 --- @return number newContient new contient ID
 function APR.transport:IsSameContinent(mapID)
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR.transport:IsSameContinent()")
-    end
+    APR:Debug("Function: APR.transport:IsSameContinent()", mapID)
     local playerContinentID = APR:GetContinent()
     local mapContinentID = APR:GetContinent(mapID)
 
@@ -298,9 +294,7 @@ end
 --- @return integer|nil y Taxi node Y position
 --- @return integer|nil distance
 function APR.transport:ClosestTaxi(posX, posY)
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR.transport:ClosestTaxi()")
-    end
+    APR:Debug("Function: APR.transport:ClosestTaxi()", { posX, posY })
 
     local continent = APR:GetContinent()
     local function findClosestTaxi(faction)

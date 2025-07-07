@@ -23,7 +23,7 @@ function APR:CheckDenyNPC(step)
             if (npc_id == step.DenyNPC) then
                 C_GossipInfo.CloseGossip()
                 C_Timer.After(0.3, function() APR:CloseQuest() end)
-                print("APR: " .. L["NOT_YET"])
+                APR:NotYet()
             end
         end
     end
@@ -78,12 +78,38 @@ function APR:SplitQuestAndObjective(questID)
     return tonumber(questID)
 end
 
+function APR:Debug(msg, data, force)
+    if not APR.settings.profile.debug and not force then
+        return
+    end
+    if type(data) == "table" then
+        for key, value in pairs(data) do
+            print(msg, " - ", key)
+            APR:Debug(msg, value)
+        end
+    else
+        print("|cff00bfff" .. msg .. "|r - ", "|cff00ff00" .. data .. "|r")
+    end
+end
+
+function APR:DebugEvent(msg, data)
+    if APR.settings.profile.showEvent then
+        APR:Debug(msg, data, true)
+    end
+end
+
 --- Display error in chat
 --- @param errorMessage string
-function APR:PrintError(errorMessage)
+--- @param data any
+function APR:PrintError(errorMessage, data)
     if (errorMessage and type(errorMessage) == "string") then
         local redColorCode = "|cffff0000"
-        DEFAULT_CHAT_FRAME:AddMessage(redColorCode .. L["ERROR"] .. ": " .. errorMessage .. "|r")
+        if data then
+            DEFAULT_CHAT_FRAME:AddMessage(redColorCode .. L["ERROR"] .. ": " .. errorMessage .. "|r - ", data)
+        else
+            DEFAULT_CHAT_FRAME:AddMessage(redColorCode .. L["ERROR"] .. ": " .. errorMessage .. "|r")
+        end
+        UIErrorsFrame:AddMessage(errorMessage, 1, 0, 0, 1, 5)
     end
 end
 
@@ -91,11 +117,12 @@ end
 --- @param infoMessage string
 function APR:PrintInfo(infoMessage)
     if (infoMessage and type(infoMessage) == "string") then
-        local lightBlueColorCode = "|cff00ecff"
-        DEFAULT_CHAT_FRAME:AddMessage(lightBlueColorCode .. "APR: " .. infoMessage .. "|r")
+        DEFAULT_CHAT_FRAME:AddMessage("|cff00ecff" .. "APR: " .. infoMessage .. "|r")
     end
 end
 
+--- Performs the "Love" action for the APR module.
+-- Updates APR color scheme for Saint Valentin (Feb 14th).
 function APR:Love()
     local currentDate = C_DateAndTime.GetCurrentCalendarTime()
     if currentDate.month == 2 and currentDate.monthDay == 14 then
@@ -211,9 +238,92 @@ function APR:ResetRoute(targetedRoute)
 end
 
 function APR:UpdateMapId()
-    if (APR.settings.profile.debug) then
-        print("Function: APR:UpdateMapId()")
-    end
+    APR:Debug("Function: APR:UpdateMapId()")
     APR:OverrideRouteData() -- Lumbermill Wod route
     APR.transport:GetMeToRightZone()
+end
+
+--- Uses a glider item if available in the player's inventory.
+function APR:UseGlider()
+    APR:Debug("Function: APR.UseGlider()")
+
+    if APRData.GliderName then
+        return APRData.GliderName
+    end
+
+    local itemName = L["GOBLIN_GLIDER"]
+    local DerpGot = 0
+
+    for bag = 0, 4 do
+        for slot = 1, C_Container.GetContainerNumSlots(bag) do
+            local containerItemID = C_Container.GetContainerItemID(bag, slot) or 0
+            if (containerItemID == 109076) then
+                DerpGot = 1
+                local itemLink = C_Container.GetContainerItemLink(bag, slot)
+                local itemID, itemType, itemSubType, itemEquipLoc, icon, classID, subClassID = C_Item.GetItemInfoInstant(
+                    itemLink)
+                itemName = itemEquipLoc
+                break
+            end
+        end
+        if DerpGot == 1 then
+            APRData.GliderName = itemName
+            return itemName
+        end
+    end
+
+    return itemName
+end
+
+function APR:DoEmote(step)
+    if step and step.Emote then
+        local npc_id = APR:GetTargetID() or APR:GetTargetID("mouseover")
+        if npc_id == 153580 then -- Gorgroth for quest
+            DoEmote(step.Emote)
+        end
+    end
+end
+
+function APR:CheckWaypointText()
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
+    local waypoints = {
+        FlightPath = L["GET_FLIGHTPATH"],
+        UseFlightPath = L["USE_FLIGHTPATH"],
+        Boat = L["USE_BOAT"],
+        PickUp = L["ACCEPT_Q"],
+        Done = L["TURN_IN_Q"],
+        Qpart = L["COMPLETE_Q"],
+        SetHS = L["SET_HEARTHSTONE"],
+        QpartPart = L["COMPLETE_Q"]
+    }
+
+    for i = CurStep, #APR.RouteQuestStepList[APR.ActiveRoute] do
+        local step = APR.RouteQuestStepList[APR.ActiveRoute][i]
+        if step then
+            for waypoint, _ in pairs(waypoints) do
+                if step[waypoint] then
+                    return "[" .. L["WAYPOINT"] .. "] - " .. waypoints[waypoint]
+                end
+            end
+        end
+    end
+
+    return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
+end
+
+function APR:SkipStepCondition(step)
+    -- Skip steps if not Faction or Race or Class or Achievement
+    if APR:StepFilterQuestHandler(step) then
+        -- Counter for skipper step in the current route
+        APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] = (APRData[APR.PlayerID]
+            [APR.ActiveRoute .. '-SkippedStep'] or 0) + 1
+        APR:UpdateNextStep()
+        return true
+    end
+    return false
+end
+
+function APR:NotYet()
+    APR:PrintInfo(L["NOT_YET"])
+    UIErrorsFrame:AddMessage(errorMessage, 1, 153 / 255, 102 / 255, 1, 5)
 end
