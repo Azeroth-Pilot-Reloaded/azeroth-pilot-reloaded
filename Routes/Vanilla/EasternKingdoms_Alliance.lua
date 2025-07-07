@@ -11647,55 +11647,66 @@ if (APR.Faction == "Alliance") then
         {
             PickUp = { 26708 },
             Coord = { x = -3463.2, y = -9642 },
+            NpcDismount = 43733,
             _index = 137,
         },
         {
             Qpart = { [26708] = { 1 } },
             Coord = { x = -3454.7, y = -9646.5 },
             Range = 5.19,
+            NpcDismount = 43733,
             _index = 138,
         },
         {
             Done = { 26708 },
             Coord = { x = -3038, y = -9141.8 },
+            NpcDismount = 43733,
             _index = 139,
         },
         {
             PickUp = { 26713 },
             Coord = { x = -3036.7, y = -9140.5 },
+            NpcDismount = 43733,
             _index = 140,
         },
         {
             Qpart = { [26713] = { 1 } },
             Coord = { x = -3026.9, y = -9323.8 },
             Range = 0.69,
+            NpcDismount = 43733,
             _index = 141,
         },
         {
             Qpart = { [26713] = { 2 } },
             Coord = { x = -2971.7, y = -9470.2 },
             Range = 6.04,
+            NpcDismount = 43733,
             _index = 142,
         },
         {
             Done = { 26713 },
             Coord = { x = -2974.2, y = -9462.5 },
+            NpcDismount = 43733,
             _index = 143,
         },
         {
             PickUp = { 26714 },
             Coord = { x = -2974.2, y = -9462.5 },
+            NpcDismount = 43733,
             _index = 144,
+
         },
         {
             Qpart = { [26714] = { 1 } },
             Coord = { x = -2985.7, y = -9462.5 },
+            NpcDismount = 43733,
             Range = 0.75,
             _index = 145,
         },
         {
             Done = { 26714 },
             Coord = { x = -3037.4, y = -9141.3 },
+            NpcDismount = 43733,
             _index = 146,
         },
         {

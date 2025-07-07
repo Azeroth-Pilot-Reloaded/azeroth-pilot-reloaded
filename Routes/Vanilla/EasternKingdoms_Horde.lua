@@ -1124,6 +1124,7 @@ if APR.Faction == "Horde" then
         {
             PickUp = { 27342 },
             Coord = { x = 1632.5, y = -928.7 },
+            NpcDismount = 45312,
             _index = 2,
         },
         {
@@ -1162,11 +1163,13 @@ if APR.Faction == "Horde" then
             Qpart = { [27342] = { 1 } },
             Coord = { x = 1492.4, y = -1136.5 },
             Range = 100.49,
+            NpcDismount = 45312,
             _index = 8,
         },
         {
             Done = { 27333, 27345, 27322, 27342 },
             Coord = { x = 1630.8, y = -919.8 },
+            NpcDismount = 45312,
             _index = 9,
         },
         {
@@ -1259,6 +1262,7 @@ if APR.Faction == "Horde" then
         {
             PickUp = { 27406 },
             Coord = { x = 1144.3, y = -1164.1 },
+            NpcDismount = 45312,
             _index = 26,
         },
         {
@@ -1283,16 +1287,19 @@ if APR.Faction == "Horde" then
             Coord = { x = 931.9, y = -2120.2 },
             Fillers = { [27423] = { 1 } },
             Range = 0.75,
+            NpcDismount = 45312,
             _index = 30,
         },
         {
             Done = { 27406 },
             Coord = { x = 932.1, y = -2120.4 },
+            NpcDismount = 45312,
             _index = 31,
         },
         {
             PickUp = { 27438 },
             Coord = { x = 932.7, y = -2120.5 },
+            NpcDismount = 45312,
             _index = 32,
         },
         {
@@ -1306,6 +1313,7 @@ if APR.Faction == "Horde" then
             Done = { 27438 },
             Coord = { x = 1276, y = -184 },
             ETA = 132,
+            NpcDismount = 45312,
             _index = 1,
         },
         {

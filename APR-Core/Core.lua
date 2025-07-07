@@ -134,51 +134,7 @@ function APR:OnInitialize()
     APR:LoadCustomRoutes()
 
     APR.Arrow:Init()
+
+    -- Register events
+    APR.event:MyRegisterEvent()
 end
-
-APR.CoreEventFrame = CreateFrame("Frame")
-APR.CoreEventFrame:RegisterEvent("ADDON_LOADED")
-APR.CoreEventFrame:SetScript("OnEvent", function(self, event, ...)
-    if APR.settings.profile.showEvent then
-        APR:PrintInfo("EVENT: Core - " .. event)
-    end
-    if (event == "ADDON_LOADED") then
-        local arg1, arg2, arg3, arg4, arg5 = ...;
-        if (arg1 ~= "APR") then
-            return
-        end
-
-        APR_LoadInTimer = APR.CoreEventFrame:CreateAnimationGroup()
-        APR_LoadInTimer.anim = APR_LoadInTimer:CreateAnimation()
-        APR_LoadInTimer.anim:SetDuration(2)
-        APR_LoadInTimer:SetLooping("NONE")
-        APR_LoadInTimer:SetScript("OnFinished", function(self, event, ...)
-            APR:UpdateMapId()
-
-            APR.RouteSelection:RefreshFrameAnchor()
-            local CQIDs = C_QuestLog.GetAllCompletedQuestIDs()
-            APRData[APR.PlayerID].QuestCounter = getn(CQIDs)
-            APRData[APR.PlayerID].QuestCounter2 = APRData[APR.PlayerID].QuestCounter
-            APR_QidsTimer:Play()
-            APR:PrintInfo("APR " ..
-                L["LOADED"] ..
-                " - Version: |cff00ff00" .. APR.version .. "|r | Interface: |cff00ff00" .. APR.interfaceVersion .. "|r")
-            APR_LoadInTimer:Stop()
-            APR.heirloom:RefreshFrameAnchor()
-        end)
-        APR_LoadInTimer:Play()
-
-        APR_QidsTimer = APR.CoreEventFrame:CreateAnimationGroup()
-        APR_QidsTimer.anim = APR_QidsTimer:CreateAnimation()
-        APR_QidsTimer.anim:SetDuration(1)
-        APR_QidsTimer:SetLooping("REPEAT")
-        APR_QidsTimer:SetScript("OnLoop", function(self, event, ...)
-            if (APRData[APR.PlayerID].QuestCounter2 ~= APRData[APR.PlayerID].QuestCounter) then
-                APRData[APR.PlayerID].QuestCounter = APRData[APR.PlayerID].QuestCounter2
-                APR:UpdateStep()
-            end
-        end)
-
-        APR:UpdateStep()
-    end
-end)

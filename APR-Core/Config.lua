@@ -1238,14 +1238,14 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["AUTHOR"] .. ": |r" .. "Neogeekmo",
+                name = "|cffeda55f" .. L["AUTHOR"] .. ": |r" .. "Neogeekmo/Neoldric",
             },
             dev = {
                 order = 2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["DEV"] .. ": |r" .. "Neogeekmo, Kamian",
+                name = "|cffeda55f" .. L["DEV"] .. ": |r" .. "Neogeekmo/Neoldric, Kamian",
             },
             route_designer = {
                 order = 2.1,
@@ -1266,7 +1266,7 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["GRAPHIC"] .. ": |r" .. "Rycia, Neogeekmo",
+                name = "|cffeda55f" .. L["GRAPHIC"] .. ": |r" .. "Rycia, Neogeekmo/Neoldric",
             },
             Translator = {
                 order = 2.4,
@@ -1274,7 +1274,7 @@ function APR.settings:CreateAboutOption()
                 width = "full",
                 fontSize = "medium",
                 name = "|cffeda55f" .. L["TRANSLATOR"] .. ": |r\n" ..
-                    "      |cff5f9ea0" .. FRFR .. ": |rNeogeekmo, Mania\n" ..
+                    "      |cff5f9ea0" .. FRFR .. ": |rNeogeekmo, Jmsche, Mania\n" ..
                     "      |cff5f9ea0" .. DEDE .. ": |rKamian, Movion\n" ..
                     "      |cff5f9ea0" .. ESMX .. ": |rJean",
             },
