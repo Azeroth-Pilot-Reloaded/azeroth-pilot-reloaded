@@ -895,9 +895,7 @@ function APR.routeconfig:HasRouteInCustomPaht()
 end
 
 function APR.routeconfig:CheckIsCustomPathEmpty()
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR.routeconfig:CheckIsCustomPathEmpty()")
-    end
+    APR:Debug("Function: APR.routeconfig:CheckIsCustomPathEmpty()")
     if not self:HasRouteInCustomPaht() then
         APR.ActiveRoute = nil
         APR.currentStep:Reset()

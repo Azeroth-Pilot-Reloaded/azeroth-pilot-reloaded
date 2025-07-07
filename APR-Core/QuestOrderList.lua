@@ -293,9 +293,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         return
     end
 
-    if APR.settings.profile.debug then
-        APR:PrintInfo("Function: APR.questOrderList:AddStepFromRoute - " .. APR.ActiveRoute)
-    end
+    APR:Debug("Function: APR.questOrderList:AddStepFromRoute - ", APR.ActiveRoute)
 
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if not CurStep then

@@ -2,29 +2,25 @@ local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local Updateblock = 0
-local APRGOSSIPCOUNT = 0
 
-local function APR_LeaveQuest(QuestIDs)
-    C_QuestLog.SetSelectedQuest(QuestIDs)
-    C_QuestLog.AbandonQuest()
-end
-
-local function APR_QAskPopWanted()
+local function GroupQuestPopup()
     local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
 
-    local Qid = step.Group.QuestId
-    if not C_QuestLog.IsQuestFlaggedCompleted(Qid) and not step.QuestLineSkip then
-        local SugGroupNr = step.Group.Number
-        local dialogText = L["OPTIONAL"] .. " - " .. L["SUGGESTED_PLAYERS"] .. ": " .. SugGroupNr
+    if not step then return end
+
+    local questId = step.Group.QuestId
+    if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not step.QuestLineSkip then
+        local sugestGroupNumber = step.Group.Number
+        local dialogText = L["OPTIONAL"] .. " - " .. L["SUGGESTED_PLAYERS"] .. ": " .. sugestGroupNumber
 
         APR.questionDialog:CreateQuestionPopup(
             dialogText,
             function()
-                APRData[APR.PlayerID].WantedQuestList[Qid] = 1
+                APRData[APR.PlayerID].WantedQuestList[questId] = 1
                 APR:UpdateNextStep()
             end,
             function()
-                APRData[APR.PlayerID].WantedQuestList[Qid] = 0
+                APRData[APR.PlayerID].WantedQuestList[questId] = 0
                 APR:UpdateNextStep()
             end
         )
@@ -33,25 +29,12 @@ local function APR_QAskPopWanted()
     end
 end
 
-local function SkipStepCondition(step)
-    -- Skip steps if not Faction or Race or Class or Achievement
-    if APR:StepFilterQuestHandler(step) then
-        -- Counter for skipper step in the current route
-        APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] = (APRData[APR.PlayerID]
-            [APR.ActiveRoute .. '-SkippedStep'] or 0) + 1
-        APR:UpdateNextStep()
-        return true
-    end
-    return false
-end
-
 function APR:UpdateStep()
     if not APR.settings.profile.enableAddon then
         return
     end
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR:UpdateStep()")
-    end
+    APR:Debug("Function: APR:UpdateStep()")
+
     if (APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute]) then
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
     end
@@ -79,7 +62,7 @@ function APR:UpdateStep()
             APR.AFK:HideFrame()
         end
 
-        if (SkipStepCondition(step)) then
+        if APR:SkipStepCondition(step) then
             return
         end
 
@@ -221,22 +204,18 @@ function APR:UpdateStep()
         -- //TODO REWORK LOA
         if (step.PickedLoa and step.PickedLoa == 2 and (APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440))) then
             APR:UpdateNextStep()
-            if (APR.settings.profile.debug) then
-                APR:PrintInfo("PickedLoa Skip 2 step:" .. CurStep)
-            end
+            APR:Debug("PickedLoa Skip 2 step:" .. CurStep)
+
             return
         elseif (step.PickedLoa and step.PickedLoa == 1 and (APR.ActiveQuests[47439] or C_QuestLog.IsQuestFlaggedCompleted(47439))) then
             APR:UpdateNextStep()
-            if (APR.settings.profile.debug) then
-                APR:PrintInfo("PickedLoa Skip 1 step:" .. CurStep)
-            end
+            APR:Debug("PickedLoa Skip 1 step:" .. CurStep)
+
             return
         end
 
         local function handleScenarioStep(stepType, scenarioMapID)
-            if APR.settings.profile.debug then
-                APR:PrintInfo(stepType .. " Step:" .. CurStep)
-            end
+            APR:Debug(stepType .. " Step:" .. CurStep)
 
             local currentMapID        = C_Map.GetBestMapForUnit('player')
             local scenarioContinentID = APR:GetContinent(scenarioMapID)
@@ -305,9 +284,8 @@ function APR:UpdateStep()
             APR.Buff:RemoveAllBuffIcon()
         end
         if step.BuyMerchant then
-            if (APR.settings.profile.debug) then
-                APR:PrintInfo("APR.UpdateStep:BuyMerchant" .. APRData[APR.PlayerID][APR.ActiveRoute])
-            end
+            APR:Debug("APR.UpdateStep:BuyMerchant" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
             local flagged = 0
 
             for _, item in ipairs(step.BuyMerchant) do
@@ -325,9 +303,8 @@ function APR:UpdateStep()
             end
         end
         if step.LearnProfession then
-            if APR.settings.profile.debug then
-                APR:PrintInfo("APR.UpdateStep:LearnProfession" .. APRData[APR.PlayerID][APR.ActiveRoute])
-            end
+            APR:Debug("APR.UpdateStep:LearnProfession" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
             local spellID = step.LearnProfession
             if IsSpellKnown(spellID) then
                 APR:NextQuestStep()
@@ -338,9 +315,8 @@ function APR:UpdateStep()
         end
 
         if step.LootItem then
-            if APR.settings.profile.debug then
-                APR:PrintInfo("APR.UpdateStep:Loot Item" .. APRData[APR.PlayerID][APR.ActiveRoute])
-            end
+            APR:Debug("APR.UpdateStep:Loot Item" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
             local itemID = step.LootItem
 
             if tContains(APRItemLooted[APR.PlayerID], itemID) then
@@ -353,11 +329,11 @@ function APR:UpdateStep()
         end
 
         if (step.LeaveQuest) then
-            APR_LeaveQuest(step.LeaveQuest)
+            APR:LeaveQuest(step.LeaveQuest)
         end
         if (step.LeaveQuests) then
             for _, questID in pairs(step.LeaveQuests) do
-                APR_LeaveQuest(questID)
+                APR:LeaveQuest(questID)
             end
         end
         if (step.VehicleExit) then
@@ -378,7 +354,7 @@ function APR:UpdateStep()
             APR.AFK:HideFrame()
         end
         if (step.UseGlider and APR.IsInRouteZone) then
-            APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER", L["USE_ITEM"] .. ": " .. APR.GliderFunc())
+            APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER", L["USE_ITEM"] .. ": " .. APR:UseGlider())
         end
         if (step.Bloodlust and APR.IsInRouteZone) then
             APR.currentStep:AddExtraLineText("BLOODLUST", L["BLOODLUST"])
@@ -453,9 +429,8 @@ function APR:UpdateStep()
         elseif (step.PickUp) then
             local questIDs = step.PickUp
             local pickUpDB = step.PickUpDB
-            if APR.settings.profile.debug then
-                APR:PrintInfo("APR.UpdateStep:PickUp:" .. APRData[APR.PlayerID][APR.ActiveRoute])
-            end
+            APR:Debug("APR.UpdateStep:PickUp:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
 
             if pickUpDB then
                 local hasQuestCompleted = false
@@ -489,9 +464,8 @@ function APR:UpdateStep()
                     end
                 end
                 if #questIDs == completedCount then
-                    if APR.settings.profile.debug then
-                        APR:PrintInfo("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
-                    end
+                    APR:Debug("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
@@ -515,21 +489,19 @@ function APR:UpdateStep()
                 end
                 local questID = step.Waypoint
                 if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
-                    if (APR.settings.profile.debug) then
-                        APR:PrintInfo("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
-                    end
+                    APR:Debug("APR.UpdateStep:Waypoint:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
-                    APR.currentStep:AddExtraLineText("Waypoint" .. questID, APR.CheckWaypointText())
+                    APR.currentStep:AddExtraLineText("Waypoint" .. questID, APR:CheckWaypointText())
                 end
             end
         elseif (step.Treasure) then
             local questID = step.Treasure
             if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
-                if (APR.settings.profile.debug) then
-                    APR:PrintInfo("APR.UpdateStep:Treasure:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
-                end
+                APR:Debug("APR.UpdateStep:Treasure:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
                 APR:NextQuestStep()
                 return
             elseif APR.IsInRouteZone then
@@ -538,9 +510,8 @@ function APR:UpdateStep()
         elseif (step.DropQuest) then
             local questID = step.DropQuest
             if (C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]) then
-                if (APR.settings.profile.debug) then
-                    APR:PrintInfo("APR.UpdateStep:DropQuest:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
-                end
+                APR:Debug("APR.UpdateStep:DropQuest:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
                 APR:NextQuestStep()
                 return
             end
@@ -553,9 +524,8 @@ function APR:UpdateStep()
                 local hasQuestCompleted = false
                 local myQuestID = nil
 
-                if APR.settings.profile.debug then
-                    APR:PrintInfo("APR.UpdateStep:Done:" .. APRData[APR.PlayerID][APR.ActiveRoute])
-                end
+                APR:Debug("APR.UpdateStep:Done:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
 
                 for _, questID in ipairs(doneDBList) do
                     local questName = C_QuestLog.GetTitleForQuestID(questID)
@@ -600,9 +570,8 @@ function APR:UpdateStep()
             end
         elseif (step.WarMode) then
             if C_QuestLog.IsQuestFlaggedCompleted(step.WarMode) or C_PvP.IsWarModeActive() then
-                if APR.settings.profile.debug then
-                    APR:PrintInfo("APR.UpdateStep:WarMode:" .. APRData[APR.PlayerID][APR.ActiveRoute])
-                end
+                APR:Debug("APR.UpdateStep:WarMode:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+
                 APR:UpdateNextStep()
                 return
             elseif APR.IsInRouteZone then
@@ -667,7 +636,7 @@ function APR:UpdateStep()
                 APR:UpdateNextStep()
                 return
             else
-                APR_QAskPopWanted()
+                GroupQuestPopup()
             end
         elseif step.QpartPart then
             local questIDs = step.QpartPart
@@ -796,7 +765,7 @@ function APR:UpdateStep()
         end
 
         -- Set Quest Item Button
-        APR.SetButton()
+        APR:SetButton()
         APR.questOrderList:DelayedUpdate()
         -- set Progress bar with the right total
         APR.currentStep:SetProgressBar(CurStep)
@@ -805,13 +774,12 @@ function APR:UpdateStep()
     end
 end
 
-function APR.SetButton()
+function APR:SetButton()
     if InCombatLockdown() or not APR.IsInRouteZone then
         return
     end
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR.SetButton()")
-    end
+    APR:Debug("Function: APR:SetButton()")
+
 
     local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
     if not step then
@@ -842,37 +810,9 @@ function APR.SetButton()
     APR.currentStep:UpdateStepButtonCooldowns()
 end
 
-function APR.CheckWaypointText()
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    local waypoints = {
-        FlightPath = L["GET_FLIGHTPATH"],
-        UseFlightPath = L["USE_FLIGHTPATH"],
-        Boat = L["USE_BOAT"],
-        PickUp = L["ACCEPT_Q"],
-        Done = L["TURN_IN_Q"],
-        Qpart = L["COMPLETE_Q"],
-        SetHS = L["SET_HEARTHSTONE"],
-        QpartPart = L["COMPLETE_Q"]
-    }
-
-    for i = CurStep, #APR.RouteQuestStepList[APR.ActiveRoute] do
-        local step = APR.RouteQuestStepList[APR.ActiveRoute][i]
-        if step then
-            for waypoint, _ in pairs(waypoints) do
-                if step[waypoint] then
-                    return "[" .. L["WAYPOINT"] .. "] - " .. waypoints[waypoint]
-                end
-            end
-        end
-    end
-
-    return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
-end
-
 function APR:UpdateQuest()
-    if APR.settings.profile.debug then
-        APR:PrintInfo("Function: APR_UpdateQuest()")
-    end
+    APR:Debug("Function: APR_UpdateQuest()")
+
 
     local updateStep = false
     for questIndex = 1, C_QuestLog.GetNumQuestLogEntries() do
@@ -887,9 +827,7 @@ function APR:UpdateQuest()
                 local currentObjectiveIndex = 1
 
                 if not APR.ActiveQuests[questID] then
-                    if APR.settings.profile.debug then
-                        APR:PrintInfo("New Q:" .. questID)
-                    end
+                    APR:Debug("New Q:" .. questID)
                 end
 
                 APR.ActiveQuests[questID] = isQuestComplete and "C" or "P"
@@ -907,9 +845,7 @@ function APR:UpdateQuest()
 
                         if isObjectiveComplete then
                             if APR.ActiveQuests[objectiveKey] and APR.ActiveQuests[objectiveKey] ~= "C" then
-                                if APR.settings.profile.debug then
-                                    APR:PrintInfo("Update: C")
-                                end
+                                APR:Debug("Update: C")
                             end
                             APR.ActiveQuests[objectiveKey] = "C"
                             updateStep = true
@@ -923,9 +859,7 @@ function APR:UpdateQuest()
                             end
 
                             if APR.ActiveQuests[objectiveKey] and APR.ActiveQuests[objectiveKey] ~= objectiveText then
-                                if APR.settings.profile.debug then
-                                    APR:PrintInfo("Update: " .. objectiveText)
-                                end
+                                APR:Debug("Update: " .. objectiveText)
                             end
                             APR.ActiveQuests[objectiveKey] = objectiveText
                             APR.currentStep:UpdateQuestStep(questID, objectiveText, currentObjectiveIndex)
@@ -943,55 +877,6 @@ function APR:UpdateQuest()
     end
 end
 
-function APR.GliderFunc()
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR.GliderFunc()")
-    end
-
-    if APRData.GliderName then
-        return APRData.GliderName
-    end
-
-    local itemName = L["GOBLIN_GLIDER"]
-    local DerpGot = 0
-
-    for bag = 0, 4 do
-        for slot = 1, C_Container.GetContainerNumSlots(bag) do
-            local containerItemID = C_Container.GetContainerItemID(bag, slot) or 0
-            if (containerItemID == 109076) then
-                DerpGot = 1
-                local itemLink = C_Container.GetContainerItemLink(bag, slot)
-                local itemID, itemType, itemSubType, itemEquipLoc, icon, classID, subClassID = C_Item.GetItemInfoInstant(
-                    itemLink)
-                itemName = itemEquipLoc
-                break
-            end
-        end
-        if DerpGot == 1 then
-            APRData.GliderName = itemName
-            return itemName
-        end
-    end
-
-    return itemName
-end
-
-function APR:QuestStepIds()
-    if not APR.RouteQuestStepList[APR.ActiveRoute] then
-        return
-    end
-
-    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
-    if not step then return end
-    if step.PickUp then
-        return step.PickUp, "PickUp"
-    elseif step.Qpart then
-        return step.Qpart, "Qpart"
-    elseif step.Done then
-        return step.Done, "Done"
-    end
-end
-
 function APR:RemoveQuest(questID)
     if not questID then
         return
@@ -1005,7 +890,7 @@ function APR:RemoveQuest(questID)
         end
     end
 
-    local questIDs, StepP = APR:QuestStepIds()
+    local questIDs, StepP = APR:GetQuestAndStepIds()
     if StepP == "Done" then
         local NrLeft = 0
         for _, questId in pairs(questIDs) do
@@ -1015,9 +900,7 @@ function APR:RemoveQuest(questID)
         end
         if NrLeft == 0 then
             APR:UpdateNextQuest()
-            if APR.settings.profile.debug then
-                APR:PrintInfo("APR.RemoveQuest:Plus" .. APRData[APR.PlayerID][APR.ActiveRoute])
-            end
+            APR:Debug("APR.RemoveQuest:Plus", APRData[APR.PlayerID][APR.ActiveRoute])
         end
     end
 
@@ -1040,21 +923,10 @@ function APR:PopupAutocompleteQuest()
     end
 end
 
-local function DoEmoteStep(step)
-    if step and step.Emote then
-        local npc_id = APR:GetTargetID() or APR:GetTargetID("mouseover")
-        if npc_id == 153580 then
-            DoEmote(step.Emote)
-        end
-    end
-end
-
 function APR:UpdQuestThing()
     APR:UpdateQuest()
     Updateblock = 0
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Extra UpdQuestThing")
-    end
+    APR:Debug("Extra UpdQuestThing")
 end
 
 APR_QH_EventFrame = CreateFrame("Frame")
@@ -1063,10 +935,6 @@ APR_QH_EventFrame:RegisterEvent("CHAT_MSG_COMBAT_XP_GAIN")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_LOOT")
 APR_QH_EventFrame:RegisterEvent("CHAT_MSG_MONSTER_SAY")
 APR_QH_EventFrame:RegisterEvent("ENCOUNTER_LOOT_RECEIVED")
-APR_QH_EventFrame:RegisterEvent("GOSSIP_CLOSED")
-APR_QH_EventFrame:RegisterEvent("GOSSIP_SHOW")
-APR_QH_EventFrame:RegisterEvent("GROUP_JOINED")
-APR_QH_EventFrame:RegisterEvent("GROUP_LEFT")
 APR_QH_EventFrame:RegisterEvent("HEARTHSTONE_BOUND")
 APR_QH_EventFrame:RegisterEvent("LEARNED_SPELL_IN_SKILL_LINE")
 APR_QH_EventFrame:RegisterEvent("MERCHANT_SHOW")
@@ -1074,12 +942,8 @@ APR_QH_EventFrame:RegisterEvent("PET_BATTLE_CLOSE")
 APR_QH_EventFrame:RegisterEvent("PET_BATTLE_OPENING_START")
 APR_QH_EventFrame:RegisterEvent("PLAYER_CHOICE_UPDATE")
 APR_QH_EventFrame:RegisterEvent("PLAYER_TARGET_CHANGED")
-APR_QH_EventFrame:RegisterEvent("QUEST_ACCEPTED")
-APR_QH_EventFrame:RegisterEvent("QUEST_ACCEPT_CONFIRM")
 APR_QH_EventFrame:RegisterEvent("QUEST_AUTOCOMPLETE")
 APR_QH_EventFrame:RegisterEvent("QUEST_COMPLETE")
-APR_QH_EventFrame:RegisterEvent("QUEST_DETAIL")
-APR_QH_EventFrame:RegisterEvent("QUEST_GREETING")
 APR_QH_EventFrame:RegisterEvent("QUEST_LOG_UPDATE")
 APR_QH_EventFrame:RegisterEvent("QUEST_PROGRESS")
 APR_QH_EventFrame:RegisterEvent("QUEST_REMOVED")
@@ -1096,18 +960,7 @@ APR_QH_EventFrame:RegisterEvent("UPDATE_MOUSEOVER_UNIT")
 APR_QH_EventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 
 APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
-    if not APR:IsInstanceWithUI() then
-        if APR.settings.profile.debug then
-            APR:PrintInfo("APR: EventFrame - IsInstanceWithUI : " .. APR:IsInstanceWithUI())
-        end
-        APR.settings:ToggleAddon()
-        return
-    end
-
-    if APR.settings.profile.showEvent then
-        APR:PrintInfo("EVENT: QuestHandler - " .. event)
-    end
-
+    APR:DebugEvent("EVENT: QuestHandler", event)
     if not APR.settings.profile.enableAddon then
         return
     end
@@ -1119,7 +972,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
         if not APR:IsPickupStep() then
             C_AdventureMap.Close();
-            APR:PrintInfo("APR: " .. L["NOT_YET"])
+            APR:NotYet()
             return
         end
         C_Timer.After(0.3, function()
@@ -1170,9 +1023,8 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 for key, emote in pairs(gigglingBasket) do
                     local message = L[key]
                     if string.find(text, message) then
-                        if APR.settings.profile.debug then
-                            APR:PrintInfo("APR: " .. L["DOING_EMOTE"] .. ": " .. emote)
-                        end
+                        APR:Debug("APR: " .. L["DOING_EMOTE"] .. ": ", emote)
+
                         DoEmote(emote)
                         break
                     end
@@ -1192,22 +1044,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
                 end
             end
         end
-    end
-
-    if (event == "GOSSIP_CLOSED") then
-        APRGOSSIPCOUNT = 0
-    end
-
-    if event == "GROUP_JOINED" then
-        APR.party:SendGroupMessage()
-    end
-
-    if event == "GROUP_LEFT" then
-        -- remove all the teammate then resend name + step to the group
-        -- because wow don't send the username of the leaver
-        APR.party:RemoveTeam()
-        APR.party:SendGroupMessage()
-        APR.party:RefreshPartyFrameAnchor()
     end
 
     if (event == "HEARTHSTONE_BOUND") then
@@ -1300,38 +1136,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
     end
 
     if (event == "PLAYER_TARGET_CHANGED") then
-        DoEmoteStep(step)
-    end
-
-    if (event == "QUEST_ACCEPTED") then
-        local questID = ...;
-        if APR.settings.profile.firstAutoShareQuestWithFriend and IsInGroup() then
-            APR.questionDialog:CreateQuestionPopup(L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
-                APR.settings.profile.autoShareQuestWithFriend = true
-                if APR.party:CheckIfPartyMemberIsFriend() then
-                    C_QuestLog.SetSelectedQuest(questID)
-                    QuestLogPushQuest();
-                end
-            end)
-            APR.settings.profile.firstAutoShareQuestWithFriend = false
-        end
-        if APR.settings.profile.autoShareQuestWithFriend then
-            if APR.party:CheckIfPartyMemberIsFriend() then
-                C_QuestLog.SetSelectedQuest(questID)
-                QuestLogPushQuest();
-            end
-        end
-        if (APR.settings.profile.debug) then
-            APR:PrintInfo(L["Q_ACCEPTED"] .. ": " .. questID)
-        end
-        C_Timer.After(0.2, function() APR:UpdateMapId() end)
-    end
-
-    if (event == "QUEST_ACCEPT_CONFIRM") then -- escort quest
-        if IsModifierKeyDown() then return end
-        if (autoAccept or autoAcceptRoute) then
-            C_Timer.After(0.2, function() APR:AcceptQuest() end)
-        end
+        APR:DoEmote(step)
     end
 
     if (event == "QUEST_AUTOCOMPLETE") then
@@ -1435,188 +1240,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         end
     end
 
-    if (event == "QUEST_DETAIL") then -- Fired when the player is given a more detailed view of his quest.
-        if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
-        -- Deny NPC
-        APR:CheckDenyNPC(step)
-        local hasNoRouteMap = not APR.RouteQuestStepList[APR.ActiveRoute]
-        local function handleQuestDetail()
-            local questID = GetQuestID()
-            if questID then
-                if QuestGetAutoAccept() then
-                    C_Timer.After(0.2, function() APR:CloseQuest() end)
-                elseif (autoAcceptRoute and APR:IsARouteQuest(questID)) or autoAccept then
-                    C_Timer.After(0.2, function() APR:CloseQuest() end)
-                elseif APR:IsPickupStep() then
-                    C_Timer.After(0.2, function() APR:CloseQuest() end)
-                    print("APR: " .. L["NOT_YET"])
-                else
-                    -- Retry
-                    C_Timer.After(0.2, handleQuestDetail)
-                end
-                return
-            end
-            C_Timer.After(0.2, handleQuestDetail)
-        end
-        handleQuestDetail()
-    end
-
-    if (event == "QUEST_GREETING" or event == "GOSSIP_SHOW") then
-        -- Exit function if you press Ctrl/shift/alt key before the
-        if IsModifierKeyDown() then return end
-        -- Deny NPC
-        APR:CheckDenyNPC(step)
-        local npc_id = APR:GetTargetID()
-        if (npc_id and (npc_id == 43733) and (npc_id == 45312)) then
-            Dismount()
-        end
-        if (npc_id and ((npc_id == 141584) or (npc_id == 142063) or (npc_id == 25809) or (npc_id == 45400) or (npc_id == 87391))) then
-            return
-        end
-        if step and APR.settings.profile.autoGossip then
-            local function PickGossipByIcon(iconId)
-                local gossipOption = C_GossipInfo.GetOptions()
-                if next(gossipOption) then
-                    for _, gossip in pairs(gossipOption) do
-                        if gossip.icon == iconId then
-                            C_GossipInfo.SelectOption(gossip.gossipOptionID)
-                        end
-                    end
-                end
-            end
-            ------------------------------------
-            -- SetHS
-            if step.SetHS then
-                PickGossipByIcon(136458)
-            end
-            ------------------------------------
-            -- FlightPath
-            if (step.UseFlightPath or step.GetFP) and not step.NoAutoFlightMap and not (step.GossipOptionID or step.GossipOptionIDs) then
-                PickGossipByIcon(132057)
-            end
-            -- BuyMerchant
-            if step.BuyMerchant and not (step.GossipOptionID or step.GossipOptionIDs) then
-                PickGossipByIcon(132060)
-            end
-            ------------------------------------
-            -- GOSSIP
-            if step.Gossip or step.GossipOptionID or step.GossipOptionIDs then
-                if (step.Gossip == 28202) then -- GOSSIP HARDCODED
-                    APRGOSSIPCOUNT = APRGOSSIPCOUNT + 1
-                    if (APRGOSSIPCOUNT == 1) then
-                        C_GossipInfo.SelectOptionByIndex(1)
-                    elseif (APRGOSSIPCOUNT == 2) then
-                        if (APR.Race == "Gnome") then
-                            C_GossipInfo.SelectOptionByIndex(1)
-                        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-                            C_GossipInfo.SelectOptionByIndex(2)
-                        elseif (APR.Race == "NightElf") then
-                            C_GossipInfo.SelectOptionByIndex(3)
-                        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-                            C_GossipInfo.SelectOptionByIndex(4)
-                        end
-                    elseif (APRGOSSIPCOUNT == 3) then
-                        if (APR.Race == "Gnome") then
-                            C_GossipInfo.SelectOptionByIndex(3)
-                        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-                            C_GossipInfo.SelectOptionByIndex(4)
-                        elseif (APR.Race == "NightElf") then
-                            C_GossipInfo.SelectOptionByIndex(2)
-                        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-                            C_GossipInfo.SelectOptionByIndex(1)
-                        end
-                    elseif (APRGOSSIPCOUNT == 4) then
-                        if (APR.Race == "Gnome") then
-                            C_GossipInfo.SelectOptionByIndex(4)
-                        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-                            C_GossipInfo.SelectOptionByIndex(2)
-                        elseif (APR.Race == "NightElf") then
-                            C_GossipInfo.SelectOptionByIndex(1)
-                        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-                            C_GossipInfo.SelectOptionByIndex(3)
-                        end
-                    elseif (APRGOSSIPCOUNT == 5) then
-                        APR:UpdateNextStep()
-                    end
-                else
-                    local info = C_GossipInfo.GetOptions()
-                    if next(info) then
-                        if step.GossipOptionID then
-                            C_GossipInfo.SelectOption(step.GossipOptionID)
-                        elseif step.GossipOptionIDs then
-                            for _, g in pairs(step.GossipOptionIDs) do
-                                C_GossipInfo.SelectOption(g)
-                            end
-                        else
-                            for _, v in pairs(info) do
-                                if (v.orderIndex + 1 == step.Gossip) then
-                                    C_GossipInfo.SelectOption(v.gossipOptionID)
-                                end
-                            end
-                        end
-                    end
-
-                    --CHROMIE
-                    if (step.ChromiePick) then
-                        local target = APR:GetTargetID()
-                        if (target == 167032) then
-                            local extraText = L["SWITCH_TO_CHROMIE"] ..
-                                " " .. C_ChromieTime.GetChromieTimeExpansionOption(step.ChromiePick).name
-                            APR.currentStep:AddExtraLineText('ChromiePick', extraText)
-                            C_Timer.After(1,
-                                function() C_ChromieTime.SelectChromieTimeOption(step.ChromiePick) end)
-                        end
-                    end
-                end
-            end
-        end
-        --PICKUP / HANDIN
-        local availableQuests = C_GossipInfo.GetAvailableQuests()
-        local activeQuests = C_GossipInfo.GetActiveQuests()
-        -- Handin
-        if (APR.settings.profile.autoHandIn) then
-            if (event == "QUEST_GREETING") then
-                for i = 1, GetNumActiveQuests() do
-                    local title, isComplete = GetActiveTitle(i)
-                    if title and isComplete then
-                        return SelectActiveQuest(i)
-                    end
-                end
-            elseif activeQuests then
-                for titleIndex, questInfo in ipairs(activeQuests) do
-                    if questInfo.title and questInfo.isComplete then
-                        if questInfo.questID then
-                            return C_GossipInfo.SelectActiveQuest(questInfo.questID)
-                        end
-                    end
-                end
-            end
-        end
-        -- Pickup
-        if autoAcceptRoute or autoAccept then
-            local hasNoRouteMap = not APR.RouteQuestStepList[APR.ActiveRoute]
-            if (event == "QUEST_GREETING") then
-                local numAvailableQuests = GetNumAvailableQuests()
-                for i = 1, numAvailableQuests do
-                    local _, _, _, _, questID = GetAvailableQuestInfo(i)
-                    if (autoAcceptRoute and APR:IsARouteQuest(questID)) or autoAccept then
-                        return SelectAvailableQuest(i)
-                    elseif (i == numAvailableQuests and APR:IsPickupStep()) then
-                        C_Timer.After(0.2, function() APR:CloseQuest() end)
-                    end
-                end
-            elseif availableQuests then
-                for titleIndex, questInfo in ipairs(availableQuests) do
-                    if questInfo.questID then
-                        if (autoAcceptRoute and APR:IsARouteQuest(questInfo.questID)) or autoAccept then
-                            return C_GossipInfo.SelectAvailableQuest(questInfo.questID)
-                        end
-                    end
-                end
-            end
-        end
-    end
-
     if (event == "QUEST_LOG_UPDATE") then
         C_Timer.After(0.2, function() APR:UpdQuestThing() end)
     end
@@ -1628,20 +1251,6 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
         if (APR.settings.profile.autoHandIn) then
             CompleteQuest()
         end
-    end
-
-    if (event == "QUEST_REMOVED") then
-        if (APR.settings.profile.debug) then
-            APR:PrintInfo(L["Q_REMOVED"])
-        end
-        local questID = ...;
-        APR:RemoveQuest(questID)
-        if (APR.ActiveRoute == questID) then
-            APRData[APR.PlayerID][questID] = nil
-            APR.map:RemoveMapLine()
-            APR:UpdateMapId()
-        end
-        APRData[APR.PlayerID].QuestCounter2 = APRData[APR.PlayerID].QuestCounter2 + 1
     end
 
     if (event == "REQUEST_CEMETERY_LIST_RESPONSE") then
@@ -1766,7 +1375,7 @@ APR_QH_EventFrame:SetScript("OnEvent", function(self, event, ...)
             end
         end
 
-        DoEmoteStep(step)
+        APR:DoEmote(step)
     end
 
     if event == "ZONE_CHANGED_NEW_AREA" then
