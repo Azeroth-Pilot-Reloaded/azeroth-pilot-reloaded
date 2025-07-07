@@ -54,6 +54,8 @@ APR-Core/Config_Route.lua
 APR-Core/Commands.lua
 APR-Core/ChangeLog.lua
 
+APR-Core/Event.lua
+
 APR-Core/QuestHandler.lua
 APR-Core/Transport.lua
 

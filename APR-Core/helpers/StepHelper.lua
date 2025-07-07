@@ -116,9 +116,7 @@ function APR:GetTotalSteps(route, updateTotal)
 end
 
 function APR:CheckIsInRouteZone()
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR step helper- CheckIsInRouteZone()")
-    end
+    APR:Debug("Function: APR step helper- CheckIsInRouteZone()")
     if not APR.ActiveRoute then
         return
     end
@@ -364,9 +362,7 @@ end
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name
 function APR:GetCurrentRouteMapIDsAndName()
-    if (APR.settings.profile.debug) then
-        APR:PrintInfo("Function: APR.transport:GetRouteMapIDAndName()")
-    end
+    APR:Debug("APR.transport:GetRouteMapIDAndName")
 
     if not APRCustomPath or not APRCustomPath[APR.PlayerID] then
         APR:PrintError('No APRCustomPath')
@@ -425,5 +421,66 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
         end
         APR:CheckRouteChanges(currentRoute)
         APR.settings.profile.lastRecordedVersion = APR.version
+    end
+end
+
+function APR:HandleHardcodedGossip(step, gossipCounter)
+    local count = gossipCounter + 1
+    if (count == 1) then
+        C_GossipInfo.SelectOptionByIndex(1)
+    elseif (count == 2) then
+        if (APR.Race == "Gnome") then
+            C_GossipInfo.SelectOptionByIndex(1)
+        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
+            C_GossipInfo.SelectOptionByIndex(2)
+        elseif (APR.Race == "NightElf") then
+            C_GossipInfo.SelectOptionByIndex(3)
+        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
+            C_GossipInfo.SelectOptionByIndex(4)
+        end
+    elseif (count == 3) then
+        if (APR.Race == "Gnome") then
+            C_GossipInfo.SelectOptionByIndex(3)
+        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
+            C_GossipInfo.SelectOptionByIndex(4)
+        elseif (APR.Race == "NightElf") then
+            C_GossipInfo.SelectOptionByIndex(2)
+        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
+            C_GossipInfo.SelectOptionByIndex(1)
+        end
+    elseif (count == 4) then
+        if (APR.Race == "Gnome") then
+            C_GossipInfo.SelectOptionByIndex(4)
+        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
+            C_GossipInfo.SelectOptionByIndex(2)
+        elseif (APR.Race == "NightElf") then
+            C_GossipInfo.SelectOptionByIndex(1)
+        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
+            C_GossipInfo.SelectOptionByIndex(3)
+        end
+    elseif (count == 5) then
+        APR:UpdateNextStep()
+    end
+    return count
+end
+
+function APR:LeaveQuest(questIds)
+    C_QuestLog.SetSelectedQuest(questIds)
+    C_QuestLog.AbandonQuest()
+end
+
+function APR:GetQuestAndStepIds()
+    if not APR.RouteQuestStepList[APR.ActiveRoute] then
+        return
+    end
+
+    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    if not step then return end
+    if step.PickUp then
+        return step.PickUp, "PickUp"
+    elseif step.Qpart then
+        return step.Qpart, "Qpart"
+    elseif step.Done then
+        return step.Done, "Done"
     end
 end
