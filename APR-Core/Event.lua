@@ -14,22 +14,24 @@ APR.event.functions = {}
 local events = {
     load = "ADDON_LOADED",
     accept = { "QUEST_ACCEPTED", "QUEST_ACCEPT_CONFIRM" },
+    adventureMapAccept = "ADVENTURE_MAP_OPEN",
     detail = "QUEST_DETAIL",
+    done = { "QUEST_AUTOCOMPLETE", "QUEST_COMPLETE", "QUEST_PROGRESS" },
     gossip = { "GOSSIP_CLOSED", "GOSSIP_SHOW" },
     greeting = "QUEST_GREETING",
-    remove = "QUEST_REMOVED",
     group = { "GROUP_JOINED", "GROUP_LEFT" },
+    merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
+    remove = "QUEST_REMOVED",
+    setHS = "HEARTHSTONE_BOUND",
+    treasure = "CHAT_MSG_COMBAT_XP_GAIN"
 
     ------------------------- TODO
-    -- done = "QUEST_TURNED_IN",
-    -- setHS = "HEARTHSTONE_BOUND",
     -- spell = "UNIT_SPELLCAST_SUCCEEDED",
     -- raidIcon = "RAID_TARGET_UPDATE",
     -- pet = { "PET_BATTLE_CLOSE", "PET_BATTLE_OPENING_START" },
     -- emote = "CHAT_MSG_TEXT_EMOTE",
     -- taxi = { "TAXIMAP_OPENED", "TAXIMAP_CLOSED" },
     -- fly = { "PLAYER_CONTROL_LOST", "PLAYER_CONTROL_GAINED" },
-    -- buy = "MERCHANT_SHOW",
     -- qpart = "QUEST_WATCH_UPDATE",
     -- loot = "CHAT_MSG_LOOT",
     -- target = "PLAYER_TARGET_CHANGED",
@@ -162,6 +164,212 @@ function APR.event.functions.accept(event, ...)
     end
 end
 
+function APR.event.functions.adventureMapAccept(event, followerTypeID)
+    if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
+    if not APR:IsPickupStep() then
+        C_AdventureMap.Close();
+        APR:NotYet()
+        return
+    end
+    C_Timer.After(0.3, function()
+        local numChoices = C_AdventureMap.GetNumZoneChoices()
+        for choiceIndex = 1, numChoices do
+            local questID, textureKit, name, zoneDescription, normalizedX, normalizedY = C_AdventureMap
+                .GetZoneChoiceInfo(choiceIndex);
+            if AdventureMap_IsQuestValid(questID, normalizedX, normalizedY) then
+                if step and (APR:Contains(step.PickUp, questID) or APR:Contains(step.PickUpDB, questID)) then
+                    C_AdventureMap.StartQuest(questID)
+                end
+            end
+        end
+    end)
+end
+
+function APR.event.functions.detail(event, questStartItemID)
+    -- Fired when the player is given a more detailed view of his quest.
+    if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
+    -- Deny NPC
+    APR.event:TalkToDenyNpcLogic(step)
+
+    -- Check if the quest is a route quest
+    -- Implement a retry mechanism to handle quest detail
+    local function handleQuestDetail()
+        local questID = GetQuestID()
+        if questID then
+            if QuestGetAutoAccept() then
+                C_Timer.After(0.2, function() APR:CloseQuest() end)
+            elseif (autoAcceptRoute and APR:IsARouteQuest(questID)) or autoAccept then
+                C_Timer.After(0.2, function() APR:AcceptQuest() end)
+            elseif APR:IsPickupStep() then
+                C_Timer.After(0.2, function() APR:CloseQuest() end)
+                APR:NotYet()
+            else
+                -- Retry
+                C_Timer.After(0.2, handleQuestDetail)
+            end
+            return
+        end
+        C_Timer.After(0.2, handleQuestDetail)
+    end
+
+    handleQuestDetail()
+end
+
+function APR.event.functions.done(event, ...)
+    if IsModifierKeyDown() then return end
+    if APR.settings.profile.autoHandIn then
+        if event == "QUEST_PROGRESS" then
+            APR.event:TalkToDenyNpcLogic(step)
+            CompleteQuest()
+        elseif event == "QUEST_AUTOCOMPLETE" then
+            APR:PopupAutocompleteQuest()
+        end
+    end
+
+    if event == "QUEST_COMPLETE" then
+        -- Deny NPC
+        APR.event:TalkToDenyNpcLogic(step)
+
+        local HEIRLOOM_QUALITY = Enum.ItemQuality.Heirloom
+        local COSMETIC_CLASSID = 4
+        local COSMETIC_SUBCLASSID = 5
+        local WeaponInventoryTypes = {
+            [Enum.InventoryType.IndexWeaponoffhandType] = true,
+            [Enum.InventoryType.IndexWeaponmainhandType] = true,
+            [Enum.InventoryType.IndexWeaponType] = true,
+            [Enum.InventoryType.IndexShieldType] = true,
+            [Enum.InventoryType.Index2HweaponType] = true,
+            [Enum.InventoryType.IndexHoldableType] = true,
+            [Enum.InventoryType.IndexRangedType] = true,
+            [Enum.InventoryType.IndexThrownType] = true,
+            [Enum.InventoryType.IndexRangedrightType] = true,
+            [Enum.InventoryType.IndexRelicType] = true
+        }
+
+
+        local function normalizeEquipLoc(itemEquipLoc)
+            if not itemEquipLoc then return nil end
+            --  Regroup weapon types together for easier comparison
+            if WeaponInventoryTypes[Enum.InventoryType[itemEquipLoc]] then
+                return "WEAPON"
+            end
+            return itemEquipLoc
+        end
+
+        local function getPlayerGearIlvlList()
+            local gearIlvlList = {}
+            for playerSlot = 0, 18 do
+                local itemLink = GetInventoryItemLink("player", playerSlot)
+                if itemLink then
+                    local _, _, itemQuality, itemLevel, _, _, _, _, itemEquipLoc = C_Item.GetItemInfo(itemLink)
+                    if itemQuality == HEIRLOOM_QUALITY then
+                        itemLevel = C_Item.GetDetailedItemLevelInfo(itemLink)
+                    end
+
+                    itemEquipLoc = normalizeEquipLoc(itemEquipLoc)
+                    if itemEquipLoc and itemLevel then
+                        gearIlvlList[itemEquipLoc] = math.min(gearIlvlList[itemEquipLoc] or itemLevel, itemLevel)
+                    end
+                end
+            end
+            return gearIlvlList
+        end
+
+
+        local function isCosmeticKnown(itemLink)
+            if not itemLink then return false end
+            local itemID = C_Item.GetItemInfoInstant(itemLink)
+            if itemID then
+                -- Essaye la méthode WoW moderne
+                local sources = C_TransmogCollection.GetItemInfo(itemID)
+                if sources and sources.appearanceID then
+                    local hasTransmog = C_TransmogCollection.PlayerHasTransmog(sources.appearanceID)
+                    return hasTransmog
+                end
+                -- Méthode alternative (certaines builds)
+                local sourceID = select(2, C_TransmogCollection.GetItemInfo(itemID))
+                if sourceID then
+                    return C_TransmogCollection.PlayerHasTransmog(sourceID)
+                end
+            end
+            return false
+        end
+
+
+        local function getQuestRewardIlvlDifference(gearIlvlList)
+            local rewardList = {}
+            local unknownCosmeticIndex = nil
+            local bestVendorValue, vendorIndex = 0, 1
+
+            for i = 1, GetNumQuestChoices() do
+                local itemLink = GetQuestItemLink("choice", i)
+                if itemLink then
+                    local _, _, _, _, _, _, _, _, equipLoc, _, vendorPrice, classID, subClassID = C_Item.GetItemInfo(
+                        itemLink)
+                    local itemLevel = C_Item.GetDetailedItemLevelInfo(itemLink)
+                    equipLoc = normalizeEquipLoc(equipLoc)
+
+                    -- check if quest reward is classID (armor) and subClassID (cosmetic)
+                    if classID == COSMETIC_CLASSID and subClassID == COSMETIC_SUBCLASSID then
+                        if not isCosmeticKnown(itemLink) and not unknownCosmeticIndex then
+                            unknownCosmeticIndex = i
+                        end
+                    end
+
+                    if gearIlvlList[equipLoc] and itemLevel then
+                        rewardList[i] = itemLevel - gearIlvlList[equipLoc]
+                    end
+
+                    -- Track best vendor price (useful if everything is cosmetic or non-upgrade)
+                    if vendorPrice and vendorPrice > bestVendorValue then
+                        bestVendorValue = vendorPrice
+                        vendorIndex = i
+                    end
+                end
+            end
+            return rewardList, unknownCosmeticIndex, vendorIndex
+        end
+
+
+
+
+        local function chooseQuestReward()
+            local gearIlvlList = getPlayerGearIlvlList()
+            local rewardDiff, unknownCosmeticIndex, vendorIndex = getQuestRewardIlvlDifference(gearIlvlList)
+
+            -- Select the best upgrade
+            local bestIndex, bestDiff = nil, -9999
+            for index, diff in pairs(rewardDiff) do
+                if diff > bestDiff then
+                    bestIndex = index
+                    bestDiff = diff
+                end
+            end
+
+            -- take the best upgrade if it exists and is not cosmetic
+            -- otherwise, the most valuable vendor item
+            if bestIndex and not unknownCosmeticIndex and bestDiff > 0 then
+                GetQuestReward(bestIndex)
+            elseif unknownCosmeticIndex then
+                GetQuestReward(unknownCosmeticIndex)
+            else
+                GetQuestReward(vendorIndex)
+            end
+        end
+
+        if APR.settings.profile.autoHandIn then
+            if GetNumQuestChoices() > 1 then
+                if APR.settings.profile.autoHandInChoice then
+                    chooseQuestReward()
+                end
+            else
+                -- if there is only one choice, we can just get the reward
+                GetQuestReward(1)
+            end
+        end
+    end
+end
+
 function APR.event.functions.gossip(event, ...)
     if event == "GOSSIP_CLOSED" then
         gossipCounter = 0
@@ -240,34 +448,70 @@ function APR.event.functions.greeting(event, ...)
     end
 end
 
-function APR.event.functions.detail(event, questStartItemID)
-    -- Fired when the player is given a more detailed view of his quest.
-    if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
-    -- Deny NPC
-    APR.event:TalkToDenyNpcLogic(step)
-
-    -- Check if the quest is a route quest
-    -- Implement a retry mechanism to handle quest detail
-    local function handleQuestDetail()
-        local questID = GetQuestID()
-        if questID then
-            if QuestGetAutoAccept() then
-                C_Timer.After(0.2, function() APR:CloseQuest() end)
-            elseif (autoAcceptRoute and APR:IsARouteQuest(questID)) or autoAccept then
-                C_Timer.After(0.2, function() APR:AcceptQuest() end)
-            elseif APR:IsPickupStep() then
-                C_Timer.After(0.2, function() APR:CloseQuest() end)
-                APR:NotYet()
-            else
-                -- Retry
-                C_Timer.After(0.2, handleQuestDetail)
+function APR.event.functions.merchant(event, ...)
+    if event == "CHAT_MSG_LOOT" then
+        if step and step.BuyMerchant and not step.Qpart then
+            local message = ...
+            local itemLink = string.match(message, "|Hitem:.-|h.-|h")
+            local quantity = APR:GetQuantityfromLootMessage(message)
+            if itemLink then
+                local itemID, _, _, _, _, _, _ = C_Item.GetItemInfoInstant(itemLink)
+                APR:UpdatePurchaseTracking(itemID, quantity)
             end
-            return
         end
-        C_Timer.After(0.2, handleQuestDetail)
     end
 
-    handleQuestDetail()
+    if event == "MERCHANT_SHOW" then
+        if IsModifierKeyDown() then return end
+        if step and step.BuyMerchant then
+            APR:StartPurchaseTracking(step.BuyMerchant)
+            APR:BuyItemFromMerchant(step.BuyMerchant)
+        end
+        if APR.settings.profile.autoRepair then
+            if CanMerchantRepair() then
+                local repairAllCost, canRepair = GetRepairAllCost();
+                if canRepair and repairAllCost > 0 then
+                    local repaired = false
+                    if IsInGuild() and CanGuildBankRepair() then
+                        local guildWithdrawLimit = GetGuildBankWithdrawMoney()
+                        local guildMoney = GetGuildBankMoney()
+                        local available = guildWithdrawLimit == -1 and guildMoney or
+                            math.min(guildWithdrawLimit, guildMoney)
+
+                        if available >= repairAllCost then
+                            RepairAllItems(true);
+                            repaired = true
+                            APR:PrintInfo("Equipment has been repaired by your Guild")
+                        end
+                    end
+                    if not repaired and repairAllCost <= GetMoney() then
+                        RepairAllItems(false);
+                        APR:PrintInfo(L["REPAIR_EQUIPEMENT"] .. " " .. C_CurrencyInfo.GetCoinTextureString(repairAllCost))
+                    end
+                end
+            end
+        end
+        if APR.settings.profile.autoVendor then
+            local totalPrices = 0
+
+            for myBags = Enum.BagIndex.Backpack, NUM_TOTAL_BAG do
+                for bagSlots = 1, C_Container.GetContainerNumSlots(myBags) do
+                    local CurrentItemId = C_Container.GetContainerItemID(myBags, bagSlots)
+                    if CurrentItemId then
+                        local _, _, itemQuality, _, _, _, _, _, _, _, sellPrice = C_Item.GetItemInfo(CurrentItemId)
+                        local itemInfo = C_Container.GetContainerItemInfo(myBags, bagSlots)
+                        if itemQuality == 0 and sellPrice > 0 and itemInfo.stackCount > 0 then
+                            totalPrices = totalPrices + (sellPrice * itemInfo.stackCount)
+                            C_Container.UseContainerItem(myBags, bagSlots)
+                        end
+                    end
+                end
+            end
+            if totalPrices ~= 0 then
+                APR:PrintInfo(L["ITEM_SOLD"] .. " " .. C_CurrencyInfo.GetCoinTextureString(totalPrices))
+            end
+        end
+    end
 end
 
 function APR.event.functions.group(event, category, partyGUID)
@@ -293,6 +537,18 @@ function APR.event.functions.remove(event, questID, wasReplayQuest)
         APR:UpdateMapId()
     end
     APR:UpdateStep()
+end
+
+function APR.event.functions.setHS(event, ...)
+    if step and step.SetHS then
+        APR:UpdateNextStep()
+    end
+end
+
+function APR.event.functions.treasure(event, ...)
+    if step and step.Treasure then
+        C_Timer.After(0.2, function() APR:UpdateQuestAndStep() end)
+    end
 end
 
 ---------------------------------------------------------------------------------------
