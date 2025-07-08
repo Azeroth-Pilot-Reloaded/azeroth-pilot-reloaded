@@ -269,17 +269,21 @@ end
 function APR:UpdateQpartPart()
     local step = self:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil) or {}
     local IdList = step.QpartPart or {}
-    for questId, objectives in pairs(IdList) do
-        for _, objectiveId in ipairs(objectives) do
-            local qid = questId .. "-" .. objectiveId
-            local questText = APR.ActiveQuests[qid]
-            if not questText then return end
 
-            for key, value in pairs(step) do
-                if string.match(key, "TrigText+") then
-                    if value and string.find(questText, value) then
-                        self:UpdateNextStep()
-                        return
+    for questId, objectives in pairs(IdList) do
+        local quest = APR.ActiveQuests[tonumber(questId)]
+        if quest and quest.objectives then
+            for _, objectiveId in ipairs(objectives) do
+                local objective = quest.objectives[tonumber(objectiveId)]
+                if objective and objective.text then
+                    -- search in the TrigText+ keys
+                    for key, value in pairs(step) do
+                        if string.match(key, "TrigText+") then
+                            if value and string.find(objective.text, value) then
+                                self:UpdateNextStep()
+                                return
+                            end
+                        end
                     end
                 end
             end

@@ -24,7 +24,7 @@ function APR:UpdatePurchaseTracking(itemID, quantity)
     end
 end
 
-function APR:BuyMerchFunc(BuyMerchant)
+function APR:BuyItemFromMerchant(BuyMerchant)
     if not BuyMerchant or #BuyMerchant == 0 then return end
     if APR.settings.profile.debug then
         for _, item in ipairs(BuyMerchant) do
