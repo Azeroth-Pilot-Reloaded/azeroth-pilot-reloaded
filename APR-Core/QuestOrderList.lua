@@ -286,6 +286,10 @@ function APR.questOrderList:UpdateFrameContents()
     end
 end
 
+local function isQuestCompleted(questID)
+    return C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]
+end
+
 function APR.questOrderList:AddStepFromRoute(forceRendering)
     if not APR.settings.profile.enableAddon or not APR.settings.profile.showQuestOrderList or not APR.RouteQuestStepList[APR.ActiveRoute] or not APR.routeconfig:HasRouteInCustomPaht() or not APR:IsInstanceWithUI() then
         self:RemoveSteps()
@@ -344,10 +348,6 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local questInfo = {}
                 local flagged = 0
 
-                local function isQuestCompleted(questID)
-                    return C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]
-                end
-
                 for _, questID in pairs(idList) do
                     if isQuestCompleted(questID) then
                         flagged = flagged + 1
@@ -377,7 +377,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local MobName = APRData.NPCList[MobId] or questData.Text
                 local questText = format(L["Q_DROP"], MobName)
                 local questInfo = { { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) } }
-                local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or APR.ActiveQuests[questID]) and "green" or
+                local color = isQuestCompleted(questID) and "green" or
                     "gray"
                 AddStepFrameWithQuest(stepIndex, questText, questInfo, color)
             elseif step.Qpart then
@@ -390,15 +390,21 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local isMaxLevel = UnitLevel("player") == APR.MaxLevel
 
                 local function isObjectiveCompleted(questID, objectiveIndex)
+                    -- 1- quest completed
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) then
                         return true
                     end
+
+                    -- 2- questB Bonus or skipped
                     local questObjectiveId = questID .. '-' .. objectiveIndex
                     if (isMaxLevel and APR.BonusObj and APR:Contains(APR.BonusObj, questObjectiveId)) or APRData[APR.PlayerID].BonusSkips[questID] then
                         return true
                     end
-                    if APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C" then
-                        return true
+
+                    -- 3- quest objective completed
+                    local quest = APR.ActiveQuests[questID]
+                    if quest and quest.objectives and quest.objectives[objectiveIndex] then
+                        return quest.objectives[objectiveIndex].status == APR.QUEST_STATUS.COMPLETE
                     end
                     return false
                 end
@@ -441,16 +447,19 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     for _, objectiveIndex in pairs(objectives) do
                         total = total + 1
                         local questObjectiveId = questID .. '-' .. objectiveIndex
-                        local questText = APR.ActiveQuests[questObjectiveId]
+                        local quest = APR.ActiveQuests[questID]
+                        local questObjective = quest and quest.objectives and quest.objectives[objectiveIndex] or nil
+                        local text = questObjective and questObjective.text or nil
+                        local status = questObjective and questObjective.status or nil
                         for key, value in pairs(step) do
                             if string.match(key, "TrigText+") then
-                                if value and questText and string.find(questText, value) then
+                                if value and text and string.find(text, value) then
                                     flagged = flagged + 1
                                 end
                             end
                         end
                         local objective = C_QuestLog.GetQuestObjectives(questID)
-                        if C_QuestLog.IsQuestFlaggedCompleted(questID) or (objective and objective[objectiveIndex] and objective[objectiveIndex].finished) or (APR.ActiveQuests[questObjectiveId] and APR.ActiveQuests[questObjectiveId] == "C") then
+                        if C_QuestLog.IsQuestFlaggedCompleted(questID) or (objective and objective[objectiveIndex] and objective[objectiveIndex].finished) or (status == APR.QUEST_STATUS.COMPLETE) then
                             flagged = flagged + 1
                         else
                             table.insert(questInfo,
@@ -546,7 +555,8 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
 
                 if step.Qpart then
                     local questID = next(step.Qpart)
-                    if (APR.ActiveQuests[questID] and APR.ActiveQuests[questID] == "C") and isCompleted then
+                    local quest = APR.ActiveQuests[questID]
+                    if (quest and quest.status == APR.QUEST_STATUS.COMPLETE) and isCompleted then
                         hasQpartCompleted = true
                     end
                 end
