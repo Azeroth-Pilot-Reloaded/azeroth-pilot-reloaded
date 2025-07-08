@@ -15,6 +15,7 @@ APR.Gender = UnitSex("player")
 APR.MaxLevel = 80
 APR.MaxLevelChromie = 70
 APR.MinBoostLvl = 60
+APR.MaxBagSlots = 4
 APR.PlayerID = APR.Username .. "-" .. APR.UserID
 APR.Color = {
     white = { 1, 1, 1 },
