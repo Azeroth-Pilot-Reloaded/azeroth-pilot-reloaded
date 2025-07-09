@@ -39,16 +39,17 @@ APR-Core/utils/SceneCutter.lua
 APR-Core/utils/CoordinateFrame.lua
 APR-Core/utils/StepHelper.lua
 
+APR-Core/data/models/Classes.lua
+APR-Core/data/models/Enums.lua
+APR-Core/data/models/Quest.lua
+APR-Core/data/models/Spells.lua
+
 APR-Core/data/routes/AllianceRoutes.lua
 APR-Core/data/routes/HordeRoutes.lua
 APR-Core/data/routes/NeutralRoutes.lua
 APR-Core/data/zones/Portals.lua
 APR-Core/data/zones/TaxiNodes.lua
 APR-Core/data/zones/ZoneOrder.lua
-APR-Core/data/models/Classes.lua
-APR-Core/data/models/Enums.lua
-APR-Core/data/models/Quest.lua
-APR-Core/data/models/Spells.lua
 
 APR-Core/Config.lua
 APR-Core/Config_Route.lua
