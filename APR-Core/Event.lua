@@ -15,37 +15,29 @@ local events = {
     load = "ADDON_LOADED",
     accept = { "QUEST_ACCEPTED", "QUEST_ACCEPT_CONFIRM" },
     adventureMapAccept = "ADVENTURE_MAP_OPEN",
+    cooldown = "UNIT_AURA",
+    dead = "REQUEST_CEMETERY_LIST_RESPONSE",
     detail = "QUEST_DETAIL",
     done = { "QUEST_AUTOCOMPLETE", "QUEST_COMPLETE", "QUEST_PROGRESS" },
+    dropQuest = "UPDATE_MOUSEOVER_UNIT",
+    emote = { "CHAT_MSG_MONSTER_SAY", "PLAYER_TARGET_CHANGED", "UPDATE_MOUSEOVER_UNIT" },
+    getFP = { "TAXIMAP_OPENED", "UI_INFO_MESSAGE" },
     gossip = { "GOSSIP_CLOSED", "GOSSIP_SHOW" },
     greeting = "QUEST_GREETING",
     group = { "GROUP_JOINED", "GROUP_LEFT" },
+    learnProfession = "LEARNED_SPELL_IN_SKILL_LINE",
+    lootItem = "ENCOUNTER_LOOT_RECEIVED",
     merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
+    petCombatUI = { "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE" },
+    playerChoice = "PLAYER_CHOICE_UPDATE",
+    raidIcon = "UPDATE_MOUSEOVER_UNIT",
     remove = "QUEST_REMOVED",
+    scenario = { "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
-    treasure = "CHAT_MSG_COMBAT_XP_GAIN"
-
-    ------------------------- TODO
-    -- spell = "UNIT_SPELLCAST_SUCCEEDED",
-    -- raidIcon = "RAID_TARGET_UPDATE",
-    -- pet = { "PET_BATTLE_CLOSE", "PET_BATTLE_OPENING_START" },
-    -- emote = "CHAT_MSG_TEXT_EMOTE",
-    -- taxi = { "TAXIMAP_OPENED", "TAXIMAP_CLOSED" },
-    -- fly = { "PLAYER_CONTROL_LOST", "PLAYER_CONTROL_GAINED" },
-    -- qpart = "QUEST_WATCH_UPDATE",
-    -- loot = "CHAT_MSG_LOOT",
-    -- target = "PLAYER_TARGET_CHANGED",
-    -- scenario = "SCENARIO_CRITERIA_UPDATE",
-    -- portal = { "PLAYER_LEAVING_WORLD", "PLAYER_ENTERING_WORLD" },
-    -- learnProfession = "LEARNED_SPELL_IN_SKILL_LINE",
-    -- buff = "UNIT_AURA",
-    -- lvlUp = "PLAYER_LEVEL_UP",
-    -- rotateMinimap = "CVAR_UPDATE",
-    -- party = "CHAT_MSG_ADDON",
-    -- zoneChanged = { "ZONE_CHANGED", "ZONE_CHANGED_INDOORS", "ZONE_CHANGED_NEW_AREA", "WAYPOINT_UPDATE", "PLAYER_ENTERING_WORLD" },
-    -- MinimapZoneChange = { "MINIMAP_UPDATE_ZOOM", "NEW_WMO_CHUNK" }
-
-
+    spell = "UNIT_SPELLCAST_SUCCEEDED",
+    treasure = "CHAT_MSG_COMBAT_XP_GAIN",
+    updateQuest = { "QUEST_LOG_UPDATE", "UNIT_QUEST_LOG_CHANGED" },
+    vehicle = "UNIT_ENTERED_VEHICLE",
 }
 
 ---------------------------------------------------------------------------------------
@@ -54,11 +46,12 @@ local events = {
 
 local autoAccept, autoAcceptRoute, step = nil, nil, nil
 local gossipCounter = 0
+local pendingQuestUpdateTimer
 
 ---------------------------------------------------------------------------------------
 ---------------------------------- Events register ------------------------------------
 ---------------------------------------------------------------------------------------
----
+
 function APR.event:MyRegisterEvent()
     for tag, event in pairs(events) do
         local container = self.framePool[tag] or CreateFrame("Frame")
@@ -106,7 +99,7 @@ end
 ---------------------------------------------------------------------------------------
 ---------------------------------- Events always sub ----------------------------------
 ---------------------------------------------------------------------------------------
----
+
 local eventFrame = CreateFrame("Frame")
 eventFrame:RegisterEvent(events.load)
 eventFrame:SetScript("OnEvent", function(self, event, ...)
@@ -132,7 +125,7 @@ end)
 ---------------------------------------------------------------------------------------
 ---------------------------------- Events functions -----------------------------------
 ---------------------------------------------------------------------------------------
----
+
 function APR.event.functions.accept(event, ...)
     if event == "QUEST_ACCEPTED" then
         local questID = ...;
@@ -183,6 +176,19 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
             end
         end
     end)
+end
+
+function APR.event.functions.cooldown(event, unitTarget, updateInfo)
+    if step and step.Button then
+        APR.currentStep:UpdateStepButtonCooldowns()
+    end
+end
+
+function APR.event.functions.dead(event, isGossipTriggered)
+    -- //TODO handle the player death event to get the corpse location and lead him to it
+    APR.Arrow.currentStep = 0
+    APR.Arrow:SetCoord()
+    APR:UpdateMapId()
 end
 
 function APR.event.functions.detail(event, questStartItemID)
@@ -370,6 +376,64 @@ function APR.event.functions.done(event, ...)
     end
 end
 
+function APR.event.functions.dropQuest(event, ...)
+    if step and step.DroppableQuest then
+        if UnitGUID("mouseover") and UnitName("mouseover") then
+            local targetGUID, targetName = UnitGUID("mouseover"), UnitName("mouseover")
+            local targetID = select(6, strsplit("-", targetGUID))
+            if targetID and step.DroppableQuest.MobId == tonumber(targetID) then
+                APRData.NPCList[targetID] = targetName
+            end
+        end
+    end
+end
+
+function APR.event.functions.emote(event, ...)
+    if event == "CHAT_MSG_MONSTER_SAY" then
+        local text = ...;
+        local npc_id, name = APR:GetTargetID(), UnitName("target")
+        if npc_id and name then
+            if npc_id == 159477 then -- quest 57870 -- Giggling Basket
+                local gigglingBasket = {
+                    ["GIGGLING_BASKET_ONE_TIME"] = "cheer",
+                    ["GIGGLING_BASKET_SPRIGGANS"] = "flex",
+                    ["GIGGLING_BASKET_MANY"] = "thank",
+                    ["GIGGLING_BASKET_FAE"] = "introduce",
+                    ["GIGGLING_BASKET_FEET"] = "dance",
+                    ["GIGGLING_BASKET_HELP"] = "praise",
+                }
+                for key, emote in pairs(gigglingBasket) do
+                    local message = L[key]
+                    if string.find(text, message) then
+                        APR:Debug("APR: " .. L["DOING_EMOTE"] .. ": ", emote)
+
+                        DoEmote(emote)
+                        break
+                    end
+                end
+            end
+        end
+    else
+        APR:DoEmote(step)
+    end
+end
+
+function APR.event.functions.getFP(event, ...)
+    if event == "TAXIMAP_OPENED" then
+        if IsModifierKeyDown() then return end
+        if step and step.GetFP then
+            APR:UpdateNextStep()
+            CloseTaxiMap() -- auto Close the taxi map after getting the FP
+        end
+    end
+    if event == "UI_INFO_MESSAGE" then
+        local errorType, msg = ...;
+        if step and step.GetFP and (msg == _G.ERR_NEWTAXIPATH or msg == _G.ERR_TAXINOPATHS) then
+            APR:UpdateNextStep()
+        end
+    end
+end
+
 function APR.event.functions.gossip(event, ...)
     if event == "GOSSIP_CLOSED" then
         gossipCounter = 0
@@ -448,6 +512,38 @@ function APR.event.functions.greeting(event, ...)
     end
 end
 
+function APR.event.functions.group(event, category, partyGUID)
+    if event == "GROUP_JOINED" then
+        APR.party:SendGroupMessage()
+    end
+
+    if event == "GROUP_LEFT" then
+        -- remove all the teammate then resend name + step to the group
+        -- because wow don't send the username of the leaver
+        APR.party:RemoveTeam()
+        APR.party:SendGroupMessage()
+        APR.party:RefreshPartyFrameAnchor()
+    end
+end
+
+function APR.event.functions.learnProfession(event, spellID, skillLineIndex, isGuildPerkSpell)
+    if step and step.LearnProfession then
+        if spellID == step.LearnProfession then
+            APR:UpdateNextStep()
+        end
+    end
+end
+
+function APR.event.functions.lootItem(event, encounterID, itemID, itemLink, quantity, playerName, classFileName)
+    if step and step.LootItem then
+        local stepItemID = step.LootItem
+        if stepItemID == itemID then
+            tinsert(APRItemLooted[APR.PlayerID], itemID)
+            APR:UpdateNextStep()
+        end
+    end
+end
+
 function APR.event.functions.merchant(event, ...)
     if event == "CHAT_MSG_LOOT" then
         if step and step.BuyMerchant and not step.Qpart then
@@ -514,17 +610,41 @@ function APR.event.functions.merchant(event, ...)
     end
 end
 
-function APR.event.functions.group(event, category, partyGUID)
-    if event == "GROUP_JOINED" then
-        APR.party:SendGroupMessage()
-    end
+function APR.event.functions.petCombatUI(event, ...)
+    APR.currentStep:RefreshCurrentStepFrameAnchor()
+    APR.party:RefreshPartyFrameAnchor()
+    APR.questOrderList:RefreshFrameAnchor()
+    APR.heirloom:RefreshFrameAnchor()
+    APR.RouteSelection:RefreshFrameAnchor()
+    APR.Buff:RefreshFrameAnchor()
+end
 
-    if event == "GROUP_LEFT" then
-        -- remove all the teammate then resend name + step to the group
-        -- because wow don't send the username of the leaver
-        APR.party:RemoveTeam()
-        APR.party:SendGroupMessage()
-        APR.party:RefreshPartyFrameAnchor()
+function APR.event.functions.playerChoice(event, ...)
+    local choiceInfo = C_PlayerChoice.GetCurrentPlayerChoiceInfo()
+    if choiceInfo and step then
+        if step.Brewery or step.SparringRing then
+            for i, option in ipairs(choiceInfo.options) do
+                if step.Brewery == option.id or step.SparringRing == option.id then
+                    C_PlayerChoice.SendPlayerChoiceResponse(option.buttons[1].id)
+                    APR:NextQuestStep()
+                    break
+                end
+            end
+        end
+    end
+end
+
+function APR.event.functions.raidIcon(event, ...)
+    if step and step.RaidIcon then
+        local targetGUID = UnitGUID("mouseover")
+        if targetGUID then
+            local targetID = select(6, strsplit("-", targetGUID))
+            if targetID and tonumber(step.RaidIcon) == tonumber(targetID) then
+                if (not GetRaidTargetIndex("mouseover")) then
+                    SetRaidTarget("mouseover", 8)
+                end
+            end
+        end
     end
 end
 
@@ -539,9 +659,75 @@ function APR.event.functions.remove(event, questID, wasReplayQuest)
     APR:UpdateStep()
 end
 
+function APR.event.functions.scenario(event, ...)
+    if event == "SCENARIO_COMPLETED" then
+        local currentMapID = C_Map.GetBestMapForUnit('player')
+        tinsert(APRScenarioMapIDCompleted[APR.PlayerID], currentMapID)
+        if step and step.DoScenario then
+            if step.DoScenario == currentMapID then
+                APR:UpdateNextStep()
+            end
+        end
+    end
+
+    if event == "SCENARIO_CRITERIA_UPDATE" then
+        local criteriaID = ...
+        if step and step.Scenario then
+            local isCompleted = false
+            local scenario = step.Scenario
+            local stepInfo = C_ScenarioInfo.GetScenarioStepInfo()
+            if not stepInfo then return end
+            for i = 1, stepInfo.numCriteria do
+                local criteria = C_ScenarioInfo.GetCriteriaInfoByStep(stepInfo.stepID, i)
+                if criteria.criteriaID == criteriaID then
+                    if criteria.completed then
+                        APRScenarioCompleted[APR.PlayerID][scenario.scenarioID] = APRScenarioCompleted[APR.PlayerID]
+                            [scenario.scenarioID] or {}
+                        if not APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], stepInfo.stepID, criteriaID, i) then
+                            tinsert(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID],
+                                { stepID = stepInfo.stepID, criteriaID = criteriaID, criteriaIndex = i })
+                            isCompleted = true
+                        end
+                    end
+                end
+            end
+            if isCompleted then
+                APR:UpdateStep()
+            end
+        end
+    end
+
+    if event == "ZONE_CHANGED_NEW_AREA" then
+        if step and step.LeaveScenario then
+            local scenarioMapID = step.LeaveScenario
+            local mapID = C_Map.GetBestMapForUnit('player')
+            local isCompleted = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
+            if scenarioMapID ~= mapID and isCompleted then
+                APR:UpdateNextStep()
+            end
+        end
+    end
+end
+
 function APR.event.functions.setHS(event, ...)
     if step and step.SetHS then
         APR:UpdateNextStep()
+    end
+end
+
+function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
+    if unitTarget == "player" and step then
+        if step.UseGarrisonHS and spellID == APR.garrisonHSSpellID then
+            APR:UpdateNextStep()
+            return
+        end
+        if step.UseDalaHS and spellID == APR.dalaHSSpellID then
+            APR:UpdateNextStep()
+            return
+        end
+        if (APR:Contains(APR.hearthStoneSpellID, spellID) and step.UseHS) or (step.SpellTrigger and spellID == step.SpellTrigger) then
+            APR:UpdateNextStep()
+        end
     end
 end
 
@@ -551,9 +737,33 @@ function APR.event.functions.treasure(event, ...)
     end
 end
 
+function APR.event.functions.updateQuest(event, ...)
+    if event == "QUEST_LOG_UPDATE" then
+        APR.event:DebouncedUpdateQuest(0.2)
+    elseif event == "UNIT_QUEST_LOG_CHANGED" then
+        local unitTarget = ...
+        if unitTarget == "player" then
+            APR.event:DebouncedUpdateQuest(1)
+        end
+    end
+end
+
+function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isControlSeat, vehicleUIIndicatorID,
+                                     vehicleGUID, mayChooseExit, hasPitch)
+    if unitTarget == "player" then
+        if step and step.InVehicle then
+            APR:UpdateStep()
+        end
+    end
+    if step and step.MountVehicle then
+        APR:NextQuestStep()
+    end
+end
+
 ---------------------------------------------------------------------------------------
 ---------------------------------- Events utils ---------------------------------------
 ---------------------------------------------------------------------------------------
+
 function APR.event:HandleGossipLogic(step)
     if step and APR.settings.profile.autoGossip then
         print("APR: HandleGossipLogic")
@@ -631,59 +841,13 @@ function APR.event:TalkToDenyNpcLogic(step)
     end
 end
 
--- Map
-
--- QUEST_LOG_UPDATE
-
-
--- transport
--- TAXIMAP_OPENED
--- PLAYER_CONTROL_LOST
-
--- ZONE_CHANGED
--- ZONE_CHANGED_INDOORS
--- ZONE_CHANGED_NEW_AREA
--- PLAYER_ENTERING_WORLD
--- WAYPOINT_UPDATE
-
--- sceneCutter
--- CINEMATIC_START
-
-
--- questhandler
--- ADVENTURE_MAP_OPEN
--- CHAT_MSG_COMBAT_XP_GAIN
--- CHAT_MSG_LOOT
--- CHAT_MSG_MONSTER_SAY
--- ENCOUNTER_LOOT_RECEIVED
--- GOSSIP_CLOSED
--- GOSSIP_SHOW
--- GROUP_JOINED
--- GROUP_LEFT
--- HEARTHSTONE_BOUND
--- LEARNED_SPELL_IN_SKILL_LINE
--- MERCHANT_SHOW
--- PET_BATTLE_CLOSE
--- PET_BATTLE_OPENING_START
--- PLAYER_CHOICE_UPDATE
--- PLAYER_TARGET_CHANGED
--- QUEST_ACCEPTED
--- QUEST_ACCEPT_CONFIRM
--- QUEST_AUTOCOMPLETE
--- QUEST_COMPLETE
--- QUEST_DETAIL
--- QUEST_GREETING
--- QUEST_LOG_UPDATE
--- QUEST_PROGRESS
--- QUEST_REMOVED
--- REQUEST_CEMETERY_LIST_RESPONSE
--- SCENARIO_COMPLETED
--- SCENARIO_CRITERIA_UPDATE
--- TAXIMAP_OPENED
--- UI_INFO_MESSAGE
--- UNIT_AURA
--- UNIT_ENTERED_VEHICLE
--- UNIT_QUEST_LOG_CHANGED
--- UNIT_SPELLCAST_SUCCEEDED
--- UPDATE_MOUSEOVER_UNIT
--- ZONE_CHANGED_NEW_AREA
+function APR.event:DebouncedUpdateQuest(delay)
+    if pendingQuestUpdateTimer then
+        pendingQuestUpdateTimer:Cancel()
+    end
+    pendingQuestUpdateTimer = C_Timer.NewTimer(delay, function()
+        APR:UpdateQuest()
+        APR:Debug("Extra UpdQuestThing (debounced)")
+        pendingQuestUpdateTimer = nil
+    end)
+end
