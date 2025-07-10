@@ -16,7 +16,7 @@ local events = {
     accept = { "QUEST_ACCEPTED", "QUEST_ACCEPT_CONFIRM" },
     adventureMapAccept = "ADVENTURE_MAP_OPEN",
     cooldown = "UNIT_AURA",
-    dead = "REQUEST_CEMETERY_LIST_RESPONSE",
+    dead = { "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST" },
     detail = "QUEST_DETAIL",
     done = { "QUEST_AUTOCOMPLETE", "QUEST_COMPLETE", "QUEST_PROGRESS" },
     dropQuest = "UPDATE_MOUSEOVER_UNIT",
@@ -184,11 +184,8 @@ function APR.event.functions.cooldown(event, unitTarget, updateInfo)
     end
 end
 
-function APR.event.functions.dead(event, isGossipTriggered)
-    -- //TODO handle the player death event to get the corpse location and lead him to it
-    APR.Arrow.currentStep = 0
-    APR.Arrow:SetCoord()
-    APR:UpdateMapId()
+function APR.event.functions.dead(event, ...)
+    APR:UpdateStep()
 end
 
 function APR.event.functions.detail(event, questStartItemID)

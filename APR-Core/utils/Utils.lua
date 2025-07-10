@@ -87,8 +87,10 @@ function APR:Debug(msg, data, force)
             print(msg, " - ", key)
             APR:Debug(msg, value)
         end
-    else
+    elseif data then
         print("|cff00bfff" .. msg .. "|r - ", "|cff00ff00" .. data .. "|r")
+    else
+        print("|cff00bfff" .. msg .. "|r")
     end
 end
 
@@ -326,4 +328,19 @@ end
 function APR:NotYet()
     APR:PrintInfo(L["NOT_YET"])
     UIErrorsFrame:AddMessage(errorMessage, 1, 153 / 255, 102 / 255, 1, 5)
+end
+
+function APR:GuideToCorpse()
+    local currentMapID = APR:GetPlayerParentMapID()
+    local corpsePosition = C_DeathInfo.GetCorpseMapPosition(currentMapID)
+    local continentID, worldCorpsePosition
+    if corpsePosition then
+        continentID, worldCorpsePosition = C_Map.GetWorldPosFromMapPos(currentMapID, corpsePosition)
+    end
+
+    if worldCorpsePosition then
+        APR.currentStep:Reset()
+        APR.Arrow:SetArrowActive(true, worldCorpsePosition.y, worldCorpsePosition.x)
+        APR.currentStep:AddExtraLineText("DEAD_GUIDE", L["DEAD_GUIDE"], APR.HEXColor.red)
+    end
 end

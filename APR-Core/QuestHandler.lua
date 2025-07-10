@@ -50,6 +50,12 @@ function APR:UpdateStep()
     APR.party:SendGroupMessage()
     APR.party:RefreshPartyFrameAnchor()
 
+    if UnitIsDeadOrGhost("player") then
+        APR:Debug("Function: APR:UpdateStep() -  Player is dead - guide to corpse")
+        APR:GuideToCorpse()
+        return
+    end
+
     if (APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep]) then
         local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
 
