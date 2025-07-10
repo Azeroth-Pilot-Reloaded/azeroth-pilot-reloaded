@@ -909,27 +909,21 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
     end
 end
 
-APR.routeconfig.eventFrame = CreateFrame("Frame")
-APR.routeconfig.eventFrame:RegisterEvent("PLAYER_LEVEL_UP")
-APR.routeconfig.eventFrame:SetScript("OnEvent", function(self, event, ...)
-    if (event == "PLAYER_LEVEL_UP") then
-        local arg1, _ = ...;
-        APR.Level = arg1
-        if not APR:IsTableEmpty(APRCustomPath[APR.PlayerID]) then
-            local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
-            if APR:Contains(notSkippableRoute, currentRouteName) then
-                return
-            elseif APR.Level == 10 then
-                APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_SPEEDRUN"], APR.Level), function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetSpeedRunPrefab()
-                end)
-            elseif APR.Level == APR.MaxLevelChromie then
-                APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_TWW"], APR.Level), function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetTWWPrefab()
-                end)
-            end
+function APR.routeconfig:CheckRouteResetOnLvlUp()
+    if not APR:IsTableEmpty(APRCustomPath[APR.PlayerID]) then
+        local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
+        if APR:Contains(notSkippableRoute, currentRouteName) then
+            return
+        elseif APR.Level == 10 then
+            APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_SPEEDRUN"], APR.Level), function()
+                APRCustomPath[APR.PlayerID] = {}
+                APR.routeconfig:GetSpeedRunPrefab()
+            end)
+        elseif APR.Level == APR.MaxLevelChromie then
+            APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_TWW"], APR.Level), function()
+                APRCustomPath[APR.PlayerID] = {}
+                APR.routeconfig:GetTWWPrefab()
+            end)
         end
     end
-end)
+end
