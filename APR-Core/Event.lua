@@ -15,7 +15,7 @@ local events = {
     load = "ADDON_LOADED",
     accept = { "QUEST_ACCEPTED", "QUEST_ACCEPT_CONFIRM" },
     adventureMapAccept = "ADVENTURE_MAP_OPEN",
-    cooldown = "UNIT_AURA",
+    buffsAndCooldown = "UNIT_AURA",
     dead = { "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST" },
     detail = "QUEST_DETAIL",
     done = { "QUEST_AUTOCOMPLETE", "QUEST_COMPLETE", "QUEST_PROGRESS" },
@@ -27,7 +27,9 @@ local events = {
     group = { "GROUP_JOINED", "GROUP_LEFT" },
     learnProfession = "LEARNED_SPELL_IN_SKILL_LINE",
     lootItem = "ENCOUNTER_LOOT_RECEIVED",
+    lvlUp = "PLAYER_LEVEL_UP",
     merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
+    party = "CHAT_MSG_ADDON",
     petCombatUI = { "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE" },
     playerChoice = "PLAYER_CHOICE_UPDATE",
     raidIcon = "UPDATE_MOUSEOVER_UNIT",
@@ -178,7 +180,25 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
     end)
 end
 
-function APR.event.functions.cooldown(event, unitTarget, updateInfo)
+function APR.event.functions.buffsAndCooldown(event, unitTarget, updateInfo)
+    if step and step.Buffs then
+        if updateInfo.addedAuras then
+            for _, aura in pairs(updateInfo.addedAuras) do
+                APR.Buff:UpdateBuffIcon(aura)
+            end
+        end
+        if updateInfo.updatedAuraInstanceIDs then
+            for _, auraId in pairs(updateInfo.updatedAuraInstanceIDs) do
+                local aura = C_UnitAuras.GetAuraDataByAuraInstanceID(unitTarget, auraId)
+                APR.Buff:UpdateBuffIcon(aura)
+            end
+        end
+        if updateInfo.removedAuraInstanceIDs then
+            for _, auraId in pairs(updateInfo.removedAuraInstanceIDs) do
+                APR.Buff:DisableBuffIcon(auraId)
+            end
+        end
+    end
     if step and step.Button then
         APR.currentStep:UpdateStepButtonCooldowns()
     end
@@ -541,6 +561,12 @@ function APR.event.functions.lootItem(event, encounterID, itemID, itemLink, quan
     end
 end
 
+function APR.event.functions.lvlUp(event, level, healthDelta, powerDelta, numNewTalents, numNewPvpTalentSlots,
+                                   strengthDelta, agilityDelta, staminaDelta, intellectDelta)
+    APR.Level = level
+    APR.routeconfig:CheckRouteResetOnLvlUp()
+end
+
 function APR.event.functions.merchant(event, ...)
     if event == "CHAT_MSG_LOOT" then
         if step and step.BuyMerchant and not step.Qpart then
@@ -605,6 +631,11 @@ function APR.event.functions.merchant(event, ...)
             end
         end
     end
+end
+
+function APR.event.functions.party(event, ...)
+    local prefix, message, channel = ...;
+    APR.party:GroupUpdateHandler(prefix, message, channel)
 end
 
 function APR.event.functions.petCombatUI(event, ...)

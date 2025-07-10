@@ -172,34 +172,3 @@ function APR.Buff:RemoveAllBuffIcon()
     xOffset = FRAME_OFFSET_DEFAULT
     APR.Buff:RefreshFrameAnchor()
 end
-
----------------------------------------------------------------------------------------
--------------------------------- Event Buff Frames ------------------------------------
----------------------------------------------------------------------------------------
-
-APR.Buff.Event = CreateFrame("Frame")
-APR.Buff.Event:RegisterEvent("UNIT_AURA")
-APR.Buff.Event:SetScript("OnEvent", function(self, event, ...)
-    local step = APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
-    if event == "UNIT_AURA" then
-        local target, info = ...;
-        if step and step.Buffs then
-            if info.addedAuras then
-                for _, aura in pairs(info.addedAuras) do
-                    APR.Buff:UpdateBuffIcon(aura)
-                end
-            end
-            if info.updatedAuraInstanceIDs then
-                for _, auraId in pairs(info.updatedAuraInstanceIDs) do
-                    local aura = C_UnitAuras.GetAuraDataByAuraInstanceID(target, auraId)
-                    APR.Buff:UpdateBuffIcon(aura)
-                end
-            end
-            if info.removedAuraInstanceIDs then
-                for _, auraId in pairs(info.removedAuraInstanceIDs) do
-                    APR.Buff:DisableBuffIcon(auraId)
-                end
-            end
-        end
-    end
-end)
