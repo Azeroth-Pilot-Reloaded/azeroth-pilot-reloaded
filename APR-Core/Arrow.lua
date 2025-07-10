@@ -270,9 +270,9 @@ function APR.Arrow:SetArrowActive(isActive, x, y)
     local a = APR.Arrow
     a.arrowUpdateRate = APR.settings.profile.arrowFPS / 100 -- Update rate in seconds (ie: 2/100 = 0.02 seconds)
     a.Active = isActive
-    a.x = x
-    a.y = y
-    if isActive then
+    a.x = x or 0
+    a.y = y or 0
+    if isActive and x and y then
         APR.ArrowFrame:Show()
     else
         APR.ArrowFrame:Hide()
