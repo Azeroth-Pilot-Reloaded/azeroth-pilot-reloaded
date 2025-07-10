@@ -307,24 +307,13 @@ function APR.party:UpdateGroupListing(message)
     end
 end
 
----------------------------------------------------------------------------------------
---------------------------------- Party Event -----------------------------------------
----------------------------------------------------------------------------------------
-
-
-APR.party.EventFrame = CreateFrame("Frame")
-APR.party.EventFrame:RegisterEvent("CHAT_MSG_ADDON")
-APR.party.EventFrame:SetScript("OnEvent", function(self, event, ...)
-    if (event == "CHAT_MSG_ADDON") then
-        local prefix, message, channel = ...;
-        if (prefix == "APRPartyData" and message and channel == "PARTY") then
-            APR.party:UpdateGroupListing(message)
-        end
-        if (prefix == "APRPartyDelete" and message and channel == "PARTY") then
-            APR.party:RemoveTeam()
-            APR.party:SendGroupMessage()
-            APR.party:RefreshPartyFrameAnchor()
-        end
+function APR.party:GroupUpdateHandler(prefix, message, channel)
+    if prefix == "APRPartyData" and message and channel == "PARTY" then
+        APR.party:UpdateGroupListing(message)
+    end
+    if prefix == "APRPartyDelete" and message and channel == "PARTY" then
+        APR.party:RemoveTeam()
+        APR.party:SendGroupMessage()
+        APR.party:RefreshPartyFrameAnchor()
     end
 end
-)
