@@ -78,11 +78,24 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.11.1", "2025-07-03" },
+        { "Beta-25w29-a", "2025-07-15" },
+        "#Features",
+        "- Added automatic corpse guidance to help locate your body when dead",
+        "- Improved reward function (ilvl -> missing transmog/cosmetic -> vendorValue)",
+
+        "#Bugs",
+        "- Fixed AFK frame display issues during step updates",
+
+        "#Dev",
+        "- Reworked addon update system to a better maintenance and update process",
+        "- Implemented a new event system and cleaned up quest handling logic for easier maintenance",
+        "- Reworked arrow updates for a better updating mechanism",
+        "- Enhanced route completion checks to handle updated routes correctly",
+
         "#WoW",
         "- Update TOC Interface for 11.2.0",
 
-        { "v4.11.0", "2025-06-17" },
+        { "v4.11.0",      "2025-06-17" },
         "#Guides",
         "- Added `Rise of the Red Dawn` Storyline route (new 11.1.7 scenario)",
 
