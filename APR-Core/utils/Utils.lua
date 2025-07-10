@@ -333,9 +333,9 @@ end
 function APR:GuideToCorpse()
     local currentMapID = APR:GetPlayerParentMapID()
     local corpsePosition = C_DeathInfo.GetCorpseMapPosition(currentMapID)
-    local continentID, worldCorpsePosition
+    local worldCorpsePosition
     if corpsePosition then
-        continentID, worldCorpsePosition = C_Map.GetWorldPosFromMapPos(currentMapID, corpsePosition)
+        _, worldCorpsePosition = C_Map.GetWorldPosFromMapPos(currentMapID, corpsePosition)
     end
 
     if worldCorpsePosition then

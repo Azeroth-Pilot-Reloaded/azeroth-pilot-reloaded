@@ -78,7 +78,21 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.11.0", "2025-06-17" },
+        { "Beta-v4.12.0", "2025-07-10" },
+        "#Features",
+        "- Added automatic corpse guidance to help locate your body when dead",
+        "- Improved reward function (ilvl -> missing transmog/cosmetic -> vendorValue)",
+
+        "#Bugs",
+        "- Fixed AFK frame display issues during step updates",
+
+        "#Dev",
+        "- Reworked addon update system to a better maintenance and update process",
+        "- Implemented a new event system and cleaned up quest handling logic for easier maintenance",
+        "- Reworked arrow updates for a better updating mechanism",
+        "- Enhanced route completion checks to handle updated routes correctly",
+
+        { "v4.11.0",      "2025-06-17" },
         "#Guides",
         "- Added `Rise of the Red Dawn` Storyline route (new 11.1.7 scenario)",
 
@@ -96,7 +110,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6",  "2025-04-06" },
+        { "v4.9.6", "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
