@@ -249,7 +249,11 @@ APR.TaxiNodes = {
             [339] = { x = 147.64999389648, y = 4970.5, Name = "Grove of the Ancients, Darkshore" },
             [351] = { x = -321.98999023438, y = 1905.1099853516, Name = "Stardust Spire, Ashenvale" },
             [361] = { x = 432.86999511719, y = 1268.5100097656, Name = "Windshear Hold, Stonetalon Mountains" },
-            [364] = { x = -281.35000610352, y = 237.88000488281, Name = "Northwatch Expedition Base Camp, Stonetalon Mountains" },
+            [364] = {
+                x = -281.35000610352,
+                y = 237.88000488281,
+                Name = "Northwatch Expedition Base Camp, Stonetalon Mountains"
+            },
             [365] = { x = 2013.1300048828, y = 973.94000244141, Name = "Farwatcher's Glen, Stonetalon Mountains" },
             [367] = { x = 2577.5700683594, y = -1694.5300292969, Name = "Thargad's Camp, Desolace" },
             [387] = { x = -1532.4399414062, y = -335.20001220703, Name = "Honor's Stand, Southern Barrens" },
@@ -293,7 +297,11 @@ APR.TaxiNodes = {
             [125] = { x = 6794.4599609375, y = 2183.6499023438, Name = "Sylvanaar, Blade's Edge Mountains" },
             [129] = { x = 1020.4899902344, y = -327.35000610352, Name = "Hellfire Peninsula, The Dark Portal" },
             [147] = { x = 1988.6899414062, y = 509.17001342773, Name = "Hellfire Peninsula - Force Camp Beach Head" },
-            [148] = { x = 1501.1800537109, y = 298.45999145508, Name = "Shatter Point, Hellfire Peninsula (Beach Assault)" },
+            [148] = {
+                x = 1501.1800537109,
+                y = 298.45999145508,
+                Name = "Shatter Point, Hellfire Peninsula (Beach Assault)"
+            },
             [149] = { x = 1486.9100341797, y = 276.20001220703, Name = "Shatter Point, Hellfire Peninsula" },
             [156] = { x = 5531.8701171875, y = 1857.3499755859, Name = "Toshley's Station, Blade's Edge Mountains" },
             [164] = { x = 7399.16015625, y = 966.66998291016, Name = "Orebor Harborage, Zangarmarsh" },
@@ -357,7 +365,11 @@ APR.TaxiNodes = {
             [988] = { x = -227.74699401856, y = -1125.3100585938, Name = "The Incursion, Krasarang Wilds" },
             [991] = { x = 1770.3800048828, y = -1156.6099853516, Name = "Sentinel Basecamp, Krasarang Wilds" },
             [1020] = { x = 1463.8299560547, y = 2103.3500976562, Name = "Westwind Rest, Kun-Lai Summit" },
-            [1057] = { x = 334.35101318359, y = 896.45300292969, Name = "Shrine of Seven Stars, Vale of Eternal Blossoms" },
+            [1057] = {
+                x = 334.35101318359,
+                y = 896.45300292969,
+                Name = "Shrine of Seven Stars, Vale of Eternal Blossoms"
+            },
             [1115] = { x = 2198.0300292969, y = 234.40600585938, Name = "The Lion's Redoubt, Dread Wastes" },
             [1190] = { x = -1193.6999511719, y = -1193.5600585938, Name = "Lion's Landing, Krasarang Wilds" },
             [1221] = { x = 1255.5500488281, y = 5753.759765625, Name = "Beeble's Wreck, Isle Of Giants" },
@@ -452,7 +464,7 @@ APR.TaxiNodes = {
             [2409] = { x = -299.94799804688, y = 359.45001220703, Name = "Wreck of the Old Blanchy, Nazjatar" },
             [2410] = { x = 237.06799316406, y = 1708.1999511719, Name = "Ashen Strand, Nazjatar" },
             [2483] = { x = -525.21197509766, y = 2112.7900390625, Name = "The Tidal Conflux, Nazjatar" }
-        },
+        }
     },
     ["Neutral"] = {
         [12] = {
@@ -466,7 +478,11 @@ APR.TaxiNodes = {
             [370] = { x = 2478.8999023438, y = -356.4700012207, Name = "Ethel Rethor, Desolace" },
             [373] = { x = -1.51999998093, y = -2936.1398925781, Name = "Mulgore - Red Cloud Mesa: To Bloodhoof" },
             [386] = { x = -1095.2399902344, y = -6958.4399414062, Name = "Mossy Pile, Un'Goro Crater" },
-            [513] = { x = -3913.4399414062, y = -6075.3701171875, Name = "Fizzle & Pozzik's Speedbarge, Thousand Needles" },
+            [513] = {
+                x = -3913.4399414062,
+                y = -6075.3701171875,
+                Name = "Fizzle & Pozzik's Speedbarge, Thousand Needles"
+            },
             [539] = { x = -4088.1000976562, y = -8683.08984375, Name = "Bootlegger Outpost, Tanaris" },
             [557] = { x = -2676.1899414062, y = 4987.8701171875, Name = "Shrine of Aviana, Hyjal" },
             [558] = { x = -1760.5799560547, y = 5163.509765625, Name = "Grove of Aessina, Hyjal" },
@@ -522,18 +538,66 @@ APR.TaxiNodes = {
             [226] = { x = 6661.6401367188, y = 3575.4399414062, Name = "Transitus Shield, Coldarra" },
             [237] = { x = 6590.740234375, y = 3929.3999023438, Name = "Coldarra, Keristrasza Landing" },
             [252] = { x = 247.58000183106, y = 3653.2099609375, Name = "Wyrmrest Temple, Dragonblight" },
-            [273] = { x = 381.48999023438, y = 3547.2199707031, Name = "Wyrmrest Temple - bottom to top, Dragonblight - Begin" },
-            [274] = { x = 277.54000854492, y = 3590.3798828125, Name = "Wyrmrest Temple - bottom to top, Dragonblight - End" },
-            [275] = { x = 279.20999145508, y = 3587.6499023438, Name = "Wyrmrest Temple - top to bottom, Dragonblight - Begin" },
-            [276] = { x = 373.92999267578, y = 3511.4799804688, Name = "Wyrmrest Temple - top to bottom, Dragonblight - End" },
-            [277] = { x = 279.14001464844, y = 3587.5500488281, Name = "Wyrmrest Temple - top to middle, Dragonblight - Begin" },
-            [278] = { x = 307.04000854492, y = 3543.2399902344, Name = "Wyrmrest Temple - top to middle, Dragonblight - End" },
-            [279] = { x = 277.14001464844, y = 3587.0400390625, Name = "Wyrmrest Temple - middle to top, Dragonblight - End" },
-            [280] = { x = 273.60000610352, y = 3545.6201171875, Name = "Wyrmrest Temple - middle to top, Dragonblight - Begin" },
-            [281] = { x = 373.57000732422, y = 3512.2199707031, Name = "Wyrmrest Temple - middle to bottom, Dragonblight - End" },
-            [282] = { x = 273.60000610352, y = 3545.6101074219, Name = "Wyrmrest Temple - middle to bottom, Dragonblight - Begin" },
-            [283] = { x = 307.05999755859, y = 3543.3701171875, Name = "Wyrmrest Temple - bottom to middle, Dragonblight - End" },
-            [284] = { x = 381.01000976563, y = 3548.1499023438, Name = "Wyrmrest Temple - bottom to middle, Dragonblight - Begin" },
+            [273] = {
+                x = 381.48999023438,
+                y = 3547.2199707031,
+                Name = "Wyrmrest Temple - bottom to top, Dragonblight - Begin"
+            },
+            [274] = {
+                x = 277.54000854492,
+                y = 3590.3798828125,
+                Name = "Wyrmrest Temple - bottom to top, Dragonblight - End"
+            },
+            [275] = {
+                x = 279.20999145508,
+                y = 3587.6499023438,
+                Name = "Wyrmrest Temple - top to bottom, Dragonblight - Begin"
+            },
+            [276] = {
+                x = 373.92999267578,
+                y = 3511.4799804688,
+                Name = "Wyrmrest Temple - top to bottom, Dragonblight - End"
+            },
+            [277] = {
+                x = 279.14001464844,
+                y = 3587.5500488281,
+                Name = "Wyrmrest Temple - top to middle, Dragonblight - Begin"
+            },
+            [278] = {
+                x = 307.04000854492,
+                y = 3543.2399902344,
+                Name = "Wyrmrest Temple - top to middle, Dragonblight - End"
+            },
+            [279] = {
+                x = 277.14001464844,
+                y = 3587.0400390625,
+                Name = "Wyrmrest Temple - middle to top, Dragonblight - End"
+            },
+            [280] = {
+                x = 273.60000610352,
+                y = 3545.6201171875,
+                Name = "Wyrmrest Temple - middle to top, Dragonblight - Begin"
+            },
+            [281] = {
+                x = 373.57000732422,
+                y = 3512.2199707031,
+                Name = "Wyrmrest Temple - middle to bottom, Dragonblight - End"
+            },
+            [282] = {
+                x = 273.60000610352,
+                y = 3545.6101074219,
+                Name = "Wyrmrest Temple - middle to bottom, Dragonblight - Begin"
+            },
+            [283] = {
+                x = 307.05999755859,
+                y = 3543.3701171875,
+                Name = "Wyrmrest Temple - bottom to middle, Dragonblight - End"
+            },
+            [284] = {
+                x = 381.01000976563,
+                y = 3548.1499023438,
+                Name = "Wyrmrest Temple - bottom to middle, Dragonblight - Begin"
+            },
             [289] = { x = 5973.2998046875, y = 3587.8400878906, Name = "Amber Ledge, Borean Tundra" },
             [291] = { x = -3020.3798828125, y = 5028.6899414062, Name = "Ruined City Post 01, Zul'Drak" },
             [294] = { x = 908.96002197266, y = 2792.4499511719, Name = "Moa'ki, Dragonblight" },
@@ -851,12 +915,6 @@ APR.TaxiNodes = {
             [2915] = { x = 7073.8500976562, y = -1715.9699707031, Name = "Bel'ameth, Amirdrassil" }
         },
         [2274] = {
-            [2928] = { x = -2473.3200683594, y = 2585.4399414062, Name = "Dornogal, Isle of Dorn" },
-            [2929] = { x = -1847.6300048828, y = 985.46002197266, Name = "Freywold Village, Isle of Dorn" },
-            [2931] = { x = -4099.7299804688, y = 2673.6599121094, Name = "Durgaz Cabin, Isle of Dorn" },
-            [2932] = { x = -3394.8000488281, y = 3517.6201171875, Name = "Rambleshire, Isle of Dorn" },
-            [2970] = { x = -879.71899414063, y = 1820.6899414062, Name = "Tranquil Strand, Isle of Dorn" },
-            [2972] = { x = -1847.6300048828, y = 985.46002197266, Name = "Jeff the Flightmaster" },
             [2882] = { x = -1446.6400146484, y = -593.34997558594, Name = "Weaver's Lair, Azj-Kahet" },
             [2889] = { x = 876.14398193359, y = -796.04302978516, Name = "Wildcamp Or'lay, Azj-Kahet" },
             [2893] = { x = -975.33001708984, y = -2149.5600585938, Name = "The Burrows, Azj-Kahet" },
@@ -868,6 +926,14 @@ APR.TaxiNodes = {
             [2924] = { x = 1040.2399902344, y = 998.53802490234, Name = "Light's Redoubt, Hallowfall" },
             [2925] = { x = -4018.75, y = 72.31600189209, Name = "Opportunity Point, The Ringing Deeps" },
             [2926] = { x = -3548.2600097656, y = 748.12799072266, Name = "Camp Murroch, The Ringing Deeps" },
+            [2928] = { x = -2473.3200683594, y = 2585.4399414062, Name = "Dornogal, Isle of Dorn" },
+            [2929] = { x = -1847.6300048828, y = 985.46002197266, Name = "Freywold Village, Isle of Dorn" },
+            [2931] = { x = -4099.7299804688, y = 2673.6599121094, Name = "Durgaz Cabin, Isle of Dorn" },
+            [2932] = { x = -3394.8000488281, y = 3517.6201171875, Name = "Rambleshire, Isle of Dorn" },
+            [2933] = { x = -396.56298828125, y = -2843.1201171875, Name = "Grand Rampart" },
+            [2934] = { x = -334.16299438477, y = -2962.4399414062, Name = "The Pulsing Pit" },
+            [2935] = { x = -379.0710144043, y = -3529.8400878906, Name = "Terrace of Majesty" },
+            [2937] = { x = 103.30899810791, y = -3264.0200195312, Name = "The Narthex" },
             [2941] = { x = 953.68103027344, y = 2035.1400146484, Name = "Mereldar, Hallowfall" },
             [2942] = { x = 988.04498291016, y = 3074.3798828125, Name = "Priory of the Sacred Flame, Hallowfall" },
             [2943] = { x = 385.19100952148, y = 2689.7299804688, Name = "Lorel's Crossing, Hallowfall" },
@@ -875,18 +941,38 @@ APR.TaxiNodes = {
             [2950] = { x = -1522.8900146484, y = 1815.4899902344, Name = "The Aegis Wall, Hallowfall" },
             [2962] = { x = -2735.7900390625, y = 2224.3200683594, Name = "Gundargaz, The Ringing Deeps" },
             [2963] = { x = -3782.6101074219, y = 1529.3000488281, Name = "Shadowvein Point, The Ringing Deeps" },
-            [2933] = { x = -396.56298828125, y = -2843.1201171875, Name = "Grand Rampart" },
-            [2934] = { x = -334.16299438477, y = -2962.4399414062, Name = "The Pulsing Pit" },
-            [2935] = { x = -379.0710144043, y = -3529.8400878906, Name = "Terrace of Majesty" },
-            [2937] = { x = 103.30899810791, y = -3264.0200195312, Name = "The Narthex" },
+            [2970] = { x = -879.71899414063, y = 1820.6899414062, Name = "Tranquil Strand, Isle of Dorn" },
+            [2972] = { x = -1847.6300048828, y = 985.46002197266, Name = "Jeff the Flightmaster" },
             [2984] = { x = -112.17199707031, y = -3505.7700195312, Name = "The Ascending Reach" },
-            [3000] = { x = -4803.2700195312, y = -180.31300354004, Name = "Gutterville, The Ringing Deeps" },
-            [3003] = { x = 468.37298583984, y = -3585.3999023438, Name = "The Crown of Shadows" },
             [2988] = { x = 535.78497314453, y = 65.56770324707, Name = "The Incontinental Hotel" },
             [2996] = { x = 519.48602294922, y = -385.97900390625, Name = "The Heaps" },
             [2997] = { x = 914.70697021484, y = -18.04170036316, Name = "Slam Central Station" },
             [2998] = { x = 225.82600402832, y = 576.26702880859, Name = "Demolition Dome" },
-            [2999] = { x = 153.47599792481, y = 38.32989883423, Name = "The Gallagio" }
+            [2999] = { x = 153.47599792481, y = 38.32989883423, Name = "The Gallagio" },
+            [3000] = { x = -4803.2700195312, y = -180.31300354004, Name = "Gutterville, The Ringing Deeps" },
+            [3003] = { x = 468.37298583984, y = -3585.3999023438, Name = "The Crown of Shadows" }
+        },
+        [2738] = {
+            [3029] = { x = 5.41839981079, y = -636.51397705078, Name = "Tazavesh, K'aresh" },
+            [3030] = { x = -587.07800292969, y = -84.36460113525, Name = "Eco-Dome: Rhovan, K'aresh" },
+            [3031] = { x = -1099.3000488281, y = 1290.25, Name = "The Oasis, K'aresh" },
+            [3032] = { x = 227.20100402832, y = 1610.0699462891, Name = "Shan'dorah, K'aresh" },
+            [3033] = { x = 1760.1099853516, y = 2071.4099121094, Name = "Shadow Point, K'aresh" },
+            [3034] = { x = 1281.2299804688, y = 1160.1800537109, Name = "Overlook Zo'Shuul, K'aresh" },
+            [3035] = { x = 753.81597900391, y = -244.50199890137, Name = "Hosaas Rest, K'aresh" },
+            [3145] = { x = -218.55400085449, y = -1208.1300048828, Name = "Tazavesh, the Veiled Market" },
+            [3146] = { x = -1040.1800537109, y = 1391.8199462891, Name = "The Oasis" },
+            [3147] = { x = 249.98599243164, y = 1611.4300537109, Name = "Shan'dorah" },
+            [3155] = { x = 1497.5100097656, y = 1891.1999511719, Name = "Shadow Point" },
+            [3156] = { x = 999.41101074219, y = 529.13201904297, Name = "Serrated Peaks" },
+            [3157] = { x = 1062.0100097656, y = 1201.5500488281, Name = "Overlook Zo'Shuul" },
+            [3158] = { x = -170.86500549316, y = 562.82098388672, Name = "Lunnall River" },
+            [3159] = { x = -1143.6999511719, y = 509.88198852539, Name = "North Sufaad" },
+            [3160] = { x = 367.91299438477, y = 28.47050094604, Name = "Naakroa" },
+            [3161] = { x = 596.68402099609, y = 2027.4699707031, Name = "Fracture of Laacuna" },
+            [3162] = { x = 771.22100830078, y = 1733.5600585938, Name = "Untethered Space" },
+            [3163] = { x = 985.00897216797, y = -482.05599975586, Name = "Ruins of Yaathron" },
+            [3164] = { x = 787.75500488281, y = -289.4049987793, Name = "Hosaas' Rest" }
         }
     }
 }
