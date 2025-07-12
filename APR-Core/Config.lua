@@ -41,7 +41,6 @@ function APR.settings:InitializeSettings()
             autoAccept = false,
             autoAcceptQuestRoute = true,
             autoHandIn = true,
-            autoHandInChoice = false,
             autoGossip = true,
             autoVendor = false,
             autoRepair = false,
@@ -51,6 +50,14 @@ function APR.settings:InitializeSettings()
             firstAutoShareQuestWithFriend = true,
             autoSkipAllWaypoints = false,
             autoSkipWaypointsFly = false,
+            -- reward
+            autoHandInChoice = false,
+            autoCosmeticMulti = false,
+            autoTransmogMulti = false,
+            rewardPriority1 = "ilvl",
+            rewardPriority2 = "cosmetic",
+            rewardPriority3 = "transmog",
+            rewardPriority4 = "price",
             -- current step
             currentStepFrame = {},
             currentStepShow = true,
@@ -143,6 +150,12 @@ function APR.settings:createBlizzOptions()
     -- Setting definition
     local optionsWidth = 1.3
     local optionsWidthAutomation = 1.75
+    local rewardValues = {
+        ilvl = L["REWARD_PRIO_ILVL"],
+        cosmetic = L["REWARD_PRIO_COSMETIC"],
+        transmog = L["REWARD_PRIO_TRANSMOG"],
+        price = L["REWARD_PRIO_PRICE"],
+    }
     local optionsTable = {
         name = APR.title .. ' - ' .. APR.version,
         type = "group",
@@ -591,17 +604,8 @@ function APR.settings:createBlizzOptions()
                                 get = GetProfileOption,
                                 set = SetProfileOption,
                             },
-                            autoHandInChoice = {
-                                order = 8.4,
-                                type = "toggle",
-                                name = L["AUTO_PICK_REWARD_ITEM"],
-                                desc = L["AUTO_PICK_REWARD_ITEM_DESC"],
-                                width = "full",
-                                get = GetProfileOption,
-                                set = SetProfileOption,
-                            },
                             autoVendor = {
-                                order = 8.5,
+                                order = 8.4,
                                 type = "toggle",
                                 name = L["AUTO_VENDOR"],
                                 desc = L["AUTO_VENDOR_DESC"],
@@ -610,7 +614,7 @@ function APR.settings:createBlizzOptions()
                                 set = SetProfileOption,
                             },
                             autoRepair = {
-                                order = 8.6,
+                                order = 8.5,
                                 type = "toggle",
                                 name = L["AUTO_REPAIR"],
                                 desc = L["AUTO_REPAIR_DESC"],
@@ -620,14 +624,103 @@ function APR.settings:createBlizzOptions()
                             },
                         },
                     },
+                    subgroup_reward_automation = {
+                        order = 8.2,
+                        type = "group",
+                        inline = true,
+                        name = L["REWARDS_OPTIONS"],
+                        args = {
+                            autoHandInChoice = {
+                                order = 8.21,
+                                type = "toggle",
+                                name = L["AUTO_PICK_REWARD_ITEM"],
+                                desc = L["AUTO_PICK_REWARD_ITEM_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                            },
+                            rewardPriority1 = {
+                                order = 8.22,
+                                type = "select",
+                                name = L["REWARD_PRIO"] .. " 1",
+                                width = 1,
+                                values = rewardValues,
+                                get = GetProfileOption,
+                                set = function(info, value) APR.settings:SetRewardPriority(info, value) end,
+                                disabled = function()
+                                    return not self.profile.autoHandInChoice
+                                end,
+                            },
+                            rewardPriority2 = {
+                                order = 8.23,
+                                type = "select",
+                                name = L["REWARD_PRIO"] .. " 2",
+                                width = 1,
+                                values = rewardValues,
+                                get = GetProfileOption,
+                                set = function(info, value) APR.settings:SetRewardPriority(info, value) end,
+                                disabled = function()
+                                    return not self.profile.autoHandInChoice
+                                end,
+                            },
+                            rewardPriority3 = {
+                                order = 8.24,
+                                type = "select",
+                                name = L["REWARD_PRIO"] .. " 3",
+                                width = 1,
+                                values = rewardValues,
+                                get = GetProfileOption,
+                                set = function(info, value) APR.settings:SetRewardPriority(info, value) end,
+                                disabled = function()
+                                    return not self.profile.autoHandInChoice
+                                end,
+                            },
+                            rewardPriority4 = {
+                                order = 8.25,
+                                type = "select",
+                                name = L["REWARD_PRIO"] .. " 4",
+                                width = 1,
+                                values = rewardValues,
+                                get = GetProfileOption,
+                                set = function(info, value) APR.settings:SetRewardPriority(info, value) end,
+                                disabled = function()
+                                    return not self.profile.autoHandInChoice
+                                end,
+                            },
+                            autoCosmeticMulti = {
+                                order = 8.26,
+                                type = "toggle",
+                                name = L["AUTO_MULTI_COSMETIC"],
+                                desc = L["AUTO_MULTI_COSMETIC_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                                disabled = function()
+                                    return not self.profile.autoHandInChoice
+                                end,
+                            },
+                            autoTransmogMulti = {
+                                order = 8.27,
+                                type = "toggle",
+                                name = L["AUTO_MULTI_TRANSMOG"],
+                                desc = L["AUTO_MULTI_TRANSMOG_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                                disabled = function()
+                                    return not self.profile.autoHandInChoice
+                                end,
+                            },
+                        },
+                    },
                     subgroup_waypoints = {
-                        order = 9,
+                        order = 8.3,
                         type = "group",
                         inline = true,
                         name = L["HEADER_WAYPOINT"],
                         args = {
                             autoSkipAllWaypoints = {
-                                order = 9.1,
+                                order = 8.31,
                                 type = "toggle",
                                 name = L["AUTO_SKIP_WAYPOINT"],
                                 desc = L["AUTO_SKIP_WAYPOINT_DESC"],
@@ -639,7 +732,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                             },
                             autoSkipWaypointsFly = {
-                                order = 9.2,
+                                order = 8.32,
                                 type = "toggle",
                                 name = L["AUTO_SKIP_WAYPOINT_FLY"],
                                 desc = L["AUTO_SKIP_WAYPOINT_FLY_DESC"],
@@ -1476,4 +1569,19 @@ function APR.settings:CloseSettings()
             return
         end
     end
+end
+
+function APR.settings:SetRewardPriority(info, value)
+    local key = info[#info] -- e.g. "rewardPriority2"
+    local oldValue = self.profile[key]
+
+    -- Check if another priority already has the value we want to select
+    for i = 1, 4 do
+        local otherKey = "rewardPriority" .. i
+        if otherKey ~= key and self.profile[otherKey] == value then
+            -- Swap the value
+            self.profile[otherKey] = oldValue
+        end
+    end
+    self.profile[key] = value
 end
