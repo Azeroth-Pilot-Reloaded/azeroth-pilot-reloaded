@@ -269,10 +269,9 @@ function APR.event.functions.done(event, ...)
             [Enum.InventoryType.IndexRelicType] = true
         }
 
-
         local function normalizeEquipLoc(itemEquipLoc)
+            -- Normalize weapon types to "WEAPON" for easier comparison
             if not itemEquipLoc then return nil end
-            --  Regroup weapon types together for easier comparison
             if WeaponInventoryTypes[Enum.InventoryType[itemEquipLoc]] then
                 return "WEAPON"
             end
@@ -280,6 +279,7 @@ function APR.event.functions.done(event, ...)
         end
 
         local function getPlayerGearIlvlList()
+            -- Build a table of the player's current ilvl per equip slot
             local gearIlvlList = {}
             for playerSlot = 0, 18 do
                 local itemLink = GetInventoryItemLink("player", playerSlot)
@@ -288,9 +288,9 @@ function APR.event.functions.done(event, ...)
                     if itemQuality == HEIRLOOM_QUALITY then
                         itemLevel = C_Item.GetDetailedItemLevelInfo(itemLink)
                     end
-
                     itemEquipLoc = normalizeEquipLoc(itemEquipLoc)
                     if itemEquipLoc and itemLevel then
+                        -- Store the lowest ilvl found for each slot
                         gearIlvlList[itemEquipLoc] = math.min(gearIlvlList[itemEquipLoc] or itemLevel, itemLevel)
                     end
                 end
@@ -298,18 +298,17 @@ function APR.event.functions.done(event, ...)
             return gearIlvlList
         end
 
-
         local function isCosmeticKnown(itemLink)
+            -- Check if the cosmetic appearance is already collected by the player
             if not itemLink then return false end
             local itemID = C_Item.GetItemInfoInstant(itemLink)
             if itemID then
-                -- Essaye la méthode WoW moderne
+                -- Modern method
                 local sources = C_TransmogCollection.GetItemInfo(itemID)
                 if sources and sources.appearanceID then
-                    local hasTransmog = C_TransmogCollection.PlayerHasTransmog(sources.appearanceID)
-                    return hasTransmog
+                    return C_TransmogCollection.PlayerHasTransmog(sources.appearanceID)
                 end
-                -- Méthode alternative (certaines builds)
+                -- Alternate method (for some builds)
                 local sourceID = select(2, C_TransmogCollection.GetItemInfo(itemID))
                 if sourceID then
                     return C_TransmogCollection.PlayerHasTransmog(sourceID)
@@ -318,12 +317,9 @@ function APR.event.functions.done(event, ...)
             return false
         end
 
-
-        local function getQuestRewardIlvlDifference(gearIlvlList)
-            local rewardList = {}
-            local unknownCosmeticIndex = nil
-            local bestVendorValue, vendorIndex = 0, 1
-
+        local function buildQuestRewardData(gearIlvlList)
+            -- Gather all relevant information for each quest reward choice
+            local data = {}
             for i = 1, GetNumQuestChoices() do
                 local itemLink = GetQuestItemLink("choice", i)
                 if itemLink then
@@ -331,62 +327,124 @@ function APR.event.functions.done(event, ...)
                         itemLink)
                     local itemLevel = C_Item.GetDetailedItemLevelInfo(itemLink)
                     equipLoc = normalizeEquipLoc(equipLoc)
+                    vendorPrice = vendorPrice or 0
 
-                    -- check if quest reward is classID (armor) and subClassID (cosmetic)
-                    if classID == COSMETIC_CLASSID and subClassID == COSMETIC_SUBCLASSID then
-                        if not isCosmeticKnown(itemLink) and not unknownCosmeticIndex then
-                            unknownCosmeticIndex = i
-                        end
-                    end
+                    local isCosmetic = (classID == COSMETIC_CLASSID and subClassID == COSMETIC_SUBCLASSID)
+                    local isKnownCosmetic = isCosmeticKnown(itemLink)
+                    local isTransmog = not isCosmetic and not isKnownCosmetic
+                    local isUpgrade = false
+                    local ilvlDiff = nil
 
                     if gearIlvlList[equipLoc] and itemLevel then
-                        rewardList[i] = itemLevel - gearIlvlList[equipLoc]
+                        ilvlDiff = itemLevel - gearIlvlList[equipLoc]
+                        if ilvlDiff > 0 then isUpgrade = true end
                     end
 
-                    -- Track best vendor price (useful if everything is cosmetic or non-upgrade)
-                    if vendorPrice and vendorPrice > bestVendorValue then
-                        bestVendorValue = vendorPrice
-                        vendorIndex = i
-                    end
+                    data[i] = {
+                        index = i,
+                        link = itemLink,
+                        isCosmetic = isCosmetic,
+                        isUnknownCosmetic = isCosmetic and not isKnownCosmetic,
+                        isUnknownTransmog = isTransmog and not isKnownCosmetic,
+                        vendorPrice = vendorPrice,
+                        ilvlDiff = ilvlDiff or -999,
+                        isUpgrade = isUpgrade,
+                    }
                 end
             end
-            return rewardList, unknownCosmeticIndex, vendorIndex
+            return data
         end
 
-
-
-
-        local function chooseQuestReward()
+        local function chooseQuestRewardByPriority()
+            -- Select the quest reward based on user-defined priority order
             local gearIlvlList = getPlayerGearIlvlList()
-            local rewardDiff, unknownCosmeticIndex, vendorIndex = getQuestRewardIlvlDifference(gearIlvlList)
+            local rewards = buildQuestRewardData(gearIlvlList)
 
-            -- Select the best upgrade
-            local bestIndex, bestDiff = nil, -9999
-            for index, diff in pairs(rewardDiff) do
-                if diff > bestDiff then
-                    bestIndex = index
-                    bestDiff = diff
+            local prioList = {
+                APR.settings.profile.rewardPriority1,
+                APR.settings.profile.rewardPriority2,
+                APR.settings.profile.rewardPriority3,
+                APR.settings.profile.rewardPriority4,
+            }
+
+            -- Define the logic for each priority type
+            local priorityFuncs = {
+                ilvl = function()
+                    -- Find the best ilvl upgrade
+                    local best, bestDiff = nil, -9999
+                    for _, data in pairs(rewards) do
+                        if data.isUpgrade and (not best or data.ilvlDiff > bestDiff) then
+                            best = data.index
+                            bestDiff = data.ilvlDiff
+                        end
+                    end
+                    return best
+                end,
+                cosmetic = function()
+                    -- Pick any unknown cosmetic
+                    local list = {}
+                    for _, data in pairs(rewards) do
+                        if data.isUnknownCosmetic then
+                            table.insert(list, data.index)
+                        end
+                    end
+                    if APR.settings.profile.autoCosmeticMulti then
+                        return list[1]
+                    end
+                    return -1
+                end,
+                transmog = function()
+                    -- Pick any unknown transmog
+                    local list = {}
+                    for _, data in pairs(rewards) do
+                        if data.isUnknownTransmog then
+                            table.insert(list, data.index)
+                        end
+                    end
+                    if APR.settings.profile.autoTransmogMulti then
+                        return list[1]
+                    end
+                    return -1
+                end,
+                price = function()
+                    -- Pick the highest vendor price item
+                    local best, bestPrice = nil, 0
+                    for _, data in pairs(rewards) do
+                        if (not best) or data.vendorPrice > bestPrice then
+                            best = data.index
+                            bestPrice = data.vendorPrice
+                        end
+                    end
+                    return best
+                end
+            }
+
+            -- Try each priority in order until a reward is found
+            for _, prio in ipairs(prioList) do
+                if prio and priorityFuncs[prio] then
+                    local index = priorityFuncs[prio]()
+                    if index and index == -1 then -- -1 means to skip reward
+                        return
+                    elseif index then
+                        GetQuestReward(index)
+                        return
+                    end
+                    -- continue to next priority if no valid/skippable reward found
                 end
             end
 
-            -- take the best upgrade if it exists and is not cosmetic
-            -- otherwise, the most valuable vendor item
-            if bestIndex and not unknownCosmeticIndex and bestDiff > 0 then
-                GetQuestReward(bestIndex)
-            elseif unknownCosmeticIndex then
-                GetQuestReward(unknownCosmeticIndex)
-            else
-                GetQuestReward(vendorIndex)
-            end
+            -- Fallback: always pick the first reward if nothing matched
+            GetQuestReward(1)
         end
 
+        -- Main auto reward selection logic (use where appropriate)
         if APR.settings.profile.autoHandIn then
             if GetNumQuestChoices() > 1 then
                 if APR.settings.profile.autoHandInChoice then
-                    chooseQuestReward()
+                    chooseQuestRewardByPriority()
                 end
             else
-                -- if there is only one choice, we can just get the reward
+                -- Only one choice available, just select it
                 GetQuestReward(1)
             end
         end
