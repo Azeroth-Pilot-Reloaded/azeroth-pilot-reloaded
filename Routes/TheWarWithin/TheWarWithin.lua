@@ -27460,7 +27460,7 @@ APR.RouteQuestStepList["2248-TWW-Rise-of-the-Red-Dawn-Storyline"] = {
     {
         Qpart = { [84712] = { 5 } },
         Coord = { x = -2571.3, y = -1569.3 },
-        ETA = 15,
+        ETA = 25,
         Zone = 2372,
         _index = 83,
     },
