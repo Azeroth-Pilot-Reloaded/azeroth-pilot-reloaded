@@ -16,7 +16,6 @@ function APR.transport:GetMeToRightZone(isRetry)
     end
 
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
-    APR:CheckCurrentRouteUpToDate(routeName)
 
     if (routeZoneMapIDs and mapID and routeName) then
         APR.ActiveRoute = routeName

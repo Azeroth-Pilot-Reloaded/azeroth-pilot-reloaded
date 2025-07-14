@@ -101,7 +101,7 @@ end
 --- @return  number total  The total number of steps in the specified route.
 function APR:GetTotalSteps(route, updateTotal)
     route = route or APR.ActiveRoute
-    updateTotal = updateTotal == nil
+    updateTotal = updateTotal == nil -- default to true if not specified
     local stepIndex = 0
     for id, step in pairs(APR.RouteQuestStepList[route] or {}) do
         -- Hide step for Faction, Race, Class, Achievement,...
@@ -419,11 +419,14 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
         for route, _ in pairs(APRZoneCompleted[APR.PlayerID]) do
             local _, _, routeName, _ = APR:GetRouteMapIDsAndName(route)
             local currentTotalSteps = APR:GetTotalSteps(routeName, false)
-            if APRData[APR.PlayerID][routeName] < currentTotalSteps then
+
+            if (APRData[APR.PlayerID][routeName .. '-TotalSteps'] or 0) < currentTotalSteps then
                 APRZoneCompleted[APR.PlayerID][route] = nil
             end
         end
-        APR:CheckRouteChanges(currentRoute)
+        if currentRoute then
+            APR:CheckRouteChanges(currentRoute)
+        end
         APR.settings.profile.lastRecordedVersion = APR.version
     end
 end

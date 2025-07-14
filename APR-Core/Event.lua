@@ -114,6 +114,9 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.heirloom:RefreshFrameAnchor()
                 APR:UpdateStep()
 
+                local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
+                APR:CheckCurrentRouteUpToDate(routeName)
+
                 APR:PrintInfo("APR " ..
                     L["LOADED"] ..
                     " - Version: |cff00ff00" ..
@@ -852,7 +855,6 @@ end
 
 function APR.event:HandleGossipLogic(step)
     if step and APR.settings.profile.autoGossip then
-        print("APR: HandleGossipLogic")
         local function PickGossipByIcon(iconId)
             local gossipOption = C_GossipInfo.GetOptions()
             if next(gossipOption) then
@@ -885,7 +887,6 @@ function APR.event:HandleGossipLogic(step)
                 -- This is a hardcoded gossip for the quest https://www.wowhead.com/quest=28205/a-perfect-costume
                 gossipCounter = APR:HandleHardcodedGossip(step, gossipCounter)
             else
-                print("APR: HandleGossipLogic - Gossip")
                 local info = C_GossipInfo.GetOptions()
                 if next(info) then
                     if step.GossipOptionID then
