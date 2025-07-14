@@ -40,6 +40,8 @@ local events = {
     treasure = "CHAT_MSG_COMBAT_XP_GAIN",
     updateQuest = { "QUEST_LOG_UPDATE", "UNIT_QUEST_LOG_CHANGED" },
     vehicle = "UNIT_ENTERED_VEHICLE",
+    enterCombat = "PLAYER_REGEN_DISABLED",
+    leaveCombat = "PLAYER_REGEN_ENABLED",
 }
 
 ---------------------------------------------------------------------------------------
@@ -164,7 +166,7 @@ end
 
 function APR.event.functions.adventureMapAccept(event, followerTypeID)
     if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
-    if not APR:IsPickupStep() then
+    if not APR:IsPickupStep() and (step and not step.isAdventureMap) then
         C_AdventureMap.Close();
         APR:NotYet()
         return
@@ -519,21 +521,25 @@ function APR.event.functions.gossip(event, ...)
 
     if event == "GOSSIP_SHOW" then
         -- Exit function if you press Ctrl/shift/alt key before the
-        if IsModifierKeyDown() then return end
+        if IsModifierKeyDown() then
+            return
+        end
 
         -- Deny NPC
         APR.event:TalkToDenyNpcLogic(step)
 
         APR.event:HandleGossipLogic(step)
+
         --PICKUP / HANDIN
         local availableQuests = C_GossipInfo.GetAvailableQuests()
         local activeQuests = C_GossipInfo.GetActiveQuests()
         -- Handin
-        if (APR.settings.profile.autoHandIn) then
+        if APR.settings.profile.autoHandIn then
             if activeQuests then
                 for _, questInfo in ipairs(activeQuests) do
                     if questInfo.title and questInfo.isComplete then
                         if questInfo.questID then
+                            APR:Debug("Selecting active quest for handin: ", tostring(questInfo.questID))
                             return C_GossipInfo.SelectActiveQuest(questInfo.questID)
                         end
                     end
@@ -544,8 +550,11 @@ function APR.event.functions.gossip(event, ...)
         if autoAcceptRoute or autoAccept then
             if availableQuests then
                 for _, questInfo in ipairs(availableQuests) do
+                    APR:Debug("AvailableQuest: ", tostring(questInfo.questID))
                     if questInfo.questID then
-                        if (autoAcceptRoute and APR:IsARouteQuest(questInfo.questID)) or autoAccept then
+                        local isARouteQuest = APR:IsARouteQuest(questInfo.questID)
+                        if (autoAcceptRoute and isARouteQuest) or autoAccept then
+                            APR:Debug("Selecting available quest for pickup: ", tostring(questInfo.questID))
                             return C_GossipInfo.SelectAvailableQuest(questInfo.questID)
                         end
                     end
@@ -847,6 +856,13 @@ function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isCont
     if step and step.MountVehicle then
         APR:NextQuestStep()
     end
+end
+
+function APR.event.functions.enterCombat(event, ...)
+end
+
+function APR.event.functions.leaveCombat(event, ...)
+    APR:UpdateQuest()
 end
 
 ---------------------------------------------------------------------------------------

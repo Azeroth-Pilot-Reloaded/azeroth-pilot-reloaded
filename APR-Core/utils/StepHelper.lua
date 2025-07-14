@@ -58,38 +58,39 @@ function APR:UpdateQuestAndStep()
     APR:UpdateStep()
 end
 
-function APR:UpdateNextQuest()
-    APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
-    APR:UpdateQuest()
-end
-
 function APR:UpdateNextStep()
+    print("APR: UpdateNextStep")
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
     APR:UpdateStep()
 end
 
 function APR:NextQuestStep()
+    print("APR: NextQuestStep")
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
     self:UpdateQuestAndStep()
 end
 
 function APR:PreviousQuestStep()
-    local userMapData = APRData[APR.PlayerID]
-    local activeMap = APR.ActiveRoute
-    local questStepList = APR.RouteQuestStepList[activeMap]
+    local userData = APRData[APR.PlayerID]
+    local activeRoute = APR.ActiveRoute
+    local questStepList = APR.RouteQuestStepList[activeRoute]
 
-    while true do
-        userMapData[activeMap] = userMapData[activeMap] - 1
-        if userMapData[activeMap] <= 0 then
-            userMapData[activeMap] = 1
+    -- Safety to prevent infinite loop
+    local tries = 0
+
+    while userData[activeRoute] > 1 do
+        userData[activeRoute] = userData[activeRoute] - 1
+        local step = questStepList[userData[activeRoute]]
+        if not (APR:StepFilterQuestHandler(step) or (step and step.Waypoint)) then
             break
         end
-        local step = questStepList[userMapData[activeMap]]
-
-        if not (APR:StepFilterQuestHandler(step) or step.Waypoint) then
+        tries = tries + 1
+        if tries > 100 then -- Prevent infinite loop
             break
         end
     end
+
+    print("APR: PreviousQuestStep END ", activeRoute, userData[activeRoute], questStepList)
 
     -- Update the quest and step
     self:UpdateQuestAndStep()
