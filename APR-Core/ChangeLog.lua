@@ -81,16 +81,17 @@ function APR.changelog:SetChangeLog()
         { "Beta-25w29-a", "2025-07-15" },
         "#Features",
         "- Added automatic corpse guidance to help locate your body when dead",
-        "- Improved reward function (ilvl -> missing transmog/cosmetic -> vendorValue)",
-
+        "- Implement new reward priority system (ilvl -> missing cosmetic -> missing transmog -> item price), you can change the priority in the settings",
         "#Bugs",
         "- Fixed AFK frame display issues during step updates",
+        "- Fixed adventure map not yet message, preventing the map from being displayed in DF routes",
 
         "#Dev",
         "- Reworked addon update system to a better maintenance and update process",
         "- Implemented a new event system and cleaned up quest handling logic for easier maintenance",
         "- Reworked arrow updates for a better updating mechanism",
         "- Enhanced route completion checks to handle updated routes correctly",
+        "- Added new Taxi nodes for the new TWW map",
 
         "#WoW",
         "- Update TOC Interface for 11.2.0",

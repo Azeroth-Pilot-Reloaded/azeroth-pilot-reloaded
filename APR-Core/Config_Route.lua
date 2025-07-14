@@ -665,8 +665,9 @@ function APR.routeconfig:InitRouteConfig()
         -- to trigger the frame
         local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
         APR.ActiveRoute = routeName
-        APR:UpdateStep()
+
         APR:UpdateMapId()
+        APR:UpdateStep()
     end)
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
     InitDialogControlFrame("RouteListFrame", CreateRouteTableFrame, SetRouteListTab)

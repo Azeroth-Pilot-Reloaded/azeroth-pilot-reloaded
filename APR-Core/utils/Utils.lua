@@ -21,6 +21,8 @@ function APR:CheckDenyNPC(step)
         local npc_id, name = self:GetTargetID(), UnitName("target")
         if (npc_id and name) then
             if (npc_id == step.DenyNPC) then
+                APR:Debug("APR:CheckDenyNPC() - Deny NPC found")
+
                 C_GossipInfo.CloseGossip()
                 C_Timer.After(0.3, function() APR:CloseQuest() end)
                 APR:NotYet()
@@ -327,7 +329,7 @@ end
 
 function APR:NotYet()
     APR:PrintInfo(L["NOT_YET"])
-    UIErrorsFrame:AddMessage(errorMessage, 1, 153 / 255, 102 / 255, 1, 5)
+    UIErrorsFrame:AddMessage(L["NOT_YET"], 1, 153 / 255, 102 / 255, 1, 5)
 end
 
 function APR:GuideToCorpse()
