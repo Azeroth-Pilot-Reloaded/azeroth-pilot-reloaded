@@ -3,6 +3,12 @@ name: Discord Release Notification
 on:
   release:
     types: [published]  # Triggers on newly published releases
+  workflow_dispatch:
+    inputs:
+      release_tag:
+        description: 'Release tag to notify'
+        required: false
+        type: string
 
 jobs:
   notify-discord:
@@ -21,8 +27,21 @@ jobs:
           python -m pip install --upgrade pip
           python -m pip install requests python-dotenv
 
+      - name: Get release body if manual
+        id: get_release_body
+        if: ${{ github.event.inputs.release_tag != '' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          release_body=$(gh release view "${{ github.event.inputs.release_tag }}" --json body -q ".body")
+          echo "release_body<<EOF" >> $GITHUB_ENV
+          echo "$release_body" >> $GITHUB_ENV
+          echo "EOF" >> $GITHUB_ENV
+
       - name: Post release notes to Discord
         env:
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          RELEASE_TAG: ${{ github.event.release.tag_name || github.event.inputs.release_tag }}
+          RELEASE_BODY: ${{ env.release_body || github.event.release.body }}
         run: |
-          python .github/scripts/post_discord.py --tag "${{ github.event.release.tag_name }}" --body "${{ github.event.release.body }}"
+          python .github/scripts/post_discord.py
