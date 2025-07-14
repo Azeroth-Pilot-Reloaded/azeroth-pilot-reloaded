@@ -31,7 +31,6 @@ function APR:UpdateStep()
     if not APR.settings.profile.enableAddon then
         return
     end
-    APR:Debug("Function: APR:UpdateStep()")
 
     if (APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute]) then
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
@@ -55,6 +54,8 @@ function APR:UpdateStep()
         APR:GuideToCorpse()
         return
     end
+
+    APR:Debug("APR.UpdateStep:Current Step:", CurStep)
 
     if (APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep]) then
         local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
@@ -245,8 +246,10 @@ function APR:UpdateStep()
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Do Scenario", scenarioMapID)
 
             if step.Qpart then
-                local questID = next(step.Qpart)
-                if (APR.ActiveQuests[questID] and APR.ActiveQuests[questID] == "C") and isCompleted then
+                local questID, objectiveIndex = next(step.Qpart)
+                local questData = APR.ActiveQuests[questID]
+                local objectiveData = questData and questData.objectives and questData.objectives[objectiveIndex] or nil
+                if (objectiveData and objectiveData.status == APR.QUEST_STATUS.COMPLETE) and isCompleted then
                     APR:UpdateNextStep()
                 end
             elseif isCompleted then
@@ -369,46 +372,59 @@ function APR:UpdateStep()
 
         -- Qpart (objectives)
         if (step.Qpart) then
+            APR:Debug("Qpart step detected")
             local questIDs = step.Qpart
             local questToHighlight = nil
 
             if (step.QpartDB) then
+                APR:Debug("QpartDB detected")
                 local wantedQuestId = 0
                 for index = 1, getn(step.QpartDB) do
                     local qPartDBQuestId = step.QpartDB[index]
+                    APR:Debug("QpartDB index: " .. index .. ", questID: " .. tostring(qPartDBQuestId))
                     if (C_QuestLog.IsQuestFlaggedCompleted(qPartDBQuestId) or APR.ActiveQuests[qPartDBQuestId]) then
                         wantedQuestId = qPartDBQuestId
+                        APR:Debug("QpartDB wantedQuestId set: " .. tostring(wantedQuestId))
                         break
                     end
                 end
                 local newList = questIDs[1]
                 questIDs = {}
                 questIDs[wantedQuestId] = newList
+                APR:Debug("QpartDB questIDs updated: " .. tostring(wantedQuestId))
             end
 
             local flagged = 0
             local total = 0
             for questID, objectives in pairs(questIDs) do
                 questID = tonumber(questID)
+                APR:Debug("Processing Qpart questID: " .. tostring(questID))
                 local questData = APR.ActiveQuests[questID]
                 for _, objectiveIndex in pairs(objectives) do
                     objectiveIndex = tonumber(objectiveIndex)
                     total = total + 1
+                    APR:Debug("Qpart objectiveIndex: " .. tostring(objectiveIndex))
 
                     if C_QuestLog.IsQuestFlaggedCompleted(questID)
                         or ((UnitLevel("player") == APR.MaxLevel) and APR:Contains(APR.BonusObj, questID))
                         or APRData[APR.PlayerID].BonusSkips[questID]
                     then
                         flagged = flagged + 1
+                        APR:Debug("Qpart flagged: " ..
+                            tostring(flagged) .. "/" .. tostring(total) .. " for questID: " .. tostring(questID))
                     elseif questData and questData.objectives and questData.objectives[objectiveIndex]
                         and questData.objectives[objectiveIndex].status == APR.QUEST_STATUS.COMPLETE
                     then
                         flagged = flagged + 1
+                        APR:Debug("Qpart objective complete: " ..
+                            tostring(objectiveIndex) .. " for questID: " .. tostring(questID))
                     elseif questData and questData.objectives and questData.objectives[objectiveIndex] then
                         if APR.IsInRouteZone then
                             local obj = questData.objectives[objectiveIndex]
                             local checkpbar = C_QuestLog.GetQuestObjectives(questID)
                             local text = obj.text
+                            APR:Debug("Qpart adding quest step: " ..
+                                tostring(questID) .. " obj: " .. tostring(objectiveIndex) .. " text: " .. tostring(text))
                             if not string.find(text, "(.*)(%d+)(.*)") and checkpbar
                                 and checkpbar[objectiveIndex]
                                 and checkpbar[objectiveIndex].type == "progressbar"
@@ -422,18 +438,23 @@ function APR:UpdateStep()
                         questToHighlight = questToHighlight or questID
                     elseif (not questData and not MissingQs[questID]) then
                         if APR.IsInRouteZone then
+                            APR:Debug("Qpart missing quest: " ..
+                                tostring(questID) .. " obj: " .. tostring(objectiveIndex))
                             APR:MissingQuest(questID, objectiveIndex)
                             MissingQs[questID] = 1
                         end
                     end
                 end
             end
-            if (flagged == total and flagged > 0) then
+            APR:Debug("Qpart flagged/total: " .. tostring(flagged) .. "/" .. tostring(total))
+            if flagged == total and (flagged > 0 or total == 0) then
+                APR:Debug("Qpart all flagged, updating next step")
                 APR:UpdateNextStep()
                 return
             end
 
             if questToHighlight then
+                APR:Debug("Qpart tracking quest: " .. tostring(questToHighlight))
                 APR:TrackQuest(questToHighlight)
             end
         elseif (step.ExitTutorial) then
@@ -568,9 +589,7 @@ function APR:UpdateStep()
                         tinsert(uncompletedIDs, questID)
                         questToHighlight = questToHighlight or questID
                     end
-                    if C_QuestLog.IsQuestFlaggedCompleted(questID)
-                        or (questData and questData.status == APR.QUEST_STATUS.COMPLETE)
-                    then
+                    if C_QuestLog.IsQuestFlaggedCompleted(questID) then
                         completedCount = completedCount + 1
                     end
                 end
@@ -799,6 +818,7 @@ function APR:UpdateStep()
         -- set Progress bar with the right total
         APR.currentStep:SetProgressBar(CurStep)
     else
+        APR:Debug("APR.UpdateStep:No step found for current step:", CurStep)
         APR.routeconfig:CheckIsCustomPathEmpty()
     end
 end
@@ -930,13 +950,13 @@ function APR:RemoveQuest(questID)
             end
         end
         if nrLeft == 0 then
-            APR:UpdateNextQuest()
-            APR:Debug("APR - RemoveQuest", APRData[APR.PlayerID][APR.ActiveRoute])
+            self:UpdateQuest()
+            self:Debug("APR - RemoveQuest", APRData[APR.PlayerID][APR.ActiveRoute])
         end
     end
 
-    APR:UpdateMapId()
-    APR:UpdateStep()
+    self:UpdateMapId()
+    self:UpdateStep()
 end
 
 function APR:PopupAutocompleteQuest()
