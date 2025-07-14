@@ -28,8 +28,6 @@
     <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Alliance.lua"/>
     <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Horde.lua"/>
 
-    <Script file="Routes/TheWarWithin/TheWarWithin_Alliance.lua"/>
-    <Script file="Routes/TheWarWithin/TheWarWithin_Horde.lua"/>
     <Script file="Routes/TheWarWithin/TheWarWithin.lua"/>
     <Script file="Routes/TheWarWithin/delves.lua"/>
 
