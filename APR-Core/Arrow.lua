@@ -93,8 +93,6 @@ APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
     APR.ArrowFrame.Button:Hide()
     APR:PrintInfo("APR: " .. L["SKIP_WAYPOINT"])
     APR:NextQuestStep()
-    APR.Arrow.x = 0
-    APR.Arrow.y = 0
 end)
 
 local t = APR.ArrowFrame.Button:CreateTexture(nil, "BACKGROUND")
@@ -165,7 +163,7 @@ local function CheckDistance()
 end
 
 function APR.Arrow:SetCoord()
-    APR:Debug("Function: APR.Arrow:SetCoord")
+    APR:Debug("APR.Arrow:SetCoord()")
 
     if not APR.ActiveRoute then
         return
@@ -177,11 +175,13 @@ function APR.Arrow:SetCoord()
     end
     local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
     if step and step.NoArrow and APR.IsInRouteZone then
+        APR:Debug("APR.Arrow:SetCoord(): NoArrow step found, hiding arrow")
         self:SetArrowActive(false, 0, 0)
         return
     end
 
     if APR.Arrow.currentStep ~= CurStep and step.Coord and APR.IsInRouteZone then
+        APR:Debug("APR.Arrow:SetCoord(): Setting arrow for step:" .. CurStep .. " at coordinates:", step.Coord)
         self:SetArrowActive(true, step.Coord.x, step.Coord.y)
         APR.Arrow.currentStep = CurStep
     end
