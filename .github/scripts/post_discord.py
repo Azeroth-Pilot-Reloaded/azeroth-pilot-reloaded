@@ -8,22 +8,26 @@ import argparse
 
 load_dotenv()
 
-# Read the Discord webhook URL from an environment variable
-DISCORD_WEBHOOK_URL = os.getenv('DISCORD_WEBHOOK_URL')
-
-# Check if the DISCORD_WEBHOOK_URL is set
-if not DISCORD_WEBHOOK_URL:
-    print("Error: DISCORD_WEBHOOK_URL environment variable is not set.")
-    sys.exit(1)
-
-# Parse command line arguments
-parser = argparse.ArgumentParser(description='Post release notes to Discord.')
-parser.add_argument('--tag', required=True, help='Release tag name')
-parser.add_argument('--body', required=True, help='Release body')
+parser = argparse.ArgumentParser(description="Post release notes to Discord")
+parser.add_argument('--tag', type=str, help='Release tag name')
+parser.add_argument('--body', type=str, help='Release body text')
+parser.add_argument('--webhook', type=str, help='Discord webhook URL')
 args = parser.parse_args()
 
-tag_name = args.tag
-release_body = args.body
+# Read the Discord webhook URL from argument or environment variable
+DISCORD_WEBHOOK_URL = args.webhook or os.getenv('DISCORD_WEBHOOK_URL')
+
+if not DISCORD_WEBHOOK_URL:
+    print("Error: DISCORD_WEBHOOK_URL environment variable or --webhook argument is not set.")
+    sys.exit(1)
+
+# Read tag and body from arguments or environment variables
+tag_name = args.tag or os.getenv('RELEASE_TAG')
+release_body = args.body or os.getenv('RELEASE_BODY')
+
+if not tag_name or not release_body:
+    print("Error: RELEASE_TAG/--tag or RELEASE_BODY/--body is not set.")
+    sys.exit(1)
 
 # Split release_body by lines
 lines = release_body.splitlines()
