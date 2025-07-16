@@ -50,6 +50,8 @@ APR.wowpatch, APR.wowbuild, APR.wowdate, APR.wowtoc = GetBuildInfo()
 -- Quest
 APR.RouteList = {}
 APR.RouteQuestStepList = {}
+APR.MissingQuests = {}
+
 
 function APR:OnInitialize()
     local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
