@@ -309,14 +309,14 @@ function APR.event.functions.done(event, ...)
             local itemID = C_Item.GetItemInfoInstant(itemLink)
             if itemID then
                 -- Modern method
-                local sources = C_TransmogCollection.GetItemInfo(itemID)
-                if sources and sources.appearanceID then
-                    return C_TransmogCollection.PlayerHasTransmog(sources.appearanceID)
+                local itemAppearanceID  = C_TransmogCollection.GetItemInfo(itemID)
+                if itemAppearanceID then
+                    return C_TransmogCollection.PlayerHasTransmog(itemAppearanceID)
                 end
                 -- Alternate method (for some builds)
-                local sourceID = select(2, C_TransmogCollection.GetItemInfo(itemID))
-                if sourceID then
-                    return C_TransmogCollection.PlayerHasTransmog(sourceID)
+                local itemModifiedAppearanceID = select(2, C_TransmogCollection.GetItemInfo(itemID))
+                if itemModifiedAppearanceID then
+                    return C_TransmogCollection.PlayerHasTransmog(itemModifiedAppearanceID)
                 end
             end
             return false
