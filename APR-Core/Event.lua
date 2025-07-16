@@ -683,7 +683,7 @@ function APR.event.functions.merchant(event, ...)
         if APR.settings.profile.autoVendor then
             local totalPrices = 0
 
-            for myBags = Enum.BagIndex.Backpack, NUM_TOTAL_BAG do
+            for myBags = Enum.BagIndex.Backpack, APR.MaxBagSlots do
                 for bagSlots = 1, C_Container.GetContainerNumSlots(myBags) do
                     local CurrentItemId = C_Container.GetContainerItemID(myBags, bagSlots)
                     if CurrentItemId then

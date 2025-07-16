@@ -42,8 +42,8 @@ function APR:UpdateStep()
     end
 
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    -- Extra liners here
-    local MissingQs = {}
+    
+    local missingQuests = {}
 
     -- update for group
     APR.party:SendGroupMessage()
@@ -436,12 +436,12 @@ function APR:UpdateStep()
                             end
                         end
                         questToHighlight = questToHighlight or questID
-                    elseif (not questData and not MissingQs[questID]) then
+                    elseif (not questData and not missingQuests[questID]) then
                         if APR.IsInRouteZone then
                             APR:Debug("Qpart missing quest: " ..
                                 tostring(questID) .. " obj: " .. tostring(objectiveIndex))
                             APR:MissingQuest(questID, objectiveIndex)
-                            MissingQs[questID] = 1
+                            missingQuests[questID] = 1
                         end
                     end
                 end
@@ -696,9 +696,9 @@ function APR:UpdateStep()
                     if APR.IsInRouteZone then
                         if questText then
                             APR.currentStep:AddQuestSteps(questID, questText, objectiveIndex)
-                        elseif not MissingQs[questID] then
+                        elseif not missingQuests[questID] then
                             APR:MissingQuest(questID, objectiveIndex)
-                            MissingQs[questID] = 1
+                            missingQuests[questID] = 1
                         end
                         questToHighlight = questToHighlight or questID
                     end
