@@ -42,8 +42,8 @@ function APR:UpdateStep()
     end
 
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    
-    local missingQuests = {}
+
+    APR:ResetMissingQuests()
 
     -- update for group
     APR.party:SendGroupMessage()
@@ -436,12 +436,11 @@ function APR:UpdateStep()
                             end
                         end
                         questToHighlight = questToHighlight or questID
-                    elseif (not questData and not missingQuests[questID]) then
+                    elseif not questData then
                         if APR.IsInRouteZone then
                             APR:Debug("Qpart missing quest: " ..
                                 tostring(questID) .. " obj: " .. tostring(objectiveIndex))
-                            APR:MissingQuest(questID, objectiveIndex)
-                            missingQuests[questID] = 1
+                            APR:HandleMissingQuest(questID, objectiveIndex)
                         end
                     end
                 end
@@ -567,6 +566,10 @@ function APR:UpdateStep()
                     local questName = C_QuestLog.GetTitleForQuestID(questID)
                     if questName then
                         myQuestID = questID
+                    elseif not questData and not C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                        if APR.IsInRouteZone then
+                            APR:HandleMissingQuest(questID)
+                        end
                     end
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) or questData then
                         hasQuestCompleted = true
@@ -588,6 +591,10 @@ function APR:UpdateStep()
                     if questData then
                         tinsert(uncompletedIDs, questID)
                         questToHighlight = questToHighlight or questID
+                    elseif not C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                        if APR.IsInRouteZone then
+                            APR:HandleMissingQuest(questID)
+                        end
                     end
                     if C_QuestLog.IsQuestFlaggedCompleted(questID) then
                         completedCount = completedCount + 1
@@ -696,9 +703,8 @@ function APR:UpdateStep()
                     if APR.IsInRouteZone then
                         if questText then
                             APR.currentStep:AddQuestSteps(questID, questText, objectiveIndex)
-                        elseif not missingQuests[questID] then
-                            APR:MissingQuest(questID, objectiveIndex)
-                            missingQuests[questID] = 1
+                        else
+                            APR:HandleMissingQuest(questID, objectiveIndex)
                         end
                         questToHighlight = questToHighlight or questID
                     end

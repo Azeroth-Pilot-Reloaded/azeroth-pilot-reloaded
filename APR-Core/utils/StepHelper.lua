@@ -59,13 +59,11 @@ function APR:UpdateQuestAndStep()
 end
 
 function APR:UpdateNextStep()
-    print("APR: UpdateNextStep")
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
     APR:UpdateStep()
 end
 
 function APR:NextQuestStep()
-    print("APR: NextQuestStep")
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
     self:UpdateQuestAndStep()
 end
@@ -89,8 +87,6 @@ function APR:PreviousQuestStep()
             break
         end
     end
-
-    print("APR: PreviousQuestStep END ", activeRoute, userData[activeRoute], questStepList)
 
     -- Update the quest and step
     self:UpdateQuestAndStep()
@@ -265,6 +261,19 @@ function APR:MissingQuest(questId, objectiveId)
         questTextToAdd = L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questId
     end
     APR.currentStep:AddQuestSteps(questId, questTextToAdd, objectiveId, false, true)
+end
+
+function APR:ResetMissingQuests()
+    for k in pairs(self.MissingQuests) do
+        self.MissingQuests[k] = nil
+    end
+end
+
+function APR:HandleMissingQuest(questId, objectiveId)
+    if not self.MissingQuests[questId] then
+        self:MissingQuest(questId, objectiveId)
+        self.MissingQuests[questId] = true
+    end
 end
 
 function APR:UpdateQpartPart()
