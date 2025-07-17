@@ -1512,6 +1512,8 @@ function APR.settings:ToggleAddon()
     else
         -- settings
         self.profile.showArrow = true
+        APR.Arrow.currentStep = 0
+        APR.Arrow:SetCoord()
     end
     APR.currentStep:RefreshCurrentStepFrameAnchor()
     APR.questOrderList:RefreshFrameAnchor()
