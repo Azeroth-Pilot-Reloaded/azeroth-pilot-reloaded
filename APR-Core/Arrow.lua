@@ -11,7 +11,9 @@ APR.Arrow = {
     x = 0,
     y = 0,
     Distance = 0,
-    MaxDistanceWrongZone = 4000,
+    QuestStepDistance = 0,
+    MaxDistanceWrongZone = 10000,
+    isWrongZoneDistance = false,
     arrowUpdateRate = 0,
     frameTicker = 0
 }
@@ -220,12 +222,30 @@ function APR.Arrow:CalculPosition()
 
     local facing = GetPlayerFacing()
     if not facing then return end
-
     local x, y = APR.Arrow.x, APR.Arrow.y
     local dx, dy = playerX - x, y - playerY
     local distance = (dx * dx + dy * dy) ^ 0.5
     local angle = math.atan2(-dx, dy) - facing
     local perc = math.abs((math.pi - math.abs(angle)) / math.pi)
+
+    -- Calcul de la distance par rapport à questStep.Coord si disponible
+    local questStepDistance = nil
+    if questStep and questStep.Coord then
+        local qx, qy = questStep.Coord.x, questStep.Coord.y
+        local qdx, qdy = playerX - qx, qy - playerY
+        questStepDistance = (qdx * qdx + qdy * qdy) ^ 0.5
+        APR.Arrow.QuestStepDistance = questStepDistance
+        if questStepDistance >= APR.Arrow.MaxDistanceWrongZone then
+            APR.Arrow.isWrongZoneDistance = true
+        elseif APR.Arrow.isWrongZoneDistance then
+            APR.Arrow.isWrongZoneDistance = false
+            C_Timer.After(0.3, function()
+                APR.Arrow.currentStep = 0
+                APR:UpdateMapId()
+            end)
+            return
+        end
+    end
 
     -- Set global distance for transport
     APR.Arrow.Distance = distance

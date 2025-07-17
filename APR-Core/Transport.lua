@@ -32,6 +32,10 @@ function APR.transport:GetMeToRightZone(isRetry)
     end
 
     APR:UpdateQuestAndStep()
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
+    local step = CurStep and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] or nil
+
+
     local farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
     if APR:CheckIsInRouteZone() and not farAway then
         APR.IsInRouteZone = true
@@ -44,11 +48,6 @@ function APR.transport:GetMeToRightZone(isRetry)
         -- reset IsInRouteZone
         APR.IsInRouteZone = false
         APR.currentStep:Reset()
-        local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-        if not CurStep then
-            return
-        end
-        local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
         if not step then
             return
         end

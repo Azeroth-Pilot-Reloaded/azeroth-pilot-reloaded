@@ -309,7 +309,7 @@ function APR.event.functions.done(event, ...)
             local itemID = C_Item.GetItemInfoInstant(itemLink)
             if itemID then
                 -- Modern method
-                local itemAppearanceID  = C_TransmogCollection.GetItemInfo(itemID)
+                local itemAppearanceID = C_TransmogCollection.GetItemInfo(itemID)
                 if itemAppearanceID then
                     return C_TransmogCollection.PlayerHasTransmog(itemAppearanceID)
                 end
