@@ -78,6 +78,12 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "Beta-25w29-b", "2025-07-17" },
+        "#Bugs",
+        "- Fixed auto vendor",
+        "- Reworked missing quest detection",
+        "- Fixed auto reward selection",
+
         { "Beta-25w29-a", "2025-07-15" },
         "#Features",
         "- Added automatic corpse guidance to help locate your body when dead",
@@ -96,7 +102,7 @@ function APR.changelog:SetChangeLog()
         "#WoW",
         "- Update TOC Interface for 11.2.0",
 
-        { "v4.11.0",      "2025-06-17" },
+        { "v4.11.0", "2025-06-17" },
         "#Guides",
         "- Added `Rise of the Red Dawn` Storyline route (new 11.1.7 scenario)",
 
@@ -114,7 +120,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6", "2025-04-06" },
+        { "v4.9.6",  "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
