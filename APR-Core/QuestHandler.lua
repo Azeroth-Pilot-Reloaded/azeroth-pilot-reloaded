@@ -73,6 +73,7 @@ function APR:UpdateStep()
         end
 
         -- set the arrow coord before the step logic to avoid double completion
+        APR.Arrow.currentStep = 0
         APR.Arrow:SetCoord()
 
         if (APR.ActiveRoute) then

@@ -385,7 +385,7 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
         FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
     end
 
-    local questKey = questID .. "-" .. objectiveIndex
+    local questKey = questID .. "-" .. (objectiveIndex or 0)
     local existingContainer = self.questsList[questKey]
 
     -- remove if it's already exist

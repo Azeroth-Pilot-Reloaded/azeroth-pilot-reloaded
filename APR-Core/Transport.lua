@@ -47,7 +47,7 @@ function APR.transport:GetMeToRightZone(isRetry)
     else
         -- reset IsInRouteZone
         APR.IsInRouteZone = false
-        APR.currentStep:Reset()
+
         if not step then
             return
         end
@@ -65,14 +65,14 @@ function APR.transport:GetMeToRightZone(isRetry)
 
         -- Retry system : if it's not already a retry, schedule one
         if not isRetry and not APR.transport._retryPending then
-            APR.transport._retryPending = true
-            C_Timer.After(0.3, function()
-                APR.transport._retryPending = false
-                APR.transport:GetMeToRightZone(true)
-            end)
+            -- APR.transport._retryPending = true
+            -- C_Timer.After(1, function()
+            --     APR.transport._retryPending = false
+            --     APR.transport:GetMeToRightZone(true)
+            -- end)
 
-            APR:Debug("APR.transport:GetMeToRightZone() - retry scheduled in 300ms")
-            return
+            -- APR:Debug("APR.transport:GetMeToRightZone() - retry scheduled in 300ms")
+            -- return
         end
 
         local reason = ""
@@ -81,6 +81,7 @@ function APR.transport:GetMeToRightZone(isRetry)
         else
             reason = L["WRONG_ZONE"]
         end
+        APR.currentStep:Reset()
         local destinationText = reason ..
             " - " .. L["DESTINATION"] .. ": " .. mapInfo.name .. ", " .. parentMapInfo.name .. " (" .. nextZone .. ")"
         APR.currentStep:AddExtraLineText("DESTINATION", destinationText)
@@ -346,11 +347,14 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if not APR.settings.profile.enableAddon then
         return
     end
+    if event == "PLAYER_ENTERING_WORLD" then
+        APR.transport:GetMeToRightZone()
+    end
+
     if event == "ZONE_CHANGED"
         or event == "ZONE_CHANGED_INDOORS"
         or event == "ZONE_CHANGED_NEW_AREA"
-        or event == "WAYPOINT_UPDATE"
-        or event == "PLAYER_ENTERING_WORLD" then
+        or event == "WAYPOINT_UPDATE" then
         if not APR.IsInRouteZone and APR.ActiveRoute then
             APR.transport:GetMeToRightZone()
         end
