@@ -78,6 +78,12 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "Beta-25w29-c", "2025-07-1" },
+        "#Bugs",
+        "- Testing fixes for false 'wrong zone' messages",
+        "- Enhanced arrow module to include quest distance, improving updates when receiving 'too far away' messages",
+        "- Fixed missing arrow after re-enabling the addon",
+
         { "Beta-25w29-b", "2025-07-17" },
         "#Bugs",
         "- Fixed auto vendor",
@@ -102,7 +108,7 @@ function APR.changelog:SetChangeLog()
         "#WoW",
         "- Update TOC Interface for 11.2.0",
 
-        { "v4.11.0", "2025-06-17" },
+        { "v4.11.0",      "2025-06-17" },
         "#Guides",
         "- Added `Rise of the Red Dawn` Storyline route (new 11.1.7 scenario)",
 
@@ -120,7 +126,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6",  "2025-04-06" },
+        { "v4.9.6", "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
