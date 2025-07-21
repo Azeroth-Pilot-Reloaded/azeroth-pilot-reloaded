@@ -36,7 +36,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [34398] = { 1 } },
             Coord = { x = 873.9, y = -9007.3 },
             ExtraLineText = "GO_BLASTEDLANDS",
-            GossipOptionID = 51033,
+            GossipOptionIDs = { 50005, 51033 },
             Range = 0.69,
             RaidIcon = 149626,
             _index = 6,
