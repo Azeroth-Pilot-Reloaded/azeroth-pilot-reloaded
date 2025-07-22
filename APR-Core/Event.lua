@@ -80,7 +80,7 @@ function APR.event.EventHandler(self, event, ...)
     end
 
     if not APR:IsInstanceWithUI() then
-        APR:Debug("APR: Event - IsInstanceWithUI : " .. APR:IsInstanceWithUI())
+        APR:Debug("APR: Event - IsInstanceWithUI : ", APR:IsInstanceWithUI())
         APR.settings:ToggleAddon()
         return
     end
