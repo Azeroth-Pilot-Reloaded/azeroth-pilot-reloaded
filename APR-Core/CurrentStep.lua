@@ -153,7 +153,9 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
     end
 
     if APR.settings.profile.currentStepAttachFrameToQuestLog then
-        CurrentStepScreenPanel:EnableMouse(false)
+        if not InCombatLockdown() then
+            CurrentStepScreenPanel:EnableMouse(false)
+        end
         CurrentStepScreenPanel:ClearAllPoints()
         CurrentStepFrame:SetScale(1)
 
@@ -163,10 +165,12 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
             CurrentStepScreenPanel:SetPoint("TOP", ObjectiveTrackerFrame.Header, "BOTTOM", 0, FRAME_ATTACH_OPFFSET)
         end
     else
-        if not APR.settings.profile.currentStepLock then
-            CurrentStepScreenPanel:EnableMouse(true)
-        else
-            CurrentStepScreenPanel:EnableMouse(false)
+        if not InCombatLockdown() then
+            if not APR.settings.profile.currentStepLock then
+                CurrentStepScreenPanel:EnableMouse(true)
+            else
+                CurrentStepScreenPanel:EnableMouse(false)
+            end
         end
 
         LibWindow.RestorePosition(CurrentStepScreenPanel)
