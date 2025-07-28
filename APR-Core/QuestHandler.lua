@@ -831,7 +831,7 @@ function APR:UpdateStep()
 end
 
 function APR:SetButton()
-    if InCombatLockdown() or not APR.IsInRouteZone then
+    if not APR.IsInRouteZone then
         return
     end
     APR:Debug("Function: APR:SetButton()")

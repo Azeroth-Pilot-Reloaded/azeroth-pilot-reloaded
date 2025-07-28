@@ -147,9 +147,6 @@ end
 
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
-    if InCombatLockdown() then
-        return
-    end
     if not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInstanceWithUI() then
         CurrentStepScreenPanel:Hide()
         return
@@ -376,7 +373,7 @@ end
 
 -- Add/Update quest steps
 function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, isScenario, noTooltip)
-    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+    if not APR.settings.profile.currentStepShow then
         return
     end
 
@@ -464,7 +461,7 @@ end
 
 
 function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
-    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+    if not APR.settings.profile.currentStepShow then
         return
     end
 
@@ -523,7 +520,7 @@ end
 ---@param key string Locale table key
 ---@param text string L[key]
 function APR.currentStep:AddExtraLineText(key, text, color)
-    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+    if not APR.settings.profile.currentStepShow then
         return
     end
 
@@ -547,7 +544,7 @@ function APR.currentStep:AddExtraLineText(key, text, color)
 end
 
 function APR.currentStep:ReOrderExtraLineText()
-    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+    if not APR.settings.profile.currentStepShow then
         return
     end
 
@@ -575,7 +572,7 @@ end
 --- Re order all the quest Step
 --- @param hasExtraLineHeight boolean to get the extra line height
 function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
-    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+    if not APR.settings.profile.currentStepShow then
         return
     end
     hasExtraLineHeight = hasExtraLineHeight or true
@@ -592,7 +589,7 @@ end
 -- Remove all  quest steps and extra line texts
 function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
     removeTextOnly = removeTextOnly or false
-    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+    if not APR.settings.profile.currentStepShow then
         return
     end
     local ResetList = function(list)
@@ -600,6 +597,7 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
             questContainer:Hide()
             questContainer:ClearAllPoints()
             questContainer = nil
+            APR.currentStep:RemoveStepButtonByKey(id)
         end
     end
     if not removeTextOnly then
@@ -624,7 +622,7 @@ end
 --- @param itemID number Item ID
 --- @param attribute number Icon attribute spell/item
 function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
-    if InCombatLockdown() or not APR.settings.profile.currentStepShow and itemID then
+    if not APR.settings.profile.currentStepShow and itemID then
         return
     end
     attribute = attribute or "item"
@@ -678,7 +676,7 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
 end
 
 function APR.currentStep:RemoveStepButtonByKey(questsListKey)
-    if InCombatLockdown() or not APR.settings.profile.currentStepShow then
+    if not APR.settings.profile.currentStepShow then
         return
     end
     local existingButton = self.questsList[questsListKey]
