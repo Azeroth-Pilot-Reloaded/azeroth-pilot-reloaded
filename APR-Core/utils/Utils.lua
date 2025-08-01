@@ -3,6 +3,8 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Checks if the Player have flying rank 1, 2 or 3
 function APR:CheckFlySkill()
+    local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
+
     return IsSpellKnown(34090) or IsSpellKnown(34091) or IsSpellKnown(90265)
 end
 
