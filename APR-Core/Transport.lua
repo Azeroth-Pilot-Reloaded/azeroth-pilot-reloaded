@@ -263,6 +263,7 @@ function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
     if not posY or not posX then return end
     local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY, playerDistance = self:ClosestTaxi(posX, posY)
     local portalTaxiNodeId, portalTaxiName, _, _, portalDistance = self:ClosestTaxi(portalPosition.x, portalPosition.y)
+    local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
     local hasDraconicRidingskill = IsSpellKnown(90265) and IsSpellKnown(372608)
 
     if playerTaxiNodeId == portalTaxiNodeId or (hasDraconicRidingskill and portalDistance < APR.Arrow.MaxDistanceWrongZone) then

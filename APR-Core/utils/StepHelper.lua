@@ -1,6 +1,8 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
+
 function APR:GetStepString(step)
     local stepMappings = {
         ExitTutorial = L["SKIP_TUTORIAL"],
