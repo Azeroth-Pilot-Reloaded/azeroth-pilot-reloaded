@@ -123,6 +123,7 @@ if (APR.Faction == "Alliance") then
         ["2255-TWW-Allied-Races-Earthen"] = "TWW Allied Races Earthen",
         ["2248-TWW-Isle-of-Dorn-Full"] = "TWW - Isle of Dorn - All quests - Sojourner",
         ["2214-TWW-Ringing-Deeps-Full"] = "TWW - Ringing Deeps - All quests - Sojourner",
+        ["2248-TWW-K'aresh-Storyline"] = "TWW - K'aresh Storyline - Part 1",
     }
     APR.RouteList.Custom = {
         ["84-EclipseGlaives-10-to-70"] = "10-70 route by EclipseGlaives",

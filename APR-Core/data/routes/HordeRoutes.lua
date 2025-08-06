@@ -99,6 +99,7 @@ if (APR.Faction == "Horde") then
         ["2255-TWW-Allied-Races-Earthen"] = "TWW Allied Races Earthen",
         ["2248-TWW-Isle-of-Dorn-Full"] = "TWW - Isle of Dorn - All quests - Sojourner",
         ["2214-TWW-Ringing-Deeps-Full"] = "TWW - Ringing Deeps - All quests - Sojourner",
+        ["2248-TWW-K'aresh-Storyline"] = "TWW - K'aresh Storyline - Part 1",
     }
     APR.RouteList.Custom = {}
 

@@ -881,6 +881,8 @@ function APR.routeconfig:GetTWWPrefab()
     tinsert(APRCustomPath[APR.PlayerID], "TWW - Undermine")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - Nightfall")
     tinsert(APRCustomPath[APR.PlayerID], "TWW - Rise of the Red Dawn")
+    tinsert(APRCustomPath[APR.PlayerID], "TWW - K'aresh Storyline - Part 1")
+
     self:SendMessage("APR_Custom_Path_Update")
 end
 

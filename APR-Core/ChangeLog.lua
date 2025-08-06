@@ -78,24 +78,31 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.13.0", "2025-08-06" },
+        "#Guides",
+        "- Added K'aresh Storyline route (chapter 1-3)",
+        "#Bugs",
+
         { "v4.12.0", "2025-08-01" },
         "#Bugs",
-        "- Testing fixes to reduce false 'wrong zone' messages (transport module rework in comming)",
+        "- Testing fixes to reduce false `wrong zone` messages (transport module rework coming soon)",
         "- Fixed AFK frame display issues during step updates",
-        "- Fixed adventure map not yet message, preventing the map from being displayed in DF routes",
+        "- Fixed `adventure map not yet` message preventing the map from displaying in Dragonflight routes",
 
         "#Features",
         "- Added automatic corpse guidance to help locate your body when dead",
-        "- Implement new reward priority system (ilvl -> missing cosmetic -> missing transmog -> item price), you can change the priority in the settings",
+        "- Implemented a new reward priority system:",
+        "    - Priority order: item level → missing cosmetic → missing transmog → item price",
+        "    - Priority can be customized in the settings",
 
         "#Dev",
-        "- Reworked addon update system to a better maintenance and update process",
+        "- Reworked addon update system for better maintenance and update flow",
         "- Implemented a new event system and cleaned up quest handling logic for easier maintenance",
-        "- Reworked arrow updates for a better updating mechanism",
-        "- Enhanced arrow module to include quest distance, improving updates when receiving 'too far away' messages",
-        "- Enhanced route completion checks to handle updated routes correctly",
+        "- Reworked arrow update mechanism for better responsiveness",
+        "- Enhanced arrow module to include quest distance, improving updates when receiving `too far away` messages",
+        "- Improved route completion checks to better handle updated routes",
         "- Added new Taxi nodes for the new TWW map",
-        "- Reworked missing quest detection",
+        "- Reworked missing quest detection system",
         "- Removed `InCombatLockdown` check on Current Step frame update to improve step transitions",
 
         "#WoW",
