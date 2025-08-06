@@ -82,6 +82,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added K'aresh Storyline route (chapter 1-3)",
         "#Bugs",
+        "- Fixed lua error on Map Pins",
 
         { "v4.12.0", "2025-08-01" },
         "#Bugs",

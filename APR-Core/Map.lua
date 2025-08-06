@@ -265,7 +265,7 @@ function APR.map:CreatePin(index, step, size, color, textColor, textScale)
     pinFrame.icon:SetAllPoints(pinFrame)
     pinFrame.icon:SetVertexColor(unpack(color))
 
-    pinFrame.text = pinFrame:CreateFontString(nil, "OVERLAY", "GameFontNormalCenter")
+    pinFrame.text = pinFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     pinFrame.text:SetPoint("CENTER", pinFrame, "CENTER", 0, 0)
     pinFrame.text:SetText(index)
     pinFrame.text:SetTextColor(unpack(textColor))
