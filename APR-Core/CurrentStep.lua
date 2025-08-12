@@ -147,6 +147,8 @@ end
 
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
+    
+    APR:Debug("Function: APR:RefreshCurrentStepFrameAnchor()")
     if not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInstanceWithUI() then
         CurrentStepScreenPanel:Hide()
         return
@@ -171,15 +173,18 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
             else
                 CurrentStepScreenPanel:EnableMouse(false)
             end
-        end
 
-        LibWindow.RestorePosition(CurrentStepScreenPanel)
-        self:UpdateFrameScale()
+            LibWindow.RestorePosition(CurrentStepScreenPanel)
+            self:UpdateFrameScale()
+        end
     end
     CurrentStepFrameHeader:ClearAllPoints()
     CurrentStepFrameHeader:SetPoint("BOTTOM", CurrentStepFrame, "TOP", 0, -1)
 
-    CurrentStepScreenPanel:Show()
+    -- InCombatLockdown to prevent the "UNKNOWN()"-Call issue which happens sometimes when we're in a combat and doing a quest step
+    if not InCombatLockdown() then
+        CurrentStepScreenPanel:Show()
+    end
 end
 
 -- Reset the frame position
