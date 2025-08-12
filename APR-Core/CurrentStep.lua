@@ -8,6 +8,7 @@ APR.currentStep = APR:NewModule("CurrentStep")
 -- Init quests List to save quest
 APR.currentStep.questsList = {}
 APR.currentStep.questsExtraTextList = {}
+APR.currentStep.pendingRemoval = {}
 -- Height of the quest frame
 APR.currentStep.FrameHeight = 0
 
@@ -135,19 +136,24 @@ function APR.currentStep:UpdateFrameScale()
 end
 
 function APR.currentStep:UpdateBackgroundColorAlpha(color)
-    CurrentStepFrame:SetBackdropColor(unpack(color or APR.settings.profile.currentStepbackgroundColorAlpha))
-    local UpdateColor = function(list)
+    local rgba = color or APR.settings.profile.currentStepbackgroundColorAlpha
+    CurrentStepFrame:SetBackdropColor(unpack(rgba))
+
+    local function UpdateColor(list)
         for _, container in pairs(list) do
-            container:SetBackdropColor(unpack(color or APR.settings.profile.currentStepbackgroundColorAlpha))
+            -- Don't touch soft-hidden frames during combat
+            if container and not container.hiddenInCombat then
+                container:SetBackdropColor(unpack(rgba))
+            end
         end
     end
+
     UpdateColor(self.questsList)
     UpdateColor(self.questsExtraTextList)
 end
 
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
-    
     APR:Debug("Function: APR:RefreshCurrentStepFrameAnchor()")
     if not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInstanceWithUI() then
         CurrentStepScreenPanel:Hide()
@@ -445,6 +451,7 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
 end
 
 function APR.currentStep:UpdateQuestStep(questID, textObjective, objectiveIndex)
+    APR:Debug("Function: APR.currentStep:UpdateQuestStep()", questID)
     if not APR.settings.profile.currentStepShow then
         return
     end
@@ -529,6 +536,7 @@ end
 ---@param key string Locale table key
 ---@param text string L[key]
 function APR.currentStep:AddExtraLineText(key, text, color)
+    APR:Debug("Function: APR.currentStep:AddExtraLineText()", { key, text })
     if not APR.settings.profile.currentStepShow then
         return
     end
@@ -553,6 +561,7 @@ function APR.currentStep:AddExtraLineText(key, text, color)
 end
 
 function APR.currentStep:ReOrderExtraLineText()
+    APR:Debug("Function: APR.currentStep:ReOrderExtraLineText()")
     if not APR.settings.profile.currentStepShow then
         return
     end
@@ -581,41 +590,68 @@ end
 --- Re order all the quest Step
 --- @param hasExtraLineHeight boolean to get the extra line height
 function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
-    if not APR.settings.profile.currentStepShow then
-        return
-    end
-    hasExtraLineHeight = hasExtraLineHeight or true
+    APR:Debug("Function: APR.currentStep:ReOrderQuestSteps()")
+    if not APR.settings.profile.currentStepShow then return end
+
+    hasExtraLineHeight = (hasExtraLineHeight ~= false)
     if hasExtraLineHeight then
         FRAME_STEP_HOLDER_HEIGHT = getExtraLineHeight()
     end
-    for id, questContainer in pairs(self.questsList) do
-        questContainer:ClearAllPoints()
-        questContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
-        FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - questContainer:GetHeight()
+    for id, container in pairs(self.questsList) do
+        if not container.hiddenInCombat then
+            container:ClearAllPoints()
+            container:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
+            FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - container:GetHeight()
+        end
     end
 end
 
 -- Remove all  quest steps and extra line texts
 function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
+    APR:Debug("Function: APR.currentStep:RemoveQuestStepsAndExtraLineTexts()")
     removeTextOnly = removeTextOnly or false
-    if not APR.settings.profile.currentStepShow then
-        return
-    end
-    local ResetList = function(list)
-        for id, questContainer in pairs(list) do
-            questContainer:Hide()
-            questContainer:ClearAllPoints()
-            questContainer = nil
-            APR.currentStep:RemoveStepButtonByKey(id)
+    if not APR.settings.profile.currentStepShow then return end
+
+    local function ResetList(list, isQuestList)
+        for id, container in pairs(list) do
+            local canHide = self:CanSafelyHide(container)
+            if canHide then
+                container:ClearAllPoints()
+                container:Hide()
+                if isQuestList then
+                    -- kill button if present (only outside combat)
+                    local btn = container.IconButton
+                    if btn then
+                        btn:Hide()
+                        btn:ClearAllPoints()
+                        container.IconButton = nil
+                    end
+                end
+                list[id] = nil
+            else
+                -- Combat: soft-hide + mark for purge post-combat
+                self:SoftHide(container)
+                self.pendingRemoval[id] = true
+                -- DO NOT remove from the list here! Keep the reference for the flush
+            end
         end
     end
+
     if not removeTextOnly then
-        ResetList(self.questsList)
-        self.questsList = {}
+        ResetList(self.questsList, true)
+        if not InCombatLockdown() then
+            self.questsList = {}
+        end
     end
-    ResetList(self.questsExtraTextList)
-    self.questsExtraTextList = {}
+
+    ResetList(self.questsExtraTextList, false)
+    if not InCombatLockdown() then
+        self.questsExtraTextList = {}
+    end
+
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+    -- Reorder ignoring soft-hidden
+    self:ReOrderQuestSteps(true)
 end
 
 local function PositionStepButtons(container, button)
@@ -698,34 +734,40 @@ function APR.currentStep:RemoveStepButtonByKey(questsListKey)
 end
 
 function APR.currentStep:UpdateStepButtonCooldowns()
-    for id, questContainer in pairs(self.questsList) do
-        local IconButton = questContainer.IconButton
-        if IconButton and IconButton:IsShown() then
-            local startTime, duration, enable = 0, 0, 0
-            local isCooldownShown = IconButton.cooldown:IsShown()
-            local cooldownDuration = IconButton.cooldown:GetCooldownDuration()
+    for id, container in pairs(self.questsList) do
+        -- Ignore soft-hidden containers (during combat)
+        if container and not container.hiddenInCombat then
+            local IconButton = container.IconButton
+            if IconButton and IconButton:IsShown() then
+                local startTime, duration, enable = 0, 0, 0
+                local isCooldownShown = IconButton.cooldown:IsShown()
+                local cooldownDuration = IconButton.cooldown:GetCooldownDuration()
 
-            if IconButton.attribute == 'spell' then
-                local spellCooldownInfo = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))
-                startTime, duration = spellCooldownInfo.startTime, spellCooldownInfo.duration
-                enable = spellCooldownInfo.isEnabled and 1 or 0
-            else
-                startTime, duration, enable = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
-            end
+                if IconButton.attribute == 'spell' then
+                    local info = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))
+                    if info then
+                        startTime, duration = info.startTime or 0, info.duration or 0
+                        enable = info.isEnabled and 1 or 0
+                    end
+                else
+                    startTime, duration, enable = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
+                end
 
-            if enable > 0 and startTime > 0 and (cooldownDuration == 0 or not isCooldownShown) then
-                IconButton.cooldown:SetCooldown(startTime, duration)
-            else
+                if enable > 0 and startTime > 0 and (cooldownDuration == 0 or not isCooldownShown) then
+                    IconButton.cooldown:SetCooldown(startTime, duration)
+                else
+                    IconButton.cooldown:Clear()
+                end
+            elseif IconButton then
                 IconButton.cooldown:Clear()
             end
-        elseif IconButton then
-            IconButton.cooldown:Clear()
         end
     end
 end
 
 --- Disable Button, Reset ProgressBar and Remove all quest and extra line
 function APR.currentStep:Reset()
+    APR:Debug("Function: APR.currentStep:Reset()")
     self:ButtonShow()
     self:ButtonDisable()
     self:ProgressBar()
@@ -789,4 +831,32 @@ end
 
 function APR.currentStep:IsShown()
     return CurrentStepScreenPanel:IsShown()
+end
+
+function APR.currentStep:CanSafelyHide(container)
+    -- If we are in combat AND the container has a secure button, do not hide
+    return not InCombatLockdown() or not (container.IconButton and container.IconButton:IsProtected())
+end
+
+function APR.currentStep:SoftHide(container)
+    container.hiddenInCombat = true
+    container:SetAlpha(0.001)
+end
+
+function APR.currentStep:FlushPendingContainers()
+    if not next(self.pendingRemoval) then return end
+    for id, _ in pairs(self.pendingRemoval) do
+        local container = self.questsList[id] or self.questsExtraTextList[id]
+        if container then
+            container.hiddenInCombat = nil
+            container:SetAlpha(1)
+            container:ClearAllPoints()
+            container:Hide()
+        end
+        self.questsList[id] = nil
+        self.questsExtraTextList[id] = nil
+    end
+    wipe(self.pendingRemoval)
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+    self:ReOrderQuestSteps(true)
 end

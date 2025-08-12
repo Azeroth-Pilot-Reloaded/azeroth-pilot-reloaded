@@ -84,6 +84,7 @@ function APR.changelog:SetChangeLog()
 
         "#Bugs",
         "- Fixed the UNKNOWN()-Function bug which appears while in combat",
+        "- Fixed overlapping quest with item button on the Current Step frame",
 
         { "v4.13.0", "2025-08-06" },
         "#Guides",

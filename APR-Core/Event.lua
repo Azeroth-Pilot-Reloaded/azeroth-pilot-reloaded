@@ -862,6 +862,7 @@ function APR.event.functions.enterCombat(event, ...)
 end
 
 function APR.event.functions.leaveCombat(event, ...)
+    APR.currentStep:FlushPendingContainers()
     APR:UpdateQuest()
 end
 

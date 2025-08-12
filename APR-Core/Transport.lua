@@ -11,9 +11,7 @@ APR.transport._retryPending = false
 
 --- Guide the player to the right zone / continent / taxi / position
 function APR.transport:GetMeToRightZone(isRetry)
-    if (APR.settings.profile.debug) then
-        APR:Debug("Function: APR.transport:GetMeToRightZone()", isRetry and "(retry)" or "")
-    end
+    APR:Debug("Function: APR.transport:GetMeToRightZone()", isRetry and "(retry)" or "")
 
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
 
