@@ -78,6 +78,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.13.1", "2025-08-12" },
+        "#Bugs",
+        "- Fixed the UNKNOWN()-Function bug which appears while in combat",
+		
         { "v4.13.0", "2025-08-06" },
         "#Guides",
         "- Added K'aresh Storyline route (chapter 1-3)",
