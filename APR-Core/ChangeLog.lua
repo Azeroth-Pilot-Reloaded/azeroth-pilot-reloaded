@@ -79,9 +79,12 @@ end
 function APR.changelog:SetChangeLog()
     local news = {
         { "v4.13.1", "2025-08-12" },
+        "#Guides",
+        "- Updated K'aresh Storyline route with chapter 4 and 5 (Raid part coming soon)",
+
         "#Bugs",
         "- Fixed the UNKNOWN()-Function bug which appears while in combat",
-		
+
         { "v4.13.0", "2025-08-06" },
         "#Guides",
         "- Added K'aresh Storyline route (chapter 1-3)",
@@ -131,7 +134,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6",  "2025-04-06" },
+        { "v4.9.6", "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
