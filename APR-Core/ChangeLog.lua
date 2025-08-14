@@ -76,11 +76,28 @@ function APR.changelog:ShowChangeLog()
     LibWindow.RestorePosition(PartyScreenPanel)
 end
 
+function APR.changelog:ParseFormatting(text)
+    -- Bold + Italic: ***text*** -> orange
+    text = text:gsub("%*%*%*(.-)%*%*%*", "|cffff8800%1|r")
+
+    -- Bold: **text** -> blue
+    text = text:gsub("%*%*(.-)%*%*", "|cff00ffff%1|r")
+
+    -- Italic: *text* -> gray
+    text = text:gsub("%*(.-)%*", "|cff999999%1|r")
+
+    return text
+end
+
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.13.2", "2025-08-14" },
+        "#Bugs",
+        "- Removed unwanted Qpart step from the `K'aresh storyline route` *(Raid story mode will be available next week)*",
+
         { "v4.13.1", "2025-08-12" },
         "#Guides",
-        "- Updated K'aresh Storyline route with chapter 4 and 5 (Raid part coming soon)",
+        "- Updated `K'aresh Storyline route` with chapter 4 and 5",
 
         "#Bugs",
         "- Fixed the UNKNOWN()-Function bug which appears while in combat",
@@ -88,7 +105,7 @@ function APR.changelog:SetChangeLog()
 
         { "v4.13.0", "2025-08-06" },
         "#Guides",
-        "- Added K'aresh Storyline route (chapter 1-3)",
+        "- Added `K'aresh Storyline route` (chapter 1-3)",
         "#Bugs",
         "- Fixed lua error on Map Pins",
 
@@ -101,7 +118,7 @@ function APR.changelog:SetChangeLog()
         "#Features",
         "- Added automatic corpse guidance to help locate your body when dead",
         "- Implemented a new reward priority system:",
-        "    - Priority order: item level → missing cosmetic → missing transmog → item price",
+        "    - Priority order: item level -> missing cosmetic -> missing transmog -> item price",
         "    - Priority can be customized in the settings",
 
         "#Dev",
@@ -676,7 +693,7 @@ function APR.changelog:SetChangeLog()
             local version, date = line[1], line[2]
             changelog = changelog .. "\n\n|cFFFFFF00" .. version .. " (|cFFFF8800" .. date .. "|r):|r\n\n"
         elseif line ~= "" and not line:match("^#") then
-            changelog = changelog .. line .. "\n"
+            changelog = changelog .. self:ParseFormatting(line) .. "\n"
         elseif line:match("^#") then
             changelog = changelog .. "\n|cffeda55f" .. line .. "|r" .. "\n"
         else
