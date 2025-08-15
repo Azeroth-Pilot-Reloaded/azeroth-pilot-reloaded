@@ -325,6 +325,7 @@ function APR.currentStep:ProgressBar(key, total, current)
         self.progressBar = progressBar
         self.progressBar.Text = progressBarText
         self.progressBar.key = key
+        self.progressBar.currentStep = currentStep
     else
         self.progressBar:SetValue(currentStep)
         if totalSteps > 0 then
@@ -859,4 +860,37 @@ function APR.currentStep:FlushPendingContainers()
     wipe(self.pendingRemoval)
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
     self:ReOrderQuestSteps(true)
+end
+
+function APR.currentStep:GetCurrentStepDetails()
+    local stepDetails = {
+        extraLines = {},
+        questSteps = {},
+        progress = {
+            step = APR.currentStep.progressBar.currentStep,
+            total = APRData[APR.PlayerID][APR.ActiveRoute .. '-TotalSteps'],
+        }
+    }
+
+    -- Extra lines
+    for key, container in pairs(self.questsExtraTextList) do
+        if container.font and container.font:GetText() then
+            table.insert(stepDetails.extraLines, {
+                key = key,
+                text = container.font:GetText(),
+            })
+        end
+    end
+
+    -- Quest steps
+    for key, container in pairs(self.questsList) do
+        if container.font and container.font:GetText() then
+            table.insert(stepDetails.questSteps, {
+                key = key,
+                text = container.font:GetText(),
+            })
+        end
+    end
+
+    return stepDetails
 end

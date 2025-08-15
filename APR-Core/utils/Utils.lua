@@ -120,10 +120,23 @@ function APR:PrintError(errorMessage, data)
 end
 
 --- Display info in chat
---- @param infoMessage string
-function APR:PrintInfo(infoMessage)
-    if (infoMessage and type(infoMessage) == "string") then
-        DEFAULT_CHAT_FRAME:AddMessage("|cff00ecff" .. "APR: " .. infoMessage .. "|r")
+--- @param msg string
+function APR:PrintInfo(msg, data)
+    if not data then
+        if msg and type(msg) == "string" then
+            DEFAULT_CHAT_FRAME:AddMessage("|cff00ecff" .. "APR: " .. msg .. "|r")
+        end
+    else
+        if type(data) == "table" then
+            for key, value in pairs(data) do
+                print(msg, " - ", key)
+                APR:PrintInfo(msg, value)
+            end
+        elseif data then
+            print("|cff00ecff" .. msg .. "|r - ", "|cff00ff00" .. data .. "|r")
+        else
+            print("|cff00ecff" .. msg .. "|r")
+        end
     end
 end
 

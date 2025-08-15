@@ -123,6 +123,10 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                     L["LOADED"] ..
                     " - Version: |cff00ff00" ..
                     APR.version .. "|r | Interface: |cff00ff00" .. APR.interfaceVersion .. "|r")
+
+                if (IsInGroup(LE_PARTY_CATEGORY_HOME)) then
+                    C_ChatInfo.SendAddonMessage("APRPartyRequestHelloThere", "General kenobi", "PARTY")
+                end
             end)
         end
     end

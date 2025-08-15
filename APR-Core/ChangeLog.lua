@@ -91,7 +91,17 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.13.2", "2025-08-14" },
+        { "Beta-25w33-a", "2025-08-15" },
+        "#Features",
+        "- Enhanced the Party frame with team mate step details *(Hover over a name in the frame to view their current step and help them more easily)*",
+
+        "#Bugs",
+        "- Fixed Lua error in the Status frame when no coordinates are available (e.g., in an instance)",
+
+        "#Guides",
+        "- Reordered quests in the `Exile's Reach route` (Alliance) to improve quest flow and fluidity",
+
+        { "v4.13.2",      "2025-08-14" },
         "#Bugs",
         "- Removed unwanted Qpart step from the `K'aresh storyline route` *(Raid story mode will be available next week)*",
 

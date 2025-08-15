@@ -907,7 +907,6 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
         APR.map:RemoveMapLine()
         APR.map:RemoveMinimapLine()
         APR.questOrderList:AddStepFromRoute()
-        APR.party:SendGroupMessageDelete()
         APR.Arrow.Active = false
     end
 end
