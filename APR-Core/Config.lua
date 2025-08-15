@@ -1183,7 +1183,7 @@ function APR.settings:createBlizzOptions()
                         set = function(info, value)
                             SetProfileOption(info, value)
                             APR.party:RefreshPartyFrameAnchor()
-                            APR.party:SendGroupMessage(true)
+                            APR.party:SendGroupMessage()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
@@ -1509,11 +1509,13 @@ function APR.settings:ToggleAddon()
         self.profile.showArrow = false
         APR.AFK:HideFrame()
         APR.ArrowFrame:Hide()
+        APR.party:SendGroupMessageDelete()
     else
         -- settings
         self.profile.showArrow = true
         APR.Arrow.currentStep = 0
         APR.Arrow:SetCoord()
+        APR.party:RequestData()
     end
     APR.currentStep:RefreshCurrentStepFrameAnchor()
     APR.questOrderList:RefreshFrameAnchor()

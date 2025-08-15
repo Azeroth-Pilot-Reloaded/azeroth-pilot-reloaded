@@ -45,10 +45,6 @@ function APR:UpdateStep()
 
     APR:ResetMissingQuests()
 
-    -- update for group
-    APR.party:SendGroupMessage()
-    APR.party:RefreshPartyFrameAnchor()
-
     if UnitIsDeadOrGhost("player") then
         APR:Debug("Function: APR:UpdateStep() -  Player is dead - guide to corpse")
         APR:GuideToCorpse()
@@ -826,6 +822,10 @@ function APR:UpdateStep()
         APR.questOrderList:DelayedUpdate()
         -- set Progress bar with the right total
         APR.currentStep:SetProgressBar(CurStep)
+
+        -- update for group
+        APR.party:SendGroupMessage()
+        APR.party:RefreshPartyFrameAnchor()
     else
         APR:Debug("APR.UpdateStep:No step found for current step:", CurStep)
         APR.routeconfig:CheckIsCustomPathEmpty()
@@ -942,6 +942,10 @@ function APR:UpdateQuest()
     APR:UpdateQpartPart()
     if updateStep then
         APR:UpdateStep()
+    else
+        -- update for group if not a new step
+        APR.party:SendGroupMessage(true)
+        APR.party:RefreshPartyFrameAnchor()
     end
 end
 

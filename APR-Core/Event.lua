@@ -608,9 +608,7 @@ function APR.event.functions.group(event, category, partyGUID)
     if event == "GROUP_LEFT" then
         -- remove all the teammate then resend name + step to the group
         -- because wow don't send the username of the leaver
-        APR.party:RemoveTeam()
-        APR.party:SendGroupMessage()
-        APR.party:RefreshPartyFrameAnchor()
+        APR.party:Delete()
     end
 end
 
@@ -706,15 +704,12 @@ end
 
 function APR.event.functions.party(event, ...)
     local prefix, text, channel, sender, target, zoneChannelID, localID, name, instanceID = ...;
-    print("APR: Received party message from " .. sender .. ": " .. text)
     APR.party:GroupUpdateHandler(prefix, text, channel, sender)
 end
 
 function APR.event.functions.partyData(event, ...)
     -- To request the group data from the party members
-    if IsInGroup() then
-        C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", "PARTY")
-    end
+    APR.party:RequestData()
 end
 
 function APR.event.functions.petCombatUI(event, ...)

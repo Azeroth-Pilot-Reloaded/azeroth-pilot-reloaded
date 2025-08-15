@@ -526,7 +526,24 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
 
     -- Adjust container height based on the number of quests
     container:SetHeight(container.font:GetStringHeight() + questFontHeight + 15)
+
+
+    -- Save the subTexts for later reference
+    container.subTexts = container.subTexts or {}
+    for _, questID in ipairs(questIDList) do
+        local questName = C_QuestLog.GetTitleForQuestID(questID)
+        local questText = questName and ("- " .. questName) or ("- " .. questID .. " - " .. UNKNOWN)
+
+        table.insert(container.subTexts, {
+            questID = questID,
+            text = questText,
+            name = questName or UNKNOWN,
+        })
+    end
+
+    -- Save the container in the questsList
     self.questsList[id] = container
+
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - container:GetHeight()
 
     -- Update the quest order display
@@ -887,10 +904,24 @@ function APR.currentStep:GetCurrentStepDetails()
     -- Quest steps
     for key, container in pairs(self.questsList) do
         if container.font and container.font:GetText() then
-            table.insert(stepDetails.questSteps, {
+            local step = {
                 key = key,
                 text = container.font:GetText(),
-            })
+            }
+
+            -- Add sub-steps if they exist
+            if container.subTexts then
+                step.subSteps = {}
+                for _, sub in ipairs(container.subTexts) do
+                    table.insert(step.subSteps, {
+                        questID = sub.questID,
+                        name = sub.name,
+                        text = sub.text,
+                    })
+                end
+            end
+
+            table.insert(stepDetails.questSteps, step)
         end
     end
 
