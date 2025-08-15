@@ -209,40 +209,66 @@ end
 
 
 function APR.party:GetStepDescription(route, stepIndex)
-    if not route or not stepIndex then
-        return ''
-    end
+    if not route or not stepIndex then return '' end
+
     local routeTable = APR.RouteQuestStepList[route]
-    if not routeTable then
-        return ''
-    end
+    if not routeTable then return '' end
+
     local step = routeTable[stepIndex]
-    if not step then
-        return ''
-    end
+    if not step then return '' end
+
     local text = APR:GetStepString(step)
-    local questID
+    local questIDs = {}
+    local added = {}
+
+    -- Helper to add a quest ID to the list
+    local function AddQuestID(qid)
+        if qid and not added[qid] then
+            table.insert(questIDs, qid)
+            added[qid] = true
+        end
+    end
+
+    -- PickUp
     if step.PickUp then
-        questID = type(step.PickUp) == 'table' and step.PickUp[1] or step.PickUp
-    elseif step.Done then
-        questID = type(step.Done) == 'table' and step.Done[1] or step.Done
-    elseif step.Qpart then
-        for qid, _ in pairs(step.Qpart) do
-            questID = qid
-            break
-        end
-    elseif step.QpartPart then
-        for qid, _ in pairs(step.QpartPart) do
-            questID = qid
-            break
+        if type(step.PickUp) == 'table' then
+            for _, qid in ipairs(step.PickUp) do AddQuestID(qid) end
+        else
+            AddQuestID(step.PickUp)
         end
     end
-    if questID then
-        local questName = C_QuestLog.GetTitleForQuestID(questID)
-        if questName then
-            text = text .. ': ' .. questName
+
+    -- Done
+    if step.Done then
+        if type(step.Done) == 'table' then
+            for _, qid in ipairs(step.Done) do AddQuestID(qid) end
+        else
+            AddQuestID(step.Done)
         end
     end
+
+    -- Qpart / QpartPart
+    local qpartSource = step.Qpart or step.QpartPart
+    if qpartSource then
+        for qid, _ in pairs(qpartSource) do
+            AddQuestID(qid)
+        end
+    end
+
+    local questNames = {}
+    for _, qid in ipairs(questIDs) do
+        local name = C_QuestLog.GetTitleForQuestID(qid)
+        if name then
+            table.insert(questNames, name)
+        end
+    end
+
+    if #questNames == 1 then
+        text = text .. ": " .. questNames[1]
+    elseif #questNames > 1 then
+        text = text .. ": " .. table.concat(questNames, ", ")
+    end
+
     return text
 end
 
