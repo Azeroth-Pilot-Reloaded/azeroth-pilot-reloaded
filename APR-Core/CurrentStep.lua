@@ -863,10 +863,12 @@ function APR.currentStep:FlushPendingContainers()
 end
 
 function APR.currentStep:GetCurrentStepDetails()
+    if not APR.ActiveRoute then return nil end
     local stepDetails = {
         extraLines = {},
         questSteps = {},
         progress = {
+            index = APRData[APR.PlayerID][APR.ActiveRoute],
             step = APR.currentStep.progressBar.currentStep,
             total = APRData[APR.PlayerID][APR.ActiveRoute .. '-TotalSteps'],
         }

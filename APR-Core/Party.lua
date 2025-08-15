@@ -127,10 +127,10 @@ local AddTeamMate = function(playerData, isSameRoute, color)
     local fontIndex = container:CreateFontString("fontIndex", "OVERLAY", "GameFontHighlight")
     fontIndex:SetPoint("TOPRIGHT", 0, -2)
     fontIndex:SetText(isSameRoute and playerData.currentStep or '-')
-    if not isSameRoute then
-        fontIndex:SetTextColor(unpack(APR.Color.gray))
-    else
+    if isSameRoute then
         fontIndex:SetTextColor(unpack(APR.Color[color]))
+    else
+        fontIndex:SetTextColor(unpack(APR.Color.gray))
     end
     fontIndex:SetFontObject("GameFontNormalLarge")
 
@@ -169,7 +169,7 @@ local AddTeamMate = function(playerData, isSameRoute, color)
             end
 
             -- Description
-            local stepText = APR.party:GetStepDescription(data.route, data.currentStep)
+            local stepText = APR.party:GetStepDescription(data.routeFileName, data.currentStep)
             if stepText and stepText ~= "" then
                 GameTooltip:AddLine(" ")
                 GameTooltip:AddLine(DESCRIPTION .. ":", 0.4, 0.8, 1)
@@ -177,7 +177,7 @@ local AddTeamMate = function(playerData, isSameRoute, color)
             end
 
             -- details
-            if data.stepFrameDetails then
+            if data.stepFrameDetails.extraLines or data.stepFrameDetails.questSteps then
                 GameTooltip:AddLine(" ")
                 GameTooltip:AddLine(OBJECTIVES_LABEL, 0.4, 0.8, 1)
 
@@ -409,8 +409,9 @@ function APR.party:SendGroupMessage(forceSend)
         local stepDetails = APR.currentStep:GetCurrentStepDetails()
         local dataToSend = {
             route = APR.RouteList[expansion][routeFileName] or routeFileName,
-            currentStep = stepDetails.progress.step,
-            totalSteps = stepDetails.progress.total,
+            routeFileName = routeFileName,
+            currentStep = stepDetails and stepDetails.progress.step or 0,
+            totalSteps = stepDetails and stepDetails.progress.total or 0,
             username = APR.Username,
             stepFrameDetails = stepDetails
         }
@@ -430,9 +431,10 @@ function APR.party:SendGroupMessageDelete()
     end
 end
 
-local function UpdateGroupStep(playerData)
+local function UpdateGroupStep()
     local sortedGroup = {}
     local highestStepOnSameRoute = 0
+    local playerData = APR.party.GroupListSteps[APR.Username]
     local currentRoute = playerData.route
 
     for _, groupData in pairs(APR.party.GroupListSteps) do
@@ -443,6 +445,7 @@ local function UpdateGroupStep(playerData)
         end
     end
 
+    -- Username alphabetical sorting
     table.sort(sortedGroup, function(a, b)
         return string.lower(a.username) < string.lower(b.username)
     end)
@@ -452,11 +455,7 @@ local function UpdateGroupStep(playerData)
         local color = "gray"
 
         if isSameRoute then
-            if groupData.currentStep == highestStepOnSameRoute then
-                color = "green"
-            elseif groupData.currentStep < highestStepOnSameRoute then
-                color = "yellow"
-            end
+            color = groupData.currentStep == highestStepOnSameRoute and "green" or "yellow"
         end
 
         APR.party:UpdateTeamMate(groupData, isSameRoute, color)
@@ -476,27 +475,30 @@ function APR.party:UpdateGroupListing(message)
     if success then
         -- Update or add member
         self.GroupListSteps[username] = dataReceived
-        UpdateGroupStep(dataReceived)
+        UpdateGroupStep()
     else
         APR.PrintError(dataReceived)
     end
 end
 
-function APR.party:GroupUpdateHandler(prefix, message, channel)
-    APR:Debug("GroupUpdateHandler triggered", { prefix = prefix, channel = channel })
+function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
+    if channel == "PARTY" and message then
+        if prefix == "APRPartyRequest" then
+            APR:Debug("Received APRPartyRequestData, sending group data", message)
+            self:SendGroupMessage(true)
+        end
 
-    if prefix == "APRPartyRequestHelloThere" and message and channel == "PARTY" then
-        self:SendGroupMessage(true)
-    end
+        if prefix == "APRPartyData" then
+            APR:Debug("Received APRPartyData, updating group listing", message)
+            self:SplitedMessageHandler(message)
+        end
 
-    if prefix == "APRPartyData" and message and channel == "PARTY" then
-        self:SplitedMessageHandler(message)
-    end
-
-    if prefix == "APRPartyDelete" and message and channel == "PARTY" then
-        self:RemoveTeam()
-        self:SendGroupMessage()
-        self:RefreshPartyFrameAnchor()
+        if prefix == "APRPartyDelete" then
+            APR:Debug("Received APRPartyDelete, removing team member", message)
+            self:RemoveTeam()
+            self:SendGroupMessage(true)
+            self:RefreshPartyFrameAnchor()
+        end
     end
 end
 

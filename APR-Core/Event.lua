@@ -30,6 +30,7 @@ local events = {
     lvlUp = "PLAYER_LEVEL_UP",
     merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
     party = "CHAT_MSG_ADDON",
+    partyData = "PLAYER_ENTERING_WORLD",
     petCombatUI = { "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE" },
     playerChoice = "PLAYER_CHOICE_UPDATE",
     raidIcon = "UPDATE_MOUSEOVER_UNIT",
@@ -123,10 +124,6 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                     L["LOADED"] ..
                     " - Version: |cff00ff00" ..
                     APR.version .. "|r | Interface: |cff00ff00" .. APR.interfaceVersion .. "|r")
-
-                if (IsInGroup(LE_PARTY_CATEGORY_HOME)) then
-                    C_ChatInfo.SendAddonMessage("APRPartyRequestHelloThere", "General kenobi", "PARTY")
-                end
             end)
         end
     end
@@ -708,8 +705,16 @@ function APR.event.functions.merchant(event, ...)
 end
 
 function APR.event.functions.party(event, ...)
-    local prefix, message, channel = ...;
-    APR.party:GroupUpdateHandler(prefix, message, channel)
+    local prefix, text, channel, sender, target, zoneChannelID, localID, name, instanceID = ...;
+    print("APR: Received party message from " .. sender .. ": " .. text)
+    APR.party:GroupUpdateHandler(prefix, text, channel, sender)
+end
+
+function APR.event.functions.partyData(event, ...)
+    -- To request the group data from the party members
+    if IsInGroup() then
+        C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", "PARTY")
+    end
 end
 
 function APR.event.functions.petCombatUI(event, ...)
