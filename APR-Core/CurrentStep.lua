@@ -325,6 +325,7 @@ function APR.currentStep:ProgressBar(key, total, current)
         self.progressBar = progressBar
         self.progressBar.Text = progressBarText
         self.progressBar.key = key
+        self.progressBar.currentStep = currentStep
     else
         self.progressBar:SetValue(currentStep)
         if totalSteps > 0 then
@@ -525,7 +526,24 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
 
     -- Adjust container height based on the number of quests
     container:SetHeight(container.font:GetStringHeight() + questFontHeight + 15)
+
+
+    -- Save the subTexts for later reference
+    container.subTexts = container.subTexts or {}
+    for _, questID in ipairs(questIDList) do
+        local questName = C_QuestLog.GetTitleForQuestID(questID)
+        local questText = questName and ("- " .. questName) or ("- " .. questID .. " - " .. UNKNOWN)
+
+        table.insert(container.subTexts, {
+            questID = questID,
+            text = questText,
+            name = questName or UNKNOWN,
+        })
+    end
+
+    -- Save the container in the questsList
     self.questsList[id] = container
+
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - container:GetHeight()
 
     -- Update the quest order display
@@ -859,4 +877,53 @@ function APR.currentStep:FlushPendingContainers()
     wipe(self.pendingRemoval)
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
     self:ReOrderQuestSteps(true)
+end
+
+function APR.currentStep:GetCurrentStepDetails()
+    if not APR.ActiveRoute then return nil end
+    local stepDetails = {
+        extraLines = {},
+        questSteps = {},
+        progress = {
+            index = APRData[APR.PlayerID][APR.ActiveRoute],
+            step = APR.currentStep.progressBar.currentStep,
+            total = APRData[APR.PlayerID][APR.ActiveRoute .. '-TotalSteps'],
+        }
+    }
+
+    -- Extra lines
+    for key, container in pairs(self.questsExtraTextList) do
+        if container.font and container.font:GetText() then
+            table.insert(stepDetails.extraLines, {
+                key = key,
+                text = container.font:GetText(),
+            })
+        end
+    end
+
+    -- Quest steps
+    for key, container in pairs(self.questsList) do
+        if container.font and container.font:GetText() then
+            local step = {
+                key = key,
+                text = container.font:GetText(),
+            }
+
+            -- Add sub-steps if they exist
+            if container.subTexts then
+                step.subSteps = {}
+                for _, sub in ipairs(container.subTexts) do
+                    table.insert(step.subSteps, {
+                        questID = sub.questID,
+                        name = sub.name,
+                        text = sub.text,
+                    })
+                end
+            end
+
+            table.insert(stepDetails.questSteps, step)
+        end
+    end
+
+    return stepDetails
 end

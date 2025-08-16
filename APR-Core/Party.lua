@@ -11,11 +11,14 @@ local FRAME_WIDTH = 250
 local FRAME_HEIGHT = 100
 local FRAME_OFFSET = 1
 local FRAME_MATE_HOLDER_HEIGHT = -18
+local MAX_MSG_LENGTH = 180 -- 255 is the max, we keep a bit for the header
+
 
 -- Init list
 APR.party.teamList = {}
 APR.party.GroupListSteps = {}
-APR.party.LastSent = 0
+APR.party.incomingFragments = APR.party.incomingFragments or {}
+
 
 ---------------------------------------------------------------------------------------
 --------------------------------- Party Frames ----------------------------------------
@@ -91,6 +94,7 @@ function APR.party:UpdateFrameScale()
 end
 
 function APR.party:RefreshPartyFrameAnchor()
+    APR:Debug("Function: APR.party:RefreshPartyFrameAnchor()")
     if not APR.settings.profile.showGroup or not APR.settings.profile.enableAddon or not IsInGroup() or C_PetBattles.IsInBattle() or not next(APR.party.GroupListSteps) then
         PartyScreenPanel:Hide()
         return
@@ -108,23 +112,28 @@ function APR.party:ResetPosition()
     LibWindow.SavePosition(PartyScreenPanel)
 end
 
-local AddTeamMate = function(username, currentStep, totalSteps, isSameRoute, color)
+local AddTeamMate = function(playerData, isSameRoute, color)
     local container = CreateFrame("Frame", nil, PartyFrame_TeamHolder, "BackdropTemplate")
     -- Create a font for mate information
     local fontName = container:CreateFontString("fontName", "OVERLAY", "GameFontHighlight")
+    container.playerData = playerData
     fontName:SetWordWrap(true)
     fontName:SetWidth(FRAME_WIDTH)
     fontName:SetPoint("TOPLEFT", 5, -5)
-    fontName:SetText(username)
+    fontName:SetText(playerData.username)
     fontName:SetJustifyH("LEFT")
 
     local fontIndex = container:CreateFontString("fontIndex", "OVERLAY", "GameFontHighlight")
     fontIndex:SetPoint("TOPRIGHT", 0, -2)
-    fontIndex:SetText(isSameRoute and currentStep or '-')
-    if color == 'gray' or not isSameRoute then
-        fontIndex:SetTextColor(unpack(APR.Color.gray))
+    if playerData.currentStep then
+        fontIndex:SetText(playerData.currentStep)
     else
-        fontIndex:SetTextColor(unpack(APR.Color.green))
+        fontIndex:SetText('-')
+    end
+    if isSameRoute then
+        fontIndex:SetTextColor(unpack(APR.Color[color]))
+    else
+        fontIndex:SetTextColor(unpack(APR.Color.gray))
     end
     fontIndex:SetFontObject("GameFontNormalLarge")
 
@@ -138,11 +147,143 @@ local AddTeamMate = function(username, currentStep, totalSteps, isSameRoute, col
     })
     container:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
 
+    container:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+        local data = self.playerData
+
+        GameTooltip:ClearLines()
+
+        -- Titre du joueur
+        GameTooltip:AddLine(data.username or UNKNOWN, 1, 0.82, 0)
+        GameTooltip:AddLine(" ")
+
+        if data.noAddon then
+            GameTooltip:AddLine(L["NO_ADDON"], 1, 0, 0)
+        elseif not data.route then
+            GameTooltip:AddLine(L["NO_ROUTE"], 1, 1, 0)
+        else
+            -- Route info
+            GameTooltip:AddDoubleLine(L["ROUTE"] .. ":", data.route, 0.8, 0.8, 0.8, 1, 1, 1)
+
+            -- Progression
+            if data.currentStep and data.totalSteps then
+                GameTooltip:AddDoubleLine(L["CURRENT_STEP"] .. ":", data.currentStep .. " / " .. data.totalSteps, 0.8,
+                    0.8, 0.8, 0.3, 1, 0.3)
+            end
+
+            -- Description
+            local stepText = APR.party:GetStepDescription(data.routeFileName, data.stepFrameDetails.progress.index)
+            if stepText and stepText ~= "" then
+                GameTooltip:AddLine(" ")
+                GameTooltip:AddLine(DESCRIPTION .. ":", 0.4, 0.8, 1)
+                GameTooltip:AddLine(stepText, 1, 1, 1, true)
+            end
+
+            -- details
+            if data.stepFrameDetails.extraLines or (data.stepFrameDetails.questSteps and not skipQuestSteps) then
+                GameTooltip:AddLine(" ")
+                GameTooltip:AddLine(OBJECTIVES_LABEL, 0.4, 0.8, 1)
+
+                -- Extra Lines
+                if data.stepFrameDetails.extraLines then
+                    for _, extra in ipairs(data.stepFrameDetails.extraLines) do
+                        GameTooltip:AddLine(extra.text, 0.9, 0.9, 0.6, true)
+                    end
+                end
+
+                -- Quest steps
+                if data.stepFrameDetails.questSteps then
+                    for _, step in ipairs(data.stepFrameDetails.questSteps) do
+                        -- main step text
+                        GameTooltip:AddLine(step.text, 0.8, 0.8, 0.8, true)
+
+                        -- Display sub-steps if they exist
+                        if step.subSteps then
+                            for _, sub in ipairs(step.subSteps) do
+                                GameTooltip:AddLine("" .. sub.text, 0.7, 0.7, 0.7, true)
+                            end
+                        end
+                    end
+                end
+            end
+        end
+
+        GameTooltip:Show()
+    end)
+
+    container:SetScript("OnLeave", function(self)
+        GameTooltip:Hide()
+    end)
+
     return container
+end
+
+
+function APR.party:GetStepDescription(route, stepIndex)
+    if not route or not stepIndex then return '' end
+
+    local routeTable = APR.RouteQuestStepList[route]
+    if not routeTable then return '' end
+
+    local step = routeTable[stepIndex]
+    if not step then return '' end
+
+    local stepText = APR:GetStepString(step)
+    local questIDs = {}
+    local added = {}
+
+    -- Helper to add a quest ID to the list
+    local function AddQuestID(qid)
+        if qid and not added[qid] then
+            table.insert(questIDs, qid)
+            added[qid] = true
+        end
+    end
+
+    -- PickUp
+    if step.PickUp then
+        if type(step.PickUp) == 'table' then
+            for _, qid in ipairs(step.PickUp) do AddQuestID(qid) end
+        else
+            AddQuestID(step.PickUp)
+        end
+    end
+
+    -- Done
+    if step.Done then
+        if type(step.Done) == 'table' then
+            for _, qid in ipairs(step.Done) do AddQuestID(qid) end
+        else
+            AddQuestID(step.Done)
+        end
+    end
+
+    -- Qpart / QpartPart
+    local qpartSource = step.Qpart or step.QpartPart
+    if qpartSource then
+        for qid, _ in pairs(qpartSource) do
+            AddQuestID(qid)
+        end
+    end
+
+    local questNames = {}
+    for _, qid in ipairs(questIDs) do
+        local name = C_QuestLog.GetTitleForQuestID(qid)
+        if name then
+            table.insert(questNames, "- " .. name)
+        end
+    end
+
+    if #questNames > 0 then
+        stepText = stepText .. "\n" .. table.concat(questNames, "\n")
+    end
+
+    return stepText
 end
 
 function APR.party:UpdateTeamMate(playerData, isSameRoute, color)
     local username = playerData.username
+    APR:Debug("Function: APR.party:UpdateTeamMate() for", username)
     if not next(self.teamList) then
         FRAME_MATE_HOLDER_HEIGHT = FRAME_OFFSET
     end
@@ -153,7 +294,7 @@ function APR.party:UpdateTeamMate(playerData, isSameRoute, color)
         existingContainer:ClearAllPoints()
         self.teamList[username] = nil
     end
-    local container = AddTeamMate(username, playerData.currentStep, playerData.totalSteps, isSameRoute, color)
+    local container = AddTeamMate(playerData, isSameRoute, color)
     container:SetPoint("TOPLEFT", PartyFrame, "TOPLEFT", 0, FRAME_MATE_HOLDER_HEIGHT)
     self.teamList[username] = container
     FRAME_MATE_HOLDER_HEIGHT = FRAME_MATE_HOLDER_HEIGHT - container:GetHeight()
@@ -184,6 +325,7 @@ function APR.party:RemoveMateByName(name)
 end
 
 function APR.party:RemoveTeam()
+    APR:Debug("Function: APR.party:RemoveTeam()")
     for id, container in pairs(self.teamList) do
         container:Hide()
         container:ClearAllPoints()
@@ -196,6 +338,29 @@ end
 
 function APR.party:IsShowFrame()
     return PartyScreenPanel:IsShown()
+end
+
+function APR.party:PopulateMissingGroupMembers()
+    if not IsInGroup(LE_PARTY_CATEGORY_HOME) then
+        self:RemoveTeam()
+        return
+    end
+    local known = {}
+    for name, _ in pairs(self.GroupListSteps) do
+        known[name] = true
+    end
+    for i = 1, 4 do
+        local name = UnitName("party" .. i)
+        if name and name ~= APR.Username and not known[name] then
+            self:UpdateTeamMate({ username = name, noAddon = true }, false, 'gray')
+        end
+    end
+    for name, _ in pairs(self.teamList) do
+        if name ~= APR.Username and not UnitInParty(name) then
+            self:RemoveMateByName(name)
+            self.GroupListSteps[name] = nil
+        end
+    end
 end
 
 function APR.party:CheckIfPartyMemberIsFriend()
@@ -246,20 +411,31 @@ function APR.party:GetFriendsList()
     return FriendListTable
 end
 
-function APR.party:SendGroupMessage(forceSend)
-    forceSend = forceSend or false
-    if not APR.ActiveRoute then return end
-    local curStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if ((IsInGroup(LE_PARTY_CATEGORY_HOME) and curStep and (self.LastSent ~= curStep)) or forceSend) or not APR:IsInstanceWithUI() then
+function APR.party:SendGroupMessage()
+    local routeFileName = APR.ActiveRoute
+    if IsInGroup(LE_PARTY_CATEGORY_HOME) or not APR:IsInstanceWithUI() then
+        local _, _, _, expansion = APR:GetCurrentRouteMapIDsAndName()
+        local stepDetails = APR.currentStep:GetCurrentStepDetails()
+        local route = routeFileName
+        if routeFileName then
+            route = APR.RouteList[expansion][routeFileName] or routeFileName
+        else
+            route = nil
+        end
         local dataToSend = {
-            route = APR.ActiveRoute,
-            currentStep = curStep,
-            totalSteps = APRData[APR.PlayerID][APR.ActiveRoute .. '-TotalSteps'],
-            username = APR.Username
+            route = route,
+            routeFileName = routeFileName,
+            currentStep = stepDetails and stepDetails.progress.step or nil,
+            totalSteps = stepDetails and stepDetails.progress.total or 0,
+            username = APR.Username,
+            stepFrameDetails = stepDetails
         }
+
+        APR:Debug("Sending group data", dataToSend)
+
         local serializedData = AceSerializer:Serialize(dataToSend)
-        C_ChatInfo.SendAddonMessage("APRPartyData", serializedData, "PARTY")
-        self.LastSent = APRData[APR.PlayerID][APR.ActiveRoute]
+        APR:SendAddonMessageSplit("APRPartyData", serializedData, "PARTY")
+        self:PopulateMissingGroupMembers()
     end
 end
 
@@ -269,51 +445,146 @@ function APR.party:SendGroupMessageDelete()
     end
 end
 
-local function UpdateGroupStep(playerData)
-    local highestStep = 0
+local function UpdateGroupStep()
+    APR:Debug("Function: APR.party:UpdateGroupStep()")
+    local sortedGroup = {}
+    local highestStepOnSameRoute = 0
+    local playerData = APR.party.GroupListSteps[APR.Username]
+    local currentRoute = playerData.route
+
     for _, groupData in pairs(APR.party.GroupListSteps) do
-        if groupData.currentStep then
-            highestStep = math.max(highestStep, groupData.currentStep)
+        table.insert(sortedGroup, groupData)
+        -- We only take players on the same route to compare the step
+        if groupData.route == currentRoute and groupData.currentStep then
+            highestStepOnSameRoute = math.max(highestStepOnSameRoute, groupData.currentStep)
         end
     end
 
-    local sortedGroup = APR.party.GroupListSteps
+    -- Username alphabetical sorting
     table.sort(sortedGroup, function(a, b)
         return string.lower(a.username) < string.lower(b.username)
     end)
 
+    for _, groupData in ipairs(sortedGroup) do
+        local isSameRoute = groupData.route == currentRoute
+        local color = "gray"
 
-    for _, groupData in pairs(sortedGroup) do
-        if groupData.currentStep then
-            local color = groupData.currentStep < highestStep and 'gray' or 'green'
-            local isSameRoute = playerData.route == groupData.route
-            -- other route color
-            APR.party:UpdateTeamMate(groupData, isSameRoute, color) -- //TODO: add a color legend in the footer
+        if isSameRoute then
+            color = groupData.currentStep == highestStepOnSameRoute and "green" or "yellow"
         end
+
+        APR.party:UpdateTeamMate(groupData, isSameRoute, color)
     end
-    APR.party:RefreshPartyFrameAnchor()
+
+    APR.party:PopulateMissingGroupMembers()
 end
 
+
 function APR.party:UpdateGroupListing(message)
+    APR:Debug("Message to deserialize", message)
+
     -- Deserialize the received data
     local success, dataReceived = AceSerializer:Deserialize(message)
     local username = dataReceived.username
     if success then
+        APR:Debug("Success deserializing message for", username)
         -- Update or add member
-        APR.party.GroupListSteps[username] = dataReceived
-        UpdateGroupStep(dataReceived)
+        self.GroupListSteps[username] = dataReceived
+        UpdateGroupStep()
     else
-        APR.PrintError(dataReceived)
+        APR.PrintError("Failed to deserialize message from " .. username, dataReceived)
     end
 end
 
-function APR.party:GroupUpdateHandler(prefix, message, channel)
-    if prefix == "APRPartyData" and message and channel == "PARTY" then
-        APR.party:UpdateGroupListing(message)
+function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
+    if not APR.settings.profile.enableAddon then return end
+
+    if channel == "PARTY" and message then
+        if prefix == "APRPartyRequest" then
+            APR:Debug("Received APRPartyRequestData, sending group data", message)
+            self:SendGroupMessage()
+        end
+
+        if prefix == "APRPartyData" then
+            APR:Debug("Received APRPartyData, updating group listing", message)
+            self:SplitedMessageHandler(message)
+        end
+
+        if prefix == "APRPartyDelete" then
+            APR:Debug("Received APRPartyDelete, removing team member", message)
+            self:Delete()
+        end
     end
-    if prefix == "APRPartyDelete" and message and channel == "PARTY" then
-        APR.party:RemoveTeam()
-        APR.party:SendGroupMessage()
-        APR.party:RefreshPartyFrameAnchor()
+end
+
+function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target)
+    local msgID = tostring(math.random(10000, 99999)) .. "-" .. GetTime() -- Unique message ID with timestamp
+    local total = math.ceil(#fullMessage / MAX_MSG_LENGTH)
+    APR:Debug("Splitting message", { msgID = msgID, totalParts = total })
+
+    for i = 1, total do
+        local startIdx = (i - 1) * MAX_MSG_LENGTH + 1
+        local endIdx = math.min(i * MAX_MSG_LENGTH, #fullMessage)
+        local part = fullMessage:sub(startIdx, endIdx)
+
+        -- Format: <msgID>|<index>|<total>|<data>
+        local fragment = msgID .. "|" .. i .. "|" .. total .. "|" .. part
+        C_ChatInfo.SendAddonMessage(prefix, fragment, channel, target)
+    end
+end
+
+function APR.party:SplitedMessageHandler(message)
+    local msgID, index, total, part = message:match("([^|]+)|([^|]+)|([^|]+)|(.+)")
+
+    if not msgID or not index or not total or not part then
+        APR:PrintError("Malformed fragment received")
+        return
+    end
+
+    index = tonumber(index)
+    total = tonumber(total)
+
+    APR:Debug("Fragment received", { msgID = msgID, index = index, total = total })
+
+
+    self.incomingFragments[msgID] = self.incomingFragments[msgID] or {}
+    self.incomingFragments[msgID][index] = part
+
+    -- Timeout to clean up fragments after 10 seconds, to avoird memory leaks
+    C_Timer.After(10, function()
+        APR:Debug("Cleaning expired fragments", msgID)
+        self.incomingFragments[msgID] = nil
+    end)
+
+    -- Check if we have received all parts
+    local receivedParts = self.incomingFragments[msgID]
+    local count = 0
+    for _, _ in pairs(receivedParts) do count = count + 1 end
+
+    if count == total then
+        APR:Debug("All fragments received, reconstructing", msgID)
+
+        -- Concat fragments in right order
+        local fullMessage = ""
+        for i = 1, total do
+            fullMessage = fullMessage .. (receivedParts[i] or "")
+        end
+
+        -- Clean
+        self.incomingFragments[msgID] = nil
+
+        self:UpdateGroupListing(fullMessage)
+    end
+end
+
+function APR.party:Delete()
+    self:RemoveTeam()
+    self:SendGroupMessage()
+    self:RefreshPartyFrameAnchor()
+end
+
+function APR.party:RequestData()
+    if IsInGroup() then
+        C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", "PARTY")
     end
 end

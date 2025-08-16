@@ -30,6 +30,7 @@ local events = {
     lvlUp = "PLAYER_LEVEL_UP",
     merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
     party = "CHAT_MSG_ADDON",
+    partyData = "PLAYER_ENTERING_WORLD",
     petCombatUI = { "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE" },
     playerChoice = "PLAYER_CHOICE_UPDATE",
     raidIcon = "UPDATE_MOUSEOVER_UNIT",
@@ -607,9 +608,7 @@ function APR.event.functions.group(event, category, partyGUID)
     if event == "GROUP_LEFT" then
         -- remove all the teammate then resend name + step to the group
         -- because wow don't send the username of the leaver
-        APR.party:RemoveTeam()
-        APR.party:SendGroupMessage()
-        APR.party:RefreshPartyFrameAnchor()
+        APR.party:Delete()
     end
 end
 
@@ -704,8 +703,13 @@ function APR.event.functions.merchant(event, ...)
 end
 
 function APR.event.functions.party(event, ...)
-    local prefix, message, channel = ...;
-    APR.party:GroupUpdateHandler(prefix, message, channel)
+    local prefix, text, channel, sender, target, zoneChannelID, localID, name, instanceID = ...;
+    APR.party:GroupUpdateHandler(prefix, text, channel, sender)
+end
+
+function APR.event.functions.partyData(event, ...)
+    -- To request the group data from the party members
+    APR.party:RequestData()
 end
 
 function APR.event.functions.petCombatUI(event, ...)

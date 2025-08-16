@@ -61,12 +61,13 @@ function APR:getStatusReportInfos()
     local worldCoordinates
     if APR:IsInstanceWithUI() and UnitPosition("player") then
         local playerPosition = C_Map.GetPlayerMapPosition(C_Map.GetBestMapForUnit("player"), "player")
-        coordinates = APR.coordinate:RoundCoords(playerPosition.x * 100, playerPosition.y * 100, 2)
+        coordinates = playerPosition and APR.coordinate:RoundCoords(playerPosition.x * 100, playerPosition.y * 100, 2) or
+            nil
         local worldPosY, worldPosX = UnitPosition("player")
         worldCoordinates = APR.coordinate:RoundCoords(worldPosX, worldPosY, 2)
     end
     local currentStep = GetCurrentStepInfo()
-
+    local continent = C_Map.GetMapInfo(APR:GetContinent() or 0)
     local infoTable = {
         aprVersion = { "AddOn Version", APR.version },
         wowVersion = { "Client Version", APR.wowpatch },
@@ -76,9 +77,9 @@ function APR:getStatusReportInfos()
         currentRoute = { "Route", APR.ActiveRoute or NO_ACTIVE },
         currentStep = { "Index, Step", currentStep or NO_ACTIVE },
         currentZone = { "Zone", GetRealZoneText() or UNKNOWN },
-        currentContinent = { "Continent", C_Map.GetMapInfo(APR:GetContinent()).name },
-        currentCoords = { "Coordinates", coordinates or INSTANCE },
-        currentWorldCoords = { "World Coordinates", worldCoordinates or INSTANCE },
+        currentContinent = { "Continent", continent and continent.name or UNKNOWN },
+        currentCoords = { "Coordinates", coordinates or UNKNOWN },
+        currentWorldCoords = { "World Coordinates", worldCoordinates or UNKNOWN },
         charFaction = { "Faction", APR.Faction },
         charName = { "Name", APR.Username },
         charRealm = { "Realm", GetRealmName() },

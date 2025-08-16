@@ -130,6 +130,7 @@ function APR:OnInitialize()
     _G["BINDING_NAME_" .. "CLICK APR_ItemButton:LeftButton"] = L["USE_QUEST_ITEM"]
 
     -- Register tot party frame
+    C_ChatInfo.RegisterAddonMessagePrefix("APRPartyRequest")
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyData")
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyDelete")
 
