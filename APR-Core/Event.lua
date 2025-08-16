@@ -147,12 +147,13 @@ function APR.event.functions.accept(event, ...)
             end)
             APR.settings.profile.firstAutoShareQuestWithFriend = false
         end
-        if APR.settings.profile.autoShareQuestWithFriend then
+        if APR.settings.profile.autoShareQuestWithFriend and IsInGroup() then
             if APR.party:CheckIfPartyMemberIsFriend() then
                 C_QuestLog.SetSelectedQuest(questID)
                 QuestLogPushQuest();
             end
         end
+
         APR:Debug(L["Q_ACCEPTED"] .. ": ", questID)
         C_Timer.After(0.2, function() APR:UpdateMapId() end)
     end
