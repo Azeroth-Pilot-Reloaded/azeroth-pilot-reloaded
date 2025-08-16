@@ -91,6 +91,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.14.1", "2025-08-16" },
+        "#Bugs",
+        "- Fixed the spammy `You are not in a group` message when inside an instance",
+
         { "v4.14.0", "2025-08-16" },
         "#Features",
         "- Enhanced the Party frame with team mate step details *(Hover over a name in the frame to view their current step and help them more easily)*",
@@ -162,7 +166,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6", "2025-04-06" },
+        { "v4.9.6",  "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 

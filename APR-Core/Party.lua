@@ -19,6 +19,10 @@ APR.party.teamList = {}
 APR.party.GroupListSteps = {}
 APR.party.incomingFragments = APR.party.incomingFragments or {}
 
+local function GetGroupChannel()
+    return IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT" or "PARTY"
+end
+
 
 ---------------------------------------------------------------------------------------
 --------------------------------- Party Frames ----------------------------------------
@@ -341,7 +345,7 @@ function APR.party:IsShowFrame()
 end
 
 function APR.party:PopulateMissingGroupMembers()
-    if not IsInGroup(LE_PARTY_CATEGORY_HOME) then
+    if not IsInGroup() then
         self:RemoveTeam()
         return
     end
@@ -365,7 +369,7 @@ end
 
 function APR.party:CheckIfPartyMemberIsFriend()
     -- If Player is NOT in a Group (not instance), do nothing
-    if not IsInGroup("LE_PARTY_CATEGORY_HOME") then
+    if not IsInGroup() then
         return false
     end
 
@@ -413,7 +417,7 @@ end
 
 function APR.party:SendGroupMessage()
     local routeFileName = APR.ActiveRoute
-    if IsInGroup(LE_PARTY_CATEGORY_HOME) or not APR:IsInstanceWithUI() then
+    if IsInGroup() then
         local _, _, _, expansion = APR:GetCurrentRouteMapIDsAndName()
         local stepDetails = APR.currentStep:GetCurrentStepDetails()
         local route = routeFileName
@@ -434,14 +438,14 @@ function APR.party:SendGroupMessage()
         APR:Debug("Sending group data", dataToSend)
 
         local serializedData = AceSerializer:Serialize(dataToSend)
-        APR:SendAddonMessageSplit("APRPartyData", serializedData, "PARTY")
+        APR:SendAddonMessageSplit("APRPartyData", serializedData, GetGroupChannel())
         self:PopulateMissingGroupMembers()
     end
 end
 
 function APR.party:SendGroupMessageDelete()
-    if IsInGroup(LE_PARTY_CATEGORY_HOME) then
-        C_ChatInfo.SendAddonMessage("APRPartyDelete", APR.Username, "PARTY")
+    if IsInGroup() then
+        C_ChatInfo.SendAddonMessage("APRPartyDelete", APR.Username, GetGroupChannel())
     end
 end
 
@@ -499,7 +503,7 @@ end
 function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
     if not APR.settings.profile.enableAddon then return end
 
-    if channel == "PARTY" and message then
+    if (channel == "PARTY" or channel == "INSTANCE_CHAT") and message then
         if prefix == "APRPartyRequest" then
             APR:Debug("Received APRPartyRequestData, sending group data", message)
             self:SendGroupMessage()
@@ -585,6 +589,6 @@ end
 
 function APR.party:RequestData()
     if IsInGroup() then
-        C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", "PARTY")
+        C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", GetGroupChannel())
     end
 end
