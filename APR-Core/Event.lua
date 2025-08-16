@@ -53,6 +53,9 @@ local autoAccept, autoAcceptRoute, step = nil, nil, nil
 local gossipCounter = 0
 local pendingQuestUpdateTimer
 
+-- track instance status to avoid repeatedly toggling the addon
+local lastIsInstanceWithUI = nil
+
 ---------------------------------------------------------------------------------------
 ---------------------------------- Events register ------------------------------------
 ---------------------------------------------------------------------------------------
@@ -80,9 +83,15 @@ function APR.event.EventHandler(self, event, ...)
         return
     end
 
-    if not APR:IsInstanceWithUI() then
-        APR:Debug("APR: Event - IsInstanceWithUI : ", APR:IsInstanceWithUI())
+
+    local isInstanceWithUI = APR:IsInstanceWithUI()
+    if isInstanceWithUI ~= lastIsInstanceWithUI then
+        APR:Debug("APR: Event - IsInstanceWithUI : ", isInstanceWithUI)
         APR.settings:ToggleAddon()
+        lastIsInstanceWithUI = isInstanceWithUI
+    end
+
+    if not isInstanceWithUI then
         return
     end
 

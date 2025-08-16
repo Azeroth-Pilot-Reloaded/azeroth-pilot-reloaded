@@ -339,12 +339,13 @@ APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 APR.transport.eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 APR.transport.eventFrame:RegisterEvent("WAYPOINT_UPDATE")
 APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
+    if not APR.settings.profile.enableAddon then
+        return
+    end
+
     local step = APR.ActiveRoute and APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
     if APR.settings.profile.showEvent then
         APR:PrintInfo("EVENT: Transport - " .. event)
-    end
-    if not APR.settings.profile.enableAddon then
-        return
     end
     if event == "PLAYER_ENTERING_WORLD" then
         APR.transport:GetMeToRightZone()
@@ -354,6 +355,9 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
         or event == "ZONE_CHANGED_INDOORS"
         or event == "ZONE_CHANGED_NEW_AREA"
         or event == "WAYPOINT_UPDATE" then
+        if IsInInstance() and not APR:IsInstanceWithUI() then
+            return
+        end
         if not APR.IsInRouteZone and APR.ActiveRoute then
             APR.transport:GetMeToRightZone()
         end

@@ -94,6 +94,7 @@ function APR.changelog:SetChangeLog()
         { "v4.14.1", "2025-08-16" },
         "#Bugs",
         "- Fixed the spammy `You are not in a group` message when inside an instance",
+        "- Fixed unwanted background reload of frames while in an instance",
 
         { "v4.14.0", "2025-08-16" },
         "#Features",

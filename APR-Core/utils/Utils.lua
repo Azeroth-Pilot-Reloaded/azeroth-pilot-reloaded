@@ -92,7 +92,7 @@ function APR:Debug(msg, data, force)
             APR:Debug(msg, value)
         end
     elseif data then
-        print("|cff00bfff" .. msg .. "|r - ", "|cff00ff00" .. data .. "|r")
+        print("|cff00bfff" .. msg .. "|r - ", "|cff00ff00" .. tostring(data) .. "|r")
     else
         print("|cff00bfff" .. msg .. "|r")
     end
@@ -133,7 +133,7 @@ function APR:PrintInfo(msg, data)
                 APR:PrintInfo(msg, value)
             end
         elseif data then
-            print("|cff00ecff" .. msg .. "|r - ", "|cff00ff00" .. data .. "|r")
+            print("|cff00ecff" .. msg .. "|r - ", "|cff00ff00" .. tostring(data) .. "|r")
         else
             print("|cff00ecff" .. msg .. "|r")
         end
@@ -249,6 +249,7 @@ function APR:titleCase(str)
 end
 
 function APR:ResetRoute(targetedRoute)
+    APR:Debug("Function: APR:ResetRoute()", targetedRoute)
     APRData[APR.PlayerID][targetedRoute] = 1
     APRData[APR.PlayerID][targetedRoute .. '-SkippedStep'] = 0
     APR:GetTotalSteps(targetedRoute)

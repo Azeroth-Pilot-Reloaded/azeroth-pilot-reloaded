@@ -413,12 +413,13 @@ APR.map.eventFrame:RegisterEvent("NEW_WMO_CHUNK")
 APR.map.eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
 
 APR.map.eventFrame:SetScript("OnEvent", function(self, event, ...)
-    if APR.settings.profile.showEvent then
-        APR:PrintInfo("EVENT: Map - " .. event)
-    end
     if not APR.settings.profile.enableAddon then
         APR.map:RemoveMapIcons()
         return
+    end
+
+    if APR.settings.profile.showEvent then
+        APR:PrintInfo("EVENT: Map - " .. event)
     end
 
     if event == "CVAR_UPDATE" then
