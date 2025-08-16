@@ -390,6 +390,7 @@ function APR:GetCurrentRouteMapIDsAndName()
 end
 
 function APR:CheckRouteChanges(route)
+    APR:Debug("Function: APR:CheckRouteChanges()", route)
     local currentRoute = route or APR.ActiveRoute or ''
     local savedTotalSteps = APRData[APR.PlayerID][currentRoute .. '-TotalSteps']
     local currentTotalSteps = APR:GetTotalSteps(currentRoute)

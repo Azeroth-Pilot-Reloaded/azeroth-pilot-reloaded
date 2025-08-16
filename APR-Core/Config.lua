@@ -1504,6 +1504,7 @@ function APR.settings:CreateMiniMapButton()
 end
 
 function APR.settings:ToggleAddon()
+    APR:Debug("Function: APR.settings:ToggleAddon(), state: ", self.profile.enableAddon)
     if not self.profile.enableAddon then
         -- settings disable
         self.profile.showArrow = false
