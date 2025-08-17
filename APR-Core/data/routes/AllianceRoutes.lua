@@ -32,7 +32,7 @@ if (APR.Faction == "Alliance") then
         ["22-WesternPlaguelands"] = L["Western Plaguelands"],
         ["23-EasternPlaguelands"] = L["Eastern Plaguelands"],
         ["47-Duskwood"] = L["Duskwood"],
-        ["49-RedridgeMountauns"] = L["Redridge Mountauns"],
+        ["49-RedridgeMountains"] = L["Redridge Mountains"],
         ["15-Badlands"] = L["Badlands"],
         ["32-SearingGorge"] = L["Searing Gorge"],
         ["224-NorthernStranglethorn"] = L["Northern Stranglethorn"],
