@@ -10861,7 +10861,7 @@ if (APR.Faction == "Alliance") then
         },
     }
 
-    APR.RouteQuestStepList["49-RedridgeMountauns"] = {
+    APR.RouteQuestStepList["49-RedridgeMountains"] = {
         {
             PickUp = { 26504 },
             Coord = { x = -1890, y = -9620 },

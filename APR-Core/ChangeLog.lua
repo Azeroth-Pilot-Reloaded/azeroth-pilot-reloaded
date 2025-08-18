@@ -91,6 +91,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.14.2", "2025-08-18" },
+        "#Features",
+        "- Added translations for route names (german, french)",
+        
         { "v4.14.1", "2025-08-16" },
         "#Bugs",
         "- Fixed the spammy `You are not in a group` message when inside an instance",

@@ -699,83 +699,83 @@ end
 
 function APR.routeconfig:GetStartingZonePrefab()
     if APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
-        tinsert(APRCustomPath[APR.PlayerID], "01-10 Exile's Reach")
+        tinsert(APRCustomPath[APR.PlayerID], L["01-10 Exile's Reach"])
     elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and (APR.Level < APR.MinBoostLvl or APR.Level < 10) then -- first quest from Exile's Reach + boost
         --None skipable starting zone
         if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then                                                                                  -- Allied DK
-            tinsert(APRCustomPath[APR.PlayerID], "Allied Death Knight Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Allied Death Knight Start"])
         elseif APR.ClassId == APR.Classes["Death Knight"] then                                                                                                   -- DK
-            tinsert(APRCustomPath[APR.PlayerID], "Death Knight Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Death Knight Start"])
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
-            tinsert(APRCustomPath[APR.PlayerID], "Demon Hunter Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Demon Hunter Start"])
         elseif APR.Race == "Pandaren" then
-            tinsert(APRCustomPath[APR.PlayerID], "Pandaren Neutral Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Pandaren Neutral Start"])
         elseif APR.Race == "Goblin" then
-            tinsert(APRCustomPath[APR.PlayerID], "Goblin Start")
-            tinsert(APRCustomPath[APR.PlayerID], "Goblin - Lost Isles")
+            tinsert(APRCustomPath[APR.PlayerID], L["Goblin Start"])
+            tinsert(APRCustomPath[APR.PlayerID], L["Goblin - Lost Isles"])
         elseif APR.Race == "Worgen" then
-            tinsert(APRCustomPath[APR.PlayerID], "Worgen Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Worgen Start"])
 
             -- Horde Allied Race
         elseif APR.Race == "ZandalariTroll" then
-            tinsert(APRCustomPath[APR.PlayerID], "Zandalari Troll Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Zandalari Troll Start"])
         elseif APR.Race == "Vulpera" then
-            tinsert(APRCustomPath[APR.PlayerID], "Vulpera Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Vulpera Start"])
         elseif APR.Race == "MagharOrc" then
-            tinsert(APRCustomPath[APR.PlayerID], "Maghar Orc Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Maghar Orc Start"])
         elseif APR.Race == "Nightborne" then
-            tinsert(APRCustomPath[APR.PlayerID], "Nightborne Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Nightborne Start"])
         elseif APR.Race == "Nightborne" then
-            tinsert(APRCustomPath[APR.PlayerID], "Nightborne Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Nightborne Start"])
         elseif APR.Race == "HighmountainTauren" then
-            tinsert(APRCustomPath[APR.PlayerID], "Highmountain Tauren Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Highmountain Tauren Start"])
 
             -- Alliance Allied Race
         elseif APR.Race == "VoidElf" then
-            tinsert(APRCustomPath[APR.PlayerID], "Void Elf Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Void Elf Start"])
         elseif APR.Race == "LightforgedDraenei" then
-            tinsert(APRCustomPath[APR.PlayerID], "Lightforged Draenei Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Lightforged Draenei Start"])
         elseif APR.Race == "DarkIronDwarf" then
-            tinsert(APRCustomPath[APR.PlayerID], "DarkIron Dwarf Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["DarkIron Dwarf Start"])
         elseif APR.Race == "Mechagnome" then
-            tinsert(APRCustomPath[APR.PlayerID], "Mechagnome Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Mechagnome Start"])
         elseif APR.Race == "KulTiran" then
-            tinsert(APRCustomPath[APR.PlayerID], "Kul Tiran Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Kul Tiran Start"])
         elseif APR.Race == "Dracthyr" then
-            tinsert(APRCustomPath[APR.PlayerID], "Dracthyr Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Dracthyr Start"])
         elseif APR.Race == "EarthenDwarf" then
-            tinsert(APRCustomPath[APR.PlayerID], "Earthen Dwarf Start")
+            tinsert(APRCustomPath[APR.PlayerID], L["Earthen Dwarf Start"])
         elseif APR.Level < 10 then -- Skipable starting zone
             -- HORDE
             if (APR.Race == "Orc") then
-                tinsert(APRCustomPath[APR.PlayerID], "Orc Start")
-                tinsert(APRCustomPath[APR.PlayerID], "Durotar")
+                tinsert(APRCustomPath[APR.PlayerID], L["Orc Start"])
+                tinsert(APRCustomPath[APR.PlayerID], L["Durotar"])
             elseif (APR.Race == "Tauren") then
-                tinsert(APRCustomPath[APR.PlayerID], "Tauren Start") -- missing part 2
+                tinsert(APRCustomPath[APR.PlayerID], L["Tauren Start"]) -- missing part 2
             elseif (APR.Race == "Troll") then
-                tinsert(APRCustomPath[APR.PlayerID], "Troll Start")
-                tinsert(APRCustomPath[APR.PlayerID], "Durotar")
+                tinsert(APRCustomPath[APR.PlayerID], L["Troll Start"])
+                tinsert(APRCustomPath[APR.PlayerID], L["Durotar"])
             elseif (APR.Race == "Scourge") then --Undead
-                tinsert(APRCustomPath[APR.PlayerID], "Undead Start")
+                tinsert(APRCustomPath[APR.PlayerID], L["Undead Start"])
             elseif (APR.Race == "BloodElf") then
-                tinsert(APRCustomPath[APR.PlayerID], "Blood Elf Start") -- missing part 2
+                tinsert(APRCustomPath[APR.PlayerID], L["Blood Elf Start"]) -- missing part 2
                 -- ALLIANCE
             elseif (APR.Race == "NightElf") then
-                tinsert(APRCustomPath[APR.PlayerID], "Night Elf Start")
-                tinsert(APRCustomPath[APR.PlayerID], "Teldrassil")
+                tinsert(APRCustomPath[APR.PlayerID], L["Night Elf Start"])
+                tinsert(APRCustomPath[APR.PlayerID], L["Teldrassil"])
             elseif (APR.Race == "Draenei") then
-                tinsert(APRCustomPath[APR.PlayerID], "Draenei Start")
-                tinsert(APRCustomPath[APR.PlayerID], "Azuremyst Isle")
-                tinsert(APRCustomPath[APR.PlayerID], "Bloodmyst Isle")
+                tinsert(APRCustomPath[APR.PlayerID], L["Draenei Start"])
+                tinsert(APRCustomPath[APR.PlayerID], L["Azuremyst Isle"])
+                tinsert(APRCustomPath[APR.PlayerID], L["Bloodmyst Isle"])
             elseif (APR.Race == "Dwarf") then
-                tinsert(APRCustomPath[APR.PlayerID], "Dwarf Start")
-                tinsert(APRCustomPath[APR.PlayerID], "Dun Morogh")
+                tinsert(APRCustomPath[APR.PlayerID], L["Dwarf Start"])
+                tinsert(APRCustomPath[APR.PlayerID], L["Dun Morogh"])
             elseif (APR.Race == "Human") then
-                tinsert(APRCustomPath[APR.PlayerID], "Human Start")
-                tinsert(APRCustomPath[APR.PlayerID], "Elwynn Forest")
+                tinsert(APRCustomPath[APR.PlayerID], L["Human Start"])
+                tinsert(APRCustomPath[APR.PlayerID], L["Elwynn Forest"])
             elseif (APR.Race == "Gnome") then
-                tinsert(APRCustomPath[APR.PlayerID], "Gnome Start")
-                tinsert(APRCustomPath[APR.PlayerID], "Dun Morogh")
+                tinsert(APRCustomPath[APR.PlayerID], L["Gnome Start"])
+                tinsert(APRCustomPath[APR.PlayerID], L["Dun Morogh"])
             end
         end
     end
@@ -784,79 +784,79 @@ end
 
 function APR.routeconfig:GetWODPrefab()
     if APR.Faction == alliance then
-        tinsert(APRCustomPath[APR.PlayerID], "WOD01 - Stormwind")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD02 - Tanaan Jungle")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD03 - Shadowmoon")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD04 - Gorgrond")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD05 - Talador")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD06 - Shadowmoon")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD07 - Talador")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD08 - Spires of Arak")
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD01 - Stormwind"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD02 - Tanaan Jungle"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD03 - Shadowmoon"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD04 - Gorgrond"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD05 - Talador"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD06 - Shadowmoon"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD07 - Talador"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD08 - Spires of Arak"])
     elseif APR.Faction == horde then
-        tinsert(APRCustomPath[APR.PlayerID], "WOD01 - Orgrimmar")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD02 - Tanaan Jungle")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD03 - Frostfire Ridge")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD04 - Gorgrond")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD05 - Talador")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD06 - Spires of Arak")
-        tinsert(APRCustomPath[APR.PlayerID], "WOD07 - Nagrand")
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD01 - Orgrimmar"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD02 - Tanaan Jungle"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD03 - Frostfire Ridge"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD04 - Gorgrond"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD05 - Talador"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD06 - Spires of Arak"])
+        tinsert(APRCustomPath[APR.PlayerID], L["WOD07 - Nagrand"])
     end
     self:SendMessage("APR_Custom_Path_Update")
 end
 
 function APR.routeconfig:GetBFAPrefab()
     if APR.Faction == alliance then
-        tinsert(APRCustomPath[APR.PlayerID], "BFA01 - Intro")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA02 - Tiragarde Sound")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA03 - Dustvar")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA04 - Stormsong Valley")
+        tinsert(APRCustomPath[APR.PlayerID], L["BFA01 - Intro"])
+        tinsert(APRCustomPath[APR.PlayerID], L["BFA02 - Tiragarde Sound"])
+        tinsert(APRCustomPath[APR.PlayerID], L["BFA03 - Dustvar"])
+        tinsert(APRCustomPath[APR.PlayerID], L["BFA04 - Stormsong Valley"])
     elseif APR.Faction == horde then
-        tinsert(APRCustomPath[APR.PlayerID], "BFA01 - Intro")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA02 - Zuldazar")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA03 - Nazmir")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA04 - Naz-end Vol-begin")
-        tinsert(APRCustomPath[APR.PlayerID], "BFA05 - Vol'dun")
+        tinsert(APRCustomPath[APR.PlayerID], L["BFA01 - Intro"])
+        tinsert(APRCustomPath[APR.PlayerID], L["BFA02 - Zuldazar"])
+        tinsert(APRCustomPath[APR.PlayerID], L["BFA03 - Nazmir"])
+        tinsert(APRCustomPath[APR.PlayerID], L["BFA04 - Naz-end Vol-begin"])
+        tinsert(APRCustomPath[APR.PlayerID], L["BFA05 - Vol'dun"])
     end
     self:SendMessage("APR_Custom_Path_Update")
 end
 
 function APR.routeconfig:GetSLPrefab()
-    tinsert(APRCustomPath[APR.PlayerID], "SL - Intro")
-    tinsert(APRCustomPath[APR.PlayerID], "SL01 - The Maw")
-    tinsert(APRCustomPath[APR.PlayerID], "SL02 - Oribos")
-    tinsert(APRCustomPath[APR.PlayerID], "SL03 - Bastion")
-    tinsert(APRCustomPath[APR.PlayerID], "SL04 - Oribos")
-    tinsert(APRCustomPath[APR.PlayerID], "SL05 - Maldraxxus")
-    tinsert(APRCustomPath[APR.PlayerID], "SL06 - Oribos")
-    tinsert(APRCustomPath[APR.PlayerID], "SL07 - The Maw")
-    tinsert(APRCustomPath[APR.PlayerID], "SL08 - Oribos")
-    tinsert(APRCustomPath[APR.PlayerID], "SL09 - Maldraxxus")
-    tinsert(APRCustomPath[APR.PlayerID], "SL10 - Oribos")
-    tinsert(APRCustomPath[APR.PlayerID], "SL11 - Ardenweald")
-    tinsert(APRCustomPath[APR.PlayerID], "SL12 - Oribos")
-    tinsert(APRCustomPath[APR.PlayerID], "SL13 - Revendreth")
-    tinsert(APRCustomPath[APR.PlayerID], "SL14 - The Maw")
-    tinsert(APRCustomPath[APR.PlayerID], "SL15 - Revendreth")
-    tinsert(APRCustomPath[APR.PlayerID], "SL16 - Oribos")
-    tinsert(APRCustomPath[APR.PlayerID], "SL - StoryMode Only")
+    tinsert(APRCustomPath[APR.PlayerID], L["SL - Intro"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL01 - The Maw"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL02 - Oribos"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL03 - Bastion"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL04 - Oribos"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL05 - Maldraxxus"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL06 - Oribos"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL07 - The Maw"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL08 - Oribos"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL09 - Maldraxxus"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL10 - Oribos"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL11 - Ardenweald"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL12 - Oribos"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL13 - Revendreth"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL14 - The Maw"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL15 - Revendreth"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL16 - Oribos"])
+    tinsert(APRCustomPath[APR.PlayerID], L["SL - StoryMode Only"])
     self:SendMessage("APR_Custom_Path_Update")
 end
 
 function APR.routeconfig:GetDFPrefab()
     if APR.Faction == alliance then
-        tinsert(APRCustomPath[APR.PlayerID], "DF01 - Dragonflight Stormwind")
-        tinsert(APRCustomPath[APR.PlayerID], "DF02 - Waking Shores - Alliance")
-        tinsert(APRCustomPath[APR.PlayerID], "DF03 - Waking Shores - Neutral")
-        tinsert(APRCustomPath[APR.PlayerID], "DF04 - Ohn'Ahran Plains")
-        tinsert(APRCustomPath[APR.PlayerID], "DF05 - Azure Span")
-        tinsert(APRCustomPath[APR.PlayerID], "DF06 - Thaldraszus")
+        tinsert(APRCustomPath[APR.PlayerID], L["DF01 - Dragonflight Stormwind"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF02 - Waking Shores - Alliance"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF03 - Waking Shores - Neutral"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF04 - Ohn'Ahran Plains"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF05 - Azure Span"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF06 - Thaldraszus"])
     elseif APR.Faction == horde then
-        tinsert(APRCustomPath[APR.PlayerID], "DF01/02 - Dragonflight Orgrimmar/Durotar")
-        tinsert(APRCustomPath[APR.PlayerID], "DF03 - Waking Shores - Horde")
-        tinsert(APRCustomPath[APR.PlayerID], "DF04 - Waking Shores - Neutral")
-        tinsert(APRCustomPath[APR.PlayerID], "DF05 - Ohn'Ahran Plains")
-        tinsert(APRCustomPath[APR.PlayerID], "DF06 - Azure Span")
-        tinsert(APRCustomPath[APR.PlayerID], "DF07 - Thaldraszus")
+        tinsert(APRCustomPath[APR.PlayerID], L["DF01/02 - Dragonflight Orgrimmar/Durotar"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF03 - Waking Shores - Horde"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF04 - Waking Shores - Neutral"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF05 - Ohn'Ahran Plains"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF06 - Azure Span"])
+        tinsert(APRCustomPath[APR.PlayerID], L["DF07 - Thaldraszus"])
     end
     self:SendMessage("APR_Custom_Path_Update")
 end
@@ -865,23 +865,23 @@ function APR.routeconfig:GetTWWPrefab()
     -- Don't add TWW route if the player is neutral
     if APR.Faction == "Neutral" then return end
 
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 01 - Intro")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 02 - Isle of Dorn")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 03 - Ringing Deeps")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 04 - Hallowfall")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 05 - Azj-Kahet")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 06 - Against the Current Storyline")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 07 - Ties That Bind Storyline")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 08 - News from Below Storyline")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 09 - The Machines March to War Storyline")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 10 - Light in the Dark Storyline")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 11 - Lingering Shadow Storyline")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - 12 - Fate of the Kirin Tor")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - Siren Isle Intro")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - Undermine")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - Nightfall")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - Rise of the Red Dawn")
-    tinsert(APRCustomPath[APR.PlayerID], "TWW - K'aresh Storyline")
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 01 - Intro"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 02 - Isle of Dorn"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 03 - Ringing Deeps"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 04 - Hallowfall"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 05 - Azj-Kahet"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 06 - Against the Current Storyline"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 07 - Ties That Bind Storyline"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 08 - News from Below Storyline"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 09 - The Machines March to War Storyline"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 10 - Light in the Dark Storyline"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 11 - Lingering Shadow Storyline"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - 12 - Fate of the Kirin Tor"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - Siren Isle Intro"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - Undermine"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - Nightfall"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - Rise of the Red Dawn"])
+    tinsert(APRCustomPath[APR.PlayerID], L["TWW - K'aresh Storyline"])
 
     self:SendMessage("APR_Custom_Path_Update")
 end

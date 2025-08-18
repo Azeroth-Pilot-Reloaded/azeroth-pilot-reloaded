@@ -1,3 +1,5 @@
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
 if (APR.Faction == "Neutral") then
     APR.RouteList.Vanilla = {}
     APR.RouteList.TheBurningCrusade = {}
@@ -14,6 +16,6 @@ if (APR.Faction == "Neutral") then
 
 
     if (APR.Race == "Pandaren") then
-        APR.RouteList.MistsOfPandaria["378-Panda Starting Zone"] = "Pandaren Neutral Start"
+        APR.RouteList.MistsOfPandaria["378-Panda Starting Zone"] = L["Pandaren Neutral Start"]
     end
 end
