@@ -37,6 +37,7 @@ if (APR.Faction == "Horde") then
         ["550-DesMephisto-Nagrand"] = L["WOD07 - Nagrand"],
     }
     APR.RouteList.Legion = {
+        ["85-Intro-Legion"] = L["Legion - Intro"],
         ["630-Azsuna"] = L["Legion - Azsuna"],
         ["641-ValSharah"] = L["Legion - Val'Sharah"],
         ["634-Stormheim"] = L["Legion - Stormheim"],

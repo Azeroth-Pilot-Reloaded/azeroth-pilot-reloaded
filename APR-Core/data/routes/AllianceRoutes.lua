@@ -63,6 +63,7 @@ if (APR.Faction == "Alliance") then
         ["542-DesMephisto-SpiresOfArak"] = L["WOD08 - Spires of Arak"],
     }
     APR.RouteList.Legion = {
+        ["84-Intro-Legion"] = L["Legion - Intro"],
         ["630-Azsuna"] = L["Legion - Azsuna"],
         ["641-ValSharah"] = L["Legion - Val'Sharah"],
         ["634-Stormheim"] = L["Legion - Stormheim"],
