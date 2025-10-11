@@ -36,7 +36,9 @@ APR.Portals.Coords = {
             ["Stormwind"] = { x = 4548.5, y = -929.5 },
             ["Stormwind AzsunaLegion"] = { x = 6756.2, y = -13.4 },
             ["Stormwind Telogrus Rift"] = { x = 3331.6, y = 2149.6 },
-            ["Stormwind Vindicaar"] = { x = 1469.5, y = 499.6 }
+            ["Stormwind Vindicaar"] = { x = 1469.5, y = 499.6 },
+            ["Remix Dalaran to Bazar"] = { x = 4280.1, y = -805.5 }, -- temp fix until next update
+            ["Remix Bazar to Dalaran"] = { x = 4490.5, y = -1208.8 } -- temp fix until next update
         },
         [876] = {
             ["Stormwind"] = { x = -524.3, y = 1133.5 },
@@ -132,7 +134,9 @@ APR.Portals.Coords = {
             ["Orgrimmar"] = { x = 4418.6, y = -714.8 },
             ["Orgrimmar AzsunaLegion"] = { x = 6755.1, y = -8.5 },
             ["Orgrimmar Suramar"] = { x = 3428.6, y = 213.6 },
-            ["Orgrimmar Highmountain"] = { x = 4415, y = 4082.4 }
+            ["Orgrimmar Highmountain"] = { x = 4415, y = 4082.4 },
+            ["Remix Dalaran to Bazar"] = { x = 4280.1, y = -805.5 }, -- temp fix until next update
+            ["Remix Bazar to Dalaran"] = { x = 4490.5, y = -1208.8 } -- temp fix until next update
         },
         [876] = {
             ["DrustvarSail"] = { x = 750.6, y = -1123 },
@@ -219,6 +223,8 @@ APR.Portals.SwitchCont = {
         { continent = 619,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind AzsunaLegion", },
         { continent = 619,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Telogrus Rift", },
         { continent = 619,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Vindicaar", },
+        { continent = 619,  nextContinent = 619,  nextZone = 619,  portalKey = "Remix Dalaran to Bazar", },
+        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Remix Bazar to Dalaran", },
         { continent = 875,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind", },
         { continent = 876,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",                closestTaxiNode = "Tradewinds Market, Tiragarde Sound" },
         { continent = 1550, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",                closestTaxiNode = "Oribos" },
@@ -300,6 +306,8 @@ APR.Portals.SwitchCont = {
         { continent = 619,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Suramar", },
         { continent = 619,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar AzsunaLegion", },
         { continent = 619,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Highmountain", },
+        { continent = 619,  nextContinent = 619,  nextZone = 619,  portalKey = "Remix Dalaran to Bazar", },
+        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Remix Bazar to Dalaran", },
         { continent = 875,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",                closestTaxiNode = "Port of Zandalar, Zuldazar" },
         { continent = 875,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Dazaralor", },
         { continent = 1550, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",                closestTaxiNode = "Oribos" },
