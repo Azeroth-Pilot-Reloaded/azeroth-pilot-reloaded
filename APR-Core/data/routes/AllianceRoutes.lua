@@ -64,6 +64,7 @@ if (APR.Faction == "Alliance") then
     }
     APR.RouteList.Legion = {
         ["84-Intro-Legion"] = L["Legion - Intro"],
+        ["627-Intro-Remix"] = L["Legion - Intro Remix"],
         ["630-Azsuna"] = L["Legion - Azsuna"],
         ["641-ValSharah"] = L["Legion - Val'Sharah"],
         ["634-Stormheim"] = L["Legion - Stormheim"],
