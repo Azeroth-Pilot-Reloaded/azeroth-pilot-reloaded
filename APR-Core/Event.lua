@@ -38,6 +38,7 @@ local events = {
     scenario = { "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
     spell = "UNIT_SPELLCAST_SUCCEEDED",
+    spec = "PLAYER_SPECIALIZATION_CHANGED",
     treasure = "CHAT_MSG_COMBAT_XP_GAIN",
     updateQuest = { "QUEST_LOG_UPDATE", "UNIT_QUEST_LOG_CHANGED" },
     vehicle = "UNIT_ENTERED_VEHICLE",
@@ -840,6 +841,13 @@ function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
         if (APR:Contains(APR.hearthStoneSpellID, spellID) and step.UseHS) or (step.SpellTrigger and spellID == step.SpellTrigger) then
             APR:UpdateNextStep()
         end
+    end
+end
+
+function APR.event.functions.spec(event, unitTarget)
+    if unitTarget == "player" then
+        -- Update value of the player class specialization
+        APR.ClassSpec = select(2, C_SpecializationInfo.GetSpecializationInfo(C_SpecializationInfo.GetSpecialization()))
     end
 end
 
