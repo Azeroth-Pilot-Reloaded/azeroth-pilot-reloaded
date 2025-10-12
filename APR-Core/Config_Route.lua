@@ -886,6 +886,14 @@ function APR.routeconfig:GetTWWPrefab()
     self:SendMessage("APR_Custom_Path_Update")
 end
 
+ function APR.routeconfig:GetPlayerSpecRoute()
+    local routeKey = "Artifact Weapon - " .. APR.Class .. " - " .. APR.ClassSpec
+    -- Vérifie si la route existe
+    if APR.RouteQuestStepList[routeKey] then
+        tinsert(APRCustomPath[APR.PlayerID], L[APR.RouteQuestStepList[routeKey]])
+    end
+end
+
 ---------------------------------------------------------------------------------------
 ------------------------------ Route config function ----------------------------------
 ---------------------------------------------------------------------------------------

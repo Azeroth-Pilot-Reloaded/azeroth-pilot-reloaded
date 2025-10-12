@@ -110,6 +110,7 @@ if (APR.Faction == "Horde") then
     -- Starting Route or custom
     ---
     local startRoutes = {
+        -- Races
         Orc = { expansion = "Vanilla", key = "1-ValleyOfTrialsOrc", label = L["Orc Start"] },
         Scourge = { expansion = "Vanilla", key = "465-TirisfalGladesUndead", label = L["Undead Start"] },
         Tauren = { expansion = "Vanilla", key = "462-MulgoreTauren", label = L["Tauren Start"] },
@@ -125,15 +126,10 @@ if (APR.Faction == "Horde") then
             Druid = { expansion = "Vanilla", key = "463-EchoIslesTrollDruid", label = L["Troll Start"] }
         },
         BloodElf = { expansion = "TheBurningCrusade", key = "467-BloodElf-intro", label = L["Blood Elf Start"] },
-        ["Death Knight"] = {
-            default = { expansion = "WrathOfTheLichKing", key = "23-ScarletEnclave", label = L["Death Knight Start"] },
-            allied = { expansion = "WrathOfTheLichKing", key = "118-Allied_Icecrown Citadel", label = L["Allied Death Knight Start"] }
-        },
         Goblin = {
             main = { expansion = "Cataclysm", key = "194-Kezan", label = L["Goblin Start"] },
             secondary = { expansion = "Cataclysm", key = "174-LostIsles", label = L["Goblin - Lost Isles"] }
         },
-        ["Demon Hunter"] = { expansion = "Legion", key = "672-Mardum", label = L["Demon Hunter Start"] },
         HighmountainTauren = { expansion = "Legion", key = "652-HighmountainTauren-intro", label = L["Highmountain Tauren Start"] },
         Nightborne = { expansion = "Legion", key = "680-Nightborne-intro", label = L["Nightborne Start"] },
         MagharOrc = { expansion = "BattleForAzeroth", key = "85-MagharOrc-intro", label = L["Maghar Orc Start"] },
@@ -143,46 +139,189 @@ if (APR.Faction == "Horde") then
             evoker = { expansion = "Dragonflight", key = "2118-DracthyrStart-Evo", label = L["Dracthyr Start"] },
             default = { expansion = "Dragonflight", key = "2118-DracthyrStart-Other", label = L["Dracthyr Start"] }
         },
-        EarthenDwarf = { expansion = "TheWarWithin", key = "2248-TWW-Earthen", label = L["Earthen Dwarf Start"] }
+        EarthenDwarf = { expansion = "TheWarWithin", key = "2248-TWW-Earthen", label = L["Earthen Dwarf Start"] },
+
+
+        -- Classes
+        ["Death Knight"] = {
+            allied = { expansion = "WrathOfTheLichKing", key = "118-Allied_Icecrown Citadel", label = L["Allied Death Knight Start"] },
+            remix = {
+                hub = { expansion = "Legion", key = "Order Hall Death Knight Part 1", label = L["Order Hall Death Knight Start - Remix"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Death Knight Part 1", label = L["Order Hall Death Knight Next - Remix"] },
+            },
+            spec = {
+                Blood = { expansion = "Legion", key = "Artifact Weapon - Death Knight - Blood", label = L["Artifact Weapon - Death Knight - Blood"] },
+                Frost = { expansion = "Legion", key = "Artifact Weapon - Death Knight - Frost", label = L["Artifact Weapon - Death Knight - Frost"] },
+                Unholy = { expansion = "Legion", key = "Artifact Weapon - Death Knight - Unholy", label = L["Artifact Weapon - Death Knight - Unholy"] },
+            },
+            default = { expansion = "WrathOfTheLichKing", key = "23-ScarletEnclave", label = L["Death Knight Start"] },
+        },
+        ["Demon Hunter"] = {
+            remix = { expansion = "Legion", key = "Order Hall Demon Hunter Part 1", label = L["Order Hall Demon Hunter Start - Remix"] },
+            spec = {
+                Havoc = { expansion = "Legion", key = "Artifact Weapon - Demon Hunter - Havoc", label = L["Artifact Weapon - Demon Hunter - Havoc"] },
+                Vengeance = { expansion = "Legion", key = "Artifact Weapon - Demon Hunter - Vengeance", label = L["Artifact Weapon - Demon Hunter - Vengeance"] },
+            },
+            default = { expansion = "Legion", key = "672-Demon-Hunter-Start", label = L["Demon Hunter Start"] },
+        },
+        ["Druid"] = {
+            remix = { expansion = "Legion", key = "Order Hall Druid Part 1", label = L["Order Hall Druid Start - Remix"] },
+            spec = {
+                Balance = { expansion = "Legion", key = "Artifact Weapon - Druid - Balance", label = L["Artifact Weapon - Druid - Balance"] },
+                Feral = { expansion = "Legion", key = "Artifact Weapon - Druid - Feral", label = L["Artifact Weapon - Druid - Feral"] },
+                Guardian = { expansion = "Legion", key = "Artifact Weapon - Druid - Guardian", label = L["Artifact Weapon - Druid - Guardian"] },
+                Restoration = { expansion = "Legion", key = "Artifact Weapon - Druid - Restoration", label = L["Artifact Weapon - Druid - Restoration"] },
+            },
+        },
+        ["Hunter"] = {
+            remix = { expansion = "Legion", key = "Order Hall Hunter Part 1", label = L["Order Hall Hunter Start - Remix"] },
+            spec = {
+                ["Beast Mastery"] = { expansion = "Legion", key = "Artifact Weapon - Hunter - Beast Mastery", label = L["Artifact Weapon - Hunter - Beast Mastery"] },
+                ["Marksmanship"] = { expansion = "Legion", key = "Artifact Weapon - Hunter - Marksmanship", label = L["Artifact Weapon - Hunter - Marksmanship"] },
+                ["Survival"] = { expansion = "Legion", key = "Artifact Weapon - Hunter - Survival", label = L["Artifact Weapon - Hunter - Survival"] },
+            },
+        },
+        ["Mage"] = {
+            remix = { expansion = "Legion", key = "Order Hall Mage Part 1", label = L["Order Hall Mage Start - Remix"] },
+            spec = {
+                Arcane = { expansion = "Legion", key = "Artifact Weapon - Mage - Arcane", label = L["Artifact Weapon - Mage - Arcane"] },
+                Fire = { expansion = "Legion", key = "Artifact Weapon - Mage - Fire", label = L["Artifact Weapon - Mage - Fire"] },
+                Frost = { expansion = "Legion", key = "Artifact Weapon - Mage - Frost", label = L["Artifact Weapon - Mage - Frost"] },
+            },
+        },
+        ["Monk"] = {
+            remix = { expansion = "Legion", key = "Order Hall Monk Part 1", label = L["Order Hall Monk Start - Remix"] },
+            spec = {
+                Brewmaster = { expansion = "Legion", key = "Artifact Weapon - Monk - Brewmaster", label = L["Artifact Weapon - Monk - Brewmaster"] },
+                Mistweaver = { expansion = "Legion", key = "Artifact Weapon - Monk - Mistweaver", label = L["Artifact Weapon - Monk - Mistweaver"] },
+                Windwalker = { expansion = "Legion", key = "Artifact Weapon - Monk - Windwalker", label = L["Artifact Weapon - Monk - Windwalker"] },
+            },
+        },
+        ["Paladin"] = {
+            remix = { expansion = "Legion", key = "Order Hall Paladin Part 1", label = L["Order Hall Paladin Start - Remix"] },
+            spec = {
+                Holy = { expansion = "Legion", key = "Artifact Weapon - Paladin - Holy", label = L["Artifact Weapon - Paladin - Holy"] },
+                Protection = { expansion = "Legion", key = "Artifact Weapon - Paladin - Protection", label = L["Artifact Weapon - Paladin - Protection"] },
+                Retribution = { expansion = "Legion", key = "Artifact Weapon - Paladin - Retribution", label = L["Artifact Weapon - Paladin - Retribution"] },
+            },
+        },
+        ["Priest"] = {
+            remix = { expansion = "Legion", key = "Order Hall Priest Part 1", label = L["Order Hall Priest Start - Remix"] },
+            spec = {
+                Discipline = { expansion = "Legion", key = "Artifact Weapon - Priest - Discipline", label = L["Artifact Weapon - Priest - Discipline"] },
+                Holy = { expansion = "Legion", key = "Artifact Weapon - Priest - Holy", label = L["Artifact Weapon - Priest - Holy"] },
+                Shadow = { expansion = "Legion", key = "Artifact Weapon - Priest - Shadow", label = L["Artifact Weapon - Priest - Shadow"] },
+            },
+        },
+        ["Rogue"] = {
+            remix = { expansion = "Legion", key = "Order Hall Rogue Part 1", label = L["Order Hall Rogue Start - Remix"] },
+            spec = {
+                Assassination = { expansion = "Legion", key = "Artifact Weapon - Rogue - Assassination", label = L["Artifact Weapon - Rogue - Assassination"] },
+                Outlaw = { expansion = "Legion", key = "Artifact Weapon - Rogue - Outlaw", label = L["Artifact Weapon - Rogue - Outlaw"] },
+                Subtlety = { expansion = "Legion", key = "Artifact Weapon - Rogue - Subtlety", label = L["Artifact Weapon - Rogue - Subtlety"] },
+            },
+        },
+        ["Shaman"] = {
+            remix = { expansion = "Legion", key = "Order Hall Shaman Part 1", label = L["Order Hall Shaman Start - Remix"] },
+            spec = {
+                Elemental = { expansion = "Legion", key = "Artifact Weapon - Shaman - Elemental", label = L["Artifact Weapon - Shaman - Elemental"] },
+                Enhancement = { expansion = "Legion", key = "Artifact Weapon - Shaman - Enhancement", label = L["Artifact Weapon - Shaman - Enhancement"] },
+                Restoration = { expansion = "Legion", key = "Artifact Weapon - Shaman - Restoration", label = L["Artifact Weapon - Shaman - Restoration"] },
+            },
+        },
+        ["Warlock"] = {
+            remix = { expansion = "Legion", key = "Order Hall Warlock Part 1", label = L["Order Hall Warlock Start - Remix"] },
+            spec = {
+                Affliction = { expansion = "Legion", key = "Artifact Weapon - Warlock - Affliction", label = L["Artifact Weapon - Warlock - Affliction"] },
+                Demonology = { expansion = "Legion", key = "Artifact Weapon - Warlock - Demonology", label = L["Artifact Weapon - Warlock - Demonology"] },
+                Destruction = { expansion = "Legion", key = "Artifact Weapon - Warlock - Destruction", label = L["Artifact Weapon - Warlock - Destruction"] },
+            },
+        },
+        ["Warrior"] = {
+            remix = { expansion = "Legion", key = "Order Hall Warrior Part 1", label = L["Order Hall Warrior Start - Remix"] },
+            spec = {
+                Arms = { expansion = "Legion", key = "Artifact Weapon - Warrior - Arms", label = L["Artifact Weapon - Warrior - Arms"] },
+                Fury = { expansion = "Legion", key = "Artifact Weapon - Warrior - Fury", label = L["Artifact Weapon - Warrior - Fury"] },
+                Protection = { expansion = "Legion", key = "Artifact Weapon - Warrior - Protection", label = L["Artifact Weapon - Warrior - Protection"] },
+            },
+        },
+
     }
 
 
-    local function assignRoute(expansion, key, label)
-        APR.RouteList[expansion][key] = label
+    local function assignRoutes(routes)
+        if not routes then return end
+
+        if routes.expansion and routes.key and routes.label then
+            APR.RouteList[routes.expansion][routes.key] = routes.label
+        elseif type(routes) == "table" then
+            for _, route in ipairs(routes) do
+                if route.expansion and route.key and route.label then
+                    APR.RouteList[route.expansion][route.key] = route.label
+                end
+            end
+        end
     end
 
     -- WARNING Class before race
     ---
-    local route
-    if APR.ClassId == APR.Classes["Demon Hunter"] then
-        route = startRoutes["Demon Hunter"]
+    local routesToAssign = {}
+    local className = APR:GetClassNameById(APR.ClassId)
+    if APR:IsRemixCharacter() then
+        -- Class-specific remix start routes
+        table.insert(routesToAssign, startRoutes[className].remix.hub)
+        table.insert(routesToAssign, startRoutes[className].remix.hub2)
+    elseif APR.ClassId == APR.Classes["Demon Hunter"] then
+        table.insert(routesToAssign, startRoutes["Demon Hunter"].default)
     elseif APR.ClassId == APR.Classes["Death Knight"] then
         -- Use allied start if race ID is >= 23; otherwise, default Death Knight start
-        route = APR.RaceID >= 23 and startRoutes["Death Knight"].allied or startRoutes["Death Knight"].default
+        if APR.RaceID >= 23 then
+            table.insert(routesToAssign, startRoutes["Death Knight"].allied)
+        else
+            table.insert(routesToAssign, startRoutes["Death Knight"].default)
+        end
     elseif APR.Race == "Dracthyr" then
         -- Check for Dracthyr Evoker-specific start, else use general Dracthyr start
-        route = APR.ClassId == APR.Classes.Evoker and startRoutes.Dracthyr.evoker or
-            startRoutes.Dracthyr.default
+        if APR.ClassId == APR.Classes.Evoker then
+            table.insert(routesToAssign, startRoutes.Dracthyr.evoker)
+        else
+            table.insert(routesToAssign, startRoutes.Dracthyr.default)
+        end
     elseif APR.Race == "Goblin" then
-        local gob = startRoutes.Goblin
-        assignRoute(gob.main.expansion, gob.main.key, gob.main.label)
-        route = gob.secondary
-    elseif APR.Race == "Troll" and startRoutes.Troll[APR:titleCase(APR.ClassName)] then
-        local trollRoute = startRoutes.Troll[APR:titleCase(APR.ClassName)]
-        assignRoute(trollRoute.expansion, trollRoute.key, trollRoute.label)
+        table.insert(routesToAssign, startRoutes.Goblin.main)
+        table.insert(routesToAssign, startRoutes.Goblin.secondary)
+    elseif APR.Race == "Troll" and startRoutes.Troll[className] then
+        local trollRoute = startRoutes.Troll[className]
+        table.insert(routesToAssign, trollRoute)
     else
-        route = startRoutes[APR.Race]
-    end
-    if route and route.expansion and route.key and route.label then
-        assignRoute(route.expansion, route.key, route.label)
+        table.insert(routesToAssign, startRoutes[APR.Race])
     end
 
+    if startRoutes[className] and startRoutes[className].spec then
+        for specName, specRoute in pairs(startRoutes[className].spec) do
+            table.insert(routesToAssign, specRoute)
+        end
+    end
 
     -- Lumbermill Wod route
     -- Special case for Warlords of Draenor route based on quest completion
+    local gorgrondRoute
     if C_QuestLog.IsQuestFlaggedCompleted(35049) then
-        assignRoute("WarlordsOfDraenor", "543-DesMephisto-Gorgrond-Lumbermill", L["WOD04 - Gorgrond"])
+        gorgrondRoute = {
+            expansion = "WarlordsOfDraenor",
+            key = "543-DesMephisto-Gorgrond-Lumbermill",
+            label = L["WOD04 - Gorgrond"],
+        }
     else
-        assignRoute("WarlordsOfDraenor", "543-DesMephisto-Gorgrond-p1", L["WOD04 - Gorgrond"])
+        gorgrondRoute = {
+            expansion = "WarlordsOfDraenor",
+            key = "543-DesMephisto-Gorgrond-p1",
+            label = L["WOD04 - Gorgrond"],
+        }
     end
+    table.insert(routesToAssign, gorgrondRoute)
+
+
+    -- Apply all collected routes
+    assignRoutes(routesToAssign)
 end
