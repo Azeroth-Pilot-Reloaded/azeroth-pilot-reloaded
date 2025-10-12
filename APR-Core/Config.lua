@@ -1155,7 +1155,7 @@ function APR.settings:createBlizzOptions()
                             SetProfileOption(info, value)
                             APR.heirloom:RefreshFrameAnchor()
                         end,
-                        disabled = APR:IsMoPRemixCharacter()
+                        disabled = APR:IsRemixCharacter()
                     },
                 }
             },

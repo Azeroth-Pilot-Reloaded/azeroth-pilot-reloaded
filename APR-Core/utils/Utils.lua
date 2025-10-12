@@ -200,8 +200,8 @@ function APR:tableToString(table, skipKey)
     return result .. "}"
 end
 
-function APR:IsMoPRemixCharacter()
-    local aura = C_UnitAuras.GetPlayerAuraBySpellID(424143)
+function APR:IsRemixCharacter()
+    local aura = C_UnitAuras.GetPlayerAuraBySpellID(1232454) -- SpellID for "Remix" buff
     return aura ~= nil
 end
 
