@@ -523,7 +523,7 @@ APR.RouteQuestStepList["627-Intro-Remix"] = {
     },
 }
 
-APR.RouteQuestStepList["672-Mardum"] = {
+APR.RouteQuestStepList["672-Demon-Hunter-Start"] = {
     {
         PickUp = { 40077 },
         Coord = { x = 3202.6, y = 1180 },
@@ -4516,27 +4516,1085 @@ APR.RouteQuestStepList["641-ValSharah"] = {
     },
 }
 
+-- Death Knight
+APR.RouteQuestStepList["Order Hall Death Knight Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Death Knight Part 1"] = {}
+APR.RouteQuestStepList["Order Hall Death Knight Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Demon Hunter Part 1"] = {}
+APR.RouteQuestStepList["Artifact Weapon - Death Knight - Blood"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Druid Part 1"] = {}
+APR.RouteQuestStepList["Artifact Weapon - Death Knight - Frost"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Hunter Part 1"] = {}
+APR.RouteQuestStepList["Artifact Weapon - Death Knight - Unholy"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Mage Part 1"] = {}
+-- Demon Hunter
+APR.RouteQuestStepList["Order Hall Demon Hunter Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Monk Part 1"] = {}
+APR.RouteQuestStepList["Order Hall Demon Hunter Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Paladin Part 1"] = {}
+APR.RouteQuestStepList["Artifact Weapon - Demon Hunter - Havoc"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Priest Part 1"] = {}
+APR.RouteQuestStepList["Artifact Weapon - Demon Hunter - Vengeance"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Rogue Part 1"] = {}
+-- Druid
+APR.RouteQuestStepList["Order Hall Druid Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Shaman Part 1"] = {}
+APR.RouteQuestStepList["Order Hall Druid Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Warlock Part 1"] = {}
+APR.RouteQuestStepList["Artifact Weapon - Druid - Balance"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
 
-APR.RouteQuestStepList["Order Hall Warrior Part 1"] = {}
+APR.RouteQuestStepList["Artifact Weapon - Druid - Feral"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Druid - Guardian"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Druid - Restoration"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+-- Hunter
+APR.RouteQuestStepList["Order Hall Hunter Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Order Hall Hunter Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Hunter - Beast Mastery"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Hunter - Marksmanship"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Hunter - Survival"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+-- Mage
+APR.RouteQuestStepList["Order Hall Mage Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Order Hall Mage Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Mage - Fire"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Mage - Frost"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+-- Monk
+APR.RouteQuestStepList["Order Hall Monk Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Order Hall Monk Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Monk - Brewmaster"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Monk - Mistweaver"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Monk - Windwalker"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+-- Paladin
+APR.RouteQuestStepList["Order Hall Paladin Part 1"] = {
+    {
+        PickUp = { 38710 },
+        Coord = { x = 4397.5, y = -834.2 },
+        Zone = 627,
+        _index = 1,
+    },
+    {
+        Qpart = { [38710] = { 1 } },
+        Coord = { x = 4391.8, y = -814.6 },
+        GossipOptionIDs = { 45834 },
+        Zone = 627,
+        _index = 2,
+    },
+    {
+        Qpart = { [38710] = { 2 } },
+        Coord = { x = 4531.3, y = -788.2 },
+        GossipOptionIDs = { 45835 },
+        Zone = 627,
+        _index = 3,
+    },
+    {
+        Done = { 38710 },
+        Coord = { x = 4256.4, y = -848 },
+        Zone = 627,
+        _index = 4,
+    },
+    {
+        PickUp = { 40408 },
+        Coord = { x = 4256.4, y = -848 },
+        Zone = 627,
+        _index = 5,
+    },
+    {
+        Qpart = { [40408] = { 1 } },
+        Coord = { x = 4256.4, y = -848 },
+        GossipOptionIDs = { 45133 },
+        ExtraLineText = "REMIX ARTIFACT WEAPON BONUS",
+        ExtraLineText2 = "REMIX ARTIFACT WEAPON OTHERS",
+        Range = 1,
+        Zone = 627,
+        _index = 6,
+    },
+    {
+        Done = { 40408 },
+        Coord = { x = 4256.4, y = -848 },
+        Zone = 627,
+        _index = 7,
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
+}
+
+APR.RouteQuestStepList["Order Hall Paladin Part 2"] = {
+    {
+        {
+            PickUp = { 38566 },
+            Coord = { x = -5433.3, y = 2455.3 },
+            Zone = 23,
+            _index = 1,
+        },
+        {
+            Qpart = { [38566] = { 1 } },
+            Coord = { x = -5477.9, y = 2497.7 },
+            Range = 2,
+            Zone = 23,
+            _index = 2,
+        },
+        {
+            Qpart = { [38566] = { 2 } },
+            Coord = { x = -5484.6, y = 2504.9 },
+            ExtraLineText = "CLICK_ON_BOOK",
+            Range = 1,
+            Zone = 23,
+            _index = 3,
+        },
+        {
+            Qpart = { [38566] = { 3 } },
+            Coord = { x = -5484.6, y = 2504.9 },
+            Range = 1,
+            ETA = 49,
+            Zone = 23,
+            _index = 4,
+        },
+        {
+            Done = { 38566 },
+            Coord = { x = -5480.3, y = 2507.1 },
+            Zone = 23,
+            _index = 5,
+        },
+        {
+            PickUp = { 38933 },
+            Coord = { x = -5480.3, y = 2507.1 },
+            Zone = 23,
+            _index = 6,
+        },
+        {
+            Waypoint = 38933,
+            Coord = { x = -5366.3, y = 2382.8 },
+            Range = 5,
+            Zone = 23,
+            _index = 7,
+        },
+        {
+            Done = { 38933 },
+            Coord = { x = -5384.8, y = 2334.7 },
+            Zone = 23,
+            _index = 8,
+        },
+        {
+            PickUp = { 39756 },
+            Coord = { x = -5384.8, y = 2334.7 },
+            Zone = 23,
+            _index = 9,
+        },
+        {
+            PickUp = { 39718 },
+            Coord = { x = -5390.2, y = 2333.1 },
+            ExtraLineText = "SCOUTING_MAP",
+            Zone = 23,
+            _index = 10,
+        },
+        {
+            Done = { 39756 },
+            Coord = { x = -5385.2, y = 2334.8 },
+            Zone = 23,
+            _index = 11,
+        },
+        {
+            PickUp = { 39696 },
+            Coord = { x = -5374.5, y = 2351.4 },
+            Zone = 23,
+            _index = 12,
+        },
+        {
+            Done = { 39696 },
+            Coord = { x = -5374.5, y = 2351.4 },
+            Zone = 23,
+            _index = 13,
+        },
+        {
+            PickUp = { 42846 },
+            Coord = { x = -5374.5, y = 2351.4 },
+            Zone = 23,
+            _index = 14,
+        },
+        {
+            Qpart = { [42846] = { 1 } },
+            Coord = { x = -5322.9, y = 2374.4 },
+            Zone = 23,
+            _index = 15,
+        },
+        {
+            Done = { 42846 },
+            Coord = { x = -5384.8, y = 2334.8 },
+            Zone = 23,
+            _index = 16,
+        },
+        {
+            Qpart = { [39718] = { 1 } },
+            Coord = { x = -5320.2, y = 2376.1 },
+            ExtraLineText = "USE_PORTAL",
+            Zone = 23,
+            _index = 17,
+        },
+        {
+            RouteCompleted = 1,
+            _index = 18,
+        },
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Paladin - Holy"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Paladin - Protection"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Paladin - Retribution"] = {
+    {
+        PickUp = { 42770, 42770 },
+        Coord = { x = 4256.4, y = -848 },
+        Zone = 627,
+        _index = 1,
+    },
+    {
+        Qpart = { [42770] = { 1 } },
+        Button = { ["42770-1"] = 173537 },
+        ExtraLineText = "USE_QUEST_HEARTHSTONE",
+        NoArrow = 1,
+        Zone = 627,
+        _index = 2,
+    },
+    {
+        Done = { 42770 },
+        Coord = { x = -1800.5, y = 1100.8 },
+        Zone = 22,
+        _index = 3,
+    },
+    {
+        PickUp = { 42772, 42771 },
+        Coord = { x = -1794.9, y = 1101.9 },
+        Zone = 22,
+        _index = 4,
+    },
+    {
+        QpartPart = { [42772] = { 1 } },
+        Coord = { x = -1777.3, y = 1182.8 },
+        Fillers = { [42771] = { 1 } },
+        TrigText = "1/3",
+        Zone = 22,
+        _index = 5,
+    },
+    {
+        QpartPart = { [42772] = { 1 } },
+        Coord = { x = -1726.4, y = 1142.3 },
+        Fillers = { [42771] = { 1 } },
+        TrigText = "2/3",
+        Zone = 22,
+        _index = 6,
+    },
+    {
+        QpartPart = { [42772] = { 1 } },
+        Coord = { x = -1747.7, y = 1065.5 },
+        Fillers = { [42771] = { 1 } },
+        TrigText = "3/3",
+        Zone = 22,
+        _index = 7,
+    },
+    {
+        Qpart = { [42771] = { 1 } },
+        Coord = { x = -1749.3, y = 1131.7 },
+        Range = 45,
+        Zone = 22,
+        _index = 8,
+    },
+    {
+        Done = { 42771, 42772 },
+        Coord = { x = -1790.8, y = 1102.6 },
+        Zone = 22,
+        _index = 9,
+    },
+    {
+        PickUp = { 42773 },
+        Coord = { x = -1802.7, y = 1018.5 },
+        Zone = 22,
+        _index = 10,
+    },
+    {
+        Qpart = { [42773] = { 1 } },
+        Coord = { x = -1822.6, y = 980.1 },
+        Range = 2,
+        Zone = 22,
+        _index = 11,
+    },
+    {
+        Qpart = { [42773] = { 2 } },
+        Coord = { x = -1822.6, y = 980.1 },
+        ExtraLineText = "CLICK_STONE_TABLET",
+        Range = 1,
+        Zone = 22,
+        _index = 12,
+    },
+    {
+        Done = { 42773 },
+        Coord = { x = -1823.9, y = 981.7 },
+        Zone = 22,
+        _index = 13,
+    },
+    {
+        PickUp = { 42774 },
+        Coord = { x = -1823.9, y = 981.7 },
+        Zone = 22,
+        _index = 14,
+    },
+    {
+        Done = { 42774 },
+        Coord = { x = -5282.3, y = 2273.2 },
+        ExtraLineText = "FLY_TO",
+        Zone = 23,
+        _index = 15,
+    },
+    {
+        PickUp = { 38376 },
+        Coord = { x = -5282.3, y = 2273.2 },
+        Zone = 23,
+        _index = 16,
+    },
+    {
+        Qpart = { [38376] = { 1 } },
+        Coord = { x = -5277.3, y = 2278 },
+        Zone = 23,
+        _index = 17,
+    },
+    {
+        Scenario = { criteriaID = 27508, criteriaIndex = 1, scenarioID = 775, stepID = 1488 },
+        Coord = { x = 129.4, y = -2450 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 18,
+    },
+    {
+        Scenario = { criteriaID = 28782, criteriaIndex = 1, scenarioID = 775, stepID = 1486 },
+        Coord = { x = -76.3, y = -2751.4 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 19,
+    },
+    {
+        Waypoint = 38376,
+        Coord = { x = -156, y = -2741.6 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 20,
+    },
+    {
+        Waypoint = 38376,
+        Coord = { x = -221.1, y = -2816.5 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 21,
+    },
+    {
+        Qpart = { [38376] = { 2 } },
+        Scenario = { criteriaID = 28823, criteriaIndex = 1, scenarioID = 775, stepID = 1487 },
+        Coord = { x = -324.8, y = -2751.7 },
+        Range = 1,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 22,
+    },
+    {
+        Scenario = { criteriaID = 30652, criteriaIndex = 1, scenarioID = 775, stepID = 2632 },
+        Coord = { x = -324.9, y = -2751.7 },
+        Range = 5,
+        ExtraActionB = 1,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 23,
+    },
+    {
+        Qpart = { [38376] = { 3 } },
+        Scenario = { criteriaID = 28902, criteriaIndex = 1, scenarioID = 775, stepID = 1853 },
+        Coord = { x = -300.9, y = -2759 },
+        Range = 30,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 24,
+    },
+    {
+        Waypoint = 38376,
+        Coord = { x = -281.2, y = -2736 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 25,
+    },
+    {
+        Waypoint = 38376,
+        Coord = { x = -275.7, y = -2779.6 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 26,
+    },
+    {
+        Waypoint = 38376,
+        Coord = { x = -220.5, y = -2817.4 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 27,
+    },
+    {
+        Waypoint = 38376,
+        Coord = { x = -152.3, y = -2741.3 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 28,
+    },
+    {
+        Scenario = { criteriaID = 28906, criteriaIndex = 1, scenarioID = 775, stepID = 1854 },
+        Coord = { x = -77.1, y = -2749 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 29,
+    },
+    {
+        Done = { 38376 },
+        Coord = { x = -85.8, y = -2753.3 },
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 30,
+    },
+    {
+        PickUp = { 42811 },
+        Coord = { x = -85.8, y = -2753.3 },
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 31,
+    },
+    {
+        Qpart = { [42811] = { 1 } },
+        Coord = { x = -59.5, y = -2728.6 },
+        InstanceQuest = true,
+        Zone = 676,
+        _index = 32,
+    },
+    {
+        Qpart = { [42811] = { 2 } },
+        Coord = { x = -5339.5, y = 2301 },
+        ExtraLineText = "INTERACT_WITH_FLOOR_TO_OPEN_HIDDEN_STAIRCASE",
+        Range = 2,
+        Zone = 23,
+        _index = 33,
+    },
+    {
+        Waypoint = 42811,
+        Coord = { x = -5358.6, y = 2322 },
+        Range = 10,
+        Zone = 23,
+        _index = 34,
+    },
+    {
+        Waypoint = 42811,
+        Coord = { x = -5337, y = 2352 },
+        Range = 10,
+        Zone = 23,
+        _index = 35,
+    },
+    {
+        Done = { 42811 },
+        Coord = { x = -5433.3, y = 2455.3 },
+        Zone = 23,
+        _index = 36,
+    },
+    {
+        RouteCompleted = 1,
+        _index = 37,
+    },
+}
+
+-- Priest
+APR.RouteQuestStepList["Order Hall Priest Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Order Hall Priest Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Priest - Discipline"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Priest - Holy"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Priest - Shadow"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+-- Rogue
+APR.RouteQuestStepList["Order Hall Rogue Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Order Hall Rogue Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Rogue - Assassination"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Rogue - Outlaw"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Rogue - Subtlety"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+-- Shaman
+APR.RouteQuestStepList["Order Hall Shaman Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Order Hall Shaman Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Shaman - Elemental"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Shaman - Enhancement"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Shaman - Restoration"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+-- Warlock
+APR.RouteQuestStepList["Order Hall Warlock Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Order Hall Warlock Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Warlock - Affliction"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Warlock - Demonology"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Warlock - Destruction"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+-- Warrior
+APR.RouteQuestStepList["Order Hall Warrior Part 1"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Order Hall Warrior Part 2"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Warrior - Arms"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Warrior - Fury"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
+
+APR.RouteQuestStepList["Artifact Weapon - Warrior - Protection"] = {
+    {
+        Waypoint = 1,
+        Coord = { x = 4490.7, y = -1205.5 },
+        ExtraLineText = "Work in progress",
+        ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
+        Zone = 619,
+        _index = 1,
+    }
+}
