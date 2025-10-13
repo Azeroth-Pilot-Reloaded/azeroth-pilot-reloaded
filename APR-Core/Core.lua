@@ -11,7 +11,6 @@ APR.Faction = UnitFactionGroup("player") -- "Alliance", "Horde", "Neutral" or ni
 APR.Level = UnitLevel("player")
 APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
 APR.ClassLocalName, APR.ClassName, APR.ClassId = UnitClass("player")
-APR.ClassSpec = select(2, C_SpecializationInfo.GetSpecializationInfo(C_SpecializationInfo.GetSpecialization()))
 APR.Gender = UnitSex("player")
 APR.MaxLevel = 80
 APR.MaxLevelChromie = 70

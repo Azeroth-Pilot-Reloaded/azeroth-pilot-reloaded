@@ -158,8 +158,8 @@ if (APR.Faction == "Alliance") then
         ["Death Knight"] = {
             allied = { expansion = "WrathOfTheLichKing", key = "118-Allied_Icecrown Citadel", label = L["Allied Death Knight Start"] },
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Death Knight Part 1", label = L["Order Hall Death Knight Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Death Knight Part 1", label = L["Order Hall Death Knight Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Death Knight Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Death Knight Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Blood = { expansion = "Legion", key = "Artifact Weapon - Death Knight - Blood", label = L["Artifact Weapon - Death Knight - Blood"] },
@@ -170,8 +170,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Demon Hunter"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Demon Hunter Part 1", label = L["Order Hall Demon Hunter Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Demon Hunter Part 1", label = L["Order Hall Demon Hunter Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Demon Hunter Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Demon Hunter Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Havoc = { expansion = "Legion", key = "Artifact Weapon - Demon Hunter - Havoc", label = L["Artifact Weapon - Demon Hunter - Havoc"] },
@@ -181,8 +181,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Druid"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Druid Part 1", label = L["Order Hall Druid Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Druid Part 1", label = L["Order Hall Druid Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Druid Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Druid Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Balance = { expansion = "Legion", key = "Artifact Weapon - Druid - Balance", label = L["Artifact Weapon - Druid - Balance"] },
@@ -193,8 +193,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Hunter"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Hunter Part 1", label = L["Order Hall Hunter Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Hunter Part 1", label = L["Order Hall Hunter Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Hunter Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Hunter Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 ["Beast Mastery"] = { expansion = "Legion", key = "Artifact Weapon - Hunter - Beast Mastery", label = L["Artifact Weapon - Hunter - Beast Mastery"] },
@@ -204,8 +204,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Mage"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Mage Part 1", label = L["Order Hall Mage Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Mage Part 1", label = L["Order Hall Mage Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Mage Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Mage Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Arcane = { expansion = "Legion", key = "Artifact Weapon - Mage - Arcane", label = L["Artifact Weapon - Mage - Arcane"] },
@@ -215,8 +215,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Monk"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Monk Part 1", label = L["Order Hall Monk Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Monk Part 1", label = L["Order Hall Monk Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Monk Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Monk Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Brewmaster = { expansion = "Legion", key = "Artifact Weapon - Monk - Brewmaster", label = L["Artifact Weapon - Monk - Brewmaster"] },
@@ -226,8 +226,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Paladin"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Paladin Part 1", label = L["Order Hall Paladin Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Paladin Part 1", label = L["Order Hall Paladin Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Paladin Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Paladin Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Holy = { expansion = "Legion", key = "Artifact Weapon - Paladin - Holy", label = L["Artifact Weapon - Paladin - Holy"] },
@@ -237,8 +237,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Priest"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Priest Part 1", label = L["Order Hall Priest Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Priest Part 1", label = L["Order Hall Priest Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Priest Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Priest Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Discipline = { expansion = "Legion", key = "Artifact Weapon - Priest - Discipline", label = L["Artifact Weapon - Priest - Discipline"] },
@@ -248,8 +248,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Rogue"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Rogue Part 1", label = L["Order Hall Rogue Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Rogue Part 1", label = L["Order Hall Rogue Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Rogue Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Rogue Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Assassination = { expansion = "Legion", key = "Artifact Weapon - Rogue - Assassination", label = L["Artifact Weapon - Rogue - Assassination"] },
@@ -259,8 +259,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Shaman"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Shaman Part 1", label = L["Order Hall Shaman Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Shaman Part 1", label = L["Order Hall Shaman Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Shaman Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Shaman Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Elemental = { expansion = "Legion", key = "Artifact Weapon - Shaman - Elemental", label = L["Artifact Weapon - Shaman - Elemental"] },
@@ -270,8 +270,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Warlock"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Warlock Part 1", label = L["Order Hall Warlock Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Warlock Part 1", label = L["Order Hall Warlock Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Warlock Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Warlock Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Affliction = { expansion = "Legion", key = "Artifact Weapon - Warlock - Affliction", label = L["Artifact Weapon - Warlock - Affliction"] },
@@ -281,8 +281,8 @@ if (APR.Faction == "Alliance") then
         },
         ["Warrior"] = {
             remix = {
-                hub = { expansion = "Legion", key = "Order Hall Warrior Part 1", label = L["Order Hall Warrior Start - Remix"] },
-                hub2 = { expansion = "Legion", key = "Order Hall Warrior Part 1", label = L["Order Hall Warrior Next - Remix"] },
+                hub = { expansion = "Legion", key = "Order Hall Warrior Part 1", label = L["Remix - Order Hall - Start"] },
+                hub2 = { expansion = "Legion", key = "Order Hall Warrior Part 2", label = L["Remix - Order Hall - Next"] },
             },
             spec = {
                 Arms = { expansion = "Legion", key = "Artifact Weapon - Warrior - Arms", label = L["Artifact Weapon - Warrior - Arms"] },
