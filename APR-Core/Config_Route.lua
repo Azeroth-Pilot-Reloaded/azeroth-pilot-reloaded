@@ -44,8 +44,8 @@ local function GetConfigOptionTable()
                 width = optionsWidth,
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
+                    APR.routeconfig:GetRemixPrefab()
                 end,
-                hidden = true
             },
             WoD_prefab = {
                 order = 1.2,
@@ -886,12 +886,23 @@ function APR.routeconfig:GetTWWPrefab()
     self:SendMessage("APR_Custom_Path_Update")
 end
 
- function APR.routeconfig:GetPlayerSpecRoute()
-    local routeKey = "Artifact Weapon - " .. APR.Class .. " - " .. APR.ClassSpec
-    -- Vérifie si la route existe
+function APR.routeconfig:GetPlayerSpecRoute()
+    local routeKey = "Artifact Weapon - " .. APR.GetClassSpecName()
     if APR.RouteQuestStepList[routeKey] then
-        tinsert(APRCustomPath[APR.PlayerID], L[APR.RouteQuestStepList[routeKey]])
+        tinsert(APRCustomPath[APR.PlayerID], L[routeKey])
     end
+end
+
+function APR.routeconfig:GetRemixPrefab()
+    tinsert(APRCustomPath[APR.PlayerID], L["Legion - Intro Remix"])
+    tinsert(APRCustomPath[APR.PlayerID], L["Remix - Order Hall - Start"])
+    APR.routeconfig:GetPlayerSpecRoute()
+    tinsert(APRCustomPath[APR.PlayerID], L["Remix - Order Hall - Next"])
+    tinsert(APRCustomPath[APR.PlayerID], L["Legion - Azsuna"])
+    tinsert(APRCustomPath[APR.PlayerID], L["Legion - Val'Sharah"])
+    tinsert(APRCustomPath[APR.PlayerID], L["Legion - Stormheim"])
+
+    self:SendMessage("APR_Custom_Path_Update")
 end
 
 ---------------------------------------------------------------------------------------

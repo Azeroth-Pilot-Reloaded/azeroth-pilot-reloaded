@@ -759,7 +759,7 @@ function APR.currentStep:UpdateStepButtonCooldowns()
             if IconButton and IconButton:IsShown() then
                 local startTime, duration, enable = 0, 0, 0
                 local isCooldownShown = IconButton.cooldown:IsShown()
-                local cooldownDuration = IconButton.cooldown:GetCooldownDuration()
+                local cooldownDuration = IconButton.cooldown:GetCooldownDuration() or 0
 
                 if IconButton.attribute == 'spell' then
                     local info = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))

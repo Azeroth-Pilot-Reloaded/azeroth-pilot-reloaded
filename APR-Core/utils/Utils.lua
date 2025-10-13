@@ -201,7 +201,8 @@ function APR:tableToString(table, skipKey)
 end
 
 function APR:IsRemixCharacter()
-    local aura = C_UnitAuras.GetPlayerAuraBySpellID(1232454) -- SpellID for "Remix" buff
+    local aura = C_UnitAuras.GetPlayerAuraBySpellID(1232454) or
+    C_UnitAuras.GetPlayerAuraBySpellID(1213439)                                                              -- SpellID for "Remix" buff
     return aura ~= nil
 end
 

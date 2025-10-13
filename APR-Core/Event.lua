@@ -43,6 +43,7 @@ local events = {
     updateQuest = { "QUEST_LOG_UPDATE", "UNIT_QUEST_LOG_CHANGED" },
     vehicle = "UNIT_ENTERED_VEHICLE",
     enterCombat = "PLAYER_REGEN_DISABLED",
+    enterWorld = "PLAYER_REGEN_DISABLED",
     leaveCombat = "PLAYER_REGEN_ENABLED",
 }
 
@@ -844,13 +845,6 @@ function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
     end
 end
 
-function APR.event.functions.spec(event, unitTarget)
-    if unitTarget == "player" then
-        -- Update value of the player class specialization
-        APR.ClassSpec = select(2, C_SpecializationInfo.GetSpecializationInfo(C_SpecializationInfo.GetSpecialization()))
-    end
-end
-
 function APR.event.functions.treasure(event, ...)
     if step and step.Treasure then
         C_Timer.After(0.2, function() APR:UpdateQuestAndStep() end)
@@ -881,6 +875,10 @@ function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isCont
 end
 
 function APR.event.functions.enterCombat(event, ...)
+end
+
+function APR.event.functions.enterWorld(event, ...)
+    -- To init data when the player enter in the world
 end
 
 function APR.event.functions.leaveCombat(event, ...)
