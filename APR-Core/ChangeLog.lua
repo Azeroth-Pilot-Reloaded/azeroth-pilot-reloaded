@@ -233,7 +233,7 @@ function APR.changelog:SetChangeLog()
 
         { "v4.8.4", "2025-03-04" },
         "#Bugs",
-        "- Updated IsQuestCompletedOnAccount / IsQuestUncompletedOnAccoun to use questId lists",
+        "- Updated IsQuestsCompletedOnAccount / IsQuestUncompletedOnAccoun to use questId lists",
         "- Adding other IDs to the No More Walkin' Here quest",
 
         "#Guides",
@@ -249,7 +249,7 @@ function APR.changelog:SetChangeLog()
         "- Added missing Sidestreet Sluice delve Coords",
 
         "#Guides",
-        "- Added new IsQuestCompletedOnAccount / IsQuestUncompletedOnAccount step options",
+        "- Added new IsQuestsCompletedOnAccount / IsQuestsUncompletedOnAccount step options",
         "- Added Undermine Part 1 route to the sopeedrun and TWW prefab route button",
 
         { "v4.8.2", "2025-02-27" },

@@ -32,7 +32,20 @@ function APR:GetStepString(step)
     return ''
 end
 
-function APR:IsQuestCompletedOnAccount(questIds)
+function APR:IsQuestsCompleted(questIds)
+    if not questIds or #questIds == 0 then
+        return false
+    end
+    for i = 1, #questIds do
+        if C_QuestLog.IsQuestFlaggedCompleted(questIds[i]) then
+            return true
+        end
+    end
+
+    return false
+end
+
+function APR:IsQuestsCompletedOnAccount(questIds)
     if not questIds or #questIds == 0 then
         return false
     end
@@ -336,8 +349,10 @@ function APR:StepFilterQuestHandler(step)
         (step.HasAura and not APR:HasAura(step.HasAura)) or
         (step.DontHaveAura and APR:HasAura(step.DontHaveAura)) or
         (step.HasSpell and not IsSpellKnown(step.HasSpell)) or
-        (step.IsQuestCompletedOnAccount and not APR:IsQuestCompletedOnAccount(step.IsQuestCompletedOnAccount)) or
-        (step.IsQuestUncompletedOnAccount and APR:IsQuestCompletedOnAccount(step.IsQuestUncompletedOnAccount))
+        (step.IsQuestsCompleted and not APR:IsQuestsCompleted(step.IsQuestsCompleted)) or
+        (step.IsQuestsUncompleted and APR:IsQuestsCompleted(step.IsQuestsUncompleted)) or
+        (step.IsQuestsCompletedOnAccount and not APR:IsQuestsCompletedOnAccount(step.IsQuestsCompletedOnAccount)) or
+        (step.IsQuestsUncompletedOnAccount and APR:IsQuestsCompletedOnAccount(step.IsQuestsUncompletedOnAccount))
 end
 
 function APR:StepFilterQoL(step)
@@ -350,8 +365,10 @@ function APR:StepFilterQoL(step)
         (not step.HasAura or APR:HasAura(step.HasAura)) and
         (not step.DontHaveAura or not APR:HasAura(step.DontHaveAura)) and
         (not step.HasSpell or IsSpellKnown(step.HasSpell)) and
-        (not step.IsQuestCompletedOnAccount or APR:IsQuestCompletedOnAccount(step.IsQuestCompletedOnAccount)) and
-        (not step.IsQuestUncompletedOnAccount or not APR:IsQuestCompletedOnAccount(step.IsQuestUncompletedOnAccount))
+        (not step.IsQuestsCompleted or APR:IsQuestsCompleted(step.IsQuestsCompleted)) and
+        (not step.IsQuestsUncompleted or not APR:IsQuestsCompleted(step.IsQuestsUncompleted)) and
+        (not step.IsQuestsCompletedOnAccount or APR:IsQuestsCompletedOnAccount(step.IsQuestsCompletedOnAccount)) and
+        (not step.IsQuestsUncompletedOnAccount or not APR:IsQuestsCompletedOnAccount(step.IsQuestsUncompletedOnAccount))
 end
 
 --- Get Route zone mapID and name
