@@ -32,7 +32,7 @@ function APR:GetStepString(step)
     return ''
 end
 
-function APR:IsQuestsCompleted(questIds)
+function APR:IsOneOfQuestsCompleted(questIds)
     if not questIds or #questIds == 0 then
         return false
     end
@@ -45,7 +45,20 @@ function APR:IsQuestsCompleted(questIds)
     return false
 end
 
-function APR:IsQuestsCompletedOnAccount(questIds)
+function APR:IsQuestsCompleted(questIds)
+    if not questIds or #questIds == 0 then
+        return false
+    end
+    for i = 1, #questIds do
+        if not C_QuestLog.IsQuestFlaggedCompleted(questIds[i]) then
+            return false
+        end
+    end
+
+    return true
+end
+
+function APR:IsOneOfQuestsCompletedOnAccount(questIds)
     if not questIds or #questIds == 0 then
         return false
     end
@@ -56,6 +69,19 @@ function APR:IsQuestsCompletedOnAccount(questIds)
     end
 
     return false
+end
+
+function APR:IsQuestsCompletedOnAccount(questIds)
+    if not questIds or #questIds == 0 then
+        return false
+    end
+    for i = 1, #questIds do
+        if not C_QuestLog.IsQuestFlaggedCompletedOnAccount(questIds[i]) then
+            return false
+        end
+    end
+
+    return true
 end
 
 function APR:HasAchievement(achievementID)
@@ -349,6 +375,10 @@ function APR:StepFilterQuestHandler(step)
         (step.HasAura and not APR:HasAura(step.HasAura)) or
         (step.DontHaveAura and APR:HasAura(step.DontHaveAura)) or
         (step.HasSpell and not IsSpellKnown(step.HasSpell)) or
+        (step.IsOneOfQuestsCompleted and not APR:IsOneOfQuestsCompleted(step.IsOneOfQuestsCompleted)) or
+        (step.IsOneOfQuestsUncompleted and APR:IsOneOfQuestsCompleted(step.IsOneOfQuestsUncompleted)) or
+        (step.IsOneOfQuestsCompletedOnAccount and not APR:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsCompletedOnAccount)) or
+        (step.IsOneOfQuestsUncompletedOnAccount and APR:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsUncompletedOnAccount)) or
         (step.IsQuestsCompleted and not APR:IsQuestsCompleted(step.IsQuestsCompleted)) or
         (step.IsQuestsUncompleted and APR:IsQuestsCompleted(step.IsQuestsUncompleted)) or
         (step.IsQuestsCompletedOnAccount and not APR:IsQuestsCompletedOnAccount(step.IsQuestsCompletedOnAccount)) or
@@ -365,6 +395,10 @@ function APR:StepFilterQoL(step)
         (not step.HasAura or APR:HasAura(step.HasAura)) and
         (not step.DontHaveAura or not APR:HasAura(step.DontHaveAura)) and
         (not step.HasSpell or IsSpellKnown(step.HasSpell)) and
+        (not step.IsOneOfQuestsCompleted or APR:IsOneOfQuestsCompleted(step.IsOneOfQuestsCompleted)) and
+        (not step.IsOneOfQuestsUncompleted or not APR:IsOneOfQuestsCompleted(step.IsOneOfQuestsUncompleted)) and
+        (not step.IsOneOfQuestsCompletedOnAccount or APR:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsCompletedOnAccount)) and
+        (not step.IsOneOfQuestsUncompletedOnAccount or not APR:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsUncompletedOnAccount)) and
         (not step.IsQuestsCompleted or APR:IsQuestsCompleted(step.IsQuestsCompleted)) and
         (not step.IsQuestsUncompleted or not APR:IsQuestsCompleted(step.IsQuestsUncompleted)) and
         (not step.IsQuestsCompletedOnAccount or APR:IsQuestsCompletedOnAccount(step.IsQuestsCompletedOnAccount)) and
