@@ -4934,7 +4934,11 @@ APR.RouteQuestStepList["Order Hall Death Knight Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Death Knight Part 2"] = {
@@ -4945,7 +4949,11 @@ APR.RouteQuestStepList["Order Hall Death Knight Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Death Knight - Blood"] = {
@@ -4956,7 +4964,11 @@ APR.RouteQuestStepList["Artifact Weapon - Death Knight - Blood"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Death Knight - Frost"] = {
@@ -4967,7 +4979,11 @@ APR.RouteQuestStepList["Artifact Weapon - Death Knight - Frost"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Death Knight - Unholy"] = {
@@ -4978,7 +4994,11 @@ APR.RouteQuestStepList["Artifact Weapon - Death Knight - Unholy"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Demon Hunter
@@ -4990,7 +5010,11 @@ APR.RouteQuestStepList["Order Hall Demon Hunter Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Demon Hunter Part 2"] = {
@@ -5001,7 +5025,11 @@ APR.RouteQuestStepList["Order Hall Demon Hunter Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Demon Hunter - Havoc"] = {
@@ -5012,7 +5040,11 @@ APR.RouteQuestStepList["Artifact Weapon - Demon Hunter - Havoc"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Demon Hunter - Vengeance"] = {
@@ -5023,7 +5055,11 @@ APR.RouteQuestStepList["Artifact Weapon - Demon Hunter - Vengeance"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Druid
@@ -5035,7 +5071,11 @@ APR.RouteQuestStepList["Order Hall Druid Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Druid Part 2"] = {
@@ -5046,7 +5086,11 @@ APR.RouteQuestStepList["Order Hall Druid Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Druid - Balance"] = {
@@ -5057,7 +5101,11 @@ APR.RouteQuestStepList["Artifact Weapon - Druid - Balance"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Druid - Feral"] = {
@@ -5068,7 +5116,11 @@ APR.RouteQuestStepList["Artifact Weapon - Druid - Feral"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Druid - Guardian"] = {
@@ -5079,7 +5131,11 @@ APR.RouteQuestStepList["Artifact Weapon - Druid - Guardian"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Druid - Restoration"] = {
@@ -5090,7 +5146,11 @@ APR.RouteQuestStepList["Artifact Weapon - Druid - Restoration"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Hunter
@@ -5102,7 +5162,11 @@ APR.RouteQuestStepList["Order Hall Hunter Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Hunter Part 2"] = {
@@ -5113,7 +5177,11 @@ APR.RouteQuestStepList["Order Hall Hunter Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Hunter - Beast Mastery"] = {
@@ -5124,7 +5192,11 @@ APR.RouteQuestStepList["Artifact Weapon - Hunter - Beast Mastery"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Hunter - Marksmanship"] = {
@@ -5135,7 +5207,11 @@ APR.RouteQuestStepList["Artifact Weapon - Hunter - Marksmanship"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Hunter - Survival"] = {
@@ -5146,7 +5222,11 @@ APR.RouteQuestStepList["Artifact Weapon - Hunter - Survival"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Mage
@@ -5158,7 +5238,11 @@ APR.RouteQuestStepList["Order Hall Mage Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Mage Part 2"] = {
@@ -5169,7 +5253,11 @@ APR.RouteQuestStepList["Order Hall Mage Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
@@ -5180,7 +5268,11 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Mage - Fire"] = {
@@ -5191,7 +5283,11 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Fire"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Mage - Frost"] = {
@@ -5202,7 +5298,11 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Frost"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Monk
@@ -5214,7 +5314,11 @@ APR.RouteQuestStepList["Order Hall Monk Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Monk Part 2"] = {
@@ -5225,7 +5329,11 @@ APR.RouteQuestStepList["Order Hall Monk Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Monk - Brewmaster"] = {
@@ -5236,7 +5344,11 @@ APR.RouteQuestStepList["Artifact Weapon - Monk - Brewmaster"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Monk - Mistweaver"] = {
@@ -5247,7 +5359,11 @@ APR.RouteQuestStepList["Artifact Weapon - Monk - Mistweaver"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Monk - Windwalker"] = {
@@ -5258,7 +5374,11 @@ APR.RouteQuestStepList["Artifact Weapon - Monk - Windwalker"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Paladin
@@ -6431,7 +6551,11 @@ APR.RouteQuestStepList["Order Hall Priest Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Priest Part 2"] = {
@@ -6442,7 +6566,11 @@ APR.RouteQuestStepList["Order Hall Priest Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Priest - Discipline"] = {
@@ -6453,7 +6581,11 @@ APR.RouteQuestStepList["Artifact Weapon - Priest - Discipline"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Priest - Holy"] = {
@@ -6464,7 +6596,11 @@ APR.RouteQuestStepList["Artifact Weapon - Priest - Holy"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Priest - Shadow"] = {
@@ -6475,7 +6611,11 @@ APR.RouteQuestStepList["Artifact Weapon - Priest - Shadow"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Rogue
@@ -6487,7 +6627,11 @@ APR.RouteQuestStepList["Order Hall Rogue Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Rogue Part 2"] = {
@@ -6498,7 +6642,11 @@ APR.RouteQuestStepList["Order Hall Rogue Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Rogue - Assassination"] = {
@@ -6509,7 +6657,11 @@ APR.RouteQuestStepList["Artifact Weapon - Rogue - Assassination"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Rogue - Outlaw"] = {
@@ -6520,7 +6672,11 @@ APR.RouteQuestStepList["Artifact Weapon - Rogue - Outlaw"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Rogue - Subtlety"] = {
@@ -6531,7 +6687,11 @@ APR.RouteQuestStepList["Artifact Weapon - Rogue - Subtlety"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Shaman
@@ -6543,7 +6703,11 @@ APR.RouteQuestStepList["Order Hall Shaman Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Shaman Part 2"] = {
@@ -6554,7 +6718,11 @@ APR.RouteQuestStepList["Order Hall Shaman Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Shaman - Elemental"] = {
@@ -6565,7 +6733,11 @@ APR.RouteQuestStepList["Artifact Weapon - Shaman - Elemental"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Shaman - Enhancement"] = {
@@ -6576,7 +6748,11 @@ APR.RouteQuestStepList["Artifact Weapon - Shaman - Enhancement"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Shaman - Restoration"] = {
@@ -6587,7 +6763,11 @@ APR.RouteQuestStepList["Artifact Weapon - Shaman - Restoration"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Warlock
@@ -6599,7 +6779,11 @@ APR.RouteQuestStepList["Order Hall Warlock Part 1"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Order Hall Warlock Part 2"] = {
@@ -6610,7 +6794,11 @@ APR.RouteQuestStepList["Order Hall Warlock Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Warlock - Affliction"] = {
@@ -6621,7 +6809,11 @@ APR.RouteQuestStepList["Artifact Weapon - Warlock - Affliction"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Warlock - Demonology"] = {
@@ -6632,7 +6824,11 @@ APR.RouteQuestStepList["Artifact Weapon - Warlock - Demonology"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Warlock - Destruction"] = {
@@ -6643,7 +6839,11 @@ APR.RouteQuestStepList["Artifact Weapon - Warlock - Destruction"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 -- Warrior
@@ -6696,7 +6896,11 @@ APR.RouteQuestStepList["Order Hall Warrior Part 2"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Warrior - Arms"] = {
@@ -6707,7 +6911,11 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Arms"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Warrior - Fury"] = {
@@ -6718,7 +6926,11 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Fury"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
 
 APR.RouteQuestStepList["Artifact Weapon - Warrior - Protection"] = {
@@ -6729,5 +6941,9 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Protection"] = {
         ZoneStepTrigger = { Range = 15, x = 4302.2, y = -821 },
         Zone = 619,
         _index = 1,
-    }
+    },
+    {
+        RouteCompleted = 1,
+        _index = 8,
+    },
 }
