@@ -372,9 +372,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 end
             elseif step.DropQuest then
                 local questData = step.DroppableQuest
-                local questID = questData.Qid
-                local MobId = questData.MobId
-                local MobName = APRData.NPCList[MobId] or questData.Text
+                local questID = questData and questData.Qid or 1
+                local MobId = questData and questData.MobId or 1
+                local MobName = APRData.NPCList[MobId] or (questData and questData.Text or UNKNOWN)
                 local questText = format(L["Q_DROP"], MobName)
                 local questInfo = { { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) } }
                 local color = isQuestCompleted(questID) and "green" or
