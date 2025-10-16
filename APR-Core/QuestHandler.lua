@@ -623,7 +623,21 @@ function APR:UpdateStep()
                     APR:UpdateStep()
                 end
             end
-        elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS then
+        elseif step.UseSpell then
+            local questID = step.UseSpell.questID
+            local spellID = step.UseSpell.spellID
+            local spellName = C_Spell.GetSpellInfo(spellID)
+            local questText = L["USE_SPELL"] .. ": " .. (spellName or UNKNOWN)
+            if APR.IsInRouteZone then
+                APR.currentStep:AddQuestSteps(questID, questText, "UseSpell")
+                APR.currentStep:AddStepButton(questID, spellID, 'spell')
+            end
+
+            if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                APR:UpdateNextStep()
+                return
+            end
+        elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS or step.UseSpell then
             local questKey, questText, useHSKey
             if step.UseHS then
                 questKey = step.UseHS
