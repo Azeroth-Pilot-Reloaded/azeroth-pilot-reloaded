@@ -590,6 +590,13 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     (step.UseDalaHS and L["USE_DALARAN_HEARTHSTONE"] or L["USE_GARRISON_HEARTHSTONE"])
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrame(stepIndex, questText, color)
+            elseif step.UseSpell then
+                local questID = step.UseSpell.questID
+                local spellID = step.UseSpell.spellID
+                local spellName = C_Spell.GetSpellInfo(spellID)
+                local questText = L["USE_SPELL"] .. ": " .. (spellName or UNKNOWN)
+                local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
+                AddStepFrame(stepIndex, questText, color)
             elseif step.GetFP then
                 local nodeID = step.GetFP
                 local color = (APR:HasTaxiNode(nodeID) or CurStep > stepIndex) and "green" or "gray"
