@@ -2295,7 +2295,8 @@ if APR.Faction == "Alliance" then
             _index = 354,
         },
         {
-            UseDalaHS = 1,
+            UseDalaHS = 34398,
+            Button = { ["34398"] = 140192 },
             Zone = 48,
             _index = 355,
         },

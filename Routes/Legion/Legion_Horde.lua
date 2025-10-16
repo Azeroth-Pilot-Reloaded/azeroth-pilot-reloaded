@@ -1568,7 +1568,7 @@ if APR.Faction == "Horde" then
         {
             UseDalaHS = 40072,
             Coord = { x = 958.2, y = 2499.1 },
-            Button = { ["40072-1"] = 140192 },
+            Button = { ["40072"] = 140192 },
             _index = 215,
         },
         {
@@ -3340,7 +3340,7 @@ if APR.Faction == "Horde" then
         {
             UseDalaHS = 39781,
             Coord = { x = 3929.1, y = 3662.3 },
-            Button = { ["39781-1"] = 140192 },
+            Button = { ["39781"] = 140192 },
             _index = 304,
         },
     }
