@@ -91,7 +91,19 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.15.1", "2025-09-17" },
+        "#Guides",
+        "- Added `Legion Remix Mage Order Hall` route (others are a work in progress)",
+        "- Added `Legion Mage Artifact Weapon` routes",
+        "- Reworked `Legion Azsuna` route for mage",
+
+        "#Features",
+        '- Added new step options:',
+        "    - UseSpell",
+        "    - UseItem",
+
         { "v4.15.0", "2025-09-14" },
+
         "#Comments",
         "- Hi everyone,\nSorry for the delay on the Legion and Remix routes. I was abroad all last month, and since I got back, I’ve had very limited  free time between work and personal life :/\n\nI’m trying to record the routes as quickly as possible, but I swear Legion is the worst expansion for this xD\nEach class has different zones and quests, and sometimes it even changes depending on the faction, which makes it take even longer than usual.\nI’ve set things up to include all the routes, and I’ll be posting updates for each class every day this week.\n\nNeo - APR",
         "#Guides",
@@ -198,7 +210,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6", "2025-04-06" },
+        { "v4.9.6",  "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
