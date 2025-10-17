@@ -623,6 +623,20 @@ function APR:UpdateStep()
                     APR:UpdateStep()
                 end
             end
+        elseif step.UseItem then
+            local questID = step.UseItem.questID
+            local itemID = step.UseItem.itemID
+            local itemName = C_Item.GetItemInfo(itemID)
+            local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
+            if APR.IsInRouteZone then
+                APR.currentStep:AddQuestSteps(questID, questText, "UseItem")
+                APR.currentStep:AddStepButton(questID, itemID, 'item')
+            end
+
+            if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                APR:UpdateNextStep()
+                return
+            end
         elseif step.UseSpell then
             local questID = step.UseSpell.questID
             local spellID = step.UseSpell.spellID
@@ -638,23 +652,27 @@ function APR:UpdateStep()
                 return
             end
         elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS or step.UseSpell then
-            local questKey, questText, useHSKey
+            local questKey, questText, useHSKey, spellID
             if step.UseHS then
                 questKey = step.UseHS
                 questText = L["USE_HEARTHSTONE"]
                 useHSKey = "UseHS"
+                spellID = 8690
             elseif step.UseDalaHS then
                 questKey = step.UseDalaHS
                 questText = L["USE_DALARAN_HEARTHSTONE"]
                 useHSKey = "UseDalaHS"
+                spellID = APR.dalaHSSpellID
             else
                 questKey = step.UseGarrisonHS
                 questText = L["USE_GARRISON_HEARTHSTONE"]
                 useHSKey = "UseGarrisonHS"
+                spellID = APR.garrisonHSSpellID
             end
 
             if APR.IsInRouteZone then
                 APR.currentStep:AddQuestSteps(questKey, questText, useHSKey)
+                APR.currentStep:AddStepButton(questKey, spellID, 'spell')
             end
 
             if C_QuestLog.IsQuestFlaggedCompleted(questKey) then
