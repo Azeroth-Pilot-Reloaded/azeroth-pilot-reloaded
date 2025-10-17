@@ -839,7 +839,11 @@ function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
             APR:UpdateNextStep()
             return
         end
-        if (APR:Contains(APR.hearthStoneSpellID, spellID) and step.UseHS) or (step.SpellTrigger and spellID == step.SpellTrigger) or (step.UseSpell.spellID and spellID == step.UseSpell.spellID) then
+        if (APR:Contains(APR.hearthStoneSpellID, spellID) and step.UseHS) or
+        (step.SpellTrigger and spellID == step.SpellTrigger) or
+        (step.UseSpell.spellID and spellID == step.UseSpell.spellID) or
+        (step.UseItem.itemSpellID and spellID == step.UseSpell.itemSpellID)
+         then
             APR:UpdateNextStep()
         end
     end
