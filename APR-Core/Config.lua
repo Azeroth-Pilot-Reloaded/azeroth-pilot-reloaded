@@ -1271,8 +1271,19 @@ function APR.settings:createBlizzOptions()
                         inline = true,
                         name = L["DEBUG"],
                         args = {
-                            debug = {
+                            coordinateShow = {
                                 order = 2.1,
+                                type = "toggle",
+                                name = L["COORD_COMMAND"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            debug = {
+                                order = 2.3,
                                 type = "toggle",
                                 name = L["DEBUG"],
                                 width = "full",
@@ -1283,7 +1294,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                             },
                             showEvent = {
-                                order = 2.2,
+                                order = 2.4,
                                 type = "toggle",
                                 name = L["SHOW_EVENT_DEBUG"],
                                 width = "full",

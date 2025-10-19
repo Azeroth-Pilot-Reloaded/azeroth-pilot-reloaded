@@ -59,7 +59,7 @@ end)
 ----------------------------- Function Coordinate Frames ------------------------------
 ---------------------------------------------------------------------------------------
 
-function APR.coordinate:PartyFrameOnInit()
+function APR.coordinate:OnInit()
     LibWindow.RegisterConfig(CoordinateScreenPanel, APR.settings.profile.coordinateFrame)
     CoordinateScreenPanel.RegisteredForLibWindow = true
     LibWindow.MakeDraggable(CoordinateScreenPanel)

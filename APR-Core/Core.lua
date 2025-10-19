@@ -111,7 +111,7 @@ function APR:OnInitialize()
     APR.map:OnInit()
 
     -- Init coordinate frame for dev
-    APR.coordinate:PartyFrameOnInit()
+    APR.coordinate:OnInit()
 
     -- Init route selection frame
     APR.RouteSelection:RouteSelectionOnInit()
