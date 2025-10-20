@@ -12,8 +12,8 @@ function APR.questionDialog:CreateQuestionPopup(text, onAcceptFunction, onCancel
     local dialogName = "QUESTION_DIALOG"
     StaticPopupDialogs[dialogName] = {
         text = text or CONFIRM_CONTINUE,
-        button1 = acceptButtonText or ACCEPT,
-        button2 = cancelButtonText or CANCEL,
+        button1 = acceptButtonText or ACCEPT or "YES",
+        button2 = cancelButtonText or CANCEL or "YES",
         OnAccept = onAcceptFunction,
         OnCancel = onCancelFunction,
         timeout = 0,
@@ -28,7 +28,7 @@ function APR.questionDialog:CreateMessagePopup(text, closeButtonText)
     local dialogName = "MESSAGE_DIALOG"
     StaticPopupDialogs[dialogName] = {
         text = text or CONFIRM_CONTINUE,
-        button1 = closeButtonText or OKAY,
+        button1 = closeButtonText or OKAY or "YES",
         timeout = 0,
         whileDead = true,
         hideOnEscape = true,
@@ -41,7 +41,7 @@ function APR.questionDialog:CreateMandatoryAction(text, onAcceptFunction)
     local dialogName = "MANDATORY_DIALOG"
     StaticPopupDialogs[dialogName] = {
         text = text or CONFIRM_CONTINUE,
-        button1 = OKAY,
+        button1 = OKAY or "YES",
         OnAccept = onAcceptFunction,
         timeout = 0,
         whileDead = true,
@@ -59,7 +59,7 @@ function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxTex
     StaticPopupDialogs[dialogName] = {
         text = text or "General Kenobi",
         hasEditBox = 1,
-        button1 = closeButtonText or OKAY,
+        button1 = closeButtonText or OKAY or "YES",
         OnShow = function(self)
             if editBoxText then
                 local box = getglobal(self:GetName() .. "EditBox")
