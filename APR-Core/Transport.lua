@@ -6,228 +6,98 @@ APR.transport = APR:NewModule("Transport")
 APR.transport.CurrentTaxiNode = {}
 APR.transport.StepTaxiNode = {}
 
--- Retry flag
+-- Internal retry flag
 APR.transport._retryPending = false
 
---- Guide the player to the right zone / continent / taxi / position
-function APR.transport:GetMeToRightZone(isRetry)
-    APR:Debug("Function: APR.transport:GetMeToRightZone()", isRetry and "(retry)" or "")
+-----------------------------------------------------------------------
+-- Helpers: Spells & Items
+-----------------------------------------------------------------------
 
-    local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
-
-    if (routeZoneMapIDs and mapID and routeName) then
-        APR.ActiveRoute = routeName
-        if not APR.currentStep:IsShown() then
-            APR.currentStep:RefreshCurrentStepFrameAnchor()
-        end
-    end
-    if not APR.ActiveRoute or not next(APRCustomPath[APR.PlayerID]) then
-        APR.routeconfig:CheckIsCustomPathEmpty()
-        return
-    end
-    if not APR:IsInstanceWithUI() or not APRCustomPath[APR.PlayerID] then
-        return
-    end
-
-    APR:UpdateQuestAndStep()
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    local step = CurStep and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] or nil
-
-
-    local farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
-    if APR:CheckIsInRouteZone() and not farAway then
-        APR.IsInRouteZone = true
-        -- To avoid unwanted auto taxi
-        APR.transport.wrongZoneDestTaxiName = nil
-        -- Reset flag, we are in the right zone
-        APR.transport._retryPending = false
-        return
+-- Availability check (spell known / item owned).
+local function _IsAvailable(kind, id)
+    if kind == "spell" then
+        return APR:IsSpellKnown(id)
     else
-        -- reset IsInRouteZone
-        APR.IsInRouteZone = false
+        return APR:PlayerHasItem(id)
+    end
+end
 
-        if not step then
-            return
-        end
-
-        local nextZone = step.Zone or mapID
-        local mapInfo = C_Map.GetMapInfo(nextZone)
-        if not mapInfo then
-            return
-        end
-
-        local parentMapInfo = C_Map.GetMapInfo(mapInfo.parentMapID)
-        if not parentMapInfo then
-            return
-        end
-
-        -- Retry system : if it's not already a retry, schedule one
-        if not isRetry and not APR.transport._retryPending then
-            -- APR.transport._retryPending = true
-            -- C_Timer.After(1, function()
-            --     APR.transport._retryPending = false
-            --     APR.transport:GetMeToRightZone(true)
-            -- end)
-
-            -- APR:Debug("APR.transport:GetMeToRightZone() - retry scheduled in 300ms")
-            -- return
-        end
-
-        local reason = ""
-        if farAway then
-            reason = L["TOO_FAR_AWAY"]
-        else
-            reason = L["WRONG_ZONE"]
-        end
-        APR.currentStep:Reset()
-        local destinationText = reason ..
-            " - " .. L["DESTINATION"] .. ": " .. mapInfo.name .. ", " .. parentMapInfo.name .. " (" .. nextZone .. ")"
-        APR.currentStep:AddExtraLineText("DESTINATION", destinationText)
-        -- Hide the arrow
-        APR.Arrow.Active = false
-        local currentContinent = APR:GetContinent()
-        local isSameContinent, nextContinent = self:IsSameContinent(nextZone)
-        local portal = self:GetPortal(currentContinent, nextContinent, nextZone)
-        -- Stop and refresh if it's a instance step
-        if step.InstanceQuest then
-            APR.IsInRouteZone = true
-            APR:UpdateStep()
-            return
-        end
-        if portal then
-            --portal found donc need to check the closestTaxi
-            return
-        end
-        if isSameContinent then
-            local posY, posX = UnitPosition("player")
-            if not posY or not posX then return end
-            local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
-            if step.Coord then
-                local _, objectiveTaxiName, _, _ = self:ClosestTaxi(step.Coord.x, step.Coord.y)
-                if playerTaxiNodeId ~= objectiveTaxiName then
-                    APR.transport.wrongZoneDestTaxiName = objectiveTaxiName
-                    APR.currentStep:AddExtraLineText("FLY_TO_" .. objectiveTaxiName,
-                        L["FLY_TO"] .. " " .. objectiveTaxiName)
-                    APR.currentStep:AddExtraLineText("CLOSEST_FP" .. playerTaxiName,
-                        L["CLOSEST_FP"] .. ": " .. playerTaxiName)
-                    APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
-                    return
-                else
-                    local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(nextZone)
-                    if zoneEntryMapID then
-                        local zoneEntryMapInfo = C_Map.GetMapInfo(zoneEntryMapID)
-                        APR.currentStep:AddExtraLineText("GO_TO" .. zoneEntryMapInfo.name,
-                            format(L["GO_TO"], zoneEntryMapInfo.name))
-                        APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
-                        return
-                    end
-                end
+-- Generic finder over a DB (Spells or Items).
+-- scope = "continent" (any zone on target continent) or "zone" (exact zone).
+-- Returns a unified pick { kind, id, name, coords, nextContinent, nextZone } or nil.
+local function _FindFirst(kind, db, targetCont, targetZone, scope)
+    if not db then return nil end
+    for _, e in ipairs(db) do
+        local okCont = (e.nextContinent == targetCont)
+        local okZone = (scope == "continent") or (e.nextZone == targetZone)
+        if okCont and okZone then
+            local id = (kind == "spell") and e.spellID or e.itemID
+            if _IsAvailable(kind, id) then
+                local name = (kind == "spell") and APR:GetSpellName(id) or APR:GetItemName(id)
+                return {
+                    kind = kind,
+                    id = id,
+                    name = name,
+                    coords = e.coords,
+                    nextContinent = e.nextContinent,
+                    nextZone = e.nextZone,
+                }
             end
         end
-        APR.currentStep:AddExtraLineText("ERROR_PATH_NOT_FOUND", L["ERROR"] ..
-            " - " .. L["PATH_NOT_FOUND"] .. " " .. mapInfo.name .. " (" .. mapID .. ")")
-        APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. mapInfo.name)
-        APR.Arrow:SetArrowActive(false, 0, 0)
     end
 end
 
---- Retrun the next MapIDs and worl position zone entry
---- @param nextMapId number the wanted zone ID to reach
---- @return number|nil zoneMoveOrder
---- @return number|nil closestX
---- @return number|nil closestY
-function APR.transport:GetZoneMoveOrder(nextMapId)
-    local currentMapID = APR:GetPlayerParentMapID()
-    local zoneMoveOrder = APR.ZonesData["ZoneMoveOrder"][currentMapID] and
-        APR.ZonesData["ZoneMoveOrder"][currentMapID][nextMapId]
-    if not zoneMoveOrder then
-        return
-    end
-
-    local continent = APR:GetContinent()
-    local zoneEntries = APR.ZonesData["ZoneEntry"][continent] and APR.ZonesData["ZoneEntry"][continent][zoneMoveOrder]
-    if not zoneEntries then
-        return nil, nil, nil
-    end
-
-    local closestDistance = math.huge
-    local closestX, closestY = 0, 0
-    local playerY, playerX = UnitPosition("player")
-
-    for _, entry in pairs(zoneEntries) do
-        local deltaX, deltaY = playerX - entry.x, entry.y - playerY
-        local distance = math.sqrt(deltaX * deltaX + deltaY * deltaY)
-
-        if distance < closestDistance then
-            closestDistance = distance
-            closestX, closestY = entry.x, entry.y
-        end
-    end
-
-    return zoneMoveOrder, closestX, closestY
-end
-
---- Checks if a given mapID is on the same continent as the player.
---- @param mapID number The map ID to check.
---- @return boolean isSameContinent true if the mapID is on the same continent as the player, false otherwise.
---- @return number newContient new contient ID
-function APR.transport:IsSameContinent(mapID)
-    APR:Debug("Function: APR.transport:IsSameContinent()", mapID)
-    local playerContinentID = APR:GetContinent()
-    local mapContinentID = APR:GetContinent(mapID)
-
-    local isSameContinent = (playerContinentID == mapContinentID)
-    return isSameContinent, mapContinentID
-end
-
---- Set the current step frame and arrow with the new continent data*
----@param CurContinent number the contient map ID
----@param nextContinent number the wanted reachable contient map ID
----@param nextZone number the wanted zone ID to reach in the nextContinent
-function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
+-----------------------------------------------------------------------
+-- Generic portal guidance engine for SwitchCont / SwitchZones
+-----------------------------------------------------------------------
+--- Drive the UI/Arrow/Taxis to the best portal from a given portal DB.
+--- portalDB must be APR.Portals.SwitchCont[APR.Faction] OR APR.Portals.SwitchZones[APR.Faction].
+function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, nextZone)
     local function handlePortals(portalMappings)
-        local closestPortal, closestPortalPosition, closestDistance = nil, nil, nil
-        local backupPortal, backupPortalPosition, backupDistance = nil, nil, nil
-        local playerY, playerX = UnitPosition("player")
-        if not playerY or not playerX then
+        local closestPortal, closestPos, closestDist
+        local backupPortal, backupPos, backupDist
+        local py, px = UnitPosition("player")
+        if not py or not px then
             return
         end
 
         for _, portal in ipairs(portalMappings) do
             if CurContinent == portal.continent and nextContinent == portal.nextContinent then
-                local portalPosition = APR.Portals.Coords[APR.Faction][portal.continent][portal.portalKey]
-                local distance = math.sqrt((playerX - portalPosition.x) ^ 2 + (playerY - portalPosition.y) ^ 2)
-
-                if nextZone == portal.nextZone then
-                    if closestDistance == nil or distance < closestDistance then
-                        closestPortal = portal
-                        closestPortalPosition = portalPosition
-                        closestDistance = distance
-                    end
-                else
-                    if backupDistance == nil or distance < backupDistance then
-                        backupPortal = portal
-                        backupPortalPosition = portalPosition
-                        backupDistance = distance
+                local pos = APR.Portals.Coords[APR.Faction][portal.continent][portal.portalKey]
+                if pos then
+                    local d = math.sqrt((px - pos.x) ^ 2 + (py - pos.y) ^ 2)
+                    if nextZone == portal.nextZone then
+                        if not closestDist or d < closestDist then
+                            closestPortal, closestPos, closestDist = portal, pos, d
+                        end
+                    else
+                        if not backupDist or d < backupDist then
+                            backupPortal, backupPos, backupDist = portal, pos, d
+                        end
                     end
                 end
             end
         end
 
         if closestPortal then
-            return closestPortal, closestPortalPosition
-        elseif backupPortal then
-            return backupPortal, backupPortalPosition
+            return closestPortal, closestPos
         end
-
+        if backupPortal then
+            return backupPortal, backupPos
+        end
         return nil, nil
     end
 
     local function handlePortalsCapital(portalMappings, capitalNextContinent, capitalNextZone)
         for _, portal in ipairs(portalMappings) do
-            if CurContinent == portal.continent and (capitalNextContinent == portal.nextContinent or capitalNextZone == portal.nextZone) then
-                local portalPosition = APR.Portals.Coords[APR.Faction][portal.continent][portal.portalKey]
-                return portal, portalPosition
+            if
+                CurContinent == portal.continent and
+                (capitalNextContinent == portal.nextContinent or capitalNextZone == portal.nextZone)
+            then
+                local pos = APR.Portals.Coords[APR.Faction][portal.continent][portal.portalKey]
+                if pos then
+                    return portal, pos
+                end
             end
         end
     end
@@ -238,59 +108,124 @@ function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
         APR.transport.wrongZoneDestTaxiName = destTaxiName
     end
 
-    -- Portal
-    local portalsDB = APR.Portals.SwitchCont[APR.Faction]
-    local portal, portalPosition = handlePortals(portalsDB)
+    -- Pick the best matching portal (exact nextZone preferred, else closest backup).
+    local portal, portalPos = handlePortals(portalDB)
 
-    -- If no portal is found, redirect to the default capital
-    if not portal then
+    -- Fallback: direct to default capital room (only makes sense for SwitchCont DBs).
+    if not portal and portalDB == APR.Portals.SwitchCont[APR.Faction] then
         if APR.Faction == "Alliance" then
-            portal, portalPosition = handlePortalsCapital(portalsDB, 13, 84) -- Stormwind
+            portal, portalPos = handlePortalsCapital(portalDB, 13, 84) -- Stormwind
         else
-            portal, portalPosition = handlePortalsCapital(portalsDB, 12, 85) -- Orgrimmar
+            portal, portalPos = handlePortalsCapital(portalDB, 12, 85) -- Orgrimmar
         end
     end
-    if not portalPosition then
-        -- local nextZoneMapInfo = C_Map.GetMapInfo(nextZone)
-        -- APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. nextZoneMapInfo.name)
+    if not portalPos then
+        return nil
+    end
+
+    -- Taxi vs run: if we share the same FP or Dragonriding can cover it, point straight to the portal.
+    local py, px = UnitPosition("player")
+    if not py or not px then
         return
     end
 
-    -- TaxiNode
-    local posY, posX = UnitPosition("player")
-    if not posY or not posX then return end
-    local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY, playerDistance = self:ClosestTaxi(posX, posY)
-    local portalTaxiNodeId, portalTaxiName, _, _, portalDistance = self:ClosestTaxi(portalPosition.x, portalPosition.y)
-    local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
-    local hasDraconicRidingskill = IsSpellKnown(90265) and IsSpellKnown(372608)
+    local playerNodeId, playerName, playerX, playerY = self:ClosestTaxi(px, py)
+    local _, portalName, _, _, portalDist = self:ClosestTaxi(portalPos.x, portalPos.y)
+    local hasDragonRiding = APR:IsSpellKnown(90265) and APR:IsSpellKnown(372608)
 
-    if playerTaxiNodeId == portalTaxiNodeId or (hasDraconicRidingskill and portalDistance < APR.Arrow.MaxDistanceWrongZone) then
-        -- handle the Alliance portals room
-        if APR.Faction == "Alliance" and CurContinent == 13 and (posY > -8981.3 and posX < 866.7) then
-            APR.currentStep:AddExtraLineText("GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"])
-            local portalRoom = APR.Portals.Coords["Alliance"][CurContinent]["StormwindPortalRoom"]
-            APR.Arrow:SetArrowActive(true, portalRoom.x, portalRoom.y)
-        else
-            local extraText = portal.extraText or "USE_PORTAL_TO"
-            APR.currentStep:AddExtraLineText(portal.portalKey,
-                format(L[extraText], C_Map.GetMapInfo(portal.nextZone).name))
-            APR.Arrow:SetArrowActive(true, portalPosition.x, portalPosition.y)
+    if playerName == portalName or (hasDragonRiding and portalDist < APR.Arrow.MaxDistanceWrongZone) then
+        -- Special case: Alliance Stormwind portal room (keep original behavior)
+        if APR.Faction == "Alliance" and CurContinent == 13 then
+            local posY, posX = UnitPosition("player")
+            if posY and posX and (posY > -8981.3 and posX < 866.7) then
+                APR.currentStep:AddExtraLineText("GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"])
+                local room = APR.Portals.Coords["Alliance"][CurContinent]["StormwindPortalRoom"]
+                APR.Arrow:SetArrowActive(true, room.x, room.y)
+                return portal
+            end
         end
+        local extraText = portal.extraText or "USE_PORTAL_TO"
+        local nzName = (C_Map.GetMapInfo(portal.nextZone) and C_Map.GetMapInfo(portal.nextZone).name) or UNKNOWN
+        APR.currentStep:AddExtraLineText(portal.portalKey, string.format(L[extraText], nzName))
+        APR.Arrow:SetArrowActive(true, portalPos.x, portalPos.y)
     else
-        handleTaxi(playerTaxiName, portalTaxiName)
-        APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
+        -- Different FPs: point to the closest taxinode to reach the portal FP.
+        handleTaxi(playerName, portalName)
+        APR.Arrow:SetArrowActive(true, playerX, playerY)
     end
+
     return portal
 end
 
---- Get Closes TaxiNode
---- @param posX number the world X position to find the closestDistance
---- @param posY number the world Y position to find the closestDistance
---- @return integer|nil nodeId Taxi node id
---- @return string|nil name Taxi node name
---- @return integer|nil x Taxi node X position
---- @return integer|nil y Taxi node Y position
---- @return integer|nil distance
+-----------------------------------------------------------------------
+-- Main router: priority = spell continent > spell zone > item continent > item zone > portals
+-----------------------------------------------------------------------
+function APR.transport:SelectBestTransport(nextZone)
+    local CurContinent = APR:GetContinent()
+    local _, targetContinent = self:IsSameContinent(nextZone)
+
+    -- FACTORISED priority chain:
+    local pick =
+        _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "continent") or -- spell continent
+        _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "zone") or      -- spell zone
+        _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "continent") or   -- item continent
+        _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "zone")           -- item zone
+
+    if pick then
+        if pick.kind == "spell" then
+            -- EXACT UI you requested
+            local spellID = pick.id
+            local spellName = pick.name
+            local questText = L["USE_SPELL"] .. ": " .. (spellName or UNKNOWN)
+            APR.currentStep:AddQuestSteps("USE_SPELL", questText, spellName)
+            APR.currentStep:AddStepButton("USE_SPELL-" .. spellName, spellID, "spell")
+        else
+            -- EXACT UI for items
+            local itemID = pick.id
+            local itemName = pick.name
+            local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
+            APR.currentStep:AddQuestSteps("USE_ITEM", questText, itemName)
+            APR.currentStep:AddStepButton("USE_ITEM-" .. itemName, itemID, "item")
+        end
+
+        if pick.coords then
+            local nz = C_Map.GetMapInfo(nextZone)
+            APR.currentStep:AddExtraLineText("DESTINATION", L["DESTINATION"] .. " " .. (nz and nz.name or ""))
+        end
+
+        -- Teleports are instant (no arrow); zone change will refresh the flow.
+        return true
+    end
+
+    -- Portals fallback: same continent -> SwitchZones ; different continent -> SwitchCont
+    local db = (CurContinent == targetContinent) and APR.Portals.SwitchZones[APR.Faction] or
+        APR.Portals.SwitchCont[APR.Faction]
+    local portal = self:GuideViaPortalDB(db, CurContinent, targetContinent, nextZone)
+    if portal then return true end
+
+    return false
+end
+
+-----------------------------------------------------------------------
+-- Keep legacy API (used by other code): delegate to generic engine
+-----------------------------------------------------------------------
+function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
+    -- Historically this used SwitchCont; we keep it for compatibility.
+    local portalDB = APR.Portals.SwitchCont[APR.Faction]
+    return self:GuideViaPortalDB(portalDB, CurContinent, nextContinent, nextZone)
+end
+
+-----------------------------------------------------------------------
+-- Get the closest flight path
+-----------------------------------------------------------------------
+--- Get Closest TaxiNode to a world position.
+--- @param posX number
+--- @param posY number
+--- @return integer|nil nodeId
+--- @return string|nil name
+--- @return number|nil x
+--- @return number|nil y
+--- @return number|nil distance
 function APR.transport:ClosestTaxi(posX, posY)
     APR:Debug("Function: APR.transport:ClosestTaxi()", { posX, posY })
 
@@ -330,6 +265,193 @@ function APR.transport:ClosestTaxi(posX, posY)
     end
 end
 
+-----------------------------------------------------------------------
+-- Intra-zone entry guidance
+-----------------------------------------------------------------------
+--- Return the next MapID and world position of zone entry towards nextMapId.
+--- @param nextMapId number
+--- @return number|nil zoneMoveOrder
+--- @return number|nil closestX
+--- @return number|nil closestY
+function APR.transport:GetZoneMoveOrder(nextMapId)
+    local currentMapID = APR:GetPlayerParentMapID()
+    local zoneMoveOrder =
+        APR.ZonesData["ZoneMoveOrder"][currentMapID] and APR.ZonesData["ZoneMoveOrder"][currentMapID][nextMapId]
+    if not zoneMoveOrder then
+        return
+    end
+
+    local continent = APR:GetContinent()
+    local zoneEntries = APR.ZonesData["ZoneEntry"][continent] and APR.ZonesData["ZoneEntry"][continent][zoneMoveOrder]
+    if not zoneEntries then
+        return nil, nil, nil
+    end
+
+    local closestDistance = math.huge
+    local closestX, closestY = 0, 0
+    local playerY, playerX = UnitPosition("player")
+
+    for _, entry in pairs(zoneEntries) do
+        local deltaX, deltaY = playerX - entry.x, entry.y - playerY
+        local distance = math.sqrt(deltaX * deltaX + deltaY * deltaY)
+        if distance < closestDistance then
+            closestDistance = distance
+            closestX, closestY = entry.x, entry.y
+        end
+    end
+
+    return zoneMoveOrder, closestX, closestY
+end
+
+-----------------------------------------------------------------------
+-- Same-continent check
+-----------------------------------------------------------------------
+--- Checks if a given mapID is on the same continent as the player.
+--- @param mapID number The map ID to check.
+--- @return boolean isSameContinent
+--- @return number newContinent
+function APR.transport:IsSameContinent(mapID)
+    APR:Debug("Function: APR.transport:IsSameContinent()", mapID)
+    local playerContinentID = APR:GetContinent()
+    local mapContinentID = APR:GetContinent(mapID)
+    local isSameContinent = (playerContinentID == mapContinentID)
+    return isSameContinent, mapContinentID
+end
+
+-----------------------------------------------------------------------
+-- Core: Guide the player into the right zone (calls SelectBestTransport)
+-----------------------------------------------------------------------
+function APR.transport:GetMeToRightZone(isRetry)
+    APR:Debug("Function: APR.transport:GetMeToRightZone()", isRetry and "(retry)" or "")
+
+    local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
+
+    if (routeZoneMapIDs and mapID and routeName) then
+        APR.ActiveRoute = routeName
+        if not APR.currentStep:IsShown() then
+            APR.currentStep:RefreshCurrentStepFrameAnchor()
+        end
+    end
+    if not APR.ActiveRoute or not next(APRCustomPath[APR.PlayerID]) then
+        APR.routeconfig:CheckIsCustomPathEmpty()
+        return
+    end
+    if not APR:IsInstanceWithUI() or not APRCustomPath[APR.PlayerID] then
+        return
+    end
+
+    APR:UpdateQuestAndStep()
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
+    local step = CurStep and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] or nil
+
+    local farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
+    if APR:CheckIsInRouteZone() and not farAway then
+        APR.IsInRouteZone = true
+        -- Avoid unwanted auto taxi
+        APR.transport.wrongZoneDestTaxiName = nil
+        -- Reset flag, we are in the right zone
+        APR.transport._retryPending = false
+        return
+    else
+        -- Reset IsInRouteZone and continue routing
+        APR.IsInRouteZone = false
+
+        if not step then
+            return
+        end
+
+        local nextZone = step.Zone or mapID
+        local mapInfo = C_Map.GetMapInfo(nextZone)
+        if not mapInfo then
+            return
+        end
+
+        local parentMapInfo = C_Map.GetMapInfo(mapInfo.parentMapID)
+        if not parentMapInfo then
+            return
+        end
+
+        -- Retry systems (Disabled)
+        if not isRetry and not APR.transport._retryPending then
+            -- Re-enable your retry logic here if needed.
+        end
+
+        local reason = farAway and L["TOO_FAR_AWAY"] or L["WRONG_ZONE"]
+        APR.currentStep:Reset()
+        local destinationText =
+            reason ..
+            " - " ..
+            L["DESTINATION"] ..
+            ": " ..
+            (mapInfo.name or "?") ..
+            ", " .. (parentMapInfo.name or "?") .. " (" .. tostring(nextZone) .. ")"
+        APR.currentStep:AddExtraLineText("DESTINATION", destinationText)
+
+        -- Hide arrow while computing routing
+        APR.Arrow.Active = false
+
+        -- Full router (Spells / Items / SwitchZones / SwitchCont)
+        if self:SelectBestTransport(nextZone) then
+            -- Either a teleport instruction or portal/taxi path has been displayed.
+            -- If it's an instance step, refresh the UI immediately.
+            if step.InstanceQuest then
+                APR.IsInRouteZone = true
+                APR:UpdateStep()
+            end
+            return
+        end
+
+        -- If same continent and nothing found above, try classic taxi -> zone entry fallbacks
+        local isSameContinent = (APR:GetContinent() == APR:GetContinent(nextZone))
+        if isSameContinent then
+            local posY, posX = UnitPosition("player")
+            if not posY or not posX then
+                return
+            end
+
+            local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
+            if step.Coord then
+                local _, objectiveTaxiName = self:ClosestTaxi(step.Coord.x, step.Coord.y)
+                if playerTaxiNodeId ~= objectiveTaxiName then
+                    APR.transport.wrongZoneDestTaxiName = objectiveTaxiName
+                    APR.currentStep:AddExtraLineText(
+                        "FLY_TO_" .. objectiveTaxiName,
+                        L["FLY_TO"] .. " " .. objectiveTaxiName
+                    )
+                    APR.currentStep:AddExtraLineText(
+                        "CLOSEST_FP" .. playerTaxiName,
+                        L["CLOSEST_FP"] .. ": " .. playerTaxiName
+                    )
+                    APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
+                    return
+                else
+                    local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(nextZone)
+                    if zoneEntryMapID then
+                        local zoneEntryMapInfo = C_Map.GetMapInfo(zoneEntryMapID)
+                        APR.currentStep:AddExtraLineText(
+                            "GO_TO" .. (zoneEntryMapInfo.name or ""),
+                            string.format(L["GO_TO"], zoneEntryMapInfo.name or "?")
+                        )
+                        APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
+                        return
+                    end
+                end
+            end
+        end
+
+        -- Total fallback: no route found
+        APR.currentStep:AddExtraLineText(
+            "ERROR_PATH_NOT_FOUND",
+            L["ERROR"] .. " - " .. L["PATH_NOT_FOUND"] .. " " .. (mapInfo.name or "?") .. " (" .. tostring(mapID) .. ")"
+        )
+        APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. (mapInfo.name or "?"))
+        APR.Arrow:SetArrowActive(false, 0, 0)
+    end
+end
+
+-----------------------------------------------------------------------
+-- Event frame
+-----------------------------------------------------------------------
 APR.transport.eventFrame = CreateFrame("Frame")
 APR.transport.eventFrame:RegisterEvent("TAXIMAP_OPENED")
 APR.transport.eventFrame:RegisterEvent("PLAYER_CONTROL_LOST")
@@ -351,10 +473,11 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
         APR.transport:GetMeToRightZone()
     end
 
-    if event == "ZONE_CHANGED"
-        or event == "ZONE_CHANGED_INDOORS"
-        or event == "ZONE_CHANGED_NEW_AREA"
-        or event == "WAYPOINT_UPDATE" then
+    if event == "ZONE_CHANGED" or
+        event == "ZONE_CHANGED_INDOORS" or
+        event == "ZONE_CHANGED_NEW_AREA" or
+        event == "WAYPOINT_UPDATE"
+    then
         if IsInInstance() and not APR:IsInstanceWithUI() then
             return
         end
@@ -365,7 +488,6 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
         ------------------------------------------
         --------------- Save FP ------------------
         ------------------------------------------
-
         local taxiMapID = GetTaxiMapID()
         local taxiNodes = C_TaxiMap.GetAllTaxiNodes(taxiMapID)
 
@@ -408,7 +530,7 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
                 if step and step.ETA then
                     APR.AFK:SetAfkTimer(step.ETA)
                 elseif next(APR.transport.CurrentTaxiNode) and next(APR.transport.StepTaxiNode) then
-                    -- Reccord timer or play if already in the table
+                    -- Record timer or play if already known
                     local timer = APRTaxiNodesTimer
                         [APR.transport.CurrentTaxiNode.name .. "-" .. APR.transport.StepTaxiNode.name]
                     if not timer then
