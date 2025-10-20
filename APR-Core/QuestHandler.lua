@@ -630,7 +630,7 @@ function APR:UpdateStep()
             local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
             if APR.IsInRouteZone then
                 APR.currentStep:AddQuestSteps(questID, questText, "UseItem")
-                APR.currentStep:AddStepButton(questID, itemID, 'item')
+                APR.currentStep:AddStepButton(questID .. "-UseItem", itemID, 'item')
             end
 
             if C_QuestLog.IsQuestFlaggedCompleted(questID) then
@@ -640,11 +640,11 @@ function APR:UpdateStep()
         elseif step.UseSpell then
             local questID = step.UseSpell.questID
             local spellID = step.UseSpell.spellID
-            local spellName = C_Spell.GetSpellInfo(spellID)
-            local questText = L["USE_SPELL"] .. ": " .. (spellName or UNKNOWN)
+            local spellInfo = C_Spell.GetSpellInfo(spellID)
+            local questText = L["USE_SPELL"] .. ": " .. (spellInfo.name or UNKNOWN)
             if APR.IsInRouteZone then
                 APR.currentStep:AddQuestSteps(questID, questText, "UseSpell")
-                APR.currentStep:AddStepButton(questID, spellID, 'spell')
+                APR.currentStep:AddStepButton(questID .. "-UseSpell", spellID, 'spell')
             end
 
             if C_QuestLog.IsQuestFlaggedCompleted(questID) then
@@ -672,7 +672,7 @@ function APR:UpdateStep()
 
             if APR.IsInRouteZone then
                 APR.currentStep:AddQuestSteps(questKey, questText, useHSKey)
-                APR.currentStep:AddStepButton(questKey, spellID, 'spell')
+                APR.currentStep:AddStepButton(questKey .. "-" .. useHSKey, spellID, 'spell')
             end
 
             if C_QuestLog.IsQuestFlaggedCompleted(questKey) then
@@ -876,11 +876,7 @@ function APR:SetButton()
         return
     end
 
-    if step.UseHS then
-        APR.currentStep:AddStepButton(step.UseHS .. "-" .. "UseHS", APR.hearthStoneItemId)
-    elseif step.UseGarrisonHS then
-        APR.currentStep:AddStepButton(step.UseGarrisonHS .. "-" .. "UseGarrisonHS", APR.garrisonHSItemID)
-    elseif step.Button then
+    if step.Button then
         for questKey, itemID in pairs(step.Button) do
             local questID = select(1, APR:SplitQuestAndObjective(questKey))
             if not C_QuestLog.ReadyForTurnIn(questID) then

@@ -1,11 +1,35 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 
+--- Check if a spell is known by the player (supports both classic and retail APIs).
+function APR:IsSpellKnown(spellID)
+    local IsSpellKnown = (C_SpellBook and C_SpellBook.IsSpellKnown) or _G.IsSpellKnown
+    return IsSpellKnown and IsSpellKnown(spellID)
+end
+
+--- Check if the player owns at least one copy of an item (bags/bank).
+function APR:PlayerHasItem(itemID)
+    if not GetItemCount then return false end
+    local count = GetItemCount(itemID, true)
+    return (count and count > 0) and true or false
+end
+
+function APR:GetSpellName(spellID)
+    local spellInfo = (C_Spell and C_Spell.GetSpellInfo and C_Spell.GetSpellInfo(spellID)) or nil
+    local name = spellInfo and spellInfo.name or GetSpellInfo(spellID)
+    return name or ("Spell " .. tostring(spellID))
+end
+
+-- Safe item name getter (supports C_Item and GetItemInfo fallback).
+function APR:GetItemName(itemID)
+    local name = (C_Item and C_Item.GetItemNameByID and C_Item.GetItemNameByID(itemID))
+        or (GetItemInfo and select(1, GetItemInfo(itemID)))
+    return name or ("Item " .. tostring(itemID))
+end
+
 -- Checks if the Player have flying rank 1, 2 or 3
 function APR:CheckFlySkill()
-    local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
-
-    return IsSpellKnown(34090) or IsSpellKnown(34091) or IsSpellKnown(90265)
+    return APR:IsSpellKnown(34090) or APR:IsSpellKnown(34091) or APR:IsSpellKnown(90265)
 end
 
 function APR:GetTargetID(unit)
@@ -202,7 +226,7 @@ end
 
 function APR:IsRemixCharacter()
     local aura = C_UnitAuras.GetPlayerAuraBySpellID(1232454) or
-    C_UnitAuras.GetPlayerAuraBySpellID(1213439)                                                              -- SpellID for "Remix" buff
+        C_UnitAuras.GetPlayerAuraBySpellID(1213439) -- SpellID for "Remix" buff
     return aura ~= nil
 end
 

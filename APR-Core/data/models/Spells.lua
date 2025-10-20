@@ -1,5 +1,5 @@
 APR.hearthStoneSpellID = {
-    556,
+    556, -- shaman astral Recall
     6948,
     8690,
     28585,
