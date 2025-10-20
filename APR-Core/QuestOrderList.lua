@@ -600,8 +600,8 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
             elseif step.UseSpell then
                 local questID = step.UseSpell.questID
                 local spellID = step.UseSpell.spellID
-                local spellName = C_Spell.GetSpellInfo(spellID)
-                local questText = L["USE_SPELL"] .. ": " .. (spellName or UNKNOWN)
+                local spellInfo = C_Spell.GetSpellInfo(spellID)
+                local questText = L["USE_SPELL"] .. ": " .. (spellInfo.name or UNKNOWN)
                 local color = (C_QuestLog.IsQuestFlaggedCompleted(questID) or CurStep > stepIndex) and "green" or "gray"
                 AddStepFrame(stepIndex, questText, color)
             elseif step.GetFP then

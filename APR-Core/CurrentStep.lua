@@ -416,34 +416,65 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
             GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
             GameTooltip:AddLine(L["QUEST_INFO"])
 
+            -- Normalize questID for display vs API calls
+            local questIDText = (questID ~= nil) and tostring(questID) or "?"
+            local questIDNum  = tonumber(questIDText) -- may be nil if non-numeric string
+
             if isScenario then
-                GameTooltip:AddLine("|c33ecc00f" .. SCENARIOS .. " " .. ID .. ": |r" .. questID, unpack(APR.Color.white))
-                GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. C_ScenarioInfo.GetScenarioStepInfo().title,
+                GameTooltip:AddLine("|c33ecc00f" .. SCENARIOS .. " " .. ID .. ": |r" .. questIDText,
                     unpack(APR.Color.white))
-                GameTooltip:AddLine("|c33ecc00fStepID|r: " .. C_ScenarioInfo.GetScenarioStepInfo().stepID,
-                    unpack(APR.Color.white))
-                GameTooltip:AddLine(
-                    "|c33ecc00f" .. OBJECTIVES_LABEL .. "|r: " .. objectiveIndex .. " - " .. textObjective,
-                    1, 1, 1, true)
-            else
-                GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questID, unpack(APR.Color.white))
-                local questTitle = C_QuestLog.GetTitleForQuestID(questID)
-                if questTitle then
-                    GameTooltip:AddLine("|c33ecc00f" .. NAME .. '|r: ' .. questTitle, unpack(APR.Color.white))
+
+                local scenarInfo = C_ScenarioInfo and C_ScenarioInfo.GetScenarioStepInfo and
+                    C_ScenarioInfo.GetScenarioStepInfo()
+                local scenarTitle = scenarInfo and scenarInfo.title
+                local scenarStepID = scenarInfo and scenarInfo.stepID
+
+                if scenarTitle then
+                    GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. scenarTitle, unpack(APR.Color.white))
                 end
+                if scenarStepID then
+                    GameTooltip:AddLine("|c33ecc00fStepID|r: " .. scenarStepID, unpack(APR.Color.white))
+                end
+
                 GameTooltip:AddLine(
-                    "|c33ecc00f" .. OBJECTIVES_LABEL .. "|r: " .. objectiveIndex .. " - " .. textObjective,
-                    1, 1, 1, true)
-                GameTooltip:AddLine("|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
-                    (APR:IsCampaignQuest(questID) and "|cff00ff00" .. YES .. "|r" or "|ccce0000f" .. NO .. "|r"),
-                    unpack(APR.Color.white))
+                    "|c33ecc00f" ..
+                    OBJECTIVES_LABEL .. "|r: " .. tostring(objectiveIndex) .. " - " .. tostring(textObjective),
+                    1, 1, 1, true
+                )
+            else
+                GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questIDText, unpack(APR.Color.white))
+
+                -- Title only if we have a numeric ID
+                if questIDNum then
+                    local questTitle = C_QuestLog.GetTitleForQuestID(questIDNum)
+                    if questTitle then
+                        GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. questTitle, unpack(APR.Color.white))
+                    end
+                end
+
+                GameTooltip:AddLine(
+                    "|c33ecc00f" ..
+                    OBJECTIVES_LABEL .. "|r: " .. tostring(objectiveIndex) .. " - " .. tostring(textObjective),
+                    1, 1, 1, true
+                )
+
+                -- Campaign flag only if we have a numeric ID
+                local isCampaign = questIDNum and APR:IsCampaignQuest(questIDNum)
+                if isCampaign then
+                    GameTooltip:AddLine(
+                        "|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
+                        (isCampaign and "|cff00ff00" .. YES .. "|r" or "|ccce0000f" .. NO .. "|r"),
+                        unpack(APR.Color.white)
+                    )
+                end
             end
+
             GameTooltip:Show()
         end)
 
-
         objectiveContainer:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
     end
+
     self.questsList[questKey] = objectiveContainer
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - objectiveContainer:GetHeight()
 
