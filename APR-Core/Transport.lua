@@ -10,7 +10,7 @@ APR.transport.StepTaxiNode = {}
 APR.transport._retryPending = false
 
 -----------------------------------------------------------------------
--- Helpers: Spells & Items
+-- SelectBestTransport Helpers: Spells & Items
 -----------------------------------------------------------------------
 
 -- Availability check (spell known / item owned).
@@ -22,7 +22,7 @@ local function _IsAvailable(kind, id)
     end
 end
 
--- Generic finder over a DB (Spells or Items).
+-- Generic finder over DBs (Spells or Items).
 -- scope = "continent" (any zone on target continent) or "zone" (exact zone).
 -- Returns a unified pick { kind, id, name, coords, nextContinent, nextZone } or nil.
 local function _FindFirst(kind, db, targetCont, targetZone, scope)
@@ -46,9 +46,58 @@ local function _FindFirst(kind, db, targetCont, targetZone, scope)
         end
     end
 end
+-----------------------------------------------------------------------
+-- Main router: priority = spell continent > spell zone > item continent > item zone > portals > taxi
+-----------------------------------------------------------------------
+function APR.transport:SelectBestTransport(nextZone)
+    local CurContinent = APR:GetContinent()
+    local _, targetContinent = self:IsSameContinent(nextZone)
+
+    -- Priority chain:
+    local pick =
+        _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "continent") or -- spell continent
+        _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "zone") or      -- spell zone
+        _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "continent") or   -- item continent
+        _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "zone")           -- item zone
+
+    if pick then
+        if pick.kind == "spell" then
+            -- EXACT UI you requested
+            local spellID = pick.id
+            local spellName = pick.name
+            local questText = L["USE_SPELL"] .. ": " .. (spellName or UNKNOWN)
+            APR.currentStep:AddQuestSteps("USE_SPELL", questText, spellName)
+            APR.currentStep:AddStepButton("USE_SPELL-" .. spellName, spellID, "spell")
+        else
+            -- EXACT UI for items
+            local itemID = pick.id
+            local itemName = pick.name
+            local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
+            APR.currentStep:AddQuestSteps("USE_ITEM", questText, itemName)
+            APR.currentStep:AddStepButton("USE_ITEM-" .. itemName, itemID, "item")
+        end
+
+        if pick.coords then
+            local nz = C_Map.GetMapInfo(nextZone)
+            APR.currentStep:AddExtraLineText("DESTINATION", L["DESTINATION"] .. " " .. (nz and nz.name or ""))
+        end
+
+        -- Teleports are instant (no arrow); zone change will refresh the flow.
+        return true
+    end
+
+    -- Portals fallback: same continent -> SwitchZones ; different continent -> SwitchCont
+    local db = (CurContinent == targetContinent) and APR.Portals.SwitchZones[APR.Faction] or
+        APR.Portals.SwitchCont[APR.Faction]
+    local portal = self:GuideViaPortalDB(db, CurContinent, targetContinent, nextZone)
+
+    if portal then return true end
+
+    return false
+end
 
 -----------------------------------------------------------------------
--- Generic portal guidance engine for SwitchCont / SwitchZones
+-- Portal guidance engine for SwitchCont / SwitchZones
 -----------------------------------------------------------------------
 --- Drive the UI/Arrow/Taxis to the best portal from a given portal DB.
 --- portalDB must be APR.Portals.SwitchCont[APR.Faction] OR APR.Portals.SwitchZones[APR.Faction].
@@ -111,7 +160,7 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
     -- Pick the best matching portal (exact nextZone preferred, else closest backup).
     local portal, portalPos = handlePortals(portalDB)
 
-    -- Fallback: direct to default capital room (only makes sense for SwitchCont DBs).
+    -- Fallback: direct to default capital room
     if not portal and portalDB == APR.Portals.SwitchCont[APR.Faction] then
         if APR.Faction == "Alliance" then
             portal, portalPos = handlePortalsCapital(portalDB, 13, 84) -- Stormwind
@@ -128,12 +177,15 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
     if not py or not px then
         return
     end
+    local dx, dy = px - portalPos.x, portalPos.y - py
+    local playerDistance = (dx * dx + dy * dy) ^ 0.5
 
-    local playerNodeId, playerName, playerX, playerY = self:ClosestTaxi(px, py)
-    local _, portalName, _, _, portalDist = self:ClosestTaxi(portalPos.x, portalPos.y)
-    local hasDragonRiding = APR:IsSpellKnown(90265) and APR:IsSpellKnown(372608)
+    local playerNodeId, playerNodeName, playerNodeX, playerNodeY = self:ClosestTaxi(px, py)
+    local _, portalNodeName, _, _, _ = self:ClosestTaxi(portalPos.x, portalPos.y)
+    local hasFlyOrDragonRiding = APR:IsSpellKnown(90265) or APR:IsSpellKnown(372608) -- Master Riding or dragonriding
 
-    if playerName == portalName or (hasDragonRiding and portalDist < APR.Arrow.MaxDistanceWrongZone) then
+    --Same FP or can fly/dragonride close enough: go to portal directly
+    if (playerNodeName == portalNodeName or (hasFlyOrDragonRiding and playerDistance < APR.Arrow.MaxDistanceWrongZone)) and portal then
         -- Special case: Alliance Stormwind portal room (keep original behavior)
         if APR.Faction == "Alliance" and CurContinent == 13 then
             local posY, posX = UnitPosition("player")
@@ -145,74 +197,23 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
             end
         end
         local extraText = portal.extraText or "USE_PORTAL_TO"
-        local nzName = (C_Map.GetMapInfo(portal.nextZone) and C_Map.GetMapInfo(portal.nextZone).name) or UNKNOWN
-        APR.currentStep:AddExtraLineText(portal.portalKey, string.format(L[extraText], nzName))
+        local newZoneName = (C_Map.GetMapInfo(portal.nextZone) and C_Map.GetMapInfo(portal.nextZone).name) or UNKNOWN
+        local localized = L[extraText]
+        -- Use format only if the locale string expects a %s; otherwise, just append the name.
+        if localized and localized:find("%%s") then
+            APR.currentStep:AddExtraLineText(portal.portalKey, string.format(localized, newZoneName))
+        else
+            APR.currentStep:AddExtraLineText(portal.portalKey, localized .. " " .. newZoneName)
+        end
+
         APR.Arrow:SetArrowActive(true, portalPos.x, portalPos.y)
     else
         -- Different FPs: point to the closest taxinode to reach the portal FP.
-        handleTaxi(playerName, portalName)
-        APR.Arrow:SetArrowActive(true, playerX, playerY)
+        handleTaxi(playerNodeName, portalNodeName)
+        APR.Arrow:SetArrowActive(true, playerNodeX, playerNodeY)
     end
 
     return portal
-end
-
------------------------------------------------------------------------
--- Main router: priority = spell continent > spell zone > item continent > item zone > portals
------------------------------------------------------------------------
-function APR.transport:SelectBestTransport(nextZone)
-    local CurContinent = APR:GetContinent()
-    local _, targetContinent = self:IsSameContinent(nextZone)
-
-    -- FACTORISED priority chain:
-    local pick =
-        _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "continent") or -- spell continent
-        _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "zone") or      -- spell zone
-        _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "continent") or   -- item continent
-        _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "zone")           -- item zone
-
-    if pick then
-        if pick.kind == "spell" then
-            -- EXACT UI you requested
-            local spellID = pick.id
-            local spellName = pick.name
-            local questText = L["USE_SPELL"] .. ": " .. (spellName or UNKNOWN)
-            APR.currentStep:AddQuestSteps("USE_SPELL", questText, spellName)
-            APR.currentStep:AddStepButton("USE_SPELL-" .. spellName, spellID, "spell")
-        else
-            -- EXACT UI for items
-            local itemID = pick.id
-            local itemName = pick.name
-            local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
-            APR.currentStep:AddQuestSteps("USE_ITEM", questText, itemName)
-            APR.currentStep:AddStepButton("USE_ITEM-" .. itemName, itemID, "item")
-        end
-
-        if pick.coords then
-            local nz = C_Map.GetMapInfo(nextZone)
-            APR.currentStep:AddExtraLineText("DESTINATION", L["DESTINATION"] .. " " .. (nz and nz.name or ""))
-        end
-
-        -- Teleports are instant (no arrow); zone change will refresh the flow.
-        return true
-    end
-
-    -- Portals fallback: same continent -> SwitchZones ; different continent -> SwitchCont
-    local db = (CurContinent == targetContinent) and APR.Portals.SwitchZones[APR.Faction] or
-        APR.Portals.SwitchCont[APR.Faction]
-    local portal = self:GuideViaPortalDB(db, CurContinent, targetContinent, nextZone)
-    if portal then return true end
-
-    return false
-end
-
------------------------------------------------------------------------
--- Keep legacy API (used by other code): delegate to generic engine
------------------------------------------------------------------------
-function APR.transport:GetPortal(CurContinent, nextContinent, nextZone)
-    -- Historically this used SwitchCont; we keep it for compatibility.
-    local portalDB = APR.Portals.SwitchCont[APR.Faction]
-    return self:GuideViaPortalDB(portalDB, CurContinent, nextContinent, nextZone)
 end
 
 -----------------------------------------------------------------------
@@ -319,7 +320,7 @@ function APR.transport:IsSameContinent(mapID)
 end
 
 -----------------------------------------------------------------------
--- Core: Guide the player into the right zone (calls SelectBestTransport)
+-- Core: Guide the player into the right zone
 -----------------------------------------------------------------------
 function APR.transport:GetMeToRightZone(isRetry)
     APR:Debug("Function: APR.transport:GetMeToRightZone()", isRetry and "(retry)" or "")
@@ -373,7 +374,7 @@ function APR.transport:GetMeToRightZone(isRetry)
 
         -- Retry systems (Disabled)
         if not isRetry and not APR.transport._retryPending then
-            -- Re-enable your retry logic here if needed.
+            -- no logic for now
         end
 
         local reason = farAway and L["TOO_FAR_AWAY"] or L["WRONG_ZONE"]
