@@ -91,6 +91,15 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.16.1", "2025-09-22" },
+        "#Guides",
+        "- Added `Highmountain` route for Legion",
+        "- Fixed incorrect Paladin waypoint coordinates depending on faction in the Legion Remix routes",
+
+        "#Bugs",
+        "- Fixed incorrect portal coordinates for the Paladin Order Hall",
+        "- Fixed an issue where the route could direct you to a taxi instead of a nearby portal",
+
         { "v4.16.0", "2025-09-20" },
         "#Guides",
         "- Added Mage Order Hall quest after Azsuna for Legion Remix",
@@ -98,7 +107,6 @@ function APR.changelog:SetChangeLog()
         "#Features",
         "- Added new setting to toggle the display of the world coords frame (debug settings)",
         "- Added class spells handler for transport module (priority order: spell > item (work in progress) > portal > taxi)",
-
         "#Bugs",
         "- Test to avoid lua error provided by wow interaction",
         "- Fixed new UseSpell step option",
@@ -223,7 +231,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6", "2025-04-06" },
+        { "v4.9.6",  "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
