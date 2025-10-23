@@ -42,7 +42,7 @@ if (APR.Faction == "Horde") then
         ["630-Azsuna"] = L["Legion - Azsuna"],
         ["641-ValSharah"] = L["Legion - Val'Sharah"],
         ["634-Stormheim"] = L["Legion - Stormheim"],
-        ["650-Highmountain"] = L["WIP-Highmountain"],
+        ["619-Highmountain"] = L["Legion - Highmountain"],
     }
     APR.RouteList.BattleForAzeroth = {
         ["85-BFA-Orgrimmar"] = L["BFA01 - Intro"],
