@@ -26,7 +26,7 @@ APR.Portals.Coords = {
             ["DalaranLegion"] = { x = 642.3, y = -8790.2 },
 
             --Order Hall
-            ["Paladin To Dalaran"] = { x = -5319.9, y = -2376.1 },
+            ["Paladin To Dalaran"] = { x = -5319.9, y = 2376.1 },
         },
         [101] = { ["Stormwind"] = { x = 5388.7, y = -1893.5 }, ["Stormwind DarkPortal"] = { x = 931.9, y = -274.6 } },
         [113] = { ["Stormwind"] = { x = 720.2, y = 5719.5 } },
@@ -131,7 +131,7 @@ APR.Portals.Coords = {
             ["DarkPortal BC"] = { x = 55.8, y = 1768.7 },
 
             --Order Hall
-            ["Paladin To Dalaran"] = { x = -5319.9, y = -2376.1 },
+            ["Paladin To Dalaran"] = { x = -5319.9, y = 2376.1 },
         },
         [101] = { ["Orgrimmar"] = { x = 5394.1, y = -1898.9 }, ["Orgrimmar DarkPortal"] = { x = 932.3, y = -222.8 } },
         [113] = { ["Orgrimmar"] = { x = 593.7, y = 5926.2 }, },
