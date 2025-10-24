@@ -91,6 +91,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.16.3", "2025-09-25" },
+         "#Guides",
+        "- Fixed missing Qpart for `Vengeance for the Stonedark` quest in Highmountain route (42373)",
+
         { "v4.16.2", "2025-09-22" },
         "#Guides",
         "- Fixed wrong step in `Highmountain` route for Legion",

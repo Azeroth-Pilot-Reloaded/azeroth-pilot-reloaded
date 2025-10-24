@@ -7087,7 +7087,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
         _index = 251,
     },
     {
-        Qpart = { [39426] = { 1 } },
+        Qpart = { [42373] = { 1 } },
         Coord = { x = 4278.5, y = 5676.8 },
         Range = 30,
         Zone = 650,
