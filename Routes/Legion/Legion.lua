@@ -5306,6 +5306,7 @@ APR.RouteQuestStepList["641-ValSharah"] = {
     },
     {
         PickUp = { 38724, 38719 },
+        PickUpDB = { 38724, 38719, 44457, 44278 },
         Coord = { x = 7371.3, y = 3337.1 },
         _index = 254,
     },
@@ -5317,6 +5318,7 @@ APR.RouteQuestStepList["641-ValSharah"] = {
     },
     {
         Done = { 38724 },
+        DoneDB = { 38724, 44457 },
         Coord = { x = 7429.8, y = 3418.1 },
         _index = 256,
     },
@@ -5333,6 +5335,7 @@ APR.RouteQuestStepList["641-ValSharah"] = {
     },
     {
         Qpart = { [38719] = { 3 } },
+        QpartDB = { 38719, 44278 },
         Coord = { x = 7427.3, y = 3393.1 },
         Range = 0.75,
         _index = 259,
@@ -5351,6 +5354,7 @@ APR.RouteQuestStepList["641-ValSharah"] = {
     },
     {
         Qpart = { [38719] = { 1 } },
+        QpartDB = { 38719, 44278 },
         Coord = { x = 7408.3, y = 3369.1 },
         Range = 0.69,
         _index = 262,
@@ -5369,6 +5373,7 @@ APR.RouteQuestStepList["641-ValSharah"] = {
     },
     {
         Qpart = { [38719] = { 2 } },
+        QpartDB = { 38719, 44278 },
         Coord = { x = 7316.8, y = 3400.6 },
         Range = 0.69,
         _index = 265,
@@ -5393,6 +5398,7 @@ APR.RouteQuestStepList["641-ValSharah"] = {
     },
     {
         Done = { 38721, 38719 },
+        DoneDB = { 38721, 38719, 44278 },
         Coord = { x = 7457.8, y = 3091.3 },
         _index = 269,
     },
