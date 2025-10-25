@@ -3272,11 +3272,19 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     {
         PickUp = { 42220 },
         Coord = { x = 5665.4, y = -948.6 },
+        Faction = "Alliance",
         Zone = 630,
         _index = 301,
     },
     {
-        Waypoint = 42220,
+        PickUp = { 42268 },
+        Coord = { x = 5665.4, y = -948.6 },
+        Faction = "Horde",
+        Zone = 630,
+        _index = 301,
+    },
+    {
+        Waypoint = 37657,
         Coord = { x = 5684.4, y = -884.7 },
         ExtraLineText = "JUMP_INTO_WATER_AND_ENTER_IN_UNDERWATER_CAVE",
         Range = 5,
@@ -3308,6 +3316,14 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     {
         Done = { 42220 },
         NoArrow = 1,
+        Faction = "Alliance",
+        Zone = 630,
+        _index = 306,
+    },
+    {
+        Done = { 42268 },
+        NoArrow = 1,
+        Faction = "Horde",
         Zone = 630,
         _index = 306,
     },
