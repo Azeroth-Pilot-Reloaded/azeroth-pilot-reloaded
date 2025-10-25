@@ -25,33 +25,40 @@ def fetch_translations_from_curseforge(api_url, api_key):
         raise Exception(f"Failed to fetch translations: {response.status_code}")
     return response.text
 
-def set_localization_url(slug, cf_token, project_site):
+def set_localization_url(slug, cf_token, project_site, export_type="TableAdditions"):
     """
     Constructs the CurseForge API URL for localization export.
     """
     if slug and cf_token and project_site:
-        return f"{project_site}/api/projects/{slug}/localization/export?export-type=GlobalStrings&unlocalized=Ignore"
+        return f"{project_site}/api/projects/{slug}/localization/export?export-type={export_type}&unlocalized=Ignore"
     return None
 
 #############################################################################
 # Functions to process localization files (keys and texts)
 #############################################################################
 
-def get_locales_kv(locales):
+def get_locales_kv_table_additions(locales_text):
     """
     Extracts key and text value pairs from the locales file.
-    It assumes the format KEY = "value" or KEY = 'value'.
     Returns a list of tuples (key, text).
     """
     kv_list = []
-    lines = locales.split('\n')
-    for line in lines:
-        if re.match(r'^[A-Z0-9_]', line) and '=' in line:
-            parts = line.split('=', 1)
-            key = parts[0].strip()
-            value = parts[1].strip()
-            value = re.sub(r'^["\']|["\']$', '', value)
-            kv_list.append((key, value))
+    for line in locales_text.splitlines():
+        line = line.strip()
+        if not line or not line.startswith("L["):
+            continue
+
+        # On récupère la clé entre L["..."] ou L['...']
+        match_key = re.search(r'L\[\s*["\'](.*?)["\']\s*\]', line)
+        if not match_key:
+            continue
+        key = match_key.group(1)
+
+        # Et la valeur à droite du signe "=" si présente
+        match_val = re.search(r'=\s*["\'](.*?)["\']', line)
+        value = match_val.group(1) if match_val else ""
+
+        kv_list.append((key, value))
     return kv_list
 
 #############################################################################
@@ -177,10 +184,10 @@ def main():
         raise Exception("Missing CurseForge API token and/or project id is invalid.")
 
     # Fetch translations from CurseForge
-    locales = fetch_translations_from_curseforge(api_url, cf_token)
+    locales_text = fetch_translations_from_curseforge(api_url, cf_token)
 
     # Extract key/value pairs from the locales file
-    kv_list = get_locales_kv(locales)
+    kv_list = get_locales_kv_table_additions(locales_text)
     # Also extract just the keys for Lua file checks
     word_list = [kv[0] for kv in kv_list]
 

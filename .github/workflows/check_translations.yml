@@ -1,6 +1,13 @@
 name: Check Translations
 
-on: [pull_request]
+on:
+  pull_request: {}
+  workflow_dispatch:
+    inputs:
+      branch:
+        description: 'Branch'
+        required: false
+        default: ''
 
 jobs:
   check-translations:
@@ -8,10 +15,12 @@ jobs:
 
     steps:
     - name: Checkout repository
-      uses: actions/checkout@v4.2.2
+      uses: actions/checkout@v5.0.0
+      with:
+        ref: ${{ github.event.inputs.branch || github.head_ref || github.ref }}
 
     - name: Set up Python
-      uses: actions/setup-python@v5.4.0
+      uses: actions/setup-python@v6.0.0
       with:
         python-version: '3.x'
 
