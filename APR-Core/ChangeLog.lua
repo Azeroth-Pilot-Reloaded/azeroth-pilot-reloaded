@@ -91,8 +91,12 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.16.4", "2025-09-25" },
+        "#Guides",
+        "- Added missing `Icepine Point` and `Murky Waters` Highmountain storylines for the Sojourner achievement",
+
         { "v4.16.3", "2025-09-25" },
-         "#Guides",
+        "#Guides",
         "- Fixed missing Qpart for `Vengeance for the Stonedark` quest in Highmountain route (42373)",
         "- Fixed some quest ID for Demon Hunter in Azsuna and Val'sharad route",
         "- Fixed Shipwrecked Sailors quest for the Horde in Azsuna",
