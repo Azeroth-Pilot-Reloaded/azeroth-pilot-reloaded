@@ -14,10 +14,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone project
-        uses: actions/checkout@v4.2.2
+        uses: actions/checkout@v5.0.0
 
       - name: Set up Python
-        uses: actions/setup-python@v5.4.0
+        uses: actions/setup-python@v6.0.0
         with:
           python-version: "3.x"
 
@@ -25,7 +25,7 @@ jobs:
         run: python .github/scripts/toc-updater.py --ptr
 
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v6
+        uses: peter-evans/create-pull-request@v7.0.8
         with:
           token: ${{ secrets.GIT_TOKEN }}
           title: "Auto updates supported interface versions"
