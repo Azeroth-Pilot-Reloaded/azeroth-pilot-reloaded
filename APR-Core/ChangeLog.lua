@@ -94,6 +94,8 @@ function APR.changelog:SetChangeLog()
         { "v4.16.3", "2025-09-25" },
          "#Guides",
         "- Fixed missing Qpart for `Vengeance for the Stonedark` quest in Highmountain route (42373)",
+        "- Fixed some quest ID for Demon Hunter in Azsuna and Val'sharad route",
+        "- Fixed Shipwrecked Sailors quest for the Horde in Azsuna",
 
         { "v4.16.2", "2025-09-22" },
         "#Guides",

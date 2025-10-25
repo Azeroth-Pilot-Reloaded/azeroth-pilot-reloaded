@@ -1449,12 +1449,14 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     },
     {
         PickUp = { 36920 },
+        PickUpDB = { 36920, 40815, 44140 },
         Coord = { x = 6961.7, y = -103.3 },
         Zone = 630,
         _index = 28,
     },
     {
         Done = { 36920 },
+        DoneDB = { 36920, 40815, 44140 },
         Coord = { x = 7113.6, y = -412.9 },
         Zone = 630,
         _index = 29,
