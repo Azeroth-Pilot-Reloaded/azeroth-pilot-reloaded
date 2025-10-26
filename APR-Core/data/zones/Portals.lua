@@ -46,6 +46,8 @@ APR.Portals.Coords = {
             ["Remix Bazar to Dalaran"] = { x = 4490.5, y = -1208.8 }, -- temp fix until next update
 
             --Order Hall
+            ["Demon Hunter To Order Hall"] = { x = 4066, y = -963.9 },
+            ["Demon Hunter To Dalaran"] = { x = 1414.6, y = 1665.2 },
             ["Paladin To Order Hall"] = { x = 4604.7, y = -967.1 },
             ["Mage To Dalaran"] = { x = 4707.6, y = -945.3 },
             ["Warrior To Dalaran"] = { x = 72293.2, y = 1083.2 },
@@ -153,6 +155,8 @@ APR.Portals.Coords = {
             ["Remix Bazar to Dalaran"] = { x = 4490.5, y = -1208.8 }, -- temp fix until next update
 
             -- Order Hall
+            ["Demon Hunter To Order Hall"] = { x = 4066, y = -963.9 },
+            ["Demon Hunter To Dalaran"] = { x = 1414.6, y = 1665.2 },
             ["Paladin To Order Hall"] = { x = 4363.6, y = -657.3 },
             ["Mage To Dalaran"] = { x = 4707.6, y = -945.3 },
             ["Warrior To Dalaran"] = { x = 72293.2, y = 1083.2 },
@@ -322,51 +326,53 @@ APR.Portals.SwitchZones = {
         { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Mage To Dalaran", },
         { continent = 619,  nextContinent = 619,  nextZone = 619,  portalKey = "Remix Dalaran to Bazar", },
         { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Remix Bazar to Dalaran", },
-        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Warrior To Dalaran",       extraText = "TALK_TO" },
-        { continent = 619,  nextContinent = 619,  nextZone = 695,  portalKey = "Warrior To Order Hall",    extraText = "TALK_TO" },
+        { continent = 619,  nextContinent = 619,  nextZone = 720,  portalKey = "Demon Hunter To Order Hall", },
+        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Demon Hunter To Dalaran", },
+        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Warrior To Dalaran",         extraText = "TALK_TO" },
+        { continent = 619,  nextContinent = 619,  nextZone = 695,  portalKey = "Warrior To Order Hall",      extraText = "TALK_TO" },
 
-        { continent = 875,  nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",                 closestTaxiNode = "Xibala, Zuldazar",                   extraText = "TALK_TO" },
-        { continent = 875,  nextContinent = 875,  nextZone = 863,  portalKey = "Nazmir",                   closestTaxiNode = "Fort Victory, Nazmir",               extraText = "TALK_TO" },
-        { continent = 875,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                  closestTaxiNode = "Shatterstone Harbor, Vol'dun",       extraText = "TALK_TO" },
-        { continent = 876,  nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",                 closestTaxiNode = "Tradewinds Market, Tiragarde Sound", extraText = "SAIL_TO" },
-        { continent = 876,  nextContinent = 875,  nextZone = 863,  portalKey = "Nazmir",                   closestTaxiNode = "Tradewinds Market, Tiragarde Sound", extraText = "SAIL_TO" },
-        { continent = 876,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                  closestTaxiNode = "Tradewinds Market, Tiragarde Sound", extraText = "SAIL_TO" },
-        { continent = 876,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                  closestTaxiNode = "Tradewinds Market, Tiragarde Sound", extraText = "SAIL_TO" },
+        { continent = 875,  nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",                   closestTaxiNode = "Xibala, Zuldazar",                   extraText = "TALK_TO" },
+        { continent = 875,  nextContinent = 875,  nextZone = 863,  portalKey = "Nazmir",                     closestTaxiNode = "Fort Victory, Nazmir",               extraText = "TALK_TO" },
+        { continent = 875,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                    closestTaxiNode = "Shatterstone Harbor, Vol'dun",       extraText = "TALK_TO" },
+        { continent = 876,  nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",                   closestTaxiNode = "Tradewinds Market, Tiragarde Sound", extraText = "SAIL_TO" },
+        { continent = 876,  nextContinent = 875,  nextZone = 863,  portalKey = "Nazmir",                     closestTaxiNode = "Tradewinds Market, Tiragarde Sound", extraText = "SAIL_TO" },
+        { continent = 876,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                    closestTaxiNode = "Tradewinds Market, Tiragarde Sound", extraText = "SAIL_TO" },
+        { continent = 876,  nextContinent = 875,  nextZone = 864,  portalKey = "Vol'dun",                    closestTaxiNode = "Tradewinds Market, Tiragarde Sound", extraText = "SAIL_TO" },
 
         -- Isle of dorn
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornTunnel",         extraText = "FOLLOW_TUNNEL_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator",       extraText = "USE_ELEVATOR" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornTunnel",           extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator",         extraText = "USE_ELEVATOR" },
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornPortal" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",           extraText = "TALK_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "ExitUndermineTP",          extraText = "USE_TELEPORT" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",             extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "ExitUndermineTP",            extraText = "USE_TELEPORT" },
         { continent = 2274, nextContinent = 2274, nextZone = 2371, portalKey = "K'areshPortal" },
 
 
         -- Ringing Deeps
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsTunnel",       extraText = "FOLLOW_TUNNEL_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",     extraText = "USE_ELEVATOR" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",         extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",        extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2346, portalKey = "EnterUndermine",           extraText = "TALK_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "ExitUndermine",            extraText = "TALK_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "EnterUndermineTP",         extraText = "USE_TELEPORT" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsTunnel",         extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",       extraText = "USE_ELEVATOR" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",           extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",          extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2346, portalKey = "EnterUndermine",             extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "ExitUndermine",              extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "EnterUndermineTP",           extraText = "USE_TELEPORT" },
         -- Hallowfall
-        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "RingingDeepsTunnel",       extraText = "FOLLOW_TUNNEL_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallGate",           extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothEast",       extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothWest",       extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "RingingDeepsTunnel",         extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallGate",             extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothEast",         extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothWest",         extraText = "GO_TO" },
         --Azj Kahet
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetPortal",           closestTaxiNode = "Dornogal, Isle of Dorn", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetEast",             extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothEast",         extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothWest",         extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetPortal",             closestTaxiNode = "Dornogal, Isle of Dorn", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetEast",               extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothEast",           extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothWest",           extraText = "GO_TO" },
 
         -- K'aresh
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "DornogalFromK'areshPortal" },
 
     },
     ["Horde"] = {
-        { continent = 12,   nextContinent = 12,   nextZone = 17,   portalKey = "DarkPortal Talk",          closestTaxiNode = "Orgrimmar, Durotar",              extraText = "TALK_NPC" },
+        { continent = 12,   nextContinent = 12,   nextZone = 17,   portalKey = "DarkPortal Talk",            closestTaxiNode = "Orgrimmar, Durotar",              extraText = "TALK_NPC" },
 
         { continent = 424,  nextContinent = 424,  nextZone = 388,  portalKey = "Townlong Steppes", },
         { continent = 424,  nextContinent = 424,  nextZone = 504,  portalKey = "Isle of Thunder", },
@@ -374,41 +380,43 @@ APR.Portals.SwitchZones = {
         { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Mage To Dalaran", },
         { continent = 619,  nextContinent = 619,  nextZone = 619,  portalKey = "Remix Dalaran to Bazar", },
         { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Remix Bazar to Dalaran", },
-        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Warrior To Dalaran",       extraText = "TALK_TO" },
-        { continent = 619,  nextContinent = 619,  nextZone = 695,  portalKey = "Warrior To Order Hall",    extraText = "TALK_TO" },
+        { continent = 619,  nextContinent = 619,  nextZone = 720,  portalKey = "Demon Hunter To Order Hall", },
+        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Demon Hunter To Dalaran", },
+        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Warrior To Dalaran",         extraText = "TALK_TO" },
+        { continent = 619,  nextContinent = 619,  nextZone = 695,  portalKey = "Warrior To Order Hall",      extraText = "TALK_TO" },
 
-        { continent = 876,  nextContinent = 876,  nextZone = 896,  portalKey = "DrustvarSail",             closestTaxiNode = "Anyport, Drustvar",               extraText = "TALK_TO" },
-        { continent = 876,  nextContinent = 876,  nextZone = 942,  portalKey = "StormsongValleySail",      closestTaxiNode = "Warfang Hold, Stormsong Valley",  extraText = "TALK_TO" },
-        { continent = 876,  nextContinent = 876,  nextZone = 895,  portalKey = "TiragardeSoundSail",       closestTaxiNode = "Plunder Harbor, Tiragarde Sound", extraText = "TALK_TO" },
+        { continent = 876,  nextContinent = 876,  nextZone = 896,  portalKey = "DrustvarSail",               closestTaxiNode = "Anyport, Drustvar",               extraText = "TALK_TO" },
+        { continent = 876,  nextContinent = 876,  nextZone = 942,  portalKey = "StormsongValleySail",        closestTaxiNode = "Warfang Hold, Stormsong Valley",  extraText = "TALK_TO" },
+        { continent = 876,  nextContinent = 876,  nextZone = 895,  portalKey = "TiragardeSoundSail",         closestTaxiNode = "Plunder Harbor, Tiragarde Sound", extraText = "TALK_TO" },
 
         -- Isle of dorn
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornTunnel",         extraText = "FOLLOW_TUNNEL_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator",       extraText = "USE_ELEVATOR" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornTunnel",           extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornElevator",         extraText = "USE_ELEVATOR" },
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "IsleOfDornPortal" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",           extraText = "TALK_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "ExitUndermineTP",          extraText = "USE_TELEPORT" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "EnterUndermine",             extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "ExitUndermineTP",            extraText = "USE_TELEPORT" },
         { continent = 2274, nextContinent = 2274, nextZone = 2371, portalKey = "K'areshPortal" },
 
 
         -- Ringing Deeps
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsTunnel",       extraText = "FOLLOW_TUNNEL_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",     extraText = "USE_ELEVATOR" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",         extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",        extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2346, portalKey = "EnterUndermine",           extraText = "TALK_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "ExitUndermine",            extraText = "TALK_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "EnterUndermineTP",         extraText = "USE_TELEPORT" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsTunnel",         extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsElevator",       extraText = "USE_ELEVATOR" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsGate",           extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "RingingDeepsSouth",          extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2346, portalKey = "EnterUndermine",             extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "ExitUndermine",              extraText = "TALK_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2214, portalKey = "EnterUndermineTP",           extraText = "USE_TELEPORT" },
 
         -- Hallowfall
-        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "RingingDeepsTunnel",       extraText = "FOLLOW_TUNNEL_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallGate",           extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothEast",       extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothWest",       extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "RingingDeepsTunnel",         extraText = "FOLLOW_TUNNEL_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallGate",             extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothEast",         extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2215, portalKey = "HallowFallNothWest",         extraText = "GO_TO" },
         --Azj Kahet
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetPortal",           closestTaxiNode = "Dornogal, Isle of Dorn", },
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetEast",             extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothEast",         extraText = "GO_TO" },
-        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothWest",         extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetPortal",             closestTaxiNode = "Dornogal, Isle of Dorn", },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetEast",               extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothEast",           extraText = "GO_TO" },
+        { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothWest",           extraText = "GO_TO" },
         -- K'aresh
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "DornogalFromK'areshPortal" },
     }
