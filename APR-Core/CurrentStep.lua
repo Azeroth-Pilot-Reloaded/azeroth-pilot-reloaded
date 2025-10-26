@@ -724,21 +724,22 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     if not container then
         return
     end
-    local function getIconName()
+    local function getIconData()
         if attribute == "item" then
-            local itemName, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
-            return itemName, itemTexture
+            local _, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
+            return itemTexture
         else
             local spellInfo = C_Spell.GetSpellInfo(itemID)
-            return spellInfo.name, spellInfo.iconID
+            return spellInfo and spellInfo.iconID or nil
         end
     end
-    local iconName, iconTexture = getIconName()
-    if not iconName and not iconTexture then
+    local iconTexture = getIconData()
+    if not iconTexture then
         return
     end
 
-    local IconButton = CreateFrame("Button", "$parentIconButton", container,
+    -- Use an unnamed frame to avoid polluting _G and reduce taint footprint
+    local IconButton = CreateFrame("Button", nil, container,
         "SecureActionButtonTemplate, BackdropTemplate")
     IconButton:SetSize(25, 25)
     PositionStepButtons(container, IconButton)
@@ -746,7 +747,11 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     IconButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
     IconButton:RegisterForClicks("AnyUp", "AnyDown")
     IconButton:SetAttribute("type1", attribute)
-    IconButton:SetAttribute(attribute, iconName)
+    if attribute == "item" then
+        IconButton:SetAttribute("item", "item:" .. tostring(itemID))
+    else
+        IconButton:SetAttribute("spell", tonumber(itemID))
+    end
 
     IconButton:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")

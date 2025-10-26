@@ -95,6 +95,9 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added Warrior `Artifact Weapons` and `Remix Order Hall` routes",
 
+        "#Bugs",
+        "- Fixed tainted frame lua error triggered by Blizzard actions",
+
         { "v4.16.4", "2025-09-25" },
         "#Guides",
         "- Added missing `Icepine Point` and `Murky Waters` Highmountain storylines for the Sojourner achievement",
