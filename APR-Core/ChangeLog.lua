@@ -94,6 +94,7 @@ function APR.changelog:SetChangeLog()
         { "v4.16.5", "2025-09-26" },
         "#Guides",
         "- Added Warrior `Artifact Weapons` and `Remix Order Hall` routes",
+        "- Added Demon Hunter `Artifact Weapons` and `Remix Order Hall` routes",
 
         "#Bugs",
         "- Fixed tainted frame lua error triggered by Blizzard actions",
