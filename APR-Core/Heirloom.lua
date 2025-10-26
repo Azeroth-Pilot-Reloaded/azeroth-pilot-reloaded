@@ -101,14 +101,15 @@ local function CreateMapButton(parentFrame, itemID)
     local id, toyName, icon, isFavorite, hasFanfare, itemQuality = C_ToyBox.GetToyInfo(itemID)
 
 
-    local button = CreateFrame("Button", "$parentIconButton", parentFrame,
+    -- Use an unnamed secure button to prevent global name taint
+    local button = CreateFrame("Button", nil, parentFrame,
         "SecureActionButtonTemplate, BackdropTemplate")
     button:SetSize(50, 50)
     button:SetNormalTexture(icon or [[Interface/icons/inv_misc_questionmark]])
     button:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
     button:RegisterForClicks("AnyUp", "AnyDown")
     button:SetAttribute("type1", "item")
-    button:SetAttribute("item", toyName)
+    button:SetAttribute("item", "item:" .. tostring(itemID))
 
     button:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
