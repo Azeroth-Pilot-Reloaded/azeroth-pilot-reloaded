@@ -48,6 +48,8 @@ APR.Portals.Coords = {
             --Order Hall
             ["Paladin To Order Hall"] = { x = 4604.7, y = -967.1 },
             ["Mage To Dalaran"] = { x = 4707.6, y = -945.3 },
+            ["Warrior To Dalaran"] = { x = 72293.2, y = 1083.2 },
+            ["Warrior To Order Hall"] = { x = 4254.6, y = -841.9 },
         },
         [876] = {
             ["Stormwind"] = { x = -524.3, y = 1133.5 },
@@ -153,6 +155,8 @@ APR.Portals.Coords = {
             -- Order Hall
             ["Paladin To Order Hall"] = { x = 4363.6, y = -657.3 },
             ["Mage To Dalaran"] = { x = 4707.6, y = -945.3 },
+            ["Warrior To Dalaran"] = { x = 72293.2, y = 1083.2 },
+            ["Warrior To Order Hall"] = { x = 4254.6, y = -841.9 },
 
         },
         [876] = {
@@ -318,6 +322,8 @@ APR.Portals.SwitchZones = {
         { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Mage To Dalaran", },
         { continent = 619,  nextContinent = 619,  nextZone = 619,  portalKey = "Remix Dalaran to Bazar", },
         { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Remix Bazar to Dalaran", },
+        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Warrior To Dalaran",       extraText = "TALK_TO" },
+        { continent = 619,  nextContinent = 619,  nextZone = 695,  portalKey = "Warrior To Order Hall",    extraText = "TALK_TO" },
 
         { continent = 875,  nextContinent = 875,  nextZone = 862,  portalKey = "Zuldazar",                 closestTaxiNode = "Xibala, Zuldazar",                   extraText = "TALK_TO" },
         { continent = 875,  nextContinent = 875,  nextZone = 863,  portalKey = "Nazmir",                   closestTaxiNode = "Fort Victory, Nazmir",               extraText = "TALK_TO" },
@@ -368,6 +374,8 @@ APR.Portals.SwitchZones = {
         { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Mage To Dalaran", },
         { continent = 619,  nextContinent = 619,  nextZone = 619,  portalKey = "Remix Dalaran to Bazar", },
         { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Remix Bazar to Dalaran", },
+        { continent = 619,  nextContinent = 619,  nextZone = 627,  portalKey = "Warrior To Dalaran",       extraText = "TALK_TO" },
+        { continent = 619,  nextContinent = 619,  nextZone = 695,  portalKey = "Warrior To Order Hall",    extraText = "TALK_TO" },
 
         { continent = 876,  nextContinent = 876,  nextZone = 896,  portalKey = "DrustvarSail",             closestTaxiNode = "Anyport, Drustvar",               extraText = "TALK_TO" },
         { continent = 876,  nextContinent = 876,  nextZone = 942,  portalKey = "StormsongValleySail",      closestTaxiNode = "Warfang Hold, Stormsong Valley",  extraText = "TALK_TO" },
