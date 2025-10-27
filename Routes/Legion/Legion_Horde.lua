@@ -1289,13 +1289,14 @@ if APR.Faction == "Horde" then
         {
             PickUp = { 38872 },
             Coord = { x = 1552.5, y = 3192.5 },
+            GossipOptionID = 44644,
             _index = 169,
         },
         {
-            DropQuest = 38873,
+            Waypoint = 38872,
             Coord = { x = 1554, y = 3191.5 },
             ExtraLineText = "TALK_DREAD_RIDER_CULLEN",
-            Gossip = 38872,
+            GossipOptionID = 44644,
             _index = 170,
         },
         {
