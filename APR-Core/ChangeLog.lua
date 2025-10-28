@@ -94,6 +94,7 @@ function APR.changelog:SetChangeLog()
         { "v4.16.6", "2025-09-28" },
         "#Guides",
         "- Fixed `Shipwrecked Sailors` quest in Aszuna for Horde",
+        "- Added missing storyline in Stormheim (Horde route) for the Sojourner achievement",
 
         { "v4.16.5", "2025-09-26" },
         "#Guides",
