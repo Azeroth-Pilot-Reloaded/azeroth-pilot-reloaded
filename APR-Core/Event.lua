@@ -913,16 +913,16 @@ function APR.event:HandleGossipLogic(step)
         end
         ------------------------------------
         -- FlightPath
-        if (step.UseFlightPath or step.GetFP) and not step.NoAutoFlightMap and not (step.GossipOptionID or step.GossipOptionIDs) then
+        if (step.UseFlightPath or step.GetFP) and not step.NoAutoFlightMap and not  step.GossipOptionIDs then
             PickGossipByIcon(132057)
         end
         -- BuyMerchant
-        if step.BuyMerchant and not (step.GossipOptionID or step.GossipOptionIDs) then
+        if step.BuyMerchant and not step.GossipOptionIDs then
             PickGossipByIcon(132060)
         end
         ------------------------------------
         -- GOSSIP
-        if step.Gossip or step.GossipOptionID or step.GossipOptionIDs then
+        if step.Gossip or step.GossipOptionIDs then
             if (step.Gossip == 28202) then -- GOSSIP HARDCODED
                 -- //TODO Remove this when all hardcoded gossip are removed
                 -- This is a hardcoded gossip for the quest https://www.wowhead.com/quest=28205/a-perfect-costume
@@ -930,9 +930,7 @@ function APR.event:HandleGossipLogic(step)
             else
                 local info = C_GossipInfo.GetOptions()
                 if next(info) then
-                    if step.GossipOptionID then
-                        C_GossipInfo.SelectOption(step.GossipOptionID)
-                    elseif step.GossipOptionIDs then
+                   if step.GossipOptionIDs then
                         for _, g in pairs(step.GossipOptionIDs) do
                             C_GossipInfo.SelectOption(g)
                         end

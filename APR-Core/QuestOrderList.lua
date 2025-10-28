@@ -633,7 +633,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
             elseif step.Grind then
                 local color = UnitLevel("player") <= step.Grind and "green" or "gray"
                 AddStepFrame(stepIndex, L["GRIND"] .. " " .. step.Grind, color)
-            elseif (step.GossipOptionIDs or step.GossipOptionID) and step.NPCIDs then
+            elseif step.GossipOptionIDs and step.NPCIDs then
                 AddStepFrame(stepIndex, L["TALK_NPC"], "gray")
             elseif step.RouteCompleted then
                 AddStepFrame(stepIndex, L["ROUTE_COMPLETED"], "gray")

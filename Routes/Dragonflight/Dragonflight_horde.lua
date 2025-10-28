@@ -1416,7 +1416,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [66040] = { 2 } },
             Coord = { x = -2964, y = -1356.7 },
-            GossipOptionID = 55119,
+            GossipOptionIDs = { 55119 },
             Range = 2,
             Gossip = 1,
             _index = 157,

@@ -51,7 +51,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [34398] = { 2 } },
             Coord = { x = -3205, y = -11810 },
-            GossipOptionID = 43231,
+            GossipOptionIDs = { 43231 },
             Range = 0.75,
             RaidIcon = 78423,
             Zone = 17,

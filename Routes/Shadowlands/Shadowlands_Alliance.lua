@@ -788,7 +788,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [60148] = { 1 } },
             Coord = { x = 1383.8, y = -1920.9 },
             ExtraLineText = "NPC_DROP_Q",
-            GossipOptionID = 52684,
+            GossipOptionIDs = { 52684 },
             Range = 0.69,
             _index = 110,
         },
@@ -813,14 +813,14 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60149] = { 1 } },
             Coord = { x = 1376.8, y = -1918.1 },
-            GossipOptionID = 53751,
+            GossipOptionIDs = { 53751 },
             Range = 86.28,
             _index = 114,
         },
         {
             Qpart = { [60149] = { 2 } },
             Coord = { x = 1358.5, y = -1835.1 },
-            GossipOptionID = 52950,
+            GossipOptionIDs = { 52950 },
             Range = 0.69,
             RaidIcon = 167486,
             _index = 115,
@@ -844,7 +844,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60149] = { 4 } },
             Coord = { x = 1356.5, y = -1836.3 },
-            GossipOptionID = 52951,
+            GossipOptionIDs = { 52951 },
             Range = 0.61,
             _index = 118,
         },
@@ -929,7 +929,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60152] = { 4 } },
             Coord = { x = 1214.3, y = -1730 },
-            GossipOptionID = 53876,
+            GossipOptionIDs = { 53876 },
             Range = 0.75,
             RaidIcon = 174564,
             _index = 132,
@@ -958,7 +958,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60152] = { 2 } },
             Coord = { x = 1064.8, y = -1827.3 },
-            GossipOptionID = 51612,
+            GossipOptionIDs = { 51612 },
             Range = 0.69,
             RaidIcon = 164173,
             _index = 136,
@@ -976,7 +976,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60154] = { 1 } },
             Coord = { x = 1376.5, y = -1917.5 },
-            GossipOptionID = 53752,
+            GossipOptionIDs = { 53752 },
             Range = 0.69,
             _index = 139,
         },
@@ -1152,7 +1152,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60735] = { 1 } },
             Coord = { x = -4226.9, y = -4342.8 },
-            GossipOptionID = 54365,
+            GossipOptionIDs = { 54365 },
             Range = 0.69,
             _index = 168,
         },
@@ -1908,7 +1908,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [57447] = { 1 } },
             Coord = { x = -5729.7, y = -4023.2 },
-            GossipOptionID = 51045,
+            GossipOptionIDs = { 51045 },
             Range = 0.61,
             _index = 292,
         },
@@ -2050,7 +2050,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [58979] = { 1 } },
             Coord = { x = -5237.7, y = -3323 },
-            GossipOptionID = 53113,
+            GossipOptionIDs = { 53113 },
             Range = 0.61,
             RaidIcon = 167034,
             _index = 316,
@@ -2142,7 +2142,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [58843] = { 2 } },
             Coord = { x = -5283.7, y = -3911.2 },
-            GossipOptionID = 53114,
+            GossipOptionIDs = { 53114 },
             Range = 0.61,
             RaidIcon = 167498,
             _index = 331,
@@ -2270,7 +2270,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [59197] = { 2 } },
             Coord = { x = -4965.7, y = -2949.5 },
             ExtraLineText = "TALK_STEWARD",
-            GossipOptionID = 53063,
+            GossipOptionIDs = { 53063 },
             Range = 100.69,
             RaidIcon = 166663,
             _index = 353,
@@ -2324,7 +2324,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [59199] = { 1 } },
             Coord = { x = -5854.4, y = -1597.6 },
-            GossipOptionID = 49539,
+            GossipOptionIDs = { 49539 },
             Range = 0.75,
             _index = 362,
         },
@@ -2400,7 +2400,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60005] = { 1 } },
             Coord = { x = -5813.4, y = -1638 },
-            GossipOptionID = 54342,
+            GossipOptionIDs = { 54342 },
             Range = 0.75,
             _index = 375,
         },
@@ -3438,7 +3438,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [59172] = { 2 } },
             Coord = { x = -3636.5, y = 2888.1 },
-            GossipOptionID = 51629,
+            GossipOptionIDs = { 51629 },
             Range = 0.75,
             _index = 547,
         },
@@ -4497,7 +4497,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60763] = { 3 } },
             Coord = { x = -555.5, y = -5232.2 },
-            GossipOptionID = 51498,
+            GossipOptionIDs = { 51498 },
             Range = 0.61,
             RaidIcon = 168341,
             _index = 723,
@@ -4553,7 +4553,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60778] = { 3 } },
             Coord = { x = -513.3, y = -5339 },
-            GossipOptionID = 52723,
+            GossipOptionIDs = { 52723 },
             Range = 0.69,
             RaidIcon = 170324,
             _index = 732,
@@ -4632,7 +4632,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60859] = { 5 } },
             Coord = { x = -360.4, y = -5688.9 },
-            GossipOptionID = 52760,
+            GossipOptionIDs = { 52760 },
             Range = 0.75,
             RaidIcon = 168595,
             _index = 745,
@@ -4718,7 +4718,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [57787] = { 9 } },
             Coord = { x = -220.7, y = -6084.9 },
-            GossipOptionID = 53345,
+            GossipOptionIDs = { 53345 },
             Range = 0.69,
             RaidIcon = 169031,
             _index = 758,
@@ -4959,7 +4959,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60600] = { 1 } },
             Coord = { x = -221.2, y = -6084.7 },
-            GossipOptionID = 53344,
+            GossipOptionIDs = { 53344 },
             Range = 0.61,
             RaidIcon = 169031,
             _index = 795,
@@ -5529,7 +5529,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [60905] = { 2 } },
             Coord = { x = 31.2, y = -6880.3 },
-            GossipOptionID = 51488,
+            GossipOptionIDs = { 51488 },
             Range = 0.69,
             RaidIcon = 160962,
             _index = 887,
@@ -5819,7 +5819,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [58593] = { 1 } },
             Coord = { x = 31.8, y = -6879.4 },
-            GossipOptionID = 51487,
+            GossipOptionIDs = { 51487 },
             Range = 0.69,
             RaidIcon = 160962,
             _index = 935,
@@ -6107,7 +6107,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [58723] = { 3 } },
             Coord = { x = 1027.5, y = -6868.9 },
-            GossipOptionID = 52271,
+            GossipOptionIDs = { 52271 },
             Range = 0.69,
             RaidIcon = 162968,
             _index = 980,
@@ -6902,7 +6902,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [57159] = { 2 } },
             Coord = { x = 6869, y = -1644.2 },
-            GossipOptionID = 52649,
+            GossipOptionIDs = { 52649 },
             Range = 0.69,
             InstanceQuest = true,
             _index = 1115,

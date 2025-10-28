@@ -746,7 +746,7 @@ function APR:UpdateStep()
             if questToHighlight then
                 APR:TrackQuest(questToHighlight)
             end
-        elseif (step.GossipOptionIDs or step.GossipOptionID) and step.NPCIDs then
+        elseif step.GossipOptionIDs and step.NPCIDs then
             APR.currentStep:AddExtraLineText("TALK_NPC-" .. next(step.NPCIDs), L["TALK_NPC"])
         end
 

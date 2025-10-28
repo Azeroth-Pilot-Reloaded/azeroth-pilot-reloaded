@@ -13,7 +13,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [66577] = { 1 } },
             Coord = { x = 336.3, y = -8309.2 },
-            GossipOptionID = 55659,
+            GossipOptionIDs = { 55659 },
             _index = 3,
         },
         {
@@ -337,7 +337,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [69911] = { 1 } },
             Coord = { x = -1435.5, y = 3478.8 },
-            GossipOptionID = 55674,
+            GossipOptionIDs = { 55674 },
             Range = 5,
             RaidIcon = 193393,
             _index = 36,
@@ -384,7 +384,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [69912] = { 1 } },
             Coord = { x = -1456, y = 3582.1 },
             ExtraLineText = "SPEAK_SENDRAX_SEND_SIGNAL_FLARES",
-            GossipOptionID = 55637,
+            GossipOptionIDs = { 55637 },
             Range = 1,
             _index = 43,
         },

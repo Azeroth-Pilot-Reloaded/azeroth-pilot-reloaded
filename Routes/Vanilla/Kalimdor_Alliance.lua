@@ -13074,7 +13074,7 @@ if APR.Faction == "Alliance" then
         {
             SetHS = 28731,
             Coord = { x = 981.7, y = 9802.6 },
-            GossipOptionID = 33472,
+            GossipOptionIDs = { 33472 },
             Gossip = 2,
             _index = 10,
         },

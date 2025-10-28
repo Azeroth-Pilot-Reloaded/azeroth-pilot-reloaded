@@ -669,7 +669,7 @@ if APR.Faction == "Horde" then
         {
             SetHS = 49615,
             Coord = { x = 805.7, y = -1125.5 },
-            GossipOptionID = 47953,
+            GossipOptionIDs = { 47953 },
             Gossip = 1,
             _index = 23,
         },
@@ -3501,7 +3501,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [47738] = { 2 } },
             Coord = { x = -808, y = 633 },
-            GossipOptionID = 48358,
+            GossipOptionIDs = { 48358 },
             Range = 0.69,
             Gossip = 1,
             _index = 484,
@@ -3689,7 +3689,7 @@ if APR.Faction == "Horde" then
             Waypoint = 47741,
             Coord = { x = -727.2, y = -27.1 },
             ExtraLineText = "TALK_KING_RASTAKHAN",
-            GossipOptionID = 47761,
+            GossipOptionIDs = { 47761 },
             Range = 0.5,
             Gossip = 1,
             _index = 515,
@@ -3909,7 +3909,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [49426] = { 2 } },
             Coord = { x = 2149.1, y = -850.5 },
-            GossipOptionID = 48457,
+            GossipOptionIDs = { 48457 },
             Range = 0.69,
             Gossip = 1,
             _index = 550,
@@ -3917,7 +3917,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [49426] = { 3 } },
             Coord = { x = 2158.8, y = -848.7 },
-            GossipOptionID = 48876,
+            GossipOptionIDs = { 48876 },
             Range = 6.69,
             Gossip = 101,
             _index = 551,
@@ -3998,7 +3998,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [48535] = { 1 } },
             Coord = { x = 751.9, y = -1034.9 },
-            GossipOptionID = 48274,
+            GossipOptionIDs = { 48274 },
             Range = 5.69,
             Gossip = 2,
             _index = 565,
