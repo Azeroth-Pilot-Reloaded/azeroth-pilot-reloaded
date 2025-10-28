@@ -91,6 +91,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.17.0", "2025-09-28" },
+        "#Features",
+        "- Added new `Talk to the npc` step option to handle specific gossip steps",
+
         { "v4.16.6", "2025-09-28" },
         "#Guides",
         "- Fixed `Shipwrecked Sailors` quest in Aszuna for Horde",
@@ -258,7 +262,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6", "2025-04-06" },
+        { "v4.9.6",  "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 

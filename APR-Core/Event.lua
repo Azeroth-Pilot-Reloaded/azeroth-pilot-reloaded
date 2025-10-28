@@ -52,7 +52,7 @@ local events = {
 ---------------------------------------------------------------------------------------
 
 local autoAccept, autoAcceptRoute, step = nil, nil, nil
-local gossipCounter = 0
+
 local pendingQuestUpdateTimer
 
 -- track instance status to avoid repeatedly toggling the addon
@@ -529,7 +529,7 @@ end
 
 function APR.event.functions.gossip(event, ...)
     if event == "GOSSIP_CLOSED" then
-        gossipCounter = 0
+        APR.gossip.counter = 0
     end
 
     if event == "GOSSIP_SHOW" then
@@ -541,7 +541,7 @@ function APR.event.functions.gossip(event, ...)
         -- Deny NPC
         APR.event:TalkToDenyNpcLogic(step)
 
-        APR.event:HandleGossipLogic(step)
+        APR.gossip:HandleGossip(step)
 
         --PICKUP / HANDIN
         local availableQuests = C_GossipInfo.GetAvailableQuests()
@@ -586,7 +586,7 @@ function APR.event.functions.greeting(event, ...)
 
     -- Handle gossip logic if gossip is available for this greeting frame
     if C_GossipInfo and C_GossipInfo.GetOptions and next(C_GossipInfo.GetOptions()) then
-        gossipCounter = APR.event:HandleGossipLogic(step)
+        APR.gossip:HandleGossip(step)
     end
 
     -- Done (Handin)
@@ -840,10 +840,10 @@ function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
             return
         end
         if (APR:Contains(APR.hearthStoneSpellID, spellID) and step.UseHS) or
-        (step.SpellTrigger and spellID == step.SpellTrigger) or
-        (step.UseSpell.spellID and spellID == step.UseSpell.spellID) or
-        (step.UseItem.itemSpellID and spellID == step.UseSpell.itemSpellID)
-         then
+            (step.SpellTrigger and spellID == step.SpellTrigger) or
+            (step.UseSpell.spellID and spellID == step.UseSpell.spellID) or
+            (step.UseItem.itemSpellID and spellID == step.UseSpell.itemSpellID)
+        then
             APR:UpdateNextStep()
         end
     end
@@ -894,70 +894,6 @@ end
 ---------------------------------- Events utils ---------------------------------------
 ---------------------------------------------------------------------------------------
 
-function APR.event:HandleGossipLogic(step)
-    if step and APR.settings.profile.autoGossip then
-        local function PickGossipByIcon(iconId)
-            local gossipOption = C_GossipInfo.GetOptions()
-            if next(gossipOption) then
-                for _, gossip in pairs(gossipOption) do
-                    if gossip.icon == iconId then
-                        C_GossipInfo.SelectOption(gossip.gossipOptionID)
-                    end
-                end
-            end
-        end
-        ------------------------------------
-        -- SetHS
-        if step.SetHS then
-            PickGossipByIcon(136458)
-        end
-        ------------------------------------
-        -- FlightPath
-        if (step.UseFlightPath or step.GetFP) and not step.NoAutoFlightMap and not  step.GossipOptionIDs then
-            PickGossipByIcon(132057)
-        end
-        -- BuyMerchant
-        if step.BuyMerchant and not step.GossipOptionIDs then
-            PickGossipByIcon(132060)
-        end
-        ------------------------------------
-        -- GOSSIP
-        if step.Gossip or step.GossipOptionIDs then
-            if (step.Gossip == 28202) then -- GOSSIP HARDCODED
-                -- //TODO Remove this when all hardcoded gossip are removed
-                -- This is a hardcoded gossip for the quest https://www.wowhead.com/quest=28205/a-perfect-costume
-                gossipCounter = APR:HandleHardcodedGossip(step, gossipCounter)
-            else
-                local info = C_GossipInfo.GetOptions()
-                if next(info) then
-                   if step.GossipOptionIDs then
-                        for _, g in pairs(step.GossipOptionIDs) do
-                            C_GossipInfo.SelectOption(g)
-                        end
-                    else
-                        for _, v in pairs(info) do
-                            if (v.orderIndex + 1 == step.Gossip) then
-                                C_GossipInfo.SelectOption(v.gossipOptionID)
-                            end
-                        end
-                    end
-                end
-
-                --CHROMIE
-                if (step.ChromiePick) then
-                    local targetID = APR:GetTargetID()
-                    if (targetID == 167032) then
-                        local extraText = L["SWITCH_TO_CHROMIE"] ..
-                            " " .. C_ChromieTime.GetChromieTimeExpansionOption(step.ChromiePick).name
-                        APR.currentStep:AddExtraLineText('ChromiePick', extraText)
-                        C_Timer.After(1,
-                            function() C_ChromieTime.SelectChromieTimeOption(step.ChromiePick) end)
-                    end
-                end
-            end
-        end
-    end
-end
 
 function APR.event:TalkToDenyNpcLogic(step)
     APR:CheckDenyNPC(step)

@@ -6,7 +6,7 @@
 ## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
 ## Version: @project-version@
 
-## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted
+## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted, APRGossipValidated
 
 ## Category-enUS: Quests
 ## Category-deDE: Quests
@@ -65,6 +65,7 @@ APR-Core/Arrow.lua
 APR-Core/CurrentStep.lua
 APR-Core/QuestionPopUp.lua
 APR-Core/QuestOrderList.lua
+APR-Core/Gossip.lua
 APR-Core/Party.lua
 APR-Core/Map.lua
 APR-Core/AFK.lua

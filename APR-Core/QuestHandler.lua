@@ -746,8 +746,16 @@ function APR:UpdateStep()
             if questToHighlight then
                 APR:TrackQuest(questToHighlight)
             end
-        elseif step.GossipOptionIDs and step.NPCIDs then
-            APR.currentStep:AddExtraLineText("TALK_NPC-" .. next(step.NPCIDs), L["TALK_NPC"])
+        elseif step.GossipOptionIDs and not APR:HasAnyMainStepOption(step) then
+            local alreadyTalked = APR:hasEveryGossipsCompleted(step.GossipOptionIDs)
+
+            if alreadyTalked then
+                APR:UpdateNextStep()
+            end
+
+            if APR.IsInRouteZone then
+                APR.currentStep:AddQuestSteps("GOSSIP_ONLY", L["TALK_NPC"], next(step.GossipOptionIDs))
+            end
         end
 
         if step.Scenario then
