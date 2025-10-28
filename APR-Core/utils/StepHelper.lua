@@ -10,9 +10,11 @@ APR.mainStepOptions = {
     "RouteCompleted"
 }
 
+-- BuyMerchant need to be first
 APR.secondaryStepOptions = {
     "BuyMerchant", "GossipOptionIDs"
 }
+
 
 function APR:GetStepString(step)
     local stepMappings = {
@@ -85,6 +87,16 @@ function APR:CheckWaypointText()
     end
 
     return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
+end
+
+function APR:HasAnyMainStepOption(step)
+    if not step then return false end
+    for _, key in ipairs(APR.mainStepOptions) do
+        if step[key] ~= nil then
+            return true
+        end
+    end
+    return false
 end
 
 function APR:IsOneOfQuestsCompleted(questIds)
@@ -550,46 +562,6 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
     end
 end
 
-function APR:HandleHardcodedGossip(step, gossipCounter)
-    local count = gossipCounter + 1
-    if (count == 1) then
-        C_GossipInfo.SelectOptionByIndex(1)
-    elseif (count == 2) then
-        if (APR.Race == "Gnome") then
-            C_GossipInfo.SelectOptionByIndex(1)
-        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-            C_GossipInfo.SelectOptionByIndex(2)
-        elseif (APR.Race == "NightElf") then
-            C_GossipInfo.SelectOptionByIndex(3)
-        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-            C_GossipInfo.SelectOptionByIndex(4)
-        end
-    elseif (count == 3) then
-        if (APR.Race == "Gnome") then
-            C_GossipInfo.SelectOptionByIndex(3)
-        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-            C_GossipInfo.SelectOptionByIndex(4)
-        elseif (APR.Race == "NightElf") then
-            C_GossipInfo.SelectOptionByIndex(2)
-        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-            C_GossipInfo.SelectOptionByIndex(1)
-        end
-    elseif (count == 4) then
-        if (APR.Race == "Gnome") then
-            C_GossipInfo.SelectOptionByIndex(4)
-        elseif (APR.Race == "Human" or APR.Race == "Dwarf") then
-            C_GossipInfo.SelectOptionByIndex(2)
-        elseif (APR.Race == "NightElf") then
-            C_GossipInfo.SelectOptionByIndex(1)
-        elseif (APR.Race == "Draenei" or APR.Race == "Worgen") then
-            C_GossipInfo.SelectOptionByIndex(3)
-        end
-    elseif (count == 5) then
-        APR:UpdateNextStep()
-    end
-    return count
-end
-
 function APR:LeaveQuest(questIds)
     C_QuestLog.SetSelectedQuest(questIds)
     C_QuestLog.AbandonQuest()
@@ -609,4 +581,17 @@ function APR:GetQuestAndStepIds()
     elseif step.Done then
         return step.Done, "Done"
     end
+end
+
+function APR:hasEveryGossipsCompleted(tbl)
+    local isCompleted = true
+    local list = APRGossipValidated[APR.PlayerID]
+
+    for _, id in ipairs(tbl) do
+        if not list[id] then
+            isCompleted = false
+            break
+        end
+    end
+    return isCompleted
 end

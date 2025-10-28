@@ -4000,7 +4000,6 @@ if (APR.Faction == "Alliance") then
             Qpart = { [28202] = { 1 } },
             Coord = { x = -1900.1, y = -7955.9 },
             Range = 0.75,
-            Gossip = 28202,
             _index = 27,
         },
         {

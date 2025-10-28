@@ -95,6 +95,9 @@ function APR:OnInitialize()
     APRScenarioCompleted[APR.PlayerID] = APRScenarioCompleted[APR.PlayerID] or {}
     APRItemLooted[APR.PlayerID] = APRItemLooted[APR.PlayerID] or {}
 
+    APRGossipValidated = APRGossipValidated or {}
+    APRGossipValidated[APR.PlayerID] = APRGossipValidated[APR.PlayerID] or {}
+
     -- Init current step frame
     APR.currentStep:CurrentStepFrameOnInit()
 
