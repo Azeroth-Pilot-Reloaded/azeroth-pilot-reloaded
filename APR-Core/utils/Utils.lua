@@ -1,6 +1,5 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-
 --- Check if a spell is known by the player (supports both classic and retail APIs).
 function APR:IsSpellKnown(spellID)
     local IsSpellKnown = (C_SpellBook and C_SpellBook.IsSpellKnown) or _G.IsSpellKnown
@@ -329,32 +328,6 @@ function APR:DoEmote(step)
     end
 end
 
-function APR:CheckWaypointText()
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    local waypoints = {
-        FlightPath = L["GET_FLIGHTPATH"],
-        UseFlightPath = L["USE_FLIGHTPATH"],
-        Boat = L["USE_BOAT"],
-        PickUp = L["ACCEPT_Q"],
-        Done = L["TURN_IN_Q"],
-        Qpart = L["COMPLETE_Q"],
-        SetHS = L["SET_HEARTHSTONE"],
-        QpartPart = L["COMPLETE_Q"]
-    }
-
-    for i = CurStep, #APR.RouteQuestStepList[APR.ActiveRoute] do
-        local step = APR.RouteQuestStepList[APR.ActiveRoute][i]
-        if step then
-            for waypoint, _ in pairs(waypoints) do
-                if step[waypoint] then
-                    return "[" .. L["WAYPOINT"] .. "] - " .. waypoints[waypoint]
-                end
-            end
-        end
-    end
-
-    return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
-end
 
 function APR:SkipStepCondition(step)
     -- Skip steps if not Faction or Race or Class or Achievement

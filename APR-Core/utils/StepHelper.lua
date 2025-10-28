@@ -3,24 +3,47 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
 
+APR.mainStepOptions = {
+    "ExitTutorial", "PickUp", "DropQuest", "Qpart", "QpartPart", "Treasure", "Group", "Done",
+    "Scenario", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS", "UseDalaHS", "UseGarrisonHS",
+    "UseItem", "UseSpell", "GetFP", "UseFlightPath", "LearnProfession", "LootItem", "WarMode", "Grind",
+    "RouteCompleted"
+}
+
+APR.secondaryStepOptions = {
+    "BuyMerchant", "GossipOptionIDs"
+}
+
 function APR:GetStepString(step)
     local stepMappings = {
-        ExitTutorial = L["SKIP_TUTORIAL"],
-        PickUp = L["PICK_UP_Q"],
-        DropQuest = L["Q_DROP"],
-        Qpart = L["Q_PART"],
-        Treasure = L["GET_TREASURE"],
-        Group = L["GROUP_Q"],
+        BuyMerchant = L["BUY"],
         Done = L["TURN_IN_Q"],
-        Waypoint = L["RUN_WAYPOINT"],
-        SetHS = L["SET_HEARTHSTONE"],
-        UseHS = L["USE_HEARTHSTONE"],
-        UseDalaHS = L["USE_DALARAN_HEARTHSTONE"],
-        UseGarrisonHS = L["USE_GARRISON_HEARTHSTONE"],
+        DoScenario = L["SCENARIO"],
+        DropQuest = L["Q_DROP"],
+        EnterScenario = L["SCENARIO"],
+        ExitTutorial = L["SKIP_TUTORIAL"],
         GetFP = L["GET_FLIGHTPATH"],
+        GossipOptionIDs = L["TALK_NPC"],
+        Grind = L["GRIND"],
+        Group = L["GROUP_Q"],
+        LearnProfession = L["LEARN_PROFESSION"],
+        LeaveScenario = L["SCENARIO"],
+        LootItem = L["LOOT_ITEM"],
+        PickUp = L["PICK_UP_Q"],
+        Qpart = L["Q_PART"],
+        QpartPart = L["Q_PART"],
+        RouteCompleted = L["ROUTE_COMPLETED"],
+        Scenario = L["SCENARIO"],
+        SetHS = L["SET_HEARTHSTONE"],
+        Treasure = L["GET_TREASURE"],
+        UseDalaHS = L["USE_DALARAN_HEARTHSTONE"],
         UseFlightPath = L["USE_FLIGHTPATH"],
+        UseGarrisonHS = L["USE_GARRISON_HEARTHSTONE"],
+        UseHS = L["USE_HEARTHSTONE"],
+        UseItem = L["USE_ITEM"],
+        UseSpell = L["USE_SPELL"],
         WarMode = L["TURN_ON_WARMODE"],
-        RouteCompleted = L["ROUTE_COMPLETED"]
+        Waypoint = L["RUN_WAYPOINT"],
     }
 
     for key, _ in pairs(step) do
@@ -30,6 +53,38 @@ function APR:GetStepString(step)
     end
 
     return ''
+end
+
+function APR:CheckWaypointText()
+    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
+
+
+    local function IsInList(value, list)
+        for _, v in ipairs(list) do
+            if v == value then
+                return true
+            end
+        end
+        return false
+    end
+
+    for i = CurStep, #APR.RouteQuestStepList[APR.ActiveRoute] do
+        local step = APR.RouteQuestStepList[APR.ActiveRoute][i]
+
+        if step then
+            local stepText, stepKey = APR:GetStepString(step)
+
+            if stepKey then
+                if IsInList(stepKey, APR.mainStepOptions) then
+                    return "[" .. L["WAYPOINT"] .. "] - " .. stepText
+                elseif not step["Waypoint"] and IsInList(stepKey, APR.secondaryStepOptions) then
+                    return "[" .. L["WAYPOINT"] .. "] - " .. stepText
+                end
+            end
+        end
+    end
+
+    return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
 end
 
 function APR:IsOneOfQuestsCompleted(questIds)
