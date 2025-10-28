@@ -116,7 +116,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
     {
         Qpart = { [59755] = { 1 } },
         Coord = { x = 7717.1, y = 4896.8 },
-        GossipOptionID = 53556,
+        GossipOptionIDs = { 53556 },
         Range = 166.33,
         ExtraActionB = 1,
         _index = 21,
@@ -558,7 +558,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
         Qpart = { [60148] = { 1 } },
         Coord = { x = 1383.8, y = -1920.9 },
         ExtraLineText = "NPC_DROP_Q",
-        GossipOptionID = 52684,
+        GossipOptionIDs = { 52684 },
         Range = 0.69,
         _index = 8,
     },
@@ -583,14 +583,14 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
     {
         Qpart = { [60149] = { 1 } },
         Coord = { x = 1376.8, y = -1918.1 },
-        GossipOptionID = 53751,
+        GossipOptionIDs = { 53751 },
         Range = 86.28,
         _index = 12,
     },
     {
         Qpart = { [60149] = { 2 } },
         Coord = { x = 1358.5, y = -1835.1 },
-        GossipOptionID = 52950,
+        GossipOptionIDs = { 52950 },
         Range = 0.69,
         RaidIcon = 167486,
         _index = 13,
@@ -614,7 +614,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
     {
         Qpart = { [60149] = { 4 } },
         Coord = { x = 1356.5, y = -1836.3 },
-        GossipOptionID = 52951,
+        GossipOptionIDs = { 52951 },
         Range = 0.61,
         _index = 16,
     },
@@ -699,7 +699,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
     {
         Qpart = { [60152] = { 4 } },
         Coord = { x = 1214.3, y = -1730 },
-        GossipOptionID = 53876,
+        GossipOptionIDs = { 53876 },
         Range = 0.75,
         RaidIcon = 174564,
         _index = 30,
@@ -728,7 +728,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
     {
         Qpart = { [60152] = { 2 } },
         Coord = { x = 1064.8, y = -1827.3 },
-        GossipOptionID = 51612,
+        GossipOptionIDs = { 51612 },
         Range = 0.69,
         RaidIcon = 164173,
         _index = 34,
@@ -746,7 +746,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
     {
         Qpart = { [60154] = { 1 } },
         Coord = { x = 1376.5, y = -1917.5 },
-        GossipOptionID = 53752,
+        GossipOptionIDs = { 53752 },
         Range = 0.69,
         _index = 37,
     },
@@ -929,7 +929,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     {
         Qpart = { [60735] = { 1 } },
         Coord = { x = -4226.9, y = -4342.8 },
-        GossipOptionID = 54365,
+        GossipOptionIDs = { 54365 },
         Range = 0.69,
         _index = 18,
     },
@@ -1583,7 +1583,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     {
         Qpart = { [57717] = { 1 } },
         Coord = { x = -5432.2, y = -4331.2 },
-        GossipOptionID = 49850,
+        GossipOptionIDs = { 49850 },
         Range = 0.61,
         RaidIcon = 159906,
         _index = 126,
@@ -1591,14 +1591,14 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     {
         Qpart = { [57717] = { 2 } },
         Coord = { x = -5424, y = -4324.2 },
-        GossipOptionID = 49546,
+        GossipOptionIDs = { 49546 },
         Range = 0.69,
         _index = 127,
     },
     {
         Qpart = { [57717] = { 3 } },
         Coord = { x = -5432.9, y = -4331.7 },
-        GossipOptionID = 49851,
+        GossipOptionIDs = { 49851 },
         Range = 0.69,
         _index = 128,
     },
@@ -1741,7 +1741,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     {
         Qpart = { [57447] = { 1 } },
         Coord = { x = -5729.7, y = -4023.2 },
-        GossipOptionID = 51045,
+        GossipOptionIDs = { 51045 },
         Range = 0.61,
         _index = 151,
     },
@@ -1883,7 +1883,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     {
         Qpart = { [58979] = { 1 } },
         Coord = { x = -5237.7, y = -3323 },
-        GossipOptionID = 53113,
+        GossipOptionIDs = { 53113 },
         Range = 0.61,
         RaidIcon = 167034,
         _index = 175,
@@ -1975,7 +1975,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     {
         Qpart = { [58843] = { 2 } },
         Coord = { x = -5283.7, y = -3911.2 },
-        GossipOptionID = 53114,
+        GossipOptionIDs = { 53114 },
         Range = 0.61,
         RaidIcon = 167498,
         _index = 190,
@@ -2201,7 +2201,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         Qpart = { [59197] = { 2 } },
         Coord = { x = -4965.7, y = -2949.5 },
         ExtraLineText = "TALK_STEWARD",
-        GossipOptionID = 53063,
+        GossipOptionIDs = { 53063 },
         Range = 100.69,
         RaidIcon = 166663,
         _index = 229,
@@ -2255,7 +2255,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     {
         Qpart = { [59199] = { 1 } },
         Coord = { x = -5854.4, y = -1597.6 },
-        GossipOptionID = 49539,
+        GossipOptionIDs = { 49539 },
         Range = 0.75,
         _index = 238,
     },
@@ -2331,7 +2331,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     {
         Qpart = { [60005] = { 1 } },
         Coord = { x = -5813.4, y = -1638 },
-        GossipOptionID = 54342,
+        GossipOptionIDs = { 54342 },
         Range = 0.75,
         _index = 251,
     },
@@ -3388,7 +3388,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
     {
         Qpart = { [59172] = { 2 } },
         Coord = { x = -3636.5, y = 2888.1 },
-        GossipOptionID = 51629,
+        GossipOptionIDs = { 51629 },
         Range = 0.75,
         _index = 130,
     },
@@ -4589,7 +4589,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         Qpart = { [60763] = { 3 } },
         Coord = { x = -555.5, y = -5232.2 },
-        GossipOptionID = 51498,
+        GossipOptionIDs = { 51498 },
         Range = 0.61,
         RaidIcon = 168341,
         _index = 5,
@@ -4645,7 +4645,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         Qpart = { [60778] = { 3 } },
         Coord = { x = -513.3, y = -5339 },
-        GossipOptionID = 52723,
+        GossipOptionIDs = { 52723 },
         Range = 0.69,
         RaidIcon = 170324,
         _index = 14,
@@ -4724,7 +4724,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         Qpart = { [60859] = { 5 } },
         Coord = { x = -360.4, y = -5688.9 },
-        GossipOptionID = 52760,
+        GossipOptionIDs = { 52760 },
         Range = 0.75,
         RaidIcon = 168595,
         _index = 27,
@@ -4810,7 +4810,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         Qpart = { [57787] = { 9 } },
         Coord = { x = -220.7, y = -6084.9 },
-        GossipOptionID = 53345,
+        GossipOptionIDs = { 53345 },
         Range = 0.69,
         RaidIcon = 169031,
         _index = 40,
@@ -5051,7 +5051,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         Qpart = { [60600] = { 1 } },
         Coord = { x = -221.2, y = -6084.7 },
-        GossipOptionID = 53344,
+        GossipOptionIDs = { 53344 },
         Range = 0.61,
         RaidIcon = 169031,
         _index = 77,
@@ -6135,7 +6135,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 102, y = -5517.5 },
         Fillers = { [57866] = { 1 }, [57867] = { 1 }, [57869] = { 1 } },
         ExtraLineText = "NEDD_BUFF_DISARM_TRAP",
-        GossipOptionID = 49621,
+        GossipOptionIDs = { 49621 },
         Range = 0.69,
         Buffs = { { spellId = 311103, tooltipMessage = "FRESHLEAF_BUFF" }, { spellId = 311107, tooltipMessage = "GOSSAMER_THREAD_BUFF" }, { spellId = 311058, tooltipMessage = "SHUMMERDUST_BUFF" } },
         RaidIcon = 159465,
@@ -6463,7 +6463,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         Qpart = { [60905] = { 2 } },
         Coord = { x = 31.2, y = -6880.3 },
-        GossipOptionID = 51488,
+        GossipOptionIDs = { 51488 },
         Range = 0.69,
         RaidIcon = 160962,
         _index = 296,
@@ -6753,7 +6753,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         Qpart = { [58593] = { 1 } },
         Coord = { x = 31.8, y = -6879.4 },
-        GossipOptionID = 51487,
+        GossipOptionIDs = { 51487 },
         Range = 0.69,
         RaidIcon = 160962,
         _index = 344,
@@ -7041,7 +7041,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         Qpart = { [58723] = { 3 } },
         Coord = { x = 1027.5, y = -6868.9 },
-        GossipOptionID = 52271,
+        GossipOptionIDs = { 52271 },
         Range = 0.69,
         RaidIcon = 162968,
         _index = 389,
@@ -7384,7 +7384,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     {
         Qpart = { [59710] = { 2 } },
         Coord = { x = 6068.8, y = -2846.7 },
-        GossipOptionID = 54243,
+        GossipOptionIDs = { 54243 },
         Range = 0.61,
         _index = 47,
     },
@@ -7437,7 +7437,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     {
         Qpart = { [59846] = { 1 } },
         Coord = { x = 6026.7, y = -2915 },
-        GossipOptionID = 52005,
+        GossipOptionIDs = { 52005 },
         Range = 0.69,
         RaidIcon = 166541,
         _index = 56,
@@ -7445,7 +7445,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     {
         Qpart = { [59846] = { 3 } },
         Coord = { x = 5965.2, y = -2895.2 },
-        GossipOptionID = 54248,
+        GossipOptionIDs = { 54248 },
         Range = 0.69,
         RaidIcon = 166542,
         _index = 57,
@@ -8216,7 +8216,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     {
         Qpart = { [57159] = { 2 } },
         Coord = { x = 6869, y = -1644.2 },
-        GossipOptionID = 52649,
+        GossipOptionIDs = { 52649 },
         Range = 0.69,
         InstanceQuest = true,
         _index = 187,

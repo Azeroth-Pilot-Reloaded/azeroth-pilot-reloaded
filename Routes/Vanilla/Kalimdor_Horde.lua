@@ -2483,7 +2483,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [24754] = { 1 } },
             Coord = { x = -5529.9, y = -1157.9 },
-            GossipOptionID = 37137,
+            GossipOptionIDs = { 37137 },
             Range = 0.69,
             RaidIcon = 39062,
             _index = 10
@@ -2747,7 +2747,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [24754] = { 1 } },
             Coord = { x = -5529.9, y = -1157.9 },
-            GossipOptionID = 37137,
+            GossipOptionIDs = { 37137 },
             Range = 0.69,
             RaidIcon = 39062,
             _index = 10

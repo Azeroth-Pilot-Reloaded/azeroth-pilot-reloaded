@@ -2,7 +2,7 @@ APR.RouteQuestStepList.FUNGAL_FOLLY_DELVE = {
     {
         Coord = { x = -234.80000305176, y = -488.60000610352 },
         InstanceQuest = true,
-        GossipOptionID = 111366,
+        GossipOptionIDs = { 111366 },
         Scenario = { criteriaID = 62061, criteriaIndex = 1, scenarioID = 2311, stepID = 6588 },
         Zone = 2248,
     },
