@@ -1245,10 +1245,9 @@ if APR.Faction == "Alliance" then
             _index = 166,
         },
         {
-            DropQuest = 39060,
+            Waypoint = 39059, -- //TODO need to be fixed with the right gossip option
             Coord = { x = 1554, y = 3191.5 },
             ExtraLineText = "TALK_ENSIGN_WARD",
-            Gossip = 38872,
             _index = 167,
         },
         {
