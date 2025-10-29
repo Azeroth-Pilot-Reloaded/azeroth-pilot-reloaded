@@ -92,6 +92,10 @@ end
 function APR.changelog:SetChangeLog()
     local news = {
         { "v4.17.0", "2025-09-28" },
+        "#Guides",
+        "- Fixed `The Dark Lady's Bidding` quest in Stormheim (Horde)",
+        "- Added a temporary fix for the `To Catch a Banshee` quest in Stormheim (Alliance)",
+
         "#Features",
         "- Added new `Talk to the npc` step option to handle specific gossip steps",
 
