@@ -10,9 +10,10 @@ if C_GossipInfo and C_GossipInfo.SelectOption and hooksecurefunc then
     if not APR.gossip._hookedSelectOption then
         hooksecurefunc(C_GossipInfo, "SelectOption", function(optionID)
             if APR.ActiveRoute then
-                local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
-                if step and step.GossipOptionIDs and not APR:HasAnyMainStepOption(step) then
-                    if tContains(step.GossipOptionIDs, optionID) then
+                local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
+                local step = APR:GetStep(currentStepIndex)
+                if step and step.GossipOptionIDs and optionID and tContains(step.GossipOptionIDs, optionID) then
+                    if not APR:HasAnyMainStepOption(step) then
                         APRGossipValidated[APR.PlayerID][optionID] = true
                         APR:Debug("Gossip selected option ID:", optionID)
 
@@ -21,6 +22,8 @@ if C_GossipInfo and C_GossipInfo.SelectOption and hooksecurefunc then
                         if isFullCompleted then
                             APR:UpdateNextStep()
                         end
+                    elseif step.GossipETA then
+                        APR.gossip:TriggerGossipETA(currentStepIndex, step)
                     end
                 end
             end
@@ -133,4 +136,17 @@ function APR.gossip:HandleHardcodedGossip()
         APR:UpdateNextStep()
     end
     return count
+end
+
+function APR.gossip:TriggerGossipETA(stepIndex, step)
+    if not step or not step.GossipETA or step.SpecialETAHide then
+        return
+    end
+
+    if APR.AFK.lastStep == stepIndex then
+        return
+    end
+
+    APR.AFK:SetAfkTimer(step.GossipETA)
+    APR.AFK.lastStep = stepIndex
 end
