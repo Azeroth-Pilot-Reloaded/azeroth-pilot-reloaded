@@ -1061,7 +1061,7 @@ APR.RouteQuestStepList["378-Panda Starting Zone"] = {
     },
     {
         PickUp = { 29784 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 378,
         _index = 162,
     },
@@ -1575,7 +1575,7 @@ APR.RouteQuestStepList["378-Panda Starting Zone"] = {
         _index = 239,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 240,
     },
 }
@@ -1730,7 +1730,7 @@ APR.RouteQuestStepList["554-MoP Remix Intro"] = {
         _index = 23,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 24,
     },
 }
@@ -2050,7 +2050,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     {
         PickUp = { 29918 },
         Coord = { x = -388, y = 235.9 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 376,
         _index = 47,
     },
@@ -2561,13 +2561,13 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     },
     {
         Done = { 30051 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 376,
         _index = 121,
     },
     {
         PickUp = { 30172 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 376,
         _index = 122,
     },
@@ -2623,7 +2623,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Button = { ["30050-1"] = 77281 },
         GossipOptionIDs = { 36034 },
         Range = 45,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 376,
         _index = 130,
     },
@@ -2714,7 +2714,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Coord = { x = 1175.8, y = -245 },
         ExtraLineText = "FOLLOW_INSTRUCTIONS_AND_ALWAYS_STAY_ON_YOUR_MOUNT_TO_GO_FASTER",
         Range = 30,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 376,
         _index = 143,
     },
@@ -2913,7 +2913,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Fillers = { [30075] = { 1 }, [30076] = { 1 } },
         ExtraLineText = "AVOID_ELITE_MONKEY_THAT_PATROLS",
         Range = 30,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 376,
         _index = 172,
     },
@@ -2923,7 +2923,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Fillers = { [30075] = { 1 } },
         ExtraLineText = "AVOID_ELITE_MONKEY_THAT_PATROLS",
         Range = 15,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 376,
         _index = 173,
     },
@@ -2932,7 +2932,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         Coord = { x = 1285.4, y = -612.1 },
         ExtraLineText = "AVOID_ELITE_MONKEY_THAT_PATROLS",
         Range = 60,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 376,
         _index = 174,
     },
@@ -3416,7 +3416,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         _index = 245,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 246,
     },
 }
@@ -4717,7 +4717,7 @@ APR.RouteQuestStepList["388-Townlong Steppes"] = {
         _index = 195,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 196,
     },
 }
@@ -4907,13 +4907,13 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
     },
     {
         Done = { 31009 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 422,
         _index = 28,
     },
     {
         PickUp = { 31010 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 422,
         _index = 29,
     },
@@ -5090,13 +5090,13 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
     },
     {
         Done = { 31020, 31021 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 422,
         _index = 55,
     },
     {
         PickUp = { 31022 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 422,
         _index = 56,
     },
@@ -5116,13 +5116,13 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
     },
     {
         Done = { 31022 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 422,
         _index = 59,
     },
     {
         PickUp = { 31026 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 422,
         _index = 60,
     },
@@ -5143,7 +5143,7 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
     },
     {
         Done = { 31026 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 422,
         _index = 63,
     },
@@ -5246,7 +5246,7 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
         PickUp = { 31186 },
         Button = { ["31185"] = 85955 },
         ExtraLineText = "USE_WHISTLE_TO_SPAWN_NPC",
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 422,
         _index = 79,
     },
@@ -5299,7 +5299,7 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
         Done = { 31186 },
         Button = { ["31186"] = 85955 },
         ExtraLineText = "USE_WHISTLE_TO_SPAWN_NPC",
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 422,
         _index = 85,
     },
@@ -5360,7 +5360,7 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
     {
         Done = { 31190 },
         Coord = { x = 3112.8, y = -1293.5 },
-        VehicleExit = 1,
+        VehicleExit = true,
         Zone = 422,
         _index = 94,
     },
@@ -6206,7 +6206,7 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
         _index = 221,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 222,
     },
 }

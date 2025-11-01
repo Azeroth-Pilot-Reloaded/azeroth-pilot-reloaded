@@ -810,7 +810,7 @@ if APR.Faction == "Horde" then
             _index = 123,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 124,
         },
     }

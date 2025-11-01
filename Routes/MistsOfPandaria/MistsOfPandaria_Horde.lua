@@ -123,7 +123,7 @@ if APR.Faction == "Horde" then
             _index = 18,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 19,
         },
     }
@@ -443,7 +443,7 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 29743 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 46,
         },
@@ -456,13 +456,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 29765 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 48,
         },
         {
             PickUp = { 29804 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 49,
         },
@@ -1006,7 +1006,7 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 29924 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 128,
         },
@@ -1304,13 +1304,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 29943 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 174,
         },
         {
             PickUp = { 29966 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 175,
         },
@@ -1492,13 +1492,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 29716, 29717 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 202,
         },
         {
             PickUp = { 29723 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 203,
         },
@@ -1866,13 +1866,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 29745 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 259,
         },
         {
             PickUp = { 29747 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 260,
         },
@@ -1891,13 +1891,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 29747, 29748 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 263,
         },
         {
             PickUp = { 29749 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 264,
         },
@@ -3194,7 +3194,7 @@ if APR.Faction == "Horde" then
             _index = 449,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 450,
         },
     }
@@ -3605,13 +3605,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30129 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 61,
         },
         {
             PickUp = { 30128 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 62,
         },
@@ -3765,7 +3765,7 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30695 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 85,
         },
@@ -3779,13 +3779,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30271, 30272 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 87,
         },
         {
             PickUp = { 30273 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 88,
         },
@@ -3946,7 +3946,7 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30691 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 112,
         },
@@ -3993,7 +3993,7 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30674 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 119,
         },
@@ -4006,7 +4006,7 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30675 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 121,
         },
@@ -4211,7 +4211,7 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30653 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 376,
             _index = 152,
         },
@@ -4310,7 +4310,7 @@ if APR.Faction == "Horde" then
             _index = 166,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 167,
         },
     }
@@ -4624,13 +4624,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30828 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 48,
         },
         {
             PickUp = { 30855 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 49,
         },
@@ -4945,13 +4945,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30657 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 95,
         },
         {
             PickUp = { 30661 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 96,
         },
@@ -6001,7 +6001,7 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30942 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 251,
         },
@@ -6139,7 +6139,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [30592] = { 1 } },
             ExtraLineText = "OPEN_YOUR_MAP_TO_SEE_WHERE_NPCS_TO_ESCORT",
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 271,
         },
@@ -6361,7 +6361,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [30692] = { 1 } },
             ExtraLineText = "OPEN_YOUR_MAP_TO_SEE_WHERE_NPCS_TO_ESCORT",
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 304,
         },
@@ -6409,13 +6409,13 @@ if APR.Faction == "Horde" then
         },
         {
             Done = { 30744 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 311,
         },
         {
             PickUp = { 30746 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 312,
         },
@@ -6567,7 +6567,7 @@ if APR.Faction == "Horde" then
             Button = { ["30690-1"] = 81741 },
             ExtraLineText = "SET_UP_TRAP_AND_PULL_MOB_ONTO_IT_ONCE_TRAPPED_USE_YOUR_EXTRA_ACTION_BUTTON_TO_SPAWN_SHA",
             Range = 5,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             Zone = 379,
             _index = 333,
         },
@@ -6821,7 +6821,7 @@ if APR.Faction == "Horde" then
             Done = { 31030 },
             DoneDB = { 31030, 31031 },
             ExtraLineText = "TURN_IN_QUEST_INSIDE_DUNGEON_THEN_EXIT",
-            NoArrow = 1,
+            NoArrow = true,
             _index = 372,
         },
         {
@@ -6878,7 +6878,7 @@ if APR.Faction == "Horde" then
             _index = 380,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 381,
         },
     }
@@ -7182,7 +7182,7 @@ if APR.Faction == "Horde" then
             _index = 43,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 44,
         },
     }

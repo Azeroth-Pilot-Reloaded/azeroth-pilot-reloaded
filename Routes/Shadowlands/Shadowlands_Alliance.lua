@@ -116,7 +116,7 @@ if APR.Faction == "Alliance" then
             _index = 18,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 19,
         },
     }
@@ -355,7 +355,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [59755] = { 1 } },
             Coord = { x = 7717.1, y = 4896.8 },
             Range = 166.33,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 39,
         },
         {
@@ -750,14 +750,14 @@ if APR.Faction == "Alliance" then
             Coord = { x = 1412.2, y = -1843.4 },
             Range = 14.54,
             ETA = 62,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 104,
         },
         {
             Waypoint = 60129,
             Coord = { x = 1382.8, y = -1921.8 },
             Range = 26.05,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 105,
         },
         {
@@ -1065,7 +1065,7 @@ if APR.Faction == "Alliance" then
             ExtraLineText = "GOHEAD_NO_RP",
             Range = 20.06,
             ETA = 55,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 153,
         },
         {
@@ -1136,7 +1136,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [57584] = { 3 } },
             Coord = { x = -4317.9, y = -4276.2 },
             Range = 0.61,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 165,
         },
         {
@@ -1554,7 +1554,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [57266] = { 2 } },
             Coord = { x = -5269, y = -4661.7 },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 235,
         },
         {
@@ -1794,7 +1794,7 @@ if APR.Faction == "Alliance" then
             PickUpDB = { 57719, 60292 },
             Coord = { x = -5425.7, y = -4139 },
             Fillers = { [59147] = { 1 } },
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 274,
         },
         {
@@ -1802,7 +1802,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = -5436.4, y = -4129.2 },
             Fillers = { [57719] = { 1 }, [59147] = { 1 } },
             Range = 0.61,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 275,
         },
         {
@@ -1810,7 +1810,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = -5244.5, y = -4025 },
             Fillers = { [57719] = { 1 }, [59147] = { 1 } },
             Range = 0.75,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 276,
         },
         {
@@ -1818,7 +1818,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = -5253, y = -4128.9 },
             Fillers = { [57719] = { 1 }, [60292] = { 1 } },
             Range = 130.04,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 277,
         },
         {
@@ -1826,7 +1826,7 @@ if APR.Faction == "Alliance" then
             QpartDB = { 57719, 60292 },
             Coord = { x = -5253, y = -4128.9 },
             Range = 130.04,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 278,
         },
         {
@@ -1952,7 +1952,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [58800] = { 1 } },
             Coord = { x = -5228.9, y = -3603.7 },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 300,
         },
         {
@@ -2748,7 +2748,7 @@ if APR.Faction == "Alliance" then
         {
             Done = { 60179, 57511, 57512 },
             Coord = { x = -2413.5, y = 2413.8 },
-            NoArrow = 1,
+            NoArrow = true,
             _index = 436,
         },
         {
@@ -2767,7 +2767,7 @@ if APR.Faction == "Alliance" then
         {
             Done = { 60181 },
             Coord = { x = -2207.9, y = 2236.8 },
-            NoArrow = 1,
+            NoArrow = true,
             _index = 439,
         },
         {
@@ -2984,7 +2984,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [58616] = { 2 } },
             Coord = { x = -1663.3, y = 1855.7 },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 472,
         },
         {
@@ -3079,10 +3079,10 @@ if APR.Faction == "Alliance" then
             _index = 487,
         },
         {
-            Done = { 60453 },
-            Coord = { x = -1822, y = 2080 },
-            UseGlider = 1,
-            _index = 488,
+            Done      = { 60453 },
+            Coord     = { x = -1822, y = 2080 },
+            UseGlider = true,
+            _index    = 488,
         },
         {
             PickUp = { 60461 },
@@ -3118,7 +3118,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [60886] = { 2 } },
             Coord = { x = -2547.2, y = 1971.7 },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 494,
         },
         {
@@ -3652,7 +3652,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = -1626, y = 2701.6 },
             Fillers = { [57976] = { 1 }, [60557] = { 1 } },
             Range = 0.61,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 581,
         },
         {
@@ -3667,7 +3667,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = -1644.4, y = 2784.1 },
             Fillers = { [57976] = { 1 }, [60557] = { 1 } },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 583,
         },
         {
@@ -3695,7 +3695,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [57976] = { 1 }, [60557] = { 1 } },
             Coord = { x = -1744.9, y = 2786 },
             Range = 93.84,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 587,
         },
         {
@@ -3712,7 +3712,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [57979] = { 1 } },
             Coord = { x = -1718.3, y = 2990.5 },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             RaidIcon = 160095,
             _index = 590,
         },
@@ -4023,7 +4023,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [59009] = { 1 }, [59231] = { 1 }, [60733] = { 1 } },
             Coord = { x = -2547, y = 1971.9 },
             Range = 0.75,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 641,
         },
         {
@@ -4361,7 +4361,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [60737] = { 1 } },
             Coord = { x = -2547.2, y = 1984.9 },
             Range = 0.75,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 700,
         },
         {
@@ -4805,13 +4805,13 @@ if APR.Faction == "Alliance" then
         {
             Done = { 57948, 57949 },
             Coord = { x = -461.9, y = -5983.8 },
-            NoArrow = 1,
+            NoArrow = true,
             _index = 770,
         },
         {
             PickUp = { 57950 },
             Coord = { x = -461.9, y = -5983.8 },
-            NoArrow = 1,
+            NoArrow = true,
             _index = 771,
         },
         {
@@ -4978,7 +4978,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [60624] = { 1 } },
             Coord = { x = -182, y = -6054.4 },
             Range = 0.61,
-            MountVehicle = 1,
+            MountVehicle = true,
             RaidIcon = 169577,
             _index = 798,
         },
@@ -5233,7 +5233,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 579.2, y = -6045.9 },
             Fillers = { [60631] = { 1 } },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             TrigText = "1/4",
             _index = 839,
         },
@@ -5242,7 +5242,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 562.2, y = -6130.9 },
             Fillers = { [60631] = { 1 } },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             TrigText = "2/4",
             _index = 840,
         },
@@ -5251,7 +5251,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 402, y = -6194.9 },
             Fillers = { [60631] = { 1 } },
             Range = 0.75,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             TrigText = "3/4",
             _index = 841,
         },
@@ -5260,14 +5260,14 @@ if APR.Faction == "Alliance" then
             Coord = { x = 705.7, y = -6136.7 },
             Fillers = { [60631] = { 1 } },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 842,
         },
         {
             Qpart = { [60631] = { 1 } },
             Coord = { x = 550.5, y = -6101.7 },
             Range = 474.62,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 843,
         },
         {
@@ -5289,7 +5289,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [60632] = { 1 } },
             Coord = { x = 854, y = -6123.4 },
             Range = 0.75,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             RaidIcon = 169900,
             _index = 847,
         },
@@ -5443,7 +5443,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = -414.2, y = -6708.4 },
             ExtraLineText = "HORN_ON_THE_GROUND",
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 873,
         },
         {
@@ -5485,7 +5485,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 10.1, y = -6904.8 },
             Range = 0.61,
             ETA = 70,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 880,
         },
         {
@@ -5515,7 +5515,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 38.2, y = -6927.3 },
             ExtraLineText = "USE_COVENANT_ABILITY",
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             Gossip = 1,
             RaidIcon = 170709,
             _index = 885,
@@ -5735,7 +5735,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 192.4, y = -6739.4 },
             Fillers = { [58591] = { 1 }, [58592] = { 1 } },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 921,
         },
         {
@@ -5852,7 +5852,7 @@ if APR.Faction == "Alliance" then
             Fillers = { [58714] = { 1 } },
             Button = { ["58719-1"] = 174864 },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 940,
         },
         {
@@ -5866,7 +5866,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 20.3, y = -6776.9 },
             Fillers = { [58714] = { 1 } },
             Range = 14.15,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 942,
         },
         {
@@ -5881,7 +5881,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 20.5, y = -6790.8 },
             Fillers = { [58714] = { 1 } },
             Range = 17.2,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 944,
         },
         {
@@ -5889,7 +5889,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 121.4, y = -6947.5 },
             Fillers = { [58714] = { 1 } },
             Range = 19.05,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 945,
         },
         {
@@ -5904,7 +5904,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [58714] = { 1 } },
             Coord = { x = 45.2, y = -6873.9 },
             Range = 80.97,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 947,
         },
         {
@@ -5954,7 +5954,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 48.5, y = -6887.7 },
             ExtraLineText = "GRAB_HEAL_DMG_BUFF",
             Range = 77.45,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 956,
         },
         {
@@ -5995,55 +5995,55 @@ if APR.Faction == "Alliance" then
             Coord = { x = 193.1, y = -6990.9 },
             Range = 31.29,
             ETA = 175,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 962,
         },
         {
             Waypoint = 62807,
             Coord = { x = 298.6, y = -6864.8 },
             Range = 33.33,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 963,
         },
         {
             Waypoint = 62807,
             Coord = { x = 409.8, y = -6906.4 },
             Range = 32.87,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 964,
         },
         {
             Waypoint = 62807,
             Coord = { x = 517.9, y = -6800 },
             Range = 27.25,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 965,
         },
         {
             Waypoint = 62807,
             Coord = { x = 692.2, y = -6767.2 },
             Range = 20.3,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 966,
         },
         {
             Waypoint = 62807,
             Coord = { x = 690, y = -6824.7 },
             Range = 15.13,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 967,
         },
         {
             GetFP = 2590,
             Coord = { x = 796.2, y = -6825.4 },
             Range = 0.69,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 968,
         },
         {
             Done = { 62807 },
             Coord = { x = 864.2, y = -6760.4 },
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 969,
         },
         {
@@ -6213,7 +6213,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [57007] = { 1 } },
             Coord = { x = 5528.5, y = -3402.5 },
             Range = 0.75,
-            MountVehicle = 1,
+            MountVehicle = true,
             _index = 998,
         },
         {
@@ -6279,7 +6279,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [56942] = { 1 } },
             Coord = { x = 5746.3, y = -2827.7 },
             Range = 0.75,
-            MountVehicle = 1,
+            MountVehicle = true,
             _index = 1009,
         },
         {
@@ -6541,7 +6541,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [59021] = { 1 } },
             Coord = { x = 5790.8, y = -2318 },
             Range = 0.75,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 1054,
         },
         {
@@ -6697,10 +6697,10 @@ if APR.Faction == "Alliance" then
             _index = 1080,
         },
         {
-            Done = { 57098 },
-            Coord = { x = 6568.8, y = -3114.4 },
-            UseGlider = 1,
-            _index = 1081,
+            Done      = { 57098 },
+            Coord     = { x = 6568.8, y = -3114.4 },
+            UseGlider = true,
+            _index    = 1081,
         },
         {
             PickUp = { 58916 },
@@ -6848,19 +6848,19 @@ if APR.Faction == "Alliance" then
         {
             Done = { 57136 },
             Coord = { x = 6908.7, y = -2984.5 },
-            NoArrow = 1,
+            NoArrow = true,
             _index = 1106,
         },
         {
             Done = { 57164 },
             Coord = { x = 6851.7, y = -2790.5 },
-            NoArrow = 1,
+            NoArrow = true,
             _index = 1107,
         },
         {
             PickUp = { 60506 },
             Coord = { x = 6851.7, y = -2790.5 },
-            NoArrow = 1,
+            NoArrow = true,
             _index = 1108,
         },
         {
@@ -6880,7 +6880,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [60506] = { 3 } },
             Coord = { x = 6516.1, y = -2586.5 },
             Range = 0.75,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 1111,
         },
         {
@@ -7081,7 +7081,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [59256] = { 2 } },
             Coord = { x = 7213.3, y = -3408 },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 1140,
         },
         {
@@ -7174,13 +7174,13 @@ if APR.Faction == "Alliance" then
         {
             Done = { 57427, 57428, 57426 },
             Coord = { x = 7322, y = -2616.7 },
-            NoArrow = 1,
+            NoArrow = true,
             _index = 1156,
         },
         {
             PickUp = { 57442 },
             Coord = { x = 7322, y = -2616.7 },
-            NoArrow = 1,
+            NoArrow = true,
             _index = 1157,
         },
         {
@@ -7567,7 +7567,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [59644] = { 1 } },
             Coord = { x = 7682.6, y = -1905.5 },
             Range = 29.2,
-            NoArrow = 1,
+            NoArrow = true,
             _index = 1223,
         },
         {
@@ -7699,7 +7699,7 @@ if APR.Faction == "Alliance" then
             _index = 1244,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 1245,
         },
     }

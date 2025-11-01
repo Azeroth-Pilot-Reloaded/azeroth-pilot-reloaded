@@ -561,7 +561,7 @@ if APR.Faction == "Horde" then
             _index = 98,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 99,
         },
     }
@@ -583,13 +583,13 @@ if APR.Faction == "Horde" then
             Coord = { x = 1017.9, y = 1423.9 },
             Range = 5.91,
             ETA = 170,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 3,
         },
         {
             PickUp = { 28089 },
             Coord = { x = 1046.9, y = 1376 },
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 4,
         },
         {
@@ -1110,7 +1110,7 @@ if APR.Faction == "Horde" then
             _index = 94,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 95,
         },
     }
@@ -1303,7 +1303,7 @@ if APR.Faction == "Horde" then
             _index = 32,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 33,
         },
     }
@@ -1326,7 +1326,7 @@ if APR.Faction == "Horde" then
             Coord = { x = 1314.5, y = -114.3 },
             Range = 5.91,
             ETA = 85,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 3,
         },
         {
@@ -1405,7 +1405,7 @@ if APR.Faction == "Horde" then
             _index = 16,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 17,
         },
     }
@@ -1430,7 +1430,7 @@ if APR.Faction == "Horde" then
             _index = 3,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 4,
         },
     }
@@ -1594,7 +1594,7 @@ if APR.Faction == "Horde" then
             _index = 27,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 28,
         },
     }
@@ -3685,7 +3685,7 @@ if APR.Faction == "Horde" then
             _index = 351,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 352,
         },
     }
@@ -4664,7 +4664,7 @@ if APR.Faction == "Horde" then
             _index = 170,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 171,
         },
     }

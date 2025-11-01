@@ -58,7 +58,7 @@ if APR.Faction == "Alliance" then
             _index = 8,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 9,
         },
     }
@@ -675,7 +675,7 @@ if APR.Faction == "Alliance" then
             _index = 103,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 104,
         },
     }
@@ -1456,7 +1456,7 @@ if APR.Faction == "Alliance" then
             _index = 126,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 127,
         },
     }
@@ -2698,7 +2698,7 @@ if APR.Faction == "Alliance" then
             _index = 204,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 205,
         },
     }
@@ -3303,7 +3303,7 @@ if APR.Faction == "Alliance" then
             _index = 100,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 101,
         },
     }
@@ -3448,7 +3448,7 @@ if APR.Faction == "Alliance" then
             _index = 24,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 25,
         },
     }
@@ -3758,7 +3758,7 @@ if APR.Faction == "Alliance" then
             _index = 48,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 49,
         },
     }
@@ -5037,7 +5037,7 @@ if APR.Faction == "Alliance" then
             _index = 214,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 215,
         },
     }
@@ -6128,7 +6128,7 @@ if APR.Faction == "Alliance" then
             _index = 183,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 184,
         },
     }

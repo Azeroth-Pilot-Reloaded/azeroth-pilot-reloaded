@@ -443,7 +443,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
         SpellButton = { ["70132-1"] = 383740 },
         ExtraLineText = "USE_EXTRAACTIONBUTTON",
         Range = 1,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 67,
     },
     {
@@ -1616,7 +1616,7 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
         _index = 251,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 252,
     },
 }
@@ -2595,7 +2595,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         SpellButton = { ["66834-3"] = 384389 },
         ExtraLineText = "USE_EXTRAACTIONBUTTON",
         Range = 1,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 164,
     },
     {
@@ -2611,7 +2611,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         SpellButton = { ["66834-5"] = 384564 },
         ExtraLineText = "USE_EXTRAACTIONBUTTON",
         Range = 1,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 166,
     },
     {
@@ -2627,7 +2627,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         SpellButton = { ["66834-7"] = 384588 },
         ExtraLineText = "USE_EXTRAACTIONBUTTON",
         Range = 1,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 168,
     },
     {
@@ -3410,7 +3410,7 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         _index = 293,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 294,
     },
 }
@@ -3824,7 +3824,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
     {
         Done = { 65852 },
         Coord = { x = 1142.5, y = -5388 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 70,
     },
     {
@@ -5550,7 +5550,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
         _index = 358,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 359,
     },
 }
@@ -5558,12 +5558,12 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
 APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
     {
         PickUp = { 64864 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 1,
     },
     {
         Qpart = { [64864] = { 1 } },
-        NoArrow = 1,
+        NoArrow = true,
         ExtraLineText = "INTERACT_WITH_KODETHI",
         Range = 2,
         Faction = "Horde",
@@ -5572,7 +5572,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
     },
     {
         Qpart = { [64864] = { 1 } },
-        NoArrow = 1,
+        NoArrow = true,
         ExtraLineText = "INTERACT_WITH_DERVISHIAN",
         Range = 2,
         Faction = "Alliance",
@@ -5958,7 +5958,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         Qpart = { [65063] = { 1 } },
         Coord = { x = -2597.2, y = 7237 },
         Range = 1,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 59,
     },
     {
@@ -6647,7 +6647,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
         _index = 161,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 162,
     },
 }
@@ -6685,7 +6685,7 @@ APR.RouteQuestStepList["2118-DracthyrStart-Other"] = {
         _index = 4,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 5,
     },
 }

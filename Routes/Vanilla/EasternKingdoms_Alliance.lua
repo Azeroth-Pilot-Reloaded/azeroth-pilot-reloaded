@@ -317,7 +317,7 @@ if (APR.Faction == "Alliance") then
             _index = 54,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 55,
         },
     }
@@ -497,7 +497,7 @@ if (APR.Faction == "Alliance") then
             _index = 29,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 30,
         },
     }
@@ -903,7 +903,7 @@ if (APR.Faction == "Alliance") then
             _index = 73,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 74,
         },
     }
@@ -1679,7 +1679,7 @@ if (APR.Faction == "Alliance") then
             _index = 141,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 142,
         },
     }
@@ -2072,7 +2072,7 @@ if (APR.Faction == "Alliance") then
             _index = 71,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 72,
         },
     }
@@ -2656,7 +2656,7 @@ if (APR.Faction == "Alliance") then
             _index = 102,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 103,
         },
     }
@@ -3174,7 +3174,7 @@ if (APR.Faction == "Alliance") then
             _index = 93,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 94,
         },
     }
@@ -3847,7 +3847,7 @@ if (APR.Faction == "Alliance") then
             _index = 118,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 119,
         },
     }
@@ -4546,7 +4546,7 @@ if (APR.Faction == "Alliance") then
             _index = 121,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 122,
         },
     }
@@ -4994,7 +4994,7 @@ if (APR.Faction == "Alliance") then
             _index = 76,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 77,
         },
     }
@@ -5853,7 +5853,7 @@ if (APR.Faction == "Alliance") then
             _index = 151,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 152,
         },
     }
@@ -6519,7 +6519,7 @@ if (APR.Faction == "Alliance") then
             _index = 119,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 120,
         },
     }
@@ -6992,7 +6992,7 @@ if (APR.Faction == "Alliance") then
             _index = 83,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 84,
         },
     }
@@ -7424,7 +7424,7 @@ if (APR.Faction == "Alliance") then
             _index = 72,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 73,
         },
     }
@@ -8474,7 +8474,7 @@ if (APR.Faction == "Alliance") then
             _index = 184,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 185,
         },
     }
@@ -9810,7 +9810,7 @@ if (APR.Faction == "Alliance") then
             _index = 230,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 231,
         },
     }
@@ -10855,7 +10855,7 @@ if (APR.Faction == "Alliance") then
             _index = 183,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 184,
         },
     }
@@ -10920,10 +10920,10 @@ if (APR.Faction == "Alliance") then
             _index = 10,
         },
         {
-            PickUp = { 26508 },
-            Coord = { x = -2206.9, y = -9351 },
-            UseGlider = 1,
-            _index = 11,
+            PickUp    = { 26508 },
+            Coord     = { x = -2206.9, y = -9351 },
+            UseGlider = true,
+            _index    = 11,
         },
         {
             Qpart = { [26508] = { 1 } },
@@ -11709,7 +11709,7 @@ if (APR.Faction == "Alliance") then
             _index = 146,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 147,
         },
     }
@@ -12377,7 +12377,7 @@ if (APR.Faction == "Alliance") then
             _index = 117,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 118,
         },
     }
@@ -13000,7 +13000,7 @@ if (APR.Faction == "Alliance") then
             _index = 105,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 106,
         },
     }
@@ -13784,7 +13784,7 @@ if (APR.Faction == "Alliance") then
             _index = 138,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 139,
         },
     }
@@ -14904,7 +14904,7 @@ if (APR.Faction == "Alliance") then
             _index = 195,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 196,
         },
     }
