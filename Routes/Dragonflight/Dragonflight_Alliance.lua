@@ -114,7 +114,7 @@ if APR.Faction == "Alliance" then
             _index = 19,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 20,
         },
     }
@@ -208,7 +208,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = -1452.5, y = 3552 },
             ExtraLineText = "CHOOSE_ZONE",
             Range = 5,
-            isAdventureMap = true,
+            IsAdventureMap = true,
             HasAchievement = 16326,
             _index = 15,
         },
@@ -446,7 +446,7 @@ if APR.Faction == "Alliance" then
             _index = 52,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 53,
         },
     }
@@ -1374,7 +1374,7 @@ if APR.Faction == "Alliance" then
             _index = 158,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 159,
         },
     }

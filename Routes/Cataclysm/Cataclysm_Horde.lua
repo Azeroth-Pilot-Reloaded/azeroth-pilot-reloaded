@@ -509,7 +509,7 @@ if (APR.Faction == "Horde") then
             _index = 86,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 87,
         },
     }
@@ -1627,7 +1627,7 @@ if (APR.Faction == "Horde") then
             _index = 199,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 200,
         },
     }

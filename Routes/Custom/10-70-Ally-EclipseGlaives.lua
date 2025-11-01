@@ -3528,7 +3528,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [35050] = { 2 } },
             Coord = { x = 348, y = 6631 },
-            ssipOptionIDs = { 42546 },
+            GossipOptionIDs = { 42546 },
             Zone = 543,
             _index = 538,
         },
@@ -5339,7 +5339,7 @@ if APR.Faction == "Alliance" then
             _index = 807,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 808,
         },
     }

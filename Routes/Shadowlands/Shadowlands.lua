@@ -118,7 +118,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
         Coord = { x = 7717.1, y = 4896.8 },
         GossipOptionIDs = { 53556 },
         Range = 166.33,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 21,
     },
     {
@@ -502,7 +502,7 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
         _index = 84,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 85,
     },
 }
@@ -520,14 +520,14 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
         Coord = { x = 1412.2, y = -1843.4 },
         Range = 14.54,
         ETA = 62,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 2,
     },
     {
         Waypoint = 60129,
         Coord = { x = 1382.8, y = -1921.8 },
         Range = 26.05,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 3,
     },
     {
@@ -818,7 +818,7 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
         _index = 48,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 49,
     },
 }
@@ -842,7 +842,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         ExtraLineText = "GOHEAD_NO_RP",
         Range = 20.06,
         ETA = 55,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 3,
     },
     {
@@ -913,7 +913,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         Qpart = { [57584] = { 3 } },
         Coord = { x = -4317.9, y = -4276.2 },
         Range = 0.61,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 15,
     },
     {
@@ -1357,7 +1357,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         Qpart = { [57266] = { 2 } },
         Coord = { x = -5269, y = -4661.7 },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 89,
     },
     {
@@ -1622,7 +1622,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         PickUpDB = { 57719, 60292 },
         Coord = { x = -5425.7, y = -4139 },
         Fillers = { [57444] = { 1 }, [59147] = { 1 } },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 132,
     },
     {
@@ -1630,7 +1630,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         Coord = { x = -5436.4, y = -4129.2 },
         Fillers = { [57444] = { 1 }, [57719] = { 1 }, [59147] = { 1 } },
         Range = 0.61,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 133,
     },
     {
@@ -1638,7 +1638,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         Coord = { x = -5244.5, y = -4025 },
         Fillers = { [57444] = { 1 }, [57719] = { 1 }, [59147] = { 1 } },
         Range = 0.75,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 134,
     },
     {
@@ -1646,7 +1646,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         Coord = { x = -5253, y = -4128.9 },
         Fillers = { [57719] = { 1 }, [60292] = { 1 } },
         Range = 130.04,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 135,
     },
     {
@@ -1654,7 +1654,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         QpartDB = { 57719, 60292 },
         Coord = { x = -5253, y = -4128.9 },
         Range = 130.04,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 136,
     },
     {
@@ -1785,7 +1785,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         Qpart = { [58800] = { 1 } },
         Coord = { x = -5228.9, y = -3603.7 },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 159,
     },
     {
@@ -2136,7 +2136,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         Qpart = { [57568] = { 1 } },
         Coord = { x = -4492.5, y = -3384.4 },
         Range = 23.87,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 218,
     },
     {
@@ -2526,7 +2526,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         _index = 284,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 285,
     },
 }
@@ -2587,7 +2587,7 @@ APR.RouteQuestStepList["1670-Z3-Oribos-Story"] = {
         _index = 10,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 11,
     },
 }
@@ -2698,7 +2698,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
     {
         Done = { 60179, 57511, 57512 },
         Coord = { x = -2413.5, y = 2413.8 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 19,
     },
     {
@@ -2717,7 +2717,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
     {
         Done = { 60181 },
         Coord = { x = -2207.9, y = 2236.8 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 22,
     },
     {
@@ -2934,7 +2934,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         Qpart = { [58616] = { 2 } },
         Coord = { x = -1663.3, y = 1855.7 },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 55,
     },
     {
@@ -3029,10 +3029,10 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         _index = 70,
     },
     {
-        Done = { 60453 },
-        Coord = { x = -1822, y = 2080 },
-        UseGlider = 1,
-        _index = 71,
+        Done      = { 60453 },
+        Coord     = { x = -1822, y = 2080 },
+        UseGlider = true,
+        _index    = 71,
     },
     {
         PickUp = { 60461 },
@@ -3068,7 +3068,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         Qpart = { [60886] = { 2 } },
         Coord = { x = -2547.2, y = 1971.7 },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 77,
     },
     {
@@ -3602,7 +3602,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         Coord = { x = -1626, y = 2701.6 },
         Fillers = { [57976] = { 1 }, [60557] = { 1 } },
         Range = 0.61,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 164,
     },
     {
@@ -3617,7 +3617,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         Coord = { x = -1644.4, y = 2784.1 },
         Fillers = { [57976] = { 1 }, [60557] = { 1 } },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 166,
     },
     {
@@ -3645,7 +3645,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         Qpart = { [57976] = { 1 }, [60557] = { 1 } },
         Coord = { x = -1744.9, y = 2786 },
         Range = 93.84,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 170,
     },
     {
@@ -3662,7 +3662,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         Qpart = { [57979] = { 1 } },
         Coord = { x = -1718.3, y = 2990.5 },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         RaidIcon = 160095,
         _index = 173,
     },
@@ -3973,7 +3973,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         Qpart = { [59009] = { 1 }, [59231] = { 1 }, [60733] = { 1 } },
         Coord = { x = -2547, y = 1971.9 },
         Range = 0.75,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 224,
     },
     {
@@ -4054,7 +4054,7 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
         _index = 237,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 238,
     },
 }
@@ -4089,7 +4089,7 @@ APR.RouteQuestStepList["1670-Z5-Oribos-Story"] = {
         _index = 5,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 6,
     },
 }
@@ -4283,7 +4283,7 @@ APR.RouteQuestStepList["1960-Z6-TheMaw-Story"] = {
         _index = 33,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 34,
     },
 }
@@ -4340,7 +4340,7 @@ APR.RouteQuestStepList["1670-Z7-Oribos-Story"] = {
         _index = 9,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 10,
     },
 }
@@ -4379,7 +4379,7 @@ APR.RouteQuestStepList["1536-Z8-Maldraxxus-Story"] = {
         Qpart = { [60737] = { 1 } },
         Coord = { x = -2547.2, y = 1984.9 },
         Range = 0.75,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 6,
     },
     {
@@ -4407,7 +4407,7 @@ APR.RouteQuestStepList["1536-Z8-Maldraxxus-Story"] = {
         _index = 10,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 11,
     },
 }
@@ -4501,7 +4501,7 @@ APR.RouteQuestStepList["1670-Z9-Oribos-Story"] = {
         _index = 15,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 16,
     },
 }
@@ -4556,7 +4556,7 @@ APR.RouteQuestStepList["1670-Z9-Oribos-Storyx2"] = {
         _index = 9,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 10,
     },
 }
@@ -4897,13 +4897,13 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     {
         Done = { 57948, 57949 },
         Coord = { x = -461.9, y = -5983.8 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 52,
     },
     {
         PickUp = { 57950 },
         Coord = { x = -461.9, y = -5983.8 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 53,
     },
     {
@@ -5070,7 +5070,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Qpart = { [60624] = { 1 } },
         Coord = { x = -182, y = -6054.4 },
         Range = 0.61,
-        MountVehicle = 1,
+        MountVehicle = true,
         RaidIcon = 169577,
         _index = 80,
     },
@@ -5731,7 +5731,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 579.2, y = -6045.9 },
         Fillers = { [60631] = { 1 } },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         TrigText = "1/4",
         _index = 187,
     },
@@ -5740,7 +5740,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 562.2, y = -6130.9 },
         Fillers = { [60631] = { 1 } },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         TrigText = "2/4",
         _index = 188,
     },
@@ -5749,7 +5749,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 402, y = -6194.9 },
         Fillers = { [60631] = { 1 } },
         Range = 0.75,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         TrigText = "3/4",
         _index = 189,
     },
@@ -5758,14 +5758,14 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 705.7, y = -6136.7 },
         Fillers = { [60631] = { 1 } },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 190,
     },
     {
         Qpart = { [60631] = { 1 } },
         Coord = { x = 550.5, y = -6101.7 },
         Range = 474.62,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 191,
     },
     {
@@ -5787,7 +5787,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Qpart = { [60632] = { 1 } },
         Coord = { x = 854, y = -6123.4 },
         Range = 0.75,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         RaidIcon = 169900,
         _index = 195,
     },
@@ -6377,7 +6377,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = -414.2, y = -6708.4 },
         ExtraLineText = "HORN_ON_THE_GROUND",
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 282,
     },
     {
@@ -6419,7 +6419,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 10.1, y = -6904.8 },
         Range = 0.61,
         ETA = 70,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 289,
     },
     {
@@ -6449,7 +6449,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 38.2, y = -6927.3 },
         ExtraLineText = "USE_COVENANT_ABILITY",
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Gossip = 1,
         RaidIcon = 170709,
         _index = 294,
@@ -6669,7 +6669,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 192.4, y = -6739.4 },
         Fillers = { [58591] = { 1 }, [58592] = { 1 } },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 330,
     },
     {
@@ -6786,7 +6786,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Fillers = { [58714] = { 1 } },
         Button = { ["58719-1"] = 174864 },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 349,
     },
     {
@@ -6800,7 +6800,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 20.3, y = -6776.9 },
         Fillers = { [58714] = { 1 } },
         Range = 14.15,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 351,
     },
     {
@@ -6815,7 +6815,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 20.5, y = -6790.8 },
         Fillers = { [58714] = { 1 } },
         Range = 17.2,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 353,
     },
     {
@@ -6823,7 +6823,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 121.4, y = -6947.5 },
         Fillers = { [58714] = { 1 } },
         Range = 19.05,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 354,
     },
     {
@@ -6838,7 +6838,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Qpart = { [58714] = { 1 } },
         Coord = { x = 45.2, y = -6873.9 },
         Range = 80.97,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 356,
     },
     {
@@ -6888,7 +6888,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 48.5, y = -6887.7 },
         ExtraLineText = "GRAB_HEAL_DMG_BUFF",
         Range = 77.45,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 365,
     },
     {
@@ -6929,55 +6929,55 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         Coord = { x = 193.1, y = -6990.9 },
         Range = 31.29,
         ETA = 175,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 371,
     },
     {
         Waypoint = 62807,
         Coord = { x = 298.6, y = -6864.8 },
         Range = 33.33,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 372,
     },
     {
         Waypoint = 62807,
         Coord = { x = 409.8, y = -6906.4 },
         Range = 32.87,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 373,
     },
     {
         Waypoint = 62807,
         Coord = { x = 517.9, y = -6800 },
         Range = 27.25,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 374,
     },
     {
         Waypoint = 62807,
         Coord = { x = 692.2, y = -6767.2 },
         Range = 20.3,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 375,
     },
     {
         Waypoint = 62807,
         Coord = { x = 690, y = -6824.7 },
         Range = 15.13,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 376,
     },
     {
         GetFP = 2590,
         Coord = { x = 796.2, y = -6825.4 },
         Range = 0.69,
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 377,
     },
     {
         Done = { 62807 },
         Coord = { x = 864.2, y = -6760.4 },
-        SpecialETAHide = 1,
+        SpecialETAHide = true,
         _index = 378,
     },
     {
@@ -7074,7 +7074,7 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
         _index = 394,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 395,
     },
 }
@@ -7110,7 +7110,7 @@ APR.RouteQuestStepList["1670-Z11-Oribos-Story"] = {
         _index = 5,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 6,
     },
 }
@@ -7171,7 +7171,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         Qpart = { [57007] = { 1 } },
         Coord = { x = 5528.5, y = -3402.5 },
         Range = 0.75,
-        MountVehicle = 1,
+        MountVehicle = true,
         _index = 10,
     },
     {
@@ -7248,7 +7248,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         Qpart = { [56942] = { 1 } },
         Coord = { x = 5746.3, y = -2827.7 },
         Range = 0.75,
-        MountVehicle = 1,
+        MountVehicle = true,
         _index = 23,
     },
     {
@@ -7517,7 +7517,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         Coord = { x = 5834.8, y = -3080.2 },
         ExtraLineText = "USE_BARRELS",
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 68,
     },
     {
@@ -7829,7 +7829,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         Qpart = { [59021] = { 1 } },
         Coord = { x = 5790.8, y = -2318 },
         Range = 0.75,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 122,
     },
     {
@@ -7985,10 +7985,10 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         _index = 148,
     },
     {
-        Done = { 57098 },
-        Coord = { x = 6568.8, y = -3114.4 },
-        UseGlider = 1,
-        _index = 149,
+        Done      = { 57098 },
+        Coord     = { x = 6568.8, y = -3114.4 },
+        UseGlider = true,
+        _index    = 149,
     },
     {
         PickUp = { 58916 },
@@ -8162,19 +8162,19 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     {
         Done = { 57136 },
         Coord = { x = 6908.7, y = -2984.5 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 178,
     },
     {
         Done = { 57164 },
         Coord = { x = 6851.7, y = -2790.5 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 179,
     },
     {
         PickUp = { 60506 },
         Coord = { x = 6851.7, y = -2790.5 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 180,
     },
     {
@@ -8194,7 +8194,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         Qpart = { [60506] = { 3 } },
         Coord = { x = 6516.1, y = -2586.5 },
         Range = 0.75,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 183,
     },
     {
@@ -8416,7 +8416,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         Qpart = { [59256] = { 2 } },
         Coord = { x = 7213.3, y = -3408 },
         Range = 0.69,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 216,
     },
     {
@@ -8509,13 +8509,13 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     {
         Done = { 57427, 57428, 57426 },
         Coord = { x = 7322, y = -2616.7 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 232,
     },
     {
         PickUp = { 57442 },
         Coord = { x = 7322, y = -2616.7 },
-        NoArrow = 1,
+        NoArrow = true,
         _index = 233,
     },
     {
@@ -8981,7 +8981,7 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
         _index = 312,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 313,
     },
 }
@@ -9054,7 +9054,7 @@ APR.RouteQuestStepList["1543-Z13-TheMaw-Story"] = {
         _index = 12,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 13,
     },
 }
@@ -9135,7 +9135,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
         Qpart = { [59644] = { 1 } },
         Coord = { x = 7682.6, y = -1905.5 },
         Range = 29.2,
-        NoArrow = 1,
+        NoArrow = true,
         _index = 13,
     },
     {
@@ -9197,7 +9197,7 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
         _index = 23,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 24,
     },
 }
@@ -9279,7 +9279,7 @@ APR.RouteQuestStepList["1670-Z15-Oribos-Story"] = {
         _index = 12,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 13,
     },
 }

@@ -179,7 +179,7 @@ end
 
 function APR.event.functions.adventureMapAccept(event, followerTypeID)
     if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
-    if not APR:IsPickupStep() and (step and not step.isAdventureMap) then
+    if not APR:IsPickupStep() and (step and not step.IsAdventureMap) then
         C_AdventureMap.Close();
         APR:NotYet()
         return

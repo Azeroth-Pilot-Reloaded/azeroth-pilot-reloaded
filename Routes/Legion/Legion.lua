@@ -320,13 +320,13 @@ APR.RouteQuestStepList["627-Intro-Remix"] = {
     {
         Qpart = { [89413] = { 1 } },
         SpellButton = { ["89413-1"] = 1232807 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 627,
         _index = 49,
     },
     {
         Qpart = { [89413] = { 2 } },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 627,
         _index = 50,
     },
@@ -535,7 +535,7 @@ APR.RouteQuestStepList["627-Intro-Remix"] = {
         _index = 77,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 78,
     },
 }
@@ -1255,7 +1255,7 @@ APR.RouteQuestStepList["672-Demon-Hunter-Start"] = {
         _index = 119,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 120,
     },
 }
@@ -1264,7 +1264,8 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     {
         PickUp = { 39718 },
         ExtraLineText = "SCOUTING_MAP",
-        NoArrow = 1,
+        IsAdventureMap = true,
+        NoArrow = true,
         Zone = 619,
         _index = 1,
     },
@@ -1491,7 +1492,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     },
     {
         Done = { 36811, 37656 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 630,
         _index = 34,
     },
@@ -1533,13 +1534,13 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     },
     {
         Done = { 37450 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 630,
         _index = 40,
     },
     {
         PickUp = { 37449 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 630,
         _index = 41,
     },
@@ -1622,7 +1623,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     {
         Qpart = { [37853] = { 2 } },
         Coord = { x = 6668.2, y = 625.1 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 630,
         _index = 54,
     },
@@ -2104,7 +2105,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     {
         PickUp = { 42370 },
         Coord = { x = 6470.9, y = 201.3 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 630,
         _index = 128,
     },
@@ -2497,14 +2498,14 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     },
     {
         Done = { 42166 },
-        NoArrow = 1,
+        NoArrow = true,
         Class = { "MAGE" },
         Zone = 630,
         _index = 185,
     },
     {
         PickUp = { 42149, 42206 },
-        NoArrow = 1,
+        NoArrow = true,
         Class = { "MAGE" },
         Zone = 630,
         _index = 186,
@@ -2519,14 +2520,14 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     },
     {
         Done = { 42149, 42206 },
-        NoArrow = 1,
+        NoArrow = true,
         Class = { "MAGE" },
         Zone = 630,
         _index = 188,
     },
     {
         PickUp = { 42171 },
-        NoArrow = 1,
+        NoArrow = true,
         Class = { "MAGE" },
         Zone = 630,
         _index = 189,
@@ -2856,7 +2857,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     },
     {
         Done = { 37963 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 630,
         _index = 238,
     },
@@ -2881,7 +2882,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     {
         PickUp = { 37860 },
         Coord = { x = 6287.5, y = 1068.2 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 630,
         _index = 242,
     },
@@ -2889,7 +2890,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
         Qpart = { [37860] = { 1 } },
         Coord = { x = 6108.7, y = 1131.7 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 630,
         _index = 243,
     },
@@ -2897,7 +2898,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
         Qpart = { [37860] = { 2 } },
         Coord = { x = 6143.6, y = 1184.9 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 630,
         _index = 244,
     },
@@ -2905,7 +2906,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
         Qpart = { [37860] = { 3 } },
         Coord = { x = 6166.7, y = 1234.8 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 630,
         _index = 245,
     },
@@ -2925,7 +2926,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     },
     {
         Done = { 37860 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 630,
         _index = 248,
     },
@@ -3327,14 +3328,14 @@ APR.RouteQuestStepList["630-Azsuna"] = {
     },
     {
         Done = { 42220 },
-        NoArrow = 1,
+        NoArrow = true,
         Faction = "Alliance",
         Zone = 630,
         _index = 308,
     },
     {
         Done = { 42268 },
-        NoArrow = 1,
+        NoArrow = true,
         Faction = "Horde",
         Zone = 630,
         _index = 309,
@@ -3792,7 +3793,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
         _index = 371,
     },
     {
-        NoArrow = 1,
+        NoArrow = true,
         Class = { "MAGE" },
         UseSpell = { questID = 42424, spellID = 193759 },
         Zone = 627,
@@ -3822,7 +3823,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
         _index = 375,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 376,
     },
 }
@@ -4618,7 +4619,7 @@ APR.RouteQuestStepList["641-ValSharah"] = {
         Qpart = { [38582] = { 1 } },
         Coord = { x = 6100.7, y = 2719.3 },
         Range = 53.42,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         _index = 139,
     },
     {
@@ -5437,7 +5438,7 @@ APR.RouteQuestStepList["641-ValSharah"] = {
         _index = 270,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 271,
     },
 }
@@ -5447,6 +5448,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
         PickUp = { 39733 },
         Coord = { x = -5390.2, y = 2333.1 },
         ExtraLineText = "SCOUTING_MAP",
+        IsAdventureMap = true,
         Class = { "PALADIN" },
         Zone = 23,
         _index = 1,
@@ -5454,7 +5456,8 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     {
         PickUp = { 39733 },
         ExtraLineText = "SCOUTING_MAP",
-        NoArrow = 1,
+        IsAdventureMap = true,
+        NoArrow = true,
         Zone = 627,
         _index = 2,
     },
@@ -5712,13 +5715,13 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     },
     {
         Done = { 39488, 39489 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 41,
     },
     {
         PickUp = { 39487 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 42,
     },
@@ -5745,13 +5748,13 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     },
     {
         Done = { 39487 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 46,
     },
     {
         PickUp = { 39498 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 47,
     },
@@ -5778,7 +5781,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     {
         PickUp = { 42104 },
         Coord = { x = 4836.3, y = 3583.8 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 650,
         _index = 51,
     },
@@ -5786,7 +5789,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
         Qpart = { [42104] = { 1 } },
         Coord = { x = 4873, y = 3708.1 },
         Range = 30,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 650,
         _index = 52,
     },
@@ -6913,7 +6916,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     },
     {
         Done = { 40050 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 220,
     },
@@ -7045,7 +7048,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     },
     {
         Done = { 39371 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 240,
     },
@@ -7163,20 +7166,20 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     },
     {
         Done = { 39860 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 258,
     },
     {
         PickUp = { 39381 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 259,
     },
     {
         Qpart = { [39381] = { 1 } },
         GossipOptionIDs = { 44308 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 260,
     },
@@ -7268,13 +7271,13 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     },
     {
         Done = { 39426 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 274,
     },
     {
         PickUp = { 40229 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 275,
     },
@@ -7287,7 +7290,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     },
     {
         Done = { 42373 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 277,
     },
@@ -7731,7 +7734,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     {
         Done = { 39772 },
         Coord = { x = 3822.8, y = 4841.9 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 650,
         _index = 344,
     },
@@ -7739,7 +7742,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
         Qpart = { [39318] = { 2 } },
         Coord = { x = 3909, y = 4759.8 },
         Range = 30,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 650,
         _index = 345,
     },
@@ -7938,7 +7941,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
         Qpart = { [39776] = { 1 } },
         Coord = { x = 3948.2, y = 4208.3 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 650,
         _index = 375,
     },
@@ -7953,7 +7956,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
         Qpart = { [39776] = { 3 } },
         Coord = { x = 3877, y = 4281.6 },
         Range = 30,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 650,
         _index = 377,
     },
@@ -7961,7 +7964,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
         Qpart = { [39776] = { 2 } },
         Coord = { x = 3828.1, y = 4185.1 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 650,
         _index = 378,
     },
@@ -8050,7 +8053,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
     },
     {
         Qpart = { [40594] = { 2 } },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 650,
         _index = 392,
     },
@@ -8253,7 +8256,7 @@ APR.RouteQuestStepList["619-Highmountain"] = {
         _index = 422,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 423,
     },
 }
@@ -8269,7 +8272,7 @@ APR.RouteQuestStepList["Order Hall Death Knight Part 1"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -8284,7 +8287,7 @@ APR.RouteQuestStepList["Order Hall Death Knight Part 2"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -8299,7 +8302,7 @@ APR.RouteQuestStepList["Artifact Weapon - Death Knight - Blood"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -8314,7 +8317,7 @@ APR.RouteQuestStepList["Artifact Weapon - Death Knight - Frost"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -8329,7 +8332,7 @@ APR.RouteQuestStepList["Artifact Weapon - Death Knight - Unholy"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -8395,7 +8398,7 @@ APR.RouteQuestStepList["Order Hall Demon Hunter Part 1"] = {
         _index = 8,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 9,
     },
 }
@@ -8431,7 +8434,7 @@ APR.RouteQuestStepList["Order Hall Demon Hunter Part 2"] = {
         Qpart = { [42872] = { 1 } },
         Coord = { x = 4081.3, y = -949.1 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 627,
         _index = 5,
     },
@@ -8611,6 +8614,7 @@ APR.RouteQuestStepList["Order Hall Demon Hunter Part 2"] = {
         PickUp = { 39718 },
         Coord = { x = 1413.4, y = 1559.1 },
         ExtraLineText = "SCOUTING_MAP",
+        IsAdventureMap = true,
         Zone = 720,
         _index = 30,
     },
@@ -8771,7 +8775,7 @@ APR.RouteQuestStepList["Order Hall Demon Hunter Part 2"] = {
         _index = 54,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 55,
     },
 }
@@ -9034,7 +9038,7 @@ APR.RouteQuestStepList["Artifact Weapon - Demon Hunter - Havoc"] = {
         _index = 32,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 33,
     },
 }
@@ -9277,7 +9281,7 @@ APR.RouteQuestStepList["Artifact Weapon - Demon Hunter - Vengeance"] = {
         _index = 32,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 33,
     },
 }
@@ -9293,7 +9297,7 @@ APR.RouteQuestStepList["Order Hall Druid Part 1"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9308,7 +9312,7 @@ APR.RouteQuestStepList["Order Hall Druid Part 2"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9323,7 +9327,7 @@ APR.RouteQuestStepList["Artifact Weapon - Druid - Balance"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9338,7 +9342,7 @@ APR.RouteQuestStepList["Artifact Weapon - Druid - Feral"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9353,7 +9357,7 @@ APR.RouteQuestStepList["Artifact Weapon - Druid - Guardian"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9368,7 +9372,7 @@ APR.RouteQuestStepList["Artifact Weapon - Druid - Restoration"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9384,7 +9388,7 @@ APR.RouteQuestStepList["Order Hall Hunter Part 1"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9399,7 +9403,7 @@ APR.RouteQuestStepList["Order Hall Hunter Part 2"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9414,7 +9418,7 @@ APR.RouteQuestStepList["Artifact Weapon - Hunter - Beast Mastery"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9429,7 +9433,7 @@ APR.RouteQuestStepList["Artifact Weapon - Hunter - Marksmanship"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9444,7 +9448,7 @@ APR.RouteQuestStepList["Artifact Weapon - Hunter - Survival"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -9574,7 +9578,7 @@ APR.RouteQuestStepList["Order Hall Mage Part 1"] = {
         _index = 17,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 18,
     },
 }
@@ -9867,7 +9871,7 @@ APR.RouteQuestStepList["Order Hall Mage Part 2"] = {
         _index = 57,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 47,
     },
 }
@@ -10029,13 +10033,13 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
     },
     {
         Done = { 42007 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 115,
         _index = 23,
     },
     {
         PickUp = { 42008 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 115,
         _index = 24,
     },
@@ -10068,13 +10072,13 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
     },
     {
         Done = { 42008 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 114,
         _index = 29,
     },
     {
         PickUp = { 42009 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 114,
         _index = 30,
     },
@@ -10087,13 +10091,13 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
     },
     {
         Done = { 42009 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 114,
         _index = 32,
     },
     {
         PickUp = { 42010 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 114,
         _index = 33,
     },
@@ -10120,13 +10124,13 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
     },
     {
         Done = { 42010 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 114,
         _index = 37,
     },
     {
         PickUp = { 42011 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 114,
         _index = 38,
     },
@@ -10269,7 +10273,7 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
         Scenario = { criteriaID = 34398, criteriaIndex = 2, scenarioID = 1101, stepID = 2471 },
         Coord = { x = 1014.1, y = 1099.3 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         InstanceQuest = true,
         Zone = 114,
         _index = 56,
@@ -10278,7 +10282,7 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
         Scenario = { criteriaID = 34397, criteriaIndex = 1, scenarioID = 1101, stepID = 2471 },
         Coord = { x = 1078.3, y = 1093.9 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         InstanceQuest = true,
         Zone = 114,
         _index = 57,
@@ -10287,7 +10291,7 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
         Scenario = { criteriaID = 34399, criteriaIndex = 3, scenarioID = 1101, stepID = 2471 },
         Coord = { x = 1057, y = 1157.1 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         InstanceQuest = true,
         Zone = 114,
         _index = 58,
@@ -10332,7 +10336,7 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
         _index = 63,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 64,
     },
 }
@@ -10397,7 +10401,7 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Fire"] = {
     {
         Qpart = { [40267] = { 1 } },
         Button = { ["40267-1"] = 130131 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 735,
         _index = 9,
     },
@@ -10566,7 +10570,7 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Fire"] = {
         _index = 31,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 32,
     },
 }
@@ -10964,7 +10968,7 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Frost"] = {
         _index = 54,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 55,
     },
 }
@@ -10980,7 +10984,7 @@ APR.RouteQuestStepList["Order Hall Monk Part 1"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -10995,7 +10999,7 @@ APR.RouteQuestStepList["Order Hall Monk Part 2"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -11010,7 +11014,7 @@ APR.RouteQuestStepList["Artifact Weapon - Monk - Brewmaster"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -11025,7 +11029,7 @@ APR.RouteQuestStepList["Artifact Weapon - Monk - Mistweaver"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -11040,7 +11044,7 @@ APR.RouteQuestStepList["Artifact Weapon - Monk - Windwalker"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -11096,7 +11100,7 @@ APR.RouteQuestStepList["Order Hall Paladin Part 1"] = {
         _index = 7,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -11166,6 +11170,7 @@ APR.RouteQuestStepList["Order Hall Paladin Part 2"] = {
         PickUp = { 39718 },
         Coord = { x = -5390.2, y = 2333.1 },
         ExtraLineText = "SCOUTING_MAP",
+        IsAdventureMap = true,
         Zone = 23,
         _index = 10,
     },
@@ -11330,7 +11335,7 @@ APR.RouteQuestStepList["Order Hall Paladin Part 2"] = {
         _index = 7,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 33,
     },
 }
@@ -11707,7 +11712,7 @@ APR.RouteQuestStepList["Artifact Weapon - Paladin - Holy"] = {
         _index = 47,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 48,
     },
 }
@@ -11860,7 +11865,7 @@ APR.RouteQuestStepList["Artifact Weapon - Paladin - Protection"] = {
     {
         UseDalaHS = 42005,
         Button = { ["42005"] = 140192 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 117,
         _index = 20,
     },
@@ -11929,7 +11934,7 @@ APR.RouteQuestStepList["Artifact Weapon - Paladin - Protection"] = {
     {
         UseDalaHS = 42017,
         Button = { ["42017"] = 140192 },
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 117,
         _index = 30,
     },
@@ -12013,7 +12018,7 @@ APR.RouteQuestStepList["Artifact Weapon - Paladin - Protection"] = {
         _index = 40,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 41,
     },
 }
@@ -12030,7 +12035,7 @@ APR.RouteQuestStepList["Artifact Weapon - Paladin - Retribution"] = {
         Qpart = { [42770] = { 1 } },
         Button = { ["42770-1"] = 173537 },
         ExtraLineText = "USE_QUEST_HEARTHSTONE",
-        NoArrow = 1,
+        NoArrow = true,
         IsQuestsUncompleted = { 38376, 42120, 42017 },
         Zone = 627,
         _index = 2,
@@ -12091,7 +12096,7 @@ APR.RouteQuestStepList["Artifact Weapon - Paladin - Retribution"] = {
         Qpart = { [42770] = { 1 } },
         Button = { ["42770-1"] = 173537 },
         ExtraLineText = "USE_QUEST_HEARTHSTONE",
-        NoArrow = 1,
+        NoArrow = true,
         IsOneOfQuestsCompleted = { 38376, 42120, 42017 },
         Zone = 23,
         _index = 10,
@@ -12249,7 +12254,7 @@ APR.RouteQuestStepList["Artifact Weapon - Paladin - Retribution"] = {
         Scenario = { criteriaID = 30652, criteriaIndex = 1, scenarioID = 775, stepID = 2632 },
         Coord = { x = -324.9, y = -2751.7 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         InstanceQuest = true,
         Zone = 676,
         _index = 32,
@@ -12353,7 +12358,7 @@ APR.RouteQuestStepList["Artifact Weapon - Paladin - Retribution"] = {
         _index = 45,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 46,
     },
 }
@@ -12369,7 +12374,7 @@ APR.RouteQuestStepList["Order Hall Priest Part 1"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12384,7 +12389,7 @@ APR.RouteQuestStepList["Order Hall Priest Part 2"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12399,7 +12404,7 @@ APR.RouteQuestStepList["Artifact Weapon - Priest - Discipline"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12414,7 +12419,7 @@ APR.RouteQuestStepList["Artifact Weapon - Priest - Holy"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12429,7 +12434,7 @@ APR.RouteQuestStepList["Artifact Weapon - Priest - Shadow"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12445,7 +12450,7 @@ APR.RouteQuestStepList["Order Hall Rogue Part 1"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12460,7 +12465,7 @@ APR.RouteQuestStepList["Order Hall Rogue Part 2"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12475,7 +12480,7 @@ APR.RouteQuestStepList["Artifact Weapon - Rogue - Assassination"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12490,7 +12495,7 @@ APR.RouteQuestStepList["Artifact Weapon - Rogue - Outlaw"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12505,7 +12510,7 @@ APR.RouteQuestStepList["Artifact Weapon - Rogue - Subtlety"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12521,7 +12526,7 @@ APR.RouteQuestStepList["Order Hall Shaman Part 1"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12536,7 +12541,7 @@ APR.RouteQuestStepList["Order Hall Shaman Part 2"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12551,7 +12556,7 @@ APR.RouteQuestStepList["Artifact Weapon - Shaman - Elemental"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12566,7 +12571,7 @@ APR.RouteQuestStepList["Artifact Weapon - Shaman - Enhancement"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12581,7 +12586,7 @@ APR.RouteQuestStepList["Artifact Weapon - Shaman - Restoration"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12597,7 +12602,7 @@ APR.RouteQuestStepList["Order Hall Warlock Part 1"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12612,7 +12617,7 @@ APR.RouteQuestStepList["Order Hall Warlock Part 2"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12627,7 +12632,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warlock - Affliction"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12642,7 +12647,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warlock - Demonology"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12657,7 +12662,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warlock - Destruction"] = {
         _index = 1,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 8,
     },
 }
@@ -12838,7 +12843,7 @@ APR.RouteQuestStepList["Order Hall Warrior Part 1"] = {
         _index = 24,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 25,
     },
 }
@@ -12866,6 +12871,7 @@ APR.RouteQuestStepList["Order Hall Warrior Part 2"] = {
         PickUp = { 39718 },
         Coord = { x = 7223.2, y = 1138.1 },
         ExtraLineText = "SCOUTING_MAP",
+        IsAdventureMap = true,
         Zone = 695,
         _index = 4,
     },
@@ -13067,7 +13073,7 @@ APR.RouteQuestStepList["Order Hall Warrior Part 2"] = {
         Waypoint = 42651,
         Coord = { x = 4254.6, y = -842.1 },
         ZoneStepTrigger = { Range = 15, x = 7225.2, y = 1028.6 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 627,
         _index = 38,
     },
@@ -13117,7 +13123,7 @@ APR.RouteQuestStepList["Order Hall Warrior Part 2"] = {
         _index = 24,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 25,
     },
 }
@@ -13145,6 +13151,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Arms"] = {
         PickUp = { 39718 },
         Coord = { x = 7223.2, y = 1138.1 },
         ExtraLineText = "SCOUTING_MAP",
+        IsAdventureMap = true,
         Zone = 695,
         _index = 4,
     },
@@ -13346,7 +13353,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Arms"] = {
         Waypoint = 42651,
         Coord = { x = 4254.6, y = -842.1 },
         ZoneStepTrigger = { Range = 15, x = 7225.2, y = 1028.6 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 627,
         _index = 36,
     },
@@ -13396,7 +13403,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Arms"] = {
         _index = 43,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 44,
     },
 }
@@ -13576,7 +13583,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Fury"] = {
         Qpart = { [40043] = { 3 } },
         Coord = { x = 1818.4, y = 3516 },
         Range = 5,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 694,
         _index = 25,
     },
@@ -13594,7 +13601,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Fury"] = {
         _index = 27,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 28,
     },
 }
@@ -13744,7 +13751,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Protection"] = {
     {
         Qpart = { [39191] = { 3 } },
         Coord = { x = 351.8, y = 4701.1 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Zone = 634,
         _index = 21,
     },
@@ -13762,7 +13769,7 @@ APR.RouteQuestStepList["Artifact Weapon - Warrior - Protection"] = {
         _index = 23,
     },
     {
-        RouteCompleted = 1,
+        RouteCompleted = true,
         _index = 24,
     },
 }

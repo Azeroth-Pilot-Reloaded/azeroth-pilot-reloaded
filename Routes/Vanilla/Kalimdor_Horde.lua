@@ -879,7 +879,7 @@ if APR.Faction == "Horde" then
             _index = 135
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 136
         }
     }
@@ -1090,7 +1090,7 @@ if APR.Faction == "Horde" then
             _index = 35
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 36
         }
     }
@@ -1301,7 +1301,7 @@ if APR.Faction == "Horde" then
             _index = 35
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 36
         }
     }
@@ -1565,7 +1565,7 @@ if APR.Faction == "Horde" then
             _index = 45
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 46
         }
     }
@@ -1823,7 +1823,7 @@ if APR.Faction == "Horde" then
             _index = 44
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 45
         }
     }
@@ -2163,7 +2163,7 @@ if APR.Faction == "Horde" then
             _index = 59
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 60
         }
     }
@@ -2427,7 +2427,7 @@ if APR.Faction == "Horde" then
             _index = 45
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 46
         }
     }
@@ -2691,7 +2691,7 @@ if APR.Faction == "Horde" then
             _index = 45
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 46
         }
     }
@@ -2955,7 +2955,7 @@ if APR.Faction == "Horde" then
             _index = 45
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 46
         }
     }
@@ -3219,7 +3219,7 @@ if APR.Faction == "Horde" then
             _index = 45
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 46
         }
     }
@@ -3483,7 +3483,7 @@ if APR.Faction == "Horde" then
             _index = 45
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 46
         }
     }
@@ -4041,7 +4041,7 @@ if APR.Faction == "Horde" then
             _index = 95
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 96
         }
     }
@@ -5345,7 +5345,7 @@ if APR.Faction == "Horde" then
             _index = 227
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 228
         }
     }

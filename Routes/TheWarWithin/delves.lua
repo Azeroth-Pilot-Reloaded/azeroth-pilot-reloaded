@@ -142,7 +142,7 @@ APR.RouteQuestStepList.DREAD_PIT_DELVE = {
         Scenario = { criteriaID = 66450, criteriaIndex = 2, scenarioID = 2415, stepID = 7060 },
         Coord = { x = -193.7, y = -371.0 },
         InstanceQuest = true,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Range = 5,
         Zone = 2214
     },
@@ -150,7 +150,7 @@ APR.RouteQuestStepList.DREAD_PIT_DELVE = {
         Scenario = { criteriaID = 69809, criteriaIndex = 1, scenarioID = 2415, stepID = 7060 },
         Coord = { x = -324.0, y = -199.4 },
         InstanceQuest = true,
-        ExtraActionB = 1,
+        ExtraActionB = true,
         Range = 5,
         Zone = 2214
     },
@@ -219,7 +219,7 @@ APR.RouteQuestStepList.MYCOMANCER_CAVERN_DELVE = {
     {
         Scenario = { criteriaID = 66485, criteriaIndex = 1, scenarioID = 2434, stepID = 7094 },
         InstanceQuest = true,
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 2215
     },
     {
@@ -390,7 +390,7 @@ APR.RouteQuestStepList.TAK_RETHAN_ABYSS_DELVE = {
     {
         Scenario = { criteriaID = 64510, criteriaIndex = 1, scenarioID = 2373, stepID = 6813 },
         Coord = { x = 297.20001220703, y = -558.90002441406 },
-        ExtraActionB = 1,
+        ExtraActionB = true,
         InstanceQuest = true,
         Range = 5,
         Zone = 2255,
@@ -412,7 +412,7 @@ APR.RouteQuestStepList.TAK_RETHAN_ABYSS_DELVE = {
     {
         Scenario = { criteriaID = 64738, criteriaIndex = 1, scenarioID = 2373, stepID = 6814 },
         InstanceQuest = true,
-        NoArrow = 1,
+        NoArrow = true,
         Zone = 2255,
     }
 }

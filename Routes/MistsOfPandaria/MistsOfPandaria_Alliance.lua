@@ -68,7 +68,7 @@ if APR.Faction == "Alliance" then
             _index = 10,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 11,
         },
     }
@@ -1231,13 +1231,13 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 29716, 29717 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 175,
         },
         {
             PickUp = { 29723 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 176,
         },
@@ -1605,13 +1605,13 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 29745 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 232,
         },
         {
             PickUp = { 29747 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 233,
         },
@@ -1630,13 +1630,13 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 29747, 29748 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 236,
         },
         {
             PickUp = { 29749 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 371,
             _index = 237,
         },
@@ -2887,7 +2887,7 @@ if APR.Faction == "Alliance" then
             _index = 417,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 418,
         },
     }
@@ -3281,13 +3281,13 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30346 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 58,
         },
         {
             PickUp = { 30347 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 59,
         },
@@ -3300,7 +3300,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30351 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 61,
         },
@@ -3455,7 +3455,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30695 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 84,
         },
@@ -3469,13 +3469,13 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30271, 30272 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 86,
         },
         {
             PickUp = { 30273 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 87,
         },
@@ -3636,7 +3636,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30691 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 111,
         },
@@ -3683,7 +3683,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30674 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 118,
         },
@@ -3696,7 +3696,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30675 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 418,
             _index = 120,
         },
@@ -3926,7 +3926,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30624 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 376,
             _index = 155,
         },
@@ -4046,7 +4046,7 @@ if APR.Faction == "Alliance" then
             _index = 172,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 173,
         },
     }
@@ -4368,13 +4368,13 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30828 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 49,
         },
         {
             PickUp = { 30855 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 50,
         },
@@ -4684,13 +4684,13 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30652 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 96,
         },
         {
             PickUp = { 30660 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 97,
         },
@@ -5710,7 +5710,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30942 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 248,
         },
@@ -5848,7 +5848,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [30592] = { 1 } },
             ExtraLineText = "OPEN_YOUR_MAP_TO_SEE_WHERE_NPCS_TO_ESCORT",
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 268,
         },
@@ -6070,7 +6070,7 @@ if APR.Faction == "Alliance" then
         {
             Qpart = { [30692] = { 1 } },
             ExtraLineText = "OPEN_YOUR_MAP_TO_SEE_WHERE_NPCS_TO_ESCORT",
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 301,
         },
@@ -6118,13 +6118,13 @@ if APR.Faction == "Alliance" then
         },
         {
             Done = { 30744 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 308,
         },
         {
             PickUp = { 30746 },
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 379,
             _index = 309,
         },
@@ -6276,7 +6276,7 @@ if APR.Faction == "Alliance" then
             Button = { ["30690-1"] = 81741 },
             ExtraLineText = "SET_UP_TRAP_AND_PULL_MOB_ONTO_IT_ONCE_TRAPPED_USE_YOUR_EXTRA_ACTION_BUTTON_TO_SPAWN_SHA",
             Range = 5,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             Zone = 379,
             _index = 330,
         },
@@ -6530,7 +6530,7 @@ if APR.Faction == "Alliance" then
             Done = { 31030 },
             DoneDB = { 31030, 31031 },
             ExtraLineText = "TURN_IN_QUEST_INSIDE_DUNGEON_THEN_EXIT",
-            NoArrow = 1,
+            NoArrow = true,
             _index = 369,
         },
         {
@@ -6566,7 +6566,7 @@ if APR.Faction == "Alliance" then
             _index = 374,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 375,
         },
     }
@@ -6707,7 +6707,7 @@ if APR.Faction == "Alliance" then
             Coord = { x = 5040.3, y = 6110.7 },
             GossipOptionIDs = { 41662 },
             Range = 5,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             RaidIcon = 70297,
             Zone = 516,
             _index = 20,
@@ -6825,7 +6825,7 @@ if APR.Faction == "Alliance" then
             _index = 37,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 38,
         },
     }

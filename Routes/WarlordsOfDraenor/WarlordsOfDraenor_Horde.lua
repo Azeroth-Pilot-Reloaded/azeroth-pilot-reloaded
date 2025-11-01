@@ -57,7 +57,7 @@ if APR.Faction == "Horde" then
             _index = 8,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 9,
         },
     }
@@ -637,7 +637,7 @@ if APR.Faction == "Horde" then
             _index = 99,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 100,
         },
     }
@@ -927,7 +927,7 @@ if APR.Faction == "Horde" then
             Coord = { x = 4039.6, y = 5724.3 },
             ExtraLineText = "GO_EAST",
             Range = 13.75,
-            UseGlider = 1,
+            UseGlider = true,
             _index = 47,
         },
         {
@@ -2572,7 +2572,7 @@ if APR.Faction == "Horde" then
             _index = 325,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 326,
         },
     }
@@ -3723,7 +3723,7 @@ if APR.Faction == "Horde" then
             _index = 190,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 191,
         },
     }
@@ -4319,7 +4319,7 @@ if APR.Faction == "Horde" then
             _index = 100,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 101,
         },
     }
@@ -5666,7 +5666,7 @@ if APR.Faction == "Horde" then
             _index = 228,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 229,
         },
     }
@@ -7195,7 +7195,7 @@ if APR.Faction == "Horde" then
             _index = 259,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 260,
         },
     }
@@ -7830,7 +7830,7 @@ if APR.Faction == "Horde" then
             _index = 103,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 104,
         },
     }

@@ -131,7 +131,7 @@ if APR.Faction == "Horde" then
             _index = 19,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 20,
         },
     }
@@ -222,7 +222,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [72293] = { 1 } },
             Coord = { x = -1452.5, y = 3552 },
-            isAdventureMap = true,
+            IsAdventureMap = true,
             ExtraLineText = "CHOOSE_ZONE",
             Range = 5,
             HasAchievement = 16326,
@@ -463,7 +463,7 @@ if APR.Faction == "Horde" then
             _index = 52,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 53,
         },
     }
@@ -1450,7 +1450,7 @@ if APR.Faction == "Horde" then
             _index = 162,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 163,
         },
     }

@@ -532,7 +532,7 @@ if APR.Faction == "Horde" then
             _index = 61,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 62,
         },
     }
@@ -654,6 +654,7 @@ if APR.Faction == "Horde" then
             PickUp = { 47514 },
             Coord = { x = 818.9, y = -1119 },
             ExtraLineText = "SCOUTING_MAP",
+            IsAdventureMap = true,
             _index = 20,
         },
         {
@@ -892,7 +893,7 @@ if APR.Faction == "Horde" then
             Qpart = { [49905] = { 2 } },
             Coord = { x = 152.5, y = -362.4 },
             Range = 7.91,
-            Bloodlust = 1,
+            Bloodlust = true,
             _index = 60,
         },
         {
@@ -1147,7 +1148,7 @@ if APR.Faction == "Horde" then
             Coord = { x = 629.1, y = -1903 },
             Fillers = { [46929] = { 1 }, [48404] = { 1 } },
             Range = 10.76,
-            Bloodlust = 1,
+            Bloodlust = true,
             _index = 100,
         },
         {
@@ -1638,10 +1639,10 @@ if APR.Faction == "Horde" then
             _index = 178,
         },
         {
-            Done = { 47445 },
-            Coord = { x = 936.6, y = -712.7 },
-            UseGlider = 1,
-            _index = 179,
+            Done      = { 47445 },
+            Coord     = { x = 936.6, y = -712.7 },
+            UseGlider = true,
+            _index    = 179,
         },
         {
             PickUp = { 47423 },
@@ -1905,12 +1906,12 @@ if APR.Faction == "Horde" then
             _index = 222,
         },
         {
-            Waypoint = 47439,
-            Coord = { x = 1226.9, y = -353.7 },
-            Range = 38.05,
+            Waypoint  = 47439,
+            Coord     = { x = 1226.9, y = -353.7 },
+            Range     = 38.05,
             PickedLoa = 2,
-            UseGlider = 1,
-            _index = 223,
+            UseGlider = true,
+            _index    = 223,
         },
         {
             Qpart = { [47439] = { 1 } },
@@ -2028,10 +2029,10 @@ if APR.Faction == "Horde" then
             _index = 240,
         },
         {
-            PickUp = { 49810 },
-            Coord = { x = 284.3, y = -615.2 },
-            UseGlider = 1,
-            _index = 241,
+            PickUp    = { 49810 },
+            Coord     = { x = 284.3, y = -615.2 },
+            UseGlider = true,
+            _index    = 241,
         },
         {
             Qpart = { [49810] = { 1 } },
@@ -2537,10 +2538,10 @@ if APR.Faction == "Horde" then
             _index = 327,
         },
         {
-            PickUp = { 51072, 51071 },
-            Coord = { x = 1339.5, y = -1184.3 },
-            UseGlider = 1,
-            _index = 328,
+            PickUp    = { 51072, 51071 },
+            Coord     = { x = 1339.5, y = -1184.3 },
+            UseGlider = true,
+            _index    = 328,
         },
         {
             Qpart = { [51072] = { 1 } },
@@ -2617,7 +2618,6 @@ if APR.Faction == "Horde" then
         {
             UseHS = 49919,
             Coord = { x = 1689.5, y = -1553.9 },
-            HSSteps = 4,
             _index = 341,
         },
         {
@@ -2838,10 +2838,10 @@ if APR.Faction == "Horde" then
             _index = 376,
         },
         {
-            Done = { 47509 },
-            Coord = { x = 1011.2, y = -667.3 },
-            UseGlider = 1,
-            _index = 377,
+            Done      = { 47509 },
+            Coord     = { x = 1011.2, y = -667.3 },
+            UseGlider = true,
+            _index    = 377,
         },
         {
             PickUp = { 47897, 47915 },
@@ -3151,18 +3151,18 @@ if APR.Faction == "Horde" then
             _index = 425,
         },
         {
-            Waypoint = 49768,
-            Coord = { x = 1336.4, y = -153.7 },
-            Range = 19.09,
-            UseGlider = 1,
-            _index = 426,
+            Waypoint  = 49768,
+            Coord     = { x = 1336.4, y = -153.7 },
+            Range     = 19.09,
+            UseGlider = true,
+            _index    = 426,
         },
         {
-            Waypoint = 49768,
-            Coord = { x = 353.2, y = 119 },
-            Range = 27.13,
-            UseGlider = 1,
-            _index = 427,
+            Waypoint  = 49768,
+            Coord     = { x = 353.2, y = 119 },
+            Range     = 27.13,
+            UseGlider = true,
+            _index    = 427,
         },
         {
             Waypoint = 49768,
@@ -3330,11 +3330,11 @@ if APR.Faction == "Horde" then
             _index = 455,
         },
         {
-            Waypoint = 51101,
-            Coord = { x = -380.8, y = 183.6 },
-            Range = 63.82,
-            UseGlider = 1,
-            _index = 456,
+            Waypoint  = 51101,
+            Coord     = { x = -380.8, y = 183.6 },
+            Range     = 63.82,
+            UseGlider = true,
+            _index    = 456,
         },
         {
             Waypoint = 51101,
@@ -3748,11 +3748,11 @@ if APR.Faction == "Horde" then
             _index = 524,
         },
         {
-            Done = { 49421 },
-            Coord = { x = 1115.5, y = -771.3 },
+            Done       = { 49421 },
+            Coord      = { x = 1115.5, y = -771.3 },
             LeaveQuest = 52210,
-            UseGlider = 1,
-            _index = 525,
+            UseGlider  = true,
+            _index     = 525,
         },
         {
             PickUp = { 49965 },
@@ -4004,14 +4004,14 @@ if APR.Faction == "Horde" then
             _index = 565,
         },
         {
-            Done = { 48535 },
-            Coord = { x = 1188.2, y = 514.5 },
-            UseGlider = 1,
-            Zone = 863,
-            _index = 566,
+            Done      = { 48535 },
+            Coord     = { x = 1188.2, y = 514.5 },
+            UseGlider = true,
+            Zone      = 863,
+            _index    = 566,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 567,
         },
     }
@@ -4068,7 +4068,7 @@ if APR.Faction == "Horde" then
             Qpart = { [47262] = { 1 } },
             Coord = { x = 1084.5, y = 1015.9 },
             Range = 10.37,
-            Bloodlust = 1,
+            Bloodlust = true,
             _index = 9,
         },
         {
@@ -4193,10 +4193,10 @@ if APR.Faction == "Horde" then
             _index = 30,
         },
         {
-            Done = { 48578, 48577, 48576 },
-            Coord = { x = 1655.7, y = 775.6 },
-            UseGlider = 1,
-            _index = 31,
+            Done      = { 48578, 48577, 48576 },
+            Coord     = { x = 1655.7, y = 775.6 },
+            UseGlider = true,
+            _index    = 31,
         },
         {
             PickUp = { 48584, 48590 },
@@ -4765,14 +4765,14 @@ if APR.Faction == "Horde" then
             Qpart = { [48499] = { 1 } },
             Coord = { x = 2058.3, y = 2242.6 },
             Range = 16.62,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 125,
         },
         {
             Qpart = { [48499] = { 2 } },
             Coord = { x = 2012, y = 2144.9 },
             Range = 0.69,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 126,
         },
         {
@@ -4911,7 +4911,7 @@ if APR.Faction == "Horde" then
             Qpart = { [49081] = { 1 } },
             Coord = { x = 1891.5, y = 1900.5 },
             Range = 7.51,
-            Bloodlust = 1,
+            Bloodlust = true,
             _index = 148,
         },
         {
@@ -5382,7 +5382,7 @@ if APR.Faction == "Horde" then
             Qpart = { [49126] = { 1 } },
             Coord = { x = 64.7, y = 2934.9 },
             Range = 19.63,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 226,
         },
         {
@@ -5427,7 +5427,7 @@ if APR.Faction == "Horde" then
             Qpart = { [49136] = { 1 } },
             Coord = { x = 241.3, y = 2895.1 },
             Range = 8.5,
-            Bloodlust = 1,
+            Bloodlust = true,
             _index = 234,
         },
         {
@@ -5984,7 +5984,7 @@ if APR.Faction == "Horde" then
             Coord = { x = -685.8, y = 2642.5 },
             Fillers = { [47598] = { 1 } },
             Range = 9.67,
-            Bloodlust = 1,
+            Bloodlust = true,
             _index = 327,
         },
         {
@@ -6469,7 +6469,7 @@ if APR.Faction == "Horde" then
             Qpart = { [50087] = { 1 } },
             Coord = { x = 786.2, y = 1498.4 },
             Range = 7.86,
-            Bloodlust = 1,
+            Bloodlust = true,
             _index = 410,
         },
         {
@@ -6523,7 +6523,7 @@ if APR.Faction == "Horde" then
             _index = 418,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 419,
         },
     }
@@ -6654,7 +6654,7 @@ if APR.Faction == "Horde" then
             _index = 20,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 21,
         },
     }
@@ -6963,10 +6963,10 @@ if APR.Faction == "Horde" then
             _index = 51,
         },
         {
-            Done = { 51829 },
-            Coord = { x = 3020.5, y = 1186.9 },
-            UseGlider = 1,
-            _index = 52,
+            Done      = { 51829 },
+            Coord     = { x = 3020.5, y = 1186.9 },
+            UseGlider = true,
+            _index    = 52,
         },
         {
             PickUp = { 48551, 48553, 48555 },
@@ -7226,11 +7226,11 @@ if APR.Faction == "Horde" then
             _index = 95,
         },
         {
-            Waypoint = 48987,
-            Coord = { x = 3037.5, y = 691.6 },
-            Range = 51.77,
-            UseGlider = 1,
-            _index = 96,
+            Waypoint  = 48987,
+            Coord     = { x = 3037.5, y = 691.6 },
+            Range     = 51.77,
+            UseGlider = true,
+            _index    = 96,
         },
         {
             Done = { 48987 },
@@ -7297,7 +7297,7 @@ if APR.Faction == "Horde" then
             Qpart = { [48996] = { 1 } },
             Coord = { x = 3067.1, y = 203.9 },
             Range = 12.05,
-            ExtraActionB = 1,
+            ExtraActionB = true,
             _index = 108,
         },
         {
@@ -7408,13 +7408,13 @@ if APR.Faction == "Horde" then
             Coord = { x = 3699.4, y = 890.1 },
             Range = 5.91,
             ETA = 81,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 127,
         },
         {
             SetHS = 51573,
             Coord = { x = 3757.6, y = 865.7 },
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 128,
         },
         {
@@ -7861,12 +7861,12 @@ if APR.Faction == "Horde" then
             _index = 204,
         },
         {
-            Waypoint = 51056,
-            Coord = { x = 4194.5, y = 632.2 },
-            Fillers = { [47647] = { 1 } },
-            Range = 11.64,
-            UseGlider = 1,
-            _index = 205,
+            Waypoint  = 51056,
+            Coord     = { x = 4194.5, y = 632.2 },
+            Fillers   = { [47647] = { 1 } },
+            Range     = 11.64,
+            UseGlider = true,
+            _index    = 205,
         },
         {
             Done = { 51056, 51055 },
@@ -7980,7 +7980,6 @@ if APR.Faction == "Horde" then
             Coord = { x = 3484.6, y = 899.2 },
             Button = { ["50770-1"] = 158678 },
             Range = 0.61,
-            SpecialMacro = 1,
             _index = 222,
         },
         {
@@ -8386,49 +8385,49 @@ if APR.Faction == "Horde" then
             Range = 16.48,
             ETA = 79,
             RaidIcon = 135172,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 292,
         },
         {
             Waypoint = 50745,
             Coord = { x = 3730.4, y = 2793.6 },
             Range = 9.57,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 293,
         },
         {
             Waypoint = 50745,
             Coord = { x = 3683.1, y = 2769 },
             Range = 13.93,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 294,
         },
         {
             Waypoint = 50745,
             Coord = { x = 3626, y = 2758.6 },
             Range = 18.17,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 295,
         },
         {
             Waypoint = 50745,
             Coord = { x = 3498.3, y = 2753.1 },
             Range = 14.89,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 296,
         },
         {
             GetFP = 2111,
             Coord = { x = 3467.9, y = 2738 },
             Range = 4.91,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 297,
         },
         {
             Waypoint = 50745,
             Coord = { x = 3426.9, y = 2730 },
             Range = 5.58,
-            SpecialETAHide = 1,
+            SpecialETAHide = true,
             _index = 298,
         },
         {
@@ -8751,7 +8750,6 @@ if APR.Faction == "Horde" then
             ExtraLineText = "SPEAR_DOWN_THE_UFO",
             Range = 15.79,
             DenyNPC = 129763,
-            SpecialMacro2 = 1,
             _index = 350,
         },
         {
@@ -8835,7 +8833,7 @@ if APR.Faction == "Horde" then
             Qpart = { [50550] = { 2 } },
             Coord = { x = 3151.1, y = 3128 },
             Range = 16.87,
-            Bloodlust = 1,
+            Bloodlust = true,
             _index = 364,
         },
         {
@@ -8896,7 +8894,7 @@ if APR.Faction == "Horde" then
             _index = 374,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 375,
         },
     }
@@ -8942,7 +8940,7 @@ if APR.Faction == "Horde" then
             _index = 6,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 7,
         },
     }
@@ -9043,7 +9041,7 @@ if APR.Faction == "Horde" then
             _index = 14,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 15,
         },
     }
@@ -9151,7 +9149,7 @@ if APR.Faction == "Horde" then
             _index = 15,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 16,
         },
     }

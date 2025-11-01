@@ -256,10 +256,10 @@ function APR:UpdateStep()
             -- IF you're not inside the scenario, add coord to the entrance
             if scenarioMapID ~= currentMapID then
                 step.Coord = scenarioInfo.Coord
-                step.NoArrow = nil
+                step.NoArrow = false
             else
                 step.Coord = nil
-                step.NoArrow = 1
+                step.NoArrow = true
             end
             APR.Arrow:SetCoord()
 

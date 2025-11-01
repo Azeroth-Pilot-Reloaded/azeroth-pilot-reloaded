@@ -304,7 +304,7 @@ if APR.Faction == "Horde" then
             _index = 43,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 44,
         },
     }
@@ -1671,7 +1671,7 @@ if APR.Faction == "Horde" then
         {
             Qpart = { [43596] = { 1 } },
             ExtraLineText = "DO_DUNGEON_ON_NORMAL_HEROIC",
-            NoArrow = 1,
+            NoArrow = true,
             _index = 230,
         },
         {
@@ -2030,7 +2030,7 @@ if APR.Faction == "Horde" then
             _index = 283,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 284,
         },
     }
@@ -2090,7 +2090,7 @@ if APR.Faction == "Horde" then
             _index = 8,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 9,
         },
     }
@@ -2136,7 +2136,7 @@ if APR.Faction == "Horde" then
             _index = 6,
         },
         {
-            RouteCompleted = 1,
+            RouteCompleted = true,
             _index = 7,
         },
     }
