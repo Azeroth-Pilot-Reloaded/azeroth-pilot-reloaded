@@ -91,6 +91,14 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.17.1", "2025-09-28" },
+        "#Guides",
+        "- Temporary fix to avoid transport module errors in the `Val'Sharah` route (route rework in progress)",
+        "- Updated legacy step options in multiple routes for technical reasons",
+
+        "#Features",
+        "- Added new optional `gossip ETA` step option to handle specific gossip steps",
+
         { "v4.17.0", "2025-09-28" },
         "#Guides",
         "- Fixed `The Dark Lady's Bidding` quest in Stormheim (Horde)",
@@ -266,7 +274,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6",  "2025-04-06" },
+        { "v4.9.6", "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
