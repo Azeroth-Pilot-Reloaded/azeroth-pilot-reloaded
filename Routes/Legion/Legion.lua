@@ -10317,6 +10317,7 @@ APR.RouteQuestStepList["Artifact Weapon - Mage - Arcane"] = {
     {
         ZoneStepTrigger = { Range = 15, x = 6877.2, y = 3792.5 },
         UseItem = { itemID = 173430, itemSpellID = 254294, questID = 42008 },
+        NoArrow = true,
         Zone = 115,
         _index = 25,
     },

@@ -713,7 +713,7 @@ if APR.Faction == "Horde" then
             Coord = { x = 1211.7, y = 1315.3 },
             ExtraLineText = "NOT_SKIP_VIDEO",
             Range = 0.75,
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 26,
         },
         {
@@ -917,7 +917,7 @@ if APR.Faction == "Horde" then
             Qpart = { [27099] = { 1 } },
             Coord = { x = 689.5, y = 982 },
             Range = 0.75,
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 61,
         },
         {
@@ -1230,7 +1230,7 @@ if APR.Faction == "Horde" then
             Coord = { x = 1712.5, y = -1460.5 },
             Fillers = { [27360] = { 1 } },
             Range = 0.75,
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 20,
         },
         {
@@ -4122,20 +4122,20 @@ if APR.Faction == "Horde" then
         {
             Done = { 27090 },
             Coord = { x = -1691.3, y = 1540.4 },
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 76,
         },
         {
             PickUp = { 27144 },
             Coord = { x = -1690, y = 1539.7 },
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 77,
         },
         {
             Qpart = { [27144] = { 1 } },
             Coord = { x = -1690.9, y = 1540.2 },
             Range = 11.11,
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 78,
         },
         {
