@@ -312,7 +312,7 @@ if APR.Faction == "Alliance" then
             Qpart = { [47098] = { 8 } },
             Coord = { x = -2818, y = 232.4 },
             Range = 0.69,
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 23,
         },
         {

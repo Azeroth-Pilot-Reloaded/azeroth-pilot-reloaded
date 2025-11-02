@@ -3738,7 +3738,7 @@ if APR.Faction == "Horde" then
             Coord = { x = -4581.7, y = 385.5 },
             Button = { ["25187-1"] = 52514 },
             Range = 0.69,
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 43
         },
         {
@@ -3746,7 +3746,7 @@ if APR.Faction == "Horde" then
             Coord = { x = -4581.7, y = 385.5 },
             Button = { ["25187-2"] = 52514 },
             Range = 0.69,
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 44
         },
         {
@@ -3754,7 +3754,7 @@ if APR.Faction == "Horde" then
             Coord = { x = -4581.7, y = 385.5 },
             Button = { ["25187-3"] = 52514 },
             Range = 0.69,
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 45
         },
         {
@@ -3762,7 +3762,7 @@ if APR.Faction == "Horde" then
             Coord = { x = -4581.7, y = 385.5 },
             Button = { ["25187-4"] = 52514 },
             Range = 0.69,
-            Dontskipvid = 1,
+            Dontskipvid = true,
             _index = 46
         },
         {

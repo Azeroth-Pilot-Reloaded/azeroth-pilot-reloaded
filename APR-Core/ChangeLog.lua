@@ -91,7 +91,7 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.17.1", "2025-09-28" },
+        { "v4.17.1", "2025-11-02" },
         "#Guides",
         "- Temporary fix to avoid transport module errors in the `Val'Sharah` route (route rework in progress)",
         "- Updated legacy step options in multiple routes for technical reasons",
@@ -99,7 +99,7 @@ function APR.changelog:SetChangeLog()
         "#Features",
         "- Added new optional `gossip ETA` step option to handle specific gossip steps",
 
-        { "v4.17.0", "2025-09-28" },
+        { "v4.17.0", "2025-10-28" },
         "#Guides",
         "- Fixed `The Dark Lady's Bidding` quest in Stormheim (Horde)",
         "- Added a temporary fix for the `To Catch a Banshee` quest in Stormheim (Alliance)",
@@ -107,12 +107,12 @@ function APR.changelog:SetChangeLog()
         "#Features",
         "- Added new `Talk to the npc` step option to handle specific gossip steps",
 
-        { "v4.16.6", "2025-09-28" },
+        { "v4.16.6", "2025-10-28" },
         "#Guides",
         "- Fixed `Shipwrecked Sailors` quest in Aszuna for Horde",
         "- Added missing storyline in Stormheim (Horde route) for the Sojourner achievement",
 
-        { "v4.16.5", "2025-09-26" },
+        { "v4.16.5", "2025-10-26" },
         "#Guides",
         "- Added Warrior `Artifact Weapons` and `Remix Order Hall` routes",
         "- Added Demon Hunter `Artifact Weapons` and `Remix Order Hall` routes",
@@ -120,21 +120,21 @@ function APR.changelog:SetChangeLog()
         "#Bugs",
         "- Fixed tainted frame lua error triggered by Blizzard actions",
 
-        { "v4.16.4", "2025-09-25" },
+        { "v4.16.4", "2025-10-25" },
         "#Guides",
         "- Added missing `Icepine Point` and `Murky Waters` Highmountain storylines for the Sojourner achievement",
 
-        { "v4.16.3", "2025-09-25" },
+        { "v4.16.3", "2025-10-25" },
         "#Guides",
         "- Fixed missing Qpart for `Vengeance for the Stonedark` quest in Highmountain route (42373)",
         "- Fixed some quest ID for Demon Hunter in Azsuna and Val'sharad route",
         "- Fixed Shipwrecked Sailors quest for the Horde in Azsuna",
 
-        { "v4.16.2", "2025-09-22" },
+        { "v4.16.2", "2025-10-22" },
         "#Guides",
         "- Fixed wrong step in `Highmountain` route for Legion",
 
-        { "v4.16.1", "2025-09-22" },
+        { "v4.16.1", "2025-10-22" },
         "#Guides",
         "- Added `Highmountain` route for Legion",
         "- Fixed incorrect Paladin waypoint coordinates depending on faction in the Legion Remix routes",
@@ -143,7 +143,7 @@ function APR.changelog:SetChangeLog()
         "- Fixed incorrect portal coordinates for the Paladin Order Hall",
         "- Fixed an issue where the route could direct you to a taxi instead of a nearby portal",
 
-        { "v4.16.0", "2025-09-20" },
+        { "v4.16.0", "2025-10-20" },
         "#Guides",
         "- Added Mage Order Hall quest after Azsuna for Legion Remix",
 
@@ -155,7 +155,7 @@ function APR.changelog:SetChangeLog()
         "- Fixed new UseSpell step option",
         "- Fixed display of step button for UseItem, UseSpell and UseHS step option",
 
-        { "v4.15.1", "2025-09-17" },
+        { "v4.15.1", "2025-10-17" },
         "#Guides",
         "- Added `Legion Remix Mage Order Hall` route (others are a work in progress)",
         "- Added `Legion Mage Artifact Weapon` routes",
@@ -166,7 +166,7 @@ function APR.changelog:SetChangeLog()
         "    - UseSpell",
         "    - UseItem",
 
-        { "v4.15.0", "2025-09-14" },
+        { "v4.15.0", "2025-10-14" },
 
         "#Comments",
         "- Hi everyone,\nSorry for the delay on the Legion and Remix routes. I was abroad all last month, and since I got back, I’ve had very limited  free time between work and personal life :/\n\nI’m trying to record the routes as quickly as possible, but I swear Legion is the worst expansion for this xD\nEach class has different zones and quests, and sometimes it even changes depending on the faction, which makes it take even longer than usual.\nI’ve set things up to include all the routes, and I’ll be posting updates for each class every day this week.\n\nNeo - APR",
