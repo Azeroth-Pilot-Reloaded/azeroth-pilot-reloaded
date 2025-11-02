@@ -91,6 +91,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.17.2", "2025-11-02" },
+        "#Guides",
+        "- Rework of the `Val'Sharah` route",
+
         { "v4.17.1", "2025-11-02" },
         "#Guides",
         "- Temporary fix to avoid transport module errors in the `Val'Sharah` route (route rework in progress)",
@@ -274,7 +278,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6", "2025-04-06" },
+        { "v4.9.6",  "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 

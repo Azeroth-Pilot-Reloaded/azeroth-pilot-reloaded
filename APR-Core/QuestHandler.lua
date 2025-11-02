@@ -266,7 +266,7 @@ function APR:UpdateStep()
             APR.currentStep:AddExtraLineText("COMPLETE_SOMETHING_" .. scenarioInfo.type,
                 format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type]) .. ": " .. mapInfo.name)
         elseif step.LeaveScenario then
-            local scenarioMapID                                    = step.LeaveScenario
+            local scenarioMapID = step.LeaveScenario
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Leave Scenario", scenarioMapID)
 
             if isCompleted and scenarioMapID ~= currentMapID then
