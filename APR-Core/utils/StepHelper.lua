@@ -1,8 +1,6 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
-
 APR.mainStepOptions = {
     "ExitTutorial", "PickUp", "DropQuest", "Qpart", "QpartPart", "Treasure", "Group", "Done",
     "Scenario", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS", "UseDalaHS", "UseGarrisonHS",
@@ -441,7 +439,7 @@ function APR:StepFilterQuestHandler(step)
         (step.DontHaveAchievement and APR:HasAchievement(step.DontHaveAchievement)) or
         (step.HasAura and not APR:HasAura(step.HasAura)) or
         (step.DontHaveAura and APR:HasAura(step.DontHaveAura)) or
-        (step.HasSpell and not IsSpellKnown(step.HasSpell)) or
+        (step.HasSpell and not APR:IsSpellKnown(step.HasSpell)) or
         (step.IsOneOfQuestsCompleted and not APR:IsOneOfQuestsCompleted(step.IsOneOfQuestsCompleted)) or
         (step.IsOneOfQuestsUncompleted and APR:IsOneOfQuestsCompleted(step.IsOneOfQuestsUncompleted)) or
         (step.IsOneOfQuestsCompletedOnAccount and not APR:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsCompletedOnAccount)) or
@@ -461,7 +459,7 @@ function APR:StepFilterQoL(step)
         (not step.DontHaveAchievement or not APR:HasAchievement(step.DontHaveAchievement)) and
         (not step.HasAura or APR:HasAura(step.HasAura)) and
         (not step.DontHaveAura or not APR:HasAura(step.DontHaveAura)) and
-        (not step.HasSpell or IsSpellKnown(step.HasSpell)) and
+        (not step.HasSpell or APR:IsSpellKnown(step.HasSpell)) and
         (not step.IsOneOfQuestsCompleted or APR:IsOneOfQuestsCompleted(step.IsOneOfQuestsCompleted)) and
         (not step.IsOneOfQuestsUncompleted or not APR:IsOneOfQuestsCompleted(step.IsOneOfQuestsUncompleted)) and
         (not step.IsOneOfQuestsCompletedOnAccount or APR:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsCompletedOnAccount)) and
@@ -473,7 +471,7 @@ function APR:StepFilterQoL(step)
 end
 
 --- Get Route zone mapID and name
----@return Array<number> routeZoneMapIDs MapIDs list of the mapid for the route
+---@return table|nil routeZoneMapIDs MapIDs list of the mapid for the route
 ---@return number mapID  the main mapid for the route
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name
@@ -491,7 +489,7 @@ function APR:GetRouteMapIDsAndName(targetedRoute)
 end
 
 --- Get Current Route zone mapID and name
----@return Array<number> routeZoneMapIDs MapIDs list of the mapid for the route
+---@return table|nil routeZoneMapIDs MapIDs list of the mapid for the route
 ---@return number mapID  the main mapid for the route
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name

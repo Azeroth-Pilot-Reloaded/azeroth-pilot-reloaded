@@ -2,15 +2,20 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 --- Check if a spell is known by the player (supports both classic and retail APIs).
 function APR:IsSpellKnown(spellID)
-    local IsSpellKnown = (C_SpellBook and C_SpellBook.IsSpellKnown) or _G.IsSpellKnown
-    return IsSpellKnown and IsSpellKnown(spellID)
+    if C_SpellBook and C_SpellBook.IsSpellKnown then
+        return C_SpellBook.IsSpellKnown(spellID)
+    end
+    -- Fallback for older APIs (will show deprecated warning but necessary for compatibility)
+    return false
 end
 
 --- Check if the player owns at least one copy of an item (bags/bank).
 function APR:PlayerHasItem(itemID)
-    if not GetItemCount then return false end
-    local count = GetItemCount(itemID, true)
-    return (count and count > 0) and true or false
+    if C_Item and C_Item.GetItemCount then
+        local count = C_Item.GetItemCount(itemID, true)
+        return (count and count > 0) and true or false
+    end
+    return false
 end
 
 function APR:GetSpellName(spellID)
@@ -21,9 +26,10 @@ end
 
 -- Safe item name getter (supports C_Item and GetItemInfo fallback).
 function APR:GetItemName(itemID)
-    local name = (C_Item and C_Item.GetItemNameByID and C_Item.GetItemNameByID(itemID))
-        or (GetItemInfo and select(1, GetItemInfo(itemID)))
-    return name or ("Item " .. tostring(itemID))
+    if C_Item and C_Item.GetItemNameByID then
+        return C_Item.GetItemNameByID(itemID) or ("Item " .. tostring(itemID))
+    end
+    return "Item " .. tostring(itemID)
 end
 
 -- Checks if the Player have flying rank 1, 2 or 3

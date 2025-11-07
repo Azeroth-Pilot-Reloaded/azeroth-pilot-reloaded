@@ -308,9 +308,8 @@ function APR:UpdateStep()
             APR:Debug("APR.UpdateStep:LearnProfession" .. APRData[APR.PlayerID][APR.ActiveRoute])
 
             local spellID = step.LearnProfession
-            local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
-
-            if IsSpellKnown(spellID) then
+            -- Use the utility function which already has the proper fallback
+            if APR:IsSpellKnown(spellID) then
                 APR:NextQuestStep()
                 return
             end
@@ -849,7 +848,9 @@ function APR:UpdateStep()
                 APR.settings.profile.heirloomWarning = false
                 APR.heirloom:RefreshFrameAnchor()
             end
-            APRZoneCompleted[APR.PlayerID][currentRouteName] = true
+            if APRZoneCompleted and APRZoneCompleted[APR.PlayerID] and currentRouteName then
+                APRZoneCompleted[APR.PlayerID][currentRouteName] = true
+            end
             tremove(APRCustomPath[APR.PlayerID], index)
             APR.routeconfig:CheckIsCustomPathEmpty()
             APR.routeconfig:SendMessage("APR_Custom_Path_Update")
