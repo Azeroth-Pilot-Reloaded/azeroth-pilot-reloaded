@@ -18,7 +18,7 @@ function APR.questionDialog:CreateQuestionPopup(text, onAcceptFunction, onCancel
         OnCancel = onCancelFunction,
         timeout = 0,
         whileDead = true,
-        hideOnEscape = hideOnEscape or true,
+        hideOnEscape = hideOnEscape or true
     }
 
     StaticPopup_Show(dialogName)
@@ -31,7 +31,7 @@ function APR.questionDialog:CreateMessagePopup(text, closeButtonText)
         button1 = closeButtonText or OKAY,
         timeout = 0,
         whileDead = true,
-        hideOnEscape = true,
+        hideOnEscape = true
     }
 
     StaticPopup_Show(dialogName)
@@ -48,7 +48,7 @@ function APR.questionDialog:CreateMandatoryAction(text, onAcceptFunction)
         hideOnEscape = false,
         showAlert = true,
         notClosableByLogout = true,
-        noCancelOnReuse = true,
+        noCancelOnReuse = true
     }
 
     StaticPopup_Show(dialogName)
@@ -74,7 +74,7 @@ function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxTex
         EditBoxOnEscapePressed = function(self) self:GetParent():Hide() end,
         timeout = 0,
         whileDead = true,
-        hideOnEscape = true,
+        hideOnEscape = true
     }
 
     StaticPopup_Show(dialogName)

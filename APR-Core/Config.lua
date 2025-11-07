@@ -124,7 +124,7 @@ function APR.settings:InitializeSettings()
             lastRecordedVersion = '',
             -- position
             coordinateFrame = {},
-            coordinateShow = false,
+            coordinateShow = false
         }
     }
 
@@ -154,7 +154,7 @@ function APR.settings:createBlizzOptions()
         ilvl = L["REWARD_PRIO_ILVL"],
         cosmetic = L["REWARD_PRIO_COSMETIC"],
         transmog = L["REWARD_PRIO_TRANSMOG"],
-        price = L["REWARD_PRIO_PRICE"],
+        price = L["REWARD_PRIO_PRICE"]
     }
     local optionsTable = {
         name = APR.title .. ' - ' .. APR.version,
@@ -182,7 +182,7 @@ function APR.settings:createBlizzOptions()
                 order = 1.3,
                 name = "",
                 type = "description",
-                width = 0.75,
+                width = 0.75
             },
             statusButton = {
                 order = 1.4,
@@ -209,7 +209,7 @@ function APR.settings:createBlizzOptions()
                 order = 2,
                 type = "header",
                 width = "full",
-                name = L["AUTOMATION"],
+                name = L["AUTOMATION"]
             },
             group_Automation = {
                 order = 3,
@@ -248,7 +248,7 @@ function APR.settings:createBlizzOptions()
                         desc = L["TURN_IN_Q_DESC"],
                         width = optionsWidthAutomation,
                         get = GetProfileOption,
-                        set = SetProfileOption,
+                        set = SetProfileOption
                     },
                     autoGossip = {
                         order = 3.21,
@@ -257,15 +257,15 @@ function APR.settings:createBlizzOptions()
                         desc = L["AUTO_SELECTION_OF_DIALOG_DESC"],
                         width = optionsWidthAutomation,
                         get = GetProfileOption,
-                        set = SetProfileOption,
-                    },
+                        set = SetProfileOption
+                    }
                 }
             },
             header_Preferences = {
                 order = 4,
                 type = "header",
                 width = "full",
-                name = L["PREFERENCES"],
+                name = L["PREFERENCES"]
             },
             group_Current_Step = {
                 order = 4,
@@ -285,7 +285,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
-                        end,
+                        end
                     },
                     currentStepAttachFrameToQuestLog = {
                         order = 5.11,
@@ -300,7 +300,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.currentStepShow
-                        end,
+                        end
                     },
                     currentStepLock = {
                         order = 5.12,
@@ -316,7 +316,7 @@ function APR.settings:createBlizzOptions()
                         disabled = function()
                             return not self.profile.currentStepShow or self.profile
                                 .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
-                        end,
+                        end
                     },
                     currentStepbackgroundColorAlpha = {
                         order = 5.2,
@@ -335,7 +335,7 @@ function APR.settings:createBlizzOptions()
                         disabled = function()
                             return not self.profile.currentStepShow or not self.profile.enableAddon or
                                 self.profile.currentStepAttachFrameToQuestLog
-                        end,
+                        end
                     },
                     currentStepQuestButtonPositionRight = {
                         order = 5.3,
@@ -357,7 +357,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.currentStepShow
-                        end,
+                        end
                     },
                     currentStepScale = {
                         order = 5.4,
@@ -377,7 +377,7 @@ function APR.settings:createBlizzOptions()
                         disabled = function()
                             return not self.profile.currentStepShow or self.profile
                                 .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
-                        end,
+                        end
                     },
                     resetCurrentStepPosition = {
                         name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
@@ -390,9 +390,9 @@ function APR.settings:createBlizzOptions()
                         disabled = function()
                             return not self.profile.currentStepShow or self.profile
                                 .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
-                        end,
-                    },
-                },
+                        end
+                    }
+                }
             },
             group_quest_order_list_step = {
                 order = 6,
@@ -412,7 +412,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
-                        end,
+                        end
                     },
                     questOrderListLock = {
                         order = 6.2,
@@ -426,7 +426,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.showQuestOrderList
-                        end,
+                        end
                     },
                     questOrderListScale = {
                         order = 6.3,
@@ -445,7 +445,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.showQuestOrderList or not self.profile.enableAddon
-                        end,
+                        end
                     },
                     questOrderListbackgroundColorAlpha = {
                         order = 6.4,
@@ -462,7 +462,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.showQuestOrderList or not self.profile.enableAddon
-                        end,
+                        end
                     },
                     resetCurrentStepPosition = {
                         name = L['RESET_QORDERLIST'],
@@ -475,9 +475,9 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.showQuestOrderList or not self.profile.enableAddon
-                        end,
-                    },
-                },
+                        end
+                    }
+                }
             },
             group_Arrow = {
                 order = 7,
@@ -497,7 +497,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
-                        end,
+                        end
                     },
                     lockArrow = {
                         order = 7.11,
@@ -509,7 +509,7 @@ function APR.settings:createBlizzOptions()
                         set = SetProfileOption,
                         disabled = function()
                             return not self.profile.showArrow
-                        end,
+                        end
                     },
                     arrowScale = {
                         order = 7.2,
@@ -528,7 +528,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.showArrow
-                        end,
+                        end
                     },
                     arrowFPS = {
                         order = 7.21,
@@ -543,13 +543,13 @@ function APR.settings:createBlizzOptions()
                         set = SetProfileOption,
                         disabled = function()
                             return not self.profile.showArrow
-                        end,
+                        end
                     },
                     blank_arrowReset = {
                         order = 7.3,
                         type = "description",
                         name = "",
-                        width = "full",
+                        width = "full"
                     },
                     arrowReset = {
                         order = 7.4,
@@ -571,8 +571,8 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
-                        end,
-                    },
+                        end
+                    }
                 }
             },
             group_Advanced_Automation = {
@@ -593,7 +593,7 @@ function APR.settings:createBlizzOptions()
                                 desc = L["SKIPPED_CUTSCENE_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = SetProfileOption,
+                                set = SetProfileOption
                             },
                             autoFlight = {
                                 order = 8.3,
@@ -602,7 +602,7 @@ function APR.settings:createBlizzOptions()
                                 desc = L["AUTO_USE_FLIGHTPATHS_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = SetProfileOption,
+                                set = SetProfileOption
                             },
                             autoVendor = {
                                 order = 8.4,
@@ -611,7 +611,7 @@ function APR.settings:createBlizzOptions()
                                 desc = L["AUTO_VENDOR_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = SetProfileOption,
+                                set = SetProfileOption
                             },
                             autoRepair = {
                                 order = 8.5,
@@ -620,9 +620,9 @@ function APR.settings:createBlizzOptions()
                                 desc = L["AUTO_REPAIR_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = SetProfileOption,
-                            },
-                        },
+                                set = SetProfileOption
+                            }
+                        }
                     },
                     subgroup_reward_automation = {
                         order = 8.2,
@@ -637,7 +637,7 @@ function APR.settings:createBlizzOptions()
                                 desc = L["AUTO_PICK_REWARD_ITEM_DESC"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = SetProfileOption,
+                                set = SetProfileOption
                             },
                             rewardPriority1 = {
                                 order = 8.22,
@@ -649,7 +649,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value) APR.settings:SetRewardPriority(info, value) end,
                                 disabled = function()
                                     return not self.profile.autoHandInChoice
-                                end,
+                                end
                             },
                             rewardPriority2 = {
                                 order = 8.23,
@@ -661,7 +661,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value) APR.settings:SetRewardPriority(info, value) end,
                                 disabled = function()
                                     return not self.profile.autoHandInChoice
-                                end,
+                                end
                             },
                             rewardPriority3 = {
                                 order = 8.24,
@@ -673,7 +673,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value) APR.settings:SetRewardPriority(info, value) end,
                                 disabled = function()
                                     return not self.profile.autoHandInChoice
-                                end,
+                                end
                             },
                             rewardPriority4 = {
                                 order = 8.25,
@@ -685,7 +685,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value) APR.settings:SetRewardPriority(info, value) end,
                                 disabled = function()
                                     return not self.profile.autoHandInChoice
-                                end,
+                                end
                             },
                             autoCosmeticMulti = {
                                 order = 8.26,
@@ -697,7 +697,7 @@ function APR.settings:createBlizzOptions()
                                 set = SetProfileOption,
                                 disabled = function()
                                     return not self.profile.autoHandInChoice
-                                end,
+                                end
                             },
                             autoTransmogMulti = {
                                 order = 8.27,
@@ -709,9 +709,9 @@ function APR.settings:createBlizzOptions()
                                 set = SetProfileOption,
                                 disabled = function()
                                     return not self.profile.autoHandInChoice
-                                end,
-                            },
-                        },
+                                end
+                            }
+                        }
                     },
                     subgroup_waypoints = {
                         order = 8.3,
@@ -729,7 +729,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     if (value) then self.profile.autoSkipWaypointsFly = false end
-                                end,
+                                end
                             },
                             autoSkipWaypointsFly = {
                                 order = 8.32,
@@ -741,11 +741,11 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     if (value) then self.profile.autoSkipAllWaypoints = false end
-                                end,
-                            },
-                        },
-                    },
-                },
+                                end
+                            }
+                        }
+                    }
+                }
             },
             group_map_minimap = {
                 order = 9,
@@ -786,13 +786,13 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.showMapLine
-                                end,
+                                end
                             },
                             mapblank0 = {
                                 order = 9.13,
                                 type = "description",
                                 width = "full",
-                                name = " ",
+                                name = " "
                             },
                             mapshowNextSteps = {
                                 order = 9.14,
@@ -804,7 +804,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:AddMapPins()
-                                end,
+                                end
                             },
                             mapshowNextStepsCount = {
                                 order = 9.15,
@@ -820,7 +820,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.mapshowNextSteps
-                                end,
+                                end
                             },
                             mapshowNextStepsSize = {
                                 order = 9.16,
@@ -836,9 +836,9 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.mapshowNextSteps
-                                end,
-                            },
-                        },
+                                end
+                            }
+                        }
                     },
                     group_minimap = {
                         order = 2,
@@ -866,7 +866,7 @@ function APR.settings:createBlizzOptions()
                                 order = 9.21,
                                 type = "description",
                                 width = "full",
-                                name = " ",
+                                name = " "
                             },
                             showMiniMapLine = {
                                 order = 9.22,
@@ -896,13 +896,13 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.showMiniMapLine
-                                end,
+                                end
                             },
                             minimapblank1 = {
                                 order = 9.24,
                                 type = "description",
                                 width = "full",
-                                name = " ",
+                                name = " "
                             },
                             minimapshowNextSteps = {
                                 order = 9.25,
@@ -914,7 +914,7 @@ function APR.settings:createBlizzOptions()
                                 set = function(info, value)
                                     SetProfileOption(info, value)
                                     APR.map:AddMapPins()
-                                end,
+                                end
                             },
                             minimapshowNextStepsCount = {
                                 order = 9.26,
@@ -930,7 +930,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.minimapshowNextSteps
-                                end,
+                                end
                             },
                             minimapshowNextStepsSize = {
                                 order = 9.27,
@@ -946,8 +946,8 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.minimapshowNextSteps
-                                end,
-                            },
+                                end
+                            }
                         }
                     },
                     group_map_color = {
@@ -962,7 +962,7 @@ function APR.settings:createBlizzOptions()
                                 name = L["MAP_MINIMAP_SAME_COLOR"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = SetProfileOption,
+                                set = SetProfileOption
                             },
                             showMapLineColor = {
                                 order = 9.31,
@@ -986,7 +986,7 @@ function APR.settings:createBlizzOptions()
                                     else
                                         return not self.profile.showMapLine
                                     end
-                                end,
+                                end
                             },
                             mapshowNextStepsColor = {
                                 order = 9.32,
@@ -1011,7 +1011,7 @@ function APR.settings:createBlizzOptions()
                                     else
                                         return not self.profile.mapshowNextSteps
                                     end
-                                end,
+                                end
                             },
                             mapshowNextStepsColorText = {
                                 order = 9.33,
@@ -1037,7 +1037,7 @@ function APR.settings:createBlizzOptions()
                                     else
                                         return not self.profile.mapshowNextSteps
                                     end
-                                end,
+                                end
                             },
                             showMiniMapLineColor = {
                                 order = 9.31,
@@ -1056,7 +1056,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 hidden = function()
                                     return self.profile.mapMinimapSameColor
-                                end,
+                                end
                             },
                             minimapshowNextStepsColor = {
                                 order = 9.32,
@@ -1075,7 +1075,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 hidden = function()
                                     return self.profile.mapMinimapSameColor
-                                end,
+                                end
                             },
                             minimapshowNextStepsColorText = {
                                 order = 9.33,
@@ -1094,13 +1094,13 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 hidden = function()
                                     return self.profile.mapMinimapSameColor
-                                end,
+                                end
                             },
                             blank_font = {
                                 order = 10,
                                 type = "description",
                                 name = "",
-                                width = "full",
+                                width = "full"
                             },
                             mapshowNextStepsTextScale = {
                                 order = 11.1,
@@ -1116,7 +1116,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.mapshowNextSteps
-                                end,
+                                end
                             },
                             minimapshowNextStepsTextScale = {
                                 order = 11.2,
@@ -1132,8 +1132,8 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.minimapshowNextSteps
-                                end,
-                            },
+                                end
+                            }
 
                         }
                     }
@@ -1156,7 +1156,7 @@ function APR.settings:createBlizzOptions()
                             APR.heirloom:RefreshFrameAnchor()
                         end,
                         disabled = APR:IsRemixCharacter()
-                    },
+                    }
                 }
             },
             group_Group = {
@@ -1171,7 +1171,7 @@ function APR.settings:createBlizzOptions()
                         desc = L["SHOW_GROUP_SHAREWITHFRIEND_DESC"],
                         width = "full",
                         get = GetProfileOption,
-                        set = SetProfileOption,
+                        set = SetProfileOption
                     },
                     showGroup = {
                         order = 11.2,
@@ -1187,7 +1187,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
-                        end,
+                        end
                     },
                     groupScale = {
                         order = 11.3,
@@ -1206,7 +1206,7 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.showGroup
-                        end,
+                        end
                     },
                     resetPartyPosition = {
                         name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
@@ -1218,8 +1218,8 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.showGroup or not self.profile.enableAddon
-                        end,
-                    },
+                        end
+                    }
                 }
             },
             group_Debug = {
@@ -1243,7 +1243,7 @@ function APR.settings:createBlizzOptions()
                                     SetProfileOption(info, value)
                                     -- disabled addon
                                     self:ToggleAddon()
-                                end,
+                                end
                             },
 
                             showChangeLog = {
@@ -1252,7 +1252,7 @@ function APR.settings:createBlizzOptions()
                                 name = L["SHOW_CHANGELOG"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = SetProfileOption,
+                                set = SetProfileOption
                             },
                             resetPartyPosition = {
                                 name = L["SHOW_CHANGELOG"],
@@ -1261,8 +1261,8 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 func = function()
                                     APR.changelog:ShowChangeLog()
-                                end,
-                            },
+                                end
+                            }
                         }
                     },
                     subgroup_debug = {
@@ -1280,7 +1280,7 @@ function APR.settings:createBlizzOptions()
                                 set = SetProfileOption,
                                 disabled = function()
                                     return not self.profile.enableAddon
-                                end,
+                                end
                             },
                             showEvent = {
                                 order = 2.2,
@@ -1291,12 +1291,12 @@ function APR.settings:createBlizzOptions()
                                 set = SetProfileOption,
                                 disabled = function()
                                     return not self.profile.enableAddon
-                                end,
-                            },
+                                end
+                            }
                         }
-                    },
+                    }
                 }
-            },
+            }
         }
     }
 
@@ -1331,35 +1331,35 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["AUTHOR"] .. ": |r" .. "Neogeekmo/Neoldric",
+                name = "|cffeda55f" .. L["AUTHOR"] .. ": |r" .. "Neogeekmo/Neoldric"
             },
             dev = {
                 order = 2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["DEV"] .. ": |r" .. "Neogeekmo/Neoldric, Kamian",
+                name = "|cffeda55f" .. L["DEV"] .. ": |r" .. "Neogeekmo/Neoldric, Kamian"
             },
             route_designer = {
                 order = 2.1,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["ROUTE_DESIGNER"] .. ": |r" .. "Pahonix, Ola, Clara",
+                name = "|cffeda55f" .. L["ROUTE_DESIGNER"] .. ": |r" .. "Pahonix, Ola, Clara"
             },
             support = {
                 order = 2.2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["SUPPORT"] .. ": |r" .. "NightofStarrs, Pahonix",
+                name = "|cffeda55f" .. L["SUPPORT"] .. ": |r" .. "NightofStarrs, Pahonix"
             },
             graphic = {
                 order = 2.3,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["GRAPHIC"] .. ": |r" .. "Rycia, Neogeekmo/Neoldric",
+                name = "|cffeda55f" .. L["GRAPHIC"] .. ": |r" .. "Rycia, Neogeekmo/Neoldric"
             },
             Translator = {
                 order = 2.4,
@@ -1369,51 +1369,51 @@ function APR.settings:CreateAboutOption()
                 name = "|cffeda55f" .. L["TRANSLATOR"] .. ": |r\n" ..
                     "      |cff5f9ea0" .. FRFR .. ": |rNeogeekmo, Jmsche, Mania\n" ..
                     "      |cff5f9ea0" .. DEDE .. ": |rKamian, Movion\n" ..
-                    "      |cff5f9ea0" .. ESMX .. ": |rJean",
+                    "      |cff5f9ea0" .. ESMX .. ": |rJean"
             },
             version = {
                 order = 2.5,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["VERSION"] .. ": |r" .. APR.version,
+                name = "|cffeda55f" .. L["VERSION"] .. ": |r" .. APR.version
             },
             header_disable_Auto = {
                 order = 3,
                 type = "header",
                 width = "full",
-                name = L["DISABLED_AUTOMATION"],
+                name = L["DISABLED_AUTOMATION"]
             },
             blank1 = {
                 order = 3.1,
                 type = "description",
                 width = "full",
-                name = " ",
+                name = " "
             },
             disable_Auto = {
                 order = 3.2,
                 type = "description",
                 name = L["DISABLED_AUTOMATION_DESC"],
                 width = "full",
-                fontSize = "medium",
+                fontSize = "medium"
             },
             blank11 = {
                 order = 3.3,
                 type = "description",
                 width = "full",
-                name = " ",
+                name = " "
             },
             header_help = {
                 order = 4,
                 type = "header",
                 width = "full",
-                name = L["HELP"],
+                name = L["HELP"]
             },
             blank0 = {
                 order = 4.1,
                 type = "description",
                 width = "full",
-                name = " ",
+                name = " "
             },
             command = {
                 order = 4.2,
@@ -1440,19 +1440,19 @@ function APR.settings:CreateAboutOption()
                 order = 4.3,
                 type = "description",
                 width = "full",
-                name = " ",
+                name = " "
             },
             header_Credit_legacy = {
                 order = 5,
                 type = "header",
                 width = "full",
-                name = L["LEGACY"],
+                name = L["LEGACY"]
             },
             blank2 = {
                 order = 5.1,
                 type = "description",
                 width = "full",
-                name = " ",
+                name = " "
             },
             Zyrrael = {
                 order = 5.2,
@@ -1460,8 +1460,8 @@ function APR.settings:CreateAboutOption()
                 width = "full",
                 fontSize = "medium",
                 name = L["WELCOME_ZYRR"] ..
-                    " " .. L["LEGACY_TEAM"] .. " " .. "Deathmessinger, DesMephisto, BrutallStatic",
-            },
+                    " " .. L["LEGACY_TEAM"] .. " " .. "Deathmessinger, DesMephisto, BrutallStatic"
+            }
         }
     }
     aceConfig:RegisterOptionsTable(APR.title .. "/About", optionsTable)

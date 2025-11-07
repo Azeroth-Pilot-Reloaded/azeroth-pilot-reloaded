@@ -169,7 +169,7 @@ function APR:createStatusFrame()
         tileEdge = true,
         tileSize = 8,
         edgeSize = 8,
-        insets = { left = 1, right = 1, top = 1, bottom = 1 },
+        insets = { left = 1, right = 1, top = 1, bottom = 1 }
     }
 
     --Main frame

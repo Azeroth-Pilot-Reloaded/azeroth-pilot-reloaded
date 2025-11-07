@@ -740,7 +740,7 @@ function APR.changelog:SetChangeLog()
 
         "#WoW",
         "- Merged all route addons into one",
-        "- Updated version for 10.2.7",
+        "- Updated version for 10.2.7"
     }
 
     local changelog = "|cFFF1F1F1|c33ecc00f" .. APR.title .. "|r"

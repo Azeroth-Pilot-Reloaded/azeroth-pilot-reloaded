@@ -142,17 +142,17 @@ function APR:UpdateStep()
                 [13544] = {
                     itemID = fleetfootItemID,
                     description = L["KILL_FLEETFOOT"],
-                    count = 1,
+                    count = 1
                 },
                 [13595] = {
                     itemID = wildfireBottleItemID,
                     description = L["LOOT_WILDFIRE_BOTTLE"],
-                    count = 1,
+                    count = 1
                 },
                 [25654] = {
                     itemID = harpysHornItemID,
                     description = L["LOOT_HARPYS_HORN"],
-                    count = 1,
+                    count = 1
                 }
             }
             for questID, questInfo in pairs(extraLineQuests) do
@@ -236,7 +236,7 @@ function APR:UpdateStep()
 
             APR.currentStep:AddExtraLineText("ENTER_IN_" .. scenarioInfo.type,
                 format(L["ENTER_IN"], L[scenarioInfo.type]) .. ": " .. mapInfo.name)
-            step.Coord = scenarioInfo.Coord
+            step.coord = scenarioInfo.Coord
             APR.Arrow:SetCoord()
         elseif step.DoScenario then
             local scenarioMapID = step.DoScenario
@@ -255,10 +255,10 @@ function APR:UpdateStep()
 
             -- IF you're not inside the scenario, add coord to the entrance
             if scenarioMapID ~= currentMapID then
-                step.Coord = scenarioInfo.Coord
+                step.coord = scenarioInfo.Coord
                 step.NoArrow = nil
             else
-                step.Coord = nil
+                step.coord = nil
                 step.NoArrow = 1
             end
             APR.Arrow:SetCoord()
@@ -919,7 +919,7 @@ function APR:UpdateQuest()
             APR.ActiveQuests[questID] = APR.ActiveQuests[questID] or {
                 status = questStatus,
                 title = questTitle,
-                objectives = {},
+                objectives = {}
             }
 
             if APR.ActiveQuests[questID].status ~= questStatus then
@@ -935,7 +935,7 @@ function APR:UpdateQuest()
                 -- Quest without objectives
                 APR.ActiveQuests[questID].objectives[1] = {
                     text = questTitle,
-                    status = questStatus,
+                    status = questStatus
                 }
             else
                 for i, objectiveInfo in ipairs(questObjectives) do
@@ -959,7 +959,7 @@ function APR:UpdateQuest()
 
                     APR.ActiveQuests[questID].objectives[i] = {
                         text = text,
-                        status = status,
+                        status = status
                     }
 
                     if status == APR.QUEST_STATUS.COMPLETE then

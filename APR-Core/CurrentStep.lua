@@ -537,7 +537,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
         table.insert(container.subTexts, {
             questID = questID,
             text = questText,
-            name = questName or UNKNOWN,
+            name = questName or UNKNOWN
         })
     end
 
@@ -887,7 +887,7 @@ function APR.currentStep:GetCurrentStepDetails()
         progress = {
             index = APRData[APR.PlayerID][APR.ActiveRoute],
             step = APR.currentStep.progressBar.currentStep,
-            total = APRData[APR.PlayerID][APR.ActiveRoute .. '-TotalSteps'],
+            total = APRData[APR.PlayerID][APR.ActiveRoute .. '-TotalSteps']
         }
     }
 
@@ -896,7 +896,7 @@ function APR.currentStep:GetCurrentStepDetails()
         if container.font and container.font:GetText() then
             table.insert(stepDetails.extraLines, {
                 key = key,
-                text = container.font:GetText(),
+                text = container.font:GetText()
             })
         end
     end
@@ -906,7 +906,7 @@ function APR.currentStep:GetCurrentStepDetails()
         if container.font and container.font:GetText() then
             local step = {
                 key = key,
-                text = container.font:GetText(),
+                text = container.font:GetText()
             }
 
             -- Add sub-steps if they exist
@@ -916,7 +916,7 @@ function APR.currentStep:GetCurrentStepDetails()
                     table.insert(step.subSteps, {
                         questID = sub.questID,
                         name = sub.name,
-                        text = sub.text,
+                        text = sub.text
                     })
                 end
             end

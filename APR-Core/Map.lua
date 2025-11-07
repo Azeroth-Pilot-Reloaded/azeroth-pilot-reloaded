@@ -32,7 +32,7 @@ local minimap_size = {
         [3] = 266 + 2 / 6, -- 1.75
         [4] = 200,         -- 7/3
         [5] = 133 + 1 / 3, -- 3.5
-    },
+    }
 }
 
 local minimap_shapes = {
@@ -49,7 +49,7 @@ local minimap_shapes = {
     ["TRICORNER-TOPLEFT"]     = { true, true, true, false },
     ["TRICORNER-TOPRIGHT"]    = { true, false, true, true },
     ["TRICORNER-BOTTOMLEFT"]  = { true, true, false, true },
-    ["TRICORNER-BOTTOMRIGHT"] = { false, true, true, true },
+    ["TRICORNER-BOTTOMRIGHT"] = { false, true, true, true }
 }
 
 ---------------------------------------------------------------------------------------

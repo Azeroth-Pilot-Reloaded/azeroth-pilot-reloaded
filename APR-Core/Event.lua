@@ -44,7 +44,7 @@ local events = {
     vehicle = "UNIT_ENTERED_VEHICLE",
     enterCombat = "PLAYER_REGEN_DISABLED",
     enterWorld = "PLAYER_REGEN_DISABLED",
-    leaveCombat = "PLAYER_REGEN_ENABLED",
+    leaveCombat = "PLAYER_REGEN_ENABLED"
 }
 
 ---------------------------------------------------------------------------------------
@@ -366,7 +366,7 @@ function APR.event.functions.done(event, ...)
                         isUnknownTransmog = isTransmog and not isKnownCosmetic,
                         vendorPrice = vendorPrice,
                         ilvlDiff = ilvlDiff or -999,
-                        isUpgrade = isUpgrade,
+                        isUpgrade = isUpgrade
                     }
                 end
             end
@@ -382,7 +382,7 @@ function APR.event.functions.done(event, ...)
                 APR.settings.profile.rewardPriority1,
                 APR.settings.profile.rewardPriority2,
                 APR.settings.profile.rewardPriority3,
-                APR.settings.profile.rewardPriority4,
+                APR.settings.profile.rewardPriority4
             }
 
             -- Define the logic for each priority type
@@ -493,7 +493,7 @@ function APR.event.functions.emote(event, ...)
                     ["GIGGLING_BASKET_MANY"] = "thank",
                     ["GIGGLING_BASKET_FAE"] = "introduce",
                     ["GIGGLING_BASKET_FEET"] = "dance",
-                    ["GIGGLING_BASKET_HELP"] = "praise",
+                    ["GIGGLING_BASKET_HELP"] = "praise"
                 }
                 for key, emote in pairs(gigglingBasket) do
                     local message = L[key]

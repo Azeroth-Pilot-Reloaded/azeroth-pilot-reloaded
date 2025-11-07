@@ -190,7 +190,7 @@ function APR.heirloom:AddHeirloomIcons()
         {
             icon = "Interface\\Icons\\inv_icon_heirloomtoken_armor01",
             name = "heirloom",
-            id = 0,
+            id = 0
         }
     }
 

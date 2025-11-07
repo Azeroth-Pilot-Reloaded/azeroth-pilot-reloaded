@@ -27,7 +27,7 @@ CoordinateFrame:SetBackdrop({
     tileSize = 16,
     edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
     edgeSize = 16,
-    insets = { left = 4, right = 4, top = 4, bottom = 4 },
+    insets = { left = 4, right = 4, top = 4, bottom = 4 }
 })
 CoordinateFrame:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
 CoordinateFrame:SetBackdropBorderColor(1, 0.8, 0, 0.8)

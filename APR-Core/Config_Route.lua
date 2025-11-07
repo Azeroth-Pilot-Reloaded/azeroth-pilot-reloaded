@@ -45,7 +45,7 @@ local function GetConfigOptionTable()
                 func = function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetRemixPrefab()
-                end,
+                end
             },
             WoD_prefab = {
                 order = 1.2,
@@ -58,7 +58,7 @@ local function GetConfigOptionTable()
                 end,
                 hidden = function()
                     return not next(APR.RouteList.WarlordsOfDraenor)
-                end,
+                end
 
             },
             BFA_prefab = {
@@ -72,7 +72,7 @@ local function GetConfigOptionTable()
                 end,
                 hidden = function()
                     return not next(APR.RouteList.BattleForAzeroth)
-                end,
+                end
             },
             SL_prefab = {
                 order = 1.4,
@@ -135,8 +135,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "custom_path_area",
-                        dialogControl = "CustomPathRouteListFrame",
-                    },
+                        dialogControl = "CustomPathRouteListFrame"
+                    }
                 }
             },
             Vanilla = {
@@ -149,8 +149,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "Vanilla",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             TheBurningCrusade = {
@@ -163,8 +163,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "TheBurningCrusade",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             WrathOfTheLichKing = {
@@ -177,8 +177,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "WrathOfTheLichKing",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             Cataclysm = {
@@ -191,8 +191,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "Cataclysm",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             MistsOfPandaria = {
@@ -205,8 +205,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "MistsOfPandaria",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             WarlordsOfDraenor = {
@@ -219,8 +219,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "WarlordsOfDraenor",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             Legion = {
@@ -233,8 +233,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "Legion",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             BattleForAzeroth = {
@@ -247,8 +247,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "BattleForAzeroth",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             Shadowlands = {
@@ -261,8 +261,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "Shadowlands",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             Dragonflight = {
@@ -275,8 +275,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "Dragonflight",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             TheWarWithin = {
@@ -289,8 +289,8 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "TheWarWithin",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
             },
             Custom = {
@@ -303,10 +303,10 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         name = "Custom",
-                        dialogControl = "RouteListFrame",
-                    },
+                        dialogControl = "RouteListFrame"
+                    }
                 }
-            },
+            }
         }
     }
 
