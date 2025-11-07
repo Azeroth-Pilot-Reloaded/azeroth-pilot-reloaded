@@ -3,5344 +3,5344 @@ if APR.Faction == "Alliance" then
         {
             PickUp = { 40519 },
             ChromiePick = 10,
-            Coord = { x = 747.5, y = -8194.6 },
+            coord = { x = 747.5, y = -8194.6 },
             ExtraLineText = "SWITCH_TO_CHROMIE",
             ExtraLineText2 = "SKYRIDING_HIGHLY_RECOMMENDED",
             GossipOptionIDs = { 51901, 51902 },
             Faction = "Alliance",
             Zone = 84,
-            _index = 1,
+            _index = 1
         },
         {
             Done = { 40519 },
-            Coord = { x = 1078.4, y = -8494 },
+            coord = { x = 1078.4, y = -8494 },
             Zone = 84,
-            _index = 2,
+            _index = 2
         },
         {
-            Coord = { x = 1078.4, y = -8494.8 },
+            coord = { x = 1078.4, y = -8494.8 },
             ExtraLineText = "NPC_TELEPORT",
             ExtraLineText2 = "MANUAL_SKIP",
             GossipOptionIDs = { 47484 },
             Zone = 84,
-            _index = 3,
+            _index = 3
         },
         {
             PickUp = { 44184 },
-            Coord = { x = 4371.8, y = -828.7 },
+            coord = { x = 4371.8, y = -828.7 },
             Zone = 619,
-            _index = 4,
+            _index = 4
         },
         {
             Done = { 44184 },
-            Coord = { x = 4397.7, y = -833.4 },
+            coord = { x = 4397.7, y = -833.4 },
             Zone = 619,
-            _index = 5,
+            _index = 5
         },
         {
             PickUp = { 40 },
-            Coord = { x = 72.7, y = -9496.5 },
+            coord = { x = 72.7, y = -9496.5 },
             Zone = 37,
-            _index = 6,
+            _index = 6
         },
         {
             Done = { 40 },
-            Coord = { x = 74.2, y = -9465.4 },
+            coord = { x = 74.2, y = -9465.4 },
             Zone = 37,
-            _index = 7,
+            _index = 7
         },
         {
             PickUp = { 35 },
-            Coord = { x = 74.2, y = -9465.4 },
+            coord = { x = 74.2, y = -9465.4 },
             Zone = 37,
-            _index = 8,
+            _index = 8
         },
         {
             Done = { 35 },
-            Coord = { x = -1032.1, y = -9609.9 },
+            coord = { x = -1032.1, y = -9609.9 },
             Zone = 37,
-            _index = 9,
+            _index = 9
         },
         {
             PickUp = { 37, 52, 46, 26152 },
-            Coord = { x = -1032.1, y = -9609.9 },
+            coord = { x = -1032.1, y = -9609.9 },
             Zone = 37,
-            _index = 10,
+            _index = 10
         },
         {
             Done = { 37 },
-            Coord = { x = -986.4, y = -9336.5 },
+            coord = { x = -986.4, y = -9336.5 },
             Zone = 37,
-            _index = 11,
+            _index = 11
         },
         {
             PickUp = { 45 },
-            Coord = { x = -986.4, y = -9336.5 },
+            coord = { x = -986.4, y = -9336.5 },
             Zone = 37,
-            _index = 12,
+            _index = 12
         },
         {
             Done = { 45 },
-            Coord = { x = -1234.3, y = -9224.5 },
+            coord = { x = -1234.3, y = -9224.5 },
             Zone = 37,
-            _index = 13,
+            _index = 13
         },
         {
             PickUp = { 71 },
-            Coord = { x = -1234.3, y = -9224.5 },
+            coord = { x = -1234.3, y = -9224.5 },
             Zone = 37,
-            _index = 14,
+            _index = 14
         },
         {
             Qpart = { [46] = { 1 } },
-            Coord = { x = -1234.3, y = -9224.5 },
+            coord = { x = -1234.3, y = -9224.5 },
             Range = 30,
             Zone = 37,
-            _index = 15,
+            _index = 15
         },
         {
             PickUp = { 83 },
-            Coord = { x = -1223, y = -9530.2 },
+            coord = { x = -1223, y = -9530.2 },
             Zone = 37,
-            _index = 16,
+            _index = 16
         },
         {
             PickUp = { 5545 },
-            Coord = { x = -1288.8, y = -9469.6 },
+            coord = { x = -1288.8, y = -9469.6 },
             Zone = 37,
-            _index = 17,
+            _index = 17
         },
         {
             DropQuest = 123,
             DroppableQuest = { MobId = 13159, Qid = 123, Text = "James Clark" },
-            Coord = { x = -1195.5, y = -9493.4 },
+            coord = { x = -1195.5, y = -9493.4 },
             Zone = 37,
-            _index = 18,
+            _index = 18
         },
         {
             Qpart = { [52] = { 1, 2 }, [5545] = { 1 } },
-            Coord = { x = -1206.2, y = -9327.9 },
+            coord = { x = -1206.2, y = -9327.9 },
             Range = 30,
             Zone = 37,
-            _index = 19,
+            _index = 19
         },
         {
             Qpart = { [83] = { 1 } },
-            Coord = { x = -1052.2, y = -9179.8 },
+            coord = { x = -1052.2, y = -9179.8 },
             Range = 30,
             Zone = 37,
-            _index = 20,
+            _index = 20
         },
         {
             Done = { 71, 52, 46 },
-            Coord = { x = -1031.8, y = -9610.5 },
+            coord = { x = -1031.8, y = -9610.5 },
             Zone = 37,
-            _index = 21,
+            _index = 21
         },
         {
             PickUp = { 59 },
-            Coord = { x = -1031.8, y = -9610.5 },
+            coord = { x = -1031.8, y = -9610.5 },
             Zone = 37,
-            _index = 22,
+            _index = 22
         },
         {
             Done = { 59, 83 },
-            Coord = { x = -1222.7, y = -9529.3 },
+            coord = { x = -1222.7, y = -9529.3 },
             Zone = 37,
-            _index = 23,
+            _index = 23
         },
         {
             Done = { 5545 },
-            Coord = { x = -1288.9, y = -9469.5 },
+            coord = { x = -1288.9, y = -9469.5 },
             Zone = 37,
-            _index = 24,
+            _index = 24
         },
         {
             Done = { 26152, 123 },
-            Coord = { x = -1305, y = -9468.2 },
+            coord = { x = -1305, y = -9468.2 },
             Zone = 37,
-            _index = 25,
+            _index = 25
         },
         {
             PickUp = { 147 },
-            Coord = { x = -1305, y = -9468.2 },
+            coord = { x = -1305, y = -9468.2 },
             Zone = 37,
-            _index = 26,
+            _index = 26
         },
         {
             Qpart = { [147] = { 1 } },
-            Coord = { x = -921.9, y = -9798.4 },
+            coord = { x = -921.9, y = -9798.4 },
             Range = 30,
             Zone = 37,
-            _index = 27,
+            _index = 27
         },
         {
             Done = { 147 },
-            Coord = { x = -1305.6, y = -9468.2 },
+            coord = { x = -1305.6, y = -9468.2 },
             Zone = 37,
-            _index = 28,
+            _index = 28
         },
         {
             PickUp = { 26504 },
-            Coord = { x = -1891.8, y = -9621.6 },
+            coord = { x = -1891.8, y = -9621.6 },
             Zone = 49,
-            _index = 29,
+            _index = 29
         },
         {
             PickUp = { 26506 },
-            Coord = { x = -1880.7, y = -9633.3 },
+            coord = { x = -1880.7, y = -9633.3 },
             Zone = 49,
-            _index = 30,
+            _index = 30
         },
         {
             PickUp = { 26503 },
-            Coord = { x = -1872.7, y = -9620.9 },
+            coord = { x = -1872.7, y = -9620.9 },
             Zone = 49,
-            _index = 31,
+            _index = 31
         },
         {
             Qpart = { [26503] = { 1 } },
-            Coord = { x = -1896.1, y = -9463.5 },
+            coord = { x = -1896.1, y = -9463.5 },
             Fillers = { [26504] = { 1 } },
             Range = 1,
             Zone = 49,
-            _index = 32,
+            _index = 32
         },
         {
             Qpart = { [26503] = { 3 } },
-            Coord = { x = -2264.6, y = -9588.4 },
+            coord = { x = -2264.6, y = -9588.4 },
             Fillers = { [26504] = { 1 } },
             Range = 1,
             Zone = 49,
-            _index = 33,
+            _index = 33
         },
         {
             Qpart = { [26503] = { 2 } },
-            Coord = { x = -2198.3, y = -9797.1 },
+            coord = { x = -2198.3, y = -9797.1 },
             Fillers = { [26504] = { 1 } },
             Range = 1,
             Zone = 49,
-            _index = 34,
+            _index = 34
         },
         {
             Qpart = { [26504] = { 1 } },
-            Coord = { x = -2198.3, y = -9797.1 },
+            coord = { x = -2198.3, y = -9797.1 },
             Range = 30,
             Zone = 49,
-            _index = 35,
+            _index = 35
         },
         {
             Qpart = { [26506] = { 1, 2, 3 } },
-            Coord = { x = -2186.8, y = -9658.4 },
+            coord = { x = -2186.8, y = -9658.4 },
             Range = 30,
             Zone = 49,
-            _index = 36,
+            _index = 36
         },
         {
             Done = { 26506 },
-            Coord = { x = -1881.4, y = -9632.6 },
+            coord = { x = -1881.4, y = -9632.6 },
             Zone = 49,
-            _index = 37,
+            _index = 37
         },
         {
             Done = { 26504, 26503 },
-            Coord = { x = -1873, y = -9620.9 },
+            coord = { x = -1873, y = -9620.9 },
             Zone = 49,
-            _index = 38,
+            _index = 38
         },
         {
             PickUp = { 26505 },
-            Coord = { x = -1873, y = -9620.9 },
+            coord = { x = -1873, y = -9620.9 },
             Zone = 49,
-            _index = 39,
+            _index = 39
         },
         {
             PickUp = { 26508 },
-            Coord = { x = -2206.4, y = -9350.8 },
+            coord = { x = -2206.4, y = -9350.8 },
             Zone = 49,
-            _index = 40,
+            _index = 40
         },
         {
             Qpart = { [26508] = { 1 } },
-            Coord = { x = -2356.5, y = -9362.7 },
+            coord = { x = -2356.5, y = -9362.7 },
             ExtraLineText = "DIRT_IN_RIVER",
             Range = 50,
             Zone = 49,
-            _index = 41,
+            _index = 41
         },
         {
             Done = { 26508 },
-            Coord = { x = -2205.7, y = -9351.3 },
+            coord = { x = -2205.7, y = -9351.3 },
             Zone = 49,
-            _index = 42,
+            _index = 42
         },
         {
             Done = { 26505 },
-            Coord = { x = -2221.7, y = -9217.9 },
+            coord = { x = -2221.7, y = -9217.9 },
             Zone = 49,
-            _index = 43,
+            _index = 43
         },
         {
             PickUp = { 26510, 26511, 26728 },
-            Coord = { x = -2221.7, y = -9217.9 },
+            coord = { x = -2221.7, y = -9217.9 },
             Zone = 49,
-            _index = 44,
+            _index = 44
         },
         {
             Qpart = { [26510] = { 1 }, [26511] = { 1 } },
-            Coord = { x = -2450.4, y = -9237.1 },
+            coord = { x = -2450.4, y = -9237.1 },
             Range = 3,
             Zone = 49,
-            _index = 45,
+            _index = 45
         },
         {
             Done = { 26510, 26511 },
-            Coord = { x = -2222, y = -9218.4 },
+            coord = { x = -2222, y = -9218.4 },
             Zone = 49,
-            _index = 46,
+            _index = 46
         },
         {
             PickUp = { 26512 },
-            Coord = { x = -2222.1, y = -9217.5 },
+            coord = { x = -2222.1, y = -9217.5 },
             Zone = 49,
-            _index = 47,
+            _index = 47
         },
         {
             PickUp = { 26513 },
-            Coord = { x = -2296.3, y = -9283 },
+            coord = { x = -2296.3, y = -9283 },
             Zone = 49,
-            _index = 48,
+            _index = 48
         },
         {
             Qpart = { [26512] = { 1 } },
-            Coord = { x = -2309.2, y = -9188.8 },
+            coord = { x = -2309.2, y = -9188.8 },
             Range = 5,
             Zone = 49,
-            _index = 49,
+            _index = 49
         },
         {
             Done = { 26512 },
-            Coord = { x = -2309.6, y = -9192.5 },
+            coord = { x = -2309.6, y = -9192.5 },
             Zone = 49,
-            _index = 50,
+            _index = 50
         },
         {
             PickUp = { 26514 },
-            Coord = { x = -2309.6, y = -9192.5 },
+            coord = { x = -2309.6, y = -9192.5 },
             Zone = 49,
-            _index = 51,
+            _index = 51
         },
         {
             Qpart = { [26513] = { 1 }, [26514] = { 1 } },
-            Coord = { x = -2331.5, y = -9119.5 },
+            coord = { x = -2331.5, y = -9119.5 },
             Range = 30,
             Zone = 49,
-            _index = 52,
+            _index = 52
         },
         {
             DropQuest = 26519,
             DroppableQuest = { MobId = 446, Qid = 26519, Text = "Redridge Basher" },
-            Coord = { x = -2212.6, y = -9137.4 },
+            coord = { x = -2212.6, y = -9137.4 },
             Zone = 49,
-            _index = 53,
+            _index = 53
         },
         {
             Done = { 26514 },
-            Coord = { x = -2034.4, y = -9108.4 },
+            coord = { x = -2034.4, y = -9108.4 },
             Zone = 49,
-            _index = 54,
+            _index = 54
         },
         {
             PickUp = { 26544 },
-            Coord = { x = -2034.4, y = -9108.4 },
+            coord = { x = -2034.4, y = -9108.4 },
             Zone = 49,
-            _index = 55,
+            _index = 55
         },
         {
             Qpart = { [26544] = { 1 } },
-            Coord = { x = -1966.4, y = -8907.5 },
+            coord = { x = -1966.4, y = -8907.5 },
             Range = 30,
             Zone = 49,
-            _index = 56,
+            _index = 56
         },
         {
             Done = { 26544 },
-            Coord = { x = -1966.4, y = -8907.5 },
+            coord = { x = -1966.4, y = -8907.5 },
             Zone = 49,
-            _index = 57,
+            _index = 57
         },
         {
             PickUp = { 26545 },
-            Coord = { x = -1966.4, y = -8907.5 },
+            coord = { x = -1966.4, y = -8907.5 },
             Zone = 49,
-            _index = 58,
+            _index = 58
         },
         {
             Waypoint = 26519,
-            Coord = { x = -2016.5, y = -8982 },
+            coord = { x = -2016.5, y = -8982 },
             ExtraLineText = "CAVE_ENTRANCE_AT_WAYPOINT",
             Range = 5,
             Zone = 49,
-            _index = 59,
+            _index = 59
         },
         {
             Qpart = { [26519] = { 1 } },
-            Coord = { x = -1941.5, y = -8830.6 },
+            coord = { x = -1941.5, y = -8830.6 },
             Range = 30,
             Zone = 49,
-            _index = 60,
+            _index = 60
         },
         {
             Done = { 26519 },
-            Coord = { x = -1937.4, y = -8833.6 },
+            coord = { x = -1937.4, y = -8833.6 },
             Zone = 49,
-            _index = 61,
+            _index = 61
         },
         {
             PickUp = { 26520 },
-            Coord = { x = -1937.4, y = -8833.6 },
+            coord = { x = -1937.4, y = -8833.6 },
             Zone = 49,
-            _index = 62,
+            _index = 62
         },
         {
             Waypoint = 26545,
-            Coord = { x = -2016.5, y = -8982 },
+            coord = { x = -2016.5, y = -8982 },
             ExtraLineText = "CAVE_EXIT_AT_WAYPOINT",
             Range = 5,
             Zone = 49,
-            _index = 63,
+            _index = 63
         },
         {
             Qpart = { [26545] = { 1, 2 } },
-            Coord = { x = -2168.9, y = -8890.5 },
+            coord = { x = -2168.9, y = -8890.5 },
             Range = 30,
             Zone = 49,
-            _index = 64,
+            _index = 64
         },
         {
             Qpart = { [26520] = { 1 } },
-            Coord = { x = -2289.3, y = -9271.8 },
+            coord = { x = -2289.3, y = -9271.8 },
             Button = { ["26520-1"] = 58895 },
             ExtraLineText = "USE_ORB_CANYON_ETTIN",
             Range = 30,
             Zone = 49,
-            _index = 65,
+            _index = 65
         },
         {
             Done = { 26513 },
-            Coord = { x = -2297.6, y = -9283.4 },
+            coord = { x = -2297.6, y = -9283.4 },
             Zone = 49,
-            _index = 66,
+            _index = 66
         },
         {
             Done = { 26545, 26520 },
-            Coord = { x = -2221.9, y = -9218.6 },
+            coord = { x = -2221.9, y = -9218.6 },
             Zone = 49,
-            _index = 67,
+            _index = 67
         },
         {
             PickUp = { 26567 },
-            Coord = { x = -2215.2, y = -9212.3 },
+            coord = { x = -2215.2, y = -9212.3 },
             Zone = 49,
-            _index = 68,
+            _index = 68
         },
         {
             PickUp = { 26509 },
-            Coord = { x = -2046.2, y = -9246.5 },
+            coord = { x = -2046.2, y = -9246.5 },
             Zone = 49,
-            _index = 69,
+            _index = 69
         },
         {
             Qpart = { [26509] = { 1 } },
-            Coord = { x = -1921.6, y = -9291 },
+            coord = { x = -1921.6, y = -9291 },
             Range = 20,
             Zone = 49,
-            _index = 70,
+            _index = 70
         },
         {
             Done = { 26509 },
-            Coord = { x = -2045.8, y = -9246.8 },
+            coord = { x = -2045.8, y = -9246.8 },
             Zone = 49,
-            _index = 71,
+            _index = 71
         },
         {
             Done = { 26567 },
-            Coord = { x = -2154.7, y = -9201.3 },
+            coord = { x = -2154.7, y = -9201.3 },
             ExtraLineText = "DOWNSTAIRS",
             Zone = 49,
-            _index = 72,
+            _index = 72
         },
         {
             PickUp = { 26568 },
-            Coord = { x = -2154.7, y = -9201.3 },
+            coord = { x = -2154.7, y = -9201.3 },
             Zone = 49,
-            _index = 73,
+            _index = 73
         },
         {
             Done = { 26568 },
-            Coord = { x = -2214.8, y = -9212.5 },
+            coord = { x = -2214.8, y = -9212.5 },
             Zone = 49,
-            _index = 74,
+            _index = 74
         },
         {
             PickUp = { 26586, 26571 },
-            Coord = { x = -2214.8, y = -9212.5 },
+            coord = { x = -2214.8, y = -9212.5 },
             Zone = 49,
-            _index = 75,
+            _index = 75
         },
         {
             PickUp = { 26570, 26569 },
-            Coord = { x = -2241.6, y = -9276.1 },
+            coord = { x = -2241.6, y = -9276.1 },
             Zone = 49,
-            _index = 76,
+            _index = 76
         },
         {
             Done = { 26586 },
-            Coord = { x = -2699.5, y = -9234.5 },
+            coord = { x = -2699.5, y = -9234.5 },
             Fillers = { [26570] = { 1 } },
             Zone = 49,
-            _index = 77,
+            _index = 77
         },
         {
             PickUp = { 26587 },
-            Coord = { x = -2699.5, y = -9234.5 },
+            coord = { x = -2699.5, y = -9234.5 },
             Fillers = { [26570] = { 1 } },
             Zone = 49,
-            _index = 78,
+            _index = 78
         },
         {
             Qpart = { [26571] = { 1, 2 } },
-            Coord = { x = -2801.7, y = -9221.5 },
+            coord = { x = -2801.7, y = -9221.5 },
             Fillers = { [26570] = { 1 } },
             Range = 30,
             Zone = 49,
-            _index = 79,
+            _index = 79
         },
         {
             Done = { 26571 },
-            Coord = { x = -2801.7, y = -9221.5 },
+            coord = { x = -2801.7, y = -9221.5 },
             Zone = 49,
-            _index = 80,
+            _index = 80
         },
         {
             PickUp = { 26573 },
-            Coord = { x = -2801.7, y = -9221.5 },
+            coord = { x = -2801.7, y = -9221.5 },
             Zone = 49,
-            _index = 81,
+            _index = 81
         },
         {
             Qpart = { [26587] = { 1 } },
-            Coord = { x = -2747.3, y = -9168.6 },
+            coord = { x = -2747.3, y = -9168.6 },
             Fillers = { [26570] = { 1 } },
             Range = 3,
             Zone = 49,
-            _index = 82,
+            _index = 82
         },
         {
             Done = { 26587 },
-            Coord = { x = -2701.5, y = -9231.8 },
+            coord = { x = -2701.5, y = -9231.8 },
             Fillers = { [26570] = { 1 } },
             Zone = 49,
-            _index = 83,
+            _index = 83
         },
         {
             PickUp = { 26560 },
-            Coord = { x = -2701.5, y = -9231.8 },
+            coord = { x = -2701.5, y = -9231.8 },
             Fillers = { [26570] = { 1 } },
             Zone = 49,
-            _index = 84,
+            _index = 84
         },
         {
             Qpart = { [26560] = { 1 } },
-            Coord = { x = -2598.1, y = -8701 },
+            coord = { x = -2598.1, y = -8701 },
             Fillers = { [26569] = { 1 }, [26570] = { 1 } },
             Range = 30,
             Zone = 49,
-            _index = 85,
+            _index = 85
         },
         {
             Done = { 26560 },
-            Coord = { x = -2341.9, y = -8716.8 },
+            coord = { x = -2341.9, y = -8716.8 },
             Fillers = { [26569] = { 1 }, [26570] = { 1 } },
             Zone = 49,
-            _index = 86,
+            _index = 86
         },
         {
             PickUp = { 26561 },
-            Coord = { x = -2341.9, y = -8716.8 },
+            coord = { x = -2341.9, y = -8716.8 },
             Fillers = { [26569] = { 1 }, [26570] = { 1 } },
             Zone = 49,
-            _index = 87,
+            _index = 87
         },
         {
             Waypoint = 26561,
-            Coord = { x = -2289.7, y = -8673.5 },
+            coord = { x = -2289.7, y = -8673.5 },
             ExtraLineText = "CAVE_ENTRANCE_AT_WAYPOINT",
             Range = 5,
             Zone = 49,
-            _index = 88,
+            _index = 88
         },
         {
             Qpart = { [26561] = { 1 } },
-            Coord = { x = -2147.3, y = -8694.3 },
+            coord = { x = -2147.3, y = -8694.3 },
             Fillers = { [26569] = { 1 }, [26570] = { 1 } },
             Range = 5,
             Zone = 49,
-            _index = 89,
+            _index = 89
         },
         {
             Done = { 26561 },
-            Coord = { x = -2147.3, y = -8694.3 },
+            coord = { x = -2147.3, y = -8694.3 },
             Fillers = { [26569] = { 1 }, [26570] = { 1 } },
             Zone = 49,
-            _index = 90,
+            _index = 90
         },
         {
             Qpart = { [26573] = { 1, 2 } },
-            Coord = { x = -2147.3, y = -8694.3 },
+            coord = { x = -2147.3, y = -8694.3 },
             Fillers = { [26569] = { 1 }, [26570] = { 1 } },
             Range = 10,
             Zone = 49,
-            _index = 91,
+            _index = 91
         },
         {
             PickUp = { 26562 },
-            Coord = { x = -2148.4, y = -8693.3 },
+            coord = { x = -2148.4, y = -8693.3 },
             Zone = 49,
-            _index = 92,
+            _index = 92
         },
         {
             Qpart = { [26562] = { 1, 2 } },
-            Coord = { x = -2190.6, y = -8824.3 },
+            coord = { x = -2190.6, y = -8824.3 },
             Fillers = { [26569] = { 1 }, [26570] = { 1 } },
             Range = 30,
             Zone = 49,
-            _index = 93,
+            _index = 93
         },
         {
             Done = { 26562 },
-            Coord = { x = -2206.5, y = -8805.9 },
+            coord = { x = -2206.5, y = -8805.9 },
             ExtraLineText = "PULL_LEVER",
             Zone = 49,
-            _index = 94,
+            _index = 94
         },
         {
             PickUp = { 26563 },
-            Coord = { x = -2193.4, y = -8821.7 },
+            coord = { x = -2193.4, y = -8821.7 },
             Zone = 49,
-            _index = 95,
+            _index = 95
         },
         {
             Qpart = { [26570] = { 1 } },
-            Coord = { x = -2190.6, y = -8824.3 },
+            coord = { x = -2190.6, y = -8824.3 },
             Range = 30,
             Zone = 49,
-            _index = 96,
+            _index = 96
         },
         {
             Waypoint = 26570,
-            Coord = { x = -2289.7, y = -8673.5 },
+            coord = { x = -2289.7, y = -8673.5 },
             ExtraLineText = "CAVE_EXIT_AT_WAYPOINT",
             Range = 5,
             Zone = 49,
-            _index = 97,
+            _index = 97
         },
         {
             Done = { 26570, 26569 },
-            Coord = { x = -2241.9, y = -9277.4 },
+            coord = { x = -2241.9, y = -9277.4 },
             Zone = 49,
-            _index = 98,
+            _index = 98
         },
         {
             Done = { 26563, 26573 },
-            Coord = { x = -2215, y = -9212.6 },
+            coord = { x = -2215, y = -9212.6 },
             Zone = 49,
-            _index = 99,
+            _index = 99
         },
         {
             PickUp = { 26607 },
-            Coord = { x = -2215, y = -9212.6 },
+            coord = { x = -2215, y = -9212.6 },
             Zone = 49,
-            _index = 100,
+            _index = 100
         },
         {
             Done = { 26607 },
-            Coord = { x = -2155.6, y = -9202.1 },
+            coord = { x = -2155.6, y = -9202.1 },
             ExtraLineText = "DOWNSTAIRS",
             Zone = 49,
-            _index = 101,
+            _index = 101
         },
         {
             PickUp = { 26616 },
-            Coord = { x = -2155.6, y = -9202.1 },
+            coord = { x = -2155.6, y = -9202.1 },
             Zone = 49,
-            _index = 102,
+            _index = 102
         },
         {
             Waypoint = 26616,
-            Coord = { x = -2362.6, y = -9295.6 },
+            coord = { x = -2362.6, y = -9295.6 },
             ExtraLineText = "RIGHT_CLICK_BOAT",
             Range = 5,
             Zone = 49,
-            _index = 103,
+            _index = 103
         },
         {
             Done = { 26616 },
-            Coord = { x = -2829.2, y = -9462.7 },
+            coord = { x = -2829.2, y = -9462.7 },
             ExtraLineText = "WARMODES",
             Zone = 49,
-            _index = 104,
+            _index = 104
         },
         {
             PickUp = { 26639, 26638, 26637, 26636 },
-            Coord = { x = -2828.1, y = -9463.5 },
+            coord = { x = -2828.1, y = -9463.5 },
             Zone = 49,
-            _index = 105,
+            _index = 105
         },
         {
             Qpart = { [26637] = { 1 } },
-            Coord = { x = -2721.9, y = -9450.4 },
+            coord = { x = -2721.9, y = -9450.4 },
             Range = 30,
             Zone = 49,
-            _index = 106,
+            _index = 106
         },
         {
             Qpart = { [26636] = { 1, 2 }, [26638] = { 1 } },
-            Coord = { x = -2656.5, y = -9661 },
+            coord = { x = -2656.5, y = -9661 },
             Range = 30,
             Zone = 49,
-            _index = 107,
+            _index = 107
         },
         {
             Done = { 26639 },
-            Coord = { x = -2842.4, y = -9676 },
+            coord = { x = -2842.4, y = -9676 },
             Zone = 49,
-            _index = 108,
+            _index = 108
         },
         {
             PickUp = { 26640 },
-            Coord = { x = -2842.4, y = -9676 },
+            coord = { x = -2842.4, y = -9676 },
             Zone = 49,
-            _index = 109,
+            _index = 109
         },
         {
             Done = { 26640, 26638, 26637, 26636 },
-            Coord = { x = -2827, y = -9463 },
+            coord = { x = -2827, y = -9463 },
             Zone = 49,
-            _index = 110,
+            _index = 110
         },
         {
             UseFlightPath = 26728,
             NodeID = 12,
-            Coord = { x = -2837, y = -9446.6 },
+            coord = { x = -2837, y = -9446.6 },
             ETA = 82,
             Zone = 49,
-            _index = 111,
+            _index = 111
         },
         {
             Done = { 26728 },
-            Coord = { x = -1151.5, y = -10561.4 },
+            coord = { x = -1151.5, y = -10561.4 },
             Zone = 47,
-            _index = 112,
+            _index = 112
         },
         {
             PickUp = { 26618 },
-            Coord = { x = -1151.5, y = -10561.4 },
+            coord = { x = -1151.5, y = -10561.4 },
             Zone = 47,
-            _index = 113,
+            _index = 113
         },
         {
             PickUp = { 26688 },
-            Coord = { x = -1200, y = -10580.2 },
+            coord = { x = -1200, y = -10580.2 },
             Zone = 47,
-            _index = 114,
+            _index = 114
         },
         {
             PickUp = { 26620, 26623 },
-            Coord = { x = -1157.8, y = -10499.8 },
+            coord = { x = -1157.8, y = -10499.8 },
             Zone = 47,
-            _index = 115,
+            _index = 115
         },
         {
             PickUp = { 26666 },
-            Coord = { x = -1301.9, y = -10512 },
+            coord = { x = -1301.9, y = -10512 },
             Zone = 47,
-            _index = 116,
+            _index = 116
         },
         {
             Done = { 26666 },
-            Coord = { x = -1122.9, y = -10561.1 },
+            coord = { x = -1122.9, y = -10561.1 },
             Zone = 47,
-            _index = 117,
+            _index = 117
         },
         {
             PickUp = { 26667 },
-            Coord = { x = -1122.9, y = -10561.1 },
+            coord = { x = -1122.9, y = -10561.1 },
             Zone = 47,
-            _index = 118,
+            _index = 118
         },
         {
             Qpart = { [26667] = { 1 }, [26688] = { 1 } },
-            Coord = { x = -820, y = -10447.9 },
+            coord = { x = -820, y = -10447.9 },
             Range = 1,
             Zone = 47,
-            _index = 119,
+            _index = 119
         },
         {
             Qpart = { [26618] = { 1 }, [26620] = { 1 }, [26623] = { 1 } },
-            Coord = { x = -852.4, y = -10094.9 },
+            coord = { x = -852.4, y = -10094.9 },
             Range = 30,
             Zone = 47,
-            _index = 120,
+            _index = 120
         },
         {
             Done = { 26620, 26623 },
-            Coord = { x = -1157.9, y = -10499.3 },
+            coord = { x = -1157.9, y = -10499.3 },
             Zone = 47,
-            _index = 121,
+            _index = 121
         },
         {
             Done = { 26618 },
-            Coord = { x = -1151.8, y = -10561.1 },
+            coord = { x = -1151.8, y = -10561.1 },
             Zone = 47,
-            _index = 122,
+            _index = 122
         },
         {
             PickUp = { 26627, 26645 },
-            Coord = { x = -1151.8, y = -10561.1 },
+            coord = { x = -1151.8, y = -10561.1 },
             Zone = 47,
-            _index = 123,
+            _index = 123
         },
         {
             Done = { 26667 },
-            Coord = { x = -1123.2, y = -10560.8 },
+            coord = { x = -1123.2, y = -10560.8 },
             Zone = 47,
-            _index = 124,
+            _index = 124
         },
         {
             PickUp = { 26669 },
-            Coord = { x = -1123.2, y = -10560.8 },
+            coord = { x = -1123.2, y = -10560.8 },
             Zone = 47,
-            _index = 125,
+            _index = 125
         },
         {
             Done = { 26688 },
-            Coord = { x = -1200.5, y = -10581 },
+            coord = { x = -1200.5, y = -10581 },
             Zone = 47,
-            _index = 126,
+            _index = 126
         },
         {
             PickUp = { 26689 },
-            Coord = { x = -1200.5, y = -10581 },
+            coord = { x = -1200.5, y = -10581 },
             Zone = 47,
-            _index = 127,
+            _index = 127
         },
         {
             PickUp = { 26683 },
-            Coord = { x = -1314.2, y = -10571.3 },
+            coord = { x = -1314.2, y = -10571.3 },
             Zone = 47,
-            _index = 128,
+            _index = 128
         },
         {
             Done = { 26627 },
-            Coord = { x = -1527.3, y = -10350.5 },
+            coord = { x = -1527.3, y = -10350.5 },
             Zone = 47,
-            _index = 129,
+            _index = 129
         },
         {
             PickUp = { 26653 },
-            Coord = { x = -1527.3, y = -10350.5 },
+            coord = { x = -1527.3, y = -10350.5 },
             Zone = 47,
-            _index = 130,
+            _index = 130
         },
         {
             Done = { 26653 },
-            Coord = { x = -1214.1, y = -10532.3 },
+            coord = { x = -1214.1, y = -10532.3 },
             Zone = 47,
-            _index = 131,
+            _index = 131
         },
         {
             PickUp = { 26652 },
-            Coord = { x = -1214.1, y = -10532.3 },
+            coord = { x = -1214.1, y = -10532.3 },
             Zone = 47,
-            _index = 132,
+            _index = 132
         },
         {
             Done = { 26652, 26683 },
-            Coord = { x = -1378.1, y = -10779 },
+            coord = { x = -1378.1, y = -10779 },
             Zone = 47,
-            _index = 133,
+            _index = 133
         },
         {
             PickUp = { 26654, 26684 },
-            Coord = { x = -1378.1, y = -10779 },
+            coord = { x = -1378.1, y = -10779 },
             Zone = 47,
-            _index = 134,
+            _index = 134
         },
         {
             Qpart = { [26645] = { 1 } },
-            Coord = { x = -1370.1, y = -10803.7 },
+            coord = { x = -1370.1, y = -10803.7 },
             Range = 30,
             Zone = 47,
-            _index = 135,
+            _index = 135
         },
         {
             Qpart = { [26684] = { 1 } },
-            Coord = { x = -1350.3, y = -11003.4 },
+            coord = { x = -1350.3, y = -11003.4 },
             Range = 30,
             Zone = 47,
-            _index = 136,
+            _index = 136
         },
         {
             Qpart = { [26669] = { 1 }, [26689] = { 1 } },
-            Coord = { x = -964.6, y = -11092.8 },
+            coord = { x = -964.6, y = -11092.8 },
             Range = 1,
             Zone = 47,
-            _index = 137,
+            _index = 137
         },
         {
             PickUp = { 26707, 26717, 25235 },
-            Coord = { x = -379.4, y = -10930.2 },
+            coord = { x = -379.4, y = -10930.2 },
             Zone = 47,
-            _index = 138,
+            _index = 138
         },
         {
             Qpart = { [26707] = { 1 }, [26717] = { 1 } },
-            Coord = { x = -512.2, y = -11114.1 },
+            coord = { x = -512.2, y = -11114.1 },
             Range = 1,
             Zone = 47,
-            _index = 139,
+            _index = 139
         },
         {
             Done = { 26684 },
-            Coord = { x = -1313.9, y = -10571.1 },
+            coord = { x = -1313.9, y = -10571.1 },
             Zone = 47,
-            _index = 140,
+            _index = 140
         },
         {
             PickUp = { 26685 },
-            Coord = { x = -1313.9, y = -10571.1 },
+            coord = { x = -1313.9, y = -10571.1 },
             Zone = 47,
-            _index = 141,
+            _index = 141
         },
         {
             Done = { 26654 },
-            Coord = { x = -1213.3, y = -10532 },
+            coord = { x = -1213.3, y = -10532 },
             Zone = 47,
-            _index = 142,
+            _index = 142
         },
         {
             PickUp = { 26655 },
-            Coord = { x = -1213.3, y = -10532 },
+            coord = { x = -1213.3, y = -10532 },
             Zone = 47,
-            _index = 143,
+            _index = 143
         },
         {
             Done = { 26689 },
-            Coord = { x = -1200.5, y = -10580.9 },
+            coord = { x = -1200.5, y = -10580.9 },
             Zone = 47,
-            _index = 144,
+            _index = 144
         },
         {
             PickUp = { 26690 },
-            Coord = { x = -1200.5, y = -10580.9 },
+            coord = { x = -1200.5, y = -10580.9 },
             Zone = 47,
-            _index = 145,
+            _index = 145
         },
         {
             Done = { 26645 },
-            Coord = { x = -1151.9, y = -10561.4 },
+            coord = { x = -1151.9, y = -10561.4 },
             Zone = 47,
-            _index = 146,
+            _index = 146
         },
         {
             PickUp = { 26686 },
-            Coord = { x = -1151.9, y = -10561.4 },
+            coord = { x = -1151.9, y = -10561.4 },
             Zone = 47,
-            _index = 147,
+            _index = 147
         },
         {
             Done = { 26669 },
-            Coord = { x = -1123, y = -10561.1 },
+            coord = { x = -1123, y = -10561.1 },
             Zone = 47,
-            _index = 148,
+            _index = 148
         },
         {
             PickUp = { 26670 },
-            Coord = { x = -1123, y = -10561.1 },
+            coord = { x = -1123, y = -10561.1 },
             Zone = 47,
-            _index = 149,
+            _index = 149
         },
         {
             Done = { 26655 },
-            Coord = { x = -1527.2, y = -10350.3 },
+            coord = { x = -1527.2, y = -10350.3 },
             Zone = 47,
-            _index = 150,
+            _index = 150
         },
         {
             PickUp = { 26660 },
-            Coord = { x = -1527.2, y = -10350.3 },
+            coord = { x = -1527.2, y = -10350.3 },
             Zone = 47,
-            _index = 151,
+            _index = 151
         },
         {
             Done = { 26660 },
-            Coord = { x = -1167, y = -10521.5 },
+            coord = { x = -1167, y = -10521.5 },
             Zone = 47,
-            _index = 152,
+            _index = 152
         },
         {
             PickUp = { 26661 },
-            Coord = { x = -1167, y = -10521.5 },
+            coord = { x = -1167, y = -10521.5 },
             Zone = 47,
-            _index = 153,
+            _index = 153
         },
         {
             Qpart = { [26661] = { 1 }, [26686] = { 1, 2 } },
-            Coord = { x = -1309.6, y = -11003.2 },
+            coord = { x = -1309.6, y = -11003.2 },
             Range = 30,
             Zone = 47,
-            _index = 154,
+            _index = 154
         },
         {
             Qpart = { [26670] = { 1 }, [26690] = { 1, 2 } },
-            Coord = { x = -1154.4, y = -11142 },
+            coord = { x = -1154.4, y = -11142 },
             Range = 1,
             Zone = 47,
-            _index = 155,
+            _index = 155
         },
         {
             Done = { 26690 },
-            Coord = { x = -1200.4, y = -10580.9 },
+            coord = { x = -1200.4, y = -10580.9 },
             Zone = 47,
-            _index = 156,
+            _index = 156
         },
         {
             PickUp = { 26691 },
-            Coord = { x = -1200.4, y = -10580.9 },
+            coord = { x = -1200.4, y = -10580.9 },
             Zone = 47,
-            _index = 157,
+            _index = 157
         },
         {
             Done = { 26691 },
-            Coord = { x = -1202.1, y = -10598.5 },
+            coord = { x = -1202.1, y = -10598.5 },
             Zone = 47,
-            _index = 158,
+            _index = 158
         },
         {
             Done = { 26686 },
-            Coord = { x = -1152, y = -10561.4 },
+            coord = { x = -1152, y = -10561.4 },
             Zone = 47,
-            _index = 159,
+            _index = 159
         },
         {
             Done = { 26670 },
-            Coord = { x = -1122.9, y = -10561.2 },
+            coord = { x = -1122.9, y = -10561.2 },
             Zone = 47,
-            _index = 160,
+            _index = 160
         },
         {
             PickUp = { 26671 },
-            Coord = { x = -1122.9, y = -10561.2 },
+            coord = { x = -1122.9, y = -10561.2 },
             Zone = 47,
-            _index = 161,
+            _index = 161
         },
         {
             Done = { 26661 },
-            Coord = { x = -1166.9, y = -10521.3 },
+            coord = { x = -1166.9, y = -10521.3 },
             Zone = 47,
-            _index = 162,
+            _index = 162
         },
         {
             PickUp = { 26676 },
-            Coord = { x = -1166.9, y = -10521.3 },
+            coord = { x = -1166.9, y = -10521.3 },
             Zone = 47,
-            _index = 163,
+            _index = 163
         },
         {
             Done = { 26671 },
-            Coord = { x = -1302, y = -10511.9 },
+            coord = { x = -1302, y = -10511.9 },
             Zone = 47,
-            _index = 164,
+            _index = 164
         },
         {
             PickUp = { 26672 },
-            Coord = { x = -1302, y = -10511.9 },
+            coord = { x = -1302, y = -10511.9 },
             Zone = 47,
-            _index = 165,
+            _index = 165
         },
         {
             Done = { 26676 },
-            Coord = { x = -1527.4, y = -10350.5 },
+            coord = { x = -1527.4, y = -10350.5 },
             Zone = 47,
-            _index = 166,
+            _index = 166
         },
         {
             PickUp = { 26680 },
-            Coord = { x = -1527.4, y = -10350.5 },
+            coord = { x = -1527.4, y = -10350.5 },
             Zone = 47,
-            _index = 167,
+            _index = 167
         },
         {
             Done = { 26672 },
-            Coord = { x = -1213.4, y = -10531.8 },
+            coord = { x = -1213.4, y = -10531.8 },
             Zone = 47,
-            _index = 168,
+            _index = 168
         },
         {
             PickUp = { 26674 },
-            Coord = { x = -1213.4, y = -10531.8 },
+            coord = { x = -1213.4, y = -10531.8 },
             Zone = 47,
-            _index = 169,
+            _index = 169
         },
         {
             Qpart = { [26680] = { 1 } },
-            Coord = { x = -71.7, y = -11072.8 },
+            coord = { x = -71.7, y = -11072.8 },
             Fillers = { [25235] = { 1 } },
             Range = 5,
             Zone = 47,
-            _index = 170,
+            _index = 170
         },
         {
             Waypoint = 26685,
-            Coord = { x = -87.1, y = -11100.4 },
+            coord = { x = -87.1, y = -11100.4 },
             ExtraLineText = "CAVE_ENTRANCE_AT_WAYPOINT",
             Range = 5,
             Zone = 47,
-            _index = 171,
+            _index = 171
         },
         {
             Qpart = { [26685] = { 1 } },
-            Coord = { x = -178.2, y = -11234.4 },
+            coord = { x = -178.2, y = -11234.4 },
             Fillers = { [25235] = { 1 } },
             Range = 5,
             Zone = 47,
-            _index = 172,
+            _index = 172
         },
         {
             Qpart = { [25235] = { 1 } },
-            Coord = { x = -178.2, y = -11234.4 },
+            coord = { x = -178.2, y = -11234.4 },
             Range = 30,
             Zone = 47,
-            _index = 173,
+            _index = 173
         },
         {
             Done = { 26707, 26717, 25235 },
-            Coord = { x = -379.6, y = -10930.3 },
+            coord = { x = -379.6, y = -10930.3 },
             Zone = 47,
-            _index = 174,
+            _index = 174
         },
         {
             PickUp = { 26719 },
-            Coord = { x = -379.6, y = -10930.3 },
+            coord = { x = -379.6, y = -10930.3 },
             Zone = 47,
-            _index = 175,
+            _index = 175
         },
         {
             PickUp = { 26777 },
-            Coord = { x = 292.6, y = -10757.7 },
+            coord = { x = 292.6, y = -10757.7 },
             Zone = 47,
-            _index = 176,
+            _index = 176
         },
         {
             PickUp = { 26721 },
-            Coord = { x = 330.2, y = -10767 },
+            coord = { x = 330.2, y = -10767 },
             Zone = 47,
-            _index = 177,
+            _index = 177
         },
         {
             Done = { 26719 },
-            Coord = { x = 338.7, y = -10754.9 },
+            coord = { x = 338.7, y = -10754.9 },
             Zone = 47,
-            _index = 178,
+            _index = 178
         },
         {
             PickUp = { 26720 },
-            Coord = { x = 338.7, y = -10754.9 },
+            coord = { x = 338.7, y = -10754.9 },
             Zone = 47,
-            _index = 179,
+            _index = 179
         },
         {
             Qpart = { [26720] = { 1 } },
-            Coord = { x = 250.6, y = -11033.5 },
+            coord = { x = 250.6, y = -11033.5 },
             Button = { ["26720-1"] = 60206 },
             ExtraLineText = "WORGEN_20_HP",
             Range = 30,
             Zone = 47,
-            _index = 180,
+            _index = 180
         },
         {
             Qpart = { [26777] = { 1 } },
-            Coord = { x = 259.2, y = -10989.9 },
+            coord = { x = 259.2, y = -10989.9 },
             Button = { ["26777-1"] = 60225 },
             Range = 30,
             Zone = 47,
-            _index = 181,
+            _index = 181
         },
         {
             Done = { 26777 },
-            Coord = { x = 292.6, y = -10757.4 },
+            coord = { x = 292.6, y = -10757.4 },
             Zone = 47,
-            _index = 182,
+            _index = 182
         },
         {
             Done = { 26720 },
-            Coord = { x = 338.6, y = -10754.7 },
+            coord = { x = 338.6, y = -10754.7 },
             Zone = 47,
-            _index = 183,
+            _index = 183
         },
         {
             PickUp = { 26760 },
-            Coord = { x = 338.6, y = -10754.7 },
+            coord = { x = 338.6, y = -10754.7 },
             Zone = 47,
-            _index = 184,
+            _index = 184
         },
         {
             Qpart = { [26760] = { 1 } },
-            Coord = { x = 332.2, y = -10756.1 },
+            coord = { x = 332.2, y = -10756.1 },
             Range = 30,
             Zone = 47,
-            _index = 185,
+            _index = 185
         },
         {
             PickUp = { 26723 },
-            Coord = { x = 338, y = -10761.5 },
+            coord = { x = 338, y = -10761.5 },
             Zone = 47,
-            _index = 186,
+            _index = 186
         },
         {
             Done = { 26760 },
-            Coord = { x = 338.7, y = -10754.7 },
+            coord = { x = 338.7, y = -10754.7 },
             Zone = 47,
-            _index = 187,
+            _index = 187
         },
         {
             PickUp = { 26778 },
-            Coord = { x = 292.9, y = -10757.4 },
+            coord = { x = 292.9, y = -10757.4 },
             Zone = 47,
-            _index = 188,
+            _index = 188
         },
         {
             Qpart = { [26723] = { 1 } },
-            Coord = { x = 375.1, y = -10318.4 },
+            coord = { x = 375.1, y = -10318.4 },
             Fillers = { [26778] = { 1 } },
             ExtraLineText = "UPSTAIRS",
             Range = 0.75,
             Zone = 47,
-            _index = 189,
+            _index = 189
         },
         {
             Qpart = { [26778] = { 1 } },
-            Coord = { x = 375.1, y = -10318.4 },
+            coord = { x = 375.1, y = -10318.4 },
             Range = 5,
             Zone = 47,
-            _index = 190,
+            _index = 190
         },
         {
             PickUp = { 26793 },
-            Coord = { x = 354.5, y = -10239.4 },
+            coord = { x = 354.5, y = -10239.4 },
             Zone = 47,
-            _index = 191,
+            _index = 191
         },
         {
             Qpart = { [26721] = { 1 } },
-            Coord = { x = 77.5, y = -10453.1 },
+            coord = { x = 77.5, y = -10453.1 },
             Range = 30,
             Zone = 47,
-            _index = 192,
+            _index = 192
         },
         {
             Done = { 26778 },
-            Coord = { x = 292.5, y = -10757.4 },
+            coord = { x = 292.5, y = -10757.4 },
             Zone = 47,
-            _index = 193,
+            _index = 193
         },
         {
             Done = { 26721 },
-            Coord = { x = 330.2, y = -10767 },
+            coord = { x = 330.2, y = -10767 },
             Zone = 47,
-            _index = 194,
+            _index = 194
         },
         {
             PickUp = { 26787 },
-            Coord = { x = 330.2, y = -10767 },
+            coord = { x = 330.2, y = -10767 },
             Zone = 47,
-            _index = 195,
+            _index = 195
         },
         {
             Done = { 26723 },
-            Coord = { x = 337.8, y = -10761.4 },
+            coord = { x = 337.8, y = -10761.4 },
             Zone = 47,
-            _index = 196,
+            _index = 196
         },
         {
             PickUp = { 26724 },
-            Coord = { x = 337.8, y = -10761.4 },
+            coord = { x = 337.8, y = -10761.4 },
             Zone = 47,
-            _index = 197,
+            _index = 197
         },
         {
             Done = { 26724 },
-            Coord = { x = 292.4, y = -10757.3 },
+            coord = { x = 292.4, y = -10757.3 },
             Zone = 47,
-            _index = 198,
+            _index = 198
         },
         {
             PickUp = { 26725 },
-            Coord = { x = 292.4, y = -10757.3 },
+            coord = { x = 292.4, y = -10757.3 },
             Zone = 47,
-            _index = 199,
+            _index = 199
         },
         {
             Qpart = { [26787] = { 1 } },
-            Coord = { x = 490.3, y = -10666 },
+            coord = { x = 490.3, y = -10666 },
             Range = 30,
             Zone = 47,
-            _index = 200,
+            _index = 200
         },
         {
             Done = { 26725 },
-            Coord = { x = 200.2, y = -10353.8 },
+            coord = { x = 200.2, y = -10353.8 },
             Zone = 47,
-            _index = 201,
+            _index = 201
         },
         {
             PickUp = { 26753 },
-            Coord = { x = 199.4, y = -10352.3 },
+            coord = { x = 199.4, y = -10352.3 },
             Zone = 47,
-            _index = 202,
+            _index = 202
         },
         {
             Waypoint = 26753,
-            Coord = { x = 183.3, y = -10343.2 },
+            coord = { x = 183.3, y = -10343.2 },
             ExtraLineText = "DOWNSTAIRS",
             Range = 5,
             Zone = 47,
-            _index = 203,
+            _index = 203
         },
         {
             Waypoint = 26753,
-            Coord = { x = 144.1, y = -10296.2 },
+            coord = { x = 144.1, y = -10296.2 },
             ExtraLineText = "DOWNSTAIRS",
             Range = 5,
             Zone = 47,
-            _index = 204,
+            _index = 204
         },
         {
             Waypoint = 26753,
-            Coord = { x = 197.7, y = -10219.5 },
+            coord = { x = 197.7, y = -10219.5 },
             ExtraLineText = "DOWNSTAIRS",
             Range = 5,
             Zone = 47,
-            _index = 205,
+            _index = 205
         },
         {
             Done = { 26753 },
-            Coord = { x = 283.7, y = -10210.7 },
+            coord = { x = 283.7, y = -10210.7 },
             ExtraLineText = "DOWNSTAIRS",
             Zone = 47,
-            _index = 206,
+            _index = 206
         },
         {
             PickUp = { 26722 },
-            Coord = { x = 283.7, y = -10210.7 },
+            coord = { x = 283.7, y = -10210.7 },
             Zone = 47,
-            _index = 207,
+            _index = 207
         },
         {
             Done = { 26722 },
-            Coord = { x = 347.1, y = -10173.2 },
+            coord = { x = 347.1, y = -10173.2 },
             Zone = 47,
-            _index = 208,
+            _index = 208
         },
         {
             PickUp = { 26754 },
-            Coord = { x = 347.1, y = -10173.2 },
+            coord = { x = 347.1, y = -10173.2 },
             Zone = 47,
-            _index = 209,
+            _index = 209
         },
         {
             Qpart = { [26754] = { 1 } },
-            Coord = { x = 390.4, y = -10275.6 },
+            coord = { x = 390.4, y = -10275.6 },
             Button = { ["26754-1"] = 60212 },
             Range = 30,
             Zone = 47,
-            _index = 210,
+            _index = 210
         },
         {
             Done = { 26754 },
-            Coord = { x = 337.8, y = -10761.6 },
+            coord = { x = 337.8, y = -10761.6 },
             Zone = 47,
-            _index = 211,
+            _index = 211
         },
         {
             Done = { 26787 },
-            Coord = { x = 330.9, y = -10767.1 },
+            coord = { x = 330.9, y = -10767.1 },
             Zone = 47,
-            _index = 212,
+            _index = 212
         },
         {
             Done = { 26685 },
-            Coord = { x = -1314.1, y = -10571.4 },
+            coord = { x = -1314.1, y = -10571.4 },
             Zone = 47,
-            _index = 213,
+            _index = 213
         },
         {
             Done = { 26793 },
-            Coord = { x = -1127.1, y = -10576.4 },
+            coord = { x = -1127.1, y = -10576.4 },
             Zone = 47,
-            _index = 214,
+            _index = 214
         },
         {
             PickUp = { 26794 },
-            Coord = { x = -1127.1, y = -10576.4 },
+            coord = { x = -1127.1, y = -10576.4 },
             Zone = 47,
-            _index = 215,
+            _index = 215
         },
         {
             Done = { 26794 },
-            Coord = { x = -1151.9, y = -10561.2 },
+            coord = { x = -1151.9, y = -10561.2 },
             Zone = 47,
-            _index = 216,
+            _index = 216
         },
         {
             Done = { 26680 },
-            Coord = { x = -1527.6, y = -10350.4 },
+            coord = { x = -1527.6, y = -10350.4 },
             Zone = 47,
-            _index = 217,
+            _index = 217
         },
         {
             PickUp = { 26677 },
-            Coord = { x = -1527.6, y = -10350.4 },
+            coord = { x = -1527.6, y = -10350.4 },
             Zone = 47,
-            _index = 218,
+            _index = 218
         },
         {
             Qpart = { [26674] = { 1 }, [26677] = { 1 } },
-            Coord = { x = -1255.7, y = -10369.8 },
+            coord = { x = -1255.7, y = -10369.8 },
             Button = { ["26674-1"] = 59363 },
             Range = 3,
             Zone = 47,
-            _index = 219,
+            _index = 219
         },
         {
             Done = { 26674 },
-            Coord = { x = -1302, y = -10511.9 },
+            coord = { x = -1302, y = -10511.9 },
             Zone = 47,
-            _index = 220,
+            _index = 220
         },
         {
             Done = { 26677 },
-            Coord = { x = -1527.4, y = -10350.5 },
+            coord = { x = -1527.4, y = -10350.5 },
             Zone = 47,
-            _index = 221,
+            _index = 221
         },
         {
             PickUp = { 26681 },
-            Coord = { x = -1527.4, y = -10350.5 },
+            coord = { x = -1527.4, y = -10350.5 },
             Zone = 47,
-            _index = 222,
+            _index = 222
         },
         {
             Done = { 26681 },
-            Coord = { x = -1108.7, y = -10552.7 },
+            coord = { x = -1108.7, y = -10552.7 },
             Zone = 47,
-            _index = 223,
+            _index = 223
         },
         {
             PickUp = { 26727 },
-            Coord = { x = -1108.7, y = -10552.7 },
+            coord = { x = -1108.7, y = -10552.7 },
             Zone = 47,
-            _index = 224,
+            _index = 224
         },
         {
             Qpart = { [26727] = { 1 } },
-            Coord = { x = -1166.9, y = -10554 },
+            coord = { x = -1166.9, y = -10554 },
             Range = 10,
             Zone = 47,
-            _index = 225,
+            _index = 225
         },
         {
             Done = { 26727 },
-            Coord = { x = -1108.5, y = -10552.4 },
+            coord = { x = -1108.5, y = -10552.4 },
             Zone = 47,
-            _index = 226,
+            _index = 226
         },
         {
             UseFlightPath = 1,
             NodeID = 8,
-            Coord = { x = -1258.8, y = -10513.9 },
+            coord = { x = -1258.8, y = -10513.9 },
             ETA = 247,
             Zone = 47,
-            _index = 227,
+            _index = 227
         },
         {
             PickUp = { 26854 },
-            Coord = { x = -2380.1, y = -5526.6 },
+            coord = { x = -2380.1, y = -5526.6 },
             Zone = 48,
-            _index = 228,
+            _index = 228
         },
         {
             Done = { 26854 },
-            Coord = { x = -2154.5, y = -5579 },
+            coord = { x = -2154.5, y = -5579 },
             Zone = 27,
-            _index = 229,
+            _index = 229
         },
         {
             PickUp = { 26855 },
-            Coord = { x = -2154.5, y = -5579 },
+            coord = { x = -2154.5, y = -5579 },
             Zone = 27,
-            _index = 230,
+            _index = 230
         },
         {
             Qpart = { [26855] = { 1 } },
-            Coord = { x = -2155.2, y = -5578.8 },
+            coord = { x = -2155.2, y = -5578.8 },
             Range = 30,
             Zone = 27,
-            _index = 231,
+            _index = 231
         },
         {
             Done = { 26855 },
-            Coord = { x = -2380.1, y = -5526.7 },
+            coord = { x = -2380.1, y = -5526.7 },
             Zone = 48,
-            _index = 232,
+            _index = 232
         },
         {
             PickUp = { 13635 },
-            Coord = { x = -2380.1, y = -5526.7 },
+            coord = { x = -2380.1, y = -5526.7 },
             Zone = 48,
-            _index = 233,
+            _index = 233
         },
         {
             Done = { 13635 },
-            Coord = { x = -2638.9, y = -5868 },
+            coord = { x = -2638.9, y = -5868 },
             Zone = 48,
-            _index = 234,
+            _index = 234
         },
         {
             PickUp = { 26146, 26145 },
-            Coord = { x = -2638.9, y = -5868 },
+            coord = { x = -2638.9, y = -5868 },
             Zone = 48,
-            _index = 235,
+            _index = 235
         },
         {
             Qpart = { [26145] = { 1 }, [26146] = { 1 } },
-            Coord = { x = -2847.5, y = -5866.6 },
+            coord = { x = -2847.5, y = -5866.6 },
             Range = 30,
             Zone = 48,
-            _index = 236,
+            _index = 236
         },
         {
             Done = { 26146 },
-            Coord = { x = -2638.4, y = -5867.7 },
+            coord = { x = -2638.4, y = -5867.7 },
             Zone = 48,
-            _index = 237,
+            _index = 237
         },
         {
             PickUp = { 26148 },
-            Coord = { x = -2638.4, y = -5867.7 },
+            coord = { x = -2638.4, y = -5867.7 },
             Zone = 48,
-            _index = 238,
+            _index = 238
         },
         {
             Done = { 26145 },
-            Coord = { x = -2638.4, y = -5867.7 },
+            coord = { x = -2638.4, y = -5867.7 },
             Zone = 48,
-            _index = 239,
+            _index = 239
         },
         {
             PickUp = { 26147 },
-            Coord = { x = -2638.4, y = -5867.7 },
+            coord = { x = -2638.4, y = -5867.7 },
             Zone = 48,
-            _index = 240,
+            _index = 240
         },
         {
             Waypoint = 26148,
-            Coord = { x = -2902.7, y = -5768.9 },
+            coord = { x = -2902.7, y = -5768.9 },
             ExtraLineText = "CAVE_ENTRANCE_AT_WAYPOINT",
             Range = 5,
             Zone = 48,
-            _index = 241,
+            _index = 241
         },
         {
             Qpart = { [26148] = { 1 } },
-            Coord = { x = -2940.6, y = -5612.7 },
+            coord = { x = -2940.6, y = -5612.7 },
             Fillers = { [26147] = { 1, 2 } },
             Range = 5,
             Zone = 48,
-            _index = 242,
+            _index = 242
         },
         {
             Qpart = { [26147] = { 1, 2 } },
-            Coord = { x = -2940.6, y = -5612.7 },
+            coord = { x = -2940.6, y = -5612.7 },
             Range = 5,
             Zone = 48,
-            _index = 243,
+            _index = 243
         },
         {
             Waypoint = 26147,
-            Coord = { x = -2902.7, y = -5768.9 },
+            coord = { x = -2902.7, y = -5768.9 },
             ExtraLineText = "CAVE_EXIT_AT_WAYPOINT",
             Range = 5,
             Zone = 48,
-            _index = 244,
+            _index = 244
         },
         {
             Done = { 26147, 26148 },
-            Coord = { x = -2638.2, y = -5867.4 },
+            coord = { x = -2638.2, y = -5867.4 },
             Zone = 48,
-            _index = 245,
+            _index = 245
         },
         {
             PickUp = { 26176 },
-            Coord = { x = -2638.2, y = -5867.4 },
+            coord = { x = -2638.2, y = -5867.4 },
             Zone = 48,
-            _index = 246,
+            _index = 246
         },
         {
             PickUp = { 13636 },
-            Coord = { x = -2961, y = -5344.4 },
+            coord = { x = -2961, y = -5344.4 },
             Zone = 48,
-            _index = 247,
+            _index = 247
         },
         {
             Done = { 26176 },
-            Coord = { x = -2961, y = -5344.4 },
+            coord = { x = -2961, y = -5344.4 },
             Zone = 48,
-            _index = 248,
+            _index = 248
         },
         {
             PickUp = { 26842 },
-            Coord = { x = -2961, y = -5344.4 },
+            coord = { x = -2961, y = -5344.4 },
             Zone = 48,
-            _index = 249,
+            _index = 249
         },
         {
             PickUp = { 26860 },
-            Coord = { x = -2954.5, y = -5394.2 },
+            coord = { x = -2954.5, y = -5394.2 },
             Zone = 48,
-            _index = 250,
+            _index = 250
         },
         {
             PickUp = { 25118 },
-            Coord = { x = -2987, y = -5301.4 },
+            coord = { x = -2987, y = -5301.4 },
             ExtraLineText = "INSIDE_OR_OUTSIDE",
             Zone = 48,
-            _index = 251,
+            _index = 251
         },
         {
             PickUp = { 13648 },
-            Coord = { x = -3022, y = -5342.4 },
+            coord = { x = -3022, y = -5342.4 },
             Zone = 48,
-            _index = 252,
+            _index = 252
         },
         {
             Done = { 13636 },
-            Coord = { x = -2695.7, y = -4818 },
+            coord = { x = -2695.7, y = -4818 },
             Zone = 48,
-            _index = 253,
+            _index = 253
         },
         {
             PickUp = { 26843 },
-            Coord = { x = -2695.7, y = -4818 },
+            coord = { x = -2695.7, y = -4818 },
             Zone = 48,
-            _index = 254,
+            _index = 254
         },
         {
             Qpart = { [26843] = { 1 } },
-            Coord = { x = -2713.3, y = -5069.6 },
+            coord = { x = -2713.3, y = -5069.6 },
             Range = 5,
             Zone = 48,
-            _index = 255,
+            _index = 255
         },
         {
             Done = { 26843 },
-            Coord = { x = -2695.7, y = -4817.9 },
+            coord = { x = -2695.7, y = -4817.9 },
             Zone = 48,
-            _index = 256,
+            _index = 256
         },
         {
             PickUp = { 26844 },
-            Coord = { x = -2695.7, y = -4817.9 },
+            coord = { x = -2695.7, y = -4817.9 },
             Zone = 48,
-            _index = 257,
+            _index = 257
         },
         {
             Qpart = { [26844] = { 1, 2 } },
-            Coord = { x = -2966.4, y = -4778.2 },
+            coord = { x = -2966.4, y = -4778.2 },
             Range = 30,
             Zone = 48,
-            _index = 258,
+            _index = 258
         },
         {
             Qpart = { [25118] = { 1 }, [26860] = { 1 } },
-            Coord = { x = -2926.7, y = -5098 },
+            coord = { x = -2926.7, y = -5098 },
             Range = 30,
             Zone = 48,
-            _index = 259,
+            _index = 259
         },
         {
             Done = { 26844 },
-            Coord = { x = -2695.7, y = -4818.1 },
+            coord = { x = -2695.7, y = -4818.1 },
             Zone = 48,
-            _index = 260,
+            _index = 260
         },
         {
             PickUp = { 26845, 26863, 26846 },
-            Coord = { x = -2695.7, y = -4818.1 },
+            coord = { x = -2695.7, y = -4818.1 },
             Zone = 48,
-            _index = 261,
+            _index = 261
         },
         {
             Waypoint = 26846,
-            Coord = { x = -2972.2, y = -4833.3 },
+            coord = { x = -2972.2, y = -4833.3 },
             Range = 5,
             Zone = 48,
-            _index = 262,
+            _index = 262
         },
         {
             Qpart = { [26846] = { 1 }, [26863] = { 1 } },
-            Coord = { x = -2972.6, y = -4851.3 },
+            coord = { x = -2972.6, y = -4851.3 },
             Range = 30,
             Zone = 48,
-            _index = 263,
+            _index = 263
         },
         {
             Qpart = { [26845] = { 1 } },
-            Coord = { x = -2954.5, y = -4988.3 },
+            coord = { x = -2954.5, y = -4988.3 },
             Range = 30,
             Zone = 48,
-            _index = 264,
+            _index = 264
         },
         {
             Waypoint = 26845,
-            Coord = { x = -2972.2, y = -4833.3 },
+            coord = { x = -2972.2, y = -4833.3 },
             Range = 5,
             Zone = 48,
-            _index = 265,
+            _index = 265
         },
         {
             Done = { 26845 },
-            Coord = { x = -2694.6, y = -4816.3 },
+            coord = { x = -2694.6, y = -4816.3 },
             Zone = 48,
-            _index = 266,
+            _index = 266
         },
         {
             PickUp = { 26864 },
-            Coord = { x = -2694.6, y = -4816.3 },
+            coord = { x = -2694.6, y = -4816.3 },
             Zone = 48,
-            _index = 267,
+            _index = 267
         },
         {
             Done = { 26846, 26863 },
-            Coord = { x = -2694.6, y = -4816.3 },
+            coord = { x = -2694.6, y = -4816.3 },
             Zone = 48,
-            _index = 268,
+            _index = 268
         },
         {
             Qpart = { [26842] = { 1 } },
-            Coord = { x = -2708.7, y = -5282.5 },
+            coord = { x = -2708.7, y = -5282.5 },
             Range = 30,
             Zone = 48,
-            _index = 269,
+            _index = 269
         },
         {
             Qpart = { [13648] = { 1 } },
-            Coord = { x = -3007.5, y = -5611.4 },
+            coord = { x = -3007.5, y = -5611.4 },
             Range = 10,
             Zone = 48,
-            _index = 270,
+            _index = 270
         },
         {
             PickUp = { 13656 },
-            Coord = { x = -3007.5, y = -5611.4 },
+            coord = { x = -3007.5, y = -5611.4 },
             Zone = 48,
-            _index = 271,
+            _index = 271
         },
         {
             Done = { 26842, 26864 },
-            Coord = { x = -2960.9, y = -5344.5 },
+            coord = { x = -2960.9, y = -5344.5 },
             Zone = 48,
-            _index = 272,
+            _index = 272
         },
         {
             PickUp = { 26927 },
-            Coord = { x = -2960.9, y = -5344.5 },
+            coord = { x = -2960.9, y = -5344.5 },
             Zone = 48,
-            _index = 273,
+            _index = 273
         },
         {
             Done = { 26927 },
-            Coord = { x = -2953.6, y = -5390.7 },
+            coord = { x = -2953.6, y = -5390.7 },
             Zone = 48,
-            _index = 274,
+            _index = 274
         },
         {
             PickUp = { 26928, 26929 },
-            Coord = { x = -2953.6, y = -5390.7 },
+            coord = { x = -2953.6, y = -5390.7 },
             Zone = 48,
-            _index = 275,
+            _index = 275
         },
         {
             Done = { 26860 },
-            Coord = { x = -2953.5, y = -5391.1 },
+            coord = { x = -2953.5, y = -5391.1 },
             Zone = 48,
-            _index = 276,
+            _index = 276
         },
         {
             PickUp = { 26932 },
-            Coord = { x = -2960.9, y = -5344.5 },
+            coord = { x = -2960.9, y = -5344.5 },
             Zone = 48,
-            _index = 277,
+            _index = 277
         },
         {
             Done = { 13656 },
-            Coord = { x = -3020.1, y = -5340.7 },
+            coord = { x = -3020.1, y = -5340.7 },
             ExtraLineText = "INSIDE_OR_OUTSIDE",
             Zone = 48,
-            _index = 278,
+            _index = 278
         },
         {
             Done = { 13648 },
-            Coord = { x = -2947.6, y = -5305.3 },
+            coord = { x = -2947.6, y = -5305.3 },
             ExtraLineText = "INSIDE_OR_OUTSIDE",
             Zone = 48,
-            _index = 279,
+            _index = 279
         },
         {
             Done = { 25118 },
-            Coord = { x = -2987.5, y = -5301.7 },
+            coord = { x = -2987.5, y = -5301.7 },
             ExtraLineText = "INSIDE_OR_OUTSIDE",
             Zone = 48,
-            _index = 280,
+            _index = 280
         },
         {
             PickUp = { 13655 },
-            Coord = { x = -3134.9, y = -5204.6 },
+            coord = { x = -3134.9, y = -5204.6 },
             Zone = 48,
-            _index = 281,
+            _index = 281
         },
         {
             Qpart = { [26928] = { 1 }, [26929] = { 1 }, [26932] = { 1 } },
-            Coord = { x = -3345.5, y = -5602.1 },
+            coord = { x = -3345.5, y = -5602.1 },
             Range = 30,
             Zone = 48,
-            _index = 282,
+            _index = 282
         },
         {
             Done = { 26928 },
-            Coord = { x = -2953.5, y = -5391.1 },
+            coord = { x = -2953.5, y = -5391.1 },
             Zone = 48,
-            _index = 283,
+            _index = 283
         },
         {
             PickUp = { 26868 },
-            Coord = { x = -2953.5, y = -5391.1 },
+            coord = { x = -2953.5, y = -5391.1 },
             Zone = 48,
-            _index = 284,
+            _index = 284
         },
         {
             Done = { 26929 },
-            Coord = { x = -2953.5, y = -5391.1 },
+            coord = { x = -2953.5, y = -5391.1 },
             Zone = 48,
-            _index = 285,
+            _index = 285
         },
         {
             Done = { 26932 },
-            Coord = { x = -2960, y = -5344.8 },
+            coord = { x = -2960, y = -5344.8 },
             Zone = 48,
-            _index = 286,
+            _index = 286
         },
         {
             Done = { 13655 },
-            Coord = { x = -3020.7, y = -5340.7 },
+            coord = { x = -3020.7, y = -5340.7 },
             ExtraLineText = "INSIDE_OR_OUTSIDE",
             Zone = 48,
-            _index = 287,
+            _index = 287
         },
         {
             Qpart = { [26868] = { 1 } },
-            Coord = { x = -3373.3, y = -5508 },
+            coord = { x = -3373.3, y = -5508 },
             Button = { ["26868-1"] = 60681 },
             ExtraLineText = "INVENTORY_BAG",
             Range = 30,
             Zone = 48,
-            _index = 288,
+            _index = 288
         },
         {
             PickUp = { 13657 },
-            Coord = { x = -3695.7, y = -5833.7 },
+            coord = { x = -3695.7, y = -5833.7 },
             Zone = 48,
-            _index = 289,
+            _index = 289
         },
         {
             Done = { 26868 },
-            Coord = { x = -2953.2, y = -5391.2 },
+            coord = { x = -2953.2, y = -5391.2 },
             Zone = 48,
-            _index = 290,
+            _index = 290
         },
         {
             Done = { 13657 },
-            Coord = { x = -3019.9, y = -5340.1 },
+            coord = { x = -3019.9, y = -5340.1 },
             ExtraLineText = "INSIDE_OR_OUTSIDE",
             Zone = 48,
-            _index = 291,
+            _index = 291
         },
         {
             PickUp = { 13639 },
-            Coord = { x = -3014.3, y = -5352.1 },
+            coord = { x = -3014.3, y = -5352.1 },
             ExtraLineText = "INSIDE_OR_OUTSIDE",
             Zone = 48,
-            _index = 292,
+            _index = 292
         },
         {
             Qpart = { [13639] = { 1 } },
-            Coord = { x = -3548.2, y = -5701.3 },
+            coord = { x = -3548.2, y = -5701.3 },
             Range = 5,
             Zone = 48,
-            _index = 293,
+            _index = 293
         },
         {
             Done = { 13639 },
-            Coord = { x = -3548.2, y = -5701.3 },
+            coord = { x = -3548.2, y = -5701.3 },
             Zone = 48,
-            _index = 294,
+            _index = 294
         },
         {
             PickUp = { 309 },
-            Coord = { x = -3548.2, y = -5701.3 },
+            coord = { x = -3548.2, y = -5701.3 },
             Zone = 48,
-            _index = 295,
+            _index = 295
         },
         {
             Qpart = { [309] = { 1 } },
-            Coord = { x = -3548.2, y = -5701.3 },
+            coord = { x = -3548.2, y = -5701.3 },
             ExtraLineText = "MANUAL_SKIP",
             Range = 30,
             Zone = 48,
-            _index = 296,
+            _index = 296
         },
         {
             Done = { 309 },
-            Coord = { x = -3795.9, y = -5701.3 },
+            coord = { x = -3795.9, y = -5701.3 },
             Zone = 48,
-            _index = 297,
+            _index = 297
         },
         {
             PickUp = { 13650, 26961 },
-            Coord = { x = -3795.9, y = -5701.3 },
+            coord = { x = -3795.9, y = -5701.3 },
             Zone = 48,
-            _index = 298,
+            _index = 298
         },
         {
             PickUp = { 13658 },
-            Coord = { x = -3872.6, y = -5704.2 },
+            coord = { x = -3872.6, y = -5704.2 },
             Zone = 48,
-            _index = 299,
+            _index = 299
         },
         {
             Qpart = { [13650] = { 1 } },
-            Coord = { x = -3941, y = -5728.4 },
+            coord = { x = -3941, y = -5728.4 },
             Fillers = { [26961] = { 1 } },
             Range = 5,
             Zone = 48,
-            _index = 300,
+            _index = 300
         },
         {
             Qpart = { [13650] = { 3 } },
-            Coord = { x = -3994.4, y = -5698.1 },
+            coord = { x = -3994.4, y = -5698.1 },
             Fillers = { [26961] = { 1 } },
             Range = 5,
             Zone = 48,
-            _index = 301,
+            _index = 301
         },
         {
             Qpart = { [13650] = { 2 } },
-            Coord = { x = -3927, y = -5593.5 },
+            coord = { x = -3927, y = -5593.5 },
             Fillers = { [26961] = { 1 } },
             Range = 5,
             Zone = 48,
-            _index = 302,
+            _index = 302
         },
         {
             Qpart = { [26961] = { 1 } },
-            Coord = { x = -3927, y = -5593.5 },
+            coord = { x = -3927, y = -5593.5 },
             Range = 30,
             Zone = 48,
-            _index = 303,
+            _index = 303
         },
         {
             Done = { 13650 },
-            Coord = { x = -3795.9, y = -5701.3 },
+            coord = { x = -3795.9, y = -5701.3 },
             Zone = 48,
-            _index = 304,
+            _index = 304
         },
         {
             Done = { 26961 },
-            Coord = { x = -3784.2, y = -5713.5 },
+            coord = { x = -3784.2, y = -5713.5 },
             Zone = 48,
-            _index = 305,
+            _index = 305
         },
         {
             PickUp = { 13647 },
-            Coord = { x = -3784.2, y = -5713.5 },
+            coord = { x = -3784.2, y = -5713.5 },
             Zone = 48,
-            _index = 306,
+            _index = 306
         },
         {
             PickUp = { 27025 },
-            Coord = { x = -4277.2, y = -5654.7 },
+            coord = { x = -4277.2, y = -5654.7 },
             Zone = 48,
-            _index = 307,
+            _index = 307
         },
         {
             Done = { 13647 },
-            Coord = { x = -4249.4, y = -5622.1 },
+            coord = { x = -4249.4, y = -5622.1 },
             Zone = 48,
-            _index = 308,
+            _index = 308
         },
         {
             PickUp = { 27030, 27028 },
-            Coord = { x = -4249.4, y = -5622.1 },
+            coord = { x = -4249.4, y = -5622.1 },
             Zone = 48,
-            _index = 309,
+            _index = 309
         },
         {
             PickUp = { 27016 },
-            Coord = { x = -4295.9, y = -5690.3 },
+            coord = { x = -4295.9, y = -5690.3 },
             Zone = 48,
-            _index = 310,
+            _index = 310
         },
         {
             PickUp = { 27031 },
-            Coord = { x = -4246.1, y = -5678.5 },
+            coord = { x = -4246.1, y = -5678.5 },
             Zone = 48,
-            _index = 311,
+            _index = 311
         },
         {
             Qpart = { [27031] = { 1 } },
-            Coord = { x = -4164.1, y = -5755.2 },
+            coord = { x = -4164.1, y = -5755.2 },
             Range = 30,
             Zone = 48,
-            _index = 312,
+            _index = 312
         },
         {
             PickUp = { 13659 },
-            Coord = { x = -4011.9, y = -5147.3 },
+            coord = { x = -4011.9, y = -5147.3 },
             Fillers = { [27025] = { 1 }, [27030] = { 1 } },
             Zone = 48,
-            _index = 313,
+            _index = 313
         },
         {
             Qpart = { [27025] = { 1 }, [27030] = { 1 } },
-            Coord = { x = -3991.7, y = -5161 },
+            coord = { x = -3991.7, y = -5161 },
             Range = 30,
             Zone = 48,
-            _index = 314,
+            _index = 314
         },
         {
             PickUp = { 13660 },
-            Coord = { x = -3475, y = -5188.5 },
+            coord = { x = -3475, y = -5188.5 },
             Fillers = { [27016] = { 1 }, [27028] = { 1 } },
             Zone = 48,
-            _index = 315,
+            _index = 315
         },
         {
             Qpart = { [27016] = { 1 }, [27028] = { 1 } },
-            Coord = { x = -3475.4, y = -5188.6 },
+            coord = { x = -3475.4, y = -5188.6 },
             Range = 30,
             Zone = 48,
-            _index = 316,
+            _index = 316
         },
         {
             Done = { 13658, 13659, 13660, 13661 },
-            Coord = { x = -3021.7, y = -5366.2 },
+            coord = { x = -3021.7, y = -5366.2 },
             ExtraLineText = "INSIDE_OR_OUTSIDE",
             Zone = 48,
-            _index = 317,
+            _index = 317
         },
         {
             Done = { 27031 },
-            Coord = { x = -4245.9, y = -5678.6 },
+            coord = { x = -4245.9, y = -5678.6 },
             Zone = 48,
-            _index = 318,
+            _index = 318
         },
         {
             PickUp = { 27032 },
-            Coord = { x = -4245.9, y = -5678.6 },
+            coord = { x = -4245.9, y = -5678.6 },
             Zone = 48,
-            _index = 319,
+            _index = 319
         },
         {
             Done = { 27025 },
-            Coord = { x = -4277.2, y = -5654.9 },
+            coord = { x = -4277.2, y = -5654.9 },
             Zone = 48,
-            _index = 320,
+            _index = 320
         },
         {
             PickUp = { 27026 },
-            Coord = { x = -4277.2, y = -5654.9 },
+            coord = { x = -4277.2, y = -5654.9 },
             Zone = 48,
-            _index = 321,
+            _index = 321
         },
         {
             Done = { 27016 },
-            Coord = { x = -4296.2, y = -5691.4 },
+            coord = { x = -4296.2, y = -5691.4 },
             Zone = 48,
-            _index = 322,
+            _index = 322
         },
         {
             Done = { 27028, 27030 },
-            Coord = { x = -4248.8, y = -5621.8 },
+            coord = { x = -4248.8, y = -5621.8 },
             Zone = 48,
-            _index = 323,
+            _index = 323
         },
         {
             PickUp = { 27036 },
-            Coord = { x = -4253.1, y = -5676.4 },
+            coord = { x = -4253.1, y = -5676.4 },
             Zone = 48,
-            _index = 324,
+            _index = 324
         },
         {
             Waypoint = 27032,
-            Coord = { x = -3958.9, y = -5896.9 },
+            coord = { x = -3958.9, y = -5896.9 },
             ExtraLineText = "CAVE_ENTRANCE_AT_WAYPOINT",
             Range = 5,
             Zone = 48,
-            _index = 325,
+            _index = 325
         },
         {
             Done = { 27032 },
-            Coord = { x = -4161, y = -5890.3 },
+            coord = { x = -4161, y = -5890.3 },
             Zone = 48,
-            _index = 326,
+            _index = 326
         },
         {
             PickUp = { 27033 },
-            Coord = { x = -4161, y = -5890.3 },
+            coord = { x = -4161, y = -5890.3 },
             Zone = 48,
-            _index = 327,
+            _index = 327
         },
         {
             Waypoint = 27036,
-            Coord = { x = -3958.9, y = -5896.9 },
+            coord = { x = -3958.9, y = -5896.9 },
             ExtraLineText = "CAVE_EXIT_AT_WAYPOINT",
             Range = 5,
             Zone = 48,
-            _index = 328,
+            _index = 328
         },
         {
             Qpart = { [27036] = { 1 } },
-            Coord = { x = -4208.5, y = -5445.8 },
+            coord = { x = -4208.5, y = -5445.8 },
             Range = 10,
             Zone = 48,
-            _index = 329,
+            _index = 329
         },
         {
             Qpart = { [27026] = { 1 } },
-            Coord = { x = -4203.8, y = -5710 },
+            coord = { x = -4203.8, y = -5710 },
             Range = 30,
             Zone = 48,
-            _index = 330,
+            _index = 330
         },
         {
             Done = { 27026 },
-            Coord = { x = -4277.3, y = -5654.9 },
+            coord = { x = -4277.3, y = -5654.9 },
             Zone = 48,
-            _index = 331,
+            _index = 331
         },
         {
             Done = { 27036 },
-            Coord = { x = -4296.6, y = -5691.1 },
+            coord = { x = -4296.6, y = -5691.1 },
             Zone = 48,
-            _index = 332,
+            _index = 332
         },
         {
             PickUp = { 27037 },
-            Coord = { x = -4296.6, y = -5691.1 },
+            coord = { x = -4296.6, y = -5691.1 },
             Zone = 48,
-            _index = 333,
+            _index = 333
         },
         {
             Done = { 27037 },
-            Coord = { x = -4253.1, y = -5676.2 },
+            coord = { x = -4253.1, y = -5676.2 },
             Zone = 48,
-            _index = 334,
+            _index = 334
         },
         {
             Done = { 27033 },
-            Coord = { x = -4246, y = -5678.5 },
+            coord = { x = -4246, y = -5678.5 },
             Zone = 48,
-            _index = 335,
+            _index = 335
         },
         {
             PickUp = { 27034 },
-            Coord = { x = -4246, y = -5678.5 },
+            coord = { x = -4246, y = -5678.5 },
             Zone = 48,
-            _index = 336,
+            _index = 336
         },
         {
             Done = { 27034 },
-            Coord = { x = -3607.8, y = -5023 },
+            coord = { x = -3607.8, y = -5023 },
             Zone = 48,
-            _index = 337,
+            _index = 337
         },
         {
             PickUp = { 27035 },
-            Coord = { x = -3607.8, y = -5023 },
+            coord = { x = -3607.8, y = -5023 },
             Zone = 48,
-            _index = 338,
+            _index = 338
         },
         {
             Qpart = { [27035] = { 1 } },
-            Coord = { x = -3388.5, y = -4924.6 },
+            coord = { x = -3388.5, y = -4924.6 },
             Range = 5,
             Zone = 48,
-            _index = 339,
+            _index = 339
         },
         {
             Done = { 27035 },
-            Coord = { x = -3607.8, y = -5022.5 },
+            coord = { x = -3607.8, y = -5022.5 },
             Zone = 48,
-            _index = 340,
+            _index = 340
         },
         {
             PickUp = { 27074 },
-            Coord = { x = -3607.8, y = -5022.5 },
+            coord = { x = -3607.8, y = -5022.5 },
             Zone = 48,
-            _index = 341,
+            _index = 341
         },
         {
             Done = { 27074 },
-            Coord = { x = -3762.6, y = -4977.1 },
+            coord = { x = -3762.6, y = -4977.1 },
             Zone = 48,
-            _index = 342,
+            _index = 342
         },
         {
             PickUp = { 27077, 27075 },
-            Coord = { x = -3762.6, y = -4977.1 },
+            coord = { x = -3762.6, y = -4977.1 },
             Zone = 48,
-            _index = 343,
+            _index = 343
         },
         {
             Qpart = { [27075] = { 1 }, [27077] = { 1 } },
-            Coord = { x = -3926.7, y = -4892 },
+            coord = { x = -3926.7, y = -4892 },
             Range = 30,
             Zone = 48,
-            _index = 344,
+            _index = 344
         },
         {
             Done = { 27075, 27077 },
-            Coord = { x = -3762.4, y = -4977.1 },
+            coord = { x = -3762.4, y = -4977.1 },
             Zone = 48,
-            _index = 345,
+            _index = 345
         },
         {
             PickUp = { 27078 },
-            Coord = { x = -3762.4, y = -4977.1 },
+            coord = { x = -3762.4, y = -4977.1 },
             Zone = 48,
-            _index = 346,
+            _index = 346
         },
         {
             Waypoint = 27078,
-            Coord = { x = -4055.6, y = -4852.8 },
+            coord = { x = -4055.6, y = -4852.8 },
             ExtraLineText = "CAVE_ENTRANCE_AT_WAYPOINT",
             Range = 5,
             Zone = 48,
-            _index = 347,
+            _index = 347
         },
         {
             Qpart = { [27078] = { 1 } },
-            Coord = { x = -4190.5, y = -4760.2 },
+            coord = { x = -4190.5, y = -4760.2 },
             Range = 30,
             Zone = 48,
-            _index = 348,
+            _index = 348
         },
         {
             Waypoint = 27078,
-            Coord = { x = -4055.6, y = -4852.8 },
+            coord = { x = -4055.6, y = -4852.8 },
             ExtraLineText = "CAVE_EXIT_AT_WAYPOINT",
             Range = 5,
             Zone = 48,
-            _index = 349,
+            _index = 349
         },
         {
             Done = { 27078 },
-            Coord = { x = -3762.8, y = -4977 },
+            coord = { x = -3762.8, y = -4977 },
             Zone = 48,
-            _index = 350,
+            _index = 350
         },
         {
             PickUp = { 27115 },
-            Coord = { x = -3762.8, y = -4977 },
+            coord = { x = -3762.8, y = -4977 },
             Zone = 48,
-            _index = 351,
+            _index = 351
         },
         {
             Done = { 27115 },
-            Coord = { x = -3608, y = -5023 },
+            coord = { x = -3608, y = -5023 },
             Zone = 48,
-            _index = 352,
+            _index = 352
         },
         {
             PickUp = { 27116 },
-            Coord = { x = -3608, y = -5023 },
+            coord = { x = -3608, y = -5023 },
             Zone = 48,
-            _index = 353,
+            _index = 353
         },
         {
             Done = { 27116 },
-            Coord = { x = -2695.9, y = -4817.5 },
+            coord = { x = -2695.9, y = -4817.5 },
             Zone = 48,
-            _index = 354,
+            _index = 354
         },
         {
             UseDalaHS = 34398,
             Button = { ["34398"] = 140192 },
             Zone = 48,
-            _index = 355,
+            _index = 355
         },
         {
             PickUp = { 34398 },
             ChromiePick = 9,
-            Coord = { x = 745.5, y = -8196.4 },
+            coord = { x = 745.5, y = -8196.4 },
             ExtraLineText = "SWITCH_TO_CHROMIE",
             GossipOptionIDs = { 51901, 51902 },
             Zone = 84,
-            _index = 356,
+            _index = 356
         },
         {
             Qpart = { [34398] = { 1 } },
-            Coord = { x = 869.5, y = -9007.4 },
+            coord = { x = 869.5, y = -9007.4 },
             ExtraLineText = "TALK_HONOR_HOLD_MAGE",
             ExtraLineText2 = "MANUAL_SKIP",
             GossipOptionIDs = { 50005 },
             Range = 2,
             Zone = 84,
-            _index = 357,
+            _index = 357
         },
         {
             Qpart = { [34398] = { 2 } },
-            Coord = { x = -3205.1, y = -11810.5 },
+            coord = { x = -3205.1, y = -11810.5 },
             GossipOptionIDs = { 43231 },
             Range = 2,
             Zone = 17,
-            _index = 358,
+            _index = 358
         },
         {
             Done = { 34398 },
-            Coord = { x = -2373.6, y = 4066.5 },
+            coord = { x = -2373.6, y = 4066.5 },
             Zone = 577,
-            _index = 359,
+            _index = 359
         },
         {
             PickUp = { 35933 },
-            Coord = { x = -2373.6, y = 4066.5 },
+            coord = { x = -2373.6, y = 4066.5 },
             Zone = 577,
-            _index = 360,
+            _index = 360
         },
         {
             Qpart = { [35933] = { 1 } },
-            Coord = { x = -2355.5, y = 4057.4 },
+            coord = { x = -2355.5, y = 4057.4 },
             Range = 30,
             Zone = 577,
-            _index = 361,
+            _index = 361
         },
         {
             Done = { 35933 },
-            Coord = { x = -2355.5, y = 4057.4 },
+            coord = { x = -2355.5, y = 4057.4 },
             Zone = 577,
-            _index = 362,
+            _index = 362
         },
         {
             PickUp = { 34392 },
-            Coord = { x = -2355.5, y = 4057.4 },
+            coord = { x = -2355.5, y = 4057.4 },
             Zone = 577,
-            _index = 363,
+            _index = 363
         },
         {
             Qpart = { [34392] = { 2 } },
-            Coord = { x = -2285.2, y = 3964.7 },
+            coord = { x = -2285.2, y = 3964.7 },
             Range = 5,
             Zone = 577,
-            _index = 364,
+            _index = 364
         },
         {
             Qpart = { [34392] = { 1 } },
-            Coord = { x = -2282.5, y = 4167.1 },
+            coord = { x = -2282.5, y = 4167.1 },
             Range = 5,
             Zone = 577,
-            _index = 365,
+            _index = 365
         },
         {
             Done = { 34392 },
-            Coord = { x = -2373.6, y = 4066.2 },
+            coord = { x = -2373.6, y = 4066.2 },
             Zone = 577,
-            _index = 366,
+            _index = 366
         },
         {
             PickUp = { 34393 },
-            Coord = { x = -2373.6, y = 4066.2 },
+            coord = { x = -2373.6, y = 4066.2 },
             Zone = 577,
-            _index = 367,
+            _index = 367
         },
         {
             Qpart = { [34393] = { 1 } },
-            Coord = { x = -2377.2, y = 4032.6 },
+            coord = { x = -2377.2, y = 4032.6 },
             Range = 5,
             Zone = 577,
-            _index = 368,
+            _index = 368
         },
         {
             Qpart = { [34393] = { 4 } },
-            Coord = { x = -2400.8, y = 4036.8 },
+            coord = { x = -2400.8, y = 4036.8 },
             Range = 5,
             Zone = 577,
-            _index = 369,
+            _index = 369
         },
         {
             Qpart = { [34393] = { 3 } },
-            Coord = { x = -2433.1, y = 4066.5 },
+            coord = { x = -2433.1, y = 4066.5 },
             Range = 5,
             Zone = 577,
-            _index = 370,
+            _index = 370
         },
         {
             Qpart = { [34393] = { 2 } },
-            Coord = { x = -2403.1, y = 4097.6 },
+            coord = { x = -2403.1, y = 4097.6 },
             Range = 5,
             Zone = 577,
-            _index = 371,
+            _index = 371
         },
         {
             Qpart = { [34393] = { 5 } },
-            Coord = { x = -2402.7, y = 4066.9 },
+            coord = { x = -2402.7, y = 4066.9 },
             Range = 10,
             Zone = 577,
-            _index = 372,
+            _index = 372
         },
         {
             Done = { 34393 },
-            Coord = { x = -2372.1, y = 4066.5 },
+            coord = { x = -2372.1, y = 4066.5 },
             Zone = 577,
-            _index = 373,
+            _index = 373
         },
         {
             PickUp = { 34420 },
-            Coord = { x = -2372.1, y = 4066.5 },
+            coord = { x = -2372.1, y = 4066.5 },
             Zone = 577,
-            _index = 374,
+            _index = 374
         },
         {
             Done = { 34420 },
-            Coord = { x = -2505.5, y = 3936.7 },
+            coord = { x = -2505.5, y = 3936.7 },
             Zone = 577,
-            _index = 375,
+            _index = 375
         },
         {
             PickUp = { 34422 },
-            Coord = { x = -2505.4, y = 3937 },
+            coord = { x = -2505.4, y = 3937 },
             Zone = 577,
-            _index = 376,
+            _index = 376
         },
         {
             PickUp = { 35242, 35240 },
-            Coord = { x = -2552.8, y = 3990.7 },
+            coord = { x = -2552.8, y = 3990.7 },
             Zone = 577,
-            _index = 377,
+            _index = 377
         },
         {
             Qpart = { [35240] = { 2 } },
-            Coord = { x = -2626.8, y = 3973.9 },
+            coord = { x = -2626.8, y = 3973.9 },
             Fillers = { [35242] = { 1 } },
             Range = 10,
             Zone = 577,
-            _index = 378,
+            _index = 378
         },
         {
             Qpart = { [35240] = { 1 } },
-            Coord = { x = -2524.3, y = 3835.1 },
+            coord = { x = -2524.3, y = 3835.1 },
             Fillers = { [34422] = { 1 }, [35242] = { 1 } },
             Button = { ["34422-1"] = 113191 },
             Range = 30,
             Zone = 577,
-            _index = 379,
+            _index = 379
         },
         {
             Qpart = { [34422] = { 1 }, [35242] = { 1 } },
-            Coord = { x = -2524.3, y = 3835.1 },
+            coord = { x = -2524.3, y = 3835.1 },
             Range = 30,
             Zone = 577,
-            _index = 380,
+            _index = 380
         },
         {
             Done = { 35242, 34422, 35240 },
-            Coord = { x = -2777.1, y = 3837.7 },
+            coord = { x = -2777.1, y = 3837.7 },
             Zone = 577,
-            _index = 381,
+            _index = 381
         },
         {
             PickUp = { 34423 },
-            Coord = { x = -2777.1, y = 3837.7 },
+            coord = { x = -2777.1, y = 3837.7 },
             Zone = 577,
-            _index = 382,
+            _index = 382
         },
         {
             Qpart = { [34423] = { 1 } },
-            Coord = { x = -2787.3, y = 3842.3 },
+            coord = { x = -2787.3, y = 3842.3 },
             GossipOptionIDs = { 43152 },
             Zone = 577,
-            _index = 383,
+            _index = 383
         },
         {
             Qpart = { [34423] = { 2 } },
-            Coord = { x = -2878.7, y = 3949.7 },
+            coord = { x = -2878.7, y = 3949.7 },
             Range = 30,
             Zone = 577,
-            _index = 384,
+            _index = 384
         },
         {
             Qpart = { [34423] = { 3 } },
-            Coord = { x = -2900.2, y = 3976.6 },
+            coord = { x = -2900.2, y = 3976.6 },
             Range = 5,
             Zone = 577,
-            _index = 385,
+            _index = 385
         },
         {
             Qpart = { [34423] = { 4 } },
-            Coord = { x = -2792.5, y = 4171.1 },
+            coord = { x = -2792.5, y = 4171.1 },
             Range = 30,
             Zone = 577,
-            _index = 386,
+            _index = 386
         },
         {
             Done = { 34423 },
-            Coord = { x = -2787, y = 4191.4 },
+            coord = { x = -2787, y = 4191.4 },
             Zone = 577,
-            _index = 387,
+            _index = 387
         },
         {
             PickUp = { 34425 },
-            Coord = { x = -2787, y = 4191.4 },
+            coord = { x = -2787, y = 4191.4 },
             Zone = 577,
-            _index = 388,
+            _index = 388
         },
         {
             Qpart = { [34425] = { 1 } },
-            Coord = { x = -2819.2, y = 4223.1 },
+            coord = { x = -2819.2, y = 4223.1 },
             Range = 5,
             Zone = 577,
-            _index = 389,
+            _index = 389
         },
         {
             Done = { 34425 },
-            Coord = { x = -2812.8, y = 4229.7 },
+            coord = { x = -2812.8, y = 4229.7 },
             Zone = 577,
-            _index = 390,
+            _index = 390
         },
         {
             PickUp = { 34478 },
-            Coord = { x = -2812.8, y = 4229.7 },
+            coord = { x = -2812.8, y = 4229.7 },
             Zone = 577,
-            _index = 391,
+            _index = 391
         },
         {
             Qpart = { [34478] = { 1 } },
-            Coord = { x = -2714.4, y = 4300.1 },
+            coord = { x = -2714.4, y = 4300.1 },
             Button = { ["34478-1"] = 110799 },
             Range = 5,
             Zone = 577,
-            _index = 392,
+            _index = 392
         },
         {
             Done = { 34478 },
-            Coord = { x = -2817.9, y = 4217.2 },
+            coord = { x = -2817.9, y = 4217.2 },
             Zone = 577,
-            _index = 393,
+            _index = 393
         },
         {
             PickUp = { 34429 },
-            Coord = { x = -2812.9, y = 4229.6 },
+            coord = { x = -2812.9, y = 4229.6 },
             Zone = 577,
-            _index = 394,
+            _index = 394
         },
         {
             Qpart = { [34429] = { 1, 2 } },
-            Coord = { x = -2825, y = 4409.4 },
+            coord = { x = -2825, y = 4409.4 },
             Range = 30,
             Zone = 577,
-            _index = 395,
+            _index = 395
         },
         {
             Qpart = { [34429] = { 3 } },
-            Coord = { x = -2634.8, y = 4512.1 },
+            coord = { x = -2634.8, y = 4512.1 },
             Range = 30,
             Zone = 578,
-            _index = 396,
+            _index = 396
         },
         {
             Done = { 34429 },
-            Coord = { x = -2635.7, y = 4510.9 },
+            coord = { x = -2635.7, y = 4510.9 },
             Zone = 578,
-            _index = 397,
+            _index = 397
         },
         {
             PickUp = { 34432 },
-            Coord = { x = -2632.7, y = 4526 },
+            coord = { x = -2632.7, y = 4526 },
             Zone = 578,
-            _index = 398,
+            _index = 398
         },
         {
             PickUp = { 34431 },
-            Coord = { x = -2642.2, y = 4528.8 },
+            coord = { x = -2642.2, y = 4528.8 },
             Zone = 578,
-            _index = 399,
+            _index = 399
         },
         {
             Waypoint = 34431,
-            Coord = { x = -2586.3, y = 4503.6 },
+            coord = { x = -2586.3, y = 4503.6 },
             Range = 5,
             Zone = 578,
-            _index = 400,
+            _index = 400
         },
         {
             Waypoint = 34431,
-            Coord = { x = -2516.1, y = 4539.4 },
+            coord = { x = -2516.1, y = 4539.4 },
             Range = 5,
             Zone = 578,
-            _index = 401,
+            _index = 401
         },
         {
             Waypoint = 34431,
-            Coord = { x = -2475, y = 4547.8 },
+            coord = { x = -2475, y = 4547.8 },
             Range = 5,
             Zone = 578,
-            _index = 402,
+            _index = 402
         },
         {
             Qpart = { [34431] = { 2 } },
-            Coord = { x = -2509.9, y = 4591 },
+            coord = { x = -2509.9, y = 4591 },
             Fillers = { [34432] = { 1 } },
             Range = 5,
             Zone = 578,
-            _index = 403,
+            _index = 403
         },
         {
             Qpart = { [34431] = { 3 } },
-            Coord = { x = -2477.3, y = 4619.2 },
+            coord = { x = -2477.3, y = 4619.2 },
             Fillers = { [34432] = { 1 } },
             ExtraLineText = "DROP_DOWN_HOLE",
             Range = 5,
             Zone = 578,
-            _index = 404,
+            _index = 404
         },
         {
             PickUp = { 34434 },
-            Coord = { x = -2471.2, y = 4614.9 },
+            coord = { x = -2471.2, y = 4614.9 },
             Zone = 578,
-            _index = 405,
+            _index = 405
         },
         {
             Qpart = { [34434] = { 1 } },
-            Coord = { x = -2505.6, y = 4541.2 },
+            coord = { x = -2505.6, y = 4541.2 },
             Fillers = { [34432] = { 1 } },
             Range = 30,
             Zone = 578,
-            _index = 406,
+            _index = 406
         },
         {
             Qpart = { [34431] = { 1 } },
-            Coord = { x = -2464.3, y = 4430.2 },
+            coord = { x = -2464.3, y = 4430.2 },
             Fillers = { [34432] = { 1 } },
             Range = 5,
             Zone = 578,
-            _index = 407,
+            _index = 407
         },
         {
             Qpart = { [34432] = { 1 } },
-            Coord = { x = -2464.3, y = 4430.2 },
+            coord = { x = -2464.3, y = 4430.2 },
             Range = 30,
             Zone = 578,
-            _index = 408,
+            _index = 408
         },
         {
             Done = { 34431, 34434, 34432 },
-            Coord = { x = -2493.6, y = 4516.4 },
+            coord = { x = -2493.6, y = 4516.4 },
             Zone = 578,
-            _index = 409,
+            _index = 409
         },
         {
             PickUp = { 34436 },
-            Coord = { x = -2494.2, y = 4517.3 },
+            coord = { x = -2494.2, y = 4517.3 },
             Zone = 578,
-            _index = 410,
+            _index = 410
         },
         {
             Qpart = { [34436] = { 1 } },
-            Coord = { x = -2427, y = 4509.1 },
+            coord = { x = -2427, y = 4509.1 },
             Range = 30,
             Zone = 578,
-            _index = 411,
+            _index = 411
         },
         {
             Done = { 34436 },
-            Coord = { x = -2246.5, y = 4610.3 },
+            coord = { x = -2246.5, y = 4610.3 },
             Zone = 577,
-            _index = 412,
+            _index = 412
         },
         {
             PickUp = { 35019 },
-            Coord = { x = -2223, y = 4613.7 },
+            coord = { x = -2223, y = 4613.7 },
             Zone = 577,
-            _index = 413,
+            _index = 413
         },
         {
             Qpart = { [35019] = { 1 } },
-            Coord = { x = -2126.8, y = 4493.1 },
+            coord = { x = -2126.8, y = 4493.1 },
             Range = 30,
             Zone = 577,
-            _index = 414,
+            _index = 414
         },
         {
             Done = { 35019 },
-            Coord = { x = -2223.4, y = 4614.2 },
+            coord = { x = -2223.4, y = 4614.2 },
             Zone = 577,
-            _index = 415,
+            _index = 415
         },
         {
             PickUp = { 34439 },
-            Coord = { x = -2246.4, y = 4613.2 },
+            coord = { x = -2246.4, y = 4613.2 },
             Zone = 577,
-            _index = 416,
+            _index = 416
         },
         {
             Qpart = { [34439] = { 1, 2 } },
-            Coord = { x = -2109.7, y = 4537.7 },
+            coord = { x = -2109.7, y = 4537.7 },
             Range = 30,
             Zone = 577,
-            _index = 417,
+            _index = 417
         },
         {
             Done = { 34439 },
-            Coord = { x = -2091.1, y = 4418.7 },
+            coord = { x = -2091.1, y = 4418.7 },
             Zone = 577,
-            _index = 418,
+            _index = 418
         },
         {
             PickUp = { 34442 },
-            Coord = { x = -2090.9, y = 4418.3 },
+            coord = { x = -2090.9, y = 4418.3 },
             Zone = 577,
-            _index = 419,
+            _index = 419
         },
         {
             PickUp = { 34987, 34958 },
-            Coord = { x = -2115.6, y = 4365.9 },
+            coord = { x = -2115.6, y = 4365.9 },
             Zone = 577,
-            _index = 420,
+            _index = 420
         },
         {
             Qpart = { [34987] = { 1 } },
-            Coord = { x = -2184.5, y = 4326.2 },
+            coord = { x = -2184.5, y = 4326.2 },
             Fillers = { [34958] = { 1 } },
             Range = 30,
             Zone = 577,
-            _index = 421,
+            _index = 421
         },
         {
             Qpart = { [34987] = { 2 } },
-            Coord = { x = -2115.5, y = 4366 },
+            coord = { x = -2115.5, y = 4366 },
             Fillers = { [34958] = { 1 } },
             Range = 0.75,
             Zone = 577,
-            _index = 422,
+            _index = 422
         },
         {
             Done = { 34987 },
-            Coord = { x = -2115.5, y = 4366 },
+            coord = { x = -2115.5, y = 4366 },
             Fillers = { [34958] = { 1 } },
             Zone = 577,
-            _index = 423,
+            _index = 423
         },
         {
             Done = { 34442 },
-            Coord = { x = -2063, y = 4165.7 },
+            coord = { x = -2063, y = 4165.7 },
             Fillers = { [34958] = { 1 } },
             Zone = 577,
-            _index = 424,
+            _index = 424
         },
         {
             PickUp = { 34925 },
-            Coord = { x = -2063, y = 4165.7 },
+            coord = { x = -2063, y = 4165.7 },
             Fillers = { [34958] = { 1 } },
             Zone = 577,
-            _index = 425,
+            _index = 425
         },
         {
             Qpart = { [34925] = { 1 } },
-            Coord = { x = -2152.7, y = 4202.5 },
+            coord = { x = -2152.7, y = 4202.5 },
             Fillers = { [34958] = { 1 } },
             Range = 30,
             Zone = 577,
-            _index = 426,
+            _index = 426
         },
         {
             Done = { 34925 },
-            Coord = { x = -2063.2, y = 4166.8 },
+            coord = { x = -2063.2, y = 4166.8 },
             Fillers = { [34958] = { 1 } },
             Zone = 577,
-            _index = 427,
+            _index = 427
         },
         {
             PickUp = { 34437 },
-            Coord = { x = -2063.2, y = 4166.8 },
+            coord = { x = -2063.2, y = 4166.8 },
             Fillers = { [34958] = { 1 } },
             Zone = 577,
-            _index = 428,
+            _index = 428
         },
         {
             Qpart = { [34958] = { 1 } },
-            Coord = { x = -2058.1, y = 4200.3 },
+            coord = { x = -2058.1, y = 4200.3 },
             Range = 30,
             Zone = 577,
-            _index = 429,
+            _index = 429
         },
         {
             Done = { 34958 },
-            Coord = { x = -2115.4, y = 4366 },
+            coord = { x = -2115.4, y = 4366 },
             Zone = 577,
-            _index = 430,
+            _index = 430
         },
         {
             Done = { 34437 },
-            Coord = { x = -2090.6, y = 4417.6 },
+            coord = { x = -2090.6, y = 4417.6 },
             Zone = 577,
-            _index = 431,
+            _index = 431
         },
         {
             PickUp = { 35747 },
-            Coord = { x = -2093, y = 4380.6 },
+            coord = { x = -2093, y = 4380.6 },
             Zone = 577,
-            _index = 432,
+            _index = 432
         },
         {
             Qpart = { [35747] = { 1 } },
-            Coord = { x = -2115.6, y = 4364.8 },
+            coord = { x = -2115.6, y = 4364.8 },
             GossipOptionIDs = { 42452 },
             Zone = 577,
-            _index = 433,
+            _index = 433
         },
         {
             Qpart = { [35747] = { 2 } },
-            Coord = { x = -1954.9, y = 4068.1 },
+            coord = { x = -1954.9, y = 4068.1 },
             Range = 30,
             Zone = 577,
-            _index = 434,
+            _index = 434
         },
         {
             Qpart = { [35747] = { 3 } },
-            Coord = { x = -2020, y = 4063.7 },
+            coord = { x = -2020, y = 4063.7 },
             Range = 10,
             Zone = 577,
-            _index = 435,
+            _index = 435
         },
         {
             Done = { 35747 },
-            Coord = { x = -2020, y = 4063.7 },
+            coord = { x = -2020, y = 4063.7 },
             Zone = 577,
-            _index = 436,
+            _index = 436
         },
         {
             PickUp = { 34445 },
-            Coord = { x = -2020, y = 4063.7 },
+            coord = { x = -2020, y = 4063.7 },
             Zone = 577,
-            _index = 437,
+            _index = 437
         },
         {
             Qpart = { [34445] = { 1, 2, 3 } },
-            Coord = { x = -2021.8, y = 4054.7 },
+            coord = { x = -2021.8, y = 4054.7 },
             Range = 3,
             Zone = 577,
-            _index = 438,
+            _index = 438
         },
         {
             Done = { 34445 },
-            Coord = { x = -2020.6, y = 4064.2 },
+            coord = { x = -2020.6, y = 4064.2 },
             Zone = 577,
-            _index = 439,
+            _index = 439
         },
         {
             PickUp = { 35884 },
-            Coord = { x = -2020.3, y = 4064.2 },
+            coord = { x = -2020.3, y = 4064.2 },
             Zone = 577,
-            _index = 440,
+            _index = 440
         },
         {
             Qpart = { [35884] = { 1 } },
-            Coord = { x = -2118.6, y = 3558.5 },
+            coord = { x = -2118.6, y = 3558.5 },
             Range = 30,
             Zone = 577,
-            _index = 441,
+            _index = 441
         },
         {
             Done = { 35884 },
-            Coord = { x = -2123.6, y = 3545.7 },
+            coord = { x = -2123.6, y = 3545.7 },
             Zone = 577,
-            _index = 442,
+            _index = 442
         },
         {
             PickUp = { 34575 },
-            Coord = { x = -2123.6, y = 3545.7 },
+            coord = { x = -2123.6, y = 3545.7 },
             Zone = 577,
-            _index = 443,
+            _index = 443
         },
         {
             Done = { 34575 },
-            Coord = { x = 461.5, y = 2298.4 },
+            coord = { x = 461.5, y = 2298.4 },
             Zone = 539,
-            _index = 444,
+            _index = 444
         },
         {
             PickUp = { 34582 },
-            Coord = { x = 461.5, y = 2298.4 },
+            coord = { x = 461.5, y = 2298.4 },
             Zone = 539,
-            _index = 445,
+            _index = 445
         },
         {
             Qpart = { [34582] = { 1 } },
-            Coord = { x = 461.5, y = 2298.4 },
+            coord = { x = 461.5, y = 2298.4 },
             Range = 30,
             Zone = 539,
-            _index = 446,
+            _index = 446
         },
         {
             Done = { 34582 },
-            Coord = { x = 339.1, y = 1936.2 },
+            coord = { x = 339.1, y = 1936.2 },
             Zone = 539,
-            _index = 447,
+            _index = 447
         },
         {
             PickUp = { 34583 },
-            Coord = { x = 339.1, y = 1936.2 },
+            coord = { x = 339.1, y = 1936.2 },
             Zone = 539,
-            _index = 448,
+            _index = 448
         },
         {
             Qpart = { [34583] = { 1 } },
-            Coord = { x = 323, y = 1939.5 },
+            coord = { x = 323, y = 1939.5 },
             Range = 5,
             Zone = 539,
-            _index = 449,
+            _index = 449
         },
         {
             Done = { 34583 },
-            Coord = { x = 322.5, y = 1936.4 },
+            coord = { x = 322.5, y = 1936.4 },
             Zone = 539,
-            _index = 450,
+            _index = 450
         },
         {
             PickUp = { 34616, 34584 },
-            Coord = { x = 322.5, y = 1936.4 },
+            coord = { x = 322.5, y = 1936.4 },
             Zone = 539,
-            _index = 451,
+            _index = 451
         },
         {
             Qpart = { [34584] = { 1 }, [34616] = { 1 } },
-            Coord = { x = 317.9, y = 1866 },
+            coord = { x = 317.9, y = 1866 },
             Range = 30,
             Zone = 539,
-            _index = 452,
+            _index = 452
         },
         {
             Done = { 34616, 34584 },
-            Coord = { x = 322.5, y = 1936.3 },
+            coord = { x = 322.5, y = 1936.3 },
             Zone = 539,
-            _index = 453,
+            _index = 453
         },
         {
             PickUp = { 34585 },
-            Coord = { x = 331.3, y = 1928.1 },
+            coord = { x = 331.3, y = 1928.1 },
             Zone = 539,
-            _index = 454,
+            _index = 454
         },
         {
             Qpart = { [34585] = { 1 } },
-            Coord = { x = 252.5, y = 1695.1 },
+            coord = { x = 252.5, y = 1695.1 },
             Range = 15,
             Zone = 539,
-            _index = 455,
+            _index = 455
         },
         {
             Done = { 34585 },
-            Coord = { x = 331.5, y = 1928.2 },
+            coord = { x = 331.5, y = 1928.2 },
             Zone = 539,
-            _index = 456,
+            _index = 456
         },
         {
             PickUp = { 34586 },
-            Coord = { x = 322.4, y = 1936.4 },
+            coord = { x = 322.4, y = 1936.4 },
             Zone = 539,
-            _index = 457,
+            _index = 457
         },
         {
             Qpart = { [34586] = { 1 } },
-            Coord = { x = 322.4, y = 1936.4 },
+            coord = { x = 322.4, y = 1936.4 },
             GossipOptionIDs = { 43035 },
             Range = 30,
             Zone = 539,
-            _index = 458,
+            _index = 458
         },
         {
             Done = { 34586 },
-            Coord = { x = 264.2, y = 1866.7 },
+            coord = { x = 264.2, y = 1866.7 },
             Zone = 539,
-            _index = 459,
+            _index = 459
         },
         {
             PickUp = { 35166, 35176 },
-            Coord = { x = 264.2, y = 1866.7 },
+            coord = { x = 264.2, y = 1866.7 },
             Zone = 539,
-            _index = 460,
+            _index = 460
         },
         {
             PickUp = { 35174 },
-            Coord = { x = 244.6, y = 1848.3 },
+            coord = { x = 244.6, y = 1848.3 },
             Zone = 539,
-            _index = 461,
+            _index = 461
         },
         {
             PickUp = { 33359 },
-            Coord = { x = 246.4, y = 1889.6 },
+            coord = { x = 246.4, y = 1889.6 },
             Zone = 539,
-            _index = 462,
+            _index = 462
         },
         {
             Qpart = { [35176] = { 1 } },
-            Coord = { x = 239.6, y = 1847.3 },
+            coord = { x = 239.6, y = 1847.3 },
             GossipOptionIDs = { 42666 },
             Zone = 539,
-            _index = 463,
+            _index = 463
         },
         {
             Qpart = { [35176] = { 2 } },
-            Coord = { x = 323.7, y = 1934.8 },
+            coord = { x = 323.7, y = 1934.8 },
             GossipOptionIDs = { 42677 },
             Zone = 539,
-            _index = 464,
+            _index = 464
         },
         {
             Qpart = { [35176] = { 3 } },
-            Coord = { x = 208.4, y = 1895.7 },
+            coord = { x = 208.4, y = 1895.7 },
             Range = 3,
             Zone = 539,
-            _index = 465,
+            _index = 465
         },
         {
             Treasure = 35279,
-            Coord = { x = 338.2, y = 2340.3 },
+            coord = { x = 338.2, y = 2340.3 },
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             ExtraLineText = "TREASURE_NORTH_SHIP",
             Range = 0.75,
             Zone = 542,
-            _index = 20,
+            _index = 20
         },
         {
             Waypoint = 35174,
-            Coord = { x = 411.6, y = 2462.4 },
+            coord = { x = 411.6, y = 2462.4 },
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             ExtraLineText = "TREASURE_CAVE",
             Range = 20.9,
             Zone = 542,
-            _index = 21,
+            _index = 21
         },
         {
             Treasure = 35280,
-            Coord = { x = 457, y = 2550.1 },
+            coord = { x = 457, y = 2550.1 },
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             Range = 0.69,
             Zone = 542,
-            _index = 22,
+            _index = 22
         },
         {
             Treasure = 34174,
-            Coord = { x = 491.7, y = 2407.1 },
+            coord = { x = 491.7, y = 2407.1 },
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             Range = 0.75,
             Zone = 542,
-            _index = 23,
+            _index = 23
         },
         {
             Qpart = { [35174] = { 1 } },
-            Coord = { x = 551.5, y = 2408.5 },
+            coord = { x = 551.5, y = 2408.5 },
             Fillers = { [35166] = { 1 }, [35174] = { 2 } },
             Range = 0.75,
             Zone = 542,
-            _index = 24,
+            _index = 24
         },
         {
             Qpart = { [35166] = { 1 }, [35174] = { 2 } },
-            Coord = { x = 551.5, y = 2408.5 },
+            coord = { x = 551.5, y = 2408.5 },
             Range = 112.31,
             Zone = 542,
-            _index = 25,
+            _index = 25
         },
         {
             Done = { 35166, 35176 },
-            Coord = { x = 263.9, y = 1866.7 },
+            coord = { x = 263.9, y = 1866.7 },
             Zone = 539,
-            _index = 472,
+            _index = 472
         },
         {
             Done = { 35174 },
-            Coord = { x = 244.6, y = 1848.5 },
+            coord = { x = 244.6, y = 1848.5 },
             Zone = 539,
-            _index = 473,
+            _index = 473
         },
         {
             PickUp = { 34587 },
-            Coord = { x = 264.2, y = 1866.7 },
+            coord = { x = 264.2, y = 1866.7 },
             Zone = 539,
-            _index = 474,
+            _index = 474
         },
         {
             Qpart = { [34587] = { 1 } },
-            Coord = { x = 235.5, y = 1906.8 },
+            coord = { x = 235.5, y = 1906.8 },
             Range = 3,
             Zone = 539,
-            _index = 475,
+            _index = 475
         },
         {
             Qpart = { [34587] = { 2 } },
-            Coord = { x = 235.5, y = 1906.8 },
+            coord = { x = 235.5, y = 1906.8 },
             Button = { ["34587-2"] = 111956 },
             Range = 3,
             Zone = 539,
-            _index = 476,
+            _index = 476
         },
         {
             Qpart = { [34587] = { 3 } },
-            Coord = { x = 264, y = 1868.4 },
+            coord = { x = 264, y = 1868.4 },
             Range = 3,
             Zone = 539,
-            _index = 477,
+            _index = 477
         },
         {
             Qpart = { [34587] = { 4 } },
-            Coord = { x = 241.1, y = 1892.6 },
+            coord = { x = 241.1, y = 1892.6 },
             Range = 3,
             Zone = 539,
-            _index = 478,
+            _index = 478
         },
         {
             Done = { 34587 },
-            Coord = { x = 244.6, y = 1848.7 },
+            coord = { x = 244.6, y = 1848.7 },
             Zone = 539,
-            _index = 479,
+            _index = 479
         },
         {
             PickUp = { 34646 },
-            Coord = { x = 244.6, y = 1848.7 },
+            coord = { x = 244.6, y = 1848.7 },
             Zone = 539,
-            _index = 480,
+            _index = 480
         },
         {
             Qpart = { [34646] = { 1 } },
-            Coord = { x = 262.9, y = 1356 },
+            coord = { x = 262.9, y = 1356 },
             ExtraLineText = "GO_SOUTH",
             Range = 5,
             Zone = 539,
-            _index = 481,
+            _index = 481
         },
         {
             Done = { 33359 },
-            Coord = { x = 312.1, y = 1510.7 },
+            coord = { x = 312.1, y = 1510.7 },
             ExtraLineText = "GO_SOUTH",
             Zone = 539,
-            _index = 482,
+            _index = 482
         },
         {
             PickUp = { 33062 },
-            Coord = { x = 312.1, y = 1510.7 },
+            coord = { x = 312.1, y = 1510.7 },
             Zone = 539,
-            _index = 483,
+            _index = 483
         },
         {
             PickUp = { 33113 },
-            Coord = { x = 293.6, y = 1564.5 },
+            coord = { x = 293.6, y = 1564.5 },
             Zone = 539,
-            _index = 484,
+            _index = 484
         },
         {
             Qpart = { [33113] = { 1 } },
-            Coord = { x = 719.5, y = 1734.5 },
+            coord = { x = 719.5, y = 1734.5 },
             Range = 5,
             Zone = 539,
-            _index = 485,
+            _index = 485
         },
         {
             Qpart = { [33062] = { 1 } },
-            Coord = { x = 810.7, y = 1936 },
+            coord = { x = 810.7, y = 1936 },
             ExtraLineText = "INSIDE_CAVE",
             Range = 20,
             Zone = 539,
-            _index = 486,
+            _index = 486
         },
         {
             Done = { 33062 },
-            Coord = { x = 312, y = 1510.9 },
+            coord = { x = 312, y = 1510.9 },
             Zone = 539,
-            _index = 487,
+            _index = 487
         },
         {
             PickUp = { 33115 },
-            Coord = { x = 312, y = 1510.9 },
+            coord = { x = 312, y = 1510.9 },
             Zone = 539,
-            _index = 488,
+            _index = 488
         },
         {
             Done = { 33113 },
-            Coord = { x = 293.6, y = 1565 },
+            coord = { x = 293.6, y = 1565 },
             Zone = 539,
-            _index = 489,
+            _index = 489
         },
         {
             PickUp = { 33120 },
-            Coord = { x = 293.6, y = 1565 },
+            coord = { x = 293.6, y = 1565 },
             Zone = 539,
-            _index = 490,
+            _index = 490
         },
         {
             Qpart = { [33115] = { 3 } },
-            Coord = { x = 674.2, y = 1371 },
+            coord = { x = 674.2, y = 1371 },
             Fillers = { [33120] = { 1 } },
             Range = 5,
             Zone = 539,
-            _index = 491,
+            _index = 491
         },
         {
             Qpart = { [33115] = { 1 } },
-            Coord = { x = 726.2, y = 1569 },
+            coord = { x = 726.2, y = 1569 },
             Fillers = { [33120] = { 1 } },
             Range = 5,
             Zone = 539,
-            _index = 492,
+            _index = 492
         },
         {
             Qpart = { [33115] = { 2 } },
-            Coord = { x = 524.6, y = 1952.7 },
+            coord = { x = 524.6, y = 1952.7 },
             Fillers = { [33120] = { 1 } },
             Range = 5,
             Zone = 539,
-            _index = 493,
+            _index = 493
         },
         {
             Qpart = { [33120] = { 1 } },
-            Coord = { x = 685.2, y = 1645.9 },
+            coord = { x = 685.2, y = 1645.9 },
             Range = 30,
             Zone = 539,
-            _index = 494,
+            _index = 494
         },
         {
             Done = { 33115 },
-            Coord = { x = 311.9, y = 1510.7 },
+            coord = { x = 311.9, y = 1510.7 },
             Zone = 539,
-            _index = 495,
+            _index = 495
         },
         {
             PickUp = { 33112 },
-            Coord = { x = 311.9, y = 1510.7 },
+            coord = { x = 311.9, y = 1510.7 },
             Zone = 539,
-            _index = 496,
+            _index = 496
         },
         {
             Done = { 33120 },
-            Coord = { x = 293.6, y = 1565 },
+            coord = { x = 293.6, y = 1565 },
             Zone = 539,
-            _index = 497,
+            _index = 497
         },
         {
             Qpart = { [33112] = { 1 } },
-            Coord = { x = 340.8, y = 1537.6 },
+            coord = { x = 340.8, y = 1537.6 },
             GossipOptionIDs = { 42039 },
             Zone = 539,
-            _index = 498,
+            _index = 498
         },
         {
             Done = { 33112 },
-            Coord = { x = 312, y = 1510.8 },
+            coord = { x = 312, y = 1510.8 },
             Zone = 539,
-            _index = 499,
+            _index = 499
         },
         {
             Done = { 34646 },
-            Coord = { x = 268.9, y = 1845.4 },
+            coord = { x = 268.9, y = 1845.4 },
             Zone = 539,
-            _index = 500,
+            _index = 500
         },
         {
             Waypoint = 34504,
-            Coord = { x = 510.2, y = 1251.6 },
+            coord = { x = 510.2, y = 1251.6 },
             Range = 5,
             Zone = 539,
-            _index = 501,
+            _index = 501
         },
         {
             Waypoint = 34504,
-            Coord = { x = 650.5, y = 1181.6 },
+            coord = { x = 650.5, y = 1181.6 },
             Range = 5,
             Zone = 539,
-            _index = 502,
+            _index = 502
         },
         {
             PickUp = { 34504 },
-            Coord = { x = 714, y = 1189.3 },
+            coord = { x = 714, y = 1189.3 },
             Zone = 539,
-            _index = 503,
+            _index = 503
         },
         {
             PickUp = { 33419 },
-            Coord = { x = 721.9, y = 1188.2 },
+            coord = { x = 721.9, y = 1188.2 },
             Zone = 539,
-            _index = 504,
+            _index = 504
         },
         {
             Qpart = { [33419] = { 2 } },
-            Coord = { x = 748.9, y = 1136.5 },
+            coord = { x = 748.9, y = 1136.5 },
             Fillers = { [34504] = { 1, 2 } },
             Range = 5,
             RaidIcon = 78889,
             Zone = 539,
-            _index = 505,
+            _index = 505
         },
         {
             Qpart = { [33419] = { 1 } },
-            Coord = { x = 816.8, y = 1140.3 },
+            coord = { x = 816.8, y = 1140.3 },
             Fillers = { [34504] = { 1, 2 } },
             Range = 5,
             RaidIcon = 78890,
             Zone = 539,
-            _index = 506,
+            _index = 506
         },
         {
             Qpart = { [33419] = { 3 } },
-            Coord = { x = 755.9, y = 1103.8 },
+            coord = { x = 755.9, y = 1103.8 },
             Fillers = { [34504] = { 1, 2 } },
             Range = 5,
             RaidIcon = 78891,
             Zone = 539,
-            _index = 507,
+            _index = 507
         },
         {
             Qpart = { [34504] = { 1, 2 } },
-            Coord = { x = 755.9, y = 1103.8 },
+            coord = { x = 755.9, y = 1103.8 },
             Range = 30,
             Zone = 539,
-            _index = 508,
+            _index = 508
         },
         {
             Done = { 34504 },
-            Coord = { x = 854.9, y = 1098 },
+            coord = { x = 854.9, y = 1098 },
             Zone = 539,
-            _index = 509,
+            _index = 509
         },
         {
             Done = { 33419 },
-            Coord = { x = 722.2, y = 1187.7 },
+            coord = { x = 722.2, y = 1187.7 },
             Zone = 539,
-            _index = 510,
+            _index = 510
         },
         {
             PickUp = { 34639 },
-            Coord = { x = 1234.5, y = 2452.5 },
+            coord = { x = 1234.5, y = 2452.5 },
             Zone = 535,
-            _index = 511,
+            _index = 511
         },
         {
             Qpart = { [34639] = { 1, 2 } },
-            Coord = { x = 1234.5, y = 2452.5 },
+            coord = { x = 1234.5, y = 2452.5 },
             Range = 30,
             Zone = 535,
-            _index = 512,
+            _index = 512
         },
         {
             Done = { 34639 },
-            Coord = { x = 1234.5, y = 2452.5 },
+            coord = { x = 1234.5, y = 2452.5 },
             Zone = 535,
-            _index = 513,
+            _index = 513
         },
         {
             PickUp = { 34558 },
-            Coord = { x = 1666.7, y = 3602 },
+            coord = { x = 1666.7, y = 3602 },
             Zone = 535,
-            _index = 514,
+            _index = 514
         },
         {
             Qpart = { [34558] = { 1, 2 } },
-            Coord = { x = 1672.5, y = 3607 },
+            coord = { x = 1672.5, y = 3607 },
             ExtraLineText = "PICK_WRYNN_ARTILLERY_TOWER",
             Range = 0.75,
             SparringRing = 119,
-            _index = 515,
+            _index = 515
         },
         {
             Done = { 34558 },
-            Coord = { x = 1666.7, y = 3601.8 },
+            coord = { x = 1666.7, y = 3601.8 },
             Zone = 535,
-            _index = 516,
+            _index = 516
         },
         {
             PickUp = { 37422 },
-            Coord = { x = 885.5, y = 3244.1 },
+            coord = { x = 885.5, y = 3244.1 },
             Zone = 535,
-            _index = 517,
+            _index = 517
         },
         {
             Qpart = { [37422] = { 1, 2 } },
-            Coord = { x = 885.5, y = 3244.1 },
+            coord = { x = 885.5, y = 3244.1 },
             Range = 30,
             Zone = 535,
-            _index = 518,
+            _index = 518
         },
         {
             Done = { 37422 },
-            Coord = { x = 885.5, y = 3244.1 },
+            coord = { x = 885.5, y = 3244.1 },
             Zone = 535,
-            _index = 519,
+            _index = 519
         },
         {
             PickUp = { 36520 },
-            Coord = { x = 1434.7, y = 4749.1 },
+            coord = { x = 1434.7, y = 4749.1 },
             Zone = 543,
-            _index = 520,
+            _index = 520
         },
         {
             Qpart = { [36520] = { 1, 2, 3 } },
-            Coord = { x = 1434.7, y = 4749.1 },
+            coord = { x = 1434.7, y = 4749.1 },
             Range = 30,
             Zone = 543,
-            _index = 521,
+            _index = 521
         },
         {
             Done = { 36520 },
-            Coord = { x = 1434.7, y = 4749.1 },
+            coord = { x = 1434.7, y = 4749.1 },
             Zone = 543,
-            _index = 522,
+            _index = 522
         },
         {
             PickUp = { 35881 },
-            Coord = { x = 810.3, y = 5162.7 },
+            coord = { x = 810.3, y = 5162.7 },
             Zone = 543,
-            _index = 523,
+            _index = 523
         },
         {
             Qpart = { [35881] = { 1, 2, 3 } },
-            Coord = { x = 810.3, y = 5162.7 },
+            coord = { x = 810.3, y = 5162.7 },
             Range = 30,
             Zone = 543,
-            _index = 524,
+            _index = 524
         },
         {
             Done = { 35881 },
-            Coord = { x = 892.6, y = 5215.7 },
+            coord = { x = 892.6, y = 5215.7 },
             Zone = 543,
-            _index = 525,
+            _index = 525
         },
         {
             PickUp = { 35033 },
-            Coord = { x = -165.6, y = 6472.5 },
+            coord = { x = -165.6, y = 6472.5 },
             Zone = 543,
-            _index = 526,
+            _index = 526
         },
         {
             Qpart = { [35033] = { 1 } },
-            Coord = { x = -119.1, y = 6724 },
+            coord = { x = -119.1, y = 6724 },
             Range = 30,
             Zone = 543,
-            _index = 527,
+            _index = 527
         },
         {
             Qpart = { [35033] = { 2 } },
-            Coord = { x = -180.3, y = 6779.4 },
+            coord = { x = -180.3, y = 6779.4 },
             Range = 30,
             Zone = 543,
-            _index = 528,
+            _index = 528
         },
         {
             Done = { 35033 },
-            Coord = { x = -183.9, y = 6758.6 },
+            coord = { x = -183.9, y = 6758.6 },
             Zone = 543,
-            _index = 529,
+            _index = 529
         },
         {
             PickUp = { 35065, 35834 },
-            Coord = { x = -183.9, y = 6758.6 },
+            coord = { x = -183.9, y = 6758.6 },
             Zone = 543,
-            _index = 530,
+            _index = 530
         },
         {
             PickUp = { 35828 },
-            Coord = { x = -247.6, y = 6943.8 },
+            coord = { x = -247.6, y = 6943.8 },
             Fillers = { [35834] = { 1 } },
             Zone = 543,
-            _index = 531,
+            _index = 531
         },
         {
             Waypoint = 35065,
-            Coord = { x = -141.9, y = 6916.9 },
+            coord = { x = -141.9, y = 6916.9 },
             ExtraLineText = "CAVE_ENTRANCE_AT_WAYPOINT",
             Range = 5,
             Zone = 543,
-            _index = 532,
+            _index = 532
         },
         {
             Qpart = { [35065] = { 1 } },
-            Coord = { x = -99.7, y = 7042.8 },
+            coord = { x = -99.7, y = 7042.8 },
             Fillers = { [35834] = { 1 } },
             Range = 10,
             Zone = 543,
-            _index = 533,
+            _index = 533
         },
         {
             Qpart = { [35834] = { 1 } },
-            Coord = { x = -245.9, y = 6942.2 },
+            coord = { x = -245.9, y = 6942.2 },
             Range = 30,
             Zone = 543,
-            _index = 534,
+            _index = 534
         },
         {
             Done = { 35065, 35828, 35834 },
-            Coord = { x = -100.6, y = 6738.2 },
+            coord = { x = -100.6, y = 6738.2 },
             Zone = 543,
-            _index = 535,
+            _index = 535
         },
         {
             PickUp = { 35050, 35055 },
-            Coord = { x = -100.6, y = 6738.2 },
+            coord = { x = -100.6, y = 6738.2 },
             Zone = 543,
-            _index = 536,
+            _index = 536
         },
         {
             Qpart = { [35050] = { 1 } },
-            Coord = { x = 205.2, y = 6691.5 },
+            coord = { x = 205.2, y = 6691.5 },
             GossipOptionIDs = { 42547 },
             Zone = 543,
-            _index = 537,
+            _index = 537
         },
         {
             Qpart = { [35050] = { 2 } },
-            Coord = { x = 348, y = 6631 },
+            coord = { x = 348, y = 6631 },
             ssipOptionIDs = { 42546 },
             Zone = 543,
-            _index = 538,
+            _index = 538
         },
         {
             Qpart = { [35050] = { 3 } },
-            Coord = { x = 563.9, y = 6397.9 },
+            coord = { x = 563.9, y = 6397.9 },
             GossipOptionIDs = { 42548 },
             Zone = 543,
-            _index = 539,
+            _index = 539
         },
         {
             Qpart = { [35055] = { 1 } },
-            Coord = { x = 654.3, y = 6312.1 },
+            coord = { x = 654.3, y = 6312.1 },
             Range = 5,
             Zone = 543,
-            _index = 540,
+            _index = 540
         },
         {
             Done = { 35050 },
-            Coord = { x = 694, y = 6296.2 },
+            coord = { x = 694, y = 6296.2 },
             Zone = 543,
-            _index = 541,
+            _index = 541
         },
         {
             Done = { 35055 },
-            Coord = { x = 697.8, y = 6301.4 },
+            coord = { x = 697.8, y = 6301.4 },
             Zone = 543,
-            _index = 542,
+            _index = 542
         },
         {
             PickUp = { 35063 },
-            Coord = { x = 697.8, y = 6301.4 },
+            coord = { x = 697.8, y = 6301.4 },
             Zone = 543,
-            _index = 543,
+            _index = 543
         },
         {
             Qpart = { [35063] = { 1 } },
-            Coord = { x = 696.6, y = 6303.3 },
+            coord = { x = 696.6, y = 6303.3 },
             ExtraLineText = "PICK_HIGHPASS_SPARRING_RING",
             Range = 0.75,
             SparringRing = 128,
-            _index = 544,
+            _index = 544
         },
         {
             Done = { 35063 },
-            Coord = { x = 732.5, y = 6331.4 },
+            coord = { x = 732.5, y = 6331.4 },
             Zone = 543,
-            _index = 545,
+            _index = 545
         },
         {
             PickUp = { 34704 },
-            Coord = { x = 745.8, y = 6326.6 },
+            coord = { x = 745.8, y = 6326.6 },
             Zone = 543,
-            _index = 546,
+            _index = 546
         },
         {
             PickUp = { 35686 },
-            Coord = { x = 745.6, y = 6336.9 },
+            coord = { x = 745.6, y = 6336.9 },
             Zone = 543,
-            _index = 547,
+            _index = 547
         },
         {
             PickUp = { 36432, 35666 },
-            Coord = { x = 706.8, y = 6325.8 },
+            coord = { x = 706.8, y = 6325.8 },
             Zone = 543,
-            _index = 548,
+            _index = 548
         },
         {
             Qpart = { [35686] = { 1 } },
-            Coord = { x = 747.1, y = 6356.2 },
+            coord = { x = 747.1, y = 6356.2 },
             GossipOptionIDs = { 43219 },
             Zone = 543,
-            _index = 549,
+            _index = 549
         },
         {
             Done = { 35686 },
-            Coord = { x = 1284.2, y = 5954.3 },
+            coord = { x = 1284.2, y = 5954.3 },
             Zone = 543,
-            _index = 550,
+            _index = 550
         },
         {
             PickUp = { 35664, 35693 },
-            Coord = { x = 1284.2, y = 5954.3 },
+            coord = { x = 1284.2, y = 5954.3 },
             Zone = 543,
-            _index = 551,
+            _index = 551
         },
         {
             Qpart = { [35664] = { 1 }, [35693] = { 1 } },
-            Coord = { x = 1316.2, y = 6066.5 },
+            coord = { x = 1316.2, y = 6066.5 },
             Button = { ["35664-1"] = 114967 },
             ExtraLineText = "USE_CHAMPION_HONOR_ABILITY",
             Range = 30,
             Zone = 543,
-            _index = 552,
+            _index = 552
         },
         {
             Done = { 35664, 35693 },
-            Coord = { x = 1395.5, y = 6104.2 },
+            coord = { x = 1395.5, y = 6104.2 },
             Zone = 543,
-            _index = 553,
+            _index = 553
         },
         {
             PickUp = { 35665 },
-            Coord = { x = 1395.5, y = 6104.2 },
+            coord = { x = 1395.5, y = 6104.2 },
             Zone = 543,
-            _index = 554,
+            _index = 554
         },
         {
             Done = { 34704 },
-            Coord = { x = 1570.4, y = 6157.4 },
+            coord = { x = 1570.4, y = 6157.4 },
             Zone = 543,
-            _index = 555,
+            _index = 555
         },
         {
             PickUp = { 34699, 34698, 34700, 34702 },
-            Coord = { x = 1570.4, y = 6157.4 },
+            coord = { x = 1570.4, y = 6157.4 },
             Zone = 543,
-            _index = 556,
+            _index = 556
         },
         {
             PickUp = { 34012 },
-            Coord = { x = 1679.6, y = 5986.4 },
+            coord = { x = 1679.6, y = 5986.4 },
             Zone = 543,
-            _index = 557,
+            _index = 557
         },
         {
             Qpart = { [34698] = { 2 } },
-            Coord = { x = 1708.4, y = 5977.2 },
+            coord = { x = 1708.4, y = 5977.2 },
             Fillers = { [34012] = { 1 } },
             Range = 5,
             Zone = 543,
-            _index = 558,
+            _index = 558
         },
         {
             Qpart = { [34698] = { 1 } },
-            Coord = { x = 1752.9, y = 5953 },
+            coord = { x = 1752.9, y = 5953 },
             Fillers = { [34012] = { 1 } },
             Range = 5,
             Zone = 543,
-            _index = 559,
+            _index = 559
         },
         {
             Qpart = { [34698] = { 3 } },
-            Coord = { x = 1878.8, y = 5843.7 },
+            coord = { x = 1878.8, y = 5843.7 },
             Fillers = { [34012] = { 1 } },
             Range = 5,
             Zone = 543,
-            _index = 560,
+            _index = 560
         },
         {
             Qpart = { [34699] = { 3 } },
-            Coord = { x = 1770.7, y = 6056.8 },
+            coord = { x = 1770.7, y = 6056.8 },
             Fillers = { [34012] = { 1 } },
             Range = 5,
             Zone = 543,
-            _index = 561,
+            _index = 561
         },
         {
             Qpart = { [34699] = { 1 } },
-            Coord = { x = 1864.7, y = 5925.7 },
+            coord = { x = 1864.7, y = 5925.7 },
             Fillers = { [34012] = { 1 } },
             Range = 5,
             Zone = 543,
-            _index = 562,
+            _index = 562
         },
         {
             Qpart = { [34699] = { 2 } },
-            Coord = { x = 1816.1, y = 5892.5 },
+            coord = { x = 1816.1, y = 5892.5 },
             Fillers = { [34012] = { 1 } },
             Range = 5,
             Zone = 543,
-            _index = 563,
+            _index = 563
         },
         {
             Qpart = { [34702] = { 1 } },
-            Coord = { x = 1763.9, y = 5910.7 },
+            coord = { x = 1763.9, y = 5910.7 },
             Fillers = { [34012] = { 1 } },
             Range = 5,
             Zone = 543,
-            _index = 564,
+            _index = 564
         },
         {
             Waypoint = 34700,
-            Coord = { x = 1910.3, y = 5918.6 },
+            coord = { x = 1910.3, y = 5918.6 },
             ExtraLineText = "CAVE_ENTRANCE_AT_WAYPOINT",
             Range = 5,
             Zone = 543,
-            _index = 565,
+            _index = 565
         },
         {
             Qpart = { [34700] = { 1 } },
-            Coord = { x = 2054, y = 5744.1 },
+            coord = { x = 2054, y = 5744.1 },
             Fillers = { [34012] = { 1 } },
             ExtraLineText = "INSIDE_CAVE",
             Range = 5,
             Zone = 543,
-            _index = 566,
+            _index = 566
         },
         {
             Done = { 34699 },
-            Coord = { x = 2053, y = 5888.6 },
+            coord = { x = 2053, y = 5888.6 },
             Fillers = { [34012] = { 1 } },
             Zone = 543,
-            _index = 567,
+            _index = 567
         },
         {
             PickUp = { 34703 },
-            Coord = { x = 2053, y = 5888.6 },
+            coord = { x = 2053, y = 5888.6 },
             Zone = 543,
-            _index = 568,
+            _index = 568
         },
         {
             Qpart = { [34703] = { 1 } },
-            Coord = { x = 2088.9, y = 5776.5 },
+            coord = { x = 2088.9, y = 5776.5 },
             Fillers = { [34012] = { 1 } },
             ExtraLineText = "BREAK_GATE",
             Range = 20,
             Zone = 543,
-            _index = 569,
+            _index = 569
         },
         {
             Qpart = { [34012] = { 1 } },
-            Coord = { x = 1878.8, y = 5843.7 },
+            coord = { x = 1878.8, y = 5843.7 },
             Range = 5,
             Zone = 543,
-            _index = 570,
+            _index = 570
         },
         {
             Done = { 34012 },
-            Coord = { x = 1680, y = 5986.8 },
+            coord = { x = 1680, y = 5986.8 },
             Zone = 543,
-            _index = 571,
+            _index = 571
         },
         {
             Done = { 34702, 34698, 34700, 34703 },
-            Coord = { x = 1572.9, y = 6154.8 },
+            coord = { x = 1572.9, y = 6154.8 },
             Zone = 543,
-            _index = 572,
+            _index = 572
         },
         {
             PickUp = { 35137 },
-            Coord = { x = 1572.9, y = 6154.8 },
+            coord = { x = 1572.9, y = 6154.8 },
             Zone = 543,
-            _index = 573,
+            _index = 573
         },
         {
             Done = { 35883 },
-            Coord = { x = 1572.9, y = 6154.8 },
+            coord = { x = 1572.9, y = 6154.8 },
             ExtraLineText = "WEIRD_QUEST",
             ExtraLineText2 = "MANUAL_SKIP",
             Zone = 543,
-            _index = 574,
+            _index = 574
         },
         {
             Qpart = { [35665] = { 1 } },
-            Coord = { x = 1447.9, y = 6234.3 },
+            coord = { x = 1447.9, y = 6234.3 },
             GossipOptionIDs = { 43078 },
             Zone = 543,
-            _index = 575,
+            _index = 575
         },
         {
             Done = { 35665 },
-            Coord = { x = 1446.7, y = 6229.9 },
+            coord = { x = 1446.7, y = 6229.9 },
             Zone = 543,
-            _index = 576,
+            _index = 576
         },
         {
             PickUp = { 35730 },
-            Coord = { x = 1446.7, y = 6229.9 },
+            coord = { x = 1446.7, y = 6229.9 },
             Zone = 543,
-            _index = 577,
+            _index = 577
         },
         {
             Qpart = { [35730] = { 1, 2 } },
-            Coord = { x = 1438.3, y = 6247 },
+            coord = { x = 1438.3, y = 6247 },
             Range = 30,
             Zone = 543,
-            _index = 578,
+            _index = 578
         },
         {
             Done = { 35730 },
-            Coord = { x = 1446.1, y = 6229.8 },
+            coord = { x = 1446.1, y = 6229.8 },
             Zone = 543,
-            _index = 579,
+            _index = 579
         },
         {
             PickUp = { 35026, 35870 },
-            Coord = { x = 1446.1, y = 6229.8 },
+            coord = { x = 1446.1, y = 6229.8 },
             Zone = 543,
-            _index = 580,
+            _index = 580
         },
         {
             Qpart = { [35026] = { 1 }, [35870] = { 1 } },
-            Coord = { x = 1394.4, y = 6306.9 },
+            coord = { x = 1394.4, y = 6306.9 },
             ExtraLineText = "USE_CHAMPION_HONOR_ABILITY",
             Range = 30,
             Zone = 543,
-            _index = 581,
+            _index = 581
         },
         {
             Done = { 35870, 35026 },
-            Coord = { x = 1316, y = 6594.5 },
+            coord = { x = 1316, y = 6594.5 },
             Zone = 543,
-            _index = 582,
+            _index = 582
         },
         {
             PickUp = { 36508 },
-            Coord = { x = 1301.5, y = 6606 },
+            coord = { x = 1301.5, y = 6606 },
             Zone = 543,
-            _index = 583,
+            _index = 583
         },
         {
             Qpart = { [36508] = { 1 } },
-            Coord = { x = 1301.5, y = 6606 },
+            coord = { x = 1301.5, y = 6606 },
             GossipOptionIDs = { 42758 },
             Range = 5,
             Zone = 543,
-            _index = 584,
+            _index = 584
         },
         {
             Done = { 36508 },
-            Coord = { x = 1288.9, y = 6587.4 },
+            coord = { x = 1288.9, y = 6587.4 },
             Zone = 543,
-            _index = 585,
+            _index = 585
         },
         {
             PickUp = { 36208, 36210 },
-            Coord = { x = 1288.9, y = 6587.4 },
+            coord = { x = 1288.9, y = 6587.4 },
             Zone = 543,
-            _index = 586,
+            _index = 586
         },
         {
             PickUp = { 35037, 35934 },
-            Coord = { x = 1301.7, y = 6605.9 },
+            coord = { x = 1301.7, y = 6605.9 },
             Zone = 543,
-            _index = 587,
+            _index = 587
         },
         {
             Qpart = { [35037] = { 1 } },
-            Coord = { x = 1145.2, y = 6629.9 },
+            coord = { x = 1145.2, y = 6629.9 },
             Fillers = { [35934] = { 1 } },
             Range = 10,
             Zone = 543,
-            _index = 588,
+            _index = 588
         },
         {
             PickUp = { 35925 },
-            Coord = { x = 1164.3, y = 6751.7 },
+            coord = { x = 1164.3, y = 6751.7 },
             Fillers = { [35934] = { 1 } },
             Zone = 543,
-            _index = 589,
+            _index = 589
         },
         {
             Qpart = { [35037] = { 2 } },
-            Coord = { x = 1160.2, y = 6773.1 },
+            coord = { x = 1160.2, y = 6773.1 },
             Fillers = { [35934] = { 1 } },
             Range = 5,
             Zone = 543,
-            _index = 590,
+            _index = 590
         },
         {
             Qpart = { [35934] = { 1 } },
-            Coord = { x = 1160.2, y = 6773.1 },
+            coord = { x = 1160.2, y = 6773.1 },
             Range = 30,
             Zone = 543,
-            _index = 591,
+            _index = 591
         },
         {
             Qpart = { [36208] = { 1 }, [36210] = { 1 } },
-            Coord = { x = 1277.8, y = 6726.4 },
+            coord = { x = 1277.8, y = 6726.4 },
             Range = 30,
             Zone = 543,
-            _index = 592,
+            _index = 592
         },
         {
             Done = { 35037, 35934, 35925 },
-            Coord = { x = 1302.2, y = 6606.3 },
+            coord = { x = 1302.2, y = 6606.3 },
             Zone = 543,
-            _index = 593,
+            _index = 593
         },
         {
             Done = { 36210, 36208 },
-            Coord = { x = 1289.2, y = 6587.2 },
+            coord = { x = 1289.2, y = 6587.2 },
             Zone = 543,
-            _index = 594,
+            _index = 594
         },
         {
             PickUp = { 36209 },
-            Coord = { x = 1289.2, y = 6587.2 },
+            coord = { x = 1289.2, y = 6587.2 },
             Zone = 543,
-            _index = 595,
+            _index = 595
         },
         {
             Qpart = { [36209] = { 1, 2 } },
-            Coord = { x = 1230.5, y = 6571.3 },
+            coord = { x = 1230.5, y = 6571.3 },
             Button = { ["36209-1"] = 112958, ["36209-2"] = 112958 },
             Range = 5,
             Zone = 543,
-            _index = 596,
+            _index = 596
         },
         {
             Qpart = { [36209] = { 3 } },
-            Coord = { x = 1323.7, y = 6845.2 },
+            coord = { x = 1323.7, y = 6845.2 },
             Button = { ["36209-3"] = 112958 },
             Range = 3,
             Zone = 543,
-            _index = 597,
+            _index = 597
         },
         {
             Qpart = { [36209] = { 4, 5 } },
-            Coord = { x = 1537.1, y = 7284.5 },
+            coord = { x = 1537.1, y = 7284.5 },
             Button = { ["36209-4"] = 112958, ["36209-5"] = 112958 },
             Range = 1,
             Zone = 543,
-            _index = 598,
+            _index = 598
         },
         {
             Qpart = { [36209] = { 6 } },
-            Coord = { x = 1550.7, y = 7273.2 },
+            coord = { x = 1550.7, y = 7273.2 },
             Button = { ["36209-6"] = 112958 },
             Range = 30,
             Zone = 543,
-            _index = 599,
+            _index = 599
         },
         {
             Done = { 36209 },
-            Coord = { x = 1288.7, y = 6587.1 },
+            coord = { x = 1288.7, y = 6587.1 },
             Zone = 543,
-            _index = 600,
+            _index = 600
         },
         {
             PickUp = { 36223 },
-            Coord = { x = 1288.7, y = 6587.1 },
+            coord = { x = 1288.7, y = 6587.1 },
             Zone = 543,
-            _index = 601,
+            _index = 601
         },
         {
             PickUp = { 35128 },
-            Coord = { x = 1302.4, y = 6605.1 },
+            coord = { x = 1302.4, y = 6605.1 },
             Zone = 543,
-            _index = 602,
+            _index = 602
         },
         {
             Qpart = { [35128] = { 1 } },
-            Coord = { x = 1546.5, y = 6989.5 },
+            coord = { x = 1546.5, y = 6989.5 },
             ExtraLineText = "USE_CHAMPION_HONOR_ABILITY",
             Range = 30,
             Zone = 543,
-            _index = 603,
+            _index = 603
         },
         {
             Qpart = { [36223] = { 1, 2 } },
-            Coord = { x = 1594.9, y = 6987.8 },
+            coord = { x = 1594.9, y = 6987.8 },
             GossipOptionIDs = { 42653 },
             Zone = 543,
-            _index = 604,
+            _index = 604
         },
         {
             Qpart = { [35128] = { 2 } },
-            Coord = { x = 1646.9, y = 7014.1 },
+            coord = { x = 1646.9, y = 7014.1 },
             Range = 30,
             Zone = 543,
-            _index = 605,
+            _index = 605
         },
         {
             PickUp = { 35210 },
-            Coord = { x = 1636.8, y = 7037.5 },
+            coord = { x = 1636.8, y = 7037.5 },
             Zone = 543,
-            _index = 606,
+            _index = 606
         },
         {
             Qpart = { [35210] = { 1 } },
-            Coord = { x = 1636.8, y = 7037.5 },
+            coord = { x = 1636.8, y = 7037.5 },
             Range = 30,
             Zone = 543,
-            _index = 607,
+            _index = 607
         },
         {
             Done = { 36223, 35128, 35210 },
-            Coord = { x = 1473.8, y = 6927 },
+            coord = { x = 1473.8, y = 6927 },
             Zone = 543,
-            _index = 608,
+            _index = 608
         },
         {
             PickUp = { 35139 },
-            Coord = { x = 1473.8, y = 6927 },
+            coord = { x = 1473.8, y = 6927 },
             Zone = 543,
-            _index = 609,
+            _index = 609
         },
         {
             Qpart = { [35139] = { 1 } },
-            Coord = { x = 1477.8, y = 6926.3 },
+            coord = { x = 1477.8, y = 6926.3 },
             GossipOptionIDs = { 42956 },
             Range = 30,
             Zone = 543,
-            _index = 610,
+            _index = 610
         },
         {
             Done = { 35139 },
-            Coord = { x = 1473.6, y = 6926.8 },
+            coord = { x = 1473.6, y = 6926.8 },
             Zone = 543,
-            _index = 611,
+            _index = 611
         },
         {
             PickUp = { 35702 },
-            Coord = { x = 1473.6, y = 6926.8 },
+            coord = { x = 1473.6, y = 6926.8 },
             Zone = 543,
-            _index = 612,
+            _index = 612
         },
         {
             Qpart = { [36480] = { 3, 2 } },
-            Coord = { x = 1149.5, y = 6965.5 },
+            coord = { x = 1149.5, y = 6965.5 },
             Range = 30,
             Zone = 543,
-            _index = 613,
+            _index = 613
         },
         {
             Qpart = { [36480] = { 1 } },
-            Coord = { x = 1259.8, y = 7031.5 },
+            coord = { x = 1259.8, y = 7031.5 },
             Range = 5,
             Zone = 543,
-            _index = 614,
+            _index = 614
         },
         {
             Done = { 36480 },
-            Coord = { x = 1259.8, y = 7031.5 },
+            coord = { x = 1259.8, y = 7031.5 },
             ExtraLineText = "BONUS_OBJECTIVE_BUG",
             Zone = 543,
-            _index = 615,
+            _index = 615
         },
         {
             Qpart = { [35702] = { 1 } },
-            Coord = { x = 1043.6, y = 7146 },
+            coord = { x = 1043.6, y = 7146 },
             Range = 30,
             Zone = 543,
-            _index = 616,
+            _index = 616
         },
         {
             Qpart = { [35702] = { 2 } },
-            Coord = { x = 1000.4, y = 7199.9 },
+            coord = { x = 1000.4, y = 7199.9 },
             Range = 30,
             Zone = 543,
-            _index = 617,
+            _index = 617
         },
         {
             Done = { 36432 },
-            Coord = { x = 1028.1, y = 6884.3 },
+            coord = { x = 1028.1, y = 6884.3 },
             Zone = 543,
-            _index = 618,
+            _index = 618
         },
         {
             Done = { 35702 },
-            Coord = { x = 745.1, y = 6337.2 },
+            coord = { x = 745.1, y = 6337.2 },
             Zone = 543,
-            _index = 619,
+            _index = 619
         },
         {
             Done = { 35137 },
-            Coord = { x = 745.9, y = 6326.8 },
+            coord = { x = 745.9, y = 6326.8 },
             Zone = 543,
-            _index = 620,
+            _index = 620
         },
         {
             Done = { 36833 },
-            Coord = { x = 707.6, y = 6334.4 },
+            coord = { x = 707.6, y = 6334.4 },
             ExtraLineText = "WEIRD_QUEST2",
             ExtraLineText2 = "MANUAL_SKIP",
             Zone = 543,
-            _index = 621,
+            _index = 621
         },
         {
             Done = { 35666 },
-            Coord = { x = 215.7, y = 6518.4 },
+            coord = { x = 215.7, y = 6518.4 },
             Zone = 543,
-            _index = 622,
+            _index = 622
         },
         {
             PickUp = { 35633 },
-            Coord = { x = 216.2, y = 6519 },
+            coord = { x = 216.2, y = 6519 },
             Zone = 543,
-            _index = 623,
+            _index = 623
         },
         {
             PickUp = { 35640 },
-            Coord = { x = 199.8, y = 6432.4 },
+            coord = { x = 199.8, y = 6432.4 },
             Zone = 543,
-            _index = 624,
+            _index = 624
         },
         {
             Qpart = { [35633] = { 1 }, [35640] = { 1 } },
-            Coord = { x = 223, y = 6393.1 },
+            coord = { x = 223, y = 6393.1 },
             Range = 30,
             Zone = 543,
-            _index = 625,
+            _index = 625
         },
         {
             DropQuest = 35642,
             DroppableQuest = { MobId = 80714, Qid = 35642, Text = "Fungal Lurcher" },
-            Coord = { x = 222.8, y = 6392.8 },
+            coord = { x = 222.8, y = 6392.8 },
             Zone = 543,
-            _index = 626,
+            _index = 626
         },
         {
             Done = { 35640, 35642, 35633 },
-            Coord = { x = 302.4, y = 6325.9 },
+            coord = { x = 302.4, y = 6325.9 },
             Zone = 543,
-            _index = 627,
+            _index = 627
         },
         {
             PickUp = { 35645, 35644 },
-            Coord = { x = 302.9, y = 6324.4 },
+            coord = { x = 302.9, y = 6324.4 },
             Zone = 543,
-            _index = 628,
+            _index = 628
         },
         {
             Qpart = { [35644] = { 1 }, [35645] = { 1 } },
-            Coord = { x = 393.7, y = 6314.7 },
+            coord = { x = 393.7, y = 6314.7 },
             Range = 30,
             Zone = 543,
-            _index = 629,
+            _index = 629
         },
         {
             Done = { 35644, 35645 },
-            Coord = { x = 303.1, y = 6324.9 },
+            coord = { x = 303.1, y = 6324.9 },
             Zone = 543,
-            _index = 630,
+            _index = 630
         },
         {
             PickUp = { 35656, 35647 },
-            Coord = { x = 303.1, y = 6324.9 },
+            coord = { x = 303.1, y = 6324.9 },
             Zone = 543,
-            _index = 631,
+            _index = 631
         },
         {
             Qpart = { [35647] = { 1 }, [35656] = { 1 } },
-            Coord = { x = 247.2, y = 6180.1 },
+            coord = { x = 247.2, y = 6180.1 },
             Range = 5,
             Zone = 543,
-            _index = 632,
+            _index = 632
         },
         {
             Done = { 35656, 35647 },
-            Coord = { x = 245.1, y = 6182.3 },
+            coord = { x = 245.1, y = 6182.3 },
             Zone = 543,
-            _index = 633,
+            _index = 633
         },
         {
             PickUp = { 35659 },
-            Coord = { x = 245.1, y = 6182.3 },
+            coord = { x = 245.1, y = 6182.3 },
             Zone = 543,
-            _index = 634,
+            _index = 634
         },
         {
             Qpart = { [35659] = { 1 } },
-            Coord = { x = 57.7, y = 6216.5 },
+            coord = { x = 57.7, y = 6216.5 },
             Range = 10,
             Zone = 543,
-            _index = 635,
+            _index = 635
         },
         {
             Done = { 35659 },
-            Coord = { x = 707.2, y = 6325.5 },
+            coord = { x = 707.2, y = 6325.5 },
             Zone = 543,
-            _index = 636,
+            _index = 636
         },
         {
             Qpart = { [36563] = { 1, 2 } },
-            Coord = { x = 896.8, y = 5933 },
+            coord = { x = 896.8, y = 5933 },
             Range = 30,
             Zone = 543,
-            _index = 638,
+            _index = 638
         },
         {
             Done = { 36563 },
-            Coord = { x = 896.8, y = 5933 },
+            coord = { x = 896.8, y = 5933 },
             ExtraLineText = "BONUS_OBJECTIVE_BUG",
             Zone = 543,
-            _index = 638,
+            _index = 638
         },
         {
             Qpart = { [36500] = { 1, 2, 3 } },
-            Coord = { x = 1025.9, y = 5685.4 },
+            coord = { x = 1025.9, y = 5685.4 },
             Range = 5,
             Zone = 543,
-            _index = 639,
+            _index = 639
         },
         {
             Done = { 36500 },
-            Coord = { x = 1025.9, y = 5685.4 },
+            coord = { x = 1025.9, y = 5685.4 },
             ExtraLineText = "BONUS_OBJECTIVE_BUG",
             Zone = 543,
-            _index = 640,
+            _index = 640
         },
         {
             Qpart = { [34660] = { 1, 2 } },
-            Coord = { x = 2559.4, y = 837.3 },
+            coord = { x = 2559.4, y = 837.3 },
             Range = 30,
             Zone = 535,
-            _index = 641,
+            _index = 641
         },
         {
             Done = { 34660 },
-            Coord = { x = 2559.4, y = 837.3 },
+            coord = { x = 2559.4, y = 837.3 },
             ExtraLineText = "BONUS_OBJECTIVE_BUG",
             Zone = 535,
-            _index = 642,
+            _index = 642
         },
         {
             PickUp = { 34655 },
-            Coord = { x = 2388.1, y = 656.2 },
+            coord = { x = 2388.1, y = 656.2 },
             Zone = 542,
-            _index = 643,
+            _index = 643
         },
         {
             Qpart = { [34655] = { 1 } },
-            Coord = { x = 2036.3, y = 859.4 },
+            coord = { x = 2036.3, y = 859.4 },
             GossipOptionIDs = { 42456 },
             Range = 30,
             RaidIcon = 79519,
             Zone = 542,
-            _index = 644,
+            _index = 644
         },
         {
             Done = { 34655 },
-            Coord = { x = 2036.3, y = 859.4 },
+            coord = { x = 2036.3, y = 859.4 },
             Zone = 542,
-            _index = 645,
+            _index = 645
         },
         {
             PickUp = { 34656, 34657 },
-            Coord = { x = 2036.1, y = 860.9 },
+            coord = { x = 2036.1, y = 860.9 },
             Zone = 542,
-            _index = 646,
+            _index = 646
         },
         {
             Qpart = { [34656] = { 2 } },
-            Coord = { x = 1958.6, y = 770.9 },
+            coord = { x = 1958.6, y = 770.9 },
             Fillers = { [34657] = { 1 } },
             Range = 1,
             Zone = 542,
-            _index = 647,
+            _index = 647
         },
         {
             Qpart = { [34656] = { 1 } },
-            Coord = { x = 2182.5, y = 726.9 },
+            coord = { x = 2182.5, y = 726.9 },
             Fillers = { [34657] = { 1 } },
             Range = 1,
             Zone = 542,
-            _index = 648,
+            _index = 648
         },
         {
             Qpart = { [34657] = { 1 } },
-            Coord = { x = 2182.5, y = 726.9 },
+            coord = { x = 2182.5, y = 726.9 },
             Range = 30,
             Zone = 542,
-            _index = 649,
+            _index = 649
         },
         {
             Done = { 34657, 34656 },
-            Coord = { x = 2036, y = 860.8 },
+            coord = { x = 2036, y = 860.8 },
             Zone = 542,
-            _index = 650,
+            _index = 650
         },
         {
             PickUp = { 34658 },
-            Coord = { x = 2036, y = 860.8 },
+            coord = { x = 2036, y = 860.8 },
             Zone = 542,
-            _index = 651,
+            _index = 651
         },
         {
             Qpart = { [34658] = { 1 } },
-            Coord = { x = 1903.6, y = 759.2 },
+            coord = { x = 1903.6, y = 759.2 },
             Range = 3,
             Zone = 542,
-            _index = 652,
+            _index = 652
         },
         {
             Done = { 34658 },
-            Coord = { x = 1930.1, y = 645.6 },
+            coord = { x = 1930.1, y = 645.6 },
             Zone = 542,
-            _index = 653,
+            _index = 653
         },
         {
             PickUp = { 34659 },
-            Coord = { x = 1930.1, y = 645.6 },
+            coord = { x = 1930.1, y = 645.6 },
             Zone = 542,
-            _index = 654,
+            _index = 654
         },
         {
             Qpart = { [34659] = { 1 } },
-            Coord = { x = 1553.1, y = 116.4 },
+            coord = { x = 1553.1, y = 116.4 },
             GossipOptionIDs = { 42545 },
             Zone = 542,
-            _index = 655,
+            _index = 655
         },
         {
             Done = { 34659 },
-            Coord = { x = 1553.1, y = 116.4 },
+            coord = { x = 1553.1, y = 116.4 },
             Zone = 542,
-            _index = 656,
+            _index = 656
         },
         {
             PickUp = { 34756, 35636, 34805 },
-            Coord = { x = 1553.1, y = 116.4 },
+            coord = { x = 1553.1, y = 116.4 },
             Zone = 542,
-            _index = 657,
+            _index = 657
         },
         {
             Qpart = { [35636] = { 1 } },
-            Coord = { x = 1634.9, y = -86.1 },
+            coord = { x = 1634.9, y = -86.1 },
             Range = 1,
             Zone = 542,
-            _index = 658,
+            _index = 658
         },
         {
             Qpart = { [35636] = { 2 } },
-            Coord = { x = 1649.9, y = -100.3 },
+            coord = { x = 1649.9, y = -100.3 },
             Range = 1,
             Zone = 542,
-            _index = 659,
+            _index = 659
         },
         {
             Done = { 35636 },
-            Coord = { x = 1634.2, y = -99.6 },
+            coord = { x = 1634.2, y = -99.6 },
             Zone = 542,
-            _index = 660,
+            _index = 660
         },
         {
             PickUp = { 35668 },
-            Coord = { x = 1634.2, y = -99.6 },
+            coord = { x = 1634.2, y = -99.6 },
             Zone = 542,
-            _index = 661,
+            _index = 661
         },
         {
             Qpart = { [34756] = { 1 }, [34805] = { 1 } },
-            Coord = { x = 1643.2, y = -134.8 },
+            coord = { x = 1643.2, y = -134.8 },
             Range = 30,
             Zone = 542,
-            _index = 662,
+            _index = 662
         },
         {
             Waypoint = 34756,
-            Coord = { x = 1708.2, y = -279.5 },
+            coord = { x = 1708.2, y = -279.5 },
             ExtraLineText = "INSIDE_CAVE",
             Range = 5,
             Zone = 542,
-            _index = 663,
+            _index = 663
         },
         {
             Qpart = { [35668] = { 1 } },
-            Coord = { x = 1768.5, y = -358.6 },
+            coord = { x = 1768.5, y = -358.6 },
             Range = 20,
             Zone = 542,
-            _index = 664,
+            _index = 664
         },
         {
             Waypoint = 35668,
-            Coord = { x = 1709.3, y = -284.3 },
+            coord = { x = 1709.3, y = -284.3 },
             Range = 5,
             Zone = 542,
-            _index = 665,
+            _index = 665
         },
         {
             Done = { 34805, 34756, 35668 },
-            Coord = { x = 1739.7, y = -411.3 },
+            coord = { x = 1739.7, y = -411.3 },
             Zone = 542,
-            _index = 666,
+            _index = 666
         },
         {
             PickUp = { 35671 },
-            Coord = { x = 1739.7, y = -411.3 },
+            coord = { x = 1739.7, y = -411.3 },
             Zone = 542,
-            _index = 667,
+            _index = 667
         },
         {
             Qpart = { [35671] = { 1 } },
-            Coord = { x = 1862.5, y = -459.6 },
+            coord = { x = 1862.5, y = -459.6 },
             Range = 1,
             Zone = 542,
-            _index = 668,
+            _index = 668
         },
         {
             Done = { 35671 },
-            Coord = { x = 1862.5, y = -459.6 },
+            coord = { x = 1862.5, y = -459.6 },
             Zone = 542,
-            _index = 669,
+            _index = 669
         },
         {
             PickUp = { 35274 },
-            Coord = { x = 1899.7, y = -489.5 },
+            coord = { x = 1899.7, y = -489.5 },
             Zone = 542,
-            _index = 670,
+            _index = 670
         },
         {
             Qpart = { [35274] = { 1 } },
-            Coord = { x = 1862.6, y = -459.3 },
+            coord = { x = 1862.6, y = -459.3 },
             GossipOptionIDs = { 42678 },
             Zone = 542,
-            _index = 671,
+            _index = 671
         },
         {
             Done = { 35274 },
-            Coord = { x = 1899.8, y = -489.7 },
+            coord = { x = 1899.8, y = -489.7 },
             Zone = 542,
-            _index = 672,
+            _index = 672
         },
         {
             PickUp = { 35276 },
-            Coord = { x = 1899.8, y = -489.7 },
+            coord = { x = 1899.8, y = -489.7 },
             Zone = 542,
-            _index = 673,
+            _index = 673
         },
         {
             Done = { 35276 },
-            Coord = { x = 2257.4, y = -1059.5 },
+            coord = { x = 2257.4, y = -1059.5 },
             Zone = 542,
-            _index = 674,
+            _index = 674
         },
         {
             PickUp = { 35286 },
-            Coord = { x = 2266.4, y = -1073.6 },
+            coord = { x = 2266.4, y = -1073.6 },
             Zone = 542,
-            _index = 675,
+            _index = 675
         },
         {
             Qpart = { [35286] = { 1, 2 } },
-            Coord = { x = 2275.9, y = -1074.9 },
+            coord = { x = 2275.9, y = -1074.9 },
             ExtraLineText = "BREWERY",
             Range = 0.69,
             Brewery = 133,
-            _index = 676,
+            _index = 676
         },
         {
             Done = { 35286 },
-            Coord = { x = 2265.9, y = -1073.7 },
+            coord = { x = 2265.9, y = -1073.7 },
             Zone = 542,
-            _index = 677,
+            _index = 677
         },
         {
             PickUp = { 37327 },
-            Coord = { x = 2265.9, y = -1073.7 },
+            coord = { x = 2265.9, y = -1073.7 },
             Zone = 542,
-            _index = 678,
+            _index = 678
         },
         {
             PickUp = { 35293 },
-            Coord = { x = 2270.1, y = -1067.9 },
+            coord = { x = 2270.1, y = -1067.9 },
             Zone = 542,
-            _index = 679,
+            _index = 679
         },
         {
             PickUp = { 35619 },
-            Coord = { x = 2279.2, y = -1065.5 },
+            coord = { x = 2279.2, y = -1065.5 },
             Zone = 542,
-            _index = 680,
+            _index = 680
         },
         {
             PickUp = { 35675, 35674 },
-            Coord = { x = 2289.7, y = -1107.5 },
+            coord = { x = 2289.7, y = -1107.5 },
             Zone = 542,
-            _index = 681,
+            _index = 681
         },
         {
             PickUp = { 35611 },
-            Coord = { x = 2246.4, y = -1051.1 },
+            coord = { x = 2246.4, y = -1051.1 },
             Zone = 542,
-            _index = 682,
+            _index = 682
         },
         {
             Done = { 35293 },
-            Coord = { x = 2308.5, y = -593.6 },
+            coord = { x = 2308.5, y = -593.6 },
             Zone = 542,
-            _index = 683,
+            _index = 683
         },
         {
             PickUp = { 35329 },
-            Coord = { x = 2308.5, y = -593.6 },
+            coord = { x = 2308.5, y = -593.6 },
             Zone = 542,
-            _index = 684,
+            _index = 684
         },
         {
             Qpart = { [35329] = { 1 } },
-            Coord = { x = 2406.8, y = -600 },
+            coord = { x = 2406.8, y = -600 },
             Range = 30,
             Zone = 542,
-            _index = 685,
+            _index = 685
         },
         {
             Qpart = { [35329] = { 2 } },
-            Coord = { x = 2324.8, y = -591.9 },
+            coord = { x = 2324.8, y = -591.9 },
             GossipOptionIDs = { 42767 },
             Zone = 542,
-            _index = 686,
+            _index = 686
         },
         {
             Done = { 35329 },
-            Coord = { x = 2324.8, y = -591.9 },
+            coord = { x = 2324.8, y = -591.9 },
             Zone = 542,
-            _index = 687,
+            _index = 687
         },
         {
             PickUp = { 35339 },
-            Coord = { x = 2324.8, y = -591.9 },
+            coord = { x = 2324.8, y = -591.9 },
             Zone = 542,
-            _index = 688,
+            _index = 688
         },
         {
             Qpart = { [35339] = { 1 } },
-            Coord = { x = 2386.3, y = -700 },
+            coord = { x = 2386.3, y = -700 },
             Range = 116.48,
             Zone = 542,
-            _index = 689,
+            _index = 689
         },
         {
             Qpart = { [35339] = { 2 } },
-            Coord = { x = 2398.1, y = -679.5 },
+            coord = { x = 2398.1, y = -679.5 },
             ExtraLineText = "UPSTAIRS_BED",
             GossipOptionIDs = { 42768 },
             Range = 0.69,
             RaidIcon = 82110,
             Zone = 542,
-            _index = 690,
+            _index = 690
         },
         {
             Done = { 35339 },
-            Coord = { x = 2396.7, y = -679.4 },
+            coord = { x = 2396.7, y = -679.4 },
             Zone = 542,
-            _index = 691,
+            _index = 691
         },
         {
             PickUp = { 35353 },
-            Coord = { x = 2396.7, y = -679.4 },
+            coord = { x = 2396.7, y = -679.4 },
             RaidIcon = 82136,
             Zone = 542,
-            _index = 692,
+            _index = 692
         },
         {
             Qpart = { [35353] = { 1 } },
-            Coord = { x = 2408.8, y = -677.9 },
+            coord = { x = 2408.8, y = -677.9 },
             ExtraLineText = "IN_BASEMENT",
             Range = 1,
             Zone = 542,
-            _index = 693,
+            _index = 693
         },
         {
             Done = { 35353 },
-            Coord = { x = 2405.9, y = -667.1 },
+            coord = { x = 2405.9, y = -667.1 },
             Zone = 542,
-            _index = 694,
+            _index = 694
         },
         {
             PickUp = { 35380 },
-            Coord = { x = 2405.9, y = -667.1 },
+            coord = { x = 2405.9, y = -667.1 },
             Zone = 542,
-            _index = 695,
+            _index = 695
         },
         {
             Waypoint = 35380,
-            Coord = { x = 2420.5, y = -770.8 },
+            coord = { x = 2420.5, y = -770.8 },
             Range = 5,
             Zone = 542,
-            _index = 696,
+            _index = 696
         },
         {
             Done = { 35380 },
-            Coord = { x = 2396.8, y = -789.9 },
+            coord = { x = 2396.8, y = -789.9 },
             Zone = 542,
-            _index = 697,
+            _index = 697
         },
         {
             PickUp = { 35407, 35408 },
-            Coord = { x = 2396.8, y = -789.9 },
+            coord = { x = 2396.8, y = -789.9 },
             Zone = 542,
-            _index = 698,
+            _index = 698
         },
         {
             Qpart = { [35408] = { 2 } },
-            Coord = { x = 2474.6, y = -779 },
+            coord = { x = 2474.6, y = -779 },
             Fillers = { [35407] = { 1 }, [35408] = { 1 } },
             Range = 0.69,
             Zone = 542,
-            _index = 699,
+            _index = 699
         },
         {
             Qpart = { [35407] = { 1 }, [35408] = { 1 } },
-            Coord = { x = 2441.6, y = -764 },
+            coord = { x = 2441.6, y = -764 },
             Range = 87.56,
             Zone = 542,
-            _index = 700,
+            _index = 700
         },
         {
             Done = { 35407, 35408 },
-            Coord = { x = 2397.9, y = -791.4 },
+            coord = { x = 2397.9, y = -791.4 },
             Zone = 542,
-            _index = 701,
+            _index = 701
         },
         {
             PickUp = { 35482 },
-            Coord = { x = 2397.9, y = -791.4 },
+            coord = { x = 2397.9, y = -791.4 },
             Zone = 542,
-            _index = 702,
+            _index = 702
         },
         {
             Qpart = { [35482] = { 1 } },
-            Coord = { x = 2449.8, y = -915.7 },
+            coord = { x = 2449.8, y = -915.7 },
             Range = 10,
             Zone = 542,
-            _index = 703,
+            _index = 703
         },
         {
             Qpart = { [35482] = { 2 } },
-            Coord = { x = 2449.8, y = -915.7 },
+            coord = { x = 2449.8, y = -915.7 },
             Range = 10,
             Zone = 542,
-            _index = 704,
+            _index = 704
         },
         {
             Qpart = { [35482] = { 3 } },
-            Coord = { x = 2449.8, y = -932.4 },
+            coord = { x = 2449.8, y = -932.4 },
             Range = 5,
             Zone = 542,
-            _index = 705,
+            _index = 705
         },
         {
             Done = { 35482 },
-            Coord = { x = 2449.6, y = -916.7 },
+            coord = { x = 2449.6, y = -916.7 },
             Zone = 542,
-            _index = 706,
+            _index = 706
         },
         {
             PickUp = { 35549 },
-            Coord = { x = 2447.3, y = -909 },
+            coord = { x = 2447.3, y = -909 },
             Zone = 542,
-            _index = 707,
+            _index = 707
         },
         {
             Done = { 37327 },
-            Coord = { x = 2020.6, y = -592.2 },
+            coord = { x = 2020.6, y = -592.2 },
             Zone = 542,
-            _index = 708,
+            _index = 708
         },
         {
             PickUp = { 37296 },
-            Coord = { x = 2020.6, y = -592.2 },
+            coord = { x = 2020.6, y = -592.2 },
             Zone = 542,
-            _index = 709,
+            _index = 709
         },
         {
             Qpart = { [37296] = { 1 } },
-            Coord = { x = 2041.6, y = -495.1 },
+            coord = { x = 2041.6, y = -495.1 },
             Range = 78.86,
             Zone = 542,
-            _index = 710,
+            _index = 710
         },
         {
             Done = { 37296 },
-            Coord = { x = 2020.9, y = -592.6 },
+            coord = { x = 2020.9, y = -592.6 },
             Zone = 542,
-            _index = 711,
+            _index = 711
         },
         {
             PickUp = { 37329 },
-            Coord = { x = 2020.9, y = -592.6 },
+            coord = { x = 2020.9, y = -592.6 },
             Zone = 542,
-            _index = 712,
+            _index = 712
         },
         {
             Done = { 35611 },
-            Coord = { x = 1901.5, y = -463.3 },
+            coord = { x = 1901.5, y = -463.3 },
             Zone = 542,
-            _index = 713,
+            _index = 713
         },
         {
             PickUp = { 34827, 34884 },
-            Coord = { x = 1899.5, y = -462.9 },
+            coord = { x = 1899.5, y = -462.9 },
             Zone = 542,
-            _index = 714,
+            _index = 714
         },
         {
             Qpart = { [34884] = { 1 } },
-            Coord = { x = 1928.9, y = -83 },
+            coord = { x = 1928.9, y = -83 },
             Range = 0.69,
             Gossip = 42487,
             Zone = 549,
-            _index = 715,
+            _index = 715
         },
         {
             PickUp = { 34885 },
-            Coord = { x = 1928.2, y = -84.3 },
+            coord = { x = 1928.2, y = -84.3 },
             Zone = 542,
-            _index = 716,
+            _index = 716
         },
         {
             PickUp = { 34838 },
-            Coord = { x = 1930.3, y = -100.8 },
+            coord = { x = 1930.3, y = -100.8 },
             Zone = 542,
-            _index = 717,
+            _index = 717
         },
         {
             Qpart = { [34838] = { 1 } },
-            Coord = { x = 1930.3, y = -100.8 },
+            coord = { x = 1930.3, y = -100.8 },
             Range = 0.69,
             Zone = 542,
-            _index = 718,
+            _index = 718
         },
         {
             Done = { 34838 },
-            Coord = { x = 1930.3, y = -100.8 },
+            coord = { x = 1930.3, y = -100.8 },
             Zone = 542,
-            _index = 719,
+            _index = 719
         },
         {
             PickUp = { 34886 },
-            Coord = { x = 1930.3, y = -100.8 },
+            coord = { x = 1930.3, y = -100.8 },
             Zone = 542,
-            _index = 720,
+            _index = 720
         },
         {
             Qpart = { [34885] = { 2 } },
-            Coord = { x = 2004, y = -154.5 },
+            coord = { x = 2004, y = -154.5 },
             Fillers = { [34885] = { 1 }, [34886] = { 1 } },
             Range = 0.69,
             Zone = 542,
-            _index = 721,
+            _index = 721
         },
         {
             Qpart = { [34885] = { 1 }, [34886] = { 1 } },
-            Coord = { x = 1946.5, y = -141.5 },
+            coord = { x = 1946.5, y = -141.5 },
             Range = 55.83,
             Zone = 542,
-            _index = 722,
+            _index = 722
         },
         {
             Done = { 34886 },
-            Coord = { x = 1930.7, y = -100.5 },
+            coord = { x = 1930.7, y = -100.5 },
             Zone = 542,
-            _index = 723,
+            _index = 723
         },
         {
             Qpart = { [34885] = { 2 } },
-            Coord = { x = 1999.5, y = -161.3 },
+            coord = { x = 1999.5, y = -161.3 },
             Range = 30,
             Zone = 542,
-            _index = 724,
+            _index = 724
         },
         {
             Qpart = { [34885] = { 1 }, [34886] = { 1 } },
-            Coord = { x = 1970.3, y = -138.6 },
+            coord = { x = 1970.3, y = -138.6 },
             Range = 30,
             Zone = 542,
-            _index = 725,
+            _index = 725
         },
         {
             Done = { 34886 },
-            Coord = { x = 1930.2, y = -100.7 },
+            coord = { x = 1930.2, y = -100.7 },
             Zone = 542,
-            _index = 726,
+            _index = 726
         },
         {
             Qpart = { [34827] = { 1 } },
-            Coord = { x = 1777.9, y = -19.8 },
+            coord = { x = 1777.9, y = -19.8 },
             Button = { ["34827-1"] = 112100 },
             Range = 0.69,
             Zone = 542,
-            _index = 727,
+            _index = 727
         },
         {
             Done = { 34827 },
-            Coord = { x = 1772, y = -20.4 },
+            coord = { x = 1772, y = -20.4 },
             Zone = 542,
-            _index = 728,
+            _index = 728
         },
         {
             PickUp = { 34828, 34829 },
-            Coord = { x = 1772, y = -20.4 },
+            coord = { x = 1772, y = -20.4 },
             Zone = 542,
-            _index = 729,
+            _index = 729
         },
         {
             PickUp = { 36425 },
-            Coord = { x = 1824.5, y = 103.9 },
+            coord = { x = 1824.5, y = 103.9 },
             Fillers = { [34829] = { 1 } },
-            _index = 730,
+            _index = 730
         },
         {
             Qpart = { [36425] = { 1 } },
-            Coord = { x = 1823.1, y = 103.4 },
+            coord = { x = 1823.1, y = 103.4 },
             Range = 30,
             Zone = 542,
-            _index = 731,
+            _index = 731
         },
         {
             Qpart = { [34828] = { 1 } },
-            Coord = { x = 1767.7, y = 233.8 },
+            coord = { x = 1767.7, y = 233.8 },
             Fillers = { [34829] = { 1 }, [36425] = { 1 } },
             Range = 0.75,
             Zone = 542,
-            _index = 732,
+            _index = 732
         },
         {
             Qpart = { [34829] = { 1 }, [36425] = { 1 } },
-            Coord = { x = 1822.3, y = 160 },
+            coord = { x = 1822.3, y = 160 },
             Range = 62.49,
             Zone = 542,
-            _index = 733,
+            _index = 733
         },
         {
             Done = { 34828, 34829 },
-            Coord = { x = 1772.2, y = -20.2 },
+            coord = { x = 1772.2, y = -20.2 },
             Zone = 542,
-            _index = 734,
+            _index = 734
         },
         {
             PickUp = { 34830 },
-            Coord = { x = 1771.4, y = -20.2 },
+            coord = { x = 1771.4, y = -20.2 },
             Zone = 542,
-            _index = 735,
+            _index = 735
         },
         {
             Qpart = { [34830] = { 1 } },
-            Coord = { x = 1983.3, y = 414.2 },
+            coord = { x = 1983.3, y = 414.2 },
             Button = { ["34830-1"] = 112099 },
             Range = 0.75,
             Zone = 542,
-            _index = 736,
+            _index = 736
         },
         {
             Done = { 34830 },
-            Coord = { x = 1985.2, y = 413.6 },
+            coord = { x = 1985.2, y = 413.6 },
             Zone = 542,
-            _index = 737,
+            _index = 737
         },
         {
             PickUp = { 34882, 34883 },
-            Coord = { x = 1985.2, y = 413.6 },
+            coord = { x = 1985.2, y = 413.6 },
             RaidIcon = 80509,
             Zone = 542,
-            _index = 738,
+            _index = 738
         },
         {
             Qpart = { [34882] = { 1 } },
-            Coord = { x = 2104.6, y = 302.5 },
+            coord = { x = 2104.6, y = 302.5 },
             Fillers = { [34883] = { 1 } },
             Range = 0.69,
             RaidIcon = 80509,
             Zone = 542,
-            _index = 739,
+            _index = 739
         },
         {
             Qpart = { [34883] = { 1 } },
-            Coord = { x = 2060.8, y = 313.2 },
+            coord = { x = 2060.8, y = 313.2 },
             Range = 30,
             Zone = 542,
-            _index = 740,
+            _index = 740
         },
         {
             Done = { 34882, 34883 },
-            Coord = { x = 1985.4, y = 413.6 },
+            coord = { x = 1985.4, y = 413.6 },
             Zone = 542,
-            _index = 741,
+            _index = 741
         },
         {
             PickUp = { 34942, 35257 },
-            Coord = { x = 1985.4, y = 413.6 },
+            coord = { x = 1985.4, y = 413.6 },
             Zone = 542,
-            _index = 742,
+            _index = 742
         },
         {
             Done = { 35257 },
-            Coord = { x = 2446.9, y = 391.2 },
+            coord = { x = 2446.9, y = 391.2 },
             Zone = 542,
-            _index = 743,
+            _index = 743
         },
         {
             PickUp = { 35258, 35260, 35259 },
-            Coord = { x = 2446.9, y = 391.2 },
+            coord = { x = 2446.9, y = 391.2 },
             Zone = 542,
-            _index = 744,
+            _index = 744
         },
         {
             Waypoint = 35259,
-            Coord = { x = 2609.3, y = 241.6 },
+            coord = { x = 2609.3, y = 241.6 },
             ExtraLineText = "INSIDE_CAVE",
             Range = 11.1,
             Zone = 542,
-            _index = 745,
+            _index = 745
         },
         {
             Waypoint = 35259,
-            Coord = { x = 2681.9, y = 273.8 },
+            coord = { x = 2681.9, y = 273.8 },
             Fillers = { [35258] = { 1 } },
             Range = 15.23,
             Zone = 542,
-            _index = 746,
+            _index = 746
         },
         {
             Qpart = { [35259] = { 1 } },
-            Coord = { x = 2695.8, y = 218.5 },
+            coord = { x = 2695.8, y = 218.5 },
             Fillers = { [35258] = { 1 } },
             Range = 0.75,
             Zone = 542,
-            _index = 747,
+            _index = 747
         },
         {
             Waypoint = 35259,
-            Coord = { x = 2612.1, y = 242.1 },
+            coord = { x = 2612.1, y = 242.1 },
             Fillers = { [35258] = { 1 } },
             Range = 13.02,
-            _index = 748,
+            _index = 748
         },
         {
             Waypoint = 35259,
-            Coord = { x = 2704.3, y = 330.8 },
+            coord = { x = 2704.3, y = 330.8 },
             Fillers = { [35258] = { 1 }, [35260] = { 1 } },
             Button = { ["35260-1"] = 113084 },
             Range = 12.04,
             Zone = 542,
-            _index = 749,
+            _index = 749
         },
         {
             Qpart = { [35259] = { 2 } },
-            Coord = { x = 2736.9, y = 347.8 },
+            coord = { x = 2736.9, y = 347.8 },
             Fillers = { [35258] = { 1 }, [35260] = { 1 } },
             Button = { ["35260-1"] = 113084 },
             Range = 0.75,
             RaidIcon = 81934,
             Zone = 542,
-            _index = 750,
+            _index = 750
         },
         {
             Done = { 35259 },
-            Coord = { x = 2746.6, y = 353.6 },
+            coord = { x = 2746.6, y = 353.6 },
             Zone = 542,
-            _index = 751,
+            _index = 751
         },
         {
             PickUp = { 35261 },
-            Coord = { x = 2746.6, y = 353.6 },
+            coord = { x = 2746.6, y = 353.6 },
             Zone = 542,
-            _index = 752,
+            _index = 752
         },
         {
             Qpart = { [35258] = { 1 }, [35260] = { 1 } },
-            Coord = { x = 2593.6, y = 313.8 },
+            coord = { x = 2593.6, y = 313.8 },
             Button = { ["35260-1"] = 113084 },
             Range = 81.79,
-            _index = 753,
+            _index = 753
         },
         {
             Qpart = { [35261] = { 1 } },
-            Coord = { x = 2654.5, y = 161 },
+            coord = { x = 2654.5, y = 161 },
             Range = 0.75,
             RaidIcon = 82145,
-            _index = 754,
+            _index = 754
         },
         {
             Done = { 35261 },
-            Coord = { x = 2530.6, y = 88.9 },
+            coord = { x = 2530.6, y = 88.9 },
             Zone = 542,
-            _index = 755,
+            _index = 755
         },
         {
             PickUp = { 35273 },
-            Coord = { x = 2530.6, y = 88.9 },
+            coord = { x = 2530.6, y = 88.9 },
             Zone = 542,
-            _index = 756,
+            _index = 756
         },
         {
             Qpart = { [35273] = { 1, 2 } },
-            Coord = { x = 2531, y = 89 },
+            coord = { x = 2531, y = 89 },
             ExtraLineText = "USE_CHAIR",
             Range = 0.75,
-            _index = 757,
+            _index = 757
         },
         {
             Done = { 35258, 35260, 35273 },
-            Coord = { x = 2444.6, y = 395.5 },
-            _index = 758,
+            coord = { x = 2444.6, y = 395.5 },
+            _index = 758
         },
         {
             PickUp = { 35634 },
-            Coord = { x = 2447.1, y = 391.9 },
+            coord = { x = 2447.1, y = 391.9 },
             Zone = 542,
-            _index = 759,
+            _index = 759
         },
         {
             Done = { 35634 },
-            Coord = { x = 1825.8, y = -469 },
+            coord = { x = 1825.8, y = -469 },
             Zone = 542,
-            _index = 760,
+            _index = 760
         },
         {
             Done = { 34942, 34884, 34885 },
-            Coord = { x = 1861, y = -498.7 },
+            coord = { x = 1861, y = -498.7 },
             Zone = 542,
-            _index = 761,
+            _index = 761
         },
         {
             PickUp = { 35733 },
-            Coord = { x = 1861, y = -498.7 },
+            coord = { x = 1861, y = -498.7 },
             Zone = 542,
-            _index = 762,
+            _index = 762
         },
         {
             Done = { 35733 },
-            Coord = { x = 1855.5, y = -505 },
+            coord = { x = 1855.5, y = -505 },
             Zone = 542,
-            _index = 763,
+            _index = 763
         },
         {
             PickUp = { 35734 },
-            Coord = { x = 1855.5, y = -505 },
+            coord = { x = 1855.5, y = -505 },
             Zone = 542,
-            _index = 764,
+            _index = 764
         },
         {
             Waypoint = 35734,
-            Coord = { x = 1855.4, y = -504.8 },
+            coord = { x = 1855.4, y = -504.8 },
             ExtraLineText = "TALK_EFFIGY",
             Range = 5,
             Gossip = 1,
             RaidIcon = 82813,
             Zone = 542,
-            _index = 765,
+            _index = 765
         },
         {
             Qpart = { [35734] = { 3 } },
-            Coord = { x = 1899, y = -1293 },
+            coord = { x = 1899, y = -1293 },
             Fillers = { [35734] = { 1, 2 } },
             Range = 10,
             RaidIcon = 82950,
             Zone = 542,
-            _index = 766,
+            _index = 766
         },
         {
             Qpart = { [35734] = { 1, 2 } },
-            Coord = { x = 1771.7, y = -1562.5 },
+            coord = { x = 1771.7, y = -1562.5 },
             Range = 298,
             Zone = 542,
-            _index = 767,
+            _index = 767
         },
         {
             Done = { 35734 },
-            Coord = { x = 1863.9, y = -501 },
+            coord = { x = 1863.9, y = -501 },
             Zone = 542,
-            _index = 768,
+            _index = 768
         },
         {
             PickUp = { 34898 },
-            Coord = { x = 1881.4, y = -462.4 },
+            coord = { x = 1881.4, y = -462.4 },
             Zone = 542,
-            _index = 769,
+            _index = 769
         },
         {
             Done = { 35549, 37329 },
-            Coord = { x = 2263.3, y = -1074.9 },
+            coord = { x = 2263.3, y = -1074.9 },
             Zone = 542,
-            _index = 770,
+            _index = 770
         },
         {
             Done = { 35619 },
-            Coord = { x = 955.8, y = -1563.1 },
+            coord = { x = 955.8, y = -1563.1 },
             Zone = 542,
-            _index = 771,
+            _index = 771
         },
         {
             PickUp = { 35077, 35079 },
-            Coord = { x = 955.8, y = -1563.1 },
+            coord = { x = 955.8, y = -1563.1 },
             Zone = 542,
-            _index = 772,
+            _index = 772
         },
         {
             PickUp = { 36179 },
-            Coord = { x = 889.7, y = -1601.9 },
+            coord = { x = 889.7, y = -1601.9 },
             Zone = 542,
-            _index = 773,
+            _index = 773
         },
         {
             Qpart = { [35077] = { 1 }, [35079] = { 1 }, [36179] = { 1 } },
-            Coord = { x = 822.7, y = -1663.5 },
+            coord = { x = 822.7, y = -1663.5 },
             Button = { ["35077-1"] = 112683 },
             Range = 64.02,
             Zone = 542,
-            _index = 774,
+            _index = 774
         },
         {
             Done = { 36179, 35079, 35077 },
-            Coord = { x = 955.8, y = -1563.1 },
+            coord = { x = 955.8, y = -1563.1 },
             Zone = 542,
-            _index = 775,
+            _index = 775
         },
         {
             PickUp = { 35080 },
-            Coord = { x = 955.8, y = -1563.1 },
+            coord = { x = 955.8, y = -1563.1 },
             Zone = 542,
-            _index = 776,
+            _index = 776
         },
         {
             Qpart = { [35080] = { 1 } },
-            Coord = { x = 1099, y = -1814.3 },
+            coord = { x = 1099, y = -1814.3 },
             Range = 0.61,
             Zone = 542,
-            _index = 777,
+            _index = 777
         },
         {
             Done = { 35080 },
-            Coord = { x = 1099, y = -1814.3 },
+            coord = { x = 1099, y = -1814.3 },
             Zone = 542,
-            _index = 778,
+            _index = 778
         },
         {
             PickUp = { 35082, 35081 },
-            Coord = { x = 1098.5, y = -1814.9 },
+            coord = { x = 1098.5, y = -1814.9 },
             Zone = 542,
-            _index = 779,
+            _index = 779
         },
         {
             Qpart = { [35081] = { 1 }, [35082] = { 1 } },
-            Coord = { x = 1067.7, y = -1901.8 },
+            coord = { x = 1067.7, y = -1901.8 },
             Range = 90.61,
-            _index = 780,
+            _index = 780
         },
         {
             Done = { 35082, 35081 },
-            Coord = { x = 1098.2, y = -1815.7 },
+            coord = { x = 1098.2, y = -1815.7 },
             Zone = 542,
-            _index = 781,
+            _index = 781
         },
         {
             PickUp = { 35285 },
-            Coord = { x = 1098.2, y = -1815.7 },
+            coord = { x = 1098.2, y = -1815.7 },
             Zone = 542,
-            _index = 782,
+            _index = 782
         },
         {
             Done = { 35285 },
-            Coord = { x = 1137.1, y = -2346.4 },
+            coord = { x = 1137.1, y = -2346.4 },
             Zone = 542,
-            _index = 783,
+            _index = 783
         },
         {
             PickUp = { 35090, 35089, 36384 },
-            Coord = { x = 1137.1, y = -2346.4 },
+            coord = { x = 1137.1, y = -2346.4 },
             Zone = 542,
-            _index = 784,
+            _index = 784
         },
         {
             Qpart = { [35089] = { 1 }, [35090] = { 1 } },
-            Coord = { x = 1100.5, y = -2217.5 },
+            coord = { x = 1100.5, y = -2217.5 },
             Button = { ["35090-1"] = 112698 },
             Range = 78.54,
             Zone = 542,
-            _index = 785,
+            _index = 785
         },
         {
             Qpart = { [36384] = { 1 } },
-            Coord = { x = 1160.5, y = -2153.7 },
+            coord = { x = 1160.5, y = -2153.7 },
             Button = { ["36384-1"] = 115475 },
             Range = 56.68,
             RaidIcon = 81183,
             Zone = 542,
-            _index = 786,
+            _index = 786
         },
         {
             Done = { 36384 },
-            Coord = { x = 1136.6, y = -2341 },
+            coord = { x = 1136.6, y = -2341 },
             Zone = 542,
-            _index = 787,
+            _index = 787
         },
         {
             Done = { 35089, 35090 },
-            Coord = { x = 1116.5, y = -2367 },
+            coord = { x = 1116.5, y = -2367 },
             Zone = 542,
-            _index = 788,
+            _index = 788
         },
         {
             PickUp = { 35091 },
-            Coord = { x = 1116.5, y = -2367 },
+            coord = { x = 1116.5, y = -2367 },
             Zone = 542,
-            _index = 789,
+            _index = 789
         },
         {
             PickUp = { 35211, 36428 },
-            Coord = { x = 1136.7, y = -2341.3 },
+            coord = { x = 1136.7, y = -2341.3 },
             Zone = 542,
-            _index = 790,
+            _index = 790
         },
         {
             Qpart = { [35211] = { 1 }, [36428] = { 1 } },
-            Coord = { x = 1277.7, y = -2286.7 },
+            coord = { x = 1277.7, y = -2286.7 },
             Fillers = { [35091] = { 1 } },
             Button = { ["36428-1"] = 115533 },
             Range = 45.6,
             Zone = 542,
-            _index = 791,
+            _index = 791
         },
         {
             Qpart = { [35091] = { 1 } },
-            Coord = { x = 1227.8, y = -2406.5 },
+            coord = { x = 1227.8, y = -2406.5 },
             Range = 50.12,
             Zone = 542,
-            _index = 792,
+            _index = 792
         },
         {
             Done = { 35211, 36428 },
-            Coord = { x = 1136.8, y = -2341.3 },
+            coord = { x = 1136.8, y = -2341.3 },
             Zone = 542,
-            _index = 793,
+            _index = 793
         },
         {
             Done = { 35091 },
-            Coord = { x = 1116.5, y = -2367 },
+            coord = { x = 1116.5, y = -2367 },
             Zone = 542,
-            _index = 794,
+            _index = 794
         },
         {
             PickUp = { 35298 },
-            Coord = { x = 1136.3, y = -2341.4 },
+            coord = { x = 1136.3, y = -2341.4 },
             Zone = 542,
-            _index = 795,
+            _index = 795
         },
         {
             Qpart = { [35298] = { 1 } },
-            Coord = { x = 1135.6, y = -2342.5 },
+            coord = { x = 1135.6, y = -2342.5 },
             Range = 0.75,
             Zone = 542,
-            _index = 796,
+            _index = 796
         },
         {
             Qpart = { [35298] = { 2 } },
-            Coord = { x = 1114, y = -2366.9 },
+            coord = { x = 1114, y = -2366.9 },
             Range = 0.69,
             Zone = 542,
-            _index = 797,
+            _index = 797
         },
         {
             Done = { 35298 },
-            Coord = { x = 948.2, y = -1559.3 },
+            coord = { x = 948.2, y = -1559.3 },
             Zone = 542,
-            _index = 798,
+            _index = 798
         },
         {
             Qpart = { [35675] = { 1 } },
-            Coord = { x = 1448.2, y = -1416.5 },
+            coord = { x = 1448.2, y = -1416.5 },
             Range = 0.69,
             RaidIcon = 82632,
             Zone = 542,
-            _index = 799,
+            _index = 799
         },
         {
             Qpart = { [35674] = { 1 } },
-            Coord = { x = 1635.5, y = -1784.6 },
+            coord = { x = 1635.5, y = -1784.6 },
             Range = 0.69,
             RaidIcon = 85892,
             Zone = 542,
-            _index = 800,
+            _index = 800
         },
         {
             Qpart = { [36660] = { 5 } },
-            Coord = { x = 1620.4, y = -1730.3 },
+            coord = { x = 1620.4, y = -1730.3 },
             Fillers = { [36660] = { 1, 2 } },
             Range = 0.69,
             RaidIcon = 86138,
             Zone = 542,
-            _index = 801,
+            _index = 801
         },
         {
             Qpart = { [36660] = { 4 } },
-            Coord = { x = 1693, y = -1449 },
+            coord = { x = 1693, y = -1449 },
             Fillers = { [36660] = { 1, 2 } },
             Range = 0.75,
             RaidIcon = 86135,
             Zone = 542,
-            _index = 802,
+            _index = 802
         },
         {
             Qpart = { [36660] = { 3 } },
-            Coord = { x = 1947.4, y = -1244 },
+            coord = { x = 1947.4, y = -1244 },
             Fillers = { [36660] = { 1, 2 } },
             Range = 0.75,
             RaidIcon = 85892,
             Zone = 542,
-            _index = 803,
+            _index = 803
         },
         {
             Qpart = { [36660] = { 1, 2 } },
-            Coord = { x = 1947.4, y = -1244 },
+            coord = { x = 1947.4, y = -1244 },
             Range = 150.75,
             Zone = 542,
-            _index = 804,
+            _index = 804
         },
         {
             Done = { 36660 },
-            Coord = { x = 1753.4, y = -1620.4 },
+            coord = { x = 1753.4, y = -1620.4 },
             Zone = 542,
-            _index = 805,
+            _index = 805
         },
         {
             Done = { 35674 },
-            Coord = { x = 2265.4, y = -1074.5 },
+            coord = { x = 2265.4, y = -1074.5 },
             Zone = 542,
-            _index = 806,
+            _index = 806
         },
         {
             Done = { 35675 },
-            Coord = { x = 2296.5, y = -1033.5 },
+            coord = { x = 2296.5, y = -1033.5 },
             Zone = 542,
-            _index = 807,
+            _index = 807
         },
         {
             RouteCompleted = 1,
-            _index = 808,
-        },
+            _index = 808
+        }
     }
 end

@@ -1,0 +1,42 @@
+name: Lua syntax check
+
+on:
+  push:
+    branches: [ "dev", "Test-Update", "main", "master" ]
+  pull_request:
+    paths: [ "**/*.lua" ]
+
+jobs:
+  lua-syntax:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Lua
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y lua5.3
+
+      - name: Find and syntax-check .lua files
+        run: |
+          set -e
+          shopt -s globstar || true
+          files=$(git ls-files '*.lua')
+          if [ -z "$files" ]; then
+            echo "No lua files found"
+            exit 0
+          fi
+          echo "Checking $files"
+          fail=0
+          for f in $files; do
+            echo "-- lua -p $f"
+            if ! lua -p "$f" >/dev/null 2>&1; then
+              echo "Syntax error in $f"
+              fail=1
+            fi
+          done
+          if [ "$fail" -ne 0 ]; then
+            echo "Lua syntax check failed"
+            exit 1
+          fi

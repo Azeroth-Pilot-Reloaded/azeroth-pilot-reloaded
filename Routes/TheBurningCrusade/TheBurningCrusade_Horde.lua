@@ -2,816 +2,816 @@ if APR.Faction == "Horde" then
     APR.RouteQuestStepList["467-BloodElf-intro"] = {
         {
             PickUp = { 8325 },
-            Coord = { x = -6359, y = 10352.2 },
-            _index = 1,
+            coord = { x = -6359, y = 10352.2 },
+            _index = 1
         },
         {
             Qpart = { [8325] = { 1 } },
-            Coord = { x = -6203.1, y = 10382.1 },
+            coord = { x = -6203.1, y = 10382.1 },
             Range = 66.61,
-            _index = 2,
+            _index = 2
         },
         {
             Done = { 8325 },
-            Coord = { x = -6359.5, y = 10352.6 },
-            _index = 3,
+            coord = { x = -6359.5, y = 10352.6 },
+            _index = 3
         },
         {
             PickUp = { 8326 },
-            Coord = { x = -6359.5, y = 10352.6 },
-            _index = 4,
+            coord = { x = -6359.5, y = 10352.6 },
+            _index = 4
         },
         {
             Waypoint = 8326,
-            Coord = { x = -6385.3, y = 10388.5 },
+            coord = { x = -6385.3, y = 10388.5 },
             Range = 16.4,
-            _index = 5,
+            _index = 5
         },
         {
             Qpart = { [8326] = { 1 } },
-            Coord = { x = -6462.2, y = 10453.6 },
+            coord = { x = -6462.2, y = 10453.6 },
             Range = 45.33,
-            _index = 6,
+            _index = 6
         },
         {
             Done = { 8326 },
-            Coord = { x = -6359.9, y = 10352.5 },
-            _index = 7,
+            coord = { x = -6359.9, y = 10352.5 },
+            _index = 7
         },
         {
             PickUp = { 8327 },
-            Coord = { x = -6359.9, y = 10352.5 },
-            _index = 8,
+            coord = { x = -6359.9, y = 10352.5 },
+            _index = 8
         },
         {
             PickUp = { 37442, 37443 },
-            Coord = { x = -6405.9, y = 10377.2 },
-            _index = 9,
+            coord = { x = -6405.9, y = 10377.2 },
+            _index = 9
         },
         {
             PickUp = { 37440 },
-            Coord = { x = -6372.3, y = 10414 },
-            _index = 10,
+            coord = { x = -6372.3, y = 10414 },
+            _index = 10
         },
         {
             PickUp = { 37439 },
-            Coord = { x = -6317.9, y = 10420.2 },
-            _index = 11,
+            coord = { x = -6317.9, y = 10420.2 },
+            _index = 11
         },
         {
             Done = { 8327 },
-            Coord = { x = -6228.9, y = 10302.4 },
+            coord = { x = -6228.9, y = 10302.4 },
             Fillers = { [37439] = { 1 } },
             SpellButton = { ["37439-1"] = 28730 },
-            _index = 12,
+            _index = 12
         },
         {
             PickUp = { 8334 },
-            Coord = { x = -6228.9, y = 10302.4 },
-            _index = 13,
+            coord = { x = -6228.9, y = 10302.4 },
+            _index = 13
         },
         {
             Qpart = { [37439] = { 1 } },
-            Coord = { x = -6270.3, y = 10333.5 },
+            coord = { x = -6270.3, y = 10333.5 },
             Fillers = { [37440] = { 1 } },
             SpellButton = { ["37439-1"] = 28730 },
             Range = 48.9,
-            _index = 14,
+            _index = 14
         },
         {
             Done = { 37439 },
-            Coord = { x = -6317.7, y = 10419.2 },
+            coord = { x = -6317.7, y = 10419.2 },
             Fillers = { [37440] = { 1 } },
-            _index = 15,
+            _index = 15
         },
         {
             Qpart = { [37443] = { 3 } },
-            Coord = { x = -6343, y = 10224.7 },
+            coord = { x = -6343, y = 10224.7 },
             Fillers = { [37440] = { 1 } },
             Range = 0.75,
-            _index = 16,
+            _index = 16
         },
         {
             Qpart = { [37443] = { 1 } },
-            Coord = { x = -6217.2, y = 10093.2 },
+            coord = { x = -6217.2, y = 10093.2 },
             Fillers = { [8334] = { 1, 2 }, [37440] = { 1 } },
             Range = 0.69,
-            _index = 17,
+            _index = 17
         },
         {
             Qpart = { [37443] = { 2 } },
-            Coord = { x = -6029.9, y = 10295.2 },
+            coord = { x = -6029.9, y = 10295.2 },
             Fillers = { [8334] = { 1, 2 } },
             Range = 0.69,
-            _index = 18,
+            _index = 18
         },
         {
             Qpart = { [37442] = { 1 } },
-            Coord = { x = -5946.7, y = 10404.7 },
+            coord = { x = -5946.7, y = 10404.7 },
             Fillers = { [8334] = { 1, 2 } },
             Range = 0.69,
-            _index = 19,
+            _index = 19
         },
         {
             Qpart = { [8334] = { 1, 2 } },
-            Coord = { x = -6009.7, y = 10309.6 },
+            coord = { x = -6009.7, y = 10309.6 },
             Range = 44.84,
-            _index = 20,
+            _index = 20
         },
         {
             Qpart = { [37440] = { 1 } },
-            Coord = { x = -6156.5, y = 10336.1 },
+            coord = { x = -6156.5, y = 10336.1 },
             Range = 45.26,
-            _index = 21,
+            _index = 21
         },
         {
             Done = { 8334 },
-            Coord = { x = -6229.4, y = 10302.9 },
-            _index = 22,
+            coord = { x = -6229.4, y = 10302.9 },
+            _index = 22
         },
         {
             PickUp = { 8335 },
-            Coord = { x = -6228.8, y = 10302.9 },
-            _index = 23,
+            coord = { x = -6228.8, y = 10302.9 },
+            _index = 23
         },
         {
             Waypoint = 37442,
-            Coord = { x = -6386.9, y = 10353.2 },
+            coord = { x = -6386.9, y = 10353.2 },
             Range = 16.57,
-            _index = 24,
+            _index = 24
         },
         {
             Done = { 37442, 37443 },
-            Coord = { x = -6405.8, y = 10377.4 },
-            _index = 25,
+            coord = { x = -6405.8, y = 10377.4 },
+            _index = 25
         },
         {
             Done = { 37440 },
-            Coord = { x = -6371.8, y = 10414.4 },
-            _index = 26,
+            coord = { x = -6371.8, y = 10414.4 },
+            _index = 26
         },
         {
             Waypoint = 8335,
-            Coord = { x = -6096.3, y = 10206.7 },
+            coord = { x = -6096.3, y = 10206.7 },
             Range = 11.29,
-            _index = 27,
+            _index = 27
         },
         {
             Qpart = { [8335] = { 1, 3, 2 } },
-            Coord = { x = -6005.5, y = 10151.4 },
+            coord = { x = -6005.5, y = 10151.4 },
             ExtraLineText = "UPTOP",
             Range = 0.75,
             RaidIcon = 15367,
-            _index = 28,
+            _index = 28
         },
         {
             DropQuest = 8338,
             DroppableQuest = { MobId = 15298, Qid = 8338, Text = "Tainted Arcane Wraith" },
-            Coord = { x = -6003.8, y = 10140.6 },
-            _index = 29,
+            coord = { x = -6003.8, y = 10140.6 },
+            _index = 29
         },
         {
             Done = { 8335 },
-            Coord = { x = -6228.8, y = 10302.7 },
-            _index = 30,
+            coord = { x = -6228.8, y = 10302.7 },
+            _index = 30
         },
         {
             PickUp = { 8347 },
-            Coord = { x = -6228.8, y = 10302.7 },
-            _index = 31,
+            coord = { x = -6228.8, y = 10302.7 },
+            _index = 31
         },
         {
             Done = { 8338 },
-            Coord = { x = -6318.2, y = 10420.2 },
-            _index = 32,
+            coord = { x = -6318.2, y = 10420.2 },
+            _index = 32
         },
         {
             Done = { 8347 },
-            Coord = { x = -6477.9, y = 9984.5 },
-            _index = 33,
+            coord = { x = -6477.9, y = 9984.5 },
+            _index = 33
         },
         {
             PickUp = { 9704 },
-            Coord = { x = -6477.9, y = 9984.5 },
-            _index = 34,
+            coord = { x = -6477.9, y = 9984.5 },
+            _index = 34
         },
         {
             Done = { 9704 },
-            Coord = { x = -6557.4, y = 9871.6 },
-            _index = 35,
+            coord = { x = -6557.4, y = 9871.6 },
+            _index = 35
         },
         {
             PickUp = { 9705 },
-            Coord = { x = -6557.4, y = 9871.6 },
-            _index = 36,
+            coord = { x = -6557.4, y = 9871.6 },
+            _index = 36
         },
         {
             Done = { 9705 },
-            Coord = { x = -6477.7, y = 9984.6 },
-            _index = 37,
+            coord = { x = -6477.7, y = 9984.6 },
+            _index = 37
         },
         {
             PickUp = { 8350 },
-            Coord = { x = -6477.7, y = 9984.6 },
-            _index = 38,
+            coord = { x = -6477.7, y = 9984.6 },
+            _index = 38
         },
         {
             GetFP = 631,
-            Coord = { x = -6790.8, y = 9501 },
+            coord = { x = -6790.8, y = 9501 },
             Zone = 94,
-            _index = 39,
+            _index = 39
         },
         {
             Done = { 8350 },
-            Coord = { x = -6858.2, y = 9477.1 },
-            _index = 40,
+            coord = { x = -6858.2, y = 9477.1 },
+            _index = 40
         },
         {
             Waypoint = 1,
-            Coord = { x = -6844.6, y = 9473.5 },
+            coord = { x = -6844.6, y = 9473.5 },
             Range = 5,
             Zone = 94,
-            _index = 41,
+            _index = 41
         },
         {
             Waypoint = 1,
-            Coord = { x = -6838.8, y = 9490.4 },
+            coord = { x = -6838.8, y = 9490.4 },
             Range = 5,
             Zone = 94,
-            _index = 42,
+            _index = 42
         },
         {
             PickUp = { 8463 },
-            Coord = { x = -6859.8, y = 9530.9 },
+            coord = { x = -6859.8, y = 9530.9 },
             Zone = 94,
-            _index = 43,
+            _index = 43
         },
         {
             PickUp = { 8468 },
-            Coord = { x = -6858.5, y = 9522.9 },
+            coord = { x = -6858.5, y = 9522.9 },
             Zone = 94,
-            _index = 44,
+            _index = 44
         },
         {
             PickUp = { 8472 },
-            Coord = { x = -6814.9, y = 9520.5 },
+            coord = { x = -6814.9, y = 9520.5 },
             Zone = 94,
-            _index = 45,
+            _index = 45
         },
         {
             Qpart = { [8468] = { 1 } },
-            Coord = { x = -6706.7, y = 9803.5 },
+            coord = { x = -6706.7, y = 9803.5 },
             Fillers = { [8463] = { 1 }, [8472] = { 1 } },
             Range = 30,
             Zone = 94,
-            _index = 46,
+            _index = 46
         },
         {
             Qpart = { [8463] = { 1 }, [8472] = { 1 } },
-            Coord = { x = -6784.9, y = 9705.6 },
+            coord = { x = -6784.9, y = 9705.6 },
             Range = 69,
             Zone = 94,
-            _index = 47,
+            _index = 47
         },
         {
             Done = { 8472 },
-            Coord = { x = -6811.9, y = 9522.5 },
+            coord = { x = -6811.9, y = 9522.5 },
             Zone = 94,
-            _index = 48,
+            _index = 48
         },
         {
             PickUp = { 8895 },
-            Coord = { x = -6811.9, y = 9522.5 },
+            coord = { x = -6811.9, y = 9522.5 },
             Zone = 94,
-            _index = 49,
+            _index = 49
         },
         {
             Done = { 8463 },
-            Coord = { x = -6857.2, y = 9529.9 },
+            coord = { x = -6857.2, y = 9529.9 },
             Zone = 94,
-            _index = 50,
+            _index = 50
         },
         {
             PickUp = { 9352 },
-            Coord = { x = -6857.2, y = 9529.9 },
+            coord = { x = -6857.2, y = 9529.9 },
             Zone = 94,
-            _index = 51,
+            _index = 51
         },
         {
             Done = { 8468 },
-            Coord = { x = -6841.4, y = 9513.4 },
+            coord = { x = -6841.4, y = 9513.4 },
             Zone = 94,
-            _index = 52,
+            _index = 52
         },
         {
             Waypoint = 9352,
-            Coord = { x = -6781.2, y = 9467.5 },
+            coord = { x = -6781.2, y = 9467.5 },
             Range = 5,
             Zone = 94,
-            _index = 53,
+            _index = 53
         },
         {
             PickUp = { 8475 },
-            Coord = { x = -6964.1, y = 9374.2 },
+            coord = { x = -6964.1, y = 9374.2 },
             RaidIcon = 15654,
             Zone = 94,
-            _index = 54,
+            _index = 54
         },
         {
             Qpart = { [8475] = { 1 } },
-            Coord = { x = -6970.7, y = 9262.9 },
+            coord = { x = -6970.7, y = 9262.9 },
             Range = 30,
             RaidIcon = 15416,
             Zone = 94,
-            _index = 55,
+            _index = 55
         },
         {
             Done = { 8475 },
-            Coord = { x = -6967, y = 9373.1 },
+            coord = { x = -6967, y = 9373.1 },
             RaidIcon = 15405,
             Zone = 94,
-            _index = 56,
+            _index = 56
         },
         {
             Done = { 8895 },
-            Coord = { x = -6687.1, y = 9296.7 },
+            coord = { x = -6687.1, y = 9296.7 },
             Zone = 94,
-            _index = 57,
+            _index = 57
         },
         {
             PickUp = { 9119 },
-            Coord = { x = -6687.1, y = 9296.7 },
+            coord = { x = -6687.1, y = 9296.7 },
             Zone = 94,
-            _index = 58,
+            _index = 58
         },
         {
             Waypoint = 9119,
-            Coord = { x = -6554.2, y = 9227.7 },
+            coord = { x = -6554.2, y = 9227.7 },
             Range = 5,
             Zone = 94,
-            _index = 59,
+            _index = 59
         },
         {
             Waypoint = 9119,
-            Coord = { x = -6422.1, y = 9185 },
+            coord = { x = -6422.1, y = 9185 },
             Range = 5,
             RaidIcon = 15401,
             Zone = 94,
-            _index = 60,
+            _index = 60
         },
         {
             Done = { 9119 },
-            Coord = { x = -6297, y = 9156.1 },
+            coord = { x = -6297, y = 9156.1 },
             Zone = 94,
-            _index = 61,
+            _index = 61
         },
         {
             PickUp = { 8486 },
-            Coord = { x = -6297, y = 9156.1 },
+            coord = { x = -6297, y = 9156.1 },
             RaidIcon = 15648,
             Zone = 94,
-            _index = 62,
+            _index = 62
         },
         {
             Qpart = { [9352] = { 1 } },
-            Coord = { x = -6171.6, y = 9060.6 },
+            coord = { x = -6171.6, y = 9060.6 },
             Fillers = { [8486] = { 1, 2 } },
             Range = 30,
             Zone = 94,
-            _index = 63,
+            _index = 63
         },
         {
             PickUp = { 8482 },
-            Coord = { x = -6171.6, y = 9060.6 },
+            coord = { x = -6171.6, y = 9060.6 },
             Zone = 94,
-            _index = 64,
+            _index = 64
         },
         {
             Qpart = { [8486] = { 1, 2 } },
-            Coord = { x = -6209.2, y = 9068.6 },
+            coord = { x = -6209.2, y = 9068.6 },
             Range = 30,
             RaidIcon = 15401,
             Zone = 94,
-            _index = 65,
+            _index = 65
         },
         {
             Done = { 8486, 9352 },
-            Coord = { x = -6293.1, y = 9153 },
+            coord = { x = -6293.1, y = 9153 },
             Zone = 94,
-            _index = 66,
+            _index = 66
         },
         {
             Waypoint = 8482,
-            Coord = { x = -6367.2, y = 9177 },
+            coord = { x = -6367.2, y = 9177 },
             Range = 5,
             Zone = 94,
-            _index = 67,
+            _index = 67
         },
         {
             Waypoint = 8482,
-            Coord = { x = -6418.8, y = 9182.7 },
+            coord = { x = -6418.8, y = 9182.7 },
             Range = 5,
             Zone = 94,
-            _index = 68,
+            _index = 68
         },
         {
             Waypoint = 8482,
-            Coord = { x = -6473, y = 9159.8 },
+            coord = { x = -6473, y = 9159.8 },
             Range = 5,
             Zone = 94,
-            _index = 69,
+            _index = 69
         },
         {
             Waypoint = 8482,
-            Coord = { x = -6678.3, y = 8968.1 },
+            coord = { x = -6678.3, y = 8968.1 },
             Range = 5,
             RaidIcon = 16210,
             Zone = 94,
-            _index = 70,
+            _index = 70
         },
         {
             PickUp = { 9254 },
-            Coord = { x = -6657.7, y = 8719.4 },
+            coord = { x = -6657.7, y = 8719.4 },
             RaidIcon = 15397,
             Zone = 94,
-            _index = 71,
+            _index = 71
         },
         {
             PickUp = { 9358 },
-            Coord = { x = -6640.2, y = 8702.4 },
+            coord = { x = -6640.2, y = 8702.4 },
             RaidIcon = 16261,
             Zone = 94,
-            _index = 72,
+            _index = 72
         },
         {
             PickUp = { 9130 },
-            Coord = { x = -6639.4, y = 8694.2 },
+            coord = { x = -6639.4, y = 8694.2 },
             Zone = 94,
-            _index = 73,
+            _index = 73
         },
         {
             Done = { 9130 },
-            Coord = { x = -6654.1, y = 8743.8 },
+            coord = { x = -6654.1, y = 8743.8 },
             Zone = 94,
-            _index = 74,
+            _index = 74
         },
         {
             PickUp = { 9133 },
-            Coord = { x = -6654.1, y = 8743.8 },
+            coord = { x = -6654.1, y = 8743.8 },
             RaidIcon = 15942,
             Zone = 94,
-            _index = 75,
+            _index = 75
         },
         {
             Done = { 9358 },
-            Coord = { x = -6797.6, y = 8685.7 },
+            coord = { x = -6797.6, y = 8685.7 },
             Zone = 94,
-            _index = 76,
+            _index = 76
         },
         {
             PickUp = { 9252 },
-            Coord = { x = -6797.6, y = 8685.7 },
+            coord = { x = -6797.6, y = 8685.7 },
             RaidIcon = 15658,
             Zone = 94,
-            _index = 77,
+            _index = 77
         },
         {
             Done = { 9254 },
-            Coord = { x = -7161, y = 8710.7 },
+            coord = { x = -7161, y = 8710.7 },
             Fillers = { [9252] = { 1 } },
             Zone = 94,
-            _index = 78,
+            _index = 78
         },
         {
             PickUp = { 8487 },
-            Coord = { x = -7160.4, y = 8709.9 },
+            coord = { x = -7160.4, y = 8709.9 },
             Zone = 94,
-            _index = 79,
+            _index = 79
         },
         {
             Qpart = { [8487] = { 1 }, [9252] = { 1 } },
             Range = 60,
             RaidIcon = 15402,
             Zone = 94,
-            _index = 80,
+            _index = 80
         },
         {
             Done = { 8487 },
-            Coord = { x = -7159.6, y = 8708.7 },
+            coord = { x = -7159.6, y = 8708.7 },
             RaidIcon = 15402,
             Zone = 94,
-            _index = 81,
+            _index = 81
         },
         {
             PickUp = { 8488 },
-            Coord = { x = -7159.6, y = 8708.7 },
+            coord = { x = -7159.6, y = 8708.7 },
             Zone = 94,
-            _index = 82,
+            _index = 82
         },
         {
             Qpart = { [8488] = { 1 } },
-            Coord = { x = -7161.2, y = 8711.1 },
+            coord = { x = -7161.2, y = 8711.1 },
             GossipOptionIDs = { 46851 },
             Range = 30,
             RaidIcon = 15402,
             Zone = 94,
-            _index = 83,
+            _index = 83
         },
         {
             Qpart = { [8488] = { 2 } },
-            Coord = { x = -7134.7, y = 8747 },
+            coord = { x = -7134.7, y = 8747 },
             Range = 30,
             RaidIcon = 15402,
             Zone = 94,
-            _index = 84,
+            _index = 84
         },
         {
             Done = { 8488 },
-            Coord = { x = -7160.2, y = 8710.7 },
+            coord = { x = -7160.2, y = 8710.7 },
             Zone = 94,
-            _index = 85,
+            _index = 85
         },
         {
             PickUp = { 9255 },
-            Coord = { x = -7160.2, y = 8710.7 },
+            coord = { x = -7160.2, y = 8710.7 },
             Zone = 94,
-            _index = 86,
+            _index = 86
         },
         {
             Qpart = { [9252] = { 2 } },
-            Coord = { x = -6991.7, y = 8461.3 },
+            coord = { x = -6991.7, y = 8461.3 },
             Range = 30,
             RaidIcon = 15942,
             Zone = 94,
-            _index = 87,
+            _index = 87
         },
         {
             Done = { 9252 },
-            Coord = { x = -6798.5, y = 8683.3 },
+            coord = { x = -6798.5, y = 8683.3 },
             Zone = 94,
-            _index = 88,
+            _index = 88
         },
         {
             Done = { 9255 },
-            Coord = { x = -6658.2, y = 8719.1 },
+            coord = { x = -6658.2, y = 8719.1 },
             Zone = 94,
-            _index = 89,
+            _index = 89
         },
         {
             GetFP = 625,
-            Coord = { x = -6657.4, y = 8743.6 },
+            coord = { x = -6657.4, y = 8743.6 },
             RaidIcon = 15403,
             Zone = 94,
-            _index = 90,
+            _index = 90
         },
         {
             UseFlightPath = 8482,
             NodeID = 631,
-            Coord = { x = -6657.4, y = 8743.6 },
+            coord = { x = -6657.4, y = 8743.6 },
             ETA = 48,
             Zone = 94,
-            _index = 91,
+            _index = 91
         },
         {
             Done = { 8482 },
-            Coord = { x = -6857.9, y = 9531 },
+            coord = { x = -6857.9, y = 9531 },
             Zone = 94,
-            _index = 92,
+            _index = 92
         },
         {
             UseFlightPath = 9133,
             NodeID = 82,
-            Coord = { x = -6653.2, y = 8745.6 },
+            coord = { x = -6653.2, y = 8745.6 },
             ETA = 15,
             Zone = 94,
-            _index = 93,
+            _index = 93
         },
         {
             Waypoint = 9133,
-            Coord = { x = -7263.2, y = 9376.7 },
+            coord = { x = -7263.2, y = 9376.7 },
             Range = 5,
             Zone = 94,
-            _index = 94,
+            _index = 94
         },
         {
             Waypoint = 9133,
-            Coord = { x = -7275, y = 9417.3 },
+            coord = { x = -7275, y = 9417.3 },
             Range = 5,
             Zone = 94,
-            _index = 95,
+            _index = 95
         },
         {
             Waypoint = 9133,
-            Coord = { x = -7256.4, y = 9421.7 },
+            coord = { x = -7256.4, y = 9421.7 },
             Range = 5,
             Zone = 94,
-            _index = 96,
+            _index = 96
         },
         {
             Waypoint = 9133,
-            Coord = { x = -7256.3, y = 9458 },
+            coord = { x = -7256.3, y = 9458 },
             Range = 5,
             Zone = 110,
-            _index = 97,
+            _index = 97
         },
         {
             Waypoint = 9133,
-            Coord = { x = -7277.9, y = 9465.7 },
+            coord = { x = -7277.9, y = 9465.7 },
             Range = 5,
             Zone = 110,
-            _index = 98,
+            _index = 98
         },
         {
             Waypoint = 9133,
-            Coord = { x = -7242.9, y = 9531.8 },
+            coord = { x = -7242.9, y = 9531.8 },
             Range = 5,
             Zone = 110,
-            _index = 99,
+            _index = 99
         },
         {
             Waypoint = 9133,
-            Coord = { x = -7228.5, y = 9555.9 },
+            coord = { x = -7228.5, y = 9555.9 },
             Range = 5,
             Zone = 110,
-            _index = 100,
+            _index = 100
         },
         {
             Waypoint = 9133,
-            Coord = { x = -7195.4, y = 9568.7 },
+            coord = { x = -7195.4, y = 9568.7 },
             Range = 5,
             Zone = 110,
-            _index = 101,
+            _index = 101
         },
         {
             Done = { 9133 },
-            Coord = { x = -7054.8, y = 9580.3 },
+            coord = { x = -7054.8, y = 9580.3 },
             Zone = 110,
-            _index = 102,
+            _index = 102
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7210.9, y = 9677.2 },
+            coord = { x = -7210.9, y = 9677.2 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 103,
+            _index = 103
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7219.6, y = 9699.3 },
+            coord = { x = -7219.6, y = 9699.3 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 104,
+            _index = 104
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7234.8, y = 9679.1 },
+            coord = { x = -7234.8, y = 9679.1 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 105,
+            _index = 105
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7291, y = 9678.1 },
+            coord = { x = -7291, y = 9678.1 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 106,
+            _index = 106
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7301.5, y = 9698.6 },
+            coord = { x = -7301.5, y = 9698.6 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 107,
+            _index = 107
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7317.5, y = 9678 },
+            coord = { x = -7317.5, y = 9678 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 108,
+            _index = 108
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7319.8, y = 9733.4 },
+            coord = { x = -7319.8, y = 9733.4 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 109,
+            _index = 109
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7265.4, y = 9844.1 },
+            coord = { x = -7265.4, y = 9844.1 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 110,
+            _index = 110
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7231.3, y = 9872.7 },
+            coord = { x = -7231.3, y = 9872.7 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 111,
+            _index = 111
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7231.2, y = 9891.5 },
+            coord = { x = -7231.2, y = 9891.5 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 112,
+            _index = 112
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7175.5, y = 9892.3 },
+            coord = { x = -7175.5, y = 9892.3 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 113,
+            _index = 113
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7095.9, y = 9957 },
+            coord = { x = -7095.9, y = 9957 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 114,
+            _index = 114
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7093.3, y = 9981.3 },
+            coord = { x = -7093.3, y = 9981.3 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 115,
+            _index = 115
         },
         {
             Waypoint = 9134,
-            Coord = { x = -7110.1, y = 10003.4 },
+            coord = { x = -7110.1, y = 10003.4 },
             ExtraLineText = "USE_ORGRIMMAR_PORTAL",
             Range = 5,
             Zone = 110,
-            _index = 116,
+            _index = 116
         },
         {
             Waypoint = 1,
-            Coord = { x = -4433.3, y = 1437.9 },
+            coord = { x = -4433.3, y = 1437.9 },
             Range = 5,
             Zone = 85,
-            _index = 117,
+            _index = 117
         },
         {
             Waypoint = 1,
-            Coord = { x = -4417.1, y = 1489.4 },
+            coord = { x = -4417.1, y = 1489.4 },
             Range = 5,
             Zone = 85,
-            _index = 118,
+            _index = 118
         },
         {
             Waypoint = 1,
-            Coord = { x = -4376.8, y = 1546.8 },
+            coord = { x = -4376.8, y = 1546.8 },
             Range = 5,
             Zone = 85,
-            _index = 119,
+            _index = 119
         },
         {
             Waypoint = 1,
-            Coord = { x = -4282.6, y = 1615.2 },
+            coord = { x = -4282.6, y = 1615.2 },
             Range = 5,
             Zone = 85,
-            _index = 120,
+            _index = 120
         },
         {
             Waypoint = 1,
-            Coord = { x = -4270, y = 1639.4 },
+            coord = { x = -4270, y = 1639.4 },
             Range = 5,
             Zone = 85,
-            _index = 121,
+            _index = 121
         },
         {
             Waypoint = 1,
-            Coord = { x = -4265.6, y = 1606.2 },
+            coord = { x = -4265.6, y = 1606.2 },
             Range = 5,
             Zone = 85,
-            _index = 122,
+            _index = 122
         },
         {
             Waypoint = 1,
-            Coord = { x = -4215.1, y = 1589.5 },
+            coord = { x = -4215.1, y = 1589.5 },
             Range = 5,
             Zone = 85,
-            _index = 123,
+            _index = 123
         },
         {
             RouteCompleted = 1,
-            _index = 124,
-        },
+            _index = 124
+        }
     }
 end

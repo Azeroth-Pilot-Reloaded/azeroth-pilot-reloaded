@@ -2,1255 +2,1255 @@ if APR.Faction == "Horde" then
     APR.RouteQuestStepList["1409-Exile's Reach"] = {
         {
             PickUp = { 59926 },
-            _index = 1,
+            _index = 1
         },
         {
             Qpart = { [59926] = { 1 } },
-            _index = 2,
+            _index = 2
         },
         {
             Done = { 59926 },
-            _index = 3,
+            _index = 3
         },
         {
             PickUp = { 59927 },
-            _index = 4,
+            _index = 4
         },
         {
             Qpart = { [59927] = { 1 } },
             RaidIcon = 166814,
-            _index = 5,
+            _index = 5
         },
         {
             Done = { 59927 },
-            _index = 6,
+            _index = 6
         },
         {
             PickUp = { 59928 },
-            _index = 7,
+            _index = 7
         },
         {
             Done = { 59928 },
-            _index = 8,
+            _index = 8
         },
         {
             PickUp = { 59929 },
-            Coord = { x = -2610.2, y = -434.7 },
-            _index = 9,
+            coord = { x = -2610.2, y = -434.7 },
+            _index = 9
         },
         {
             Qpart = { [59929] = { 1 } },
-            Coord = { x = -2561.9, y = -365.9 },
+            coord = { x = -2561.9, y = -365.9 },
             Range = 38.11,
-            _index = 10,
+            _index = 10
         },
         {
             Done = { 59929 },
-            Coord = { x = -2610.2, y = -434.4 },
-            _index = 11,
+            coord = { x = -2610.2, y = -434.4 },
+            _index = 11
         },
         {
             PickUp = { 59930 },
-            Coord = { x = -2610.2, y = -434.4 },
-            _index = 12,
+            coord = { x = -2610.2, y = -434.4 },
+            _index = 12
         },
         {
             Qpart = { [59930] = { 2 } },
-            Coord = { x = -2605.7, y = -447.5 },
+            coord = { x = -2605.7, y = -447.5 },
             Button = { ["59930-2"] = 168410 },
             Range = 0.75,
             RaidIcon = 166786,
-            _index = 13,
+            _index = 13
         },
         {
             Qpart = { [59930] = { 3 } },
-            Coord = { x = -2593.7, y = -428.4 },
+            coord = { x = -2593.7, y = -428.4 },
             Button = { ["59930-3"] = 168410 },
             Range = 0.61,
             RaidIcon = 166791,
-            _index = 14,
+            _index = 14
         },
         {
             Qpart = { [59930] = { 1 } },
-            Coord = { x = -2599.7, y = -420.4 },
+            coord = { x = -2599.7, y = -420.4 },
             Button = { ["59930-1"] = 168410 },
             Range = 0.69,
             RaidIcon = 166796,
-            _index = 15,
+            _index = 15
         },
         {
             Done = { 59930 },
-            Coord = { x = -2610.4, y = -434.8 },
+            coord = { x = -2610.4, y = -434.8 },
             RaidIcon = 166782,
-            _index = 16,
+            _index = 16
         },
         {
             PickUp = { 59931 },
-            Coord = { x = -2610.4, y = -434.8 },
-            _index = 17,
+            coord = { x = -2610.4, y = -434.8 },
+            _index = 17
         },
         {
             Qpart = { [59931] = { 1, 4 } },
-            Coord = { x = -2492.9, y = -247.9 },
+            coord = { x = -2492.9, y = -247.9 },
             Range = 0.61,
-            _index = 18,
+            _index = 18
         },
         {
             Done = { 59931 },
-            Coord = { x = -2491.2, y = -245.5 },
-            _index = 19,
+            coord = { x = -2491.2, y = -245.5 },
+            _index = 19
         },
         {
             PickUp = { 59932 },
-            Coord = { x = -2492.5, y = -248.5 },
-            _index = 20,
+            coord = { x = -2492.5, y = -248.5 },
+            _index = 20
         },
         {
             Qpart = { [59932] = { 1 } },
-            Coord = { x = -2477.5, y = -184 },
+            coord = { x = -2477.5, y = -184 },
             Range = 37.96,
-            _index = 21,
+            _index = 21
         },
         {
             Qpart = { [59932] = { 2 } },
-            Coord = { x = -2490.4, y = -247.2 },
+            coord = { x = -2490.4, y = -247.2 },
             Range = 0.61,
-            _index = 22,
+            _index = 22
         },
         {
             Done = { 59932 },
-            Coord = { x = -2491.5, y = -245 },
-            _index = 23,
+            coord = { x = -2491.5, y = -245 },
+            _index = 23
         },
         {
             PickUp = { 59933 },
-            Coord = { x = -2492, y = -249 },
+            coord = { x = -2492, y = -249 },
             Class = { "DRUID" },
-            _index = 24,
+            _index = 24
         },
         {
             Qpart = { [59933] = { 1 } },
-            Coord = { x = -2482.5, y = -235.4 },
+            coord = { x = -2482.5, y = -235.4 },
             Range = 0.69,
             Class = { "DRUID" },
-            _index = 25,
+            _index = 25
         },
         {
             Done = { 59933 },
-            Coord = { x = -2492, y = -248.9 },
+            coord = { x = -2492, y = -248.9 },
             Class = { "DRUID" },
-            _index = 26,
+            _index = 26
         },
         {
             PickUp = { 59937 },
-            Coord = { x = -2638.9, y = -141 },
+            coord = { x = -2638.9, y = -141 },
             Class = { "HUNTER" },
-            _index = 27,
+            _index = 27
         },
         {
             Qpart = { [59937] = { 2 } },
-            Coord = { x = -2574.5, y = -170 },
+            coord = { x = -2574.5, y = -170 },
             Range = 64.18,
             Class = { "HUNTER" },
-            _index = 28,
+            _index = 28
         },
         {
             Done = { 59937 },
-            Coord = { x = -2638.9, y = -140.7 },
+            coord = { x = -2638.9, y = -140.7 },
             Class = { "HUNTER" },
-            _index = 29,
+            _index = 29
         },
         {
             PickUp = { 59933 },
-            Coord = { x = -2492, y = -249 },
+            coord = { x = -2492, y = -249 },
             Class = { "MAGE" },
-            _index = 30,
+            _index = 30
         },
         {
             Qpart = { [59933] = { 1 } },
-            Coord = { x = -2482.5, y = -235.4 },
+            coord = { x = -2482.5, y = -235.4 },
             Range = 0.69,
             Class = { "MAGE" },
-            _index = 31,
+            _index = 31
         },
         {
             Done = { 59933 },
-            Coord = { x = -2492, y = -248.9 },
+            coord = { x = -2492, y = -248.9 },
             Class = { "MAGE" },
-            _index = 32,
+            _index = 32
         },
         {
             PickUp = { 59934 },
-            Coord = { x = -2492.4, y = -248 },
+            coord = { x = -2492.4, y = -248 },
             Class = { "MONK" },
-            _index = 33,
+            _index = 33
         },
         {
             Qpart = { [59934] = { 1, 2 } },
-            Coord = { x = -2481.4, y = -194 },
+            coord = { x = -2481.4, y = -194 },
             Range = 0.69,
             Class = { "MONK" },
             RaidIcon = 164577,
-            _index = 34,
+            _index = 34
         },
         {
             Done = { 59934 },
-            Coord = { x = -2492, y = -249.2 },
+            coord = { x = -2492, y = -249.2 },
             Class = { "MONK" },
-            _index = 35,
+            _index = 35
         },
         {
             PickUp = { 59933 },
-            Coord = { x = -2492, y = -249 },
+            coord = { x = -2492, y = -249 },
             Class = { "PALADIN" },
-            _index = 36,
+            _index = 36
         },
         {
             Qpart = { [59933] = { 1 } },
-            Coord = { x = -2482.5, y = -235.4 },
+            coord = { x = -2482.5, y = -235.4 },
             Range = 0.69,
             Class = { "PALADIN" },
-            _index = 37,
+            _index = 37
         },
         {
             Done = { 59933 },
-            Coord = { x = -2492, y = -248.9 },
+            coord = { x = -2492, y = -248.9 },
             Class = { "PALADIN" },
-            _index = 38,
+            _index = 38
         },
         {
             PickUp = { 59933 },
-            Coord = { x = -2492, y = -249 },
+            coord = { x = -2492, y = -249 },
             Class = { "PRIEST" },
-            _index = 39,
+            _index = 39
         },
         {
             Qpart = { [59933] = { 1 } },
-            Coord = { x = -2482.5, y = -235.4 },
+            coord = { x = -2482.5, y = -235.4 },
             Range = 0.69,
             Class = { "PRIEST" },
-            _index = 40,
+            _index = 40
         },
         {
             Done = { 59933 },
-            Coord = { x = -2492, y = -248.9 },
+            coord = { x = -2492, y = -248.9 },
             Class = { "PRIEST" },
-            _index = 41,
+            _index = 41
         },
         {
             PickUp = { 59933 },
-            Coord = { x = -2492, y = -249 },
+            coord = { x = -2492, y = -249 },
             Class = { "ROGUE" },
-            _index = 42,
+            _index = 42
         },
         {
             Qpart = { [59933] = { 1 } },
-            Coord = { x = -2482.5, y = -235.4 },
+            coord = { x = -2482.5, y = -235.4 },
             Range = 0.69,
             Class = { "ROGUE" },
-            _index = 43,
+            _index = 43
         },
         {
             Done = { 59933 },
-            Coord = { x = -2492, y = -248.9 },
+            coord = { x = -2492, y = -248.9 },
             Class = { "ROGUE" },
-            _index = 44,
+            _index = 44
         },
         {
             PickUp = { 59933 },
-            Coord = { x = -2492, y = -249 },
+            coord = { x = -2492, y = -249 },
             Class = { "SHAMAN" },
-            _index = 45,
+            _index = 45
         },
         {
             Qpart = { [59933] = { 1 } },
-            Coord = { x = -2482.5, y = -235.4 },
+            coord = { x = -2482.5, y = -235.4 },
             Range = 0.69,
             Class = { "SHAMAN" },
-            _index = 46,
+            _index = 46
         },
         {
             Done = { 59933 },
-            Coord = { x = -2492, y = -248.9 },
+            coord = { x = -2492, y = -248.9 },
             Class = { "SHAMAN" },
-            _index = 47,
+            _index = 47
         },
         {
             PickUp = { 59933 },
-            Coord = { x = -2492, y = -249 },
+            coord = { x = -2492, y = -249 },
             Class = { "WARLOCK" },
-            _index = 48,
+            _index = 48
         },
         {
             Qpart = { [59933] = { 1 } },
-            Coord = { x = -2482.5, y = -235.4 },
+            coord = { x = -2482.5, y = -235.4 },
             Range = 0.69,
             Class = { "WARLOCK" },
-            _index = 49,
+            _index = 49
         },
         {
             Done = { 59933 },
-            Coord = { x = -2492, y = -248.9 },
+            coord = { x = -2492, y = -248.9 },
             Class = { "WARLOCK" },
-            _index = 50,
+            _index = 50
         },
         {
             PickUp = { 59933 },
-            Coord = { x = -2492, y = -249 },
+            coord = { x = -2492, y = -249 },
             Class = { "WARRIOR" },
-            _index = 51,
+            _index = 51
         },
         {
             Qpart = { [59933] = { 1 } },
-            Coord = { x = -2482.5, y = -235.4 },
+            coord = { x = -2482.5, y = -235.4 },
             Range = 0.69,
             Class = { "WARRIOR" },
-            _index = 52,
+            _index = 52
         },
         {
             Done = { 59933 },
-            Coord = { x = -2492, y = -248.9 },
+            coord = { x = -2492, y = -248.9 },
             Class = { "WARRIOR" },
-            _index = 53,
+            _index = 53
         },
         {
             PickUp = { 59935 },
-            Coord = { x = -2491.9, y = -245 },
-            _index = 54,
+            coord = { x = -2491.9, y = -245 },
+            _index = 54
         },
         {
             Done = { 59935 },
-            Coord = { x = -2638.4, y = -141.2 },
-            _index = 55,
+            coord = { x = -2638.4, y = -141.2 },
+            _index = 55
         },
         {
             PickUp = { 59938, 59939 },
-            Coord = { x = -2638.4, y = -141.2 },
-            _index = 56,
+            coord = { x = -2638.4, y = -141.2 },
+            _index = 56
         },
         {
             Waypoint = 59938,
-            Coord = { x = -2641.2, y = -76.9 },
+            coord = { x = -2641.2, y = -76.9 },
             Fillers = { [59939] = { 1 } },
             Range = 14.94,
-            _index = 57,
+            _index = 57
         },
         {
             Waypoint = 59938,
-            Coord = { x = -2578.2, y = 43.5 },
+            coord = { x = -2578.2, y = 43.5 },
             Fillers = { [59939] = { 1 } },
             Range = 16.13,
-            _index = 58,
+            _index = 58
         },
         {
             Qpart = { [59938] = { 1 } },
-            Coord = { x = -2513, y = 16.1 },
+            coord = { x = -2513, y = 16.1 },
             Fillers = { [59939] = { 1 } },
             Range = 0.61,
             RaidIcon = 151091,
-            _index = 59,
+            _index = 59
         },
         {
             Qpart = { [59939] = { 1 } },
-            Coord = { x = -2580.5, y = 50.5 },
+            coord = { x = -2580.5, y = 50.5 },
             Range = 65.49,
-            _index = 60,
+            _index = 60
         },
         {
             Done = { 59938, 59939 },
-            Coord = { x = -2419, y = 101 },
-            _index = 61,
+            coord = { x = -2419, y = 101 },
+            _index = 61
         },
         {
             PickUp = { 59940 },
-            Coord = { x = -2417.9, y = 101.3 },
-            _index = 62,
+            coord = { x = -2417.9, y = 101.3 },
+            _index = 62
         },
         {
             Qpart = { [59940] = { 1 } },
-            Coord = { x = -2412.5, y = 107.8 },
+            coord = { x = -2412.5, y = 107.8 },
             Range = 0.69,
-            _index = 63,
+            _index = 63
         },
         {
             Done = { 59940 },
-            Coord = { x = -2417.5, y = 101 },
-            _index = 64,
+            coord = { x = -2417.5, y = 101 },
+            _index = 64
         },
         {
             PickUp = { 59941 },
-            Coord = { x = -2417.5, y = 101 },
-            _index = 65,
+            coord = { x = -2417.5, y = 101 },
+            _index = 65
         },
         {
             Qpart = { [59941] = { 1 } },
-            Coord = { x = -2444.4, y = 134.6 },
+            coord = { x = -2444.4, y = 134.6 },
             Button = { ["59941-1"] = 178051 },
             Range = 28.36,
-            _index = 66,
+            _index = 66
         },
         {
             Done = { 59941 },
-            Coord = { x = -2420.4, y = 103.4 },
-            _index = 67,
+            coord = { x = -2420.4, y = 103.4 },
+            _index = 67
         },
         {
             PickUp = { 59942 },
-            Coord = { x = -2417.7, y = 101.2 },
-            _index = 68,
+            coord = { x = -2417.7, y = 101.2 },
+            _index = 68
         },
         {
             Qpart = { [59942] = { 1 } },
-            Coord = { x = -2414.2, y = 108.5 },
+            coord = { x = -2414.2, y = 108.5 },
             Range = 0.69,
-            _index = 69,
+            _index = 69
         },
         {
             Qpart = { [59942] = { 2 } },
-            Coord = { x = -2414.2, y = 108.5 },
+            coord = { x = -2414.2, y = 108.5 },
             Range = 170.21,
-            _index = 70,
+            _index = 70
         },
         {
             Qpart = { [59942] = { 3 } },
-            Coord = { x = -2243.4, y = 244.1 },
+            coord = { x = -2243.4, y = 244.1 },
             Range = 0.61,
             RaidIcon = 162817,
-            _index = 71,
+            _index = 71
         },
         {
             Done = { 59942 },
-            Coord = { x = -2296.2, y = 231.1 },
+            coord = { x = -2296.2, y = 231.1 },
             RaidIcon = 167128,
-            _index = 72,
+            _index = 72
         },
         {
             Waypoint = 59950,
-            Coord = { x = -2275.5, y = 231.8 },
+            coord = { x = -2275.5, y = 231.8 },
             Range = 8.65,
-            _index = 73,
+            _index = 73
         },
         {
             PickUp = { 59950 },
-            Coord = { x = -2282.5, y = 186.6 },
-            _index = 74,
+            coord = { x = -2282.5, y = 186.6 },
+            _index = 74
         },
         {
             Qpart = { [59950] = { 1 } },
-            Coord = { x = -2292, y = 179.4 },
+            coord = { x = -2292, y = 179.4 },
             BuyMerchant = { { itemID = 178120, quantity = 1, questID = 59950 } },
             Range = 0.69,
             RaidIcon = 167213,
-            _index = 75,
+            _index = 75
         },
         {
             Qpart = { [59950] = { 2 } },
-            Coord = { x = -2292, y = 179.4 },
+            coord = { x = -2292, y = 179.4 },
             Range = 0.69,
             RaidIcon = 167213,
-            _index = 76,
+            _index = 76
         },
         {
             Done = { 59950 },
-            Coord = { x = -2282.5, y = 186.4 },
-            _index = 77,
+            coord = { x = -2282.5, y = 186.4 },
+            _index = 77
         },
         {
             PickUp = { 59943 },
-            Coord = { x = -2337, y = 257.7 },
-            _index = 78,
+            coord = { x = -2337, y = 257.7 },
+            _index = 78
         },
         {
             Done = { 59943 },
-            Coord = { x = -2443.2, y = 391.5 },
-            _index = 79,
+            coord = { x = -2443.2, y = 391.5 },
+            _index = 79
         },
         {
             PickUp = { 59945, 59944, 59946 },
-            Coord = { x = -2441.7, y = 392.3 },
-            _index = 80,
+            coord = { x = -2441.7, y = 392.3 },
+            _index = 80
         },
         {
             Qpart = { [59944] = { 1 } },
-            Coord = { x = -2354.2, y = 496.1 },
+            coord = { x = -2354.2, y = 496.1 },
             Fillers = { [59945] = { 1 } },
             Range = 0.75,
             Gossip = 1,
-            _index = 81,
+            _index = 81
         },
         {
             Qpart = { [59945] = { 1 }, [59946] = { 1 } },
-            Coord = { x = -2518.9, y = 466.3 },
+            coord = { x = -2518.9, y = 466.3 },
             Range = 38.88,
             Gossip = 1,
-            _index = 82,
+            _index = 82
         },
         {
             Done = { 59945, 59944, 59946 },
-            Coord = { x = -2442.2, y = 392.3 },
-            _index = 83,
+            coord = { x = -2442.2, y = 392.3 },
+            _index = 83
         },
         {
             PickUp = { 59947 },
-            Coord = { x = -2439.7, y = 392.7 },
-            _index = 84,
+            coord = { x = -2439.7, y = 392.7 },
+            _index = 84
         },
         {
             PickUp = { 54933 },
-            Coord = { x = -2485.5, y = 302.7 },
-            _index = 85,
+            coord = { x = -2485.5, y = 302.7 },
+            _index = 85
         },
         {
             Qpart = { [54933] = { 1 } },
-            Coord = { x = -2460.4, y = 313.7 },
+            coord = { x = -2460.4, y = 313.7 },
             Range = 0.69,
-            _index = 86,
+            _index = 86
         },
         {
             Qpart = { [54933] = { 2 } },
-            Coord = { x = -2495.5, y = 325.3 },
+            coord = { x = -2495.5, y = 325.3 },
             Range = 0.75,
-            _index = 87,
+            _index = 87
         },
         {
             Qpart = { [54933] = { 3 } },
-            Coord = { x = -2513.2, y = 291.3 },
+            coord = { x = -2513.2, y = 291.3 },
             Range = 0.61,
-            _index = 88,
+            _index = 88
         },
         {
             Qpart = { [54933] = { 4 } },
-            Coord = { x = -2473.5, y = 279.8 },
+            coord = { x = -2473.5, y = 279.8 },
             Range = 0.69,
-            _index = 89,
+            _index = 89
         },
         {
             Done = { 54933 },
-            Coord = { x = -2485.7, y = 301.8 },
-            _index = 90,
+            coord = { x = -2485.7, y = 301.8 },
+            _index = 90
         },
         {
             Done = { 59947 },
-            Coord = { x = -2282.4, y = 186.1 },
-            _index = 91,
+            coord = { x = -2282.4, y = 186.1 },
+            _index = 91
         },
         {
             PickUp = { 59948 },
-            Coord = { x = -2307.2, y = 161.1 },
-            _index = 92,
+            coord = { x = -2307.2, y = 161.1 },
+            _index = 92
         },
         {
             Done = { 59948 },
-            Coord = { x = -2246.4, y = 92.5 },
+            coord = { x = -2246.4, y = 92.5 },
             RaidIcon = 167225,
-            _index = 93,
+            _index = 93
         },
         {
             PickUp = { 59949 },
-            Coord = { x = -2246.4, y = 92.5 },
-            _index = 94,
+            coord = { x = -2246.4, y = 92.5 },
+            _index = 94
         },
         {
             Qpart = { [59949] = { 1 } },
-            Coord = { x = -2228, y = 85 },
+            coord = { x = -2228, y = 85 },
             Range = 17.9,
-            _index = 95,
+            _index = 95
         },
         {
             Waypoint = 59949,
-            Coord = { x = -2213.5, y = 82.9 },
+            coord = { x = -2213.5, y = 82.9 },
             Range = 6.36,
-            _index = 96,
+            _index = 96
         },
         {
             Qpart = { [59949] = { 2 } },
-            Coord = { x = -2126.7, y = 72.5 },
+            coord = { x = -2126.7, y = 72.5 },
             Range = 0.75,
             RaidIcon = 156900,
-            _index = 97,
+            _index = 97
         },
         {
             Qpart = { [59949] = { 3 } },
-            Coord = { x = -2134, y = 75.3 },
+            coord = { x = -2134, y = 75.3 },
             Range = 0.75,
-            _index = 98,
+            _index = 98
         },
         {
             Done = { 59949 },
-            Coord = { x = -2282.5, y = 186.5 },
-            _index = 99,
+            coord = { x = -2282.5, y = 186.5 },
+            _index = 99
         },
         {
             PickUp = { 59951 },
-            Coord = { x = -2287.7, y = 184 },
+            coord = { x = -2287.7, y = 184 },
             Class = { "DRUID" },
-            _index = 100,
+            _index = 100
         },
         {
             Qpart = { [59951] = { 1 } },
-            Coord = { x = -2053, y = 323.1 },
+            coord = { x = -2053, y = 323.1 },
             Range = 0.69,
             Class = { "DRUID" },
-            _index = 101,
+            _index = 101
         },
         {
             Done = { 59951 },
-            Coord = { x = -2056.2, y = 324 },
+            coord = { x = -2056.2, y = 324 },
             Class = { "DRUID" },
-            _index = 102,
+            _index = 102
         },
         {
             PickUp = { 59952 },
-            Coord = { x = -2290.9, y = 188.1 },
+            coord = { x = -2290.9, y = 188.1 },
             Class = { "HUNTER" },
-            _index = 103,
+            _index = 103
         },
         {
             Qpart = { [59952] = { 1 } },
-            Coord = { x = -2285.5, y = 183.8 },
+            coord = { x = -2285.5, y = 183.8 },
             Range = 0.75,
             Class = { "HUNTER" },
             Gossip = 1,
             RaidIcon = 156886,
-            _index = 104,
+            _index = 104
         },
         {
             Qpart = { [59952] = { 2 } },
-            Coord = { x = -2283.9, y = 237.8 },
+            coord = { x = -2283.9, y = 237.8 },
             Range = 0.69,
             Class = { "HUNTER" },
-            _index = 105,
+            _index = 105
         },
         {
             Qpart = { [59952] = { 3 } },
-            Coord = { x = -2270.7, y = 270 },
+            coord = { x = -2270.7, y = 270 },
             Range = 0.69,
             Class = { "HUNTER" },
-            _index = 106,
+            _index = 106
         },
         {
             Done = { 59952 },
-            Coord = { x = -2290.5, y = 187.8 },
+            coord = { x = -2290.5, y = 187.8 },
             Class = { "HUNTER" },
-            _index = 107,
+            _index = 107
         },
         {
             PickUp = { 59953 },
-            Coord = { x = -2290.5, y = 187.8 },
+            coord = { x = -2290.5, y = 187.8 },
             Class = { "HUNTER" },
-            _index = 108,
+            _index = 108
         },
         {
             Qpart = { [59953] = { 1 } },
-            Coord = { x = -2273, y = 228.8 },
+            coord = { x = -2273, y = 228.8 },
             Range = 18.66,
             Class = { "HUNTER" },
-            _index = 109,
+            _index = 109
         },
         {
             Done = { 59953 },
-            Coord = { x = -2290, y = 188.6 },
+            coord = { x = -2290, y = 188.6 },
             Class = { "HUNTER" },
-            _index = 110,
+            _index = 110
         },
         {
             PickUp = { 60162 },
-            Coord = { x = -2290, y = 188.6 },
+            coord = { x = -2290, y = 188.6 },
             Class = { "HUNTER" },
-            _index = 111,
+            _index = 111
         },
         {
             Qpart = { [60162] = { 1 } },
-            Coord = { x = -2289.2, y = 189.4 },
+            coord = { x = -2289.2, y = 189.4 },
             Range = 0.75,
             Class = { "HUNTER" },
-            _index = 112,
+            _index = 112
         },
         {
             Qpart = { [60162] = { 2 } },
-            Coord = { x = -2290.7, y = 188.6 },
+            coord = { x = -2290.7, y = 188.6 },
             Range = 0.69,
             Class = { "HUNTER" },
             Gossip = 2,
             RaidIcon = 161666,
-            _index = 113,
+            _index = 113
         },
         {
             Qpart = { [60162] = { 3 } },
-            Coord = { x = -2290, y = 188.8 },
+            coord = { x = -2290, y = 188.8 },
             Range = 0.75,
             Class = { "HUNTER" },
             Gossip = 1,
-            _index = 114,
+            _index = 114
         },
         {
             Done = { 60162 },
-            Coord = { x = -2290, y = 188.8 },
+            coord = { x = -2290, y = 188.8 },
             Class = { "HUNTER" },
-            _index = 115,
+            _index = 115
         },
         {
             PickUp = { 59954 },
-            Coord = { x = -2285.7, y = 183.5 },
+            coord = { x = -2285.7, y = 183.5 },
             Class = { "MAGE" },
-            _index = 116,
+            _index = 116
         },
         {
             Qpart = { [59954] = { 1 } },
-            Coord = { x = -2274.7, y = 310.3 },
+            coord = { x = -2274.7, y = 310.3 },
             Range = 0.61,
             Class = { "MAGE" },
-            _index = 117,
+            _index = 117
         },
         {
             Done = { 59954 },
-            Coord = { x = -2286.2, y = 182.9 },
+            coord = { x = -2286.2, y = 182.9 },
             Class = { "MAGE" },
-            _index = 118,
+            _index = 118
         },
         {
             PickUp = { 59955 },
-            Coord = { x = -2286.2, y = 184.1 },
+            coord = { x = -2286.2, y = 184.1 },
             Class = { "MAGE" },
-            _index = 119,
+            _index = 119
         },
         {
             Qpart = { [59955] = { 1 } },
-            Coord = { x = -2286.2, y = 184.1 },
+            coord = { x = -2286.2, y = 184.1 },
             Range = 0.75,
             Class = { "MAGE" },
             Gossip = 1,
-            _index = 120,
+            _index = 120
         },
         {
             Qpart = { [59955] = { 2 } },
-            Coord = { x = -2332.2, y = 178.9 },
+            coord = { x = -2332.2, y = 178.9 },
             Range = 0.69,
             Class = { "MAGE" },
-            _index = 121,
+            _index = 121
         },
         {
             Done = { 59955 },
-            Coord = { x = -2286, y = 183.8 },
+            coord = { x = -2286, y = 183.8 },
             Class = { "MAGE" },
-            _index = 122,
+            _index = 122
         },
         {
             PickUp = { 59956 },
-            Coord = { x = -2281.2, y = 179.6 },
+            coord = { x = -2281.2, y = 179.6 },
             Class = { "MONK" },
-            _index = 123,
+            _index = 123
         },
         {
             Qpart = { [59956] = { 1 } },
-            Coord = { x = -2297.5, y = 317.5 },
+            coord = { x = -2297.5, y = 317.5 },
             Range = 0.75,
             Class = { "MONK" },
             Gossip = 1,
             RaidIcon = 164835,
-            _index = 124,
+            _index = 124
         },
         {
             Done = { 59956 },
-            Coord = { x = -2298.5, y = 318.3 },
+            coord = { x = -2298.5, y = 318.3 },
             Class = { "MONK" },
-            _index = 125,
+            _index = 125
         },
         {
             PickUp = { 59957 },
-            Coord = { x = -2298.5, y = 318.3 },
+            coord = { x = -2298.5, y = 318.3 },
             Class = { "MONK" },
-            _index = 126,
+            _index = 126
         },
         {
             Qpart = { [59957] = { 1 } },
-            Coord = { x = -2325.7, y = 309 },
+            coord = { x = -2325.7, y = 309 },
             Range = 0.75,
             Class = { "MONK" },
             RaidIcon = 164868,
-            _index = 127,
+            _index = 127
         },
         {
             Done = { 59957 },
-            Coord = { x = -2288.7, y = 186.6 },
+            coord = { x = -2288.7, y = 186.6 },
             Class = { "MONK" },
-            _index = 128,
+            _index = 128
         },
         {
             PickUp = { 59958 },
-            Coord = { x = -2279, y = 187.6 },
+            coord = { x = -2279, y = 187.6 },
             Class = { "PALADIN" },
-            _index = 129,
+            _index = 129
         },
         {
             Waypoint = 59958,
-            Coord = { x = -2398.5, y = 347.5 },
+            coord = { x = -2398.5, y = 347.5 },
             Range = 12.06,
             Class = { "PALADIN" },
-            _index = 130,
+            _index = 130
         },
         {
             Waypoint = 59958,
-            Coord = { x = -2444.2, y = 313.5 },
+            coord = { x = -2444.2, y = 313.5 },
             Range = 8.18,
             Class = { "PALADIN" },
-            _index = 131,
+            _index = 131
         },
         {
             Qpart = { [59958] = { 1 } },
-            Coord = { x = -2464.7, y = 257.5 },
+            coord = { x = -2464.7, y = 257.5 },
             Range = 0.75,
             Class = { "PALADIN" },
             Gossip = 1,
             RaidIcon = 162998,
-            _index = 132,
+            _index = 132
         },
         {
             Done = { 59958 },
-            Coord = { x = -2464.7, y = 257.5 },
+            coord = { x = -2464.7, y = 257.5 },
             Class = { "PALADIN" },
-            _index = 133,
+            _index = 133
         },
         {
             PickUp = { 60174 },
-            Coord = { x = -2464.7, y = 257.5 },
+            coord = { x = -2464.7, y = 257.5 },
             Class = { "PALADIN" },
-            _index = 134,
+            _index = 134
         },
         {
             Qpart = { [60174] = { 1 } },
-            Coord = { x = -2463.7, y = 258.5 },
+            coord = { x = -2463.7, y = 258.5 },
             Range = 0.75,
             Class = { "PALADIN" },
-            _index = 135,
+            _index = 135
         },
         {
             Qpart = { [60174] = { 2 } },
-            Coord = { x = -2450, y = 246.6 },
+            coord = { x = -2450, y = 246.6 },
             Range = 0.69,
             Class = { "PALADIN" },
-            _index = 136,
+            _index = 136
         },
         {
             Done = { 60174 },
-            Coord = { x = -2464.5, y = 256.6 },
+            coord = { x = -2464.5, y = 256.6 },
             Class = { "PALADIN" },
-            _index = 137,
+            _index = 137
         },
         {
             PickUp = { 59961 },
-            Coord = { x = -2277.5, y = 184.1 },
+            coord = { x = -2277.5, y = 184.1 },
             Class = { "PRIEST" },
-            _index = 138,
+            _index = 138
         },
         {
             Qpart = { [59961] = { 1 } },
-            Coord = { x = -2415.2, y = 223.3 },
+            coord = { x = -2415.2, y = 223.3 },
             Range = 0.75,
             Class = { "PRIEST" },
             RaidIcon = 167188,
-            _index = 139,
+            _index = 139
         },
         {
             Done = { 59961 },
-            Coord = { x = -2415.2, y = 223.3 },
+            coord = { x = -2415.2, y = 223.3 },
             Class = { "PRIEST" },
-            _index = 140,
+            _index = 140
         },
         {
             PickUp = { 59965 },
-            Coord = { x = -2415.2, y = 223.3 },
+            coord = { x = -2415.2, y = 223.3 },
             Class = { "PRIEST" },
-            _index = 141,
+            _index = 141
         },
         {
             Qpart = { [59965] = { 1 } },
-            Coord = { x = -2421.7, y = 227.8 },
+            coord = { x = -2421.7, y = 227.8 },
             Range = 5.29,
             Class = { "PRIEST" },
-            _index = 142,
+            _index = 142
         },
         {
             Done = { 59965 },
-            Coord = { x = -2415.2, y = 224.1 },
+            coord = { x = -2415.2, y = 224.1 },
             Class = { "PRIEST" },
-            _index = 143,
+            _index = 143
         },
         {
             PickUp = { 59967 },
-            Coord = { x = -2279.4, y = 187.9 },
+            coord = { x = -2279.4, y = 187.9 },
             Class = { "ROGUE" },
-            _index = 144,
+            _index = 144
         },
         {
             Qpart = { [59967] = { 1 } },
-            Coord = { x = -2061.7, y = 168.9 },
+            coord = { x = -2061.7, y = 168.9 },
             Range = 0.69,
             Class = { "ROGUE" },
             Gossip = 1,
             RaidIcon = 162972,
-            _index = 145,
+            _index = 145
         },
         {
             Qpart = { [59967] = { 2 } },
-            Coord = { x = -2038.6, y = 185 },
+            coord = { x = -2038.6, y = 185 },
             Range = 9.76,
             Class = { "ROGUE" },
-            _index = 146,
+            _index = 146
         },
         {
             Done = { 59967 },
-            Coord = { x = -2061.5, y = 168.6 },
+            coord = { x = -2061.5, y = 168.6 },
             Class = { "ROGUE" },
-            _index = 147,
+            _index = 147
         },
         {
             PickUp = { 59968 },
-            Coord = { x = -2061.5, y = 168.6 },
+            coord = { x = -2061.5, y = 168.6 },
             Class = { "ROGUE" },
-            _index = 148,
+            _index = 148
         },
         {
             Qpart = { [59968] = { 1 } },
-            Coord = { x = -2063.5, y = 175.5 },
+            coord = { x = -2063.5, y = 175.5 },
             Range = 0.75,
             Class = { "ROGUE" },
-            _index = 149,
+            _index = 149
         },
         {
             Qpart = { [59968] = { 2 } },
-            Coord = { x = -2159.2, y = 270.7 },
+            coord = { x = -2159.2, y = 270.7 },
             Range = 0.69,
             Class = { "ROGUE" },
             RaidIcon = 163036,
-            _index = 150,
+            _index = 150
         },
         {
             Done = { 59968 },
-            Coord = { x = -2279.7, y = 187.4 },
+            coord = { x = -2279.7, y = 187.4 },
             Class = { "ROGUE" },
-            _index = 151,
+            _index = 151
         },
         {
             PickUp = { 59969 },
-            Coord = { x = -2286.7, y = 179.6 },
+            coord = { x = -2286.7, y = 179.6 },
             Class = { "SHAMAN" },
-            _index = 152,
+            _index = 152
         },
         {
             Qpart = { [59969] = { 1 } },
-            Coord = { x = -2288.9, y = 276.1 },
+            coord = { x = -2288.9, y = 276.1 },
             Range = 10.81,
             Class = { "SHAMAN" },
-            _index = 153,
+            _index = 153
         },
         {
             Qpart = { [59969] = { 2 } },
-            Coord = { x = -2284, y = 180.9 },
+            coord = { x = -2284, y = 180.9 },
             Range = 0.69,
             Class = { "SHAMAN" },
-            _index = 154,
+            _index = 154
         },
         {
             Qpart = { [59969] = { 3 } },
-            Coord = { x = -2352.7, y = 148 },
+            coord = { x = -2352.7, y = 148 },
             Range = 23.61,
             Class = { "SHAMAN" },
-            _index = 155,
+            _index = 155
         },
         {
             Done = { 59969 },
-            Coord = { x = -2286.9, y = 179.8 },
+            coord = { x = -2286.9, y = 179.8 },
             Class = { "SHAMAN" },
-            _index = 156,
+            _index = 156
         },
         {
             PickUp = { 59970 },
-            Coord = { x = -2279.2, y = 187.6 },
+            coord = { x = -2279.2, y = 187.6 },
             Class = { "WARLOCK" },
-            _index = 157,
+            _index = 157
         },
         {
             Waypoint = 59970,
-            Coord = { x = -2344.5, y = 354.6 },
+            coord = { x = -2344.5, y = 354.6 },
             Range = 11.53,
             Class = { "WARLOCK" },
-            _index = 158,
+            _index = 158
         },
         {
             Qpart = { [59970] = { 1 } },
-            Coord = { x = -2295.2, y = 398.8 },
+            coord = { x = -2295.2, y = 398.8 },
             Range = 0.75,
             Class = { "WARLOCK" },
             Gossip = 1,
             RaidIcon = 163209,
-            _index = 159,
+            _index = 159
         },
         {
             Qpart = { [59970] = { 2 } },
-            Coord = { x = -2296.7, y = 399.8 },
+            coord = { x = -2296.7, y = 399.8 },
             Range = 0.61,
             Class = { "WARLOCK" },
-            _index = 160,
+            _index = 160
         },
         {
             Qpart = { [59970] = { 3 } },
-            Coord = { x = -2296.7, y = 399.8 },
+            coord = { x = -2296.7, y = 399.8 },
             Button = { ["59970-3"] = 174947 },
             Range = 0.61,
             Class = { "WARLOCK" },
-            _index = 161,
+            _index = 161
         },
         {
             Done = { 59970 },
-            Coord = { x = -2297.2, y = 409.5 },
+            coord = { x = -2297.2, y = 409.5 },
             Class = { "WARLOCK" },
-            _index = 162,
+            _index = 162
         },
         {
             PickUp = { 59971 },
-            Coord = { x = -2279.4, y = 188.1 },
+            coord = { x = -2279.4, y = 188.1 },
             Class = { "WARRIOR" },
-            _index = 163,
+            _index = 163
         },
         {
             Waypoint = 59971,
-            Coord = { x = -2331.5, y = 272.8 },
+            coord = { x = -2331.5, y = 272.8 },
             Range = 20.09,
             Class = { "WARRIOR" },
-            _index = 164,
+            _index = 164
         },
         {
             Waypoint = 59971,
-            Coord = { x = -2346.9, y = 352.8 },
+            coord = { x = -2346.9, y = 352.8 },
             Range = 10.6,
             Class = { "WARRIOR" },
-            _index = 165,
+            _index = 165
         },
         {
             Done = { 59971 },
-            Coord = { x = -2257.4, y = 355.8 },
+            coord = { x = -2257.4, y = 355.8 },
             Class = { "WARRIOR" },
-            _index = 166,
+            _index = 166
         },
         {
             PickUp = { 59972 },
-            Coord = { x = -2257.4, y = 355.8 },
+            coord = { x = -2257.4, y = 355.8 },
             Class = { "WARRIOR" },
-            _index = 167,
+            _index = 167
         },
         {
             Qpart = { [59972] = { 1 } },
-            Coord = { x = -2257.4, y = 355.8 },
+            coord = { x = -2257.4, y = 355.8 },
             Range = 0.61,
             Class = { "WARRIOR" },
             RaidIcon = 162948,
-            _index = 168,
+            _index = 168
         },
         {
             Done = { 59972 },
-            Coord = { x = -2279.5, y = 187.8 },
+            coord = { x = -2279.5, y = 187.8 },
             Class = { "WARRIOR" },
-            _index = 169,
+            _index = 169
         },
         {
             PickUp = { 59975 },
-            Coord = { x = -2284, y = 186.1 },
-            _index = 170,
+            coord = { x = -2284, y = 186.1 },
+            _index = 170
         },
         {
             PickUp = { 56839 },
-            Coord = { x = -2168, y = 211.5 },
-            _index = 171,
+            coord = { x = -2168, y = 211.5 },
+            _index = 171
         },
         {
             Qpart = { [56839] = { 1 } },
-            Coord = { x = -2058.4, y = 205.1 },
+            coord = { x = -2058.4, y = 205.1 },
             Range = 0.61,
             RaidIcon = 153266,
-            _index = 172,
+            _index = 172
         },
         {
             Done = { 56839 },
-            Coord = { x = -1986.5, y = 280.8 },
-            _index = 173,
+            coord = { x = -1986.5, y = 280.8 },
+            _index = 173
         },
         {
             Waypoint = 59975,
-            Coord = { x = -2060.4, y = 217.4 },
+            coord = { x = -2060.4, y = 217.4 },
             Range = 17.88,
-            _index = 174,
+            _index = 174
         },
         {
             Waypoint = 59975,
-            Coord = { x = -2128, y = 219.6 },
+            coord = { x = -2128, y = 219.6 },
             Range = 20.92,
-            _index = 175,
+            _index = 175
         },
         {
             Done = { 59975 },
-            Coord = { x = -2174.7, y = 323.5 },
-            _index = 176,
+            coord = { x = -2174.7, y = 323.5 },
+            _index = 176
         },
         {
             PickUp = { 59978 },
-            Coord = { x = -2174.7, y = 323.5 },
-            _index = 177,
+            coord = { x = -2174.7, y = 323.5 },
+            _index = 177
         },
         {
             Qpart = { [59978] = { 1 } },
-            Coord = { x = -2176.5, y = 324.6 },
+            coord = { x = -2176.5, y = 324.6 },
             Range = 0.69,
             Gossip = 1,
             RaidIcon = 156943,
-            _index = 178,
+            _index = 178
         },
         {
             Qpart = { [59978] = { 2 } },
-            Coord = { x = -2044.8, y = 457.3 },
+            coord = { x = -2044.8, y = 457.3 },
             Range = 0.69,
-            _index = 179,
+            _index = 179
         },
         {
             Qpart = { [59978] = { 3 } },
-            Coord = { x = -2063, y = 575.4 },
+            coord = { x = -2063, y = 575.4 },
             Range = 0.75,
-            _index = 180,
+            _index = 180
         },
         {
             Qpart = { [59978] = { 4 } },
-            Coord = { x = -2062.5, y = 586.4 },
+            coord = { x = -2062.5, y = 586.4 },
             Range = 0.75,
             Emote = "WAVE",
-            _index = 181,
+            _index = 181
         },
         {
             Waypoint = 59978,
-            Coord = { x = -2076.2, y = 619 },
+            coord = { x = -2076.2, y = 619 },
             Range = 11.9,
-            _index = 182,
+            _index = 182
         },
         {
             Qpart = { [59978] = { 6 } },
-            Coord = { x = -1893.6, y = 699 },
+            coord = { x = -1893.6, y = 699 },
             Range = 0.75,
-            _index = 183,
+            _index = 183
         },
         {
             Done = { 59978 },
-            Coord = { x = -1876.8, y = 704.2 },
-            _index = 184,
+            coord = { x = -1876.8, y = 704.2 },
+            _index = 184
         },
         {
             PickUp = { 59981, 59980, 59979 },
-            Coord = { x = -1877.6, y = 703.9 },
-            _index = 185,
+            coord = { x = -1877.6, y = 703.9 },
+            _index = 185
         },
         {
             Waypoint = 59981,
-            Coord = { x = -2012.4, y = 616.5 },
+            coord = { x = -2012.4, y = 616.5 },
             Range = 27.27,
-            _index = 186,
+            _index = 186
         },
         {
             Qpart = { [59981] = { 2 } },
-            Coord = { x = -2009.4, y = 592.5 },
+            coord = { x = -2009.4, y = 592.5 },
             Range = 0.69,
             RaidIcon = 153582,
-            _index = 187,
+            _index = 187
         },
         {
             Qpart = { [59981] = { 1 } },
-            Coord = { x = -2127, y = 659.4 },
+            coord = { x = -2127, y = 659.4 },
             Fillers = { [59979] = { 1 }, [59980] = { 1 } },
             Range = 0.75,
             RaidIcon = 153583,
-            _index = 188,
+            _index = 188
         },
         {
             Qpart = { [59981] = { 3 } },
-            Coord = { x = -1965, y = 511.7 },
+            coord = { x = -1965, y = 511.7 },
             Fillers = { [59979] = { 1 }, [59980] = { 1 } },
             Range = 0.69,
-            _index = 189,
+            _index = 189
         },
         {
             Qpart = { [59979] = { 1 }, [59980] = { 1 } },
-            Coord = { x = -2039.5, y = 505.7 },
+            coord = { x = -2039.5, y = 505.7 },
             Range = 59.07,
-            _index = 190,
+            _index = 190
         },
         {
             Done = { 59979, 59980 },
-            Coord = { x = -1879.3, y = 704.2 },
-            _index = 191,
+            coord = { x = -1879.3, y = 704.2 },
+            _index = 191
         },
         {
             Qpart = { [59981] = { 4 } },
-            Coord = { x = -1869.5, y = 708.9 },
+            coord = { x = -1869.5, y = 708.9 },
             Range = 5.99,
-            _index = 192,
+            _index = 192
         },
         {
             Done = { 59981 },
-            Coord = { x = -1869, y = 709 },
-            _index = 193,
+            coord = { x = -1869, y = 709 },
+            _index = 193
         },
         {
             PickUp = { 59984 },
-            Coord = { x = -1869, y = 709 },
-            _index = 194,
+            coord = { x = -1869, y = 709 },
+            _index = 194
         },
         {
             Qpart = { [59984] = { 1 } },
-            Coord = { x = -1869, y = 709 },
+            coord = { x = -1869, y = 709 },
             Range = 0.69,
-            _index = 195,
+            _index = 195
         },
         {
             Done = { 59984 },
-            Coord = { x = -1858.5, y = 713.5 },
-            _index = 196,
+            coord = { x = -1858.5, y = 713.5 },
+            _index = 196
         },
         {
             PickUp = { 59985 },
-            Coord = { x = -1858.5, y = 713.5 },
-            _index = 197,
+            coord = { x = -1858.5, y = 713.5 },
+            _index = 197
         },
         {
             Qpart = { [59985] = { 1 } },
-            Coord = { x = -1882.6, y = 698.6 },
+            coord = { x = -1882.6, y = 698.6 },
             Range = 0.75,
             ETA = 75,
-            _index = 198,
+            _index = 198
         },
         {
             Done = { 59985 },
-            Coord = { x = -4419.2, y = 1465 },
-            _index = 199,
+            coord = { x = -4419.2, y = 1465 },
+            _index = 199
         },
         {
-            Coord = { x = -4419.2, y = 1465 },
+            coord = { x = -4419.2, y = 1465 },
             ExtraLineText = "YES_TO_EXIT_TUTORIAL",
             ExitTutorial = 62568,
             Gossip = 2,
-            _index = 200,
+            _index = 200
         },
         {
             SetHS = 34398,
-            Coord = { x = -4438.4, y = 1573.9 },
+            coord = { x = -4438.4, y = 1573.9 },
             Gossip = 1,
-            _index = 201,
+            _index = 201
         },
         {
             Done = { 62568 },
-            Coord = { x = -4215.9, y = 1558.2 },
+            coord = { x = -4215.9, y = 1558.2 },
             RaidIcon = 167032,
-            _index = 202,
+            _index = 202
         },
         {
             RouteCompleted = 1,
-            _index = 203,
-        },
+            _index = 203
+        }
     }
 end

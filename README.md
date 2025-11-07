@@ -1,3 +1,54 @@
+# Azeroth Pilot Reloaded (APR)
+
+A continuation of Azeroth Auto Pilot — APR is a World of Warcraft leveling AddOn. It provides route-driven waypoint guidance, quest objective tracking, and group sync. The codebase is Lua with Ace3 libs embedded under `libs/`.
+
+This README targets contributors and developers. For end-user screenshots and feature marketing, see releases or the project website.
+
+## Quickstart (developer)
+
+1. Install for testing: copy the repository into your WoW AddOns folder as `Interface/AddOns/APR` or create a zip of the repo root and install that.
+
+```bash
+# example (adjust path for your OS/WoW installation)
+cp -r /path/to/azeroth-pilot-reloaded "$HOME/.wine/drive_c/Program Files (x86)/World of Warcraft/_retail_/Interface/AddOns/APR"
+```
+
+2. In-game: run `/reload` and use `/apr help` to open the addon's options.
+
+3. Enable debug: open the addon's options and toggle debug, or set `APR.settings.profile.debug = true` in the saved profile and reload the UI. Search the codebase for `APR:Debug("...")` to find trace points (e.g. `APR-Core/Arrow.lua`, `APR-Core/Party.lua`).
+
+## Where to start (developer entry points)
+
+- `APR-Core/Core.lua` — bootstrap and saved-variable initialization.
+- `APR-Core/Config.lua` — settings, AceDB defaults, and chat command wiring.
+- `APR-Core/Arrow.lua` — waypoint arrow and coordinate logic.
+- `APR-Core/Party.lua` — cross-client sync (message fragmenting & parsing).
+- `Routes/` — route definitions (organized by expansion).
+- `data/models/` — canonical step and route data shapes.
+- `locales/` — translation files used via `AceLocale-3.0`.
+
+## Packaging & release
+
+- The game reads `APR.toc` to load the addon. Release packages should zip the repository root preserving folder names so users place it in `Interface/AddOns/APR`.
+- I can add a `scripts/package.sh` helper that creates a release ZIP — say "add packaging" to have me add it.
+
+## Suggested CI
+
+- Add a GitHub Action to run quick checks: `lua -p` for syntax and optionally `luacheck` for linting. I can provide a ready workflow that installs `luacheck` via luarocks or uses a Docker image.
+
+## Contributing notes
+
+- Localization: add keys to `locales/*.lua` and update `locales.xml` rather than hardcoding strings.
+- Settings: stored using AceDB in `APR.settings.profile`. Defaults live in `APR-Core/Config.lua` (`settingsDBDefaults`). Check `self.profile.<flag>` before changing runtime behavior.
+- Saved-variables: do not rename top-level tables like `APRData` — renaming breaks users' saved profiles.
+- UI: prefer the provided frame helpers (`ResetPosition`, `RefreshFrameAnchor`, `UpdateFrameScale`) to preserve user layout/state.
+
+## Support
+
+- Discord: https://discord.gg/YgcdybKdWX
+- GitHub: https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded
+
+License: see `LICENSE` in repo root.
 [![GitHub](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/69440fdb-b89b-430e-b9ce-1313f33fe758)](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded)
 
 <h3 style="text-align: center;"><span style="font-size: 24px; font-family: arial;">The continuation of <em>Azeroth Auto Pilot</em>, a leveling Add-On with a legacy.<br />Rebirthed and remastered from the ashes of something great!</span></h3>

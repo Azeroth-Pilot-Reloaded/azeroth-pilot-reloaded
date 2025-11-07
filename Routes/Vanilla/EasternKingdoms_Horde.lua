@@ -2,4670 +2,4670 @@ if APR.Faction == "Horde" then
     APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
         {
             PickUp = { 24959 },
-            Coord = { x = 1704, y = 1700.5 },
-            _index = 1,
+            coord = { x = 1704, y = 1700.5 },
+            _index = 1
         },
         {
             Done = { 24959 },
-            Coord = { x = 1675, y = 1690.2 },
-            _index = 2,
+            coord = { x = 1675, y = 1690.2 },
+            _index = 2
         },
         {
             PickUp = { 28608 },
-            Coord = { x = 1675, y = 1690.2 },
-            _index = 3,
+            coord = { x = 1675, y = 1690.2 },
+            _index = 3
         },
         {
             Waypoint = 28608,
-            Coord = { x = 1663.7, y = 1662.7 },
+            coord = { x = 1663.7, y = 1662.7 },
             Range = 5.68,
-            _index = 4,
+            _index = 4
         },
         {
             Waypoint = 28608,
-            Coord = { x = 1665.2, y = 1644.2 },
+            coord = { x = 1665.2, y = 1644.2 },
             Range = 4.17,
-            _index = 5,
+            _index = 5
         },
         {
             Waypoint = 28608,
-            Coord = { x = 1678.7, y = 1646.5 },
+            coord = { x = 1678.7, y = 1646.5 },
             Range = 5.05,
-            _index = 6,
+            _index = 6
         },
         {
             Qpart = { [28608] = { 1, 2 } },
-            Coord = { x = 1693, y = 1669 },
+            coord = { x = 1693, y = 1669 },
             Range = 0.75,
-            _index = 7,
+            _index = 7
         },
         {
             Waypoint = 28608,
-            Coord = { x = 1677.2, y = 1644 },
+            coord = { x = 1677.2, y = 1644 },
             Range = 5.55,
-            _index = 8,
+            _index = 8
         },
         {
             Waypoint = 28608,
-            Coord = { x = 1663.3, y = 1644 },
+            coord = { x = 1663.3, y = 1644 },
             Range = 4.26,
-            _index = 9,
+            _index = 9
         },
         {
             Done = { 28608 },
-            Coord = { x = 1674.7, y = 1689.7 },
-            _index = 10,
+            coord = { x = 1674.7, y = 1689.7 },
+            _index = 10
         },
         {
             PickUp = { 26799 },
-            Coord = { x = 1674.5, y = 1689.7 },
-            _index = 11,
+            coord = { x = 1674.5, y = 1689.7 },
+            _index = 11
         },
         {
             PickUp = { 24960 },
-            Coord = { x = 1649.4, y = 1686.3 },
-            _index = 12,
+            coord = { x = 1649.4, y = 1686.3 },
+            _index = 12
         },
         {
             Qpart = { [24960] = { 2 } },
-            Coord = { x = 1641, y = 1754.5 },
+            coord = { x = 1641, y = 1754.5 },
             Fillers = { [26799] = { 1 } },
             Range = 0.61,
             Gossip = 1,
             RaidIcon = 49230,
-            _index = 13,
+            _index = 13
         },
         {
             Qpart = { [24960] = { 1 } },
-            Coord = { x = 1666.3, y = 1757.5 },
+            coord = { x = 1666.3, y = 1757.5 },
             Fillers = { [26799] = { 1 } },
             Range = 0.75,
             RaidIcon = 38895,
-            _index = 14,
+            _index = 14
         },
         {
             Qpart = { [24960] = { 3 } },
-            Coord = { x = 1704.3, y = 1740.8 },
+            coord = { x = 1704.3, y = 1740.8 },
             Fillers = { [26799] = { 1 } },
             Range = 0.75,
             RaidIcon = 49231,
-            _index = 15,
+            _index = 15
         },
         {
             Qpart = { [26799] = { 1 } },
-            Coord = { x = 1681.4, y = 1732.4 },
+            coord = { x = 1681.4, y = 1732.4 },
             Range = 23.85,
-            _index = 16,
+            _index = 16
         },
         {
             Done = { 26799 },
-            Coord = { x = 1675, y = 1690.5 },
-            _index = 17,
+            coord = { x = 1675, y = 1690.5 },
+            _index = 17
         },
         {
             Done = { 24960 },
-            Coord = { x = 1649.4, y = 1686 },
-            _index = 18,
+            coord = { x = 1649.4, y = 1686 },
+            _index = 18
         },
         {
             PickUp = { 25089 },
-            Coord = { x = 1649.4, y = 1686 },
-            _index = 19,
+            coord = { x = 1649.4, y = 1686 },
+            _index = 19
         },
         {
             PickUp = { 26800 },
-            Coord = { x = 1605.3, y = 1863 },
-            _index = 20,
+            coord = { x = 1605.3, y = 1863 },
+            _index = 20
         },
         {
             Waypoint = 26800,
-            Coord = { x = 1615.4, y = 1843.8 },
+            coord = { x = 1615.4, y = 1843.8 },
             Range = 4.58,
-            _index = 21,
+            _index = 21
         },
         {
             PickUp = { 26801 },
-            Coord = { x = 1639.4, y = 1843.7 },
-            _index = 22,
+            coord = { x = 1639.4, y = 1843.7 },
+            _index = 22
         },
         {
             Qpart = { [26800] = { 1 }, [26801] = { 1 } },
-            Coord = { x = 1570, y = 1925 },
+            coord = { x = 1570, y = 1925 },
             Range = 39.53,
-            _index = 23,
+            _index = 23
         },
         {
             Done = { 26800 },
-            Coord = { x = 1605.2, y = 1863.7 },
-            _index = 24,
+            coord = { x = 1605.2, y = 1863.7 },
+            _index = 24
         },
         {
             Waypoint = 26801,
-            Coord = { x = 1615.5, y = 1843.9 },
+            coord = { x = 1615.5, y = 1843.9 },
             Range = 4.56,
-            _index = 25,
+            _index = 25
         },
         {
             Done = { 26801 },
-            Coord = { x = 1640.3, y = 1843.4 },
-            _index = 26,
+            coord = { x = 1640.3, y = 1843.4 },
+            _index = 26
         },
         {
             PickUp = { 28651 },
-            Coord = { x = 1639.5, y = 1843.7 },
-            _index = 27,
+            coord = { x = 1639.5, y = 1843.7 },
+            _index = 27
         },
         {
             Done = { 28651 },
-            Coord = { x = 1639, y = 1848 },
-            _index = 28,
+            coord = { x = 1639, y = 1848 },
+            _index = 28
         },
         {
             PickUp = { 24961 },
-            Coord = { x = 1639, y = 1848 },
-            _index = 29,
+            coord = { x = 1639, y = 1848 },
+            _index = 29
         },
         {
             Waypoint = 24961,
-            Coord = { x = 1578.4, y = 1861.4 },
+            coord = { x = 1578.4, y = 1861.4 },
             Range = 4.65,
-            _index = 30,
+            _index = 30
         },
         {
             Waypoint = 24961,
-            Coord = { x = 1572, y = 1876 },
+            coord = { x = 1572, y = 1876 },
             Range = 4.61,
-            _index = 31,
+            _index = 31
         },
         {
             Waypoint = 24961,
-            Coord = { x = 1576.9, y = 1866 },
+            coord = { x = 1576.9, y = 1866 },
             Range = 5.15,
-            _index = 32,
+            _index = 32
         },
         {
             Qpart = { [24961] = { 1 } },
-            Coord = { x = 1556.5, y = 1855.5 },
+            coord = { x = 1556.5, y = 1855.5 },
             Range = 0.75,
             Gossip = 1,
             RaidIcon = 38910,
-            _index = 33,
+            _index = 33
         },
         {
             Done = { 24961 },
-            Coord = { x = 1638.5, y = 1847.5 },
-            _index = 34,
+            coord = { x = 1638.5, y = 1847.5 },
+            _index = 34
         },
         {
             PickUp = { 28672 },
-            Coord = { x = 1638.5, y = 1847.5 },
-            _index = 35,
+            coord = { x = 1638.5, y = 1847.5 },
+            _index = 35
         },
         {
             Done = { 28672 },
-            Coord = { x = 1544, y = 1996.7 },
-            _index = 36,
+            coord = { x = 1544, y = 1996.7 },
+            _index = 36
         },
         {
             PickUp = { 26802 },
-            Coord = { x = 1544, y = 1996.7 },
-            _index = 37,
+            coord = { x = 1544, y = 1996.7 },
+            _index = 37
         },
         {
             Qpart = { [26802] = { 1, 2 } },
-            Coord = { x = 1468.5, y = 2079.9 },
+            coord = { x = 1468.5, y = 2079.9 },
             Range = 49.44,
-            _index = 38,
+            _index = 38
         },
         {
             Done = { 26802 },
-            Coord = { x = 1543.8, y = 1995.9 },
-            _index = 39,
+            coord = { x = 1543.8, y = 1995.9 },
+            _index = 39
         },
         {
             PickUp = { 24973 },
-            Coord = { x = 1543.8, y = 1995.9 },
-            _index = 40,
+            coord = { x = 1543.8, y = 1995.9 },
+            _index = 40
         },
         {
             Waypoint = 24961,
-            Coord = { x = 1816.4, y = 2049.6 },
+            coord = { x = 1816.4, y = 2049.6 },
             Fillers = { [24973] = { 1 } },
             Range = 10.8,
-            _index = 41,
+            _index = 41
         },
         {
             Qpart = { [24973] = { 2 } },
-            Coord = { x = 1898, y = 2041.5 },
+            coord = { x = 1898, y = 2041.5 },
             Fillers = { [24973] = { 1 } },
             Range = 59.28,
-            _index = 42,
+            _index = 42
         },
         {
             Qpart = { [24973] = { 1 } },
-            Coord = { x = 1755.7, y = 2092.6 },
+            coord = { x = 1755.7, y = 2092.6 },
             Range = 50.68,
-            _index = 43,
+            _index = 43
         },
         {
             Done = { 24973 },
-            Coord = { x = 1543.8, y = 1996.4 },
-            _index = 44,
+            coord = { x = 1543.8, y = 1996.4 },
+            _index = 44
         },
         {
             PickUp = { 24970 },
-            Coord = { x = 1543.8, y = 1996.4 },
-            _index = 45,
+            coord = { x = 1543.8, y = 1996.4 },
+            _index = 45
         },
         {
             Done = { 24970 },
-            Coord = { x = 1417.9, y = 1963 },
-            _index = 46,
+            coord = { x = 1417.9, y = 1963 },
+            _index = 46
         },
         {
             PickUp = { 24971 },
-            Coord = { x = 1417.9, y = 1963 },
-            _index = 47,
+            coord = { x = 1417.9, y = 1963 },
+            _index = 47
         },
         {
             Qpart = { [24971] = { 1 } },
-            Coord = { x = 1384.9, y = 1765.7 },
+            coord = { x = 1384.9, y = 1765.7 },
             Fillers = { [24971] = { 2 } },
             Range = 0.75,
             RaidIcon = 49424,
-            _index = 48,
+            _index = 48
         },
         {
             Qpart = { [24971] = { 2 } },
-            Coord = { x = 1352.9, y = 1774.8 },
+            coord = { x = 1352.9, y = 1774.8 },
             Range = 50.41,
-            _index = 49,
+            _index = 49
         },
         {
             Done = { 24971 },
-            Coord = { x = 1640, y = 1843.7 },
-            _index = 50,
+            coord = { x = 1640, y = 1843.7 },
+            _index = 50
         },
         {
             PickUp = { 24972 },
-            Coord = { x = 1640, y = 1843.7 },
-            _index = 51,
+            coord = { x = 1640, y = 1843.7 },
+            _index = 51
         },
         {
             Waypoint = 24972,
-            Coord = { x = 1278, y = 2160.9 },
+            coord = { x = 1278, y = 2160.9 },
             Range = 12.89,
-            _index = 52,
+            _index = 52
         },
         {
             Waypoint = 24972,
-            Coord = { x = 1024.4, y = 2231.6 },
+            coord = { x = 1024.4, y = 2231.6 },
             Range = 10.49,
-            _index = 53,
+            _index = 53
         },
         {
             Done = { 24972 },
-            Coord = { x = 1011.4, y = 2221.1 },
-            _index = 54,
+            coord = { x = 1011.4, y = 2221.1 },
+            _index = 54
         },
         {
             PickUp = { 24978, 24975 },
-            Coord = { x = 1011.4, y = 2220.6 },
-            _index = 55,
+            coord = { x = 1011.4, y = 2220.6 },
+            _index = 55
         },
         {
             Waypoint = 24978,
-            Coord = { x = 1243.5, y = 2283.8 },
+            coord = { x = 1243.5, y = 2283.8 },
             Range = 10.49,
-            _index = 56,
+            _index = 56
         },
         {
             Qpart = { [24975] = { 1 }, [24978] = { 1 } },
-            Coord = { x = 1243.5, y = 2283.8 },
+            coord = { x = 1243.5, y = 2283.8 },
             Range = 0.75,
-            _index = 57,
+            _index = 57
         },
         {
             Done = { 24975, 24978 },
-            Coord = { x = 1011.4, y = 2220.6 },
-            _index = 58,
+            coord = { x = 1011.4, y = 2220.6 },
+            _index = 58
         },
         {
             PickUp = { 24980, 24976 },
-            Coord = { x = 1011.4, y = 2220.6 },
-            _index = 59,
+            coord = { x = 1011.4, y = 2220.6 },
+            _index = 59
         },
         {
             PickUp = { 24974 },
-            Coord = { x = 1011.4, y = 2220.6 },
+            coord = { x = 1011.4, y = 2220.6 },
             ExtraLineText = "UPSTAIRS",
-            _index = 60,
+            _index = 60
         },
         {
             Qpart = { [24976] = { 1 } },
-            Coord = { x = 820.5, y = 2198 },
+            coord = { x = 820.5, y = 2198 },
             Range = 0.75,
-            _index = 61,
+            _index = 61
         },
         {
             Qpart = { [24980] = { 1 } },
-            Coord = { x = 1483.8, y = 2388.5 },
+            coord = { x = 1483.8, y = 2388.5 },
             Range = 20,
-            _index = 62,
+            _index = 62
         },
         {
             DropQuest = 24979,
             DroppableQuest = { MobId = 1535, Qid = 24979, Text = "A Scarlet Letter" },
-            Coord = { x = 1483.8, y = 2388.5 },
-            _index = 63,
+            coord = { x = 1483.8, y = 2388.5 },
+            _index = 63
         },
         {
             Qpart = { [24979] = { 1 } },
-            Coord = { x = 1602.3, y = 2444.1 },
+            coord = { x = 1602.3, y = 2444.1 },
             ExtraLineText = "UP_TOWER",
             Range = 0.75,
             Gossip = 1,
-            _index = 64,
+            _index = 64
         },
         {
             Qpart = { [24976] = { 3 } },
-            Coord = { x = 1546.2, y = 2521.4 },
+            coord = { x = 1546.2, y = 2521.4 },
             Range = 0.75,
-            _index = 65,
+            _index = 65
         },
         {
             Qpart = { [24974] = { 1 } },
-            Coord = { x = 1434, y = 2575.5 },
+            coord = { x = 1434, y = 2575.5 },
             Button = { ["24974-1"] = 73108 },
             Range = 0.75,
-            _index = 66,
+            _index = 66
         },
         {
             Qpart = { [24976] = { 2 } },
-            Coord = { x = 1333.6, y = 2581.8 },
+            coord = { x = 1333.6, y = 2581.8 },
             Range = 20,
-            _index = 67,
+            _index = 67
         },
         {
             Qpart = { [24974] = { 2 } },
-            Coord = { x = 1011.4, y = 2220.6 },
+            coord = { x = 1011.4, y = 2220.6 },
             ExtraLineText = "UPSTAIRS",
             Range = 0.75,
-            _index = 68,
+            _index = 68
         },
         {
             Done = { 24974 },
-            Coord = { x = 1011.4, y = 2220.6 },
-            _index = 69,
+            coord = { x = 1011.4, y = 2220.6 },
+            _index = 69
         },
         {
             Done = { 24976, 24979, 24980 },
-            Coord = { x = 1011.4, y = 2220.6 },
+            coord = { x = 1011.4, y = 2220.6 },
             ExtraLineText = "DOWNSTAIRS",
-            _index = 70,
+            _index = 70
         },
         {
             PickUp = { 24977 },
-            Coord = { x = 1011.4, y = 2220.6 },
-            _index = 71,
+            coord = { x = 1011.4, y = 2220.6 },
+            _index = 71
         },
         {
             Done = { 24977 },
-            Coord = { x = 1014.7, y = 2251.1 },
-            _index = 72,
+            coord = { x = 1014.7, y = 2251.1 },
+            _index = 72
         },
         {
             PickUp = { 25038 },
-            Coord = { x = 1020.4, y = 2244.6 },
+            coord = { x = 1020.4, y = 2244.6 },
             ExtraLineText = "FROM_GORDO",
-            _index = 73,
+            _index = 73
         },
         {
             PickUp = { 24982, 25090 },
-            Coord = { x = 658.7, y = 2186 },
+            coord = { x = 658.7, y = 2186 },
             Fillers = { [25038] = { 1 } },
-            _index = 74,
+            _index = 74
         },
         {
             Qpart = { [25090] = { 1 } },
-            Coord = { x = 623.6, y = 2204.9 },
+            coord = { x = 623.6, y = 2204.9 },
             Range = 0.75,
-            _index = 75,
+            _index = 75
         },
         {
             Done = { 25090 },
-            Coord = { x = 658.7, y = 2186 },
-            _index = 76,
+            coord = { x = 658.7, y = 2186 },
+            _index = 76
         },
         {
             PickUp = { 6321 },
-            Coord = { x = 315.8, y = 2259.1 },
-            _index = 77,
+            coord = { x = 315.8, y = 2259.1 },
+            _index = 77
         },
         {
             Done = { 25038 },
-            Coord = { x = 316.3, y = 2251.3 },
+            coord = { x = 316.3, y = 2251.3 },
             ExtraLineText = "WANDERS",
-            _index = 78,
+            _index = 78
         },
         {
             PickUp = { 24990 },
-            Coord = { x = 316.3, y = 2251.3 },
+            coord = { x = 316.3, y = 2251.3 },
             ExtraLineText = "WANDERS",
-            _index = 79,
+            _index = 79
         },
         {
             PickUp = { 24981, 26964 },
-            Coord = { x = 298.1, y = 2273.3 },
-            _index = 80,
+            coord = { x = 298.1, y = 2273.3 },
+            _index = 80
         },
         {
             SetHS = 24982,
-            Coord = { x = 282.6, y = 2285.4 },
-            _index = 81,
+            coord = { x = 282.6, y = 2285.4 },
+            _index = 81
         },
         {
             Done = { 24982 },
-            Coord = { x = 276.8, y = 2311.9 },
+            coord = { x = 276.8, y = 2311.9 },
             ExtraLineText = "UPSTAIRS",
-            _index = 82,
+            _index = 82
         },
         {
             PickUp = { 24983 },
-            Coord = { x = 276.8, y = 2311.9 },
+            coord = { x = 276.8, y = 2311.9 },
             ExtraLineText = "UPSTAIRS",
-            _index = 83,
+            _index = 83
         },
         {
             Done = { 6321 },
-            Coord = { x = 372.6, y = 2273.6 },
+            coord = { x = 372.6, y = 2273.6 },
             LeaveQuest = 6323,
-            _index = 84,
+            _index = 84
         },
         {
             Done = { 24983 },
-            Coord = { x = 74.2, y = 2022.5 },
+            coord = { x = 74.2, y = 2022.5 },
             Fillers = { [24990] = { 1 } },
             LeaveQuest = 6323,
-            _index = 85,
+            _index = 85
         },
         {
             PickUp = { 24988 },
-            Coord = { x = 84.4, y = 2017.7 },
-            _index = 86,
+            coord = { x = 84.4, y = 2017.7 },
+            _index = 86
         },
         {
             Qpart = { [24981] = { 1, 2, 3 } },
             DropQuest = 24992,
             DroppableQuest = { MobId = 1547, Qid = 24992, Text = "Escape From Gilneas" },
-            Coord = { x = 622.9, y = 1805 },
+            coord = { x = 622.9, y = 1805 },
             Fillers = { [24988] = { 1 }, [24990] = { 1 } },
             Range = 1,
-            _index = 87,
+            _index = 87
         },
         {
             Done = { 24988 },
-            Coord = { x = 84.4, y = 2017.7 },
-            _index = 88,
+            coord = { x = 84.4, y = 2017.7 },
+            _index = 88
         },
         {
             PickUp = { 24989 },
-            Coord = { x = 74.5, y = 2023.2 },
-            _index = 89,
+            coord = { x = 74.5, y = 2023.2 },
+            _index = 89
         },
         {
             Done = { 24989 },
-            Coord = { x = 276.8, y = 2313.6 },
-            _index = 90,
+            coord = { x = 276.8, y = 2313.6 },
+            _index = 90
         },
         {
             Done = { 24990 },
-            Coord = { x = 318.8, y = 2246.3 },
-            _index = 91,
+            coord = { x = 318.8, y = 2246.3 },
+            _index = 91
         },
         {
             PickUp = { 24996 },
-            Coord = { x = 318.8, y = 2246.3 },
-            _index = 92,
+            coord = { x = 318.8, y = 2246.3 },
+            _index = 92
         },
         {
             Done = { 24996 },
-            Coord = { x = 320.3, y = 2244.8 },
+            coord = { x = 320.3, y = 2244.8 },
             ExtraLineText = "UPSTAIRS",
-            _index = 93,
+            _index = 93
         },
         {
             Done = { 24992, 24981 },
-            Coord = { x = 298, y = 2273.9 },
-            _index = 94,
+            coord = { x = 298, y = 2273.9 },
+            _index = 94
         },
         {
             PickUp = { 24993 },
-            Coord = { x = 298, y = 2273.9 },
-            _index = 95,
+            coord = { x = 298, y = 2273.9 },
+            _index = 95
         },
         {
             Qpart = { [24993] = { 1 } },
-            Coord = { x = 332, y = 2280.8 },
+            coord = { x = 332, y = 2280.8 },
             ExtraLineText = "STEALTHED",
             Range = 1,
-            _index = 96,
+            _index = 96
         },
         {
             Done = { 24993 },
-            Coord = { x = 298, y = 2273.9 },
-            _index = 97,
+            coord = { x = 298, y = 2273.9 },
+            _index = 97
         },
         {
             Grind = 10,
-            _index = 98,
+            _index = 98
         },
         {
             RouteCompleted = 1,
-            _index = 99,
-        },
+            _index = 99
+        }
     }
 
     APR.RouteQuestStepList["21-Silverpine"] = {
         {
             Waypoint = 26965,
-            Coord = { x = 653.6, y = 1475.2 },
+            coord = { x = 653.6, y = 1475.2 },
             Range = 22.5,
-            _index = 1,
+            _index = 1
         },
         {
             PickUp = { 26965 },
-            Coord = { x = 1038.7, y = 1383.5 },
-            _index = 2,
+            coord = { x = 1038.7, y = 1383.5 },
+            _index = 2
         },
         {
             GetFP = 645,
-            Coord = { x = 1017.9, y = 1423.9 },
+            coord = { x = 1017.9, y = 1423.9 },
             Range = 5.91,
             ETA = 170,
             SpecialETAHide = 1,
-            _index = 3,
+            _index = 3
         },
         {
             PickUp = { 28089 },
-            Coord = { x = 1046.9, y = 1376 },
+            coord = { x = 1046.9, y = 1376 },
             SpecialETAHide = 1,
-            _index = 4,
+            _index = 4
         },
         {
             Qpart = { [26965] = { 1 } },
-            Coord = { x = 1038.7, y = 1383.5 },
+            coord = { x = 1038.7, y = 1383.5 },
             Range = 5.79,
-            _index = 5,
+            _index = 5
         },
         {
             Done = { 26965 },
-            Coord = { x = 1038.9, y = 1383.5 },
-            _index = 6,
+            coord = { x = 1038.9, y = 1383.5 },
+            _index = 6
         },
         {
             PickUp = { 26989 },
-            Coord = { x = 1038.9, y = 1383.5 },
-            _index = 7,
+            coord = { x = 1038.9, y = 1383.5 },
+            _index = 7
         },
         {
             PickUp = { 26995 },
-            Coord = { x = 1085.5, y = 1432.2 },
-            _index = 8,
+            coord = { x = 1085.5, y = 1432.2 },
+            _index = 8
         },
         {
             PickUp = { 26992 },
-            Coord = { x = 1066.5, y = 1409.8 },
-            _index = 9,
+            coord = { x = 1066.5, y = 1409.8 },
+            _index = 9
         },
         {
             Qpart = { [26989] = { 1 }, [26992] = { 1 }, [26995] = { 1 } },
-            Coord = { x = 1043.5, y = 1317.5 },
+            coord = { x = 1043.5, y = 1317.5 },
             Range = 37.98,
-            _index = 10,
+            _index = 10
         },
         {
             Done = { 26989 },
-            Coord = { x = 1039.2, y = 1383.3 },
-            _index = 11,
+            coord = { x = 1039.2, y = 1383.3 },
+            _index = 11
         },
         {
             Done = { 26995 },
-            Coord = { x = 1086.5, y = 1432.4 },
-            _index = 12,
+            coord = { x = 1086.5, y = 1432.4 },
+            _index = 12
         },
         {
             Done = { 26992 },
-            Coord = { x = 1066.2, y = 1409.8 },
-            _index = 13,
+            coord = { x = 1066.2, y = 1409.8 },
+            _index = 13
         },
         {
             PickUp = { 26998 },
-            Coord = { x = 1087, y = 1431 },
-            _index = 14,
+            coord = { x = 1087, y = 1431 },
+            _index = 14
         },
         {
             Qpart = { [26998] = { 1 } },
-            Coord = { x = 1018.6, y = 1424 },
+            coord = { x = 1018.6, y = 1424 },
             Range = 0.75,
             Gossip = 1,
-            _index = 15,
+            _index = 15
         },
         {
             Qpart = { [26998] = { 2 } },
-            Coord = { x = 1019.4, y = 1315.5 },
+            coord = { x = 1019.4, y = 1315.5 },
             Range = 251.6,
-            _index = 16,
+            _index = 16
         },
         {
             Done = { 26998 },
-            Coord = { x = 1088, y = 1432.2 },
-            _index = 17,
+            coord = { x = 1088, y = 1432.2 },
+            _index = 17
         },
         {
             PickUp = { 27039 },
-            Coord = { x = 1011.2, y = 1415.4 },
-            _index = 18,
+            coord = { x = 1011.2, y = 1415.4 },
+            _index = 18
         },
         {
             Done = { 27039 },
-            Coord = { x = 1187, y = 1304.4 },
-            _index = 19,
+            coord = { x = 1187, y = 1304.4 },
+            _index = 19
         },
         {
             PickUp = { 27045 },
-            Coord = { x = 1186.8, y = 1305.3 },
-            _index = 20,
+            coord = { x = 1186.8, y = 1305.3 },
+            _index = 20
         },
         {
             Waypoint = 27045,
-            Coord = { x = 1207.5, y = 1293.5 },
+            coord = { x = 1207.5, y = 1293.5 },
             Range = 6.65,
-            _index = 21,
+            _index = 21
         },
         {
             Waypoint = 27045,
-            Coord = { x = 1220.9, y = 1303.5 },
+            coord = { x = 1220.9, y = 1303.5 },
             Range = 8.33,
-            _index = 22,
+            _index = 22
         },
         {
             Waypoint = 27045,
-            Coord = { x = 1220.5, y = 1297.9 },
+            coord = { x = 1220.5, y = 1297.9 },
             Range = 2.25,
-            _index = 23,
+            _index = 23
         },
         {
             Waypoint = 27045,
-            Coord = { x = 1211, y = 1298 },
+            coord = { x = 1211, y = 1298 },
             Range = 5.15,
-            _index = 24,
+            _index = 24
         },
         {
             Waypoint = 27045,
-            Coord = { x = 1206.5, y = 1309 },
+            coord = { x = 1206.5, y = 1309 },
             ExtraLineText = "NOT_SKIP_VIDEO",
             Range = 4.69,
-            _index = 25,
+            _index = 25
         },
         {
             Qpart = { [27045] = { 1 } },
-            Coord = { x = 1211.7, y = 1315.3 },
+            coord = { x = 1211.7, y = 1315.3 },
             ExtraLineText = "NOT_SKIP_VIDEO",
             Range = 0.75,
             Dontskipvid = 1,
-            _index = 26,
+            _index = 26
         },
         {
             Done = { 27045 },
-            Coord = { x = 1011, y = 1415.3 },
-            _index = 27,
+            coord = { x = 1011, y = 1415.3 },
+            _index = 27
         },
         {
             PickUp = { 27056 },
-            Coord = { x = 1011, y = 1415.3 },
-            _index = 28,
+            coord = { x = 1011, y = 1415.3 },
+            _index = 28
         },
         {
             Done = { 27056 },
-            Coord = { x = 1040.8, y = 1381 },
-            _index = 29,
+            coord = { x = 1040.8, y = 1381 },
+            _index = 29
         },
         {
             PickUp = { 27065 },
-            Coord = { x = 1040.8, y = 1381 },
-            _index = 30,
+            coord = { x = 1040.8, y = 1381 },
+            _index = 30
         },
         {
             GetFP = 681,
-            Coord = { x = 1519.9, y = 1054.5 },
+            coord = { x = 1519.9, y = 1054.5 },
             Range = 5.91,
-            _index = 31,
+            _index = 31
         },
         {
             Done = { 27065 },
-            Coord = { x = 1601.7, y = 1069 },
-            _index = 32,
+            coord = { x = 1601.7, y = 1069 },
+            _index = 32
         },
         {
             PickUp = { 27073, 27069 },
-            Coord = { x = 1602.9, y = 1069.4 },
-            _index = 33,
+            coord = { x = 1602.9, y = 1069.4 },
+            _index = 33
         },
         {
             PickUp = { 27082 },
-            Coord = { x = 1570.3, y = 1081.5 },
-            _index = 34,
+            coord = { x = 1570.3, y = 1081.5 },
+            _index = 34
         },
         {
             Qpart = { [27069] = { 1 }, [27073] = { 1 } },
-            Coord = { x = 1806, y = 897.2 },
+            coord = { x = 1806, y = 897.2 },
             Fillers = { [27082] = { 1 } },
             Range = 71.24,
-            _index = 35,
+            _index = 35
         },
         {
             Qpart = { [27082] = { 1 } },
-            Coord = { x = 1688.5, y = 1025.5 },
+            coord = { x = 1688.5, y = 1025.5 },
             Range = 130.15,
-            _index = 36,
+            _index = 36
         },
         {
             Done = { 27073, 27069 },
-            Coord = { x = 1601.8, y = 1069.9 },
-            _index = 37,
+            coord = { x = 1601.8, y = 1069.9 },
+            _index = 37
         },
         {
             PickUp = { 27095, 27093 },
-            Coord = { x = 1602.3, y = 1069.8 },
-            _index = 38,
+            coord = { x = 1602.3, y = 1069.8 },
+            _index = 38
         },
         {
             Done = { 27082 },
-            Coord = { x = 1568.9, y = 1081.5 },
-            _index = 39,
+            coord = { x = 1568.9, y = 1081.5 },
+            _index = 39
         },
         {
             PickUp = { 27088 },
-            Coord = { x = 1568.9, y = 1081.5 },
-            _index = 40,
+            coord = { x = 1568.9, y = 1081.5 },
+            _index = 40
         },
         {
             Waypoint = 27095,
-            Coord = { x = 1951.5, y = 1282.5 },
+            coord = { x = 1951.5, y = 1282.5 },
             Fillers = { [27088] = { 1 }, [27093] = { 1 }, [27095] = { 1 } },
             Button = { ["27088-1"] = 60808 },
             Range = 9.62,
-            _index = 41,
+            _index = 41
         },
         {
             Waypoint = 27093,
-            Coord = { x = 1968, y = 1342.5 },
+            coord = { x = 1968, y = 1342.5 },
             Fillers = { [27093] = { 1 }, [27095] = { 1 } },
             Range = 6.34,
-            _index = 42,
+            _index = 42
         },
         {
             Waypoint = 27093,
-            Coord = { x = 1990.7, y = 1360 },
+            coord = { x = 1990.7, y = 1360 },
             Fillers = { [27093] = { 1 }, [27095] = { 1 } },
             Range = 6.79,
-            _index = 43,
+            _index = 43
         },
         {
             Waypoint = 27093,
-            Coord = { x = 2011.8, y = 1403.5 },
+            coord = { x = 2011.8, y = 1403.5 },
             Fillers = { [27093] = { 1 }, [27095] = { 1 } },
             Range = 6.21,
-            _index = 44,
+            _index = 44
         },
         {
             Waypoint = 27093,
-            Coord = { x = 1991, y = 1445.2 },
+            coord = { x = 1991, y = 1445.2 },
             Fillers = { [27093] = { 1 }, [27095] = { 1 } },
             Range = 9.81,
-            _index = 45,
+            _index = 45
         },
         {
             PickUp = { 27094 },
-            Coord = { x = 1958, y = 1435.9 },
-            _index = 46,
+            coord = { x = 1958, y = 1435.9 },
+            _index = 46
         },
         {
             Qpart = { [27094] = { 1 } },
-            Coord = { x = 1939.5, y = 1422.8 },
+            coord = { x = 1939.5, y = 1422.8 },
             Fillers = { [27093] = { 1 }, [27095] = { 1 } },
             Range = 0.75,
-            _index = 47,
+            _index = 47
         },
         {
             Qpart = { [27093] = { 1 }, [27095] = { 1 } },
-            Coord = { x = 1910.5, y = 1238.5 },
+            coord = { x = 1910.5, y = 1238.5 },
             Fillers = { [27088] = { 1 } },
             Button = { ["27088-1"] = 60808 },
             Range = 121.24,
-            _index = 48,
+            _index = 48
         },
         {
             Done = { 27095 },
-            Coord = { x = 1917.4, y = 1169.8 },
-            _index = 49,
+            coord = { x = 1917.4, y = 1169.8 },
+            _index = 49
         },
         {
             Qpart = { [27088] = { 1 } },
-            Coord = { x = 1710.2, y = 820.1 },
+            coord = { x = 1710.2, y = 820.1 },
             Button = { ["27088-1"] = 60808 },
             Range = 29.95,
-            _index = 50,
+            _index = 50
         },
         {
             Done = { 27094, 27093 },
-            Coord = { x = 1602.3, y = 1070.2 },
-            _index = 51,
+            coord = { x = 1602.3, y = 1070.2 },
+            _index = 51
         },
         {
             Done = { 27088 },
-            Coord = { x = 1570, y = 1082.4 },
-            _index = 52,
+            coord = { x = 1570, y = 1082.4 },
+            _index = 52
         },
         {
             PickUp = { 27096 },
-            Coord = { x = 1602, y = 1068.8 },
-            _index = 53,
+            coord = { x = 1602, y = 1068.8 },
+            _index = 53
         },
         {
             UseFlightPath = 27096,
             Name = "ForsakenHighCommand,SilverpineForest",
             NodeID = 645,
-            Coord = { x = 1520.9, y = 1054.2 },
+            coord = { x = 1520.9, y = 1054.2 },
             ETA = 28,
-            _index = 54,
+            _index = 54
         },
         {
             Done = { 27096 },
-            Coord = { x = 1041.5, y = 1381.7 },
-            _index = 55,
+            coord = { x = 1041.5, y = 1381.7 },
+            _index = 55
         },
         {
             PickUp = { 27097 },
-            Coord = { x = 1041.3, y = 1382 },
-            _index = 56,
+            coord = { x = 1041.3, y = 1382 },
+            _index = 56
         },
         {
             Waypoint = 27097,
-            Coord = { x = 730.9, y = 1102 },
+            coord = { x = 730.9, y = 1102 },
             Range = 43.05,
-            _index = 57,
+            _index = 57
         },
         {
             Qpart = { [27097] = { 1 } },
-            Coord = { x = 727.1, y = 1040.7 },
+            coord = { x = 727.1, y = 1040.7 },
             Range = 39.86,
-            _index = 58,
+            _index = 58
         },
         {
             Done = { 27097 },
-            Coord = { x = 701.7, y = 910.7 },
-            _index = 59,
+            coord = { x = 701.7, y = 910.7 },
+            _index = 59
         },
         {
             PickUp = { 27099 },
-            Coord = { x = 701.7, y = 910.7 },
-            _index = 60,
+            coord = { x = 701.7, y = 910.7 },
+            _index = 60
         },
         {
             Qpart = { [27099] = { 1 } },
-            Coord = { x = 689.5, y = 982 },
+            coord = { x = 689.5, y = 982 },
             Range = 0.75,
             Dontskipvid = 1,
-            _index = 61,
+            _index = 61
         },
         {
             Done = { 27099 },
-            Coord = { x = 1041.4, y = 1381.8 },
-            _index = 62,
+            coord = { x = 1041.4, y = 1381.8 },
+            _index = 62
         },
         {
             PickUp = { 27098 },
-            Coord = { x = 1041.4, y = 1381.8 },
-            _index = 63,
+            coord = { x = 1041.4, y = 1381.8 },
+            _index = 63
         },
         {
             Done = { 27098 },
-            Coord = { x = 1564.3, y = 500.3 },
-            _index = 64,
+            coord = { x = 1564.3, y = 500.3 },
+            _index = 64
         },
         {
             PickUp = { 27180 },
-            Coord = { x = 1564.3, y = 500.3 },
-            _index = 65,
+            coord = { x = 1564.3, y = 500.3 },
+            _index = 65
         },
         {
             GetFP = 10,
-            Coord = { x = 1544, y = 477.7 },
+            coord = { x = 1544, y = 477.7 },
             Range = 5.91,
-            _index = 66,
+            _index = 66
         },
         {
             PickUp = { 27226, 27231 },
-            Coord = { x = 1527.9, y = 492.8 },
-            _index = 67,
+            coord = { x = 1527.9, y = 492.8 },
+            _index = 67
         },
         {
             Waypoint = 27226,
-            Coord = { x = 1415.4, y = 569.2 },
+            coord = { x = 1415.4, y = 569.2 },
             Range = 30.2,
-            _index = 68,
+            _index = 68
         },
         {
             Qpart = { [27226] = { 1 }, [27231] = { 1 } },
-            Coord = { x = 1218.7, y = 699.5 },
+            coord = { x = 1218.7, y = 699.5 },
             Button = { ["27226-1"] = 60870 },
             Range = 74.6,
-            _index = 69,
+            _index = 69
         },
         {
             Done = { 27231 },
-            Coord = { x = 964.5, y = 709.9 },
-            _index = 70,
+            coord = { x = 964.5, y = 709.9 },
+            _index = 70
         },
         {
             PickUp = { 27232 },
-            Coord = { x = 964.5, y = 709.9 },
-            _index = 71,
+            coord = { x = 964.5, y = 709.9 },
+            _index = 71
         },
         {
             Qpart = { [27232] = { 1 } },
-            Coord = { x = 935, y = 712.9 },
+            coord = { x = 935, y = 712.9 },
             Range = 0.75,
-            _index = 72,
+            _index = 72
         },
         {
             Waypoint = 27232,
-            Coord = { x = 1081.3, y = 640.5 },
+            coord = { x = 1081.3, y = 640.5 },
             Range = 21.69,
-            _index = 73,
+            _index = 73
         },
         {
             Waypoint = 27232,
-            Coord = { x = 1314.2, y = 229.5 },
+            coord = { x = 1314.2, y = 229.5 },
             Range = 47.65,
-            _index = 74,
+            _index = 74
         },
         {
             PickUp = { 27181 },
-            Coord = { x = 1419.9, y = 185.6 },
+            coord = { x = 1419.9, y = 185.6 },
             ExtraLineText = "KILL_BLOODFANG_STALKER",
-            _index = 75,
+            _index = 75
         },
         {
             Qpart = { [27181] = { 1 } },
-            Coord = { x = 1450.5, y = 183.6 },
+            coord = { x = 1450.5, y = 183.6 },
             Fillers = { [27180] = { 1 } },
             Range = 69.83,
             RaidIcon = 45197,
-            _index = 76,
+            _index = 76
         },
         {
             Done = { 27181 },
-            Coord = { x = 1524.5, y = 280.8 },
-            _index = 77,
+            coord = { x = 1524.5, y = 280.8 },
+            _index = 77
         },
         {
             PickUp = { 27193 },
-            Coord = { x = 1524.5, y = 280.8 },
-            _index = 78,
+            coord = { x = 1524.5, y = 280.8 },
+            _index = 78
         },
         {
             Qpart = { [27193] = { 1 } },
-            Coord = { x = 1525.4, y = 145.1 },
+            coord = { x = 1525.4, y = 145.1 },
             Fillers = { [27180] = { 1 } },
             Range = 0.69,
             RaidIcon = 45197,
-            _index = 79,
+            _index = 79
         },
         {
             Done = { 27193 },
-            Coord = { x = 1526, y = 144.6 },
-            _index = 80,
+            coord = { x = 1526, y = 144.6 },
+            _index = 80
         },
         {
             PickUp = { 27194 },
-            Coord = { x = 1526, y = 144.6 },
-            _index = 81,
+            coord = { x = 1526, y = 144.6 },
+            _index = 81
         },
         {
             Qpart = { [27180] = { 1 } },
-            Coord = { x = 1526, y = 144.6 },
+            coord = { x = 1526, y = 144.6 },
             Range = 65.47,
             RaidIcon = 45197,
-            _index = 82,
+            _index = 82
         },
         {
             Done = { 27232, 27226 },
-            Coord = { x = 1527.3, y = 493.7 },
-            _index = 83,
+            coord = { x = 1527.3, y = 493.7 },
+            _index = 83
         },
         {
             Done = { 27180 },
-            Coord = { x = 1565, y = 500.6 },
-            _index = 84,
+            coord = { x = 1565, y = 500.6 },
+            _index = 84
         },
         {
             Waypoint = 27194,
-            Coord = { x = 1513, y = 444.8 },
+            coord = { x = 1513, y = 444.8 },
             Range = 28.32,
-            _index = 85,
+            _index = 85
         },
         {
             Waypoint = 27194,
-            Coord = { x = 1409.8, y = 353.3 },
+            coord = { x = 1409.8, y = 353.3 },
             Range = 28.18,
-            _index = 86,
+            _index = 86
         },
         {
             Waypoint = 27194,
-            Coord = { x = 1129.5, y = 311.8 },
+            coord = { x = 1129.5, y = 311.8 },
             Range = 18.86,
-            _index = 87,
+            _index = 87
         },
         {
             Done = { 27194 },
-            Coord = { x = 1103, y = 370.3 },
-            _index = 88,
+            coord = { x = 1103, y = 370.3 },
+            _index = 88
         },
         {
             PickUp = { 27195 },
-            Coord = { x = 1103, y = 370.3 },
-            _index = 89,
+            coord = { x = 1103, y = 370.3 },
+            _index = 89
         },
         {
             Qpart = { [27195] = { 1 } },
-            Coord = { x = 1028.8, y = 415.8 },
+            coord = { x = 1028.8, y = 415.8 },
             ExtraLineText = "SKIP_AFTER_THROWN",
             Range = 0.1,
             RaidIcon = 45228,
-            _index = 90,
+            _index = 90
         },
         {
             Waypoint = 27195,
-            Coord = { x = 1078, y = 378.2 },
+            coord = { x = 1078, y = 378.2 },
             Range = 16.33,
-            _index = 91,
+            _index = 91
         },
         {
             Waypoint = 27195,
-            Coord = { x = 1412.5, y = 568.2 },
+            coord = { x = 1412.5, y = 568.2 },
             Range = 31.08,
-            _index = 92,
+            _index = 92
         },
         {
             Done = { 27195 },
-            Coord = { x = 1565.5, y = 501.1 },
-            _index = 93,
+            coord = { x = 1565.5, y = 501.1 },
+            _index = 93
         },
         {
             PickUp = { 27290 },
-            Coord = { x = 1565.5, y = 501.1 },
-            _index = 94,
+            coord = { x = 1565.5, y = 501.1 },
+            _index = 94
         },
         {
             RouteCompleted = 1,
-            _index = 95,
-        },
+            _index = 95
+        }
     }
 
     APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
         {
             Done = { 27290 },
-            Coord = { x = 1632.5, y = -928.7 },
-            _index = 1,
+            coord = { x = 1632.5, y = -928.7 },
+            _index = 1
         },
         {
             PickUp = { 27342 },
-            Coord = { x = 1632.5, y = -928.7 },
+            coord = { x = 1632.5, y = -928.7 },
             NpcDismount = 45312,
-            _index = 2,
+            _index = 2
         },
         {
             PickUp = { 27333, 27345 },
-            Coord = { x = 1630.4, y = -917.3 },
-            _index = 3,
+            coord = { x = 1630.4, y = -917.3 },
+            _index = 3
         },
         {
             GetFP = 646,
-            Coord = { x = 1637.9, y = -905.2 },
+            coord = { x = 1637.9, y = -905.2 },
             Range = 5.91,
-            _index = 4,
+            _index = 4
         },
         {
             Qpart = { [27345] = { 1 } },
             DroppableQuest = { MobId = 45301, Qid = 27322, Text = "Korokthe Colossus" },
-            Coord = { x = 2000.5, y = -993.5 },
+            coord = { x = 2000.5, y = -993.5 },
             Fillers = { [27333] = { 1 } },
             Range = 0.69,
-            _index = 5,
+            _index = 5
         },
         {
             DropQuest = 27322,
             DroppableQuest = { MobId = 45301, Qid = 27322, Text = "Korokthe Colossus" },
-            Coord = { x = 2000.5, y = -993.5 },
+            coord = { x = 2000.5, y = -993.5 },
             Fillers = { [27333] = { 1 } },
-            _index = 6,
+            _index = 6
         },
         {
             Qpart = { [27333] = { 1 } },
-            Coord = { x = 1806.5, y = -1029.6 },
+            coord = { x = 1806.5, y = -1029.6 },
             Range = 97.65,
-            _index = 7,
+            _index = 7
         },
         {
             Qpart = { [27342] = { 1 } },
-            Coord = { x = 1492.4, y = -1136.5 },
+            coord = { x = 1492.4, y = -1136.5 },
             Range = 100.49,
             NpcDismount = 45312,
-            _index = 8,
+            _index = 8
         },
         {
             Done = { 27333, 27345, 27322, 27342 },
-            Coord = { x = 1630.8, y = -919.8 },
+            coord = { x = 1630.8, y = -919.8 },
             NpcDismount = 45312,
-            _index = 9,
+            _index = 9
         },
         {
             PickUp = { 27349 },
-            Coord = { x = 1630.9, y = -917.5 },
-            _index = 10,
+            coord = { x = 1630.9, y = -917.5 },
+            _index = 10
         },
         {
             Qpart = { [27349] = { 1 } },
-            Coord = { x = 1799.5, y = -1211.1 },
+            coord = { x = 1799.5, y = -1211.1 },
             Range = 0.75,
-            _index = 11,
+            _index = 11
         },
         {
             Done = { 27349 },
-            Coord = { x = 1799.5, y = -1211.1 },
-            _index = 12,
+            coord = { x = 1799.5, y = -1211.1 },
+            _index = 12
         },
         {
             PickUp = { 27350 },
-            Coord = { x = 1799.5, y = -1211.1 },
-            _index = 13,
+            coord = { x = 1799.5, y = -1211.1 },
+            _index = 13
         },
         {
             Done = { 27350 },
-            Coord = { x = 1375, y = -1249 },
-            _index = 14,
+            coord = { x = 1375, y = -1249 },
+            _index = 14
         },
         {
             PickUp = { 27364 },
-            Coord = { x = 1375, y = -1249 },
-            _index = 15,
+            coord = { x = 1375, y = -1249 },
+            _index = 15
         },
         {
             PickUp = { 27360 },
-            Coord = { x = 1375, y = -1249 },
-            _index = 16,
+            coord = { x = 1375, y = -1249 },
+            _index = 16
         },
         {
             Qpart = { [27364] = { 1 } },
-            Coord = { x = 1587.7, y = -1528.6 },
+            coord = { x = 1587.7, y = -1528.6 },
             Fillers = { [27360] = { 1 } },
             Range = 0.75,
-            _index = 17,
+            _index = 17
         },
         {
             Done = { 27364 },
-            Coord = { x = 1585, y = -1523.1 },
-            _index = 18,
+            coord = { x = 1585, y = -1523.1 },
+            _index = 18
         },
         {
             PickUp = { 27401 },
-            Coord = { x = 1586.3, y = -1524.9 },
-            _index = 19,
+            coord = { x = 1586.3, y = -1524.9 },
+            _index = 19
         },
         {
             Qpart = { [27401] = { 1 } },
-            Coord = { x = 1712.5, y = -1460.5 },
+            coord = { x = 1712.5, y = -1460.5 },
             Fillers = { [27360] = { 1 } },
             Range = 0.75,
             Dontskipvid = 1,
-            _index = 20,
+            _index = 20
         },
         {
             Done = { 27401 },
-            Coord = { x = 1718.2, y = -1464.9 },
-            _index = 21,
+            coord = { x = 1718.2, y = -1464.9 },
+            _index = 21
         },
         {
             PickUp = { 27405 },
-            Coord = { x = 1718.2, y = -1464.9 },
-            _index = 22,
+            coord = { x = 1718.2, y = -1464.9 },
+            _index = 22
         },
         {
             Qpart = { [27360] = { 1 } },
-            Coord = { x = 1712.4, y = -1464.1 },
+            coord = { x = 1712.4, y = -1464.1 },
             Range = 38.66,
-            _index = 23,
+            _index = 23
         },
         {
             Done = { 27360 },
-            Coord = { x = 1375.3, y = -1248.4 },
-            _index = 24,
+            coord = { x = 1375.3, y = -1248.4 },
+            _index = 24
         },
         {
             Done = { 27405 },
-            Coord = { x = 1144.3, y = -1164.1 },
-            _index = 25,
+            coord = { x = 1144.3, y = -1164.1 },
+            _index = 25
         },
         {
             PickUp = { 27406 },
-            Coord = { x = 1144.3, y = -1164.1 },
+            coord = { x = 1144.3, y = -1164.1 },
             NpcDismount = 45312,
-            _index = 26,
+            _index = 26
         },
         {
             Waypoint = 27423,
-            Coord = { x = 1117.4, y = -1236.5 },
+            coord = { x = 1117.4, y = -1236.5 },
             Range = 20.87,
-            _index = 27,
+            _index = 27
         },
         {
             Qpart = { [27423] = { 1 } },
-            Coord = { x = 951.7, y = -1886.4 },
+            coord = { x = 951.7, y = -1886.4 },
             Range = 121.31,
-            _index = 28,
+            _index = 28
         },
         {
             Done = { 27423 },
-            Coord = { x = 971, y = -1888.5 },
-            _index = 29,
+            coord = { x = 971, y = -1888.5 },
+            _index = 29
         },
         {
             Qpart = { [27406] = { 1 } },
-            Coord = { x = 931.9, y = -2120.2 },
+            coord = { x = 931.9, y = -2120.2 },
             Fillers = { [27423] = { 1 } },
             Range = 0.75,
             NpcDismount = 45312,
-            _index = 30,
+            _index = 30
         },
         {
             Done = { 27406 },
-            Coord = { x = 932.1, y = -2120.4 },
+            coord = { x = 932.1, y = -2120.4 },
             NpcDismount = 45312,
-            _index = 31,
+            _index = 31
         },
         {
             PickUp = { 27438 },
-            Coord = { x = 932.7, y = -2120.5 },
+            coord = { x = 932.7, y = -2120.5 },
             NpcDismount = 45312,
-            _index = 32,
+            _index = 32
         },
         {
             RouteCompleted = 1,
-            _index = 33,
-        },
+            _index = 33
+        }
     }
 
     APR.RouteQuestStepList["21-Silverpine2"] = {
         {
             Done = { 27438 },
-            Coord = { x = 1276, y = -184 },
+            coord = { x = 1276, y = -184 },
             ETA = 132,
             NpcDismount = 45312,
-            _index = 1,
+            _index = 1
         },
         {
             PickUp = { 27472 },
-            Coord = { x = 1276, y = -184.5 },
-            _index = 2,
+            coord = { x = 1276, y = -184.5 },
+            _index = 2
         },
         {
             GetFP = 654,
-            Coord = { x = 1314.5, y = -114.3 },
+            coord = { x = 1314.5, y = -114.3 },
             Range = 5.91,
             ETA = 85,
             SpecialETAHide = 1,
-            _index = 3,
+            _index = 3
         },
         {
             Qpart = { [27472] = { 1 } },
-            Coord = { x = 1271.2, y = -155.7 },
+            coord = { x = 1271.2, y = -155.7 },
             Range = 0.75,
-            _index = 4,
+            _index = 4
         },
         {
             Done = { 27472 },
-            Coord = { x = 1270.8, y = -153.2 },
-            _index = 5,
+            coord = { x = 1270.8, y = -153.2 },
+            _index = 5
         },
         {
             PickUp = { 27474 },
-            Coord = { x = 1270.8, y = -153.2 },
-            _index = 6,
+            coord = { x = 1270.8, y = -153.2 },
+            _index = 6
         },
         {
             PickUp = { 27475 },
-            Coord = { x = 1271, y = -144.4 },
-            _index = 7,
+            coord = { x = 1271, y = -144.4 },
+            _index = 7
         },
         {
             Qpart = { [27474] = { 1 } },
-            Coord = { x = 783.9, y = -131.9 },
+            coord = { x = 783.9, y = -131.9 },
             Fillers = { [27475] = { 1 } },
             Range = 0.69,
-            _index = 8,
+            _index = 8
         },
         {
             Qpart = { [27475] = { 1 } },
-            Coord = { x = 783.9, y = -131.9 },
+            coord = { x = 783.9, y = -131.9 },
             Range = 25.37,
-            _index = 9,
+            _index = 9
         },
         {
             Done = { 27474, 27475 },
-            Coord = { x = 1268.4, y = -149.5 },
-            _index = 10,
+            coord = { x = 1268.4, y = -149.5 },
+            _index = 10
         },
         {
             PickUp = { 27476 },
-            Coord = { x = 1270, y = -152.7 },
-            _index = 11,
+            coord = { x = 1270, y = -152.7 },
+            _index = 11
         },
         {
             UseFlightPath = 27476,
             Name = "TheSepulcher,SilverpineForest",
             NodeID = 10,
-            Coord = { x = 1313.8, y = -114.6 },
+            coord = { x = 1313.8, y = -114.6 },
             ETA = 42,
-            _index = 12,
+            _index = 12
         },
         {
             Waypoint = 27476,
-            Coord = { x = 1512.2, y = 477.7 },
+            coord = { x = 1512.2, y = 477.7 },
             Range = 8.45,
-            _index = 13,
+            _index = 13
         },
         {
             Done = { 27476 },
-            Coord = { x = 1472.8, y = 456.8 },
-            _index = 14,
+            coord = { x = 1472.8, y = 456.8 },
+            _index = 14
         },
         {
             PickUp = { 27483, 27478 },
-            Coord = { x = 1473.8, y = 457.3 },
-            _index = 15,
+            coord = { x = 1473.8, y = 457.3 },
+            _index = 15
         },
         {
             Waypoint = 27483,
-            Coord = { x = 1465.5, y = 452.8 },
+            coord = { x = 1465.5, y = 452.8 },
             ExtraLineText = "DALARAN_CRATER_PORTAL",
             Range = 5,
-            _index = 16,
+            _index = 16
         },
         {
             RouteCompleted = 1,
-            _index = 17,
-        },
+            _index = 17
+        }
     }
 
     APR.RouteQuestStepList["25-DEV-DALARAN_CRATER"] = {
         {
             DropQuest = 27480,
             DroppableQuest = { MobId = 136490, Qid = 27480, Text = "Arcane Remnant" },
-            Coord = { x = 115, y = 422 },
-            _index = 1,
+            coord = { x = 115, y = 422 },
+            _index = 1
         },
         {
             Qpart = { [27478] = { 1 }, [27480] = { 1 }, [27483] = { 1 } },
-            Coord = { x = 449.1, y = 77.7 },
+            coord = { x = 449.1, y = 77.7 },
             Range = 0.69,
-            _index = 2,
+            _index = 2
         },
         {
             Done = { 27483, 27480, 27478 },
-            Coord = { x = 377.6, y = 294.2 },
+            coord = { x = 377.6, y = 294.2 },
             ExtraLineText = "DALARAN_CRATER_PORTAL",
-            _index = 3,
+            _index = 3
         },
         {
             RouteCompleted = 1,
-            _index = 4,
-        },
+            _index = 4
+        }
     }
 
     APR.RouteQuestStepList["21-Silverpine3"] = {
         {
             Done = { 27483, 27480, 27478 },
-            Coord = { x = 1472.4, y = 457 },
-            _index = 1,
+            coord = { x = 1472.4, y = 457 },
+            _index = 1
         },
         {
             PickUp = { 27484 },
-            Coord = { x = 1472.4, y = 457 },
-            _index = 2,
+            coord = { x = 1472.4, y = 457 },
+            _index = 2
         },
         {
             Waypoint = 27484,
-            Coord = { x = 1514.9, y = 479 },
+            coord = { x = 1514.9, y = 479 },
             Range = 10.42,
-            _index = 3,
+            _index = 3
         },
         {
             UseFlightPath = 27484,
             Name = "TheForsakenFront,SilverpineForest",
             NodeID = 654,
-            Coord = { x = 1543.3, y = 477.3 },
+            coord = { x = 1543.3, y = 477.3 },
             ETA = 29,
-            _index = 4,
+            _index = 4
         },
         {
             Done = { 27484 },
-            Coord = { x = 1270, y = -152.5 },
-            _index = 5,
+            coord = { x = 1270, y = -152.5 },
+            _index = 5
         },
         {
             PickUp = { 27512 },
-            Coord = { x = 1270.5, y = -152.5 },
-            _index = 6,
+            coord = { x = 1270.5, y = -152.5 },
+            _index = 6
         },
         {
             PickUp = { 27510 },
-            Coord = { x = 1266.8, y = -207.7 },
-            _index = 7,
+            coord = { x = 1266.8, y = -207.7 },
+            _index = 7
         },
         {
             Qpart = { [27510] = { 1 } },
-            Coord = { x = 1092.8, y = -465.7 },
+            coord = { x = 1092.8, y = -465.7 },
             Range = 88.58,
-            _index = 8,
+            _index = 8
         },
         {
             Waypoint = 27512,
-            Coord = { x = 923.7, y = -436.2 },
+            coord = { x = 923.7, y = -436.2 },
             Range = 22.82,
-            _index = 9,
+            _index = 9
         },
         {
             Waypoint = 27512,
-            Coord = { x = 910.7, y = -363.5 },
+            coord = { x = 910.7, y = -363.5 },
             Range = 12.37,
-            _index = 10,
+            _index = 10
         },
         {
             Done = { 27512 },
-            Coord = { x = 1017.2, y = -288.4 },
-            _index = 11,
+            coord = { x = 1017.2, y = -288.4 },
+            _index = 11
         },
         {
             PickUp = { 27513 },
-            Coord = { x = 1015.2, y = -289.9 },
-            _index = 12,
+            coord = { x = 1015.2, y = -289.9 },
+            _index = 12
         },
         {
             Qpart = { [27513] = { 1 } },
-            Coord = { x = 1013.1, y = -290.5 },
+            coord = { x = 1013.1, y = -290.5 },
             Range = 13.02,
             Gossip = 1,
-            _index = 13,
+            _index = 13
         },
         {
             Done = { 27513 },
-            Coord = { x = 1011.1, y = -187.5 },
-            _index = 14,
+            coord = { x = 1011.1, y = -187.5 },
+            _index = 14
         },
         {
             PickUp = { 27518 },
-            Coord = { x = 1011.1, y = -187.5 },
-            _index = 15,
+            coord = { x = 1011.1, y = -187.5 },
+            _index = 15
         },
         {
             Qpart = { [27518] = { 1 } },
-            Coord = { x = 1066.8, y = -135 },
+            coord = { x = 1066.8, y = -135 },
             Range = 0.75,
-            _index = 16,
+            _index = 16
         },
         {
             Done = { 27510 },
-            Coord = { x = 1261, y = -193.7 },
-            _index = 17,
+            coord = { x = 1261, y = -193.7 },
+            _index = 17
         },
         {
             Done = { 27518 },
-            Coord = { x = 1270, y = -153 },
-            _index = 18,
+            coord = { x = 1270, y = -153 },
+            _index = 18
         },
         {
             PickUp = { 27548, 27547, 27550 },
-            Coord = { x = 1271.3, y = -154.4 },
-            _index = 19,
+            coord = { x = 1271.3, y = -154.4 },
+            _index = 19
         },
         {
             Qpart = { [27550] = { 2 } },
-            Coord = { x = 1496.7, y = -373 },
+            coord = { x = 1496.7, y = -373 },
             Fillers = { [27547] = { 1 }, [27548] = { 1 } },
             Button = { ["27550-2"] = 61374 },
             Range = 0.75,
-            _index = 20,
+            _index = 20
         },
         {
             Qpart = { [27550] = { 1 } },
-            Coord = { x = 1555, y = -350 },
+            coord = { x = 1555, y = -350 },
             Fillers = { [27547] = { 1 }, [27548] = { 1 } },
             Button = { ["27550-1"] = 61374 },
             Range = 0.69,
-            _index = 21,
+            _index = 21
         },
         {
             Qpart = { [27550] = { 3 } },
-            Coord = { x = 1603.7, y = -377.9 },
+            coord = { x = 1603.7, y = -377.9 },
             Fillers = { [27547] = { 1 }, [27548] = { 1 } },
             Button = { ["27550-3"] = 61374 },
             Range = 0.69,
-            _index = 22,
+            _index = 22
         },
         {
             Qpart = { [27547] = { 1 }, [27548] = { 1 } },
-            Coord = { x = 1603.7, y = -377.9 },
+            coord = { x = 1603.7, y = -377.9 },
             Range = 26.36,
-            _index = 23,
+            _index = 23
         },
         {
             Done = { 27548, 27547, 27550 },
-            Coord = { x = 1498.3, y = -359.3 },
-            _index = 24,
+            coord = { x = 1498.3, y = -359.3 },
+            _index = 24
         },
         {
             Waypoint = 28089,
-            Coord = { x = 1104.7, y = -436.4 },
+            coord = { x = 1104.7, y = -436.4 },
             Range = 45.55,
-            _index = 25,
+            _index = 25
         },
         {
             Waypoint = 28089,
-            Coord = { x = 660.2, y = -556.8 },
+            coord = { x = 660.2, y = -556.8 },
             Range = 41.44,
-            _index = 26,
+            _index = 26
         },
         {
             Done = { 28089 },
-            Coord = { x = 429.3, y = -571.8 },
-            _index = 27,
+            coord = { x = 429.3, y = -571.8 },
+            _index = 27
         },
         {
             RouteCompleted = 1,
-            _index = 28,
-        },
+            _index = 28
+        }
     }
 
     APR.RouteQuestStepList["25-Hillsbrad"] = {
         {
             Qpart = { [27478] = { 1 }, [27483] = { 1 } },
             DroppableQuest = { MobId = 136490, Qid = 27480, Text = "Arcane Remnant" },
-            Coord = { x = 115, y = 422 },
+            coord = { x = 115, y = 422 },
             Fillers = { [27480] = { 1 } },
             Range = 1000.69,
-            _index = 1,
+            _index = 1
         },
         {
             DropQuest = 27480,
             DroppableQuest = { MobId = 136490, Qid = 27480, Text = "Arcane Remnant" },
-            Coord = { x = 115, y = 422 },
-            _index = 2,
+            coord = { x = 115, y = 422 },
+            _index = 2
         },
         {
             Qpart = { [27480] = { 1 } },
-            Coord = { x = 115, y = 422 },
+            coord = { x = 115, y = 422 },
             Range = 1000.69,
-            _index = 3,
+            _index = 3
         },
         {
             Done = { 27483, 27480, 27478 },
-            Coord = { x = 377.6, y = 294.2 },
+            coord = { x = 377.6, y = 294.2 },
             ExtraLineText = "DALARAN_CRATER_PORTAL",
-            _index = 4,
+            _index = 4
         },
         {
             Done = { 28089 },
-            Coord = { x = 429.3, y = -571.8 },
-            _index = 5,
+            coord = { x = 429.3, y = -571.8 },
+            _index = 5
         },
         {
             PickUp = { 28096 },
-            Coord = { x = 429.2, y = -572.7 },
-            _index = 6,
+            coord = { x = 429.2, y = -572.7 },
+            _index = 6
         },
         {
             Qpart = { [28096] = { 1 } },
-            Coord = { x = 423.8, y = -575.3 },
+            coord = { x = 423.8, y = -575.3 },
             Range = 0.61,
             Gossip = 1,
-            _index = 7,
+            _index = 7
         },
         {
             Qpart = { [28096] = { 2 } },
-            Coord = { x = 423.6, y = -575 },
+            coord = { x = 423.6, y = -575 },
             Range = 0.69,
             Gossip = 1,
-            _index = 8,
+            _index = 8
         },
         {
             Qpart = { [28096] = { 3 } },
-            Coord = { x = 423.6, y = -575 },
+            coord = { x = 423.6, y = -575 },
             Range = 0.69,
             Gossip = 1,
-            _index = 9,
+            _index = 9
         },
         {
             Done = { 28096 },
-            Coord = { x = 428.6, y = -572 },
-            _index = 10,
+            coord = { x = 428.6, y = -572 },
+            _index = 10
         },
         {
             PickUp = { 28111 },
-            Coord = { x = 428.6, y = -572 },
-            _index = 11,
+            coord = { x = 428.6, y = -572 },
+            _index = 11
         },
         {
             PickUp = { 28115, 28114 },
-            Coord = { x = 430.6, y = -593.3 },
-            _index = 12,
+            coord = { x = 430.6, y = -593.3 },
+            _index = 12
         },
         {
             Qpart = { [28114] = { 1 }, [28115] = { 1 } },
-            Coord = { x = 243.4, y = -696.3 },
+            coord = { x = 243.4, y = -696.3 },
             Range = 82.56,
             LeaveQuest = 27601,
-            _index = 13,
+            _index = 13
         },
         {
             Done = { 28111, 28114, 28115 },
-            Coord = { x = 231.1, y = -903 },
-            _index = 14,
+            coord = { x = 231.1, y = -903 },
+            _index = 14
         },
         {
             PickUp = { 28146, 28138, 28144 },
-            Coord = { x = 232.6, y = -903.2 },
-            _index = 15,
+            coord = { x = 232.6, y = -903.2 },
+            _index = 15
         },
         {
             Waypoint = 28168,
-            Coord = { x = 220.1, y = -850.8 },
+            coord = { x = 220.1, y = -850.8 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             Range = 15.04,
-            _index = 16,
+            _index = 16
         },
         {
             Waypoint = 28168,
-            Coord = { x = 159.6, y = -822.2 },
+            coord = { x = 159.6, y = -822.2 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             Range = 13.13,
-            _index = 17,
+            _index = 17
         },
         {
             Waypoint = 28168,
-            Coord = { x = 120.5, y = -833.5 },
+            coord = { x = 120.5, y = -833.5 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             Range = 14.62,
-            _index = 18,
+            _index = 18
         },
         {
             PickUp = { 28156 },
-            Coord = { x = 70, y = -794 },
+            coord = { x = 70, y = -794 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             ExtraLineText = "ONLY_ONE_WAIT_NPC",
-            _index = 19,
+            _index = 19
         },
         {
             Qpart = { [28156] = { 1 } },
-            Coord = { x = 232.1, y = -902.7 },
+            coord = { x = 232.1, y = -902.7 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             Range = 0.61,
             RaidIcon = 47681,
-            _index = 20,
+            _index = 20
         },
         {
             Done = { 28156 },
-            Coord = { x = 231.6, y = -902.8 },
+            coord = { x = 231.6, y = -902.8 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
-            _index = 21,
+            _index = 21
         },
         {
             Qpart = { [28138] = { 1 } },
-            Coord = { x = 204.1, y = -876.5 },
+            coord = { x = 204.1, y = -876.5 },
             Button = { ["28138-1"] = 63079 },
             Range = 21.93,
-            _index = 22,
+            _index = 22
         },
         {
             Done = { 28138 },
-            Coord = { x = 231.4, y = -901.7 },
-            _index = 23,
+            coord = { x = 231.4, y = -901.7 },
+            _index = 23
         },
         {
             Qpart = { [28144] = { 1 }, [28146] = { 1 } },
             DroppableQuest = { MobId = 47759, Qid = 28154, Text = "Muckgill" },
-            Coord = { x = 273.1, y = -1006.5 },
+            coord = { x = 273.1, y = -1006.5 },
             Range = 59.32,
-            _index = 24,
+            _index = 24
         },
         {
             DropQuest = 28154,
             DroppableQuest = { MobId = 47759, Qid = 28154, Text = "Muckgill" },
-            Coord = { x = 273.1, y = -1006.5 },
-            _index = 25,
+            coord = { x = 273.1, y = -1006.5 },
+            _index = 25
         },
         {
             Done = { 28146, 28144, 28154 },
-            Coord = { x = 232.3, y = -903.7 },
-            _index = 26,
+            coord = { x = 232.3, y = -903.7 },
+            _index = 26
         },
         {
             PickUp = { 28168 },
-            Coord = { x = 232.3, y = -903.7 },
-            _index = 27,
+            coord = { x = 232.3, y = -903.7 },
+            _index = 27
         },
         {
             Waypoint = 28168,
-            Coord = { x = 138, y = -843.3 },
+            coord = { x = 138, y = -843.3 },
             Range = 37.9,
-            _index = 28,
+            _index = 28
         },
         {
             Waypoint = 28168,
-            Coord = { x = 147.6, y = -533 },
+            coord = { x = 147.6, y = -533 },
             Range = 28.17,
-            _index = 29,
+            _index = 29
         },
         {
             Done = { 28168 },
-            Coord = { x = 90.8, y = -501 },
-            _index = 30,
+            coord = { x = 90.8, y = -501 },
+            _index = 30
         },
         {
             PickUp = { 28192 },
-            Coord = { x = 90.5, y = -500.4 },
-            _index = 31,
+            coord = { x = 90.5, y = -500.4 },
+            _index = 31
         },
         {
             Done = { 28192 },
-            Coord = { x = 90.5, y = -500.4 },
-            _index = 32,
+            coord = { x = 90.5, y = -500.4 },
+            _index = 32
         },
         {
             PickUp = { 28197 },
-            Coord = { x = 90.7, y = -500.5 },
-            _index = 33,
+            coord = { x = 90.7, y = -500.5 },
+            _index = 33
         },
         {
             PickUp = { 28199 },
-            Coord = { x = 83.5, y = -472 },
-            _index = 34,
+            coord = { x = 83.5, y = -472 },
+            _index = 34
         },
         {
             Waypoint = 28197,
-            Coord = { x = 33.9, y = -521.5 },
+            coord = { x = 33.9, y = -521.5 },
             Fillers = { [28199] = { 1 } },
             Range = 18.91,
-            _index = 35,
+            _index = 35
         },
         {
             Waypoint = 28197,
-            Coord = { x = 26.5, y = -552.3 },
+            coord = { x = 26.5, y = -552.3 },
             Fillers = { [28199] = { 1 } },
             Range = 10.61,
-            _index = 36,
+            _index = 36
         },
         {
             Qpart = { [28197] = { 2 } },
             DroppableQuest = { MobId = 47789, Qid = 28196, Text = "Clerk Horrace Whitesteed" },
-            Coord = { x = 19.8, y = -575.3 },
+            coord = { x = 19.8, y = -575.3 },
             Fillers = { [28199] = { 1 } },
             Range = 0.75,
-            _index = 37,
+            _index = 37
         },
         {
             DropQuest = 28196,
             DroppableQuest = { MobId = 47789, Qid = 28196, Text = "Clerk Horrace Whitesteed" },
-            Coord = { x = 19.8, y = -575.3 },
-            _index = 38,
+            coord = { x = 19.8, y = -575.3 },
+            _index = 38
         },
         {
             PickUp = { 28196 },
-            Coord = { x = 23.3, y = -574.8 },
-            _index = 39,
+            coord = { x = 23.3, y = -574.8 },
+            _index = 39
         },
         {
             PickUp = { 28189 },
-            Coord = { x = -80.1, y = -562 },
+            coord = { x = -80.1, y = -562 },
             Fillers = { [28199] = { 1 } },
-            _index = 40,
+            _index = 40
         },
         {
             Qpart = { [28197] = { 1 } },
-            Coord = { x = -37.8, y = -611.8 },
+            coord = { x = -37.8, y = -611.8 },
             Fillers = { [28189] = { 1 }, [28199] = { 1 } },
             Range = 0.69,
-            _index = 41,
+            _index = 41
         },
         {
             Qpart = { [28189] = { 1 }, [28199] = { 1 } },
-            Coord = { x = -58.8, y = -587.8 },
+            coord = { x = -58.8, y = -587.8 },
             Range = 21.96,
-            _index = 42,
+            _index = 42
         },
         {
             Done = { 28189 },
-            Coord = { x = -62, y = -586.7 },
-            _index = 43,
+            coord = { x = -62, y = -586.7 },
+            _index = 43
         },
         {
             Waypoint = 28196,
-            Coord = { x = 23.3, y = -548.5 },
+            coord = { x = 23.3, y = -548.5 },
             Range = 15.68,
-            _index = 44,
+            _index = 44
         },
         {
             Done = { 28197, 28196 },
-            Coord = { x = 90.5, y = -500.2 },
-            _index = 45,
+            coord = { x = 90.5, y = -500.2 },
+            _index = 45
         },
         {
             Done = { 28199 },
-            Coord = { x = 83.4, y = -471.4 },
-            _index = 46,
+            coord = { x = 83.4, y = -471.4 },
+            _index = 46
         },
         {
             PickUp = { 28206 },
-            Coord = { x = 90.4, y = -500.2 },
-            _index = 47,
+            coord = { x = 90.4, y = -500.2 },
+            _index = 47
         },
         {
             Done = { 28206 },
-            Coord = { x = -107, y = -442.9 },
-            _index = 48,
+            coord = { x = -107, y = -442.9 },
+            _index = 48
         },
         {
             PickUp = { 28209 },
-            Coord = { x = -107, y = -442.9 },
-            _index = 49,
+            coord = { x = -107, y = -442.9 },
+            _index = 49
         },
         {
             Qpart = { [28209] = { 1 } },
-            Coord = { x = -64.6, y = -453.2 },
+            coord = { x = -64.6, y = -453.2 },
             Range = 21.5,
-            _index = 50,
+            _index = 50
         },
         {
             Done = { 28209 },
-            Coord = { x = -109, y = -441.5 },
-            _index = 51,
+            coord = { x = -109, y = -441.5 },
+            _index = 51
         },
         {
             PickUp = { 28231, 28230 },
-            Coord = { x = -109, y = -441.5 },
-            _index = 52,
+            coord = { x = -109, y = -441.5 },
+            _index = 52
         },
         {
             Waypoint = 28230,
-            Coord = { x = -33.5, y = -419 },
+            coord = { x = -33.5, y = -419 },
             Range = 14.34,
-            _index = 53,
+            _index = 53
         },
         {
             Qpart = { [28230] = { 1 } },
-            Coord = { x = -33.8, y = -385 },
+            coord = { x = -33.8, y = -385 },
             Range = 0.75,
-            _index = 54,
+            _index = 54
         },
         {
             Qpart = { [28231] = { 1 } },
-            Coord = { x = -3.8, y = -347.7 },
+            coord = { x = -3.8, y = -347.7 },
             Range = 0.61,
-            _index = 55,
+            _index = 55
         },
         {
             Done = { 28231, 28230 },
-            Coord = { x = -1.8, y = -363.4 },
-            _index = 56,
+            coord = { x = -1.8, y = -363.4 },
+            _index = 56
         },
         {
             PickUp = { 28235 },
-            Coord = { x = -1.8, y = -363.4 },
-            _index = 57,
+            coord = { x = -1.8, y = -363.4 },
+            _index = 57
         },
         {
             Qpart = { [28235] = { 1 } },
-            Coord = { x = 69.8, y = -398.8 },
+            coord = { x = 69.8, y = -398.8 },
             Range = 0.69,
-            _index = 58,
+            _index = 58
         },
         {
             Done = { 28235 },
-            Coord = { x = 67.7, y = -392.8 },
-            _index = 59,
+            coord = { x = 67.7, y = -392.8 },
+            _index = 59
         },
         {
             PickUp = { 28237 },
-            Coord = { x = 67.7, y = -392.8 },
-            _index = 60,
+            coord = { x = 67.7, y = -392.8 },
+            _index = 60
         },
         {
             Qpart = { [28237] = { 1 } },
-            Coord = { x = 78.2, y = -499 },
+            coord = { x = 78.2, y = -499 },
             Range = 0.75,
-            _index = 61,
+            _index = 61
         },
         {
             Done = { 28237 },
-            Coord = { x = 70, y = -501.2 },
-            _index = 62,
+            coord = { x = 70, y = -501.2 },
+            _index = 62
         },
         {
             PickUp = { 28251 },
-            Coord = { x = 69.5, y = -501.9 },
-            _index = 63,
+            coord = { x = 69.5, y = -501.9 },
+            _index = 63
         },
         {
             Waypoint = 28251,
-            Coord = { x = -130.5, y = -504.5 },
+            coord = { x = -130.5, y = -504.5 },
             Range = 30.49,
-            _index = 64,
+            _index = 64
         },
         {
             GetFP = 667,
-            Coord = { x = -533.3, y = -664.7 },
+            coord = { x = -533.3, y = -664.7 },
             Range = 5.91,
-            _index = 65,
+            _index = 65
         },
         {
             Done = { 28251 },
-            Coord = { x = -538, y = -669.2 },
-            _index = 66,
+            coord = { x = -538, y = -669.2 },
+            _index = 66
         },
         {
             PickUp = { 28325, 28332, 28324, 28331 },
-            Coord = { x = -538, y = -669.2 },
-            _index = 67,
+            coord = { x = -538, y = -669.2 },
+            _index = 67
         },
         {
             Qpart = { [28331] = { 1 }, [28332] = { 1 } },
-            Coord = { x = -559.8, y = -558.3 },
+            coord = { x = -559.8, y = -558.3 },
             Button = { ["28331-1"] = 63508 },
             Range = 85.57,
-            _index = 68,
+            _index = 68
         },
         {
             DropQuest = 28329,
             DroppableQuest = { MobId = 48319, Qid = 28329, Text = "Angry Blight Slime" },
-            Coord = { x = -535.3, y = -750.5 },
+            coord = { x = -535.3, y = -750.5 },
             Fillers = { [28324] = { 1 }, [28325] = { 1 } },
             Button = { ["28324-1"] = 63426 },
-            _index = 69,
+            _index = 69
         },
         {
             Qpart = { [28329] = { 1 } },
-            Coord = { x = -535.3, y = -750.5 },
+            coord = { x = -535.3, y = -750.5 },
             Fillers = { [28324] = { 1 }, [28325] = { 1 } },
             Button = { ["28324-1"] = 63426 },
             Range = 5800.55,
-            _index = 70,
+            _index = 70
         },
         {
             Done = { 28329 },
-            Coord = { x = -529.3, y = -811.3 },
-            _index = 71,
+            coord = { x = -529.3, y = -811.3 },
+            _index = 71
         },
         {
             PickUp = { 28330 },
-            Coord = { x = -529.3, y = -811.3 },
-            _index = 72,
+            coord = { x = -529.3, y = -811.3 },
+            _index = 72
         },
         {
             Qpart = { [28330] = { 1 } },
-            Coord = { x = -477.8, y = -866.2 },
+            coord = { x = -477.8, y = -866.2 },
             Fillers = { [28324] = { 1 } },
             Button = { ["28324-1"] = 63426 },
             Range = 0.61,
-            _index = 73,
+            _index = 73
         },
         {
             Qpart = { [28324] = { 1 } },
-            Coord = { x = -477, y = -868.3 },
+            coord = { x = -477, y = -868.3 },
             Button = { ["28324-1"] = 63426 },
             Range = 28.18,
-            _index = 74,
+            _index = 74
         },
         {
             Done = { 28331, 28332, 28324 },
-            Coord = { x = -539.3, y = -667.5 },
-            _index = 75,
+            coord = { x = -539.3, y = -667.5 },
+            _index = 75
         },
         {
             PickUp = { 28344 },
-            Coord = { x = -539.3, y = -667.5 },
-            _index = 76,
+            coord = { x = -539.3, y = -667.5 },
+            _index = 76
         },
         {
             Done = { 28344 },
-            Coord = { x = -558.5, y = -927.2 },
-            _index = 77,
+            coord = { x = -558.5, y = -927.2 },
+            _index = 77
         },
         {
             PickUp = { 28345 },
-            Coord = { x = -559, y = -928.5 },
-            _index = 78,
+            coord = { x = -559, y = -928.5 },
+            _index = 78
         },
         {
             Qpart = { [28345] = { 1 } },
-            Coord = { x = -559, y = -928.5 },
+            coord = { x = -559, y = -928.5 },
             Range = 24.69,
             Gossip = 1,
-            _index = 79,
+            _index = 79
         },
         {
             Done = { 28345 },
-            Coord = { x = -582.3, y = -927.7 },
-            _index = 80,
+            coord = { x = -582.3, y = -927.7 },
+            _index = 80
         },
         {
             PickUp = { 28348 },
-            Coord = { x = -580.3, y = -929.5 },
-            _index = 81,
+            coord = { x = -580.3, y = -929.5 },
+            _index = 81
         },
         {
             Done = { 28348 },
-            Coord = { x = -581.5, y = -928.2 },
-            _index = 82,
+            coord = { x = -581.5, y = -928.2 },
+            _index = 82
         },
         {
             PickUp = { 28354 },
-            Coord = { x = -581.5, y = -928.2 },
-            _index = 83,
+            coord = { x = -581.5, y = -928.2 },
+            _index = 83
         },
         {
             Done = { 28325, 28324, 28330 },
-            Coord = { x = -537, y = -669.2 },
-            _index = 84,
+            coord = { x = -537, y = -669.2 },
+            _index = 84
         },
         {
             Qpart = { [28354] = { 1 } },
             DroppableQuest = { MobId = 2373, Qid = 28355, Text = "Mudsnout Shaman" },
-            Coord = { x = -976.7, y = -918.7 },
+            coord = { x = -976.7, y = -918.7 },
             Fillers = { [28355] = { 1 } },
             Range = 32.98,
-            _index = 85,
+            _index = 85
         },
         {
             DropQuest = 28355,
             DroppableQuest = { MobId = 2373, Qid = 28355, Text = "Mudsnout Shaman" },
-            Coord = { x = -976.7, y = -918.7 },
-            _index = 86,
+            coord = { x = -976.7, y = -918.7 },
+            _index = 86
         },
         {
             Qpart = { [28355] = { 1 } },
-            Coord = { x = -976.7, y = -918.7 },
+            coord = { x = -976.7, y = -918.7 },
             Range = 132.98,
-            _index = 87,
+            _index = 87
         },
         {
             Done = { 28354, 28355 },
-            Coord = { x = -582.5, y = -927.3 },
-            _index = 88,
+            coord = { x = -582.5, y = -927.3 },
+            _index = 88
         },
         {
             PickUp = { 28375 },
-            Coord = { x = -582.5, y = -927.3 },
-            _index = 89,
+            coord = { x = -582.5, y = -927.3 },
+            _index = 89
         },
         {
             Done = { 28375 },
-            Coord = { x = 428.3, y = -1238 },
-            _index = 90,
+            coord = { x = 428.3, y = -1238 },
+            _index = 90
         },
         {
             PickUp = { 28397 },
-            Coord = { x = 428.3, y = -1238 },
-            _index = 91,
+            coord = { x = 428.3, y = -1238 },
+            _index = 91
         },
         {
             Qpart = { [28397] = { 1, 2 } },
-            Coord = { x = 491.1, y = -1253.5 },
+            coord = { x = 491.1, y = -1253.5 },
             Range = 46.92,
-            _index = 92,
+            _index = 92
         },
         {
             Done = { 28397 },
-            Coord = { x = 500.3, y = -1247.5 },
-            _index = 93,
+            coord = { x = 500.3, y = -1247.5 },
+            _index = 93
         },
         {
             PickUp = { 28400 },
-            Coord = { x = 500.6, y = -1251 },
-            _index = 94,
+            coord = { x = 500.6, y = -1251 },
+            _index = 94
         },
         {
             Qpart = { [28400] = { 1 } },
-            Coord = { x = 529.2, y = -1318.5 },
+            coord = { x = 529.2, y = -1318.5 },
             ExtraLineText = "TALK_ORKUS",
             Range = 0.61,
             Gossip = 1,
-            _index = 95,
+            _index = 95
         },
         {
             Qpart = { [28400] = { 2 } },
-            Coord = { x = -944.3, y = -37.5 },
+            coord = { x = -944.3, y = -37.5 },
             Range = 0.75,
-            _index = 96,
+            _index = 96
         },
         {
             PickUp = { 28620 },
-            Coord = { x = -953.3, y = -38.7 },
-            _index = 97,
+            coord = { x = -953.3, y = -38.7 },
+            _index = 97
         },
         {
             Done = { 28400 },
-            Coord = { x = -924.8, y = -17 },
-            _index = 98,
+            coord = { x = -924.8, y = -17 },
+            _index = 98
         },
         {
             PickUp = { 28587 },
-            Coord = { x = -924.8, y = -17 },
-            _index = 99,
+            coord = { x = -924.8, y = -17 },
+            _index = 99
         },
         {
             PickUp = { 28484 },
-            Coord = { x = -920.8, y = -1.4 },
-            _index = 100,
+            coord = { x = -920.8, y = -1.4 },
+            _index = 100
         },
         {
             Waypoint = 28587,
-            Coord = { x = -930.7, y = 22.8 },
+            coord = { x = -930.7, y = 22.8 },
             Range = 9.15,
-            _index = 101,
+            _index = 101
         },
         {
             Waypoint = 28587,
-            Coord = { x = -925, y = 44.7 },
+            coord = { x = -925, y = 44.7 },
             Range = 5.05,
-            _index = 102,
+            _index = 102
         },
         {
             Waypoint = 28587,
-            Coord = { x = -918.5, y = 42.9 },
+            coord = { x = -918.5, y = 42.9 },
             Range = 5.64,
-            _index = 103,
+            _index = 103
         },
         {
             Waypoint = 28587,
-            Coord = { x = -926.3, y = 36.1 },
+            coord = { x = -926.3, y = 36.1 },
             Range = 5.99,
-            _index = 104,
+            _index = 104
         },
         {
             PickUp = { 28485, 28487 },
-            Coord = { x = -929.8, y = 6.3 },
-            _index = 105,
+            coord = { x = -929.8, y = 6.3 },
+            _index = 105
         },
         {
             Waypoint = 28587,
-            Coord = { x = -938.3, y = 0 },
+            coord = { x = -938.3, y = 0 },
             Range = 4.97,
-            _index = 106,
+            _index = 106
         },
         {
             PickUp = { 28489 },
-            Coord = { x = -953.5, y = 14.5 },
-            _index = 107,
+            coord = { x = -953.5, y = 14.5 },
+            _index = 107
         },
         {
             PickUp = { 28495 },
-            Coord = { x = -908.8, y = -54 },
-            _index = 108,
+            coord = { x = -908.8, y = -54 },
+            _index = 108
         },
         {
             Waypoint = 28587,
-            Coord = { x = -902.5, y = -36.5 },
+            coord = { x = -902.5, y = -36.5 },
             Range = 10.13,
-            _index = 109,
+            _index = 109
         },
         {
             GetFP = 13,
-            Coord = { x = -875.5, y = -12.2 },
+            coord = { x = -875.5, y = -12.2 },
             Range = 5.91,
-            _index = 110,
+            _index = 110
         },
         {
             Waypoint = 28587,
-            Coord = { x = -986, y = 63.5 },
+            coord = { x = -986, y = 63.5 },
             Range = 21,
-            _index = 111,
+            _index = 111
         },
         {
             Waypoint = 28587,
-            Coord = { x = -961.7, y = 300.6 },
+            coord = { x = -961.7, y = 300.6 },
             Range = 37.38,
-            _index = 112,
+            _index = 112
         },
         {
             Done = { 28587 },
-            Coord = { x = -1003.7, y = 371.2 },
-            _index = 113,
+            coord = { x = -1003.7, y = 371.2 },
+            _index = 113
         },
         {
             PickUp = { 28600 },
-            Coord = { x = -1001.3, y = 371 },
-            _index = 114,
+            coord = { x = -1001.3, y = 371 },
+            _index = 114
         },
         {
             Waypoint = 28600,
-            Coord = { x = -986, y = 64.1 },
+            coord = { x = -986, y = 64.1 },
             Range = 31.11,
-            _index = 115,
+            _index = 115
         },
         {
             Done = { 28600 },
-            Coord = { x = -925.8, y = -16.8 },
-            _index = 116,
+            coord = { x = -925.8, y = -16.8 },
+            _index = 116
         },
         {
             PickUp = { 28506 },
-            Coord = { x = -923.7, y = -17.5 },
-            _index = 117,
+            coord = { x = -923.7, y = -17.5 },
+            _index = 117
         },
         {
             Done = { 28506 },
-            Coord = { x = -923.7, y = -17.5 },
-            _index = 118,
+            coord = { x = -923.7, y = -17.5 },
+            _index = 118
         },
         {
             PickUp = { 28556 },
-            Coord = { x = -923.7, y = -17.5 },
-            _index = 119,
+            coord = { x = -923.7, y = -17.5 },
+            _index = 119
         },
         {
             PickUp = { 28538 },
-            Coord = { x = -933.5, y = -20.9 },
-            _index = 120,
+            coord = { x = -933.5, y = -20.9 },
+            _index = 120
         },
         {
             Waypoint = 28538,
-            Coord = { x = -987.7, y = 64.2 },
+            coord = { x = -987.7, y = 64.2 },
             Range = 30.88,
-            _index = 121,
+            _index = 121
         },
         {
             Waypoint = 28538,
-            Coord = { x = -866.7, y = 335.3 },
+            coord = { x = -866.7, y = 335.3 },
             Range = 25.97,
-            _index = 122,
+            _index = 122
         },
         {
             Qpart = { [28556] = { 1 } },
-            Coord = { x = -846.8, y = 242.1 },
+            coord = { x = -846.8, y = 242.1 },
             Fillers = { [28538] = { 1 } },
             Button = { ["28538-1"] = 64445, ["28556-1"] = 64471 },
             Range = 0.75,
-            _index = 123,
+            _index = 123
         },
         {
             Qpart = { [28538] = { 1 } },
-            Coord = { x = -846.3, y = 236.8 },
+            coord = { x = -846.3, y = 236.8 },
             Button = { ["28538-1"] = 64445 },
             Range = 69.77,
-            _index = 124,
+            _index = 124
         },
         {
             Done = { 28538 },
-            Coord = { x = -838, y = 193.6 },
-            _index = 125,
+            coord = { x = -838, y = 193.6 },
+            _index = 125
         },
         {
             PickUp = { 28566 },
-            Coord = { x = -838, y = 193.6 },
-            _index = 126,
+            coord = { x = -838, y = 193.6 },
+            _index = 126
         },
         {
             Waypoint = 28566,
-            Coord = { x = -597.3, y = 201.1 },
+            coord = { x = -597.3, y = 201.1 },
             Range = 47.9,
-            _index = 127,
+            _index = 127
         },
         {
             Qpart = { [28556] = { 2 }, [28566] = { 1 } },
-            Coord = { x = -553.5, y = -29.4 },
+            coord = { x = -553.5, y = -29.4 },
             Fillers = { [28566] = { 2 } },
             Button = { ["28556-2"] = 64471 },
             Range = 0.69,
-            _index = 128,
+            _index = 128
         },
         {
             Qpart = { [28566] = { 2 } },
-            Coord = { x = -554.8, y = -31.5 },
+            coord = { x = -554.8, y = -31.5 },
             Range = 40.1,
-            _index = 129,
+            _index = 129
         },
         {
             Done = { 28566 },
-            Coord = { x = -524.8, y = -62.2 },
-            _index = 130,
+            coord = { x = -524.8, y = -62.2 },
+            _index = 130
         },
         {
             PickUp = { 28603 },
-            Coord = { x = -524.8, y = -62.2 },
-            _index = 131,
+            coord = { x = -524.8, y = -62.2 },
+            _index = 131
         },
         {
             PickUp = { 28604 },
-            Coord = { x = -520.3, y = -60.3 },
-            _index = 132,
+            coord = { x = -520.3, y = -60.3 },
+            _index = 132
         },
         {
             Qpart = { [28603] = { 1 } },
-            Coord = { x = -314.4, y = -107.8 },
+            coord = { x = -314.4, y = -107.8 },
             Fillers = { [28604] = { 1 } },
             Button = { ["28604-1"] = 64583 },
             Range = 0.61,
             Gossip = 1,
-            _index = 133,
+            _index = 133
         },
         {
             Qpart = { [28603] = { 3 } },
-            Coord = { x = -304.5, y = -153.5 },
+            coord = { x = -304.5, y = -153.5 },
             Fillers = { [28604] = { 1 } },
             Button = { ["28604-1"] = 64583 },
             Range = 0.75,
-            _index = 134,
+            _index = 134
         },
         {
             Qpart = { [28556] = { 3 } },
-            Coord = { x = -287.4, y = -108 },
+            coord = { x = -287.4, y = -108 },
             Button = { ["28556-3"] = 64471 },
             Range = 0.61,
-            _index = 135,
+            _index = 135
         },
         {
             Qpart = { [28603] = { 2 } },
-            Coord = { x = -261.7, y = -134.5 },
+            coord = { x = -261.7, y = -134.5 },
             Fillers = { [28604] = { 1 } },
             Button = { ["28604-1"] = 64583 },
             Range = 0.61,
             Gossip = 1,
-            _index = 136,
+            _index = 136
         },
         {
             Done = { 28603 },
-            Coord = { x = -265.9, y = -138.2 },
-            _index = 137,
+            coord = { x = -265.9, y = -138.2 },
+            _index = 137
         },
         {
             Qpart = { [28604] = { 1 } },
-            Coord = { x = -265.9, y = -138.2 },
+            coord = { x = -265.9, y = -138.2 },
             Button = { ["28604-1"] = 64583 },
             Range = 47,
-            _index = 138,
+            _index = 138
         },
         {
             Done = { 28604 },
-            Coord = { x = -242.5, y = -119.9 },
-            _index = 139,
+            coord = { x = -242.5, y = -119.9 },
+            _index = 139
         },
         {
             PickUp = { 28605 },
-            Coord = { x = -242.5, y = -119.9 },
-            _index = 140,
+            coord = { x = -242.5, y = -119.9 },
+            _index = 140
         },
         {
             Qpart = { [28556] = { 4 } },
-            Coord = { x = -74.6, y = -101 },
+            coord = { x = -74.6, y = -101 },
             Fillers = { [28605] = { 1 } },
             Button = { ["28556-4"] = 64471 },
             Range = 0.75,
-            _index = 141,
+            _index = 141
         },
         {
             Qpart = { [28605] = { 1 } },
-            Coord = { x = -74.6, y = -101 },
+            coord = { x = -74.6, y = -101 },
             Range = 45.7,
-            _index = 142,
+            _index = 142
         },
         {
             Waypoint = 28484,
-            Coord = { x = -313.3, y = -340 },
+            coord = { x = -313.3, y = -340 },
             Fillers = { [28489] = { 1 }, [28495] = { 1 } },
             Button = { ["28495-1"] = 64416 },
             Range = 61.6,
-            _index = 143,
+            _index = 143
         },
         {
             Waypoint = 28620,
-            Coord = { x = -413.3, y = -282.9 },
+            coord = { x = -413.3, y = -282.9 },
             Fillers = { [28484] = { 1 }, [28489] = { 1 }, [28495] = { 1 } },
             Button = { ["28495-1"] = 64416 },
             Range = 22.44,
-            _index = 144,
+            _index = 144
         },
         {
             Waypoint = 28620,
-            Coord = { x = -389.9, y = -263.2 },
+            coord = { x = -389.9, y = -263.2 },
             Fillers = { [28484] = { 1 } },
             Range = 10.8,
-            _index = 145,
+            _index = 145
         },
         {
             Waypoint = 28620,
-            Coord = { x = -379, y = -217.2 },
+            coord = { x = -379, y = -217.2 },
             Fillers = { [28484] = { 1 } },
             Range = 15.89,
-            _index = 146,
+            _index = 146
         },
         {
             Qpart = { [28487] = { 1 } },
-            Coord = { x = -342.7, y = -183.2 },
+            coord = { x = -342.7, y = -183.2 },
             Fillers = { [28484] = { 1 } },
             Range = 0.61,
-            _index = 147,
+            _index = 147
         },
         {
             Waypoint = 28620,
-            Coord = { x = -346.9, y = -238.5 },
+            coord = { x = -346.9, y = -238.5 },
             Fillers = { [28484] = { 1 } },
             Range = 16.03,
-            _index = 148,
+            _index = 148
         },
         {
             Waypoint = 28620,
-            Coord = { x = -313.4, y = -262.5 },
+            coord = { x = -313.4, y = -262.5 },
             Fillers = { [28484] = { 1 } },
             Range = 9.75,
-            _index = 149,
+            _index = 149
         },
         {
             Waypoint = 28620,
-            Coord = { x = -275.2, y = -298.9 },
+            coord = { x = -275.2, y = -298.9 },
             Fillers = { [28484] = { 1 } },
             Range = 11.99,
-            _index = 150,
+            _index = 150
         },
         {
             Qpart = { [28487] = { 3 } },
-            Coord = { x = -293.4, y = -244 },
+            coord = { x = -293.4, y = -244 },
             Fillers = { [28484] = { 1 } },
             Range = 0.69,
-            _index = 151,
+            _index = 151
         },
         {
             Waypoint = 28620,
-            Coord = { x = -326.2, y = -257.7 },
+            coord = { x = -326.2, y = -257.7 },
             Fillers = { [28484] = { 1 } },
             Range = 18.07,
-            _index = 152,
+            _index = 152
         },
         {
             Waypoint = 28620,
-            Coord = { x = -370.8, y = -193.5 },
+            coord = { x = -370.8, y = -193.5 },
             Fillers = { [28484] = { 1 } },
             Range = 16.86,
-            _index = 153,
+            _index = 153
         },
         {
             Qpart = { [28487] = { 2 } },
-            Coord = { x = -317.5, y = -169 },
+            coord = { x = -317.5, y = -169 },
             Fillers = { [28484] = { 1 } },
             Range = 0.75,
-            _index = 154,
+            _index = 154
         },
         {
             Qpart = { [28484] = { 1 } },
-            Coord = { x = -317.5, y = -169 },
+            coord = { x = -317.5, y = -169 },
             Range = 34.57,
-            _index = 155,
+            _index = 155
         },
         {
             Qpart = { [28489] = { 1 }, [28495] = { 1 } },
-            Coord = { x = -548.8, y = -339.4 },
+            coord = { x = -548.8, y = -339.4 },
             Button = { ["28495-1"] = 64416 },
             Range = 104.7,
-            _index = 156,
+            _index = 156
         },
         {
             GetFP = 669,
-            Coord = { x = -1048.5, y = -569.2 },
+            coord = { x = -1048.5, y = -569.2 },
             Range = 5.91,
-            _index = 157,
+            _index = 157
         },
         {
             PickUp = { 28635, 28643 },
-            Coord = { x = -1068, y = -571.8 },
-            _index = 158,
+            coord = { x = -1068, y = -571.8 },
+            _index = 158
         },
         {
             Done = { 28620 },
-            Coord = { x = -1069.1, y = -582.8 },
-            _index = 159,
+            coord = { x = -1069.1, y = -582.8 },
+            _index = 159
         },
         {
             PickUp = { 28634 },
-            Coord = { x = -1069.1, y = -582.8 },
-            _index = 160,
+            coord = { x = -1069.1, y = -582.8 },
+            _index = 160
         },
         {
             Qpart = { [28635] = { 1 } },
-            Coord = { x = -1147, y = -1253 },
+            coord = { x = -1147, y = -1253 },
             Fillers = { [28634] = { 1 } },
             Range = 0.75,
-            _index = 161,
+            _index = 161
         },
         {
             Done = { 28635 },
-            Coord = { x = -1147, y = -1253 },
-            _index = 162,
+            coord = { x = -1147, y = -1253 },
+            _index = 162
         },
         {
             PickUp = { 28636 },
-            Coord = { x = -1147, y = -1253 },
-            _index = 163,
+            coord = { x = -1147, y = -1253 },
+            _index = 163
         },
         {
             Qpart = { [28636] = { 1 } },
-            Coord = { x = -1198.3, y = -1271.1 },
+            coord = { x = -1198.3, y = -1271.1 },
             Range = 53.11,
-            _index = 164,
+            _index = 164
         },
         {
             Qpart = { [28634] = { 1 } },
-            Coord = { x = -1249.4, y = -449.9 },
+            coord = { x = -1249.4, y = -449.9 },
             Range = 106.85,
-            _index = 165,
+            _index = 165
         },
         {
             Done = { 28634, 28636 },
-            Coord = { x = -1069.5, y = -580.7 },
-            _index = 166,
+            coord = { x = -1069.5, y = -580.7 },
+            _index = 166
         },
         {
             UseFlightPath = 28487,
             Name = "TarrenMill,Hillsbrad",
             NodeID = 13,
-            Coord = { x = -1048.1, y = -568.8 },
+            coord = { x = -1048.1, y = -568.8 },
             ETA = 25,
-            _index = 167,
+            _index = 167
         },
         {
             Done = { 28484 },
-            Coord = { x = -920.3, y = -0.8 },
-            _index = 168,
+            coord = { x = -920.3, y = -0.8 },
+            _index = 168
         },
         {
             Waypoint = 28487,
-            Coord = { x = -929.3, y = 12 },
+            coord = { x = -929.3, y = 12 },
             Range = 9.81,
-            _index = 169,
+            _index = 169
         },
         {
             Waypoint = 28487,
-            Coord = { x = -924.3, y = 44.7 },
+            coord = { x = -924.3, y = 44.7 },
             Range = 4.39,
-            _index = 170,
+            _index = 170
         },
         {
             Waypoint = 28487,
-            Coord = { x = -919, y = 42.6 },
+            coord = { x = -919, y = 42.6 },
             Range = 5.9,
-            _index = 171,
+            _index = 171
         },
         {
             Done = { 28487 },
-            Coord = { x = -929.5, y = 6.7 },
-            _index = 172,
+            coord = { x = -929.5, y = 6.7 },
+            _index = 172
         },
         {
             Done = { 28495 },
-            Coord = { x = -908.2, y = -55 },
-            _index = 173,
+            coord = { x = -908.2, y = -55 },
+            _index = 173
         },
         {
             Done = { 28556 },
-            Coord = { x = -924.3, y = -18 },
-            _index = 174,
+            coord = { x = -924.3, y = -18 },
+            _index = 174
         },
         {
             Done = { 28605 },
-            Coord = { x = -933.3, y = -20.2 },
-            _index = 175,
+            coord = { x = -933.3, y = -20.2 },
+            _index = 175
         },
         {
             PickUp = { 28616 },
-            Coord = { x = -922.8, y = -17.9 },
-            _index = 176,
+            coord = { x = -922.8, y = -17.9 },
+            _index = 176
         },
         {
             Done = { 28616 },
-            Coord = { x = -922.8, y = -17.9 },
-            _index = 177,
+            coord = { x = -922.8, y = -17.9 },
+            _index = 177
         },
         {
             UseFlightPath = 2864311,
             Name = "Brill,TirisfalGlades",
             NodeID = 460,
-            Coord = { x = -875.8, y = -12.7 },
+            coord = { x = -875.8, y = -12.7 },
             ETA = 127,
-            _index = 178,
+            _index = 178
         },
         {
             Done = { 28089 },
-            Coord = { x = 429.3, y = -571.8 },
-            _index = 179,
+            coord = { x = 429.3, y = -571.8 },
+            _index = 179
         },
         {
             PickUp = { 28096 },
-            Coord = { x = 429.2, y = -572.7 },
-            _index = 180,
+            coord = { x = 429.2, y = -572.7 },
+            _index = 180
         },
         {
             Qpart = { [28096] = { 1 } },
-            Coord = { x = 423.8, y = -575.3 },
+            coord = { x = 423.8, y = -575.3 },
             Range = 0.61,
             Gossip = 1,
-            _index = 181,
+            _index = 181
         },
         {
             Qpart = { [28096] = { 2 } },
-            Coord = { x = 423.6, y = -575 },
+            coord = { x = 423.6, y = -575 },
             Range = 0.69,
             Gossip = 1,
-            _index = 182,
+            _index = 182
         },
         {
             Qpart = { [28096] = { 3 } },
-            Coord = { x = 423.6, y = -575 },
+            coord = { x = 423.6, y = -575 },
             Range = 0.69,
             Gossip = 1,
-            _index = 183,
+            _index = 183
         },
         {
             Done = { 28096 },
-            Coord = { x = 428.6, y = -572 },
-            _index = 184,
+            coord = { x = 428.6, y = -572 },
+            _index = 184
         },
         {
             PickUp = { 28111 },
-            Coord = { x = 428.6, y = -572 },
-            _index = 185,
+            coord = { x = 428.6, y = -572 },
+            _index = 185
         },
         {
             PickUp = { 28115, 28114 },
-            Coord = { x = 430.6, y = -593.3 },
-            _index = 186,
+            coord = { x = 430.6, y = -593.3 },
+            _index = 186
         },
         {
             Qpart = { [28114] = { 1 }, [28115] = { 1 } },
-            Coord = { x = 243.4, y = -696.3 },
+            coord = { x = 243.4, y = -696.3 },
             Range = 82.56,
             LeaveQuest = 27601,
-            _index = 187,
+            _index = 187
         },
         {
             Done = { 28111, 28114, 28115 },
-            Coord = { x = 231.1, y = -903 },
-            _index = 188,
+            coord = { x = 231.1, y = -903 },
+            _index = 188
         },
         {
             PickUp = { 28146, 28138, 28144 },
-            Coord = { x = 232.6, y = -903.2 },
-            _index = 189,
+            coord = { x = 232.6, y = -903.2 },
+            _index = 189
         },
         {
             Waypoint = 28168,
-            Coord = { x = 220.1, y = -850.8 },
+            coord = { x = 220.1, y = -850.8 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             Range = 15.04,
-            _index = 190,
+            _index = 190
         },
         {
             Waypoint = 28168,
-            Coord = { x = 159.6, y = -822.2 },
+            coord = { x = 159.6, y = -822.2 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             Range = 13.13,
-            _index = 191,
+            _index = 191
         },
         {
             Waypoint = 28168,
-            Coord = { x = 120.5, y = -833.5 },
+            coord = { x = 120.5, y = -833.5 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             Range = 14.62,
-            _index = 192,
+            _index = 192
         },
         {
             PickUp = { 28156 },
-            Coord = { x = 70, y = -794 },
+            coord = { x = 70, y = -794 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             ExtraLineText = "ONLY_ONE_WAIT_NPC",
-            _index = 193,
+            _index = 193
         },
         {
             Qpart = { [28156] = { 1 } },
-            Coord = { x = 232.1, y = -902.7 },
+            coord = { x = 232.1, y = -902.7 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
             Range = 0.61,
             RaidIcon = 47681,
-            _index = 194,
+            _index = 194
         },
         {
             Done = { 28156 },
-            Coord = { x = 231.6, y = -902.8 },
+            coord = { x = 231.6, y = -902.8 },
             Fillers = { [28138] = { 1 } },
             Button = { ["28138-1"] = 63079 },
-            _index = 195,
+            _index = 195
         },
         {
             Qpart = { [28138] = { 1 } },
-            Coord = { x = 204.1, y = -876.5 },
+            coord = { x = 204.1, y = -876.5 },
             Button = { ["28138-1"] = 63079 },
             Range = 21.93,
-            _index = 196,
+            _index = 196
         },
         {
             Done = { 28138 },
-            Coord = { x = 231.4, y = -901.7 },
-            _index = 197,
+            coord = { x = 231.4, y = -901.7 },
+            _index = 197
         },
         {
             Qpart = { [28144] = { 1 }, [28146] = { 1 } },
             DroppableQuest = { MobId = 47759, Qid = 28154, Text = "Muckgill" },
-            Coord = { x = 273.1, y = -1006.5 },
+            coord = { x = 273.1, y = -1006.5 },
             Range = 59.32,
-            _index = 198,
+            _index = 198
         },
         {
             DropQuest = 28154,
             DroppableQuest = { MobId = 47759, Qid = 28154, Text = "Muckgill" },
-            Coord = { x = 273.1, y = -1006.5 },
-            _index = 199,
+            coord = { x = 273.1, y = -1006.5 },
+            _index = 199
         },
         {
             Done = { 28146, 28144, 28154 },
-            Coord = { x = 232.3, y = -903.7 },
-            _index = 200,
+            coord = { x = 232.3, y = -903.7 },
+            _index = 200
         },
         {
             PickUp = { 28168 },
-            Coord = { x = 232.3, y = -903.7 },
-            _index = 201,
+            coord = { x = 232.3, y = -903.7 },
+            _index = 201
         },
         {
             Waypoint = 28168,
-            Coord = { x = 138, y = -843.3 },
+            coord = { x = 138, y = -843.3 },
             Range = 37.9,
-            _index = 202,
+            _index = 202
         },
         {
             Waypoint = 28168,
-            Coord = { x = 147.6, y = -533 },
+            coord = { x = 147.6, y = -533 },
             Range = 28.17,
-            _index = 203,
+            _index = 203
         },
         {
             Done = { 28168 },
-            Coord = { x = 90.8, y = -501 },
-            _index = 204,
+            coord = { x = 90.8, y = -501 },
+            _index = 204
         },
         {
             PickUp = { 28192 },
-            Coord = { x = 90.5, y = -500.4 },
-            _index = 205,
+            coord = { x = 90.5, y = -500.4 },
+            _index = 205
         },
         {
             Done = { 28192 },
-            Coord = { x = 90.5, y = -500.4 },
-            _index = 206,
+            coord = { x = 90.5, y = -500.4 },
+            _index = 206
         },
         {
             PickUp = { 28197 },
-            Coord = { x = 90.7, y = -500.5 },
-            _index = 207,
+            coord = { x = 90.7, y = -500.5 },
+            _index = 207
         },
         {
             PickUp = { 28199 },
-            Coord = { x = 83.5, y = -472 },
-            _index = 208,
+            coord = { x = 83.5, y = -472 },
+            _index = 208
         },
         {
             Waypoint = 28197,
-            Coord = { x = 33.9, y = -521.5 },
+            coord = { x = 33.9, y = -521.5 },
             Fillers = { [28199] = { 1 } },
             Range = 18.91,
-            _index = 209,
+            _index = 209
         },
         {
             Waypoint = 28197,
-            Coord = { x = 26.5, y = -552.3 },
+            coord = { x = 26.5, y = -552.3 },
             Fillers = { [28199] = { 1 } },
             Range = 10.61,
-            _index = 210,
+            _index = 210
         },
         {
             Qpart = { [28197] = { 2 } },
             DroppableQuest = { MobId = 47789, Qid = 28196, Text = "Clerk Horrace Whitesteed" },
-            Coord = { x = 19.8, y = -575.3 },
+            coord = { x = 19.8, y = -575.3 },
             Fillers = { [28199] = { 1 } },
             Range = 0.75,
-            _index = 211,
+            _index = 211
         },
         {
             DropQuest = 28196,
             DroppableQuest = { MobId = 47789, Qid = 28196, Text = "Clerk Horrace Whitesteed" },
-            Coord = { x = 19.8, y = -575.3 },
-            _index = 212,
+            coord = { x = 19.8, y = -575.3 },
+            _index = 212
         },
         {
             PickUp = { 28196 },
-            Coord = { x = 23.3, y = -574.8 },
-            _index = 213,
+            coord = { x = 23.3, y = -574.8 },
+            _index = 213
         },
         {
             PickUp = { 28189 },
-            Coord = { x = -80.1, y = -562 },
+            coord = { x = -80.1, y = -562 },
             Fillers = { [28199] = { 1 } },
-            _index = 214,
+            _index = 214
         },
         {
             Qpart = { [28197] = { 1 } },
-            Coord = { x = -37.8, y = -611.8 },
+            coord = { x = -37.8, y = -611.8 },
             Fillers = { [28189] = { 1 }, [28199] = { 1 } },
             Range = 0.69,
-            _index = 215,
+            _index = 215
         },
         {
             Qpart = { [28189] = { 1 }, [28199] = { 1 } },
-            Coord = { x = -58.8, y = -587.8 },
+            coord = { x = -58.8, y = -587.8 },
             Range = 21.96,
-            _index = 216,
+            _index = 216
         },
         {
             Done = { 28189 },
-            Coord = { x = -62, y = -586.7 },
-            _index = 217,
+            coord = { x = -62, y = -586.7 },
+            _index = 217
         },
         {
             Waypoint = 28196,
-            Coord = { x = 23.3, y = -548.5 },
+            coord = { x = 23.3, y = -548.5 },
             Range = 15.68,
-            _index = 218,
+            _index = 218
         },
         {
             Done = { 28197, 28196 },
-            Coord = { x = 90.5, y = -500.2 },
-            _index = 219,
+            coord = { x = 90.5, y = -500.2 },
+            _index = 219
         },
         {
             Done = { 28199 },
-            Coord = { x = 83.4, y = -471.4 },
-            _index = 220,
+            coord = { x = 83.4, y = -471.4 },
+            _index = 220
         },
         {
             PickUp = { 28206 },
-            Coord = { x = 90.4, y = -500.2 },
-            _index = 221,
+            coord = { x = 90.4, y = -500.2 },
+            _index = 221
         },
         {
             Done = { 28206 },
-            Coord = { x = -107, y = -442.9 },
-            _index = 222,
+            coord = { x = -107, y = -442.9 },
+            _index = 222
         },
         {
             PickUp = { 28209 },
-            Coord = { x = -107, y = -442.9 },
-            _index = 223,
+            coord = { x = -107, y = -442.9 },
+            _index = 223
         },
         {
             Qpart = { [28209] = { 1 } },
-            Coord = { x = -64.6, y = -453.2 },
+            coord = { x = -64.6, y = -453.2 },
             Range = 21.5,
-            _index = 224,
+            _index = 224
         },
         {
             Done = { 28209 },
-            Coord = { x = -109, y = -441.5 },
-            _index = 225,
+            coord = { x = -109, y = -441.5 },
+            _index = 225
         },
         {
             PickUp = { 28231, 28230 },
-            Coord = { x = -109, y = -441.5 },
-            _index = 226,
+            coord = { x = -109, y = -441.5 },
+            _index = 226
         },
         {
             Waypoint = 28230,
-            Coord = { x = -33.5, y = -419 },
+            coord = { x = -33.5, y = -419 },
             Range = 14.34,
-            _index = 227,
+            _index = 227
         },
         {
             Qpart = { [28230] = { 1 } },
-            Coord = { x = -33.8, y = -385 },
+            coord = { x = -33.8, y = -385 },
             Range = 0.75,
-            _index = 228,
+            _index = 228
         },
         {
             Qpart = { [28231] = { 1 } },
-            Coord = { x = -3.8, y = -347.7 },
+            coord = { x = -3.8, y = -347.7 },
             Range = 0.61,
-            _index = 229,
+            _index = 229
         },
         {
             Done = { 28231, 28230 },
-            Coord = { x = -1.8, y = -363.4 },
-            _index = 230,
+            coord = { x = -1.8, y = -363.4 },
+            _index = 230
         },
         {
             PickUp = { 28235 },
-            Coord = { x = -1.8, y = -363.4 },
-            _index = 231,
+            coord = { x = -1.8, y = -363.4 },
+            _index = 231
         },
         {
             Qpart = { [28235] = { 1 } },
-            Coord = { x = 69.8, y = -398.8 },
+            coord = { x = 69.8, y = -398.8 },
             Range = 0.69,
-            _index = 232,
+            _index = 232
         },
         {
             Done = { 28235 },
-            Coord = { x = 67.7, y = -392.8 },
-            _index = 233,
+            coord = { x = 67.7, y = -392.8 },
+            _index = 233
         },
         {
             PickUp = { 28237 },
-            Coord = { x = 67.7, y = -392.8 },
-            _index = 234,
+            coord = { x = 67.7, y = -392.8 },
+            _index = 234
         },
         {
             Qpart = { [28237] = { 1 } },
-            Coord = { x = 78.2, y = -499 },
+            coord = { x = 78.2, y = -499 },
             Range = 0.75,
-            _index = 235,
+            _index = 235
         },
         {
             Done = { 28237 },
-            Coord = { x = 70, y = -501.2 },
-            _index = 236,
+            coord = { x = 70, y = -501.2 },
+            _index = 236
         },
         {
             PickUp = { 28251 },
-            Coord = { x = 69.5, y = -501.9 },
-            _index = 237,
+            coord = { x = 69.5, y = -501.9 },
+            _index = 237
         },
         {
             Waypoint = 28251,
-            Coord = { x = -130.5, y = -504.5 },
+            coord = { x = -130.5, y = -504.5 },
             Range = 30.49,
-            _index = 238,
+            _index = 238
         },
         {
             GetFP = 667,
-            Coord = { x = -533.3, y = -664.7 },
+            coord = { x = -533.3, y = -664.7 },
             Range = 5.91,
-            _index = 239,
+            _index = 239
         },
         {
             Done = { 28251 },
-            Coord = { x = -538, y = -669.2 },
-            _index = 240,
+            coord = { x = -538, y = -669.2 },
+            _index = 240
         },
         {
             PickUp = { 28325, 28332, 28324, 28331 },
-            Coord = { x = -538, y = -669.2 },
-            _index = 241,
+            coord = { x = -538, y = -669.2 },
+            _index = 241
         },
         {
             Qpart = { [28331] = { 1 }, [28332] = { 1 } },
-            Coord = { x = -559.8, y = -558.3 },
+            coord = { x = -559.8, y = -558.3 },
             Button = { ["28331-1"] = 63508 },
             Range = 85.57,
-            _index = 242,
+            _index = 242
         },
         {
             DropQuest = 28329,
             DroppableQuest = { MobId = 48319, Qid = 28329, Text = "Angry Blight Slime" },
-            Coord = { x = -535.3, y = -750.5 },
+            coord = { x = -535.3, y = -750.5 },
             Fillers = { [28324] = { 1 }, [28325] = { 1 } },
             Button = { ["28324-1"] = 63426 },
-            _index = 243,
+            _index = 243
         },
         {
             Qpart = { [28329] = { 1 } },
-            Coord = { x = -535.3, y = -750.5 },
+            coord = { x = -535.3, y = -750.5 },
             Fillers = { [28324] = { 1 }, [28325] = { 1 } },
             Button = { ["28324-1"] = 63426 },
             Range = 5800.55,
-            _index = 244,
+            _index = 244
         },
         {
             Done = { 28329 },
-            Coord = { x = -529.3, y = -811.3 },
-            _index = 245,
+            coord = { x = -529.3, y = -811.3 },
+            _index = 245
         },
         {
             PickUp = { 28330 },
-            Coord = { x = -529.3, y = -811.3 },
-            _index = 246,
+            coord = { x = -529.3, y = -811.3 },
+            _index = 246
         },
         {
             Qpart = { [28330] = { 1 } },
-            Coord = { x = -477.8, y = -866.2 },
+            coord = { x = -477.8, y = -866.2 },
             Fillers = { [28324] = { 1 } },
             Button = { ["28324-1"] = 63426 },
             Range = 0.61,
-            _index = 247,
+            _index = 247
         },
         {
             Qpart = { [28324] = { 1 } },
-            Coord = { x = -477, y = -868.3 },
+            coord = { x = -477, y = -868.3 },
             Button = { ["28324-1"] = 63426 },
             Range = 28.18,
-            _index = 248,
+            _index = 248
         },
         {
             Done = { 28331, 28332, 28324 },
-            Coord = { x = -539.3, y = -667.5 },
-            _index = 249,
+            coord = { x = -539.3, y = -667.5 },
+            _index = 249
         },
         {
             PickUp = { 28344 },
-            Coord = { x = -539.3, y = -667.5 },
-            _index = 250,
+            coord = { x = -539.3, y = -667.5 },
+            _index = 250
         },
         {
             Done = { 28344 },
-            Coord = { x = -558.5, y = -927.2 },
-            _index = 251,
+            coord = { x = -558.5, y = -927.2 },
+            _index = 251
         },
         {
             PickUp = { 28345 },
-            Coord = { x = -559, y = -928.5 },
-            _index = 252,
+            coord = { x = -559, y = -928.5 },
+            _index = 252
         },
         {
             Qpart = { [28345] = { 1 } },
-            Coord = { x = -559, y = -928.5 },
+            coord = { x = -559, y = -928.5 },
             Range = 24.69,
             Gossip = 1,
-            _index = 253,
+            _index = 253
         },
         {
             Done = { 28345 },
-            Coord = { x = -582.3, y = -927.7 },
-            _index = 254,
+            coord = { x = -582.3, y = -927.7 },
+            _index = 254
         },
         {
             PickUp = { 28348 },
-            Coord = { x = -580.3, y = -929.5 },
-            _index = 255,
+            coord = { x = -580.3, y = -929.5 },
+            _index = 255
         },
         {
             Done = { 28348 },
-            Coord = { x = -581.5, y = -928.2 },
-            _index = 256,
+            coord = { x = -581.5, y = -928.2 },
+            _index = 256
         },
         {
             PickUp = { 28354 },
-            Coord = { x = -581.5, y = -928.2 },
-            _index = 257,
+            coord = { x = -581.5, y = -928.2 },
+            _index = 257
         },
         {
             Done = { 28325, 28324, 28330 },
-            Coord = { x = -537, y = -669.2 },
-            _index = 258,
+            coord = { x = -537, y = -669.2 },
+            _index = 258
         },
         {
             Qpart = { [28354] = { 1 } },
             DroppableQuest = { MobId = 2373, Qid = 28355, Text = "Mudsnout Shaman" },
-            Coord = { x = -976.7, y = -918.7 },
+            coord = { x = -976.7, y = -918.7 },
             Fillers = { [28355] = { 1 } },
             Range = 32.98,
-            _index = 259,
+            _index = 259
         },
         {
             DropQuest = 28355,
             DroppableQuest = { MobId = 2373, Qid = 28355, Text = "Mudsnout Shaman" },
-            Coord = { x = -976.7, y = -918.7 },
-            _index = 260,
+            coord = { x = -976.7, y = -918.7 },
+            _index = 260
         },
         {
             Qpart = { [28355] = { 1 } },
-            Coord = { x = -976.7, y = -918.7 },
+            coord = { x = -976.7, y = -918.7 },
             Range = 132.98,
-            _index = 261,
+            _index = 261
         },
         {
             Done = { 28354, 28355 },
-            Coord = { x = -582.5, y = -927.3 },
-            _index = 262,
+            coord = { x = -582.5, y = -927.3 },
+            _index = 262
         },
         {
             PickUp = { 28375 },
-            Coord = { x = -582.5, y = -927.3 },
-            _index = 263,
+            coord = { x = -582.5, y = -927.3 },
+            _index = 263
         },
         {
             Done = { 28375 },
-            Coord = { x = 428.3, y = -1238 },
-            _index = 264,
+            coord = { x = 428.3, y = -1238 },
+            _index = 264
         },
         {
             PickUp = { 28397 },
-            Coord = { x = 428.3, y = -1238 },
-            _index = 265,
+            coord = { x = 428.3, y = -1238 },
+            _index = 265
         },
         {
             Qpart = { [28397] = { 1, 2 } },
-            Coord = { x = 491.1, y = -1253.5 },
+            coord = { x = 491.1, y = -1253.5 },
             Range = 46.92,
-            _index = 266,
+            _index = 266
         },
         {
             Done = { 28397 },
-            Coord = { x = 500.3, y = -1247.5 },
-            _index = 267,
+            coord = { x = 500.3, y = -1247.5 },
+            _index = 267
         },
         {
             PickUp = { 28400 },
-            Coord = { x = 500.6, y = -1251 },
-            _index = 268,
+            coord = { x = 500.6, y = -1251 },
+            _index = 268
         },
         {
             Qpart = { [28400] = { 1 } },
-            Coord = { x = 529.2, y = -1318.5 },
+            coord = { x = 529.2, y = -1318.5 },
             ExtraLineText = "TALK_ORKUS",
             Range = 0.61,
             Gossip = 1,
-            _index = 269,
+            _index = 269
         },
         {
             Qpart = { [28400] = { 2 } },
-            Coord = { x = -944.3, y = -37.5 },
+            coord = { x = -944.3, y = -37.5 },
             Range = 0.75,
-            _index = 270,
+            _index = 270
         },
         {
             PickUp = { 28620 },
-            Coord = { x = -953.3, y = -38.7 },
-            _index = 271,
+            coord = { x = -953.3, y = -38.7 },
+            _index = 271
         },
         {
             Done = { 28400 },
-            Coord = { x = -924.8, y = -17 },
-            _index = 272,
+            coord = { x = -924.8, y = -17 },
+            _index = 272
         },
         {
             PickUp = { 28587 },
-            Coord = { x = -924.8, y = -17 },
-            _index = 273,
+            coord = { x = -924.8, y = -17 },
+            _index = 273
         },
         {
             PickUp = { 28484 },
-            Coord = { x = -920.8, y = -1.4 },
-            _index = 274,
+            coord = { x = -920.8, y = -1.4 },
+            _index = 274
         },
         {
             Waypoint = 28587,
-            Coord = { x = -930.7, y = 22.8 },
+            coord = { x = -930.7, y = 22.8 },
             Range = 9.15,
-            _index = 275,
+            _index = 275
         },
         {
             Waypoint = 28587,
-            Coord = { x = -925, y = 44.7 },
+            coord = { x = -925, y = 44.7 },
             Range = 5.05,
-            _index = 276,
+            _index = 276
         },
         {
             Waypoint = 28587,
-            Coord = { x = -918.5, y = 42.9 },
+            coord = { x = -918.5, y = 42.9 },
             Range = 5.64,
-            _index = 277,
+            _index = 277
         },
         {
             Waypoint = 28587,
-            Coord = { x = -926.3, y = 36.1 },
+            coord = { x = -926.3, y = 36.1 },
             Range = 5.99,
-            _index = 278,
+            _index = 278
         },
         {
             PickUp = { 28485, 28487 },
-            Coord = { x = -929.8, y = 6.3 },
-            _index = 279,
+            coord = { x = -929.8, y = 6.3 },
+            _index = 279
         },
         {
             Waypoint = 28587,
-            Coord = { x = -938.3, y = 0 },
+            coord = { x = -938.3, y = 0 },
             Range = 4.97,
-            _index = 280,
+            _index = 280
         },
         {
             PickUp = { 28489 },
-            Coord = { x = -953.5, y = 14.5 },
-            _index = 281,
+            coord = { x = -953.5, y = 14.5 },
+            _index = 281
         },
         {
             PickUp = { 28495 },
-            Coord = { x = -908.8, y = -54 },
-            _index = 282,
+            coord = { x = -908.8, y = -54 },
+            _index = 282
         },
         {
             Waypoint = 28587,
-            Coord = { x = -902.5, y = -36.5 },
+            coord = { x = -902.5, y = -36.5 },
             Range = 10.13,
-            _index = 283,
+            _index = 283
         },
         {
             GetFP = 13,
-            Coord = { x = -875.5, y = -12.2 },
+            coord = { x = -875.5, y = -12.2 },
             Range = 5.91,
-            _index = 284,
+            _index = 284
         },
         {
             Waypoint = 13,
-            Coord = { x = -986, y = 63.5 },
+            coord = { x = -986, y = 63.5 },
             Range = 21,
-            _index = 285,
+            _index = 285
         },
         {
             Waypoint = 28587,
-            Coord = { x = -961.7, y = 300.6 },
+            coord = { x = -961.7, y = 300.6 },
             Range = 37.38,
-            _index = 286,
+            _index = 286
         },
         {
             Done = { 28587 },
-            Coord = { x = -1003.7, y = 371.2 },
-            _index = 287,
+            coord = { x = -1003.7, y = 371.2 },
+            _index = 287
         },
         {
             PickUp = { 28600 },
-            Coord = { x = -1001.3, y = 371 },
-            _index = 288,
+            coord = { x = -1001.3, y = 371 },
+            _index = 288
         },
         {
             Waypoint = 28600,
-            Coord = { x = -986, y = 64.1 },
+            coord = { x = -986, y = 64.1 },
             Range = 31.11,
-            _index = 289,
+            _index = 289
         },
         {
             Done = { 28600 },
-            Coord = { x = -925.8, y = -16.8 },
-            _index = 290,
+            coord = { x = -925.8, y = -16.8 },
+            _index = 290
         },
         {
             PickUp = { 28506 },
-            Coord = { x = -923.7, y = -17.5 },
-            _index = 291,
+            coord = { x = -923.7, y = -17.5 },
+            _index = 291
         },
         {
             Done = { 28506 },
-            Coord = { x = -923.7, y = -17.5 },
-            _index = 292,
+            coord = { x = -923.7, y = -17.5 },
+            _index = 292
         },
         {
             PickUp = { 28556 },
-            Coord = { x = -923.7, y = -17.5 },
-            _index = 293,
+            coord = { x = -923.7, y = -17.5 },
+            _index = 293
         },
         {
             PickUp = { 28538 },
-            Coord = { x = -933.5, y = -20.9 },
-            _index = 294,
+            coord = { x = -933.5, y = -20.9 },
+            _index = 294
         },
         {
             Waypoint = 28538,
-            Coord = { x = -987.7, y = 64.2 },
+            coord = { x = -987.7, y = 64.2 },
             Range = 30.88,
-            _index = 295,
+            _index = 295
         },
         {
             Waypoint = 28538,
-            Coord = { x = -866.7, y = 335.3 },
+            coord = { x = -866.7, y = 335.3 },
             Range = 25.97,
-            _index = 296,
+            _index = 296
         },
         {
             Qpart = { [28556] = { 1 } },
-            Coord = { x = -846.8, y = 242.1 },
+            coord = { x = -846.8, y = 242.1 },
             Fillers = { [28538] = { 1 } },
             Button = { ["28538-1"] = 64445, ["28556-1"] = 64471 },
             Range = 0.75,
-            _index = 297,
+            _index = 297
         },
         {
             Qpart = { [28538] = { 1 } },
-            Coord = { x = -846.3, y = 236.8 },
+            coord = { x = -846.3, y = 236.8 },
             Button = { ["28538-1"] = 64445 },
             Range = 69.77,
-            _index = 298,
+            _index = 298
         },
         {
             Done = { 28538 },
-            Coord = { x = -838, y = 193.6 },
-            _index = 299,
+            coord = { x = -838, y = 193.6 },
+            _index = 299
         },
         {
             PickUp = { 28566 },
-            Coord = { x = -838, y = 193.6 },
-            _index = 300,
+            coord = { x = -838, y = 193.6 },
+            _index = 300
         },
         {
             Waypoint = 28566,
-            Coord = { x = -597.3, y = 201.1 },
+            coord = { x = -597.3, y = 201.1 },
             Range = 47.9,
-            _index = 301,
+            _index = 301
         },
         {
             Qpart = { [28556] = { 2 }, [28566] = { 1 } },
-            Coord = { x = -553.5, y = -29.4 },
+            coord = { x = -553.5, y = -29.4 },
             Fillers = { [28566] = { 2 } },
             Button = { ["28556-2"] = 64471 },
             Range = 0.69,
-            _index = 302,
+            _index = 302
         },
         {
             Qpart = { [28566] = { 2 } },
-            Coord = { x = -554.8, y = -31.5 },
+            coord = { x = -554.8, y = -31.5 },
             Range = 40.1,
-            _index = 303,
+            _index = 303
         },
         {
             Done = { 28566 },
-            Coord = { x = -524.8, y = -62.2 },
-            _index = 304,
+            coord = { x = -524.8, y = -62.2 },
+            _index = 304
         },
         {
             PickUp = { 28603 },
-            Coord = { x = -524.8, y = -62.2 },
-            _index = 305,
+            coord = { x = -524.8, y = -62.2 },
+            _index = 305
         },
         {
             PickUp = { 28604 },
-            Coord = { x = -520.3, y = -60.3 },
-            _index = 306,
+            coord = { x = -520.3, y = -60.3 },
+            _index = 306
         },
         {
             Qpart = { [28603] = { 1 } },
-            Coord = { x = -314.4, y = -107.8 },
+            coord = { x = -314.4, y = -107.8 },
             Fillers = { [28604] = { 1 } },
             Button = { ["28604-1"] = 64583 },
             Range = 0.61,
             Gossip = 1,
-            _index = 307,
+            _index = 307
         },
         {
             Qpart = { [28603] = { 3 } },
-            Coord = { x = -304.5, y = -153.5 },
+            coord = { x = -304.5, y = -153.5 },
             Fillers = { [28604] = { 1 } },
             Button = { ["28604-1"] = 64583 },
             Range = 0.75,
-            _index = 308,
+            _index = 308
         },
         {
             Qpart = { [28556] = { 3 } },
-            Coord = { x = -287.4, y = -108 },
+            coord = { x = -287.4, y = -108 },
             Button = { ["28556-3"] = 64471 },
             Range = 0.61,
-            _index = 309,
+            _index = 309
         },
         {
             Qpart = { [28603] = { 2 } },
-            Coord = { x = -261.7, y = -134.5 },
+            coord = { x = -261.7, y = -134.5 },
             Fillers = { [28604] = { 1 } },
             Button = { ["28604-1"] = 64583 },
             Range = 0.61,
             Gossip = 1,
-            _index = 310,
+            _index = 310
         },
         {
             Done = { 28603 },
-            Coord = { x = -265.9, y = -138.2 },
-            _index = 311,
+            coord = { x = -265.9, y = -138.2 },
+            _index = 311
         },
         {
             Qpart = { [28604] = { 1 } },
-            Coord = { x = -265.9, y = -138.2 },
+            coord = { x = -265.9, y = -138.2 },
             Button = { ["28604-1"] = 64583 },
             Range = 47,
-            _index = 312,
+            _index = 312
         },
         {
             Done = { 28604 },
-            Coord = { x = -242.5, y = -119.9 },
-            _index = 313,
+            coord = { x = -242.5, y = -119.9 },
+            _index = 313
         },
         {
             PickUp = { 28605 },
-            Coord = { x = -242.5, y = -119.9 },
-            _index = 314,
+            coord = { x = -242.5, y = -119.9 },
+            _index = 314
         },
         {
             Qpart = { [28556] = { 4 } },
-            Coord = { x = -74.6, y = -101 },
+            coord = { x = -74.6, y = -101 },
             Fillers = { [28605] = { 1 } },
             Button = { ["28556-4"] = 64471 },
             Range = 0.75,
-            _index = 315,
+            _index = 315
         },
         {
             Qpart = { [28605] = { 1 } },
-            Coord = { x = -74.6, y = -101 },
+            coord = { x = -74.6, y = -101 },
             Range = 45.7,
-            _index = 316,
+            _index = 316
         },
         {
             Waypoint = 28484,
-            Coord = { x = -313.3, y = -340 },
+            coord = { x = -313.3, y = -340 },
             Fillers = { [28489] = { 1 }, [28495] = { 1 } },
             Button = { ["28495-1"] = 64416 },
             Range = 61.6,
-            _index = 317,
+            _index = 317
         },
         {
             Waypoint = 28620,
-            Coord = { x = -413.3, y = -282.9 },
+            coord = { x = -413.3, y = -282.9 },
             Fillers = { [28484] = { 1 }, [28489] = { 1 }, [28495] = { 1 } },
             Button = { ["28495-1"] = 64416 },
             Range = 22.44,
-            _index = 318,
+            _index = 318
         },
         {
             Waypoint = 28620,
-            Coord = { x = -389.9, y = -263.2 },
+            coord = { x = -389.9, y = -263.2 },
             Fillers = { [28484] = { 1 } },
             Range = 10.8,
-            _index = 319,
+            _index = 319
         },
         {
             Waypoint = 28620,
-            Coord = { x = -379, y = -217.2 },
+            coord = { x = -379, y = -217.2 },
             Fillers = { [28484] = { 1 } },
             Range = 15.89,
-            _index = 320,
+            _index = 320
         },
         {
             Qpart = { [28487] = { 1 } },
-            Coord = { x = -342.7, y = -183.2 },
+            coord = { x = -342.7, y = -183.2 },
             Fillers = { [28484] = { 1 } },
             Range = 0.61,
-            _index = 321,
+            _index = 321
         },
         {
             Waypoint = 28620,
-            Coord = { x = -346.9, y = -238.5 },
+            coord = { x = -346.9, y = -238.5 },
             Fillers = { [28484] = { 1 } },
             Range = 16.03,
-            _index = 322,
+            _index = 322
         },
         {
             Waypoint = 28620,
-            Coord = { x = -313.4, y = -262.5 },
+            coord = { x = -313.4, y = -262.5 },
             Fillers = { [28484] = { 1 } },
             Range = 9.75,
-            _index = 323,
+            _index = 323
         },
         {
             Waypoint = 28620,
-            Coord = { x = -275.2, y = -298.9 },
+            coord = { x = -275.2, y = -298.9 },
             Fillers = { [28484] = { 1 } },
             Range = 11.99,
-            _index = 324,
+            _index = 324
         },
         {
             Qpart = { [28487] = { 3 } },
-            Coord = { x = -293.4, y = -244 },
+            coord = { x = -293.4, y = -244 },
             Fillers = { [28484] = { 1 } },
             Range = 0.69,
-            _index = 325,
+            _index = 325
         },
         {
             Waypoint = 28620,
-            Coord = { x = -326.2, y = -257.7 },
+            coord = { x = -326.2, y = -257.7 },
             Fillers = { [28484] = { 1 } },
             Range = 18.07,
-            _index = 326,
+            _index = 326
         },
         {
             Waypoint = 28620,
-            Coord = { x = -370.8, y = -193.5 },
+            coord = { x = -370.8, y = -193.5 },
             Fillers = { [28484] = { 1 } },
             Range = 16.86,
-            _index = 327,
+            _index = 327
         },
         {
             Qpart = { [28487] = { 2 } },
-            Coord = { x = -317.5, y = -169 },
+            coord = { x = -317.5, y = -169 },
             Fillers = { [28484] = { 1 } },
             Range = 0.75,
-            _index = 328,
+            _index = 328
         },
         {
             Qpart = { [28484] = { 1 } },
-            Coord = { x = -317.5, y = -169 },
+            coord = { x = -317.5, y = -169 },
             Range = 34.57,
-            _index = 329,
+            _index = 329
         },
         {
             Qpart = { [28489] = { 1 }, [28495] = { 1 } },
-            Coord = { x = -548.8, y = -339.4 },
+            coord = { x = -548.8, y = -339.4 },
             Button = { ["28495-1"] = 64416 },
             Range = 104.7,
-            _index = 330,
+            _index = 330
         },
         {
             GetFP = 669,
-            Coord = { x = -1048.5, y = -569.2 },
+            coord = { x = -1048.5, y = -569.2 },
             Range = 5.91,
-            _index = 331,
+            _index = 331
         },
         {
             PickUp = { 28635, 28643 },
-            Coord = { x = -1068, y = -571.8 },
-            _index = 332,
+            coord = { x = -1068, y = -571.8 },
+            _index = 332
         },
         {
             Done = { 28620 },
-            Coord = { x = -1069.1, y = -582.8 },
-            _index = 333,
+            coord = { x = -1069.1, y = -582.8 },
+            _index = 333
         },
         {
             PickUp = { 28634 },
-            Coord = { x = -1069.1, y = -582.8 },
-            _index = 334,
+            coord = { x = -1069.1, y = -582.8 },
+            _index = 334
         },
         {
             Qpart = { [28635] = { 1 } },
-            Coord = { x = -1147, y = -1253 },
+            coord = { x = -1147, y = -1253 },
             Fillers = { [28634] = { 1 } },
             Range = 0.75,
-            _index = 335,
+            _index = 335
         },
         {
             Done = { 28635 },
-            Coord = { x = -1147, y = -1253 },
-            _index = 336,
+            coord = { x = -1147, y = -1253 },
+            _index = 336
         },
         {
             PickUp = { 28636 },
-            Coord = { x = -1147, y = -1253 },
-            _index = 337,
+            coord = { x = -1147, y = -1253 },
+            _index = 337
         },
         {
             Qpart = { [28636] = { 1 } },
-            Coord = { x = -1198.3, y = -1271.1 },
+            coord = { x = -1198.3, y = -1271.1 },
             Range = 53.11,
-            _index = 338,
+            _index = 338
         },
         {
             Qpart = { [28634] = { 1 } },
-            Coord = { x = -1249.4, y = -449.9 },
+            coord = { x = -1249.4, y = -449.9 },
             Range = 106.85,
-            _index = 339,
+            _index = 339
         },
         {
             Done = { 28634, 28636 },
-            Coord = { x = -1069.5, y = -580.7 },
-            _index = 340,
+            coord = { x = -1069.5, y = -580.7 },
+            _index = 340
         },
         {
             UseFlightPath = 28487,
             Name = "TarrenMill,Hillsbrad",
             NodeID = 13,
-            Coord = { x = -1048.1, y = -568.8 },
+            coord = { x = -1048.1, y = -568.8 },
             ETA = 25,
-            _index = 341,
+            _index = 341
         },
         {
             Done = { 28484 },
-            Coord = { x = -920.3, y = -0.8 },
-            _index = 342,
+            coord = { x = -920.3, y = -0.8 },
+            _index = 342
         },
         {
             Waypoint = 28487,
-            Coord = { x = -929.3, y = 12 },
+            coord = { x = -929.3, y = 12 },
             Range = 9.81,
-            _index = 343,
+            _index = 343
         },
         {
             Waypoint = 28487,
-            Coord = { x = -924.3, y = 44.7 },
+            coord = { x = -924.3, y = 44.7 },
             Range = 4.39,
-            _index = 344,
+            _index = 344
         },
         {
             Waypoint = 28487,
-            Coord = { x = -919, y = 42.6 },
+            coord = { x = -919, y = 42.6 },
             Range = 5.9,
-            _index = 345,
+            _index = 345
         },
         {
             Done = { 28487 },
-            Coord = { x = -929.5, y = 6.7 },
-            _index = 346,
+            coord = { x = -929.5, y = 6.7 },
+            _index = 346
         },
         {
             Done = { 28495 },
-            Coord = { x = -908.2, y = -55 },
-            _index = 347,
+            coord = { x = -908.2, y = -55 },
+            _index = 347
         },
         {
             Done = { 28556 },
-            Coord = { x = -924.3, y = -18 },
-            _index = 348,
+            coord = { x = -924.3, y = -18 },
+            _index = 348
         },
         {
             Done = { 28605 },
-            Coord = { x = -933.3, y = -20.2 },
-            _index = 349,
+            coord = { x = -933.3, y = -20.2 },
+            _index = 349
         },
         {
             PickUp = { 28616 },
-            Coord = { x = -922.8, y = -17.9 },
-            _index = 350,
+            coord = { x = -922.8, y = -17.9 },
+            _index = 350
         },
         {
             Done = { 28616 },
-            Coord = { x = -922.8, y = -17.9 },
-            _index = 351,
+            coord = { x = -922.8, y = -17.9 },
+            _index = 351
         },
         {
             RouteCompleted = 1,
-            _index = 352,
-        },
+            _index = 352
+        }
     }
 
     APR.RouteQuestStepList["22-Western Plaguelands"] = {
         {
             PickUp = { 26931 },
-            Coord = { x = -732.3, y = 1733.8 },
-            _index = 1,
+            coord = { x = -732.3, y = 1733.8 },
+            _index = 1
         },
         {
             Qpart = { [26931] = { 1, 3, 2 }, [26934] = { 1 } },
-            Coord = { x = -1063.5, y = 1659 },
+            coord = { x = -1063.5, y = 1659 },
             Range = 80.91,
-            _index = 2,
+            _index = 2
         },
         {
             Done = { 26931 },
-            Coord = { x = -734, y = 1734 },
-            _index = 3,
+            coord = { x = -734, y = 1734 },
+            _index = 3
         },
         {
             Qpart = { [26978] = { 1 } },
-            Coord = { x = -1174.9, y = 1751.4 },
+            coord = { x = -1174.9, y = 1751.4 },
             Fillers = { [26933] = { 1 } },
             Button = { ["26978-1"] = 60753 },
             Range = 0.69,
-            _index = 4,
+            _index = 4
         },
         {
             Qpart = { [26978] = { 2 } },
-            Coord = { x = -1167.3, y = 1795.4 },
+            coord = { x = -1167.3, y = 1795.4 },
             Fillers = { [26933] = { 1 } },
             Button = { ["26978-1"] = 60753 },
             Range = 0.69,
-            _index = 5,
+            _index = 5
         },
         {
             Qpart = { [26978] = { 3 } },
-            Coord = { x = -1221.5, y = 1804.9 },
+            coord = { x = -1221.5, y = 1804.9 },
             Fillers = { [26933] = { 1 } },
             Button = { ["26978-3"] = 60753 },
             Range = 0.69,
-            _index = 6,
+            _index = 6
         },
         {
             Qpart = { [26978] = { 4 } },
-            Coord = { x = -1250.9, y = 1782.5 },
+            coord = { x = -1250.9, y = 1782.5 },
             Fillers = { [26933] = { 1 } },
             Button = { ["26978-1"] = 60753 },
             Range = 0.61,
-            _index = 7,
+            _index = 7
         },
         {
             Qpart = { [26933] = { 1 } },
-            Coord = { x = -1251.5, y = 1783.5 },
+            coord = { x = -1251.5, y = 1783.5 },
             Range = 28.57,
-            _index = 8,
+            _index = 8
         },
         {
             Done = { 26933 },
-            Coord = { x = -733.5, y = 1734.4 },
-            _index = 9,
+            coord = { x = -733.5, y = 1734.4 },
+            _index = 9
         },
         {
             GetFP = 649,
-            Coord = { x = -1583.5, y = 1512.2 },
+            coord = { x = -1583.5, y = 1512.2 },
             Range = 5.91,
-            _index = 10,
+            _index = 10
         },
         {
             PickUp = { 26922 },
-            Coord = { x = -1616.5, y = 1520 },
-            _index = 11,
+            coord = { x = -1616.5, y = 1520 },
+            _index = 11
         },
         {
             Done = { 26920 },
-            Coord = { x = -1637.3, y = 1497.3 },
-            _index = 12,
+            coord = { x = -1637.3, y = 1497.3 },
+            _index = 12
         },
         {
             PickUp = { 26921 },
-            Coord = { x = -1637.3, y = 1497.3 },
-            _index = 13,
+            coord = { x = -1637.3, y = 1497.3 },
+            _index = 13
         },
         {
             PickUp = { 26923 },
-            Coord = { x = -1629.3, y = 1487.9 },
-            _index = 14,
+            coord = { x = -1629.3, y = 1487.9 },
+            _index = 14
         },
         {
             Qpart = { [26921] = { 1 }, [26922] = { 1, 2 }, [26923] = { 1 } },
-            Coord = { x = -1511.1, y = 1532 },
+            coord = { x = -1511.1, y = 1532 },
             Button = { ["26922-1"] = 60678, ["26922-2"] = 60678 },
             Range = 49.12,
-            _index = 15,
+            _index = 15
         },
         {
             Done = { 26922 },
-            Coord = { x = -1616.5, y = 1521 },
-            _index = 16,
+            coord = { x = -1616.5, y = 1521 },
+            _index = 16
         },
         {
             PickUp = { 26925 },
-            Coord = { x = -1616.5, y = 1521 },
-            _index = 17,
+            coord = { x = -1616.5, y = 1521 },
+            _index = 17
         },
         {
             Done = { 26921 },
-            Coord = { x = -1636.3, y = 1498.5 },
-            _index = 18,
+            coord = { x = -1636.3, y = 1498.5 },
+            _index = 18
         },
         {
             Done = { 26923 },
-            Coord = { x = -1629, y = 1487.8 },
-            _index = 19,
+            coord = { x = -1629, y = 1487.8 },
+            _index = 19
         },
         {
             PickUp = { 27117, 26924 },
-            Coord = { x = -1636.8, y = 1498.4 },
-            _index = 20,
+            coord = { x = -1636.8, y = 1498.4 },
+            _index = 20
         },
         {
             Qpart = { [26925] = { 1 } },
-            Coord = { x = -1527.5, y = 1383.2 },
+            coord = { x = -1527.5, y = 1383.2 },
             Button = { ["26925-1"] = 60678 },
             Range = 0.69,
-            _index = 21,
+            _index = 21
         },
         {
             Qpart = { [27117] = { 1 } },
-            Coord = { x = -1589, y = 1314.2 },
+            coord = { x = -1589, y = 1314.2 },
             Range = 0.69,
-            _index = 22,
+            _index = 22
         },
         {
             Qpart = { [26924] = { 1 } },
-            Coord = { x = -1585.9, y = 1314 },
+            coord = { x = -1585.9, y = 1314 },
             Range = 34.88,
-            _index = 23,
+            _index = 23
         },
         {
             Done = { 26924, 26925, 27117 },
-            Coord = { x = -1636, y = 1498.2 },
-            _index = 24,
+            coord = { x = -1636, y = 1498.2 },
+            _index = 24
         },
         {
             PickUp = { 26926 },
-            Coord = { x = -1636, y = 1498.2 },
-            _index = 25,
+            coord = { x = -1636, y = 1498.2 },
+            _index = 25
         },
         {
             UseFlightPath = 26926,
             Name = "TheBulwark,Tirisfal",
             NodeID = 384,
-            Coord = { x = -1583.1, y = 1512 },
+            coord = { x = -1583.1, y = 1512 },
             ETA = 45,
-            _index = 26,
+            _index = 26
         },
         {
             Done = { 26926 },
-            Coord = { x = -728.3, y = 1759.4 },
-            _index = 27,
+            coord = { x = -728.3, y = 1759.4 },
+            _index = 27
         },
         {
             Qpart = { [26930] = { 1 } },
-            Coord = { x = -1330, y = 1872.3 },
+            coord = { x = -1330, y = 1872.3 },
             Range = 0.75,
-            _index = 28,
+            _index = 28
         },
         {
             Done = { 26930 },
-            Coord = { x = -728.8, y = 1759.4 },
-            _index = 29,
+            coord = { x = -728.8, y = 1759.4 },
+            _index = 29
         },
         {
             Done = { 26979 },
-            Coord = { x = -1331.6, y = 1875 },
-            _index = 30,
+            coord = { x = -1331.6, y = 1875 },
+            _index = 30
         },
         {
             PickUp = { 26937 },
-            Coord = { x = -1332.3, y = 1876 },
-            _index = 31,
+            coord = { x = -1332.3, y = 1876 },
+            _index = 31
         },
         {
             Qpart = { [26937] = { 1 } },
-            Coord = { x = -1212.4, y = 1762 },
+            coord = { x = -1212.4, y = 1762 },
             Range = 43.55,
-            _index = 32,
+            _index = 32
         },
         {
             Done = { 26937 },
-            Coord = { x = -1202.5, y = 1737.5 },
-            _index = 33,
+            coord = { x = -1202.5, y = 1737.5 },
+            _index = 33
         },
         {
             PickUp = { 26938 },
-            Coord = { x = -1202.5, y = 1737.5 },
-            _index = 34,
+            coord = { x = -1202.5, y = 1737.5 },
+            _index = 34
         },
         {
             Qpart = { [26938] = { 1 } },
-            Coord = { x = -1214.3, y = 1756.8 },
+            coord = { x = -1214.3, y = 1756.8 },
             ExtraLineText = "PUS_PET_ABILITY",
             Range = 76.27,
-            _index = 35,
+            _index = 35
         },
         {
             Qpart = { [26938] = { 2 } },
-            Coord = { x = -1250, y = 1788.5 },
+            coord = { x = -1250, y = 1788.5 },
             Fillers = { [26938] = { 1 } },
             Range = 0.61,
-            _index = 36,
+            _index = 36
         },
         {
             Qpart = { [26938] = { 1 } },
-            Coord = { x = -1231.6, y = 1770 },
+            coord = { x = -1231.6, y = 1770 },
             Range = 60.8,
-            _index = 37,
+            _index = 37
         },
         {
             Done = { 26938 },
-            Coord = { x = -1331.8, y = 1875.8 },
-            _index = 38,
+            coord = { x = -1331.8, y = 1875.8 },
+            _index = 38
         },
         {
             PickUp = { 26956 },
-            Coord = { x = -1669.5, y = 1793.5 },
-            _index = 39,
+            coord = { x = -1669.5, y = 1793.5 },
+            _index = 39
         },
         {
             PickUp = { 26953 },
-            Coord = { x = -1683.5, y = 1796.9 },
-            _index = 40,
+            coord = { x = -1683.5, y = 1796.9 },
+            _index = 40
         },
         {
             Done = { 26952 },
-            Coord = { x = -1702, y = 1793.8 },
-            _index = 41,
+            coord = { x = -1702, y = 1793.8 },
+            _index = 41
         },
         {
             PickUp = { 26999 },
-            Coord = { x = -1702, y = 1793.8 },
-            _index = 42,
+            coord = { x = -1702, y = 1793.8 },
+            _index = 42
         },
         {
             PickUp = { 27083 },
-            Coord = { x = -1700.8, y = 1842.7 },
-            _index = 43,
+            coord = { x = -1700.8, y = 1842.7 },
+            _index = 43
         },
         {
             GetFP = 651,
-            Coord = { x = -1754.1, y = 1869.9 },
+            coord = { x = -1754.1, y = 1869.9 },
             Range = 5.91,
-            _index = 44,
+            _index = 44
         },
         {
             Qpart = { [26999] = { 3, 4 } },
-            Coord = { x = -1814.4, y = 1944.7 },
+            coord = { x = -1814.4, y = 1944.7 },
             Fillers = { [26953] = { 1 } },
             Range = 74.19,
-            _index = 45,
+            _index = 45
         },
         {
             Qpart = { [26953] = { 1 }, [26999] = { 1, 2 } },
-            Coord = { x = -2051.5, y = 1647.8 },
+            coord = { x = -2051.5, y = 1647.8 },
             Range = 120.6,
-            _index = 46,
+            _index = 46
         },
         {
             Qpart = { [26956] = { 2 } },
-            Coord = { x = -1575.4, y = 1804.3 },
+            coord = { x = -1575.4, y = 1804.3 },
             Range = 31.37,
-            _index = 47,
+            _index = 47
         },
         {
             Qpart = { [26956] = { 1 } },
-            Coord = { x = -1542.5, y = 1849.7 },
+            coord = { x = -1542.5, y = 1849.7 },
             Range = 24.88,
-            _index = 48,
+            _index = 48
         },
         {
             Qpart = { [26956] = { 3 } },
-            Coord = { x = -1621.1, y = 1851.7 },
+            coord = { x = -1621.1, y = 1851.7 },
             Range = 23.87,
-            _index = 49,
+            _index = 49
         },
         {
             Done = { 26956 },
-            Coord = { x = -1669.9, y = 1793 },
-            _index = 50,
+            coord = { x = -1669.9, y = 1793 },
+            _index = 50
         },
         {
             Done = { 26953 },
-            Coord = { x = -1683.6, y = 1797 },
-            _index = 51,
+            coord = { x = -1683.6, y = 1797 },
+            _index = 51
         },
         {
             PickUp = { 26954 },
-            Coord = { x = -1683.6, y = 1797 },
-            _index = 52,
+            coord = { x = -1683.6, y = 1797 },
+            _index = 52
         },
         {
             Done = { 26999 },
-            Coord = { x = -1701.6, y = 1793.8 },
-            _index = 53,
+            coord = { x = -1701.6, y = 1793.8 },
+            _index = 53
         },
         {
             PickUp = { 26935 },
-            Coord = { x = -1701.6, y = 1793.8 },
-            _index = 54,
+            coord = { x = -1701.6, y = 1793.8 },
+            _index = 54
         },
         {
             Waypoint = 26954,
-            Coord = { x = -1895.8, y = 1862.7 },
+            coord = { x = -1895.8, y = 1862.7 },
             Range = 14.91,
-            _index = 55,
+            _index = 55
         },
         {
             Waypoint = 26954,
-            Coord = { x = -1919.1, y = 1842.8 },
+            coord = { x = -1919.1, y = 1842.8 },
             Range = 15.31,
-            _index = 56,
+            _index = 56
         },
         {
             Qpart = { [26954] = { 1 } },
-            Coord = { x = -1902.3, y = 1825.3 },
+            coord = { x = -1902.3, y = 1825.3 },
             ExtraLineText = "CLICK_ON_NPC",
             Range = 0.69,
-            _index = 57,
+            _index = 57
         },
         {
             Done = { 26954 },
-            Coord = { x = -1685, y = 1796.8 },
-            _index = 58,
+            coord = { x = -1685, y = 1796.8 },
+            _index = 58
         },
         {
             UseFlightPath = 27083,
             Name = "Andorhal,WesternPlaguelands",
             NodeID = 649,
-            Coord = { x = -1754.8, y = 1870.4 },
+            coord = { x = -1754.8, y = 1870.4 },
             ETA = 30,
-            _index = 59,
+            _index = 59
         },
         {
             Done = { 27083 },
-            Coord = { x = -1603, y = 1537.5 },
-            _index = 60,
+            coord = { x = -1603, y = 1537.5 },
+            _index = 60
         },
         {
             PickUp = { 27084, 27086 },
-            Coord = { x = -1603, y = 1537.5 },
-            _index = 61,
+            coord = { x = -1603, y = 1537.5 },
+            _index = 61
         },
         {
             PickUp = { 27085 },
-            Coord = { x = -1597.9, y = 1545.8 },
-            _index = 62,
+            coord = { x = -1597.9, y = 1545.8 },
+            _index = 62
         },
         {
             Qpart = { [27084] = { 1 } },
-            Coord = { x = -1663.5, y = 1467.5 },
+            coord = { x = -1663.5, y = 1467.5 },
             Button = { ["27084-1"] = 60815 },
             Range = 0.69,
-            _index = 63,
+            _index = 63
         },
         {
             Qpart = { [27085] = { 1 }, [27086] = { 1 } },
-            Coord = { x = -1432.4, y = 1430 },
+            coord = { x = -1432.4, y = 1430 },
             Range = 43.56,
-            _index = 64,
+            _index = 64
         },
         {
             Done = { 27086, 27084, 27085 },
-            Coord = { x = -1599.8, y = 1542.5 },
-            _index = 65,
+            coord = { x = -1599.8, y = 1542.5 },
+            _index = 65
         },
         {
             PickUp = { 27087 },
-            Coord = { x = -1603.1, y = 1537 },
-            _index = 66,
+            coord = { x = -1603.1, y = 1537 },
+            _index = 66
         },
         {
             Waypoint = 27087,
-            Coord = { x = -1643, y = 1536.7 },
+            coord = { x = -1643, y = 1536.7 },
             Range = 11.98,
-            _index = 67,
+            _index = 67
         },
         {
             Done = { 27087 },
-            Coord = { x = -1690.5, y = 1540.3 },
-            _index = 68,
+            coord = { x = -1690.5, y = 1540.3 },
+            _index = 68
         },
         {
             PickUp = { 27089 },
-            Coord = { x = -1690.5, y = 1540.3 },
-            _index = 69,
+            coord = { x = -1690.5, y = 1540.3 },
+            _index = 69
         },
         {
             Waypoint = 27089,
-            Coord = { x = -1641.5, y = 1536.3 },
+            coord = { x = -1641.5, y = 1536.3 },
             Range = 11.34,
-            _index = 70,
+            _index = 70
         },
         {
             Qpart = { [27089] = { 1, 2 } },
-            Coord = { x = -1654, y = 1433.2 },
+            coord = { x = -1654, y = 1433.2 },
             Range = 70.45,
-            _index = 71,
+            _index = 71
         },
         {
             Qpart = { [27089] = { 3 } },
-            Coord = { x = -1274.5, y = 1344 },
+            coord = { x = -1274.5, y = 1344 },
             Range = 0.75,
-            _index = 72,
+            _index = 72
         },
         {
             Done = { 27089 },
-            Coord = { x = -1274.5, y = 1344 },
-            _index = 73,
+            coord = { x = -1274.5, y = 1344 },
+            _index = 73
         },
         {
             PickUp = { 27090 },
-            Coord = { x = -1275, y = 1342.9 },
-            _index = 74,
+            coord = { x = -1275, y = 1342.9 },
+            _index = 74
         },
         {
             Waypoint = 27090,
-            Coord = { x = -1641.4, y = 1536.4 },
+            coord = { x = -1641.4, y = 1536.4 },
             Range = 13.15,
-            _index = 75,
+            _index = 75
         },
         {
             Done = { 27090 },
-            Coord = { x = -1691.3, y = 1540.4 },
+            coord = { x = -1691.3, y = 1540.4 },
             Dontskipvid = 1,
-            _index = 76,
+            _index = 76
         },
         {
             PickUp = { 27144 },
-            Coord = { x = -1690, y = 1539.7 },
+            coord = { x = -1690, y = 1539.7 },
             Dontskipvid = 1,
-            _index = 77,
+            _index = 77
         },
         {
             Qpart = { [27144] = { 1 } },
-            Coord = { x = -1690.9, y = 1540.2 },
+            coord = { x = -1690.9, y = 1540.2 },
             Range = 11.11,
             Dontskipvid = 1,
-            _index = 78,
+            _index = 78
         },
         {
             Done = { 27144 },
-            Coord = { x = -1691.4, y = 1540.7 },
-            _index = 79,
+            coord = { x = -1691.4, y = 1540.7 },
+            _index = 79
         },
         {
             Waypoint = 26935,
-            Coord = { x = -1643.4, y = 1536.9 },
+            coord = { x = -1643.4, y = 1536.9 },
             Range = 12.32,
-            _index = 80,
+            _index = 80
         },
         {
             UseFlightPath = 26935,
             Name = "TheMenders'Stead,WesternPlaguelands",
             NodeID = 651,
-            Coord = { x = -1583.5, y = 1511.8 },
+            coord = { x = -1583.5, y = 1511.8 },
             ETA = 16,
-            _index = 81,
+            _index = 81
         },
         {
             Done = { 26935 },
-            Coord = { x = -1652.4, y = 2439.4 },
-            _index = 82,
+            coord = { x = -1652.4, y = 2439.4 },
+            _index = 82
         },
         {
             PickUp = { 27000 },
-            Coord = { x = -1652.4, y = 2439.4 },
-            _index = 83,
+            coord = { x = -1652.4, y = 2439.4 },
+            _index = 83
         },
         {
             PickUp = { 27013 },
-            Coord = { x = -1661.6, y = 2452.1 },
-            _index = 84,
+            coord = { x = -1661.6, y = 2452.1 },
+            _index = 84
         },
         {
             Qpart = { [27000] = { 1 } },
-            Coord = { x = -1628.5, y = 2457.9 },
+            coord = { x = -1628.5, y = 2457.9 },
             Range = 7.83,
             InVehicle = 1,
-            _index = 85,
+            _index = 85
         },
         {
             Qpart = { [27013] = { 1 } },
-            Coord = { x = -1467.3, y = 2382.1 },
+            coord = { x = -1467.3, y = 2382.1 },
             Range = 54.42,
-            _index = 86,
+            _index = 86
         },
         {
             Done = { 27000 },
-            Coord = { x = -1652, y = 2439.3 },
-            _index = 87,
+            coord = { x = -1652, y = 2439.3 },
+            _index = 87
         },
         {
             PickUp = { 27001 },
-            Coord = { x = -1652, y = 2439.3 },
-            _index = 88,
+            coord = { x = -1652, y = 2439.3 },
+            _index = 88
         },
         {
             Done = { 27013 },
-            Coord = { x = -1661.8, y = 2453.1 },
-            _index = 89,
+            coord = { x = -1661.8, y = 2453.1 },
+            _index = 89
         },
         {
             PickUp = { 27011, 27012 },
-            Coord = { x = -1661.8, y = 2453.1 },
-            _index = 90,
+            coord = { x = -1661.8, y = 2453.1 },
+            _index = 90
         },
         {
             Qpart = { [27001] = { 1 } },
-            Coord = { x = -1630.9, y = 2460.6 },
+            coord = { x = -1630.9, y = 2460.6 },
             Range = 12.1,
             InVehicle = 2,
-            _index = 91,
+            _index = 91
         },
         {
             Qpart = { [27011] = { 1 }, [27012] = { 1, 2 } },
-            Coord = { x = -1620.4, y = 2226.1 },
+            coord = { x = -1620.4, y = 2226.1 },
             Range = 88.21,
-            _index = 92,
+            _index = 92
         },
         {
             Done = { 27001 },
-            Coord = { x = -1652.6, y = 2439.6 },
-            _index = 93,
+            coord = { x = -1652.6, y = 2439.6 },
+            _index = 93
         },
         {
             PickUp = { 27002 },
-            Coord = { x = -1652.6, y = 2439.6 },
-            _index = 94,
+            coord = { x = -1652.6, y = 2439.6 },
+            _index = 94
         },
         {
             Done = { 27012, 27011 },
-            Coord = { x = -1670.3, y = 2447.6 },
-            _index = 95,
+            coord = { x = -1670.3, y = 2447.6 },
+            _index = 95
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1840.5, y = 2687 },
+            coord = { x = -1840.5, y = 2687 },
             Range = 28.62,
-            _index = 96,
+            _index = 96
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1719.5, y = 2706.6 },
+            coord = { x = -1719.5, y = 2706.6 },
             Range = 26.86,
-            _index = 97,
+            _index = 97
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1606.4, y = 2767.8 },
+            coord = { x = -1606.4, y = 2767.8 },
             Range = 12.32,
-            _index = 98,
+            _index = 98
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1546.6, y = 2782.9 },
+            coord = { x = -1546.6, y = 2782.9 },
             Range = 14.12,
-            _index = 99,
+            _index = 99
         },
         {
             GetFP = 672,
-            Coord = { x = -1503, y = 2837.5 },
+            coord = { x = -1503, y = 2837.5 },
             Range = 5.91,
-            _index = 100,
+            _index = 100
         },
         {
             PickUp = { 27156 },
-            Coord = { x = -1440.8, y = 2910.6 },
-            _index = 101,
+            coord = { x = -1440.8, y = 2910.6 },
+            _index = 101
         },
         {
             Qpart = { [27156] = { 1 } },
-            Coord = { x = -1434.5, y = 2902.4 },
+            coord = { x = -1434.5, y = 2902.4 },
             Range = 6.5,
             Gossip = 1,
-            _index = 102,
+            _index = 102
         },
         {
             Done = { 27156 },
-            Coord = { x = -1440.4, y = 2910.6 },
-            _index = 103,
+            coord = { x = -1440.4, y = 2910.6 },
+            _index = 103
         },
         {
             PickUp = { 27157 },
-            Coord = { x = -1440.4, y = 2910.6 },
-            _index = 104,
+            coord = { x = -1440.4, y = 2910.6 },
+            _index = 104
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1410.3, y = 2930.9 },
+            coord = { x = -1410.3, y = 2930.9 },
             Range = 7.15,
-            _index = 105,
+            _index = 105
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1394, y = 2919.3 },
+            coord = { x = -1394, y = 2919.3 },
             Range = 6.17,
-            _index = 106,
+            _index = 106
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1388, y = 2922.4 },
+            coord = { x = -1388, y = 2922.4 },
             Range = 3.43,
-            _index = 107,
+            _index = 107
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1389, y = 2935.1 },
+            coord = { x = -1389, y = 2935.1 },
             Range = 6.07,
-            _index = 108,
+            _index = 108
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1379.1, y = 2947.1 },
+            coord = { x = -1379.1, y = 2947.1 },
             Range = 4.44,
-            _index = 109,
+            _index = 109
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1395, y = 2949 },
+            coord = { x = -1395, y = 2949 },
             Range = 5.46,
-            _index = 110,
+            _index = 110
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1402.8, y = 2955 },
+            coord = { x = -1402.8, y = 2955 },
             Range = 4.17,
-            _index = 111,
+            _index = 111
         },
         {
             Waypoint = 27002,
-            Coord = { x = -1414.5, y = 2946.4 },
+            coord = { x = -1414.5, y = 2946.4 },
             Range = 5.78,
-            _index = 112,
+            _index = 112
         },
         {
             PickUp = { 26957 },
-            Coord = { x = -1414.3, y = 2939.5 },
-            _index = 113,
+            coord = { x = -1414.3, y = 2939.5 },
+            _index = 113
         },
         {
             Done = { 27002 },
-            Coord = { x = -1389.3, y = 2944.9 },
-            _index = 114,
+            coord = { x = -1389.3, y = 2944.9 },
+            _index = 114
         },
         {
             PickUp = { 27151 },
-            Coord = { x = -1397.3, y = 2937.6 },
-            _index = 115,
+            coord = { x = -1397.3, y = 2937.6 },
+            _index = 115
         },
         {
             Waypoint = 27157,
-            Coord = { x = -1442.9, y = 2918.1 },
+            coord = { x = -1442.9, y = 2918.1 },
             Range = 26.73,
-            _index = 116,
+            _index = 116
         },
         {
             Waypoint = 27157,
-            Coord = { x = -1553.6, y = 3019.6 },
+            coord = { x = -1553.6, y = 3019.6 },
             Range = 15.13,
-            _index = 117,
+            _index = 117
         },
         {
             Waypoint = 27157,
-            Coord = { x = -1547.5, y = 3055.1 },
+            coord = { x = -1547.5, y = 3055.1 },
             Range = 8.39,
-            _index = 118,
+            _index = 118
         },
         {
             Waypoint = 27157,
-            Coord = { x = -1530.1, y = 3075.1 },
+            coord = { x = -1530.1, y = 3075.1 },
             Range = 7.13,
-            _index = 119,
+            _index = 119
         },
         {
             Qpart = { [27157] = { 1 } },
-            Coord = { x = -1543, y = 3098.1 },
+            coord = { x = -1543, y = 3098.1 },
             Range = 0.69,
-            _index = 120,
+            _index = 120
         },
         {
             Waypoint = 27157,
-            Coord = { x = -1554.5, y = 3011.6 },
+            coord = { x = -1554.5, y = 3011.6 },
             Range = 16.58,
-            _index = 121,
+            _index = 121
         },
         {
             Waypoint = 27151,
-            Coord = { x = -1624.9, y = 2790.3 },
+            coord = { x = -1624.9, y = 2790.3 },
             Range = 16.24,
-            _index = 122,
+            _index = 122
         },
         {
             Waypoint = 27151,
-            Coord = { x = -1664.4, y = 2747 },
+            coord = { x = -1664.4, y = 2747 },
             Range = 20.35,
-            _index = 123,
+            _index = 123
         },
         {
             Qpart = { [27151] = { 1 } },
-            Coord = { x = -1922.4, y = 2642.9 },
+            coord = { x = -1922.4, y = 2642.9 },
             Range = 69.25,
-            _index = 124,
+            _index = 124
         },
         {
             Done = { 27151 },
-            Coord = { x = -1916.8, y = 2678.1 },
-            _index = 125,
+            coord = { x = -1916.8, y = 2678.1 },
+            _index = 125
         },
         {
             PickUp = { 27152 },
-            Coord = { x = -1916.8, y = 2678.1 },
-            _index = 126,
+            coord = { x = -1916.8, y = 2678.1 },
+            _index = 126
         },
         {
             Waypoint = 27152,
-            Coord = { x = -1968.3, y = 2430.6 },
+            coord = { x = -1968.3, y = 2430.6 },
             Range = 24.75,
-            _index = 127,
+            _index = 127
         },
         {
             Qpart = { [27152] = { 1, 2 } },
-            Coord = { x = -2057.4, y = 2337.6 },
+            coord = { x = -2057.4, y = 2337.6 },
             Range = 8.9,
-            _index = 128,
+            _index = 128
         },
         {
             Done = { 27152 },
-            Coord = { x = -2057.5, y = 2337.1 },
-            _index = 129,
+            coord = { x = -2057.5, y = 2337.1 },
+            _index = 129
         },
         {
             PickUp = { 27153 },
-            Coord = { x = -2057.5, y = 2337.1 },
-            _index = 130,
+            coord = { x = -2057.5, y = 2337.1 },
+            _index = 130
         },
         {
             Waypoint = 27153,
-            Coord = { x = -1977.9, y = 2416.4 },
+            coord = { x = -1977.9, y = 2416.4 },
             Range = 27.55,
-            _index = 131,
+            _index = 131
         },
         {
             Waypoint = 27153,
-            Coord = { x = -1834.9, y = 2695 },
+            coord = { x = -1834.9, y = 2695 },
             Range = 29.15,
-            _index = 132,
+            _index = 132
         },
         {
             Waypoint = 27153,
-            Coord = { x = -1603.9, y = 2768.9 },
+            coord = { x = -1603.9, y = 2768.9 },
             Range = 21.27,
-            _index = 133,
+            _index = 133
         },
         {
             Waypoint = 27153,
-            Coord = { x = -1428.5, y = 2853.6 },
+            coord = { x = -1428.5, y = 2853.6 },
             Range = 10.53,
-            _index = 134,
+            _index = 134
         },
         {
             Qpart = { [27153] = { 4 } },
-            Coord = { x = -1395, y = 2845 },
+            coord = { x = -1395, y = 2845 },
             Range = 0.75,
             Gossip = 1,
-            _index = 135,
+            _index = 135
         },
         {
             Qpart = { [27153] = { 3 } },
-            Coord = { x = -1461.6, y = 2872.5 },
+            coord = { x = -1461.6, y = 2872.5 },
             Range = 0.75,
             Gossip = 1,
-            _index = 136,
+            _index = 136
         },
         {
             Done = { 27157 },
-            Coord = { x = -1440.3, y = 2910.8 },
-            _index = 137,
+            coord = { x = -1440.3, y = 2910.8 },
+            _index = 137
         },
         {
             Qpart = { [27153] = { 1 } },
-            Coord = { x = -1490.9, y = 2979.1 },
+            coord = { x = -1490.9, y = 2979.1 },
             Range = 0.61,
             Gossip = 1,
-            _index = 138,
+            _index = 138
         },
         {
             Qpart = { [27153] = { 2 } },
-            Coord = { x = -1509.8, y = 3010 },
+            coord = { x = -1509.8, y = 3010 },
             Range = 0.69,
             Gossip = 1,
-            _index = 139,
+            _index = 139
         },
         {
             Done = { 27153 },
-            Coord = { x = -1510.5, y = 3008 },
-            _index = 140,
+            coord = { x = -1510.5, y = 3008 },
+            _index = 140
         },
         {
             PickUp = { 27154 },
-            Coord = { x = -1510.5, y = 3008 },
-            _index = 141,
+            coord = { x = -1510.5, y = 3008 },
+            _index = 141
         },
         {
             Waypoint = 27154,
-            Coord = { x = -1529.1, y = 2850.1 },
+            coord = { x = -1529.1, y = 2850.1 },
             Range = 16.07,
-            _index = 142,
+            _index = 142
         },
         {
             Qpart = { [27154] = { 1 } },
-            Coord = { x = -1553.5, y = 2839.3 },
+            coord = { x = -1553.5, y = 2839.3 },
             ExtraLineText = "NPC_TOP_TOWER",
             Range = 0.75,
             Gossip = 1,
-            _index = 143,
+            _index = 143
         },
         {
             Done = { 27154 },
-            Coord = { x = -1552.9, y = 2839.6 },
-            _index = 144,
+            coord = { x = -1552.9, y = 2839.6 },
+            _index = 144
         },
         {
             PickUp = { 27155 },
-            Coord = { x = -1552.9, y = 2839.6 },
-            _index = 145,
+            coord = { x = -1552.9, y = 2839.6 },
+            _index = 145
         },
         {
             Waypoint = 27155,
-            Coord = { x = -1417.5, y = 2929.5 },
+            coord = { x = -1417.5, y = 2929.5 },
             Range = 12.26,
-            _index = 146,
+            _index = 146
         },
         {
             Done = { 27155 },
-            Coord = { x = -1390, y = 2942.9 },
-            _index = 147,
+            coord = { x = -1390, y = 2942.9 },
+            _index = 147
         },
         {
             UseFlightPath = 26957,
             Name = "TheMenders'Stead,WesternPlaguelands",
             NodeID = 651,
-            Coord = { x = -1503, y = 2838.1 },
+            coord = { x = -1503, y = 2838.1 },
             ETA = 53,
-            _index = 148,
+            _index = 148
         },
         {
             Done = { 26957 },
-            Coord = { x = -1760.4, y = 1860 },
-            _index = 149,
+            coord = { x = -1760.4, y = 1860 },
+            _index = 149
         },
         {
             PickUp = { 27017 },
-            Coord = { x = -1760.4, y = 1860 },
-            _index = 150,
+            coord = { x = -1760.4, y = 1860 },
+            _index = 150
         },
         {
             PickUp = { 27053 },
-            Coord = { x = -1701.9, y = 1793.4 },
-            _index = 151,
+            coord = { x = -1701.9, y = 1793.4 },
+            _index = 151
         },
         {
             Waypoint = 27053,
-            Coord = { x = -1967.9, y = 1758 },
+            coord = { x = -1967.9, y = 1758 },
             Range = 25.09,
-            _index = 152,
+            _index = 152
         },
         {
             Qpart = { [27053] = { 1 } },
-            Coord = { x = -2276.2, y = 1677.9 },
+            coord = { x = -2276.2, y = 1677.9 },
             Range = 0.69,
-            _index = 153,
+            _index = 153
         },
         {
             Done = { 27053 },
-            Coord = { x = -2272.9, y = 1688 },
-            _index = 154,
+            coord = { x = -2272.9, y = 1688 },
+            _index = 154
         },
         {
             PickUp = { 27057 },
-            Coord = { x = -2272.9, y = 1688 },
-            _index = 155,
+            coord = { x = -2272.9, y = 1688 },
+            _index = 155
         },
         {
             Qpart = { [27017] = { 1, 2 } },
-            Coord = { x = -2371, y = 1667.2 },
+            coord = { x = -2371, y = 1667.2 },
             Range = 6.81,
-            _index = 156,
+            _index = 156
         },
         {
             Done = { 27017 },
-            Coord = { x = -1760, y = 1860.2 },
-            _index = 157,
+            coord = { x = -1760, y = 1860.2 },
+            _index = 157
         },
         {
             Done = { 27057 },
-            Coord = { x = -1701.5, y = 1793 },
-            _index = 158,
+            coord = { x = -1701.5, y = 1793 },
+            _index = 158
         },
         {
             PickUp = { 27054 },
-            Coord = { x = -1701.5, y = 1793 },
-            _index = 159,
+            coord = { x = -1701.5, y = 1793 },
+            _index = 159
         },
         {
             PickUp = { 26955 },
-            Coord = { x = -1685.5, y = 1797 },
-            _index = 160,
+            coord = { x = -1685.5, y = 1797 },
+            _index = 160
         },
         {
             Qpart = { [27054] = { 1 } },
-            Coord = { x = -2422.5, y = 1999.9 },
+            coord = { x = -2422.5, y = 1999.9 },
             Fillers = { [26955] = { 1 } },
             Range = 16.31,
-            _index = 161,
+            _index = 161
         },
         {
             Done = { 27054 },
-            Coord = { x = -2432.9, y = 2004.2 },
-            _index = 162,
+            coord = { x = -2432.9, y = 2004.2 },
+            _index = 162
         },
         {
             PickUp = { 27055 },
-            Coord = { x = -2432.9, y = 2004.2 },
-            _index = 163,
+            coord = { x = -2432.9, y = 2004.2 },
+            _index = 163
         },
         {
             Qpart = { [26955] = { 1 } },
-            Coord = { x = -2422.5, y = 1999.9 },
+            coord = { x = -2422.5, y = 1999.9 },
             Range = 165.01,
-            _index = 164,
+            _index = 164
         },
         {
             Qpart = { [27055] = { 1, 4, 3, 2 } },
-            Coord = { x = -2322.2, y = 2287.1 },
+            coord = { x = -2322.2, y = 2287.1 },
             Range = 43.06,
-            _index = 165,
+            _index = 165
         },
         {
             Waypoint = 26955,
-            Coord = { x = -2390.7, y = 2245.6 },
+            coord = { x = -2390.7, y = 2245.6 },
             Range = 36.52,
-            _index = 166,
+            _index = 166
         },
         {
             Waypoint = 26955,
-            Coord = { x = -2581, y = 1933.5 },
+            coord = { x = -2581, y = 1933.5 },
             Range = 22.45,
-            _index = 167,
+            _index = 167
         },
         {
             Done = { 27683 },
-            Coord = { x = -2651.5, y = 1917.5 },
-            _index = 168,
+            coord = { x = -2651.5, y = 1917.5 },
+            _index = 168
         },
         {
             Done = { 27055 },
-            Coord = { x = -1701.5, y = 1793 },
-            _index = 169,
+            coord = { x = -1701.5, y = 1793 },
+            _index = 169
         },
         {
             Done = { 26955 },
-            Coord = { x = -1684.4, y = 1796.5 },
-            _index = 170,
+            coord = { x = -1684.4, y = 1796.5 },
+            _index = 170
         },
         {
             RouteCompleted = 1,
-            _index = 171,
-        },
+            _index = 171
+        }
     }
 end
