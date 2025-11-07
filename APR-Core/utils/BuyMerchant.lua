@@ -28,7 +28,7 @@ function APR:BuyItemFromMerchant(BuyMerchant)
     if not BuyMerchant or #BuyMerchant == 0 then return end
     if APR.settings.profile.debug then
         for _, item in ipairs(BuyMerchant) do
-            APR:Debug("APR:BuyMerchFunc: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
+            APR:Debug("APR:BuyMerchFunc: itemID = " .. item.itemID .. ", quantity = " .. (item.quantity or 1))
         end
     end
     for i = 1, GetMerchantNumItems() do
@@ -36,7 +36,7 @@ function APR:BuyItemFromMerchant(BuyMerchant)
         for _, item in ipairs(BuyMerchant) do
             if tonumber(id) == item.itemID then
                 BuyMerchantItem(i, item.quantity or 1)
-                APR:Debug("Purchase made: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
+                APR:Debug("Purchase made: itemID = " .. item.itemID .. ", quantity = " .. (item.quantity or 1))
             end
         end
     end
