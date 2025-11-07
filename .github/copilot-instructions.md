@@ -137,7 +137,7 @@ print(L["COMMAND_LIST"])
 # Search for quest ID usage in routes
 grep -r "PickUp = { 28713 }" Routes/
 
-# Find all step types in a route file  
+# Find all step types in a route file
 grep -E "PickUp|Done|Qpart|GetFP|SetHS" Routes/Vanilla/Kalimdor_Alliance.lua
 
 # Check locale key existence
