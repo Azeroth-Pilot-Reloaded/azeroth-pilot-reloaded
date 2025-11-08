@@ -8,6 +8,7 @@ end
 
 --- Check if the player owns at least one copy of an item (bags/bank).
 function APR:PlayerHasItem(itemID)
+    local GetItemCount = C_Item and C_Item.GetItemCount or _G.GetItemCount
     if not GetItemCount then return false end
     local count = GetItemCount(itemID, true)
     return (count and count > 0) and true or false
@@ -327,7 +328,6 @@ function APR:DoEmote(step)
         end
     end
 end
-
 
 function APR:SkipStepCondition(step)
     -- Skip steps if not Faction or Race or Class or Achievement

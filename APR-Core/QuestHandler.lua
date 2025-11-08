@@ -308,9 +308,8 @@ function APR:UpdateStep()
             APR:Debug("APR.UpdateStep:LearnProfession" .. APRData[APR.PlayerID][APR.ActiveRoute])
 
             local spellID = step.LearnProfession
-            local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
 
-            if IsSpellKnown(spellID) then
+            if APR:IsSpellKnown(spellID) then
                 APR:NextQuestStep()
                 return
             end
