@@ -618,8 +618,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local spellID = step.LearnProfession
                 local name = C_Spell.GetSpellInfo(spellID).name
                 local questInfo = { { questID = name } }
-                local IsSpellKnown = C_SpellBook.IsSpellKnown and C_SpellBook.IsSpellKnown or IsSpellKnown
-                local color = IsSpellKnown(spellID) and "green" or "gray"
+                local color = APR:IsSpellKnown(spellID) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, L["LEARN_PROFESSION"], questInfo, color)
             elseif step.LootItem then
                 local itemID = step.LootItem
