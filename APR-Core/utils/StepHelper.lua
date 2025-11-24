@@ -476,9 +476,13 @@ end
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name
 function APR:GetRouteMapIDsAndName(targetedRoute)
+    if not targetedRoute or targetedRoute == '' then
+        return nil, 0, '', ''
+    end
+
     for expansion, routeList in pairs(APR.RouteList) do
         for routeFileName, routeName in pairs(routeList) do
-            if routeName == targetedRoute then
+            if routeName == targetedRoute or routeFileName == targetedRoute then
                 local mapID = string.match(routeFileName, "^(.-)-")
                 return APR.ZonesData.ExtensionRouteMaps[APR.Faction][expansion] or {}, tonumber(mapID, 10),
                     routeFileName, expansion
@@ -502,7 +506,52 @@ function APR:GetCurrentRouteMapIDsAndName()
     end
     -- Get the current Route wanted MapIDs and Route File
     local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
-    return APR:GetRouteMapIDsAndName(currentRouteName)
+    local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetRouteMapIDsAndName(currentRouteName)
+
+    -- Clean up invalid saved entries so the current step frame can show content.
+    if routeFileName == '' then
+        APR:Debug("APR:GetCurrentRouteMapIDsAndName - invalid route in custom path", currentRouteName)
+        table.remove(APRCustomPath[APR.PlayerID], 1)
+        APR.routeconfig:CheckIsCustomPathEmpty()
+        return nil, 0, '', ''
+    end
+
+    return routeZoneMapIDs, mapID, routeFileName, expansion
+end
+
+function APR:GetRouteDisplayName(routeFileName)
+    if not routeFileName then
+        return nil
+    end
+
+    for _, routeList in pairs(APR.RouteList or {}) do
+        local label = routeList[routeFileName]
+        if label then
+            return label
+        end
+    end
+
+    return nil
+end
+
+function APR:ClearSavedRouteData(routeFileName)
+    if not routeFileName or not APRData or not APR.PlayerID then
+        return
+    end
+
+    local playerData = APRData[APR.PlayerID]
+    if not playerData then
+        return
+    end
+
+    playerData[routeFileName] = nil
+    playerData[routeFileName .. '-SkippedStep'] = nil
+    playerData[routeFileName .. '-TotalSteps'] = nil
+
+    local routeSignatures = APR.settings and APR.settings.profile and APR.settings.profile.routeSignatures
+    if routeSignatures then
+        routeSignatures[routeFileName] = nil
+    end
 end
 
 function APR:CheckRouteChanges(route)
@@ -517,9 +566,7 @@ function APR:CheckRouteChanges(route)
             L["ROUTE_DELETED_NEED_RESET"],
             function()
                 APRZoneCompleted[APR.PlayerID][currentRoute] = nil
-                APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = nill
-                APRData[APR.PlayerID][currentRoute .. '-TotalSteps'] = nil
-                APRData[APR.PlayerID][currentRoute] = nil
+                APR:ClearSavedRouteData(currentRoute)
 
                 APR.command:SlashCmd('route')
                 APRCustomPath[APR.PlayerID] = {}
@@ -541,23 +588,122 @@ function APR:CheckRouteChanges(route)
     end
 end
 
--- Check is the current route is up to date
+--- Check saved routes (progress, custom paths, completed routes) against the current
+--- live route definitions and clear/refresh stored data if definitions changed.
+--- Parameter: currentRoute (optional) - a route file name to force into the check.
 function APR:CheckCurrentRouteUpToDate(currentRoute)
-    if APR.version ~= APR.settings.profile.lastRecordedVersion then
-        -- To remove updated route from the completed list if the preview route was completed
-        for route, _ in pairs(APRZoneCompleted[APR.PlayerID]) do
-            local _, _, routeName, _ = APR:GetRouteMapIDsAndName(route)
-            local currentTotalSteps = APR:GetTotalSteps(routeName, false)
+    local playerID = APR.PlayerID
+    local playerData = APRData[playerID]
+    if not playerData then
+        return
+    end
 
-            if (APRData[APR.PlayerID][routeName .. '-TotalSteps'] or 0) < currentTotalSteps then
-                APRZoneCompleted[APR.PlayerID][route] = nil
+    -- Ensure route signatures table exists in the profile settings
+    APR.settings.profile.routeSignatures = APR.settings.profile.routeSignatures or {}
+    local routeSignatures = APR.settings.profile.routeSignatures
+
+    local completedRoutes = APRZoneCompleted[playerID] or {}
+    APRZoneCompleted[playerID] = completedRoutes
+    local trackedRoutes = {}
+
+    -- 1) Scan playerData keys to find entries tied to routes.
+    for key in pairs(playerData) do
+        local routeFileName = key:match("^(.-)-TotalSteps$") or key:match("^(.-)-SkippedStep$")
+        if routeFileName then
+            trackedRoutes[routeFileName] = true
+        elseif APR.RouteQuestStepList[key] then
+            -- Key matches a route file name (saved progress)
+            trackedRoutes[key] = true
+        end
+    end
+
+    -- 2) Add routes listed as completed (display names) by resolving their file names
+    for routeName in pairs(completedRoutes) do
+        local _, _, routeFileName = APR:GetRouteMapIDsAndName(routeName)
+        if routeFileName and routeFileName ~= '' then
+            trackedRoutes[routeFileName] = true
+        end
+    end
+
+    -- 3) If a specific currentRoute was passed in, include it
+    if currentRoute then
+        trackedRoutes[currentRoute] = true
+    end
+
+    -- 4) Build a lookup for the player's custom paths (APRCustomPath)
+    local customPathLookup = {}
+    if APRCustomPath[playerID] then
+        for _, routeName in ipairs(APRCustomPath[playerID]) do
+            customPathLookup[routeName] = true
+        end
+    end
+
+    local completedResetNames = {}
+    local customPathResetNames = {}
+    local previousVersion = APR.settings.profile.lastRecordedVersion
+
+    -- 5) For each tracked route, compare saved data with the live route definition
+    for routeFileName in pairs(trackedRoutes) do
+        local displayName = APR:GetRouteDisplayName(routeFileName) or routeFileName
+
+        -- hasSavedProgress: true if any saved state exists for this route
+        local hasSavedProgress = playerData[routeFileName] ~= nil
+            or playerData[routeFileName .. '-TotalSteps'] ~= nil
+            or playerData[routeFileName .. '-SkippedStep'] ~= nil
+            or completedRoutes[displayName]
+
+        if hasSavedProgress then
+            local routeExists = APR.RouteQuestStepList[routeFileName] ~= nil
+            local savedTotal = playerData[routeFileName .. '-TotalSteps']
+            local currentTotal = routeExists and APR:GetTotalSteps(routeFileName, false) or 0
+            local savedSignature = routeSignatures[routeFileName]
+            local currentSignature = routeExists and APR:GetRouteSignature(routeFileName) or nil
+            local isCustomPath = customPathLookup[displayName]
+            local wasCompleted = completedRoutes[displayName]
+
+            local routeChanged = not routeExists
+                or (savedTotal and savedTotal ~= currentTotal)
+                or (savedSignature and currentSignature and savedSignature ~= currentSignature)
+
+            -- When we upgrade versions without a stored signature, still refresh custom path/completed routes to avoid stale data
+            if not routeChanged and not savedSignature and previousVersion and previousVersion ~= APR.version then
+                routeChanged = isCustomPath or wasCompleted
+            end
+
+            if routeChanged then
+                APR:ClearSavedRouteData(routeFileName)
+                routeSignatures[routeFileName] = currentSignature
+
+                if wasCompleted then
+                    completedRoutes[displayName] = nil
+                    table.insert(completedResetNames, displayName)
+                end
+
+                -- If it was a custom path, remember it to notify user/UI later
+                if isCustomPath then
+                    table.insert(customPathResetNames, displayName)
+                end
+            else
+                routeSignatures[routeFileName] = currentSignature
             end
         end
-        if currentRoute then
-            APR:CheckRouteChanges(currentRoute)
-        end
-        APR.settings.profile.lastRecordedVersion = APR.version
     end
+
+    -- 6) If custom paths were reset, notify the user and send a config update message
+    if #customPathResetNames > 0 then
+        APR:PrintInfo(L["ROUTE_UPDATED_NEED_RESET"] .. ": " .. table.concat(customPathResetNames, ", "))
+        if APR.routeconfig then
+            APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+        end
+    end
+
+    -- 7) If completed routes were reset, inform the user
+    if #completedResetNames > 0 then
+        APR:PrintInfo(L["ROUTE_UPDATED_NEED_RESET"] .. ": " .. table.concat(completedResetNames, ", "))
+    end
+
+    -- 8) Record current addon version to detect upgrades later
+    APR.settings.profile.lastRecordedVersion = APR.version
 end
 
 function APR:LeaveQuest(questIds)

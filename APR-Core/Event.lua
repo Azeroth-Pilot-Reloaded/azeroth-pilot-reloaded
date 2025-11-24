@@ -128,8 +128,14 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.heirloom:RefreshFrameAnchor()
                 APR:UpdateStep()
 
-                local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
-                APR:CheckCurrentRouteUpToDate(routeName)
+                local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
+                APR:CheckCurrentRouteUpToDate(routeFileName)
+                -- Ensure the active route is set on load so the current step frame can populate without waiting
+                if routeFileName and routeFileName ~= "" then
+                    APR.ActiveRoute = routeFileName
+                    APR:UpdateMapId()
+                    APR:UpdateStep()
+                end
 
                 APR:PrintInfo("APR " ..
                     L["LOADED"] ..
