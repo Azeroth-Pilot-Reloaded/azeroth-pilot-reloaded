@@ -1,16 +1,34 @@
 local _G = _G
 
--- Likely deals with automatically skipping cutscenes using PlayMovie_hook
-local PlayMovie_hook = MovieFrame_PlayMovie
-MovieFrame_PlayMovie = function(...)
-    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
-
-    if IsModifierKeyDown() or not APR.settings.profile.autoSkipCutScene or (step and step.Dontskipvidthen) then
-        PlayMovie_hook(...) --MovieFrame_PlayMovie, as previously stated
-    else
-        CinematicFinished(Enum.CinematicType.GameMovie, true, false)
+local function ShouldSkipCutscene(step)
+    if IsModifierKeyDown() then
+        return false
     end
+    if not APR.settings.profile.autoSkipCutScene then
+        return false
+    end
+    if step and step.Dontskipvidthen then
+        return false
+    end
+    return true
 end
+
+local function CancelCurrentMovie(step)
+    if not ShouldSkipCutscene(step) then
+        return
+    end
+
+    -- Mimic the old behaviour by finishing the movie immediately.
+    -- Using hooksecurefunc keeps MovieFrame_PlayMovie protected.
+    C_Timer.After(0, function()
+        CinematicFinished(Enum.CinematicType.GameMovie, true, false)
+    end)
+end
+
+hooksecurefunc("MovieFrame_PlayMovie", function(...)
+    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    CancelCurrentMovie(step)
+end)
 
 CinematicFrame:HookScript("OnKeyDown", function(self, key)
     if key == "ESCAPE" then

@@ -5,6 +5,8 @@ local LibWindow = LibStub("LibWindow-1.1")
 APR.heirloom = APR:NewModule("Heirloom")
 
 APR.heirloom.buttons = {}
+APR.heirloom._pendingCombatRefresh = false
+APR.heirloom._combatWatcher = nil
 
 ---------------------------------------------------------------------------------------
 --------------------------------- Heirloom Frame --------------------------------------
@@ -52,6 +54,21 @@ end)
 ------------------------------ Function Party Frames ----------------------------------
 ---------------------------------------------------------------------------------------
 
+local function EnsureHeirloomCombatWatcher()
+    if APR.heirloom._combatWatcher then
+        return
+    end
+    local frame = CreateFrame("Frame")
+    frame:RegisterEvent("PLAYER_REGEN_ENABLED")
+    frame:SetScript("OnEvent", function()
+        if APR.heirloom._pendingCombatRefresh then
+            APR.heirloom._pendingCombatRefresh = false
+            APR.heirloom:RefreshFrameAnchor()
+        end
+    end)
+    APR.heirloom._combatWatcher = frame
+end
+
 -- Initialize the frame
 function APR.heirloom:HeirloomOnInit()
     LibWindow.RegisterConfig(HeirloomPanel, APR.settings.profile.heirloomFrame)
@@ -70,6 +87,13 @@ function APR.heirloom:SetDefaultDisplay()
 end
 
 function APR.heirloom:RefreshFrameAnchor()
+    if InCombatLockdown() then
+        self._pendingCombatRefresh = true
+        EnsureHeirloomCombatWatcher()
+        return
+    end
+    self._pendingCombatRefresh = false
+
     if APR.settings.profile.heirloomWarning or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or APR:IsRemixCharacter() then
         HeirloomPanel:Hide()
         return
@@ -122,6 +146,11 @@ local function CreateMapButton(parentFrame, itemID)
 end
 
 function APR.heirloom:AddHeirloomIcons()
+    if InCombatLockdown() then
+        self._pendingCombatRefresh = true
+        EnsureHeirloomCombatWatcher()
+        return
+    end
     local mapId = C_Map.GetBestMapForUnit("player")
     if not mapId or APR.settings.profile.heirloomWarning then
         return

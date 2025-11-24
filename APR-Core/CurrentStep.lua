@@ -9,6 +9,7 @@ APR.currentStep = APR:NewModule("CurrentStep")
 APR.currentStep.questsList = {}
 APR.currentStep.questsExtraTextList = {}
 APR.currentStep.pendingRemoval = {}
+APR.currentStep.pendingButtonRequests = {}
 -- Height of the quest frame
 APR.currentStep.FrameHeight = 0
 
@@ -675,6 +676,7 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
                         btn:ClearAllPoints()
                         container.IconButton = nil
                     end
+                    self.pendingButtonRequests[id] = nil
                 end
                 list[id] = nil
             else
@@ -710,35 +712,29 @@ local function PositionStepButtons(container, button)
         button:SetPoint("RIGHT", container, "LEFT", -5, 0)
     end
 end
--- Button management
---- Create a icon button next to the quest/text step
---- @param questsListKey string the questsList key (questId-index)
---- @param itemID number Item ID
---- @param attribute number Icon attribute spell/item
-function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
-    if not APR.settings.profile.currentStepShow and itemID then
-        return
+-- Create a icon button next to the quest/text step
+local function GetStepButtonIcon(attribute, itemID)
+    if attribute == "item" then
+        local _, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
+        return itemTexture
+    else
+        local spellInfo = C_Spell.GetSpellInfo(itemID)
+        return spellInfo and spellInfo.iconID or nil
     end
+end
+
+function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute)
     attribute = attribute or "item"
     local container = self.questsList[questsListKey]
     if not container then
         return
     end
-    local function getIconData()
-        if attribute == "item" then
-            local _, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
-            return itemTexture
-        else
-            local spellInfo = C_Spell.GetSpellInfo(itemID)
-            return spellInfo and spellInfo.iconID or nil
-        end
-    end
-    local iconTexture = getIconData()
+
+    local iconTexture = GetStepButtonIcon(attribute, itemID)
     if not iconTexture then
         return
     end
 
-    -- Use an unnamed frame to avoid polluting _G and reduce taint footprint
     local IconButton = CreateFrame("Button", nil, container,
         "SecureActionButtonTemplate, BackdropTemplate")
     IconButton:SetSize(25, 25)
@@ -772,6 +768,35 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     IconButton.itemID = itemID
     IconButton.attribute = attribute
     container.IconButton = IconButton
+end
+
+--- Queue or create a secure button depending on combat lockdown state
+---@param questsListKey string
+---@param itemID number
+---@param attribute string
+function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
+    if not APR.settings.profile.currentStepShow and itemID then
+        return
+    end
+
+    attribute = attribute or "item"
+    if InCombatLockdown() then
+        self.pendingButtonRequests[questsListKey] = { itemID = itemID, attribute = attribute }
+        return
+    end
+
+    self.pendingButtonRequests[questsListKey] = nil
+    self:CreateSecureStepButton(questsListKey, itemID, attribute)
+end
+
+function APR.currentStep:ProcessPendingStepButtons()
+    if InCombatLockdown() or not next(self.pendingButtonRequests) then
+        return
+    end
+    for questsListKey, data in pairs(self.pendingButtonRequests) do
+        self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute)
+        self.pendingButtonRequests[questsListKey] = nil
+    end
 end
 
 function APR.currentStep:RemoveStepButtonByKey(questsListKey)
