@@ -475,7 +475,7 @@ APR.RouteQuestStepList["627-Intro-Remix"] = {
         Qpart = { [89418] = { 1 } },
         Coord = { x = 4503, y = -1239.7 },
         GossipOptionIDs = { 133297 },
-        ETA = 49,
+        GossipETA = 49,
         RaidIcon = 243853,
         Zone = 619,
         _index = 72,
