@@ -37,6 +37,7 @@ APR-Core/utils/BuyMerchant.lua
 APR-Core/utils/PlayerPosition.lua
 APR-Core/utils/SceneCutter.lua
 APR-Core/utils/CoordinateFrame.lua
+APR-Core/utils/RouteHash.lua
 APR-Core/utils/StepHelper.lua
 
 APR-Core/data/models/Classes.lua
