@@ -488,6 +488,13 @@ APR.RouteQuestStepList["627-Intro-Remix"] = {
         _index = 73,
     },
     {
+        PickUp = { 40705 },
+        Coord = { x = 4279.7, y = -814.4 },
+        Class = { "PRIEST" },
+        Zone = 627,
+        _index = 2,
+    },
+    {
         PickUp = { 38710 },
         Coord = { x = 4283.2, y = -812.3 },
         GossipOptionIDs = { 133762 },
