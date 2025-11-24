@@ -342,8 +342,9 @@ function APR.transport:GetMeToRightZone(isRetry)
     end
 
     APR:UpdateQuestAndStep()
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    local step = CurStep and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] or nil
+    local currentStep = APRData[APR.PlayerID][APR.ActiveRoute]
+    local currentRoute = APR.RouteQuestStepList[APR.ActiveRoute]
+    local step = currentRoute and currentStep and currentRoute[currentStep] or nil
 
     local farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
     if APR:CheckIsInRouteZone() and not farAway then
