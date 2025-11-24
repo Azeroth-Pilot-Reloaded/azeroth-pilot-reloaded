@@ -33,12 +33,19 @@ APR-Core/locales/locales.xml
 APR-Core/Core.lua
 
 APR-Core/utils/Utils.lua
-APR-Core/utils/BuyMerchant.lua
-APR-Core/utils/PlayerPosition.lua
-APR-Core/utils/SceneCutter.lua
-APR-Core/utils/CoordinateFrame.lua
-APR-Core/utils/RouteHash.lua
-APR-Core/utils/StepHelper.lua
+APR-Core/utils/PlayerUtils.lua
+APR-Core/utils/TargetUtils.lua
+APR-Core/utils/QuestUtils.lua
+APR-Core/utils/InstanceUtils.lua
+APR-Core/utils/RouteUtils.lua
+APR-Core/utils/NavigationUtils.lua
+APR-Core/utils/UIUtils.lua
+APR-Core/utils/BuyMerchantUtils.lua
+APR-Core/utils/PlayerPositionUtils.lua
+APR-Core/utils/SceneCutterUtils.lua
+APR-Core/utils/CoordinateFrameUtils.lua
+APR-Core/utils/RouteHashUtils.lua
+APR-Core/utils/StepUtils.lua
 
 APR-Core/data/models/Classes.lua
 APR-Core/data/models/Enums.lua

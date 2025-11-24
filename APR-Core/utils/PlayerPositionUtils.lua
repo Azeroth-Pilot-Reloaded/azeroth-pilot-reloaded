@@ -1,9 +1,12 @@
 local _G = _G
 
+-- Cache of map bounds so we can quickly convert world coords to map coords.
 local MapRects = {}
+-- Reusable vector to avoid allocations while projecting positions.
 local Vector2D = CreateVector2D(0, 0);
 
---- Getting the continent the player is on and its info
+--- Get the continent map ID for a given zone (defaults to the player's current zone).
+-- We walk the map parents until reaching the continent level to keep logic unified across expansions.
 function APR:GetContinent(mapId)
     APR:Debug("Function: APR.getContinent()", mapId)
     mapId = mapId or C_Map.GetBestMapForUnit("player")
@@ -22,6 +25,8 @@ function APR:GetContinent(mapId)
     end
 end
 
+--- Project the player's world position into the provided map space.
+-- dx/dy can be supplied for ad-hoc projections (e.g., taxi nodes) while reusing the same math.
 function APR:GetPlayerMapPos(MapID, dx, dy)
     if (MapID and (MapID == 1726 or MapID == 1727 or MapID == 905 or MapID == 948 or APRt_Zone == 1727)) then
         return
@@ -37,7 +42,7 @@ function APR:GetPlayerMapPos(MapID, dx, dy)
         MapRects[MapID] = R;
     end
 
-    -- Determine the coordinates to use for calculations
+    -- Determine the coordinates to use for calculations (player by default)
     if dx then
         P.x, P.y = dx, dy
     else
@@ -53,6 +58,7 @@ function APR:GetPlayerMapPos(MapID, dx, dy)
     end
 end
 
+--- Return the parent map for the player (zone by default) at a given hierarchy level.
 function APR:GetPlayerParentMapID(mapType)
     mapType = mapType or Enum.UIMapType.Zone
     local playerMapId
@@ -64,6 +70,7 @@ function APR:GetPlayerParentMapID(mapType)
     return playerMapId
 end
 
+--- Find the current taxi node the player is attached to while on a flight path.
 function APR:GetPlayerCurrentTaxiNode()
     local playerMapID = APR:GetPlayerParentMapID()
     local taxiNodes = C_TaxiMap.GetAllTaxiNodes(playerMapID)
