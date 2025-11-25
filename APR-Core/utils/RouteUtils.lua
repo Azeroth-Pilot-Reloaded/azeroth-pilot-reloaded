@@ -1,9 +1,5 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
---[[
-    Route progression helpers regrouped here to keep the base utilities file technical-only.
-]]
-
 function APR:ResetRoute(targetedRoute)
     APR:Debug("Function: APR:ResetRoute()", targetedRoute)
     APRData[APR.PlayerID][targetedRoute] = 1
@@ -262,6 +258,10 @@ function APR:CheckRouteChanges(route)
     local routeFileName
     local playerData = APRData[APR.PlayerID]
     local routeSignatures = APR.settings.profile.routeSignature
+    if not routeSignatures then
+        routeSignatures = {}
+        APR.settings.profile.routeSignature = routeSignatures
+    end
     local completedRoutes = APRCompletedRoutes[APR.PlayerID]
     local trackedRoutes = {}
 

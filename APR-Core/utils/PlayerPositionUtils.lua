@@ -1,5 +1,3 @@
-local _G = _G
-
 -- Cache of map bounds so we can quickly convert world coords to map coords.
 local MapRects = {}
 -- Reusable vector to avoid allocations while projecting positions.

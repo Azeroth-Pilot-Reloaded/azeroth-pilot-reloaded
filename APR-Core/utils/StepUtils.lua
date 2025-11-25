@@ -1,9 +1,4 @@
-local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-
-    StepUtils keeps only step-centric helpers. Broader quest, route, and player state helpers
-    now live in dedicated utils files to make responsibilities clearer.
-]]
 
 -- Primary and secondary keys that identify the main action for a step.
 -- Keeping them here ensures other modules can reason about step intent without re-declaring lists.

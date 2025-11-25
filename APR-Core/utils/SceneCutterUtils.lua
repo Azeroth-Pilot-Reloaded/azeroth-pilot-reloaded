@@ -1,5 +1,3 @@
-local _G = _G
-
 local function ShouldSkipCutscene(step)
     if IsModifierKeyDown() then
         return false

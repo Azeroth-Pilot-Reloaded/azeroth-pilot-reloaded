@@ -1,4 +1,3 @@
-local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 local candy = LibStub("LibCandyBar-3.0")

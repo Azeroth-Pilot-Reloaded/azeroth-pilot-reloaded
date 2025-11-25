@@ -43,7 +43,7 @@ APR-Core/utils/UIUtils.lua
 APR-Core/utils/BuyMerchantUtils.lua
 APR-Core/utils/PlayerPositionUtils.lua
 APR-Core/utils/SceneCutterUtils.lua
-APR-Core/utils/CoordinateFrameUtils.lua
+APR-Core/utils/CoordinateFrame.lua
 APR-Core/utils/RouteHashUtils.lua
 APR-Core/utils/StepUtils.lua
 

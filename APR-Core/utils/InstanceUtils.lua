@@ -1,10 +1,3 @@
---[[
-    Instance and scenario helpers to keep route logic aware of the player's environment.
-    Grouped separately so Utils.lua remains focused on technical helpers.
-]]
-
---- Decide whether the addon UI should remain visible inside an instance.
--- We intentionally rely on the current step metadata to let route authors opt-in per step.
 function APR:IsInstanceWithUI()
     local step = APR.ActiveRoute and self:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
     local isInstance, instanceType = IsInInstance()

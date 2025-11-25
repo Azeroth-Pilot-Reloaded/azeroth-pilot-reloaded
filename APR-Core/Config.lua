@@ -113,6 +113,7 @@ function APR.settings:InitializeSettings()
             groupScale = 1,
             -- route
             routeSelectionFrame = {},
+            routeSignature = {},
             --afk
             afkFrame = {},
             --debug

@@ -1,9 +1,5 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
---[[
-    Navigation helpers kept apart from technical utilities so movement guidance is easy to locate.
-]]
-
 function APR:GuideToCorpse()
     local currentMapID = APR:GetPlayerParentMapID()
     local corpsePosition = C_DeathInfo.GetCorpseMapPosition(currentMapID)
