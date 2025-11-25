@@ -619,12 +619,28 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local questInfo = { { questID = name } }
                 local color = APR:IsSpellKnown(spellID) and "green" or "gray"
                 AddStepFrameWithQuest(stepIndex, L["LEARN_PROFESSION"], questInfo, color)
-            elseif step.LootItem then
-                local itemID = step.LootItem
-                local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(itemID)
-                local name = itemName or UNKNOWN
-                local color = tContains(APRItemLooted[APR.PlayerID], itemID) and "green" or "gray"
-                AddStepFrame(stepIndex, format(L["LOOT_ITEM"], name), color)
+            elseif step.LootItems then
+                local title = format(L["LOOT_ITEM"], ':')
+                local itemsInfo = {}
+                local flagged = 0
+
+                for _, item in ipairs(step.LootItems) do
+                    local itemID = item.itemID
+                    local requiredQuantity = item.quantity or 1
+                    if itemID then
+                        if tContains(APRItemLooted[APR.PlayerID], itemID) or CurStep > stepIndex then
+                            flagged = flagged + 1
+                        else
+                            local itemName = C_Item.GetItemInfo(itemID) or UNKNOWN
+                            table.insert(itemsInfo, { questID = requiredQuantity, questName = itemName })
+                        end
+                    end
+                end
+                if flagged == #step.LootItems then
+                    AddStepFrame(stepIndex, title, "green")
+                else
+                    AddStepFrameWithQuest(stepIndex, title, itemsInfo, "gray")
+                end
             elseif step.WarMode then
                 local color = C_PvP.IsWarModeActive() and "green" or "gray"
                 AddStepFrame(stepIndex, L["TURN_ON_WARMODE"], color)

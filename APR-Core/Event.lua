@@ -26,7 +26,7 @@ local events = {
     greeting = "QUEST_GREETING",
     group = { "GROUP_JOINED", "GROUP_LEFT" },
     learnProfession = "LEARNED_SPELL_IN_SKILL_LINE",
-    lootItem = "ENCOUNTER_LOOT_RECEIVED",
+    lootItem = "ITEM_PUSH",
     lvlUp = "PLAYER_LEVEL_UP",
     merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
     party = "CHAT_MSG_ADDON",
@@ -638,11 +638,35 @@ function APR.event.functions.learnProfession(event, spellID, skillLineIndex, isG
     end
 end
 
-function APR.event.functions.lootItem(event, encounterID, itemID, itemLink, quantity, playerName, classFileName)
-    if step and step.LootItem then
-        local stepItemID = step.LootItem
-        if stepItemID == itemID then
-            tinsert(APRItemLooted[APR.PlayerID], itemID)
+function APR.event.functions.lootItem(event, ...)
+    if step and step.LootItems then
+        local flagged = 0
+
+        for _, lootItem in ipairs(step.LootItems) do
+            local stepItemID = lootItem.itemID
+            local requiredQuantity = math.max(lootItem.quantity or 1, 1)
+
+            if stepItemID then
+                local currentQuantity = C_Item.GetItemCount(stepItemID)
+
+                if currentQuantity >= requiredQuantity and not tContains(APRItemLooted[APR.PlayerID], stepItemID) then
+                    tinsert(APRItemLooted[APR.PlayerID], stepItemID)
+                end
+
+                if currentQuantity >= requiredQuantity or tContains(APRItemLooted[APR.PlayerID], stepItemID) then
+                    flagged = flagged + 1
+                end
+
+                local itemName = C_Item.GetItemInfo(stepItemID) or UNKNOWN
+                local label = format(L["LOOT_ITEM"], itemName)
+                if requiredQuantity > 1 then
+                    label = label .. " (" .. currentQuantity .. "/" .. requiredQuantity .. ")"
+                end
+                APR.currentStep:UpdateQuestStep(stepItemID, label, stepItemID)
+            end
+        end
+
+        if flagged == #step.LootItems then
             APR:UpdateNextStep()
         end
     end

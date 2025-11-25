@@ -90,7 +90,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.17.3", "2025-11-25" },
+        { "v4.18.0", "2025-11-25" },
+        "#Features",
+        "- Refactor `LootItem` step option to `LootItems` (list of items)",
+
         "#Guides",
         "- Updated the trigger method for the timer in the `A Fixed Point in Time` quest (89418) during the Legion Remix intro",
 
