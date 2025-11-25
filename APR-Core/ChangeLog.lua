@@ -90,6 +90,16 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.17.3", "2025-11-25" },
+        "#Guides",
+        "- Updated the trigger method for the timer in the `A Fixed Point in Time` quest (89418) during the Legion Remix intro",
+
+        "#Bugs",
+        "- Added a new test to address tainted frame Lua errors triggered by Blizzard actions",
+        "- Improved route update detection to ensure it resets correctly after an addon update",
+        "- Refactor spell knowledge checks to use `APR:IsSpellKnown` for consistency",
+        "- Refactor utils for better code readability and maintainability",
+
         { "v4.17.2", "2025-11-02" },
         "#Guides",
         "- Rework of the `Val'Sharah` route",
@@ -277,7 +287,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6",  "2025-04-06" },
+        { "v4.9.6", "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
