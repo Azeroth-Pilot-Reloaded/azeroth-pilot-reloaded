@@ -5,7 +5,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.mainStepOptions = {
     "ExitTutorial", "PickUp", "DropQuest", "Qpart", "QpartPart", "Treasure", "Group", "Done",
     "Scenario", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS", "UseDalaHS", "UseGarrisonHS",
-    "UseItem", "UseSpell", "GetFP", "UseFlightPath", "LearnProfession", "LootItem", "WarMode", "Grind",
+    "UseItem", "UseSpell", "GetFP", "UseFlightPath", "LearnProfession", "LootItems", "WarMode", "Grind",
     "RouteCompleted"
 }
 
@@ -30,7 +30,7 @@ function APR:GetStepString(step)
         Group = L["GROUP_Q"],
         LearnProfession = L["LEARN_PROFESSION"],
         LeaveScenario = L["SCENARIO"],
-        LootItem = L["LOOT_ITEM"],
+        LootItems = L["LOOT_ITEM"],
         PickUp = L["PICK_UP_Q"],
         Qpart = L["Q_PART"],
         QpartPart = L["Q_PART"],

@@ -347,18 +347,36 @@ function APR:UpdateStep()
             APR.currentStep:AddExtraLineText("LEARN_PROFESSION", format(L["LEARN_PROFESSION_DETAILS"], name))
         end
 
-        if step.LootItem then
+        if step.LootItems then
             APR:Debug("APR.UpdateStep:Loot Item" .. APRData[APR.PlayerID][APR.ActiveRoute])
 
-            local itemID = step.LootItem
+            local flagged = 0
 
-            if tContains(APRItemLooted[APR.PlayerID], itemID) then
+            for _, item in ipairs(step.LootItems) do
+                local itemID = item.itemID
+                local requiredQuantity = item.quantity or 1
+                if itemID then
+                    local currentQuantity = C_Item.GetItemCount(itemID)
+                    if tContains(APRItemLooted[APR.PlayerID], itemID) or currentQuantity >= requiredQuantity then
+                        if not tContains(APRItemLooted[APR.PlayerID], itemID) then
+                            tinsert(APRItemLooted[APR.PlayerID], itemID)
+                        end
+                        flagged = flagged + 1
+                    end
+                    local itemName = C_Item.GetItemInfo(itemID)
+                    local name = itemName or UNKNOWN
+                    local label = format(L["LOOT_ITEM"], name)
+                    if requiredQuantity > 1 then
+                        label = label .. " (" .. currentQuantity .. "/" .. requiredQuantity .. ")"
+                    end
+                    -- Use a stable objectiveIndex (itemID) so later name updates overwrite correctly when item info becomes available.
+                    APR.currentStep:AddQuestSteps(itemID, label, itemID)
+                end
+            end
+            if flagged == #step.LootItems then
                 APR:NextQuestStep()
                 return
             end
-            local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(itemID)
-            local name = itemName or UNKNOWN
-            APR.currentStep:AddExtraLineText("LOOT_ITEM", format(L["LOOT_ITEM"], name))
         end
 
         if (step.LeaveQuest) then
