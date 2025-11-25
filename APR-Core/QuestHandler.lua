@@ -26,6 +26,104 @@ local function GroupQuestPopup()
     end
 end
 
+-- This helper centralises the handling of ExtraLine quest hints so future special cases stay readable.
+-- Returning true means the helper triggered a step transition and the caller should exit early.
+local function HandleExtraLine(extraline)
+    -- Only process when there is an ExtraLine directive and the player is within the route's intended zone.
+    if not extraline or not APR.IsInRouteZone then
+        return false
+    end
+
+    -- Reusable closure to handle single-item collection requirements.
+    local function handleSingleItemRequirement(questID, requirement)
+        local itemCount = C_Item.GetItemCount(requirement.itemID)
+
+        -- Keep the player informed about their progress on the required item.
+        if itemCount < requirement.count then
+            APR.currentStep:AddQuestSteps(
+                questID,
+                requirement.description .. " (" .. itemCount .. "/" .. requirement.count .. ")",
+                requirement.itemID
+            )
+            return false
+        end
+
+        -- Progression should advance automatically when the requirement is met.
+        APR:NextQuestStep()
+        return true
+    end
+
+    -- Single item requirements are mapped here for clarity and to simplify future additions.
+    local extraLineQuests = {
+        [13544] = {
+            itemID = 44886,
+            description = L["KILL_FLEETFOOT"],
+            count = 1,
+        },
+        [13595] = {
+            itemID = 44967,
+            description = L["LOOT_WILDFIRE_BOTTLE"],
+            count = 1,
+        },
+        [25654] = {
+            itemID = 9530,
+            description = L["LOOT_HARPYS_HORN"],
+            count = 1,
+        },
+    }
+
+    -- Handle simple one-item routes first.
+    if extraLineQuests[extraline] then
+        return handleSingleItemRequirement(extraline, extraLineQuests[extraline])
+    end
+
+    -- Quest 14358 has multiple parallel requirements; keep them grouped for clarity.
+    if extraline == 14358 then
+        local requirements = {
+            {
+                itemID = 48106,
+                description = L["LOOT_MELONFRUIT"],
+                requiredCount = 8,
+            },
+            {
+                itemID = 48857,
+                description = L["KILL_SATYR_FLESH"],
+                requiredCount = 10,
+            },
+            {
+                itemID = 48943,
+                description = L["LOOT_SATYR_SABER"],
+                requiredCount = 20,
+            },
+        }
+
+        local allRequirementsComplete = true
+
+        -- Iterate over every needed item and record missing progress on the step frame.
+        for _, requirement in ipairs(requirements) do
+            local itemCount = C_Item.GetItemCount(requirement.itemID)
+
+            if itemCount < requirement.requiredCount then
+                APR.currentStep:AddQuestSteps(
+                    extraline,
+                    requirement.description .. " (" .. itemCount .. "/" .. requirement.requiredCount .. ")",
+                    requirement.itemID
+                )
+                allRequirementsComplete = false
+            end
+        end
+
+        -- When all three collections are complete, move to the following route entry immediately.
+        if allRequirementsComplete then
+            APR:NextQuestStep()
+            return true
+        end
+    end
+
+    -- No special ExtraLine handling triggered.
+    return false
+end
+
 function APR:UpdateStep()
     if not APR.settings.profile.enableAddon then
         return
@@ -131,76 +229,9 @@ function APR:UpdateStep()
             APR.currentStep:AddExtraLineText("USE_EXTRAACTIONBUTTON", L["USE_EXTRAACTIONBUTTON"])
         end
 
-        -- //TODO REWORK ExtraLine
-        if (step.ExtraLine and APR.IsInRouteZone) then
-            local extraline = step.ExtraLine
-            local fleetfootItemID = 44886
-            local wildfireBottleItemID = 44967
-            local harpysHornItemID = 9530
-            local extraLineQuests = {
-                [13544] = {
-                    itemID = fleetfootItemID,
-                    description = L["KILL_FLEETFOOT"],
-                    count = 1,
-                },
-                [13595] = {
-                    itemID = wildfireBottleItemID,
-                    description = L["LOOT_WILDFIRE_BOTTLE"],
-                    count = 1,
-                },
-                [25654] = {
-                    itemID = harpysHornItemID,
-                    description = L["LOOT_HARPYS_HORN"],
-                    count = 1,
-                }
-            }
-            for questID, questInfo in pairs(extraLineQuests) do
-                if extraline == questID then
-                    local itemCount = C_Item.GetItemCount(questInfo.itemID)
-                    if itemCount < questInfo.count then
-                        APR.currentStep:AddQuestSteps(questID,
-                            questInfo.description .. " (" .. itemCount .. "/" .. questInfo.count .. ")", questInfo
-                            .itemID)
-                    else
-                        APR:NextQuestStep()
-                        return
-                    end
-                    break
-                end
-            end
+        -- For old ExtraLine step option
+        HandleExtraLine(step.ExtraLine)
 
-            if (extraline == 14358) then
-                local melonFruitItemID = 48106
-                local satyrFleshItemID = 48857
-                local satyrSaberItemID = 48943
-                local requiredMelonFruitCount = 8
-                local requiredSatyrFleshCount = 10
-                local requiredSatyrSaberCount = 20
-
-                local melonFruitCount = C_Item.GetItemCount(melonFruitItemID)
-                local satyrFleshCount = C_Item.GetItemCount(satyrFleshItemID)
-                local satyrSaberCount = C_Item.GetItemCount(satyrSaberItemID)
-                if melonFruitCount < requiredMelonFruitCount then
-                    APR.currentStep:AddQuestSteps(14358,
-                        L["LOOT_MELONFRUIT"] .. "( " .. melonFruitCount .. "/" .. requiredMelonFruitCount .. ")",
-                        melonFruitItemID)
-                end
-                if satyrFleshCount < requiredSatyrFleshCount then
-                    APR.currentStep:AddQuestSteps(14358,
-                        L["KILL_SATYR_FLESH"] .. " (" .. satyrFleshCount .. "/" .. requiredSatyrFleshCount .. ")",
-                        satyrFleshItemID)
-                end
-                if satyrSaberCount < requiredSatyrSaberCount then
-                    APR.currentStep:AddQuestSteps(14358,
-                        L["LOOT_SATYR_SABER"] .. " (" .. satyrSaberCount .. "/" .. requiredSatyrSaberCount .. ")",
-                        satyrSaberItemID)
-                end
-                if melonFruitCount == requiredMelonFruitCount and satyrFleshCount == requiredSatyrFleshCount and satyrSaberCount == requiredSatyrSaberCount then
-                    APR:NextQuestStep()
-                    return
-                end
-            end
-        end
 
         -- REWORK LOA (BfA Loa pick)
         if step.PickedLoa and step.PickedLoa == 2 and (APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440)) then
