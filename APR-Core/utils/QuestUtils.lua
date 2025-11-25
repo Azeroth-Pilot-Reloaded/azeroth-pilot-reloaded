@@ -1,9 +1,5 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
---[[
-    Quest-centric helpers kept away from technical utilities to make the responsibilities explicit.
-]]
-
 function APR:AcceptQuest()
     AcceptQuest()
 end
@@ -87,7 +83,7 @@ end
 
 --- Add a quest to the watch list and super-track it for clarity.
 function APR:TrackQuest(questID)
-    C_QuestLog.AddQuestWatch(questID) -- add to the quest log
+    C_QuestLog.AddQuestWatch(questID)            -- add to the quest log
     C_SuperTrack.SetSuperTrackedQuestID(questID) -- highlight the quest
 end
 

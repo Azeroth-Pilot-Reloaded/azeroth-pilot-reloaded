@@ -1,9 +1,5 @@
+local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-
---[[
-    Player/character centric helpers.
-    These helpers stay isolated here to avoid bloating the base Utils.lua file with gameplay-specific logic.
-]]
 
 --- Check if a spell is known by the player (supports both classic and retail APIs).
 -- We keep the dual API call path so the add-on works on multiple client versions without crashing.

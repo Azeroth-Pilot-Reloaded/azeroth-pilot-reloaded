@@ -1,7 +1,4 @@
-local _G = _G
-local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local hbdPins = LibStub("HereBeDragons-Pins-2.0")
-local hbd = LibStub("HereBeDragons-2.0")
 
 -- Initialize APR Map module
 APR.map = APR:NewModule("MAP", "AceEvent-3.0")
