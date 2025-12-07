@@ -1,115 +1,86 @@
 [![GitHub](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/69440fdb-b89b-430e-b9ce-1313f33fe758)](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded)
 
-<h3 style="text-align: center;"><span style="font-size: 24px; font-family: arial;">The continuation of <em>Azeroth Auto Pilot</em>, a leveling Add-On with a legacy.<br />Rebirthed and remastered from the ashes of something great!</span></h3>
-<p style="text-align: center;">&nbsp;</p>
+# Azeroth Pilot Reloaded
+
+The continuation of _Azeroth Auto Pilot_, a leveling add-on with a legacy. Rebirthed and remastered from the ashes of something great!
 
 [![Discord](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/f9fc38ba-26b0-4669-a584-ce56f0bf57d6)](https://discord.gg/YgcdybKdWX)
 [![GitHub](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/2c9d96ac-f38a-4442-9dfc-cc6b3ce36981)](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded)
 [![CurseForge](https://github.com/user-attachments/assets/1bae5d08-d88b-403a-b902-ad3aa5c55248)](https://www.curseforge.com/wow/addons/azeroth-pilot-reloaded)
 [![Patreon](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/8431a849-5507-4489-b6ab-f3b7993ef4ef)](https://www.patreon.com/AzerothPilotReloaded)
 
-<p style="text-align: center;"><span style="font-size: 24px; font-family: arial;"><strong><span style="font-size: 14px;"><em><a href="https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded"><span style="font-family: arial;">If you wish to contribute to our development, head to our GitHub!</span></a></em></span><em><span style="font-size: 12px;"><span style="font-family: arial;"><br /><a href="https://discord.gg/YgcdybKdWX" target="_blank" rel="noopener noreferrer">Visit our Discord for support and translation contribution!</a></span></span><br /></em></strong></span></p>
-
+**Want to help?** [Contribute on GitHub](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded) or join our [Discord](https://discord.gg/YgcdybKdWX) for support and translations.
+##
 ![Features](https://github.com/user-attachments/assets/a3af1185-9b5d-411a-8b14-60a0a21249f9)
 
-<p style="text-align: left;"><span style="font-family: arial; font-size: 16px;"><strong><u>Waypoint Arrow</u></strong></span></p>
-<p style="text-align: left;"><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">Directs you using built in coordinates without the need for TomTom.</span><br /></span></p>
-<p style="text-align: left;">&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Quest Objectives</u></strong>&nbsp;</span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">Tells you your current quest objective, and keeps track of how many items you picked up and the mobs you killed.</span><br /></span></p>
-<p>&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Quest Objective Notes</u></strong></span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">These display a specific note for that quest such as 'Inside the Cave' or 'Click on the item next to the NPC'.</span><br /></span></p>
-<p>&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Auto Gossip</u>*</strong></span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">Selects the gossip option for your quest.</span><br /></span></p>
-<p>&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Auto Pick up and Hand In of Quests</u>*</strong></span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">Automatically accepts the specific quests, and hands them in to the NPC.</span><br /></span></p>
-<p>&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Auto Skip Cutscenes</u>*</strong></span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">Automatically skips a cutscene to save time <em>(if skip-able)</em>.</span><br /></span></p>
-<p>&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Group Questing</u></strong>&nbsp;</span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">APR shows your party members, and syncs with them to show their step<em>(s)</em>, if they are also using APR.</span><br /></span></p>
-<p>&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Keybinding Quest items</u></strong></span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">Supports the binding of a key for quest items, as well as setting the quest item to your cursor.</span><br /></span></p>
-<p>&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Movable and Scalable UI</u></strong></span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">The UI elements are movable and scalable <em>(Quest List [objectives], Quest Order List [steps], and the Waypoint Arrow)</em>.</span><br /></span></p>
-<p>&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Chat Commands</u></strong></span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">Using the <strong>/apr</strong> prefix <em>(see the 'Settings/Commands' section).</em></span><br /></span></p>
-<p>&nbsp;</p>
-<p><span style="font-family: arial; font-size: 16px;"><strong><u>Multiple Routes</u></strong></span></p>
-<p><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;">Routes through previous and current expansions. More are being developed and created <em>(or fixed).</em></span></span></p>
-<p>&nbsp;</p>
-<p><span style="font-size: 14px;"><em><strong><span style="font-family: arial;">Note: </span></strong><span style="font-family: arial;">The Auto Quest Pickup and Hand In, Gossip/NPC Chatting, and cutscene skips can be temporarily disabled by holding down the '<strong>Control</strong>' key when interacting with an NPC.</span></em></span></p>
-<p>&nbsp;</p>
+-   **Guided navigation:** waypoint arrow, map and minimap lines, optional range checks, and flight-path helpers keep you moving without extra addons.
+-   **Hands-free questing:** auto accept, auto turn-in, auto gossip, and automatic cutscene skipping to speed runs while keeping safety checks.
+-   **Easy quest items:** auto-creates buttons for items and spells so you can click or keybind them without digging in your bags.
+-   **Group-friendly:** shows party progress, syncs steps, and supports group quests and scenarios to keep everyone aligned.
+-   **Route coverage:** curated routes across expansions, custom route imports (AprRC), and quick controls to skip, rollback, or reset if you go off track.
+-   **Flexible UI:** move and scale the quest list, step list, waypoint arrow, and minimap button to fit your layout.
 
+### Quick tip
+
+Hold `Ctrl`, `Shift`, or `Alt` while talking to NPCs, flight masters, or merchants to temporarily disable auto accept/turn-in/gossip, auto-flight selection, and cutscene skipping for that interaction.
+##
 ![Settings & Commands](https://github.com/user-attachments/assets/f691f4d2-d9ee-4a14-8135-2d85a0334c6b)
 
-<p style="text-align: left;"><span style="font-family: arial; font-size: 16px;"><strong>Settings</strong> can be found through "<em>Interface &gt; Addons &gt; Azeroth Pilot Reloaded"</em> or by launching the <em>Options</em> panel via <strong><em>/apr</em></strong>.</span></p>
-<p style="text-align: left;"><span style="font-size: 16px;"><span style="font-family: arial;">Using the <em><strong>/apr</strong></em> prefix, the below commands are available.</span><span style="font-family: arial;"><br /></span></span><span style="font-family: arial; font-size: 16px;"><span style="font-size: 14px;"><em><strong>Note:</strong> These commands are displayed with their shorthand versions, variations may be omitted from this list.</em></span></span></p>
-<ul>
-<li style="text-align: left;"><span style="font-family: arial; font-size: 16px;"><em><strong><span style="font-size: 14px;">/apr help, h</span></strong></em><span style="font-size: 14px;"> - Displays the <em>(up-to-date)</em> commands in-game.</span><br /></span></li>
-<li><span style="font-family: arial; font-size: 14px;"><em><strong>/apr coord</strong></em>&nbsp;- Toggle display of a world coordinates frame.</span></li>
-<li><span style="font-size: 14px;"><em><strong>/apr discord</strong></em>&nbsp;- Provides the URL for our Discord to copy.</span></li>
-<li><span style="font-size: 14px;"><em><strong>/apr github</strong></em>&nbsp;- Provides the URL for our Github to copy.</span></li>
-<li><span style="font-size: 14px;"><strong>/apr qol -&nbsp;</strong>Toggle Quest Order List frame.</span></li>
-<li><span style="font-size: 14px;"><strong><em>/apr rollback, rb</em></strong> - Rolls back one step <em>(opposite of skip, useful if you skipped too far).</em></span></li>
-<li><span style="font-size: 14px;"><em><strong>/apr route -</strong>&nbsp;Open the route option.</em></span></li>
-<li><span style="font-family: arial; font-size: 14px;"><em><strong>/apr reset, r</strong></em> - Resets your steps for your current zone. Useful if you accidentally went off track or skipped way too far ahead.</span></li>
-<li><span style="font-family: arial; font-size: 14px;"><strong><em>/apr forcereset, fr</em></strong> - Resets APR's saved character cache, this is useful if you run into a major issue with syncing, or started questing, deleted the character and remade a new one using the same name.<br /></span></li>
-<li><span style="font-family: arial; font-size: 14px;"><strong><em>/apr skip, s, skippiedoodaa</em></strong> - Skips one step forward in your currently displayed Task/Objective.+<br /></span></li>
-<li><span style="font-size: 14px;"><em><strong>/apr status</strong></em>&nbsp;- Shows the current state of the addon.</span></li>
-<li><span style="font-size: 14px;"><span style="font-family: arial;"><em style="font-family: arial;"><strong>/apr&nbsp;</strong></em><strong style="font-family: arial;">scribe, writer</strong><span style="font-family: arial;">&nbsp;- ;)</span><br /></span></span></li>
-<li><span style="font-size: 14px;"><span style="font-family: arial;"><em><strong>/apr&nbsp;</strong></em><strong>42</strong>&nbsp;- ;)</span></span></li>
-</ul>
-<p>&nbsp;</p>
+Settings are under `Interface > Addons > Azeroth Pilot Reloaded` or via `/apr` in chat.
 
+Using the `/apr` prefix, the commands below are available:
+
+| Command            | Aliases                        | What it does                                                  |
+| ------------------ | ------------------------------ | ------------------------------------------------------------- |
+| `/apr`             | -                              | Opens the main settings window.                               |
+| `/apr help`        | `/apr h`                       | Prints the full, current list of commands.                    |
+| `/apr about`       | -                              | Opens the About & Help panel.                                 |
+| `/apr coord`       | -                              | Toggles the world coordinates frame.                          |
+| `/apr discord`     | -                              | Prints the Discord invite link.                               |
+| `/apr github`      | -                              | Prints the GitHub repository link.                            |
+| `/apr status`      | -                              | Shows the current addon status (route, zone, profile).        |
+| `/apr route`       | -                              | Opens route options.                                          |
+| `/apr qol`         | -                              | Toggles the Quest Order List frame.                           |
+| `/apr reset`       | `/apr r`                       | Resets steps for your current zone.                           |
+| `/apr resetcustom` | -                              | Clears custom routes imported with AprRC.                     |
+| `/apr forcereset`  | `/apr fr`                      | Hard resets APR's saved cache (useful if something desynced). |
+| `/apr skip`        | `/apr s`, `/apr skippiedoodaa` | Skips the current step.                                       |
+| `/apr rollback`    | `/apr rb`                      | Steps back one step (undo a skip).                            |
+
+##
 ![Credits](https://github.com/user-attachments/assets/e1e2c4f3-9e84-40fe-af3b-618a0d2a948f)
 
-<p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;"><strong>Note:</strong> Names are all based off of user Discord or GitHub aliasas.</span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 16px;"><em><span style="font-family: arial;"><strong>Core Developers</strong></span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;">Periodic &amp; consistant contributors to the addon's code.</span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><strong><span style="text-decoration: underline;">Neogeekmo / Neoldric</span> </strong>- Primary Core Developer &amp; Full-Stack Developer</span></em></span><span style="font-size: 14px;"><em><span style="font-family: arial;"><br /></span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><u><strong>Kamian</strong></u>&nbsp;- Core Developer</span></em></span></p>
-<p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 16px;"><em><span style="font-family: arial;"><strong>Developers</strong></span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;">Occasional contributors to the addon's code.</span></em></span></p>
-<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><u><strong>8goldbow</strong></u>&nbsp;- Retired Core Developer</span></em></p>
-<p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><span style="font-size: 16px;"><strong>Graphic &amp; UI Designers</strong></span><br /></span></em></p>
-<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><u>Rycia</u></strong> - Graphic Designer &amp; UI Designer</span></em></p>
-<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><u>Neogeekmo /&nbsp;Neoldric</u></strong> - UI Designer</span></em></p>
-<p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><span style="font-size: 16px;"><strong>Route Designers</strong></span></span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><span style="text-decoration: underline;"><strong>Pahonix </strong></span>- General Route Designer</span></em></span></p>
-<p style="text-align: center;"><em><span style="font-size: 14px;"><span style="font-family: arial;"><span style="text-decoration: underline;"><strong>Ola</strong></span> - Dragonflight Route Designer</span></span><span style="font-size: 14px;"><span style="font-family: arial;"><br /></span></span></em></p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><span style="text-decoration: underline;"><strong>DeathMessinger</strong></span>&nbsp;- Retired Route Designer</span></em></span></p>
-<p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 16px;"><em><strong><span style="font-family: arial;">Support Team</span></strong></em></span></p>
-<p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;">The people who answer your questions!</span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><strong><span style="font-family: arial;"><span style="text-decoration: underline;">Pahonix</span> - </span></strong><span style="font-family: arial;">Support Team<br /></span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><span style="text-decoration: underline;"><strong>NightOfStarrs</strong></span> - Support Team &amp; QA</span></em></span></p>
-<p style="text-align: center;">&nbsp;</p>
-<p style="text-align: center;"><span style="font-size: 16px;"><em><span style="font-family: arial;"><strong>Translation<br /></strong></span></em></span></p>
-<p style="text-align: center;"><em><span style="font-family: arial;">Want to support our efforts in translating APR? Please join our <a href="https://discord.gg/YgcdybKdWX">Discord!</a></span></em></p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><strong><span style="text-decoration: underline;">Neogeekmo /&nbsp;Neoldric</span> </strong>- French Translator<strong><br /></strong></span></em></span></p>
-<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><span style="text-decoration: underline;">Mania</span> </strong>- French Translator</span><span style="font-size: 14px;"><br /></span></em></p>
-<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><span style="text-decoration: underline;">Kamian</span> </strong>- German Translator</span><span style="font-size: 14px;"><span style="font-family: arial;"><br /></span></span></em></p>
-<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><span style="text-decoration: underline;">Movion</span> </strong>- German Translator</span><span style="font-size: 14px;"><span style="font-family: arial;"><br /></span></span></em></p>
-<p style="text-align: center;"><em><span style="font-size: 14px; font-family: arial;"><strong><span style="text-decoration: underline;">Jean</span> </strong>- Latin American Spanish Translator</span><span style="font-size: 14px;"><span style="font-family: arial;"><br /></span></span></em></p>
-<p style="text-align: center;"><em><span style="font-size: 16px;"><strong><span style="font-family: arial;">&nbsp;</span></strong></span></em></p>
-<p style="text-align: center;"><span style="font-size: 16px;"><em><strong><span style="font-family: arial;">Azeroth Auto Pilot &amp; legacy</span></strong></em></span></p>
-<p style="text-align: center;"><span style="font-size: 12px;"><em><span style="font-family: arial;">Here lies t</span><span style="font-family: arial;">he credits for legacy AAP development prior to APR.</span></em></span></p>
-<p style="text-align: center;"><span style="font-size: 14px;"><em><span style="font-family: arial;"><strong><u>Zyrrael</u></strong> - Legacy Maintainer &amp; Core Developer</span></em></span></p>
-<p style="text-align: center;"><em><span style="font-family: arial; font-size: 14px;"><a href="https://www.curseforge.com/wow/addons/azeroth-auto-pilot"><strong>Legacy Azeroth Auto Pilot</strong></a></span><span style="font-family: arial; font-size: 14px;"><strong><u> Team</u></strong> - Developers that once spear-headed the development</span></em></p>
-<p style="text-align: center;"><em><span style="font-size: 14px;"><a href="https://www.twitch.tv/desmephisto" rel="nofollow">DesMephisto</a> - Route Designer of the original default Warlords of Draenor speed-run leveling route</span></em></p>
-<p style="text-align: center;"><em><span style="font-family: arial; font-size: 14px;"><a href="https://www.twitch.tv/brutallstatic" rel="nofollow">BrutallStatic</a> - Assited in the Shadowlands 50-60 route</span></em></p>
-<p style="text-align: center;"><em><span style="font-family: arial; font-size: 14px;"><em><span style="text-decoration: underline;"><strong>TeddyRuxpins </strong></span>- Assited in the Shadowlands 50-60 route</em><br /></span></em></p>
-<p style="text-align: center;">&nbsp;</p>
-<p style="padding-left: 60px; text-align: center;">&nbsp;</p>
-<div class="notranslate" style="all: initial;">&nbsp;</div>
+**Core & Development**
+
+-   Neogeekmo / Neoldric - Author and core developer
+-   Kamian - Core developer
+
+**Route Design**
+
+-   Pahonix - General route designer
+-   Ola - Dragonflight route design
+-   Clara - Route design
+
+**Graphics & UI**
+
+-   Rycia - Graphic and UI design
+-   Neogeekmo / Neoldric - UI design
+
+**Support**
+
+-   NightofStarrs - Support & QA
+-   Pahonix - Support
+
+**Translation**
+
+-   French: Neogeekmo, Jmsche, Mania
+-   German: Kamian, Movion
+-   Spanish (LatAm): Jean
+-   Russian: ZamestoTV
+
+**Legacy Azeroth Auto Pilot**
+
+-   Zyrrael - Legacy maintainer & core developer of Azeroth Auto Pilot
+-   Legacy team: Deathmessenger, DesMephisto, BrutallStatic, TeddyRuxpins, and the original AAP crew
+-   DesMephisto - Original Warlords of Draenor speed-run route
+-   BrutallStatic & TeddyRuxpins - Shadowlands 50-60 route support
