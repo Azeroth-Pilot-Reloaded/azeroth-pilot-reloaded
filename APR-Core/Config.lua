@@ -1381,7 +1381,8 @@ function APR.settings:CreateAboutOption()
                 name = "|cffeda55f" .. L["TRANSLATOR"] .. ": |r\n" ..
                     "      |cff5f9ea0" .. FRFR .. ": |rNeogeekmo, Jmsche, Mania\n" ..
                     "      |cff5f9ea0" .. DEDE .. ": |rKamian, Movion\n" ..
-                    "      |cff5f9ea0" .. ESMX .. ": |rJean",
+                    "      |cff5f9ea0" .. ESMX .. ": |rJean\n" ..
+                    "      |cff5f9ea0" .. RURU .. ": |rZamestoTV",
             },
             version = {
                 order = 2.5,
