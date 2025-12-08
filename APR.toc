@@ -46,6 +46,7 @@ APR-Core/utils/SceneCutterUtils.lua
 APR-Core/utils/CoordinateFrame.lua
 APR-Core/utils/RouteHashUtils.lua
 APR-Core/utils/StepUtils.lua
+APR-Core/utils/QuestOrderListUtils.lua
 
 APR-Core/data/models/Classes.lua
 APR-Core/data/models/Enums.lua

@@ -97,6 +97,13 @@ function APR.changelog:SetChangeLog()
         "  - Resize the frame",
         "  - Change frame color",
 
+        "#Dev",
+        "- Libs updated",
+        "- Quest Order list code optimizations",
+
+        "#Translation/Localizations",
+        "- Thanks to ZamestoTV, who joined the team to do the translation into Russian",
+
 
         { "v4.18.0", "2025-11-25" },
         "#Features",
