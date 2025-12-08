@@ -99,7 +99,8 @@ function APR.changelog:SetChangeLog()
 
         "#Bugs",
         "- Fixed toggle behavior of the coordinates debug frame",
-
+        "- Added debug option to disable received data from your party",
+        "- Reworked party frame and data transfer logic to help mitigate lag issues",
 
         "#Dev",
         "- Updated libs",
@@ -107,7 +108,6 @@ function APR.changelog:SetChangeLog()
 
         "#Translation/Localizations",
         "- Thanks to **ZamestoTV**, who joined the team to work on the Russian translation",
-
 
         { "v4.18.0", "2025-11-25" },
         "#Features",
