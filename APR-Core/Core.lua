@@ -69,6 +69,7 @@ function APR:OnInitialize()
     -- APR INIT NEW SETTING
     APR:Love()
     APR.settings:InitializeBlizOptions()
+    APR:ApplyLoveColors()
 
     -- APR Saved Data
     APRData = APRData or {}

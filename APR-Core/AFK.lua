@@ -6,6 +6,8 @@ local candy = LibStub("LibCandyBar-3.0")
 APR.AFK = APR:NewModule("AFK")
 
 APR.AFK.lastStep = nil
+APR.AFK.defaultSnapHeight = 15
+APR.AFK.fakeTimerActive = false
 
 local FRAME_WIDTH = 250
 local FRAME_HEIGHT = 30
@@ -37,15 +39,22 @@ bar:SetPoint("CENTER", AfkFrame)
 ---------------------------------------------------------------------------------------
 
 function APR.AFK:AFKFrameOnInit()
+    APR.settings.profile.afkFrame = APR.settings.profile.afkFrame or {}
+
     LibWindow.RegisterConfig(AfkFrameScreen, APR.settings.profile.afkFrame)
     AfkFrameScreen.RegisteredForLibWindow = true
     LibWindow.MakeDraggable(AfkFrameScreen)
-    LibWindow.RestorePosition(AfkFrameScreen)
+
+    -- Do not force RestorePosition if no point has been saved yet
+    if APR.settings.profile.afkFrame.point then
+        LibWindow.RestorePosition(AfkFrameScreen)
+    end
     AfkFrameScreen:EnableMouse(true)
     AfkFrameScreen:Hide()
 
     local function onStop()
         AfkFrameScreen:Hide()
+        APR.AFK.fakeTimerActive = false
     end
     candy:RegisterCallback("LibCandyBar_Stop", onStop)
 
@@ -65,6 +74,9 @@ function APR.AFK:AFKFrameOnInit()
             APR.AFK.TaxiTimerRecorder:Stop()
         end
     end)
+
+    APR.AFK:UpdateBarColor()
+    APR.AFK:RefreshFrameAnchor(true)
 end
 
 function APR.AFK:SetAfkTimer(duration)
@@ -73,6 +85,7 @@ function APR.AFK:SetAfkTimer(duration)
         AfkFrameScreen:Hide()
         return
     end
+    APR.AFK:RefreshFrameAnchor()
     AfkFrameScreen:Show()
     bar:SetDuration(duration)
     bar:Start()
@@ -81,4 +94,81 @@ end
 function APR.AFK:HideFrame()
     bar:Stop()
     AfkFrameScreen:Hide()
+    self.fakeTimerActive = false
+end
+
+function APR.AFK:UpdateBarColor()
+    local color = APR.settings.profile.afkBarColor or { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
+    bar:SetColor(color[1], color[2], color[3], color[4])
+end
+
+function APR.AFK:UpdateSize(width, height)
+    local w = width or APR.settings.profile.afkWidth or FRAME_WIDTH
+    local h = height or APR.settings.profile.afkHeight or FRAME_HEIGHT
+
+    AfkFrame:SetSize(w, h)
+    AfkFrameScreen:SetSize(w, h)
+    bar:SetWidth(w)
+    bar:SetHeight(h)
+end
+
+function APR.AFK:RefreshFrameAnchor(initial)
+    local currentStepPanel = _G.CurrentStepScreenPanel
+
+    if APR.settings.profile.afkSnapToCurrentStep and currentStepPanel then
+        local scale = currentStepPanel:GetScale() or 1
+        local width = currentStepPanel:GetWidth() or FRAME_WIDTH
+        local configuredHeight = APR.settings.profile.afkHeight or FRAME_HEIGHT
+        if configuredHeight == FRAME_HEIGHT then
+            configuredHeight = self.defaultSnapHeight or FRAME_HEIGHT
+        end
+        local afkHeight = configuredHeight
+        local contentHeight = APR.currentStep and APR.currentStep.GetContentHeight
+            and APR.currentStep:GetContentHeight() or 0
+        local anchorHeight = (contentHeight > 0 and contentHeight) or (currentStepPanel:GetHeight() or FRAME_HEIGHT)
+
+        AfkFrameScreen:ClearAllPoints()
+        AfkFrameScreen:SetScale(scale)
+        AfkFrameScreen:SetPoint("TOP", currentStepPanel, "TOP", 0, -anchorHeight)
+        AfkFrameScreen:EnableMouse(false)
+        self:UpdateSize(width, afkHeight)
+    else
+        AfkFrameScreen:SetScale(1)
+        self:UpdateSize()
+        if not initial
+            and AfkFrameScreen.RegisteredForLibWindow
+            and APR.settings.profile.afkFrame
+            and APR.settings.profile.afkFrame.point then
+            LibWindow.RestorePosition(AfkFrameScreen)
+        end
+        if not APR.settings.profile.currentStepLock then
+            AfkFrameScreen:EnableMouse(true)
+        end
+    end
+
+    self:UpdateBarColor()
+end
+
+function APR.AFK:ToggleFakeTimer()
+    if self.fakeTimerActive then
+        self.fakeTimerActive = false
+        bar:Stop()
+        return
+    end
+
+    if not APR.settings.profile.enableAddon then
+        return
+    end
+
+    self.fakeTimerActive = true
+    self:SetAfkTimer(300)
+end
+
+function APR.AFK:ResetPosition()
+    if APR.settings.profile.afkSnapToCurrentStep then
+        return
+    end
+    AfkFrameScreen:ClearAllPoints()
+    AfkFrameScreen:SetPoint("CENTER", UIParent, "CENTER", 0, 150)
+    LibWindow.SavePosition(AfkFrameScreen)
 end

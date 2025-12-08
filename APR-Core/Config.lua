@@ -64,6 +64,7 @@ function APR.settings:InitializeSettings()
             currentStepLock = false,
             currentStepScale = 1,
             currentStepbackgroundColorAlpha = APR.Color.defaultLightBackdrop,
+            currentStepProgressBarColor = { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 },
             currentStepAttachFrameToQuestLog = false,
             currentStepQuestButtonPositionRight = false,
             -- quest order list
@@ -110,12 +111,17 @@ function APR.settings:InitializeSettings()
             -- group
             groupFrame = {},
             showGroup = true,
+            receiveGroupData = true,
             groupScale = 1,
             -- route
             routeSelectionFrame = {},
             routeSignature = {},
             --afk
             afkFrame = {},
+            afkSnapToCurrentStep = false,
+            afkBarColor = { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 },
+            afkWidth = 250,
+            afkHeight = 30,
             --debug
             debug = false,
             showEvent = false,
@@ -336,6 +342,23 @@ function APR.settings:createBlizzOptions()
                         disabled = function()
                             return not self.profile.currentStepShow or not self.profile.enableAddon or
                                 self.profile.currentStepAttachFrameToQuestLog
+                        end,
+                    },
+                    currentStepProgressBarColor = {
+                        order = 5.25,
+                        type = "color",
+                        name = L["PROGRESS_BAR_COLOR"],
+                        width = optionsWidth,
+                        hasAlpha = true,
+                        get = function()
+                            return unpack(self.profile.currentStepProgressBarColor)
+                        end,
+                        set = function(info, r, g, b, a)
+                            SetProfileOption(info, { r, g, b, a })
+                            APR.currentStep:UpdateProgressBarColor()
+                        end,
+                        disabled = function()
+                            return not self.profile.currentStepShow or not self.profile.enableAddon
                         end,
                     },
                     currentStepQuestButtonPositionRight = {
@@ -1160,6 +1183,109 @@ function APR.settings:createBlizzOptions()
                     },
                 }
             },
+            group_AFK = {
+                order = 10.5,
+                type = "group",
+                name = L["AFK"],
+                args = {
+                    afkSnapToCurrentStep = {
+                        order = 10.51,
+                        type = "toggle",
+                        name = L["AFK_SNAP_TO_CURRENT_STEP"],
+                        desc = L["AFK_SNAP_TO_CURRENT_STEP_DESC"],
+                        width = "full",
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            local wasSnapped = self.profile.afkSnapToCurrentStep
+                            SetProfileOption(info, value)
+                            if value and not wasSnapped and self.profile.afkHeight == 30 then
+                                self.profile.afkHeight = (APR.AFK and APR.AFK.defaultSnapHeight) or 15
+                            end
+                            APR.AFK:RefreshFrameAnchor()
+                        end,
+                    },
+                    afkBarColor = {
+                        order = 10.52,
+                        type = "color",
+                        name = L["AFK_BAR_COLOR"],
+                        hasAlpha = true,
+                        width = optionsWidth,
+                        get = function()
+                            return unpack(self.profile.afkBarColor)
+                        end,
+                        set = function(info, r, g, b, a)
+                            SetProfileOption(info, { r, g, b, a })
+                            APR.AFK:UpdateBarColor()
+                        end,
+                    },
+                    afkFakeTimer = {
+                        order = 10.525,
+                        type = "execute",
+                        name = function()
+                            return APR.AFK and APR.AFK.fakeTimerActive and L["AFK_TEST_TIMER_STOP"] or
+                                L["AFK_TEST_TIMER_START"]
+                        end,
+                        width = optionsWidth,
+                        func = function()
+                            APR.AFK:ToggleFakeTimer()
+                        end,
+                        disabled = function()
+                            return not self.profile.enableAddon
+                        end,
+                    },
+                    afkSize = {
+                        order = 10.53,
+                        type = "group",
+                        inline = true,
+                        name = "",
+                        args = {
+                            afkWidth = {
+                                order = 10.531,
+                                type = "range",
+                                name = "AFK width",
+                                min = 150,
+                                max = 600,
+                                step = 5,
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.AFK:RefreshFrameAnchor()
+                                end,
+                                disabled = function()
+                                    return self.profile.afkSnapToCurrentStep
+                                end,
+                            },
+                            afkHeight = {
+                                order = 10.532,
+                                type = "range",
+                                name = "AFK height",
+                                min = 10,
+                                max = 60,
+                                step = 1,
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.AFK:RefreshFrameAnchor()
+                                end,
+                            },
+                        }
+                    },
+                    afkResetPosition = {
+                        order = 10.55,
+                        type = "execute",
+                        name = L["RESET_POSITION"],
+                        width = "full",
+                        func = function()
+                            APR.AFK:ResetPosition()
+                        end,
+                        disabled = function()
+                            return self.profile.afkSnapToCurrentStep
+                        end,
+                    },
+                }
+            },
             group_Group = {
                 order = 11,
                 type = "group",
@@ -1301,6 +1427,21 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            receiveGroupData = {
+                                order = 2.5,
+                                type = "toggle",
+                                name = L["RECEIVE_GROUP_DATA"],
+                                desc = L["RECEIVE_GROUP_DATA_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.party:HandleReceiveGroupDataToggle(value)
+                                end,
                                 disabled = function()
                                     return not self.profile.enableAddon
                                 end,

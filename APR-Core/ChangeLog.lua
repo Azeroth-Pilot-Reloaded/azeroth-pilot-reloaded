@@ -90,13 +90,20 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.19.0", "2025-12-" },
+        "#Features",
+        "- Added new customization options for the AFK frame:",
+        "  - Snap to current step",
+        "  - Resize the frame",
+        "  - Change frame color",
+
+
         { "v4.18.0", "2025-11-25" },
         "#Features",
         "- Refactor `LootItem` step option to `LootItems` (list of items)",
 
         "#Guides",
         "- Updated the trigger method for the timer in the `A Fixed Point in Time` quest (89418) during the Legion Remix intro",
-
         "#Bugs",
         "- Added a new test to address tainted frame Lua errors triggered by Blizzard actions",
         "- Improved route update detection to ensure it resets correctly after an addon update",
@@ -290,7 +297,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6", "2025-04-06" },
+        { "v4.9.6",  "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 

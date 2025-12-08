@@ -133,6 +133,9 @@ end
 -- Update the frame scale
 function APR.currentStep:UpdateFrameScale()
     LibWindow.SetScale(CurrentStepScreenPanel, APR.settings.profile.currentStepScale)
+    if APR.AFK and APR.AFK.RefreshFrameAnchor then
+        APR.AFK:RefreshFrameAnchor()
+    end
 end
 
 function APR.currentStep:UpdateBackgroundColorAlpha(color)
@@ -190,7 +193,51 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
     -- InCombatLockdown to prevent the "UNKNOWN()"-Call issue which happens sometimes when we're in a combat and doing a quest step
     if not InCombatLockdown() then
         CurrentStepScreenPanel:Show()
+        if APR.AFK and APR.AFK.RefreshFrameAnchor then
+            APR.AFK:RefreshFrameAnchor()
+        end
     end
+end
+
+function APR.currentStep:GetContentHeight()
+    if not CurrentStepScreenPanel then
+        return nil
+    end
+
+    local top = CurrentStepScreenPanel:GetTop()
+    local minBottom = CurrentStepScreenPanel:GetBottom()
+
+    if not top or not minBottom then
+        return nil
+    end
+
+    local function consider(frame)
+        if frame and frame:IsShown() then
+            local bottom = frame:GetBottom()
+            if bottom and bottom < minBottom then
+                minBottom = bottom
+            end
+        end
+    end
+
+    consider(CurrentStepFrameHeader)
+    consider(CurrentStepFrame_StepHolder and CurrentStepFrame_StepHolder.rollbackButton)
+    consider(CurrentStepFrame_StepHolder and CurrentStepFrame_StepHolder.skipButton)
+    consider(self.progressBar)
+
+    local function considerList(list)
+        for _, container in pairs(list) do
+            if container and container:IsShown() then
+                consider(container)
+                consider(container.IconButton)
+            end
+        end
+    end
+
+    considerList(self.questsExtraTextList)
+    considerList(self.questsList)
+
+    return top - minBottom
 end
 
 -- Reset the frame position
@@ -304,7 +351,7 @@ function APR.currentStep:ProgressBar(key, total, current)
         progressBar:SetSize(175, 20)
         progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
         progressBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-        progressBar:SetStatusBarColor(unpack(APR.Color.blue))
+        APR.currentStep:UpdateProgressBarColor(progressBar)
         progressBar:SetMinMaxValues(1, totalSteps)
         progressBar:SetValue(currentStep)
         progressBar:SetBackdrop({
@@ -333,6 +380,16 @@ function APR.currentStep:ProgressBar(key, total, current)
         else
             self.progressBar.Text:SetText("")
         end
+        self:UpdateProgressBarColor(self.progressBar)
+    end
+end
+
+function APR.currentStep:UpdateProgressBarColor(barOverride)
+    local color = APR.settings.profile.currentStepProgressBarColor or
+    { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
+    local targetBar = barOverride or self.progressBar
+    if targetBar then
+        targetBar:SetStatusBarColor(unpack(color))
     end
 end
 
