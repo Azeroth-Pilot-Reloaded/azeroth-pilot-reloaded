@@ -1404,7 +1404,10 @@ function APR.settings:createBlizzOptions()
                                 name = L["COORD_COMMAND"],
                                 width = "full",
                                 get = GetProfileOption,
-                                set = SetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.coordinate:RefreshFrameAnchor()
+                                end,
                                 disabled = function()
                                     return not self.profile.enableAddon
                                 end,

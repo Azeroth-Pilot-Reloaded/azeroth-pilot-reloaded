@@ -90,19 +90,23 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
-        { "v4.19.0", "2025-12-" },
+        { "v4.19.0", "2025-12-08" },
         "#Features",
         "- Added new customization options for the AFK frame:",
         "  - Snap to current step",
         "  - Resize the frame",
         "  - Change frame color",
 
+        "#Bugs",
+        "- Fixed toggle behavior of the coordinates debug frame",
+
+
         "#Dev",
-        "- Libs updated",
+        "- Updated libs",
         "- Quest Order list code optimizations",
 
         "#Translation/Localizations",
-        "- Thanks to ZamestoTV, who joined the team to do the translation into Russian",
+        "- Thanks to **ZamestoTV**, who joined the team to work on the Russian translation",
 
 
         { "v4.18.0", "2025-11-25" },
