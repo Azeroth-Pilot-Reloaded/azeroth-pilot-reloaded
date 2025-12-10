@@ -130,24 +130,27 @@ function APR.Arrow:Init()
 end
 
 local function CheckDistance()
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if CurStep and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep] then
-        local step = APR.RouteQuestStepList[APR.ActiveRoute]
-        if not step[CurStep].Coord or step[CurStep].NoArrow then
+    local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
+    if currentStepIndex and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][currentStepIndex] then
+        local routeSteps = APR.RouteQuestStepList[APR.ActiveRoute]
+        local currentStep = routeSteps[currentStepIndex]
+        if not currentStep.Coord or currentStep.NoArrow then
             return 0
         end
         -- To skip HS
-        if step[CurStep] and (step[CurStep].UseHS or step[CurStep].UseDalaHS or step[CurStep].UseGarrisonHS) then
+        if currentStep and (currentStep.UseHS or currentStep.UseDalaHS or currentStep.UseGarrisonHS) then
             APR.ArrowFrame.Button:Show()
         end
-        if step[CurStep] and step[CurStep].Waypoint then
-            APR.ArrowFrame.Button:Show()
-            local curStepIndex = CurStep
+        if currentStep and currentStep.Waypoint then
+            if not currentStep.NonSkippableWaypoint then
+                APR.ArrowFrame.Button:Show()
+            end
+            local curStepIndex = currentStepIndex
             local distance = 0
             while true do
-                local oldx, oldy = step[curStepIndex].Coord.x, step[curStepIndex].Coord.y
+                local oldx, oldy = routeSteps[curStepIndex].Coord.x, routeSteps[curStepIndex].Coord.y
                 curStepIndex = curStepIndex + 1
-                local tmpStep = step[curStepIndex]
+                local tmpStep = routeSteps[curStepIndex]
                 if tmpStep and tmpStep.Coord then
                     local newx, newy = tmpStep.Coord.x, tmpStep.Coord.y
                     local deltaX, deltaY = oldx - newx, newy - oldy

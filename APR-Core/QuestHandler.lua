@@ -554,9 +554,11 @@ function APR:UpdateStep()
                 end
             end
         elseif (step.Waypoint) then
-            if (APR.settings.profile.autoSkipAllWaypoints) then
+            local canAutoSkipWaypoint = not step.NonSkippableWaypoint
+
+            if (canAutoSkipWaypoint and APR.settings.profile.autoSkipAllWaypoints) then
                 APR:NextQuestStep()
-            elseif (APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and not IsIndoors() and APR:CheckFlySkill()) then
+            elseif (canAutoSkipWaypoint and APR.settings.profile.autoSkipWaypointsFly and IsFlyableArea() and not IsIndoors() and APR:CheckFlySkill()) then
                 APR:NextQuestStep()
             else
                 if step.WaypointDB then
