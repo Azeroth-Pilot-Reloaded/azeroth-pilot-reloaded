@@ -90,6 +90,10 @@ end
 
 function APR.changelog:SetChangeLog()
     local news = {
+        { "v4.20.0", "2025-12-11" },
+        "#Features",
+        "- Added new `NonSkippableWaypoint` step option to prevent auto-skipping and hide the arrow skip on critical waypoint steps",
+
         { "v4.19.0", "2025-12-08" },
         "#Features",
         "- Added new customization options for the AFK frame:",
@@ -308,7 +312,7 @@ function APR.changelog:SetChangeLog()
         "#Guides",
         "- Added `Nightfall` route (new 11.1.5 scenario)",
 
-        { "v4.9.6",  "2025-04-06" },
+        { "v4.9.6", "2025-04-06" },
         "#Bugs",
         "- Fixed achievement requirements for `Adventuring in Khaz Algar` quest (83543)",
 
