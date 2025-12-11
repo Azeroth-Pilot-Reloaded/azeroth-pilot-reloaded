@@ -93,6 +93,11 @@ function APR.changelog:SetChangeLog()
         { "v4.20.0", "2025-12-11" },
         "#Features",
         "- Added new `NonSkippableWaypoint` step option to prevent auto-skipping and hide the arrow skip on critical waypoint steps",
+        "#Bugs",
+        "- Fixed capital portail coordinates",
+
+        "#Dev",
+        "- Arrow code optimizations",
 
         { "v4.19.0", "2025-12-08" },
         "#Features",
