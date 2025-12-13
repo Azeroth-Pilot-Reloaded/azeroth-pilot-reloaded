@@ -61,6 +61,9 @@ CurrentStepFrameHeader:SetScript("OnDragStop", function(self)
     self:GetParent():StopMovingOrSizing()
     LibWindow.SavePosition(CurrentStepScreenPanel)
     isDragging = false
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
+    end
 end)
 CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
     if button == "LeftButton" and not isDragging and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
@@ -76,6 +79,9 @@ CurrentStepFrameHeader:SetScript("OnMouseUp", function(self, button)
         self:GetParent():StopMovingOrSizing()
         LibWindow.SavePosition(CurrentStepScreenPanel)
         isDragging = false
+        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+            APR.questOrderList:ApplySnapAnchor()
+        end
     end
 end)
 
@@ -87,6 +93,9 @@ CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
         APR.currentStep:SetDefaultDisplay()
         self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-collapse-all")
         self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-collapse-all-pressed")
+        if APR.questOrderList and APR.questOrderList.RefreshFrameAnchor and APR.settings.profile.showQuestOrderList then
+            APR.questOrderList:RefreshFrameAnchor()
+        end
     else
         CurrentStepFrame.collapsed = true
         CurrentStepFrame_StepHolder:Hide()
@@ -95,6 +104,12 @@ CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
         APR.currentStep.progressBar:Hide()
         self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-expand-all")
         self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-expand-all-pressed")
+        if APR.settings.profile.showQuestOrderList and APR.settings.profile.questOrderListSnapToCurrentStep then
+            local qol = _G.QuestOrderListPanel
+            if qol then
+                qol:Hide()
+            end
+        end
     end
 end)
 
@@ -135,6 +150,9 @@ function APR.currentStep:UpdateFrameScale()
     LibWindow.SetScale(CurrentStepScreenPanel, APR.settings.profile.currentStepScale)
     if APR.AFK and APR.AFK.RefreshFrameAnchor then
         APR.AFK:RefreshFrameAnchor()
+    end
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
     end
 end
 
@@ -195,6 +213,9 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         CurrentStepScreenPanel:Show()
         if APR.AFK and APR.AFK.RefreshFrameAnchor then
             APR.AFK:RefreshFrameAnchor()
+        end
+        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+            APR.questOrderList:ApplySnapAnchor()
         end
     end
 end
@@ -386,7 +407,7 @@ end
 
 function APR.currentStep:UpdateProgressBarColor(barOverride)
     local color = APR.settings.profile.currentStepProgressBarColor or
-    { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
+        { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
     local targetBar = barOverride or self.progressBar
     if targetBar then
         targetBar:SetStatusBarColor(unpack(color))
@@ -710,6 +731,10 @@ function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
             FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - container:GetHeight()
         end
     end
+
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
+    end
 end
 
 -- Remove all  quest steps and extra line texts
@@ -917,6 +942,23 @@ function APR.GetMenu(owner, rootDescription)
         toggleAddon = "|cff00ff00 " .. L["ENABLE"] .. "|r"
     end
 
+    local function createToggleItem(label, getChecked, onToggle)
+        if rootDescription.CreateCheckbox then
+            local ok = pcall(function()
+                rootDescription:CreateCheckbox(label, getChecked, function(...)
+                    onToggle(...)
+                end)
+            end)
+            if ok then
+                return
+            end
+        end
+
+        rootDescription:CreateButton(label .. " (" .. (getChecked() and YES or NO) .. ")", function()
+            onToggle()
+        end)
+    end
+
     rootDescription:CreateTitle(APR.title)
 
     rootDescription:CreateButton(L["SHOW_MENU"], function()
@@ -935,26 +977,43 @@ function APR.GetMenu(owner, rootDescription)
         APR.settings:OpenSettings(L["ABOUT_HELP"])
     end)
 
-    rootDescription:CreateButton(L["QOL_COMMAND"], function()
-        APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
-        APR.questOrderList:RefreshFrameAnchor()
-    end)
-
     rootDescription:CreateButton(toggleAddon .. " " .. L["ADDON"], function()
         APR.settings.profile.enableAddon = not APR.settings.profile.enableAddon
         APR.settings:ToggleAddon()
     end)
 
     rootDescription:CreateDivider()
+    rootDescription:CreateTitle(L["QUEST_ORDER_LIST"])
+
+    createToggleItem(L["SHOW_QORDERLIST"], function()
+        return APR.settings.profile.showQuestOrderList
+    end, function()
+        APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
+        APR.questOrderList:RefreshFrameAnchor()
+    end)
+
+    createToggleItem(L["QORDERLIST_SNAP_TO_CURRENT_STEP"], function()
+        return APR.settings.profile.questOrderListSnapToCurrentStep
+    end, function()
+        APR.settings.profile.questOrderListSnapToCurrentStep = not APR.settings.profile.questOrderListSnapToCurrentStep
+        APR.questOrderList:RefreshFrameAnchor()
+    end)
+
+
+    rootDescription:CreateDivider()
     rootDescription:CreateTitle(L["CURRENT_STEP"])
 
-    rootDescription:CreateButton(L["QLIST_ATTACH_QUESTLOG"], function()
+    createToggleItem(L["QLIST_ATTACH_QUESTLOG"], function()
+        return APR.settings.profile.currentStepAttachFrameToQuestLog
+    end, function()
         APR.settings.profile.currentStepAttachFrameToQuestLog = not APR.settings.profile
             .currentStepAttachFrameToQuestLog
         APR.currentStep:RefreshCurrentStepFrameAnchor()
     end)
 
-    rootDescription:CreateButton(L["LOCK_WINDOW"], function()
+    createToggleItem(L["LOCK_WINDOW"], function()
+        return APR.settings.profile.currentStepLock
+    end, function()
         APR.settings.profile.currentStepLock = not APR.settings.profile.currentStepLock
         APR.currentStep:RefreshCurrentStepFrameAnchor()
     end)

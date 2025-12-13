@@ -71,6 +71,7 @@ function APR.settings:InitializeSettings()
             questOrderListFrame = {},
             showQuestOrderList = false,
             questOrderListLock = false,
+            questOrderListSnapToCurrentStep = false,
             questOrderListScale = 1,
             questOrderListbackgroundColorAlpha = APR.Color.defaultLightBackdrop,
             -- arrow
@@ -450,6 +451,21 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = function()
                             return not self.profile.showQuestOrderList
+                        end,
+                    },
+                    questOrderListSnapToCurrentStep = {
+                        order = 6.25,
+                        type = "toggle",
+                        name = L["QORDERLIST_SNAP_TO_CURRENT_STEP"],
+                        desc = L["QORDERLIST_SNAP_TO_CURRENT_STEP_DESC"],
+                        width = optionsWidth,
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            APR.questOrderList:RefreshFrameAnchor()
+                        end,
+                        disabled = function()
+                            return not self.profile.showQuestOrderList or not self.profile.enableAddon
                         end,
                     },
                     questOrderListScale = {

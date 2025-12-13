@@ -53,9 +53,12 @@ function APR.AFK:AFKFrameOnInit()
     AfkFrameScreen:Hide()
 
     local function onStop()
-        AfkFrameScreen:Hide()
-        APR.AFK.fakeTimerActive = false
+    AfkFrameScreen:Hide()
+    APR.AFK.fakeTimerActive = false
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
     end
+end
     candy:RegisterCallback("LibCandyBar_Stop", onStop)
 
     APR.AFK.eventFrame = CreateFrame("Frame")
@@ -89,12 +92,18 @@ function APR.AFK:SetAfkTimer(duration)
     AfkFrameScreen:Show()
     bar:SetDuration(duration)
     bar:Start()
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
+    end
 end
 
 function APR.AFK:HideFrame()
     bar:Stop()
     AfkFrameScreen:Hide()
     self.fakeTimerActive = false
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
+    end
 end
 
 function APR.AFK:UpdateBarColor()
@@ -147,6 +156,9 @@ function APR.AFK:RefreshFrameAnchor(initial)
     end
 
     self:UpdateBarColor()
+    if not initial and APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
+    end
 end
 
 function APR.AFK:ToggleFakeTimer()
