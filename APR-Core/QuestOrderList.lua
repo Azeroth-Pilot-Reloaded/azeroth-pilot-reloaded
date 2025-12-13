@@ -10,6 +10,14 @@ APR.questOrderList.updateTimer = nil
 APR.questOrderList.pendingUpdate = false
 
 local QuestOrderListUtils = APR.questOrderListUtils
+local getSnapAnchor
+local snapToAnchor
+local updateSnapSizing
+local QuestOrderListFrame
+local QuestOrderListFrame_StepHolder
+local QuestOrderListFrame_ScrollFrame
+local QuestOrderListFrame_ScrollChild
+local QuestOrderListFrame_StepHolderHeader
 
 -- Local constants
 local FRAME_WIDTH = 258
@@ -18,6 +26,8 @@ local FRAME_MIN_WIDTH = FRAME_WIDTH
 local FRAME_MIN_HEIGHT = 100
 local FRAME_OFFSET = 10
 local FRAME_DATA_START = -5
+local SNAP_ANCHOR_GAP = 30
+local resizeButton
 
 local function isFrameSuppressed()
     return not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or
@@ -45,11 +55,97 @@ local function getQuestName(questID)
     return C_QuestLog.GetTitleForQuestID(questID) or UNKNOWN
 end
 
+local function isSnapEnabled()
+    return APR.settings.profile.questOrderListSnapToCurrentStep
+end
+
+function APR.questOrderList:IsSnapped()
+    return isSnapEnabled() and getSnapAnchor() ~= nil
+end
+
+getSnapAnchor = function()
+    if not isSnapEnabled() then
+        return nil
+    end
+
+    local currentStepPanel = _G.CurrentStepScreenPanel
+    if not currentStepPanel or not currentStepPanel:IsShown() or currentStepPanel.collapsed then
+        return nil
+    end
+
+    if APR.settings.profile.afkSnapToCurrentStep then
+        local afkFrame = _G.AfkFrameScreen
+        if afkFrame and afkFrame:IsShown() then
+            return afkFrame, afkFrame:GetHeight()
+        end
+    end
+
+    local contentHeight = APR.currentStep and APR.currentStep.GetContentHeight and APR.currentStep:GetContentHeight() or
+        0
+    if not contentHeight or contentHeight <= 0 then
+        contentHeight = currentStepPanel:GetHeight() or FRAME_HEIGHT
+    end
+
+    return currentStepPanel, contentHeight
+end
+
+snapToAnchor = function(anchorFrame, anchorHeight)
+    if not anchorFrame then
+        return false
+    end
+
+    if not QuestOrderListPanel then
+        return false
+    end
+
+    local effectiveHeight = (anchorHeight and anchorHeight > 0) and anchorHeight or (anchorFrame:GetHeight() or 0)
+    QuestOrderListPanel:ClearAllPoints()
+    QuestOrderListPanel:SetPoint("TOP", anchorFrame, "TOP", 0, -(effectiveHeight + SNAP_ANCHOR_GAP))
+    return true
+end
+
+updateSnapSizing = function(anchored, anchorFrame)
+    if not QuestOrderListFrame then
+        return
+    end
+
+    if anchored and anchorFrame then
+        QuestOrderListFrame:SetResizable(true)
+        if resizeButton then
+            resizeButton:Show()
+            resizeButton:EnableMouse(true)
+        end
+        if QuestOrderListFrame_StepHolderHeader and QuestOrderListFrame_StepHolderHeader.MinimizeButton then
+            QuestOrderListFrame_StepHolderHeader.MinimizeButton:Hide()
+        end
+
+        local anchorWidth = anchorFrame:GetWidth()
+        if anchorWidth and anchorWidth > 0 then
+            local maxHeight = (UIParent and UIParent.GetHeight and UIParent:GetHeight()) or 2000
+            QuestOrderListFrame:SetWidth(anchorWidth)
+            QuestOrderListFrame_StepHolder:SetWidth(anchorWidth)
+            QuestOrderListFrame_ScrollChild:SetWidth(anchorWidth)
+            -- Keep width in sync with the parent while still allowing the user to resize height.
+            QuestOrderListFrame:SetResizeBounds(anchorWidth, FRAME_MIN_HEIGHT, anchorWidth, maxHeight)
+        end
+    else
+        QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
+        QuestOrderListFrame:SetResizable(true)
+        if resizeButton then
+            resizeButton:Show()
+            resizeButton:EnableMouse(true)
+        end
+        if QuestOrderListFrame_StepHolderHeader and QuestOrderListFrame_StepHolderHeader.MinimizeButton then
+            QuestOrderListFrame_StepHolderHeader.MinimizeButton:Show()
+        end
+    end
+end
+
 ---------------------------------------------------------------------------------------
 ---------------------------- Quest Order List Frames ----------------------------------
 ---------------------------------------------------------------------------------------
 
-local QuestOrderListFrame = CreateFrame("Frame", "QuestOrderListPanel", UIParent, "BackdropTemplate")
+QuestOrderListFrame = CreateFrame("Frame", "QuestOrderListPanel", UIParent, "BackdropTemplate")
 QuestOrderListFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 QuestOrderListFrame:SetFrameStrata("MEDIUM")
 QuestOrderListFrame:SetClampedToScreen(true)
@@ -64,9 +160,19 @@ QuestOrderListFrame:SetMovable(true)
 QuestOrderListFrame:SetResizable(true)
 QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
 QuestOrderListFrame:RegisterForDrag("LeftButton")
-QuestOrderListFrame:SetScript("OnDragStart", function(self) self:StartMoving() end)
+QuestOrderListFrame:SetScript("OnDragStart", function(self)
+    if APR.settings.profile.questOrderListSnapToCurrentStep or APR.settings.profile.questOrderListLock then
+        return
+    end
+    self:StartMoving()
+    self.isMoving = true
+end)
 QuestOrderListFrame:SetScript("OnDragStop", function(self)
+    if not self.isMoving then
+        return
+    end
     self:StopMovingOrSizing()
+    self.isMoving = false
     LibWindow.SavePosition(QuestOrderListPanel)
 end)
 QuestOrderListFrame:SetScript("OnSizeChanged", function(self, width, height)
@@ -74,50 +180,59 @@ QuestOrderListFrame:SetScript("OnSizeChanged", function(self, width, height)
     FRAME_HEIGHT = height
     QuestOrderListFrame_StepHolder:SetSize(width, height)
     APR.questOrderList:UpdateFrameContents()
-    LibWindow.SavePosition(QuestOrderListPanel)
+    if not APR.questOrderList:IsSnapped() then
+        LibWindow.SavePosition(QuestOrderListPanel)
+    end
 end)
 
 -- Create the step holder frame
-local QuestOrderListFrame_StepHolder = CreateFrame("Frame", "QuestOrderListFrame_StepHolder", QuestOrderListFrame,
+QuestOrderListFrame_StepHolder = CreateFrame("Frame", "QuestOrderListFrame_StepHolder", QuestOrderListFrame,
     "BackdropTemplate")
 QuestOrderListFrame_StepHolder:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
 QuestOrderListFrame_StepHolder:SetAllPoints()
 
 -- Create a scroll frame for the step holder
-local QuestOrderListFrame_ScrollFrame = CreateFrame("ScrollFrame", "QuestOrderListFrame_ScrollFrame",
+QuestOrderListFrame_ScrollFrame = CreateFrame("ScrollFrame", "QuestOrderListFrame_ScrollFrame",
     QuestOrderListFrame_StepHolder, "UIPanelScrollFrameTemplate")
 QuestOrderListFrame_ScrollFrame:SetPoint("TOPLEFT", QuestOrderListFrame_StepHolder, "TOPLEFT", 0, 0)
 QuestOrderListFrame_ScrollFrame:SetPoint("BOTTOMRIGHT", QuestOrderListFrame_StepHolder, "BOTTOMRIGHT", -22, 0)
 
 -- Create a child frame for the scroll frame
-local QuestOrderListFrame_ScrollChild = CreateFrame("Frame", "QuestOrderListFrame_ScrollChild",
+QuestOrderListFrame_ScrollChild = CreateFrame("Frame", "QuestOrderListFrame_ScrollChild",
     QuestOrderListFrame_ScrollFrame)
 QuestOrderListFrame_ScrollChild:SetSize(FRAME_WIDTH, 1)
 QuestOrderListFrame_ScrollFrame:SetScrollChild(QuestOrderListFrame_ScrollChild)
 
 -- Create the frame header
-local QuestOrderListFrame_StepHolderHeader = CreateFrame("Frame", "QuestOrderListFrame_StepHolderHeader",
+QuestOrderListFrame_StepHolderHeader = CreateFrame("Frame", "QuestOrderListFrame_StepHolderHeader",
     QuestOrderListFrame, "ObjectiveTrackerContainerHeaderTemplate")
 QuestOrderListFrame_StepHolderHeader:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, 30)
 QuestOrderListFrame_StepHolderHeader.Text:SetText(L["QUEST_ORDER_LIST"])
 QuestOrderListFrame_StepHolderHeader:SetScript("OnMouseDown", function(self)
-    if not APR.settings.profile.questOrderListLock then
+    if not APR.settings.profile.questOrderListLock and not APR.settings.profile.questOrderListSnapToCurrentStep then
         self:GetParent():StartMoving()
+        QuestOrderListFrame.isMoving = true
     end
 end)
 QuestOrderListFrame_StepHolderHeader:SetScript("OnMouseUp", function(self)
+    if not QuestOrderListFrame.isMoving then
+        return
+    end
     self:GetParent():StopMovingOrSizing()
+    QuestOrderListFrame.isMoving = false
     LibWindow.SavePosition(QuestOrderListPanel)
 end)
+
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:SetScript("OnClick", function(self)
+    if APR.questOrderList:IsSnapped() then return end
     APR.settings.profile.showQuestOrderList = false
     QuestOrderListPanel:Hide()
 end)
 
 
-local resizeButton = CreateFrame("Button", "QuestOrderListFrameResizeHandle", QuestOrderListFrame)
+resizeButton = CreateFrame("Button", "QuestOrderListFrameResizeHandle", QuestOrderListFrame)
 resizeButton:SetSize(16, 16)
 resizeButton:SetPoint("BOTTOMRIGHT", QuestOrderListFrame, "BOTTOMRIGHT", -15, -2)
 resizeButton:EnableMouse(true)
@@ -150,20 +265,39 @@ function APR.questOrderList:QuestOrderListFrameOnInit()
     self:RefreshFrameAnchor()
 end
 
+function APR.questOrderList:ApplySnapAnchor()
+    if not QuestOrderListFrame or not QuestOrderListPanel then
+        return false
+    end
+    local anchorFrame, anchorHeight = getSnapAnchor()
+    local anchored = snapToAnchor(anchorFrame, anchorHeight)
+    updateSnapSizing(anchored, anchorFrame)
+    return anchored
+end
+
 function APR.questOrderList:RefreshFrameAnchor()
     if isFrameSuppressed() then
         QuestOrderListPanel:Hide()
         return
     end
-    if not APR.settings.profile.questOrderListLock then
-        QuestOrderListFrame:EnableMouse(true)
-    else
-        QuestOrderListFrame:EnableMouse(false)
+    if isSnapEnabled() then
+        local currentStepPanel = _G.CurrentStepScreenPanel
+        if currentStepPanel and currentStepPanel.collapsed then
+            QuestOrderListPanel:Hide()
+            return
+        end
     end
+    QuestOrderListFrame:EnableMouse(not APR.settings.profile.questOrderListLock)
 
     APR.questOrderList:UpdateFrameScale()
     APR.questOrderList:UpdateBackgroundColorAlpha()
-    LibWindow.RestorePosition(QuestOrderListPanel)
+
+    local anchored = self:ApplySnapAnchor()
+
+    if not anchored then
+        LibWindow.RestorePosition(QuestOrderListPanel)
+    end
+
     QuestOrderListPanel:Show()
     self:AddStepFromRoute(true)
 end
@@ -217,6 +351,14 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         self:RemoveSteps()
         APR.questOrderList.questID = nil
         return
+    end
+    if isSnapEnabled() then
+        local currentStepPanel = _G.CurrentStepScreenPanel
+        if currentStepPanel and currentStepPanel.collapsed then
+            QuestOrderListPanel:Hide()
+            return
+        end
+        self:ApplySnapAnchor()
     end
 
     APR:Debug("Function: APR.questOrderList:AddStepFromRoute - ", APR.ActiveRoute)
