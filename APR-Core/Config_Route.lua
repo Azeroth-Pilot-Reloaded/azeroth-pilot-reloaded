@@ -292,8 +292,22 @@ local function GetConfigOptionTable()
                     },
                 }
             },
-            Custom = {
+            Midnight = {
                 order = 14,
+                name = "Midnight",
+                type = "group",
+                childGroups = "tree",
+                inline = false,
+                args = {
+                    route = {
+                        type = "input",
+                        name = "Midnight",
+                        dialogControl = "RouteListFrame",
+                    },
+                }
+            },
+            Custom = {
+                order = 15,
                 name = "Custom",
                 type = "group",
                 childGroups = "tree",
@@ -721,6 +735,8 @@ end
 function APR.routeconfig:GetStartingZonePrefab()
     if APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
         AddRouteToCustomPath(L["01-10 Exile's Reach"])
+    elseif APR:Contains({ 2451 }, APR:GetPlayerParentMapID()) then
+        AddRouteToCustomPath(L["TWW - Arathi Highlands - Returning Player"])
     elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and (APR.Level < APR.MinBoostLvl or APR.Level < 10) then -- first quest from Exile's Reach + boost
         --None skipable starting zone
         if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then                                                                                  -- Allied DK
