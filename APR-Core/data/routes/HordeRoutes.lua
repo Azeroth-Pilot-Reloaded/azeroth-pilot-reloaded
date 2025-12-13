@@ -104,7 +104,10 @@ if (APR.Faction == "Horde") then
         ["2248-TWW-Isle-of-Dorn-Full"] = L["TWW - Isle of Dorn - All quests - Sojourner"],
         ["2214-TWW-Ringing-Deeps-Full"] = L["TWW - Ringing Deeps - All quests - Sojourner"],
         ["2248-TWW-K'aresh-Storyline"] = L["TWW - K'aresh Storyline"],
+        ["2451-Arathi-Highlands-Returning-Player"] = L["TWW - Arathi Highlands - Returning Player"],
     }
+
+    APR.RouteList.Midnight = {}
     APR.RouteList.Custom = {}
 
     -- Starting Route or custom

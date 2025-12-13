@@ -28,8 +28,9 @@
     <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Alliance.lua"/>
     <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Horde.lua"/>
 
-    <Script file="Routes/TheWarWithin/TheWarWithin.lua"/>
+    <Script file="Routes/TheWarWithin/Arathi_Highlands_Returning_Player.lua"/>
     <Script file="Routes/TheWarWithin/delves.lua"/>
+    <Script file="Routes/TheWarWithin/TheWarWithin.lua"/>
 
     <Script file="Routes/Vanilla/EasternKingdoms_Horde.lua"/>
     <Script file="Routes/Vanilla/EasternKingdoms_Alliance.lua"/>
