@@ -937,6 +937,7 @@ function APR.routeconfig:GetRemixPrefab()
     AddRouteToCustomPath(L["Remix - Order Hall - Next"])
     AddRouteToCustomPath(L["Legion - Azsuna"])
     AddRouteToCustomPath(L["Legion - Val'Sharah"])
+    AddRouteToCustomPath(L["Legion - Highmountain"])
     AddRouteToCustomPath(L["Legion - Stormheim"])
 
     self:SendMessage("APR_Custom_Path_Update")
