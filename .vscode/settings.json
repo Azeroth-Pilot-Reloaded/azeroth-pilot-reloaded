@@ -55,7 +55,8 @@
         "RURU",
         "ChatEdit_InsertLink",
         "ChatFrameUtil",
-        "AFK"
+        "AFK",
+        "StaticPopup_Hide"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {

@@ -10,7 +10,7 @@ local function GroupQuestPopup()
         local sugestGroupNumber = step.Group.Number
         local dialogText = L["OPTIONAL"] .. " - " .. L["SUGGESTED_PLAYERS"] .. ": " .. sugestGroupNumber
 
-        APR.questionDialog:CreateQuestionPopup(
+        APR.questionDialog:CreateQuestionPopup(dialogText,
             dialogText,
             function()
                 APRData[APR.PlayerID].WantedQuestList[questId] = 1
@@ -884,7 +884,7 @@ function APR:UpdateStep()
             end
         end
         if step.ResetRoute then
-            APR.questionDialog:CreateQuestionPopup("RESET" .. "?", function()
+            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", function()
                 APRData[APR.PlayerID][APR.ActiveRoute] = 1
                 APR:PrintInfo("|cff00bfffAPR|r Route Reseted")
                 APR:UpdateQuestAndStep()
