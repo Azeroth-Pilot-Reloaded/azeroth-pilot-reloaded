@@ -3,9 +3,11 @@ APR.questionDialog = APR:NewModule("QuestionDialog")
 ---------------------------------------------------------------------------------------
 --------------------------- Dialog for some actions xD --------------------------------
 ---------------------------------------------------------------------------------------
-function APR.questionDialog:CreateQuestionPopup(text, onAcceptFunction, onCancelFunction, acceptButtonText,
+function APR.questionDialog:CreateQuestionPopup(dialogName, text, onAcceptFunction, onCancelFunction, acceptButtonText,
                                                 cancelButtonText, hideOnEscape)
-    local dialogName = "QUESTION_DIALOG"
+    dialogName = dialogName or "QUESTION_DIALOG"
+    StaticPopup_Hide(dialogName)
+
     StaticPopupDialogs[dialogName] = {
         text = text or CONFIRM_CONTINUE,
         button1 = acceptButtonText or ACCEPT or "YES",

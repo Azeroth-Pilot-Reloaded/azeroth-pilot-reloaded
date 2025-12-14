@@ -77,3 +77,18 @@ function APR:GetClassSpecName()
     end
     return nil
 end
+
+function APR:GetAllClassSpecNames()
+    local className = APR.ClassName
+    if not className then return {} end
+
+    local list = {}
+    for specName in pairs(APR.Specs or {}) do
+        local specClass = specName:match("^(.-)%s*%-")
+        if specClass == className then
+            table.insert(list, specName)
+        end
+    end
+
+    return list
+end

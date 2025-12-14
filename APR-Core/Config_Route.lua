@@ -923,8 +923,8 @@ function APR.routeconfig:GetTWWPrefab()
     self:SendMessage("APR_Custom_Path_Update")
 end
 
-function APR.routeconfig:GetPlayerSpecRoute()
-    local routeKey = "Artifact Weapon - " .. APR.GetClassSpecName()
+function APR.routeconfig:GetPlayerSpecRoute(prefix)
+    local routeKey = prefix .. " - " .. APR.GetClassSpecName()
     if APR.RouteQuestStepList[routeKey] then
         AddRouteToCustomPath(L[routeKey])
     end
@@ -933,7 +933,7 @@ end
 function APR.routeconfig:GetRemixPrefab()
     AddRouteToCustomPath(L["Legion - Intro Remix"])
     AddRouteToCustomPath(L["Remix - Order Hall - Start"])
-    APR.routeconfig:GetPlayerSpecRoute()
+    APR.routeconfig:GetPlayerSpecRoute("Artifact Weapon")
     AddRouteToCustomPath(L["Remix - Order Hall - Next"])
     AddRouteToCustomPath(L["Legion - Azsuna"])
     AddRouteToCustomPath(L["Legion - Val'Sharah"])
@@ -975,15 +975,17 @@ function APR.routeconfig:CheckRouteResetOnLvlUp()
         if APR:Contains(notSkippableRoute, currentRouteName) then
             return
         elseif APR.Level == 10 then
-            APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_SPEEDRUN"], APR.Level), function()
+            APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_SPEEDRUN",
+                format(L["RESET_ROUTE_FOR_SPEEDRUN"], APR.Level), function()
                 APRCustomPath[APR.PlayerID] = {}
                 APR.routeconfig:GetSpeedRunPrefab()
             end)
         elseif APR.Level == APR.MaxLevelChromie then
-            APR.questionDialog:CreateQuestionPopup(format(L["RESET_ROUTE_FOR_TWW"], APR.Level), function()
-                APRCustomPath[APR.PlayerID] = {}
-                APR.routeconfig:GetTWWPrefab()
-            end)
+            APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_TWW", format(L["RESET_ROUTE_FOR_TWW"], APR.Level),
+                function()
+                    APRCustomPath[APR.PlayerID] = {}
+                    APR.routeconfig:GetTWWPrefab()
+                end)
         end
     end
 end

@@ -155,13 +155,14 @@ function APR.event.functions.accept(event, ...)
     if event == "QUEST_ACCEPTED" then
         local questID = ...;
         if APR.settings.profile.firstAutoShareQuestWithFriend and IsInGroup() then
-            APR.questionDialog:CreateQuestionPopup(L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
-                APR.settings.profile.autoShareQuestWithFriend = true
-                if APR.party:CheckIfPartyMemberIsFriend() then
-                    C_QuestLog.SetSelectedQuest(questID)
-                    QuestLogPushQuest();
-                end
-            end)
+            APR.questionDialog:CreateQuestionPopup("SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME",
+                L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
+                    APR.settings.profile.autoShareQuestWithFriend = true
+                    if APR.party:CheckIfPartyMemberIsFriend() then
+                        C_QuestLog.SetSelectedQuest(questID)
+                        QuestLogPushQuest();
+                    end
+                end)
             APR.settings.profile.firstAutoShareQuestWithFriend = false
         end
         if APR.settings.profile.autoShareQuestWithFriend and IsInGroup() then
@@ -857,6 +858,61 @@ function APR.event.functions.setHS(event, ...)
     if step and step.SetHS then
         APR:UpdateNextStep()
     end
+end
+
+function APR.event.functions.spec(event, unit)
+    if unit ~= "player" then return end
+
+    local currentSpec = APR:GetClassSpecName()
+    if not currentSpec then return end
+
+    local foundRoutes = APR:FindAllSpecRoutesInCustomPath()
+    if #foundRoutes == 0 then return end
+
+    local replacements = APR:ResolveSpecRouteReplacements(currentSpec, foundRoutes)
+    if #replacements == 0 then return end
+
+    local i = 1
+    local function ShowNextPopup()
+        local data = replacements[i]
+        if not data then
+            if APR.routeconfig then
+                APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+            end
+            return
+        end
+
+
+        APR.questionDialog:CreateQuestionPopup("SPEC_ROUTE_CHANGE_PROMPT" .. i,
+            string.format(
+                L["SPEC_ROUTE_CHANGE_PROMPT"],
+                data.oldDisplay,
+                data.newDisplay
+            ),
+            function()
+                -- accept
+                APRCustomPath[APR.PlayerID][data.index] = data.newDisplay
+
+                -- Reset route if is you active route
+                if data.index == 1 then
+                    local newRouteKey = data.newRouteKey
+                    if newRouteKey then
+                        APR.ActiveRoute = newRouteKey
+                        APR:ResetRoute(APR.ActiveRoute)
+                    end
+                end
+                i = i + 1
+                ShowNextPopup()
+            end,
+            function()
+                -- cancel
+                i = i + 1
+                ShowNextPopup()
+            end
+        )
+    end
+
+    ShowNextPopup()
 end
 
 function APR.event.functions.spell(event, unitTarget, castGUID, spellID)

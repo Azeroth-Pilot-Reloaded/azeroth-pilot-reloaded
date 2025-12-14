@@ -1,5 +1,17 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+APR.ConditionalRouteRegistry = {
+    spec = {
+        ArtifactWeapon = {
+            prefix = "Artifact Weapon",
+        },
+    },
+
+    class = { ... },
+    race = { ... },
+    covenant = { ... },
+}
+
 function APR:ResetRoute(targetedRoute)
     APR:Debug("Function: APR:ResetRoute()", targetedRoute)
     APRData[APR.PlayerID][targetedRoute] = 1
@@ -238,6 +250,26 @@ function APR:GetRouteDisplayName(routeFileName)
     return nil
 end
 
+--- Resolve a route display name into a route file name.
+function APR:GetRouteKeyFromDisplayName(displayName)
+    if not displayName then return nil end
+
+    for _, routeList in pairs(APR.RouteList or {}) do
+        for routeKey, routeLabel in pairs(routeList) do
+            if routeLabel == displayName then
+                return routeKey
+            end
+        end
+    end
+
+    -- fallback routes custom
+    if APR.RouteQuestStepList and APR.RouteQuestStepList[displayName] then
+        return displayName
+    end
+
+    return nil
+end
+
 --- Clear all saved state for a route.
 function APR:ClearSavedRouteData(routeFileName)
     if not routeFileName or not APRData or not APR.PlayerID then
@@ -429,4 +461,57 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
 
     -- 8) Record current addon version to detect upgrades later
     APR.settings.profile.lastRecordedVersion = APR.version
+end
+
+function APR:BuildSpecRouteKey(prefix, specName)
+    if not prefix or not specName then return nil end
+    return prefix .. " - " .. specName
+end
+
+function APR:FindAllSpecRoutesInCustomPath()
+    local results = {}
+
+    if not APRCustomPath or not APRCustomPath[APR.PlayerID] then
+        return results
+    end
+
+    for index, routeDisplay in ipairs(APRCustomPath[APR.PlayerID]) do
+        local routeKey = APR:GetRouteKeyFromDisplayName(routeDisplay)
+
+        if routeKey then
+            for providerName, provider in pairs(APR.ConditionalRouteRegistry.spec or {}) do
+                if string.find(routeKey, provider.prefix, 1, true) == 1 then
+                    table.insert(results, {
+                        index = index,
+                        provider = providerName,
+                        prefix = provider.prefix,
+                        oldRouteKey = routeKey,
+                        oldDisplay = routeDisplay,
+                    })
+                end
+            end
+        end
+    end
+
+    return results
+end
+
+function APR:ResolveSpecRouteReplacements(specName, foundRoutes)
+    local replacements = {}
+
+    for _, entry in ipairs(foundRoutes or {}) do
+        local newRouteKey = APR:BuildSpecRouteKey(entry.prefix, specName)
+
+        if APR.RouteQuestStepList and APR.RouteQuestStepList[newRouteKey] then
+            table.insert(replacements, {
+                index = entry.index,
+                oldDisplay = entry.oldDisplay,
+                oldRouteKey = entry.oldRouteKey,
+                newRouteKey = newRouteKey,
+                newDisplay = L[newRouteKey],
+            })
+        end
+    end
+
+    return replacements
 end

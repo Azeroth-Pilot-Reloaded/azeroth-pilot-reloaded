@@ -207,7 +207,7 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = 0.75,
                 func = function()
-                    APR.questionDialog:CreateQuestionPopup(
+                    APR.questionDialog:CreateQuestionPopup("RESET_SETTINGS",
                         nil,
                         function() APR.settings:ResetSettings() end
                     )
