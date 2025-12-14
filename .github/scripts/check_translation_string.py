@@ -68,13 +68,14 @@ def get_locales_kv_table_additions(locales_text):
 def get_lua_files_from_directories(directories):
     """
     Recursively collects all .lua files from the given directories,
-    excluding directories named 'libs'.
+    excluding directories in EXCLUDED_DIRS.
     """
+    EXCLUDED_DIRS = {"libs", "lib", "vendor", ".git"}
     lua_files = []
     for directory in directories:
         for root, dirs, files in os.walk(directory):
-            # Exclude 'libs' directory
-            dirs[:] = [d for d in dirs if d != 'libs']
+            # Exclude some directories
+            dirs[:] = [d for d in dirs if d.lower() not in EXCLUDED_DIRS]
             for file in files:
                 if file.endswith('.lua'):
                     lua_files.append(os.path.join(root, file))
@@ -90,25 +91,48 @@ def load_string_from_file(file_path):
         lines = [line.strip() for line in file if line.strip()]
     return lines
 
+def load_all_lua_contents(file_list):
+    """
+    Load all Lua files content once to avoid repeated disk reads.
+    """
+    contents = []
+    for file_path in file_list:
+        with open(file_path, 'r', encoding='utf-8') as f:
+            contents.append(f.read())
+    return contents
+
 def check_string_in_lua_files(word_list, file_list, banned_list):
     """
     Checks if each word in the word_list (excluding those in banned_list)
     is present in at least one of the given Lua files.
+
+    This optimized version loads all Lua files into memory once
+    to avoid repeated disk reads.
     """
     words_not_found = []
+
+    # Load all Lua file contents once
+    lua_contents = []
+    for file_path in file_list:
+        with open(file_path, 'r', encoding='utf-8') as file:
+            lua_contents.append(file.read())
+
+    # Check each translation key against loaded contents
     for word in word_list:
         if word in banned_list:
             continue
+
         word_found = False
-        for file_path in file_list:
-            with open(file_path, 'r', encoding='utf-8') as file:
-                content = file.read()
-                if word in content:
-                    word_found = True
-                    break
+        for content in lua_contents:
+            if word in content:
+                word_found = True
+                break
+
         if not word_found:
             words_not_found.append(word)
+
     return words_not_found
+
 
 def check_route_string_existing_in_locales(word_list, directory):
     """
@@ -161,6 +185,34 @@ def print_list_with_color(title, items, color):
     print()  # Newline for better readability
 
 #############################################################################
+# Utility function to write Markdown report for GitHub PR comments
+#############################################################################
+
+def write_markdown_report(unused_keys, extra_keys, output_path="translation-report.md"):
+    """
+    Generate a Markdown report for GitHub PR comments.
+    """
+    with open(output_path, "w", encoding="utf-8") as f:
+        f.write("## 🌍 Localization check report\n\n")
+
+        if not unused_keys and not extra_keys:
+            f.write("✅ No issues found. All translation keys are consistent.\n")
+            return
+
+        if unused_keys:
+            f.write("### ⚠️ Translation keys not used in Lua files\n")
+            for key in unused_keys:
+                f.write(f"- `{key}`\n")
+            f.write("\n")
+
+        if extra_keys:
+            f.write("### ❌ Strings used in Lua but missing from CurseForge\n")
+            for key in extra_keys:
+                f.write(f"- `{key}`\n")
+            f.write("\n")
+
+
+#############################################################################
 # Main script execution
 #############################################################################
 
@@ -177,6 +229,7 @@ def main():
     project_site = "https://wow.curseforge.com"
     directories = ['./Routes', './APR-Core']
     banned_list = ['_42_COMMAND']
+
 
     # Build the API URL for CurseForge localization export
     api_url = set_localization_url(slug, cf_token, project_site)
@@ -212,6 +265,9 @@ def main():
     # Print results with colored output
     print_list_with_color("Translation keys not used in Lua files:", words_not_found, 'yellow')
     print_list_with_color("Translation keys not present on CurseForge (Extra route strings):", words_not_in_locales, 'red')
+
+    # Write Markdown report for GitHub PR comments
+    write_markdown_report(words_not_found, words_not_in_locales)
 
     # Exit with error code if missing translations are found in locales
     if words_not_in_locales:
