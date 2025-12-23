@@ -1,6 +1,7 @@
 import json
 import os
 import requests
+import asyncio
 from dotenv import load_dotenv
 from datetime import datetime, timezone
 from typing import Dict
@@ -15,7 +16,7 @@ load_dotenv()
 #############################################################################
 
 PROJECT_ID = 618667
-STATE_FILE = "localization-state.json"
+STATE_FILE = ".github/scripts/localization-state.json"
 REPING_DELAY_DAYS = 7
 REFERENCE_LOCALE = "enUS"
 
@@ -38,62 +39,72 @@ LOCALE_CONFIG = {
         "emoji": ":flag_de:",  # Germany
         "singular": "fehlende Übersetzung",
         "plural": "fehlende Übersetzungen",
+        "review": "in Prüfung",
     },
-    "esES": {
-        "role_id": "1453078040325263520",
-        "emoji": ":flag_es:",  # Spain
-        "singular": "traducción faltante",
-        "plural": "traducciones faltantes",
-    },
-    "esMX": {
-        "role_id": "1407823805530771578",
-        "emoji": ":flag_mx:",  # Mexico (Latin American Spanish)
-        "singular": "traducción faltante",
-        "plural": "traducciones faltantes",
-    },
+    # "esES": {
+    #     "role_id": "1453078040325263520",
+    #     "emoji": ":flag_es:",  # Spain
+    #     "singular": "traducción faltante",
+    #     "plural": "traducciones faltantes",
+    #     "review": "en revisión",
+    # },
+    # "esMX": {
+    #     "role_id": "1407823805530771578",
+    #     "emoji": ":flag_mx:",  # Mexico (Latin American Spanish)
+    #     "singular": "traducción faltante",
+    #     "plural": "traducciones faltantes",
+    #     "review: "en revisión",
+    # },
     "frFR": {
         "role_id": "1407822386807443547",
         "emoji": ":flag_fr:",  # France
         "singular": "traduction manquante",
         "plural": "traductions manquantes",
+        "review": "en relecture",
     },
-    "itIT": {
-        "role_id": "1453078205216063670",
-        "emoji": ":flag_it:",  # Italy
-        "singular": "traduzione mancante",
-        "plural": "traduzioni mancanti",
-    },
-    "koKR": {
-        "role_id": "1453078288644702281",
-        "emoji": ":flag_kr:",  # South Korea
-        "singular": "누락된 번역",
-        "plural": "누락된 번역들",
-    },
-    "ptBR": {
-        "role_id": "1453078323348377692",
-        "emoji": ":flag_br:",  # Brazil
-        "singular": "tradução ausente",
-        "plural": "traduções ausentes",
-    },
+    # "itIT": {
+    #     "role_id": "1453078205216063670",
+    #     "emoji": ":flag_it:",  # Italy
+    #     "singular": "traduzione mancante",
+    #     "plural": "traduzioni mancanti",
+    #     "review": "in revisione",
+    # },
+    # "koKR": {
+    #     "role_id": "1453078288644702281",
+    #     "emoji": ":flag_kr:",  # South Korea
+    #     "singular": "누락된 번역",
+    #     "plural": "누락된 번역들",
+    #     "review": "검토 중",
+    # },
+    # "ptBR": {
+    #     "role_id": "1453078323348377692",
+    #     "emoji": ":flag_br:",  # Brazil
+    #     "singular": "tradução ausente",
+    #     "plural": "traduções ausentes",
+    #     "review": "em revisão",
+    # },
     "ruRU": {
         "role_id": "1447171991432986654",
         "emoji": ":flag_ru:",  # Russia
         "form_1": "отсутствующий перевод",
         "form_2": "отсутствующих перевода",
         "form_5": "отсутствующих переводов",
+        "review": "на проверке",
     },
-    "zhCN": {
-        "role_id": "1453078364767129621",
-        "emoji": ":flag_cn:",  # China (Simplified Chinese)
-        "singular": "缺少的翻译",
-        "plural": "缺少的翻译",
-    },
-    "zhTW": {
-        "role_id": "1453078418588700714",
-        "emoji": ":flag_tw:",  # Taiwan (Traditional Chinese)
-        "singular": "缺少的翻譯",
-        "plural": "缺少的翻譯",
-    },
+    # "zhCN": {
+    #     "role_id": "1453078364767129621",
+    #     "emoji": ":flag_cn:",  # China (Simplified Chinese)
+    #     "singular": "缺少的翻译",
+    #     "plural": "缺少的翻译",
+    #     "review": "审核中",
+    # },
+    # "zhTW": {
+    #     "role_id": "1453078418588700714",
+    #     "emoji": ":flag_tw:",  # Taiwan (Traditional Chinese)
+    #     "singular": "缺少的翻譯",
+    #     "plural": "缺少的翻譯",
+    #     "review": "審核中",
+    # },
 }
 
 
@@ -164,6 +175,12 @@ def pluralize(locale: str, count: int) -> str:
         return pluralize_ru(count, cfg)
     return cfg["singular"] if count == 1 else cfg["plural"]
 
+
+def review_phrase(locale: str, count: int) -> str:
+    cfg = LOCALE_CONFIG[locale]
+    review = cfg.get("review", "under review")
+    return review
+
 #############################################################################
 # Message building
 #############################################################################
@@ -175,7 +192,7 @@ def build_need_text(locale: str, missing: int, review: int) -> str:
         parts.append(f"**{missing}** {pluralize(locale, missing)}")
 
     if review > 0:
-        parts.append(f"**{review}** review needed")
+        parts.append(f"**{review}** {review_phrase(locale, review)}")
 
     return " and ".join(parts)
 
@@ -246,7 +263,7 @@ def main():
         reference_locale=REFERENCE_LOCALE,
     )
 
-    review_states = fetch_localization_states()
+    review_states = asyncio.run(fetch_localization_states())
 
     summary_data: Dict[str, str] = {}
     detail_lines: list[str] = []

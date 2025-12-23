@@ -1,6 +1,11 @@
-import cloudscraper
-from bs4 import BeautifulSoup
+import asyncio
+import re
 from typing import Dict
+
+from bs4 import BeautifulSoup
+from pydoll.browser import Chrome
+from pydoll.browser.options import ChromiumOptions
+from pydoll.constants import By
 
 # URL CurseForge localization
 LOCALIZATION_URL = (
@@ -21,22 +26,11 @@ LANG_NAME_TO_LOCALE = {
     "Traditional Chinese": "zhTW",
 }
 
-#############################################################################
-# Scraping with cloudscraper + captcha guard
-#############################################################################
-
-# User-agent config — good practice for cloudscraper
-DEFAULT_HEADERS = {
-    "User-Agent": (
-        "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-        "AppleWebKit/537.36 (KHTML, like Gecko) "
-        "Chrome/122.0.0.0 Safari/537.36"
-    ),
-    "Accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8",
-    "Accept-Language": "en-US,en;q=0.9",
-    "Referer": "https://www.curseforge.com/",
-    "Upgrade-Insecure-Requests": "1",
-}
+USER_AGENT = (
+    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
+    "AppleWebKit/537.36 (KHTML, like Gecko) "
+    "Chrome/122.0.0.0 Safari/537.36"
+)
 
 def safe_print(text: str) -> None:
     try:
@@ -45,62 +39,102 @@ def safe_print(text: str) -> None:
         print(text.encode("cp1252", errors="replace").decode("cp1252"))
 
 
-def fetch_localization_states() -> Dict[str, Dict]:
+def build_browser_options() -> ChromiumOptions:
+    options = ChromiumOptions()
+    options.headless = True
+    options.start_timeout = 30
+    options.block_notifications = True
+    options.block_popups = True
+    options.password_manager_enabled = False
+    options.set_accept_languages("en-US,en")
+
+    for arg in [
+        "--disable-blink-features=AutomationControlled",
+        "--disable-dev-shm-usage",
+        "--disable-gpu",
+        "--disable-extensions",
+        "--no-sandbox",
+        "--window-size=1920,1080",
+        f"--user-agent={USER_AGENT}",
+    ]:
+        try:
+            options.add_argument(arg)
+        except Exception:
+            pass
+
+    return options
+
+
+def extract_first_int(text: str) -> int | None:
+    match = re.search(r"\d[\d,]*", text)
+    if not match:
+        return None
+    return int(match.group(0).replace(",", ""))
+
+
+async def fetch_localization_states() -> Dict[str, Dict]:
     """
-    Scrape CurseForge localization overview page.
+    Scrape CurseForge localization overview page using Pydoll.
 
-    Returns:
-        {
-          "frFR": {"state": "needs_review", "review": 1},
-          "deDE": {"state": "needs_translation"},
-          "ruRU": {"state": "complete"},
-        }
+    Notes:
+    - Headless Chrome with safer defaults
+    - Cloudflare challenges may block access in CI
     """
 
-    # Create scraper instance
-    scraper = cloudscraper.create_scraper(
-        interpreter="nodejs",
-        delay=10,
-        browser={
-            "browser": "chrome",
-            "platform": "ios",
-            "desktop": False,
-        }
-    )
-
-    # Set headers
-    scraper.headers.update(DEFAULT_HEADERS)
+    browser = Chrome(options=build_browser_options())
+    tab = None
 
     try:
-        response = scraper.get(LOCALIZATION_URL, timeout=30)
+        # Start browser
+        tab = await browser.start()
+
+        # Navigate to CurseForge
+        await tab.enable_auto_solve_cloudflare_captcha()
+        await tab.go_to(LOCALIZATION_URL, timeout=60)
+
+        # Wait for JS-rendered localization blocks
+        found = await tab.find_or_wait_element(
+            By.CSS_SELECTOR,
+            "div.language-state",
+            timeout=30,
+            raise_exc=False,
+        )
+
+        # Get final DOM
+        html = await tab.page_source
+        html_lower = html.lower()
+        if "just a moment" in html_lower or "cf-challenge" in html_lower:
+            safe_print("Cloudflare challenge detected; page content blocked")
+            return {}
+
+        if not found:
+            safe_print("Localization blocks not found (DOM change or blocked)")
+            return {}
+
     except Exception as e:
-        # If cloudscraper throws, bail out safely
-        safe_print(f"⚠️ Error fetching CurseForge localization page: {e}")
+        safe_print(f"⚠️ Pydoll error: {e}")
         return {}
 
-    # Check status
-    if response.status_code != 200:
-        safe_print(f"⚠️ Unexpected status code {response.status_code} for localization page")
-        return {}
+    finally:
+        # CRITICAL on Windows: close TAB first, then browser
+        if tab is not None:
+            try:
+                await tab.close()
+            except Exception:
+                pass
 
-    text = response.text
+        try:
+            await browser.stop()
+        except Exception:
+            try:
+                await browser.close()
+            except Exception:
+                pass
 
-    #############################
-    # CAPTCHA / challenge guard
-    #############################
-
-    # Basic heuristic: CurseForge challenge pages often contain 'captcha'
-    # or 'Cloudflare' or require JS — we detect a form with id "challenge-form"
-    lower = text.lower()
-    if "captcha" in lower or "cloudflare" in lower or "challenge-form" in lower:
-        safe_print("⚠️ Detected Cloudflare challenge / captcha instead of localization page")
-        return {}
-
-    #############################
-    # Parse the HTML
-    #############################
-
-    soup = BeautifulSoup(text, "html.parser")
+    # -------------------------
+    # Parse HTML
+    # -------------------------
+    soup = BeautifulSoup(html, "html.parser")
     result: Dict[str, Dict] = {}
 
     for state_block in soup.select("div.language-state"):
@@ -119,30 +153,24 @@ def fetch_localization_states() -> Dict[str, Dict]:
         else:
             continue
 
-        # Each language box in the block
         for box in state_block.select("div.language-box"):
-            # First <p> = language name
-            name_el = box.find("p")
-            # Last <p> = translated / review info
-            info_el = box.find_all("p")[-1]
-
-            if not name_el or not info_el:
+            p_tags = box.find_all("p")
+            if len(p_tags) < 2:
                 continue
 
-            language_name = name_el.get_text(strip=True)
+            language_name = p_tags[0].get_text(strip=True)
+            info_text = p_tags[-1].get_text(strip=True)
+
             locale = LANG_NAME_TO_LOCALE.get(language_name)
             if not locale:
-                # Skip languages we don't map
                 continue
 
             entry: Dict[str, object] = {"state": state}
 
             if state == "needs_review":
-                text_info = info_el.get_text(strip=True)
-                parts = text_info.split()
-                if parts and parts[0].isdigit():
-                    # e.g. "1 under review"
-                    entry["review"] = int(parts[0])
+                review_count = extract_first_int(info_text)
+                if review_count is not None:
+                    entry["review"] = review_count
 
             result[locale] = entry
 
