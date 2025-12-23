@@ -225,7 +225,7 @@ def main():
 
     # Load environment variables and configure settings
     slug = 618667
-    cf_token = os.getenv('CF_TOKEN')
+    cf_token = os.getenv('CF_API_KEY')
     project_site = "https://wow.curseforge.com"
     directories = ['./Routes', './APR-Core']
     banned_list = ['_42_COMMAND']
