@@ -3,3 +3,6 @@ test 2*
 
 wordList.txt
 .env
+.github/scripts/__pycache__/*
+translation-report.md
+localization-state.json
