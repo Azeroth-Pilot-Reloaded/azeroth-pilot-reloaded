@@ -1,17 +1,17 @@
 {
   "deDE": {
-    "missing": 4,
+    "missing": 9,
     "review": 0,
-    "last_ping": "2025-12-23T19:22:14.705010+00:00"
+    "last_ping": "2025-12-23T21:10:55.807609+00:00"
   },
   "frFR": {
-    "missing": 0,
+    "missing": 5,
     "review": 0,
-    "last_ping": null
+    "last_ping": "2025-12-23T21:10:55.807632+00:00"
   },
   "ruRU": {
-    "missing": 0,
+    "missing": 5,
     "review": 0,
-    "last_ping": null
+    "last_ping": "2025-12-23T21:10:55.807643+00:00"
   }
 }
