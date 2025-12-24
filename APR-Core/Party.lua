@@ -443,7 +443,7 @@ function APR.party:PopulateMissingGroupMembers(skipReorder)
         known[name] = true
     end
     for i = 1, 4 do
-        local name = UnitName("party" .. i)
+        local name = APR:SafeUnitName("party" .. i)
         if name and name ~= APR.Username and not known[name] then
             self:UpdateTeamMate({ username = name, noAddon = true }, false, 'gray')
         end
@@ -470,7 +470,7 @@ function APR.party:CheckIfPartyMemberIsFriend()
 
     -- Check if a party member is a BNet or WoW friend
     for groupindex = 1, 5 do
-        local nameOfPartyMember = UnitName("party" .. groupindex)
+        local nameOfPartyMember = APR:SafeUnitName("party" .. groupindex)
         if (nameOfPartyMember) then
             if APR:Contains(FriendListTable, nameOfPartyMember) then
                 return true

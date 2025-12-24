@@ -30,6 +30,7 @@
 APR-Core/libs/embeds.xml
 APR-Core/locales/locales.xml
 
+APR-Core/utils/SecretUtils.lua
 APR-Core/Core.lua
 
 APR-Core/utils/Utils.lua
