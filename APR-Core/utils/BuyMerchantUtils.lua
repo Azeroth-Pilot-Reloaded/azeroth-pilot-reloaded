@@ -46,7 +46,8 @@ end
 function APR:GetQuantityfromLootMessage(message)
     local quantity = 1 -- by default the quantity if not specified is 1
     local quantityPattern = "x(%d+)"
-    local extractedQuantity = message:match(quantityPattern)
+    local sanitizedMessage = APR:StripHyperlinks(message)
+    local extractedQuantity = sanitizedMessage:match(quantityPattern)
     if extractedQuantity then
         quantity = tonumber(extractedQuantity)
     end

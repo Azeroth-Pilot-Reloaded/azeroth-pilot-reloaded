@@ -174,7 +174,7 @@ function APR:UpdateQpartPart()
                     -- search in the TrigText+ keys
                     for key, value in pairs(step) do
                         if string.match(key, "TrigText+") then
-                            if value and string.find(objective.text, value) then
+                            if value and APR:ContainsText(objective.text, value) then
                                 self:UpdateNextStep()
                                 return
                             end
@@ -190,7 +190,7 @@ end
 function APR:UpdateQpartPartWithQuesText(step, questText)
     for key, value in pairs(step) do
         if string.match(key, "TrigText+") then
-            if value and questText and string.find(questText, value) then
+            if value and questText and APR:ContainsText(questText, value) then
                 self:UpdateNextStep()
                 return
             end
