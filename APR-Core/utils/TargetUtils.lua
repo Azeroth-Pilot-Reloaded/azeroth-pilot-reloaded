@@ -36,7 +36,7 @@ function APR:DoEmote(step)
     if step and step.Emote then
         local npc_id = APR:GetTargetID() or APR:GetTargetID("mouseover")
         if npc_id == 153580 then -- Gorgroth for quest
-            DoEmote(step.Emote)
+            DoEmote(step.Emote) -- //TODO rework for 12.0.0
         end
     end
 end

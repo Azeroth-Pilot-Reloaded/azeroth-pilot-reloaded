@@ -507,7 +507,7 @@ function APR.event.functions.emote(event, ...)
                     if string.find(text, message) then
                         APR:Debug("APR: " .. L["DOING_EMOTE"] .. ": ", emote)
 
-                        DoEmote(emote)
+                        DoEmote(emote) -- //TODO rework for 12.0.0
                         break
                     end
                 end
