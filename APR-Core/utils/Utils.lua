@@ -72,6 +72,69 @@ function APR:WrapTextInColorCode(text, hex)
     return "|c" .. normalized .. asText .. "|r"
 end
 
+function APR:TrimString(text)
+    if text == nil then
+        return ""
+    end
+
+    if StringUtil and StringUtil.trim then
+        return StringUtil.trim(text)
+    end
+
+    if StringUtil and StringUtil.Trim then
+        return StringUtil.Trim(text)
+    end
+
+    return (tostring(text):match("^%s*(.-)%s*$"))
+end
+
+function APR:RemoveContiguousSpaces(text)
+    if text == nil then
+        return ""
+    end
+
+    if StringUtil and StringUtil.RemoveContiguousSpaces then
+        return StringUtil.RemoveContiguousSpaces(text)
+    end
+
+    return tostring(text):gsub("%s+", " ")
+end
+
+function APR:EscapeLuaPattern(text)
+    if text == nil then
+        return ""
+    end
+
+    if StringUtil and StringUtil.EscapeLuaPatterns then
+        return StringUtil.EscapeLuaPatterns(text)
+    end
+
+    return (tostring(text):gsub("([%(%)%.%+%-%*%?%[%]%^%$%%])", "%%%1"))
+end
+
+function APR:ContainsText(haystack, needle)
+    if haystack == nil or needle == nil then
+        return false
+    end
+
+    local haystackText = tostring(haystack)
+    local needleText = tostring(needle)
+    local escapedNeedle = APR:EscapeLuaPattern(needleText)
+    return string.find(haystackText, escapedNeedle) ~= nil
+end
+
+function APR:StripHyperlinks(text)
+    if text == nil then
+        return ""
+    end
+
+    if StringUtil and StringUtil.StripHyperlinks then
+        return StringUtil.StripHyperlinks(text)
+    end
+
+    return tostring(text)
+end
+
 function APR:Debug(msg, data, force)
     if not APR.settings.profile.debug and not force then
         return

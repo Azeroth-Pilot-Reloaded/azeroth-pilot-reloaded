@@ -505,7 +505,7 @@ function APR.event.functions.emote(event, ...)
                 }
                 for key, emote in pairs(gigglingBasket) do
                     local message = L[key]
-                    if string.find(text, message) then
+                    if APR:ContainsText(text, message) then
                         APR:Debug("APR: " .. L["DOING_EMOTE"] .. ": ", emote)
 
                         APR:PerformEmote(emote)

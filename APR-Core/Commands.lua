@@ -4,7 +4,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.command = APR:NewModule("Command")
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 function APR.command:SlashCmd(input)
-    local inputText = string.lower(input)
+    local normalizedInput = APR:TrimString(input or "")
+    normalizedInput = APR:RemoveContiguousSpaces(normalizedInput)
+    local inputText = string.lower(normalizedInput)
     if not APR.settings.profile.enableAddon then
         APR.settings:OpenSettings(APR.title)
         print(L["ADDON"] .. ' ' .. L["DISABLE"])
