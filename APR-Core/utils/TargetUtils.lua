@@ -6,7 +6,7 @@
 -- The default unit is the current target, but we allow overriding so mouseover or other units can be inspected.
 function APR:GetTargetID(unit)
     unit = unit or "target"
-    local targetGUID = UnitGUID(unit)
+    local targetGUID = APR:SafeUnitGUID(unit)
     if targetGUID then
         local targetID = select(6, strsplit("-", targetGUID))
         return tonumber(targetID)
@@ -18,7 +18,7 @@ end
 -- The function is intentionally defensive: it checks the current target and exits early when no match exists.
 function APR:CheckDenyNPC(step)
     if (step and step.DenyNPC) then
-        local npc_id, name = self:GetTargetID(), UnitName("target")
+        local npc_id, name = self:GetTargetID(), APR:SafeUnitName("target")
         if (npc_id and name) then
             if (npc_id == step.DenyNPC) then
                 APR:Debug("APR:CheckDenyNPC() - Deny NPC found")
@@ -36,7 +36,19 @@ function APR:DoEmote(step)
     if step and step.Emote then
         local npc_id = APR:GetTargetID() or APR:GetTargetID("mouseover")
         if npc_id == 153580 then -- Gorgroth for quest
-            DoEmote(step.Emote) -- //TODO rework for 12.0.0
+            APR:PerformEmote(step.Emote)
         end
+    end
+end
+
+--- Perform an emote with a 12.0+ compatible API and legacy fallback.
+function APR:PerformEmote(emote)
+    if not emote then
+        return
+    end
+    if C_ChatInfo and C_ChatInfo.PerformEmote then
+        C_ChatInfo.PerformEmote(emote)
+    else
+        DoEmote(emote)
     end
 end

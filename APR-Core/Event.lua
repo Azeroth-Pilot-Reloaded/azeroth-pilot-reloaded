@@ -478,8 +478,9 @@ end
 
 function APR.event.functions.dropQuest(event, ...)
     if step and step.DroppableQuest then
-        if UnitGUID("mouseover") and UnitName("mouseover") then
-            local targetGUID, targetName = UnitGUID("mouseover"), UnitName("mouseover")
+        local targetGUID = APR:SafeUnitGUID("mouseover")
+        local targetName = APR:SafeUnitName("mouseover")
+        if targetGUID and targetName then
             local targetID = select(6, strsplit("-", targetGUID))
             if targetID and step.DroppableQuest.MobId == tonumber(targetID) then
                 APRData.NPCList[targetID] = targetName
@@ -491,7 +492,7 @@ end
 function APR.event.functions.emote(event, ...)
     if event == "CHAT_MSG_MONSTER_SAY" then
         local text = ...;
-        local npc_id, name = APR:GetTargetID(), UnitName("target")
+        local npc_id, name = APR:GetTargetID(), APR:SafeUnitName("target")
         if npc_id and name then
             if npc_id == 159477 then -- quest 57870 -- Giggling Basket
                 local gigglingBasket = {
@@ -507,7 +508,7 @@ function APR.event.functions.emote(event, ...)
                     if string.find(text, message) then
                         APR:Debug("APR: " .. L["DOING_EMOTE"] .. ": ", emote)
 
-                        DoEmote(emote) -- //TODO rework for 12.0.0
+                        APR:PerformEmote(emote)
                         break
                     end
                 end
@@ -781,7 +782,7 @@ end
 
 function APR.event.functions.raidIcon(event, ...)
     if step and step.RaidIcon then
-        local targetGUID = UnitGUID("mouseover")
+        local targetGUID = APR:SafeUnitGUID("mouseover")
         if targetGUID then
             local targetID = select(6, strsplit("-", targetGUID))
             if targetID and tonumber(step.RaidIcon) == tonumber(targetID) then

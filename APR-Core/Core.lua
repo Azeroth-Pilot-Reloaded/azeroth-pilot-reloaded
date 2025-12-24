@@ -4,8 +4,6 @@ APR = {}
 APR = _G.LibStub("AceAddon-3.0"):NewAddon(APR, "APR", "AceEvent-3.0")
 
 -- Character
-APR.UserID = UnitGUID("player")
-APR.Username = UnitName("player")
 APR.Realm = string.gsub(GetRealmName(), " ", "")
 APR.Faction = UnitFactionGroup("player") -- "Alliance", "Horde", "Neutral" or nil
 APR.Level = UnitLevel("player")
@@ -16,7 +14,6 @@ APR.MaxLevel = 80
 APR.MaxLevelChromie = 70
 APR.MinBoostLvl = 60
 APR.MaxBagSlots = 4
-APR.PlayerID = APR.Username .. "-" .. APR.UserID
 APR.Color = {
     white = { 1, 1, 1 },
     black = { 0, 0, 0 },
@@ -55,6 +52,10 @@ APR.MissingQuests = {}
 
 function APR:OnInitialize()
     local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
+
+    -- Secret helpers + identity must be ready before using APR.PlayerID.
+    APR:InitSecretUtils()
+    APR:InitIdentity()
 
     -- Init on TOC
     APR.title = GetAddOnMetadata("APR", "Title")
@@ -145,4 +146,25 @@ function APR:OnInitialize()
 
     -- Register events
     APR.event:MyRegisterEvent()
+end
+
+-- Secret/taint helpers (12.0.0+). Attached during OnInitialize.
+function APR:InitSecretUtils()
+    if _G.APRSecret and _G.APRSecret.Attach then
+        _G.APRSecret:Attach(self)
+    else
+        self.Secret = {}
+    end
+end
+
+function APR:InitIdentity()
+    local userId = (self.SafeUnitGUID and self:SafeUnitGUID("player")) or UnitGUID("player")
+    local username = (self.SafeUnitName and self:SafeUnitName("player", "Unknown")) or UnitName("player")
+    self.UserID = userId
+    self.Username = username
+    if self.SafeConcat then
+        self.PlayerID = self:SafeConcat(userId, username, "-", userId)
+    else
+        self.PlayerID = (username and userId) and (username .. "-" .. userId) or userId
+    end
 end
