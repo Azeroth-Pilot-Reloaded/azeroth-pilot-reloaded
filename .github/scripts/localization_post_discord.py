@@ -22,6 +22,7 @@ REFERENCE_LOCALE = "enUS"
 
 CF_API_KEY = os.getenv("CF_API_KEY")
 DISCORD_WEBHOOK = os.getenv("DISCORD_WEBHOOK")
+LOCALIZATION_LINK = "Go to [Localization](https://legacy.curseforge.com/wow/addons/azeroth-pilot-reloaded/localization)"
 
 # Optional: frFR,deDE,ruRU
 LOCALES_ENV = os.getenv("LOCALES")
@@ -304,7 +305,7 @@ def main():
 
     if detail_lines:
         summary_line = build_summary_line(summary_data)
-        post_to_discord([summary_line, "", *detail_lines])
+        post_to_discord([summary_line, "", *detail_lines, "", LOCALIZATION_LINK])
         if not DRY_RUN:
             print("Discord notification sent")
     else:
