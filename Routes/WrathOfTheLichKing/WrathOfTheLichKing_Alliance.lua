@@ -1648,7 +1648,7 @@ if APR.Faction == "Alliance" then
         {
             PickUp = { 12082 },
             Coord = { x = -4758.4, y = 4900.5 },
-            ExtraLineText = "ESCORT_NPC",
+            ExtraLineText = "ESCORTS_NPC",
             Zone = 116,
             _index = 113,
         },
@@ -5214,7 +5214,7 @@ if APR.Faction == "Alliance" then
         },
         {
             Coord = { x = -1169.7, y = 6688.4 },
-            ExtraLineText = "ESCORT_NPC",
+            ExtraLineText = "ESCORTS_NPC",
             GossipOptionIDs = { 36137 },
             Zone = 120,
             _index = 37,
@@ -5254,7 +5254,7 @@ if APR.Faction == "Alliance" then
         {
             PickUp = { 12822 },
             Coord = { x = -1070.9, y = 6151.4 },
-            ExtraLineText = "TAKE_TELEPORTER",
+            ExtraLineText = "TAKE_TELEPORT",
             Zone = 120,
             _index = 43,
         },
@@ -5421,7 +5421,7 @@ if APR.Faction == "Alliance" then
         {
             PickUp = { 12824 },
             Coord = { x = -1722.5, y = 6320.9 },
-            ExtraLineText = "TAKE_TELEPORTER",
+            ExtraLineText = "TAKE_TELEPORT",
             Zone = 120,
             _index = 67,
         },
@@ -6787,7 +6787,7 @@ if APR.Faction == "Alliance" then
         {
             Waypoint = 12661,
             Coord = { x = -2015.9, y = 6173 },
-            ExtraLineText = "TAKE_TELEPORTER",
+            ExtraLineText = "TAKE_TELEPORT",
             ExtraLineText2 = "REMOVE_DISGUISE",
             Range = 5,
             Zone = 121,
@@ -6833,7 +6833,7 @@ if APR.Faction == "Alliance" then
         {
             UseItem = { itemID = 38699, itemSpellID = 51966, questID = 12669 },
             Coord = { x = -2016.9, y = 6169.6 },
-            ExtraLineText = "TAKE_TELEPORTER",
+            ExtraLineText = "TAKE_TELEPORT",
             Zone = 121,
             _index = 58,
         },
@@ -6846,7 +6846,7 @@ if APR.Faction == "Alliance" then
         {
             Waypoint = 12673,
             Coord = { x = -2010.6, y = 6171.7 },
-            ExtraLineText = "TAKE_TELEPORTER",
+            ExtraLineText = "TAKE_TELEPORT",
             Range = 5,
             Zone = 121,
             _index = 60,
