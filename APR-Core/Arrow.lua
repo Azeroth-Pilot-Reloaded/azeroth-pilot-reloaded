@@ -82,9 +82,6 @@ end
 ----------------------------------- Arrow Frames --------------------------------------
 ---------------------------------------------------------------------------------------
 
--- //TODO Rework Arrow frame
---More UI stuff, to do with arrowframe
---Arrowframe is the "arrow" that looks like the tomtom one
 APR.ArrowFrameM = CreateFrame("Button", "APR_Arrow", UIParent)
 APR.ArrowFrameM:SetHeight(1)
 APR.ArrowFrameM:SetWidth(1)
