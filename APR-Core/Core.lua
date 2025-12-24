@@ -8,7 +8,6 @@ APR.Realm = string.gsub(GetRealmName(), " ", "")
 APR.Faction = UnitFactionGroup("player") -- "Alliance", "Horde", "Neutral" or nil
 APR.Level = UnitLevel("player")
 APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
-APR.ClassLocalName, APR.ClassName, APR.ClassId = UnitClass("player")
 APR.Gender = UnitSex("player")
 APR.MaxLevel = 80
 APR.MaxLevelChromie = 70
@@ -158,13 +157,20 @@ function APR:InitSecretUtils()
 end
 
 function APR:InitIdentity()
-    local userId = (self.SafeUnitGUID and self:SafeUnitGUID("player")) or UnitGUID("player")
-    local username = (self.SafeUnitName and self:SafeUnitName("player", "Unknown")) or UnitName("player")
+    local userId = (self.SafeUnitGUID and self:SafeUnitGUID("player", "Unknown"))
+    local username = (self.SafeUnitName and self:SafeUnitName("player", "Unknown"))
     self.UserID = userId
     self.Username = username
     if self.SafeConcat then
         self.PlayerID = self:SafeConcat(userId, username, "-", userId)
     else
         self.PlayerID = (username and userId) and (username .. "-" .. userId) or userId
+    end
+
+    if self.SafeUnitClass then
+        local classLocal, className, classId = self:SafeUnitClass("player")
+        if classLocal and className and classId then
+            self.ClassLocalName, self.ClassName, self.ClassId = classLocal, className, classId
+        end
     end
 end
