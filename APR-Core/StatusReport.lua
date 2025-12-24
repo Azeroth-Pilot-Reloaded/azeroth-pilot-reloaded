@@ -9,6 +9,10 @@ local INSTANCE = "Instance"
 local NO_ACTIVE = "No active route"
 local font = LSM:Fetch('font', 'Expressway')
 
+local function SetStatusLine(line, label, value, colorHex)
+    line.Text:SetText(label .. ": " .. APR:WrapTextInColorCode(value, colorHex))
+end
+
 function APR:createStatusContent(num, width, parent, anchorTo, content)
     if not content then content = CreateFrame('Frame', nil, parent) end
     content:SetSize(width, (num * 20) + ((num - 1) * 5)) --20 height and 5 spacing
@@ -228,13 +232,12 @@ function APR:createStatusStaticContent(StatusFrame)
     StatusFrame.Section1.Content = APR:createStatusContent(4, 260, StatusFrame.Section1, StatusFrame.Section1.Header)
     StatusFrame.Section1.Header.Text:SetFormattedText('Addon & Client|r')
 
-    StatusFrame.Section1.Content.Line1.Text:SetFormattedText(
-        statusInfos.aprVersion[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r', statusInfos.aprVersion[2])
-    StatusFrame.Section1.Content.Line2.Text:SetFormattedText(
-        statusInfos.wowVersion[1] .. ': |cff' .. APR.HEXColor.green .. '%s (build %s)|r', statusInfos.wowVersion[2],
-        statusInfos.wowBuildVersion[2])
-    StatusFrame.Section1.Content.Line3.Text:SetFormattedText(
-        statusInfos.clientLanguage[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r', statusInfos.clientLanguage[2])
+    local wowVersionText = string.format("%s (build %s)", statusInfos.wowVersion[2], statusInfos.wowBuildVersion[2])
+    SetStatusLine(StatusFrame.Section1.Content.Line1, statusInfos.aprVersion[1], statusInfos.aprVersion[2],
+        APR.HEXColor.green)
+    SetStatusLine(StatusFrame.Section1.Content.Line2, statusInfos.wowVersion[1], wowVersionText, APR.HEXColor.green)
+    SetStatusLine(StatusFrame.Section1.Content.Line3, statusInfos.clientLanguage[1], statusInfos.clientLanguage[2],
+        APR.HEXColor.green)
 
     --Section 2 Route Info
     StatusFrame.Section2 = APR:createStatusSection(300, 105, nil, 30, StatusFrame, 'TOP', StatusFrame.Section1, 'BOTTOM',
@@ -248,14 +251,12 @@ function APR:createStatusStaticContent(StatusFrame)
     StatusFrame.Section3.Content = APR:createStatusContent(6, 260, StatusFrame.Section3, StatusFrame.Section3.Header)
     StatusFrame.Section3.Header.Text:SetFormattedText('Character|r')
 
-    StatusFrame.Section3.Content.Line1.Text:SetFormattedText(
-        statusInfos.charFaction[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r', statusInfos.charFaction[2])
-    StatusFrame.Section3.Content.Line2.Text:SetFormattedText(
-        statusInfos.charName[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r',
-        statusInfos.charName[2] .. "-" .. statusInfos.charRealm[2])
-    StatusFrame.Section3.Content.Line4.Text:SetFormattedText(
-        statusInfos.charClass[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r',
-        statusInfos.charClass[2]:lower():gsub("^%l", string.upper))
+    local charNameText = statusInfos.charName[2] .. "-" .. statusInfos.charRealm[2]
+    local classText = statusInfos.charClass[2]:lower():gsub("^%l", string.upper)
+    SetStatusLine(StatusFrame.Section3.Content.Line1, statusInfos.charFaction[1], statusInfos.charFaction[2],
+        APR.HEXColor.green)
+    SetStatusLine(StatusFrame.Section3.Content.Line2, statusInfos.charName[1], charNameText, APR.HEXColor.green)
+    SetStatusLine(StatusFrame.Section3.Content.Line4, statusInfos.charClass[1], classText, APR.HEXColor.green)
 end
 
 function APR:updateStatusFrame()
@@ -263,23 +264,22 @@ function APR:updateStatusFrame()
     local statusInfos = APR:getStatusReportInfos()
     local statusColors = APR:getStatusColors()
 
-    StatusFrame.Section1.Content.Line4.Text:SetFormattedText(
-        statusInfos.currentTime[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r', statusInfos.currentTime[2])
+    local coordsText = statusInfos.currentCoords[2] .. " - (" .. statusInfos.currentWorldCoords[2] .. ')'
+    SetStatusLine(StatusFrame.Section1.Content.Line4, statusInfos.currentTime[1], statusInfos.currentTime[2],
+        APR.HEXColor.green)
 
-    StatusFrame.Section2.Content.Line1.Text:SetFormattedText(
-        statusInfos.currentRoute[1] .. ': |cff' .. statusColors.currentRouteColor .. '%s|r', statusInfos.currentRoute[2])
-    StatusFrame.Section2.Content.Line2.Text:SetFormattedText(
-        statusInfos.currentStep[1] .. ': |cff' .. statusColors.currentStepColor .. '%s|r', statusInfos.currentStep[2])
-    StatusFrame.Section2.Content.Line3.Text:SetFormattedText(
-        statusInfos.currentContinent[1] .. ': |cff' .. statusColors.currentZoneColor .. '%s|r',
-        statusInfos.currentContinent[2])
-    StatusFrame.Section2.Content.Line4.Text:SetFormattedText(
-        statusInfos.currentZone[1] .. ': |cff' .. statusColors.currentZoneColor .. '%s|r', statusInfos.currentZone[2])
-    StatusFrame.Section2.Content.Line5.Text:SetFormattedText(
-        statusInfos.currentCoords[1] .. ': |cff' .. statusColors.currentCoordsColor .. '%s|r',
-        statusInfos.currentCoords[2] .. " - (" .. statusInfos.currentWorldCoords[2] .. ')')
-    StatusFrame.Section3.Content.Line3.Text:SetFormattedText(
-        statusInfos.charLevel[1] .. ': |cff' .. APR.HEXColor.green .. '%s|r', statusInfos.charLevel[2])
+    SetStatusLine(StatusFrame.Section2.Content.Line1, statusInfos.currentRoute[1], statusInfos.currentRoute[2],
+        statusColors.currentRouteColor)
+    SetStatusLine(StatusFrame.Section2.Content.Line2, statusInfos.currentStep[1], statusInfos.currentStep[2],
+        statusColors.currentStepColor)
+    SetStatusLine(StatusFrame.Section2.Content.Line3, statusInfos.currentContinent[1], statusInfos.currentContinent[2],
+        statusColors.currentZoneColor)
+    SetStatusLine(StatusFrame.Section2.Content.Line4, statusInfos.currentZone[1], statusInfos.currentZone[2],
+        statusColors.currentZoneColor)
+    SetStatusLine(StatusFrame.Section2.Content.Line5, statusInfos.currentCoords[1], coordsText,
+        statusColors.currentCoordsColor)
+    SetStatusLine(StatusFrame.Section3.Content.Line3, statusInfos.charLevel[1], statusInfos.charLevel[2],
+        APR.HEXColor.green)
 end
 
 function APR:showStatusReport()

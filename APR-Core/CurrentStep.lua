@@ -541,7 +541,8 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
                 if isCampaign then
                     GameTooltip:AddLine(
                         "|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
-                        (isCampaign and "|cff00ff00" .. YES .. "|r" or "|ccce0000f" .. NO .. "|r"),
+                        (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
+                            APR:WrapTextInColorCode(NO, "cce0000f")),
                         unpack(APR.Color.white)
                     )
                 end
@@ -937,9 +938,9 @@ end
 function APR.GetMenu(owner, rootDescription)
     local toggleAddon = ''
     if APR.settings.profile.enableAddon then
-        toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
+        toggleAddon = APR:WrapTextInColorCode(" " .. L["DISABLE"], "cce0000f")
     else
-        toggleAddon = "|cff00ff00 " .. L["ENABLE"] .. "|r"
+        toggleAddon = APR:WrapTextInColorCode(" " .. L["ENABLE"], "00ff00")
     end
 
     local function createToggleItem(label, getChecked, onToggle)
