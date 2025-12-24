@@ -195,18 +195,14 @@ def write_markdown_report(unused_keys, extra_keys, output_path="translation-repo
     with open(output_path, "w", encoding="utf-8") as f:
         f.write("## 🌍 Localization check report\n\n")
 
-        if not unused_keys and not extra_keys:
-            f.write("✅ No issues found. All translation keys are consistent.\n")
-            return
-
         if unused_keys:
-            f.write("### ⚠️ Translation keys not used in Lua files\n")
+            f.write("## ⚠️ Translation keys not used in Lua files\n")
             for key in unused_keys:
                 f.write(f"- `{key}`\n")
             f.write("\n")
 
         if extra_keys:
-            f.write("### ❌ Strings used in Lua but missing from CurseForge\n")
+            f.write("## ❌ Strings used in Lua but missing from CurseForge\n")
             for key in extra_keys:
                 f.write(f"- `{key}`\n")
             f.write("\n")

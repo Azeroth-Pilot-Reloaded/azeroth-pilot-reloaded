@@ -33,18 +33,36 @@ jobs:
           pip install requests python-dotenv termcolor
 
       - name: Run translation check
+        id: translation_check
+        continue-on-error: true
         env:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
         run: |
           python .github/scripts/check_translation_string.py --skip-similarity-check
 
       - name: Post PR comment with report
-        if: github.event_name == 'pull_request'
+        if: always() && github.event_name == 'pull_request'
         uses: actions/github-script@v8.0.0
         with:
           script: |
             const fs = require('fs');
-            const body = fs.readFileSync('translation-report.md', 'utf8');
+            const reportPath = 'translation-report.md';
+            if (!fs.existsSync(reportPath)) {
+              core.warning(`Report file not found at ${reportPath}, skipping comment.`);
+              return;
+            }
+            const body = fs.readFileSync(reportPath, 'utf8').trimEnd();
+            const { data: comments } = await github.rest.issues.listComments({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              issue_number: context.issue.number,
+              per_page: 100
+            });
+            const lastComment = comments[comments.length - 1];
+            if (lastComment && lastComment.body.trimEnd() === body) {
+              core.info('Skipping comment: last comment is identical.');
+              return;
+            }
 
             await github.rest.issues.createComment({
               owner: context.repo.owner,
@@ -52,3 +70,7 @@ jobs:
               issue_number: context.issue.number,
               body
             });
+
+      - name: Fail job if translations check failed
+        if: steps.translation_check.outcome == 'failure'
+        run: exit 1
