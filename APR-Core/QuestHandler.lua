@@ -133,7 +133,6 @@ function APR:UpdateStep()
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
     end
 
-    -- //TODO Return if not in the right zone (check why no data on zone change with the return)
     if APR.IsInRouteZone then
         APR.currentStep:Reset()
     end
