@@ -137,10 +137,10 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                     APR:UpdateStep()
                 end
 
-                APR:PrintInfo("APR " ..
-                    L["LOADED"] ..
-                    " - Version: |cff00ff00" ..
-                    APR.version .. "|r | Interface: |cff00ff00" .. APR.interfaceVersion .. "|r")
+                local versionText = APR:WrapTextInColorCode(APR.version, "00ff00")
+                local interfaceText = APR:WrapTextInColorCode(APR.interfaceVersion, "00ff00")
+                APR:PrintInfo("APR " .. L["LOADED"] .. " - Version: " .. versionText .. " | Interface: " ..
+                    interfaceText)
             end)
         end
     end

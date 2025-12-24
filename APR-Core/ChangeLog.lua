@@ -140,13 +140,19 @@ end
 
 function APR.changelog:ParseFormatting(text)
     -- Bold + Italic: ***text*** -> orange
-    text = text:gsub("%*%*%*(.-)%*%*%*", "|cffff8800%1|r")
+    text = text:gsub("%*%*%*(.-)%*%*%*", function(match)
+        return APR:WrapTextInColorCode(match, "ff8800")
+    end)
 
     -- Bold: **text** -> blue
-    text = text:gsub("%*%*(.-)%*%*", "|cff00ffff%1|r")
+    text = text:gsub("%*%*(.-)%*%*", function(match)
+        return APR:WrapTextInColorCode(match, "00ffff")
+    end)
 
     -- Italic: *text* -> gray
-    text = text:gsub("%*(.-)%*", "|cff999999%1|r")
+    text = text:gsub("%*(.-)%*", function(match)
+        return APR:WrapTextInColorCode(match, "999999")
+    end)
 
     return text
 end
@@ -167,7 +173,7 @@ function APR.changelog:ParseChangelogText(text)
             formatted = formatted .. self:ParseFormatting(line) .. "\n"
         elseif line:match("^#") then
             -- Category line
-            formatted = formatted .. "\n|cffeda55f" .. line .. "|r" .. "\n"
+            formatted = formatted .. "\n" .. APR:WrapTextInColorCode(line, "eda55f") .. "\n"
         else
             formatted = formatted .. " \n"
         end

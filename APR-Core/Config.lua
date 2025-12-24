@@ -1494,6 +1494,18 @@ function APR.settings:createBlizzOptions()
 end
 
 function APR.settings:CreateAboutOption()
+    local function wrapHelp(text)
+        return APR:WrapTextInColorCode(text, "eda55f")
+    end
+
+    local function wrapTranslator(text)
+        return APR:WrapTextInColorCode(text, "5f9ea0")
+    end
+
+    local function commandLine(command, description)
+        return wrapHelp(command) .. " - " .. description
+    end
+
     local optionsTable = {
         name = L["ABOUT_HELP"],
         type = "group",
@@ -1503,53 +1515,53 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["AUTHOR"] .. ": |r" .. "Neogeekmo/Neoldric",
+                name = wrapHelp(L["AUTHOR"] .. ": ") .. "Neogeekmo/Neoldric",
             },
             dev = {
                 order = 2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["DEV"] .. ": |r" .. "Neogeekmo/Neoldric, Kamian",
+                name = wrapHelp(L["DEV"] .. ": ") .. "Neogeekmo/Neoldric, Kamian",
             },
             route_designer = {
                 order = 2.1,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["ROUTE_DESIGNER"] .. ": |r" .. "Pahonix, Ola, Clara",
+                name = wrapHelp(L["ROUTE_DESIGNER"] .. ": ") .. "Pahonix, Ola, Clara",
             },
             support = {
                 order = 2.2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["SUPPORT"] .. ": |r" .. "NightofStarrs, Pahonix",
+                name = wrapHelp(L["SUPPORT"] .. ": ") .. "NightofStarrs, Pahonix",
             },
             graphic = {
                 order = 2.3,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["GRAPHIC"] .. ": |r" .. "Rycia, Neogeekmo/Neoldric",
+                name = wrapHelp(L["GRAPHIC"] .. ": ") .. "Rycia, Neogeekmo/Neoldric",
             },
             Translator = {
                 order = 2.4,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["TRANSLATOR"] .. ": |r\n" ..
-                    "      |cff5f9ea0" .. FRFR .. ": |rNeogeekmo, Jmsche, Mania\n" ..
-                    "      |cff5f9ea0" .. DEDE .. ": |rKamian, Movion\n" ..
-                    "      |cff5f9ea0" .. ESMX .. ": |rJean\n" ..
-                    "      |cff5f9ea0" .. RURU .. ": |rZamestoTV",
+                name = wrapHelp(L["TRANSLATOR"] .. ": ") .. "\n" ..
+                    "      " .. wrapTranslator(FRFR .. ": ") .. "Neogeekmo, Jmsche, Mania\n" ..
+                    "      " .. wrapTranslator(DEDE .. ": ") .. "Kamian, Movion\n" ..
+                    "      " .. wrapTranslator(ESMX .. ": ") .. "Jean\n" ..
+                    "      " .. wrapTranslator(RURU .. ": ") .. "ZamestoTV",
             },
             version = {
                 order = 2.5,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["VERSION"] .. ": |r" .. APR.version,
+                name = wrapHelp(L["VERSION"] .. ": ") .. APR.version,
             },
             header_disable_Auto = {
                 order = 3,
@@ -1593,21 +1605,21 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f/apr help, h |r- " .. L["HELP_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr |r- " .. L["SHOW_MENU"] .. "\n" ..
-                    "|cffeda55f/apr about |r- " .. L["SHOW_ABOUT"] .. "\n" ..
-                    "|cffeda55f/apr coord |r- " .. L["COORD_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr discord |r- " .. L["DISCORD_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr forcereset, fr |r- " .. L["FORCERESET_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr github |r- " .. L["GITHUB_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr qol |r- " .. L["QOL_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr reset, r |r- " .. L["RESET_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr resetcustom |r- " .. L["RESET_CUSTOM_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr rollback, rb |r- " .. L["ROLLBACK_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr route |r- " .. L["ROUTE_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr scribe, writer, 42 |r- ;)" .. "\n" ..
-                    "|cffeda55f/apr skip, s, skippiedoodaa |r- " .. L["SKIP_COMMAND"] .. "\n" ..
-                    "|cffeda55f/apr status |r- " .. L["STATUS_COMMAND"]
+                name = commandLine("/apr help, h", L["HELP_COMMAND"]) .. "\n" ..
+                    commandLine("/apr", L["SHOW_MENU"]) .. "\n" ..
+                    commandLine("/apr about", L["SHOW_ABOUT"]) .. "\n" ..
+                    commandLine("/apr coord", L["COORD_COMMAND"]) .. "\n" ..
+                    commandLine("/apr discord", L["DISCORD_COMMAND"]) .. "\n" ..
+                    commandLine("/apr forcereset, fr", L["FORCERESET_COMMAND"]) .. "\n" ..
+                    commandLine("/apr github", L["GITHUB_COMMAND"]) .. "\n" ..
+                    commandLine("/apr qol", L["QOL_COMMAND"]) .. "\n" ..
+                    commandLine("/apr reset, r", L["RESET_COMMAND"]) .. "\n" ..
+                    commandLine("/apr resetcustom", L["RESET_CUSTOM_COMMAND"]) .. "\n" ..
+                    commandLine("/apr rollback, rb", L["ROLLBACK_COMMAND"]) .. "\n" ..
+                    commandLine("/apr route", L["ROUTE_COMMAND"]) .. "\n" ..
+                    commandLine("/apr scribe, writer, 42", ";)") .. "\n" ..
+                    commandLine("/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"]) .. "\n" ..
+                    commandLine("/apr status", L["STATUS_COMMAND"])
             },
             blank01 = {
                 order = 4.3,
@@ -1662,13 +1674,15 @@ function APR.settings:CreateMiniMapButton()
         OnTooltipShow = function(tooltip)
             local toggleAddon = ''
             if self.profile.enableAddon then
-                toggleAddon = "|ccce0000f " .. L["DISABLE"] .. "|r"
+                toggleAddon = APR:WrapTextInColorCode(" " .. L["DISABLE"], "cce0000f")
             else
-                toggleAddon = "|cff00ff00 " .. L["ENABLE"] .. "|r"
+                toggleAddon = APR:WrapTextInColorCode(" " .. L["ENABLE"], "00ff00")
             end
             tooltip:AddLine(APR.title)
-            tooltip:AddLine(L["LEFT_CLICK"] .. ": |cffeda55f" .. L["SHOW_MENU"] .. "|r", unpack(APR.Color.white))
-            tooltip:AddLine(L["RIGHT_CLICK"] .. ": " .. toggleAddon .. "|cffeda55f " .. L["ADDON"] .. "|r",
+            tooltip:AddLine(L["LEFT_CLICK"] .. ": " .. APR:WrapTextInColorCode(L["SHOW_MENU"], "eda55f"),
+                unpack(APR.Color.white))
+            tooltip:AddLine(L["RIGHT_CLICK"] .. ": " .. toggleAddon .. " " ..
+                APR:WrapTextInColorCode(L["ADDON"], "eda55f"),
                 unpack(APR.Color.white))
         end
     })
