@@ -478,11 +478,10 @@ end
 
 function APR.event.functions.dropQuest(event, ...)
     if step and step.DroppableQuest then
-        local targetGUID = APR:SafeUnitGUID("mouseover")
+        local targetID = APR:GetTargetID("mouseover")
         local targetName = APR:SafeUnitName("mouseover")
-        if targetGUID and targetName then
-            local targetID = select(6, strsplit("-", targetGUID))
-            if targetID and step.DroppableQuest.MobId == tonumber(targetID) then
+        if targetID and targetName then
+            if step.DroppableQuest.MobId == tonumber(targetID) then
                 APRData.NPCList[targetID] = targetName
             end
         end
@@ -782,13 +781,10 @@ end
 
 function APR.event.functions.raidIcon(event, ...)
     if step and step.RaidIcon then
-        local targetGUID = APR:SafeUnitGUID("mouseover")
-        if targetGUID then
-            local targetID = select(6, strsplit("-", targetGUID))
-            if targetID and tonumber(step.RaidIcon) == tonumber(targetID) then
-                if (not GetRaidTargetIndex("mouseover")) then
-                    SetRaidTarget("mouseover", 8)
-                end
+        local targetID = APR:GetTargetID("mouseover")
+        if targetID and tonumber(step.RaidIcon) == tonumber(targetID) then
+            if (not GetRaidTargetIndex("mouseover")) then
+                SetRaidTarget("mouseover", 8)
             end
         end
     end
