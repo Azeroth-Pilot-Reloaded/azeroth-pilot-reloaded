@@ -6,9 +6,13 @@
 -- The default unit is the current target, but we allow overriding so mouseover or other units can be inspected.
 function APR:GetTargetID(unit)
     unit = unit or "target"
+    if UnitCreatureID then
+        return UnitCreatureID(unit)
+    end
     local targetGUID = APR:SafeUnitGUID(unit)
     if targetGUID then
-        local targetID = select(6, strsplit("-", targetGUID))
+        local targetID = C_CreatureInfo.GetCreatureID and C_CreatureInfo.GetCreatureID(targetGUID) or
+        select(6, strsplit("-", targetGUID))
         return tonumber(targetID)
     end
     return nil
