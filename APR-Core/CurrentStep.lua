@@ -9,18 +9,23 @@ APR.currentStep.questsList = {}
 APR.currentStep.questsExtraTextList = {}
 APR.currentStep.pendingRemoval = {}
 APR.currentStep.pendingButtonRequests = {}
+APR.currentStep.pendingRaidIconRequests = {}
+APR.currentStep.pendingRaidIconNpcId = nil
+APR.currentStep.raidIconAdded = false
+APR.currentStep.pendingRaidIconMacroRefresh = false
+APR.currentStep.raidIconButton = nil
 -- Height of the quest frame
 APR.currentStep.FrameHeight = 0
 
 -- Save the previous
 APR.currentStep.previousState = {}
 
-
 --Local constant
 local FRAME_WIDTH = 250
 local FRAME_HEADER_OPFFSET = -30
 local FRAME_ATTACH_OPFFSET = -35
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+local RAID_ICON_TEXTURE = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
 local isDragging = false
 
 ---------------------------------------------------------------------------------------
@@ -251,6 +256,7 @@ function APR.currentStep:GetContentHeight()
             if container and container:IsShown() then
                 consider(container)
                 consider(container.IconButton)
+                consider(container.RaidIconButton)
             end
         end
     end
@@ -555,6 +561,7 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
     end
 
     self.questsList[questKey] = objectiveContainer
+    self:MaybeAttachRaidIconButton(questKey)
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - objectiveContainer:GetHeight()
 
     -- to update quest order display
@@ -653,6 +660,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
 
     -- Save the container in the questsList
     self.questsList[id] = container
+    self:MaybeAttachRaidIconButton(id)
 
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - container:GetHeight()
 
@@ -683,6 +691,7 @@ function APR.currentStep:AddExtraLineText(key, text, color)
     extraLineTextContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
     extraLineTextContainer.key = key
     self.questsExtraTextList[key] = extraLineTextContainer
+    self:MaybeAttachRaidIconButton(key)
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - extraLineTextContainer:GetHeight()
 
     self:ReOrderExtraLineText()
@@ -760,6 +769,16 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
                     end
                     self.pendingButtonRequests[id] = nil
                 end
+                local raidBtn = container.RaidIconButton
+                if raidBtn then
+                    raidBtn:Hide()
+                    raidBtn:ClearAllPoints()
+                    container.RaidIconButton = nil
+                end
+                if self.raidIconButton == raidBtn then
+                    self.raidIconButton = nil
+                end
+                self.pendingRaidIconRequests[id] = nil
                 list[id] = nil
             else
                 -- Combat: soft-hide + mark for purge post-combat
@@ -787,11 +806,13 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
     self:ReOrderQuestSteps(true)
 end
 
-local function PositionStepButtons(container, button)
+local function PositionStepButtons(container, button, anchorButton)
+    button:ClearAllPoints()
+    local anchor = anchorButton or container
     if APR.settings.profile.currentStepQuestButtonPositionRight then
-        button:SetPoint("LEFT", container, "RIGHT", 5, 0)
+        button:SetPoint("LEFT", anchor, "RIGHT", 5, 0)
     else
-        button:SetPoint("RIGHT", container, "LEFT", -5, 0)
+        button:SetPoint("RIGHT", anchor, "LEFT", -5, 0)
     end
 end
 -- Create a icon button next to the quest/text step
@@ -803,6 +824,93 @@ local function GetStepButtonIcon(attribute, itemID)
         local spellInfo = C_Spell.GetSpellInfo(itemID)
         return spellInfo and spellInfo.iconID or nil
     end
+end
+
+
+local function GetRaidIconContainer(self, key)
+    return self.questsList[key] or self.questsExtraTextList[key]
+end
+
+function APR.currentStep:PrepareRaidIcon(step)
+    if step and step.RaidIcon then
+        self.pendingRaidIconNpcId = tonumber(step.RaidIcon)
+    else
+        self.pendingRaidIconNpcId = nil
+    end
+    self.raidIconAdded = false
+end
+
+function APR.currentStep:MaybeAttachRaidIconButton(key)
+    if not self.pendingRaidIconNpcId or self.raidIconAdded then
+        return
+    end
+    self.raidIconAdded = true
+    self:AddRaidIconButton(key, self.pendingRaidIconNpcId)
+end
+
+function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
+    local container = GetRaidIconContainer(self, questsListKey)
+    if not container or container.RaidIconButton then
+        return
+    end
+
+    local RaidIconButton = CreateFrame("Button", nil, container,
+        "SecureActionButtonTemplate, BackdropTemplate")
+    RaidIconButton:SetSize(25, 25)
+    PositionStepButtons(container, RaidIconButton, container.IconButton)
+    RaidIconButton:SetNormalTexture(RAID_ICON_TEXTURE)
+    RaidIconButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
+    RaidIconButton:RegisterForClicks("AnyUp", "AnyDown")
+    RaidIconButton:SetAttribute("type1", "macro")
+    RaidIconButton:SetAttribute("macrotext", APR:BuildRaidIconMacro(npcID))
+
+    RaidIconButton:SetScript("OnEnter", function(self)
+        local npcName = APR:GetRaidIconNpcName(self.npcID)
+        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+        GameTooltip:AddLine("Raid icon (skull)")
+        if npcName then
+            GameTooltip:AddLine(npcName, 1, 1, 1, true)
+        else
+            GameTooltip:AddLine("Mouseover target", 0.8, 0.8, 0.8, true)
+        end
+        GameTooltip:Show()
+    end)
+
+    RaidIconButton:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
+
+    RaidIconButton.npcID = npcID
+    container.RaidIconButton = RaidIconButton
+    self.raidIconButton = RaidIconButton
+    self:UpdateRaidIconButtonMacro()
+end
+
+function APR.currentStep:AddRaidIconButton(questsListKey, npcID)
+    if not APR.settings.profile.currentStepShow or not npcID then
+        return
+    end
+
+    if InCombatLockdown() then
+        self.pendingRaidIconRequests[questsListKey] = npcID
+        return
+    end
+
+    self.pendingRaidIconRequests[questsListKey] = nil
+    self:CreateSecureRaidIconButton(questsListKey, npcID)
+end
+
+function APR.currentStep:UpdateRaidIconButtonMacro()
+    if InCombatLockdown() then
+        self.pendingRaidIconMacroRefresh = true
+        return
+    end
+
+    local button = self.raidIconButton
+    if not button or not button.npcID then
+        return
+    end
+
+    local unitToken = APR:FindRaidIconUnitToken(button.npcID)
+    button:SetAttribute("macrotext", APR:BuildRaidIconMacro(button.npcID, unitToken))
 end
 
 function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute)
@@ -850,6 +958,9 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     IconButton.itemID = itemID
     IconButton.attribute = attribute
     container.IconButton = IconButton
+    if container.RaidIconButton then
+        PositionStepButtons(container, container.RaidIconButton, IconButton)
+    end
 end
 
 --- Queue or create a secure button depending on combat lockdown state
@@ -862,6 +973,7 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     end
 
     attribute = attribute or "item"
+    self:MaybeAttachRaidIconButton(questsListKey)
     if InCombatLockdown() then
         self.pendingButtonRequests[questsListKey] = { itemID = itemID, attribute = attribute }
         return
@@ -872,12 +984,23 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
 end
 
 function APR.currentStep:ProcessPendingStepButtons()
-    if InCombatLockdown() or not next(self.pendingButtonRequests) then
+    if InCombatLockdown() then
         return
     end
+
     for questsListKey, data in pairs(self.pendingButtonRequests) do
         self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute)
         self.pendingButtonRequests[questsListKey] = nil
+    end
+
+    for questsListKey, npcID in pairs(self.pendingRaidIconRequests) do
+        self:CreateSecureRaidIconButton(questsListKey, npcID)
+        self.pendingRaidIconRequests[questsListKey] = nil
+    end
+
+    if self.pendingRaidIconMacroRefresh then
+        self.pendingRaidIconMacroRefresh = false
+        self:UpdateRaidIconButtonMacro()
     end
 end
 
@@ -932,6 +1055,11 @@ function APR.currentStep:Reset()
     self:ButtonShow()
     self:ButtonDisable()
     self:ProgressBar()
+    self.pendingRaidIconNpcId = nil
+    self.raidIconAdded = false
+    self.pendingRaidIconRequests = {}
+    self.pendingRaidIconMacroRefresh = false
+    self.raidIconButton = nil
     self:RemoveQuestStepsAndExtraLineTexts()
 end
 
@@ -1030,7 +1158,8 @@ end
 
 function APR.currentStep:CanSafelyHide(container)
     -- If we are in combat AND the container has a secure button, do not hide
-    return not InCombatLockdown() or not (container.IconButton and container.IconButton:IsProtected())
+    return not InCombatLockdown() or not ((container.IconButton and container.IconButton:IsProtected()) or
+        (container.RaidIconButton and container.RaidIconButton:IsProtected()))
 end
 
 function APR.currentStep:SoftHide(container)

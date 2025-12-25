@@ -39,15 +39,10 @@ APR.HEXColor = {
     green = "00ff00"
 }
 
-APR.wowpatch, APR.wowbuild, APR.wowdate, APR.wowtoc = GetBuildInfo()
--- APR.Season = C_Seasons and C_Seasons.HasActiveSeason() and C_Seasons.GetActiveSeason() // For classic
-
-
 -- Quest
 APR.RouteList = {}
 APR.RouteQuestStepList = {}
 APR.MissingQuests = {}
-
 
 function APR:OnInitialize()
     local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
@@ -62,6 +57,7 @@ function APR:OnInitialize()
     APR.github = GetAddOnMetadata("APR", "X-Github")
     APR.discord = GetAddOnMetadata("APR", "X-Discord")
     APR.interfaceVersion = select(4, GetBuildInfo())
+    APR.isMidnightVersion = (tonumber(APR.interfaceVersion) or 0) >= 120000
 
     APR.ActiveQuests = {}
     APR.IsInRouteZone = false

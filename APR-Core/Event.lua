@@ -34,6 +34,8 @@ local events = {
     petCombatUI = { "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE" },
     playerChoice = "PLAYER_CHOICE_UPDATE",
     raidIcon = "UPDATE_MOUSEOVER_UNIT",
+    targetChanged = "PLAYER_TARGET_CHANGED",
+    nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
     scenario = { "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
@@ -781,12 +783,29 @@ end
 
 function APR.event.functions.raidIcon(event, ...)
     if step and step.RaidIcon then
-        local targetID = APR:GetTargetID("mouseover")
-        if targetID and tonumber(step.RaidIcon) == tonumber(targetID) then
-            if (not GetRaidTargetIndex("mouseover")) then
-                SetRaidTarget("mouseover", 8)
+        if not APR.isMidnightVersion then
+            local targetID = APR:GetTargetID("mouseover")
+            if targetID and tonumber(step.RaidIcon) == tonumber(targetID) then
+                if (not GetRaidTargetIndex("mouseover")) then
+                    SetRaidTarget("mouseover", 8)
+                end
             end
         end
+    end
+end
+
+function APR.event.functions.nameplate(event, unitToken)
+    if unitToken then
+        APR:ScanUnitForNPC(unitToken, "NAMEPLATE")
+    end
+    if APR.currentStep and APR.currentStep.UpdateRaidIconButtonMacro then
+        APR.currentStep:UpdateRaidIconButtonMacro()
+    end
+end
+
+function APR.event.functions.targetChanged()
+    if APR.currentStep then
+        APR.currentStep:UpdateRaidIconButtonMacro()
     end
 end
 
