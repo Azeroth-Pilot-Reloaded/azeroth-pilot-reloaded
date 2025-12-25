@@ -1517,7 +1517,7 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = "|cffeda55f" .. L["ROUTE_DESIGNER"] .. ": |r" .. "Pahonix, Ola, Clara",
+                name = "|cffeda55f" .. L["ROUTE_DESIGNER"] .. ": |r" .. "Pahonix, Ola, Clara, Vandredor",
             },
             support = {
                 order = 2.2,

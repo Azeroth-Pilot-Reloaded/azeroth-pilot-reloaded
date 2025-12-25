@@ -40,7 +40,13 @@ if (APR.Faction == "Alliance") then
 
     }
     APR.RouteList.TheBurningCrusade = {}
-    APR.RouteList.WrathOfTheLichKing = {}
+    APR.RouteList.WrathOfTheLichKing = {
+        ["116-Grizzly Hills"] = L["WOTLK - Grizzly Hills"],
+        ["117-Howling Fjord"] = L["WOTLK - Howling Fjord"],
+        ["118-Icecrown"]      = L["WOTLK - Icecrown"],
+        ["120-Storm Peaks"]   = L["WOTLK - Storm Peaks"],
+        ["121-Zul'Drak"]      = L["WOTLK - Zul'Drak"],
+    }
     APR.RouteList.Cataclysm = {}
     APR.RouteList.MistsOfPandaria = {
         ["554-MoP Remix Intro"]          = L["MoP Remix - Intro"],

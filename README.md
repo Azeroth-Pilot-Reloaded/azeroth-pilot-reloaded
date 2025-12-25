@@ -10,7 +10,9 @@ The continuation of _Azeroth Auto Pilot_, a leveling add-on with a legacy. Rebir
 [![Patreon](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/assets/43384589/8431a849-5507-4489-b6ab-f3b7993ef4ef)](https://www.patreon.com/AzerothPilotReloaded)
 
 **Want to help?** [Contribute on GitHub](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded) or join our [Discord](https://discord.gg/YgcdybKdWX) for support and translations.
+
 ##
+
 ![Features](https://github.com/user-attachments/assets/a3af1185-9b5d-411a-8b14-60a0a21249f9)
 
 -   **Guided navigation:** waypoint arrow, map and minimap lines, optional range checks, and flight-path helpers keep you moving without extra addons.
@@ -23,7 +25,9 @@ The continuation of _Azeroth Auto Pilot_, a leveling add-on with a legacy. Rebir
 ### Quick tip
 
 Hold `Ctrl`, `Shift`, or `Alt` while talking to NPCs, flight masters, or merchants to temporarily disable auto accept/turn-in/gossip, auto-flight selection, and cutscene skipping for that interaction.
+
 ##
+
 ![Settings & Commands](https://github.com/user-attachments/assets/f691f4d2-d9ee-4a14-8135-2d85a0334c6b)
 
 Settings are under `Interface > Addons > Azeroth Pilot Reloaded` or via `/apr` in chat.
@@ -48,6 +52,7 @@ Using the `/apr` prefix, the commands below are available:
 | `/apr rollback`    | `/apr rb`                      | Steps back one step (undo a skip).                            |
 
 ##
+
 ![Credits](https://github.com/user-attachments/assets/e1e2c4f3-9e84-40fe-af3b-618a0d2a948f)
 
 **Core & Development**
@@ -58,8 +63,9 @@ Using the `/apr` prefix, the commands below are available:
 **Route Design**
 
 -   Pahonix - General route designer
--   Ola - Dragonflight route design
--   Clara - Route design
+-   Ola - Route design (Dragonflight)
+-   Clara - Route design (Dragonflight, The War Within)
+-   Vandredor - Route design (WOTLK)
 
 **Graphics & UI**
 
@@ -81,6 +87,6 @@ Using the `/apr` prefix, the commands below are available:
 **Legacy Azeroth Auto Pilot**
 
 -   Zyrrael - Legacy maintainer & core developer of Azeroth Auto Pilot
--   Legacy team: Deathmessenger, DesMephisto, BrutallStatic, TeddyRuxpins, and the original AAP crew
+-   Legacy team: Deathmessenger and the original AAP crew
 -   DesMephisto - Original Warlords of Draenor speed-run route
 -   BrutallStatic & TeddyRuxpins - Shadowlands 50-60 route support

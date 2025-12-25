@@ -15,7 +15,11 @@ if (APR.Faction == "Horde") then
         ["22-Western Plaguelands"] = L["WIP - Western Plaguelands"],
     }
     APR.RouteList.TheBurningCrusade = {}
-    APR.RouteList.WrathOfTheLichKing = {}
+
+    APR.RouteList.WrathOfTheLichKing = {
+        ["118-Icecrown"] = L["WOTLK - Icecrown"],
+    }
+
     APR.RouteList.Cataclysm = {}
     APR.RouteList.MistsOfPandaria = {
         ["554-MoP Remix Intro"] = L["MoP Remix - Intro"],
