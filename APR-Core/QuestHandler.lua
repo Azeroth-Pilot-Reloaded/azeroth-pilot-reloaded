@@ -905,6 +905,8 @@ function APR:UpdateStep()
             return
         end
 
+        -- Add Raid Icon SABT
+        APR.currentStep:PrepareRaidIcon(step)
         -- Set Quest Item Button
         APR:SetButton()
         APR.questOrderList:DelayedUpdate()
