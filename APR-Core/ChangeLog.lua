@@ -183,7 +183,10 @@ function APR.changelog:ParseChangelogText(text)
 end
 
 function APR.changelog:SetChangeLog()
-    local changelog = self:ParseChangelogText(L["CHANGELOG"])
+    local newChangelog = L["New Changelog"] or ""
+    local prevChangelog = L["Prev Changelog"] or ""
+    local changelogText = newChangelog .. "\n" .. prevChangelog
+    local changelog = self:ParseChangelogText(changelogText)
     Text:SetText(changelog)
     TextFrame:SetHeight(Text:GetStringHeight())
 
