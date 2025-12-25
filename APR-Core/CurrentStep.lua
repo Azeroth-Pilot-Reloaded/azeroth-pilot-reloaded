@@ -56,7 +56,7 @@ CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- don't replace i
 
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
 CurrentStepFrameHeader:SetScript("OnDragStart", function(self)
-    if not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
+    if not InCombatLockdown() and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
         self:GetParent():StartMoving()
         isDragging = true
     end
@@ -71,7 +71,7 @@ CurrentStepFrameHeader:SetScript("OnDragStop", function(self)
     end
 end)
 CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
-    if button == "LeftButton" and not isDragging and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
+    if button == "LeftButton" and not isDragging and not InCombatLockdown() and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
         self:GetParent():StartMoving()
         isDragging = true
     elseif button == "RightButton" then
@@ -833,7 +833,7 @@ end
 
 function APR.currentStep:PrepareRaidIcon(step)
     if step and (step.RaidIcon or step.DroppableQuest) then
-        self.pendingRaidIconNpcId = tonumber(step.RaidIcon or step.DroppableQuest.MobId)
+        self.pendingRaidIconNpcId = tonumber(step.RaidIcon or step.DroppableQuest)
     else
         self.pendingRaidIconNpcId = nil
     end
@@ -1145,6 +1145,13 @@ function APR.GetMenu(owner, rootDescription)
     end, function()
         APR.settings.profile.currentStepLock = not APR.settings.profile.currentStepLock
         APR.currentStep:RefreshCurrentStepFrameAnchor()
+    end)
+
+    rootDescription:CreateButton(L["CURRENT_STEP_QUEST_BUTTON_POSITION"] .. ": " ..
+        (APR.settings.profile.currentStepQuestButtonPositionRight and L["RIGHT"] or L["LEFT"]), function()
+        APR.settings.profile.currentStepQuestButtonPositionRight = not APR.settings.profile
+            .currentStepQuestButtonPositionRight
+        APR:UpdateMapId()
     end)
 
     rootDescription:CreateButton(L["RESET_CURRENT_STEP_FRAME_POSITION"], function()
