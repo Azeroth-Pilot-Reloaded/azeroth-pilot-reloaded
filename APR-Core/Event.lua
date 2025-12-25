@@ -19,7 +19,6 @@ local events = {
     dead = { "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST" },
     detail = "QUEST_DETAIL",
     done = { "QUEST_AUTOCOMPLETE", "QUEST_COMPLETE", "QUEST_PROGRESS" },
-    dropQuest = "UPDATE_MOUSEOVER_UNIT",
     emote = { "CHAT_MSG_MONSTER_SAY", "PLAYER_TARGET_CHANGED", "UPDATE_MOUSEOVER_UNIT" },
     getFP = { "TAXIMAP_OPENED", "UI_INFO_MESSAGE" },
     gossip = { "GOSSIP_CLOSED", "GOSSIP_SHOW" },
@@ -473,18 +472,6 @@ function APR.event.functions.done(event, ...)
             else
                 -- Only one choice available, just select it
                 GetQuestReward(1)
-            end
-        end
-    end
-end
-
-function APR.event.functions.dropQuest(event, ...)
-    if step and step.DroppableQuest then
-        local targetID = APR:GetTargetID("mouseover")
-        local targetName = APR:SafeUnitName("mouseover")
-        if targetID and targetName then
-            if step.DroppableQuest.MobId == tonumber(targetID) then
-                APRData.NPCList[targetID] = targetName
             end
         end
     end
