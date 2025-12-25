@@ -832,8 +832,8 @@ local function GetRaidIconContainer(self, key)
 end
 
 function APR.currentStep:PrepareRaidIcon(step)
-    if step and step.RaidIcon then
-        self.pendingRaidIconNpcId = tonumber(step.RaidIcon)
+    if step and (step.RaidIcon or step.DroppableQuest) then
+        self.pendingRaidIconNpcId = tonumber(step.RaidIcon or step.DroppableQuest.MobId)
     else
         self.pendingRaidIconNpcId = nil
     end
