@@ -47,35 +47,36 @@ APR.MissingQuests = {}
 function APR:OnInitialize()
     local GetAddOnMetadata = C_AddOns and C_AddOns.GetAddOnMetadata or _G.GetAddOnMetadata
 
-    -- Secret helpers + identity must be ready before using APR.PlayerID.
-    APR:InitSecretUtils()
-    APR:InitIdentity()
+    -- Secret helpers + identity must be ready before using self.PlayerID.
+    self:InitSecretUtils()
+    self:InitIdentity()
 
     -- Init on TOC
-    APR.title = GetAddOnMetadata("APR", "Title")
-    APR.version = GetAddOnMetadata("APR", "Version")
-    APR.github = GetAddOnMetadata("APR", "X-Github")
-    APR.discord = GetAddOnMetadata("APR", "X-Discord")
-    APR.interfaceVersion = select(4, GetBuildInfo())
-    APR.isMidnightVersion = (tonumber(APR.interfaceVersion) or 0) >= 120000
+    self.title = GetAddOnMetadata("APR", "Title")
+    self.version = GetAddOnMetadata("APR", "Version")
+    self.github = GetAddOnMetadata("APR", "X-Github")
+    self.discord = GetAddOnMetadata("APR", "X-Discord")
+    self.interfaceVersion = select(4, GetBuildInfo())
+    self.isMidnightVersion = (tonumber(self.interfaceVersion) or 0) >= 120000
 
-    APR.ActiveQuests = {}
-    APR.IsInRouteZone = false
+    self.ActiveQuests = {}
+    self.IsInRouteZone = false
+    self.MaxLevel = self.isMidnightVersion and 90 or 80
 
     -- APR INIT NEW SETTING
-    APR:Love()
-    APR.settings:InitializeBlizOptions()
-    APR:ApplyLoveColors()
+    self:Love()
+    self.settings:InitializeBlizOptions()
+    self:ApplyLoveColors()
 
     -- APR Saved Data
     APRData = APRData or {}
     APRData.NPCList = APRData.NPCList or {}
     APRData.CustomRoute = APRData.CustomRoute or {}
-    APRData[APR.PlayerID] = APRData[APR.PlayerID] or {}
-    APRData[APR.PlayerID].FirstLoad = APRData[APR.PlayerID].FirstLoad == nil and true or
-        APRData[APR.PlayerID].FirstLoad
-    APRData[APR.PlayerID].BonusSkips = APRData[APR.PlayerID].BonusSkips or {}
-    APRData[APR.PlayerID].WantedQuestList = APRData[APR.PlayerID].WantedQuestList or {}
+    APRData[self.PlayerID] = APRData[self.PlayerID] or {}
+    APRData[self.PlayerID].FirstLoad = APRData[self.PlayerID].FirstLoad == nil and true or
+        APRData[self.PlayerID].FirstLoad
+    APRData[self.PlayerID].BonusSkips = APRData[self.PlayerID].BonusSkips or {}
+    APRData[self.PlayerID].WantedQuestList = APRData[self.PlayerID].WantedQuestList or {}
 
     APRCustomPath = APRCustomPath or {}
     APRTaxiNodes = APRTaxiNodes or {}
@@ -85,48 +86,48 @@ function APR:OnInitialize()
     APRScenarioCompleted = APRScenarioCompleted or {}
     APRItemLooted = APRItemLooted or {}
 
-    APRTaxiNodes[APR.PlayerID] = APRTaxiNodes[APR.PlayerID] or {}
-    APRCustomPath[APR.PlayerID] = APRCustomPath[APR.PlayerID] or {}
-    APRZoneCompleted[APR.PlayerID] = APRZoneCompleted[APR.PlayerID] or {}
-    APRScenarioMapIDCompleted[APR.PlayerID] = APRScenarioMapIDCompleted[APR.PlayerID] or {}
-    APRScenarioCompleted[APR.PlayerID] = APRScenarioCompleted[APR.PlayerID] or {}
-    APRItemLooted[APR.PlayerID] = APRItemLooted[APR.PlayerID] or {}
+    APRTaxiNodes[self.PlayerID] = APRTaxiNodes[self.PlayerID] or {}
+    APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}
+    APRZoneCompleted[self.PlayerID] = APRZoneCompleted[self.PlayerID] or {}
+    APRScenarioMapIDCompleted[self.PlayerID] = APRScenarioMapIDCompleted[self.PlayerID] or {}
+    APRScenarioCompleted[self.PlayerID] = APRScenarioCompleted[self.PlayerID] or {}
+    APRItemLooted[self.PlayerID] = APRItemLooted[self.PlayerID] or {}
 
     APRGossipValidated = APRGossipValidated or {}
-    APRGossipValidated[APR.PlayerID] = APRGossipValidated[APR.PlayerID] or {}
+    APRGossipValidated[self.PlayerID] = APRGossipValidated[self.PlayerID] or {}
 
     -- Init current step frame
-    APR.currentStep:CurrentStepFrameOnInit()
+    self.currentStep:CurrentStepFrameOnInit()
 
     --Init Party frame
-    APR.party:PartyFrameOnInit()
+    self.party:PartyFrameOnInit()
 
     --Init AFK frame
-    APR.AFK:AFKFrameOnInit()
+    self.AFK:AFKFrameOnInit()
 
     -- Init Quest Order List frame
-    APR.questOrderList:QuestOrderListFrameOnInit()
+    self.questOrderList:QuestOrderListFrameOnInit()
 
     -- Init Map/Minimap lines & Icons
-    APR.map:OnInit()
+    self.map:OnInit()
 
     -- Init coordinate frame for dev
-    APR.coordinate:OnInit()
+    self.coordinate:OnInit()
 
     -- Init route selection frame
-    APR.RouteSelection:RouteSelectionOnInit()
+    self.RouteSelection:RouteSelectionOnInit()
 
     -- Init Changelog frame
-    APR.changelog:OnInit()
+    self.changelog:OnInit()
 
     -- Init heirloom frame
-    APR.heirloom:HeirloomOnInit()
+    self.heirloom:HeirloomOnInit()
 
     -- Init Buff frame
-    APR.Buff:BuffFrameOnInit()
+    self.Buff:BuffFrameOnInit()
 
     -- APR Global Variables, UI oriented
-    BINDING_HEADER_APR = APR.title -- Header text for APR's main frame
+    BINDING_HEADER_APR = self.title -- Header text for APR's main frame
     _G["BINDING_NAME_" .. "CLICK APR_ItemButton:LeftButton"] = L["USE_QUEST_ITEM"]
 
     -- Register tot party frame
@@ -135,12 +136,12 @@ function APR:OnInitialize()
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyDelete")
 
     -- Load saved custom routes
-    APR:LoadCustomRoutes()
+    self:LoadCustomRoutes()
 
-    APR.Arrow:Init()
+    self.Arrow:Init()
 
     -- Register events
-    APR.event:MyRegisterEvent()
+    self.event:MyRegisterEvent()
 end
 
 -- Secret/taint helpers (12.0.0+). Attached during OnInitialize.
