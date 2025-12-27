@@ -112,8 +112,21 @@ local function GetConfigOptionTable()
                     return not next(APR.RouteList.TheWarWithin)
                 end
             },
-            reset_custom_path = {
+            MIDNIGHT_prefab = {
                 order = 1.7,
+                name = "Midnight",
+                type = "execute",
+                width = optionsWidth,
+                func = function()
+                    APRCustomPath[APR.PlayerID] = {}
+                    APR.routeconfig:GetMidnightPrefab()
+                end,
+                hidden = function()
+                    return not next(APR.RouteList.TheWarWithin)
+                end
+            },
+            reset_custom_path = {
+                order = 1.8,
                 name = L["CLEAN_CUSTOM_PATH"],
                 type = "execute",
                 width = optionsWidth,
@@ -730,6 +743,7 @@ function APR.routeconfig:GetSpeedRunPrefab()
         self:GetDFPrefab()
     end
     self:GetTWWPrefab()
+    self:GetMidnightPrefab()
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
@@ -923,6 +937,12 @@ function APR.routeconfig:GetTWWPrefab()
     self:SendMessage("APR_Custom_Path_Update")
 end
 
+function APR.routeconfig:GetMidnightPrefab()
+    if APR.Faction == "Neutral" then return end
+
+    AddRouteToCustomPath(L["Midnight - Intro"])
+end
+
 function APR.routeconfig:GetPlayerSpecRoute(prefix)
     local routeKey = prefix .. " - " .. APR.GetClassSpecName()
     if APR.RouteQuestStepList[routeKey] then
@@ -977,9 +997,9 @@ function APR.routeconfig:CheckRouteResetOnLvlUp()
         elseif APR.Level == 10 then
             APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_SPEEDRUN",
                 format(L["RESET_ROUTE_FOR_SPEEDRUN"], APR.Level), function()
-                APRCustomPath[APR.PlayerID] = {}
-                APR.routeconfig:GetSpeedRunPrefab()
-            end)
+                    APRCustomPath[APR.PlayerID] = {}
+                    APR.routeconfig:GetSpeedRunPrefab()
+                end)
         elseif APR.Level == APR.MaxLevelChromie then
             APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_TWW", format(L["RESET_ROUTE_FOR_TWW"], APR.Level),
                 function()
