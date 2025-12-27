@@ -133,7 +133,9 @@ if (APR.Faction == "Alliance") then
 
     }
 
-    APR.RouteList.Midnight = {}
+    APR.RouteList.Midnight = {
+        ["2248-Midnight-Intro"] = L["Midnight - Intro"],
+    }
 
     APR.RouteList.Custom = {
         ["84-EclipseGlaives-10-to-70"] = L["10-70 route by EclipseGlaives"],
