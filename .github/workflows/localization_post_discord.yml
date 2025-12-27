@@ -8,7 +8,7 @@ on:
         required: false
         default: "frFR,deDE,ruRU"
   schedule:
-    - cron: "0 * * * *"
+    - cron: "0 10,16 * * *"
 
 jobs:
   translations:
