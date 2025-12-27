@@ -16,17 +16,17 @@ APR.Portals.Coords = {
             ["JadeForestMoP"] = { x = 929.5, y = -9004.8 },
             ["StormshieldWoD"] = { x = 1004.4, y = -9036.6 },
             ["AzsunaLegion"] = { x = 991.9, y = -9054.2 },
-            ["BoralusBFA"] = { x = 876.7, y = -9098.1 },
-            ["Ashran"] = { x = 888.1, y = -9061.7 },
+            ["Ashran"] = { x = 1005.4, y = -9037.2 },
+            ["Dornogal"] = { x = 887.4, y = -9061.3 },
             ["Oribos"] = { x = 895.9, y = -9095 },
             ["Valdrakken"] = { x = 875.2, y = -9079.1 },
-            ["Dornogal"] = { x = 1014.2, y = -9070.8 },
             ["DarkPortal Talk"] = { x = 869.6, y = -9007.7 },
             ["DarkPortal"] = { x = -3207.5, y = -11902.7 },
             ["DalaranLegion"] = { x = 642.3, y = -8790.2 },
             ["HomeToStormwind"] = { x = -159.8, y = 3804.4 },
             ["StormwindToHome"] = { x = 907.4, y = -9076.4 },
             ["Bel'ameth"] = { x = 971.5, y = -9126 },
+            ["Silvermoon Midnight"] = { x = 876.5, y = -9097.4 },
 
             --Order Hall
             ["Paladin To Dalaran"] = { x = -5319.9, y = 2376.1 },
@@ -108,6 +108,9 @@ APR.Portals.Coords = {
             --K'aresh
             ["DornogalFromK'areshPortal"] = { x = -500, y = -1650.3 },
         },
+        [2537] = {
+            ["Stormwind"] = { x = -4812.8, y = 8565.5 },
+        }
 
     },
     ["Horde"] = {
@@ -133,7 +136,8 @@ APR.Portals.Coords = {
             ["Valdrakken"] = { x = -4499.9, y = 1472.5 },
             ["Dornogal"] = { x = -4525, y = 1427.4 },
             ["HomeToOgrimmar"] = { x = 189.0, y = 2089.9 },
-            ["OgrimmarToHome"] = { x = -4530.8, y = 1448.6 }
+            ["OgrimmarToHome"] = { x = -4530.8, y = 1448.6 },
+            ["Silvermoon Midnight"] = { x = -4480.6, y = 1463.2 },
         },
         [13] = {
             ["Orgrimmar"] = { x = 289.3, y = 2070.5 },
@@ -219,8 +223,16 @@ APR.Portals.Coords = {
             --K'aresh
             ["DornogalFromK'areshPortal"] = { x = -500, y = -1650.3 },
         },
+        [2537] = {
+            ["Orgrimmar"] = { x = -4800.2, y = 8552.4 },
+        }
     }
 }
+
+
+-- //TODO to be fix on release
+APR.Portals.Coords["Alliance"][13]["BoralusBFA"] = APR.isMidnightVersion and { x = 1014.2, y = -9070.8 } or
+{ x = 876.7, y = -9098.1 }
 
 APR.Portals.SwitchCont = {
     ["Alliance"] = {
@@ -240,7 +252,7 @@ APR.Portals.SwitchCont = {
         { continent = 13,   nextContinent = 2274, nextZone = 2248, portalKey = "Dornogal",                closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 619,  nextZone = 627,  portalKey = "DalaranLegion",           closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 619,  nextZone = 627,  portalKey = "Paladin To Dalaran" },
-        { continent = 13,   nextContinent = 619,  nextZone = 627,  portalKey = "Paladin To Dalaran" },
+        { continent = 13,   nextContinent = 2537, nextZone = 2395, portalKey = "Silvermoon Midnight",     closestTaxiNode = "Stormwind, Elwynn" },
 
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "The Exodar" },
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Exodar",                  closestTaxiNode = "Darnassus, Teldrassil" },
@@ -271,6 +283,7 @@ APR.Portals.SwitchCont = {
 
         { continent = 2274, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dornogal, Isle of Dorn", },
 
+        { continent = 2537, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind" },
     },
     ["Horde"] = {
         { continent = 12,   nextContinent = 13,   nextZone = 224,  portalKey = "STVZep",                 closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "USE_ZEPPELIN_TO" },
@@ -287,6 +300,7 @@ APR.Portals.SwitchCont = {
         { continent = 12,   nextContinent = 619,  nextZone = 627,  portalKey = "DalaranLegion",          closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 619,  nextZone = 630,  portalKey = "AzsunaLegion",           closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS_TO" },
         { continent = 12,   nextContinent = 13,   nextZone = 110,  portalKey = "Silvermoon",             closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS_TO" },
+        { continent = 12,   nextContinent = 2537, nextZone = 2395, portalKey = "Silvermoon Midnight",    closestTaxiNode = "Orgrimmar, Durotar" },
 
         { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar" },
         { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal" },
@@ -325,6 +339,8 @@ APR.Portals.SwitchCont = {
         { continent = 1550, nextContinent = 1550, nextZone = 1536, portalKey = "OribosInMaldraxxus",     closestTaxiNode = "Theater of Pain, Maldraxxus" },
 
         { continent = 2274, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dornogal, Isle of Dorn", },
+
+        { continent = 2537, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar" },
     },
 }
 
