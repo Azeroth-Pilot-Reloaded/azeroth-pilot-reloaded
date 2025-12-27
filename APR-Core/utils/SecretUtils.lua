@@ -15,6 +15,9 @@ function APRSecret:Attach(target)
     target.SafeUnitName = function(_, unit, fallback)
         return self:SafeUnitName(unit, fallback)
     end
+    target.SafeUnitNameUnmodified = function(_, unit, fallback)
+        return self:SafeUnitNameUnmodified(unit, fallback)
+    end
     target.SafeUnitClass = function(_, unit)
         return self:SafeUnitClass(unit)
     end
@@ -45,6 +48,17 @@ end
 
 function APRSecret:SafeUnitName(unit, fallback)
     local name, realm = UnitName(unit)
+    if not self:CanAccessValue(name) then
+        return fallback, nil
+    end
+    if not self:CanAccessValue(realm) then
+        return name, nil
+    end
+    return name, realm
+end
+
+function APRSecret:SafeUnitNameUnmodified(unit, fallback)
+    local name, realm = UnitNameUnmodified(unit)
     if not self:CanAccessValue(name) then
         return fallback, nil
     end
