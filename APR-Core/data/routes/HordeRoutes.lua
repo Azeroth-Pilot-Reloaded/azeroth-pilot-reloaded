@@ -107,7 +107,9 @@ if (APR.Faction == "Horde") then
         ["2451-Arathi-Highlands-Returning-Player"] = L["TWW - Arathi Highlands - Returning Player"],
     }
 
-    APR.RouteList.Midnight = {}
+    APR.RouteList.Midnight = {
+       ["2248-Midnight-Intro"] = L["Midnight - Intro"],
+    }
     APR.RouteList.Custom = {}
 
     -- Starting Route or custom
