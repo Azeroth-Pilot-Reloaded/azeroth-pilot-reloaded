@@ -154,7 +154,7 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
     local function handleTaxi(closestTaxiName, destTaxiName)
         APR.currentStep:AddExtraLineText("FLY_TO_" .. destTaxiName, L["FLY_TO"] .. " " .. destTaxiName)
         APR.currentStep:AddExtraLineText("CLOSEST_FP" .. closestTaxiName, L["CLOSEST_FP"] .. ": " .. closestTaxiName)
-        APR.transport.wrongZoneDestTaxiName = destTaxiName
+        self.wrongZoneDestTaxiName = destTaxiName
     end
 
     -- Pick the best matching portal (exact nextZone preferred, else closest backup).
@@ -342,17 +342,17 @@ function APR.transport:GetMeToRightZone(isRetry)
     end
 
     APR:UpdateQuestAndStep()
-    local currentStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    local currentRoute = APR.RouteQuestStepList[APR.ActiveRoute]
-    local step = currentRoute and currentStep and currentRoute[currentStep] or nil
+    local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
+    local currentRouteSteps = APR.RouteQuestStepList[APR.ActiveRoute]
+    local step = currentRouteSteps and currentStepIndex and currentRouteSteps[currentStepIndex] or nil
 
     local farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
     if APR:CheckIsInRouteZone() and not farAway then
         APR.IsInRouteZone = true
         -- Avoid unwanted auto taxi
-        APR.transport.wrongZoneDestTaxiName = nil
+        self.wrongZoneDestTaxiName = nil
         -- Reset flag, we are in the right zone
-        APR.transport._retryPending = false
+        self._retryPending = false
         return
     else
         -- Reset IsInRouteZone and continue routing
@@ -374,7 +374,7 @@ function APR.transport:GetMeToRightZone(isRetry)
         end
 
         -- Retry systems (Disabled)
-        if not isRetry and not APR.transport._retryPending then
+        if not isRetry and not self._retryPending then
             -- no logic for now
         end
 
@@ -415,7 +415,7 @@ function APR.transport:GetMeToRightZone(isRetry)
             if step.Coord then
                 local _, objectiveTaxiName = self:ClosestTaxi(step.Coord.x, step.Coord.y)
                 if playerTaxiNodeId ~= objectiveTaxiName then
-                    APR.transport.wrongZoneDestTaxiName = objectiveTaxiName
+                    self.wrongZoneDestTaxiName = objectiveTaxiName
                     APR.currentStep:AddExtraLineText(
                         "FLY_TO_" .. objectiveTaxiName,
                         L["FLY_TO"] .. " " .. objectiveTaxiName
