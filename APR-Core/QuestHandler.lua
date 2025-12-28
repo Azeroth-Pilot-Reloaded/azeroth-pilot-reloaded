@@ -164,6 +164,10 @@ function APR:UpdateStep()
             return
         end
 
+
+        -- Add Raid Icon SABT
+        APR.currentStep:PrepareRaidIcon(step)
+
         -- set the arrow coord before the step logic to avoid double completion
         APR.Arrow.currentStep = 0
         APR.Arrow:SetCoord()
@@ -905,8 +909,7 @@ function APR:UpdateStep()
             return
         end
 
-        -- Add Raid Icon SABT
-        APR.currentStep:PrepareRaidIcon(step)
+
         -- Set Quest Item Button
         APR:SetButton()
         APR.questOrderList:DelayedUpdate()
