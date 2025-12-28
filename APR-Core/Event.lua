@@ -629,37 +629,39 @@ function APR.event.functions.learnProfession(event, spellID, skillLineIndex, isG
 end
 
 function APR.event.functions.lootItem(event, ...)
-    if step and step.LootItems then
-        local flagged = 0
+    C_Timer.After(1, function()
+        if step and step.LootItems then
+            local flagged = 0
 
-        for _, lootItem in ipairs(step.LootItems) do
-            local stepItemID = lootItem.itemID
-            local requiredQuantity = math.max(lootItem.quantity or 1, 1)
+            for _, lootItem in ipairs(step.LootItems) do
+                local stepItemID = lootItem.itemID
+                local requiredQuantity = math.max(lootItem.quantity or 1, 1)
 
-            if stepItemID then
-                local currentQuantity = C_Item.GetItemCount(stepItemID)
+                if stepItemID then
+                    local currentQuantity = C_Item.GetItemCount(stepItemID)
 
-                if currentQuantity >= requiredQuantity and not tContains(APRItemLooted[APR.PlayerID], stepItemID) then
-                    tinsert(APRItemLooted[APR.PlayerID], stepItemID)
+                    if currentQuantity >= requiredQuantity and not tContains(APRItemLooted[APR.PlayerID], stepItemID) then
+                        tinsert(APRItemLooted[APR.PlayerID], stepItemID)
+                    end
+
+                    if currentQuantity >= requiredQuantity or tContains(APRItemLooted[APR.PlayerID], stepItemID) then
+                        flagged = flagged + 1
+                    end
+
+                    local itemName = C_Item.GetItemInfo(stepItemID) or UNKNOWN
+                    local label = format(L["LOOT_ITEM"], itemName)
+                    if requiredQuantity > 1 then
+                        label = label .. " (" .. currentQuantity .. "/" .. requiredQuantity .. ")"
+                    end
+                    APR.currentStep:UpdateQuestStep(stepItemID, label, stepItemID)
                 end
+            end
 
-                if currentQuantity >= requiredQuantity or tContains(APRItemLooted[APR.PlayerID], stepItemID) then
-                    flagged = flagged + 1
-                end
-
-                local itemName = C_Item.GetItemInfo(stepItemID) or UNKNOWN
-                local label = format(L["LOOT_ITEM"], itemName)
-                if requiredQuantity > 1 then
-                    label = label .. " (" .. currentQuantity .. "/" .. requiredQuantity .. ")"
-                end
-                APR.currentStep:UpdateQuestStep(stepItemID, label, stepItemID)
+            if flagged == #step.LootItems then
+                APR:UpdateNextStep()
             end
         end
-
-        if flagged == #step.LootItems then
-            APR:UpdateNextStep()
-        end
-    end
+    end)
 end
 
 function APR.event.functions.lvlUp(event, level, healthDelta, powerDelta, numNewTalents, numNewPvpTalentSlots,
