@@ -105,7 +105,8 @@ APR.TaxiNodes = {
             [669] = { x = -1051.1999511719, y = -566.88897705078, Name = "Eastpoint Tower, Hillsbrad" },
             [670] = { x = -979.57800292969, y = 622.85101318359, Name = "Strahnbrad, Alterac Mountains" },
             [681] = { x = 1518.9000244141, y = 1056.0600585938, Name = "Forsaken Rear Guard, Silverpine Forest" },
-            [1537] = { x = -3867.3200683594, y = -11771.200195312, Name = "Shattered Landing, Blasted Lands" }
+            [1537] = { x = -3867.3200683594, y = -11771.200195312, Name = "Shattered Landing, Blasted Lands" },
+            [3132] = { x = -5282.009765625, y = 8583.7998046875, Name = "The Royal Exchange, Silvermoon City" }
         },
         [113] = {
             [190] = { x = -4544.2998046875, y = 401.11999511719, Name = "New Agamand, Howling Fjord" },
@@ -342,7 +343,8 @@ APR.TaxiNodes = {
             [664] = { x = -5620.1499023438, y = -4183.8999023438, Name = "Firebeard's Patrol, Twilight Highlands" },
             [665] = { x = -4994.2797851562, y = -3146.919921875, Name = "Thundermar, Twilight Highlands" },
             [666] = { x = -5427.5297851562, y = -2689.4299316406, Name = "Kirthaven, Twilight Highlands" },
-            [1538] = { x = -3666.5700683594, y = -11254, Name = "Shattered Beachhead, Blasted Lands" }
+            [1538] = { x = -3666.5700683594, y = -11254, Name = "Shattered Beachhead, Blasted Lands" },
+            [3190] = { x = -2780.0700683594, y = 4512.1098632812, Name = "Silverglade Refuge, Eversong Woods" }
         },
         [113] = {
             [183] = { x = -5010.9702148438, y = 567.40997314453, Name = "Valgarde Port, Howling Fjord" },
@@ -497,7 +499,6 @@ APR.TaxiNodes = {
         },
         [13] = {
             [78] = { x = -3399.9299316406, y = 3133.3100585938, Name = "Naxxramas" },
-            [81] = { x = 0, y = 0, Name = "Filming" },
             [84] = { x = -3033.6101074219, y = 2965.5500488281, Name = "Plaguewood Tower, Eastern Plaguelands" },
             [85] = { x = -4354.7797851562, y = 3134.2600097656, Name = "Northpass Tower, Eastern Plaguelands" },
             [86] = { x = -4769.5600585938, y = 2524.4399414062, Name = "Eastwall Tower, Eastern Plaguelands" },
@@ -514,11 +515,7 @@ APR.TaxiNodes = {
             [172] = { x = 7322.08984375, y = 2531.1000976562, Name = "Ogri'La" },
             [205] = { x = -7747.580078125, y = 6789.7900390625, Name = "Zul'Aman, Ghostlands" },
             [213] = { x = -6908.3701171875, y = 13012.700195312, Name = "Shattered Sun Staging Area" },
-            [224] = { x = 0, y = 0, Name = "Borean Tundra, Naglevar" },
             [315] = { x = -5666.91015625, y = 2352.3701171875, Name = "Acherus: The Ebon Hold" },
-            [352] = { x = 0, y = 0, Name = "Isle of Conquest - Gunships" },
-            [376] = { x = 0, y = 0, Name = "Icecrown Raid - Airship Battle Taxi Paths" },
-            [377] = { x = 0, y = 0, Name = "Icecrown Dungeon - Gunships" },
             [383] = { x = -2694.4799804688, y = 1935.9699707031, Name = "Thondroril River, Eastern Plaguelands" },
             [521] = { x = 3481.1201171875, y = -4588.0498046875, Name = "Smuggler's Scar, Vashj'ir" },
             [522] = { x = 4285.080078125, y = -6105.6098632812, Name = "Silver Tide Hollow, Vashj'ir" },
@@ -531,8 +528,18 @@ APR.TaxiNodes = {
             [673] = { x = -1236.6300048828, y = -7123.0600585938, Name = "Iron Summit, Searing Gorge" },
             [675] = { x = -1025.7900390625, y = -8092.259765625, Name = "Flamestar Post, Burning Steppes" },
             [676] = { x = -1919.5300292969, y = -7865.9301757812, Name = "Chiselgrip, Burning Steppes" },
-            [2172] = { x = 0, y = 0, Name = "Disable Taxi Paths - Source - RRB" },
-            [2173] = { x = 0, y = 0, Name = "Disable Taxi Paths - Destination - RRB" }
+            [3102] = { x = -4507.3999023438, y = 8599.919921875, Name = "Thalassian University Teleport Base" },
+            [3103] = { x = -4505.3500976562, y = 8600.240234375, Name = "Thalassian University Teleport Top" },
+            [3106] = { x = -7875, y = 6780.9799804688, Name = "Camp Stonewash, Zul'Aman" },
+            [3125] = { x = -4781.419921875, y = 11245.299804688, Name = "Terrace of the Sun, Isle of Quel'Danas" },
+            [3126] = { x = -6670.6801757812, y = 3620.580078125, Name = "Torntusk Overlook, Zul'Aman" },
+            [3127] = { x = -7655.6000976562, y = 4391.8901367188, Name = "Amani'Zar Village, Zul'Aman" },
+            [3128] = { x = -6473.7998046875, y = 5114.33984375, Name = "Atal'Aman, Zul'Aman" },
+            [3129] = { x = -7580.1201171875, y = 6286.9799804688, Name = "Shadebasin Watch, Zul'Aman" },
+            [3130] = { x = -7113.9702148438, y = 6916.6401367188, Name = "Witherbark Bluffs, Zul'Aman" },
+            [3131] = { x = -4765.7202148438, y = 8444.3203125, Name = "Sanctum of Light, Silvermoon City" },
+            [3133] = { x = -4060.6398925781, y = 7338.4599609375, Name = "Fairbreeze Village, Eversong Woods" },
+            [3134] = { x = -4360.4301757812, y = 5945.0400390625, Name = "Tranquillien, Eversong Woods" }
         },
         [113] = {
             [226] = { x = 6661.6401367188, y = 3575.4399414062, Name = "Transitus Shield, Coldarra" },
@@ -706,7 +713,7 @@ APR.TaxiNodes = {
             [1761] = { x = 3585.0300292969, y = 5613.3999023438, Name = "Prepfoot, Highmountain" },
             [1764] = { x = 5807.2099609375, y = 3094.0600585938, Name = "Starsong Refuge, Val'sharah" },
             [1766] = { x = 6482.2900390625, y = 2841.7900390625, Name = "Garden of the Moon, Val'sharah" },
-            [1767] = { x = 4843.2900390625, y = 4483.4599609375, Name = "Nesingwary, Highmountain" },
+            [1767] = { x = 4843.2900390625, y = 4483.4599609375, Name = "Nesingwary's Retreat, Highmountain" },
             [1774] = { x = 4295.9501953125, y = -860.82800292969, Name = "Dalaran" },
             [1777] = { x = 5150.58984375, y = 3853.5500488281, Name = "Sylvan Falls, Highmountain" },
             [1778] = { x = 3500.1799316406, y = 3891.9499511719, Name = "Stonehoof Watch, Highmountain" },
@@ -942,7 +949,6 @@ APR.TaxiNodes = {
             [2962] = { x = -2735.7900390625, y = 2224.3200683594, Name = "Gundargaz, The Ringing Deeps" },
             [2963] = { x = -3782.6101074219, y = 1529.3000488281, Name = "Shadowvein Point, The Ringing Deeps" },
             [2970] = { x = -879.71899414063, y = 1820.6899414062, Name = "Tranquil Strand, Isle of Dorn" },
-            [2972] = { x = -1847.6300048828, y = 985.46002197266, Name = "Jeff the Flightmaster" },
             [2984] = { x = -112.17199707031, y = -3505.7700195312, Name = "The Ascending Reach" },
             [2988] = { x = 535.78497314453, y = 65.56770324707, Name = "The Incontinental Hotel" },
             [2996] = { x = 519.48602294922, y = -385.97900390625, Name = "The Heaps" },
@@ -952,15 +958,42 @@ APR.TaxiNodes = {
             [3000] = { x = -4803.2700195312, y = -180.31300354004, Name = "Gutterville, The Ringing Deeps" },
             [3003] = { x = 468.37298583984, y = -3585.3999023438, Name = "The Crown of Shadows" }
         },
+        [2694] = {
+            [3192] = { x = -1673.2700195312, y = -128.23399353027, Name = "Har'athir, Harandar" },
+            [3193] = { x = -517.57598876953, y = -160.14599609375, Name = "The Den, Harandar" },
+            [3194] = { x = -1313.6700439453, y = 1359.3399658203, Name = "Har'kuai, Harandar" },
+            [3195] = { x = 1176.6300048828, y = -876.85400390625, Name = "Har'alnor, Harandar" },
+            [3196] = { x = 888.09002685547, y = 1325.4799804688, Name = "Har'mara, Harandar" }
+        },
+        [2735] = {
+            [3072] = { x = -119.45999908447, y = 3770.830078125, Name = "Entrance Portal, Founder's Point" },
+            [3073] = { x = 169.87800598145, y = 3344.1899414062, Name = "Town Center, Founder's Point" },
+            [3074] = { x = 1068.8299560547, y = 3534.6398925781, Name = "Mear's Farm, Founder's Point" },
+            [3075] = { x = 1191.8599853516, y = 3115.5, Name = "The Outer Banks, Founder's Point" },
+            [3076] = { x = 598.96002197266, y = 3146.3701171875, Name = "Small Aerie, Founder's Point" },
+            [3077] = { x = 881.25, y = 2508.2800292969, Name = "Gilded Oaks, Founder's Point" },
+            [3078] = { x = -101.6490020752, y = 2679.0200195312, Name = "Brumewood Hollow, Founder's Point" },
+            [3079] = { x = -499.5539855957, y = 3276.3999023438, Name = "Stoneveil Ridge, Founder's Point" }
+        },
+        [2736] = {
+            [2972] = { x = 128.77299499512, y = 2011.7299804688, Name = "Entrance Gate, Razorwind Shores" },
+            [2973] = { x = -775.41497802734, y = 902.14898681641, Name = "Saltfang Shoals East, Razorwind Shores" },
+            [2974] = { x = 958.46697998047, y = 1800.1500244141, Name = "Runetotem's Bounty North, Razorwind Shores" },
+            [2975] = { x = 613.43402099609, y = 1154.7099609375, Name = "Runetotem's Bounty South, Razorwind Shores" },
+            [2976] = { x = 274.83898925781, y = 616.26202392578, Name = "The Bluffs, Razorwind Shores" },
+            [2978] = { x = -651.52099609375, y = 1769.7800292969, Name = "Cragthorn Highlands, Razorwind Shores" },
+            [2979] = { x = 206.55900573731, y = 1624.4200439453, Name = "The Common, Razorwind Shores" },
+            [2980] = { x = -169.33999633789, y = 1067.2900390625, Name = "The Bloom, Razorwind Shores" }
+        },
         [2738] = {
-            [3029] = { x = 5.41839981079, y = -636.51397705078, Name = "Tazavesh, K'aresh" },
-            [3030] = { x = -587.07800292969, y = -84.36460113525, Name = "Eco-Dome: Rhovan, K'aresh" },
+            [3029] = { x = 6.26562976837, y = -636.35101318359, Name = "Tazavesh, K'aresh" },
+            [3030] = { x = -570.47900390625, y = -140.32600402832, Name = "Eco-Dome: Rhovan, K'aresh" },
             [3031] = { x = -1099.3000488281, y = 1290.25, Name = "The Oasis, K'aresh" },
             [3032] = { x = 227.20100402832, y = 1610.0699462891, Name = "Shan'dorah, K'aresh" },
-            [3033] = { x = 1760.1099853516, y = 2071.4099121094, Name = "Shadow Point, K'aresh" },
-            [3034] = { x = 1281.2299804688, y = 1160.1800537109, Name = "Overlook Zo'Shuul, K'aresh" },
+            [3033] = { x = 1738.0100097656, y = 1964.2399902344, Name = "Shadow Point, K'aresh" },
+            [3034] = { x = 1276.1500244141, y = 1160.6800537109, Name = "Overlook Zo'Shuul, K'aresh" },
             [3035] = { x = 753.81597900391, y = -244.50199890137, Name = "Hosaas Rest, K'aresh" },
-            [3145] = { x = -218.55400085449, y = -1208.1300048828, Name = "Tazavesh, the Veiled Market" },
+            [3145] = { x = -217.3390045166, y = -1206.6500244141, Name = "Tazavesh, the Veiled Market" },
             [3146] = { x = -1040.1800537109, y = 1391.8199462891, Name = "The Oasis" },
             [3147] = { x = 249.98599243164, y = 1611.4300537109, Name = "Shan'dorah" },
             [3155] = { x = 1497.5100097656, y = 1891.1999511719, Name = "Shadow Point" },
@@ -968,11 +1001,25 @@ APR.TaxiNodes = {
             [3157] = { x = 1062.0100097656, y = 1201.5500488281, Name = "Overlook Zo'Shuul" },
             [3158] = { x = -170.86500549316, y = 562.82098388672, Name = "Lunnall River" },
             [3159] = { x = -1143.6999511719, y = 509.88198852539, Name = "North Sufaad" },
-            [3160] = { x = 367.91299438477, y = 28.47050094604, Name = "Naakroa" },
+            [3160] = { x = 365.99499511719, y = 25.08849906921, Name = "Naakroa" },
             [3161] = { x = 596.68402099609, y = 2027.4699707031, Name = "Fracture of Laacuna" },
             [3162] = { x = 771.22100830078, y = 1733.5600585938, Name = "Untethered Space" },
             [3163] = { x = 985.00897216797, y = -482.05599975586, Name = "Ruins of Yaathron" },
             [3164] = { x = 787.75500488281, y = -289.4049987793, Name = "Hosaas' Rest" }
+        },
+        [2771] = {
+            [3119] = { x = 1050.3000488281, y = 1661.9200439453, Name = "The Ingress, Voidstorm" },
+            [3120] = { x = 504.375, y = 657.25299072266, Name = "Locus Point, Voidstorm" },
+            [3121] = { x = -400.29000854492, y = 960.28997802734, Name = "Howling Ridge, Voidstorm" },
+            [3123] = { x = 250.42900085449, y = 2975.9399414062, Name = "Master's Perch, Voidstorm" }
+        },
+        [2965] = {
+            [3169] = { x = -608.91101074219, y = 493.3869934082, Name = "Base Node" },
+            [3170] = { x = -389.91799926758, y = 616.90600585938, Name = "Collapsar" },
+            [3171] = { x = -598.10400390625, y = 457.35598754883, Name = "Deep Well" },
+            [3172] = { x = -550.12701416016, y = 711.22100830078, Name = "Exposed Vein" },
+            [3173] = { x = -397.58499145508, y = 504.26599121094, Name = "Focal Point" },
+            [3174] = { x = -516.97399902344, y = 437.89099121094, Name = "Forge of Secrets" }
         }
     }
 }
