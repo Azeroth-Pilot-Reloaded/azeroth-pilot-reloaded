@@ -11,7 +11,41 @@ local optionsWidth = 1.2
 local lineColor = APR.Color.grayAlpha
 local customPathListeWidget = nil
 local tabRouteListWidget = nil
+local routeSearchWidget = nil
 local currentTabName = nil
+
+local routeSearchText = ""
+
+local function SetRouteSearchText(value)
+    routeSearchText = value or ""
+    if tabRouteListWidget and currentTabName then
+        SetRouteListTab(tabRouteListWidget, currentTabName)
+    end
+end
+
+local function ResetRouteSearchText()
+    routeSearchText = ""
+    if routeSearchWidget and routeSearchWidget.frame and routeSearchWidget.frame.editBox then
+        routeSearchWidget.frame.editBox:SetText("")
+        routeSearchWidget.frame.editBox:SetCursorPosition(0)
+    end
+end
+
+local function CreateRouteSearchOption()
+    return {
+        order = 2.5,
+        type = "input",
+        dialogControl = "RouteSearchFrame",
+        name = SEARCH,
+        width = "full",
+        get = function()
+            return routeSearchText
+        end,
+        set = function(_, value)
+            SetRouteSearchText(value)
+        end,
+    }
+end
 
 local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dracthyr Start", "Pandaren Neutral Start",
     "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start", "Worgen Start" }
@@ -151,6 +185,7 @@ local function GetConfigOptionTable()
                     },
                 }
             },
+            route_search = CreateRouteSearchOption(),
             Vanilla = {
                 order = 3,
                 name = "Vanilla",
@@ -160,6 +195,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "Vanilla",
                         dialogControl = "RouteListFrame",
                     },
@@ -174,6 +210,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "TheBurningCrusade",
                         dialogControl = "RouteListFrame",
                     },
@@ -188,6 +225,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "WrathOfTheLichKing",
                         dialogControl = "RouteListFrame",
                     },
@@ -202,6 +240,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "Cataclysm",
                         dialogControl = "RouteListFrame",
                     },
@@ -216,6 +255,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "MistsOfPandaria",
                         dialogControl = "RouteListFrame",
                     },
@@ -230,6 +270,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "WarlordsOfDraenor",
                         dialogControl = "RouteListFrame",
                     },
@@ -244,6 +285,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "Legion",
                         dialogControl = "RouteListFrame",
                     },
@@ -258,6 +300,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "BattleForAzeroth",
                         dialogControl = "RouteListFrame",
                     },
@@ -272,6 +315,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "Shadowlands",
                         dialogControl = "RouteListFrame",
                     },
@@ -286,6 +330,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "Dragonflight",
                         dialogControl = "RouteListFrame",
                     },
@@ -300,6 +345,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "TheWarWithin",
                         dialogControl = "RouteListFrame",
                     },
@@ -314,6 +360,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "Midnight",
                         dialogControl = "RouteListFrame",
                     },
@@ -328,6 +375,7 @@ local function GetConfigOptionTable()
                 args = {
                     route = {
                         type = "input",
+                        order = 1,
                         name = "Custom",
                         dialogControl = "RouteListFrame",
                     },
@@ -514,6 +562,40 @@ local function CreateRouteTableFrame(name)
     return frame
 end
 
+local function CreateRouteSearchFrame(name)
+    local frame = CreateFrame("Frame", name, UIParent)
+    frame:SetSize(400, 25)
+    frame:SetPoint("CENTER")
+
+    local label = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+    label:SetPoint("LEFT", frame, "LEFT", 10, 0)
+
+    local editBox = CreateFrame("EditBox", nil, frame, "InputBoxTemplate")
+    editBox:SetAutoFocus(false)
+    editBox:SetSize(250, 18)
+    editBox:SetPoint("LEFT", label, "RIGHT", 8, 0)
+    editBox:SetPoint("RIGHT", frame, "RIGHT", -10, 0)
+    editBox:SetTextInsets(6, 6, 0, 0)
+
+    editBox:SetScript("OnEscapePressed", function(self)
+        self:ClearFocus()
+    end)
+    editBox:SetScript("OnEnterPressed", function(self)
+        self:ClearFocus()
+    end)
+    editBox:SetScript("OnTextChanged", function(self, userInput)
+        if not userInput then
+            return
+        end
+        SetRouteSearchText(self:GetText() or "")
+    end)
+
+    frame.label = label
+    frame.editBox = editBox
+
+    return frame
+end
+
 function SetRouteListTab(widget, name)
     tabRouteListWidget = widget
     -- Hide the content before resetting the data
@@ -527,15 +609,38 @@ function SetRouteListTab(widget, name)
         widget.fontStringsContainer = {}
     end
 
-
-    local routes = APR.RouteList[name]
     local sortedRoutes = {}
+
+    -- Get the search text (case-insensitive)
+    local search = (routeSearchText or ""):gsub("^%s+", ""):gsub("%s+$", ""):lower()
+
     local yOffset = -15
 
-    -- Copy the routes into a new table for sorting
-    for fileName, routeName in pairs(routes) do
-        if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
-            tinsert(sortedRoutes, { fileName = fileName, routeName = routeName })
+    -- Copy the routes into a new table for sorting (with filter)
+    local function AddRoutesFromTab(tabName, routes)
+        if type(routes) ~= "table" then
+            return
+        end
+        for fileName, routeName in pairs(routes) do
+            if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
+                if search == "" then
+                    tinsert(sortedRoutes, { fileName = fileName, routeName = routeName, tabName = tabName })
+                else
+                    local rn = (routeName or ""):lower()
+                    local fn = (fileName or ""):lower()
+                    if rn:find(search, 1, true) or fn:find(search, 1, true) then
+                        tinsert(sortedRoutes, { fileName = fileName, routeName = routeName, tabName = tabName })
+                    end
+                end
+            end
+        end
+    end
+
+    if search == "" then
+        AddRoutesFromTab(name, APR.RouteList[name])
+    else
+        for tabName, routes in pairs(APR.RouteList) do
+            AddRoutesFromTab(tabName, routes)
         end
     end
 
@@ -551,7 +656,11 @@ function SetRouteListTab(widget, name)
 
         local noRoutesText = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         noRoutesText:SetPoint("LEFT")
-        noRoutesText:SetText(L["NO_ROUTE"])
+        if search ~= "" then
+            noRoutesText:SetText(L["NO_ROUTE"])
+        else
+            noRoutesText:SetText(L["NO_ROUTE"])
+        end
 
         -- Store the font string in the table
         tinsert(widget.fontStringsContainer, noRoutesContainer)
@@ -589,10 +698,11 @@ function SetRouteListTab(widget, name)
             end
             statusText:SetText(status)
 
+            local routeTabName = route.tabName or name
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                 GameTooltip:AddLine(route.routeName)
-                if IsRouteDisabled(name, route.routeName) then
+                if IsRouteDisabled(routeTabName, route.routeName) then
                     GameTooltip:AddLine(L["ROUTE_DISABLED"], 1, 1, 1, true)
                 else
                     GameTooltip:AddLine(L["MOVE_ROUTE_TO_CUSTOM_PATH"], 1, 1, 1, true)
@@ -616,7 +726,7 @@ function SetRouteListTab(widget, name)
                     APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end
             end)
-            if IsRouteDisabled(name, route.routeName) then
+            if IsRouteDisabled(routeTabName, route.routeName) then
                 nameText:SetTextColor(unpack(APR.Color.midGray))
                 lineContainer:SetScript("OnMouseDown", nil)
             end
@@ -626,6 +736,63 @@ function SetRouteListTab(widget, name)
         end
     end
     widget.frame:SetSize(400, -yOffset)
+end
+
+local function InitRouteSearchFrame(Type)
+    local function Constructor()
+        local Widget = {}
+
+        local frame = CreateRouteSearchFrame(Type)
+        frame.obj = Widget
+        frame.editBox.obj = Widget
+
+        Widget.frame = frame
+        Widget.type = Type
+        Widget.num = AceGUI:GetNextWidgetNum(Type)
+        Widget.userdata = {}
+        routeSearchWidget = Widget
+
+        Widget.OnAcquire = function(self)
+            self:SetDisabled(false)
+            self:SetFullWidth(true)
+        end
+
+        Widget.SetLabel = function(self, text)
+            self.frame.label:SetText(text or "")
+        end
+
+        Widget.SetText = function(self, text)
+            self.frame.editBox:SetText(text or "")
+            self.frame.editBox:SetCursorPosition(0)
+        end
+
+        Widget.OnWidthSet = function(self)
+            if self.resizing then return end
+            if self.AdjustHeightFunction then self:AdjustHeightFunction() end
+        end
+
+        Widget.SetDisabled = function(self, disabled)
+            self.disabled = disabled
+            if disabled then
+                self.frame.editBox:EnableMouse(false)
+                self.frame.editBox:ClearFocus()
+                self.frame.editBox:SetTextColor(0.5, 0.5, 0.5)
+                self.frame.label:SetTextColor(0.5, 0.5, 0.5)
+            else
+                self.frame.editBox:EnableMouse(true)
+                self.frame.editBox:SetTextColor(1, 1, 1)
+                self.frame.label:SetTextColor(1, 0.82, 0)
+            end
+        end
+
+        Widget.OnRelease = function(self)
+            self:SetDisabled(true)
+            self.frame:ClearAllPoints()
+        end
+
+        return AceGUI:RegisterAsWidget(Widget)
+    end
+    AceGUI:RegisterWidgetType(Type, Constructor, 1)
 end
 
 local function InitDialogControlFrame(Type, createFrameFunc, setLabelFunction)
@@ -653,6 +820,9 @@ local function InitDialogControlFrame(Type, createFrameFunc, setLabelFunction)
 
         -- usefull to get set the data from the tab name
         Widget.SetLabel = function(self, name)
+            if Type == "RouteListFrame" and name ~= currentTabName then
+                ResetRouteSearchText()
+            end
             currentTabName = name
             setLabelFunction(self, name)
         end
@@ -695,6 +865,7 @@ function APR.routeconfig:InitRouteConfig()
         APR:UpdateMapId()
         APR:UpdateStep()
     end)
+    InitRouteSearchFrame("RouteSearchFrame")
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
     InitDialogControlFrame("RouteListFrame", CreateRouteTableFrame, SetRouteListTab)
     return GetConfigOptionTable()
