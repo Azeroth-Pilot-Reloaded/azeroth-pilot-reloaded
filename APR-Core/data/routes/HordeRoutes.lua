@@ -108,7 +108,7 @@ if (APR.Faction == "Horde") then
     }
 
     APR.RouteList.Midnight = {
-       ["2248-Midnight-Intro"] = L["Midnight - Intro"],
+        ["2432-Midnight-Intro"] = L["Midnight - Intro"],
     }
     APR.RouteList.Custom = {}
 
