@@ -64,7 +64,7 @@ function APR:CheckIsInRouteZone()
         return
     end
     local routeZoneMapIDs, mapid, routeName, expansion = self:GetCurrentRouteMapIDsAndName()
-    local parentContinentMapID = self:GetPlayerParentMapID(Enum.UIMapType.Continent)
+    local parentContinentMapID = self:GetContinent()
     local parenttMapID = self:GetPlayerParentMapID()
     local currentMapID = C_Map.GetBestMapForUnit("player")
     local step = self:GetStep(self.ActiveRoute and APRData[self.PlayerID][self.ActiveRoute] or nil)
