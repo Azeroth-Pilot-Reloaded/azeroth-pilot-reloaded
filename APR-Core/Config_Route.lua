@@ -156,7 +156,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetMidnightPrefab()
                 end,
                 hidden = function()
-                    return not next(APR.RouteList.TheWarWithin)
+                    return not next(APR.RouteList.Midnight) or not APR.isMidnightVersion
                 end
             },
             reset_custom_path = {
@@ -364,7 +364,10 @@ local function GetConfigOptionTable()
                         name = "Midnight",
                         dialogControl = "RouteListFrame",
                     },
-                }
+                },
+                disabled = function()
+                    return not APR.isMidnightVersion
+                end
             },
             Custom = {
                 order = 15,
@@ -914,7 +917,9 @@ function APR.routeconfig:GetSpeedRunPrefab()
         self:GetDFPrefab()
     end
     self:GetTWWPrefab()
-    self:GetMidnightPrefab()
+    if APR.isMidnightVersion then
+        self:GetMidnightPrefab()
+    end
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
@@ -1112,6 +1117,7 @@ function APR.routeconfig:GetMidnightPrefab()
     if APR.Faction == "Neutral" then return end
 
     AddRouteToCustomPath(L["Midnight - Intro"])
+    AddRouteToCustomPath(L["Midnight - Eversong Woods - sojourner"])
 end
 
 function APR.routeconfig:GetPlayerSpecRoute(prefix)
