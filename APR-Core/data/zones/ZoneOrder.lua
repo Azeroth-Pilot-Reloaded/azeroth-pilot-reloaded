@@ -1666,6 +1666,10 @@
             [0000] = { Coord = { x = 166.0, y = -1975.1 }, zone = 2255, name = "ZEKVIR LAIR", type = "DELVE" },
             -- Undermine
             [2423] = { Coord = { x = 694.7, y = -13 }, zone = 2214, name = "SIDESTREET SLUICE", type = "DELVE" },
+        },
+        [2537] = {
+            -- Eversong Woods
+            [2502] = { Coord = { x = -4142, y = 4750.4 }, zone = 2395, name = "SHADOW ENCLAVE", type = "DELVE" },
         }
     },
     ExtensionRouteMaps = { -- MapID for each Categorie
