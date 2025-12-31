@@ -172,13 +172,9 @@ function APR:UpdateQpartPart()
                 local objective = quest.objectives[tonumber(objectiveId)]
                 if objective and objective.text then
                     -- search in the TrigText+ keys
-                    for key, value in pairs(step) do
-                        if string.match(key, "TrigText+") then
-                            if value and APR:ContainsText(objective.text, value) then
-                                self:UpdateNextStep()
-                                return
-                            end
-                        end
+                    if self:QpartPart_TrigTextMatch(step, tonumber(questId), objective.text) then
+                        self:UpdateNextStep()
+                        return
                     end
                 end
             end
@@ -187,13 +183,73 @@ function APR:UpdateQpartPart()
 end
 
 --- Advance QpartPart steps when the quest text from the UI matches trigger values.
-function APR:UpdateQpartPartWithQuesText(step, questText)
+function APR:UpdateQpartPartWithQuesText(step, questText, questID)
+    if self:QpartPart_TrigTextMatch(step, questID, questText) then
+        self:UpdateNextStep()
+        return
+    end
+end
+
+--- Checks if the provided objective text matches the trigger text for a specific quest part.
+-- @param step The current step or stage in the quest sequence.
+-- @param questID The unique identifier for the quest.
+-- @param objectiveText The text of the quest objective to be matched.
+-- @return boolean True if the objective text matches the trigger, false otherwise.
+function APR:QpartPart_TrigTextMatch(step, questID, objectiveText)
+    if not step then return false end
+
+    local currentPercent
+    if questID then
+        local questPercent = GetQuestProgressBarPercent(questID)
+        if questPercent then
+            currentPercent = math.floor(tonumber(questPercent) + 0.5)
+        end
+    end
+
     for key, value in pairs(step) do
-        if string.match(key, "TrigText+") then
-            if value and questText and APR:ContainsText(questText, value) then
-                self:UpdateNextStep()
-                return
+        if string.match(key, "TrigText+") and value and objectiveText then
+            -- If the trigger contains a %, we interpret it as a threshold
+            local wanted = tostring(value):match("(%d+)%s*%%")
+            if wanted and currentPercent then
+                wanted = tonumber(wanted)
+                if wanted and currentPercent >= wanted then
+                    return true
+                end
+            end
+
+            -- Otherwise text match
+            if APR:ContainsText(objectiveText, value) then
+                return true
             end
         end
     end
+
+    return false
+end
+
+--- Retrieves the quest text associated with a specific progress bar objective.
+-- @param questId number The unique identifier of the quest.
+-- @param objectiveId number The identifier of the specific objective within the quest.
+-- @return string The text description for the progress bar objective, or nil if not found.
+function APR:GetQuestTextForProgressBar(questId, objectiveId)
+    if not questId or objectiveId then
+        return
+    end
+
+    local questData = APR.ActiveQuests[questId]
+    if not questData then
+        return
+    end
+
+    local objective = questData.objectives[objectiveId]
+    if not objective then
+        return
+    end
+
+    local checkpbar = C_QuestLog.GetQuestObjectives(questId)
+    local questText = objective.text
+    if not string.find(questText, "%d") and checkpbar and checkpbar[objectiveId] and checkpbar[objectiveId].type == "progressbar" then
+        questText = questText .. " (" .. GetQuestProgressBarPercent(questId) .. "%)"
+    end
+    return questText
 end
