@@ -31,7 +31,7 @@ end
 -- Step filters remain centralized to avoid duplicating the skip counter logic elsewhere.
 function APR:SkipStepCondition(step)
     if self:StepFilterQuestHandler(step) then
-        APRData[self.PlayerID][AselfPR.ActiveRoute .. '-SkippedStep'] = (APRData[self.PlayerID]
+        APRData[self.PlayerID][self.ActiveRoute .. '-SkippedStep'] = (APRData[self.PlayerID]
             [self.ActiveRoute .. '-SkippedStep'] or 0) + 1
         self:UpdateNextStep()
         return true
