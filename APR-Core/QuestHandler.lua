@@ -469,20 +469,13 @@ function APR:UpdateStep()
                             tostring(objectiveIndex) .. " for questID: " .. tostring(questID))
                     elseif questData and questData.objectives and questData.objectives[objectiveIndex] then
                         if APR.IsInRouteZone then
-                            local obj = questData.objectives[objectiveIndex]
-                            local checkpbar = C_QuestLog.GetQuestObjectives(questID)
-                            local text = obj.text
+                            local questText = APR:GetQuestTextForProgressBar(questID, objectiveIndex)
+
                             APR:Debug("Qpart adding quest step: " ..
-                                tostring(questID) .. " obj: " .. tostring(objectiveIndex) .. " text: " .. tostring(text))
-                            if not string.find(text, "(.*)(%d+)(.*)") and checkpbar
-                                and checkpbar[objectiveIndex]
-                                and checkpbar[objectiveIndex].type == "progressbar"
-                            then
-                                APR.currentStep:AddQuestSteps(questID,
-                                    "(" .. GetQuestProgressBarPercent(questID) .. "%) " .. text, objectiveIndex)
-                            else
-                                APR.currentStep:AddQuestSteps(questID, text, objectiveIndex)
-                            end
+                                tostring(questID) ..
+                                " obj: " .. tostring(objectiveIndex) .. " text: " .. tostring(questText))
+
+                            APR.currentStep:AddQuestSteps(questID, questText, objectiveIndex)
                         end
                         questToHighlight = questToHighlight or questID
                     elseif not questData then
@@ -861,17 +854,11 @@ function APR:UpdateStep()
                 for _, objectiveId in pairs(objectives) do
                     objectiveId = tonumber(objectiveId)
                     if C_QuestLog.IsQuestFlaggedCompleted(questId) == false and not APRData[APR.PlayerID].BonusSkips[questId] then
-                        local objective
                         if questData and questData.objectives and questData.objectives[objectiveId]
                             and questData.objectives[objectiveId].status ~= APR.QUEST_STATUS.COMPLETE
                             and APR.IsInRouteZone
                         then
-                            objective = questData.objectives[objectiveId]
-                            local checkpbar = C_QuestLog.GetQuestObjectives(questId)
-                            local questText = objective.text
-                            if not string.find(questText, "(.*)(%d+)(.*)") and checkpbar and checkpbar[objectiveId] and checkpbar[objectiveId].type == "progressbar" then
-                                questText = "(" .. GetQuestProgressBarPercent(questId) .. "%) " .. questText
-                            end
+                            local questText = APR:GetQuestTextForProgressBar(questId, objectiveId)
                             APR.currentStep:AddQuestSteps(questId, questText, objectiveId)
                         end
                     end
@@ -1003,7 +990,7 @@ function APR:UpdateQuest()
                     if select(2, GetQuestObjectiveInfo(questID, i, false)) == "progressbar" and text then
                         if not APR.ProgressbarIgnore[questID .. "-" .. i] then
                             local percent = math.floor(tonumber(GetQuestProgressBarPercent(questID)) + 0.5)
-                            text = ("(%d%%) %s"):format(percent, text)
+                            text = ("%s (%d%%)"):format(text, percent)
                         end
                     end
 
