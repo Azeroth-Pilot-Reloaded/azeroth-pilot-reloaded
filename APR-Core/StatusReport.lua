@@ -74,8 +74,8 @@ function APR:getStatusReportInfos()
     local continent = C_Map.GetMapInfo(APR:GetContinent() or 0)
     local infoTable = {
         aprVersion = { "AddOn Version", APR.version },
-        wowVersion = { "Client Version", APR.wowpatch },
-        wowBuildVersion = { "Client Build", APR.wowbuild },
+        wowVersion = { "Client Version", select(1, GetBuildInfo()) },
+        wowBuildVersion = { "Client Build", select(2, GetBuildInfo()) },
         clientLanguage = { "Language", GetLocale() },
         currentTime = { "Time & Date", date() },
         currentRoute = { "Route", APR.ActiveRoute or NO_ACTIVE },
