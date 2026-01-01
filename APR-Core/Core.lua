@@ -9,7 +9,6 @@ APR.Faction = UnitFactionGroup("player") -- "Alliance", "Horde", "Neutral" or ni
 APR.Level = UnitLevel("player")
 APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
 APR.Gender = UnitSex("player")
-APR.MaxLevel = 80
 APR.MaxLevelChromie = 70
 APR.MinBoostLvl = 60
 APR.MaxBagSlots = 4
