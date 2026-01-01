@@ -232,7 +232,7 @@ end
 -- @param objectiveId number The identifier of the specific objective within the quest.
 -- @return string The text description for the progress bar objective, or nil if not found.
 function APR:GetQuestTextForProgressBar(questId, objectiveId)
-    if not questId or objectiveId then
+    if not questId or not objectiveId then
         return
     end
 
