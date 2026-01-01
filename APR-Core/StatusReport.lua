@@ -75,7 +75,6 @@ function APR:getStatusReportInfos()
     local infoTable = {
         aprVersion = { "AddOn Version", APR.version },
         wowVersion = { "Client Version", select(1, GetBuildInfo()) },
-        wowBuildVersion = { "Client Build", select(2, GetBuildInfo()) },
         clientLanguage = { "Language", GetLocale() },
         currentTime = { "Time & Date", date() },
         currentRoute = { "Route", APR.ActiveRoute or NO_ACTIVE },
@@ -232,7 +231,7 @@ function APR:createStatusStaticContent(StatusFrame)
     StatusFrame.Section1.Content = APR:createStatusContent(4, 260, StatusFrame.Section1, StatusFrame.Section1.Header)
     StatusFrame.Section1.Header.Text:SetFormattedText('Addon & Client|r')
 
-    local wowVersionText = string.format("%s (build %s)", statusInfos.wowVersion[2], statusInfos.wowBuildVersion[2])
+    local wowVersionText = string.format("%s", statusInfos.wowVersion[2])
     SetStatusLine(StatusFrame.Section1.Content.Line1, statusInfos.aprVersion[1], statusInfos.aprVersion[2],
         APR.HEXColor.green)
     SetStatusLine(StatusFrame.Section1.Content.Line2, statusInfos.wowVersion[1], wowVersionText, APR.HEXColor.green)
