@@ -147,6 +147,8 @@ if (APR.Faction == "Horde") then
             default = { expansion = "Dragonflight", key = "2118-DracthyrStart-Other", label = L["Dracthyr Start"] }
         },
         EarthenDwarf = { expansion = "TheWarWithin", key = "2248-TWW-Earthen", label = L["Earthen Dwarf Start"] },
+        Harronir = { expansion = "Midnight", key = "2413-Midnight-Haranir-Start", label = L["Midnight - Haranir Start"] },
+
 
 
         -- Classes

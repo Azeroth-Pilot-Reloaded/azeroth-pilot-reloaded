@@ -48,7 +48,7 @@ local function CreateRouteSearchOption()
 end
 
 local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dracthyr Start", "Pandaren Neutral Start",
-    "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start", "Worgen Start" }
+    "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start", "Worgen Start", "Earthen Dwarf Start" }
 ---------------------------------------------------------------------------------------
 ------------------------- Config functionality for Route ------------------------------
 ---------------------------------------------------------------------------------------
@@ -935,6 +935,8 @@ function APR.routeconfig:GetStartingZonePrefab()
             AddRouteToCustomPath(L["Death Knight Start"])
         elseif APR.ClassId == APR.Classes["Demon Hunter"] then
             AddRouteToCustomPath(L["Demon Hunter Start"])
+
+            -- Neutral Race
         elseif APR.Race == "Pandaren" then
             AddRouteToCustomPath(L["Pandaren Neutral Start"])
         elseif APR.Race == "Goblin" then
@@ -942,6 +944,12 @@ function APR.routeconfig:GetStartingZonePrefab()
             AddRouteToCustomPath(L["Goblin - Lost Isles"])
         elseif APR.Race == "Worgen" then
             AddRouteToCustomPath(L["Worgen Start"])
+        elseif APR.Race == "Dracthyr" then
+            AddRouteToCustomPath(L["Dracthyr Start"])
+        elseif APR.Race == "EarthenDwarf" then
+            AddRouteToCustomPath(L["Earthen Dwarf Start"])
+        elseif APR.Race == "Harronir" then
+            AddRouteToCustomPath(L["Midnight - Haranir Start"])
 
             -- Horde Allied Race
         elseif APR.Race == "ZandalariTroll" then
@@ -968,10 +976,6 @@ function APR.routeconfig:GetStartingZonePrefab()
             AddRouteToCustomPath(L["Mechagnome Start"])
         elseif APR.Race == "KulTiran" then
             AddRouteToCustomPath(L["Kul Tiran Start"])
-        elseif APR.Race == "Dracthyr" then
-            AddRouteToCustomPath(L["Dracthyr Start"])
-        elseif APR.Race == "EarthenDwarf" then
-            AddRouteToCustomPath(L["Earthen Dwarf Start"])
         elseif APR.Level < 10 then -- Skipable starting zone
             -- HORDE
             if (APR.Race == "Orc") then
@@ -1169,7 +1173,7 @@ end
 function APR.routeconfig:CheckRouteResetOnLvlUp()
     if not APR:IsTableEmpty(APRCustomPath[APR.PlayerID]) then
         local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
-        if APR:Contains(notSkippableRoute, currentRouteName) then
+        if APR:Contains(L[notSkippableRoute], currentRouteName) then
             return
         elseif APR.Level == 10 then
             APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_SPEEDRUN",
