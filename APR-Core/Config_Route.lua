@@ -1122,6 +1122,8 @@ function APR.routeconfig:GetMidnightPrefab()
 
     AddRouteToCustomPath(L["Midnight - Intro"])
     AddRouteToCustomPath(L["Midnight - Eversong Woods - sojourner"])
+
+    self:SendMessage("APR_Custom_Path_Update")
 end
 
 function APR.routeconfig:GetPlayerSpecRoute(prefix)
