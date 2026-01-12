@@ -1120,8 +1120,14 @@ end
 function APR.routeconfig:GetMidnightPrefab()
     if APR.Faction == "Neutral" then return end
 
+    -- AddRouteToCustomPath(L["Midnight - Pre Patch"])
     AddRouteToCustomPath(L["Midnight - Intro"])
     AddRouteToCustomPath(L["Midnight - Eversong Woods - sojourner"])
+    -- AddRouteToCustomPath(L["Midnight - Zul'Aman - sojourner"])
+    -- AddRouteToCustomPath(L["Midnight - Harandar - sojourner"])
+    -- AddRouteToCustomPath(L["Midnight - Voidstorm - sojourner"])
+    AddRouteToCustomPath(L["Midnight - Arators Journey"])
+    -- AddRouteToCustomPath(L["Midnight - Rage of the Ren'dorei"])
 
     self:SendMessage("APR_Custom_Path_Update")
 end
