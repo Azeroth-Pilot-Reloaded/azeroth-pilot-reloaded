@@ -1668,6 +1668,9 @@
             [2423] = { Coord = { x = 694.7, y = -13 }, zone = 2214, name = "SIDESTREET SLUICE", type = "DELVE" },
         },
         [2537] = {
+            -- Zul'aman
+            [2501] = { Coord = { x = -7562.7, y = 5951.4 }, zone = 2437, name = "Maisara Caverns", type = "DUNGEON" },
+            [2564] = { Coord = { x = -6304.8, y = 3257.1 }, zone = 2437, name = "Nalorakk", type = "DUNGEON" },
             -- Eversong Woods
             [2502] = { Coord = { x = -4142, y = 4750.4 }, zone = 2395, name = "SHADOW ENCLAVE", type = "DELVE" },
         }
