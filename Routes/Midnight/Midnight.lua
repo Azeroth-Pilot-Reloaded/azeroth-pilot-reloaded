@@ -15264,3 +15264,4 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
 -- APR.RouteQuestStepList["2395-Voidstorm"]= {}
 -- APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"]= {}
 -- APR.RouteQuestStepList["2395-Rage-of-the-Rendorei"]= {}
+-- APR.RouteQuestStepList["2395-The-Darkening-Sky"]= {}
