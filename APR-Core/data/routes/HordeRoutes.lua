@@ -112,14 +112,15 @@ if (APR.Faction == "Horde") then
         ["2432-Midnight-Intro"] = L["Midnight - Intro"],
         ["2393-Eversong-Woods"] = L["Midnight - Eversong Woods - sojourner"],
         ["2393-Eversong-Woods-Campaign-Only"] = L["Midnight - Eversong Woods - Campaign"],
-        ["2395-ZulAman"] = L["Midnight - ZulAman - sojourner"],
-        ["2395-ZulAman-Campaign-Only"] = L["Midnight - ZulAman - Campaign"],
+        ["2395-ZulAman"] = L["Midnight - Zul'Aman - sojourner"],
+        ["2395-ZulAman-Campaign-Only"] = L["Midnight - Zul'Aman - Campaign"],
         -- ["2395-Harandar"] = L["Midnight - Harandar - sojourner"],
         -- ["2395-Harandar-Campaign-Only"] = L["Midnight - Harandar - Campaign"],
         -- ["2395-Voidstorm"] = L["Midnight - Voidstorm - sojourner"],
         -- ["2395-Voidstorm-Campaign-Only"] = L["Midnight - Voidstorm - Campaign"],
         ["2395-Arators-Journey"] = L["Midnight - Arators Journey"],
         -- ["2395-Rage-of-the-Rendorei"] = L["Midnight - Rage of the Ren'dorei"],
+        -- ["2395-The-Darkening-Sky"] = L["Midnight - The Darkening Sky"],
     }
     APR.RouteList.Custom = {}
 
