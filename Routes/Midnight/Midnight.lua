@@ -15264,4 +15264,82 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
 -- APR.RouteQuestStepList["2395-Voidstorm"]= {}
 -- APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"]= {}
 -- APR.RouteQuestStepList["2395-Rage-of-the-Rendorei"]= {}
--- APR.RouteQuestStepList["2395-The-Darkening-Sky"]= {}
+
+APR.RouteQuestStepList["2395-The-Darkening-Sky"] = {
+    {
+        PickUp = { 91854 },
+        Coord = { x = -4608.6, y = 8460.9 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 1,
+        _comment = "Deepening Shadows"
+    },
+    {
+        QpartPart = { [91854] = { 3 } },
+        Coord = { x = -4593.5, y = 8614.6 },
+        GossipOptionIDs = { 135052 },
+        IsCampaignQuest = true,
+        TrigText = "1/5",
+        Zone = 2395,
+        _index = 2,
+    },
+    {
+        QpartPart = { [91854] = { 3 } },
+        Coord = { x = -4566.1, y = 8680.4 },
+        GossipOptionIDs = { 135052 },
+        IsCampaignQuest = true,
+        TrigText = "2/5",
+        Zone = 2395,
+        _index = 3,
+    },
+    {
+        QpartPart = { [91854] = { 3 } },
+        Coord = { x = -4616.3, y = 8687.1 },
+        GossipOptionIDs = { 135052 },
+        IsCampaignQuest = true,
+        TrigText = "3/5",
+        Zone = 2395,
+        _index = 4,
+    },
+    {
+        QpartPart = { [91854] = { 3 } },
+        Coord = { x = -4641.6, y = 8671.7 },
+        GossipOptionIDs = { 135052 },
+        IsCampaignQuest = true,
+        TrigText = "4/5",
+        Zone = 2395,
+        _index = 5,
+    },
+    {
+        Qpart = { [91854] = { 1 } },
+        Coord = { x = -4659.6, y = 8663.2 },
+        GossipOptionIDs = { 135112 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 6,
+    },
+    {
+        QpartPart = { [91854] = { 3 } },
+        Coord = { x = -4686.7, y = 8625.3 },
+        GossipOptionIDs = { 135052 },
+        IsCampaignQuest = true,
+        TrigText = "5/5",
+        Zone = 2395,
+        _index = 7,
+    },
+    {
+        Qpart = { [91854] = { 2 } },
+        Coord = { x = -4620, y = 8246.3 },
+        GossipOptionIDs = { 135203, 135204 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 8,
+    },
+    {
+        Done = { 91854 },
+        Coord = { x = -4608.8, y = 8460.9 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 9,
+    },
+}
