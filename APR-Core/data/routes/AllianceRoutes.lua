@@ -130,6 +130,7 @@ if (APR.Faction == "Alliance") then
         ["2214-TWW-Ringing-Deeps-Full"] = L["TWW - Ringing Deeps - All quests - Sojourner"],
         ["2248-TWW-K'aresh-Storyline"] = L["TWW - K'aresh Storyline"],
         ["2451-Arathi-Highlands-Returning-Player"] = L["TWW - Arathi Highlands - Returning Player"],
+        ["2248-TWW-K'aresh- Visions of a Shadowed Sun - Storyline"] = L["TWW - K'aresh - Visions of a Shadowed Sun"],
 
     }
 
