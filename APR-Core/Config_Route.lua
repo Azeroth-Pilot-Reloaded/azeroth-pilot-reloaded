@@ -1113,6 +1113,7 @@ function APR.routeconfig:GetTWWPrefab()
     AddRouteToCustomPath(L["TWW - Nightfall"])
     AddRouteToCustomPath(L["TWW - Rise of the Red Dawn"])
     AddRouteToCustomPath(L["TWW - K'aresh Storyline"])
+    AddRouteToCustomPath(L["TWW - K'aresh - Visions of a Shadowed Sun"])
 
     self:SendMessage("APR_Custom_Path_Update")
 end
