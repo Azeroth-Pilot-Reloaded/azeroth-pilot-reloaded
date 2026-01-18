@@ -109,7 +109,7 @@ if (APR.Faction == "Horde") then
     }
 
     APR.RouteList.Midnight = {
-        -- ["85-Midnight-PrePatch"]= L["Midnight - Pre Patch"],
+        ["85-Midnight-PrePatch"]= L["Midnight - Pre Patch"],
         ["2432-Midnight-Intro"] = L["Midnight - Intro"],
         ["2393-Eversong-Woods"] = L["Midnight - Eversong Woods - sojourner"],
         ["2393-Eversong-Woods-Campaign-Only"] = L["Midnight - Eversong Woods - Campaign"],
