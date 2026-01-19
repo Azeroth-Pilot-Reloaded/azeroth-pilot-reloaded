@@ -106,10 +106,11 @@ if (APR.Faction == "Horde") then
         ["2248-TWW-K'aresh-Storyline"] = L["TWW - K'aresh Storyline"],
         ["2451-Arathi-Highlands-Returning-Player"] = L["TWW - Arathi Highlands - Returning Player"],
         ["2248-TWW-K'aresh- Visions of a Shadowed Sun - Storyline"] = L["TWW - K'aresh - Visions of a Shadowed Sun"],
+        ["2371-TWW-K'aresh - In Search of Darkness - Storyline"] = L["TWW - In Search of Darkness"],
     }
 
     APR.RouteList.Midnight = {
-        ["85-Midnight-PrePatch"]= L["Midnight - Pre Patch"],
+        ["85-Midnight-PrePatch"] = L["Midnight - Pre Patch"],
         ["2432-Midnight-Intro"] = L["Midnight - Intro"],
         ["2393-Eversong-Woods"] = L["Midnight - Eversong Woods - sojourner"],
         ["2393-Eversong-Woods-Campaign-Only"] = L["Midnight - Eversong Woods - Campaign"],
