@@ -136,7 +136,11 @@ if (APR.Faction == "Alliance") then
     }
 
     APR.RouteList.Midnight = {
-        ["84-Midnight-PrePatch"]= L["Midnight - Pre Patch"],
+        -- Pre Patch
+        ["84-Midnight-PrePatch"] = L["Midnight - Pre Patch"],
+        ["2248-Unlock-void-elf-DH"] = L["Midnight - Unlock Void Elf Demon Hunter"],
+
+        -- Release
         ["2432-Midnight-Intro"] = L["Midnight - Intro"],
         ["2393-Eversong-Woods"] = L["Midnight - Eversong Woods - sojourner"],
         ["2393-Eversong-Woods-Campaign-Only"] = L["Midnight - Eversong Woods - Campaign"],
@@ -149,7 +153,7 @@ if (APR.Faction == "Alliance") then
         ["2395-Arators-Journey"] = L["Midnight - Arators Journey"],
 
         -- lvl max
-        -- ["2395-Rage-of-the-Rendorei"] = L["Midnight - Rage of the Ren'dorei"],
+        ["2395-Rage-of-the-Rendorei"] = L["Midnight - Rage of the Ren'dorei"],
         -- ["2395-The-Darkening-Sky"] = L["Midnight - The Darkening Sky"],
         ["2395-Midnight-Prey"] = L["Midnight - Prey"],
 
