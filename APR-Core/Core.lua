@@ -56,11 +56,13 @@ function APR:OnInitialize()
     self.github = GetAddOnMetadata("APR", "X-Github")
     self.discord = GetAddOnMetadata("APR", "X-Discord")
     self.interfaceVersion = select(4, GetBuildInfo())
-    self.isMidnightVersion = (tonumber(self.interfaceVersion) or 0) >= 120000
+    -- // TODO Remove on release
+    self.isMidnightPrePatchVersion = (tonumber(self.interfaceVersion) or 0) == 120000
+    self.isBetaMidnightVersion = (tonumber(self.interfaceVersion) or 0) >= 120001
 
     self.ActiveQuests = {}
     self.IsInRouteZone = false
-    self.MaxLevel = self.isMidnightVersion and 90 or 80
+    self.MaxLevel = self.isBetaMidnightVersion and 90 or 80
 
     -- APR INIT NEW SETTING
     self:Love()
