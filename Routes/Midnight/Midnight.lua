@@ -452,7 +452,7 @@ APR.RouteQuestStepList["2432-Midnight-Intro"] = {
         _index = 64,
     },
     {
-        Waypoint = 86733,
+        Waypoint = 86848,
         Coord = { x = -4504.1, y = 11463 },
         Range = 5,
         Zone = 2432,
