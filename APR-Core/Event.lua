@@ -772,12 +772,13 @@ end
 
 function APR.event.functions.raidIcon(event, ...)
     if step and step.RaidIcon then
-        if not APR.isMidnightPrePatchVersion or not APR.isBetaMidnightVersion then
-            local targetID = APR:GetTargetID("mouseover")
-            if targetID and tonumber(step.RaidIcon) == tonumber(targetID) then
-                if (not GetRaidTargetIndex("mouseover")) then
-                    SetRaidTarget("mouseover", 8)
-                end
+        if APR.isMidnightPrePatchVersion or APR.isBetaMidnightVersion then
+            return
+        end
+        local targetID = APR:GetTargetID("mouseover")
+        if targetID and tonumber(step.RaidIcon) == tonumber(targetID) then
+            if (not GetRaidTargetIndex("mouseover")) then
+                SetRaidTarget("mouseover", 8)
             end
         end
     end
