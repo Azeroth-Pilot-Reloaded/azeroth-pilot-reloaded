@@ -156,8 +156,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetMidnightPrefab()
                 end,
                 hidden = function()
-                    return not next(APR.RouteList.Midnight) or not APR.isMidnightPrePatchVersion or not APR
-                        .isBetaMidnightVersion
+                    return not next(APR.RouteList.Midnight)
                 end
             },
             reset_custom_path = {
@@ -366,9 +365,6 @@ local function GetConfigOptionTable()
                         dialogControl = "RouteListFrame",
                     },
                 },
-                disabled = function()
-                    return not APR.isMidnightPrePatchVersion or not APR.isBetaMidnightVersion
-                end
             },
             Custom = {
                 order = 15,
