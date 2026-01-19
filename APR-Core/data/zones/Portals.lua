@@ -231,8 +231,9 @@ APR.Portals.Coords = {
 
 
 -- //TODO to be fix on release
-APR.Portals.Coords["Alliance"][13]["BoralusBFA"] = APR.isMidnightVersion and { x = 1014.2, y = -9070.8 } or
-{ x = 876.7, y = -9098.1 }
+APR.Portals.Coords["Alliance"][13]["BoralusBFA"] = (APR.isMidnightPrePatchVersion or APR.isBetaMidnightVersion) and
+    { x = 1014.2, y = -9070.8 } or
+    { x = 876.7, y = -9098.1 }
 
 APR.Portals.SwitchCont = {
     ["Alliance"] = {
