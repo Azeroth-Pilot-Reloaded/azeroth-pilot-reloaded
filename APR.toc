@@ -42,6 +42,7 @@ APR-Core/utils/RouteUtils.lua
 APR-Core/utils/NavigationUtils.lua
 APR-Core/utils/UIUtils.lua
 APR-Core/utils/BuyMerchantUtils.lua
+APR-Core/utils/LootUtils.lua
 APR-Core/utils/PlayerPositionUtils.lua
 APR-Core/utils/SceneCutterUtils.lua
 APR-Core/utils/CoordinateFrame.lua
