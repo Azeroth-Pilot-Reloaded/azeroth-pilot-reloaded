@@ -56,7 +56,8 @@
         "ChatEdit_InsertLink",
         "ChatFrameUtil",
         "AFK",
-        "StaticPopup_Hide"
+        "StaticPopup_Hide",
+        "SEARCH"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {
