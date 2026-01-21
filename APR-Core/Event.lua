@@ -25,7 +25,7 @@ local events = {
     greeting = "QUEST_GREETING",
     group = { "GROUP_JOINED", "GROUP_LEFT" },
     learnProfession = "LEARNED_SPELL_IN_SKILL_LINE",
-    lootItem = "ITEM_PUSH",
+    lootItem = { "ITEM_PUSH", "QUEST_LOOT_RECEIVED"},
     lvlUp = "PLAYER_LEVEL_UP",
     merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
     party = "CHAT_MSG_ADDON",
@@ -628,41 +628,101 @@ function APR.event.functions.learnProfession(event, spellID, skillLineIndex, isG
     end
 end
 
-function APR.event.functions.lootItem(event, ...)
-    C_Timer.After(1, function()
-        if step and step.LootItems then
-            local flagged = 0
+-- Virtual counters for quest loot that is NOT stored in bags
+APR.QuestVirtualItemCount = APR.QuestVirtualItemCount or {}
 
+function APR.event.functions.lootItem(event, ...)
+    -- Rebuild UI + progression for LootItems and LootCurrencies from the current step
+    local function RefreshLootStepDisplay()
+        if not step then return end
+
+        local allDone = true
+
+        -- =========================
+        -- Handle items (step.LootItems)
+        -- =========================
+        if step.LootItems then
             for _, lootItem in ipairs(step.LootItems) do
-                local stepItemID = lootItem.itemID
+                local itemID = lootItem.itemID
                 local requiredQuantity = math.max(lootItem.quantity or 1, 1)
 
-                if stepItemID then
-                    local currentQuantity = C_Item.GetItemCount(stepItemID)
+                if itemID then
+                    -- Bag count (works for normal loot / many quest items too)
+                    local bagCount = C_Item.GetItemCount(itemID, true) or 0
 
-                    if currentQuantity >= requiredQuantity and not tContains(APRItemLooted[APR.PlayerID], stepItemID) then
-                        tinsert(APRItemLooted[APR.PlayerID], stepItemID)
+                    -- Virtual count (for quest loot received but not pushed to bags)
+                    local virtualCount = APR.QuestVirtualItemCount[itemID] or 0
+
+                    -- We take the best available information
+                    local currentQuantity = math.max(bagCount, virtualCount)
+
+                    -- Mark as completed if enough quantity
+                    if currentQuantity >= requiredQuantity and not tContains(APRItemLooted[APR.PlayerID], itemID) then
+                        tinsert(APRItemLooted[APR.PlayerID], itemID)
                     end
 
-                    if currentQuantity >= requiredQuantity or tContains(APRItemLooted[APR.PlayerID], stepItemID) then
-                        flagged = flagged + 1
+                    local isDone = (currentQuantity >= requiredQuantity) or tContains(APRItemLooted[APR.PlayerID], itemID)
+                    if not isDone then
+                        allDone = false
                     end
 
-                    local itemName = C_Item.GetItemInfo(stepItemID) or UNKNOWN
+                    -- UI update
+                    local itemName = C_Item.GetItemInfo(itemID) or UNKNOWN
                     local label = format(L["LOOT_ITEM"], itemName)
                     if requiredQuantity > 1 then
                         label = label .. " (" .. currentQuantity .. "/" .. requiredQuantity .. ")"
                     end
-                    APR.currentStep:UpdateQuestStep(stepItemID, label, stepItemID)
+
+                    APR.currentStep:UpdateQuestStep(itemID, label, itemID)
                 end
             end
+        end
 
-            if flagged == #step.LootItems then
-                APR:UpdateNextStep()
+        -- If everything required by this step is completed -> next step
+        -- (only if we actually have requirements)
+        local hasRequirements = (step.LootItems and #step.LootItems > 0)
+        if hasRequirements and allDone then
+            APR:UpdateNextStep()
+        end
+    end
+
+    -- =========================
+    -- ITEM_PUSH (bag-based loot)
+    -- =========================
+    if event == "ITEM_PUSH" then
+        -- Small delay: item count might not be ready immediately
+        C_Timer.After(1, function()
+            RefreshLootStepDisplay()
+        end)
+        return
+    end
+
+    -- =========================
+    -- QUEST_LOOT_RECEIVED (quest items not always stored in bags)
+    -- =========================
+    if event == "QUEST_LOOT_RECEIVED" then
+        local questID, itemLink, quantity = ...
+        quantity = quantity or 1
+
+        if itemLink then
+            local itemID = select(1, C_Item.GetItemInfoInstant(itemLink))
+            if itemID then
+                APR:Debug("QUEST_LOOT_RECEIVED:", "questID=" .. tostring(questID), itemLink, "x" .. quantity)
+
+                -- If bag count does NOT increase for this quest loot,
+                -- we store it virtually to track progress reliably.
+                local bagCount = C_Item.GetItemCount(itemID, true) or 0
+                if bagCount == 0 then
+                    APR.QuestVirtualItemCount[itemID] = (APR.QuestVirtualItemCount[itemID] or 0) + quantity
+                end
+
+                RefreshLootStepDisplay()
             end
         end
-    end)
+        return
+    end
 end
+
 
 function APR.event.functions.lvlUp(event, level, healthDelta, powerDelta, numNewTalents, numNewPvpTalentSlots,
                                    strengthDelta, agilityDelta, staminaDelta, intellectDelta)
