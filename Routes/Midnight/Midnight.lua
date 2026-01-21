@@ -8505,6 +8505,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         Coord = { x = -4536.5, y = 4260 },
         Range = 30,
         IsCampaignQuest = true,
+        NonSkippableWaypoint = true,
         Zone = 2395,
         _index = 22,
     },
@@ -15982,7 +15983,7 @@ APR.RouteQuestStepList["2395-Rage-of-the-Rendorei"] = {
         _index = 1,
     },
     {
-        Waypoint = 94933,
+        Waypoint = 92630,
         Coord = { x = -4841.7, y = 8538.9 },
         ExtraLineText = "USE_PORTAL",
         Range = 5,
