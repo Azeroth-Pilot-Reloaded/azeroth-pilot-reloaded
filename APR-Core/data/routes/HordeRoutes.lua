@@ -111,7 +111,7 @@ if (APR.Faction == "Horde") then
 
     APR.RouteList.Midnight = {
         -- Pre Patch
-        ["85-Midnight-PrePatch"] = L["Midnight - Pre Patch"],
+        ["2395-Midnight-Pre-Patch"] = L["Midnight - Pre Patch"],
         ["2248-Unlock-void-elf-DH"] = L["Midnight - Unlock Void Elf Demon Hunter"],
 
         -- Release
