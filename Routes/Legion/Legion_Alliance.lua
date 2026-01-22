@@ -1746,9 +1746,8 @@ if APR.Faction == "Alliance" then
             _index = 4,
         },
         {
-            Waypoint = 49772,
+            TakePortal = { QuestID = 49772, ZoneId = 84 },
             Coord = { x = 1469, y = 499.2 },
-            ExtraLineText = "USE_PORTAL_STORMWIND",
             Range = 2,
             Zone = 941,
             _index = 5,
