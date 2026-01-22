@@ -549,6 +549,31 @@ function APR:UpdateStep()
                     APR.currentStep:AddQuestStepsWithDetails("PickUp", L["PICK_UP_Q"], uncompletedIDs)
                 end
             end
+        elseif step.TakePortal then
+            local portalData = step.TakePortal
+
+            local questID = portalData.QuestID
+            local zoneId = portalData.ZoneId
+            local currentMapID = C_Map.GetBestMapForUnit("player")
+            local parentMapID = APR:GetPlayerParentMapID()
+
+            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                APR:NextQuestStep()
+                return
+            end
+
+            if zoneId and (currentMapID == zoneId or parentMapID == zoneId) then
+                APR:NextQuestStep()
+                return
+            end
+
+            if APR.IsInRouteZone then
+                local mapInfo = C_Map.GetMapInfo(zoneId)
+                local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
+                local text = string.format(L["USE_PORTAL_TO"], zoneName)
+
+                APR.currentStep:AddExtraLineText("TAKE_PORTAL", text)
+            end
         elseif (step.Waypoint) then
             local canAutoSkipWaypoint = not step.NonSkippableWaypoint
 

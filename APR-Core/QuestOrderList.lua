@@ -687,6 +687,21 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local leaveText = (leaveKey and L[leaveKey]) or L["SCENARIO"] or UNKNOWN
                 container, activeQuestId  = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
                     leaveText, questInfo, color, isCurrentStep)
+            elseif step.TakePortal then
+                local portalData = step.TakePortal
+                local questID = portalData.QuestID
+                local zoneId = portalData.ZoneId
+                local currentMapID = C_Map.GetBestMapForUnit("player")
+                local parentMapID = APR:GetPlayerParentMapID()
+                local arrived = zoneId and (currentMapID == zoneId or parentMapID == zoneId)
+                local completed = (questID and C_QuestLog.IsQuestFlaggedCompleted(questID)) or arrived
+                local color = colorByCompletion(completed, CurStep, stepIndex)
+                local mapInfo = C_Map.GetMapInfo(zoneId)
+                local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
+                local stepText = string.format(L["USE_PORTAL_TO"], ':')
+                local questInfo = { { questID = zoneName } }
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                    stepText, questInfo, color, isCurrentStep)
             elseif step.Waypoint then
                 local questID = step.Waypoint
                 local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), CurStep, stepIndex)

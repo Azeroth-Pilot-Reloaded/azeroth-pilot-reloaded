@@ -25,6 +25,7 @@ local events = {
     greeting = "QUEST_GREETING",
     group = { "GROUP_JOINED", "GROUP_LEFT" },
     learnProfession = "LEARNED_SPELL_IN_SKILL_LINE",
+    leaveCombat = "PLAYER_REGEN_ENABLED",
     lootItem = { "ITEM_PUSH", "QUEST_LOOT_RECEIVED" },
     lvlUp = "PLAYER_LEVEL_UP",
     merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
@@ -43,9 +44,7 @@ local events = {
     treasure = "CHAT_MSG_COMBAT_XP_GAIN",
     updateQuest = { "QUEST_LOG_UPDATE", "UNIT_QUEST_LOG_CHANGED" },
     vehicle = "UNIT_ENTERED_VEHICLE",
-    enterCombat = "PLAYER_REGEN_DISABLED",
-    enterWorld = "PLAYER_REGEN_DISABLED",
-    leaveCombat = "PLAYER_REGEN_ENABLED",
+    zone = { "ZONE_CHANGED", "ZONE_CHANGED_INDOORS", "ZONE_CHANGED_NEW_AREA", "PLAYER_ENTERING_WORLD", "WAYPOINT_UPDATE" },
 }
 
 ---------------------------------------------------------------------------------------
@@ -628,6 +627,12 @@ function APR.event.functions.learnProfession(event, spellID, skillLineIndex, isG
     end
 end
 
+function APR.event.functions.leaveCombat(event, ...)
+    APR.currentStep:FlushPendingContainers()
+    APR.currentStep:ProcessPendingStepButtons()
+    APR:UpdateQuest()
+end
+
 function APR.event.functions.lootItem(event, ...)
     if event == "ITEM_PUSH" then
         C_Timer.After(1, function()
@@ -964,17 +969,33 @@ function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isCont
     end
 end
 
-function APR.event.functions.enterCombat(event, ...)
-end
+function APR.event.functions.zone(event, ...)
+    if step and step.TakePortal then
+        local portalData = step.TakePortal
+        local zoneId = portalData.ZoneId
+        local currentMapID = C_Map.GetBestMapForUnit("player")
+        local parentMapID = APR:GetPlayerParentMapID()
+        if currentMapID == zoneId or parentMapID == zoneId then
+            APR:UpdateNextStep()
+        end
+    end
 
-function APR.event.functions.enterWorld(event, ...)
-    -- To init data when the player enter in the world
-end
-
-function APR.event.functions.leaveCombat(event, ...)
-    APR.currentStep:FlushPendingContainers()
-    APR.currentStep:ProcessPendingStepButtons()
-    APR:UpdateQuest()
+    -- Transport logic
+    if event == "PLAYER_ENTERING_WORLD" then
+        APR.transport:GetMeToRightZone()
+    end
+    if event == "ZONE_CHANGED" or
+        event == "ZONE_CHANGED_INDOORS" or
+        event == "ZONE_CHANGED_NEW_AREA" or
+        event == "WAYPOINT_UPDATE"
+    then
+        if IsInInstance() and not APR:IsInstanceWithUI() then
+            return
+        end
+        if not APR.IsInRouteZone and APR.ActiveRoute then
+            APR.transport:GetMeToRightZone()
+        end
+    end
 end
 
 ---------------------------------------------------------------------------------------
