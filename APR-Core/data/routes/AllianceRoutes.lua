@@ -59,9 +59,7 @@ function APR:InitAllianceRoutes()
             ["542-DesMephisto-SpiresOfArak"] = L["WOD08 - Spires of Arak"],
         },
 
-        Legion = {
-            ["84-Intro-Legion"] = L["Legion - Intro"],
-        },
+        Legion = {},
 
         BattleForAzeroth = {
             ["84-BFA-Stormwind"] = L["BFA01 - Intro"],
@@ -105,6 +103,13 @@ function APR:InitAllianceRoutes()
 
         -- Classes
     }
+
+    -- For Void elf
+    if APR.ClassId == APR.Classes["Demon Hunter"] then
+        APR.RouteList.Legion["84-Intro-Legion-DH"] = L["Legion - Intro"]
+    else
+        APR.RouteList.Legion["84-Intro-Legion"] = L["Legion - Intro"]
+    end
 
     -- WARNING Class before race
     ---

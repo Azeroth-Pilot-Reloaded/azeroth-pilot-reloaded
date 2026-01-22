@@ -278,6 +278,137 @@ if APR.Faction == "Alliance" then
         },
     }
 
+    APR.RouteQuestStepList["84-Intro-Legion-DH"] = {
+        {
+            Qpart = { [95215] = { 1 } },
+            Button = { ["95215-1"] = 268551 },
+            NoArrow = true,
+            Zone = 84,
+            _index = 1,
+        },
+        {
+            Done = { 95215 },
+            Coord = { x = 461.4, y = -8539.7 },
+            Zone = 84,
+            _index = 2,
+        },
+        {
+            PickUp = { 39691 },
+            Coord = { x = 461.4, y = -8539.7 },
+            Zone = 84,
+            _index = 3,
+        },
+        {
+            Qpart = { [39691] = { 1 } },
+            Coord = { x = 270.9, y = -8394.8 },
+            Range = 5,
+            Zone = 84,
+            _index = 4,
+        },
+        {
+            Done = { 39691 },
+            Coord = { x = 257, y = -8386.7 },
+            Zone = 84,
+            _index = 5,
+        },
+        {
+            PickUp = { 44471 },
+            Coord = { x = 257, y = -8386.7 },
+            Zone = 84,
+            _index = 6,
+        },
+        {
+            Qpart = { [44471] = { 1 } },
+            Coord = { x = 257, y = -8386.7 },
+            SpellButton = { ["44471-1"] = 188501 },
+            Range = 5,
+            Zone = 84,
+            _index = 7,
+        },
+        {
+            Done = { 44471 },
+            Coord = { x = 257, y = -8386.7 },
+            Zone = 84,
+            _index = 8,
+        },
+        {
+            PickUp = { 44463 },
+            Coord = { x = 257, y = -8386.7 },
+            Zone = 84,
+            _index = 9,
+        },
+        {
+            Qpart = { [44463] = { 1 } },
+            Coord = { x = 230.9, y = -8361.8 },
+            GossipOptionIDs = { 45043 },
+            Zone = 84,
+            _index = 10,
+        },
+        {
+            Qpart = { [44463] = { 2 } },
+            Coord = { x = 272.4, y = -8342.1 },
+            Range = 30,
+            Zone = 84,
+            _index = 11,
+        },
+        {
+            Done = { 44463 },
+            Coord = { x = 232.9, y = -8363.5 },
+            Zone = 84,
+            _index = 12,
+        },
+        {
+            PickUp = { 44473 },
+            Coord = { x = 232.9, y = -8363.5 },
+            Zone = 84,
+            _index = 13,
+        },
+        {
+            Done = { 44473 },
+            Coord = { x = 1023.6, y = -8895.9 },
+            Zone = 84,
+            _index = 14,
+        },
+        {
+            PickUp = { 44663 },
+            Coord = { x = 1023.6, y = -8895.9 },
+            Zone = 84,
+            _index = 15,
+        },
+        {
+            Qpart = { [44663] = { 1 } },
+            Coord = { x = 871.3, y = -9010.2 },
+            GossipOptionIDs = { 51032 },
+            Zone = 84,
+            _index = 16,
+        },
+        {
+            Waypoint = 44663,
+            Coord = { x = -2044.6, y = -11078.5 },
+            Range = 5,
+            Zone = 42,
+            _index = 17,
+        },
+        {
+            Qpart = { [44663] = { 2 } },
+            Coord = { x = -2025, y = -11112.2 },
+            GossipOptionIDs = { 45530 },
+            Zone = 42,
+            _index = 18,
+        },
+        {
+            Done = { 44663 },
+            Coord = { x = 4398.9, y = -834.1 },
+            Zone = 627,
+            _index = 19,
+        },
+        {
+            RouteCompleted = true,
+            _index = 20,
+        },
+    }
+
+
     APR.RouteQuestStepList["634-Stormheim"] = {
         {
             Done = { 39800 },
