@@ -2577,7 +2577,7 @@ if APR.Faction == "Horde" then
         },
     }
 
-    APR.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = {
+    APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
         {
             PickUp = { 33543 },
             LeaveQuests = { 34070, 34072 },
