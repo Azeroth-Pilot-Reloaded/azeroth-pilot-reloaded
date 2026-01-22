@@ -457,11 +457,6 @@ end
 APR.transport.eventFrame = CreateFrame("Frame")
 APR.transport.eventFrame:RegisterEvent("TAXIMAP_OPENED")
 APR.transport.eventFrame:RegisterEvent("PLAYER_CONTROL_LOST")
-APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED")
-APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED_INDOORS")
-APR.transport.eventFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-APR.transport.eventFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
-APR.transport.eventFrame:RegisterEvent("WAYPOINT_UPDATE")
 APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if not APR.settings.profile.enableAddon then
         return
@@ -471,22 +466,8 @@ APR.transport.eventFrame:SetScript("OnEvent", function(self, event, ...)
     if APR.settings.profile.showEvent then
         APR:PrintInfo("EVENT: Transport - " .. event)
     end
-    if event == "PLAYER_ENTERING_WORLD" then
-        APR.transport:GetMeToRightZone()
-    end
 
-    if event == "ZONE_CHANGED" or
-        event == "ZONE_CHANGED_INDOORS" or
-        event == "ZONE_CHANGED_NEW_AREA" or
-        event == "WAYPOINT_UPDATE"
-    then
-        if IsInInstance() and not APR:IsInstanceWithUI() then
-            return
-        end
-        if not APR.IsInRouteZone and APR.ActiveRoute then
-            APR.transport:GetMeToRightZone()
-        end
-    elseif (event == "TAXIMAP_OPENED") then
+    if (event == "TAXIMAP_OPENED") then
         ------------------------------------------
         --------------- Save FP ------------------
         ------------------------------------------
