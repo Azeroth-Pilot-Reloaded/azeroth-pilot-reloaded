@@ -935,6 +935,7 @@ function APR.routeconfig:GetStartingZonePrefab()
             AddRouteToCustomPath(L["Death Knight Start"])
         elseif APR.ClassId == APR.Classes["Demon Hunter"] and APR.Race ~= "VoidElf" then
             AddRouteToCustomPath(L["Demon Hunter Start"])
+            AddRouteToCustomPath(L["Legion - Intro"])
 
             -- Neutral Race
         elseif APR.Race == "Pandaren" then
@@ -968,6 +969,9 @@ function APR.routeconfig:GetStartingZonePrefab()
             -- Alliance Allied Race
         elseif APR.Race == "VoidElf" then
             AddRouteToCustomPath(L["Void Elf Start"])
+            if APR.ClassId == APR.Classes["Demon Hunter"] then
+                AddRouteToCustomPath(L["Legion - Intro"])
+            end
         elseif APR.Race == "LightforgedDraenei" then
             AddRouteToCustomPath(L["Lightforged Draenei Start"])
         elseif APR.Race == "DarkIronDwarf" then
