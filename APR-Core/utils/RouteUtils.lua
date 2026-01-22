@@ -12,6 +12,31 @@ APR.ConditionalRouteRegistry = {
     covenant = { ... },
 }
 
+function APR:assignRoutes(routes)
+    if not routes then return end
+
+    if routes.expansion and routes.key and routes.label then
+        APR.RouteList[routes.expansion][routes.key] = routes.label
+    elseif type(routes) == "table" then
+        for _, route in ipairs(routes) do
+            if route.expansion and route.key and route.label then
+                APR.RouteList[route.expansion][route.key] = route.label
+            end
+        end
+    end
+end
+
+function APR:MergeExpansionRoutes(routesByExpansion)
+    -- merge expansion route tables in APR.RouteList[expansion]
+    for expansion, routes in pairs(routesByExpansion) do
+        self.RouteList[expansion] = self.RouteList[expansion] or {}
+
+        for routeKey, label in pairs(routes) do
+            self.RouteList[expansion][routeKey] = label
+        end
+    end
+end
+
 function APR:ResetRoute(targetedRoute)
     self:Debug("Function: APR:ResetRoute()", targetedRoute)
     APRData[self.PlayerID][targetedRoute] = 1
@@ -125,8 +150,8 @@ function APR:OverrideRouteData()
                 ["543-DesMephisto-Gorgrond-Lumbermill"]
         end
         if C_QuestLog.IsQuestFlaggedCompleted(34992) then
-            self.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = nil
-            self.RouteQuestStepList["543-DesMephisto-Gorgrond-p1"] = self.RouteQuestStepList
+            self.RouteQuestStepList["543-DesMephisto-Gorgrond"] = nil
+            self.RouteQuestStepList["543-DesMephisto-Gorgrond"] = self.RouteQuestStepList
                 ["543-DesMephisto-Gorgrond-Lumbermill"]
         end
     end

@@ -79,6 +79,9 @@ local function GetConfigOptionTable()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetRemixPrefab()
                 end,
+                hidden = function()
+                    return not APR:IsRemixCharacter()
+                end,
             },
             WoD_prefab = {
                 order = 1.2,
@@ -924,11 +927,13 @@ function APR.routeconfig:GetStartingZonePrefab()
         AddRouteToCustomPath(L["TWW - Arathi Highlands - Returning Player"])
     elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and (APR.Level < APR.MinBoostLvl or APR.Level < 10) then -- first quest from Exile's Reach + boost
         --None skipable starting zone
-        if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then                                                                                  -- Allied DK
+        if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then
+            -- Allied DK
             AddRouteToCustomPath(L["Allied Death Knight Start"])
-        elseif APR.ClassId == APR.Classes["Death Knight"] then                                                                                                   -- DK
+        elseif APR.ClassId == APR.Classes["Death Knight"] then
+            -- DK
             AddRouteToCustomPath(L["Death Knight Start"])
-        elseif APR.ClassId == APR.Classes["Demon Hunter"] then
+        elseif APR.ClassId == APR.Classes["Demon Hunter"] and APR.Race ~= "VoidElf" then
             AddRouteToCustomPath(L["Demon Hunter Start"])
 
             -- Neutral Race
@@ -1116,9 +1121,11 @@ end
 function APR.routeconfig:GetMidnightPrefab()
     if APR.Faction == "Neutral" then return end
 
-    if not APR.isBetaMidnightVersion and APR.isMidnightPrePatchVersion then
+    if APR.isMidnightPrePatchVersion then
         AddRouteToCustomPath(L["Midnight - Pre Patch"])
         AddRouteToCustomPath(L["Midnight - Unlock Void Elf Demon Hunter"])
+        self:SendMessage("APR_Custom_Path_Update")
+        return
     end
     if APR.isBetaMidnightVersion then
         AddRouteToCustomPath(L["Midnight - Intro"])
