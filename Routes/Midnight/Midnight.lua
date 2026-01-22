@@ -9570,9 +9570,8 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         _index = 154,
     },
     {
-        Waypoint = 91787,
+        TakePortal = { QuestID = 91787, ZoneId = 2395 },
         Coord = { x = 54.4, y = 5.7 },
-        ExtraLineText = "USE_PORTAL",
         ZoneStepTrigger = { Range = 15, x = -4818.4, y = 8547.4 },
         IsCampaignQuest = true,
         Zone = 2541,
@@ -15983,9 +15982,8 @@ APR.RouteQuestStepList["2395-Rage-of-the-Rendorei"] = {
         _index = 1,
     },
     {
-        Waypoint = 92630,
+        TakePortal = { QuestID = 92630, ZoneId = 2371 },
         Coord = { x = -4841.7, y = 8538.9 },
-        ExtraLineText = "USE_PORTAL",
         Range = 5,
         ZoneStepTrigger = { Range = 15, x = 206.1, y = 1649.9 },
         Zone = 2395,
@@ -16060,8 +16058,8 @@ APR.RouteQuestStepList["2248-Unlock-void-elf-DH"] = {
     },
     {
         Waypoint = 94933,
+        TakePortal = { QuestID = 94933, ZoneId = 2371 },
         Coord = { x = -2471.3, y = 2601.3 },
-        ExtraLineText = "USE_PORTAL",
         ZoneStepTrigger = { Range = 15, x = 206.1, y = 1649.9 },
         IsQuestsUncompleted = { 90972 },
         Zone = 2248,
