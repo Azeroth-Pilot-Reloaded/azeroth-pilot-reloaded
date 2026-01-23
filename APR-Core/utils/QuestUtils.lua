@@ -202,7 +202,7 @@ function APR:QpartPart_TrigTextMatch(step, questID, objectiveText)
     if questID then
         local questPercent = GetQuestProgressBarPercent(questID)
         if questPercent then
-            currentPercent = math.floor(tonumber(questPercent) + 0.5)
+            currentPercent = math.floor(tonumber(questPercent))
         end
     end
 
