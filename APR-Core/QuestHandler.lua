@@ -1011,14 +1011,6 @@ function APR:UpdateQuest()
                     local status = objectiveInfo.finished and APR.QUEST_STATUS.COMPLETE or APR.QUEST_STATUS.PROGRESS
                     local text = objectiveInfo.text or ""
 
-                    -- Progress bar
-                    if select(2, GetQuestObjectiveInfo(questID, i, false)) == "progressbar" and text then
-                        if not APR.ProgressbarIgnore[questID .. "-" .. i] then
-                            local percent = math.floor(tonumber(GetQuestProgressBarPercent(questID)) + 0.5)
-                            text = ("%s (%d%%)"):format(text, percent)
-                        end
-                    end
-
                     -- Update only if changed
                     local objEntry = APR.ActiveQuests[questID].objectives[i]
                     if not objEntry or objEntry.text ~= text or objEntry.status ~= status then
