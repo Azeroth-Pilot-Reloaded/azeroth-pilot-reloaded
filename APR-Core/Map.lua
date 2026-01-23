@@ -187,8 +187,9 @@ function APR.map:UpdateMinimapLine()
     local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
     if CurStep and APR.ActiveRoute and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] then
         local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
-        if step and step.Coord then
-            PositionMinimapLine(step.Coord.x, step.Coord.y)
+        local stepCoord = step and APR:GetStepCoord(step) or nil
+        if stepCoord then
+            PositionMinimapLine(stepCoord.x, stepCoord.y)
             return
         end
     end
@@ -211,7 +212,8 @@ function APR.map:UpdateLine()
     local mapID = WorldMapFrame:GetMapID()
     local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
 
-    if step and step.Coord then
+    local stepCoord = step and APR:GetStepCoord(step, mapID) or nil
+    if stepCoord then
         local mapHeight, mapWidth = WorldMapButton:GetHeight(), WorldMapButton:GetWidth()
         local playerPos = C_Map.GetPlayerMapPosition(mapID, "player")
 
@@ -219,7 +221,7 @@ function APR.map:UpdateLine()
         if APR.Arrow.Active then
             ox, oy = APR:GetPlayerMapPos(mapID, APR.Arrow.y, APR.Arrow.x)
         else
-            ox, oy = APR:GetPlayerMapPos(mapID, step.Coord.y, step.Coord.x)
+            ox, oy = APR:GetPlayerMapPos(mapID, stepCoord.y, stepCoord.x)
         end
         if not playerPos then
             self:RemoveMapLine()
@@ -344,9 +346,11 @@ function APR.map:AddMapPins()
         local mapStepDisplayed = 0
         local minimapStepDisplayed = 0
         local unwantedStepIndex = 0
+        local zoneHint = APR:GetPlayerParentMapID()
         for stepId, step in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
             if not APR:StepFilterQoL(step) then unwantedStepIndex = unwantedStepIndex + 1 end
-            if step.Coord and (stepId >= CurStep) and (stepId <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
+            local stepCoord = APR:GetStepCoord(step, mapID, zoneHint)
+            if stepCoord and (stepId >= CurStep) and (stepId <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
                 local stepIndex = stepId - unwantedStepIndex
 
                 if not self.pinlist[stepIndex] then
@@ -363,8 +367,8 @@ function APR.map:AddMapPins()
                         APR.settings.profile.minimapshowNextStepsTextScale)
                 end
 
-                local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, step.Coord.y,
-                    step.Coord.x)
+                local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, stepCoord.y,
+                    stepCoord.x)
                 if x and y then
                     if APR.settings.profile.mapshowNextSteps and needDisplayWorldPin then
                         if mapshowNextStepsCount > mapStepDisplayed then

@@ -181,7 +181,12 @@ end
 
 local function CheckDistance()
     local routeSteps, currentStep, currentStepIndex = GetCurrentRouteStep()
-    if not routeSteps or not currentStep or not currentStep.Coord or currentStep.NoArrow then
+    if not routeSteps or not currentStep or currentStep.NoArrow then
+        return 0
+    end
+    local _, routeMapID = APR:GetCurrentRouteMapIDsAndName()
+    local currentCoord = APR:GetStepCoord(currentStep, routeMapID)
+    if not currentCoord then
         return 0
     end
 
@@ -199,17 +204,18 @@ local function CheckDistance()
 
     local distance = 0
     local curStepIndex = currentStepIndex
-    local previousCoords = currentStep.Coord
+    local previousCoords = currentCoord
 
     while true do
         curStepIndex = curStepIndex + 1
         local nextStep = routeSteps[curStepIndex]
-        if not nextStep or not nextStep.Coord then
+        local nextCoord = nextStep and APR:GetStepCoord(nextStep, routeMapID) or nil
+        if not nextStep or not nextCoord then
             break
         end
 
-        distance = distance + DistanceBetween(previousCoords.x, previousCoords.y, nextStep.Coord.x, nextStep.Coord.y)
-        previousCoords = nextStep.Coord
+        distance = distance + DistanceBetween(previousCoords.x, previousCoords.y, nextCoord.x, nextCoord.y)
+        previousCoords = nextCoord
 
         if not nextStep.Waypoint then
             return mathFloor(distance + 0.5)
@@ -233,9 +239,11 @@ function APR.Arrow:SetCoord()
         return
     end
 
-    if self.currentStep ~= currentStepIndex and step.Coord and APR.IsInRouteZone then
-        APR:Debug("APR.Arrow:SetCoord(): Setting arrow for step:" .. currentStepIndex .. " at coordinates:", step.Coord)
-        self:SetArrowActive(true, step.Coord.x, step.Coord.y)
+    local _, routeMapID = APR:GetCurrentRouteMapIDsAndName()
+    local stepCoord = APR:GetStepCoord(step, routeMapID, APR:GetPlayerParentMapID())
+    if self.currentStep ~= currentStepIndex and stepCoord and APR.IsInRouteZone then
+        APR:Debug("APR.Arrow:SetCoord(): Setting arrow for step:" .. currentStepIndex .. " at coordinates:", stepCoord)
+        self:SetArrowActive(true, stepCoord.x, stepCoord.y)
         self.currentStep = currentStepIndex
     end
 end
@@ -259,6 +267,7 @@ function APR.Arrow:CalculPosition()
         return
     end
 
+    local stepCoord = questStep and APR:GetStepCoord(questStep, nil, APR:GetPlayerParentMapID()) or nil
     if questStep and questStep.ZoneStepTrigger then -- to trigger a zone detection
         local trigger = questStep.ZoneStepTrigger
         local dist = DistanceBetween(playerX, playerY, trigger.x, trigger.y)
@@ -281,8 +290,8 @@ function APR.Arrow:CalculPosition()
     local perc = mathAbs((math.pi - mathAbs(angle)) / math.pi)
 
     -- Distance from questStep.Coord if available
-    if questStep and questStep.Coord then
-        self.QuestStepDistance = DistanceBetween(playerX, playerY, questStep.Coord.x, questStep.Coord.y)
+    if stepCoord then
+        self.QuestStepDistance = DistanceBetween(playerX, playerY, stepCoord.x, stepCoord.y)
         if self.QuestStepDistance >= self.MaxDistanceWrongZone then
             self.isWrongZoneDistance = true
         elseif self.isWrongZoneDistance then
