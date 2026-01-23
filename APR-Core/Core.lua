@@ -11,6 +11,7 @@ APR.RaceLocale, APR.Race, APR.RaceID = UnitRace("player")
 APR.Gender = UnitSex("player")
 APR.MaxLevelChromie = 70
 APR.MinBoostLvl = 60
+APR.PreviousMaxLvl = 80
 APR.MaxBagSlots = 4
 APR.Color = {
     white = { 1, 1, 1 },

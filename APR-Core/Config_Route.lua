@@ -916,7 +916,9 @@ function APR.routeconfig:GetSpeedRunPrefab()
         self:GetWODPrefab()
         self:GetDFPrefab()
     end
-    self:GetTWWPrefab()
+    if APR.Level < APR.PreviousMaxLvl then
+        self:GetTWWPrefab()
+    end
     self:GetMidnightPrefab()
 end
 
