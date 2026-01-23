@@ -362,7 +362,10 @@ function APR.transport:GetMeToRightZone(isRetry)
             return
         end
 
-        local nextZone = step.Zone or mapID
+        local nextZone = APR:GetPreferredStepZone(step, mapID)
+        if not nextZone then
+            return
+        end
         local mapInfo = C_Map.GetMapInfo(nextZone)
         if not mapInfo then
             return
@@ -412,8 +415,9 @@ function APR.transport:GetMeToRightZone(isRetry)
             end
 
             local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
-            if step.Coord then
-                local _, objectiveTaxiName = self:ClosestTaxi(step.Coord.x, step.Coord.y)
+            local stepCoord = APR:GetStepCoord(step, mapID, nextZone)
+            if stepCoord then
+                local _, objectiveTaxiName = self:ClosestTaxi(stepCoord.x, stepCoord.y)
                 if playerTaxiNodeId ~= objectiveTaxiName then
                     self.wrongZoneDestTaxiName = objectiveTaxiName
                     APR.currentStep:AddExtraLineText(

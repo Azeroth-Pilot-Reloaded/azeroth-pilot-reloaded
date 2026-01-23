@@ -97,20 +97,30 @@ function APR:CheckIsInRouteZone()
         return false
     end
 
-    local isSameContinent, nextContinent = self.transport:IsSameContinent(step.Zone or mapid)
-    if not isSameContinent then
+    local stepZones = self:GetStepZoneList(step, mapid)
+    if #stepZones == 0 then
         return false
     end
 
+    local isSameContinent = false
+    for _, zoneId in ipairs(stepZones) do
+        if self.transport:IsSameContinent(zoneId) then
+            isSameContinent = true
+            break
+        end
+    end
+    if not isSameContinent then
+        return false
+    end
     local mapIDs = { parentContinentMapID, currentMapID, parenttMapID }
 
     -- 1 - check if you are in the zone step or a direct child of zone step
-    if step and self:Contains(mapIDs, step.Zone) then
+    if step and self:ContainsAny(mapIDs, stepZones) then
         return true
     end
 
     -- 2 - check if the zone step is in the zones for this route
-    if step and self:Contains(routeZoneMapIDs, step.Zone) then
+    if step and self:ContainsAny(routeZoneMapIDs, stepZones) then
         return true
     elseif parentContinentMapID == 2274 then -- handle tww zone for isle of dorn
         return false
@@ -131,7 +141,7 @@ function APR:CheckIsInRouteZone()
         end
 
         for _, map in ipairs(childrenMap) do
-            if self:Contains(routeZoneMapIDs, map.mapID) or (step and step.Zone == map.mapID) then
+            if self:Contains(routeZoneMapIDs, map.mapID) or self:Contains(stepZones, map.mapID) then
                 return true
             end
         end

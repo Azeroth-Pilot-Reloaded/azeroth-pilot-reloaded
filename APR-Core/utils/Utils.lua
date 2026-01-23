@@ -26,6 +26,18 @@ function APR:Contains(list, x)
     return false
 end
 
+function APR:ContainsAny(list, candidates)
+    if not list or not candidates then
+        return false
+    end
+    for _, candidate in ipairs(candidates) do
+        if self:Contains(list, candidate) then
+            return true
+        end
+    end
+    return false
+end
+
 function APR:IsTableEmpty(table)
     if (table) then
         return next(table) == nil
