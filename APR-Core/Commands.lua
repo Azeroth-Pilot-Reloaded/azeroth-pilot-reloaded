@@ -9,7 +9,7 @@ function APR.command:SlashCmd(input)
     local inputText = string.lower(normalizedInput)
     if not APR.settings.profile.enableAddon then
         APR.settings:OpenSettings(APR.title)
-        print(L["ADDON"] .. ' ' .. L["DISABLE"])
+        APR:PrintInfo(L["ADDON"] .. ' ' .. L["DISABLE"])
     end
     if (inputText == "reset" or inputText == "r") then
         --Command to reset the current route
@@ -24,12 +24,12 @@ function APR.command:SlashCmd(input)
         C_UI.Reload()
     elseif (inputText == "skip" or inputText == "s" or inputText == "skippiedoodaa") then
         -- Command for skipping the current quest step
-        print("APR: " .. L["SKIP"])
+        APR:PrintInfo(L["SKIP"])
         APR:NextQuestStep()
         APR:UpdateMapId()
     elseif (inputText == "rollback" or inputText == "rb") then
         -- Command for rollback the current quest step
-        print("APR: " .. L["ROLLBACK"])
+        APR:PrintInfo(L["ROLLBACK"])
         APR:PreviousQuestStep()
         APR:UpdateMapId()
     elseif (inputText == "qol") then
@@ -59,7 +59,7 @@ function APR.command:SlashCmd(input)
             print(APR:WrapTextInColorCode(command, helpColor) .. " - " .. description)
         end
 
-        print(L["COMMAND_LIST"] .. ":")
+        APR:PrintInfo(L["COMMAND_LIST"] .. ":")
         printHelp("/apr", L["SHOW_MENU"])
         printHelp("/apr about", L["SHOW_ABOUT"])
         printHelp("/apr coord", L["COORD_COMMAND"])

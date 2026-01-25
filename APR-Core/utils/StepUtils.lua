@@ -61,7 +61,7 @@ end
 --- Build the waypoint summary text by scanning upcoming steps for actionable instructions.
 -- This mirrors legacy behaviour but is wrapped in a single helper for maintainability.
 function APR:CheckWaypointText()
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
+    local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
 
     local function IsInList(value, list)
         for _, v in ipairs(list) do
@@ -72,7 +72,7 @@ function APR:CheckWaypointText()
         return false
     end
 
-    for i = CurStep, #APR.RouteQuestStepList[APR.ActiveRoute] do
+    for i = currentStepIndex, #APR.RouteQuestStepList[APR.ActiveRoute] do
         local step = APR.RouteQuestStepList[APR.ActiveRoute][i]
 
         if step then
@@ -327,21 +327,11 @@ end
 --- Determine if the provided quest id belongs to the current step.
 function APR:IsARouteQuest(questId)
     local step = self:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
-    if (step) then
-        if self:Contains(step.PickUp, questId) or self:Contains(step.PickUpDB, questId) then
-            return true
-        end
-    end
-    return false
+    return step and self:IsQuestInPool(questId) or false
 end
 
 --- Quick check if the active step is a pickup step (for UI hints).
 function APR:IsPickupStep()
     local step = self:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
-    if (step) then
-        if step.PickUp or step.PickUpDB then
-            return true
-        end
-    end
-    return false
+    return step and (step.PickUp or step.PickUpDB) or false
 end

@@ -198,7 +198,7 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
             local questID, textureKit, name, zoneDescription, normalizedX, normalizedY = C_AdventureMap
                 .GetZoneChoiceInfo(choiceIndex);
             if AdventureMap_IsQuestValid(questID, normalizedX, normalizedY) then
-                if step and (APR:Contains(step.PickUp, questID) or APR:Contains(step.PickUpDB, questID)) then
+                if APR:IsQuestInPool(tonumber(questID)) then
                     C_AdventureMap.StartQuest(questID)
                 end
             end

@@ -137,7 +137,7 @@ function APR:UpdateStep()
         APR.currentStep:Reset()
     end
 
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
+    local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
 
     APR:ResetMissingQuests()
 
@@ -147,16 +147,15 @@ function APR:UpdateStep()
         return
     end
 
-    APR:Debug("APR.UpdateStep:Current Step:", CurStep)
+    APR:Debug("APR.UpdateStep:Current Step:", currentStepIndex)
 
-    if (APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and APR.RouteQuestStepList[APR.ActiveRoute][CurStep]) then
-        local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
-
+    local step = APR:GetStep(currentStepIndex)
+    if step then
         APR.currentStep:ButtonEnable()
         APR:SendMessage("APR_MAP_UPDATE")
 
         -- Hide the AFK frame only if the step has changed
-        if APR.AFK.lastStep ~= CurStep then
+        if APR.AFK.lastStep ~= currentStepIndex then
             APR.AFK:HideFrame()
         end
 
@@ -239,16 +238,16 @@ function APR:UpdateStep()
         -- REWORK LOA (BfA Loa pick)
         if step.PickedLoa and step.PickedLoa == 2 and (APR.ActiveQuests[47440] or C_QuestLog.IsQuestFlaggedCompleted(47440)) then
             APR:UpdateNextStep()
-            APR:Debug("PickedLoa Skip 2 step:" .. CurStep)
+            APR:Debug("PickedLoa Skip 2 step:" .. currentStepIndex)
             return
         elseif step.PickedLoa and step.PickedLoa == 1 and (APR.ActiveQuests[47439] or C_QuestLog.IsQuestFlaggedCompleted(47439)) then
             APR:UpdateNextStep()
-            APR:Debug("PickedLoa Skip 1 step:" .. CurStep)
+            APR:Debug("PickedLoa Skip 1 step:" .. currentStepIndex)
             return
         end
 
         local function handleScenarioStep(stepType, scenarioMapID)
-            APR:Debug(stepType .. " Step:" .. CurStep)
+            APR:Debug(stepType .. " Step:" .. currentStepIndex)
 
             local currentMapID        = C_Map.GetBestMapForUnit('player')
             local scenarioContinentID = APR:GetContinent(scenarioMapID)
@@ -408,9 +407,9 @@ function APR:UpdateStep()
             return
         end
         if (step.ETA and not step.UseFlightPath and not step.SpecialETAHide) then
-            if (APR.AFK.lastStep ~= CurStep) then
+            if (APR.AFK.lastStep ~= currentStepIndex) then
                 APR.AFK:SetAfkTimer(step.ETA)
-                APR.AFK.lastStep = CurStep
+                APR.AFK.lastStep = currentStepIndex
             end
         end
         if (step.SpecialETAHide) then
@@ -516,6 +515,7 @@ function APR:UpdateStep()
             local questIDs = step.PickUp
             local pickUpDB = step.PickUpDB
             APR:Debug("APR.UpdateStep:PickUp:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+            APR:EnsureQuestPool()
 
             if pickUpDB then
                 local hasQuestCompleted = false
@@ -533,6 +533,7 @@ function APR:UpdateStep()
                     end
                 end
                 if hasQuestCompleted then
+                    APR:ResetQuestPool()
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
@@ -552,6 +553,7 @@ function APR:UpdateStep()
                 end
                 if #questIDs == completedCount then
                     APR:Debug("APR.UpdateStep:PickUp:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
+                    APR:ResetQuestPool()
                     APR:NextQuestStep()
                     return
                 elseif APR.IsInRouteZone then
@@ -935,13 +937,13 @@ function APR:UpdateStep()
         APR:SetButton()
         APR.questOrderList:DelayedUpdate()
         -- set Progress bar with the right total
-        APR.currentStep:SetProgressBar(CurStep)
+        APR.currentStep:SetProgressBar(currentStepIndex)
 
         -- update for group
         APR.party:SendGroupMessage()
         APR.party:RefreshPartyFrameAnchor()
     else
-        APR:Debug("APR.UpdateStep:No step found for current step:", CurStep)
+        APR:Debug("APR.UpdateStep:No step found for current step:", currentStepIndex)
         APR.routeconfig:CheckIsCustomPathEmpty()
     end
 end

@@ -862,6 +862,7 @@ function APR.routeconfig:InitRouteConfig()
         end
 
         -- to trigger the frame
+        APR:Debug("Caller: APR.routeconfig:InitRouteConfig/Custom_Path_Update -> GetCurrentRouteMapIDsAndName")
         local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
         APR.ActiveRoute = routeFileName
 
@@ -875,10 +876,7 @@ function APR.routeconfig:InitRouteConfig()
 end
 
 function IsRouteDisabled(tab, routeName)
-    if routeName == "01-10 Exile's Reach" and not APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
-        return true
-    end
-    return false
+    return routeName == "01-10 Exile's Reach" and not APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID())
 end
 
 ---------------------------------------------------------------------------------------
