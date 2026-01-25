@@ -39,10 +39,7 @@ function APR:ContainsAny(list, candidates)
 end
 
 function APR:IsTableEmpty(table)
-    if (table) then
-        return next(table) == nil
-    end
-    return false
+    return table and next(table) == nil or false
 end
 
 local function NormalizeHexColorCode(hex)

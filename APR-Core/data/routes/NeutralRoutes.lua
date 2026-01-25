@@ -284,7 +284,6 @@ function APR:InitRoutes()
         end
     elseif APR.Race == "Dracthyr" then
         -- Check for Dracthyr Evoker-specific start, else use general Dracthyr start
-        print("Assigning Dracthyr start route for class ID:", APR.ClassId, APR.Classes.Evoker)
         if APR.ClassId == APR.Classes.Evoker then
             table.insert(routesToAssign, startRoutes.Dracthyr.evoker)
         else

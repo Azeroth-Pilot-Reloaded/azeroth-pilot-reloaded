@@ -184,10 +184,10 @@ function APR.map:UpdateMinimapLine()
         PositionMinimapLine(APR.Arrow.x, APR.Arrow.y)
         return
     end
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if CurStep and APR.ActiveRoute and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] then
-        local step = APR.RouteQuestStepList[APR.ActiveRoute][CurStep]
-        local stepCoord = step and APR:GetStepCoord(step) or nil
+    local curStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
+    local step = APR:GetStep(curStepIndex)
+    if step then
+        local stepCoord = APR:GetStepCoord(step)
         if stepCoord then
             PositionMinimapLine(stepCoord.x, stepCoord.y)
             return
@@ -339,8 +339,8 @@ function APR.map:AddMapPins()
         end
     end
 
-    local CurStep = APRData[APR.PlayerID][APR.ActiveRoute]
-    if APR.ActiveRoute and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and CurStep then
+    local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
+    if APR.ActiveRoute and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute] and currentStepIndex then
         local mapshowNextStepsCount = APR.settings.profile.mapshowNextStepsCount
         local minimapshowNextStepsCount = APR.settings.profile.minimapshowNextStepsCount
         local mapStepDisplayed = 0
@@ -350,7 +350,7 @@ function APR.map:AddMapPins()
         for stepId, step in pairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
             if not APR:StepFilterQoL(step) then unwantedStepIndex = unwantedStepIndex + 1 end
             local stepCoord = APR:GetStepCoord(step, mapID, zoneHint)
-            if stepCoord and (stepId >= CurStep) and (stepId <= CurStep + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
+            if stepCoord and (stepId >= currentStepIndex) and (stepId <= currentStepIndex + math.max(mapshowNextStepsCount, minimapshowNextStepsCount)) then
                 local stepIndex = stepId - unwantedStepIndex
 
                 if not self.pinlist[stepIndex] then

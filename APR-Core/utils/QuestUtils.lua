@@ -1,11 +1,117 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+APR.QuestPool = APR.QuestPool or { ids = {} }
+
 function APR:AcceptQuest()
     AcceptQuest()
 end
 
 function APR:CloseQuest()
     CloseQuest()
+end
+
+local function AddQuestToPool(pool, questID)
+    questID = tonumber(questID)
+    if questID and not APR:Contains(pool.ids, questID) then
+        table.insert(pool.ids, questID)
+    end
+end
+
+function APR:ResetQuestPool()
+    self.QuestPool = {
+        ids = {},
+        route = nil,
+        stepIndex = nil,
+        lookahead = nil,
+    }
+end
+
+--- Builds a quest pool for pickup based on the specified step index and lookahead distance.
+---
+--- @param stepIndex number The index of the current step in the quest sequence.
+--- @param lookahead number The number of steps to look ahead when building the quest pool.
+---
+--- @return table questPool A table containing the quests available for pickup.
+function APR:BuildQuestPoolForPickup(stepIndex, lookahead)
+    local activeRoute = self.ActiveRoute
+    local stepList = activeRoute and self.RouteQuestStepList[activeRoute] or nil
+
+    if not stepList or not stepIndex then
+        self:ResetQuestPool()
+        return self.QuestPool
+    end
+
+    local pool = {
+        ids = {},
+        route = activeRoute,
+        stepIndex = stepIndex,
+        lookahead = lookahead,
+    }
+
+    local lastIndex = math.min(#stepList, stepIndex + lookahead)
+    for i = stepIndex, lastIndex do
+        local step = stepList[i]
+        if step then
+            local pickUp = step.PickUp or {}
+            for _, questID in ipairs(pickUp) do
+                AddQuestToPool(pool, questID)
+            end
+
+            local pickUpDB = step.PickUpDB or {}
+            for _, questID in ipairs(pickUpDB) do
+                AddQuestToPool(pool, questID)
+            end
+        end
+    end
+
+    self.QuestPool = pool
+    return pool
+end
+
+--- Ensures that the quest pool is initialized and ready for use.
+--- Initializes the quest pool if it hasn't been created yet, or validates
+--- the existing quest pool structure. This should be called before performing
+--- any quest-related operations to guarantee the pool exists.
+---
+--- @function EnsureQuestPool
+--- @return table|nil questPool A table containing the quests available for pickup.
+function APR:EnsureQuestPool()
+    local activeRoute = self.ActiveRoute
+    local playerData = APRData and APRData[self.PlayerID] or nil
+    local stepIndex = playerData and activeRoute and playerData[activeRoute] or nil
+
+    if not activeRoute or not stepIndex then
+        self:ResetQuestPool()
+        return nil
+    end
+
+    if not self:IsPickupStep() then
+        self:ResetQuestPool()
+        return nil
+    end
+
+    local lookahead = tonumber(self.settings and self.settings.profile and self.settings.profile.pickupQuestLookahead)
+    if lookahead < 0 then
+        lookahead = 0
+    end
+
+    local pool = self.QuestPool
+    if not pool or pool.route ~= activeRoute or pool.stepIndex ~= stepIndex or pool.lookahead ~= lookahead then
+        pool = self:BuildQuestPoolForPickup(stepIndex, lookahead)
+    end
+
+    return pool
+end
+
+--- Determines if a quest is part of a quest pool.
+--- @param questID number The ID of the quest to check
+--- @return boolean true if the quest is in a pool, false otherwise
+function APR:IsQuestInPool(questID)
+    local pool = self.QuestPool
+    if not pool or not pool.ids or not questID then
+        return false
+    end
+    return self:Contains(pool.ids, questID)
 end
 
 --- Check if at least one quest in the list is completed on this character.
