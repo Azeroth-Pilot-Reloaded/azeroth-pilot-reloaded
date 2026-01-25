@@ -249,8 +249,6 @@ end
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name
 function APR:GetCurrentRouteMapIDsAndName()
-    self:Debug("APR.transport:GetRouteMapIDAndName")
-
     if not APRCustomPath or not APRCustomPath[self.PlayerID] then
         self:PrintError('No APRCustomPath')
         return nil, 0, '', ''
