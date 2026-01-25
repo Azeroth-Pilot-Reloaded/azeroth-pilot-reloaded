@@ -26,7 +26,7 @@ local events = {
     group = { "GROUP_JOINED", "GROUP_LEFT" },
     learnProfession = "LEARNED_SPELL_IN_SKILL_LINE",
     leaveCombat = "PLAYER_REGEN_ENABLED",
-    lootItem = { "ITEM_PUSH", "QUEST_LOOT_RECEIVED" },
+    lootItems = { "CHAT_MSG_LOOT", "CURRENCY_DISPLAY_UPDATE" }, -- item , quest Item, currenies( honor, ressources, ...)
     lvlUp = "PLAYER_LEVEL_UP",
     merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
     party = "CHAT_MSG_ADDON",
@@ -128,6 +128,7 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.heirloom:RefreshFrameAnchor()
                 APR:UpdateStep()
 
+                APR:Debug("Caller: Event.lua load handler -> GetCurrentRouteMapIDsAndName")
                 local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
                 APR:CheckCurrentRouteUpToDate(routeFileName)
                 -- Ensure the active route is set on load so the current step frame can populate without waiting
@@ -633,33 +634,46 @@ function APR.event.functions.leaveCombat(event, ...)
     APR:UpdateQuest()
 end
 
-function APR.event.functions.lootItem(event, ...)
-    if event == "ITEM_PUSH" then
+function APR.event.functions.lootItems(event, ...)
+    -- ITEM LOOT (quest items + normal items)
+    if event == "CHAT_MSG_LOOT" then
+        local message = ...
+        local itemLink = message and message:match("|Hitem:.-|h.-|h")
+        if not itemLink then return end
+
+        local itemID = select(1, C_Item.GetItemInfoInstant(itemLink))
+        if not itemID then return end
+        local quantity = APR:GetQuantityfromLootMessage(message) or 1
+
         C_Timer.After(1, function()
+            APR.lootUtils:OnItemLooted(itemID, quantity)
             APR:RefreshLootStepDisplay(step)
         end)
         return
     end
 
-    if event == "QUEST_LOOT_RECEIVED" then
-        local questID, itemLink, quantity = ...
-        quantity = quantity or 1
+    -- -- MONEY (gold/silver/copper)
+    -- if event == "PLAYER_MONEY" then
+    --     local currentMoney = GetMoney()
+    --     local delta = currentMoney - (APR._lastMoney or currentMoney)
+    --     APR._lastMoney = currentMoney
 
-        if itemLink then
-            local itemID = select(1, C_Item.GetItemInfoInstant(itemLink))
-            if itemID then
-                APR:Debug("QUEST_LOOT_RECEIVED: questID=" .. tostring(questID) .. " - x" .. quantity, itemLink)
+    --     if delta > 0 then
+    --         APR.lootUtils:OnMoneyLooted(delta)
+    --     end
+    --     return
+    -- end
 
-                -- If bag count does NOT increase for this quest loot,
-                -- we store it virtually to track progress reliably.
-                local bagCount = C_Item.GetItemCount(itemID, true) or 0
-                if bagCount == 0 then
-                    APR.QuestVirtualItemCount[itemID] = (APR.QuestVirtualItemCount[itemID] or 0) + quantity
-                end
-
-                APR:RefreshLootStepDisplay(step)
-            end
+    -- CURRENCIES (Honor, Resources, etc.)
+    if event == "CURRENCY_DISPLAY_UPDATE" then
+        local currencyID, quantityChange = ...
+        if currencyID and quantityChange and quantityChange > 0 then
+            C_Timer.After(1, function()
+                APR.lootUtils:OnCurrencyGained(currencyID, quantityChange)
+                -- TODO add RefreshLootCurrenciesStepDisplay
+            end)
         end
+        return
     end
 end
 

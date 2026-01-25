@@ -353,30 +353,39 @@ function APR:UpdateStep()
         if step.LootItems then
             APR:Debug("APR.UpdateStep:Loot Item" .. APRData[APR.PlayerID][APR.ActiveRoute])
 
-            local flagged = 0
+            local completed = 0
 
             for _, item in ipairs(step.LootItems) do
                 local itemID = item.itemID
-                local requiredQuantity = item.quantity or 1
+                local requiredQuantity = math.max(item.quantity or 1, 1)
+
                 if itemID then
-                    local currentQuantity = C_Item.GetItemCount(itemID)
-                    if tContains(APRItemLooted[APR.PlayerID], itemID) or currentQuantity >= requiredQuantity then
-                        if not tContains(APRItemLooted[APR.PlayerID], itemID) then
-                            tinsert(APRItemLooted[APR.PlayerID], itemID)
-                        end
-                        flagged = flagged + 1
+                    -- unified quantity (bags + virtual)
+                    local bagCount = C_Item.GetItemCount(itemID, true) or 0
+                    local virtualCount = APR.QuestVirtualItemCount[itemID] or 0
+                    local currentQuantity = math.max(bagCount, virtualCount)
+
+                    local isDone =
+                        currentQuantity >= requiredQuantity
+                        or APR.lootUtils:IsLootDone(step, "ITEM", itemID)
+
+                    if isDone then
+                        completed = completed + 1
+                        APR.lootUtils:MarkLootDone(step, "ITEM", itemID)
                     end
-                    local itemName = C_Item.GetItemInfo(itemID)
-                    local name = itemName or UNKNOWN
-                    local label = format(L["LOOT_ITEM"], name)
+
+                    -- UI
+                    local itemName = C_Item.GetItemInfo(itemID) or UNKNOWN
+                    local label = format(L["LOOT_ITEM"], itemName)
                     if requiredQuantity > 1 then
                         label = label .. " (" .. currentQuantity .. "/" .. requiredQuantity .. ")"
                     end
-                    -- Use a stable objectiveIndex (itemID) so later name updates overwrite correctly when item info becomes available.
+
                     APR.currentStep:AddQuestSteps(itemID, label, itemID)
                 end
             end
-            if flagged == #step.LootItems then
+
+            if completed == #step.LootItems then
                 APR:NextQuestStep()
                 return
             end
