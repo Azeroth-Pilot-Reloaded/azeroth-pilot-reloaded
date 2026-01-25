@@ -16,7 +16,7 @@ end
 
 --- Check whether a scenario objective is already recorded so we do not double count progress.
 function APR:ContainsScenarioStepCriteria(table, stepID, criteriaID, criteriaIndex)
-    local table = table or {}
+    table = table or {}
     for _, v in ipairs(table) do
         if v.stepID == stepID and v.criteriaID == criteriaID and v.criteriaIndex == criteriaIndex then
             return true

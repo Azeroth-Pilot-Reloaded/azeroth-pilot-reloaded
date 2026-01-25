@@ -183,8 +183,9 @@ end
 
 --- Notify the player that an interaction is not available yet.
 function APR:NotYet()
-    APR:PrintInfo(L["NOT_YET"])
-    UIErrorsFrame:AddMessage(L["NOT_YET"], 1, 153 / 255, 102 / 255, 1, 5)
+    local message = L["NOT_YET"] .. "\n\n" .. L["BYPASS_AUTO"]
+    APR:PrintInfo(message)
+    UIErrorsFrame:AddMessage(message, 1, 153 / 255, 102 / 255, 1, 5)
 end
 
 --- Add a quest to the watch list and super-track it for clarity.
