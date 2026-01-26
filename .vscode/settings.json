@@ -57,7 +57,8 @@
         "ChatFrameUtil",
         "AFK",
         "StaticPopup_Hide",
-        "SEARCH"
+        "SEARCH",
+        "LOOT"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {
