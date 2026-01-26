@@ -110,6 +110,14 @@ APR.Portals.Coords = {
         },
         [2537] = {
             ["Stormwind"] = { x = -4812.8, y = 8565.5 },
+            ["Silvermoon to VoidStorm"] = { x = -4325.2, y = 8535.5 },
+            ["Silvermoon to Harandar"] = { x = -4372.8, y = 8500.9 },
+
+            ["Harandar to Silvermoon"] = { x = -461.8, y = -270.3 },
+            ["Harandar to VoidStorm"] = { x = -434.4, y = -285.5 },
+
+            ["VoidStorm to Silvermoon"] = { x = -441, y = 889.8 },
+            ["VoidStorm to Harandar"] = { x = -456.5, y = 881.9 },
         }
 
     },
@@ -225,6 +233,14 @@ APR.Portals.Coords = {
         },
         [2537] = {
             ["Orgrimmar"] = { x = -4800.2, y = 8552.4 },
+            ["Silvermoon to VoidStorm"] = { x = -4325.2, y = 8535.5 },
+            ["Silvermoon to Harandar"] = { x = -4372.8, y = 8500.9 },
+
+            ["Harandar to Silvermoon"] = { x = -461.8, y = -270.3 },
+            ["Harandar to VoidStorm"] = { x = -434.4, y = -285.5 },
+
+            ["VoidStorm to Silvermoon"] = { x = -441, y = 889.8 },
+            ["VoidStorm to Harandar"] = { x = -456.5, y = 881.9 },
         }
     }
 }
@@ -402,6 +418,14 @@ APR.Portals.SwitchZones = {
         -- K'aresh
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "DornogalFromK'areshPortal" },
 
+        -- Midnight
+        { continent = 2537, nextContinent = 2537, nextZone = 2395, portalKey = "VoidStorm to Silvermoon" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2395, portalKey = "Harandar to Silvermoon" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2405, portalKey = "Silvermoon to VoidStorm" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2405, portalKey = "Harandar to VoidStorm" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2413, portalKey = "Silvermoon to Harandar" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2413, portalKey = "VoidStorm to Harandar" },
+
     },
     ["Horde"] = {
         { continent = 12,   nextContinent = 12,   nextZone = 17,   portalKey = "DarkPortal Talk",            closestTaxiNode = "Orgrimmar, Durotar",              extraText = "TALK_NPC" },
@@ -453,6 +477,14 @@ APR.Portals.SwitchZones = {
         { continent = 2274, nextContinent = 2274, nextZone = 2255, portalKey = "AzjKahetNothWest",           extraText = "GO_TO" },
         -- K'aresh
         { continent = 2274, nextContinent = 2274, nextZone = 2248, portalKey = "DornogalFromK'areshPortal" },
+
+        -- Midnight
+        { continent = 2537, nextContinent = 2537, nextZone = 2395, portalKey = "VoidStorm to Silvermoon" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2395, portalKey = "Harandar to Silvermoon" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2405, portalKey = "Silvermoon to VoidStorm" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2405, portalKey = "Harandar to VoidStorm" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2413, portalKey = "Silvermoon to Harandar" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2413, portalKey = "VoidStorm to Harandar" },
     }
 }
 
