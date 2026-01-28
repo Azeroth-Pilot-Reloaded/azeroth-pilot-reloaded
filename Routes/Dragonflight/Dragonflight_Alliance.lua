@@ -27,9 +27,8 @@ if APR.Faction == "Alliance" then
             _index = 5,
         },
         {
-            Waypoint = 72240,
+            TakePortal = { QuestID = 66589, ZoneId = 84 },
             Coord = { x = 327.7, y = -8312.4 },
-            ExtraLineText = "USE_GATE",
             Range = 0.5,
             Zone = 84,
             _index = 6,
