@@ -30,6 +30,10 @@ APR.Portals.Coords = {
 
             --Order Hall
             ["Paladin To Dalaran"] = { x = -5319.9, y = 2376.1 },
+
+            -- Prepatch Mindnight
+            ['EventToDornogal'] = { x = -5046.8, y = -5031.5 },
+            ['EventToStormwind'] = { x = -5081.5, y = -5026.1 },
         },
         [101] = { ["Stormwind"] = { x = 5388.7, y = -1893.5 }, ["Stormwind DarkPortal"] = { x = 931.9, y = -274.6 } },
         [113] = { ["Stormwind"] = { x = 720.2, y = 5719.5 } },
@@ -130,12 +134,14 @@ APR.Portals.Coords = {
             ["Undercity"] = { x = -4388.8, y = 1842.7 },
             ["Silvermoon"] = { x = -4457.2, y = 1438.9 },
             ["Shattrath"] = { x = -4505.3, y = 1424.9 },
-            ["TolBarad"] = { x = -4331.7, y = 2031.3 },
-            ["OrgrimmarFromTolBarad"] = { x = 5283.4, y = -1240.5 },
-            ["Uldum"] = { x = -4359.2, y = 2041.1 },
             ["Hyjal"] = { x = -4391.9, y = 2044.1 },
             ["TwilightHighlands"] = { x = -4380.2, y = 2030 },
             ["Deepholm"] = { x = -4390.5, y = 2065.2 },
+
+            ["TolBarad"] = { x = -4331.7, y = 2031.3 },
+            ["OrgrimmarFromTolBarad"] = { x = 5283.4, y = -1240.5 },
+            ["Uldum"] = { x = -4359.2, y = 2041.1 },
+
             ["WarspearWoD"] = { x = -4466.8, y = 1422.3 },
             ["DarkPortal Talk"] = { x = -4500.3, y = 1434.8 },
             ["DalaranLegion"] = { x = -4440.7, y = 1598.6 },
@@ -156,6 +162,10 @@ APR.Portals.Coords = {
 
             --Order Hall
             ["Paladin To Dalaran"] = { x = -5319.9, y = 2376.1 },
+
+            -- Prepatch Mindnight
+            ['EventToDornogal'] = { x = -5046.8, y = -5031.5 },
+            ['EventToOrgrimmar'] = { x = -5032.2, y = -5003.7 },
         },
         [101] = { ["Orgrimmar"] = { x = 5394.1, y = -1898.9 }, ["Orgrimmar DarkPortal"] = { x = 932.3, y = -222.8 } },
         [113] = { ["Orgrimmar"] = { x = 593.7, y = 5926.2 }, },
@@ -194,6 +204,9 @@ APR.Portals.Coords = {
             ["Drustvar"] = { x = 762.9, y = -2173.9 },
             ["StormsongValley"] = { x = 762.9, y = -2173.9 },
             ["TiragardeSound"] = { x = 762.9, y = -2173.9 }
+        },
+        [948] = {
+            ["Orgrimmar"] = { x = 454.5, y = 990.5 },
         },
         [1550] = { ["Orgrimmar"] = { x = 1539.3, y = -1859.5 }, ["OribosInMaldraxxus"] = { x = -2517.7, y = 2573.5 } },
         [1978] = { ["Orgrimmar"] = { x = -1023, y = 278 } },
@@ -270,6 +283,7 @@ APR.Portals.SwitchCont = {
         { continent = 13,   nextContinent = 619,  nextZone = 627,  portalKey = "DalaranLegion",           closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 619,  nextZone = 627,  portalKey = "Paladin To Dalaran" },
         { continent = 13,   nextContinent = 2537, nextZone = 2395, portalKey = "Silvermoon Midnight",     closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 2274, nextZone = 2248, portalKey = "EventToDornogal" },
 
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "The Exodar" },
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Exodar",                  closestTaxiNode = "Darnassus, Teldrassil" },
@@ -305,6 +319,7 @@ APR.Portals.SwitchCont = {
     ["Horde"] = {
         { continent = 12,   nextContinent = 13,   nextZone = 224,  portalKey = "STVZep",                 closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "USE_ZEPPELIN_TO" },
         { continent = 12,   nextContinent = 13,   nextZone = 90,   portalKey = "Undercity",              closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 13,   nextZone = 241,  portalKey = "TwilightHighlands",      closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 101,  nextZone = 111,  portalKey = "Shattrath",              closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS_TO" },
         { continent = 12,   nextContinent = 113,  nextZone = 126,  portalKey = "DalaranLichKing",        closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 424,  nextZone = 371,  portalKey = "JadeForest",             closestTaxiNode = "Orgrimmar, Durotar" },
@@ -318,6 +333,7 @@ APR.Portals.SwitchCont = {
         { continent = 12,   nextContinent = 619,  nextZone = 630,  portalKey = "AzsunaLegion",           closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS_TO" },
         { continent = 12,   nextContinent = 13,   nextZone = 110,  portalKey = "Silvermoon",             closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS_TO" },
         { continent = 12,   nextContinent = 2537, nextZone = 2395, portalKey = "Silvermoon Midnight",    closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 948,  nextZone = 207,  portalKey = "Deepholm",               closestTaxiNode = "Orgrimmar, Durotar" },
 
         { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar" },
         { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal" },
@@ -325,6 +341,7 @@ APR.Portals.SwitchCont = {
         { continent = 13,   nextContinent = 101,  nextZone = 530,  portalKey = "DarkPortal BC" },
         { continent = 13,   nextContinent = 113,  nextZone = 571,  portalKey = "Howling Fjord" },
         { continent = 13,   nextContinent = 619,  nextZone = 627,  portalKey = "Paladin To Dalaran" },
+        { continent = 13,   nextContinent = 2274, nextZone = 2248, portalKey = "EventToDornogal" },
 
         { continent = 101,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Shattrath, Terokkar Forest" },
         { continent = 101,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar DarkPortal",   closestTaxiNode = "Hellfire Peninsula, The Dark Portal" },
@@ -345,15 +362,16 @@ APR.Portals.SwitchCont = {
 
         { continent = 875,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Port of Zandalar, Zuldazar" },
         { continent = 875,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Dazaralor", },
-
-        { continent = 1550, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Oribos" },
-        { continent = 1978, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Valdrakken, Thaldraszus" },
-
         { continent = 875,  nextContinent = 876,  nextZone = 876,  portalKey = "Drustvar",               closestTaxiNode = "Port of Zandalar, Zuldazar",                    extraText = "SAIL_TO" },
         { continent = 875,  nextContinent = 876,  nextZone = 942,  portalKey = "StormsongValley",        closestTaxiNode = "Port of Zandalar, Zuldazar",                    extraText = "SAIL_TO" },
         { continent = 875,  nextContinent = 876,  nextZone = 895,  portalKey = "TiragardeSound",         closestTaxiNode = "Port of Zandalar, Zuldazar",                    extraText = "SAIL_TO" },
 
+        { continent = 948,  nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar" },
+
+        { continent = 1550, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Oribos" },
         { continent = 1550, nextContinent = 1550, nextZone = 1536, portalKey = "OribosInMaldraxxus",     closestTaxiNode = "Theater of Pain, Maldraxxus" },
+
+        { continent = 1978, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Valdrakken, Thaldraszus" },
 
         { continent = 2274, nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar",              closestTaxiNode = "Dornogal, Isle of Dorn", },
 
@@ -367,6 +385,7 @@ APR.Portals.SwitchZones = {
 
         { continent = 13,   nextContinent = 13,   nextZone = 84,   portalKey = "HomeToStormwind" },
         { continent = 13,   nextContinent = 13,   nextZone = 2352, portalKey = "StormwindToHome" },
+        { continent = 13,   nextContinent = 13,   nextZone = 84,   portalKey = "EventToStormwind" },
 
         { continent = 424,  nextContinent = 424,  nextZone = 504,  portalKey = "Isle of Thunder", },
         { continent = 424,  nextContinent = 424,  nextZone = 388,  portalKey = "Townlong Steppes", },
@@ -430,6 +449,7 @@ APR.Portals.SwitchZones = {
     ["Horde"] = {
         { continent = 12,   nextContinent = 12,   nextZone = 17,   portalKey = "DarkPortal Talk",            closestTaxiNode = "Orgrimmar, Durotar",              extraText = "TALK_NPC" },
         { continent = 12,   nextContinent = 12,   nextZone = 85,   portalKey = "HomeToOgrimmar", },
+        { continent = 12,   nextContinent = 12,   nextZone = 198,  portalKey = "Hyjal", },
         { continent = 12,   nextContinent = 12,   nextZone = 2351, portalKey = "OgrimmarToHome", },
 
         { continent = 424,  nextContinent = 424,  nextZone = 388,  portalKey = "Townlong Steppes", },
@@ -490,39 +510,39 @@ APR.Portals.SwitchZones = {
 
 APR.Portals.Spells = {
     --MAGE
-    { nextContinent = 13,   nextZone = 84,   coords = { x = 917.7, y = -9041.0 },    spellID = 3561 },   -- Stormwind
-    { nextContinent = 13,   nextZone = 87,   coords = { x = -915.3, y = -4613.7 },   spellID = 3562 },   --Ironforge
-    { nextContinent = 13,   nextZone = 2070, coords = { x = -101.7, y = 1948.7 },    spellID = 3563 },   -- Undercity
-    { nextContinent = 12,   nextZone = 62,   coords = { x = 46.2, y = 7415.1 },      spellID = 3565 },   --Darnassus
-    { nextContinent = 12,   nextZone = 88,   coords = { x = 284.8, y = -967.4 },     spellID = 3566 },   --Thunder Bluff
-    { nextContinent = 12,   nextZone = 85,   coords = { x = -4499.6, y = 1445.2 },   spellID = 3567 },   --Orgrimmar
-    { nextContinent = 12,   nextZone = 103,  coords = { x = -11569.6, y = -4031.2 }, spellID = 32271 },  -- Exodar
-    { nextContinent = 13,   nextZone = 110,  coords = { x = -7106.6, y = 9998.5 },   spellID = 32272 },  --Silvermoon
-    { nextContinent = 101,  nextZone = 111,  coords = { x = 5417, y = -1824.3 },     spellID = 33690 },  -- Shattrath
-    { nextContinent = 101,  nextZone = 111,  coords = { x = 5442.9, y = -1902.5 },   spellID = 35715 },  --Shattrath
-    { nextContinent = 13,   nextZone = 51,   coords = { x = -3331.5, y = -10469.0 }, spellID = 49358 },  -- Stonard
-    { nextContinent = 12,   nextZone = 70,   coords = { x = -4440.2, y = -3748.1 },  spellID = 49359 },  -- Theramore
-    { nextContinent = 113,  nextZone = 127,  coords = { x = 588.4, y = 5807.8 },     spellID = 53140 },  -- Dalaran (WotLK)
-    { nextContinent = 13,   nextZone = 245,  coords = { x = 1058.7, y = -369.2 },    spellID = 88342 },  -- Tol Barad
-    { nextContinent = 13,   nextZone = 245,  coords = { x = 1387.6, y = -603.7 },    spellID = 88344 },  -- Tol Barad
-    { nextContinent = 424,  nextZone = 390,  coords = { x = 294.9, y = 917.6 },      spellID = 132621 }, --Vale of Eternal Blossoms
-    { nextContinent = 424,  nextZone = 390,  coords = { x = 897.8, y = 1579.7 },     spellID = 132627 }, --Vale of Eternal Blossoms
-    { nextContinent = 572,  nextZone = 588,  coords = { x = -4060.3, y = 5267.8 },   spellID = 176242 }, -- Warspear
-    { nextContinent = 572,  nextZone = 588,  coords = { x = -4055.9, y = 3744.3 },   spellID = 176248 }, -- Stormshield
-    { nextContinent = 619,  nextZone = 734,  coords = { x = 4706.4, y = -935.2 },    spellID = 193759 }, --Hall of the Guardian
-    { nextContinent = 619,  nextZone = 627,  coords = { x = 4371.8, y = -828.7 },    spellID = 224869 }, -- Dalaran (Legion)
-    { nextContinent = 876,  nextZone = 895,  coords = { x = -538.6, y = 1137.4 },    spellID = 281403 }, -- Boralus
-    { nextContinent = 875,  nextZone = 862,  coords = { x = 774.2, y = -1129.2 },    spellID = 281404 }, -- Dazaralor
-    { nextContinent = 1550, nextZone = 1670, coords = { x = 1542.3, y = -1834.2 },   spellID = 344587 }, -- Oribos
-    { nextContinent = 1978, nextZone = 2025, coords = { x = -1048.2, y = 266.7 },    spellID = 395277 }, -- Valdrakken
-    { nextContinent = 2274, nextZone = 2248, coords = { x = -2400.3, y = 2915.7 },   spellID = 446540 }, -- Dornogal
+    -- { nextContinent = 13,   nextZone = 84,   coords = { x = 917.7, y = -9041.0 },    spellID = 3561 },   -- Stormwind
+    -- { nextContinent = 13,   nextZone = 87,   coords = { x = -915.3, y = -4613.7 },   spellID = 3562 },   --Ironforge
+    -- { nextContinent = 13,   nextZone = 2070, coords = { x = -101.7, y = 1948.7 },    spellID = 3563 },   -- Undercity
+    -- { nextContinent = 12,   nextZone = 62,   coords = { x = 46.2, y = 7415.1 },      spellID = 3565 },   --Darnassus
+    -- { nextContinent = 12,   nextZone = 88,   coords = { x = 284.8, y = -967.4 },     spellID = 3566 },   --Thunder Bluff
+    -- { nextContinent = 12,   nextZone = 85,   coords = { x = -4499.6, y = 1445.2 },   spellID = 3567 },   --Orgrimmar
+    -- { nextContinent = 12,   nextZone = 103,  coords = { x = -11569.6, y = -4031.2 }, spellID = 32271 },  -- Exodar
+    -- { nextContinent = 13,   nextZone = 110,  coords = { x = -7106.6, y = 9998.5 },   spellID = 32272 },  --Silvermoon
+    -- { nextContinent = 101,  nextZone = 111,  coords = { x = 5417, y = -1824.3 },     spellID = 33690 },  -- Shattrath
+    -- { nextContinent = 101,  nextZone = 111,  coords = { x = 5442.9, y = -1902.5 },   spellID = 35715 },  --Shattrath
+    -- { nextContinent = 13,   nextZone = 51,   coords = { x = -3331.5, y = -10469.0 }, spellID = 49358 },  -- Stonard
+    -- { nextContinent = 12,   nextZone = 70,   coords = { x = -4440.2, y = -3748.1 },  spellID = 49359 },  -- Theramore
+    -- { nextContinent = 113,  nextZone = 127,  coords = { x = 588.4, y = 5807.8 },     spellID = 53140 },  -- Dalaran (WotLK)
+    -- { nextContinent = 13,   nextZone = 245,  coords = { x = 1058.7, y = -369.2 },    spellID = 88342 },  -- Tol Barad
+    -- { nextContinent = 13,   nextZone = 245,  coords = { x = 1387.6, y = -603.7 },    spellID = 88344 },  -- Tol Barad
+    -- { nextContinent = 424,  nextZone = 390,  coords = { x = 294.9, y = 917.6 },      spellID = 132621 }, --Vale of Eternal Blossoms
+    -- { nextContinent = 424,  nextZone = 390,  coords = { x = 897.8, y = 1579.7 },     spellID = 132627 }, --Vale of Eternal Blossoms
+    -- { nextContinent = 572,  nextZone = 588,  coords = { x = -4060.3, y = 5267.8 },   spellID = 176242 }, -- Warspear
+    -- { nextContinent = 572,  nextZone = 588,  coords = { x = -4055.9, y = 3744.3 },   spellID = 176248 }, -- Stormshield
+    -- { nextContinent = 619,  nextZone = 734,  coords = { x = 4706.4, y = -935.2 },    spellID = 193759 }, --Hall of the Guardian
+    -- { nextContinent = 619,  nextZone = 627,  coords = { x = 4371.8, y = -828.7 },    spellID = 224869 }, -- Dalaran (Legion)
+    -- { nextContinent = 876,  nextZone = 895,  coords = { x = -538.6, y = 1137.4 },    spellID = 281403 }, -- Boralus
+    -- { nextContinent = 875,  nextZone = 862,  coords = { x = 774.2, y = -1129.2 },    spellID = 281404 }, -- Dazaralor
+    -- { nextContinent = 1550, nextZone = 1670, coords = { x = 1542.3, y = -1834.2 },   spellID = 344587 }, -- Oribos
+    -- { nextContinent = 1978, nextZone = 2025, coords = { x = -1048.2, y = 266.7 },    spellID = 395277 }, -- Valdrakken
+    -- { nextContinent = 2274, nextZone = 2248, coords = { x = -2400.3, y = 2915.7 },   spellID = 446540 }, -- Dornogal
 
-    --DRUID
-    { nextContinent = 12,   nextZone = 80,   coords = { x = -2679.8, y = 7995.6 },   spellID = 18960 },  -- Moonglade
-    { nextContinent = 619,  nextZone = 641,  coords = { x = 1582.1, y = 1633.0 },    spellID = 193753 }, -- Emerald Dreamway
+    -- --DRUID
+    -- { nextContinent = 12,   nextZone = 80,   coords = { x = -2679.8, y = 7995.6 },   spellID = 18960 },  -- Moonglade
+    -- { nextContinent = 619,  nextZone = 641,  coords = { x = 1582.1, y = 1633.0 },    spellID = 193753 }, -- Emerald Dreamway
 
-    --DK
-    { nextContinent = 13,   nextZone = 23,   coords = { x = -5662.4, y = 2359.6 },   spellID = 50977 }, -- Death Gate (Ebon Hold)
+    -- --DK
+    -- { nextContinent = 13,   nextZone = 23,   coords = { x = -5662.4, y = 2359.6 },   spellID = 50977 }, -- Death Gate (Ebon Hold)
 
 
 }
