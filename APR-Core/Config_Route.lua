@@ -876,7 +876,8 @@ function APR.routeconfig:InitRouteConfig()
 end
 
 function IsRouteDisabled(tab, routeName)
-    return routeName == "01-10 Exile's Reach" and not APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID())
+    return routeName == "01-10 Exile's Reach" and
+        not APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID())
 end
 
 ---------------------------------------------------------------------------------------
@@ -1194,7 +1195,12 @@ end
 function APR.routeconfig:CheckRouteResetOnLvlUp()
     if not APR:IsTableEmpty(APRCustomPath[APR.PlayerID]) then
         local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
-        if APR:Contains(L[notSkippableRoute], currentRouteName) then
+        local notSkippableRouteTranslated = {}
+        for _, routeName in ipairs(notSkippableRoute) do
+            tinsert(notSkippableRouteTranslated, L[routeName])
+        end
+
+        if APR:Contains(notSkippableRouteTranslated, currentRouteName) then
             return
         elseif APR.Level == 10 then
             APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_SPEEDRUN",
