@@ -920,6 +920,12 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         return
     end
 
+    -- Only clean up raid icon button if this step doesn't have one pending
+    if container.RaidIconButton and not self.pendingRaidIconNpcId then
+        container.RaidIconButton:Hide()
+        container.RaidIconButton = nil
+    end
+
     local iconTexture = GetStepButtonIcon(attribute, itemID)
     if not iconTexture then
         return
@@ -958,6 +964,8 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     IconButton.itemID = itemID
     IconButton.attribute = attribute
     container.IconButton = IconButton
+
+    -- Reposition raid icon button if it exists (to display both buttons side by side)
     if container.RaidIconButton then
         PositionStepButtons(container, container.RaidIconButton, IconButton)
     end
@@ -1149,10 +1157,10 @@ function APR.GetMenu(owner, rootDescription)
 
     rootDescription:CreateButton(L["CURRENT_STEP_QUEST_BUTTON_POSITION"] .. ": " ..
         (APR.settings.profile.currentStepQuestButtonPositionRight and L["RIGHT"] or L["LEFT"]), function()
-        APR.settings.profile.currentStepQuestButtonPositionRight = not APR.settings.profile
-            .currentStepQuestButtonPositionRight
-        APR:UpdateMapId()
-    end)
+            APR.settings.profile.currentStepQuestButtonPositionRight = not APR.settings.profile
+                .currentStepQuestButtonPositionRight
+            APR:UpdateMapId()
+        end)
 
     rootDescription:CreateButton(L["RESET_CURRENT_STEP_FRAME_POSITION"], function()
         APR.currentStep:ResetPosition()
