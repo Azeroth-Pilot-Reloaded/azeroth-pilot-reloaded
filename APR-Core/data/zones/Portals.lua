@@ -27,6 +27,7 @@ APR.Portals.Coords = {
             ["StormwindToHome"] = { x = 907.4, y = -9076.4 },
             ["Bel'ameth"] = { x = 971.5, y = -9126 },
             ["Silvermoon Midnight"] = { x = 876.5, y = -9097.4 },
+            ["BoralusBFA"] = { x = 1014.2, y = -9070.8 },
 
             --Order Hall
             ["Paladin To Dalaran"] = { x = -5319.9, y = 2376.1 },
@@ -137,11 +138,11 @@ APR.Portals.Coords = {
             ["Hyjal"] = { x = -4391.9, y = 2044.1 },
             ["TwilightHighlands"] = { x = -4380.2, y = 2030 },
             ["Deepholm"] = { x = -4390.5, y = 2065.2 },
-
             ["TolBarad"] = { x = -4331.7, y = 2031.3 },
-            ["OrgrimmarFromTolBarad"] = { x = 5283.4, y = -1240.5 },
+            ["TolBarad to Orgrimmar"] = { x = 5283.4, y = -1240.5 },
             ["Uldum"] = { x = -4359.2, y = 2041.1 },
-
+            ["Uldum to UldumCata"] = { x = -1028.1, y = -9480.1 },
+            ["UldumCata To Uldum"] = { x = -1028.1, y = -9480.1 },
             ["WarspearWoD"] = { x = -4466.8, y = 1422.3 },
             ["DarkPortal Talk"] = { x = -4500.3, y = 1434.8 },
             ["DalaranLegion"] = { x = -4440.7, y = 1598.6 },
@@ -259,10 +260,6 @@ APR.Portals.Coords = {
 }
 
 
--- //TODO to be fix on release
-APR.Portals.Coords["Alliance"][13]["BoralusBFA"] = (APR.isMidnightPrePatchVersion or APR.isBetaMidnightVersion) and
-    { x = 1014.2, y = -9070.8 } or
-    { x = 876.7, y = -9098.1 }
 
 APR.Portals.SwitchCont = {
     ["Alliance"] = {
@@ -320,6 +317,7 @@ APR.Portals.SwitchCont = {
         { continent = 12,   nextContinent = 13,   nextZone = 224,  portalKey = "STVZep",                 closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "USE_ZEPPELIN_TO" },
         { continent = 12,   nextContinent = 13,   nextZone = 90,   portalKey = "Undercity",              closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 13,   nextZone = 241,  portalKey = "TwilightHighlands",      closestTaxiNode = "Orgrimmar, Durotar" },
+        { continent = 12,   nextContinent = 13,   nextZone = 245,  portalKey = "TolBarad",               closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 101,  nextZone = 111,  portalKey = "Shattrath",              closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "DOWNSTAIRS_TO" },
         { continent = 12,   nextContinent = 113,  nextZone = 126,  portalKey = "DalaranLichKing",        closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 424,  nextZone = 371,  portalKey = "JadeForest",             closestTaxiNode = "Orgrimmar, Durotar" },
@@ -335,6 +333,8 @@ APR.Portals.SwitchCont = {
         { continent = 12,   nextContinent = 2537, nextZone = 2395, portalKey = "Silvermoon Midnight",    closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 948,  nextZone = 207,  portalKey = "Deepholm",               closestTaxiNode = "Orgrimmar, Durotar" },
 
+
+        { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "TolBarad to Orgrimmar" },
         { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar" },
         { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal" },
         { continent = 13,   nextContinent = 12,   nextZone = 85,   portalKey = "Orgrimmar Silvermoon",   closestTaxiNode = "Silvermoon City" },
@@ -450,6 +450,9 @@ APR.Portals.SwitchZones = {
         { continent = 12,   nextContinent = 12,   nextZone = 17,   portalKey = "DarkPortal Talk",            closestTaxiNode = "Orgrimmar, Durotar",              extraText = "TALK_NPC" },
         { continent = 12,   nextContinent = 12,   nextZone = 85,   portalKey = "HomeToOgrimmar", },
         { continent = 12,   nextContinent = 12,   nextZone = 198,  portalKey = "Hyjal", },
+        { continent = 12,   nextContinent = 12,   nextZone = 249,  portalKey = "Uldum to UldumCata",         extraText = "TALK_NPC" },
+        { continent = 12,   nextContinent = 12,   nextZone = 1527, portalKey = "Uldum", },
+        { continent = 12,   nextContinent = 12,   nextZone = 1527, portalKey = "UldumCata To Uldum",         extraText = "TALK_NPC" },
         { continent = 12,   nextContinent = 12,   nextZone = 2351, portalKey = "OgrimmarToHome", },
 
         { continent = 424,  nextContinent = 424,  nextZone = 388,  portalKey = "Townlong Steppes", },
