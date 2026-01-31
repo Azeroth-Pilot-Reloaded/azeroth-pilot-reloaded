@@ -733,27 +733,30 @@ function APR:UpdateStep()
                 return
             end
         elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS or step.UseSpell then
-            local questKey, questText, useHSKey, spellID
+            local questKey, questText, useHSKey, spellID, type
             if step.UseHS then
                 questKey = step.UseHS
                 questText = L["USE_HEARTHSTONE"]
                 useHSKey = "UseHS"
-                spellID = 8690
+                spellID = 6948
+                type = 'item'
             elseif step.UseDalaHS then
                 questKey = step.UseDalaHS
                 questText = L["USE_DALARAN_HEARTHSTONE"]
                 useHSKey = "UseDalaHS"
                 spellID = APR.dalaHSSpellID
+                type = 'spell'
             else
                 questKey = step.UseGarrisonHS
                 questText = L["USE_GARRISON_HEARTHSTONE"]
                 useHSKey = "UseGarrisonHS"
                 spellID = APR.garrisonHSSpellID
+                type = 'spell'
             end
 
             if APR.IsInRouteZone then
                 APR.currentStep:AddQuestSteps(questKey, questText, useHSKey)
-                APR.currentStep:AddStepButton(questKey .. "-" .. useHSKey, spellID, 'spell')
+                APR.currentStep:AddStepButton(questKey .. "-" .. useHSKey, spellID, type)
             end
 
             if C_QuestLog.IsQuestFlaggedCompleted(questKey) then
