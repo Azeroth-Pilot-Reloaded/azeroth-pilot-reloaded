@@ -30,7 +30,10 @@ function APR:GetStepString(step)
         Group = L["GROUP_Q"],
         LearnProfession = L["LEARN_PROFESSION"],
         LeaveScenario = L["SCENARIO"],
-        LootItems = "LOOT",
+        LootItems =
+            (step and step.LootItems and #step.LootItems >= 1) and
+            string.format(L["LOOT_ITEM"], C_Item.GetItemInfo(step.LootItems[1].itemID) or ":") or
+            string.format(L["LOOT_ITEM"], ':'),
         PickUp = L["PICK_UP_Q"],
         Qpart = L["Q_PART"],
         QpartPart = L["Q_PART"],
