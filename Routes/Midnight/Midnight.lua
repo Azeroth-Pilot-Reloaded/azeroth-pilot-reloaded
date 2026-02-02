@@ -20847,6 +20847,62 @@ APR.RouteQuestStepList["2395-The-Darkening-Sky"] = {
         Zone = 2395,
         _index = 10,
     },
+    {
+        Qpart = { [91967] = { 1 } },
+        Coord = { x = -4612.7, y = 9088.8 },
+        Range = 5,
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 11,
+        _comment = "You Know This Evil?"
+    },
+    {
+        Qpart = { [91967] = { 2 } },
+        Coord = { x = -4612, y = 9099 },
+        GossipOptionIDs = { 135157, 135156 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 12,
+    },
+    {
+        Qpart = { [91967] = { 3 } },
+        Coord = { x = -4616.6, y = 9097.7 },
+        GossipOptionIDs = { 135148, 135147, 135149 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 13,
+    },
+    {
+        Qpart = { [91967] = { 4 } },
+        Coord = { x = -4620.3, y = 9094.7 },
+        GossipOptionIDs = { 135139, 135140 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 14,
+    },
+    {
+        Qpart = { [91967] = { 5 } },
+        Coord = { x = -4614, y = 9091.7 },
+        GossipOptionIDs = { 135179, 135178 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 15,
+    },
+    {
+        Qpart = { [91967] = { 6 } },
+        Coord = { x = -4610.9, y = 8457.2 },
+        Range = 5,
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 16,
+    },
+    {
+        Done = { 91967 },
+        Coord = { x = -4610.4, y = 8457.2 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 17,
+    },
 }
 
 APR.RouteQuestStepList["2395-Midnight-Prey"] = {
