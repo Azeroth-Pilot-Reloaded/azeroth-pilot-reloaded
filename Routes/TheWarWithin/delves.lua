@@ -449,7 +449,6 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2395,
-        _index = 276,
     },
     {
         Waypoint = 1,
@@ -458,7 +457,6 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2395,
-        _index = 277,
     },
     {
         Waypoint = 1,
@@ -467,7 +465,6 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2395,
-        _index = 278,
     },
     {
         Waypoint = 1,
@@ -476,7 +473,6 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2395,
-        _index = 279,
     },
     {
         Waypoint = 1,
@@ -485,7 +481,6 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2395,
-        _index = 280,
     },
     {
         Waypoint = 1,
@@ -494,7 +489,6 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2395,
-        _index = 281,
     },
     {
         Scenario = { criteriaID = 110646, criteriaIndex = 1, scenarioID = 3257, stepID = 16448 },
@@ -503,7 +497,6 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2395,
-        _index = 282,
     },
     {
         Scenario = { criteriaID = 60399, criteriaIndex = 1, scenarioID = 3257, stepID = 16449 },
@@ -513,6 +506,85 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
         IsCampaignQuest = true,
         RaidIcon = 246717,
         Zone = 2395,
-        _index = 283,
     },
+}
+
+
+APR.RouteQuestStepList.GULD_OF_MEMORY_3 = {
+    {
+        Scenario = { criteriaID = 111078, criteriaIndex = 1, scenarioID = 3243, stepID = 16416 },
+        Coord = { x = 648.1, y = 137.5 },
+        GossipOptionIDs = { 137389 },
+        InstanceQuest = true,
+        Zone = 2413,
+    },
+    {
+        Waypoint = 1,
+        Coord = { x = 623.2, y = -58 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 2413,
+    },
+    {
+        Waypoint = 1,
+        Coord = { x = 524.9, y = 34.5 },
+        Range = 15,
+        InstanceQuest = true,
+        IsCampaignQuest = true,
+        Zone = 2413,
+    },
+    {
+        Waypoint = 1,
+        Coord = { x = 511.8, y = -20 },
+        Range = 10,
+        InstanceQuest = true,
+        IsCampaignQuest = true,
+        Zone = 2413,
+    },
+    {
+        Waypoint = 1,
+        Coord = { x = 544.6, y = -127.6 },
+        Range = 10,
+        InstanceQuest = true,
+        IsCampaignQuest = true,
+        Zone = 2413,
+    },
+    {
+        Waypoint = 1,
+        Coord = { x = 639.3, y = -138.2 },
+        Range = 10,
+        InstanceQuest = true,
+        IsCampaignQuest = true,
+        Zone = 2413,
+    },
+    {
+        Waypoint = 1,
+        Coord = { x = 662, y = -200.9 },
+        Range = 10,
+        InstanceQuest = true,
+        IsCampaignQuest = true,
+        Zone = 2413,
+    },
+    {
+        Scenario = { criteriaID = 110329, criteriaIndex = 1, scenarioID = 3243, stepID = 16417 },
+        Coord = { x = 747.4, y = -244.8 },
+        Range = 15,
+        InstanceQuest = true,
+        Zone = 2413,
+    },
+    {
+        Scenario = { criteriaID = 60399, criteriaIndex = 1, scenarioID = 3243, stepID = 16418 },
+        Coord = { x = 624.7, y = -235.5 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 2413,
+    },
+    {
+        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869 },
+        Coord = { x = 624.6, y = -237.6 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 2413,
+    },
+
 }

@@ -1803,8 +1803,8 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 181,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2249,
+        InstanceQuest = true,
         Zone = 2248,
         _index = 182,
     },
@@ -2050,8 +2050,8 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 216,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2250,
+        InstanceQuest = true,
         Zone = 2248,
         _index = 217,
     },
@@ -2741,8 +2741,8 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 69,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2251,
+        InstanceQuest = true,
         Zone = 2214,
         _index = 70,
     },
@@ -4106,8 +4106,8 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 261,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2302,
+        InstanceQuest = true,
         Zone = 2214,
         _index = 262,
     },
@@ -4936,8 +4936,8 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         _index = 37,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2310,
+        InstanceQuest = true,
         Zone = 2215,
         _index = 38,
     },
@@ -5615,8 +5615,8 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         _index = 131,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2312,
+        InstanceQuest = true,
         Zone = 2215,
         _index = 132,
     },
@@ -5992,8 +5992,8 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         _index = 187,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2301,
+        InstanceQuest = true,
         Zone = 2215,
         _index = 188,
     },
@@ -6179,8 +6179,8 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         _index = 216,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2277,
+        InstanceQuest = true,
         Zone = 2215,
         _index = 217,
     },
@@ -7074,8 +7074,8 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 85,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2347,
+        InstanceQuest = true,
         Zone = 2255,
         _index = 86,
     },
@@ -7542,8 +7542,8 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 154,
     },
     {
-        InstanceQuest = true,
         LeaveScenario = 2299,
+        InstanceQuest = true,
         Zone = 2255,
         _index = 155,
     },

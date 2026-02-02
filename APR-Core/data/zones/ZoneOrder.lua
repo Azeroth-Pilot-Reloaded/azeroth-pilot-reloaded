@@ -1673,6 +1673,8 @@
             [2564] = { Coord = { x = -6304.8, y = 3257.1 }, zone = 2437, name = "Nalorakk", type = "DUNGEON" },
             -- Eversong Woods
             [2502] = { Coord = { x = -4142, y = 4750.4 }, zone = 2395, name = "SHADOW ENCLAVE", type = "DELVE" },
+            -- Harandar
+            [2505] = { Coord = { x = 798, y = 23.9 }, zone = 2413, name = "GULD OF MEMORY", type = "DELVE" },
         }
     },
     ExtensionRouteMaps = { -- MapID for each Categorie
