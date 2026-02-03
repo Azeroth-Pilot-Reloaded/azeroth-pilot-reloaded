@@ -9347,6 +9347,14 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         _index = 96,
     },
     {
+        Qpart = { [86822] = { 2 } },
+        Coord = { x = -1517.2, y = -7999.3 },
+        GossipOptionIDs = { 138705 },
+        IsCampaignQuest = true,
+        Zone = 36,
+        _index = 96,
+    },
+    {
         Done = { 86822 },
         Coord = { x = -1519, y = -8006.6 },
         IsCampaignQuest = true,
