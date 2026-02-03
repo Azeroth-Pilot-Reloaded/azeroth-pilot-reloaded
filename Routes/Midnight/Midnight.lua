@@ -9255,13 +9255,21 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
     },
     {
         PickUp = { 89338 },
-        Coord = { x = -3536.1, y = -940 },
+        Coord = { x = -3510.6, y = -889.6 },
         IsCampaignQuest = true,
         Zone = 14,
         _index = 85,
     },
     {
-        QpartPart = { [89338] = { 1 } },
+        Qpart = { [89338] = { 1 } },
+        Coord = { x = -3510.6, y = -889.6 },
+        Range = 5,
+        IsCampaignQuest = true,
+        Zone = 14,
+        _index = 85,
+    },
+    {
+        QpartPart = { [89338] = { 2 } },
         Coord = { x = -3561.6, y = -1092.3 },
         IsCampaignQuest = true,
         TrigText = "1/4",
@@ -9269,7 +9277,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         _index = 86,
     },
     {
-        QpartPart = { [89338] = { 2 } },
+        QpartPart = { [89338] = { 3 } },
         Coord = { x = -3591.4, y = -1096.2 },
         IsCampaignQuest = true,
         TrigText = "1/4",
@@ -9277,7 +9285,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         _index = 87,
     },
     {
-        QpartPart = { [89338] = { 1 } },
+        QpartPart = { [89338] = { 2 } },
         Coord = { x = -3593.2, y = -1143.8 },
         IsCampaignQuest = true,
         TrigText = "2/4",
@@ -9285,7 +9293,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         _index = 88,
     },
     {
-        QpartPart = { [89338] = { 2 } },
+        QpartPart = { [89338] = { 3 } },
         Coord = { x = -3560.9, y = -1172.7 },
         IsCampaignQuest = true,
         TrigText = "2/4",
@@ -9293,7 +9301,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         _index = 89,
     },
     {
-        QpartPart = { [89338] = { 1 } },
+        QpartPart = { [89338] = { 2 } },
         Coord = { x = -3536.5, y = -1195.5 },
         IsCampaignQuest = true,
         TrigText = "3/4",
@@ -9301,7 +9309,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         _index = 90,
     },
     {
-        QpartPart = { [89338] = { 1 } },
+        QpartPart = { [89338] = { 2 } },
         Coord = { x = -3487.7, y = -1215.7 },
         IsCampaignQuest = true,
         TrigText = "4/4",
@@ -9309,7 +9317,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         _index = 91,
     },
     {
-        QpartPart = { [89338] = { 2 } },
+        QpartPart = { [89338] = { 3 } },
         Coord = { x = -3448.4, y = -1247.7 },
         IsCampaignQuest = true,
         TrigText = "3/4",
@@ -9317,7 +9325,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         _index = 92,
     },
     {
-        QpartPart = { [89338] = { 2 } },
+        QpartPart = { [89338] = { 3 } },
         Coord = { x = -3426.3, y = -1190.4 },
         IsCampaignQuest = true,
         TrigText = "4/4",
