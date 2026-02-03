@@ -1675,6 +1675,8 @@
             [2502] = { Coord = { x = -4142, y = 4750.4 }, zone = 2395, name = "SHADOW ENCLAVE", type = "DELVE" },
             -- Harandar
             [2505] = { Coord = { x = 798, y = 23.9 }, zone = 2413, name = "GULD OF MEMORY", type = "DELVE" },
+            -- Quel'Danas
+            [2515] = { Coord = { x = -4966.9, y = 11637.6 }, zone = 2424, name = "Magisters Terrace", type = "DUNGEON" },
         }
     },
     ExtensionRouteMaps = { -- MapID for each Categorie

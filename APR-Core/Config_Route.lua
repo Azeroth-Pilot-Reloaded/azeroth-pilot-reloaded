@@ -1140,6 +1140,7 @@ function APR.routeconfig:GetMidnightPrefab()
         AddRouteToCustomPath(L["Midnight - Harandar - sojourner"])
         -- AddRouteToCustomPath(L["Midnight - Voidstorm - sojourner"])
         -- AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
+        -- AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
         AddRouteToCustomPath(L["Midnight - Unlock Void Elf Demon Hunter"])
     end
 
