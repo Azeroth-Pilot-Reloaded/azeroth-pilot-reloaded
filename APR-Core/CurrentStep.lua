@@ -10,6 +10,7 @@ APR.currentStep.questsExtraTextList = {}
 APR.currentStep.pendingRemoval = {}
 APR.currentStep.pendingButtonRequests = {}
 APR.currentStep.pendingRaidIconRequests = {}
+APR.currentStep.pendingButtonResets = {}
 APR.currentStep.pendingRaidIconNpcId = nil
 APR.currentStep.raidIconAdded = false
 APR.currentStep.pendingRaidIconMacroRefresh = false
@@ -760,24 +761,10 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
                 container:ClearAllPoints()
                 container:Hide()
                 if isQuestList then
-                    -- kill button if present (only outside combat)
-                    local btn = container.IconButton
-                    if btn then
-                        btn:Hide()
-                        btn:ClearAllPoints()
-                        container.IconButton = nil
-                    end
+                    self:ResetSecureStepButton(container, id)
                     self.pendingButtonRequests[id] = nil
                 end
-                local raidBtn = container.RaidIconButton
-                if raidBtn then
-                    raidBtn:Hide()
-                    raidBtn:ClearAllPoints()
-                    container.RaidIconButton = nil
-                end
-                if self.raidIconButton == raidBtn then
-                    self.raidIconButton = nil
-                end
+                self:ResetSecureRaidIconButton(container, id)
                 self.pendingRaidIconRequests[id] = nil
                 list[id] = nil
             else
@@ -831,6 +818,95 @@ local function GetRaidIconContainer(self, key)
     return self.questsList[key] or self.questsExtraTextList[key]
 end
 
+function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
+    if not container or not container.IconButton then
+        return
+    end
+
+    local button = container.IconButton
+    if InCombatLockdown() and button:IsProtected() and not force then
+        if questsListKey then
+            self.pendingButtonResets[questsListKey] = true
+        end
+        return
+    end
+
+    button:Hide()
+    button:ClearAllPoints()
+    button:SetScript("OnEnter", nil)
+    button:SetScript("OnLeave", nil)
+    button:SetAttribute("type1", nil)
+    button:SetAttribute("item", nil)
+    button:SetAttribute("spell", nil)
+    local normalTexture = button:GetNormalTexture()
+    if normalTexture then
+        normalTexture:SetTexture(nil)
+    end
+    local highlightTexture = button:GetHighlightTexture()
+    if highlightTexture then
+        highlightTexture:SetTexture(nil)
+    end
+    button.itemID = nil
+    button.attribute = nil
+    if button.cooldown then
+        button.cooldown:Hide()
+        button.cooldown:Clear()
+    end
+    container.IconButton = nil
+end
+
+function APR.currentStep:ResetSecureRaidIconButton(container, questsListKey, force)
+    if not container or not container.RaidIconButton then
+        return
+    end
+
+    local button = container.RaidIconButton
+    if InCombatLockdown() and button:IsProtected() and not force then
+        if questsListKey then
+            self.pendingButtonResets[questsListKey] = true
+        end
+        return
+    end
+
+    button:Hide()
+    button:ClearAllPoints()
+    button:SetScript("OnEnter", nil)
+    button:SetScript("OnLeave", nil)
+    button:SetAttribute("type1", nil)
+    button:SetAttribute("macrotext", nil)
+    local normalTexture = button:GetNormalTexture()
+    if normalTexture then
+        normalTexture:SetTexture(nil)
+    end
+    local highlightTexture = button:GetHighlightTexture()
+    if highlightTexture then
+        highlightTexture:SetTexture(nil)
+    end
+    button.npcID = nil
+    container.RaidIconButton = nil
+    if self.raidIconButton == button then
+        self.raidIconButton = nil
+    end
+end
+
+function APR.currentStep:ResetSecureButtonsByKey(questsListKey, force)
+    local containerQuest = self.questsList[questsListKey]
+    local containerRaid = self.questsList[questsListKey] or self.questsExtraTextList[questsListKey]
+    self:ResetSecureStepButton(containerQuest, questsListKey, force)
+    self:ResetSecureRaidIconButton(containerRaid, questsListKey, force)
+end
+
+function APR.currentStep:ProcessPendingButtonResets()
+    if InCombatLockdown() then
+        return
+    end
+
+    for questsListKey, _ in pairs(self.pendingButtonResets) do
+        self:ResetSecureButtonsByKey(questsListKey, true)
+        self.pendingButtonResets[questsListKey] = nil
+    end
+end
+
 function APR.currentStep:PrepareRaidIcon(step)
     if step and (step.RaidIcon or step.DroppableQuest) then
         self.pendingRaidIconNpcId = tonumber(step.RaidIcon or step.DroppableQuest)
@@ -850,8 +926,14 @@ end
 
 function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
     local container = GetRaidIconContainer(self, questsListKey)
-    if not container or container.RaidIconButton then
+    if not container then
         return
+    end
+    if container.RaidIconButton then
+        self:ResetSecureRaidIconButton(container, questsListKey)
+        if container.RaidIconButton then
+            return
+        end
     end
 
     local RaidIconButton = CreateFrame("Button", nil, container,
@@ -920,10 +1002,16 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         return
     end
 
+    if container.IconButton then
+        self:ResetSecureStepButton(container, questsListKey)
+        if container.IconButton then
+            return
+        end
+    end
+
     -- Only clean up raid icon button if this step doesn't have one pending
     if container.RaidIconButton and not self.pendingRaidIconNpcId then
-        container.RaidIconButton:Hide()
-        container.RaidIconButton = nil
+        self:ResetSecureRaidIconButton(container, questsListKey)
     end
 
     local iconTexture = GetStepButtonIcon(attribute, itemID)
@@ -996,6 +1084,8 @@ function APR.currentStep:ProcessPendingStepButtons()
         return
     end
 
+    self:ProcessPendingButtonResets()
+
     for questsListKey, data in pairs(self.pendingButtonRequests) do
         self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute)
         self.pendingButtonRequests[questsListKey] = nil
@@ -1066,6 +1156,7 @@ function APR.currentStep:Reset()
     self.pendingRaidIconNpcId = nil
     self.raidIconAdded = false
     self.pendingRaidIconRequests = {}
+    self.pendingButtonResets = {}
     self.pendingRaidIconMacroRefresh = false
     self.raidIconButton = nil
     self:RemoveQuestStepsAndExtraLineTexts()
