@@ -1741,6 +1741,7 @@ function APR.settings:ToggleAddon()
     APR.party:RefreshPartyFrameAnchor()
     APR.heirloom:RefreshFrameAnchor()
     APR.Buff:RefreshFrameAnchor()
+    APR.coordinate:RefreshFrameAnchor()
     APR.RouteSelection:RefreshFrameAnchor()
     APR.map:ToggleMapPins()
 end
