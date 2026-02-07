@@ -6,7 +6,7 @@ local candy = LibStub("LibCandyBar-3.0")
 APR.AFK = APR:NewModule("AFK")
 
 APR.AFK.lastStep = nil
-APR.AFK.defaultSnapHeight = 15
+APR.AFK.defaultSnapHeight = 20
 APR.AFK.fakeTimerActive = false
 
 local FRAME_WIDTH = 250
@@ -53,12 +53,12 @@ function APR.AFK:AFKFrameOnInit()
     AfkFrameScreen:Hide()
 
     local function onStop()
-    AfkFrameScreen:Hide()
-    APR.AFK.fakeTimerActive = false
-    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-        APR.questOrderList:ApplySnapAnchor()
+        AfkFrameScreen:Hide()
+        APR.AFK.fakeTimerActive = false
+        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+            APR.questOrderList:ApplySnapAnchor()
+        end
     end
-end
     candy:RegisterCallback("LibCandyBar_Stop", onStop)
 
     APR.AFK.eventFrame = CreateFrame("Frame")
