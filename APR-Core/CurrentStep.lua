@@ -1227,6 +1227,16 @@ function APR.GetMenu(owner, rootDescription)
         APR.questOrderList:RefreshFrameAnchor()
     end)
 
+    rootDescription:CreateDivider()
+    rootDescription:CreateTitle(L["AFK"])
+
+    createToggleItem(L["AFK_SNAP_TO_CURRENT_STEP"], function()
+        return APR.settings.profile.afkSnapToCurrentStep
+    end, function()
+        APR.settings.profile.afkSnapToCurrentStep = not APR.settings.profile.afkSnapToCurrentStep
+        APR.AFK:RefreshFrameAnchor()
+    end)
+
 
     rootDescription:CreateDivider()
     rootDescription:CreateTitle(L["CURRENT_STEP"])

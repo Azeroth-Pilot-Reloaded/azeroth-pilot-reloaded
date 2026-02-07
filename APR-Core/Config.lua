@@ -120,10 +120,10 @@ function APR.settings:InitializeSettings()
             routeSignature = {},
             --afk
             afkFrame = {},
-            afkSnapToCurrentStep = false,
-            afkBarColor = { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 },
+            afkSnapToCurrentStep = true,
+            afkBarColor = { APR.Color.orange[1], APR.Color.orange[2], APR.Color.orange[3], 1 },
             afkWidth = 250,
-            afkHeight = 30,
+            afkHeight = 20,
             --debug
             debug = false,
             showEvent = false,
@@ -1229,7 +1229,7 @@ function APR.settings:createBlizzOptions()
                             local wasSnapped = self.profile.afkSnapToCurrentStep
                             SetProfileOption(info, value)
                             if value and not wasSnapped and self.profile.afkHeight == 30 then
-                                self.profile.afkHeight = (APR.AFK and APR.AFK.defaultSnapHeight) or 15
+                                self.profile.afkHeight = (APR.AFK and APR.AFK.defaultSnapHeight) or 20
                             end
                             APR.AFK:RefreshFrameAnchor()
                         end,
