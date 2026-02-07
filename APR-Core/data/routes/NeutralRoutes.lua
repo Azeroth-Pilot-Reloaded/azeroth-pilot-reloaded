@@ -46,9 +46,9 @@ APR.RouteList.Shadowlands = {
 }
 
 APR.RouteList.Dragonflight = {
-    ["2022-DF03N-WakingShores"] = L["DF04 - Waking Shores - Neutral"],
-    ["2023-DF04-OhnahranPlains"] = L["DF05 - Ohn'Ahran Plains"],
-    ["2024-DF05-AzureSpan"] = L["DF06 - Azure Span"],
+    ["2022-DF03N-WakingShores"] = L["DF03 - Waking Shores - Neutral"],
+    ["2023-DF04-OhnahranPlains"] = L["DF04 - Ohn'Ahran Plains"],
+    ["2024-DF05-AzureSpan"] = L["DF05 - Azure Span"],
 }
 
 APR.RouteList.TheWarWithin = {

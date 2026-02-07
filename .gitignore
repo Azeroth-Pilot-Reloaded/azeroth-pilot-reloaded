@@ -7,3 +7,6 @@ wordList.txt
 translation-report.md
 
 TODO.txt
+.github/lua-wow-addon-development.collection.yml
+.github/instructions/*
+.github/prompts/*

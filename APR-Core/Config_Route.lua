@@ -1082,18 +1082,14 @@ function APR.routeconfig:GetDFPrefab()
     if APR.Faction == alliance then
         AddRouteToCustomPath(L["DF01 - Dragonflight Stormwind"])
         AddRouteToCustomPath(L["DF02 - Waking Shores - Alliance"])
-        AddRouteToCustomPath(L["DF03 - Waking Shores - Neutral"])
-        AddRouteToCustomPath(L["DF04 - Ohn'Ahran Plains"])
-        AddRouteToCustomPath(L["DF05 - Azure Span"])
-        AddRouteToCustomPath(L["DF06 - Thaldraszus"])
     elseif APR.Faction == horde then
-        AddRouteToCustomPath(L["DF01/02 - Dragonflight Orgrimmar/Durotar"])
-        AddRouteToCustomPath(L["DF03 - Waking Shores - Horde"])
-        AddRouteToCustomPath(L["DF04 - Waking Shores - Neutral"])
-        AddRouteToCustomPath(L["DF05 - Ohn'Ahran Plains"])
-        AddRouteToCustomPath(L["DF06 - Azure Span"])
-        AddRouteToCustomPath(L["DF07 - Thaldraszus"])
+        AddRouteToCustomPath(L["DF01 - Dragonflight Orgrimmar"])
+        AddRouteToCustomPath(L["DF02 - Waking Shores - Horde"])
     end
+    AddRouteToCustomPath(L["DF03 - Waking Shores - Neutral"])
+    AddRouteToCustomPath(L["DF04 - Ohn'Ahran Plains"])
+    AddRouteToCustomPath(L["DF05 - Azure Span"])
+    AddRouteToCustomPath(L["DF06 - Thaldraszus"])
     self:SendMessage("APR_Custom_Path_Update")
 end
 
