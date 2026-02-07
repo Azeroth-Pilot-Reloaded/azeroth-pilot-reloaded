@@ -46,19 +46,84 @@ local function _FindFirst(kind, db, targetCont, targetZone, scope)
         end
     end
 end
+
+-- Find the closest transport (spell/item) to target coordinates.
+-- scope = "continent" (any zone on target continent) or "zone" (exact zone).
+-- Returns the transport that teleports closest to targetX, targetY.
+local function _FindClosestTransport(kind, db, targetCont, targetZone, scope, targetX, targetY)
+    if not db or not targetX or not targetY then return nil end
+
+    local closestPick = nil
+    local closestDistance = math.huge
+
+    for _, e in ipairs(db) do
+        local okCont = (e.nextContinent == targetCont)
+        local okZone = (scope == "continent") or (e.nextZone == targetZone)
+        if okCont and okZone and e.coords then
+            local id = (kind == "spell") and e.spellID or e.itemID
+            if _IsAvailable(kind, id) then
+                -- Calculate distance between teleport destination and objective
+                local dx = targetX - e.coords.x
+                local dy = targetY - e.coords.y
+                local distance = math.sqrt(dx * dx + dy * dy)
+
+                if distance < closestDistance then
+                    closestDistance = distance
+                    local name = (kind == "spell") and APR:GetSpellName(id) or APR:GetItemName(id)
+                    closestPick = {
+                        kind = kind,
+                        id = id,
+                        name = name,
+                        coords = e.coords,
+                        nextContinent = e.nextContinent,
+                        nextZone = e.nextZone,
+                    }
+                end
+            end
+        end
+    end
+
+    return closestPick
+end
 -----------------------------------------------------------------------
--- Main router: priority = spell continent > spell zone > item continent > item zone > portals > taxi
+-- Main router: priority depends on same/different continent
+-- Same continent: SwitchZones (physical portals/passages) only
+-- Different continent: spell > item > SwitchCont portals > taxi
 -----------------------------------------------------------------------
-function APR.transport:SelectBestTransport(nextZone)
+function APR.transport:SelectBestTransport(nextZone, step, mapID)
     local CurContinent = APR:GetContinent()
     local targetContinent = APR:GetContinent(nextZone)
 
-    -- Priority chain:
-    local pick =
-        _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "continent") or -- spell continent
-        _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "zone") or      -- spell zone
-        _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "continent") or   -- item continent
-        _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "zone")           -- item zone
+    -- If same continent, skip teleport spells/items and use SwitchZones directly
+    if CurContinent == targetContinent then
+        local portal = self:GuideViaPortalDB(APR.Portals.SwitchZones[APR.Faction], CurContinent, targetContinent,
+            nextZone)
+        if portal then return true end
+        return false
+    end
+
+    -- Different continent: try teleport spells/items first
+    -- Get step coordinates to find closest transport
+    local stepCoord = step and mapID and APR:GetStepCoord(step, mapID, nextZone)
+    local targetX = stepCoord and stepCoord.x
+    local targetY = stepCoord and stepCoord.y
+
+    -- Priority chain: now using closest transport if coordinates available
+    local pick = nil
+    if targetX and targetY then
+        pick =
+            _FindClosestTransport("spell", APR.Portals.Spells, targetContinent, nextZone, "continent", targetX, targetY) or
+            _FindClosestTransport("spell", APR.Portals.Spells, targetContinent, nextZone, "zone", targetX, targetY) or
+            _FindClosestTransport("item", APR.Portals.Items, targetContinent, nextZone, "continent", targetX, targetY) or
+            _FindClosestTransport("item", APR.Portals.Items, targetContinent, nextZone, "zone", targetX, targetY)
+    else
+        -- Fallback to first available if no coordinates
+        pick =
+            _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "continent") or
+            _FindFirst("spell", APR.Portals.Spells, targetContinent, nextZone, "zone") or
+            _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "continent") or
+            _FindFirst("item", APR.Portals.Items, targetContinent, nextZone, "zone")
+    end
 
     if pick then
         if pick.kind == "spell" then
@@ -86,10 +151,8 @@ function APR.transport:SelectBestTransport(nextZone)
         return true
     end
 
-    -- Portals fallback: same continent -> SwitchZones ; different continent -> SwitchCont
-    local db = (CurContinent == targetContinent) and APR.Portals.SwitchZones[APR.Faction] or
-        APR.Portals.SwitchCont[APR.Faction]
-    local portal = self:GuideViaPortalDB(db, CurContinent, targetContinent, nextZone)
+    -- Portals fallback for different continents: use SwitchCont
+    local portal = self:GuideViaPortalDB(APR.Portals.SwitchCont[APR.Faction], CurContinent, targetContinent, nextZone)
 
     if portal then return true end
 
@@ -384,7 +447,7 @@ function APR.transport:GetMeToRightZone(isRetry)
         APR.Arrow.Active = false
 
         -- Full router (Spells / Items / SwitchZones / SwitchCont)
-        if self:SelectBestTransport(nextZone) then
+        if self:SelectBestTransport(nextZone, step, mapID) then
             -- Either a teleport instruction or portal/taxi path has been displayed.
             -- If it's an instance step, refresh the UI immediately.
             if step.InstanceQuest then
