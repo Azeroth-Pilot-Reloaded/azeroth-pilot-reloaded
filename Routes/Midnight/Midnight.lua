@@ -5837,7 +5837,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
         _index = 665,
     },
     {
-        Waypoint = 90822,
+        Waypoint = 94012,
         Coord = { x = -4519.5, y = 8359.5 },
         Range = 5,
         Zone = 2395,
