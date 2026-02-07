@@ -5,6 +5,7 @@ APR.Portals.Coords = {
     ["Alliance"] = {
         [12] = {
             ["Stormwind"] = { x = -11576.5, y = -4053 },
+            ["Hyjal to Stormwind"] = { x = -3587.7, y = 5541.3 },
             ["Exodar"] = { x = 2506.6, y = 9656.3 },
             ["DarkPortal BC"] = { x = 2510.3, y = 9661.5 }
         },
@@ -28,6 +29,13 @@ APR.Portals.Coords = {
             ["Bel'ameth"] = { x = 971.5, y = -9126 },
             ["Silvermoon Midnight"] = { x = 876.5, y = -9097.4 },
             ["BoralusBFA"] = { x = 1014.2, y = -9070.8 },
+            ["Tol Barad to Stormwind"] = { x = 1030.2, y = -343.9 },
+
+            ["Deepholm"] = { x = 450.7, y = -8222.4 },
+            ["Hyjal"] = { x = 400.4, y = -8212.6 },
+            ["Uldum"] = { x = 415.8, y = -8232.8 },
+            ["TwilightHighlands"] = { x = 413.6, y = -8186.4 },
+            ["Tol Barad"] = { x = 451.1, y = -8208.7 },
 
             --Order Hall
             ["Paladin To Dalaran"] = { x = -5319.9, y = 2376.1 },
@@ -50,8 +58,7 @@ APR.Portals.Coords = {
             ["Stormwind AzsunaLegion"] = { x = 6756.2, y = -13.4 },
             ["Stormwind Telogrus Rift"] = { x = 3331.6, y = 2149.6 },
             ["Stormwind Vindicaar"] = { x = 1469.5, y = 499.6 },
-            ["Remix Dalaran to Bazar"] = { x = 4280.1, y = -805.5 },  -- temp fix until next update
-            ["Remix Bazar to Dalaran"] = { x = 4490.5, y = -1208.8 }, -- temp fix until next update
+            ["Bel'ameth"] = { x = 6584.2, y = 2324.5 },
 
             --Order Hall
             ["Demon Hunter To Order Hall"] = { x = 4066, y = -963.9 },
@@ -76,10 +83,14 @@ APR.Portals.Coords = {
             ["Nazmir"] = { x = 188, y = 2124.9 },
             ["Vol'dun"] = { x = 4312, y = 2804.5 }
         },
+        [948] = { ["Stormwind"] = { x = 577, y = 965.4 } },
         [1550] = { ["Stormwind"] = { x = 1538.4, y = -1808.8 }, ["OribosInMaldraxxus"] = { x = -2517.7, y = 2573.5 } },
         [1978] = {
             ["Stormwind"] = { x = -1066.8, y = 246.5 },
             ["Bel'ameth to Stormwind"] = { x = 6852.9, y = -1934.3 },
+            ["Bel'ameth to Hyjal"] = { x = 6855, y = -1968.9 },
+            ["Bel'ameth to Darkshore"] = { x = 6853.8, y = -1968.9 },
+            ["Bel'ameth to Valsharah"] = { x = 6864, y = -1967.8 },
         },
         [2274] = {
             ["Stormwind"] = { x = -2397.7, y = 2982.1 },
@@ -182,8 +193,7 @@ APR.Portals.Coords = {
             ["Orgrimmar AzsunaLegion"] = { x = 6755.1, y = -8.5 },
             ["Orgrimmar Suramar"] = { x = 3428.6, y = 213.6 },
             ["Orgrimmar Highmountain"] = { x = 4415, y = 4082.4 },
-            ["Remix Dalaran to Bazar"] = { x = 4280.1, y = -805.5 },  -- temp fix until next update
-            ["Remix Bazar to Dalaran"] = { x = 4490.5, y = -1208.8 }, -- temp fix until next update
+            ["Bel'ameth"] = { x = 6584.2, y = 2324.5 },
 
             -- Order Hall
             ["Demon Hunter To Order Hall"] = { x = 4066, y = -963.9 },
@@ -210,7 +220,12 @@ APR.Portals.Coords = {
             ["Orgrimmar"] = { x = 454.5, y = 990.5 },
         },
         [1550] = { ["Orgrimmar"] = { x = 1539.3, y = -1859.5 }, ["OribosInMaldraxxus"] = { x = -2517.7, y = 2573.5 } },
-        [1978] = { ["Orgrimmar"] = { x = -1023, y = 278 } },
+        [1978] = {
+            ["Orgrimmar"] = { x = -1023, y = 278 },
+            ["Bel'ameth to Hyjal"] = { x = 6855, y = -1968.9 },
+            ["Bel'ameth to Darkshore"] = { x = 6853.8, y = -1968.9 },
+            ["Bel'ameth to Valsharah"] = { x = 6864, y = -1967.8 },
+        },
         [2274] = {
             ["Orgrimmar"] = { x = -2334.7, y = 2919.1 },
 
@@ -264,10 +279,12 @@ APR.Portals.Coords = {
 APR.Portals.SwitchCont = {
     ["Alliance"] = {
         { continent = 13,   nextContinent = 12,   nextZone = 103,  portalKey = "Exodar",                  closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 12,   nextZone = 81,   portalKey = "Uldum",                   closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 12,   nextZone = 198,  portalKey = "Hyjal",                   closestTaxiNode = "Stormwind, Elwynn" },
+        { continent = 13,   nextContinent = 12,   nextZone = 245,  portalKey = "Tol Barad",               closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 101,  nextZone = 111,  portalKey = "Shattrath",               closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 113,  nextZone = 125,  portalKey = "DalaranLichKing",         closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 424,  nextZone = 371,  portalKey = "JadeForestMoP",           closestTaxiNode = "Stormwind, Elwynn" },
-        { continent = 13,   nextContinent = 12,   nextZone = 17,   portalKey = "DarkPortal Talk",         closestTaxiNode = "Stormwind, Elwynn",                               extraText = "TALK_TO" },
         { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal Talk",         closestTaxiNode = "Stormwind, Elwynn",                               extraText = "TALK_TO" },
         { continent = 13,   nextContinent = 572,  nextZone = 577,  portalKey = "DarkPortal" },
         { continent = 13,   nextContinent = 572,  nextZone = 622,  portalKey = "StormshieldWoD",          closestTaxiNode = "Stormwind, Elwynn" },
@@ -279,10 +296,13 @@ APR.Portals.SwitchCont = {
         { continent = 13,   nextContinent = 2274, nextZone = 2248, portalKey = "Dornogal",                closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 619,  nextZone = 627,  portalKey = "DalaranLegion",           closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 619,  nextZone = 627,  portalKey = "Paladin To Dalaran" },
+        { continent = 13,   nextContinent = 948,  nextZone = 207,  portalKey = "Deepholm" },
         { continent = 13,   nextContinent = 2537, nextZone = 2395, portalKey = "Silvermoon Midnight",     closestTaxiNode = "Stormwind, Elwynn" },
         { continent = 13,   nextContinent = 2274, nextZone = 2248, portalKey = "EventToDornogal" },
 
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "The Exodar" },
+        { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Hyjal to Stormwind" },
+        { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Tol Barad to Stormwind" },
         { continent = 12,   nextContinent = 13,   nextZone = 84,   portalKey = "Exodar",                  closestTaxiNode = "Darnassus, Teldrassil" },
         { continent = 12,   nextContinent = 101,  nextZone = 530,  portalKey = "DarkPortal BC" },
 
@@ -301,19 +321,27 @@ APR.Portals.SwitchCont = {
         { continent = 619,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Telogrus Rift", },
         { continent = 619,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind Vindicaar", },
         { continent = 619,  nextContinent = 13,   nextZone = 23,   portalKey = "Paladin To Order Hall" },
+        { continent = 619,  nextContinent = 1978, nextZone = 2239, portalKey = "Bel'ameth" },
+
 
         { continent = 875,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind", },
         { continent = 876,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Tradewinds Market, Tiragarde Sound" },
 
+        { continent = 948,  nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind", },
+
         { continent = 1550, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Oribos" },
         { continent = 1978, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Valdrakken, Thaldraszus" },
         { continent = 1978, nextContinent = 13,   nextZone = 84,   portalKey = "Bel'ameth to Stormwind" },
+        { continent = 1978, nextContinent = 12,   nextZone = 198,  portalKey = "Bel'ameth to Hyjal" },
+        { continent = 1978, nextContinent = 12,   nextZone = 148,  portalKey = "Bel'ameth to Darkshore" },
+        { continent = 1978, nextContinent = 619,  nextZone = 641,  portalKey = "Bel'ameth to Valsharah" },
 
         { continent = 2274, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind",               closestTaxiNode = "Dornogal, Isle of Dorn", },
 
         { continent = 2537, nextContinent = 13,   nextZone = 84,   portalKey = "Stormwind" },
     },
     ["Horde"] = {
+        { continent = 12,   nextContinent = 13,   nextZone = 17,   portalKey = "DarkPortal Talk",        closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "TALK_NPC" },
         { continent = 12,   nextContinent = 13,   nextZone = 224,  portalKey = "STVZep",                 closestTaxiNode = "Orgrimmar, Durotar",                            extraText = "USE_ZEPPELIN_TO" },
         { continent = 12,   nextContinent = 13,   nextZone = 90,   portalKey = "Undercity",              closestTaxiNode = "Orgrimmar, Durotar" },
         { continent = 12,   nextContinent = 13,   nextZone = 241,  portalKey = "TwilightHighlands",      closestTaxiNode = "Orgrimmar, Durotar" },
@@ -383,9 +411,11 @@ APR.Portals.SwitchZones = {
     ["Alliance"] = {
         { continent = 12,   nextContinent = 12,   nextZone = 103,  portalKey = "Exodar" },
 
+        { continent = 13,   nextContinent = 13,   nextZone = 17,   portalKey = "DarkPortal Talk",            extraText = "TALK_TO" },
         { continent = 13,   nextContinent = 13,   nextZone = 84,   portalKey = "HomeToStormwind" },
         { continent = 13,   nextContinent = 13,   nextZone = 2352, portalKey = "StormwindToHome" },
         { continent = 13,   nextContinent = 13,   nextZone = 84,   portalKey = "EventToStormwind" },
+        { continent = 13,   nextContinent = 13,   nextZone = 241,  portalKey = "TwilightHighlands" },
 
         { continent = 424,  nextContinent = 424,  nextZone = 504,  portalKey = "Isle of Thunder", },
         { continent = 424,  nextContinent = 424,  nextZone = 388,  portalKey = "Townlong Steppes", },
@@ -447,7 +477,6 @@ APR.Portals.SwitchZones = {
 
     },
     ["Horde"] = {
-        { continent = 12,   nextContinent = 12,   nextZone = 17,   portalKey = "DarkPortal Talk",            closestTaxiNode = "Orgrimmar, Durotar",              extraText = "TALK_NPC" },
         { continent = 12,   nextContinent = 12,   nextZone = 85,   portalKey = "HomeToOgrimmar", },
         { continent = 12,   nextContinent = 12,   nextZone = 198,  portalKey = "Hyjal", },
         { continent = 12,   nextContinent = 12,   nextZone = 249,  portalKey = "Uldum to UldumCata",         extraText = "TALK_NPC" },
