@@ -126,6 +126,7 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR:UpdateMapId()
                 APR.RouteSelection:RefreshFrameAnchor()
                 APR.heirloom:RefreshFrameAnchor()
+                APR.coordinate:RefreshFrameAnchor()
                 APR:UpdateStep()
 
                 APR:Debug("Caller: Event.lua load handler -> GetCurrentRouteMapIDsAndName")
