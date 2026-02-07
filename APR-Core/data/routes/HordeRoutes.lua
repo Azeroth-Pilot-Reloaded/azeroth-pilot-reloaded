@@ -51,9 +51,9 @@ function APR:InitHordeRoutes()
         },
 
         Dragonflight = {
-            ["85-DF01H-Orgrimmar"] = L["DF01/02 - Dragonflight Orgrimmar/Durotar"],
-            ["2022-DF03H-WakingShores"] = L["DF03 - Waking Shores - Horde"],
-            ["2025-DF06H-Thaldraszus"] = L["DF07 - Thaldraszus"],
+            ["85-DF01H-Orgrimmar"] = L["DF01 - Dragonflight Orgrimmar"],
+            ["2022-DF03H-WakingShores"] = L["DF02 - Waking Shores - Horde"],
+            ["2025-DF06H-Thaldraszus"] = L["DF06 - Thaldraszus"],
         },
 
         TheWarWithin = {},
