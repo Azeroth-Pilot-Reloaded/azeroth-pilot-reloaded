@@ -251,7 +251,7 @@ function APR:UpdateStep()
 
             local currentMapID        = C_Map.GetBestMapForUnit('player')
             local scenarioContinentID = APR:GetContinent(scenarioMapID)
-            local mapInfo             = C_Map.GetMapInfo(scenarioMapID)
+            local mapInfo             = APR:GetMapInfoCached(scenarioMapID)
             local scenarioInfo        = APR.ZonesData.Scenarios[scenarioContinentID][scenarioMapID]
             local isCompleted         = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
 
@@ -579,7 +579,7 @@ function APR:UpdateStep()
             end
 
             if APR.IsInRouteZone then
-                local mapInfo = C_Map.GetMapInfo(zoneId)
+                local mapInfo = APR:GetMapInfoCached(zoneId)
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
                 local text = string.format(L["USE_PORTAL_TO"], zoneName)
 
