@@ -127,6 +127,7 @@ function APR.settings:InitializeSettings()
             --debug
             debug = false,
             showEvent = false,
+            zoneDetectionDebug = false,
             enableAddon = true,
             changeLogFrame = {},
             showChangeLog = true,
@@ -1459,6 +1460,23 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            zoneDetectionDebug = {
+                                order = 2.45,
+                                type = "toggle",
+                                name = L["SHOW_ZONE_DEBUG"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if APR.ZoneDetection then
+                                        APR.ZoneDetection.debug = value
+                                    end
+                                    APR:PrintInfo(L["SHOW_ZONE_DEBUG"] .. ": " .. (value and L["ENABLE"] or L["DISABLE"]))
+                                end,
                                 disabled = function()
                                     return not self.profile.enableAddon
                                 end,

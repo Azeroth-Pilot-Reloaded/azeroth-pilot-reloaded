@@ -623,7 +623,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local scenarioMapID = step.EnterScenario
                 local currentMapID = C_Map.GetBestMapForUnit('player')
                 local scenarioContinentID = APR:GetContinent(scenarioMapID)
-                local mapInfo = C_Map.GetMapInfo(scenarioMapID)
+                local mapInfo = APR:GetMapInfoCached(scenarioMapID)
                 local mapName = mapInfo and mapInfo.name or UNKNOWN
                 local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
                     APR.ZonesData.Scenarios[scenarioContinentID] or nil
@@ -635,14 +635,14 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     UNKNOWN
 
                 local color = (scenarioMapID == currentMapID or isCompleted or currentStepIndex > stepIndex) and "green" or
-                "gray";
+                    "gray";
                 local questInfo = { { questID = mapName } }
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
                     format(L["ENTER_IN"], scenarioTypeLabel), questInfo, color, isCurrentStep)
             elseif step.DoScenario then
                 local scenarioMapID = step.DoScenario
                 local scenarioContinentID = APR:GetContinent(scenarioMapID)
-                local mapInfo = C_Map.GetMapInfo(scenarioMapID)
+                local mapInfo = APR:GetMapInfoCached(scenarioMapID)
                 local mapName = mapInfo and mapInfo.name or UNKNOWN
                 local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
                     APR.ZonesData.Scenarios[scenarioContinentID] or nil
@@ -673,7 +673,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local scenarioMapID        = step.LeaveScenario
                 local currentMapID         = C_Map.GetBestMapForUnit('player')
                 local scenarioContinentID  = APR:GetContinent(scenarioMapID)
-                local mapInfo              = C_Map.GetMapInfo(scenarioMapID)
+                local mapInfo              = APR:GetMapInfoCached(scenarioMapID)
                 local mapName              = mapInfo and mapInfo.name or UNKNOWN
                 local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
                     APR.ZonesData.Scenarios[scenarioContinentID] or nil
@@ -699,7 +699,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local arrived = zoneId and (currentMapID == zoneId or parentMapID == zoneId)
                 local completed = (questID and C_QuestLog.IsQuestFlaggedCompleted(questID)) or arrived
                 local color = colorByCompletion(completed, currentStepIndex, stepIndex)
-                local mapInfo = C_Map.GetMapInfo(zoneId)
+                local mapInfo = APR:GetMapInfoCached(zoneId)
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
                 local stepText = string.format(L["USE_PORTAL_TO"], ':')
                 local questInfo = { { questID = zoneName } }

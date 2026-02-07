@@ -85,69 +85,133 @@ end
 -- This short-circuits navigation helpers when the character is far away.
 function APR:CheckIsInRouteZone()
     self:Debug("Function: APR step helper- CheckIsInRouteZone()")
+
+    -- Throttle: avoid recalculating if already checked in last 0.1 seconds
+    local now = GetTime()
+    if self._lastRouteZoneCheck and (now - self._lastRouteZoneCheck) < 0.1 then
+        return self._lastRouteZoneResult or false
+    end
+
+    -- Precheck: route and step validity
     if not self.ActiveRoute then
-        return
+        self._lastRouteZoneCheck = now
+        self._lastRouteZoneResult = false
+        return false
     end
-    local routeZoneMapIDs, mapid, routeName, expansion = self:GetCurrentRouteMapIDsAndName()
-    local parentContinentMapID = self:GetContinent()
-    local parenttMapID = self:GetPlayerParentMapID()
-    local currentMapID = C_Map.GetBestMapForUnit("player")
+
     local step = self:GetStep(self.ActiveRoute and APRData[self.PlayerID][self.ActiveRoute] or nil)
-    if not currentMapID or not step then
+    if not step then
+        self._lastRouteZoneCheck = now
+        self._lastRouteZoneResult = false
         return false
     end
 
-    local stepZones = self:GetStepZoneList(step, mapid)
+    local routeZoneMapIDs, fallbackMapID, routeName, expansion = self:GetCurrentRouteMapIDsAndName()
+
+    -- Get step zones
+    local stepZones = self:GetStepZoneList(step, fallbackMapID)
     if #stepZones == 0 then
+        self._lastRouteZoneCheck = now
+        self._lastRouteZoneResult = false
         return false
     end
 
-    local isSameContinent = false
-    for _, zoneId in ipairs(stepZones) do
-        if self.transport:IsSameContinent(zoneId) then
-            isSameContinent = true
-            break
+    -- Handle special zone exceptions (Isle of Dorn, etc)
+    local exception = self:GetZoneException(self:ResolvePlayerZoneContext().current)
+    if exception then
+        self:DebugZoneDetection("Zone Exception",
+            self:ResolvePlayerZoneContext(), stepZones, true)
+        self._lastRouteZoneCheck = now
+        self._lastRouteZoneResult = true
+        return true
+    end
+
+    -- Resolve player zone context (with caching)
+    local playerContext = self:ResolvePlayerZoneContext()
+
+    self:PrintZoneDebug("=== CheckIsInRouteZone START ===")
+    self:PrintZoneDebug("StepZones: {" ..
+        table.concat(stepZones, ", ") ..
+        "} | AllRelevant: {" .. table.concat(playerContext.allRelevant or {}, ", ") .. "}")
+
+    -- Early return if player context is invalid (loading screen, dead, etc)
+    if not playerContext.allRelevant or #playerContext.allRelevant == 0 then
+        self:PrintZoneDebug("Player context empty (loading/transitioning) - skipping checks")
+        self._lastRouteZoneCheck = now
+        self._lastRouteZoneResult = false
+        return false
+    end
+
+
+    -- Continent check - GATING CHECK (if fails, stop here)
+    if not self:CheckContinentMatch(playerContext, stepZones) then
+        self:PrintZoneDebug("Failed continent check - returning FALSE")
+        if self.ZoneDetection and self.ZoneDetection.debug then
+            self:DebugZoneDetection("Failed continent match", playerContext, stepZones, false)
         end
-    end
-    if not isSameContinent then
-        return false
-    end
-    local mapIDs = { parentContinentMapID, currentMapID, parenttMapID }
-
-    -- 1 - check if you are in the zone step or a direct child of zone step
-    if step and self:ContainsAny(mapIDs, stepZones) then
-        return true
-    end
-
-    -- 2 - check if the zone step is in the zones for this route
-    if step and self:ContainsAny(routeZoneMapIDs, stepZones) then
-        return true
-    elseif parentContinentMapID == 2274 then -- handle tww zone for isle of dorn
+        self:PrintZoneDebug("=== CheckIsInRouteZone END (FALSE) ===")
+        self._lastRouteZoneCheck = GetTime()
+        self._lastRouteZoneResult = false
         return false
     end
 
-    -- 3 - check if your current current zone is in the zones for this route
-    for _, mapID in ipairs(mapIDs) do
-        if self:Contains(routeZoneMapIDs, mapID) then
+    -- Only continue with other checks if same continent
+    local continentChecks = {
+        -- 1. Direct match - quickest (player in step zones or step in route zones)
+        function()
+            return self:CheckDirectMatch(playerContext, stepZones)
+        end,
+        -- 2. Hierarchy match - player is parent/ancestor of step zones
+        function()
+            return self:CheckHierarchyMatch(playerContext, stepZones)
+        end,
+
+        -- 3. Descendant match - player is child of step zones (caves, buildings, etc)
+        function()
+            return self:CheckDescendantMatch(playerContext, stepZones)
+        end,
+
+        -- 4. Route zone validation - step zone in route zones
+        function()
+            return self:ContainsAny(routeZoneMapIDs, stepZones)
+        end,
+    }
+
+    -- Execute continent-filtered checks
+    for index, checkFunc in ipairs(continentChecks) do
+        local checkNames = {
+            "DirectMatch", "HierarchyMatch", "DescendantMatch", "RouteValidation"
+        }
+
+        self:PrintZoneDebug("Running Check #" .. index .. " (" .. (checkNames[index] or "Unknown") .. ")...")
+
+        local result = checkFunc()
+
+        self:PrintZoneDebug("Check #" .. index .. " (" .. (checkNames[index] or "Unknown") .. "): " .. tostring(result))
+
+        if result then
+            self:PrintZoneDebug("Match at check #" .. index .. " (" .. (checkNames[index] or "Unknown") .. ")")
+            if self.ZoneDetection and self.ZoneDetection.debug then
+                self:DebugZoneDetection(
+                    string.format("Match at check #%d", index),
+                    playerContext, stepZones, true
+                )
+            end
+            self:PrintZoneDebug("=== CheckIsInRouteZone END (TRUE) ===")
+            self._lastRouteZoneCheck = GetTime()
+            self._lastRouteZoneResult = true
             return true
         end
     end
 
-    -- 4 -  handle other case if like when you have in cave, building with diff mapID
-    if parentContinentMapID then
-        local childrenMap = C_Map.GetMapChildrenInfo(parentContinentMapID)
-        if not childrenMap then
-            return false
-        end
-
-        for _, map in ipairs(childrenMap) do
-            if self:Contains(routeZoneMapIDs, map.mapID) or self:Contains(stepZones, map.mapID) then
-                return true
-            end
-        end
+    -- No match found
+    if self.ZoneDetection and self.ZoneDetection.debug then
+        self:DebugZoneDetection("No Match", playerContext, stepZones, false)
     end
+    self:PrintZoneDebug("=== CheckIsInRouteZone END (FALSE) ===")
 
-
+    self._lastRouteZoneCheck = GetTime()
+    self._lastRouteZoneResult = false
     return false
 end
 
