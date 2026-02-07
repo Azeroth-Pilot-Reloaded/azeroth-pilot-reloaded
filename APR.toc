@@ -44,6 +44,7 @@ APR-Core/utils/UIUtils.lua
 APR-Core/utils/BuyMerchantUtils.lua
 APR-Core/utils/LootUtils.lua
 APR-Core/utils/PlayerPositionUtils.lua
+APR-Core/utils/ZoneDetectionUtils.lua
 APR-Core/utils/SceneCutterUtils.lua
 APR-Core/utils/CoordinateFrame.lua
 APR-Core/utils/RouteHashUtils.lua
@@ -61,6 +62,7 @@ APR-Core/data/routes/NeutralRoutes.lua
 APR-Core/data/zones/Portals.lua
 APR-Core/data/zones/TaxiNodes.lua
 APR-Core/data/zones/ZoneOrder.lua
+APR-Core/data/zones/ZoneRestrictions.lua
 
 APR-Core/Config.lua
 APR-Core/Config_Route.lua

@@ -51,7 +51,7 @@ end
 -----------------------------------------------------------------------
 function APR.transport:SelectBestTransport(nextZone)
     local CurContinent = APR:GetContinent()
-    local _, targetContinent = self:IsSameContinent(nextZone)
+    local targetContinent = APR:GetContinent(nextZone)
 
     -- Priority chain:
     local pick =
@@ -78,7 +78,7 @@ function APR.transport:SelectBestTransport(nextZone)
         end
 
         if pick.coords then
-            local nz = C_Map.GetMapInfo(nextZone)
+            local nz = APR:GetMapInfoCached(nextZone)
             APR.currentStep:AddExtraLineText("DESTINATION", L["DESTINATION"] .. " " .. (nz and nz.name or ""))
         end
 
@@ -183,9 +183,10 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
     local playerNodeId, playerNodeName, playerNodeX, playerNodeY = self:ClosestTaxi(px, py)
     local _, portalNodeName, _, _, _ = self:ClosestTaxi(portalPos.x, portalPos.y)
     local hasFlyOrDragonRiding = APR:IsSpellKnown(90265) or APR:IsSpellKnown(372608) -- Master Riding or dragonriding
+    local canFlyInCurrentZone = hasFlyOrDragonRiding and not APR:IsInNoFlyZone()
 
     --Same FP or can fly/dragonride close enough: go to portal directly
-    if (playerNodeName == portalNodeName or (hasFlyOrDragonRiding and playerDistance < APR.Arrow.MaxDistanceWrongZone)) and portal then
+    if (playerNodeName == portalNodeName or (canFlyInCurrentZone and playerDistance < APR.Arrow.MaxDistanceWrongZone)) and portal then
         -- Special case: Alliance Stormwind portal room (keep original behavior)
         if APR.Faction == "Alliance" and CurContinent == 13 then
             local posY, posX = UnitPosition("player")
@@ -197,7 +198,8 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
             end
         end
         local extraText = portal.extraText or "USE_PORTAL_TO"
-        local newZoneName = (C_Map.GetMapInfo(portal.nextZone) and C_Map.GetMapInfo(portal.nextZone).name) or UNKNOWN
+        local portalMapInfo = APR:GetMapInfoCached(portal.nextZone)
+        local newZoneName = (portalMapInfo and portalMapInfo.name) or UNKNOWN
         local localized = L[extraText]
         -- Use format only if the locale string expects a %s; otherwise, just append the name.
         if localized and localized:find("%%s") then
@@ -277,13 +279,13 @@ end
 function APR.transport:GetZoneMoveOrder(nextMapId)
     local currentMapID = APR:GetPlayerParentMapID()
     local zoneMoveOrder =
-        APR.ZonesData["ZoneMoveOrder"][currentMapID] and APR.ZonesData["ZoneMoveOrder"][currentMapID][nextMapId]
+        APR.ZonesData.ZoneMoveOrder[currentMapID] and APR.ZonesData.ZoneMoveOrder[currentMapID][nextMapId]
     if not zoneMoveOrder then
         return
     end
 
     local continent = APR:GetContinent()
-    local zoneEntries = APR.ZonesData["ZoneEntry"][continent] and APR.ZonesData["ZoneEntry"][continent][zoneMoveOrder]
+    local zoneEntries = APR.ZonesData.ZoneEntry[continent] and APR.ZonesData.ZoneEntry[continent][zoneMoveOrder]
     if not zoneEntries then
         return nil, nil, nil
     end
@@ -302,21 +304,6 @@ function APR.transport:GetZoneMoveOrder(nextMapId)
     end
 
     return zoneMoveOrder, closestX, closestY
-end
-
------------------------------------------------------------------------
--- Same-continent check
------------------------------------------------------------------------
---- Checks if a given mapID is on the same continent as the player.
---- @param mapID number The map ID to check.
---- @return boolean isSameContinent
---- @return number newContinent
-function APR.transport:IsSameContinent(mapID)
-    APR:Debug("Function: APR.transport:IsSameContinent()", mapID)
-    local playerContinentID = APR:GetContinent()
-    local mapContinentID = APR:GetContinent(mapID)
-    local isSameContinent = (playerContinentID == mapContinentID)
-    return isSameContinent, mapContinentID
 end
 
 -----------------------------------------------------------------------
@@ -366,12 +353,12 @@ function APR.transport:GetMeToRightZone(isRetry)
         if not nextZone then
             return
         end
-        local mapInfo = C_Map.GetMapInfo(nextZone)
+        local mapInfo = APR:GetMapInfoCached(nextZone)
         if not mapInfo then
             return
         end
 
-        local parentMapInfo = C_Map.GetMapInfo(mapInfo.parentMapID)
+        local parentMapInfo = APR:GetMapInfoCached(mapInfo.parentMapID)
         if not parentMapInfo then
             return
         end
@@ -407,9 +394,8 @@ function APR.transport:GetMeToRightZone(isRetry)
         end
 
         -- If same continent and nothing found above, try classic taxi -> zone entry fallbacks
-        local isSameContinent = (APR:GetContinent() == APR:GetContinent(nextZone))
-        if isSameContinent then
-            local posY, posX = UnitPosition("player")
+        if APR:IsSameContinent(nextZone) then
+            local posX, posY = UnitPosition("player")
             if not posY or not posX then
                 return
             end
@@ -433,13 +419,15 @@ function APR.transport:GetMeToRightZone(isRetry)
                 else
                     local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(nextZone)
                     if zoneEntryMapID then
-                        local zoneEntryMapInfo = C_Map.GetMapInfo(zoneEntryMapID)
-                        APR.currentStep:AddExtraLineText(
-                            "GO_TO" .. (zoneEntryMapInfo.name or ""),
-                            string.format(L["GO_TO"], zoneEntryMapInfo.name or "?")
-                        )
-                        APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
-                        return
+                        local zoneEntryMapInfo = APR:GetMapInfoCached(zoneEntryMapID)
+                        if zoneEntryMapInfo then
+                            APR.currentStep:AddExtraLineText(
+                                "GO_TO" .. (zoneEntryMapInfo.name or ""),
+                                string.format(L["GO_TO"], zoneEntryMapInfo.name or "?")
+                            )
+                            APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
+                            return
+                        end
                     end
                 end
             end

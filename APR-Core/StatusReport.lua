@@ -71,7 +71,7 @@ function APR:getStatusReportInfos()
         worldCoordinates = APR.coordinate:RoundCoords(worldPosX, worldPosY, 2)
     end
     local currentStep = GetCurrentStepInfo()
-    local continent = C_Map.GetMapInfo(APR:GetContinent() or 0)
+    local continent = APR:GetMapInfoCached(APR:GetContinent())
     local infoTable = {
         aprVersion = { "AddOn Version", APR.version },
         wowVersion = { "Client Version", select(1, GetBuildInfo()) },

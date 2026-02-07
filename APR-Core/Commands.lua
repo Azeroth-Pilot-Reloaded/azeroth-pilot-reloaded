@@ -53,6 +53,23 @@ function APR.command:SlashCmd(input)
     elseif inputText == '42' then
         PlaySoundFile("Interface\\Addons\\APR\\APR-Core\\assets\\42.mp3")
         UIErrorsFrame:AddMessage(L["42_COMMAND"], 1.0, 1.0, 0.0, 1.0, UIERRORS_HOLD_TIME)
+    elseif inputText == 'zoneinfo' or inputText == 'zi' then
+        -- Print detailed zone detection information
+        local report = APR:GetZoneDetectionReport()
+        local msg = string.format(L["ZONEINFO_COMMAND_REPORT"],
+            report.playerCurrent or 0,
+            report.playerParent or 0,
+            report.playerContinent or 0,
+            table.concat(report.playerHierarchy or {}, ", "),
+            report.specialContent and "YES" or "NO",
+            report.cacheValid and "YES" or "NO"
+        )
+        APR:PrintInfo(msg)
+    elseif inputText == 'zonecache' then
+        -- Clear zone detection caches
+        APR:InvalidatePlayerZoneCache()
+        APR:InvalidateMapInfoCache()
+        APR:PrintInfo(L["ZONECACHE_COMMAND_RESULT"])
     elseif (inputText == "help" or inputText == "h") then
         local helpColor = "eda55f"
         local function printHelp(command, description)
@@ -63,6 +80,7 @@ function APR.command:SlashCmd(input)
         printHelp("/apr", L["SHOW_MENU"])
         printHelp("/apr about", L["SHOW_ABOUT"])
         printHelp("/apr coord", L["COORD_COMMAND"])
+        printHelp("/apr debugzone", "Toggle zone detection debug mode")
         printHelp("/apr discord", L["DISCORD_COMMAND"])
         printHelp("/apr forcereset, fr", L["FORCERESET_COMMAND"])
         printHelp("/apr github", L["GITHUB_COMMAND"])
@@ -75,6 +93,8 @@ function APR.command:SlashCmd(input)
         printHelp("/apr scribe, writer", ";)")
         printHelp("/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"])
         printHelp("/apr status", L["STATUS_COMMAND"])
+        printHelp("/apr zoneinfo", L["ZONEINFO_COMMAND"])
+        printHelp("/apr zonecache", L["ZONECACHE_COMMAND"])
     else
         APR.settings:OpenSettings(APR.title)
     end

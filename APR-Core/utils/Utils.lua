@@ -182,6 +182,17 @@ function APR:PrintError(errorMessage, data)
     end
 end
 
+--- Display zone detection debug info in chat
+--- @param msg string
+function APR:PrintZoneDebug(msg)
+    if not self.settings or not self.settings.profile or not self.settings.profile.zoneDetectionDebug then
+        return
+    end
+    if msg and type(msg) == "string" then
+        DEFAULT_CHAT_FRAME:AddMessage(APR:WrapTextInColorCode("[ZoneDebug] " .. msg, "ffff00"))
+    end
+end
+
 --- Display info in chat
 --- @param msg string
 function APR:PrintInfo(msg, data)

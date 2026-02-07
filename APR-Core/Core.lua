@@ -147,6 +147,9 @@ function APR:OnInitialize()
 
     self.Arrow:Init()
 
+    -- Initialize Zone Detection System (v2.0)
+    self:InitZoneDetectionCache()
+
     -- Register events
     self.event:MyRegisterEvent()
 end
