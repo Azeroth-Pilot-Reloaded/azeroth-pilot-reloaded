@@ -266,8 +266,8 @@ function APR:UpdateStep()
                 APR:UpdateNextStep()
             end
 
-            APR.currentStep:AddExtraLineText("ENTER_IN_" .. scenarioInfo.type,
-                format(L["ENTER_IN"], L[scenarioInfo.type]) .. ": " .. mapInfo.name)
+            APR.currentStep:AddQuestSteps("ENTER_IN_" .. scenarioInfo.type,
+                format(L["ENTER_IN"], L[scenarioInfo.type]) .. ": " .. mapInfo.name, mapInfo.name)
             step.Coord = scenarioInfo.Coord
             APR.Arrow:SetCoord()
         elseif step.DoScenario then
@@ -295,8 +295,8 @@ function APR:UpdateStep()
             end
             APR.Arrow:SetCoord()
 
-            APR.currentStep:AddExtraLineText("COMPLETE_SOMETHING_" .. scenarioInfo.type,
-                format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type]) .. ": " .. mapInfo.name)
+            APR.currentStep:AddQuestSteps("COMPLETE_SOMETHING_" .. scenarioInfo.type,
+                format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type]) .. ": " .. mapInfo.name, mapInfo.name)
         elseif step.LeaveScenario then
             local scenarioMapID = step.LeaveScenario
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Leave Scenario", scenarioMapID)
@@ -305,8 +305,8 @@ function APR:UpdateStep()
                 APR:UpdateNextStep()
             end
 
-            APR.currentStep:AddExtraLineText("LEAVE_" .. scenarioInfo.type,
-                L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name)
+            APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
+                L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name, mapInfo.name)
         end
 
         if step.Buffs then
@@ -328,8 +328,8 @@ function APR:UpdateStep()
                 end
                 local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(item.itemID)
                 local name = itemName or UNKNOWN
-                APR.currentStep:AddExtraLineText("BUY_ITEM_" .. name,
-                    format(L["BUY_ITEM"], item.quantity, name))
+                APR.currentStep:AddQuestSteps("BUY_ITEM_" .. name,
+                    format(L["BUY_ITEM"], item.quantity, name), name)
             end
             if flagged == #step.BuyMerchant then
                 APR:NextQuestStep()
@@ -346,7 +346,7 @@ function APR:UpdateStep()
                 return
             end
             local name = C_Spell.GetSpellInfo(spellID).name
-            APR.currentStep:AddExtraLineText("LEARN_PROFESSION", format(L["LEARN_PROFESSION_DETAILS"], name))
+            APR.currentStep:AddQuestSteps("LEARN_PROFESSION", format(L["LEARN_PROFESSION_DETAILS"], name), name)
         end
 
         if step.LootItems then
@@ -583,7 +583,7 @@ function APR:UpdateStep()
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
                 local text = string.format(L["USE_PORTAL_TO"], zoneName)
 
-                APR.currentStep:AddExtraLineText("TAKE_PORTAL", text)
+                APR.currentStep:AddQuestSteps("TAKE_PORTAL", text, mapInfo)
             end
         elseif (step.Waypoint) then
             local canAutoSkipWaypoint = not step.NonSkippableWaypoint
@@ -906,7 +906,7 @@ function APR:UpdateStep()
         end
         if step.Grind then
             if APR.Level < step.Grind then
-                APR.currentStep:AddExtraLineText("GRIND", L["GRIND"] .. " " .. step.Grind)
+                APR.currentStep:AddQuestSteps("GRIND", L["GRIND"] .. " " .. step.Grind, "Grind")
             else
                 APR:UpdateNextStep()
                 return

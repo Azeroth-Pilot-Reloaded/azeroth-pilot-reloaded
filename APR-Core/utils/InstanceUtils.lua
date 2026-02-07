@@ -1,8 +1,13 @@
 function APR:IsInstanceWithUI()
     local step = APR.ActiveRoute and self:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
     local isInstance, instanceType = IsInInstance()
+    local hideType = { "pvp", "arena" }
 
     if isInstance then
+        if not tContains(hideType, instanceType) then
+            return true
+        end
+        -- other instances need InstanceQuest flag for UI
         return (step and step.InstanceQuest) or false
     end
 
