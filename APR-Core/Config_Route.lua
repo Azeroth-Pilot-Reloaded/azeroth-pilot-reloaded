@@ -876,8 +876,12 @@ function APR.routeconfig:InitRouteConfig()
 end
 
 function IsRouteDisabled(tab, routeName)
-    return routeName == "01-10 Exile's Reach" and
-        not APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID())
+    if routeName == L["01-10 Exile's Reach"] then
+        local parentMapID = APR:GetPlayerParentMapID()
+        if not parentMapID then return true end
+        return not APR.ZoneRestrictions.IsExilesReachMap(parentMapID)
+    end
+    return false
 end
 
 ---------------------------------------------------------------------------------------
@@ -922,9 +926,11 @@ function APR.routeconfig:GetSpeedRunPrefab()
 end
 
 function APR.routeconfig:GetStartingZonePrefab()
-    if APR:Contains({ 1409, 1726, 1727, 1728 }, APR:GetPlayerParentMapID()) then
+    local parentMapID = APR:GetPlayerParentMapID()
+
+    if parentMapID and APR.ZoneRestrictions.IsExilesReachMap(parentMapID) then
         AddRouteToCustomPath(L["01-10 Exile's Reach"])
-    elseif APR:Contains({ 2451 }, APR:GetPlayerParentMapID()) then
+    elseif parentMapID and APR.ZoneRestrictions.IsReturningPlayerMap(parentMapID) then
         AddRouteToCustomPath(L["TWW - Arathi Highlands - Returning Player"])
     elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and (APR.Level < APR.MinBoostLvl or APR.Level < 10) then -- first quest from Exile's Reach + boost
         --None skipable starting zone

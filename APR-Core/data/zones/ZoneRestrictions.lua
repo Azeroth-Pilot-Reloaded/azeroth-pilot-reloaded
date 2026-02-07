@@ -44,6 +44,7 @@ APR.ZoneRestrictions.NO_FLY_MAPS = {
 -- Zones requiring special handling for continent/hierarchy detection
 -- Used by ZoneDetectionUtils for correct zone matching
 
+
 APR.ZoneRestrictions.ZONE_EXCEPTIONS = {
     -- The War Within - Isle of Dorn
     [2274] = {
@@ -58,9 +59,79 @@ APR.ZoneRestrictions.ZONE_EXCEPTIONS = {
         continentOverride = 378,
         reason = "Special starting zone"
     },
-    [1727] = {
-        name = "exile's Reach",
+
+    -- Exile's Reach (all variants)
+    [1409] = {
+        name = "Exile's Reach (Base)",
         continentOverride = 0,
-        reason = "Special starting zone"
+        reason = "Special starting zone",
+        isExilesReach = true
+    },
+    [1726] = {
+        name = "Exile's Reach (Alliance)",
+        continentOverride = 0,
+        reason = "Special starting zone",
+        isExilesReach = true
+    },
+    [1727] = {
+        name = "Exile's Reach (Horde)",
+        continentOverride = 0,
+        reason = "Special starting zone",
+        isExilesReach = true
+    },
+    [1728] = {
+        name = "Exile's Reach (Ship)",
+        continentOverride = 0,
+        reason = "Special starting zone",
+        isExilesReach = true
+    },
+
+    -- Legacy/Special zones (deprecated map IDs or special handling)
+    [905] = {
+        name = "Legacy Zone ID",
+        continentOverride = 0,
+        reason = "Legacy map ID requiring special handling"
+    },
+    [948] = {
+        name = "Legacy Zone ID",
+        continentOverride = 0,
+        reason = "Legacy map ID requiring special handling"
     },
 }
+
+-----------------------------------------------------------
+-- HELPER FUNCTIONS
+-----------------------------------------------------------
+
+--- Check if a map ID is Exile's Reach
+---@param mapID number Map ID to check
+---@return boolean isExilesReach
+function APR.ZoneRestrictions.IsExilesReachMap(mapID)
+    if not mapID then return false end
+    local exception = APR.ZoneRestrictions.ZONE_EXCEPTIONS[mapID]
+    return exception and exception.isExilesReach == true
+end
+
+--- Check if a map ID is Returning Player zone (TWW - Arathi Highlands)
+---@param mapID number Map ID to check
+---@return boolean isReturningPlayer
+function APR.ZoneRestrictions.IsReturningPlayerMap(mapID)
+    if not mapID then return false end
+    return mapID == 2451
+end
+
+--- Check if a map ID requires special handling (has no valid position)
+---@param mapID number Map ID to check
+---@return boolean needsSpecialHandling
+function APR.ZoneRestrictions.IsSpecialHandlingMap(mapID)
+    if not mapID then return false end
+    -- Exile's Reach and legacy zones
+    return mapID == 1409 or mapID == 1726 or mapID == 1727 or mapID == 1728
+        or mapID == 905 or mapID == 948
+end
+
+--- Get all Exile's Reach map IDs
+---@return table exilesReachMaps Array of map IDs
+function APR.ZoneRestrictions.GetExilesReachMaps()
+    return { 1409, 1726, 1727, 1728 }
+end

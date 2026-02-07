@@ -46,9 +46,10 @@ function APR:GetContinent(mapId)
     self:Debug("Function: APR:GetContinent()", mapId)
     mapId = mapId or C_Map.GetBestMapForUnit("player")
 
-    -- Special case: The Wandering Isle
-    if mapId == 378 or mapId == 1727 then
-        return 378
+    -- Check for zone exceptions with continent overrides
+    local exception = self:GetZoneException(mapId)
+    if exception and exception.continentOverride then
+        return exception.continentOverride
     end
 
     if mapId then
@@ -68,17 +69,34 @@ function APR:GetContinent(mapId)
 end
 
 --- Return the parent map for the player (zone by default) at a given hierarchy level
+--- Uses zone detection system for reliable results
 ---@param mapType Enum.UIMapType|nil Map type to find (defaults to Zone)
 ---@return number|nil parentMapID The parent map ID
 function APR:GetPlayerParentMapID(mapType)
     mapType = mapType or Enum.UIMapType.Zone
-    local playerMapId
+
     local currentMapId = C_Map.GetBestMapForUnit('player')
-    if currentMapId and Enum and Enum.UIMapType then
-        playerMapId = MapUtil.GetMapParentInfo(currentMapId, mapType, true)
-        playerMapId = playerMapId and playerMapId.mapID or currentMapId
+    if not currentMapId then
+        return nil
     end
-    return playerMapId
+
+    -- If already at the requested type, return current
+    local mapInfo = self:GetMapInfoCached(currentMapId)
+    if mapInfo and mapInfo.mapType == mapType then
+        return currentMapId
+    end
+
+    -- Get parent chain and find first map of requested type
+    local chain = self:GetMapParentChain(currentMapId)
+    for _, mapID in ipairs(chain) do
+        mapInfo = self:GetMapInfoCached(mapID)
+        if mapInfo and mapInfo.mapType == mapType then
+            return mapID
+        end
+    end
+
+    -- Fallback to current map if no parent of requested type found
+    return currentMapId
 end
 
 --- Check if two maps are on the same continent
