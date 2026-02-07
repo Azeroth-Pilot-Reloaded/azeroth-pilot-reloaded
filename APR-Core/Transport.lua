@@ -152,8 +152,9 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
     end
 
     local function handleTaxi(closestTaxiName, destTaxiName)
-        APR.currentStep:AddExtraLineText("FLY_TO_" .. destTaxiName, L["FLY_TO"] .. " " .. destTaxiName)
-        APR.currentStep:AddExtraLineText("CLOSEST_FP" .. closestTaxiName, L["CLOSEST_FP"] .. ": " .. closestTaxiName)
+        APR.currentStep:AddQuestSteps("FLY_TO_" .. destTaxiName, L["FLY_TO"] .. " " .. destTaxiName, destTaxiName)
+        APR.currentStep:AddQuestSteps("CLOSEST_FP" .. closestTaxiName, L["CLOSEST_FP"] .. ": " .. closestTaxiName,
+            closestTaxiName)
         self.wrongZoneDestTaxiName = destTaxiName
     end
 
@@ -191,7 +192,7 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
         if APR.Faction == "Alliance" and CurContinent == 13 then
             local posY, posX = UnitPosition("player")
             if posY and posX and (posY > -8981.3 and posX < 866.7) then
-                APR.currentStep:AddExtraLineText("GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"])
+                APR.currentStep:AddQuestSteps("GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"], "GO_PORTAL_ROOM")
                 local room = APR.Portals.Coords["Alliance"][CurContinent]["StormwindPortalRoom"]
                 APR.Arrow:SetArrowActive(true, room.x, room.y)
                 return portal
@@ -203,9 +204,9 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
         local localized = L[extraText]
         -- Use format only if the locale string expects a %s; otherwise, just append the name.
         if localized and localized:find("%%s") then
-            APR.currentStep:AddExtraLineText(portal.portalKey, string.format(localized, newZoneName))
+            APR.currentStep:AddQuestSteps(portal.portalKey, string.format(localized, newZoneName), portal.portalKey)
         else
-            APR.currentStep:AddExtraLineText(portal.portalKey, localized .. " " .. newZoneName)
+            APR.currentStep:AddQuestSteps(portal.portalKey, localized .. " " .. newZoneName, portal.portalKey)
         end
 
         APR.Arrow:SetArrowActive(true, portalPos.x, portalPos.y)
@@ -406,14 +407,10 @@ function APR.transport:GetMeToRightZone(isRetry)
                 local _, objectiveTaxiName = self:ClosestTaxi(stepCoord.x, stepCoord.y)
                 if playerTaxiNodeId ~= objectiveTaxiName then
                     self.wrongZoneDestTaxiName = objectiveTaxiName
-                    APR.currentStep:AddExtraLineText(
-                        "FLY_TO_" .. objectiveTaxiName,
-                        L["FLY_TO"] .. " " .. objectiveTaxiName
-                    )
-                    APR.currentStep:AddExtraLineText(
-                        "CLOSEST_FP" .. playerTaxiName,
-                        L["CLOSEST_FP"] .. ": " .. playerTaxiName
-                    )
+                    APR.currentStep:AddQuestSteps("FLY_TO_" .. objectiveTaxiName, L["FLY_TO"] .. " " .. objectiveTaxiName,
+                        objectiveTaxiName)
+                    APR.currentStep:AddQuestSteps("CLOSEST_FP" .. playerTaxiName,
+                        L["CLOSEST_FP"] .. ": " .. playerTaxiName, playerTaxiName)
                     APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
                     return
                 else
@@ -421,9 +418,10 @@ function APR.transport:GetMeToRightZone(isRetry)
                     if zoneEntryMapID then
                         local zoneEntryMapInfo = APR:GetMapInfoCached(zoneEntryMapID)
                         if zoneEntryMapInfo then
-                            APR.currentStep:AddExtraLineText(
+                            APR.currentStep:AddQuestSteps(
                                 "GO_TO" .. (zoneEntryMapInfo.name or ""),
-                                string.format(L["GO_TO"], zoneEntryMapInfo.name or "?")
+                                string.format(L["GO_TO"], zoneEntryMapInfo.name or "?"),
+                                zoneEntryMapInfo.name
                             )
                             APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
                             return
@@ -434,11 +432,18 @@ function APR.transport:GetMeToRightZone(isRetry)
         end
 
         -- Total fallback: no route found
-        APR.currentStep:AddExtraLineText(
+        if APR:IsInstanceWithUI() then
+            APR.currentStep:AddQuestSteps("WRONG_ZONE_INSTANCE", L["WRONG_ZONE_INSTANCE"], nextZone)
+            APR.Arrow:SetArrowActive(false, 0, 0)
+            return
+        end
+
+        APR.currentStep:AddQuestSteps(
             "ERROR_PATH_NOT_FOUND",
-            L["ERROR"] .. " - " .. L["PATH_NOT_FOUND"] .. " " .. (mapInfo.name or "?") .. " (" .. tostring(mapID) .. ")"
+            L["ERROR"] .. " - " .. L["PATH_NOT_FOUND"] .. " " .. (mapInfo.name or "??") .. " (" .. tostring(mapID) .. ")",
+            mapID
         )
-        APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. (mapInfo.name or "?"))
+        APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. (mapInfo.name or "??"))
         APR.Arrow:SetArrowActive(false, 0, 0)
     end
 end
