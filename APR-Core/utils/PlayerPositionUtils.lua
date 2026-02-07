@@ -15,7 +15,12 @@ local Vector2D = CreateVector2D(0, 0);
 --- Project the player's world position into the provided map space.
 -- dx/dy can be supplied for ad-hoc projections (e.g., taxi nodes) while reusing the same math.
 function APR:GetPlayerMapPos(MapID, dx, dy)
-    if (MapID and (MapID == 1726 or MapID == 1727 or MapID == 905 or MapID == 948)) then
+    if not MapID or MapID == 0 then
+        return
+    end
+
+    -- Skip maps that don't have valid world positions
+    if APR.ZoneRestrictions.IsSpecialHandlingMap(MapID) then
         return
     end
 
@@ -24,7 +29,13 @@ function APR:GetPlayerMapPos(MapID, dx, dy)
     if not R then
         R = {};
         _, R[1] = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(0, 0));
+        if not R[1] then
+            return
+        end
         _, R[2] = C_Map.GetWorldPosFromMapPos(MapID, CreateVector2D(1, 1));
+        if not R[2] then
+            return
+        end
         R[2]:Subtract(R[1]);
         MapRects[MapID] = R;
     end
