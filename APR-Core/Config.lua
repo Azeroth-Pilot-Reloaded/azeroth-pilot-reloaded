@@ -72,7 +72,7 @@ function APR.settings:InitializeSettings()
             questOrderListFrame = {},
             showQuestOrderList = false,
             questOrderListLock = false,
-            questOrderListSnapToCurrentStep = false,
+            questOrderListSnapToCurrentStep = true,
             questOrderListScale = 1,
             questOrderListbackgroundColorAlpha = APR.Color.defaultLightBackdrop,
             -- arrow
