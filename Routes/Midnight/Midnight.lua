@@ -19062,7 +19062,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         Qpart = { [86892] = { 1 } },
         Coord = { x = -5375.3, y = 6579.9 },
-        ExtraLineText = "Surviveworkaround",
+        ExtraLineText = "SURVIVE_WORKAROUND",
         GossipOptionIDs = { 132750 },
         IsCampaignQuest = true,
         Zone = 2395,
@@ -21079,7 +21079,7 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
     {
         Qpart = { [86892] = { 1 } },
         Coord = { x = -5375.3, y = 6579.9 },
-        ExtraLineText = "Survive workaround",
+        ExtraLineText = "SURVIVE_WORKAROUND",
         GossipOptionIDs = { 132750 },
         IsCampaignQuest = true,
         Zone = 2395,
