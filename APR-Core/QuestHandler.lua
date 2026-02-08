@@ -898,7 +898,7 @@ function APR:UpdateStep()
                             and APR.IsInRouteZone
                         then
                             local questText = APR:GetQuestTextForProgressBar(questId, objectiveId)
-                            APR.currentStep:AddQuestSteps(questId, questText, objectiveId)
+                            APR.currentStep:AddFillerStep(questId, questText, objectiveId)
                         end
                     end
                 end

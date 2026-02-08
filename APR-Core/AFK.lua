@@ -8,9 +8,14 @@ APR.AFK = APR:NewModule("AFK")
 APR.AFK.lastStep = nil
 APR.AFK.defaultSnapHeight = 20
 APR.AFK.fakeTimerActive = false
+APR.AFK.lastSizeWidth = nil
+APR.AFK.lastSizeHeight = nil
+APR.AFK.lastFillersRefresh = 0
+APR.AFK.isSnapped = false
 
 local FRAME_WIDTH = 250
 local FRAME_HEIGHT = 30
+local FILLERS_REFRESH_THROTTLE = 0.15
 
 ---------------------------------------------------------------------------------------
 ----------------------------------- AFK Frames ----------------------------------------
@@ -55,6 +60,9 @@ function APR.AFK:AFKFrameOnInit()
     local function onStop()
         AfkFrameScreen:Hide()
         APR.AFK.fakeTimerActive = false
+        if APR.currentStep and APR.currentStep.RefreshFillersFrame then
+            APR.currentStep:RefreshFillersFrame()
+        end
         if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
             APR.questOrderList:ApplySnapAnchor()
         end
@@ -92,6 +100,9 @@ function APR.AFK:SetAfkTimer(duration)
     AfkFrameScreen:Show()
     bar:SetDuration(duration)
     bar:Start()
+    if APR.currentStep and APR.currentStep.RefreshFillersFrame then
+        APR.currentStep:RefreshFillersFrame()
+    end
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
         APR.questOrderList:ApplySnapAnchor()
     end
@@ -101,6 +112,9 @@ function APR.AFK:HideFrame()
     bar:Stop()
     AfkFrameScreen:Hide()
     self.fakeTimerActive = false
+    if APR.currentStep and APR.currentStep.RefreshFillersFrame then
+        APR.currentStep:RefreshFillersFrame()
+    end
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
         APR.questOrderList:ApplySnapAnchor()
     end
@@ -115,16 +129,33 @@ function APR.AFK:UpdateSize(width, height)
     local w = width or APR.settings.profile.afkWidth or FRAME_WIDTH
     local h = height or APR.settings.profile.afkHeight or FRAME_HEIGHT
 
+    local sizeChanged = (self.lastSizeWidth ~= w) or (self.lastSizeHeight ~= h)
+    self.lastSizeWidth = w
+    self.lastSizeHeight = h
+
     AfkFrame:SetSize(w, h)
     AfkFrameScreen:SetSize(w, h)
     bar:SetWidth(w)
     bar:SetHeight(h)
+
+    if sizeChanged
+        and APR.settings.profile.afkSnapToCurrentStep
+        and APR.currentStep
+        and APR.currentStep.RefreshFillersFrame then
+        local now = GetTime()
+        if now - (self.lastFillersRefresh or 0) >= FILLERS_REFRESH_THROTTLE then
+            self.lastFillersRefresh = now
+            APR.currentStep:RefreshFillersFrame()
+        end
+    end
 end
 
 function APR.AFK:RefreshFrameAnchor(initial)
     local currentStepPanel = _G.CurrentStepScreenPanel
+    local wasSnapped = self.isSnapped
 
     if APR.settings.profile.afkSnapToCurrentStep and currentStepPanel then
+        self.isSnapped = true
         local scale = currentStepPanel:GetScale() or 1
         local width = currentStepPanel:GetWidth() or FRAME_WIDTH
         local configuredHeight = APR.settings.profile.afkHeight or FRAME_HEIGHT
@@ -133,7 +164,8 @@ function APR.AFK:RefreshFrameAnchor(initial)
         end
         local afkHeight = configuredHeight
         local contentHeight = APR.currentStep and APR.currentStep.GetContentHeight
-            and APR.currentStep:GetContentHeight() or 0
+            and APR.currentStep:GetContentHeight(false) or 0
+
         local anchorHeight = (contentHeight > 0 and contentHeight) or (currentStepPanel:GetHeight() or FRAME_HEIGHT)
 
         AfkFrameScreen:ClearAllPoints()
@@ -142,6 +174,7 @@ function APR.AFK:RefreshFrameAnchor(initial)
         AfkFrameScreen:EnableMouse(false)
         self:UpdateSize(width, afkHeight)
     else
+        self.isSnapped = false
         AfkFrameScreen:SetScale(1)
         self:UpdateSize()
         if not initial
@@ -153,6 +186,12 @@ function APR.AFK:RefreshFrameAnchor(initial)
         if not APR.settings.profile.currentStepLock then
             AfkFrameScreen:EnableMouse(true)
         end
+    end
+
+    if wasSnapped ~= self.isSnapped
+        and APR.currentStep
+        and APR.currentStep.RefreshFillersFrame then
+        APR.currentStep:RefreshFillersFrame()
     end
 
     self:UpdateBarColor()

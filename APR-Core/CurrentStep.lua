@@ -7,6 +7,7 @@ APR.currentStep = APR:NewModule("CurrentStep")
 -- Init quests List to save quest
 APR.currentStep.questsList = {}
 APR.currentStep.questsExtraTextList = {}
+APR.currentStep.fillersList = {}
 APR.currentStep.pendingRemoval = {}
 APR.currentStep.pendingButtonRequests = {}
 APR.currentStep.pendingRaidIconRequests = {}
@@ -99,6 +100,10 @@ CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
         APR.currentStep:SetDefaultDisplay()
         self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-collapse-all")
         self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-collapse-all-pressed")
+        -- Refresh Fillers frame when expanding
+        if APR.fillersFrame then
+            APR.fillersFrame:Show()
+        end
         if APR.questOrderList and APR.questOrderList.RefreshFrameAnchor and APR.settings.profile.showQuestOrderList then
             APR.questOrderList:RefreshFrameAnchor()
         end
@@ -108,6 +113,10 @@ CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
         APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
         APR.currentStep:ButtonHide()
         APR.currentStep.progressBar:Hide()
+        -- Hide Fillers frame when collapsed
+        if APR.fillersFrame then
+            APR.fillersFrame:Hide()
+        end
         self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-expand-all")
         self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-expand-all-pressed")
         if APR.settings.profile.showQuestOrderList and APR.settings.profile.questOrderListSnapToCurrentStep then
@@ -177,6 +186,12 @@ function APR.currentStep:UpdateBackgroundColorAlpha(color)
 
     UpdateColor(self.questsList)
     UpdateColor(self.questsExtraTextList)
+    UpdateColor(self.fillersList)
+
+    -- Update Fillers frame background
+    if APR.fillersFrame then
+        APR.fillersFrame:UpdateBackgroundColorAlpha(rgba)
+    end
 end
 
 -- Refresh the frame positioning
@@ -226,9 +241,13 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
     end
 end
 
-function APR.currentStep:GetContentHeight()
+function APR.currentStep:GetContentHeight(includeFillers)
     if not CurrentStepScreenPanel then
         return nil
+    end
+
+    if includeFillers == nil then
+        includeFillers = true
     end
 
     local top = CurrentStepScreenPanel:GetTop()
@@ -264,6 +283,12 @@ function APR.currentStep:GetContentHeight()
 
     considerList(self.questsExtraTextList)
     considerList(self.questsList)
+
+    -- Consider the fillers frame
+    if includeFillers and APR.fillersFrame and APR.fillersFrame.Frame and APR.fillersFrame.Frame:IsShown() then
+        consider(APR.fillersFrame.Frame)
+        considerList(self.fillersList)
+    end
 
     return top - minBottom
 end
@@ -444,7 +469,7 @@ local function AddStepsFrame(questDesc, extraLineText, color)
     -- Create a font for quest information
     local font = container:CreateFontString(nil, "OVERLAY", textTemplate)
     font:SetWordWrap(true)
-    font:SetWidth(FRAME_WIDTH)
+    font:SetWidth(FRAME_WIDTH - 5)
     font:SetPoint("TOPLEFT", 5, -5)
     font:SetText('- ' .. (extraLineText or questDesc))
     font:SetJustifyH("LEFT")
@@ -793,6 +818,47 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
     self:ReOrderQuestSteps(true)
 end
 
+---------------------------------------------------------------------------------------
+---------------------------------- Fillers Wrapper Methods ----------------------------
+---------------------------------------------------------------------------------------
+-- These methods act as wrappers to maintain backward compatibility
+-- All filler logic is now in FillersFrame.lua
+
+function APR.currentStep:AddFillerStep(questID, textObjective, objectiveIndex)
+    if APR.fillersFrame then
+        APR.fillersFrame:AddFillerStep(questID, textObjective, objectiveIndex)
+    end
+end
+
+function APR.currentStep:ReOrderFillerSteps()
+    if APR.fillersFrame then
+        APR.fillersFrame:ReOrderFillerSteps()
+    end
+end
+
+function APR.currentStep:RemoveFillerSteps()
+    if APR.fillersFrame then
+        APR.fillersFrame:RemoveFillerSteps()
+    end
+end
+
+function APR.currentStep:RefreshFillersFrame()
+    if APR.fillersFrame then
+        APR.fillersFrame:RefreshFillersFrame()
+    end
+end
+
+function APR.currentStep:GetFillersHeight()
+    if APR.fillersFrame then
+        return APR.fillersFrame:GetFillersHeight()
+    end
+    return 0
+end
+
+---------------------------------------------------------------------------------------
+---------------------------------- End Fillers Wrapper Methods ------------------------
+---------------------------------------------------------------------------------------
+
 local function PositionStepButtons(container, button, anchorButton)
     button:ClearAllPoints()
     local anchor = anchorButton or container
@@ -815,7 +881,7 @@ end
 
 
 local function GetRaidIconContainer(self, key)
-    return self.questsList[key] or self.questsExtraTextList[key]
+    return self.questsList[key] or self.questsExtraTextList[key] or self.fillersList[key]
 end
 
 function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
@@ -997,7 +1063,7 @@ end
 
 function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute)
     attribute = attribute or "item"
-    local container = self.questsList[questsListKey]
+    local container = self.questsList[questsListKey] or self.fillersList[questsListKey]
     if not container then
         return
     end
@@ -1116,35 +1182,40 @@ function APR.currentStep:RemoveStepButtonByKey(questsListKey)
 end
 
 function APR.currentStep:UpdateStepButtonCooldowns()
-    for id, container in pairs(self.questsList) do
-        -- Ignore soft-hidden containers (during combat)
-        if container and not container.hiddenInCombat then
-            local IconButton = container.IconButton
-            if IconButton and IconButton:IsShown() then
-                local startTime, duration, enable = 0, 0, 0
-                local isCooldownShown = IconButton.cooldown:IsShown()
-                local cooldownDuration = IconButton.cooldown:GetCooldownDuration() or 0
+    local function updateContainerList(list)
+        for id, container in pairs(list) do
+            -- Ignore soft-hidden containers (during combat)
+            if container and not container.hiddenInCombat then
+                local IconButton = container.IconButton
+                if IconButton and IconButton:IsShown() then
+                    local startTime, duration, enable = 0, 0, 0
+                    local isCooldownShown = IconButton.cooldown:IsShown()
+                    local cooldownDuration = IconButton.cooldown:GetCooldownDuration() or 0
 
-                if IconButton.attribute == 'spell' then
-                    local info = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))
-                    if info then
-                        startTime, duration = info.startTime or 0, info.duration or 0
-                        enable = info.isEnabled and 1 or 0
+                    if IconButton.attribute == 'spell' then
+                        local info = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))
+                        if info then
+                            startTime, duration = info.startTime or 0, info.duration or 0
+                            enable = info.isEnabled and 1 or 0
+                        end
+                    else
+                        startTime, duration, enable = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
                     end
-                else
-                    startTime, duration, enable = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
-                end
 
-                if enable > 0 and startTime > 0 and (cooldownDuration == 0 or not isCooldownShown) then
-                    IconButton.cooldown:SetCooldown(startTime, duration)
-                else
+                    if enable > 0 and startTime > 0 and (cooldownDuration == 0 or not isCooldownShown) then
+                        IconButton.cooldown:SetCooldown(startTime, duration)
+                    else
+                        IconButton.cooldown:Clear()
+                    end
+                elseif IconButton then
                     IconButton.cooldown:Clear()
                 end
-            elseif IconButton then
-                IconButton.cooldown:Clear()
             end
         end
     end
+
+    updateContainerList(self.questsList)
+    updateContainerList(self.fillersList)
 end
 
 --- Disable Button, Reset ProgressBar and Remove all quest and extra line
@@ -1160,6 +1231,7 @@ function APR.currentStep:Reset()
     self.pendingRaidIconMacroRefresh = false
     self.raidIconButton = nil
     self:RemoveQuestStepsAndExtraLineTexts()
+    self:RemoveFillerSteps()
 end
 
 function APR.GetMenu(owner, rootDescription)
@@ -1286,7 +1358,7 @@ end
 function APR.currentStep:FlushPendingContainers()
     if not next(self.pendingRemoval) then return end
     for id, _ in pairs(self.pendingRemoval) do
-        local container = self.questsList[id] or self.questsExtraTextList[id]
+        local container = self.questsList[id] or self.questsExtraTextList[id] or self.fillersList[id]
         if container then
             container.hiddenInCombat = nil
             container:SetAlpha(1)
@@ -1295,10 +1367,14 @@ function APR.currentStep:FlushPendingContainers()
         end
         self.questsList[id] = nil
         self.questsExtraTextList[id] = nil
+        self.fillersList[id] = nil
     end
     wipe(self.pendingRemoval)
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
     self:ReOrderQuestSteps(true)
+    if APR.fillersFrame then
+        APR.fillersFrame:ReOrderFillerSteps()
+    end
 end
 
 function APR.currentStep:GetCurrentStepDetails()
@@ -1306,6 +1382,7 @@ function APR.currentStep:GetCurrentStepDetails()
     local stepDetails = {
         extraLines = {},
         questSteps = {},
+        fillerSteps = {},
         progress = {
             index = APRData[APR.PlayerID][APR.ActiveRoute],
             step = APR.currentStep.progressBar.currentStep,
@@ -1344,6 +1421,16 @@ function APR.currentStep:GetCurrentStepDetails()
             end
 
             table.insert(stepDetails.questSteps, step)
+        end
+    end
+
+    -- Filler steps
+    for key, container in pairs(self.fillersList) do
+        if container.font and container.font:GetText() then
+            table.insert(stepDetails.fillerSteps, {
+                key = key,
+                text = container.font:GetText(),
+            })
         end
     end
 

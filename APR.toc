@@ -76,6 +76,7 @@ APR-Core/Transport.lua
 
 APR-Core/Arrow.lua
 APR-Core/CurrentStep.lua
+APR-Core/FillersFrame.lua
 APR-Core/QuestionPopUp.lua
 APR-Core/QuestOrderList.lua
 APR-Core/Gossip.lua

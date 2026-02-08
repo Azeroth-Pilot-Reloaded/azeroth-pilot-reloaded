@@ -73,14 +73,15 @@ getSnapAnchor = function()
         return nil
     end
 
-    if APR.settings.profile.afkSnapToCurrentStep then
-        local afkFrame = _G.AfkFrameScreen
-        if afkFrame and afkFrame:IsShown() then
-            return afkFrame, afkFrame:GetHeight()
-        end
+
+    -- Check if Fillers frame is shown
+    local fillersFrame = _G.FillersScreenPanel
+    if fillersFrame and fillersFrame:IsShown() then
+        return fillersFrame, fillersFrame:GetHeight()
     end
 
-    local contentHeight = APR.currentStep and APR.currentStep.GetContentHeight and APR.currentStep:GetContentHeight() or
+    local contentHeight = APR.currentStep and APR.currentStep.GetContentHeight and
+        APR.currentStep:GetContentHeight(false) or
         0
     if not contentHeight or contentHeight <= 0 then
         contentHeight = currentStepPanel:GetHeight() or FRAME_HEIGHT
