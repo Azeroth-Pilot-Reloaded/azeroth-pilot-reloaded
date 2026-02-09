@@ -113,6 +113,9 @@ function APR:OnInitialize()
     --Init AFK frame
     self.AFK:AFKFrameOnInit()
 
+    -- Init Fillers frame
+    self.fillersFrame:OnInit()
+
     -- Init Quest Order List frame
     self.questOrderList:QuestOrderListFrameOnInit()
 
