@@ -24,34 +24,13 @@ local lastRefreshTime = 0
 ---------------------------------------------------------------------------------------
 
 -- Create the Fillers frame
-local FillersFrame = CreateFrame("Frame", "FillersScreenPanel", UIParent, "BackdropTemplate")
-FillersFrame:SetSize(FRAME_WIDTH, 30)
-FillersFrame:SetFrameStrata("MEDIUM")
-FillersFrame:SetClampedToScreen(true)
-FillersFrame:SetBackdrop({
-    bgFile = "Interface\\BUTTONS\\WHITE8X8",
-    tile = true,
-    tileSize = 16
-})
-FillersFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+local FillersFrame = APR:CreateStandardFrame("FillersScreenPanel", UIParent, FRAME_WIDTH, 30, "BackdropTemplate")
 FillersFrame:Hide()
 
 -- Setup drag and drop for the frame
-FillersFrame:SetMovable(true)
-FillersFrame:RegisterForDrag("LeftButton")
-FillersFrame:SetScript("OnDragStart", function(self)
-    if APR.settings.profile.fillersFrameSnapToCurrentStep then
-        return
-    end
-    self:StartMoving()
-    self.isMoving = true
-end)
-FillersFrame:SetScript("OnDragStop", function(self)
-    if not self.isMoving then
-        return
-    end
-    self:StopMovingOrSizing()
-    self.isMoving = false
+APR:SetupFrameDrag(FillersFrame, function()
+    return not APR.settings.profile.fillersFrameSnapToCurrentStep
+end, function()
     LibWindow.SavePosition(FillersFrame)
 end)
 
@@ -61,39 +40,23 @@ local FillersFrame_StepHolder = CreateFrame("Frame", "FillersFrame_StepHolder", 
 FillersFrame_StepHolder:SetAllPoints()
 
 -- Create the fillers header
-local FillersFrameHeader = CreateFrame("Frame", "FillersFrameHeader", FillersFrame,
-    "ObjectiveTrackerModuleHeaderTemplate")
-FillersFrameHeader.Text:SetText(L["STEP_FILLERS"])
+local FillersFrameHeader = APR:CreateFrameHeader("FillersFrameHeader", FillersFrame, L["STEP_FILLERS"])
 
 -- Setup drag and drop for the header
-FillersFrameHeader:SetScript("OnMouseDown", function(self, button)
-    if button == "LeftButton" and not APR.settings.profile.fillersFrameSnapToCurrentStep then
-        self:GetParent():StartMoving()
-        FillersFrame.isMoving = true
-    end
-end)
-FillersFrameHeader:SetScript("OnMouseUp", function(self, button)
-    if not FillersFrame.isMoving then
-        return
-    end
-    self:GetParent():StopMovingOrSizing()
-    FillersFrame.isMoving = false
+APR:SetupHeaderDrag(FillersFrameHeader, FillersFrame, function()
+    return not APR.settings.profile.fillersFrameSnapToCurrentStep
+end, function()
     LibWindow.SavePosition(FillersFrame)
 end)
 
 -- Setup minimize button for Fillers frame
-FillersFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
-    if FillersFrame.collapsed then
-        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-secondary-collapse")
-        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-secondary-collapse-pressed")
-        APR.fillersFrame:SetDefaultDisplay()
-    else
-        FillersFrame_StepHolder:Hide()
-        APR.fillersFrame:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
-        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-secondary-expand")
-        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-secondary-expand-pressed")
-    end
-    FillersFrame.collapsed = not FillersFrame.collapsed
+APR:SetupMinimizeButton(FillersFrameHeader, FillersFrame, function()
+    -- Collapse
+    FillersFrame_StepHolder:Hide()
+    APR.fillersFrame:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
+end, function()
+    -- Expand
+    APR.fillersFrame:SetDefaultDisplay()
 end)
 
 ---------------------------------------------------------------------------------------
@@ -113,7 +76,7 @@ function APR.fillersFrame:OnInit()
     end
 
     self:UpdateFrameScale()
-    self:RefreshFillersFrame()
+    self:RefreshFillersFrame(true) -- Force refresh on init
 end
 
 function APR.fillersFrame:SetDefaultDisplay()
@@ -153,32 +116,8 @@ end
 
 -- Helper function to create step frames
 local function AddStepsFrame(questDesc, extraLineText, color)
-    local textTemplate = "GameFontHighlight" -- white color
-    if extraLineText then
-        textTemplate = "GameFontNormal"      -- yellow color
-    end
-    -- Create a container for quest information
-    local container = CreateFrame("Frame", nil, FillersFrame_StepHolder, "BackdropTemplate")
-    -- Create a font for quest information
-    local font = container:CreateFontString(nil, "OVERLAY", textTemplate)
-    font:SetWordWrap(true)
-    font:SetWidth(FRAME_WIDTH - 5)
-    font:SetPoint("TOPLEFT", 5, -5)
-    font:SetText('- ' .. (extraLineText or questDesc))
-    font:SetJustifyH("LEFT")
-
-    if color then
-        font:SetTextColor(unpack(APR:HexaToRGBA(color)))
-    end
-
-    -- Set the size of the container based on the text length
-    container:SetWidth(FRAME_WIDTH)
-    container:SetHeight(font:GetStringHeight() + 10)
-    -- Remove backdrop since FillersFrame already has one
-    container:SetBackdrop(nil)
-    container.font = font
-
-    return container
+    local text = extraLineText or questDesc
+    return APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, extraLineText ~= nil, color, nil)
 end
 
 -- Add a filler step
@@ -250,7 +189,7 @@ function APR.fillersFrame:AddFillerStep(questID, textObjective, objectiveIndex)
     FRAME_FILLERS_HOLDER_HEIGHT = FRAME_FILLERS_HOLDER_HEIGHT - objectiveContainer:GetHeight()
 
     self:ReOrderFillerSteps()
-    self:RefreshFillersFrame()
+    -- Note: ReOrderFillerSteps() already calls RefreshFillersFrame(true)
 end
 
 -- Update a filler step (called when quest objective progress changes)
@@ -288,7 +227,7 @@ function APR.fillersFrame:ReOrderFillerSteps()
         end
     end
 
-    self:RefreshFillersFrame()
+    self:RefreshFillersFrame(true) -- Force refresh after reordering
 end
 
 -- Remove all filler steps
@@ -317,7 +256,7 @@ function APR.fillersFrame:RemoveFillerSteps()
     end
 
     FRAME_FILLERS_HOLDER_HEIGHT = FIRST_ITEM_OFFSET
-    self:RefreshFillersFrame()
+    self:RefreshFillersFrame(true) -- Force refresh to immediately hide frame
 
     -- Refresh QuestOrderList when Fillers disappears
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
@@ -325,8 +264,19 @@ function APR.fillersFrame:RemoveFillerSteps()
     end
 end
 
+-- Check if any filler container should be shown
+local function HasActiveFillers()
+    for _, container in pairs(APR.currentStep.fillersList) do
+        if container and not container.hiddenInCombat then
+            return true
+        end
+    end
+    return false
+end
+
 -- Refresh the fillers frame visibility and positioning
-function APR.fillersFrame:RefreshFillersFrame()
+-- @param forceRefresh boolean Skip throttle and force immediate refresh
+function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
     -- Use ShouldHideFrames from Core for consistent frame hiding logic
     if APR:ShouldHideFrames() then
         FillersFrame:Hide()
@@ -337,16 +287,23 @@ function APR.fillersFrame:RefreshFillersFrame()
         return
     end
 
-    -- Throttle refresh to prevent excessive updates
-    local now = GetTime()
-    if now - lastRefreshTime < REFRESH_THROTTLE then
-        return
+    -- Throttle refresh to prevent excessive updates (unless forced)
+    if not forceRefresh then
+        local now = GetTime()
+        -- Initialize on first call
+        if lastRefreshTime == 0 then
+            lastRefreshTime = now
+        end
+        -- Skip if throttled
+        if now - lastRefreshTime < REFRESH_THROTTLE then
+            return
+        end
+        lastRefreshTime = now
     end
-    lastRefreshTime = now
 
-    -- Show or hide the fillers frame based on whether there are any fillers
+    -- Show or hide the fillers frame based on whether there are any visible fillers
     local wasVisible = FillersFrame:IsShown()
-    if next(APR.currentStep.fillersList) then
+    if HasActiveFillers() then
         FillersFrame:Show()
 
         -- Check snap settings
@@ -400,16 +357,9 @@ function APR.fillersFrame:RefreshFillersFrame()
             local anchorFrame, anchorHeight = APR:GetSnapAnchorFrame(true) -- excludeFillers=true to avoid self-anchoring
 
             if anchorFrame then
-                -- Calculate total offset for positioning
-                -- We snap below the anchor frame at distance = anchorHeight + gap
-                -- Add header height if header is shown to avoid overlap
-                local totalOffset = math.floor(anchorHeight + snapGap)
-                if showHeader then
-                    totalOffset = totalOffset + HEADER_HEIGHT
-                end
-
-                FillersFrame:SetScale(anchorFrame:GetScale() or 1)
-                FillersFrame:SetPoint("TOP", anchorFrame, "TOP", 0, -totalOffset)
+                -- Use centralized snap positioning helper
+                local headerAdjust = showHeader and HEADER_HEIGHT or nil
+                APR:SnapFrameToAnchor(FillersFrame, anchorFrame, anchorHeight, snapGap, headerAdjust)
 
                 -- Update backdrop color to match current step
                 self:UpdateBackgroundColorAlpha()
@@ -486,14 +436,14 @@ end
 
 -- Show the fillers frame (used when expanding)
 function APR.fillersFrame:Show()
-    self:RefreshFillersFrame()
+    self:RefreshFillersFrame(true) -- Force refresh when explicitly showing
 end
 
 -- Reset the frame position
 function APR.fillersFrame:ResetPosition()
     if APR.settings.profile.fillersFrameSnapToCurrentStep then
         -- If snapped, just refresh to re-snap
-        self:RefreshFillersFrame()
+        self:RefreshFillersFrame(true) -- Force refresh on position reset
     else
         -- Clear saved position
         APR.settings.profile.fillersFrame = {}
