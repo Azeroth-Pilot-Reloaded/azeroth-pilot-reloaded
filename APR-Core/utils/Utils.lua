@@ -62,6 +62,8 @@ local function NormalizeHexColorCode(hex)
     return normalized
 end
 
+local HEXA_RGBA_CACHE = {}
+
 function APR:WrapTextInColorCode(text, hex)
     if text == nil then
         return ""
@@ -144,8 +146,36 @@ function APR:StripHyperlinks(text)
     return tostring(text)
 end
 
+function APR:GetSettingsProfile()
+    return self.settings and self.settings.profile or nil
+end
+
+function APR:ShouldLogDebug(settingKey, force)
+    local profile = self:GetSettingsProfile()
+    if not profile then
+        return false
+    end
+
+    if force then
+        return true
+    end
+
+    if settingKey then
+        return profile[settingKey] and true or false
+    end
+
+    return profile.debug and true or false
+end
+
+--- Validate a map ID is non-nil and non-zero
+--- @param mapID number|nil Map ID to validate
+--- @return boolean True if mapID is valid (non-nil and ~= 0)
+function APR:IsValidMapID(mapID)
+    return mapID ~= nil and mapID ~= 0
+end
+
 function APR:Debug(msg, data, force)
-    if not APR.settings.profile.debug and not force then
+    if not self:ShouldLogDebug(nil, force) then
         return
     end
     if type(data) == "table" then
@@ -162,7 +192,7 @@ function APR:Debug(msg, data, force)
 end
 
 function APR:DebugEvent(msg, data)
-    if APR.settings.profile.showEvent then
+    if self:ShouldLogDebug("showEvent") then
         APR:Debug(msg, data, true)
     end
 end
@@ -185,7 +215,7 @@ end
 --- Display zone detection debug info in chat
 --- @param msg string
 function APR:PrintZoneDebug(msg)
-    if not self.settings or not self.settings.profile or not self.settings.profile.zoneDetectionDebug then
+    if not self:ShouldLogDebug("zoneDetectionDebug") then
         return
     end
     if msg and type(msg) == "string" then
@@ -216,48 +246,82 @@ function APR:PrintInfo(msg, data)
 end
 
 -- Convert a lua table into a lua syntactically correct string
-function APR:tableToString(table, skipKey)
-    local result = "{"
-    for k, v in pairs(table) do
+function APR:tableToString(value, skipKey, depth, visited)
+    if type(value) ~= "table" then
+        return tostring(value)
+    end
+
+    depth = depth or 0
+    visited = visited or {}
+    if visited[value] then
+        return "\"<circular>\""
+    end
+    if depth > 10 then
+        return "\"<max-depth>\""
+    end
+
+    visited[value] = true
+
+    local parts = {}
+    for k, v in pairs(value) do
+        local keyPart = ""
         if not skipKey then
-            -- Check the key type (ignore any numerical keys - assume its an array)
             if type(k) == "string" then
-                result = result .. "[\"" .. k .. "\"]" .. "="
+                keyPart = "[\"" .. k .. "\"]="
+            elseif type(k) == "number" then
+                keyPart = "[" .. k .. "]="
             end
         end
-        -- Check the value type
+
+        local valuePart
         if type(v) == "table" then
-            result = result .. APR:tableToString(v)
+            valuePart = self:tableToString(v, skipKey, depth + 1, visited)
         elseif type(v) == "boolean" then
-            result = result .. tostring(v)
+            valuePart = tostring(v)
+        elseif type(v) == "number" then
+            valuePart = tostring(v)
         else
-            result = result .. "\"" .. v .. "\""
+            valuePart = "\"" .. tostring(v) .. "\""
         end
-        result = result .. ","
+        table.insert(parts, keyPart .. valuePart)
     end
-    -- Remove leading commas from the result
-    if result ~= "" then
-        result = result:sub(1, result:len() - 1)
-    end
-    return result .. "}"
+
+    visited[value] = nil
+
+    return "{" .. table.concat(parts, ",") .. "}"
 end
 
 function APR:HexaToRGBA(hex)
-    hex = hex:gsub("#", "")
-    if #hex ~= 6 and #hex ~= 8 then
+    if hex == nil then
         return nil
     end
 
-    local r = tonumber(hex:sub(1, 2), 16) / 255
-    local g = tonumber(hex:sub(3, 4), 16) / 255
-    local b = tonumber(hex:sub(5, 6), 16) / 255
-    local a = 1
-
-    if #hex == 8 then
-        a = tonumber(hex:sub(7, 8), 16) / 255
+    local normalized = tostring(hex):gsub("#", "")
+    if #normalized ~= 6 and #normalized ~= 8 then
+        return nil
     end
 
-    return { r, g, b, a }
+    local cached = HEXA_RGBA_CACHE[normalized]
+    if cached then
+        return cached
+    end
+
+    local r = tonumber(normalized:sub(1, 2), 16)
+    local g = tonumber(normalized:sub(3, 4), 16)
+    local b = tonumber(normalized:sub(5, 6), 16)
+    local a = 255
+
+    if #normalized == 8 then
+        a = tonumber(normalized:sub(7, 8), 16)
+    end
+
+    if not r or not g or not b or not a then
+        return nil
+    end
+
+    local rgba = { r / 255, g / 255, b / 255, a / 255 }
+    HEXA_RGBA_CACHE[normalized] = rgba
+    return rgba
 end
 
 function APR:ExtractColorAndText(text)

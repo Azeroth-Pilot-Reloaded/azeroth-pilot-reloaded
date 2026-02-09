@@ -89,7 +89,8 @@ function APR.event:MyRegisterEvent()
 end
 
 function APR.event.EventHandler(self, event, ...)
-    if not APR.settings.profile.enableAddon then
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.enableAddon then
         return
     end
 
@@ -108,8 +109,8 @@ function APR.event.EventHandler(self, event, ...)
     if self.callback and self.tag then
         APR:DebugEvent("Callback Event", event)
         -- update Local variables before calling the callback
-        autoAccept = APR.settings.profile.autoAccept
-        autoAcceptRoute = APR.settings.profile.autoAcceptQuestRoute
+        autoAccept = profile.autoAccept
+        autoAcceptRoute = profile.autoAcceptQuestRoute
         step = APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
 
         pcall(self.callback, event, ...)

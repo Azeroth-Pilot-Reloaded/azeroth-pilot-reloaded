@@ -107,7 +107,8 @@ function APR.AFK:AFKFrameOnInit()
 end
 
 function APR.AFK:SetAfkTimer(duration)
-    if not APR.settings.profile.enableAddon then
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.enableAddon then
         bar:Stop()
         AfkFrameScreen:Hide()
 
@@ -143,13 +144,15 @@ function APR.AFK:HideFrame()
 end
 
 function APR.AFK:UpdateBarColor()
-    local color = APR.settings.profile.afkBarColor or { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
+    local profile = APR:GetSettingsProfile()
+    local color = (profile and profile.afkBarColor) or { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
     bar:SetColor(color[1], color[2], color[3], color[4])
 end
 
 function APR.AFK:UpdateSize(width, height)
-    local w = width or APR.settings.profile.afkWidth or FRAME_WIDTH
-    local h = height or APR.settings.profile.afkHeight or FRAME_HEIGHT
+    local profile = APR:GetSettingsProfile()
+    local w = width or (profile and profile.afkWidth) or FRAME_WIDTH
+    local h = height or (profile and profile.afkHeight) or FRAME_HEIGHT
 
     local sizeChanged = (self.lastSizeWidth ~= w) or (self.lastSizeHeight ~= h)
     self.lastSizeWidth = w
@@ -161,7 +164,8 @@ function APR.AFK:UpdateSize(width, height)
     bar:SetHeight(h)
 
     if sizeChanged
-        and APR.settings.profile.afkSnapToCurrentStep
+        and profile
+        and profile.afkSnapToCurrentStep
         and APR.currentStep
         and APR.currentStep.RefreshFillersFrame then
         local now = GetTime()
@@ -173,10 +177,13 @@ function APR.AFK:UpdateSize(width, height)
 end
 
 function APR.AFK:RefreshFrameAnchor(initial)
+    local profile = APR:GetSettingsProfile()
+    if not profile then return end
+
     local currentStepPanel = _G.CurrentStepScreenPanel
     local wasSnapped = self.isSnapped
 
-    if APR.settings.profile.afkSnapToCurrentStep and currentStepPanel then
+    if profile.afkSnapToCurrentStep and currentStepPanel then
         self.isSnapped = true
         local width = currentStepPanel:GetWidth() or FRAME_WIDTH
         local configuredHeight = APR.settings.profile.afkHeight or FRAME_HEIGHT
@@ -199,11 +206,11 @@ function APR.AFK:RefreshFrameAnchor(initial)
         self:UpdateSize()
         if not initial
             and AfkFrameScreen.RegisteredForLibWindow
-            and APR.settings.profile.afkFrame
-            and APR.settings.profile.afkFrame.point then
+            and profile.afkFrame
+            and profile.afkFrame.point then
             LibWindow.RestorePosition(AfkFrameScreen)
         end
-        if not APR.settings.profile.currentStepLock then
+        if not profile.currentStepLock then
             AfkFrameScreen:EnableMouse(true)
         end
     end
@@ -227,7 +234,8 @@ function APR.AFK:ToggleFakeTimer()
         return
     end
 
-    if not APR.settings.profile.enableAddon then
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.enableAddon then
         return
     end
 
@@ -236,7 +244,8 @@ function APR.AFK:ToggleFakeTimer()
 end
 
 function APR.AFK:ResetPosition()
-    if APR.settings.profile.afkSnapToCurrentStep then
+    local profile = APR:GetSettingsProfile()
+    if not profile or profile.afkSnapToCurrentStep then
         return
     end
     AfkFrameScreen:ClearAllPoints()
