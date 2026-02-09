@@ -85,9 +85,8 @@ snapToAnchor = function(anchorFrame, anchorHeight)
     end
 
     local effectiveHeight = (anchorHeight and anchorHeight > 0) and anchorHeight or (anchorFrame:GetHeight() or 0)
-    QuestOrderListPanel:ClearAllPoints()
-    QuestOrderListPanel:SetPoint("TOP", anchorFrame, "TOP", 0, -(effectiveHeight + SNAP_ANCHOR_GAP))
-    return true
+    -- Use centralized snap positioning helper (no header adjustment for QuestOrderList)
+    return APR:SnapFrameToAnchor(QuestOrderListPanel, anchorFrame, effectiveHeight, SNAP_ANCHOR_GAP, nil)
 end
 
 updateSnapSizing = function(anchored, anchorFrame)
@@ -131,34 +130,14 @@ end
 ---------------------------- Quest Order List Frames ----------------------------------
 ---------------------------------------------------------------------------------------
 
-QuestOrderListFrame = CreateFrame("Frame", "QuestOrderListPanel", UIParent, "BackdropTemplate")
-QuestOrderListFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
-QuestOrderListFrame:SetFrameStrata("MEDIUM")
-QuestOrderListFrame:SetClampedToScreen(true)
-QuestOrderListFrame:SetBackdrop({
-    bgFile = "Interface\\BUTTONS\\WHITE8X8",
-    tile = true,
-    tileSize = 16
-})
-QuestOrderListFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+QuestOrderListFrame = APR:CreateStandardFrame("QuestOrderListPanel", UIParent, FRAME_WIDTH, FRAME_HEIGHT,
+    "BackdropTemplate")
 
-QuestOrderListFrame:SetMovable(true)
 QuestOrderListFrame:SetResizable(true)
 QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
-QuestOrderListFrame:RegisterForDrag("LeftButton")
-QuestOrderListFrame:SetScript("OnDragStart", function(self)
-    if APR.settings.profile.questOrderListSnapToCurrentStep or APR.settings.profile.questOrderListLock then
-        return
-    end
-    self:StartMoving()
-    self.isMoving = true
-end)
-QuestOrderListFrame:SetScript("OnDragStop", function(self)
-    if not self.isMoving then
-        return
-    end
-    self:StopMovingOrSizing()
-    self.isMoving = false
+APR:SetupFrameDrag(QuestOrderListFrame, function()
+    return not APR.settings.profile.questOrderListSnapToCurrentStep and not APR.settings.profile.questOrderListLock
+end, function()
     LibWindow.SavePosition(QuestOrderListPanel)
 end)
 QuestOrderListFrame:SetScript("OnSizeChanged", function(self, width, height)
@@ -190,25 +169,17 @@ QuestOrderListFrame_ScrollChild:SetSize(FRAME_WIDTH, 1)
 QuestOrderListFrame_ScrollFrame:SetScrollChild(QuestOrderListFrame_ScrollChild)
 
 -- Create the frame header
-QuestOrderListFrame_StepHolderHeader = CreateFrame("Frame", "QuestOrderListFrame_StepHolderHeader",
-    QuestOrderListFrame, "ObjectiveTrackerContainerHeaderTemplate")
+QuestOrderListFrame_StepHolderHeader = APR:CreateFrameHeader("QuestOrderListFrame_StepHolderHeader",
+    QuestOrderListFrame, L["QUEST_ORDER_LIST"], "ObjectiveTrackerContainerHeaderTemplate")
 QuestOrderListFrame_StepHolderHeader:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, 30)
-QuestOrderListFrame_StepHolderHeader.Text:SetText(L["QUEST_ORDER_LIST"])
-QuestOrderListFrame_StepHolderHeader:SetScript("OnMouseDown", function(self)
-    if not APR.settings.profile.questOrderListLock and not APR.settings.profile.questOrderListSnapToCurrentStep then
-        self:GetParent():StartMoving()
-        QuestOrderListFrame.isMoving = true
-    end
-end)
-QuestOrderListFrame_StepHolderHeader:SetScript("OnMouseUp", function(self)
-    if not QuestOrderListFrame.isMoving then
-        return
-    end
-    self:GetParent():StopMovingOrSizing()
-    QuestOrderListFrame.isMoving = false
+
+APR:SetupHeaderDrag(QuestOrderListFrame_StepHolderHeader, QuestOrderListFrame, function()
+    return not APR.settings.profile.questOrderListLock and not APR.settings.profile.questOrderListSnapToCurrentStep
+end, function()
     LibWindow.SavePosition(QuestOrderListPanel)
 end)
 
+-- Customize minimize button to close instead of collapse
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
 QuestOrderListFrame_StepHolderHeader.MinimizeButton:SetScript("OnClick", function(self)

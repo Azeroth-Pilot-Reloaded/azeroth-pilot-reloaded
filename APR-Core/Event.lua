@@ -3,6 +3,11 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.event = APR:NewModule("Event")
 
+-- Called when addon is disabled - cleanup all event handlers
+function APR.event:OnDisable()
+    self:CleanupEvents()
+end
+
 -- global event framePool for register
 APR.event.framePool = {}
 APR.event.functions = {}
@@ -68,6 +73,9 @@ function APR.event:MyRegisterEvent()
         container.tag = tag
         container.callback = self.functions[tag]
 
+        -- Save container to framePool for later cleanup
+        self.framePool[tag] = container
+
         if type(event) == "string" then
             container:RegisterEvent(event)
             container:SetScript("OnEvent", self.EventHandler)
@@ -109,6 +117,26 @@ function APR.event.EventHandler(self, event, ...)
         APR:DebugEvent("Unregister Event", event)
         self.callback = nil
         self:UnregisterEvent(event)
+    end
+end
+
+-- Cleanup function to properly unregister events and clear handlers
+function APR.event:CleanupEvents()
+    for tag, container in pairs(self.framePool) do
+        if container then
+            -- Unregister all events for this container
+            container:UnregisterAllEvents()
+            -- Clear script handlers
+            container:SetScript("OnEvent", nil)
+            -- Clear references
+            container.tag = nil
+            container.callback = nil
+        end
+    end
+    -- Clear the event timer if running
+    if pendingQuestUpdateTimer then
+        C_Timer.Cancel(pendingQuestUpdateTimer)
+        pendingQuestUpdateTimer = nil
     end
 end
 

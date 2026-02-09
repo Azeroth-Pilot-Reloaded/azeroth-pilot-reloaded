@@ -24,9 +24,9 @@ APR.currentStep.previousState = {}
 
 --Local constant
 local FRAME_WIDTH = 250
-local FRAME_HEADER_OPFFSET = -30
-local FRAME_ATTACH_OPFFSET = -35
-local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+local FRAME_HEADER_OFFSET = -30
+local FRAME_ATTACH_OFFSET = -35
+local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
 local RAID_ICON_TEXTURE = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
 local isDragging = false
 
@@ -35,16 +35,7 @@ local isDragging = false
 ---------------------------------------------------------------------------------------
 
 -- Create the main current step frame
-local CurrentStepFrame = CreateFrame("Frame", "CurrentStepScreenPanel", UIParent, "BackdropTemplate")
-CurrentStepFrame:SetSize(FRAME_WIDTH, 30)
-CurrentStepFrame:SetFrameStrata("MEDIUM")
-CurrentStepFrame:SetClampedToScreen(true)
-CurrentStepFrame:SetBackdrop({
-    bgFile = "Interface\\BUTTONS\\WHITE8X8",
-    tile = true,
-    tileSize = 16
-})
-CurrentStepFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+local CurrentStepFrame = APR:CreateStandardFrame("CurrentStepScreenPanel", UIParent, FRAME_WIDTH, 30, "BackdropTemplate")
 
 -- Create the step holder frame
 local CurrentStepFrame_StepHolder = CreateFrame("Frame", "CurrentStepFrame_StepHolder", CurrentStepFrame,
@@ -52,11 +43,25 @@ local CurrentStepFrame_StepHolder = CreateFrame("Frame", "CurrentStepFrame_StepH
 CurrentStepFrame_StepHolder:SetAllPoints()
 
 -- Create the frame header
-local CurrentStepFrameHeader = CreateFrame("Frame", "CurrentStepFrameHeader", CurrentStepFrame,
-    "ObjectiveTrackerContainerHeaderTemplate")
-CurrentStepFrameHeader.Text:SetText("Azeroth Pilot Reloaded") -- don't replace it with APR.title
+local CurrentStepFrameHeader = APR:CreateFrameHeader("CurrentStepFrameHeader", CurrentStepFrame,
+    "Azeroth Pilot Reloaded", "ObjectiveTrackerContainerHeaderTemplate") -- don't replace with APR.title
 
+-- Setup drag with right-click menu support
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
+APR:SetupHeaderDrag(CurrentStepFrameHeader, CurrentStepFrame, function()
+    return not InCombatLockdown() and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog
+end, function()
+    LibWindow.SavePosition(CurrentStepScreenPanel)
+    isDragging = false
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
+    end
+end, function()
+    -- Right-click handler
+    MenuUtil.CreateContextMenu(UIParent, APR.GetMenu)
+end)
+
+-- Also setup drag via RegisterForDrag for smoother behavior
 CurrentStepFrameHeader:SetScript("OnDragStart", function(self)
     if not InCombatLockdown() and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
         self:GetParent():StartMoving()
@@ -70,25 +75,6 @@ CurrentStepFrameHeader:SetScript("OnDragStop", function(self)
     isDragging = false
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
         APR.questOrderList:ApplySnapAnchor()
-    end
-end)
-CurrentStepFrameHeader:SetScript("OnMouseDown", function(self, button)
-    if button == "LeftButton" and not isDragging and not InCombatLockdown() and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
-        self:GetParent():StartMoving()
-        isDragging = true
-    elseif button == "RightButton" then
-        MenuUtil.CreateContextMenu(UIParent, APR.GetMenu)
-    end
-end)
-
-CurrentStepFrameHeader:SetScript("OnMouseUp", function(self, button)
-    if button == "LeftButton" and isDragging then
-        self:GetParent():StopMovingOrSizing()
-        LibWindow.SavePosition(CurrentStepScreenPanel)
-        isDragging = false
-        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-            APR.questOrderList:ApplySnapAnchor()
-        end
     end
 end)
 
@@ -110,41 +96,34 @@ CurrentStepFrameSettingsButton:SetScript("OnLeave", function(self)
     GameTooltip:Hide()
 end)
 
--- Create the minimize button
-CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
-    if CurrentStepFrame.collapsed then
-        APR.currentStep:ButtonShow()
-        APR.currentStep.progressBar:Show()
-        APR.currentStep:SetDefaultDisplay()
-        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-collapse-all")
-        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-collapse-all-pressed")
-        -- Refresh Fillers frame when expanding
-        if APR.fillersFrame then
-            APR.fillersFrame:Show()
-        end
-        if APR.questOrderList and APR.questOrderList.RefreshFrameAnchor and APR.settings.profile.showQuestOrderList then
-            APR.questOrderList:RefreshFrameAnchor()
-        end
-    else
-        CurrentStepFrame.collapsed = true
-        CurrentStepFrame_StepHolder:Hide()
-        APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
-        APR.currentStep:ButtonHide()
-        APR.currentStep.progressBar:Hide()
-        -- Hide Fillers frame when collapsed
-        if APR.fillersFrame then
-            APR.fillersFrame:Hide()
-        end
-        self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-expand-all")
-        self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-expand-all-pressed")
-        if APR.settings.profile.showQuestOrderList and APR.settings.profile.questOrderListSnapToCurrentStep then
-            local qol = _G.QuestOrderListPanel
-            if qol then
-                qol:Hide()
-            end
+-- Setup minimize button with custom collapse/expand behavior
+APR:SetupMinimizeButton(CurrentStepFrameHeader, CurrentStepFrame, function()
+    -- Collapse
+    CurrentStepFrame_StepHolder:Hide()
+    APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
+    APR.currentStep:ButtonHide()
+    APR.currentStep.progressBar:Hide()
+    if APR.fillersFrame then
+        APR.fillersFrame:Hide()
+    end
+    if APR.settings.profile.showQuestOrderList and APR.settings.profile.questOrderListSnapToCurrentStep then
+        local qol = _G.QuestOrderListPanel
+        if qol then
+            qol:Hide()
         end
     end
-end)
+end, function()
+    -- Expand
+    APR.currentStep:ButtonShow()
+    APR.currentStep.progressBar:Show()
+    APR.currentStep:SetDefaultDisplay()
+    if APR.fillersFrame then
+        APR.fillersFrame:Show()
+    end
+    if APR.questOrderList and APR.questOrderList.RefreshFrameAnchor and APR.settings.profile.showQuestOrderList then
+        APR.questOrderList:RefreshFrameAnchor()
+    end
+end, "ui-questtrackerbutton-collapse-all", "ui-questtrackerbutton-expand-all")
 
 ---------------------------------------------------------------------------------------
 ---------------------------- Function Current Step Frames -----------------------------
@@ -241,9 +220,9 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         CurrentStepFrame:SetScale(1)
 
         if APR.currentStep.FrameAttachToModule then
-            CurrentStepScreenPanel:SetPoint("TOP", APR.currentStep.FrameAttachToModule, "BOTTOM", 0, FRAME_ATTACH_OPFFSET)
+            CurrentStepScreenPanel:SetPoint("TOP", APR.currentStep.FrameAttachToModule, "BOTTOM", 0, FRAME_ATTACH_OFFSET)
         elseif ObjectiveTrackerFrame.Header then
-            CurrentStepScreenPanel:SetPoint("TOP", ObjectiveTrackerFrame.Header, "BOTTOM", 0, FRAME_ATTACH_OPFFSET)
+            CurrentStepScreenPanel:SetPoint("TOP", ObjectiveTrackerFrame.Header, "BOTTOM", 0, FRAME_ATTACH_OFFSET)
         end
     else
         if not InCombatLockdown() then
@@ -491,36 +470,15 @@ end
 
 -- Displaying quest information
 local function AddStepsFrame(questDesc, extraLineText, color)
-    local textTemplate = "GameFontHighlight" -- white color
-    if extraLineText then
-        textTemplate = "GameFontNormal"      -- yellow color
-    end
-    -- Create a container for quest information
-    local container = CreateFrame("Frame", nil, CurrentStepFrame_StepHolder, "BackdropTemplate")
-    -- Create a font for quest information
-    local font = container:CreateFontString(nil, "OVERLAY", textTemplate)
-    font:SetWordWrap(true)
-    font:SetWidth(FRAME_WIDTH - 5)
-    font:SetPoint("TOPLEFT", 5, -5)
-    font:SetText('- ' .. (extraLineText or questDesc))
-    font:SetJustifyH("LEFT")
-
-    if color then
-        font:SetTextColor(unpack(APR:HexaToRGBA(color)))
-    end
-
-    -- Set the size of the container based on the text length
-    container:SetWidth(FRAME_WIDTH)
-    container:SetHeight(font:GetStringHeight() + 10)
-    container:SetBackdrop({
-        bgFile = "Interface\\BUTTONS\\WHITE8X8",
-        tile = true,
-        tileSize = 16
-    })
-    container:SetBackdropColor(unpack(APR.settings.profile.currentStepbackgroundColorAlpha))
-    container.font = font
-
-    return container
+    local text = extraLineText or questDesc
+    return APR:CreateStepTextContainer(
+        CurrentStepFrame_StepHolder,
+        FRAME_WIDTH,
+        text,
+        extraLineText ~= nil,
+        color,
+        APR.settings.profile.currentStepbackgroundColorAlpha
+    )
 end
 
 -- Displaying extra line text information
@@ -536,7 +494,7 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
 
     -- Check if questsExtraTextList or questsList are empty to reset to the default height
     if not next(self.questsExtraTextList) or not next(self.questsList) then
-        FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+        FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
     end
 
     local questKey = questID .. "-" .. (objectiveIndex or 0)
@@ -643,7 +601,7 @@ end
 
 local getExtraLineHeight = function()
     -- Always reset to header offset with a new extra line
-    local height = FRAME_HEADER_OPFFSET
+    local height = FRAME_HEADER_OFFSET
     for id, textContainer in pairs(APR.currentStep.questsExtraTextList) do
         height = height - textContainer:GetHeight()
     end
@@ -658,7 +616,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
 
     -- Check if questsExtraTextList or questsList are empty to reset to the default height
     if not next(self.questsExtraTextList) or not next(self.questsList) then
-        FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+        FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
     end
 
     local existingContainer = self.questsList[id]
@@ -771,7 +729,7 @@ function APR.currentStep:ReOrderExtraLineText()
         return a.key < b.key
     end)
 
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
     for _, textContainer in ipairs(sortedList) do
         textContainer:ClearAllPoints()
         textContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
@@ -844,7 +802,7 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
         self.questsExtraTextList = {}
     end
 
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
     -- Reorder ignoring soft-hidden
     self:ReOrderQuestSteps(true)
 end
@@ -1381,7 +1339,7 @@ function APR.currentStep:FlushPendingContainers()
         self.fillersList[id] = nil
     end
     wipe(self.pendingRemoval)
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OPFFSET
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
     self:ReOrderQuestSteps(true)
     if APR.fillersFrame then
         APR.fillersFrame:ReOrderFillerSteps()

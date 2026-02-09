@@ -178,7 +178,6 @@ function APR.AFK:RefreshFrameAnchor(initial)
 
     if APR.settings.profile.afkSnapToCurrentStep and currentStepPanel then
         self.isSnapped = true
-        local scale = currentStepPanel:GetScale() or 1
         local width = currentStepPanel:GetWidth() or FRAME_WIDTH
         local configuredHeight = APR.settings.profile.afkHeight or FRAME_HEIGHT
         if configuredHeight == FRAME_HEIGHT then
@@ -190,9 +189,8 @@ function APR.AFK:RefreshFrameAnchor(initial)
 
         local anchorHeight = (contentHeight > 0 and contentHeight) or (currentStepPanel:GetHeight() or FRAME_HEIGHT)
 
-        AfkFrameScreen:ClearAllPoints()
-        AfkFrameScreen:SetScale(scale)
-        AfkFrameScreen:SetPoint("TOP", currentStepPanel, "TOP", 0, -anchorHeight)
+        -- Use centralized snap positioning helper (no header adjustment for AFK)
+        APR:SnapFrameToAnchor(AfkFrameScreen, currentStepPanel, anchorHeight, 0, nil)
         AfkFrameScreen:EnableMouse(false)
         self:UpdateSize(width, afkHeight)
     else
