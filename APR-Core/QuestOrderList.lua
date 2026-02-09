@@ -25,7 +25,7 @@ local FRAME_HEIGHT = 300
 local FRAME_MIN_WIDTH = FRAME_WIDTH
 local FRAME_MIN_HEIGHT = 100
 local FRAME_OFFSET = 10
-local FRAME_DATA_START = -5
+local FRAME_DATA_START = 0
 local SNAP_ANCHOR_GAP = 30
 local resizeButton
 

@@ -15,7 +15,7 @@ local Vector2D = CreateVector2D(0, 0);
 --- Project the player's world position into the provided map space.
 -- dx/dy can be supplied for ad-hoc projections (e.g., taxi nodes) while reusing the same math.
 function APR:GetPlayerMapPos(MapID, dx, dy)
-    if not MapID or MapID == 0 then
+    if not APR:IsValidMapID(MapID) then
         return
     end
 

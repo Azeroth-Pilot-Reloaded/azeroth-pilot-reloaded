@@ -5,6 +5,14 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 -- Improved zone detection with caching, hierarchy support, and exceptions handling
 ---=============================================================================
 
+local function HasMapApi()
+    return C_Map and C_Map.GetBestMapForUnit and C_Map.GetMapInfo
+end
+
+local function HasMapChildrenApi()
+    return C_Map and C_Map.GetMapChildrenInfo
+end
+
 --- Initialize zone detector module
 function APR:InitZoneDetectionCache()
     if self.ZoneDetection then return end
@@ -44,6 +52,9 @@ end
 ---@return number continentID The continent MapID (0 if not found)
 function APR:GetContinent(mapId)
     self:Debug("Function: APR:GetContinent()", mapId)
+    if not HasMapApi() then
+        return 0
+    end
     mapId = mapId or C_Map.GetBestMapForUnit("player")
 
     -- Check for zone exceptions with continent overrides
@@ -74,6 +85,10 @@ end
 ---@return number|nil parentMapID The parent map ID
 function APR:GetPlayerParentMapID(mapType)
     mapType = mapType or Enum.UIMapType.Zone
+
+    if not HasMapApi() then
+        return nil
+    end
 
     local currentMapId = C_Map.GetBestMapForUnit('player')
     if not currentMapId then
@@ -117,7 +132,10 @@ end
 ---@param mapID number Zone MapID
 ---@return table|nil mapInfo Map information table
 function APR:GetMapInfoCached(mapID)
-    if not mapID then return nil end
+    if not self:IsValidMapID(mapID) then return nil end
+    if not HasMapApi() then
+        return nil
+    end
 
     local cache = self.ZoneDetection.mapInfoCache
     if not cache[mapID] then
@@ -152,11 +170,15 @@ end
 
 --- Check if cache is still valid
 local function IsCacheValid(cache)
-    if not cache.timestamp or cache.timestamp == 0 then
+    if not cache or not cache.timestamp or cache.timestamp == 0 or not cache.ttl then
         return false
     end
-    local elapsed = GetTime() - cache.timestamp
-    return elapsed < cache.ttl
+    local now = GetTime and GetTime() or 0
+    if not now or now == 0 then
+        return false
+    end
+    local elapsed = now - cache.timestamp
+    return elapsed >= 0 and elapsed < cache.ttl
 end
 
 ---=============================================================================
@@ -168,7 +190,7 @@ end
 ---@param mapID number Zone MapID to start from
 ---@return table parentChain List of parent mapIDs (including mapID itself)
 function APR:GetMapParentChain(mapID)
-    if not mapID or mapID == 0 then return {} end
+    if not self:IsValidMapID(mapID) then return {} end
 
     local chain = {}
     local current = mapID
@@ -196,7 +218,10 @@ end
 ---@param maxDepth number Maximum recursion depth (default: 10)
 ---@return table descendants List of all child mapIDs
 function APR:GetAllMapDescendants(parentMapID, maxDepth)
-    if not parentMapID or parentMapID == 0 then return {} end
+    if not self:IsValidMapID(parentMapID) then return {} end
+    if not HasMapChildrenApi() then
+        return {}
+    end
 
     local cached = self.ZoneDetection.descendantsCache[parentMapID]
     if cached then
@@ -245,6 +270,16 @@ function APR:ResolvePlayerZoneContext()
     -- Check cache validity
     if IsCacheValid(self.ZoneDetection.playerContextCache) then
         return self.ZoneDetection.playerContextCache.mapIDs
+    end
+
+    if not HasMapApi() then
+        return {
+            current = nil,
+            parent = nil,
+            continent = 0,
+            hierarchy = {},
+            allRelevant = {}
+        }
     end
 
     local context = {}
@@ -457,7 +492,11 @@ end
 ---@param stepZones table Step zone mapIDs
 ---@param result boolean Detection result
 function APR:DebugZoneDetection(context, playerContext, stepZones, result)
-    if not self.settings or not self.settings.profile or not self.settings.profile.zoneDetectionDebug then
+    if self.ShouldLogDebug then
+        if not self:ShouldLogDebug("zoneDetectionDebug") then
+            return
+        end
+    elseif not self.settings or not self.settings.profile or not self.settings.profile.zoneDetectionDebug then
         return
     end
 

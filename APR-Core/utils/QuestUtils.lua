@@ -17,6 +17,24 @@ local function AddQuestToPool(pool, questID)
     end
 end
 
+local function GetQuestProgressPercentSafe(questID)
+    if not questID or not GetQuestProgressBarPercent then
+        return nil
+    end
+
+    local ok, percent = pcall(GetQuestProgressBarPercent, questID)
+    if not ok then
+        return nil
+    end
+
+    local numeric = tonumber(percent)
+    if not numeric then
+        return nil
+    end
+
+    return math.floor(numeric)
+end
+
 function APR:ResetQuestPool()
     self.QuestPool = {
         ids = {},
@@ -305,13 +323,7 @@ end
 function APR:QpartPart_TrigTextMatch(step, questID, objectiveText)
     if not step then return false end
 
-    local currentPercent
-    if questID then
-        local questPercent = GetQuestProgressBarPercent(questID)
-        if questPercent then
-            currentPercent = math.floor(tonumber(questPercent))
-        end
-    end
+    local currentPercent = GetQuestProgressPercentSafe(questID)
 
     for key, value in pairs(step) do
         if string.match(key, "TrigText+") and value and objectiveText then
@@ -356,7 +368,10 @@ function APR:GetQuestTextForProgressBar(questId, objectiveId)
     local checkpbar = C_QuestLog.GetQuestObjectives(questId)
     local questText = objective.text
     if not string.find(questText, "%d") and checkpbar and checkpbar[objectiveId] and checkpbar[objectiveId].type == "progressbar" then
-        questText = questText .. " (" .. GetQuestProgressBarPercent(questId) .. "%)"
+        local progress = GetQuestProgressPercentSafe(questId)
+        if progress then
+            questText = questText .. " (" .. progress .. "%)"
+        end
     end
     return questText
 end

@@ -107,14 +107,15 @@ function APR.party:RefreshPartyFrameAnchor(forceShow)
     local hasData = next(APR.party.GroupListSteps)
     local testMode = self.testSimulation
 
-    if not APR.settings.profile.enableAddon then
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.enableAddon then
         PartyScreenPanel:Hide()
         return
     end
 
     local allowTestVisibility = testMode or forceShow
     if not allowTestVisibility then
-        if not APR.settings.profile.showGroup or not APR.settings.profile.receiveGroupData then
+        if not profile.showGroup or not profile.receiveGroupData then
             PartyScreenPanel:Hide()
             return
         end

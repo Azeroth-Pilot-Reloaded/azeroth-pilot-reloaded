@@ -14,10 +14,16 @@ local aceDialog = _G.LibStub("AceConfigDialog-3.0")
 local libDataBroker = LibStub("LibDataBroker-1.1")
 local libDBIcon = LibStub("LibDBIcon-1.0")
 
-local function GetProfileOption(info) return APR.settings.profile[info[#info]] end
+local function GetProfileOption(info)
+    local profile = APR:GetSettingsProfile()
+    if not profile then return nil end
+    return profile[info[#info]]
+end
 
 local function SetProfileOption(info, value)
-    APR.settings.profile[info[#info]] = value
+    local profile = APR:GetSettingsProfile()
+    if not profile then return end
+    profile[info[#info]] = value
 end
 
 function APR.settings:ResetSettings()

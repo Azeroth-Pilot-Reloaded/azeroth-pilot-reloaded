@@ -212,7 +212,10 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         return
     end
 
-    if APR.settings.profile.currentStepAttachFrameToQuestLog then
+    local profile = APR:GetSettingsProfile()
+    if not profile then return end
+
+    if profile.currentStepAttachFrameToQuestLog then
         if not InCombatLockdown() then
             CurrentStepScreenPanel:EnableMouse(false)
         end
@@ -226,7 +229,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         end
     else
         if not InCombatLockdown() then
-            if not APR.settings.profile.currentStepLock then
+            if not profile.currentStepLock then
                 CurrentStepScreenPanel:EnableMouse(true)
             else
                 CurrentStepScreenPanel:EnableMouse(false)
@@ -396,7 +399,8 @@ end
 
 -- Add a progress bar
 function APR.currentStep:ProgressBar(key, total, current)
-    if not APR.settings.profile.currentStepShow then
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.currentStepShow then
         return
     end
     if (self.progressBar and self.progressBar.key ~= key) then
@@ -448,7 +452,8 @@ function APR.currentStep:ProgressBar(key, total, current)
 end
 
 function APR.currentStep:UpdateProgressBarColor(barOverride)
-    local color = APR.settings.profile.currentStepProgressBarColor or
+    local profile = APR:GetSettingsProfile()
+    local color = (profile and profile.currentStepProgressBarColor) or
         { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
     local targetBar = barOverride or self.progressBar
     if targetBar then
@@ -488,7 +493,8 @@ end
 
 -- Add/Update quest steps
 function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, isScenario, noTooltip)
-    if not APR.settings.profile.currentStepShow then
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.currentStepShow then
         return
     end
 
@@ -766,12 +772,14 @@ end
 function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
     APR:Debug("Function: APR.currentStep:RemoveQuestStepsAndExtraLineTexts()")
     removeTextOnly = removeTextOnly or false
-    if not APR.settings.profile.currentStepShow then return end
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.currentStepShow then return end
 
     local function ResetList(list, isQuestList)
         for id, container in pairs(list) do
             local canHide = self:CanSafelyHide(container)
             if canHide then
+                -- Explicit frame cleanup to prevent memory leaks
                 container:ClearAllPoints()
                 container:Hide()
                 if isQuestList then
@@ -780,6 +788,16 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
                 end
                 self:ResetSecureRaidIconButton(container, id)
                 self.pendingRaidIconRequests[id] = nil
+
+                -- Clear frame scripts and textures to free memory
+                if container.Text then
+                    container.Text:SetText("")
+                end
+                if container.IconButton then
+                    container.IconButton:SetScript("OnEnter", nil)
+                    container.IconButton:SetScript("OnLeave", nil)
+                end
+
                 list[id] = nil
             else
                 -- Combat: soft-hide + mark for purge post-combat
