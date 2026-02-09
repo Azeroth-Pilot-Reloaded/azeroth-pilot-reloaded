@@ -73,21 +73,10 @@ getSnapAnchor = function()
         return nil
     end
 
-
-    -- Check if Fillers frame is shown
-    local fillersFrame = _G.FillersScreenPanel
-    if fillersFrame and fillersFrame:IsShown() then
-        return fillersFrame, fillersFrame:GetHeight()
-    end
-
-    local contentHeight = APR.currentStep and APR.currentStep.GetContentHeight and
-        APR.currentStep:GetContentHeight(false) or
-        0
-    if not contentHeight or contentHeight <= 0 then
-        contentHeight = currentStepPanel:GetHeight() or FRAME_HEIGHT
-    end
-
-    return currentStepPanel, contentHeight
+    -- Use centralized snap anchor logic from Core
+    -- Hierarchy: Fillers (highest) -> AFK (medium) -> CurrentStep (lowest)
+    local anchorFrame, anchorHeight = APR:GetSnapAnchorFrame()
+    return anchorFrame, anchorHeight
 end
 
 snapToAnchor = function(anchorFrame, anchorHeight)
@@ -286,8 +275,8 @@ function APR.questOrderList:RefreshFrameAnchor()
     end
     QuestOrderListFrame:EnableMouse(not APR.settings.profile.questOrderListLock)
 
-    APR.questOrderList:UpdateFrameScale()
-    APR.questOrderList:UpdateBackgroundColorAlpha()
+    self:UpdateFrameScale()
+    self:UpdateBackgroundColorAlpha()
 
     local anchored = self:ApplySnapAnchor()
 

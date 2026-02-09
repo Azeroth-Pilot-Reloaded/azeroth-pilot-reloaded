@@ -92,6 +92,24 @@ CurrentStepFrameHeader:SetScript("OnMouseUp", function(self, button)
     end
 end)
 
+-- Create the settings button (left of minimize button)
+local CurrentStepFrameSettingsButton = CreateFrame("Button", "CurrentStepFrameSettingsButton", CurrentStepFrameHeader)
+CurrentStepFrameSettingsButton:SetSize(16, 16)
+CurrentStepFrameSettingsButton:SetPoint("RIGHT", CurrentStepFrameHeader.MinimizeButton, "LEFT", -3, 0)
+CurrentStepFrameSettingsButton:SetNormalTexture("Interface\\Buttons\\UI-OptionsButton")
+CurrentStepFrameSettingsButton:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
+CurrentStepFrameSettingsButton:SetScript("OnClick", function(self, button)
+    MenuUtil.CreateContextMenu(UIParent, APR.GetMenu)
+end)
+CurrentStepFrameSettingsButton:SetScript("OnEnter", function(self)
+    GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+    GameTooltip:SetText(L["SHOW_MENU"] or "Settings")
+    GameTooltip:Show()
+end)
+CurrentStepFrameSettingsButton:SetScript("OnLeave", function(self)
+    GameTooltip:Hide()
+end)
+
 -- Create the minimize button
 CurrentStepFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
     if CurrentStepFrame.collapsed then
@@ -163,6 +181,7 @@ end
 -- Update the frame scale
 function APR.currentStep:UpdateFrameScale()
     LibWindow.SetScale(CurrentStepScreenPanel, APR.settings.profile.currentStepScale)
+
     if APR.AFK and APR.AFK.RefreshFrameAnchor then
         APR.AFK:RefreshFrameAnchor()
     end
@@ -197,8 +216,20 @@ end
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
     APR:Debug("Function: APR:RefreshCurrentStepFrameAnchor()")
-    if not APR.settings.profile.currentStepShow or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APR:IsInstanceWithUI() then
+    -- Use centralized frame hiding check from Core
+    if APR:ShouldHideFrames() then
         CurrentStepScreenPanel:Hide()
+
+        -- When CurrentStep hides, refresh all child frames
+        if APR.AFK and APR.AFK.RefreshFrameAnchor then
+            APR.AFK:RefreshFrameAnchor()
+        end
+        if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+            APR.fillersFrame:RefreshFillersFrame()
+        end
+        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+            APR.questOrderList:ApplySnapAnchor()
+        end
         return
     end
 
@@ -818,47 +849,6 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
     self:ReOrderQuestSteps(true)
 end
 
----------------------------------------------------------------------------------------
----------------------------------- Fillers Wrapper Methods ----------------------------
----------------------------------------------------------------------------------------
--- These methods act as wrappers to maintain backward compatibility
--- All filler logic is now in FillersFrame.lua
-
-function APR.currentStep:AddFillerStep(questID, textObjective, objectiveIndex)
-    if APR.fillersFrame then
-        APR.fillersFrame:AddFillerStep(questID, textObjective, objectiveIndex)
-    end
-end
-
-function APR.currentStep:ReOrderFillerSteps()
-    if APR.fillersFrame then
-        APR.fillersFrame:ReOrderFillerSteps()
-    end
-end
-
-function APR.currentStep:RemoveFillerSteps()
-    if APR.fillersFrame then
-        APR.fillersFrame:RemoveFillerSteps()
-    end
-end
-
-function APR.currentStep:RefreshFillersFrame()
-    if APR.fillersFrame then
-        APR.fillersFrame:RefreshFillersFrame()
-    end
-end
-
-function APR.currentStep:GetFillersHeight()
-    if APR.fillersFrame then
-        return APR.fillersFrame:GetFillersHeight()
-    end
-    return 0
-end
-
----------------------------------------------------------------------------------------
----------------------------------- End Fillers Wrapper Methods ------------------------
----------------------------------------------------------------------------------------
-
 local function PositionStepButtons(container, button, anchorButton)
     button:ClearAllPoints()
     local anchor = anchorButton or container
@@ -1231,7 +1221,7 @@ function APR.currentStep:Reset()
     self.pendingRaidIconMacroRefresh = false
     self.raidIconButton = nil
     self:RemoveQuestStepsAndExtraLineTexts()
-    self:RemoveFillerSteps()
+    APR.fillersFrame:RemoveFillerSteps()
 end
 
 function APR.GetMenu(owner, rootDescription)
@@ -1283,34 +1273,6 @@ function APR.GetMenu(owner, rootDescription)
     end)
 
     rootDescription:CreateDivider()
-    rootDescription:CreateTitle(L["QUEST_ORDER_LIST"])
-
-    createToggleItem(L["SHOW_QORDERLIST"], function()
-        return APR.settings.profile.showQuestOrderList
-    end, function()
-        APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
-        APR.questOrderList:RefreshFrameAnchor()
-    end)
-
-    createToggleItem(L["QORDERLIST_SNAP_TO_CURRENT_STEP"], function()
-        return APR.settings.profile.questOrderListSnapToCurrentStep
-    end, function()
-        APR.settings.profile.questOrderListSnapToCurrentStep = not APR.settings.profile.questOrderListSnapToCurrentStep
-        APR.questOrderList:RefreshFrameAnchor()
-    end)
-
-    rootDescription:CreateDivider()
-    rootDescription:CreateTitle(L["AFK"])
-
-    createToggleItem(L["AFK_SNAP_TO_CURRENT_STEP"], function()
-        return APR.settings.profile.afkSnapToCurrentStep
-    end, function()
-        APR.settings.profile.afkSnapToCurrentStep = not APR.settings.profile.afkSnapToCurrentStep
-        APR.AFK:RefreshFrameAnchor()
-    end)
-
-
-    rootDescription:CreateDivider()
     rootDescription:CreateTitle(L["CURRENT_STEP"])
 
     createToggleItem(L["QLIST_ATTACH_QUESTLOG"], function()
@@ -1337,6 +1299,55 @@ function APR.GetMenu(owner, rootDescription)
 
     rootDescription:CreateButton(L["RESET_CURRENT_STEP_FRAME_POSITION"], function()
         APR.currentStep:ResetPosition()
+    end)
+
+    rootDescription:CreateDivider()
+    rootDescription:CreateTitle(L["FILLERS_FRAME"])
+
+    createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
+        return APR.settings.profile.fillersFrameSnapToCurrentStep
+    end, function()
+        APR.settings.profile.fillersFrameSnapToCurrentStep = not APR.settings.profile.fillersFrameSnapToCurrentStep
+        if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+            APR.fillersFrame:RefreshFillersFrame()
+        end
+    end)
+
+    createToggleItem(L["FILLERS_SHOW_HEADER"], function()
+        return APR.settings.profile.fillersFrameShowHeader
+    end, function()
+        APR.settings.profile.fillersFrameShowHeader = not APR.settings.profile.fillersFrameShowHeader
+        if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+            APR.fillersFrame:RefreshFillersFrame()
+        end
+    end)
+
+
+    rootDescription:CreateDivider()
+    rootDescription:CreateTitle(L["QUEST_ORDER_LIST"])
+
+    createToggleItem(L["SHOW_QORDERLIST"], function()
+        return APR.settings.profile.showQuestOrderList
+    end, function()
+        APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
+        APR.questOrderList:RefreshFrameAnchor()
+    end)
+
+    createToggleItem(L["QORDERLIST_SNAP_TO_CURRENT_STEP"], function()
+        return APR.settings.profile.questOrderListSnapToCurrentStep
+    end, function()
+        APR.settings.profile.questOrderListSnapToCurrentStep = not APR.settings.profile.questOrderListSnapToCurrentStep
+        APR.questOrderList:RefreshFrameAnchor()
+    end)
+
+    rootDescription:CreateDivider()
+    rootDescription:CreateTitle(L["AFK"])
+
+    createToggleItem(L["AFK_SNAP_TO_CURRENT_STEP"], function()
+        return APR.settings.profile.afkSnapToCurrentStep
+    end, function()
+        APR.settings.profile.afkSnapToCurrentStep = not APR.settings.profile.afkSnapToCurrentStep
+        APR.AFK:RefreshFrameAnchor()
     end)
 end
 

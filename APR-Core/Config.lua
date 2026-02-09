@@ -68,6 +68,11 @@ function APR.settings:InitializeSettings()
             currentStepProgressBarColor = { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 },
             currentStepAttachFrameToQuestLog = false,
             currentStepQuestButtonPositionRight = false,
+            -- fillers frame
+            fillersFrame = {},
+            fillersFrameSnapToCurrentStep = true,
+            fillersFrameShowHeader = true,
+            fillersFrameSnapGap = 0,
             -- quest order list
             questOrderListFrame = {},
             showQuestOrderList = false,
@@ -420,6 +425,73 @@ function APR.settings:createBlizzOptions()
                         end,
                     },
                 },
+            },
+            group_FillersFrame = {
+                order = 5.6,
+                type = "group",
+                name = L["FILLERS_FRAME"],
+                args = {
+                    fillersFrameSnapToCurrentStep = {
+                        order = 5.61,
+                        type = "toggle",
+                        name = L["SNAP_TO_CURRENT_STEP"],
+                        desc = L["FILLERS_SNAP_TO_CURRENT_STEP_DESC"],
+                        width = "full",
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+                                APR.fillersFrame:RefreshFillersFrame()
+                            end
+                        end,
+                    },
+                    fillersFrameShowHeader = {
+                        order = 5.62,
+                        type = "toggle",
+                        name = L["FILLERS_SHOW_HEADER"],
+                        width = "full",
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+                                APR.fillersFrame:RefreshFillersFrame()
+                            end
+                        end,
+                        disabled = function()
+                            return not self.profile.fillersFrameSnapToCurrentStep
+                        end,
+                    },
+                    fillersFrameSnapGap = {
+                        order = 5.63,
+                        type = "range",
+                        name = L["SNAP_GAP"],
+                        min = 0,
+                        max = 50,
+                        step = 1,
+                        width = "full",
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+                                APR.fillersFrame:RefreshFillersFrame()
+                            end
+                        end,
+                        disabled = function()
+                            return not self.profile.fillersFrameSnapToCurrentStep
+                        end,
+                    },
+                    fillersFrameResetPosition = {
+                        order = 5.64,
+                        type = "execute",
+                        name = L["RESET_POSITION"],
+                        width = "full",
+                        func = function()
+                            if APR.fillersFrame and APR.fillersFrame.ResetPosition then
+                                APR.fillersFrame:ResetPosition()
+                            end
+                        end,
+                    },
+                }
             },
             group_quest_order_list_step = {
                 order = 6,

@@ -43,6 +43,23 @@ bar:SetPoint("CENTER", AfkFrame)
 -------------------------------- Function AFK Frames ----------------------------------
 ---------------------------------------------------------------------------------------
 
+--- Helper function to safely refresh child frames after AFK changes
+--- Verifies addon is still enabled before refreshing
+---@return void
+function APR.AFK:RefreshChildFrames()
+    -- Safety check: verify addon is still enabled (fix for race condition)
+    if not APR.settings or not APR.settings.profile or not APR.settings.profile.enableAddon then
+        return
+    end
+
+    if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+        APR.fillersFrame:RefreshFillersFrame()
+    end
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
+        APR.questOrderList:ApplySnapAnchor()
+    end
+end
+
 function APR.AFK:AFKFrameOnInit()
     APR.settings.profile.afkFrame = APR.settings.profile.afkFrame or {}
 
@@ -60,12 +77,11 @@ function APR.AFK:AFKFrameOnInit()
     local function onStop()
         AfkFrameScreen:Hide()
         APR.AFK.fakeTimerActive = false
-        if APR.currentStep and APR.currentStep.RefreshFillersFrame then
-            APR.currentStep:RefreshFillersFrame()
-        end
-        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-            APR.questOrderList:ApplySnapAnchor()
-        end
+        -- Wait a frame to ensure the frame is properly hidden before refreshing children
+        -- Addon enabled check is done in RefreshChildFrames
+        C_Timer.After(0, function()
+            APR.AFK:RefreshChildFrames()
+        end)
     end
     candy:RegisterCallback("LibCandyBar_Stop", onStop)
 
@@ -94,17 +110,24 @@ function APR.AFK:SetAfkTimer(duration)
     if not APR.settings.profile.enableAddon then
         bar:Stop()
         AfkFrameScreen:Hide()
+
+        -- When AFK hides due to addon disabled, refresh child frames after a frame delay
+        C_Timer.After(0, function()
+            APR.AFK:RefreshChildFrames()
+        end)
         return
     end
+    local wasHidden = not AfkFrameScreen:IsShown()
     APR.AFK:RefreshFrameAnchor()
     AfkFrameScreen:Show()
     bar:SetDuration(duration)
     bar:Start()
-    if APR.currentStep and APR.currentStep.RefreshFillersFrame then
-        APR.currentStep:RefreshFillersFrame()
-    end
-    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-        APR.questOrderList:ApplySnapAnchor()
+
+    -- If AFK just appeared, refresh all child frames
+    if wasHidden then
+        C_Timer.After(0, function()
+            APR.AFK:RefreshChildFrames()
+        end)
     end
 end
 
@@ -112,12 +135,11 @@ function APR.AFK:HideFrame()
     bar:Stop()
     AfkFrameScreen:Hide()
     self.fakeTimerActive = false
-    if APR.currentStep and APR.currentStep.RefreshFillersFrame then
-        APR.currentStep:RefreshFillersFrame()
-    end
-    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-        APR.questOrderList:ApplySnapAnchor()
-    end
+
+    -- Wait a frame to ensure the frame is properly hidden before refreshing children
+    C_Timer.After(0, function()
+        APR.AFK:RefreshChildFrames()
+    end)
 end
 
 function APR.AFK:UpdateBarColor()
@@ -145,7 +167,7 @@ function APR.AFK:UpdateSize(width, height)
         local now = GetTime()
         if now - (self.lastFillersRefresh or 0) >= FILLERS_REFRESH_THROTTLE then
             self.lastFillersRefresh = now
-            APR.currentStep:RefreshFillersFrame()
+            APR.fillersFrame:RefreshFillersFrame()
         end
     end
 end
@@ -191,7 +213,7 @@ function APR.AFK:RefreshFrameAnchor(initial)
     if wasSnapped ~= self.isSnapped
         and APR.currentStep
         and APR.currentStep.RefreshFillersFrame then
-        APR.currentStep:RefreshFillersFrame()
+        APR.fillersFrame:RefreshFillersFrame()
     end
 
     self:UpdateBarColor()
