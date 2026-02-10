@@ -93,9 +93,12 @@ end
 function APR.transport:SelectBestTransport(nextZone, step, mapID)
     local CurContinent = APR:GetContinent()
     local targetContinent = APR:GetContinent(nextZone)
+    local currentMapID = C_Map.GetBestMapForUnit("player")
+    local isCurrentIsolated = currentMapID and APR.ZoneRestrictions.IsIsolatedMap(currentMapID)
+    local isTargetIsolated = APR.ZoneRestrictions.IsIsolatedMap(nextZone)
 
     -- If same continent, skip teleport spells/items and use SwitchZones directly
-    if CurContinent == targetContinent then
+    if CurContinent == targetContinent and not isCurrentIsolated and not isTargetIsolated then
         local portal = self:GuideViaPortalDB(APR.Portals.SwitchZones[APR.Faction], CurContinent, targetContinent,
             nextZone)
         if portal then return true end
@@ -151,8 +154,11 @@ function APR.transport:SelectBestTransport(nextZone, step, mapID)
         return true
     end
 
-    -- Portals fallback for different continents: use SwitchCont
-    local portal = self:GuideViaPortalDB(APR.Portals.SwitchCont[APR.Faction], CurContinent, targetContinent, nextZone)
+    -- Portals fallback: same continent uses SwitchZones, cross-continent uses SwitchCont
+    local portalDB = (CurContinent == targetContinent)
+        and APR.Portals.SwitchZones[APR.Faction]
+        or APR.Portals.SwitchCont[APR.Faction]
+    local portal = self:GuideViaPortalDB(portalDB, CurContinent, targetContinent, nextZone)
 
     if portal then return true end
 
@@ -459,13 +465,27 @@ function APR.transport:GetMeToRightZone(isRetry)
 
         -- If same continent and nothing found above, try classic taxi -> zone entry fallbacks
         if APR:IsSameContinent(nextZone) then
-            local posX, posY = UnitPosition("player")
+            local posY, posX = UnitPosition("player")
             if not posY or not posX then
                 return
             end
 
+            local currentMapID = APR:GetPlayerParentMapID()
+            local isCurrentIsolated = currentMapID and APR.ZoneRestrictions.IsIsolatedMap(currentMapID)
+            local isTargetIsolated = APR.ZoneRestrictions.IsIsolatedMap(nextZone)
             local playerTaxiNodeId, playerTaxiName, playerTaxiX, playerTaxiY = self:ClosestTaxi(posX, posY)
             local stepCoord = APR:GetStepCoord(step, mapID, nextZone)
+
+            -- For isolated zones without valid coords, still force taxi route
+            if not stepCoord and isTargetIsolated then
+                APR.currentStep:AddQuestSteps("ISOLATED_ZONE_TAXI",
+                    L["ISOLATED_ZONE_TAXI"] or "Isolated zone - use taxi only", "TAXI")
+                APR.currentStep:AddQuestSteps("CLOSEST_FP" .. playerTaxiName,
+                    L["CLOSEST_FP"] .. ": " .. playerTaxiName, playerTaxiName)
+                APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
+                return
+            end
+
             if stepCoord then
                 local _, objectiveTaxiName = self:ClosestTaxi(stepCoord.x, stepCoord.y)
                 if playerTaxiNodeId ~= objectiveTaxiName then
@@ -477,6 +497,9 @@ function APR.transport:GetMeToRightZone(isRetry)
                     APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
                     return
                 else
+                    if isCurrentIsolated or isTargetIsolated then
+                        return
+                    end
                     local zoneEntryMapID, zoneEntryX, zoneEntryY = self:GetZoneMoveOrder(nextZone)
                     if zoneEntryMapID then
                         local zoneEntryMapInfo = APR:GetMapInfoCached(zoneEntryMapID)

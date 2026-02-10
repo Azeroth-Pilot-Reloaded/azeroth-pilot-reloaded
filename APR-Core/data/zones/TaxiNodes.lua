@@ -466,6 +466,10 @@ APR.TaxiNodes = {
             [2409] = { x = -299.94799804688, y = 359.45001220703, Name = "Wreck of the Old Blanchy, Nazjatar" },
             [2410] = { x = 237.06799316406, y = 1708.1999511719, Name = "Ashen Strand, Nazjatar" },
             [2483] = { x = -525.21197509766, y = 2112.7900390625, Name = "The Tidal Conflux, Nazjatar" }
+        },
+        [2175] = {
+            [2401] = { x = -2295.6298828125, y = 209.14199829102, Name = "Alliance Outpost, Exile's Reach Outpost" },
+            [2402] = { x = -1307.5899658203, y = 1023.7199707031, Name = "Ogre Citadel, Exile's Reach Island" }
         }
     },
     ["Neutral"] = {
@@ -781,6 +785,7 @@ APR.TaxiNodes = {
         },
         [1504] = { [2403] = { x = -1566.2600097656, y = 2077.9499511719, Name = "Kelya's Grave, Nazjatar" } },
         [1550] = {
+            [2395] = { x = 1214.7600097656, y = -1902.4399414062, Name = "Oribos" },
             [2398] = { x = -2691.75, y = 1974.7399902344, Name = "Bleak Redoubt, Maldraxxus" },
             [2488] = { x = 6010.490234375, y = -2623.9799804688, Name = "Darkhaven, Revendreth" },
             [2511] = { x = 7696.5200195312, y = -2172.1201171875, Name = "Sanctuary of the Mad, Revendreth" },
@@ -1011,7 +1016,7 @@ APR.TaxiNodes = {
             [3119] = { x = 1050.3000488281, y = 1661.9200439453, Name = "The Ingress, Voidstorm" },
             [3120] = { x = 504.375, y = 657.25299072266, Name = "Locus Point, Voidstorm" },
             [3121] = { x = -400.29000854492, y = 960.28997802734, Name = "Howling Ridge, Voidstorm" },
-            [3123] = { x = 250.42900085449, y = 2975.9399414062, Name = "Master's Perch, Voidstorm" }
+            [3123] = { x = 250.42900085449, y = 2975.9399414062, Name = "Masters' Perch, Voidstorm" }
         },
         [2965] = {
             [3169] = { x = -608.91101074219, y = 493.3869934082, Name = "Base Node" },
@@ -1019,7 +1024,7 @@ APR.TaxiNodes = {
             [3171] = { x = -598.10400390625, y = 457.35598754883, Name = "Deep Well" },
             [3172] = { x = -550.12701416016, y = 711.22100830078, Name = "Exposed Vein" },
             [3173] = { x = -397.58499145508, y = 504.26599121094, Name = "Focal Point" },
-            [3174] = { x = -516.97399902344, y = 437.89099121094, Name = "Forge of Secrets" }
+            [3174] = { x = -512.36297607422, y = 420.24301147461, Name = "Forge of Secrets" }
         }
     }
 }
