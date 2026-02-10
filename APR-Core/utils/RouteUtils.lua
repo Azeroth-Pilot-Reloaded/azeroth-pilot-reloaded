@@ -106,6 +106,15 @@ function APR:CheckIsInRouteZone()
         return false
     end
 
+    -- Check if step is filtered by conditions (faction, class, achievement, etc)
+    -- If the step is filtered, it shouldn't be used, so return false
+    if self:StepFilterQuestHandler(step) then
+        self:PrintZoneDebug("Step is filtered by conditions - returning FALSE")
+        self._lastRouteZoneCheck = now
+        self._lastRouteZoneResult = false
+        return false
+    end
+
     local routeZoneMapIDs, fallbackMapID, routeName, expansion = self:GetCurrentRouteMapIDsAndName()
 
     -- Get step zones

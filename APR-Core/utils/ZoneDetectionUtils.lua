@@ -400,14 +400,14 @@ end
 --- Check if player is near step coordinates (last resort fallback)
 ---@param step table Current step data
 ---@param stepZones table Zone mapIDs for step
----@param threshold number Distance threshold in yards (default: 200)
+---@param threshold number Distance threshold in yards (default: 4000)
 ---@return boolean
 function APR:CheckCoordinateProximity(step, stepZones, threshold)
     if not step or not stepZones or #stepZones == 0 then
         return false
     end
 
-    threshold = threshold or 200
+    threshold = threshold or 4000
 
     local playerY, playerX = UnitPosition("player")
     if not playerY or not playerX then

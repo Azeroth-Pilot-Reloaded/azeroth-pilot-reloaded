@@ -868,6 +868,16 @@ function APR.routeconfig:InitRouteConfig()
 
         APR:UpdateMapId()
         APR:UpdateStep()
+
+        -- Invalidate zone check cache when route changes to ensure fresh detection
+        APR._lastRouteZoneCheck = nil
+        APR._lastRouteZoneResult = nil
+
+        -- Trigger zone detection and navigation after loading new prefab routes
+        if APR.ActiveRoute and APR.settings.profile.enableAddon then
+            APR:InvalidatePlayerZoneCache()
+            APR.transport:GetMeToRightZone()
+        end
     end)
     InitRouteSearchFrame("RouteSearchFrame")
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
@@ -911,18 +921,26 @@ end
 
 function APR.routeconfig:GetSpeedRunPrefab()
     self:GetStartingZonePrefab()
+
     -- Don't add other route if the player is neutral
-    if APR.Faction == "Neutral" then return end
+    if APR.Faction == "Neutral" then
+        return
+    end
+
     if APR.Level >= APR.MinBoostLvl and APR.Level < APR.MaxLevelChromie then
         self:GetDFPrefab()
     elseif APR.Level < APR.MinBoostLvl then
         self:GetWODPrefab()
         self:GetDFPrefab()
     end
+
     if APR.Level < APR.PreviousMaxLvl then
         self:GetTWWPrefab()
     end
+
     self:GetMidnightPrefab()
+
+    self:SendMessage("APR_Custom_Path_Update")
 end
 
 function APR.routeconfig:GetStartingZonePrefab()

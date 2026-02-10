@@ -405,11 +405,16 @@ function APR.transport:GetMeToRightZone(isRetry)
 
     local farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
     if APR:CheckIsInRouteZone() and not farAway then
+        local wasOutOfZone = not APR.IsInRouteZone
         APR.IsInRouteZone = true
         -- Avoid unwanted auto taxi
         self.wrongZoneDestTaxiName = nil
         -- Reset flag, we are in the right zone
         self._retryPending = false
+        -- If we were previously marked as out-of-zone, refresh the step to clear "wrong zone" message
+        if wasOutOfZone then
+            APR:UpdateStep()
+        end
         return
     else
         -- Reset IsInRouteZone and continue routing
