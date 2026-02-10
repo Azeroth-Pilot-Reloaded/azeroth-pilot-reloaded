@@ -69,8 +69,8 @@ function APR:GetPlayerCurrentTaxiNode()
     return {}
 end
 
---- Check if player is currently in a no-fly zone
---- Uses ZoneRestrictions.NO_FLY_MAPS data
+--- Check if player is currently in a no-fly or isolated zone
+--- Uses ZoneRestrictions.NO_FLY_MAPS and ZoneRestrictions.Isolated_maps data
 --- @return boolean isNoFlyZone
 function APR:IsInNoFlyZone()
     local currentMapID = C_Map.GetBestMapForUnit("player")
@@ -79,13 +79,13 @@ function APR:IsInNoFlyZone()
     end
 
     -- Check current map
-    if APR.ZoneRestrictions.NO_FLY_MAPS[currentMapID] then
+    if APR.ZoneRestrictions.NoFlyMaps[currentMapID] or APR.ZoneRestrictions.IsIsolatedMap(currentMapID) then
         return true
     end
 
     -- Check parent map (for sub-zones)
     local parentMapID = self:GetPlayerParentMapID()
-    if parentMapID and APR.ZoneRestrictions.NO_FLY_MAPS[parentMapID] then
+    if parentMapID and (APR.ZoneRestrictions.NoFlyMaps[parentMapID] or APR.ZoneRestrictions.IsIsolatedMap(parentMapID)) then
         return true
     end
 

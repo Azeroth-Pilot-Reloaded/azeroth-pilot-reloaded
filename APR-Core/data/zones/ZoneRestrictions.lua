@@ -10,7 +10,7 @@ APR.ZoneRestrictions = {}
 -----------------------------------------------------------
 -- Maps where flying mounts are disabled or restricted
 
-APR.ZoneRestrictions.NO_FLY_MAPS = {
+APR.ZoneRestrictions.NoFlyMaps = {
     -- Burning Crusade
     [94] = true,  -- Eversong Woods
     [95] = true,  -- Ghostlands
@@ -39,13 +39,55 @@ APR.ZoneRestrictions.NO_FLY_MAPS = {
 }
 
 -----------------------------------------------------------
+-- ISOLATED ZONES (NO DIRECT FLYING ACCESS)
+-----------------------------------------------------------
+-- Zones that require taxi/item/portal/spell access.
+
+APR.ZoneRestrictions.IsolatedMaps = {
+    [207] = true,  -- Deepholm
+    [245] = true,  -- Tol Barad
+    [89] = true,   -- Teldrassil
+    [407] = true,  -- Darkmoon Island
+    [464] = true,  -- Teldrassil (Exodar/Darnassus area)
+    [110] = true,  -- Quel'Thalas (Silvermoon City)
+    [95] = true,   -- Quel'Thalas (Ghostlands)
+    [94] = true,   -- Quel'Thalas (Eversong Woods)
+    [974] = true,  -- Tol Dagor
+    [504] = true,  -- Isle of Thunder
+    [554] = true,  -- Timeless Isle
+    [1282] = true, -- Death Knight Hall
+    [2351] = true, -- Razorwind Shores
+    [122] = true,  -- Isle of Quel'Danas
+    [1355] = true, -- Nazjatar
+    [1462] = true, -- Mechagon
+    [1670] = true, -- Oribos
+    [1671] = true, -- Oribos (upper ring)
+    [1533] = true, -- Bastion
+    [1536] = true, -- Maldraxxus
+    [1525] = true, -- Revendreth
+    [1565] = true, -- Ardenweald
+    [1543] = true, -- The Maw
+    [1961] = true, -- Korthia
+    [1970] = true, -- Zereth Mortis
+    [830] = true,  -- Argus: Krokuun
+    [831] = true,  -- Argus: Vindicaar
+    [882] = true,  -- Argus: Eredath
+    [885] = true,  -- Argus: Antoran Wastes
+    [2200] = true, -- Emerald Dream
+    [2346] = true, -- Undermine
+    [2472] = true, -- K'aresh
+    [2413] = true, -- Harandar
+    [2405] = true, -- Voidstorm
+}
+
+-----------------------------------------------------------
 -- ZONE EXCEPTIONS
 -----------------------------------------------------------
 -- Zones requiring special handling for continent/hierarchy detection
 -- Used by ZoneDetectionUtils for correct zone matching
 
 
-APR.ZoneRestrictions.ZONE_EXCEPTIONS = {
+APR.ZoneRestrictions.ZoneExceptions = {
     -- The War Within - Isle of Dorn
     [2274] = {
         name = "Isle of Dorn",
@@ -108,7 +150,7 @@ APR.ZoneRestrictions.ZONE_EXCEPTIONS = {
 ---@return boolean isExilesReach
 function APR.ZoneRestrictions.IsExilesReachMap(mapID)
     if not mapID then return false end
-    local exception = APR.ZoneRestrictions.ZONE_EXCEPTIONS[mapID]
+    local exception = APR.ZoneRestrictions.ZoneExceptions[mapID]
     return exception and exception.isExilesReach == true
 end
 
@@ -128,6 +170,14 @@ function APR.ZoneRestrictions.IsSpecialHandlingMap(mapID)
     -- Exile's Reach and legacy zones
     return mapID == 1409 or mapID == 1726 or mapID == 1727 or mapID == 1728
         or mapID == 905 or mapID == 948
+end
+
+--- Check if a map ID is an isolated zone (no direct flying access)
+---@param mapID number Map ID to check
+---@return boolean isIsolated
+function APR.ZoneRestrictions.IsIsolatedMap(mapID)
+    if not mapID then return false end
+    return APR.ZoneRestrictions.IsolatedMaps[mapID] == true
 end
 
 --- Get all Exile's Reach map IDs

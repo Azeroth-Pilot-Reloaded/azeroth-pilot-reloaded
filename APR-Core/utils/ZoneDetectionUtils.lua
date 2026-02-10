@@ -37,8 +37,8 @@ function APR:InitZoneDetectionCache()
     }
 
     -- Load zone exceptions from ZoneRestrictions
-    if APR.ZoneRestrictions and APR.ZoneRestrictions.ZONE_EXCEPTIONS then
-        self.ZoneDetection.exceptions = APR.ZoneRestrictions.ZONE_EXCEPTIONS
+    if APR.ZoneRestrictions and APR.ZoneRestrictions.ZoneExceptions then
+        self.ZoneDetection.exceptions = APR.ZoneRestrictions.ZoneExceptions
     end
 end
 
