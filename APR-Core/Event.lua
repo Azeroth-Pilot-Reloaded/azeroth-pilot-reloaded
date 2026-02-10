@@ -164,8 +164,16 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 -- Ensure the active route is set on load so the current step frame can populate without waiting
                 if routeFileName and routeFileName ~= "" then
                     APR.ActiveRoute = routeFileName
-                    APR:UpdateMapId()
-                    APR:UpdateStep()
+
+                    -- Trigger zone detection after reload - use longer delay to ensure quest log is fully synced
+                    -- This prevents false "wrong zone" message that appears before quests are loaded
+                    C_Timer.After(0.5, function()
+                        APR:InvalidatePlayerZoneCache()
+                        if APR.settings.profile.enableAddon then
+                            APR:UpdateMapId()
+                            APR:UpdateStep()
+                        end
+                    end)
                 end
 
                 local versionText = APR:WrapTextInColorCode(APR.version, "00ff00")
@@ -1026,13 +1034,25 @@ function APR.event.functions.zone(event, ...)
 
     -- Transport logic
     if event == "PLAYER_ENTERING_WORLD" then
-        APR.transport:GetMeToRightZone()
+        -- Invalidate cache after teleportation to ensure fresh zone detection
+        APR:InvalidatePlayerZoneCache()
+        C_Timer.After(0.3, function()
+            if APR.ActiveRoute and APR.settings.profile.enableAddon then
+                APR.transport:GetMeToRightZone()
+            end
+        end)
     end
     if event == "ZONE_CHANGED" or
         event == "ZONE_CHANGED_INDOORS" or
         event == "ZONE_CHANGED_NEW_AREA" or
         event == "WAYPOINT_UPDATE"
     then
+        -- Invalidate cache when zone changes
+        APR:InvalidatePlayerZoneCache()
+        -- Also invalidate the CheckIsInRouteZone throttle cache to ensure fresh detection
+        APR._lastRouteZoneCheck = nil
+        APR._lastRouteZoneResult = nil
+
         if IsInInstance() and not APR:IsInstanceWithUI() then
             return
         end
