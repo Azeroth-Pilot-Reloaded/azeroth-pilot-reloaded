@@ -309,7 +309,7 @@ function APR:ResolvePlayerZoneContext()
 
     -- Update cache (FIX: actually store the context!)
     self.ZoneDetection.playerContextCache.mapIDs = context
-    self.ZoneDetection.playerContextCache.timestamp = GetTime()
+    self.ZoneDetection.playerContextCache.timestamp = GetTime and GetTime() or 0
 
     return context
 end

@@ -583,7 +583,7 @@ function APR:UpdateStep()
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
                 local text = string.format(L["USE_PORTAL_TO"], zoneName)
 
-                APR.currentStep:AddQuestSteps("TAKE_PORTAL", text, mapInfo)
+                APR.currentStep:AddQuestSteps("TAKE_PORTAL", text, zoneId)
             end
         elseif (step.Waypoint) then
             local canAutoSkipWaypoint = not step.NonSkippableWaypoint
