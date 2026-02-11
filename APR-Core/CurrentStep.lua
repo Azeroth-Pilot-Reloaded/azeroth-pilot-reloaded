@@ -28,7 +28,6 @@ local FRAME_HEADER_OFFSET = -30
 local FRAME_ATTACH_OFFSET = -35
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
 local RAID_ICON_TEXTURE = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
-local isDragging = false
 
 ---------------------------------------------------------------------------------------
 --------------------------------- Current Step Frames ---------------------------------
@@ -49,10 +48,10 @@ local CurrentStepFrameHeader = APR:CreateFrameHeader("CurrentStepFrameHeader", C
 -- Setup drag with right-click menu support
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
 APR:SetupHeaderDrag(CurrentStepFrameHeader, CurrentStepFrame, function()
-    return not InCombatLockdown() and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog
+    return not InCombatLockdown() and not APR.settings.profile.currentStepLock and
+    not APR.settings.profile.currentStepAttachFrameToQuestLog
 end, function()
     LibWindow.SavePosition(CurrentStepScreenPanel)
-    isDragging = false
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
         APR.questOrderList:ApplySnapAnchor()
     end
@@ -65,14 +64,12 @@ end)
 CurrentStepFrameHeader:SetScript("OnDragStart", function(self)
     if not InCombatLockdown() and not APR.settings.profile.currentStepLock and not APR.settings.profile.currentStepAttachFrameToQuestLog then
         self:GetParent():StartMoving()
-        isDragging = true
     end
 end)
 
 CurrentStepFrameHeader:SetScript("OnDragStop", function(self)
     self:GetParent():StopMovingOrSizing()
     LibWindow.SavePosition(CurrentStepScreenPanel)
-    isDragging = false
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
         APR.questOrderList:ApplySnapAnchor()
     end
