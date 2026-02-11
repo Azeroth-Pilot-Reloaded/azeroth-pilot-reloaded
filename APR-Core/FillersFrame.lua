@@ -19,6 +19,7 @@ local REFRESH_THROTTLE = 0.1
 -- Track last refresh time to prevent excessive updates
 local lastRefreshTime = 0
 
+
 ---------------------------------------------------------------------------------------
 ----------------------------------- Fillers Frame -------------------------------------
 ---------------------------------------------------------------------------------------
@@ -29,7 +30,10 @@ FillersFrame:Hide()
 
 -- Setup drag and drop for the frame
 APR:SetupFrameDrag(FillersFrame, function()
-    return not APR.settings.profile.fillersFrameSnapToCurrentStep
+    -- Defensive nil check: settings may not be initialized yet
+    local profile = APR:GetSettingsProfile()
+    local shouldAllowDrag = profile and profile.fillersFrameSnapToCurrentStep
+    return not shouldAllowDrag
 end, function()
     LibWindow.SavePosition(FillersFrame)
 end)
@@ -44,7 +48,11 @@ local FillersFrameHeader = APR:CreateFrameHeader("FillersFrameHeader", FillersFr
 
 -- Setup drag and drop for the header
 APR:SetupHeaderDrag(FillersFrameHeader, FillersFrame, function()
-    return not APR.settings.profile.fillersFrameSnapToCurrentStep
+    local profile = APR:GetSettingsProfile()
+
+    -- Defensive nil check: settings may not be initialized yet
+    local shouldAllowDrag = profile and profile.fillersFrameSnapToCurrentStep
+    return not shouldAllowDrag
 end, function()
     LibWindow.SavePosition(FillersFrame)
 end)

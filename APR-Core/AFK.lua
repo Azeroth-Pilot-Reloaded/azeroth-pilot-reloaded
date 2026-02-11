@@ -166,8 +166,8 @@ function APR.AFK:UpdateSize(width, height)
     if sizeChanged
         and profile
         and profile.afkSnapToCurrentStep
-        and APR.currentStep
-        and APR.currentStep.RefreshFillersFrame then
+        and APR.fillersFrame
+        and APR.fillersFrame.RefreshFillersFrame then
         local now = GetTime()
         if now - (self.lastFillersRefresh or 0) >= FILLERS_REFRESH_THROTTLE then
             self.lastFillersRefresh = now

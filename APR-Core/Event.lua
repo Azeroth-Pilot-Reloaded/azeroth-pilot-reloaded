@@ -169,7 +169,8 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                     -- This prevents false "wrong zone" message that appears before quests are loaded
                     C_Timer.After(0.5, function()
                         APR:InvalidatePlayerZoneCache()
-                        if APR.settings.profile.enableAddon then
+                        local profile = APR:GetSettingsProfile()
+                        if profile and profile.enableAddon then
                             APR:UpdateMapId()
                             APR:UpdateStep()
                         end
@@ -193,18 +194,19 @@ end)
 function APR.event.functions.accept(event, ...)
     if event == "QUEST_ACCEPTED" then
         local questID = ...;
-        if APR.settings.profile.firstAutoShareQuestWithFriend and IsInGroup() then
+        local profile = APR:GetSettingsProfile()
+        if profile and profile.firstAutoShareQuestWithFriend and IsInGroup() then
             APR.questionDialog:CreateQuestionPopup("SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME",
                 L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
-                    APR.settings.profile.autoShareQuestWithFriend = true
+                    profile.autoShareQuestWithFriend = true
                     if APR.party:CheckIfPartyMemberIsFriend() then
                         C_QuestLog.SetSelectedQuest(questID)
                         QuestLogPushQuest();
                     end
                 end)
-            APR.settings.profile.firstAutoShareQuestWithFriend = false
+            profile.firstAutoShareQuestWithFriend = false
         end
-        if APR.settings.profile.autoShareQuestWithFriend and IsInGroup() then
+        if profile and profile.autoShareQuestWithFriend and IsInGroup() then
             if APR.party:CheckIfPartyMemberIsFriend() then
                 C_QuestLog.SetSelectedQuest(questID)
                 QuestLogPushQuest();
@@ -303,8 +305,9 @@ function APR.event.functions.detail(event, questStartItemID)
 end
 
 function APR.event.functions.done(event, ...)
+    local profile = APR:GetSettingsProfile()
     if IsModifierKeyDown() then return end
-    if APR.settings.profile.autoHandIn then
+    if profile and profile.autoHandIn then
         if event == "QUEST_PROGRESS" then
             APR.event:TalkToDenyNpcLogic(step)
             CompleteQuest()
@@ -424,11 +427,15 @@ function APR.event.functions.done(event, ...)
             local gearIlvlList = getPlayerGearIlvlList()
             local rewards = buildQuestRewardData(gearIlvlList)
 
+            if not profile then
+                return
+            end
+
             local prioList = {
-                APR.settings.profile.rewardPriority1,
-                APR.settings.profile.rewardPriority2,
-                APR.settings.profile.rewardPriority3,
-                APR.settings.profile.rewardPriority4,
+                profile.rewardPriority1,
+                profile.rewardPriority2,
+                profile.rewardPriority3,
+                profile.rewardPriority4,
             }
 
             -- Define the logic for each priority type
@@ -452,7 +459,7 @@ function APR.event.functions.done(event, ...)
                             table.insert(list, data.index)
                         end
                     end
-                    if APR.settings.profile.autoCosmeticMulti then
+                    if profile.autoCosmeticMulti then
                         return list[1]
                     end
                     return -1
@@ -465,7 +472,7 @@ function APR.event.functions.done(event, ...)
                             table.insert(list, data.index)
                         end
                     end
-                    if APR.settings.profile.autoTransmogMulti then
+                    if profile.autoTransmogMulti then
                         return list[1]
                     end
                     return -1
@@ -502,9 +509,9 @@ function APR.event.functions.done(event, ...)
         end
 
         -- Main auto reward selection logic (use where appropriate)
-        if APR.settings.profile.autoHandIn then
+        if profile and profile.autoHandIn then
             if GetNumQuestChoices() > 1 then
-                if APR.settings.profile.autoHandInChoice then
+                if profile.autoHandInChoice then
                     chooseQuestRewardByPriority()
                 end
             else
@@ -581,7 +588,8 @@ function APR.event.functions.gossip(event, ...)
         local availableQuests = C_GossipInfo.GetAvailableQuests()
         local activeQuests = C_GossipInfo.GetActiveQuests()
         -- Handin
-        if APR.settings.profile.autoHandIn then
+        local profile = APR:GetSettingsProfile()
+        if profile and profile.autoHandIn then
             if activeQuests then
                 for _, questInfo in ipairs(activeQuests) do
                     if questInfo.title and questInfo.isComplete then
@@ -624,7 +632,8 @@ function APR.event.functions.greeting(event, ...)
     end
 
     -- Done (Handin)
-    if (APR.settings.profile.autoHandIn) then
+    local profile = APR:GetSettingsProfile()
+    if profile and profile.autoHandIn then
         for i = 1, GetNumActiveQuests() do
             local title, isComplete = GetActiveTitle(i)
             if title and isComplete then
@@ -740,7 +749,8 @@ function APR.event.functions.merchant(event, ...)
             APR:StartPurchaseTracking(step.BuyMerchant)
             APR:BuyItemFromMerchant(step.BuyMerchant)
         end
-        if APR.settings.profile.autoRepair then
+        local profile = APR:GetSettingsProfile()
+        if profile and profile.autoRepair then
             if CanMerchantRepair() then
                 local repairAllCost, canRepair = GetRepairAllCost();
                 if canRepair and repairAllCost > 0 then
@@ -764,7 +774,7 @@ function APR.event.functions.merchant(event, ...)
                 end
             end
         end
-        if APR.settings.profile.autoVendor then
+        if profile and profile.autoVendor then
             local totalPrices = 0
 
             for myBags = Enum.BagIndex.Backpack, APR.MaxBagSlots do
@@ -1037,7 +1047,8 @@ function APR.event.functions.zone(event, ...)
         -- Invalidate cache after teleportation to ensure fresh zone detection
         APR:InvalidatePlayerZoneCache()
         C_Timer.After(0.3, function()
-            if APR.ActiveRoute and APR.settings.profile.enableAddon then
+            local profile = APR:GetSettingsProfile()
+            if APR.ActiveRoute and profile and profile.enableAddon then
                 APR.transport:GetMeToRightZone()
             end
         end)

@@ -16,6 +16,7 @@ local currentTabName = nil
 
 local routeSearchText = ""
 
+
 local function SetRouteSearchText(value)
     routeSearchText = value or ""
     if tabRouteListWidget and currentTabName then
@@ -874,7 +875,8 @@ function APR.routeconfig:InitRouteConfig()
         APR._lastRouteZoneResult = nil
 
         -- Trigger zone detection and navigation after loading new prefab routes
-        if APR.ActiveRoute and APR.settings.profile.enableAddon then
+        local profile = APR:GetSettingsProfile()
+        if APR.ActiveRoute and profile and profile.enableAddon then
             APR:InvalidatePlayerZoneCache()
             APR.transport:GetMeToRightZone()
         end
