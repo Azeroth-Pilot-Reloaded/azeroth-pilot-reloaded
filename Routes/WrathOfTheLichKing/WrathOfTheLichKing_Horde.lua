@@ -540,13 +540,13 @@ if APR.Faction == "Horde" then
             _index = 98,
         },
         {
-            Done = { 12727 },
-            Coord = { x = -5826.8, y = 1398 },
+            Done = { 12724 },
+            Coord = { x = -5826.5, y = 1404.5 },
             _index = 99,
         },
         {
-            Done = { 12724 },
-            Coord = { x = -5826.5, y = 1404.5 },
+            Done = { 12727 },
+            Coord = { x = -5826.8, y = 1398 },
             _index = 100,
         },
         {
