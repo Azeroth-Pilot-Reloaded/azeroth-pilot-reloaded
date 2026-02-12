@@ -519,34 +519,34 @@ if APR.Faction == "Horde" then
             _index = 94,
         },
         {
-            Done = { 12724 },
-            Coord = { x = -5826.5, y = 1404.5 },
-            _index = 95,
-        },
-        {
             PickUp = { 12725 },
             Coord = { x = -5826.5, y = 1399 },
-            _index = 96,
+            _index = 95,
         },
         {
             Done = { 12725 },
             Coord = { x = -6039.9, y = 1654 },
-            _index = 97,
+            _index = 96,
         },
         {
             PickUp = { 12727 },
             Coord = { x = -6039.9, y = 1654 },
-            _index = 98,
+            _index = 97,
         },
         {
             Qpart = { [12727] = { 1 } },
             Coord = { x = -6040.4, y = 1648.4 },
             Range = 5.03,
-            _index = 99,
+            _index = 98,
         },
         {
             Done = { 12727 },
             Coord = { x = -5826.8, y = 1398 },
+            _index = 99,
+        },
+        {
+            Done = { 12724 },
+            Coord = { x = -5826.5, y = 1404.5 },
             _index = 100,
         },
         {
