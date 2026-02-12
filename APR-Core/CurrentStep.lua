@@ -49,7 +49,7 @@ local CurrentStepFrameHeader = APR:CreateFrameHeader("CurrentStepFrameHeader", C
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
 APR:SetupHeaderDrag(CurrentStepFrameHeader, CurrentStepFrame, function()
     return not InCombatLockdown() and not APR.settings.profile.currentStepLock and
-    not APR.settings.profile.currentStepAttachFrameToQuestLog
+        not APR.settings.profile.currentStepAttachFrameToQuestLog
 end, function()
     LibWindow.SavePosition(CurrentStepScreenPanel)
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
@@ -1299,6 +1299,13 @@ function APR.GetMenu(owner, rootDescription)
     rootDescription:CreateDivider()
     rootDescription:CreateTitle(L["QUEST_ORDER_LIST"])
 
+    createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
+        return APR.settings.profile.questOrderListSnapToCurrentStep
+    end, function()
+        APR.settings.profile.questOrderListSnapToCurrentStep = not APR.settings.profile.questOrderListSnapToCurrentStep
+        APR.questOrderList:RefreshFrameAnchor()
+    end)
+
     createToggleItem(L["SHOW_QORDERLIST"], function()
         return APR.settings.profile.showQuestOrderList
     end, function()
@@ -1306,17 +1313,12 @@ function APR.GetMenu(owner, rootDescription)
         APR.questOrderList:RefreshFrameAnchor()
     end)
 
-    createToggleItem(L["QORDERLIST_SNAP_TO_CURRENT_STEP"], function()
-        return APR.settings.profile.questOrderListSnapToCurrentStep
-    end, function()
-        APR.settings.profile.questOrderListSnapToCurrentStep = not APR.settings.profile.questOrderListSnapToCurrentStep
-        APR.questOrderList:RefreshFrameAnchor()
-    end)
+
 
     rootDescription:CreateDivider()
     rootDescription:CreateTitle(L["AFK"])
 
-    createToggleItem(L["AFK_SNAP_TO_CURRENT_STEP"], function()
+    createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.afkSnapToCurrentStep
     end, function()
         APR.settings.profile.afkSnapToCurrentStep = not APR.settings.profile.afkSnapToCurrentStep

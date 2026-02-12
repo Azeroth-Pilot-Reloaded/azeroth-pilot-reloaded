@@ -536,7 +536,7 @@ function APR.settings:createBlizzOptions()
                     questOrderListSnapToCurrentStep = {
                         order = 6.25,
                         type = "toggle",
-                        name = L["QORDERLIST_SNAP_TO_CURRENT_STEP"],
+                        name = L["SNAP_TO_CURRENT_STEP"],
                         desc = L["QORDERLIST_SNAP_TO_CURRENT_STEP_DESC"],
                         width = optionsWidth,
                         get = GetProfileOption,
@@ -1299,7 +1299,7 @@ function APR.settings:createBlizzOptions()
                     afkSnapToCurrentStep = {
                         order = 10.51,
                         type = "toggle",
-                        name = L["AFK_SNAP_TO_CURRENT_STEP"],
+                        name = L["SNAP_TO_CURRENT_STEP"],
                         desc = L["AFK_SNAP_TO_CURRENT_STEP_DESC"],
                         width = "full",
                         get = GetProfileOption,
