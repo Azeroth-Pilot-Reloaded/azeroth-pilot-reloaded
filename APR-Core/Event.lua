@@ -38,7 +38,6 @@ local events = {
     partyData = "PLAYER_ENTERING_WORLD",
     petCombatUI = { "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE" },
     playerChoice = "PLAYER_CHOICE_UPDATE",
-    raidIcon = "UPDATE_MOUSEOVER_UNIT",
     targetChanged = "PLAYER_TARGET_CHANGED",
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
@@ -826,20 +825,6 @@ function APR.event.functions.playerChoice(event, ...)
                     APR:NextQuestStep()
                     break
                 end
-            end
-        end
-    end
-end
-
-function APR.event.functions.raidIcon(event, ...)
-    if step and step.RaidIcon then
-        if APR.isMidnightPrePatchVersion or APR.isBetaMidnightVersion then
-            return
-        end
-        local targetID = APR:GetTargetID("mouseover")
-        if targetID and tonumber(step.RaidIcon) == tonumber(targetID) then
-            if (not GetRaidTargetIndex("mouseover")) then
-                SetRaidTarget("mouseover", 8)
             end
         end
     end

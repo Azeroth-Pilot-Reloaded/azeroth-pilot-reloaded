@@ -1148,13 +1148,8 @@ end
 function APR.routeconfig:GetMidnightPrefab()
     if APR.Faction == "Neutral" then return end
 
-    if APR.isMidnightPrePatchVersion then
-        AddRouteToCustomPath(L["Midnight - Pre Patch"])
-        AddRouteToCustomPath(L["Midnight - Unlock Void Elf Demon Hunter"])
-        self:SendMessage("APR_Custom_Path_Update")
-        return
-    end
-    if APR.isBetaMidnightVersion then
+
+    if APR.isBetaServer then
         AddRouteToCustomPath(L["Midnight - Intro"])
         AddRouteToCustomPath(L["Midnight - Eversong Woods - sojourner"])
         AddRouteToCustomPath(L["Midnight - Arators Journey"])
@@ -1163,6 +1158,9 @@ function APR.routeconfig:GetMidnightPrefab()
         -- AddRouteToCustomPath(L["Midnight - Voidstorm - sojourner"])
         -- AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
         -- AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
+        AddRouteToCustomPath(L["Midnight - Unlock Void Elf Demon Hunter"])
+    else
+        AddRouteToCustomPath(L["Midnight - Pre Patch"])
         AddRouteToCustomPath(L["Midnight - Unlock Void Elf Demon Hunter"])
     end
 

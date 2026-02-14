@@ -77,6 +77,7 @@ function APR:getStatusReportInfos()
         wowVersion = { "Client Version", select(1, GetBuildInfo()) },
         clientLanguage = { "Language", GetLocale() },
         currentTime = { "Time & Date", date() },
+        serverType = { "Server Type", GetCVar("portal") or UNKNOWN },
         currentRoute = { "Route", APR.ActiveRoute or NO_ACTIVE },
         currentStep = { "Index, Step", currentStep or NO_ACTIVE },
         currentZone = { "Zone", GetRealZoneText() or UNKNOWN },
@@ -227,8 +228,8 @@ function APR:createStatusStaticContent(StatusFrame)
     local statusInfos = APR:getStatusReportInfos()
 
     --Section 1 AddOn & WoW Info
-    StatusFrame.Section1 = APR:createStatusSection(300, 90, nil, 30, StatusFrame, 'TOP', StatusFrame, 'TOP', -30)
-    StatusFrame.Section1.Content = APR:createStatusContent(4, 260, StatusFrame.Section1, StatusFrame.Section1.Header)
+    StatusFrame.Section1 = APR:createStatusSection(300, 105, nil, 30, StatusFrame, 'TOP', StatusFrame, 'TOP', -30)
+    StatusFrame.Section1.Content = APR:createStatusContent(5, 260, StatusFrame.Section1, StatusFrame.Section1.Header)
     StatusFrame.Section1.Header.Text:SetFormattedText('Addon & Client|r')
 
     local wowVersionText = string.format("%s", statusInfos.wowVersion[2])
@@ -236,6 +237,8 @@ function APR:createStatusStaticContent(StatusFrame)
         APR.HEXColor.green)
     SetStatusLine(StatusFrame.Section1.Content.Line2, statusInfos.wowVersion[1], wowVersionText, APR.HEXColor.green)
     SetStatusLine(StatusFrame.Section1.Content.Line3, statusInfos.clientLanguage[1], statusInfos.clientLanguage[2],
+        APR.HEXColor.green)
+    SetStatusLine(StatusFrame.Section1.Content.Line4, statusInfos.serverType[1], statusInfos.serverType[2],
         APR.HEXColor.green)
 
     --Section 2 Route Info
@@ -264,7 +267,7 @@ function APR:updateStatusFrame()
     local statusColors = APR:getStatusColors()
 
     local coordsText = statusInfos.currentCoords[2] .. " - (" .. statusInfos.currentWorldCoords[2] .. ')'
-    SetStatusLine(StatusFrame.Section1.Content.Line4, statusInfos.currentTime[1], statusInfos.currentTime[2],
+    SetStatusLine(StatusFrame.Section1.Content.Line5, statusInfos.currentTime[1], statusInfos.currentTime[2],
         APR.HEXColor.green)
 
     SetStatusLine(StatusFrame.Section2.Content.Line1, statusInfos.currentRoute[1], statusInfos.currentRoute[2],

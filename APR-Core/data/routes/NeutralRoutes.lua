@@ -82,6 +82,7 @@ APR.RouteList.TheWarWithin = {
 }
 
 APR.RouteList.Midnight = {
+    ["2395-Midnight-Pre-Patch"] = L["Midnight - Pre Patch"],
     -- Release
     ["2432-Midnight-Intro"] = L["Midnight - Intro"],
     ["2393-Eversong-Woods"] = L["Midnight - Eversong Woods - sojourner"],
@@ -329,13 +330,4 @@ function APR:InitRoutes()
 
     -- Apply all collected routes
     APR:assignRoutes(routesToAssign)
-
-    -- //TODO to be removed later
-    if self.isMidnightPrePatchVersion then
-        APR.RouteList.Midnight = {
-            -- Pre Patch
-            ["2395-Midnight-Pre-Patch"] = L["Midnight - Pre Patch"],
-            ["2248-Unlock-void-elf-DH"] = L["Midnight - Unlock Void Elf Demon Hunter"]
-        }
-    end
 end
