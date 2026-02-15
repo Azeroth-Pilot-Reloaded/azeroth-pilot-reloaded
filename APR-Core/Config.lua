@@ -149,7 +149,7 @@ function APR.settings:InitializeSettings()
         }
     }
 
-    SettingsDB = LibStub("AceDB-3.0"):New("APRSettings", settingsDBDefaults)
+    SettingsDB = LibStub("AceDB-3.0"):New("APRSettings", settingsDBDefaults, "Default")
 
     SettingsDB.RegisterCallback(self, "OnProfileChanged", "RefreshProfile")
     SettingsDB.RegisterCallback(self, "OnProfileCopied", "RefreshProfile")
