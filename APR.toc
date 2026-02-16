@@ -35,6 +35,7 @@ APR-Core/Core.lua
 
 APR-Core/utils/Utils.lua
 APR-Core/utils/PlayerUtils.lua
+APR-Core/utils/ProfileUtils.lua
 APR-Core/utils/TargetUtils.lua
 APR-Core/utils/QuestUtils.lua
 APR-Core/utils/InstanceUtils.lua
