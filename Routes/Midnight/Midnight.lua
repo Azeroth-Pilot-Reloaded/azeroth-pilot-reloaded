@@ -21340,7 +21340,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Qpart = { [86549] = { 1 } },
         Coord = { x = -4326.1, y = 8547 },
-        ExtraLineText = "CONNECT_SHADOW_ORBS_TOGETHER_TO_FORM_TRIANGLE",
+        ExtraLineText = "CONNECT_SHADOW_ORBS_TOGETHER_FORM_TRIANGLE",
         Range = 20,
         IsCampaignQuest = true,
         Zone = 2395,
@@ -25791,7 +25791,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Qpart = { [86549] = { 1 } },
         Coord = { x = -4326.1, y = 8547 },
-        ExtraLineText = "CONNECT_SHADOW_ORBS_TOGETHER_TO_FORM_TRIANGLE",
+        ExtraLineText = "CONNECT_SHADOW_ORBS_TOGETHER_FORM_TRIANGLE",
         Range = 20,
         IsCampaignQuest = true,
         Zone = 2395,
