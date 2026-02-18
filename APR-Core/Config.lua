@@ -146,6 +146,11 @@ function APR.settings:InitializeSettings()
             -- position
             coordinateFrame = {},
             coordinateShow = false,
+        },
+        -- Character-specific settings (not affected by profile)
+        char = {
+            firstLogin = true,
+            showHeirloomWarning = nil,
         }
     }
 
@@ -156,6 +161,14 @@ function APR.settings:InitializeSettings()
     SettingsDB.RegisterCallback(self, "OnProfileReset", "RefreshProfile")
     self.profile = SettingsDB.profile
     LoadedProfileKey = SettingsDB.keys.profile
+
+    -- Handle first login for new characters: enable heirloom warning for this character only
+    if SettingsDB.char.firstLogin then
+        -- For new characters, override to show heirloom warning (false = show)
+        SettingsDB.char.showHeirloomWarning = false
+        SettingsDB.char.firstLogin = false
+        APR:Debug("New character detected - Heirloom warning enabled for this character")
+    end
 end
 
 function APR.settings.ChatCommand(input)
@@ -1282,9 +1295,11 @@ function APR.settings:createBlizzOptions()
                         name = L["DISABLE_HEIRLOOM_WARNING"],
                         desc = L["DISABLE_HEIRLOOM_WARNING_DESC"],
                         width = "full",
-                        get = GetProfileOption,
+                        get = function(info)
+                            return APR:GetHeirloomWarning()
+                        end,
                         set = function(info, value)
-                            SetProfileOption(info, value)
+                            APR:SetHeirloomWarning(value)
                             APR.heirloom:RefreshFrameAnchor()
                         end,
                         disabled = APR:IsRemixCharacter()
@@ -1592,7 +1607,25 @@ function APR.settings:createBlizzOptions()
     APR.OptionsRoute = aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
 
     -- add profile to bliz option
-    aceConfig:RegisterOptionsTable(APR.title .. "/Profile", _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(SettingsDB))
+    local profileOptions = _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(SettingsDB)
+    profileOptions.args.reset_all_profiles_spacer = {
+        order = 998,
+        type = "description",
+        width = "full",
+        name = " ",
+    }
+    profileOptions.args.reset_all_profiles = {
+        order = 999,
+        type = "execute",
+        width = "full",
+        name = L["RESET_ALL_PROFILES"],
+        confirm = true,
+        confirmText = L["RESET_ALL_PROFILES_CONFIRM_TEXT"],
+        func = function()
+            APR:ResetAllProfilesToDefault()
+        end,
+    }
+    aceConfig:RegisterOptionsTable(APR.title .. "/Profile", profileOptions)
     aceDialog:AddToBlizOptions(APR.title .. "/Profile", L["PROFILES"], APR.title)
 
     -- Add about to bliz option

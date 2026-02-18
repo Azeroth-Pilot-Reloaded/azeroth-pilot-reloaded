@@ -338,3 +338,18 @@ function APR:titleCase(str)
         return first:upper() .. rest:lower()
     end))
 end
+
+---Copies a table from source to a new table
+---@param source table The source table to copy
+---@return table A shallow copy of the source table
+function APR:copyTable(source)
+    if type(source) ~= "table" then
+        return source
+    end
+
+    local result = {}
+    for key, value in pairs(source) do
+        result[key] = APR:copyTable(value)
+    end
+    return result
+end

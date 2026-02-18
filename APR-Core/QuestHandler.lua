@@ -924,7 +924,7 @@ function APR:UpdateStep()
 
             -- Force reset heirloom to show heirloom taximap (not avalaible in exile reach)
             if currentRouteName == "01-10 Exile's Reach" then
-                APR.settings.profile.heirloomWarning = false
+                APR:SetHeirloomWarning(false)
                 APR.heirloom:RefreshFrameAnchor()
             end
             APRZoneCompleted[APR.PlayerID][currentRouteName] = true

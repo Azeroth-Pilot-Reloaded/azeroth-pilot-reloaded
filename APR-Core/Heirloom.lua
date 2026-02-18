@@ -46,7 +46,7 @@ HeirloomFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
 HeirloomFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
 HeirloomFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
     HeirloomPanel:Hide()
-    APR.settings.profile.heirloomWarning = true
+    APR:SetHeirloomWarning(true)
 end)
 
 ---------------------------------------------------------------------------------------
@@ -93,7 +93,7 @@ function APR.heirloom:RefreshFrameAnchor()
     end
     self._pendingCombatRefresh = false
 
-    if APR.settings.profile.heirloomWarning or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or APR:IsRemixCharacter() then
+    if APR:GetHeirloomWarning() or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or APR:IsRemixCharacter() then
         HeirloomPanel:Hide()
         return
     end
@@ -151,7 +151,7 @@ function APR.heirloom:AddHeirloomIcons()
         return
     end
     local mapId = C_Map.GetBestMapForUnit("player")
-    if not mapId or APR.settings.profile.heirloomWarning then
+    if not mapId or APR:GetHeirloomWarning() then
         return
     end
     local heirlooms = {
