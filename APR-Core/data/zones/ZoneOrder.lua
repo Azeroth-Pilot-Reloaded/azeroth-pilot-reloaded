@@ -1,4 +1,4 @@
-﻿APR.ZonesData = {
+APR.ZonesData = {
     ZoneMoveOrder = {
         ---- Kalimdor ----
         [1] = {
@@ -1677,6 +1677,8 @@
             [2505] = { Coord = { x = 798, y = 23.9 }, zone = 2413, name = "GULD OF MEMORY", type = "DELVE" },
             -- Quel'Danas
             [2515] = { Coord = { x = -4966.9, y = 11637.6 }, zone = 2424, name = "Magisters Terrace", type = "DUNGEON" },
+            -- Voidstorm
+            [2556] = { Coord = { x = -1800.1, y = 1466.4 }, zone = 2405, name = "Nexus-Point Xenas", type = "DUNGEON" },
         }
     },
     ExtensionRouteMaps = { -- MapID for each Categorie
