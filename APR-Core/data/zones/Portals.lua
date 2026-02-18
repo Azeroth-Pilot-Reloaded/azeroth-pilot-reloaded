@@ -134,6 +134,7 @@ APR.Portals.Coords = {
 
             ["VoidStorm to Silvermoon"] = { x = -441, y = 889.8 },
             ["VoidStorm to Harandar"] = { x = -456.5, y = 881.9 },
+            ["VoidStorm to Quel Danas"] = { x = 183.2, y = 1332.1 },
         }
 
     },
@@ -270,6 +271,7 @@ APR.Portals.Coords = {
 
             ["VoidStorm to Silvermoon"] = { x = -441, y = 889.8 },
             ["VoidStorm to Harandar"] = { x = -456.5, y = 881.9 },
+            ["VoidStorm to Quel Danas"] = { x = 183.2, y = 1332.1 },
         }
     }
 }
@@ -474,6 +476,7 @@ APR.Portals.SwitchZones = {
         { continent = 2537, nextContinent = 2537, nextZone = 2405, portalKey = "Harandar to VoidStorm" },
         { continent = 2537, nextContinent = 2537, nextZone = 2413, portalKey = "Silvermoon to Harandar" },
         { continent = 2537, nextContinent = 2537, nextZone = 2413, portalKey = "VoidStorm to Harandar" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2424, portalKey = "VoidStorm to Quel Danas" },
 
     },
     ["Horde"] = {
@@ -537,6 +540,7 @@ APR.Portals.SwitchZones = {
         { continent = 2537, nextContinent = 2537, nextZone = 2405, portalKey = "Harandar to VoidStorm" },
         { continent = 2537, nextContinent = 2537, nextZone = 2413, portalKey = "Silvermoon to Harandar" },
         { continent = 2537, nextContinent = 2537, nextZone = 2413, portalKey = "VoidStorm to Harandar" },
+        { continent = 2537, nextContinent = 2537, nextZone = 2424, portalKey = "VoidStorm to Quel Danas" },
     }
 }
 

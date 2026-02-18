@@ -83,8 +83,9 @@ APR.RouteList.TheWarWithin = {
 
 APR.RouteList.Midnight = {
     ["2395-Midnight-Pre-Patch"] = L["Midnight - Pre Patch"],
-    -- Release
     ["2432-Midnight-Intro"] = L["Midnight - Intro"],
+
+    -- Zone
     ["2393-Eversong-Woods"] = L["Midnight - Eversong Woods - sojourner"],
     ["2393-Eversong-Woods-Campaign-Only"] = L["Midnight - Eversong Woods - Campaign"],
     ["2395-ZulAman"] = L["Midnight - Zul'Aman - sojourner"],
@@ -93,6 +94,7 @@ APR.RouteList.Midnight = {
     ["2395-Harandar-Campaign-Only"] = L["Midnight - Harandar - Campaign"],
     ["2395-Voidstorm"] = L["Midnight - Voidstorm - sojourner"],
     ["2395-Voidstorm-Campaign-Only"] = L["Midnight - Voidstorm - Campaign"],
+
     ["2395-Arators-Journey"] = L["Midnight - Arators Journey"],
 
     -- lvl Max
