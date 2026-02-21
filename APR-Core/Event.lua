@@ -677,6 +677,14 @@ end
 function APR.event.functions.leaveCombat(event, ...)
     APR.currentStep:FlushPendingContainers()
     APR.currentStep:ProcessPendingStepButtons()
+
+    -- If a full Reset was deferred during combat, run it now
+    if APR.currentStep._pendingFullReset then
+        APR.currentStep._pendingFullReset = false
+        APR.currentStep:Reset()
+        APR:UpdateStep()
+    end
+
     APR:UpdateQuest()
 end
 
@@ -1031,6 +1039,12 @@ function APR.event.functions.zone(event, ...)
     if event == "PLAYER_ENTERING_WORLD" then
         -- Invalidate cache after teleportation to ensure fresh zone detection
         APR:InvalidatePlayerZoneCache()
+        -- Reset routing throttle after teleport/loading
+        if APR.transport._routingThrottle then
+            APR.transport._routingThrottle.count = 0
+            APR.transport._routingThrottle.firstCall = GetTime()
+        end
+        APR.transport._routingForceRefresh = true
         C_Timer.After(0.3, function()
             local profile = APR:GetSettingsProfile()
             if APR.ActiveRoute and profile and profile.enableAddon then
@@ -1048,6 +1062,13 @@ function APR.event.functions.zone(event, ...)
         -- Also invalidate the CheckIsInRouteZone throttle cache to ensure fresh detection
         APR._lastRouteZoneCheck = nil
         APR._lastRouteZoneResult = nil
+
+        -- Reset GetMeToRightZone throttle so zone events always get through
+        if APR.transport._routingThrottle then
+            APR.transport._routingThrottle.count = 0
+            APR.transport._routingThrottle.firstCall = GetTime()
+        end
+        APR.transport._routingForceRefresh = true
 
         if IsInInstance() and not APR:IsInstanceWithUI() then
             return

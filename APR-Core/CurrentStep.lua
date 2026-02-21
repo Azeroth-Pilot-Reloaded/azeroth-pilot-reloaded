@@ -1187,6 +1187,18 @@ function APR.currentStep:Reset()
     self:ButtonShow()
     self:ButtonDisable()
     self:ProgressBar()
+
+    if InCombatLockdown() then
+        -- In combat: don't wipe secure button references.
+        -- Mark containers for soft-hide via RemoveQuestStepsAndExtraLineTexts,
+        -- and schedule a full reset after combat ends.
+        self._pendingFullReset = true
+        self:RemoveQuestStepsAndExtraLineTexts()
+        APR.fillersFrame:RemoveFillerSteps()
+        return
+    end
+
+    self._pendingFullReset = false
     self.pendingRaidIconNpcId = nil
     self.raidIconAdded = false
     self.pendingRaidIconRequests = {}
