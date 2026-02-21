@@ -382,6 +382,35 @@ end
 function APR.transport:GetMeToRightZone(isRetry)
     APR:Debug("Function: APR.transport:GetMeToRightZone()", isRetry and "(retry)" or "")
 
+    -- Throttle: max 5 rapid checks with 300ms intervals, then only on zone change events
+    local now = GetTime()
+    if not self._routingThrottle then
+        self._routingThrottle = { count = 0, firstCall = now, lastCall = 0 }
+    end
+
+    local throttle = self._routingThrottle
+    local elapsed = now - throttle.lastCall
+
+    -- Enforce 300ms minimum between calls
+    if elapsed < 0.3 then
+        return
+    end
+
+    -- Reset counter if window expired (3 seconds since first call)
+    if (now - throttle.firstCall) > 3 then
+        throttle.count = 0
+        throttle.firstCall = now
+    end
+
+    throttle.count = throttle.count + 1
+    throttle.lastCall = now
+
+    -- After 5 checks, only proceed if a zone event reset the flag
+    if throttle.count > 5 and not self._routingForceRefresh then
+        return
+    end
+    self._routingForceRefresh = nil
+
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
 
     if (routeZoneMapIDs and mapID and routeName) then
@@ -403,7 +432,22 @@ function APR.transport:GetMeToRightZone(isRetry)
     local currentRouteSteps = APR.RouteQuestStepList[APR.ActiveRoute]
     local step = currentRouteSteps and currentStepIndex and currentRouteSteps[currentStepIndex] or nil
 
-    local farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
+    -- Compute actual distance from player to step coords (not from stale arrow coords).
+    -- APR.Arrow.Distance comes from self.x/self.y which may be stale when IsInRouteZone is false,
+    -- because SetCoord() only updates arrow coords when IsInRouteZone is true.
+    -- This circular dependency makes the farAway check wrong, so we recalculate here.
+    local farAway = false
+    if step then
+        local posY, posX = UnitPosition("player")
+        local stepCoordCheck = APR:GetStepCoord(step, mapID, APR:GetPlayerParentMapID())
+        if posY and posX and stepCoordCheck then
+            local dx, dy = posX - stepCoordCheck.x, posY - stepCoordCheck.y
+            local realDist = (dx * dx + dy * dy) ^ 0.5
+            farAway = realDist > APR.Arrow.MaxDistanceWrongZone
+        end
+    else
+        farAway = APR.Arrow.Distance > APR.Arrow.MaxDistanceWrongZone
+    end
     if APR:CheckIsInRouteZone() and not farAway then
         local wasOutOfZone = not APR.IsInRouteZone
         APR.IsInRouteZone = true
@@ -518,6 +562,17 @@ function APR.transport:GetMeToRightZone(isRetry)
                             return
                         end
                     end
+
+                    -- Same continent, same taxi area, no ZoneMoveOrder data:
+                    -- Point arrow directly to step coordinates (adjacent zone, walk/fly there)
+                    local targetMapInfo = APR:GetMapInfoCached(nextZone)
+                    APR.currentStep:AddQuestSteps(
+                        "GO_TO" .. (targetMapInfo and targetMapInfo.name or "?"),
+                        string.format(L["GO_TO"], targetMapInfo and targetMapInfo.name or "?"),
+                        targetMapInfo and targetMapInfo.name or "?"
+                    )
+                    APR.Arrow:SetArrowActive(true, stepCoord.x, stepCoord.y)
+                    return
                 end
             end
         end

@@ -42,6 +42,11 @@ function APR:ResetRoute(targetedRoute)
     APRData[self.PlayerID][targetedRoute] = 1
     APRData[self.PlayerID][targetedRoute .. '-SkippedStep'] = 0
     self:GetTotalSteps(targetedRoute)
+    -- Force refresh: reset throttle for ResetRoute
+    self.transport._routingForceRefresh = true
+    if self.transport._routingThrottle then
+        self.transport._routingThrottle.count = 0
+    end
     self.transport:GetMeToRightZone()
     self:PrintInfo(L["RESET_ROUTE"])
 end
@@ -180,7 +185,12 @@ function APR:CheckIsInRouteZone()
             return self:CheckDescendantMatch(playerContext, stepZones)
         end,
 
-        -- 4. Route zone validation - step zone in route zones
+        -- 4. Sibling match - player and step zones share a common parent (neighbors)
+        function()
+            return self:CheckSiblingMatch(playerContext, stepZones)
+        end,
+
+        -- 5. Route zone validation - step zone in route zones
         function()
             return self:ContainsAny(routeZoneMapIDs, stepZones)
         end,
@@ -189,7 +199,7 @@ function APR:CheckIsInRouteZone()
     -- Execute continent-filtered checks
     for index, checkFunc in ipairs(continentChecks) do
         local checkNames = {
-            "DirectMatch", "HierarchyMatch", "DescendantMatch", "RouteValidation"
+            "DirectMatch", "HierarchyMatch", "DescendantMatch", "SiblingMatch", "RouteValidation"
         }
 
         self:PrintZoneDebug("Running Check #" .. index .. " (" .. (checkNames[index] or "Unknown") .. ")...")
