@@ -1673,12 +1673,20 @@ APR.ZonesData = {
             [2564] = { Coord = { x = -6304.8, y = 3257.1 }, zone = 2437, name = "Nalorakk", type = "DUNGEON" },
             -- Eversong Woods
             [2502] = { Coord = { x = -4142, y = 4750.4 }, zone = 2395, name = "SHADOW ENCLAVE", type = "DELVE" },
+            [2577] = { Coord = { x = -4465.6, y = 8780.4 }, zone = 2395, name = "Collegiate Calamity", type = "DELVE" },
+            [2525] = { Coord = { x = -4438.9, y = 9180.6 }, zone = 2395, name = "The Darkway", type = "DELVE" },
+            -- Zul'aman
+            [2535] = { Coord = { x = -5861.7, y = 5135.6 }, zone = 2395, name = "Atal'Aman", type = "DELVE" },
+            [2503] = { Coord = { x = -5915.6, y = 3258 }, zone = 2437, name = "Twilight Crypts", type = "DELVE" },
             -- Harandar
             [2505] = { Coord = { x = 798, y = 23.9 }, zone = 2413, name = "GULD OF MEMORY", type = "DELVE" },
+            [2510] = { Coord = { x = -1796.8, y = -784.9 }, zone = 2413, name = "The Grudge Pit", type = "DELVE" },
             -- Quel'Danas
             [2515] = { Coord = { x = -4966.9, y = 11637.6 }, zone = 2424, name = "Magisters Terrace", type = "DUNGEON" },
             -- Voidstorm
             [2556] = { Coord = { x = -1800.1, y = 1466.4 }, zone = 2405, name = "Nexus-Point Xenas", type = "DUNGEON" },
+            [2528] = { Coord = { x = -768.6, y = 2450.5 }, zone = 2405, name = "Sunkiller Sanctum", type = "DELVE" },
+            [2506] = { Coord = { x = 1002.1, y = 2414.8 }, zone = 2405, name = "Shadowguard Point", type = "DELVE" },
         }
     },
     ExtensionRouteMaps = { -- MapID for each Categorie
