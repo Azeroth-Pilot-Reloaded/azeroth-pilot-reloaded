@@ -494,8 +494,8 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                         local text = questObjective and questObjective.text or nil
                         local status = questObjective and questObjective.status or nil
                         for key, value in pairs(step) do
-                            if string.match(key, "TrigText+") then
-                                if value and text and APR:ContainsText(text, value) then
+                            if string.match(key, "TrigText+") and value and text then
+                                if APR:TrigTextValueMatch(value, text) then
                                     flagged = flagged + 1
                                 end
                             end
