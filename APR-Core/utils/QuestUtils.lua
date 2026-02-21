@@ -308,11 +308,49 @@ function APR:UpdateQpartPart()
 end
 
 --- Advance QpartPart steps when the quest text from the UI matches trigger values.
+--- @return boolean true if the step was advanced, false otherwise.
 function APR:UpdateQpartPartWithQuesText(step, questText, questID)
     if self:QpartPart_TrigTextMatch(step, questID, questText) then
         self:UpdateNextStep()
-        return
+        return true
     end
+    return false
+end
+
+--- Compare a single TrigText value against an objective text.
+-- Supports percentage thresholds ("50%"), ratio comparisons ("2/6"), and plain substring matching.
+-- @param trigValue string The trigger value from the step (e.g. "1/3", "50%", or literal text).
+-- @param objectiveText string The current objective text from the quest log.
+-- @param currentPercent number|nil Optional progress bar percentage for threshold triggers.
+-- @return boolean True if the objective text satisfies the trigger condition.
+function APR:TrigTextValueMatch(trigValue, objectiveText, currentPercent)
+    if not trigValue or not objectiveText then return false end
+
+    local trigStr = tostring(trigValue)
+
+    -- Percentage threshold: "50%"
+    local wanted = trigStr:match("(%d+)%s*%%")
+    if wanted and currentPercent then
+        wanted = tonumber(wanted)
+        if wanted and currentPercent >= wanted then
+            return true
+        end
+    end
+
+    -- Ratio comparison: "X/Y" matches when objective shows "A/Y" with A >= X
+    local trigNum, trigDenom = trigStr:match("^(%d+)/(%d+)$")
+    if trigNum and trigDenom then
+        trigNum = tonumber(trigNum)
+        trigDenom = tonumber(trigDenom)
+        for currentNum, currentDenom in tostring(objectiveText):gmatch("(%d+)/(%d+)") do
+            if tonumber(currentDenom) == trigDenom and tonumber(currentNum) >= trigNum then
+                return true
+            end
+        end
+    end
+
+    -- Plain substring match
+    return self:ContainsText(objectiveText, trigValue)
 end
 
 --- Checks if the provided objective text matches the trigger text for a specific quest part.
@@ -327,17 +365,7 @@ function APR:QpartPart_TrigTextMatch(step, questID, objectiveText)
 
     for key, value in pairs(step) do
         if string.match(key, "TrigText+") and value and objectiveText then
-            -- If the trigger contains a %, we interpret it as a threshold
-            local wanted = tostring(value):match("(%d+)%s*%%")
-            if wanted and currentPercent then
-                wanted = tonumber(wanted)
-                if wanted and currentPercent >= wanted then
-                    return true
-                end
-            end
-
-            -- Otherwise text match
-            if APR:ContainsText(objectiveText, value) then
+            if self:TrigTextValueMatch(value, objectiveText, currentPercent) then
                 return true
             end
         end

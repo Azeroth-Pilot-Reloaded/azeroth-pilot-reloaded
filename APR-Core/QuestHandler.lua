@@ -823,7 +823,9 @@ function APR:UpdateStep()
                         end
                         questToHighlight = questToHighlight or questID
                     end
-                    APR:UpdateQpartPartWithQuesText(step, questText)
+                    if APR:UpdateQpartPartWithQuesText(step, questText, questID) then
+                        return
+                    end
                 end
             end
 
