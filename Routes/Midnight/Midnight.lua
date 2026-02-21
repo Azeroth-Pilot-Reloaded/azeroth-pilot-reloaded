@@ -472,6 +472,7 @@ APR.RouteQuestStepList["2432-Midnight-Intro"] = {
         Qpart = { [89012] = { 1 } },
         Coord = { x = -4261.6, y = 10912.8 },
         GossipOptionIDs = { 132670, 132656, 132653, 132685, 132654, 132686 },
+        Fillers = { [86805] = { 1 } },
         Range = 10,
         RaidIcon = 240478,
         Zone = 2565,
