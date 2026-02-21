@@ -305,9 +305,15 @@ function APR.Arrow:CalculPosition()
     end
 
     -- Set global distance for transport
-    self.Distance = distance
-    if distance >= self.MaxDistanceWrongZone and (questStep and not questStep.InstanceQuest) then
-        APR:UpdateMapId()
+    -- Prefer QuestStepDistance (from fresh stepCoord) over distance (from potentially stale self.x/self.y)
+    -- self.x/self.y are only updated by SetCoord() when IsInRouteZone is true, so they can be stale
+    self.Distance = stepCoord and self.QuestStepDistance or distance
+    if self.Distance >= self.MaxDistanceWrongZone and (questStep and not questStep.InstanceQuest) then
+        -- Only trigger routing if not already handling wrong zone
+        -- Once GetMeToRightZone has set IsInRouteZone=false, zone events will handle re-checks
+        if APR.IsInRouteZone ~= false then
+            APR:UpdateMapId()
+        end
         return
     end
 

@@ -373,6 +373,52 @@ function APR:CheckDescendantMatch(playerContext, stepZones)
     return false
 end
 
+--- Check if player zone and step zones are siblings (share a common parent)
+--- Walks up the player's hierarchy, gets direct children of each parent,
+--- and checks if any step zone is among those children.
+--- Stops at cosmic/world level (mapType < 2) to avoid overly broad matches.
+--- Ignores zone exceptions.
+---@param playerContext table Player zone context
+---@param stepZones table Zone mapIDs for step
+---@return boolean
+function APR:CheckSiblingMatch(playerContext, stepZones)
+    if not playerContext or not playerContext.hierarchy or not stepZones or #stepZones == 0 then
+        return false
+    end
+
+    if not HasMapChildrenApi() then
+        return false
+    end
+
+    -- For each parent in the player's hierarchy, get direct children
+    -- and check if any step zone is a sibling (child of the same parent)
+    for _, parentMapID in ipairs(playerContext.hierarchy) do
+        -- Skip the player's own zone (already covered by DirectMatch)
+        if parentMapID ~= playerContext.current then
+            local parentInfo = self:GetMapInfoCached(parentMapID)
+            -- Stop at cosmic/world level (mapType < 2) to avoid overly broad matches
+            if parentInfo and parentInfo.mapType and parentInfo.mapType < 2 then
+                break
+            end
+
+            local children = C_Map.GetMapChildrenInfo(parentMapID)
+            if children then
+                for _, childInfo in ipairs(children) do
+                    if childInfo.mapID then
+                        -- Skip exception zones (instances, scenarios, etc)
+                        local exception = self:GetZoneException(childInfo.mapID)
+                        if not exception and self:Contains(stepZones, childInfo.mapID) then
+                            return true
+                        end
+                    end
+                end
+            end
+        end
+    end
+
+    return false
+end
+
 --- Check if player is on same continent as step zones
 ---@param playerContext table Player zone context
 ---@param stepZones table Zone mapIDs for step
