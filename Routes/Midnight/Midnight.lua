@@ -9988,14 +9988,6 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 11,
     },
     {
-        Waypoint = 90749,
-        Coord = { x = -5827.7, y = 5051.9 },
-        Range = 5,
-        IsCampaignQuest = true,
-        Zone = 2395,
-        _index = 12,
-    },
-    {
         Qpart = { [90749] = { 1 } },
         Coord = { x = -5956.6, y = 5051.7 },
         ExtraLineText = "YOU_CAN_FLY_OVER_BUILDING_WITH_YOUR_FLYING_MOUNT_ITS_FASTER",
@@ -13682,14 +13674,9 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 536,
     },
     {
-        Coord = { x = -7693.8, y = 4350 },
-        GossipOptionIDs = { 134131 },
-        Zone = 2437,
-        _index = 537,
-    },
-    {
         Qpart = { [86693] = { 1 } },
         Coord = { x = -7693.8, y = 4350 },
+        GossipOptionIDs = { 134131 },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2437,
@@ -14188,14 +14175,6 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 11,
-    },
-    {
-        Waypoint = 90749,
-        Coord = { x = -5827.7, y = 5051.9 },
-        Range = 5,
-        IsCampaignQuest = true,
-        Zone = 2395,
-        _index = 12,
     },
     {
         Qpart = { [90749] = { 1 } },
@@ -15616,6 +15595,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
     {
         Qpart = { [86693] = { 1 } },
         Coord = { x = -7693.8, y = 4350 },
+        GossipOptionIDs = { 134131 },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2437,
