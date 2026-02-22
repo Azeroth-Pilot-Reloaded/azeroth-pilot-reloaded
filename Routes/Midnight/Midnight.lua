@@ -2664,6 +2664,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
     {
         Done = { 86634 },
         Coord = { x = -3337.4, y = 5514.1 },
+        IsCampaignQuest = true,
         Zone = 2395,
         _index = 218,
     },
@@ -3553,12 +3554,14 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
     {
         Done = { 86641 },
         Coord = { x = -5925.1, y = 7105.8 },
+        IsCampaignQuest = true,
         Zone = 2395,
         _index = 340,
     },
     {
         Done = { 86642 },
         Coord = { x = -5930.6, y = 7108.2 },
+        IsCampaignQuest = true,
         Zone = 2395,
         _index = 341,
     },
@@ -6693,6 +6696,13 @@ APR.RouteQuestStepList["2393-Eversong-Woods-Campaign-Only"] = {
         _index = 53,
     },
     {
+        Done = { 86740 },
+        Coord = { x = -4249.3, y = 7295 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 115,
+    },
+    {
         Done = { 86738, 86739 },
         Coord = { x = -4253.6, y = 7292.7 },
         IsCampaignQuest = true,
@@ -7423,6 +7433,13 @@ APR.RouteQuestStepList["2393-Eversong-Woods-Campaign-Only"] = {
         _index = 147,
     },
     {
+        Done = { 86634 },
+        Coord = { x = -3337.4, y = 5514.1 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 218,
+    },
+    {
         PickUp = { 86633 },
         Coord = { x = -3338.1, y = 5519.1 },
         IsCampaignQuest = true,
@@ -7503,6 +7520,13 @@ APR.RouteQuestStepList["2393-Eversong-Woods-Campaign-Only"] = {
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 157,
+    },
+        {
+        Done = { 86635 },
+        Coord = { x = -4030.3, y = 4850.9 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 266,
     },
     {
         PickUp = { 86636 },
@@ -7801,6 +7825,20 @@ APR.RouteQuestStepList["2393-Eversong-Woods-Campaign-Only"] = {
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 193,
+    },
+    {
+        Done = { 86641 },
+        Coord = { x = -5925.1, y = 7105.8 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 340,
+    },
+    {
+        Done = { 86642 },
+        Coord = { x = -5930.6, y = 7108.2 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 341,
     },
     {
         PickUp = { 86643 },
