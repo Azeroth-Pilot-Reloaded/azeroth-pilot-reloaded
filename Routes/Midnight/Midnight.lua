@@ -7521,7 +7521,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods-Campaign-Only"] = {
         Zone = 2395,
         _index = 157,
     },
-        {
+    {
         Done = { 86635 },
         Coord = { x = -4030.3, y = 4850.9 },
         IsCampaignQuest = true,
@@ -10681,6 +10681,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         Done = { 86652 },
         Coord = { x = -7562.6, y = 4223.3 },
+        IsCampaignQuest = true,
         Zone = 2437,
         _index = 109,
     },
@@ -12808,6 +12809,20 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 416,
     },
     {
+        Done = { 86666 },
+        Coord = { x = 7561.8, y = 4230.7 },
+        IsCampaignQuest = true,
+        Zone = 2437,
+        _index = 416,
+    },
+    {
+        PickUp = { 86681 },
+        Coord = { x = 7561.8, y = 4230.7 },
+        IsCampaignQuest = true,
+        Zone = 2437,
+        _index = 416,
+    },
+    {
         Qpart = { [86681] = { 1 } },
         Coord = { x = -7541.3, y = 4219.8 },
         Range = 1,
@@ -14575,6 +14590,13 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         _index = 64,
     },
     {
+        Done = { 86652 },
+        Coord = { x = -7562.6, y = 4223.3 },
+        IsCampaignQuest = true,
+        Zone = 2437,
+        _index = 109,
+    },
+    {
         PickUp = { 86653 },
         Coord = { x = -7562.6, y = 4223.3 },
         IsCampaignQuest = true,
@@ -15184,6 +15206,20 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         IsCampaignQuest = true,
         Zone = 2437,
         _index = 143,
+    },
+    {
+        Done = { 86666 },
+        Coord = { x = 7561.8, y = 4230.7 },
+        IsCampaignQuest = true,
+        Zone = 2437,
+        _index = 416,
+    },
+    {
+        PickUp = { 86681 },
+        Coord = { x = 7561.8, y = 4230.7 },
+        IsCampaignQuest = true,
+        Zone = 2437,
+        _index = 416,
     },
     {
         Qpart = { [86681] = { 1 } },
