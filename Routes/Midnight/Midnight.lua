@@ -4936,6 +4936,13 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
         _index = 532,
     },
     {
+        Done = { 93372 },
+        Coord = { x = -4816.2, y = 8315.5 },
+        Range = 5,
+        Zone = 2395,
+        _index = 45,
+    },
+    {
         PickUp = { 87455 },
         Coord = { x = -4952.6, y = 8485.6 },
         Zone = 2395,
@@ -12860,6 +12867,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         Done = { 86681 },
         Coord = { x = -7564.9, y = 4225.9 },
+        IsCampaignQuest = true,
         Zone = 2437,
         _index = 421,
     },
@@ -15255,6 +15263,13 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         TrigText = "3/3",
         Zone = 2437,
         _index = 147,
+    },
+    {
+        Done = { 86681 },
+        Coord = { x = -7564.9, y = 4225.9 },
+        IsCampaignQuest = true,
+        Zone = 2437,
+        _index = 421,
     },
     {
         PickUp = { 86682 },
@@ -23684,6 +23699,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Done = { 86520 },
         Coord = { x = -1716.9, y = 1462.5 },
+        IsCampaignQuest = true,
         Zone = 2405,
         _index = 325,
     },
@@ -25351,12 +25367,6 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         Coord = { x = -544.7, y = 712.1 },
         Zone = 2405,
         _index = 569,
-    },
-    {
-        Done = { 94469 },
-        Coord = { x = -544.7, y = 712.1 },
-        Zone = 2405,
-        _index = 570,
     },
     {
         Qpart = { [93970] = { 1 } },
@@ -27148,6 +27158,13 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
         IsCampaignQuest = true,
         Zone = 2405,
         _index = 181,
+    },
+    {
+        Done = { 86520 },
+        Coord = { x = -1716.9, y = 1462.5 },
+        IsCampaignQuest = true,
+        Zone = 2405,
+        _index = 325,
     },
     {
         PickUp = { 86521 },
