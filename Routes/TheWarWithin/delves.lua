@@ -588,3 +588,125 @@ APR.RouteQuestStepList.GULD_OF_MEMORY_3 = {
     },
 
 }
+
+
+APR.RouteQuestStepList["Collegiate Calamity 3"] = {
+    {
+        Scenario = { criteriaID = 108804, criteriaIndex = 1, scenarioID = 3193, stepID = 16121 },
+        Coord = { x = -4451.7, y = 8802.5 },
+        GossipOptionIDs = { 135865 },
+        InstanceQuest = true,
+        Zone = 2395,
+        _index = 101,
+    },
+    {
+        Scenario = { criteriaID = 109132, criteriaIndex = 2, scenarioID = 3193, stepID = 16122 },
+        Coord = { x = -4405.9, y = 8787.8 },
+        Range = 5,
+        ExtraActionB = true,
+        InstanceQuest = true,
+        Zone = 2395,
+        _index = 102,
+    },
+    {
+        Scenario = { criteriaID = 0, criteriaIndex = 1, scenarioID = 3193, stepID = 16122 },
+        Coord = { x = -4366.1, y = 8752.4 },
+        Range = 100,
+        InstanceQuest = true,
+        Zone = 2395,
+        _index = 48,
+    },
+    {
+        Scenario = { criteriaID = 111611, criteriaIndex = 1, scenarioID = 3193, stepID = 16123 },
+        Coord = { x = -4393.9, y = 8714.4 },
+        Range = 5,
+        RaidIcon = 254769,
+        Zone = 2395,
+        _index = 103,
+    },
+}
+
+
+APR.RouteQuestStepList["Atal'Aman 2"] = {
+    {
+        Scenario = { criteriaID = 109254, criteriaIndex = 1, scenarioID = 3148, stepID = 16162 },
+        Coord = { x = -5952.3, y = 5185.9 },
+        GossipOptionIDs = { 136385 },
+        Zone = 2437,
+        _index = 1,
+    },
+    {
+        Scenario = { criteriaID = 109366, criteriaIndex = 1, scenarioID = 3148, stepID = 16166 },
+        Coord = { x = -5957.4, y = 5182.7 },
+        Range = 1,
+        Zone = 2437,
+        _index = 2,
+    },
+    {
+        Scenario = { criteriaID = 109361, criteriaIndex = 2, scenarioID = 3148, stepID = 16009 },
+        Coord = { x = -6207.9, y = 4918.1 },
+        Range = 100,
+        Zone = 2437,
+        _index = 3,
+    },
+    {
+        Scenario = { criteriaID = 112426, criteriaIndex = 2, scenarioID = 3148, stepID = 16010 },
+        GossipOptionIDs = { 138496 },
+        NoArrow = true,
+        Zone = 2437,
+        _index = 4,
+    },
+    {
+        Scenario = { criteriaID = 111692, criteriaIndex = 1, scenarioID = 3148, stepID = 16010 },
+        Coord = { x = -6240.1, y = 5052.2 },
+        Range = 5,
+        RaidIcon = 258375,
+        Zone = 2437,
+        _index = 5,
+    },
+}
+
+
+APR.RouteQuestStepList["Twilight Crypts 3"] = {
+    {
+        Scenario = { criteriaID = 105376, criteriaIndex = 1, scenarioID = 3125, stepID = 15970 },
+        Coord = { x = -669.1, y = 32.9 },
+        GossipOptionIDs = { 135811 },
+        InstanceQuest = true,
+        Zone = 2437,
+        _index = 1,
+    },
+    {
+        Scenario = { criteriaID = 106448, criteriaIndex = 1, scenarioID = 3125, stepID = 15971 },
+        Coord = { x = -671.3, y = 35.2 },
+        Range = 1,
+        ExtraActionB = true,
+        InstanceQuest = true,
+        Zone = 2437,
+        _index = 2,
+    },
+    {
+        Scenario = { criteriaID = 106449, criteriaIndex = 2, scenarioID = 3125, stepID = 15972 },
+        Coord = { x = -480.5, y = -113.7 },
+        Range = 100,
+        InstanceQuest = true,
+        Zone = 2437,
+        _index = 3,
+    },
+    {
+        Scenario = { criteriaID = 109100, criteriaIndex = 1, scenarioID = 3125, stepID = 15972 },
+        Coord = { x = -480.5, y = -113.7 },
+        Range = 100,
+        InstanceQuest = true,
+        Zone = 2437,
+        _index = 4,
+    },
+    {
+        Scenario = { criteriaID = 60399, criteriaIndex = 1, scenarioID = 3125, stepID = 15974 },
+        Coord = { x = -509, y = -12.7 },
+        Range = 5,
+        InstanceQuest = true,
+        Zone = 2437,
+        _index = 6,
+    }
+}
