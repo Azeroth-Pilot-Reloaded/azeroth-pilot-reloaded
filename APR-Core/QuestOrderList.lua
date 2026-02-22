@@ -803,12 +803,8 @@ function APR.questOrderList:DelayedUpdate()
             if self.pendingUpdate then
                 self:AddStepFromRoute()
                 self.pendingUpdate = false
-                self.updateTimer = C_Timer.NewTimer(0.8, function()
-                    self.updateTimer = nil
-                end)
-            else
-                self.updateTimer = nil
             end
+            self.updateTimer = nil
         end)
     end
 end
