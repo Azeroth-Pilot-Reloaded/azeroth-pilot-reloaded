@@ -8626,6 +8626,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         PickUp = { 94993 },
         Coord = { x = -4614.8, y = 8456.1 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 1,
     },
@@ -8642,6 +8643,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
         Done = { 94993 },
         Coord = { x = -4614.8, y = 8456.1 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 3,
     },
@@ -9917,6 +9919,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         PickUp = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 2,
     },
@@ -9933,6 +9936,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         Done = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 4,
     },
@@ -14106,6 +14110,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         PickUp = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 2,
     },
@@ -14122,6 +14127,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         Done = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 4,
     },
@@ -15668,6 +15674,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         PickUp = { 94993 },
         Coord = { x = -4616.5, y = 8581.2 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 2,
     },
@@ -15684,6 +15691,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         Done = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 4,
     },
@@ -19536,6 +19544,7 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
         PickUp = { 94993 },
         Coord = { x = -4616.5, y = 8581.2 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 2,
     },
@@ -19552,6 +19561,7 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
         Done = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 4,
     },
@@ -21300,6 +21310,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         PickUp = { 94993 },
         Coord = { x = -4614.8, y = 8456.2 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 2,
     },
@@ -21316,6 +21327,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         Done = { 94993 },
         Coord = { x = -4614.8, y = 8456.2 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 4,
     },
@@ -25746,6 +25758,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
         PickUp = { 94993 },
         Coord = { x = -4614.8, y = 8456.2 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 2,
     },
@@ -25762,6 +25775,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
         Done = { 94993 },
         Coord = { x = -4614.8, y = 8456.2 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 4,
     },
@@ -31830,9 +31844,9 @@ APR.RouteQuestStepList["2393-Speedrun"] = {
         Zone = 2395,
         _index = 417,
     },
-    -- Fin Zone de Eversong Wood 
+    -- Fin Zone de Eversong Wood
     -- Apply extra for this zone
-    -- Remove 13k xp 
+    -- Remove 13k xp
     -- add 40k xp
     -- add 42k xp
     -- Début zone de Zul'aman
@@ -31840,6 +31854,7 @@ APR.RouteQuestStepList["2393-Speedrun"] = {
         PickUp = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 418,
     },
@@ -31856,6 +31871,7 @@ APR.RouteQuestStepList["2393-Speedrun"] = {
         Done = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
         IsCampaignQuest = true,
+        DontHaveAchievement = 42045,
         Zone = 2395,
         _index = 420,
     },
@@ -33884,7 +33900,7 @@ APR.RouteQuestStepList["2393-Speedrun"] = {
         Zone = 2395,
         _index = 695,
     },
-    -- Fin de zone de Zul'Aman 
+    -- Fin de zone de Zul'Aman
     -- Apply extra for this zone
     -- Add 35k xp
     -- Add 43k xp
