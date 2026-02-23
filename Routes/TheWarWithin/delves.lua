@@ -509,6 +509,73 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
     },
 }
 
+APR.RouteQuestStepList["The Grudge Pit 1"] = {
+    {
+        Scenario = { criteriaID = 106065, criteriaIndex = 1, scenarioID = 3097, stepID = 15912 },
+        Coord = { x = -1809.3, y = -791.7 },
+        GossipOptionIDs = { 134668 },
+        Zone = 2413,
+        _index = 869,
+    },
+    {
+        Scenario = { criteriaID = 106066, criteriaIndex = 1, scenarioID = 3097, stepID = 15913 },
+        Coord = { x = -1805.6, y = -794.1 },
+        Range = 1,
+        Zone = 2413,
+        _index = 870,
+    },
+    {
+        Scenario = { criteriaID = 105769, criteriaIndex = 1, scenarioID = 3097, stepID = 15896 },
+        Coord = { x = -1845.6, y = -809.8 },
+        Range = 30,
+        ExtraActionB = true,
+        Zone = 2413,
+        _index = 872,
+    },
+    {
+        Scenario = { criteriaID = 105770, criteriaIndex = 2, scenarioID = 3097, stepID = 15896 },
+        Coord = { x = -1845.6, y = -809.8 },
+        Range = 30,
+        Zone = 2413,
+        _index = 871,
+    },
+    {
+        Scenario = { criteriaID = 106178, criteriaIndex = 1, scenarioID = 3097, stepID = 15897 },
+        Coord = { x = -1831.6, y = -799.6 },
+        Range = 5,
+        ExtraActionB = true,
+        Zone = 2413,
+        _index = 873,
+    },
+    {
+        Scenario = { criteriaID = 106236, criteriaIndex = 1, scenarioID = 3097, stepID = 15930 },
+        Coord = { x = -1814.8, y = -813.9 },
+        Range = 5,
+        Zone = 2413,
+        _index = 874,
+    },
+    {
+        Scenario = { criteriaID = 106293, criteriaIndex = 2, scenarioID = 3097, stepID = 15930 },
+        Coord = { x = -1839.5, y = -807.9 },
+        Range = 5,
+        Zone = 2413,
+        _index = 875,
+    },
+    {
+        Scenario = { criteriaID = 106314, criteriaIndex = 1, scenarioID = 3097, stepID = 15942 },
+        Coord = { x = -1842.4, y = -810.4 },
+        Range = 5,
+        Zone = 2413,
+        _index = 876,
+    },
+    {
+        Scenario = { criteriaID = 60399, criteriaIndex = 1, scenarioID = 3097, stepID = 15898 },
+        Coord = { x = -1841.7, y = -805.2 },
+        Range = 5,
+        Zone = 2413,
+        _index = 877,
+    },
+}
 
 APR.RouteQuestStepList.GULD_OF_MEMORY_3 = {
     {
