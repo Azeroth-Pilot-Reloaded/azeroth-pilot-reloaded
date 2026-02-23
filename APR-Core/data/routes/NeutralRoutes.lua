@@ -104,6 +104,8 @@ APR.RouteList.Midnight = {
     ["2248-Unlock-void-elf-DH"] = L["Midnight - Unlock Void Elf Demon Hunter"],
     ["2395-The-War-of-Light-and-Shadow"] = L["Midnight - The War of Light and Shadow"],
     -- ["2395-Mrglgrgl-of-Grglmrgl"] = L["Midnight - Mrglgrgl of Grglmrgl"],
+
+    ["2393-Midnight-Speedrun"] = L["Midnight - Speedrun"]
 }
 
 APR.RouteList.Custom = {}

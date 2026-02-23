@@ -940,7 +940,7 @@ function APR.routeconfig:GetSpeedRunPrefab()
         self:GetTWWPrefab()
     end
 
-    self:GetMidnightPrefab()
+    self:GetMidnightSpeedrunPrefab()
 
     self:SendMessage("APR_Custom_Path_Update")
 end
@@ -1164,6 +1164,21 @@ function APR.routeconfig:GetMidnightPrefab()
     self:SendMessage("APR_Custom_Path_Update")
 end
 
+function APR.routeconfig:GetMidnightSpeedrunPrefab()
+    if APR.Faction == "Neutral" then return end
+
+    if APR.isBetaServer then
+        AddRouteToCustomPath(L["Midnight - Intro"])
+        AddRouteToCustomPath(L["Midnight - Speedrun"])
+        AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
+        AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
+    else
+        AddRouteToCustomPath(L["Midnight - Pre Patch"])
+    end
+
+    self:SendMessage("APR_Custom_Path_Update")
+end
+
 function APR.routeconfig:GetPlayerSpecRoute(prefix)
     local routeKey = prefix .. " - " .. APR.GetClassSpecName()
     if APR.RouteQuestStepList[routeKey] then
@@ -1172,15 +1187,6 @@ function APR.routeconfig:GetPlayerSpecRoute(prefix)
 end
 
 function APR.routeconfig:GetRemixPrefab()
-    AddRouteToCustomPath(L["Legion - Intro Remix"])
-    AddRouteToCustomPath(L["Remix - Order Hall - Start"])
-    APR.routeconfig:GetPlayerSpecRoute("Artifact Weapon")
-    AddRouteToCustomPath(L["Remix - Order Hall - Next"])
-    AddRouteToCustomPath(L["Legion - Azsuna"])
-    AddRouteToCustomPath(L["Legion - Val'Sharah"])
-    AddRouteToCustomPath(L["Legion - Highmountain"])
-    AddRouteToCustomPath(L["Legion - Stormheim"])
-
     self:SendMessage("APR_Custom_Path_Update")
 end
 
