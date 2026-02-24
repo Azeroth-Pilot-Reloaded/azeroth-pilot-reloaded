@@ -68,7 +68,6 @@ APR.RouteQuestStepList.KRIEGVALS_REST_DELVE = {
     {
         Coord = { x = -230.30000305176, y = -460.5 },
         InstanceQuest = true,
-        RaidIcon = 204188,
         Range = 5,
         Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869 },
         Zone = 2248,
@@ -504,7 +503,6 @@ APR.RouteQuestStepList.SHADOW_ENCLAVE = {
         Range = 15,
         InstanceQuest = true,
         IsCampaignQuest = true,
-        RaidIcon = 246717,
         Zone = 2395,
     },
 }
@@ -687,7 +685,6 @@ APR.RouteQuestStepList["Collegiate Calamity 3"] = {
         Scenario = { criteriaID = 111611, criteriaIndex = 1, scenarioID = 3193, stepID = 16123 },
         Coord = { x = -4393.9, y = 8714.4 },
         Range = 5,
-        RaidIcon = 254769,
         Zone = 2395,
         _index = 103,
     },
@@ -727,7 +724,6 @@ APR.RouteQuestStepList["Atal'Aman 2"] = {
         Scenario = { criteriaID = 111692, criteriaIndex = 1, scenarioID = 3148, stepID = 16010 },
         Coord = { x = -6240.1, y = 5052.2 },
         Range = 5,
-        RaidIcon = 258375,
         Zone = 2437,
         _index = 5,
     },
