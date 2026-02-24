@@ -439,7 +439,7 @@ function APR.transport:GetMeToRightZone(isRetry)
     local farAway = false
     if step then
         local posY, posX = UnitPosition("player")
-        local stepCoordCheck = APR:GetStepCoord(step, mapID, APR:GetPlayerParentMapID())
+        local stepCoordCheck = APR:GetStepCoord(step, step.Zone or mapID, APR:GetPlayerParentMapID())
         if posY and posX and stepCoordCheck then
             local dx, dy = posX - stepCoordCheck.x, posY - stepCoordCheck.y
             local realDist = (dx * dx + dy * dy) ^ 0.5
