@@ -112,9 +112,6 @@ function APR.gossip:HandleGossip(step)
             end
         end
 
-        print(redOptions)
-        print(questOptions)
-
         -- Priority order:
         -- 2. Red option if override enabled
         if #redOptions > 0 and profile.autoGossipRedOption then
@@ -123,7 +120,7 @@ function APR.gossip:HandleGossip(step)
 
         -- 3. If route quest option exists but no red override → do nothing (route takes priority)
         -- This is implicit: if APR had a route, it would have handled it already
-        -- If autoGuestOptions is true and we have quest options, we check below
+        -- If autoGossipQuestOptions is true and we have quest options, we check below
         -- Otherwise we do nothing
 
         -- 4. If exactly one quest option → select it
