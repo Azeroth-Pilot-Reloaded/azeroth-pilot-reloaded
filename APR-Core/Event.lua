@@ -919,8 +919,8 @@ function APR.event.functions.scenario(event, ...)
         if step and step.LeaveScenario then
             local scenarioMapID = step.LeaveScenario
             local mapID = C_Map.GetBestMapForUnit('player')
-            local isCompleted = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
-            if scenarioMapID ~= mapID and isCompleted then
+            local IsScenarioInstance = APR:IsScenarioInstance()
+            if scenarioMapID ~= mapID and not IsScenarioInstance then
                 APR:UpdateNextStep()
             end
         end
