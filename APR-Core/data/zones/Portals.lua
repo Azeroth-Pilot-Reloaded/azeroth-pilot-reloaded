@@ -572,10 +572,9 @@ APR.Portals.Spells = {
     { nextContinent = 1550, nextZone = 1670, coords = { x = 1542.3, y = -1834.2 },   spellID = 344587 }, -- Oribos
     { nextContinent = 1978, nextZone = 2025, coords = { x = -1048.2, y = 266.7 },    spellID = 395277 }, -- Valdrakken
     { nextContinent = 2274, nextZone = 2248, coords = { x = -2400.3, y = 2915.7 },   spellID = 446540 }, -- Dornogal
-
+    { nextContinent = 2537, nextZone = 2393, coords = { x = -4814.6, y = 8550 },     spellID = 1259190 }, -- Silvermoon (Midnight)
     --DRUID
     { nextContinent = 12,   nextZone = 80,   coords = { x = -2679.8, y = 7995.6 },   spellID = 18960 },  -- Moonglade
-    { nextContinent = 619,  nextZone = 641,  coords = { x = 1582.1, y = 1633.0 },    spellID = 193753 }, -- Emerald Dreamway
 
     --DK
     { nextContinent = 13,   nextZone = 23,   coords = { x = -5662.4, y = 2359.6 },   spellID = 50977 }, -- Death Gate (Ebon Hold)
