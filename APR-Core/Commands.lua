@@ -11,7 +11,9 @@ function APR.command:SlashCmd(input)
         APR.settings:OpenSettings(APR.title)
         APR:PrintInfo(L["ADDON"] .. ' ' .. L["DISABLE"])
     end
-    if (inputText == "reset" or inputText == "r") then
+    if (inputText == "step") then
+       APR:PrintInfo('step', APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil))
+    elseif (inputText == "reset" or inputText == "r") then
         --Command to reset the current route
         APR:ResetRoute(APR.ActiveRoute)
     elseif inputText == "resetcustom" then

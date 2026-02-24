@@ -464,7 +464,11 @@ function APR.currentStep:SetProgressBar(CurStep)
             [APR.ActiveRoute .. '-TotalSteps'] then
             APR:GetTotalSteps()
         end
-        local curStepDisplayed = CurStep - (APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] or 0)
+        
+        -- Calculate the number of skipped steps BEFORE the current step only
+        local skippedBeforeCurrent = APR:CountSkippedStepsBefore(APR.ActiveRoute, CurStep)
+        
+        local curStepDisplayed = CurStep - skippedBeforeCurrent
         APR.currentStep:ProgressBar(APR.ActiveRoute, APRData[APR.PlayerID]
             [APR.ActiveRoute .. '-TotalSteps'], curStepDisplayed)
     end

@@ -127,24 +127,41 @@ end
 
 --- Walk backwards in the route until a valid non-filtered step is found.
 -- Includes a guard to avoid infinite loops in malformed routes.
+-- Ensures the index never goes below 1.
 function APR:PreviousQuestStep()
     local userData = APRData[APR.PlayerID]
     local activeRoute = APR.ActiveRoute
     local questStepList = APR.RouteQuestStepList[activeRoute]
 
+    -- Ensure we have a valid starting point (never negative or zero)
+    if not userData[activeRoute] or userData[activeRoute] < 1 then
+        userData[activeRoute] = 1
+        self:UpdateQuestAndStep()
+        return
+    end
+
     -- Safety to prevent infinite loop
     local tries = 0
 
+    -- Walk backwards until we find a step that is not filtered/completed
     while userData[activeRoute] > 1 do
         userData[activeRoute] = userData[activeRoute] - 1
         local step = questStepList[userData[activeRoute]]
+        
+        -- Stop at the first non-filtered, non-waypoint step
         if not (APR:StepFilterQuestHandler(step) or (step and step.Waypoint)) then
             break
         end
+        
         tries = tries + 1
         if tries > 100 then -- Prevent infinite loop
             break
         end
+    end
+
+    -- Ensure we never end up below index 1
+    if userData[activeRoute] < 1 then
+        userData[activeRoute] = 1
     end
 
     -- Update the quest and step

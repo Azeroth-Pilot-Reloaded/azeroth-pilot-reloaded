@@ -337,7 +337,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     self.questID = nil
 
     QuestOrderListPanel:Show()
-    currentStepIndex = currentStepIndex - (APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] or 0)
+    -- Calculate skipped steps before current index to get the correct display index
+    local skippedBeforeCurrent = APR:CountSkippedStepsBefore(APR.ActiveRoute, currentStepIndex)
+    currentStepIndex = currentStepIndex - skippedBeforeCurrent
     local layout = buildLayout()
     local playerID = APR.PlayerID
     local playerData = playerID and APRData and APRData[playerID] or nil

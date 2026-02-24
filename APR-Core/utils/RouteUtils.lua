@@ -86,6 +86,29 @@ function APR:GetTotalSteps(route, updateTotal)
     return stepIndex
 end
 
+--- Calculate the number of skipped/filtered steps BEFORE a given step index.
+-- This accounts for steps that are filtered (race, class, achievements...) or waypoints.
+-- @param route The route name (optional, defaults to active route)
+-- @param beforeIndex The step index to calculate before (optional, defaults to current step)
+-- @return number The count of filtered/waypoint steps before the given index
+function APR:CountSkippedStepsBefore(route, beforeIndex)
+    route = route or self.ActiveRoute
+    beforeIndex = beforeIndex or (APRData[self.PlayerID] and APRData[self.PlayerID][route]) or 1
+
+    local skippedCount = 0
+    local stepList = self.RouteQuestStepList[route]
+    if stepList then
+        for i = 1, math.min(beforeIndex - 1, #stepList) do
+            local step = stepList[i]
+            -- Count steps that are filtered (should be skipped) or waypoints
+            if self:StepFilterQuestHandler(step) or (step and step.Waypoint) then
+                skippedCount = skippedCount + 1
+            end
+        end
+    end
+    return skippedCount
+end
+
 --- Decide if the player is currently in a zone relevant to the active route.
 -- This short-circuits navigation helpers when the character is far away.
 function APR:CheckIsInRouteZone()
@@ -106,15 +129,6 @@ function APR:CheckIsInRouteZone()
 
     local step = self:GetStep(self.ActiveRoute and APRData[self.PlayerID][self.ActiveRoute] or nil)
     if not step then
-        self._lastRouteZoneCheck = now
-        self._lastRouteZoneResult = false
-        return false
-    end
-
-    -- Check if step is filtered by conditions (faction, class, achievement, etc)
-    -- If the step is filtered, it shouldn't be used, so return false
-    if self:StepFilterQuestHandler(step) then
-        self:PrintZoneDebug("Step is filtered by conditions - returning FALSE")
         self._lastRouteZoneCheck = now
         self._lastRouteZoneResult = false
         return false
