@@ -4085,7 +4085,7 @@ if (APR.Faction == "Alliance") then
             Coord = { x = -1241.5, y = -5786.4 },
             ExtraLineText = "USE_WHISTLE_ON_RAMS",
             Range = 73.72,
-            Emote = "WHISTLE",
+            Emote = { npcID = 43064, emote = "WHISTLE" },
             _index = 53,
         },
         {

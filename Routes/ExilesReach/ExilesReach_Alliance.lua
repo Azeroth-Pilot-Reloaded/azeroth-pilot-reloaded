@@ -1140,14 +1140,14 @@ if APR.Faction == "Alliance" then
             Qpart = { [55981] = { 3 } },
             Coord = { x = -2063, y = 575.4 },
             Range = 0.75,
-            Emote = "HUG",
+            Emote = { npcID = 153580, emote = "HUG" },
             _index = 185,
         },
         {
             Qpart = { [55981] = { 4 } },
             Coord = { x = -2062.5, y = 586.4 },
             Range = 0.75,
-            Emote = "WAVE",
+            Emote = { npcID = 153580, emote = "WAVE" },
             _index = 186,
         },
         {

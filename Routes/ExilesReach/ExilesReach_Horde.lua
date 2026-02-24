@@ -1121,7 +1121,7 @@ if APR.Faction == "Horde" then
             Qpart = { [59978] = { 4 } },
             Coord = { x = -2062.5, y = 586.4 },
             Range = 0.75,
-            Emote = "WAVE",
+            Emote = { npcID = 153580, emote = "WAVE" },
             _index = 181,
         },
         {
