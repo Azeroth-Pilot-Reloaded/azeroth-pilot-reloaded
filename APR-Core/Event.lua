@@ -58,6 +58,7 @@ local events = {
 local autoAccept, autoAcceptRoute, step = nil, nil, nil
 
 local pendingQuestUpdateTimer
+local questShareQueue = {}
 
 -- track instance status to avoid repeatedly toggling the addon
 local lastIsInstanceWithUI = nil
@@ -194,23 +195,36 @@ function APR.event.functions.accept(event, ...)
     if event == "QUEST_ACCEPTED" then
         local questID = ...;
         local profile = APR:GetSettingsProfile()
+
+        local function queueQuestShare()
+            if not profile or not profile.autoShareQuestWithFriend or not IsInGroup() then
+                return
+            end
+            if not (C_QuestLog.IsPushableQuest and C_QuestLog.IsPushableQuest(questID)) then
+                return
+            end
+            if not APR.party:CheckIfPartyMemberIsFriend() then
+                return
+            end
+
+            for i = 1, #questShareQueue do
+                if questShareQueue[i] == questID then
+                    return
+                end
+            end
+
+            table.insert(questShareQueue, questID)
+        end
+
         if profile and profile.firstAutoShareQuestWithFriend and IsInGroup() then
             APR.questionDialog:CreateQuestionPopup("SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME",
                 L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
                     profile.autoShareQuestWithFriend = true
-                    if APR.party:CheckIfPartyMemberIsFriend() then
-                        C_QuestLog.SetSelectedQuest(questID)
-                        QuestLogPushQuest();
-                    end
+                    queueQuestShare()
                 end)
             profile.firstAutoShareQuestWithFriend = false
         end
-        if profile and profile.autoShareQuestWithFriend and IsInGroup() then
-            if APR.party:CheckIfPartyMemberIsFriend() then
-                C_QuestLog.SetSelectedQuest(questID)
-                QuestLogPushQuest();
-            end
-        end
+        queueQuestShare()
 
         APR:Debug(L["Q_ACCEPTED"] .. ": ", questID)
         C_Timer.After(0.2, function() APR:UpdateMapId() end)
@@ -869,9 +883,8 @@ function APR.event.functions.scenario(event, ...)
         local currentMapID = C_Map.GetBestMapForUnit('player')
         tinsert(APRScenarioMapIDCompleted[APR.PlayerID], currentMapID)
         if step and step.DoScenario then
-            if step.DoScenario == currentMapID then
-                APR:UpdateNextStep()
-            end
+            tinsert(APRScenarioMapIDCompleted[APR.PlayerID], step.DoScenario)
+            APR:UpdateNextStep()
         end
     end
 
@@ -906,8 +919,8 @@ function APR.event.functions.scenario(event, ...)
         if step and step.LeaveScenario then
             local scenarioMapID = step.LeaveScenario
             local mapID = C_Map.GetBestMapForUnit('player')
-            local isCompleted = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
-            if scenarioMapID ~= mapID and isCompleted then
+            local IsScenarioInstance = APR:IsScenarioInstance()
+            if scenarioMapID ~= mapID and not IsScenarioInstance then
                 APR:UpdateNextStep()
             end
         end
@@ -1003,6 +1016,25 @@ end
 
 function APR.event.functions.updateQuest(event, ...)
     if event == "QUEST_LOG_UPDATE" then
+        if not InCombatLockdown() then
+            for index = #questShareQueue, 1, -1 do
+                local questID = questShareQueue[index]
+                local questLogIndex = C_QuestLog.GetLogIndexForQuestID(questID)
+                if questLogIndex then
+                    -- Ensure the correct quest is selected before pushing
+                    C_QuestLog.SetSelectedQuest(questID)
+
+                    -- QuestLogPushQuest works on the currently selected quest; do not pass an index
+                    local ok, pushed = pcall(QuestLogPushQuest)
+                    if ok and pushed then
+                        table.remove(questShareQueue, index)
+                    end
+                else
+                    -- Quest no longer in log; remove from queue to avoid infinite retries
+                    table.remove(questShareQueue, index)
+                end
+            end
+        end
         APR.event:DebouncedUpdateQuest(0.2)
     elseif event == "UNIT_QUEST_LOG_CHANGED" then
         local unitTarget = ...

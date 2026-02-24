@@ -12,6 +12,7 @@ APR.currentStep.pendingRemoval = {}
 APR.currentStep.pendingButtonRequests = {}
 APR.currentStep.pendingRaidIconRequests = {}
 APR.currentStep.pendingButtonResets = {}
+APR.currentStep.pendingContainerDestroy = {}
 APR.currentStep.pendingRaidIconNpcId = nil
 APR.currentStep.raidIconAdded = false
 APR.currentStep.pendingRaidIconMacroRefresh = false
@@ -464,10 +465,10 @@ function APR.currentStep:SetProgressBar(CurStep)
             [APR.ActiveRoute .. '-TotalSteps'] then
             APR:GetTotalSteps()
         end
-        
+
         -- Calculate the number of skipped steps BEFORE the current step only
         local skippedBeforeCurrent = APR:CountSkippedStepsBefore(APR.ActiveRoute, CurStep)
-        
+
         local curStepDisplayed = CurStep - skippedBeforeCurrent
         APR.currentStep:ProgressBar(APR.ActiveRoute, APRData[APR.PlayerID]
             [APR.ActiveRoute .. '-TotalSteps'], curStepDisplayed)
@@ -509,8 +510,17 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
 
     -- remove if it's already exist
     if existingContainer then
-        existingContainer:Hide()
-        existingContainer:ClearAllPoints()
+        if self:CanSafelyHide(existingContainer) then
+            existingContainer:SetScript("OnEnter", nil)
+            existingContainer:SetScript("OnLeave", nil)
+            existingContainer:ClearAllPoints()
+            existingContainer:Hide()
+            self:ResetSecureStepButton(existingContainer, questKey)
+            self:ResetSecureRaidIconButton(existingContainer, questKey)
+        else
+            self:SoftHide(existingContainer)
+            table.insert(self.pendingContainerDestroy, existingContainer)
+        end
         self.questsList[questKey] = nil
     end
 
@@ -630,8 +640,17 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
 
     -- Remove if it already exists
     if existingContainer then
-        existingContainer:Hide()
-        existingContainer:ClearAllPoints()
+        if self:CanSafelyHide(existingContainer) then
+            existingContainer:SetScript("OnEnter", nil)
+            existingContainer:SetScript("OnLeave", nil)
+            existingContainer:ClearAllPoints()
+            existingContainer:Hide()
+            self:ResetSecureStepButton(existingContainer, id)
+            self:ResetSecureRaidIconButton(existingContainer, id)
+        else
+            self:SoftHide(existingContainer)
+            table.insert(self.pendingContainerDestroy, existingContainer)
+        end
         self.questsList[id] = nil
     end
 
@@ -704,8 +723,16 @@ function APR.currentStep:AddExtraLineText(key, text, color)
 
     local existingContainer = self.questsExtraTextList[key]
     if existingContainer then
-        existingContainer:Hide()
-        existingContainer:ClearAllPoints()
+        if self:CanSafelyHide(existingContainer) then
+            existingContainer:SetScript("OnEnter", nil)
+            existingContainer:SetScript("OnLeave", nil)
+            existingContainer:ClearAllPoints()
+            existingContainer:Hide()
+            self:ResetSecureRaidIconButton(existingContainer, key)
+        else
+            self:SoftHide(existingContainer)
+            table.insert(self.pendingContainerDestroy, existingContainer)
+        end
         self.questsExtraTextList[key] = nil
     end
 
@@ -780,6 +807,10 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
         for id, container in pairs(list) do
             local canHide = self:CanSafelyHide(container)
             if canHide then
+                -- Clear tooltip scripts to prevent ghost tooltips
+                container:SetScript("OnEnter", nil)
+                container:SetScript("OnLeave", nil)
+
                 -- Explicit frame cleanup to prevent memory leaks
                 container:ClearAllPoints()
                 container:Hide()
@@ -1207,6 +1238,7 @@ function APR.currentStep:Reset()
     self.raidIconAdded = false
     self.pendingRaidIconRequests = {}
     self.pendingButtonResets = {}
+    self.pendingContainerDestroy = {}
     self.pendingRaidIconMacroRefresh = false
     self.raidIconButton = nil
     self:RemoveQuestStepsAndExtraLineTexts()
@@ -1355,17 +1387,67 @@ end
 function APR.currentStep:SoftHide(container)
     container.hiddenInCombat = true
     container:SetAlpha(0.001)
+    -- Strip tooltip scripts to prevent ghost tooltips (safe in combat)
+    container:SetScript("OnEnter", nil)
+    container:SetScript("OnLeave", nil)
+    -- EnableMouse is protected on secure frames; only call outside combat
+    if not InCombatLockdown() then
+        container:EnableMouse(false)
+    end
+    if container.IconButton then
+        container.IconButton:SetScript("OnEnter", nil)
+        container.IconButton:SetScript("OnLeave", nil)
+        if not InCombatLockdown() then
+            container.IconButton:EnableMouse(false)
+        end
+    end
+    if container.RaidIconButton then
+        container.RaidIconButton:SetScript("OnEnter", nil)
+        container.RaidIconButton:SetScript("OnLeave", nil)
+        if not InCombatLockdown() then
+            container.RaidIconButton:EnableMouse(false)
+        end
+    end
 end
 
 function APR.currentStep:FlushPendingContainers()
+    -- Flush orphaned containers (replaced during combat)
+    for _, container in ipairs(self.pendingContainerDestroy) do
+        if container then
+            container.hiddenInCombat = nil
+            container:SetAlpha(1)
+            container:EnableMouse(true)
+            container:SetScript("OnEnter", nil)
+            container:SetScript("OnLeave", nil)
+            container:ClearAllPoints()
+            container:Hide()
+            if container.IconButton then
+                self:ResetSecureStepButton(container, nil, true)
+            end
+            if container.RaidIconButton then
+                self:ResetSecureRaidIconButton(container, nil, true)
+            end
+        end
+    end
+    wipe(self.pendingContainerDestroy)
+
     if not next(self.pendingRemoval) then return end
     for id, _ in pairs(self.pendingRemoval) do
         local container = self.questsList[id] or self.questsExtraTextList[id] or self.fillersList[id]
         if container then
             container.hiddenInCombat = nil
             container:SetAlpha(1)
+            container:EnableMouse(true)
+            container:SetScript("OnEnter", nil)
+            container:SetScript("OnLeave", nil)
             container:ClearAllPoints()
             container:Hide()
+            if container.IconButton then
+                self:ResetSecureStepButton(container, id, true)
+            end
+            if container.RaidIconButton then
+                self:ResetSecureRaidIconButton(container, id, true)
+            end
         end
         self.questsList[id] = nil
         self.questsExtraTextList[id] = nil
