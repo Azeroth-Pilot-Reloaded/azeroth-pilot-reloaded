@@ -145,8 +145,14 @@ function APR.fillersFrame:AddFillerStep(questID, textObjective, objectiveIndex)
 
     -- Remove if it already exists
     if existingContainer then
-        existingContainer:Hide()
-        existingContainer:ClearAllPoints()
+        if APR.currentStep:CanSafelyHide(existingContainer) then
+            DestroyFillerContainer(existingContainer)
+            APR.currentStep:ResetSecureStepButton(existingContainer, questKey)
+            APR.currentStep:ResetSecureRaidIconButton(existingContainer, questKey)
+        else
+            APR.currentStep:SoftHide(existingContainer)
+            table.insert(APR.currentStep.pendingContainerDestroy, existingContainer)
+        end
         APR.currentStep.fillersList[questKey] = nil
     end
 
