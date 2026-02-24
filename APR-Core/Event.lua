@@ -1022,10 +1022,17 @@ function APR.event.functions.updateQuest(event, ...)
                 local questID = questShareQueue[index]
                 local questLogIndex = C_QuestLog.GetLogIndexForQuestID(questID)
                 if questLogIndex then
-                    local isPushed = pcall(QuestLogPushQuest, questLogIndex)
-                    if isPushed then
+                    -- Ensure the correct quest is selected before pushing
+                    C_QuestLog.SetSelectedQuest(questID)
+
+                    -- QuestLogPushQuest works on the currently selected quest; do not pass an index
+                    local ok, pushed = pcall(QuestLogPushQuest)
+                    if ok and pushed then
                         table.remove(questShareQueue, index)
                     end
+                else
+                    -- Quest no longer in log; remove from queue to avoid infinite retries
+                    table.remove(questShareQueue, index)
                 end
             end
         end
