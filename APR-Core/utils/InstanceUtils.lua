@@ -16,7 +16,7 @@ end
 
 function APR:IsScenarioInstance()
     local isIntance, type = IsInInstance()
-    return isIntance and type == "scenario"
+    return type == "scenario"
 end
 
 --- Check whether a scenario objective is already recorded so we do not double count progress.
