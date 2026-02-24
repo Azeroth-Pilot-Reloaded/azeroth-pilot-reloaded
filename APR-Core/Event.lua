@@ -883,9 +883,8 @@ function APR.event.functions.scenario(event, ...)
         local currentMapID = C_Map.GetBestMapForUnit('player')
         tinsert(APRScenarioMapIDCompleted[APR.PlayerID], currentMapID)
         if step and step.DoScenario then
-            if step.DoScenario == currentMapID then
-                APR:UpdateNextStep()
-            end
+            tinsert(APRScenarioMapIDCompleted[APR.PlayerID], step.DoScenario)
+            APR:UpdateNextStep()
         end
     end
 
