@@ -60,7 +60,6 @@ function APR.coordinate:OnInit()
     LibWindow.RegisterConfig(CoordinateScreenPanel, APR.settings.profile.coordinateFrame)
     CoordinateScreenPanel.RegisteredForLibWindow = true
     LibWindow.MakeDraggable(CoordinateScreenPanel)
-    CoordinateScreenPanel:SetPoint("center", UIParent, "center", 0, 0)
 
     self:RefreshFrameAnchor()
 end

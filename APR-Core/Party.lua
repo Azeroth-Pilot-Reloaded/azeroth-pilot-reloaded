@@ -87,12 +87,15 @@ function APR.party:PartyFrameOnInit()
     -- Set default display
     self:SetDefaultDisplay()
 
+    if APR.settings.profile.groupFrame.point then
+        LibWindow.RestorePosition(PartyScreenPanel)
+    end
+
     self:RefreshPartyFrameAnchor()
 end
 
 function APR.party:SetDefaultDisplay()
     PartyFrame.collapsed = false
-    PartyScreenPanel:SetPoint("center", UIParent, "center", 0, 0)
     PartyFrame_TeamHolder:Show()
     PartyFrameHeader:Show()
 end
