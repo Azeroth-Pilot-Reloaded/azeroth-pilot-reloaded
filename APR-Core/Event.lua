@@ -58,6 +58,7 @@ local events = {
 local autoAccept, autoAcceptRoute, step = nil, nil, nil
 
 local pendingQuestUpdateTimer
+local questShareQueue = {}
 
 -- track instance status to avoid repeatedly toggling the addon
 local lastIsInstanceWithUI = nil
@@ -194,23 +195,36 @@ function APR.event.functions.accept(event, ...)
     if event == "QUEST_ACCEPTED" then
         local questID = ...;
         local profile = APR:GetSettingsProfile()
+
+        local function queueQuestShare()
+            if not profile or not profile.autoShareQuestWithFriend or not IsInGroup() then
+                return
+            end
+            if not (C_QuestLog.IsPushableQuest and C_QuestLog.IsPushableQuest(questID)) then
+                return
+            end
+            if not APR.party:CheckIfPartyMemberIsFriend() then
+                return
+            end
+
+            for i = 1, #questShareQueue do
+                if questShareQueue[i] == questID then
+                    return
+                end
+            end
+
+            table.insert(questShareQueue, questID)
+        end
+
         if profile and profile.firstAutoShareQuestWithFriend and IsInGroup() then
             APR.questionDialog:CreateQuestionPopup("SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME",
                 L["SHOW_GROUP_SHAREWITHFRIEND_FIRSTTIME"], function()
                     profile.autoShareQuestWithFriend = true
-                    if APR.party:CheckIfPartyMemberIsFriend() then
-                        C_QuestLog.SetSelectedQuest(questID)
-                        QuestLogPushQuest();
-                    end
+                    queueQuestShare()
                 end)
             profile.firstAutoShareQuestWithFriend = false
         end
-        if profile and profile.autoShareQuestWithFriend and IsInGroup() then
-            if APR.party:CheckIfPartyMemberIsFriend() then
-                C_QuestLog.SetSelectedQuest(questID)
-                QuestLogPushQuest();
-            end
-        end
+        queueQuestShare()
 
         APR:Debug(L["Q_ACCEPTED"] .. ": ", questID)
         C_Timer.After(0.2, function() APR:UpdateMapId() end)
@@ -1003,6 +1017,18 @@ end
 
 function APR.event.functions.updateQuest(event, ...)
     if event == "QUEST_LOG_UPDATE" then
+        if not InCombatLockdown() then
+            for index = #questShareQueue, 1, -1 do
+                local questID = questShareQueue[index]
+                local questLogIndex = C_QuestLog.GetLogIndexForQuestID(questID)
+                if questLogIndex then
+                    local isPushed = pcall(QuestLogPushQuest, questLogIndex)
+                    if isPushed then
+                        table.remove(questShareQueue, index)
+                    end
+                end
+            end
+        end
         APR.event:DebouncedUpdateQuest(0.2)
     elseif event == "UNIT_QUEST_LOG_CHANGED" then
         local unitTarget = ...

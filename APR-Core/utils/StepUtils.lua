@@ -147,12 +147,12 @@ function APR:PreviousQuestStep()
     while userData[activeRoute] > 1 do
         userData[activeRoute] = userData[activeRoute] - 1
         local step = questStepList[userData[activeRoute]]
-        
+
         -- Stop at the first non-filtered, non-waypoint step
         if not (APR:StepFilterQuestHandler(step) or (step and step.Waypoint)) then
             break
         end
-        
+
         tries = tries + 1
         if tries > 100 then -- Prevent infinite loop
             break
