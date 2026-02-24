@@ -7,7 +7,13 @@
 function APR:GetTargetID(unit)
     unit = unit or "target"
     if UnitCreatureID then
-        return UnitCreatureID(unit)
+        local id = UnitCreatureID(unit)
+        -- UnitCreatureID may return a secret/tainted value in 12.0+;
+        -- guard against taint propagation by checking accessibility.
+        if id and not APRSecret:CanAccessValue(id) then
+            return nil
+        end
+        return id
     end
     local targetGUID = APR:SafeUnitGUID(unit)
     if targetGUID then
