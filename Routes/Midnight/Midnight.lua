@@ -279,28 +279,63 @@ APR.RouteQuestStepList["2432-Midnight-Intro"] = {
     {
         Qpart = { [91281] = { 1 } },
         Range = 5,
-        Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 85, x = -4436, y = 1590.3 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
-        Zones = { 84, 85, 2248, 2393 },
+        Coords = { { Zone = 85, x = -4436, y = 1590.3 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
+        Zones = { 85, 2248, 2393 },
+        Faction = "Horde",
         _index = 2,
     },
     {
         Done = { 91281 },
-        Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 85, x = -4436, y = 1590.3 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
-        Zones = { 84, 85, 2248, 2393 },
+        Coords = { { Zone = 85, x = -4436, y = 1590.3 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
+        Zones = { 85, 2248, 2393 },
+        Faction = "Horde",
         _index = 3,
     },
     {
         PickUp = { 88719 },
-        Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 85, x = -4436, y = 1590.3 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
-        Zones = { 84, 85, 2248, 2393 },
+        Coords = { { Zone = 85, x = -4436, y = 1590.3 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
+        Zones = { 85, 2248, 2393 },
+        Faction = "Horde",
         _index = 4,
     },
     {
         Qpart = { [88719] = { 1 } },
         Button = { ["88719-1"] = 239151 },
         GossipOptionIDs = { 133523 },
-        Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 85, x = -4436, y = 1590.3 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
-        Zones = { 84, 85, 2248, 2393 },
+        Coords = { { Zone = 85, x = -4436, y = 1590.3 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
+        Zones = { 85, 2248, 2393 },
+        Faction = "Horde",
+        _index = 5,
+    },
+    {
+        Qpart = { [91281] = { 1 } },
+        Range = 5,
+        Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
+        Zones = { 84, 2248, 2393 },
+        Faction = "Alliance",
+        _index = 2,
+    },
+    {
+        Done = { 91281 },
+        Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
+        Zones = { 84, 2248, 2393 },
+        Faction = "Alliance",
+        _index = 3,
+    },
+    {
+        PickUp = { 88719 },
+        Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
+        Zones = { 84, 2248, 2393 },
+        Faction = "Alliance",
+        _index = 4,
+    },
+    {
+        Qpart = { [88719] = { 1 } },
+        Button = { ["88719-1"] = 239151 },
+        GossipOptionIDs = { 133523 },
+        Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 2248, x = -2462.1, y = 2813.4 }, { Zone = 2393, x = -4645.7, y = 8272.1 } },
+        Zones = { 84, 2248, 2393 },
+        Faction = "Alliance",
         _index = 5,
     },
     {
@@ -28537,8 +28572,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
 
 -- APR.RouteQuestStepList["2395-Mrglgrgl-of-Grglmrgl"] = {}
 
-APR.RouteQuestStepList["2393-Midnight-Speedrun"] =
-{
+APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         PickUp = { 86733 },
         Coord = { x = -4614.4, y = 10085.4 },
