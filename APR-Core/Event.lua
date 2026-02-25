@@ -245,18 +245,38 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
         APR:NotYet()
         return
     end
-    C_Timer.After(0.3, function()
+
+    -- Ensure the quest pool is built before checking adventure map quests
+    APR:EnsureQuestPool()
+
+    local MAX_RETRIES = 10
+    local RETRY_DELAY = 0.3
+    local attempt = 0
+
+    local function tryAcceptAdventureMapQuests()
+        attempt = attempt + 1
         local numChoices = C_AdventureMap.GetNumZoneChoices()
+        APR:Debug("AdventureMap attempt " .. attempt .. "/" .. MAX_RETRIES .. " - choices: " .. numChoices)
+
+        local questStarted = false
         for choiceIndex = 1, numChoices do
             local questID, textureKit, name, zoneDescription, normalizedX, normalizedY = C_AdventureMap
                 .GetZoneChoiceInfo(choiceIndex);
             if AdventureMap_IsQuestValid(questID, normalizedX, normalizedY) then
                 if APR:IsQuestInPool(tonumber(questID)) then
                     C_AdventureMap.StartQuest(questID)
+                    questStarted = true
                 end
             end
         end
-    end)
+
+        -- Retry if no choices were available or no quest was started
+        if not questStarted and attempt < MAX_RETRIES then
+            C_Timer.After(RETRY_DELAY, tryAcceptAdventureMapQuests)
+        end
+    end
+
+    C_Timer.After(RETRY_DELAY, tryAcceptAdventureMapQuests)
 end
 
 function APR.event.functions.buffsAndCooldown(event, unitTarget, updateInfo)
