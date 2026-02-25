@@ -769,6 +769,7 @@ function APR.event.functions.lvlUp(event, level, healthDelta, powerDelta, numNew
                                    strengthDelta, agilityDelta, staminaDelta, intellectDelta)
     APR.Level = level
     APR.routeconfig:CheckRouteResetOnLvlUp()
+    APR:UpdateStep()
 end
 
 function APR.event.functions.merchant(event, ...)

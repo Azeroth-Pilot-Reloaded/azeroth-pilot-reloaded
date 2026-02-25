@@ -17137,6 +17137,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1750.5, y = 1219.2 },
+        SpellButton = { ["90470-2"] = 1231371 },
         ExtraActionB = true,
         TrigText = "15%",
         Zone = 2413,
@@ -17145,6 +17146,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1796.7, y = 1210.2 },
+        SpellButton = { ["90470-2"] = 1231371 },
         ExtraActionB = true,
         TrigText = "30%",
         Zone = 2413,
@@ -17153,6 +17155,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1786.9, y = 1201.1 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "35%",
         Zone = 2413,
         _index = 218,
@@ -17160,6 +17163,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1785.7, y = 1180.6 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "40%",
         Zone = 2413,
         _index = 219,
@@ -17167,6 +17171,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1806.4, y = 1158.9 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "45%",
         Zone = 2413,
         _index = 220,
@@ -17174,6 +17179,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1823, y = 1160.1 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "50%",
         Zone = 2413,
         _index = 221,
@@ -17181,6 +17187,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1826.6, y = 1145 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "55%",
         Zone = 2413,
         _index = 222,
@@ -17195,6 +17202,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1807.4, y = 1105.3 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "60%",
         Zone = 2413,
         _index = 224,
@@ -17202,6 +17210,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1808, y = 1090.8 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "65%",
         Zone = 2413,
         _index = 225,
@@ -17209,6 +17218,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1816.6, y = 1083.5 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "70%",
         Zone = 2413,
         _index = 226,
@@ -17216,6 +17226,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1833.1, y = 1075.3 },
+        SpellButton = { ["90470-2"] = 1231371 },
         ExtraActionB = true,
         TrigText = "85%",
         Zone = 2413,
@@ -29233,6 +29244,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 91386 },
         Coord = { x = -4693.2, y = 8752.6 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 76,
     },
     {
@@ -29240,6 +29252,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4698.5, y = 8754.8 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 77,
     },
     {
@@ -29247,6 +29260,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4706.3, y = 8763.1 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 78,
     },
     {
@@ -29254,6 +29268,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4699.9, y = 8746.9 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 79,
     },
     {
@@ -29261,6 +29276,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4705.9, y = 8762.8 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 80,
     },
     {
@@ -29268,6 +29284,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4706.2, y = 8757.6 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 81,
     },
     {
@@ -29275,36 +29292,42 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4702.9, y = 8745.2 },
         GossipOptionIDs = { 135588 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 82,
     },
     {
         Done = { 91386 },
         Coord = { x = -4706.2, y = 8743.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 83,
     },
     {
         PickUp = { 92408 },
         Coord = { x = -4706.2, y = 8743.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 84,
     },
     {
         PickUp = { 87455 },
         Coord = { x = -4952.6, y = 8485.6 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 85,
     },
     {
         Done = { 87455 },
         Coord = { x = -4272.4, y = 8101.5 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 86,
     },
     {
         PickUp = { 87456, 87457 },
         Coord = { x = -4272.4, y = 8101.5 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 87,
     },
     {
@@ -29312,6 +29335,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4262.6, y = 8104 },
         Range = 0.5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 88,
     },
     {
@@ -29320,6 +29344,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 2,
         RaidIcon = 238739,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 89,
     },
     {
@@ -29327,6 +29352,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4278.7, y = 8095.7 },
         Range = 0.5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 90,
     },
     {
@@ -29334,30 +29360,35 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4282.3, y = 8086.4 },
         Range = 0.5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 91,
     },
     {
         Done = { 87456, 87457 },
         Coord = { x = -4270, y = 8082.2 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 92,
     },
     {
         PickUp = { 87458 },
         Coord = { x = -4270, y = 8082.2 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 93,
     },
     {
         Done = { 92408 },
         Coord = { x = -4274.7, y = 7931.1 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 94,
     },
     {
         PickUp = { 91388 },
         Coord = { x = -4274.7, y = 7931.1 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 95,
     },
     {
@@ -29366,18 +29397,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Button = { ["91388-1"] = 250919 },
         Range = 60,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 96,
     },
     {
         Done = { 91388 },
         Coord = { x = -4274.8, y = 7931.5 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 97,
     },
     {
         PickUp = { 91389 },
         Coord = { x = -4274.8, y = 7931.5 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 98,
     },
     {
@@ -29385,6 +29419,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4211.7, y = 7980.8 },
         GossipOptionIDs = { 135911 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 99,
     },
     {
@@ -29393,6 +29428,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 135911 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 100,
     },
     {
@@ -29400,12 +29436,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4103.5, y = 8008.1 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 101,
     },
     {
         Done = { 91389 },
         Coord = { x = -4103.5, y = 8008.1 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 102,
     },
     {
@@ -30240,12 +30278,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 94370 },
         Coord = { x = -3367, y = 5528.2 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 208,
     },
     {
         PickUp = { 92021, 92022 },
         Coord = { x = -3387, y = 5614.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 209,
     },
     {
@@ -30304,6 +30344,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Done = { 86634 },
         Coord = { x = -3337.4, y = 5514.1 },
+        IsCampaignQuest = true,
         Zone = 2395,
         _index = 216,
     },
@@ -30385,30 +30426,35 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3523.3, y = 5468.6 },
         Range = 60,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 226,
     },
     {
         Done = { 92021, 92022 },
         Coord = { x = -3387, y = 5614.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 227,
     },
     {
         PickUp = { 92023 },
         Coord = { x = -3387, y = 5614.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 228,
     },
     {
         Done = { 94370 },
         Coord = { x = -3523.9, y = 6299.8 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 229,
     },
     {
         PickUp = { 91493 },
         Coord = { x = -3524.4, y = 6297.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 230,
     },
     {
@@ -30416,24 +30462,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3521.3, y = 6307.7 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 231,
     },
     {
         Done = { 91493 },
         Coord = { x = -3524.4, y = 6298.1 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 232,
     },
     {
         PickUp = { 91505, 91494 },
         Coord = { x = -3524.4, y = 6298.1 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 233,
     },
     {
         PickUp = { 91495 },
         Coord = { x = -3527, y = 6296.1 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 234,
     },
     {
@@ -30442,6 +30492,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Button = { ["91494-1"] = 247593 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 235,
     },
     {
@@ -30450,6 +30501,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Fillers = { [91494] = { 2 }, [91505] = { 1 } },
         GossipOptionIDs = { 134652 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 236,
     },
     {
@@ -30458,6 +30510,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Fillers = { [91494] = { 2 }, [91505] = { 1 } },
         GossipOptionIDs = { 134653 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 237,
     },
     {
@@ -30466,6 +30519,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Fillers = { [91494] = { 2 }, [91505] = { 1 } },
         GossipOptionIDs = { 134654 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 238,
     },
     {
@@ -30474,24 +30528,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Button = { ["91494-2"] = 247593 },
         Range = 80,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 239,
     },
     {
         Done = { 91495 },
         Coord = { x = -3527.1, y = 6296 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 240,
     },
     {
         Done = { 91505, 91494 },
         Coord = { x = -3523.9, y = 6298.8 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 241,
     },
     {
         PickUp = { 91504 },
         Coord = { x = -3524.2, y = 6298.3 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 242,
     },
     {
@@ -30499,6 +30557,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3012.3, y = 6061.3 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 243,
     },
     {
@@ -30506,12 +30565,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3012.3, y = 6061.3 },
         Range = 10,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 244,
     },
     {
         Done = { 91504 },
         Coord = { x = -3642.1, y = 6313.7 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 245,
     },
     {
@@ -30519,6 +30580,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3551.6, y = 6329.8 },
         BuyMerchant = { { itemID = 254280, quantity = 1, questID = 92023 } },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 246,
     },
     {
@@ -30526,6 +30588,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3583.7, y = 6362.7 },
         BuyMerchant = { { itemID = 254281, quantity = 1, questID = 92023 } },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 247,
     },
     {
@@ -30533,18 +30596,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3689.2, y = 6391.8 },
         BuyMerchant = { { itemID = 254282, quantity = 1, questID = 92023 } },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 248,
     },
     {
         Done = { 92023 },
         Coord = { x = -3689.2, y = 6391.8 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 249,
     },
     {
         PickUp = { 92024 },
         Coord = { x = -3689.2, y = 6391.8 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 250,
     },
     {
@@ -30552,6 +30618,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3389.5, y = 5622.8 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 251,
     },
     {
@@ -30559,6 +30626,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3400.1, y = 5635.7 },
         GossipOptionIDs = { 136353 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 252,
     },
     {
@@ -30566,6 +30634,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3385.8, y = 5627.3 },
         GossipOptionIDs = { 136354 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 253,
     },
     {
@@ -30573,18 +30642,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3381.9, y = 5641.4 },
         GossipOptionIDs = { 136355 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 254,
     },
     {
         Done = { 92024 },
         Coord = { x = -3382.5, y = 5640.7 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 255,
     },
     {
         PickUp = { 92025 },
         Coord = { x = -3382.5, y = 5640.7 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 256,
     },
     {
@@ -30592,6 +30664,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -2945.6, y = 5218.8 },
         GossipOptionIDs = { 136372 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 257,
     },
     {
@@ -30599,6 +30672,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -2947.2, y = 5216.5 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 258,
     },
     {
@@ -30607,6 +30681,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 1,
         ExtraActionB = true,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 259,
     },
     {
@@ -30614,12 +30689,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -2947.5, y = 5216.5 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 260,
     },
     {
         Done = { 92025 },
         Coord = { x = -2945.9, y = 5219 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 261,
     },
     {
@@ -30785,6 +30862,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 87399 },
         Coord = { x = -4612.7, y = 5258.2 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 281,
     },
     {
@@ -30792,24 +30870,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4663.6, y = 5400.2 },
         Range = 30,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 282,
     },
     {
         Done = { 87399 },
         Coord = { x = -4612.7, y = 5258.4 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 283,
     },
     {
         PickUp = { 87400 },
         Coord = { x = -4612.7, y = 5258.4 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 284,
     },
     {
         PickUp = { 87401 },
         Coord = { x = -4609.5, y = 5262 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 285,
     },
     {
@@ -30817,6 +30899,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4865.9, y = 5524.5 },
         TrigText = "1/3",
         Zone = 2395,
+        skipForLvl = 90,
         _index = 286,
     },
     {
@@ -30824,6 +30907,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4784.4, y = 5466.6 },
         TrigText = "2/3",
         Zone = 2395,
+        skipForLvl = 90,
         _index = 287,
     },
     {
@@ -30831,6 +30915,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4708.1, y = 5550.8 },
         TrigText = "3/3",
         Zone = 2395,
+        skipForLvl = 90,
         _index = 288,
     },
     {
@@ -30839,24 +30924,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 5,
         RaidIcon = 238475,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 289,
     },
     {
         Done = { 87400 },
         Coord = { x = -4612.6, y = 5258.2 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 290,
     },
     {
         Done = { 87401 },
         Coord = { x = -4609.3, y = 5261.8 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 291,
     },
     {
         PickUp = { 87402 },
         Coord = { x = -4609.3, y = 5261.8 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 292,
     },
     {
@@ -30865,6 +30954,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Button = { ["87402-1"] = 246441 },
         Range = 2,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 293,
     },
     {
@@ -30873,12 +30963,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 5,
         RaidIcon = 238495,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 294,
     },
     {
         Done = { 87402 },
         Coord = { x = -4609.4, y = 5261.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 295,
     },
     {
@@ -31520,6 +31612,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 93384 },
         Coord = { x = -4504.3, y = 8623.3 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 375,
     },
     {
@@ -31545,18 +31638,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 94393, 94396 },
         Coord = { x = -4268, y = 8386.8 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 379,
     },
     {
         Done = { 94396 },
         Coord = { x = -3568.2, y = 9068.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 380,
     },
     {
         PickUp = { 86997 },
         Coord = { x = -3568.2, y = 9068.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 381,
     },
     {
@@ -31564,18 +31660,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3468.2, y = 9082 },
         Range = 30,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 382,
     },
     {
         Done = { 86997 },
         Coord = { x = -3377.6, y = 8988.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 383,
     },
     {
         PickUp = { 86998 },
         Coord = { x = -3377.6, y = 8988.9 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 384,
     },
     {
@@ -31584,6 +31683,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 132313 },
         Range = 30,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 385,
     },
     {
@@ -31591,6 +31691,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3485.2, y = 8985.6 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 386,
     },
     {
@@ -31598,6 +31699,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3480.8, y = 9001.5 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 387,
     },
     {
@@ -31605,18 +31707,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3471.3, y = 8988.3 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 388,
     },
     {
         Done = { 86998 },
         Coord = { x = -3481.7, y = 8991 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 389,
     },
     {
         PickUp = { 87002 },
         Coord = { x = -3481.7, y = 8991 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 390,
     },
     {
@@ -31626,36 +31731,42 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 5,
         RaidIcon = 237912,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 391,
     },
     {
         Done = { 87002 },
         Coord = { x = -3558.3, y = 9081.3 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 392,
     },
     {
         Done = { 94393 },
         Coord = { x = -3865.9, y = 9249.8 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 393,
     },
     {
         PickUp = { 91284 },
         Coord = { x = -3865.9, y = 9249.8 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 394,
     },
     {
         PickUp = { 91292 },
         Coord = { x = -3923.9, y = 9242.5 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 395,
     },
     {
         PickUp = { 91291 },
         Coord = { x = -3900.8, y = 9300.6 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 396,
     },
     {
@@ -31664,12 +31775,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         ExtraLineText = "ON_TOP_OF_TOWER",
         GossipOptionIDs = { 134482 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 397,
     },
     {
         Done = { 91291 },
         Coord = { x = -3901.1, y = 9300.5 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 398,
     },
     {
@@ -31677,12 +31790,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3901.1, y = 9300.5 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 399,
     },
     {
         PickUp = { 91288 },
         Coord = { x = -3827.2, y = 9331.1 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 400,
     },
     {
@@ -31690,6 +31805,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3806.5, y = 8883 },
         Range = 30,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 401,
     },
     {
@@ -31697,12 +31813,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3774.9, y = 9205.2 },
         Range = 30,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 402,
     },
     {
         Done = { 91292 },
         Coord = { x = -3924.1, y = 9242.7 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 403,
     },
     {
@@ -31710,12 +31828,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3924.1, y = 9242.7 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 404,
     },
     {
         Done = { 91288 },
         Coord = { x = -3827.2, y = 9331 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 405,
     },
     {
@@ -31723,18 +31843,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3827.2, y = 9331 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 406,
     },
     {
         Done = { 91284 },
         Coord = { x = -3867.3, y = 9249 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 407,
     },
     {
         PickUp = { 91301 },
         Coord = { x = -3867.3, y = 9249 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 408,
     },
     {
@@ -31742,6 +31865,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -3867.3, y = 9249 },
         GossipOptionIDs = { 134091 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 409,
     },
     {
@@ -31749,12 +31873,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4268, y = 8386.7 },
         GossipOptionIDs = { 134484 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 410,
     },
     {
         Done = { 91301 },
         Coord = { x = -4268, y = 8386.7 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 411,
     },
     {
@@ -31784,6 +31910,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Done = { 93384 },
         Coord = { x = -4816.2, y = 8315.6 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 415,
     },
     {
@@ -31791,18 +31918,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4798.3, y = 8321.6 },
         Range = 10,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 416,
     },
     {
         Done = { 87458 },
         Coord = { x = -4952.8, y = 8485.3 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 417,
     },
     {
         PickUp = { 89383, 89384, 89386 },
         Coord = { x = -5209.1, y = 7932.1 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 418,
     },
     {
@@ -31810,6 +31940,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4908.4, y = 7953.3 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 419,
     },
     {
@@ -31817,18 +31948,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -4863.8, y = 7900.8 },
         Range = 30,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 420,
     },
     {
         Done = { 89383, 89384, 89386 },
         Coord = { x = -5208.1, y = 7932.3 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 421,
     },
     {
         PickUp = { 91342, 91452 },
         Coord = { x = -5262.3, y = 7657.5 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 422,
     },
     {
@@ -31837,6 +31971,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Fillers = { [91342] = { 1 } },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 423,
     },
     {
@@ -31845,6 +31980,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Fillers = { [91342] = { 1 } },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 424,
     },
     {
@@ -31853,6 +31989,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Fillers = { [91342] = { 1 } },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 425,
     },
     {
@@ -31860,6 +31997,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -5205.9, y = 7536.8 },
         Range = 30,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 426,
     },
     {
@@ -31868,6 +32006,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 5,
         ExtraActionB = true,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 427,
     },
     {
@@ -31875,12 +32014,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -5190.1, y = 7592.7 },
         Range = 1,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 428,
     },
     {
         Done = { 91342, 91452 },
         Coord = { x = -5191.3, y = 7590.7 },
         Zone = 2395,
+        skipForLvl = 90,
         _index = 429,
     },
     {
@@ -31940,6 +32081,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -5831.5, y = 5067.2 },
         Range = 10,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 437,
     },
     {
@@ -31947,6 +32089,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -5861.9, y = 5116.7 },
         Range = 5,
         Zone = 2395,
+        skipForLvl = 90,
         _index = 438,
     },
     {
@@ -31960,6 +32103,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -5863.1, y = 5169.5 },
         InstanceQuest = true,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 440,
     },
     {
@@ -32316,18 +32460,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 93051 },
         Coord = { x = -7502.5, y = 4294.2 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 487,
     },
     {
         PickUp = { 93410 },
         Coord = { x = -7552.4, y = 4285.3 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 488,
     },
     {
         PickUp = { 93050 },
         Coord = { x = -7533.7, y = 4190.1 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 489,
     },
     {
@@ -32336,6 +32483,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 1,
         ExtraActionB = true,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 490,
     },
     {
@@ -32344,6 +32492,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 1,
         ExtraActionB = true,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 491,
     },
     {
@@ -32352,6 +32501,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 1,
         ExtraActionB = true,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 492,
     },
     {
@@ -32360,18 +32510,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 1,
         ExtraActionB = true,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 493,
     },
     {
         Done = { 93050 },
         Coord = { x = -7523.2, y = 4180.4 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 494,
     },
     {
         PickUp = { 93048 },
         Coord = { x = -7829.6, y = 4350.2 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 495,
     },
     {
@@ -32379,6 +32532,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -7825.8, y = 4318.9 },
         Range = 5,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 496,
     },
     {
@@ -32387,6 +32541,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Emote = { emote = "DANCE", npcID = 254938 },
         RaidIcon = 257807,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 497,
     },
     {
@@ -32394,6 +32549,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -7838.7, y = 4314.1 },
         GossipOptionIDs = { 137451 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 498,
     },
     {
@@ -32402,12 +32558,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Emote = { emote = "DANCE", npcID = 254938 },
         RaidIcon = 254938,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 499,
     },
     {
         Done = { 93048 },
         Coord = { x = -7829.4, y = 4350.2 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 500,
     },
     {
@@ -32436,6 +32594,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Done = { 93409 },
         Coord = { x = -7708, y = 4421.9 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 504,
     },
     {
@@ -32448,12 +32607,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 89230 },
         Coord = { x = -7583, y = 4347.4 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 506,
     },
     {
         PickUp = { 89231 },
         Coord = { x = -7569.5, y = 4364.8 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 507,
     },
     {
@@ -32461,6 +32622,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -7566.2, y = 4440.2 },
         GossipOptionIDs = { 137188, 138018 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 508,
     },
     {
@@ -32469,12 +32631,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 137188, 138018 },
         Range = 5,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 509,
     },
     {
         Done = { 93051 },
         Coord = { x = -7566.4, y = 4439.6 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 510,
     },
     {
@@ -32656,6 +32820,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -8514.3, y = 3931.7 },
         Range = 100,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 532,
     },
     {
@@ -32671,6 +32836,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Button = { ["89231-2"] = 249231 },
         NoArrow = true,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 534,
     },
     {
@@ -32785,12 +32951,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Done = { 89230, 89231 },
         Coord = { x = -7619.2, y = 4377.6 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 549,
     },
     {
         PickUp = { 89233 },
         Coord = { x = -7619.2, y = 4377.6 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 550,
     },
     {
@@ -32798,12 +32966,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -7619.2, y = 4377.6 },
         GossipOptionIDs = { 135138, 135137 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 551,
     },
     {
         Done = { 89233 },
         Coord = { x = -7619.2, y = 4377.6 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 552,
     },
     {
@@ -32925,6 +33095,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 91040 },
         Coord = { x = -6833.1, y = 6135.2 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 568,
     },
     {
@@ -33008,18 +33179,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6644.7, y = 6295.6 },
         Range = 45,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 579,
     },
     {
         Done = { 91040 },
         Coord = { x = -6650.3, y = 6340.5 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 580,
     },
     {
         PickUp = { 93093, 93094 },
         Coord = { x = -6231.7, y = 6299.6 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 581,
     },
     {
@@ -33027,6 +33201,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6209.1, y = 6194.5 },
         Range = 5,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 582,
     },
     {
@@ -33034,6 +33209,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6184.7, y = 6209.3 },
         TrigText = "1/6",
         Zone = 2437,
+        skipForLvl = 90,
         _index = 583,
     },
     {
@@ -33041,6 +33217,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6235.2, y = 6126.2 },
         TrigText = "2/6",
         Zone = 2437,
+        skipForLvl = 90,
         _index = 584,
     },
     {
@@ -33048,6 +33225,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6193.6, y = 6017.4 },
         TrigText = "3/6",
         Zone = 2437,
+        skipForLvl = 90,
         _index = 585,
     },
     {
@@ -33055,6 +33233,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6155.9, y = 6094.4 },
         TrigText = "4/6",
         Zone = 2437,
+        skipForLvl = 90,
         _index = 586,
     },
     {
@@ -33062,6 +33241,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6039.7, y = 6139.8 },
         TrigText = "5/6",
         Zone = 2437,
+        skipForLvl = 90,
         _index = 587,
     },
     {
@@ -33069,6 +33249,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6109.4, y = 6208.1 },
         TrigText = "6/6",
         Zone = 2437,
+        skipForLvl = 90,
         _index = 588,
     },
     {
@@ -33076,18 +33257,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6166.5, y = 6161 },
         Range = 30,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 589,
     },
     {
         Done = { 93093, 93094 },
         Coord = { x = -6231.3, y = 6300 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 590,
     },
     {
         PickUp = { 93095 },
         Coord = { x = -6231.3, y = 6300 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 591,
     },
     {
@@ -33095,6 +33279,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6000.5, y = 6066.9 },
         Range = 5,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 592,
     },
     {
@@ -33102,6 +33287,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -5934.1, y = 6063.7 },
         Range = 1,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 593,
     },
     {
@@ -33109,18 +33295,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -5963.7, y = 6062.5 },
         Range = 5,
         Zone = 2437,
+        skipForLvl = 90,
         _index = 594,
     },
     {
         Done = { 93095 },
         Coord = { x = -6231.2, y = 6300.1 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 595,
     },
     {
         PickUp = { 93096 },
         Coord = { x = -6231.2, y = 6300.1 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 596,
     },
     {
@@ -33128,6 +33317,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6266.7, y = 5811.8 },
         GossipOptionIDs = { 137662 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 597,
     },
     {
@@ -33135,6 +33325,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -6266.7, y = 5811.8 },
         GossipOptionIDs = { 137662 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 598,
     },
     {
@@ -33311,6 +33502,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Done = { 93096 },
         Coord = { x = -7604.2, y = 4327.5 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 622,
     },
     {
@@ -33521,6 +33713,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 93792 },
         Coord = { x = -7502.3, y = 4172.2 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 650,
     },
     {
@@ -33528,12 +33721,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -7508, y = 4168.3 },
         GossipOptionIDs = { 133887 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 651,
     },
     {
         Done = { 93792 },
         Coord = { x = -7502.3, y = 4172.1 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 652,
     },
     {
@@ -33782,6 +33977,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Done = { 93410 },
         Coord = { x = -7708.4, y = 4421.4 },
         Zone = 2437,
+        skipForLvl = 90,
         _index = 685,
     },
     {
@@ -34010,6 +34206,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Done = { 86840 },
         Coord = { x = -5266.7, y = 2264.9 },
+        IsCampaignQuest = true,
         Zone = 23,
         _index = 714,
     },
@@ -35921,12 +36118,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 90533 },
         Coord = { x = 13.7, y = 216 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 956,
     },
     {
         PickUp = { 91550 },
         Coord = { x = -113.4, y = 290.4 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 957,
     },
     {
@@ -35934,6 +36133,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -113.4, y = 290.4 },
         GossipOptionIDs = { 134812 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 958,
     },
     {
@@ -35941,6 +36141,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -172.7, y = 351.3 },
         TrigText = "1/4",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 959,
     },
     {
@@ -35948,6 +36149,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -236.2, y = 468.3 },
         TrigText = "2/4",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 960,
     },
     {
@@ -35955,6 +36157,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -311.1, y = 430.5 },
         TrigText = "3/4",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 961,
     },
     {
@@ -35962,18 +36165,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -337.8, y = 531.6 },
         TrigText = "4/4",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 962,
     },
     {
         Done = { 91550 },
         Coord = { x = -502.9, y = 444 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 963,
     },
     {
         PickUp = { 91551, 91552 },
         Coord = { x = -502.9, y = 444 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 964,
     },
     {
@@ -35981,6 +36187,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -626, y = 294.1 },
         TrigText = "1/5",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 965,
     },
     {
@@ -35988,6 +36195,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -695.1, y = 247.5 },
         TrigText = "2/5",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 966,
     },
     {
@@ -35995,6 +36203,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -739.5, y = 201.6 },
         TrigText = "3/5",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 967,
     },
     {
@@ -36002,6 +36211,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -600.7, y = 210 },
         TrigText = "4/5",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 968,
     },
     {
@@ -36009,6 +36219,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -603.1, y = 228.9 },
         TrigText = "5/5",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 969,
     },
     {
@@ -36016,18 +36227,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -657.3, y = 252.1 },
         Range = 30,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 970,
     },
     {
         Done = { 91551, 91552 },
         Coord = { x = -760.1, y = 52.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 971,
     },
     {
         PickUp = { 91553 },
         Coord = { x = -760.1, y = 52.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 972,
     },
     {
@@ -36036,12 +36250,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 5,
         RaidIcon = 247665,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 973,
     },
     {
         Done = { 91553 },
         Coord = { x = -846.7, y = 46.3 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 974,
     },
     {
@@ -36050,6 +36266,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         ExtraLineText = "EXIT_CAVE",
         GossipOptionIDs = { 133239 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 975,
     },
     {
@@ -36057,6 +36274,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -502.7, y = -260.7 },
         BuyMerchant = { { itemID = 241125, quantity = 1, questID = 90533 } },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 976,
     },
     {
@@ -36065,18 +36283,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Button = { ["90533-3"] = 241125 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 977,
     },
     {
         Done = { 90533 },
         Coord = { x = 7.2, y = 216.4 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 978,
     },
     {
         PickUp = { 90534 },
         Coord = { x = 7.2, y = 216.4 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 979,
     },
     {
@@ -36084,6 +36305,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -345.1, y = -21 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 980,
     },
     {
@@ -36092,6 +36314,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         ExtraLineText = "GO_INSIDE_CAVE",
         Range = 15,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 981,
     },
     {
@@ -36100,6 +36323,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         ExtraLineText = "GO_INSIDE_CAVE",
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 982,
     },
     {
@@ -36107,18 +36331,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -473, y = -200.6 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 983,
     },
     {
         Done = { 90534 },
         Coord = { x = -305.3, y = 29.4 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 984,
     },
     {
         PickUp = { 90535 },
         Coord = { x = -306.5, y = 31.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 985,
     },
     {
@@ -36126,6 +36353,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -306.7, y = 26.2 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 986,
     },
     {
@@ -36133,30 +36361,35 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -309, y = 28 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 987,
     },
     {
         Done = { 90535 },
         Coord = { x = -306.6, y = 31.3 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 988,
     },
     {
         PickUp = { 91872 },
         Coord = { x = 937.7, y = 1266.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 989,
     },
     {
         PickUp = { 90537 },
         Coord = { x = 780.3, y = 1215.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 990,
     },
     {
         PickUp = { 91585, 91586, 91587 },
         Coord = { x = 484, y = 1357.1 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 991,
     },
     {
@@ -36165,6 +36398,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 5,
         RaidIcon = 248598,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 992,
     },
     {
@@ -36172,6 +36406,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 621.6, y = 1388.8 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 993,
     },
     {
@@ -36179,18 +36414,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 530.3, y = 1304.1 },
         Range = 45,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 994,
     },
     {
         Done = { 91585, 91587, 91586 },
         Coord = { x = 484, y = 1356.8 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 995,
     },
     {
         PickUp = { 91588 },
         Coord = { x = 484, y = 1356.8 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 996,
     },
     {
@@ -36198,6 +36436,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 470.4, y = 1339.2 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 997,
     },
     {
@@ -36205,6 +36444,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 536.7, y = 1383.6 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 998,
     },
     {
@@ -36212,18 +36452,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 571.9, y = 1421.4 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 999,
     },
     {
         Done = { 91588 },
         Coord = { x = 484.4, y = 1356.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1000,
     },
     {
         PickUp = { 91589 },
         Coord = { x = 484.4, y = 1356.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1001,
     },
     {
@@ -36231,6 +36474,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 493, y = 1358.1 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1002,
     },
     {
@@ -36238,6 +36482,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 807.4, y = 1170.9 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1003,
     },
     {
@@ -36245,24 +36490,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 812.1, y = 1169.8 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1004,
     },
     {
         Done = { 91589 },
         Coord = { x = 802.4, y = 1172 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1005,
     },
     {
         Done = { 91872 },
         Coord = { x = 357.2, y = 805.2 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1006,
     },
     {
         PickUp = { 91873 },
         Coord = { x = 357.2, y = 805.2 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1007,
     },
     {
@@ -36270,18 +36519,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 508.1, y = 870.5 },
         Range = 85,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1008,
     },
     {
         Done = { 91873 },
         Coord = { x = 374.4, y = 801.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1009,
     },
     {
         PickUp = { 91875 },
         Coord = { x = 374.4, y = 801.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1010,
     },
     {
@@ -36289,18 +36541,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 385.8, y = 880.3 },
         Range = 100,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1011,
     },
     {
         Done = { 91875 },
         Coord = { x = 364.7, y = 790 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1012,
     },
     {
         PickUp = { 91874 },
         Coord = { x = 364.7, y = 790 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1013,
     },
     {
@@ -36308,18 +36563,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 893.8, y = 676.6 },
         Range = 100,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1014,
     },
     {
         Done = { 91874 },
         Coord = { x = 355, y = 831.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1015,
     },
     {
         PickUp = { 91876 },
         Coord = { x = 355, y = 831.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1016,
     },
     {
@@ -36327,6 +36585,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 347.4, y = 831.5 },
         TrigText = "1/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1017,
     },
     {
@@ -36334,6 +36593,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 344.5, y = 823.8 },
         TrigText = "2/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1018,
     },
     {
@@ -36341,6 +36601,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 346.8, y = 807.9 },
         TrigText = "3/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1019,
     },
     {
@@ -36348,6 +36609,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 345.4, y = 814.5 },
         TrigText = "4/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1020,
     },
     {
@@ -36355,6 +36617,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 357, y = 809.4 },
         TrigText = "5/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1021,
     },
     {
@@ -36362,6 +36625,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 346.7, y = 785.4 },
         TrigText = "6/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1022,
     },
     {
@@ -36369,6 +36633,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 361.3, y = 790.3 },
         TrigText = "7/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1023,
     },
     {
@@ -36376,6 +36641,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 367.5, y = 790.1 },
         TrigText = "8/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1024,
     },
     {
@@ -36383,6 +36649,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 372.5, y = 797.8 },
         TrigText = "9/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1025,
     },
     {
@@ -36390,6 +36657,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 372.3, y = 800.6 },
         TrigText = "10/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1026,
     },
     {
@@ -36397,6 +36665,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 380.5, y = 819.2 },
         TrigText = "11/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1027,
     },
     {
@@ -36404,12 +36673,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 375.7, y = 824.4 },
         TrigText = "12/12",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1028,
     },
     {
         Done = { 91876 },
         Coord = { x = 359.3, y = 820.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1029,
     },
     {
@@ -36417,6 +36688,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -112.5, y = 907.7 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1030,
     },
     {
@@ -36424,6 +36696,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -107.8, y = 912.9 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1031,
     },
     {
@@ -36431,6 +36704,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -110.8, y = 902.2 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1032,
     },
     {
@@ -36438,18 +36712,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -117, y = 904.9 },
         GossipOptionIDs = { 133929 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1033,
     },
     {
         Done = { 90537 },
         Coord = { x = -127, y = 1025.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1034,
     },
     {
         PickUp = { 90540, 90569 },
         Coord = { x = -127, y = 1025.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1035,
     },
     {
@@ -36457,18 +36734,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -95.3, y = 1184.3 },
         Range = 60,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1036,
     },
     {
         Done = { 90569, 90540 },
         Coord = { x = -126.9, y = 1025.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1037,
     },
     {
         PickUp = { 90467, 90468 },
         Coord = { x = -1554.1, y = 1139.4 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1038,
     },
     {
@@ -36476,6 +36756,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1661.1, y = 999.3 },
         TrigText = "1/6",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1039,
     },
     {
@@ -36483,6 +36764,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1692.8, y = 1031.5 },
         TrigText = "2/6",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1040,
     },
     {
@@ -36490,6 +36772,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1737.4, y = 1019 },
         TrigText = "3/6",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1041,
     },
     {
@@ -36497,6 +36780,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1744.9, y = 993.5 },
         TrigText = "4/6",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1042,
     },
     {
@@ -36504,6 +36788,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1753.5, y = 944.1 },
         TrigText = "5/6",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1043,
     },
     {
@@ -36511,6 +36796,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1740.9, y = 910.9 },
         TrigText = "6/6",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1044,
     },
     {
@@ -36518,18 +36804,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1674.7, y = 953.1 },
         Range = 30,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1045,
     },
     {
         Done = { 90467, 90468 },
         Coord = { x = -1676.9, y = 1051.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1046,
     },
     {
         PickUp = { 90469 },
         Coord = { x = -1676.9, y = 1051.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1047,
     },
     {
@@ -36537,69 +36826,86 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1698.3, y = 1186.1 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1048,
     },
     {
         Done = { 90469 },
         Coord = { x = -1698.7, y = 1186.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1049,
     },
     {
         PickUp = { 90470 },
         Coord = { x = -1698.7, y = 1186.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1050,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1750.5, y = 1219.2 },
+        SpellButton = { ["90470-2"] = 1231371 },
         ExtraActionB = true,
         TrigText = "15%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1051,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1796.7, y = 1210.2 },
+        SpellButton = { ["90470-2"] = 1231371 },
         ExtraActionB = true,
         TrigText = "30%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1052,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1786.9, y = 1201.1 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "35%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1053,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1785.7, y = 1180.6 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "40%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1054,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1806.4, y = 1158.9 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "45%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1055,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1823, y = 1160.1 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "50%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1056,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1826.6, y = 1145 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "55%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1057,
     },
     {
@@ -36607,35 +36913,44 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1800.6, y = 1133 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1058,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1807.4, y = 1105.3 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "60%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1059,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1808, y = 1090.8 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "65%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1060,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1816.6, y = 1083.5 },
+        SpellButton = { ["90470-2"] = 1231371 },
         TrigText = "70%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1061,
     },
     {
         QpartPart = { [90470] = { 1 } },
         Coord = { x = -1833.1, y = 1075.3 },
+        SpellButton = { ["90470-2"] = 1231371 },
         ExtraActionB = true,
         TrigText = "85%",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1062,
     },
     {
@@ -36643,18 +36958,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1832.5, y = 1094.2 },
         ExtraActionB = true,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1063,
     },
     {
         Done = { 90470 },
         Coord = { x = -1698.8, y = 1186.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1064,
     },
     {
         PickUp = { 90474 },
         Coord = { x = -1698.8, y = 1186.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1065,
     },
     {
@@ -36663,37 +36981,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 2,
         ExtraActionB = true,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1066,
     },
     {
         Done = { 90474 },
         Coord = { x = -1431, y = 1240 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1067,
-    },
-    {
-        PickUp = { 91361 },
-        Coord = { x = -1377.3, y = 1110.7 },
-        Zone = 2413,
-        _index = 1068,
-    },
-    {
-        Qpart = { [91361] = { 1 } },
-        Coord = { x = -1442.9, y = 1182 },
-        Range = 30,
-        Zone = 2413,
-        _index = 1069,
-    },
-    {
-        Done = { 91361 },
-        Coord = { x = -1377.5, y = 1110.8 },
-        Zone = 2413,
-        _index = 1070,
     },
     {
         PickUp = { 91063 },
         Coord = { x = -1372.2, y = 1384.2 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1071,
     },
     {
@@ -36707,12 +37009,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Done = { 91063 },
         Coord = { x = -1027, y = 1018.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1073,
     },
     {
         PickUp = { 91065, 91086, 91085 },
         Coord = { x = -1027, y = 1018.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1074,
     },
     {
@@ -36721,6 +37025,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 5,
         RaidIcon = 237655,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1075,
     },
     {
@@ -36728,6 +37033,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -550.6, y = 1099 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1076,
     },
     {
@@ -36735,6 +37041,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -611.4, y = 1097.2 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1077,
     },
     {
@@ -36742,6 +37049,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -610.9, y = 981.4 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1078,
     },
     {
@@ -36749,6 +37057,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -574.9, y = 908.1 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1079,
     },
     {
@@ -36756,18 +37065,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -578, y = 1006.2 },
         Range = 45,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1080,
     },
     {
         Done = { 91065, 91085, 91086 },
         Coord = { x = -1026.8, y = 1018.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1081,
     },
     {
         PickUp = { 91088 },
         Coord = { x = -1026.8, y = 1018.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1082,
     },
     {
@@ -36776,6 +37088,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         ExtraLineText = "ENTER_CAVE_BEHIND_WATERFALL",
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1083,
     },
     {
@@ -36783,12 +37096,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -669.4, y = 1273.7 },
         ExtraLineText = "ENTER_CAVE_BEHIND_WATERFALL",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1084,
     },
     {
         PickUp = { 91136 },
         Coord = { x = -669.4, y = 1273.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1085,
     },
     {
@@ -36796,6 +37111,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -669.4, y = 1273.7 },
         GossipOptionIDs = { 134219 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1086,
     },
     {
@@ -36804,12 +37120,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 134219 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1087,
     },
     {
         Done = { 91136 },
         Coord = { x = -639.5, y = 1187.8 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1088,
     },
     {
@@ -37076,30 +37394,35 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 92882 },
         Coord = { x = -1677.8, y = -140.2 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1123,
     },
     {
         PickUp = { 90615 },
         Coord = { x = -1746.4, y = -143.1 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1124,
     },
     {
         PickUp = { 93421 },
         Coord = { x = -1809.9, y = -101.2 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1125,
     },
     {
         PickUp = { 92694 },
         Coord = { x = -1762.6, y = -56.8 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1126,
     },
     {
         PickUp = { 92865, 92864 },
         Coord = { x = -1686.8, y = -25 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1127,
     },
     {
@@ -37107,18 +37430,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1757.3, y = -32.7 },
         GossipOptionIDs = { 136773, 136774 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1128,
     },
     {
         Done = { 92882 },
         Coord = { x = -1757.3, y = -32.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1129,
     },
     {
         PickUp = { 92883 },
         Coord = { x = -1757.3, y = -32.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1130,
     },
     {
@@ -37127,6 +37453,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 137251 },
         TrigText = "1/2",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1131,
     },
     {
@@ -37135,6 +37462,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 137250 },
         TrigText = "2/2",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1132,
     },
     {
@@ -37142,6 +37470,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1848.8, y = 593.5 },
         Range = 30,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1133,
     },
     {
@@ -37149,6 +37478,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1682.5, y = 561.8 },
         Range = 45,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1134,
     },
     {
@@ -37157,6 +37487,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 100,
         ExtraActionB = true,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1135,
     },
     {
@@ -37165,18 +37496,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 5,
         ExtraActionB = true,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1136,
     },
     {
         Done = { 92864, 92865 },
         Coord = { x = -1687, y = -25.2 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1137,
     },
     {
         PickUp = { 92866 },
         Coord = { x = -1687, y = -25.2 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1138,
     },
     {
@@ -37185,6 +37519,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 137321 },
         TrigText = "1/4",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1139,
     },
     {
@@ -37193,6 +37528,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 137325 },
         TrigText = "2/4",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1140,
     },
     {
@@ -37202,6 +37538,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 5,
         TrigText = "3/4",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1141,
     },
     {
@@ -37210,18 +37547,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 137323 },
         TrigText = "4/4",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1142,
     },
     {
         Done = { 92883 },
         Coord = { x = -1720.5, y = -142.4 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1143,
     },
     {
         PickUp = { 92884 },
         Coord = { x = -1720.5, y = -142.4 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1144,
     },
     {
@@ -37229,6 +37569,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1722.6, y = -132.7 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1145,
     },
     {
@@ -37236,6 +37577,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1723.1, y = -131.8 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1146,
     },
     {
@@ -37243,6 +37585,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1718.4, y = -137.8 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1147,
     },
     {
@@ -37250,18 +37593,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1757.6, y = -32.8 },
         GossipOptionIDs = { 136842 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1148,
     },
     {
         Done = { 92884 },
         Coord = { x = -1757.6, y = -32.8 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1149,
     },
     {
         PickUp = { 92885 },
         Coord = { x = -1757.6, y = -32.8 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1150,
     },
     {
@@ -37269,6 +37615,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1716, y = 233.1 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1151,
     },
     {
@@ -37276,6 +37623,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1643.7, y = 402.4 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1152,
     },
     {
@@ -37283,6 +37631,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1817.4, y = 451.9 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1153,
     },
     {
@@ -37290,24 +37639,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1813.1, y = 491.7 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1154,
     },
     {
         Done = { 92866 },
         Coord = { x = -1687.2, y = -25.9 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1155,
     },
     {
         Done = { 92694 },
         Coord = { x = -2027.4, y = -151.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1156,
     },
     {
         PickUp = { 92695 },
         Coord = { x = -2027.4, y = -151.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1157,
     },
     {
@@ -37315,6 +37668,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1894.3, y = -283.5 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1158,
     },
     {
@@ -37322,6 +37676,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1905.8, y = -219.7 },
         Range = 45,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1159,
     },
     {
@@ -37329,18 +37684,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1894.7, y = -283.2 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1160,
     },
     {
         Done = { 92695 },
         Coord = { x = -1902.4, y = -284.2 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1161,
     },
     {
         PickUp = { 92696 },
         Coord = { x = -1902.4, y = -284.2 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1162,
     },
     {
@@ -37348,18 +37706,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1885.8, y = -369 },
         Range = 30,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1163,
     },
     {
         Done = { 90615 },
         Coord = { x = -1856.4, y = -706.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1164,
     },
     {
         PickUp = { 90616 },
         Coord = { x = -1856.4, y = -706.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1165,
     },
     {
@@ -37367,18 +37728,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1843.7, y = -808.3 },
         Range = 30,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1166,
     },
     {
         Done = { 90616 },
         Coord = { x = -1856.4, y = -706.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1167,
     },
     {
         PickUp = { 90617 },
         Coord = { x = -1856.4, y = -706.5 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1168,
     },
     {
@@ -37386,6 +37750,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1869.7, y = -748.3 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1169,
     },
     {
@@ -37394,6 +37759,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 135600 },
         TrigText = "1/3",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1170,
     },
     {
@@ -37402,6 +37768,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 135599 },
         TrigText = "2/3",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1171,
     },
     {
@@ -37410,18 +37777,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 135601 },
         TrigText = "3/3",
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1172,
     },
     {
         Done = { 90617 },
         Coord = { x = -1856.4, y = -706.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1173,
     },
     {
         PickUp = { 90619 },
         Coord = { x = -1856.4, y = -706.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1174,
     },
     {
@@ -37430,6 +37800,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 135664 },
         Range = 2,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1175,
     },
     {
@@ -37439,6 +37810,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Range = 2,
         Zone = 2413,
         _comment = "insertNextHere",
+        skipForLvl = 90,
         _index = 1176,
     },
     {
@@ -37446,30 +37818,35 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1866.1, y = -634.9 },
         GossipOptionIDs = { 135663 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1177,
     },
     {
         Done = { 90619 },
         Coord = { x = -1883.3, y = -646.3 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1178,
     },
     {
         PickUp = { 91450 },
         Coord = { x = -1883.3, y = -646.3 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1179,
     },
     {
         Done = { 91450 },
         Coord = { x = -1856.8, y = -706.1 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1180,
     },
     {
         PickUp = { 91270 },
         Coord = { x = -1858.4, y = -700.3 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1181,
     },
     {
@@ -37477,6 +37854,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1858.4, y = -700.3 },
         GossipOptionIDs = { 136989, 136986, 136991 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1182,
     },
     {
@@ -37484,6 +37862,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1860.8, y = -703.2 },
         GossipOptionIDs = { 136989, 136986, 136991 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1183,
     },
     {
@@ -37491,6 +37870,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1854.7, y = -701.8 },
         GossipOptionIDs = { 136989, 136986, 136991 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1184,
     },
     {
@@ -37498,18 +37878,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1858.5, y = -700 },
         GossipOptionIDs = { 136990, 135670 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1185,
     },
     {
         Done = { 91270 },
         Coord = { x = -1858.5, y = -700 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1186,
     },
     {
         PickUp = { 90620 },
         Coord = { x = -1856.8, y = -706.3 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1187,
     },
     {
@@ -37517,6 +37900,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1869.3, y = -748 },
         Range = 1,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1188,
     },
     {
@@ -37524,18 +37908,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1844.8, y = -806.7 },
         Range = 10,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1189,
     },
     {
         Done = { 90620 },
         Coord = { x = -1855.1, y = -701.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1190,
     },
     {
         PickUp = { 90621 },
         Coord = { x = -1856.5, y = -706.9 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1191,
     },
     {
@@ -37543,6 +37930,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1857.6, y = -701.1 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1192,
     },
     {
@@ -37550,6 +37938,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1869.2, y = -748.8 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1193,
     },
     {
@@ -37557,6 +37946,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1545.2, y = -872.2 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1194,
     },
     {
@@ -37564,6 +37954,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1545.2, y = -872.2 },
         GossipOptionIDs = { 136164, 136163, 136162 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1195,
     },
     {
@@ -37571,12 +37962,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1544.8, y = -872.9 },
         GossipOptionIDs = { 136164, 136163, 136162 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1196,
     },
     {
         Done = { 92618 },
         Coord = { x = -1544.8, y = -872.9 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1197,
     },
     {
@@ -37584,24 +37977,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1652.6, y = -836.7 },
         Range = 30,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1198,
     },
     {
         Done = { 92616, 92617 },
         NoArrow = true,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1199,
     },
     {
         Done = { 90621 },
         Coord = { x = -1856.9, y = -706.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1200,
     },
     {
         PickUp = { 90622 },
         Coord = { x = -1856.9, y = -706.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1201,
     },
     {
@@ -37609,6 +38006,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1834.4, y = -815.5 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1202,
     },
     {
@@ -37616,12 +38014,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1842.7, y = -804.5 },
         Range = 15,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1203,
     },
     {
         Done = { 90622 },
         Coord = { x = -1856.6, y = -706.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1204,
     },
     {
@@ -37647,18 +38047,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Done = { 93421 },
         Coord = { x = -1856.8, y = -706.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1208,
     },
     {
         Done = { 92696 },
         Coord = { x = -1902.3, y = -284.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1209,
     },
     {
         PickUp = { 92697 },
         Coord = { x = -1902.3, y = -284.7 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1210,
     },
     {
@@ -37666,6 +38069,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -2024.3, y = -159 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1211,
     },
     {
@@ -37673,6 +38077,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1647, y = -246.1 },
         GossipOptionIDs = { 136855 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1212,
     },
     {
@@ -37680,18 +38085,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = -1623.3, y = -209.1 },
         Range = 5,
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1213,
     },
     {
         Done = { 92885 },
         Coord = { x = -1758.1, y = -32.6 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1214,
     },
     {
         Done = { 92697 },
         Coord = { x = -2025.2, y = -156.1 },
         Zone = 2413,
+        skipForLvl = 90,
         _index = 1215,
     },
     {
@@ -38118,6 +38526,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Done = { 86884 },
         Coord = { x = -5716.1, y = 6431.7 },
+        IsCampaignQuest = true,
         Zone = 2395,
         _index = 1270,
     },
@@ -38686,6 +39095,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 91557 },
         Coord = { x = 1195.3, y = 1670.4 },
         Zone = 2405,
+        skipForLvl = 90,
         _index = 1344,
     },
     {
@@ -38787,12 +39197,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Done = { 91557 },
         Coord = { x = 1151.9, y = 2382 },
         Zone = 2405,
+        skipForLvl = 90,
         _index = 1357,
     },
     {
         PickUp = { 91559, 91558 },
         Coord = { x = 1151.9, y = 2382 },
         Zone = 2405,
+        skipForLvl = 90,
         _index = 1358,
     },
     {
@@ -38800,12 +39212,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Coord = { x = 1245.9, y = 2471.5 },
         Range = 60,
         Zone = 2405,
+        skipForLvl = 90,
         _index = 1359,
     },
     {
         Done = { 91559, 91558 },
         Coord = { x = 1282.8, y = 2686.3 },
         Zone = 2405,
+        skipForLvl = 90,
         _index = 1360,
     },
     {
