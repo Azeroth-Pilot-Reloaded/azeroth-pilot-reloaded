@@ -406,10 +406,18 @@ function APR.transport:GetMeToRightZone(isRetry)
     throttle.lastCall = now
 
     -- After 5 checks, only proceed if a zone event reset the flag
-    if throttle.count > 5 and not self._routingForceRefresh then
+    if throttle.count > 15 and not self._routingForceRefresh then
         return
     end
     self._routingForceRefresh = nil
+
+    -- Guard: if the map API is not ready yet (loading screen / transition), bail out.
+    -- The delayed PLAYER_ENTERING_WORLD timer will retry once the data is stable.
+    local bestMap = C_Map.GetBestMapForUnit("player")
+    if not bestMap then
+        APR:Debug("GetMeToRightZone: map API not ready (nil), skipping")
+        return
+    end
 
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
 

@@ -305,8 +305,22 @@ function APR:UpdateStep()
                 APR:UpdateNextStep()
             end
 
-            APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
-                L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name, mapInfo.name)
+            if scenarioInfo then
+                APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
+                    L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name, mapInfo.name)
+            end
+        elseif step.LeaveInstance then
+            local instanceMapID = step.LeaveInstance
+            local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Leave Instance", instanceMapID)
+
+            if isCompleted and instanceMapID ~= currentMapID then
+                APR:UpdateNextStep()
+            end
+
+            if scenarioInfo then
+                APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
+                    L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name, mapInfo.name)
+            end
         end
 
         if step.Buffs then

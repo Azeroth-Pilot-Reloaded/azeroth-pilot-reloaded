@@ -916,12 +916,21 @@ function APR.event.functions.scenario(event, ...)
     end
 
     if event == "ZONE_CHANGED_NEW_AREA" then
-        if step and step.LeaveScenario then
-            local scenarioMapID = step.LeaveScenario
+        if step and (step.LeaveScenario or step.LeaveInstance) then
             local mapID = C_Map.GetBestMapForUnit('player')
-            local IsScenarioInstance = APR:IsScenarioInstance()
-            if scenarioMapID ~= mapID and not IsScenarioInstance then
-                APR:UpdateNextStep()
+            if step.LeaveScenario then
+                local scenarioMapID = step.LeaveScenario
+                local IsScenarioInstance = APR:IsScenarioInstance()
+                if scenarioMapID ~= mapID and not IsScenarioInstance then
+                    APR:UpdateNextStep()
+                end
+            end
+            if step.LeaveInstance then
+                local instanceMapID = step.LeaveInstance
+                local isInstance, instanceType = IsInInstance()
+                if instanceMapID ~= mapID and not isInstance then
+                    APR:UpdateNextStep()
+                end
             end
         end
     end
@@ -1077,9 +1086,18 @@ function APR.event.functions.zone(event, ...)
             APR.transport._routingThrottle.firstCall = GetTime()
         end
         APR.transport._routingForceRefresh = true
-        C_Timer.After(0.3, function()
+        -- Flag that we are transitioning (loading screen / instance exit / teleport).
+        -- Zone change events that fire during this window should NOT call GetMeToRightZone
+        -- immediately because the map API is not yet reliable.
+        APR.transport._worldTransitionTime = GetTime()
+        C_Timer.After(0.5, function()
+            APR.transport._worldTransitionTime = nil
             local profile = APR:GetSettingsProfile()
             if APR.ActiveRoute and profile and profile.enableAddon then
+                -- Invalidate caches one more time now that the map API should be stable
+                APR:InvalidatePlayerZoneCache()
+                APR._lastRouteZoneCheck = nil
+                APR._lastRouteZoneResult = nil
                 APR.transport:GetMeToRightZone()
             end
         end)
@@ -1105,6 +1123,14 @@ function APR.event.functions.zone(event, ...)
         if IsInInstance() and not APR:IsInstanceWithUI() then
             return
         end
+
+        -- If we are still in the PLAYER_ENTERING_WORLD transition window (instance exit,
+        -- teleport, loading screen), skip the immediate check.  The delayed timer from
+        -- PLAYER_ENTERING_WORLD will handle it once the map API is stable.
+        if APR.transport._worldTransitionTime and (GetTime() - APR.transport._worldTransitionTime) < 0.5 then
+            return
+        end
+
         if not APR.IsInRouteZone and APR.ActiveRoute then
             APR.transport:GetMeToRightZone()
         end

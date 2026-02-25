@@ -163,10 +163,10 @@ function APR:CheckIsInRouteZone()
         "} | AllRelevant: {" .. table.concat(playerContext.allRelevant or {}, ", ") .. "}")
 
     -- Early return if player context is invalid (loading screen, dead, etc)
+    -- Do NOT cache this result: the context will become valid once the transition ends,
+    -- and we want a fresh check on the very next call.
     if not playerContext.allRelevant or #playerContext.allRelevant == 0 then
-        self:PrintZoneDebug("Player context empty (loading/transitioning) - skipping checks")
-        self._lastRouteZoneCheck = now
-        self._lastRouteZoneResult = false
+        self:PrintZoneDebug("Player context empty (loading/transitioning) - skipping checks (not cached)")
         return false
     end
 
