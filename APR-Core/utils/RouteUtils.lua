@@ -274,10 +274,14 @@ end
 
 --- Evaluate skip/visibility conditions for a step.
 function APR:StepFilterQuestHandler(step)
+    local playerLevel = self.Level or UnitLevel("player") or 0
+    local skipForLvl = step.SkipForLvl or step.skipforlvl
+
     return (step.Faction and step.Faction ~= self.Faction) or
         (step.Race and not tContains(step.Race, self.Race)) or
         (step.Gender and step.Gender ~= self.Gender) or
         (step.Class and not tContains(step.Class, self.ClassName)) or
+        (skipForLvl and playerLevel >= skipForLvl) or
         (step.HasAchievement and not self:HasAchievement(step.HasAchievement)) or
         (step.DontHaveAchievement and self:HasAchievement(step.DontHaveAchievement)) or
         (step.HasAura and not self:HasAura(step.HasAura)) or
@@ -297,10 +301,14 @@ end
 
 --- Quality-of-life variant of the step filter that returns true when the step should be shown.
 function APR:StepFilterQoL(step)
+    local playerLevel = self.Level or UnitLevel("player") or 0
+    local skipForLvl = step.SkipForLvl or step.skipforlvl
+
     return (not step.Faction or step.Faction == self.Faction) and
         (not step.Race or tContains(step.Race, self.Race)) and
         (not step.Gender or step.Gender == self.Gender) and
         (not step.Class or tContains(step.Class, self.ClassName)) and
+        (not skipForLvl or playerLevel < skipForLvl) and
         (not step.HasAchievement or self:HasAchievement(step.HasAchievement)) and
         (not step.DontHaveAchievement or not self:HasAchievement(step.DontHaveAchievement)) and
         (not step.HasAura or self:HasAura(step.HasAura)) and
