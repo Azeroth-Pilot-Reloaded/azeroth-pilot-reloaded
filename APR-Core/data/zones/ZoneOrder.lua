@@ -1679,7 +1679,7 @@ APR.ZonesData = {
             [2535] = { Coord = { x = -5861.7, y = 5135.6 }, zone = 2395, name = "Atal'Aman", type = "DELVE" },
             [2503] = { Coord = { x = -5915.6, y = 3258 }, zone = 2437, name = "Twilight Crypts", type = "DELVE" },
             -- Harandar
-            [2505] = { Coord = { x = 798, y = 23.9 }, zone = 2413, name = "GULD OF MEMORY", type = "DELVE" },
+            [2505] = { Coord = { x = 798, y = 21.7 }, zone = 2413, name = "GULD OF MEMORY", type = "DELVE" },
             [2510] = { Coord = { x = -1796.8, y = -784.9 }, zone = 2413, name = "The Grudge Pit", type = "DELVE" },
             -- Quel'Danas
             [2515] = { Coord = { x = -4966.9, y = 11637.6 }, zone = 2424, name = "Magisters Terrace", type = "DUNGEON" },
