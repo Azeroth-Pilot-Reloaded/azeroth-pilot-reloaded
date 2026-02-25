@@ -3060,6 +3060,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
     {
         PickUp = { 93372 },
         Coord = { x = 169, y = -48.5 },
+        HasAchievement = 42045,
         InstanceQuest = true,
         Zone = 2395,
         _index = 271,
@@ -4894,6 +4895,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
     {
         Done = { 93372 },
         Coord = { x = -4816.2, y = 8315.5 },
+        HasAchievement = 42045,
         Range = 5,
         Zone = 2395,
         _index = 526,
@@ -8515,7 +8517,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
     {
         PickUp = { 94993 },
         Coord = { x = -4614.8, y = 8456.1 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 1,
@@ -8532,7 +8534,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
     {
         Done = { 94993 },
         Coord = { x = -4614.8, y = 8456.1 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 3,
@@ -9807,7 +9809,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         PickUp = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 2,
@@ -9824,7 +9826,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         Done = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 4,
@@ -14012,14 +14014,14 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
     {
         Grind = 83,
         NoArrow = true,
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         Zone = 2395,
         _index = 1,
     },
     {
         PickUp = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 2,
@@ -14036,7 +14038,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
     {
         Done = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 4,
@@ -15599,7 +15601,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         PickUp = { 94993 },
         Coord = { x = -4616.5, y = 8581.2 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 2,
@@ -15616,7 +15618,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         Done = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 4,
@@ -19497,14 +19499,14 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
     {
         Grind = 83,
         NoArrow = true,
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         Zone = 2395,
         _index = 1,
     },
     {
         PickUp = { 94993 },
         Coord = { x = -4616.5, y = 8581.2 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 2,
@@ -19521,7 +19523,7 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
     {
         Done = { 94993 },
         Coord = { x = -4613.2, y = 8456.9 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 4,
@@ -21270,7 +21272,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         PickUp = { 94993 },
         Coord = { x = -4614.8, y = 8456.2 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 2,
@@ -21287,7 +21289,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Done = { 94993 },
         Coord = { x = -4614.8, y = 8456.2 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 4,
@@ -25710,7 +25712,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Grind = 88,
         NoArrow = true,
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 1,
@@ -25718,7 +25720,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         PickUp = { 94993 },
         Coord = { x = -4614.8, y = 8456.2 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 2,
@@ -25735,7 +25737,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Done = { 94993 },
         Coord = { x = -4614.8, y = 8456.2 },
-        DontHaveAchievement = 42045,
+        DontHasAchievement = 42045,
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 4,
@@ -30673,6 +30675,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         PickUp = { 93372 },
         Coord = { x = 169, y = -48.5 },
         InstanceQuest = true,
+        HasAchievement = 42045,
         Zone = 2395,
         _index = 268,
     },
@@ -31508,6 +31511,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Done = { 93372 },
         Coord = { x = -4816.2, y = 8315.5 },
+        HasAchievement = 42045,
         Range = 5,
         Zone = 2395,
         _index = 374,
