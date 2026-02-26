@@ -968,14 +968,8 @@ APR.RouteQuestStepList["2432-Midnight-Intro"] = {
         _index = 98,
     },
     {
-        PickUp = { 86733 },
-        Coord = { x = -4614.4, y = 10085.4 },
-        Zone = 2424,
-        _index = 99,
-    },
-    {
         RouteCompleted = true,
-        _index = 100,
+        _index = 99,
     },
 }
 
