@@ -275,7 +275,7 @@ end
 --- Evaluate skip/visibility conditions for a step.
 function APR:StepFilterQuestHandler(step)
     local playerLevel = self.Level or UnitLevel("player") or 0
-    local skipForLvl = step.SkipForLvl or step.skipforlvl
+    local skipForLvl = tonumber(step.SkipForLvl)
 
     return (step.Faction and step.Faction ~= self.Faction) or
         (step.Race and not tContains(step.Race, self.Race)) or
@@ -302,7 +302,7 @@ end
 --- Quality-of-life variant of the step filter that returns true when the step should be shown.
 function APR:StepFilterQoL(step)
     local playerLevel = self.Level or UnitLevel("player") or 0
-    local skipForLvl = step.SkipForLvl or step.skipforlvl
+    local skipForLvl = tonumber(step.SkipForLvl or step.skipForLvl or step.skipforlvl)
 
     return (not step.Faction or step.Faction == self.Faction) and
         (not step.Race or tContains(step.Race, self.Race)) and
