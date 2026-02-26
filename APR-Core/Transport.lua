@@ -229,6 +229,7 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
 
     -- Pick the best matching portal (exact nextZone preferred, else closest backup).
     local portal, portalPos = handlePortals(portalDB)
+    local selectedFromCapitalFallback = false
 
     -- Fallback: direct to default capital room
     if not portal and portalDB == APR.Portals.SwitchCont[APR.Faction] then
@@ -237,6 +238,7 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
         else
             portal, portalPos = handlePortalsCapital(portalDB, 12, 85) -- Orgrimmar
         end
+        selectedFromCapitalFallback = portal and true or false
     end
     if not portalPos then
         return nil
@@ -249,6 +251,18 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
     end
     local dx, dy = px - portalPos.x, portalPos.y - py
     local playerDistance = (dx * dx + dy * dy) ^ 0.5
+
+    if portal then
+        APR:PrintZoneDebug(string.format(
+            "Transport selected portal: key=%s | fromCont=%s | toCont=%s | toZone=%s | dist=%.1f | fallbackCapital=%s",
+            tostring(portal.portalKey),
+            tostring(portal.continent),
+            tostring(portal.nextContinent),
+            tostring(portal.nextZone),
+            playerDistance,
+            tostring(selectedFromCapitalFallback)
+        ))
+    end
 
     local playerNodeId, playerNodeName, playerNodeX, playerNodeY = self:ClosestTaxi(px, py)
     local _, portalNodeName, _, _, _ = self:ClosestTaxi(portalPos.x, portalPos.y)

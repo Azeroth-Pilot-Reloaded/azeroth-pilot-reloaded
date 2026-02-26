@@ -105,14 +105,14 @@ APR.Portals.Coords = {
             -- Ringing Deeps
             ["IsleOfDornTunnel"] = { x = -2250.7, y = 2430.6 },
             ["IsleOfDornElevator"] = { x = -3199.5, y = 1686.2 },
-            ["HallowFallGate"] = { x = -2192.5, y = 2622.8 },
+            ["HallowFallGate"] = { x = -2202.5, y = 2624.8 },
             ["AzjKahetEast"] = { x = -2810.5, y = 601.1 },
             ["EnterUndermine"] = { x = -4913.4, y = 310.2 },
             ["ExitUndermine"] = { x = 1062, y = 3.3 },
             ["ExitUndermineTP"] = { x = 846.9, y = -42.6 },
 
             -- hallowfall
-            ["RingingDeepsGate"] = { x = -2254.7, y = 2643.9 },
+            ["RingingDeepsGate"] = { x = -2202.5, y = 2624.8 },
             ["AzjKahetNothEast"] = { x = -1729.7, y = 1381.9 },
             ["AzjKahetNothWest"] = { x = 831.8, y = 234.8 },
 
@@ -241,14 +241,14 @@ APR.Portals.Coords = {
             -- Ringing Deeps
             ["IsleOfDornTunnel"] = { x = -2250.7, y = 2430.6 },
             ["IsleOfDornElevator"] = { x = -3199.5, y = 1686.2 },
-            ["HallowFallGate"] = { x = -2192.5, y = 2622.8 },
+            ["HallowFallGate"] = { x = -2202.5, y = 2624.8 },
             ["AzjKahetEast"] = { x = -2810.5, y = 601.1 },
             ["EnterUndermine"] = { x = -4913.4, y = 310.2 },
             ["ExitUndermine"] = { x = 1062, y = 3.3 },
             ["ExitUndermineTP"] = { x = 846.9, y = -42.6 },
 
             -- hallowfall
-            ["RingingDeepsGate"] = { x = -2254.7, y = 2643.9 },
+            ["RingingDeepsGate"] = { x = -2202.5, y = 2624.8 },
             ["AzjKahetNothEast"] = { x = -1729.7, y = 1381.9 },
             ["AzjKahetNothWest"] = { x = 831.8, y = 234.8 },
 
@@ -546,35 +546,35 @@ APR.Portals.SwitchZones = {
 
 APR.Portals.Spells = {
     --MAGE
-    { nextContinent = 13,   nextZone = 84,   coords = { x = 917.7, y = -9041.0 },    spellID = 3561 },   -- Stormwind
-    { nextContinent = 13,   nextZone = 87,   coords = { x = -915.3, y = -4613.7 },   spellID = 3562 },   --Ironforge
-    { nextContinent = 13,   nextZone = 2070, coords = { x = -101.7, y = 1948.7 },    spellID = 3563 },   -- Undercity
-    { nextContinent = 12,   nextZone = 62,   coords = { x = 46.2, y = 7415.1 },      spellID = 3565 },   --Darnassus
-    { nextContinent = 12,   nextZone = 88,   coords = { x = 284.8, y = -967.4 },     spellID = 3566 },   --Thunder Bluff
-    { nextContinent = 12,   nextZone = 85,   coords = { x = -4499.6, y = 1445.2 },   spellID = 3567 },   --Orgrimmar
-    { nextContinent = 12,   nextZone = 103,  coords = { x = -11569.6, y = -4031.2 }, spellID = 32271 },  -- Exodar
-    { nextContinent = 13,   nextZone = 110,  coords = { x = -7106.6, y = 9998.5 },   spellID = 32272 },  --Silvermoon
-    { nextContinent = 101,  nextZone = 111,  coords = { x = 5417, y = -1824.3 },     spellID = 33690 },  -- Shattrath
-    { nextContinent = 101,  nextZone = 111,  coords = { x = 5442.9, y = -1902.5 },   spellID = 35715 },  --Shattrath
-    { nextContinent = 13,   nextZone = 51,   coords = { x = -3331.5, y = -10469.0 }, spellID = 49358 },  -- Stonard
-    { nextContinent = 12,   nextZone = 70,   coords = { x = -4440.2, y = -3748.1 },  spellID = 49359 },  -- Theramore
-    { nextContinent = 113,  nextZone = 127,  coords = { x = 588.4, y = 5807.8 },     spellID = 53140 },  -- Dalaran (WotLK)
-    { nextContinent = 13,   nextZone = 245,  coords = { x = 1058.7, y = -369.2 },    spellID = 88342 },  -- Tol Barad
-    { nextContinent = 13,   nextZone = 245,  coords = { x = 1387.6, y = -603.7 },    spellID = 88344 },  -- Tol Barad
-    { nextContinent = 424,  nextZone = 390,  coords = { x = 294.9, y = 917.6 },      spellID = 132621 }, --Vale of Eternal Blossoms
-    { nextContinent = 424,  nextZone = 390,  coords = { x = 897.8, y = 1579.7 },     spellID = 132627 }, --Vale of Eternal Blossoms
-    { nextContinent = 572,  nextZone = 588,  coords = { x = -4060.3, y = 5267.8 },   spellID = 176242 }, -- Warspear
-    { nextContinent = 572,  nextZone = 588,  coords = { x = -4055.9, y = 3744.3 },   spellID = 176248 }, -- Stormshield
-    { nextContinent = 619,  nextZone = 734,  coords = { x = 4706.4, y = -935.2 },    spellID = 193759 }, --Hall of the Guardian
-    { nextContinent = 619,  nextZone = 627,  coords = { x = 4371.8, y = -828.7 },    spellID = 224869 }, -- Dalaran (Legion)
-    { nextContinent = 876,  nextZone = 895,  coords = { x = -538.6, y = 1137.4 },    spellID = 281403 }, -- Boralus
-    { nextContinent = 875,  nextZone = 862,  coords = { x = 774.2, y = -1129.2 },    spellID = 281404 }, -- Dazaralor
-    { nextContinent = 1550, nextZone = 1670, coords = { x = 1542.3, y = -1834.2 },   spellID = 344587 }, -- Oribos
-    { nextContinent = 1978, nextZone = 2025, coords = { x = -1048.2, y = 266.7 },    spellID = 395277 }, -- Valdrakken
-    { nextContinent = 2274, nextZone = 2248, coords = { x = -2400.3, y = 2915.7 },   spellID = 446540 }, -- Dornogal
+    { nextContinent = 13,   nextZone = 84,   coords = { x = 917.7, y = -9041.0 },    spellID = 3561 },    -- Stormwind
+    { nextContinent = 13,   nextZone = 87,   coords = { x = -915.3, y = -4613.7 },   spellID = 3562 },    --Ironforge
+    { nextContinent = 13,   nextZone = 2070, coords = { x = -101.7, y = 1948.7 },    spellID = 3563 },    -- Undercity
+    { nextContinent = 12,   nextZone = 62,   coords = { x = 46.2, y = 7415.1 },      spellID = 3565 },    --Darnassus
+    { nextContinent = 12,   nextZone = 88,   coords = { x = 284.8, y = -967.4 },     spellID = 3566 },    --Thunder Bluff
+    { nextContinent = 12,   nextZone = 85,   coords = { x = -4499.6, y = 1445.2 },   spellID = 3567 },    --Orgrimmar
+    { nextContinent = 12,   nextZone = 103,  coords = { x = -11569.6, y = -4031.2 }, spellID = 32271 },   -- Exodar
+    { nextContinent = 13,   nextZone = 110,  coords = { x = -7106.6, y = 9998.5 },   spellID = 32272 },   --Silvermoon
+    { nextContinent = 101,  nextZone = 111,  coords = { x = 5417, y = -1824.3 },     spellID = 33690 },   -- Shattrath
+    { nextContinent = 101,  nextZone = 111,  coords = { x = 5442.9, y = -1902.5 },   spellID = 35715 },   --Shattrath
+    { nextContinent = 13,   nextZone = 51,   coords = { x = -3331.5, y = -10469.0 }, spellID = 49358 },   -- Stonard
+    { nextContinent = 12,   nextZone = 70,   coords = { x = -4440.2, y = -3748.1 },  spellID = 49359 },   -- Theramore
+    { nextContinent = 113,  nextZone = 127,  coords = { x = 588.4, y = 5807.8 },     spellID = 53140 },   -- Dalaran (WotLK)
+    { nextContinent = 13,   nextZone = 245,  coords = { x = 1058.7, y = -369.2 },    spellID = 88342 },   -- Tol Barad
+    { nextContinent = 13,   nextZone = 245,  coords = { x = 1387.6, y = -603.7 },    spellID = 88344 },   -- Tol Barad
+    { nextContinent = 424,  nextZone = 390,  coords = { x = 294.9, y = 917.6 },      spellID = 132621 },  --Vale of Eternal Blossoms
+    { nextContinent = 424,  nextZone = 390,  coords = { x = 897.8, y = 1579.7 },     spellID = 132627 },  --Vale of Eternal Blossoms
+    { nextContinent = 572,  nextZone = 588,  coords = { x = -4060.3, y = 5267.8 },   spellID = 176242 },  -- Warspear
+    { nextContinent = 572,  nextZone = 588,  coords = { x = -4055.9, y = 3744.3 },   spellID = 176248 },  -- Stormshield
+    { nextContinent = 619,  nextZone = 734,  coords = { x = 4706.4, y = -935.2 },    spellID = 193759 },  --Hall of the Guardian
+    { nextContinent = 619,  nextZone = 627,  coords = { x = 4371.8, y = -828.7 },    spellID = 224869 },  -- Dalaran (Legion)
+    { nextContinent = 876,  nextZone = 895,  coords = { x = -538.6, y = 1137.4 },    spellID = 281403 },  -- Boralus
+    { nextContinent = 875,  nextZone = 862,  coords = { x = 774.2, y = -1129.2 },    spellID = 281404 },  -- Dazaralor
+    { nextContinent = 1550, nextZone = 1670, coords = { x = 1542.3, y = -1834.2 },   spellID = 344587 },  -- Oribos
+    { nextContinent = 1978, nextZone = 2025, coords = { x = -1048.2, y = 266.7 },    spellID = 395277 },  -- Valdrakken
+    { nextContinent = 2274, nextZone = 2248, coords = { x = -2400.3, y = 2915.7 },   spellID = 446540 },  -- Dornogal
     { nextContinent = 2537, nextZone = 2393, coords = { x = -4814.6, y = 8550 },     spellID = 1259190 }, -- Silvermoon (Midnight)
     --DRUID
-    { nextContinent = 12,   nextZone = 80,   coords = { x = -2679.8, y = 7995.6 },   spellID = 18960 },  -- Moonglade
+    { nextContinent = 12,   nextZone = 80,   coords = { x = -2679.8, y = 7995.6 },   spellID = 18960 },   -- Moonglade
 
     --DK
     { nextContinent = 13,   nextZone = 23,   coords = { x = -5662.4, y = 2359.6 },   spellID = 50977 }, -- Death Gate (Ebon Hold)

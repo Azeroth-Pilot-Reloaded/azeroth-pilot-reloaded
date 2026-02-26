@@ -386,6 +386,23 @@ function APR:CheckSiblingMatch(playerContext, stepZones)
         return false
     end
 
+    -- Isolated zones require explicit transport/portal handling.
+    -- Never treat any isolated zone as a simple sibling match.
+    if APR.ZoneRestrictions and APR.ZoneRestrictions.IsIsolatedMap then
+        local playerMapID = playerContext.current
+        local playerIsIsolated = playerMapID and APR.ZoneRestrictions.IsIsolatedMap(playerMapID) == true
+
+        if playerIsIsolated then
+            return false
+        end
+
+        for _, stepMapID in ipairs(stepZones) do
+            if APR.ZoneRestrictions.IsIsolatedMap(stepMapID) then
+                return false
+            end
+        end
+    end
+
     if not HasMapChildrenApi() then
         return false
     end
