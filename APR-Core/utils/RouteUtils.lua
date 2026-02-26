@@ -206,18 +206,9 @@ function APR:CheckIsInRouteZone()
 
         -- 5. Route zone validation - step zone in route zones
         function()
-            if APR.ZoneRestrictions and APR.ZoneRestrictions.IsIsolatedMap then
-                local playerMapID = playerContext.current
-                local playerIsIsolated = playerMapID and APR.ZoneRestrictions.IsIsolatedMap(playerMapID) == true
-
-                if playerIsIsolated then
+            if APR.ZoneRestrictions and APR.ZoneRestrictions.HasIsolatedMap then
+                if APR.ZoneRestrictions.HasIsolatedMap(playerContext.current, stepZones) then
                     return false
-                end
-
-                for _, stepMapID in ipairs(stepZones) do
-                    if APR.ZoneRestrictions.IsIsolatedMap(stepMapID) then
-                        return false
-                    end
                 end
             end
 
@@ -317,7 +308,7 @@ end
 --- Quality-of-life variant of the step filter that returns true when the step should be shown.
 function APR:StepFilterQoL(step)
     local playerLevel = self.Level or UnitLevel("player") or 0
-    local skipForLvl = tonumber(step.SkipForLvl or step.skipForLvl or step.skipforlvl)
+    local skipForLvl = tonumber(step.SkipForLvl)
 
     return (not step.Faction or step.Faction == self.Faction) and
         (not step.Race or tContains(step.Race, self.Race)) and

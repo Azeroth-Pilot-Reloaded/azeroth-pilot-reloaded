@@ -20,6 +20,7 @@ local events = {
     load = "ADDON_LOADED",
     accept = { "QUEST_ACCEPTED", "QUEST_ACCEPT_CONFIRM" },
     adventureMapAccept = "ADVENTURE_MAP_OPEN",
+    adventureMapClose = "ADVENTURE_MAP_CLOSE",
     buffsAndCooldown = "UNIT_AURA",
     dead = { "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST" },
     detail = "QUEST_DETAIL",
@@ -60,6 +61,11 @@ local autoAccept, autoAcceptRoute, step = nil, nil, nil
 
 local pendingQuestUpdateTimer
 local questShareQueue = {}
+local adventureMapRetryToken = 0
+
+local function CancelAdventureMapRetries()
+    adventureMapRetryToken = adventureMapRetryToken + 1
+end
 
 -- track instance status to avoid repeatedly toggling the addon
 local lastIsInstanceWithUI = nil
@@ -140,6 +146,8 @@ function APR.event:CleanupEvents()
         C_Timer.Cancel(pendingQuestUpdateTimer)
         pendingQuestUpdateTimer = nil
     end
+
+    CancelAdventureMapRetries()
 end
 
 ---------------------------------------------------------------------------------------
@@ -243,6 +251,7 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
     if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
     if not APR:IsPickupStep() and (step and not step.IsAdventureMap) then
         C_AdventureMap.Close();
+        CancelAdventureMapRetries()
         APR:NotYet()
         return
     end
@@ -254,7 +263,19 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
     local RETRY_DELAY = 0.3
     local attempt = 0
 
+    local function IsAdventureMapOpen()
+        local adventureMapFrame = rawget(_G, "AdventureMapFrame")
+        return adventureMapFrame and adventureMapFrame:IsShown() or false
+    end
+
+    CancelAdventureMapRetries()
+    local retryToken = adventureMapRetryToken
+
     local function tryAcceptAdventureMapQuests()
+        if retryToken ~= adventureMapRetryToken or not IsAdventureMapOpen() then
+            return
+        end
+
         attempt = attempt + 1
         local numChoices = C_AdventureMap.GetNumZoneChoices()
         APR:Debug("AdventureMap attempt " .. attempt .. "/" .. MAX_RETRIES .. " - choices: " .. numChoices)
@@ -272,12 +293,18 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
         end
 
         -- Retry if no choices were available or no quest was started
-        if not questStarted and attempt < MAX_RETRIES then
+        if not questStarted and attempt < MAX_RETRIES and IsAdventureMapOpen() and retryToken == adventureMapRetryToken then
             C_Timer.After(RETRY_DELAY, tryAcceptAdventureMapQuests)
         end
     end
 
-    C_Timer.After(RETRY_DELAY, tryAcceptAdventureMapQuests)
+    if IsAdventureMapOpen() and retryToken == adventureMapRetryToken then
+        C_Timer.After(RETRY_DELAY, tryAcceptAdventureMapQuests)
+    end
+end
+
+function APR.event.functions.adventureMapClose(event, ...)
+    CancelAdventureMapRetries()
 end
 
 function APR.event.functions.buffsAndCooldown(event, unitTarget, updateInfo)
