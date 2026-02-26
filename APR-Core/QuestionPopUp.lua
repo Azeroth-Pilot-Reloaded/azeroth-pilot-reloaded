@@ -49,8 +49,8 @@ local function EnsureRouteTriggerPopup()
     frame.routeButtons = {}
 
     frame.cancelButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-    frame.cancelButton:SetSize(120, 24)
-    frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 65, 12)
+    frame.cancelButton:SetSize(110, 24)
+    frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 132, 12)
     frame.cancelButton:SetText(CANCEL)
     frame.cancelButton:SetScript("OnClick", function()
         frame:Hide()
@@ -59,12 +59,28 @@ local function EnsureRouteTriggerPopup()
         end
     end)
 
+    frame.dontAskButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
+    frame.dontAskButton:SetSize(110, 24)
+    frame.dontAskButton:SetPoint("BOTTOM", frame, "BOTTOM", 0, 12)
+    frame.dontAskButton:SetText(L["DONT_ASK_AGAIN"])
+    if frame.dontAskButton.Text then
+        frame.dontAskButton.Text:SetWidth(94)
+        frame.dontAskButton.Text:SetWordWrap(true)
+        frame.dontAskButton.Text:SetJustifyH("CENTER")
+    end
+    frame.dontAskButton:SetScript("OnClick", function()
+        frame:Hide()
+        if frame.onDontAsk then
+            frame.onDontAsk()
+        end
+    end)
+
     frame.routeSelectionButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-    frame.routeSelectionButton:SetSize(120, 24)
-    frame.routeSelectionButton:SetPoint("BOTTOM", frame, "BOTTOM", -65, 12)
+    frame.routeSelectionButton:SetSize(110, 24)
+    frame.routeSelectionButton:SetPoint("BOTTOM", frame, "BOTTOM", -132, 12)
     frame.routeSelectionButton:SetText(L["ROUTE_SELECTION"])
     if frame.routeSelectionButton.Text then
-        frame.routeSelectionButton.Text:SetWidth(104)
+        frame.routeSelectionButton.Text:SetWidth(94)
         frame.routeSelectionButton.Text:SetWordWrap(true)
         frame.routeSelectionButton.Text:SetJustifyH("CENTER")
     end
@@ -178,9 +194,10 @@ function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxTex
     StaticPopup_Show(dialogName)
 end
 
-function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSelected, onCancel)
+function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSelected, onCancel, onDontAsk)
     local frame = EnsureRouteTriggerPopup()
     frame.onCancel = onCancel
+    frame.onDontAsk = onDontAsk
 
     frame.title:SetText(titleText or "APR")
     frame.message:SetText("")
@@ -190,17 +207,31 @@ function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSe
 
     local footerButtonHeight = 24
     if frame.routeSelectionButton.Text then
-        frame.routeSelectionButton.Text:SetWidth(104)
+        frame.routeSelectionButton.Text:SetWidth(94)
         frame.routeSelectionButton.Text:SetWordWrap(true)
         frame.routeSelectionButton.Text:SetJustifyH("CENTER")
         local routeSelectionTextHeight = frame.routeSelectionButton.Text:GetStringHeight()
         footerButtonHeight = math.max(24, routeSelectionTextHeight + 10)
     end
+    if frame.dontAskButton.Text then
+        frame.dontAskButton.Text:SetWidth(94)
+        frame.dontAskButton.Text:SetWordWrap(true)
+        frame.dontAskButton.Text:SetJustifyH("CENTER")
+        frame.dontAskButton:SetText(L["DONT_ASK_AGAIN"])
+        local dontAskTextHeight = frame.dontAskButton.Text:GetStringHeight()
+        footerButtonHeight = math.max(footerButtonHeight, dontAskTextHeight + 10)
+    end
+    if frame.cancelButton.Text then
+        local cancelTextHeight = frame.cancelButton.Text:GetStringHeight()
+        footerButtonHeight = math.max(footerButtonHeight, cancelTextHeight + 10)
+    end
 
     frame.routeSelectionButton:SetHeight(footerButtonHeight)
+    frame.dontAskButton:SetHeight(footerButtonHeight)
     frame.cancelButton:SetHeight(footerButtonHeight)
-    frame.routeSelectionButton:SetPoint("BOTTOM", frame, "BOTTOM", -65, 12)
-    frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 65, 12)
+    frame.routeSelectionButton:SetPoint("BOTTOM", frame, "BOTTOM", -132, 12)
+    frame.dontAskButton:SetPoint("BOTTOM", frame, "BOTTOM", 0, 12)
+    frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 132, 12)
 
     local listToFooterGap = 8
 

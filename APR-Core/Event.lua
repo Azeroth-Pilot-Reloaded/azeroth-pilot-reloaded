@@ -235,7 +235,9 @@ function APR.event.functions.accept(event, ...)
         end
         queueQuestShare()
 
-        APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
+        if not APR:GetRouteSuggestionDontAsk() then
+            APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
+        end
 
         APR:Debug(L["Q_ACCEPTED"] .. ": ", questID)
         C_Timer.After(0.2, function() APR:UpdateMapId() end)
