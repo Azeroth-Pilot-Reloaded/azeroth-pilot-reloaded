@@ -184,6 +184,35 @@ function APR.ZoneRestrictions.IsIsolatedMap(mapID)
     return APR.ZoneRestrictions.IsolatedMaps[mapID] == true
 end
 
+--- Check whether any map in a step zone list is isolated
+---@param stepZones table|nil Array of step zone map IDs
+---@return boolean hasIsolated
+function APR.ZoneRestrictions.StepZonesContainIsolated(stepZones)
+    if not stepZones or #stepZones == 0 then
+        return false
+    end
+
+    for _, stepMapID in ipairs(stepZones) do
+        if APR.ZoneRestrictions.IsIsolatedMap(stepMapID) then
+            return true
+        end
+    end
+
+    return false
+end
+
+--- Check whether either player map or step zone list contains isolated maps
+---@param playerMapID number|nil Current player map ID
+---@param stepZones table|nil Array of step zone map IDs
+---@return boolean hasIsolated
+function APR.ZoneRestrictions.HasIsolatedMap(playerMapID, stepZones)
+    if APR.ZoneRestrictions.IsIsolatedMap(playerMapID) then
+        return true
+    end
+
+    return APR.ZoneRestrictions.StepZonesContainIsolated(stepZones)
+end
+
 --- Get all Exile's Reach map IDs
 ---@return table exilesReachMaps Array of map IDs
 function APR.ZoneRestrictions.GetExilesReachMaps()
