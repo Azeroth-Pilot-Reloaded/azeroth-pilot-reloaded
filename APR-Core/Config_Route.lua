@@ -473,7 +473,7 @@ function SetCustomPathListFrame(widget, name)
 
             local routeID = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             routeID:SetPoint("LEFT")
-            routeID:SetText(i)
+            routeID:SetText(tostring(i))
 
             local nameText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             nameText:SetPoint("LEFT", routeID, "RIGHT", 50, 0)
@@ -920,12 +920,22 @@ local function AddRouteToCustomPath(routeName)
     tinsert(APRCustomPath[APR.PlayerID], routeName)
 end
 
+function APR.routeconfig:SendCustomPathUpdate(suppressUpdate)
+    if suppressUpdate or self._isBuildingSpeedrunPrefab then
+        return
+    end
+    self:SendMessage("APR_Custom_Path_Update")
+end
 
 function APR.routeconfig:GetSpeedRunPrefab()
+    self._isBuildingSpeedrunPrefab = true
+
     self:GetStartingZonePrefab()
 
     -- Don't add other route if the player is neutral
     if APR.Faction == "Neutral" then
+        self._isBuildingSpeedrunPrefab = nil
+        self:SendMessage("APR_Custom_Path_Update")
         return
     end
 
@@ -942,10 +952,11 @@ function APR.routeconfig:GetSpeedRunPrefab()
 
     self:GetMidnightSpeedrunPrefab()
 
+    self._isBuildingSpeedrunPrefab = nil
     self:SendMessage("APR_Custom_Path_Update")
 end
 
-function APR.routeconfig:GetStartingZonePrefab()
+function APR.routeconfig:GetStartingZonePrefab(suppressUpdate)
     local parentMapID = APR:GetPlayerParentMapID()
 
     if parentMapID and APR.ZoneRestrictions.IsExilesReachMap(parentMapID) then
@@ -1041,10 +1052,10 @@ function APR.routeconfig:GetStartingZonePrefab()
             end
         end
     end
-    self:SendMessage("APR_Custom_Path_Update")
+    self:SendCustomPathUpdate(suppressUpdate)
 end
 
-function APR.routeconfig:GetWODPrefab()
+function APR.routeconfig:GetWODPrefab(suppressUpdate)
     if APR.Faction == alliance then
         AddRouteToCustomPath(L["WOD01 - Stormwind"])
         AddRouteToCustomPath(L["WOD02 - Tanaan Jungle"])
@@ -1063,10 +1074,10 @@ function APR.routeconfig:GetWODPrefab()
         AddRouteToCustomPath(L["WOD06 - Spires of Arak"])
         AddRouteToCustomPath(L["WOD07 - Nagrand"])
     end
-    self:SendMessage("APR_Custom_Path_Update")
+    self:SendCustomPathUpdate(suppressUpdate)
 end
 
-function APR.routeconfig:GetBFAPrefab()
+function APR.routeconfig:GetBFAPrefab(suppressUpdate)
     if APR.Faction == alliance then
         AddRouteToCustomPath(L["BFA01 - Intro"])
         AddRouteToCustomPath(L["BFA02 - Tiragarde Sound"])
@@ -1079,10 +1090,10 @@ function APR.routeconfig:GetBFAPrefab()
         AddRouteToCustomPath(L["BFA04 - Naz-end Vol-begin"])
         AddRouteToCustomPath(L["BFA05 - Vol'dun"])
     end
-    self:SendMessage("APR_Custom_Path_Update")
+    self:SendCustomPathUpdate(suppressUpdate)
 end
 
-function APR.routeconfig:GetSLPrefab()
+function APR.routeconfig:GetSLPrefab(suppressUpdate)
     AddRouteToCustomPath(L["SL - Intro"])
     AddRouteToCustomPath(L["SL01 - The Maw"])
     AddRouteToCustomPath(L["SL02 - Oribos"])
@@ -1101,10 +1112,10 @@ function APR.routeconfig:GetSLPrefab()
     AddRouteToCustomPath(L["SL15 - Revendreth"])
     AddRouteToCustomPath(L["SL16 - Oribos"])
     AddRouteToCustomPath(L["SL - StoryMode Only"])
-    self:SendMessage("APR_Custom_Path_Update")
+    self:SendCustomPathUpdate(suppressUpdate)
 end
 
-function APR.routeconfig:GetDFPrefab()
+function APR.routeconfig:GetDFPrefab(suppressUpdate)
     if APR.Faction == alliance then
         AddRouteToCustomPath(L["DF01 - Dragonflight Stormwind"])
         AddRouteToCustomPath(L["DF02 - Waking Shores - Alliance"])
@@ -1116,10 +1127,10 @@ function APR.routeconfig:GetDFPrefab()
     AddRouteToCustomPath(L["DF04 - Ohn'Ahran Plains"])
     AddRouteToCustomPath(L["DF05 - Azure Span"])
     AddRouteToCustomPath(L["DF06 - Thaldraszus"])
-    self:SendMessage("APR_Custom_Path_Update")
+    self:SendCustomPathUpdate(suppressUpdate)
 end
 
-function APR.routeconfig:GetTWWPrefab()
+function APR.routeconfig:GetTWWPrefab(suppressUpdate)
     -- Don't add TWW route if the player is neutral
     if APR.Faction == "Neutral" then return end
 
@@ -1142,10 +1153,10 @@ function APR.routeconfig:GetTWWPrefab()
     AddRouteToCustomPath(L["TWW - K'aresh Storyline"])
     AddRouteToCustomPath(L["TWW - K'aresh - Visions of a Shadowed Sun"])
 
-    self:SendMessage("APR_Custom_Path_Update")
+    self:SendCustomPathUpdate(suppressUpdate)
 end
 
-function APR.routeconfig:GetMidnightPrefab()
+function APR.routeconfig:GetMidnightPrefab(suppressUpdate)
     if APR.Faction == "Neutral" then return end
 
     AddRouteToCustomPath(L["Midnight - Intro"])
@@ -1159,28 +1170,28 @@ function APR.routeconfig:GetMidnightPrefab()
     AddRouteToCustomPath(L["Midnight - Prey"])
 
 
-    self:SendMessage("APR_Custom_Path_Update")
+    self:SendCustomPathUpdate(suppressUpdate)
 end
 
-function APR.routeconfig:GetMidnightSpeedrunPrefab()
+function APR.routeconfig:GetMidnightSpeedrunPrefab(suppressUpdate)
     if APR.Faction == "Neutral" then return end
 
     AddRouteToCustomPath(L["Midnight - Intro"])
     AddRouteToCustomPath(L["Midnight - Speedrun"])
     AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
 
-    self:SendMessage("APR_Custom_Path_Update")
+    self:SendCustomPathUpdate(suppressUpdate)
 end
 
 function APR.routeconfig:GetPlayerSpecRoute(prefix)
-    local routeKey = prefix .. " - " .. APR.GetClassSpecName()
+    local routeKey = prefix .. " - " .. APR:GetClassSpecName()
     if APR.RouteQuestStepList[routeKey] then
         AddRouteToCustomPath(L[routeKey])
     end
 end
 
 function APR.routeconfig:GetRemixPrefab()
-    self:SendMessage("APR_Custom_Path_Update")
+    self:SendCustomPathUpdate(false)
 end
 
 ---------------------------------------------------------------------------------------
