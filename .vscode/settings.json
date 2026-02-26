@@ -79,7 +79,8 @@
         "WOW_PROJECT_CLASSIC",
         "NEVER",
         "ALWAYS",
-        "FlagsUtil"
+        "FlagsUtil",
+        "GARRISON_LOCATION_TOOLTIP"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {

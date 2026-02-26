@@ -147,6 +147,9 @@ function APR:OnInitialize()
     -- Load saved custom routes
     self:LoadCustomRoutes()
 
+    -- Temporary route trigger mapping (minimal implementation)
+    self:InitTemporaryRouteTriggers()
+
     self.Arrow:Init()
 
     -- Initialize Zone Detection System (v2.0)

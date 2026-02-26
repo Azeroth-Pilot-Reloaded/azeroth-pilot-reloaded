@@ -56,7 +56,7 @@ local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dract
 
 local function GetConfigOptionTable()
     local routeOptions = {
-        name = L["ROUTE_HELPER"],
+        name = L["ROUTE_SELECTION"],
         type = "group",
         inline = false,
         order = 0,
