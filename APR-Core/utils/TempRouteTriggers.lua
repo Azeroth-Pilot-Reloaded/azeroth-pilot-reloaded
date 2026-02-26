@@ -151,6 +151,10 @@ function APR:ActivateRouteFromTemporaryTrigger(routeKey)
 end
 
 function APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
+    if APR.GetRouteSuggestionDontAsk and APR:GetRouteSuggestionDontAsk() then
+        return
+    end
+
     local routeKeys = self.TemporaryRouteTriggers.byQuestID[tonumber(questID)]
     if not routeKeys or #routeKeys == 0 then
         return
@@ -180,6 +184,11 @@ function APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
                 APR:ActivateRouteFromTemporaryTrigger(route.key)
             end
         end,
-        nil
+        nil,
+        function()
+            if APR.SetRouteSuggestionDontAsk then
+                APR:SetRouteSuggestionDontAsk(true)
+            end
+        end
     )
 end

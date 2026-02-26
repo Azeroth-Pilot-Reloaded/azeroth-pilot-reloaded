@@ -156,6 +156,7 @@ function APR.settings:InitializeSettings()
         char = {
             firstLogin = true,
             showHeirloomWarning = nil,
+            routeSuggestionDontAsk = false,
         }
     }
 
@@ -297,6 +298,19 @@ function APR.settings:createBlizzOptions()
                         width = optionsWidthAutomation,
                         get = GetProfileOption,
                         set = SetProfileOption,
+                    },
+                    routeSuggestionDontAsk = {
+                        order = 3.22,
+                        type = "toggle",
+                        name = L["ROUTE_SUGGESTION_DONT_ASK_OPTION"],
+                        desc = L["ROUTE_SUGGESTION_DONT_ASK_OPTION_DESC"],
+                        width = "full",
+                        get = function()
+                            return APR:GetRouteSuggestionDontAsk()
+                        end,
+                        set = function(info, value)
+                            APR:SetRouteSuggestionDontAsk(value)
+                        end,
                     },
                 }
             },

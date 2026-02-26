@@ -25,6 +25,23 @@ function APR:SetHeirloomWarning(value)
     end
 end
 
+--- Get whether route suggestion popup is disabled for this character.
+-- @return boolean - true to disable route suggestion popup, false to show it
+function APR:GetRouteSuggestionDontAsk()
+    if SettingsDB and SettingsDB.char and SettingsDB.char.routeSuggestionDontAsk ~= nil then
+        return SettingsDB.char.routeSuggestionDontAsk
+    end
+    return false
+end
+
+--- Set whether route suggestion popup is disabled for this character.
+-- @param value boolean
+function APR:SetRouteSuggestionDontAsk(value)
+    if SettingsDB and SettingsDB.char then
+        SettingsDB.char.routeSuggestionDontAsk = value and true or false
+    end
+end
+
 --- Resets all stored profiles to their default configuration.
 --- This restores default settings for every profile managed by APR.
 --- @return nil
