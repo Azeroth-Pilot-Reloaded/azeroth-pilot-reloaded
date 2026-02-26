@@ -6,6 +6,7 @@ APR.mainStepOptions = {
     "ExitTutorial", "PickUp", "DropQuest", "Qpart", "QpartPart", "Treasure", "Group", "Done",
     "Scenario", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS", "UseDalaHS", "UseGarrisonHS",
     "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession", "LootItems", "WarMode", "Grind",
+    "Glyph",
     "RouteCompleted"
 }
 
@@ -25,6 +26,7 @@ function APR:GetStepString(step)
         EnterScenario = L["SCENARIO"],
         ExitTutorial = L["SKIP_TUTORIAL"],
         GetFP = L["GET_FLIGHTPATH"],
+        Glyph = L["GLYPH"],
         GossipOptionIDs = L["TALK_NPC"],
         Grind = L["GRIND"],
         Group = L["GROUP_Q"],
@@ -103,6 +105,69 @@ function APR:HasAnyMainStepOption(step)
         end
     end
     return false
+end
+
+--- Normalize glyph step data so route authors can use consistent stable IDs.
+-- Supports fields in `step.Glyph` and fallback fields directly on `step`.
+-- @return table|nil { achievementID:number|nil, criteriaID:number|nil, quantity:number|nil, requiredQuantity:number|nil }
+function APR:GetGlyphStepData(step)
+    if not step or not step.Glyph then
+        return nil
+    end
+
+    local glyph = step.Glyph
+    if type(glyph) ~= "table" then
+        return nil
+    end
+
+    local criteriaID = tonumber(glyph.criteriaID or glyph.CriteriaID or step.criteriaID or step.CriteriaID)
+    if not criteriaID then
+        return nil
+    end
+
+    local achievementID = tonumber(glyph.achievementID or glyph.AchievementID or step.achievementID or step.AchievementID)
+    if not achievementID then
+        return nil
+    end
+
+    return {
+        achievementID = achievementID,
+        criteriaID = criteriaID,
+        quantity = tonumber(glyph.quantity or glyph.Quantity),
+        requiredQuantity = tonumber(glyph.requiredQuantity or glyph.RequiredQuantity),
+    }
+end
+
+--- Evaluate if a glyph step is complete based on achievement/criteria state.
+-- Returns completion plus data needed for UI display.
+-- @return boolean isCompleted
+-- @return string|nil criteriaDescription
+-- @return number|nil quantity
+-- @return number|nil requiredQuantity
+function APR:IsGlyphStepComplete(step)
+    local glyphData = self:GetGlyphStepData(step)
+    if not glyphData or not glyphData.criteriaID or not glyphData.achievementID then
+        return false, nil, nil, nil
+    end
+
+    local achievementCompleted = select(4, GetAchievementInfo(glyphData.achievementID))
+    if achievementCompleted then
+        return true, nil, nil, nil
+    end
+
+    local criteriaDescription, _, criteriaCompleted, quantity, requiredQuantity =
+        GetAchievementCriteriaInfoByID(glyphData.achievementID, glyphData.criteriaID)
+
+    if criteriaCompleted then
+        return true, criteriaDescription, quantity, requiredQuantity
+    end
+
+    local targetRequired = glyphData.requiredQuantity or glyphData.quantity
+    if targetRequired and quantity and quantity >= targetRequired then
+        return true, criteriaDescription, quantity, requiredQuantity
+    end
+
+    return false, criteriaDescription, quantity, requiredQuantity
 end
 
 --- Advance helpers ---------------------------------------------------------
