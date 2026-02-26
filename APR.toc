@@ -40,6 +40,7 @@ APR-Core/utils/TargetUtils.lua
 APR-Core/utils/QuestUtils.lua
 APR-Core/utils/InstanceUtils.lua
 APR-Core/utils/RouteUtils.lua
+APR-Core/utils/TempRouteTriggers.lua
 APR-Core/utils/NavigationUtils.lua
 APR-Core/utils/UIUtils.lua
 APR-Core/utils/BuyMerchantUtils.lua
