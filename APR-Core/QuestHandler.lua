@@ -786,6 +786,25 @@ function APR:UpdateStep()
                 return
             end
         elseif (step.GetFP) then
+            local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
+            local stepZones = APR:GetStepZoneList(step, mapID)
+            local currentMapID = C_Map.GetBestMapForUnit("player")
+            local parentMapID = APR:GetPlayerParentMapID()
+
+            local isInStepZone = false
+            if #stepZones > 0 then
+                isInStepZone =
+                    (currentMapID and APR:Contains(stepZones, currentMapID)) or
+                    (parentMapID and APR:Contains(stepZones, parentMapID))
+            end
+
+            if #stepZones > 0 and not isInStepZone then
+                APR:Debug("APR.UpdateStep:GetFP:Skip zone mismatch: " ..
+                    tostring(step.GetFP) .. " | " .. tostring(currentMapID) .. " | " .. tostring(parentMapID))
+                APR:UpdateNextStep()
+                return
+            end
+
             if APR.IsInRouteZone then
                 APR.currentStep:AddQuestSteps(step.GetFP, L["GET_FLIGHTPATH"], "GetFP")
             end
@@ -845,6 +864,30 @@ function APR:UpdateStep()
 
             if questToHighlight then
                 APR:TrackQuest(questToHighlight)
+            end
+        elseif step.Glyph then
+            local glyphData = APR:GetGlyphStepData(step)
+            if glyphData and glyphData.achievementID and glyphData.criteriaID then
+                local isCompleted, criteriaDescription, quantity, requiredQuantity = APR:IsGlyphStepComplete(step)
+                if isCompleted then
+                    APR:UpdateNextStep()
+                    return
+                end
+
+                if APR.IsInRouteZone then
+                    local text = criteriaDescription or ("Criteria #" .. glyphData.criteriaID)
+                    local targetRequired = glyphData.requiredQuantity or glyphData.quantity or requiredQuantity
+                    if quantity and targetRequired and targetRequired > 0 then
+                        text = text .. " (" .. quantity .. "/" .. targetRequired .. ")"
+                    elseif quantity and requiredQuantity and requiredQuantity > 0 then
+                        text = text .. " (" .. quantity .. "/" .. requiredQuantity .. ")"
+                    end
+
+                    APR.currentStep:AddQuestSteps("Glyph-" .. glyphData.criteriaID, text, glyphData.criteriaID)
+                end
+            elseif APR.IsInRouteZone then
+                APR.currentStep:AddExtraLineText("GLYPH_CONFIG_ERROR",
+                    "Glyph step is missing achievementID or criteriaID")
             end
         elseif step.GossipOptionIDs and not APR:HasAnyMainStepOption(step) then
             local alreadyTalked = APR:hasEveryGossipsCompleted(step.GossipOptionIDs)

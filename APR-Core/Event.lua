@@ -24,6 +24,7 @@ local events = {
     dead = { "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST" },
     detail = "QUEST_DETAIL",
     done = { "QUEST_AUTOCOMPLETE", "QUEST_COMPLETE", "QUEST_PROGRESS" },
+    criteria = { "CRITERIA_UPDATE", "CRITERIA_EARNED" },
     emote = { "CHAT_MSG_MONSTER_SAY", "PLAYER_TARGET_CHANGED", "UPDATE_MOUSEOVER_UNIT" },
     getFP = { "TAXIMAP_OPENED", "UI_INFO_MESSAGE" },
     gossip = { "GOSSIP_CLOSED", "GOSSIP_SHOW" },
@@ -553,6 +554,34 @@ function APR.event.functions.done(event, ...)
             end
         end
     end
+end
+
+function APR.event.functions.criteria(event, ...)
+    if not step or not step.Glyph then
+        return
+    end
+
+    local glyphData = APR:GetGlyphStepData(step)
+    if not glyphData then
+        return
+    end
+
+    if event == "CRITERIA_EARNED" then
+        local achievementID = tonumber((...))
+        if not achievementID then
+            return
+        end
+
+        if achievementID ~= glyphData.achievementID then
+            return
+        end
+    elseif event == "CRITERIA_UPDATE" then
+        -- Event has no stable payload in modern API docs; re-evaluate the active glyph step.
+    else
+        return
+    end
+
+    APR:UpdateStep()
 end
 
 function APR.event.functions.emote(event, ...)
