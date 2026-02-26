@@ -1148,18 +1148,16 @@ end
 function APR.routeconfig:GetMidnightPrefab()
     if APR.Faction == "Neutral" then return end
 
-    if APR.isBetaServer then
-        AddRouteToCustomPath(L["Midnight - Intro"])
-        AddRouteToCustomPath(L["Midnight - Eversong Woods - sojourner"])
-        AddRouteToCustomPath(L["Midnight - Arators Journey"])
-        AddRouteToCustomPath(L["Midnight - Zul'Aman - sojourner"])
-        AddRouteToCustomPath(L["Midnight - Harandar - sojourner"])
-        AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
-        AddRouteToCustomPath(L["Midnight - Voidstorm - sojourner"])
-        AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
-    else
-        AddRouteToCustomPath(L["Midnight - Pre Patch"])
-    end
+    AddRouteToCustomPath(L["Midnight - Intro"])
+    AddRouteToCustomPath(L["Midnight - Eversong Woods - sojourner"])
+    AddRouteToCustomPath(L["Midnight - Arators Journey"])
+    AddRouteToCustomPath(L["Midnight - Zul'Aman - sojourner"])
+    AddRouteToCustomPath(L["Midnight - Harandar - sojourner"])
+    AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
+    AddRouteToCustomPath(L["Midnight - Voidstorm - sojourner"])
+    AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
+    AddRouteToCustomPath(L["Midnight - Prey"])
+
 
     self:SendMessage("APR_Custom_Path_Update")
 end
@@ -1167,14 +1165,9 @@ end
 function APR.routeconfig:GetMidnightSpeedrunPrefab()
     if APR.Faction == "Neutral" then return end
 
-    if APR.isBetaServer then
-        AddRouteToCustomPath(L["Midnight - Intro"])
-        AddRouteToCustomPath(L["Midnight - Speedrun"])
-        AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
-        AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
-    else
-        AddRouteToCustomPath(L["Midnight - Pre Patch"])
-    end
+    AddRouteToCustomPath(L["Midnight - Intro"])
+    AddRouteToCustomPath(L["Midnight - Speedrun"])
+    AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
 
     self:SendMessage("APR_Custom_Path_Update")
 end
