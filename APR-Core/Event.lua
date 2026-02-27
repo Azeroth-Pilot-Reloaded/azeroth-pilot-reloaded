@@ -61,6 +61,8 @@ local autoAccept, autoAcceptRoute, step = nil, nil, nil
 
 local pendingQuestUpdateTimer
 local questShareQueue = {}
+local questShareRetries = {}
+local QUEST_SHARE_MAX_RETRIES = 10
 local adventureMapRetryToken = 0
 
 local function CancelAdventureMapRetries()
@@ -147,6 +149,10 @@ function APR.event:CleanupEvents()
         pendingQuestUpdateTimer = nil
     end
 
+    -- Clear quest share queue
+    wipe(questShareQueue)
+    wipe(questShareRetries)
+
     CancelAdventureMapRetries()
 end
 
@@ -223,6 +229,7 @@ function APR.event.functions.accept(event, ...)
             end
 
             table.insert(questShareQueue, questID)
+            questShareRetries[questID] = 0
         end
 
         if profile and profile.firstAutoShareQuestWithFriend and IsInGroup() then
@@ -235,9 +242,7 @@ function APR.event.functions.accept(event, ...)
         end
         queueQuestShare()
 
-        if not APR:GetRouteSuggestionDontAsk() then
-            APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
-        end
+        APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
 
         APR:Debug(L["Q_ACCEPTED"] .. ": ", questID)
         C_Timer.After(0.2, function() APR:UpdateMapId() end)
@@ -1109,19 +1114,32 @@ function APR.event.functions.updateQuest(event, ...)
         if not InCombatLockdown() then
             for index = #questShareQueue, 1, -1 do
                 local questID = questShareQueue[index]
-                local questLogIndex = C_QuestLog.GetLogIndexForQuestID(questID)
-                if questLogIndex then
-                    -- Ensure the correct quest is selected before pushing
-                    C_QuestLog.SetSelectedQuest(questID)
+                local retries = (questShareRetries[questID] or 0) + 1
+                questShareRetries[questID] = retries
 
-                    -- QuestLogPushQuest works on the currently selected quest; do not pass an index
-                    local ok, pushed = pcall(QuestLogPushQuest)
-                    if ok and pushed then
-                        table.remove(questShareQueue, index)
-                    end
-                else
-                    -- Quest no longer in log; remove from queue to avoid infinite retries
+                if retries > QUEST_SHARE_MAX_RETRIES then
+                    -- Max retries reached; stop trying to share this quest
+                    APR:Debug("Quest share max retries reached for questID: ", questID)
                     table.remove(questShareQueue, index)
+                    questShareRetries[questID] = nil
+                else
+                    local questLogIndex = C_QuestLog.GetLogIndexForQuestID(questID)
+                    if questLogIndex then
+                        -- Ensure the correct quest is selected before pushing
+                        C_QuestLog.SetSelectedQuest(questID)
+
+                        -- QuestLogPushQuest works on the currently selected quest
+                        -- It has no return value, so we remove after a successful pcall
+                        local ok = pcall(QuestLogPushQuest)
+                        if ok then
+                            table.remove(questShareQueue, index)
+                            questShareRetries[questID] = nil
+                        end
+                    else
+                        -- Quest no longer in log; remove from queue
+                        table.remove(questShareQueue, index)
+                        questShareRetries[questID] = nil
+                    end
                 end
             end
         end
