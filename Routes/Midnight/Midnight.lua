@@ -22624,6 +22624,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         Qpart = { [86521] = { 3 } },
         Range = 5,
         IsCampaignQuest = true,
+        Zone = 2405,
         _index = 192,
     },
     {
@@ -27022,6 +27023,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
         Qpart = { [86521] = { 3 } },
         Range = 5,
         IsCampaignQuest = true,
+        Zone = 2405,
         _index = 188,
     },
     {
@@ -39954,6 +39956,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Qpart = { [86521] = { 3 } },
         Range = 5,
         IsCampaignQuest = true,
+        Zone = 2405,
         _index = 1470,
     },
     {
