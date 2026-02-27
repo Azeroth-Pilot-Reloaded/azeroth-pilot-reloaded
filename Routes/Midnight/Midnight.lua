@@ -22608,28 +22608,33 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Scenario = { criteriaID = 106479, criteriaIndex = 1, scenarioID = 3132, stepID = 15982 },
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 189,
     },
     {
         Scenario = { criteriaID = 106480, criteriaIndex = 2, scenarioID = 3132, stepID = 15982 },
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 190,
     },
     {
         Scenario = { criteriaID = 106481, criteriaIndex = 3, scenarioID = 3132, stepID = 15982 },
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 191,
     },
     {
         Qpart = { [86521] = { 3 } },
         Range = 5,
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 192,
     },
     {
         TakePortal = { QuestID = 86521, ZoneId = 2405 },
         ZoneStepTrigger = { Range = 15, x = 135.4, y = 1280.6 },
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 193,
     },
     {
@@ -27006,28 +27011,33 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Scenario = { criteriaID = 106479, criteriaIndex = 1, scenarioID = 3132, stepID = 15982 },
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 185,
     },
     {
         Scenario = { criteriaID = 106480, criteriaIndex = 2, scenarioID = 3132, stepID = 15982 },
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 186,
     },
     {
         Scenario = { criteriaID = 106481, criteriaIndex = 3, scenarioID = 3132, stepID = 15982 },
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 187,
     },
     {
         Qpart = { [86521] = { 3 } },
         Range = 5,
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 188,
     },
     {
         TakePortal = { QuestID = 86521, ZoneId = 2405 },
         ZoneStepTrigger = { Range = 15, x = 135.4, y = 1280.6 },
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 189,
     },
     {
@@ -39940,26 +39950,31 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     },
     {
         Scenario = { criteriaID = 106479, criteriaIndex = 1, scenarioID = 3132, stepID = 15982 },
+        Zone = 2556,
         _index = 1467,
     },
     {
         Scenario = { criteriaID = 106480, criteriaIndex = 2, scenarioID = 3132, stepID = 15982 },
+        Zone = 2556,
         _index = 1468,
     },
     {
         Scenario = { criteriaID = 106481, criteriaIndex = 3, scenarioID = 3132, stepID = 15982 },
+        Zone = 2556,
         _index = 1469,
     },
     {
         Qpart = { [86521] = { 3 } },
         Range = 5,
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 1470,
     },
     {
         TakePortal = { QuestID = 86521, ZoneId = 2405 },
         ZoneStepTrigger = { Range = 15, x = 135.4, y = 1280.6 },
         IsCampaignQuest = true,
+        Zone = 2556,
         _index = 1471,
     },
     {
