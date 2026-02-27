@@ -18915,6 +18915,12 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         Zone = 2413,
         _index = 471,
     },
+       {
+        Done = { 92697 },
+        Coord = { x = -2025.2, y = -156.1 },
+        Zone = 2413,
+        _index = 475,
+    },
     {
         Qpart = { [92885] = { 1 } },
         Coord = { x = -1647, y = -246.1 },
@@ -18935,12 +18941,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         Zone = 2413,
         _index = 474,
     },
-    {
-        Done = { 92697 },
-        Coord = { x = -2025.2, y = -156.1 },
-        Zone = 2413,
-        _index = 475,
-    },
+ 
     {
         PickUp = { 91375 },
         Coord = { x = 1055.1, y = -839.7 },
@@ -38577,6 +38578,13 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 1281,
     },
     {
+        Done = { 92697 },
+        Coord = { x = -2025.2, y = -156.1 },
+        SkipForLvl = 89,
+        Zone = 2413,
+        _index = 1285,
+    },
+    {
         Qpart = { [92885] = { 1 } },
         Coord = { x = -1647, y = -246.1 },
         GossipOptionIDs = { 136855 },
@@ -38599,13 +38607,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Zone = 2413,
         _index = 1284,
     },
-    {
-        Done = { 92697 },
-        Coord = { x = -2025.2, y = -156.1 },
-        SkipForLvl = 89,
-        Zone = 2413,
-        _index = 1285,
-    },
+
     {
         TakePortal = { QuestID = 86543, ZoneId = 2395 },
         Coord = { x = -461.2, y = -270 },
