@@ -21571,6 +21571,15 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         Zone = 2405,
         _index = 51,
     },
+
+    {
+        Qpart = { [86530] = { 1 }, [86531] = { 1 } },
+        Coord = { x = 1094.6, y = 494 },
+        Range = 100,
+        IsCampaignQuest = true,
+        Zone = 2405,
+        _index = 53,
+    },
     {
         DropQuest = 86528,
         DroppableQuest = { MobId = 236859, Qid = 86528, Text = "Rôde-Néantmanaforge" },
@@ -21579,14 +21588,6 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         IsCampaignQuest = true,
         Zone = 2405,
         _index = 52,
-    },
-    {
-        Qpart = { [86530] = { 1 }, [86531] = { 1 } },
-        Coord = { x = 1094.6, y = 494 },
-        Range = 100,
-        IsCampaignQuest = true,
-        Zone = 2405,
-        _index = 53,
     },
     {
         Done = { 86531, 86528 },
@@ -26044,6 +26045,14 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
         _index = 53,
     },
     {
+        Qpart = { [86530] = { 1 }, [86531] = { 1 } },
+        Coord = { x = 1094.6, y = 494 },
+        Range = 100,
+        IsCampaignQuest = true,
+        Zone = 2405,
+        _index = 55,
+    },
+    {
         DropQuest = 86528,
         DroppableQuest = { MobId = 236859, Qid = 86528, Text = "Rôde-Néantmanaforge" },
         Coord = { x = 1102.1, y = 480.6 },
@@ -26051,14 +26060,6 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
         IsCampaignQuest = true,
         Zone = 2405,
         _index = 54,
-    },
-    {
-        Qpart = { [86530] = { 1 }, [86531] = { 1 } },
-        Coord = { x = 1094.6, y = 494 },
-        Range = 100,
-        IsCampaignQuest = true,
-        Zone = 2405,
-        _index = 55,
     },
     {
         Done = { 86531, 86528 },
@@ -39029,6 +39030,15 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Zone = 2405,
         _index = 1336,
     },
+
+    {
+        Qpart = { [86530] = { 1 }, [86531] = { 1 } },
+        Coord = { x = 1094.6, y = 494 },
+        Range = 100,
+        IsCampaignQuest = true,
+        Zone = 2405,
+        _index = 1338,
+    },
     {
         DropQuest = 86528,
         DroppableQuest = { MobId = 236859, Qid = 86528, Text = "Rôde-Néantmanaforge" },
@@ -39037,14 +39047,6 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         IsCampaignQuest = true,
         Zone = 2405,
         _index = 1337,
-    },
-    {
-        Qpart = { [86530] = { 1 }, [86531] = { 1 } },
-        Coord = { x = 1094.6, y = 494 },
-        Range = 100,
-        IsCampaignQuest = true,
-        Zone = 2405,
-        _index = 1338,
     },
     {
         Done = { 86531, 86528 },
