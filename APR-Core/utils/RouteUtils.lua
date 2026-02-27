@@ -42,6 +42,7 @@ function APR:ResetRoute(targetedRoute)
     APRData[self.PlayerID][targetedRoute] = 1
     APRData[self.PlayerID][targetedRoute .. '-SkippedStep'] = 0
     self:GetTotalSteps(targetedRoute)
+    APRData[self.PlayerID][targetedRoute .. '-RawTotalSteps'] = self:GetRawStepCount(targetedRoute)
     -- Force refresh: reset throttle for ResetRoute
     self.transport._routingForceRefresh = true
     if self.transport._routingThrottle then
@@ -84,6 +85,16 @@ function APR:GetTotalSteps(route, updateTotal)
         APRData[self.PlayerID][route .. '-TotalSteps'] = stepIndex
     end
     return stepIndex
+end
+
+--- Return the raw (unfiltered) number of steps in a route definition.
+--- This count only changes when the route file itself is modified, making it
+--- safe for change-detection comparisons that must survive /reload and different
+--- player states (quest log not yet synced, achievements, auras, etc.).
+function APR:GetRawStepCount(route)
+    local steps = self.RouteQuestStepList[route]
+    if not steps then return 0 end
+    return #steps
 end
 
 --- Calculate the number of skipped/filtered steps BEFORE a given step index.
@@ -430,6 +441,7 @@ function APR:ClearSavedRouteData(routeFileName)
     playerData[routeFileName] = nil
     playerData[routeFileName .. '-SkippedStep'] = nil
     playerData[routeFileName .. '-TotalSteps'] = nil
+    playerData[routeFileName .. '-RawTotalSteps'] = nil
 
     local routeSignatures = self.settings and self.settings.profile and self.settings.profile.routeSignatures
     if routeSignatures then
@@ -441,8 +453,10 @@ end
 function APR:CheckRouteChanges(route)
     self:Debug("Function: APR:CheckRouteChanges()", route)
     local currentRoute = route or self.ActiveRoute or ''
-    local savedTotalSteps = APRData[self.PlayerID][currentRoute .. '-TotalSteps']
-    local currentTotalSteps = self:GetTotalSteps(currentRoute)
+    -- Use raw (unfiltered) step count for change detection to avoid false positives
+    -- from filter state changes (quest log not synced after /reload, achievements, etc.)
+    local savedTotalSteps = APRData[self.PlayerID][currentRoute .. '-RawTotalSteps']
+    local currentTotalSteps = self:GetRawStepCount(currentRoute)
     local _, currentRouteName = next(APRCustomPath[self.PlayerID])
 
     if currentRouteName and not self.RouteQuestStepList[currentRoute] then
@@ -457,18 +471,22 @@ function APR:CheckRouteChanges(route)
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
             end
         )
-    elseif savedTotalSteps ~= currentTotalSteps then
+    elseif savedTotalSteps and savedTotalSteps ~= currentTotalSteps then
         self.questionDialog:CreateMandatoryAction(
             L["ROUTE_UPDATED_NEED_RESET"],
             function()
                 APRData[APR.PlayerID][currentRoute] = 1
                 APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = 0
+                APRData[APR.PlayerID][currentRoute .. '-RawTotalSteps'] = currentTotalSteps
                 if currentRoute == APR.ActiveRoute then
                     APR.transport:GetMeToRightZone()
                     APR:PrintInfo(L["RESET_ROUTE"])
                 end
             end
         )
+    else
+        -- Ensure raw total is persisted even if no change detected
+        APRData[APR.PlayerID][currentRoute .. '-RawTotalSteps'] = currentTotalSteps
     end
 end
 
@@ -492,7 +510,8 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
 
     -- 1) Scan playerData keys to find entries tied to routes.
     for key in pairs(playerData) do
-        local routeFileName = key:match("^(.-)-TotalSteps$") or key:match("^(.-)-SkippedStep$")
+        local routeFileName = key:match("^(.-)-TotalSteps$") or key:match("^(.-)-SkippedStep$") or
+        key:match("^(.-)-RawTotalSteps$")
         if routeFileName then
             trackedRoutes[routeFileName] = true
         elseif self.RouteQuestStepList[key] then
@@ -533,13 +552,17 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
         -- hasSavedProgress: true if any saved state exists for this route
         local hasSavedProgress = playerData[routeFileName] ~= nil
             or playerData[routeFileName .. '-TotalSteps'] ~= nil
+            or playerData[routeFileName .. '-RawTotalSteps'] ~= nil
             or playerData[routeFileName .. '-SkippedStep'] ~= nil
             or completedRoutes[displayName]
 
         if hasSavedProgress then
             local routeExists = self.RouteQuestStepList[routeFileName] ~= nil
-            local savedTotal = playerData[routeFileName .. '-TotalSteps']
-            local currentTotal = routeExists and self:GetTotalSteps(routeFileName, false) or 0
+            -- Use raw (unfiltered) step count for change detection.
+            -- The filtered count depends on dynamic player state (quest log, achievements,
+            -- auras...) which may not be ready after /reload, causing false positives.
+            local savedTotal = playerData[routeFileName .. '-RawTotalSteps']
+            local currentTotal = routeExists and self:GetRawStepCount(routeFileName) or 0
             local savedSignature = routeSignatures[routeFileName]
             local currentSignature = routeExists and self:GetRouteSignature(routeFileName) or nil
             local isCustomPath = customPathLookup[displayName]
@@ -556,6 +579,8 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
 
             if routeChanged then
                 self:ClearSavedRouteData(routeFileName)
+                -- Persist the new raw total so future comparisons work correctly
+                playerData[routeFileName .. '-RawTotalSteps'] = currentTotal
                 routeSignatures[routeFileName] = currentSignature
 
                 if wasCompleted then
@@ -568,12 +593,15 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
                     table.insert(customPathResetNames, displayName)
                 end
             else
+                -- No change: store raw total + signature for next comparison
+                playerData[routeFileName .. '-RawTotalSteps'] = currentTotal
                 routeSignatures[routeFileName] = currentSignature
             end
         else
             -- Even if we had no saved progress, persist a lightweight signature so future version upgrades can detect changes.
             if self.RouteQuestStepList[routeFileName] then
                 routeSignatures[routeFileName] = self:GetRouteSignature(routeFileName)
+                playerData[routeFileName .. '-RawTotalSteps'] = self:GetRawStepCount(routeFileName)
             end
         end
     end
