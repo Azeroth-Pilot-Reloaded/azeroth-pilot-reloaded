@@ -433,6 +433,17 @@ function APR.transport:GetMeToRightZone(isRetry)
         return
     end
 
+    -- Additional guard: verify the player zone context is actually populated.
+    -- After a teleport the map API may already return a mapID but the full zone
+    -- hierarchy (parent chain, continent) may still be empty / stale.  In that
+    -- case we must NOT declare "wrong zone" — just bail out and let the PEW
+    -- progressive timers or future ZONE_CHANGED events handle the next check.
+    local preCheckContext = APR:ResolvePlayerZoneContext()
+    if not preCheckContext.allRelevant or #preCheckContext.allRelevant == 0 then
+        APR:Debug("GetMeToRightZone: player zone context empty (transitioning), skipping")
+        return
+    end
+
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
 
     if (routeZoneMapIDs and mapID and routeName) then
@@ -504,9 +515,26 @@ function APR.transport:GetMeToRightZone(isRetry)
             return
         end
 
-        -- Retry systems (Disabled)
+        -- Retry: if this is the first detection of wrong zone (not already a
+        -- retry), schedule a delayed re-check.  After a teleport/portal the zone
+        -- data may still be settling; one extra check often resolves a false
+        -- "wrong zone" flash.
         if not isRetry and not self._retryPending then
-            -- no logic for now
+            self._retryPending = true
+            C_Timer.After(1.5, function()
+                self._retryPending = false
+                if APR.IsInRouteZone then return end
+                if not APR.ActiveRoute then return end
+                APR:InvalidatePlayerZoneCache()
+                APR._lastRouteZoneCheck = nil
+                APR._lastRouteZoneResult = nil
+                if self._routingThrottle then
+                    self._routingThrottle.count = 0
+                    self._routingThrottle.firstCall = GetTime()
+                end
+                self._routingForceRefresh = true
+                self:GetMeToRightZone(true)
+            end)
         end
 
         local reason = farAway and L["TOO_FAR_AWAY"] or L["WRONG_ZONE"]

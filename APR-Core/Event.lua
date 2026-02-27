@@ -1149,17 +1149,51 @@ function APR.event.functions.zone(event, ...)
         -- Zone change events that fire during this window should NOT call GetMeToRightZone
         -- immediately because the map API is not yet reliable.
         APR.transport._worldTransitionTime = GetTime()
-        C_Timer.After(0.5, function()
-            APR.transport._worldTransitionTime = nil
-            local profile = APR:GetSettingsProfile()
-            if APR.ActiveRoute and profile and profile.enableAddon then
-                -- Invalidate caches one more time now that the map API should be stable
+
+        -- Cancel any previous post-teleport retry timers
+        if APR.transport._pewRetryTimers then
+            for _, timer in ipairs(APR.transport._pewRetryTimers) do
+                if timer then pcall(function() timer:Cancel() end) end
+            end
+        end
+        APR.transport._pewRetryTimers = {}
+
+        -- Schedule progressive zone checks after loading screen / teleport.
+        -- The map API often needs more than 0.5s to fully stabilize after a
+        -- portal or hearthstone.  We try several times with increasing delays
+        -- so slow machines or long loading screens are handled gracefully.
+        local delays = { 1.0, 2.0, 3.5, 5.0 }
+        for i, delay in ipairs(delays) do
+            APR.transport._pewRetryTimers[i] = C_Timer.NewTimer(delay, function()
+                -- Clear the transition window on the first scheduled check
+                if i == 1 then
+                    APR.transport._worldTransitionTime = nil
+                end
+
+                local profile = APR:GetSettingsProfile()
+                if not APR.ActiveRoute or not profile or not profile.enableAddon then
+                    return
+                end
+
+                -- Already in the right zone — nothing to do
+                if APR.IsInRouteZone then
+                    return
+                end
+
+                -- Invalidate caches for a completely fresh detection
                 APR:InvalidatePlayerZoneCache()
                 APR._lastRouteZoneCheck = nil
                 APR._lastRouteZoneResult = nil
-                APR.transport:GetMeToRightZone()
-            end
-        end)
+
+                -- Reset throttle so this check goes through
+                if APR.transport._routingThrottle then
+                    APR.transport._routingThrottle.count = 0
+                    APR.transport._routingThrottle.firstCall = GetTime()
+                end
+                APR.transport._routingForceRefresh = true
+                APR.transport:GetMeToRightZone(i > 1)
+            end)
+        end
     end
     if event == "ZONE_CHANGED" or
         event == "ZONE_CHANGED_INDOORS" or
@@ -1186,7 +1220,7 @@ function APR.event.functions.zone(event, ...)
         -- If we are still in the PLAYER_ENTERING_WORLD transition window (instance exit,
         -- teleport, loading screen), skip the immediate check.  The delayed timer from
         -- PLAYER_ENTERING_WORLD will handle it once the map API is stable.
-        if APR.transport._worldTransitionTime and (GetTime() - APR.transport._worldTransitionTime) < 0.5 then
+        if APR.transport._worldTransitionTime and (GetTime() - APR.transport._worldTransitionTime) < 1.0 then
             return
         end
 
