@@ -18920,7 +18920,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         Zone = 2413,
         _index = 471,
     },
-       {
+    {
         Done = { 92697 },
         Coord = { x = -2025.2, y = -156.1 },
         Zone = 2413,
@@ -18946,7 +18946,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         Zone = 2413,
         _index = 474,
     },
- 
+
     {
         PickUp = { 91375 },
         Coord = { x = 1055.1, y = -839.7 },
@@ -21292,14 +21292,6 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 14,
-    },
-    {
-        QpartPart = { [86549] = { 1 } },
-        Coord = { x = -4318, y = 8548.3 },
-        IsCampaignQuest = true,
-        TrigText = "1/3",
-        Zone = 2395,
-        _index = 15,
     },
     {
         Qpart = { [86549] = { 1 } },
@@ -25772,14 +25764,6 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 16,
-    },
-    {
-        QpartPart = { [86549] = { 1 } },
-        Coord = { x = -4318, y = 8548.3 },
-        IsCampaignQuest = true,
-        TrigText = "1/3",
-        Zone = 2395,
-        _index = 17,
     },
     {
         Qpart = { [86549] = { 1 } },
@@ -38766,14 +38750,6 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 1299,
-    },
-    {
-        QpartPart = { [86549] = { 1 } },
-        Coord = { x = -4318, y = 8548.3 },
-        IsCampaignQuest = true,
-        TrigText = "1/3",
-        Zone = 2395,
-        _index = 1300,
     },
     {
         Qpart = { [86549] = { 1 } },
