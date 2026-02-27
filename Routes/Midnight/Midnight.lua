@@ -15660,13 +15660,6 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         _index = 16,
     },
     {
-        GetFP = 3194,
-        Coord = { x = -1312.5, y = 1358.3 },
-        IsCampaignQuest = true,
-        Zone = 2413,
-        _index = 17,
-    },
-    {
         Qpart = { [86901] = { 2 } },
         Coord = { x = -576.3, y = -53 },
         Range = 5,
@@ -18218,13 +18211,6 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         _index = 365,
     },
     {
-        GetFP = 3194,
-        Coord = { x = -1312.5, y = 1358.3 },
-        IsCampaignQuest = true,
-        Zone = 2413,
-        _index = 366,
-    },
-    {
         Done = { 91063 },
         Coord = { x = -1027, y = 1018.7 },
         Zone = 2413,
@@ -19551,13 +19537,6 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
         IsCampaignQuest = true,
         Zone = 2413,
         _index = 18,
-    },
-    {
-        GetFP = 3194,
-        Coord = { x = -1312.5, y = 1358.3 },
-        IsCampaignQuest = true,
-        Zone = 2413,
-        _index = 19,
     },
     {
         Qpart = { [86901] = { 2 } },
@@ -35075,13 +35054,6 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 836,
     },
     {
-        GetFP = 3194,
-        Coord = { x = -1312.5, y = 1358.3 },
-        IsCampaignQuest = true,
-        Zone = 2413,
-        _index = 837,
-    },
-    {
         Qpart = { [86901] = { 2 } },
         Coord = { x = -576.3, y = -53 },
         Range = 5,
@@ -36677,13 +36649,6 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         SkipForLvl = 89,
         Zone = 2413,
         _index = 1043,
-    },
-    {
-        GetFP = 3194,
-        Coord = { x = -1312.5, y = 1358.3 },
-        IsCampaignQuest = true,
-        Zone = 2413,
-        _index = 1044,
     },
     {
         Done = { 91063 },
