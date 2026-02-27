@@ -63,11 +63,6 @@ local pendingQuestUpdateTimer
 local questShareQueue = {}
 local questShareRetries = {}
 local QUEST_SHARE_MAX_RETRIES = 10
-local adventureMapRetryToken = 0
-
-local function CancelAdventureMapRetries()
-    adventureMapRetryToken = adventureMapRetryToken + 1
-end
 
 -- track instance status to avoid repeatedly toggling the addon
 local lastIsInstanceWithUI = nil
@@ -152,8 +147,6 @@ function APR.event:CleanupEvents()
     -- Clear quest share queue
     wipe(questShareQueue)
     wipe(questShareRetries)
-
-    CancelAdventureMapRetries()
 end
 
 ---------------------------------------------------------------------------------------
@@ -260,7 +253,6 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
     if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
     if not APR:IsPickupStep() and (step and not step.IsAdventureMap) then
         C_AdventureMap.Close();
-        CancelAdventureMapRetries()
         APR:NotYet()
         return
     end
@@ -268,52 +260,20 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
     -- Ensure the quest pool is built before checking adventure map quests
     APR:EnsureQuestPool()
 
-    local MAX_RETRIES = 10
-    local RETRY_DELAY = 0.3
-    local attempt = 0
-
-    local function IsAdventureMapOpen()
-        local adventureMapFrame = rawget(_G, "AdventureMapFrame")
-        return adventureMapFrame and adventureMapFrame:IsShown() or false
-    end
-
-    CancelAdventureMapRetries()
-    local retryToken = adventureMapRetryToken
-
-    local function tryAcceptAdventureMapQuests()
-        if retryToken ~= adventureMapRetryToken or not IsAdventureMapOpen() then
-            return
-        end
-
-        attempt = attempt + 1
-        local numChoices = C_AdventureMap.GetNumZoneChoices()
-        APR:Debug("AdventureMap attempt " .. attempt .. "/" .. MAX_RETRIES .. " - choices: " .. numChoices)
-
-        local questStarted = false
-        for choiceIndex = 1, numChoices do
-            local questID, textureKit, name, zoneDescription, normalizedX, normalizedY = C_AdventureMap
-                .GetZoneChoiceInfo(choiceIndex);
-            if AdventureMap_IsQuestValid(questID, normalizedX, normalizedY) then
-                if APR:IsQuestInPool(tonumber(questID)) then
-                    C_AdventureMap.StartQuest(questID)
-                    questStarted = true
-                end
+    local numChoices = C_AdventureMap.GetNumZoneChoices()
+    for choiceIndex = 1, numChoices do
+        local questID, textureKit, name, zoneDescription, normalizedX, normalizedY = C_AdventureMap
+            .GetZoneChoiceInfo(choiceIndex);
+        if AdventureMap_IsQuestValid(questID, normalizedX, normalizedY) then
+            if APR:IsQuestInPool(tonumber(questID)) then
+                C_AdventureMap.StartQuest(questID)
             end
         end
-
-        -- Retry if no choices were available or no quest was started
-        if not questStarted and attempt < MAX_RETRIES and IsAdventureMapOpen() and retryToken == adventureMapRetryToken then
-            C_Timer.After(RETRY_DELAY, tryAcceptAdventureMapQuests)
-        end
-    end
-
-    if IsAdventureMapOpen() and retryToken == adventureMapRetryToken then
-        C_Timer.After(RETRY_DELAY, tryAcceptAdventureMapQuests)
     end
 end
 
 function APR.event.functions.adventureMapClose(event, ...)
-    CancelAdventureMapRetries()
+    -- No-op: kept for event registration
 end
 
 function APR.event.functions.buffsAndCooldown(event, unitTarget, updateInfo)
