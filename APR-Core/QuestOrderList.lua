@@ -337,9 +337,8 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     self.questID = nil
 
     QuestOrderListPanel:Show()
-    -- Calculate skipped steps before current index to get the correct display index
-    local skippedBeforeCurrent = APR:CountSkippedStepsBefore(APR.ActiveRoute, currentStepIndex)
-    currentStepIndex = currentStepIndex - skippedBeforeCurrent
+    -- No display-index adjustment needed: we compare rawIndex (ipairs) directly
+    -- against the raw currentStepIndex and keep a separate displayStepIndex for UI.
     local layout = buildLayout()
     local playerID = APR.PlayerID
     local playerData = playerID and APRData and APRData[playerID] or nil
@@ -348,26 +347,29 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         return list ~= nil and tContains(list, value) or false
     end
 
-    -- can't use id from the loop due to faction/race/class/achievement step option
-    local stepIndex = 1
-    for _, step in ipairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
+    local displayStepIndex = 1
+    local currentDisplayIndex = nil
+    for rawIndex, step in ipairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
         -- Hide step for Faction, Race, Class, Achievement
         if APR:StepFilterQoL(step) then
             local container
             local activeQuestId
-            local isCurrentStep = stepIndex == currentStepIndex
+            local isCurrentStep = rawIndex == currentStepIndex
+            if isCurrentStep then
+                currentDisplayIndex = displayStepIndex
+            end
 
             if step.ExitTutorial then
                 local questID = step.ExitTutorial
-                local color = colorByCompletion(C_QuestLog.IsOnQuest(questID), currentStepIndex, stepIndex)
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["SKIP_TUTORIAL"],
+                local color = colorByCompletion(C_QuestLog.IsOnQuest(questID), currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, L["SKIP_TUTORIAL"],
                     color, isCurrentStep)
             elseif step.BuyMerchant and not step.Qpart then
                 local buyMerchant = step.BuyMerchant
                 local questInfo = {}
                 local flagged = 0
                 for _, item in ipairs(buyMerchant) do
-                    if C_QuestLog.IsQuestFlaggedCompleted(item.questID) or currentStepIndex > stepIndex then
+                    if C_QuestLog.IsQuestFlaggedCompleted(item.questID) or currentStepIndex > rawIndex then
                         flagged = flagged + 1
                     else
                         local itemName = C_Item.GetItemInfo(item.itemID) or UNKNOWN
@@ -375,10 +377,12 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     end
                 end
                 if #buyMerchant == flagged then
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["BUY"], "green",
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, L["BUY"],
+                        "green",
                         isCurrentStep)
                 else
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, L["BUY"],
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
+                        L["BUY"],
                         questInfo, "gray", isCurrentStep)
                 end
             elseif step.PickUp then
@@ -405,10 +409,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 end
 
                 if #idList == flagged then
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["PICK_UP_Q"],
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, L["PICK_UP_Q"],
                         "green", isCurrentStep)
                 else
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                         L["PICK_UP_Q"], questInfo, "gray", isCurrentStep)
                 end
             elseif step.DropQuest then
@@ -419,7 +423,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local questText = format(L["Q_DROP"], MobName)
                 local questInfo = { { questID = questID, questName = getQuestName(questID) } }
                 local color = QuestOrderListUtils:IsQuestCompletedOrActive(questID) and "green" or "gray"
-                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, questText,
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex, questText,
                     questInfo, color, isCurrentStep)
             elseif step.Qpart then
                 local idList = step.Qpart
@@ -476,10 +480,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 end
 
                 if total == flagged then
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["Q_PART"],
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, L["Q_PART"],
                         "green", isCurrentStep)
                 else
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                         L["Q_PART"], questInfo, "gray", isCurrentStep)
                 end
             elseif step.QpartPart then
@@ -512,23 +516,24 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     end
                 end
                 if total == flagged then
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["Q_PART"],
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, L["Q_PART"],
                         "green", isCurrentStep)
                 else
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                         L["Q_PART"], questInfo, "gray", isCurrentStep)
                 end
             elseif step.Treasure then
                 local questID = step.Treasure
                 local questInfo = { { questID = questID, questName = getQuestName(questID) } }
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, stepIndex)
-                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     L["GET_TREASURE"], questInfo, color, isCurrentStep)
             elseif step.Group then
                 local questID = step.Group.QuestId
                 local questInfo = { { questID = questID, questName = getQuestName(questID) } }
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, stepIndex)
-                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, L["GROUP_Q"],
+                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
+                    L["GROUP_Q"],
                     questInfo, color, isCurrentStep)
             elseif step.Done then
                 local idList = step.Done
@@ -554,32 +559,33 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 end
 
                 if #idList == flagged then
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["TURN_IN_Q"],
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, L["TURN_IN_Q"],
                         "green", isCurrentStep)
                 else
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                         L["TURN_IN_Q"], questInfo, "gray", isCurrentStep)
                 end
             elseif step.Scenario then
                 local scenario = step.Scenario
                 local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
                 if not scenarioInfo then
-                    if currentStepIndex > stepIndex then
-                        container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["SCENARIO"],
+                    if currentStepIndex > rawIndex then
+                        container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                            L["SCENARIO"],
                             "green", isCurrentStep)
                     else
                         local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
                         local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario
                             .criteriaIndex)
                         local questInfo = { { questID = scenarioStepInfo.title, questName = criteriaInfo.description } }
-                        container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                        container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                             L["SCENARIO"], questInfo, "gray", isCurrentStep)
                     end
                 else
                     local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
-                    local color = criteriaInfo.completed or currentStepIndex > stepIndex and "green" or "gray";
+                    local color = criteriaInfo.completed or currentStepIndex > rawIndex and "green" or "gray";
                     local questInfo = { { questID = scenario.criteriaIndex, questName = criteriaInfo.description } }
-                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                         L["SCENARIO"] .. " - " .. scenarioInfo.name, questInfo, color, isCurrentStep)
                 end
             elseif step.EnterScenario then
@@ -597,10 +603,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local scenarioTypeLabel = (scenarioInfo and scenarioInfo.type and L[scenarioInfo.type]) or L["SCENARIO"] or
                     UNKNOWN
 
-                local color = (scenarioMapID == currentMapID or isCompleted or currentStepIndex > stepIndex) and "green" or
+                local color = (scenarioMapID == currentMapID or isCompleted or currentStepIndex > rawIndex) and "green" or
                     "gray";
                 local questInfo = { { questID = mapName } }
-                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     format(L["ENTER_IN"], scenarioTypeLabel), questInfo, color, isCurrentStep)
             elseif step.DoScenario then
                 local scenarioMapID = step.DoScenario
@@ -628,9 +634,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     end
                 end
 
-                local color = (hasQpartCompleted and isCompleted) or currentStepIndex > stepIndex and "green" or "gray";
+                local color = (hasQpartCompleted and isCompleted) or currentStepIndex > rawIndex and "green" or "gray";
                 local questInfo = { { questID = mapName } }
-                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     format(L["COMPLETE_SOMETHING"], scenarioTypeLabel), questInfo, color, isCurrentStep)
             elseif step.LeaveScenario then
                 local scenarioMapID        = step.LeaveScenario
@@ -645,13 +651,13 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,
                     scenarioMapID)
 
-                local color                = ((scenarioMapID ~= currentMapID and isCompleted) or currentStepIndex > stepIndex) and
+                local color                = ((scenarioMapID ~= currentMapID and isCompleted) or currentStepIndex > rawIndex) and
                     "green" or "gray";
                 local questInfo            = { { questID = mapName } }
                 local leaveKey             = scenarioInfo and scenarioInfo.type and ("LEAVE_" .. scenarioInfo.type) or
                     nil
                 local leaveText            = (leaveKey and L[leaveKey]) or L["SCENARIO"] or UNKNOWN
-                container, activeQuestId   = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                container, activeQuestId   = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     leaveText, questInfo, color, isCurrentStep)
             elseif step.TakePortal then
                 local portalData = step.TakePortal
@@ -661,57 +667,59 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local parentMapID = APR:GetPlayerParentMapID()
                 local arrived = zoneId and (currentMapID == zoneId or parentMapID == zoneId)
                 local completed = (questID and C_QuestLog.IsQuestFlaggedCompleted(questID)) or arrived
-                local color = colorByCompletion(completed, currentStepIndex, stepIndex)
+                local color = colorByCompletion(completed, currentStepIndex, rawIndex)
                 local mapInfo = APR:GetMapInfoCached(zoneId)
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
                 local stepText = string.format(L["USE_PORTAL_TO"], ':')
                 local questInfo = { { questID = zoneName } }
-                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     stepText, questInfo, color, isCurrentStep)
             elseif step.Waypoint then
                 local questID = step.Waypoint
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, stepIndex)
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["RUN_WAYPOINT"],
+                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, L["RUN_WAYPOINT"],
                     color, isCurrentStep)
             elseif step.SetHS then
                 local questID = step.SetHS
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, stepIndex)
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["SET_HEARTHSTONE"],
+                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                    L["SET_HEARTHSTONE"],
                     color, isCurrentStep)
             elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS then
                 local questID = step.UseHS or step.UseDalaHS or step.UseGarrisonHS
                 local questText = step.UseHS and L["USE_HEARTHSTONE"] or
                     (step.UseDalaHS and L["USE_DALARAN_HEARTHSTONE"] or L["USE_GARRISON_HEARTHSTONE"])
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, stepIndex)
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, questText, color,
+                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, questText, color,
                     isCurrentStep)
             elseif step.UseItem then
                 local questID = step.UseItem.questID
                 local itemID = step.UseItem.itemID
                 local itemName = C_Item.GetItemInfo(itemID)
                 local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, stepIndex)
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, questText, color,
+                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, questText, color,
                     isCurrentStep)
             elseif step.UseSpell then
                 local questID = step.UseSpell.questID
                 local spellID = step.UseSpell.spellID
                 local spellInfo = C_Spell.GetSpellInfo(spellID)
                 local questText = L["USE_SPELL"] .. ": " .. ((spellInfo and spellInfo.name) or UNKNOWN)
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, stepIndex)
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, questText, color,
+                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, questText, color,
                     isCurrentStep)
             elseif step.GetFP then
                 local nodeID = step.GetFP
-                local color = (APR:HasTaxiNode(nodeID) or currentStepIndex > stepIndex) and "green" or "gray"
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["GET_FLIGHTPATH"],
+                local color = (APR:HasTaxiNode(nodeID) or currentStepIndex > rawIndex) and "green" or "gray"
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, L
+                    ["GET_FLIGHTPATH"],
                     color, isCurrentStep)
             elseif step.UseFlightPath then
                 local questID = step.UseFlightPath
                 local questText = step.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]
                 local questInfo = { { questID = APR:GetTaxiNodeName(step) } }
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, stepIndex)
-                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, questText,
+                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex, questText,
                     questInfo, color, isCurrentStep)
             elseif step.LearnProfession then
                 local spellID = step.LearnProfession
@@ -719,7 +727,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local name = (spellInfo and spellInfo.name) or UNKNOWN
                 local questInfo = { { questID = name } }
                 local color = APR:IsSpellKnown(spellID) and "green" or "gray"
-                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, stepIndex,
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     L["LEARN_PROFESSION"], questInfo, color, isCurrentStep)
             elseif step.LootItems then
                 local title = format(L["LOOT_ITEM"], ":")
@@ -738,7 +746,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                         local isDone =
                             currentQuantity >= requiredQuantity
                             or APR.lootUtils:IsLootDone(step, "ITEM", itemID)
-                            or currentStepIndex > stepIndex
+                            or currentStepIndex > rawIndex
 
                         if isDone then
                             completed = completed + 1
@@ -754,12 +762,12 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
 
                 if completed == #step.LootItems then
                     container, activeQuestId =
-                        QuestOrderListUtils:AddStepFrame(layout, stepIndex, title, "green", isCurrentStep)
+                        QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, title, "green", isCurrentStep)
                 else
                     container, activeQuestId =
                         QuestOrderListUtils:AddStepFrameWithQuest(
                             layout,
-                            stepIndex,
+                            displayStepIndex,
                             title,
                             itemsInfo,
                             "gray",
@@ -768,32 +776,37 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 end
             elseif step.WarMode then
                 local color = C_PvP.IsWarModeActive() and "green" or "gray"
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["TURN_ON_WARMODE"],
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                    L["TURN_ON_WARMODE"],
                     color, isCurrentStep)
             elseif step.Grind then
                 local color = UnitLevel("player") <= step.Grind and "green" or "gray"
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex,
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
                     L["GRIND"] .. " " .. step.Grind, color, isCurrentStep)
             elseif step.GossipOptionIDs and not APR:HasAnyMainStepOption(step) then
                 local alreadyTalked = APR:hasEveryGossipsCompleted(step.GossipOptionIDs)
-                local color = (alreadyTalked or currentStepIndex > stepIndex) and "green" or "gray"
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["TALK_NPC"], color,
+                local color = (alreadyTalked or currentStepIndex > rawIndex) and "green" or "gray"
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, L["TALK_NPC"],
+                    color,
                     isCurrentStep)
             elseif step.RouteCompleted then
-                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, stepIndex, L["ROUTE_COMPLETED"],
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                    L["ROUTE_COMPLETED"],
                     "gray", isCurrentStep)
             end
             if container then
-                self.stepList[stepIndex] = container
+                self.stepList[displayStepIndex] = container
                 if activeQuestId then
                     self.questID = activeQuestId
                 end
             end
-            stepIndex = stepIndex + 1
+            displayStepIndex = displayStepIndex + 1
         end
     end
     -- set current Step indicator
-    QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame, currentStepIndex)
+    if currentDisplayIndex then
+        QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame, currentDisplayIndex)
+    end
 end
 
 function APR.questOrderList:DelayedUpdate()
