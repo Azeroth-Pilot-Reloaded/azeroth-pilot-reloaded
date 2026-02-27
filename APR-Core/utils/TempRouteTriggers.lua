@@ -155,6 +155,12 @@ function APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
         return
     end
 
+    -- Don't suggest routes if the player already has an active route loaded.
+    -- The quest being accepted is likely part of the current route's flow.
+    if APR.ActiveRoute and APRCustomPath[self.PlayerID] and next(APRCustomPath[self.PlayerID]) then
+        return
+    end
+
     local routeKeys = self.TemporaryRouteTriggers.byQuestID[tonumber(questID)]
     if not routeKeys or #routeKeys == 0 then
         return
