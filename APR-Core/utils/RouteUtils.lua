@@ -511,7 +511,7 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
     -- 1) Scan playerData keys to find entries tied to routes.
     for key in pairs(playerData) do
         local routeFileName = key:match("^(.-)-TotalSteps$") or key:match("^(.-)-SkippedStep$") or
-        key:match("^(.-)-RawTotalSteps$")
+            key:match("^(.-)-RawTotalSteps$")
         if routeFileName then
             trackedRoutes[routeFileName] = true
         elseif self.RouteQuestStepList[key] then
@@ -606,13 +606,24 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
         end
     end
 
-    -- 6) Build a single notification (chat + popup) for all resets to avoid multiple messages
+    -- 6) Build a single notification (chat + popup) for resets.
+    --    Only show the popup if:
+    --      a) The active route was reset, OR
+    --      b) It's the first login after a version upgrade (previousVersion ~= current)
+    --    Data cleanup above already happened silently for all routes regardless.
+    local isVersionUpgrade = previousVersion and previousVersion ~= self.version
+    local activeRouteDisplay = self.ActiveRoute and self:GetRouteDisplayName(self.ActiveRoute)
+
     local combinedResetLines, seenNames = {}, {}
+    local activeRouteWasReset = false
 
     for _, name in ipairs(customPathResetNames) do
         if not seenNames[name] then
             table.insert(combinedResetLines, name)
             seenNames[name] = true
+            if name == activeRouteDisplay then
+                activeRouteWasReset = true
+            end
         end
     end
 
@@ -620,10 +631,13 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
         if not seenNames[name] then
             table.insert(combinedResetLines, name)
             seenNames[name] = true
+            if name == activeRouteDisplay then
+                activeRouteWasReset = true
+            end
         end
     end
 
-    if #combinedResetLines > 0 then
+    if #combinedResetLines > 0 and (activeRouteWasReset or isVersionUpgrade) then
         local msg = L["ROUTE_UPDATED_NEED_RESET"] .. ":\n\n" .. table.concat(combinedResetLines, "\n - ")
         self.questionDialog:CreateMessagePopup(msg)
     end
