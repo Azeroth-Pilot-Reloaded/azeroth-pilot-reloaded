@@ -1180,13 +1180,6 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 153,
     },
     {
-        GossipOptionIDs = { 135009 },
-        InstanceQuest = true,
-        IsCampaignQuest = true,
-        Zone = 2564,
-        _index = 154,
-    },
-    {
         Scenario = { criteriaID = 106367, criteriaIndex = 1, scenarioID = 3118, stepID = 15950 },
         GossipOptionIDs = { 135009 },
         InstanceQuest = true,
@@ -5394,13 +5387,6 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         RaidIcon = 240215,
         Zone = 2437,
         _index = 156,
-    },
-    {
-        GossipOptionIDs = { 135009 },
-        InstanceQuest = true,
-        IsCampaignQuest = true,
-        Zone = 2564,
-        _index = 642,
     },
     {
         Scenario = { criteriaID = 106367, criteriaIndex = 1, scenarioID = 3118, stepID = 15950 },
