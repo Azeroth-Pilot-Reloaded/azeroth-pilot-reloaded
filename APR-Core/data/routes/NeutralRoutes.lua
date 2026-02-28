@@ -98,7 +98,6 @@ APR.RouteList.Midnight = {
     ["2395-Arators-Journey"] = L["Midnight - Arators Journey"],
 
     -- lvl Max
-    ["2395-Rage-of-the-Rendorei"] = L["Midnight - Rage of the Ren'dorei"],
     ["2395-The-Darkening-Sky"] = L["Midnight - The Darkening Sky"],
     ["2395-Midnight-Prey"] = L["Midnight - Prey"],
     ["2248-Unlock-void-elf-DH"] = L["Midnight - Unlock Void Elf Demon Hunter"],

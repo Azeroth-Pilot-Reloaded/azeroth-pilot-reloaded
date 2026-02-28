@@ -17,6 +17,11 @@
     <Script file="Routes/Legion/Legion_Horde.lua"/>
     <Script file="Routes/Legion/Legion.lua"/>
 
+    <Script file="Routes/Midnight/Midnight-Eversong-Woods.lua"/>
+    <Script file="Routes/Midnight/Midnight-Harandar.lua"/>
+    <Script file="Routes/Midnight/Midnight-Zulaman.lua"/>
+    <Script file="Routes/Midnight/Midnight-Voidstorm.lua"/>
+    <Script file="Routes/Midnight/Midnight-Speedrun.lua"/>
     <Script file="Routes/Midnight/Midnight.lua"/>
 
     <Script file="Routes/MistsOfPandaria/MistsOfPandaria_Alliance.lua"/>
