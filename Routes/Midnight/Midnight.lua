@@ -22676,13 +22676,6 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         _index = 199,
     },
     {
-        Done = { 95276 },
-        Coord = { x = -4610.5, y = 8457.1 },
-        IsCampaignQuest = true,
-        Zone = 2395,
-        _index = 200,
-    },
-    {
         TakePortal = { QuestID = 90923, ZoneId = 2405 },
         Coord = { x = -4325.2, y = 8535.4 },
         ZoneStepTrigger = { Range = 15, x = -448.9, y = 895.8 },
@@ -24917,9 +24910,29 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Grind = 90,
         Coord = { x = -609, y = 882.9 },
-        ExtraLineText = "MUST_BE_90_UNLOCK_FINAL_QUEST_CHAIN",
         Zone = 2405,
         _index = 524,
+    },
+    {
+        TakePortal = { QuestID = 95276, ZoneId = 2395 },
+        Coord = { x = -441.1, y = 890 },
+        ZoneStepTrigger = { Range = 15, x = -4325.9, y = 8552.6 },
+        Zone = 2405,
+        _index = 620,
+    },
+    {
+        Done = { 95276 },
+        Coord = { x = -4610.5, y = 8457.1 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 200,
+    },
+    {
+        TakePortal = { QuestID = 86521, ZoneId = 2405 },
+        ZoneStepTrigger = { Range = 15, x = 135.4, y = 1280.6 },
+        IsCampaignQuest = true,
+        Zone = 2556,
+        _index = 193,
     },
     {
         PickUp = { 92657 },
@@ -27108,6 +27121,12 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 195,
+    },
+    {
+        Grind = 90,
+        Coord = { x = -609, y = 882.9 },
+        Zone = 2405,
+        _index = 524,
     },
     {
         Done = { 95276 },
@@ -40029,13 +40048,6 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 1477,
     },
     {
-        Done = { 95276 },
-        Coord = { x = -4610.5, y = 8457.1 },
-        IsCampaignQuest = true,
-        Zone = 2395,
-        _index = 1478,
-    },
-    {
         TakePortal = { QuestID = 92939, ZoneId = 2405 },
         Coord = { x = -4325.6, y = 8537.1 },
         ZoneStepTrigger = { Range = 15, x = -448.9, y = 895.8 },
@@ -40882,6 +40894,20 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         SkipForLvl = 90,
         Zone = 2405,
         _index = 1585,
+    },
+    {
+        TakePortal = { QuestID = 95276, ZoneId = 2395 },
+        Coord = { x = -441.1, y = 890 },
+        ZoneStepTrigger = { Range = 15, x = -4325.9, y = 8552.6 },
+        Zone = 2405,
+        _index = 620,
+    },
+    {
+        Done = { 95276 },
+        Coord = { x = -4610.5, y = 8457.1 },
+        IsCampaignQuest = true,
+        Zone = 2395,
+        _index = 1478,
     },
     {
         RouteCompleted = true,
