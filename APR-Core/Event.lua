@@ -271,7 +271,7 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
         tostring(isPickup) .. " isAdventureMapStep=" .. tostring(isAdventureMapStep) .. " step=" .. tostring(step ~= nil))
 
     -- Block if the current step is not a pickup and not an adventure map step (unless autoAccept is on)
-    if not autoAccept and not isPickup and not isAdventureMapStep then
+    if APR.ActiveRoute and not autoAccept and not isPickup and not isAdventureMapStep then
         APR:Debug("AdventureMap: step is not a pickup/adventureMap step and autoAccept is off, closing map")
         C_AdventureMap.Close();
         CancelAdventureMapRetries()
