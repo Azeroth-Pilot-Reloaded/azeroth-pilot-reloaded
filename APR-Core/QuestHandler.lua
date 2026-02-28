@@ -370,9 +370,13 @@ function APR:UpdateStep()
 
             for _, item in ipairs(step.LootItems) do
                 local itemID = item.itemID
+                local questID = item.questID
                 local requiredQuantity = math.max(item.quantity or 1, 1)
 
-                if itemID then
+                if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                    completed = completed + 1
+                    APR:Debug("Loot Item quest flagged complete: " .. tostring(questID))
+                elseif itemID then
                     -- unified quantity (bags + virtual)
                     local bagCount = C_Item.GetItemCount(itemID, true) or 0
                     local virtualCount = APR.QuestVirtualItemCount[itemID] or 0
