@@ -72,7 +72,7 @@ end
 local function GetArrowColor(percentage)
     if percentage > 0.98 then
         return 0, 1, 0
-    elseif percentage > 0.49 then
+    elseif percentage > 0.5 then
         return (1 - percentage) * 2, 1, 0
     end
     return 1, percentage * 2, 0
