@@ -535,7 +535,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         Qpart = { [89334] = { 3 } },
         Coord = { x = -8584.8, y = 3655.6 },
-        Fillers = { [86654] = { 1 }, [89231] = { 1 } },
+        Fillers = { [86654] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 241424,
@@ -545,7 +545,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         QpartPart = { [86655] = { 1 } },
         Coord = { x = -8585.4, y = 3749.4 },
-        Fillers = { [86654] = { 1 }, [89231] = { 1 } },
+        Fillers = { [86654] = { 1 } },
         IsCampaignQuest = true,
         TrigText = "2/4",
         Zone = 2437,
@@ -582,7 +582,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         QpartPart = { [86655] = { 1 } },
         Coord = { x = -8676.6, y = 3895.6 },
-        Fillers = { [86654] = { 1 }, [89231] = { 1 } },
+        Fillers = { [86654] = { 1 } },
         IsCampaignQuest = true,
         TrigText = "3/4",
         Zone = 2437,
@@ -591,7 +591,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         QpartPart = { [86655] = { 1 } },
         Coord = { x = -8589.9, y = 4071.7 },
-        Fillers = { [86654] = { 1 }, [89231] = { 1 } },
+        Fillers = { [86654] = { 1 } },
         IsCampaignQuest = true,
         TrigText = "4/4",
         Zone = 2437,
@@ -600,18 +600,10 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         Qpart = { [86654] = { 1 } },
         Coord = { x = -8514.3, y = 3931.7 },
-        Fillers = { [89230] = { 1 }, [89231] = { 1 } },
         Range = 100,
         IsCampaignQuest = true,
         Zone = 2437,
         _index = 78,
-    },
-    {
-        Qpart = { [89230] = { 1 }, [89231] = { 1 } },
-        Coord = { x = -8514.3, y = 3931.7 },
-        Range = 100,
-        Zone = 2437,
-        _index = 79,
     },
     {
         Qpart = { [86655] = { 2 } },
@@ -620,13 +612,6 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         IsCampaignQuest = true,
         Zone = 2437,
         _index = 80,
-    },
-    {
-        Qpart = { [89231] = { 2 } },
-        Button = { ["89231-2"] = 249231 },
-        NoArrow = true,
-        Zone = 2437,
-        _index = 81,
     },
     {
         Done = { 86654 },
@@ -2160,6 +2145,20 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         Coord = { x = -8396, y = 4551.6 },
         Zone = 2437,
         _index = 295,
+    },
+    {
+        Qpart = { [89230] = { 1 }, [89231] = { 1 } },
+        Coord = { x = -8514.3, y = 3931.7 },
+        Range = 100,
+        Zone = 2437,
+        _index = 79,
+    },
+    {
+        Qpart = { [89231] = { 2 } },
+        Button = { ["89231-2"] = 249231 },
+        NoArrow = true,
+        Zone = 2437,
+        _index = 81,
     },
     {
         Done = { 89230, 89231 },
@@ -4787,7 +4786,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
     {
         QpartPart = { [86655] = { 1 } },
         Coord = { x = -8589.9, y = 4071.7 },
-        Fillers = { [86654] = { 1 }, [89231] = { 1 } },
+        Fillers = { [86654] = { 1 }, },
         IsCampaignQuest = true,
         TrigText = "4/4",
         Zone = 2437,
