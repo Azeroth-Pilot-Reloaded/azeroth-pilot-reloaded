@@ -241,6 +241,12 @@ function APR.Arrow:SetCoord()
 
     local _, routeMapID = APR:GetCurrentRouteMapIDsAndName()
     local stepCoord = APR:GetStepCoord(step, routeMapID, APR:GetPlayerParentMapID())
+    if not stepCoord and APR.IsInRouteZone then
+        APR:Debug("APR.Arrow:SetCoord(): Step has no coordinates, hiding arrow")
+        self:SetArrowActive(false, 0, 0)
+        return
+    end
+
     if self.currentStep ~= currentStepIndex and stepCoord and APR.IsInRouteZone then
         APR:Debug("APR.Arrow:SetCoord(): Setting arrow for step:" .. currentStepIndex .. " at coordinates:", stepCoord)
         self:SetArrowActive(true, stepCoord.x, stepCoord.y)
