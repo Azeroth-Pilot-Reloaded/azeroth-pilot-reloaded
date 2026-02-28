@@ -1728,7 +1728,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         _index = 226,
     },
     {
-        TakePortal = { QuestID = 90824, ZoneId = 2413 },
+        TakePortal = { QuestID = 91550, ZoneId = 2413 },
         Coord = { x = -4372.7, y = 8500.8 },
         ZoneStepTrigger = { Range = 15, x = -444.9, y = -266.8 },
         Zone = 2395,
