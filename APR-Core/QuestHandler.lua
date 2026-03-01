@@ -874,29 +874,21 @@ function APR:UpdateStep()
             if questToHighlight then
                 APR:TrackQuest(questToHighlight)
             end
-        elseif step.Glyph then
-            local glyphData = APR:GetGlyphStepData(step)
-            if glyphData and glyphData.achievementID and glyphData.criteriaID then
-                local isCompleted, criteriaDescription, quantity, requiredQuantity = APR:IsGlyphStepComplete(step)
+        elseif step.Achievement then
+            local achievementData = step.Achievement
+            if achievementData and achievementData.achievementID then
+                local isCompleted, progressText = APR:IsAchievementStepComplete(step)
                 if isCompleted then
                     APR:UpdateNextStep()
                     return
                 end
 
                 if APR.IsInRouteZone then
-                    local text = criteriaDescription or ("Criteria #" .. glyphData.criteriaID)
-                    local targetRequired = glyphData.requiredQuantity or glyphData.quantity or requiredQuantity
-                    if quantity and targetRequired and targetRequired > 0 then
-                        text = text .. " (" .. quantity .. "/" .. targetRequired .. ")"
-                    elseif quantity and requiredQuantity and requiredQuantity > 0 then
-                        text = text .. " (" .. quantity .. "/" .. requiredQuantity .. ")"
-                    end
-
-                    APR.currentStep:AddQuestSteps("Glyph-" .. glyphData.criteriaID, text, glyphData.criteriaID)
+                    local objectiveKey = "Achievement-" ..
+                    tostring(achievementData.achievementID) .. "-" .. tostring(achievementData.criteriaIndex or 0)
+                    APR.currentStep:AddQuestSteps(objectiveKey, progressText,
+                        achievementData.criteriaIndex or achievementData.achievementID)
                 end
-            elseif APR.IsInRouteZone then
-                APR.currentStep:AddExtraLineText("GLYPH_CONFIG_ERROR",
-                    "Glyph step is missing achievementID or criteriaID")
             end
         elseif step.GossipOptionIDs and not APR:HasAnyMainStepOption(step) then
             local alreadyTalked = APR:hasEveryGossipsCompleted(step.GossipOptionIDs)

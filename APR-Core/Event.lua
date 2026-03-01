@@ -19,13 +19,13 @@ APR.event.functions = {}
 local events = {
     load = "ADDON_LOADED",
     accept = { "QUEST_ACCEPTED", "QUEST_ACCEPT_CONFIRM" },
+    achievement = { "ACHIEVEMENT_EARNED", "CRITERIA_EARNED", "CRITERIA_COMPLETE" },
     adventureMapAccept = "ADVENTURE_MAP_OPEN",
     adventureMapClose = "ADVENTURE_MAP_CLOSE",
     buffsAndCooldown = "UNIT_AURA",
     dead = { "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST" },
     detail = "QUEST_DETAIL",
     done = { "QUEST_AUTOCOMPLETE", "QUEST_COMPLETE", "QUEST_PROGRESS" },
-    criteria = { "CRITERIA_UPDATE", "CRITERIA_EARNED" },
     emote = { "CHAT_MSG_MONSTER_SAY", "PLAYER_TARGET_CHANGED", "UPDATE_MOUSEOVER_UNIT" },
     getFP = { "TAXIMAP_OPENED", "UI_INFO_MESSAGE" },
     gossip = { "GOSSIP_CLOSED", "GOSSIP_SHOW" },
@@ -254,6 +254,33 @@ function APR.event.functions.accept(event, ...)
         if autoAccept or autoAcceptRoute then
             C_Timer.After(0.2, function() APR:AcceptQuest() end)
         end
+    end
+end
+
+function APR.event.functions.achievement(event, ...)
+    if not step or not step.Achievement then
+        return
+    end
+
+    if event == "ACHIEVEMENT_EARNED" then
+        local achievementID, alreadyEarned = ...
+        if achievementID == step.Achievement.achievementID then
+            APR:UpdateNextStep()
+            return
+        end
+    end
+    if event == "CRITERIA_EARNED" then
+        local achievementID, description, achievementAlreadyEarnedOnAccount = ...
+        if achievementID ~= step.Achievement.achievementID then
+            return
+        end
+
+        C_Timer.After(0.3, function()
+            local isCompleted, progressText = APR:IsAchievementStepComplete(step)
+            if isCompleted then
+                APR:UpdateNextStep()
+            end
+        end)
     end
 end
 
@@ -629,34 +656,6 @@ function APR.event.functions.done(event, ...)
             end
         end
     end
-end
-
-function APR.event.functions.criteria(event, ...)
-    if not step or not step.Glyph then
-        return
-    end
-
-    local glyphData = APR:GetGlyphStepData(step)
-    if not glyphData then
-        return
-    end
-
-    if event == "CRITERIA_EARNED" then
-        local achievementID = tonumber((...))
-        if not achievementID then
-            return
-        end
-
-        if achievementID ~= glyphData.achievementID then
-            return
-        end
-    elseif event == "CRITERIA_UPDATE" then
-        -- Event has no stable payload in modern API docs; re-evaluate the active glyph step.
-    else
-        return
-    end
-
-    APR:UpdateStep()
 end
 
 function APR.event.functions.emote(event, ...)

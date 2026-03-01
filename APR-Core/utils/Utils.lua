@@ -99,6 +99,32 @@ function APR:TrimString(text)
     return (tostring(text):match("^%s*(.-)%s*$"))
 end
 
+function APR:NormalizeBoolean(value)
+    if value == nil then
+        return nil
+    end
+
+    if type(value) == "boolean" then
+        return value
+    end
+
+    if type(value) == "number" then
+        return value ~= 0
+    end
+
+    if type(value) == "string" then
+        local normalized = string.lower(value)
+        if normalized == "true" or normalized == "1" or normalized == "yes" then
+            return true
+        end
+        if normalized == "false" or normalized == "0" or normalized == "no" then
+            return false
+        end
+    end
+
+    return nil
+end
+
 function APR:RemoveContiguousSpaces(text)
     if text == nil then
         return ""

@@ -646,7 +646,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
             elseif step.LeaveScenario or step.LeaveInstance then
                 local scenarioMapID        = step.LeaveScenario and step.LeaveScenario.mapID or step.LeaveInstance.mapID
                 local questID              = step.LeaveScenario and step.LeaveScenario.questID or
-                step.LeaveInstance.questID
+                    step.LeaveInstance.questID
                 local currentMapID         = C_Map.GetBestMapForUnit('player')
                 local scenarioContinentID  = APR:GetContinent(scenarioMapID)
                 local mapInfo              = APR:GetMapInfoCached(scenarioMapID)
@@ -728,6 +728,14 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex, questText,
                     questInfo, color, isCurrentStep)
+            elseif step.Achievement then
+                local achievementData = step.Achievement
+                if achievementData and achievementData.achievementID then
+                    local isCompleted, progressText = APR:IsAchievementStepComplete(step)
+                    local color = colorByCompletion(isCompleted, currentStepIndex, rawIndex)
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                        progressText, color, isCurrentStep)
+                end
             elseif step.LearnProfession then
                 local spellID = step.LearnProfession
                 local spellInfo = C_Spell.GetSpellInfo(spellID)

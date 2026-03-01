@@ -80,7 +80,8 @@
         "NEVER",
         "ALWAYS",
         "FlagsUtil",
-        "GARRISON_LOCATION_TOOLTIP"
+        "GARRISON_LOCATION_TOOLTIP",
+        "ACHIEVEMENTS"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {

@@ -19,6 +19,7 @@
 
     <Script file="Routes/Midnight/Midnight-Eversong-Woods.lua"/>
     <Script file="Routes/Midnight/Midnight-Harandar.lua"/>
+    <Script file="Routes/Midnight/Midnight-Glyphs.lua"/>
     <Script file="Routes/Midnight/Midnight-Zulaman.lua"/>
     <Script file="Routes/Midnight/Midnight-Voidstorm.lua"/>
     <Script file="Routes/Midnight/Midnight-Speedrun.lua"/>

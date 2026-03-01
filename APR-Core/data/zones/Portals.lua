@@ -573,6 +573,7 @@ APR.Portals.Spells = {
     { nextContinent = 1978, nextZone = 2025, coords = { x = -1048.2, y = 266.7 },    spellID = 395277 },  -- Valdrakken
     { nextContinent = 2274, nextZone = 2248, coords = { x = -2400.3, y = 2915.7 },   spellID = 446540 },  -- Dornogal
     { nextContinent = 2537, nextZone = 2393, coords = { x = -4814.6, y = 8550 },     spellID = 1259190 }, -- Silvermoon (Midnight)
+    { nextContinent = 2537, nextZone = 2395, coords = { x = -4814.6, y = 8550 },     spellID = 1259190 }, -- Silvermoon (Midnight)
     --DRUID
     { nextContinent = 12,   nextZone = 80,   coords = { x = -2679.8, y = 7995.6 },   spellID = 18960 },   -- Moonglade
 

@@ -103,6 +103,10 @@ APR.RouteList.Midnight = {
     ["2248-Unlock-void-elf-DH"] = L["Midnight - Unlock Void Elf Demon Hunter"],
     ["2395-The-War-of-Light-and-Shadow"] = L["Midnight - The War of Light and Shadow"],
     -- ["2395-Mrglgrgl-of-Grglmrgl"] = L["Midnight - Mrglgrgl of Grglmrgl"],
+    ["2393-Midnight-Glyph-Eversong-Woods"] = L["Glyph - Eversong Woods"],
+    ["2395-Midnight-Glyph-Zulaman"] = L["Glyph - Zul'Aman"],
+    ["2413-Midnight-Glyph-Harandar"] = L["Glyph - Harandar"],
+    ["2405-Midnight-Glyph-Voidstorm"] = L["Glyph - Voidstorm"],
 
     ["2393-Midnight-Speedrun"] = L["Midnight - Speedrun"]
 }
