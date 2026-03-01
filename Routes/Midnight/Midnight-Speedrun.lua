@@ -10254,6 +10254,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [86562] = { 3 } },
         Coord = { x = 1971.3, y = 2033.4 },
+        Fillers = { [86561] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 243142,
@@ -10263,6 +10264,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [86562] = { 2 } },
         Coord = { x = 2148.9, y = 2049.8 },
+        Fillers = { [86561] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 243141,
@@ -10272,6 +10274,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [86562] = { 1 } },
         Coord = { x = 1949, y = 2244.1 },
+        Fillers = { [86561] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 243140,
@@ -10448,6 +10451,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [86537] = { 1 } },
         Coord = { x = 1325.1, y = 230.1 },
+        Fillers = { [86538] = { 1 } },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2405,
@@ -10456,6 +10460,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [86537] = { 2 } },
         Coord = { x = 1392.4, y = 125.8 },
+        Fillers = { [86538] = { 1 } },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2405,
@@ -10464,6 +10469,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [86537] = { 3 } },
         Coord = { x = 1380.9, y = 274.2 },
+        Fillers = { [86538] = { 1 } },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2405,
@@ -10553,6 +10559,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [88768] = { 2 } },
         Coord = { x = 622.6, y = -107.5 },
+        Fillers = { [86541] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 239807,
@@ -10562,6 +10569,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [88768] = { 1 } },
         Coord = { x = 862.8, y = -278.6 },
+        Fillers = { [86541] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 239808,
@@ -10571,6 +10579,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         QpartPart = { [86540] = { 1 } },
         Coord = { x = 994.5, y = -361.2 },
+        Fillers = { [86541] = { 1 } },
         IsCampaignQuest = true,
         TrigText = "1/5",
         Zone = 2405,
@@ -10611,6 +10620,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [88768] = { 3 } },
         Coord = { x = 962.6, y = -139.8 },
+        Fillers = { [86541] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 244153,

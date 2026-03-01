@@ -412,6 +412,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Qpart = { [86562] = { 3 } },
         Coord = { x = 1971.3, y = 2033.4 },
+        Fillers = { [86561] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 243142,
@@ -421,6 +422,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Qpart = { [86562] = { 2 } },
         Coord = { x = 2148.9, y = 2049.8 },
+        Fillers = { [86561] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 243141,
@@ -430,6 +432,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Qpart = { [86562] = { 1 } },
         Coord = { x = 1949, y = 2244.1 },
+        Fillers = { [86561] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 243140,
@@ -606,6 +609,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Qpart = { [86537] = { 1 } },
         Coord = { x = 1325.1, y = 230.1 },
+        Fillers = { [86538] = { 1 } },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2405,
@@ -614,6 +618,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Qpart = { [86537] = { 2 } },
         Coord = { x = 1392.4, y = 125.8 },
+        Fillers = { [86538] = { 1 } },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2405,
@@ -622,6 +627,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     {
         Qpart = { [86537] = { 3 } },
         Coord = { x = 1380.9, y = 274.2 },
+        Fillers = { [86538] = { 1 } },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2405,
@@ -4899,6 +4905,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Qpart = { [86562] = { 3 } },
         Coord = { x = 1971.3, y = 2033.4 },
+        Fillers = { [86561] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 243142,
@@ -4908,6 +4915,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Qpart = { [86562] = { 2 } },
         Coord = { x = 2148.9, y = 2049.8 },
+        Fillers = { [86561] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 243141,
@@ -4917,6 +4925,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Qpart = { [86562] = { 1 } },
         Coord = { x = 1949, y = 2244.1 },
+        Fillers = { [86561] = { 1 } },
         Range = 5,
         IsCampaignQuest = true,
         RaidIcon = 243140,
@@ -5092,6 +5101,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Qpart = { [86537] = { 1 } },
         Coord = { x = 1325.1, y = 230.1 },
+        Fillers = { [86538] = { 1 } },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2405,
@@ -5100,6 +5110,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Qpart = { [86537] = { 2 } },
         Coord = { x = 1392.4, y = 125.8 },
+        Fillers = { [86538] = { 1 } },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2405,
@@ -5108,6 +5119,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     {
         Qpart = { [86537] = { 3 } },
         Coord = { x = 1380.9, y = 274.2 },
+        Fillers = { [86538] = { 1 } },
         Range = 1,
         IsCampaignQuest = true,
         Zone = 2405,
