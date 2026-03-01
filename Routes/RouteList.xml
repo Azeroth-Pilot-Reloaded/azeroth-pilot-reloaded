@@ -23,6 +23,7 @@
     <Script file="Routes/Midnight/Midnight-Zulaman.lua"/>
     <Script file="Routes/Midnight/Midnight-Voidstorm.lua"/>
     <Script file="Routes/Midnight/Midnight-Speedrun.lua"/>
+    <Script file="Routes/Midnight/Midnight-Prof-Treasures.lua"/>
     <Script file="Routes/Midnight/Midnight.lua"/>
 
     <Script file="Routes/MistsOfPandaria/MistsOfPandaria_Alliance.lua"/>
