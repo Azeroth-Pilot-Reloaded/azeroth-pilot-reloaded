@@ -7,7 +7,7 @@ local AceGUI = LibStub("AceGUI-3.0")
 local alliance = "Alliance"
 local horde = "Horde"
 
-local optionsWidth = 1.2
+local optionsWidth = 0.7
 local lineColor = APR.Color.grayAlpha
 local customPathListeWidget = nil
 local tabRouteListWidget = nil
@@ -15,6 +15,87 @@ local routeSearchWidget = nil
 local currentTabName = nil
 
 local routeSearchText = ""
+local routeSortKey = "name"
+local routeSortAsc = true
+
+local function GetRouteStatusText(fileName, routeName)
+    if APRZoneCompleted[APR.PlayerID][routeName] then
+        return L["ROUTE_COMPLETED"]
+    end
+
+    if APRData[APR.PlayerID][fileName] then
+        if not APRData[APR.PlayerID][fileName .. '-TotalSteps'] then
+            APR:GetTotalSteps(fileName)
+        end
+        return (APRData[APR.PlayerID][fileName] - (APRData[APR.PlayerID][fileName .. '-SkippedStep'] or 0)) ..
+            "/" .. APRData[APR.PlayerID][fileName .. '-TotalSteps']
+    end
+
+    return ""
+end
+
+local function ToggleRouteSort(key)
+    if routeSortKey == key then
+        routeSortAsc = not routeSortAsc
+    else
+        routeSortKey = key
+        routeSortAsc = true
+    end
+
+    if tabRouteListWidget and currentTabName then
+        SetRouteListTab(tabRouteListWidget, currentTabName)
+    end
+end
+
+local function UpdateRouteSortHeaderLabels(frame)
+    if not frame then
+        return
+    end
+
+    if frame.nameColumn then
+        frame.nameColumn:SetText(L["NAME"])
+    end
+    if frame.categoryColumn then
+        frame.categoryColumn:SetText(L["CATEGORY"])
+    end
+    if frame.statusColumn then
+        frame.statusColumn:SetText(L["STATUS"])
+    end
+
+    if frame.sortIndicators then
+        for _, indicator in pairs(frame.sortIndicators) do
+            indicator:Hide()
+        end
+
+        local activeIndicator = frame.sortIndicators[routeSortKey]
+        if activeIndicator then
+            if routeSortAsc then
+                activeIndicator:SetTexture("Interface\\Buttons\\Arrow-Up-Up")
+                activeIndicator:ClearAllPoints()
+                if routeSortKey == "status" then
+                    activeIndicator:SetPoint("RIGHT", activeIndicator:GetParent(), "RIGHT", 10, 8)
+                elseif routeSortKey == "category" then
+                    activeIndicator:SetPoint("RIGHT", activeIndicator:GetParent(), "RIGHT", 5, 8)
+                else
+                    activeIndicator:SetPoint("RIGHT", activeIndicator:GetParent(), "RIGHT", -4, 8)
+                end
+                activeIndicator:SetSize(14, 14)
+            else
+                activeIndicator:SetTexture("Interface\\Buttons\\Arrow-Down-Up")
+                activeIndicator:ClearAllPoints()
+                if routeSortKey == "status" then
+                    activeIndicator:SetPoint("RIGHT", activeIndicator:GetParent(), "RIGHT", 10, 2)
+                elseif routeSortKey == "category" then
+                    activeIndicator:SetPoint("RIGHT", activeIndicator:GetParent(), "RIGHT", 5, 2)
+                else
+                    activeIndicator:SetPoint("RIGHT", activeIndicator:GetParent(), "RIGHT", -4, 2)
+                end
+                activeIndicator:SetSize(14, 14)
+            end
+            activeIndicator:Show()
+        end
+    end
+end
 
 
 local function SetRouteSearchText(value)
@@ -163,8 +244,20 @@ local function GetConfigOptionTable()
                     return not next(APR.RouteList.Midnight)
                 end
             },
+            reset_custom_path_spacer_1 = {
+                order = 1.71,
+                type = "description",
+                name = " ",
+                width = optionsWidth,
+            },
+            reset_custom_path_spacer_2 = {
+                order = 1.72,
+                type = "description",
+                name = " ",
+                width = optionsWidth,
+            },
             reset_custom_path = {
-                order = 1.8,
+                order = 1.73,
                 name = L["CLEAN_CUSTOM_PATH"],
                 type = "execute",
                 width = optionsWidth,
@@ -436,6 +529,9 @@ function SetCustomPathListFrame(widget, name)
 
     local routes = APRCustomPath[APR.PlayerID]
     local yOffset = -15
+    local rowHeight = 29
+    local rowOddBgColor = { 0, 0, 0, 0 }
+    local rowEvenBgColor = { 0, 0, 0, 0.24 }
     APRCustomPath[APR.PlayerID] = {}
     for _, routeName in ipairs(routes) do
         tinsert(APRCustomPath[APR.PlayerID], routeName)
@@ -463,6 +559,14 @@ function SetCustomPathListFrame(widget, name)
             local lineContainer = CreateFrame("Frame", nil, widget.frame.contentFrame)
             lineContainer:SetSize(600, 25)
             lineContainer:SetPoint("TOPLEFT", 10, yOffset)
+
+            local rowBackground = lineContainer:CreateTexture(nil, "BACKGROUND")
+            rowBackground:SetAllPoints()
+            if i % 2 == 0 then
+                rowBackground:SetColorTexture(unpack(rowEvenBgColor))
+            else
+                rowBackground:SetColorTexture(unpack(rowOddBgColor))
+            end
 
             local borderTexture = lineContainer:CreateTexture(nil, "BACKGROUND")
             borderTexture:SetTexture("Interface\\Buttons\\UI-Listbox-Highlight")
@@ -542,7 +646,9 @@ function SetCustomPathListFrame(widget, name)
             yOffset = yOffset - 25
             tinsert(widget.fontStringsContainer, lineContainer)
         end
-        local height = (-yOffset < 200 and -yOffset or 200)
+        local maxVisibleRoutes = 4
+        local maxHeight = 15 + (25 * maxVisibleRoutes)
+        local height = (-yOffset < maxHeight and -yOffset or maxHeight)
         widget.frame:SetSize(600, height)
         widget.frame.contentFrame:SetSize(600, -yOffset)
     end
@@ -558,10 +664,59 @@ local function CreateRouteTableFrame(name)
     local nameColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     nameColumn:SetPoint("TOPLEFT", 10, 0)
     nameColumn:SetText(L["NAME"])
+    frame.nameColumn = nameColumn
+
+    local categoryColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
+    categoryColumn:SetPoint("TOPLEFT", 285, 0)
+    categoryColumn:SetText(L["CATEGORY"])
+    frame.categoryColumn = categoryColumn
 
     local statusColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     statusColumn:SetPoint("TOPRIGHT", -10, 0)
+    statusColumn:SetWidth(58)
+    statusColumn:SetJustifyH("RIGHT")
     statusColumn:SetText(L["STATUS"])
+    frame.statusColumn = statusColumn
+
+    local function CreateSortClickArea(key)
+        local button = CreateFrame("Button", nil, frame)
+        button:SetHeight(20)
+        button:SetScript("OnClick", function()
+            ToggleRouteSort(key)
+        end)
+        button:SetScript("OnEnter", function(self)
+            GameTooltip:SetOwner(self, "ANCHOR_TOP")
+            GameTooltip:AddLine((L["CLICK"] or "Click") .. " : Sort")
+            GameTooltip:Show()
+        end)
+        button:SetScript("OnLeave", function()
+            GameTooltip:Hide()
+        end)
+
+        frame.sortIndicators = frame.sortIndicators or {}
+        local indicator = button:CreateTexture(nil, "OVERLAY")
+        indicator:SetPoint("RIGHT", button, "RIGHT", -4, 10)
+        indicator:SetSize(14, 14)
+        indicator:SetTexture("Interface\\Buttons\\Arrow-Up-Up")
+        indicator:Hide()
+        frame.sortIndicators[key] = indicator
+
+        return button
+    end
+
+    frame.nameSortButton = CreateSortClickArea("name")
+    frame.nameSortButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 8, -2)
+    frame.nameSortButton:SetWidth(270)
+
+    frame.categorySortButton = CreateSortClickArea("category")
+    frame.categorySortButton:SetPoint("TOPLEFT", frame, "TOPLEFT", 282, -2)
+    frame.categorySortButton:SetWidth(70)
+
+    frame.statusSortButton = CreateSortClickArea("status")
+    frame.statusSortButton:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -6, -2)
+    frame.statusSortButton:SetWidth(84)
+
+    UpdateRouteSortHeaderLabels(frame)
 
     return frame
 end
@@ -602,6 +757,7 @@ end
 
 function SetRouteListTab(widget, name)
     tabRouteListWidget = widget
+    UpdateRouteSortHeaderLabels(widget.frame)
     -- Hide the content before resetting the data
     if widget.fontStringsContainer then
         for _, container in ipairs(widget.fontStringsContainer) do
@@ -619,6 +775,9 @@ function SetRouteListTab(widget, name)
     local search = (routeSearchText or ""):gsub("^%s+", ""):gsub("%s+$", ""):lower()
 
     local yOffset = -15
+    local rowHeight = 34
+    local rowOddBgColor = { 0, 0, 0, 0 }
+    local rowEvenBgColor = { 0, 0, 0, 0.24 }
 
     -- Copy the routes into a new table for sorting (with filter)
     local function AddRoutesFromTab(tabName, routes)
@@ -648,14 +807,48 @@ function SetRouteListTab(widget, name)
         end
     end
 
-    -- Sort the routes alphabetically by routeName
+    for _, route in ipairs(sortedRoutes) do
+        route.categoryValue = L["LEVELING"]
+        route.statusValue = GetRouteStatusText(route.fileName, route.routeName)
+    end
+
     table.sort(sortedRoutes, function(a, b)
-        return a.routeName < b.routeName
+        local function normalize(value)
+            return (value or ""):lower()
+        end
+
+        local aValue
+        local bValue
+
+        if routeSortKey == "status" then
+            aValue = normalize(a.statusValue)
+            bValue = normalize(b.statusValue)
+        elseif routeSortKey == "category" then
+            aValue = normalize(a.categoryValue)
+            bValue = normalize(b.categoryValue)
+        else
+            aValue = normalize(a.routeName)
+            bValue = normalize(b.routeName)
+        end
+
+        if aValue == bValue then
+            local aName = normalize(a.routeName)
+            local bName = normalize(b.routeName)
+            if aName == bName then
+                return normalize(a.fileName) < normalize(b.fileName)
+            end
+            return aName < bName
+        end
+
+        if routeSortAsc then
+            return aValue < bValue
+        end
+        return aValue > bValue
     end)
 
     if #sortedRoutes == 0 then
         local noRoutesContainer = CreateFrame("Frame", nil, widget.frame)
-        noRoutesContainer:SetSize(400, 25)
+        noRoutesContainer:SetSize(400, rowHeight)
         noRoutesContainer:SetPoint("TOPLEFT", 10, yOffset)
 
         local noRoutesText = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
@@ -669,12 +862,20 @@ function SetRouteListTab(widget, name)
         -- Store the font string in the table
         tinsert(widget.fontStringsContainer, noRoutesContainer)
     else
-        for _, route in ipairs(sortedRoutes) do
+        for index, route in ipairs(sortedRoutes) do
             -- Create a container for each line
             local lineContainer = CreateFrame("Frame", nil, widget.frame, "BackdropTemplate")
-            lineContainer:SetSize(430, 25)
+            lineContainer:SetSize(430, rowHeight)
             lineContainer:SetPoint("TOPLEFT", 10, yOffset)
             lineContainer:SetPoint("TOPRIGHT", -10, yOffset)
+
+            local rowBackground = lineContainer:CreateTexture(nil, "BACKGROUND")
+            rowBackground:SetAllPoints()
+            if index % 2 == 0 then
+                rowBackground:SetColorTexture(unpack(rowEvenBgColor))
+            else
+                rowBackground:SetColorTexture(unpack(rowOddBgColor))
+            end
 
             local borderTexture = lineContainer:CreateTexture(nil, "BACKGROUND")
             borderTexture:SetTexture("Interface\\Buttons\\UI-Listbox-Highlight")
@@ -685,22 +886,23 @@ function SetRouteListTab(widget, name)
 
             local nameText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             nameText:SetPoint("LEFT")
+            nameText:SetWidth(270)
+            nameText:SetJustifyH("LEFT")
             nameText:SetText(route.routeName)
+
+            local categoryText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            categoryText:SetPoint("LEFT", nameText, "RIGHT", 10, 0)
+            categoryText:SetWidth(70)
+            categoryText:SetJustifyH("LEFT")
+            categoryText:SetText(route.categoryValue)
 
             local statusText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             statusText:SetPoint("RIGHT")
+            statusText:SetWidth(58)
+            statusText:SetJustifyH("RIGHT")
+            statusText:SetWordWrap(true)
 
-            local status = ""
-            if APRZoneCompleted[APR.PlayerID][route.routeName] then
-                status = L["ROUTE_COMPLETED"]
-            elseif APRData[APR.PlayerID][route.fileName] then
-                if not APRData[APR.PlayerID][route.fileName .. '-TotalSteps'] then
-                    APR:GetTotalSteps(route.fileName)
-                end
-                status = (APRData[APR.PlayerID][route.fileName] - (APRData[APR.PlayerID][route.fileName .. '-SkippedStep'] or 0)) ..
-                    "/" .. APRData[APR.PlayerID][route.fileName .. '-TotalSteps']
-            end
-            statusText:SetText(status)
+            statusText:SetText(route.statusValue)
 
             local routeTabName = route.tabName or name
             lineContainer:SetScript("OnEnter", function(self)
@@ -732,10 +934,11 @@ function SetRouteListTab(widget, name)
             end)
             if IsRouteDisabled(routeTabName, route.routeName) then
                 nameText:SetTextColor(unpack(APR.Color.midGray))
+                categoryText:SetTextColor(unpack(APR.Color.midGray))
                 lineContainer:SetScript("OnMouseDown", nil)
             end
 
-            yOffset = yOffset - 25
+            yOffset = yOffset - rowHeight
             tinsert(widget.fontStringsContainer, lineContainer)
         end
     end
