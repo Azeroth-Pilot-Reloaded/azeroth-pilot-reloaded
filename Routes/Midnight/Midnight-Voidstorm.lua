@@ -4618,8 +4618,8 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         _index = 621,
     },
     {
-        Coord = { x = -4243, y = 8139.8 },
         GossipOptionIDs = { 135198 },
+        Coord = { x = -4243, y = 8139.8 },
         Zone = 2395,
         _index = 622,
     },

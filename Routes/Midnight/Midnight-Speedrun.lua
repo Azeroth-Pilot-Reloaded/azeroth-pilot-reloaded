@@ -4818,14 +4818,8 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 616,
     },
     {
-        GossipOptionIDs = { 135010 },
-        InstanceQuest = true,
-        IsCampaignQuest = true,
-        Zone = 2514,
-        _index = 617,
-    },
-    {
         Scenario = { criteriaID = 106369, criteriaIndex = 3, scenarioID = 3118, stepID = 15950, questID = 91958 },
+        GossipOptionIDs = { 135010 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2513,
