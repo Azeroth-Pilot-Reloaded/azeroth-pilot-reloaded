@@ -6610,6 +6610,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         PickUp = { 93416 },
         Coord = { x = -425.4, y = -83.2 },
+        ExtraLineText = "EXIT_CAVE",
         IsCampaignQuest = true,
         Zone = 2413,
         _index = 844,

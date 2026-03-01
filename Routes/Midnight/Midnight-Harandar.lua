@@ -173,6 +173,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     {
         PickUp = { 93416 },
         Coord = { x = -425.4, y = -83.2 },
+        ExtraLineText = "EXIT_CAVE",
         IsCampaignQuest = true,
         Zone = 2413,
         _index = 25,
@@ -4053,6 +4054,7 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
     {
         PickUp = { 93416 },
         Coord = { x = -425.4, y = -83.2 },
+        ExtraLineText = "EXIT_CAVE",
         IsCampaignQuest = true,
         Zone = 2413,
         _index = 27,
