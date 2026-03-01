@@ -1364,14 +1364,13 @@ function APR.routeconfig:GetMidnightPrefab(suppressUpdate)
 
     AddRouteToCustomPath(L["Midnight - Intro"])
     AddRouteToCustomPath(L["Midnight - Eversong Woods - sojourner"])
-    AddRouteToCustomPath(L["Midnight - Arators Journey"])
     AddRouteToCustomPath(L["Midnight - Zul'Aman - sojourner"])
     AddRouteToCustomPath(L["Midnight - Harandar - sojourner"])
-    AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
     AddRouteToCustomPath(L["Midnight - Voidstorm - sojourner"])
-    AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
+    AddRouteToCustomPath(L["Midnight - Arators Journey"])
+    AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
     AddRouteToCustomPath(L["Midnight - Prey"])
-
+    AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
 
     self:SendCustomPathUpdate(suppressUpdate)
 end
@@ -1381,6 +1380,7 @@ function APR.routeconfig:GetMidnightSpeedrunPrefab(suppressUpdate)
 
     AddRouteToCustomPath(L["Midnight - Intro"])
     AddRouteToCustomPath(L["Midnight - Speedrun"])
+    AddRouteToCustomPath(L["Midnight - Prey"])
     AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
 
     self:SendCustomPathUpdate(suppressUpdate)
