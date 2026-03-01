@@ -307,7 +307,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         _index = 42,
     },
     {
-        DoScenario = 2505,
+        DoScenario = { questID = 86912, mapID = 2505 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2413,
@@ -323,7 +323,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         _index = 44,
     },
     {
-        LeaveScenario = 2505,
+        LeaveScenario = { questID = 86912, mapID = 2505 },
         ZoneStepTrigger = { Range = 15, x = 810.4, y = 47.3 },
         InstanceQuest = true,
         IsCampaignQuest = true,
@@ -3332,20 +3332,20 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         _index = 464,
     },
     {
-        EnterScenario = 2510,
+        EnterScenario = { questID = 93421, mapID = 2510 },
         InstanceQuest = true,
         Zone = 2413,
         _index = 465,
     },
     {
-        DoScenario = 2510,
+        DoScenario = { questID = 93421, mapID = 2510 },
         GossipOptionIDs = { 134668 },
         InstanceQuest = true,
         Zone = 2413,
         _index = 466,
     },
     {
-        LeaveScenario = 2510,
+        LeaveScenario = { questID = 93421, mapID = 2510 },
         InstanceQuest = true,
         Zone = 2413,
         _index = 467,
@@ -4187,7 +4187,7 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
         _index = 44,
     },
     {
-        DoScenario = 2505,
+        DoScenario = { questID = 86912, mapID = 2505 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2413,
@@ -4203,7 +4203,7 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
         _index = 46,
     },
     {
-        LeaveScenario = 2505,
+        LeaveScenario = { questID = 86912, mapID = 2505 },
         ZoneStepTrigger = { Range = 15, x = 810.4, y = 47.3 },
         InstanceQuest = true,
         IsCampaignQuest = true,

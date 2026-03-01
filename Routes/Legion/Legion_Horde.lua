@@ -79,7 +79,7 @@ if APR.Faction == "Horde" then
             _index = 11,
         },
         {
-            Scenario = { criteriaID = 32855, criteriaIndex = 1, scenarioID = 1189, stepID = 2896 },
+            Scenario = { criteriaID = 32855, criteriaIndex = 1, scenarioID = 1189, stepID = 2896, questID = 40518 },
             Coord = { x = 1900.1, y = 643.7 },
             Range = 60,
             InstanceQuest = true,
@@ -87,7 +87,7 @@ if APR.Faction == "Horde" then
             _index = 12,
         },
         {
-            Scenario = { criteriaID = 32856, criteriaIndex = 2, scenarioID = 1189, stepID = 2896 },
+            Scenario = { criteriaID = 32856, criteriaIndex = 2, scenarioID = 1189, stepID = 2896, questID = 40518 },
             Coord = { x = 1878.1, y = 631.6 },
             Range = 60,
             InstanceQuest = true,
@@ -95,7 +95,7 @@ if APR.Faction == "Horde" then
             _index = 13,
         },
         {
-            Scenario = { criteriaID = 32857, criteriaIndex = 3, scenarioID = 1189, stepID = 2896 },
+            Scenario = { criteriaID = 32857, criteriaIndex = 3, scenarioID = 1189, stepID = 2896, questID = 40518 },
             Coord = { x = 1852.4, y = 646 },
             Range = 60,
             InstanceQuest = true,
@@ -103,7 +103,7 @@ if APR.Faction == "Horde" then
             _index = 14,
         },
         {
-            Scenario = { criteriaID = 32858, criteriaIndex = 1, scenarioID = 1189, stepID = 2897 },
+            Scenario = { criteriaID = 32858, criteriaIndex = 1, scenarioID = 1189, stepID = 2897, questID = 40518 },
             Coord = { x = 1916.6, y = 627.2 },
             Range = 5,
             InstanceQuest = true,
@@ -111,7 +111,7 @@ if APR.Faction == "Horde" then
             _index = 15,
         },
         {
-            Scenario = { criteriaID = 32860, criteriaIndex = 1, scenarioID = 1189, stepID = 2898 },
+            Scenario = { criteriaID = 32860, criteriaIndex = 1, scenarioID = 1189, stepID = 2898, questID = 40518 },
             Coord = { x = 1878.3, y = 996 },
             Range = 5,
             InstanceQuest = true,
@@ -119,7 +119,7 @@ if APR.Faction == "Horde" then
             _index = 16,
         },
         {
-            Scenario = { criteriaID = 32861, criteriaIndex = 1, scenarioID = 1189, stepID = 2899 },
+            Scenario = { criteriaID = 32861, criteriaIndex = 1, scenarioID = 1189, stepID = 2899, questID = 40518 },
             Coord = { x = 1846.2, y = 1073 },
             Range = 80,
             InstanceQuest = true,
@@ -135,7 +135,7 @@ if APR.Faction == "Horde" then
             _index = 18,
         },
         {
-            Scenario = { criteriaID = 29715, criteriaIndex = 1, scenarioID = 1189, stepID = 2901 },
+            Scenario = { criteriaID = 29715, criteriaIndex = 1, scenarioID = 1189, stepID = 2901, questID = 40518 },
             Coord = { x = 1748.1, y = 1428.3 },
             Range = 5,
             InstanceQuest = true,
@@ -143,7 +143,7 @@ if APR.Faction == "Horde" then
             _index = 19,
         },
         {
-            Scenario = { criteriaID = 28055, criteriaIndex = 1, scenarioID = 1189, stepID = 2902 },
+            Scenario = { criteriaID = 28055, criteriaIndex = 1, scenarioID = 1189, stepID = 2902, questID = 40518 },
             Coord = { x = 1749.9, y = 1432.1 },
             Range = 5,
             InstanceQuest = true,
@@ -159,7 +159,7 @@ if APR.Faction == "Horde" then
             _index = 21,
         },
         {
-            Scenario = { criteriaID = 29714, criteriaIndex = 1, scenarioID = 1189, stepID = 2903 },
+            Scenario = { criteriaID = 29714, criteriaIndex = 1, scenarioID = 1189, stepID = 2903, questID = 40518 },
             Coord = { x = 1489.1, y = 1523.2 },
             Range = 5,
             InstanceQuest = true,

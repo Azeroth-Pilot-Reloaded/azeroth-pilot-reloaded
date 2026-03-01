@@ -2106,7 +2106,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 265,
     },
     {
-        EnterScenario = 2502,
+        EnterScenario = { questID = 86636, mapID = 2502 },
         Coord = { x = -4142, y = 4750.4 },
         InstanceQuest = true,
         Zone = 2395,
@@ -2131,7 +2131,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 268,
     },
     {
-        DoScenario = 2502,
+        DoScenario = { questID = 86636, mapID = 2502 },
         Coord = { x = -56.2, y = 129.5 },
         InstanceQuest = true,
         Range = 15,
@@ -2157,7 +2157,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 276,
     },
     {
-        LeaveScenario = 2502,
+        LeaveScenario = { questID = 86636, mapID = 2502 },
         NoArrow = true,
         InstanceQuest = true,
         IsCampaignQuest = true,
@@ -2945,20 +2945,20 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 375,
     },
     {
-        EnterScenario = 2577,
+        EnterScenario = { questID = 93384, mapID = 2577 },
         InstanceQuest = true,
         Zone = 2395,
         _index = 376,
     },
     {
-        DoScenario = 2577,
+        DoScenario = { questID = 93384, mapID = 2577 },
         GossipOptionIDs = { 135865, 135798 },
         InstanceQuest = true,
         Zone = 2395,
         _index = 377,
     },
     {
-        LeaveScenario = 2577,
+        LeaveScenario = { questID = 93384, mapID = 2577 },
         InstanceQuest = true,
         Zone = 2395,
         _index = 378,
@@ -3212,6 +3212,40 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Zone = 2395,
         _index = 411,
     },
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     {
         PickUp = { 86708 },
         Coord = { x = -4613.2, y = 8456.9 },
@@ -3408,7 +3442,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 436,
     },
     {
-        EnterScenario = 2535,
+        EnterScenario = { questID = 93409, mapID = 2535 },
         InstanceQuest = true,
         Zone = 2395,
         _index = 437,
@@ -3422,14 +3456,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 438,
     },
     {
-        DoScenario = 2535,
+        DoScenario = { questID = 93409, mapID = 2535 },
         GossipOptionIDs = { 136385, 136318 },
         InstanceQuest = true,
         Zone = 2395,
         _index = 439,
     },
     {
-        LeaveScenario = 2535,
+        LeaveScenario = { questID = 93409, mapID = 2535 },
         InstanceQuest = true,
         Zone = 2395,
         _index = 440,
@@ -4769,7 +4803,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 613,
     },
     {
-        Scenario = { criteriaID = 106367, criteriaIndex = 1, scenarioID = 3118, stepID = 15950 },
+        Scenario = { criteriaID = 106367, criteriaIndex = 1, scenarioID = 3118, stepID = 15950, questID = 91958 },
         GossipOptionIDs = { 135009 },
         InstanceQuest = true,
         IsCampaignQuest = true,
@@ -4777,7 +4811,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 615,
     },
     {
-        Scenario = { criteriaID = 106368, criteriaIndex = 2, scenarioID = 3118, stepID = 15950 },
+        Scenario = { criteriaID = 106368, criteriaIndex = 2, scenarioID = 3118, stepID = 15950, questID = 91958 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2514,
@@ -4791,7 +4825,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 617,
     },
     {
-        Scenario = { criteriaID = 106369, criteriaIndex = 3, scenarioID = 3118, stepID = 15950 },
+        Scenario = { criteriaID = 106369, criteriaIndex = 3, scenarioID = 3118, stepID = 15950, questID = 91958 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2513,
@@ -4809,7 +4843,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 136468 },
         InstanceQuest = true,
         IsCampaignQuest = true,
-        LeaveInstance = 2513,
+        LeaveInstance = { questID = 91958, mapID = 2513 },
         Zone = 2513,
         _index = 620,
     },
@@ -5066,20 +5100,20 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 653,
     },
     {
-        EnterScenario = 2503,
+        EnterScenario = { questID = 93410, mapID = 2503 },
         InstanceQuest = true,
         Zone = 2437,
         _index = 654,
     },
     {
-        DoScenario = 2503,
+        DoScenario = { questID = 93410, mapID = 2503 },
         GossipOptionIDs = { 135811, 135634 },
         InstanceQuest = true,
         Zone = 2437,
         _index = 655,
     },
     {
-        LeaveScenario = 2503,
+        LeaveScenario = { questID = 93410, mapID = 2503 },
         InstanceQuest = true,
         Zone = 2437,
         _index = 656,
@@ -6716,7 +6750,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 861,
     },
     {
-        DoScenario = 2505,
+        DoScenario = { questID = 86912, mapID = 2505 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2413,
@@ -6732,7 +6766,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 863,
     },
     {
-        LeaveScenario = 2505,
+        LeaveScenario = { questID = 86912, mapID = 2505 },
         ZoneStepTrigger = { Range = 15, x = 810.4, y = 47.3 },
         InstanceQuest = true,
         IsCampaignQuest = true,
@@ -9926,14 +9960,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 1274,
     },
     {
-        EnterScenario = 2510,
+        EnterScenario = { questID = 93421, mapID = 2510 },
         InstanceQuest = true,
         SkipForLvl = 90,
         Zone = 2413,
         _index = 1275,
     },
     {
-        DoScenario = 2510,
+        DoScenario = { questID = 93421, mapID = 2510 },
         GossipOptionIDs = { 134668 },
         InstanceQuest = true,
         SkipForLvl = 90,
@@ -9941,7 +9975,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 1276,
     },
     {
-        LeaveScenario = 2510,
+        LeaveScenario = { questID = 93421, mapID = 2510 },
         InstanceQuest = true,
         SkipForLvl = 90,
         Zone = 2413,
@@ -10065,28 +10099,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 1291,
     },
     {
-        Scenario = { criteriaID = 70056, criteriaIndex = 1, scenarioID = 2651, stepID = 8244 },
+        Scenario = { criteriaID = 70056, criteriaIndex = 1, scenarioID = 2651, stepID = 8244, questID = 86543 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2424,
         _index = 1292,
     },
     {
-        Scenario = { criteriaID = 70057, criteriaIndex = 2, scenarioID = 2651, stepID = 8244 },
+        Scenario = { criteriaID = 70057, criteriaIndex = 2, scenarioID = 2651, stepID = 8244, questID = 86543 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2424,
         _index = 1293,
     },
     {
-        Scenario = { criteriaID = 70058, criteriaIndex = 3, scenarioID = 2651, stepID = 8244 },
+        Scenario = { criteriaID = 70058, criteriaIndex = 3, scenarioID = 2651, stepID = 8244, questID = 86543 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2424,
         _index = 1294,
     },
     {
-        Scenario = { criteriaID = 70058, criteriaIndex = 4, scenarioID = 2651, stepID = 8244 },
+        Scenario = { criteriaID = 70058, criteriaIndex = 4, scenarioID = 2651, stepID = 8244, questID = 86543 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2424,
@@ -10103,7 +10137,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         GossipOptionIDs = { 135804 },
         InstanceQuest = true,
         IsCampaignQuest = true,
-        LeaveInstance = 2515,
+        LeaveInstance = { questID = 86543, mapID = 2515 },
         Zone = 2424,
         _index = 1297,
     },
@@ -11443,17 +11477,17 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 1466,
     },
     {
-        Scenario = { criteriaID = 106479, criteriaIndex = 1, scenarioID = 3132, stepID = 15982 },
+        Scenario = { criteriaID = 106479, criteriaIndex = 1, scenarioID = 3132, stepID = 15982, questID = 86521 },
         Zone = 2556,
         _index = 1467,
     },
     {
-        Scenario = { criteriaID = 106480, criteriaIndex = 2, scenarioID = 3132, stepID = 15982 },
+        Scenario = { criteriaID = 106480, criteriaIndex = 2, scenarioID = 3132, stepID = 15982, questID = 86521 },
         Zone = 2556,
         _index = 1468,
     },
     {
-        Scenario = { criteriaID = 106481, criteriaIndex = 3, scenarioID = 3132, stepID = 15982 },
+        Scenario = { criteriaID = 106481, criteriaIndex = 3, scenarioID = 3132, stepID = 15982, questID = 86521 },
         Zone = 2556,
         _index = 1469,
     },

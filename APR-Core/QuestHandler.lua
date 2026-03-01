@@ -259,10 +259,12 @@ function APR:UpdateStep()
         end
 
         if step.EnterScenario then
-            local scenarioMapID = step.EnterScenario
+            local scenarioMapID = step.EnterScenario.mapID
+            local questID = step.EnterScenario.questID
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Enter Scenario", scenarioMapID)
 
-            if isCompleted or scenarioMapID == currentMapID then
+
+            if isCompleted or scenarioMapID == currentMapID or C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 APR:UpdateNextStep()
             end
 
@@ -271,7 +273,8 @@ function APR:UpdateStep()
             step.Coord = scenarioInfo.Coord
             APR.Arrow:SetCoord()
         elseif step.DoScenario then
-            local scenarioMapID = step.DoScenario
+            local scenarioMapID = step.DoScenario.mapID
+            local questID = step.DoScenario.questID
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Do Scenario", scenarioMapID)
 
             if step.Qpart then
@@ -281,7 +284,7 @@ function APR:UpdateStep()
                 if (objectiveData and objectiveData.status == APR.QUEST_STATUS.COMPLETE) and isCompleted then
                     APR:UpdateNextStep()
                 end
-            elseif isCompleted then
+            elseif isCompleted or C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 APR:UpdateNextStep()
             end
 
@@ -298,10 +301,11 @@ function APR:UpdateStep()
             APR.currentStep:AddQuestSteps("COMPLETE_SOMETHING_" .. scenarioInfo.type,
                 format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type]) .. ": " .. mapInfo.name, mapInfo.name)
         elseif step.LeaveScenario then
-            local scenarioMapID = step.LeaveScenario
+            local scenarioMapID = step.LeaveScenario.mapID
+            local questID = step.LeaveScenario.questID
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Leave Scenario", scenarioMapID)
 
-            if isCompleted and scenarioMapID ~= currentMapID then
+            if isCompleted and scenarioMapID ~= currentMapID or C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 APR:UpdateNextStep()
             end
 
@@ -310,10 +314,11 @@ function APR:UpdateStep()
                     L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name, mapInfo.name)
             end
         elseif step.LeaveInstance then
-            local instanceMapID = step.LeaveInstance
+            local instanceMapID = step.LeaveInstance.mapID
+            local questID = step.LeaveInstance.questID
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Leave Instance", instanceMapID)
 
-            if isCompleted and instanceMapID ~= currentMapID then
+            if isCompleted and instanceMapID ~= currentMapID or C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 APR:UpdateNextStep()
             end
 
@@ -373,7 +378,7 @@ function APR:UpdateStep()
                 local questID = item.questID
                 local requiredQuantity = math.max(item.quantity or 1, 1)
 
-                if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
                     completed = completed + 1
                     APR:Debug("Loot Item quest flagged complete: " .. tostring(questID))
                 elseif itemID then
@@ -643,7 +648,7 @@ function APR:UpdateStep()
         elseif (step.DropQuest) then
             local questID = step.DropQuest
             local questData = APR.ActiveQuests[questID]
-            if C_QuestLog.IsQuestFlaggedCompleted(questID) or questData then
+            if (questID and C_QuestLog.IsQuestFlaggedCompleted(questID)) or questData then
                 APR:Debug("APR.UpdateStep:DropQuest:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
                 APR:NextQuestStep()
                 return
@@ -732,7 +737,7 @@ function APR:UpdateStep()
                 APR.currentStep:AddStepButton(questID .. "-UseItem", itemID, 'item')
             end
 
-            if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 APR:UpdateNextStep()
                 return
             end
@@ -746,7 +751,7 @@ function APR:UpdateStep()
                 APR.currentStep:AddStepButton(questID .. "-UseSpell", spellID, 'spell')
             end
 
-            if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 APR:UpdateNextStep()
                 return
             end
@@ -908,6 +913,12 @@ function APR:UpdateStep()
         if step.Scenario then
             local scenario = step.Scenario
             local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
+            local questID = scenario.questID
+
+            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                APR:UpdateNextStep()
+                return
+            end
             if not scenarioInfo then
                 if APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID, scenario.criteriaIndex) then
                     APR:UpdateNextStep()
@@ -955,7 +966,7 @@ function APR:UpdateStep()
                 local questData = APR.ActiveQuests[questId]
                 for _, objectiveId in pairs(objectives) do
                     objectiveId = tonumber(objectiveId)
-                    if C_QuestLog.IsQuestFlaggedCompleted(questId) == false and not APRData[APR.PlayerID].BonusSkips[questId] then
+                    if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not APRData[APR.PlayerID].BonusSkips[questId] then
                         if questData and questData.objectives and questData.objectives[objectiveId]
                             and questData.objectives[objectiveId].status ~= APR.QUEST_STATUS.COMPLETE
                             and APR.IsInRouteZone

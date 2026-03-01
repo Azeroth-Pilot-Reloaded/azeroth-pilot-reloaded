@@ -5647,7 +5647,7 @@ APR.RouteQuestStepList["641-ValSharah"] = {
         _index = 263,
     },
     {
-        LeaveScenario = 635,
+        LeaveScenario = { questID = 40567, mapID = 635 },
         InstanceQuest = true,
         Zone = 641,
         _index = 264,

@@ -73,7 +73,7 @@ if APR.Faction == "Alliance" then
             _index = 10,
         },
         {
-            Scenario = { criteriaID = 27653, criteriaIndex = 1, scenarioID = 786, stepID = 1522 },
+            Scenario = { criteriaID = 27653, criteriaIndex = 1, scenarioID = 786, stepID = 1522, questID = 42740 },
             Coord = { x = 2077.9, y = 511.8 },
             Range = 30,
             InstanceQuest = true,
@@ -81,7 +81,7 @@ if APR.Faction == "Alliance" then
             _index = 11,
         },
         {
-            Scenario = { criteriaID = 29377, criteriaIndex = 2, scenarioID = 786, stepID = 1522 },
+            Scenario = { criteriaID = 29377, criteriaIndex = 2, scenarioID = 786, stepID = 1522, questID = 42740 },
             Coord = { x = 2077.9, y = 511.8 },
             Range = 30,
             InstanceQuest = true,
@@ -89,7 +89,7 @@ if APR.Faction == "Alliance" then
             _index = 12,
         },
         {
-            Scenario = { criteriaID = 27619, criteriaIndex = 3, scenarioID = 786, stepID = 1522 },
+            Scenario = { criteriaID = 27619, criteriaIndex = 3, scenarioID = 786, stepID = 1522, questID = 42740 },
             Coord = { x = 2077.9, y = 511.8 },
             Range = 30,
             InstanceQuest = true,
@@ -97,7 +97,7 @@ if APR.Faction == "Alliance" then
             _index = 13,
         },
         {
-            Scenario = { criteriaID = 30883, criteriaIndex = 1, scenarioID = 786, stepID = 2685 },
+            Scenario = { criteriaID = 30883, criteriaIndex = 1, scenarioID = 786, stepID = 2685, questID = 42740 },
             Coord = { x = 2078.2, y = 508.1 },
             Range = 5,
             InstanceQuest = true,
@@ -105,7 +105,7 @@ if APR.Faction == "Alliance" then
             _index = 14,
         },
         {
-            Scenario = { criteriaID = 28017, criteriaIndex = 1, scenarioID = 786, stepID = 1589 },
+            Scenario = { criteriaID = 28017, criteriaIndex = 1, scenarioID = 786, stepID = 1589, questID = 42740 },
             Coord = { x = 2477.1, y = 1121.7 },
             Range = 5,
             InstanceQuest = true,
@@ -113,7 +113,7 @@ if APR.Faction == "Alliance" then
             _index = 15,
         },
         {
-            Scenario = { criteriaID = 27940, criteriaIndex = 1, scenarioID = 786, stepID = 1532 },
+            Scenario = { criteriaID = 27940, criteriaIndex = 1, scenarioID = 786, stepID = 1532, questID = 42740 },
             Coord = { x = 2146.6, y = 1412.8 },
             Range = 100,
             InstanceQuest = true,
@@ -129,7 +129,7 @@ if APR.Faction == "Alliance" then
             _index = 17,
         },
         {
-            Scenario = { criteriaID = 29715, criteriaIndex = 1, scenarioID = 786, stepID = 1506 },
+            Scenario = { criteriaID = 29715, criteriaIndex = 1, scenarioID = 786, stepID = 1506, questID = 42740 },
             Coord = { x = 1806, y = 1496.1 },
             Range = 5,
             InstanceQuest = true,
@@ -137,7 +137,7 @@ if APR.Faction == "Alliance" then
             _index = 18,
         },
         {
-            Scenario = { criteriaID = 28055, criteriaIndex = 1, scenarioID = 786, stepID = 1761 },
+            Scenario = { criteriaID = 28055, criteriaIndex = 1, scenarioID = 786, stepID = 1761, questID = 42740 },
             Coord = { x = 1806.2, y = 1495.5 },
             Range = 10,
             InstanceQuest = true,
@@ -145,7 +145,7 @@ if APR.Faction == "Alliance" then
             _index = 19,
         },
         {
-            Scenario = { criteriaID = 29714, criteriaIndex = 1, scenarioID = 786, stepID = 2084 },
+            Scenario = { criteriaID = 29714, criteriaIndex = 1, scenarioID = 786, stepID = 2084, questID = 42740 },
             Coord = { x = 1696.5, y = 1626.7 },
             Range = 30,
             InstanceQuest = true,

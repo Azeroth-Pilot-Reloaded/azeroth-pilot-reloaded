@@ -1165,7 +1165,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 153,
     },
     {
-        Scenario = { criteriaID = 106367, criteriaIndex = 1, scenarioID = 3118, stepID = 15950 },
+        Scenario = { criteriaID = 106367, criteriaIndex = 1, scenarioID = 3118, stepID = 15950, questID = 91958 },
         GossipOptionIDs = { 135009 },
         InstanceQuest = true,
         IsCampaignQuest = true,
@@ -1173,7 +1173,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 155,
     },
     {
-        Scenario = { criteriaID = 106368, criteriaIndex = 2, scenarioID = 3118, stepID = 15950 },
+        Scenario = { criteriaID = 106368, criteriaIndex = 2, scenarioID = 3118, stepID = 15950, questID = 91958 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2514,
@@ -1187,7 +1187,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 157,
     },
     {
-        Scenario = { criteriaID = 106369, criteriaIndex = 3, scenarioID = 3118, stepID = 15950 },
+        Scenario = { criteriaID = 106369, criteriaIndex = 3, scenarioID = 3118, stepID = 15950, questID = 91958 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2513,
@@ -1205,7 +1205,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         GossipOptionIDs = { 136468 },
         InstanceQuest = true,
         IsCampaignQuest = true,
-        LeaveInstance = 2513,
+        LeaveInstance = { questID = 91958, mapID = 2513 },
         Zone = 2513,
         _index = 160,
     },
@@ -3236,7 +3236,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 456,
     },
     {
-        EnterScenario = 2501,
+        EnterScenario = { questID = 93575, mapID = 2501 },
         Coord = { x = -7099.2, y = 6951.8 },
         ExtraLineText = "DO_DUNGEON_ON_NORMAL_HEROIC",
         InstanceQuest = true,
@@ -3244,41 +3244,48 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 457,
     },
     {
-        Scenario = { criteriaID = 106472, criteriaIndex = 1, scenarioID = 3127, stepID = 15977 },
+        Scenario = { criteriaID = 106472, criteriaIndex = 1, scenarioID = 3127, stepID = 15977, questID = 93575 },
         InstanceQuest = true,
+        Zone = 2437,
         _index = 458,
     },
     {
-        Scenario = { criteriaID = 106473, criteriaIndex = 2, scenarioID = 3127, stepID = 15977 },
+        Scenario = { criteriaID = 106473, criteriaIndex = 2, scenarioID = 3127, stepID = 15977, questID = 93575 },
         InstanceQuest = true,
+        Zone = 2437,
         _index = 459,
     },
     {
         Qpart = { [93575] = { 1 } },
         Range = 5,
         InstanceQuest = true,
+        Zone = 2437,
         _index = 460,
     },
     {
         Qpart = { [91411] = { 1 } },
         Range = 5,
         InstanceQuest = true,
+        Zone = 2437,
         _index = 461,
     },
     {
-        Scenario = { criteriaID = 106474, criteriaIndex = 3, scenarioID = 3127, stepID = 15977 },
+        Scenario = { criteriaID = 106474, criteriaIndex = 3, scenarioID = 3127, stepID = 15977, questID = 93575 },
         InstanceQuest = true,
+        Zone = 2437,
         _index = 462,
     },
     {
         Qpart = { [93575] = { 2 } },
         Range = 5,
         InstanceQuest = true,
+        Zone = 2437,
         _index = 463,
     },
     {
+        LeaveInstance = { questID = 93575, mapID = 2501 },
         InstanceQuest = true,
-        LeaveInstance = 2501,
+        Zone = 2437,
         _index = 464,
     },
     {
@@ -5388,7 +5395,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         _index = 156,
     },
     {
-        Scenario = { criteriaID = 106367, criteriaIndex = 1, scenarioID = 3118, stepID = 15950 },
+        Scenario = { criteriaID = 106367, criteriaIndex = 1, scenarioID = 3118, stepID = 15950, questID = 91958 },
         GossipOptionIDs = { 135009 },
         InstanceQuest = true,
         IsCampaignQuest = true,
@@ -5396,7 +5403,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         _index = 643,
     },
     {
-        Scenario = { criteriaID = 106368, criteriaIndex = 2, scenarioID = 3118, stepID = 15950 },
+        Scenario = { criteriaID = 106368, criteriaIndex = 2, scenarioID = 3118, stepID = 15950, questID = 91958 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2514,
@@ -5410,7 +5417,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         _index = 645,
     },
     {
-        Scenario = { criteriaID = 106369, criteriaIndex = 3, scenarioID = 3118, stepID = 15950 },
+        Scenario = { criteriaID = 106369, criteriaIndex = 3, scenarioID = 3118, stepID = 15950, questID = 91958 },
         InstanceQuest = true,
         IsCampaignQuest = true,
         Zone = 2513,
@@ -5425,7 +5432,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         _index = 647,
     },
     {
-        LeaveInstance = 2513,
+        LeaveInstance = { questID = 91958, mapID = 2513 },
         GossipOptionIDs = { 136468 },
         InstanceQuest = true,
         IsCampaignQuest = true,

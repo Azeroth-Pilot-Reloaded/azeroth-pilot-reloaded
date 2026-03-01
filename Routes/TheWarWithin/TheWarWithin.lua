@@ -1138,7 +1138,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 87,
     },
     {
-        Scenario = { criteriaID = 64805, criteriaIndex = 1, scenarioID = 2386, stepID = 6859 },
+        Scenario = { criteriaID = 64805, criteriaIndex = 1, scenarioID = 2386, stepID = 6859, questID = 78464 },
         Coord = { x = -75.8, y = -213.8 },
         GossipOptionIDs = { 120330 },
         InstanceQuest = true,
@@ -1146,14 +1146,14 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 88,
     },
     {
-        Scenario = { criteriaID = 69234, criteriaIndex = 2, scenarioID = 2386, stepID = 6859 },
+        Scenario = { criteriaID = 69234, criteriaIndex = 2, scenarioID = 2386, stepID = 6859, questID = 78464 },
         Coord = { x = -61.3, y = -212 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 89,
     },
     {
-        Scenario = { criteriaID = 64888, criteriaIndex = 1, scenarioID = 2386, stepID = 6864 },
+        Scenario = { criteriaID = 64888, criteriaIndex = 1, scenarioID = 2386, stepID = 6864, questID = 78464 },
         Coord = { x = -32.9, y = -262.6 },
         Range = 5,
         InstanceQuest = true,
@@ -1161,7 +1161,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 90,
     },
     {
-        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6881 },
+        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6881, questID = 78464 },
         Coord = { x = -52.8, y = -331.9 },
         Range = 30,
         InstanceQuest = true,
@@ -1169,7 +1169,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 91,
     },
     {
-        Scenario = { criteriaID = 65208, criteriaIndex = 1, scenarioID = 2386, stepID = 6883 },
+        Scenario = { criteriaID = 65208, criteriaIndex = 1, scenarioID = 2386, stepID = 6883, questID = 78464 },
         Coord = { x = -56.5, y = -332 },
         Range = 5,
         InstanceQuest = true,
@@ -1177,7 +1177,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 92,
     },
     {
-        Scenario = { criteriaID = 66213, criteriaIndex = 1, scenarioID = 2386, stepID = 6884 },
+        Scenario = { criteriaID = 66213, criteriaIndex = 1, scenarioID = 2386, stepID = 6884, questID = 78464 },
         Coord = { x = -56.5, y = -332 },
         ExtraLineText = "MANUAL_SKIP",
         Range = 5,
@@ -1186,7 +1186,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 93,
     },
     {
-        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6886 },
+        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6886, questID = 78464 },
         Coord = { x = -6.1, y = -417.9 },
         Range = 30,
         InstanceQuest = true,
@@ -1218,7 +1218,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 97,
     },
     {
-        Scenario = { criteriaID = 64904, criteriaIndex = 1, scenarioID = 2386, stepID = 6887 },
+        Scenario = { criteriaID = 64904, criteriaIndex = 1, scenarioID = 2386, stepID = 6887, questID = 78464 },
         Coord = { x = 33.1, y = -386.3 },
         GossipOptionIDs = { 120383 },
         InstanceQuest = true,
@@ -1226,7 +1226,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 98,
     },
     {
-        Scenario = { criteriaID = 65222, criteriaIndex = 1, scenarioID = 2386, stepID = 6889 },
+        Scenario = { criteriaID = 65222, criteriaIndex = 1, scenarioID = 2386, stepID = 6889, questID = 78464 },
         Coord = { x = -11, y = -421.6 },
         Range = 5,
         InstanceQuest = true,
@@ -1234,7 +1234,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 99,
     },
     {
-        Scenario = { criteriaID = 65221, criteriaIndex = 1, scenarioID = 2386, stepID = 6890 },
+        Scenario = { criteriaID = 65221, criteriaIndex = 1, scenarioID = 2386, stepID = 6890, questID = 78464 },
         Coord = { x = -108.4, y = -547.1 },
         Range = 30,
         InstanceQuest = true,
@@ -1242,7 +1242,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 100,
     },
     {
-        Scenario = { criteriaID = 65327, criteriaIndex = 1, scenarioID = 2386, stepID = 6891 },
+        Scenario = { criteriaID = 65327, criteriaIndex = 1, scenarioID = 2386, stepID = 6891, questID = 78464 },
         Coord = { x = -245.8, y = -728.4 },
         Range = 5,
         InstanceQuest = true,
@@ -1250,7 +1250,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 101,
     },
     {
-        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869 },
+        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869, questID = 78464 },
         Coord = { x = -247.5, y = -725.5 },
         Range = 5,
         InstanceQuest = true,
@@ -1791,19 +1791,19 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 179,
     },
     {
-        EnterScenario = 2249,
+        EnterScenario = { questID = 83758, mapID = 2249 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 180,
     },
     {
-        DoScenario = 2249,
+        DoScenario = { questID = 83758, mapID = 2249 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 181,
     },
     {
-        LeaveScenario = 2249,
+        LeaveScenario = { questID = 83758, mapID = 2249 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 182,
@@ -1970,21 +1970,21 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 204,
     },
     {
-        Scenario = { criteriaID = 64433, criteriaIndex = 1, scenarioID = 2368, stepID = 6794 },
+        Scenario = { criteriaID = 64433, criteriaIndex = 1, scenarioID = 2368, stepID = 6794, questID = 80022 },
         NoArrow = true,
         InstanceQuest = true,
         Zone = 2248,
         _index = 205,
     },
     {
-        Scenario = { criteriaID = 64434, criteriaIndex = 2, scenarioID = 2368, stepID = 6794 },
+        Scenario = { criteriaID = 64434, criteriaIndex = 2, scenarioID = 2368, stepID = 6794, questID = 80022 },
         NoArrow = true,
         InstanceQuest = true,
         Zone = 2248,
         _index = 206,
     },
     {
-        Scenario = { criteriaID = 64435, criteriaIndex = 3, scenarioID = 2368, stepID = 6794 },
+        Scenario = { criteriaID = 64435, criteriaIndex = 3, scenarioID = 2368, stepID = 6794, questID = 80022 },
         NoArrow = true,
         InstanceQuest = true,
         Zone = 2248,
@@ -2038,19 +2038,19 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         _index = 214,
     },
     {
-        EnterScenario = 2250,
+        EnterScenario = { questID = 78540, mapID = 2250 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 215,
     },
     {
-        DoScenario = 2250,
+        DoScenario = { questID = 78540, mapID = 2250 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 216,
     },
     {
-        LeaveScenario = 2250,
+        LeaveScenario = { questID = 78540, mapID = 2250 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 217,
@@ -2729,19 +2729,19 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 67,
     },
     {
-        EnterScenario = 2251,
+        EnterScenario = { questID = 83749, mapID = 2251 },
         InstanceQuest = true,
         Zone = 2214,
         _index = 68,
     },
     {
-        DoScenario = 2251,
+        DoScenario = { questID = 83749, mapID = 2251 },
         InstanceQuest = true,
         Zone = 2214,
         _index = 69,
     },
     {
-        LeaveScenario = 2251,
+        LeaveScenario = { questID = 83749, mapID = 2251 },
         InstanceQuest = true,
         Zone = 2214,
         _index = 70,
@@ -3039,7 +3039,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 113,
     },
     {
-        Scenario = { criteriaID = 64739, criteriaIndex = 1, scenarioID = 2352, stepID = 6878 },
+        Scenario = { criteriaID = 64739, criteriaIndex = 1, scenarioID = 2352, stepID = 6878, questID = 78642 },
         Coord = { x = -155.4, y = 593.5 },
         ExtraLineText = "DISGUISE_YOURSELF",
         Range = 5,
@@ -3049,7 +3049,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 114,
     },
     {
-        Scenario = { criteriaID = 64696, criteriaIndex = 1, scenarioID = 2352, stepID = 6755 },
+        Scenario = { criteriaID = 64696, criteriaIndex = 1, scenarioID = 2352, stepID = 6755, questID = 78642 },
         Coord = { x = -153.6, y = 533.6 },
         Range = 100,
         InstanceQuest = true,
@@ -3065,7 +3065,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 116,
     },
     {
-        Scenario = { criteriaID = 64779, criteriaIndex = 1, scenarioID = 2352, stepID = 6843 },
+        Scenario = { criteriaID = 64779, criteriaIndex = 1, scenarioID = 2352, stepID = 6843, questID = 78642 },
         Coord = { x = -154.4, y = 413 },
         ExtraLineText = "REMOVE_DISGUISE",
         Range = 5,
@@ -3075,7 +3075,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 117,
     },
     {
-        Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844 },
+        Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844, questID = 78642 },
         Coord = { x = -155, y = 223 },
         ExtraLineText = "DISGUISE_YOURSELF",
         Range = 5,
@@ -3085,7 +3085,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 118,
     },
     {
-        Scenario = { criteriaID = 64697, criteriaIndex = 1, scenarioID = 2352, stepID = 6845 },
+        Scenario = { criteriaID = 64697, criteriaIndex = 1, scenarioID = 2352, stepID = 6845, questID = 78642 },
         Coord = { x = -156.7, y = 142.4 },
         ExtraLineText = "REMOVE_DISGUISE",
         Range = 5,
@@ -3094,7 +3094,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 119,
     },
     {
-        Scenario = { criteriaID = 64700, criteriaIndex = 1, scenarioID = 2352, stepID = 6846 },
+        Scenario = { criteriaID = 64700, criteriaIndex = 1, scenarioID = 2352, stepID = 6846, questID = 78642 },
         Coord = { x = -183.1, y = 91.2 },
         Range = 1,
         InstanceQuest = true,
@@ -3110,7 +3110,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 121,
     },
     {
-        Scenario = { criteriaID = 64701, criteriaIndex = 1, scenarioID = 2352, stepID = 6847 },
+        Scenario = { criteriaID = 64701, criteriaIndex = 1, scenarioID = 2352, stepID = 6847, questID = 78642 },
         Coord = { x = -152, y = 91 },
         GossipOptionIDs = { 119961 },
         InstanceQuest = true,
@@ -4094,19 +4094,19 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 259,
     },
     {
-        EnterScenario = 2302,
+        EnterScenario = { questID = 78685, mapID = 2302 },
         InstanceQuest = true,
         Zone = 2214,
         _index = 260,
     },
     {
-        DoScenario = 2302,
+        DoScenario = { questID = 78685, mapID = 2302 },
         InstanceQuest = true,
         Zone = 2214,
         _index = 261,
     },
     {
-        LeaveScenario = 2302,
+        LeaveScenario = { questID = 78685, mapID = 2302 },
         InstanceQuest = true,
         Zone = 2214,
         _index = 262,
@@ -4523,7 +4523,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 320,
     },
     {
-        Scenario = { criteriaID = 65229, criteriaIndex = 1, scenarioID = 2338, stepID = 6719 },
+        Scenario = { criteriaID = 65229, criteriaIndex = 1, scenarioID = 2338, stepID = 6719, questID = 78761 },
         Coord = { x = 333.4, y = 1432.3 },
         Range = 5,
         InstanceQuest = true,
@@ -4531,7 +4531,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 321,
     },
     {
-        Scenario = { criteriaID = 66417, criteriaIndex = 2, scenarioID = 2338, stepID = 6720 },
+        Scenario = { criteriaID = 66417, criteriaIndex = 2, scenarioID = 2338, stepID = 6720, questID = 78761 },
         Coord = { x = 303.8, y = 1432.8 },
         Range = 30,
         ExtraActionB = true,
@@ -4540,7 +4540,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 322,
     },
     {
-        Scenario = { criteriaID = 66045, criteriaIndex = 1, scenarioID = 2338, stepID = 6720 },
+        Scenario = { criteriaID = 66045, criteriaIndex = 1, scenarioID = 2338, stepID = 6720, questID = 78761 },
         Coord = { x = 303.7, y = 1432.5 },
         Range = 30,
         InstanceQuest = true,
@@ -4548,7 +4548,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 323,
     },
     {
-        Scenario = { criteriaID = 65469, criteriaIndex = 1, scenarioID = 2338, stepID = 6941 },
+        Scenario = { criteriaID = 65469, criteriaIndex = 1, scenarioID = 2338, stepID = 6941, questID = 78761 },
         Coord = { x = 201.2, y = 1432.5 },
         Range = 5,
         InstanceQuest = true,
@@ -4556,7 +4556,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 324,
     },
     {
-        Scenario = { criteriaID = 65423, criteriaIndex = 1, scenarioID = 2338, stepID = 6729 },
+        Scenario = { criteriaID = 65423, criteriaIndex = 1, scenarioID = 2338, stepID = 6729, questID = 78761 },
         Coord = { x = 152, y = 1458.4 },
         Range = 5,
         InstanceQuest = true,
@@ -4564,7 +4564,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 325,
     },
     {
-        Scenario = { criteriaID = 65482, criteriaIndex = 1, scenarioID = 2338, stepID = 6732 },
+        Scenario = { criteriaID = 65482, criteriaIndex = 1, scenarioID = 2338, stepID = 6732, questID = 78761 },
         Coord = { x = 55, y = 1431.6 },
         Range = 5,
         InstanceQuest = true,
@@ -4572,7 +4572,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 326,
     },
     {
-        Scenario = { criteriaID = 65444, criteriaIndex = 2, scenarioID = 2338, stepID = 6732 },
+        Scenario = { criteriaID = 65444, criteriaIndex = 2, scenarioID = 2338, stepID = 6732, questID = 78761 },
         Coord = { x = 5.7, y = 1430.4 },
         Range = 10,
         InstanceQuest = true,
@@ -4580,7 +4580,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 327,
     },
     {
-        Scenario = { criteriaID = 65446, criteriaIndex = 3, scenarioID = 2338, stepID = 6732 },
+        Scenario = { criteriaID = 65446, criteriaIndex = 3, scenarioID = 2338, stepID = 6732, questID = 78761 },
         Coord = { x = 5.7, y = 1430.4 },
         Range = 10,
         InstanceQuest = true,
@@ -4588,7 +4588,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 328,
     },
     {
-        Scenario = { criteriaID = 65497, criteriaIndex = 1, scenarioID = 2338, stepID = 6943 },
+        Scenario = { criteriaID = 65497, criteriaIndex = 1, scenarioID = 2338, stepID = 6943, questID = 78761 },
         Coord = { x = -174.5, y = 1432.8 },
         Range = 5,
         InstanceQuest = true,
@@ -4596,7 +4596,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 329,
     },
     {
-        Scenario = { criteriaID = 65464, criteriaIndex = 1, scenarioID = 2338, stepID = 6738 },
+        Scenario = { criteriaID = 65464, criteriaIndex = 1, scenarioID = 2338, stepID = 6738, questID = 78761 },
         Coord = { x = -231, y = 1433 },
         Range = 10,
         InstanceQuest = true,
@@ -4604,7 +4604,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         _index = 330,
     },
     {
-        Scenario = { criteriaID = 67289, criteriaIndex = 1, scenarioID = 2338, stepID = 6739 },
+        Scenario = { criteriaID = 67289, criteriaIndex = 1, scenarioID = 2338, stepID = 6739, questID = 78761 },
         Coord = { x = -244.4, y = 1432.7 },
         Range = 5,
         InstanceQuest = true,
@@ -4924,19 +4924,19 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         _index = 35,
     },
     {
-        EnterScenario = 2310,
+        EnterScenario = { questID = 78668, mapID = 2310 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 36,
     },
     {
-        DoScenario = 2310,
+        DoScenario = { questID = 78668, mapID = 2310 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 37,
     },
     {
-        LeaveScenario = 2310,
+        LeaveScenario = { questID = 78668, mapID = 2310 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 38,
@@ -5603,19 +5603,19 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         _index = 129,
     },
     {
-        EnterScenario = 2312,
+        EnterScenario = { questID = 78607, mapID = 2312 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 130,
     },
     {
-        DoScenario = 2312,
+        DoScenario = { questID = 78607, mapID = 2312 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 131,
     },
     {
-        LeaveScenario = 2312,
+        LeaveScenario = { questID = 78607, mapID = 2312 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 132,
@@ -5980,19 +5980,19 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         _index = 185,
     },
     {
-        EnterScenario = 2301,
+        EnterScenario = { questID = 83768, mapID = 2301 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 186,
     },
     {
-        DoScenario = 2301,
+        DoScenario = { questID = 83768, mapID = 2301 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 187,
     },
     {
-        LeaveScenario = 2301,
+        LeaveScenario = { questID = 83768, mapID = 2301 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 188,
@@ -6158,7 +6158,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         _index = 213,
     },
     {
-        EnterScenario = 2277,
+        EnterScenario = { questID = 83755, mapID = 2277 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 214,
@@ -6167,19 +6167,19 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
         Qpart = { [83755] = { 1 } },
         Coord = { x = 114, y = -794 },
         GossipOptionIDs = { 123325 },
-        DoScenario = 2277,
+        DoScenario = { questID = 83755, mapID = 2277 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 215,
     },
     {
-        DoScenario = 2277,
+        DoScenario = { questID = 83755, mapID = 2277 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 216,
     },
     {
-        LeaveScenario = 2277,
+        LeaveScenario = { questID = 83755, mapID = 2277 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 217,
@@ -7062,19 +7062,19 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 83,
     },
     {
-        EnterScenario = 2347,
+        EnterScenario = { questID = 78250, mapID = 2347 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 84,
     },
     {
-        DoScenario = 2347,
+        DoScenario = { questID = 78250, mapID = 2347 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 85,
     },
     {
-        LeaveScenario = 2347,
+        LeaveScenario = { questID = 78250, mapID = 2347 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 86,
@@ -7417,7 +7417,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 137,
     },
     {
-        Scenario = { criteriaID = 65266, criteriaIndex = 2, scenarioID = 2388, stepID = 6910 },
+        Scenario = { criteriaID = 65266, criteriaIndex = 2, scenarioID = 2388, stepID = 6910, questID = 78244 },
         Coord = { x = -1074.9, y = -2039.4 },
         Range = 5,
         InstanceQuest = true,
@@ -7425,7 +7425,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 138,
     },
     {
-        Scenario = { criteriaID = 65318, criteriaIndex = 3, scenarioID = 2388, stepID = 6910 },
+        Scenario = { criteriaID = 65318, criteriaIndex = 3, scenarioID = 2388, stepID = 6910, questID = 78244 },
         Coord = { x = -1109.3, y = -2004 },
         Range = 5,
         InstanceQuest = true,
@@ -7433,7 +7433,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 139,
     },
     {
-        Scenario = { criteriaID = 65267, criteriaIndex = 1, scenarioID = 2388, stepID = 6911 },
+        Scenario = { criteriaID = 65267, criteriaIndex = 1, scenarioID = 2388, stepID = 6911, questID = 78244 },
         Coord = { x = -1193.1, y = -1950.4 },
         Range = 20,
         InstanceQuest = true,
@@ -7441,7 +7441,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 140,
     },
     {
-        Scenario = { criteriaID = 65268, criteriaIndex = 1, scenarioID = 2388, stepID = 6912 },
+        Scenario = { criteriaID = 65268, criteriaIndex = 1, scenarioID = 2388, stepID = 6912, questID = 78244 },
         Coord = { x = -1294.9, y = -1828.2 },
         Range = 5,
         InstanceQuest = true,
@@ -7449,7 +7449,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 141,
     },
     {
-        Scenario = { criteriaID = 65269, criteriaIndex = 1, scenarioID = 2388, stepID = 6917 },
+        Scenario = { criteriaID = 65269, criteriaIndex = 1, scenarioID = 2388, stepID = 6917, questID = 78244 },
         Coord = { x = -1292.1, y = -1856.6 },
         Range = 10,
         InstanceQuest = true,
@@ -7457,7 +7457,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 142,
     },
     {
-        Scenario = { criteriaID = 65270, criteriaIndex = 1, scenarioID = 2388, stepID = 6918 },
+        Scenario = { criteriaID = 65270, criteriaIndex = 1, scenarioID = 2388, stepID = 6918, questID = 78244 },
         Coord = { x = -1295.4, y = -1815.2 },
         Range = 5,
         InstanceQuest = true,
@@ -7486,7 +7486,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 146,
     },
     {
-        EnterScenario = 2259,
+        EnterScenario = { questID = 83771, mapID = 2259 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 147,
@@ -7494,20 +7494,20 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
     {
         Qpart = { [83771] = { 1 } },
         NoArrow = true,
-        DoScenario = 2259,
+        DoScenario = { questID = 83771, mapID = 2259 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 148,
     },
     {
-        DoScenario = 2259,
+        DoScenario = { questID = 83771, mapID = 2259 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 149,
     },
     {
+        LeaveScenario = { questID = 83771, mapID = 2259 },
         InstanceQuest = true,
-        LeaveScenario = 2259,
         Zone = 2255,
         _index = 150,
     },
@@ -7520,7 +7520,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         _index = 151,
     },
     {
-        EnterScenario = 2299,
+        EnterScenario = { questID = 83761, mapID = 2299 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 152,
@@ -7530,19 +7530,19 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
         Coord = { x = -147.9, y = -276.6 },
         GossipOptionIDs = { 123353 },
         Range = 30,
-        DoScenario = 2299,
+        DoScenario = { questID = 83761, mapID = 2299 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 153,
     },
     {
-        DoScenario = 2299,
+        DoScenario = { questID = 83761, mapID = 2299 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 154,
     },
     {
-        LeaveScenario = 2299,
+        LeaveScenario = { questID = 83761, mapID = 2299 },
         InstanceQuest = true,
         Zone = 2255,
         _index = 155,
@@ -8979,13 +8979,13 @@ APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
         _index = 37,
     },
     {
-        EnterScenario = 2251,
+        EnterScenario = { questID = 79026, mapID = 2251 },
         InstanceQuest = true,
         Zone = 2214,
         _index = 38,
     },
     {
-        DoScenario = 2251,
+        DoScenario = { questID = 79026, mapID = 2251 },
         InstanceQuest = true,
         Zone = 2215,
         _index = 39,
@@ -8998,8 +8998,8 @@ APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
         _index = 40,
     },
     {
+        LeaveScenario = { questID = 79026, mapID = 2251 },
         InstanceQuest = true,
-        LeaveScenario = 2251,
         Zone = 2215,
         _index = 41,
     },
@@ -9416,7 +9416,7 @@ APR.RouteQuestStepList["2248-TWW-Light-in-the-Dark-storyline"] = {
         _index = 23,
     },
     {
-        Scenario = { criteriaID = 67322, criteriaIndex = 2, scenarioID = 2416, stepID = 7008 },
+        Scenario = { criteriaID = 67322, criteriaIndex = 2, scenarioID = 2416, stepID = 7008, questID = 78948 },
         Coord = { x = 1101.1, y = 3110.1 },
         Range = 5,
         InstanceQuest = true,
@@ -9424,7 +9424,7 @@ APR.RouteQuestStepList["2248-TWW-Light-in-the-Dark-storyline"] = {
         _index = 24,
     },
     {
-        Scenario = { criteriaID = 66409, criteriaIndex = 1, scenarioID = 2416, stepID = 7008 },
+        Scenario = { criteriaID = 66409, criteriaIndex = 1, scenarioID = 2416, stepID = 7008, questID = 78948 },
         Coord = { x = 1119.6, y = 2866.1 },
         Range = 5,
         InstanceQuest = true,
@@ -9432,7 +9432,7 @@ APR.RouteQuestStepList["2248-TWW-Light-in-the-Dark-storyline"] = {
         _index = 25,
     },
     {
-        Scenario = { criteriaID = 66412, criteriaIndex = 1, scenarioID = 2416, stepID = 7009 },
+        Scenario = { criteriaID = 66412, criteriaIndex = 1, scenarioID = 2416, stepID = 7009, questID = 78948 },
         Coord = { x = 1144.1, y = 3006.8 },
         Range = 10,
         InstanceQuest = true,
@@ -9440,7 +9440,7 @@ APR.RouteQuestStepList["2248-TWW-Light-in-the-Dark-storyline"] = {
         _index = 26,
     },
     {
-        Scenario = { criteriaID = 66413, criteriaIndex = 1, scenarioID = 2416, stepID = 7010 },
+        Scenario = { criteriaID = 66413, criteriaIndex = 1, scenarioID = 2416, stepID = 7010, questID = 78948 },
         Coord = { x = 1175.1, y = 3003.7 },
         Range = 5,
         InstanceQuest = true,
@@ -9448,7 +9448,7 @@ APR.RouteQuestStepList["2248-TWW-Light-in-the-Dark-storyline"] = {
         _index = 27,
     },
     {
-        Scenario = { criteriaID = 66415, criteriaIndex = 1, scenarioID = 2416, stepID = 7012 },
+        Scenario = { criteriaID = 66415, criteriaIndex = 1, scenarioID = 2416, stepID = 7012, questID = 78948 },
         Coord = { x = 1338, y = 2990.9 },
         Range = 10,
         InstanceQuest = true,
@@ -9456,7 +9456,7 @@ APR.RouteQuestStepList["2248-TWW-Light-in-the-Dark-storyline"] = {
         _index = 28,
     },
     {
-        Scenario = { criteriaID = 66416, criteriaIndex = 1, scenarioID = 2416, stepID = 7013 },
+        Scenario = { criteriaID = 66416, criteriaIndex = 1, scenarioID = 2416, stepID = 7013, questID = 78948 },
         Coord = { x = 1441.2, y = 2974.3 },
         Range = 5,
         InstanceQuest = true,
@@ -9999,7 +9999,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 71,
     },
     {
-        Scenario = { criteriaID = 64805, criteriaIndex = 1, scenarioID = 2386, stepID = 6859 },
+        Scenario = { criteriaID = 64805, criteriaIndex = 1, scenarioID = 2386, stepID = 6859, questID = 78464 },
         Coord = { x = -75.8, y = -213.8 },
         GossipOptionIDs = { 120330 },
         InstanceQuest = true,
@@ -10007,14 +10007,14 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 72,
     },
     {
-        Scenario = { criteriaID = 69234, criteriaIndex = 2, scenarioID = 2386, stepID = 6859 },
+        Scenario = { criteriaID = 69234, criteriaIndex = 2, scenarioID = 2386, stepID = 6859, questID = 78464 },
         Coord = { x = -61.3, y = -212 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 73,
     },
     {
-        Scenario = { criteriaID = 64888, criteriaIndex = 1, scenarioID = 2386, stepID = 6864 },
+        Scenario = { criteriaID = 64888, criteriaIndex = 1, scenarioID = 2386, stepID = 6864, questID = 78464 },
         Coord = { x = -32.9, y = -262.6 },
         Range = 5,
         InstanceQuest = true,
@@ -10022,7 +10022,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 74,
     },
     {
-        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6881 },
+        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6881, questID = 78464 },
         Coord = { x = -52.8, y = -331.9 },
         Range = 30,
         InstanceQuest = true,
@@ -10030,7 +10030,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 75,
     },
     {
-        Scenario = { criteriaID = 65208, criteriaIndex = 1, scenarioID = 2386, stepID = 6883 },
+        Scenario = { criteriaID = 65208, criteriaIndex = 1, scenarioID = 2386, stepID = 6883, questID = 78464 },
         Coord = { x = -56.5, y = -332 },
         Range = 5,
         InstanceQuest = true,
@@ -10038,7 +10038,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 76,
     },
     {
-        Scenario = { criteriaID = 66213, criteriaIndex = 1, scenarioID = 2386, stepID = 6884 },
+        Scenario = { criteriaID = 66213, criteriaIndex = 1, scenarioID = 2386, stepID = 6884, questID = 78464 },
         Coord = { x = -56.5, y = -332 },
         ExtraLineText = "MANUAL_SKIP",
         Range = 5,
@@ -10047,7 +10047,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 77,
     },
     {
-        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6886 },
+        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6886, questID = 78464 },
         Coord = { x = -6.1, y = -417.9 },
         Range = 30,
         InstanceQuest = true,
@@ -10079,7 +10079,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 81,
     },
     {
-        Scenario = { criteriaID = 64904, criteriaIndex = 1, scenarioID = 2386, stepID = 6887 },
+        Scenario = { criteriaID = 64904, criteriaIndex = 1, scenarioID = 2386, stepID = 6887, questID = 78464 },
         Coord = { x = 33.1, y = -386.3 },
         GossipOptionIDs = { 120383 },
         InstanceQuest = true,
@@ -10087,7 +10087,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 82,
     },
     {
-        Scenario = { criteriaID = 65222, criteriaIndex = 1, scenarioID = 2386, stepID = 6889 },
+        Scenario = { criteriaID = 65222, criteriaIndex = 1, scenarioID = 2386, stepID = 6889, questID = 78464 },
         Coord = { x = -11, y = -421.6 },
         Range = 5,
         InstanceQuest = true,
@@ -10095,7 +10095,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 83,
     },
     {
-        Scenario = { criteriaID = 65221, criteriaIndex = 1, scenarioID = 2386, stepID = 6890 },
+        Scenario = { criteriaID = 65221, criteriaIndex = 1, scenarioID = 2386, stepID = 6890, questID = 78464 },
         Coord = { x = -108.4, y = -547.1 },
         Range = 30,
         InstanceQuest = true,
@@ -10103,7 +10103,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 84,
     },
     {
-        Scenario = { criteriaID = 65327, criteriaIndex = 1, scenarioID = 2386, stepID = 6891 },
+        Scenario = { criteriaID = 65327, criteriaIndex = 1, scenarioID = 2386, stepID = 6891, questID = 78464 },
         Coord = { x = -245.8, y = -728.4 },
         Range = 5,
         InstanceQuest = true,
@@ -10111,7 +10111,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 85,
     },
     {
-        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869 },
+        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869, questID = 78464 },
         Coord = { x = -247.5, y = -725.5 },
         Range = 5,
         InstanceQuest = true,
@@ -10394,21 +10394,21 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         _index = 124,
     },
     {
-        Scenario = { criteriaID = 64433, criteriaIndex = 1, scenarioID = 2368, stepID = 6794 },
+        Scenario = { criteriaID = 64433, criteriaIndex = 1, scenarioID = 2368, stepID = 6794, questID = 80022 },
         NoArrow = true,
         InstanceQuest = true,
         Zone = 2248,
         _index = 125,
     },
     {
-        Scenario = { criteriaID = 64434, criteriaIndex = 2, scenarioID = 2368, stepID = 6794 },
+        Scenario = { criteriaID = 64434, criteriaIndex = 2, scenarioID = 2368, stepID = 6794, questID = 80022 },
         NoArrow = true,
         InstanceQuest = true,
         Zone = 2248,
         _index = 126,
     },
     {
-        Scenario = { criteriaID = 64435, criteriaIndex = 3, scenarioID = 2368, stepID = 6794 },
+        Scenario = { criteriaID = 64435, criteriaIndex = 3, scenarioID = 2368, stepID = 6794, questID = 80022 },
         NoArrow = true,
         InstanceQuest = true,
         Zone = 2248,
@@ -11073,7 +11073,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 64,
     },
     {
-        Scenario = { criteriaID = 64739, criteriaIndex = 1, scenarioID = 2352, stepID = 6878 },
+        Scenario = { criteriaID = 64739, criteriaIndex = 1, scenarioID = 2352, stepID = 6878, questID = 78642 },
         Coord = { x = -155.4, y = 593.5 },
         ExtraLineText = "DISGUISE_YOURSELF",
         Range = 5,
@@ -11083,7 +11083,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 65,
     },
     {
-        Scenario = { criteriaID = 64696, criteriaIndex = 1, scenarioID = 2352, stepID = 6755 },
+        Scenario = { criteriaID = 64696, criteriaIndex = 1, scenarioID = 2352, stepID = 6755, questID = 78642 },
         Coord = { x = -153.6, y = 533.6 },
         Range = 100,
         InstanceQuest = true,
@@ -11091,7 +11091,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 66,
     },
     {
-        Scenario = { criteriaID = 64779, criteriaIndex = 1, scenarioID = 2352, stepID = 6843 },
+        Scenario = { criteriaID = 64779, criteriaIndex = 1, scenarioID = 2352, stepID = 6843, questID = 78642 },
         Coord = { x = -154.4, y = 413 },
         ExtraLineText = "REMOVE_DISGUISE",
         Range = 5,
@@ -11101,7 +11101,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 67,
     },
     {
-        Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844 },
+        Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844, questID = 78642 },
         Coord = { x = -155, y = 223 },
         ExtraLineText = "DISGUISE_YOURSELF",
         Range = 5,
@@ -11111,7 +11111,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 68,
     },
     {
-        Scenario = { criteriaID = 64697, criteriaIndex = 1, scenarioID = 2352, stepID = 6845 },
+        Scenario = { criteriaID = 64697, criteriaIndex = 1, scenarioID = 2352, stepID = 6845, questID = 78642 },
         Coord = { x = -156.7, y = 142.4 },
         ExtraLineText = "REMOVE_DISGUISE",
         Range = 5,
@@ -11120,7 +11120,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 69,
     },
     {
-        Scenario = { criteriaID = 64700, criteriaIndex = 1, scenarioID = 2352, stepID = 6846 },
+        Scenario = { criteriaID = 64700, criteriaIndex = 1, scenarioID = 2352, stepID = 6846, questID = 78642 },
         Coord = { x = -183.1, y = 91.2 },
         Range = 1,
         InstanceQuest = true,
@@ -11136,7 +11136,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 71,
     },
     {
-        Scenario = { criteriaID = 64701, criteriaIndex = 1, scenarioID = 2352, stepID = 6847 },
+        Scenario = { criteriaID = 64701, criteriaIndex = 1, scenarioID = 2352, stepID = 6847, questID = 78642 },
         Coord = { x = -152, y = 91 },
         GossipOptionIDs = { 119961 },
         InstanceQuest = true,
@@ -11623,7 +11623,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 140,
     },
     {
-        Scenario = { criteriaID = 65229, criteriaIndex = 1, scenarioID = 2338, stepID = 6719 },
+        Scenario = { criteriaID = 65229, criteriaIndex = 1, scenarioID = 2338, stepID = 6719, questID = 78761 },
         Coord = { x = 333.4, y = 1432.3 },
         Range = 5,
         InstanceQuest = true,
@@ -11631,7 +11631,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 141,
     },
     {
-        Scenario = { criteriaID = 66417, criteriaIndex = 2, scenarioID = 2338, stepID = 6720 },
+        Scenario = { criteriaID = 66417, criteriaIndex = 2, scenarioID = 2338, stepID = 6720, questID = 78761 },
         Coord = { x = 303.8, y = 1432.8 },
         Range = 30,
         ExtraActionB = true,
@@ -11640,7 +11640,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 142,
     },
     {
-        Scenario = { criteriaID = 66045, criteriaIndex = 1, scenarioID = 2338, stepID = 6720 },
+        Scenario = { criteriaID = 66045, criteriaIndex = 1, scenarioID = 2338, stepID = 6720, questID = 78761 },
         Coord = { x = 303.7, y = 1432.5 },
         Range = 30,
         InstanceQuest = true,
@@ -11648,7 +11648,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 143,
     },
     {
-        Scenario = { criteriaID = 65469, criteriaIndex = 1, scenarioID = 2338, stepID = 6941 },
+        Scenario = { criteriaID = 65469, criteriaIndex = 1, scenarioID = 2338, stepID = 6941, questID = 78761 },
         Coord = { x = 201.2, y = 1432.5 },
         Range = 5,
         InstanceQuest = true,
@@ -11656,7 +11656,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 144,
     },
     {
-        Scenario = { criteriaID = 65423, criteriaIndex = 1, scenarioID = 2338, stepID = 6729 },
+        Scenario = { criteriaID = 65423, criteriaIndex = 1, scenarioID = 2338, stepID = 6729, questID = 78761 },
         Coord = { x = 152, y = 1458.4 },
         Range = 5,
         InstanceQuest = true,
@@ -11664,7 +11664,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 145,
     },
     {
-        Scenario = { criteriaID = 65482, criteriaIndex = 1, scenarioID = 2338, stepID = 6732 },
+        Scenario = { criteriaID = 65482, criteriaIndex = 1, scenarioID = 2338, stepID = 6732, questID = 78761 },
         Coord = { x = 55, y = 1431.6 },
         Range = 5,
         InstanceQuest = true,
@@ -11672,7 +11672,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 146,
     },
     {
-        Scenario = { criteriaID = 65444, criteriaIndex = 2, scenarioID = 2338, stepID = 6732 },
+        Scenario = { criteriaID = 65444, criteriaIndex = 2, scenarioID = 2338, stepID = 6732, questID = 78761 },
         Coord = { x = 5.7, y = 1430.4 },
         Range = 10,
         InstanceQuest = true,
@@ -11680,7 +11680,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 147,
     },
     {
-        Scenario = { criteriaID = 65446, criteriaIndex = 3, scenarioID = 2338, stepID = 6732 },
+        Scenario = { criteriaID = 65446, criteriaIndex = 3, scenarioID = 2338, stepID = 6732, questID = 78761 },
         Coord = { x = 5.7, y = 1430.4 },
         Range = 10,
         InstanceQuest = true,
@@ -11688,7 +11688,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 148,
     },
     {
-        Scenario = { criteriaID = 65497, criteriaIndex = 1, scenarioID = 2338, stepID = 6943 },
+        Scenario = { criteriaID = 65497, criteriaIndex = 1, scenarioID = 2338, stepID = 6943, questID = 78761 },
         Coord = { x = -174.5, y = 1432.8 },
         Range = 5,
         InstanceQuest = true,
@@ -11696,7 +11696,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 149,
     },
     {
-        Scenario = { criteriaID = 65464, criteriaIndex = 1, scenarioID = 2338, stepID = 6738 },
+        Scenario = { criteriaID = 65464, criteriaIndex = 1, scenarioID = 2338, stepID = 6738, questID = 78761 },
         Coord = { x = -231, y = 1433 },
         Range = 10,
         InstanceQuest = true,
@@ -11704,7 +11704,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         _index = 150,
     },
     {
-        Scenario = { criteriaID = 67289, criteriaIndex = 1, scenarioID = 2338, stepID = 6739 },
+        Scenario = { criteriaID = 67289, criteriaIndex = 1, scenarioID = 2338, stepID = 6739, questID = 78761 },
         Coord = { x = -244.4, y = 1432.7 },
         Range = 5,
         InstanceQuest = true,
@@ -13683,7 +13683,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
         _index = 113,
     },
     {
-        Scenario = { criteriaID = 65266, criteriaIndex = 2, scenarioID = 2388, stepID = 6910 },
+        Scenario = { criteriaID = 65266, criteriaIndex = 2, scenarioID = 2388, stepID = 6910, questID = 78244 },
         Coord = { x = -1074.9, y = -2039.4 },
         Range = 5,
         InstanceQuest = true,
@@ -13691,7 +13691,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
         _index = 114,
     },
     {
-        Scenario = { criteriaID = 65318, criteriaIndex = 3, scenarioID = 2388, stepID = 6910 },
+        Scenario = { criteriaID = 65318, criteriaIndex = 3, scenarioID = 2388, stepID = 6910, questID = 78244 },
         Coord = { x = -1109.3, y = -2004 },
         Range = 5,
         InstanceQuest = true,
@@ -13699,7 +13699,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
         _index = 115,
     },
     {
-        Scenario = { criteriaID = 65267, criteriaIndex = 1, scenarioID = 2388, stepID = 6911 },
+        Scenario = { criteriaID = 65267, criteriaIndex = 1, scenarioID = 2388, stepID = 6911, questID = 78244 },
         Coord = { x = -1193.1, y = -1950.4 },
         Range = 20,
         InstanceQuest = true,
@@ -13707,7 +13707,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
         _index = 116,
     },
     {
-        Scenario = { criteriaID = 65268, criteriaIndex = 1, scenarioID = 2388, stepID = 6912 },
+        Scenario = { criteriaID = 65268, criteriaIndex = 1, scenarioID = 2388, stepID = 6912, questID = 78244 },
         Coord = { x = -1294.9, y = -1828.2 },
         Range = 5,
         InstanceQuest = true,
@@ -13715,7 +13715,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
         _index = 117,
     },
     {
-        Scenario = { criteriaID = 65269, criteriaIndex = 1, scenarioID = 2388, stepID = 6917 },
+        Scenario = { criteriaID = 65269, criteriaIndex = 1, scenarioID = 2388, stepID = 6917, questID = 78244 },
         Coord = { x = -1292.1, y = -1856.6 },
         Range = 10,
         InstanceQuest = true,
@@ -13723,7 +13723,7 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet-campaign-only"] = {
         _index = 118,
     },
     {
-        Scenario = { criteriaID = 65270, criteriaIndex = 1, scenarioID = 2388, stepID = 6918 },
+        Scenario = { criteriaID = 65270, criteriaIndex = 1, scenarioID = 2388, stepID = 6918, questID = 78244 },
         Coord = { x = -1295.4, y = -1815.2 },
         Range = 5,
         InstanceQuest = true,
@@ -15822,7 +15822,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 97,
     },
     {
-        Scenario = { criteriaID = 64805, criteriaIndex = 1, scenarioID = 2386, stepID = 6859 },
+        Scenario = { criteriaID = 64805, criteriaIndex = 1, scenarioID = 2386, stepID = 6859, questID = 78464 },
         Coord = { x = -75.8, y = -213.8 },
         GossipOptionIDs = { 120330 },
         InstanceQuest = true,
@@ -15830,14 +15830,14 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 98,
     },
     {
-        Scenario = { criteriaID = 69234, criteriaIndex = 2, scenarioID = 2386, stepID = 6859 },
+        Scenario = { criteriaID = 69234, criteriaIndex = 2, scenarioID = 2386, stepID = 6859, questID = 78464 },
         Coord = { x = -61.3, y = -212 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 99,
     },
     {
-        Scenario = { criteriaID = 64888, criteriaIndex = 1, scenarioID = 2386, stepID = 6864 },
+        Scenario = { criteriaID = 64888, criteriaIndex = 1, scenarioID = 2386, stepID = 6864, questID = 78464 },
         Coord = { x = -32.9, y = -262.6 },
         Range = 5,
         InstanceQuest = true,
@@ -15845,7 +15845,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 100,
     },
     {
-        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6881 },
+        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6881, questID = 78464 },
         Coord = { x = -52.8, y = -331.9 },
         Range = 30,
         InstanceQuest = true,
@@ -15853,7 +15853,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 101,
     },
     {
-        Scenario = { criteriaID = 65208, criteriaIndex = 1, scenarioID = 2386, stepID = 6883 },
+        Scenario = { criteriaID = 65208, criteriaIndex = 1, scenarioID = 2386, stepID = 6883, questID = 78464 },
         Coord = { x = -56.5, y = -332 },
         Range = 5,
         InstanceQuest = true,
@@ -15861,7 +15861,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 102,
     },
     {
-        Scenario = { criteriaID = 66213, criteriaIndex = 1, scenarioID = 2386, stepID = 6884 },
+        Scenario = { criteriaID = 66213, criteriaIndex = 1, scenarioID = 2386, stepID = 6884, questID = 78464 },
         Coord = { x = -56.5, y = -332 },
         ExtraLineText = "MANUAL_SKIP",
         Range = 5,
@@ -15870,7 +15870,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 103,
     },
     {
-        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6886 },
+        Scenario = { criteriaID = 64890, criteriaIndex = 1, scenarioID = 2386, stepID = 6886, questID = 78464 },
         Coord = { x = -6.1, y = -417.9 },
         Range = 30,
         InstanceQuest = true,
@@ -15902,7 +15902,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 107,
     },
     {
-        Scenario = { criteriaID = 64904, criteriaIndex = 1, scenarioID = 2386, stepID = 6887 },
+        Scenario = { criteriaID = 64904, criteriaIndex = 1, scenarioID = 2386, stepID = 6887, questID = 78464 },
         Coord = { x = 33.1, y = -386.3 },
         GossipOptionIDs = { 120383 },
         InstanceQuest = true,
@@ -15910,7 +15910,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 108,
     },
     {
-        Scenario = { criteriaID = 65222, criteriaIndex = 1, scenarioID = 2386, stepID = 6889 },
+        Scenario = { criteriaID = 65222, criteriaIndex = 1, scenarioID = 2386, stepID = 6889, questID = 78464 },
         Coord = { x = -11, y = -421.6 },
         Range = 5,
         InstanceQuest = true,
@@ -15918,7 +15918,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 109,
     },
     {
-        Scenario = { criteriaID = 65221, criteriaIndex = 1, scenarioID = 2386, stepID = 6890 },
+        Scenario = { criteriaID = 65221, criteriaIndex = 1, scenarioID = 2386, stepID = 6890, questID = 78464 },
         Coord = { x = -108.4, y = -547.1 },
         Range = 30,
         InstanceQuest = true,
@@ -15926,7 +15926,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 110,
     },
     {
-        Scenario = { criteriaID = 65327, criteriaIndex = 1, scenarioID = 2386, stepID = 6891 },
+        Scenario = { criteriaID = 65327, criteriaIndex = 1, scenarioID = 2386, stepID = 6891, questID = 78464 },
         Coord = { x = -245.8, y = -728.4 },
         Range = 5,
         InstanceQuest = true,
@@ -15934,7 +15934,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 111,
     },
     {
-        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869 },
+        Scenario = { criteriaID = 64984, criteriaIndex = 1, scenarioID = 2387, stepID = 6869, questID = 78464 },
         Coord = { x = -247.5, y = -725.5 },
         Range = 5,
         InstanceQuest = true,
@@ -16647,20 +16647,20 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 215,
     },
     {
-        EnterScenario = 2249,
+        EnterScenario = { questID = 78996, mapID = 2249 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 216,
     },
     {
-        DoScenario = 2249,
+        DoScenario = { questID = 78996, mapID = 2249 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 217,
     },
     {
+        LeaveScenario = { questID = 78996, mapID = 2249 },
         InstanceQuest = true,
-        LeaveScenario = 2249,
         Zone = 2248,
         _index = 218,
     },
@@ -16991,21 +16991,21 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 264,
     },
     {
-        Scenario = { criteriaID = 64433, criteriaIndex = 1, scenarioID = 2368, stepID = 6794 },
+        Scenario = { criteriaID = 64433, criteriaIndex = 1, scenarioID = 2368, stepID = 6794, questID = 80022 },
         NoArrow = true,
         InstanceQuest = true,
         Zone = 2248,
         _index = 265,
     },
     {
-        Scenario = { criteriaID = 64434, criteriaIndex = 2, scenarioID = 2368, stepID = 6794 },
+        Scenario = { criteriaID = 64434, criteriaIndex = 2, scenarioID = 2368, stepID = 6794, questID = 80022 },
         NoArrow = true,
         InstanceQuest = true,
         Zone = 2248,
         _index = 266,
     },
     {
-        Scenario = { criteriaID = 64435, criteriaIndex = 3, scenarioID = 2368, stepID = 6794 },
+        Scenario = { criteriaID = 64435, criteriaIndex = 3, scenarioID = 2368, stepID = 6794, questID = 80022 },
         NoArrow = true,
         InstanceQuest = true,
         Zone = 2248,
@@ -17249,20 +17249,20 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         _index = 301,
     },
     {
-        EnterScenario = 2250,
+        EnterScenario = { questID = 78749, mapID = 2250 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 302,
     },
     {
-        DoScenario = 2250,
+        DoScenario = { questID = 78749, mapID = 2250 },
         InstanceQuest = true,
         Zone = 2248,
         _index = 303,
     },
     {
+        LeaveScenario = { questID = 78749, mapID = 2250 },
         InstanceQuest = true,
-        LeaveScenario = 2250,
         Zone = 2248,
         _index = 304,
     },
@@ -19850,22 +19850,22 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 117,
     },
     {
+        EnterScenario = { questID = 83749, mapID = 2251 },
         Coord = { x = -2693.3, y = 1489.6 },
-        EnterScenario = 2251,
         InstanceQuest = true,
         Zone = 2214,
         _index = 118,
     },
     {
+        DoScenario = { questID = 83749, mapID = 2251 },
         Coord = { x = -2693.3, y = 1489.6 },
-        DoScenario = 2251,
         InstanceQuest = true,
         Zone = 2214,
         _index = 119,
     },
     {
+        LeaveScenario = { questID = 83749, mapID = 2251 },
         InstanceQuest = true,
-        LeaveScenario = 2251,
         Zone = 2214,
         _index = 120,
     },
@@ -20168,7 +20168,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 164,
     },
     {
-        Scenario = { criteriaID = 64739, criteriaIndex = 1, scenarioID = 2352, stepID = 6878 },
+        Scenario = { criteriaID = 64739, criteriaIndex = 1, scenarioID = 2352, stepID = 6878, questID = 78642 },
         Coord = { x = -155.4, y = 593.5 },
         ExtraLineText = "DISGUISE_YOURSELF",
         Range = 5,
@@ -20178,7 +20178,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 165,
     },
     {
-        Scenario = { criteriaID = 64696, criteriaIndex = 1, scenarioID = 2352, stepID = 6755 },
+        Scenario = { criteriaID = 64696, criteriaIndex = 1, scenarioID = 2352, stepID = 6755, questID = 78642 },
         Coord = { x = -153.6, y = 533.6 },
         Range = 100,
         InstanceQuest = true,
@@ -20194,7 +20194,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 167,
     },
     {
-        Scenario = { criteriaID = 64779, criteriaIndex = 1, scenarioID = 2352, stepID = 6843 },
+        Scenario = { criteriaID = 64779, criteriaIndex = 1, scenarioID = 2352, stepID = 6843, questID = 78642 },
         Coord = { x = -154.4, y = 413 },
         ExtraLineText = "REMOVE_DISGUISE",
         Range = 5,
@@ -20204,7 +20204,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 168,
     },
     {
-        Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844 },
+        Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844, questID = 78642 },
         Coord = { x = -155, y = 223 },
         ExtraLineText = "DISGUISE_YOURSELF",
         Range = 5,
@@ -20214,7 +20214,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 169,
     },
     {
-        Scenario = { criteriaID = 64697, criteriaIndex = 1, scenarioID = 2352, stepID = 6845 },
+        Scenario = { criteriaID = 64697, criteriaIndex = 1, scenarioID = 2352, stepID = 6845, questID = 78642 },
         Coord = { x = -156.7, y = 142.4 },
         ExtraLineText = "REMOVE_DISGUISE",
         Range = 5,
@@ -20223,7 +20223,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 170,
     },
     {
-        Scenario = { criteriaID = 64700, criteriaIndex = 1, scenarioID = 2352, stepID = 6846 },
+        Scenario = { criteriaID = 64700, criteriaIndex = 1, scenarioID = 2352, stepID = 6846, questID = 78642 },
         Coord = { x = -183.1, y = 91.2 },
         Range = 1,
         InstanceQuest = true,
@@ -20239,7 +20239,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 172,
     },
     {
-        Scenario = { criteriaID = 64701, criteriaIndex = 1, scenarioID = 2352, stepID = 6847 },
+        Scenario = { criteriaID = 64701, criteriaIndex = 1, scenarioID = 2352, stepID = 6847, questID = 78642 },
         Coord = { x = -152, y = 91 },
         GossipOptionIDs = { 119961 },
         InstanceQuest = true,
@@ -22345,15 +22345,15 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 479,
     },
     {
+        EnterScenario = { questID = 83766, mapID = 2302 },
         Coord = { x = -4719.5, y = 2043.7 },
-        EnterScenario = 2302,
         InstanceQuest = true,
         Zone = 2214,
         _index = 480,
     },
     {
+        DoScenario = { questID = 83766, mapID = 2302 },
         Coord = { x = -4719.5, y = 2043.7 },
-        DoScenario = 2302,
         InstanceQuest = true,
         Zone = 2214,
         _index = 481,
@@ -22366,8 +22366,8 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 482,
     },
     {
+        LeaveScenario = { questID = 83766, mapID = 2302 },
         InstanceQuest = true,
-        LeaveScenario = 2302,
         Zone = 2214,
         _index = 483,
     },
@@ -22658,7 +22658,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 526,
     },
     {
-        Scenario = { criteriaID = 65229, criteriaIndex = 1, scenarioID = 2338, stepID = 6719 },
+        Scenario = { criteriaID = 65229, criteriaIndex = 1, scenarioID = 2338, stepID = 6719, questID = 78761 },
         Coord = { x = 333.4, y = 1432.3 },
         Range = 5,
         InstanceQuest = true,
@@ -22666,7 +22666,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 527,
     },
     {
-        Scenario = { criteriaID = 66417, criteriaIndex = 2, scenarioID = 2338, stepID = 6720 },
+        Scenario = { criteriaID = 66417, criteriaIndex = 2, scenarioID = 2338, stepID = 6720, questID = 78761 },
         Coord = { x = 303.8, y = 1432.8 },
         Range = 30,
         ExtraActionB = true,
@@ -22675,7 +22675,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 528,
     },
     {
-        Scenario = { criteriaID = 66045, criteriaIndex = 1, scenarioID = 2338, stepID = 6720 },
+        Scenario = { criteriaID = 66045, criteriaIndex = 1, scenarioID = 2338, stepID = 6720, questID = 78761 },
         Coord = { x = 303.7, y = 1432.5 },
         Range = 30,
         InstanceQuest = true,
@@ -22683,7 +22683,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 529,
     },
     {
-        Scenario = { criteriaID = 65469, criteriaIndex = 1, scenarioID = 2338, stepID = 6941 },
+        Scenario = { criteriaID = 65469, criteriaIndex = 1, scenarioID = 2338, stepID = 6941, questID = 78761 },
         Coord = { x = 201.2, y = 1432.5 },
         Range = 5,
         InstanceQuest = true,
@@ -22691,7 +22691,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 530,
     },
     {
-        Scenario = { criteriaID = 65423, criteriaIndex = 1, scenarioID = 2338, stepID = 6729 },
+        Scenario = { criteriaID = 65423, criteriaIndex = 1, scenarioID = 2338, stepID = 6729, questID = 78761 },
         Coord = { x = 152, y = 1458.4 },
         Range = 5,
         InstanceQuest = true,
@@ -22699,7 +22699,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 531,
     },
     {
-        Scenario = { criteriaID = 65482, criteriaIndex = 1, scenarioID = 2338, stepID = 6732 },
+        Scenario = { criteriaID = 65482, criteriaIndex = 1, scenarioID = 2338, stepID = 6732, questID = 78761 },
         Coord = { x = 55, y = 1431.6 },
         Range = 5,
         InstanceQuest = true,
@@ -22707,7 +22707,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 532,
     },
     {
-        Scenario = { criteriaID = 65444, criteriaIndex = 2, scenarioID = 2338, stepID = 6732 },
+        Scenario = { criteriaID = 65444, criteriaIndex = 2, scenarioID = 2338, stepID = 6732, questID = 78761 },
         Coord = { x = 5.7, y = 1430.4 },
         Range = 10,
         InstanceQuest = true,
@@ -22715,7 +22715,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 533,
     },
     {
-        Scenario = { criteriaID = 65446, criteriaIndex = 3, scenarioID = 2338, stepID = 6732 },
+        Scenario = { criteriaID = 65446, criteriaIndex = 3, scenarioID = 2338, stepID = 6732, questID = 78761 },
         Coord = { x = 5.7, y = 1430.4 },
         Range = 10,
         InstanceQuest = true,
@@ -22723,7 +22723,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 534,
     },
     {
-        Scenario = { criteriaID = 65497, criteriaIndex = 1, scenarioID = 2338, stepID = 6943 },
+        Scenario = { criteriaID = 65497, criteriaIndex = 1, scenarioID = 2338, stepID = 6943, questID = 78761 },
         Coord = { x = -174.5, y = 1432.8 },
         Range = 5,
         InstanceQuest = true,
@@ -22731,7 +22731,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 535,
     },
     {
-        Scenario = { criteriaID = 65464, criteriaIndex = 1, scenarioID = 2338, stepID = 6738 },
+        Scenario = { criteriaID = 65464, criteriaIndex = 1, scenarioID = 2338, stepID = 6738, questID = 78761 },
         Coord = { x = -231, y = 1433 },
         Range = 10,
         InstanceQuest = true,
@@ -22739,7 +22739,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         _index = 536,
     },
     {
-        Scenario = { criteriaID = 67289, criteriaIndex = 1, scenarioID = 2338, stepID = 6739 },
+        Scenario = { criteriaID = 67289, criteriaIndex = 1, scenarioID = 2338, stepID = 6739, questID = 78761 },
         Coord = { x = -244.4, y = 1432.7 },
         Range = 5,
         InstanceQuest = true,
@@ -26808,7 +26808,7 @@ APR.RouteQuestStepList["2248-TWW-Nightfall"] = {
         _index = 7,
     },
     {
-        Scenario = { criteriaID = 69949, criteriaIndex = 1, scenarioID = 2637, stepID = 8137 },
+        Scenario = { criteriaID = 69949, criteriaIndex = 1, scenarioID = 2637, stepID = 8137, questID = 89331 },
         Coord = { x = 2202, y = 1838 },
         ExtraLineText = "WAIT_FOR_SCENARIO_TO_START_AND_FINISH",
         Range = 40,
@@ -29432,7 +29432,7 @@ APR.RouteQuestStepList["2248-TWW-K'aresh-Storyline"] = {
     },
     {
         Qpart = { [86820] = { 2 } },
-        Scenario = { criteriaID = 106007, criteriaIndex = 1, scenarioID = 3101, stepID = 15911 },
+        Scenario = { criteriaID = 106007, criteriaIndex = 1, scenarioID = 3101, stepID = 15911, questID = 86820 },
         InstanceQuest = true,
         _index = 243,
     },
