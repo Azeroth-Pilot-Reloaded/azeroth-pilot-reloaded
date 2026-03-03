@@ -666,6 +666,27 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local leaveText            = (leaveKey and L[leaveKey]) or L["SCENARIO"] or UNKNOWN
                 container, activeQuestId   = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     leaveText, questInfo, color, isCurrentStep)
+            elseif step.EnterInstance then
+                local instanceMapID = step.EnterInstance.mapID
+                local questID = step.EnterInstance.questID
+                local currentMapID = C_Map.GetBestMapForUnit('player')
+                local instanceContinentID = APR:GetContinent(instanceMapID)
+                local mapInfo = APR:GetMapInfoCached(instanceMapID)
+                local mapName = mapInfo and mapInfo.name or UNKNOWN
+                local instancesByContinent = instanceContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
+                    APR.ZonesData.Scenarios[instanceContinentID] or nil
+                local instanceInfo = instancesByContinent and instancesByContinent[instanceMapID] or nil
+                local isCompleted = safeTContains(
+                    APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,
+                    instanceMapID) or (questID and C_QuestLog.IsQuestFlaggedCompleted(questID))
+                local instanceTypeLabel = (instanceInfo and instanceInfo.type and L[instanceInfo.type]) or L["SCENARIO"] or
+                    UNKNOWN
+
+                local color = (instanceMapID == currentMapID or isCompleted or currentStepIndex > rawIndex) and "green" or
+                    "gray";
+                local questInfo = { { questID = mapName } }
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
+                    format(L["ENTER_IN"], instanceTypeLabel), questInfo, color, isCurrentStep)
             elseif step.TakePortal then
                 local portalData = step.TakePortal
                 local questID = portalData.QuestID

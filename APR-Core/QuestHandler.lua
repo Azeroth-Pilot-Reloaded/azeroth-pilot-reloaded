@@ -326,6 +326,21 @@ function APR:UpdateStep()
                 APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
                     L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name, mapInfo.name)
             end
+        elseif step.EnterInstance then
+            local instanceMapID = step.EnterInstance.mapID
+            local questID = step.EnterInstance.questID
+            local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Enter Instance", instanceMapID)
+
+            if isCompleted or instanceMapID == currentMapID or C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                APR:UpdateNextStep()
+            end
+
+            if scenarioInfo then
+                APR.currentStep:AddQuestSteps("ENTER_IN_" .. scenarioInfo.type,
+                    format(L["ENTER_IN"], L[scenarioInfo.type]) .. ": " .. mapInfo.name, mapInfo.name)
+                step.Coord = scenarioInfo.Coord
+                APR.Arrow:SetCoord()
+            end
         end
 
         if step.Buffs then

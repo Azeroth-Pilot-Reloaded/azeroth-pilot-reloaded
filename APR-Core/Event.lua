@@ -1040,7 +1040,7 @@ function APR.event.functions.scenario(event, ...)
     end
 
     if event == "ZONE_CHANGED_NEW_AREA" then
-        if step and (step.LeaveScenario or step.LeaveInstance) then
+        if step and (step.LeaveScenario or step.LeaveInstance or step.EnterInstance) then
             local mapID = C_Map.GetBestMapForUnit('player')
             if step.LeaveScenario then
                 local scenarioMapID = step.LeaveScenario
@@ -1053,6 +1053,13 @@ function APR.event.functions.scenario(event, ...)
                 local instanceMapID = step.LeaveInstance
                 local isInstance, instanceType = IsInInstance()
                 if instanceMapID ~= mapID and not isInstance then
+                    APR:UpdateNextStep()
+                end
+            end
+            if step.EnterInstance then
+                local instanceMapID = step.EnterInstance.mapID
+                local questID = step.EnterInstance.questID
+                if instanceMapID == mapID or (questID and C_QuestLog.IsQuestFlaggedCompleted(questID)) then
                     APR:UpdateNextStep()
                 end
             end
