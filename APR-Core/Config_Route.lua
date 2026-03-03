@@ -1067,6 +1067,8 @@ function APR.routeconfig:InitRouteConfig()
 
         -- to trigger the frame
         APR:Debug("Caller: APR.routeconfig:InitRouteConfig/Custom_Path_Update -> GetCurrentRouteMapIDsAndName")
+        APR.currentStep:Reset()
+
         local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
         APR.ActiveRoute = routeFileName
 

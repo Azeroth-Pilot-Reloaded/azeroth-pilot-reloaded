@@ -1254,7 +1254,8 @@ function APR.event.functions.zone(event, ...)
                 end
 
                 -- Already in the right zone — nothing to do
-                if APR.IsInRouteZone then
+                if APR:CheckIsInRouteZone() then
+                    APR.IsInRouteZone = true
                     return
                 end
 
@@ -1302,7 +1303,8 @@ function APR.event.functions.zone(event, ...)
             return
         end
 
-        if not APR.IsInRouteZone and APR.ActiveRoute then
+        if APR.ActiveRoute and not APR:CheckIsInRouteZone() then
+            APR.IsInRouteZone = false
             APR.transport:GetMeToRightZone()
         end
     end

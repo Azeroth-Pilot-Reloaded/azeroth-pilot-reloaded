@@ -476,25 +476,62 @@ function APR.currentStep:SetProgressBar(CurStep)
 end
 
 -- Displaying quest information
-local function AddStepsFrame(questDesc, extraLineText, color)
+local function AddStepsFrame(questDesc, extraLineText, color, showLeadingDash)
     local text = extraLineText or questDesc
-    return APR:CreateStepTextContainer(
+    local container = APR:CreateStepTextContainer(
         CurrentStepFrame_StepHolder,
         FRAME_WIDTH,
         text,
         extraLineText ~= nil,
         color,
-        APR.settings.profile.currentStepbackgroundColorAlpha
+        APR.settings.profile.currentStepbackgroundColorAlpha,
+        showLeadingDash
     )
+
+    -- Keep text visually aligned with the centered divider margins.
+    if container and container.font then
+        local textHorizontalPadding = 16
+        container.font:ClearAllPoints()
+        container.font:SetPoint("TOPLEFT", textHorizontalPadding, -5)
+        container.font:SetWidth(FRAME_WIDTH - (textHorizontalPadding * 2))
+        container:SetHeight(container.font:GetStringHeight() + 10)
+    end
+
+    return container
 end
 
 -- Displaying extra line text information
-local function AddExtraLineTextFrame(extraLineText, color)
-    return AddStepsFrame(nil, extraLineText, color)
+local function AddExtraLineTextFrame(extraLineText, color, showLeadingDash)
+    return AddStepsFrame(nil, extraLineText, color, showLeadingDash)
+end
+
+local function AddExtraLineDividerFrame()
+    local container = CreateFrame("Frame", nil, CurrentStepFrame_StepHolder, "BackdropTemplate")
+    container:SetWidth(FRAME_WIDTH)
+    container:SetHeight(12)
+    container:SetBackdrop({
+        bgFile = "Interface\\Buttons\\WHITE8X8",
+        tile = true,
+        tileSize = 16
+    })
+    local dividerBackdrop = (APR.settings and APR.settings.profile and APR.settings.profile.currentStepbackgroundColorAlpha)
+        or APR.Color.defaultBackdrop
+    container:SetBackdropColor(unpack(dividerBackdrop))
+
+    local dividerLine = container:CreateTexture(nil, "ARTWORK")
+    dividerLine:SetTexture("Interface\\Buttons\\WHITE8X8")
+    dividerLine:SetHeight(1)
+    dividerLine:SetPoint("LEFT", container, "LEFT", 12, 0)
+    dividerLine:SetPoint("RIGHT", container, "RIGHT", -12, 0)
+    dividerLine:SetVertexColor(0.78, 0.66, 0.35, 0.95)
+
+    container.dividerLine = dividerLine
+    return container
 end
 
 -- Add/Update quest steps
-function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, isScenario, noTooltip)
+function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, isScenario, noTooltip, showLeadingDash,
+                                       textColor)
     local profile = APR:GetSettingsProfile()
     if not profile or not profile.currentStepShow then
         return
@@ -524,7 +561,7 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
         self.questsList[questKey] = nil
     end
 
-    local objectiveContainer = AddStepsFrame(textObjective)
+    local objectiveContainer = AddStepsFrame(textObjective, nil, textColor, showLeadingDash)
     objectiveContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
     objectiveContainer.questID = questID
     if not noTooltip then
@@ -613,7 +650,8 @@ function APR.currentStep:UpdateQuestStep(questID, textObjective, objectiveIndex)
         return
     end
 
-    existingContainer.font:SetText('- ' .. textObjective)
+    local leading = existingContainer.showLeadingDash and '- ' or ''
+    existingContainer.font:SetText(leading .. textObjective)
 end
 
 local getExtraLineHeight = function()
@@ -623,6 +661,39 @@ local getExtraLineHeight = function()
         height = height - textContainer:GetHeight()
     end
     return height
+end
+
+local function UpdateManagedExtraLineDashes(self)
+    local managed = {}
+
+    for _, container in pairs(self.questsExtraTextList) do
+        if container and container._isManagedExtraLine then
+            table.insert(managed, container)
+        end
+    end
+    for _, container in pairs(self.questsList) do
+        if container and container._isManagedExtraLine then
+            table.insert(managed, container)
+        end
+    end
+
+    local autoCount = 0
+    for _, container in ipairs(managed) do
+        if container._manualLeadingDash == nil then
+            autoCount = autoCount + 1
+        end
+    end
+
+    local autoShowDash = autoCount > 1
+    for _, container in ipairs(managed) do
+        local useDash = (container._manualLeadingDash == nil) and autoShowDash or container._manualLeadingDash
+        local rawText = container._rawExtraLineText or ""
+        if container.font then
+            container.font:SetText((useDash and "- " or "") .. rawText)
+            container:SetHeight(container.font:GetStringHeight() + 10)
+        end
+        container.showLeadingDash = useDash and true or false
+    end
 end
 
 
@@ -655,7 +726,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
     end
 
     -- Create the main container for the text
-    local container = AddExtraLineTextFrame(text .. ":")
+    local container = AddExtraLineTextFrame(text .. ":", nil, false)
     container:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
 
     -- Add the sub-container for each quest in the list
@@ -712,9 +783,64 @@ end
 --- Add a new Extra line text
 ---@param key string Locale table key
 ---@param text string L[key]
-function APR.currentStep:AddExtraLineText(key, text, color)
+function APR.currentStep:AddExtraLineText(key, text, color, showLeadingDash)
     APR:Debug("Function: APR.currentStep:AddExtraLineText()", { key, text })
     if not APR.settings.profile.currentStepShow then
+        return
+    end
+
+    local transport = APR.transport
+    local isOutOfZoneMode = transport and transport.showOutOfZoneStepContent
+    local hasTransportDivider = isOutOfZoneMode and transport.TransportDividerStepKey and
+        self.questsList[transport.TransportDividerStepKey]
+    local isTopErrorLine = transport and
+        (key == transport.ErrorDestinationLineKey or key == transport.ErrorDividerLineKey)
+    local redirectedQuestBaseKey = "04_EXTRA_LINE_" .. tostring(key)
+    local redirectedQuestKey = redirectedQuestBaseKey .. "-EXTRA"
+
+    local redirectedContainer = self.questsList[redirectedQuestKey]
+    if redirectedContainer then
+        if self:CanSafelyHide(redirectedContainer) then
+            redirectedContainer:SetScript("OnEnter", nil)
+            redirectedContainer:SetScript("OnLeave", nil)
+            redirectedContainer:ClearAllPoints()
+            redirectedContainer:Hide()
+            self:ResetSecureStepButton(redirectedContainer, redirectedQuestKey)
+            self:ResetSecureRaidIconButton(redirectedContainer, redirectedQuestKey)
+        else
+            self:SoftHide(redirectedContainer)
+            table.insert(self.pendingContainerDestroy, redirectedContainer)
+        end
+        self.questsList[redirectedQuestKey] = nil
+    end
+
+    if hasTransportDivider and not isTopErrorLine then
+        local existingContainer = self.questsExtraTextList[key]
+        if existingContainer then
+            if self:CanSafelyHide(existingContainer) then
+                existingContainer:SetScript("OnEnter", nil)
+                existingContainer:SetScript("OnLeave", nil)
+                existingContainer:ClearAllPoints()
+                existingContainer:Hide()
+                self:ResetSecureRaidIconButton(existingContainer, key)
+            else
+                self:SoftHide(existingContainer)
+                table.insert(self.pendingContainerDestroy, existingContainer)
+            end
+            self.questsExtraTextList[key] = nil
+        end
+
+        local redirectedStepContainer = AddExtraLineTextFrame(text, color, false)
+        redirectedStepContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
+        redirectedStepContainer.key = redirectedQuestKey
+        redirectedStepContainer._isManagedExtraLine = true
+        redirectedStepContainer._rawExtraLineText = text
+        redirectedStepContainer._manualLeadingDash = showLeadingDash
+        self.questsList[redirectedQuestKey] = redirectedStepContainer
+        FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - redirectedStepContainer:GetHeight()
+
+        UpdateManagedExtraLineDashes(self)
+        self:ReOrderExtraLineText()
         return
     end
 
@@ -736,14 +862,81 @@ function APR.currentStep:AddExtraLineText(key, text, color)
         self.questsExtraTextList[key] = nil
     end
 
-    local extraLineTextContainer = AddExtraLineTextFrame(text, color)
+    local extraLineTextContainer = AddExtraLineTextFrame(text, color, false)
     extraLineTextContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
     extraLineTextContainer.key = key
+    extraLineTextContainer._isManagedExtraLine = true
+    extraLineTextContainer._rawExtraLineText = text
+    extraLineTextContainer._manualLeadingDash = showLeadingDash
     self.questsExtraTextList[key] = extraLineTextContainer
     self:MaybeAttachRaidIconButton(key)
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - extraLineTextContainer:GetHeight()
 
+    UpdateManagedExtraLineDashes(self)
     self:ReOrderExtraLineText()
+end
+
+function APR.currentStep:AddExtraLineDivider(key)
+    APR:Debug("Function: APR.currentStep:AddExtraLineDivider()", key)
+    if not APR.settings.profile.currentStepShow then
+        return
+    end
+
+    FRAME_STEP_HOLDER_HEIGHT = getExtraLineHeight()
+
+    local existingContainer = self.questsExtraTextList[key]
+    if existingContainer then
+        if self:CanSafelyHide(existingContainer) then
+            existingContainer:SetScript("OnEnter", nil)
+            existingContainer:SetScript("OnLeave", nil)
+            existingContainer:ClearAllPoints()
+            existingContainer:Hide()
+            self:ResetSecureRaidIconButton(existingContainer, key)
+        else
+            self:SoftHide(existingContainer)
+            table.insert(self.pendingContainerDestroy, existingContainer)
+        end
+        self.questsExtraTextList[key] = nil
+    end
+
+    local dividerContainer = AddExtraLineDividerFrame()
+    dividerContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
+    dividerContainer.key = key
+    self.questsExtraTextList[key] = dividerContainer
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - dividerContainer:GetHeight()
+
+    self:ReOrderExtraLineText()
+end
+
+function APR.currentStep:AddQuestDivider(key)
+    APR:Debug("Function: APR.currentStep:AddQuestDivider()", key)
+    if not APR.settings.profile.currentStepShow then
+        return
+    end
+
+    local existingContainer = self.questsList[key]
+    if existingContainer then
+        if self:CanSafelyHide(existingContainer) then
+            existingContainer:SetScript("OnEnter", nil)
+            existingContainer:SetScript("OnLeave", nil)
+            existingContainer:ClearAllPoints()
+            existingContainer:Hide()
+            self:ResetSecureStepButton(existingContainer, key)
+            self:ResetSecureRaidIconButton(existingContainer, key)
+        else
+            self:SoftHide(existingContainer)
+            table.insert(self.pendingContainerDestroy, existingContainer)
+        end
+        self.questsList[key] = nil
+    end
+
+    local dividerContainer = AddExtraLineDividerFrame()
+    dividerContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
+    dividerContainer.key = key
+    self.questsList[key] = dividerContainer
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - dividerContainer:GetHeight()
+
+    self:ReOrderQuestSteps()
 end
 
 function APR.currentStep:ReOrderExtraLineText()
@@ -752,16 +945,38 @@ function APR.currentStep:ReOrderExtraLineText()
         return
     end
 
-    -- Convert the table into a sortable list
+    -- Convert the table into a sortable list with explicit top ordering for
+    -- out-of-zone header lines: destination first, divider second.
     local sortedList = {}
-    for id, textContainer in pairs(self.questsExtraTextList) do
-        table.insert(sortedList, textContainer)
+    local usedKeys = {}
+    local destinationKey = (APR.transport and APR.transport.ErrorDestinationLineKey) or "00_ERROR_DESTINATION"
+    local dividerKey = (APR.transport and APR.transport.ErrorDividerLineKey) or "00A_ERROR_DIVIDER"
+
+    local function addByKey(key)
+        local container = self.questsExtraTextList[key]
+        if container then
+            table.insert(sortedList, container)
+            usedKeys[key] = true
+        end
     end
 
-    -- Sort the list based on textContainer.key
-    table.sort(sortedList, function(a, b)
-        return a.key < b.key
+    addByKey(destinationKey)
+    addByKey(dividerKey)
+
+    local remaining = {}
+    for id, textContainer in pairs(self.questsExtraTextList) do
+        if not usedKeys[id] then
+            table.insert(remaining, textContainer)
+        end
+    end
+
+    table.sort(remaining, function(a, b)
+        return tostring(a.key) < tostring(b.key)
     end)
+
+    for _, textContainer in ipairs(remaining) do
+        table.insert(sortedList, textContainer)
+    end
 
     FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
     for _, textContainer in ipairs(sortedList) do
@@ -783,7 +998,17 @@ function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
     if hasExtraLineHeight then
         FRAME_STEP_HOLDER_HEIGHT = getExtraLineHeight()
     end
+    local sortedList = {}
     for id, container in pairs(self.questsList) do
+        table.insert(sortedList, { id = tostring(id), container = container })
+    end
+
+    table.sort(sortedList, function(a, b)
+        return a.id < b.id
+    end)
+
+    for _, entry in ipairs(sortedList) do
+        local container = entry.container
         if not container.hiddenInCombat then
             container:ClearAllPoints()
             container:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
