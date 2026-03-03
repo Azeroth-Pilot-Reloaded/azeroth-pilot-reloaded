@@ -1369,7 +1369,17 @@ function APR.routeconfig:GetMidnightPrefab(suppressUpdate)
     AddRouteToCustomPath(L["Midnight - Harandar - sojourner"])
     AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
     AddRouteToCustomPath(L["Midnight - Voidstorm - sojourner"])
-    AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
+
+    -- Removed: not available yet
+    -- AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
+
+    -- AddRouteToCustomPath(L["Midnight - The Crimson Rogue"])
+    AddRouteToCustomPath(L["Midnight - Unlock daily quests in Saltheril's Haven"])
+    AddRouteToCustomPath(L["Glyph - Eversong Woods"])
+    AddRouteToCustomPath(L["Glyph - Zul'Aman"])
+    AddRouteToCustomPath(L["Glyph - Harandar"])
+    AddRouteToCustomPath(L["Glyph - Voidstorm"])
+    AddRouteToCustomPath(L["Midnight - Profession Treasures"])
     AddRouteToCustomPath(L["Midnight - Prey"])
 
 
@@ -1381,8 +1391,18 @@ function APR.routeconfig:GetMidnightSpeedrunPrefab(suppressUpdate)
 
     AddRouteToCustomPath(L["Midnight - Intro"])
     AddRouteToCustomPath(L["Midnight - Speedrun"])
-    AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
 
+    -- Removed: not available yet
+    -- AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
+
+    -- AddRouteToCustomPath(L["Midnight - The Crimson Rogue"])
+    AddRouteToCustomPath(L["Midnight - Unlock daily quests in Saltheril's Haven"])
+    AddRouteToCustomPath(L["Glyph - Eversong Woods"])
+    AddRouteToCustomPath(L["Glyph - Zul'Aman"])
+    AddRouteToCustomPath(L["Glyph - Harandar"])
+    AddRouteToCustomPath(L["Glyph - Voidstorm"])
+    AddRouteToCustomPath(L["Midnight - Profession Treasures"])
+    AddRouteToCustomPath(L["Midnight - Prey"])
     self:SendCustomPathUpdate(suppressUpdate)
 end
 

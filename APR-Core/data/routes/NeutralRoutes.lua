@@ -108,6 +108,7 @@ APR.RouteList.Midnight = {
     ["2413-Midnight-Glyph-Harandar"] = L["Glyph - Harandar"],
     ["2405-Midnight-Glyph-Voidstorm"] = L["Glyph - Voidstorm"],
     ["2395-Midnight-Profession-Treasures"] = L["Midnight - Profession Treasures"],
+    ["2413-Midnight-Unlock-daily-Saltherils-Haven"] = L["Midnight - Unlock daily quests in Saltheril's Haven"],
 
     ["2393-Midnight-Speedrun"] = L["Midnight - Speedrun"]
 }
