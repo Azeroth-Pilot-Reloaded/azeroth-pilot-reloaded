@@ -1,12 +1,15 @@
+# test files
 test*
 test 2*
-
+TODO.txt
 wordList.txt
+treasureData.txt
+
+# Env
 .env
 .github/scripts/__pycache__/*
-translation-report.md
 
-TODO.txt
+# copilot files
 .github/lua-wow-addon-development.collection.yml
 .github/instructions/*
 .github/prompts/*
