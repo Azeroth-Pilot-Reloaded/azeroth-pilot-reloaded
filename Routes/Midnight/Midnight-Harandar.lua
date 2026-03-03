@@ -1722,11 +1722,23 @@ APR.RouteQuestStepList["2395-Harandar"] = {
         _index = 225,
     },
     {
+        PickUp = { 95324 },
+        Coord = { x = -4361.5, y = 8493 },
+        Zone = 2395,
+        _index = 4,
+    },
+    {
         Done = { 91084 },
         Coord = { x = -4610.4, y = 8457.1 },
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 226,
+    },
+    {
+        Done = { 95324 },
+        Coord = { x = -4610.7, y = 8457.2 },
+        Zone = 2395,
+        _index = 5,
     },
     {
         TakePortal = { QuestID = 91550, ZoneId = 2413 },
@@ -5603,11 +5615,23 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
         _index = 228,
     },
     {
+        PickUp = { 95324 },
+        Coord = { x = -4361.5, y = 8493 },
+        Zone = 2395,
+        _index = 4,
+    },
+    {
         Done = { 91084 },
         Coord = { x = -4610.4, y = 8457.1 },
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 229,
+    },
+    {
+        Done = { 95324 },
+        Coord = { x = -4610.7, y = 8457.2 },
+        Zone = 2395,
+        _index = 5,
     },
     {
         RouteCompleted = true,

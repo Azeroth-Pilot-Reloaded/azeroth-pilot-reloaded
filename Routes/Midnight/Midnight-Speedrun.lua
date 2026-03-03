@@ -8159,11 +8159,23 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 1044,
     },
     {
+        PickUp = { 95324 },
+        Coord = { x = -4361.5, y = 8493 },
+        Zone = 2395,
+        _index = 4,
+    },
+    {
         Done = { 91084 },
         Coord = { x = -4610.4, y = 8457.1 },
         IsCampaignQuest = true,
         Zone = 2395,
         _index = 1045,
+    },
+    {
+        Done = { 95324 },
+        Coord = { x = -4610.7, y = 8457.2 },
+        Zone = 2395,
+        _index = 5,
     },
     {
         PickUp = { 91854 },
