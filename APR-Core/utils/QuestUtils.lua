@@ -262,10 +262,14 @@ end
 function APR:MissingQuest(questId, objectiveId)
     local questTextToAdd
     questId = questId or UNKNOWN
+    local questIdNum = tonumber(questId)
+    local questName = questIdNum and C_QuestLog.GetTitleForQuestID(questIdNum) or nil
+    local questLabel = questName and (questName .. " (" .. tostring(questId) .. ")") or tostring(questId)
+
     if APR:Contains(APR.BonusObj, questId) then
-        questTextToAdd = L["DO_BONUS_OBJECTIVE"] .. ": " .. questId
+        questTextToAdd = L["DO_BONUS_OBJECTIVE"] .. ": " .. questLabel
     else
-        questTextToAdd = L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questId
+        questTextToAdd = L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questLabel
     end
     APR.currentStep:AddQuestSteps(questId, questTextToAdd, objectiveId, false, true)
 end
