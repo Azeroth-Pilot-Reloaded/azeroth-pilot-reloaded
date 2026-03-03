@@ -862,7 +862,7 @@ function APR.currentStep:AddExtraLineText(key, text, color, showLeadingDash)
         self.questsExtraTextList[key] = nil
     end
 
-    local extraLineTextContainer = AddExtraLineTextFrame(text, color, false)
+    local extraLineTextContainer = AddExtraLineTextFrame(text, color, showLeadingDash)
     extraLineTextContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
     extraLineTextContainer.key = key
     extraLineTextContainer._isManagedExtraLine = true
