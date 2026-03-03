@@ -26,6 +26,7 @@ end
 
 function APR:BuyItemFromMerchant(BuyMerchant)
     if not BuyMerchant or #BuyMerchant == 0 then return end
+    local hasPurchasedAnyRequiredItem = false
     if APR.settings.profile.debug then
         for _, item in ipairs(BuyMerchant) do
             APR:Debug("APR:BuyMerchFunc: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
@@ -36,11 +37,14 @@ function APR:BuyItemFromMerchant(BuyMerchant)
         for _, item in ipairs(BuyMerchant) do
             if tonumber(id) == item.itemID then
                 BuyMerchantItem(i, item.quantity or 1)
+                hasPurchasedAnyRequiredItem = true
                 APR:Debug("Purchase made: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
             end
         end
     end
-    CloseMerchant()
+    if hasPurchasedAnyRequiredItem then
+        CloseMerchant()
+    end
 end
 
 function APR:GetQuantityfromLootMessage(message)
