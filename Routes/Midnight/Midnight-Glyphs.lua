@@ -164,13 +164,13 @@ APR.RouteQuestStepList["2413-Midnight-Glyph-Harandar"] = {
         _index = 3,
     },
     {
-        Achievement = { achievementID = 61582, criteriaIndex = 6 },
+        Achievement = { achievementID = 61582, criteriaIndex = 4 },
         Coord = { x = -1674.2, y = 213.6 },
         Zone = 2413,
         _index = 4,
     },
     {
-        Achievement = { achievementID = 61582, criteriaIndex = 1 },
+        Achievement = { achievementID = 61582, criteriaIndex = 6 },
         Coord = { x = -1955.1, y = 1221.2 },
         Zone = 2413,
         _index = 5,
@@ -239,7 +239,7 @@ APR.RouteQuestStepList["2405-Midnight-Glyph-Voidstorm"] = {
     {
         Achievement = { achievementID = 61583, criteriaIndex = 6 },
         Coord = { x = 343.4, y = 4034.4 },
-        Zone = 2444,
+        Zone = 2405,
         _index = 7,
     },
     {
