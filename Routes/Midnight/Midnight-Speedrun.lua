@@ -9855,7 +9855,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Done = { 90620 },
         Coord = { x = -1855.1, y = -701.6 },
-        SkipForLvl = 89,
+        SkipForLvl = 90,
         Zone = 2413,
         _index = 1260,
     },
@@ -9954,7 +9954,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         Qpart = { [90622] = { 4 } },
         Coord = { x = -1842.7, y = -804.5 },
         Range = 15,
-        SkipForLvl = 89,
+        SkipForLvl = 90,
         Zone = 2413,
         _index = 1273,
     },

@@ -82,7 +82,9 @@
         "FlagsUtil",
         "GARRISON_LOCATION_TOOLTIP",
         "ACHIEVEMENTS",
-        "INSTANCE"
+        "INSTANCE",
+        "PROFESSIONS_CRAFTING_ORDERS_PAGE_NAME",
+        "PROFESSIONS_CRAFTER_ORDER_TAB_NPC"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {
