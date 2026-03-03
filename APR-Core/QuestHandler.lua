@@ -151,6 +151,7 @@ function APR:UpdateStep()
 
     local step = APR:GetStep(currentStepIndex)
     if step then
+        local showStepDetails = APR.IsInRouteZone or (APR.transport and APR.transport.showOutOfZoneStepContent)
         APR.currentStep:ButtonEnable()
         APR:SendMessage("APR_MAP_UPDATE")
 
@@ -212,7 +213,7 @@ function APR:UpdateStep()
         -- Check for ExtraLineText
         local extraLines = {}
         for key, value in pairs(step) do
-            if string.match(key, "ExtraLineText+") and APR.IsInRouteZone then
+            if string.match(key, "ExtraLineText+") and showStepDetails then
                 table.insert(extraLines, { key = key, text = value })
             end
         end
@@ -258,9 +259,9 @@ function APR:UpdateStep()
             return currentMapID, scenarioInfo, mapInfo, isCompleted
         end
 
-        if step.EnterScenario then
-            local scenarioMapID = step.EnterScenario.mapID
-            local questID = step.EnterScenario.questID
+        if step.EnterScenario or step.EnterInstance then
+            local scenarioMapID = step.EnterScenario and step.EnterScenario.mapID or step.EnterInstance.mapID
+            local questID = step.EnterScenario and step.EnterScenario.questID or step.EnterInstance.questID
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Enter Scenario", scenarioMapID)
 
 
@@ -438,15 +439,15 @@ function APR:UpdateStep()
         if (step.SpecialETAHide) then
             APR.AFK:HideFrame()
         end
-        if (step.UseGlider and APR.IsInRouteZone) then
+        if (step.UseGlider and showStepDetails) then
             APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER", L["USE_ITEM"] .. ": " .. APR:UseGlider())
         end
-        if (step.Bloodlust and APR.IsInRouteZone) then
+        if (step.Bloodlust and showStepDetails) then
             APR.currentStep:AddExtraLineText("BLOODLUST", L["BLOODLUST"])
         end
-        if (step.InVehicle and not UnitInVehicle("player") and APR.IsInRouteZone) then
+        if (step.InVehicle and not UnitInVehicle("player") and showStepDetails) then
             APR.currentStep:AddExtraLineText("MOUNT_HORSE_SCARE_SPIDER", L["MOUNT_HORSE_SCARE_SPIDER"])
-        elseif (step.InVehicle and step.InVehicle == 2 and UnitInVehicle("player") and APR.IsInRouteZone) then
+        elseif (step.InVehicle and step.InVehicle == 2 and UnitInVehicle("player") and showStepDetails) then
             APR.currentStep:AddExtraLineText("SCARE_SPIDER_INTO_LUMBERMILL", L["SCARE_SPIDER_INTO_LUMBERMILL"])
         end
 
@@ -499,7 +500,7 @@ function APR:UpdateStep()
                         APR:Debug("Qpart objective complete: " ..
                             tostring(objectiveIndex) .. " for questID: " .. tostring(questID))
                     elseif questData and questData.objectives and questData.objectives[objectiveIndex] then
-                        if APR.IsInRouteZone then
+                        if showStepDetails then
                             local questText = APR:GetQuestTextForProgressBar(questID, objectiveIndex)
 
                             APR:Debug("Qpart adding quest step: " ..
@@ -510,7 +511,7 @@ function APR:UpdateStep()
                         end
                         questToHighlight = questToHighlight or questID
                     elseif not questData then
-                        if APR.IsInRouteZone then
+                        if showStepDetails then
                             APR:Debug("Qpart missing quest: " ..
                                 tostring(questID) .. " obj: " .. tostring(objectiveIndex))
                             APR:HandleMissingQuest(questID, objectiveIndex)
@@ -559,7 +560,7 @@ function APR:UpdateStep()
                     APR:ResetQuestPool()
                     APR:NextQuestStep()
                     return
-                elseif APR.IsInRouteZone then
+                elseif showStepDetails then
                     APR.currentStep:AddQuestStepsWithDetails("PickUp", L["PICK_UP_Q"], { myQuestID })
                 end
             else
@@ -579,7 +580,7 @@ function APR:UpdateStep()
                     APR:ResetQuestPool()
                     APR:NextQuestStep()
                     return
-                elseif APR.IsInRouteZone then
+                elseif showStepDetails then
                     APR.currentStep:AddQuestStepsWithDetails("PickUp", L["PICK_UP_Q"], uncompletedIDs)
                 end
             end
@@ -601,7 +602,7 @@ function APR:UpdateStep()
                 return
             end
 
-            if APR.IsInRouteZone then
+            if showStepDetails then
                 local mapInfo = APR:GetMapInfoCached(zoneId)
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
                 local text = string.format(L["USE_PORTAL_TO"], zoneName)
@@ -631,7 +632,7 @@ function APR:UpdateStep()
 
                     APR:NextQuestStep()
                     return
-                elseif APR.IsInRouteZone then
+                elseif showStepDetails then
                     APR.currentStep:AddExtraLineText("Waypoint" .. questID, APR:CheckWaypointText())
                 end
             end
@@ -642,7 +643,7 @@ function APR:UpdateStep()
 
                 APR:NextQuestStep()
                 return
-            elseif APR.IsInRouteZone then
+            elseif showStepDetails then
                 APR.currentStep:AddQuestSteps(questID, L["GET_TREASURE"], "Treasure")
             end
         elseif (step.DropQuest) then
@@ -670,7 +671,7 @@ function APR:UpdateStep()
                     if questName then
                         myQuestID = questID
                     elseif not questData and not C_QuestLog.IsQuestFlaggedCompleted(questID) then
-                        if APR.IsInRouteZone then
+                        if showStepDetails then
                             APR:HandleMissingQuest(questID)
                         end
                     end
@@ -682,7 +683,7 @@ function APR:UpdateStep()
                 if hasQuestCompleted then
                     APR:NextQuestStep()
                     return
-                elseif APR.IsInRouteZone then
+                elseif showStepDetails then
                     APR.currentStep:AddQuestStepsWithDetails("Done", L["TURN_IN_Q"], { myQuestID })
                     questToHighlight = myQuestID
                 end
@@ -695,7 +696,7 @@ function APR:UpdateStep()
                         tinsert(uncompletedIDs, questID)
                         questToHighlight = questToHighlight or questID
                     elseif not C_QuestLog.IsQuestFlaggedCompleted(questID) then
-                        if APR.IsInRouteZone then
+                        if showStepDetails then
                             APR:HandleMissingQuest(questID)
                         end
                     end
@@ -707,7 +708,7 @@ function APR:UpdateStep()
                 if #doneList == completedCount then
                     APR:UpdateNextStep()
                     return
-                elseif APR.IsInRouteZone then
+                elseif showStepDetails then
                     APR.currentStep:AddQuestStepsWithDetails("Done", L["TURN_IN_Q"], uncompletedIDs)
                 end
             end
@@ -732,7 +733,7 @@ function APR:UpdateStep()
             local itemID = step.UseItem.itemID
             local itemName = C_Item.GetItemInfo(itemID)
             local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
-            if APR.IsInRouteZone then
+            if showStepDetails then
                 APR.currentStep:AddQuestSteps(questID, questText, "UseItem")
                 APR.currentStep:AddStepButton(questID .. "-UseItem", itemID, 'item')
             end
@@ -746,7 +747,7 @@ function APR:UpdateStep()
             local spellID = step.UseSpell.spellID
             local spellInfo = C_Spell.GetSpellInfo(spellID)
             local questText = L["USE_SPELL"] .. ": " .. (spellInfo.name or UNKNOWN)
-            if APR.IsInRouteZone then
+            if showStepDetails then
                 APR.currentStep:AddQuestSteps(questID, questText, "UseSpell")
                 APR.currentStep:AddStepButton(questID .. "-UseSpell", spellID, 'spell')
             end
@@ -777,7 +778,7 @@ function APR:UpdateStep()
                 type = 'spell'
             end
 
-            if APR.IsInRouteZone then
+            if showStepDetails then
                 APR.currentStep:AddQuestSteps(questKey, questText, useHSKey)
                 APR.currentStep:AddStepButton(questKey .. "-" .. useHSKey, spellID, type)
             end
@@ -787,7 +788,7 @@ function APR:UpdateStep()
                 return
             end
         elseif (step.SetHS) then
-            if APR.IsInRouteZone then
+            if showStepDetails then
                 APR.currentStep:AddQuestSteps(step.SetHS, L["SET_HEARTHSTONE"], "SetHS")
             end
             if (C_QuestLog.IsQuestFlaggedCompleted(step.SetHS)) then
@@ -814,7 +815,7 @@ function APR:UpdateStep()
                 return
             end
 
-            if APR.IsInRouteZone then
+            if showStepDetails then
                 APR.currentStep:AddQuestSteps(step.GetFP, L["GET_FLIGHTPATH"], "GetFP")
             end
             if APR:HasTaxiNode(step.GetFP) then
@@ -822,7 +823,7 @@ function APR:UpdateStep()
                 return
             end
         elseif (step.UseFlightPath) then
-            if APR.IsInRouteZone then
+            if showStepDetails then
                 local questText = (step.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]) ..
                     ": " .. (APR:GetTaxiNodeName(step))
                 APR.currentStep:AddQuestSteps(step.UseFlightPath, questText, "UseFlightPath")
@@ -857,7 +858,7 @@ function APR:UpdateStep()
                         return
                     end
 
-                    if APR.IsInRouteZone then
+                    if showStepDetails then
                         if questText then
                             APR.currentStep:AddQuestSteps(questID, questText, objectiveIndex)
                         else
@@ -883,9 +884,9 @@ function APR:UpdateStep()
                     return
                 end
 
-                if APR.IsInRouteZone then
+                if showStepDetails then
                     local objectiveKey = "Achievement-" ..
-                    tostring(achievementData.achievementID) .. "-" .. tostring(achievementData.criteriaIndex or 0)
+                        tostring(achievementData.achievementID) .. "-" .. tostring(achievementData.criteriaIndex or 0)
                     APR.currentStep:AddQuestSteps(objectiveKey, progressText,
                         achievementData.criteriaIndex or achievementData.achievementID)
                 end
@@ -897,7 +898,7 @@ function APR:UpdateStep()
                 APR:UpdateNextStep()
             end
 
-            if APR.IsInRouteZone then
+            if showStepDetails then
                 APR.currentStep:AddQuestSteps("GOSSIP_ONLY", L["TALK_NPC"], next(step.GossipOptionIDs))
             end
         end
@@ -941,7 +942,7 @@ function APR:UpdateStep()
             local Qid = questData.Qid
 
             if not C_QuestLog.IsQuestFlaggedCompleted(Qid) and not APR.ActiveQuests[Qid] then
-                if APR.IsInRouteZone then
+                if showStepDetails then
                     local MobId = questData.MobId
                     local MobName = APRData.NPCList[MobId] or questData.Text
                     local questText = format(L["Q_DROP"], MobName)
@@ -961,7 +962,7 @@ function APR:UpdateStep()
                     if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not APRData[APR.PlayerID].BonusSkips[questId] then
                         if questData and questData.objectives and questData.objectives[objectiveId]
                             and questData.objectives[objectiveId].status ~= APR.QUEST_STATUS.COMPLETE
-                            and APR.IsInRouteZone
+                            and showStepDetails
                         then
                             local questText = APR:GetQuestTextForProgressBar(questId, objectiveId)
                             APR.fillersFrame:AddFillerStep(questId, questText, objectiveId)
@@ -1018,7 +1019,7 @@ function APR:UpdateStep()
 end
 
 function APR:SetButton()
-    if not APR.IsInRouteZone then
+    if not (APR.IsInRouteZone or (APR.transport and APR.transport.showOutOfZoneStepContent)) then
         return
     end
     APR:Debug("Function: APR:SetButton()")
@@ -1107,6 +1108,7 @@ function APR:UpdateQuest()
                         updateStep = true
                     end
 
+                    -- // todo check le refresh pourquoi
                     APR.currentStep:UpdateQuestStep(questID, text, i)
                     APR.fillersFrame:UpdateFillerStep(questID, text, i)
                 end

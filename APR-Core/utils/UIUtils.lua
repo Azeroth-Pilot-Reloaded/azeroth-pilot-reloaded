@@ -264,15 +264,17 @@ end
 ---@param isExtraLine boolean|nil
 ---@param color string|nil
 ---@param backdropColor table|nil
+---@param showLeadingDash boolean|nil
 ---@return table
-function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, backdropColor)
+function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, backdropColor, showLeadingDash)
     local textTemplate = isExtraLine and "GameFontNormal" or "GameFontHighlight"
     local container = CreateFrame("Frame", nil, parent, "BackdropTemplate")
     local font = container:CreateFontString(nil, "OVERLAY", textTemplate)
+    local useLeadingDash = (showLeadingDash ~= false)
     font:SetWordWrap(true)
     font:SetWidth(width - 5)
     font:SetPoint("TOPLEFT", 5, -5)
-    font:SetText("- " .. text)
+    font:SetText((useLeadingDash and "- " or "") .. text)
     font:SetJustifyH("LEFT")
 
     if color then
@@ -294,6 +296,7 @@ function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, ba
     end
 
     container.font = font
+    container.showLeadingDash = useLeadingDash
     return container
 end
 

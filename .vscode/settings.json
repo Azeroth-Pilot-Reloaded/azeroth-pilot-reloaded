@@ -81,7 +81,8 @@
         "ALWAYS",
         "FlagsUtil",
         "GARRISON_LOCATION_TOOLTIP",
-        "ACHIEVEMENTS"
+        "ACHIEVEMENTS",
+        "INSTANCE"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {

@@ -1,10 +1,15 @@
-﻿local _G = _G
+local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.transport = APR:NewModule("Transport")
 
 APR.transport.CurrentTaxiNode = {}
 APR.transport.StepTaxiNode = {}
+APR.transport.ErrorDestinationLineKey = "00_ERROR_DESTINATION"
+APR.transport.ErrorDividerLineKey = "00A_ERROR_DIVIDER"
+APR.transport.TransportDividerStepKey = "03_TRANSPORT_DIVIDER"
+APR.transport.ErrorTextColor = (APR.HEXColor and APR.HEXColor.red) or "ff3333"
+APR.transport.showOutOfZoneStepContent = false
 
 -- Internal retry flag
 APR.transport._retryPending = false
@@ -129,25 +134,29 @@ function APR.transport:SelectBestTransport(nextZone, step, mapID)
     end
 
     if pick then
+        local transportKeyPrefix = APR.IsInRouteZone and "" or "01_"
         if pick.kind == "spell" then
             -- EXACT UI you requested
             local spellID = pick.id
             local spellName = pick.name
             local questText = L["USE_SPELL"] .. ": " .. (spellName or UNKNOWN)
-            APR.currentStep:AddQuestSteps("USE_SPELL", questText, spellName)
-            APR.currentStep:AddStepButton("USE_SPELL-" .. spellName, spellID, "spell")
+            local transportStepKey = transportKeyPrefix .. "USE_SPELL"
+            APR.currentStep:AddQuestSteps(transportStepKey, questText, spellName, nil, nil, false)
+            APR.currentStep:AddStepButton(transportStepKey .. "-" .. spellName, spellID, "spell")
         else
             -- EXACT UI for items
             local itemID = pick.id
             local itemName = pick.name
             local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
-            APR.currentStep:AddQuestSteps("USE_ITEM", questText, itemName)
-            APR.currentStep:AddStepButton("USE_ITEM-" .. itemName, itemID, "item")
+            local transportStepKey = transportKeyPrefix .. "USE_ITEM"
+            APR.currentStep:AddQuestSteps(transportStepKey, questText, itemName, nil, nil, false)
+            APR.currentStep:AddStepButton(transportStepKey .. "-" .. itemName, itemID, "item")
         end
 
         if pick.coords then
             local nz = APR:GetMapInfoCached(nextZone)
-            APR.currentStep:AddExtraLineText("DESTINATION", L["DESTINATION"] .. " " .. (nz and nz.name or ""))
+            APR.currentStep:AddExtraLineText("DESTINATION", L["DESTINATION"] .. " " .. (nz and nz.name or ""),
+                self.ErrorTextColor)
         end
 
         -- Teleports are instant (no arrow); zone change will refresh the flow.
@@ -221,9 +230,10 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
     end
 
     local function handleTaxi(closestTaxiName, destTaxiName)
-        APR.currentStep:AddQuestSteps("FLY_TO_" .. destTaxiName, L["FLY_TO"] .. " " .. destTaxiName, destTaxiName)
-        APR.currentStep:AddQuestSteps("CLOSEST_FP" .. closestTaxiName, L["CLOSEST_FP"] .. ": " .. closestTaxiName,
-            closestTaxiName)
+        APR.currentStep:AddQuestSteps("01_FLY_TO_" .. destTaxiName, L["FLY_TO"] .. " " .. destTaxiName, destTaxiName, nil,
+            nil, false)
+        APR.currentStep:AddQuestSteps("02_CLOSEST_FP" .. closestTaxiName, L["CLOSEST_FP"] .. ": " .. closestTaxiName,
+            closestTaxiName, nil, nil, false)
         self.wrongZoneDestTaxiName = destTaxiName
     end
 
@@ -275,7 +285,7 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
         if APR.Faction == "Alliance" and CurContinent == 13 then
             local posY, posX = UnitPosition("player")
             if posY and posX and (posY > -8981.3 and posX < 866.7) then
-                APR.currentStep:AddQuestSteps("GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"], "GO_PORTAL_ROOM")
+                APR.currentStep:AddQuestSteps("01_GO_PORTAL_ROOM", L["GO_PORTAL_ROOM"], "GO_PORTAL_ROOM", nil, nil, false)
                 local room = APR.Portals.Coords["Alliance"][CurContinent]["StormwindPortalRoom"]
                 APR.Arrow:SetArrowActive(true, room.x, room.y)
                 return portal
@@ -287,9 +297,11 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
         local localized = L[extraText]
         -- Use format only if the locale string expects a %s; otherwise, just append the name.
         if localized and localized:find("%%s") then
-            APR.currentStep:AddQuestSteps(portal.portalKey, string.format(localized, newZoneName), portal.portalKey)
+            APR.currentStep:AddQuestSteps("01_PORTAL_" .. portal.portalKey, string.format(localized, newZoneName),
+                portal.portalKey, nil, nil, false)
         else
-            APR.currentStep:AddQuestSteps(portal.portalKey, localized .. " " .. newZoneName, portal.portalKey)
+            APR.currentStep:AddQuestSteps("01_PORTAL_" .. portal.portalKey, localized .. " " .. newZoneName,
+                portal.portalKey, nil, nil, false)
         end
 
         APR.Arrow:SetArrowActive(true, portalPos.x, portalPos.y)
@@ -484,6 +496,7 @@ function APR.transport:GetMeToRightZone(isRetry)
     if APR:CheckIsInRouteZone() and not farAway then
         local wasOutOfZone = not APR.IsInRouteZone
         APR.IsInRouteZone = true
+        self.showOutOfZoneStepContent = false
         -- Avoid unwanted auto taxi
         self.wrongZoneDestTaxiName = nil
         -- Reset flag, we are in the right zone
@@ -496,6 +509,14 @@ function APR.transport:GetMeToRightZone(isRetry)
     else
         -- Reset IsInRouteZone and continue routing
         APR.IsInRouteZone = false
+        local wasShowingOutOfZoneStepContent = self.showOutOfZoneStepContent
+        self.showOutOfZoneStepContent = true
+        if not wasShowingOutOfZoneStepContent then
+            APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
+            if APR.fillersFrame and APR.fillersFrame.RemoveFillerSteps then
+                APR.fillersFrame:RemoveFillerSteps()
+            end
+        end
 
         if not step then
             return
@@ -510,10 +531,7 @@ function APR.transport:GetMeToRightZone(isRetry)
             return
         end
 
-        local parentMapInfo = APR:GetMapInfoCached(mapInfo.parentMapID)
-        if not parentMapInfo then
-            return
-        end
+        local parentMapInfo = mapInfo.parentMapID and APR:GetMapInfoCached(mapInfo.parentMapID) or nil
 
         -- Retry: if this is the first detection of wrong zone (not already a
         -- retry), schedule a delayed re-check.  After a teleport/portal the zone
@@ -538,21 +556,26 @@ function APR.transport:GetMeToRightZone(isRetry)
         end
 
         local reason = farAway and L["TOO_FAR_AWAY"] or L["WRONG_ZONE"]
-        APR.currentStep:Reset()
+        local parentMapName = parentMapInfo and parentMapInfo.name or "?"
         local destinationText =
             reason ..
             " - " ..
             L["DESTINATION"] ..
             ": " ..
             (mapInfo.name or "?") ..
-            ", " .. (parentMapInfo.name or "?") .. " (" .. tostring(nextZone) .. ")"
-        APR.currentStep:AddExtraLineText("DESTINATION", destinationText)
+            ", " .. parentMapName .. " (" .. tostring(nextZone) .. ")"
+        APR.currentStep:AddExtraLineText(self.ErrorDestinationLineKey, destinationText, self.ErrorTextColor, false)
+
+        if not wasShowingOutOfZoneStepContent then
+            APR:UpdateStep()
+        end
 
         -- Hide arrow while computing routing
         APR.Arrow.Active = false
 
         -- Full router (Spells / Items / SwitchZones / SwitchCont)
         if self:SelectBestTransport(nextZone, step, mapID) then
+            APR.currentStep:AddQuestDivider(self.TransportDividerStepKey)
             -- Either a teleport instruction or portal/taxi path has been displayed.
             -- If it's an instance step, refresh the UI immediately.
             if step.InstanceQuest then
@@ -577,10 +600,11 @@ function APR.transport:GetMeToRightZone(isRetry)
 
             -- For isolated zones without valid coords, still force taxi route
             if not stepCoord and isTargetIsolated then
-                APR.currentStep:AddQuestSteps("ISOLATED_ZONE_TAXI",
-                    L["ISOLATED_ZONE_TAXI"] or "Isolated zone - use taxi only", "TAXI")
-                APR.currentStep:AddQuestSteps("CLOSEST_FP" .. playerTaxiName,
-                    L["CLOSEST_FP"] .. ": " .. playerTaxiName, playerTaxiName)
+                APR.currentStep:AddQuestSteps("01_ISOLATED_ZONE_TAXI",
+                    L["ISOLATED_ZONE_TAXI"] or "Isolated zone - use taxi only", "TAXI", nil, nil, false)
+                APR.currentStep:AddQuestSteps("02_CLOSEST_FP" .. playerTaxiName,
+                    L["CLOSEST_FP"] .. ": " .. playerTaxiName, playerTaxiName, nil, nil, false)
+                APR.currentStep:AddQuestDivider(self.TransportDividerStepKey)
                 APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
                 return
             end
@@ -589,10 +613,12 @@ function APR.transport:GetMeToRightZone(isRetry)
                 local _, objectiveTaxiName = self:ClosestTaxi(stepCoord.x, stepCoord.y)
                 if playerTaxiNodeId ~= objectiveTaxiName then
                     self.wrongZoneDestTaxiName = objectiveTaxiName
-                    APR.currentStep:AddQuestSteps("FLY_TO_" .. objectiveTaxiName, L["FLY_TO"] .. " " .. objectiveTaxiName,
-                        objectiveTaxiName)
-                    APR.currentStep:AddQuestSteps("CLOSEST_FP" .. playerTaxiName,
-                        L["CLOSEST_FP"] .. ": " .. playerTaxiName, playerTaxiName)
+                    APR.currentStep:AddQuestSteps("01_FLY_TO_" .. objectiveTaxiName,
+                        L["FLY_TO"] .. " " .. objectiveTaxiName,
+                        objectiveTaxiName, nil, nil, false)
+                    APR.currentStep:AddQuestSteps("02_CLOSEST_FP" .. playerTaxiName,
+                        L["CLOSEST_FP"] .. ": " .. playerTaxiName, playerTaxiName, nil, nil, false)
+                    APR.currentStep:AddQuestDivider(self.TransportDividerStepKey)
                     APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
                     return
                 else
@@ -604,10 +630,14 @@ function APR.transport:GetMeToRightZone(isRetry)
                         local zoneEntryMapInfo = APR:GetMapInfoCached(zoneEntryMapID)
                         if zoneEntryMapInfo then
                             APR.currentStep:AddQuestSteps(
-                                "GO_TO" .. (zoneEntryMapInfo.name or ""),
+                                "01_GO_TO" .. (zoneEntryMapInfo.name or ""),
                                 string.format(L["GO_TO"], zoneEntryMapInfo.name or "?"),
-                                zoneEntryMapInfo.name
+                                zoneEntryMapInfo.name,
+                                nil,
+                                nil,
+                                false
                             )
+                            APR.currentStep:AddQuestDivider(self.TransportDividerStepKey)
                             APR.Arrow:SetArrowActive(true, zoneEntryX, zoneEntryY)
                             return
                         end
@@ -617,10 +647,14 @@ function APR.transport:GetMeToRightZone(isRetry)
                     -- Point arrow directly to step coordinates (adjacent zone, walk/fly there)
                     local targetMapInfo = APR:GetMapInfoCached(nextZone)
                     APR.currentStep:AddQuestSteps(
-                        "GO_TO" .. (targetMapInfo and targetMapInfo.name or "?"),
+                        "01_GO_TO" .. (targetMapInfo and targetMapInfo.name or "?"),
                         string.format(L["GO_TO"], targetMapInfo and targetMapInfo.name or "?"),
-                        targetMapInfo and targetMapInfo.name or "?"
+                        targetMapInfo and targetMapInfo.name or "?",
+                        nil,
+                        nil,
+                        false
                     )
+                    APR.currentStep:AddQuestDivider(self.TransportDividerStepKey)
                     APR.Arrow:SetArrowActive(true, stepCoord.x, stepCoord.y)
                     return
                 end
@@ -629,16 +663,23 @@ function APR.transport:GetMeToRightZone(isRetry)
 
         -- Total fallback: no route found
         if APR:IsInstanceWithUI() then
-            APR.currentStep:AddQuestSteps("WRONG_ZONE_INSTANCE", L["WRONG_ZONE_INSTANCE"], nextZone)
+            APR.currentStep:AddQuestSteps("01_WRONG_ZONE_INSTANCE", L["WRONG_ZONE_INSTANCE"], nextZone, nil, nil, false,
+                self.ErrorTextColor)
+            APR.currentStep:AddQuestDivider(self.TransportDividerStepKey)
             APR.Arrow:SetArrowActive(false, 0, 0)
             return
         end
 
         APR.currentStep:AddQuestSteps(
-            "ERROR_PATH_NOT_FOUND",
+            "01_ERROR_PATH_NOT_FOUND",
             L["ERROR"] .. " - " .. L["PATH_NOT_FOUND"] .. " " .. (mapInfo.name or "??") .. " (" .. tostring(mapID) .. ")",
-            mapID
+            mapID,
+            nil,
+            nil,
+            false,
+            self.ErrorTextColor
         )
+        APR.currentStep:AddQuestDivider(self.TransportDividerStepKey)
         APR:PrintError(L["PATH_NOT_FOUND"] .. " " .. (mapInfo.name or "??"))
         APR.Arrow:SetArrowActive(false, 0, 0)
     end
