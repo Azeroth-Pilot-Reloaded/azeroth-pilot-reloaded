@@ -4,8 +4,6 @@ local LSM = LibStub("LibSharedMedia-3.0")
 local CreateFrame = CreateFrame
 local GetRealZoneText = GetRealZoneText
 
-local UNKNOWN = "UNKNOWN"
-local INSTANCE = "Instance"
 local NO_ACTIVE = "No active route"
 local font = LSM:Fetch('font', 'Expressway')
 

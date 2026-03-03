@@ -4,7 +4,8 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 -- Keeping them here ensures other modules can reason about step intent without re-declaring lists.
 APR.mainStepOptions = {
     "ExitTutorial", "PickUp", "DropQuest", "Qpart", "QpartPart", "Treasure", "Group", "Done",
-    "Scenario", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS", "UseDalaHS", "UseGarrisonHS",
+    "Scenario", "EnterInstance", "LeaveInstance", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS",
+    "UseDalaHS", "UseGarrisonHS",
     "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession", "LootItems", "WarMode", "Grind",
     "Achievement", "RouteCompleted"
 }
@@ -22,6 +23,7 @@ function APR:GetStepString(step)
         Done = L["TURN_IN_Q"],
         DoScenario = L["SCENARIO"],
         DropQuest = L["Q_DROP"],
+        EnterInstance = "INSTANCE",
         EnterScenario = L["SCENARIO"],
         ExitTutorial = L["SKIP_TUTORIAL"],
         GetFP = L["GET_FLIGHTPATH"],
@@ -30,6 +32,7 @@ function APR:GetStepString(step)
         Grind = L["GRIND"],
         Group = L["GROUP_Q"],
         LearnProfession = L["LEARN_PROFESSION"],
+        LeaveInstance = L["LEAVE_INSTANCE"],
         LeaveScenario = L["SCENARIO"],
         LootItems =
             (step and step.LootItems and #step.LootItems >= 1) and

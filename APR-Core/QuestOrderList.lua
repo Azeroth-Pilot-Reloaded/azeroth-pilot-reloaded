@@ -591,9 +591,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                         L["SCENARIO"] .. " - " .. scenarioInfo.name, questInfo, color, isCurrentStep)
                 end
-            elseif step.EnterScenario then
-                local scenarioMapID = step.EnterScenario.mapID
-                local questID = step.EnterScenario.questID
+            elseif step.EnterScenario or step.EnterInstance then
+                local scenarioMapID = step.EnterScenario and step.EnterScenario.mapID or step.EnterInstance.mapID
+                local questID = step.EnterScenario and step.EnterScenario.questID or step.EnterInstance.questID
                 local currentMapID = C_Map.GetBestMapForUnit('player')
                 local scenarioContinentID = APR:GetContinent(scenarioMapID)
                 local mapInfo = APR:GetMapInfoCached(scenarioMapID)
