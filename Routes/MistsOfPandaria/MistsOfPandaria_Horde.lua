@@ -737,7 +737,7 @@ if APR.Faction == "Horde" then
             _index = 88,
         },
         {
-            Treasure = 31400,
+            Treasure = { questID = 31400 },
             Coord = { x = -379.9, y = 2146.6 },
             Range = 2,
             Zone = 371,
@@ -751,7 +751,7 @@ if APR.Faction == "Horde" then
             _index = 90,
         },
         {
-            Treasure = 31401,
+            Treasure = { questID = 31401 },
             Coord = { x = -779.4, y = 2360 },
             Range = 2,
             Zone = 371,
@@ -811,7 +811,7 @@ if APR.Faction == "Horde" then
             _index = 99,
         },
         {
-            Treasure = 31404,
+            Treasure = { questID = 31404 },
             Coord = { x = -188.4, y = 2021.4 },
             Range = 2,
             Zone = 371,

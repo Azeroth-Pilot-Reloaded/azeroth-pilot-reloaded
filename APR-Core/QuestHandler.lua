@@ -637,14 +637,28 @@ function APR:UpdateStep()
                 end
             end
         elseif (step.Treasure) then
-            local questID = step.Treasure
-            if (C_QuestLog.IsQuestFlaggedCompleted(questID)) then
+            local questID = step.Treasure.questID
+            local itemID = step.Treasure.itemID or nil
+
+            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 APR:Debug("APR.UpdateStep:Treasure:Plus:" .. APRData[APR.PlayerID][APR.ActiveRoute])
 
                 APR:NextQuestStep()
                 return
             elseif showStepDetails then
-                APR.currentStep:AddQuestSteps(questID, L["GET_TREASURE"], "Treasure")
+                if itemID then
+                    local itemName = C_Item.GetItemInfo(itemID) or UNKNOWN
+                    APR.currentStep:AddQuestStepsWithDetails("Treasure" .. tostring(questID or itemID),
+                        L["GET_TREASURE"], {
+                            {
+                                questID = questID,
+                                itemID = itemID,
+                                itemName = itemName,
+                            }
+                        })
+                else
+                    APR.currentStep:AddQuestSteps(questID, L["GET_TREASURE"], "Treasure")
+                end
             end
         elseif (step.DropQuest) then
             local questID = step.DropQuest

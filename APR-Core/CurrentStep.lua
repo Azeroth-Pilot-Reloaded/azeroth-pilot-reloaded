@@ -729,11 +729,30 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
     local container = AddExtraLineTextFrame(text .. ":", nil, false)
     container:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
 
-    -- Add the sub-container for each quest in the list
+    -- Add the sub-container for each entry in the list
     local questFontHeight = 0
-    for _, questID in ipairs(questIDList) do
-        local questName = C_QuestLog.GetTitleForQuestID(questID)
-        local questText = questName and ("- " .. questName) or ("- " .. questID .. " - " .. UNKNOWN)
+    for _, entry in ipairs(questIDList) do
+        local questID
+        local itemID
+        local displayName
+
+        if type(entry) == "table" then
+            questID = entry.questID
+            itemID = entry.itemID or entry.ItemID
+            displayName = entry.questName or entry.itemName
+        else
+            questID = entry
+        end
+
+        if not displayName and itemID then
+            displayName = C_Item.GetItemInfo(itemID)
+        end
+        if not displayName and questID then
+            displayName = C_QuestLog.GetTitleForQuestID(questID)
+        end
+
+        local fallbackIdentifier = itemID or questID or UNKNOWN
+        local questText = displayName and ("- " .. displayName) or ("- " .. fallbackIdentifier .. " - " .. UNKNOWN)
 
         local questFont = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         questFont:SetWordWrap(true)
@@ -746,8 +765,13 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
         questFont:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
             GameTooltip:AddLine(L["QUEST_INFO"])
-            GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questID, unpack(APR.Color.white))
-            GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. (questName or UNKNOWN), unpack(APR.Color.white))
+            if questID then
+                GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questID, unpack(APR.Color.white))
+            end
+            if itemID then
+                GameTooltip:AddLine("|c33ecc00fItem ID: |r" .. itemID, unpack(APR.Color.white))
+            end
+            GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. (displayName or UNKNOWN), unpack(APR.Color.white))
             GameTooltip:Show()
         end)
         questFont:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
@@ -759,14 +783,34 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
 
     -- Save the subTexts for later reference
     container.subTexts = container.subTexts or {}
-    for _, questID in ipairs(questIDList) do
-        local questName = C_QuestLog.GetTitleForQuestID(questID)
-        local questText = questName and ("- " .. questName) or ("- " .. questID .. " - " .. UNKNOWN)
+    for _, entry in ipairs(questIDList) do
+        local questID
+        local itemID
+        local displayName
+
+        if type(entry) == "table" then
+            questID = entry.questID
+            itemID = entry.itemID or entry.ItemID
+            displayName = entry.questName or entry.itemName
+        else
+            questID = entry
+        end
+
+        if not displayName and itemID then
+            displayName = C_Item.GetItemInfo(itemID)
+        end
+        if not displayName and questID then
+            displayName = C_QuestLog.GetTitleForQuestID(questID)
+        end
+
+        local fallbackIdentifier = itemID or questID or UNKNOWN
+        local questText = displayName and ("- " .. displayName) or ("- " .. fallbackIdentifier .. " - " .. UNKNOWN)
 
         table.insert(container.subTexts, {
             questID = questID,
+            itemID = itemID,
             text = questText,
-            name = questName or UNKNOWN,
+            name = displayName or UNKNOWN,
         })
     end
 

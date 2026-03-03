@@ -1940,7 +1940,7 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
         _index = 183,
     },
     {
-        Treasure = 61048,
+        Treasure = { questID = 61048 },
         Coord = { x = -5377.4, y = -3570.5 },
         Range = 0.69,
         _index = 184,

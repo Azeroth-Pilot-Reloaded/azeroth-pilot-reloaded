@@ -523,9 +523,12 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                         L["Q_PART"], questInfo, "gray", isCurrentStep)
                 end
             elseif step.Treasure then
-                local questID = step.Treasure
-                local questInfo = { { questID = questID, questName = getQuestName(questID) } }
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                local questID = step.Treasure.questID
+                local itemID = step.Treasure.itemID or nil
+                local displayName = (itemID and C_Item.GetItemInfo(itemID)) or getQuestName(questID)
+                local questInfo = { { questID = itemID or questID, questName = displayName } }
+                local color = colorByCompletion(questID and C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex,
+                    rawIndex)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     L["GET_TREASURE"], questInfo, color, isCurrentStep)
             elseif step.Group then

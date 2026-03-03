@@ -650,7 +650,7 @@ APR.RouteQuestStepList["672-Demon-Hunter-Start"] = {
         _index = 16,
     },
     {
-        Treasure = 39971,
+        Treasure = { questID = 39971 },
         Coord = { x = 2346.8, y = 630.1 },
         Range = 0.75,
         _index = 17,

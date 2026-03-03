@@ -823,7 +823,7 @@ if APR.Faction == "Horde" then
             _index = 30,
         },
         {
-            Treasure = 34967,
+            Treasure = { questID = 34967 },
             Coord = { x = 5229, y = 5861.5 },
             ExtraLineText = "TREASURE_TOP_TOWER",
             Range = 0.75,
@@ -842,7 +842,7 @@ if APR.Faction == "Horde" then
             _index = 33,
         },
         {
-            Treasure = 34841,
+            Treasure = { questID = 34841 },
             Coord = { x = 4835.2, y = 6008.3 },
             ExtraLineText = "TREASURE_TOP_TOWER",
             Range = 0.75,
@@ -1026,7 +1026,7 @@ if APR.Faction == "Horde" then
             _index = 64,
         },
         {
-            Treasure = 34507,
+            Treasure = { questID = 34507 },
             Coord = { x = 6028.1, y = 6294.3 },
             Fillers = { [34505] = { 1, 2 } },
             ExtraLineText = "GO_FORBIDDEN_CAVE",
@@ -1275,7 +1275,7 @@ if APR.Faction == "Horde" then
             _index = 108,
         },
         {
-            Treasure = 33500,
+            Treasure = { questID = 33500 },
             Coord = { x = 5817, y = 6531.2 },
             Fillers = { [33119] = { 1 }, [33898] = { 1 } },
             Range = 0.75,
@@ -1501,7 +1501,7 @@ if APR.Faction == "Horde" then
             _index = 144,
         },
         {
-            Treasure = 33916,
+            Treasure = { questID = 33916 },
             Coord = { x = 6090.2, y = 7257.8 },
             Range = 0.75,
             _index = 145,
@@ -1537,7 +1537,7 @@ if APR.Faction == "Horde" then
             _index = 150,
         },
         {
-            Treasure = 34648,
+            Treasure = { questID = 34648 },
             Coord = { x = 5947.8, y = 7442.1 },
             Range = 0.75,
             _index = 151,
@@ -1686,7 +1686,7 @@ if APR.Faction == "Horde" then
             _index = 175,
         },
         {
-            Treasure = 34647,
+            Treasure = { questID = 34647 },
             Coord = { x = 6041.3, y = 7749 },
             Range = 0.75,
             _index = 176,
@@ -2436,7 +2436,7 @@ if APR.Faction == "Horde" then
             _index = 302,
         },
         {
-            Treasure = 36863,
+            Treasure = { questID = 36863 },
             Coord = { x = 4038.9, y = 5345.7 },
             Fillers = { [33785] = { 1 } },
             Range = 0.75,
@@ -2489,7 +2489,7 @@ if APR.Faction == "Horde" then
             _index = 311,
         },
         {
-            Treasure = 33947,
+            Treasure = { questID = 33947 },
             Coord = { x = 3340.6, y = 6406.5 },
             Fillers = { [33145] = { 1, 2 } },
             ExtraLineText = "TREASURE_TOP_TOWER",
@@ -2607,7 +2607,7 @@ if APR.Faction == "Horde" then
             _index = 5,
         },
         {
-            Treasure = 36170,
+            Treasure = { questID = 36170 },
             Coord = { x = 1797.5, y = 5652.1 },
             Fillers = { [33544] = { 1 }, [33548] = { 1 } },
             Range = 0.69,
@@ -2659,20 +2659,20 @@ if APR.Faction == "Horde" then
             _index = 14,
         },
         {
-            Treasure = 36621,
+            Treasure = { questID = 36621 },
             Coord = { x = 1766.5, y = 5415.5 },
             Range = 0.75,
             _index = 15,
         },
         {
-            Treasure = 35709,
+            Treasure = { questID = 35709 },
             Coord = { x = 1453.8, y = 5543.7 },
             ExtraLineText = "UP_TREE",
             Range = 0.75,
             _index = 16,
         },
         {
-            Treasure = 36118,
+            Treasure = { questID = 36118 },
             Coord = { x = 1474.2, y = 5748 },
             Range = 0.75,
             _index = 17,
@@ -2869,7 +2869,7 @@ if APR.Faction == "Horde" then
             _index = 48,
         },
         {
-            Treasure = 36631,
+            Treasure = { questID = 36631 },
             Coord = { x = 1874.5, y = 5880.8 },
             ExtraLineText = "UPSTAIRS_AND_JUMP",
             Range = 0.69,
@@ -3078,7 +3078,7 @@ if APR.Faction == "Horde" then
             _index = 83,
         },
         {
-            Treasure = 36610,
+            Treasure = { questID = 36610 },
             Coord = { x = 1332, y = 6881 },
             Range = 0.75,
             _index = 84,
@@ -3097,7 +3097,7 @@ if APR.Faction == "Horde" then
             _index = 86,
         },
         {
-            Treasure = 36651,
+            Treasure = { questID = 36651 },
             Coord = { x = 1298.4, y = 6864.5 },
             Range = 0.75,
             _index = 87,
@@ -3154,7 +3154,7 @@ if APR.Faction == "Horde" then
             _index = 96,
         },
         {
-            Treasure = 36618,
+            Treasure = { questID = 36618 },
             Coord = { x = 1494.5, y = 7275 },
             Range = 0.75,
             _index = 97,
@@ -3183,7 +3183,7 @@ if APR.Faction == "Horde" then
             _index = 101,
         },
         {
-            Treasure = 36506,
+            Treasure = { questID = 36506 },
             Coord = { x = 1655, y = 6703.3 },
             Range = 0.61,
             _index = 102,
@@ -3215,7 +3215,7 @@ if APR.Faction == "Horde" then
             _index = 106,
         },
         {
-            Treasure = 35056,
+            Treasure = { questID = 35056 },
             Coord = { x = 1583.5, y = 7037.3 },
             Fillers = { [35128] = { 1 } },
             Range = 0.69,
@@ -3320,7 +3320,7 @@ if APR.Faction == "Horde" then
             _index = 123,
         },
         {
-            Treasure = 36203,
+            Treasure = { questID = 36203 },
             Coord = { x = 1065.7, y = 7012.3 },
             Fillers = { [36480] = { 1, 3, 2 } },
             Range = 0.69,
@@ -3451,21 +3451,21 @@ if APR.Faction == "Horde" then
             _index = 146,
         },
         {
-            Treasure = 36605,
+            Treasure = { questID = 36605 },
             Coord = { x = 338, y = 6539.8 },
             ExtraLineText = "IN_WATER",
             Range = 0.75,
             _index = 147,
         },
         {
-            Treasure = 36628,
+            Treasure = { questID = 36628 },
             Coord = { x = 212.4, y = 6116.3 },
             ExtraLineText = "IN_NEST_MUSTHROOM",
             Range = 0.75,
             _index = 148,
         },
         {
-            Treasure = 37249,
+            Treasure = { questID = 37249 },
             Coord = { x = 399.3, y = 6031.7 },
             Range = 0.69,
             _index = 149,
@@ -3561,7 +3561,7 @@ if APR.Faction == "Horde" then
             _index = 165,
         },
         {
-            Treasure = 36509,
+            Treasure = { questID = 36509 },
             Coord = { x = 773.6, y = 5941.7 },
             Fillers = { [36563] = { 1, 2 } },
             Range = 0.75,
@@ -3639,7 +3639,7 @@ if APR.Faction == "Horde" then
             _index = 177,
         },
         {
-            Treasure = 34940,
+            Treasure = { questID = 34940 },
             Coord = { x = 735.4, y = 5232.3 },
             Fillers = { [34724] = { 1, 2 } },
             Range = 0.75,
@@ -3658,7 +3658,7 @@ if APR.Faction == "Horde" then
             _index = 180,
         },
         {
-            Treasure = 36658,
+            Treasure = { questID = 36658 },
             Coord = { x = 1647.5, y = 5337.7 },
             Range = 0.69,
             _index = 181,
@@ -3671,7 +3671,7 @@ if APR.Faction == "Horde" then
             _index = 182,
         },
         {
-            Treasure = 36625,
+            Treasure = { questID = 36625 },
             Coord = { x = 1601.4, y = 5043.7 },
             Fillers = { [36504] = { 3, 2 } },
             Range = 0.75,
@@ -3711,13 +3711,13 @@ if APR.Faction == "Horde" then
             _index = 188,
         },
         {
-            Treasure = 36604,
+            Treasure = { questID = 36604 },
             Coord = { x = 1135, y = 4502 },
             Range = 0.69,
             _index = 189,
         },
         {
-            Treasure = 36937,
+            Treasure = { questID = 36937 },
             Coord = { x = 1653, y = 4148.2 },
             Range = 0.69,
             _index = 190,
@@ -3757,7 +3757,7 @@ if APR.Faction == "Horde" then
             _index = 5,
         },
         {
-            Treasure = 36170,
+            Treasure = { questID = 36170 },
             Coord = { x = 1797.5, y = 5652.1 },
             Fillers = { [33544] = { 1 }, [33548] = { 1 } },
             Range = 0.69,
@@ -3809,20 +3809,20 @@ if APR.Faction == "Horde" then
             _index = 14,
         },
         {
-            Treasure = 36621,
+            Treasure = { questID = 36621 },
             Coord = { x = 1766.5, y = 5415.5 },
             Range = 0.75,
             _index = 15,
         },
         {
-            Treasure = 35709,
+            Treasure = { questID = 35709 },
             Coord = { x = 1453.8, y = 5543.7 },
             ExtraLineText = "UP_TREE",
             Range = 0.75,
             _index = 16,
         },
         {
-            Treasure = 36118,
+            Treasure = { questID = 36118 },
             Coord = { x = 1474.2, y = 5748 },
             Range = 0.75,
             _index = 17,
@@ -3906,7 +3906,7 @@ if APR.Faction == "Horde" then
             _index = 31,
         },
         {
-            Treasure = 36631,
+            Treasure = { questID = 36631 },
             Coord = { x = 1874.4, y = 5880.8 },
             Range = 0.69,
             _index = 32,
@@ -3931,7 +3931,7 @@ if APR.Faction == "Horde" then
             _index = 35,
         },
         {
-            Treasure = 36506,
+            Treasure = { questID = 36506 },
             Coord = { x = 1655.9, y = 6703.7 },
             Range = 0.75,
             _index = 36,
@@ -3943,7 +3943,7 @@ if APR.Faction == "Horde" then
             _index = 37,
         },
         {
-            Treasure = 36610,
+            Treasure = { questID = 36610 },
             Coord = { x = 1332.8, y = 6880.5 },
             Range = 0.75,
             _index = 38,
@@ -3955,7 +3955,7 @@ if APR.Faction == "Horde" then
             _index = 39,
         },
         {
-            Treasure = 36651,
+            Treasure = { questID = 36651 },
             Coord = { x = 1297.4, y = 6864.3 },
             Range = 0.75,
             _index = 40,
@@ -3974,7 +3974,7 @@ if APR.Faction == "Horde" then
             _index = 42,
         },
         {
-            Treasure = 36203,
+            Treasure = { questID = 36203 },
             Coord = { x = 1065.8, y = 7012.3 },
             Range = 0.75,
             _index = 43,
@@ -3986,19 +3986,19 @@ if APR.Faction == "Horde" then
             _index = 44,
         },
         {
-            Treasure = 36634,
+            Treasure = { questID = 36634 },
             Coord = { x = 1390.9, y = 7268.1 },
             Range = 0.75,
             _index = 45,
         },
         {
-            Treasure = 36521,
+            Treasure = { questID = 36521 },
             Coord = { x = 1285.7, y = 7249.8 },
             Range = 0.75,
             _index = 46,
         },
         {
-            Treasure = 36596,
+            Treasure = { questID = 36596 },
             Coord = { x = 1036.9, y = 7213.7 },
             Range = 0.75,
             _index = 47,
@@ -4120,19 +4120,19 @@ if APR.Faction == "Horde" then
             _index = 68,
         },
         {
-            Treasure = 36605,
+            Treasure = { questID = 36605 },
             Coord = { x = 337.3, y = 6538.7 },
             Range = 0.75,
             _index = 69,
         },
         {
-            Treasure = 36628,
+            Treasure = { questID = 36628 },
             Coord = { x = 212.3, y = 6115.6 },
             Range = 0.75,
             _index = 70,
         },
         {
-            Treasure = 37249,
+            Treasure = { questID = 37249 },
             Coord = { x = 399.5, y = 6031.1 },
             Range = 0.75,
             _index = 71,
@@ -4181,7 +4181,7 @@ if APR.Faction == "Horde" then
             _index = 79,
         },
         {
-            Treasure = 36509,
+            Treasure = { questID = 36509 },
             Coord = { x = 771.1, y = 5940.8 },
             Fillers = { [36563] = { 1, 2 } },
             Range = 0.75,
@@ -4235,7 +4235,7 @@ if APR.Faction == "Horde" then
             _index = 87,
         },
         {
-            Treasure = 34940,
+            Treasure = { questID = 34940 },
             Coord = { x = 735.5, y = 5231.6 },
             Fillers = { [34724] = { 1, 2 } },
             Range = 0.75,
@@ -4274,7 +4274,7 @@ if APR.Faction == "Horde" then
             _index = 93,
         },
         {
-            Treasure = 36625,
+            Treasure = { questID = 36625 },
             Coord = { x = 1602.8, y = 5044.3 },
             Fillers = { [36504] = { 1, 3 } },
             Range = 0.69,
@@ -4307,13 +4307,13 @@ if APR.Faction == "Horde" then
             _index = 98,
         },
         {
-            Treasure = 36604,
+            Treasure = { questID = 36604 },
             Coord = { x = 1134.9, y = 4502.7 },
             Range = 0.75,
             _index = 99,
         },
         {
-            Treasure = 34232,
+            Treasure = { questID = 34232 },
             Coord = { x = 1963.4, y = 3899.5 },
             Range = 0.75,
             _index = 100,
@@ -4326,7 +4326,7 @@ if APR.Faction == "Horde" then
 
     APR.RouteQuestStepList["535-DesMephisto-Talador-p1"] = {
         {
-            Treasure = 34232,
+            Treasure = { questID = 34232 },
             Coord = { x = 1963.4, y = 3899.5 },
             Range = 0.75,
             _index = 1,
@@ -4337,7 +4337,7 @@ if APR.Faction == "Horde" then
             _index = 2,
         },
         {
-            Treasure = 33933,
+            Treasure = { questID = 33933 },
             Coord = { x = 2324.9, y = 3950.6 },
             Range = 0.75,
             _index = 3,
@@ -4411,7 +4411,7 @@ if APR.Faction == "Horde" then
             _index = 14,
         },
         {
-            Treasure = 34238,
+            Treasure = { questID = 34238 },
             Coord = { x = 2413.1, y = 3290.5 },
             Fillers = { [33736] = { 1 } },
             Range = 0.75,
@@ -4424,7 +4424,7 @@ if APR.Faction == "Horde" then
             _index = 16,
         },
         {
-            Treasure = 34236,
+            Treasure = { questID = 34236 },
             Coord = { x = 2133.3, y = 3140.9 },
             Range = 0.75,
             _index = 17,
@@ -4681,7 +4681,7 @@ if APR.Faction == "Horde" then
             _index = 61,
         },
         {
-            Treasure = 34235,
+            Treasure = { questID = 34235 },
             Coord = { x = 2700.4, y = 3255 },
             Range = 0.75,
             _index = 62,
@@ -4773,7 +4773,7 @@ if APR.Faction == "Horde" then
             _index = 78,
         },
         {
-            Treasure = 34261,
+            Treasure = { questID = 34261 },
             Coord = { x = 1320.8, y = 2784.3 },
             ExtraLineText = "UNDERNEATH_BRIDGE",
             Range = 0.75,
@@ -4793,7 +4793,7 @@ if APR.Faction == "Horde" then
             _index = 81,
         },
         {
-            Treasure = 34250,
+            Treasure = { questID = 34250 },
             Coord = { x = 1315.8, y = 2651.8 },
             Fillers = { [33740] = { 1 }, [33761] = { 1, 3, 2 } },
             Range = 0.75,
@@ -4898,14 +4898,14 @@ if APR.Faction == "Horde" then
             _index = 98,
         },
         {
-            Treasure = 34471,
+            Treasure = { questID = 34471 },
             Coord = { x = 1450.4, y = 2387.6 },
             ExtraLineText = "UNDERNEATH_BRIDGE",
             Range = 0.69,
             _index = 99,
         },
         {
-            Treasure = 34248,
+            Treasure = { questID = 34248 },
             Coord = { x = 1240.7, y = 2444.5 },
             Fillers = { [34639] = { 1, 2 } },
             Range = 0.75,
@@ -5026,7 +5026,7 @@ if APR.Faction == "Horde" then
             _index = 118,
         },
         {
-            Treasure = 34251,
+            Treasure = { questID = 34251 },
             Coord = { x = 1982.7, y = 1281.7 },
             Fillers = { [34858] = { 1 }, [34860] = { 1 } },
             ExtraLineText = "INSIDE",
@@ -5083,7 +5083,7 @@ if APR.Faction == "Horde" then
             _index = 128,
         },
         {
-            Treasure = 34252,
+            Treasure = { questID = 34252 },
             Coord = { x = 2112.9, y = 2521.5 },
             Range = 0.75,
             _index = 129,
@@ -5238,7 +5238,7 @@ if APR.Faction == "Horde" then
             _index = 155,
         },
         {
-            Treasure = 34253,
+            Treasure = { questID = 34253 },
             Coord = { x = 2539.6, y = 1776.9 },
             Range = 0.75,
             _index = 156,
@@ -5521,14 +5521,14 @@ if APR.Faction == "Horde" then
             _index = 204,
         },
         {
-            Treasure = 34257,
+            Treasure = { questID = 34257 },
             Coord = { x = 3548.1, y = 1070.9 },
             Fillers = { [34122] = { 1 } },
             Range = 0.69,
             _index = 205,
         },
         {
-            Treasure = 34140,
+            Treasure = { questID = 34140 },
             Coord = { x = 3412.5, y = 872.9 },
             Range = 0.75,
             _index = 206,
@@ -5678,7 +5678,7 @@ if APR.Faction == "Horde" then
             _index = 1,
         },
         {
-            Treasure = 36243,
+            Treasure = { questID = 36243 },
             Coord = { x = 2451.3, y = 690.6 },
             ExtraLineText = "LOOT_BELONGINGS",
             Range = 0.75,
@@ -5749,20 +5749,20 @@ if APR.Faction == "Horde" then
             _index = 13,
         },
         {
-            Treasure = 36246,
+            Treasure = { questID = 36246 },
             Coord = { x = 1621.4, y = 490.8 },
             ExtraLineText = "IN_WATER_PILLAR",
             Range = 0.69,
             _index = 14,
         },
         {
-            Treasure = 36444,
+            Treasure = { questID = 36444 },
             Coord = { x = 1631.5, y = 341.7 },
             Range = 0.69,
             _index = 15,
         },
         {
-            Treasure = 36247,
+            Treasure = { questID = 36247 },
             Coord = { x = 1606.4, y = 223.1 },
             ExtraLineText = "UNDERNEATH_BRIDGE",
             Range = 0.75,
@@ -5792,28 +5792,28 @@ if APR.Faction == "Horde" then
             _index = 20,
         },
         {
-            Treasure = 36361,
+            Treasure = { questID = 36361 },
             Coord = { x = 1776.5, y = 143.6 },
             ExtraLineText = "IN_HUT",
             Range = 0.69,
             _index = 21,
         },
         {
-            Treasure = 36446,
+            Treasure = { questID = 36446 },
             Coord = { x = 1837.5, y = 10.1 },
             ExtraLineText = "ON_CHAINED_OUTCAST",
             Range = 0.75,
             _index = 22,
         },
         {
-            Treasure = 36411,
+            Treasure = { questID = 36411 },
             Coord = { x = 1786.8, y = -75.3 },
             ExtraLineText = "RING_IN_WATER",
             Range = 0.69,
             _index = 23,
         },
         {
-            Treasure = 36445,
+            Treasure = { questID = 36445 },
             Coord = { x = 1699.3, y = -118.9 },
             Range = 0.69,
             _index = 24,
@@ -5914,7 +5914,7 @@ if APR.Faction == "Horde" then
             _index = 40,
         },
         {
-            Treasure = 36458,
+            Treasure = { questID = 36458 },
             Coord = { x = 2221.6, y = -836.8 },
             ExtraLineText = "MINING_PICK",
             Range = 0.69,
@@ -5970,7 +5970,7 @@ if APR.Faction == "Horde" then
             _index = 50,
         },
         {
-            Treasure = 36420,
+            Treasure = { questID = 36420 },
             Coord = { x = 2430.3, y = -535 },
             Fillers = { [35322] = { 1 } },
             Range = 0.69,
@@ -6115,7 +6115,7 @@ if APR.Faction == "Horde" then
             _index = 75,
         },
         {
-            Treasure = 36451,
+            Treasure = { questID = 36451 },
             Coord = { x = 2145.1, y = -653 },
             Range = 0.75,
             _index = 76,
@@ -6282,7 +6282,7 @@ if APR.Faction == "Horde" then
             _index = 104,
         },
         {
-            Treasure = 36447,
+            Treasure = { questID = 36447 },
             Coord = { x = 2126.8, y = 508.3 },
             Fillers = { [34883] = { 1 } },
             Range = 0.75,
@@ -6305,7 +6305,7 @@ if APR.Faction == "Horde" then
             _index = 108,
         },
         {
-            Treasure = 36397,
+            Treasure = { questID = 36397 },
             Coord = { x = 2026, y = 388 },
             Range = 0.75,
             _index = 109,
@@ -6321,7 +6321,7 @@ if APR.Faction == "Horde" then
             _index = 111,
         },
         {
-            Treasure = 36421,
+            Treasure = { questID = 36421 },
             Coord = { x = 2612.6, y = 272.3 },
             Fillers = { [35258] = { 1 }, [35260] = { 1 } },
             Button = { ["35260-1"] = 113084 },
@@ -6425,7 +6425,7 @@ if APR.Faction == "Horde" then
             _index = 127,
         },
         {
-            Treasure = 36402,
+            Treasure = { questID = 36402 },
             Coord = { x = 2482.8, y = -205.5 },
             Range = 0.69,
             _index = 128,
@@ -6499,31 +6499,31 @@ if APR.Faction == "Horde" then
             _index = 140,
         },
         {
-            Treasure = 36405,
+            Treasure = { questID = 36405 },
             Coord = { x = 1752, y = -741.5 },
             Range = 0.61,
             _index = 141,
         },
         {
-            Treasure = 36406,
+            Treasure = { questID = 36406 },
             Coord = { x = 1717.9, y = -826 },
             Range = 0.75,
             _index = 142,
         },
         {
-            Treasure = 36403,
+            Treasure = { questID = 36403 },
             Coord = { x = 1450.9, y = -859.2 },
             Range = 0.69,
             _index = 143,
         },
         {
-            Treasure = 36340,
+            Treasure = { questID = 36340 },
             Coord = { x = 1125.4, y = -1050 },
             Range = 0.69,
             _index = 144,
         },
         {
-            Treasure = 36410,
+            Treasure = { questID = 36410 },
             Coord = { x = 986.5, y = -1196.8 },
             Range = 0.69,
             _index = 145,
@@ -6588,7 +6588,7 @@ if APR.Faction == "Horde" then
             _index = 156,
         },
         {
-            Treasure = 36398,
+            Treasure = { questID = 36398 },
             Coord = { x = 490.8, y = -366.2 },
             Range = 0.69,
             _index = 157,
@@ -6846,7 +6846,7 @@ if APR.Faction == "Horde" then
             _index = 200,
         },
         {
-            Treasure = 36399,
+            Treasure = { questID = 36399 },
             Coord = { x = 1713.8, y = -1143.1 },
             Fillers = { [34924] = { 1 }, [34939] = { 1 } },
             Range = 0.75,
@@ -6949,7 +6949,7 @@ if APR.Faction == "Horde" then
             _index = 218,
         },
         {
-            Treasure = 36402,
+            Treasure = { questID = 36402 },
             Coord = { x = 2482.1, y = -205.4 },
             Range = 0.61,
             _index = 219,
@@ -7049,7 +7049,7 @@ if APR.Faction == "Horde" then
             _index = 234,
         },
         {
-            Treasure = 36365,
+            Treasure = { questID = 36365 },
             Coord = { x = 1067.7, y = -1901.8 },
             Fillers = { [35081] = { 1 }, [35082] = { 1 } },
             ExtraLineText = "IN_BOAT",
@@ -7073,7 +7073,7 @@ if APR.Faction == "Horde" then
             _index = 238,
         },
         {
-            Treasure = 36456,
+            Treasure = { questID = 36456 },
             Coord = { x = 993.1, y = -2033.9 },
             Range = 0.69,
             _index = 239,
@@ -7089,7 +7089,7 @@ if APR.Faction == "Horde" then
             _index = 241,
         },
         {
-            Treasure = 36366,
+            Treasure = { questID = 36366 },
             Coord = { x = 1096.9, y = -2277.2 },
             ExtraLineText = "INSIDE_SHACK",
             Range = 0.75,
@@ -7207,21 +7207,21 @@ if APR.Faction == "Horde" then
             _index = 1,
         },
         {
-            Treasure = 35593,
+            Treasure = { questID = 35593 },
             Coord = { x = 4731.8, y = 2632.5 },
             ExtraLineText = "UP_TOWER",
             Range = 0.69,
             _index = 2,
         },
         {
-            Treasure = 35765,
+            Treasure = { questID = 35765 },
             Coord = { x = 4639.6, y = 2781.9 },
             ExtraLineText = "BY_ROCK",
             Range = 0.75,
             _index = 3,
         },
         {
-            Treasure = 35696,
+            Treasure = { questID = 35696 },
             Coord = { x = 4462, y = 2900.6 },
             ExtraLineText = "ON_BUILDING",
             Range = 0.69,
@@ -7265,20 +7265,20 @@ if APR.Faction == "Horde" then
             _index = 11,
         },
         {
-            Treasure = 35661,
+            Treasure = { questID = 35661 },
             Coord = { x = 4707.3, y = 3515.3 },
             Range = 0.69,
             _index = 12,
         },
         {
-            Treasure = 35616,
+            Treasure = { questID = 35616 },
             Coord = { x = 4299.8, y = 3311 },
             ExtraLineText = "TOP_OF_MOUNTAIN",
             Range = 0.69,
             _index = 13,
         },
         {
-            Treasure = 35622,
+            Treasure = { questID = 35622 },
             Coord = { x = 4337.7, y = 3222.5 },
             ExtraLineText = "UP_TREE",
             Range = 0.75,
@@ -7556,14 +7556,14 @@ if APR.Faction == "Horde" then
             _index = 60,
         },
         {
-            Treasure = 35590,
+            Treasure = { questID = 35590 },
             Coord = { x = 5166.8, y = 2572.8 },
             ExtraLineText = "HALFWAY_UP_CLIFF",
             Range = 0.75,
             _index = 61,
         },
         {
-            Treasure = 36035,
+            Treasure = { questID = 36035 },
             Coord = { x = 5182.2, y = 2618.5 },
             ExtraLineText = "ON_CLIFF",
             Range = 0.75,
@@ -7620,7 +7620,7 @@ if APR.Faction == "Horde" then
             _index = 70,
         },
         {
-            Treasure = 36049,
+            Treasure = { questID = 36049 },
             Coord = { x = 4714.7, y = 1903.8 },
             Fillers = { [35155] = { 1 }, [35156] = { 1 } },
             ExtraLineText = "ON_WALL",
@@ -7647,14 +7647,14 @@ if APR.Faction == "Horde" then
             _index = 74,
         },
         {
-            Treasure = 35682,
+            Treasure = { questID = 35682 },
             Coord = { x = 4991.1, y = 2275.8 },
             ExtraLineText = "HANGING_UNDERNEATH_CLIFF",
             Range = 0.75,
             _index = 75,
         },
         {
-            Treasure = 35678,
+            Treasure = { questID = 35678 },
             Coord = { x = 5164.8, y = 2261.6 },
             ExtraLineText = "UP_TOWER",
             Range = 0.69,
@@ -7694,7 +7694,7 @@ if APR.Faction == "Horde" then
             _index = 81,
         },
         {
-            Treasure = 36046,
+            Treasure = { questID = 36046 },
             Coord = { x = 5637.3, y = 2433.6 },
             Range = 0.75,
             _index = 82,

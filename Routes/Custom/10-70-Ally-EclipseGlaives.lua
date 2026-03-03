@@ -3035,7 +3035,7 @@ if APR.Faction == "Alliance" then
             _index = 465,
         },
         {
-            Treasure = 35279,
+            Treasure = { questID = 35279 },
             Coord = { x = 338.2, y = 2340.3 },
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             ExtraLineText = "TREASURE_NORTH_SHIP",
@@ -3053,7 +3053,7 @@ if APR.Faction == "Alliance" then
             _index = 21,
         },
         {
-            Treasure = 35280,
+            Treasure = { questID = 35280 },
             Coord = { x = 457, y = 2550.1 },
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             Range = 0.69,
@@ -3061,7 +3061,7 @@ if APR.Faction == "Alliance" then
             _index = 22,
         },
         {
-            Treasure = 34174,
+            Treasure = { questID = 34174 },
             Coord = { x = 491.7, y = 2407.1 },
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             Range = 0.75,
