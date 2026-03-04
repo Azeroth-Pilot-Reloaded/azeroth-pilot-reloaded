@@ -1,6 +1,12 @@
 if APR.Faction == "Horde" then
     APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
         {
+            PickUp = { 65435 },
+            Coord = { x = -4273, y = 2046.2 },
+            Zone = 85,
+            _index = 1,
+        },
+        {
             Done = { 65435 },
             Coord = { x = -4273, y = 2046.2 },
             Zone = 85,
@@ -33,10 +39,9 @@ if APR.Faction == "Horde" then
             _index = 5,
         },
         {
-            Waypoint = 65443,
-            Coord = { x = -4271.4, y = 2036.3 },
-            ExtraLineText = "USE_GATE",
-            Range = 2,
+            TakePortal = { QuestID = 93086, ZoneId = 1 },
+            Coord = { x = -4271.5, y = 2036.8 },
+            ZoneStepTrigger = { Range = 15, x = -4772.9, y = 1400.2 },
             Zone = 85,
             _index = 6,
         },
@@ -102,37 +107,21 @@ if APR.Faction == "Horde" then
             _index = 15,
         },
         {
-            Waypoint = 65444,
-            Coord = { x = -4922.5, y = 1343.4 },
-            ExtraLineText = "WAIT_FOR_ZEPPELIN",
-            Range = 10,
+            TakePortal = { QuestID = 65444, ZoneId = 2022 },
+            Qpart = { [65444] = { 1 } },
+            Coord = { x = -4911.4, y = 1363.4 },
             Zone = 1,
             _index = 16,
-        },
-        {
-            Qpart = { [65444] = { 1 } },
-            Coord = { x = -4922.5, y = 1343.4 },
-            ExtraLineText = "WAIT_FOR_ZEPPELIN",
-            Range = 0.5,
-            Zone = 1,
-            _index = 17,
-        },
-        {
-            Qpart = { [65444] = { 2 } },
-            Coord = { x = -1792.7, y = 3895.3 },
-            Range = 5,
-            Zone = 2022,
-            _index = 18,
         },
         {
             Done = { 65444 },
             Coord = { x = -1778.3, y = 3903.7 },
             Zone = 2022,
-            _index = 19,
+            _index = 17,
         },
         {
             RouteCompleted = true,
-            _index = 20,
+            _index = 18,
         },
     }
 
