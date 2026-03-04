@@ -14,6 +14,51 @@ APR.transport.showOutOfZoneStepContent = false
 -- Internal retry flag
 APR.transport._retryPending = false
 
+-- Remove only transport/out-of-zone generated UI lines, keep normal step lines.
+function APR.transport:ClearTransportUiLines()
+    local currentStep = APR.currentStep
+    if not currentStep or not currentStep.pendingRemoval then
+        return
+    end
+
+    local transportQuestPrefixes = {
+        "^01_FLY_TO_",
+        "^02_CLOSEST_FP",
+        "^01_GO_PORTAL_ROOM$",
+        "^01_PORTAL_",
+        "^01_ISOLATED_ZONE_TAXI$",
+        "^01_GO_TO",
+        "^01_WRONG_ZONE_INSTANCE$",
+        "^01_ERROR_PATH_NOT_FOUND$",
+        "^04_EXTRA_LINE_DESTINATION%-EXTRA$",
+    }
+
+    for key, _ in pairs(currentStep.questsList) do
+        if type(key) == "string" then
+            if key == self.TransportDividerStepKey then
+                currentStep.pendingRemoval[key] = true
+            else
+                for _, pattern in ipairs(transportQuestPrefixes) do
+                    if key:match(pattern) then
+                        currentStep.pendingRemoval[key] = true
+                        break
+                    end
+                end
+            end
+        end
+    end
+
+    for key, _ in pairs(currentStep.questsExtraTextList) do
+        if key == self.ErrorDestinationLineKey or key == self.ErrorDividerLineKey or key == "DESTINATION" then
+            currentStep.pendingRemoval[key] = true
+        end
+    end
+
+    if next(currentStep.pendingRemoval) then
+        currentStep:FlushPendingContainers()
+    end
+end
+
 -----------------------------------------------------------------------
 -- SelectBestTransport Helpers: Spells & Items
 -----------------------------------------------------------------------
@@ -512,6 +557,10 @@ function APR.transport:GetMeToRightZone(isRetry)
         APR.IsInRouteZone = false
         local wasShowingOutOfZoneStepContent = self.showOutOfZoneStepContent
         self.showOutOfZoneStepContent = true
+        -- Always clear previous transport/out-of-zone lines before building new guidance.
+        -- This prevents stacked errors/instructions after rapid zone transitions.
+        self:ClearTransportUiLines()
+
         if not wasShowingOutOfZoneStepContent then
             APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
             if APR.fillersFrame and APR.fillersFrame.RemoveFillerSteps then
