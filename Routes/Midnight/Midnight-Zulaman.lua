@@ -1156,7 +1156,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
         _index = 152,
     },
     {
-        EnterInstance = { questID = 91958, mapID = 2513 },
+        EnterInstance = { questID = 91958, mapID = 2564 },
         ExtraLineText = "DO_DUNGEON_ON_NORMAL_NO_FOLLOWERS",
         InstanceQuest = true,
         IsCampaignQuest = true,
@@ -5379,7 +5379,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
         _index = 155,
     },
     {
-        EnterInstance = { questID = 91958, mapID = 2513 },
+        EnterInstance = { questID = 91958, mapID = 2564 },
         ExtraLineText = "DO_DUNGEON_ON_NORMAL_NO_FOLLOWERS",
         InstanceQuest = true,
         IsCampaignQuest = true,

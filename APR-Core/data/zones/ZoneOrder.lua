@@ -1668,16 +1668,17 @@ APR.ZonesData = {
             [2423] = { Coord = { x = 694.7, y = -13 }, zone = 2214, name = "SIDESTREET SLUICE", type = "DELVE" },
         },
         [2537] = {
-            -- Zul'aman
-            [2501] = { Coord = { x = -7562.7, y = 5951.4 }, zone = 2437, name = "Maisara Caverns", type = "DUNGEON" },
-            [2564] = { Coord = { x = -6304.8, y = 3257.1 }, zone = 2437, name = "Nalorakk", type = "DUNGEON" },
             -- Eversong Woods
             [2502] = { Coord = { x = -4142, y = 4750.4 }, zone = 2395, name = "SHADOW ENCLAVE", type = "DELVE" },
             [2577] = { Coord = { x = -4465.6, y = 8780.4 }, zone = 2395, name = "Collegiate Calamity", type = "DELVE" },
             [2525] = { Coord = { x = -4438.9, y = 9180.6 }, zone = 2395, name = "The Darkway", type = "DELVE" },
+            [2433] = { Coord = { x = -4940.8, y = 8630.9 }, zone = 2395, name = "Murder Row", type = "DUNGEON" },
             -- Zul'aman
             [2535] = { Coord = { x = -5861.7, y = 5135.6 }, zone = 2395, name = "Atal'Aman", type = "DELVE" },
             [2503] = { Coord = { x = -5915.6, y = 3258 }, zone = 2437, name = "Twilight Crypts", type = "DELVE" },
+            [2501] = { Coord = { x = -7562.7, y = 5951.4 }, zone = 2437, name = "Maisara Caverns", type = "DUNGEON" },
+            [2564] = { Coord = { x = -6304.8, y = 3257.1 }, zone = 2437, name = "Nalorakk", type = "DUNGEON" },
+            [2513] = { Coord = { x = -6304.8, y = 3257.1 }, zone = 2437, name = "Nalorakk", type = "DUNGEON" },
             -- Harandar
             [2505] = { Coord = { x = 798, y = 21.7 }, zone = 2413, name = "GULD OF MEMORY", type = "DELVE" },
             [2510] = { Coord = { x = -1796.8, y = -784.9 }, zone = 2413, name = "The Grudge Pit", type = "DELVE" },
