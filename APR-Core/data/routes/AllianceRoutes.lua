@@ -106,9 +106,9 @@ function APR:InitAllianceRoutes()
 
     -- For Void elf
     if APR.ClassId == APR.Classes["Demon Hunter"] then
-        APR.RouteList.Legion["84-Intro-Legion-DH"] = L["Legion - Intro"]
+        routesByExpansion.Legion["84-Intro-Legion-DH"] = L["Legion - Intro"]
     else
-        APR.RouteList.Legion["84-Intro-Legion"] = L["Legion - Intro"]
+        routesByExpansion.Legion["84-Intro-Legion"] = L["Legion - Intro"]
     end
 
     -- WARNING Class before race
@@ -121,5 +121,5 @@ function APR:InitAllianceRoutes()
 
     -- Apply all collected routes
     APR:assignRoutes(routesToAssign)
-    APR:MergeExpansionRoutes(routesByExpansion)
+    APR:MergeExpansionRoutes(routesByExpansion, { Faction = "Alliance" })
 end

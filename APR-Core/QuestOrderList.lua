@@ -349,7 +349,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
 
     local displayStepIndex = 1
     local currentDisplayIndex = nil
-    for rawIndex, step in ipairs(APR.RouteQuestStepList[APR.ActiveRoute]) do
+    local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
+    local activeRouteSteps = activeRouteData and (activeRouteData.steps or activeRouteData) or {}
+    for rawIndex, step in ipairs(activeRouteSteps) do
         -- Hide step for Faction, Race, Class, Achievement
         if APR:StepFilterQoL(step) then
             local container
