@@ -19,8 +19,8 @@ function APR:assignRoutes(routes)
         if not (r.expansion and r.key and r.label) then return end
         local existing = APR.RouteQuestStepList[r.key]
         if not existing then return end
-        -- Already wrapped; only update metadata if not yet set
         if existing.steps then
+            -- Already wrapped: fill in any missing metadata fields without overwriting
             if not existing.label then existing.label = r.label end
             if not existing.expansion then existing.expansion = r.expansion end
             if not existing.conditions then existing.conditions = r.conditions or {} end
