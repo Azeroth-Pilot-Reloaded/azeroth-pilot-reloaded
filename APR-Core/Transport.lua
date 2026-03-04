@@ -495,14 +495,15 @@ function APR.transport:GetMeToRightZone(isRetry)
     end
     if APR:CheckIsInRouteZone() and not farAway then
         local wasOutOfZone = not APR.IsInRouteZone
+        local wasShowingOutOfZoneStepContent = self.showOutOfZoneStepContent
         APR.IsInRouteZone = true
         self.showOutOfZoneStepContent = false
         -- Avoid unwanted auto taxi
         self.wrongZoneDestTaxiName = nil
         -- Reset flag, we are in the right zone
         self._retryPending = false
-        -- If we were previously marked as out-of-zone, refresh the step to clear "wrong zone" message
-        if wasOutOfZone then
+        -- If we were previously in any out-of-zone UI mode, refresh step to clear stale text
+        if wasOutOfZone or wasShowingOutOfZoneStepContent then
             APR:UpdateStep()
         end
         return

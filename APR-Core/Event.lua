@@ -1253,9 +1253,17 @@ function APR.event.functions.zone(event, ...)
                     return
                 end
 
-                -- Already in the right zone — nothing to do
+                -- Already in the right zone — clear out-of-zone state and stop
                 if APR:CheckIsInRouteZone() then
+                    local shouldRefreshStep = APR.transport and APR.transport.showOutOfZoneStepContent
                     APR.IsInRouteZone = true
+                    if APR.transport then
+                        APR.transport.showOutOfZoneStepContent = false
+                        APR.transport.wrongZoneDestTaxiName = nil
+                    end
+                    if shouldRefreshStep then
+                        APR:UpdateStep()
+                    end
                     return
                 end
 
@@ -1303,9 +1311,22 @@ function APR.event.functions.zone(event, ...)
             return
         end
 
-        if APR.ActiveRoute and not APR:CheckIsInRouteZone() then
-            APR.IsInRouteZone = false
-            APR.transport:GetMeToRightZone()
+        if APR.ActiveRoute then
+            local isInRouteZone = APR:CheckIsInRouteZone()
+            if isInRouteZone then
+                local shouldRefreshStep = APR.transport and APR.transport.showOutOfZoneStepContent
+                APR.IsInRouteZone = true
+                if APR.transport then
+                    APR.transport.showOutOfZoneStepContent = false
+                    APR.transport.wrongZoneDestTaxiName = nil
+                end
+                if shouldRefreshStep then
+                    APR:UpdateStep()
+                end
+            else
+                APR.IsInRouteZone = false
+                APR.transport:GetMeToRightZone()
+            end
         end
     end
 end

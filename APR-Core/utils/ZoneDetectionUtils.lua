@@ -377,6 +377,7 @@ end
 --- Walks up the player's hierarchy, gets direct children of each parent,
 --- and checks if any step zone is among those children.
 --- Stops at cosmic/world level (mapType < 2) to avoid overly broad matches.
+--- Also supports current-zone-as-parent matches (e.g. step is a child subzone of current map).
 --- Ignores zone exceptions.
 ---@param playerContext table Player zone context
 ---@param stepZones table Zone mapIDs for step
@@ -403,17 +404,23 @@ function APR:CheckSiblingMatch(playerContext, stepZones)
         return false
     end
 
-    -- For each parent in the player's hierarchy, get direct children
-    -- and check if any step zone is a sibling (child of the same parent)
+    -- For each parent in the player's hierarchy, get direct children and
+    -- check if any step zone is a sibling (child of the same parent).
+    -- Special case: allow the current map itself as parent only when it is
+    -- a zone/sub-zone mapType (> 2), to avoid continent-wide false positives.
     for _, parentMapID in ipairs(playerContext.hierarchy) do
-        -- Skip the player's own zone (already covered by DirectMatch)
-        if parentMapID ~= playerContext.current then
-            local parentInfo = self:GetMapInfoCached(parentMapID)
-            -- Stop at cosmic/world level (mapType < 2) to avoid overly broad matches
-            if parentInfo and parentInfo.mapType and parentInfo.mapType < 2 then
-                break
-            end
+        local parentInfo = self:GetMapInfoCached(parentMapID)
+        -- Stop at cosmic/world level (mapType < 2) to avoid overly broad matches
+        if parentInfo and parentInfo.mapType and parentInfo.mapType < 2 then
+            break
+        end
 
+        local canCheckChildren = true
+        if parentMapID == playerContext.current then
+            canCheckChildren = (parentInfo ~= nil) and (parentInfo.mapType ~= nil) and (parentInfo.mapType > 2)
+        end
+
+        if canCheckChildren then
             local children = C_Map.GetMapChildrenInfo(parentMapID)
             if children then
                 for _, childInfo in ipairs(children) do
@@ -423,6 +430,19 @@ function APR:CheckSiblingMatch(playerContext, stepZones)
                         if not exception and self:Contains(stepZones, childInfo.mapID) then
                             return true
                         end
+                    end
+                end
+            end
+
+            -- Also accept cousin zones that share this ancestor level.
+            -- This handles nested zone trees where stepMapID is not a direct
+            -- child of parentMapID (e.g. player in 2437, step in 2393 via 2537).
+            for _, stepMapID in ipairs(stepZones) do
+                local stepException = self:GetZoneException(stepMapID)
+                if not stepException and stepMapID ~= playerContext.current then
+                    local stepChain = self:GetMapParentChain(stepMapID)
+                    if self:Contains(stepChain, parentMapID) then
+                        return true
                     end
                 end
             end
