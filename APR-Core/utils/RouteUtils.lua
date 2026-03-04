@@ -15,26 +15,58 @@ APR.ConditionalRouteRegistry = {
 function APR:assignRoutes(routes)
     if not routes then return end
 
+    local function wrapRoute(r)
+        if not (r.expansion and r.key and r.label) then return end
+        local existing = APR.RouteQuestStepList[r.key]
+        if not existing then return end
+        -- Already wrapped; only update metadata if not yet set
+        if existing.steps then
+            if not existing.label then existing.label = r.label end
+            if not existing.expansion then existing.expansion = r.expansion end
+            if not existing.conditions then existing.conditions = r.conditions or {} end
+            return
+        end
+        APR.RouteQuestStepList[r.key] = {
+            label = r.label,
+            expansion = r.expansion,
+            conditions = r.conditions or {},
+            steps = existing,
+        }
+    end
+
     if routes.expansion and routes.key and routes.label then
-        APR.RouteList[routes.expansion][routes.key] = routes.label
+        wrapRoute(routes)
     elseif type(routes) == "table" then
         for _, route in ipairs(routes) do
-            if route.expansion and route.key and route.label then
-                APR.RouteList[route.expansion][route.key] = route.label
-            end
+            wrapRoute(route)
         end
     end
 end
 
-function APR:MergeExpansionRoutes(routesByExpansion)
-    -- merge expansion route tables in APR.RouteList[expansion]
+function APR:MergeExpansionRoutes(routesByExpansion, conditions)
+    -- Wrap entries in APR.RouteQuestStepList[key] with metadata from the registry.
+    -- `conditions` is an optional table (e.g. { Faction = "Alliance" }).
     for expansion, routes in pairs(routesByExpansion) do
-        self.RouteList[expansion] = self.RouteList[expansion] or {}
-
         for routeKey, label in pairs(routes) do
-            self.RouteList[expansion][routeKey] = label
+            APR:assignRoutes({
+                expansion = expansion,
+                key = routeKey,
+                label = label,
+                conditions = conditions or {},
+            })
         end
     end
+end
+
+--- Return true when at least one wrapped route exists for the given expansion name.
+-- Used by Config_Route.lua to decide whether to show expansion tab buttons.
+function APR:HasRoutesForExpansion(expansion)
+    for _, routeData in pairs(self.RouteQuestStepList) do
+        if type(routeData) == "table" and routeData.expansion == expansion then
+            return true
+        end
+    end
+    return false
 end
 
 function APR:ResetRoute(targetedRoute)
@@ -75,7 +107,9 @@ function APR:GetTotalSteps(route, updateTotal)
     route = route or self.ActiveRoute
     updateTotal = updateTotal == nil -- default to true if not specified
     local stepIndex = 0
-    for _, step in pairs(self.RouteQuestStepList[route] or {}) do
+    local routeData = self.RouteQuestStepList[route]
+    local steps = routeData and (routeData.steps or routeData) or {}
+    for _, step in pairs(steps) do
         -- Hide step for Faction, Race, Class, Achievement,...
         if self:StepFilterQoL(step) then
             stepIndex = stepIndex + 1
@@ -92,8 +126,9 @@ end
 --- safe for change-detection comparisons that must survive /reload and different
 --- player states (quest log not yet synced, achievements, auras, etc.).
 function APR:GetRawStepCount(route)
-    local steps = self.RouteQuestStepList[route]
-    if not steps then return 0 end
+    local routeData = self.RouteQuestStepList[route]
+    if not routeData then return 0 end
+    local steps = routeData.steps or routeData
     return #steps
 end
 
@@ -108,7 +143,8 @@ function APR:CountSkippedStepsBefore(route, beforeIndex)
     beforeIndex = beforeIndex or (APRData[self.PlayerID] and APRData[self.PlayerID][route]) or 1
 
     local skippedCount = 0
-    local stepList = self.RouteQuestStepList[route]
+    local routeData = self.RouteQuestStepList[route]
+    local stepList = routeData and (routeData.steps or routeData)
     if stepList then
         for i = 1, math.min(beforeIndex - 1, #stepList) do
             local step = stepList[i]
@@ -269,15 +305,12 @@ end
 --- Helper for routes with branch-specific data (e.g., Lumbermill versus other choices).
 function APR:OverrideRouteData()
     if self.ActiveRoute and string.match(self.ActiveRoute, "DesMephisto%-Gorgrond") then
-        if C_QuestLog.IsQuestFlaggedCompleted(35049) then
-            self.RouteQuestStepList["543-DesMephisto-Gorgrond"] = nil
-            self.RouteQuestStepList["543-DesMephisto-Gorgrond"] = self.RouteQuestStepList
-                ["543-DesMephisto-Gorgrond-Lumbermill"]
-        end
-        if C_QuestLog.IsQuestFlaggedCompleted(34992) then
-            self.RouteQuestStepList["543-DesMephisto-Gorgrond"] = nil
-            self.RouteQuestStepList["543-DesMephisto-Gorgrond"] = self.RouteQuestStepList
-                ["543-DesMephisto-Gorgrond-Lumbermill"]
+        local lumbermillData = self.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"]
+        if C_QuestLog.IsQuestFlaggedCompleted(35049) or C_QuestLog.IsQuestFlaggedCompleted(34992) then
+            local gorgrondData = self.RouteQuestStepList["543-DesMephisto-Gorgrond"]
+            if gorgrondData and lumbermillData then
+                gorgrondData.steps = lumbermillData.steps or lumbermillData
+            end
         end
     end
 end
@@ -285,8 +318,12 @@ end
 --- Add custom routes stored in saved variables to the live route table.
 function APR:LoadCustomRoutes()
     for name, steps in pairs(APRData.CustomRoute) do
-        self.RouteQuestStepList[name] = steps
-        self.RouteList.Custom[name] = name:match("%d+-(.*)")
+        self.RouteQuestStepList[name] = {
+            label = name:match("%d+%-(.*)") or name,
+            expansion = "Custom",
+            conditions = {},
+            steps = steps,
+        }
     end
 end
 
@@ -354,8 +391,10 @@ function APR:GetRouteMapIDsAndName(targetedRoute)
         return nil, 0, '', ''
     end
 
-    for expansion, routeList in pairs(self.RouteList) do
-        for routeFileName, routeName in pairs(routeList) do
+    for routeFileName, routeData in pairs(self.RouteQuestStepList) do
+        if type(routeData) == "table" and routeData.expansion and routeData.label then
+            local routeName = routeData.label
+            local expansion = routeData.expansion
             if routeName == targetedRoute or routeFileName == targetedRoute then
                 local mapID = string.match(routeFileName, "^(.-)-")
                 return self.ZonesData.ExtensionRouteMaps[self.Faction][expansion] or {}, tonumber(mapID, 10),
@@ -397,11 +436,9 @@ function APR:GetRouteDisplayName(routeFileName)
         return nil
     end
 
-    for _, routeList in pairs(self.RouteList or {}) do
-        local label = routeList[routeFileName]
-        if label then
-            return label
-        end
+    local routeData = self.RouteQuestStepList[routeFileName]
+    if routeData and routeData.label then
+        return routeData.label
     end
 
     return nil
@@ -411,15 +448,13 @@ end
 function APR:GetRouteKeyFromDisplayName(displayName)
     if not displayName then return nil end
 
-    for _, routeList in pairs(self.RouteList or {}) do
-        for routeKey, routeLabel in pairs(routeList) do
-            if routeLabel == displayName then
-                return routeKey
-            end
+    for routeKey, routeData in pairs(self.RouteQuestStepList or {}) do
+        if type(routeData) == "table" and routeData.label == displayName then
+            return routeKey
         end
     end
 
-    -- fallback routes custom
+    -- fallback: key used directly as display name (custom routes)
     if self.RouteQuestStepList and self.RouteQuestStepList[displayName] then
         return displayName
     end

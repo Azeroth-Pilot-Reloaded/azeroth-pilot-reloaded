@@ -298,9 +298,10 @@ end
 function APR.party:GetStepDescription(route, stepIndex)
     if not route or not stepIndex then return '' end
 
-    local routeTable = APR.RouteQuestStepList[route]
-    if not routeTable then return '' end
+    local routeData = APR.RouteQuestStepList[route]
+    if not routeData then return '' end
 
+    local routeTable = routeData.steps or routeData
     local step = routeTable[stepIndex]
     if not step then return '' end
 
@@ -520,8 +521,8 @@ function APR.party:BuildGroupPayload(username)
     local _, _, _, expansion = APR:GetCurrentRouteMapIDsAndName()
     local stepDetails = APR.currentStep:GetCurrentStepDetails()
     local route
-    if routeFileName and APR.RouteList and APR.RouteList[expansion] then
-        route = APR.RouteList[expansion][routeFileName] or routeFileName
+    if routeFileName then
+        route = APR:GetRouteDisplayName(routeFileName) or routeFileName
     else
         route = routeFileName
     end

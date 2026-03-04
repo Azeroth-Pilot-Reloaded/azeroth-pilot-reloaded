@@ -42,11 +42,12 @@ end
 
 -- Build a stable signature for a route to spot changes even when step counts stay identical
 function APR:GetRouteSignature(routeFileName)
-    local steps = APR.RouteQuestStepList[routeFileName]
-    if not steps then
+    local routeData = APR.RouteQuestStepList[routeFileName]
+    if not routeData then
         return nil
     end
 
+    local steps = routeData.steps or routeData
     local hash = FNV_OFFSET
     for _, step in ipairs(steps) do
         hash = HashValue(hash, step)

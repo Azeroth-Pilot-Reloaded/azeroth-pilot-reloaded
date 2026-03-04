@@ -52,7 +52,8 @@ end
 --- @return table questPool A table containing the quests available for pickup.
 function APR:BuildQuestPoolForPickup(stepIndex, lookahead)
     local activeRoute = self.ActiveRoute
-    local stepList = activeRoute and self.RouteQuestStepList[activeRoute] or nil
+    local routeData = activeRoute and self.RouteQuestStepList[activeRoute] or nil
+    local stepList = routeData and (routeData.steps or routeData) or nil
 
     if not stepList or not stepIndex then
         self:ResetQuestPool()

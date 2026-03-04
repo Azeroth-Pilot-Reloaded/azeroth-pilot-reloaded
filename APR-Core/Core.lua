@@ -41,7 +41,6 @@ APR.HEXColor = {
 }
 
 -- Quest
-APR.RouteList = {}
 APR.RouteQuestStepList = {}
 APR.MissingQuests = {}
 
