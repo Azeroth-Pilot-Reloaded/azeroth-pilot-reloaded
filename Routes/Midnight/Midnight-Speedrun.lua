@@ -1739,6 +1739,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     {
         Qpart = { [86633] = { 1 } },
         Coord = { x = -3375.5, y = 5473.4 },
+        ExtraLineText = "UP_RAMP",
         Range = 5,
         IsCampaignQuest = true,
         Zone = 2395,
