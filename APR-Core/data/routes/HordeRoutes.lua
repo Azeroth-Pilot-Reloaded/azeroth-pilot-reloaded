@@ -110,5 +110,5 @@ function APR:InitHordeRoutes()
 
     -- Apply all collected routes
     APR:assignRoutes(routesToAssign)
-    APR:MergeExpansionRoutes(routesByExpansion)
+    APR:MergeExpansionRoutes(routesByExpansion, { Faction = "Horde" })
 end

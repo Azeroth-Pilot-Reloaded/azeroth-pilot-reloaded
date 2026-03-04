@@ -52,11 +52,12 @@ local function GetCurrentRouteStep()
         return
     end
 
-    local routeSteps = APR.RouteQuestStepList[APR.ActiveRoute]
-    if not routeSteps then
+    local routeData = APR.RouteQuestStepList[APR.ActiveRoute]
+    if not routeData then
         return
     end
 
+    local routeSteps = routeData.steps or routeData
     return routeSteps, routeSteps[currentStepIndex], currentStepIndex
 end
 

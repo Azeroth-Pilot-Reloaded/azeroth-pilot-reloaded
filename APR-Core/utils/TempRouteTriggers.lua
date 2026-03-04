@@ -104,7 +104,8 @@ function APR:InitTemporaryRouteTriggers()
 
     for i = 1, #routeKeys do
         local routeKey = routeKeys[i]
-        local stepList = APR.RouteQuestStepList[routeKey]
+        local routeData = APR.RouteQuestStepList[routeKey]
+        local stepList = routeData and (routeData.steps or routeData)
         local skippedSteps = 0
         if APRData and APRData[self.PlayerID] then
             skippedSteps = tonumber(APRData[self.PlayerID][routeKey .. "-SkippedStep"]) or 0
@@ -113,7 +114,7 @@ function APR:InitTemporaryRouteTriggers()
         local startStepIndex = skippedSteps + 1
         local triggers = collectFirstQuestTriggers(stepList, excludedQuestId, maxTriggersPerRoute, startStepIndex)
         if #triggers > 0 then
-            self:RegisterTemporaryRouteTrigger(routeKey, triggers)
+            self:RegisterTemporaryRouteTrigger(routeKey, triggers, routeData and routeData.label)
         end
     end
 end

@@ -175,7 +175,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetWODPrefab()
                 end,
                 hidden = function()
-                    return not next(APR.RouteList.WarlordsOfDraenor)
+                    return not APR:HasRoutesForExpansion("WarlordsOfDraenor")
                 end,
 
             },
@@ -189,7 +189,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetBFAPrefab()
                 end,
                 hidden = function()
-                    return not next(APR.RouteList.BattleForAzeroth)
+                    return not APR:HasRoutesForExpansion("BattleForAzeroth")
                 end,
             },
             SL_prefab = {
@@ -202,7 +202,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetSLPrefab()
                 end,
                 hidden = function()
-                    return not next(APR.RouteList.Shadowlands)
+                    return not APR:HasRoutesForExpansion("Shadowlands")
                 end
             },
             DF_prefab = {
@@ -215,7 +215,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetDFPrefab()
                 end,
                 hidden = function()
-                    return not next(APR.RouteList.Dragonflight)
+                    return not APR:HasRoutesForExpansion("Dragonflight")
                 end
             },
             TWW_prefab = {
@@ -228,7 +228,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetTWWPrefab()
                 end,
                 hidden = function()
-                    return not next(APR.RouteList.TheWarWithin)
+                    return not APR:HasRoutesForExpansion("TheWarWithin")
                 end
             },
             MIDNIGHT_prefab = {
@@ -241,7 +241,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetMidnightPrefab()
                 end,
                 hidden = function()
-                    return not next(APR.RouteList.Midnight)
+                    return not APR:HasRoutesForExpansion("Midnight")
                 end
             },
             reset_custom_path_spacer_1 = {
@@ -779,20 +779,22 @@ function SetRouteListTab(widget, name)
     local rowOddBgColor = { 0, 0, 0, 0 }
     local rowEvenBgColor = { 0, 0, 0, 0.24 }
 
-    -- Copy the routes into a new table for sorting (with filter)
-    local function AddRoutesFromTab(tabName, routes)
-        if type(routes) ~= "table" then
-            return
-        end
-        for fileName, routeName in pairs(routes) do
-            if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
-                if search == "" then
-                    tinsert(sortedRoutes, { fileName = fileName, routeName = routeName, tabName = tabName })
-                else
-                    local rn = (routeName or ""):lower()
-                    local fn = (fileName or ""):lower()
-                    if rn:find(search, 1, true) or fn:find(search, 1, true) then
+    -- Collect routes from APR.RouteQuestStepList for a given expansion tab.
+    local function AddRoutesForExpansion(tabName)
+        for fileName, routeData in pairs(APR.RouteQuestStepList) do
+            if type(routeData) ~= "table" or not routeData.label or routeData.expansion ~= tabName then
+                -- skip
+            else
+                local routeName = routeData.label
+                if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
+                    if search == "" then
                         tinsert(sortedRoutes, { fileName = fileName, routeName = routeName, tabName = tabName })
+                    else
+                        local rn = routeName:lower()
+                        local fn = fileName:lower()
+                        if rn:find(search, 1, true) or fn:find(search, 1, true) then
+                            tinsert(sortedRoutes, { fileName = fileName, routeName = routeName, tabName = tabName })
+                        end
                     end
                 end
             end
@@ -800,10 +802,21 @@ function SetRouteListTab(widget, name)
     end
 
     if search == "" then
-        AddRoutesFromTab(name, APR.RouteList[name])
+        AddRoutesForExpansion(name)
     else
-        for tabName, routes in pairs(APR.RouteList) do
-            AddRoutesFromTab(tabName, routes)
+        -- Search across all expansions
+        for fileName, routeData in pairs(APR.RouteQuestStepList) do
+            if type(routeData) == "table" and routeData.label then
+                local routeName = routeData.label
+                local tabName = routeData.expansion or "Unknown"
+                if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
+                    local rn = routeName:lower()
+                    local fn = fileName:lower()
+                    if rn:find(search, 1, true) or fn:find(search, 1, true) then
+                        tinsert(sortedRoutes, { fileName = fileName, routeName = routeName, tabName = tabName })
+                    end
+                end
+            end
         end
     end
 

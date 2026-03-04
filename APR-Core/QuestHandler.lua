@@ -183,29 +183,33 @@ function APR:UpdateStep()
                         L["SWITCH_TO_CHROMIE"] .. " " .. chromieExpansionOption.name)
                 end
             end
+
+            local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
+            local activeExpansion = activeRouteData and activeRouteData.expansion
+
             -- Uncomment if needed for new route
-            -- if (APR.RouteList.Cataclysm[APR.ActiveRoute]) then
+            -- if activeExpansion == "Cataclysm" then
             --     checkChromieTimeline(5)
             -- end
-            -- if (APR.RouteList.TheBurningCrusade[APR.ActiveRoute]) then
+            -- if activeExpansion == "TheBurningCrusade" then
             --     checkChromieTimeline(6)
             -- end
-            -- if (APR.RouteList.WrathOfTheLichKing[APR.ActiveRoute]) then
+            -- if activeExpansion == "WrathOfTheLichKing" then
             --     checkChromieTimeline(7)
             -- end
-            -- if (APR.RouteList.MistsOfPandaria[APR.ActiveRoute]) then
+            -- if activeExpansion == "MistsOfPandaria" then
             --     checkChromieTimeline(8)
             -- end
-            if (APR.RouteList.WarlordsOfDraenor[APR.ActiveRoute]) then
+            if activeExpansion == "WarlordsOfDraenor" then
                 checkChromieTimeline(9)
             end
-            -- if (APR.RouteList.Legion[APR.ActiveRoute]) then
+            -- if activeExpansion == "Legion" then
             --     checkChromieTimeline(10)
             -- end
-            if (APR.RouteList.BattleForAzeroth[APR.ActiveRoute]) then
+            if activeExpansion == "BattleForAzeroth" then
                 checkChromieTimeline(15)
             end
-            if (APR.RouteList.Shadowlands[APR.ActiveRoute]) then
+            if activeExpansion == "Shadowlands" then
                 checkChromieTimeline(14)
             end
         end
