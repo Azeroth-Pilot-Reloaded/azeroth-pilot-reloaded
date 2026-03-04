@@ -4795,7 +4795,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         _index = 612,
     },
     {
-        EnterInstance = { questID = 91958, mapID = 2513 },
+        EnterInstance = { questID = 91958, mapID = 2564 },
         ExtraLineText = "DO_DUNGEON_ON_NORMAL_NO_FOLLOWERS",
         InstanceQuest = true,
         IsCampaignQuest = true,

@@ -275,7 +275,7 @@ function APR:UpdateStep()
             APR.Arrow:SetCoord()
         elseif step.DoScenario then
             local scenarioMapID = step.DoScenario.mapID
-            local questID = step.DoScenario.questID
+            local doScenarioQuestID = step.DoScenario.questID
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Do Scenario", scenarioMapID)
 
             if step.Qpart then
@@ -285,7 +285,7 @@ function APR:UpdateStep()
                 if (objectiveData and objectiveData.status == APR.QUEST_STATUS.COMPLETE) and isCompleted then
                     APR:UpdateNextStep()
                 end
-            elseif isCompleted or C_QuestLog.IsQuestFlaggedCompleted(questID) then
+            elseif isCompleted or C_QuestLog.IsQuestFlaggedCompleted(doScenarioQuestID) then
                 APR:UpdateNextStep()
             end
 

@@ -617,7 +617,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     format(L["ENTER_IN"], scenarioTypeLabel), questInfo, color, isCurrentStep)
             elseif step.DoScenario then
                 local scenarioMapID = step.DoScenario.mapID
-                local questID = step.DoScenario.questID
+                local scenarioQuestID = step.DoScenario.questID
                 local scenarioContinentID = APR:GetContinent(scenarioMapID)
                 local mapInfo = APR:GetMapInfoCached(scenarioMapID)
                 local mapName = mapInfo and mapInfo.name or UNKNOWN
@@ -626,7 +626,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local scenarioInfo = scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
                 local isCompleted = safeTContains(
                     APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,
-                    scenarioMapID) or (questID and C_QuestLog.IsQuestFlaggedCompleted(questID))
+                    scenarioMapID) or (scenarioQuestID and C_QuestLog.IsQuestFlaggedCompleted(scenarioQuestID))
                 local scenarioTypeLabel = (scenarioInfo and scenarioInfo.type and L[scenarioInfo.type]) or L["SCENARIO"] or
                     UNKNOWN
                 local hasQpartCompleted = false
