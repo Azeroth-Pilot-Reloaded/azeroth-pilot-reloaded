@@ -1,7 +1,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Route metadata registry: maps expansion -> { routeKey -> label }
--- These are routes available to all factions (neutral routes).
+-- These are routes available to all factions (no faction condition = universal availability).
+-- Alliance-specific and Horde-specific routes are defined in AllianceRoutes.lua / HordeRoutes.lua
+-- and are registered with a Faction condition during InitAllianceRoutes / InitHordeRoutes.
 local neutralRoutesByExpansion = {
     Vanilla = {
         ["1409-Exile's Reach"] = L["01-10 Exile's Reach"],
