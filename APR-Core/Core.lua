@@ -147,7 +147,7 @@ function APR:OnInitialize()
     self:LoadCustomRoutes()
 
     -- Temporary route trigger mapping (minimal implementation)
-    self:InitTemporaryRouteTriggers()
+    self:InitRouteTriggersSuggestion()
 
     self.Arrow:Init()
 
