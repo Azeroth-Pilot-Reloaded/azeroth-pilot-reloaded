@@ -1,6 +1,6 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-APR.TemporaryRouteTriggers = APR.TemporaryRouteTriggers or {
+APR.RouteTriggersSuggestion = APR.RouteTriggersSuggestion or {
     routes = {},
     byQuestID = {},
 }
@@ -19,7 +19,7 @@ function APR:RegisterTemporaryRouteTrigger(routeKey, triggers, label)
         return
     end
 
-    self.TemporaryRouteTriggers.routes[routeKey] = {
+    self.RouteTriggersSuggestion.routes[routeKey] = {
         key = routeKey,
         label = label,
         triggers = triggers,
@@ -28,9 +28,9 @@ function APR:RegisterTemporaryRouteTrigger(routeKey, triggers, label)
     for i = 1, #triggers do
         local questID = tonumber(triggers[i])
         if questID then
-            self.TemporaryRouteTriggers.byQuestID[questID] = self.TemporaryRouteTriggers.byQuestID[questID] or {}
-            if not containsRoute(self.TemporaryRouteTriggers.byQuestID[questID], routeKey) then
-                table.insert(self.TemporaryRouteTriggers.byQuestID[questID], routeKey)
+            self.RouteTriggersSuggestion.byQuestID[questID] = self.RouteTriggersSuggestion.byQuestID[questID] or {}
+            if not containsRoute(self.RouteTriggersSuggestion.byQuestID[questID], routeKey) then
+                table.insert(self.RouteTriggersSuggestion.byQuestID[questID], routeKey)
             end
         end
     end
@@ -88,9 +88,9 @@ local function collectFirstQuestTriggers(stepList, excludedQuestId, maxCount, st
     return questIDs
 end
 
-function APR:InitTemporaryRouteTriggers()
-    self.TemporaryRouteTriggers.routes = {}
-    self.TemporaryRouteTriggers.byQuestID = {}
+function APR:InitRouteTriggersSuggestion()
+    self.RouteTriggersSuggestion.routes = {}
+    self.RouteTriggersSuggestion.byQuestID = {}
 
     local excludedQuestId = 1
     local maxTriggersPerRoute = 6
@@ -139,7 +139,7 @@ function APR:ActivateRouteFromTemporaryTrigger(routeKey)
         return
     end
 
-    local routeName = getRouteDisplayName(routeKey, self.TemporaryRouteTriggers.routes[routeKey])
+    local routeName = getRouteDisplayName(routeKey, self.RouteTriggersSuggestion.routes[routeKey])
     APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}
     APRCustomPath[self.PlayerID][1] = routeName
 
@@ -162,7 +162,7 @@ function APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
         return
     end
 
-    local routeKeys = self.TemporaryRouteTriggers.byQuestID[tonumber(questID)]
+    local routeKeys = self.RouteTriggersSuggestion.byQuestID[tonumber(questID)]
     if not routeKeys or #routeKeys == 0 then
         return
     end
@@ -176,7 +176,7 @@ function APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
     local routes = {}
     for i = 1, #routeKeys do
         local routeKey = routeKeys[i]
-        local routeData = self.TemporaryRouteTriggers.routes[routeKey]
+        local routeData = self.RouteTriggersSuggestion.routes[routeKey]
         table.insert(routes, {
             key = routeKey,
             label = getRouteDisplayName(routeKey, routeData),
