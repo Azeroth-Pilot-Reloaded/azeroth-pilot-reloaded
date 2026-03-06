@@ -1,5 +1,18 @@
-if APR.Faction == "Alliance" then
-    APR.RouteQuestStepList["84-DF01A-Stormwind"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["84-DF01A-Stormwind"] = {
+    label = L["DF01 - Dragonflight Stormwind"],
+    expansion = APR.EXPANSIONS.Dragonflight,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 84,
+    conditions = { Faction = "Alliance" },
+    nextRoute = { "2022-DF03A-WakingShores" },
+    steps = {
+        {
+            PickUp = { 65436 },
+            Coord = { x = 336.3, y = -8309.2 },
+            _index = 1,
+        },
         {
             Done = { 65436 },
             Coord = { x = 336.3, y = -8309.2 },
@@ -29,6 +42,7 @@ if APR.Faction == "Alliance" then
         {
             TakePortal = { QuestID = 66589, ZoneId = 84 },
             Coord = { x = 327.7, y = -8312.4 },
+
             Range = 0.5,
             Zone = 84,
             _index = 6,
@@ -89,36 +103,32 @@ if APR.Faction == "Alliance" then
             _index = 15,
         },
         {
-            Waypoint = 67700,
-            Coord = { x = 1328.2, y = -8640.6 },
-            ExtraLineText = "WAIT_FOR_SHIP",
-            Range = 10,
+            TakePortal = { QuestID = 67700, ZoneId = 2022 },
+            Coord = { x = 1321, y = -8637.3 },
+            Range = 5,
+            Zone = 84,
             _index = 16,
-        },
-        {
-            Qpart = { [67700] = { 1 } },
-            Coord = { x = 1328.2, y = -8640.6 },
-            ExtraLineText = "WAIT_FOR_SHIP",
-            Range = 0.5,
-            _index = 17,
-        },
-        {
-            Qpart = { [67700] = { 2 } },
-            Zone = 2022,
-            _index = 18,
         },
         {
             Done = { 67700 },
             Zone = 2022,
-            _index = 19,
+            _index = 17,
         },
         {
             RouteCompleted = true,
-            _index = 20,
+            _index = 18,
         },
     }
+}
 
-    APR.RouteQuestStepList["2022-DF03A-WakingShores"] = {
+APR.RouteQuestStepList["2022-DF03A-WakingShores"] = {
+    label = L["DF02 - Waking Shores - Alliance"],
+    expansion = APR.EXPANSIONS.Dragonflight,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 2022,
+    conditions = { Faction = "Alliance" },
+    nextRoute = { "2022-DF03N-WakingShores" },
+    steps = {
         {
             Qpart = { [67700] = { 1 } },
             Coord = { x = 1328.2, y = -8640.6 },
@@ -449,8 +459,16 @@ if APR.Faction == "Alliance" then
             _index = 53,
         },
     }
+}
 
-    APR.RouteQuestStepList["2025-DF06A-Thaldraszus"] = {
+APR.RouteQuestStepList["2025-DF06A-Thaldraszus"] = {
+    label = L["DF06 - Thaldraszus"],
+    expansion = APR.EXPANSIONS.Dragonflight,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 2025,
+    conditions = { Faction = "Alliance" },
+    nextRoute = {},
+    steps = {
         {
             Qpart = { [66244] = { 1 } },
             Coord = { x = -1099.5, y = 338.8 },
@@ -1377,4 +1395,4 @@ if APR.Faction == "Alliance" then
             _index = 159,
         },
     }
-end
+}

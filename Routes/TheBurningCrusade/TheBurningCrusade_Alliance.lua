@@ -1,5 +1,13 @@
-if (APR.Faction == "Alliance") then
-    APR.RouteQuestStepList["97-AmmenVale"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["97-AmmenVale"] = {
+    label = L["Draenei Start"],
+    expansion = APR.EXPANSIONS.TheBurningCrusade,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 97,
+    conditions = { Level = 80 },
+    nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },
+    steps = {
         {
             PickUp = { 9279 },
             Coord = { x = -13926.8, y = -3961.4 },
@@ -203,4 +211,4 @@ if (APR.Faction == "Alliance") then
             _index = 38,
         },
     }
-end
+}

@@ -1,5 +1,16 @@
-if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["85-BFA-Orgrimmar"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+---------------------------------------------------------------------------------------
+--------------------------------- Campaign --------------------------------------------
+---------------------------------------------------------------------------------------
+APR.RouteQuestStepList["85-BFA-Orgrimmar"] = {
+    label = L["BFA01 - Intro"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 85,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "862-Zuldazar" },
+    steps = {
         {
             PickUp = { 51443 },
             PickUpDB = { 51443, 60361 },
@@ -536,8 +547,16 @@ if APR.Faction == "Horde" then
             _index = 62,
         },
     }
+}
 
-    APR.RouteQuestStepList["862-Zuldazar"] = {
+APR.RouteQuestStepList["862-Zuldazar"] = {
+    label = L["BFA02 - Zuldazar"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 862,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "863-Nazmir" },
+    steps = {
         {
             Done = { 50769 },
             Coord = { x = 804.7, y = -2162.2 },
@@ -4015,8 +4034,16 @@ if APR.Faction == "Horde" then
             _index = 567,
         },
     }
+}
 
-    APR.RouteQuestStepList["863-Nazmir"] = {
+APR.RouteQuestStepList["863-Nazmir"] = {
+    label = L["BFA03 - Nazmir"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 863,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "862-Zuldazar-2" },
+    steps = {
         {
             Done = { 48535 },
             LeaveQuests = { 52210, 49901 },
@@ -6527,8 +6554,16 @@ if APR.Faction == "Horde" then
             _index = 419,
         },
     }
+}
 
-    APR.RouteQuestStepList["862-Zuldazar-2"] = {
+APR.RouteQuestStepList["862-Zuldazar-2"] = {
+    label = L["BFA04 - Naz-end Vol-begin"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 862,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "864-Vol'dun" },
+    steps = {
         {
             Waypoint = 50808,
             Coord = { x = 802.7, y = -1047.5 },
@@ -6658,8 +6693,16 @@ if APR.Faction == "Horde" then
             _index = 21,
         },
     }
+}
 
-    APR.RouteQuestStepList["864-Vol'dun"] = {
+APR.RouteQuestStepList["864-Vol'dun"] = {
+    label = L["BFA05 - Vol'dun"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 864,
+    conditions = { Faction = "Horde" },
+    nextRoute = {},
+    steps = {
         {
             Done = { 47315 },
             Coord = { x = 2194.4, y = 2673.5 },
@@ -8898,8 +8941,21 @@ if APR.Faction == "Horde" then
             _index = 375,
         },
     }
+}
 
-    APR.RouteQuestStepList["1165-Zandalari-intro"] = {
+
+---------------------------------------------------------------------------------------
+--------------------------------- Allied Race -----------------------------------------
+---------------------------------------------------------------------------------------
+
+APR.RouteQuestStepList["1165-Zandalari-intro"] = {
+    label = L["Zandalari Troll Start"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 1165,
+    conditions = { Faction = "Horde", Race = APR.RACES.ZandalariTroll },
+    nextRoute = { "85-DF01H-Orgrimmar" },
+    steps = {
         {
             PickUp = { 55137 },
             Coord = { x = 805.3, y = -1135.8 },
@@ -8944,8 +9000,16 @@ if APR.Faction == "Horde" then
             _index = 7,
         },
     }
+}
 
-    APR.RouteQuestStepList["85-Vulpera-intro"] = {
+APR.RouteQuestStepList["85-Vulpera-intro"] = {
+    label = L["Vulpera Start"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 85,
+    conditions = { Faction = "Horde", Race = APR.RACES.Vulpera },
+    nextRoute = { "85-DF01H-Orgrimmar" },
+    steps = {
         {
             PickUp = { 58122 },
             Coord = { x = -4631.5, y = 1947.3 },
@@ -9045,8 +9109,16 @@ if APR.Faction == "Horde" then
             _index = 15,
         },
     }
+}
 
-    APR.RouteQuestStepList["85-MagharOrc-intro"] = {
+APR.RouteQuestStepList["85-MagharOrc-intro"] = {
+    label = L["Maghar Orc Start"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 85,
+    conditions = { Faction = "Horde", Race = APR.RACES.MagharOrc },
+    nextRoute = { "85-DF01H-Orgrimmar" },
+    steps = {
         {
             PickUp = { 51485 },
             Coord = { x = -4734.2, y = 1970.1 },
@@ -9153,4 +9225,4 @@ if APR.Faction == "Horde" then
             _index = 16,
         },
     }
-end
+}

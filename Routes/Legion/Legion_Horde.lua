@@ -1,5 +1,17 @@
-if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["85-Intro-Legion"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+---------------------------------------------------------------------------------------
+--------------------------------- Campaign --------------------------------------------
+---------------------------------------------------------------------------------------
+
+APR.RouteQuestStepList["85-Intro-Legion"] = {
+    label = L["Legion - Intro"],
+    expansion = APR.EXPANSIONS.Legion,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 85,
+    conditions = { Faction = "Horde" },
+    nextRoute = {},
+    steps = {
         {
             PickUp = { 43926 },
             ChromiePick = 10,
@@ -308,8 +320,16 @@ if APR.Faction == "Horde" then
             _index = 44,
         },
     }
+}
 
-    APR.RouteQuestStepList["634-Stormheim"] = {
+APR.RouteQuestStepList["634-Stormheim"] = {
+    label = L["Legion - Stormheim"],
+    expansion = APR.EXPANSIONS.Legion,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 634,
+    conditions = { Faction = "Horde" },
+    nextRoute = {},
+    steps = {
         {
             PickUp = { 38357, 38332, 38358 },
             Coord = { x = 2939.5, y = 4115.1 },
@@ -2034,8 +2054,20 @@ if APR.Faction == "Horde" then
             _index = 284,
         },
     }
+}
 
-    APR.RouteQuestStepList["680-Nightborne-intro"] = {
+---------------------------------------------------------------------------------------
+--------------------------------- Allied Race -----------------------------------------
+---------------------------------------------------------------------------------------
+---
+APR.RouteQuestStepList["680-Nightborne-intro"] = {
+    label = L["Nightborne Start"],
+    expansion = APR.EXPANSIONS.Legion,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 680,
+    conditions = { Faction = "Horde", Race = APR.RACES.Nightborne },
+    nextRoute = { "85-DF01H-Orgrimmar" },
+    steps = {
         {
             PickUp = { 49933 },
             Coord = { x = 3362.5, y = 280.3 },
@@ -2094,8 +2126,16 @@ if APR.Faction == "Horde" then
             _index = 9,
         },
     }
+}
 
-    APR.RouteQuestStepList["652-HighmountainTauren-intro"] = {
+APR.RouteQuestStepList["652-HighmountainTauren-intro"] = {
+    label = L["Highmountain Tauren Start"],
+    expansion = APR.EXPANSIONS.Legion,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 652,
+    conditions = { Faction = "Horde", Race = APR.RACES.HighmountainTauren },
+    nextRoute = { "85-DF01H-Orgrimmar" },
+    steps = {
         {
             PickUp = { 49773 },
             Coord = { x = 4388.2, y = 4081.2 },
@@ -2140,4 +2180,4 @@ if APR.Faction == "Horde" then
             _index = 7,
         },
     }
-end
+}

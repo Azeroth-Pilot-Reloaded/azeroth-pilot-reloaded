@@ -1,5 +1,13 @@
-if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
+    label = L["DF01 - Dragonflight Orgrimmar"],
+    expansion = APR.EXPANSIONS.Dragonflight,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 85,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "2022-DF03H-WakingShores" },
+    steps = {
         {
             PickUp = { 65435 },
             Coord = { x = -4273, y = 2046.2 },
@@ -124,8 +132,16 @@ if APR.Faction == "Horde" then
             _index = 18,
         },
     }
+}
 
-    APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
+APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
+    label = L["DF02 - Waking Shores - Horde"],
+    expansion = APR.EXPANSIONS.Dragonflight,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 2022,
+    conditions = { Faction = "Horde" },
+    nextRoute = {"2022-DF03N-WakingShores"},
+    steps = {
         {
             Qpart = { [65444] = { 2 } },
             Coord = { x = -1792.7, y = 3895.3 },
@@ -456,8 +472,16 @@ if APR.Faction == "Horde" then
             _index = 53,
         },
     }
+}
 
-    APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
+APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
+    label = L["DF06 - Thaldraszus"],
+    expansion = APR.EXPANSIONS.Dragonflight,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 2025,
+    conditions = { Faction = "Horde" },
+    nextRoute = {},
+    steps = {
         {
             Qpart = { [66244] = { 1 } },
             Coord = { x = -1099.5, y = 338.8 },
@@ -1443,4 +1467,4 @@ if APR.Faction == "Horde" then
             _index = 163,
         },
     }
-end
+}

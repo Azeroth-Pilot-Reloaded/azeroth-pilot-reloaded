@@ -1,5 +1,17 @@
-if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["462-MulgoreTauren"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+---------------------------------------------------------------------------------------
+---------------------------------  Races Start ----------------------------------------
+---------------------------------------------------------------------------------------
+
+APR.RouteQuestStepList["462-MulgoreTauren"] = {
+    label = L["Tauren Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 462,
+    conditions = { Faction = "Horde", Race = APR.RACES.Tauren },
+    nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },
+    steps = {
         {
             PickUp = { 14449 },
             Coord = { x = -256.3, y = -2909.9 },
@@ -883,8 +895,16 @@ if APR.Faction == "Horde" then
             _index = 136
         }
     }
+}
 
-    APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
+APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
+    label = L["Orc Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 1,
+    conditions = { Faction = "Horde", Race = APR.RACES.Orc },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 25152 },
             Coord = { x = -4251.2, y = -615.5 },
@@ -1094,8 +1114,16 @@ if APR.Faction == "Horde" then
             _index = 36
         }
     }
+}
 
-    APR.RouteQuestStepList["463-EchoIslesTrollWar"] = {
+APR.RouteQuestStepList["463-EchoIslesTrollWar"] = {
+    label = L["Troll Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 463,
+    conditions = { Faction = "Horde", Race = APR.RACES.Troll, Class = APR.Classes.Warrior },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 25152 },
             Coord = { x = -4251.2, y = -615.5 },
@@ -1305,8 +1333,16 @@ if APR.Faction == "Horde" then
             _index = 36
         }
     }
+}
 
-    APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
+APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
+    label = L["Troll Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 463,
+    conditions = { Faction = "Horde", Race = APR.RACES.Troll, Class = APR.Classes.Hunter },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 24776 },
             Coord = { x = -5264.8, y = -1168.5 },
@@ -1569,8 +1605,16 @@ if APR.Faction == "Horde" then
             _index = 46
         }
     }
+}
 
-    APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
+APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
+    label = L["Troll Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 463,
+    conditions = { Faction = "Horde", Race = APR.RACES.Troll, Class = APR.Classes.Rogue },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 24770 },
             Coord = { x = -5264.4, y = -1168.5 },
@@ -1827,8 +1871,16 @@ if APR.Faction == "Horde" then
             _index = 45
         }
     }
+}
 
-    APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
+APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
+    label = L["Troll Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 463,
+    conditions = { Faction = "Horde", Race = APR.RACES.Troll, Class = APR.Classes.Priest },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 24770 },
             Coord = { x = -5264.4, y = -1168.5 },
@@ -2167,8 +2219,16 @@ if APR.Faction == "Horde" then
             _index = 60
         }
     }
+}
 
-    APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
+APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
+    label = L["Troll Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 463,
+    conditions = { Faction = "Horde", Race = APR.RACES.Troll, Class = APR.Classes.Shaman },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 24758 },
             Coord = { x = -5264.7, y = -1168.1 },
@@ -2431,8 +2491,16 @@ if APR.Faction == "Horde" then
             _index = 46
         }
     }
+}
 
-    APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
+APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
+    label = L["Troll Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 463,
+    conditions = { Faction = "Horde", Race = APR.RACES.Troll, Class = APR.Classes.Mage },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 24750 },
             Coord = { x = -5264.5, y = -1168.5 },
@@ -2695,8 +2763,16 @@ if APR.Faction == "Horde" then
             _index = 46
         }
     }
+}
 
-    APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
+APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
+    label = L["Troll Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 463,
+    conditions = { Faction = "Horde", Race = APR.RACES.Troll, Class = APR.Classes.Warlock },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 24750 },
             Coord = { x = -5264.5, y = -1168.5 },
@@ -2959,8 +3035,16 @@ if APR.Faction == "Horde" then
             _index = 46
         }
     }
+}
 
-    APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
+APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
+    label = L["Troll Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 463,
+    conditions = { Faction = "Horde", Race = APR.RACES.Troll, Class = APR.Classes.Monk },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 31159 },
             Coord = { x = -5264.8, y = -1167.9 },
@@ -3223,8 +3307,16 @@ if APR.Faction == "Horde" then
             _index = 46
         }
     }
+}
 
-    APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
+APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
+    label = L["Troll Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 463,
+    conditions = { Faction = "Horde", Race = APR.RACES.Troll, Class = APR.Classes.Druid },
+    nextRoute = { "1-Durotar" },
+    steps = {
         {
             PickUp = { 24764 },
             Coord = { x = -5264.5, y = -1168.6 },
@@ -3487,8 +3579,19 @@ if APR.Faction == "Horde" then
             _index = 46
         }
     }
+}
 
-    APR.RouteQuestStepList["1-Durotar"] = {
+---------------------------------------------------------------------------------------
+---------------------------------  Miscellaneous --------------------------------------
+---------------------------------------------------------------------------------------
+APR.RouteQuestStepList["1-Durotar"] = {
+    label = L["Durotar"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 1,
+    conditions = { Faction = "Horde" },
+    nextRoute = {},
+    steps = {
         {
             PickUp = { 25170 },
             Coord = { x = -4908.5, y = -847.8 },
@@ -4045,8 +4148,16 @@ if APR.Faction == "Horde" then
             _index = 96
         }
     }
+}
 
-    APR.RouteQuestStepList["10-NorthernBarrens"] = {
+APR.RouteQuestStepList["10-NorthernBarrens"] = {
+    label = L["Northern Barrens"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 10,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "199-SouthernBarrens" },
+    steps = {
         {
             PickUp = { 871 },
             Coord = { x = -3685.2, y = 301.8 },
@@ -5349,8 +5460,16 @@ if APR.Faction == "Horde" then
             _index = 228
         }
     }
+}
 
-    APR.RouteQuestStepList["199-SouthernBarrens"] = {
+APR.RouteQuestStepList["199-SouthernBarrens"] = {
+    label = L["Southern Barrens"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 199,
+    conditions = { Faction = "Horde" },
+    nextRoute = {},
+    steps = {
         {
             PickUp = { 24504 },
             Coord = { x = -971.8, y = -454.3 },
@@ -5458,4 +5577,4 @@ if APR.Faction == "Horde" then
             _index = 18
         }
     }
-end
+}

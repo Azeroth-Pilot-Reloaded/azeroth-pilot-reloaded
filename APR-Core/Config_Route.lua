@@ -165,9 +165,23 @@ local function GetConfigOptionTable()
                     return not APR:IsRemixCharacter()
                 end,
             },
-            WoD_prefab = {
+            MoP_prefab = {
                 order = 1.2,
-                name = "Warlords of Draenor",
+                name = APR.EXPANSIONS.MistsOfPandaria,
+                type = "execute",
+                width = optionsWidth,
+                func = function()
+                    APRCustomPath[APR.PlayerID] = {}
+                    APR.routeconfig:GetMoPPrefab()
+                end,
+                hidden = function()
+                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.MistsOfPandaria)
+                end,
+
+            },
+            WoD_prefab = {
+                order = 1.3,
+                name = APR.EXPANSIONS.WarlordsOfDraenor,
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -175,13 +189,13 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetWODPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion("WarlordsOfDraenor")
+                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.WarlordsOfDraenor)
                 end,
 
             },
             BFA_prefab = {
-                order = 1.3,
-                name = "Battle for Azeroth",
+                order = 1.4,
+                name = APR.EXPANSIONS.BattleForAzeroth,
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -189,12 +203,12 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetBFAPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion("BattleForAzeroth")
+                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.BattleForAzeroth)
                 end,
             },
             SL_prefab = {
-                order = 1.4,
-                name = "Shadowlands",
+                order = 1.5,
+                name = APR.EXPANSIONS.Shadowlands,
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -202,12 +216,12 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetSLPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion("Shadowlands")
+                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.Shadowlands)
                 end
             },
             DF_prefab = {
-                order = 1.5,
-                name = "Dragonflight",
+                order = 1.6,
+                name = APR.EXPANSIONS.Dragonflight,
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -215,12 +229,12 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetDFPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion("Dragonflight")
+                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.Dragonflight)
                 end
             },
             TWW_prefab = {
-                order = 1.6,
-                name = "The War Within",
+                order = 1.7,
+                name = APR.EXPANSIONS.TheWarWithin,
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -228,12 +242,12 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetTWWPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion("TheWarWithin")
+                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.TheWarWithin)
                 end
             },
             MIDNIGHT_prefab = {
-                order = 1.7,
-                name = "Midnight",
+                order = 1.8,
+                name = APR.EXPANSIONS.Midnight,
                 type = "execute",
                 width = optionsWidth,
                 func = function()
@@ -241,23 +255,23 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetMidnightPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion("Midnight")
+                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.Midnight)
                 end
             },
             reset_custom_path_spacer_1 = {
-                order = 1.71,
+                order = 1.81,
                 type = "description",
                 name = " ",
                 width = optionsWidth,
             },
             reset_custom_path_spacer_2 = {
-                order = 1.72,
+                order = 1.82,
                 type = "description",
                 name = " ",
                 width = optionsWidth,
             },
             reset_custom_path = {
-                order = 1.73,
+                order = 1.83,
                 name = L["CLEAN_CUSTOM_PATH"],
                 type = "execute",
                 width = optionsWidth,
@@ -285,7 +299,7 @@ local function GetConfigOptionTable()
             route_search = CreateRouteSearchOption(),
             Vanilla = {
                 order = 3,
-                name = "Vanilla",
+                name = APR.EXPANSIONS.Vanilla,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -293,14 +307,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "Vanilla",
+                        name = APR.EXPANSIONS.Vanilla,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             TheBurningCrusade = {
                 order = 4,
-                name = "Burning Crusade",
+                name = APR.EXPANSIONS.TheBurningCrusade,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -308,14 +322,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "TheBurningCrusade",
+                        name = APR.EXPANSIONS.TheBurningCrusade,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             WrathOfTheLichKing = {
                 order = 5,
-                name = "Wrath of the Lich King",
+                name = APR.EXPANSIONS.WrathOfTheLichKing,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -323,14 +337,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "WrathOfTheLichKing",
+                        name = APR.EXPANSIONS.WrathOfTheLichKing,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             Cataclysm = {
                 order = 6,
-                name = "Cataclysm",
+                name = APR.EXPANSIONS.Cataclysm,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -338,14 +352,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "Cataclysm",
+                        name = APR.EXPANSIONS.Cataclysm,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             MistsOfPandaria = {
                 order = 7,
-                name = "Mists of Pandaria",
+                name = APR.EXPANSIONS.MistsOfPandaria,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -353,14 +367,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "MistsOfPandaria",
+                        name = APR.EXPANSIONS.MistsOfPandaria,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             WarlordsOfDraenor = {
                 order = 8,
-                name = "Warlords of Draenor",
+                name = APR.EXPANSIONS.WarlordsOfDraenor,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -368,14 +382,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "WarlordsOfDraenor",
+                        name = APR.EXPANSIONS.WarlordsOfDraenor,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             Legion = {
                 order = 9,
-                name = "Legion",
+                name = APR.EXPANSIONS.Legion,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -383,14 +397,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "Legion",
+                        name = APR.EXPANSIONS.Legion,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             BattleForAzeroth = {
                 order = 10,
-                name = "Battle for Azeroth",
+                name = APR.EXPANSIONS.BattleForAzeroth,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -398,14 +412,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "BattleForAzeroth",
+                        name = APR.EXPANSIONS.BattleForAzeroth,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             Shadowlands = {
                 order = 11,
-                name = "Shadowlands",
+                name = APR.EXPANSIONS.Shadowlands,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -413,14 +427,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "Shadowlands",
+                        name = APR.EXPANSIONS.Shadowlands,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             Dragonflight = {
                 order = 12,
-                name = "Dragonflight",
+                name = APR.EXPANSIONS.Dragonflight,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -428,14 +442,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "Dragonflight",
+                        name = APR.EXPANSIONS.Dragonflight,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             TheWarWithin = {
                 order = 13,
-                name = "The War Within",
+                name = APR.EXPANSIONS.TheWarWithin,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -443,14 +457,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "TheWarWithin",
+                        name = APR.EXPANSIONS.TheWarWithin,
                         dialogControl = "RouteListFrame",
                     },
                 }
             },
             Midnight = {
                 order = 14,
-                name = "Midnight",
+                name = APR.EXPANSIONS.Midnight,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -458,14 +472,14 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "Midnight",
+                        name = APR.EXPANSIONS.Midnight,
                         dialogControl = "RouteListFrame",
                     },
                 },
             },
             Custom = {
                 order = 15,
-                name = "Custom",
+                name = APR.EXPANSIONS.Custom,
                 type = "group",
                 childGroups = "tree",
                 inline = false,
@@ -473,7 +487,7 @@ local function GetConfigOptionTable()
                     route = {
                         type = "input",
                         order = 1,
-                        name = "Custom",
+                        name = APR.EXPANSIONS.Custom,
                         dialogControl = "RouteListFrame",
                     },
                 }
@@ -1157,10 +1171,7 @@ function APR.routeconfig:GetSpeedRunPrefab()
         return
     end
 
-    if APR.Level >= APR.MinBoostLvl and APR.Level < APR.MaxLevelChromie then
-        self:GetDFPrefab()
-    elseif APR.Level < APR.MinBoostLvl then
-        self:GetWODPrefab()
+    if APR.Level < APR.MaxLevelChromie then
         self:GetDFPrefab()
     end
 
@@ -1273,6 +1284,19 @@ function APR.routeconfig:GetStartingZonePrefab(suppressUpdate)
     self:SendCustomPathUpdate(suppressUpdate)
 end
 
+function APR.routeconfig:GetMoPPrefab(suppressUpdate)
+    AddRouteToCustomPath(L["MoP - Intro"])
+    AddRouteToCustomPath(L["The Jade Forest"])
+    AddRouteToCustomPath(L["Valley of the four winds"])
+    AddRouteToCustomPath(L["Krasarang Wilds"])
+    AddRouteToCustomPath(L["Kun-Lai Summit"])
+    AddRouteToCustomPath(L["Townlong Steppes"])
+    AddRouteToCustomPath(L["Dread Wastes"])
+    AddRouteToCustomPath(L["Isle of Thunder"])
+
+    self:SendCustomPathUpdate(suppressUpdate)
+end
+
 function APR.routeconfig:GetWODPrefab(suppressUpdate)
     if APR.Faction == alliance then
         AddRouteToCustomPath(L["WOD01 - Stormwind"])
@@ -1366,7 +1390,6 @@ function APR.routeconfig:GetTWWPrefab(suppressUpdate)
     AddRouteToCustomPath(L["TWW - 12 - Fate of the Kirin Tor"])
     AddRouteToCustomPath(L["TWW - Siren Isle Intro"])
     AddRouteToCustomPath(L["TWW - Undermine"])
-    AddRouteToCustomPath(L["TWW - Nightfall"])
     AddRouteToCustomPath(L["TWW - Rise of the Red Dawn"])
     AddRouteToCustomPath(L["TWW - K'aresh Storyline"])
     AddRouteToCustomPath(L["TWW - K'aresh - Visions of a Shadowed Sun"])

@@ -1,5 +1,13 @@
-if APR.Faction == "Alliance" then
-    APR.RouteQuestStepList["84-DesMephisto-Stormwind-War"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["84-DesMephisto-Stormwind-War"] = {
+    label = L["WOD01 - Stormwind"],
+    expansion = APR.EXPANSIONS.WarlordsOfDraenor,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 84,
+    conditions = { Faction = "Alliance", Level = 10 },
+    nextRoute = { "577-DesMephisto-TanaanJungle" },
+    steps = {
         {
             PickUp = { 34398 },
             ChromiePick = 9,
@@ -62,8 +70,16 @@ if APR.Faction == "Alliance" then
             _index = 9,
         },
     }
+}
 
-    APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
+APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
+    label = L["WOD02 - Tanaan Jungle"],
+    expansion = APR.EXPANSIONS.WarlordsOfDraenor,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 577,
+    conditions = { Faction = "Alliance", Level = 10 },
+    nextRoute = { "539-DesMephisto-Shadowmoon1" },
+    steps = {
         {
             Done = { 34398 },
             DoneDB = { 34398, 36881 },
@@ -679,8 +695,16 @@ if APR.Faction == "Alliance" then
             _index = 104,
         },
     }
+}
 
-    APR.RouteQuestStepList["539-DesMephisto-Shadowmoon1"] = {
+APR.RouteQuestStepList["539-DesMephisto-Shadowmoon1"] = {
+    label = L["WOD03 - Shadowmoon"],
+    expansion = APR.EXPANSIONS.WarlordsOfDraenor,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 539,
+    conditions = { Faction = "Alliance", Level = 10 },
+    nextRoute = { "543-DesMephisto-Gorgrond" },
+    steps = {
         {
             Done = { 34575 },
             Coord = { x = 462.8, y = 2298.3 },
@@ -1460,8 +1484,16 @@ if APR.Faction == "Alliance" then
             _index = 127,
         },
     }
+}
 
-    APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
+APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
+    label = L["WOD04 - Gorgrond"],
+    expansion = APR.EXPANSIONS.WarlordsOfDraenor,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 543,
+    conditions = { Faction = "Alliance", Level = 10, IsQuestUncompleted = 35049 },
+    nextRoute = { "535-DesMephisto-Talador" },
+    steps = {
         {
             Done = { 49564 },
             DoneDB = { 35556, 33533, 36632, 49564, 35033 },
@@ -2702,8 +2734,16 @@ if APR.Faction == "Alliance" then
             _index = 205,
         },
     }
+}
 
-    APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
+APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
+    label = L["WOD04 - Gorgrond"],
+    expansion = APR.EXPANSIONS.WarlordsOfDraenor,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 543,
+    conditions = { Faction = "Alliance", Level = 10, IsQuestCompleted = 35049 },
+    nextRoute = { "535-DesMephisto-Talador" },
+    steps = {
         {
             Done = { 35556 },
             Coord = { x = -165.2, y = 6472.7 },
@@ -3308,7 +3348,16 @@ if APR.Faction == "Alliance" then
         },
     }
 
-    APR.RouteQuestStepList["535-DesMephisto-Talador"] = {
+}
+
+APR.RouteQuestStepList["535-DesMephisto-Talador"] = {
+    label = L["WOD05 - Talador"],
+    expansion = APR.EXPANSIONS.WarlordsOfDraenor,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 535,
+    conditions = { Faction = "Alliance", Level = 10 },
+    nextRoute = { "539-DesMephisto-Shadowmoon2" },
+    steps = {
         {
             PickUp = { 34558 },
             Coord = { x = 1666.3, y = 3602.6 },
@@ -3452,8 +3501,16 @@ if APR.Faction == "Alliance" then
             _index = 25,
         },
     }
+}
 
-    APR.RouteQuestStepList["539-DesMephisto-Shadowmoon2"] = {
+APR.RouteQuestStepList["539-DesMephisto-Shadowmoon2"] = {
+    label = L["WOD06 - Shadowmoon"],
+    expansion = APR.EXPANSIONS.WarlordsOfDraenor,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 539,
+    conditions = { Faction = "Alliance", Level = 10 },
+    nextRoute = { "535-DesMephisto-Talador2" },
+    steps = {
         {
             PickUp = { 34587 },
             Coord = { x = 497.3, y = 2066.1 },
@@ -3762,8 +3819,16 @@ if APR.Faction == "Alliance" then
             _index = 49,
         },
     }
+}
 
-    APR.RouteQuestStepList["535-DesMephisto-Talador2"] = {
+APR.RouteQuestStepList["535-DesMephisto-Talador2"] = {
+    label = L["WOD07 - Talador"],
+    expansion = APR.EXPANSIONS.WarlordsOfDraenor,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 535,
+    conditions = { Faction = "Alliance", Level = 10 },
+    nextRoute = { "542-DesMephisto-SpiresOfArak" },
+    steps = {
         {
             Waypoint = 34624,
             Coord = { x = 1356.9, y = 3531.3 },
@@ -5041,8 +5106,16 @@ if APR.Faction == "Alliance" then
             _index = 215,
         },
     }
+}
 
-    APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
+APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
+    label = L["WOD08 - Spires of Arak"],
+    expansion = APR.EXPANSIONS.WarlordsOfDraenor,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 542,
+    conditions = { Faction = "Alliance", Level = 10 },
+    nextRoute = {},
+    steps = {
         {
             PickUp = { 34655 },
             Coord = { x = 2385.1, y = 655.7 },
@@ -6132,4 +6205,4 @@ if APR.Faction == "Alliance" then
             _index = 184,
         },
     }
-end
+}

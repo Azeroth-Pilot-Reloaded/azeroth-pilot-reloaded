@@ -1,5 +1,13 @@
-if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["1409-Exile's Reach"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["1409-Exile's Reach"] = {
+    label = L["01-10 Exile's Reach"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 1409,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "85-DF01H-Orgrimmar" },
+    steps = {
         {
             PickUp = { 59926 },
             _index = 1,
@@ -1253,4 +1261,4 @@ if APR.Faction == "Horde" then
             _index = 203,
         },
     }
-end
+}
