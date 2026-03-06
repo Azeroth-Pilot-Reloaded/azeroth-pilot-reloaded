@@ -1,5 +1,13 @@
-if (APR.Faction == "Alliance") then
-    APR.RouteQuestStepList["179-Gilneas"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["179-Gilneas"] = {
+    label = L["Worgen Start"],
+    expansion = APR.EXPANSIONS.Cataclysm,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 179,
+    conditions = { Faction = "Alliance", Race = APR.RACES.Worgen },
+    nextRoute = { "84-DF01A-Stormwind" },
+    steps = {
         {
             PickUp = { 14078 },
             Coord = { x = 1407.3, y = -1447.6 },
@@ -1153,4 +1161,4 @@ if (APR.Faction == "Alliance") then
             _index = 212,
         },
     }
-end
+}

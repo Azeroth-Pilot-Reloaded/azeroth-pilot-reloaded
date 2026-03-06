@@ -53,8 +53,6 @@
     <Script file="Routes/WarlordsOfDraenor/WarlordsOfDraenor_Alliance.lua"/>
     <Script file="Routes/WarlordsOfDraenor/WarlordsOfDraenor_Horde.lua"/>
 
-    <Script file="Routes/WrathOfTheLichKing/WrathOfTheLichKing_Alliance.lua"/>
-    <Script file="Routes/WrathOfTheLichKing/WrathOfTheLichKing_Horde.lua"/>
     <Script file="Routes/WrathOfTheLichKing/WrathOfTheLichKing.lua"/>
 
     <Script file="Routes/Custom/10-70-Ally-EclipseGlaives.lua"/>

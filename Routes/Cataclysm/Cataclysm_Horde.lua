@@ -1,5 +1,13 @@
-if (APR.Faction == "Horde") then
-    APR.RouteQuestStepList["194-Kezan"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["194-Kezan"] = {
+    label = L["Goblin Start"],
+    expansion = APR.EXPANSIONS.Cataclysm,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 194,
+    conditions = { Faction = "Horde", Race = APR.RACES.Goblin },
+    nextRoute = { "174-LostIsles" },
+    steps = {
         {
             PickUp = { 14138 },
             Coord = { x = 1366.4, y = -8423.3 },
@@ -513,8 +521,16 @@ if (APR.Faction == "Horde") then
             _index = 87,
         },
     }
+}
 
-    APR.RouteQuestStepList["174-LostIsles"] = {
+APR.RouteQuestStepList["174-LostIsles"] = {
+    label = L["Goblin - Lost Isles"],
+    expansion = APR.EXPANSIONS.Cataclysm,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 174,
+    conditions = { Faction = "Horde", Race = APR.RACES.Goblin },
+    nextRoute = { "85-DF01H-Orgrimmar" },
+    steps = {
         {
             PickUp = { 14001 },
             Coord = { x = 3273.4, y = 535.2 },
@@ -1631,4 +1647,4 @@ if (APR.Faction == "Horde") then
             _index = 200,
         },
     }
-end
+}

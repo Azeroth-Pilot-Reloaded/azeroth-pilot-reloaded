@@ -58,9 +58,6 @@ APR-Core/data/models/Enums.lua
 APR-Core/data/models/Quest.lua
 APR-Core/data/models/Spells.lua
 
-APR-Core/data/routes/AllianceRoutes.lua
-APR-Core/data/routes/HordeRoutes.lua
-APR-Core/data/routes/NeutralRoutes.lua
 APR-Core/data/zones/Portals.lua
 APR-Core/data/zones/TaxiNodes.lua
 APR-Core/data/zones/ZoneOrder.lua

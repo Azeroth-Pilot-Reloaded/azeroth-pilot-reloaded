@@ -1,5 +1,13 @@
-if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["467-BloodElf-intro"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["467-BloodElf-intro"] = {
+    label = L["Blood Elf Start"],
+    expansion = APR.EXPANSIONS.TheBurningCrusade,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 467,
+    conditions = { Level = 80 },
+    nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },
+    steps = {
         {
             PickUp = { 8325 },
             Coord = { x = -6359, y = 10352.2 },
@@ -814,4 +822,4 @@ if APR.Faction == "Horde" then
             _index = 124,
         },
     }
-end
+}

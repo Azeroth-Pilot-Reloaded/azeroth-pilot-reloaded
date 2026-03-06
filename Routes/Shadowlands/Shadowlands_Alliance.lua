@@ -1,5 +1,13 @@
-if APR.Faction == "Alliance" then
-    APR.RouteQuestStepList["118-IntroQline"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["118-IntroQline"] = {
+    label = L["SL - Intro"],
+    expansion = APR.EXPANSIONS.Shadowlands,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 118,
+    conditions = { Level = 10 },
+    nextRoute = { "1648-Z0-TheMaw-Story" },
+    steps = {
         {
             PickUp = { 60545 },
             ChromiePick = 14,
@@ -120,8 +128,16 @@ if APR.Faction == "Alliance" then
             _index = 19,
         },
     }
+}
 
-    APR.RouteQuestStepList["1670-Shadowlands-StoryOnly-A"] = {
+APR.RouteQuestStepList["1670-Shadowlands-StoryOnly-A"] = {
+    label = L["SL - StoryMode Only"],
+    expansion = APR.EXPANSIONS.Shadowlands,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 1670,
+    conditions = { Level = 10 },
+    nextRoute = {},
+    steps = {
         {
             PickUp = { 60545 },
             ChromiePick = 14,
@@ -7703,4 +7719,4 @@ if APR.Faction == "Alliance" then
             _index = 1245,
         },
     }
-end
+}

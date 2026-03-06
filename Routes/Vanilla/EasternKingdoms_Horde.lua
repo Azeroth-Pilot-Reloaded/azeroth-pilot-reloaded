@@ -1,5 +1,17 @@
-if APR.Faction == "Horde" then
-    APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+---------------------------------------------------------------------------------------
+---------------------------------  Races Start ----------------------------------------
+---------------------------------------------------------------------------------------
+
+APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
+    label = L["Undead Start"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 465,
+    conditions = { Faction = "Horde", Race = APR.RACES.Scourge },
+    nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },
+    steps = {
         {
             PickUp = { 24959 },
             Coord = { x = 1704, y = 1700.5 },
@@ -565,8 +577,20 @@ if APR.Faction == "Horde" then
             _index = 99,
         },
     }
+}
 
-    APR.RouteQuestStepList["21-Silverpine"] = {
+---------------------------------------------------------------------------------------
+--------------------------------- Miscellaneous ---------------------------------------
+---------------------------------------------------------------------------------------
+
+APR.RouteQuestStepList["21-Silverpine"] = {
+    label = L["Silverpine Forest"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 21,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "217-Ruins of Gilneas" },
+    steps = {
         {
             Waypoint = 26965,
             Coord = { x = 653.6, y = 1475.2 },
@@ -1114,8 +1138,16 @@ if APR.Faction == "Horde" then
             _index = 95,
         },
     }
+}
 
-    APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
+APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
+    label = L["Silverpine Forest 2"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 217,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "21-Silverpine2" },
+    steps = {
         {
             Done = { 27290 },
             Coord = { x = 1632.5, y = -928.7 },
@@ -1307,8 +1339,16 @@ if APR.Faction == "Horde" then
             _index = 33,
         },
     }
+}
 
-    APR.RouteQuestStepList["21-Silverpine2"] = {
+APR.RouteQuestStepList["21-Silverpine2"] = {
+    label = L["Silverpine Forest 3"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 21,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "25-DEV-DALARAN_CRATER" },
+    steps = {
         {
             Done = { 27438 },
             Coord = { x = 1276, y = -184 },
@@ -1409,8 +1449,16 @@ if APR.Faction == "Horde" then
             _index = 17,
         },
     }
+}
 
-    APR.RouteQuestStepList["25-DEV-DALARAN_CRATER"] = {
+APR.RouteQuestStepList["25-DEV-DALARAN_CRATER"] = {
+    label = L["Silverpine Forest 4"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 25,
+    conditions = { Faction = "Horde" },
+    nextRoute = { "21-Silverpine3" },
+    steps = {
         {
             DropQuest = 27480,
             DroppableQuest = { MobId = 136490, Qid = 27480, Text = "Arcane Remnant" },
@@ -1434,8 +1482,16 @@ if APR.Faction == "Horde" then
             _index = 4,
         },
     }
+}
 
-    APR.RouteQuestStepList["21-Silverpine3"] = {
+APR.RouteQuestStepList["21-Silverpine3"] = {
+    label = L["Silverpine Forest 5"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 21,
+    conditions = { Faction = "Horde" },
+    nextRoute = {},
+    steps = {
         {
             Done = { 27483, 27480, 27478 },
             Coord = { x = 1472.4, y = 457 },
@@ -1598,8 +1654,16 @@ if APR.Faction == "Horde" then
             _index = 28,
         },
     }
+}
 
-    APR.RouteQuestStepList["25-Hillsbrad"] = {
+APR.RouteQuestStepList["25-Hillsbrad"] = {
+    label = L["WIP - Hillsbrad Foothills"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 25,
+    conditions = { Faction = "Horde" },
+    nextRoute = {},
+    steps = {
         {
             Qpart = { [27478] = { 1 }, [27483] = { 1 } },
             DroppableQuest = { MobId = 136490, Qid = 27480, Text = "Arcane Remnant" },
@@ -3689,8 +3753,16 @@ if APR.Faction == "Horde" then
             _index = 352,
         },
     }
+}
 
-    APR.RouteQuestStepList["22-Western Plaguelands"] = {
+APR.RouteQuestStepList["22-Western Plaguelands"] = {
+    label = L["WIP - Western Plaguelands"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Miscellaneous,
+    mapID = 22,
+    conditions = { Faction = "Horde" },
+    nextRoute = {},
+    steps = {
         {
             PickUp = { 26931 },
             Coord = { x = -732.3, y = 1733.8 },
@@ -4668,4 +4740,4 @@ if APR.Faction == "Horde" then
             _index = 171,
         },
     }
-end
+}
