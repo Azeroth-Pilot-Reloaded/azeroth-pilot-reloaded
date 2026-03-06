@@ -1,119 +1,128 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-APR.RouteList.Vanilla = {
-    ["1409-Exile's Reach"] = L["01-10 Exile's Reach"],
+-- Route metadata registry: maps expansion -> { routeKey -> label }
+-- These are routes available to all factions (no faction condition = universal availability).
+-- Alliance-specific and Horde-specific routes are defined in AllianceRoutes.lua / HordeRoutes.lua
+-- and are registered with a Faction condition during InitAllianceRoutes / InitHordeRoutes.
+local neutralRoutesByExpansion = {
+    Vanilla = {
+        ["1409-Exile's Reach"] = L["01-10 Exile's Reach"],
+    },
+
+    TheBurningCrusade = {},
+    WrathOfTheLichKing = {},
+    Cataclysm = {},
+
+    MistsOfPandaria = {
+        ["371-The Jade Forest"]          = L["The Jade Forest"],
+        ["418-Krasarang Wilds"]          = L["Krasarang Wilds"],
+        ["379-Kun-Lai Summit"]           = L["Kun-Lai Summit"],
+        ["390-Isle of Thunder"]          = L["Isle of Thunder"],
+        ["376-Valley of the four winds"] = L["Valley of the four winds"],
+        ["388-Townlong Steppes"]         = L["Townlong Steppes"],
+        ["390-Dread Wastes"]             = L["Dread Wastes"],
+    },
+
+    WarlordsOfDraenor = {},
+
+    Legion = {
+        ["630-Azsuna"]       = L["Legion - Azsuna"],
+        ["641-ValSharah"]    = L["Legion - Val'Sharah"],
+        ["619-Highmountain"] = L["Legion - Highmountain"],
+        ["634-Stormheim"]    = L["Legion - Stormheim"],
+    },
+
+    BattleForAzeroth = {},
+
+    Shadowlands = {
+        ["1648-Z0-TheMaw-Story"]      = L["SL01 - The Maw"],
+        ["1670-Z1-Oribos-Story"]      = L["SL02 - Oribos"],
+        ["1533-Z2-Bastion-Story"]     = L["SL03 - Bastion"],
+        ["1670-Z3-Oribos-Story"]      = L["SL04 - Oribos"],
+        ["1536-Z4-Maldraxxus-Story"]  = L["SL05 - Maldraxxus"],
+        ["1670-Z5-Oribos-Story"]      = L["SL06 - Oribos"],
+        ["1960-Z6-TheMaw-Story"]      = L["SL07 - The Maw"],
+        ["1670-Z7-Oribos-Story"]      = L["SL08 - Oribos"],
+        ["1536-Z8-Maldraxxus-Story"]  = L["SL09 - Maldraxxus"],
+        ["1670-Z9-Oribos-Story"]      = L["SL10 - Oribos"],
+        ["1565-Z10-Ardenweald-Story"] = L["SL11 - Ardenweald"],
+        ["1670-Z11-Oribos-Story"]     = L["SL12 - Oribos"],
+        ["1525-Z12-Revendreth-Story"] = L["SL13 - Revendreth"],
+        ["1543-Z13-TheMaw-Story"]     = L["SL14 - The Maw"],
+        ["1525-Z14-Revendreth-Story"] = L["SL15 - Revendreth"],
+        ["1670-Z15-Oribos-Story"]     = L["SL16 - Oribos"],
+    },
+
+    Dragonflight = {
+        ["2022-DF03N-WakingShores"]  = L["DF03 - Waking Shores - Neutral"],
+        ["2023-DF04-OhnahranPlains"] = L["DF04 - Ohn'Ahran Plains"],
+        ["2024-DF05-AzureSpan"]      = L["DF05 - Azure Span"],
+    },
+
+    TheWarWithin = {
+        ["2451-Arathi-Highlands-Returning-Player"]          = L["TWW - Arathi Highlands - Returning Player"],
+        ["81-TWW-Intro"]                                    = L["TWW - 01 - Intro"],
+        ["2248-TWW-Isle-of-Dorn"]                           = L["TWW - 02 - Isle of Dorn"],
+        ["2214-TWW-Ringing-Deeps"]                          = L["TWW - 03 - Ringing Deeps"],
+        ["2215-TWW-Hallowfall"]                             = L["TWW - 04 - Hallowfall"],
+        ["2255-TWW-Azj-Kahet"]                              = L["TWW - 05 - Azj-Kahet"],
+        ["2248-TWW-Against-the-Current-storyline"]          = L["TWW - 06 - Against the Current Storyline"],
+        ["2248-TWW-Ties-That-Bind-storyline"]               = L["TWW - 07 - Ties That Bind Storyline"],
+        ["2248-TWW-News-from-Below-storyline"]              = L["TWW - 08 - News from Below Storyline"],
+        ["2248-TWW-The-Machines-March-to-War-storyline"]    = L["TWW - 09 - The Machines March to War Storyline"],
+        ["2248-TWW-Light-in-the-Dark-storyline"]            = L["TWW - 10 - Light in the Dark Storyline"],
+        ["2248-TWW-Lingering-Shadow-Storyline"]             = L["TWW - 11 - Lingering Shadow Storyline"],
+        ["2248-TWW-Fate-of-the-Kirin-Tor"]                 = L["TWW - 12 - Fate of the Kirin Tor"],
+        ["2248-TWW-Siren-Isle-Intro"]                       = L["TWW - Siren Isle Intro"],
+        ["2248-TWW-Undermine"]                              = L["TWW - Undermine"],
+        ["2248-TWW-Nightfall"]                              = L["TWW - Nightfall"],
+        ["2248-TWW-Rise-of-the-Red-Dawn-Storyline"]         = L["TWW - Rise of the Red Dawn"],
+        ["2248-TWW-Isle-of-Dorn-campaign-only"]             = L["TWW - Isle of Dorn - Campaign Only"],
+        ["2214-TWW-Ringing-Deeps-campaign-only"]            = L["TWW - Ringing Deeps - Campaign Only"],
+        ["2215-TWW-Hallowfall-campaign-only"]               = L["TWW - Hallowfall - Campaign Only"],
+        ["2255-TWW-Azj-Kahet-campaign-only"]                = L["TWW - Azj Kahet - Campaign Only"],
+        ["2255-TWW-Allied-Races-Earthen"]                   = L["TWW Allied Races Earthen"],
+        ["2248-TWW-Isle-of-Dorn-Full"]                      = L["TWW - Isle of Dorn - All quests - Sojourner"],
+        ["2214-TWW-Ringing-Deeps-Full"]                     = L["TWW - Ringing Deeps - All quests - Sojourner"],
+        ["2248-TWW-K'aresh-Storyline"]                      = L["TWW - K'aresh Storyline"],
+        ["2248-TWW-K'aresh- Visions of a Shadowed Sun - Storyline"] = L["TWW - K'aresh - Visions of a Shadowed Sun"],
+        ["2371-TWW-K'aresh - In Search of Darkness - Storyline"]    = L["TWW - In Search of Darkness"],
+    },
+
+    Midnight = {
+        ["2395-Midnight-Pre-Patch"] = L["Midnight - Pre Patch"],
+        ["2432-Midnight-Intro"]     = L["Midnight - Intro"],
+
+        -- Zone
+        ["2393-Eversong-Woods"]            = L["Midnight - Eversong Woods - sojourner"],
+        ["2393-Eversong-Woods-Campaign-Only"] = L["Midnight - Eversong Woods - Campaign"],
+        ["2395-ZulAman"]                   = L["Midnight - Zul'Aman - sojourner"],
+        ["2395-ZulAman-Campaign-Only"]     = L["Midnight - Zul'Aman - Campaign"],
+        ["2395-Harandar"]                  = L["Midnight - Harandar - sojourner"],
+        ["2395-Harandar-Campaign-Only"]    = L["Midnight - Harandar - Campaign"],
+        ["2395-Voidstorm"]                 = L["Midnight - Voidstorm - sojourner"],
+        ["2395-Voidstorm-Campaign-Only"]   = L["Midnight - Voidstorm - Campaign"],
+
+        ["2395-Arators-Journey"] = L["Midnight - Arators Journey"],
+
+        -- lvl Max
+        ["2395-The-Darkening-Sky"]                   = L["Midnight - The Darkening Sky"],
+        ["2395-Midnight-Prey"]                        = L["Midnight - Prey"],
+        ["2248-Unlock-void-elf-DH"]                   = L["Midnight - Unlock Void Elf Demon Hunter"],
+        ["2395-The-War-of-Light-and-Shadow"]          = L["Midnight - The War of Light and Shadow"],
+        -- ["2395-Mrglgrgl-of-Grglmrgl"]              = L["Midnight - Mrglgrgl of Grglmrgl"],
+        ["2393-Midnight-Glyph-Eversong-Woods"]        = L["Glyph - Eversong Woods"],
+        ["2395-Midnight-Glyph-Zulaman"]               = L["Glyph - Zul'Aman"],
+        ["2413-Midnight-Glyph-Harandar"]              = L["Glyph - Harandar"],
+        ["2405-Midnight-Glyph-Voidstorm"]             = L["Glyph - Voidstorm"],
+        ["2395-Midnight-Profession-Treasures"]        = L["Midnight - Profession Treasures"],
+        ["2413-Midnight-Unlock-daily-Saltherils-Haven"] = L["Midnight - Unlock daily quests in Saltheril's Haven"],
+
+        ["2393-Midnight-Speedrun"] = L["Midnight - Speedrun"],
+    },
+
+    Custom = {},
 }
-
-APR.RouteList.TheBurningCrusade = {}
-APR.RouteList.WrathOfTheLichKing = {}
-APR.RouteList.Cataclysm = {}
-APR.RouteList.MistsOfPandaria = {
-    ["371-The Jade Forest"]          = L["The Jade Forest"],
-    ["418-Krasarang Wilds"]          = L["Krasarang Wilds"],
-    ["379-Kun-Lai Summit"]           = L["Kun-Lai Summit"],
-    ["390-Isle of Thunder"]          = L["Isle of Thunder"],
-    ["376-Valley of the four winds"] = L["Valley of the four winds"],
-    ["388-Townlong Steppes"]         = L["Townlong Steppes"],
-    ["390-Dread Wastes"]             = L["Dread Wastes"],
-}
-
-APR.RouteList.WarlordsOfDraenor = {}
-APR.RouteList.Legion = {
-    ["630-Azsuna"] = L["Legion - Azsuna"],
-    ["641-ValSharah"] = L["Legion - Val'Sharah"],
-    ["619-Highmountain"] = L["Legion - Highmountain"],
-    ["634-Stormheim"] = L["Legion - Stormheim"],
-}
-
-APR.RouteList.BattleForAzeroth = {}
-APR.RouteList.Shadowlands = {
-    ["1648-Z0-TheMaw-Story"] = L["SL01 - The Maw"],
-    ["1670-Z1-Oribos-Story"] = L["SL02 - Oribos"],
-    ["1533-Z2-Bastion-Story"] = L["SL03 - Bastion"],
-    ["1670-Z3-Oribos-Story"] = L["SL04 - Oribos"],
-    ["1536-Z4-Maldraxxus-Story"] = L["SL05 - Maldraxxus"],
-    ["1670-Z5-Oribos-Story"] = L["SL06 - Oribos"],
-    ["1960-Z6-TheMaw-Story"] = L["SL07 - The Maw"],
-    ["1670-Z7-Oribos-Story"] = L["SL08 - Oribos"],
-    ["1536-Z8-Maldraxxus-Story"] = L["SL09 - Maldraxxus"],
-    ["1670-Z9-Oribos-Story"] = L["SL10 - Oribos"],
-    ["1565-Z10-Ardenweald-Story"] = L["SL11 - Ardenweald"],
-    ["1670-Z11-Oribos-Story"] = L["SL12 - Oribos"],
-    ["1525-Z12-Revendreth-Story"] = L["SL13 - Revendreth"],
-    ["1543-Z13-TheMaw-Story"] = L["SL14 - The Maw"],
-    ["1525-Z14-Revendreth-Story"] = L["SL15 - Revendreth"],
-    ["1670-Z15-Oribos-Story"] = L["SL16 - Oribos"],
-}
-
-APR.RouteList.Dragonflight = {
-    ["2022-DF03N-WakingShores"] = L["DF03 - Waking Shores - Neutral"],
-    ["2023-DF04-OhnahranPlains"] = L["DF04 - Ohn'Ahran Plains"],
-    ["2024-DF05-AzureSpan"] = L["DF05 - Azure Span"],
-}
-
-APR.RouteList.TheWarWithin = {
-    ["2451-Arathi-Highlands-Returning-Player"] = L["TWW - Arathi Highlands - Returning Player"],
-    ["81-TWW-Intro"] = L["TWW - 01 - Intro"],
-    ["2248-TWW-Isle-of-Dorn"] = L["TWW - 02 - Isle of Dorn"],
-    ["2214-TWW-Ringing-Deeps"] = L["TWW - 03 - Ringing Deeps"],
-    ["2215-TWW-Hallowfall"] = L["TWW - 04 - Hallowfall"],
-    ["2255-TWW-Azj-Kahet"] = L["TWW - 05 - Azj-Kahet"],
-    ["2248-TWW-Against-the-Current-storyline"] = L["TWW - 06 - Against the Current Storyline"],
-    ["2248-TWW-Ties-That-Bind-storyline"] = L["TWW - 07 - Ties That Bind Storyline"],
-    ["2248-TWW-News-from-Below-storyline"] = L["TWW - 08 - News from Below Storyline"],
-    ["2248-TWW-The-Machines-March-to-War-storyline"] = L["TWW - 09 - The Machines March to War Storyline"],
-    ["2248-TWW-Light-in-the-Dark-storyline"] = L["TWW - 10 - Light in the Dark Storyline"],
-    ["2248-TWW-Lingering-Shadow-Storyline"] = L["TWW - 11 - Lingering Shadow Storyline"],
-    ["2248-TWW-Fate-of-the-Kirin-Tor"] = L["TWW - 12 - Fate of the Kirin Tor"],
-    ["2248-TWW-Siren-Isle-Intro"] = L["TWW - Siren Isle Intro"],
-    ["2248-TWW-Undermine"] = L["TWW - Undermine"],
-    ["2248-TWW-Nightfall"] = L["TWW - Nightfall"],
-    ["2248-TWW-Rise-of-the-Red-Dawn-Storyline"] = L["TWW - Rise of the Red Dawn"],
-    ["2248-TWW-Isle-of-Dorn-campaign-only"] = L["TWW - Isle of Dorn - Campaign Only"],
-    ["2214-TWW-Ringing-Deeps-campaign-only"] = L["TWW - Ringing Deeps - Campaign Only"],
-    ["2215-TWW-Hallowfall-campaign-only"] = L["TWW - Hallowfall - Campaign Only"],
-    ["2255-TWW-Azj-Kahet-campaign-only"] = L["TWW - Azj Kahet - Campaign Only"],
-    ["2255-TWW-Allied-Races-Earthen"] = L["TWW Allied Races Earthen"],
-    ["2248-TWW-Isle-of-Dorn-Full"] = L["TWW - Isle of Dorn - All quests - Sojourner"],
-    ["2214-TWW-Ringing-Deeps-Full"] = L["TWW - Ringing Deeps - All quests - Sojourner"],
-    ["2248-TWW-K'aresh-Storyline"] = L["TWW - K'aresh Storyline"],
-    ["2248-TWW-K'aresh- Visions of a Shadowed Sun - Storyline"] = L["TWW - K'aresh - Visions of a Shadowed Sun"],
-    ["2371-TWW-K'aresh - In Search of Darkness - Storyline"] = L["TWW - In Search of Darkness"],
-}
-
-APR.RouteList.Midnight = {
-    ["2395-Midnight-Pre-Patch"] = L["Midnight - Pre Patch"],
-    ["2432-Midnight-Intro"] = L["Midnight - Intro"],
-
-    -- Zone
-    ["2393-Eversong-Woods"] = L["Midnight - Eversong Woods - sojourner"],
-    ["2393-Eversong-Woods-Campaign-Only"] = L["Midnight - Eversong Woods - Campaign"],
-    ["2395-ZulAman"] = L["Midnight - Zul'Aman - sojourner"],
-    ["2395-ZulAman-Campaign-Only"] = L["Midnight - Zul'Aman - Campaign"],
-    ["2395-Harandar"] = L["Midnight - Harandar - sojourner"],
-    ["2395-Harandar-Campaign-Only"] = L["Midnight - Harandar - Campaign"],
-    ["2395-Voidstorm"] = L["Midnight - Voidstorm - sojourner"],
-    ["2395-Voidstorm-Campaign-Only"] = L["Midnight - Voidstorm - Campaign"],
-
-    ["2395-Arators-Journey"] = L["Midnight - Arators Journey"],
-
-    -- lvl Max
-    ["2395-The-Darkening-Sky"] = L["Midnight - The Darkening Sky"],
-    ["2395-Midnight-Prey"] = L["Midnight - Prey"],
-    ["2248-Unlock-void-elf-DH"] = L["Midnight - Unlock Void Elf Demon Hunter"],
-    ["2395-The-War-of-Light-and-Shadow"] = L["Midnight - The War of Light and Shadow"],
-    -- ["2395-Mrglgrgl-of-Grglmrgl"] = L["Midnight - Mrglgrgl of Grglmrgl"],
-    ["2393-Midnight-Glyph-Eversong-Woods"] = L["Glyph - Eversong Woods"],
-    ["2395-Midnight-Glyph-Zulaman"] = L["Glyph - Zul'Aman"],
-    ["2413-Midnight-Glyph-Harandar"] = L["Glyph - Harandar"],
-    ["2405-Midnight-Glyph-Voidstorm"] = L["Glyph - Voidstorm"],
-    ["2395-Midnight-Profession-Treasures"] = L["Midnight - Profession Treasures"],
-    ["2413-Midnight-Unlock-daily-Saltherils-Haven"] = L["Midnight - Unlock daily quests in Saltheril's Haven"],
-
-    ["2393-Midnight-Speedrun"] = L["Midnight - Speedrun"]
-}
-
-APR.RouteList.Custom = {}
 
 -- Common starting routes
 local startRoutes = {
@@ -266,9 +275,17 @@ local startRoutes = {
 
 
 function APR:InitRoutes()
+    -- First, register all neutral routes (available to all factions)
+    APR:MergeExpansionRoutes(neutralRoutesByExpansion)
+
     --- Faction order -> Neutral -> Alliance / Horde
     if APR.Faction == "Neutral" and (APR.Race == "Pandaren") then
-        APR.RouteList.MistsOfPandaria["378-Panda Starting Zone"] = L["Pandaren Neutral Start"]
+        APR:assignRoutes({
+            expansion = "MistsOfPandaria",
+            key = "378-Panda Starting Zone",
+            label = L["Pandaren Neutral Start"],
+            conditions = { Faction = "Neutral", Race = { "Pandaren" } },
+        })
         return -- do not add other routes for neutral faction
     end
 
@@ -281,9 +298,9 @@ function APR:InitRoutes()
     if APR:IsRemixCharacter() then
         -- specific remix start routes
         table.insert(routesToAssign,
-            { expansion = "MistsOfPandaria", key = "554-MoP Remix Intro", label = L["MoP Remix - Intro"] })
+            { expansion = "MistsOfPandaria", key = "554-MoP Remix Intro", label = L["MoP Remix - Intro"], conditions = { Event = "remix" } })
         table.insert(routesToAssign,
-            { expansion = "Legion", key = "627-Intro-Remix", label = L["Legion - Intro Remix"] })
+            { expansion = "Legion", key = "627-Intro-Remix", label = L["Legion - Intro Remix"], conditions = { Event = "remix" } })
 
         table.insert(routesToAssign, startRoutes[className].remix.hub)
         table.insert(routesToAssign, startRoutes[className].remix.hub2)

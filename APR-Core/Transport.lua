@@ -519,7 +519,8 @@ function APR.transport:GetMeToRightZone(isRetry)
 
     APR:UpdateQuestAndStep()
     local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
-    local currentRouteSteps = APR.RouteQuestStepList[APR.ActiveRoute]
+    local routeData = APR.RouteQuestStepList[APR.ActiveRoute]
+    local currentRouteSteps = routeData and (routeData.steps or routeData)
     local step = currentRouteSteps and currentStepIndex and currentRouteSteps[currentStepIndex] or nil
 
     -- Compute actual distance from player to step coords (not from stale arrow coords).
