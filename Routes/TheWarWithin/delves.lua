@@ -1,3 +1,5 @@
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
 APR.RouteQuestStepList.FUNGAL_FOLLY_DELVE = {
     {
         Coord = { x = -234.80000305176, y = -488.60000610352 },

@@ -1,5 +1,13 @@
-if APR.Faction == "Alliance" then
-    APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
+    label = L["10-70 route by EclipseGlaives"],
+    expansion = APR.EXPANSIONS.Vanilla,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 84,
+    conditions = { Faction = "Alliance" },
+    nextRoute = { "81-TWW-Intro" },
+    steps = {
         {
             PickUp = { 40519 },
             ChromiePick = 10,
@@ -5343,4 +5351,4 @@ if APR.Faction == "Alliance" then
             _index = 808,
         },
     }
-end
+}

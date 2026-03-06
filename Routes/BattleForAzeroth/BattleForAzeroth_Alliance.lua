@@ -1,5 +1,17 @@
-if APR.Faction == "Alliance" then
-    APR.RouteQuestStepList["84-BFA-Stormwind"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+---------------------------------------------------------------------------------------
+--------------------------------- Campaign --------------------------------------------
+---------------------------------------------------------------------------------------
+
+APR.RouteQuestStepList["84-BFA-Stormwind"] = {
+    label = L["BFA01 - Intro"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 84,
+    conditions = { Faction = "Alliance" },
+    nextRoute = { "895-Tiragarde Sound" },
+    steps = {
         {
             PickUp = { 46727 },
             ChromiePick = 15,
@@ -178,8 +190,16 @@ if APR.Faction == "Alliance" then
             _index = 29,
         },
     }
+}
 
-    APR.RouteQuestStepList["895-Tiragarde Sound"] = {
+APR.RouteQuestStepList["895-Tiragarde Sound"] = {
+    label = L["BFA02 - Tiragarde Sound"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 895,
+    conditions = { Faction = "Alliance" },
+    nextRoute = { "942-Stormsong Valley" },
+    steps = {
         {
             Done = { 46728 },
             Coord = { x = -443.2, y = 727.2 },
@@ -4130,8 +4150,16 @@ if APR.Faction == "Alliance" then
             _index = 653,
         },
     }
+}
 
-    APR.RouteQuestStepList["942-Stormsong Valley"] = {
+APR.RouteQuestStepList["942-Stormsong Valley"] = {
+    label = L["BFA03 - Dustvar"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 942,
+    conditions = { Faction = "Alliance" },
+    nextRoute = { "896-Dustvar" },
+    steps = {
         {
             Done = { 51489 },
             Coord = { x = 57.7, y = 1911.7 },
@@ -7013,8 +7041,16 @@ if APR.Faction == "Alliance" then
             _index = 472,
         },
     }
+}
 
-    APR.RouteQuestStepList["896-Dustvar"] = {
+APR.RouteQuestStepList["896-Dustvar"] = {
+    label = L["BFA04 - Stormsong Valley"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 896,
+    conditions = { Faction = "Alliance" },
+    nextRoute = {},
+    steps = {
         {
             Waypoint = 48622,
             Coord = { x = 1859.8, y = -170 },
@@ -10139,8 +10175,20 @@ if APR.Faction == "Alliance" then
             _index = 493,
         },
     }
+}
 
-    APR.RouteQuestStepList["1186-DarkIronDwarf-intro"] = {
+---------------------------------------------------------------------------------------
+--------------------------------- Allied Race -----------------------------------------
+---------------------------------------------------------------------------------------
+
+APR.RouteQuestStepList["1186-DarkIronDwarf-intro"] = {
+    label = L["Dark Iron Dwarf Start"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 1186,
+    conditions = { Faction = "Alliance", Race = APR.RACES.DarkIronDwarf },
+    nextRoute = { "84-DF01A-Stormwind" },
+    steps = {
         {
             PickUp = { 51486 },
             Coord = { x = 525.7, y = 1630.8 },
@@ -10185,8 +10233,16 @@ if APR.Faction == "Alliance" then
             _index = 7,
         },
     }
+}
 
-    APR.RouteQuestStepList["1573-Mechagnome-intro"] = {
+APR.RouteQuestStepList["1573-Mechagnome-intro"] = {
+    label = L["Mechagnome Start"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 1573,
+    conditions = { Faction = "Alliance", Race = APR.RACES.Mechagnome },
+    nextRoute = { "84-DF01A-Stormwind" },
+    steps = {
         {
             PickUp = { 58146 },
             Coord = { x = 618.2, y = 702.9 },
@@ -10231,8 +10287,16 @@ if APR.Faction == "Alliance" then
             _index = 7,
         },
     }
+}
 
-    APR.RouteQuestStepList["1161-KulTiran-intro"] = {
+APR.RouteQuestStepList["1161-KulTiran-intro"] = {
+    label = L["Kul Tiran Start"],
+    expansion = APR.EXPANSIONS.BattleForAzeroth,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 1161,
+    conditions = { Faction = "Alliance", Race = APR.RACES.KulTiran },
+    nextRoute = { "84-DF01A-Stormwind" },
+    steps = {
         {
             PickUp = { 55142 },
             Coord = { x = -483.5, y = 1072.3 },
@@ -10297,4 +10361,4 @@ if APR.Faction == "Alliance" then
             _index = 11,
         },
     }
-end
+}

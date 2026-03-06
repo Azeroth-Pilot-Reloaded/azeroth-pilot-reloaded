@@ -1,5 +1,13 @@
-if APR.Faction == "Alliance" then
-    APR.RouteQuestStepList["84-MoP Intro"] = {
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["84-MoP Intro"] = {
+    label = L["MoP - Intro"],
+    expansion = APR.EXPANSIONS.MistsOfPandaria,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 85,
+    conditions = { Faction = "Alliance" },
+    nextRoute = {"371-The Jade Forest"},
+    steps = {
         {
             PickUp = { 60125 },
             ChromiePick = 8,
@@ -72,8 +80,16 @@ if APR.Faction == "Alliance" then
             _index = 11,
         },
     }
+}
 
-    APR.RouteQuestStepList["371-The Jade Forest"] = {
+APR.RouteQuestStepList["371-The Jade Forest"] = {
+    label = L["The Jade Forest"],
+    expansion = APR.EXPANSIONS.MistsOfPandaria,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 371,
+    conditions = { Faction = "Alliance" },
+    nextRoute = {"376-Valley of the four winds"},
+    steps = {
         {
             PickUp = { 31732 },
             Coord = { x = -1482.8, y = -665.5 },
@@ -2891,8 +2907,16 @@ if APR.Faction == "Alliance" then
             _index = 418,
         },
     }
+}
 
-    APR.RouteQuestStepList["418-Krasarang Wilds"] = {
+APR.RouteQuestStepList["418-Krasarang Wilds"] = {
+    label = L["Krasarang Wilds"],
+    expansion = APR.EXPANSIONS.MistsOfPandaria,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 418,
+    conditions = { Faction = "Alliance" },
+    nextRoute = {"379-Kun-Lai Summit"},
+    steps = {
         {
             PickUp = { 30079 },
             Coord = { x = -628.1, y = -332.2 },
@@ -4050,8 +4074,16 @@ if APR.Faction == "Alliance" then
             _index = 173,
         },
     }
+}
 
-    APR.RouteQuestStepList["379-Kun-Lai Summit"] = {
+APR.RouteQuestStepList["379-Kun-Lai Summit"] = {
+    label = L["Kun-Lai Summit"],
+    expansion = APR.EXPANSIONS.MistsOfPandaria,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 379,
+    conditions = { Faction = "Alliance" },
+    nextRoute = {"388-Townlong Steppes"},
+    steps = {
         {
             PickUp = { 31392 },
             Coord = { x = 479.2, y = -260.4 },
@@ -6570,8 +6602,16 @@ if APR.Faction == "Alliance" then
             _index = 375,
         },
     }
+}
 
-    APR.RouteQuestStepList["390-Isle of Thunder"] = {
+APR.RouteQuestStepList["390-Isle of Thunder"] = {
+    label = L["Isle of Thunder"],
+    expansion = APR.EXPANSIONS.MistsOfPandaria,
+    category = APR.CATEGORIES.Leveling,
+    mapID = 390,
+    conditions = { Faction = "Alliance" },
+    nextRoute = {},
+    steps = {
         {
             PickUp = { 32679 },
             Coord = { x = 353.7, y = 957.8 },
@@ -6829,4 +6869,4 @@ if APR.Faction == "Alliance" then
             _index = 38,
         },
     }
-end
+}
