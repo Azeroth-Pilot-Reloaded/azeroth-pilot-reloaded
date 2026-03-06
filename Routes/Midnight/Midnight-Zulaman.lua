@@ -1655,6 +1655,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         PickUp = { 88985 },
         Coord = { x = -7721.8, y = 4379.8 },
+        DontHaveAchievement = 42045,
         Zone = 2437,
         _index = 223,
     },
@@ -2467,6 +2468,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     {
         Done = { 88985 },
         Coord = { x = -6180.9, y = 6671 },
+        DontHaveAchievement = 42045,
         Zone = 2437,
         _index = 343,
     },
