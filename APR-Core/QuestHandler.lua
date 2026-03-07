@@ -188,28 +188,28 @@ function APR:UpdateStep()
             local activeExpansion = activeRouteData and activeRouteData.expansion
 
             -- Uncomment if needed for new route
-            -- if activeExpansion == "Cataclysm" then
+            -- if activeExpansion == APR.EXPANSIONS.Cataclysm then
             --     checkChromieTimeline(5)
             -- end
-            -- if activeExpansion == "TheBurningCrusade" then
+            -- if activeExpansion == APR.EXPANSIONS.TheBurningCrusade then
             --     checkChromieTimeline(6)
             -- end
-            -- if activeExpansion == "WrathOfTheLichKing" then
+            -- if activeExpansion == APR.EXPANSIONS.WrathOfTheLichKing then
             --     checkChromieTimeline(7)
             -- end
-            -- if activeExpansion == "MistsOfPandaria" then
+            -- if activeExpansion == APR.EXPANSIONS.MistsOfPandaria then
             --     checkChromieTimeline(8)
             -- end
-            if activeExpansion == "WarlordsOfDraenor" then
+            if activeExpansion == APR.EXPANSIONS.WarlordsOfDraenor then
                 checkChromieTimeline(9)
             end
-            -- if activeExpansion == "Legion" then
+            -- if activeExpansion == APR.EXPANSIONS.Legion then
             --     checkChromieTimeline(10)
             -- end
-            if activeExpansion == "BattleForAzeroth" then
+            if activeExpansion == APR.EXPANSIONS.BattleForAzeroth then
                 checkChromieTimeline(15)
             end
-            if activeExpansion == "Shadowlands" then
+            if activeExpansion == APR.EXPANSIONS.Shadowlands then
                 checkChromieTimeline(14)
             end
         end

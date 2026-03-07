@@ -72,3 +72,12 @@ APR.RACES = {
     EarthenDwarf = "EarthenDwarf",
     Harronir = "Harronir"
 }
+
+function APR:GetEnumKeyByValue(enum, value)
+    for key, val in pairs(enum) do
+        if val == value then
+            return key
+        end
+    end
+    return nil
+end

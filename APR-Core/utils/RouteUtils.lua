@@ -394,7 +394,7 @@ function APR:GetRouteMapIDsAndName(targetedRoute)
     for routeFileName, routeData in pairs(self.RouteQuestStepList) do
         if type(routeData) == "table" and routeData.expansion and routeData.label then
             local routeName = routeData.label
-            local expansion = routeData.expansion
+            local expansion = self:GetEnumKeyByValue(APR.EXPANSIONS, routeData.expansion)
             if routeName == targetedRoute or routeFileName == targetedRoute then
                 local mapID = string.match(routeFileName, "^(.-)-")
                 return self.ZonesData.ExtensionRouteMaps[self.Faction][expansion] or {}, tonumber(mapID, 10),
