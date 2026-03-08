@@ -163,35 +163,12 @@ function APR.fillersFrame:AddFillerStep(questID, textObjective, objectiveIndex)
     -- Add tooltip
     objectiveContainer:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-        GameTooltip:AddLine(L["QUEST_INFO"])
-
-        local questIDText = (questID ~= nil) and tostring(questID) or "?"
-        local questIDNum = tonumber(questIDText)
-
-        GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questIDText, unpack(APR.Color.white))
-
-        if questIDNum then
-            local questTitle = C_QuestLog.GetTitleForQuestID(questIDNum)
-            if questTitle then
-                GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. questTitle, unpack(APR.Color.white))
-            end
-        end
-
-        GameTooltip:AddLine(
-            "|c33ecc00f" ..
-            OBJECTIVES_LABEL .. "|r: " .. tostring(objectiveIndex) .. " - " .. tostring(textObjective),
-            1, 1, 1, true
-        )
-
-        local isCampaign = questIDNum and APR:IsCampaignQuest(questIDNum)
-        if isCampaign then
-            GameTooltip:AddLine(
-                "|c33ecc00f" .. L["Campaign"] .. "|r: " ..
-                (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
-                    APR:WrapTextInColorCode(NO, "cce0000f")),
-                unpack(APR.Color.white)
-            )
-        end
+        APR:AddQuestTooltipDetails(GameTooltip, questID, {
+            objectiveIndex = objectiveIndex,
+            objectiveText = textObjective,
+            includeCampaign = true,
+            includeStoryline = true,
+        })
 
         GameTooltip:Show()
     end)

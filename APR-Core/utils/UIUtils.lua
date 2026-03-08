@@ -3,6 +3,113 @@
     Keeping them isolated prevents the base Utils.lua from mixing display logic with technical helpers.
 ]]
 
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+local function getStatusHex(name, fallback)
+    return (APR.HEXColor and APR.HEXColor[name]) or fallback
+end
+
+local function tooltipBoolean(value)
+    local greenHex = getStatusHex("green")
+    local redHex = getStatusHex("red")
+    return value and APR:WrapTextInColorCode(YES, greenHex) or APR:WrapTextInColorCode(NO, redHex)
+end
+
+local function yellowKey(keyText)
+    return APR:WrapTextInColorCode(tostring(keyText), getStatusHex("yellow"))
+end
+
+local function addKeyValueLine(tooltip, keyText, valueText)
+    tooltip:AddLine(yellowKey(keyText) .. ": " .. tostring(valueText), unpack(APR.Color.white))
+end
+
+local function addStorylineLine(tooltip, questIDNum)
+    if questIDNum then
+        local storylineName, storylineCompleted = APR:GetQuestStorylineInfo(questIDNum)
+        if storylineName then
+            local text = storylineName
+            if storylineCompleted then
+                text = text .. " (" .. APR:WrapTextInColorCode(L["COMPLETED"], getStatusHex("green")) .. ")"
+            end
+            addKeyValueLine(tooltip, L["Storyline"], text)
+        end
+    end
+end
+
+local function addScenarioDetails(tooltip, scenarioRef, objectiveIndex, objectiveText)
+    addKeyValueLine(tooltip, SCENARIOS .. " " .. ID, scenarioRef)
+
+    local scenarioInfo = C_ScenarioInfo and C_ScenarioInfo.GetInfo and C_ScenarioInfo.GetInfo()
+    if type(scenarioInfo) == "table" then
+        local instanceName = rawget(scenarioInfo, "instanceName") or rawget(scenarioInfo, "uiMapName")
+        local scenarioID = rawget(scenarioInfo, "scenarioID") or rawget(scenarioInfo, "id")
+        local scenarioName = rawget(scenarioInfo, "title") or rawget(scenarioInfo, "name")
+
+        if instanceName then
+            addKeyValueLine(tooltip, "INSTANCE", instanceName)
+        end
+        if scenarioID then
+            addKeyValueLine(tooltip, L["Scenario ID"], scenarioID)
+        end
+        if scenarioName then
+            addKeyValueLine(tooltip, L["Scenario Name"], scenarioName)
+        end
+    end
+
+    if objectiveIndex ~= nil and objectiveText ~= nil then
+        addKeyValueLine(tooltip, OBJECTIVES_LABEL, tostring(objectiveIndex) .. " - " .. tostring(objectiveText))
+    end
+end
+
+--- Add quest/scenario tooltip details.
+--- @param tooltip table GameTooltip-like object
+--- @param questID string|number
+--- @param options table|nil
+function APR:AddQuestTooltipDetails(tooltip, questID, options)
+    if not tooltip then
+        return
+    end
+
+    options = options or {}
+
+    if options.addHeader ~= false then
+        tooltip:AddLine(L["QUEST_INFO"])
+    end
+
+    local questIDText = (questID ~= nil) and tostring(questID) or "?"
+    local questIDNum = tonumber(questIDText)
+    local objectiveIndex = options.objectiveIndex
+    local objectiveText = options.objectiveText
+
+    if options.isScenario then
+        addScenarioDetails(tooltip, questIDText, objectiveIndex, objectiveText)
+        return
+    end
+
+    -- Order requested: ID, Name, StorylineName, Campaign, Objectives
+    addKeyValueLine(tooltip, ID, questIDText)
+
+    if questIDNum then
+        local questTitle = C_QuestLog.GetTitleForQuestID(questIDNum)
+        if questTitle then
+            addKeyValueLine(tooltip, NAME, questTitle)
+        end
+    end
+
+    if options.includeStoryline ~= false then
+        addStorylineLine(tooltip, questIDNum)
+    end
+
+    if options.includeCampaign ~= false then
+        local isCampaign = questIDNum and APR:IsCampaignQuest(questIDNum)
+        addKeyValueLine(tooltip, L["Campaign"], tooltipBoolean(isCampaign and true or false))
+    end
+
+    if objectiveIndex ~= nil and objectiveText ~= nil then
+        addKeyValueLine(tooltip, OBJECTIVES_LABEL, tostring(objectiveIndex) .. " - " .. tostring(objectiveText))
+    end
+end
+
 --- Performs the "Love" action for the APR module.
 -- Updates APR color scheme for Saint Valentin (Feb 14th).
 function APR:Love()
