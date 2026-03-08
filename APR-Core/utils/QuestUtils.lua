@@ -232,6 +232,41 @@ function APR:IsCampaignQuest(questID)
     return questInfo and questInfo.campaignID ~= nil
 end
 
+function APR:GetQuestStorylineInfo(questID)
+    local questIDNum = tonumber(questID)
+    if not questIDNum then
+        return nil, nil
+    end
+
+    local lineInfo = C_QuestLine and C_QuestLine.GetQuestLineInfo(questIDNum) or nil
+    if lineInfo then
+        return lineInfo.questLineName, lineInfo.isAccountCompleted
+    end
+    return nil, nil
+end
+
+function APR:GetActiveSojournerStatus()
+    local routeData = self.RouteQuestStepList and self.ActiveRoute and self.RouteQuestStepList[self.ActiveRoute]
+    if not routeData or routeData.category ~= APR.CATEGORIES.Sojourner or not routeData.sojournerAchievementID then
+        return nil
+    end
+
+    local achievementID = routeData.sojournerAchievementID
+    local achievementName = achievementID
+    if GetAchievementInfo then
+        local _, name = GetAchievementInfo(achievementID)
+        if name and name ~= "" then
+            achievementName = name
+        end
+    end
+
+    return {
+        achievementID = achievementID,
+        achievementName = achievementName,
+        completedOnAccount = self:HasAchievement(achievementID),
+    }
+end
+
 --- Determine if a step is a campaign quest step.
 --- Fast path: checks the explicit `IsCampaignQuest` flag on the step.
 --- Fallback: extracts quest IDs via `GetStepQuestIDs` and queries the API.

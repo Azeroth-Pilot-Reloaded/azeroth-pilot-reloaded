@@ -37,7 +37,8 @@ APR.HEXColor = {
     white = "ffffff",
     black = "000000",
     red = "ff3333",
-    green = "00ff00"
+    green = "00ff00",
+    yellow = "33ecc00f"
 }
 
 -- Quest

@@ -567,59 +567,13 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
     if not noTooltip then
         objectiveContainer:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-            GameTooltip:AddLine(L["QUEST_INFO"])
-
-            -- Normalize questID for display vs API calls
-            local questIDText = (questID ~= nil) and tostring(questID) or "?"
-            local questIDNum  = tonumber(questIDText) -- may be nil if non-numeric string
-
-            if isScenario then
-                GameTooltip:AddLine("|c33ecc00f" .. SCENARIOS .. " " .. ID .. ": |r" .. questIDText,
-                    unpack(APR.Color.white))
-
-                local scenarInfo = C_ScenarioInfo and C_ScenarioInfo.GetScenarioStepInfo and
-                    C_ScenarioInfo.GetScenarioStepInfo()
-                local scenarTitle = scenarInfo and scenarInfo.title
-                local scenarStepID = scenarInfo and scenarInfo.stepID
-
-                if scenarTitle then
-                    GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. scenarTitle, unpack(APR.Color.white))
-                end
-                if scenarStepID then
-                    GameTooltip:AddLine("|c33ecc00fStepID|r: " .. scenarStepID, unpack(APR.Color.white))
-                end
-
-                GameTooltip:AddLine(
-                    "|c33ecc00f" ..
-                    OBJECTIVES_LABEL .. "|r: " .. tostring(objectiveIndex) .. " - " .. tostring(textObjective),
-                    1, 1, 1, true
-                )
-            else
-                GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questIDText, unpack(APR.Color.white))
-
-                -- Title only if we have a numeric ID
-                if questIDNum then
-                    local questTitle = C_QuestLog.GetTitleForQuestID(questIDNum)
-                    if questTitle then
-                        GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. questTitle, unpack(APR.Color.white))
-                    end
-                end
-
-                GameTooltip:AddLine(
-                    "|c33ecc00f" ..
-                    OBJECTIVES_LABEL .. "|r: " .. tostring(objectiveIndex) .. " - " .. tostring(textObjective),
-                    1, 1, 1, true
-                )
-
-                -- Campaign flag
-                local isCampaign = questIDNum and APR:IsCampaignQuest(questIDNum)
-                GameTooltip:AddLine(
-                    "|c33ecc00f" .. L["Campaign"] .. "|r: " ..
-                    (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
-                        APR:WrapTextInColorCode(NO, "cce0000f")),
-                    unpack(APR.Color.white)
-                )
-            end
+            APR:AddQuestTooltipDetails(GameTooltip, questID, {
+                isScenario = isScenario,
+                objectiveIndex = objectiveIndex,
+                objectiveText = textObjective,
+                includeCampaign = not isScenario,
+                includeStoryline = not isScenario,
+            })
 
             GameTooltip:Show()
         end)
@@ -762,23 +716,14 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
         questFontHeight = questFontHeight + questFont:GetStringHeight()
         questFont:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-            GameTooltip:AddLine(L["QUEST_INFO"])
             if questID then
-                GameTooltip:AddLine("|c33ecc00f" .. ID .. ": |r" .. questID, unpack(APR.Color.white))
+                APR:AddQuestTooltipDetails(GameTooltip, questID, {
+                    includeCampaign = true,
+                    includeStoryline = true,
+                })
+            else
+                GameTooltip:AddLine(L["QUEST_INFO"])
             end
-            if itemID then
-                GameTooltip:AddLine("|c33ecc00fItem ID: |r" .. itemID, unpack(APR.Color.white))
-            end
-            GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. (displayName or UNKNOWN), unpack(APR.Color.white))
-
-            -- Campaign flag – always displayed (Yes / No)
-            local isCampaign = questID and APR:IsCampaignQuest(questID)
-            GameTooltip:AddLine(
-                "|c33ecc00f" .. L["Campaign"] .. "|r: " ..
-                (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
-                    APR:WrapTextInColorCode(NO, "cce0000f")),
-                unpack(APR.Color.white)
-            )
 
             GameTooltip:Show()
         end)
