@@ -214,8 +214,19 @@ function APR:TrackQuest(questID)
 end
 
 --- Detect if the provided questID belongs to a campaign quest line.
+-- Uses C_CampaignInfo.IsCampaignQuest (works without quest in log) as primary,
+-- falls back to quest log info if the API is unavailable.
 function APR:IsCampaignQuest(questID)
-    local questIndex = C_QuestLog.GetLogIndexForQuestID(questID)
+    local questIDNum = tonumber(questID)
+    if not questIDNum then return false end
+
+    -- Primary: direct API check (available since 8.0.1, works without quest in log)
+    if C_CampaignInfo and C_CampaignInfo.IsCampaignQuest then
+        return C_CampaignInfo.IsCampaignQuest(questIDNum)
+    end
+
+    -- Fallback: quest log based check (requires quest to be in log)
+    local questIndex = C_QuestLog.GetLogIndexForQuestID(questIDNum)
     if not questIndex then return false end
     local questInfo = C_QuestLog.GetInfo(questIndex)
     return questInfo and questInfo.campaignID ~= nil
@@ -272,7 +283,7 @@ function APR:MissingQuest(questId, objectiveId)
     else
         questTextToAdd = L["ERROR"] .. " - " .. L["MISSING_Q"] .. ": " .. questLabel
     end
-    APR.currentStep:AddQuestSteps(questId, questTextToAdd, objectiveId, false, true)
+    APR.currentStep:AddQuestSteps(questId, questTextToAdd, objectiveId, false, false)
 end
 
 --- Reset the local missing quest cache.

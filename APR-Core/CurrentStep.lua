@@ -611,16 +611,14 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
                     1, 1, 1, true
                 )
 
-                -- Campaign flag only if we have a numeric ID
+                -- Campaign flag
                 local isCampaign = questIDNum and APR:IsCampaignQuest(questIDNum)
-                if isCampaign then
-                    GameTooltip:AddLine(
-                        "|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
-                        (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
-                            APR:WrapTextInColorCode(NO, "cce0000f")),
-                        unpack(APR.Color.white)
-                    )
-                end
+                GameTooltip:AddLine(
+                    "|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
+                    (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
+                        APR:WrapTextInColorCode(NO, "cce0000f")),
+                    unpack(APR.Color.white)
+                )
             end
 
             GameTooltip:Show()
@@ -772,6 +770,16 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
                 GameTooltip:AddLine("|c33ecc00fItem ID: |r" .. itemID, unpack(APR.Color.white))
             end
             GameTooltip:AddLine("|c33ecc00f" .. NAME .. "|r: " .. (displayName or UNKNOWN), unpack(APR.Color.white))
+
+            -- Campaign flag – always displayed (Yes / No)
+            local isCampaign = questID and APR:IsCampaignQuest(questID)
+            GameTooltip:AddLine(
+                "|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
+                (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
+                    APR:WrapTextInColorCode(NO, "cce0000f")),
+                unpack(APR.Color.white)
+            )
+
             GameTooltip:Show()
         end)
         questFont:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
