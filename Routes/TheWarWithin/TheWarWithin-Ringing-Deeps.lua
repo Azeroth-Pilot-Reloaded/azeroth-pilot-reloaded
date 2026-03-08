@@ -3573,6 +3573,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
     label = L["TWW - Ringing Deeps - All quests - Sojourner"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     category = APR.CATEGORIES.Sojourner,
+    sojournerAchievementID = 19559,
     mapID = 2214,
     conditions = { Level = 70 },
     nextRoute = {},

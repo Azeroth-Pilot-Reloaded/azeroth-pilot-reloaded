@@ -809,7 +809,7 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
         },
         {
             Coord = { x = 1849.2, y = 964.2 },
-            Group = { Number = 3, QuestId = 51384 },
+            Group = { Number = 3, questID = 51384 },
             _index = 104,
         },
         {
@@ -1148,7 +1148,7 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
         },
         {
             Coord = { x = 1859.9, y = 1176 },
-            Group = { Number = 3, QuestId = 51368 },
+            Group = { Number = 3, questID = 51368 },
             _index = 159,
         },
         {
@@ -1597,7 +1597,7 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
         },
         {
             Coord = { x = 29.3, y = 1106.4 },
-            Group = { Number = 3, QuestId = 51358 },
+            Group = { Number = 3, questID = 51358 },
             _index = 232,
         },
         {
@@ -2056,7 +2056,7 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
         },
         {
             Coord = { x = 1049.4, y = 907.5 },
-            Group = { Number = 3, QuestId = 51367 },
+            Group = { Number = 3, questID = 51367 },
             _index = 311,
         },
         {
@@ -2753,7 +2753,7 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
         },
         {
             Coord = { x = -658.2, y = -926.8 },
-            Group = { Number = 3, QuestId = 49069 },
+            Group = { Number = 3, questID = 49069 },
             _index = 421,
         },
         {
@@ -5073,7 +5073,7 @@ APR.RouteQuestStepList["942-Stormsong Valley"] = {
         },
         {
             Coord = { x = 58.2, y = 3066.1 },
-            Group = { Number = 3, QuestId = 51217 },
+            Group = { Number = 3, questID = 51217 },
             _index = 153,
         },
         {
@@ -5411,7 +5411,7 @@ APR.RouteQuestStepList["942-Stormsong Valley"] = {
         },
         {
             Coord = { x = 727.6, y = 2820.4 },
-            Group = { Number = 3, QuestId = 49730 },
+            Group = { Number = 3, questID = 49730 },
             _index = 209,
         },
         {
@@ -5541,7 +5541,7 @@ APR.RouteQuestStepList["942-Stormsong Valley"] = {
         },
         {
             Coord = { x = 690.4, y = 3342.3 },
-            Group = { Number = 3, QuestId = 52876 },
+            Group = { Number = 3, questID = 52876 },
             _index = 230,
         },
         {
@@ -6467,7 +6467,7 @@ APR.RouteQuestStepList["942-Stormsong Valley"] = {
         },
         {
             Coord = { x = 1601.7, y = 2586.8 },
-            Group = { Number = 3, QuestId = 51204 },
+            Group = { Number = 3, questID = 51204 },
             _index = 375,
         },
         {
@@ -7273,7 +7273,7 @@ APR.RouteQuestStepList["896-Dustvar"] = {
         },
         {
             Coord = { x = 2097.5, y = -79.1 },
-            Group = { Number = 3, QuestId = 51547 },
+            Group = { Number = 3, questID = 51547 },
             _index = 36,
         },
         {
@@ -8490,7 +8490,7 @@ APR.RouteQuestStepList["896-Dustvar"] = {
         },
         {
             Coord = { x = 2753.9, y = -291.8 },
-            Group = { Number = 3, QuestId = 52033 },
+            Group = { Number = 3, questID = 52033 },
             _index = 230,
         },
         {
@@ -8906,7 +8906,7 @@ APR.RouteQuestStepList["896-Dustvar"] = {
         },
         {
             Coord = { x = 3756.1, y = -1501.8 },
-            Group = { Number = 3, QuestId = 51390 },
+            Group = { Number = 3, questID = 51390 },
             QuestLineSkip = 49896,
             _index = 295,
         },
@@ -9656,7 +9656,7 @@ APR.RouteQuestStepList["896-Dustvar"] = {
         },
         {
             Coord = { x = 3499.9, y = 109.2 },
-            Group = { Number = 3, QuestId = 51356 },
+            Group = { Number = 3, questID = 51356 },
             _index = 406,
         },
         {
@@ -10325,7 +10325,7 @@ APR.RouteQuestStepList["1161-KulTiran-intro"] = {
             _index = 4,
         },
         {
-            TakePortal = { QuestID = 55142, ZoneId = 84 },
+            TakePortal = { questID = 55142, ZoneId = 84 },
             Coord = { x = -532.4, y = 1127.9 },
             Range = 5,
             Zone = 1161,

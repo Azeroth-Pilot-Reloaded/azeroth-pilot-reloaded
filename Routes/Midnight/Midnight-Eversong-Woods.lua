@@ -4,6 +4,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
     label = L["Midnight - Eversong Woods - sojourner"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Sojourner,
+    sojournerAchievementID = 42045,
     mapID = 2393,
     conditions = { Level = 80 },
     nextRoute = { "2395-Harandar" },

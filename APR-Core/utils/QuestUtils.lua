@@ -232,6 +232,28 @@ function APR:IsCampaignQuest(questID)
     return questInfo and questInfo.campaignID ~= nil
 end
 
+--- Determine if a step is a campaign quest step.
+--- Fast path: checks the explicit `IsCampaignQuest` flag on the step.
+--- Fallback: extracts quest IDs via `GetStepQuestIDs` and queries the API.
+---@param step table the step table from the route definition
+---@return boolean
+function APR:IsStepCampaignQuest(step)
+    if not step then return false end
+
+    -- Fast path: explicit flag from route definition
+    if step.IsCampaignQuest then return true end
+
+    -- Fallback: check via API using extracted quest IDs
+    local questIDs = self:GetStepQuestIDs(step)
+    for _, questID in ipairs(questIDs) do
+        if self:IsCampaignQuest(questID) then
+            return true
+        end
+    end
+
+    return false
+end
+
 --- Remove a quest from the log.
 -- This function wraps the abandonment flow to keep call sites concise.
 function APR:LeaveQuest(questIds)

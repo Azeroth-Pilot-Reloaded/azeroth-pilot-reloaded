@@ -51,10 +51,14 @@ function APR:GetTotalSteps(route, updateTotal)
     updateTotal = updateTotal == nil -- default to true if not specified
     local stepIndex = 0
     local steps = self:GetRouteSteps(route)
+    local sojournerSkipActive = self:IsSojournerSkipActive(route)
     for _, step in pairs(steps) do
         -- Hide step for Faction, Race, Class, Achievement,...
         if self:StepFilterQoL(step) then
-            stepIndex = stepIndex + 1
+            -- Also hide sojourner-skipped campaign steps
+            if not (sojournerSkipActive and self:IsStepCampaignQuest(step)) then
+                stepIndex = stepIndex + 1
+            end
         end
     end
     if updateTotal then
@@ -84,11 +88,14 @@ function APR:CountSkippedStepsBefore(route, beforeIndex)
 
     local skippedCount = 0
     local stepList = self:GetRouteSteps(route)
+    local sojournerSkipActive = self:IsSojournerSkipActive(route)
     if #stepList > 0 then
         for i = 1, math.min(beforeIndex - 1, #stepList) do
             local step = stepList[i]
             -- Count only steps that are filtered (should be skipped/hidden)
             if self:StepFilterQuestHandler(step) then
+                skippedCount = skippedCount + 1
+            elseif sojournerSkipActive and self:IsStepCampaignQuest(step) then
                 skippedCount = skippedCount + 1
             end
         end

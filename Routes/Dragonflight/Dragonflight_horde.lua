@@ -47,7 +47,7 @@ APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
             _index = 5,
         },
         {
-            TakePortal = { QuestID = 93086, ZoneId = 1 },
+            TakePortal = { questID = 93086, ZoneId = 1 },
             Coord = { x = -4271.5, y = 2036.8 },
             ZoneStepTrigger = { Range = 15, x = -4772.9, y = 1400.2 },
             Zone = 85,
@@ -115,7 +115,7 @@ APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
             _index = 15,
         },
         {
-            TakePortal = { QuestID = 65444, ZoneId = 2022 },
+            TakePortal = { questID = 65444, ZoneId = 2022 },
             Qpart = { [65444] = { 1 } },
             Coord = { x = -4911.4, y = 1363.4 },
             Zone = 1,
@@ -140,7 +140,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 2022,
     conditions = { Faction = "Horde" },
-    nextRoute = {"2022-DF03N-WakingShores"},
+    nextRoute = { "2022-DF03N-WakingShores" },
     steps = {
         {
             Qpart = { [65444] = { 2 } },

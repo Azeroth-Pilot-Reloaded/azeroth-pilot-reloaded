@@ -4792,7 +4792,7 @@ APR.RouteQuestStepList["2248-TWW-K'aresh-Storyline"] = {
             _index = 15,
         },
         {
-            TakePortal = { QuestID = 84958, ZoneId = 2371 },
+            TakePortal = { questID = 84958, ZoneId = 2371 },
             Coord = { x = -458.4, y = -1313.7 },
             Range = 5,
             Zone = 2371,
@@ -7284,7 +7284,7 @@ APR.RouteQuestStepList["2248-TWW-K'aresh- Visions of a Shadowed Sun - Storyline"
             _index = 128,
         },
         {
-            TakePortal = { QuestID = 84949, ZoneId = 2248 },
+            TakePortal = { questID = 84949, ZoneId = 2248 },
             Coord = { x = -498.5, y = -1655.8 },
             ZoneStepTrigger = { Range = 15, x = -2384.8, y = 2969.6 },
             Zone = 2371,
@@ -7795,7 +7795,7 @@ APR.RouteQuestStepList["2248-TWW-Earthen"] = {
             _index = 22,
         },
         {
-            TakePortal = { QuestID = 81888, ZoneId = 85 },
+            TakePortal = { questID = 81888, ZoneId = 85 },
             Coord = { x = 467.1, y = 1413.6 },
             Range = 2,
             Faction = "Horde",
@@ -7840,7 +7840,7 @@ APR.RouteQuestStepList["2248-TWW-Earthen"] = {
             _index = 28,
         },
         {
-            TakePortal = { QuestID = 81886, ZoneId = 84 },
+            TakePortal = { questID = 81886, ZoneId = 84 },
             Coord = { x = 465.7, y = 1452 },
             Range = 2,
             Faction = "Alliance",

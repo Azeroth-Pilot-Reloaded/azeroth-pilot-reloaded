@@ -351,9 +351,11 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     local currentDisplayIndex = nil
     local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
     local activeRouteSteps = activeRouteData and activeRouteData.steps or {}
+    local sojournerSkipActive = APR:IsSojournerSkipActive()
     for rawIndex, step in ipairs(activeRouteSteps) do
         -- Hide step for Faction, Race, Class, Achievement
-        if APR:StepFilterQoL(step) then
+        -- Also hide sojourner-skipped campaign steps
+        if APR:StepFilterQoL(step) and not (sojournerSkipActive and APR:IsStepCampaignQuest(step)) then
             local container
             local activeQuestId
             local isCurrentStep = rawIndex == currentStepIndex
@@ -534,7 +536,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     L["GET_TREASURE"], questInfo, color, isCurrentStep)
             elseif step.Group then
-                local questID = step.Group.QuestId
+                local questID = step.Group.questID
                 local questInfo = { { questID = questID, questName = getQuestName(questID) } }
                 local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
@@ -673,7 +675,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     leaveText, questInfo, color, isCurrentStep)
             elseif step.TakePortal then
                 local portalData = step.TakePortal
-                local questID = portalData.QuestID
+                local questID = portalData.questID
                 local zoneId = portalData.ZoneId
                 local currentMapID = C_Map.GetBestMapForUnit("player")
                 local parentMapID = APR:GetPlayerParentMapID()
