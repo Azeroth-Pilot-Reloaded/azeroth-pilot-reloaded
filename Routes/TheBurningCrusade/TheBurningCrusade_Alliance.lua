@@ -5,7 +5,7 @@ APR.RouteQuestStepList["97-AmmenVale"] = {
     expansion = APR.EXPANSIONS.TheBurningCrusade,
     category = APR.CATEGORIES.Leveling,
     mapID = 97,
-    conditions = { Level = 80 },
+    conditions = { Faction = "Alliance", Race = APR.RACES.Draenei },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },
     steps = {
         {

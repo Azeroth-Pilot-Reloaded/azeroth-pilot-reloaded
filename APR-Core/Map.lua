@@ -348,7 +348,7 @@ function APR.map:AddMapPins()
         local unwantedStepIndex = 0
         local zoneHint = APR:GetPlayerParentMapID()
         local routeData = APR.RouteQuestStepList[APR.ActiveRoute]
-        local routeSteps = routeData.steps or routeData
+        local routeSteps = routeData.steps
         for stepId, step in pairs(routeSteps) do
             if not APR:StepFilterQoL(step) then unwantedStepIndex = unwantedStepIndex + 1 end
             local stepCoord = APR:GetStepCoord(step, mapID, zoneHint)

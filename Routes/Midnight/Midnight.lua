@@ -287,7 +287,7 @@ APR.RouteQuestStepList["2395-Midnight-Pre-Patch"] = {
 APR.RouteQuestStepList["2432-Midnight-Intro"] = {
     label = L["Midnight - Intro"],
     expansion = APR.EXPANSIONS.Midnight,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2432,
     conditions = { Level = 80 },
     nextRoute = {"2393-Midnight-Speedrun", "2393-Eversong-Woods", "2393-Eversong-Woods-Campaign-Only"},
@@ -999,7 +999,7 @@ APR.RouteQuestStepList["2432-Midnight-Intro"] = {
 APR.RouteQuestStepList["2395-Arators-Journey"] = {
     label = L["Midnight - Arators Journey"],
     expansion = APR.EXPANSIONS.Midnight,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 80 },
     nextRoute = {"2395-Harandar", "2395-Harandar-Campaign-Only"},
@@ -2278,7 +2278,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
 APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
     label = L["Midnight - The War of Light and Shadow"],
     expansion = APR.EXPANSIONS.Midnight,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 90 },
     nextRoute = { "2413-Midnight-Unlock-daily-Saltherils-Haven" },

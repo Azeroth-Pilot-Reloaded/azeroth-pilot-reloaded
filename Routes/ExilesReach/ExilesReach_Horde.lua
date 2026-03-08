@@ -1,11 +1,11 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-APR.RouteQuestStepList["1409-Exile's Reach"] = {
+APR.RouteQuestStepList["1409-Exile's Reach - H"] = {
     label = L["01-10 Exile's Reach"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
     mapID = 1409,
-    conditions = { Faction = "Horde" },
+    conditions = { Faction = "Horde", Zones = { 1409, 1726, 1727, 1728 } },
     nextRoute = { "85-DF01H-Orgrimmar" },
     steps = {
         {

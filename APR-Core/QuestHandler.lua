@@ -1012,11 +1012,21 @@ function APR:UpdateStep()
                 APR:SetHeirloomWarning(false)
                 APR.heirloom:RefreshFrameAnchor()
             end
-            APRZoneCompleted[APR.PlayerID][currentRouteName] = true
-            tremove(APRCustomPath[APR.PlayerID], index)
-            APR.routeconfig:CheckIsCustomPathEmpty()
-            APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-            C_Timer.After(1, function() APR.routeconfig:SendMessage("APR_Custom_Path_Update") end) -- double send to try to avoid blank frame
+
+            -- Capture the completed route key BEFORE removing it
+            local completedRouteKey = APR.ActiveRoute
+
+            -- Define the route completion finalization as a callback
+            local function finalizeRouteCompletion()
+                APRZoneCompleted[APR.PlayerID][currentRouteName] = true
+                tremove(APRCustomPath[APR.PlayerID], index)
+                APR.routeconfig:CheckIsCustomPathEmpty()
+                APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+                C_Timer.After(1, function() APR.routeconfig:SendMessage("APR_Custom_Path_Update") end)
+            end
+
+            -- Suggest next routes immediately; finalize after selection/skip/cancel
+            APR:SuggestNextRoutes(completedRouteKey, finalizeRouteCompletion)
             return
         end
 

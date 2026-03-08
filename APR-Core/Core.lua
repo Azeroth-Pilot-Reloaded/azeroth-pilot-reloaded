@@ -96,11 +96,6 @@ function APR:OnInitialize()
     APRGossipValidated = APRGossipValidated or {}
     APRGossipValidated[self.PlayerID] = APRGossipValidated[self.PlayerID] or {}
 
-    --Init Routes
-    APR:InitRoutes()
-    APR:InitHordeRoutes()
-    APR:InitAllianceRoutes()
-
     -- Init current step frame
     self.currentStep:CurrentStepFrameOnInit()
 

@@ -6,7 +6,7 @@ APR.RouteQuestStepList["85-MoP Intro"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 85,
     conditions = { Faction = "Horde" },
-    nextRoute = {"371-The Jade Forest"},
+    nextRoute = {"371-The Jade Forest - H"},
     steps = {
         {
             PickUp = { 60126 },
@@ -137,10 +137,10 @@ APR.RouteQuestStepList["85-MoP Intro"] = {
     }
 }
 
-APR.RouteQuestStepList["371-The Jade Forest"] = {
+APR.RouteQuestStepList["371-The Jade Forest - H"] = {
     label = L["The Jade Forest"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 371,
     conditions = { Faction = "Horde" },
     nextRoute = {"376-Valley of the four winds"},
@@ -3216,13 +3216,13 @@ APR.RouteQuestStepList["371-The Jade Forest"] = {
     }
 }
 
-APR.RouteQuestStepList["418-Krasarang Wilds"] = {
+APR.RouteQuestStepList["418-Krasarang Wilds - H"] = {
     label = L["Krasarang Wilds"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 418,
     conditions = { Faction = "Horde" },
-    nextRoute = {"379-Kun-Lai Summit"},
+    nextRoute = {"379-Kun-Lai Summit - H"},
     steps = {
         {
             PickUp = { 30079 },
@@ -4340,10 +4340,10 @@ APR.RouteQuestStepList["418-Krasarang Wilds"] = {
     }
 }
 
-APR.RouteQuestStepList["379-Kun-Lai Summit"] = {
+APR.RouteQuestStepList["379-Kun-Lai Summit - H"] = {
     label = L["Kun-Lai Summit"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 379,
     conditions = { Faction = "Horde" },
     nextRoute = {"388-Townlong Steppes"},
@@ -6916,10 +6916,10 @@ APR.RouteQuestStepList["379-Kun-Lai Summit"] = {
     }
 }
 
-APR.RouteQuestStepList["390-Isle of Thunder"] = {
+APR.RouteQuestStepList["390-Isle of Thunder - H"] = {
     label = L["Isle of Thunder"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 390,
     conditions = { Faction = "Horde" },
     nextRoute = {},

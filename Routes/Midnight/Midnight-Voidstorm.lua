@@ -3,7 +3,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.RouteQuestStepList["2395-The-Darkening-Sky"] = {
     label = L["Midnight - The Darkening Sky"],
     expansion = APR.EXPANSIONS.Midnight,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 80 },
     nextRoute = { "2395-Voidstorm", "2395-Voidstorm-Campaign-Only" },
@@ -4655,7 +4655,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
 APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
     label = L["Midnight - Voidstorm - Campaign"],
     expansion = APR.EXPANSIONS.Midnight,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 80 },
     nextRoute = { "2395-Arators-Journey", "2395-The-War-of-Light-and-Shadow" },

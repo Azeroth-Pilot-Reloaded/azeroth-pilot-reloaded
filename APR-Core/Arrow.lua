@@ -57,7 +57,7 @@ local function GetCurrentRouteStep()
         return
     end
 
-    local routeSteps = routeData.steps or routeData
+    local routeSteps = routeData.steps
     return routeSteps, routeSteps[currentStepIndex], currentStepIndex
 end
 

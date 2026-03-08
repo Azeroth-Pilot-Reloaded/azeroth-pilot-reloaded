@@ -561,7 +561,6 @@ APR.RouteQuestStepList["627-Intro-Remix"] = {
     }
 }
 
-
 APR.RouteQuestStepList["630-Azsuna"] = {
     label = L["Legion - Azsuna"],
     expansion = APR.EXPANSIONS.Legion,
@@ -5127,7 +5126,7 @@ APR.RouteQuestStepList["630-Highmountain"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 630,
     conditions = {},
-    nextRoute = { "634-Stormheim" },
+    nextRoute = { "634-Stormheim - H", "634-Stormheim - A" },
     steps = {
         {
             PickUp = { 39733 },

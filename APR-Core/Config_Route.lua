@@ -175,7 +175,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetMoPPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.MistsOfPandaria)
+                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.MistsOfPandaria)
                 end,
 
             },
@@ -189,7 +189,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetWODPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.WarlordsOfDraenor)
+                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.WarlordsOfDraenor)
                 end,
 
             },
@@ -203,7 +203,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetBFAPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.BattleForAzeroth)
+                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.BattleForAzeroth)
                 end,
             },
             SL_prefab = {
@@ -216,7 +216,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetSLPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.Shadowlands)
+                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.Shadowlands)
                 end
             },
             DF_prefab = {
@@ -229,7 +229,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetDFPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.Dragonflight)
+                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.Dragonflight)
                 end
             },
             TWW_prefab = {
@@ -242,7 +242,7 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetTWWPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.TheWarWithin)
+                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.TheWarWithin)
                 end
             },
             MIDNIGHT_prefab = {
@@ -255,17 +255,11 @@ local function GetConfigOptionTable()
                     APR.routeconfig:GetMidnightPrefab()
                 end,
                 hidden = function()
-                    return not APR:HasRoutesForExpansion(APR.EXPANSIONS.Midnight)
+                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.Midnight)
                 end
             },
             reset_custom_path_spacer_1 = {
                 order = 1.81,
-                type = "description",
-                name = " ",
-                width = optionsWidth,
-            },
-            reset_custom_path_spacer_2 = {
-                order = 1.82,
                 type = "description",
                 name = " ",
                 width = optionsWidth,
@@ -799,15 +793,28 @@ function SetRouteListTab(widget, name)
             if type(routeData) ~= "table" or not routeData.label or routeData.expansion ~= tabName then
                 -- skip
             else
-                local routeName = routeData.label
-                if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
-                    if search == "" then
-                        tinsert(sortedRoutes, { fileName = fileName, routeName = routeName, tabName = tabName })
-                    else
-                        local rn = routeName:lower()
-                        local fn = fileName:lower()
-                        if rn:find(search, 1, true) or fn:find(search, 1, true) then
-                            tinsert(sortedRoutes, { fileName = fileName, routeName = routeName, tabName = tabName })
+                local visibility = APR:GetRouteVisibility(fileName)
+                if visibility == "hidden" then
+                    -- skip: conditions not met
+                else
+                    local routeName = routeData.label
+                    if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
+                        if search == "" then
+                            tinsert(sortedRoutes,
+                                { fileName = fileName, routeName = routeName, tabName = tabName, visibility = visibility })
+                        else
+                            local rn = routeName:lower()
+                            local fn = fileName:lower()
+                            if rn:find(search, 1, true) or fn:find(search, 1, true) then
+                                tinsert(sortedRoutes,
+                                    {
+                                        fileName = fileName,
+                                        routeName = routeName,
+                                        tabName = tabName,
+                                        visibility =
+                                            visibility
+                                    })
+                            end
                         end
                     end
                 end
@@ -821,13 +828,17 @@ function SetRouteListTab(widget, name)
         -- Search across all expansions
         for fileName, routeData in pairs(APR.RouteQuestStepList) do
             if type(routeData) == "table" and routeData.label then
-                local routeName = routeData.label
-                local tabName = routeData.expansion or "Unknown"
-                if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
-                    local rn = routeName:lower()
-                    local fn = fileName:lower()
-                    if rn:find(search, 1, true) or fn:find(search, 1, true) then
-                        tinsert(sortedRoutes, { fileName = fileName, routeName = routeName, tabName = tabName })
+                local visibility = APR:GetRouteVisibility(fileName)
+                if visibility ~= "hidden" then
+                    local routeName = routeData.label
+                    local tabName = routeData.expansion or "Unknown"
+                    if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
+                        local rn = routeName:lower()
+                        local fn = fileName:lower()
+                        if rn:find(search, 1, true) or fn:find(search, 1, true) then
+                            tinsert(sortedRoutes,
+                                { fileName = fileName, routeName = routeName, tabName = tabName, visibility = visibility })
+                        end
                     end
                 end
             end
@@ -835,7 +846,8 @@ function SetRouteListTab(widget, name)
     end
 
     for _, route in ipairs(sortedRoutes) do
-        route.categoryValue = L["LEVELING"]
+        local routeData = APR:GetRouteData(route.fileName)
+        route.categoryValue = (routeData and routeData.category) or L["LEVELING"]
         route.statusValue = GetRouteStatusText(route.fileName, route.routeName)
     end
 
@@ -932,13 +944,26 @@ function SetRouteListTab(widget, name)
             statusText:SetText(route.statusValue)
 
             local routeTabName = route.tabName or name
+            local isDisabled = (route.visibility == "disabled")
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-                GameTooltip:AddLine(route.routeName)
-                if IsRouteDisabled(routeTabName, route.routeName) then
-                    GameTooltip:AddLine(L["ROUTE_DISABLED"], 1, 1, 1, true)
+                -- Route name (yellow title)
+                GameTooltip:AddLine(route.routeName, 1, 0.82, 0)
+                -- Category & Status
+                GameTooltip:AddLine((L["CATEGORY"] or "Category") .. ": " .. route.categoryValue, 0.8, 0.8, 0.8)
+                GameTooltip:AddLine((L["STATUS"] or "Status") .. ": " .. route.statusValue, 0.8, 0.8, 0.8)
+                GameTooltip:AddLine(" ")
+                if isDisabled then
+                    GameTooltip:AddLine(L["ROUTE_DISABLED"], 1, 0.3, 0.3, true)
+                    -- Show unmet conditions
+                    local unmetConditions = APR:GetUnmetConditions(route.fileName)
+                    if #unmetConditions > 0 then
+                        for _, condition in ipairs(unmetConditions) do
+                            GameTooltip:AddLine("  - " .. condition, 1, 0.5, 0.3)
+                        end
+                    end
                 else
-                    GameTooltip:AddLine(L["MOVE_ROUTE_TO_CUSTOM_PATH"], 1, 1, 1, true)
+                    GameTooltip:AddLine(L["MOVE_ROUTE_TO_CUSTOM_PATH"], 0.5, 0.8, 1, true)
                 end
                 GameTooltip:Show()
             end)
@@ -959,9 +984,10 @@ function SetRouteListTab(widget, name)
                     APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end
             end)
-            if IsRouteDisabled(routeTabName, route.routeName) then
+            if isDisabled then
                 nameText:SetTextColor(unpack(APR.Color.midGray))
                 categoryText:SetTextColor(unpack(APR.Color.midGray))
+                statusText:SetTextColor(unpack(APR.Color.midGray))
                 lineContainer:SetScript("OnMouseDown", nil)
             end
 
@@ -1117,15 +1143,6 @@ function APR.routeconfig:InitRouteConfig()
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
     InitDialogControlFrame("RouteListFrame", CreateRouteTableFrame, SetRouteListTab)
     return GetConfigOptionTable()
-end
-
-function IsRouteDisabled(tab, routeName)
-    if routeName == L["01-10 Exile's Reach"] then
-        local parentMapID = APR:GetPlayerParentMapID()
-        if not parentMapID then return true end
-        return not APR.ZoneRestrictions.IsExilesReachMap(parentMapID)
-    end
-    return false
 end
 
 ---------------------------------------------------------------------------------------

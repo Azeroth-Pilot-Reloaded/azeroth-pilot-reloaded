@@ -1802,7 +1802,7 @@ APR.RouteQuestStepList["37-ElwynnForest"] = {
 APR.RouteQuestStepList["52-Westfall"] = {
     label = L["Westfall"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 52,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -2394,7 +2394,7 @@ APR.RouteQuestStepList["52-Westfall"] = {
 APR.RouteQuestStepList["51-SwampofSorrows"] = {
     label = L["Swamp of Sorrows"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 51,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -2920,7 +2920,7 @@ APR.RouteQuestStepList["51-SwampofSorrows"] = {
 APR.RouteQuestStepList["17-BlastedLands"] = {
     label = L["Blasted Lands"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 17,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -3601,7 +3601,7 @@ APR.RouteQuestStepList["17-BlastedLands"] = {
 APR.RouteQuestStepList["36-BurningSteppes"] = {
     label = L["Burning Steppes"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 36,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -4305,11 +4305,10 @@ APR.RouteQuestStepList["36-BurningSteppes"] = {
     }
 }
 
-
 APR.RouteQuestStepList["48-LochModan"] = {
     label = L["Loch Modan"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 48,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -5176,7 +5175,7 @@ APR.RouteQuestStepList["48-LochModan"] = {
 APR.RouteQuestStepList["56-Wetlands"] = {
     label = L["Wetlands"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 56,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -5850,7 +5849,7 @@ APR.RouteQuestStepList["56-Wetlands"] = {
 APR.RouteQuestStepList["14-ArathiHighlands"] = {
     label = L["Arathi Highlands"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 14,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -6331,7 +6330,7 @@ APR.RouteQuestStepList["14-ArathiHighlands"] = {
 APR.RouteQuestStepList["26-TheHinterlands"] = {
     label = L["The Hinterlands"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 26,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -6768,10 +6767,10 @@ APR.RouteQuestStepList["26-TheHinterlands"] = {
     }
 }
 
-APR.RouteQuestStepList["22-WesternPlaguelands"] = {
+APR.RouteQuestStepList["22-WesternPlaguelands - A"] = {
     label = L["Western Plaguelands"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 22,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -7829,7 +7828,7 @@ APR.RouteQuestStepList["22-WesternPlaguelands"] = {
 APR.RouteQuestStepList["23-EasternPlaguelands"] = {
     label = L["Eastern Plaguelands"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 23,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -9173,7 +9172,7 @@ APR.RouteQuestStepList["23-EasternPlaguelands"] = {
 APR.RouteQuestStepList["47-Duskwood"] = {
     label = L["Duskwood"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 47,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -10226,7 +10225,7 @@ APR.RouteQuestStepList["47-Duskwood"] = {
 APR.RouteQuestStepList["49-RedridgeMountains"] = {
     label = L["Redridge Mountains"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 49,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -11088,7 +11087,7 @@ APR.RouteQuestStepList["49-RedridgeMountains"] = {
 APR.RouteQuestStepList["15-Badlands"] = {
     label = L["Badlands"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 15,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -11764,7 +11763,7 @@ APR.RouteQuestStepList["15-Badlands"] = {
 APR.RouteQuestStepList["32-SearingGorge"] = {
     label = L["Searing Gorge"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 32,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -12395,7 +12394,7 @@ APR.RouteQuestStepList["32-SearingGorge"] = {
 APR.RouteQuestStepList["224-NorthernStranglethorn"] = {
     label = L["Northern Stranglethorn"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 224,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -13187,7 +13186,7 @@ APR.RouteQuestStepList["224-NorthernStranglethorn"] = {
 APR.RouteQuestStepList["224-TheCapeofStranglethorn"] = {
     label = L["Cape of Stranglethorn"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 224,
     conditions = { Faction = "Alliance" },
     nextRoute = {},

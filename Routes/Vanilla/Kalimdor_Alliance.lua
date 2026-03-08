@@ -886,8 +886,6 @@ APR.RouteQuestStepList["57-Teldrassil"] = {
     }
 }
 
-
-
 ---------------------------------------------------------------------------------------
 ---------------------------------  Miscellaneous --------------------------------------
 ---------------------------------------------------------------------------------------
@@ -896,7 +894,7 @@ APR.RouteQuestStepList["57-Teldrassil"] = {
 APR.RouteQuestStepList["97-AzuremystIsle"] = {
     label = L["Azuremyst Isle"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 97,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -1388,7 +1386,7 @@ APR.RouteQuestStepList["97-AzuremystIsle"] = {
 APR.RouteQuestStepList["106-BloodmystIsle"] = {
     label = L["Bloodmyst Isle"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 106,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -2275,7 +2273,7 @@ APR.RouteQuestStepList["106-BloodmystIsle"] = {
 APR.RouteQuestStepList["62-Darkshore"] = {
     label = L["Darkshore"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 62,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -3380,7 +3378,7 @@ APR.RouteQuestStepList["62-Darkshore"] = {
 APR.RouteQuestStepList["63-Ashenvale"] = {
     label = L["Ashenvale"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 63,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -4748,7 +4746,7 @@ APR.RouteQuestStepList["63-Ashenvale"] = {
 APR.RouteQuestStepList["77-Felwood"] = {
     label = L["Felwood"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 77,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -5692,7 +5690,7 @@ APR.RouteQuestStepList["77-Felwood"] = {
 APR.RouteQuestStepList["83-Winterspring"] = {
     label = L["Winterspring"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 83,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -6581,7 +6579,7 @@ APR.RouteQuestStepList["83-Winterspring"] = {
 APR.RouteQuestStepList["65-StonetalonMountains"] = {
     label = L["Stonetalon Mountains"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 65,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -7417,7 +7415,7 @@ APR.RouteQuestStepList["65-StonetalonMountains"] = {
 APR.RouteQuestStepList["199-SouthernBarrens"] = {
     label = L["Southern Barrens"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 199,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -8187,7 +8185,7 @@ APR.RouteQuestStepList["199-SouthernBarrens"] = {
 APR.RouteQuestStepList["70-DustwallowMarsh"] = {
     label = L["Dustwallow Marsh"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 70,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -9126,7 +9124,7 @@ APR.RouteQuestStepList["70-DustwallowMarsh"] = {
 APR.RouteQuestStepList["66-Desolace"] = {
     label = L["Desolace"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 66,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -10019,7 +10017,7 @@ APR.RouteQuestStepList["66-Desolace"] = {
 APR.RouteQuestStepList["69-Feralas"] = {
     label = L["Feralas"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 69,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -10799,7 +10797,7 @@ APR.RouteQuestStepList["69-Feralas"] = {
 APR.RouteQuestStepList["64-ThousandNeedles"] = {
     label = L["Thousand Needles"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 64,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -11956,7 +11954,7 @@ APR.RouteQuestStepList["64-ThousandNeedles"] = {
 APR.RouteQuestStepList["71-Tanaris"] = {
     label = L["Tanaris"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 71,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -12625,7 +12623,7 @@ APR.RouteQuestStepList["71-Tanaris"] = {
 APR.RouteQuestStepList["78-UnGoroCrater"] = {
     label = L["Un'Goro Crater"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 78,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -13436,7 +13434,7 @@ APR.RouteQuestStepList["78-UnGoroCrater"] = {
 APR.RouteQuestStepList["81-Silithus"] = {
     label = L["Silithus"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 81,
     conditions = { Faction = "Alliance" },
     nextRoute = {},

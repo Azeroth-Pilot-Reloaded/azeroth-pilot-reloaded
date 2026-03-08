@@ -24,15 +24,16 @@ APR.EXPANSIONS = {
 APR.CATEGORIES = {
     Leveling = L["Leveling"],
     Sojourner = L["Sojourner"],
-    Achievement = "ACHIEVEMENTS",
+    Campaign = L["Campaign"],
+    Achievement = L["Achievement"],
     AlliedRace = L["AlliedRace"],
     Professions = L["Professions"],
-    Events = L["EVENTS"],
-    Miscellaneous = "MISCELLANEOUS",
-    Mount = "MOUNT",
-    Pet = "PET",
-    Toy = "TOY",
-    Daily = "DAILY",
+    Events = L["Events"],
+    Miscellaneous = L["Miscellaneous"],
+    Mount = L["Mount"],
+    Pet = L["Pet"],
+    Toy = L["Toy"],
+    Daily = L["Daily"],
 }
 
 

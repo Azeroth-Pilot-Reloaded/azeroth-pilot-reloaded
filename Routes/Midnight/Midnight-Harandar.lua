@@ -3903,7 +3903,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
 APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
     label = L["Midnight - Harandar - Campaign"],
     expansion = APR.EXPANSIONS.Midnight,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 80 },
     nextRoute = { "2395-ZulAman-Campaign-Only"},
