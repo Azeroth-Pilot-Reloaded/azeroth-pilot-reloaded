@@ -542,7 +542,7 @@ APR.RouteQuestStepList["81-TWW-Intro"] = {
 APR.RouteQuestStepList["2248-TWW-Against-the-Current-storyline"] = {
     label = L["TWW - 06 - Against the Current Storyline"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-Ties-That-Bind-storyline" },
@@ -884,7 +884,7 @@ APR.RouteQuestStepList["2248-TWW-Against-the-Current-storyline"] = {
 APR.RouteQuestStepList["2248-TWW-Ties-That-Bind-storyline"] = {
     label = L["TWW - 07 - Ties That Bind Storyline"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-News-from-Below-storyline" },
@@ -1272,7 +1272,7 @@ APR.RouteQuestStepList["2248-TWW-Ties-That-Bind-storyline"] = {
 APR.RouteQuestStepList["2248-TWW-News-from-Below-storyline"] = {
     label = L["TWW - 08 - News from Below Storyline"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-The-Machines-March-to-War-storyline" },
@@ -1640,7 +1640,7 @@ APR.RouteQuestStepList["2248-TWW-News-from-Below-storyline"] = {
 APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
     label = L["TWW - 09 - The Machines March to War Storyline"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-Light-in-the-Dark-storyline" },
@@ -2165,7 +2165,7 @@ APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
 APR.RouteQuestStepList["2248-TWW-Light-in-the-Dark-storyline"] = {
     label = L["TWW - 10 - Light in the Dark Storyline"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-Lingering-Shadow-Storyline" },
@@ -2426,7 +2426,7 @@ APR.RouteQuestStepList["2248-TWW-Light-in-the-Dark-storyline"] = {
 APR.RouteQuestStepList["2248-TWW-Lingering-Shadow-Storyline"] = {
     label = L["TWW - 11 - Lingering Shadow Storyline"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-Fate-of-the-Kirin-Tor" },
@@ -2835,7 +2835,7 @@ APR.RouteQuestStepList["2248-TWW-Lingering-Shadow-Storyline"] = {
 APR.RouteQuestStepList["2248-TWW-Fate-of-the-Kirin-Tor"] = {
     label = L["TWW - 12 - Fate of the Kirin Tor"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-Siren-Isle-Intro" },
@@ -3367,7 +3367,7 @@ APR.RouteQuestStepList["2248-TWW-Fate-of-the-Kirin-Tor"] = {
 APR.RouteQuestStepList["2248-TWW-Siren-Isle-Intro"] = {
     label = L["TWW - Siren Isle Intro"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-Undermine" },
@@ -3767,7 +3767,7 @@ APR.RouteQuestStepList["2248-TWW-Siren-Isle-Intro"] = {
 APR.RouteQuestStepList["2248-TWW-Rise-of-the-Red-Dawn-Storyline"] = {
     label = L["TWW - Rise of the Red Dawn"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-K'aresh-Storyline" },
@@ -4690,7 +4690,7 @@ APR.RouteQuestStepList["2248-TWW-Rise-of-the-Red-Dawn-Storyline"] = {
 APR.RouteQuestStepList["2248-TWW-K'aresh-Storyline"] = {
     label = L["TWW - K'aresh Storyline"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-K'aresh- Visions of a Shadowed Sun - Storyline" },
@@ -6416,7 +6416,7 @@ APR.RouteQuestStepList["2248-TWW-K'aresh-Storyline"] = {
 APR.RouteQuestStepList["2248-TWW-K'aresh- Visions of a Shadowed Sun - Storyline"] = {
     label = L["TWW - K'aresh - Visions of a Shadowed Sun"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = {},

@@ -80,7 +80,7 @@ function APR:CheckWaypointText()
     end
 
     local routeData = APR.RouteQuestStepList[APR.ActiveRoute]
-    local steps = routeData and (routeData.steps or routeData) or {}
+    local steps = routeData and routeData.steps or {}
     for i = currentStepIndex, #steps do
         local step = steps[i]
 
@@ -178,7 +178,7 @@ function APR:PreviousQuestStep()
     local userData = APRData[APR.PlayerID]
     local activeRoute = APR.ActiveRoute
     local routeData = APR.RouteQuestStepList[activeRoute]
-    local questStepList = routeData and (routeData.steps or routeData)
+    local questStepList = routeData and routeData.steps
 
     -- Ensure we have a valid starting point (never negative or zero)
     if not userData[activeRoute] or userData[activeRoute] < 1 then
@@ -221,7 +221,7 @@ end
 function APR:GetStep(index)
     if (index and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]) then
         local routeData = APR.RouteQuestStepList[APR.ActiveRoute]
-        local steps = routeData.steps or routeData
+        local steps = routeData.steps
         return steps[index]
     end
     return nil

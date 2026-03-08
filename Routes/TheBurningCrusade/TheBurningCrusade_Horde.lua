@@ -5,7 +5,7 @@ APR.RouteQuestStepList["467-BloodElf-intro"] = {
     expansion = APR.EXPANSIONS.TheBurningCrusade,
     category = APR.CATEGORIES.Leveling,
     mapID = 467,
-    conditions = { Level = 80 },
+    conditions = { Faction = "Horde", Race = APR.RACES.BloodElf },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },
     steps = {
         {

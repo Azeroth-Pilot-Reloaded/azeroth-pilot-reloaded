@@ -1,6 +1,6 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
--- Sojourner
+-- Speedrun
 APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
     label = L["TWW - 02 - Isle of Dorn"],
     expansion = APR.EXPANSIONS.TheWarWithin,
@@ -1726,7 +1726,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
 APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
     label = L["TWW - Isle of Dorn - Campaign Only"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2214-TWW-Ringing-Deeps-campaign-only" },
@@ -2869,7 +2869,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
 APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
     label = L["TWW - Isle of Dorn - All quests - Sojourner"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2214-TWW-Ringing-Deeps-Full" },

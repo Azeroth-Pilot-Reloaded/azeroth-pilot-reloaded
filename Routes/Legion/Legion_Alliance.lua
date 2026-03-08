@@ -291,7 +291,7 @@ APR.RouteQuestStepList["84-Intro-Legion"] = {
     }
 }
 
-APR.RouteQuestStepList["634-Stormheim"] = {
+APR.RouteQuestStepList["634-Stormheim - A"] = {
     label = L["Legion - Stormheim"],
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Leveling,

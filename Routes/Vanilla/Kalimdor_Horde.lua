@@ -3587,7 +3587,7 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
 APR.RouteQuestStepList["1-Durotar"] = {
     label = L["Durotar"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 1,
     conditions = { Faction = "Horde" },
     nextRoute = {},
@@ -4153,10 +4153,10 @@ APR.RouteQuestStepList["1-Durotar"] = {
 APR.RouteQuestStepList["10-NorthernBarrens"] = {
     label = L["Northern Barrens"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 10,
     conditions = { Faction = "Horde" },
-    nextRoute = { "199-SouthernBarrens" },
+    nextRoute = { "199-SouthernBarrens-H" },
     steps = {
         {
             PickUp = { 871 },
@@ -5462,10 +5462,10 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
     }
 }
 
-APR.RouteQuestStepList["199-SouthernBarrens"] = {
+APR.RouteQuestStepList["199-SouthernBarrens-H"] = {
     label = L["Southern Barrens"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 199,
     conditions = { Faction = "Horde" },
     nextRoute = {},

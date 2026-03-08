@@ -5203,7 +5203,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
 APR.RouteQuestStepList["2393-Eversong-Woods-Campaign-Only"] = {
     label = L["Midnight - Eversong Woods - Campaign"],
     expansion = APR.EXPANSIONS.Midnight,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2393,
     conditions = { Level = 80 },
     nextRoute = { "2395-Harandar-Campaign-Only", "2395-Arators-Journey" },

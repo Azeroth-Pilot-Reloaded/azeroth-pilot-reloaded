@@ -1,6 +1,6 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
--- Sojourner
+-- Speedrun
 APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     label = L["TWW - 04 - Hallowfall"],
     expansion = APR.EXPANSIONS.TheWarWithin,
@@ -1860,7 +1860,7 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
 APR.RouteQuestStepList["2215-TWW-Hallowfall-campaign-only"] = {
     label = L["TWW - Hallowfall - Campaign Only"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2215,
     conditions = { Level = 70 },
     nextRoute = { "2255-TWW-Azj-Kahet-campaign-only" },

@@ -47,7 +47,7 @@ function APR:GetRouteSignature(routeFileName)
         return nil
     end
 
-    local steps = routeData.steps or routeData
+    local steps = routeData.steps
     local hash = FNV_OFFSET
     for _, step in ipairs(steps) do
         hash = HashValue(hash, step)

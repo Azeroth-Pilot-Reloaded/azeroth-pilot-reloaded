@@ -4205,7 +4205,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
 APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
     label = L["Midnight - Zul'Aman - Campaign"],
     expansion = APR.EXPANSIONS.Midnight,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 80 },
     nextRoute = { "2395-Voidstorm", "2395-Voidstorm-Campaign-Only" },

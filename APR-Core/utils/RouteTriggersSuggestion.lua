@@ -105,7 +105,7 @@ function APR:InitRouteTriggersSuggestion()
     for i = 1, #routeKeys do
         local routeKey = routeKeys[i]
         local routeData = APR.RouteQuestStepList[routeKey]
-        local stepList = routeData and (routeData.steps or routeData)
+        local stepList = routeData and routeData.steps
         local skippedSteps = 0
         if APRData and APRData[self.PlayerID] then
             skippedSteps = tonumber(APRData[self.PlayerID][routeKey .. "-SkippedStep"]) or 0

@@ -1,5 +1,5 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-APR.RouteQuestStepList["118-IntroQline"] = {
+APR.RouteQuestStepList["118-IntroQline - H"] = {
     label = L["SL - Intro"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
@@ -132,7 +132,7 @@ APR.RouteQuestStepList["118-IntroQline"] = {
 APR.RouteQuestStepList["1670-Shadowlands-StoryOnly-H"] = {
     label = L["SL - StoryMode Only"],
     expansion = APR.EXPANSIONS.Shadowlands,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 1670,
     conditions = { Level = 10 },
     nextRoute = {},

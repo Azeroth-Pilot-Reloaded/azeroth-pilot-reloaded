@@ -6,7 +6,7 @@ APR.RouteQuestStepList["84-DesMephisto-Stormwind-War"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 84,
     conditions = { Faction = "Alliance", Level = 10 },
-    nextRoute = { "577-DesMephisto-TanaanJungle" },
+    nextRoute = { "577-DesMephisto-TanaanJungle - A" },
     steps = {
         {
             PickUp = { 34398 },
@@ -72,7 +72,7 @@ APR.RouteQuestStepList["84-DesMephisto-Stormwind-War"] = {
     }
 }
 
-APR.RouteQuestStepList["577-DesMephisto-TanaanJungle"] = {
+APR.RouteQuestStepList["577-DesMephisto-TanaanJungle - A"] = {
     label = L["WOD02 - Tanaan Jungle"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
@@ -703,7 +703,7 @@ APR.RouteQuestStepList["539-DesMephisto-Shadowmoon1"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 539,
     conditions = { Faction = "Alliance", Level = 10 },
-    nextRoute = { "543-DesMephisto-Gorgrond" },
+    nextRoute = { "543-DesMephisto-Gorgrond - A" },
     steps = {
         {
             Done = { 34575 },
@@ -1486,7 +1486,7 @@ APR.RouteQuestStepList["539-DesMephisto-Shadowmoon1"] = {
     }
 }
 
-APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
+APR.RouteQuestStepList["543-DesMephisto-Gorgrond - A"] = {
     label = L["WOD04 - Gorgrond"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
@@ -2736,7 +2736,7 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond"] = {
     }
 }
 
-APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill"] = {
+APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill - A"] = {
     label = L["WOD04 - Gorgrond"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
@@ -5108,7 +5108,7 @@ APR.RouteQuestStepList["535-DesMephisto-Talador2"] = {
     }
 }
 
-APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak"] = {
+APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak - A"] = {
     label = L["WOD08 - Spires of Arak"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,

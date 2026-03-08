@@ -1275,7 +1275,7 @@ APR.RouteQuestStepList["23-ScarletEnclave"] = {
     }
 }
 
-APR.RouteQuestStepList["118-Allied_Icecrown Citadel"] = {
+APR.RouteQuestStepList["118-Allied_Icecrown Citadel - H"] = {
     label = L["Allied Death Knight Start"],
     expansion = APR.EXPANSIONS.WrathOfTheLichKing,
     category = APR.CATEGORIES.Leveling,
@@ -1380,7 +1380,7 @@ APR.RouteQuestStepList["118-Allied_Icecrown Citadel"] = {
     }
 }
 
-APR.RouteQuestStepList["118-Allied_Icecrown Citadel"] = {
+APR.RouteQuestStepList["118-Allied_Icecrown Citadel - A"] = {
     label = L["Allied Death Knight Start"],
     expansion = APR.EXPANSIONS.WrathOfTheLichKing,
     category = APR.CATEGORIES.Leveling,

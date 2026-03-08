@@ -6,7 +6,7 @@ APR.RouteQuestStepList["84-MoP Intro"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 85,
     conditions = { Faction = "Alliance" },
-    nextRoute = {"371-The Jade Forest"},
+    nextRoute = { "371-The Jade Forest - A" },
     steps = {
         {
             PickUp = { 60125 },
@@ -82,13 +82,13 @@ APR.RouteQuestStepList["84-MoP Intro"] = {
     }
 }
 
-APR.RouteQuestStepList["371-The Jade Forest"] = {
+APR.RouteQuestStepList["371-The Jade Forest - A"] = {
     label = L["The Jade Forest"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 371,
     conditions = { Faction = "Alliance" },
-    nextRoute = {"376-Valley of the four winds"},
+    nextRoute = { "376-Valley of the four winds" },
     steps = {
         {
             PickUp = { 31732 },
@@ -2909,13 +2909,13 @@ APR.RouteQuestStepList["371-The Jade Forest"] = {
     }
 }
 
-APR.RouteQuestStepList["418-Krasarang Wilds"] = {
+APR.RouteQuestStepList["418-Krasarang Wilds - A"] = {
     label = L["Krasarang Wilds"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 418,
     conditions = { Faction = "Alliance" },
-    nextRoute = {"379-Kun-Lai Summit"},
+    nextRoute = { "379-Kun-Lai Summit - A" },
     steps = {
         {
             PickUp = { 30079 },
@@ -4076,13 +4076,13 @@ APR.RouteQuestStepList["418-Krasarang Wilds"] = {
     }
 }
 
-APR.RouteQuestStepList["379-Kun-Lai Summit"] = {
+APR.RouteQuestStepList["379-Kun-Lai Summit - A"] = {
     label = L["Kun-Lai Summit"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 379,
     conditions = { Faction = "Alliance" },
-    nextRoute = {"388-Townlong Steppes"},
+    nextRoute = { "388-Townlong Steppes" },
     steps = {
         {
             PickUp = { 31392 },
@@ -6604,10 +6604,10 @@ APR.RouteQuestStepList["379-Kun-Lai Summit"] = {
     }
 }
 
-APR.RouteQuestStepList["390-Isle of Thunder"] = {
+APR.RouteQuestStepList["390-Isle of Thunder - A"] = {
     label = L["Isle of Thunder"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 390,
     conditions = { Faction = "Alliance" },
     nextRoute = {},

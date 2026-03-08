@@ -586,7 +586,7 @@ APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
 APR.RouteQuestStepList["21-Silverpine"] = {
     label = L["Silverpine Forest"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 21,
     conditions = { Faction = "Horde" },
     nextRoute = { "217-Ruins of Gilneas" },
@@ -1143,7 +1143,7 @@ APR.RouteQuestStepList["21-Silverpine"] = {
 APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
     label = L["Silverpine Forest 2"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 217,
     conditions = { Faction = "Horde" },
     nextRoute = { "21-Silverpine2" },
@@ -1344,7 +1344,7 @@ APR.RouteQuestStepList["217-Ruins of Gilneas"] = {
 APR.RouteQuestStepList["21-Silverpine2"] = {
     label = L["Silverpine Forest 3"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 21,
     conditions = { Faction = "Horde" },
     nextRoute = { "25-DEV-DALARAN_CRATER" },
@@ -1454,7 +1454,7 @@ APR.RouteQuestStepList["21-Silverpine2"] = {
 APR.RouteQuestStepList["25-DEV-DALARAN_CRATER"] = {
     label = L["Silverpine Forest 4"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 25,
     conditions = { Faction = "Horde" },
     nextRoute = { "21-Silverpine3" },
@@ -1487,7 +1487,7 @@ APR.RouteQuestStepList["25-DEV-DALARAN_CRATER"] = {
 APR.RouteQuestStepList["21-Silverpine3"] = {
     label = L["Silverpine Forest 5"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 21,
     conditions = { Faction = "Horde" },
     nextRoute = {},
@@ -1659,7 +1659,7 @@ APR.RouteQuestStepList["21-Silverpine3"] = {
 APR.RouteQuestStepList["25-Hillsbrad"] = {
     label = L["WIP - Hillsbrad Foothills"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 25,
     conditions = { Faction = "Horde" },
     nextRoute = {},
@@ -3758,7 +3758,7 @@ APR.RouteQuestStepList["25-Hillsbrad"] = {
 APR.RouteQuestStepList["22-Western Plaguelands"] = {
     label = L["WIP - Western Plaguelands"],
     expansion = APR.EXPANSIONS.Vanilla,
-    category = APR.CATEGORIES.Miscellaneous,
+    category = APR.CATEGORIES.Leveling,
     mapID = 22,
     conditions = { Faction = "Horde" },
     nextRoute = {},

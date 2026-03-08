@@ -1,6 +1,6 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
--- Sojourner
+-- Speedrun
 APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     label = L["TWW - 03 - Ringing Deeps"],
     expansion = APR.EXPANSIONS.TheWarWithin,
@@ -2435,7 +2435,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
 APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
     label = L["TWW - Ringing Deeps - Campaign Only"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2214,
     conditions = { Level = 70 },
     nextRoute = { "2215-TWW-Hallowfall-campaign-only" },
@@ -3572,7 +3572,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
 APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
     label = L["TWW - Ringing Deeps - All quests - Sojourner"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Sojourner,
     mapID = 2214,
     conditions = { Level = 70 },
     nextRoute = {},
@@ -7651,7 +7651,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
 APR.RouteQuestStepList["2248-TWW-Undermine"] = {
     label = L["TWW - Undermine"],
     expansion = APR.EXPANSIONS.TheWarWithin,
-    category = APR.CATEGORIES.Leveling,
+    category = APR.CATEGORIES.Campaign,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-Rise-of-the-Red-Dawn-Storyline" },
