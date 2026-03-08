@@ -193,11 +193,20 @@ end
 
 --- Split a composite quest string into quest ID and objective index (when available).
 function APR:SplitQuestAndObjective(questID)
-    local id, objective = questID:match("([^%-]+)%-([^%-]+)")
+    if questID == nil then
+        return nil, nil
+    end
+
+    if type(questID) == "number" then
+        return questID, nil
+    end
+
+    local questIDText = tostring(questID)
+    local id, objective = questIDText:match("([^%-]+)%-([^%-]+)")
     if id and objective then
         return tonumber(id), tonumber(objective)
     end
-    return tonumber(questID)
+    return tonumber(questIDText), nil
 end
 
 --- Notify the player that an interaction is not available yet.
