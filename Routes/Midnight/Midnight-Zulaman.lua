@@ -4,6 +4,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     label = L["Midnight - Zul'Aman - sojourner"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Sojourner,
+    sojournerAchievementID = 42045,
     mapID = 2395,
     conditions = { Level = 80 },
     nextRoute = { "2395-The-Darkening-Sky" },

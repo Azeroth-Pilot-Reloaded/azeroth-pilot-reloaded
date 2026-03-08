@@ -57,6 +57,7 @@ function APR.settings:InitializeSettings()
             firstAutoShareQuestWithFriend = true,
             autoSkipAllWaypoints = false,
             autoSkipWaypointsFly = false,
+            sojournerSkipCampaign = false,
             autoGossipQuestOptions = true,
             autoGossipSingleOption = true,
             autoGossipSingleOptionWhen = 2,
@@ -157,6 +158,7 @@ function APR.settings:InitializeSettings()
             firstLogin = true,
             showHeirloomWarning = nil,
             routeSuggestionDontAsk = false,
+            sojournerSkipPromptShown = {},
         }
     }
 
@@ -857,6 +859,37 @@ function APR.settings:createBlizzOptions()
                                 step = 1,
                                 get = GetProfileOption,
                                 set = SetProfileOption,
+                            },
+                            sojournerSkipCampaign = {
+                                order = 8.7,
+                                type = "toggle",
+                                name = L["SOJOURNER_SKIP_CAMPAIGN"],
+                                desc = L["SOJOURNER_SKIP_CAMPAIGN_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    local profile = APR:GetSettingsProfile()
+                                    if not profile then return end
+
+                                    if value then
+                                        profile.sojournerSkipCampaign = true
+                                        APR:UpdateStep()
+                                    else
+                                        -- Disabling: warn that it will reset the route
+                                        APR.questionDialog:CreateQuestionPopup(
+                                            "APR_SOJOURNER_DISABLE_WARNING",
+                                            L["SOJOURNER_DISABLE_WARNING"],
+                                            function()
+                                                profile.sojournerSkipCampaign = false
+                                                if APR.ActiveRoute then
+                                                    APR:ResetRoute(APR.ActiveRoute)
+                                                end
+                                                APR:UpdateStep()
+                                            end,
+                                            nil -- Cancel: keep enabled
+                                        )
+                                    end
+                                end,
                             },
                         },
                     },

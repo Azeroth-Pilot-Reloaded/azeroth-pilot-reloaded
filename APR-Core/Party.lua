@@ -533,7 +533,9 @@ function APR.party:BuildGroupPayload(username)
         currentStep = stepDetails and stepDetails.progress.step or nil,
         totalSteps = stepDetails and stepDetails.progress.total or 0,
         username = username or APR.Username,
-        stepFrameDetails = stepDetails
+        stepFrameDetails = stepDetails,
+        sojournerSkipCampaign = APR.settings and APR.settings.profile
+            and APR.settings.profile.sojournerSkipCampaign or false,
     }
 end
 

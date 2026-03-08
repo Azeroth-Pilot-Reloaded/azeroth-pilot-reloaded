@@ -40,7 +40,7 @@ APR.RouteQuestStepList["84-DF01A-Stormwind"] = {
             _index = 5,
         },
         {
-            TakePortal = { QuestID = 66589, ZoneId = 84 },
+            TakePortal = { questID = 66589, ZoneId = 84 },
             Coord = { x = 327.7, y = -8312.4 },
 
             Range = 0.5,
@@ -103,7 +103,7 @@ APR.RouteQuestStepList["84-DF01A-Stormwind"] = {
             _index = 15,
         },
         {
-            TakePortal = { QuestID = 67700, ZoneId = 2022 },
+            TakePortal = { questID = 67700, ZoneId = 2022 },
             Coord = { x = 1321, y = -8637.3 },
             Range = 5,
             Zone = 84,

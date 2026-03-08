@@ -290,7 +290,7 @@ APR.RouteQuestStepList["2432-Midnight-Intro"] = {
     category = APR.CATEGORIES.Campaign,
     mapID = 2432,
     conditions = { Level = 80 },
-    nextRoute = {"2393-Midnight-Speedrun", "2393-Eversong-Woods", "2393-Eversong-Woods-Campaign-Only"},
+    nextRoute = { "2393-Midnight-Speedrun", "2393-Eversong-Woods", "2393-Eversong-Woods-Campaign-Only" },
     steps = {
         {
             PickUp = { 91281 },
@@ -1002,7 +1002,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
     category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 80 },
-    nextRoute = {"2395-Harandar", "2395-Harandar-Campaign-Only"},
+    nextRoute = { "2395-Harandar", "2395-Harandar-Campaign-Only" },
     steps = {
         {
             PickUp = { 89193 },
@@ -2246,7 +2246,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
             _index = 155,
         },
         {
-            TakePortal = { QuestID = 91787, ZoneId = 2395 },
+            TakePortal = { questID = 91787, ZoneId = 2395 },
             Coord = { x = 54.4, y = 5.7 },
             ZoneStepTrigger = { Range = 15, x = -4818.4, y = 8547.4 },
             IsCampaignQuest = true,
@@ -2702,7 +2702,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             _index = 55,
         },
         {
-            TakePortal = { QuestID = 1, ZoneId = 2424 },
+            TakePortal = { questID = 1, ZoneId = 2424 },
             Coord = { x = 183.4, y = 1333.2 },
             ExtraLineText = "END_CAMPAIGN_FOR_NOW",
             ZoneStepTrigger = { Range = 15, x = -4597.4, y = 10762.5 },
@@ -3003,7 +3003,7 @@ APR.RouteQuestStepList["2248-Unlock-void-elf-DH"] = {
         },
         {
             Waypoint = 94933,
-            TakePortal = { QuestID = 94933, ZoneId = 2371 },
+            TakePortal = { questID = 94933, ZoneId = 2371 },
             Coord = { x = -2471.3, y = 2601.3 },
             ZoneStepTrigger = { Range = 15, x = 206.1, y = 1649.9 },
             IsQuestsUncompleted = { 90972 },

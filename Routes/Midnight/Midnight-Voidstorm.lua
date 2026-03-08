@@ -158,6 +158,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     label = L["Midnight - Voidstorm - sojourner"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Sojourner,
+    sojournerAchievementID = 42045,
     mapID = 2395,
     conditions = { Level = 80 },
     nextRoute = { "2395-Arators-Journey", "2395-The-War-of-Light-and-Shadow" },
@@ -1677,7 +1678,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
             _index = 192,
         },
         {
-            TakePortal = { QuestID = 86521, ZoneId = 2405 },
+            TakePortal = { questID = 86521, ZoneId = 2405 },
             ZoneStepTrigger = { Range = 15, x = 135.4, y = 1280.6 },
             IsCampaignQuest = true,
             Zone = 2556,
@@ -1706,7 +1707,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
             _index = 196,
         },
         {
-            TakePortal = { QuestID = 86522, ZoneId = 2395 },
+            TakePortal = { questID = 86522, ZoneId = 2395 },
             Coord = { x = -440.9, y = 890.2 },
             ZoneStepTrigger = { Range = 15, x = -4325.9, y = 8552.6 },
             IsCampaignQuest = true,
@@ -1728,7 +1729,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
             _index = 199,
         },
         {
-            TakePortal = { QuestID = 90923, ZoneId = 2405 },
+            TakePortal = { questID = 90923, ZoneId = 2405 },
             Coord = { x = -4325.2, y = 8535.4 },
             ZoneStepTrigger = { Range = 15, x = -448.9, y = 895.8 },
             Zone = 2395,
@@ -3966,7 +3967,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
             _index = 524,
         },
         {
-            TakePortal = { QuestID = 95276, ZoneId = 2395 },
+            TakePortal = { questID = 95276, ZoneId = 2395 },
             Coord = { x = -441.1, y = 890 },
             ZoneStepTrigger = { Range = 15, x = -4325.9, y = 8552.6 },
             Zone = 2405,
@@ -3980,7 +3981,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
             _index = 200,
         },
         {
-            TakePortal = { QuestID = 86521, ZoneId = 2405 },
+            TakePortal = { questID = 86521, ZoneId = 2405 },
             ZoneStepTrigger = { Range = 15, x = 135.4, y = 1280.6 },
             IsCampaignQuest = true,
             Zone = 2556,
@@ -4442,7 +4443,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
             _index = 593,
         },
         {
-            TakePortal = { QuestID = 92507, ZoneId = 2405 },
+            TakePortal = { questID = 92507, ZoneId = 2405 },
             Qpart = { [92507] = { 2 } },
             Coord = { x = 9810.3, y = 6332 },
             Range = 5,
@@ -4620,7 +4621,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
             _index = 619,
         },
         {
-            TakePortal = { QuestID = 91546, ZoneId = 2395 },
+            TakePortal = { questID = 91546, ZoneId = 2395 },
             Coord = { x = -441.1, y = 890 },
             ZoneStepTrigger = { Range = 15, x = -4325.9, y = 8552.6 },
             Zone = 2405,
@@ -6137,7 +6138,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
             _index = 188,
         },
         {
-            TakePortal = { QuestID = 86521, ZoneId = 2405 },
+            TakePortal = { questID = 86521, ZoneId = 2405 },
             ZoneStepTrigger = { Range = 15, x = 135.4, y = 1280.6 },
             IsCampaignQuest = true,
             Zone = 2556,
@@ -6166,7 +6167,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
             _index = 192,
         },
         {
-            TakePortal = { QuestID = 86522, ZoneId = 2395 },
+            TakePortal = { questID = 86522, ZoneId = 2395 },
             Coord = { x = -440.9, y = 890.2 },
             ZoneStepTrigger = { Range = 15, x = -4325.9, y = 8552.6 },
             IsCampaignQuest = true,

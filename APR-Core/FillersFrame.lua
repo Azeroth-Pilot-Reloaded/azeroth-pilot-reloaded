@@ -186,7 +186,7 @@ function APR.fillersFrame:AddFillerStep(questID, textObjective, objectiveIndex)
         local isCampaign = questIDNum and APR:IsCampaignQuest(questIDNum)
         if isCampaign then
             GameTooltip:AddLine(
-                "|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
+                "|c33ecc00f" .. L["Campaign"] .. "|r: " ..
                 (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
                     APR:WrapTextInColorCode(NO, "cce0000f")),
                 unpack(APR.Color.white)

@@ -614,7 +614,7 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
                 -- Campaign flag
                 local isCampaign = questIDNum and APR:IsCampaignQuest(questIDNum)
                 GameTooltip:AddLine(
-                    "|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
+                    "|c33ecc00f" .. L["Campaign"] .. "|r: " ..
                     (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
                         APR:WrapTextInColorCode(NO, "cce0000f")),
                     unpack(APR.Color.white)
@@ -774,7 +774,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
             -- Campaign flag – always displayed (Yes / No)
             local isCampaign = questID and APR:IsCampaignQuest(questID)
             GameTooltip:AddLine(
-                "|c33ecc00f" .. L["CAMPAIGN"] .. "|r: " ..
+                "|c33ecc00f" .. L["Campaign"] .. "|r: " ..
                 (isCampaign and APR:WrapTextInColorCode(YES, "00ff00") or
                     APR:WrapTextInColorCode(NO, "cce0000f")),
                 unpack(APR.Color.white)

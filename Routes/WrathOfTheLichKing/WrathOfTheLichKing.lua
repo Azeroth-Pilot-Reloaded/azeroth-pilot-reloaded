@@ -1167,7 +1167,7 @@ APR.RouteQuestStepList["23-ScarletEnclave"] = {
             _index = 172,
         },
         {
-            TakePortal = { QuestID = 13165, ZoneId = 23 },
+            TakePortal = { questID = 13165, ZoneId = 23 },
             Coord = { x = -5292.4, y = 2260.2 },
             Range = 5,
             ZoneStepTrigger = { Range = 15, x = -5662.4, y = 2359.6 },
@@ -1223,7 +1223,7 @@ APR.RouteQuestStepList["23-ScarletEnclave"] = {
             _index = 180,
         },
         {
-            TakePortal = { QuestID = 13188, ZoneId = 37 },
+            TakePortal = { questID = 13188, ZoneId = 37 },
             Coord = { x = -5695.8, y = 2347.9 },
             ZoneStepTrigger = { Range = 30, x = 416.4, y = -9090 },
             Faction = "Alliance",
@@ -1246,7 +1246,7 @@ APR.RouteQuestStepList["23-ScarletEnclave"] = {
             _index = 183,
         },
         {
-            TakePortal = { QuestID = 13189, ZoneId = 1 },
+            TakePortal = { questID = 13189, ZoneId = 1 },
             Coord = { x = -5695.8, y = 2347.9 },
             ZoneStepTrigger = { Range = 15, x = -4375.6, y = 1333.4 },
             Faction = "Horde",

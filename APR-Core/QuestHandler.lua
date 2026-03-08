@@ -5,7 +5,7 @@ local function GroupQuestPopup()
 
     if not step then return end
 
-    local questId = step.Group.QuestId
+    local questId = step.Group.questID
     if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not step.QuestLineSkip then
         local sugestGroupNumber = step.Group.Number
         local dialogText = L["OPTIONAL"] .. " - " .. L["SUGGESTED_PLAYERS"] .. ": " .. sugestGroupNumber
@@ -164,8 +164,19 @@ function APR:UpdateStep()
             return
         end
 
+        -- Sojourner campaign auto-skip: skip campaign steps on eligible Sojourner routes
+        if APR:ShouldSojournerSkipStep(step) then
+            APRData[APR.PlayerID][APR.ActiveRoute .. '-SkippedStep'] = (APRData[APR.PlayerID]
+                [APR.ActiveRoute .. '-SkippedStep'] or 0) + 1
+            APR:UpdateNextStep()
+            return
+        end
 
-        -- Add Raid Icon SABT
+        -- Sojourner first-encounter popup (when setting is OFF)
+        APR:MaybeSojournerPrompt(step)
+
+        -- Sojourner party sync mismatch check
+        APR:CheckSojournerPartySync()
         APR.currentStep:PrepareRaidIcon(step)
 
         -- set the arrow coord before the step logic to avoid double completion
@@ -591,7 +602,7 @@ function APR:UpdateStep()
         elseif step.TakePortal then
             local portalData = step.TakePortal
 
-            local questID = portalData.QuestID
+            local questID = portalData.questID
             local zoneId = portalData.ZoneId
             local currentMapID = C_Map.GetBestMapForUnit("player")
             local parentMapID = APR:GetPlayerParentMapID()
@@ -851,7 +862,7 @@ function APR:UpdateStep()
                 return
             end
         elseif (step.Group) then
-            if (C_QuestLog.IsQuestFlaggedCompleted(step.Group.QuestId)) then
+            if (C_QuestLog.IsQuestFlaggedCompleted(step.Group.questID)) then
                 APR:UpdateNextStep()
                 return
             else

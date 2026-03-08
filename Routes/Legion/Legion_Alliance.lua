@@ -1578,7 +1578,7 @@ APR.RouteQuestStepList["971-VoidElf-intro"] = {
             _index = 1,
         },
         {
-            TakePortal = { QuestID = 49788, ZoneId = 84 },
+            TakePortal = { questID = 49788, ZoneId = 84 },
             Coord = { x = 3331.6, y = 2149.9 },
             Range = 2,
             Zone = 971,
@@ -1655,7 +1655,7 @@ APR.RouteQuestStepList["940-LightforgedDraenei-intro"] = {
             _index = 4,
         },
         {
-            TakePortal = { QuestID = 49772, ZoneId = 84 },
+            TakePortal = { questID = 49772, ZoneId = 84 },
             Coord = { x = 1469, y = 499.2 },
             Range = 2,
             Zone = 941,

@@ -4,6 +4,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     label = L["Midnight - Harandar - sojourner"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Sojourner,
+    sojournerAchievementID = 42045,
     mapID = 2395,
     conditions = { Level = 80 },
     nextRoute = { "2395-ZulAman" },
@@ -1750,7 +1751,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
             _index = 5,
         },
         {
-            TakePortal = { QuestID = 91550, ZoneId = 2413 },
+            TakePortal = { questID = 91550, ZoneId = 2413 },
             Coord = { x = -4372.7, y = 8500.8 },
             ZoneStepTrigger = { Range = 15, x = -444.9, y = -266.8 },
             Zone = 2395,
@@ -3887,7 +3888,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
             _index = 545,
         },
         {
-            TakePortal = { QuestID = 1, ZoneId = 2395 },
+            TakePortal = { questID = 1, ZoneId = 2395 },
             Coord = { x = -461.2, y = -270 },
             ZoneStepTrigger = { Range = 15, x = -4361.7, y = 8485.8 },
             Zone = 2413,
@@ -3906,7 +3907,7 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
     category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 80 },
-    nextRoute = { "2395-ZulAman-Campaign-Only"},
+    nextRoute = { "2395-ZulAman-Campaign-Only" },
     steps = {
         {
             Grind = 83,

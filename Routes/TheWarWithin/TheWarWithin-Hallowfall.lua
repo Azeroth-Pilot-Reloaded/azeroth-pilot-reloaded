@@ -3052,7 +3052,7 @@ APR.RouteQuestStepList["2248-TWW-Nightfall"] = {
             _index = 1,
         },
         {
-            TakePortal = { QuestID = 85005, ZoneId = 2255 },
+            TakePortal = { questID = 85005, ZoneId = 2255 },
             Coord = { x = -2868.9, y = 2563.3 },
             Range = 5,
             Zone = 2248,

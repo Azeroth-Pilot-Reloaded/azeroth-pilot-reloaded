@@ -100,6 +100,75 @@ function APR:CheckWaypointText()
     return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
 end
 
+--- Extract all quest IDs from a step, regardless of its type.
+--- Handles every primary step format: arrays (PickUp, Done), dict keys (Qpart, QpartPart),
+--- scalars (Waypoint, DropQuest, …), nested tables (.questID ),
+--- and item arrays (BuyMerchant, LootItems).
+---@param step table the step table from the route definition
+---@return number[] questIDs flat array of numeric quest IDs (may be empty)
+function APR:GetStepQuestIDs(step)
+    if not step then return {} end
+    local ids = {}
+
+    -- Array keys: value is { questID1, questID2, … }
+    for _, key in ipairs({ "PickUp", "Done" }) do
+        local val = step[key]
+        if val then
+            for _, q in ipairs(val) do
+                local n = tonumber(q)
+                if n then ids[#ids + 1] = n end
+            end
+            return ids
+        end
+    end
+
+    -- Dict keys: quest ID is the table key  { [questID] = { objectives } }
+    for _, key in ipairs({ "Qpart", "QpartPart" }) do
+        local val = step[key]
+        if val then
+            for q in pairs(val) do
+                local n = tonumber(q)
+                if n then ids[#ids + 1] = n end
+            end
+            return ids
+        end
+    end
+
+    -- Scalar keys: value IS the quest ID
+    for _, key in ipairs({ "Waypoint", "DropQuest", "ExitTutorial", "SetHS", "UseHS", "UseDalaHS", "UseGarrisonHS", "UseFlightPath", "WarMode" }) do
+        local val = step[key]
+        if val then
+            local n = tonumber(val)
+            if n then ids[#ids + 1] = n end
+            return ids
+        end
+    end
+
+    -- Nested .questID (lowercase)
+    for _, key in ipairs({ "Treasure", "TakePortal", "UseItem", "UseSpell", "EnterScenario", "DoScenario", "LeaveScenario", "EnterInstance", "LeaveInstance", "Scenario", "Group" }) do
+        local sub = step[key]
+        if sub and sub.questID then
+            local n = tonumber(sub.questID)
+            if n then ids[#ids + 1] = n end
+            return ids
+        end
+    end
+
+    -- Array of items with .questID: BuyMerchant, LootItems
+    for _, key in ipairs({ "BuyMerchant", "LootItems" }) do
+        local items = step[key]
+        if items then
+            for _, item in ipairs(items) do
+                local n = tonumber(item.questID)
+                if n then ids[#ids + 1] = n end
+            end
+            if #ids > 0 then return ids end
+        end
+    end
+
+    return ids
+end
+
 --- Quick check for any primary action flags on a step table.
 function APR:HasAnyMainStepOption(step)
     if not step then return false end

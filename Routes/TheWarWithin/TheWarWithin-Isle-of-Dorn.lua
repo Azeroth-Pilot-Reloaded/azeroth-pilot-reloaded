@@ -2870,6 +2870,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
     label = L["TWW - Isle of Dorn - All quests - Sojourner"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     category = APR.CATEGORIES.Sojourner,
+    sojournerAchievementID = 19559,
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2214-TWW-Ringing-Deeps-Full" },
