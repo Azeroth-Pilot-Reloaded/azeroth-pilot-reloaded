@@ -1,5 +1,33 @@
 APR.questOrderListUtils = APR.questOrderListUtils or {}
 
+local function bindUncompletedStepTooltip(container, questInfo)
+    if not container or not questInfo or #questInfo == 0 then
+        return
+    end
+
+    container:EnableMouse(true)
+    container:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+        for index, quest in ipairs(questInfo) do
+            local questID, objectiveIndex = APR:SplitQuestAndObjective(quest.questID)
+            if index > 1 then
+                GameTooltip:AddLine(" ")
+            end
+            if questID then
+                APR:AddQuestTooltipDetails(GameTooltip, questID, {
+                    objectiveIndex = objectiveIndex,
+                    includeCampaign = true,
+                    includeStoryline = true,
+                })
+            end
+        end
+        GameTooltip:Show()
+    end)
+    container:SetScript("OnLeave", function(self)
+        GameTooltip:Hide()
+    end)
+end
+
 function APR.questOrderListUtils:IsQuestCompleted(questID)
     return C_QuestLog.IsQuestFlaggedCompleted(questID)
 end
@@ -68,6 +96,10 @@ function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepTe
     container:SetHeight(titleFont:GetStringHeight() + questFontHeight + frameOffset)
     container:SetPoint("TOPLEFT", layout.scrollChild, "TOPLEFT", 0, layout.dataHeight)
     layout.dataHeight = layout.dataHeight - container:GetHeight()
+
+    if color == "gray" then
+        bindUncompletedStepTooltip(container, questInfo)
+    end
 
     return container, activeQuestId
 end
