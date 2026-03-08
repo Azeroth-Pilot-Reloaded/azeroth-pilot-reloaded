@@ -34,7 +34,7 @@ APR.RouteQuestStepList["23-ScarletEnclave"] = {
             _index = 4,
         },
         {
-            LootItems = { { itemID = 38607, quantity = 1 } },
+            LootItems = { { questID = 12619, itemID = 38607, quantity = 1 } },
             Coord = { x = -5550.3, y = 2426.8 },
             Zone = 23,
             _index = 5,

@@ -5942,7 +5942,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
             _index = 162,
         },
         {
-            LootItems = { { itemID = 237807, quantity = 5 } },
+            LootItems = { { questID = 86516, itemID = 237807, quantity = 5 } },
             Coord = { x = -1428.8, y = 542.8 },
             Range = 100,
             IsCampaignQuest = true,
