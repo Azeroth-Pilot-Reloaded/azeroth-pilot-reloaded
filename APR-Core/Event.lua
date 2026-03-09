@@ -108,12 +108,17 @@ function APR.event.EventHandler(self, event, ...)
     local isInstanceWithUI = APR:IsInstanceWithUI()
     if isInstanceWithUI ~= lastIsInstanceWithUI then
         APR:Debug("APR: Event - IsInstanceWithUI : ", isInstanceWithUI)
-        APR.settings:ToggleAddon()
+        APR:RefreshInstanceUIVisibility()
         lastIsInstanceWithUI = isInstanceWithUI
     end
 
+    APR:MaybePromptInstanceUIPreference()
+
     if not isInstanceWithUI then
-        return
+        local isInstance, instanceType = IsInInstance()
+        if isInstance and (instanceType == "pvp" or instanceType == "arena") then
+            return
+        end
     end
 
     if self.callback and self.tag then
