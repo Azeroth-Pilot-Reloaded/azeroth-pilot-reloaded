@@ -80,6 +80,7 @@ function APR.settings:InitializeSettings()
             currentStepProgressBarColor = { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 },
             currentStepAttachFrameToQuestLog = false,
             currentStepQuestButtonPositionRight = false,
+            forceHideUiInPartyRaid = false,
             -- fillers frame
             fillersFrame = {},
             fillersFrameSnapToCurrentStep = true,
@@ -159,6 +160,7 @@ function APR.settings:InitializeSettings()
             showHeirloomWarning = nil,
             routeSuggestionDontAsk = false,
             sojournerSkipPromptShown = {},
+            instanceUiPromptShown = false,
         }
     }
 
@@ -337,6 +339,21 @@ function APR.settings:createBlizzOptions()
                         set = function(info, value)
                             SetProfileOption(info, value)
                             APR.currentStep:RefreshCurrentStepFrameAnchor()
+                        end,
+                        disabled = function()
+                            return not self.profile.enableAddon
+                        end,
+                    },
+                    forceHideUiInPartyRaid = {
+                        order = 5.105,
+                        type = "toggle",
+                        name = L["FORCE_HIDE_UI_INSTANCE"],
+                        desc = L["FORCE_HIDE_UI_INSTANCE_DESC"],
+                        width = "full",
+                        get = GetProfileOption,
+                        set = function(info, value)
+                            SetProfileOption(info, value)
+                            APR:RefreshInstanceUIVisibility()
                         end,
                         disabled = function()
                             return not self.profile.enableAddon
