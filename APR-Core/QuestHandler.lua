@@ -243,6 +243,12 @@ function APR:UpdateStep()
             end
         end
 
+        if showStepDetails and step.StepPreviewImages then
+            APR.currentStep:SetStepPreviewImages(step)
+        else
+            APR.currentStep:ClearStepPreviewImages()
+        end
+
         if step.ExtraActionB then
             APR.currentStep:AddExtraLineText("USE_EXTRAACTIONBUTTON", L["USE_EXTRAACTIONBUTTON"])
         end
