@@ -1190,6 +1190,7 @@ function APR.routeconfig:GetSpeedRunPrefab()
 
     if APR.Level < APR.MaxLevelChromie then
         self:GetDFPrefab()
+        self:GetWODPrefab()
     end
 
     if APR.Level < APR.PreviousMaxLvl then
