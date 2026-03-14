@@ -76,6 +76,7 @@ APR-Core/QuestHandler.lua
 APR-Core/Transport.lua
 
 APR-Core/Arrow.lua
+APR-Core/CurrentStepImagePreview.lua
 APR-Core/CurrentStep.lua
 APR-Core/FillersFrame.lua
 APR-Core/QuestionPopUp.lua
