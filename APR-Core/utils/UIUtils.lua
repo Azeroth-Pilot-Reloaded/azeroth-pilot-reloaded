@@ -158,6 +158,94 @@ function APR:getStatus()
 end
 
 ---------------------------------------------------------------------------------------
+---------------------- Current Step Preview Helper Utilities --------------------------
+---------------------------------------------------------------------------------------
+
+--- Register a frame in UISpecialFrames if available.
+---@param frameName string
+function APR:RegisterUiSpecialFrame(frameName)
+    if type(frameName) ~= "string" or frameName == "" then
+        return
+    end
+
+    local specialFrames = _G and _G.UISpecialFrames
+    if type(specialFrames) ~= "table" then
+        return
+    end
+
+    for _, name in ipairs(specialFrames) do
+        if name == frameName then
+            return
+        end
+    end
+
+    tinsert(specialFrames, frameName)
+end
+
+--- Normalize preview image field on a step.
+--- Supports only `StepPreviewImages` as an array of strings.
+---@param step table|nil
+---@return table
+function APR:NormalizeStepPreviewImages(step)
+    if type(step) ~= "table" or type(step.StepPreviewImages) ~= "table" then
+        return {}
+    end
+
+    local collected = {}
+
+    local function addPath(path)
+        if type(path) == "string" and path ~= "" then
+            table.insert(collected, path)
+        end
+    end
+
+    for _, path in ipairs(step.StepPreviewImages) do
+        addPath(path)
+    end
+
+    return collected
+end
+
+--- Compare two ordered string lists.
+---@param a table|nil
+---@param b table|nil
+---@return boolean
+function APR:AreOrderedStringListsEqual(a, b)
+    if type(a) ~= "table" or type(b) ~= "table" then
+        return false
+    end
+    if #a ~= #b then
+        return false
+    end
+
+    for i = 1, #a do
+        if a[i] ~= b[i] then
+            return false
+        end
+    end
+
+    return true
+end
+
+--- Compute responsive thumbnail size for a single-row preview strip.
+---@param availableWidth number
+---@param count number
+---@param gap number
+---@param minSize number
+---@param maxSize number
+---@return number
+function APR:ComputeThumbnailSize(availableWidth, count, gap, minSize, maxSize)
+    local safeCount = math.max(tonumber(count) or 0, 1)
+    local safeWidth = tonumber(availableWidth) or 0
+    local safeGap = tonumber(gap) or 0
+    local minValue = tonumber(minSize) or 24
+    local maxValue = tonumber(maxSize) or 96
+
+    local computed = math.floor((safeWidth - ((safeCount - 1) * safeGap)) / safeCount)
+    return math.max(minValue, math.min(maxValue, computed))
+end
+
+---------------------------------------------------------------------------------------
 ---------------------------- Frame Management Utilities ------------------------------
 ---------------------------------------------------------------------------------------
 
