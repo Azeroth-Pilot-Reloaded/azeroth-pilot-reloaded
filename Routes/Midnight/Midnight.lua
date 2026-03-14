@@ -2307,6 +2307,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             IsAdventureMap = true,
             IsCampaignQuest = true,
             IsQuestsCompletedOnAccount = { 88706 },
+            IsQuestsUnCompleted = { 88696 },
             _index = 2,
         },
         {
@@ -2316,6 +2317,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             GossipOptionIDs = { 138308, 138306 },
             IsCampaignQuest = true,
             IsQuestsCompletedOnAccount = { 88706 },
+            IsQuestsUnCompleted = { 88696 },
             _index = 3,
         },
         {
@@ -2324,6 +2326,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             Zone = 2424,
             IsCampaignQuest = true,
             IsQuestsCompletedOnAccount = { 88706 },
+            IsQuestsUnCompleted = { 88696 },
             _index = 4,
         },
         {
@@ -2332,6 +2335,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             Zone = 2395,
             IsCampaignQuest = true,
             IsQuestsUncompletedOnAccount = { 88706 },
+            IsQuestsUnCompleted = { 88696 },
             _index = 5,
         },
         {
@@ -2341,6 +2345,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             GossipOptionIDs = { 133700 },
             IsCampaignQuest = true,
             IsQuestsUncompletedOnAccount = { 88706 },
+            IsQuestsUnCompleted = { 88696 },
             _index = 6,
         },
         {
@@ -2350,6 +2355,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             GossipOptionIDs = { 134577 },
             IsCampaignQuest = true,
             IsQuestsUncompletedOnAccount = { 88706 },
+            IsQuestsUnCompleted = { 88696 },
             _index = 7,
         },
         {
@@ -2359,6 +2365,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             GossipOptionIDs = { 134509 },
             IsCampaignQuest = true,
             IsQuestsUncompletedOnAccount = { 88706 },
+            IsQuestsUnCompleted = { 88696 },
             _index = 8,
         },
         {
@@ -2368,6 +2375,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             GossipOptionIDs = { 134511 },
             IsCampaignQuest = true,
             IsQuestsUncompletedOnAccount = { 88706 },
+            IsQuestsUnCompleted = { 88696 },
             _index = 9,
         },
         {
@@ -2376,6 +2384,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             Zone = 2424,
             IsCampaignQuest = true,
             IsQuestsUncompletedOnAccount = { 88706 },
+            IsQuestsUnCompleted = { 88696 },
             _index = 10,
         },
         {
