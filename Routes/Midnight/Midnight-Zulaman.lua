@@ -5,8 +5,8 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Sojourner,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 40,
-        [APR.PREFAB_TYPES.AllQuests] = 40,
+        [APR.PREFAB_TYPES.Leveling] = 50,
+        [APR.PREFAB_TYPES.AllQuests] = 50,
     },
     sojournerAchievementID = 42045,
     mapID = 2395,

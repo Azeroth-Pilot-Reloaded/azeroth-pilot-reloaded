@@ -7,7 +7,6 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     category = APR.CATEGORIES.Leveling,
     prefab = {
         [APR.PREFAB_TYPES.Leveling] = 40,
-        [APR.PREFAB_TYPES.AllQuests] = 40,
     },
     mapID = 2215,
     conditions = { Level = 70 },

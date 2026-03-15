@@ -7,7 +7,6 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
     category = APR.CATEGORIES.Leveling,
     prefab = {
         [APR.PREFAB_TYPES.Leveling] = 50,
-        [APR.PREFAB_TYPES.AllQuests] = 50,
     },
     mapID = 2255,
     conditions = { Level = 70 },

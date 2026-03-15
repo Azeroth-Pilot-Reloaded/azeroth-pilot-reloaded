@@ -5,8 +5,7 @@ APR.RouteQuestStepList["2393-Midnight-Glyph-Eversong-Woods"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Achievement,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 90,
-        [APR.PREFAB_TYPES.AllQuests] = 90,
+        [APR.PREFAB_TYPES.AllQuests] = 100,
         [APR.PREFAB_TYPES.Speedrun] = 40,
     },
     mapID = 2393,
@@ -91,8 +90,7 @@ APR.RouteQuestStepList["2395-Midnight-Glyph-Zulaman"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Achievement,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 100,
-        [APR.PREFAB_TYPES.AllQuests] = 100,
+        [APR.PREFAB_TYPES.AllQuests] = 110,
         [APR.PREFAB_TYPES.Speedrun] = 50,
     },
     mapID = 2395,
@@ -177,8 +175,7 @@ APR.RouteQuestStepList["2413-Midnight-Glyph-Harandar"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Achievement,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 110,
-        [APR.PREFAB_TYPES.AllQuests] = 110,
+        [APR.PREFAB_TYPES.AllQuests] = 120,
         [APR.PREFAB_TYPES.Speedrun] = 60,
     },
     mapID = 2413,
@@ -245,8 +242,7 @@ APR.RouteQuestStepList["2405-Midnight-Glyph-Voidstorm"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Achievement,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 120,
-        [APR.PREFAB_TYPES.AllQuests] = 120,
+        [APR.PREFAB_TYPES.AllQuests] = 130,
         [APR.PREFAB_TYPES.Speedrun] = 70,
     },
     mapID = 2405,

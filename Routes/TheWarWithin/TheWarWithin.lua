@@ -3402,7 +3402,6 @@ APR.RouteQuestStepList["2248-TWW-Siren-Isle-Intro"] = {
     category = APR.CATEGORIES.Campaign,
     prefab = {
         [APR.PREFAB_TYPES.Leveling] = 130,
-        [APR.PREFAB_TYPES.AllQuests] = 130,
     },
     mapID = 2248,
     conditions = { Level = 70 },
@@ -3796,8 +3795,6 @@ APR.RouteQuestStepList["2248-TWW-Siren-Isle-Intro"] = {
         },
     }
 }
-
-
 
 -- Rise of the Red Dawn
 APR.RouteQuestStepList["2248-TWW-Rise-of-the-Red-Dawn-Storyline"] = {
