@@ -7,6 +7,9 @@ APR.RouteQuestStepList["85-BFA-Orgrimmar"] = {
     label = L["BFA01 - Intro"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 10,
+    },
     mapID = 85,
     conditions = { Faction = "Horde" },
     nextRoute = { "862-Zuldazar" },
@@ -553,6 +556,9 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
     label = L["BFA02 - Zuldazar"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 20,
+    },
     mapID = 862,
     conditions = { Faction = "Horde" },
     nextRoute = { "863-Nazmir" },
@@ -4040,6 +4046,9 @@ APR.RouteQuestStepList["863-Nazmir"] = {
     label = L["BFA03 - Nazmir"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 30,
+    },
     mapID = 863,
     conditions = { Faction = "Horde" },
     nextRoute = { "862-Zuldazar-2" },
@@ -6560,6 +6569,9 @@ APR.RouteQuestStepList["862-Zuldazar-2"] = {
     label = L["BFA04 - Naz-end Vol-begin"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 40,
+    },
     mapID = 862,
     conditions = { Faction = "Horde" },
     nextRoute = { "864-Vol'dun" },
@@ -6699,6 +6711,9 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
     label = L["BFA05 - Vol'dun"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 50,
+    },
     mapID = 864,
     conditions = { Faction = "Horde" },
     nextRoute = {},
@@ -8952,6 +8967,9 @@ APR.RouteQuestStepList["1165-Zandalari-intro"] = {
     label = L["Zandalari Troll Start"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 1165,
     conditions = { Faction = "Horde", Race = APR.RACES.ZandalariTroll },
     nextRoute = { "85-DF01H-Orgrimmar" },
@@ -9006,6 +9024,9 @@ APR.RouteQuestStepList["85-Vulpera-intro"] = {
     label = L["Vulpera Start"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 85,
     conditions = { Faction = "Horde", Race = APR.RACES.Vulpera },
     nextRoute = { "85-DF01H-Orgrimmar" },
@@ -9115,6 +9136,9 @@ APR.RouteQuestStepList["85-MagharOrc-intro"] = {
     label = L["Maghar Orc Start"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 85,
     conditions = { Faction = "Horde", Race = APR.RACES.MagharOrc },
     nextRoute = { "85-DF01H-Orgrimmar" },

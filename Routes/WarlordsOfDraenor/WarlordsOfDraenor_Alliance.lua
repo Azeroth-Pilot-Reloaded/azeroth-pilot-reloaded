@@ -4,6 +4,9 @@ APR.RouteQuestStepList["84-DesMephisto-Stormwind-War"] = {
     label = L["WOD01 - Stormwind"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 10,
+    },
     mapID = 84,
     conditions = { Faction = "Alliance", Level = 10 },
     nextRoute = { "577-DesMephisto-TanaanJungle - A" },
@@ -76,6 +79,9 @@ APR.RouteQuestStepList["577-DesMephisto-TanaanJungle - A"] = {
     label = L["WOD02 - Tanaan Jungle"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 20,
+    },
     mapID = 577,
     conditions = { Faction = "Alliance", Level = 10 },
     nextRoute = { "539-DesMephisto-Shadowmoon1" },
@@ -701,6 +707,9 @@ APR.RouteQuestStepList["539-DesMephisto-Shadowmoon1"] = {
     label = L["WOD03 - Shadowmoon"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 30,
+    },
     mapID = 539,
     conditions = { Faction = "Alliance", Level = 10 },
     nextRoute = { "543-DesMephisto-Gorgrond - A" },
@@ -1490,6 +1499,9 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond - A"] = {
     label = L["WOD04 - Gorgrond"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 40,
+    },
     mapID = 543,
     conditions = { Faction = "Alliance", Level = 10, IsQuestUncompleted = 35049 },
     nextRoute = { "535-DesMephisto-Talador" },
@@ -2740,6 +2752,9 @@ APR.RouteQuestStepList["543-DesMephisto-Gorgrond-Lumbermill - A"] = {
     label = L["WOD04 - Gorgrond"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 40,
+    },
     mapID = 543,
     conditions = { Faction = "Alliance", Level = 10, IsQuestCompleted = 35049 },
     nextRoute = { "535-DesMephisto-Talador" },
@@ -3354,6 +3369,9 @@ APR.RouteQuestStepList["535-DesMephisto-Talador"] = {
     label = L["WOD05 - Talador"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 50,
+    },
     mapID = 535,
     conditions = { Faction = "Alliance", Level = 10 },
     nextRoute = { "539-DesMephisto-Shadowmoon2" },
@@ -3507,6 +3525,9 @@ APR.RouteQuestStepList["539-DesMephisto-Shadowmoon2"] = {
     label = L["WOD06 - Shadowmoon"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 60,
+    },
     mapID = 539,
     conditions = { Faction = "Alliance", Level = 10 },
     nextRoute = { "535-DesMephisto-Talador2" },
@@ -3825,6 +3846,9 @@ APR.RouteQuestStepList["535-DesMephisto-Talador2"] = {
     label = L["WOD07 - Talador"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 70,
+    },
     mapID = 535,
     conditions = { Faction = "Alliance", Level = 10 },
     nextRoute = { "542-DesMephisto-SpiresOfArak" },
@@ -5112,6 +5136,9 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak - A"] = {
     label = L["WOD08 - Spires of Arak"],
     expansion = APR.EXPANSIONS.WarlordsOfDraenor,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 80,
+    },
     mapID = 542,
     conditions = { Faction = "Alliance", Level = 10 },
     nextRoute = {},

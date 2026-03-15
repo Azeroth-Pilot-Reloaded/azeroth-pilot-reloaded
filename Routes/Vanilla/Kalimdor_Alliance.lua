@@ -9,6 +9,9 @@ APR.RouteQuestStepList["57-ShadowglenNightElf"] = {
     label = L["Night Elf Start"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 57,
     conditions = { Faction = "Alliance", Race = APR.RACES.NightElf },
     nextRoute = { "57-Teldrassil" },
@@ -895,9 +898,12 @@ APR.RouteQuestStepList["97-AzuremystIsle"] = {
     label = L["Azuremyst Isle"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 20,
+    },
     mapID = 97,
     conditions = { Faction = "Alliance" },
-    nextRoute = {},
+    nextRoute = { "106-BloodmystIsle" },
     steps = {
         {
             PickUp = { 9314 },
@@ -1387,6 +1393,9 @@ APR.RouteQuestStepList["106-BloodmystIsle"] = {
     label = L["Bloodmyst Isle"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 30,
+    },
     mapID = 106,
     conditions = { Faction = "Alliance" },
     nextRoute = {},

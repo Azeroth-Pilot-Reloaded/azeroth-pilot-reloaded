@@ -4,6 +4,9 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     label = L["Midnight - Speedrun"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Speedrun] = 20,
+    },
     mapID = 2393,
     conditions = { Level = 80 },
     nextRoute = { "2395-The-War-of-Light-and-Shadow" },

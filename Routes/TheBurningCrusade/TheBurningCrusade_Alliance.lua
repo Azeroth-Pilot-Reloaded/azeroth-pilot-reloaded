@@ -4,6 +4,9 @@ APR.RouteQuestStepList["97-AmmenVale"] = {
     label = L["Draenei Start"],
     expansion = APR.EXPANSIONS.TheBurningCrusade,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 97,
     conditions = { Faction = "Alliance", Race = APR.RACES.Draenei },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },

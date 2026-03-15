@@ -67,6 +67,7 @@ APR-Core/data/zones/ZoneRestrictions.lua
 
 APR-Core/Config.lua
 APR-Core/Config_Route.lua
+APR-Core/Config_Route_Prefabs.lua
 APR-Core/Commands.lua
 APR-Core/ChangeLog.lua
 

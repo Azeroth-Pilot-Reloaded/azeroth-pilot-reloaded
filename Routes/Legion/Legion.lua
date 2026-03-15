@@ -7981,6 +7981,10 @@ APR.RouteQuestStepList["672-Demon-Hunter-Start"] = {
     label = L["Demon Hunter Start"],
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    notSkippable = true,
     mapID = 672,
     conditions = { Class = APR.Classes["Demon Hunter"] },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },

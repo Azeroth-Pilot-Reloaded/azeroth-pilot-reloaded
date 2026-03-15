@@ -8,6 +8,9 @@ APR.RouteQuestStepList["27-ColdridgeValleyDwarf"] = {
     label = L["Dwarf Start"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 27,
     conditions = { Faction = "Alliance", Race = APR.RACES.Dwarf },
     nextRoute = { "27-Kharanos" },
@@ -339,6 +342,9 @@ APR.RouteQuestStepList["37-NorthshireHuman"] = {
     label = L["Human Start"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 37,
     conditions = { Faction = "Alliance", Race = APR.RACES.Human },
     nextRoute = { "37-ElwynnForest" },
@@ -527,6 +533,9 @@ APR.RouteQuestStepList["30-NewTinkertown"] = {
     label = L["Gnome Start"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 30,
     conditions = { Faction = "Alliance", Race = APR.RACES.Gnome },
     nextRoute = { "27-Kharanos" },
@@ -941,6 +950,9 @@ APR.RouteQuestStepList["27-Kharanos"] = {
     label = L["Dun Morogh"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 20,
+    },
     mapID = 27,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -1402,6 +1414,9 @@ APR.RouteQuestStepList["37-ElwynnForest"] = {
     label = L["Elwynn Forest"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 20,
+    },
     mapID = 37,
     conditions = { Faction = "Alliance" },
     nextRoute = {},

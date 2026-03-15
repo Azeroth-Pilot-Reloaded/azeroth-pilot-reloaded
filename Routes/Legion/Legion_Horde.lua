@@ -8,6 +8,9 @@ APR.RouteQuestStepList["85-Intro-Legion"] = {
     label = L["Legion - Intro"],
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 20,
+    },
     mapID = 85,
     conditions = { Faction = "Horde" },
     nextRoute = {},
@@ -2064,6 +2067,9 @@ APR.RouteQuestStepList["680-Nightborne-intro"] = {
     label = L["Nightborne Start"],
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 680,
     conditions = { Faction = "Horde", Race = APR.RACES.Nightborne },
     nextRoute = { "85-DF01H-Orgrimmar" },
@@ -2132,6 +2138,9 @@ APR.RouteQuestStepList["652-HighmountainTauren-intro"] = {
     label = L["Highmountain Tauren Start"],
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 652,
     conditions = { Faction = "Horde", Race = APR.RACES.HighmountainTauren },
     nextRoute = { "85-DF01H-Orgrimmar" },

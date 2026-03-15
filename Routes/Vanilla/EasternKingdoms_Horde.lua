@@ -8,6 +8,9 @@ APR.RouteQuestStepList["465-TirisfalGladesUndead"] = {
     label = L["Undead Start"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 465,
     conditions = { Faction = "Horde", Race = APR.RACES.Scourge },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },

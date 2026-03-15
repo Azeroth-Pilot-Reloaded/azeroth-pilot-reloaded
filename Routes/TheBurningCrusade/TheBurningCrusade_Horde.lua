@@ -4,6 +4,9 @@ APR.RouteQuestStepList["467-BloodElf-intro"] = {
     label = L["Blood Elf Start"],
     expansion = APR.EXPANSIONS.TheBurningCrusade,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 467,
     conditions = { Faction = "Horde", Race = APR.RACES.BloodElf },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },

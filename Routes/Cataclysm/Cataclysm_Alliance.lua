@@ -4,6 +4,10 @@ APR.RouteQuestStepList["179-Gilneas"] = {
     label = L["Worgen Start"],
     expansion = APR.EXPANSIONS.Cataclysm,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    notSkippable = true,
     mapID = 179,
     conditions = { Faction = "Alliance", Race = APR.RACES.Worgen },
     nextRoute = { "84-DF01A-Stormwind" },

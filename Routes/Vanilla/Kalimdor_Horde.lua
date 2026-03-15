@@ -901,6 +901,9 @@ APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
     label = L["Orc Start"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 1,
     conditions = { Faction = "Horde", Race = APR.RACES.Orc },
     nextRoute = { "1-Durotar" },
@@ -3588,6 +3591,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
     label = L["Durotar"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 20,
+    },
     mapID = 1,
     conditions = { Faction = "Horde" },
     nextRoute = {},

@@ -7,6 +7,9 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
     label = L["DF03 - Waking Shores - Neutral"],
     expansion = APR.EXPANSIONS.Dragonflight,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 30,
+    },
     mapID = 2022,
     conditions = {},
     nextRoute = { "2023-DF04-OhnahranPlains" },
@@ -1639,6 +1642,9 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
     label = L["DF04 - Ohn'Ahran Plains"],
     expansion = APR.EXPANSIONS.Dragonflight,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 40,
+    },
     mapID = 2023,
     conditions = {},
     nextRoute = { "2024-DF05-AzureSpan" },
@@ -3441,6 +3447,9 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
     label = L["DF05 - Azure Span"],
     expansion = APR.EXPANSIONS.Dragonflight,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 50,
+    },
     mapID = 2024,
     conditions = {},
     nextRoute = { "2025-DF06H-Thaldraszus", "2025-DF06A-Thaldraszus" },
@@ -5593,6 +5602,10 @@ APR.RouteQuestStepList["2118-DracthyrStart-Other"] = {
     label = L["Dracthyr Start"],
     expansion = APR.EXPANSIONS.Dragonflight,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    notSkippable = true,
     mapID = 2118,
     conditions = { Race = APR.RACES.Dracthyr, ClassNot = APR.Classes.Evoker },
     nextRoute = { "84-DF01A-Stormwind", "85-DF01H-Orgrimmar" },
@@ -5638,6 +5651,10 @@ APR.RouteQuestStepList["2118-DracthyrStart-Evo"] = {
     label = L["Dracthyr Start"],
     expansion = APR.EXPANSIONS.Dragonflight,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    notSkippable = true,
     mapID = 2118,
     conditions = { Race = APR.RACES.Dracthyr, Class = APR.Classes.Evoker },
     nextRoute = { "84-DF01A-Stormwind", "85-DF01H-Orgrimmar" },
