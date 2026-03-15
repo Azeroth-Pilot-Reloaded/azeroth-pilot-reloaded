@@ -151,7 +151,12 @@ function APR.settings:InitializeSettings()
             showChangeLog = true,
             lastRecordedVersion = '',
             -- position
-            coordinateFrame = {},
+            coordinateFrame = {
+                point = "TOPRIGHT",
+                x = -98.331787109375,
+                y = -255.6669921875,
+                scale = 1,
+            },
             coordinateShow = false,
         },
         -- Character-specific settings (not affected by profile)
