@@ -4,6 +4,9 @@ APR.RouteQuestStepList["1648-Z0-TheMaw-Story"] = {
     label = L["SL01 - The Maw"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 20,
+    },
     mapID = 1648,
     conditions = { Level = 10 },
     nextRoute = { "1670-Z1-Oribos-Story" },
@@ -521,6 +524,9 @@ APR.RouteQuestStepList["1670-Z1-Oribos-Story"] = {
     label = L["SL02 - Oribos"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 30,
+    },
     mapID = 1670,
     conditions = { Level = 10 },
     nextRoute = { "1533-Z2-Bastion-Story" },
@@ -845,6 +851,9 @@ APR.RouteQuestStepList["1533-Z2-Bastion-Story"] = {
     label = L["SL03 - Bastion"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 40,
+    },
     mapID = 1533,
     conditions = { Level = 10 },
     nextRoute = { "1670-Z3-Oribos-Story" },
@@ -2561,6 +2570,9 @@ APR.RouteQuestStepList["1670-Z3-Oribos-Story"] = {
     label = L["SL04 - Oribos"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 50,
+    },
     mapID = 1670,
     conditions = { Level = 10 },
     nextRoute = { "1536-Z4-Maldraxxus-Story" },
@@ -2630,6 +2642,9 @@ APR.RouteQuestStepList["1536-Z4-Maldraxxus-Story"] = {
     label = L["SL05 - Maldraxxus"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 60,
+    },
     mapID = 1536,
     conditions = { Level = 10 },
     nextRoute = { "1670-Z5-Oribos-Story" },
@@ -4105,6 +4120,9 @@ APR.RouteQuestStepList["1670-Z5-Oribos-Story"] = {
     label = L["SL06 - Oribos"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 70,
+    },
     mapID = 1670,
     conditions = { Level = 10 },
     nextRoute = { "1960-Z6-TheMaw-Story" },
@@ -4148,6 +4166,9 @@ APR.RouteQuestStepList["1960-Z6-TheMaw-Story"] = {
     label = L["SL07 - The Maw"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 80,
+    },
     mapID = 1960,
     conditions = { Level = 10 },
     nextRoute = { "1670-Z7-Oribos-Story" },
@@ -4350,6 +4371,9 @@ APR.RouteQuestStepList["1670-Z7-Oribos-Story"] = {
     label = L["SL08 - Oribos"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 90,
+    },
     mapID = 1670,
     conditions = { Level = 10 },
     nextRoute = { "1536-Z8-Maldraxxus-Story" },
@@ -4415,6 +4439,9 @@ APR.RouteQuestStepList["1536-Z8-Maldraxxus-Story"] = {
     label = L["SL09 - Maldraxxus"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 100,
+    },
     mapID = 1536,
     conditions = { Level = 10 },
     nextRoute = { "1670-Z9-Oribos-Story" },
@@ -4490,6 +4517,9 @@ APR.RouteQuestStepList["1670-Z9-Oribos-Story"] = {
     label = L["SL10 - Oribos"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 110,
+    },
     mapID = 1670,
     conditions = { Level = 10 },
     nextRoute = { "1565-Z10-Ardenweald-Story" },
@@ -4592,6 +4622,9 @@ APR.RouteQuestStepList["1565-Z10-Ardenweald-Story"] = {
     label = L["SL11 - Ardenweald"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 120,
+    },
     mapID = 1565,
     conditions = { Level = 10 },
     nextRoute = { "1670-Z11-Oribos-Story" },
@@ -7118,6 +7151,9 @@ APR.RouteQuestStepList["1670-Z11-Oribos-Story"] = {
     label = L["SL12 - Oribos"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 130,
+    },
     mapID = 1670,
     conditions = { Level = 10 },
     nextRoute = { "1525-Z12-Revendreth-Story" },
@@ -7162,6 +7198,9 @@ APR.RouteQuestStepList["1525-Z12-Revendreth-Story"] = {
     label = L["SL13 - Revendreth"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 140,
+    },
     mapID = 1525,
     conditions = { Level = 10 },
     nextRoute = { "1543-Z13-TheMaw-Story" },
@@ -9041,6 +9080,9 @@ APR.RouteQuestStepList["1543-Z13-TheMaw-Story"] = {
     label = L["SL14 - The Maw"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 150,
+    },
     mapID = 1543,
     conditions = { Level = 10 },
     nextRoute = { "1525-Z14-Revendreth-Story" },
@@ -9122,6 +9164,9 @@ APR.RouteQuestStepList["1525-Z14-Revendreth-Story"] = {
     label = L["SL15 - Revendreth"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 160,
+    },
     mapID = 1525,
     conditions = { Level = 10 },
     nextRoute = { "1670-Z15-Oribos-Story" },
@@ -9273,6 +9318,9 @@ APR.RouteQuestStepList["1670-Z15-Oribos-Story"] = {
     label = L["SL16 - Oribos"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 170,
+    },
     mapID = 1670,
     conditions = { Level = 10 },
     nextRoute = {},

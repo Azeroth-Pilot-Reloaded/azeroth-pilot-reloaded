@@ -4,6 +4,9 @@ APR.RouteQuestStepList["118-IntroQline - A"] = {
     label = L["SL - Intro"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 10,
+    },
     mapID = 118,
     conditions = { Level = 10 },
     nextRoute = { "1648-Z0-TheMaw-Story" },
@@ -134,6 +137,9 @@ APR.RouteQuestStepList["1670-Shadowlands-StoryOnly-A"] = {
     label = L["SL - StoryMode Only"],
     expansion = APR.EXPANSIONS.Shadowlands,
     category = APR.CATEGORIES.Campaign,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 180,
+    },
     mapID = 1670,
     conditions = { Level = 10 },
     nextRoute = {},

@@ -4,6 +4,9 @@ APR.RouteQuestStepList["194-Kezan"] = {
     label = L["Goblin Start"],
     expansion = APR.EXPANSIONS.Cataclysm,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 194,
     conditions = { Faction = "Horde", Race = APR.RACES.Goblin },
     nextRoute = { "174-LostIsles" },
@@ -527,6 +530,10 @@ APR.RouteQuestStepList["174-LostIsles"] = {
     label = L["Goblin - Lost Isles"],
     expansion = APR.EXPANSIONS.Cataclysm,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 20,
+    },
+    notSkippable = true,
     mapID = 174,
     conditions = { Faction = "Horde", Race = APR.RACES.Goblin },
     nextRoute = { "85-DF01H-Orgrimmar" },

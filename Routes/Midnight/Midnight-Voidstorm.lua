@@ -4,6 +4,10 @@ APR.RouteQuestStepList["2395-The-Darkening-Sky"] = {
     label = L["Midnight - The Darkening Sky"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Campaign,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 60,
+        [APR.PREFAB_TYPES.AllQuests] = 60,
+    },
     mapID = 2395,
     conditions = { Level = 80 },
     nextRoute = { "2395-Voidstorm", "2395-Voidstorm-Campaign-Only" },
@@ -158,6 +162,10 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
     label = L["Midnight - Voidstorm - sojourner"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Sojourner,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 70,
+        [APR.PREFAB_TYPES.AllQuests] = 70,
+    },
     sojournerAchievementID = 42045,
     mapID = 2395,
     conditions = { Level = 80 },

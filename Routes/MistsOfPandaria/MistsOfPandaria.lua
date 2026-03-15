@@ -4,6 +4,10 @@ APR.RouteQuestStepList["378-Panda Starting Zone"] = {
     label = L["Pandaren Neutral Start"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    notSkippable = true,
     mapID = 378,
     conditions = { Faction = "Neutral", Race = { "Pandaren" } },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },
@@ -1757,6 +1761,10 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
     label = L["Valley of the four winds"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
     category = APR.CATEGORIES.Sojourner,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 30,
+        [APR.PREFAB_TYPES.AllQuests] = 30,
+    },
     mapID = 376,
     conditions = {},
     nextRoute = { "418-Krasarang Wilds - H", "418-Krasarang Wilds - A" },
@@ -3452,6 +3460,10 @@ APR.RouteQuestStepList["388-Townlong Steppes"] = {
     label = L["Townlong Steppes"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
     category = APR.CATEGORIES.Sojourner,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 60,
+        [APR.PREFAB_TYPES.AllQuests] = 60,
+    },
     mapID = 388,
     conditions = {},
     nextRoute = { "390-Dread Wastes" },
@@ -4761,6 +4773,10 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
     label = L["Dread Wastes"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
     category = APR.CATEGORIES.Sojourner,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 70,
+        [APR.PREFAB_TYPES.AllQuests] = 70,
+    },
     mapID = 390,
     conditions = {},
     nextRoute = { "390-Isle of Thunder - H", "390-Isle of Thunder - A" },

@@ -4,6 +4,10 @@ APR.RouteQuestStepList["23-ScarletEnclave"] = {
     label = L["Death Knight Start"],
     expansion = APR.EXPANSIONS.WrathOfTheLichKing,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    notSkippable = true,
     mapID = 23,
     conditions = { Class = APR.Classes["Death Knight"], AlliedRace = false },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },
@@ -1279,6 +1283,10 @@ APR.RouteQuestStepList["118-Allied_Icecrown Citadel - H"] = {
     label = L["Allied Death Knight Start"],
     expansion = APR.EXPANSIONS.WrathOfTheLichKing,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    notSkippable = true,
     mapID = 118,
     conditions = { Faction = "Horde", Class = APR.Classes["Death Knight"], AlliedRace = true },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },
@@ -1384,6 +1392,10 @@ APR.RouteQuestStepList["118-Allied_Icecrown Citadel - A"] = {
     label = L["Allied Death Knight Start"],
     expansion = APR.EXPANSIONS.WrathOfTheLichKing,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    notSkippable = true,
     mapID = 118,
     conditions = { Faction = "Alliance", Class = APR.Classes["Death Knight"], AlliedRace = true },
     nextRoute = { "85-DF01H-Orgrimmar", "84-DF01A-Stormwind" },

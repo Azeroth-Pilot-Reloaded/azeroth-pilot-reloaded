@@ -4,6 +4,9 @@ APR.RouteQuestStepList["2451-Arathi-Highlands-Returning-Player"] = {
     label = L["TWW - Arathi Highlands - Returning Player"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 2451,
     conditions = { Level = 70 },
     nextRoute = {},

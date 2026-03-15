@@ -8,6 +8,9 @@ APR.RouteQuestStepList["84-BFA-Stormwind"] = {
     label = L["BFA01 - Intro"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 10,
+    },
     mapID = 84,
     conditions = { Faction = "Alliance" },
     nextRoute = { "895-Tiragarde Sound" },
@@ -196,6 +199,9 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
     label = L["BFA02 - Tiragarde Sound"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 20,
+    },
     mapID = 895,
     conditions = { Faction = "Alliance" },
     nextRoute = { "942-Stormsong Valley" },
@@ -4156,6 +4162,9 @@ APR.RouteQuestStepList["942-Stormsong Valley"] = {
     label = L["BFA03 - Dustvar"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 30,
+    },
     mapID = 942,
     conditions = { Faction = "Alliance" },
     nextRoute = { "896-Dustvar" },
@@ -7047,6 +7056,9 @@ APR.RouteQuestStepList["896-Dustvar"] = {
     label = L["BFA04 - Stormsong Valley"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 40,
+    },
     mapID = 896,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -10185,6 +10197,9 @@ APR.RouteQuestStepList["1186-DarkIronDwarf-intro"] = {
     label = L["Dark Iron Dwarf Start"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 1186,
     conditions = { Faction = "Alliance", Race = APR.RACES.DarkIronDwarf },
     nextRoute = { "84-DF01A-Stormwind" },
@@ -10239,6 +10254,9 @@ APR.RouteQuestStepList["1573-Mechagnome-intro"] = {
     label = L["Mechagnome Start"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 1573,
     conditions = { Faction = "Alliance", Race = APR.RACES.Mechagnome },
     nextRoute = { "84-DF01A-Stormwind" },
@@ -10293,6 +10311,9 @@ APR.RouteQuestStepList["1161-KulTiran-intro"] = {
     label = L["Kul Tiran Start"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 1161,
     conditions = { Faction = "Alliance", Race = APR.RACES.KulTiran },
     nextRoute = { "84-DF01A-Stormwind" },

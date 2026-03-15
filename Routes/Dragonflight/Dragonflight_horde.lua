@@ -4,6 +4,9 @@ APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
     label = L["DF01 - Dragonflight Orgrimmar"],
     expansion = APR.EXPANSIONS.Dragonflight,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 10,
+    },
     mapID = 85,
     conditions = { Faction = "Horde" },
     nextRoute = { "2022-DF03H-WakingShores" },
@@ -138,6 +141,9 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
     label = L["DF02 - Waking Shores - Horde"],
     expansion = APR.EXPANSIONS.Dragonflight,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 20,
+    },
     mapID = 2022,
     conditions = { Faction = "Horde" },
     nextRoute = { "2022-DF03N-WakingShores" },
@@ -478,6 +484,9 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
     label = L["DF06 - Thaldraszus"],
     expansion = APR.EXPANSIONS.Dragonflight,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 60,
+    },
     mapID = 2025,
     conditions = { Faction = "Horde" },
     nextRoute = {},

@@ -99,6 +99,57 @@ function APR:TrimString(text)
     return (tostring(text):match("^%s*(.-)%s*$"))
 end
 
+--- Wrap a text by words using a max character count per line.
+--- @param text string|number|nil
+--- @param maxCharsPerLine number|nil
+--- @return string
+function APR:WrapTextByWords(text, maxCharsPerLine)
+    if text == nil then
+        return ""
+    end
+
+    local limit = tonumber(maxCharsPerLine)
+    local asText = tostring(text)
+    if not limit or limit < 1 or #asText <= limit then
+        return asText
+    end
+
+    local wrappedLines = {}
+    for sourceLine in asText:gmatch("[^\n]+") do
+        local line = sourceLine
+        while #line > limit do
+            local breakAt = nil
+            for i = limit, 1, -1 do
+                if line:sub(i, i) == " " then
+                    breakAt = i
+                    break
+                end
+            end
+
+            if not breakAt then
+                breakAt = limit
+            end
+
+            local head = line:sub(1, breakAt):gsub("%s+$", "")
+            if head ~= "" then
+                tinsert(wrappedLines, head)
+            end
+
+            line = line:sub(breakAt + 1):gsub("^%s+", "")
+        end
+
+        if line ~= "" then
+            tinsert(wrappedLines, line)
+        end
+    end
+
+    if #wrappedLines == 0 then
+        return asText
+    end
+
+    return table.concat(wrappedLines, "\n")
+end
+
 function APR:NormalizeBoolean(value)
     if value == nil then
         return nil

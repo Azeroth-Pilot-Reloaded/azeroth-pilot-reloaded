@@ -8,6 +8,9 @@ APR.RouteQuestStepList["84-Intro-Legion"] = {
     label = L["Legion - Intro"],
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 30,
+    },
     mapID = 84,
     conditions = { Faction = "Alliance" },
     nextRoute = {},
@@ -1567,6 +1570,9 @@ APR.RouteQuestStepList["971-VoidElf-intro"] = {
     label = L["Void Elf Start"],
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 971,
     conditions = { Faction = "Alliance", Race = APR.RACES.VoidElf },
     nextRoute = { "84-DF01A-Stormwind" },
@@ -1621,6 +1627,9 @@ APR.RouteQuestStepList["940-LightforgedDraenei-intro"] = {
     label = L["Lightforged Draenei Start"],
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
     mapID = 940,
     conditions = { Faction = "Alliance", Race = APR.RACES.LightforgedDraenei },
     nextRoute = { "84-DF01A-Stormwind" },
@@ -1697,6 +1706,9 @@ APR.RouteQuestStepList["84-Intro-Legion-DH"] = {
     label = L["Legion - Intro"],
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 20,
+    },
     mapID = 84,
     conditions = { Faction = "Alliance", Class = APR.Classes["Demon Hunter"], Race = APR.RACES.VoidElf },
     nextRoute = { "84-DF01A-Stormwind" },

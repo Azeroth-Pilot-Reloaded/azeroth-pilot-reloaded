@@ -4,6 +4,10 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     label = L["Midnight - Harandar - sojourner"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Sojourner,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 50,
+        [APR.PREFAB_TYPES.AllQuests] = 50,
+    },
     sojournerAchievementID = 42045,
     mapID = 2395,
     conditions = { Level = 80 },

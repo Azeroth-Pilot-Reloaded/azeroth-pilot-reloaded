@@ -5,6 +5,10 @@ APR.RouteQuestStepList["2215-TWW-Hallowfall"] = {
     label = L["TWW - 04 - Hallowfall"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 40,
+        [APR.PREFAB_TYPES.AllQuests] = 40,
+    },
     mapID = 2215,
     conditions = { Level = 70 },
     nextRoute = { "2255-TWW-Azj-Kahet" },

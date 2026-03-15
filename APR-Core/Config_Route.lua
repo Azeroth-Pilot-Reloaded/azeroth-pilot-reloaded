@@ -4,10 +4,6 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.routeconfig = APR:NewModule("routeconfig", "AceEvent-3.0")
 local AceGUI = LibStub("AceGUI-3.0")
 
-local alliance = "Alliance"
-local horde = "Horde"
-
-local optionsWidth = 0.7
 local lineColor = APR.Color.grayAlpha
 local customPathListeWidget = nil
 local tabRouteListWidget = nil
@@ -17,6 +13,228 @@ local currentTabName = nil
 local routeSearchText = ""
 local routeSortKey = "name"
 local routeSortAsc = true
+
+local PREFAB_BUTTON_WIDGET_TYPE = "APRWrappedButton"
+local PREFAB_BUTTON_WIDGET_VERSION = 1
+local PREFAB_BUTTON_RELATIVE_SPACER = 0.02
+
+local function ClampNumber(value, minValue, maxValue)
+    if value < minValue then
+        return minValue
+    end
+    if value > maxValue then
+        return maxValue
+    end
+    return value
+end
+
+local function EnsurePrefabWrappedButtonWidget()
+    local currentVersion = AceGUI:GetWidgetVersion(PREFAB_BUTTON_WIDGET_TYPE) or 0
+    if currentVersion >= PREFAB_BUTTON_WIDGET_VERSION then
+        return
+    end
+
+    local function Button_OnClick(frame, ...)
+        AceGUI:ClearFocus()
+        PlaySound(852)
+        frame.obj:Fire("OnClick", ...)
+    end
+
+    local function Control_OnEnter(frame)
+        frame.obj:Fire("OnEnter")
+    end
+
+    local function Control_OnLeave(frame)
+        frame.obj:Fire("OnLeave")
+    end
+
+    local methods = {
+        OnAcquire = function(self)
+            self:SetHeight(34)
+            self:SetWidth(200)
+            self:SetDisabled(false)
+            self:SetText("")
+        end,
+        SetText = function(self, text)
+            self.text:SetText(text)
+        end,
+        SetDisabled = function(self, disabled)
+            self.disabled = disabled
+            if disabled then
+                self.frame:Disable()
+            else
+                self.frame:Enable()
+            end
+        end,
+    }
+
+    local function Constructor()
+        local name = PREFAB_BUTTON_WIDGET_TYPE .. AceGUI:GetNextWidgetNum(PREFAB_BUTTON_WIDGET_TYPE)
+        local frame = CreateFrame("Button", name, UIParent, "UIPanelButtonTemplate")
+        frame:Hide()
+
+        frame:EnableMouse(true)
+        frame:SetScript("OnClick", Button_OnClick)
+        frame:SetScript("OnEnter", Control_OnEnter)
+        frame:SetScript("OnLeave", Control_OnLeave)
+
+        local text = frame:GetFontString()
+        text:ClearAllPoints()
+        text:SetPoint("TOPLEFT", 8, -1)
+        text:SetPoint("BOTTOMRIGHT", -8, 1)
+        text:SetJustifyH("CENTER")
+        text:SetJustifyV("MIDDLE")
+        text:SetWordWrap(false)
+        text:SetFontObject(GameFontNormalSmall)
+
+        local widget = {
+            text = text,
+            frame = frame,
+            type = PREFAB_BUTTON_WIDGET_TYPE,
+        }
+
+        for method, func in pairs(methods) do
+            widget[method] = func
+        end
+
+        return AceGUI:RegisterAsWidget(widget)
+    end
+
+    AceGUI:RegisterWidgetType(PREFAB_BUTTON_WIDGET_TYPE, Constructor, PREFAB_BUTTON_WIDGET_VERSION)
+end
+
+local function BuildPrefabButtonName(localeKey)
+    return L[localeKey] or localeKey
+end
+
+local PREFAB_BUTTON_LABELS = {
+    speedrun_prefab = BuildPrefabButtonName("SPEEDRUN"),
+    all_quests_prefab = BuildPrefabButtonName("ALL_QUESTS"),
+    leveling_prefab = BuildPrefabButtonName("LEVELING_PREFAB"),
+    reset_custom_path = BuildPrefabButtonName("CLEAR"),
+}
+
+local function BuildPrefabRelativeWidthMap()
+    local keys = {
+        "speedrun_prefab",
+        "all_quests_prefab",
+        "leveling_prefab",
+        "reset_custom_path",
+    }
+
+    local weightedTotal = 0
+    local weights = {}
+
+    for _, key in ipairs(keys) do
+        local label = tostring(PREFAB_BUTTON_LABELS[key] or "")
+        local weight = math.max(8, #label + 4)
+        weights[key] = weight
+        weightedTotal = weightedTotal + weight
+    end
+
+    local available = 1 - PREFAB_BUTTON_RELATIVE_SPACER
+    local relativeWidths = {}
+
+    for _, key in ipairs(keys) do
+        local ratio = weightedTotal > 0 and (weights[key] / weightedTotal) or 0.25
+        relativeWidths[key] = ClampNumber(ratio * available, 0.12, 0.58)
+    end
+
+    local sum = 0
+    for _, key in ipairs(keys) do
+        sum = sum + relativeWidths[key]
+    end
+
+    if sum > 0 then
+        local rescale = available / sum
+        for _, key in ipairs(keys) do
+            relativeWidths[key] = relativeWidths[key] * rescale
+        end
+    end
+
+    return relativeWidths
+end
+
+local PREFAB_BUTTON_RELATIVE_WIDTHS = BuildPrefabRelativeWidthMap()
+
+local PREFAB_ACTION_ORDER = {
+    "speedrun_prefab",
+    "all_quests_prefab",
+    "leveling_prefab",
+    "reset_custom_path_spacer_1",
+    "reset_custom_path",
+}
+
+local PREFAB_ACTION_DEFINITIONS = {
+    speedrun_prefab = {
+        order = 1.0,
+        type = "execute",
+        dialogControl = PREFAB_BUTTON_WIDGET_TYPE,
+        name = PREFAB_BUTTON_LABELS.speedrun_prefab,
+        width = "relative",
+        relWidth = PREFAB_BUTTON_RELATIVE_WIDTHS.speedrun_prefab,
+        desc = L["SPEEDRUN_TOOLTIPS"],
+        func = function()
+            APRCustomPath[APR.PlayerID] = {}
+            APR.routeconfig:GetSpeedRunPrefab()
+        end,
+    },
+    all_quests_prefab = {
+        order = 1.1,
+        type = "execute",
+        dialogControl = PREFAB_BUTTON_WIDGET_TYPE,
+        name = PREFAB_BUTTON_LABELS.all_quests_prefab,
+        width = "relative",
+        relWidth = PREFAB_BUTTON_RELATIVE_WIDTHS.all_quests_prefab,
+        desc = L["ALL_QUESTS_TOOLTIPS"],
+        func = function()
+            APR.routeconfig:OpenAllQuestsPopup()
+        end,
+    },
+    leveling_prefab = {
+        order = 1.2,
+        type = "execute",
+        dialogControl = PREFAB_BUTTON_WIDGET_TYPE,
+        name = PREFAB_BUTTON_LABELS.leveling_prefab,
+        width = "relative",
+        relWidth = PREFAB_BUTTON_RELATIVE_WIDTHS.leveling_prefab,
+        desc = L["LEVELING_TOOLTIPS"],
+        func = function()
+            APR.routeconfig:OpenLevelingPopup()
+        end,
+    },
+    reset_custom_path_spacer_1 = {
+        order = 1.3,
+        type = "description",
+        name = " ",
+        width = "relative",
+        relWidth = PREFAB_BUTTON_RELATIVE_SPACER,
+    },
+    reset_custom_path = {
+        order = 1.4,
+        type = "execute",
+        dialogControl = PREFAB_BUTTON_WIDGET_TYPE,
+        name = PREFAB_BUTTON_LABELS.reset_custom_path,
+        width = "relative",
+        relWidth = PREFAB_BUTTON_RELATIVE_WIDTHS.reset_custom_path,
+        desc = L["CLEAR_CUSTOM_PATH"],
+        func = function()
+            APRCustomPath[APR.PlayerID] = {}
+            APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+        end,
+        disabled = function()
+            return not next(APRCustomPath[APR.PlayerID])
+        end,
+    },
+}
+
+local ROUTE_TAB_EXPANSION_VALUES = {}
+for _, expansionKey in ipairs(APR.EXPANSION_ORDER_KEYS or {}) do
+    local expansionName = APR.EXPANSIONS[expansionKey]
+    if expansionName then
+        tinsert(ROUTE_TAB_EXPANSION_VALUES, expansionName)
+    end
+end
 
 local function GetRouteStatusText(fileName, routeName)
     if APRZoneCompleted[APR.PlayerID][routeName] then
@@ -129,364 +347,71 @@ local function CreateRouteSearchOption()
     }
 end
 
-local notSkippableRoute = { "01-10 Exile's Reach", "Goblin - Lost Isles", "Dracthyr Start", "Pandaren Neutral Start",
-    "Allied Death Knight Start", "Death Knight Start", "Demon Hunter Start", "Worgen Start", "Earthen Dwarf Start" }
+
+
+local function CreateRouteTreeGroupOption(expansionName, order)
+    return {
+        order = order,
+        name = expansionName,
+        type = "group",
+        childGroups = "tree",
+        inline = false,
+        args = {
+            route = {
+                type = "input",
+                order = 1,
+                name = expansionName,
+                dialogControl = "RouteListFrame",
+            },
+        },
+    }
+end
+
+local function AddPrefabActionOptions(args)
+    for _, key in ipairs(PREFAB_ACTION_ORDER) do
+        args[key] = PREFAB_ACTION_DEFINITIONS[key]
+    end
+end
+
+local function AddRouteTreeGroupOptions(args, startOrder)
+    local order = startOrder
+    for _, expansionName in ipairs(ROUTE_TAB_EXPANSION_VALUES) do
+        args[expansionName] = CreateRouteTreeGroupOption(expansionName, order)
+        order = order + 1
+    end
+end
+
 ---------------------------------------------------------------------------------------
 ------------------------- Config functionality for Route ------------------------------
 ---------------------------------------------------------------------------------------
 
 local function GetConfigOptionTable()
+    local args = {
+        custom_path_area = {
+            order = 2,
+            name = L["CUSTOM_PATH"],
+            type = "group",
+            inline = true,
+            args = {
+                route = {
+                    type = "input",
+                    name = "custom_path_area",
+                    dialogControl = "CustomPathRouteListFrame",
+                },
+            }
+        },
+        route_search = CreateRouteSearchOption(),
+    }
+
+    AddPrefabActionOptions(args)
+    AddRouteTreeGroupOptions(args, 3)
+
     local routeOptions = {
         name = L["ROUTE_SELECTION"],
         type = "group",
         inline = false,
         order = 0,
-        args = {
-            speedrun_prefab = {
-                order = 1.0,
-                name = L["SPEEDRUN"],
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetSpeedRunPrefab()
-                end
-            },
-            Event_prefab = {
-                order = 1.1,
-                name = "Event",
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetRemixPrefab()
-                end,
-                hidden = function()
-                    return not APR:IsRemixCharacter()
-                end,
-            },
-            MoP_prefab = {
-                order = 1.2,
-                name = APR.EXPANSIONS.MistsOfPandaria,
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetMoPPrefab()
-                end,
-                hidden = function()
-                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.MistsOfPandaria)
-                end,
-
-            },
-            WoD_prefab = {
-                order = 1.3,
-                name = APR.EXPANSIONS.WarlordsOfDraenor,
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetWODPrefab()
-                end,
-                hidden = function()
-                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.WarlordsOfDraenor)
-                end,
-
-            },
-            BFA_prefab = {
-                order = 1.4,
-                name = APR.EXPANSIONS.BattleForAzeroth,
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetBFAPrefab()
-                end,
-                hidden = function()
-                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.BattleForAzeroth)
-                end,
-            },
-            SL_prefab = {
-                order = 1.5,
-                name = APR.EXPANSIONS.Shadowlands,
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetSLPrefab()
-                end,
-                hidden = function()
-                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.Shadowlands)
-                end
-            },
-            DF_prefab = {
-                order = 1.6,
-                name = APR.EXPANSIONS.Dragonflight,
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetDFPrefab()
-                end,
-                hidden = function()
-                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.Dragonflight)
-                end
-            },
-            TWW_prefab = {
-                order = 1.7,
-                name = APR.EXPANSIONS.TheWarWithin,
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetTWWPrefab()
-                end,
-                hidden = function()
-                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.TheWarWithin)
-                end
-            },
-            MIDNIGHT_prefab = {
-                order = 1.8,
-                name = APR.EXPANSIONS.Midnight,
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetMidnightPrefab()
-                end,
-                hidden = function()
-                    return not APR:HasVisibleRoutesForExpansion(APR.EXPANSIONS.Midnight)
-                end
-            },
-            reset_custom_path_spacer_1 = {
-                order = 1.81,
-                type = "description",
-                name = " ",
-                width = optionsWidth,
-            },
-            reset_custom_path = {
-                order = 1.83,
-                name = L["CLEAN_CUSTOM_PATH"],
-                type = "execute",
-                width = optionsWidth,
-                func = function()
-                    APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-                end,
-                disabled = function()
-                    return not next(APRCustomPath[APR.PlayerID])
-                end
-            },
-            custom_path_area = {
-                order = 2,
-                name = L["CUSTOM_PATH"],
-                type = "group",
-                inline = true,
-                args = {
-                    route = {
-                        type = "input",
-                        name = "custom_path_area",
-                        dialogControl = "CustomPathRouteListFrame",
-                    },
-                }
-            },
-            route_search = CreateRouteSearchOption(),
-            Vanilla = {
-                order = 3,
-                name = APR.EXPANSIONS.Vanilla,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.Vanilla,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            TheBurningCrusade = {
-                order = 4,
-                name = APR.EXPANSIONS.TheBurningCrusade,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.TheBurningCrusade,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            WrathOfTheLichKing = {
-                order = 5,
-                name = APR.EXPANSIONS.WrathOfTheLichKing,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.WrathOfTheLichKing,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            Cataclysm = {
-                order = 6,
-                name = APR.EXPANSIONS.Cataclysm,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.Cataclysm,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            MistsOfPandaria = {
-                order = 7,
-                name = APR.EXPANSIONS.MistsOfPandaria,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.MistsOfPandaria,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            WarlordsOfDraenor = {
-                order = 8,
-                name = APR.EXPANSIONS.WarlordsOfDraenor,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.WarlordsOfDraenor,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            Legion = {
-                order = 9,
-                name = APR.EXPANSIONS.Legion,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.Legion,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            BattleForAzeroth = {
-                order = 10,
-                name = APR.EXPANSIONS.BattleForAzeroth,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.BattleForAzeroth,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            Shadowlands = {
-                order = 11,
-                name = APR.EXPANSIONS.Shadowlands,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.Shadowlands,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            Dragonflight = {
-                order = 12,
-                name = APR.EXPANSIONS.Dragonflight,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.Dragonflight,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            TheWarWithin = {
-                order = 13,
-                name = APR.EXPANSIONS.TheWarWithin,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.TheWarWithin,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-            Midnight = {
-                order = 14,
-                name = APR.EXPANSIONS.Midnight,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.Midnight,
-                        dialogControl = "RouteListFrame",
-                    },
-                },
-            },
-            Custom = {
-                order = 15,
-                name = APR.EXPANSIONS.Custom,
-                type = "group",
-                childGroups = "tree",
-                inline = false,
-                args = {
-                    route = {
-                        type = "input",
-                        order = 1,
-                        name = APR.EXPANSIONS.Custom,
-                        dialogControl = "RouteListFrame",
-                    },
-                }
-            },
-        }
+        args = args
     }
 
 
@@ -847,7 +772,7 @@ function SetRouteListTab(widget, name)
 
     for _, route in ipairs(sortedRoutes) do
         local routeData = APR:GetRouteData(route.fileName)
-        route.categoryValue = (routeData and routeData.category) or L["LEVELING"]
+        route.categoryValue = (routeData and routeData.category) or L["LEVELING_CAT"]
         route.statusValue = GetRouteStatusText(route.fileName, route.routeName)
     end
 
@@ -1111,6 +1036,8 @@ local function InitDialogControlFrame(Type, createFrameFunc, setLabelFunction)
 end
 
 function APR.routeconfig:InitRouteConfig()
+    EnsurePrefabWrappedButtonWidget()
+
     APR.routeconfig:RegisterMessage("APR_Custom_Path_Update", function()
         if APR.OptionsRoute:IsVisible() then
             SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
@@ -1138,6 +1065,10 @@ function APR.routeconfig:InitRouteConfig()
             APR:InvalidatePlayerZoneCache()
             APR.transport:GetMeToRightZone()
         end
+
+        if APR.StatusFrame and APR.StatusFrame:IsShown() and APR.updateStatusFrame then
+            APR:updateStatusFrame()
+        end
     end)
     InitRouteSearchFrame("RouteSearchFrame")
     InitDialogControlFrame("CustomPathRouteListFrame", CreateCustomPathTableFrame, SetCustomPathListFrame)
@@ -1145,332 +1076,11 @@ function APR.routeconfig:InitRouteConfig()
     return GetConfigOptionTable()
 end
 
----------------------------------------------------------------------------------------
------------------------------------ Prefab route --------------------------------------
----------------------------------------------------------------------------------------
-local function AddRouteToCustomPath(routeName)
-    if not routeName or not APR.PlayerID then
-        return
-    end
-
-    APRCustomPath[APR.PlayerID] = APRCustomPath[APR.PlayerID] or {}
-
-    local _, _, routeFileName = APR:GetRouteMapIDsAndName(routeName)
-    local playerData = APRData[APR.PlayerID]
-
-    if routeFileName and playerData then
-        if playerData[routeFileName]
-            or playerData[routeFileName .. '-TotalSteps']
-            or playerData[routeFileName .. '-SkippedStep'] then
-            APR:CheckRouteChanges(routeFileName)
-        end
-    end
-
-    tinsert(APRCustomPath[APR.PlayerID], routeName)
-end
-
 function APR.routeconfig:SendCustomPathUpdate(suppressUpdate)
     if suppressUpdate or self._isBuildingSpeedrunPrefab then
         return
     end
     self:SendMessage("APR_Custom_Path_Update")
-end
-
-function APR.routeconfig:GetSpeedRunPrefab()
-    self._isBuildingSpeedrunPrefab = true
-
-    self:GetStartingZonePrefab()
-
-    -- Don't add other route if the player is neutral
-    if APR.Faction == "Neutral" then
-        self._isBuildingSpeedrunPrefab = nil
-        self:SendMessage("APR_Custom_Path_Update")
-        return
-    end
-
-    if APR.Level < APR.MaxLevelChromie then
-        self:GetDFPrefab()
-        self:GetWODPrefab()
-    end
-
-    if APR.Level < APR.PreviousMaxLvl then
-        self:GetTWWPrefab()
-    end
-
-    self:GetMidnightSpeedrunPrefab()
-
-    self._isBuildingSpeedrunPrefab = nil
-    self:SendMessage("APR_Custom_Path_Update")
-end
-
-function APR.routeconfig:GetStartingZonePrefab(suppressUpdate)
-    local parentMapID = APR:GetPlayerParentMapID()
-
-    if parentMapID and APR.ZoneRestrictions.IsExilesReachMap(parentMapID) then
-        AddRouteToCustomPath(L["01-10 Exile's Reach"])
-    elseif parentMapID and APR.ZoneRestrictions.IsReturningPlayerMap(parentMapID) then
-        AddRouteToCustomPath(L["TWW - Arathi Highlands - Returning Player"])
-    elseif not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775)) and (APR.Level < APR.MinBoostLvl or APR.Level < 10) then -- first quest from Exile's Reach + boost
-        --None skipable starting zone
-        if APR.ClassId == APR.Classes["Death Knight"] and APR.RaceID >= 23 then
-            -- Allied DK
-            AddRouteToCustomPath(L["Allied Death Knight Start"])
-        elseif APR.ClassId == APR.Classes["Death Knight"] then
-            -- DK
-            AddRouteToCustomPath(L["Death Knight Start"])
-        elseif APR.ClassId == APR.Classes["Demon Hunter"] and APR.Race ~= "VoidElf" then
-            AddRouteToCustomPath(L["Demon Hunter Start"])
-            AddRouteToCustomPath(L["Legion - Intro"])
-
-            -- Neutral Race
-        elseif APR.Race == "Pandaren" then
-            AddRouteToCustomPath(L["Pandaren Neutral Start"])
-        elseif APR.Race == "Goblin" then
-            AddRouteToCustomPath(L["Goblin Start"])
-            AddRouteToCustomPath(L["Goblin - Lost Isles"])
-        elseif APR.Race == "Worgen" then
-            AddRouteToCustomPath(L["Worgen Start"])
-        elseif APR.Race == "Dracthyr" then
-            AddRouteToCustomPath(L["Dracthyr Start"])
-        elseif APR.Race == "EarthenDwarf" then
-            AddRouteToCustomPath(L["Earthen Dwarf Start"])
-        elseif APR.Race == "Harronir" then
-            AddRouteToCustomPath(L["Midnight - Haranir Start"])
-
-            -- Horde Allied Race
-        elseif APR.Race == "ZandalariTroll" then
-            AddRouteToCustomPath(L["Zandalari Troll Start"])
-        elseif APR.Race == "Vulpera" then
-            AddRouteToCustomPath(L["Vulpera Start"])
-        elseif APR.Race == "MagharOrc" then
-            AddRouteToCustomPath(L["Maghar Orc Start"])
-        elseif APR.Race == "Nightborne" then
-            AddRouteToCustomPath(L["Nightborne Start"])
-        elseif APR.Race == "Nightborne" then
-            AddRouteToCustomPath(L["Nightborne Start"])
-        elseif APR.Race == "HighmountainTauren" then
-            AddRouteToCustomPath(L["Highmountain Tauren Start"])
-
-            -- Alliance Allied Race
-        elseif APR.Race == "VoidElf" then
-            AddRouteToCustomPath(L["Void Elf Start"])
-            if APR.ClassId == APR.Classes["Demon Hunter"] then
-                AddRouteToCustomPath(L["Legion - Intro"])
-            end
-        elseif APR.Race == "LightforgedDraenei" then
-            AddRouteToCustomPath(L["Lightforged Draenei Start"])
-        elseif APR.Race == "DarkIronDwarf" then
-            AddRouteToCustomPath(L["DarkIron Dwarf Start"])
-        elseif APR.Race == "Mechagnome" then
-            AddRouteToCustomPath(L["Mechagnome Start"])
-        elseif APR.Race == "KulTiran" then
-            AddRouteToCustomPath(L["Kul Tiran Start"])
-        elseif APR.Level < 10 then -- Skipable starting zone
-            -- HORDE
-            if (APR.Race == "Orc") then
-                AddRouteToCustomPath(L["Orc Start"])
-                AddRouteToCustomPath(L["Durotar"])
-            elseif (APR.Race == "Tauren") then
-                AddRouteToCustomPath(L["Tauren Start"]) -- missing part 2
-            elseif (APR.Race == "Troll") then
-                AddRouteToCustomPath(L["Troll Start"])
-                AddRouteToCustomPath(L["Durotar"])
-            elseif (APR.Race == "Scourge") then --Undead
-                AddRouteToCustomPath(L["Undead Start"])
-            elseif (APR.Race == "BloodElf") then
-                AddRouteToCustomPath(L["Blood Elf Start"]) -- missing part 2
-                -- ALLIANCE
-            elseif (APR.Race == "NightElf") then
-                AddRouteToCustomPath(L["Night Elf Start"])
-                AddRouteToCustomPath(L["Teldrassil"])
-            elseif (APR.Race == "Draenei") then
-                AddRouteToCustomPath(L["Draenei Start"])
-                AddRouteToCustomPath(L["Azuremyst Isle"])
-                AddRouteToCustomPath(L["Bloodmyst Isle"])
-            elseif (APR.Race == "Dwarf") then
-                AddRouteToCustomPath(L["Dwarf Start"])
-                AddRouteToCustomPath(L["Dun Morogh"])
-            elseif (APR.Race == "Human") then
-                AddRouteToCustomPath(L["Human Start"])
-                AddRouteToCustomPath(L["Elwynn Forest"])
-            elseif (APR.Race == "Gnome") then
-                AddRouteToCustomPath(L["Gnome Start"])
-                AddRouteToCustomPath(L["Dun Morogh"])
-            end
-        end
-    end
-    self:SendCustomPathUpdate(suppressUpdate)
-end
-
-function APR.routeconfig:GetMoPPrefab(suppressUpdate)
-    AddRouteToCustomPath(L["MoP - Intro"])
-    AddRouteToCustomPath(L["The Jade Forest"])
-    AddRouteToCustomPath(L["Valley of the four winds"])
-    AddRouteToCustomPath(L["Krasarang Wilds"])
-    AddRouteToCustomPath(L["Kun-Lai Summit"])
-    AddRouteToCustomPath(L["Townlong Steppes"])
-    AddRouteToCustomPath(L["Dread Wastes"])
-    AddRouteToCustomPath(L["Isle of Thunder"])
-
-    self:SendCustomPathUpdate(suppressUpdate)
-end
-
-function APR.routeconfig:GetWODPrefab(suppressUpdate)
-    if APR.Faction == alliance then
-        AddRouteToCustomPath(L["WOD01 - Stormwind"])
-        AddRouteToCustomPath(L["WOD02 - Tanaan Jungle"])
-        AddRouteToCustomPath(L["WOD03 - Shadowmoon"])
-        AddRouteToCustomPath(L["WOD04 - Gorgrond"])
-        AddRouteToCustomPath(L["WOD05 - Talador"])
-        AddRouteToCustomPath(L["WOD06 - Shadowmoon"])
-        AddRouteToCustomPath(L["WOD07 - Talador"])
-        AddRouteToCustomPath(L["WOD08 - Spires of Arak"])
-    elseif APR.Faction == horde then
-        AddRouteToCustomPath(L["WOD01 - Orgrimmar"])
-        AddRouteToCustomPath(L["WOD02 - Tanaan Jungle"])
-        AddRouteToCustomPath(L["WOD03 - Frostfire Ridge"])
-        AddRouteToCustomPath(L["WOD04 - Gorgrond"])
-        AddRouteToCustomPath(L["WOD05 - Talador"])
-        AddRouteToCustomPath(L["WOD06 - Spires of Arak"])
-        AddRouteToCustomPath(L["WOD07 - Nagrand"])
-    end
-    self:SendCustomPathUpdate(suppressUpdate)
-end
-
-function APR.routeconfig:GetBFAPrefab(suppressUpdate)
-    if APR.Faction == alliance then
-        AddRouteToCustomPath(L["BFA01 - Intro"])
-        AddRouteToCustomPath(L["BFA02 - Tiragarde Sound"])
-        AddRouteToCustomPath(L["BFA03 - Dustvar"])
-        AddRouteToCustomPath(L["BFA04 - Stormsong Valley"])
-    elseif APR.Faction == horde then
-        AddRouteToCustomPath(L["BFA01 - Intro"])
-        AddRouteToCustomPath(L["BFA02 - Zuldazar"])
-        AddRouteToCustomPath(L["BFA03 - Nazmir"])
-        AddRouteToCustomPath(L["BFA04 - Naz-end Vol-begin"])
-        AddRouteToCustomPath(L["BFA05 - Vol'dun"])
-    end
-    self:SendCustomPathUpdate(suppressUpdate)
-end
-
-function APR.routeconfig:GetSLPrefab(suppressUpdate)
-    AddRouteToCustomPath(L["SL - Intro"])
-    AddRouteToCustomPath(L["SL01 - The Maw"])
-    AddRouteToCustomPath(L["SL02 - Oribos"])
-    AddRouteToCustomPath(L["SL03 - Bastion"])
-    AddRouteToCustomPath(L["SL04 - Oribos"])
-    AddRouteToCustomPath(L["SL05 - Maldraxxus"])
-    AddRouteToCustomPath(L["SL06 - Oribos"])
-    AddRouteToCustomPath(L["SL07 - The Maw"])
-    AddRouteToCustomPath(L["SL08 - Oribos"])
-    AddRouteToCustomPath(L["SL09 - Maldraxxus"])
-    AddRouteToCustomPath(L["SL10 - Oribos"])
-    AddRouteToCustomPath(L["SL11 - Ardenweald"])
-    AddRouteToCustomPath(L["SL12 - Oribos"])
-    AddRouteToCustomPath(L["SL13 - Revendreth"])
-    AddRouteToCustomPath(L["SL14 - The Maw"])
-    AddRouteToCustomPath(L["SL15 - Revendreth"])
-    AddRouteToCustomPath(L["SL16 - Oribos"])
-    AddRouteToCustomPath(L["SL - StoryMode Only"])
-    self:SendCustomPathUpdate(suppressUpdate)
-end
-
-function APR.routeconfig:GetDFPrefab(suppressUpdate)
-    if APR.Faction == alliance then
-        AddRouteToCustomPath(L["DF01 - Dragonflight Stormwind"])
-        AddRouteToCustomPath(L["DF02 - Waking Shores - Alliance"])
-    elseif APR.Faction == horde then
-        AddRouteToCustomPath(L["DF01 - Dragonflight Orgrimmar"])
-        AddRouteToCustomPath(L["DF02 - Waking Shores - Horde"])
-    end
-    AddRouteToCustomPath(L["DF03 - Waking Shores - Neutral"])
-    AddRouteToCustomPath(L["DF04 - Ohn'Ahran Plains"])
-    AddRouteToCustomPath(L["DF05 - Azure Span"])
-    AddRouteToCustomPath(L["DF06 - Thaldraszus"])
-    self:SendCustomPathUpdate(suppressUpdate)
-end
-
-function APR.routeconfig:GetTWWPrefab(suppressUpdate)
-    -- Don't add TWW route if the player is neutral
-    if APR.Faction == "Neutral" then return end
-
-    AddRouteToCustomPath(L["TWW - 01 - Intro"])
-    AddRouteToCustomPath(L["TWW - 02 - Isle of Dorn"])
-    AddRouteToCustomPath(L["TWW - 03 - Ringing Deeps"])
-    AddRouteToCustomPath(L["TWW - 04 - Hallowfall"])
-    AddRouteToCustomPath(L["TWW - 05 - Azj-Kahet"])
-    AddRouteToCustomPath(L["TWW - 06 - Against the Current Storyline"])
-    AddRouteToCustomPath(L["TWW - 07 - Ties That Bind Storyline"])
-    AddRouteToCustomPath(L["TWW - 08 - News from Below Storyline"])
-    AddRouteToCustomPath(L["TWW - 09 - The Machines March to War Storyline"])
-    AddRouteToCustomPath(L["TWW - 10 - Light in the Dark Storyline"])
-    AddRouteToCustomPath(L["TWW - 11 - Lingering Shadow Storyline"])
-    AddRouteToCustomPath(L["TWW - 12 - Fate of the Kirin Tor"])
-    AddRouteToCustomPath(L["TWW - Siren Isle Intro"])
-    AddRouteToCustomPath(L["TWW - Undermine"])
-    AddRouteToCustomPath(L["TWW - Rise of the Red Dawn"])
-    AddRouteToCustomPath(L["TWW - K'aresh Storyline"])
-    AddRouteToCustomPath(L["TWW - K'aresh - Visions of a Shadowed Sun"])
-
-    self:SendCustomPathUpdate(suppressUpdate)
-end
-
-function APR.routeconfig:GetMidnightPrefab(suppressUpdate)
-    if APR.Faction == "Neutral" then return end
-
-    AddRouteToCustomPath(L["Midnight - Intro"])
-    AddRouteToCustomPath(L["Midnight - Eversong Woods - sojourner"])
-    AddRouteToCustomPath(L["Midnight - Arators Journey"])
-    AddRouteToCustomPath(L["Midnight - Zul'Aman - sojourner"])
-    AddRouteToCustomPath(L["Midnight - Harandar - sojourner"])
-    AddRouteToCustomPath(L["Midnight - The Darkening Sky"])
-    AddRouteToCustomPath(L["Midnight - Voidstorm - sojourner"])
-
-    -- Removed: not available yet
-    -- AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
-
-    -- AddRouteToCustomPath(L["Midnight - The Crimson Rogue"])
-    AddRouteToCustomPath(L["Midnight - Unlock daily quests in Saltheril's Haven"])
-    AddRouteToCustomPath(L["Glyph - Eversong Woods"])
-    AddRouteToCustomPath(L["Glyph - Zul'Aman"])
-    AddRouteToCustomPath(L["Glyph - Harandar"])
-    AddRouteToCustomPath(L["Glyph - Voidstorm"])
-    AddRouteToCustomPath(L["Midnight - Profession Treasures"])
-    AddRouteToCustomPath(L["Midnight - Prey"])
-
-
-    self:SendCustomPathUpdate(suppressUpdate)
-end
-
-function APR.routeconfig:GetMidnightSpeedrunPrefab(suppressUpdate)
-    if APR.Faction == "Neutral" then return end
-
-    AddRouteToCustomPath(L["Midnight - Intro"])
-    AddRouteToCustomPath(L["Midnight - Speedrun"])
-
-    -- Removed: not available yet
-    -- AddRouteToCustomPath(L["Midnight - The War of Light and Shadow"])
-
-    -- AddRouteToCustomPath(L["Midnight - The Crimson Rogue"])
-    AddRouteToCustomPath(L["Midnight - Unlock daily quests in Saltheril's Haven"])
-    AddRouteToCustomPath(L["Glyph - Eversong Woods"])
-    AddRouteToCustomPath(L["Glyph - Zul'Aman"])
-    AddRouteToCustomPath(L["Glyph - Harandar"])
-    AddRouteToCustomPath(L["Glyph - Voidstorm"])
-    AddRouteToCustomPath(L["Midnight - Profession Treasures"])
-    AddRouteToCustomPath(L["Midnight - Prey"])
-    self:SendCustomPathUpdate(suppressUpdate)
-end
-
-function APR.routeconfig:GetPlayerSpecRoute(prefix)
-    local routeKey = prefix .. " - " .. APR:GetClassSpecName()
-    if APR.RouteQuestStepList[routeKey] then
-        AddRouteToCustomPath(L[routeKey])
-    end
-end
-
-function APR.routeconfig:GetRemixPrefab()
-    self:SendCustomPathUpdate(false)
 end
 
 ---------------------------------------------------------------------------------------
@@ -1502,12 +1112,10 @@ end
 function APR.routeconfig:CheckRouteResetOnLvlUp()
     if not APR:IsTableEmpty(APRCustomPath[APR.PlayerID]) then
         local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
-        local notSkippableRouteTranslated = {}
-        for _, routeName in ipairs(notSkippableRoute) do
-            tinsert(notSkippableRouteTranslated, L[routeName])
-        end
+        local currentRouteKey = APR:GetRouteKeyFromDisplayName(currentRouteName)
+        local currentRouteData = APR:GetRouteData(currentRouteKey)
 
-        if APR:Contains(notSkippableRouteTranslated, currentRouteName) then
+        if currentRouteData and currentRouteData.notSkippable then
             return
         elseif APR.Level == 10 then
             APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_SPEEDRUN",
@@ -1519,7 +1127,7 @@ function APR.routeconfig:CheckRouteResetOnLvlUp()
             APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_TWW", format(L["RESET_ROUTE_FOR_TWW"], APR.Level),
                 function()
                     APRCustomPath[APR.PlayerID] = {}
-                    APR.routeconfig:GetTWWPrefab()
+                    APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.TheWarWithin)
                 end)
         end
     end

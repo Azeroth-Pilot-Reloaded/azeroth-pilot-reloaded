@@ -4,9 +4,13 @@ APR.RouteQuestStepList["85-MoP Intro"] = {
     label = L["MoP - Intro"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 10,
+        [APR.PREFAB_TYPES.AllQuests] = 10,
+    },
     mapID = 85,
     conditions = { Faction = "Horde" },
-    nextRoute = {"371-The Jade Forest - H"},
+    nextRoute = { "371-The Jade Forest - H" },
     steps = {
         {
             PickUp = { 60126 },
@@ -141,9 +145,13 @@ APR.RouteQuestStepList["371-The Jade Forest - H"] = {
     label = L["The Jade Forest"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
     category = APR.CATEGORIES.Sojourner,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 20,
+        [APR.PREFAB_TYPES.AllQuests] = 20,
+    },
     mapID = 371,
     conditions = { Faction = "Horde" },
-    nextRoute = {"376-Valley of the four winds"},
+    nextRoute = { "376-Valley of the four winds" },
     steps = {
         {
             PickUp = { 31765 },
@@ -3220,9 +3228,13 @@ APR.RouteQuestStepList["418-Krasarang Wilds - H"] = {
     label = L["Krasarang Wilds"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
     category = APR.CATEGORIES.Sojourner,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 40,
+        [APR.PREFAB_TYPES.AllQuests] = 40,
+    },
     mapID = 418,
     conditions = { Faction = "Horde" },
-    nextRoute = {"379-Kun-Lai Summit - H"},
+    nextRoute = { "379-Kun-Lai Summit - H" },
     steps = {
         {
             PickUp = { 30079 },
@@ -4344,9 +4356,13 @@ APR.RouteQuestStepList["379-Kun-Lai Summit - H"] = {
     label = L["Kun-Lai Summit"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
     category = APR.CATEGORIES.Sojourner,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 50,
+        [APR.PREFAB_TYPES.AllQuests] = 50,
+    },
     mapID = 379,
     conditions = { Faction = "Horde" },
-    nextRoute = {"388-Townlong Steppes"},
+    nextRoute = { "388-Townlong Steppes" },
     steps = {
         {
             PickUp = { 31393 },
@@ -6920,6 +6936,10 @@ APR.RouteQuestStepList["390-Isle of Thunder - H"] = {
     label = L["Isle of Thunder"],
     expansion = APR.EXPANSIONS.MistsOfPandaria,
     category = APR.CATEGORIES.Sojourner,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 80,
+        [APR.PREFAB_TYPES.AllQuests] = 80,
+    },
     mapID = 390,
     conditions = { Faction = "Horde" },
     nextRoute = {},

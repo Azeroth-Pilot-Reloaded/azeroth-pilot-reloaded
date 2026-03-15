@@ -21,8 +21,24 @@ APR.EXPANSIONS = {
     Custom = "Custom",
 }
 
+APR.EXPANSION_ORDER_KEYS = {
+    "Vanilla",
+    "TheBurningCrusade",
+    "WrathOfTheLichKing",
+    "Cataclysm",
+    "MistsOfPandaria",
+    "WarlordsOfDraenor",
+    "Legion",
+    "BattleForAzeroth",
+    "Shadowlands",
+    "Dragonflight",
+    "TheWarWithin",
+    "Midnight",
+    "Custom",
+}
+
 APR.CATEGORIES = {
-    Leveling = L["Leveling"],
+    Leveling = L["LEVELING_CAT"],
     Sojourner = L["Sojourner"],
     Campaign = L["Campaign"],
     Achievement = L["Achievement"],
@@ -34,6 +50,13 @@ APR.CATEGORIES = {
     Pet = L["Pet"],
     Toy = L["Toy"],
     Daily = L["Daily"],
+}
+
+APR.PREFAB_TYPES = {
+    Leveling = "leveling",
+    AllQuests = "all_quests",
+    Speedrun = "speedrun",
+    StartingZone = "starting_zone",
 }
 
 

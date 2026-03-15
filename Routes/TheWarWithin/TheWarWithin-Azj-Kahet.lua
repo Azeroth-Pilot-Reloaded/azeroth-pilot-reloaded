@@ -5,6 +5,10 @@ APR.RouteQuestStepList["2255-TWW-Azj-Kahet"] = {
     label = L["TWW - 05 - Azj-Kahet"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 50,
+        [APR.PREFAB_TYPES.AllQuests] = 50,
+    },
     mapID = 2255,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-Against-the-Current-storyline" },

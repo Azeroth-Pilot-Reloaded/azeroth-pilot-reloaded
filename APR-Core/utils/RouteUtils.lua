@@ -364,17 +364,41 @@ function APR:GetRouteMapIDsAndName(targetedRoute)
         return nil, 0, '', ''
     end
 
+    local function BuildRouteResult(routeFileName, routeData)
+        local expansion = self:GetEnumKeyByValue(APR.EXPANSIONS, routeData.expansion)
+        local mapID = routeData.mapID or tonumber(string.match(routeFileName, "^(%d+)"), 10)
+        return self.ZonesData.ExtensionRouteMaps[self.Faction][expansion] or {}, mapID or 0, routeFileName, expansion
+    end
+
+    -- Fast path: route key provided directly.
+    local directRouteData = self.RouteQuestStepList[targetedRoute]
+    if type(directRouteData) == "table" and directRouteData.expansion and directRouteData.label then
+        return BuildRouteResult(targetedRoute, directRouteData)
+    end
+
+    -- Display names can be duplicated (e.g. Exile's Reach A/H), so resolve deterministically.
+    local matchingRouteKeys = {}
     for routeFileName, routeData in pairs(self.RouteQuestStepList) do
-        if type(routeData) == "table" and routeData.expansion and routeData.label then
-            local routeName = routeData.label
-            local expansion = self:GetEnumKeyByValue(APR.EXPANSIONS, routeData.expansion)
-            if routeName == targetedRoute or routeFileName == targetedRoute then
-                local mapID = routeData.mapID or tonumber(string.match(routeFileName, "^(%d+)"), 10)
-                return self.ZonesData.ExtensionRouteMaps[self.Faction][expansion] or {}, mapID or 0,
-                    routeFileName, expansion
-            end
+        if type(routeData) == "table" and routeData.expansion and routeData.label and routeData.label == targetedRoute then
+            tinsert(matchingRouteKeys, routeFileName)
         end
     end
+
+    table.sort(matchingRouteKeys)
+
+    -- Prefer route variants that are not hidden for current character (faction/race/class/event).
+    for _, routeFileName in ipairs(matchingRouteKeys) do
+        if self:GetRouteVisibility(routeFileName) ~= "hidden" then
+            return BuildRouteResult(routeFileName, self.RouteQuestStepList[routeFileName])
+        end
+    end
+
+    -- Fallback to first match to avoid breaking legacy/custom edge cases.
+    if #matchingRouteKeys > 0 then
+        local fallbackRouteKey = matchingRouteKeys[1]
+        return BuildRouteResult(fallbackRouteKey, self.RouteQuestStepList[fallbackRouteKey])
+    end
+
     return nil, 0, '', ''
 end
 
@@ -421,10 +445,28 @@ end
 function APR:GetRouteKeyFromDisplayName(displayName)
     if not displayName then return nil end
 
+    local routeByKey = self.RouteQuestStepList and self.RouteQuestStepList[displayName]
+    if type(routeByKey) == "table" then
+        return displayName
+    end
+
+    local matchingRouteKeys = {}
     for routeKey, routeData in pairs(self.RouteQuestStepList or {}) do
         if type(routeData) == "table" and routeData.label == displayName then
+            tinsert(matchingRouteKeys, routeKey)
+        end
+    end
+
+    table.sort(matchingRouteKeys)
+
+    for _, routeKey in ipairs(matchingRouteKeys) do
+        if self:GetRouteVisibility(routeKey) ~= "hidden" then
             return routeKey
         end
+    end
+
+    if #matchingRouteKeys > 0 then
+        return matchingRouteKeys[1]
     end
 
     -- fallback: key used directly as display name (custom routes)

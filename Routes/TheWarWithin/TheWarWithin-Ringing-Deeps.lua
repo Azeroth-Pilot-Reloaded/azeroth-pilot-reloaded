@@ -5,6 +5,10 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     label = L["TWW - 03 - Ringing Deeps"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 30,
+        [APR.PREFAB_TYPES.AllQuests] = 30,
+    },
     mapID = 2214,
     conditions = { Level = 70 },
     nextRoute = { "2215-TWW-Hallowfall" },
@@ -7653,6 +7657,10 @@ APR.RouteQuestStepList["2248-TWW-Undermine"] = {
     label = L["TWW - Undermine"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     category = APR.CATEGORIES.Campaign,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 140,
+        [APR.PREFAB_TYPES.AllQuests] = 140,
+    },
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2248-TWW-Rise-of-the-Red-Dawn-Storyline" },

@@ -5,6 +5,10 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
     label = L["TWW - 02 - Isle of Dorn"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 20,
+        [APR.PREFAB_TYPES.AllQuests] = 20,
+    },
     mapID = 2248,
     conditions = { Level = 70 },
     nextRoute = { "2214-TWW-Ringing-Deeps" },

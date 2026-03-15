@@ -4,6 +4,10 @@ APR.RouteQuestStepList["1409-Exile's Reach - A"] = {
     label = L["01-10 Exile's Reach"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    notSkippable = true,
     mapID = 1409,
     conditions = { Faction = "Alliance", Zones = { 1409, 1726, 1727, 1728 } },
     nextRoute = { "84-DF01A-Stormwind" },
