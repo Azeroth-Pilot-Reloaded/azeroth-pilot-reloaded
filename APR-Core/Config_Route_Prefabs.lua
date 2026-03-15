@@ -109,6 +109,43 @@ local function IsExpansionInPopupDefinition(definition, expansionName)
     return false
 end
 
+local function GetOrderedPopupExpansions(definition)
+    local expansions = definition and definition.expansions or {}
+    local ordered = {}
+
+    for i, expansionName in ipairs(expansions) do
+        ordered[i] = expansionName
+    end
+
+    if #ordered <= 1 or type(APR.EXPANSION_ORDER_KEYS) ~= "table" then
+        return ordered
+    end
+
+    local expansionOrder = {}
+    for index, expansionKey in ipairs(APR.EXPANSION_ORDER_KEYS) do
+        local expansionName = APR.EXPANSIONS and APR.EXPANSIONS[expansionKey]
+        if expansionName then
+            expansionOrder[expansionName] = index
+        end
+    end
+
+    local definitionOrder = {}
+    for index, expansionName in ipairs(ordered) do
+        definitionOrder[expansionName] = index
+    end
+
+    table.sort(ordered, function(a, b)
+        local aOrder = expansionOrder[a] or math.huge
+        local bOrder = expansionOrder[b] or math.huge
+        if aOrder == bOrder then
+            return (definitionOrder[a] or math.huge) < (definitionOrder[b] or math.huge)
+        end
+        return aOrder < bOrder
+    end)
+
+    return ordered
+end
+
 local function BuildExpansionPrefabFromRoutes(routeConfig, expansionName, prefabType, suppressUpdate)
     local routeCandidates = {}
 
@@ -146,8 +183,9 @@ end
 
 local function BuildPrefabPopupOptions(definition)
     local options = {}
+    local orderedExpansions = GetOrderedPopupExpansions(definition)
 
-    for _, expansionName in ipairs(definition.expansions or {}) do
+    for _, expansionName in ipairs(orderedExpansions) do
         local hasRoute = HasRouteForExpansionAndPrefab(expansionName, definition.prefabType)
         local requiredLevel = definition.requiredLevels and definition.requiredLevels[expansionName]
         local isLevelLocked = requiredLevel and APR.Level < requiredLevel
@@ -310,8 +348,8 @@ function APR.routeconfig:GetSpeedRunPrefab()
     end
 
     if APR.Level < APR.MaxLevelChromie then
-        BuildExpansionPrefabFromRoutes(self, APR.EXPANSIONS.Dragonflight, APR.PREFAB_TYPES.Leveling, true)
         BuildExpansionPrefabFromRoutes(self, APR.EXPANSIONS.WarlordsOfDraenor, APR.PREFAB_TYPES.Leveling, true)
+        BuildExpansionPrefabFromRoutes(self, APR.EXPANSIONS.Dragonflight, APR.PREFAB_TYPES.Leveling, true)
     end
 
     if APR.Level < APR.PreviousMaxLvl then
