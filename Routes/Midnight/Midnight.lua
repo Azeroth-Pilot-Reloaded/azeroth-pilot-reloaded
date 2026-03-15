@@ -2298,6 +2298,11 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Campaign,
     mapID = 2395,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 90,
+        [APR.PREFAB_TYPES.AllQuests] = 90,
+        [APR.PREFAB_TYPES.Speedrun] = 30,
+    },
     conditions = { Level = 90 },
     nextRoute = { "2413-Midnight-Unlock-daily-Saltherils-Haven" },
     steps = {
@@ -3819,7 +3824,6 @@ APR.RouteQuestStepList["2393-Midnight-Crimson-Rogue"] = {
         },
     }
 }
-
 ---------------------------------------------------------------------------------------
 --------------------------------- Miscellaneous ---------------------------------------
 ---------------------------------------------------------------------------------------
@@ -3828,11 +3832,6 @@ APR.RouteQuestStepList["2395-Midnight-Prey"] = {
     label = L["Midnight - Prey"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Daily,
-    prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 140,
-        [APR.PREFAB_TYPES.AllQuests] = 140,
-        [APR.PREFAB_TYPES.Speedrun] = 90,
-    },
     mapID = 2395,
     conditions = { Level = 90 },
     nextRoute = { "2395-Midnight-Profession-Treasures" },
@@ -4193,9 +4192,9 @@ APR.RouteQuestStepList["2413-Midnight-Unlock-daily-Saltherils-Haven"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Daily,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 80,
-        [APR.PREFAB_TYPES.AllQuests] = 80,
-        [APR.PREFAB_TYPES.Speedrun] = 30,
+        [APR.PREFAB_TYPES.Leveling] = 95,
+        [APR.PREFAB_TYPES.AllQuests] = 95,
+        [APR.PREFAB_TYPES.Speedrun] = 35,
     },
     mapID = 2413,
     conditions = { Level = 90 },
@@ -4453,4 +4452,3 @@ APR.RouteQuestStepList["2413-Midnight-Unlock-daily-Saltherils-Haven"] = {
     }
 }
 -- APR.RouteQuestStepList["2395-Mrglgrgl-of-Grglmrgl"] = {}
--- APR.RouteQuestStepList["2395-Crimson-Rogue"] = {}

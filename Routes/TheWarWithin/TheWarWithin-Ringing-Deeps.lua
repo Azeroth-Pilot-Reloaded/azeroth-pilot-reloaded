@@ -7,7 +7,6 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
     category = APR.CATEGORIES.Leveling,
     prefab = {
         [APR.PREFAB_TYPES.Leveling] = 30,
-        [APR.PREFAB_TYPES.AllQuests] = 30,
     },
     mapID = 2214,
     conditions = { Level = 70 },
@@ -3579,6 +3578,9 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
     category = APR.CATEGORIES.Sojourner,
     sojournerAchievementID = 19559,
     mapID = 2214,
+    prefab = {
+        [APR.PREFAB_TYPES.AllQuests] = 30,
+    },
     conditions = { Level = 70 },
     nextRoute = {},
     steps = {
