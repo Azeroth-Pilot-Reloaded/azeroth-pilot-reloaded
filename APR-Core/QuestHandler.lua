@@ -235,11 +235,21 @@ function APR:UpdateStep()
         table.sort(extraLines, function(a, b) return a.key < b.key end)
         for i, line in ipairs(extraLines) do
             local key = line.text
-            local message = rawget(L, key) or
-                (AprRCData and AprRCData.ExtraLineTexts and rawget(AprRCData.ExtraLineTexts, key))
-            if message then
-                local colorHex, formattedMessage = APR:ExtractColorAndText(message)
+            local formattedMessage, colorHex = APR:ResolveStepText(line.text)
+            if formattedMessage then
                 APR.currentStep:AddExtraLineText(i .. "_" .. key, formattedMessage, colorHex)
+            end
+        end
+
+        if showStepDetails and step.Note then
+            local noteLines = APR:ResolveStepTextList(step.Note)
+            for index, note in ipairs(noteLines) do
+                APR.currentStep:AddExtraLineText(
+                    "NOTE-" .. tostring(currentStepIndex) .. "-" .. tostring(index),
+                    note.text,
+                    note.color,
+                    false
+                )
             end
         end
 
