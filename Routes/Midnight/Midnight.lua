@@ -1019,6 +1019,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
     },
     mapID = 2395,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-Harandar", "2395-Harandar-Campaign-Only" },
     steps = {
         {
@@ -2303,6 +2304,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
         [APR.PREFAB_TYPES.Speedrun] = 30,
     },
     conditions = { Level = 90 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2413-Midnight-Unlock-daily-Saltherils-Haven" },
     steps = {
         {
@@ -2823,6 +2825,7 @@ APR.RouteQuestStepList["2413-Midnight-Haranir-Start"] = {
     },
     mapID = 2413,
     conditions = { Race = APR.RACES.Harronir },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "84-DF01A-Stormwind", "85-DF01H-Orgrimmar" },
     steps = {
         {
@@ -3082,6 +3085,7 @@ APR.RouteQuestStepList["2248-Unlock-void-elf-DH"] = {
     category = APR.CATEGORIES.AlliedRace,
     mapID = 2248,
     conditions = { Level = 70 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = {},
     steps = {
         {
@@ -3492,6 +3496,7 @@ APR.RouteQuestStepList["2393-Midnight-Crimson-Rogue"] = {
     category = APR.CATEGORIES.Achievement,
     mapID = 2393,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = {},
     steps = {
         {
@@ -3833,6 +3838,7 @@ APR.RouteQuestStepList["2395-Midnight-Prey"] = {
     category = APR.CATEGORIES.Daily,
     mapID = 2395,
     conditions = { Level = 90 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-Midnight-Profession-Treasures" },
     steps = {
         {
@@ -4197,6 +4203,7 @@ APR.RouteQuestStepList["2413-Midnight-Unlock-daily-Saltherils-Haven"] = {
     },
     mapID = 2413,
     conditions = { Level = 90 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-Midnight-Prey" },
     steps = {
         {

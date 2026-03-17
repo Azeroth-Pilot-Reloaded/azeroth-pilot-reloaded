@@ -70,6 +70,92 @@ end
 --- Condition Evaluation
 ---------------------------------------------------------------------------------------
 
+local function IsRouteCompletedByKey(routeKey)
+    if not routeKey or not APRZoneCompleted or not APR.PlayerID then
+        return false
+    end
+
+    local routeData = APR:GetRouteData(routeKey)
+    local routeLabel = routeData and routeData.label or nil
+    if not routeLabel then
+        return false
+    end
+
+    local completedForPlayer = APRZoneCompleted[APR.PlayerID]
+    return completedForPlayer and completedForPlayer[routeLabel] == true or false
+end
+
+function APR:GetRouteRequiredRouteKeys(routeKey)
+    local routeData = self:GetRouteData(routeKey)
+    if not routeData then
+        return {}
+    end
+
+    local required = routeData.requiredRoute
+    if type(required) == "string" then
+        return { required }
+    end
+
+    if type(required) == "table" then
+        local result = {}
+        local seen = {}
+        for _, requiredRouteKey in ipairs(required) do
+            if type(requiredRouteKey) == "string" and requiredRouteKey ~= "" and not seen[requiredRouteKey] then
+                seen[requiredRouteKey] = true
+                table.insert(result, requiredRouteKey)
+            end
+        end
+        return result
+    end
+
+    return {}
+end
+
+--- Add a route to custom path and automatically prepend unmet required routes.
+--- Required routes are read from routeData.requiredRoute.
+---@param routeKey string
+---@return boolean addedAny
+function APR:AddRouteToCustomPathByKey(routeKey)
+    if not routeKey or not self.PlayerID then
+        return false
+    end
+
+    APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}
+    local customPath = APRCustomPath[self.PlayerID]
+    local visiting = {}
+    local addedAny = false
+
+    local function addRouteRecursive(targetRouteKey)
+        if visiting[targetRouteKey] then
+            return
+        end
+        visiting[targetRouteKey] = true
+
+        local targetRouteData = self:GetRouteData(targetRouteKey)
+        if not targetRouteData or not targetRouteData.label then
+            visiting[targetRouteKey] = nil
+            return
+        end
+
+        local requiredRouteKeys = self:GetRouteRequiredRouteKeys(targetRouteKey)
+        for _, requiredRouteKey in ipairs(requiredRouteKeys) do
+            if not IsRouteCompletedByKey(requiredRouteKey) then
+                addRouteRecursive(requiredRouteKey)
+            end
+        end
+
+        if not self:Contains(customPath, targetRouteData.label) then
+            table.insert(customPath, targetRouteData.label)
+            addedAny = true
+        end
+
+        visiting[targetRouteKey] = nil
+    end
+
+    addRouteRecursive(routeKey)
+    return addedAny
+end
+
 --- Allied race check: RaceIDs >= 23 are allied races in WoW.
 ---@return boolean
 function APR:IsAlliedRace()
@@ -223,9 +309,9 @@ end
 ---@return table unmetConditions Array of description strings
 function APR:GetUnmetConditions(routeKey)
     local routeData = self:GetRouteData(routeKey)
-    if not routeData or not routeData.conditions then return {} end
+    if not routeData then return {} end
 
-    local conditions = routeData.conditions
+    local conditions = routeData.conditions or {}
     local unmet = {}
 
     -- Level
@@ -307,8 +393,8 @@ function APR:GetRouteVisibility(routeKey)
     local routeData = self:GetRouteData(routeKey)
     if not routeData then return "hidden" end
 
-    local conditions = routeData.conditions
-    if not conditions or not next(conditions) then
+    local conditions = routeData.conditions or {}
+    if not next(conditions) then
         return "visible"
     end
 
