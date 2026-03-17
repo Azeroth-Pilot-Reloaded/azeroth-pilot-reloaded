@@ -2090,15 +2090,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
             Zone = 2395,
             _index = 270,
         },
-        {
-            PickUp = { 93372 },
-            Coord = { x = 169, y = -48.5 },
-            HasAchievement = 42045,
-            IsQuestsUncompleted = { 86636 },
-            InstanceQuest = true,
-            Zone = 2395,
-            _index = 271,
-        },
+
         {
             DoScenario = { questID = 86636, mapID = 2502 },
             Coord = { x = -56.2, y = 129.5 },
@@ -3879,15 +3871,6 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
             Coord = { x = -4268, y = 8386.7 },
             Zone = 2395,
             _index = 525,
-        },
-        {
-            Done = { 93372 },
-            Coord = { x = -4816.2, y = 8315.5 },
-            Range = 5,
-            HasAchievement = 42045,
-            IsQuestsUncompleted = { 90835 },
-            Zone = 2395,
-            _index = 526,
         },
         {
             PickUp = { 87455 },
