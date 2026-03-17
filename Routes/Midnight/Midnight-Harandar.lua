@@ -5,7 +5,6 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Sojourner,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 40,
         [APR.PREFAB_TYPES.AllQuests] = 40,
     },
     sojournerAchievementID = 42045,
