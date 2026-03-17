@@ -11,6 +11,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
     },
     mapID = 2395,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = {},
     steps = {
         {

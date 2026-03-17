@@ -10,6 +10,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     },
     mapID = 2393,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-The-War-of-Light-and-Shadow" },
     steps = {
         {

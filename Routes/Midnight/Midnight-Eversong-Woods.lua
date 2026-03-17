@@ -10,6 +10,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
     sojournerAchievementID = 42045,
     mapID = 2393,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-Harandar" },
     steps = {
         {
@@ -5193,6 +5194,7 @@ APR.RouteQuestStepList["2393-Eversong-Woods-Campaign-Only"] = {
     category = APR.CATEGORIES.Campaign,
     mapID = 2393,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-Harandar-Campaign-Only", "2395-Arators-Journey" },
     steps = {
         {
