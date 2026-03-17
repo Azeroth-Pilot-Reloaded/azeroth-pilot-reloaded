@@ -5,7 +5,6 @@ APR.RouteQuestStepList["2393-Eversong-Woods"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Sojourner,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 20,
         [APR.PREFAB_TYPES.AllQuests] = 20,
     },
     sojournerAchievementID = 42045,

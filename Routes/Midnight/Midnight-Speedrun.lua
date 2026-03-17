@@ -6,6 +6,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
     category = APR.CATEGORIES.Leveling,
     prefab = {
         [APR.PREFAB_TYPES.Speedrun] = 20,
+        [APR.PREFAB_TYPES.Leveling] = 20,
     },
     mapID = 2393,
     conditions = { Level = 80 },

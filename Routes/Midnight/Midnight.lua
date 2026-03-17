@@ -1015,7 +1015,6 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Campaign,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 30,
         [APR.PREFAB_TYPES.AllQuests] = 30,
     },
     mapID = 2395,
@@ -2299,7 +2298,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
     category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 90,
+        [APR.PREFAB_TYPES.Leveling] = 30,
         [APR.PREFAB_TYPES.AllQuests] = 90,
         [APR.PREFAB_TYPES.Speedrun] = 30,
     },
@@ -4192,7 +4191,7 @@ APR.RouteQuestStepList["2413-Midnight-Unlock-daily-Saltherils-Haven"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Daily,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 95,
+        [APR.PREFAB_TYPES.Leveling] = 35,
         [APR.PREFAB_TYPES.AllQuests] = 95,
         [APR.PREFAB_TYPES.Speedrun] = 35,
     },
