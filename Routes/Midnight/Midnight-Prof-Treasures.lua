@@ -5,7 +5,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Professions,
     prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 100,
+        [APR.PREFAB_TYPES.Leveling] = 80,
         [APR.PREFAB_TYPES.AllQuests] = 140,
         [APR.PREFAB_TYPES.Speedrun] = 80,
     },
