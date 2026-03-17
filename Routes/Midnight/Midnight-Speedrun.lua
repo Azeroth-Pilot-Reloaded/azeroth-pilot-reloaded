@@ -2136,15 +2136,6 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
             _index = 267,
         },
         {
-            PickUp = { 93372 },
-            Coord = { x = 169, y = -48.5 },
-            HasAchievement = 42045,
-            InstanceQuest = true,
-            IsQuestsUncompleted = { 86636 },
-            Zone = 2395,
-            _index = 268,
-        },
-        {
             DoScenario = { questID = 86636, mapID = 2502 },
             Coord = { x = -56.2, y = 129.5 },
             InstanceQuest = true,
@@ -2941,15 +2932,6 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
             IsCampaignQuest = true,
             Zone = 2395,
             _index = 373,
-        },
-        {
-            Done = { 93372 },
-            Coord = { x = -4816.2, y = 8315.5 },
-            Range = 5,
-            HasAchievement = 42045,
-            IsQuestsUncompleted = { 94396 },
-            one = 2395,
-            _index = 374,
         },
         {
             PickUp = { 93384 },
