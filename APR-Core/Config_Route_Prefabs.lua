@@ -1,13 +1,13 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-local function AddRouteToCustomPath(routeName)
+local function AddRouteToCustomPath(routeName, routeFileName)
     if not routeName or not APR.PlayerID then
         return
     end
 
     APRCustomPath[APR.PlayerID] = APRCustomPath[APR.PlayerID] or {}
 
-    local _, _, routeFileName = APR:GetRouteMapIDsAndName(routeName)
+    routeFileName = routeFileName or select(3, APR:GetRouteMapIDsAndName(routeName))
     local playerData = APRData[APR.PlayerID]
 
     if routeFileName and playerData then
@@ -18,7 +18,11 @@ local function AddRouteToCustomPath(routeName)
         end
     end
 
-    tinsert(APRCustomPath[APR.PlayerID], routeName)
+    if routeFileName then
+        APR:AddRouteToCustomPathByKey(routeFileName)
+    else
+        tinsert(APRCustomPath[APR.PlayerID], routeName)
+    end
 end
 
 local function GetExpansionDisplayName(expansion)
@@ -174,7 +178,7 @@ local function BuildExpansionPrefabFromRoutes(routeConfig, expansionName, prefab
     end)
 
     for _, route in ipairs(routeCandidates) do
-        AddRouteToCustomPath(route.routeName)
+        AddRouteToCustomPath(route.routeName, route.routeKey)
     end
 
     routeConfig:SendCustomPathUpdate(suppressUpdate)
@@ -281,7 +285,7 @@ local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parent
     for _, candidate in ipairs(routeCandidates) do
         if (not hasMapMatchedCandidates or candidate.mapMatch)
             and not addedRouteNames[candidate.routeName] then
-            AddRouteToCustomPath(candidate.routeName)
+            AddRouteToCustomPath(candidate.routeName, candidate.routeKey)
             addedRouteNames[candidate.routeName] = true
             addedAny = true
         end
@@ -457,7 +461,7 @@ function APR.routeconfig:GetStartingZonePrefab(suppressUpdate, prefabType)
             or FindConditionBasedStartingRouteKey(parentMapID, false)
         local routeData = routeKey and APR:GetRouteData(routeKey)
         if routeData and routeData.label then
-            AddRouteToCustomPath(routeData.label)
+            AddRouteToCustomPath(routeData.label, routeKey)
             self:SendCustomPathUpdate(suppressUpdate)
             return
         end

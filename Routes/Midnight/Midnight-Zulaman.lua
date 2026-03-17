@@ -10,6 +10,7 @@ APR.RouteQuestStepList["2395-ZulAman"] = {
     sojournerAchievementID = 42045,
     mapID = 2395,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-The-Darkening-Sky" },
     steps = {
         {
@@ -4212,6 +4213,7 @@ APR.RouteQuestStepList["2395-ZulAman-Campaign-Only"] = {
     category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-Voidstorm", "2395-Voidstorm-Campaign-Only" },
     steps = {
         {

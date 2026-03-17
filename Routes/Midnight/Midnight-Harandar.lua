@@ -10,6 +10,7 @@ APR.RouteQuestStepList["2395-Harandar"] = {
     sojournerAchievementID = 42045,
     mapID = 2395,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-ZulAman" },
     steps = {
         {
@@ -3910,6 +3911,7 @@ APR.RouteQuestStepList["2395-Harandar-Campaign-Only"] = {
     category = APR.CATEGORIES.Campaign,
     mapID = 2395,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-ZulAman-Campaign-Only" },
     steps = {
         {
