@@ -7,7 +7,7 @@ APR.mainStepOptions = {
     "Scenario", "EnterInstance", "LeaveInstance", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS",
     "UseDalaHS", "UseGarrisonHS",
     "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession", "LootItems", "WarMode", "Grind",
-    "Achievement", "RouteCompleted"
+    "Achievement", "RouteCompleted", "Note"
 }
 
 -- BuyMerchant need to be first
@@ -18,6 +18,25 @@ APR.secondaryStepOptions = {
 --- Return the localized label for the first recognized step key.
 -- This keeps UI construction simple while letting steps remain data-driven.
 function APR:GetStepString(step)
+    if step and step.Note then
+        local noteValue = step.Note
+        if type(noteValue) == "table" then
+            noteValue = noteValue[1]
+        end
+
+        if noteValue ~= nil then
+            local formatted = APR:ResolveStepText(noteValue)
+            if formatted and formatted ~= "" then
+                return formatted, "Note"
+            end
+        end
+
+        if type(step.Note) == "string" and step.Note ~= "" then
+            return step.Note, "Note"
+        end
+        return "Note", "Note"
+    end
+
     local stepMappings = {
         BuyMerchant = L["BUY"],
         Done = L["TURN_IN_Q"],
