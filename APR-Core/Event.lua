@@ -48,6 +48,7 @@ local events = {
     spell = "UNIT_SPELLCAST_SUCCEEDED",
     spec = "PLAYER_SPECIALIZATION_CHANGED",
     treasure = "CHAT_MSG_COMBAT_XP_GAIN",
+    xpUpdate = "PLAYER_XP_UPDATE",
     updateQuest = { "QUEST_LOG_UPDATE", "UNIT_QUEST_LOG_CHANGED" },
     vehicle = "UNIT_ENTERED_VEHICLE",
     zone = { "ZONE_CHANGED", "ZONE_CHANGED_INDOORS", "ZONE_CHANGED_NEW_AREA", "PLAYER_ENTERING_WORLD", "WAYPOINT_UPDATE" },
@@ -878,6 +879,14 @@ function APR.event.functions.lvlUp(event, level, healthDelta, powerDelta, numNew
     APR.Level = level
     APR.routeconfig:CheckRouteResetOnLvlUp()
     APR:UpdateStep()
+end
+
+function APR.event.functions.xpUpdate()
+    APR.Level = UnitLevel("player") or APR.Level
+
+    if APR.ActiveRoute then
+        APR:UpdateStep()
+    end
 end
 
 function APR.event.functions.merchant(event, ...)
