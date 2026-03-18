@@ -57,7 +57,7 @@ local function GetCurrentRouteStep()
         return
     end
 
-    local routeSteps = routeData.steps
+    local routeSteps = APR:GetRouteSteps(APR.ActiveRoute)
     return routeSteps, routeSteps[currentStepIndex], currentStepIndex
 end
 
