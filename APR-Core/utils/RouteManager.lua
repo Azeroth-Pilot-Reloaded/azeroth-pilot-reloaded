@@ -19,6 +19,254 @@ function APR:GetRouteData(routeKey)
     return routeData
 end
 
+local function GetBaseRouteSteps(routeData)
+    if not routeData then
+        return {}
+    end
+
+    if routeData.steps then
+        return routeData.steps
+    end
+
+    if routeData[1] then
+        return routeData
+    end
+
+    return {}
+end
+
+local function GetParallelGroups(routeData)
+    if not routeData or type(routeData.parallelSteps) ~= "table" then
+        return nil
+    end
+
+    local groups = {}
+    for _, group in ipairs(routeData.parallelSteps) do
+        if type(group) == "table" and type(group.steps) == "table" and #group.steps > 0 then
+            groups[#groups + 1] = group
+        end
+    end
+
+    if #groups == 0 then
+        return nil
+    end
+
+    return groups
+end
+
+local function GetRouteParallelState(self, routeKey, create)
+    if not routeKey or not APRData or not self.PlayerID then
+        return nil
+    end
+
+    local playerData = APRData[self.PlayerID]
+    if not playerData then
+        return nil
+    end
+
+    local stateKey = routeKey .. '-ParallelStepsState'
+    local state = playerData[stateKey]
+    if not state and create then
+        state = {
+            activationSequence = 0,
+            groups = {},
+        }
+        playerData[stateKey] = state
+    end
+
+    return state
+end
+
+local function BuildEffectiveRouteCacheKey(baseSteps, groups, state)
+    local parts = { tostring(#baseSteps) }
+
+    for _, group in ipairs(groups or {}) do
+        parts[#parts + 1] = tostring(#group.steps)
+    end
+
+    local activeGroups = state and state.groups or nil
+    if activeGroups then
+        local orderedEntries = {}
+        for groupIndex, entry in pairs(activeGroups) do
+            if type(entry) == "table" then
+                orderedEntries[#orderedEntries + 1] = {
+                    groupIndex = groupIndex,
+                    activationOrder = entry.activationOrder or 0,
+                    effectiveBeforeIndex = entry.effectiveBeforeIndex or 0,
+                }
+            end
+        end
+
+        table.sort(orderedEntries, function(left, right)
+            if left.activationOrder == right.activationOrder then
+                return left.groupIndex < right.groupIndex
+            end
+            return left.activationOrder < right.activationOrder
+        end)
+
+        for _, entry in ipairs(orderedEntries) do
+            parts[#parts + 1] = string.format("%d@%d@%d", entry.groupIndex, entry.activationOrder,
+                entry.effectiveBeforeIndex)
+        end
+    end
+
+    return table.concat(parts, "|")
+end
+
+function APR:InvalidateEffectiveRouteStepsCache(routeKey)
+    self._effectiveRouteStepsCache = self._effectiveRouteStepsCache or {}
+    if routeKey then
+        self._effectiveRouteStepsCache[routeKey] = nil
+        return
+    end
+
+    wipe(self._effectiveRouteStepsCache)
+end
+
+function APR:BuildEffectiveRouteSteps(routeKey)
+    local routeData = self:GetRouteData(routeKey)
+    local baseSteps = GetBaseRouteSteps(routeData)
+    local groups = GetParallelGroups(routeData)
+    local state = GetRouteParallelState(self, routeKey, false)
+    local activeGroups = state and state.groups or nil
+
+    if not groups or not activeGroups or not next(activeGroups) then
+        return baseSteps
+    end
+
+    self._effectiveRouteStepsCache = self._effectiveRouteStepsCache or {}
+    local cacheKey = BuildEffectiveRouteCacheKey(baseSteps, groups, state)
+    local cached = self._effectiveRouteStepsCache[routeKey]
+    if cached and cached.key == cacheKey then
+        return cached.steps
+    end
+
+    local effectiveSteps = {}
+    for index = 1, #baseSteps do
+        effectiveSteps[index] = baseSteps[index]
+    end
+
+    local orderedEntries = {}
+    for groupIndex, entry in pairs(activeGroups) do
+        local group = groups[groupIndex]
+        if group and type(entry) == "table" then
+            orderedEntries[#orderedEntries + 1] = {
+                groupIndex = groupIndex,
+                entry = entry,
+                steps = group.steps,
+            }
+        end
+    end
+
+    table.sort(orderedEntries, function(left, right)
+        local leftOrder = left.entry.activationOrder or 0
+        local rightOrder = right.entry.activationOrder or 0
+        if leftOrder == rightOrder then
+            return left.groupIndex < right.groupIndex
+        end
+        return leftOrder < rightOrder
+    end)
+
+    for _, item in ipairs(orderedEntries) do
+        local insertIndex = math.max(1,
+            math.min(item.entry.effectiveBeforeIndex or (#effectiveSteps + 1), #effectiveSteps + 1))
+        for offset, step in ipairs(item.steps) do
+            table.insert(effectiveSteps, insertIndex + offset - 1, step)
+        end
+    end
+
+    self._effectiveRouteStepsCache[routeKey] = {
+        key = cacheKey,
+        steps = effectiveSteps,
+    }
+
+    return effectiveSteps
+end
+
+function APR:GetParallelStepsInsertionIndex(currentStepIndex, effectiveSteps)
+    if not effectiveSteps or #effectiveSteps == 0 then
+        return 1
+    end
+
+    currentStepIndex = tonumber(currentStepIndex) or 1
+    if currentStepIndex < 1 then
+        currentStepIndex = 1
+    end
+
+    if currentStepIndex > #effectiveSteps then
+        return #effectiveSteps + 1
+    end
+
+    local currentStep = effectiveSteps[currentStepIndex]
+    if not (currentStep and currentStep.InstanceQuest) then
+        return currentStepIndex
+    end
+
+    local insertionIndex = currentStepIndex + 1
+    for index = currentStepIndex + 1, #effectiveSteps do
+        local step = effectiveSteps[index]
+        if not (step and step.InstanceQuest) then
+            break
+        end
+        insertionIndex = index + 1
+    end
+
+    return insertionIndex
+end
+
+function APR:EnsureRouteParallelStepsActivated(routeKey)
+    if routeKey ~= self.ActiveRoute then
+        return
+    end
+
+    local routeData = self:GetRouteData(routeKey)
+    local groups = GetParallelGroups(routeData)
+    if not groups then
+        return
+    end
+
+    local playerData = APRData and self.PlayerID and APRData[self.PlayerID] or nil
+    local currentStepIndex = playerData and playerData[routeKey] or nil
+    if not currentStepIndex then
+        return
+    end
+
+    local state = GetRouteParallelState(self, routeKey, true)
+    if not state then
+        return
+    end
+
+    state.groups = state.groups or {}
+    local pendingGroups = {}
+    for groupIndex, group in ipairs(groups) do
+        if not state.groups[groupIndex] and self:AreConditionalFiltersMet(group.conditions or {}) then
+            pendingGroups[#pendingGroups + 1] = {
+                groupIndex = groupIndex,
+                steps = group.steps,
+            }
+        end
+    end
+
+    if #pendingGroups == 0 then
+        return
+    end
+
+    local effectiveSteps = self:BuildEffectiveRouteSteps(routeKey)
+    local insertionIndex = self:GetParallelStepsInsertionIndex(currentStepIndex, effectiveSteps)
+    local insertedSteps = 0
+
+    for _, pendingGroup in ipairs(pendingGroups) do
+        state.activationSequence = (state.activationSequence or 0) + 1
+        state.groups[pendingGroup.groupIndex] = {
+            activationOrder = state.activationSequence,
+            effectiveBeforeIndex = insertionIndex + insertedSteps,
+        }
+        insertedSteps = insertedSteps + #pendingGroup.steps
+    end
+
+    self:InvalidateEffectiveRouteStepsCache(routeKey)
+end
+
 --- Return the steps array for a route key.
 --- Handles both the new format (routeData.steps) and legacy flat arrays
 --- that external addons (e.g. AprRC) might inject directly into RouteQuestStepList.
@@ -28,7 +276,10 @@ function APR:GetRouteSteps(routeKey)
     local routeData = self:GetRouteData(routeKey)
     if not routeData then return {} end
     -- New format: routeData is { steps = {...}, label = ..., ... }
-    if routeData.steps then return routeData.steps end
+    if routeData.steps then
+        self:EnsureRouteParallelStepsActivated(routeKey)
+        return self:BuildEffectiveRouteSteps(routeKey)
+    end
     -- Legacy fallback: routeData IS the flat step array (ipairs-iterable table with numeric keys)
     if routeData[1] then return routeData end
     return {}
@@ -241,11 +492,28 @@ end
 ---@param conditions table
 ---@return boolean levelMet
 local function EvaluateLevelCondition(conditions)
-    if not conditions or not conditions.Level then
+    if not conditions then
         return true
     end
-    local playerLevel = APR.Level or UnitLevel("player") or 0
-    return playerLevel >= conditions.Level
+    local playerLevel = APR:GetPlayerEffectiveLevel()
+
+    if conditions.Level and playerLevel < tonumber(conditions.Level) then
+        return false
+    end
+
+    if conditions.MinLevel and playerLevel < tonumber(conditions.MinLevel) then
+        return false
+    end
+
+    if conditions.MaxLevel and playerLevel > tonumber(conditions.MaxLevel) then
+        return false
+    end
+
+    if conditions.BeLvl and not APR:IsPlayerWithinExactLevel(conditions.BeLvl, playerLevel) then
+        return false
+    end
+
+    return true
 end
 
 --- Evaluate the Zones condition (soft condition, like Level).
@@ -313,19 +581,56 @@ function APR:GetUnmetConditions(routeKey)
 
     local conditions = routeData.conditions or {}
     local unmet = {}
+    local playerLevel = self:GetPlayerEffectiveLevel()
 
     -- Level
     if conditions.Level then
-        local playerLevel = self.Level or UnitLevel("player") or 0
-        if playerLevel < conditions.Level then
+        local requiredLevel = tonumber(conditions.Level)
+        if requiredLevel and playerLevel < requiredLevel then
             tinsert(unmet, string.format(
-                "%s >= %d (%s: %d)",
+                "%s >= %s (%s: %.2f)",
                 L["CONDITION_LEVEL"],
-                conditions.Level,
+                tostring(conditions.Level),
                 L["CONDITION_CURRENT_LEVEL"],
                 playerLevel
             ))
         end
+    end
+
+    if conditions.MinLevel then
+        local minLevel = tonumber(conditions.MinLevel)
+        if minLevel and playerLevel < minLevel then
+            tinsert(unmet, string.format(
+                "%s >= %s (%s: %.2f)",
+                L["CONDITION_LEVEL"],
+                tostring(conditions.MinLevel),
+                L["CONDITION_CURRENT_LEVEL"],
+                playerLevel
+            ))
+        end
+    end
+
+    if conditions.MaxLevel then
+        local maxLevel = tonumber(conditions.MaxLevel)
+        if maxLevel and playerLevel > maxLevel then
+            tinsert(unmet, string.format(
+                "%s <= %s (%s: %.2f)",
+                L["CONDITION_LEVEL"],
+                tostring(conditions.MaxLevel),
+                L["CONDITION_CURRENT_LEVEL"],
+                playerLevel
+            ))
+        end
+    end
+
+    if conditions.BeLvl and not self:IsPlayerWithinExactLevel(conditions.BeLvl, playerLevel) then
+        tinsert(unmet, string.format(
+            "%s = %s (%s: %.2f)",
+            L["CONDITION_LEVEL"],
+            tostring(conditions.BeLvl),
+            L["CONDITION_CURRENT_LEVEL"],
+            playerLevel
+        ))
     end
 
     -- ClassSpec
