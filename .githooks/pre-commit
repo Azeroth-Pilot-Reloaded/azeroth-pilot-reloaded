@@ -1,0 +1,20 @@
+#!/bin/sh
+
+# Auto-fix route step indexes before commit.
+set -e
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+cd "$REPO_ROOT"
+
+if command -v python >/dev/null 2>&1; then
+  PYTHON_CMD="python"
+elif command -v py >/dev/null 2>&1; then
+  PYTHON_CMD="py -3"
+else
+  echo "[pre-commit] Python is required to normalize route _index values."
+  echo "[pre-commit] Install Python or run the script manually before committing."
+  exit 1
+fi
+
+# Only staged route files are processed and re-staged by the script.
+$PYTHON_CMD .github/scripts/fix_route_indexes.py --staged
