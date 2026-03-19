@@ -5,6 +5,9 @@
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+local PREVIEW_IMAGE_ASSET_ROOT = "Interface\\AddOns\\APR\\APR-Core\\assets\\"
+
+
 local function getStatusHex(name, fallback)
     return (APR.HEXColor and APR.HEXColor[name]) or fallback
 end
@@ -194,9 +197,21 @@ function APR:NormalizePreviewImages(step)
     local collected = {}
 
     local function addPath(path)
-        if type(path) == "string" and path ~= "" then
-            table.insert(collected, path)
+        if type(path) ~= "string" then
+            return
         end
+
+        local trimmed = strtrim(path)
+        if trimmed == "" then
+            return
+        end
+
+        local fullPath = trimmed
+        if not trimmed:find("^Interface\\") then
+            fullPath = PREVIEW_IMAGE_ASSET_ROOT .. trimmed
+        end
+
+        table.insert(collected, fullPath)
     end
 
     for _, path in ipairs(step.PreviewImages) do
