@@ -242,6 +242,24 @@ function APR:UpdateStep()
         end
 
         if showStepDetails and step.Note then
+            -- Auto-skip Note-only steps (purely informational, no quest-action content) when:
+            --   1. The player has already seen this note before (seen set persists across resets), OR
+            --   2. Both the nearest real step before and after this one are quest-complete,
+            --      meaning the note no longer gates meaningful progression.
+            -- Rollback protection: PreviousQuestStep clears the seen flag when landing on a
+            -- Note-only step so the player can read it again if they explicitly go back.
+            if step.Note then
+                local route = APR.ActiveRoute
+                if APR:IsNoteStepSeen(route, step) or
+                    APR:IsNoteStepSurroundingCompleted(route, currentStepIndex) then
+                    APR:MarkNoteStepSeen(route, step)
+                    APR:UpdateNextStep()
+                    return
+                end
+                -- Mark as seen now – the player is about to read it.
+                APR:MarkNoteStepSeen(route, step)
+            end
+
             local noteLines = APR:ResolveStepTextList(step.Note)
             for index, note in ipairs(noteLines) do
                 APR.currentStep:AddExtraLineText(

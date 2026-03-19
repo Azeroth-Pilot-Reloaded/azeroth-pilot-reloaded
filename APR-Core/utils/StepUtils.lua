@@ -297,6 +297,14 @@ function APR:PreviousQuestStep()
         userData[activeRoute] = 1
     end
 
+    -- If we landed on a Note-only step, clear its seen state so the player can
+    -- read it again.  This is the "rollback protection" described in the feature:
+    -- explicitly going backwards to a Note step opts the player back in to seeing it.
+    local landedStep = questStepList[userData[activeRoute]]
+    if landedStep and landedStep.Note then
+        APR:UnmarkNoteStepSeen(activeRoute, landedStep)
+    end
+
     -- Update the quest and step
     self:UpdateQuestAndStep()
 end
