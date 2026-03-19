@@ -12,7 +12,7 @@ function APR.command:SlashCmd(input)
         APR:PrintInfo(L["ADDON"] .. ' ' .. L["DISABLE"])
     end
     if (inputText == "step") then
-       APR:PrintInfo('step', APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil))
+        APR:PrintInfo('step', APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil))
     elseif (inputText == "reset" or inputText == "r") then
         --Command to reset the current route
         APR:ResetRoute(APR.ActiveRoute)
@@ -53,7 +53,7 @@ function APR.command:SlashCmd(input)
     elseif inputText == 'about' then
         APR.settings:OpenSettings(L["ABOUT_HELP"])
     elseif inputText == '42' then
-        PlaySoundFile("Interface\\Addons\\APR\\APR-Core\\assets\\42.mp3")
+        PlaySoundFile("Interface\\Addons\\APR\\APR-Core\\assets\\sound\\42.mp3")
         UIErrorsFrame:AddMessage(L["42_COMMAND"], 1.0, 1.0, 0.0, 1.0, UIERRORS_HOLD_TIME)
     elseif inputText == 'zoneinfo' or inputText == 'zi' then
         -- Print detailed zone detection information
