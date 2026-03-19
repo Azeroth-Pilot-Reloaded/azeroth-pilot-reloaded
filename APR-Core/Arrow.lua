@@ -207,6 +207,18 @@ local function CheckDistance()
     local curStepIndex = currentStepIndex
     local previousCoords = currentCoord
 
+    -- If SingleWaypointDisplayDistance is true, only calculate distance to next waypoint
+    if currentStep.SingleWaypointDisplayDistance then
+        curStepIndex = curStepIndex + 1
+        local nextStep = routeSteps[curStepIndex]
+        local nextCoord = nextStep and APR:GetStepCoord(nextStep, routeMapID) or nil
+        if nextStep and nextCoord then
+            distance = DistanceBetween(previousCoords.x, previousCoords.y, nextCoord.x, nextCoord.y)
+            return mathFloor(distance + 0.5)
+        end
+        return 0
+    end
+
     while true do
         curStepIndex = curStepIndex + 1
         local nextStep = routeSteps[curStepIndex]
