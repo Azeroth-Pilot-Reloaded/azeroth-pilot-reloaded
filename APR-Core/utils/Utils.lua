@@ -459,6 +459,22 @@ function APR:titleCase(str)
     end))
 end
 
+--- Returns a stable string key that uniquely identifies a Note step's content.
+--- Used to track which Note-only steps the player has already seen, even across resets.
+---@param step table The step table to derive the key from
+---@return string|nil key A stable string key, or nil if the step has no Note
+function APR:GetNoteStepKey(step)
+    if not step or not step.Note then return nil end
+    if type(step.Note) == "table" then
+        local parts = {}
+        for i, v in ipairs(step.Note) do
+            parts[i] = tostring(v)
+        end
+        return table.concat(parts, "\0")
+    end
+    return tostring(step.Note)
+end
+
 ---Copies a table from source to a new table
 ---@param source table The source table to copy
 ---@return table A shallow copy of the source table
