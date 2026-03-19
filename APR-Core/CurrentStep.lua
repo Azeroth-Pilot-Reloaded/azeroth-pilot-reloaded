@@ -29,11 +29,6 @@ local FRAME_HEADER_OFFSET = -30
 local FRAME_ATTACH_OFFSET = -35
 local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
 local RAID_ICON_TEXTURE = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
-local STEP_PREVIEW_CONTAINER_KEY = "05_STEP_PREVIEW_IMAGES"
-local STEP_PREVIEW_GAP = 4
-local STEP_PREVIEW_SIDE_PADDING = 10
-local STEP_PREVIEW_MIN_SIZE = 24
-local STEP_PREVIEW_MAX_SIZE = 96
 
 ---------------------------------------------------------------------------------------
 --------------------------------- Current Step Frames ---------------------------------
@@ -46,6 +41,10 @@ local CurrentStepFrame = APR:CreateStandardFrame("CurrentStepScreenPanel", UIPar
 local CurrentStepFrame_StepHolder = CreateFrame("Frame", "CurrentStepFrame_StepHolder", CurrentStepFrame,
     "BackdropTemplate")
 CurrentStepFrame_StepHolder:SetAllPoints()
+
+if APR.currentStepImagePreview and APR.currentStepImagePreview.ConfigureCurrentStepPreview then
+    APR.currentStepImagePreview:ConfigureCurrentStepPreview(CurrentStepFrame_StepHolder, FRAME_WIDTH)
+end
 
 -- Create the frame header
 local CurrentStepFrameHeader = APR:CreateFrameHeader("CurrentStepFrameHeader", CurrentStepFrame,
@@ -532,118 +531,6 @@ local function AddExtraLineDividerFrame()
 
     container.dividerLine = dividerLine
     return container
-end
-
-function APR.currentStep:ShowImagePreview(imagePath)
-    if not imagePath then
-        return
-    end
-
-    if APR.currentStepImagePreview and APR.currentStepImagePreview.Show then
-        APR.currentStepImagePreview:Show(imagePath)
-    end
-end
-
-function APR.currentStep:ClearStepPreviewImages()
-    local existingContainer = self.questsList[STEP_PREVIEW_CONTAINER_KEY]
-    if not existingContainer then
-        return
-    end
-
-    if self:CanSafelyHide(existingContainer) then
-        if existingContainer.previewButtons then
-            for _, button in ipairs(existingContainer.previewButtons) do
-                button:SetScript("OnClick", nil)
-                button:SetScript("OnEnter", nil)
-                button:SetScript("OnLeave", nil)
-            end
-        end
-
-        existingContainer:SetScript("OnEnter", nil)
-        existingContainer:SetScript("OnLeave", nil)
-        existingContainer:ClearAllPoints()
-        existingContainer:Hide()
-        self:ResetSecureStepButton(existingContainer, STEP_PREVIEW_CONTAINER_KEY)
-        self:ResetSecureRaidIconButton(existingContainer, STEP_PREVIEW_CONTAINER_KEY)
-    else
-        self:SoftHide(existingContainer)
-        table.insert(self.pendingContainerDestroy, existingContainer)
-    end
-
-    self.questsList[STEP_PREVIEW_CONTAINER_KEY] = nil
-    self:ReOrderQuestSteps(true)
-end
-
-function APR.currentStep:SetStepPreviewImages(step)
-    if not APR.settings.profile.currentStepShow then
-        return
-    end
-
-    if type(step) ~= "table" or type(step.StepPreviewImages) ~= "table" then
-        self:ClearStepPreviewImages()
-        return
-    end
-
-    local imagePaths = APR:NormalizeStepPreviewImages(step)
-    if #imagePaths == 0 then
-        self:ClearStepPreviewImages()
-        return
-    end
-
-    local existingContainer = self.questsList[STEP_PREVIEW_CONTAINER_KEY]
-    if existingContainer and APR:AreOrderedStringListsEqual(existingContainer.imagePaths, imagePaths) then
-        return
-    end
-
-    if existingContainer then
-        self:ClearStepPreviewImages()
-    end
-
-    local availableWidth = FRAME_WIDTH - (STEP_PREVIEW_SIDE_PADDING * 2)
-    local count = #imagePaths
-    local thumbnailSize = APR:ComputeThumbnailSize(
-        availableWidth,
-        count,
-        STEP_PREVIEW_GAP,
-        STEP_PREVIEW_MIN_SIZE,
-        STEP_PREVIEW_MAX_SIZE
-    )
-
-    local rowWidth = (thumbnailSize * count) + ((count - 1) * STEP_PREVIEW_GAP)
-    local rowStartX = math.floor((FRAME_WIDTH - rowWidth) / 2)
-
-    local container = CreateFrame("Frame", nil, CurrentStepFrame_StepHolder, "BackdropTemplate")
-    container:SetWidth(FRAME_WIDTH)
-    container:SetHeight(thumbnailSize + 12)
-    container.key = STEP_PREVIEW_CONTAINER_KEY
-    container.imagePaths = imagePaths
-    container.previewButtons = {}
-
-    for index, imagePath in ipairs(imagePaths) do
-        local button = CreateFrame("Button", nil, container, "BackdropTemplate")
-        button:SetSize(thumbnailSize, thumbnailSize)
-        button:SetPoint("TOPLEFT", container, "TOPLEFT", rowStartX + ((index - 1) * (thumbnailSize + STEP_PREVIEW_GAP)),
-            -6)
-        button:SetNormalTexture(imagePath)
-        button:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]], "ADD")
-        button:SetScript("OnClick", function()
-            APR.currentStep:ShowImagePreview(imagePath)
-        end)
-        button:SetScript("OnEnter", function(self)
-            GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-            GameTooltip:AddLine("Preview")
-            GameTooltip:AddLine("Click to enlarge", 0.8, 0.8, 0.8, true)
-            GameTooltip:Show()
-        end)
-        button:SetScript("OnLeave", function()
-            GameTooltip:Hide()
-        end)
-
-        table.insert(container.previewButtons, button)
-    end
-
-    self.questsList[STEP_PREVIEW_CONTAINER_KEY] = container
-    self:ReOrderQuestSteps(true)
 end
 
 -- Add/Update quest steps

@@ -183,11 +183,11 @@ function APR:RegisterUiSpecialFrame(frameName)
 end
 
 --- Normalize preview image field on a step.
---- Supports only `StepPreviewImages` as an array of strings.
+--- Supports only `PreviewImages` as an array of strings.
 ---@param step table|nil
 ---@return table
-function APR:NormalizeStepPreviewImages(step)
-    if type(step) ~= "table" or type(step.StepPreviewImages) ~= "table" then
+function APR:NormalizePreviewImages(step)
+    if type(step) ~= "table" or type(step.PreviewImages) ~= "table" then
         return {}
     end
 
@@ -199,7 +199,7 @@ function APR:NormalizeStepPreviewImages(step)
         end
     end
 
-    for _, path in ipairs(step.StepPreviewImages) do
+    for _, path in ipairs(step.PreviewImages) do
         addPath(path)
     end
 
