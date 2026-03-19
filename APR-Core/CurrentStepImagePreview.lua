@@ -1,6 +1,7 @@
-APR.currentStepImagePreview = APR:NewModule("CurrentStepImagePreview")
-
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local _G = _G
+
+APR.currentStepImagePreview = APR:NewModule("CurrentStepImagePreview")
 
 local ApplyOverlayTextureLayout = nil
 local GetPreviewTextureAspectRatio = nil
@@ -577,8 +578,8 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
         end)
         button:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-            GameTooltip:AddLine("Preview")
-            GameTooltip:AddLine("Click to enlarge", 0.8, 0.8, 0.8, true)
+            GameTooltip:AddLine(L["PREVIEW_IMG"])
+            GameTooltip:AddLine(L["ENLARGE_IMG"], 0.8, 0.8, 0.8, true)
             GameTooltip:Show()
         end)
         button:SetScript("OnLeave", function()
