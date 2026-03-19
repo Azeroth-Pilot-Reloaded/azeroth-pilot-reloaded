@@ -1688,6 +1688,7 @@ APR.ZonesData = {
             [2556] = { Coord = { x = -1800.1, y = 1466.4 }, zone = 2405, name = "Nexus-Point Xenas", type = "DUNGEON" },
             [2528] = { Coord = { x = -768.6, y = 2450.5 }, zone = 2405, name = "Sunkiller Sanctum", type = "DELVE" },
             [2506] = { Coord = { x = 1002.1, y = 2414.8 }, zone = 2405, name = "Shadowguard Point", type = "DELVE" },
+            [2529] = { Coord = { x = 202.3, y = 1265.5 }, zone = 2405, name = "The Voidspire", type = "RAID" },
         }
     },
     ExtensionRouteMaps = { -- MapID for each Categorie
