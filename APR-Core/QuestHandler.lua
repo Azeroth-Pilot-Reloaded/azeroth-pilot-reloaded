@@ -245,7 +245,7 @@ function APR:UpdateStep()
             local noteLines = APR:ResolveStepTextList(step.Note)
             for index, note in ipairs(noteLines) do
                 APR.currentStep:AddExtraLineText(
-                    "NOTE-" .. tostring(currentStepIndex) .. "-" .. tostring(index),
+                    "NOTE_" .. tostring(index),
                     note.text,
                     note.color,
                     false
@@ -253,10 +253,10 @@ function APR:UpdateStep()
             end
         end
 
-        if showStepDetails and step.StepPreviewImages then
-            APR.currentStep:SetStepPreviewImages(step)
+        if showStepDetails and step.PreviewImages then
+            APR.currentStepImagePreview:SetPreviewImages(APR.currentStep, step)
         else
-            APR.currentStep:ClearStepPreviewImages()
+            APR.currentStepImagePreview:ClearPreviewImages(APR.currentStep)
         end
 
         if step.ExtraActionB then
