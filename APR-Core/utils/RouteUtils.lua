@@ -537,6 +537,130 @@ function APR:GetRouteKeyFromDisplayName(displayName)
     return nil
 end
 
+-- ---------------------------------------------------------------------------
+-- Note-step seen tracking
+-- Note-only steps (steps with only a Note field, no quest-action content) are
+-- purely informational.  Once the player has seen such a step, it should be
+-- auto-skipped on subsequent route resets so it does not block progress.
+-- The seen set is keyed by note content (not step index) so it stays valid
+-- even after steps are inserted or removed in the route definition.
+-- SeenNotes is intentionally NOT cleared by ClearSavedRouteData / ResetRoute;
+-- it is only cleared entry-by-entry when the player manually rolls back to the
+-- note step via PreviousQuestStep.
+-- ---------------------------------------------------------------------------
+
+--- Marks a Note-only step as seen for the given route.
+function APR:MarkNoteStepSeen(route, step)
+    local key = self:GetNoteStepKey(step)
+    if not key then return end
+    local playerData = APRData[self.PlayerID]
+    if not playerData then return end
+    local seenKey = route .. '-SeenNotes'
+    playerData[seenKey] = playerData[seenKey] or {}
+    playerData[seenKey][key] = true
+end
+
+--- Returns true when a Note-only step was previously seen for the given route.
+function APR:IsNoteStepSeen(route, step)
+    local key = self:GetNoteStepKey(step)
+    if not key then return false end
+    local playerData = APRData[self.PlayerID]
+    if not playerData then return false end
+    local seenNotes = playerData[route .. '-SeenNotes']
+    return seenNotes ~= nil and seenNotes[key] == true
+end
+
+--- Clears the seen flag for a Note-only step (called when the player rolls back to it).
+function APR:UnmarkNoteStepSeen(route, step)
+    local key = self:GetNoteStepKey(step)
+    if not key then return end
+    local playerData = APRData[self.PlayerID]
+    if not playerData then return end
+    local seenNotes = playerData[route .. '-SeenNotes']
+    if seenNotes then
+        seenNotes[key] = nil
+    end
+end
+
+--- Returns true when the steps immediately before and after a Note-only step at
+--- stepIndex are effectively quest-complete, meaning the note no longer blocks
+--- meaningful progression and can be auto-skipped after a route reset.
+function APR:IsNoteStepSurroundingCompleted(route, stepIndex)
+    local steps = self:GetRouteSteps(route)
+    if not steps or #steps == 0 then return false end
+
+    local function isStepEffectivelyDone(step)
+        if not step then return true end
+        -- Filtered steps (race/class/conditions) count as done
+        if self:StepFilterQuestHandler(step) then return true end
+        -- Another Note step is transparent (skip over it)
+        if step.Note then return true end
+        -- Waypoint: done when its anchor quest is completed
+        if step.Waypoint then
+            return C_QuestLog.IsQuestFlaggedCompleted(step.Waypoint)
+        end
+        -- Done/TurnIn: done when all quest IDs are flagged completed
+        if step.Done then
+            if type(step.Done) == "table" then
+                for _, questID in ipairs(step.Done) do
+                    if not C_QuestLog.IsQuestFlaggedCompleted(tonumber(questID)) then
+                        return false
+                    end
+                end
+                return true
+            end
+            return C_QuestLog.IsQuestFlaggedCompleted(tonumber(step.Done))
+        end
+        -- PickUp: done when all quest IDs are in the journal or flagged completed
+        if step.PickUp then
+            if type(step.PickUp) == "table" then
+                for _, questID in ipairs(step.PickUp) do
+                    questID = tonumber(questID)
+                    if not (self.ActiveQuests[questID] or C_QuestLog.IsQuestFlaggedCompleted(questID)) then
+                        return false
+                    end
+                end
+                return true
+            end
+            local questID = tonumber(step.PickUp)
+            return (self.ActiveQuests[questID] ~= nil) or C_QuestLog.IsQuestFlaggedCompleted(questID)
+        end
+        -- TakePortal: done when its quest is flagged completed or player is in the target zone
+        if step.TakePortal then
+            local questID = step.TakePortal.questID
+            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then return true end
+        end
+        -- Treasure: done when its anchor quest is flagged completed
+        if step.Treasure then
+            local questID = step.Treasure.questID
+            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then return true end
+        end
+        return false
+    end
+
+    -- Walk backward to find the first non-Note step before this one
+    local prevDone = true
+    for i = stepIndex - 1, 1, -1 do
+        local s = steps[i]
+        if s and not s.Note then
+            prevDone = isStepEffectivelyDone(s)
+            break
+        end
+    end
+
+    -- Walk forward to find the first non-Note step after this one
+    local nextDone = true
+    for i = stepIndex + 1, #steps do
+        local s = steps[i]
+        if s and not s.Note then
+            nextDone = isStepEffectivelyDone(s)
+            break
+        end
+    end
+
+    return prevDone and nextDone
+end
+
 --- Clear all saved state for a route.
 function APR:ClearSavedRouteData(routeFileName)
     if not routeFileName or not APRData or not self.PlayerID then
@@ -548,11 +672,35 @@ function APR:ClearSavedRouteData(routeFileName)
         return
     end
 
+    -- Before wiping the progress index, snapshot any Note-only steps that were
+    -- before the player's current position into SeenNotes.  This ensures that
+    -- Note-only steps newly inserted by a route update are still auto-skipped
+    -- when the surrounding quest content was already completed.
+    local currentProgress = playerData[routeFileName]
+    if currentProgress and currentProgress > 1 then
+        local steps = self:GetRouteSteps(routeFileName)
+        if steps and #steps > 0 then
+            local seenKey = routeFileName .. '-SeenNotes'
+            local seenNotes = playerData[seenKey] or {}
+            for i = 1, math.min(currentProgress - 1, #steps) do
+                local s = steps[i]
+                if s and s.Note then
+                    local key = self:GetNoteStepKey(s)
+                    if key then seenNotes[key] = true end
+                end
+            end
+            if next(seenNotes) then
+                playerData[seenKey] = seenNotes
+            end
+        end
+    end
+
     playerData[routeFileName] = nil
     playerData[routeFileName .. '-SkippedStep'] = nil
     playerData[routeFileName .. '-TotalSteps'] = nil
     playerData[routeFileName .. '-RawTotalSteps'] = nil
     playerData[routeFileName .. '-ParallelStepsState'] = nil
+    -- NOTE: routeFileName .. '-SeenNotes' is intentionally preserved across resets.
 
     local routeSignatures = self.settings and self.settings.profile and self.settings.profile.routeSignatures
     if routeSignatures then
