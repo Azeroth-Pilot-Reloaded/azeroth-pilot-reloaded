@@ -515,14 +515,14 @@ APR.RouteQuestStepList["The Grudge Pit 1"] = {
         Coord = { x = -1809.3, y = -791.7 },
         GossipOptionIDs = { 134668 },
         Zone = 2413,
-        _index = 869,
+        _index = 1,
     },
     {
         Scenario = { criteriaID = 106066, criteriaIndex = 1, scenarioID = 3097, stepID = 15913 },
         Coord = { x = -1805.6, y = -794.1 },
         Range = 1,
         Zone = 2413,
-        _index = 870,
+        _index = 2,
     },
     {
         Scenario = { criteriaID = 105769, criteriaIndex = 1, scenarioID = 3097, stepID = 15896 },
@@ -530,14 +530,14 @@ APR.RouteQuestStepList["The Grudge Pit 1"] = {
         Range = 30,
         ExtraActionB = true,
         Zone = 2413,
-        _index = 872,
+        _index = 3,
     },
     {
         Scenario = { criteriaID = 105770, criteriaIndex = 2, scenarioID = 3097, stepID = 15896 },
         Coord = { x = -1845.6, y = -809.8 },
         Range = 30,
         Zone = 2413,
-        _index = 871,
+        _index = 4,
     },
     {
         Scenario = { criteriaID = 106178, criteriaIndex = 1, scenarioID = 3097, stepID = 15897 },
@@ -545,35 +545,35 @@ APR.RouteQuestStepList["The Grudge Pit 1"] = {
         Range = 5,
         ExtraActionB = true,
         Zone = 2413,
-        _index = 873,
+        _index = 5,
     },
     {
         Scenario = { criteriaID = 106236, criteriaIndex = 1, scenarioID = 3097, stepID = 15930 },
         Coord = { x = -1814.8, y = -813.9 },
         Range = 5,
         Zone = 2413,
-        _index = 874,
+        _index = 6,
     },
     {
         Scenario = { criteriaID = 106293, criteriaIndex = 2, scenarioID = 3097, stepID = 15930 },
         Coord = { x = -1839.5, y = -807.9 },
         Range = 5,
         Zone = 2413,
-        _index = 875,
+        _index = 7,
     },
     {
         Scenario = { criteriaID = 106314, criteriaIndex = 1, scenarioID = 3097, stepID = 15942 },
         Coord = { x = -1842.4, y = -810.4 },
         Range = 5,
         Zone = 2413,
-        _index = 876,
+        _index = 8,
     },
     {
         Scenario = { criteriaID = 60399, criteriaIndex = 1, scenarioID = 3097, stepID = 15898 },
         Coord = { x = -1841.7, y = -805.2 },
         Range = 5,
         Zone = 2413,
-        _index = 877,
+        _index = 9,
     },
 }
 
@@ -664,7 +664,7 @@ APR.RouteQuestStepList["Collegiate Calamity 3"] = {
         GossipOptionIDs = { 135865 },
         InstanceQuest = true,
         Zone = 2395,
-        _index = 101,
+        _index = 1,
     },
     {
         Scenario = { criteriaID = 109132, criteriaIndex = 2, scenarioID = 3193, stepID = 16122 },
@@ -673,7 +673,7 @@ APR.RouteQuestStepList["Collegiate Calamity 3"] = {
         ExtraActionB = true,
         InstanceQuest = true,
         Zone = 2395,
-        _index = 102,
+        _index = 2,
     },
     {
         Scenario = { criteriaID = 0, criteriaIndex = 1, scenarioID = 3193, stepID = 16122 },
@@ -681,14 +681,14 @@ APR.RouteQuestStepList["Collegiate Calamity 3"] = {
         Range = 100,
         InstanceQuest = true,
         Zone = 2395,
-        _index = 48,
+        _index = 3,
     },
     {
         Scenario = { criteriaID = 111611, criteriaIndex = 1, scenarioID = 3193, stepID = 16123 },
         Coord = { x = -4393.9, y = 8714.4 },
         Range = 5,
         Zone = 2395,
-        _index = 103,
+        _index = 4,
     },
 }
 
@@ -772,7 +772,7 @@ APR.RouteQuestStepList["Twilight Crypts 3"] = {
         Range = 5,
         InstanceQuest = true,
         Zone = 2437,
-        _index = 6,
+        _index = 5,
     }
 }
 
@@ -783,7 +783,7 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         GossipOptionIDs = { 135634 },
         InstanceQuest = true,
-        _index = 43,
+        _index = 1,
     },
     {
         Scenario = { criteriaID = 106442, criteriaIndex = 1, questID = 91918, scenarioID = 3124, stepID = 15966 },
@@ -791,7 +791,7 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         Range = 0.5,
         InstanceQuest = true,
-        _index = 44,
+        _index = 2,
     },
     {
         Scenario = { criteriaID = 108849, criteriaIndex = 2, questID = 91918, scenarioID = 3124, stepID = 15966 },
@@ -799,7 +799,7 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         Range = 5,
         InstanceQuest = true,
-        _index = 45,
+        _index = 3,
     },
     {
         Waypoint = 91918,
@@ -808,7 +808,7 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
 
         ExtraLineText = "CLICK_ON_LEVERS",
         Range = 5,
-        _index = 46,
+        _index = 4,
     },
     {
         Waypoint = 91918,
@@ -816,21 +816,21 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         ExtraLineText = "CLICK_ON_LEVERS",
         Range = 5,
-        _index = 47,
+        _index = 5,
     },
     {
         Waypoint = 91918,
         Coord = { x = -563.1, y = -97.9 },
         Zone = 2437,
         Range = 5,
-        _index = 48,
+        _index = 6,
     },
     {
         Waypoint = 91918,
         Coord = { x = -534.3, y = -69.2 },
         Zone = 2437,
         Range = 5,
-        _index = 49,
+        _index = 7,
     },
     {
         Waypoint = 91918,
@@ -838,7 +838,7 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         ExtraLineText = "CLICK_ON_LEVERS",
         Range = 5,
-        _index = 50,
+        _index = 8,
     },
     {
         Waypoint = 91918,
@@ -846,21 +846,21 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         ExtraLineText = "CLICK_ON_LEVERS",
         Range = 5,
-        _index = 51,
+        _index = 9,
     },
     {
         Waypoint = 91918,
         Coord = { x = -476.5, y = -69 },
         Zone = 2437,
         Range = 5,
-        _index = 52,
+        _index = 10,
     },
     {
         Waypoint = 91918,
         Coord = { x = -460.7, y = -83.7 },
         Zone = 2437,
         Range = 5,
-        _index = 53,
+        _index = 11,
     },
     {
         Waypoint = 91918,
@@ -868,7 +868,7 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         ExtraLineText = "CLICK_ON_LEVERS",
         Range = 5,
-        _index = 54,
+        _index = 12,
     },
     {
         Waypoint = 91918,
@@ -876,21 +876,21 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         ExtraLineText = "CLICK_ON_LEVERS",
         Range = 5,
-        _index = 55,
+        _index = 13,
     },
     {
         Waypoint = 91918,
         Coord = { x = -462.1, y = -112.8 },
         Zone = 2437,
         Range = 5,
-        _index = 56,
+        _index = 14,
     },
     {
         Waypoint = 91918,
         Coord = { x = -487.8, y = -141.4 },
         Zone = 2437,
         Range = 8,
-        _index = 57,
+        _index = 15,
     },
     {
         Waypoint = 91918,
@@ -898,14 +898,14 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         ExtraLineText = "CLICK_ON_LEVERS",
         Range = 5,
-        _index = 58,
+        _index = 16,
     },
     {
         Waypoint = 91918,
         Coord = { x = -562.9, y = -127.4 },
         Zone = 2437,
         Range = 5,
-        _index = 59,
+        _index = 17,
     },
     {
         Waypoint = 91918,
@@ -913,7 +913,7 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         ExtraLineText = "CLICK_ON_LEVERS",
         Range = 5,
-        _index = 60,
+        _index = 18,
     },
     {
         Waypoint = 91918,
@@ -921,7 +921,7 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         ExtraLineText = "CLICK_ON_LEVERS",
         Range = 5,
-        _index = 61,
+        _index = 19,
     },
     {
         Scenario = { criteriaID = 106443, criteriaIndex = 1, questID = 91918, scenarioID = 3124, stepID = 15967 },
@@ -929,7 +929,7 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         ExtraLineText = "CLICK_ON_LEVERS",
         InstanceQuest = true,
-        _index = 62,
+        _index = 20,
     },
     {
         Scenario = { criteriaID = 60399, criteriaIndex = 1, questID = 91918, scenarioID = 3124, stepID = 15969 },
@@ -937,6 +937,6 @@ APR.RouteQuestStepList["Twilight Crypts 2"] = {
         Zone = 2437,
         Range = 10,
         InstanceQuest = true,
-        _index = 63,
+        _index = 21,
     },
 }
