@@ -21,35 +21,14 @@ function APR.transport:ClearTransportUiLines()
         return
     end
 
-    local transportQuestPrefixes = {
-        "^01_FLY_TO_",
-        "^02_CLOSEST_FP",
-        "^01_GO_PORTAL_ROOM$",
-        "^01_PORTAL_",
-        "^01_ISOLATED_ZONE_TAXI$",
-        "^01_GO_TO",
-        "^01_WRONG_ZONE_INSTANCE$",
-        "^01_ERROR_PATH_NOT_FOUND$",
-        "^04_EXTRA_LINE_DESTINATION%-EXTRA$",
-    }
-
     for key, _ in pairs(currentStep.questsList) do
-        if type(key) == "string" then
-            if key == self.TransportDividerStepKey then
-                currentStep.pendingRemoval[key] = true
-            else
-                for _, pattern in ipairs(transportQuestPrefixes) do
-                    if key:match(pattern) then
-                        currentStep.pendingRemoval[key] = true
-                        break
-                    end
-                end
-            end
+        if APR:IsTransportQuestUiKey(key) then
+            currentStep.pendingRemoval[key] = true
         end
     end
 
     for key, _ in pairs(currentStep.questsExtraTextList) do
-        if key == self.ErrorDestinationLineKey or key == self.ErrorDividerLineKey or key == "DESTINATION" then
+        if APR:IsTransportExtraTextUiKey(key) then
             currentStep.pendingRemoval[key] = true
         end
     end

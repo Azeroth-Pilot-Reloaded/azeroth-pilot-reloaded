@@ -27,7 +27,7 @@ function APR.command:SlashCmd(input)
     elseif (inputText == "skip" or inputText == "s" or inputText == "skippiedoodaa") then
         -- Command for skipping the current quest step
         APR:PrintInfo(L["SKIP"])
-        APR:NextQuestStep()
+        APR:SkipQuestStep()
         APR:UpdateMapId()
     elseif (inputText == "rollback" or inputText == "rb") then
         -- Command for rollback the current quest step
