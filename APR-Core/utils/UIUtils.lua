@@ -5,6 +5,9 @@
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+local PREVIEW_IMAGE_ASSET_ROOT = "Interface\\AddOns\\APR\\APR-Core\\assets\\"
+
+
 local function getStatusHex(name, fallback)
     return (APR.HEXColor and APR.HEXColor[name]) or fallback
 end
@@ -183,23 +186,35 @@ function APR:RegisterUiSpecialFrame(frameName)
 end
 
 --- Normalize preview image field on a step.
---- Supports only `StepPreviewImages` as an array of strings.
+--- Supports only `PreviewImages` as an array of strings.
 ---@param step table|nil
 ---@return table
-function APR:NormalizeStepPreviewImages(step)
-    if type(step) ~= "table" or type(step.StepPreviewImages) ~= "table" then
+function APR:NormalizePreviewImages(step)
+    if type(step) ~= "table" or type(step.PreviewImages) ~= "table" then
         return {}
     end
 
     local collected = {}
 
     local function addPath(path)
-        if type(path) == "string" and path ~= "" then
-            table.insert(collected, path)
+        if type(path) ~= "string" then
+            return
         end
+
+        local trimmed = strtrim(path)
+        if trimmed == "" then
+            return
+        end
+
+        local fullPath = trimmed
+        if not trimmed:find("^Interface\\") then
+            fullPath = PREVIEW_IMAGE_ASSET_ROOT .. trimmed
+        end
+
+        table.insert(collected, fullPath)
     end
 
-    for _, path in ipairs(step.StepPreviewImages) do
+    for _, path in ipairs(step.PreviewImages) do
         addPath(path)
     end
 

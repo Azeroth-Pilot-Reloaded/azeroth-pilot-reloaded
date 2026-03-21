@@ -301,7 +301,7 @@ function APR.party:GetStepDescription(route, stepIndex)
     local routeData = APR.RouteQuestStepList[route]
     if not routeData then return '' end
 
-    local routeTable = routeData.steps
+    local routeTable = APR:GetRouteSteps(route)
     local step = routeTable[stepIndex]
     if not step then return '' end
 

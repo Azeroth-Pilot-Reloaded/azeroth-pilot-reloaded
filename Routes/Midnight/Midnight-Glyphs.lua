@@ -10,6 +10,7 @@ APR.RouteQuestStepList["2393-Midnight-Glyph-Eversong-Woods"] = {
     },
     mapID = 2393,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-Midnight-Glyph-Zulaman" },
     steps = {
         {
@@ -95,6 +96,7 @@ APR.RouteQuestStepList["2395-Midnight-Glyph-Zulaman"] = {
     },
     mapID = 2395,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2413-Midnight-Glyph-Harandar" },
     steps = {
         {
@@ -180,6 +182,7 @@ APR.RouteQuestStepList["2413-Midnight-Glyph-Harandar"] = {
     },
     mapID = 2413,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2405-Midnight-Glyph-Voidstorm" },
     steps = {
         {
@@ -247,6 +250,7 @@ APR.RouteQuestStepList["2405-Midnight-Glyph-Voidstorm"] = {
     },
     mapID = 2405,
     conditions = { Level = 80 },
+    requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = {},
     steps = {
         {

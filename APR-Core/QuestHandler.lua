@@ -235,18 +235,46 @@ function APR:UpdateStep()
         table.sort(extraLines, function(a, b) return a.key < b.key end)
         for i, line in ipairs(extraLines) do
             local key = line.text
-            local message = rawget(L, key) or
-                (AprRCData and AprRCData.ExtraLineTexts and rawget(AprRCData.ExtraLineTexts, key))
-            if message then
-                local colorHex, formattedMessage = APR:ExtractColorAndText(message)
+            local formattedMessage, colorHex = APR:ResolveStepText(line.text)
+            if formattedMessage then
                 APR.currentStep:AddExtraLineText(i .. "_" .. key, formattedMessage, colorHex)
             end
         end
 
-        if showStepDetails and step.StepPreviewImages then
-            APR.currentStep:SetStepPreviewImages(step)
+        if showStepDetails and step.Note then
+            -- Auto-skip Note-only steps (purely informational, no quest-action content) when:
+            --   1. The player has already seen this note before (seen set persists across resets), OR
+            --   2. Both the nearest real step before and after this one are quest-complete,
+            --      meaning the note no longer gates meaningful progression.
+            -- Rollback protection: PreviousQuestStep clears the seen flag when landing on a
+            -- Note-only step so the player can read it again if they explicitly go back.
+            if step.Note then
+                local route = APR.ActiveRoute
+                if APR:IsNoteStepSeen(route, step) or
+                    APR:IsNoteStepSurroundingCompleted(route, currentStepIndex) then
+                    APR:MarkNoteStepSeen(route, step)
+                    APR:UpdateNextStep()
+                    return
+                end
+                -- Mark as seen now – the player is about to read it.
+                APR:MarkNoteStepSeen(route, step)
+            end
+
+            local noteLines = APR:ResolveStepTextList(step.Note)
+            for index, note in ipairs(noteLines) do
+                APR.currentStep:AddExtraLineText(
+                    "NOTE_" .. tostring(index),
+                    note.text,
+                    note.color,
+                    false
+                )
+            end
+        end
+
+        if showStepDetails and step.PreviewImages then
+            APR.currentStepImagePreview:SetPreviewImages(APR.currentStep, step)
         else
-            APR.currentStep:ClearStepPreviewImages()
+            APR.currentStepImagePreview:ClearPreviewImages(APR.currentStep)
         end
 
         if step.ExtraActionB then

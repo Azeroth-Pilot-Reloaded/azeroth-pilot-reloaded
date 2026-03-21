@@ -619,7 +619,7 @@ local function CreateRouteTableFrame(name)
         end)
         button:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_TOP")
-            GameTooltip:AddLine((L["CLICK"] or "Click") .. " : Sort")
+            GameTooltip:AddLine(L["CLICK_SORT"])
             GameTooltip:Show()
         end)
         button:SetScript("OnLeave", function()
@@ -905,7 +905,7 @@ function SetRouteListTab(widget, name)
                             APR:CheckRouteChanges(route.fileName)
                         end
                     end
-                    tinsert(APRCustomPath[APR.PlayerID], route.routeName)
+                    APR:AddRouteToCustomPathByKey(route.fileName)
                     APR.routeconfig:SendMessage("APR_Custom_Path_Update")
                 end
             end)

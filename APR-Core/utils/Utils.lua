@@ -410,10 +410,69 @@ function APR:ExtractColorAndText(text)
     end
 end
 
+function APR:ResolveStepText(rawValue)
+    if rawValue == nil then
+        return nil, nil
+    end
+
+    local key = tostring(rawValue)
+    local aprRCData = rawget(_G, "AprRCData")
+    local message = rawget(L, key) or
+        (aprRCData and aprRCData.ExtraLineTexts and rawget(aprRCData.ExtraLineTexts, key)) or
+        key
+
+    if not message or message == "" then
+        return nil, nil
+    end
+
+    local colorHex, formattedMessage = self:ExtractColorAndText(message)
+    return formattedMessage, colorHex
+end
+
+function APR:ResolveStepTextList(rawValue)
+    local resolved = {}
+
+    local function addResolvedText(value)
+        local text, color = self:ResolveStepText(value)
+        if text and text ~= "" then
+            table.insert(resolved, {
+                text = text,
+                color = color,
+            })
+        end
+    end
+
+    if type(rawValue) == "table" then
+        for _, value in ipairs(rawValue) do
+            addResolvedText(value)
+        end
+    else
+        addResolvedText(rawValue)
+    end
+
+    return resolved
+end
+
 function APR:titleCase(str)
     return (str:gsub("(%a)([%w_']*)", function(first, rest)
         return first:upper() .. rest:lower()
     end))
+end
+
+--- Returns a stable string key that uniquely identifies a Note step's content.
+--- Used to track which Note-only steps the player has already seen, even across resets.
+---@param step table The step table to derive the key from
+---@return string|nil key A stable string key, or nil if the step has no Note
+function APR:GetNoteStepKey(step)
+    if not step or not step.Note then return nil end
+    if type(step.Note) == "table" then
+        local parts = {}
+        for i, v in ipairs(step.Note) do
+            parts[i] = tostring(v)
+        end
+        return table.concat(parts, "\0")
+    end
+    return tostring(step.Note)
 end
 
 ---Copies a table from source to a new table

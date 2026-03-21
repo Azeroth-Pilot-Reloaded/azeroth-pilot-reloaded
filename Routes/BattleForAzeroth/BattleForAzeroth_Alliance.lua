@@ -10356,30 +10356,30 @@ APR.RouteQuestStepList["1161-KulTiran-intro"] = {
             Done = { 55142 },
             Coord = { x = 799.6, y = -8174.5 },
             Zone = 84,
-            _index = 7,
+            _index = 6,
         },
         {
             PickUp = { 55146 },
             Coord = { x = 799.6, y = -8174.5 },
             RaidIcon = 167032,
             Zone = 84,
-            _index = 8,
+            _index = 7,
         },
         {
             Qpart = { [55146] = { 1 } },
             Coord = { x = 748.1, y = -8195.8 },
             Zone = 84,
-            _index = 9,
+            _index = 8,
         },
         {
             Done = { 55146 },
             Coord = { x = 748.5, y = -8196.6 },
             Zone = 84,
-            _index = 10,
+            _index = 9,
         },
         {
             RouteCompleted = true,
-            _index = 11,
+            _index = 10,
         },
     }
 }

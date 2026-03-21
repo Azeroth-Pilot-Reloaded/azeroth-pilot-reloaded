@@ -185,13 +185,8 @@ function APR:createStatusFrame()
     StatusFrame:Hide()
 
     --Close button and script to retoggle the options.
-    local CloseButton = CreateFrame('Button', nil, StatusFrame)
-    CloseButton:SetSize(16, 16)
-    CloseButton:SetPoint('TOPRIGHT', StatusFrame, 'TOPRIGHT', -6, -6)
-    CloseButton:CreateTexture()
-    CloseButton.Texture = CloseButton:CreateTexture(nil, 'OVERLAY')
-    CloseButton.Texture:SetAllPoints()
-    CloseButton.Texture:SetTexture("Interface\\AddOns\\APR\\APR-Core\\assets\\Close")
+    local CloseButton = CreateFrame('Button', nil, StatusFrame, 'UIPanelCloseButton')
+    CloseButton:SetPoint('TOPRIGHT', StatusFrame, 'TOPRIGHT', -2, -2)
     CloseButton:HookScript('OnClick', closeClicked)
 
     --Title logo (drag to move frame)

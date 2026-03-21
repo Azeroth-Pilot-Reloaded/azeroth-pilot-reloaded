@@ -3049,7 +3049,7 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
             ExtraLineText = "TREASURE_NORTH_SHIP",
             Range = 0.75,
             Zone = 542,
-            _index = 20,
+            _index = 466,
         },
         {
             Waypoint = 35174,
@@ -3058,7 +3058,7 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
             ExtraLineText = "TREASURE_CAVE",
             Range = 20.9,
             Zone = 542,
-            _index = 21,
+            _index = 467,
         },
         {
             Treasure = { questID = 35280 },
@@ -3066,7 +3066,7 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             Range = 0.69,
             Zone = 542,
-            _index = 22,
+            _index = 468,
         },
         {
             Treasure = { questID = 34174 },
@@ -3074,7 +3074,7 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
             Fillers = { [35166] = { 1 }, [35174] = { 1, 2 } },
             Range = 0.75,
             Zone = 542,
-            _index = 23,
+            _index = 469,
         },
         {
             Qpart = { [35174] = { 1 } },
@@ -3082,14 +3082,14 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
             Fillers = { [35166] = { 1 }, [35174] = { 2 } },
             Range = 0.75,
             Zone = 542,
-            _index = 24,
+            _index = 470,
         },
         {
             Qpart = { [35166] = { 1 }, [35174] = { 2 } },
             Coord = { x = 551.5, y = 2408.5 },
             Range = 112.31,
             Zone = 542,
-            _index = 25,
+            _index = 471,
         },
         {
             Done = { 35166, 35176 },
@@ -4207,7 +4207,7 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
             Coord = { x = 896.8, y = 5933 },
             Range = 30,
             Zone = 543,
-            _index = 638,
+            _index = 637,
         },
         {
             Done = { 36563 },

@@ -16,8 +16,12 @@ function APR:ResetRoute(targetedRoute)
     self:Debug("Function: APR:ResetRoute()", targetedRoute)
     APRData[self.PlayerID][targetedRoute] = 1
     APRData[self.PlayerID][targetedRoute .. '-SkippedStep'] = 0
+    APRData[self.PlayerID][targetedRoute .. '-ParallelStepsState'] = nil
     self:GetTotalSteps(targetedRoute)
     APRData[self.PlayerID][targetedRoute .. '-RawTotalSteps'] = self:GetRawStepCount(targetedRoute)
+    if self.InvalidateEffectiveRouteStepsCache then
+        self:InvalidateEffectiveRouteStepsCache(targetedRoute)
+    end
     -- Force refresh: reset throttle for ResetRoute
     self.transport._routingForceRefresh = true
     if self.transport._routingThrottle then
@@ -72,8 +76,23 @@ end
 --- safe for change-detection comparisons that must survive /reload and different
 --- player states (quest log not yet synced, achievements, auras, etc.).
 function APR:GetRawStepCount(route)
-    local steps = self:GetRouteSteps(route)
-    return #steps
+    local routeData = self:GetRouteData(route)
+    if not routeData then
+        return 0
+    end
+
+    local steps = routeData.steps or routeData
+    local rawStepCount = #steps
+
+    if type(routeData.parallelSteps) == "table" then
+        for _, group in ipairs(routeData.parallelSteps) do
+            if type(group) == "table" and type(group.steps) == "table" then
+                rawStepCount = rawStepCount + #group.steps
+            end
+        end
+    end
+
+    return rawStepCount
 end
 
 --- Calculate the number of skipped/filtered steps BEFORE a given step index.
@@ -285,6 +304,7 @@ function APR:LoadCustomRoutes()
                 expansion = data.expansion or APR.EXPANSIONS.Custom,
                 category = data.category or APR.CATEGORIES.Miscellaneous,
                 conditions = data.conditions or {},
+                parallelSteps = data.parallelSteps,
                 steps = data.steps,
             }
         else
@@ -302,56 +322,96 @@ end
 
 --- Evaluate skip/visibility conditions for a step.
 function APR:StepFilterQuestHandler(step)
-    local playerLevel = self.Level or UnitLevel("player") or 0
-    local skipForLvl = tonumber(step.SkipForLvl)
-
-    return (step.Faction and step.Faction ~= self.Faction) or
-        (step.Race and not tContains(step.Race, self.Race)) or
-        (step.Gender and step.Gender ~= self.Gender) or
-        (step.Class and not tContains(step.Class, self.ClassName)) or
-        (skipForLvl and playerLevel >= skipForLvl) or
-        (step.HasAchievement and not self:HasAchievement(step.HasAchievement)) or
-        (step.DontHaveAchievement and self:HasAchievement(step.DontHaveAchievement)) or
-        (step.HasAura and not self:HasAura(step.HasAura)) or
-        (step.DontHaveAura and self:HasAura(step.DontHaveAura)) or
-        (step.HasSpell and not self:IsSpellKnown(step.HasSpell)) or
-        (step.IsOneOfQuestsCompleted and not self:IsOneOfQuestsCompleted(step.IsOneOfQuestsCompleted)) or
-        (step.IsOneOfQuestsUncompleted and self:IsOneOfQuestsCompleted(step.IsOneOfQuestsUncompleted)) or
-        (step.IsOneOfQuestsCompletedOnAccount and not self:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsCompletedOnAccount))
-        or
-        (step.IsOneOfQuestsUncompletedOnAccount and self:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsUncompletedOnAccount))
-        or
-        (step.IsQuestsCompleted and not self:IsQuestsCompleted(step.IsQuestsCompleted)) or
-        (step.IsQuestsUncompleted and self:IsQuestsCompleted(step.IsQuestsUncompleted)) or
-        (step.IsQuestsCompletedOnAccount and not self:IsQuestsCompletedOnAccount(step.IsQuestsCompletedOnAccount)) or
-        (step.IsQuestsUncompletedOnAccount and self:IsQuestsCompletedOnAccount(step.IsQuestsUncompletedOnAccount))
+    return not self:AreConditionalFiltersMet(step)
 end
 
 --- Quality-of-life variant of the step filter that returns true when the step should be shown.
 function APR:StepFilterQoL(step)
-    local playerLevel = self.Level or UnitLevel("player") or 0
-    local skipForLvl = tonumber(step.SkipForLvl)
+    return self:AreConditionalFiltersMet(step)
+end
 
-    return (not step.Faction or step.Faction == self.Faction) and
-        (not step.Race or tContains(step.Race, self.Race)) and
-        (not step.Gender or step.Gender == self.Gender) and
-        (not step.Class or tContains(step.Class, self.ClassName)) and
+function APR:GetPlayerEffectiveLevel()
+    local level = UnitLevel("player") or self.Level or 0
+    local currentXP = UnitXP and UnitXP("player") or 0
+    local maxXP = UnitXPMax and UnitXPMax("player") or 0
+
+    if maxXP and maxXP > 0 then
+        return level + (currentXP / maxXP)
+    end
+
+    return level
+end
+
+function APR:IsPlayerWithinExactLevel(targetLevel, playerLevel)
+    local exactLevel = tonumber(targetLevel)
+    if not exactLevel then
+        return false
+    end
+
+    playerLevel = playerLevel or self:GetPlayerEffectiveLevel()
+    local upperBound = math.floor(exactLevel) + 1
+    return playerLevel >= exactLevel and playerLevel < upperBound
+end
+
+local function MatchesConditionValue(expectedValue, actualValue, alternateValue)
+    if type(expectedValue) == "table" then
+        return tContains(expectedValue, actualValue) or
+            (alternateValue ~= nil and tContains(expectedValue, alternateValue))
+    end
+
+    return expectedValue == actualValue or (alternateValue ~= nil and expectedValue == alternateValue)
+end
+
+function APR:AreConditionalFiltersMet(conditions)
+    if not conditions then
+        return true
+    end
+
+    local playerLevel = self:GetPlayerEffectiveLevel()
+    local skipForLvl = tonumber(conditions.SkipForLvl)
+    local level = tonumber(conditions.Level)
+    local minLevel = tonumber(conditions.MinLevel)
+    local maxLevel = tonumber(conditions.MaxLevel)
+
+    local currentSpecId = nil
+    if C_SpecializationInfo and C_SpecializationInfo.GetSpecialization then
+        local specIndex = C_SpecializationInfo.GetSpecialization()
+        if specIndex then
+            currentSpecId = C_SpecializationInfo.GetSpecializationInfo(specIndex)
+        end
+    end
+
+    local playerMapID = C_Map.GetBestMapForUnit("player")
+
+    return (not conditions.Faction or conditions.Faction == self.Faction) and
+        (not conditions.Race or MatchesConditionValue(conditions.Race, self.Race, self.RaceID)) and
+        (not conditions.Gender or conditions.Gender == self.Gender) and
+        (not conditions.Class or MatchesConditionValue(conditions.Class, self.ClassName, self.ClassId)) and
+        (not conditions.ClassNot or not MatchesConditionValue(conditions.ClassNot, self.ClassName, self.ClassId)) and
+        (not level or playerLevel >= level) and
+        (not minLevel or playerLevel >= minLevel) and
+        (not maxLevel or playerLevel <= maxLevel) and
+        (not conditions.BeLvl or self:IsPlayerWithinExactLevel(conditions.BeLvl, playerLevel)) and
         (not skipForLvl or playerLevel < skipForLvl) and
-        (not step.HasAchievement or self:HasAchievement(step.HasAchievement)) and
-        (not step.DontHaveAchievement or not self:HasAchievement(step.DontHaveAchievement)) and
-        (not step.HasAura or self:HasAura(step.HasAura)) and
-        (not step.DontHaveAura or not self:HasAura(step.DontHaveAura)) and
-        (not step.HasSpell or self:IsSpellKnown(step.HasSpell)) and
-        (not step.IsOneOfQuestsCompleted or self:IsOneOfQuestsCompleted(step.IsOneOfQuestsCompleted)) and
-        (not step.IsOneOfQuestsUncompleted or not self:IsOneOfQuestsCompleted(step.IsOneOfQuestsUncompleted)) and
-        (not step.IsOneOfQuestsCompletedOnAccount or self:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsCompletedOnAccount))
-        and
-        (not step.IsOneOfQuestsUncompletedOnAccount or not self:IsOneOfQuestsCompletedOnAccount(step.IsOneOfQuestsUncompletedOnAccount))
-        and
-        (not step.IsQuestsCompleted or self:IsQuestsCompleted(step.IsQuestsCompleted)) and
-        (not step.IsQuestsUncompleted or not self:IsQuestsCompleted(step.IsQuestsUncompleted)) and
-        (not step.IsQuestsCompletedOnAccount or self:IsQuestsCompletedOnAccount(step.IsQuestsCompletedOnAccount)) and
-        (not step.IsQuestsUncompletedOnAccount or not self:IsQuestsCompletedOnAccount(step.IsQuestsUncompletedOnAccount))
+        (not conditions.ClassSpec or currentSpecId == conditions.ClassSpec) and
+        (not conditions.Zones or (playerMapID and tContains(conditions.Zones, playerMapID))) and
+        (conditions.AlliedRace == nil or self:IsAlliedRace() == conditions.AlliedRace) and
+        (not conditions.Event or (conditions.Event ~= APR.EVENTS.Remix or self:IsRemixCharacter())) and
+        (not conditions.HasAchievement or self:HasAchievement(conditions.HasAchievement)) and
+        (not conditions.DontHaveAchievement or not self:HasAchievement(conditions.DontHaveAchievement)) and
+        (not conditions.HasAura or self:HasAura(conditions.HasAura)) and
+        (not conditions.DontHaveAura or not self:HasAura(conditions.DontHaveAura)) and
+        (not conditions.HasSpell or self:IsSpellKnown(conditions.HasSpell)) and
+        (not conditions.IsQuestCompleted or C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestCompleted)) and
+        (not conditions.IsQuestUncompleted or not C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestUncompleted)) and
+        (not conditions.IsOneOfQuestsCompleted or self:IsOneOfQuestsCompleted(conditions.IsOneOfQuestsCompleted)) and
+        (not conditions.IsOneOfQuestsUncompleted or not self:IsOneOfQuestsCompleted(conditions.IsOneOfQuestsUncompleted)) and
+        (not conditions.IsOneOfQuestsCompletedOnAccount or self:IsOneOfQuestsCompletedOnAccount(conditions.IsOneOfQuestsCompletedOnAccount)) and
+        (not conditions.IsOneOfQuestsUncompletedOnAccount or not self:IsOneOfQuestsCompletedOnAccount(conditions.IsOneOfQuestsUncompletedOnAccount)) and
+        (not conditions.IsQuestsCompleted or self:IsQuestsCompleted(conditions.IsQuestsCompleted)) and
+        (not conditions.IsQuestsUncompleted or not self:IsQuestsCompleted(conditions.IsQuestsUncompleted)) and
+        (not conditions.IsQuestsCompletedOnAccount or self:IsQuestsCompletedOnAccount(conditions.IsQuestsCompletedOnAccount)) and
+        (not conditions.IsQuestsUncompletedOnAccount or not self:IsQuestsCompletedOnAccount(conditions.IsQuestsUncompletedOnAccount))
 end
 
 --- Get Route zone mapID and name
@@ -477,6 +537,130 @@ function APR:GetRouteKeyFromDisplayName(displayName)
     return nil
 end
 
+-- ---------------------------------------------------------------------------
+-- Note-step seen tracking
+-- Note-only steps (steps with only a Note field, no quest-action content) are
+-- purely informational.  Once the player has seen such a step, it should be
+-- auto-skipped on subsequent route resets so it does not block progress.
+-- The seen set is keyed by note content (not step index) so it stays valid
+-- even after steps are inserted or removed in the route definition.
+-- SeenNotes is intentionally NOT cleared by ClearSavedRouteData / ResetRoute;
+-- it is only cleared entry-by-entry when the player manually rolls back to the
+-- note step via PreviousQuestStep.
+-- ---------------------------------------------------------------------------
+
+--- Marks a Note-only step as seen for the given route.
+function APR:MarkNoteStepSeen(route, step)
+    local key = self:GetNoteStepKey(step)
+    if not key then return end
+    local playerData = APRData[self.PlayerID]
+    if not playerData then return end
+    local seenKey = route .. '-SeenNotes'
+    playerData[seenKey] = playerData[seenKey] or {}
+    playerData[seenKey][key] = true
+end
+
+--- Returns true when a Note-only step was previously seen for the given route.
+function APR:IsNoteStepSeen(route, step)
+    local key = self:GetNoteStepKey(step)
+    if not key then return false end
+    local playerData = APRData[self.PlayerID]
+    if not playerData then return false end
+    local seenNotes = playerData[route .. '-SeenNotes']
+    return seenNotes ~= nil and seenNotes[key] == true
+end
+
+--- Clears the seen flag for a Note-only step (called when the player rolls back to it).
+function APR:UnmarkNoteStepSeen(route, step)
+    local key = self:GetNoteStepKey(step)
+    if not key then return end
+    local playerData = APRData[self.PlayerID]
+    if not playerData then return end
+    local seenNotes = playerData[route .. '-SeenNotes']
+    if seenNotes then
+        seenNotes[key] = nil
+    end
+end
+
+--- Returns true when the steps immediately before and after a Note-only step at
+--- stepIndex are effectively quest-complete, meaning the note no longer blocks
+--- meaningful progression and can be auto-skipped after a route reset.
+function APR:IsNoteStepSurroundingCompleted(route, stepIndex)
+    local steps = self:GetRouteSteps(route)
+    if not steps or #steps == 0 then return false end
+
+    local function isStepEffectivelyDone(step)
+        if not step then return true end
+        -- Filtered steps (race/class/conditions) count as done
+        if self:StepFilterQuestHandler(step) then return true end
+        -- Another Note step is transparent (skip over it)
+        if step.Note then return true end
+        -- Waypoint: done when its anchor quest is completed
+        if step.Waypoint then
+            return C_QuestLog.IsQuestFlaggedCompleted(step.Waypoint)
+        end
+        -- Done/TurnIn: done when all quest IDs are flagged completed
+        if step.Done then
+            if type(step.Done) == "table" then
+                for _, questID in ipairs(step.Done) do
+                    if not C_QuestLog.IsQuestFlaggedCompleted(tonumber(questID)) then
+                        return false
+                    end
+                end
+                return true
+            end
+            return C_QuestLog.IsQuestFlaggedCompleted(tonumber(step.Done))
+        end
+        -- PickUp: done when all quest IDs are in the journal or flagged completed
+        if step.PickUp then
+            if type(step.PickUp) == "table" then
+                for _, questID in ipairs(step.PickUp) do
+                    questID = tonumber(questID)
+                    if not (self.ActiveQuests[questID] or C_QuestLog.IsQuestFlaggedCompleted(questID)) then
+                        return false
+                    end
+                end
+                return true
+            end
+            local questID = tonumber(step.PickUp)
+            return (self.ActiveQuests[questID] ~= nil) or C_QuestLog.IsQuestFlaggedCompleted(questID)
+        end
+        -- TakePortal: done when its quest is flagged completed or player is in the target zone
+        if step.TakePortal then
+            local questID = step.TakePortal.questID
+            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then return true end
+        end
+        -- Treasure: done when its anchor quest is flagged completed
+        if step.Treasure then
+            local questID = step.Treasure.questID
+            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then return true end
+        end
+        return false
+    end
+
+    -- Walk backward to find the first non-Note step before this one
+    local prevDone = true
+    for i = stepIndex - 1, 1, -1 do
+        local s = steps[i]
+        if s and not s.Note then
+            prevDone = isStepEffectivelyDone(s)
+            break
+        end
+    end
+
+    -- Walk forward to find the first non-Note step after this one
+    local nextDone = true
+    for i = stepIndex + 1, #steps do
+        local s = steps[i]
+        if s and not s.Note then
+            nextDone = isStepEffectivelyDone(s)
+            break
+        end
+    end
+
+    return prevDone and nextDone
+end
+
 --- Clear all saved state for a route.
 function APR:ClearSavedRouteData(routeFileName)
     if not routeFileName or not APRData or not self.PlayerID then
@@ -488,14 +672,43 @@ function APR:ClearSavedRouteData(routeFileName)
         return
     end
 
+    -- Before wiping the progress index, snapshot any Note-only steps that were
+    -- before the player's current position into SeenNotes.  This ensures that
+    -- Note-only steps newly inserted by a route update are still auto-skipped
+    -- when the surrounding quest content was already completed.
+    local currentProgress = playerData[routeFileName]
+    if currentProgress and currentProgress > 1 then
+        local steps = self:GetRouteSteps(routeFileName)
+        if steps and #steps > 0 then
+            local seenKey = routeFileName .. '-SeenNotes'
+            local seenNotes = playerData[seenKey] or {}
+            for i = 1, math.min(currentProgress - 1, #steps) do
+                local s = steps[i]
+                if s and s.Note then
+                    local key = self:GetNoteStepKey(s)
+                    if key then seenNotes[key] = true end
+                end
+            end
+            if next(seenNotes) then
+                playerData[seenKey] = seenNotes
+            end
+        end
+    end
+
     playerData[routeFileName] = nil
     playerData[routeFileName .. '-SkippedStep'] = nil
     playerData[routeFileName .. '-TotalSteps'] = nil
     playerData[routeFileName .. '-RawTotalSteps'] = nil
+    playerData[routeFileName .. '-ParallelStepsState'] = nil
+    -- NOTE: routeFileName .. '-SeenNotes' is intentionally preserved across resets.
 
     local routeSignatures = self.settings and self.settings.profile and self.settings.profile.routeSignatures
     if routeSignatures then
         routeSignatures[routeFileName] = nil
+    end
+
+    if self.InvalidateEffectiveRouteStepsCache then
+        self:InvalidateEffectiveRouteStepsCache(routeFileName)
     end
 end
 

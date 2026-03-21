@@ -349,8 +349,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
 
     local displayStepIndex = 1
     local currentDisplayIndex = nil
-    local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
-    local activeRouteSteps = activeRouteData and activeRouteData.steps or {}
+    local activeRouteSteps = APR:GetRouteSteps(APR.ActiveRoute)
     local sojournerSkipActive = APR:IsSojournerSkipActive()
     for rawIndex, step in ipairs(activeRouteSteps) do
         -- Hide step for Faction, Race, Class, Achievement
@@ -808,6 +807,28 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local color = UnitLevel("player") <= step.Grind and "green" or "gray"
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
                     L["GRIND"] .. " " .. step.Grind, color, isCurrentStep)
+            elseif step.Note then
+                local previewText = nil
+                if type(step.Note) == "table" then
+                    local firstMessage = APR:ResolveStepText(step.Note[1])
+                    if firstMessage and firstMessage ~= "" then
+                        previewText = firstMessage
+                        if #step.Note > 1 then
+                            previewText = previewText .. " ..."
+                        end
+                    end
+                else
+                    previewText = APR:ResolveStepText(step.Note)
+                end
+
+                if previewText and previewText ~= "" then
+                    if #previewText > 50 then
+                        previewText = string.sub(previewText, 1, 50) .. "..."
+                    end
+                    local color = colorByCompletion(false, currentStepIndex, rawIndex)
+                    container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                        "Note: " .. previewText, color, isCurrentStep)
+                end
             elseif step.GossipOptionIDs and not APR:HasAnyMainStepOption(step) then
                 local alreadyTalked = APR:hasEveryGossipsCompleted(step.GossipOptionIDs)
                 local color = (alreadyTalked or currentStepIndex > rawIndex) and "green" or "gray"

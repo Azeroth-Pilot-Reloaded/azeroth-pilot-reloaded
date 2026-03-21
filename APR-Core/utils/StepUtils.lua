@@ -7,7 +7,7 @@ APR.mainStepOptions = {
     "Scenario", "EnterInstance", "LeaveInstance", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS",
     "UseDalaHS", "UseGarrisonHS",
     "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession", "LootItems", "WarMode", "Grind",
-    "Achievement", "RouteCompleted"
+    "Achievement", "RouteCompleted", "Note"
 }
 
 -- BuyMerchant need to be first
@@ -18,6 +18,25 @@ APR.secondaryStepOptions = {
 --- Return the localized label for the first recognized step key.
 -- This keeps UI construction simple while letting steps remain data-driven.
 function APR:GetStepString(step)
+    if step and step.Note then
+        local noteValue = step.Note
+        if type(noteValue) == "table" then
+            noteValue = noteValue[1]
+        end
+
+        if noteValue ~= nil then
+            local formatted = APR:ResolveStepText(noteValue)
+            if formatted and formatted ~= "" then
+                return formatted, "Note"
+            end
+        end
+
+        if type(step.Note) == "string" and step.Note ~= "" then
+            return step.Note, "Note"
+        end
+        return "Note", "Note"
+    end
+
     local stepMappings = {
         BuyMerchant = L["BUY"],
         Done = L["TURN_IN_Q"],
@@ -79,8 +98,7 @@ function APR:CheckWaypointText()
         return false
     end
 
-    local routeData = APR.RouteQuestStepList[APR.ActiveRoute]
-    local steps = routeData and routeData.steps or {}
+    local steps = APR:GetRouteSteps(APR.ActiveRoute)
     for i = currentStepIndex, #steps do
         local step = steps[i]
 
@@ -246,8 +264,7 @@ end
 function APR:PreviousQuestStep()
     local userData = APRData[APR.PlayerID]
     local activeRoute = APR.ActiveRoute
-    local routeData = APR.RouteQuestStepList[activeRoute]
-    local questStepList = routeData and routeData.steps
+    local questStepList = self:GetRouteSteps(activeRoute)
 
     -- Ensure we have a valid starting point (never negative or zero)
     if not userData[activeRoute] or userData[activeRoute] < 1 then
@@ -280,6 +297,14 @@ function APR:PreviousQuestStep()
         userData[activeRoute] = 1
     end
 
+    -- If we landed on a Note-only step, clear its seen state so the player can
+    -- read it again.  This is the "rollback protection" described in the feature:
+    -- explicitly going backwards to a Note step opts the player back in to seeing it.
+    local landedStep = questStepList[userData[activeRoute]]
+    if landedStep and landedStep.Note then
+        APR:UnmarkNoteStepSeen(activeRoute, landedStep)
+    end
+
     -- Update the quest and step
     self:UpdateQuestAndStep()
 end
@@ -289,8 +314,7 @@ end
 --- Retrieve the step table at an index for the active route.
 function APR:GetStep(index)
     if (index and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]) then
-        local routeData = APR.RouteQuestStepList[APR.ActiveRoute]
-        local steps = routeData.steps
+        local steps = self:GetRouteSteps(APR.ActiveRoute)
         return steps[index]
     end
     return nil
