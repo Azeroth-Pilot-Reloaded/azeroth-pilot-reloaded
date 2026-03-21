@@ -6,7 +6,8 @@ APR.currentStepImagePreview = APR:NewModule("CurrentStepImagePreview")
 local ApplyOverlayTextureLayout = nil
 local GetPreviewTextureAspectRatio = nil
 local overlayWindows = {}
-local overlayWindowCounter = 0
+local overlayPool = {}
+local overlayWindowCount = 0
 
 local currentStepFrameHolder = nil
 local currentStepFrameWidth = 250
@@ -44,17 +45,36 @@ local function StopOverlayPanning(window)
     end
 end
 
-local function CloseAllOverlayWindows()
-    for panel, window in pairs(overlayWindows) do
-        if window then
-            StopOverlayPanning(window)
-        end
+local function ReturnWindowToPool(window)
+    if not window or window.isPooled then
+        return
+    end
 
+    window.isPooled = true
+    StopOverlayPanning(window)
+    window.zoomLevel = OVERLAY_ZOOM_MIN
+    window.imageAspectRatio = nil
+    window.panOffsetX = 0
+    window.panOffsetY = 0
+    if window.panel then
+        window.panel:SetScript("OnUpdate", nil)
+        overlayWindows[window.panel] = nil
+    end
+    if window.texture and window.texture.SetTexture then
+        window.texture:SetTexture(nil)
+    end
+    table.insert(overlayPool, window)
+end
+
+local function CloseAllOverlayWindows()
+    local toClose = {}
+    for panel in pairs(overlayWindows) do
+        table.insert(toClose, panel)
+    end
+    for _, panel in ipairs(toClose) do
         if panel and panel.Hide then
             panel:Hide()
         end
-
-        overlayWindows[panel] = nil
     end
 end
 
@@ -70,178 +90,13 @@ local STEP_PREVIEW_MAX_HEIGHT = 88
 local STEP_PREVIEW_MIN_WIDTH = 52
 local STEP_PREVIEW_MAX_WIDTH = 156
 
-local function CreateOverlayWindow(imagePath)
-    if not imagePath then
-        return nil
+local function StartOverlayTextureAspectRatioProbe(window)
+    if not window or not window.panel then
+        return
     end
-
-    overlayWindowCounter = overlayWindowCounter + 1
-    local panelName = "APRCurrentStepImagePreviewFrame" .. overlayWindowCounter
-    local panel = CreateFrame("Frame", panelName, UIParent, "BackdropTemplate")
-    local offset = (overlayWindowCounter % 8) * 18
-    panel:SetSize(OVERLAY_PANEL_DEFAULT_WIDTH, OVERLAY_PANEL_DEFAULT_HEIGHT)
-    panel:SetPoint("CENTER", UIParent, "CENTER", offset, -offset)
-    panel:SetFrameStrata("DIALOG")
-    panel:SetFrameLevel(900 + (overlayWindowCounter % 40))
-    panel:SetBackdrop({
-        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
-        tile = true,
-        tileSize = 16,
-        edgeSize = 16,
-        insets = { left = 4, right = 4, top = 4, bottom = 4 },
-    })
-    panel:SetBackdropColor(0.04, 0.04, 0.04, 0.96)
-    panel:EnableMouse(true)
-    panel:SetMovable(true)
-    panel:SetResizable(true)
-    if panel.SetResizeBounds then
-        panel:SetResizeBounds(
-            OVERLAY_PANEL_MIN_WIDTH,
-            OVERLAY_PANEL_MIN_HEIGHT,
-            OVERLAY_PANEL_MAX_WIDTH,
-            OVERLAY_PANEL_MAX_HEIGHT
-        )
-    elseif panel.SetMinResize and panel.SetMaxResize then
-        panel:SetMinResize(OVERLAY_PANEL_MIN_WIDTH, OVERLAY_PANEL_MIN_HEIGHT)
-        panel:SetMaxResize(OVERLAY_PANEL_MAX_WIDTH, OVERLAY_PANEL_MAX_HEIGHT)
-    end
-    panel:SetClipsChildren(true)
-    panel:RegisterForDrag("LeftButton")
-
-    local window = {
-        panel = panel,
-        texture = nil,
-        zoomLevel = OVERLAY_ZOOM_MIN,
-        imageAspectRatio = nil,
-        isSizing = false,
-        resizeCenterX = nil,
-        resizeCenterY = nil,
-        panUpdater = nil,
-        panOffsetX = 0,
-        panOffsetY = 0,
-        panLastCursorX = nil,
-        panLastCursorY = nil,
-        isPanning = false,
-    }
-
-    panel:SetScript("OnDragStart", function(self)
-        self:StartMoving()
-    end)
-    panel:SetScript("OnDragStop", function(self)
-        self:StopMovingOrSizing()
-    end)
-    panel:SetScript("OnMouseUp", function(self)
-        self:StopMovingOrSizing()
-        window.isSizing = false
-        window.resizeCenterX = nil
-        window.resizeCenterY = nil
-        StopOverlayPanning(window)
-    end)
-    panel:EnableMouseWheel(true)
-    panel:SetScript("OnMouseWheel", function(_, delta)
-        if delta > 0 then
-            window.zoomLevel = Clamp(window.zoomLevel + OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
-        else
-            window.zoomLevel = Clamp(window.zoomLevel - OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
-        end
-
-        if ApplyOverlayTextureLayout then
-            ApplyOverlayTextureLayout(window)
-        end
-    end)
-
-    panel:SetScript("OnMouseDown", function(_, button)
-        -- Right-click drag pans inside the image while zoomed.
-        if button == "RightButton" and (window.zoomLevel or OVERLAY_ZOOM_MIN) > OVERLAY_ZOOM_MIN then
-            window.isPanning = true
-            window.panLastCursorX, window.panLastCursorY = GetCursorPositionInUiScale()
-
-            if window.panUpdater then
-                window.panUpdater:SetScript("OnUpdate", function()
-                    if not window.isPanning then
-                        return
-                    end
-
-                    local cursorX, cursorY = GetCursorPositionInUiScale()
-                    local deltaX = cursorX - (window.panLastCursorX or cursorX)
-                    local deltaY = cursorY - (window.panLastCursorY or cursorY)
-
-                    window.panLastCursorX = cursorX
-                    window.panLastCursorY = cursorY
-                    window.panOffsetX = window.panOffsetX + deltaX
-                    window.panOffsetY = window.panOffsetY + deltaY
-
-                    if ApplyOverlayTextureLayout then
-                        ApplyOverlayTextureLayout(window)
-                    end
-                end)
-            end
-        end
-    end)
-
-    window.panUpdater = CreateFrame("Frame", nil, panel)
-
-    local texture = panel:CreateTexture(nil, "ARTWORK")
-    texture:SetTexCoord(0, 1, 0, 1)
-    texture:SetPoint("CENTER", panel, "CENTER", 0, 0)
-    texture:SetTexture(imagePath)
-    if not texture:GetTexture() then
-        panel:Hide()
-        return nil
-    end
-    window.texture = texture
-    window.imageAspectRatio = GetPreviewTextureAspectRatio and GetPreviewTextureAspectRatio(texture)
-
-    panel:SetScript("OnSizeChanged", function()
-        if window.isSizing and window.resizeCenterX and window.resizeCenterY then
-            panel:ClearAllPoints()
-            panel:SetPoint("CENTER", UIParent, "BOTTOMLEFT", window.resizeCenterX, window.resizeCenterY)
-        end
-
-        if ApplyOverlayTextureLayout then
-            ApplyOverlayTextureLayout(window)
-        end
-    end)
-
-    local resizeHandle = CreateFrame("Button", nil, panel)
-    resizeHandle:SetSize(18, 18)
-    resizeHandle:SetPoint("BOTTOMRIGHT", panel, "BOTTOMRIGHT", -6, 6)
-    local resizeTexture = resizeHandle:CreateTexture(nil, "OVERLAY")
-    resizeTexture:SetAllPoints(resizeHandle)
-    resizeTexture:SetTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
-    resizeHandle:SetHighlightTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Highlight", "ADD")
-    resizeHandle:SetScript("OnMouseDown", function(_, button)
-        if button == "LeftButton" then
-            window.resizeCenterX, window.resizeCenterY = panel:GetCenter()
-            window.isSizing = true
-            panel:StartSizing("BOTTOMRIGHT")
-        end
-    end)
-    resizeHandle:SetScript("OnMouseUp", function()
-        panel:StopMovingOrSizing()
-        window.isSizing = false
-        window.resizeCenterX = nil
-        window.resizeCenterY = nil
-    end)
-
-    local closeButton = CreateFrame("Button", nil, panel, "UIPanelCloseButton")
-    closeButton:SetPoint("TOPRIGHT", panel, "TOPRIGHT", -2, -2)
-    closeButton:SetFrameStrata("FULLSCREEN_DIALOG")
-    closeButton:SetFrameLevel((panel:GetFrameLevel() or 1) + 20)
-    closeButton:SetScript("OnClick", function()
-        StopOverlayPanning(window)
-        overlayWindows[panel] = nil
-        panel:Hide()
-    end)
-
-    panel:SetScript("OnHide", function(self)
-        StopOverlayPanning(window)
-        self:SetScript("OnUpdate", nil)
-    end)
 
     local retries = 0
-    panel:SetScript("OnUpdate", function(self)
+    window.panel:SetScript("OnUpdate", function(self)
         local canReadTexture = window.texture and
             ((not window.texture.IsObjectLoaded) or window.texture:IsObjectLoaded())
         if canReadTexture then
@@ -261,13 +116,212 @@ local function CreateOverlayWindow(imagePath)
             end
         end
     end)
+end
+
+local function CreateOverlayWindow(imagePath)
+    if not imagePath then
+        return nil
+    end
+
+    local window
+    if #overlayPool > 0 then
+        window = table.remove(overlayPool)
+        window.isPooled = false
+    else
+        overlayWindowCount = overlayWindowCount + 1
+        local slotIndex = overlayWindowCount
+        local panelName = "APRCurrentStepImagePreviewFrame" .. slotIndex
+        local panel = CreateFrame("Frame", panelName, UIParent, "BackdropTemplate")
+        local offset = ((slotIndex - 1) % 8) * 18
+        panel:SetSize(OVERLAY_PANEL_DEFAULT_WIDTH, OVERLAY_PANEL_DEFAULT_HEIGHT)
+        panel:SetPoint("CENTER", UIParent, "CENTER", offset, -offset)
+        panel:SetFrameStrata("DIALOG")
+        panel:SetFrameLevel(900 + ((slotIndex - 1) % 40))
+        panel:SetBackdrop({
+            bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
+            edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
+            tile = true,
+            tileSize = 16,
+            edgeSize = 16,
+            insets = { left = 4, right = 4, top = 4, bottom = 4 },
+        })
+        panel:SetBackdropColor(0.04, 0.04, 0.04, 0.96)
+        panel:EnableMouse(true)
+        panel:SetMovable(true)
+        panel:SetResizable(true)
+        if panel.SetResizeBounds then
+            panel:SetResizeBounds(
+                OVERLAY_PANEL_MIN_WIDTH,
+                OVERLAY_PANEL_MIN_HEIGHT,
+                OVERLAY_PANEL_MAX_WIDTH,
+                OVERLAY_PANEL_MAX_HEIGHT
+            )
+        elseif panel.SetMinResize and panel.SetMaxResize then
+            panel:SetMinResize(OVERLAY_PANEL_MIN_WIDTH, OVERLAY_PANEL_MIN_HEIGHT)
+            panel:SetMaxResize(OVERLAY_PANEL_MAX_WIDTH, OVERLAY_PANEL_MAX_HEIGHT)
+        end
+        panel:SetClipsChildren(true)
+        panel:RegisterForDrag("LeftButton")
+
+        window = {
+            panel = panel,
+            texture = nil,
+            zoomLevel = OVERLAY_ZOOM_MIN,
+            imageAspectRatio = nil,
+            isSizing = false,
+            isPooled = false,
+            resizeCenterX = nil,
+            resizeCenterY = nil,
+            panUpdater = nil,
+            panOffsetX = 0,
+            panOffsetY = 0,
+            panLastCursorX = nil,
+            panLastCursorY = nil,
+            isPanning = false,
+        }
+
+        panel:SetScript("OnDragStart", function(self)
+            self:StartMoving()
+        end)
+        panel:SetScript("OnDragStop", function(self)
+            self:StopMovingOrSizing()
+        end)
+        panel:SetScript("OnMouseUp", function(self)
+            self:StopMovingOrSizing()
+            window.isSizing = false
+            window.resizeCenterX = nil
+            window.resizeCenterY = nil
+            StopOverlayPanning(window)
+        end)
+        panel:EnableMouseWheel(true)
+        panel:SetScript("OnMouseWheel", function(_, delta)
+            if delta > 0 then
+                window.zoomLevel = Clamp(window.zoomLevel + OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
+            else
+                window.zoomLevel = Clamp(window.zoomLevel - OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
+            end
+
+            if ApplyOverlayTextureLayout then
+                ApplyOverlayTextureLayout(window)
+            end
+        end)
+
+        panel:SetScript("OnMouseDown", function(_, button)
+            -- Right-click drag pans inside the image while zoomed.
+            if button == "RightButton" and (window.zoomLevel or OVERLAY_ZOOM_MIN) > OVERLAY_ZOOM_MIN then
+                window.isPanning = true
+                window.panLastCursorX, window.panLastCursorY = GetCursorPositionInUiScale()
+
+                local panUpdater = window.panUpdater
+                if panUpdater and panUpdater.SetScript then
+                    panUpdater:SetScript("OnUpdate", function()
+                        if not window.isPanning then
+                            return
+                        end
+
+                        local cursorX, cursorY = GetCursorPositionInUiScale()
+                        local deltaX = cursorX - (window.panLastCursorX or cursorX)
+                        local deltaY = cursorY - (window.panLastCursorY or cursorY)
+
+                        window.panLastCursorX = cursorX
+                        window.panLastCursorY = cursorY
+                        window.panOffsetX = window.panOffsetX + deltaX
+                        window.panOffsetY = window.panOffsetY + deltaY
+
+                        if ApplyOverlayTextureLayout then
+                            ApplyOverlayTextureLayout(window)
+                        end
+                    end)
+                end
+            end
+        end)
+
+        window.panUpdater = CreateFrame("Frame", nil, panel)
+
+        local texture = panel:CreateTexture(nil, "ARTWORK")
+        texture:SetTexCoord(0, 1, 0, 1)
+        texture:SetPoint("CENTER", panel, "CENTER", 0, 0)
+        window.texture = texture
+
+        panel:SetScript("OnSizeChanged", function()
+            if window.isSizing and window.resizeCenterX and window.resizeCenterY then
+                panel:ClearAllPoints()
+                panel:SetPoint("CENTER", UIParent, "BOTTOMLEFT", window.resizeCenterX, window.resizeCenterY)
+            end
+
+            if ApplyOverlayTextureLayout then
+                ApplyOverlayTextureLayout(window)
+            end
+        end)
+
+        local resizeHandle = CreateFrame("Button", nil, panel)
+        resizeHandle:SetSize(18, 18)
+        resizeHandle:SetPoint("BOTTOMRIGHT", panel, "BOTTOMRIGHT", -6, 6)
+        local resizeTexture = resizeHandle:CreateTexture(nil, "OVERLAY")
+        resizeTexture:SetAllPoints(resizeHandle)
+        resizeTexture:SetTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Up")
+        resizeHandle:SetHighlightTexture("Interface\\ChatFrame\\UI-ChatIM-SizeGrabber-Highlight", "ADD")
+        resizeHandle:SetScript("OnMouseDown", function(_, button)
+            if button == "LeftButton" then
+                window.resizeCenterX, window.resizeCenterY = panel:GetCenter()
+                window.isSizing = true
+                panel:StartSizing("BOTTOMRIGHT")
+            end
+        end)
+        resizeHandle:SetScript("OnMouseUp", function()
+            panel:StopMovingOrSizing()
+            window.isSizing = false
+            window.resizeCenterX = nil
+            window.resizeCenterY = nil
+        end)
+
+        local closeButton = CreateFrame("Button", nil, panel, "UIPanelCloseButton")
+        closeButton:SetPoint("TOPRIGHT", panel, "TOPRIGHT", -2, -2)
+        closeButton:SetFrameStrata("FULLSCREEN_DIALOG")
+        closeButton:SetFrameLevel((panel:GetFrameLevel() or 1) + 20)
+        closeButton:SetScript("OnClick", function()
+            panel:Hide()
+        end)
+
+        -- OnHide handles both close-button clicks and Escape-key (UISpecialFrames).
+        panel:SetScript("OnHide", function(self)
+            self:SetScript("OnUpdate", nil)
+            ReturnWindowToPool(window)
+        end)
+
+        -- Register each frame name exactly once, the first time its slot is created.
+        APR:RegisterUiSpecialFrame(panelName)
+    end
+
+    -- Reset per-use state before showing.
+    window.zoomLevel = OVERLAY_ZOOM_MIN
+    window.imageAspectRatio = nil
+    window.panOffsetX = 0
+    window.panOffsetY = 0
+    window.isSizing = false
+    window.resizeCenterX = nil
+    window.resizeCenterY = nil
+
+    local texture = window.texture
+    if not texture or not texture.SetTexture or not texture.GetTexture then
+        ReturnWindowToPool(window)
+        return nil
+    end
+
+    texture:SetTexture(imagePath)
+    if not texture:GetTexture() then
+        ReturnWindowToPool(window)
+        return nil
+    end
+
+    window.imageAspectRatio = GetPreviewTextureAspectRatio and GetPreviewTextureAspectRatio(texture)
+    overlayWindows[window.panel] = window
+    StartOverlayTextureAspectRatioProbe(window)
 
     if ApplyOverlayTextureLayout then
         ApplyOverlayTextureLayout(window)
     end
 
-    overlayWindows[panel] = window
-    APR:RegisterUiSpecialFrame(panelName)
     return window
 end
 

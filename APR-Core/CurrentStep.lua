@@ -1083,6 +1083,57 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
     self:ReOrderQuestSteps(true)
 end
 
+-- Remove step-specific UI while keeping out-of-zone transport guidance intact.
+function APR.currentStep:RemoveStepContentPreservingTransportUi()
+    APR:Debug("Function: APR.currentStep:RemoveStepContentPreservingTransportUi()")
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.currentStepShow then
+        return
+    end
+
+    if APR.currentStepImagePreview and APR.currentStepImagePreview.ClearPreviewImages then
+        APR.currentStepImagePreview:ClearPreviewImages(self)
+    end
+
+    local function ResetList(list, isQuestList, preservePredicate)
+        for id, container in pairs(list) do
+            if not preservePredicate(id) then
+                local canHide = self:CanSafelyHide(container)
+                if canHide then
+                    container:SetScript("OnEnter", nil)
+                    container:SetScript("OnLeave", nil)
+                    container:ClearAllPoints()
+                    container:Hide()
+                    if isQuestList then
+                        self:ResetSecureStepButton(container, id)
+                        self.pendingButtonRequests[id] = nil
+                    end
+                    self:ResetSecureRaidIconButton(container, id)
+                    self.pendingRaidIconRequests[id] = nil
+                    list[id] = nil
+                else
+                    self:SoftHide(container)
+                    self.pendingRemoval[id] = true
+                end
+            end
+        end
+    end
+
+    ResetList(self.questsList, true, function(id)
+        return APR:IsTransportQuestUiKey(id)
+    end)
+    ResetList(self.questsExtraTextList, false, function(id)
+        return APR:IsTransportExtraTextUiKey(id)
+    end)
+
+    if APR.fillersFrame and APR.fillersFrame.RemoveFillerSteps then
+        APR.fillersFrame:RemoveFillerSteps()
+    end
+
+    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
+    self:ReOrderQuestSteps(true)
+end
+
 local function PositionStepButtons(container, button, anchorButton)
     button:ClearAllPoints()
     local anchor = anchorButton or container

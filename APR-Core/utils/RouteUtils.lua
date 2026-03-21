@@ -545,8 +545,8 @@ end
 -- The seen set is keyed by note content (not step index) so it stays valid
 -- even after steps are inserted or removed in the route definition.
 -- SeenNotes is intentionally NOT cleared by ClearSavedRouteData / ResetRoute;
--- it is only cleared entry-by-entry when the player manually rolls back to the
--- note step via PreviousQuestStep.
+-- it is only cleared entry-by-entry when the player manually navigates through
+-- Note steps via skip / rollback.
 -- ---------------------------------------------------------------------------
 
 --- Marks a Note-only step as seen for the given route.
@@ -579,6 +579,36 @@ function APR:UnmarkNoteStepSeen(route, step)
     local seenNotes = playerData[route .. '-SeenNotes']
     if seenNotes then
         seenNotes[key] = nil
+    end
+end
+
+--- Clears the seen flag for every Note step between two indices (inclusive).
+--- Manual skip / rollback use this so note previews can be revisited reliably.
+function APR:ResetNoteStepsSeenInRange(route, startIndex, endIndex)
+    if not route then
+        return
+    end
+
+    local firstIndex = tonumber(startIndex)
+    local lastIndex = tonumber(endIndex)
+    if not firstIndex or not lastIndex then
+        return
+    end
+
+    if firstIndex > lastIndex then
+        firstIndex, lastIndex = lastIndex, firstIndex
+    end
+
+    local steps = self:GetRouteSteps(route)
+    if not steps or #steps == 0 then
+        return
+    end
+
+    for index = math.max(firstIndex, 1), math.min(lastIndex, #steps) do
+        local step = steps[index]
+        if step and step.Note then
+            self:UnmarkNoteStepSeen(route, step)
+        end
     end
 end
 

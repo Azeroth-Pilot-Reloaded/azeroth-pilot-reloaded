@@ -246,6 +246,14 @@ function APR:UpdateQuestAndStep()
     APR:UpdateStep()
 end
 
+--- Build a stable token for the currently rendered route step.
+---@param route string|nil
+---@param stepIndex number|nil
+---@return string
+function APR:GetCurrentStepToken(route, stepIndex)
+    return tostring(route or self.ActiveRoute or "") .. ":" .. tostring(stepIndex or "")
+end
+
 --- Move to the next step index, then refresh current step rendering.
 function APR:UpdateNextStep()
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
@@ -255,6 +263,48 @@ end
 --- Advance both quest and step state in tandem.
 function APR:NextQuestStep()
     APRData[APR.PlayerID][APR.ActiveRoute] = APRData[APR.PlayerID][APR.ActiveRoute] + 1
+    self:UpdateQuestAndStep()
+end
+
+--- Manually skip to the next visible step and re-arm Note steps in the traversed range.
+function APR:SkipQuestStep()
+    local userData = APRData[APR.PlayerID]
+    local activeRoute = APR.ActiveRoute
+
+    if not userData or not activeRoute then
+        return
+    end
+
+    local questStepList = self:GetRouteSteps(activeRoute)
+    local currentIndex = tonumber(userData[activeRoute]) or 1
+    if currentIndex < 1 then
+        currentIndex = 1
+    end
+
+    local targetIndex = currentIndex
+    local tries = 0
+
+    while targetIndex < (#questStepList + 1) do
+        targetIndex = targetIndex + 1
+        local step = questStepList[targetIndex]
+
+        if not step then
+            break
+        end
+
+        -- Skip over hidden/filter-only steps and waypoints until we reach the next visible step.
+        if not (self:StepFilterQuestHandler(step) or step.Waypoint) then
+            break
+        end
+
+        tries = tries + 1
+        if tries > 100 then
+            break
+        end
+    end
+
+    self:ResetNoteStepsSeenInRange(activeRoute, currentIndex, targetIndex)
+    userData[activeRoute] = targetIndex
     self:UpdateQuestAndStep()
 end
 
@@ -272,6 +322,8 @@ function APR:PreviousQuestStep()
         self:UpdateQuestAndStep()
         return
     end
+
+    local previousIndex = userData[activeRoute]
 
     -- Safety to prevent infinite loop
     local tries = 0
@@ -297,13 +349,8 @@ function APR:PreviousQuestStep()
         userData[activeRoute] = 1
     end
 
-    -- If we landed on a Note-only step, clear its seen state so the player can
-    -- read it again.  This is the "rollback protection" described in the feature:
-    -- explicitly going backwards to a Note step opts the player back in to seeing it.
-    local landedStep = questStepList[userData[activeRoute]]
-    if landedStep and landedStep.Note then
-        APR:UnmarkNoteStepSeen(activeRoute, landedStep)
-    end
+    -- Re-arm every Note crossed during manual rollback so navigation can revisit them.
+    self:ResetNoteStepsSeenInRange(activeRoute, userData[activeRoute], previousIndex)
 
     -- Update the quest and step
     self:UpdateQuestAndStep()

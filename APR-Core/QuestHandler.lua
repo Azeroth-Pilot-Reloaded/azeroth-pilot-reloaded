@@ -133,11 +133,8 @@ function APR:UpdateStep()
         APRData[APR.PlayerID][APR.ActiveRoute] = 1
     end
 
-    if APR.IsInRouteZone then
-        APR.currentStep:Reset()
-    end
-
     local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
+    local currentStepToken = APR:GetCurrentStepToken(APR.ActiveRoute, currentStepIndex)
 
     APR:ResetMissingQuests()
 
@@ -152,6 +149,14 @@ function APR:UpdateStep()
     local step = APR:GetStep(currentStepIndex)
     if step then
         local showStepDetails = APR.IsInRouteZone or (APR.transport and APR.transport.showOutOfZoneStepContent)
+
+        if APR.IsInRouteZone then
+            APR.currentStep:Reset()
+        elseif showStepDetails and APR.currentStep.previousState.currentStepToken ~= currentStepToken then
+            APR.currentStep:RemoveStepContentPreservingTransportUi()
+        end
+        APR.currentStep.previousState.currentStepToken = currentStepToken
+
         APR.currentStep:ButtonEnable()
         APR:SendMessage("APR_MAP_UPDATE")
 
@@ -246,8 +251,8 @@ function APR:UpdateStep()
             --   1. The player has already seen this note before (seen set persists across resets), OR
             --   2. Both the nearest real step before and after this one are quest-complete,
             --      meaning the note no longer gates meaningful progression.
-            -- Rollback protection: PreviousQuestStep clears the seen flag when landing on a
-            -- Note-only step so the player can read it again if they explicitly go back.
+            -- Manual navigation protection: skip / rollback re-arm traversed Note steps
+            -- so the player can revisit them without stale SeenNotes state.
             if step.Note then
                 local route = APR.ActiveRoute
                 if APR:IsNoteStepSeen(route, step) or
@@ -1086,6 +1091,7 @@ function APR:UpdateStep()
         APR.party:SendGroupMessage()
         APR.party:RefreshPartyFrameAnchor()
     else
+        APR.currentStep.previousState.currentStepToken = nil
         APR:Debug("APR.UpdateStep:No step found for current step:", currentStepIndex)
         APR.routeconfig:CheckIsCustomPathEmpty()
     end
