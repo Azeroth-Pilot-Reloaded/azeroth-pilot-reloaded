@@ -1093,6 +1093,12 @@ function APR:UpdateStep()
     else
         APR.currentStep.previousState.currentStepToken = nil
         APR:Debug("APR.UpdateStep:No step found for current step:", currentStepIndex)
+
+        if APR:IsTemporaryRouteActive() then
+            APR:ClearTemporaryRoute({ preserveSessionKey = true })
+            return
+        end
+
         APR.routeconfig:CheckIsCustomPathEmpty()
     end
 end

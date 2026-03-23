@@ -402,6 +402,19 @@ end
 
 --- Pick a routing target from a step zone list, preferring the current continent.
 function APR:GetPreferredStepZone(step, fallbackMapID)
+    local scenarioMapID, scenarioInfo = self:GetScenarioStepTarget(step)
+    if scenarioInfo and scenarioInfo.zone then
+        local currentMapID = C_Map.GetBestMapForUnit("player")
+        local parentMapID = self:GetPlayerParentMapID()
+        local isInsideScenario = currentMapID == scenarioMapID or parentMapID == scenarioMapID
+
+        if not isInsideScenario and (step and
+                (step.Scenario or step.EnterScenario or step.DoScenario or step.LeaveScenario or step.EnterInstance or
+                    step.LeaveInstance)) then
+            return scenarioInfo.zone
+        end
+    end
+
     local zones = self:GetStepZoneList(step, fallbackMapID)
     if #zones == 0 then
         return nil
@@ -469,6 +482,17 @@ end
 function APR:GetStepCoord(step, fallbackMapID, zoneHint)
     if not step then
         return nil
+    end
+
+    local scenarioMapID, scenarioInfo = self:GetScenarioStepTarget(step)
+    if scenarioInfo and scenarioInfo.Coord then
+        local currentMapID = C_Map.GetBestMapForUnit("player")
+        local parentMapID = self:GetPlayerParentMapID()
+        local isInsideScenario = currentMapID == scenarioMapID or parentMapID == scenarioMapID
+
+        if not isInsideScenario and (step.Scenario or step.EnterScenario or step.DoScenario or step.LeaveScenario or step.EnterInstance or step.LeaveInstance) then
+            return scenarioInfo.Coord, scenarioInfo.zone
+        end
     end
 
     if IsCoordTable(step.Coord) then
