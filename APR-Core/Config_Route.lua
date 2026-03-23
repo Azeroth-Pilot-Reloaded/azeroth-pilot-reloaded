@@ -1088,6 +1088,10 @@ end
 ---------------------------------------------------------------------------------------
 
 function APR.routeconfig:HasRouteInCustomPaht()
+    if APR:IsTemporaryRouteActive() then
+        return true
+    end
+
     if APRCustomPath[APR.PlayerID] and not next(APRCustomPath[APR.PlayerID]) then
         return false
     end

@@ -19,9 +19,50 @@ function APR:GetRouteData(routeKey)
     return routeData
 end
 
-local function GetBaseRouteSteps(routeData)
+local function FlattenScenarioBlocks(blocks, scenarioID)
+    local steps = {}
+    for _, block in ipairs(blocks or {}) do
+        if not scenarioID or tonumber(block.scenarioID) == tonumber(scenarioID) then
+            for _, step in ipairs(block.steps or {}) do
+                table.insert(steps, step)
+            end
+        end
+    end
+    return steps
+end
+
+local function GetActiveDelveScenarioID(routeKey)
+    local playerData = APRData and APR.PlayerID and APRData[APR.PlayerID] or nil
+    local temporaryRouteState = playerData and playerData.TemporaryRouteState or nil
+    local scenarioID = temporaryRouteState and temporaryRouteState.routeKey == routeKey and temporaryRouteState.scenarioID or
+        nil
+
+    if routeKey == APR.ActiveRoute and APR.GetCurrentDelveContext then
+        local context = APR:GetCurrentDelveContext()
+        if context and context.scenarioID and APR.HasDelveScenarioBlock and APR:HasDelveScenarioBlock(routeKey, context.scenarioID) then
+            scenarioID = context.scenarioID
+        end
+    end
+
+    return scenarioID
+end
+
+local function GetBaseRouteSteps(routeData, routeKey)
     if not routeData then
         return {}
+    end
+
+    if routeKey and APR and APR.IsDelveRoute and APR:IsDelveRoute(routeKey) and APR.GetDelveScenarioBlocks then
+        local blocks = APR:GetDelveScenarioBlocks(routeKey)
+        if blocks then
+            local scenarioID = GetActiveDelveScenarioID(routeKey)
+            local matchedSteps = scenarioID and FlattenScenarioBlocks(blocks, scenarioID) or {}
+            if #matchedSteps > 0 then
+                return matchedSteps
+            end
+
+            return FlattenScenarioBlocks(blocks)
+        end
     end
 
     if routeData.steps then
@@ -125,7 +166,7 @@ end
 
 function APR:BuildEffectiveRouteSteps(routeKey)
     local routeData = self:GetRouteData(routeKey)
-    local baseSteps = GetBaseRouteSteps(routeData)
+    local baseSteps = GetBaseRouteSteps(routeData, routeKey)
     local groups = GetParallelGroups(routeData)
     local state = GetRouteParallelState(self, routeKey, false)
     local activeGroups = state and state.groups or nil
@@ -275,8 +316,9 @@ end
 function APR:GetRouteSteps(routeKey)
     local routeData = self:GetRouteData(routeKey)
     if not routeData then return {} end
-    -- New format: routeData is { steps = {...}, label = ..., ... }
-    if routeData.steps then
+    -- New format: routeData is { steps = {...}, label = ..., ... }.
+    -- Delves also support { scenarios = {...}, label = ..., ... }.
+    if routeData.steps or routeData.scenarios or self:IsDelveRoute(routeKey) then
         self:EnsureRouteParallelStepsActivated(routeKey)
         return self:BuildEffectiveRouteSteps(routeKey)
     end
@@ -697,6 +739,10 @@ end
 function APR:GetRouteVisibility(routeKey)
     local routeData = self:GetRouteData(routeKey)
     if not routeData then return "hidden" end
+
+    if routeData.hiddenFromSelection or self:IsDelveRoute(routeKey) then
+        return "hidden"
+    end
 
     local conditions = routeData.conditions or {}
     if not next(conditions) then

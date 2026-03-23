@@ -203,6 +203,8 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 local interfaceText = APR:WrapTextInColorCode(APR.interfaceVersion, "00ff00")
                 APR:PrintInfo("APR " .. L["LOADED"] .. " - Version: " .. versionText .. " | Interface: " ..
                     interfaceText)
+
+                APR:ScheduleDelveRouteRefresh(2.5)
             end)
         end
     end
@@ -1017,6 +1019,8 @@ function APR.event.functions.remove(event, questID, wasReplayQuest)
 end
 
 function APR.event.functions.scenario(event, ...)
+    APR:ScheduleDelveRouteRefresh(event == "SCENARIO_COMPLETED" and 0.3 or 0.1)
+
     if event == "SCENARIO_COMPLETED" then
         local currentMapID = C_Map.GetBestMapForUnit('player')
         tinsert(APRScenarioMapIDCompleted[APR.PlayerID], currentMapID)
@@ -1295,6 +1299,8 @@ function APR.event.functions.zone(event, ...)
                 APR.transport:GetMeToRightZone(i > 1)
             end)
         end
+
+        APR:ScheduleDelveRouteRefresh(1.25)
     end
     if event == "ZONE_CHANGED" or
         event == "ZONE_CHANGED_INDOORS" or
@@ -1324,6 +1330,8 @@ function APR.event.functions.zone(event, ...)
         if APR.transport._worldTransitionTime and (GetTime() - APR.transport._worldTransitionTime) < 1.0 then
             return
         end
+
+        APR:ScheduleDelveRouteRefresh(event == "ZONE_CHANGED_NEW_AREA" and 0.35 or 0.15)
 
         if APR.ActiveRoute then
             local isInRouteZone = APR:CheckIsInRouteZone()
