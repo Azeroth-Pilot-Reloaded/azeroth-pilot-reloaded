@@ -488,11 +488,11 @@ function APR.transport:GetMeToRightZone(isRetry)
             APR.currentStep:RefreshCurrentStepFrameAnchor()
         end
     end
-    if not APR.ActiveRoute or not next(APRCustomPath[APR.PlayerID]) then
+    if not APR.ActiveRoute or not APR.routeconfig:HasRouteInCustomPaht() then
         APR.routeconfig:CheckIsCustomPathEmpty()
         return
     end
-    if not APR:IsInstanceWithUI() or not APRCustomPath[APR.PlayerID] then
+    if not APR:IsInstanceWithUI() or (not APRCustomPath[APR.PlayerID] and not APR:IsTemporaryRouteActive()) then
         return
     end
 

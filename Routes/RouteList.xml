@@ -38,7 +38,6 @@
     <Script file="Routes/TheBurningCrusade/TheBurningCrusade_Horde.lua"/>
 
     <Script file="Routes/TheWarWithin/Arathi_Highlands_Returning_Player.lua"/>
-    <Script file="Routes/TheWarWithin/delves.lua"/>
     <Script file="Routes/TheWarWithin/TheWarWithin-Isle-of-Dorn.lua"/>
     <Script file="Routes/TheWarWithin/TheWarWithin-Ringing-Deeps.lua"/>
     <Script file="Routes/TheWarWithin/TheWarWithin-Hallowfall.lua"/>
@@ -56,4 +55,6 @@
     <Script file="Routes/WrathOfTheLichKing/WrathOfTheLichKing.lua"/>
 
     <Script file="Routes/Custom/10-70-Ally-EclipseGlaives.lua"/>
+
+    <Script file="Routes/delves.lua"/>
 </Ui>

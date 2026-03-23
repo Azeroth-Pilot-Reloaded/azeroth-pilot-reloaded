@@ -105,16 +105,18 @@ function APR:InitRouteTriggersSuggestion()
     for i = 1, #routeKeys do
         local routeKey = routeKeys[i]
         local routeData = APR.RouteQuestStepList[routeKey]
-        local stepList = routeData and routeData.steps
-        local skippedSteps = 0
-        if APRData and APRData[self.PlayerID] then
-            skippedSteps = tonumber(APRData[self.PlayerID][routeKey .. "-SkippedStep"]) or 0
-        end
+        if not (type(routeData) == "table" and (APR:IsDelveRoute(routeKey) or routeData.temporary or routeData.hiddenFromSelection)) then
+            local stepList = routeData and routeData.steps
+            local skippedSteps = 0
+            if APRData and APRData[self.PlayerID] then
+                skippedSteps = tonumber(APRData[self.PlayerID][routeKey .. "-SkippedStep"]) or 0
+            end
 
-        local startStepIndex = skippedSteps + 1
-        local triggers = collectFirstQuestTriggers(stepList, excludedQuestId, maxTriggersPerRoute, startStepIndex)
-        if #triggers > 0 then
-            self:RegisterTemporaryRouteTrigger(routeKey, triggers, routeData and routeData.label)
+            local startStepIndex = skippedSteps + 1
+            local triggers = collectFirstQuestTriggers(stepList, excludedQuestId, maxTriggersPerRoute, startStepIndex)
+            if #triggers > 0 then
+                self:RegisterTemporaryRouteTrigger(routeKey, triggers, routeData and routeData.label)
+            end
         end
     end
 end

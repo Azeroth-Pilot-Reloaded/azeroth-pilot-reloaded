@@ -81,8 +81,16 @@ function APR:GetRawStepCount(route)
         return 0
     end
 
-    local steps = routeData.steps or routeData
-    local rawStepCount = #steps
+    local rawStepCount = 0
+    local delveScenarioBlocks = self.GetDelveScenarioBlocks and self:GetDelveScenarioBlocks(route) or nil
+    if delveScenarioBlocks then
+        for _, block in ipairs(delveScenarioBlocks) do
+            rawStepCount = rawStepCount + #(block.steps or {})
+        end
+    else
+        local steps = routeData.steps or routeData
+        rawStepCount = #steps
+    end
 
     if type(routeData.parallelSteps) == "table" then
         for _, group in ipairs(routeData.parallelSteps) do
@@ -468,19 +476,33 @@ end
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name
 function APR:GetCurrentRouteMapIDsAndName()
-    if not APRCustomPath or not APRCustomPath[self.PlayerID] then
-        self:PrintError('No APRCustomPath')
+    if self.ActiveRoute and self:GetRouteData(self.ActiveRoute) and self:IsTemporaryRoute(self.ActiveRoute) then
+        return self:GetRouteMapIDsAndName(self.ActiveRoute)
+    end
+
+    local currentRouteKey = self:GetPrimaryCustomPathRouteKey()
+    if not currentRouteKey and self.ActiveRoute and self:GetRouteData(self.ActiveRoute) then
+        currentRouteKey = self.ActiveRoute
+    end
+
+    if not currentRouteKey then
+        if not APRCustomPath or not APRCustomPath[self.PlayerID] then
+            self:PrintError('No APRCustomPath')
+        end
         return nil, 0, '', ''
     end
-    -- Get the current Route wanted MapIDs and Route File
-    local _, currentRouteName = next(APRCustomPath[self.PlayerID])
-    local routeZoneMapIDs, mapID, routeFileName, expansion = self:GetRouteMapIDsAndName(currentRouteName)
+
+    local routeZoneMapIDs, mapID, routeFileName, expansion = self:GetRouteMapIDsAndName(currentRouteKey)
 
     -- Clean up invalid saved entries so the current step frame can show content.
     if routeFileName == '' then
-        self:Debug("APR:GetCurrentRouteMapIDsAndName - invalid route in custom path", currentRouteName)
-        table.remove(APRCustomPath[self.PlayerID], 1)
-        self.routeconfig:CheckIsCustomPathEmpty()
+        self:Debug("APR:GetCurrentRouteMapIDsAndName - invalid active route", currentRouteKey)
+        if APRCustomPath and APRCustomPath[self.PlayerID] and next(APRCustomPath[self.PlayerID]) then
+            table.remove(APRCustomPath[self.PlayerID], 1)
+        end
+        if self.routeconfig then
+            self.routeconfig:CheckIsCustomPathEmpty()
+        end
         return nil, 0, '', ''
     end
 
