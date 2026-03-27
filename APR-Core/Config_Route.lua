@@ -875,8 +875,9 @@ function SetRouteListTab(widget, name)
                 -- Route name (yellow title)
                 GameTooltip:AddLine(route.routeName, 1, 0.82, 0)
                 -- Category & Status
-                GameTooltip:AddLine((L["CATEGORY"] or "Category") .. ": " .. route.categoryValue, 0.8, 0.8, 0.8)
-                GameTooltip:AddLine((L["STATUS"] or "Status") .. ": " .. route.statusValue, 0.8, 0.8, 0.8)
+                GameTooltip:AddLine(string.format(L["CATEGORY_VALUE"], route.categoryValue), 0.8, 0.8,
+                    0.8)
+                GameTooltip:AddLine(string.format(L["STATUS_VALUE"], route.statusValue), 0.8, 0.8, 0.8)
                 GameTooltip:AddLine(" ")
                 if isDisabled then
                     GameTooltip:AddLine(L["ROUTE_DISABLED"], 1, 0.3, 0.3, true)

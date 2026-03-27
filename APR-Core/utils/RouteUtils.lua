@@ -953,7 +953,7 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
     end
 
     if #combinedResetLines > 0 and (activeRouteWasReset or isVersionUpgrade) then
-        local msg = L["ROUTE_UPDATED_NEED_RESET"] .. ":\n\n" .. table.concat(combinedResetLines, "\n - ")
+        local msg = L["ROUTE_UPDATED_NEED_RESET"] .. "\n\n" .. table.concat(combinedResetLines, "\n - ")
         self.questionDialog:CreateMessagePopup(msg)
     end
 

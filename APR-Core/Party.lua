@@ -183,10 +183,10 @@ local function TeamContainerOnEnter(self)
     elseif not data.route then
         GameTooltip:AddLine(L["NO_ROUTE"], 1, 1, 0)
     else
-        GameTooltip:AddDoubleLine(L["ROUTE"] .. ":", data.route, 0.8, 0.8, 0.8, 1, 1, 1)
+        GameTooltip:AddDoubleLine(L["ROUTE_LABEL"], data.route, 0.8, 0.8, 0.8, 1, 1, 1)
 
         if data.currentStep and data.totalSteps then
-            GameTooltip:AddDoubleLine(L["CURRENT_STEP"] .. ":", data.currentStep .. " / " .. data.totalSteps, 0.8,
+            GameTooltip:AddDoubleLine(L["CURRENT_STEP_LABEL"], data.currentStep .. " / " .. data.totalSteps, 0.8,
                 0.8, 0.8, 0.3, 1, 0.3)
         end
 
