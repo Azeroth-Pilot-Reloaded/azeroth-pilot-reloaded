@@ -8,7 +8,7 @@ local function GroupQuestPopup()
     local questId = step.Group.questID
     if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not step.QuestLineSkip then
         local sugestGroupNumber = step.Group.Number
-        local dialogText = L["OPTIONAL"] .. " - " .. L["SUGGESTED_PLAYERS"] .. ": " .. sugestGroupNumber
+        local dialogText = string.format(L["OPTIONAL_SUGGESTED_PLAYERS"], sugestGroupNumber)
 
         APR.questionDialog:CreateQuestionPopup(dialogText,
             dialogText,
@@ -324,7 +324,7 @@ function APR:UpdateStep()
             end
 
             APR.currentStep:AddQuestSteps("ENTER_IN_" .. scenarioInfo.type,
-                format(L["ENTER_IN"], L[scenarioInfo.type]) .. ": " .. mapInfo.name, mapInfo.name)
+                format(L["ENTER_IN"], L[scenarioInfo.type], mapInfo.name), mapInfo.name)
             step.Coord = scenarioInfo.Coord
             APR.Arrow:SetCoord()
         elseif step.DoScenario then
@@ -354,7 +354,7 @@ function APR:UpdateStep()
             APR.Arrow:SetCoord()
 
             APR.currentStep:AddQuestSteps("COMPLETE_SOMETHING_" .. scenarioInfo.type,
-                format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type]) .. ": " .. mapInfo.name, mapInfo.name)
+                format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type], mapInfo.name), mapInfo.name)
         elseif step.LeaveScenario then
             local scenarioMapID = step.LeaveScenario.mapID
             local questID = step.LeaveScenario.questID
@@ -366,7 +366,7 @@ function APR:UpdateStep()
 
             if scenarioInfo then
                 APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
-                    L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name, mapInfo.name)
+                    format(L["LEAVE_" .. scenarioInfo.type], mapInfo.name), mapInfo.name)
             end
         elseif step.LeaveInstance then
             local instanceMapID = step.LeaveInstance.mapID
@@ -379,7 +379,7 @@ function APR:UpdateStep()
 
             if scenarioInfo then
                 APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
-                    L["LEAVE_" .. scenarioInfo.type] .. ": " .. mapInfo.name, mapInfo.name)
+                    format(L["LEAVE_" .. scenarioInfo.type], mapInfo.name), mapInfo.name)
             end
         end
 
@@ -494,7 +494,8 @@ function APR:UpdateStep()
             APR.AFK:HideFrame()
         end
         if (step.UseGlider and showStepDetails) then
-            APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER", L["USE_ITEM"] .. ": " .. APR:UseGlider())
+            APR.currentStep:AddExtraLineText("USE_ITEM_GLIDER",
+                string.format(L["USE_ITEM"], APR:UseGlider()))
         end
         if (step.Bloodlust and showStepDetails) then
             APR.currentStep:AddExtraLineText("BLOODLUST", L["BLOODLUST"])
@@ -800,7 +801,7 @@ function APR:UpdateStep()
             local questID = step.UseItem.questID
             local itemID = step.UseItem.itemID
             local itemName = C_Item.GetItemInfo(itemID)
-            local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
+            local questText = string.format(L["USE_ITEM"], itemName or UNKNOWN)
             if showStepDetails then
                 APR.currentStep:AddQuestSteps(questID, questText, "UseItem")
                 APR.currentStep:AddStepButton(questID .. "-UseItem", itemID, 'item')
@@ -814,7 +815,7 @@ function APR:UpdateStep()
             local questID = step.UseSpell.questID
             local spellID = step.UseSpell.spellID
             local spellInfo = C_Spell.GetSpellInfo(spellID)
-            local questText = L["USE_SPELL"] .. ": " .. (spellInfo.name or UNKNOWN)
+            local questText = string.format(L["USE_SPELL"], spellInfo.name or UNKNOWN)
             if showStepDetails then
                 APR.currentStep:AddQuestSteps(questID, questText, "UseSpell")
                 APR.currentStep:AddStepButton(questID .. "-UseSpell", spellID, 'spell')

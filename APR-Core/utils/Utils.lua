@@ -279,7 +279,7 @@ end
 --- @param data any
 function APR:PrintError(errorMessage, data)
     if (errorMessage and type(errorMessage) == "string") then
-        local errorText = APR:WrapTextInColorCode(L["ERROR"] .. ": " .. errorMessage, "ff0000")
+        local errorText = APR:WrapTextInColorCode(string.format(L["ERROR_MESSAGE"], errorMessage), "ff0000")
         if data then
             DEFAULT_CHAT_FRAME:AddMessage(errorText .. " - ", data)
         else

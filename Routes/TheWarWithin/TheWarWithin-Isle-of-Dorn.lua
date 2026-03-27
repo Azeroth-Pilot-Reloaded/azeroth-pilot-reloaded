@@ -1477,7 +1477,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         },
         {
             Qpart = { [80022] = { 3 } },
-            ExtraLineText = "LEAVE_INSTANCE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             NoArrow = true,
             InstanceQuest = true,
             Zone = 2248,
@@ -1486,7 +1486,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         {
             Done = { 80022 },
             Coord = { x = -2289.3, y = 2563 },
-            ExtraLineText = "LEAVE_INSTANCE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             InstanceQuest = true,
             Zone = 2248,
             _index = 209,
@@ -2650,7 +2650,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         },
         {
             Qpart = { [80022] = { 3 } },
-            ExtraLineText = "LEAVE_INSTANCE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             NoArrow = true,
             InstanceQuest = true,
             Zone = 2248,
@@ -2659,7 +2659,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         {
             Done = { 80022 },
             Coord = { x = -2289.3, y = 2563 },
-            ExtraLineText = "LEAVE_INSTANCE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             InstanceQuest = true,
             Zone = 2248,
             _index = 129,
@@ -4748,7 +4748,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         },
         {
             Qpart = { [80022] = { 3 } },
-            ExtraLineText = "LEAVE_INSTANCE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             NoArrow = true,
             InstanceQuest = true,
             Zone = 2248,
@@ -4757,7 +4757,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         {
             Done = { 80022 },
             Coord = { x = -2289.3, y = 2563 },
-            ExtraLineText = "LEAVE_INSTANCE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             InstanceQuest = true,
             Zone = 2248,
             _index = 269,

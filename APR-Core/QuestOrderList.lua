@@ -683,7 +683,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local color = colorByCompletion(completed, currentStepIndex, rawIndex)
                 local mapInfo = APR:GetMapInfoCached(zoneId)
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
-                local stepText = string.format(L["USE_PORTAL_TO"], ':')
+                local stepText = L["USE_PORTAL_TO"]
                 local questInfo = { { questID = zoneName } }
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     stepText, questInfo, color, isCurrentStep)
@@ -709,7 +709,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local questID = step.UseItem.questID
                 local itemID = step.UseItem.itemID
                 local itemName = C_Item.GetItemInfo(itemID)
-                local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
+                local questText = string.format(L["USE_ITEM"], itemName or UNKNOWN)
                 local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, questText, color,
                     isCurrentStep)
@@ -717,7 +717,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local questID = step.UseSpell.questID
                 local spellID = step.UseSpell.spellID
                 local spellInfo = C_Spell.GetSpellInfo(spellID)
-                local questText = L["USE_SPELL"] .. ": " .. ((spellInfo and spellInfo.name) or UNKNOWN)
+                local questText = string.format(L["USE_SPELL"], (spellInfo and spellInfo.name) or UNKNOWN)
                 local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, questText, color,
                     isCurrentStep)
@@ -751,7 +751,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     L["LEARN_PROFESSION"], questInfo, color, isCurrentStep)
             elseif step.LootItems then
-                local title = format(L["LOOT_ITEM"], ":")
+                local title = L["LOOT_ITEM"]
                 local itemsInfo = {}
                 local completed = 0
 

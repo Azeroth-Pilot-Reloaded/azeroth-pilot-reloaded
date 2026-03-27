@@ -1713,7 +1713,8 @@ function APR.settings:createBlizzOptions()
                                     if APR.ZoneDetection then
                                         APR.ZoneDetection.debug = value
                                     end
-                                    APR:PrintInfo(L["SHOW_ZONE_DEBUG"] .. ": " .. (value and L["ENABLE"] or L["DISABLE"]))
+                                    APR:PrintInfo(string.format(L["SHOW_ZONE_DEBUG_STATUS"],
+                                        value and L["ENABLE"] or L["DISABLE"]))
                                 end,
                                 disabled = function()
                                     return not self.profile.enableAddon
@@ -1802,53 +1803,53 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(L["AUTHOR"] .. ": ") .. "Neogeekmo/Neoldric",
+                name = wrapHelp(string.format(L["AUTHOR"], "Neogeekmo/Neoldric")),
             },
             dev = {
                 order = 2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(L["DEV"] .. ": ") .. "Neogeekmo/Neoldric, Kamian",
+                name = wrapHelp(string.format(L["DEV"], "Neogeekmo/Neoldric, Kamian")),
             },
             route_designer = {
                 order = 2.1,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(L["ROUTE_DESIGNER"] .. ": ") .. "Pahonix, Ola, Clara",
+                name = wrapHelp(string.format(L["ROUTE_DESIGNER"], "Pahonix, Ola, Clara")),
             },
             support = {
                 order = 2.2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(L["SUPPORT"] .. ": ") .. "NightofStarrs, Pahonix",
+                name = wrapHelp(string.format(L["ABOUT_SUPPORT"], "NightofStarrs, Pahonix")),
             },
             graphic = {
                 order = 2.3,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(L["GRAPHIC"] .. ": ") .. "Rycia, Neogeekmo/Neoldric",
+                name = wrapHelp(string.format(L["ABOUT_GRAPHIC"], "Rycia, Neogeekmo/Neoldric")),
             },
             Translator = {
                 order = 2.4,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(L["TRANSLATOR"] .. ": ") .. "\n" ..
-                    "      " .. wrapTranslator(FRFR .. ": ") .. "Neogeekmo, Jmsche, Mania\n" ..
-                    "      " .. wrapTranslator(DEDE .. ": ") .. "Kamian, Movion\n" ..
-                    "      " .. wrapTranslator(ESMX .. ": ") .. "Jean\n" ..
-                    "      " .. wrapTranslator(RURU .. ": ") .. "ZamestoTV",
+                name = wrapHelp(string.format(L["ABOUT_TRANSLATOR"], "\n" ..
+                    "      " .. wrapTranslator(FRFR .. " : ") .. "Neogeekmo, Jmsche, Mania\n" ..
+                    "      " .. wrapTranslator(DEDE .. " : ") .. "Kamian, Movion\n" ..
+                    "      " .. wrapTranslator(ESMX .. " : ") .. "Jean\n" ..
+                    "      " .. wrapTranslator(RURU .. " : ") .. "ZamestoTV")),
             },
             version = {
                 order = 2.5,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(L["VERSION"] .. ": ") .. APR.version,
+                name = wrapHelp(string.format(L["VERSION"], APR.version)),
             },
             header_disable_Auto = {
                 order = 3,
@@ -1966,10 +1967,10 @@ function APR.settings:CreateMiniMapButton()
                 toggleAddon = APR:WrapTextInColorCode(" " .. L["ENABLE"], "00ff00")
             end
             tooltip:AddLine(APR.title)
-            tooltip:AddLine(L["LEFT_CLICK"] .. ": " .. APR:WrapTextInColorCode(L["SHOW_MENU"], "eda55f"),
+            tooltip:AddLine(string.format(L["LEFT_CLICK_ACTION"], APR:WrapTextInColorCode(L["SHOW_MENU"], "eda55f")),
                 unpack(APR.Color.white))
-            tooltip:AddLine(L["RIGHT_CLICK"] .. ": " .. toggleAddon .. " " ..
-                APR:WrapTextInColorCode(L["ADDON"], "eda55f"),
+            tooltip:AddLine(string.format(L["RIGHT_CLICK_ACTION"], toggleAddon .. " " ..
+                    APR:WrapTextInColorCode(L["ADDON"], "eda55f")),
                 unpack(APR.Color.white))
         end
     })

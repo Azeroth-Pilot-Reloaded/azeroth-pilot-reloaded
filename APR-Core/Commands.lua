@@ -78,7 +78,7 @@ function APR.command:SlashCmd(input)
             print(APR:WrapTextInColorCode(command, helpColor) .. " - " .. description)
         end
 
-        APR:PrintInfo(L["COMMAND_LIST"] .. ":")
+        APR:PrintInfo(L["COMMAND_LIST"])
         printHelp("/apr", L["SHOW_MENU"])
         printHelp("/apr about", L["SHOW_ABOUT"])
         printHelp("/apr coord", L["COORD_COMMAND"])

@@ -8343,7 +8343,6 @@ APR.RouteQuestStepList["864-Vol'dun"] = {
         {
             PickUp = { 48332, 48334, 49001 },
             Coord = { x = 3598.9, y = 2240.6 },
-            ExtraLineText = "MISSING_Q",
             _index = 276,
         },
         {

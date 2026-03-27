@@ -9900,7 +9900,7 @@ APR.RouteQuestStepList["2248-TWW-Undermine"] = {
         {
             Done = { 86204 },
             Coord = { x = 855, y = -274 },
-            ExtraLineText = "LEAVE_INSTANCE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             Zone = 2214,
             _index = 318,
         },
