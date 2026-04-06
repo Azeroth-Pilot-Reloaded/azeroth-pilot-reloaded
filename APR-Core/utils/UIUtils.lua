@@ -75,6 +75,31 @@ local function addScenarioDetails(tooltip, scenarioRef, objectiveIndex, objectiv
     end
 end
 
+local function getQuestObjectiveText(questID, objectiveIndex)
+    local questIDNum = tonumber(questID)
+    local objectiveIndexNum = tonumber(objectiveIndex)
+    if not questIDNum or not objectiveIndexNum then
+        return nil
+    end
+
+    if APR.GetQuestTextForProgressBar then
+        local progressText = APR:GetQuestTextForProgressBar(questIDNum, objectiveIndexNum)
+        if progressText then
+            return progressText
+        end
+    end
+
+    local questData = APR.ActiveQuests and APR.ActiveQuests[questIDNum]
+    local activeObjective = questData and questData.objectives and questData.objectives[objectiveIndexNum] or nil
+    if activeObjective and activeObjective.text then
+        return activeObjective.text
+    end
+
+    local questObjectives = C_QuestLog.GetQuestObjectives and C_QuestLog.GetQuestObjectives(questIDNum) or nil
+    local objective = questObjectives and questObjectives[objectiveIndexNum] or nil
+    return objective and objective.text or nil
+end
+
 --- Add quest/scenario tooltip details.
 --- @param tooltip table GameTooltip-like object
 --- @param questID string|number
@@ -122,6 +147,112 @@ function APR:AddQuestTooltipDetails(tooltip, questID, options)
     if objectiveIndex ~= nil and objectiveText ~= nil then
         addKeyValueLine(tooltip, OBJECTIVES_LABEL, tostring(objectiveIndex) .. " - " .. tostring(objectiveText))
     end
+end
+
+--- Add the aggregated tooltip details for a route step.
+--- Mirrors the quest-detail blocks shown on CurrentStep containers, but merges
+--- every relevant quest/scenario entry into a single tooltip.
+--- @param tooltip table GameTooltip-like object
+--- @param step table|nil
+--- @return boolean addedDetails true when at least one detail block was added
+function APR:AddStepTooltipDetails(tooltip, step)
+    if not tooltip or type(step) ~= "table" then
+        return false
+    end
+
+    local addedDetails = 0
+    local seenTokens = {}
+    local handledQuestIDs = {}
+
+    local function addDetails(questID, options)
+        if questID == nil then
+            return
+        end
+
+        options = options or {}
+
+        local token = table.concat({
+            options.isScenario and "scenario" or "quest",
+            tostring(questID),
+            tostring(options.objectiveIndex or ""),
+        }, ":")
+
+        if seenTokens[token] then
+            return
+        end
+
+        seenTokens[token] = true
+        handledQuestIDs[tostring(questID)] = true
+
+        if addedDetails > 0 then
+            tooltip:AddLine(" ")
+        end
+
+        APR:AddQuestTooltipDetails(tooltip, questID, options)
+        addedDetails = addedDetails + 1
+    end
+
+    local objectiveStep = step.Qpart or step.QpartPart
+    if type(objectiveStep) == "table" then
+        local sortedQuestIDs = {}
+        for questID in pairs(objectiveStep) do
+            table.insert(sortedQuestIDs, questID)
+        end
+        table.sort(sortedQuestIDs, function(a, b)
+            return tostring(a) < tostring(b)
+        end)
+
+        for _, questID in ipairs(sortedQuestIDs) do
+            local objectiveIndexes = objectiveStep[questID]
+            if type(objectiveIndexes) == "table" then
+                local sortedObjectiveIndexes = {}
+                for _, objectiveIndex in ipairs(objectiveIndexes) do
+                    table.insert(sortedObjectiveIndexes, objectiveIndex)
+                end
+                table.sort(sortedObjectiveIndexes, function(a, b)
+                    return tonumber(a) < tonumber(b)
+                end)
+                for _, objectiveIndex in ipairs(sortedObjectiveIndexes) do
+                    addDetails(questID, {
+                        objectiveIndex = objectiveIndex,
+                        objectiveText = getQuestObjectiveText(questID, objectiveIndex),
+                        includeCampaign = true,
+                        includeStoryline = true,
+                    })
+                end
+            end
+        end
+    end
+
+    local scenarioData = step.Scenario
+    if type(scenarioData) == "table" and scenarioData.scenarioID then
+        local criteriaInfo = nil
+        if C_ScenarioInfo and C_ScenarioInfo.GetCriteriaInfoByStep and scenarioData.stepID and scenarioData.criteriaIndex then
+            criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenarioData.stepID, scenarioData.criteriaIndex)
+        end
+
+        addDetails(scenarioData.scenarioID, {
+            isScenario = true,
+            objectiveIndex = scenarioData.criteriaID or scenarioData.criteriaIndex,
+            objectiveText = criteriaInfo and criteriaInfo.description or nil,
+        })
+
+        if scenarioData.questID then
+            handledQuestIDs[tostring(scenarioData.questID)] = true
+        end
+    end
+
+    local stepQuestIDs = APR.GetStepQuestIDs and APR:GetStepQuestIDs(step) or {}
+    for _, questID in ipairs(stepQuestIDs) do
+        if not handledQuestIDs[tostring(questID)] then
+            addDetails(questID, {
+                includeCampaign = true,
+                includeStoryline = true,
+            })
+        end
+    end
+
+    return addedDetails > 0
 end
 
 --- Performs the "Love" action for the APR module.

@@ -270,18 +270,37 @@ function APR.map:CreatePin(index, step, size, color, textColor, textScale)
     pinFrame.text:SetTextColor(unpack(textColor))
     pinFrame.text:SetTextScale(textScale)
 
-    -- GameTooltip
-    -- pinFrame:SetScript("OnEnter", function(self)
-    --     local string, key = APR:GetSteptring(step)
-    --     GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-    --     GameTooltip:AddLine(index .. " - " .. string)
-    --     GameTooltip:AddLine(step[key],
-    --         1,
-    --         1, 1)
-    --     GameTooltip:Show()
-    --     -- " - |cffeda55f" .. C_QuestLog.GetTitleForQuestID(step[key]) or 'unkown' .. "|r"
-    -- end)
-    -- pinFrame:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
+    pinFrame.stepIndex = index
+    pinFrame.step = step
+
+    pinFrame:SetScript("OnEnter", function(self)
+        local stepText = ""
+        if APR.GetStepString then
+            stepText = select(1, APR:GetStepString(self.step))
+        end
+
+        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
+        if stepText and stepText ~= "" then
+            GameTooltip:AddLine(tostring(self.stepIndex) .. " - " .. tostring(stepText))
+        else
+            GameTooltip:AddLine(tostring(self.stepIndex))
+        end
+
+        if APR.AddStepTooltipDetails and APR:AddStepTooltipDetails(GameTooltip, self.step) then
+            GameTooltip:Show()
+            return
+        end
+
+        local questIDs = APR.GetStepQuestIDs and APR:GetStepQuestIDs(self.step) or {}
+        if #questIDs > 0 then
+            GameTooltip:AddLine(table.concat(questIDs, ", "), 1, 1, 1, true)
+        end
+
+        GameTooltip:Show()
+    end)
+    pinFrame:SetScript("OnLeave", function(self)
+        GameTooltip:Hide()
+    end)
 
     return pinFrame
 end
@@ -367,6 +386,13 @@ function APR.map:AddMapPins()
                         APR.settings.profile.minimapshowNextStepsColorText,
                         APR.settings.profile.minimapshowNextStepsTextScale)
                 end
+
+                self.pinlist[stepIndex].stepIndex = stepIndex
+                self.pinlist[stepIndex].step = step
+                self.pinlist[stepIndex].text:SetText(stepIndex)
+                self.minimapPinlist[stepIndex].stepIndex = stepIndex
+                self.minimapPinlist[stepIndex].step = step
+                self.minimapPinlist[stepIndex].text:SetText(stepIndex)
 
                 local x, y = APR:GetPlayerMapPos(needDisplayWorldPin and mapID or playermapID, stepCoord.y,
                     stepCoord.x)
