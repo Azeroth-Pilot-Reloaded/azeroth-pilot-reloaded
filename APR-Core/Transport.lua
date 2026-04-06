@@ -163,7 +163,7 @@ function APR.transport:SelectBestTransport(nextZone, step, mapID)
             -- EXACT UI you requested
             local spellID = pick.id
             local spellName = pick.name
-            local questText = L["USE_SPELL"] .. ": " .. (spellName or UNKNOWN)
+            local questText = string.format(L["USE_SPELL"], spellName or UNKNOWN)
             local transportStepKey = transportKeyPrefix .. "USE_SPELL"
             APR.currentStep:AddQuestSteps(transportStepKey, questText, spellName, nil, nil, false)
             APR.currentStep:AddStepButton(transportStepKey .. "-" .. spellName, spellID, "spell")
@@ -171,7 +171,7 @@ function APR.transport:SelectBestTransport(nextZone, step, mapID)
             -- EXACT UI for items
             local itemID = pick.id
             local itemName = pick.name
-            local questText = L["USE_ITEM"] .. ": " .. (itemName or UNKNOWN)
+            local questText = string.format(L["USE_ITEM"], itemName or UNKNOWN)
             local transportStepKey = transportKeyPrefix .. "USE_ITEM"
             APR.currentStep:AddQuestSteps(transportStepKey, questText, itemName, nil, nil, false)
             APR.currentStep:AddStepButton(transportStepKey .. "-" .. itemName, itemID, "item")
@@ -179,7 +179,7 @@ function APR.transport:SelectBestTransport(nextZone, step, mapID)
 
         if pick.coords then
             local nz = APR:GetMapInfoCached(nextZone)
-            APR.currentStep:AddExtraLineText("DESTINATION", L["DESTINATION"] .. " " .. (nz and nz.name or ""),
+            APR.currentStep:AddExtraLineText("DESTINATION", string.format(L["DESTINATION"], nz and nz.name or ""),
                 self.ErrorTextColor)
         end
 
@@ -254,9 +254,10 @@ function APR.transport:GuideViaPortalDB(portalDB, CurContinent, nextContinent, n
     end
 
     local function handleTaxi(closestTaxiName, destTaxiName)
-        APR.currentStep:AddQuestSteps("01_FLY_TO_" .. destTaxiName, L["FLY_TO"] .. " " .. destTaxiName, destTaxiName, nil,
-            nil, false)
-        APR.currentStep:AddQuestSteps("02_CLOSEST_FP" .. closestTaxiName, L["CLOSEST_FP"] .. ": " .. closestTaxiName,
+        APR.currentStep:AddQuestSteps("01_FLY_TO_" .. destTaxiName, string.format(L["FLY_TO"], destTaxiName),
+            destTaxiName, nil, nil, false)
+        APR.currentStep:AddQuestSteps("02_CLOSEST_FP" .. closestTaxiName,
+            string.format(L["CLOSEST_FP"], closestTaxiName),
             closestTaxiName, nil, nil, false)
         self.wrongZoneDestTaxiName = destTaxiName
     end
@@ -472,7 +473,7 @@ function APR.transport:GetMeToRightZone(isRetry)
     -- Additional guard: verify the player zone context is actually populated.
     -- After a teleport the map API may already return a mapID but the full zone
     -- hierarchy (parent chain, continent) may still be empty / stale.  In that
-    -- case we must NOT declare "wrong zone" — just bail out and let the PEW
+    -- case we must NOT declare "wrong zone" - just bail out and let the PEW
     -- progressive timers or future ZONE_CHANGED events handle the next check.
     local preCheckContext = APR:ResolvePlayerZoneContext()
     if not preCheckContext.allRelevant or #preCheckContext.allRelevant == 0 then
@@ -586,13 +587,8 @@ function APR.transport:GetMeToRightZone(isRetry)
 
         local reason = farAway and L["TOO_FAR_AWAY"] or L["WRONG_ZONE"]
         local parentMapName = parentMapInfo and parentMapInfo.name or "?"
-        local destinationText =
-            reason ..
-            " - " ..
-            L["DESTINATION"] ..
-            ": " ..
-            (mapInfo.name or "?") ..
-            ", " .. parentMapName .. " (" .. tostring(nextZone) .. ")"
+        local destinationText = string.format(L["TRANSPORT_DESTINATION_ERROR"], reason, mapInfo.name or "?",
+            parentMapName, tostring(nextZone))
         APR.currentStep:AddExtraLineText(self.ErrorDestinationLineKey, destinationText, self.ErrorTextColor, false)
 
         if not wasShowingOutOfZoneStepContent then
@@ -632,7 +628,7 @@ function APR.transport:GetMeToRightZone(isRetry)
                 APR.currentStep:AddQuestSteps("01_ISOLATED_ZONE_TAXI",
                     L["ISOLATED_ZONE_TAXI"] or "Isolated zone - use taxi only", "TAXI", nil, nil, false)
                 APR.currentStep:AddQuestSteps("02_CLOSEST_FP" .. playerTaxiName,
-                    L["CLOSEST_FP"] .. ": " .. playerTaxiName, playerTaxiName, nil, nil, false)
+                    string.format(L["CLOSEST_FP"], playerTaxiName), playerTaxiName, nil, nil, false)
                 APR.currentStep:AddQuestDivider(self.TransportDividerStepKey)
                 APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
                 return
@@ -643,10 +639,10 @@ function APR.transport:GetMeToRightZone(isRetry)
                 if playerTaxiNodeId ~= objectiveTaxiName then
                     self.wrongZoneDestTaxiName = objectiveTaxiName
                     APR.currentStep:AddQuestSteps("01_FLY_TO_" .. objectiveTaxiName,
-                        L["FLY_TO"] .. " " .. objectiveTaxiName,
+                        string.format(L["FLY_TO"], objectiveTaxiName),
                         objectiveTaxiName, nil, nil, false)
                     APR.currentStep:AddQuestSteps("02_CLOSEST_FP" .. playerTaxiName,
-                        L["CLOSEST_FP"] .. ": " .. playerTaxiName, playerTaxiName, nil, nil, false)
+                        string.format(L["CLOSEST_FP"], playerTaxiName), playerTaxiName, nil, nil, false)
                     APR.currentStep:AddQuestDivider(self.TransportDividerStepKey)
                     APR.Arrow:SetArrowActive(true, playerTaxiX, playerTaxiY)
                     return

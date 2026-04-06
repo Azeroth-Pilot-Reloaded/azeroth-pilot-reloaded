@@ -806,7 +806,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
             elseif step.Grind then
                 local color = UnitLevel("player") <= step.Grind and "green" or "gray"
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
-                    L["GRIND"] .. " " .. step.Grind, color, isCurrentStep)
+                    string.format(L["GRIND"], step.Grind), color, isCurrentStep)
             elseif step.Note then
                 local previewText = nil
                 if type(step.Note) == "table" then

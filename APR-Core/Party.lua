@@ -639,8 +639,8 @@ function APR.party:UpdateGroupListing(message)
         self.GroupListSteps[username] = dataReceived
         UpdateGroupStep()
     else
-        local username = type(dataReceived) == "table" and dataReceived.username or "unknown"
-        APR.PrintError("Failed to deserialize message from " .. tostring(username), dataReceived)
+        local username = type(dataReceived) == "table" and dataReceived.username or UNKNOWN
+        APR.PrintError(string.format(L["DESERIALIZE_FAILED"], username), dataReceived)
     end
 end
 

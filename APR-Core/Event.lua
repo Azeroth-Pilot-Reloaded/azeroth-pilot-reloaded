@@ -201,8 +201,11 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
 
                 local versionText = APR:WrapTextInColorCode(APR.version, "00ff00")
                 local interfaceText = APR:WrapTextInColorCode(APR.interfaceVersion, "00ff00")
-                APR:PrintInfo("APR " .. L["LOADED"] .. " - Version: " .. versionText .. " | Interface: " ..
-                    interfaceText)
+                APR:PrintInfo("APR " ..
+                    L["LOADED"] ..
+                    " - " .. string.format(L["VERSION"], versionText) .. " | " ..
+                    string.format(L["INTERFACE"], interfaceText)
+                )
 
                 APR:ScheduleDelveRouteRefresh(2.5)
             end)
@@ -253,7 +256,7 @@ function APR.event.functions.accept(event, ...)
 
         APR:HandleTemporaryRouteTriggerQuestAccepted(questID)
 
-        APR:Debug(L["Q_ACCEPTED"] .. ": ", questID)
+        APR:Debug(string.format(L["Q_ACCEPTED"], questID))
         C_Timer.After(0.2, function() APR:UpdateMapId() end)
     end
 
@@ -930,7 +933,8 @@ function APR.event.functions.merchant(event, ...)
                     end
                     if not repaired and repairAllCost <= GetMoney() then
                         RepairAllItems(false);
-                        APR:PrintInfo(L["REPAIR_EQUIPEMENT"] .. " " .. C_CurrencyInfo.GetCoinTextureString(repairAllCost))
+                        APR:PrintInfo(string.format(L["REPAIR_EQUIPEMENT"],
+                            C_CurrencyInfo.GetCoinTextureString(repairAllCost)))
                     end
                 end
             end
@@ -952,7 +956,7 @@ function APR.event.functions.merchant(event, ...)
                 end
             end
             if totalPrices ~= 0 then
-                APR:PrintInfo(L["ITEM_SOLD"] .. " " .. C_CurrencyInfo.GetCoinTextureString(totalPrices))
+                APR:PrintInfo(string.format(L["ITEM_SOLD"], C_CurrencyInfo.GetCoinTextureString(totalPrices)))
             end
         end
     end

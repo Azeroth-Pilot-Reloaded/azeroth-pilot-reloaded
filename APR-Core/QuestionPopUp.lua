@@ -378,7 +378,7 @@ function APR.questionDialog:CreateSelectionPopup(titleText, descriptionText, opt
         button:ClearAllPoints()
         button:SetPoint("TOP", frame.optionContainer, "TOP", 0, -yOffset)
         button:SetWidth(340)
-        button:SetText(option.label or ("Option " .. i))
+        button:SetText(option.label)
 
         if button.Text then
             local textHeight = button.Text:GetStringHeight()

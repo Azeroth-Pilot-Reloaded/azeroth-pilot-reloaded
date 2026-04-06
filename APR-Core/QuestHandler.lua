@@ -196,7 +196,7 @@ function APR:UpdateStep()
                     APR.currentStep:AddExtraLineText("NOT_IN_CHROMIE_TIMELINE", L["NOT_IN_CHROMIE_TIMELINE"])
                 elseif (chromieExpansionOption.alreadyOn == false) then
                     APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
-                        L["SWITCH_TO_CHROMIE"] .. " " .. chromieExpansionOption.name)
+                        string.format(L["SWITCH_TO_CHROMIE"], chromieExpansionOption.name))
                 end
             end
 
@@ -893,8 +893,9 @@ function APR:UpdateStep()
             end
         elseif (step.UseFlightPath) then
             if showStepDetails then
-                local questText = (step.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"]) ..
-                    ": " .. (APR:GetTaxiNodeName(step))
+                local questText = step.Boat and
+                    string.format(L["USE_BOAT"], APR:GetTaxiNodeName(step)) or
+                    string.format(L["USE_FLIGHTPATH"], APR:GetTaxiNodeName(step))
                 APR.currentStep:AddQuestSteps(step.UseFlightPath, questText, "UseFlightPath")
             end
             if C_QuestLog.IsQuestFlaggedCompleted(step.UseFlightPath) then
@@ -1042,7 +1043,7 @@ function APR:UpdateStep()
         end
         if step.Grind then
             if APR.Level < step.Grind then
-                APR.currentStep:AddQuestSteps("GRIND", L["GRIND"] .. " " .. step.Grind, "Grind")
+                APR.currentStep:AddQuestSteps("GRIND", string.format(L["GRIND"], step.Grind), "Grind")
             else
                 APR:UpdateNextStep()
                 return
