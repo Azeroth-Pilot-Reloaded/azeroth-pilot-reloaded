@@ -229,8 +229,8 @@ function APR.gossip:HandleGossip(step)
             if (step.ChromiePick) then
                 local targetID = APR:GetTargetID()
                 if (targetID == 167032) then
-                    local extraText = L["SWITCH_TO_CHROMIE"] ..
-                        " " .. C_ChromieTime.GetChromieTimeExpansionOption(step.ChromiePick).name
+                    local extraText = string.format(L["SWITCH_TO_CHROMIE"],
+                        C_ChromieTime.GetChromieTimeExpansionOption(step.ChromiePick).name)
                     APR.currentStep:AddExtraLineText('ChromiePick', extraText)
                     C_Timer.After(1,
                         function() C_ChromieTime.SelectChromieTimeOption(step.ChromiePick) end)

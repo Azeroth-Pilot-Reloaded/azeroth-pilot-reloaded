@@ -1839,10 +1839,10 @@ function APR.settings:CreateAboutOption()
                 width = "full",
                 fontSize = "medium",
                 name = wrapHelp(string.format(L["ABOUT_TRANSLATOR"], "\n" ..
-                    "      " .. wrapTranslator(FRFR .. " : ") .. "Neogeekmo, Jmsche, Mania\n" ..
-                    "      " .. wrapTranslator(DEDE .. " : ") .. "Kamian, Movion\n" ..
-                    "      " .. wrapTranslator(ESMX .. " : ") .. "Jean\n" ..
-                    "      " .. wrapTranslator(RURU .. " : ") .. "ZamestoTV")),
+                    "      " .. wrapTranslator(FRFR .. ": ") .. "Neogeekmo, Jmsche, Mania\n" ..
+                    "      " .. wrapTranslator(DEDE .. ": ") .. "Kamian, Movion\n" ..
+                    "      " .. wrapTranslator(ESMX .. ": ") .. "Jean\n" ..
+                    "      " .. wrapTranslator(RURU .. ": ") .. "ZamestoTV")),
             },
             version = {
                 order = 2.5,
@@ -1962,15 +1962,15 @@ function APR.settings:CreateMiniMapButton()
         OnTooltipShow = function(tooltip)
             local toggleAddon = ''
             if self.profile.enableAddon then
-                toggleAddon = APR:WrapTextInColorCode(" " .. L["DISABLE"], "cce0000f")
+                toggleAddon = APR:WrapTextInColorCode(L["DISABLE"], "cce0000f")
             else
-                toggleAddon = APR:WrapTextInColorCode(" " .. L["ENABLE"], "00ff00")
+                toggleAddon = APR:WrapTextInColorCode(L["ENABLE"], "00ff00")
             end
+            local addonLabel = toggleAddon .. ' ' .. APR:WrapTextInColorCode(L["ADDON"], "eda55f")
             tooltip:AddLine(APR.title)
             tooltip:AddLine(string.format(L["LEFT_CLICK_ACTION"], APR:WrapTextInColorCode(L["SHOW_MENU"], "eda55f")),
                 unpack(APR.Color.white))
-            tooltip:AddLine(string.format(L["RIGHT_CLICK_ACTION"], toggleAddon .. " " ..
-                    APR:WrapTextInColorCode(L["ADDON"], "eda55f")),
+            tooltip:AddLine(string.format(L["RIGHT_CLICK_ACTION"], addonLabel),
                 unpack(APR.Color.white))
         end
     })

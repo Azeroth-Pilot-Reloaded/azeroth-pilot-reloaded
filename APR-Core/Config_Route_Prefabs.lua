@@ -204,9 +204,10 @@ local function BuildPrefabPopupOptions(definition)
             if requiredLevel then
                 if isLevelLocked then
                     option.label = BuildLockedLabel(expansionName, requiredLevel)
-                    option.tooltip = "Requires level " .. requiredLevel .. "."
+                    option.tooltip = string.format(L["LEVEL_REQUIRED_TITLE"], requiredLevel)
                 else
-                    option.label = GetExpansionDisplayName(expansionName) .. " (Level " .. requiredLevel .. "+)"
+                    option.label = GetExpansionDisplayName(expansionName) ..
+                        " (" .. string.format(L["LEVEL_REQUIRED"], requiredLevel) .. ")"
                 end
             end
 
@@ -388,7 +389,7 @@ function APR.routeconfig:BuildLevelingPrefab(expansion)
     local definition = PREFAB_POPUP_DEFINITIONS.leveling
     local requiredLevel = definition.requiredLevels and definition.requiredLevels[expansion]
     if requiredLevel and APR.Level < requiredLevel then
-        APR.questionDialog:CreateMessagePopup("Requires level " .. requiredLevel .. ".", OKAY)
+        APR.questionDialog:CreateMessagePopup(string.format(L["LEVEL_REQUIRED_TITLE"], requiredLevel), OKAY)
         return
     end
 
