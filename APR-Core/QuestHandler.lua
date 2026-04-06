@@ -977,11 +977,18 @@ function APR:UpdateStep()
             local scenario = step.Scenario
             local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
             local questID = scenario.questID
+            local scenarioProgressText = APR:GetScenarioCriteriaProgressText(scenario)
 
             if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 APR:UpdateNextStep()
                 return
             end
+
+            if APR:QpartPart_TrigTextMatch(step, scenario.scenarioID, scenarioProgressText) then
+                APR:UpdateNextStep()
+                return
+            end
+
             if not scenarioInfo then
                 if APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID, scenario.criteriaIndex) then
                     APR:UpdateNextStep()
@@ -1001,8 +1008,12 @@ function APR:UpdateStep()
                     APR:UpdateNextStep()
                     return
                 else
-                    APR.currentStep:AddQuestSteps(scenario.scenarioID, criteriaInfo.description, scenario.criteriaID,
-                        true)
+                    APR.currentStep:AddQuestSteps(
+                        scenario.scenarioID,
+                        scenarioProgressText or criteriaInfo.description,
+                        scenario.criteriaID,
+                        true
+                    )
                 end
             end
         end

@@ -398,6 +398,24 @@ function APR:UpdateQpartPartWithQuesText(step, questText, questID)
     return false
 end
 
+--- Checks if a step defines one or more TrigText keys.
+-- Supports TrigText, TrigText1, TrigText2, etc.
+-- @param step table|nil The route step table.
+-- @return boolean True when at least one TrigText key is present.
+function APR:StepHasTrigText(step)
+    if type(step) ~= "table" then
+        return false
+    end
+
+    for key, value in pairs(step) do
+        if type(key) == "string" and string.match(key, "^TrigText%d*$") and value then
+            return true
+        end
+    end
+
+    return false
+end
+
 --- Compare a single TrigText value against an objective text.
 -- Supports percentage thresholds ("50%"), ratio comparisons ("2/6"), and plain substring matching.
 -- @param trigValue string The trigger value from the step (e.g. "1/3", "50%", or literal text).
@@ -445,7 +463,7 @@ function APR:QpartPart_TrigTextMatch(step, questID, objectiveText)
     local currentPercent = GetQuestProgressPercentSafe(questID)
 
     for key, value in pairs(step) do
-        if string.match(key, "TrigText+") and value and objectiveText then
+        if type(key) == "string" and string.match(key, "^TrigText%d*$") and value and objectiveText then
             if self:TrigTextValueMatch(value, objectiveText, currentPercent) then
                 return true
             end
@@ -453,6 +471,33 @@ function APR:QpartPart_TrigTextMatch(step, questID, objectiveText)
     end
 
     return false
+end
+
+--- Returns scenario criteria text with progress when available.
+-- Example output: "Collect Crystals (2/6)" when quantityString exists.
+-- @param scenario table Scenario reference from step.Scenario.
+-- @return string|nil Scenario criteria label for UI/matching.
+function APR:GetScenarioCriteriaProgressText(scenario)
+    if not scenario or not scenario.stepID or not scenario.criteriaIndex then
+        return nil
+    end
+
+    local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
+    if not criteriaInfo then
+        return nil
+    end
+
+    local description = criteriaInfo.description
+    local quantityString = criteriaInfo.quantityString
+
+    if quantityString and quantityString ~= "" then
+        if description and description ~= "" then
+            return description .. " (" .. quantityString .. ")"
+        end
+        return quantityString
+    end
+
+    return description
 end
 
 --- Retrieves the quest text associated with a specific progress bar objective.

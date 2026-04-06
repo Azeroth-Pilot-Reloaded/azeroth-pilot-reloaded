@@ -1057,6 +1057,9 @@ function APR.event.functions.scenario(event, ...)
             end
             if isCompleted then
                 APR:UpdateStep()
+            elseif APR:StepHasTrigText(step) then
+                -- Keep scenario TrigText steps reactive on partial criteria progress (e.g. 1/6, 2/6, ...).
+                APR:UpdateStep()
             end
         end
     end
