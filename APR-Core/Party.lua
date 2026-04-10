@@ -640,7 +640,7 @@ function APR.party:UpdateGroupListing(message)
         UpdateGroupStep()
     else
         local username = type(dataReceived) == "table" and dataReceived.username or UNKNOWN
-        APR.PrintError(string.format(L["DESERIALIZE_FAILED"], username), dataReceived)
+        APR:PrintError(string.format(L["DESERIALIZE_FAILED"], username), dataReceived)
     end
 end
 
