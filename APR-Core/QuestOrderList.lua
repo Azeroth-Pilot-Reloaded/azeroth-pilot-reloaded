@@ -617,7 +617,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     "gray";
                 local questInfo = { { questID = mapName } }
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
-                    format(L["ENTER_IN"], scenarioTypeLabel), questInfo, color, isCurrentStep)
+                    format(L["ENTER_IN"], scenarioTypeLabel, mapName), questInfo, color, isCurrentStep)
             elseif step.DoScenario then
                 local scenarioMapID = step.DoScenario.mapID
                 local scenarioQuestID = step.DoScenario.questID
@@ -648,7 +648,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local color = (hasQpartCompleted and isCompleted) or currentStepIndex > rawIndex and "green" or "gray";
                 local questInfo = { { questID = mapName } }
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
-                    format(L["COMPLETE_SOMETHING"], scenarioTypeLabel), questInfo, color, isCurrentStep)
+                    format(L["COMPLETE_SOMETHING"], scenarioTypeLabel, mapName), questInfo, color, isCurrentStep)
             elseif step.LeaveScenario or step.LeaveInstance then
                 local scenarioMapID        = step.LeaveScenario and step.LeaveScenario.mapID or step.LeaveInstance.mapID
                 local questID              = step.LeaveScenario and step.LeaveScenario.questID or
@@ -683,7 +683,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local color = colorByCompletion(completed, currentStepIndex, rawIndex)
                 local mapInfo = APR:GetMapInfoCached(zoneId)
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
-                local stepText = L["USE_PORTAL_TO"]
+                local stepText = string.format(L["USE_PORTAL_TO"], zoneName)
                 local questInfo = { { questID = zoneName } }
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     stepText, questInfo, color, isCurrentStep)
