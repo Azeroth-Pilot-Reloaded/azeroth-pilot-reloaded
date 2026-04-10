@@ -150,6 +150,8 @@ function APR.settings:InitializeSettings()
             changeLogFrame = {},
             showChangeLog = true,
             lastRecordedVersion = '',
+            -- ElvUI
+            elvuiSkin = true,
             -- position
             coordinateFrame = {
                 point = "TOPRIGHT",
@@ -1648,6 +1650,22 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,
+                            },
+                            elvuiSkin = {
+                                order = 1.25,
+                                type = "toggle",
+                                name = L["ELVUI_SKIN"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    ReloadUI()
+                                end,
+                                confirm = true,
+                                confirmText = L["ELVUI_CONFIRM"],
+                                hidden = function()
+                                    return not _G.ElvUI
+                                end,
                             },
                             resetPartyPosition = {
                                 name = L["SHOW_CHANGELOG"],

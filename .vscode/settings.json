@@ -87,7 +87,8 @@
         "PROFESSIONS_CRAFTER_ORDER_TAB_NPC",
         "Add",
         "LEVEL",
-        "LEVEL_REQUIRED"
+        "LEVEL_REQUIRED",
+        "ReloadUI"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {
