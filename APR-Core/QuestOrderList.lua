@@ -179,14 +179,16 @@ end, function()
     LibWindow.SavePosition(QuestOrderListPanel)
 end)
 
--- Customize minimize button to close instead of collapse
-QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
-QuestOrderListFrame_StepHolderHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
-QuestOrderListFrame_StepHolderHeader.MinimizeButton:SetScript("OnClick", function(self)
-    if APR.questOrderList:IsSnapped() then return end
-    APR.settings.profile.showQuestOrderList = false
-    QuestOrderListPanel:Hide()
-end)
+APR:SetupMinimizeButton(QuestOrderListFrame_StepHolderHeader, QuestOrderListFrame, function()
+    -- Collapse
+    QuestOrderListFrame_StepHolder:Hide()
+    APR.questOrderList:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
+end, function()
+    -- Expand
+    QuestOrderListFrame_StepHolder:Show()
+    APR.questOrderList:UpdateBackgroundColorAlpha()
+    APR.questOrderList:AddStepFromRoute(true)
+end, "ui-questtrackerbutton-collapse-all", "ui-questtrackerbutton-expand-all")
 
 
 resizeButton = CreateFrame("Button", "QuestOrderListFrameResizeHandle", QuestOrderListFrame)
@@ -216,6 +218,7 @@ end)
 function APR.questOrderList:QuestOrderListFrameOnInit()
     LibWindow.RegisterConfig(QuestOrderListPanel, APR.settings.profile.questOrderListFrame)
     QuestOrderListPanel.RegisteredForLibWindow = true
+    QuestOrderListFrame.collapsed = false
     QuestOrderListFrame_StepHolderHeader:Show()
     QuestOrderListFrame_StepHolder:Show()
     self.currentStepIndex = nil
@@ -229,6 +232,13 @@ function APR.questOrderList:ApplySnapAnchor()
     local anchorFrame, anchorHeight = getSnapAnchor()
     local anchored = snapToAnchor(anchorFrame, anchorHeight)
     updateSnapSizing(anchored, anchorFrame)
+
+    -- When snapped to Current Step, force expanded state for readability.
+    if anchored and QuestOrderListFrame.collapsed and QuestOrderListFrame_StepHolderHeader and
+        QuestOrderListFrame_StepHolderHeader.MinimizeButton then
+        QuestOrderListFrame_StepHolderHeader.MinimizeButton:Click()
+    end
+
     return anchored
 end
 
