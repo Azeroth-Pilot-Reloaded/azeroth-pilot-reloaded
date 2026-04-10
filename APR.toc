@@ -5,6 +5,7 @@
 ## Author: Core: Neogeekmo, Rycia, Kamian | Route: Pahonix, Neogeekmo | Support: NightofStarrs, Pahonix | (legacy: zyrrael, Deathmessinger, 8goldbow)
 ## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
 ## Version: @project-version@
+## OptionalDeps: ElvUI
 
 ## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted, APRGossipValidated
 
@@ -91,5 +92,6 @@ APR-Core/Heirloom.lua
 APR-Core/RouteSelection.lua
 APR-Core/Buff.lua
 APR-Core/StatusReport.lua
+APR-Core/ElvUISkin.lua
 
 Routes/RouteList.xml
