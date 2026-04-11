@@ -304,12 +304,17 @@ function APR:UpdateStep()
         local function handleScenarioStep(stepType, scenarioMapID)
             APR:Debug(stepType .. " Step:" .. currentStepIndex)
 
-            local currentMapID        = C_Map.GetBestMapForUnit('player')
-            local scenarioContinentID = APR:GetContinent(scenarioMapID)
-            local mapInfo             = APR:GetMapInfoCached(scenarioMapID)
-            local scenarioInfo        = APR.ZonesData.Scenarios[scenarioContinentID][scenarioMapID]
-            local isCompleted         = tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID)
+            local currentMapID         = C_Map.GetBestMapForUnit('player')
+            local scenarioContinentID  = APR:GetContinent(scenarioMapID)
+            local mapInfo              = APR:GetMapInfoCached(scenarioMapID)
+            local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
+                APR.ZonesData.Scenarios[scenarioContinentID] or nil
+            local scenarioInfo         = scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
+            local isDelveScenario      = scenarioInfo and scenarioInfo.type == "DELVE"
+            local isCompleted          = (not isDelveScenario) and
+                tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID) or false
 
+            print(currentMapID, scenarioInfo, mapInfo, isCompleted)
             return currentMapID, scenarioInfo, mapInfo, isCompleted
         end
 
@@ -978,33 +983,45 @@ function APR:UpdateStep()
             local scenarioInfo = C_ScenarioInfo.GetScenarioInfo()
             local questID = scenario.questID
             local scenarioProgressText = APR:GetScenarioCriteriaProgressText(scenario)
+            local isDelveRoute = APR:IsDelveRoute(APR.ActiveRoute)
+            local canUseScenarioQuestCompletion = questID and (not isDelveRoute) and tonumber(questID) ~= 1
+            local canUseScenarioCompletedCache = not isDelveRoute
+            print("Scenario step detected. QuestID:", tostring(questID), "Delve route:", tostring(isDelveRoute),
+                "Can use quest completion:", tostring(canUseScenarioQuestCompletion))
 
-            if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
+            if canUseScenarioQuestCompletion and C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                print("Scenario quest completion detected, skipping scenario step.")
                 APR:UpdateNextStep()
                 return
             end
 
-            if APR:QpartPart_TrigTextMatch(step, scenario.scenarioID, scenarioProgressText) then
+            if APR:IsScenarioTrigTextMatched(step, scenario) or
+                APR:QpartPart_TrigTextMatch(step, scenario.scenarioID, scenarioProgressText) then
+                print("Scenario trig text matched, skipping scenario step.")
                 APR:UpdateNextStep()
                 return
             end
 
             if not scenarioInfo then
-                if APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID, scenario.criteriaIndex) then
+                if canUseScenarioCompletedCache and APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID, scenario.criteriaIndex) then
+                    print("Scenario criteria already completed, skipping scenario step.")
                     APR:UpdateNextStep()
                 else
                     local scenarioStepInfo = C_ScenarioInfo.GetScenarioStepInfo(scenario.stepID)
                     APR.currentStep:AddExtraLineText("SCENARIO-" .. scenario.criteriaID,
                         format(L["SCENARIO_ERROR"], scenarioStepInfo.title))
+                    print("Scenario info missing, adding error text for scenario step.")
                 end
             else
-                if APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID, scenario.criteriaIndex) then
+                if canUseScenarioCompletedCache and APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], scenario.stepID, scenario.criteriaID, scenario.criteriaIndex) then
+                    print("Scenario criteria already completed, skipping scenario step.")
                     APR:UpdateNextStep()
                     return
                 end
 
                 local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
                 if criteriaInfo.completed then
+                    print("Scenario criteria already completed, skipping scenario step.")
                     APR:UpdateNextStep()
                     return
                 else
@@ -1108,7 +1125,7 @@ function APR:UpdateStep()
         APR:Debug("APR.UpdateStep:No step found for current step:", currentStepIndex)
 
         if APR:IsTemporaryRouteActive() then
-            APR:ClearTemporaryRoute({ preserveSessionKey = true })
+            APR:ClearTemporaryRoute()
             return
         end
 

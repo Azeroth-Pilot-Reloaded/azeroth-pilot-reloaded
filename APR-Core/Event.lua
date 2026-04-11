@@ -1027,9 +1027,19 @@ function APR.event.functions.scenario(event, ...)
 
     if event == "SCENARIO_COMPLETED" then
         local currentMapID = C_Map.GetBestMapForUnit('player')
-        tinsert(APRScenarioMapIDCompleted[APR.PlayerID], currentMapID)
+        local currentScenarioEntry = APR:GetScenarioZoneInfo(currentMapID)
+        local shouldTrackCurrentMap = not (currentScenarioEntry and currentScenarioEntry.type == "DELVE")
+        if shouldTrackCurrentMap and not tContains(APRScenarioMapIDCompleted[APR.PlayerID], currentMapID) then
+            tinsert(APRScenarioMapIDCompleted[APR.PlayerID], currentMapID)
+        end
+
         if step and step.DoScenario then
-            tinsert(APRScenarioMapIDCompleted[APR.PlayerID], step.DoScenario)
+            local doScenarioMapID = type(step.DoScenario) == "table" and step.DoScenario.mapID or step.DoScenario
+            local doScenarioEntry = APR:GetScenarioZoneInfo(doScenarioMapID)
+            local shouldTrackDoScenario = not (doScenarioEntry and doScenarioEntry.type == "DELVE")
+            if shouldTrackDoScenario and not tContains(APRScenarioMapIDCompleted[APR.PlayerID], doScenarioMapID) then
+                tinsert(APRScenarioMapIDCompleted[APR.PlayerID], doScenarioMapID)
+            end
             APR:UpdateNextStep()
         end
     end
@@ -1039,18 +1049,23 @@ function APR.event.functions.scenario(event, ...)
         if step and step.Scenario then
             local isCompleted = false
             local scenario = step.Scenario
+            local isDelveRoute = APR:IsDelveRoute(APR.ActiveRoute)
             local stepInfo = C_ScenarioInfo.GetScenarioStepInfo()
             if not stepInfo then return end
             for i = 1, stepInfo.numCriteria do
                 local criteria = C_ScenarioInfo.GetCriteriaInfoByStep(stepInfo.stepID, i)
                 if criteria.criteriaID == criteriaID then
                     if criteria.completed then
-                        APRScenarioCompleted[APR.PlayerID][scenario.scenarioID] = APRScenarioCompleted[APR.PlayerID]
-                            [scenario.scenarioID] or {}
-                        if not APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], stepInfo.stepID, criteriaID, i) then
-                            tinsert(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID],
-                                { stepID = stepInfo.stepID, criteriaID = criteriaID, criteriaIndex = i })
+                        if isDelveRoute then
                             isCompleted = true
+                        else
+                            APRScenarioCompleted[APR.PlayerID][scenario.scenarioID] = APRScenarioCompleted[APR.PlayerID]
+                                [scenario.scenarioID] or {}
+                            if not APR:ContainsScenarioStepCriteria(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID], stepInfo.stepID, criteriaID, i) then
+                                tinsert(APRScenarioCompleted[APR.PlayerID][scenario.scenarioID],
+                                    { stepID = stepInfo.stepID, criteriaID = criteriaID, criteriaIndex = i })
+                                isCompleted = true
+                            end
                         end
                     end
                 end
