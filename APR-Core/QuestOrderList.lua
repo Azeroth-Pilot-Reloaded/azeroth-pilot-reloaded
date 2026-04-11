@@ -600,7 +600,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     end
                 else
                     local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
-                    local completed = criteriaInfo.completed or (questID and C_QuestLog.IsQuestFlaggedCompleted(questID)) or
+                    local isDelveRoute = APR:IsDelveRoute(APR.ActiveRoute)
+                    local canUseScenarioQuestCompletion = questID and (not isDelveRoute) and tonumber(questID) ~= 1
+                    local completed = criteriaInfo.completed or
+                        (canUseScenarioQuestCompletion and C_QuestLog.IsQuestFlaggedCompleted(questID)) or
                         currentStepIndex > rawIndex
                     local color = completed and "green" or "gray"
                     local questInfo = { { questID = scenario.criteriaIndex, questName = criteriaInfo.description } }
@@ -617,9 +620,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
                     APR.ZonesData.Scenarios[scenarioContinentID] or nil
                 local scenarioInfo = scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
-                local isCompleted = safeTContains(
+                local isDelveScenario = scenarioInfo and scenarioInfo.type == "DELVE"
+                local isCompleted = ((not isDelveScenario) and safeTContains(
                     APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,
-                    scenarioMapID) or (questID and C_QuestLog.IsQuestFlaggedCompleted(questID))
+                    scenarioMapID)) or (questID and C_QuestLog.IsQuestFlaggedCompleted(questID))
                 local scenarioTypeLabel = (scenarioInfo and scenarioInfo.type and L[scenarioInfo.type]) or L["SCENARIO"] or
                     UNKNOWN
 
@@ -637,9 +641,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
                     APR.ZonesData.Scenarios[scenarioContinentID] or nil
                 local scenarioInfo = scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
-                local isCompleted = safeTContains(
+                local isDelveScenario = scenarioInfo and scenarioInfo.type == "DELVE"
+                local isCompleted = ((not isDelveScenario) and safeTContains(
                     APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,
-                    scenarioMapID) or (scenarioQuestID and C_QuestLog.IsQuestFlaggedCompleted(scenarioQuestID))
+                    scenarioMapID)) or (scenarioQuestID and C_QuestLog.IsQuestFlaggedCompleted(scenarioQuestID))
                 local scenarioTypeLabel = (scenarioInfo and scenarioInfo.type and L[scenarioInfo.type]) or L["SCENARIO"] or
                     UNKNOWN
                 local hasQpartCompleted = false
@@ -670,9 +675,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
                     APR.ZonesData.Scenarios[scenarioContinentID] or nil
                 local scenarioInfo         = scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
-                local isCompleted          = safeTContains(
+                local isDelveScenario      = scenarioInfo and scenarioInfo.type == "DELVE"
+                local isCompleted          = ((not isDelveScenario) and safeTContains(
                     APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,
-                    scenarioMapID) or (questID and C_QuestLog.IsQuestFlaggedCompleted(questID))
+                    scenarioMapID)) or (questID and C_QuestLog.IsQuestFlaggedCompleted(questID))
 
                 local color                = ((scenarioMapID ~= currentMapID and isCompleted) or currentStepIndex > rawIndex) and
                     "green" or "gray";

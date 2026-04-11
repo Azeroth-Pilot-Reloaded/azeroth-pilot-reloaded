@@ -500,6 +500,69 @@ function APR:GetScenarioCriteriaProgressText(scenario)
     return description
 end
 
+--- Checks TrigText conditions for a scenario step using live scenario criteria data.
+-- Supports exact/substring text, X/Y ratios, and percentage thresholds.
+-- @param step table Current route step.
+-- @param scenario table Scenario payload from step.Scenario.
+-- @return boolean True when any TrigText key matches current scenario progress.
+function APR:IsScenarioTrigTextMatched(step, scenario)
+    if not step or not scenario or not scenario.stepID or not scenario.criteriaIndex then
+        return false
+    end
+
+    local criteriaInfo = C_ScenarioInfo.GetCriteriaInfoByStep(scenario.stepID, scenario.criteriaIndex)
+    if not criteriaInfo then
+        return false
+    end
+
+    local description = criteriaInfo.description
+    local quantityString = criteriaInfo.quantityString
+    local currentQuantity = criteriaInfo.quantity
+    if type(currentQuantity) ~= "number" then
+        currentQuantity = rawget(criteriaInfo, "amount") or rawget(criteriaInfo, "completedQuantity")
+    end
+
+    local totalQuantity = criteriaInfo.totalQuantity
+    if type(totalQuantity) ~= "number" then
+        totalQuantity = rawget(criteriaInfo, "requiredQuantity") or rawget(criteriaInfo, "maxQuantity")
+    end
+
+    local currentPercent = nil
+    if type(currentQuantity) == "number" and type(totalQuantity) == "number" and totalQuantity > 0 then
+        currentPercent = math.floor((currentQuantity / totalQuantity) * 100)
+    end
+
+    local objectiveCandidates = {}
+    if quantityString and quantityString ~= "" then
+        table.insert(objectiveCandidates, quantityString)
+    end
+    if description and description ~= "" then
+        table.insert(objectiveCandidates, description)
+    end
+    if description and description ~= "" and quantityString and quantityString ~= "" then
+        table.insert(objectiveCandidates, description .. " (" .. quantityString .. ")")
+    end
+    if type(currentQuantity) == "number" and type(totalQuantity) == "number" and totalQuantity > 0 then
+        table.insert(objectiveCandidates, tostring(currentQuantity) .. "/" .. tostring(totalQuantity))
+    end
+
+    if #objectiveCandidates == 0 then
+        return false
+    end
+
+    for key, value in pairs(step) do
+        if type(key) == "string" and string.match(key, "^TrigText%d*$") and value then
+            for _, objectiveText in ipairs(objectiveCandidates) do
+                if self:TrigTextValueMatch(value, objectiveText, currentPercent) then
+                    return true
+                end
+            end
+        end
+    end
+
+    return false
+end
+
 --- Retrieves the quest text associated with a specific progress bar objective.
 -- @param questId number The unique identifier of the quest.
 -- @param objectiveId number The identifier of the specific objective within the quest.

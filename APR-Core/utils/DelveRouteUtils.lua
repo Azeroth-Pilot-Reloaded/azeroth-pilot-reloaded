@@ -25,7 +25,12 @@ local function GetTemporaryRouteState(create)
 end
 
 local function BuildDelveSessionKey(context)
-    return tostring(context.mapID or 0)
+    local scenarioID = tonumber(context and context.scenarioID)
+    if scenarioID then
+        return "scenario:" .. tostring(scenarioID)
+    end
+
+    return "map:" .. tostring(context and context.mapID or 0)
 end
 
 local function CancelDelveRefreshTimer()
@@ -138,6 +143,8 @@ function APR:GetScenarioMapIDForStep(step, routeKey)
         return nil
     end
 
+    local resolvedRouteKey = routeKey or self.ActiveRoute
+
     for _, scenarioRef in ipairs({
         step.EnterScenario,
         step.DoScenario,
@@ -151,7 +158,12 @@ function APR:GetScenarioMapIDForStep(step, routeKey)
     end
 
     if step.Scenario then
-        local resolvedRouteKey = routeKey or self.ActiveRoute
+        -- Delve scenario steps are driven by step coordinates + scenario criteria.
+        -- Falling back to routeData.mapID often points to delve entrance and breaks arrow guidance.
+        if resolvedRouteKey and self:IsDelveRoute(resolvedRouteKey) then
+            return nil
+        end
+
         local routeData = resolvedRouteKey and self:GetRouteData(resolvedRouteKey) or nil
         if routeData and routeData.mapID and self:GetScenarioZoneInfo(routeData.mapID) then
             return routeData.mapID
@@ -177,19 +189,30 @@ function APR:GetCurrentDelveContext()
     end
 
     local scenarioEntry = self:GetScenarioZoneInfo(currentMapID)
-    if not scenarioEntry or scenarioEntry.type ~= "DELVE" then
-        return nil
-    end
-
+    local isDelveMap = scenarioEntry and scenarioEntry.type == "DELVE"
     local scenarioInfo = C_ScenarioInfo and C_ScenarioInfo.GetScenarioInfo and C_ScenarioInfo.GetScenarioInfo() or nil
     local stepInfo = C_ScenarioInfo and C_ScenarioInfo.GetScenarioStepInfo and C_ScenarioInfo.GetScenarioStepInfo() or
         nil
-    local scenarioID = scenarioInfo and (scenarioInfo.scenarioID or scenarioInfo.id or scenarioInfo.ID) or nil
+    local scenarioID = scenarioInfo and scenarioInfo.scenarioID or nil
+
+    if not isDelveMap then
+        local matches, _ = self:FindDelveRoutesForContext({ scenarioID = scenarioID })
+        if #matches == 0 then
+            return nil
+        end
+    end
+
+    local delveName = (isDelveMap and scenarioEntry and scenarioEntry.name) or
+        ((type(scenarioInfo) == "table" and scenarioInfo.name) or nil)
+
+    if not delveName or delveName == "" then
+        delveName = L["DELVE"] or "Delve"
+    end
 
     return {
         entry = scenarioEntry,
         mapID = currentMapID,
-        name = scenarioEntry.name,
+        name = delveName,
         scenarioID = scenarioID,
         sessionKey = BuildDelveSessionKey({ mapID = currentMapID, scenarioID = scenarioID }),
         stepID = stepInfo and stepInfo.stepID or nil,
@@ -197,29 +220,25 @@ function APR:GetCurrentDelveContext()
 end
 
 function APR:FindDelveRoutesForContext(context)
-    if not context or not context.mapID then
+    if not context then
+        return {}, false
+    end
+
+    local contextScenarioID = tonumber(context.scenarioID)
+    if not contextScenarioID then
         return {}, false
     end
 
     local exactMatches = {}
-    local fallbackMatches = {}
 
     for routeKey, routeData in pairs(self.RouteQuestStepList or {}) do
         if self:IsDelveRoute(routeKey) then
-            local mapMatches = routeData.mapID == context.mapID
-
-            if mapMatches then
-                local routeEntry = {
+            local scenarioIDs = self:GetDelveScenarioIDs(routeKey)
+            if self:Contains(scenarioIDs, contextScenarioID) then
+                table.insert(exactMatches, {
                     key = routeKey,
                     label = routeData.label or routeKey,
-                }
-
-                local scenarioIDs = self:GetDelveScenarioIDs(routeKey)
-                if context.scenarioID and self:Contains(scenarioIDs, context.scenarioID) then
-                    table.insert(exactMatches, routeEntry)
-                else
-                    table.insert(fallbackMatches, routeEntry)
-                end
+                })
             end
         end
     end
@@ -227,15 +246,9 @@ function APR:FindDelveRoutesForContext(context)
     table.sort(exactMatches, function(left, right)
         return string.lower(left.label) < string.lower(right.label)
     end)
-    table.sort(fallbackMatches, function(left, right)
-        return string.lower(left.label) < string.lower(right.label)
-    end)
 
-    if #exactMatches > 0 then
-        return exactMatches, true
-    end
 
-    return fallbackMatches, false
+    return exactMatches, #exactMatches > 0
 end
 
 function APR:ActivateTemporaryRoute(routeKey, options)
@@ -424,6 +437,7 @@ function APR:RefreshTemporaryDelveRoute()
     local state = GetTemporaryRouteState(false)
 
     if not context then
+        self._delvePendingScenarioAttempts = nil
         if state and state.kind == "delve" then
             self:ClearTemporaryRoute()
         else
@@ -431,6 +445,18 @@ function APR:RefreshTemporaryDelveRoute()
         end
         return
     end
+
+    local contextScenarioID = tonumber(context.scenarioID)
+    if not contextScenarioID then
+        self._delvePendingScenarioAttempts = (self._delvePendingScenarioAttempts or 0) + 1
+
+        if self._delvePendingScenarioAttempts <= 24 then
+            self:ScheduleDelveRouteRefresh(0.35)
+        end
+        return
+    end
+
+    self._delvePendingScenarioAttempts = nil
 
     local sessionKey = context.sessionKey
     if state and state.kind == "delve" and state.sessionKey == sessionKey and state.routeKey then
