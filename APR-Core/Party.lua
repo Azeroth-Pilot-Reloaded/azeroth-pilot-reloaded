@@ -194,7 +194,7 @@ local function TeamContainerOnEnter(self)
             data.stepFrameDetails and data.stepFrameDetails.progress and data.stepFrameDetails.progress.index)
         if stepText and stepText ~= "" then
             GameTooltip:AddLine(" ")
-            GameTooltip:AddLine(DESCRIPTION .. ":", 0.4, 0.8, 1)
+            GameTooltip:AddLine(DESCRIPTION, 0.4, 0.8, 1)
             GameTooltip:AddLine(stepText, 1, 1, 1, true)
         end
 

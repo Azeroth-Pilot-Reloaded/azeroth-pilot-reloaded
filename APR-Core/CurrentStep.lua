@@ -682,7 +682,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
     end
 
     -- Create the main container for the text
-    local container = AddExtraLineTextFrame(text .. ":", nil, false)
+    local container = AddExtraLineTextFrame(text, nil, false)
     container:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
 
     -- Add the sub-container for each entry in the list
