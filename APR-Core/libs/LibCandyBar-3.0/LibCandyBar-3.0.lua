@@ -21,7 +21,7 @@ local CreateFrame, error, setmetatable, UIParent = CreateFrame, error, setmetata
 if not LibStub then error("LibCandyBar-3.0 requires LibStub.") end
 local cbh = LibStub:GetLibrary("CallbackHandler-1.0")
 if not cbh then error("LibCandyBar-3.0 requires CallbackHandler-1.0") end
-local lib = LibStub:NewLibrary("LibCandyBar-3.0", 108) -- Bump minor on changes
+local lib = LibStub:NewLibrary("LibCandyBar-3.0", 109) -- Bump minor on changes
 if not lib then return end
 lib.callbacks = lib.callbacks or cbh:New(lib)
 local cb = lib.callbacks
@@ -47,10 +47,6 @@ local _fontName, _fontSize = GameFontHighlightSmallOutline:GetFont()
 local _fontShadowX, _fontShadowY = GameFontHighlightSmallOutline:GetShadowOffset()
 local _fontShadowR, _fontShadowG, _fontShadowB, _fontShadowA = GameFontHighlightSmallOutline:GetShadowColor()
 local SetWidth, SetHeight, SetSize = lib.dummyFrame.SetWidth, lib.dummyFrame.SetHeight, lib.dummyFrame.SetSize
-
-local issecretvalue = issecretvalue or function() -- 12.0 compatibility
-	return false
-end
 
 local tformat1 = "%d:%02d:%02d"
 local tformat2 = "%d:%02d"
@@ -171,7 +167,7 @@ local function restyleBar(self)
 	self.candyBarIconFrame:ClearAllPoints()
 	self.candyBarBar:ClearAllPoints()
 	-- In the past we used a :GetTexture check here, but as of WoW v5 it randomly returns nil, so use our own trustworthy variable.
-	if issecretvalue(self.candyBarIconFrame.icon) or self.candyBarIconFrame.icon then
+	if self.candyBarIconFrame.icon then
 		self.candyBarIconFrame:SetWidth(self.height)
 		if self.iconPosition == "RIGHT" then
 			self.candyBarIconFrame:SetPoint("TOPRIGHT", self)
@@ -194,7 +190,7 @@ local function restyleBar(self)
 		self.candyBarBar:SetPoint("BOTTOMRIGHT", self)
 		self.candyBarIconFrame:Hide()
 	end
-	if self.showLabel and (issecretvalue(self.candyBarLabel.text) or self.candyBarLabel.text) then
+	if self.showLabel and self.candyBarLabel.text then
 		self.candyBarLabel:Show()
 	else
 		self.candyBarLabel:Hide()
@@ -316,7 +312,7 @@ end
 function barPrototype:SetLabel(text)
 	self.candyBarLabel.text = text
 	self.candyBarLabel:SetText(text)
-	if issecretvalue(text) or text then
+	if text then
 		self.candyBarLabel:Show()
 	else
 		self.candyBarLabel:Hide()
@@ -554,6 +550,7 @@ function lib:New(texture, width, height)
 		barCache[bar] = nil
 
 		-- Clear secrets from icon textures
+		bar.candyBarIconFrame.icon = nil
 		if bar.candyBarIconFrame.SetToDefaults then
 			bar.candyBarIconFrame:SetToDefaults()
 		end
@@ -561,6 +558,7 @@ function lib:New(texture, width, height)
 		bar.candyBarIconFrameBackdrop:ClearAllPoints()
 
 		-- Clear secrets from fontstrings
+		bar.candyBarLabel.text = nil
 		if bar.candyBarLabel.ClearText then
 			bar.candyBarLabel:ClearText()
 		end
