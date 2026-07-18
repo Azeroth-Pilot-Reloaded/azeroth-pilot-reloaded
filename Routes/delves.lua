@@ -778,7 +778,53 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2545,
     scenarios = {
-        -- DelveScenarioBlock(3074, 1, "Holding the Line", {}),
+        DelveScenarioBlock(3074, 1, "Holding the Line", {
+            {
+                Scenario = { criteriaID = 105376, criteriaIndex = 1, questID = 1, scenarioID = 3074, stepID = 15844 },
+                Coord = { x = -4391.7, y = 11107 },
+                Zone = 2424,
+                GossipOptionIDs = { 136446 },
+                InstanceQuest = true,
+                _index = 24,
+            },
+            {
+                Scenario = { criteriaID = 109407, criteriaIndex = 3, questID = 1, scenarioID = 3074, stepID = 15879 },
+                Coord = { x = -4383.8, y = 11105.6 },
+                Zone = 2424,
+                Range = 5,
+                InstanceQuest = true,
+                _index = 25,
+            },
+            {
+                Scenario = { criteriaID = 105575, criteriaIndex = 2, questID = 1, scenarioID = 3074, stepID = 15879 },
+                Coord = { x = -4307.6, y = 11044.8 },
+                Zone = 2424,
+                GossipOptionIDs = { 132365 },
+                Range = 60,
+                InstanceQuest = true,
+                _index = 26,
+            },
+            {
+                Scenario = { criteriaID = 0, criteriaIndex = 1, questID = 1, scenarioID = 3074, stepID = 15879 },
+                Coord = { x = -4307.6, y = 11044.8 },
+                Zone = 2424,
+                Range = 80,
+                GossipOptionIDs = { 132365 },
+                ExtraActionB = true,
+                InstanceQuest = true,
+                TrigText = "100%",
+                _index = 27,
+            },
+            {
+                Scenario = { criteriaID = 60399, criteriaIndex = 1, questID = 1, scenarioID = 3074, stepID = 15847 },
+                Coord = { x = -4251.8, y = 11017.1 },
+                Zone = 2424,
+                GossipOptionIDs = { 132365 },
+                Range = 5,
+                InstanceQuest = true,
+                _index = 28,
+            },
+        }),
         -- DelveScenarioBlock(3075, 2, "March of the Arcane Brigade", {}),
         DelveScenarioBlock(3100, 3, "Bombing Run", {
             {
@@ -787,7 +833,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 GossipOptionIDs = { 134669 },
                 InstanceQuest = true,
-                _index = 24,
+                _index = 29,
             },
             {
                 Scenario = { criteriaID = 106310, criteriaIndex = 1, questID = 1, scenarioID = 3100, stepID = 16808 },
@@ -795,7 +841,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 Range = 1,
                 InstanceQuest = true,
-                _index = 25,
+                _index = 30,
             },
             {
                 Scenario = { criteriaID = 106311, criteriaIndex = 1, questID = 1, scenarioID = 3100, stepID = 15907 },
@@ -803,7 +849,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 26,
+                _index = 31,
             },
             {
                 Scenario = { criteriaID = 106359, criteriaIndex = 2, questID = 1, scenarioID = 3100, stepID = 15907 },
@@ -813,7 +859,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Range = 5,
                 ExtraActionB = true,
                 InstanceQuest = true,
-                _index = 27,
+                _index = 32,
             },
             {
                 Scenario = { criteriaID = 106361, criteriaIndex = 1, questID = 1, scenarioID = 3100, stepID = 15948 },
@@ -821,7 +867,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 28,
+                _index = 33,
             },
             {
                 Waypoint = 1,
@@ -830,7 +876,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 ExtraLineText = "USE_PORTAL",
                 ZoneStepTrigger = { Range = 15, x = -4383.2, y = 11134.7 },
-                _index = 29,
+                _index = 34,
             },
             {
                 Scenario = { criteriaID = 106310, criteriaIndex = 1, questID = 1, scenarioID = 3100, stepID = 15908 },
@@ -839,7 +885,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Range = 1,
                 ExtraActionB = true,
                 InstanceQuest = true,
-                _index = 30,
+                _index = 35,
             },
             {
                 Waypoint = 1,
@@ -848,7 +894,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 ExtraLineText = "USE_PORTAL",
                 ZoneStepTrigger = { Range = 15, x = -4268.2, y = 11049.3 },
-                _index = 31,
+                _index = 36,
             },
             {
                 Scenario = { criteriaID = 106363, criteriaIndex = 2, questID = 1, scenarioID = 3100, stepID = 15908 },
@@ -858,7 +904,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Range = 5,
                 ExtraActionB = true,
                 InstanceQuest = true,
-                _index = 32,
+                _index = 37,
             },
             {
                 Waypoint = 1,
@@ -867,14 +913,14 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 ExtraLineText = "USE_PORTAL",
                 ZoneStepTrigger = { Range = 15, x = -4368.4, y = 10883.3 },
-                _index = 33,
+                _index = 38,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4152.2, y = 10916.2 },
                 Zone = 2424,
                 Range = 5,
-                _index = 34,
+                _index = 39,
             },
             {
                 Waypoint = 1,
@@ -883,7 +929,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 ExtraLineText = "USE_PORTAL",
                 ZoneStepTrigger = { Range = 15, x = -4272.6, y = 11042.6 },
-                _index = 35,
+                _index = 40,
             },
             {
                 Scenario = { criteriaID = 106364, criteriaIndex = 3, questID = 1, scenarioID = 3100, stepID = 15908 },
@@ -893,7 +939,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Range = 5,
                 ExtraActionB = true,
                 InstanceQuest = true,
-                _index = 36,
+                _index = 41,
             },
             {
                 Waypoint = 1,
@@ -902,14 +948,14 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 ExtraLineText = "USE_PORTAL",
                 ZoneStepTrigger = { Range = 15, x = -4127.9, y = 10896.1 },
-                _index = 37,
+                _index = 42,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4155.3, y = 11154.9 },
                 Zone = 2424,
                 Range = 5,
-                _index = 38,
+                _index = 43,
             },
             {
                 Waypoint = 1,
@@ -918,7 +964,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 ExtraLineText = "USE_PORTAL",
                 ZoneStepTrigger = { Range = 15, x = -4246, y = 11039.2 },
-                _index = 39,
+                _index = 44,
             },
             {
                 Scenario = { criteriaID = 106365, criteriaIndex = 4, questID = 1, scenarioID = 3100, stepID = 15908 },
@@ -928,7 +974,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Range = 5,
                 ExtraActionB = true,
                 InstanceQuest = true,
-                _index = 40,
+                _index = 45,
             },
             {
                 Waypoint = 1,
@@ -937,14 +983,14 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 ExtraLineText = "USE_PORTAL",
                 ZoneStepTrigger = { Range = 15, x = -4128.4, y = 11139.9 },
-                _index = 41,
+                _index = 46,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4070.9, y = 11046.4 },
                 Zone = 2424,
                 Range = 10,
-                _index = 42,
+                _index = 47,
             },
             {
                 Qpart = { [93386] = { 1 } },
@@ -953,7 +999,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 Zone = 2424,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 43,
+                _index = 48,
             },
         }),
     },
@@ -964,7 +1010,127 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2577,
     scenarios = {
-        -- DelveScenarioBlock(3183, 1, "Invasive Glow", {}),
+        DelveScenarioBlock(3183, 1, "Invasive Glow", {
+            {
+                Scenario = { criteriaID = 108804, criteriaIndex = 1, questID = 1, scenarioID = 3183, stepID = 16097 },
+                Coord = { x = -4428.7, y = 8815.4 },
+                Zone = 2395,
+                GossipOptionIDs = { 135708 },
+                InstanceQuest = true,
+                _index = 49,
+            },
+            {
+                Scenario = { criteriaID = 109101, criteriaIndex = 1, questID = 1, scenarioID = 3183, stepID = 16124 },
+                Coord = { x = -4428.2, y = 8812.4 },
+                Zone = 2395,
+                Range = 1,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                _index = 50,
+            },
+            {
+                Waypoint = 1,
+                Coord = { x = -4395, y = 8811.8 },
+                Zone = 2395,
+                Range = 10,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                _index = 51,
+            },
+            {
+                Waypoint = 1,
+                Coord = { x = -4437.7, y = 8840.2 },
+                Zone = 2395,
+                Range = 10,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                _index = 52,
+            },
+            {
+                Waypoint = 1,
+                Coord = { x = -4464.3, y = 8814.1 },
+                Zone = 2395,
+                Range = 8,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                _index = 53,
+            },
+            {
+                Scenario = { criteriaID = 109038, criteriaIndex = 1, questID = 1, scenarioID = 3183, stepID = 16120 },
+                Coord = { x = -4415.4, y = 8801.1 },
+                Zone = 2395,
+                Range = 5,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                _index = 54,
+            },
+            {
+                Scenario = { criteriaID = 108805, criteriaIndex = 2, questID = 1, scenarioID = 3183, stepID = 16098 },
+                Coord = { x = -4357.1, y = 8751.5 },
+                Zone = 2395,
+                Range = 1,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                TrigText = "1/5",
+                _index = 55,
+            },
+            {
+                Scenario = { criteriaID = 108805, criteriaIndex = 2, questID = 1, scenarioID = 3183, stepID = 16098 },
+                Coord = { x = -4446.3, y = 8648.7 },
+                Zone = 2395,
+                Range = 5,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                TrigText = "2/5",
+                _index = 56,
+            },
+            {
+                Scenario = { criteriaID = 108805, criteriaIndex = 2, questID = 1, scenarioID = 3183, stepID = 16098 },
+                Coord = { x = -4470.4, y = 8651.6 },
+                Zone = 2395,
+                Range = 5,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                TrigText = "3/5",
+                _index = 57,
+            },
+            {
+                Scenario = { criteriaID = 108805, criteriaIndex = 2, questID = 1, scenarioID = 3183, stepID = 16098 },
+                Coord = { x = -4475.7, y = 8736.1 },
+                Zone = 2395,
+                Range = 5,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                TrigText = "4/5",
+                _index = 58,
+            },
+            {
+                Scenario = { criteriaID = 108805, criteriaIndex = 2, questID = 1, scenarioID = 3183, stepID = 16098 },
+                Coord = { x = -4516.9, y = 8750.7 },
+                Zone = 2395,
+                Range = 5,
+                InstanceQuest = true,
+                _index = 59,
+            },
+            {
+                Scenario = { criteriaID = 0, criteriaIndex = 1, questID = 1, scenarioID = 3183, stepID = 16098 },
+                Coord = { x = -4362.3, y = 8713.2 },
+                Zone = 2395,
+                Range = 80,
+                ExtraActionB = true,
+                InstanceQuest = true,
+                TrigText = "100%",
+                _index = 60,
+            },
+            {
+                Scenario = { criteriaID = 109879, criteriaIndex = 1, questID = 1, scenarioID = 3183, stepID = 16099 },
+                Coord = { x = -4275.2, y = 8742.1 },
+                Zone = 2395,
+                Range = 5,
+                InstanceQuest = true,
+                _index = 61,
+            },
+        }),
         DelveScenarioBlock(3187, 2, "Academy Under Siege", {
             {
                 Scenario = { criteriaID = 108804, criteriaIndex = 1, questID = 1, scenarioID = 3187, stepID = 16112 },
@@ -972,49 +1138,49 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 Zone = 2393,
                 GossipOptionIDs = { 135798 },
                 InstanceQuest = true,
-                _index = 44,
+                _index = 62,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4395.9, y = 8812.6 },
                 Zone = 2393,
                 Range = 10,
-                _index = 45,
+                _index = 63,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4420.3, y = 8838.7 },
                 Zone = 2393,
                 Range = 10,
-                _index = 46,
+                _index = 64,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4438.5, y = 8840.7 },
                 Zone = 2393,
                 Range = 10,
-                _index = 47,
+                _index = 65,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4464.3, y = 8814.5 },
                 Zone = 2393,
                 Range = 8,
-                _index = 48,
+                _index = 66,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4412.5, y = 8798.2 },
                 Zone = 2393,
                 Range = 5,
-                _index = 49,
+                _index = 67,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4391.1, y = 8776.4 },
                 Zone = 2393,
                 Range = 5,
-                _index = 50,
+                _index = 68,
             },
             {
                 Scenario = { criteriaID = 108842, criteriaIndex = 2, questID = 1, scenarioID = 3187, stepID = 16113 },
@@ -1023,28 +1189,28 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "1/4",
-                _index = 51,
+                _index = 69,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4301.9, y = 8799.9 },
                 Zone = 2393,
                 Range = 5,
-                _index = 52,
+                _index = 70,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4291.9, y = 8839.1 },
                 Zone = 2393,
                 Range = 5,
-                _index = 53,
+                _index = 71,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4263.1, y = 8799.7 },
                 Zone = 2393,
                 Range = 5,
-                _index = 54,
+                _index = 72,
             },
             {
                 Scenario = { criteriaID = 108842, criteriaIndex = 2, questID = 1, scenarioID = 3187, stepID = 16113 },
@@ -1053,14 +1219,14 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "2/4",
-                _index = 55,
+                _index = 73,
             },
             {
                 Scenario = { criteriaID = 109609, criteriaIndex = 3, questID = 1, scenarioID = 3187, stepID = 16113 },
                 Coord = { x = -4416.3, y = 8708 },
                 Zone = 2393,
                 InstanceQuest = true,
-                _index = 56,
+                _index = 74,
             },
             {
                 Scenario = { criteriaID = 108842, criteriaIndex = 2, questID = 1, scenarioID = 3187, stepID = 16113 },
@@ -1069,21 +1235,21 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "3/4",
-                _index = 57,
+                _index = 75,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4440, y = 8800.4 },
                 Zone = 2393,
                 Range = 5,
-                _index = 58,
+                _index = 76,
             },
             {
                 Waypoint = 1,
                 Coord = { x = -4444.6, y = 8818.7 },
                 Zone = 2393,
                 Range = 5,
-                _index = 59,
+                _index = 77,
             },
             {
                 Scenario = { criteriaID = 108842, criteriaIndex = 2, questID = 1, scenarioID = 3187, stepID = 16113 },
@@ -1091,7 +1257,7 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 Zone = 2393,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 60,
+                _index = 78,
             },
             {
                 Scenario = { criteriaID = 108842, criteriaIndex = 2, questID = 1, scenarioID = 3187, stepID = 16113 },
@@ -1100,7 +1266,7 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 Range = 60,
                 InstanceQuest = true,
                 TrigText = "4/4",
-                _index = 61,
+                _index = 79,
             },
             {
                 Scenario = { criteriaID = 111593, criteriaIndex = 1, questID = 1, scenarioID = 3187, stepID = 16114 },
@@ -1108,7 +1274,7 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 Zone = 2393,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 62,
+                _index = 80,
             },
         }),
         DelveScenarioBlock(3193, 3, "Faculty of Fear", {
@@ -1118,7 +1284,7 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 GossipOptionIDs = { 135865 },
                 InstanceQuest = true,
                 Zone = 2395,
-                _index = 63,
+                _index = 81,
             }
             ,
             {
@@ -1128,7 +1294,7 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 ExtraActionB = true,
                 InstanceQuest = true,
                 Zone = 2395,
-                _index = 64,
+                _index = 82,
             }
             ,
             {
@@ -1137,7 +1303,7 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 Range = 100,
                 InstanceQuest = true,
                 Zone = 2395,
-                _index = 65,
+                _index = 83,
             }
             ,
             {
@@ -1145,7 +1311,7 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 Coord = { x = -4393.9, y = 8714.4 },
                 Range = 5,
                 Zone = 2395,
-                _index = 66,
+                _index = 84,
             }
             ,
         }),
@@ -1238,7 +1404,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Zone = 2395,
                 GossipOptionIDs = { 137580 },
                 InstanceQuest = true,
-                _index = 67,
+                _index = 85,
             },
             {
                 Scenario = { criteriaID = 111571, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16565 },
@@ -1246,7 +1412,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Zone = 2395,
                 Range = 1,
                 InstanceQuest = true,
-                _index = 68,
+                _index = 86,
             },
             {
                 Scenario = { criteriaID = 111693, criteriaIndex = 2, questID = 1, scenarioID = 3262, stepID = 16565 },
@@ -1254,7 +1420,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Zone = 2395,
                 Range = 1,
                 InstanceQuest = true,
-                _index = 69,
+                _index = 87,
             },
             {
                 Scenario = { criteriaID = 111570, criteriaIndex = 3, questID = 1, scenarioID = 3262, stepID = 16565 },
@@ -1262,7 +1428,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Zone = 2395,
                 Range = 1,
                 InstanceQuest = true,
-                _index = 70,
+                _index = 88,
             },
             {
                 Waypoint = 1,
@@ -1270,7 +1436,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Zone = 2395,
                 ExtraLineText = "TAKE_TELEPORT",
                 ZoneStepTrigger = { Range = 15, x = 68.2, y = 37.2 },
-                _index = 71,
+                _index = 89,
             },
             {
                 Scenario = { criteriaID = 111114, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16461 },
@@ -1279,7 +1445,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Range = 15,
                 InstanceQuest = true,
                 TrigText = "1/6",
-                _index = 72,
+                _index = 90,
             },
             {
                 Scenario = { criteriaID = 111114, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16461 },
@@ -1288,7 +1454,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Range = 15,
                 InstanceQuest = true,
                 TrigText = "2/6",
-                _index = 73,
+                _index = 91,
             },
             {
                 Scenario = { criteriaID = 111114, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16461 },
@@ -1298,7 +1464,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 ExtraActionB = true,
                 InstanceQuest = true,
                 TrigText = "3/6",
-                _index = 74,
+                _index = 92,
             },
             {
                 Scenario = { criteriaID = 111114, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16461 },
@@ -1307,7 +1473,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "4/6",
-                _index = 75,
+                _index = 93,
             },
             {
                 Scenario = { criteriaID = 111114, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16461 },
@@ -1317,7 +1483,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 ExtraActionB = true,
                 InstanceQuest = true,
                 TrigText = "5/6",
-                _index = 76,
+                _index = 94,
             },
             {
                 Scenario = { criteriaID = 111114, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16461 },
@@ -1325,7 +1491,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Zone = 2395,
                 Range = 15,
                 InstanceQuest = true,
-                _index = 77,
+                _index = 95,
             },
             {
                 Scenario = { criteriaID = 60399, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16462 },
@@ -1333,7 +1499,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Zone = 2395,
                 Range = 15,
                 InstanceQuest = true,
-                _index = 78,
+                _index = 96,
             },
         }),
         -- DelveScenarioBlock(3262, 3, "Shadowy Supplies", {}),
@@ -1353,7 +1519,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 GossipOptionIDs = { 136141 },
                 InstanceQuest = true,
                 IsCampaignQuest = true,
-                _index = 79,
+                _index = 97,
             },
             {
                 Scenario = { criteriaID = 108818, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16100 },
@@ -1361,7 +1527,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Zone = 2395,
                 Range = 2,
                 InstanceQuest = true,
-                _index = 80,
+                _index = 98,
             },
             {
                 Scenario = { criteriaID = 108822, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16102 },
@@ -1369,14 +1535,14 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Zone = 2395,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 81,
+                _index = 99,
             },
             {
                 Waypoint = 1,
                 Coord = { x = 4772.9, y = 3225.9 },
                 Zone = 2395,
                 Range = 5,
-                _index = 82,
+                _index = 100,
             },
             {
                 Scenario = { criteriaID = 111466, criteriaIndex = 2, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1385,7 +1551,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "1/6",
-                _index = 83,
+                _index = 101,
             },
             {
                 Scenario = { criteriaID = 111466, criteriaIndex = 2, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1394,7 +1560,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "2/6",
-                _index = 84,
+                _index = 102,
             },
             {
                 Scenario = { criteriaID = 111466, criteriaIndex = 2, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1403,7 +1569,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "3/6",
-                _index = 85,
+                _index = 103,
             },
             {
                 Scenario = { criteriaID = 111466, criteriaIndex = 2, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1412,7 +1578,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "4/6",
-                _index = 86,
+                _index = 104,
             },
             {
                 Scenario = { criteriaID = 111466, criteriaIndex = 2, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1421,14 +1587,14 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "5/6",
-                _index = 87,
+                _index = 105,
             },
             {
                 Waypoint = 1,
                 Coord = { x = 4963.1, y = 3387.5 },
                 Zone = 2395,
                 Range = 10,
-                _index = 88,
+                _index = 106,
             },
             {
                 Scenario = { criteriaID = 111466, criteriaIndex = 2, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1437,7 +1603,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "6/6",
-                _index = 89,
+                _index = 107,
             },
             {
                 Scenario = { criteriaID = 111466, criteriaIndex = 2, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1445,21 +1611,21 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Zone = 2395,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 90,
+                _index = 108,
             },
             {
                 Waypoint = 1,
                 Coord = { x = 4961.9, y = 3388.5 },
                 Zone = 2395,
                 Range = 10,
-                _index = 91,
+                _index = 109,
             },
             {
                 Waypoint = 1,
                 Coord = { x = 4860.1, y = 3414.5 },
                 Zone = 2395,
                 Range = 10,
-                _index = 92,
+                _index = 110,
             },
             {
                 Scenario = { criteriaID = 108820, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1468,7 +1634,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "1/6",
-                _index = 93,
+                _index = 111,
             },
             {
                 Scenario = { criteriaID = 108820, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1477,7 +1643,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "2/6",
-                _index = 94,
+                _index = 112,
             },
             {
                 Scenario = { criteriaID = 108820, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1486,7 +1652,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "3/6",
-                _index = 95,
+                _index = 113,
             },
             {
                 Scenario = { criteriaID = 108820, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1495,7 +1661,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "4/6",
-                _index = 96,
+                _index = 114,
             },
             {
                 Scenario = { criteriaID = 108820, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1504,7 +1670,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "5/6",
-                _index = 97,
+                _index = 115,
             },
             {
                 Scenario = { criteriaID = 108820, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1513,7 +1679,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "6/6",
-                _index = 98,
+                _index = 116,
             },
             {
                 Scenario = { criteriaID = 108820, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16101 },
@@ -1521,14 +1687,14 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Zone = 2395,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 99,
+                _index = 117,
             },
             {
                 Waypoint = 1,
                 Coord = { x = 4804.8, y = 3238.1 },
                 Zone = 2395,
                 Range = 10,
-                _index = 100,
+                _index = 118,
             },
             {
                 Scenario = { criteriaID = 60399, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16103 },
@@ -1536,7 +1702,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Zone = 2395,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 101,
+                _index = 119,
             }
         }),
         -- DelveScenarioBlock(3185, 2, "Leyline Technician", {}),
@@ -1547,7 +1713,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Zone = 2395,
                 GossipOptionIDs = { 138317 },
                 InstanceQuest = true,
-                _index = 102,
+                _index = 120,
             },
             {
                 Scenario = { criteriaID = 112036, criteriaIndex = 1, questID = 1, scenarioID = 3256, stepID = 16595 },
@@ -1556,7 +1722,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "1/7",
-                _index = 103,
+                _index = 121,
             },
             {
                 Scenario = { criteriaID = 112036, criteriaIndex = 1, questID = 1, scenarioID = 3256, stepID = 16595 },
@@ -1565,14 +1731,14 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "2/7",
-                _index = 104,
+                _index = 122,
             },
             {
                 Waypoint = 1,
                 Coord = { x = 4804.7, y = 3189.9 },
                 Zone = 2395,
                 Range = 5,
-                _index = 105,
+                _index = 123,
             },
             {
                 Scenario = { criteriaID = 112036, criteriaIndex = 1, questID = 1, scenarioID = 3256, stepID = 16595 },
@@ -1581,7 +1747,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "3/7",
-                _index = 106,
+                _index = 124,
             },
             {
                 Scenario = { criteriaID = 112036, criteriaIndex = 1, questID = 1, scenarioID = 3256, stepID = 16595 },
@@ -1590,7 +1756,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "4/7",
-                _index = 107,
+                _index = 125,
             },
             {
                 Scenario = { criteriaID = 112036, criteriaIndex = 1, questID = 1, scenarioID = 3256, stepID = 16595 },
@@ -1599,7 +1765,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "5/7",
-                _index = 108,
+                _index = 126,
             },
             {
                 Scenario = { criteriaID = 112036, criteriaIndex = 1, questID = 1, scenarioID = 3256, stepID = 16595 },
@@ -1608,7 +1774,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "6/7",
-                _index = 109,
+                _index = 127,
             },
             {
                 Scenario = { criteriaID = 112036, criteriaIndex = 1, questID = 1, scenarioID = 3256, stepID = 16595 },
@@ -1616,14 +1782,14 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Zone = 2395,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 110,
+                _index = 128,
             },
             {
                 Waypoint = 1,
                 Coord = { x = 4608.6, y = 3404.4 },
                 Zone = 2395,
                 Range = 10,
-                _index = 111,
+                _index = 129,
             },
             {
                 Scenario = { criteriaID = 60399, criteriaIndex = 1, questID = 1, scenarioID = 3256, stepID = 16596 },
@@ -1631,7 +1797,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 Zone = 2395,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 112,
+                _index = 130,
             },
         }),
     },
@@ -1642,14 +1808,129 @@ RegisterDelveRoute("ATAL_AMAN_DELVE", {
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2535,
     scenarios = {
-        -- DelveScenarioBlock(3147, 1, "Totem Annihilation", {}),
+        DelveScenarioBlock(3147, 1, "Totem Annihilation", {
+            {
+                Scenario = { criteriaID = 109254, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16161 },
+                Coord = { x = -5951.8, y = 5180.8 },
+                Zone = 2437,
+                GossipOptionIDs = { 136318, 125466, 135011 },
+                InstanceQuest = true,
+                _index = 131,
+            },
+            {
+                Waypoint = 1,
+                Coord = { x = -5991.5, y = 5169.4 },
+                Zone = 2437,
+                Range = 8,
+                _index = 132,
+            },
+            {
+                Waypoint = 1,
+                Coord = { x = -5990.9, y = 5138.4 },
+                Zone = 2437,
+                Range = 5,
+                _index = 133,
+            },
+            {
+                Scenario = { criteriaID = 109257, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16163 },
+                Coord = { x = -5976.5, y = 4988.3 },
+                Zone = 2437,
+                Range = 1,
+                InstanceQuest = true,
+                TrigText = "1/7",
+                _index = 134,
+            },
+            {
+                Scenario = { criteriaID = 109257, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16163 },
+                Coord = { x = -6018.7, y = 5047.8 },
+                Zone = 2437,
+                Range = 1,
+                InstanceQuest = true,
+                TrigText = "2/7",
+                _index = 135,
+            },
+            {
+                Scenario = { criteriaID = 109257, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16163 },
+                Coord = { x = -6080.5, y = 5065.5 },
+                Zone = 2437,
+                Range = 1,
+                InstanceQuest = true,
+                TrigText = "3/7",
+                _index = 136,
+            },
+            {
+                Scenario = { criteriaID = 109257, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16163 },
+                Coord = { x = -6132, y = 5089.1 },
+                Zone = 2437,
+                Range = 1,
+                InstanceQuest = true,
+                TrigText = "4/7",
+                _index = 137,
+            },
+            {
+                Scenario = { criteriaID = 109257, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16163 },
+                Coord = { x = -6143.9, y = 4986.4 },
+                Zone = 2437,
+                Range = 1,
+                InstanceQuest = true,
+                TrigText = "5/7",
+                _index = 138,
+            },
+            {
+                Scenario = { criteriaID = 109257, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16163 },
+                Coord = { x = -6084.5, y = 4945.2 },
+                Zone = 2437,
+                Range = 1,
+                InstanceQuest = true,
+                TrigText = "6/7",
+                _index = 139,
+            },
+            {
+                Scenario = { criteriaID = 109257, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16163 },
+                Coord = { x = -6162.7, y = 4909.9 },
+                Zone = 2437,
+                Range = 5,
+                InstanceQuest = true,
+                _index = 140,
+            },
+            {
+                Waypoint = 1,
+                Coord = { x = -6119.1, y = 4893.2 },
+                Zone = 2437,
+                Range = 15,
+                _index = 141,
+            },
+            {
+                Waypoint = 1,
+                Coord = { x = -6158.8, y = 4850.8 },
+                Zone = 2437,
+                Range = 15,
+                _index = 142,
+            },
+            {
+                Scenario = { criteriaID = 107745, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16007 },
+                Coord = { x = -6202.7, y = 4865.3 },
+                Zone = 2437,
+                Range = 10,
+                InstanceQuest = true,
+                _index = 143,
+            },
+            {
+                Scenario = { criteriaID = 112040, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16008 },
+                Coord = { x = -6261.9, y = 4848.1 },
+                Zone = 2437,
+                Range = 10,
+                InstanceQuest = true,
+                _index = 144,
+            },
+        }),
         DelveScenarioBlock(3148, 2, "Toadly Unbecoming", {
             {
                 Scenario = { questID = 1, criteriaID = 109254, criteriaIndex = 1, scenarioID = 3148, stepID = 16162 },
                 Coord = { x = -5952.3, y = 5185.9 },
                 GossipOptionIDs = { 136385 },
                 Zone = 2437,
-                _index = 113,
+                _index = 145,
             }
             ,
             {
@@ -1657,7 +1938,7 @@ RegisterDelveRoute("ATAL_AMAN_DELVE", {
                 Coord = { x = -5957.4, y = 5182.7 },
                 Range = 1,
                 Zone = 2437,
-                _index = 114,
+                _index = 146,
             }
             ,
             {
@@ -1665,7 +1946,7 @@ RegisterDelveRoute("ATAL_AMAN_DELVE", {
                 Coord = { x = -6207.9, y = 4918.1 },
                 Range = 100,
                 Zone = 2437,
-                _index = 115,
+                _index = 147,
             }
             ,
             {
@@ -1673,7 +1954,7 @@ RegisterDelveRoute("ATAL_AMAN_DELVE", {
                 GossipOptionIDs = { 138496 },
                 NoArrow = true,
                 Zone = 2437,
-                _index = 116,
+                _index = 148,
             }
             ,
             {
@@ -1681,7 +1962,7 @@ RegisterDelveRoute("ATAL_AMAN_DELVE", {
                 Coord = { x = -6240.1, y = 5052.2 },
                 Range = 5,
                 Zone = 2437,
-                _index = 117,
+                _index = 149,
             }
             ,
         }),
@@ -1702,7 +1983,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 GossipOptionIDs = { 135634 },
                 InstanceQuest = true,
-                _index = 118,
+                _index = 150,
             }
             ,
             {
@@ -1711,7 +1992,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 Range = 0.5,
                 InstanceQuest = true,
-                _index = 119,
+                _index = 151,
             }
             ,
             {
@@ -1720,7 +2001,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 120,
+                _index = 152,
             }
             ,
             {
@@ -1729,7 +2010,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 Range = 5,
-                _index = 121,
+                _index = 153,
             }
             ,
             {
@@ -1738,7 +2019,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 Range = 5,
-                _index = 122,
+                _index = 154,
             }
             ,
             {
@@ -1746,7 +2027,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Coord = { x = -563.1, y = -97.9 },
                 Zone = 2437,
                 Range = 5,
-                _index = 123,
+                _index = 155,
             }
             ,
             {
@@ -1754,7 +2035,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Coord = { x = -534.3, y = -69.2 },
                 Zone = 2437,
                 Range = 5,
-                _index = 124,
+                _index = 156,
             }
             ,
             {
@@ -1763,7 +2044,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 Range = 5,
-                _index = 125,
+                _index = 157,
             }
             ,
             {
@@ -1772,7 +2053,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 Range = 5,
-                _index = 126,
+                _index = 158,
             }
             ,
             {
@@ -1780,7 +2061,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Coord = { x = -476.5, y = -69 },
                 Zone = 2437,
                 Range = 5,
-                _index = 127,
+                _index = 159,
             }
             ,
             {
@@ -1788,7 +2069,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Coord = { x = -460.7, y = -83.7 },
                 Zone = 2437,
                 Range = 5,
-                _index = 128,
+                _index = 160,
             }
             ,
             {
@@ -1797,7 +2078,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 Range = 5,
-                _index = 129,
+                _index = 161,
             }
             ,
             {
@@ -1806,7 +2087,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 Range = 5,
-                _index = 130,
+                _index = 162,
             }
             ,
             {
@@ -1814,7 +2095,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Coord = { x = -462.1, y = -112.8 },
                 Zone = 2437,
                 Range = 5,
-                _index = 131,
+                _index = 163,
             }
             ,
             {
@@ -1822,7 +2103,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Coord = { x = -487.8, y = -141.4 },
                 Zone = 2437,
                 Range = 8,
-                _index = 132,
+                _index = 164,
             }
             ,
             {
@@ -1831,7 +2112,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 Range = 5,
-                _index = 133,
+                _index = 165,
             }
             ,
             {
@@ -1839,7 +2120,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Coord = { x = -562.9, y = -127.4 },
                 Zone = 2437,
                 Range = 5,
-                _index = 134,
+                _index = 166,
             }
             ,
             {
@@ -1848,7 +2129,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 Range = 5,
-                _index = 135,
+                _index = 167,
             }
             ,
             {
@@ -1857,7 +2138,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 Range = 5,
-                _index = 136,
+                _index = 168,
             }
             ,
             {
@@ -1866,7 +2147,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 ExtraLineText = "CLICK_ON_LEVERS",
                 InstanceQuest = true,
-                _index = 137,
+                _index = 169,
             }
             ,
             {
@@ -1875,7 +2156,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Zone = 2437,
                 Range = 10,
                 InstanceQuest = true,
-                _index = 138,
+                _index = 170,
             }
             ,
         }),
@@ -1886,7 +2167,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 GossipOptionIDs = { 135811 },
                 InstanceQuest = true,
                 Zone = 2437,
-                _index = 139,
+                _index = 171,
             }
             ,
             {
@@ -1896,7 +2177,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 ExtraActionB = true,
                 InstanceQuest = true,
                 Zone = 2437,
-                _index = 140,
+                _index = 172,
             }
             ,
             {
@@ -1905,7 +2186,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Range = 100,
                 InstanceQuest = true,
                 Zone = 2437,
-                _index = 141,
+                _index = 173,
             }
             ,
             {
@@ -1914,7 +2195,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Range = 100,
                 InstanceQuest = true,
                 Zone = 2437,
-                _index = 142,
+                _index = 174,
             }
             ,
             {
@@ -1923,7 +2204,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 Zone = 2437,
-                _index = 143,
+                _index = 175,
             }
             ,
         }),
@@ -1944,7 +2225,7 @@ RegisterDelveRoute("GULD_OF_MEMORY_DELVE", {
                 Zone = 2413,
                 GossipOptionIDs = { 137389 },
                 InstanceQuest = true,
-                _index = 144,
+                _index = 176,
             },
             {
                 Scenario = { criteriaID = 110329, criteriaIndex = 1, questID = 1, scenarioID = 3243, stepID = 16417 },
@@ -1953,7 +2234,7 @@ RegisterDelveRoute("GULD_OF_MEMORY_DELVE", {
                 Range = 30,
                 InstanceQuest = true,
                 TrigText = "1/3",
-                _index = 145,
+                _index = 177,
             },
             {
                 Scenario = { criteriaID = 110329, criteriaIndex = 1, questID = 1, scenarioID = 3243, stepID = 16417 },
@@ -1962,7 +2243,7 @@ RegisterDelveRoute("GULD_OF_MEMORY_DELVE", {
                 Range = 15,
                 InstanceQuest = true,
                 TrigText = "2/3",
-                _index = 146,
+                _index = 178,
             },
             {
                 Waypoint = 1,
@@ -1970,32 +2251,32 @@ RegisterDelveRoute("GULD_OF_MEMORY_DELVE", {
                 Coord = { x = 675.6, y = -25.9 },
                 Zone = 2413,
                 ZoneStepTrigger = { Range = 5, x = 683.9, y = -35 },
-                _index = 147,
+                _index = 179,
             },
             {
                 LeaveQuests = { 94391 },
                 Zone = 2413,
-                _index = 148,
+                _index = 180,
             },
             {
                 PickUp = { 82156, 95435 },
                 Coord = { x = 719.2, y = -30.3 },
                 Zone = 2413,
-                _index = 149,
+                _index = 181,
             },
             {
                 Waypoint = 82156,
                 Coord = { x = 714.1, y = -38.2 },
                 Zone = 2413,
                 Range = 8,
-                _index = 150,
+                _index = 182,
             },
             {
                 Waypoint = 82156,
                 Coord = { x = 754.8, y = -21.4 },
                 Zone = 2413,
                 Range = 8,
-                _index = 151,
+                _index = 183,
             },
             {
                 Waypoint = 82156,
@@ -2003,14 +2284,14 @@ RegisterDelveRoute("GULD_OF_MEMORY_DELVE", {
                 Zone = 2413,
                 ExtraLineText = "JUMP",
                 Range = 15,
-                _index = 152,
+                _index = 184,
             },
             {
                 Waypoint = 82156,
                 Coord = { x = 801.4, y = -177 },
                 Zone = 2413,
                 Range = 10,
-                _index = 153,
+                _index = 185,
             },
             {
                 Scenario = { criteriaID = 110329, criteriaIndex = 1, questID = 82156, scenarioID = 3243, stepID = 16417 },
@@ -2018,7 +2299,7 @@ RegisterDelveRoute("GULD_OF_MEMORY_DELVE", {
                 Zone = 2413,
                 Range = 30,
                 InstanceQuest = true,
-                _index = 154,
+                _index = 186,
             },
             {
                 Scenario = { criteriaID = 60399, criteriaIndex = 1, questID = 82156, scenarioID = 3243, stepID = 16418 },
@@ -2026,7 +2307,7 @@ RegisterDelveRoute("GULD_OF_MEMORY_DELVE", {
                 Zone = 2413,
                 Range = 15,
                 InstanceQuest = true,
-                _index = 155,
+                _index = 187,
             }
         }),
     }
@@ -2046,7 +2327,7 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
                 Zone = 2405,
                 GossipOptionIDs = { 136275 },
                 InstanceQuest = true,
-                _index = 156,
+                _index = 188,
             },
             {
                 Scenario = { criteriaID = 110154, criteriaIndex = 2, questID = 1, scenarioID = 3201, stepID = 16409 },
@@ -2054,7 +2335,7 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
                 Zone = 2405,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 157,
+                _index = 189,
             },
             {
                 Scenario = { criteriaID = 109251, criteriaIndex = 1, questID = 1, scenarioID = 3201, stepID = 16409 },
@@ -2062,7 +2343,7 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
                 Zone = 2405,
                 Range = 60,
                 InstanceQuest = true,
-                _index = 158,
+                _index = 190,
             },
             {
                 Scenario = { criteriaID = 110164, criteriaIndex = 2, questID = 1, scenarioID = 3201, stepID = 16147 },
@@ -2071,7 +2352,7 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "1/5",
-                _index = 159,
+                _index = 191,
             },
             {
                 Scenario = { criteriaID = 110164, criteriaIndex = 2, questID = 1, scenarioID = 3201, stepID = 16147 },
@@ -2080,7 +2361,7 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "2/5",
-                _index = 160,
+                _index = 192,
             },
             {
                 Scenario = { criteriaID = 110164, criteriaIndex = 2, questID = 1, scenarioID = 3201, stepID = 16147 },
@@ -2089,7 +2370,7 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "3/5",
-                _index = 161,
+                _index = 193,
             },
             {
                 Scenario = { criteriaID = 110164, criteriaIndex = 2, questID = 1, scenarioID = 3201, stepID = 16147 },
@@ -2098,7 +2379,7 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "4/5",
-                _index = 162,
+                _index = 194,
             },
             {
                 Scenario = { criteriaID = 110164, criteriaIndex = 2, questID = 1, scenarioID = 3201, stepID = 16147 },
@@ -2107,7 +2388,7 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "5/5",
-                _index = 163,
+                _index = 195,
             },
             {
                 Qpart = { [93427] = { 1 } },
@@ -2116,7 +2397,7 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
                 Zone = 2405,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 164,
+                _index = 196,
             },
         }),
         -- DelveScenarioBlock(3204, 3, "Not What I Expected", {}),
@@ -2136,7 +2417,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Zone = 2405,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 165,
+                _index = 197,
             },
             {
                 Waypoint = 1,
@@ -2145,7 +2426,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 ExtraLineText = "TAKE_ARCANE_ORB",
                 Range = 5,
                 PreviewImages = { "routeHelper\\Scenario_3150.jpg" },
-                _index = 166,
+                _index = 198,
             },
             {
                 Scenario = { criteriaID = 108454, criteriaIndex = 1, questID = 1, scenarioID = 3150, stepID = 16016 },
@@ -2153,7 +2434,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Zone = 2405,
                 Range = 1,
                 InstanceQuest = true,
-                _index = 167,
+                _index = 199,
             },
             {
                 Scenario = { criteriaID = 108458, criteriaIndex = 1, questID = 1, scenarioID = 3150, stepID = 16017 },
@@ -2161,7 +2442,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Zone = 2405,
                 Range = 1,
                 InstanceQuest = true,
-                _index = 168,
+                _index = 200,
             },
             {
                 Waypoint = 1,
@@ -2169,7 +2450,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Zone = 2405,
                 ExtraLineText = "TAKE_ARCANE_ORB",
                 Range = 2,
-                _index = 169,
+                _index = 201,
             },
             {
                 Scenario = { criteriaID = 107777, criteriaIndex = 1, questID = 1, scenarioID = 3150, stepID = 16073 },
@@ -2178,7 +2459,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "1/5",
-                _index = 170,
+                _index = 202,
             },
             {
                 Scenario = { criteriaID = 107777, criteriaIndex = 1, questID = 1, scenarioID = 3150, stepID = 16073 },
@@ -2187,7 +2468,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "2/5",
-                _index = 171,
+                _index = 203,
             },
             {
                 Scenario = { criteriaID = 107777, criteriaIndex = 1, questID = 1, scenarioID = 3150, stepID = 16073 },
@@ -2196,7 +2477,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "3/5",
-                _index = 172,
+                _index = 204,
             },
             {
                 Scenario = { criteriaID = 107777, criteriaIndex = 1, questID = 1, scenarioID = 3150, stepID = 16073 },
@@ -2205,7 +2486,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Range = 5,
                 InstanceQuest = true,
                 TrigText = "4/5",
-                _index = 173,
+                _index = 205,
             },
             {
                 Scenario = { criteriaID = 107777, criteriaIndex = 1, questID = 1, scenarioID = 3150, stepID = 16073 },
@@ -2213,7 +2494,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Zone = 2405,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 174,
+                _index = 206,
             },
             {
                 Scenario = { criteriaID = 0, criteriaIndex = 2, questID = 1, scenarioID = 3150, stepID = 16073 },
@@ -2221,7 +2502,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Zone = 2405,
                 Range = 100,
                 InstanceQuest = true,
-                _index = 175,
+                _index = 207,
             },
             {
                 Qpart = { [93428] = { 1 } },
@@ -2230,7 +2511,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 Zone = 2405,
                 Range = 5,
                 InstanceQuest = true,
-                _index = 176,
+                _index = 208,
             },
         }),
         -- DelveScenarioBlock(3150, 3, "Captured Wildlife", {}),

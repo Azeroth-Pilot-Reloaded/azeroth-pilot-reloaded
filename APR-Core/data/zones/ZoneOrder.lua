@@ -1685,6 +1685,7 @@ APR.ZonesData = {
             -- Quel'Danas
             [2515] = { Coord = { x = -4966.9, y = 11637.6 }, zone = 2424, name = "Magisters Terrace", type = "DUNGEON" },
             [2533] = { Coord = { x = -4616.6, y = 10145.8 }, zone = 2424, name = "March on Quel'Danas", type = "RAID" },
+            [2545] = { Coord = { x = -4419.2, y = 11099.2 }, zone = 2424, name = "Parhelion Plaza", type = "DELVE" },
             -- Voidstorm
             [2556] = { Coord = { x = -1800.1, y = 1466.4 }, zone = 2405, name = "Nexus-Point Xenas", type = "DUNGEON" },
             [2528] = { Coord = { x = -768.6, y = 2450.5 }, zone = 2405, name = "Sunkiller Sanctum", type = "DELVE" },
