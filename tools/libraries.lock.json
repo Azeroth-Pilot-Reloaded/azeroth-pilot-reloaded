@@ -1,0 +1,74 @@
+{
+  "schema": 1,
+  "libraries": {
+    "Ace3": {
+      "source": "github",
+      "repository": "WoWUIDev/Ace3",
+      "ref": "master",
+      "commit": "4475787f06f74d2079b2ab2082195432103da424",
+      "date_created": "2026-07-10T21:40:53Z",
+      "archive_sha256": "293417881a7f408b170756dfd6adc7931b000f4e202f7eb7750d15d369478d7a"
+    },
+    "HereBeDragons": {
+      "source": "github",
+      "repository": "Nevcairiel/HereBeDragons",
+      "ref": "master",
+      "commit": "d3be58d0dd739e8d7f2054ad066b5c0e6b863eea",
+      "date_created": "2026-02-28T19:07:24Z",
+      "archive_sha256": "ac4a4e1533e215b8c1e953e6af8c65a6cf8c7373e65b0f5b5356af3627023d9a"
+    },
+    "HereBeDragons embedded dependencies": {
+      "source": "curseforge",
+      "project_id": 94348,
+      "file_id": 7499523,
+      "version": "2.16-release",
+      "file_name": "HereBeDragons-2.16-release.zip",
+      "date_created": "2026-01-21T09:06:12.013Z",
+      "archive_sha256": "d36158c8aadbb0457efbe0402ce047797617647f8998c6820922e0d1fdb74525"
+    },
+    "LibCandyBar-3.0": {
+      "source": "curseforge",
+      "project_id": 18909,
+      "file_id": 8441627,
+      "version": "v12.0.5",
+      "file_name": "LibCandyBar-3.0-v12.0.5.zip",
+      "date_created": "2026-07-16T02:29:37.34Z",
+      "archive_sha256": "1601720461bc46e2fb4bc45f69dbe18c6f08716dd4cbcb34a4a931a6989bfbfd"
+    },
+    "LibDataBroker-1.1": {
+      "source": "github",
+      "repository": "tekkub/libdatabroker-1-1",
+      "ref": "master",
+      "commit": "1a63ede0248c11aa1ee415187c1f9c9489ce3e02",
+      "date_created": "2008-08-01T04:46:02Z",
+      "archive_sha256": "b216021a49429d7a30a0f8ba10ba1cefbd439b161a4f2ad35f4900781fcb9183"
+    },
+    "LibDBIcon-1.0": {
+      "source": "curseforge",
+      "project_id": 15552,
+      "file_id": 8448436,
+      "version": "v12.0.3",
+      "file_name": "LibDBIcon-1.0-v12.0.3.zip",
+      "date_created": "2026-07-17T01:56:06.187Z",
+      "archive_sha256": "9f2917f1170bb0b511f336f059381d7e05fc3e143e7d05a45724e27a7b38a514"
+    },
+    "LibSharedMedia-3.0": {
+      "source": "curseforge",
+      "project_id": 14320,
+      "file_id": 8448522,
+      "version": "v12.0.3",
+      "file_name": "LibSharedMedia-3.0-v12.0.3.zip",
+      "date_created": "2026-07-17T02:09:48.397Z",
+      "archive_sha256": "b371b8ecf3e27c83d51688a06998bc1458a178ecd57661b603461be7c2e68dc5"
+    },
+    "LibWindow-1.1": {
+      "source": "curseforge",
+      "project_id": 16386,
+      "file_id": 3368633,
+      "version": "r23-90100",
+      "file_name": "LibWindow-1.1-r23-90100.zip",
+      "date_created": "2021-06-29T09:33:38.723Z",
+      "archive_sha256": "66be4cdef7ec692c6ea08e480625d9bc284e9a93782ff0b72e83997edb0cc07d"
+    }
+  }
+}

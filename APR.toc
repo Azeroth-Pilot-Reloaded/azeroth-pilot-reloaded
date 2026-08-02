@@ -5,7 +5,7 @@
 ## Author: Core: Neogeekmo, Rycia, Kamian | Route: Pahonix, Neogeekmo | Support: NightofStarrs, Pahonix | (legacy: zyrrael, Deathmessinger, 8goldbow)
 ## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
 ## Version: @project-version@
-## OptionalDeps: FarstriderLib, FarstriderLibData, ElvUI
+## OptionalDeps: FarstriderLib, FarstriderLibData, LibTaxiData, ElvUI
 
 ## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted, APRGossipValidated
 
@@ -33,6 +33,7 @@ APR-Core/locales/locales.xml
 
 APR-Core/utils/SecretUtils.lua
 APR-Core/Core.lua
+APR-Core/TaxiData.lua
 
 APR-Core/utils/Utils.lua
 APR-Core/utils/PlayerUtils.lua

@@ -70,7 +70,7 @@ local function ScanStepTaxiMaps(step, fallbackMapID)
     end
 end
 
---- Resolve a taxi node name from live Blizzard data, without a static expansion table.
+--- Resolve a taxi node name from live Blizzard data, then from LibTaxiData.
 ---@param step table
 ---@return string nodeName
 function APR:GetTaxiNodeName(step)
@@ -85,6 +85,10 @@ function APR:GetTaxiNodeName(step)
     end
     if nodeID and taxiNodeNameCache[nodeID] then
         return taxiNodeNameCache[nodeID]
+    end
+    local libraryName = nodeID and APR.taxiData:GetNodeName(nodeID) or nil
+    if libraryName then
+        return libraryName
     end
 
     ScanTaxiMapHierarchy(C_Map and C_Map.GetBestMapForUnit and C_Map.GetBestMapForUnit("player") or nil)
