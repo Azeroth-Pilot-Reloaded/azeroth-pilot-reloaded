@@ -92,7 +92,7 @@ function APR.AFK:AFKFrameOnInit()
     APR.AFK.TaxiTimerRecorder:SetLooping("REPEAT")
     APR.AFK.TaxiTimerRecorder:SetScript("OnLoop", function(self, event, ...)
         if (UnitOnTaxi("player")) then
-            local taxiPath = APR.transport.CurrentTaxiNode.name .. "-" .. APR.transport.StepTaxiNode.name
+            local taxiPath = APR.flightPath.CurrentTaxiNode.name .. "-" .. APR.flightPath.StepTaxiNode.name
             if not APRTaxiNodesTimer[taxiPath] then
                 APRTaxiNodesTimer[taxiPath] = 1
             end

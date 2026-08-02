@@ -1,7 +1,7 @@
 -----------------------------------------------------------
 -- Player Position Utilities
 -- Functions for player position calculations, map projections,
--- and movement restrictions
+-- and world/map coordinate conversion
 --
 -- NOTE: Zone hierarchy functions (GetContinent, GetPlayerParentMapID, etc)
 --       have been moved to ZoneDetectionUtils.lua for better organization
@@ -16,11 +16,6 @@ local Vector2D = CreateVector2D(0, 0);
 -- dx/dy can be supplied for ad-hoc projections (e.g., taxi nodes) while reusing the same math.
 function APR:GetPlayerMapPos(MapID, dx, dy)
     if not APR:IsValidMapID(MapID) then
-        return
-    end
-
-    -- Skip maps that don't have valid world positions
-    if APR.ZoneRestrictions.IsSpecialHandlingMap(MapID) then
         return
     end
 
@@ -54,40 +49,4 @@ function APR:GetPlayerMapPos(MapID, dx, dy)
         local scaleX = 1 / R[2].x;
         return scaleY * P.y, scaleX * P.x;
     end
-end
-
---- Find the current taxi node the player is attached to while on a flight path.
-function APR:GetPlayerCurrentTaxiNode()
-    local playerMapID = APR:GetPlayerParentMapID()
-    local taxiNodes = C_TaxiMap.GetAllTaxiNodes(playerMapID)
-
-    for _, node in ipairs(taxiNodes) do
-        if node.state == Enum.FlightPathState.Current then
-            return node
-        end
-    end
-    return {}
-end
-
---- Check if player is currently in a no-fly or isolated zone
---- Uses ZoneRestrictions.NO_FLY_MAPS and ZoneRestrictions.Isolated_maps data
---- @return boolean isNoFlyZone
-function APR:IsInNoFlyZone()
-    local currentMapID = C_Map.GetBestMapForUnit("player")
-    if not currentMapID then
-        return false
-    end
-
-    -- Check current map
-    if APR.ZoneRestrictions.NoFlyMaps[currentMapID] or APR.ZoneRestrictions.IsIsolatedMap(currentMapID) then
-        return true
-    end
-
-    -- Check parent map (for sub-zones)
-    local parentMapID = self:GetPlayerParentMapID()
-    if parentMapID and (APR.ZoneRestrictions.NoFlyMaps[parentMapID] or APR.ZoneRestrictions.IsIsolatedMap(parentMapID)) then
-        return true
-    end
-
-    return false
 end

@@ -614,12 +614,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local scenarioMapID = step.EnterScenario and step.EnterScenario.mapID or step.EnterInstance.mapID
                 local questID = step.EnterScenario and step.EnterScenario.questID or step.EnterInstance.questID
                 local currentMapID = C_Map.GetBestMapForUnit('player')
-                local scenarioContinentID = APR:GetContinent(scenarioMapID)
                 local mapInfo = APR:GetMapInfoCached(scenarioMapID)
                 local mapName = mapInfo and mapInfo.name or UNKNOWN
-                local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
-                    APR.ZonesData.Scenarios[scenarioContinentID] or nil
-                local scenarioInfo = scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
+                local scenarioInfo = APR:GetScenarioZoneInfo(scenarioMapID)
                 local isDelveScenario = scenarioInfo and scenarioInfo.type == "DELVE"
                 local isCompleted = ((not isDelveScenario) and safeTContains(
                     APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,
@@ -635,12 +632,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
             elseif step.DoScenario then
                 local scenarioMapID = step.DoScenario.mapID
                 local scenarioQuestID = step.DoScenario.questID
-                local scenarioContinentID = APR:GetContinent(scenarioMapID)
                 local mapInfo = APR:GetMapInfoCached(scenarioMapID)
                 local mapName = mapInfo and mapInfo.name or UNKNOWN
-                local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
-                    APR.ZonesData.Scenarios[scenarioContinentID] or nil
-                local scenarioInfo = scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
+                local scenarioInfo = APR:GetScenarioZoneInfo(scenarioMapID)
                 local isDelveScenario = scenarioInfo and scenarioInfo.type == "DELVE"
                 local isCompleted = ((not isDelveScenario) and safeTContains(
                     APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,
@@ -669,12 +663,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local questID              = step.LeaveScenario and step.LeaveScenario.questID or
                     step.LeaveInstance.questID
                 local currentMapID         = C_Map.GetBestMapForUnit('player')
-                local scenarioContinentID  = APR:GetContinent(scenarioMapID)
                 local mapInfo              = APR:GetMapInfoCached(scenarioMapID)
                 local mapName              = mapInfo and mapInfo.name or UNKNOWN
-                local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
-                    APR.ZonesData.Scenarios[scenarioContinentID] or nil
-                local scenarioInfo         = scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
+                local scenarioInfo         = APR:GetScenarioZoneInfo(scenarioMapID)
                 local isDelveScenario      = scenarioInfo and scenarioInfo.type == "DELVE"
                 local isCompleted          = ((not isDelveScenario) and safeTContains(
                     APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,

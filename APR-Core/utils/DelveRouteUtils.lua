@@ -111,13 +111,11 @@ function APR:HasDelveScenarioBlock(routeKey, scenarioID)
 end
 
 function APR:GetScenarioZoneInfo(scenarioMapID)
-    if not scenarioMapID or not self.ZonesData or not self.ZonesData.Scenarios then
+    if not scenarioMapID or not self.ScenarioEntrances then
         return nil
     end
 
-    local scenarioContinentID = self:GetContinent(scenarioMapID)
-    local scenariosByContinent = scenarioContinentID and self.ZonesData.Scenarios[scenarioContinentID] or nil
-    return scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
+    return self.ScenarioEntrances[scenarioMapID]
 end
 
 function APR:GetPrimaryCustomPathRouteKey()
@@ -202,7 +200,8 @@ function APR:GetCurrentDelveContext()
         end
     end
 
-    local delveName = (isDelveMap and scenarioEntry and scenarioEntry.name) or
+    local mapInfo = self:GetMapInfoCached(currentMapID)
+    local delveName = (mapInfo and mapInfo.name) or
         ((type(scenarioInfo) == "table" and scenarioInfo.name) or nil)
 
     if not delveName or delveName == "" then
@@ -300,12 +299,8 @@ function APR:ActivateTemporaryRoute(routeKey, options)
         resolved = true,
     }
 
-    if self.transport and self.transport._routingThrottle then
-        self.transport._routingThrottle.count = 0
-        self.transport._routingThrottle.firstCall = GetTime()
-    end
-    if self.transport then
-        self.transport._routingForceRefresh = true
+    if self.farstrider then
+        self.farstrider:ForceRefresh()
     end
 
     self:UpdateMapId()
@@ -341,12 +336,8 @@ function APR:ClearTemporaryRoute(options)
         self._delveRoutePromptState = nil
     end
 
-    if self.transport and self.transport._routingThrottle then
-        self.transport._routingThrottle.count = 0
-        self.transport._routingThrottle.firstCall = GetTime()
-    end
-    if self.transport then
-        self.transport._routingForceRefresh = true
+    if self.farstrider then
+        self.farstrider:ForceRefresh()
     end
 
     if self.ActiveRoute then

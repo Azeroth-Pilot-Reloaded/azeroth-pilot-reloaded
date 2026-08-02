@@ -22,19 +22,15 @@ function APR:ResetRoute(targetedRoute)
     if self.InvalidateEffectiveRouteStepsCache then
         self:InvalidateEffectiveRouteStepsCache(targetedRoute)
     end
-    -- Force refresh: reset throttle for ResetRoute
-    self.transport._routingForceRefresh = true
-    if self.transport._routingThrottle then
-        self.transport._routingThrottle.count = 0
-    end
-    self.transport:GetMeToRightZone()
+    self.farstrider:ForceRefresh()
+    self.farstrider:GetMeToRightZone()
     self:PrintInfo(L["RESET_ROUTE"])
 end
 
 function APR:UpdateMapId()
     self:Debug("Function: APR:UpdateMapId()")
     self:OverrideRouteData() -- Lumbermill Wod route
-    self.transport:GetMeToRightZone()
+    self.farstrider:GetMeToRightZone()
 end
 
 --- Evaluate if a step should be skipped based on filters (race, class, achievements...).
@@ -155,7 +151,7 @@ function APR:CheckIsInRouteZone()
         return false
     end
 
-    local routeZoneMapIDs, fallbackMapID, routeName, expansion = self:GetCurrentRouteMapIDsAndName()
+    local _, fallbackMapID = self:GetCurrentRouteMapIDsAndName()
 
     -- Get step zones
     local stepZones = self:GetStepZoneList(step, fallbackMapID)
@@ -163,16 +159,6 @@ function APR:CheckIsInRouteZone()
         self._lastRouteZoneCheck = now
         self._lastRouteZoneResult = false
         return false
-    end
-
-    -- Handle special zone exceptions (Isle of Dorn, etc)
-    local exception = self:GetZoneException(self:ResolvePlayerZoneContext().current)
-    if exception then
-        self:DebugZoneDetection("Zone Exception",
-            self:ResolvePlayerZoneContext(), stepZones, true)
-        self._lastRouteZoneCheck = now
-        self._lastRouteZoneResult = true
-        return true
     end
 
     -- Resolve player zone context (with caching)
@@ -219,28 +205,12 @@ function APR:CheckIsInRouteZone()
         function()
             return self:CheckDescendantMatch(playerContext, stepZones)
         end,
-
-        -- 4. Sibling match - player and step zones share a common parent (neighbors)
-        function()
-            return self:CheckSiblingMatch(playerContext, stepZones)
-        end,
-
-        -- 5. Route zone validation - step zone in route zones
-        function()
-            if APR.ZoneRestrictions and APR.ZoneRestrictions.HasIsolatedMap then
-                if APR.ZoneRestrictions.HasIsolatedMap(playerContext.current, stepZones) then
-                    return false
-                end
-            end
-
-            return self:ContainsAny(routeZoneMapIDs, stepZones)
-        end,
     }
 
     -- Execute continent-filtered checks
     for index, checkFunc in ipairs(continentChecks) do
         local checkNames = {
-            "DirectMatch", "HierarchyMatch", "DescendantMatch", "SiblingMatch", "RouteValidation"
+            "DirectMatch", "HierarchyMatch", "DescendantMatch"
         }
 
         self:PrintZoneDebug("Running Check #" .. index .. " (" .. (checkNames[index] or "Unknown") .. ")...")
@@ -423,7 +393,7 @@ function APR:AreConditionalFiltersMet(conditions)
 end
 
 --- Get Route zone mapID and name
----@return Array<number> routeZoneMapIDs MapIDs list of the mapid for the route
+---@return Array<number> routeZoneMapIDs MapIDs declared by the route
 ---@return number mapID  the main mapid for the route
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name
@@ -435,7 +405,25 @@ function APR:GetRouteMapIDsAndName(targetedRoute)
     local function BuildRouteResult(routeFileName, routeData)
         local expansion = self:GetEnumKeyByValue(APR.EXPANSIONS, routeData.expansion)
         local mapID = routeData.mapID or tonumber(string.match(routeFileName, "^(%d+)"), 10)
-        return self.ZonesData.ExtensionRouteMaps[self.Faction][expansion] or {}, mapID or 0, routeFileName, expansion
+        local routeMapIDs = {}
+        local seenMapIDs = {}
+
+        local function AddMapID(value)
+            if type(value) == "number" and value ~= 0 and not seenMapIDs[value] then
+                seenMapIDs[value] = true
+                tinsert(routeMapIDs, value)
+            end
+        end
+
+        AddMapID(mapID)
+        local conditionZones = routeData.conditions and routeData.conditions.Zones or nil
+        if type(conditionZones) == "table" then
+            for _, zoneID in ipairs(conditionZones) do
+                AddMapID(zoneID)
+            end
+        end
+
+        return routeMapIDs, mapID or 0, routeFileName, expansion
     end
 
     -- Fast path: route key provided directly.
@@ -471,7 +459,7 @@ function APR:GetRouteMapIDsAndName(targetedRoute)
 end
 
 --- Get Current Route zone mapID and name
----@return Array<number> routeZoneMapIDs MapIDs list of the mapid for the route
+---@return Array<number> routeZoneMapIDs MapIDs declared by the route
 ---@return number mapID  the main mapid for the route
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name
@@ -794,7 +782,7 @@ function APR:CheckRouteChanges(route)
                 APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = 0
                 APRData[APR.PlayerID][currentRoute .. '-RawTotalSteps'] = currentTotalSteps
                 if currentRoute == APR.ActiveRoute then
-                    APR.transport:GetMeToRightZone()
+                    APR.farstrider:GetMeToRightZone()
                     APR:PrintInfo(L["RESET_ROUTE"])
                 end
             end

@@ -144,16 +144,21 @@ function APR:UpdateStep()
         return
     end
 
+    if APR.farstrider then
+        APR.farstrider:ScheduleRouteCheck(currentStepToken)
+    end
+
     APR:Debug("APR.UpdateStep:Current Step:", currentStepIndex)
 
     local step = APR:GetStep(currentStepIndex)
     if step then
-        local showStepDetails = APR.IsInRouteZone or (APR.transport and APR.transport.showOutOfZoneStepContent)
+        local showStepDetails = APR.IsInRouteZone or
+            (APR.farstrider and APR.farstrider.showOutOfZoneStepContent)
 
         if APR.IsInRouteZone then
             APR.currentStep:Reset()
         elseif showStepDetails and APR.currentStep.previousState.currentStepToken ~= currentStepToken then
-            APR.currentStep:RemoveStepContentPreservingTransportUi()
+            APR.currentStep:RemoveStepContentPreservingNavigationUi()
         end
         APR.currentStep.previousState.currentStepToken = currentStepToken
 
@@ -304,14 +309,11 @@ function APR:UpdateStep()
         local function handleScenarioStep(stepType, scenarioMapID)
             APR:Debug(stepType .. " Step:" .. currentStepIndex)
 
-            local currentMapID         = C_Map.GetBestMapForUnit('player')
-            local scenarioContinentID  = APR:GetContinent(scenarioMapID)
-            local mapInfo              = APR:GetMapInfoCached(scenarioMapID)
-            local scenariosByContinent = scenarioContinentID and APR.ZonesData and APR.ZonesData.Scenarios and
-                APR.ZonesData.Scenarios[scenarioContinentID] or nil
-            local scenarioInfo         = scenariosByContinent and scenariosByContinent[scenarioMapID] or nil
-            local isDelveScenario      = scenarioInfo and scenarioInfo.type == "DELVE"
-            local isCompleted          = (not isDelveScenario) and
+            local currentMapID    = C_Map.GetBestMapForUnit('player')
+            local mapInfo         = APR:GetMapInfoCached(scenarioMapID)
+            local scenarioInfo    = APR:GetScenarioZoneInfo(scenarioMapID)
+            local isDelveScenario = scenarioInfo and scenarioInfo.type == "DELVE"
+            local isCompleted     = (not isDelveScenario) and
                 tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID) or false
 
             return currentMapID, scenarioInfo, mapInfo, isCompleted
@@ -1125,7 +1127,7 @@ function APR:UpdateStep()
 end
 
 function APR:SetButton()
-    if not (APR.IsInRouteZone or (APR.transport and APR.transport.showOutOfZoneStepContent)) then
+    if not (APR.IsInRouteZone or (APR.farstrider and APR.farstrider.showOutOfZoneStepContent)) then
         return
     end
     APR:Debug("Function: APR:SetButton()")

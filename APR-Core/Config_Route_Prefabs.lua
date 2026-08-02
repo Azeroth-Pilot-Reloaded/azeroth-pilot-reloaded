@@ -238,6 +238,24 @@ local function RouteHasZoneCondition(routeData, parentMapID)
     return false
 end
 
+local function HasStartingZoneRouteForMap(parentMapID, prefabType)
+    if not parentMapID then
+        return false
+    end
+
+    for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
+        if type(routeData) == "table"
+            and routeData.autoStartOnMap
+            and GetRoutePrefabEntry(routeData, prefabType or APR.PREFAB_TYPES.StartingZone)
+            and APR:GetRouteVisibility(routeKey) ~= "hidden"
+            and (routeData.mapID == parentMapID or RouteHasZoneCondition(routeData, parentMapID)) then
+            return true
+        end
+    end
+
+    return false
+end
+
 local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parentMapID, suppressUpdate)
     local routeCandidates = {}
     local startingZonePrefabType = prefabType or APR.PREFAB_TYPES.StartingZone
@@ -449,9 +467,7 @@ function APR.routeconfig:GetStartingZonePrefab(suppressUpdate, prefabType)
     local isNewCharacterStartFlow = not (C_QuestLog.IsQuestFlaggedCompleted(59926) or C_QuestLog.IsQuestFlaggedCompleted(56775))
         and (APR.Level < APR.MinBoostLvl or APR.Level < 10)
 
-    local shouldResolveStartingZone = (parentMapID and (APR.ZoneRestrictions.IsExilesReachMap(parentMapID)
-            or APR.ZoneRestrictions.IsReturningPlayerMap(parentMapID)))
-        or isNewCharacterStartFlow
+    local shouldResolveStartingZone = HasStartingZoneRouteForMap(parentMapID, prefabType) or isNewCharacterStartFlow
 
     if shouldResolveStartingZone and BuildStartingZonePrefabFromRoutes(self, prefabType, parentMapID, suppressUpdate) then
         return

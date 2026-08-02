@@ -2,7 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 ---=============================================================================
 -- Zone Detection System v2.0
--- Improved zone detection with caching, hierarchy support, and exceptions handling
+-- Improved zone detection with caching and hierarchy support.
 ---=============================================================================
 
 local function HasMapApi()
@@ -11,6 +11,12 @@ end
 
 local function HasMapChildrenApi()
     return C_Map and C_Map.GetMapChildrenInfo
+end
+
+local function GetFarstriderConfig()
+    local api = _G.FarstriderLib_API
+    local data = type(api) == "table" and api.DATA or nil
+    return type(data) == "table" and type(data.CONFIG) == "table" and data.CONFIG or nil
 end
 
 --- Initialize zone detector module
@@ -30,16 +36,9 @@ function APR:InitZoneDetectionCache()
         descendantsCache = {},
         -- Cache: map info (reduces API calls)
         mapInfoCache = {},
-        -- Zone exceptions (loaded from ZoneRestrictions)
-        exceptions = {},
         -- Debug flag (synchronized with settings)
         debug = (self.settings and self.settings.profile and self.settings.profile.zoneDetectionDebug) or false
     }
-
-    -- Load zone exceptions from ZoneRestrictions
-    if APR.ZoneRestrictions and APR.ZoneRestrictions.ZoneExceptions then
-        self.ZoneDetection.exceptions = APR.ZoneRestrictions.ZoneExceptions
-    end
 end
 
 ---=============================================================================
@@ -57,12 +56,6 @@ function APR:GetContinent(mapId)
     end
     mapId = mapId or C_Map.GetBestMapForUnit("player")
 
-    -- Check for zone exceptions with continent overrides
-    local exception = self:GetZoneException(mapId)
-    if exception and exception.continentOverride then
-        return exception.continentOverride
-    end
-
     if mapId then
         local info = C_Map.GetMapInfo(mapId)
         if info then
@@ -71,7 +64,10 @@ function APR:GetContinent(mapId)
                 info = C_Map.GetMapInfo(info.parentMapID)
             end
             if info and info.mapType == 2 then
-                return info.mapID
+                local config = GetFarstriderConfig()
+                local override = config and config.ContinentMapOverrides and
+                    config.ContinentMapOverrides[info.mapID] or nil
+                return override or info.mapID
             end
         end
     end
@@ -112,20 +108,6 @@ function APR:GetPlayerParentMapID(mapType)
 
     -- Fallback to current map if no parent of requested type found
     return currentMapId
-end
-
---- Check if two maps are on the same continent
----@param mapID1 number First map ID
----@param mapID2 number|nil Second map ID (defaults to player's current map)
----@return boolean isSameContinent
-function APR:IsSameContinent(mapID1, mapID2)
-    if not mapID1 then return false end
-    mapID2 = mapID2 or C_Map.GetBestMapForUnit("player")
-
-    local continent1 = self:GetContinent(mapID1)
-    local continent2 = self:GetContinent(mapID2)
-
-    return continent1 == continent2 and continent1 ~= nil
 end
 
 --- Get map info with caching to reduce API calls
@@ -373,85 +355,6 @@ function APR:CheckDescendantMatch(playerContext, stepZones)
     return false
 end
 
---- Check if player zone and step zones are siblings (share a common parent)
---- Walks up the player's hierarchy, gets direct children of each parent,
---- and checks if any step zone is among those children.
---- Stops at cosmic/world level (mapType < 2) to avoid overly broad matches.
---- Also supports current-zone-as-parent matches (e.g. step is a child subzone of current map).
---- Ignores zone exceptions.
----@param playerContext table Player zone context
----@param stepZones table Zone mapIDs for step
----@return boolean
-function APR:CheckSiblingMatch(playerContext, stepZones)
-    if not playerContext or not playerContext.hierarchy or not stepZones or #stepZones == 0 then
-        return false
-    end
-
-    -- Isolated zones require explicit transport/portal handling.
-    -- Never treat any isolated zone as a simple sibling match.
-    -- Also block when the direct parent zone is isolated (zone report parent).
-    if APR.ZoneRestrictions and APR.ZoneRestrictions.HasIsolatedMap then
-        if APR.ZoneRestrictions.HasIsolatedMap(playerContext.current, stepZones) then
-            return false
-        end
-
-        if APR.ZoneRestrictions.IsIsolatedMap and APR.ZoneRestrictions.IsIsolatedMap(playerContext.parent) then
-            return false
-        end
-    end
-
-    if not HasMapChildrenApi() then
-        return false
-    end
-
-    -- For each parent in the player's hierarchy, get direct children and
-    -- check if any step zone is a sibling (child of the same parent).
-    -- Special case: allow the current map itself as parent only when it is
-    -- a zone/sub-zone mapType (> 2), to avoid continent-wide false positives.
-    for _, parentMapID in ipairs(playerContext.hierarchy) do
-        local parentInfo = self:GetMapInfoCached(parentMapID)
-        -- Stop at cosmic/world level (mapType < 2) to avoid overly broad matches
-        if parentInfo and parentInfo.mapType and parentInfo.mapType < 2 then
-            break
-        end
-
-        local canCheckChildren = true
-        if parentMapID == playerContext.current then
-            canCheckChildren = (parentInfo ~= nil) and (parentInfo.mapType ~= nil) and (parentInfo.mapType > 2)
-        end
-
-        if canCheckChildren then
-            local children = C_Map.GetMapChildrenInfo(parentMapID)
-            if children then
-                for _, childInfo in ipairs(children) do
-                    if childInfo.mapID then
-                        -- Skip exception zones (instances, scenarios, etc)
-                        local exception = self:GetZoneException(childInfo.mapID)
-                        if not exception and self:Contains(stepZones, childInfo.mapID) then
-                            return true
-                        end
-                    end
-                end
-            end
-
-            -- Also accept cousin zones that share this ancestor level.
-            -- This handles nested zone trees where stepMapID is not a direct
-            -- child of parentMapID (e.g. player in 2437, step in 2393 via 2537).
-            for _, stepMapID in ipairs(stepZones) do
-                local stepException = self:GetZoneException(stepMapID)
-                if not stepException and stepMapID ~= playerContext.current then
-                    local stepChain = self:GetMapParentChain(stepMapID)
-                    if self:Contains(stepChain, parentMapID) then
-                        return true
-                    end
-                end
-            end
-        end
-    end
-
-    return false
-end
-
 --- Check if player is on same continent as step zones
 ---@param playerContext table Player zone context
 ---@param stepZones table Zone mapIDs for step
@@ -506,39 +409,9 @@ function APR:CheckCoordinateProximity(step, stepZones, threshold)
     return distance < threshold
 end
 
----=============================================================================
--- EXCEPTION HANDLING
----=============================================================================
-
---- Get zone exception configuration if it exists
----@param mapID number Zone mapID
----@return table|nil exception info or nil
-function APR:GetZoneException(mapID)
-    if not mapID then return nil end
-
-    return self.ZoneDetection.exceptions[mapID]
-end
-
---- Register custom zone exception
----@param mapID number Zone mapID
----@param exception table Exception config { name, continentOverride, ... }
-function APR:RegisterZoneException(mapID, exception)
-    if not mapID or not exception then return end
-
-    self.ZoneDetection.exceptions[mapID] = exception
-end
-
 --- Check if player is in special instance content
 ---@return boolean
 function APR:IsInSpecialContent()
-    local mapID = C_Map.GetBestMapForUnit("player")
-    local exception = self:GetZoneException(mapID)
-
-    if exception then
-        return true
-    end
-
-    -- Also check for actual instances
     if IsInInstance then
         local inInstance, instanceType = IsInInstance()
         if inInstance then
