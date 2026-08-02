@@ -1253,28 +1253,24 @@ function APR.event.functions.zone(event, ...)
         end
     end
 
-    -- Transport logic
+    -- Farstrider navigation refresh
     if event == "PLAYER_ENTERING_WORLD" then
         -- Invalidate cache after teleportation to ensure fresh zone detection
         APR:InvalidatePlayerZoneCache()
         -- Reset routing throttle after teleport/loading
-        if APR.transport._routingThrottle then
-            APR.transport._routingThrottle.count = 0
-            APR.transport._routingThrottle.firstCall = GetTime()
-        end
-        APR.transport._routingForceRefresh = true
+        APR.farstrider:ForceRefresh()
         -- Flag that we are transitioning (loading screen / instance exit / teleport).
         -- Zone change events that fire during this window should NOT call GetMeToRightZone
         -- immediately because the map API is not yet reliable.
-        APR.transport._worldTransitionTime = GetTime()
+        APR.farstrider._worldTransitionTime = GetTime()
 
         -- Cancel any previous post-teleport retry timers
-        if APR.transport._pewRetryTimers then
-            for _, timer in ipairs(APR.transport._pewRetryTimers) do
+        if APR.farstrider._pewRetryTimers then
+            for _, timer in ipairs(APR.farstrider._pewRetryTimers) do
                 if timer then pcall(function() timer:Cancel() end) end
             end
         end
-        APR.transport._pewRetryTimers = {}
+        APR.farstrider._pewRetryTimers = {}
 
         -- Schedule progressive zone checks after loading screen / teleport.
         -- The map API often needs more than 0.5s to fully stabilize after a
@@ -1282,28 +1278,15 @@ function APR.event.functions.zone(event, ...)
         -- so slow machines or long loading screens are handled gracefully.
         local delays = { 1.0, 2.0, 3.5, 5.0 }
         for i, delay in ipairs(delays) do
-            APR.transport._pewRetryTimers[i] = C_Timer.NewTimer(delay, function()
+            local retryIndex = i
+            APR.farstrider._pewRetryTimers[retryIndex] = C_Timer.NewTimer(delay, function()
                 -- Clear the transition window on the first scheduled check
-                if i == 1 then
-                    APR.transport._worldTransitionTime = nil
+                if retryIndex == 1 then
+                    APR.farstrider._worldTransitionTime = nil
                 end
 
                 local profile = APR:GetSettingsProfile()
                 if not APR.ActiveRoute or not profile or not profile.enableAddon then
-                    return
-                end
-
-                -- Already in the right zone — clear out-of-zone state and stop
-                if APR:CheckIsInRouteZone() then
-                    local shouldRefreshStep = APR.transport and APR.transport.showOutOfZoneStepContent
-                    APR.IsInRouteZone = true
-                    if APR.transport then
-                        APR.transport.showOutOfZoneStepContent = false
-                        APR.transport.wrongZoneDestTaxiName = nil
-                    end
-                    if shouldRefreshStep then
-                        APR:UpdateStep()
-                    end
                     return
                 end
 
@@ -1313,12 +1296,8 @@ function APR.event.functions.zone(event, ...)
                 APR._lastRouteZoneResult = nil
 
                 -- Reset throttle so this check goes through
-                if APR.transport._routingThrottle then
-                    APR.transport._routingThrottle.count = 0
-                    APR.transport._routingThrottle.firstCall = GetTime()
-                end
-                APR.transport._routingForceRefresh = true
-                APR.transport:GetMeToRightZone(i > 1)
+                APR.farstrider:ForceRefresh()
+                APR.farstrider:GetMeToRightZone(retryIndex > 1)
             end)
         end
 
@@ -1336,11 +1315,7 @@ function APR.event.functions.zone(event, ...)
         APR._lastRouteZoneResult = nil
 
         -- Reset GetMeToRightZone throttle so zone events always get through
-        if APR.transport._routingThrottle then
-            APR.transport._routingThrottle.count = 0
-            APR.transport._routingThrottle.firstCall = GetTime()
-        end
-        APR.transport._routingForceRefresh = true
+        APR.farstrider:ForceRefresh()
 
         if IsInInstance() and not APR:IsInstanceWithUI() then
             return
@@ -1349,28 +1324,15 @@ function APR.event.functions.zone(event, ...)
         -- If we are still in the PLAYER_ENTERING_WORLD transition window (instance exit,
         -- teleport, loading screen), skip the immediate check.  The delayed timer from
         -- PLAYER_ENTERING_WORLD will handle it once the map API is stable.
-        if APR.transport._worldTransitionTime and (GetTime() - APR.transport._worldTransitionTime) < 1.0 then
+        if APR.farstrider._worldTransitionTime and
+            (GetTime() - APR.farstrider._worldTransitionTime) < 1.0 then
             return
         end
 
         APR:ScheduleDelveRouteRefresh(event == "ZONE_CHANGED_NEW_AREA" and 0.35 or 0.15)
 
         if APR.ActiveRoute then
-            local isInRouteZone = APR:CheckIsInRouteZone()
-            if isInRouteZone then
-                local shouldRefreshStep = APR.transport and APR.transport.showOutOfZoneStepContent
-                APR.IsInRouteZone = true
-                if APR.transport then
-                    APR.transport.showOutOfZoneStepContent = false
-                    APR.transport.wrongZoneDestTaxiName = nil
-                end
-                if shouldRefreshStep then
-                    APR:UpdateStep()
-                end
-            else
-                APR.IsInRouteZone = false
-                APR.transport:GetMeToRightZone()
-            end
+            APR.farstrider:GetMeToRightZone()
         end
     end
 end

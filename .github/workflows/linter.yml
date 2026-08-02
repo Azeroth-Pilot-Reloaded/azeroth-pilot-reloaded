@@ -31,4 +31,3 @@ jobs:
       - name: Run Luacheck Routes
         run: luacheck ./Routes
 
-

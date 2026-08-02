@@ -6,15 +6,9 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local PREVIEW_IMAGE_ASSET_ROOT = "Interface\\AddOns\\APR\\APR-Core\\assets\\"
-local TRANSPORT_QUEST_UI_KEY_PATTERNS = {
-    "^01_FLY_TO_",
-    "^02_CLOSEST_FP",
-    "^01_GO_PORTAL_ROOM$",
-    "^01_PORTAL_",
-    "^01_ISOLATED_ZONE_TAXI$",
-    "^01_GO_TO",
-    "^01_WRONG_ZONE_INSTANCE$",
-    "^01_ERROR_PATH_NOT_FOUND$",
+local NAVIGATION_QUEST_UI_KEY_PATTERNS = {
+    "^01_FARSTRIDER_PATH%-",
+    "^01_FARSTRIDER_ERROR%-",
     "^04_EXTRA_LINE_DESTINATION%-EXTRA$",
 }
 
@@ -444,19 +438,19 @@ function APR:IsAFKFrameActiveShouldSnap()
     return true
 end
 
---- Return true when the quest-step UI key belongs to out-of-zone transport guidance.
+--- Return true when the quest-step UI key belongs to Farstrider navigation guidance.
 ---@param key string|number|nil
 ---@return boolean
-function APR:IsTransportQuestUiKey(key)
+function APR:IsNavigationQuestUiKey(key)
     if type(key) ~= "string" then
         return false
     end
 
-    if self.transport and key == self.transport.TransportDividerStepKey then
+    if self.farstrider and key == self.farstrider.NavigationDividerStepKey then
         return true
     end
 
-    for _, pattern in ipairs(TRANSPORT_QUEST_UI_KEY_PATTERNS) do
+    for _, pattern in ipairs(NAVIGATION_QUEST_UI_KEY_PATTERNS) do
         if key:match(pattern) then
             return true
         end
@@ -465,17 +459,15 @@ function APR:IsTransportQuestUiKey(key)
     return false
 end
 
---- Return true when the extra-line UI key belongs to out-of-zone transport guidance.
+--- Return true when the extra-line UI key belongs to Farstrider navigation guidance.
 ---@param key string|number|nil
 ---@return boolean
-function APR:IsTransportExtraTextUiKey(key)
-    if not self.transport then
+function APR:IsNavigationExtraTextUiKey(key)
+    if not self.farstrider then
         return false
     end
 
-    return key == self.transport.ErrorDestinationLineKey
-        or key == self.transport.ErrorDividerLineKey
-        or key == "DESTINATION"
+    return key == self.farstrider.ErrorDestinationLineKey or key == "DESTINATION"
 end
 
 --- Get the proper snap anchor frame implementing the snap hierarchy

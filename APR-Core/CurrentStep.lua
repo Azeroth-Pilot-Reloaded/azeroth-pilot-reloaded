@@ -790,12 +790,11 @@ function APR.currentStep:AddExtraLineText(key, text, color, showLeadingDash)
         return
     end
 
-    local transport = APR.transport
-    local isOutOfZoneMode = transport and transport.showOutOfZoneStepContent
-    local hasTransportDivider = isOutOfZoneMode and transport.TransportDividerStepKey and
-        self.questsList[transport.TransportDividerStepKey]
-    local isTopErrorLine = transport and
-        (key == transport.ErrorDestinationLineKey or key == transport.ErrorDividerLineKey)
+    local navigation = APR.farstrider
+    local isOutOfZoneMode = navigation and navigation.showOutOfZoneStepContent
+    local hasNavigationDivider = isOutOfZoneMode and navigation.NavigationDividerStepKey and
+        self.questsList[navigation.NavigationDividerStepKey]
+    local isTopErrorLine = navigation and key == navigation.ErrorDestinationLineKey
     local redirectedQuestBaseKey = "04_EXTRA_LINE_" .. tostring(key)
     local redirectedQuestKey = redirectedQuestBaseKey .. "-EXTRA"
 
@@ -815,7 +814,7 @@ function APR.currentStep:AddExtraLineText(key, text, color, showLeadingDash)
         self.questsList[redirectedQuestKey] = nil
     end
 
-    if hasTransportDivider and not isTopErrorLine then
+    if hasNavigationDivider and not isTopErrorLine then
         local existingContainer = self.questsExtraTextList[key]
         if existingContainer then
             if self:CanSafelyHide(existingContainer) then
@@ -947,11 +946,10 @@ function APR.currentStep:ReOrderExtraLineText()
     end
 
     -- Convert the table into a sortable list with explicit top ordering for
-    -- out-of-zone header lines: destination first, divider second.
+    -- out-of-zone header line: destination first.
     local sortedList = {}
     local usedKeys = {}
-    local destinationKey = (APR.transport and APR.transport.ErrorDestinationLineKey) or "00_ERROR_DESTINATION"
-    local dividerKey = (APR.transport and APR.transport.ErrorDividerLineKey) or "00A_ERROR_DIVIDER"
+    local destinationKey = (APR.farstrider and APR.farstrider.ErrorDestinationLineKey) or "00_ERROR_DESTINATION"
 
     local function addByKey(key)
         local container = self.questsExtraTextList[key]
@@ -962,7 +960,6 @@ function APR.currentStep:ReOrderExtraLineText()
     end
 
     addByKey(destinationKey)
-    addByKey(dividerKey)
 
     local remaining = {}
     for id, textContainer in pairs(self.questsExtraTextList) do
@@ -1083,9 +1080,9 @@ function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
     self:ReOrderQuestSteps(true)
 end
 
--- Remove step-specific UI while keeping out-of-zone transport guidance intact.
-function APR.currentStep:RemoveStepContentPreservingTransportUi()
-    APR:Debug("Function: APR.currentStep:RemoveStepContentPreservingTransportUi()")
+-- Remove step-specific UI while keeping Farstrider navigation guidance intact.
+function APR.currentStep:RemoveStepContentPreservingNavigationUi()
+    APR:Debug("Function: APR.currentStep:RemoveStepContentPreservingNavigationUi()")
     local profile = APR:GetSettingsProfile()
     if not profile or not profile.currentStepShow then
         return
@@ -1120,10 +1117,10 @@ function APR.currentStep:RemoveStepContentPreservingTransportUi()
     end
 
     ResetList(self.questsList, true, function(id)
-        return APR:IsTransportQuestUiKey(id)
+        return APR:IsNavigationQuestUiKey(id)
     end)
     ResetList(self.questsExtraTextList, false, function(id)
-        return APR:IsTransportExtraTextUiKey(id)
+        return APR:IsNavigationExtraTextUiKey(id)
     end)
 
     if APR.fillersFrame and APR.fillersFrame.RemoveFillerSteps then
@@ -1148,7 +1145,7 @@ local function GetStepButtonIcon(attribute, itemID)
     if attribute == "item" then
         local _, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
         return itemTexture
-    else
+    elseif attribute == "spell" then
         local spellInfo = C_Spell.GetSpellInfo(itemID)
         return spellInfo and spellInfo.iconID or nil
     end
@@ -1176,9 +1173,15 @@ function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
     button:ClearAllPoints()
     button:SetScript("OnEnter", nil)
     button:SetScript("OnLeave", nil)
+    button:SetScript("PreClick", nil)
+    button:SetAttribute("type", nil)
     button:SetAttribute("type1", nil)
     button:SetAttribute("item", nil)
     button:SetAttribute("spell", nil)
+    button:SetAttribute("macrotext", nil)
+    button:SetAttribute("house-neighborhood-guid", nil)
+    button:SetAttribute("house-guid", nil)
+    button:SetAttribute("house-plot-id", nil)
     local normalTexture = button:GetNormalTexture()
     if normalTexture then
         normalTexture:SetTexture(nil)
@@ -1186,6 +1189,10 @@ function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
     local highlightTexture = button:GetHighlightTexture()
     if highlightTexture then
         highlightTexture:SetTexture(nil)
+    end
+    local pushedTexture = button:GetPushedTexture()
+    if pushedTexture then
+        pushedTexture:SetTexture(nil)
     end
     button.itemID = nil
     button.attribute = nil
@@ -1355,8 +1362,16 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         self:ResetSecureRaidIconButton(container, questsListKey)
     end
 
-    local iconTexture = GetStepButtonIcon(attribute, itemID)
-    if not iconTexture then
+    local isHousingAction = attribute == "housing" or attribute == "housing_return"
+    local farstriderData = _G.FarstriderLib_API and _G.FarstriderLib_API.DATA or nil
+    local housingData = attribute == "housing" and farstriderData and
+        type(farstriderData.GetHousingData) == "function" and farstriderData.GetHousingData() or nil
+    if attribute == "housing" and not housingData then
+        return
+    end
+
+    local iconTexture = not isHousingAction and GetStepButtonIcon(attribute, itemID) or nil
+    if not isHousingAction and not iconTexture then
         return
     end
 
@@ -1364,22 +1379,45 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         "SecureActionButtonTemplate, BackdropTemplate")
     IconButton:SetSize(25, 25)
     PositionStepButtons(container, IconButton)
-    IconButton:SetNormalTexture(iconTexture)
-    IconButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
-    IconButton:RegisterForClicks("AnyUp", "AnyDown")
-    IconButton:SetAttribute("type1", attribute)
-    if attribute == "item" then
-        IconButton:SetAttribute("item", "item:" .. tostring(itemID))
+    if isHousingAction then
+        IconButton:SetNormalAtlas("dashboard-panel-homestone-teleport-button")
+        IconButton:SetHighlightAtlas("dashboard-panel-homestone-teleport-button")
+        IconButton:SetPushedAtlas("dashboard-panel-homestone-teleport-button")
     else
+        IconButton:SetNormalTexture(iconTexture)
+        IconButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
+    end
+    IconButton:RegisterForClicks("AnyUp", "AnyDown")
+    if attribute == "item" then
+        IconButton:SetAttribute("type1", "item")
+        IconButton:SetAttribute("item", "item:" .. tostring(itemID))
+    elseif attribute == "spell" then
+        IconButton:SetAttribute("type1", "spell")
         IconButton:SetAttribute("spell", tonumber(itemID))
+    elseif attribute == "housing" then
+        IconButton:SetAttribute("type", "teleporthome")
+        IconButton:SetAttribute("type1", "teleporthome")
+        IconButton:SetAttribute("house-neighborhood-guid", housingData.neighborhoodGUID)
+        IconButton:SetAttribute("house-guid", housingData.houseGUID)
+        IconButton:SetAttribute("house-plot-id", housingData.plotID)
+        IconButton:SetScript("PreClick", function()
+            if farstriderData and type(farstriderData.UpdateHousingExitLocation) == "function" then
+                farstriderData.UpdateHousingExitLocation()
+            end
+        end)
+    elseif attribute == "housing_return" then
+        IconButton:SetAttribute("type", "returnhome")
+        IconButton:SetAttribute("type1", "returnhome")
     end
 
     IconButton:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
         if attribute == "item" then
             GameTooltip:SetItemByID(itemID)
-        else
+        elseif attribute == "spell" then
             GameTooltip:SetSpellByID(itemID)
+        elseif container.font then
+            GameTooltip:AddLine(container.font:GetText(), 1, 1, 1, true)
         end
         GameTooltip:Show()
     end)
@@ -1402,10 +1440,10 @@ end
 
 --- Queue or create a secure button depending on combat lockdown state
 ---@param questsListKey string
----@param itemID number
+---@param itemID number|nil
 ---@param attribute string
 function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
-    if not APR.settings.profile.currentStepShow and itemID then
+    if not APR.settings.profile.currentStepShow then
         return
     end
 
@@ -1467,13 +1505,13 @@ function APR.currentStep:UpdateStepButtonCooldowns()
                     local isCooldownShown = IconButton.cooldown:IsShown()
                     local cooldownDuration = IconButton.cooldown:GetCooldownDuration() or 0
 
-                    if IconButton.attribute == 'spell' then
+                    if IconButton.attribute == "spell" then
                         local info = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))
                         if info then
                             startTime, duration = info.startTime or 0, info.duration or 0
                             enable = info.isEnabled and 1 or 0
                         end
-                    else
+                    elseif IconButton.attribute == "item" then
                         startTime, duration, enable = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
                     end
 

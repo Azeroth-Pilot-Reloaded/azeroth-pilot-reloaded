@@ -8,28 +8,6 @@ function APR:IsSpellKnown(spellID)
     return IsSpellKnown and IsSpellKnown(spellID)
 end
 
---- Check if the player owns at least one copy of an item (bags/bank).
--- This is used by higher-level steps to gate actions that require consumables.
-function APR:PlayerHasItem(itemID)
-    local GetItemCount = C_Item and C_Item.GetItemCount or _G.GetItemCount
-    if not GetItemCount then return false end
-    local count = GetItemCount(itemID, true)
-    return (count and count > 0) and true or false
-end
-
-function APR:GetSpellName(spellID)
-    local spellInfo = (C_Spell and C_Spell.GetSpellInfo and C_Spell.GetSpellInfo(spellID)) or nil
-    local name = spellInfo and spellInfo.name or GetSpellInfo(spellID)
-    return name or ("Spell " .. tostring(spellID))
-end
-
---- Safe item name getter (supports C_Item and GetItemInfo fallback).
-function APR:GetItemName(itemID)
-    local name = (C_Item and C_Item.GetItemNameByID and C_Item.GetItemNameByID(itemID))
-        or (GetItemInfo and select(1, GetItemInfo(itemID)))
-    return name or ("Item " .. tostring(itemID))
-end
-
 --- Checks if the Player have flying rank 1, 2 or 3.
 function APR:CheckFlySkill()
     return APR:IsSpellKnown(34090) or APR:IsSpellKnown(34091) or APR:IsSpellKnown(90265)

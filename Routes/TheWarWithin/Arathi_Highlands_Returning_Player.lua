@@ -7,6 +7,7 @@ APR.RouteQuestStepList["2451-Arathi-Highlands-Returning-Player"] = {
     prefab = {
         [APR.PREFAB_TYPES.StartingZone] = 10,
     },
+    autoStartOnMap = true,
     mapID = 2451,
     conditions = { Level = 70 },
     nextRoute = {},

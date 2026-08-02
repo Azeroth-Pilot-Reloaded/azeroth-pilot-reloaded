@@ -181,6 +181,10 @@ function APR.Arrow:Init()
 end
 
 local function CheckDistance()
+    if APR.farstrider and APR.farstrider:IsNavigating() then
+        return 0
+    end
+
     local routeSteps, currentStep, currentStepIndex = GetCurrentRouteStep()
     if not routeSteps or not currentStep or currentStep.NoArrow then
         return 0
@@ -286,8 +290,10 @@ function APR.Arrow:CalculPosition()
         return
     end
 
-    local stepCoord = questStep and APR:GetStepCoord(questStep, nil, APR:GetPlayerParentMapID()) or nil
-    if questStep and questStep.ZoneStepTrigger then -- to trigger a zone detection
+    local isNavigating = APR.farstrider and APR.farstrider:IsNavigating()
+    local stepCoord = not isNavigating and questStep and
+        APR:GetStepCoord(questStep, nil, APR:GetPlayerParentMapID()) or nil
+    if not isNavigating and questStep and questStep.ZoneStepTrigger then -- to trigger a zone detection
         local trigger = questStep.ZoneStepTrigger
         local dist = DistanceBetween(playerX, playerY, trigger.x, trigger.y)
         if trigger.Range > dist then
@@ -309,7 +315,7 @@ function APR.Arrow:CalculPosition()
     local perc = mathAbs((math.pi - mathAbs(angle)) / math.pi)
 
     -- Distance from questStep.Coord if available
-    if stepCoord then
+    if not isNavigating and stepCoord then
         self.QuestStepDistance = DistanceBetween(playerX, playerY, stepCoord.x, stepCoord.y)
         if self.QuestStepDistance >= self.MaxDistanceWrongZone then
             self.isWrongZoneDistance = true
@@ -323,20 +329,26 @@ function APR.Arrow:CalculPosition()
         end
     end
 
-    -- Set global distance for transport
-    -- Prefer QuestStepDistance (from fresh stepCoord) over distance (from potentially stale self.x/self.y)
-    -- self.x/self.y are only updated by SetCoord() when IsInRouteZone is true, so they can be stale
-    self.Distance = stepCoord and self.QuestStepDistance or distance
-    if self.Distance >= self.MaxDistanceWrongZone and (questStep and not questStep.InstanceQuest) then
-        -- Only trigger routing if not already handling wrong zone
-        -- Once GetMeToRightZone has set IsInRouteZone=false, zone events will handle re-checks
-        if APR.IsInRouteZone ~= false then
-            APR:UpdateMapId()
+    if isNavigating then
+        self.Distance = distance
+        self.isWrongZoneDistance = false
+        APR.farstrider:OnArrowUpdate(distance)
+        if not APR.farstrider:IsNavigating() then
+            return
         end
-        return
+    else
+        -- Prefer QuestStepDistance (from fresh stepCoord) over distance (from
+        -- potentially stale self.x/self.y).
+        self.Distance = stepCoord and self.QuestStepDistance or distance
+        if self.Distance >= self.MaxDistanceWrongZone and questStep then
+            if APR.IsInRouteZone ~= false then
+                APR:UpdateMapId()
+            end
+            return
+        end
     end
 
-    if questStep and (questStep.Waypoint or questStep.Range) and APR.IsInRouteZone then
+    if not isNavigating and questStep and (questStep.Waypoint or questStep.Range) and APR.IsInRouteZone then
         local range = questStep.Range or 0
         if distance < range then
             self.x = 0

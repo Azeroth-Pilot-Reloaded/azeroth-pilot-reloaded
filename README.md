@@ -13,7 +13,7 @@ The continuation of _Azeroth Auto Pilot_, a leveling add-on with a legacy. Rebir
 ##
 ![Features](https://github.com/user-attachments/assets/a3af1185-9b5d-411a-8b14-60a0a21249f9)
 
--   **Guided navigation:** waypoint arrow, map and minimap lines, optional range checks, and flight-path helpers keep you moving without extra addons.
+-   **Guided navigation:** waypoint arrow, map and minimap lines, optional range checks, and flight-path helpers.
 -   **Hands-free questing:** auto accept, auto turn-in, auto gossip, and automatic cutscene skipping to speed runs while keeping safety checks.
 -   **Easy quest items:** auto-creates buttons for items and spells so you can click or keybind them without digging in your bags.
 -   **Group-friendly:** shows party progress, syncs steps, and supports group quests and scenarios to keep everyone aligned.

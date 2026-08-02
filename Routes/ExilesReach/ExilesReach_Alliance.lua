@@ -7,6 +7,7 @@ APR.RouteQuestStepList["1409-Exile's Reach - A"] = {
     prefab = {
         [APR.PREFAB_TYPES.StartingZone] = 10,
     },
+    autoStartOnMap = true,
     notSkippable = true,
     mapID = 1409,
     conditions = { Faction = "Alliance", Zones = { 1409, 1726, 1727, 1728 } },

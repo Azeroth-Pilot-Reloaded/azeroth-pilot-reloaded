@@ -1064,7 +1064,7 @@ function APR.routeconfig:InitRouteConfig()
         local profile = APR:GetSettingsProfile()
         if APR.ActiveRoute and profile and profile.enableAddon then
             APR:InvalidatePlayerZoneCache()
-            APR.transport:GetMeToRightZone()
+            APR.farstrider:GetMeToRightZone()
         end
 
         if APR.StatusFrame and APR.StatusFrame:IsShown() and APR.updateStatusFrame then
