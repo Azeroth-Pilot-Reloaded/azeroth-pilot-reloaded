@@ -1,0 +1,78 @@
+{
+  "schema": 1,
+  "libraries": [
+    {
+      "name": "Ace3",
+      "source": { "type": "github", "repository": "WoWUIDev/Ace3", "ref": "master" },
+      "mappings": [
+        { "from": "AceAddon-3.0", "to": "AceAddon-3.0" },
+        { "from": "AceBucket-3.0", "to": "AceBucket-3.0" },
+        { "from": "AceComm-3.0", "to": "AceComm-3.0" },
+        { "from": "AceConfig-3.0", "to": "AceConfig-3.0" },
+        { "from": "AceConsole-3.0", "to": "AceConsole-3.0" },
+        { "from": "AceDB-3.0", "to": "AceDB-3.0" },
+        { "from": "AceDBOptions-3.0", "to": "AceDBOptions-3.0" },
+        { "from": "AceEvent-3.0", "to": "AceEvent-3.0" },
+        { "from": "AceGUI-3.0", "to": "AceGUI-3.0" },
+        { "from": "AceHook-3.0", "to": "AceHook-3.0" },
+        { "from": "AceLocale-3.0", "to": "AceLocale-3.0" },
+        { "from": "AceSerializer-3.0", "to": "AceSerializer-3.0" },
+        { "from": "AceTab-3.0", "to": "AceTab-3.0" },
+        { "from": "AceTimer-3.0", "to": "AceTimer-3.0" }
+      ]
+    },
+    {
+      "name": "HereBeDragons",
+      "source": { "type": "github", "repository": "Nevcairiel/HereBeDragons", "ref": "master" },
+      "mappings": [
+        { "from": "HereBeDragons-2.0.lua", "to": "HereBeDragons/HereBeDragons-2.0.lua" },
+        { "from": "HereBeDragons-Pins-2.0.lua", "to": "HereBeDragons/HereBeDragons-Pins-2.0.lua" },
+        { "from": "HereBeDragons-Migrate.lua", "to": "HereBeDragons/HereBeDragons-Migrate.lua" },
+        { "from": "HereBeDragons.toc", "to": "HereBeDragons/HereBeDragons.toc" }
+      ]
+    },
+    {
+      "name": "HereBeDragons embedded dependencies",
+      "source": { "type": "curseforge", "project_id": 94348, "archive_root": "HereBeDragons" },
+      "mappings": [
+        { "from": "CallbackHandler-1.0", "to": "HereBeDragons/CallbackHandler-1.0" },
+        { "from": "LibStub", "to": "HereBeDragons/LibStub" }
+      ]
+    },
+    {
+      "name": "LibCandyBar-3.0",
+      "source": { "type": "curseforge", "project_id": 18909, "archive_root": "LibCandyBar-3.0" },
+      "mappings": [
+        { "from": "LibCandyBar-3.0", "to": "LibCandyBar-3.0" }
+      ]
+    },
+    {
+      "name": "LibDataBroker-1.1",
+      "source": { "type": "github", "repository": "tekkub/libdatabroker-1-1", "ref": "master" },
+      "mappings": [
+        { "from": "LibDataBroker-1.1.lua", "to": "LibDataBroker-1.1/LibDataBroker-1.1.lua" }
+      ]
+    },
+    {
+      "name": "LibDBIcon-1.0",
+      "source": { "type": "curseforge", "project_id": 15552, "archive_root": "LibDBIcon-1.0" },
+      "mappings": [
+        { "from": "LibDBIcon-1.0", "to": "LibDBIcon-1.0" }
+      ]
+    },
+    {
+      "name": "LibSharedMedia-3.0",
+      "source": { "type": "curseforge", "project_id": 14320, "archive_root": "LibSharedMedia-3.0" },
+      "mappings": [
+        { "from": "LibSharedMedia-3.0", "to": "LibSharedMedia-3.0" }
+      ]
+    },
+    {
+      "name": "LibWindow-1.1",
+      "source": { "type": "curseforge", "project_id": 16386, "archive_root": "LibWindow-1.1" },
+      "mappings": [
+        { "from": "LibWindow-1.1", "to": "LibWindow-1.1" }
+      ]
+    }
+  ]
+}

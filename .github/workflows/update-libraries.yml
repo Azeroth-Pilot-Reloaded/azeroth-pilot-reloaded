@@ -1,0 +1,53 @@
+name: Update embedded libraries
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "17 6 * * 1"
+
+concurrency:
+  group: update-embedded-libraries
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  pull-requests: write
+
+jobs:
+  update:
+    if: github.repository == 'Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded' || github.event_name == 'workflow_dispatch'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v6.0.2
+
+      - name: Set up Python
+        uses: actions/setup-python@v6.2.0
+        with:
+          python-version: "3.13"
+
+      - name: Update embedded libraries
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/update_libraries.py
+
+      - name: Verify reproducibility
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python tools/update_libraries.py --check
+
+      - name: Create or update pull request
+        uses: peter-evans/create-pull-request@v8.1.1
+        with:
+          token: ${{ secrets.AUTOMATION_TOKEN || github.token }}
+          branch: automation/update-embedded-libraries
+          delete-branch: true
+          commit-message: "chore(deps): update embedded libraries"
+          title: "chore(deps): update embedded libraries"
+          body: |
+            Automated update of every library bundled in `APR-Core/libs`.
+
+            Sources and resolved release identifiers are recorded in
+            `tools/libraries.lock.json`. The updater also verifies every path
+            referenced by `APR-Core/libs/embeds.xml` before creating this PR.

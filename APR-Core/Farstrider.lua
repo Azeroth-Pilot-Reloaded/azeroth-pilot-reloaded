@@ -78,10 +78,7 @@ local function ReportMissingDependencies(missingDependencies)
     end
 
     missingDependencyWarningShown = true
-    APR:PrintError(
-        "Required addon missing or disabled: " .. missingDependencies ..
-        ". Install or enable it, then reload the interface."
-    )
+    APR:PrintError(string.format(L["ADDON_DEPENDENCY_MISSING"], missingDependencies))
 end
 
 local dependencyEventFrame = CreateFrame("Frame")
@@ -457,7 +454,7 @@ end
 
 function APR.farstrider:ShowPathError(destination, detail)
     local mapInfo = destination and APR:GetMapInfoCached(destination.zone or destination.mapID) or nil
-    local destinationName = mapInfo and mapInfo.name or "?"
+    local destinationName = mapInfo and mapInfo.name or UNKNOWN
     local suffix = detail and (" (" .. detail .. ")") or ""
 
     APR.currentStep:AddQuestSteps(
@@ -586,7 +583,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
         if not wasShowingNavigation then
             APR:UpdateStep()
         end
-        self:ShowPathError(nil, "destination")
+        self:ShowPathError(nil, L["PATH_ERROR_DESTINATION_MISSING"])
         return
     end
 
@@ -613,8 +610,8 @@ function APR.farstrider:GetMeToRightZone(isRetry)
     local destinationText = string.format(
         L["TRANSPORT_DESTINATION_ERROR"],
         reason,
-        targetMapInfo and targetMapInfo.name or "?",
-        parentMapInfo and parentMapInfo.name or "?",
+        targetMapInfo and targetMapInfo.name or UNKNOWN,
+        parentMapInfo and parentMapInfo.name or UNKNOWN,
         tostring(destination.zone)
     )
     APR.currentStep:AddExtraLineText(
@@ -632,12 +629,15 @@ function APR.farstrider:GetMeToRightZone(isRetry)
 
     if not api then
         ReportMissingDependencies(missingDependencies)
-        self:ShowPathError(destination, missingDependencies)
+        self:ShowPathError(
+            destination,
+            string.format(L["PATH_ERROR_DEPENDENCY_MISSING"], missingDependencies)
+        )
         return
     end
 
     if not pathCallOk then
-        self:ShowPathError(destination, "FarstriderLib FindTrailTo")
+        self:ShowPathError(destination, L["PATH_ERROR_ROUTING_FAILED"])
         return
     end
 

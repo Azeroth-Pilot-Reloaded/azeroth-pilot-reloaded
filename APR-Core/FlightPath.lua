@@ -1,3 +1,5 @@
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
 APR.flightPath = APR:NewModule("FlightPath")
 APR.flightPath.CurrentTaxiNode = {}
 APR.flightPath.StepTaxiNode = {}
@@ -12,7 +14,7 @@ APR.flightPath.eventFrame:SetScript("OnEvent", function(self, event)
 
     local step = APR.ActiveRoute and APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
     if APR.settings.profile.showEvent then
-        APR:PrintInfo("EVENT: FlightPath - " .. event)
+        APR:PrintInfo(string.format(L["FLIGHT_PATH_EVENT"], event))
     end
 
     if event == "TAXIMAP_OPENED" then
