@@ -1,0 +1,16 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+
+	<!-- Bootstrap -->
+	<Script file="FarstriderLib~Init.lua" />
+
+	<!-- Module files (load order matters) -->
+	<Script file='FarstriderLib~Data.lua' />
+	<Script file='FarstriderLib~Stub.lua' />
+	<Script file='FarstriderLib~NavNode.lua' />
+	<Script file='FarstriderLib~Pathfinding.lua' />
+	<Script file='FarstriderLib~Core.lua' />
+
+	<!-- Cleanup -->
+	<Script file="FarstriderLib~Finalizer.lua" />
+
+</Ui>

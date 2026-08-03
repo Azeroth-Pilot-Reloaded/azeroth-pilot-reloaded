@@ -1,0 +1,29 @@
+<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\..\FrameXML\UI.xsd">
+
+    <!-- Bootstrap -->
+    <Script file="FarstriderLibData~Init.lua" />
+
+    <!-- Locales -->
+    <Script file="Locale\FarstriderLibData_Locale.enUS.lua" />
+    <Script file="Locale\FarstriderLibData_Locale.deDE.lua" />
+    <Script file="Locale\FarstriderLibData_Locale.ruRU.lua" />
+    <Script file="Locale\FarstriderLibData_Locale.zhCN.lua" />
+    <Script file="Locale\FarstriderLibData_Locale.zhTW.lua" />
+
+    <!-- Core -->
+    <Script file="FarstriderLibData~Config.lua" />
+    <Script file="FarstriderLibData~Util.lua" />
+
+    <!-- Data: Areas (Wrath) -->
+    <Include file="Areas\Wrath\FarstriderLibData_Areas.xml" />
+
+    <!-- Data: Waypoints (Wrath) -->
+    <Include file="Waypoints\Wrath\FarstriderLibData_Waypoints.xml" />
+
+    <!-- Connections -->
+    <Script file="FarstriderLibData~Connections.lua" />
+
+    <!-- Cleanup -->
+    <Script file="FarstriderLibData~Finalizer.lua" />
+
+</Ui>

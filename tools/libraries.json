@@ -1,5 +1,8 @@
 {
   "schema": 1,
+  "preserve": [
+    "LibWindow-1.1"
+  ],
   "libraries": [
     {
       "name": "Ace3",
@@ -68,10 +71,27 @@
       ]
     },
     {
-      "name": "LibWindow-1.1",
-      "source": { "type": "curseforge", "project_id": 16386, "archive_root": "LibWindow-1.1" },
+      "name": "FarstriderLib",
+      "source": {
+        "type": "github_release",
+        "repository": "Deathwing/Mount-Route-Planner",
+        "asset": "FarstriderLib.zip",
+        "archive_root": "FarstriderLib"
+      },
       "mappings": [
-        { "from": "LibWindow-1.1", "to": "LibWindow-1.1" }
+        { "from": ".", "to": "FarstriderLib" }
+      ]
+    },
+    {
+      "name": "FarstriderLibData",
+      "source": {
+        "type": "github_release",
+        "repository": "Deathwing/Mount-Route-Planner",
+        "asset": "FarstriderLibData.zip",
+        "archive_root": "FarstriderLibData"
+      },
+      "mappings": [
+        { "from": ".", "to": "FarstriderLibData" }
       ]
     }
   ]

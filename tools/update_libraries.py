@@ -109,6 +109,34 @@ def latest_github_archive(source: dict[str, Any]) -> tuple[bytes, dict[str, Any]
     return archive, metadata, None
 
 
+def latest_github_release_asset(source: dict[str, Any]) -> tuple[bytes, dict[str, Any], str]:
+    repository = str(source["repository"])
+    asset_name = str(source["asset"])
+    release_url = f"https://api.github.com/repos/{repository}/releases/latest"
+    release = request_json(release_url)
+    asset = next(
+        (candidate for candidate in release.get("assets", []) if candidate.get("name") == asset_name),
+        None,
+    )
+    if asset is None:
+        raise RuntimeError(
+            f"latest GitHub release for {repository} has no asset named {asset_name!r}"
+        )
+
+    archive = request_bytes(str(asset["browser_download_url"]), accept="application/octet-stream")
+    metadata = {
+        "source": "github_release",
+        "repository": repository,
+        "release_id": int(release["id"]),
+        "version": release.get("tag_name") or release.get("name"),
+        "date_created": release.get("published_at") or release.get("created_at"),
+        "asset_id": int(asset["id"]),
+        "asset_name": asset_name,
+        "archive_sha256": hashlib.sha256(archive).hexdigest(),
+    }
+    return archive, metadata, str(source["archive_root"])
+
+
 def safe_relative_path(value: str, label: str) -> PurePosixPath:
     path = PurePosixPath(value.replace("\\", "/"))
     if path.is_absolute() or not path.parts or any(part in ("", ".", "..") for part in path.parts):
@@ -188,20 +216,30 @@ def write_mappings(
 ) -> list[Path]:
     written_files = []
     for mapping in mappings:
-        source = safe_relative_path(mapping["from"], "source")
         destination = safe_relative_path(mapping["to"], "destination")
         selected: list[tuple[PurePosixPath, bytes]] = []
+        source_value = str(mapping["from"])
 
-        if source in archive_files:
-            selected.append((destination, archive_files[source]))
-        else:
+        if source_value in ("", "."):
             for archive_path, contents in archive_files.items():
-                if len(archive_path.parts) > len(source.parts) and archive_path.parts[: len(source.parts)] == source.parts:
-                    suffix = archive_path.parts[len(source.parts) :]
-                    selected.append((PurePosixPath(*destination.parts, *suffix), contents))
+                selected.append(
+                    (PurePosixPath(*destination.parts, *archive_path.parts), contents)
+                )
+        else:
+            source = safe_relative_path(source_value, "source")
+            if source in archive_files:
+                selected.append((destination, archive_files[source]))
+            else:
+                for archive_path, contents in archive_files.items():
+                    if (
+                        len(archive_path.parts) > len(source.parts)
+                        and archive_path.parts[: len(source.parts)] == source.parts
+                    ):
+                        suffix = archive_path.parts[len(source.parts) :]
+                        selected.append((PurePosixPath(*destination.parts, *suffix), contents))
 
         if not selected:
-            raise RuntimeError(f"release archive is missing expected path: {source}")
+            raise RuntimeError(f"release archive is missing expected path: {source_value}")
 
         for relative_path, contents in selected:
             output = staging.joinpath(*relative_path.parts)
@@ -212,6 +250,24 @@ def write_mappings(
             output.write_bytes(preserve_equivalent_packaging_metadata(contents, relative_path))
             written_files.append(output)
     return written_files
+
+
+def copy_preserved_paths(paths: list[str], staging: Path) -> None:
+    for value in paths:
+        relative = safe_relative_path(value, "preserved library")
+        source = LIBS_DIR.joinpath(*relative.parts)
+        destination = staging.joinpath(*relative.parts)
+        if not source.exists():
+            raise RuntimeError(f"preserved library path does not exist: {relative}")
+        if destination.exists():
+            raise RuntimeError(f"duplicate preserved library path: {relative}")
+        if source.is_dir():
+            shutil.copytree(source, destination)
+        elif source.is_file():
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, destination)
+        else:
+            raise RuntimeError(f"unsupported preserved library path: {relative}")
 
 
 def replace_package_tokens(files: list[Path], metadata: dict[str, Any]) -> None:
@@ -309,6 +365,7 @@ def main() -> int:
         staging = Path(temporary_directory) / "libs"
         staging.mkdir()
         shutil.copy2(LIBS_DIR / "embeds.xml", staging / "embeds.xml")
+        copy_preserved_paths(manifest.get("preserve", []), staging)
 
         for library in manifest["libraries"]:
             name = str(library["name"])
@@ -318,6 +375,8 @@ def main() -> int:
                 archive, metadata, archive_root = latest_curseforge_release(source)
             elif source["type"] == "github":
                 archive, metadata, archive_root = latest_github_archive(source)
+            elif source["type"] == "github_release":
+                archive, metadata, archive_root = latest_github_release_asset(source)
             else:
                 raise RuntimeError(f"unsupported source type for {name}: {source['type']}")
             archive_files = normalized_archive_files(archive, archive_root)
