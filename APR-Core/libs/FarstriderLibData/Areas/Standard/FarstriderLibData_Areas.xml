@@ -1,0 +1,14 @@
+<Ui>
+	<Script file='FarstriderLibData_Areas.lua' />
+	<Script file='FarstriderLibData_Areas_enUS.lua' />
+	<Script file='FarstriderLibData_Areas_deDE.lua' />
+	<Script file='FarstriderLibData_Areas_esES.lua' />
+	<Script file='FarstriderLibData_Areas_esMX.lua' />
+	<Script file='FarstriderLibData_Areas_frFR.lua' />
+	<Script file='FarstriderLibData_Areas_itIT.lua' />
+	<Script file='FarstriderLibData_Areas_koKR.lua' />
+	<Script file='FarstriderLibData_Areas_ptBR.lua' />
+	<Script file='FarstriderLibData_Areas_ruRU.lua' />
+	<Script file='FarstriderLibData_Areas_zhCN.lua' />
+	<Script file='FarstriderLibData_Areas_zhTW.lua' />
+</Ui>

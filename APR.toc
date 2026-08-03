@@ -5,9 +5,11 @@
 ## Author: Core: Neogeekmo, Rycia, Kamian | Route: Pahonix, Neogeekmo | Support: NightofStarrs, Pahonix | (legacy: zyrrael, Deathmessinger, 8goldbow)
 ## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
 ## Version: @project-version@
-## OptionalDeps: FarstriderLib, FarstriderLibData, LibTaxiData, ElvUI
+## RequiredDeps: LibTaxiData
+## OptionalDeps: ElvUI
 
 ## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted, APRGossipValidated
+## SavedVariablesPerCharacter: FarstriderLibData_CharacterSettings
 
 ## Category-enUS: Quests
 ## Category-deDE: Quests

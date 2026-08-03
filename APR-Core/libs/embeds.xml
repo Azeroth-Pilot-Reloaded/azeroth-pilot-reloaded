@@ -25,4 +25,7 @@
   <Include file="LibDBIcon-1.0\lib.xml"/>
   <Include file="LibSharedMedia-3.0\lib.xml"/>
   <Script file="LibWindow-1.1\LibWindow-1.1.lua" />
+
+  <Include file="FarstriderLibData\FarstriderLibData_Standard.xml"/>
+  <Include file="FarstriderLib\FarstriderLib.xml"/>
 </Ui>

@@ -1,8 +1,6 @@
 package-as: APR
 
-optional-dependencies:
-  - farstriderlib
-  - farstriderlib-data
+required-dependencies:
   - libtaxidata
 
 ignore:

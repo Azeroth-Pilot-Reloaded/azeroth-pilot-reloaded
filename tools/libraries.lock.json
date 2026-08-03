@@ -61,14 +61,25 @@
       "date_created": "2026-07-17T02:09:48.397Z",
       "archive_sha256": "b371b8ecf3e27c83d51688a06998bc1458a178ecd57661b603461be7c2e68dc5"
     },
-    "LibWindow-1.1": {
-      "source": "curseforge",
-      "project_id": 16386,
-      "file_id": 3368633,
-      "version": "r23-90100",
-      "file_name": "LibWindow-1.1-r23-90100.zip",
-      "date_created": "2021-06-29T09:33:38.723Z",
-      "archive_sha256": "66be4cdef7ec692c6ea08e480625d9bc284e9a93782ff0b72e83997edb0cc07d"
+    "FarstriderLib": {
+      "source": "github_release",
+      "repository": "Deathwing/Mount-Route-Planner",
+      "release_id": 359061986,
+      "version": "v2.4.4",
+      "date_created": "2026-07-24T03:17:52Z",
+      "asset_id": 487936896,
+      "asset_name": "FarstriderLib.zip",
+      "archive_sha256": "40ba08a4a4fb62d3f45f7f6532d0dc22ae4ac3926307413f0b71335ca821341e"
+    },
+    "FarstriderLibData": {
+      "source": "github_release",
+      "repository": "Deathwing/Mount-Route-Planner",
+      "release_id": 359061986,
+      "version": "v2.4.4",
+      "date_created": "2026-07-24T03:17:52Z",
+      "asset_id": 487936899,
+      "asset_name": "FarstriderLibData.zip",
+      "archive_sha256": "cb48d91a6dc22e97467b756dfb538bd08e8b932afef37597581d266a4bdf17d5"
     }
   }
 }
