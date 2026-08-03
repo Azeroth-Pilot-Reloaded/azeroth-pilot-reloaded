@@ -5,6 +5,7 @@ from __future__ import annotations
 
 import argparse
 import hashlib
+import http.client
 import io
 import json
 import os
@@ -28,6 +29,8 @@ DEFAULT_MANIFEST = ROOT / "tools" / "libraries.json"
 LOCK_FILE = ROOT / "tools" / "libraries.lock.json"
 USER_AGENT = "APR-library-updater/1.0 (+https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded)"
 MAX_ARCHIVE_SIZE = 25 * 1024 * 1024
+REQUEST_ATTEMPTS = 2
+REQUEST_TIMEOUT_SECONDS = 10
 TEXT_SUFFIXES = {".lua", ".toc", ".xml"}
 
 
@@ -40,10 +43,10 @@ def request_bytes(url: str, *, accept: str | None = None) -> bytes:
         headers["Authorization"] = f"Bearer {github_token}"
 
     last_error: Exception | None = None
-    for attempt in range(3):
+    for attempt in range(REQUEST_ATTEMPTS):
         try:
             request = urllib.request.Request(url, headers=headers)
-            with urllib.request.urlopen(request, timeout=60) as response:
+            with urllib.request.urlopen(request, timeout=REQUEST_TIMEOUT_SECONDS) as response:
                 declared_size = response.headers.get("Content-Length")
                 if declared_size and int(declared_size) > MAX_ARCHIVE_SIZE:
                     raise RuntimeError(f"download is unexpectedly large: {declared_size} bytes")
@@ -51,10 +54,16 @@ def request_bytes(url: str, *, accept: str | None = None) -> bytes:
                 if len(payload) > MAX_ARCHIVE_SIZE:
                     raise RuntimeError("download exceeded the 25 MiB safety limit")
                 return payload
-        except (OSError, urllib.error.URLError, RuntimeError) as error:
+        except (OSError, urllib.error.URLError, http.client.HTTPException, RuntimeError) as error:
             last_error = error
-            if attempt < 2:
-                time.sleep(1 + attempt)
+            if attempt + 1 < REQUEST_ATTEMPTS:
+                delay = 1 + attempt
+                print(
+                    f"  Network request failed ({error}); retrying in {delay}s...",
+                    file=sys.stderr,
+                    flush=True,
+                )
+                time.sleep(delay)
     raise RuntimeError(f"failed to download {url}: {last_error}")
 
 
@@ -270,6 +279,28 @@ def copy_preserved_paths(paths: list[str], staging: Path) -> None:
             raise RuntimeError(f"unsupported preserved library path: {relative}")
 
 
+def copy_existing_mappings(mappings: list[dict[str, str]], staging: Path) -> list[Path]:
+    copied_files = []
+    for mapping in mappings:
+        relative = safe_relative_path(mapping["to"], "existing library")
+        source = LIBS_DIR.joinpath(*relative.parts)
+        destination = staging.joinpath(*relative.parts)
+        if not source.exists():
+            raise RuntimeError(f"existing library path does not exist: {relative}")
+        if destination.exists():
+            raise RuntimeError(f"duplicate existing library path: {relative}")
+        if source.is_dir():
+            shutil.copytree(source, destination)
+            copied_files.extend(path for path in destination.rglob("*") if path.is_file())
+        elif source.is_file():
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, destination)
+            copied_files.append(destination)
+        else:
+            raise RuntimeError(f"unsupported existing library path: {relative}")
+    return copied_files
+
+
 def replace_package_tokens(files: list[Path], metadata: dict[str, Any]) -> None:
     version = metadata.get("version")
     if not version and metadata.get("commit"):
@@ -349,6 +380,15 @@ def encoded_lock(metadata: dict[str, Any]) -> bytes:
     return (json.dumps(metadata, indent=2, ensure_ascii=False) + "\n").encode("utf-8")
 
 
+def existing_lock_libraries() -> dict[str, Any]:
+    if not LOCK_FILE.is_file():
+        return {}
+    contents = json.loads(LOCK_FILE.read_text(encoding="utf-8"))
+    if contents.get("schema") != 1 or not isinstance(contents.get("libraries"), dict):
+        raise RuntimeError(f"unsupported lock file: {LOCK_FILE}")
+    return contents["libraries"]
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check", action="store_true", help="report available changes without writing them")
@@ -360,7 +400,9 @@ def main() -> int:
     if manifest.get("schema") != 1 or not manifest.get("libraries"):
         raise RuntimeError(f"unsupported or empty manifest: {manifest_path}")
 
+    previous_libraries = existing_lock_libraries()
     lock: dict[str, Any] = {"schema": 1, "libraries": {}}
+    unavailable_libraries = []
     with tempfile.TemporaryDirectory(prefix="apr-libraries-") as temporary_directory:
         staging = Path(temporary_directory) / "libs"
         staging.mkdir()
@@ -371,17 +413,32 @@ def main() -> int:
             name = str(library["name"])
             source = library["source"]
             print(f"Resolving {name}...", flush=True)
-            if source["type"] == "curseforge":
-                archive, metadata, archive_root = latest_curseforge_release(source)
-            elif source["type"] == "github":
-                archive, metadata, archive_root = latest_github_archive(source)
-            elif source["type"] == "github_release":
-                archive, metadata, archive_root = latest_github_release_asset(source)
+            source_type = source["type"]
+            if source_type not in ("curseforge", "github", "github_release"):
+                raise RuntimeError(f"unsupported source type for {name}: {source_type}")
+
+            try:
+                if source_type == "curseforge":
+                    archive, metadata, archive_root = latest_curseforge_release(source)
+                elif source_type == "github":
+                    archive, metadata, archive_root = latest_github_archive(source)
+                else:
+                    archive, metadata, archive_root = latest_github_release_asset(source)
+                archive_files = normalized_archive_files(archive, archive_root)
+            except (OSError, RuntimeError, ValueError) as error:
+                metadata = previous_libraries.get(name)
+                if metadata is None:
+                    raise RuntimeError(
+                        f"cannot update {name} and no existing locked copy is available: {error}"
+                    ) from error
+                copy_existing_mappings(library["mappings"], staging)
+                unavailable_libraries.append(name)
+                print(f"  WARNING: update unavailable: {error}", file=sys.stderr, flush=True)
+                print("  Reusing the existing embedded copy.", file=sys.stderr, flush=True)
             else:
-                raise RuntimeError(f"unsupported source type for {name}: {source['type']}")
-            archive_files = normalized_archive_files(archive, archive_root)
-            written_files = write_mappings(archive_files, library["mappings"], staging)
-            replace_package_tokens(written_files, metadata)
+                written_files = write_mappings(archive_files, library["mappings"], staging)
+                replace_package_tokens(written_files, metadata)
+
             lock["libraries"][name] = metadata
             print(f"  {metadata.get('version') or metadata.get('commit')}")
 
@@ -392,7 +449,13 @@ def main() -> int:
         lock_changed = old_lock != new_lock
 
         if not library_changes and not lock_changed:
-            print("All embedded libraries are already up to date.")
+            if unavailable_libraries:
+                print(
+                    "No local changes detected. Updates could not be checked for: "
+                    + ", ".join(unavailable_libraries)
+                )
+            else:
+                print("All embedded libraries are already up to date.")
             return 0
 
         print("Changes detected:")
@@ -410,6 +473,11 @@ def main() -> int:
         temporary_lock.write_bytes(new_lock)
         temporary_lock.replace(LOCK_FILE)
         print("Embedded libraries updated successfully.")
+        if unavailable_libraries:
+            print(
+                "Existing copies were retained for unavailable sources: "
+                + ", ".join(unavailable_libraries)
+            )
         return 0
 
 
