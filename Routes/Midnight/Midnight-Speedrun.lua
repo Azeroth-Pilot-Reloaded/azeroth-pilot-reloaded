@@ -6340,7 +6340,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
             _index = 798,
         },
         {
-            TakePortal = { questID = 91787, ZoneId = 2395 },
+            TakePortal = { questID = 91787, mapID = 2395 },
             Coord = { x = 54.4, y = 5.7 },
             ZoneStepTrigger = { Range = 15, x = -4818.4, y = 8547.4 },
             IsCampaignQuest = true,
@@ -8237,7 +8237,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
             _index = 1044,
         },
         {
-            TakePortal = { questID = 90533, ZoneId = 2413 },
+            TakePortal = { questID = 90533, mapID = 2413 },
             Coord = { x = -4372.7, y = 8500.8 },
             ZoneStepTrigger = { Range = 15, x = -444.9, y = -266.8 },
             SkipForLvl = 90,
@@ -9969,7 +9969,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         },
 
         {
-            TakePortal = { questID = 86543, ZoneId = 2395 },
+            TakePortal = { questID = 86543, mapID = 2395 },
             Coord = { x = -461.2, y = -270 },
             ZoneStepTrigger = { Range = 15, x = -4361.7, y = 8485.8 },
             SkipForLvl = 90,
@@ -11425,7 +11425,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
             _index = 1454,
         },
         {
-            TakePortal = { questID = 86521, ZoneId = 2405 },
+            TakePortal = { questID = 86521, mapID = 2405 },
             ZoneStepTrigger = { Range = 15, x = 135.4, y = 1280.6 },
             IsCampaignQuest = true,
             Zone = 2556,
@@ -11454,7 +11454,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
             _index = 1458,
         },
         {
-            TakePortal = { questID = 86522, ZoneId = 2395 },
+            TakePortal = { questID = 86522, mapID = 2395 },
             Coord = { x = -440.9, y = 890.2 },
             ZoneStepTrigger = { Range = 15, x = -4325.9, y = 8552.6 },
             IsCampaignQuest = true,
@@ -11476,7 +11476,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
             _index = 1461,
         },
         {
-            TakePortal = { questID = 92939, ZoneId = 2405 },
+            TakePortal = { questID = 92939, mapID = 2405 },
             Coord = { x = -4325.6, y = 8537.1 },
             ZoneStepTrigger = { Range = 15, x = -448.9, y = 895.8 },
             SkipForLvl = 90,
@@ -12324,7 +12324,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
             _index = 1568,
         },
         {
-            TakePortal = { questID = 95276, ZoneId = 2395 },
+            TakePortal = { questID = 95276, mapID = 2395 },
             Coord = { x = -441.1, y = 890 },
             ZoneStepTrigger = { Range = 15, x = -4325.9, y = 8552.6 },
             Zone = 2405,

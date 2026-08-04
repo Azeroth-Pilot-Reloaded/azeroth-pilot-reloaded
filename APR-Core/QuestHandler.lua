@@ -649,7 +649,7 @@ function APR:UpdateStep()
             local portalData = step.TakePortal
 
             local questID = portalData.questID
-            local zoneId = portalData.ZoneId
+            local mapID = portalData.mapID
             local currentMapID = C_Map.GetBestMapForUnit("player")
             local parentMapID = APR:GetPlayerParentMapID()
 
@@ -658,17 +658,17 @@ function APR:UpdateStep()
                 return
             end
 
-            if zoneId and (currentMapID == zoneId or parentMapID == zoneId) then
+            if mapID and (currentMapID == mapID or parentMapID == mapID) then
                 APR:NextQuestStep()
                 return
             end
 
             if showStepDetails then
-                local mapInfo = APR:GetMapInfoCached(zoneId)
+                local mapInfo = APR:GetMapInfoCached(mapID)
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
                 local text = string.format(L["USE_PORTAL_TO"], zoneName)
 
-                APR.currentStep:AddQuestSteps("TAKE_PORTAL", text, zoneId)
+                APR.currentStep:AddQuestSteps("TAKE_PORTAL", text, mapID)
             end
         elseif (step.Waypoint) then
             local canAutoSkipWaypoint = not step.NonSkippableWaypoint

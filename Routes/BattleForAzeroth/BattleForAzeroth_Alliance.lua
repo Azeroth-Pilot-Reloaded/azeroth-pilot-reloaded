@@ -10346,7 +10346,7 @@ APR.RouteQuestStepList["1161-KulTiran-intro"] = {
             _index = 4,
         },
         {
-            TakePortal = { questID = 55142, ZoneId = 84 },
+            TakePortal = { questID = 55142, mapID = 84 },
             Coord = { x = -532.4, y = 1127.9 },
             Range = 5,
             Zone = 1161,

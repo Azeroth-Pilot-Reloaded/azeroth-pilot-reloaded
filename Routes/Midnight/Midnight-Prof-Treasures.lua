@@ -415,7 +415,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             _index = 50,
         },
         {
-            TakePortal = { questID = 89182, ZoneId = 2413 },
+            TakePortal = { questID = 89182, mapID = 2413 },
             Coord = { x = -4372.9, y = 8500.9 },
             ZoneStepTrigger = { Range = 15, x = -444.9, y = -266.8 },
             Zone = 2393,
@@ -566,7 +566,7 @@ APR.RouteQuestStepList["2395-Midnight-Profession-Treasures"] = {
             _index = 69,
         },
         {
-            TakePortal = { questID = 89102, ZoneId = 2405 },
+            TakePortal = { questID = 89102, mapID = 2405 },
             Coord = { x = -434.4, y = -285.5 },
             ZoneStepTrigger = { Range = 15, x = -448.9, y = 895.8 },
             Zone = 2413,

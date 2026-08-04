@@ -2264,7 +2264,7 @@ APR.RouteQuestStepList["2395-Arators-Journey"] = {
             _index = 153,
         },
         {
-            TakePortal = { questID = 91787, ZoneId = 2395 },
+            TakePortal = { questID = 91787, mapID = 2395 },
             Coord = { x = 54.4, y = 5.7 },
             ZoneStepTrigger = { Range = 15, x = -4818.4, y = 8547.4 },
             IsCampaignQuest = true,
@@ -3138,7 +3138,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             _index = 106,
         },
         {
-            TakePortal = { ZoneId = 2395, questID = 88922 },
+            TakePortal = { mapID = 2395, questID = 88922 },
             Coord = { x = 7055.2, y = -1878.8 },
             Zone = 2239,
             ZoneStepTrigger = { Range = 15, x = -2802.1, y = 4450.7 },
@@ -3323,7 +3323,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             _index = 130,
         },
         {
-            TakePortal = { ZoneId = 2395, questID = 93385 },
+            TakePortal = { mapID = 2395, questID = 93385 },
             Coord = { x = 2713.8, y = 710.2 },
             Zone = 680,
             ZoneStepTrigger = { Range = 15, x = 4805.6, y = 3559.6 },
@@ -3567,7 +3567,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
             _index = 159,
         },
         {
-            TakePortal = { mapID = 2424, questID = 94957 },
+            TakePortal = { mapID = 2424, questID = 90876 },
             Zone = 2534,
             GossipOptionIDs = { 138563 },
             ZoneStepTrigger = { Range = 15, x = -4616.7, y = 10739.8 },
@@ -5082,7 +5082,7 @@ APR.RouteQuestStepList["2248-Unlock-void-elf-DH"] = {
         },
         {
             Waypoint = 94933,
-            TakePortal = { questID = 94933, ZoneId = 2371 },
+            TakePortal = { questID = 94933, mapID = 2371 },
             Coord = { x = -2471.3, y = 2601.3 },
             ZoneStepTrigger = { Range = 15, x = 206.1, y = 1649.9 },
             IsQuestsUncompleted = { 90972 },

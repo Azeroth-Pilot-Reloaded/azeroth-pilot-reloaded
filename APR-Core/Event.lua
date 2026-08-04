@@ -1244,11 +1244,11 @@ end
 
 function APR.event.functions.zone(event, ...)
     if step and step.TakePortal then
-        local portalData = step.TakePortal
-        local zoneId = portalData.ZoneId
+        local portalData   = step.TakePortal
+        local mapID        = portalData.mapID
         local currentMapID = C_Map.GetBestMapForUnit("player")
-        local parentMapID = APR:GetPlayerParentMapID()
-        if currentMapID == zoneId or parentMapID == zoneId then
+        local parentMapID  = APR:GetPlayerParentMapID()
+        if currentMapID == mapID or parentMapID == mapID then
             APR:UpdateNextStep()
         end
     end

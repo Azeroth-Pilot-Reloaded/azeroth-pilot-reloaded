@@ -50,7 +50,7 @@ APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
             _index = 6,
         },
         {
-            TakePortal = { questID = 93086, ZoneId = 1 },
+            TakePortal = { questID = 93086, mapID = 1 },
             Coord = { x = -4271.5, y = 2036.8 },
             ZoneStepTrigger = { Range = 15, x = -4772.9, y = 1400.2 },
             Zone = 85,
@@ -118,7 +118,7 @@ APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
             _index = 16,
         },
         {
-            TakePortal = { questID = 65444, ZoneId = 2022 },
+            TakePortal = { questID = 65444, mapID = 2022 },
             Qpart = { [65444] = { 1 } },
             Coord = { x = -4911.4, y = 1363.4 },
             Zone = 1,
