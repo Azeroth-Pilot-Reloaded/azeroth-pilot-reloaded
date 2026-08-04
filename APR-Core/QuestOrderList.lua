@@ -659,36 +659,36 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     format(L["COMPLETE_SOMETHING"], scenarioTypeLabel, mapName), questInfo, color, isCurrentStep)
             elseif step.LeaveScenario or step.LeaveInstance then
-                local scenarioMapID        = step.LeaveScenario and step.LeaveScenario.mapID or step.LeaveInstance.mapID
-                local questID              = step.LeaveScenario and step.LeaveScenario.questID or
+                local scenarioMapID      = step.LeaveScenario and step.LeaveScenario.mapID or step.LeaveInstance.mapID
+                local questID            = step.LeaveScenario and step.LeaveScenario.questID or
                     step.LeaveInstance.questID
-                local currentMapID         = C_Map.GetBestMapForUnit('player')
-                local mapInfo              = APR:GetMapInfoCached(scenarioMapID)
-                local mapName              = mapInfo and mapInfo.name or UNKNOWN
-                local scenarioInfo         = APR:GetScenarioZoneInfo(scenarioMapID)
-                local isDelveScenario      = scenarioInfo and scenarioInfo.type == "DELVE"
-                local isCompleted          = ((not isDelveScenario) and safeTContains(
+                local currentMapID       = C_Map.GetBestMapForUnit('player')
+                local mapInfo            = APR:GetMapInfoCached(scenarioMapID)
+                local mapName            = mapInfo and mapInfo.name or UNKNOWN
+                local scenarioInfo       = APR:GetScenarioZoneInfo(scenarioMapID)
+                local isDelveScenario    = scenarioInfo and scenarioInfo.type == "DELVE"
+                local isCompleted        = ((not isDelveScenario) and safeTContains(
                     APRScenarioMapIDCompleted and playerID and APRScenarioMapIDCompleted[playerID] or nil,
                     scenarioMapID)) or (questID and C_QuestLog.IsQuestFlaggedCompleted(questID))
 
-                local color                = ((scenarioMapID ~= currentMapID and isCompleted) or currentStepIndex > rawIndex) and
+                local color              = ((scenarioMapID ~= currentMapID and isCompleted) or currentStepIndex > rawIndex) and
                     "green" or "gray";
-                local questInfo            = { { questID = mapName } }
-                local leaveKey             = scenarioInfo and scenarioInfo.type and ("LEAVE_" .. scenarioInfo.type) or
+                local questInfo          = { { questID = mapName } }
+                local leaveKey           = scenarioInfo and scenarioInfo.type and ("LEAVE_" .. scenarioInfo.type) or
                     nil
-                local leaveText            = (leaveKey and L[leaveKey]) or L["SCENARIO"] or UNKNOWN
-                container, activeQuestId   = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
+                local leaveText          = (leaveKey and L[leaveKey]) or L["SCENARIO"] or UNKNOWN
+                container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     leaveText, questInfo, color, isCurrentStep)
             elseif step.TakePortal then
                 local portalData = step.TakePortal
                 local questID = portalData.questID
-                local zoneId = portalData.ZoneId
+                local mapID = portalData.mapID
                 local currentMapID = C_Map.GetBestMapForUnit("player")
                 local parentMapID = APR:GetPlayerParentMapID()
-                local arrived = zoneId and (currentMapID == zoneId or parentMapID == zoneId)
+                local arrived = mapID and (currentMapID == mapID or parentMapID == mapID)
                 local completed = (questID and C_QuestLog.IsQuestFlaggedCompleted(questID)) or arrived
                 local color = colorByCompletion(completed, currentStepIndex, rawIndex)
-                local mapInfo = APR:GetMapInfoCached(zoneId)
+                local mapInfo = APR:GetMapInfoCached(mapID)
                 local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
                 local stepText = string.format(L["USE_PORTAL_TO"], zoneName)
                 local questInfo = { { questID = zoneName } }
