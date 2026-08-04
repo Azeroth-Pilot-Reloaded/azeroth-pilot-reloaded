@@ -32,6 +32,7 @@ MAX_ARCHIVE_SIZE = 25 * 1024 * 1024
 REQUEST_ATTEMPTS = 2
 REQUEST_TIMEOUT_SECONDS = 10
 TEXT_SUFFIXES = {".lua", ".toc", ".xml"}
+UNVERIFIED_EXIT_CODE = 3
 
 
 def request_bytes(url: str, *, accept: str | None = None) -> bytes:
@@ -291,13 +292,21 @@ def copy_existing_mappings(mappings: list[dict[str, str]], staging: Path) -> lis
             raise RuntimeError(f"duplicate existing library path: {relative}")
         if source.is_dir():
             shutil.copytree(source, destination)
-            copied_files.extend(path for path in destination.rglob("*") if path.is_file())
+            mapping_files = [path for path in destination.rglob("*") if path.is_file()]
         elif source.is_file():
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(source, destination)
-            copied_files.append(destination)
+            mapping_files = [destination]
         else:
             raise RuntimeError(f"unsupported existing library path: {relative}")
+
+        for copied_file in mapping_files:
+            copied_relative = PurePosixPath(copied_file.relative_to(staging).as_posix())
+            contents = normalized_text_bytes(copied_file.read_bytes(), copied_relative)
+            copied_file.write_bytes(
+                preserve_equivalent_packaging_metadata(contents, copied_relative)
+            )
+        copied_files.extend(mapping_files)
     return copied_files
 
 
@@ -456,7 +465,7 @@ def main() -> int:
                 )
             else:
                 print("All embedded libraries are already up to date.")
-            return 0
+            return UNVERIFIED_EXIT_CODE if args.check and unavailable_libraries else 0
 
         print("Changes detected:")
         for change in library_changes:
@@ -465,6 +474,13 @@ def main() -> int:
             print(f"  M {LOCK_FILE.relative_to(ROOT).as_posix()}")
 
         if args.check:
+            if unavailable_libraries:
+                print(
+                    "Verification incomplete because sources were unavailable: "
+                    + ", ".join(unavailable_libraries),
+                    file=sys.stderr,
+                )
+                return UNVERIFIED_EXIT_CODE
             print("Run tools/update_libraries.py without --check to apply these changes.")
             return 1
 
