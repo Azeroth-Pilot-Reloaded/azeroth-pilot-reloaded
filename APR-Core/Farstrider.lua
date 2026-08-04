@@ -459,7 +459,7 @@ function APR.farstrider:ShowPathError(destination, detail)
 
     APR.currentStep:AddQuestSteps(
         self.ErrorStepKey,
-        L["ERROR"] .. " - " .. L["PATH_NOT_FOUND"] .. " " .. destinationName .. suffix,
+        string.format(L["ERROR_MESSAGE"], L["PATH_NOT_FOUND"] .. " " .. destinationName .. suffix),
         destination and destination.mapID or 0,
         nil,
         true,
