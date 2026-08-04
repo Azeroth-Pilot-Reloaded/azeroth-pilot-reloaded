@@ -13,7 +13,8 @@ APR.ScenarioEntrances = {
     [2347] = { Coord = { x = -627.6, y = 689.7 }, zone = 2255, type = "DELVE" },
     [2259] = { Coord = { x = -1308.6, y = -1827.7 }, zone = 2255, type = "DELVE" },
     [2299] = { Coord = { x = -1091.3, y = -2500.5 }, zone = 2255, type = "DELVE" },
-    [0] = { Coord = { x = 166.0, y = -1975.1 }, zone = 2255, type = "DELVE" },
+    -- Legacy sentinel for Zekvir's Lair, whose interior map ID was not recorded.
+    [0000] = { Coord = { x = 166.0, y = -1975.1 }, zone = 2255, type = "DELVE" },
     [2423] = { Coord = { x = 694.7, y = -13 }, zone = 2214, type = "DELVE" },
     [2502] = { Coord = { x = -4142, y = 4750.4 }, zone = 2395, type = "DELVE" },
     [2577] = { Coord = { x = -4465.6, y = 8780.4 }, zone = 2395, type = "DELVE" },

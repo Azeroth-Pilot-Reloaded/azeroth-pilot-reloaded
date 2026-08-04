@@ -81,6 +81,16 @@ local function ReportMissingDependencies(missingDependencies)
     APR:PrintError(string.format(L["ADDON_DEPENDENCY_MISSING"], missingDependencies))
 end
 
+function APR.farstrider:GetData()
+    local api, missingDependencies = GetFarstriderAPI()
+    if not api then
+        ReportMissingDependencies(missingDependencies)
+        return nil
+    end
+
+    return api.DATA
+end
+
 local dependencyEventFrame = CreateFrame("Frame")
 dependencyEventFrame:RegisterEvent("PLAYER_LOGIN")
 dependencyEventFrame:SetScript("OnEvent", function()
@@ -94,9 +104,13 @@ local function IsActionUsable(action)
     end
 
     if action.type == "housing" then
-        local api = GetFarstriderAPI()
-        return C_Housing ~= nil and api ~= nil and type(api.DATA.GetHousingData) == "function" and
-            api.DATA.GetHousingData() ~= nil
+        if C_Housing == nil then
+            return false
+        end
+
+        local data = APR.farstrider:GetData()
+        return data ~= nil and type(data.GetHousingData) == "function" and
+            data.GetHousingData() ~= nil
     end
 
     if action.type == "housing_return" then
@@ -240,7 +254,7 @@ local function PathRequiresTravelAction(path)
 end
 
 function APR.farstrider:IsNavigating()
-    return self.activePathStep ~= nil and APR.IsInRouteZone == false
+    return self.activePathStep ~= nil and APR.IsInRouteZone ~= true
 end
 
 function APR.farstrider:ForceRefresh()
@@ -309,8 +323,14 @@ function APR.farstrider:MarkRouteReady()
     end
 end
 
+function APR.farstrider:RefreshStepForNavigation()
+    self._suppressScheduledRouteCheck = true
+    APR:UpdateStep()
+    self._suppressScheduledRouteCheck = nil
+end
+
 function APR.farstrider:ScheduleRouteCheck(stepToken)
-    if not stepToken or self._scheduledStepToken == stepToken then
+    if self._suppressScheduledRouteCheck or not stepToken or self._scheduledStepToken == stepToken then
         return
     end
 
@@ -581,7 +601,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
 
     if not destination then
         if not wasShowingNavigation then
-            APR:UpdateStep()
+            self:RefreshStepForNavigation()
         end
         self:ShowPathError(nil, L["PATH_ERROR_DESTINATION_MISSING"])
         return
@@ -622,7 +642,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
     )
 
     if not wasShowingNavigation then
-        APR:UpdateStep()
+        self:RefreshStepForNavigation()
     end
 
     APR.Arrow:SetArrowActive(false, 0, 0)

@@ -43,6 +43,8 @@ function APR.taxiData:IsAvailable()
 end
 
 ---Call a LibTaxiData API without exposing its global table throughout APR.
+---Wrapper failures return nil plus the missing dependency name; successful calls
+---forward every value from the library method unchanged.
 ---@param methodName string
 ---@param ... any
 ---@return any

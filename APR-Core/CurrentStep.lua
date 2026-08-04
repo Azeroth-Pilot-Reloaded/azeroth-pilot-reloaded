@@ -1363,7 +1363,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     end
 
     local isHousingAction = attribute == "housing" or attribute == "housing_return"
-    local farstriderData = _G.FarstriderLib_API and _G.FarstriderLib_API.DATA or nil
+    local farstriderData = attribute == "housing" and APR.farstrider and APR.farstrider:GetData() or nil
     local housingData = attribute == "housing" and farstriderData and
         type(farstriderData.GetHousingData) == "function" and farstriderData.GetHousingData() or nil
     if attribute == "housing" and not housingData then
