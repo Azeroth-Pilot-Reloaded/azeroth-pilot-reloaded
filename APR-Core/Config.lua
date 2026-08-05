@@ -179,6 +179,7 @@ function APR.settings:InitializeSettings()
             enableAddon = true,
             changeLogFrame = {},
             showChangeLog = true,
+            checkForUpdate = true,
             lastRecordedVersion = '',
             -- ElvUI
             elvuiSkin = true,
@@ -1755,6 +1756,14 @@ function APR.settings:createBlizzOptions()
                                 order = 1.2,
                                 type = "toggle",
                                 name = L["SHOW_CHANGELOG"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                            },
+                            checkForUpdate = {
+                                order = 1.21,
+                                type = "toggle",
+                                name = L["CHECK_FOR_UPDATE"],
                                 width = "full",
                                 get = GetProfileOption,
                                 set = SetProfileOption,

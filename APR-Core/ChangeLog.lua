@@ -133,6 +133,9 @@ function APR.changelog:OnInit()
     ChangeLogFrame:Hide()
 
     if APR.version ~= APR.settings.profile.lastRecordedVersion then
+        if APR.settings.profile.checkForUpdate then
+            APR:PrintInfo(string.format(L["NEW_VERSION_ALERT"], APR:WrapTextInColorCode(APR.version, "00ff00")))
+        end
         if APR.settings.profile.showChangeLog then
             self:ShowChangeLog()
         end
