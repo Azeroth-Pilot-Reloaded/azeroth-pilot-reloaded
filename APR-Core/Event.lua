@@ -970,6 +970,8 @@ end
 function APR.event.functions.partyData(event, ...)
     -- To request the group data from the party members
     APR.party:RequestData()
+    -- Broadcast our version to peers for outdated-addon detection
+    APR.versionCheck:BroadcastVersion()
 end
 
 function APR.event.functions.petCombatUI(event, ...)

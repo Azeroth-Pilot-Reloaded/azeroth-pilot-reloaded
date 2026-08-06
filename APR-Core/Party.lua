@@ -661,6 +661,12 @@ function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
     local allowIncomingData = APR.settings.profile.receiveGroupData
 
     if (channel == "PARTY" or channel == "INSTANCE_CHAT") and message then
+        if prefix == "APRVersionCheck" then
+            if message and #message <= 32 then
+                APR.versionCheck:HandleVersionMessage(message)
+            end
+        end
+
         if prefix == "APRPartyRequest" then
             APR:Debug("Received APRPartyRequestData, sending group data", message)
             self:SendGroupMessage(true)
