@@ -44,7 +44,8 @@ local FillersFrame_StepHolder = CreateFrame("Frame", "FillersFrame_StepHolder", 
 FillersFrame_StepHolder:SetAllPoints()
 
 -- Create the fillers header
-local FillersFrameHeader = APR:CreateFrameHeader("FillersFrameHeader", FillersFrame, L["STEP_FILLERS"])
+local FillersFrameHeader = APR:CreateFrameHeader("FillersFrameHeader", FillersFrame, L["STEP_FILLERS"], nil,
+    "fillers")
 
 -- Setup drag and drop for the header
 APR:SetupHeaderDrag(FillersFrameHeader, FillersFrame, function()
@@ -125,7 +126,8 @@ end
 -- Helper function to create step frames
 local function AddStepsFrame(questDesc, extraLineText, color)
     local text = extraLineText or questDesc
-    return APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, extraLineText ~= nil, color, nil)
+    return APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, extraLineText ~= nil, color, nil,
+        nil, "fillers")
 end
 
 -- Add a filler step
@@ -219,6 +221,15 @@ function APR.fillersFrame:ReOrderFillerSteps()
     end
 
     self:RefreshFillersFrame(true) -- Force refresh after reordering
+end
+
+function APR.fillersFrame:RefreshTextLayout()
+    for _, container in pairs(APR.currentStep.fillersList) do
+        if container and container.font then
+            container:SetHeight(container.font:GetStringHeight() + 10)
+        end
+    end
+    self:ReOrderFillerSteps()
 end
 
 -- Remove all filler steps

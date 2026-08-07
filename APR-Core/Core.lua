@@ -68,6 +68,13 @@ function APR:OnInitialize()
     self:Love()
     self.settings:InitializeBlizOptions()
     self:ApplyLoveColors()
+    self:ApplyAllTextStyles()
+    if self.Arrow and self.Arrow.UpdateTextAppearance then
+        self.Arrow:UpdateTextAppearance()
+    end
+    if self.RouteSelection and self.RouteSelection.UpdateTextAppearance then
+        self.RouteSelection:UpdateTextAppearance()
+    end
 
     -- APR Saved Data
     APRData = APRData or {}

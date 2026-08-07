@@ -37,6 +37,8 @@ bar:SetLabel(L["AFK"])
 bar:SetColor(unpack(APR.Color.blue))
 bar:SetShadowColor(0, 0, 0, 0.85)
 bar:SetPoint("CENTER", AfkFrame)
+APR:RegisterFontString(bar.candyBarLabel, "afk", { role = "base" })
+APR:RegisterFontString(bar.candyBarDuration, "afk", { role = "base" })
 
 
 ---------------------------------------------------------------------------------------

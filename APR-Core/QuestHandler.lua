@@ -1073,7 +1073,7 @@ function APR:UpdateStep()
         if step.ResetRoute then
             APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", function()
                 APRData[APR.PlayerID][APR.ActiveRoute] = 1
-                APR:PrintInfo(APR:WrapTextInColorCode("APR", "00bfff") .. " Route Reseted")
+                APR:PrintInfo(APR:WrapTextWithAppearanceColor("APR", "general", "accent") .. " Route Reseted")
                 APR:UpdateQuestAndStep()
             end)
         end

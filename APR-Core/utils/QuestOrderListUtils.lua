@@ -42,13 +42,8 @@ function APR.questOrderListUtils:CreateTextFont(parent, text, width, color)
     fontString:SetJustifyH("LEFT")
     fontString:SetText(text)
     fontString:SetWidth(width)
-    if color == "gray" then
-        fontString:SetTextColor(unpack(APR.Color.gray))
-    elseif color == "green" then
-        fontString:SetTextColor(unpack(APR.Color.green))
-    else
-        fontString:SetTextColor(unpack(APR.Color.darkGray))
-    end
+    local role = color == "green" and "success" or "muted"
+    APR:RegisterFontString(fontString, "questOrderList", { role = role })
     return fontString
 end
 
@@ -138,12 +133,10 @@ end
 function APR.questOrderListUtils:SetCurrentStepIndicator(stepList, scrollFrame, stepindex)
     local container = stepList[stepindex]
     if not container then return end
-    container.indexFont:SetFontObject("GameFontHighlight")
-    container.titleFont:SetFontObject("GameFontHighlight")
-    container.indexFont:SetTextColor(unpack(APR.Color.yellow))
-    container.titleFont:SetTextColor(unpack(APR.Color.yellow))
+    APR:SetFontStringRole(container.indexFont, "warning")
+    APR:SetFontStringRole(container.titleFont, "warning")
     for _, questFont in pairs(container.questFonts) do
-        questFont:SetTextColor(unpack(APR.Color.white))
+        APR:SetFontStringRole(questFont, "base")
     end
 
     C_Timer.After(0.1, function()

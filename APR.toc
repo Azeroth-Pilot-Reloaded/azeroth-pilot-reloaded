@@ -39,6 +39,8 @@ APR-Core/TaxiData.lua
 APR-Core/utils/Utils.lua
 APR-Core/utils/PlayerUtils.lua
 APR-Core/utils/ProfileUtils.lua
+APR-Core/TextStyles.lua
+APR-Core/utils/TextStyleUtils.lua
 APR-Core/utils/TargetUtils.lua
 APR-Core/utils/QuestUtils.lua
 APR-Core/utils/InstanceUtils.lua

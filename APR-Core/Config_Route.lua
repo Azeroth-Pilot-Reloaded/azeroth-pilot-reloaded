@@ -85,7 +85,7 @@ local function EnsurePrefabWrappedButtonWidget()
         text:SetJustifyH("CENTER")
         text:SetJustifyV("MIDDLE")
         text:SetWordWrap(false)
-        text:SetFontObject(GameFontNormalSmall)
+        APR:RegisterFontString(text, "general", { role = "base", sizeDelta = -2 })
 
         local widget = {
             text = text,
@@ -439,10 +439,12 @@ local function CreateCustomPathTableFrame(name)
     local idColumn = contentFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     idColumn:SetPoint("TOPLEFT", 10, 0)
     idColumn:SetText(L["ROUTE_ID"])
+    APR:RegisterFontString(idColumn, "general", { role = "accent" })
 
     local nameColumn = contentFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     nameColumn:SetPoint("TOPLEFT", idColumn, "TOPRIGHT", 50, 0)
     nameColumn:SetText(L["NAME"])
+    APR:RegisterFontString(nameColumn, "general", { role = "accent" })
 
     return frame
 end
@@ -478,9 +480,11 @@ function SetCustomPathListFrame(widget, name)
         local noRoutesID = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         noRoutesID:SetPoint("LEFT")
         noRoutesID:SetText('-')
+        APR:RegisterFontString(noRoutesID, "general", { role = "muted" })
         local noRoutesText = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         noRoutesText:SetPoint("LEFT", noRoutesID, "RIGHT", 50, 0)
         noRoutesText:SetText(L["NO_ROUTE"])
+        APR:RegisterFontString(noRoutesText, "general", { role = "muted" })
 
         -- Store the font string in the table
         tinsert(widget.fontStringsContainer, noRoutesContainer)
@@ -511,10 +515,12 @@ function SetCustomPathListFrame(widget, name)
             local routeID = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             routeID:SetPoint("LEFT")
             routeID:SetText(tostring(i))
+            APR:RegisterFontString(routeID, "general", { role = "base" })
 
             local nameText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             nameText:SetPoint("LEFT", routeID, "RIGHT", 50, 0)
             nameText:SetText(route)
+            APR:RegisterFontString(nameText, "general", { role = "base" })
 
             local upButton = CreateFrame("Button", nil, lineContainer, "BackdropTemplate")
             upButton:SetSize(22, 22)
@@ -530,7 +536,7 @@ function SetCustomPathListFrame(widget, name)
             end)
             upButton:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-                GameTooltip:AddLine(route .. " - " .. L["UP"])
+                APR:AddTooltipLine(GameTooltip, route .. " - " .. L["UP"], "general", "base")
                 GameTooltip:Show()
             end)
             upButton:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
@@ -552,7 +558,7 @@ function SetCustomPathListFrame(widget, name)
             end)
             downButton:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-                GameTooltip:AddLine(route .. " - " .. L["DOWN"])
+                APR:AddTooltipLine(GameTooltip, route .. " - " .. L["DOWN"], "general", "base")
                 GameTooltip:Show()
             end)
             downButton:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
@@ -562,8 +568,8 @@ function SetCustomPathListFrame(widget, name)
 
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-                GameTooltip:AddLine(route)
-                GameTooltip:AddLine(L["REMOVE_ZONE_FROM_CUSTOM_PATH"], 1, 1, 1, true)
+                APR:AddTooltipLine(GameTooltip, route, "general", "accent")
+                APR:AddTooltipLine(GameTooltip, L["REMOVE_ZONE_FROM_CUSTOM_PATH"], "general", "base", true)
                 GameTooltip:Show()
             end)
             lineContainer:SetScript("OnLeave", function(self)
@@ -597,11 +603,13 @@ local function CreateRouteTableFrame(name)
     local nameColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     nameColumn:SetPoint("TOPLEFT", 10, 0)
     nameColumn:SetText(L["NAME"])
+    APR:RegisterFontString(nameColumn, "general", { role = "accent" })
     frame.nameColumn = nameColumn
 
     local categoryColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     categoryColumn:SetPoint("TOPLEFT", 285, 0)
     categoryColumn:SetText(L["CATEGORY"])
+    APR:RegisterFontString(categoryColumn, "general", { role = "accent" })
     frame.categoryColumn = categoryColumn
 
     local statusColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
@@ -609,6 +617,7 @@ local function CreateRouteTableFrame(name)
     statusColumn:SetWidth(58)
     statusColumn:SetJustifyH("RIGHT")
     statusColumn:SetText(L["STATUS"])
+    APR:RegisterFontString(statusColumn, "general", { role = "accent" })
     frame.statusColumn = statusColumn
 
     local function CreateSortClickArea(key)
@@ -619,7 +628,7 @@ local function CreateRouteTableFrame(name)
         end)
         button:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_TOP")
-            GameTooltip:AddLine(L["CLICK_SORT"])
+            APR:AddTooltipLine(GameTooltip, L["CLICK_SORT"], "general", "base")
             GameTooltip:Show()
         end)
         button:SetScript("OnLeave", function()
@@ -661,6 +670,7 @@ local function CreateRouteSearchFrame(name)
 
     local label = frame:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     label:SetPoint("LEFT", frame, "LEFT", 10, 0)
+    APR:RegisterFontString(label, "general", { role = "accent", sizeDelta = -2 })
 
     local editBox = CreateFrame("EditBox", nil, frame, "InputBoxTemplate")
     editBox:SetAutoFocus(false)
@@ -668,6 +678,7 @@ local function CreateRouteSearchFrame(name)
     editBox:SetPoint("LEFT", label, "RIGHT", 8, 0)
     editBox:SetPoint("RIGHT", frame, "RIGHT", -10, 0)
     editBox:SetTextInsets(6, 6, 0, 0)
+    APR:RegisterFontString(editBox, "general", { role = "base" })
 
     editBox:SetScript("OnEscapePressed", function(self)
         self:ClearFocus()
@@ -817,6 +828,7 @@ function SetRouteListTab(widget, name)
 
         local noRoutesText = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         noRoutesText:SetPoint("LEFT")
+        APR:RegisterFontString(noRoutesText, "general", { role = "muted" })
         if search ~= "" then
             noRoutesText:SetText(L["NO_ROUTE"])
         else
@@ -853,12 +865,14 @@ function SetRouteListTab(widget, name)
             nameText:SetWidth(270)
             nameText:SetJustifyH("LEFT")
             nameText:SetText(route.routeName)
+            APR:RegisterFontString(nameText, "general", { role = "base" })
 
             local categoryText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             categoryText:SetPoint("LEFT", nameText, "RIGHT", 10, 0)
             categoryText:SetWidth(70)
             categoryText:SetJustifyH("LEFT")
             categoryText:SetText(route.categoryValue)
+            APR:RegisterFontString(categoryText, "general", { role = "base" })
 
             local statusText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             statusText:SetPoint("RIGHT")
@@ -867,29 +881,31 @@ function SetRouteListTab(widget, name)
             statusText:SetWordWrap(true)
 
             statusText:SetText(route.statusValue)
+            APR:RegisterFontString(statusText, "general", { role = "base" })
 
             local routeTabName = route.tabName or name
             local isDisabled = (route.visibility == "disabled")
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                 -- Route name (yellow title)
-                GameTooltip:AddLine(route.routeName, 1, 0.82, 0)
+                APR:AddTooltipLine(GameTooltip, route.routeName, "general", "accent")
                 -- Category & Status
-                GameTooltip:AddLine(string.format(L["CATEGORY_VALUE"], route.categoryValue), 0.8, 0.8,
-                    0.8)
-                GameTooltip:AddLine(string.format(L["STATUS_VALUE"], route.statusValue), 0.8, 0.8, 0.8)
+                APR:AddTooltipLine(GameTooltip, string.format(L["CATEGORY_VALUE"], route.categoryValue),
+                    "general", "muted")
+                APR:AddTooltipLine(GameTooltip, string.format(L["STATUS_VALUE"], route.statusValue),
+                    "general", "muted")
                 GameTooltip:AddLine(" ")
                 if isDisabled then
-                    GameTooltip:AddLine(L["ROUTE_DISABLED"], 1, 0.3, 0.3, true)
+                    APR:AddTooltipLine(GameTooltip, L["ROUTE_DISABLED"], "general", "error", true)
                     -- Show unmet conditions
                     local unmetConditions = APR:GetUnmetConditions(route.fileName)
                     if #unmetConditions > 0 then
                         for _, condition in ipairs(unmetConditions) do
-                            GameTooltip:AddLine("  - " .. condition, 1, 0.5, 0.3)
+                            APR:AddTooltipLine(GameTooltip, "  - " .. condition, "general", "warning")
                         end
                     end
                 else
-                    GameTooltip:AddLine(L["MOVE_ROUTE_TO_CUSTOM_PATH"], 0.5, 0.8, 1, true)
+                    APR:AddTooltipLine(GameTooltip, L["MOVE_ROUTE_TO_CUSTOM_PATH"], "general", "success", true)
                 end
                 GameTooltip:Show()
             end)
@@ -911,9 +927,9 @@ function SetRouteListTab(widget, name)
                 end
             end)
             if isDisabled then
-                nameText:SetTextColor(unpack(APR.Color.midGray))
-                categoryText:SetTextColor(unpack(APR.Color.midGray))
-                statusText:SetTextColor(unpack(APR.Color.midGray))
+                APR:SetFontStringRole(nameText, "muted")
+                APR:SetFontStringRole(categoryText, "muted")
+                APR:SetFontStringRole(statusText, "muted")
                 lineContainer:SetScript("OnMouseDown", nil)
             end
 
@@ -962,12 +978,12 @@ local function InitRouteSearchFrame(Type)
             if disabled then
                 self.frame.editBox:EnableMouse(false)
                 self.frame.editBox:ClearFocus()
-                self.frame.editBox:SetTextColor(0.5, 0.5, 0.5)
-                self.frame.label:SetTextColor(0.5, 0.5, 0.5)
+                APR:SetFontStringRole(self.frame.editBox, "muted")
+                APR:SetFontStringRole(self.frame.label, "muted")
             else
                 self.frame.editBox:EnableMouse(true)
-                self.frame.editBox:SetTextColor(1, 1, 1)
-                self.frame.label:SetTextColor(1, 0.82, 0)
+                APR:SetFontStringRole(self.frame.editBox, "base")
+                APR:SetFontStringRole(self.frame.label, "accent")
             end
         end
 

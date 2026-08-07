@@ -261,10 +261,10 @@ function APR:Debug(msg, data, force)
             APR:Debug(msg, value)
         end
     elseif data then
-        print(APR:WrapTextInColorCode(tostring(msg), "00bfff") .. " - ",
-            APR:WrapTextInColorCode(tostring(data), "00ff00"))
+        print(APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent") .. " - ",
+            APR:WrapTextWithAppearanceColor(tostring(data), "general", "success"))
     else
-        print(APR:WrapTextInColorCode(tostring(msg), "00bfff"))
+        print(APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent"))
     end
 end
 
@@ -279,13 +279,15 @@ end
 --- @param data any
 function APR:PrintError(errorMessage, data)
     if (errorMessage and type(errorMessage) == "string") then
-        local errorText = APR:WrapTextInColorCode(string.format(L["ERROR_MESSAGE"], errorMessage), "ff0000")
+        local errorText = APR:WrapTextWithAppearanceColor(string.format(L["ERROR_MESSAGE"], errorMessage),
+            "general", "error")
         if data then
             DEFAULT_CHAT_FRAME:AddMessage(errorText .. " - ", data)
         else
             DEFAULT_CHAT_FRAME:AddMessage(errorText)
         end
-        UIErrorsFrame:AddMessage(errorMessage, 1, 0, 0, 1, 5)
+        local color = APR:GetTextColor("general", "error")
+        UIErrorsFrame:AddMessage(errorMessage, color[1], color[2], color[3], color[4], 5)
     end
 end
 
@@ -296,7 +298,7 @@ function APR:PrintZoneDebug(msg)
         return
     end
     if msg and type(msg) == "string" then
-        DEFAULT_CHAT_FRAME:AddMessage(APR:WrapTextInColorCode("[ZoneDebug] " .. msg, "ffff00"))
+        DEFAULT_CHAT_FRAME:AddMessage(APR:WrapTextWithAppearanceColor("[ZoneDebug] " .. msg, "general", "warning"))
     end
 end
 
@@ -305,7 +307,7 @@ end
 function APR:PrintInfo(msg, data)
     if not data then
         if msg and type(msg) == "string" then
-            DEFAULT_CHAT_FRAME:AddMessage(APR:WrapTextInColorCode("APR: " .. msg, "00ecff"))
+            DEFAULT_CHAT_FRAME:AddMessage(APR:WrapTextWithAppearanceColor("APR: " .. msg, "general", "accent"))
         end
     else
         if type(data) == "table" then
@@ -314,10 +316,10 @@ function APR:PrintInfo(msg, data)
                 APR:PrintInfo(msg, value)
             end
         elseif data then
-            print(APR:WrapTextInColorCode(tostring(msg), "00ecff") .. " - ",
-                APR:WrapTextInColorCode(tostring(data), "00ff00"))
+            print(APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent") .. " - ",
+                APR:WrapTextWithAppearanceColor(tostring(data), "general", "success"))
         else
-            print(APR:WrapTextInColorCode(tostring(msg), "00ecff"))
+            print(APR:WrapTextWithAppearanceColor(tostring(msg), "general", "accent"))
         end
     end
 end

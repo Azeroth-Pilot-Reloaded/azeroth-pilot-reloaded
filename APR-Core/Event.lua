@@ -199,8 +199,8 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                     end)
                 end
 
-                local versionText = APR:WrapTextInColorCode(APR.version, "00ff00")
-                local interfaceText = APR:WrapTextInColorCode(APR.interfaceVersion, "00ff00")
+                local versionText = APR:WrapTextWithAppearanceColor(APR.version, "general", "success")
+                local interfaceText = APR:WrapTextWithAppearanceColor(APR.interfaceVersion, "general", "success")
                 APR:PrintInfo("APR " ..
                     L["LOADED"] ..
                     " - " .. string.format(L["VERSION"], versionText) .. " | " ..

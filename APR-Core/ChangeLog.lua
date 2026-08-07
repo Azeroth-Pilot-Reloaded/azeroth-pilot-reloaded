@@ -59,13 +59,13 @@ footerText:SetPoint("CENTER", footerFrame, "CENTER", 0, 0)
 footerText:SetJustifyH("CENTER")
 footerText:SetWordWrap(true)
 footerText:SetWidth(ChangeLogFrame:GetWidth() - 60)
-footerText:SetTextColor(0.35, 0.75, 1)
+APR:RegisterFontString(footerText, "general", { role = "accent", sizeDelta = -2 })
 
 footerButton:SetScript("OnEnter", function(self)
     local url = GetGitHubReleasesUrl()
     GameTooltip:SetOwner(self, "ANCHOR_TOP")
-    GameTooltip:AddLine("Click to copy the GitHub releases link", 1, 1, 1, true)
-    GameTooltip:AddLine(url, 0.35, 0.75, 1, true)
+    APR:AddTooltipLine(GameTooltip, "Click to copy the GitHub releases link", "general", "base", true)
+    APR:AddTooltipLine(GameTooltip, url, "general", "accent", true)
     GameTooltip:Show()
 end)
 
@@ -93,6 +93,12 @@ local Text = TextFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 Text:SetPoint("TOPLEFT", 10, -10)
 Text:SetJustifyH("LEFT")
 Text:SetWordWrap(true)
+APR:RegisterFontString(Text, "general", {
+    role = "base",
+    onApplied = function(fontString)
+        TextFrame:SetHeight(fontString:GetStringHeight())
+    end,
+})
 
 local function RefreshChangeLogLayout()
     local scrollWidth = ScrollFrame:GetWidth() or 0
@@ -139,19 +145,19 @@ function APR.changelog:ShowChangeLog()
 end
 
 function APR.changelog:ParseFormatting(text)
-    -- Bold + Italic: ***text*** -> orange
+    -- Bold + Italic: ***text*** -> warning color
     text = text:gsub("%*%*%*(.-)%*%*%*", function(match)
-        return APR:WrapTextInColorCode(match, "ff8800")
+        return APR:WrapTextWithAppearanceColor(match, "general", "warning")
     end)
 
-    -- Bold: **text** -> blue
+    -- Bold: **text** -> accent color
     text = text:gsub("%*%*(.-)%*%*", function(match)
-        return APR:WrapTextInColorCode(match, "00ffff")
+        return APR:WrapTextWithAppearanceColor(match, "general", "accent")
     end)
 
-    -- Italic: *text* -> gray
+    -- Italic: *text* -> muted color
     text = text:gsub("%*(.-)%*", function(match)
-        return APR:WrapTextInColorCode(match, "999999")
+        return APR:WrapTextWithAppearanceColor(match, "general", "muted")
     end)
 
     return text
@@ -159,21 +165,23 @@ end
 
 -- Parse full changelog text
 function APR.changelog:ParseChangelogText(text)
-    local formatted = "|cFFF1F1F1|c33ecc00f" .. APR.title .. "|r"
+    local formatted = APR:WrapTextWithAppearanceColor(APR.title, "general", "accent")
 
     for line in text:gmatch("[^\r\n]+") do
         if line:match("^v%d+%.%d+%.%d+") then
             -- Match version line: vX.Y.Z (YYYY-MM-DD)
             local version, date = line:match("^(v%d+%.%d+%.%d+)%s*%((.-)%)")
             if version and date then
-                formatted = formatted .. "\n\n|cFFFFFF00" .. version .. " (|cFFFF8800" .. date .. "|r):|r\n"
+                formatted = formatted .. "\n\n" ..
+                    APR:WrapTextWithAppearanceColor(version, "general", "warning") .. " (" ..
+                    APR:WrapTextWithAppearanceColor(date, "general", "accent") .. "):\n"
             end
         elseif line ~= "" and not line:match("^#") then
             -- Regular line
             formatted = formatted .. self:ParseFormatting(line) .. "\n"
         elseif line:match("^#") then
             -- Category line
-            formatted = formatted .. "\n" .. APR:WrapTextInColorCode(line, "eda55f") .. "\n"
+            formatted = formatted .. "\n" .. APR:WrapTextWithAppearanceColor(line, "general", "accent") .. "\n"
         else
             formatted = formatted .. " \n"
         end

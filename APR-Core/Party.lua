@@ -48,6 +48,7 @@ PartyFrame_TeamHolder:SetAllPoints()
 local PartyFrameHeader = CreateFrame("Frame", "PartyFrameHeader", PartyFrame, "ObjectiveTrackerContainerHeaderTemplate")
 PartyFrameHeader:SetPoint("bottom", PartyFrame, "top", 0, 0)
 PartyFrameHeader.Text:SetText(L["GROUP"])
+APR:RegisterFontString(PartyFrameHeader.Text, "party", { role = "accent", sizeDelta = 2 })
 
 -- Create the minimize button
 PartyFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
@@ -175,46 +176,46 @@ local function TeamContainerOnEnter(self)
         return GameTooltip:Show()
     end
 
-    GameTooltip:AddLine(data.username or UNKNOWN, 1, 0.82, 0)
+    APR:AddTooltipLine(GameTooltip, data.username or UNKNOWN, "party", "accent")
     GameTooltip:AddLine(" ")
 
     if data.noAddon then
-        GameTooltip:AddLine(L["NO_ADDON"], 1, 0, 0)
+        APR:AddTooltipLine(GameTooltip, L["NO_ADDON"], "party", "error")
     elseif not data.route then
-        GameTooltip:AddLine(L["NO_ROUTE"], 1, 1, 0)
+        APR:AddTooltipLine(GameTooltip, L["NO_ROUTE"], "party", "warning")
     else
-        GameTooltip:AddDoubleLine(L["ROUTE_LABEL"], data.route, 0.8, 0.8, 0.8, 1, 1, 1)
+        APR:AddTooltipDoubleLine(GameTooltip, L["ROUTE_LABEL"], data.route, "party", "muted", "base")
 
         if data.currentStep and data.totalSteps then
-            GameTooltip:AddDoubleLine(L["CURRENT_STEP_LABEL"], data.currentStep .. " / " .. data.totalSteps, 0.8,
-                0.8, 0.8, 0.3, 1, 0.3)
+            APR:AddTooltipDoubleLine(GameTooltip, L["CURRENT_STEP_LABEL"],
+                data.currentStep .. " / " .. data.totalSteps, "party", "muted", "success")
         end
 
         local stepText = APR.party:GetStepDescription(data.routeFileName,
             data.stepFrameDetails and data.stepFrameDetails.progress and data.stepFrameDetails.progress.index)
         if stepText and stepText ~= "" then
             GameTooltip:AddLine(" ")
-            GameTooltip:AddLine(DESCRIPTION, 0.4, 0.8, 1)
-            GameTooltip:AddLine(stepText, 1, 1, 1, true)
+            APR:AddTooltipLine(GameTooltip, DESCRIPTION, "party", "accent")
+            APR:AddTooltipLine(GameTooltip, stepText, "party", "base", true)
         end
 
         if data.stepFrameDetails and (data.stepFrameDetails.extraLines or
                 (data.stepFrameDetails.questSteps and not skipQuestSteps)) then
             GameTooltip:AddLine(" ")
-            GameTooltip:AddLine(OBJECTIVES_LABEL, 0.4, 0.8, 1)
+            APR:AddTooltipLine(GameTooltip, OBJECTIVES_LABEL, "party", "accent")
 
             if data.stepFrameDetails.extraLines then
                 for _, extra in ipairs(data.stepFrameDetails.extraLines) do
-                    GameTooltip:AddLine(extra.text, 0.9, 0.9, 0.6, true)
+                    APR:AddTooltipLine(GameTooltip, extra.text, "party", "warning", true)
                 end
             end
 
             if data.stepFrameDetails.questSteps then
                 for _, step in ipairs(data.stepFrameDetails.questSteps) do
-                    GameTooltip:AddLine(step.text, 0.8, 0.8, 0.8, true)
+                    APR:AddTooltipLine(GameTooltip, step.text, "party", "muted", true)
                     if step.subSteps then
                         for _, sub in ipairs(step.subSteps) do
-                            GameTooltip:AddLine("" .. sub.text, 0.7, 0.7, 0.7, true)
+                            APR:AddTooltipLine(GameTooltip, "" .. sub.text, "party", "muted", true)
                         end
                     end
                 end
@@ -241,10 +242,11 @@ local function AcquireTeamContainer()
         container.fontName:SetWidth(FRAME_WIDTH)
         container.fontName:SetPoint("TOPLEFT", 5, -5)
         container.fontName:SetJustifyH("LEFT")
+        APR:RegisterFontString(container.fontName, "party", { role = "base" })
 
         container.fontIndex = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         container.fontIndex:SetPoint("TOPRIGHT", 0, -2)
-        container.fontIndex:SetFontObject("GameFontNormalLarge")
+        APR:RegisterFontString(container.fontIndex, "party", { role = "base", sizeDelta = 4 })
 
         container:SetScript("OnEnter", TeamContainerOnEnter)
         container:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
@@ -280,9 +282,9 @@ local AddTeamMate = function(playerData, isSameRoute, color, container)
         container.fontIndex:SetText('-')
     end
     if isSameRoute then
-        container.fontIndex:SetTextColor(unpack(APR.Color[color]))
+        APR:SetFontStringRole(container.fontIndex, color == "green" and "success" or "warning")
     else
-        container.fontIndex:SetTextColor(unpack(APR.Color.gray))
+        APR:SetFontStringRole(container.fontIndex, "muted")
     end
 
     container:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
@@ -404,6 +406,14 @@ function APR.party:ReOrderTeam(order)
     end
 
     self:RefreshPartyFrameAnchor(self.testSimulation)
+end
+
+function APR.party:RefreshTextLayout()
+    for _, container in pairs(self.teamList) do
+        local height = math.max(container.fontIndex:GetStringHeight(), container.fontName:GetStringHeight()) + 10
+        container:SetHeight(height)
+    end
+    self:ReOrderTeam()
 end
 
 function APR.party:RemoveMateByName(name, skipReorder)

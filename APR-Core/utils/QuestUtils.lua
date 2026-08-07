@@ -212,7 +212,8 @@ end
 function APR:NotYet()
     local message = L["NOT_YET"] .. "\n\n" .. L["BYPASS_AUTO"]
     APR:PrintInfo(message)
-    UIErrorsFrame:AddMessage(message, 1, 153 / 255, 102 / 255, 1, 5)
+    local color = APR:GetTextColor("general", "warning")
+    UIErrorsFrame:AddMessage(message, color[1], color[2], color[3], color[4], 5)
 end
 
 --- Add a quest to the watch list and super-track it for clarity.

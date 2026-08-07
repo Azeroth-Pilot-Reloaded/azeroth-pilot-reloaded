@@ -24,6 +24,7 @@ local RouteSelectionFrameHeader = CreateFrame("Frame", "RouteSelectionFrameHeade
     "ObjectiveTrackerContainerHeaderTemplate")
 RouteSelectionFrameHeader:SetPoint("bottom", RouteSelectionFrame, "top", 0, -1)
 RouteSelectionFrameHeader.Text:SetText(L["ROUTE_SELECTION"])
+APR:RegisterFontString(RouteSelectionFrameHeader.Text, "general", { role = "accent", sizeDelta = 2 })
 RouteSelectionFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
 RouteSelectionFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
 RouteSelectionFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
@@ -44,12 +45,20 @@ local openSettingsButton = CreateFrame("Button", "OpenSettingsButton", RouteSele
 openSettingsButton:SetSize(150, 25)
 openSettingsButton:SetPoint("center", RouteSelectionFrame, "center", 0, 0)
 openSettingsButton:SetText(L["OPEN_ROUTE_OPTIONS"])
+APR:RegisterButtonText(openSettingsButton, "general", { role = "base" })
 
 openSettingsButton.Text:SetWordWrap(true)
 openSettingsButton.Text:SetWidth(140)
 
 local textHeight = openSettingsButton.Text:GetStringHeight()
 openSettingsButton:SetHeight(textHeight + 15)
+
+function APR.RouteSelection:UpdateTextAppearance()
+    local buttonText = openSettingsButton.Text or openSettingsButton:GetFontString()
+    if buttonText then
+        openSettingsButton:SetHeight(math.max(25, buttonText:GetStringHeight() + 15))
+    end
+end
 
 openSettingsButton:SetScript("OnClick", function()
     APR.settings:OpenSettings(L["ROUTE"])
