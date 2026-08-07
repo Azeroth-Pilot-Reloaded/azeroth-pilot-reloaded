@@ -21,7 +21,7 @@ jobs:
         with:
           python-version: "3.x"
 
-      - name: Update TOC Interface version
+      - name: Update TOC Interface and X-Interface versions
         run: python .github/scripts/toc-updater.py --ptr
 
       - name: Create pull request
@@ -36,7 +36,7 @@ jobs:
             - [ ] Test for all applicable game clients
 
             ----------------------------------------------------
-            _This PR was automatically created to update the supported interface versions in APR.toc._
+            _This PR was automatically created to update the supported Interface and X-Interface versions in APR.toc._
           commit-message: "Auto updates supported interface versions"
           branch: interface-version
           delete-branch: true

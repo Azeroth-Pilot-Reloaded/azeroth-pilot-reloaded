@@ -1,4 +1,5 @@
 ## Interface: 110207, 120000, 120001, 120005, 120007
+## X-Interface: 120100
 
 ## Title: Azeroth Pilot Reloaded
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
@@ -73,6 +74,7 @@ APR-Core/Config_Route.lua
 APR-Core/Config_Route_Prefabs.lua
 APR-Core/Commands.lua
 APR-Core/ChangeLog.lua
+APR-Core/VersionCheck.lua
 
 APR-Core/Event.lua
 

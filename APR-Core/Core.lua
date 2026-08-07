@@ -57,6 +57,7 @@ function APR:OnInitialize()
     self.version = GetAddOnMetadata("APR", "Version")
     self.github = GetAddOnMetadata("APR", "X-Github")
     self.discord = GetAddOnMetadata("APR", "X-Discord")
+    self.tocVersion = tonumber(GetAddOnMetadata("APR", "X-Interface"))
     self.interfaceVersion = select(4, GetBuildInfo())
     self.isBetaServer = GetCVar("portal") == "test"
 
@@ -131,6 +132,9 @@ function APR:OnInitialize()
     -- Init Changelog frame
     self.changelog:OnInit()
 
+    -- Init version check
+    self.versionCheck:OnInit()
+
     -- Init heirloom frame
     self.heirloom:HeirloomOnInit()
 
@@ -145,6 +149,7 @@ function APR:OnInitialize()
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyRequest")
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyData")
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyDelete")
+    C_ChatInfo.RegisterAddonMessagePrefix("APRVersionCheck")
 
     -- Load saved custom routes
     self:LoadCustomRoutes()

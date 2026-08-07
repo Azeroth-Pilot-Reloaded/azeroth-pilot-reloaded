@@ -4,7 +4,7 @@ import os
 import re
 import socket
 from enum import Enum
-from typing import Dict, List, Set, Literal
+from typing import Dict, List, Set, Literal, cast
 
 # Type aliases for clarity
 TestProd = Literal['wowt', 'wowxptr', 'wow_classic_ptr', 'wow_classic_era_ptr']
@@ -112,7 +112,7 @@ def merge_versions(existing: str, new_set: Set[str]) -> str:
     sorted_versions = sorted(combined, key=lambda v: int(v))
     return ', '.join(sorted_versions)
 
-def update_interface_line(content: str, line_prefix: str, new_versions: Set[str]) -> (str, bool):
+def update_interface_line(content: str, line_prefix: str, new_versions: Set[str]) -> tuple[str, bool]:
     """
     Update a line starting with the given prefix by merging its version numbers
     with new_versions. Returns updated content and a flag if a substitution was made.
@@ -130,6 +130,20 @@ def update_interface_line(content: str, line_prefix: str, new_versions: Set[str]
 
     new_content, count = pattern.subn(replacer, content)
     return new_content, updated if count > 0 else False
+
+def update_latest_interface_line(content: str, line_prefix: str, new_versions: Set[str]) -> tuple[str, bool]:
+    """
+    Update a line with only the latest available interface version.
+    Unlike the standard Interface field, X-Interface must remain a single
+    numeric value so it can be parsed by the addon at runtime.
+    """
+    if not new_versions:
+        return content, False
+
+    pattern = re.compile(rf'^({re.escape(line_prefix)}):\s*(.*)$', re.MULTILINE)
+    latest_version = max(new_versions, key=lambda version: int(version))
+    new_content, count = pattern.subn(rf'\1: {latest_version}', content)
+    return new_content, count > 0
 
 def update_toc_file(file_path: str, prod: FullProd, multi: bool,
                     include_beta: bool, include_test: bool,
@@ -170,7 +184,7 @@ def update_toc_file(file_path: str, prod: FullProd, multi: bool,
     # Append test (PTR) version if required and available
     if include_test:
         if prod == 'wow':
-            for test_prod in ['wowt', 'wowxptr']:
+            for test_prod in cast(tuple[TestProd, ...], ('wowt', 'wowxptr')):
                 test_ver = get_product_version(test_prod, cache)
                 if test_ver and test_ver > base_ver:
                     new_versions.add(test_ver)
@@ -190,6 +204,11 @@ def update_toc_file(file_path: str, prod: FullProd, multi: bool,
     if not multi:
         updated_content, sub_changed = update_interface_line(updated_content, "## Interface", new_versions)
         changed = changed or sub_changed
+        if prod == 'wow':
+            updated_content, sub_changed = update_latest_interface_line(
+                updated_content, "## X-Interface", new_versions
+            )
+            changed = changed or sub_changed
     else:
         if prod == 'wow_classic':
             for prefix in ["## Interface-Cata", "## Interface-Classic"]:
@@ -201,6 +220,10 @@ def update_toc_file(file_path: str, prod: FullProd, multi: bool,
         else:
             # For 'wow' in multi mode, update generic interface
             updated_content, sub_changed = update_interface_line(updated_content, "## Interface", new_versions)
+            changed = changed or sub_changed
+            updated_content, sub_changed = update_latest_interface_line(
+                updated_content, "## X-Interface", new_versions
+            )
             changed = changed or sub_changed
 
     # Write the file only if changes were made
@@ -223,7 +246,7 @@ def main():
 
     include_beta = args.beta
     include_test = args.ptr
-    flavor = args.flavor.value
+    flavor = cast(FullProd, args.flavor.value)
 
     cached_versions: VersionDict = {}
     files_modified: List[str] = []
