@@ -9,6 +9,7 @@ APR.settings = APR:NewModule("Settings", "AceConsole-3.0")
 -- Ace option config table
 local aceConfig = _G.LibStub("AceConfig-3.0")
 local aceDialog = _G.LibStub("AceConfigDialog-3.0")
+local TextStyleUtils = APR.TextStyleUtils
 
 -- Databroker support -- minimapIcon
 local libDataBroker = LibStub("LibDataBroker-1.1")
@@ -63,6 +64,8 @@ function APR.settings:InitializeSettings()
             autoGossipSingleOptionWhen = 2,
             autoGossipPayDarkmoonFare = true,
             autoGossipRedOption = false,
+            -- text appearance
+            globalTextAppearance = APR:CreateTextAppearanceDefaults(false),
             -- reward
             autoHandInChoice = false,
             autoCosmeticMulti = false,
@@ -78,6 +81,13 @@ function APR.settings:InitializeSettings()
             currentStepScale = 1,
             currentStepbackgroundColorAlpha = APR.Color.defaultLightBackdrop,
             currentStepProgressBarColor = { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 },
+            currentStepTextAppearance = APR:CreateTextAppearanceDefaults(true, {
+                accentColor = APR.Color.gold,
+                successColor = APR.Color.green,
+                warningColor = APR.Color.yellow,
+                errorColor = { 1, 0.2, 0.2, 1 },
+                mutedColor = APR.Color.gray,
+            }),
             currentStepAttachFrameToQuestLog = false,
             currentStepQuestButtonPositionRight = false,
             forceHideUiInPartyRaid = false,
@@ -93,6 +103,12 @@ function APR.settings:InitializeSettings()
             questOrderListSnapToCurrentStep = true,
             questOrderListScale = 1,
             questOrderListbackgroundColorAlpha = APR.Color.defaultLightBackdrop,
+            questOrderListTextAppearance = APR:CreateTextAppearanceDefaults(true, {
+                accentColor = APR.Color.gold,
+                successColor = APR.Color.green,
+                warningColor = APR.Color.yellow,
+                mutedColor = APR.Color.gray,
+            }),
             -- arrow
             showArrow = true,
             lockArrow = false,
@@ -100,6 +116,9 @@ function APR.settings:InitializeSettings()
             arrowFPS = 2,
             arrowleft = _G.GetScreenWidth() / 2.05,
             arrowtop = -(_G.GetScreenHeight() / 1.5),
+            arrowTextAppearance = APR:CreateTextAppearanceDefaults(true, {
+                warningColor = APR.Color.yellow,
+            }),
             -- map
             mapMinimapSameColor = true,
             showMapLine = true,
@@ -111,6 +130,7 @@ function APR.settings:InitializeSettings()
             mapshowNextStepsSize = 16,
             mapshowNextStepsTextScale = 1,
             mapshowNextStepsColorText = APR.Color.gold,
+            mapTextAppearance = APR:CreateTextAppearanceDefaults(true),
             -- minimap
             minimap = { minimapPos = 300 },
             enableMinimapButton = true,
@@ -126,6 +146,9 @@ function APR.settings:InitializeSettings()
             -- Heirloom
             heirloomFrame = {},
             heirloomWarning = false,
+            heirloomTextAppearance = APR:CreateTextAppearanceDefaults(true, {
+                accentColor = APR.Color.gold,
+            }),
             --buff
             buffFrame = {},
             -- group
@@ -133,6 +156,12 @@ function APR.settings:InitializeSettings()
             showGroup = true,
             receiveGroupData = true,
             groupScale = 1,
+            partyTextAppearance = APR:CreateTextAppearanceDefaults(true, {
+                accentColor = APR.Color.gold,
+                successColor = APR.Color.green,
+                warningColor = APR.Color.yellow,
+                mutedColor = APR.Color.gray,
+            }),
             -- route
             routeSelectionFrame = {},
             routeSignature = {},
@@ -142,6 +171,7 @@ function APR.settings:InitializeSettings()
             afkBarColor = { APR.Color.orange[1], APR.Color.orange[2], APR.Color.orange[3], 1 },
             afkWidth = 250,
             afkHeight = 20,
+            afkTextAppearance = APR:CreateTextAppearanceDefaults(true),
             --debug
             debug = false,
             showEvent = false,
@@ -336,7 +366,13 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["CURRENT_STEP"],
                 args = {
-                    currentStepShow = {
+                    subgroup_CurrentStep = {
+                        order = 1,
+                        type = "group",
+                        inline = true,
+                        name = L["CURRENT_STEP"],
+                        args = {
+                            currentStepShow = {
                         order = 5.1,
                         type = "toggle",
                         name = L["SHOW_QLIST"],
@@ -488,14 +524,15 @@ function APR.settings:createBlizzOptions()
                                 .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
                         end,
                     },
-                },
-            },
-            group_FillersFrame = {
-                order = 5.6,
-                type = "group",
-                name = L["FILLERS_FRAME"],
-                args = {
-                    fillersFrameSnapToCurrentStep = {
+                        },
+                    },
+                    subgroup_FillersFrame = {
+                        order = 2,
+                        type = "group",
+                        inline = true,
+                        name = L["FILLERS_FRAME"],
+                        args = {
+                            fillersFrameSnapToCurrentStep = {
                         order = 5.61,
                         type = "toggle",
                         name = L["SNAP_TO_CURRENT_STEP"],
@@ -555,7 +592,12 @@ function APR.settings:createBlizzOptions()
                             end
                         end,
                     },
-                }
+                        },
+                    },
+                    currentStepTextAppearance = TextStyleUtils:CreateAppearanceOptions(
+                        "currentStepTextAppearance", "currentStep", 3,
+                        TextStyleUtils.FRAME_TEXT_COLORS, true),
+                },
             },
             group_gossip_automation = {
                 order = 5.7,
@@ -634,7 +676,13 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["QUEST_ORDER_LIST"],
                 args = {
-                    showQuestOrderList = {
+                    subgroup_QuestOrderList = {
+                        order = 1,
+                        type = "group",
+                        inline = true,
+                        name = L["QUEST_ORDER_LIST"],
+                        args = {
+                            showQuestOrderList = {
                         order = 6.1,
                         type = "toggle",
                         name = L["SHOW_QORDERLIST"],
@@ -727,6 +775,16 @@ function APR.settings:createBlizzOptions()
                             return not self.profile.showQuestOrderList or not self.profile.enableAddon
                         end,
                     },
+                        },
+                    },
+                    questOrderListTextAppearance = TextStyleUtils:CreateAppearanceOptions(
+                        "questOrderListTextAppearance", "questOrderList", 2, {
+                            { key = "color",        name = L["TEXT_COLOR"] },
+                            { key = "accentColor",  name = L["HEADER_TEXT_COLOR"] },
+                            { key = "successColor", name = L["COMPLETED_TEXT_COLOR"] },
+                            { key = "warningColor", name = L["ACTIVE_TEXT_COLOR"] },
+                            { key = "mutedColor",   name = L["PENDING_TEXT_COLOR"] },
+                        }, true),
                 },
             },
             group_Arrow = {
@@ -734,7 +792,13 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["ARROW"],
                 args = {
-                    showArrow = {
+                    subgroup_Arrow = {
+                        order = 1,
+                        type = "group",
+                        inline = true,
+                        name = L["ARROW"],
+                        args = {
+                            showArrow = {
                         order = 7.1,
                         type = "toggle",
                         name = L["SHOW_ARROW"],
@@ -823,6 +887,13 @@ function APR.settings:createBlizzOptions()
                             return not self.profile.enableAddon
                         end,
                     },
+                        },
+                    },
+                    arrowTextAppearance = TextStyleUtils:CreateAppearanceOptions(
+                        "arrowTextAppearance", "arrow", 2, {
+                            { key = "color",        name = L["DISTANCE_TEXT_COLOR"] },
+                            { key = "warningColor", name = L["SKIP_TEXT_COLOR"] },
+                        }, true),
                 }
             },
             group_Advanced_Automation = {
@@ -1426,7 +1497,8 @@ function APR.settings:createBlizzOptions()
                                     return not self.profile.minimapshowNextSteps
                                 end,
                             },
-
+                            mapTextAppearance = TextStyleUtils:CreateAppearanceOptions(
+                                "mapTextAppearance", "map", 12, nil, true),
                         }
                     }
                 }
@@ -1451,6 +1523,11 @@ function APR.settings:createBlizzOptions()
                         end,
                         disabled = APR:IsRemixCharacter()
                     },
+                    heirloomTextAppearance = TextStyleUtils:CreateAppearanceOptions(
+                        "heirloomTextAppearance", "heirloom", 10.2, {
+                            { key = "color",       name = L["TEXT_COLOR"] },
+                            { key = "accentColor", name = L["HEADER_TEXT_COLOR"] },
+                        }, true),
                 }
             },
             group_AFK = {
@@ -1458,7 +1535,13 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["AFK"],
                 args = {
-                    afkSnapToCurrentStep = {
+                    subgroup_AFK = {
+                        order = 1,
+                        type = "group",
+                        inline = true,
+                        name = L["AFK"],
+                        args = {
+                            afkSnapToCurrentStep = {
                         order = 10.51,
                         type = "toggle",
                         name = L["SNAP_TO_CURRENT_STEP"],
@@ -1474,6 +1557,7 @@ function APR.settings:createBlizzOptions()
                             APR.AFK:RefreshFrameAnchor()
                         end,
                     },
+
                     afkBarColor = {
                         order = 10.52,
                         type = "color",
@@ -1554,6 +1638,11 @@ function APR.settings:createBlizzOptions()
                             return self.profile.afkSnapToCurrentStep
                         end,
                     },
+                        },
+                    },
+                    afkTextAppearance = TextStyleUtils:CreateAppearanceOptions(
+                        "afkTextAppearance", "afk", 2,
+                        TextStyleUtils.BASE_TEXT_COLORS, true),
                 }
             },
             group_Group = {
@@ -1561,7 +1650,13 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["GROUP"],
                 args = {
-                    autoShareQuestWithFriend = {
+                    subgroup_Group = {
+                        order = 1,
+                        type = "group",
+                        inline = true,
+                        name = L["GROUP"],
+                        args = {
+                            autoShareQuestWithFriend = {
                         order = 11.1,
                         type = "toggle",
                         name = L["SHOW_GROUP_SHAREWITHFRIEND"],
@@ -1617,8 +1712,21 @@ function APR.settings:createBlizzOptions()
                             return not self.profile.showGroup or not self.profile.enableAddon
                         end,
                     },
+                        },
+                    },
+                    partyTextAppearance = TextStyleUtils:CreateAppearanceOptions(
+                        "partyTextAppearance", "party", 2, {
+                            { key = "color",        name = L["PLAYER_NAME_TEXT_COLOR"] },
+                            { key = "accentColor",  name = L["HEADER_TEXT_COLOR"] },
+                            { key = "successColor", name = L["COMPLETED_TEXT_COLOR"] },
+                            { key = "warningColor", name = L["ACTIVE_TEXT_COLOR"] },
+                            { key = "mutedColor",   name = L["DIFFERENT_ROUTE_TEXT_COLOR"] },
+                        }, true),
                 }
             },
+            group_GlobalTextAppearance = TextStyleUtils:CreateAppearanceOptions(
+                "globalTextAppearance", "general", 11.5,
+                TextStyleUtils.FRAME_TEXT_COLORS, false, false),
             group_Debug = {
                 order = 12,
                 type = "group",
@@ -1801,11 +1909,11 @@ end
 
 function APR.settings:CreateAboutOption()
     local function wrapHelp(text)
-        return APR:WrapTextInColorCode(text, "eda55f")
+        return APR:WrapTextWithAppearanceColor(text, "general", "accent")
     end
 
     local function wrapTranslator(text)
-        return APR:WrapTextInColorCode(text, "5f9ea0")
+        return APR:WrapTextWithAppearanceColor(text, "general", "muted")
     end
 
     local function commandLine(command, description)
@@ -1821,53 +1929,57 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(string.format(L["AUTHOR"], "Neogeekmo/Neoldric")),
+                name = function() return wrapHelp(string.format(L["AUTHOR"], "Neogeekmo/Neoldric")) end,
             },
             dev = {
                 order = 2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(string.format(L["DEV"], "Neogeekmo/Neoldric, Kamian")),
+                name = function() return wrapHelp(string.format(L["DEV"], "Neogeekmo/Neoldric, Kamian")) end,
             },
             route_designer = {
                 order = 2.1,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(string.format(L["ROUTE_DESIGNER"], "Pahonix, Ola, Clara")),
+                name = function() return wrapHelp(string.format(L["ROUTE_DESIGNER"], "Pahonix, Ola, Clara")) end,
             },
             support = {
                 order = 2.2,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(string.format(L["ABOUT_SUPPORT"], "NightofStarrs, Pahonix")),
+                name = function() return wrapHelp(string.format(L["ABOUT_SUPPORT"], "NightofStarrs, Pahonix")) end,
             },
             graphic = {
                 order = 2.3,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(string.format(L["ABOUT_GRAPHIC"], "Rycia, Neogeekmo/Neoldric")),
+                name = function()
+                    return wrapHelp(string.format(L["ABOUT_GRAPHIC"], "Rycia, Neogeekmo/Neoldric"))
+                end,
             },
             Translator = {
                 order = 2.4,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(string.format(L["ABOUT_TRANSLATOR"], "\n" ..
-                    "      " .. wrapTranslator(FRFR .. ": ") .. "Neogeekmo, Jmsche, Mania\n" ..
-                    "      " .. wrapTranslator(DEDE .. ": ") .. "Kamian, Movion\n" ..
-                    "      " .. wrapTranslator(ESMX .. ": ") .. "Jean\n" ..
-                    "      " .. wrapTranslator(RURU .. ": ") .. "ZamestoTV")),
+                name = function()
+                    return wrapHelp(string.format(L["ABOUT_TRANSLATOR"], "\n" ..
+                        "      " .. wrapTranslator(FRFR .. ": ") .. "Neogeekmo, Jmsche, Mania\n" ..
+                        "      " .. wrapTranslator(DEDE .. ": ") .. "Kamian, Movion\n" ..
+                        "      " .. wrapTranslator(ESMX .. ": ") .. "Jean\n" ..
+                        "      " .. wrapTranslator(RURU .. ": ") .. "ZamestoTV"))
+                end,
             },
             version = {
                 order = 2.5,
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = wrapHelp(string.format(L["VERSION"], APR.version)),
+                name = function() return wrapHelp(string.format(L["VERSION"], APR.version)) end,
             },
             header_disable_Auto = {
                 order = 3,
@@ -1911,21 +2023,23 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = commandLine("/apr help, h", L["HELP_COMMAND"]) .. "\n" ..
-                    commandLine("/apr", L["SHOW_MENU"]) .. "\n" ..
-                    commandLine("/apr about", L["SHOW_ABOUT"]) .. "\n" ..
-                    commandLine("/apr coord", L["COORD_COMMAND"]) .. "\n" ..
-                    commandLine("/apr discord", L["DISCORD_COMMAND"]) .. "\n" ..
-                    commandLine("/apr forcereset, fr", L["FORCERESET_COMMAND"]) .. "\n" ..
-                    commandLine("/apr github", L["GITHUB_COMMAND"]) .. "\n" ..
-                    commandLine("/apr qol", L["QOL_COMMAND"]) .. "\n" ..
-                    commandLine("/apr reset, r", L["RESET_COMMAND"]) .. "\n" ..
-                    commandLine("/apr resetcustom", L["RESET_CUSTOM_COMMAND"]) .. "\n" ..
-                    commandLine("/apr rollback, rb", L["ROLLBACK_COMMAND"]) .. "\n" ..
-                    commandLine("/apr route", L["ROUTE_COMMAND"]) .. "\n" ..
-                    commandLine("/apr scribe, writer, 42", ";)") .. "\n" ..
-                    commandLine("/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"]) .. "\n" ..
-                    commandLine("/apr status", L["STATUS_COMMAND"])
+                name = function()
+                    return commandLine("/apr help, h", L["HELP_COMMAND"]) .. "\n" ..
+                        commandLine("/apr", L["SHOW_MENU"]) .. "\n" ..
+                        commandLine("/apr about", L["SHOW_ABOUT"]) .. "\n" ..
+                        commandLine("/apr coord", L["COORD_COMMAND"]) .. "\n" ..
+                        commandLine("/apr discord", L["DISCORD_COMMAND"]) .. "\n" ..
+                        commandLine("/apr forcereset, fr", L["FORCERESET_COMMAND"]) .. "\n" ..
+                        commandLine("/apr github", L["GITHUB_COMMAND"]) .. "\n" ..
+                        commandLine("/apr qol", L["QOL_COMMAND"]) .. "\n" ..
+                        commandLine("/apr reset, r", L["RESET_COMMAND"]) .. "\n" ..
+                        commandLine("/apr resetcustom", L["RESET_CUSTOM_COMMAND"]) .. "\n" ..
+                        commandLine("/apr rollback, rb", L["ROLLBACK_COMMAND"]) .. "\n" ..
+                        commandLine("/apr route", L["ROUTE_COMMAND"]) .. "\n" ..
+                        commandLine("/apr scribe, writer, 42", ";)") .. "\n" ..
+                        commandLine("/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"]) .. "\n" ..
+                        commandLine("/apr status", L["STATUS_COMMAND"])
+                end,
             },
             blank01 = {
                 order = 4.3,
@@ -1980,16 +2094,15 @@ function APR.settings:CreateMiniMapButton()
         OnTooltipShow = function(tooltip)
             local toggleAddon = ''
             if self.profile.enableAddon then
-                toggleAddon = APR:WrapTextInColorCode(L["DISABLE"], "cce0000f")
+                toggleAddon = APR:WrapTextWithAppearanceColor(L["DISABLE"], "general", "error")
             else
-                toggleAddon = APR:WrapTextInColorCode(L["ENABLE"], "00ff00")
+                toggleAddon = APR:WrapTextWithAppearanceColor(L["ENABLE"], "general", "success")
             end
-            local addonLabel = toggleAddon .. ' ' .. APR:WrapTextInColorCode(L["ADDON"], "eda55f")
-            tooltip:AddLine(APR.title)
-            tooltip:AddLine(string.format(L["LEFT_CLICK_ACTION"], APR:WrapTextInColorCode(L["SHOW_MENU"], "eda55f")),
-                unpack(APR.Color.white))
-            tooltip:AddLine(string.format(L["RIGHT_CLICK_ACTION"], addonLabel),
-                unpack(APR.Color.white))
+            local addonLabel = toggleAddon .. ' ' .. APR:WrapTextWithAppearanceColor(L["ADDON"], "general", "accent")
+            APR:AddTooltipLine(tooltip, APR.title, "general", "accent")
+            APR:AddTooltipLine(tooltip, string.format(L["LEFT_CLICK_ACTION"],
+                APR:WrapTextWithAppearanceColor(L["SHOW_MENU"], "general", "accent")), "general", "base")
+            APR:AddTooltipLine(tooltip, string.format(L["RIGHT_CLICK_ACTION"], addonLabel), "general", "base")
         end
     })
 

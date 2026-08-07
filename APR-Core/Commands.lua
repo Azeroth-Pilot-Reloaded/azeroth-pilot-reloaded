@@ -54,7 +54,8 @@ function APR.command:SlashCmd(input)
         APR.settings:OpenSettings(L["ABOUT_HELP"])
     elseif inputText == '42' then
         PlaySoundFile("Interface\\Addons\\APR\\APR-Core\\assets\\sound\\42.mp3")
-        UIErrorsFrame:AddMessage(L["42_COMMAND"], 1.0, 1.0, 0.0, 1.0, UIERRORS_HOLD_TIME)
+        local color = APR:GetTextColor("general", "warning")
+        UIErrorsFrame:AddMessage(L["42_COMMAND"], color[1], color[2], color[3], color[4], UIERRORS_HOLD_TIME)
     elseif inputText == 'zoneinfo' or inputText == 'zi' then
         -- Print detailed zone detection information
         local report = APR:GetZoneDetectionReport()
@@ -73,9 +74,8 @@ function APR.command:SlashCmd(input)
         APR:InvalidateMapInfoCache()
         APR:PrintInfo(L["ZONECACHE_COMMAND_RESULT"])
     elseif (inputText == "help" or inputText == "h") then
-        local helpColor = "eda55f"
         local function printHelp(command, description)
-            print(APR:WrapTextInColorCode(command, helpColor) .. " - " .. description)
+            print(APR:WrapTextWithAppearanceColor(command, "general", "accent") .. " - " .. description)
         end
 
         APR:PrintInfo(L["COMMAND_LIST"])

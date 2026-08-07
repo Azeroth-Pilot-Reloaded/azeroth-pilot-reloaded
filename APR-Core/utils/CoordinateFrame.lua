@@ -32,6 +32,7 @@ CoordinateFrame:SetBackdropBorderColor(1, 0.8, 0, 0.8)
 CoordinateFrame.Text = CoordinateFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
 CoordinateFrame.Text:SetJustifyH("CENTER")
 CoordinateFrame.Text:SetPoint("CENTER", 0, 0)
+APR:RegisterFontString(CoordinateFrame.Text, "general", { role = "base" })
 
 CoordinateFrame:SetScript("OnUpdate", function(self, elapsed)
     fpsCounter = fpsCounter + elapsed

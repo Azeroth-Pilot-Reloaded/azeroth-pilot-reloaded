@@ -170,7 +170,7 @@ QuestOrderListFrame_ScrollFrame:SetScrollChild(QuestOrderListFrame_ScrollChild)
 
 -- Create the frame header
 QuestOrderListFrame_StepHolderHeader = APR:CreateFrameHeader("QuestOrderListFrame_StepHolderHeader",
-    QuestOrderListFrame, L["QUEST_ORDER_LIST"], "ObjectiveTrackerContainerHeaderTemplate")
+    QuestOrderListFrame, L["QUEST_ORDER_LIST"], "ObjectiveTrackerContainerHeaderTemplate", "questOrderList")
 QuestOrderListFrame_StepHolderHeader:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, 30)
 
 APR:SetupHeaderDrag(QuestOrderListFrame_StepHolderHeader, QuestOrderListFrame, function()

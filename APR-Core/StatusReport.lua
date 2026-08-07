@@ -1,18 +1,16 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local LSM = LibStub("LibSharedMedia-3.0")
-
 local CreateFrame = CreateFrame
 local GetRealZoneText = GetRealZoneText
 
 local NO_ACTIVE = "No active route"
-local font = LSM:Fetch('font', 'Expressway')
-
 local function SetStatusLine(line, label, value, colorHex)
-    line.Text:SetText(label .. ": " .. APR:WrapTextInColorCode(value, colorHex))
+    local role = APR:ResolveTextColorRole(colorHex, "success")
+    line.Text:SetText(label .. ": " .. APR:WrapTextWithAppearanceColor(value, "general", role))
 end
 
 function APR:createStatusContent(num, width, parent, anchorTo, content)
     if not content then content = CreateFrame('Frame', nil, parent) end
+    content._aprLineCount = num
     content:SetSize(width, (num * 20) + ((num - 1) * 5)) --20 height and 5 spacing
     content:SetPoint('TOP', anchorTo, 'BOTTOM')
 
@@ -25,7 +23,7 @@ function APR:createStatusContent(num, width, parent, anchorTo, content)
             text:SetAllPoints()
             text:SetJustifyH('LEFT')
             text:SetJustifyV('MIDDLE')
-            text:SetFont(font, 9, 'OUTLINE')
+            APR:RegisterFontString(text, "general", { role = "base", sizeDelta = -3 })
             line.Text = text
 
             if i == 1 then
@@ -39,6 +37,40 @@ function APR:createStatusContent(num, width, parent, anchorTo, content)
     end
 
     return content
+end
+
+local function RefreshStatusContentLayout(content)
+    if not content then return 0 end
+    local totalHeight = 0
+    for i = 1, content._aprLineCount or 0 do
+        local line = content['Line' .. i]
+        if line and line.Text then
+            local lineHeight = math.max(10, math.ceil(line.Text:GetStringHeight() or 0) + 2)
+            line:SetHeight(lineHeight)
+            totalHeight = totalHeight + lineHeight
+            if i > 1 then totalHeight = totalHeight + 5 end
+        end
+    end
+    content:SetHeight(totalHeight)
+    return totalHeight
+end
+
+function APR:RefreshStatusTextLayout()
+    local frame = self.StatusFrame
+    if not frame then return end
+
+    local totalHeight = 35
+    for i = 1, 3 do
+        local section = frame['Section' .. i]
+        if section then
+            local contentHeight = RefreshStatusContentLayout(section.Content)
+            local headerHeight = section.Header and section.Header:GetHeight() or 0
+            local sectionHeight = headerHeight + contentHeight
+            section:SetHeight(sectionHeight)
+            totalHeight = totalHeight + sectionHeight
+        end
+    end
+    frame:SetHeight(totalHeight + 10)
 end
 
 local function exportStatusReport()
@@ -134,13 +166,12 @@ function APR:createStatusSection(width, height, headerWidth, headerHeight, paren
     header:SetPoint('TOP', section)
     section.Header = header
 
-    local font = LSM:Fetch('font', 'Expressway')
     local text = section.Header:CreateFontString(nil, 'ARTWORK')
     text:SetPoint('TOP')
     text:SetPoint('BOTTOM')
     text:SetJustifyH('CENTER')
     text:SetJustifyV('MIDDLE')
-    text:SetFont(font, 18, 'OUTLINE')
+    APR:RegisterFontString(text, "general", { role = "accent", sizeDelta = 6 })
     section.Header.Text = text
 
     local leftDivider = section.Header:CreateTexture(nil, 'ARTWORK')
@@ -205,10 +236,13 @@ function APR:createStatusFrame()
     local CopyButton = CreateFrame('Button', nil, StatusFrame, "StaticPopupButtonTemplate")
     CopyButton:SetPoint("BOTTOM", 0, 5)
     CopyButton:SetSize(100, 20)
-    local CopyButtonFont = CopyButton:CreateFontString()
-    CopyButtonFont:SetFont(font, 9)
-    CopyButtonFont:SetText(L["STATUS_EXPORT"])
-    CopyButton:SetFontString(CopyButtonFont)
+    local CopyButtonFont = CopyButton:GetFontString()
+    if not CopyButtonFont then
+        CopyButtonFont = CopyButton:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
+        CopyButton:SetFontString(CopyButtonFont)
+    end
+    APR:RegisterFontString(CopyButtonFont, "general", { role = "base", sizeDelta = -3 })
+    CopyButton:SetText(L["STATUS_EXPORT"])
     CopyButton:HookScript('OnClick', exportStatusReport)
 
     --Create Static Content
@@ -275,6 +309,7 @@ function APR:updateStatusFrame()
         statusColors.currentCoordsColor)
     SetStatusLine(StatusFrame.Section3.Content.Line3, statusInfos.charLevel[1], statusInfos.charLevel[2],
         APR.HEXColor.green)
+    self:RefreshStatusTextLayout()
 end
 
 function APR:showStatusReport()

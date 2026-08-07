@@ -168,15 +168,15 @@ function APR:CheckSojournerPartySync()
 
     -- Local player line
     local myLabel = myState
-        and APR:WrapTextInColorCode(L["SOJOURNER_PROMPT_ACCEPT"], "00ff00")
-        or APR:WrapTextInColorCode(L["SOJOURNER_PROMPT_DECLINE"], "ff6060")
+        and APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_ACCEPT"], "general", "success")
+        or APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_DECLINE"], "general", "error")
     table.insert(lines, APR.Username .. ": " .. myLabel)
 
     -- Remote players
     for _, entry in ipairs(mismatched) do
         local stateLabel = entry.state
-            and APR:WrapTextInColorCode(L["SOJOURNER_PROMPT_ACCEPT"], "00ff00")
-            or APR:WrapTextInColorCode(L["SOJOURNER_PROMPT_DECLINE"], "ff6060")
+            and APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_ACCEPT"], "general", "success")
+            or APR:WrapTextWithAppearanceColor(L["SOJOURNER_PROMPT_DECLINE"], "general", "error")
         table.insert(lines, entry.name .. ": " .. stateLabel)
     end
 

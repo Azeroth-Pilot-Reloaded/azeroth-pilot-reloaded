@@ -36,6 +36,7 @@ BuffFrame_body:SetAllPoints()
 local BuffFrameHeader = CreateFrame("Frame", "BuffFrameHeader", BuffFrame, "ObjectiveTrackerContainerHeaderTemplate")
 BuffFrameHeader:SetPoint("bottom", BuffFrame, "top", 0, -1)
 BuffFrameHeader.Text:SetText(L["BUFF"])
+APR:RegisterFontString(BuffFrameHeader.Text, "general", { role = "accent", sizeDelta = 2 })
 BuffFrameHeader.MinimizeButton:Hide()
 BuffFrameHeader:SetScript("OnMouseDown", function(self, button)
     self:GetParent():StartMoving()
@@ -100,9 +101,9 @@ local function CreateBuffIcon(iconTexture, isDisabled, auraInstanceID, tooltipMe
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
         if not isDisabled and auraInstanceID then
             GameTooltip:SetUnitBuffByAuraInstanceID("player", auraInstanceID)
-            GameTooltip:AddLine(L[tooltipMessage], unpack(APR.Color.darkblue))
+            APR:AddTooltipLine(GameTooltip, L[tooltipMessage], "general", "muted")
         else
-            GameTooltip:AddLine(L[tooltipMessage], unpack(APR.Color.white))
+            APR:AddTooltipLine(GameTooltip, L[tooltipMessage], "general", "base")
         end
         GameTooltip:Show()
     end)
@@ -140,7 +141,7 @@ function APR.Buff:UpdateBuffIcon(aura)
             container:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
                 GameTooltip:SetUnitBuffByAuraInstanceID("player", aura.auraInstanceID)
-                GameTooltip:AddLine(L[container.tooltipMessage], unpack(APR.Color.darkblue))
+                APR:AddTooltipLine(GameTooltip, L[container.tooltipMessage], "general", "muted")
                 GameTooltip:Show()
             end)
         end
@@ -154,7 +155,7 @@ function APR.Buff:DisableBuffIcon(auraId)
             container.auraId = 0
             container:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-                GameTooltip:AddLine(L[container.tooltipMessage], unpack(APR.Color.white))
+                APR:AddTooltipLine(GameTooltip, L[container.tooltipMessage], "general", "base")
                 GameTooltip:Show()
             end)
         end

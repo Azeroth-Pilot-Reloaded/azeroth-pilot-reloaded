@@ -252,7 +252,7 @@ end
 ---------------------------------------------------------------------------------------
 APR.map.pinlist = {}
 APR.map.minimapPinlist = {}
-function APR.map:CreatePin(index, step, size, color, textColor, textScale)
+function APR.map:CreatePin(index, step, size, color, textScope, textColorProfileKey, textScaleProfileKey)
     local pinFrame = CreateFrame("Button", nil, UIParent, "BackdropTemplate")
     pinFrame:SetFrameLevel(16000)
     pinFrame:SetSize(size, size)
@@ -267,8 +267,10 @@ function APR.map:CreatePin(index, step, size, color, textColor, textScale)
     pinFrame.text = pinFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     pinFrame.text:SetPoint("CENTER", pinFrame, "CENTER", 0, 0)
     pinFrame.text:SetText(index)
-    pinFrame.text:SetTextColor(unpack(textColor))
-    pinFrame.text:SetTextScale(textScale)
+    APR:RegisterFontString(pinFrame.text, textScope, {
+        colorProfileKey = textColorProfileKey,
+        sizeScaleProfileKey = textScaleProfileKey,
+    })
 
     pinFrame.stepIndex = index
     pinFrame.step = step
@@ -281,9 +283,10 @@ function APR.map:CreatePin(index, step, size, color, textColor, textScale)
 
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
         if stepText and stepText ~= "" then
-            GameTooltip:AddLine(tostring(self.stepIndex) .. " - " .. tostring(stepText))
+            APR:AddTooltipLine(GameTooltip, tostring(self.stepIndex) .. " - " .. tostring(stepText),
+                textScope, "base")
         else
-            GameTooltip:AddLine(tostring(self.stepIndex))
+            APR:AddTooltipLine(GameTooltip, tostring(self.stepIndex), textScope, "base")
         end
 
         if APR.AddStepTooltipDetails and APR:AddStepTooltipDetails(GameTooltip, self.step) then
@@ -293,7 +296,7 @@ function APR.map:CreatePin(index, step, size, color, textColor, textScale)
 
         local questIDs = APR.GetStepQuestIDs and APR:GetStepQuestIDs(self.step) or {}
         if #questIDs > 0 then
-            GameTooltip:AddLine(table.concat(questIDs, ", "), 1, 1, 1, true)
+            APR:AddTooltipLine(GameTooltip, table.concat(questIDs, ", "), textScope, "base", true)
         end
 
         GameTooltip:Show()
@@ -309,8 +312,10 @@ function APR.map:UpdateMapIconsStyle()
     for _, pin in pairs(self.pinlist) do
         pin:SetSize(APR.settings.profile.mapshowNextStepsSize, APR.settings.profile.mapshowNextStepsSize)
         pin.icon:SetVertexColor(unpack(APR.settings.profile.mapshowNextStepsColor))
-        pin.text:SetTextColor(unpack(APR.settings.profile.mapshowNextStepsColorText))
-        pin.text:SetTextScale(APR.settings.profile.mapshowNextStepsTextScale)
+        APR:ApplyTextStyle(pin.text, "map", {
+            colorProfileKey = "mapshowNextStepsColorText",
+            sizeScaleProfileKey = "mapshowNextStepsTextScale",
+        })
     end
 end
 
@@ -318,8 +323,10 @@ function APR.map:UpdateMiniMapIconsStyle()
     for _, pin in pairs(self.minimapPinlist) do
         pin:SetSize(APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile.minimapshowNextStepsSize)
         pin.icon:SetVertexColor(unpack(APR.settings.profile.minimapshowNextStepsColor))
-        pin.text:SetTextColor(unpack(APR.settings.profile.minimapshowNextStepsColorText))
-        pin.text:SetTextScale(APR.settings.profile.minimapshowNextStepsTextScale)
+        APR:ApplyTextStyle(pin.text, "minimap", {
+            colorProfileKey = "minimapshowNextStepsColorText",
+            sizeScaleProfileKey = "minimapshowNextStepsTextScale",
+        })
     end
 end
 
@@ -376,15 +383,15 @@ function APR.map:AddMapPins()
                 if not self.pinlist[stepIndex] then
                     self.pinlist[stepIndex] = self:CreatePin(stepIndex, step,
                         APR.settings.profile.mapshowNextStepsSize,
-                        APR.settings.profile.mapshowNextStepsColor, APR.settings.profile.mapshowNextStepsColorText,
-                        APR.settings.profile.mapshowNextStepsTextScale)
+                        APR.settings.profile.mapshowNextStepsColor, "map", "mapshowNextStepsColorText",
+                        "mapshowNextStepsTextScale")
                 end
                 if not self.minimapPinlist[stepIndex] then
                     self.minimapPinlist[stepIndex] = self:CreatePin(stepIndex, step,
                         APR.settings.profile.minimapshowNextStepsSize, APR.settings.profile
                         .minimapshowNextStepsColor,
-                        APR.settings.profile.minimapshowNextStepsColorText,
-                        APR.settings.profile.minimapshowNextStepsTextScale)
+                        "minimap",
+                        "minimapshowNextStepsColorText", "minimapshowNextStepsTextScale")
                 end
 
                 self.pinlist[stepIndex].stepIndex = stepIndex

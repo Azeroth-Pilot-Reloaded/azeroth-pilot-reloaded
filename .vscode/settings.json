@@ -88,7 +88,8 @@
         "Add",
         "LEVEL",
         "LEVEL_REQUIRED",
-        "ReloadUI"
+        "ReloadUI",
+        "STANDARD_TEXT_FONT"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {

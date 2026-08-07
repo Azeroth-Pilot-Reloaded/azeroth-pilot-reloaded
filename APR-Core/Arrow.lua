@@ -101,8 +101,8 @@ APR.ArrowFrame.arrow = APR.ArrowFrame:CreateTexture(nil, "OVERLAY")
 APR.ArrowFrame.arrow:SetTexture(ARROW_TEXTURE)
 APR.ArrowFrame.arrow:SetAllPoints()
 APR.ArrowFrame.distance = APR.ArrowFrame:CreateFontString("distance", "ARTWORK", "ChatFontNormal")
-APR.ArrowFrame.distance:SetFontObject("GameFontNormalSmall")
 APR.ArrowFrame.distance:SetPoint("TOP", APR.ArrowFrame, "BOTTOM", 0, 0)
+APR:RegisterFontString(APR.ArrowFrame.distance, "arrow", { role = "base", sizeDelta = -2 })
 APR.ArrowFrame:Hide()
 APR.ArrowFrame:SetScript("OnMouseDown", function(self, button) --Mouse clicking arrowframe
     if button == "LeftButton" and not APR.ArrowFrameM.isMoving and not APR.settings.profile.lockArrow then
@@ -156,16 +156,19 @@ APR.ArrowFrame.Fontstring = APR.ArrowFrame:CreateFontString("CLSettingsFS2212", 
 APR.ArrowFrame.Fontstring:SetParent(APR.ArrowFrame.Button)
 APR.ArrowFrame.Fontstring:SetPoint("CENTER", APR.ArrowFrame.Button)
 APR.ArrowFrame.Fontstring:SetText(L["SKIP_WAYPOINT"])
-local skipWidth = APR.ArrowFrame.Fontstring:GetStringWidth() + 10 < 85 and
-    (APR.ArrowFrame.Fontstring:GetStringWidth() + 10) / 2 or 85
-local skipHeight = skipWidth < 85 and APR.ArrowFrame.Fontstring:GetStringHeight() + 10 or
-    APR.ArrowFrame.Fontstring:GetStringHeight() + 5
-APR.ArrowFrame.Button:SetWidth(skipWidth)
-APR.ArrowFrame.Button:SetHeight(skipHeight)
-APR.ArrowFrame.Fontstring:SetWidth(skipWidth)
 APR.ArrowFrame.Fontstring:SetWordWrap(true)
-APR.ArrowFrame.Fontstring:SetFontObject("GameFontNormalSmall")
-APR.ArrowFrame.Fontstring:SetTextColor(1, 1, 0)
+APR:RegisterFontString(APR.ArrowFrame.Fontstring, "arrow", { role = "warning", sizeDelta = -2 })
+
+local function UpdateSkipButtonTextLayout()
+    APR.ArrowFrame.Fontstring:SetWidth(0)
+    local textWidth = APR.ArrowFrame.Fontstring:GetStringWidth() + 10
+    local skipWidth = textWidth < 85 and math.max(45, textWidth) or 85
+    APR.ArrowFrame.Fontstring:SetWidth(skipWidth)
+    local skipHeight = APR.ArrowFrame.Fontstring:GetStringHeight() + 10
+    APR.ArrowFrame.Button:SetSize(skipWidth, skipHeight)
+end
+
+UpdateSkipButtonTextLayout()
 APR.ArrowFrame.Button:Hide()
 
 ---------------------------------------------------------------------------------------
@@ -178,6 +181,10 @@ function APR.Arrow:Init()
     APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
     APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
         APR.settings.profile.arrowtop)
+end
+
+function APR.Arrow:UpdateTextAppearance()
+    UpdateSkipButtonTextLayout()
 end
 
 local function CheckDistance()

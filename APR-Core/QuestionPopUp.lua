@@ -34,6 +34,7 @@ local function EnsureRouteTriggerPopup()
     frame.title:SetWordWrap(true)
     frame.title:SetJustifyH("CENTER")
     frame.title:SetText("APR")
+    APR:RegisterFontString(frame.title, "general", { role = "accent", sizeDelta = 4 })
 
     frame.message = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
     frame.message:SetPoint("TOP", frame.title, "BOTTOM", 0, -10)
@@ -41,6 +42,7 @@ local function EnsureRouteTriggerPopup()
     frame.message:SetJustifyH("CENTER")
     frame.message:SetText("")
     frame.message:Hide()
+    APR:RegisterFontString(frame.message, "general", { role = "base" })
 
     frame.routeButtonContainer = CreateFrame("Frame", nil, frame)
     frame.routeButtonContainer:SetPoint("TOPLEFT", frame.title, "BOTTOMLEFT", -172, -12)
@@ -53,6 +55,7 @@ local function EnsureRouteTriggerPopup()
     frame.cancelButton:SetSize(110, 24)
     frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 132, 12)
     frame.cancelButton:SetText(CANCEL)
+    APR:RegisterButtonText(frame.cancelButton, "general", { role = "base" })
     frame.cancelButton:SetScript("OnClick", function()
         frame:Hide()
         if frame.onCancel then
@@ -64,6 +67,7 @@ local function EnsureRouteTriggerPopup()
     frame.dontAskButton:SetSize(110, 24)
     frame.dontAskButton:SetPoint("BOTTOM", frame, "BOTTOM", 0, 12)
     frame.dontAskButton:SetText(L["DONT_ASK_AGAIN"])
+    APR:RegisterButtonText(frame.dontAskButton, "general", { role = "base", sizeDelta = -2 })
     if frame.dontAskButton.Text then
         frame.dontAskButton.Text:SetWidth(94)
         frame.dontAskButton.Text:SetWordWrap(true)
@@ -80,6 +84,7 @@ local function EnsureRouteTriggerPopup()
     frame.routeSelectionButton:SetSize(110, 24)
     frame.routeSelectionButton:SetPoint("BOTTOM", frame, "BOTTOM", -132, 12)
     frame.routeSelectionButton:SetText(L["ROUTE_SELECTION"])
+    APR:RegisterButtonText(frame.routeSelectionButton, "general", { role = "base", sizeDelta = -2 })
     if frame.routeSelectionButton.Text then
         frame.routeSelectionButton.Text:SetWidth(94)
         frame.routeSelectionButton.Text:SetWordWrap(true)
@@ -105,7 +110,7 @@ local function EnsureRouteButton(frame, index)
 
     button = CreateFrame("Button", nil, frame.routeButtonContainer, "UIPanelButtonTemplate")
     button:SetSize(320, 30)
-    button:SetNormalFontObject("GameFontNormalSmall")
+    APR:RegisterButtonText(button, "general", { role = "base", sizeDelta = -2 })
 
     if button.Text then
         button.Text:SetWidth(300)
@@ -146,12 +151,14 @@ local function EnsureSelectionPopup()
     frame.title:SetWidth(390)
     frame.title:SetWordWrap(true)
     frame.title:SetJustifyH("CENTER")
+    APR:RegisterFontString(frame.title, "general", { role = "accent", sizeDelta = 4 })
 
     frame.description = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
     frame.description:SetPoint("TOP", frame.title, "BOTTOM", 0, -10)
     frame.description:SetWidth(390)
     frame.description:SetWordWrap(true)
     frame.description:SetJustifyH("CENTER")
+    APR:RegisterFontString(frame.description, "general", { role = "base" })
 
     frame.optionContainer = CreateFrame("Frame", nil, frame)
     frame.optionContainer:SetPoint("TOPLEFT", frame.description, "BOTTOMLEFT", -6, -10)
@@ -164,6 +171,7 @@ local function EnsureSelectionPopup()
     frame.cancelButton:SetSize(120, 24)
     frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 0, 12)
     frame.cancelButton:SetText(CANCEL)
+    APR:RegisterButtonText(frame.cancelButton, "general", { role = "base" })
     frame.cancelButton:SetScript("OnClick", function()
         frame:Hide()
         if frame.onCancel then
@@ -184,7 +192,7 @@ local function EnsureSelectionButton(frame, index)
 
     button = CreateFrame("Button", nil, frame.optionContainer, "UIPanelButtonTemplate")
     button:SetSize(340, 30)
-    button:SetNormalFontObject("GameFontNormalSmall")
+    APR:RegisterButtonText(button, "general", { role = "base", sizeDelta = -2 })
     if button.Text then
         button.Text:SetWidth(320)
         button.Text:SetWordWrap(true)
@@ -214,7 +222,7 @@ function APR.questionDialog:CreateQuestionPopup(dialogName, text, onAcceptFuncti
         hideOnEscape = hideOnEscape or true,
     }
 
-    StaticPopup_Show(dialogName)
+    APR:StyleStaticPopup(StaticPopup_Show(dialogName))
 end
 
 function APR.questionDialog:CreateMessagePopup(text, closeButtonText)
@@ -227,7 +235,7 @@ function APR.questionDialog:CreateMessagePopup(text, closeButtonText)
         hideOnEscape = true,
     }
 
-    StaticPopup_Show(dialogName)
+    APR:StyleStaticPopup(StaticPopup_Show(dialogName))
 end
 
 function APR.questionDialog:CreateMandatoryAction(text, onAcceptFunction)
@@ -244,7 +252,7 @@ function APR.questionDialog:CreateMandatoryAction(text, onAcceptFunction)
         noCancelOnReuse = true,
     }
 
-    StaticPopup_Show(dialogName)
+    APR:StyleStaticPopup(StaticPopup_Show(dialogName))
 end
 
 function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxText)
@@ -270,7 +278,7 @@ function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxTex
         hideOnEscape = true,
     }
 
-    StaticPopup_Show(dialogName)
+    APR:StyleStaticPopup(StaticPopup_Show(dialogName))
 end
 
 function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSelected, onCancel, onDontAsk)
@@ -406,7 +414,7 @@ function APR.questionDialog:CreateSelectionPopup(titleText, descriptionText, opt
                 return
             end
             GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-            GameTooltip:AddLine(tip, 1, 1, 1, true)
+            APR:AddTooltipLine(GameTooltip, tip, "general", "base", true)
             GameTooltip:Show()
         end)
         button:SetScript("OnLeave", function()

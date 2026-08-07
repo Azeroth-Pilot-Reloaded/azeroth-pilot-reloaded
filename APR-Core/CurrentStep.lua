@@ -48,7 +48,7 @@ end
 
 -- Create the frame header
 local CurrentStepFrameHeader = APR:CreateFrameHeader("CurrentStepFrameHeader", CurrentStepFrame,
-    "Azeroth Pilot Reloaded", "ObjectiveTrackerContainerHeaderTemplate") -- don't replace with APR.title
+    "Azeroth Pilot Reloaded", "ObjectiveTrackerContainerHeaderTemplate", "currentStep") -- don't replace with APR.title
 
 -- Setup drag with right-click menu support
 CurrentStepFrameHeader:RegisterForDrag("LeftButton")
@@ -91,7 +91,7 @@ CurrentStepFrameSettingsButton:SetScript("OnClick", function(self, button)
 end)
 CurrentStepFrameSettingsButton:SetScript("OnEnter", function(self)
     GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-    GameTooltip:SetText(L["SHOW_MENU"] or "Settings")
+    APR:SetTooltipText(GameTooltip, L["SHOW_MENU"] or "Settings", "currentStep", "base")
     GameTooltip:Show()
 end)
 CurrentStepFrameSettingsButton:SetScript("OnLeave", function(self)
@@ -346,7 +346,7 @@ local function CreateButton(name, parent, width, height, text, script)
     button:SetScript("OnClick", script)
     button:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-        GameTooltip:AddLine(text)
+        APR:AddTooltipLine(GameTooltip, text, "currentStep", "base")
         GameTooltip:Show()
     end)
     button:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
@@ -437,6 +437,7 @@ function APR.currentStep:ProgressBar(key, total, current)
         else
             progressBarText:SetText("")
         end
+        APR:RegisterFontString(progressBarText, "currentStep", { role = "base" })
 
         self.progressBar = progressBar
         self.progressBar.Text = progressBarText
@@ -489,7 +490,8 @@ local function AddStepsFrame(questDesc, extraLineText, color, showLeadingDash)
         extraLineText ~= nil,
         color,
         APR.settings.profile.currentStepbackgroundColorAlpha,
-        showLeadingDash
+        showLeadingDash,
+        "currentStep"
     )
 
     -- Keep text visually aligned with the centered divider margins.
@@ -684,6 +686,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
     -- Create the main container for the text
     local container = AddExtraLineTextFrame(text, nil, false)
     container:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
+    container.detailFonts = {}
 
     -- Add the sub-container for each entry in the list
     local questFontHeight = 0
@@ -717,6 +720,8 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
             -(container.font:GetStringHeight() + 10 + questFontHeight))
         questFont:SetText(questText)
         questFont:SetJustifyH("LEFT")
+        APR:RegisterFontString(questFont, "currentStep", { role = "base" })
+        table.insert(container.detailFonts, questFont)
         questFontHeight = questFontHeight + questFont:GetStringHeight()
         questFont:SetScript("OnEnter", function(self)
             GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
@@ -726,7 +731,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
                     includeStoryline = true,
                 })
             else
-                GameTooltip:AddLine(L["QUEST_INFO"])
+                APR:AddTooltipLine(GameTooltip, L["QUEST_INFO"], "currentStep", "base")
             end
 
             GameTooltip:Show()
@@ -1019,6 +1024,28 @@ function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
     end
 end
 
+function APR.currentStep:RefreshTextLayout()
+    local function RefreshContainer(container)
+        if not container or not container.font then return end
+        if container.detailFonts and #container.detailFonts > 0 then
+            local detailHeight = 0
+            for _, detailFont in ipairs(container.detailFonts) do
+                detailFont:ClearAllPoints()
+                detailFont:SetPoint("TOPLEFT", container, "TOPLEFT", 25,
+                    -(container.font:GetStringHeight() + 10 + detailHeight))
+                detailHeight = detailHeight + detailFont:GetStringHeight()
+            end
+            container:SetHeight(container.font:GetStringHeight() + detailHeight + 15)
+        else
+            container:SetHeight(container.font:GetStringHeight() + 10)
+        end
+    end
+
+    for _, container in pairs(self.questsExtraTextList) do RefreshContainer(container) end
+    for _, container in pairs(self.questsList) do RefreshContainer(container) end
+    self:ReOrderExtraLineText()
+end
+
 -- Remove all  quest steps and extra line texts
 function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
     APR:Debug("Function: APR.currentStep:RemoveQuestStepsAndExtraLineTexts()")
@@ -1297,11 +1324,11 @@ function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
     RaidIconButton:SetScript("OnEnter", function(self)
         local npcName = APR:GetRaidIconNpcName(self.npcID)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-        GameTooltip:AddLine("Raid icon (skull)")
+        APR:AddTooltipLine(GameTooltip, "Raid icon (skull)", "currentStep", "accent")
         if npcName then
-            GameTooltip:AddLine(npcName, 1, 1, 1, true)
+            APR:AddTooltipLine(GameTooltip, npcName, "currentStep", "base", true)
         else
-            GameTooltip:AddLine("Mouseover target", 0.8, 0.8, 0.8, true)
+            APR:AddTooltipLine(GameTooltip, "Mouseover target", "currentStep", "muted", true)
         end
         GameTooltip:Show()
     end)
@@ -1417,7 +1444,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         elseif attribute == "spell" then
             GameTooltip:SetSpellByID(itemID)
         elseif container.font then
-            GameTooltip:AddLine(container.font:GetText(), 1, 1, 1, true)
+            APR:AddTooltipLine(GameTooltip, container.font:GetText(), "currentStep", "base", true)
         end
         GameTooltip:Show()
     end)
@@ -1563,9 +1590,9 @@ end
 function APR.GetMenu(owner, rootDescription)
     local toggleAddon = ''
     if APR.settings.profile.enableAddon then
-        toggleAddon = APR:WrapTextInColorCode(" " .. L["DISABLE"], "cce0000f")
+        toggleAddon = APR:WrapTextWithAppearanceColor(" " .. L["DISABLE"], "general", "error")
     else
-        toggleAddon = APR:WrapTextInColorCode(" " .. L["ENABLE"], "00ff00")
+        toggleAddon = APR:WrapTextWithAppearanceColor(" " .. L["ENABLE"], "general", "success")
     end
 
     local function createToggleItem(label, getChecked, onToggle)

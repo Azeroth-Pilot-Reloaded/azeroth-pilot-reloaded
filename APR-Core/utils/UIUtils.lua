@@ -14,6 +14,10 @@ local NAVIGATION_QUEST_UI_KEY_PATTERNS = {
 
 
 local function getStatusHex(name, fallback)
+    if APR.GetTextColorHex then
+        local roles = { green = "success", red = "error", yellow = "warning", white = "base" }
+        return APR:GetTextColorHex("general", roles[name] or "accent")
+    end
     return (APR.HEXColor and APR.HEXColor[name]) or fallback
 end
 
@@ -28,7 +32,7 @@ local function yellowKey(keyText)
 end
 
 local function addKeyValueLine(tooltip, keyText, valueText)
-    tooltip:AddLine(yellowKey(keyText) .. ": " .. tostring(valueText), unpack(APR.Color.white))
+    APR:AddTooltipLine(tooltip, yellowKey(keyText) .. ": " .. tostring(valueText), "general", "base")
 end
 
 local function addStorylineLine(tooltip, questIDNum)
@@ -106,7 +110,7 @@ function APR:AddQuestTooltipDetails(tooltip, questID, options)
     options = options or {}
 
     if options.addHeader ~= false then
-        tooltip:AddLine(L["QUEST_INFO"])
+        APR:AddTooltipLine(tooltip, L["QUEST_INFO"], "general", "base")
     end
 
     local questIDText = (questID ~= nil) and tostring(questID) or "?"
@@ -598,10 +602,12 @@ end
 ---@param parent table
 ---@param text string
 ---@param template string|nil Default: "ObjectiveTrackerModuleHeaderTemplate"
+---@param textScope string|nil
 ---@return table
-function APR:CreateFrameHeader(name, parent, text, template)
+function APR:CreateFrameHeader(name, parent, text, template, textScope)
     local header = CreateFrame("Frame", name, parent, template or "ObjectiveTrackerModuleHeaderTemplate")
     header.Text:SetText(text)
+    self:RegisterFontString(header.Text, textScope or "general", { role = "accent", sizeDelta = 2 })
     return header
 end
 
@@ -643,8 +649,9 @@ end
 ---@param color string|nil
 ---@param backdropColor table|nil
 ---@param showLeadingDash boolean|nil
+---@param textScope string|nil
 ---@return table
-function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, backdropColor, showLeadingDash)
+function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, backdropColor, showLeadingDash, textScope)
     local textTemplate = isExtraLine and "GameFontNormal" or "GameFontHighlight"
     local container = CreateFrame("Frame", nil, parent, "BackdropTemplate")
     local font = container:CreateFontString(nil, "OVERLAY", textTemplate)
@@ -655,12 +662,16 @@ function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, ba
     font:SetText((useLeadingDash and "- " or "") .. text)
     font:SetJustifyH("LEFT")
 
-    if color then
-        font:SetTextColor(unpack(APR:HexaToRGBA(color)))
-    end
-
     container:SetWidth(width)
     container:SetHeight(font:GetStringHeight() + 10)
+
+    local role = color and self:ResolveTextColorRole(color, "accent") or (isExtraLine and "accent" or "base")
+    self:RegisterFontString(font, textScope or "general", {
+        role = role,
+        onApplied = function(fontString)
+            container:SetHeight(fontString:GetStringHeight() + 10)
+        end,
+    })
 
     if backdropColor then
         container:SetBackdrop({
