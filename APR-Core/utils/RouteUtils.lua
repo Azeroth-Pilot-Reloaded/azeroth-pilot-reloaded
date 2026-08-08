@@ -340,6 +340,17 @@ local function MatchesConditionValue(expectedValue, actualValue, alternateValue)
     return expectedValue == actualValue or (alternateValue ~= nil and expectedValue == alternateValue)
 end
 
+function APR:IsInterfaceVersion(requiredInterfaceVersion)
+    local expectedVersion = tonumber(requiredInterfaceVersion)
+    local currentVersion = tonumber(self.interfaceVersion)
+
+    if not currentVersion and GetBuildInfo then
+        currentVersion = tonumber(select(4, GetBuildInfo()))
+    end
+
+    return expectedVersion ~= nil and currentVersion == expectedVersion
+end
+
 function APR:AreConditionalFiltersMet(conditions)
     if not conditions then
         return true
@@ -375,6 +386,7 @@ function APR:AreConditionalFiltersMet(conditions)
         (not conditions.Zones or (playerMapID and tContains(conditions.Zones, playerMapID))) and
         (conditions.AlliedRace == nil or self:IsAlliedRace() == conditions.AlliedRace) and
         (not conditions.Event or (conditions.Event ~= APR.EVENTS.Remix or self:IsRemixCharacter())) and
+        (not conditions.InterfaceVersion or self:IsInterfaceVersion(conditions.InterfaceVersion)) and
         (not conditions.HasAchievement or self:HasAchievement(conditions.HasAchievement)) and
         (not conditions.DontHaveAchievement or not self:HasAchievement(conditions.DontHaveAchievement)) and
         (not conditions.HasAura or self:HasAura(conditions.HasAura)) and
