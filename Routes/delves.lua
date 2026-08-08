@@ -2517,3 +2517,27 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
         -- DelveScenarioBlock(3150, 3, "Captured Wildlife", {}),
     },
 })
+
+-- coiled isle
+
+RegisterDelveRoute("GNARLDOR_ISLE_DELVE", {
+    label = "Gnarldor Isle",
+    expansion = APR.EXPANSIONS.Midnight,
+    mapID = 2635,
+    scenarios = {
+        -- DelveScenarioBlock(3385, 1, "Olds and Ends", {}),
+        -- DelveScenarioBlock(3414, 2, "Speaking Their Language", {}),
+        -- DelveScenarioBlock(3415, 3, "Minchi's Osseous Adventure", {}),
+    },
+})
+
+RegisterDelveRoute("RING_OF_GLORY_DELVE", {
+    label = "The Ring of Glory",
+    expansion = APR.EXPANSIONS.Midnight,
+    mapID = 2633,
+    scenarios = {
+        -- DelveScenarioBlock(3386, 1, "Open Night", {}),
+        -- DelveScenarioBlock(3416, 2, "Adopt-a-thon", {}),
+        -- DelveScenarioBlock(3417, 3, "Game Day", {}),
+    },
+})
