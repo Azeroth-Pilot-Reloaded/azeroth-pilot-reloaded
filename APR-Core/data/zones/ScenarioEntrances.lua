@@ -1,6 +1,7 @@
 -- Instance and scenario entrances remain APR-owned because route steps refer
 -- to their interior map while Farstrider needs the exterior destination.
 APR.ScenarioEntrances = {
+    -- TWW
     [2269] = { Coord = { x = -1631.8, y = 929.3 }, zone = 2248, type = "DELVE" },
     [2249] = { Coord = { x = -2771.3, y = 1410.3 }, zone = 2248, type = "DELVE" },
     [2250] = { Coord = { x = -3650.2, y = 2707.8 }, zone = 2248, type = "DELVE" },
@@ -15,6 +16,8 @@ APR.ScenarioEntrances = {
     [2299] = { Coord = { x = -1091.3, y = -2500.5 }, zone = 2255, type = "DELVE" },
     -- Legacy sentinel for Zekvir's Lair, whose interior map ID was not recorded.
     [0000] = { Coord = { x = 166.0, y = -1975.1 }, zone = 2255, type = "DELVE" },
+
+    -- Midnight
     [2423] = { Coord = { x = 694.7, y = -13 }, zone = 2214, type = "DELVE" },
     [2502] = { Coord = { x = -4142, y = 4750.4 }, zone = 2395, type = "DELVE" },
     [2577] = { Coord = { x = -4465.6, y = 8780.4 }, zone = 2395, type = "DELVE" },
@@ -34,4 +37,10 @@ APR.ScenarioEntrances = {
     [2528] = { Coord = { x = -768.6, y = 2450.5 }, zone = 2405, type = "DELVE" },
     [2506] = { Coord = { x = 1002.1, y = 2414.8 }, zone = 2405, type = "DELVE" },
     [2529] = { Coord = { x = 202.3, y = 1265.5 }, zone = 2405, type = "RAID" },
+
+    -- Coiled Isle
+    [2633] = { Coord = { x = -13132.5, y = 5509.4 }, zone = 2512, type = "DELVE" },
+    [2635] = { Coord = { x = -12583.8, y = 4350.7 }, zone = 2512, type = "DELVE" },
+    [2588] = { Coord = { x = -10401.2, y = 4898.7 }, zone = 2512, type = "DUNGEON" },
+    [2606] = { Coord = { x = -10399.9, y = 5818 }, zone = 2512, type = "RAID" },
 }

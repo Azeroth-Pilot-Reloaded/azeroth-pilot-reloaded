@@ -462,6 +462,11 @@ end
 local function EvaluateHardConditions(conditions)
     if not conditions then return true end
 
+    -- InterfaceVersion (exact WoW interface version, e.g. 120007 for 12.0.7)
+    if conditions.InterfaceVersion and not APR:IsInterfaceVersion(conditions.InterfaceVersion) then
+        return false
+    end
+
     -- Faction
     if conditions.Faction then
         if conditions.Faction ~= APR.Faction then
