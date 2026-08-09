@@ -3770,7 +3770,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
 }
 
 APR.RouteQuestStepList["2395-legacy-of-the-amani"] = {
-    label = L["Midnight - Legacy of the Amani"],
+    label = L["Midnight - The Curse of Ula'tek"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Campaign,
     mapID = 2395,
