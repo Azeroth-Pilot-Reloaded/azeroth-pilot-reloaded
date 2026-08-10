@@ -5,9 +5,9 @@
       "source": "github",
       "repository": "WoWUIDev/Ace3",
       "ref": "master",
-      "commit": "4475787f06f74d2079b2ab2082195432103da424",
-      "date_created": "2026-07-10T21:40:53Z",
-      "archive_sha256": "293417881a7f408b170756dfd6adc7931b000f4e202f7eb7750d15d369478d7a"
+      "commit": "d96aeae0d0ee8c24becc57675fc28c504407ba53",
+      "date_created": "2026-08-05T06:12:56Z",
+      "archive_sha256": "f9ca6f8f32a91bd08c5509e5f139470b6f17648085aeca18fa7bb8ce4c394c9c"
     },
     "HereBeDragons": {
       "source": "github",
