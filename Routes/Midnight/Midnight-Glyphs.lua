@@ -412,5 +412,9 @@ APR.RouteQuestStepList["2512-Midnight-Glyph-Coiled-Isle"] = {
             Range = 1,
             _index = 11,
         },
+        {
+            RouteCompleted = true,
+            _index = 12,
+        },
     }
 }
