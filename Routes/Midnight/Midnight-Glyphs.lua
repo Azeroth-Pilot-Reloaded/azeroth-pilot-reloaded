@@ -251,7 +251,7 @@ APR.RouteQuestStepList["2405-Midnight-Glyph-Voidstorm"] = {
     mapID = 2405,
     conditions = { Level = 80 },
     requiredRoute = { "2432-Midnight-Intro" },
-    nextRoute = {},
+    nextRoute = { "2512-Midnight-Glyph-Coiled-Isle" },
     steps = {
         {
             Achievement = { achievementID = 61583, criteriaIndex = 11 },
@@ -322,6 +322,95 @@ APR.RouteQuestStepList["2405-Midnight-Glyph-Voidstorm"] = {
         {
             RouteCompleted = true,
             _index = 12,
+        },
+    }
+}
+
+APR.RouteQuestStepList["2512-Midnight-Glyph-Coiled-Isle"] = {
+    label = L["Glyph - Coiled Isle"],
+    expansion = APR.EXPANSIONS.Midnight,
+    category = APR.CATEGORIES.Achievement,
+    prefab = {
+        [APR.PREFAB_TYPES.AllQuests] = 140,
+        [APR.PREFAB_TYPES.Speedrun] = 80,
+    },
+    mapID = 2512,
+    conditions = { Level = 90 },
+    requiredRoute = { "2432-Midnight-Intro" },
+    nextRoute = {},
+    steps = {
+        {
+            Achievement = { achievementID = 63395, criteriaIndex = 6 },
+            Coord = { x = -12133.3, y = 5926.2 },
+            Zone = 2512,
+            _index = 1,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaID = 115772, criteriaIndex = 7 },
+            Coord = { x = -12578, y = 5286.3 },
+            Zone = 2512,
+            Range = 1,
+            _index = 2,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaID = 115773, criteriaIndex = 8 },
+            Coord = { x = -13076.8, y = 6002.5 },
+            Zone = 2512,
+            Range = 1,
+            _index = 3,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaIndex = 9 },
+            Coord = { x = -11564.3, y = 6496.7 },
+            Zone = 2512,
+            _index = 4,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaIndex = 10 },
+            Coord = { x = -10817.6, y = 6927.3 },
+            Zone = 2512,
+            _index = 5,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaID = 115776, criteriaIndex = 11 },
+            Coord = { x = -10890.9, y = 6173.2 },
+            Zone = 2512,
+            _index = 6,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaID = 115770, criteriaIndex = 5 },
+            Coord = { x = -11067.9, y = 5033.8 },
+            Zone = 2512,
+            Range = 1,
+            _index = 7,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaID = 115491, criteriaIndex = 1 },
+            Coord = { x = -10365.3, y = 5278.6 },
+            Zone = 2512,
+            Range = 1,
+            _index = 8,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaID = 115766, criteriaIndex = 2 },
+            Coord = { x = -9488.3, y = 5140.7 },
+            Zone = 2512,
+            Range = 1,
+            _index = 9,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaID = 115768, criteriaIndex = 3 },
+            Coord = { x = -9665.6, y = 4469.5 },
+            Zone = 2512,
+            Range = 1,
+            _index = 10,
+        },
+        {
+            Achievement = { achievementID = 63395, criteriaID = 115769, criteriaIndex = 4 },
+            Coord = { x = -10634, y = 3660.9 },
+            Zone = 2512,
+            Range = 1,
+            _index = 11,
         },
     }
 }
