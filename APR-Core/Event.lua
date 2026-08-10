@@ -269,30 +269,63 @@ function APR.event.functions.accept(event, ...)
 end
 
 function APR.event.functions.achievement(event, ...)
-    if not step or not step.Achievement then
+    local achievementData = step and step.Achievement
+    if not achievementData or not achievementData.achievementID then
         return
     end
 
-    if event == "ACHIEVEMENT_EARNED" then
-        local achievementID, alreadyEarned = ...
-        if achievementID == step.Achievement.achievementID then
-            APR:UpdateNextStep()
-            return
-        end
-    end
-    if event == "CRITERIA_EARNED" then
-        local achievementID, description, achievementAlreadyEarnedOnAccount = ...
-        if achievementID ~= step.Achievement.achievementID then
+    local achievementID = achievementData.achievementID
+    local criteriaIndex = achievementData.criteriaIndex
+
+    if event == "CRITERIA_COMPLETE" then
+        local completedCriteriaID = ...
+
+        if not criteriaIndex or not GetAchievementCriteriaInfo then
             return
         end
 
-        C_Timer.After(0.3, function()
-            local isCompleted, progressText = APR:IsAchievementStepComplete(step)
-            if isCompleted then
-                APR:UpdateNextStep()
-            end
-        end)
+        local expectedCriteriaID = select(10, GetAchievementCriteriaInfo(achievementID, criteriaIndex))
+        if completedCriteriaID ~= expectedCriteriaID then
+            return
+        end
+    elseif event == "CRITERIA_EARNED" then
+        local earnedAchievementID = ...
+        if earnedAchievementID ~= achievementID then
+            return
+        end
+    elseif event == "ACHIEVEMENT_EARNED" then
+        local earnedAchievementID = ...
+        if earnedAchievementID ~= achievementID then
+            return
+        end
+    else
+        return
     end
+
+    local expectedRoute = APR.ActiveRoute
+    local playerData = APRData and APRData[APR.PlayerID]
+    local expectedStepIndex = playerData and expectedRoute and playerData[expectedRoute]
+
+    if not expectedStepIndex then
+        return
+    end
+
+    C_Timer.After(0.3, function()
+        local currentPlayerData = APRData and APRData[APR.PlayerID]
+
+        -- Ignore stale or duplicate achievement events after the route step has advanced.
+        if APR.ActiveRoute ~= expectedRoute
+            or not currentPlayerData
+            or currentPlayerData[expectedRoute] ~= expectedStepIndex then
+            return
+        end
+
+        local currentStep = APR:GetStep(expectedStepIndex)
+        local isCompleted = APR:IsAchievementStepComplete(currentStep)
+        if isCompleted then
+            APR:UpdateNextStep()
+        end
+    end)
 end
 
 function APR.event.functions.adventureMapAccept(event, followerTypeID)
