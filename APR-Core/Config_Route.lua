@@ -1065,6 +1065,7 @@ function APR.routeconfig:InitRouteConfig()
         -- to trigger the frame
         APR:Debug("Caller: APR.routeconfig:InitRouteConfig/Custom_Path_Update -> GetCurrentRouteMapIDsAndName")
         APR.currentStep:Reset()
+        APR.Buff:RemoveAllBuffIcon()
 
         local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
         APR.ActiveRoute = routeFileName
@@ -1120,6 +1121,7 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
     if not self:HasRouteInCustomPaht() then
         APR.ActiveRoute = nil
         APR.currentStep:Reset()
+        APR.Buff:RemoveAllBuffIcon()
         APR.currentStep:AddExtraLineText("NO_ROUTE", L["NO_ROUTE"])
         APR:SendMessage("APR_MAP_UPDATE")
         APR.map:RemoveMapLine()

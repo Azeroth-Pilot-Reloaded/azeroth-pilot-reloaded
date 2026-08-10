@@ -219,7 +219,8 @@ function APR.Buff:SetDefaultDisplay()
 end
 
 function APR.Buff:RefreshFrameAnchor()
-    if not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not next(self.auras) then
+    if not APR.settings.profile.enableAddon or not APR.ActiveRoute or C_PetBattles.IsInBattle() or
+        not next(self.auras) then
         BuffFrameScreen:Hide()
         return
     end
