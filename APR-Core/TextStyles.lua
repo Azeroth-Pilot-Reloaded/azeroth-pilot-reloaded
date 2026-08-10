@@ -84,7 +84,18 @@ local function ResolveFont(fontName)
     if not fallback and GameFontNormal and GameFontNormal.GetFont then
         fallback = GameFontNormal:GetFont()
     end
-    return LSM:Fetch("font", fontName, true) or fallback or "Fonts\\FRIZQT__.TTF"
+
+    local requestedFont = LSM:Fetch("font", fontName, true)
+    if requestedFont then
+        local resolvedFont = APR:ResolveUIFileAsset(requestedFont, nil, "font " .. tostring(fontName or "default"))
+        if resolvedFont then
+            return resolvedFont
+        end
+    end
+
+    local defaultFont = fallback or "Fonts\\FRIZQT__.TTF"
+    return APR:ResolveUIFileAsset(defaultFont, "Fonts\\FRIZQT__.TTF", "default font") or
+        "Fonts\\FRIZQT__.TTF"
 end
 
 local VALID_FONT_FLAGS = {

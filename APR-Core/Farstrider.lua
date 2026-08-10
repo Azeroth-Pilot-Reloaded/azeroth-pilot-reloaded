@@ -12,6 +12,37 @@ APR.farstrider.showOutOfZoneStepContent = false
 local ARRIVAL_DISTANCE = 15
 local ROUTING_RETRY_DELAY = 1.5
 
+local function InstallSecretSafeFarstriderPredicates()
+    -- Do not patch bundled library files. Replace only the runtime predicates exposed by the
+    -- legacy data table so Farstrider's connection conditions cannot compare secret cooldowns.
+    local data = _G.FarstriderLibData
+    local util = type(data) == "table" and data.Util or nil
+    if type(util) ~= "table" or util._aprSecretSafePredicates then
+        return
+    end
+
+    util.CanUseSpell = function(spellID)
+        if not spellID then
+            return false
+        end
+        if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE and InCombatLockdown() then
+            return false
+        end
+        if C_SpellBook and C_SpellBook.IsSpellInSpellBook and not C_SpellBook.IsSpellInSpellBook(spellID) then
+            return false
+        end
+        local usable = APR:GetRouteActionUsability("spell", spellID)
+        return usable
+    end
+
+    util.CanUseItem = function(itemID)
+        local usable = APR:GetRouteActionUsability("item", itemID)
+        return usable
+    end
+
+    util._aprSecretSafePredicates = true
+end
+
 local function GetCurrentRouteStep()
     if not APR.ActiveRoute or not APRData[APR.PlayerID] then
         return nil
@@ -41,6 +72,8 @@ local function RequiresScenarioNavigation(step)
 end
 
 local function GetFarstriderAPI()
+    InstallSecretSafeFarstriderPredicates()
+
     local api = _G.FarstriderLib_API
     local missingDependencies = {}
     local hasFarstrider = type(api) == "table" and type(api.FindTrailTo) == "function"
@@ -121,39 +154,10 @@ local function IsActionUsable(action)
         return false
     end
 
-    if action.type == "spell" then
-        if not APR:IsSpellKnown(action.data) then
-            return false
-        end
-
-        local charges = C_Spell.GetSpellCharges(action.data)
-        if charges and charges.currentCharges and charges.currentCharges > 0 then
-            return true
-        end
-
-        local cooldown = C_Spell.GetSpellCooldown(action.data)
-        return not cooldown or (cooldown.duration or 0) <= 0
-    end
-
-    if action.type == "item" then
-        local hasToy = PlayerHasToy and PlayerHasToy(action.data)
-        if hasToy and C_ToyBox and C_ToyBox.IsToyUsable and C_ToyBox.IsToyUsable(action.data) == false then
-            hasToy = false
-        end
-
-        local itemCount = C_Item.GetItemCount and C_Item.GetItemCount(action.data) or 0
-        if not hasToy and itemCount <= 0 then
-            return false
-        end
-        if C_Item.IsUsableItem and C_Item.IsUsableItem(action.data) == false then
-            return false
-        end
-
-        local duration = C_Item.GetItemCooldown and select(2, C_Item.GetItemCooldown(action.data)) or nil
-        if duration == nil and C_Container and C_Container.GetItemCooldown then
-            duration = select(2, C_Container.GetItemCooldown(action.data))
-        end
-        return (duration or 0) <= 0
+    if action.type == "spell" or action.type == "item" then
+        -- Centralized helper uses the never-secret spell cooldown isActive flag on 12.0.1+.
+        -- In particular, do not compare currentCharges or duration: both can be secret.
+        return APR:GetRouteActionUsability(action.type, action.data)
     end
 
     return false

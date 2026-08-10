@@ -1223,6 +1223,8 @@ function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
     end
     button.itemID = nil
     button.attribute = nil
+    button.actionUsable = nil
+    button.actionReason = nil
     if button.cooldown then
         button.cooldown:Hide()
         button.cooldown:Clear()
@@ -1441,10 +1443,27 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
         if attribute == "item" then
             GameTooltip:SetItemByID(itemID)
+
+            local targetContext = APR:GetTargetSpellItemContext(itemID)
+            if targetContext then
+                if targetContext.description and targetContext.description ~= "" then
+                    APR:AddTooltipLine(GameTooltip, targetContext.description, "currentStep", "muted", true)
+                end
+                if not targetContext.matches then
+                    APR:AddTooltipLine(GameTooltip, _G.SPELL_FAILED_BAD_TARGETS, "currentStep", "error", true)
+                end
+            end
         elseif attribute == "spell" then
             GameTooltip:SetSpellByID(itemID)
         elseif container.font then
             APR:AddTooltipLine(GameTooltip, container.font:GetText(), "currentStep", "base", true)
+        end
+
+        if self.actionUsable == false then
+            local statusText = APR:GetRouteActionStatusText(self.actionReason)
+            if statusText then
+                APR:AddTooltipLine(GameTooltip, statusText, "currentStep", "error", true)
+            end
         end
         GameTooltip:Show()
     end)
@@ -1458,6 +1477,13 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     IconButton.itemID = itemID
     IconButton.attribute = attribute
     container.IconButton = IconButton
+
+    local actionID = tonumber(itemID) or itemID
+    if (attribute == "spell" or attribute == "item") and actionID ~= nil then
+        local actionFilter = { [attribute] = { [actionID] = true } }
+        self:UpdateStepButtonUsability(actionFilter)
+        self:UpdateStepButtonCooldowns(actionFilter)
+    end
 
     -- Reposition raid icon button if it exists (to display both buttons side by side)
     if container.RaidIconButton then
@@ -1521,34 +1547,146 @@ function APR.currentStep:RemoveStepButtonByKey(questsListKey)
     self.questsList[questsListKey] = nil
 end
 
-function APR.currentStep:UpdateStepButtonCooldowns()
+local function ShouldUpdateStepButton(IconButton, filter)
+    if not filter then
+        return true
+    end
+
+    local attributeFilter = filter[IconButton.attribute]
+    if attributeFilter == true then
+        return true
+    end
+    if type(attributeFilter) ~= "table" then
+        return false
+    end
+
+    local actionID = tonumber(IconButton.itemID) or IconButton.itemID
+    return attributeFilter[actionID] == true
+end
+
+local function ClearStepButtonCooldown(IconButton)
+    IconButton.cooldown:Clear()
+    IconButton.cooldown:Hide()
+end
+
+local function UpdateSpellButtonCooldown(IconButton)
+    local spellID = tonumber(IconButton.itemID)
+    if not spellID or not C_Spell then
+        ClearStepButtonCooldown(IconButton)
+        return
+    end
+
+    -- Duration objects safely carry restricted cooldown timing directly into the widget on every 12.0.x/12.1 client.
+    if C_Spell.GetSpellCooldownDuration and IconButton.cooldown.SetCooldownFromDurationObject then
+        local duration = C_Spell.GetSpellCooldownDuration(spellID)
+        if duration then
+            IconButton.cooldown:SetCooldownFromDurationObject(duration, true)
+            IconButton.cooldown:Show()
+            return
+        end
+    end
+
+    local cooldownInfo = C_Spell.GetSpellCooldown and C_Spell.GetSpellCooldown(spellID) or nil
+    if not cooldownInfo then
+        ClearStepButtonCooldown(IconButton)
+        return
+    end
+
+    if cooldownInfo.isActive ~= nil then
+        -- A restricted cooldown must never fall through to numeric comparisons.
+        ClearStepButtonCooldown(IconButton)
+        return
+    end
+
+    -- Legacy fallback for clients without DurationObject cooldown APIs.
+    local startTime, duration = cooldownInfo.startTime, cooldownInfo.duration
+    if (APR.CanAccessValue and (not APR:CanAccessValue(startTime) or not APR:CanAccessValue(duration))) or
+        type(startTime) ~= "number" or type(duration) ~= "number" then
+        ClearStepButtonCooldown(IconButton)
+        return
+    end
+
+    if cooldownInfo.isEnabled ~= false and startTime > 0 and duration > 0 then
+        IconButton.cooldown:SetCooldown(startTime, duration, cooldownInfo.modRate or 1)
+        IconButton.cooldown:Show()
+    else
+        ClearStepButtonCooldown(IconButton)
+    end
+end
+
+local function UpdateItemButtonCooldown(IconButton)
+    local itemID = tonumber(IconButton.itemID)
+    local startTime, duration, enabled
+    if itemID and C_Item and C_Item.GetItemCooldown then
+        startTime, duration, enabled = C_Item.GetItemCooldown(itemID)
+    elseif itemID and C_Container and C_Container.GetItemCooldown then
+        startTime, duration, enabled = C_Container.GetItemCooldown(itemID)
+    end
+
+    local cooldownEnabled = enabled == true or enabled == 1
+    if cooldownEnabled and type(startTime) == "number" and startTime > 0 and
+        type(duration) == "number" and duration > 0 then
+        IconButton.cooldown:SetCooldown(startTime, duration)
+        IconButton.cooldown:Show()
+    else
+        ClearStepButtonCooldown(IconButton)
+    end
+end
+
+--- Refresh the secure action buttons from dedicated cooldown events.
+---@param filter table|nil A map such as { spell = true } or { item = { [itemID] = true } }.
+function APR.currentStep:UpdateStepButtonCooldowns(filter)
     local function updateContainerList(list)
-        for id, container in pairs(list) do
+        for _, container in pairs(list) do
             -- Ignore soft-hidden containers (during combat)
             if container and not container.hiddenInCombat then
                 local IconButton = container.IconButton
-                if IconButton and IconButton:IsShown() then
-                    local startTime, duration, enable = 0, 0, 0
-                    local isCooldownShown = IconButton.cooldown:IsShown()
-                    local cooldownDuration = IconButton.cooldown:GetCooldownDuration() or 0
-
-                    if IconButton.attribute == "spell" then
-                        local info = C_Spell.GetSpellCooldown(tonumber(IconButton.itemID))
-                        if info then
-                            startTime, duration = info.startTime or 0, info.duration or 0
-                            enable = info.isEnabled and 1 or 0
-                        end
+                if IconButton and ShouldUpdateStepButton(IconButton, filter) then
+                    if not IconButton:IsShown() then
+                        ClearStepButtonCooldown(IconButton)
+                    elseif IconButton.attribute == "spell" then
+                        UpdateSpellButtonCooldown(IconButton)
                     elseif IconButton.attribute == "item" then
-                        startTime, duration, enable = C_Container.GetItemCooldown(tonumber(IconButton.itemID))
-                    end
-
-                    if enable > 0 and startTime > 0 and (cooldownDuration == 0 or not isCooldownShown) then
-                        IconButton.cooldown:SetCooldown(startTime, duration)
+                        UpdateItemButtonCooldown(IconButton)
                     else
-                        IconButton.cooldown:Clear()
+                        ClearStepButtonCooldown(IconButton)
                     end
-                elseif IconButton then
-                    IconButton.cooldown:Clear()
+                end
+            end
+        end
+    end
+
+    updateContainerList(self.questsList)
+    updateContainerList(self.fillersList)
+end
+
+--- Refresh visual availability without changing protected secure-action attributes.
+---@param filter table|nil
+function APR.currentStep:UpdateStepButtonUsability(filter)
+    local function updateContainerList(list)
+        for _, container in pairs(list) do
+            local IconButton = container and container.IconButton or nil
+            if IconButton and not container.hiddenInCombat and ShouldUpdateStepButton(IconButton, filter) then
+                local actionType = IconButton.attribute
+                local isAction = actionType == "spell" or actionType == "item"
+                local usable, reason = true, nil
+                if isAction then
+                    usable, reason = APR:GetRouteActionUsability(actionType, IconButton.itemID, true)
+                end
+
+                IconButton.actionUsable = usable
+                IconButton.actionReason = reason
+
+                local normalTexture = IconButton:GetNormalTexture()
+                if normalTexture and normalTexture.SetDesaturated and isAction then
+                    normalTexture:SetDesaturated(not usable)
+                    if normalTexture.SetVertexColor then
+                        if usable then
+                            normalTexture:SetVertexColor(1, 1, 1, 1)
+                        else
+                            normalTexture:SetVertexColor(0.55, 0.55, 0.55, 1)
+                        end
+                    end
                 end
             end
         end

@@ -40,6 +40,25 @@ local function CancelDelveRefreshTimer()
     end
 end
 
+local function GetDelveRuntimeFlags()
+    local function getFlag(functionName)
+        local callback = C_DelvesUI and C_DelvesUI[functionName]
+        if type(callback) ~= "function" then
+            return false
+        end
+
+        local ok, result = pcall(callback)
+        return ok and result == true
+    end
+
+    return {
+        hasActiveDelve = getFlag("HasActiveDelve"),
+        hasActiveLair = getFlag("HasActiveLair"),
+        hasActiveLFGLair = getFlag("HasActiveLFGLair"),
+        isInLair = getFlag("IsInLair"),
+    }
+end
+
 function APR:IsTemporaryRoute(routeKey)
     local routeData = routeKey and self.RouteQuestStepList and self.RouteQuestStepList[routeKey] or nil
     return type(routeData) == "table" and (routeData.temporary == true or self:IsDelveRoute(routeKey))
@@ -181,8 +200,29 @@ function APR:GetScenarioStepTarget(step, routeKey)
 end
 
 function APR:GetCurrentDelveContext()
+    local runtimeFlags = GetDelveRuntimeFlags()
+    local temporaryRouteState = GetTemporaryRouteState(false)
     local currentMapID = C_Map.GetBestMapForUnit("player")
     if not currentMapID then
+        -- During a loading transition the map API may temporarily return nil. The 12.1 Lair state
+        -- keeps an already active temporary route alive until the new map/scenario data arrives.
+        local hasRuntimeContext = runtimeFlags.hasActiveDelve or runtimeFlags.hasActiveLair or
+            runtimeFlags.hasActiveLFGLair or runtimeFlags.isInLair
+        if hasRuntimeContext and temporaryRouteState and temporaryRouteState.kind == "delve" and
+            temporaryRouteState.mapID then
+            local retainedContext = {
+                hasActiveDelve = runtimeFlags.hasActiveDelve,
+                hasActiveLair = runtimeFlags.hasActiveLair,
+                hasActiveLFGLair = runtimeFlags.hasActiveLFGLair,
+                isInLair = runtimeFlags.isInLair,
+                isTransitioning = true,
+                mapID = temporaryRouteState.mapID,
+                scenarioID = temporaryRouteState.scenarioID,
+            }
+            retainedContext.sessionKey = temporaryRouteState.sessionKey or BuildDelveSessionKey(retainedContext)
+            retainedContext.name = L["DELVE"]
+            return retainedContext
+        end
         return nil
     end
 
@@ -192,11 +232,28 @@ function APR:GetCurrentDelveContext()
     local stepInfo = C_ScenarioInfo and C_ScenarioInfo.GetScenarioStepInfo and C_ScenarioInfo.GetScenarioStepInfo() or
         nil
     local scenarioID = scenarioInfo and scenarioInfo.scenarioID or nil
+    if not scenarioID and runtimeFlags.isInLair and temporaryRouteState and temporaryRouteState.kind == "delve" and
+        temporaryRouteState.mapID == currentMapID then
+        scenarioID = temporaryRouteState.scenarioID
+    end
+    local matches = self:FindDelveRoutesForContext({ scenarioID = scenarioID })
+    local hasScenarioMatch = #matches > 0
+    local hasActiveRuntimeContext = runtimeFlags.hasActiveDelve or runtimeFlags.hasActiveLair or
+        runtimeFlags.hasActiveLFGLair
+    local isPendingRuntimeContext = not isDelveMap and not hasScenarioMatch and not runtimeFlags.isInLair and
+        hasActiveRuntimeContext
 
-    if not isDelveMap then
-        local matches, _ = self:FindDelveRoutesForContext({ scenarioID = scenarioID })
-        if #matches == 0 then
+    if not isDelveMap and not hasScenarioMatch and not runtimeFlags.isInLair then
+        if not isPendingRuntimeContext then
             return nil
+        end
+
+        -- HasActiveLair/HasActiveLFGLair can be true just before the instance map is ready.
+        -- Preserve an existing route identity, but never activate a new route from these flags alone.
+        if temporaryRouteState and temporaryRouteState.kind == "delve" then
+            currentMapID = temporaryRouteState.mapID or currentMapID
+            scenarioID = temporaryRouteState.scenarioID or scenarioID
+            scenarioEntry = self:GetScenarioZoneInfo(currentMapID) or scenarioEntry
         end
     end
 
@@ -205,11 +262,16 @@ function APR:GetCurrentDelveContext()
         ((type(scenarioInfo) == "table" and scenarioInfo.name) or nil)
 
     if not delveName or delveName == "" then
-        delveName = L["DELVE"] or "Delve"
+        delveName = L["DELVE"]
     end
 
     return {
         entry = scenarioEntry,
+        hasActiveDelve = runtimeFlags.hasActiveDelve,
+        hasActiveLair = runtimeFlags.hasActiveLair,
+        hasActiveLFGLair = runtimeFlags.hasActiveLFGLair,
+        isInLair = runtimeFlags.isInLair,
+        isPendingRuntimeContext = isPendingRuntimeContext,
         mapID = currentMapID,
         name = delveName,
         scenarioID = scenarioID,
@@ -441,8 +503,9 @@ function APR:RefreshTemporaryDelveRoute()
     if not contextScenarioID then
         self._delvePendingScenarioAttempts = (self._delvePendingScenarioAttempts or 0) + 1
 
-        if self._delvePendingScenarioAttempts <= 24 then
-            self:ScheduleDelveRouteRefresh(0.35)
+        local maxAttempts = context.isPendingRuntimeContext and 40 or 24
+        if self._delvePendingScenarioAttempts <= maxAttempts then
+            self:ScheduleDelveRouteRefresh(context.isPendingRuntimeContext and 0.5 or 0.35)
         end
         return
     end

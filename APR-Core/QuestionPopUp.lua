@@ -263,7 +263,7 @@ function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxTex
         button1 = closeButtonText or OKAY or "YES",
         OnShow = function(self)
             if editBoxText then
-                local box = getglobal(self:GetName() .. "EditBox")
+                local box = _G[self:GetName() .. "EditBox"]
                 if box then
                     box:SetWidth(275)
                     box:SetText(editBoxText)
