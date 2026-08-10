@@ -31,7 +31,7 @@ HeirloomFrame_body:SetAllPoints()
 -- Create the frame header
 local HeirloomFrameHeader = CreateFrame("Frame", "HeirloomFrameHeader", HeirloomFrame,
     "ObjectiveTrackerContainerHeaderTemplate")
-HeirloomFrameHeader:SetPoint("bottom", HeirloomFrame, "top", 0, -1)
+HeirloomFrameHeader:SetPoint("BOTTOM", HeirloomFrame, "TOP", 0, -1)
 HeirloomFrameHeader.Text:SetText(L["HEIRLOOM"])
 APR:RegisterFontString(HeirloomFrameHeader.Text, "heirloom", { role = "accent", sizeDelta = 2 })
 HeirloomFrameHeader:SetScript("OnMouseDown", function(self, button)
