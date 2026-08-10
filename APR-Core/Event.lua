@@ -22,7 +22,10 @@ local events = {
     achievement = { "ACHIEVEMENT_EARNED", "CRITERIA_EARNED", "CRITERIA_COMPLETE" },
     adventureMapAccept = "ADVENTURE_MAP_OPEN",
     adventureMapClose = "ADVENTURE_MAP_CLOSE",
-    buffsAndCooldown = "UNIT_AURA",
+    actionUsability = { "BAG_UPDATE_DELAYED", "CURSOR_CHANGED", "GET_ITEM_INFO_RECEIVED", "SPELLS_CHANGED",
+        "SPELL_UPDATE_USABLE", "TOYS_UPDATED" },
+    buffs = "UNIT_AURA",
+    cooldowns = { "BAG_UPDATE_COOLDOWN", "SPELL_UPDATE_CHARGES", "SPELL_UPDATE_COOLDOWN" },
     dead = { "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST" },
     detail = "QUEST_DETAIL",
     done = { "QUEST_AUTOCOMPLETE", "QUEST_COMPLETE", "QUEST_PROGRESS" },
@@ -43,7 +46,8 @@ local events = {
     targetChanged = "PLAYER_TARGET_CHANGED",
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
-    scenario = { "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
+    scenario = { "ACTIVE_DELVE_DATA_UPDATE", "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE",
+        "WALK_IN_DATA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
     spell = "UNIT_SPELLCAST_SUCCEEDED",
     spec = "PLAYER_SPECIALIZATION_CHANGED",
@@ -173,6 +177,9 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
     if event == events.load then
         local addOnName, containsBindings = ...
         if addOnName == "APR" then
+            if APR.ValidateBundledUIAssets then
+                APR:ValidateBundledUIAssets()
+            end
             C_Timer.After(2, function()
                 APR:UpdateMapId()
                 APR.RouteSelection:RefreshFrameAnchor()
@@ -426,28 +433,53 @@ function APR.event.functions.adventureMapClose(event, ...)
     CancelAdventureMapRetries()
 end
 
-function APR.event.functions.buffsAndCooldown(event, unitTarget, updateInfo)
+function APR.event.functions.actionUsability(event, ...)
+    if APR.currentStep then
+        APR.currentStep:UpdateStepButtonUsability()
+    end
+end
+
+function APR.event.functions.buffs(event, unitTarget, updateInfo)
     if step and step.Buffs then
-        if updateInfo.addedAuras then
-            for _, aura in pairs(updateInfo.addedAuras) do
-                APR.Buff:UpdateBuffIcon(aura)
+        APR.Buff:HandleUnitAuraUpdate(unitTarget, updateInfo)
+    end
+end
+
+function APR.event.functions.cooldowns(event, ...)
+    if not APR.currentStep then
+        return
+    end
+
+    local filter
+    if event == "BAG_UPDATE_COOLDOWN" then
+        filter = { item = true }
+    elseif event == "SPELL_UPDATE_CHARGES" then
+        filter = { spell = true }
+    elseif event == "SPELL_UPDATE_COOLDOWN" then
+        local spellID, baseSpellID, category, startRecoveryCategory, itemID = ...
+
+        -- Shared categories can affect several buttons, so favor correctness and refresh all spells.
+        if category ~= nil or startRecoveryCategory ~= nil or (spellID == nil and itemID == nil) then
+            filter = { spell = true }
+            if itemID then
+                filter.item = { [itemID] = true }
             end
-        end
-        if updateInfo.updatedAuraInstanceIDs then
-            for _, auraId in pairs(updateInfo.updatedAuraInstanceIDs) do
-                local aura = C_UnitAuras.GetAuraDataByAuraInstanceID(unitTarget, auraId)
-                APR.Buff:UpdateBuffIcon(aura)
+        else
+            filter = { spell = {}, item = {} }
+            if spellID then
+                filter.spell[spellID] = true
             end
-        end
-        if updateInfo.removedAuraInstanceIDs then
-            for _, auraId in pairs(updateInfo.removedAuraInstanceIDs) do
-                APR.Buff:DisableBuffIcon(auraId)
+            if baseSpellID then
+                filter.spell[baseSpellID] = true
+            end
+            if itemID then
+                filter.item[itemID] = true
             end
         end
     end
-    if step and step.Button then
-        APR.currentStep:UpdateStepButtonCooldowns()
-    end
+
+    APR.currentStep:UpdateStepButtonCooldowns(filter)
+    APR.currentStep:UpdateStepButtonUsability(filter)
 end
 
 function APR.event.functions.dead(event, ...)
