@@ -5,6 +5,7 @@
 
     <!-- Locales -->
     <Script file="Locale\FarstriderLibData_Locale.enUS.lua" />
+    <Script file="Locale\FarstriderLibData_Locale.frFR.lua" />
     <Script file="Locale\FarstriderLibData_Locale.deDE.lua" />
     <Script file="Locale\FarstriderLibData_Locale.ruRU.lua" />
     <Script file="Locale\FarstriderLibData_Locale.zhCN.lua" />
