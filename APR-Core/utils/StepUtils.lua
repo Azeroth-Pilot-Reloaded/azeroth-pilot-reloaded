@@ -263,7 +263,7 @@ function APR:NextQuestStep()
     self:UpdateQuestAndStep()
 end
 
---- Manually skip to the next visible step and re-arm Note steps in the traversed range.
+--- Manually skip to the next visible step.
 function APR:SkipQuestStep()
     local userData = APRData[APR.PlayerID]
     local activeRoute = APR.ActiveRoute
@@ -300,7 +300,6 @@ function APR:SkipQuestStep()
         end
     end
 
-    self:ResetNoteStepsSeenInRange(activeRoute, currentIndex, targetIndex)
     userData[activeRoute] = targetIndex
     self:UpdateQuestAndStep()
 end
@@ -319,8 +318,6 @@ function APR:PreviousQuestStep()
         self:UpdateQuestAndStep()
         return
     end
-
-    local previousIndex = userData[activeRoute]
 
     -- Safety to prevent infinite loop
     local tries = 0
@@ -345,9 +342,6 @@ function APR:PreviousQuestStep()
     if userData[activeRoute] < 1 then
         userData[activeRoute] = 1
     end
-
-    -- Re-arm every Note crossed during manual rollback so navigation can revisit them.
-    self:ResetNoteStepsSeenInRange(activeRoute, userData[activeRoute], previousIndex)
 
     -- Update the quest and step
     self:UpdateQuestAndStep()
