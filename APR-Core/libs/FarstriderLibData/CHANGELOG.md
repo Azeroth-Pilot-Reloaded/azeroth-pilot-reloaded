@@ -1,8 +1,13 @@
 # Changelog
 
-## 1784851200
+## 1786752000
 
 - Data Refresh
+
+## 1.5.3
+
+### Changes
+- Added support for Interface 120100 (Patch 12.1.0) and updated all data to the 12.1.0 game build
 
 ## 1.5.2
 

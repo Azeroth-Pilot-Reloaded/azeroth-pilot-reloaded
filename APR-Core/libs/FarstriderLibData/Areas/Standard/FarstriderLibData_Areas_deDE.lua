@@ -935,6 +935,7 @@ FarstriderLibData.AreaL = {
   ["Der Anger"] = 16589,
   ["Der Hort der Meister"] = 16649,
   ["Die Blüte"] = 16753,
+  ["Tokkas Landung"] = 16774,
   ["Der Felsschleierkamm"] = 16818,
   ["Die Leerenakropolis"] = 16920,
   ["Das Umbralbasislager"] = 16921,
@@ -943,5 +944,6 @@ FarstriderLibData.AreaL = {
   ["Der Nexushafen"] = 17095,
   ["Die Sporenschmiede"] = 17096,
   ["Das Umbralbasislager"] = 17104,
-  ["Zugang des Verschlingers"] = 17218
+  ["Zugang des Verschlingers"] = 17218,
+  ["Der Stützpunkt der Amani"] = 17650
 }

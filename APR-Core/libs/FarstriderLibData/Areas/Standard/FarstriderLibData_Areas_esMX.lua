@@ -935,6 +935,7 @@ FarstriderLibData.AreaL = {
   ["Espacio Comunal"] = 16589,
   ["Nido del Amo"] = 16649,
   ["La Floración"] = 16753,
+  ["Desembarco de Tokka"] = 16774,
   ["Cresta Velopétreo"] = 16818,
   ["Acrópolis del Vacío"] = 16920,
   ["Campamento Base Umbrío"] = 16921,
@@ -943,5 +944,6 @@ FarstriderLibData.AreaL = {
   ["Puerto del Nexo"] = 17095,
   ["Forjaspora"] = 17096,
   ["Campamento base umbrío"] = 17104,
-  ["El Ingreso Devorador"] = 17218
+  ["El Ingreso Devorador"] = 17218,
+  ["Asentamiento Amani"] = 17650
 }

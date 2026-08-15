@@ -931,6 +931,7 @@ FarstriderLibData.AreaL = {
   ["The Common"] = 16589,
   ["Masters' Perch"] = 16649,
   ["The Bloom"] = 16753,
+  ["Tokka's Landing"] = 16774,
   ["Stoneveil Ridge"] = 16818,
   ["Void Acropolis"] = 16920,
   ["Umbral Base Camp"] = 16921,
@@ -939,5 +940,6 @@ FarstriderLibData.AreaL = {
   ["Nexus Port"] = 17095,
   ["Sporeforge"] = 17096,
   ["Umbral Base Camp"] = 17104,
-  ["The Devouring Ingress"] = 17218
+  ["The Devouring Ingress"] = 17218,
+  ["Amani Foothold"] = 17650
 }

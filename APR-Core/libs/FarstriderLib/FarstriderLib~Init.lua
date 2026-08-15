@@ -21,7 +21,7 @@ do
     -- require paths rooted at "Interface\\" not the full disk path.
     dir = dir:gsub("^.*(Interface\\)", "%1")
     --- Base Interface path to this FarstriderLib folder (trailing backslash).
-    --- Example: "Interface\\AddOns\\MountRoutePlanner\\Libs\\FarstriderLib\\"
+    --- Example: "Interface\\AddOns\\FarstriderLib\\"
     ---@type string
     FarstriderLib.media_path = dir
 end

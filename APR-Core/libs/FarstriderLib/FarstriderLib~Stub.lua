@@ -1,7 +1,7 @@
 -- FarstriderLib~Stub.lua
 -- No-op stubs for modules that only exist in debug builds.
 -- The debug files (Logger, Debug) override these when loaded.
--- In production builds MRP_REMOVE_LINE strips those files, so
+-- In production builds REMOVE_LINE strips those files, so
 -- these stubs prevent nil-function errors.
 local _, FarstriderLib = ...
 

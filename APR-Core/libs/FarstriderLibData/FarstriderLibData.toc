@@ -1,8 +1,11 @@
-## Interface: 120007, 120005, 120001, 50504, 50503, 40402, 30405, 20506, 11509
+## Interface: 120100, 120007, 120005, 50504, 50503, 40402, 30405, 20506, 11509
 ## Title: FarstriderLib Data
 ## Notes: Optional standalone data package for FarstriderLib, providing waypoint graphs, area data, and map overrides.
 ## IconTexture: Interface\AddOns\FarstriderLibData\Media\logo.png
 ## Author: Savi, Deathwing
+## X-Website: https://github.com/Deathwing/FarstriderLib
+## X-Repository: https://github.com/Deathwing/FarstriderLib
+## X-Curse-Project-ID: 1644675
 ## X-License: GNU GPL3
 ## X-Category: Library
 ## Category-enUS: Libraries
@@ -16,7 +19,7 @@
 ## Category-ruRU: Библиотеки
 ## Category-zhCN: 函数库
 ## Category-zhTW: 函式庫
-## Version: 1784851200
+## Version: 1786752000
 ## SavedVariablesPerCharacter: FarstriderLibData_CharacterSettings
 
 FarstriderLibData_[Game].xml

@@ -935,6 +935,7 @@ FarstriderLibData.AreaL = {
   ["El Ágora"] = 16589,
   ["Pedestal del Maestro"] = 16649,
   ["Floración"] = 16753,
+  ["Desembarco de Tokka"] = 16774,
   ["Cresta Cofiapétrea"] = 16818,
   ["Acrópolis del Vacío"] = 16920,
   ["Campamento Base Umbrío"] = 16921,
@@ -943,5 +944,6 @@ FarstriderLibData.AreaL = {
   ["Puerto del Nexo"] = 17095,
   ["Forjaespora"] = 17096,
   ["Campamento Base Umbrío"] = 17104,
-  ["Acceso de la Devoración"] = 17218
+  ["Acceso de la Devoración"] = 17218,
+  ["Base Amani"] = 17650
 }

@@ -935,6 +935,7 @@ FarstriderLibData.AreaL = {
   ["Les communs"] = 16589,
   ["Perchoir des Maîtres"] = 16649,
   ["La Florépine"] = 16753,
+  ["Débarcadère de Tokka"] = 16774,
   ["Crête de Rochevoile"] = 16818,
   ["Acropole du Vide"] = 16920,
   ["Camp de base Ombreux"] = 16921,
@@ -943,5 +944,6 @@ FarstriderLibData.AreaL = {
   ["Port du Nexus"] = 17095,
   ["Forgespore"] = 17096,
   ["Camp de base Ombreux"] = 17104,
-  ["Le Seuil dévorant"] = 17218
+  ["Le Seuil dévorant"] = 17218,
+  ["Tête de pont amani"] = 17650
 }

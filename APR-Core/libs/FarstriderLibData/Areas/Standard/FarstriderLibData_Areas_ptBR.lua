@@ -935,6 +935,7 @@ FarstriderLibData.AreaL = {
   ["O Comum"] = 16589,
   ["Ninho do Mestre"] = 16649,
   ["A Floração"] = 16753,
+  ["Pouso de Tokka"] = 16774,
   ["Serra Petrivéu"] = 16818,
   ["Acrópole do Caos"] = 16920,
   ["Acampamento Umbrático"] = 16921,
@@ -943,5 +944,6 @@ FarstriderLibData.AreaL = {
   ["Porto do Nexus"] = 17095,
   ["Forjesporo"] = 17096,
   ["Acampamento Umbrático"] = 17104,
-  ["A Passagem Devoradora"] = 17218
+  ["A Passagem Devoradora"] = 17218,
+  ["Ponto de Apoio dos Amani"] = 17650
 }
