@@ -48,6 +48,8 @@ function APR.command:SlashCmd(input)
     elseif inputText == 'coord' then
         APR.settings.profile.coordinateShow = not APR.settings.profile.coordinateShow
         APR.coordinate:RefreshFrameAnchor()
+    elseif inputText == 'worldcoords' or inputText == 'wc' then
+        APR.worldCoordinateConverter:Show()
     elseif inputText == 'route' then
         APR.settings:OpenSettings(L["ROUTE"])
     elseif inputText == 'about' then

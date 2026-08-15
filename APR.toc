@@ -72,6 +72,7 @@ APR-Core/data/zones/ScenarioEntrances.lua
 APR-Core/Config.lua
 APR-Core/Config_Route.lua
 APR-Core/Config_Route_Prefabs.lua
+APR-Core/WorldCoordinateConverter.lua
 APR-Core/Commands.lua
 APR-Core/ChangeLog.lua
 APR-Core/VersionCheck.lua
