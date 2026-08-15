@@ -168,6 +168,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -191,6 +192,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       important = true
     },
     to = {
@@ -593,6 +595,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -616,6 +619,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -671,6 +675,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -694,6 +699,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       condition = function() return (UnitLevel("player") >= GetCorrectedLevel(58)) end,
       important = true
     },
@@ -733,6 +739,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       condition = function() return (UnitLevel("player") >= GetCorrectedLevel(58)) end,
       important = true
     },
@@ -825,6 +832,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -848,6 +856,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 0,
+      uiMapHint = 1519,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -864,6 +873,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -887,6 +897,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       condition = function() return (UnitLevel("player") >= GetCorrectedLevel(90)) end,
       important = true
     },
@@ -942,6 +953,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -965,6 +977,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       important = true
     },
     to = {
@@ -1019,6 +1032,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -1042,6 +1056,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       important = true
     },
     to = {
@@ -1095,6 +1110,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -1134,6 +1150,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -1173,6 +1190,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -2034,6 +2052,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -2050,6 +2069,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       condition = function() return (UnitLevel("player") >= GetCorrectedLevel(90)) end,
       important = true
     },
@@ -2073,6 +2093,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -2089,6 +2110,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       important = true
     },
     bidirectional = false,
@@ -2111,6 +2133,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -2127,6 +2150,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       important = true
     },
     bidirectional = false,
@@ -2149,6 +2173,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -2165,6 +2190,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       condition = function() return (UnitLevel("player") >= GetCorrectedLevel(58)) end,
       important = true
     },
@@ -2188,6 +2214,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -2204,6 +2231,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       important = true
     },
     bidirectional = false,
@@ -2226,6 +2254,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -2242,6 +2271,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       condition = function() return (UnitLevel("player") >= GetCorrectedLevel(58)) end,
       important = true
     },
@@ -2265,6 +2295,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -2281,6 +2312,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -5054,6 +5086,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -5108,6 +5141,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -5185,6 +5219,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -5325,6 +5360,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       important = true
     },
     to = {
@@ -5401,6 +5437,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -5417,6 +5454,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 10,
+      uiMapHint = 10523,
       important = true
     },
     bidirectional = false,
@@ -6912,6 +6950,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -7515,6 +7554,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -7554,6 +7594,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = false
     },
@@ -7570,6 +7611,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -7609,6 +7651,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = false
     },
@@ -8671,6 +8714,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 0,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -9091,6 +9135,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -9242,6 +9287,123 @@ local waypoints = {
     bidirectional = false,
     cost = 27,
     skipOptimized = false
+  },
+  {
+    id = 271,
+    from = {
+      locaId = 404,
+      flags = 0,
+      loc = {
+        mapId = 1,
+        pos = {
+          x = -4036.2399902344,
+          y = -3376.4299316406,
+          z = 37.65319824219
+        }
+      },
+      type = 1,
+      unknown1 = 0,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(255)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    to = {
+      locaId = 405,
+      flags = 0,
+      loc = {
+        mapId = 1220,
+        pos = {
+          x = -884.33001708984,
+          y = 4484.75,
+          z = 580.4580078125
+        }
+      },
+      type = 2,
+      unknown1 = 0,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(255)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    bidirectional = true,
+    cost = 600,
+    skipOptimized = false,
+    condition = function() return (UnitLevel("player") >= GetCorrectedLevel(255)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end
+  },
+  {
+    id = 272,
+    from = {
+      locaId = 406,
+      flags = 0,
+      loc = {
+        mapId = 571,
+        pos = {
+          x = 3632.580078125,
+          y = 271.99499511719,
+          z = 52.26319885254
+        }
+      },
+      type = 1,
+      unknown1 = 0,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(255)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    to = {
+      locaId = 407,
+      flags = 0,
+      loc = {
+        mapId = 1220,
+        pos = {
+          x = -893.01898193359,
+          y = 4506.6098632812,
+          z = 580.4580078125
+        }
+      },
+      type = 2,
+      unknown1 = 0,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(255)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    bidirectional = true,
+    cost = 600,
+    skipOptimized = false,
+    condition = function() return (UnitLevel("player") >= GetCorrectedLevel(255)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end
+  },
+  {
+    id = 273,
+    from = {
+      locaId = 409,
+      flags = 0,
+      loc = {
+        mapId = 0,
+        pos = {
+          x = -7104.8198242188,
+          y = -1254.4799804688,
+          z = 273.77600097656
+        }
+      },
+      type = 1,
+      unknown1 = 0,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(255)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    to = {
+      locaId = 408,
+      flags = 0,
+      loc = {
+        mapId = 1220,
+        pos = {
+          x = -884.33001708984,
+          y = 4484.75,
+          z = 580.4580078125
+        }
+      },
+      type = 2,
+      unknown1 = 0,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(255)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    bidirectional = true,
+    cost = 600,
+    skipOptimized = false,
+    condition = function() return (UnitLevel("player") >= GetCorrectedLevel(255)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end
   },
   {
     id = 276,
@@ -9900,6 +10062,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -9916,6 +10079,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -9955,6 +10119,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -11189,6 +11354,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -11348,6 +11514,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -11462,6 +11629,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -12104,6 +12272,245 @@ local waypoints = {
       },
       type = 2,
       unknown1 = 0,
+      important = true
+    },
+    bidirectional = false,
+    cost = 30,
+    skipOptimized = false
+  },
+  {
+    id = 385,
+    from = {
+      locaId = 582,
+      flags = 0,
+      loc = {
+        mapId = 0,
+        pos = {
+          x = 5120.2001953125,
+          y = -10630.299804688,
+          z = 125.26999664307
+        }
+      },
+      type = 1,
+      unknown1 = 0,
+      uiMapHint = 16365,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    to = {
+      locaId = 583,
+      flags = 0,
+      loc = {
+        mapId = 2916,
+        pos = {
+          x = 4487.0297851562,
+          y = -10995,
+          z = 0
+        }
+      },
+      type = 2,
+      unknown1 = 0,
+      uiMapHint = 16365,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    bidirectional = false,
+    cost = 30,
+    skipOptimized = false
+  },
+  {
+    id = 386,
+    from = {
+      locaId = 584,
+      flags = 0,
+      loc = {
+        mapId = 2916,
+        pos = {
+          x = 4487.0297851562,
+          y = -10995,
+          z = 0
+        }
+      },
+      type = 1,
+      unknown1 = 0,
+      uiMapHint = 16535,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = false
+    },
+    to = {
+      locaId = 585,
+      flags = 0,
+      loc = {
+        mapId = 0,
+        pos = {
+          x = 5120.2001953125,
+          y = -10630.299804688,
+          z = 125.26999664307
+        }
+      },
+      type = 2,
+      unknown1 = 0,
+      uiMapHint = 16535,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    bidirectional = false,
+    cost = 30,
+    skipOptimized = false
+  },
+  {
+    id = 387,
+    from = {
+      locaId = 586,
+      flags = 0,
+      loc = {
+        mapId = 0,
+        pos = {
+          x = 6255.6499023438,
+          y = -10456.200195312,
+          z = 68.2479019165
+        }
+      },
+      type = 1,
+      unknown1 = 0,
+      uiMapHint = 16365,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    to = {
+      locaId = 587,
+      flags = 0,
+      loc = {
+        mapId = 2916,
+        pos = {
+          x = 5381.4702148438,
+          y = -11081.900390625,
+          z = 42.93030166626
+        }
+      },
+      type = 2,
+      unknown1 = 0,
+      uiMapHint = 16365,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    bidirectional = false,
+    cost = 30,
+    skipOptimized = false
+  },
+  {
+    id = 388,
+    from = {
+      locaId = 588,
+      flags = 0,
+      loc = {
+        mapId = 0,
+        pos = {
+          x = 4979.5,
+          y = -10299.900390625,
+          z = 218.12100219727
+        }
+      },
+      type = 1,
+      unknown1 = 0,
+      uiMapHint = 16365,
+      important = true
+    },
+    to = {
+      locaId = 589,
+      flags = 0,
+      loc = {
+        mapId = 2916,
+        pos = {
+          x = 4636.9399414062,
+          y = -9664.580078125,
+          z = -11.73429965973
+        }
+      },
+      type = 2,
+      unknown1 = 0,
+      uiMapHint = 16365,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    bidirectional = false,
+    cost = 30,
+    skipOptimized = false
+  },
+  {
+    id = 389,
+    from = {
+      locaId = 590,
+      flags = 0,
+      loc = {
+        mapId = 2916,
+        pos = {
+          x = 5381.4702148438,
+          y = -11081.900390625,
+          z = 42.93030166626
+        }
+      },
+      type = 1,
+      unknown1 = 0,
+      uiMapHint = 16535,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = false
+    },
+    to = {
+      locaId = 591,
+      flags = 0,
+      loc = {
+        mapId = 0,
+        pos = {
+          x = 6255.6499023438,
+          y = -10456.200195312,
+          z = 68.2479019165
+        }
+      },
+      type = 2,
+      unknown1 = 0,
+      uiMapHint = 16535,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = true
+    },
+    bidirectional = false,
+    cost = 30,
+    skipOptimized = false
+  },
+  {
+    id = 391,
+    from = {
+      locaId = 592,
+      flags = 0,
+      loc = {
+        mapId = 2916,
+        pos = {
+          x = 4636.9399414062,
+          y = -9664.580078125,
+          z = -11.73429965973
+        }
+      },
+      type = 1,
+      unknown1 = 0,
+      uiMapHint = 16535,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
+      important = false
+    },
+    to = {
+      locaId = 593,
+      flags = 0,
+      loc = {
+        mapId = 0,
+        pos = {
+          x = 4979.5,
+          y = -10299.900390625,
+          z = 218.12100219727
+        }
+      },
+      type = 2,
+      unknown1 = 0,
+      uiMapHint = 16535,
+      condition = function() return (UnitLevel("player") >= GetCorrectedLevel(1)) and (UnitLevel("player") <= GetCorrectedLevel(255)) end,
       important = true
     },
     bidirectional = false,

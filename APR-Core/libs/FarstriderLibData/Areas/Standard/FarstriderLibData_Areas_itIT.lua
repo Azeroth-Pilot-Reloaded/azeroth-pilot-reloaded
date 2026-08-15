@@ -935,6 +935,7 @@ FarstriderLibData.AreaL = {
   ["Area Comune"] = 16589,
   ["Trespolo dei Maestri"] = 16649,
   ["Fioritura"] = 16753,
+  ["Crocevia di Tokka"] = 16774,
   ["Cresta di Pietravelata"] = 16818,
   ["Acropoli del Vuoto"] = 16920,
   ["Campo Base Ombrale"] = 16921,
@@ -943,5 +944,6 @@ FarstriderLibData.AreaL = {
   ["Porto del Nexus"] = 17095,
   ["Forgiaspore"] = 17096,
   ["Campo Base Ombrale"] = 17104,
-  ["Ingresso Divorante"] = 17218
+  ["Ingresso Divorante"] = 17218,
+  ["Avamposto degli Amani"] = 17650
 }

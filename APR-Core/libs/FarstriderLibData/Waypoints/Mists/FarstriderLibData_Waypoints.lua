@@ -168,6 +168,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -558,6 +559,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -597,6 +599,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -673,6 +676,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -696,6 +700,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 0,
+      uiMapHint = 1519,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -712,6 +717,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -751,6 +757,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -2984,6 +2991,7 @@ local waypoints = {
       },
       type = 1,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = false
     },
@@ -3000,6 +3008,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },
@@ -3039,6 +3048,7 @@ local waypoints = {
       },
       type = 0,
       unknown1 = 30,
+      uiMapHint = 10523,
       condition = function() return (UnitFactionGroup("player") == "Alliance") end,
       important = true
     },

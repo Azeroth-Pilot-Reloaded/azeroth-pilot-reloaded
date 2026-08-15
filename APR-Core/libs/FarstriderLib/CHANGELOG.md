@@ -1,5 +1,10 @@
 # Changelog
 
+## 1.4.3
+
+### Changes
+- Added support for Interface 120100 (Patch 12.1.0)
+
 ## 1.4.2
 
 ### Changes

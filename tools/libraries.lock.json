@@ -5,26 +5,26 @@
       "source": "github",
       "repository": "WoWUIDev/Ace3",
       "ref": "master",
-      "commit": "d96aeae0d0ee8c24becc57675fc28c504407ba53",
-      "date_created": "2026-08-05T06:12:56Z",
-      "archive_sha256": "f9ca6f8f32a91bd08c5509e5f139470b6f17648085aeca18fa7bb8ce4c394c9c"
+      "commit": "d295b12f8b889a30e86e0e901c5494df4b149c49",
+      "date_created": "2026-08-12T05:50:27Z",
+      "archive_sha256": "d586a805e473df74540388417df9f43141eebaca5e69a3542e5e21976bbfc504"
     },
     "HereBeDragons": {
       "source": "github",
       "repository": "Nevcairiel/HereBeDragons",
       "ref": "master",
-      "commit": "d3be58d0dd739e8d7f2054ad066b5c0e6b863eea",
-      "date_created": "2026-02-28T19:07:24Z",
-      "archive_sha256": "ac4a4e1533e215b8c1e953e6af8c65a6cf8c7373e65b0f5b5356af3627023d9a"
+      "commit": "0547c95f1831f7c68acf3bd29a3c587ca20ce9b7",
+      "date_created": "2026-08-12T05:58:52Z",
+      "archive_sha256": "dd26a59fdc9b632e6b6124f1d766da6e9352577e6fae54bb02903298782e820c"
     },
     "HereBeDragons embedded dependencies": {
       "source": "curseforge",
       "project_id": 94348,
-      "file_id": 7499523,
-      "version": "2.16-release",
-      "file_name": "HereBeDragons-2.16-release.zip",
-      "date_created": "2026-01-21T09:06:12.013Z",
-      "archive_sha256": "d36158c8aadbb0457efbe0402ce047797617647f8998c6820922e0d1fdb74525"
+      "file_id": 8629979,
+      "version": "2.17-release",
+      "file_name": "HereBeDragons-2.17-release.zip",
+      "date_created": "2026-08-12T06:00:41.187Z",
+      "archive_sha256": "1091f67bf6ddce40f2b0852294c403914449c69232426432e25e0b43ac6d29cd"
     },
     "LibCandyBar-3.0": {
       "source": "curseforge",
@@ -64,22 +64,22 @@
     "FarstriderLib": {
       "source": "github_release",
       "repository": "Deathwing/Mount-Route-Planner",
-      "release_id": 359061986,
-      "version": "v2.4.4",
-      "date_created": "2026-07-24T03:17:52Z",
-      "asset_id": 487936896,
+      "release_id": 371062160,
+      "version": "v2.4.5",
+      "date_created": "2026-08-15T13:57:34Z",
+      "asset_id": 515742669,
       "asset_name": "FarstriderLib.zip",
-      "archive_sha256": "40ba08a4a4fb62d3f45f7f6532d0dc22ae4ac3926307413f0b71335ca821341e"
+      "archive_sha256": "6aba5d8b64e515c390efea5af55655d81b18b8befc10c9d4e8bd886ce16f9f35"
     },
     "FarstriderLibData": {
       "source": "github_release",
       "repository": "Deathwing/Mount-Route-Planner",
-      "release_id": 359061986,
-      "version": "v2.4.4",
-      "date_created": "2026-07-24T03:17:52Z",
-      "asset_id": 487936899,
+      "release_id": 371062160,
+      "version": "v2.4.5",
+      "date_created": "2026-08-15T13:57:34Z",
+      "asset_id": 515742672,
       "asset_name": "FarstriderLibData.zip",
-      "archive_sha256": "cb48d91a6dc22e97467b756dfb538bd08e8b932afef37597581d266a4bdf17d5"
+      "archive_sha256": "03265b01c211bd57242d8c350c7926b4ea2da6c226c327b4daf7deb2df5e90b4"
     }
   }
 }
