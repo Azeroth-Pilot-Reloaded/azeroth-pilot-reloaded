@@ -55,6 +55,7 @@ local events = {
     xpUpdate = "PLAYER_XP_UPDATE",
     updateQuest = { "QUEST_LOG_UPDATE", "UNIT_QUEST_LOG_CHANGED" },
     vehicle = "UNIT_ENTERED_VEHICLE",
+    warMode = "WAR_MODE_STATUS_UPDATE",
     zone = { "ZONE_CHANGED", "ZONE_CHANGED_INDOORS", "ZONE_CHANGED_NEW_AREA", "PLAYER_ENTERING_WORLD", "WAYPOINT_UPDATE" },
 }
 
@@ -1306,6 +1307,12 @@ function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isCont
     end
     if step and step.MountVehicle then
         APR:NextQuestStep()
+    end
+end
+
+function APR.event.functions.warMode(event, warModeEnabled)
+    if warModeEnabled and step and step.WarMode then
+        APR:UpdateStep()
     end
 end
 
