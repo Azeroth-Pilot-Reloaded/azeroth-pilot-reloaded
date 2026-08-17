@@ -47,7 +47,7 @@ local function GetRouteSteps(route)
     return route.steps or route
 end
 
-local function AddCoordinateTarget(targets, stepIndex, coordinate, zone, path)
+local function AddCoordinateTarget(targets, stepIndex, coordinate, zone, path, zoneOwner)
     if not IsCoordinate(coordinate) then
         return
     end
@@ -56,6 +56,7 @@ local function AddCoordinateTarget(targets, stepIndex, coordinate, zone, path)
         stepIndex = stepIndex,
         coordinate = coordinate,
         zone = GetFirstZone(zone),
+        zoneOwner = zoneOwner,
         path = path,
     }
 end
@@ -72,9 +73,9 @@ end
 local function AddCoordinateEntry(targets, step, stepIndex, entry, coordinateKey, zone)
     local path = GetCoordinatePath(step, coordinateKey)
     if IsCoordinate(entry) then
-        AddCoordinateTarget(targets, stepIndex, entry, zone, path)
+        AddCoordinateTarget(targets, stepIndex, entry, zone, path, entry)
     elseif type(entry) == "table" and IsCoordinate(entry.Coord) then
-        AddCoordinateTarget(targets, stepIndex, entry.Coord, zone, path .. ".Coord")
+        AddCoordinateTarget(targets, stepIndex, entry.Coord, zone, path .. ".Coord", entry)
     end
 end
 
@@ -83,7 +84,7 @@ local function GetCoordinateTargets(route, step, stepIndex)
     local fallbackZone = step.Zone or step.Zones or route.mapID or route.MapID or route.Zone
 
     if IsCoordinate(step.Coord) then
-        AddCoordinateTarget(targets, stepIndex, step.Coord, fallbackZone, ".Coord")
+        AddCoordinateTarget(targets, stepIndex, step.Coord, fallbackZone, ".Coord", step)
         return targets
     end
 
@@ -485,6 +486,95 @@ SerializeValue = function(value, depth, stack, key, tableKind, warnings)
     return SerializeScalar(value, key, tableKind, warnings)
 end
 
+local ZONE_FIELDS = { "Zone", "zone", "mapID", "MapID", "uiMapID", "UiMapID" }
+
+local function UpdateTargetZone(target, resolvedZone)
+    local owner = target.zoneOwner
+    if type(owner) ~= "table" or not resolvedZone or resolvedZone == target.zone then
+        return
+    end
+
+    for _, field in ipairs(ZONE_FIELDS) do
+        local currentZone = owner[field]
+        if currentZone ~= nil then
+            if type(currentZone) == "table" then
+                for index, zone in ipairs(currentZone) do
+                    if zone == target.zone then
+                        currentZone[index] = resolvedZone
+                        return
+                    end
+                end
+            else
+                owner[field] = resolvedZone
+                return
+            end
+        end
+    end
+
+    owner.Zone = resolvedZone
+end
+
+local function GetMapPosition(coordinate, zone)
+    if coordinate.x >= 0 and coordinate.x <= 100 and coordinate.y >= 0 and coordinate.y <= 100 then
+        return coordinate.x / 100, coordinate.y / 100
+    end
+
+    -- Routes already passed through the old HBD converter contain world
+    -- coordinates. Recover their map point first so the operation is idempotent
+    -- and so old, incorrectly projected routes can be regenerated.
+    return HereBeDragons:GetZoneCoordinatesFromWorld(coordinate.x, coordinate.y, zone, true)
+end
+
+local function ResolveConvertedZone(zone, continentID, worldPosition)
+    if not continentID or not C_Map.GetMapPosFromWorldPos then
+        return zone
+    end
+
+    local detectedZone = C_Map.GetMapPosFromWorldPos(continentID, worldPosition)
+    if not detectedZone or detectedZone == zone then
+        return zone
+    end
+
+    local sourceMapInfo = C_Map.GetMapInfo(zone)
+    local parentMapID = sourceMapInfo and sourceMapInfo.parentMapID
+    if not parentMapID or parentMapID == 0 or parentMapID == zone then
+        return zone
+    end
+
+    -- GetMapPosFromWorldPos can return a continent or another high-level map.
+    -- The converted step must stay on its source map or its direct parent.
+    local currentMapID = parentMapID
+    local visitedMaps = {}
+    while currentMapID and currentMapID ~= 0 and not visitedMaps[currentMapID] do
+        if currentMapID == detectedZone then
+            return parentMapID
+        end
+
+        visitedMaps[currentMapID] = true
+        local mapInfo = C_Map.GetMapInfo(currentMapID)
+        currentMapID = mapInfo and mapInfo.parentMapID or nil
+    end
+
+    return zone
+end
+
+local function ConvertCoordinateToWorld(coordinate, zone)
+    local mapX, mapY = GetMapPosition(coordinate, zone)
+    if not mapX or not mapY then
+        return nil, nil, nil
+    end
+
+    local continentID, worldPosition = C_Map.GetWorldPosFromMapPos(zone, CreateVector2D(mapX, mapY))
+    if not worldPosition then
+        return nil, nil, nil
+    end
+
+    local resolvedZone = ResolveConvertedZone(zone, continentID, worldPosition)
+
+    -- APR stores UnitPosition coordinates as { x = worldY, y = worldX }.
+    return worldPosition.y, worldPosition.x, resolvedZone
+end
+
 function APR.worldCoordinateConverter:ConvertRoute(routeName)
     local route = APR.RouteQuestStepList and APR.RouteQuestStepList[routeName]
     local convertedRoute = CopyRouteValue(route)
@@ -510,13 +600,13 @@ function APR.worldCoordinateConverter:ConvertRoute(routeName)
                         "Step %02d%s: missing Zone/mapID for Local=(%.2f,%.2f)",
                         stepIndex, target.path, coordinate.x, coordinate.y)
                 else
-                    local worldX, worldY = HereBeDragons:GetWorldCoordinatesFromZone(
-                        coordinate.x / 100, coordinate.y / 100, zone)
+                    local worldX, worldY, resolvedZone = ConvertCoordinateToWorld(coordinate, zone)
 
                     if worldX and worldY then
                         convertedCount = convertedCount + 1
                         coordinate.x = tonumber(string.format("%.1f", worldX))
                         coordinate.y = tonumber(string.format("%.1f", worldY))
+                        UpdateTargetZone(target, resolvedZone)
                     else
                         errorCount = errorCount + 1
                         conversionErrors[#conversionErrors + 1] = string.format(
