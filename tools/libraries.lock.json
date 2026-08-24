@@ -55,11 +55,11 @@
     "LibSharedMedia-3.0": {
       "source": "curseforge",
       "project_id": 14320,
-      "file_id": 8448522,
-      "version": "v12.0.3",
-      "file_name": "LibSharedMedia-3.0-v12.0.3.zip",
-      "date_created": "2026-07-17T02:09:48.397Z",
-      "archive_sha256": "b371b8ecf3e27c83d51688a06998bc1458a178ecd57661b603461be7c2e68dc5"
+      "file_id": 8691989,
+      "version": "v12.1.0",
+      "file_name": "LibSharedMedia-3.0-v12.1.0.zip",
+      "date_created": "2026-08-20T14:40:02.377Z",
+      "archive_sha256": "14beb11fcc1082c7b846960fde39596147a769a807601ecb0aec4de60750956d"
     },
     "FarstriderLib": {
       "source": "github_release",
