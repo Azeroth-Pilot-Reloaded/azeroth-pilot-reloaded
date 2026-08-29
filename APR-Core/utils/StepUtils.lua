@@ -195,6 +195,64 @@ function APR:HasAnyMainStepOption(step)
     return false
 end
 
+--- Call an achievement criteria API without letting stale route data raise a Lua error.
+---@return boolean success
+---@return string|nil criteriaLabel
+---@return boolean|nil criteriaCompleted
+---@return number|nil criteriaID
+local function QueryAchievementCriteriaInfo(criteriaAPI, ...)
+    local results = { pcall(criteriaAPI, ...) }
+    if not results[1] then
+        return false
+    end
+
+    -- pcall adds its success flag before the regular API return values.
+    return true, results[2], results[4], results[11]
+end
+
+--- Resolve achievement criteria by its stable ID, with index support for older route data.
+---@param achievementData table|nil
+---@return string|nil criteriaLabel
+---@return boolean|nil criteriaCompleted
+---@return number|nil criteriaID
+function APR:GetAchievementCriteriaInfo(achievementData)
+    local achievementID = achievementData and achievementData.achievementID
+    if not achievementID then
+        return nil, nil, nil
+    end
+
+    if achievementData.criteriaID and GetAchievementCriteriaInfoByID then
+        local success, criteriaLabel, criteriaCompleted, criteriaID =
+            QueryAchievementCriteriaInfo(GetAchievementCriteriaInfoByID, achievementID, achievementData.criteriaID)
+        if success then
+            return criteriaLabel, criteriaCompleted, criteriaID
+        end
+
+        -- Do not fall back to an index here: Blizzard may have removed or reordered
+        -- this criterion, in which case the index can refer to a different objective.
+        return nil, nil, nil
+    end
+
+    if not achievementData.criteriaIndex or not GetAchievementCriteriaInfo then
+        return nil, nil, nil
+    end
+
+    local success, criteriaLabel, criteriaCompleted, criteriaID =
+        QueryAchievementCriteriaInfo(GetAchievementCriteriaInfo, achievementID, achievementData.criteriaIndex)
+    if success then
+        return criteriaLabel, criteriaCompleted, criteriaID
+    end
+
+    -- Some achievements contain hidden criteria which are not counted by default.
+    success, criteriaLabel, criteriaCompleted, criteriaID =
+        QueryAchievementCriteriaInfo(GetAchievementCriteriaInfo, achievementID, achievementData.criteriaIndex, true)
+    if success then
+        return criteriaLabel, criteriaCompleted, criteriaID
+    end
+
+    return nil, nil, nil
+end
+
 --- Evaluate if an achievement step is complete based on achievement/criteria state.
 -- Returns completion state plus a display label for UI.
 -- @return boolean isCompleted
@@ -219,17 +277,12 @@ function APR:IsAchievementStepComplete(step)
         return achievementCompleted, progressText
     end
 
-    if achievementData.criteriaIndex then
-        if not GetAchievementCriteriaInfo then
-            return false, progressText
-        end
-
-        local criteriaLabel, _, criteriaCompleted = GetAchievementCriteriaInfo(achievementID,
-            achievementData.criteriaIndex)
+    if achievementData.criteriaID or achievementData.criteriaIndex then
+        local criteriaLabel, criteriaCompleted = APR:GetAchievementCriteriaInfo(achievementData)
         if criteriaLabel then
             progressText = criteriaLabel
         end
-        return criteriaCompleted, progressText
+        return criteriaCompleted == true, progressText
     end
 
     return achievementCompleted, progressText
