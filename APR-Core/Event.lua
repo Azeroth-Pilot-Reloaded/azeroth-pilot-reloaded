@@ -46,6 +46,7 @@ local events = {
     targetChanged = "PLAYER_TARGET_CHANGED",
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
+    reputation = { "UPDATE_FACTION", "MAJOR_FACTION_RENOWN_LEVEL_CHANGED" },
     scenario = { "ACTIVE_DELVE_DATA_UPDATE", "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE",
         "WALK_IN_DATA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
@@ -1084,6 +1085,17 @@ function APR.event.functions.remove(event, questID, wasReplayQuest)
         APR:UpdateMapId()
     end
     APR:UpdateStep()
+end
+
+function APR.event.functions.reputation()
+    if not APR.ActiveRoute then
+        return
+    end
+
+    -- Reputation can complete the active step and can also activate conditional parallel steps.
+    APR:GetTotalSteps(APR.ActiveRoute)
+    APR:UpdateStep()
+    APR.questOrderList:AddStepFromRoute(true)
 end
 
 function APR.event.functions.scenario(event, ...)

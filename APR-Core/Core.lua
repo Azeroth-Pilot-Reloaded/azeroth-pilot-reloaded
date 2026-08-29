@@ -176,8 +176,8 @@ function APR:InitSecretUtils()
 end
 
 function APR:InitIdentity()
-    local userId = (self.SafeUnitGUID and self:SafeUnitGUID("player", "Unknown"))
-    local username = (self.SafeUnitName and self:SafeUnitName("player", "Unknown"))
+    local userId = (self.SafeUnitGUID and self:SafeUnitGUID("player", UNKNOWN))
+    local username = (self.SafeUnitName and self:SafeUnitName("player", UNKNOWN))
     self.UserID = userId
     self.Username = username
     if self.SafeConcat then

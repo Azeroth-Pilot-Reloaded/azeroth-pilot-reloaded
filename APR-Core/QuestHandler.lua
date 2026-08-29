@@ -1051,6 +1051,18 @@ function APR:UpdateStep()
                 APR:UpdateNextStep()
                 return
             end
+        elseif step.Reputation then
+            if APR:IsReputationLevelReached(step.Reputation) then
+                APR:UpdateNextStep()
+                return
+            else
+                local _, factionID = APR:GetReputationRequirement(step.Reputation)
+                APR.currentStep:AddQuestSteps(
+                    "REPUTATION-" .. tostring(factionID or "UNKNOWN"),
+                    APR:GetReputationStepText(step.Reputation),
+                    "Reputation"
+                )
+            end
         end
         if step.ResetRoute then
             APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", function()

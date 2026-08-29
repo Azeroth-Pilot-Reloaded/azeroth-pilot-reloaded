@@ -7,6 +7,7 @@ APR.mainStepOptions = {
     "Scenario", "EnterInstance", "LeaveInstance", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS",
     "UseDalaHS", "UseGarrisonHS",
     "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession", "LootItems", "WarMode", "Grind",
+    "Reputation",
     "Achievement", "RouteCompleted", "Note"
 }
 
@@ -35,6 +36,10 @@ function APR:GetStepString(step)
             return step.Note, "Note"
         end
         return "Note", "Note"
+    end
+
+    if step and step.Reputation then
+        return self:GetReputationStepText(step.Reputation), "Reputation"
     end
 
     local stepMappings = {

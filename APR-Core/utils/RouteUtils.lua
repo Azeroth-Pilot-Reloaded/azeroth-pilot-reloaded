@@ -223,14 +223,14 @@ function APR:CheckIsInRouteZone()
             "DirectMatch", "HierarchyMatch", "DescendantMatch"
         }
 
-        self:PrintZoneDebug("Running Check #" .. index .. " (" .. (checkNames[index] or "Unknown") .. ")...")
+        self:PrintZoneDebug("Running Check #" .. index .. " (" .. (checkNames[index] or UNKNOWN) .. ")...")
 
         local result = checkFunc()
 
-        self:PrintZoneDebug("Check #" .. index .. " (" .. (checkNames[index] or "Unknown") .. "): " .. tostring(result))
+        self:PrintZoneDebug("Check #" .. index .. " (" .. (checkNames[index] or UNKNOWN) .. "): " .. tostring(result))
 
         if result then
-            self:PrintZoneDebug("Match at check #" .. index .. " (" .. (checkNames[index] or "Unknown") .. ")")
+            self:PrintZoneDebug("Match at check #" .. index .. " (" .. (checkNames[index] or UNKNOWN) .. ")")
             if self.ZoneDetection and self.ZoneDetection.debug then
                 self:DebugZoneDetection(
                     string.format("Match at check #%d", index),
@@ -402,6 +402,8 @@ function APR:AreConditionalFiltersMet(conditions)
         (not conditions.HasAura or self:HasAura(conditions.HasAura)) and
         (not conditions.DontHaveAura or not self:HasAura(conditions.DontHaveAura)) and
         (not conditions.HasSpell or self:IsSpellKnown(conditions.HasSpell)) and
+        (not conditions.ReputationLevel or self:IsReputationLevelReached(conditions.ReputationLevel)) and
+        (not conditions.SkipForReputation or not self:IsReputationLevelReached(conditions.SkipForReputation)) and
         (not conditions.IsQuestCompleted or C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestCompleted)) and
         (not conditions.IsQuestUncompleted or not C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestUncompleted)) and
         (not conditions.IsOneOfQuestsCompleted or self:IsOneOfQuestsCompleted(conditions.IsOneOfQuestsCompleted)) and
