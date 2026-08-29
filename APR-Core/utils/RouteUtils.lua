@@ -151,6 +151,16 @@ function APR:CheckIsInRouteZone()
         return false
     end
 
+    -- The scenario ID is the authoritative location signal for an active delve route.
+    -- Its steps intentionally reference the exterior zone, which otherwise produces a
+    -- false out-of-zone result while the player is inside the matching delve instance.
+    if self:IsInDelveRouteContext(self.ActiveRoute) then
+        self:PrintZoneDebug("Matched active delve scenario - returning TRUE")
+        self._lastRouteZoneCheck = GetTime()
+        self._lastRouteZoneResult = true
+        return true
+    end
+
     local _, fallbackMapID = self:GetCurrentRouteMapIDsAndName()
 
     -- Get step zones
