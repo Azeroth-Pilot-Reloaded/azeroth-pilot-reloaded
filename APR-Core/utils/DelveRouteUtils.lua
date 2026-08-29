@@ -129,6 +129,19 @@ function APR:HasDelveScenarioBlock(routeKey, scenarioID)
     return self:Contains(self:GetDelveScenarioIDs(routeKey), scenarioID)
 end
 
+--- Return whether the player is currently inside a scenario handled by the given delve route.
+--- Delve steps commonly use the exterior zone for their coordinates, so regular map hierarchy
+--- checks cannot reliably determine that the player is already inside the selected delve.
+function APR:IsInDelveRouteContext(routeKey, context)
+    routeKey = routeKey or self.ActiveRoute
+    if not routeKey or not self:IsDelveRoute(routeKey) then
+        return false
+    end
+
+    context = context or self:GetCurrentDelveContext()
+    return context ~= nil and self:HasDelveScenarioBlock(routeKey, context.scenarioID)
+end
+
 function APR:GetScenarioZoneInfo(scenarioMapID)
     if not scenarioMapID or not self.ScenarioEntrances then
         return nil
