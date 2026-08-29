@@ -283,16 +283,12 @@ function APR.event.functions.achievement(event, ...)
     end
 
     local achievementID = achievementData.achievementID
-    local criteriaIndex = achievementData.criteriaIndex
-
     if event == "CRITERIA_COMPLETE" then
         local completedCriteriaID = ...
-
-        if not criteriaIndex or not GetAchievementCriteriaInfo then
-            return
+        local expectedCriteriaID = achievementData.criteriaID
+        if not expectedCriteriaID then
+            expectedCriteriaID = select(3, APR:GetAchievementCriteriaInfo(achievementData))
         end
-
-        local expectedCriteriaID = select(10, GetAchievementCriteriaInfo(achievementID, criteriaIndex))
         if completedCriteriaID ~= expectedCriteriaID then
             return
         end
