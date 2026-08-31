@@ -116,9 +116,9 @@ APR:SetupMinimizeButton(CurrentStepFrameHeader, CurrentStepFrame, function()
     end
 end, function()
     -- Expand
+    APR.currentStep:SetDefaultDisplay()
     APR.currentStep:ButtonShow()
     APR.currentStep.progressBar:Show()
-    APR.currentStep:SetDefaultDisplay()
     if APR.fillersFrame then
         APR.fillersFrame:Show()
     end
@@ -384,6 +384,12 @@ function APR.currentStep:PreviousNextStepButton()
     end
 
     self.ButtonShow = function()
+        if CurrentStepFrame.collapsed then
+            rollbackButton:Hide()
+            skipButton:Hide()
+            return
+        end
+
         rollbackButton:Show()
         skipButton:Show()
     end
@@ -451,6 +457,12 @@ function APR.currentStep:ProgressBar(key, total, current)
             self.progressBar.Text:SetText("")
         end
         self:UpdateProgressBarColor(self.progressBar)
+    end
+
+    -- A refresh can rebuild the progress bar while the frame is collapsed.
+    -- Keep header-owned controls hidden until the user expands the frame.
+    if CurrentStepFrame.collapsed then
+        self.progressBar:Hide()
     end
 end
 
