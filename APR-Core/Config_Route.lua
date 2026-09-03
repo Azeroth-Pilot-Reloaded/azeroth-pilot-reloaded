@@ -767,7 +767,7 @@ function SetRouteListTab(widget, name)
                 local visibility = APR:GetRouteVisibility(fileName)
                 if visibility ~= "hidden" then
                     local routeName = routeData.label
-                    local tabName = routeData.expansion or "Unknown"
+                    local tabName = routeData.expansion or UNKNOWN
                     if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
                         local rn = routeName:lower()
                         local fn = fileName:lower()

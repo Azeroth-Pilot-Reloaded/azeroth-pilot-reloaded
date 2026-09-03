@@ -5,9 +5,9 @@
       "source": "github",
       "repository": "WoWUIDev/Ace3",
       "ref": "master",
-      "commit": "d295b12f8b889a30e86e0e901c5494df4b149c49",
-      "date_created": "2026-08-12T05:50:27Z",
-      "archive_sha256": "d586a805e473df74540388417df9f43141eebaca5e69a3542e5e21976bbfc504"
+      "commit": "a29b0caa2a437c45d225bebadb182c7ec20781a3",
+      "date_created": "2026-08-26T22:31:26Z",
+      "archive_sha256": "982fca0e0d1ed3f9d5125d35af4fee3249d3736e5bb41df97eb08f396ac9676a"
     },
     "HereBeDragons": {
       "source": "github",
@@ -55,11 +55,11 @@
     "LibSharedMedia-3.0": {
       "source": "curseforge",
       "project_id": 14320,
-      "file_id": 8448522,
-      "version": "v12.0.3",
-      "file_name": "LibSharedMedia-3.0-v12.0.3.zip",
-      "date_created": "2026-07-17T02:09:48.397Z",
-      "archive_sha256": "b371b8ecf3e27c83d51688a06998bc1458a178ecd57661b603461be7c2e68dc5"
+      "file_id": 8691989,
+      "version": "v12.1.0",
+      "file_name": "LibSharedMedia-3.0-v12.1.0.zip",
+      "date_created": "2026-08-20T14:40:02.377Z",
+      "archive_sha256": "14beb11fcc1082c7b846960fde39596147a769a807601ecb0aec4de60750956d"
     },
     "FarstriderLib": {
       "source": "github_release",

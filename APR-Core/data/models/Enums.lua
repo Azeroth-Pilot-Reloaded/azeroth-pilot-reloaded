@@ -5,6 +5,23 @@ APR.QUEST_STATUS = {
     PROGRESS = "IN_PROGRESS",
 }
 
+APR.REPUTATION_STANDING = {
+    Hated = 1,
+    Hostile = 2,
+    Unfriendly = 3,
+    Neutral = 4,
+    Friendly = 5,
+    Honored = 6,
+    Revered = 7,
+    Exalted = 8,
+}
+
+APR.REPUTATION_TYPE = {
+    Standard = "standard",
+    Renown = "renown",
+    Friendship = "friendship",
+}
+
 APR.EXPANSIONS = {
     Vanilla = "Vanilla",
     TheBurningCrusade = "The Burning Crusade",

@@ -814,6 +814,11 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local color = UnitLevel("player") <= step.Grind and "green" or "gray"
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
                     string.format(L["GRIND"], step.Grind), color, isCurrentStep)
+            elseif step.Reputation then
+                local completed = APR:IsReputationLevelReached(step.Reputation) or currentStepIndex > rawIndex
+                local color = completed and "green" or "gray"
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                    APR:GetReputationStepText(step.Reputation), color, isCurrentStep)
             elseif step.Note then
                 local previewText = nil
                 if type(step.Note) == "table" then

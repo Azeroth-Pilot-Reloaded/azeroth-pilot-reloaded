@@ -46,6 +46,7 @@ local events = {
     targetChanged = "PLAYER_TARGET_CHANGED",
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
+    reputation = { "UPDATE_FACTION", "MAJOR_FACTION_RENOWN_LEVEL_CHANGED" },
     scenario = { "ACTIVE_DELVE_DATA_UPDATE", "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE",
         "WALK_IN_DATA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
@@ -55,6 +56,7 @@ local events = {
     xpUpdate = "PLAYER_XP_UPDATE",
     updateQuest = { "QUEST_LOG_UPDATE", "UNIT_QUEST_LOG_CHANGED" },
     vehicle = "UNIT_ENTERED_VEHICLE",
+    warMode = "WAR_MODE_STATUS_UPDATE",
     zone = { "ZONE_CHANGED", "ZONE_CHANGED_INDOORS", "ZONE_CHANGED_NEW_AREA", "PLAYER_ENTERING_WORLD", "WAYPOINT_UPDATE" },
 }
 
@@ -282,16 +284,12 @@ function APR.event.functions.achievement(event, ...)
     end
 
     local achievementID = achievementData.achievementID
-    local criteriaIndex = achievementData.criteriaIndex
-
     if event == "CRITERIA_COMPLETE" then
         local completedCriteriaID = ...
-
-        if not criteriaIndex or not GetAchievementCriteriaInfo then
-            return
+        local expectedCriteriaID = achievementData.criteriaID
+        if not expectedCriteriaID then
+            expectedCriteriaID = select(3, APR:GetAchievementCriteriaInfo(achievementData))
         end
-
-        local expectedCriteriaID = select(10, GetAchievementCriteriaInfo(achievementID, criteriaIndex))
         if completedCriteriaID ~= expectedCriteriaID then
             return
         end
@@ -1089,6 +1087,17 @@ function APR.event.functions.remove(event, questID, wasReplayQuest)
     APR:UpdateStep()
 end
 
+function APR.event.functions.reputation()
+    if not APR.ActiveRoute then
+        return
+    end
+
+    -- Reputation can complete the active step and can also activate conditional parallel steps.
+    APR:GetTotalSteps(APR.ActiveRoute)
+    APR:UpdateStep()
+    APR.questOrderList:AddStepFromRoute(true)
+end
+
 function APR.event.functions.scenario(event, ...)
     APR:ScheduleDelveRouteRefresh(event == "SCENARIO_COMPLETED" and 0.3 or 0.1)
 
@@ -1306,6 +1315,12 @@ function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isCont
     end
     if step and step.MountVehicle then
         APR:NextQuestStep()
+    end
+end
+
+function APR.event.functions.warMode(event, warModeEnabled)
+    if warModeEnabled and step and step.WarMode then
+        APR:UpdateStep()
     end
 end
 

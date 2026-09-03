@@ -554,6 +554,13 @@ function APR.farstrider:GetMeToRightZone(isRetry)
         return
     end
 
+    -- The route was selected from this exact delve scenario. Do not ask Farstrider to
+    -- navigate to the exterior Zone stored on delve steps while the player is inside it.
+    if APR:IsInDelveRouteContext(APR.ActiveRoute) then
+        self:MarkRouteReady()
+        return
+    end
+
     local destination = self:GetDestination(step, fallbackMapID)
     local farAway = false
     if destination and destination.worldCoord then
