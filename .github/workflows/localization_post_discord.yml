@@ -22,7 +22,7 @@ jobs:
       # Checkout repository
       # -------------------------------------------------------------------
       - name: Checkout repository
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v7
         with:
           # Needed so that we can push commits
           persist-credentials: true
@@ -32,7 +32,7 @@ jobs:
       # Set up Python
       # -------------------------------------------------------------------
       - name: Set up Python
-        uses: actions/setup-python@v6.1.0
+        uses: actions/setup-python@v7
         with:
           python-version: "3.x"
 

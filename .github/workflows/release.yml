@@ -21,7 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Clone project
-        uses: actions/checkout@v6.0.1
+        uses: actions/checkout@v7
         with:
           fetch-depth: 0
 

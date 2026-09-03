@@ -89,7 +89,10 @@
         "LEVEL",
         "LEVEL_REQUIRED",
         "ReloadUI",
-        "STANDARD_TEXT_FONT"
+        "STANDARD_TEXT_FONT",
+        "REPUTATION",
+        "FACTION",
+        "RANK"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {

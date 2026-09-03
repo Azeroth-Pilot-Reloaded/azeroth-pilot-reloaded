@@ -5,3 +5,6 @@ required-dependencies:
 
 ignore:
   - README.md
+  - wiki.md
+  - Update-Libraries.cmd
+  - tools
