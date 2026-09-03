@@ -1,287 +1,202 @@
 #!/usr/bin/env python3
+"""Update APR's TOC from Blizzard's official product-version feed."""
+
+from __future__ import annotations
+
 import argparse
-import os
 import re
-import socket
-from enum import Enum
-from typing import Dict, List, Set, Literal, cast
+import sys
+import urllib.error
+import urllib.request
+from collections.abc import Iterable
+from pathlib import Path
 
-# Type aliases for clarity
-TestProd = Literal['wowt', 'wowxptr', 'wow_classic_ptr', 'wow_classic_era_ptr']
-BetaProd = Literal['wow_beta', 'wow_classic_beta']
-FullProd = Literal['wow', 'wow_classic', 'wow_classic_era']
-Product = TestProd | BetaProd | FullProd
-VersionDict = Dict[Product, str]
 
-# ANSI color codes for terminal output
-RESET = "\033[0m"
-BOLD = "\033[1m"
-LIGHT_BLUE = "\033[94m"
-GREEN = "\033[32m"
-YELLOW = "\033[33m"
+VERSION_URL = "https://us.version.battle.net/{product}/versions"
+BUILD_PATTERN = re.compile(r"^(\d+)\.(\d+)\.(\d+)\.(\d+)$")
+PRODUCT_PATTERN = re.compile(r"^[a-z0-9_]+$")
+INTERFACE_PATTERN = re.compile(r"^[1-9]\d{4,}$")
+INTERFACE_LINE_PATTERN = re.compile(
+    r"^(?P<prefix>## Interface:[ \t]*)(?P<value>[^\r\n]*)(?P<ending>\r?\n|$)",
+    re.MULTILINE,
+)
+X_INTERFACE_LINE_PATTERN = re.compile(
+    r"^(?P<prefix>## X-Interface:[ \t]*)(?P<value>[^\r\n]*)(?P<ending>\r?\n|$)",
+    re.MULTILINE,
+)
 
-# Default line ending (can be adapted later)
-LINE_END = "\n"
+LIVE_PRODUCTS = ("wow",)
+PTR_PRODUCTS = ("wowt", "wowxptr")
+BETA_PRODUCTS = ("wow_beta",)
 
-class GameFlavor(Enum):
-    WOW = 'wow'
-    WOW_CLASSIC = 'wow_classic'
-    WOW_CLASSIC_ERA = 'wow_classic_era'
 
-def parse_game_flavor(value: str) -> GameFlavor:
-    """Parse and validate game flavor input."""
-    mapping = {
-        'retail': GameFlavor.WOW,
-        'mainline': GameFlavor.WOW,
-        'classic': GameFlavor.WOW_CLASSIC,
-        'cata': GameFlavor.WOW_CLASSIC,
-        'classic_era': GameFlavor.WOW_CLASSIC_ERA,
-        'vanilla': GameFlavor.WOW_CLASSIC_ERA
-    }
-    lower = value.lower()
-    if lower not in mapping:
-        raise argparse.ArgumentTypeError(
-            f"Invalid flavor: {value}. Allowed values are: {', '.join(mapping.keys())}"
-        )
-    return mapping[lower]
+def get_product_build(product: str, region: str = "us") -> str:
+    """Return a validated full build from Blizzard's HTTPS version feed."""
+    if not PRODUCT_PATTERN.fullmatch(product):
+        raise ValueError(f"Invalid Blizzard product: {product!r}")
 
-def get_product_version(prod: Product, cache: VersionDict) -> str:
-    """
-    Retrieve version string for a given product from battle.net or return cached value.
-    The version is formatted as major + zero-padded minor and patch (e.g. 102030).
-    """
-    if prod in cache:
-        return cache[prod]
+    request = urllib.request.Request(
+        VERSION_URL.format(product=product),
+        headers={"User-Agent": "Azeroth Pilot Reloaded TOC updater"},
+    )
+    with urllib.request.urlopen(request, timeout=30) as response:
+        payload = response.read().decode("utf-8-sig")
 
-    host = 'us.version.battle.net'
-    port = 1119
-    request_line = f"v1/products/{prod}/versions\n"
-    try:
-        with socket.create_connection((host, port), timeout=10) as sock:
-            sock.sendall(request_line.encode())
-            data_chunks = []
-            while True:
-                data = sock.recv(4096)
-                if not data:
-                    break
-                data_chunks.append(data.decode())
-            response = ''.join(data_chunks)
-    except (socket.timeout, socket.error) as err:
-        print(f"Error communicating with server: {err}")
-        return ""
-
-    version_str = ""
-    for line in response.splitlines():
-        if line.startswith('us'):
-            parts = line.split('|')
-            if len(parts) > 5:
-                version_str = parts[5]
+    for line in payload.splitlines():
+        if not line or line.startswith("#") or line.startswith("Region!"):
+            continue
+        columns = line.split("|")
+        if len(columns) >= 6 and columns[0].strip().lower() == region.lower():
+            build = columns[5].strip()
+            if BUILD_PATTERN.fullmatch(build):
+                return build
             break
 
-    # Remove revision and split version parts
-    version_str = version_str.rsplit('.', 1)[0]
+    raise RuntimeError(
+        f"No valid build found for Blizzard product {product!r} "
+        f"in region {region!r}"
+    )
+
+
+def build_to_interface(build: str) -> int:
+    """Convert a full build such as 12.1.0.69587 to Interface 120100."""
+    match = BUILD_PATTERN.fullmatch(build)
+    if not match:
+        raise ValueError(f"Invalid WoW build: {build!r}")
+
+    major, minor, patch, _ = (int(part) for part in match.groups())
+    if major == 0 or minor > 99 or patch > 99:
+        raise ValueError(f"Build cannot be represented as a TOC Interface: {build!r}")
+
+    interface = int(f"{major}{minor:02d}{patch:02d}")
+    validate_interface(interface)
+    return interface
+
+
+def validate_interface(interface: int) -> None:
+    """Reject invalid values, especially the zero value produced by the old updater."""
+    value = str(interface)
+    if interface <= 0 or not INTERFACE_PATTERN.fullmatch(value):
+        raise ValueError(f"Invalid TOC Interface value: {value!r}")
+
+
+def parse_interface_list(value: str) -> set[int]:
+    versions: set[int] = set()
+    for item in value.split(","):
+        item = item.strip()
+        if not INTERFACE_PATTERN.fullmatch(item) or int(item) <= 0:
+            raise ValueError(f"Invalid value in ## Interface: {item!r}")
+        versions.add(int(item))
+    if not versions:
+        raise ValueError("## Interface must contain at least one version")
+    return versions
+
+
+def find_single_line(pattern: re.Pattern[str], content: str, label: str) -> re.Match[str]:
+    matches = list(pattern.finditer(content))
+    if len(matches) != 1:
+        raise ValueError(f"Expected exactly one {label} line, found {len(matches)}")
+    return matches[0]
+
+
+def replace_line(content: str, match: re.Match[str], value: str) -> str:
+    replacement = f"{match.group('prefix')}{value}{match.group('ending')}"
+    return content[: match.start()] + replacement + content[match.end() :]
+
+
+def update_toc_content(content: str, discovered: Iterable[int]) -> str:
+    """Add discovered versions without ever removing supported versions."""
+    discovered_versions = set(discovered)
+    if not discovered_versions:
+        raise ValueError("No Interface versions were discovered")
+    for interface in discovered_versions:
+        validate_interface(interface)
+
+    interface_match = find_single_line(
+        INTERFACE_LINE_PATTERN, content, "## Interface"
+    )
+    x_interface_match = find_single_line(
+        X_INTERFACE_LINE_PATTERN, content, "## X-Interface"
+    )
+
+    existing = parse_interface_list(interface_match.group("value"))
+    x_interface_value = x_interface_match.group("value").strip()
+    if not INTERFACE_PATTERN.fullmatch(x_interface_value) or int(x_interface_value) <= 0:
+        raise ValueError(f"Invalid ## X-Interface value: {x_interface_value!r}")
+
+    merged = existing | discovered_versions
+    interface_value = ", ".join(str(version) for version in sorted(merged))
+
+    # Replace the later match first so offsets for the earlier one remain valid.
+    replacements = (
+        (interface_match, interface_value),
+        (x_interface_match, str(max(merged))),
+    )
+    for match, value in sorted(
+        replacements, key=lambda replacement: replacement[0].start(), reverse=True
+    ):
+        content = replace_line(content, match, value)
+    return content
+
+
+def read_text_preserving_newlines(path: Path) -> str:
+    with path.open("r", encoding="utf-8", newline="") as handle:
+        return handle.read()
+
+
+def write_text_preserving_newlines(path: Path, content: str) -> None:
+    with path.open("w", encoding="utf-8", newline="") as handle:
+        handle.write(content)
+
+
+def update_toc(path: Path, products: Iterable[str], region: str = "us") -> bool:
+    """Resolve every product before touching the TOC, then update it if needed."""
+    builds: dict[str, str] = {}
+    interfaces: set[int] = set()
+    for product in dict.fromkeys(products):
+        build = get_product_build(product, region)
+        interface = build_to_interface(build)
+        builds[product] = build
+        interfaces.add(interface)
+        print(f"{product}: {build} -> Interface {interface}")
+
+    original = read_text_preserving_newlines(path)
+    updated = update_toc_content(original, interfaces)
+    if updated == original:
+        print(f"{path}: already up to date")
+        return False
+
+    write_text_preserving_newlines(path, updated)
+    print(f"{path}: updated from {', '.join(builds)}")
+    return True
+
+
+def parse_args() -> argparse.Namespace:
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument(
+        "--toc", type=Path, default=Path("APR.toc"), help="TOC file to update"
+    )
+    parser.add_argument("--region", default="us", help="Blizzard region to select")
+    parser.add_argument("--ptr", action="store_true", help="Include Retail PTR products")
+    parser.add_argument("--beta", action="store_true", help="Include the Retail beta product")
+    return parser.parse_args()
+
+
+def main() -> int:
+    args = parse_args()
+    products = [*LIVE_PRODUCTS]
+    if args.ptr:
+        products.extend(PTR_PRODUCTS)
+    if args.beta:
+        products.extend(BETA_PRODUCTS)
+
     try:
-        major, minor, patch = version_str.split('.')
-    except ValueError:
-        major, minor, patch = "0", "0", "0"
-    # Ensure minor and patch are two digits
-    version_formatted = f"{major}{minor.zfill(2)}{patch.zfill(2)}"
-    cache[prod] = version_formatted
-    return version_formatted
+        update_toc(args.toc, products, args.region)
+    except (OSError, UnicodeError, ValueError, RuntimeError, urllib.error.URLError) as error:
+        print(f"ERROR: {error}", file=sys.stderr)
+        return 1
+    return 0
 
-def is_library_toc(file_path: str) -> bool:
-    """
-    Determine if the .toc file is part of a library (e.g. resides in 'lib', 'libs', 'library', 'libraries').
-    """
-    parts = os.path.normpath(file_path).split(os.sep)
-    return any(part.lower() in ['lib', 'libs', 'library', 'libraries'] for part in parts)
 
-def merge_versions(existing: str, new_set: Set[str]) -> str:
-    """
-    Merge versions from the existing line with the new set.
-    If the new interfaces indicate a higher version group, then older versions are removed.
-    Returns a comma-separated sorted string.
-    """
-    current = {v.strip() for v in existing.split(',')} if existing else set()
-    combined = current.union(new_set)
-    # Cleaning mechanism: keep only versions matching the new highest interface group.
-    if new_set:
-        max_new = max(new_set, key=lambda v: int(v))
-        prefix = max_new[:3]
-        combined = {v for v in combined if v.startswith(prefix)}
-    sorted_versions = sorted(combined, key=lambda v: int(v))
-    return ', '.join(sorted_versions)
-
-def update_interface_line(content: str, line_prefix: str, new_versions: Set[str]) -> tuple[str, bool]:
-    """
-    Update a line starting with the given prefix by merging its version numbers
-    with new_versions. Returns updated content and a flag if a substitution was made.
-    """
-    pattern = re.compile(rf'^({re.escape(line_prefix)}):\s*(.*)$', re.MULTILINE)
-    updated = False
-
-    def replacer(match):
-        nonlocal updated
-        prefix = match.group(1)
-        current_versions = match.group(2)
-        merged = merge_versions(current_versions, new_versions)
-        updated = True
-        return f"{prefix}: {merged}"
-
-    new_content, count = pattern.subn(replacer, content)
-    return new_content, updated if count > 0 else False
-
-def update_latest_interface_line(content: str, line_prefix: str, new_versions: Set[str]) -> tuple[str, bool]:
-    """
-    Update a line with only the latest available interface version.
-    Unlike the standard Interface field, X-Interface must remain a single
-    numeric value so it can be parsed by the addon at runtime.
-    """
-    if not new_versions:
-        return content, False
-
-    pattern = re.compile(rf'^({re.escape(line_prefix)}):\s*(.*)$', re.MULTILINE)
-    latest_version = max(new_versions, key=lambda version: int(version))
-    new_content, count = pattern.subn(rf'\1: {latest_version}', content)
-    return new_content, count > 0
-
-def update_toc_file(file_path: str, prod: FullProd, multi: bool,
-                    include_beta: bool, include_test: bool,
-                    cache: VersionDict, files_updated: List[str]) -> None:
-    """
-    Update the interface version lines in a .toc file based on the product.
-    The function reads the file, calculates new interface versions (merging with any existing ones)
-    and writes back only if there is an actual change.
-    """
-    print(f"{LIGHT_BLUE}Processing {BOLD}{file_path}{RESET}{LIGHT_BLUE} for product {prod}{RESET}", end=' ')
-
-    try:
-        with open(file_path, 'r', encoding='utf-8', errors='replace') as f:
-            original = f.read()
-    except Exception as ex:
-        print(f"Error reading file: {ex}")
-        return
-
-    # Normalize line breaks for processing
-    content = original.replace('\r\n', '\n').replace('\r', '\n')
-    new_versions: Set[str] = set()
-
-    base_ver = get_product_version(prod, cache)
-    if base_ver:
-        new_versions.add(base_ver)
-
-    # Append beta version if required and available
-    if include_beta:
-        if prod == 'wow':
-            beta_ver = get_product_version('wow_beta', cache)
-            if beta_ver and beta_ver > base_ver:
-                new_versions.add(beta_ver)
-        elif prod == 'wow_classic':
-            beta_ver = get_product_version('wow_classic_beta', cache)
-            if beta_ver and beta_ver > base_ver:
-                new_versions.add(beta_ver)
-
-    # Append test (PTR) version if required and available
-    if include_test:
-        if prod == 'wow':
-            for test_prod in cast(tuple[TestProd, ...], ('wowt', 'wowxptr')):
-                test_ver = get_product_version(test_prod, cache)
-                if test_ver and test_ver > base_ver:
-                    new_versions.add(test_ver)
-        elif prod == 'wow_classic':
-            test_ver = get_product_version('wow_classic_ptr', cache)
-            if test_ver and test_ver > base_ver:
-                new_versions.add(test_ver)
-        elif prod == 'wow_classic_era':
-            test_ver = get_product_version('wow_classic_era_ptr', cache)
-            if test_ver and test_ver > base_ver:
-                new_versions.add(test_ver)
-
-    updated_content = content
-    changed = False
-
-    # Choose which interface line(s) to update based on multi flag and product type
-    if not multi:
-        updated_content, sub_changed = update_interface_line(updated_content, "## Interface", new_versions)
-        changed = changed or sub_changed
-        if prod == 'wow':
-            updated_content, sub_changed = update_latest_interface_line(
-                updated_content, "## X-Interface", new_versions
-            )
-            changed = changed or sub_changed
-    else:
-        if prod == 'wow_classic':
-            for prefix in ["## Interface-Cata", "## Interface-Classic"]:
-                updated_content, sub_changed = update_interface_line(updated_content, prefix, new_versions)
-                changed = changed or sub_changed
-        elif prod == 'wow_classic_era':
-            updated_content, sub_changed = update_interface_line(updated_content, "## Interface-Vanilla", new_versions)
-            changed = changed or sub_changed
-        else:
-            # For 'wow' in multi mode, update generic interface
-            updated_content, sub_changed = update_interface_line(updated_content, "## Interface", new_versions)
-            changed = changed or sub_changed
-            updated_content, sub_changed = update_latest_interface_line(
-                updated_content, "## X-Interface", new_versions
-            )
-            changed = changed or sub_changed
-
-    # Write the file only if changes were made
-    if changed and updated_content != content:
-        final_le = "\n" if "\r\n" not in original else "\r\n"
-        with open(file_path, 'w', encoding='utf-8', newline='') as f:
-            f.write(updated_content.replace("\n", final_le))
-        files_updated.append(file_path)
-        print(f"{GREEN}Updated{RESET}")
-    else:
-        print(f"{YELLOW}No change{RESET}")
-
-def main():
-    parser = argparse.ArgumentParser(description="Update WoW Interface Versions in .toc files")
-    parser.add_argument('-b', '--beta', action='store_true', help="Include beta versions")
-    parser.add_argument('-p', '--ptr', action='store_true', help="Include test (PTR) versions")
-    parser.add_argument('-f', '--flavor', type=parse_game_flavor, default=GameFlavor.WOW,
-                        help="Game flavor (retail, mainline, classic, cata, classic_era, vanilla)")
-    args = parser.parse_args()
-
-    include_beta = args.beta
-    include_test = args.ptr
-    flavor = cast(FullProd, args.flavor.value)
-
-    cached_versions: VersionDict = {}
-    files_modified: List[str] = []
-
-    # Pattern to detect TOC files with specific naming convention (e.g. Mainline, Classic, etc.)
-    naming_pattern = re.compile(r'[-_](Mainline|Classic|Cata|Vanilla)\.toc$')
-
-    # Walk recursively through the directory
-    for root, _, files in os.walk('.'):
-        for fname in files:
-            if fname.endswith('.toc'):
-                full_path = os.path.join(root, fname)
-                # Skip files in library folders
-                if is_library_toc(full_path):
-                    continue
-
-                # Determine update strategy based on file naming
-                if not naming_pattern.search(full_path):
-                    update_toc_file(full_path, flavor, False, include_beta, include_test, cached_versions, files_modified)
-                    update_toc_file(full_path, 'wow_classic', True, include_beta, include_test, cached_versions, files_modified)
-                    update_toc_file(full_path, 'wow_classic_era', True, include_beta, include_test, cached_versions, files_modified)
-                else:
-                    if 'Mainline' in full_path:
-                        update_toc_file(full_path, 'wow', False, include_beta, include_test, cached_versions, files_modified)
-                    elif 'Classic' in full_path or 'Cata' in full_path:
-                        update_toc_file(full_path, 'wow_classic', False, include_beta, include_test, cached_versions, files_modified)
-                    elif 'Vanilla' in full_path:
-                        update_toc_file(full_path, 'wow_classic_era', False, include_beta, include_test, cached_versions, files_modified)
-
-    if files_modified:
-        print(f"\n{GREEN}Modified files:")
-        for f in files_modified:
-            print(f"{GREEN}{f}{RESET}")
-    else:
-        print(f"\n{YELLOW}No files were modified.{RESET}")
-
-if __name__ == '__main__':
-    main()
+if __name__ == "__main__":
+    raise SystemExit(main())

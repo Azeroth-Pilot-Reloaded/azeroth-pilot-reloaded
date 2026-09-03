@@ -1,42 +1,60 @@
-name: Update TOC Interface version(s)
+name: Update TOC Interface versions
 
 on:
-  workflow_dispatch:
   schedule:
-    - cron: 0 12 * * *
+    - cron: '17 */6 * * *'
+  workflow_dispatch:
 
 permissions:
   contents: write
   pull-requests: write
 
+concurrency:
+  group: update-toc-interface-versions
+  cancel-in-progress: false
+
 jobs:
-  run:
+  update:
     runs-on: ubuntu-latest
     steps:
-      - name: Clone project
-        uses: actions/checkout@v5.0.0
+      - name: Checkout
+        uses: actions/checkout@v7
 
       - name: Set up Python
-        uses: actions/setup-python@v6.0.0
+        uses: actions/setup-python@v7
         with:
-          python-version: "3.x"
+          python-version: '3.13'
 
-      - name: Update TOC Interface and X-Interface versions
+      - name: Test the updater
+        run: |
+          python -m py_compile .github/scripts/toc-updater.py
+          python -m unittest discover -s .github/scripts -p 'toc_updater_tests.py'
+
+      - name: Resolve Blizzard builds and update APR.toc
         run: python .github/scripts/toc-updater.py --ptr
 
+      - name: Validate the generated change
+        shell: bash
+        run: |
+          git diff --check
+          changed="$(git diff --name-only)"
+          if [ -n "$changed" ] && [ "$changed" != "APR.toc" ]; then
+            echo "The updater changed an unexpected file:" >&2
+            printf '%s\n' "$changed" >&2
+            exit 1
+          fi
+
       - name: Create pull request
-        uses: peter-evans/create-pull-request@v7.0.8
+        uses: peter-evans/create-pull-request@v8.1.1
         with:
-          token: ${{ secrets.GIT_TOKEN }}
-          title: "Auto updates supported interface versions"
-          body: |
-            ## Requirements
-
-            - [ ] Check [APi changelog](https://warcraft.wiki.gg/wiki/API_change_summaries)
-            - [ ] Test for all applicable game clients
-
-            ----------------------------------------------------
-            _This PR was automatically created to update the supported Interface and X-Interface versions in APR.toc._
-          commit-message: "Auto updates supported interface versions"
+          token: ${{ secrets.GIT_TOKEN || secrets.GITHUB_TOKEN }}
           branch: interface-version
           delete-branch: true
+          add-paths: APR.toc
+          commit-message: Update supported WoW Interface versions
+          title: Update supported WoW Interface versions
+          body: |
+            Automated update of `## Interface` and `## X-Interface` in `APR.toc`.
+
+            Builds were resolved from Blizzard's HTTPS product feeds for Retail and its PTR channels.
+            Existing supported Interface versions are preserved, and the updater's regression tests and whitespace validation completed successfully.
