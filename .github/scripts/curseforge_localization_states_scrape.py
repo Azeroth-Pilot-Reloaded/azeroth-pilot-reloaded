@@ -1,6 +1,5 @@
 import asyncio
-import re
-from typing import Dict
+from typing import Dict, List
 
 from bs4 import BeautifulSoup
 from pydoll.browser import Chrome
@@ -65,14 +64,67 @@ def build_browser_options() -> ChromiumOptions:
     return options
 
 
-def extract_first_int(text: str) -> int | None:
-    match = re.search(r"\d[\d,]*", text)
-    if not match:
-        return None
-    return int(match.group(0).replace(",", ""))
+def parse_language_counts(html: str) -> Dict[str, int]:
+    """Count both untranslated and review-pending phrases on a language page."""
+    soup = BeautifulSoup(html, "html.parser")
+    counts = {"missing": 0, "review": 0}
+    seen: set[str] = set()
+
+    for phrase in soup.select('li[data-target="phrase"]'):
+        phrase_id = phrase.get("data-phrase-id")
+        unique_id = str(phrase_id) if phrase_id else str(phrase)
+        if unique_id in seen:
+            continue
+        seen.add(unique_id)
+
+        classes = set(phrase.get("class", []))
+        if "needs-translation" in classes:
+            counts["missing"] += 1
+        elif "needs-review" in classes:
+            counts["review"] += 1
+
+    return counts
 
 
-async def fetch_localization_states() -> Dict[str, Dict]:
+def parse_overview(html: str) -> Dict[str, Dict]:
+    """Extract locale states and language-page links from the overview HTML."""
+    soup = BeautifulSoup(html, "html.parser")
+    result: Dict[str, Dict] = {}
+
+    for state_block in soup.select("div.language-state"):
+        title = state_block.find("h2")
+        if not title:
+            continue
+
+        title_text = title.get_text(strip=True).lower()
+        if "needs review" in title_text:
+            state = "needs_review"
+        elif "needs translation" in title_text:
+            state = "needs_translation"
+        elif "complete" in title_text:
+            state = "complete"
+        else:
+            continue
+
+        for box in state_block.select("div.language-box"):
+            p_tags = box.find_all("p")
+            if len(p_tags) < 2:
+                continue
+
+            locale = LANG_NAME_TO_LOCALE.get(p_tags[0].get_text(strip=True))
+            if not locale:
+                continue
+
+            link = box.find("a", href=True)
+            result[locale] = {
+                "state": state,
+                "href": link["href"] if link else None,
+            }
+
+    return result
+
+
+async def fetch_localization_states(locales: List[str] | None = None) -> Dict[str, Dict]:
     """
     Scrape CurseForge localization overview page using Pydoll.
 
@@ -101,8 +153,8 @@ async def fetch_localization_states() -> Dict[str, Dict]:
         )
 
         # Get final DOM
-        html = await tab.page_source
-        html_lower = html.lower()
+        overview_html = await tab.page_source
+        html_lower = overview_html.lower()
         if "just a moment" in html_lower or "cf-challenge" in html_lower:
             safe_print("Cloudflare challenge detected; page content blocked")
             return {}
@@ -110,6 +162,31 @@ async def fetch_localization_states() -> Dict[str, Dict]:
         if not found:
             safe_print("Localization blocks not found (DOM change or blocked)")
             return {}
+
+        result = parse_overview(overview_html)
+        requested_locales = locales or list(result.keys())
+
+        # The overview assigns only one bucket to each locale even when its
+        # phrases contain both states. Count the phrase classes independently.
+        for locale in requested_locales:
+            entry = result.get(locale)
+            if not entry or not entry.get("href"):
+                continue
+
+            await tab.go_to(f"https://www.curseforge.com{entry['href']}", timeout=60)
+            phrases_found = await tab.find_or_wait_element(
+                By.CSS_SELECTOR,
+                'li[data-target="phrase"]',
+                timeout=30,
+                raise_exc=False,
+            )
+            if not phrases_found:
+                safe_print(f"Localization phrases not found for {locale}")
+                continue
+
+            entry.update(parse_language_counts(await tab.page_source))
+
+        return result
 
     except Exception as e:
         safe_print(f"⚠️ Pydoll error: {e}")
@@ -130,48 +207,3 @@ async def fetch_localization_states() -> Dict[str, Dict]:
                 await browser.close()
             except Exception:
                 pass
-
-    # -------------------------
-    # Parse HTML
-    # -------------------------
-    soup = BeautifulSoup(html, "html.parser")
-    result: Dict[str, Dict] = {}
-
-    for state_block in soup.select("div.language-state"):
-        title = state_block.find("h2")
-        if not title:
-            continue
-
-        title_text = title.get_text(strip=True).lower()
-
-        if "needs review" in title_text:
-            state = "needs_review"
-        elif "needs translation" in title_text:
-            state = "needs_translation"
-        elif "complete" in title_text:
-            state = "complete"
-        else:
-            continue
-
-        for box in state_block.select("div.language-box"):
-            p_tags = box.find_all("p")
-            if len(p_tags) < 2:
-                continue
-
-            language_name = p_tags[0].get_text(strip=True)
-            info_text = p_tags[-1].get_text(strip=True)
-
-            locale = LANG_NAME_TO_LOCALE.get(language_name)
-            if not locale:
-                continue
-
-            entry: Dict[str, object] = {"state": state}
-
-            if state == "needs_review":
-                review_count = extract_first_int(info_text)
-                if review_count is not None:
-                    entry["review"] = review_count
-
-            result[locale] = entry
-
-    return result

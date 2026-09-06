@@ -10,12 +10,16 @@ on:
   schedule:
     - cron: "0 10,16 * * *"
 
+concurrency:
+  group: localization-ping
+  cancel-in-progress: false
+
 jobs:
   translations:
     runs-on: ubuntu-latest
 
     permissions:
-      contents: write
+      contents: read
 
     steps:
       # -------------------------------------------------------------------
@@ -23,10 +27,15 @@ jobs:
       # -------------------------------------------------------------------
       - name: Checkout repository
         uses: actions/checkout@v7
+
+      # Restore the last successful notification state independently from Git.
+      - name: Restore localization state
+        uses: actions/cache/restore@v5
         with:
-          # Needed so that we can push commits
-          persist-credentials: true
-          token: ${{ github.token }}
+          path: .github/scripts/localization-state.json
+          key: localization-state-${{ github.run_id }}
+          restore-keys: |
+            localization-state-
 
       # -------------------------------------------------------------------
       # Set up Python
@@ -81,34 +90,31 @@ jobs:
           python -m pip install --upgrade pip
           pip install requests python-dotenv pydoll-python beautifulsoup4
 
+      - name: Run localization notification tests
+        run: |
+          python -m unittest discover -s .github/scripts -p 'localization_post_discord_tests.py'
+
       # -------------------------------------------------------------------
       # Run localization scraper
       # -------------------------------------------------------------------
       - name: Run translation check
         env:
           CF_API_KEY: ${{ secrets.CF_API_KEY }}
-          DISCORD_WEBHOOK: ${{ secrets.DISCORD_LOCALES_WEBHOOK }}
           LOCALES: ${{ github.event.inputs.locales }}
         run: |
-          python .github/scripts/localization_post_discord.py
+          python .github/scripts/localization_post_discord.py --prepare "$RUNNER_TEMP/localization-message.txt"
 
-      # -------------------------------------------------------------------
-      # Upload updated state
-      # -------------------------------------------------------------------
-      - name: Commit updated state.json
-        id: commit_state
+      # Persist last_ping before posting. If persistence fails, Discord is not
+      # called, so the same notification cannot be sent repeatedly.
+      - name: Save localization state
+        uses: actions/cache/save@v5
+        with:
+          path: .github/scripts/localization-state.json
+          key: localization-state-${{ github.run_id }}
+
+      - name: Send prepared Discord notification
+        env:
+          DISCORD_WEBHOOK: ${{ secrets.DISCORD_LOCALES_WEBHOOK }}
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-
-          git add .github/scripts/localization-state.json
-
-          if git diff --cached --quiet; then
-            echo "No changes to localization-state.json"
-          else
-            git commit -m "chore: update localization-state.json [skip ci]"
-
-            git push origin HEAD:${{ github.ref }}
-          fi
-        shell: bash
+          python .github/scripts/localization_post_discord.py --send "$RUNNER_TEMP/localization-message.txt"
 

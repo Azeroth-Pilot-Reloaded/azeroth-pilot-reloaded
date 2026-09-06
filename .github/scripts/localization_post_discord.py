@@ -2,6 +2,7 @@ import json
 import os
 import requests
 import asyncio
+import argparse
 from dotenv import load_dotenv
 from datetime import datetime, timezone
 from typing import Dict
@@ -17,7 +18,7 @@ load_dotenv()
 
 PROJECT_ID = 618667
 STATE_FILE = ".github/scripts/localization-state.json"
-REPING_DELAY_DAYS = 7
+REPING_DELAY_DAYS = 3
 REFERENCE_LOCALE = "enUS"
 
 CF_API_KEY = os.getenv("CF_API_KEY")
@@ -214,6 +215,16 @@ def build_summary_line(summary: Dict[str, str]) -> str:
 
     return f"📊 Localization status: {count} {plural} attention ({details})"
 
+
+def build_summary_counts(missing: int, review: int) -> str:
+    """Build the compact summary without dropping either non-zero count."""
+    counts = []
+    if missing > 0:
+        counts.append(f"{missing}M")
+    if review > 0:
+        counts.append(f"{review}R")
+    return "/".join(counts)
+
 #############################################################################
 # Console-safe printing (Windows)
 #############################################################################
@@ -243,11 +254,22 @@ def post_to_discord(lines: list[str]) -> None:
     response = requests.post(DISCORD_WEBHOOK, json=payload, timeout=20)
     response.raise_for_status()
 
+
+def send_prepared_message(path: str) -> None:
+    if not os.path.exists(path):
+        print("No prepared Discord notification")
+        return
+
+    with open(path, "r", encoding="utf-8") as message_file:
+        post_to_discord(message_file.read().splitlines())
+    if not DRY_RUN:
+        print("Discord notification sent")
+
 #############################################################################
 # Main
 #############################################################################
 
-def main():
+def main(message_file: str | None = None):
     state = load_state()
 
     watched_locales = (
@@ -264,7 +286,7 @@ def main():
         reference_locale=REFERENCE_LOCALE,
     )
 
-    review_states = asyncio.run(fetch_localization_states())
+    review_states = asyncio.run(fetch_localization_states(watched_locales))
 
     summary_data: Dict[str, str] = {}
     detail_lines: list[str] = []
@@ -274,18 +296,16 @@ def main():
             continue
 
         missing = stats[locale]["missing"]
-        review = review_states.get(locale, {}).get("review", 0)
+        scraped_state = review_states.get(locale, {})
+        if "review" not in scraped_state:
+            safe_print(f"Skipping {locale}: review count could not be fetched")
+            continue
+        review = scraped_state["review"]
 
         previous = state.get(locale)
 
         if should_ping(previous, missing, review):
-            summary_data[locale[:2].upper()] = (
-                f"{missing}M/{review}R"
-                if review > 0 and missing > 0
-                else f"{missing}M"
-                if missing > 0
-                else f"{review}R"
-            )
+            summary_data[locale[:2].upper()] = build_summary_counts(missing, review)
 
             detail_lines.append(
                 build_detail_message(locale, missing, review)
@@ -305,9 +325,15 @@ def main():
 
     if detail_lines:
         summary_line = build_summary_line(summary_data)
-        post_to_discord([summary_line, "", *detail_lines, "", LOCALIZATION_LINK])
-        if not DRY_RUN:
-            print("Discord notification sent")
+        lines = [summary_line, "", *detail_lines, "", LOCALIZATION_LINK]
+        if message_file:
+            with open(message_file, "w", encoding="utf-8") as output:
+                output.write("\n".join(lines))
+            print(f"Discord notification prepared in {message_file}")
+        else:
+            post_to_discord(lines)
+            if not DRY_RUN:
+                print("Discord notification sent")
     else:
         print("No ping needed")
 
@@ -315,4 +341,13 @@ def main():
 
 
 if __name__ == "__main__":
-    main()
+    parser = argparse.ArgumentParser()
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--prepare", metavar="PATH")
+    mode.add_argument("--send", metavar="PATH")
+    args = parser.parse_args()
+
+    if args.send:
+        send_prepared_message(args.send)
+    else:
+        main(message_file=args.prepare)
