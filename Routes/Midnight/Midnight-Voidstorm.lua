@@ -3971,6 +3971,7 @@ APR.RouteQuestStepList["2395-Voidstorm"] = {
         {
             Grind = 90,
             Coord = { x = -609, y = 882.9 },
+            ExtraLineText = "MUST_BE_90_UNLOCK_FINAL_QUEST_CHAIN",
             Zone = 2405,
             _index = 526,
         },
@@ -6200,6 +6201,7 @@ APR.RouteQuestStepList["2395-Voidstorm-Campaign-Only"] = {
         {
             Grind = 90,
             Coord = { x = -609, y = 882.9 },
+            ExtraLineText = "MUST_BE_90_UNLOCK_FINAL_QUEST_CHAIN",
             Zone = 2405,
             _index = 197,
         },
