@@ -4,6 +4,7 @@ APR.taxiData = APR:NewModule("TaxiData")
 
 local ADDON_NAME = "LibTaxiData"
 local REQUIRED_METHODS = {
+    "GetAllNodes",
     "GetNode",
     "GetNodeDetails",
     "GetNodeName",
@@ -16,6 +17,8 @@ local REQUIRED_METHODS = {
     "FindNearestNodeFromAPRWorld",
     "FindNearestNodeFromMap",
     "FindNearestNodeToPlayer",
+    "IsNodeAvailable",
+    "IsNodeVisible",
     "SetWaypointToNode",
 }
 
