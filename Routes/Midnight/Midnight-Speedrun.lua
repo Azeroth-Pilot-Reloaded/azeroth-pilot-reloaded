@@ -9,7 +9,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         [APR.PREFAB_TYPES.Leveling] = 20,
     },
     mapID = 2393,
-    conditions = { Level = 80 },
+    conditions = { Level = 80, DontHaveAchievement = 42045 },
     requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = { "2395-The-War-of-Light-and-Shadow" },
     parallelSteps = {
