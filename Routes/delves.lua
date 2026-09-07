@@ -2397,7 +2397,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
     mapID = 0,
     scenarios = {
         -- DelveScenarioBlock(3126, 1, "Stolen Mana", {}),
-        DelveScenarioBlock(3149, 2, "Calamitous", {
+        DelveScenarioBlock(3150, 2, "Calamitous", {
             {
                 Scenario = { criteriaID = 108627, criteriaIndex = 1, questID = 1, scenarioID = 3150, stepID = 16075 },
                 Coord = { x = 985.4, y = 2485.8 },
@@ -2500,7 +2500,7 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
                 _index = 206,
             },
         }),
-        -- DelveScenarioBlock(3150, 3, "Captured Wildlife", {}),
+        -- DelveScenarioBlock(3149, 3, "Captured Wildlife", {}),
     },
 })
 
