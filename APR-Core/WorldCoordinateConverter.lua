@@ -575,6 +575,20 @@ local function ConvertCoordinateToWorld(coordinate, zone)
     return worldPosition.y, worldPosition.x, resolvedZone
 end
 
+--- Convert a source map point without projecting or rounding it outside the game client.
+-- Route authors can use this for new points while retaining recorded world coordinates elsewhere.
+function APR.worldCoordinateConverter:ConvertMapCoordinate(zone, mapX, mapY)
+    if type(zone) ~= "number" or type(mapX) ~= "number" or type(mapY) ~= "number"
+        or mapX < 0 or mapX > 100 or mapY < 0 or mapY > 100 then
+        return nil
+    end
+    local worldX, worldY = ConvertCoordinateToWorld({ x = mapX, y = mapY }, zone)
+    if worldX and worldY then
+        return { x = tonumber(string.format("%.1f", worldX)), y = tonumber(string.format("%.1f", worldY)) }
+    end
+    return nil
+end
+
 function APR.worldCoordinateConverter:ConvertRoute(routeName)
     local route = APR.RouteQuestStepList and APR.RouteQuestStepList[routeName]
     local convertedRoute = CopyRouteValue(route)
