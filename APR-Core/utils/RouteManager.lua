@@ -58,10 +58,10 @@ local function GetBaseRouteSteps(routeData, routeKey)
             local scenarioID = GetActiveDelveScenarioID(routeKey)
             local matchedSteps = scenarioID and FlattenScenarioBlocks(blocks, scenarioID) or {}
             if #matchedSteps > 0 then
-                return matchedSteps
+                return APR:GetTemporaryRouteSteps(routeKey, matchedSteps)
             end
 
-            return FlattenScenarioBlocks(blocks)
+            return APR:GetTemporaryRouteSteps(routeKey, FlattenScenarioBlocks(blocks))
         end
     end
 
@@ -331,8 +331,14 @@ end
 -- Manual hand-ins remain available, including the usual modifier-key override.
 function APR:IsQuestTurnInDeferred(questID)
     if not questID then return false end
-    local groups = GetParallelGroups(self:GetRouteData(self.ActiveRoute))
-    local state = GetRouteParallelState(self, self.ActiveRoute, false)
+    local routeKey = self.ActiveRoute
+    local playerData = APRData and APRData[self.PlayerID]
+    local temporary = playerData and playerData.TemporaryRouteState
+    if temporary and temporary.routeKey == routeKey and temporary.previousRouteKey then
+        routeKey = temporary.previousRouteKey
+    end
+    local groups = GetParallelGroups(self:GetRouteData(routeKey))
+    local state = GetRouteParallelState(self, routeKey, false)
     for groupIndex, group in ipairs(groups or {}) do
         if not (state and state.groups and state.groups[groupIndex]) then
             for _, step in ipairs(group.steps) do

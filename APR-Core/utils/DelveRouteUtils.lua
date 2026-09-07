@@ -325,6 +325,37 @@ function APR:FindDelveRoutesForContext(context)
     return exactMatches, #exactMatches > 0
 end
 
+--- Preserve nearby quest setup before replacing its DoScenario with a temporary guide.
+function APR:GetDelveInsertionPoint(routeKey, contextMapID)
+    local playerData = GetPlayerData()
+    local currentIndex = playerData and playerData[routeKey] or 1
+    local steps = self:GetRouteSteps(routeKey)
+    local mapInfo = contextMapID and self:GetMapInfoCached(contextMapID)
+    for index = currentIndex, math.min(currentIndex + 5, #steps) do
+        local scenario = steps[index].DoScenario
+        if type(scenario) == "table" and (scenario.mapID == contextMapID
+                or (mapInfo and scenario.mapID == mapInfo.parentMapID)) then
+            return currentIndex, index
+        end
+    end
+    return currentIndex, nil
+end
+
+--- Build the temporary prefix from the saved parent route without changing its definition.
+function APR:GetTemporaryRouteSteps(routeKey, steps)
+    local state = GetTemporaryRouteState(false)
+    if not state or state.routeKey ~= routeKey or not state.replaceStepIndex then
+        return steps
+    end
+    local parentSteps = self:GetRouteSteps(state.previousRouteKey)
+    local result = {}
+    for index = state.parentStartIndex, state.replaceStepIndex - 1 do
+        result[#result + 1] = parentSteps[index]
+    end
+    for _, step in ipairs(steps) do result[#result + 1] = step end
+    return result
+end
+
 function APR:ActivateTemporaryRoute(routeKey, options)
     local routeData = self:GetRouteData(routeKey)
     local state = GetTemporaryRouteState(true)
@@ -344,6 +375,14 @@ function APR:ActivateTemporaryRoute(routeKey, options)
     local previousRouteKey = options.previousRouteKey or self.ActiveRoute
     if self:IsTemporaryRoute(previousRouteKey) then
         previousRouteKey = state.previousRouteKey
+    end
+
+    if options.resume ~= true then
+        state.parentStartIndex, state.replaceStepIndex = nil, nil
+        state.scenarioCompleted = nil
+        if previousRouteKey then
+            state.parentStartIndex, state.replaceStepIndex = self:GetDelveInsertionPoint(previousRouteKey, options.mapID)
+        end
     end
 
     state.routeKey = routeKey
@@ -390,15 +429,29 @@ function APR:ClearTemporaryRoute(options)
         return false
     end
 
-    local restoredRouteKey = self:GetPrimaryCustomPathRouteKey() or state.previousRouteKey
+    local restoredRouteKey = state.previousRouteKey or self:GetPrimaryCustomPathRouteKey()
     if restoredRouteKey and not self:GetRouteData(restoredRouteKey) then
         restoredRouteKey = nil
     end
 
     local playerData = GetPlayerData()
     if playerData then
+        if restoredRouteKey == state.previousRouteKey and state.parentStartIndex then
+            local resumeIndex = state.parentStartIndex
+            if state.replaceStepIndex then
+                local prefixLength = state.replaceStepIndex - state.parentStartIndex
+                local progress = math.max(0, (playerData[state.routeKey] or 1) - 1)
+                resumeIndex = state.parentStartIndex + math.min(progress, prefixLength)
+                if options.completed or state.scenarioCompleted then
+                    resumeIndex = state.replaceStepIndex + 1
+                end
+            end
+            playerData[restoredRouteKey] = resumeIndex
+        end
         playerData.TemporaryRouteState = nil
     end
+
+    self:InvalidateEffectiveRouteStepsCache(state.routeKey)
 
     self.ActiveRoute = restoredRouteKey
     if options.preserveSessionKey then
@@ -512,17 +565,6 @@ function APR:RefreshTemporaryDelveRoute()
         return
     end
 
-    -- Explicit instance steps own their quest pickups, objectives and reserved rewards.
-    -- Do not replace that block with an automatic delve route before it can finish.
-    if not self:IsTemporaryRouteActive() then
-        local playerData = GetPlayerData()
-        local stepIndex = playerData and self.ActiveRoute and playerData[self.ActiveRoute]
-        local currentStep = stepIndex and self:GetStep(stepIndex)
-        if currentStep and currentStep.InstanceQuest then
-            return
-        end
-    end
-
     local contextScenarioID = tonumber(context.scenarioID)
     if not contextScenarioID then
         self._delvePendingScenarioAttempts = (self._delvePendingScenarioAttempts or 0) + 1
@@ -570,22 +612,8 @@ function APR:RefreshTemporaryDelveRoute()
         state = nil
     end
 
-    local routes, hasExactMatch = self:FindDelveRoutesForContext(context)
+    local routes = self:FindDelveRoutesForContext(context)
     if #routes == 0 then
-        return
-    end
-
-    local hasPrimaryRoute = self:GetPrimaryCustomPathRouteKey() ~= nil
-    local hasNormalActiveRoute = self.ActiveRoute and not self:IsTemporaryRouteActive()
-
-    if (hasPrimaryRoute or hasNormalActiveRoute) and (#routes == 1 or hasExactMatch) then
-        self:ActivateTemporaryRoute(routes[1].key, {
-            kind = "delve",
-            mapID = context.mapID,
-            previousRouteKey = self.ActiveRoute,
-            scenarioID = context.scenarioID,
-            sessionKey = sessionKey,
-        })
         return
     end
 
