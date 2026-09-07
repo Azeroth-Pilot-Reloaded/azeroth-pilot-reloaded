@@ -124,7 +124,7 @@ local function HandleExtraLine(extraline)
     return false
 end
 
-function APR:UpdateStep()
+local function UpdateStepOnce()
     if not APR.settings.profile.enableAddon then
         return
     end
@@ -1129,6 +1129,39 @@ function APR:UpdateStep()
     end
 end
 
+-- Automatic completions request another pass instead of nesting UpdateStep calls.
+-- Bound each batch so a long run of completed objectives also yields to the UI.
+function APR:UpdateStep()
+    self.stepUpdatePending = true
+    if self.stepUpdateRunning then return end
+    if self.stepUpdateTimer then
+        self.stepUpdateTimer:Cancel()
+        self.stepUpdateTimer = nil
+    end
+
+    self.stepUpdateRunning = true
+    local started = debugprofilestop()
+    local passes = 0
+    repeat
+        self.stepUpdatePending = false
+        local ok, err = pcall(UpdateStepOnce)
+        if not ok then
+            self.stepUpdateRunning = false
+            self.stepUpdatePending = false
+            error(err, 0)
+        end
+        passes = passes + 1
+    until not self.stepUpdatePending or passes >= 25 or debugprofilestop() - started >= 3
+    self.stepUpdateRunning = false
+
+    if self.stepUpdatePending then
+        self.stepUpdateTimer = C_Timer.NewTimer(0, function()
+            self.stepUpdateTimer = nil
+            self:UpdateStep()
+        end)
+    end
+end
+
 function APR:SetButton()
     if not (APR.IsInRouteZone or (APR.farstrider and APR.farstrider.showOutOfZoneStepContent)) then
         return
@@ -1206,6 +1239,7 @@ function APR:UpdateQuest()
                     -- Update only if changed
                     local objEntry = APR.ActiveQuests[questID].objectives[i]
                     if not objEntry or objEntry.text ~= text or objEntry.status ~= status then
+                        updateStep = true
                         APR:Debug(("Objective [%s] - Step %d: %s (%s)"):format(
                             questTitle, i, text, status))
                     end
@@ -1214,10 +1248,6 @@ function APR:UpdateQuest()
                         text = text,
                         status = status,
                     }
-
-                    if status == APR.QUEST_STATUS.COMPLETE then
-                        updateStep = true
-                    end
 
                     -- // todo check le refresh pourquoi
                     APR.currentStep:UpdateQuestStep(questID, text, i)

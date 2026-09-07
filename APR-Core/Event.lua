@@ -135,7 +135,9 @@ function APR.event.EventHandler(self, event, ...)
         autoAcceptRoute = profile.autoAcceptQuestRoute
         step = APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
 
+        local profileStart = APR:StartPerformanceSample()
         pcall(self.callback, event, ...)
+        APR:FinishPerformanceSample(event, profileStart)
     else
         APR:DebugEvent("Unregister Event", event)
         self.callback = nil
@@ -1094,10 +1096,17 @@ function APR.event.functions.reputation()
         return
     end
 
-    -- Reputation can complete the active step and can also activate conditional parallel steps.
-    APR:GetTotalSteps(APR.ActiveRoute)
-    APR:UpdateStep()
-    APR.questOrderList:AddStepFromRoute(true)
+    if APR.event.reputationUpdateTimer then return end
+    APR.event.reputationUpdateTimer = C_Timer.NewTimer(0.1, function()
+        APR.event.reputationUpdateTimer = nil
+        if not APR.ActiveRoute then return end
+        -- One quest can award several reputations; evaluate the resulting state only once.
+        local profileStart = APR:StartPerformanceSample()
+        APR:GetTotalSteps(APR.ActiveRoute)
+        APR:UpdateStep()
+        APR.questOrderList:DelayedUpdate(true)
+        APR:FinishPerformanceSample("ReputationRefresh", profileStart)
+    end)
 end
 
 function APR.event.functions.scenario(event, ...)
@@ -1444,7 +1453,9 @@ function APR.event:DebouncedUpdateQuest(delay)
         pendingQuestUpdateTimer:Cancel()
     end
     pendingQuestUpdateTimer = C_Timer.NewTimer(delay, function()
+        local profileStart = APR:StartPerformanceSample()
         APR:UpdateQuest()
+        APR:FinishPerformanceSample("QuestRefresh", profileStart)
         APR:Debug("Extra UpdQuestThing (debounced)")
         pendingQuestUpdateTimer = nil
     end)
