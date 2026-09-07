@@ -15,7 +15,7 @@ APR.RouteQuestStepList["2432-Midnight-Intro"] = {
         [APR.PREFAB_TYPES.Speedrun] = 10,
     },
     mapID = 2432,
-    conditions = { Level = 80 },
+    conditions = { Level = 80, DontHaveAchievement = 42045 },
     nextRoute = { "2393-Midnight-Speedrun", "2393-Eversong-Woods", "2393-Eversong-Woods-Campaign-Only" },
     steps = {
         {
