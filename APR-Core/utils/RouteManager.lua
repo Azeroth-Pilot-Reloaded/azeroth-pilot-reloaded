@@ -327,6 +327,24 @@ function APR:GetRouteSteps(routeKey)
     return {}
 end
 
+--- Keep automatic hand-ins from spending rewards reserved by a pending parallel group.
+-- Manual hand-ins remain available, including the usual modifier-key override.
+function APR:IsQuestTurnInDeferred(questID)
+    if not questID then return false end
+    local groups = GetParallelGroups(self:GetRouteData(self.ActiveRoute))
+    local state = GetRouteParallelState(self, self.ActiveRoute, false)
+    for groupIndex, group in ipairs(groups or {}) do
+        if not (state and state.groups and state.groups[groupIndex]) then
+            for _, step in ipairs(group.steps) do
+                if step.Done and tContains(step.Done, questID) then
+                    return not self:AreConditionalFiltersMet(group.conditions or {})
+                end
+            end
+        end
+    end
+    return false
+end
+
 --- Return the expansion display string for a route key.
 ---@param routeKey string
 ---@return string|nil expansion
@@ -363,6 +381,8 @@ end
 --- Condition Evaluation
 ---------------------------------------------------------------------------------------
 
+local EvaluateHardConditions
+
 local function IsRouteCompletedByKey(routeKey)
     if not routeKey or not APRZoneCompleted or not APR.PlayerID then
         return false
@@ -376,6 +396,17 @@ local function IsRouteCompletedByKey(routeKey)
 
     local completedForPlayer = APRZoneCompleted[APR.PlayerID]
     return completedForPlayer and completedForPlayer[routeLabel] == true or false
+end
+
+--- Return whether an unfinished required route still applies to this character.
+-- Soft conditions such as level and zone never waive a dependency: they can change during play.
+function APR:IsRequiredRouteApplicable(routeKey)
+    if IsRouteCompletedByKey(routeKey) then
+        return false
+    end
+
+    local routeData = self:GetRouteData(routeKey)
+    return routeData and routeData.label and EvaluateHardConditions(routeData.conditions or {}) or false
 end
 
 function APR:GetRouteRequiredRouteKeys(routeKey)
@@ -432,7 +463,7 @@ function APR:AddRouteToCustomPathByKey(routeKey)
 
         local requiredRouteKeys = self:GetRouteRequiredRouteKeys(targetRouteKey)
         for _, requiredRouteKey in ipairs(requiredRouteKeys) do
-            if not IsRouteCompletedByKey(requiredRouteKey) then
+            if self:IsRequiredRouteApplicable(requiredRouteKey) then
                 addRouteRecursive(requiredRouteKey)
             end
         end
@@ -459,11 +490,24 @@ end
 --- Returns true only if ALL non-Level conditions pass.
 ---@param conditions table
 ---@return boolean allHardMet
-local function EvaluateHardConditions(conditions)
+EvaluateHardConditions = function(conditions)
     if not conditions then return true end
 
     -- InterfaceVersion (exact WoW interface version, e.g. 120007 for 12.0.7)
     if conditions.InterfaceVersion and not APR:IsInterfaceVersion(conditions.InterfaceVersion) then
+        return false
+    end
+
+    if conditions.DontHaveSpell and APR:IsAnySpellKnown(conditions.DontHaveSpell) then
+        return false
+    end
+    if conditions.IsQuestReadyForTurnIn and not APR:IsQuestReadyForTurnIn(conditions.IsQuestReadyForTurnIn) then
+        return false
+    end
+    if conditions.HasAchievement and not APR:HasAchievement(conditions.HasAchievement) then
+        return false
+    end
+    if conditions.DontHaveAchievement and APR:HasAchievement(conditions.DontHaveAchievement) then
         return false
     end
 
