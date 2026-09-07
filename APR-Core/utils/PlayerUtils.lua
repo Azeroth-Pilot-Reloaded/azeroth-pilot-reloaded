@@ -8,6 +8,19 @@ function APR:IsSpellKnown(spellID)
     return IsSpellKnown and IsSpellKnown(spellID)
 end
 
+--- Check a spell or a list of alternative spells using the existing spellbook wrapper.
+function APR:IsAnySpellKnown(spellIDs)
+    if type(spellIDs) ~= "table" then
+        return self:IsSpellKnown(spellIDs)
+    end
+    for _, spellID in ipairs(spellIDs) do
+        if self:IsSpellKnown(spellID) then
+            return true
+        end
+    end
+    return false
+end
+
 --- Checks if the Player have flying rank 1, 2 or 3.
 function APR:CheckFlySkill()
     return APR:IsSpellKnown(34090) or APR:IsSpellKnown(34091) or APR:IsSpellKnown(90265)

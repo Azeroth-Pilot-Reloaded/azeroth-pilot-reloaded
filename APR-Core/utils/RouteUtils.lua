@@ -402,6 +402,8 @@ function APR:AreConditionalFiltersMet(conditions)
         (not conditions.HasAura or self:HasAura(conditions.HasAura)) and
         (not conditions.DontHaveAura or not self:HasAura(conditions.DontHaveAura)) and
         (not conditions.HasSpell or self:IsSpellKnown(conditions.HasSpell)) and
+        (not conditions.DontHaveSpell or not self:IsAnySpellKnown(conditions.DontHaveSpell)) and
+        (not conditions.IsQuestReadyForTurnIn or self:IsQuestReadyForTurnIn(conditions.IsQuestReadyForTurnIn)) and
         (not conditions.ReputationLevel or self:IsReputationLevelReached(conditions.ReputationLevel)) and
         (not conditions.SkipForReputation or not self:IsReputationLevelReached(conditions.SkipForReputation)) and
         (not conditions.IsQuestCompleted or C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestCompleted)) and

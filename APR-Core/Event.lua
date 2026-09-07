@@ -517,6 +517,8 @@ end
 function APR.event.functions.done(event, ...)
     local profile = APR:GetSettingsProfile()
     if IsModifierKeyDown() then return end
+    local questID = event == "QUEST_AUTOCOMPLETE" and select(1, ...) or GetQuestID()
+    if APR:IsQuestTurnInDeferred(questID) then return end
     if profile and profile.autoHandIn then
         if event == "QUEST_PROGRESS" then
             APR.event:TalkToDenyNpcLogic(step)

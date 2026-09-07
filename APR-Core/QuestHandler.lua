@@ -307,7 +307,9 @@ function APR:UpdateStep()
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Enter Scenario", scenarioMapID)
 
 
-            if isCompleted or scenarioMapID == currentMapID or C_QuestLog.IsQuestFlaggedCompleted(questID) then
+            if isCompleted or scenarioMapID == currentMapID or scenarioMapID == APR:GetPlayerParentMapID()
+                or C_QuestLog.IsQuestFlaggedCompleted(questID)
+                or APR:IsQuestReadyForTurnIn(questID) then
                 APR:UpdateNextStep()
             end
 
@@ -327,7 +329,8 @@ function APR:UpdateStep()
                 if (objectiveData and objectiveData.status == APR.QUEST_STATUS.COMPLETE) and isCompleted then
                     APR:UpdateNextStep()
                 end
-            elseif isCompleted or C_QuestLog.IsQuestFlaggedCompleted(doScenarioQuestID) then
+            elseif isCompleted or C_QuestLog.IsQuestFlaggedCompleted(doScenarioQuestID)
+                or APR:IsQuestReadyForTurnIn(doScenarioQuestID) then
                 APR:UpdateNextStep()
             end
 
@@ -348,7 +351,9 @@ function APR:UpdateStep()
             local questID = step.LeaveScenario.questID
             local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Leave Scenario", scenarioMapID)
 
-            if isCompleted and scenarioMapID ~= currentMapID or C_QuestLog.IsQuestFlaggedCompleted(questID) then
+            if (isCompleted or APR:IsQuestReadyForTurnIn(questID)) and scenarioMapID ~= currentMapID
+                and scenarioMapID ~= APR:GetPlayerParentMapID()
+                or C_QuestLog.IsQuestFlaggedCompleted(questID) then
                 APR:UpdateNextStep()
             end
 
