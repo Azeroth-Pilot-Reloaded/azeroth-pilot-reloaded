@@ -512,6 +512,17 @@ function APR:RefreshTemporaryDelveRoute()
         return
     end
 
+    -- Explicit instance steps own their quest pickups, objectives and reserved rewards.
+    -- Do not replace that block with an automatic delve route before it can finish.
+    if not self:IsTemporaryRouteActive() then
+        local playerData = GetPlayerData()
+        local stepIndex = playerData and self.ActiveRoute and playerData[self.ActiveRoute]
+        local currentStep = stepIndex and self:GetStep(stepIndex)
+        if currentStep and currentStep.InstanceQuest then
+            return
+        end
+    end
+
     local contextScenarioID = tonumber(context.scenarioID)
     if not contextScenarioID then
         self._delvePendingScenarioAttempts = (self._delvePendingScenarioAttempts or 0) + 1

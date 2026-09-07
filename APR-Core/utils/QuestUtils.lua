@@ -1,5 +1,11 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+--- Only quests still in this character's log can activate deferred hand-ins.
+function APR:IsQuestReadyForTurnIn(questID)
+    return C_QuestLog.IsOnQuest(questID) and C_QuestLog.IsComplete(questID)
+        and not C_QuestLog.IsQuestFlaggedCompleted(questID)
+end
+
 APR.QuestPool = APR.QuestPool or { ids = {} }
 
 function APR:AcceptQuest()
