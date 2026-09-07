@@ -14,3 +14,5 @@ treasureData.txt
 .github/instructions/*
 .github/prompts/*
 wiki.md
+APR-Core/TaxiData.lua
+docs/*

@@ -1,7 +1,8 @@
 {
   "schema": 1,
   "preserve": [
-    "LibWindow-1.1"
+    "LibWindow-1.1",
+    "FarstriderLibData/Locale/FarstriderLibData_Locale.frFR.lua"
   ],
   "libraries": [
     {
@@ -91,7 +92,17 @@
         "archive_root": "FarstriderLibData"
       },
       "mappings": [
-        { "from": ".", "to": "FarstriderLibData" }
+        { "from": "FarstriderLibData~Init.lua", "to": "FarstriderLibData/FarstriderLibData~Init.lua" },
+        { "from": "FarstriderLibData~Config.lua", "to": "FarstriderLibData/FarstriderLibData~Config.lua" },
+        { "from": "FarstriderLibData~Util.lua", "to": "FarstriderLibData/FarstriderLibData~Util.lua" },
+        { "from": "FarstriderLibData~Connections.lua", "to": "FarstriderLibData/FarstriderLibData~Connections.lua" },
+        { "from": "FarstriderLibData~Finalizer.lua", "to": "FarstriderLibData/FarstriderLibData~Finalizer.lua" },
+        { "from": "Locale/FarstriderLibData_Locale.enUS.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.enUS.lua" },
+        { "from": "Locale/FarstriderLibData_Locale.deDE.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.deDE.lua" },
+        { "from": "Locale/FarstriderLibData_Locale.ruRU.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.ruRU.lua" },
+        { "from": "Locale/FarstriderLibData_Locale.zhCN.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.zhCN.lua" },
+        { "from": "Locale/FarstriderLibData_Locale.zhTW.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.zhTW.lua" },
+        { "from": "Areas/Standard", "to": "FarstriderLibData/Areas/Standard" }
       ]
     }
   ]

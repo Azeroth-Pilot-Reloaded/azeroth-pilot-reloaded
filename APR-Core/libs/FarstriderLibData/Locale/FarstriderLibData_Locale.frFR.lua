@@ -17,9 +17,3 @@ FarstriderLibData.L = {
     ["Waypoint_1005"] = "Utilisez %s vers %s",
     ["Waypoint_1006"] = "Lancez %s vers %s",
 };
-
-setmetatable(FarstriderLibData.L, {
-    __index = function(t, k)
-        rawset(t, k, k); return k;
-    end
-})
