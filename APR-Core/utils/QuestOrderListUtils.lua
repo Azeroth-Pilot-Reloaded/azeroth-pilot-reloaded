@@ -1,4 +1,51 @@
 APR.questOrderListUtils = APR.questOrderListUtils or {}
+APR.questOrderListUtils.framePool = {}
+
+function APR.questOrderListUtils:CancelRender(owner)
+    if owner.renderFrame then
+        owner.renderFrame:SetScript("OnUpdate", nil)
+        owner.renderFrame:Hide()
+    end
+end
+
+-- Resume between rows, with at most one budgeted batch per rendered game frame.
+function APR.questOrderListUtils:StartRender(owner, worker, isValid, afterBatch)
+    self:CancelRender(owner)
+    owner.renderFrame = owner.renderFrame or CreateFrame("Frame")
+    local thread = coroutine.create(worker)
+    owner.renderFrame:SetScript("OnUpdate", function()
+        if not isValid() then
+            self:CancelRender(owner)
+            return
+        end
+        local started = debugprofilestop()
+        local profileStart = APR:StartPerformanceSample()
+        repeat
+            local ok, err = coroutine.resume(thread)
+            if not ok then
+                self:CancelRender(owner)
+                owner.currentStepIndex = nil
+                geterrorhandler()(err)
+                return
+            end
+        until coroutine.status(thread) == "dead" or debugprofilestop() - started >= 3
+        local finished = coroutine.status(thread) == "dead"
+        if finished then self:CancelRender(owner) end
+        afterBatch(finished)
+        APR:FinishPerformanceSample("QuestOrderListBatch", profileStart)
+    end)
+    owner.renderFrame:Show()
+end
+
+function APR.questOrderListUtils:ReleaseStepFrame(container)
+    container:Hide()
+    container:ClearAllPoints()
+    container:SetScript("OnEnter", nil)
+    container:SetScript("OnLeave", nil)
+    container:EnableMouse(false)
+    if GameTooltip:GetOwner() == container then GameTooltip:Hide() end
+    self.framePool[#self.framePool + 1] = container
+end
 
 local function bindUncompletedStepTooltip(container, questInfo)
     if not container or not questInfo or #questInfo == 0 then
@@ -48,19 +95,31 @@ function APR.questOrderListUtils:CreateTextFont(parent, text, width, color)
 end
 
 function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepText, questInfo, color, isActiveStep)
-    local container = CreateFrame("Frame", nil, layout.scrollChild, "BackdropTemplate")
+    local container = table.remove(self.framePool) or CreateFrame("Frame", nil, layout.scrollChild, "BackdropTemplate")
+    container:SetParent(layout.scrollChild)
     local indexStr = tostring(stepIndex)
     local offset = 14 + 7 * string.len(indexStr)
     local frameOffset = layout.frameOffset or 0
     container.offset = offset
 
-    local indexFont = self:CreateTextFont(container, stepIndex, layout.frameWidth, color)
-    local titleFont = self:CreateTextFont(container, stepText, layout.frameWidth - offset, color)
+    local function reuseFont(font, text, width, fontColor)
+        if not font then return self:CreateTextFont(container, text, width, fontColor) end
+        font:SetText(text)
+        font:SetWidth(width)
+        font:ClearAllPoints()
+        APR:SetFontStringRole(font, fontColor == "green" and "success" or "muted")
+        font:Show()
+        return font
+    end
+    local indexFont = reuseFont(container.indexFont, stepIndex, layout.frameWidth, color)
+    local titleFont = reuseFont(container.titleFont, stepText, layout.frameWidth - offset, color)
     indexFont:SetPoint("TOPLEFT", container, "TOPLEFT", 5, 0)
     titleFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset, 0)
 
     container.indexFont = indexFont
     container.titleFont = titleFont
+    container.questFontPool = container.questFontPool or {}
+    for _, font in ipairs(container.questFontPool) do font:Hide() end
     container.questFonts = {}
 
     local questFontHeight = 0
@@ -70,7 +129,8 @@ function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepTe
         local rawQuestId = quest.questID
         local questIdString = tostring(rawQuestId)
         local questText = questIdString .. questName
-        local questFont = self:CreateTextFont(container, questText, layout.frameWidth - offset - 10 - 22) -- offset - 10 - scrollbar offset
+        local questFont = reuseFont(container.questFontPool[i], questText, layout.frameWidth - offset - 10 - 22)
+        container.questFontPool[i] = questFont
 
         if isActiveStep then
             local dashIndex = string.find(questIdString, "-")
@@ -95,6 +155,8 @@ function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepTe
     if color == "gray" then
         bindUncompletedStepTooltip(container, questInfo)
     end
+
+    container:Show()
 
     return container, activeQuestId
 end

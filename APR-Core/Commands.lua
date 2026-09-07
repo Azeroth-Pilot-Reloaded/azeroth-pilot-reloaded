@@ -1,6 +1,31 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+-- Opt-in, bounded timings stored in the existing APRData saved variable.
+function APR:StartPerformanceSample()
+    if not self.performanceLogging then return nil end
+    return debugprofilestop()
+end
+
+function APR:FinishPerformanceSample(name, started, steps)
+    if not started or not APRData then return end
+    local elapsed = debugprofilestop() - started
+    local log = APRData.PerformanceLog
+    if not log then return end
+    local summary = log.summary[name] or { count = 0, totalMs = 0, maxMs = 0 }
+    log.summary[name] = summary
+    summary.count = summary.count + 1
+    summary.totalMs = summary.totalMs + elapsed
+    summary.maxMs = math.max(summary.maxMs, elapsed)
+    if elapsed >= 10 then
+        log.cursor = (log.cursor or 0) % 100 + 1
+        log.slow[log.cursor] = {
+            name = name, ms = elapsed, route = self.ActiveRoute, steps = steps,
+            step = self.PlayerID and APRData[self.PlayerID] and APRData[self.PlayerID][self.ActiveRoute],
+        }
+    end
+end
+
 APR.command = APR:NewModule("Command")
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 function APR.command:SlashCmd(input)
@@ -11,7 +36,19 @@ function APR.command:SlashCmd(input)
         APR.settings:OpenSettings(APR.title)
         APR:PrintInfo(L["ADDON"] .. ' ' .. L["DISABLE"])
     end
-    if (inputText == "step") then
+    if inputText == "perf on" then
+        APRData.PerformanceLog = { summary = {}, slow = {} }
+        APR.performanceLogging = true
+        APR:PrintInfo("Performance logging enabled. /apr perf off stops capture; /reload saves APRData.PerformanceLog.")
+    elseif inputText == "perf off" then
+        APR.performanceLogging = false
+        APR:PrintInfo("Performance logging stopped. /reload saves APRData.PerformanceLog.")
+    elseif inputText == "perf" then
+        for name, summary in pairs(APRData.PerformanceLog and APRData.PerformanceLog.summary or {}) do
+            APR:PrintInfo(string.format("%s: %d calls, %.1f ms total, %.1f ms max", name,
+                summary.count, summary.totalMs, summary.maxMs))
+        end
+    elseif (inputText == "step") then
         APR:PrintInfo('step', APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil))
     elseif (inputText == "reset" or inputText == "r") then
         --Command to reset the current route

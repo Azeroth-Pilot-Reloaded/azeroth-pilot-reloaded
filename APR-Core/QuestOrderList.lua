@@ -289,14 +289,18 @@ end
 
 -- Remove all quest steps
 function APR.questOrderList:RemoveSteps(hideFrame)
+    local profileStart = APR:StartPerformanceSample()
+    QuestOrderListUtils:CancelRender(self)
+    self.currentStepIndex = nil
+    self.currentRouteKey = nil
     for _, questContainer in pairs(self.stepList) do
-        questContainer:Hide()
-        questContainer:ClearAllPoints()
+        QuestOrderListUtils:ReleaseStepFrame(questContainer)
     end
     wipe(self.stepList)
     if hideFrame ~= false then
         QuestOrderListFrame:Hide()
     end
+    APR:FinishPerformanceSample("QuestOrderListRelease", profileStart)
 end
 
 function APR.questOrderList:UpdateFrameContents()
@@ -336,14 +340,14 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     end
 
     -- Compare the current step index with the stored one
-    if currentStepIndex == self.currentStepIndex and not forceRendering then
+    if currentStepIndex == self.currentStepIndex and self.currentRouteKey == APR.ActiveRoute and not forceRendering then
         return
     end
 
-    -- Store the current step index
-    self.currentStepIndex = currentStepIndex
     -- Clean list
     self:RemoveSteps(false)
+    self.currentStepIndex = currentStepIndex
+    self.currentRouteKey = APR.ActiveRoute
     self.questID = nil
 
     QuestOrderListPanel:Show()
@@ -361,6 +365,8 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     local currentDisplayIndex = nil
     local activeRouteSteps = APR:GetRouteSteps(APR.ActiveRoute)
     local sojournerSkipActive = APR:IsSojournerSkipActive()
+    local routeKey = APR.ActiveRoute
+    local function renderRows()
     for rawIndex, step in ipairs(activeRouteSteps) do
         -- Hide step for Faction, Race, Class, Achievement
         -- Also hide sojourner-skipped campaign steps
@@ -860,24 +866,33 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
             end
             displayStepIndex = displayStepIndex + 1
         end
+        coroutine.yield()
     end
-    -- set current Step indicator
-    if currentDisplayIndex then
-        QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame, currentDisplayIndex)
     end
+    QuestOrderListUtils:StartRender(self, renderRows, function()
+        if not canRenderSteps() or APR.ActiveRoute ~= routeKey or
+            APRData[playerID][routeKey] ~= currentStepIndex then
+            self.currentStepIndex = nil
+            self:RemoveSteps()
+            return false
+        end
+        return true
+    end, function(finished)
+        QuestOrderListFrame_ScrollChild:SetHeight(math.max(1, -layout.dataHeight))
+        if finished and currentDisplayIndex then
+            QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame, currentDisplayIndex)
+        end
+    end)
 end
 
-function APR.questOrderList:DelayedUpdate()
-    if self.updateTimer then
-        self.pendingUpdate = true
-    else
-        self:AddStepFromRoute()
-        self.updateTimer = C_Timer.NewTimer(0.8, function()
-            if self.pendingUpdate then
-                self:AddStepFromRoute()
-                self.pendingUpdate = false
-            end
-            self.updateTimer = nil
-        end)
-    end
+function APR.questOrderList:DelayedUpdate(forceRendering)
+    self.pendingUpdate = self.pendingUpdate or forceRendering == true
+    if self.updateTimer then return end
+    -- Render once after a burst of quest/step changes has settled.
+    self.updateTimer = C_Timer.NewTimer(0.1, function()
+        self.updateTimer = nil
+        local force = self.pendingUpdate
+        self.pendingUpdate = false
+        self:AddStepFromRoute(force)
+    end)
 end
