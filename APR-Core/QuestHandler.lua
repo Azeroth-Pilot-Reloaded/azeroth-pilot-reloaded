@@ -1077,6 +1077,10 @@ function APR:UpdateStep()
             end)
         end
         if (step.RouteCompleted) then
+            if APR:IsTemporaryRouteActive() then
+                APR:ClearTemporaryRoute({ completed = true, preserveSessionKey = true })
+                return
+            end
             local index, currentRouteName = next(APRCustomPath[APR.PlayerID])
 
             -- Force reset heirloom to show heirloom taximap (not avalaible in exile reach)
@@ -1117,7 +1121,7 @@ function APR:UpdateStep()
         APR:Debug("APR.UpdateStep:No step found for current step:", currentStepIndex)
 
         if APR:IsTemporaryRouteActive() then
-            APR:ClearTemporaryRoute()
+            APR:ClearTemporaryRoute({ completed = true, preserveSessionKey = true })
             return
         end
 

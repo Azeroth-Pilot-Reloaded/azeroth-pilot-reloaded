@@ -1104,6 +1104,11 @@ function APR.event.functions.scenario(event, ...)
     APR:ScheduleDelveRouteRefresh(event == "SCENARIO_COMPLETED" and 0.3 or 0.1)
 
     if event == "SCENARIO_COMPLETED" then
+        local playerData = APRData and APRData[APR.PlayerID]
+        local temporaryState = playerData and playerData.TemporaryRouteState
+        if temporaryState and temporaryState.routeKey == APR.ActiveRoute then
+            temporaryState.scenarioCompleted = true
+        end
         local currentMapID = C_Map.GetBestMapForUnit('player')
         local currentScenarioEntry = APR:GetScenarioZoneInfo(currentMapID)
         local shouldTrackCurrentMap = not (currentScenarioEntry and currentScenarioEntry.type == "DELVE")
