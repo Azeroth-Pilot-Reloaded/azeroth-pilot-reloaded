@@ -92,7 +92,9 @@
         "STANDARD_TEXT_FONT",
         "REPUTATION",
         "FACTION",
-        "RANK"
+        "RANK",
+        "coroutine",
+        "PixelUtil"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {
