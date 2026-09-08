@@ -36,7 +36,7 @@ function APR:GetStep(index)
     now = now + 1
     return route[index]
 end
-dofile("APR-Core/QuestHandler.lua")
+dofile("APR-Core/features/questing/QuestHandler.lua")
 APR.UpdateQuest = noop
 APR:SkipQuestStep()
 assert(APRData.player.route > 2 and APRData.player.route < #route, "A long skip yields before processing the whole route")

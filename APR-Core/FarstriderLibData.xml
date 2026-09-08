@@ -12,7 +12,7 @@
   <Script file="libs\FarstriderLibData\FarstriderLibData~Util.lua"/>
   <Include file="libs\FarstriderLibData\Areas\Standard\FarstriderLibData_Areas.xml"/>
 
-  <Script file="FarstriderTaxiData.lua"/>
+  <Script file="integrations\FarstriderTaxiData.lua"/>
   <Script file="libs\FarstriderLibData\FarstriderLibData~Connections.lua"/>
   <Script file="libs\FarstriderLibData\FarstriderLibData~Finalizer.lua"/>
 
