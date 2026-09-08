@@ -64,7 +64,7 @@ def audit_route(root, runtime):
     assert all((root / path).is_file() for path in scripts), "A registered route file is missing"
     toc = (root / "APR.toc").read_text(encoding="utf-8-sig")
     assert "120100" in toc.splitlines()[0]
-    assert toc.index("APR-Core/WorldCoordinateConverter.lua") < toc.index("Routes/RouteList.xml")
+    assert toc.index("APR-Core/features/navigation/WorldCoordinateConverter.lua") < toc.index("Routes/RouteList.xml")
     print(f"Quest audit: {len(records)} quests; prerequisites, objectives and XML registration passed")
 
 

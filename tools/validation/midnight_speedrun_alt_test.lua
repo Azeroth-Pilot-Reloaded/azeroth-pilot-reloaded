@@ -43,8 +43,8 @@ dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/utils/RouteManager.lua")
-dofile("APR-Core/WorldCoordinateConverter.lua")
-dofile("APR-Core/Event.lua")
+dofile("APR-Core/features/navigation/WorldCoordinateConverter.lua")
+dofile("APR-Core/core/Event.lua")
 function APR:GetPlayerEffectiveLevel() return level end
 function APR:IsDelveRoute() return false end
 function APR:HasAchievement() return achievement end
@@ -233,7 +233,7 @@ for _, id in ipairs({ 93372, 93384, 93385, 93386, 93409, 93410, 93416, 93421, 93
     check(found, "Every delve reward uses a persistent minimum-level parallel group")
 end
 -- Exercise the real scenario handler with a reserved reward after a reload.
-dofile("APR-Core/QuestHandler.lua")
+dofile("APR-Core/features/questing/QuestHandler.lua")
 local scenarioStep, parentMap
 local function noop() end
 APR.settings = { profile = { enableAddon = true } }

@@ -35,13 +35,13 @@ APR-Core/FarstriderLibData.xml
 APR-Core/locales/locales.xml
 
 APR-Core/utils/SecretUtils.lua
-APR-Core/Core.lua
-APR-Core/TaxiData.lua
+APR-Core/core/Core.lua
+APR-Core/integrations/TaxiData.lua
 
 APR-Core/utils/Utils.lua
 APR-Core/utils/PlayerUtils.lua
 APR-Core/utils/ProfileUtils.lua
-APR-Core/TextStyles.lua
+APR-Core/ui/foundations/TextStyles.lua
 APR-Core/utils/TextStyleUtils.lua
 APR-Core/utils/TargetUtils.lua
 APR-Core/utils/QuestUtils.lua
@@ -70,34 +70,34 @@ APR-Core/data/models/Spells.lua
 
 APR-Core/data/zones/ScenarioEntrances.lua
 
-APR-Core/Config.lua
-APR-Core/Config_Route.lua
-APR-Core/Config_Route_Prefabs.lua
-APR-Core/WorldCoordinateConverter.lua
-APR-Core/Commands.lua
-APR-Core/ChangeLog.lua
-APR-Core/VersionCheck.lua
+APR-Core/config/Config.lua
+APR-Core/config/Config_Route.lua
+APR-Core/config/Config_Route_Prefabs.lua
+APR-Core/features/navigation/WorldCoordinateConverter.lua
+APR-Core/core/Commands.lua
+APR-Core/ui/panels/ChangeLog.lua
+APR-Core/core/VersionCheck.lua
 
-APR-Core/Event.lua
+APR-Core/core/Event.lua
 
-APR-Core/QuestHandler.lua
-APR-Core/Farstrider.lua
-APR-Core/FlightPath.lua
+APR-Core/features/questing/QuestHandler.lua
+APR-Core/integrations/Farstrider.lua
+APR-Core/features/navigation/FlightPath.lua
 
-APR-Core/Arrow.lua
-APR-Core/CurrentStepImagePreview.lua
-APR-Core/CurrentStep.lua
-APR-Core/FillersFrame.lua
-APR-Core/QuestionPopUp.lua
-APR-Core/QuestOrderList.lua
-APR-Core/Gossip.lua
-APR-Core/Party.lua
-APR-Core/Map.lua
-APR-Core/AFK.lua
-APR-Core/Heirloom.lua
-APR-Core/RouteSelection.lua
-APR-Core/Buff.lua
-APR-Core/StatusReport.lua
-APR-Core/ElvUISkin.lua
+APR-Core/features/navigation/Arrow.lua
+APR-Core/ui/route/CurrentStepImagePreview.lua
+APR-Core/ui/route/CurrentStep.lua
+APR-Core/ui/route/FillersFrame.lua
+APR-Core/ui/route/QuestionPopUp.lua
+APR-Core/ui/route/QuestOrderList.lua
+APR-Core/features/questing/Gossip.lua
+APR-Core/features/group/Party.lua
+APR-Core/features/navigation/Map.lua
+APR-Core/features/player/AFK.lua
+APR-Core/features/player/Heirloom.lua
+APR-Core/ui/route/RouteSelection.lua
+APR-Core/features/player/Buff.lua
+APR-Core/ui/panels/StatusReport.lua
+APR-Core/integrations/ElvUISkin.lua
 
 Routes/RouteList.xml

@@ -52,7 +52,7 @@ function APR:NewModule() return {} end
 local now = 0
 function debugprofilestop() return now end
 APRData = { test = { ["long-route"] = 17 }, PerformanceLog = { summary = {}, slow = {} } }
-dofile("APR-Core/Commands.lua")
+dofile("APR-Core/core/Commands.lua")
 assert(APR:StartPerformanceSample() == nil, "Profiling is disabled by default")
 APR.performanceLogging = true
 for i = 1, 200 do
@@ -108,7 +108,7 @@ APR.questOrderList = { DelayedUpdate = function(_, force)
     assert(force, "Reputation changes must refresh conditional rows")
     renders = renders + 1
 end }
-dofile("APR-Core/Event.lua")
+dofile("APR-Core/core/Event.lua")
 for _ = 1, 100 do APR.event.functions.reputation() end
 assert(#timers == 1 and totals == 0, "A reputation burst schedules a single refresh")
 timers[1]()
@@ -118,7 +118,7 @@ assert(#timers == 2, "Later reputation changes are not lost")
 print("Reputation refresh: 100 events coalesced into one route/list update")
 
 -- Banked, already-complete delve objectives must not rebuild the current step on every log event.
-dofile("APR-Core/QuestHandler.lua")
+dofile("APR-Core/features/questing/QuestHandler.lua")
 APR.QUEST_STATUS = { COMPLETE = "complete", PROGRESS = "progress" }
 APR.ActiveQuests = { [93427] = {
     status = "complete", title = "Banked reward", objectives = { { text = "Done", status = "complete" } },
