@@ -398,6 +398,8 @@ function APR:AreConditionalFiltersMet(conditions)
         (not skipForLvl or playerLevel < skipForLvl) and
         (not conditions.ClassSpec or currentSpecId == conditions.ClassSpec) and
         (not conditions.Zones or (playerMapID and tContains(conditions.Zones, playerMapID))) and
+        (not conditions.OnlyInZones or (playerMapID and tContains(conditions.OnlyInZones, playerMapID))) and
+        (not conditions.SkipInZones or not (playerMapID and tContains(conditions.SkipInZones, playerMapID))) and
         (conditions.AlliedRace == nil or self:IsAlliedRace() == conditions.AlliedRace) and
         (not conditions.Event or (conditions.Event ~= APR.EVENTS.Remix or self:IsRemixCharacter())) and
         (not conditions.InterfaceVersion or self:IsInterfaceVersion(conditions.InterfaceVersion)) and
