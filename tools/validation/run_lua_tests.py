@@ -79,3 +79,5 @@ if __name__ == "__main__":
     performance_runtime.execute((root / "tools/validation/quest_order_performance_test.lua").read_text(encoding="utf-8"))
     progression_runtime = LuaRuntime(unpack_returned_tuples=True)
     progression_runtime.execute((root / "tools/validation/step_progression_test.lua").read_text(encoding="utf-8"))
+    zone_runtime = LuaRuntime(unpack_returned_tuples=True)
+    zone_runtime.execute((root / "tools/validation/zone_conditions_test.lua").read_text(encoding="utf-8"))
