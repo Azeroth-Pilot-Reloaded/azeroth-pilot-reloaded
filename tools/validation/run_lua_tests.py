@@ -83,3 +83,5 @@ if __name__ == "__main__":
     zone_runtime.execute((root / "tools/validation/zone_conditions_test.lua").read_text(encoding="utf-8"))
     delve_level_runtime = LuaRuntime(unpack_returned_tuples=True)
     delve_level_runtime.execute((root / "tools/validation/delve_level_policy_test.lua").read_text(encoding="utf-8"))
+    silvermoon_runtime = LuaRuntime(unpack_returned_tuples=True)
+    silvermoon_runtime.execute((root / "tools/validation/silvermoon_intro_test.lua").read_text(encoding="utf-8"))
