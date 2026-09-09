@@ -374,157 +374,157 @@ function APR.settings:createBlizzOptions()
                         name = L["CURRENT_STEP"],
                         args = {
                             currentStepShow = {
-                        order = 5.1,
-                        type = "toggle",
-                        name = L["SHOW_QLIST"],
-                        desc = L["SHOW_QLIST_DESC"],
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.currentStep:RefreshCurrentStepFrameAnchor()
-                        end,
-                        disabled = function()
-                            return not self.profile.enableAddon
-                        end,
-                    },
-                    forceHideUiInPartyRaid = {
-                        order = 5.105,
-                        type = "toggle",
-                        name = L["FORCE_HIDE_UI_INSTANCE"],
-                        desc = L["FORCE_HIDE_UI_INSTANCE_DESC"],
-                        width = "full",
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR:RefreshInstanceUIVisibility()
-                        end,
-                        disabled = function()
-                            return not self.profile.enableAddon
-                        end,
-                    },
-                    currentStepAttachFrameToQuestLog = {
-                        order = 5.11,
-                        type = "toggle",
-                        name = L["QLIST_ATTACH_QUESTLOG"],
-                        desc = L["QLIST_ATTACH_QUESTLOG_DESC"],
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.currentStep:RefreshCurrentStepFrameAnchor()
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow
-                        end,
-                    },
-                    currentStepLock = {
-                        order = 5.12,
-                        type = "toggle",
-                        name = L["LOCK_WINDOW"],
-                        desc = L["LOCK_QLIST_WINDOW_DESC"],
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.currentStep:RefreshCurrentStepFrameAnchor()
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow or self.profile
-                                .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
-                        end,
-                    },
-                    currentStepbackgroundColorAlpha = {
-                        order = 5.2,
-                        type = "color",
-                        name = L["BACKGROUND_COLOR_ALPHA"],
-                        width = optionsWidth,
-                        hasAlpha = true,
-                        get = function()
-                            return unpack(self.profile.currentStepbackgroundColorAlpha)
-                        end,
-                        set = function(info, r, g, b, a)
-                            SetProfileOption(info, { r, g, b, a })
-                            APR.currentStep:UpdateBackgroundColorAlpha()
-                            APR.Buff:UpdateBackgroundColorAlpha()
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow or not self.profile.enableAddon or
-                                self.profile.currentStepAttachFrameToQuestLog
-                        end,
-                    },
-                    currentStepProgressBarColor = {
-                        order = 5.25,
-                        type = "color",
-                        name = L["PROGRESS_BAR_COLOR"],
-                        width = optionsWidth,
-                        hasAlpha = true,
-                        get = function()
-                            return unpack(self.profile.currentStepProgressBarColor)
-                        end,
-                        set = function(info, r, g, b, a)
-                            SetProfileOption(info, { r, g, b, a })
-                            APR.currentStep:UpdateProgressBarColor()
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow or not self.profile.enableAddon
-                        end,
-                    },
-                    currentStepQuestButtonPositionRight = {
-                        order = 5.3,
-                        type = "select",
-                        name = L["CURRENT_STEP_QUEST_BUTTON_POSITION"],
-                        desc = L["CURRENT_STEP_QUEST_BUTTON_POSITION_DESC"],
-                        width = optionsWidth,
-                        values = {
-                            [false] = L["LEFT"],
-                            [true] = L["RIGHT"]
-                        },
-                        get = function(info)
-                            return GetProfileOption(info)
-                        end,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            -- Force Rerender
-                            APR:UpdateMapId()
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow
-                        end,
-                    },
-                    currentStepScale = {
-                        order = 5.4,
-                        type = "range",
-                        name = L["QLIST_SCALE"],
-                        desc = L["QLIST_SCALE_DESC"],
-                        width = "full",
-                        min = 0.01,
-                        max = 2,
-                        step = 0.05,
-                        isPercent = true,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.currentStep:UpdateFrameScale()
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow or self.profile
-                                .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
-                        end,
-                    },
-                    resetCurrentStepPosition = {
-                        name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
-                        order = 5.5,
-                        type = 'execute',
-                        width = "full",
-                        func = function()
-                            APR.currentStep:ResetPosition()
-                        end,
-                        disabled = function()
-                            return not self.profile.currentStepShow or self.profile
-                                .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
-                        end,
-                    },
+                                order = 5.1,
+                                type = "toggle",
+                                name = L["SHOW_QLIST"],
+                                desc = L["SHOW_QLIST_DESC"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.currentStep:RefreshCurrentStepFrameAnchor()
+                                end,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            forceHideUiInPartyRaid = {
+                                order = 5.105,
+                                type = "toggle",
+                                name = L["FORCE_HIDE_UI_INSTANCE"],
+                                desc = L["FORCE_HIDE_UI_INSTANCE_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR:RefreshInstanceUIVisibility()
+                                end,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            currentStepAttachFrameToQuestLog = {
+                                order = 5.11,
+                                type = "toggle",
+                                name = L["QLIST_ATTACH_QUESTLOG"],
+                                desc = L["QLIST_ATTACH_QUESTLOG_DESC"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.currentStep:RefreshCurrentStepFrameAnchor()
+                                end,
+                                disabled = function()
+                                    return not self.profile.currentStepShow
+                                end,
+                            },
+                            currentStepLock = {
+                                order = 5.12,
+                                type = "toggle",
+                                name = L["LOCK_WINDOW"],
+                                desc = L["LOCK_QLIST_WINDOW_DESC"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.currentStep:RefreshCurrentStepFrameAnchor()
+                                end,
+                                disabled = function()
+                                    return not self.profile.currentStepShow or self.profile
+                                        .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
+                                end,
+                            },
+                            currentStepbackgroundColorAlpha = {
+                                order = 5.2,
+                                type = "color",
+                                name = L["BACKGROUND_COLOR_ALPHA"],
+                                width = optionsWidth,
+                                hasAlpha = true,
+                                get = function()
+                                    return unpack(self.profile.currentStepbackgroundColorAlpha)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.currentStep:UpdateBackgroundColorAlpha()
+                                    APR.Buff:UpdateBackgroundColorAlpha()
+                                end,
+                                disabled = function()
+                                    return not self.profile.currentStepShow or not self.profile.enableAddon or
+                                        self.profile.currentStepAttachFrameToQuestLog
+                                end,
+                            },
+                            currentStepProgressBarColor = {
+                                order = 5.25,
+                                type = "color",
+                                name = L["PROGRESS_BAR_COLOR"],
+                                width = optionsWidth,
+                                hasAlpha = true,
+                                get = function()
+                                    return unpack(self.profile.currentStepProgressBarColor)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.currentStep:UpdateProgressBarColor()
+                                end,
+                                disabled = function()
+                                    return not self.profile.currentStepShow or not self.profile.enableAddon
+                                end,
+                            },
+                            currentStepQuestButtonPositionRight = {
+                                order = 5.3,
+                                type = "select",
+                                name = L["CURRENT_STEP_QUEST_BUTTON_POSITION"],
+                                desc = L["CURRENT_STEP_QUEST_BUTTON_POSITION_DESC"],
+                                width = optionsWidth,
+                                values = {
+                                    [false] = L["LEFT"],
+                                    [true] = L["RIGHT"]
+                                },
+                                get = function(info)
+                                    return GetProfileOption(info)
+                                end,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    -- Force Rerender
+                                    APR:UpdateMapId()
+                                end,
+                                disabled = function()
+                                    return not self.profile.currentStepShow
+                                end,
+                            },
+                            currentStepScale = {
+                                order = 5.4,
+                                type = "range",
+                                name = L["QLIST_SCALE"],
+                                desc = L["QLIST_SCALE_DESC"],
+                                width = "full",
+                                min = 0.01,
+                                max = 2,
+                                step = 0.05,
+                                isPercent = true,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.currentStep:UpdateFrameScale()
+                                end,
+                                disabled = function()
+                                    return not self.profile.currentStepShow or self.profile
+                                        .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
+                                end,
+                            },
+                            resetCurrentStepPosition = {
+                                name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
+                                order = 5.5,
+                                type = 'execute',
+                                width = "full",
+                                func = function()
+                                    APR.currentStep:ResetPosition()
+                                end,
+                                disabled = function()
+                                    return not self.profile.currentStepShow or self.profile
+                                        .currentStepAttachFrameToQuestLog or not self.profile.enableAddon
+                                end,
+                            },
                         },
                     },
                     subgroup_FillersFrame = {
@@ -534,65 +534,65 @@ function APR.settings:createBlizzOptions()
                         name = L["FILLERS_FRAME"],
                         args = {
                             fillersFrameSnapToCurrentStep = {
-                        order = 5.61,
-                        type = "toggle",
-                        name = L["SNAP_TO_CURRENT_STEP"],
-                        desc = L["FILLERS_SNAP_TO_CURRENT_STEP_DESC"],
-                        width = "full",
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
-                                APR.fillersFrame:RefreshFillersFrame()
-                            end
-                        end,
-                    },
-                    fillersFrameShowHeader = {
-                        order = 5.62,
-                        type = "toggle",
-                        name = L["FILLERS_SHOW_HEADER"],
-                        width = "full",
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
-                                APR.fillersFrame:RefreshFillersFrame()
-                            end
-                        end,
-                        disabled = function()
-                            return not self.profile.fillersFrameSnapToCurrentStep
-                        end,
-                    },
-                    fillersFrameSnapGap = {
-                        order = 5.63,
-                        type = "range",
-                        name = L["SNAP_GAP"],
-                        min = 0,
-                        max = 50,
-                        step = 1,
-                        width = "full",
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
-                                APR.fillersFrame:RefreshFillersFrame()
-                            end
-                        end,
-                        disabled = function()
-                            return not self.profile.fillersFrameSnapToCurrentStep
-                        end,
-                    },
-                    fillersFrameResetPosition = {
-                        order = 5.64,
-                        type = "execute",
-                        name = L["RESET_POSITION"],
-                        width = "full",
-                        func = function()
-                            if APR.fillersFrame and APR.fillersFrame.ResetPosition then
-                                APR.fillersFrame:ResetPosition()
-                            end
-                        end,
-                    },
+                                order = 5.61,
+                                type = "toggle",
+                                name = L["SNAP_TO_CURRENT_STEP"],
+                                desc = L["FILLERS_SNAP_TO_CURRENT_STEP_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+                                        APR.fillersFrame:RefreshFillersFrame()
+                                    end
+                                end,
+                            },
+                            fillersFrameShowHeader = {
+                                order = 5.62,
+                                type = "toggle",
+                                name = L["FILLERS_SHOW_HEADER"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+                                        APR.fillersFrame:RefreshFillersFrame()
+                                    end
+                                end,
+                                disabled = function()
+                                    return not self.profile.fillersFrameSnapToCurrentStep
+                                end,
+                            },
+                            fillersFrameSnapGap = {
+                                order = 5.63,
+                                type = "range",
+                                name = L["SNAP_GAP"],
+                                min = 0,
+                                max = 50,
+                                step = 1,
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+                                        APR.fillersFrame:RefreshFillersFrame()
+                                    end
+                                end,
+                                disabled = function()
+                                    return not self.profile.fillersFrameSnapToCurrentStep
+                                end,
+                            },
+                            fillersFrameResetPosition = {
+                                order = 5.64,
+                                type = "execute",
+                                name = L["RESET_POSITION"],
+                                width = "full",
+                                func = function()
+                                    if APR.fillersFrame and APR.fillersFrame.ResetPosition then
+                                        APR.fillersFrame:ResetPosition()
+                                    end
+                                end,
+                            },
                         },
                     },
                     currentStepTextAppearance = TextStyleUtils:CreateAppearanceOptions(
@@ -684,98 +684,98 @@ function APR.settings:createBlizzOptions()
                         name = L["QUEST_ORDER_LIST"],
                         args = {
                             showQuestOrderList = {
-                        order = 6.1,
-                        type = "toggle",
-                        name = L["SHOW_QORDERLIST"],
-                        desc = L["SHOW_QORDERLIST_DESC"],
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.questOrderList:RefreshFrameAnchor()
-                        end,
-                        disabled = function()
-                            return not self.profile.enableAddon
-                        end,
-                    },
-                    questOrderListLock = {
-                        order = 6.2,
-                        type = "toggle",
-                        name = L["LOCK_WINDOW"],
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.questOrderList:RefreshFrameAnchor()
-                        end,
-                        disabled = function()
-                            return not self.profile.showQuestOrderList
-                        end,
-                    },
-                    questOrderListSnapToCurrentStep = {
-                        order = 6.25,
-                        type = "toggle",
-                        name = L["SNAP_TO_CURRENT_STEP"],
-                        desc = L["QORDERLIST_SNAP_TO_CURRENT_STEP_DESC"],
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.questOrderList:RefreshFrameAnchor()
-                        end,
-                        disabled = function()
-                            return not self.profile.showQuestOrderList or not self.profile.enableAddon
-                        end,
-                    },
-                    questOrderListScale = {
-                        order = 6.3,
-                        type = "range",
-                        name = L["QORDERLIST_SCALE"],
-                        desc = L["QORDERLIST_SCALE_DESC"],
-                        width = "full",
-                        min = 0.01,
-                        max = 2,
-                        step = 0.05,
-                        isPercent = true,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.questOrderList:UpdateFrameScale()
-                        end,
-                        disabled = function()
-                            return not self.profile.showQuestOrderList or not self.profile.enableAddon
-                        end,
-                    },
-                    questOrderListbackgroundColorAlpha = {
-                        order = 6.4,
-                        type = "color",
-                        name = L["BACKGROUND_COLOR_ALPHA"],
-                        width = optionsWidth,
-                        hasAlpha = true,
-                        get = function()
-                            return unpack(self.profile.questOrderListbackgroundColorAlpha)
-                        end,
-                        set = function(info, r, g, b, a)
-                            SetProfileOption(info, { r, g, b, a })
-                            APR.questOrderList:UpdateBackgroundColorAlpha()
-                        end,
-                        disabled = function()
-                            return not self.profile.showQuestOrderList or not self.profile.enableAddon
-                        end,
-                    },
-                    resetCurrentStepPosition = {
-                        name = L['RESET_QORDERLIST'],
-                        order = 6.5,
-                        type = 'execute',
-                        width = optionsWidth,
-                        func = function()
-                            self.profile.questOrderListbackgroundColorAlpha = APR.Color.defaultLightBackdrop
-                            APR.questOrderList:ResetPosition()
-                        end,
-                        disabled = function()
-                            return not self.profile.showQuestOrderList or not self.profile.enableAddon
-                        end,
-                    },
+                                order = 6.1,
+                                type = "toggle",
+                                name = L["SHOW_QORDERLIST"],
+                                desc = L["SHOW_QORDERLIST_DESC"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.questOrderList:RefreshFrameAnchor()
+                                end,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            questOrderListLock = {
+                                order = 6.2,
+                                type = "toggle",
+                                name = L["LOCK_WINDOW"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.questOrderList:RefreshFrameAnchor()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showQuestOrderList
+                                end,
+                            },
+                            questOrderListSnapToCurrentStep = {
+                                order = 6.25,
+                                type = "toggle",
+                                name = L["SNAP_TO_CURRENT_STEP"],
+                                desc = L["QORDERLIST_SNAP_TO_CURRENT_STEP_DESC"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.questOrderList:RefreshFrameAnchor()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showQuestOrderList or not self.profile.enableAddon
+                                end,
+                            },
+                            questOrderListScale = {
+                                order = 6.3,
+                                type = "range",
+                                name = L["QORDERLIST_SCALE"],
+                                desc = L["QORDERLIST_SCALE_DESC"],
+                                width = "full",
+                                min = 0.01,
+                                max = 2,
+                                step = 0.05,
+                                isPercent = true,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.questOrderList:UpdateFrameScale()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showQuestOrderList or not self.profile.enableAddon
+                                end,
+                            },
+                            questOrderListbackgroundColorAlpha = {
+                                order = 6.4,
+                                type = "color",
+                                name = L["BACKGROUND_COLOR_ALPHA"],
+                                width = optionsWidth,
+                                hasAlpha = true,
+                                get = function()
+                                    return unpack(self.profile.questOrderListbackgroundColorAlpha)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.questOrderList:UpdateBackgroundColorAlpha()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showQuestOrderList or not self.profile.enableAddon
+                                end,
+                            },
+                            resetCurrentStepPosition = {
+                                name = L['RESET_QORDERLIST'],
+                                order = 6.5,
+                                type = 'execute',
+                                width = optionsWidth,
+                                func = function()
+                                    self.profile.questOrderListbackgroundColorAlpha = APR.Color.defaultLightBackdrop
+                                    APR.questOrderList:ResetPosition()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showQuestOrderList or not self.profile.enableAddon
+                                end,
+                            },
                         },
                     },
                     questOrderListTextAppearance = TextStyleUtils:CreateAppearanceOptions(
@@ -800,94 +800,94 @@ function APR.settings:createBlizzOptions()
                         name = L["ARROW"],
                         args = {
                             showArrow = {
-                        order = 7.1,
-                        type = "toggle",
-                        name = L["SHOW_ARROW"],
-                        desc = L["SHOW_ARROW_DESC"],
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            if value then APR.Arrow.Active = true end
-                        end,
-                        disabled = function()
-                            return not self.profile.enableAddon
-                        end,
-                    },
-                    lockArrow = {
-                        order = 7.11,
-                        type = "toggle",
-                        name = L["LOCK_ARROW_WINDOW"],
-                        desc = L["LOCK_ARROW_WINDOW_DESC"],
-                        width = optionsWidth,
-                        get = GetProfileOption,
-                        set = SetProfileOption,
-                        disabled = function()
-                            return not self.profile.showArrow
-                        end,
-                    },
-                    arrowScale = {
-                        order = 7.2,
-                        type = "range",
-                        name = L["ARROW_SCALE"],
-                        desc = L["ARROW_SCALE_DESC"],
-                        width = optionsWidth,
-                        min = 0.01,
-                        max = 3,
-                        step = 0.05,
-                        isPercent = true,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.ArrowFrame:SetScale(value)
-                        end,
-                        disabled = function()
-                            return not self.profile.showArrow
-                        end,
-                    },
-                    arrowFPS = {
-                        order = 7.21,
-                        type = "range",
-                        name = L["UPDATE_ARROW"] .. ' X ' .. L["FPS"],
-                        width = optionsWidth,
-                        min = 1,
-                        max = 100,
-                        step = 1,
-                        isPercent = false,
-                        get = GetProfileOption,
-                        set = SetProfileOption,
-                        disabled = function()
-                            return not self.profile.showArrow
-                        end,
-                    },
-                    blank_arrowReset = {
-                        order = 7.3,
-                        type = "description",
-                        name = "",
-                        width = "full",
-                    },
-                    arrowReset = {
-                        order = 7.4,
-                        name = L["RESET_ARROW"],
-                        type = "execute",
-                        width = "full",
-                        func = function()
-                            self.profile.showArrow = true
-                            self.profile.lockArrow = false
-                            self.profile.arrowScale = 1
-                            self.profile.arrowFPS = 2
-                            self.profile.arrowleft = _G.GetScreenWidth() / 2.05
-                            self.profile.arrowtop = -(_G.GetScreenHeight() / 1.5)
-                            APR.ArrowFrame:SetScale(self.profile.arrowScale)
-                            APR.ArrowFrameM:ClearAllPoints()
-                            APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT",
-                                self.profile.arrowleft,
-                                self.profile.arrowtop)
-                        end,
-                        disabled = function()
-                            return not self.profile.enableAddon
-                        end,
-                    },
+                                order = 7.1,
+                                type = "toggle",
+                                name = L["SHOW_ARROW"],
+                                desc = L["SHOW_ARROW_DESC"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    if value then APR.Arrow.Active = true end
+                                end,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            lockArrow = {
+                                order = 7.11,
+                                type = "toggle",
+                                name = L["LOCK_ARROW_WINDOW"],
+                                desc = L["LOCK_ARROW_WINDOW_DESC"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                                disabled = function()
+                                    return not self.profile.showArrow
+                                end,
+                            },
+                            arrowScale = {
+                                order = 7.2,
+                                type = "range",
+                                name = L["ARROW_SCALE"],
+                                desc = L["ARROW_SCALE_DESC"],
+                                width = optionsWidth,
+                                min = 0.01,
+                                max = 3,
+                                step = 0.05,
+                                isPercent = true,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.ArrowFrame:SetScale(value)
+                                end,
+                                disabled = function()
+                                    return not self.profile.showArrow
+                                end,
+                            },
+                            arrowFPS = {
+                                order = 7.21,
+                                type = "range",
+                                name = L["UPDATE_ARROW"] .. ' X ' .. L["FPS"],
+                                width = optionsWidth,
+                                min = 1,
+                                max = 100,
+                                step = 1,
+                                isPercent = false,
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                                disabled = function()
+                                    return not self.profile.showArrow
+                                end,
+                            },
+                            blank_arrowReset = {
+                                order = 7.3,
+                                type = "description",
+                                name = "",
+                                width = "full",
+                            },
+                            arrowReset = {
+                                order = 7.4,
+                                name = L["RESET_ARROW"],
+                                type = "execute",
+                                width = "full",
+                                func = function()
+                                    self.profile.showArrow = true
+                                    self.profile.lockArrow = false
+                                    self.profile.arrowScale = 1
+                                    self.profile.arrowFPS = 2
+                                    self.profile.arrowleft = _G.GetScreenWidth() / 2.05
+                                    self.profile.arrowtop = -(_G.GetScreenHeight() / 1.5)
+                                    APR.ArrowFrame:SetScale(self.profile.arrowScale)
+                                    APR.ArrowFrameM:ClearAllPoints()
+                                    APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT",
+                                        self.profile.arrowleft,
+                                        self.profile.arrowtop)
+                                end,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
                         },
                     },
                     arrowTextAppearance = TextStyleUtils:CreateAppearanceOptions(
@@ -1175,7 +1175,7 @@ function APR.settings:createBlizzOptions()
                                 type = "range",
                                 name = L["SHOW_STEPS_MAP_COUNT"],
                                 min = 0,
-                                max = 25,
+                                max = 1000,
                                 step = 1,
                                 get = GetProfileOption,
                                 set = function(info, value)
@@ -1285,7 +1285,7 @@ function APR.settings:createBlizzOptions()
                                 type = "range",
                                 name = L["SHOW_STEPS_MAP_COUNT"],
                                 min = 0,
-                                max = 25,
+                                max = 1000,
                                 step = 1,
                                 get = GetProfileOption,
                                 set = function(info, value)
@@ -1543,102 +1543,102 @@ function APR.settings:createBlizzOptions()
                         name = L["AFK"],
                         args = {
                             afkSnapToCurrentStep = {
-                        order = 10.51,
-                        type = "toggle",
-                        name = L["SNAP_TO_CURRENT_STEP"],
-                        desc = L["AFK_SNAP_TO_CURRENT_STEP_DESC"],
-                        width = "full",
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            local wasSnapped = self.profile.afkSnapToCurrentStep
-                            SetProfileOption(info, value)
-                            if value and not wasSnapped and self.profile.afkHeight == 30 then
-                                self.profile.afkHeight = (APR.AFK and APR.AFK.defaultSnapHeight) or 20
-                            end
-                            APR.AFK:RefreshFrameAnchor()
-                        end,
-                    },
-
-                    afkBarColor = {
-                        order = 10.52,
-                        type = "color",
-                        name = L["AFK_BAR_COLOR"],
-                        hasAlpha = true,
-                        width = optionsWidth,
-                        get = function()
-                            return unpack(self.profile.afkBarColor)
-                        end,
-                        set = function(info, r, g, b, a)
-                            SetProfileOption(info, { r, g, b, a })
-                            APR.AFK:UpdateBarColor()
-                        end,
-                    },
-                    afkFakeTimer = {
-                        order = 10.525,
-                        type = "execute",
-                        name = function()
-                            return APR.AFK and APR.AFK.fakeTimerActive and L["AFK_TEST_TIMER_STOP"] or
-                                L["AFK_TEST_TIMER_START"]
-                        end,
-                        width = optionsWidth,
-                        func = function()
-                            APR.AFK:ToggleFakeTimer()
-                        end,
-                        disabled = function()
-                            return not self.profile.enableAddon
-                        end,
-                    },
-                    afkSize = {
-                        order = 10.53,
-                        type = "group",
-                        inline = true,
-                        name = "",
-                        args = {
-                            afkWidth = {
-                                order = 10.531,
-                                type = "range",
-                                name = "AFK width",
-                                min = 150,
-                                max = 600,
-                                step = 5,
-                                width = optionsWidth,
+                                order = 10.51,
+                                type = "toggle",
+                                name = L["SNAP_TO_CURRENT_STEP"],
+                                desc = L["AFK_SNAP_TO_CURRENT_STEP_DESC"],
+                                width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
+                                    local wasSnapped = self.profile.afkSnapToCurrentStep
                                     SetProfileOption(info, value)
+                                    if value and not wasSnapped and self.profile.afkHeight == 30 then
+                                        self.profile.afkHeight = (APR.AFK and APR.AFK.defaultSnapHeight) or 20
+                                    end
                                     APR.AFK:RefreshFrameAnchor()
+                                end,
+                            },
+
+                            afkBarColor = {
+                                order = 10.52,
+                                type = "color",
+                                name = L["AFK_BAR_COLOR"],
+                                hasAlpha = true,
+                                width = optionsWidth,
+                                get = function()
+                                    return unpack(self.profile.afkBarColor)
+                                end,
+                                set = function(info, r, g, b, a)
+                                    SetProfileOption(info, { r, g, b, a })
+                                    APR.AFK:UpdateBarColor()
+                                end,
+                            },
+                            afkFakeTimer = {
+                                order = 10.525,
+                                type = "execute",
+                                name = function()
+                                    return APR.AFK and APR.AFK.fakeTimerActive and L["AFK_TEST_TIMER_STOP"] or
+                                        L["AFK_TEST_TIMER_START"]
+                                end,
+                                width = optionsWidth,
+                                func = function()
+                                    APR.AFK:ToggleFakeTimer()
+                                end,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            afkSize = {
+                                order = 10.53,
+                                type = "group",
+                                inline = true,
+                                name = "",
+                                args = {
+                                    afkWidth = {
+                                        order = 10.531,
+                                        type = "range",
+                                        name = "AFK width",
+                                        min = 150,
+                                        max = 600,
+                                        step = 5,
+                                        width = optionsWidth,
+                                        get = GetProfileOption,
+                                        set = function(info, value)
+                                            SetProfileOption(info, value)
+                                            APR.AFK:RefreshFrameAnchor()
+                                        end,
+                                        disabled = function()
+                                            return self.profile.afkSnapToCurrentStep
+                                        end,
+                                    },
+                                    afkHeight = {
+                                        order = 10.532,
+                                        type = "range",
+                                        name = "AFK height",
+                                        min = 10,
+                                        max = 60,
+                                        step = 1,
+                                        width = optionsWidth,
+                                        get = GetProfileOption,
+                                        set = function(info, value)
+                                            SetProfileOption(info, value)
+                                            APR.AFK:RefreshFrameAnchor()
+                                        end,
+                                    },
+                                }
+                            },
+                            afkResetPosition = {
+                                order = 10.55,
+                                type = "execute",
+                                name = L["RESET_POSITION"],
+                                width = "full",
+                                func = function()
+                                    APR.AFK:ResetPosition()
                                 end,
                                 disabled = function()
                                     return self.profile.afkSnapToCurrentStep
                                 end,
                             },
-                            afkHeight = {
-                                order = 10.532,
-                                type = "range",
-                                name = "AFK height",
-                                min = 10,
-                                max = 60,
-                                step = 1,
-                                width = optionsWidth,
-                                get = GetProfileOption,
-                                set = function(info, value)
-                                    SetProfileOption(info, value)
-                                    APR.AFK:RefreshFrameAnchor()
-                                end,
-                            },
-                        }
-                    },
-                    afkResetPosition = {
-                        order = 10.55,
-                        type = "execute",
-                        name = L["RESET_POSITION"],
-                        width = "full",
-                        func = function()
-                            APR.AFK:ResetPosition()
-                        end,
-                        disabled = function()
-                            return self.profile.afkSnapToCurrentStep
-                        end,
-                    },
                         },
                     },
                     afkTextAppearance = TextStyleUtils:CreateAppearanceOptions(
@@ -1658,61 +1658,61 @@ function APR.settings:createBlizzOptions()
                         name = L["GROUP"],
                         args = {
                             autoShareQuestWithFriend = {
-                        order = 11.1,
-                        type = "toggle",
-                        name = L["SHOW_GROUP_SHAREWITHFRIEND"],
-                        desc = L["SHOW_GROUP_SHAREWITHFRIEND_DESC"],
-                        width = "full",
-                        get = GetProfileOption,
-                        set = SetProfileOption,
-                    },
-                    showGroup = {
-                        order = 11.2,
-                        type = "toggle",
-                        name = L["SHOW_GROUP_PROGRESS"],
-                        desc = L["SHOW_GROUP_PROGRESS_DESC"],
-                        width = "full",
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.party:RefreshPartyFrameAnchor()
-                            APR.party:SendGroupMessage()
-                        end,
-                        disabled = function()
-                            return not self.profile.enableAddon
-                        end,
-                    },
-                    groupScale = {
-                        order = 11.3,
-                        type = "range",
-                        name = L["GROUP_SCALE"],
-                        desc = L["GROUP_SCALE_DESC"],
-                        width = "full",
-                        min = 0.01,
-                        max = 1,
-                        step = 0.05,
-                        isPercent = true,
-                        get = GetProfileOption,
-                        set = function(info, value)
-                            SetProfileOption(info, value)
-                            APR.party:UpdateFrameScale()
-                        end,
-                        disabled = function()
-                            return not self.profile.showGroup
-                        end,
-                    },
-                    resetPartyPosition = {
-                        name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
-                        order = 11.4,
-                        type = 'execute',
-                        width = "full",
-                        func = function()
-                            APR.party:ResetPosition()
-                        end,
-                        disabled = function()
-                            return not self.profile.showGroup or not self.profile.enableAddon
-                        end,
-                    },
+                                order = 11.1,
+                                type = "toggle",
+                                name = L["SHOW_GROUP_SHAREWITHFRIEND"],
+                                desc = L["SHOW_GROUP_SHAREWITHFRIEND_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = SetProfileOption,
+                            },
+                            showGroup = {
+                                order = 11.2,
+                                type = "toggle",
+                                name = L["SHOW_GROUP_PROGRESS"],
+                                desc = L["SHOW_GROUP_PROGRESS_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.party:RefreshPartyFrameAnchor()
+                                    APR.party:SendGroupMessage()
+                                end,
+                                disabled = function()
+                                    return not self.profile.enableAddon
+                                end,
+                            },
+                            groupScale = {
+                                order = 11.3,
+                                type = "range",
+                                name = L["GROUP_SCALE"],
+                                desc = L["GROUP_SCALE_DESC"],
+                                width = "full",
+                                min = 0.01,
+                                max = 1,
+                                step = 0.05,
+                                isPercent = true,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.party:UpdateFrameScale()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showGroup
+                                end,
+                            },
+                            resetPartyPosition = {
+                                name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
+                                order = 11.4,
+                                type = 'execute',
+                                width = "full",
+                                func = function()
+                                    APR.party:ResetPosition()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showGroup or not self.profile.enableAddon
+                                end,
+                            },
                         },
                     },
                     partyTextAppearance = TextStyleUtils:CreateAppearanceOptions(
