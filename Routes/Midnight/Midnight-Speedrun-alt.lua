@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
-    label = L["Midnight - Speedrun"] .. " (Alt 80-90)",
+    label = L["Midnight - Speedrun - Alt"],
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Leveling,
     prefab = {
