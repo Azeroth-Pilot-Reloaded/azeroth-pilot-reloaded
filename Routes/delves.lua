@@ -1001,7 +1001,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 _index = 48,
             },
         }),
-        DelveScenarioBlock(3298, 4, "Ecrasement caustique", {
+        DelveScenarioBlock(3298, 4, "Caustic Crush", {
             {
                 Scenario = { criteriaID = 105376, criteriaIndex = 1, questID = 1, scenarioID = 3298, stepID = 16608 },
                 Coord = { x = -4401.6, y = 11107.5 },
@@ -1921,7 +1921,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 _index = 144,
             },
         }),
-        DelveScenarioBlock(3514, 4, "Croissance oeuphorique", {}),
+        DelveScenarioBlock(3514, 4, "Euphoric Growth", {}),
     },
 })
 

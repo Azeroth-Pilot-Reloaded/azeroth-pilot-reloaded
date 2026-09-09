@@ -33,10 +33,11 @@ use a reentrancy guard and iterative batches (25 passes or 3 ms between passes),
 preventing stack overflow when many steps are already complete. A single pass
 cannot be interrupted. Client testing is still needed for scenario transitions.
 
-The default runner also checks the Midnight route against its authored quest snapshot.
-That snapshot currently predates the additional opening WarMode step and subsequent
-route edits. The performance-only option does not change those route assertions or
-their reference data.
+The default runner always checks the Midnight route registration. When the optional,
+locally maintained `docs/routes/2393-Midnight-Speedrun-alt-quests.csv` snapshot is
+present, it also audits quest prerequisites and objective order against that file.
+Fresh checkouts skip only this snapshot audit. The performance-only option skips the
+route-specific checks entirely.
 
 ## In-game capture
 
