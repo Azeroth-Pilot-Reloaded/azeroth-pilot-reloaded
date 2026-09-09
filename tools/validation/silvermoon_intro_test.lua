@@ -21,7 +21,7 @@ dofile("Routes/Midnight/midnight-Speedrun/2393-Midnight-Speedrun-alt.lua")
 local route = APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"]
 local intro = route.parallelSteps[11]
 local handin = route.parallelSteps[12]
-assert(#route.parallelSteps == 12 and #intro.steps == 38)
+assert(#route.parallelSteps == 12 and #intro.steps == 36)
 assert(APR:AreConditionalFiltersMet(nil))
 assert(not APR:AreConditionalFiltersMet({ AnyOf = {} }))
 assert(not APR:AreConditionalFiltersMet(intro.conditions), "A fresh skip character does not take the normal branch")

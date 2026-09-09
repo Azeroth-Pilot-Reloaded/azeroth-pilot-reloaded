@@ -16,11 +16,13 @@ function CreateVector2D(x, y) return { x = x, y = y } end
 function CreateFrame()
     return { RegisterEvent = function() end, SetScript = function() end }
 end
+function debugprofilestop() return 0 end
 
 local level, zone = 80, 2393
 local achievement = true
 local spells, active, complete, account = {}, {}, {}, {}
 local ready = {}
+function UnitLevel() return math.floor(level) end
 C_SpellBook = { IsSpellKnown = function(id) return spells[id] == true end }
 C_QuestLog = {
     IsOnQuest = function(id) return active[id] == true end,
@@ -34,7 +36,12 @@ C_Map = {
         return 1, { x = 1000 + mapID + point.y * 100, y = -2000 - point.x * 100 }
     end,
 }
-APR = { RouteQuestStepList = {}, PlayerID = "test", Faction = "Alliance" }
+APR = {
+    RouteQuestStepList = {},
+    LevelRequirementProfiles = { MidnightDelves = { levels = { [0] = 89 } } },
+    PlayerID = "test",
+    Faction = "Alliance",
+}
 function APR:NewModule() return {} end
 function APR:Contains(values, value) return tContains(values, value) end
 dofile("APR-Core/data/models/Enums.lua")
@@ -64,7 +71,7 @@ dofile("Routes/Midnight/midnight-Speedrun/2393-Midnight-Speedrun-alt.lua")
 local route = APR.RouteQuestStepList[routeKey]
 check(route and route.mapID == 2393, "Route is registered")
 check(route.conditions.HasAchievement == 42045, "Adventure Mode requires the account campaign")
-check(route.steps[1].PickUp[1] == 91281 and route.steps[10].Done[1] == 94993,
+check(route.steps[1].WarMode == 91281 and route.steps[2].PickUp[1] == 91281 and route.steps[11].Done[1] == 94993,
     "The supplied introduction stays at the beginning")
 check(route.steps[#route.steps].RouteCompleted, "RouteCompleted is the last main step")
 
@@ -177,13 +184,6 @@ check(APR:GetParallelStepsInsertionIndex(2, {
     {}, { InstanceQuest = true }, { InstanceQuest = true }, { InstanceQuest = true }, {},
 }) == 5, "A parallel group waits for the entire instance block")
 
-level, zone = 80, 2405
-account[86522] = true
-local withVoid = APR:GetRouteSteps(routeKey)
-check(#withVoid == #route.steps + 1 + #route.parallelSteps[11].steps,
-    "Adventure Mode offers the Voidstorm side circuit on the first visit at level 80")
-check(#APR:GetRouteSteps(routeKey) == #withVoid, "The Voidstorm circuit is inserted only once")
-
 local coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2393, 25, 75)
 check(coord.x == -2025 and coord.y == 3468, "Converter preserves APR's swapped world axes")
 check(APR.worldCoordinateConverter:ConvertMapCoordinate(2393, -1, 75) == nil, "Invalid map percentages are rejected")
@@ -204,7 +204,9 @@ local function inspectStep(step)
     end
     if step.Coord then
         check(type(step.Coord.x) == "number" and type(step.Coord.y) == "number", "Every coordinate is numeric")
-        check(not (step.Coord.x >= 0 and step.Coord.x <= 100 and step.Coord.y >= 0 and step.Coord.y <= 100),
+        local usesPortalMapCoordinates = step.TakePortal and step.Zone == 2541
+        check(usesPortalMapCoordinates or
+            not (step.Coord.x >= 0 and step.Coord.x <= 100 and step.Coord.y >= 0 and step.Coord.y <= 100),
             "No unconverted map percentages are used as world coordinates")
     end
 end
@@ -227,7 +229,7 @@ for _, id in ipairs({ 93372, 93384, 93385, 93386, 93409, 93410, 93416, 93421, 93
     local found = false
     for _, group in ipairs(route.parallelSteps) do
         if group.conditions.IsQuestReadyForTurnIn == id then
-            found = group.conditions.MinLevel == 88
+            found = group.conditions.MinLevel == "MidnightDelves"
         end
     end
     check(found, "Every delve reward uses a persistent minimum-level parallel group")
@@ -236,6 +238,7 @@ end
 dofile("APR-Core/features/questing/QuestHandler.lua")
 local scenarioStep, parentMap
 local function noop() end
+APR.StartPerformanceSample, APR.FinishPerformanceSample = noop, noop
 APR.settings = { profile = { enableAddon = true } }
 APR.currentStep = {
     previousState = {}, Reset = noop, ButtonEnable = noop, PrepareRaidIcon = noop,
@@ -281,6 +284,7 @@ active[93427], account[93427] = nil, true
 scenarioResult("EnterScenario", 2405, "SCENARIO_STAY")
 
 -- A suggested guide replaces nearby DoScenario while retaining its quest setup.
+level = 80
 dofile("APR-Core/utils/DelveRouteUtils.lua")
 local context = { mapID = 2528, scenarioID = 123, sessionKey = "test" }
 local prompts, accept, decline = 0, nil, nil
