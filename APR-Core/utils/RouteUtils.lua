@@ -471,7 +471,9 @@ function APR:RefreshLevelProfileTargets()
     if (changed or remindersChanged) and self.ActiveRoute then
         self:UpdateStep()
         if changed then self.questOrderList:DelayedUpdate(true) end
+        return true
     end
+    return false
 end
 
 function APR:ResolveLevelRequirement(value)

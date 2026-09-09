@@ -812,7 +812,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                         )
                 end
             elseif step.WarMode then
-                local color = C_PvP.IsWarModeActive() and "green" or "gray"
+                local color = C_PvP.IsWarModeDesired() and "green" or "gray"
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
                     L["TURN_ON_WARMODE"],
                     color, isCurrentStep)

@@ -167,3 +167,38 @@ updates = 0
 APR:UpdateQuestAndStep()
 assert(updates == 1, "A combined refresh renders once even when objectives changed")
 print("Quest removal and combined refresh: one render with current quest data; no inline routing")
+
+-- War Mode notifications can precede the API state and need not carry true.
+local enabled, desired, refreshRendered = true, false, false
+local modeStep = { WarMode = 91281 }
+function APR:GetSettingsProfile() return { enableAddon = enabled } end
+function APR:GetStep() return modeStep end
+function APR:RefreshLevelProfileTargets() return refreshRendered end
+function APR:UpdateStep()
+    assert(desired, "Read the War Mode state after the event has settled")
+    updates = updates + 1
+end
+timers, updates = {}, 0
+APR.event.functions.warMode("PLAYER_FLAGS_CHANGED", "party1")
+assert(#timers == 0, "Other units do not trigger War Mode refreshes")
+for _ = 1, 100 do
+    APR.event.functions.warMode("WAR_MODE_STATUS_UPDATE", false)
+    APR.event.functions.warMode("PLAYER_FLAGS_CHANGED", "player")
+end
+assert(#timers == 1 and updates == 0)
+desired = true
+timers[1]()
+assert(updates == 1, "The settled state refreshes the waiting step once")
+APR.event.functions.warMode("WAR_MODE_STATUS_UPDATE")
+modeStep = { Note = "Different step" }
+timers[2]()
+assert(updates == 1, "Delayed work rereads the current step")
+modeStep, refreshRendered = { WarMode = 91281 }, true
+APR.event.functions.warMode("PLAYER_FLAGS_CHANGED", "player")
+timers[3]()
+assert(updates == 1, "A bonus refresh already rendered the step")
+refreshRendered, enabled = false, false
+APR.event.functions.warMode("WAR_MODE_STATUS_UPDATE", true)
+timers[4]()
+assert(updates == 1, "Disabling APR cancels the effect of queued work")
+print("War Mode events: delayed state, false/missing payload, unit filter, coalescing and stale-step safety passed")
