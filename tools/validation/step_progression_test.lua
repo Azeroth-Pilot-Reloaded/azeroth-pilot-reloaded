@@ -76,3 +76,27 @@ assert(not APR.stepUpdateRunning, "Errors release the reentrancy guard")
 APR.ResetMissingQuests = reset
 APR:UpdateStep()
 print("Step progression: Note skip + 1250 completed objectives; bounded batches, cancellation and error recovery passed")
+
+-- A completed reference quest must not skip a disabled War Mode instruction.
+local desired, displayed = false, 0
+C_PvP = {
+    IsWarModeDesired = function() return desired end,
+    CanToggleWarModeInArea = function() return true end,
+    ToggleWarMode = function() error("Protected War Mode toggle must never be called") end,
+    SetWarModeDesired = function() error("Protected War Mode setter must never be called") end,
+}
+APR.currentStep.AddQuestSteps = function() displayed = displayed + 1 end
+route[1] = { WarMode = 1 }
+APRData.player.route = 1
+APR:UpdateStep()
+assert(APRData.player.route == 1 and displayed == 1,
+    "Completed quest and out-of-route location still show the disabled War Mode step")
+for _ = 1, 100 do APR:UpdateStep() end
+drain()
+assert(APRData.player.route == 1, "Repeated refreshes wait for manual activation even in an allowed area")
+desired = true
+APR:UpdateStep()
+drain()
+assert(APRData.player.route == #route,
+    "Enabling War Mode completes the instruction without toggling it off")
+print("War Mode step: completed quest ignored, no protected calls, manual activation advances")

@@ -56,7 +56,7 @@ local events = {
     xpUpdate = "PLAYER_XP_UPDATE",
     updateQuest = { "QUEST_LOG_UPDATE", "UNIT_QUEST_LOG_CHANGED" },
     vehicle = "UNIT_ENTERED_VEHICLE",
-    warMode = "WAR_MODE_STATUS_UPDATE",
+    warMode = { "WAR_MODE_STATUS_UPDATE", "PLAYER_FLAGS_CHANGED" },
     zone = { "ZONE_CHANGED", "ZONE_CHANGED_INDOORS", "ZONE_CHANGED_NEW_AREA", "PLAYER_ENTERING_WORLD", "WAYPOINT_UPDATE" },
 }
 
@@ -67,6 +67,7 @@ local events = {
 local autoAccept, autoAcceptRoute, step = nil, nil, nil
 
 local pendingQuestUpdateTimer
+local pendingWarModeTimer
 local questShareQueue = {}
 local questShareRetries = {}
 local QUEST_SHARE_MAX_RETRIES = 10
@@ -147,6 +148,10 @@ end
 
 -- Cleanup function to properly unregister events and clear handlers
 function APR.event:CleanupEvents()
+    if pendingWarModeTimer then
+        pendingWarModeTimer:Cancel()
+        pendingWarModeTimer = nil
+    end
     for tag, container in pairs(self.framePool) do
         if container then
             -- Unregister all events for this container
@@ -1340,11 +1345,22 @@ function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isCont
     end
 end
 
-function APR.event.functions.warMode(event, warModeEnabled)
-    APR:RefreshLevelProfileTargets()
-    if warModeEnabled and step and step.WarMode then
-        APR:UpdateStep()
-    end
+function APR.event.functions.warMode(event, unit)
+    if event == "PLAYER_FLAGS_CHANGED" and unit ~= "player" then return end
+    if pendingWarModeTimer then return end
+    -- Status notifications may precede the updated desired state. Read it next tick,
+    -- rather than treating the event payload as the step completion condition.
+    pendingWarModeTimer = C_Timer.NewTimer(0.1, function()
+        pendingWarModeTimer = nil
+        local profile = APR:GetSettingsProfile()
+        if not profile or not profile.enableAddon then return end
+        local refreshed = APR:RefreshLevelProfileTargets()
+        local data = APRData and APRData[APR.PlayerID]
+        local currentStep = data and APR.ActiveRoute and APR:GetStep(data[APR.ActiveRoute])
+        if not refreshed and currentStep and currentStep.WarMode then
+            APR:UpdateStep()
+        end
+    end)
 end
 
 function APR.event.functions.zone(event, ...)

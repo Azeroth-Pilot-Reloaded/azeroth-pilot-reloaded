@@ -779,17 +779,15 @@ local function UpdateStepOnce()
                 APR:TrackQuest(questToHighlight)
             end
         elseif (step.WarMode) then
-            if C_QuestLog.IsQuestFlaggedCompleted(step.WarMode) or C_PvP.IsWarModeActive() then
+            -- The quest ID labels the step; quest completion does not enable War Mode.
+            if C_PvP.IsWarModeDesired() then
                 APR:Debug("APR.UpdateStep:WarMode:" .. APRData[APR.PlayerID][APR.ActiveRoute])
 
                 APR:UpdateNextStep()
                 return
-            elseif APR.IsInRouteZone then
+            else
+                -- War Mode activation is protected; the player must use Blizzard's UI.
                 APR.currentStep:AddQuestSteps(step.WarMode, L["TURN_ON_WARMODE"], "WarMode")
-                if not C_PvP.IsWarModeActive() and C_PvP.CanToggleWarModeInArea() then
-                    C_PvP.ToggleWarMode()
-                    APR:UpdateStep()
-                end
             end
         elseif step.UseItem then
             local questID = step.UseItem.questID
