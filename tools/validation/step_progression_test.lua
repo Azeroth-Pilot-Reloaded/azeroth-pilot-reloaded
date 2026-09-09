@@ -15,7 +15,7 @@ local route = { { Note = "Skip me" } }
 for _ = 1, 1250 do route[#route + 1] = { QpartPart = { [1] = { 1 } } } end
 route[#route + 1] = { QpartPart = { [2] = { 1 } } }
 APR = {
-    StartPerformanceSample = noop, FinishPerformanceSample = noop,
+    StartPerformanceSample = noop, FinishPerformanceSample = noop, ShowLevelConsumableReminders = noop,
     PlayerID = "player", ActiveRoute = "route", ActiveQuests = {}, Buff = { RemoveAllBuffIcon = noop },
     settings = { profile = { enableAddon = true } },
     currentStep = { previousState = {}, ButtonEnable = noop, PrepareRaidIcon = noop, SetProgressBar = noop },

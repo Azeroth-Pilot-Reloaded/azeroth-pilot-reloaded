@@ -47,6 +47,7 @@ APR-Core/utils/TargetUtils.lua
 APR-Core/utils/QuestUtils.lua
 APR-Core/utils/InstanceUtils.lua
 APR-Core/utils/DelveRouteUtils.lua
+APR-Core/config/LevelProfiles.lua
 APR-Core/utils/RouteUtils.lua
 APR-Core/utils/RouteManager.lua
 APR-Core/utils/SojournerUtils.lua

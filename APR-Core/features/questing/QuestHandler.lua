@@ -376,6 +376,7 @@ local function UpdateStepOnce()
             end
         end
 
+        APR:ShowLevelConsumableReminders(step)
         if step.Buffs then
             APR.Buff:RemoveAllBuffIcon()
             for _, buff in pairs(step.Buffs) do
@@ -1050,8 +1051,8 @@ local function UpdateStepOnce()
             end
         end
         if step.Grind then
-            if APR.Level < step.Grind then
-                APR.currentStep:AddQuestSteps("GRIND", string.format(L["GRIND"], step.Grind), "Grind")
+            if APR:GetPlayerEffectiveLevel() < APR:ResolveLevelRequirement(step.Grind) then
+                APR.currentStep:AddQuestSteps("GRIND", APR:GetGrindStepText(step.Grind), "Grind")
             else
                 APR:UpdateNextStep()
                 return

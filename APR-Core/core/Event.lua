@@ -280,6 +280,7 @@ function APR.event.functions.accept(event, ...)
 end
 
 function APR.event.functions.achievement(event, ...)
+    if event == "ACHIEVEMENT_EARNED" then APR:RefreshLevelProfileTargets() end
     local achievementData = step and step.Achievement
     if not achievementData or not achievementData.achievementID then
         return
@@ -434,12 +435,16 @@ function APR.event.functions.adventureMapClose(event, ...)
 end
 
 function APR.event.functions.actionUsability(event, ...)
+    if event == "BAG_UPDATE_DELAYED" or event == "GET_ITEM_INFO_RECEIVED" then
+        APR:RefreshLevelProfileTargets()
+    end
     if APR.currentStep then
         APR.currentStep:UpdateStepButtonUsability()
     end
 end
 
 function APR.event.functions.buffs(event, unitTarget, updateInfo)
+    if unitTarget == "player" then APR:RefreshLevelProfileTargets() end
     if step and step.Buffs then
         APR.Buff:HandleUnitAuraUpdate(unitTarget, updateInfo)
     end
@@ -1035,6 +1040,7 @@ function APR.event.functions.party(event, ...)
 end
 
 function APR.event.functions.partyData(event, ...)
+    APR:RefreshLevelProfileTargets()
     -- To request the group data from the party members
     APR.party:RequestData()
     -- Broadcast our version to peers for outdated-addon detection
@@ -1335,12 +1341,14 @@ function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isCont
 end
 
 function APR.event.functions.warMode(event, warModeEnabled)
+    APR:RefreshLevelProfileTargets()
     if warModeEnabled and step and step.WarMode then
         APR:UpdateStep()
     end
 end
 
 function APR.event.functions.zone(event, ...)
+    if event ~= "WAYPOINT_UPDATE" then APR:RefreshLevelProfileTargets() end
     if step and step.TakePortal then
         local portalData   = step.TakePortal
         local mapID        = portalData.mapID
