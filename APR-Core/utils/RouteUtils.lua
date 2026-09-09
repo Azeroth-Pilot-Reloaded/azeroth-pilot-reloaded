@@ -334,6 +334,160 @@ function APR:GetPlayerEffectiveLevel()
     return level
 end
 
+function APR:GetLevelProfileTarget(name, refresh)
+    self.levelProfileCache = self.levelProfileCache or {}
+    self.levelProfileCacheLevels = self.levelProfileCacheLevels or {}
+    local playerLevel = UnitLevel("player") or self.Level or 0
+    if self.levelProfileCache[name] and self.levelProfileCacheLevels[name] == playerLevel and not refresh then
+        return self.levelProfileCache[name]
+    end
+    local profile = self.LevelRequirementProfiles and self.LevelRequirementProfiles[name]
+    assert(profile and profile.levels and profile.levels[0], "Unknown or invalid level profile: " .. tostring(name))
+    local bonus = 0
+    local seen = {}
+    for _, sourceName in ipairs(profile.bonuses or {}) do
+        local source = self.LevelBonusSources and self.LevelBonusSources[sourceName]
+        assert(source, "Unknown level bonus source: " .. tostring(sourceName))
+        local inLevelRange = (not source.minLevel or playerLevel >= source.minLevel) and
+            (not source.maxLevelExclusive or playerLevel < source.maxLevelExclusive)
+        if not seen[sourceName] and inLevelRange then
+            seen[sourceName] = true
+            local active = source.isActive and source.isActive()
+            local auraBonus = 0
+            for spellID, value in pairs(source.auraBonuses or {}) do
+                local aura = C_UnitAuras.GetPlayerAuraBySpellID(spellID)
+                if aura then
+                    active = true
+                    local amount = value
+                    if type(value) == "table" then
+                        local stacks = aura.applications
+                        -- Do not compare restricted aura values; assume only one known application.
+                        if (issecretvalue and issecretvalue(stacks)) or type(stacks) ~= "number" then
+                            stacks = 1
+                        end
+                        stacks = math.max(1, stacks)
+                        amount = 0
+                        for count, percent in pairs(value) do
+                            if stacks >= count then amount = math.max(amount, percent) end
+                        end
+                    end
+                    auraBonus = math.max(auraBonus, amount)
+                end
+            end
+            for _, aura in ipairs(source.auras or {}) do
+                if self:HasAura(aura) then
+                    active = true
+                    break
+                end
+            end
+            if active then
+                local amount = math.max(source.bonus or 0, auraBonus)
+                for achievement, percent in pairs(source.achievementBonuses or {}) do
+                    if self:HasAchievement(achievement) then amount = math.max(amount, percent) end
+                end
+                bonus = bonus + amount
+            end
+        end
+    end
+    local breakpoint, target = 0, profile.levels[0]
+    for percent, requiredLevel in pairs(profile.levels) do
+        if percent <= bonus and percent > breakpoint then
+            breakpoint, target = percent, requiredLevel
+        end
+    end
+    self.levelProfileCache[name] = target
+    self.levelProfileCacheLevels[name] = playerLevel
+    return target
+end
+
+-- Return at most one usable bag item per missing bonus source, in profile order.
+function APR:GetLevelConsumableReminders(profileName)
+    local result, seen = {}, {}
+    if not profileName then return result end
+    local profile = self.LevelRequirementProfiles[profileName]
+    assert(profile, "Unknown level profile: " .. tostring(profileName))
+    local level = UnitLevel("player")
+    if level >= GetMaxLevelForPlayerExpansion() then return result end
+    for _, name in ipairs(profile.bonuses or {}) do
+        local source = self.LevelBonusSources[name]
+        assert(source, "Unknown level bonus source: " .. tostring(name))
+        if not seen[name] and source.items and
+            (not source.minLevel or level >= source.minLevel) and
+            (not source.maxLevelExclusive or level < source.maxLevelExclusive) then
+            seen[name] = true
+            local active = source.isActive and source.isActive()
+            for _, id in ipairs(source.auras or {}) do
+                if self:HasAura(id) then active = true; break end
+            end
+            for id in pairs(source.auraBonuses or {}) do
+                if self:HasAura(id) then active = true; break end
+            end
+            if not active then
+                for _, itemID in ipairs(source.items) do
+                    -- Exclude bank, reagent bank and Warband bank contents.
+                    if C_Item.GetItemCount(itemID, false, false, false, false) > 0 and
+                        C_Item.IsUsableItem(itemID) then
+                        result[#result + 1] = itemID
+                        break
+                    end
+                end
+            end
+        end
+    end
+    return result
+end
+
+function APR:GetActiveLevelConsumableProfile(step)
+    local route = self.RouteQuestStepList and self.RouteQuestStepList[self.ActiveRoute]
+    if step and step.XPConsumables ~= nil then return step.XPConsumables end
+    return route and route.XPConsumables
+end
+
+function APR:ShowLevelConsumableReminders(step)
+    local items = self:GetLevelConsumableReminders(self:GetActiveLevelConsumableProfile(step))
+    self.levelConsumableSignature = table.concat(items, ",")
+    for _, itemID in ipairs(items) do
+        local key = "XP_CONSUMABLE_" .. itemID
+        local name = C_Item.GetItemInfo(itemID) or ("item:" .. itemID)
+        self.currentStep:AddQuestSteps(key, string.format(L["USE_ITEM"], name), "UseItem", false, true)
+        self.currentStep:AddStepButton(key .. "-UseItem", itemID, "item")
+    end
+end
+
+function APR:RefreshLevelProfileTargets()
+    -- Only evaluate profiles already used; coalesce all changes into one refresh.
+    local changed = false
+    for name, previous in pairs(self.levelProfileCache or {}) do
+        if self:GetLevelProfileTarget(name, true) ~= previous then changed = true end
+    end
+    local remindersChanged = false
+    if self.ActiveRoute and self.GetStep and APRData and APRData[self.PlayerID] then
+        local step = self:GetStep(APRData[self.PlayerID][self.ActiveRoute])
+        local items = self:GetLevelConsumableReminders(self:GetActiveLevelConsumableProfile(step))
+        local signature = table.concat(items, ",")
+        remindersChanged = signature ~= (self.levelConsumableSignature or "")
+        self.levelConsumableSignature = signature
+    end
+    if (changed or remindersChanged) and self.ActiveRoute then
+        self:UpdateStep()
+        if changed then self.questOrderList:DelayedUpdate(true) end
+    end
+end
+
+function APR:ResolveLevelRequirement(value)
+    local numeric = tonumber(value)
+    if numeric or type(value) ~= "string" then return numeric end
+    return self:GetLevelProfileTarget(value)
+end
+
+function APR:GetGrindStepText(value)
+    local target = self:ResolveLevelRequirement(value)
+    local text = string.format(L["GRIND"], math.floor(target))
+    local progress = (target - math.floor(target)) * 100
+    if progress > 0 then text = text .. string.format(" + %g%% XP", progress) end
+    return text
+end
+
 function APR:IsPlayerWithinExactLevel(targetLevel, playerLevel)
     local exactLevel = tonumber(targetLevel)
     if not exactLevel then
@@ -371,10 +525,10 @@ function APR:AreConditionalFiltersMet(conditions)
     end
 
     local playerLevel = self:GetPlayerEffectiveLevel()
-    local skipForLvl = tonumber(conditions.SkipForLvl)
-    local level = tonumber(conditions.Level)
-    local minLevel = tonumber(conditions.MinLevel)
-    local maxLevel = tonumber(conditions.MaxLevel)
+    local skipForLvl = self:ResolveLevelRequirement(conditions.SkipForLvl)
+    local level = self:ResolveLevelRequirement(conditions.Level)
+    local minLevel = self:ResolveLevelRequirement(conditions.MinLevel)
+    local maxLevel = self:ResolveLevelRequirement(conditions.MaxLevel)
 
     local currentSpecId = nil
     if C_SpecializationInfo and C_SpecializationInfo.GetSpecialization then

@@ -817,9 +817,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                     L["TURN_ON_WARMODE"],
                     color, isCurrentStep)
             elseif step.Grind then
-                local color = UnitLevel("player") <= step.Grind and "green" or "gray"
+                local color = APR:GetPlayerEffectiveLevel() >= APR:ResolveLevelRequirement(step.Grind) and "green" or "gray"
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
-                    string.format(L["GRIND"], step.Grind), color, isCurrentStep)
+                    APR:GetGrindStepText(step.Grind), color, isCurrentStep)
             elseif step.Reputation then
                 local completed = APR:IsReputationLevelReached(step.Reputation) or currentStepIndex > rawIndex
                 local color = completed and "green" or "gray"
