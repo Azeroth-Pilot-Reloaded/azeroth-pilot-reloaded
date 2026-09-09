@@ -522,6 +522,13 @@ function APR:IsInterfaceVersion(requiredInterfaceVersion)
 end
 
 function APR:AreConditionalFiltersMet(conditions)
+    if conditions and conditions.AnyOf then
+        local matched = false
+        for _, alternative in ipairs(conditions.AnyOf) do
+            if self:AreConditionalFiltersMet(alternative) then matched = true; break end
+        end
+        if not matched then return false end
+    end
     if not conditions then
         return true
     end
@@ -566,6 +573,8 @@ function APR:AreConditionalFiltersMet(conditions)
         (not conditions.HasSpell or self:IsSpellKnown(conditions.HasSpell)) and
         (not conditions.DontHaveSpell or not self:IsAnySpellKnown(conditions.DontHaveSpell)) and
         (not conditions.IsQuestReadyForTurnIn or self:IsQuestReadyForTurnIn(conditions.IsQuestReadyForTurnIn)) and
+        (not conditions.IsQuestOnQuest or C_QuestLog.IsOnQuest(conditions.IsQuestOnQuest)) and
+        (not conditions.IsQuestNotOnQuest or not C_QuestLog.IsOnQuest(conditions.IsQuestNotOnQuest)) and
         (not conditions.ReputationLevel or self:IsReputationLevelReached(conditions.ReputationLevel)) and
         (not conditions.SkipForReputation or not self:IsReputationLevelReached(conditions.SkipForReputation)) and
         (not conditions.IsQuestCompleted or C_QuestLog.IsQuestFlaggedCompleted(conditions.IsQuestCompleted)) and
