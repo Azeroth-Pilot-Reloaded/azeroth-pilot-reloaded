@@ -4440,7 +4440,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         {
             Qpart = { [93096] = { 1 } },
             Coord = { x = -6266.7, y = 5811.8 },
-            GossipOptionIDs = { 137662 },
+            GossipOptionIDs = { 137654, 137655, 137656, 137654, 137658, 137659, 137630, 137661, 137662 },
             SkipForLvl = 89.18,
             Zone = 2437,
             _index = 558,
@@ -4448,7 +4448,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun"] = {
         {
             Qpart = { [93096] = { 2 } },
             Coord = { x = -6266.7, y = 5811.8 },
-            GossipOptionIDs = { 137662 },
+            GossipOptionIDs = { 137654, 137655, 137656, 137654, 137658, 137659, 137630, 137661, 137662 },
             SkipForLvl = 89.18,
             Zone = 2437,
             _index = 559,
