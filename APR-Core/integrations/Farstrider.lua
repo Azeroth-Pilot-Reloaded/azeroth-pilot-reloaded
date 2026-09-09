@@ -351,7 +351,9 @@ function APR.farstrider:ScheduleRouteCheck(stepToken)
         end
 
         self:ForceRefresh()
+        local profileStart = APR:StartPerformanceSample()
         self:GetMeToRightZone()
+        APR:FinishPerformanceSample("ScheduledNavigation", profileStart)
     end)
 end
 

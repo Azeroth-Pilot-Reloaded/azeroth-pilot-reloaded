@@ -47,6 +47,7 @@ end
 
 --- Count the number of visible steps for a route, optionally caching the total for reuse.
 function APR:GetTotalSteps(route, updateTotal)
+    local profileStart = self:StartPerformanceSample()
     route = route or self.ActiveRoute
     updateTotal = updateTotal == nil -- default to true if not specified
     local stepIndex = 0
@@ -64,6 +65,7 @@ function APR:GetTotalSteps(route, updateTotal)
     if updateTotal then
         APRData[self.PlayerID][route .. '-TotalSteps'] = stepIndex
     end
+    self:FinishPerformanceSample("CountTotalSteps", profileStart, #steps)
     return stepIndex
 end
 
@@ -106,6 +108,7 @@ end
 -- @param beforeIndex The step index to calculate before (optional, defaults to current step)
 -- @return number The count of filtered steps before the given index
 function APR:CountSkippedStepsBefore(route, beforeIndex)
+    local profileStart = self:StartPerformanceSample()
     route = route or self.ActiveRoute
     beforeIndex = beforeIndex or (APRData[self.PlayerID] and APRData[self.PlayerID][route]) or 1
 
@@ -123,6 +126,7 @@ function APR:CountSkippedStepsBefore(route, beforeIndex)
             end
         end
     end
+    self:FinishPerformanceSample("CountSkippedSteps", profileStart, math.min(beforeIndex - 1, #stepList))
     return skippedCount
 end
 

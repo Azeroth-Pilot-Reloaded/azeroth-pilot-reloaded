@@ -297,7 +297,7 @@ end
 
 --- Update both quest tracker and step view together.
 function APR:UpdateQuestAndStep()
-    APR:UpdateQuest()
+    APR:UpdateQuest(true)
     APR:UpdateStep()
 end
 
