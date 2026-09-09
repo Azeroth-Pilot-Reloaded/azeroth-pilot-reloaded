@@ -1144,7 +1144,9 @@ function APR:UpdateStep()
     local passes = 0
     repeat
         self.stepUpdatePending = false
+        local profileStart = self:StartPerformanceSample()
         local ok, err = pcall(UpdateStepOnce)
+        self:FinishPerformanceSample("UpdateStepPass", profileStart)
         if not ok then
             self.stepUpdateRunning = false
             self.stepUpdatePending = false
@@ -1194,7 +1196,7 @@ function APR:SetButton()
     APR.currentStep:UpdateStepButtonCooldowns()
 end
 
-function APR:UpdateQuest()
+function APR:UpdateQuest(deferStepUpdate)
     APR:Debug("Function: APR_UpdateQuest()")
 
     local updateStep = false
@@ -1256,6 +1258,9 @@ function APR:UpdateQuest()
             end
         end
     end
+    -- Combined refresh callers render once, after the quest cache is synchronized.
+    -- UpdateStep also evaluates QpartPart text triggers against that cache.
+    if deferStepUpdate then return end
     APR:UpdateQpartPart()
     if updateStep then
         APR:UpdateStep()
@@ -1280,12 +1285,15 @@ function APR:RemoveQuest(questID)
             end
         end
         if nrLeft == 0 then
-            self:UpdateQuest()
+            self:UpdateQuest(true)
             self:Debug("APR - RemoveQuest", APRData[APR.PlayerID][APR.ActiveRoute])
         end
     end
 
-    self:UpdateMapId()
+    -- A quest removal does not change the player's location. UpdateStep schedules
+    -- navigation when its step token changes; avoid a synchronous routing refresh
+    -- here, which also rebuilds the quest tracker and the current step.
+    self:OverrideRouteData()
     self:UpdateStep()
 end
 

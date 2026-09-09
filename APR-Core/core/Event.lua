@@ -1087,8 +1087,8 @@ function APR.event.functions.remove(event, questID, wasReplayQuest)
         APRData[APR.PlayerID][questID] = nil
         APR.map:RemoveMapLine()
         APR:UpdateMapId()
+        APR:UpdateStep()
     end
-    APR:UpdateStep()
 end
 
 function APR.event.functions.reputation()

@@ -144,3 +144,26 @@ objectiveText = "Changed"
 APR:UpdateQuest()
 assert(updates == 1, "Changed quest objectives still refresh the current step")
 print("Banked reward: 100 unchanged quest-log updates cause no step rebuild")
+
+-- Quest removal must synchronize the cache before one render, without routing inline.
+dofile("APR-Core/utils/StepUtils.lua")
+local overrides = 0
+APR.ActiveQuests = { [1] = {}, [2] = { status = "progress", objectives = {} } }
+C_QuestLog.GetInfo = function() return { questID = 2 } end
+C_QuestLog.IsQuestFlaggedCompleted = function() return true end
+function APR:GetQuestAndStepIds() return { 1 }, "Done" end
+function APR:OverrideRouteData() overrides = overrides + 1 end
+function APR:UpdateMapId() error("Quest removal must not run navigation synchronously") end
+function APR:UpdateStep()
+    assert(self.ActiveQuests[1] == nil, "Removed quest stays removed")
+    assert(self.ActiveQuests[2].objectives[1].text == objectiveText, "Rendering sees synchronized objectives")
+    updates = updates + 1
+end
+updates = 0
+APR.event.functions.remove("QUEST_REMOVED", 1)
+assert(updates == 1 and overrides == 1, "Quest removal renders once and preserves route overrides")
+objectiveText = "Changed again"
+updates = 0
+APR:UpdateQuestAndStep()
+assert(updates == 1, "A combined refresh renders once even when objectives changed")
+print("Quest removal and combined refresh: one render with current quest data; no inline routing")

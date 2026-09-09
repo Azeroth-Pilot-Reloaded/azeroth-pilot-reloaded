@@ -40,6 +40,13 @@ their reference data.
 
 ## In-game capture
 
+The second client capture confirmed list batches below 3.5 ms, but quest removal
+still reached 95 ms. Quest removal now avoids inline navigation and duplicate step
+refreshes; combined quest/step updates synchronize the cache before rendering once.
+Focused tests cover both paths with changed objectives. Additional measurements
+`UpdateStepPass`, `CountSkippedSteps`, `CountTotalSteps`, and `ScheduledNavigation`
+separate the remaining work. These nested timings overlap; do not add them together.
+
 1. Update the addon and `/reload` to clear widgets accumulated by the old implementation.
 2. Run `/apr perf on` to start a fresh capture.
 3. Turn in several quests or reproduce the freeze.
