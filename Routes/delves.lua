@@ -1518,7 +1518,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
             }
             ,
         }),
-        DelveScenarioBlock(3154, 2, "Mirror Shine", {
+        DelveScenarioBlock(3262, 2, "Mirror Shine", {
             {
                 Scenario = { criteriaID = 111078, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16460 },
                 Coord = { x = 131.5, y = -14.2 },
@@ -1623,7 +1623,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 _index = 110,
             },
         }),
-        -- DelveScenarioBlock(3262, 3, "Shadowy Supplies", {}),
+        -- DelveScenarioBlock(3154, 3, "Shadowy Supplies", {}),
     },
 })
 
