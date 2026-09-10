@@ -716,7 +716,7 @@ function SetRouteListTab(widget, name)
     local sortedRoutes = {}
 
     -- Get the search text (case-insensitive)
-    local search = (routeSearchText or ""):gsub("^%s+", ""):gsub("%s+$", ""):lower()
+    local search = APR:NormalizeSearchText(routeSearchText):gsub("^%s+", ""):gsub("%s+$", "")
 
     local yOffset = -15
     local rowHeight = 34
@@ -739,8 +739,8 @@ function SetRouteListTab(widget, name)
                             tinsert(sortedRoutes,
                                 { fileName = fileName, routeName = routeName, tabName = tabName, visibility = visibility })
                         else
-                            local rn = routeName:lower()
-                            local fn = fileName:lower()
+                            local rn = APR:NormalizeSearchText(routeName)
+                            local fn = APR:NormalizeSearchText(fileName)
                             if rn:find(search, 1, true) or fn:find(search, 1, true) then
                                 tinsert(sortedRoutes,
                                     {
@@ -769,8 +769,8 @@ function SetRouteListTab(widget, name)
                     local routeName = routeData.label
                     local tabName = routeData.expansion or UNKNOWN
                     if not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
-                        local rn = routeName:lower()
-                        local fn = fileName:lower()
+                        local rn = APR:NormalizeSearchText(routeName)
+                        local fn = APR:NormalizeSearchText(fileName)
                         if rn:find(search, 1, true) or fn:find(search, 1, true) then
                             tinsert(sortedRoutes,
                                 { fileName = fileName, routeName = routeName, tabName = tabName, visibility = visibility })
