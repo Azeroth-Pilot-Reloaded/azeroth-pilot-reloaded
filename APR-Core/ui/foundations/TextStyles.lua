@@ -1,5 +1,21 @@
 local LSM = LibStub("LibSharedMedia-3.0")
 
+local function GetDefaultUIFontName()
+    if _G.ElvUI and _G.ElvUI[1] then
+        local E = _G.ElvUI[1]
+        if E.db and E.db.general and E.db.general.font then
+            return E.db.general.font
+        end
+        if E.LSM and E.LSM.GetDefault then
+            local defaultFont = E.LSM:GetDefault("font")
+            if defaultFont then
+                return defaultFont
+            end
+        end
+    end
+    return LSM:GetDefault("font") or "Friz Quadrata TT"
+end
+
 APR.GLOBAL_TEXT_APPEARANCE_KEY = "globalTextAppearance"
 
 APR.TEXT_APPEARANCE_SCOPES = {
@@ -31,7 +47,7 @@ end
 function APR:CreateTextAppearanceDefaults(useGlobal, overrides)
     local defaults = {
         useGlobal = useGlobal == true,
-        font = LSM:GetDefault("font") or "Friz Quadrata TT",
+        font = GetDefaultUIFontName(),
         size = 12,
         flags = "NONE",
         color = CopyColor(DEFAULT_COLORS.color),
@@ -80,14 +96,16 @@ local function GetTypography(scope)
 end
 
 local function ResolveFont(fontName)
-    local fallback = LSM:Fetch("font", LSM:GetDefault("font"))
+    local requestedFontName = fontName or GetDefaultUIFontName()
+    local fallback = LSM:Fetch("font", requestedFontName)
     if not fallback and GameFontNormal and GameFontNormal.GetFont then
         fallback = GameFontNormal:GetFont()
     end
 
-    local requestedFont = LSM:Fetch("font", fontName, true)
+    local requestedFont = LSM:Fetch("font", requestedFontName, true)
     if requestedFont then
-        local resolvedFont = APR:ResolveUIFileAsset(requestedFont, nil, "font " .. tostring(fontName or "default"))
+        local resolvedFont = APR:ResolveUIFileAsset(requestedFont, nil,
+        "font " .. tostring(requestedFontName or "default"))
         if resolvedFont then
             return resolvedFont
         end

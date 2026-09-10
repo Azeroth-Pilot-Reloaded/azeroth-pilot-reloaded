@@ -69,7 +69,7 @@ local function UpdateSnappedBackdrops()
     local transparent = { 0, 0, 0, 0 }
     local profile = APR.settings and APR.settings.profile
     local bothFramesSnapped = profile and profile.fillersFrameSnapToCurrentStep and
-    profile.questOrderListSnapToCurrentStep
+        profile.questOrderListSnapToCurrentStep
 
     local function ApplyBackdrop(frame)
         if not frame then return end
@@ -534,6 +534,16 @@ local function SkinRegisteredTarget(frame, kind, options)
     if kind == "button" then
         SkinButton(frame)
     elseif kind == "arrow" and not IsSkinned(frame) and S.HandleNextPrevButton then
+        -- Some APR arrow controls still carry their own text label (tooltip text or older templates).
+        -- ElvUI's HandleNextPrevButton strips text strings and can crash if a FontString exists without a font.
+        local currentText = frame.GetText and frame:GetText()
+        if currentText and currentText ~= "" then
+            if S.HandleButton then
+                S:HandleButton(frame)
+            end
+            MarkSkinned(frame)
+            return
+        end
         local width, height = frame:GetSize()
         S:HandleNextPrevButton(frame, options.direction, nil, nil, true, nil, width)
         frame:SetSize(width, height)
