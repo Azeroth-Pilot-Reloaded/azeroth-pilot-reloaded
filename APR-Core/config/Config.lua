@@ -185,6 +185,7 @@ function APR.settings:InitializeSettings()
             lastRecordedVersion = '',
             -- ElvUI
             elvuiSkin = true,
+            ellesmereuiSkin = true,
             -- position
             coordinateFrame = {
                 point = "TOPRIGHT",
@@ -1796,6 +1797,23 @@ function APR.settings:createBlizzOptions()
                                 confirmText = L["ELVUI_CONFIRM"],
                                 hidden = function()
                                     return not _G.ElvUI
+                                end,
+                            },
+                            ellesmereuiSkin = {
+                                order = 1.26,
+                                type = "toggle",
+                                name = L["ELLESMEREUI_SKIN"],
+                                desc = L["ELLESMEREUI_SKIN_DESC"],
+                                width = "full",
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    ReloadUI()
+                                end,
+                                confirm = true,
+                                confirmText = L["ELLESMEREUI_CONFIRM"],
+                                hidden = function()
+                                    return not (_G.EllesmereUI and _G.EllesmereUI.RegisterSkin)
                                 end,
                             },
                             resetPartyPosition = {
