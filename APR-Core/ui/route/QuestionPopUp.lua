@@ -55,6 +55,10 @@ local function EnsureRouteTriggerPopup()
     frame.cancelButton:SetSize(110, 24)
     frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 132, 12)
     frame.cancelButton:SetText(CANCEL)
+    if APR.RegisterSkinTarget then
+        APR:RegisterSkinTarget(frame, "panel")
+        APR:RegisterSkinTarget(frame.cancelButton, "button")
+    end
     APR:RegisterButtonText(frame.cancelButton, "general", { role = "base" })
     frame.cancelButton:SetScript("OnClick", function()
         frame:Hide()
@@ -67,6 +71,7 @@ local function EnsureRouteTriggerPopup()
     frame.dontAskButton:SetSize(110, 24)
     frame.dontAskButton:SetPoint("BOTTOM", frame, "BOTTOM", 0, 12)
     frame.dontAskButton:SetText(L["DONT_ASK_AGAIN"])
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(frame.dontAskButton, "button") end
     APR:RegisterButtonText(frame.dontAskButton, "general", { role = "base", sizeDelta = -2 })
     if frame.dontAskButton.Text then
         frame.dontAskButton.Text:SetWidth(94)
@@ -84,6 +89,7 @@ local function EnsureRouteTriggerPopup()
     frame.routeSelectionButton:SetSize(110, 24)
     frame.routeSelectionButton:SetPoint("BOTTOM", frame, "BOTTOM", -132, 12)
     frame.routeSelectionButton:SetText(L["ROUTE_SELECTION"])
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(frame.routeSelectionButton, "button") end
     APR:RegisterButtonText(frame.routeSelectionButton, "general", { role = "base", sizeDelta = -2 })
     if frame.routeSelectionButton.Text then
         frame.routeSelectionButton.Text:SetWidth(94)
@@ -118,6 +124,7 @@ local function EnsureRouteButton(frame, index)
         button.Text:SetJustifyH("CENTER")
     end
 
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "button") end
     frame.routeButtons[index] = button
     return button
 end
@@ -171,6 +178,10 @@ local function EnsureSelectionPopup()
     frame.cancelButton:SetSize(120, 24)
     frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 0, 12)
     frame.cancelButton:SetText(CANCEL)
+    if APR.RegisterSkinTarget then
+        APR:RegisterSkinTarget(frame, "panel")
+        APR:RegisterSkinTarget(frame.cancelButton, "button")
+    end
     APR:RegisterButtonText(frame.cancelButton, "general", { role = "base" })
     frame.cancelButton:SetScript("OnClick", function()
         frame:Hide()
@@ -199,6 +210,7 @@ local function EnsureSelectionButton(frame, index)
         button.Text:SetJustifyH("CENTER")
     end
 
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "button") end
     frame.optionButtons[index] = button
     return button
 end

@@ -532,6 +532,7 @@ function APR:CreateStandardFrame(name, parent, width, height, template)
         tileSize = 16
     })
     frame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+    if self.RegisterSkinTarget then self:RegisterSkinTarget(frame, "panel", { preserveBackground = true }) end
     return frame
 end
 

@@ -244,6 +244,11 @@ function APR:createStatusFrame()
     APR:RegisterFontString(CopyButtonFont, "general", { role = "base", sizeDelta = -3 })
     CopyButton:SetText(L["STATUS_EXPORT"])
     CopyButton:HookScript('OnClick', exportStatusReport)
+    if APR.RegisterSkinTarget then
+        APR:RegisterSkinTarget(StatusFrame, "panel")
+        APR:RegisterSkinTarget(CloseButton, "close")
+        APR:RegisterSkinTarget(CopyButton, "button")
+    end
 
     --Create Static Content
     APR:createStatusStaticContent(StatusFrame)

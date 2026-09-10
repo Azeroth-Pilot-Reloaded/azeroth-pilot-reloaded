@@ -42,6 +42,8 @@ local function CreateRow(itemID)
     label:SetJustifyH("LEFT")
     APR:RegisterFontString(label, "general")
     row.label, row.icon = label, icon
+    button.Icon = icon
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "icon", { texture = icon }) end
     row:Hide()
     return row
 end
@@ -86,6 +88,10 @@ function overlay:Refresh()
                 LibWindow.SavePosition(frame)
             end
         end)
+    end
+    if APR.RegisterSkinTarget then
+        APR:RegisterSkinTarget(frame, "borderedPanel")
+        APR:RegisterSkinTarget(frame.Header, "borderedPanel")
     end
     if self.positionConfig ~= profile.xpBuffFrame then
         profile.xpBuffFrame = profile.xpBuffFrame or { x = 280, y = 0, point = "CENTER" }

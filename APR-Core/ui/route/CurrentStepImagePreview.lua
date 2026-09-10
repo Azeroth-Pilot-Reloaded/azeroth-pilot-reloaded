@@ -283,6 +283,11 @@ local function CreateOverlayWindow(imagePath)
             panel:Hide()
         end)
 
+        if APR.RegisterSkinTarget then
+            APR:RegisterSkinTarget(panel, "panel")
+            APR:RegisterSkinTarget(closeButton, "close")
+        end
+
         -- OnHide handles both close-button clicks and Escape-key (UISpecialFrames).
         panel:SetScript("OnHide", function(self)
             self:SetScript("OnUpdate", nil)

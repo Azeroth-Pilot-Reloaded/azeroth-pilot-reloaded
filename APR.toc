@@ -36,6 +36,7 @@ APR-Core/locales/locales.xml
 
 APR-Core/utils/SecretUtils.lua
 APR-Core/core/Core.lua
+APR-Core/integrations/SkinRegistry.lua
 APR-Core/integrations/TaxiData.lua
 
 APR-Core/utils/Utils.lua

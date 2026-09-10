@@ -118,6 +118,7 @@ local function CreateTrackedBuffIcon()
         GameTooltip:Hide()
     end)
 
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(icon, "icon", { texture = texture }) end
     icon.texture = texture
     icon.auraId = 0
 
@@ -147,6 +148,7 @@ local function InitializeAuraButton(auraButton, index)
     local texture = auraButton:CreateTexture(nil, "ARTWORK")
     texture:SetAllPoints(auraButton)
     auraButton:SetIcon(texture)
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(auraButton, "icon", { texture = texture }) end
 
     local cooldown = CreateFrame("Cooldown", nil, auraButton, "CooldownFrameTemplate")
     cooldown:SetAllPoints(auraButton)
