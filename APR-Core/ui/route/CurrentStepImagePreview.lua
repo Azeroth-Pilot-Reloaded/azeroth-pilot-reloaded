@@ -284,7 +284,7 @@ local function CreateOverlayWindow(imagePath)
         end)
 
         if APR.RegisterSkinTarget then
-            APR:RegisterSkinTarget(panel, "panel")
+            APR:RegisterSkinTarget(panel, "panel", { preserveBackground = true })
             APR:RegisterSkinTarget(closeButton, "close")
         end
 

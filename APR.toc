@@ -6,7 +6,7 @@
 ## Author: Core: Neogeekmo, Rycia, Kamian | Route: Pahonix, Neogeekmo | Support: NightofStarrs, Pahonix | (legacy: zyrrael, Deathmessinger, 8goldbow)
 ## IconTexture: Interface\AddOns\APR\APR-Core\assets\APR_logo
 ## Version: @project-version@
-## OptionalDeps: LibTaxiData, ElvUI
+## OptionalDeps: LibTaxiData, ElvUI, EllesmereUI
 
 ## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted, APRGossipValidated
 ## SavedVariablesPerCharacter: FarstriderLibData_CharacterSettings
@@ -102,5 +102,6 @@ APR-Core/features/player/Buff.lua
 APR-Core/features/player/XPBuffOverlay.lua
 APR-Core/ui/panels/StatusReport.lua
 APR-Core/integrations/ElvUISkin.lua
+APR-Core/integrations/EllesmereUISkin.lua
 
 Routes/RouteList.xml

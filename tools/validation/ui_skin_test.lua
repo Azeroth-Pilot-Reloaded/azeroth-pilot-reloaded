@@ -84,3 +84,87 @@ APR:RegisterSkinTarget(native, "button")
 assert(not native.skin)
 assert(not APR:RegisterSkinProvider("Other", function() error("Must not stack providers") end, function() return true end))
 print("PASS: ElvUI late/nested controls, arrows, scrollbars, XP borders, disabled skin, idempotence and combat deferral")
+
+-- EllesmereUI owns registration timing and its per-addon preference.
+ElvUI, EllesmereUI = nil, nil
+dofile("APR-Core/integrations/EllesmereUISkin.lua")
+EllesmereUI = {} -- Older versions without the public API remain harmless.
+dofile("APR-Core/integrations/EllesmereUISkin.lua")
+assert(not APR.EllesmereUISkin)
+dofile("APR-Core/integrations/SkinRegistry.lua")
+events = frames[#frames]
+local callback, euiEnabled
+EllesmereUI.RegisterSkin = function(name, apply)
+    assert(name == "APR")
+    callback = apply
+end
+dofile("APR-Core/integrations/EllesmereUISkin.lua")
+assert(callback, "Register through the public API, not private EUI globals")
+local eui = { IsEnabled = function() return euiEnabled end }
+for _, kind in ipairs({ "Button", "PageButton", "ScrollBar", "CloseButton", "SquareIcon",
+    "Panel", "Shell", "EditBox", "Font", "StateButtonLabel" }) do
+    local method = kind
+    eui[method] = function(frame, options)
+        record(method, frame)
+        frame.options = options
+    end
+end
+euiEnabled = true
+APR.settings.profile.ellesmereuiSkin = false
+local latePreset = CreateFrame()
+APR:RegisterSkinTarget(latePreset, "button")
+callback(eui)
+assert(not latePreset.skin, "APR's EllesmereUI switch is respected")
+APR.settings.profile.ellesmereuiSkin = true
+ElvUI = {}
+APR.settings.profile.elvuiSkin = true
+callback(eui)
+assert(not latePreset.skin, "ElvUI takes precedence when both are enabled")
+ElvUI = nil
+callback(eui)
+assert(latePreset.skin == "Button")
+local nextButton, vertical, overlayPanel, imagePanel, secureIcon = CreateFrame(), CreateFrame(), CreateFrame(), CreateFrame(), CreateFrame()
+function vertical:CreateFontString()
+    local label = CreateFrame()
+    label.SetPoint = noop
+    function label:SetText(text) self.text = text end
+    return label
+end
+function vertical:SetFontString(label) self.label = label end
+APR:RegisterSkinTarget(nextButton, "arrow", { direction = "right" })
+APR:RegisterSkinTarget(vertical, "arrow", { direction = "up" })
+APR:RegisterSkinTarget(overlayPanel, "borderedPanel")
+APR:RegisterSkinTarget(imagePanel, "panel", { preserveBackground = true })
+APR:RegisterSkinTarget(secureIcon, "icon", { texture = icon })
+assert(nextButton.skin == "PageButton" and nextButton.options == ">")
+assert(vertical.label.text == "▲" and vertical.width == 30 and vertical.height == 24)
+assert(overlayPanel.skin == "Panel")
+assert(not imagePanel.skin, "Skinning must not fade the preview image or APR-managed backgrounds")
+assert(icon.skin == "SquareIcon" and not secureIcon.skin and secureIcon.attributes.item == "item:239142")
+local minimize = CreateFrame()
+local normal, pushed, disabled = {}, {}, {}
+function minimize:GetNormalTexture() return normal end
+function minimize:GetPushedTexture() return pushed end
+function minimize:GetDisabledTexture() return disabled end
+minimize:SetScript("OnClick", onClick)
+APR:RegisterSkinTarget(minimize, "headerButton")
+assert(minimize.APRNormalIcon == normal and minimize.APRPushedIcon == pushed and minimize.APRDisabledIcon == disabled)
+assert(minimize.scripts.OnClick == onClick, "Keep APR collapse actions and live atlas states")
+combat = true
+local deferredEUI = CreateFrame()
+APR:RegisterSkinTarget(deferredEUI, "editbox")
+assert(not deferredEUI.skin)
+combat = false
+events.scripts.OnEvent()
+assert(deferredEUI.skin == "EditBox")
+euiEnabled = false
+local euiNative = CreateFrame()
+APR:RegisterSkinTarget(euiNative, "button")
+assert(not euiNative.skin, "EllesmereUI's own per-addon switch is respected")
+euiEnabled = true
+APR:RefreshRegisteredSkins()
+assert(euiNative.skin == "Button")
+local count = calls.Button
+APR:RefreshRegisteredSkins()
+assert(calls.Button == count, "No duplicate styling or theme hooks")
+print("PASS: EllesmereUI public API, optional/old clients, late controls, provider priority, images and secure actions")
