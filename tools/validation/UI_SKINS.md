@@ -39,6 +39,10 @@ Repeat with neither UI addon enabled, with ElvUI, and with EllesmereUI:
 4. With a usable XP item in the bags, check the bordered overlay header, drag it,
    reload and verify its position. Click the item and verify that the reminder
    disappears with the buff. New skin changes during combat apply after combat.
+   The XP header should match APR's ObjectiveTracker headers. Close the overlay
+   from its header or dismiss only War Mode with its row's close button. Verify
+   these choices persist, including across alternative items for the same bonus.
+   Restore the overlay and individual bonuses in APR's Current Step options.
 5. Disable the APR skin option and reload. With EllesmereUI, also check its own
    per-addon switch and change its theme; registered controls should follow it.
 6. If both UI addons are installed, disable APR's ElvUI skin and reload to select

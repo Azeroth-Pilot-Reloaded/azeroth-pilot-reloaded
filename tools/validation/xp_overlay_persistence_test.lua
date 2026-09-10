@@ -57,9 +57,21 @@ local function object(parent)
 end
 function methods:CreateTexture() return object(self) end
 function methods:CreateFontString() return object(self) end
+function methods:GetNormalTexture()
+    if not rawget(self, "normal") then self.normal = object(self) end
+    return self.normal
+end
+function methods:GetPushedTexture()
+    if not rawget(self, "pushed") then self.pushed = object(self) end
+    return self.pushed
+end
 function CreateFrame(_, name, parent, template)
     local frame = object(parent)
     frame.template = template
+    if template == "ObjectiveTrackerContainerHeaderTemplate" then
+        frame.Text = object(frame)
+        frame.MinimizeButton = object(frame)
+    end
     frames[#frames + 1] = frame
     if name then _G[name] = frame end
     return frame
@@ -77,9 +89,52 @@ local function visibleRows()
     return count
 end
 APR.settings = { profile = { enableAddon = true, xpBuffFrame = {}, currentStepbackgroundColorAlpha = { 0, 0, 0, 0.5 } } }
+dofile("APR-Core/utils/UIUtils.lua")
 dofile("APR-Core/features/player/XPBuffOverlay.lua")
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 3, "Without a route: War Mode and two missing item buffs")
+assert(APRXPBuffOverlay.Header.template == "ObjectiveTrackerContainerHeaderTemplate",
+    "The overlay uses the same header as the other APR windows")
+APRXPBuffOverlay.Header.MinimizeButton.scripts.OnClick()
+assert(APR.settings.profile.showXPBuffOverlay == false and visibleRows() == 0)
+APR.XPBuffOverlay:QueueRefresh()
+drain()
+assert(visibleRows() == 0, "Closing the overlay survives subsequent aura/bag events")
+APR.settings.profile.showXPBuffOverlay = true
+APR.XPBuffOverlay:Refresh()
+local function DismissBonus(sourceName)
+    for _, row in ipairs(frames) do
+        if rawget(row, "bonusSource") == sourceName and row:IsShown() then
+            row.dismissButton.scripts.OnClick()
+            return
+        end
+    end
+    error("Missing visible reminder: " .. sourceName)
+end
+DismissBonus("WarMode")
+assert(visibleRows() == 2 and not APR.XPBuffOverlay:IsBonusEnabled("WarMode"),
+    "War Mode can be ignored without hiding usable item bonuses")
+DismissBonus("Darkmoon")
+bags[93730] = 0
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 1, "Changing to the alternate hat cannot revive a dismissed bonus")
+DismissBonus("MysteriousWisdom")
+assert(visibleRows() == 0 and not APRXPBuffOverlay:IsShown(), "No empty panel when all reminders are hidden")
+local restoredPreferences = {}
+for name, hidden in pairs(APR.settings.profile.hiddenXPBonuses) do restoredPreferences[name] = hidden end
+APR.settings.profile.hiddenXPBonuses = restoredPreferences
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 0, "Restoring persisted preferences keeps unwanted bonuses hidden")
+assert(#APR:GetLevelConsumableReminders() == 2, "UI preferences do not alter the underlying bonus sources")
+bags[93730] = 1
+APR.XPBuffOverlay:SetBonusEnabled("WarMode", true)
+APR.XPBuffOverlay:SetBonusEnabled("Darkmoon", true)
+APR.XPBuffOverlay:SetBonusEnabled("MysteriousWisdom", true)
+assert(visibleRows() == 3, "Options restore individual reminders without reloading")
+C_Spell = { GetSpellInfo = function(id) return { name = "Spell " .. id } end }
+local options = APR.XPBuffOverlay:GetBonusOptions()
+assert(options.WarMode and options.Darkmoon and options.MysteriousWisdom and options.TenLands)
+assert(not options.Timeways, "Only actionable reminders appear in the selection")
 for _, frame in ipairs(frames) do
     if frame.template == "SecureActionButtonTemplate" then
         assert(frame.attributes.type == "item" and frame.attributes.item:match("^item:%d+$"))
@@ -114,6 +169,18 @@ assert(visibleRows() == 0)
 pet, bags = false, {}
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 0, "No acquisition message for absent bag items")
+
+auras, bags = {}, { [239142] = 1 }
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 1)
+combat = true
+DismissBonus("MysteriousWisdom")
+assert(visibleRows() == 1 and not APR.XPBuffOverlay:IsBonusEnabled("MysteriousWisdom"),
+    "Dismissing during combat saves the preference without touching protected layout")
+combat = false
+frames[1].scripts.OnEvent(frames[1], "PLAYER_REGEN_ENABLED")
+drain()
+assert(visibleRows() == 0, "Combat-end refresh applies the saved dismissal")
 
 -- A scenario's runtime navigation remains shared with the arrow, not the definition.
 APR.RouteQuestStepList = { route = { label = "Route", steps = { { DoScenario = { mapID = 1 }, Coord = { x = 1 } }, {} } } }
@@ -155,4 +222,4 @@ function APR:GetRouteSignature() return "definition-v2" end
 APR:CheckCurrentRouteUpToDate("route")
 assert(APRData.player.route == nil, "A real definition change still invalidates outdated indexes")
 assert(APRData.player["route-ParallelStepsState"] == nil)
-print("PASS: accent search, global XP overlay, aura variants, secure buttons, combat deferral and reconnect persistence")
+print("PASS: accent search, global XP overlay, persistent bonus dismissal, aura variants, secure buttons, combat deferral and reconnect persistence")
