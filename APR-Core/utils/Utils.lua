@@ -727,3 +727,29 @@ function APR:copyTable(source)
     end
     return result
 end
+-- Fold complete UTF-8 characters, never individual bytes of accented letters.
+local searchAccents = {
+    ["à"] = "a", ["â"] = "a", ["ä"] = "a", ["á"] = "a", ["ã"] = "a", ["å"] = "a",
+    ["À"] = "a", ["Â"] = "a", ["Ä"] = "a", ["Á"] = "a", ["Ã"] = "a", ["Å"] = "a",
+    ["é"] = "e", ["è"] = "e", ["ê"] = "e", ["ë"] = "e",
+    ["É"] = "e", ["È"] = "e", ["Ê"] = "e", ["Ë"] = "e",
+    ["î"] = "i", ["ï"] = "i", ["í"] = "i", ["ì"] = "i",
+    ["Î"] = "i", ["Ï"] = "i", ["Í"] = "i", ["Ì"] = "i",
+    ["ô"] = "o", ["ö"] = "o", ["ó"] = "o", ["ò"] = "o", ["õ"] = "o",
+    ["Ô"] = "o", ["Ö"] = "o", ["Ó"] = "o", ["Ò"] = "o", ["Õ"] = "o",
+    ["ù"] = "u", ["û"] = "u", ["ü"] = "u", ["ú"] = "u",
+    ["Ù"] = "u", ["Û"] = "u", ["Ü"] = "u", ["Ú"] = "u",
+    ["ç"] = "c", ["Ç"] = "c", ["ñ"] = "n", ["Ñ"] = "n",
+    ["ÿ"] = "y", ["ý"] = "y", ["Ÿ"] = "y", ["Ý"] = "y",
+    ["œ"] = "oe", ["Œ"] = "oe", ["æ"] = "ae", ["Æ"] = "ae",
+}
+
+function APR:NormalizeSearchText(value)
+    return ((value or ""):gsub("[%z\1-\127\194-\244][\128-\191]*", function(character)
+        -- Combining diacritics (U+0300..U+036F), for decomposed input.
+        if character:match("^\204[\128-\191]$") or character:match("^\205[\128-\175]$") then
+            return ""
+        end
+        return searchAccents[character] or character
+    end):lower())
+end
