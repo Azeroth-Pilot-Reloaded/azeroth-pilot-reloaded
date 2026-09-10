@@ -151,6 +151,8 @@ function APR.settings:InitializeSettings()
             }),
             --buff
             buffFrame = {},
+            xpBuffFrame = { x = 280, y = 0, point = "CENTER" },
+            showXPBuffOverlay = true,
             -- group
             groupFrame = {},
             showGroup = true,
@@ -373,6 +375,17 @@ function APR.settings:createBlizzOptions()
                         inline = true,
                         name = L["CURRENT_STEP"],
                         args = {
+                            showXPBuffOverlay = {
+                                order = 5.09,
+                                type = "toggle",
+                                name = L["XP_BUFF_OVERLAY"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.XPBuffOverlay:Refresh()
+                                end,
+                            },
                             currentStepShow = {
                                 order = 5.1,
                                 type = "toggle",
@@ -447,6 +460,7 @@ function APR.settings:createBlizzOptions()
                                     SetProfileOption(info, { r, g, b, a })
                                     APR.currentStep:UpdateBackgroundColorAlpha()
                                     APR.Buff:UpdateBackgroundColorAlpha()
+                                    APR.XPBuffOverlay:Refresh()
                                 end,
                                 disabled = function()
                                     return not self.profile.currentStepShow or not self.profile.enableAddon or
@@ -2138,6 +2152,7 @@ function APR.settings:ToggleAddon()
     APR.party:RefreshPartyFrameAnchor()
     APR.heirloom:RefreshFrameAnchor()
     APR.Buff:RefreshFrameAnchor()
+    APR.XPBuffOverlay:Refresh()
     APR.coordinate:RefreshFrameAnchor()
     APR.RouteSelection:RefreshFrameAnchor()
     APR.map:ToggleMapPins()

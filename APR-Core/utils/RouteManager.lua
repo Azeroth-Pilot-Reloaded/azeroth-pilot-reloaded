@@ -155,6 +155,9 @@ local function BuildEffectiveRouteCacheKey(baseSteps, groups, state)
 end
 
 function APR:InvalidateEffectiveRouteStepsCache(routeKey)
+    if not routeKey or (self.runtimeRouteStep and self.runtimeRouteStep.route == routeKey) then
+        self.runtimeRouteStep = nil
+    end
     self._effectiveRouteStepsCache = self._effectiveRouteStepsCache or {}
     if routeKey then
         self._effectiveRouteStepsCache[routeKey] = nil

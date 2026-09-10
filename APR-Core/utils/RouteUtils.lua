@@ -403,12 +403,16 @@ end
 -- Return at most one usable bag item per missing bonus source, in profile order.
 function APR:GetLevelConsumableReminders(profileName)
     local result, seen = {}, {}
-    if not profileName then return result end
-    local profile = self.LevelRequirementProfiles[profileName]
-    assert(profile, "Unknown level profile: " .. tostring(profileName))
+    local profile = profileName and self.LevelRequirementProfiles[profileName]
+    if profileName then assert(profile, "Unknown level profile: " .. tostring(profileName)) end
+    local sources = profile and profile.bonuses or {}
+    if not profileName then
+        for name in pairs(self.LevelBonusSources) do sources[#sources + 1] = name end
+        table.sort(sources)
+    end
     local level = UnitLevel("player")
     if level >= GetMaxLevelForPlayerExpansion() then return result end
-    for _, name in ipairs(profile.bonuses or {}) do
+    for _, name in ipairs(sources) do
         local source = self.LevelBonusSources[name]
         assert(source, "Unknown level bonus source: " .. tostring(name))
         if not seen[name] and source.items and
@@ -437,38 +441,13 @@ function APR:GetLevelConsumableReminders(profileName)
     return result
 end
 
-function APR:GetActiveLevelConsumableProfile(step)
-    local route = self.RouteQuestStepList and self.RouteQuestStepList[self.ActiveRoute]
-    if step and step.XPConsumables ~= nil then return step.XPConsumables end
-    return route and route.XPConsumables
-end
-
-function APR:ShowLevelConsumableReminders(step)
-    local items = self:GetLevelConsumableReminders(self:GetActiveLevelConsumableProfile(step))
-    self.levelConsumableSignature = table.concat(items, ",")
-    for _, itemID in ipairs(items) do
-        local key = "XP_CONSUMABLE_" .. itemID
-        local name = C_Item.GetItemInfo(itemID) or ("item:" .. itemID)
-        self.currentStep:AddQuestSteps(key, string.format(L["USE_ITEM"], name), "UseItem", false, true)
-        self.currentStep:AddStepButton(key .. "-UseItem", itemID, "item")
-    end
-end
-
 function APR:RefreshLevelProfileTargets()
     -- Only evaluate profiles already used; coalesce all changes into one refresh.
     local changed = false
     for name, previous in pairs(self.levelProfileCache or {}) do
         if self:GetLevelProfileTarget(name, true) ~= previous then changed = true end
     end
-    local remindersChanged = false
-    if self.ActiveRoute and self.GetStep and APRData and APRData[self.PlayerID] then
-        local step = self:GetStep(APRData[self.PlayerID][self.ActiveRoute])
-        local items = self:GetLevelConsumableReminders(self:GetActiveLevelConsumableProfile(step))
-        local signature = table.concat(items, ",")
-        remindersChanged = signature ~= (self.levelConsumableSignature or "")
-        self.levelConsumableSignature = signature
-    end
-    if (changed or remindersChanged) and self.ActiveRoute then
+    if changed and self.ActiveRoute then
         self:UpdateStep()
         if changed then self.questOrderList:DelayedUpdate(true) end
         return true
@@ -522,6 +501,9 @@ function APR:IsInterfaceVersion(requiredInterfaceVersion)
 end
 
 function APR:AreConditionalFiltersMet(conditions)
+    -- Legacy route instructions are now optional global XP overlay reminders.
+    -- Keep their slots in the definition so saved step indexes remain valid.
+    if conditions and conditions.WarMode then return false end
     if conditions and conditions.AnyOf then
         local matched = false
         for _, alternative in ipairs(conditions.AnyOf) do
@@ -761,7 +743,7 @@ function APR:ClearSavedRouteData(routeFileName)
     playerData[routeFileName .. '-RawTotalSteps'] = nil
     playerData[routeFileName .. '-ParallelStepsState'] = nil
 
-    local routeSignatures = self.settings and self.settings.profile and self.settings.profile.routeSignatures
+    local routeSignatures = playerData.RouteSignatures
     if routeSignatures then
         routeSignatures[routeFileName] = nil
     end
@@ -822,9 +804,10 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
         return
     end
 
-    -- Ensure route signatures table exists in the profile settings
-    self.settings.profile.routeSignatures = self.settings.profile.routeSignatures or {}
-    local routeSignatures = self.settings.profile.routeSignatures
+    -- Progress and its fingerprints must belong to the same character.
+    -- Legacy profile fingerprints may have been overwritten by another character.
+    playerData.RouteSignatures = playerData.RouteSignatures or {}
+    local routeSignatures = playerData.RouteSignatures
 
     local completedRoutes = APRZoneCompleted[playerID] or {}
     APRZoneCompleted[playerID] = completedRoutes
@@ -893,11 +876,6 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
             local routeChanged = not routeExists
                 or (savedTotal and savedTotal ~= currentTotal)
                 or (savedSignature and currentSignature and savedSignature ~= currentSignature)
-
-            -- When upgrading versions with no stored signature, force a refresh to avoid stale data
-            if not routeChanged and not savedSignature and previousVersion and previousVersion ~= self.version then
-                routeChanged = true
-            end
 
             if routeChanged then
                 self:ClearSavedRouteData(routeFileName)

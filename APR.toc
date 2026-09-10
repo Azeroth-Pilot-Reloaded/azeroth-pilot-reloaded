@@ -98,6 +98,7 @@ APR-Core/features/player/AFK.lua
 APR-Core/features/player/Heirloom.lua
 APR-Core/ui/route/RouteSelection.lua
 APR-Core/features/player/Buff.lua
+APR-Core/features/player/XPBuffOverlay.lua
 APR-Core/ui/panels/StatusReport.lua
 APR-Core/integrations/ElvUISkin.lua
 

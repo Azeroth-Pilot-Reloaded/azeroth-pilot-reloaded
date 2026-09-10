@@ -190,6 +190,9 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR:ValidateBundledUIAssets()
             end
             C_Timer.After(2, function()
+                -- Validate persisted progress before navigation can update live steps.
+                local _, _, routeFileName = APR:GetCurrentRouteMapIDsAndName()
+                APR:CheckCurrentRouteUpToDate(routeFileName)
                 APR:UpdateMapId()
                 APR.RouteSelection:RefreshFrameAnchor()
                 APR.heirloom:RefreshFrameAnchor()
@@ -198,7 +201,6 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
 
                 APR:Debug("Caller: Event.lua load handler -> GetCurrentRouteMapIDsAndName")
                 local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
-                APR:CheckCurrentRouteUpToDate(routeFileName)
                 -- Ensure the active route is set on load so the current step frame can populate without waiting
                 if routeFileName and routeFileName ~= "" then
                     APR.ActiveRoute = routeFileName
