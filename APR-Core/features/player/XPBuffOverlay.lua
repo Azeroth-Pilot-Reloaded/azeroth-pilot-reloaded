@@ -5,6 +5,12 @@ APR.XPBuffOverlay = APR:NewModule("XPBuffOverlay")
 local overlay = APR.XPBuffOverlay
 local rows = {}
 local frame
+local HEADER_HEIGHT = 26
+local PANEL_BACKDROP = {
+    bgFile = "Interface\\Buttons\\WHITE8X8",
+    edgeFile = "Interface\\Buttons\\WHITE8X8",
+    edgeSize = 1,
+}
 
 local function CreateRow(itemID)
     local row = CreateFrame("Frame", nil, frame)
@@ -53,13 +59,22 @@ function overlay:Refresh()
         frame:SetClampedToScreen(true)
         frame:SetMovable(true)
         frame:SetFrameStrata("LOW")
-        frame:SetBackdrop({ bgFile = "Interface\\Tooltips\\UI-Tooltip-Background" })
-        local header = CreateFrame("Frame", nil, frame)
-        header:SetPoint("BOTTOMLEFT", frame, "TOPLEFT")
-        header:SetSize(300, 22)
+        frame:SetBackdrop(PANEL_BACKDROP)
+        frame:SetBackdropBorderColor(0.35, 0.35, 0.35, 1)
+        local header = CreateFrame("Frame", "APRXPBuffOverlayHeader", frame, "BackdropTemplate")
+        frame.Header = header
+        header:SetPoint("TOPLEFT")
+        header:SetPoint("TOPRIGHT")
+        header:SetHeight(HEADER_HEIGHT)
+        header:SetBackdrop(PANEL_BACKDROP)
+        header:SetBackdropColor(0.08, 0.08, 0.08, 0.95)
+        header:SetBackdropBorderColor(0.35, 0.35, 0.35, 1)
         header:EnableMouse(true)
         local title = header:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-        title:SetAllPoints()
+        header.Text = title
+        title:SetPoint("LEFT", 10, 0)
+        title:SetPoint("RIGHT", -10, 0)
+        title:SetJustifyH("LEFT")
         title:SetText(L["XP_BUFF_OVERLAY"])
         APR:RegisterFontString(title, "general", { role = "accent" })
         header:SetScript("OnMouseDown", function()
@@ -90,7 +105,7 @@ function overlay:Refresh()
         local row = rows[key] or CreateRow(itemID)
         rows[key] = row
         row:ClearAllPoints()
-        row:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, -5 - count * 36)
+        row:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, -HEADER_HEIGHT - 5 - count * 36)
         row.label:SetText(text)
         if itemID then row.icon:SetTexture(C_Item.GetItemIconByID(itemID)) end
         row:Show()
@@ -104,7 +119,7 @@ function overlay:Refresh()
         local name = C_Item.GetItemInfo(itemID) or ("item:" .. itemID)
         ShowRow(itemID, itemID, string.format(L["USE_ITEM"], name))
     end
-    frame:SetHeight(math.max(40, count * 36 + 10))
+    frame:SetHeight(HEADER_HEIGHT + math.max(40, count * 36 + 10))
     frame:SetShown(count > 0)
 end
 
