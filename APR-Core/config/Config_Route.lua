@@ -87,6 +87,8 @@ local function EnsurePrefabWrappedButtonWidget()
         text:SetWordWrap(false)
         APR:RegisterFontString(text, "general", { role = "base", sizeDelta = -2 })
 
+        if APR.RegisterSkinTarget then APR:RegisterSkinTarget(frame, "button") end
+
         local widget = {
             text = text,
             frame = frame,
@@ -429,6 +431,7 @@ local function CreateCustomPathTableFrame(name)
     scrollFrame.ScrollBar:SetPoint("TOPLEFT", scrollFrame, "TOPRIGHT", -16, -16)
     scrollFrame.ScrollBar:SetPoint("BOTTOMLEFT", scrollFrame, "BOTTOMRIGHT", -16, 16)
     frame.scrollFrame = scrollFrame
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(scrollFrame.ScrollBar, "scrollbar") end
 
     -- Create a content frame
     local contentFrame = CreateFrame("Frame", nil, scrollFrame)
@@ -562,6 +565,10 @@ function SetCustomPathListFrame(widget, name)
                 GameTooltip:Show()
             end)
             downButton:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
+            if APR.RegisterSkinTarget then
+                APR:RegisterSkinTarget(upButton, "arrow", { direction = "up" })
+                APR:RegisterSkinTarget(downButton, "arrow", { direction = "down" })
+            end
             if i == #routes then
                 downButton:Disable()
             end
@@ -678,6 +685,7 @@ local function CreateRouteSearchFrame(name)
     editBox:SetPoint("LEFT", label, "RIGHT", 8, 0)
     editBox:SetPoint("RIGHT", frame, "RIGHT", -10, 0)
     editBox:SetTextInsets(6, 6, 0, 0)
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(editBox, "editbox") end
     APR:RegisterFontString(editBox, "general", { role = "base" })
 
     editBox:SetScript("OnEscapePressed", function(self)

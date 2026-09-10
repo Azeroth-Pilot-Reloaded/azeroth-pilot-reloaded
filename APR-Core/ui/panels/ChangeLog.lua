@@ -27,6 +27,7 @@ headerFrame:SetSize(600, 150)
 local CloseButton = CreateFrame("Button", nil, headerFrame, "UIPanelCloseButton")
 CloseButton:SetSize(16, 16)
 CloseButton:SetPoint("TOPRIGHT", headerFrame, "TOPRIGHT", 0, -10)
+if APR.RegisterSkinTarget then APR:RegisterSkinTarget(CloseButton, "close") end
 CloseButton:SetScript("OnClick", function()
     ChangeLogFrame:Hide()
 end)

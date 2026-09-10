@@ -162,7 +162,7 @@ end
 --- Skin a UIPanelButtonTemplate button
 ---@param button table
 local function SkinButton(button)
-    if not button or IsSkinned(button) then return end
+    if not button or IsSkinned(button) or InCombatLockdown() then return end
     if S.HandleButton then
         S:HandleButton(button)
     end
@@ -173,7 +173,7 @@ end
 --- Keeping native icon textures avoids the black-square artifact with ElvUI HandleButton.
 ---@param button table
 local function SkinSettingsIconButton(button)
-    if not button or IsSkinned(button) then return end
+    if not button or IsSkinned(button) or InCombatLockdown() then return end
     button:SetNormalTexture("Interface\\Buttons\\UI-OptionsButton")
     button:SetPushedTexture("Interface\\Buttons\\UI-OptionsButton")
     button:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
@@ -183,7 +183,7 @@ end
 --- Skin a UIPanelCloseButton
 ---@param button table
 local function SkinCloseButton(button)
-    if not button or IsSkinned(button) then return end
+    if not button or IsSkinned(button) or InCombatLockdown() then return end
     if S.HandleCloseButton then
         S:HandleCloseButton(button)
     end
@@ -227,7 +227,7 @@ end
 --- Skin a scrollbar from a ScrollFrame
 ---@param scrollFrame table
 local function SkinScrollBar(scrollFrame)
-    if not scrollFrame then return end
+    if not scrollFrame or InCombatLockdown() then return end
     local name = scrollFrame.GetName and scrollFrame:GetName()
     local scrollbar = scrollFrame.ScrollBar or (name and _G[name .. "ScrollBar"])
     if scrollbar and not IsSkinned(scrollbar) and S.HandleScrollBar then
@@ -239,7 +239,7 @@ end
 --- Skin an ObjectiveTracker-style header
 ---@param header table
 local function SkinOTHeader(header)
-    if not header or IsSkinned(header) then return end
+    if not header or IsSkinned(header) or InCombatLockdown() then return end
     if header.StripTextures then
         header:StripTextures()
     end
@@ -529,11 +529,50 @@ end
 ------------------------------ Module Initialization ----------------------------------
 ---------------------------------------------------------------------------------------
 
+-- Explicit targets include anonymous controls that cannot be found by global names.
+local function SkinRegisteredTarget(frame, kind, options)
+    if kind == "button" then
+        SkinButton(frame)
+    elseif kind == "arrow" and not IsSkinned(frame) and S.HandleNextPrevButton then
+        local width, height = frame:GetSize()
+        S:HandleNextPrevButton(frame, options.direction, nil, nil, true, nil, width)
+        frame:SetSize(width, height)
+        MarkSkinned(frame)
+    elseif kind == "scrollbar" and not IsSkinned(frame) and S.HandleScrollBar then
+        S:HandleScrollBar(frame)
+        MarkSkinned(frame)
+    elseif kind == "close" then
+        local width, height = frame:GetSize()
+        SkinCloseButton(frame)
+        frame:SetSize(width, height)
+    elseif kind == "icon" and not IsSkinned(frame) and S.HandleIcon then
+        -- Style the texture only; never strip or rewrite secure item buttons.
+        S:HandleIcon(options.texture, true)
+        MarkSkinned(frame)
+    elseif kind == "borderedPanel" and not IsSkinned(frame) then
+        if frame.SetTemplate then frame:SetTemplate("Transparent") end
+        MarkSkinned(frame)
+    elseif kind == "header" then
+        SkinOTHeader(frame)
+    elseif kind == "settings" then
+        SkinSettingsIconButton(frame)
+    elseif kind == "editbox" and not IsSkinned(frame) and S.HandleEditBox then
+        S:HandleEditBox(frame)
+        MarkSkinned(frame)
+    end
+end
+
+local hooksInstalled = false
 function APR.ElvUISkin:OnEnable()
     if not IsElvUISkinEnabled() then return end
 
+    APR:RegisterSkinProvider("ElvUI", SkinRegisteredTarget, IsElvUISkinEnabled)
+    APR:RegisterStaticSkinTargets()
     SkinStaticFrames()
-    HookDynamicFrames()
+    if not hooksInstalled then
+        HookDynamicFrames()
+        hooksInstalled = true
+    end
     UpdateSnappedBackdrops()
 end
 
@@ -541,8 +580,9 @@ end
 function APR.ElvUISkin:ApplySkins()
     if not IsElvUISkinEnabled() then return end
 
-    -- Reset tracking so we can re-skin
-    skinnedFrames = {}
+    APR:RefreshRegisteredSkins()
+    if InCombatLockdown() then return end
+    APR:RegisterStaticSkinTargets()
 
     SkinStaticFrames()
 

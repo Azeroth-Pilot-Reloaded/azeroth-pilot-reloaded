@@ -377,6 +377,10 @@ function APR.currentStep:PreviousNextStepButton()
     skipButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
     skipButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
     CurrentStepFrame_StepHolder.skipButton = skipButton
+    if APR.RegisterSkinTarget then
+        APR:RegisterSkinTarget(rollbackButton, "arrow", { direction = "left" })
+        APR:RegisterSkinTarget(skipButton, "arrow", { direction = "right" })
+    end
 
     self.ButtonHide = function()
         rollbackButton:Hide()
