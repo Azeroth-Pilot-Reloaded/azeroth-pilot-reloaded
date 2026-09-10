@@ -229,44 +229,19 @@ level = 90
 bags[239142] = 1
 assert(#APR:GetLevelConsumableReminders("MidnightDelves") == 0, "No consumable reminders at level cap")
 
--- Reminder changes update only the current display; unchanged events do nothing.
+-- Inventory reminders now belong to the global overlay, never to guide steps.
 level, auras, bags = 87, {}, {}
 APR:RefreshLevelProfileTargets()
-APR.PlayerID = "player"
-APRData = { player = { test = 1 } }
-APR.RouteQuestStepList = { test = { XPConsumables = "MidnightDelves" } }
-local activeStep = {}
-function APR:GetStep() return activeStep end
 updates, lists = 0, 0
 bags[239142] = 1
 APR:RefreshLevelProfileTargets()
-assert(updates == 1 and lists == 0)
-for _ = 1, 100 do APR:RefreshLevelProfileTargets() end
-assert(updates == 1 and lists == 0, "Unchanged inventory does not rebuild the guide")
-local rows, buttons = {}, {}
-APR.currentStep = {
-    AddQuestSteps = function(_, id, text, objective, _, noTooltip)
-        assert(noTooltip)
-        rows[id .. "-" .. objective] = text
-    end,
-    AddStepButton = function(_, key, id, kind)
-        assert(rows[key] and kind == "item")
-        buttons[id] = true
-    end,
-}
-APR:ShowLevelConsumableReminders(activeStep)
-assert(buttons[239142], "Reminder uses the existing item button")
-activeStep.XPConsumables = false
-APR:RefreshLevelProfileTargets()
-assert(updates == 2 and lists == 0)
-assert(APR:GetActiveLevelConsumableProfile(activeStep) == false)
-activeStep.XPConsumables = nil
+assert(updates == 0 and lists == 0, "Inventory changes do not rebuild the guide")
+assert(APR:GetLevelConsumableReminders()[1] == 239142, "Global reminder works without route metadata")
 auras[1221184] = true
-APR:RefreshLevelProfileTargets()
-assert(APR:GetLevelProfileTarget("MidnightDelves") == 88.5)
+assert(#APR:GetLevelConsumableReminders() == 0, "Active buff suppresses the global reminder")
 auras[1221184] = nil
-APR:RefreshLevelProfileTargets()
-assert(APR:GetLevelConsumableReminders("MidnightDelves")[1] == 239142, "Expiry re-enables the reminder")
+assert(APR:GetLevelConsumableReminders()[1] == 239142, "Expiry re-enables the global reminder")
+
 auras = { [430191] = true, [1287282] = true, [1269518] = {}, [1221184] = true, [136583] = true }
 achievements, warMode = { [42332] = true }, true
 assert(APR:GetLevelProfileTarget("MidnightDelves", true) == 83.5, "Maximum configured bonus is 110%")

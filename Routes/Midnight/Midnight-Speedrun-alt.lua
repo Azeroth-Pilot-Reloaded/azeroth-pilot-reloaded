@@ -9,7 +9,6 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
         [APR.PREFAB_TYPES.Leveling] = 20,
     },
     mapID = 2393,
-    XPConsumables = "MidnightDelves",
     conditions = { Level = 80, MaxLevel = 90, HasAchievement = 42045 },
     requiredRoute = {},
     nextRoute = { "2395-The-War-of-Light-and-Shadow" },

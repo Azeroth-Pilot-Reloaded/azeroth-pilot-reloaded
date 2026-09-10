@@ -83,6 +83,10 @@ def audit_route(root, runtime):
 if __name__ == "__main__":
     root = Path(__file__).resolve().parents[2]
     os.chdir(root)
+    overlay_runtime = LuaRuntime(unpack_returned_tuples=True)
+    overlay_runtime.execute((root / "tools/validation/xp_overlay_persistence_test.lua").read_text(encoding="utf-8"))
+    if "--xp-overlay-only" in sys.argv:
+        sys.exit(0)
     if "--performance-only" not in sys.argv:
         runtime = LuaRuntime(unpack_returned_tuples=True)
         runtime.execute((root / "tools/validation/midnight_speedrun_alt_test.lua").read_text(encoding="utf-8"))

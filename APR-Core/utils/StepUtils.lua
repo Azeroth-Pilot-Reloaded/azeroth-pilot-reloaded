@@ -411,7 +411,18 @@ end
 function APR:GetStep(index)
     if (index and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]) then
         local steps = self:GetRouteSteps(APR.ActiveRoute)
-        return steps[index]
+        local source = steps[index]
+        if not source then return nil end
+        -- Navigation adjusts Coord/NoArrow for scenarios. Share a runtime copy
+        -- with the arrow and event handlers, preserving the route fingerprint.
+        local cached = self.runtimeRouteStep
+        if not cached or cached.source ~= source or cached.route ~= self.ActiveRoute or cached.index ~= index then
+            local step = {}
+            for key, value in pairs(source) do step[key] = value end
+            cached = { source = source, route = self.ActiveRoute, index = index, step = step }
+            self.runtimeRouteStep = cached
+        end
+        return cached.step
     end
     return nil
 end

@@ -376,7 +376,6 @@ local function UpdateStepOnce()
             end
         end
 
-        APR:ShowLevelConsumableReminders(step)
         if step.Buffs then
             APR.Buff:RemoveAllBuffIcon()
             for _, buff in pairs(step.Buffs) do
@@ -777,17 +776,6 @@ local function UpdateStepOnce()
             end
             if questToHighlight then
                 APR:TrackQuest(questToHighlight)
-            end
-        elseif (step.WarMode) then
-            -- The quest ID labels the step; quest completion does not enable War Mode.
-            if C_PvP.IsWarModeDesired() then
-                APR:Debug("APR.UpdateStep:WarMode:" .. APRData[APR.PlayerID][APR.ActiveRoute])
-
-                APR:UpdateNextStep()
-                return
-            else
-                -- War Mode activation is protected; the player must use Blizzard's UI.
-                APR.currentStep:AddQuestSteps(step.WarMode, L["TURN_ON_WARMODE"], "WarMode")
             end
         elseif step.UseItem then
             local questID = step.UseItem.questID
