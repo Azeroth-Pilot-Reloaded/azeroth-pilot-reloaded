@@ -153,6 +153,7 @@ function APR.settings:InitializeSettings()
             buffFrame = {},
             xpBuffFrame = { x = 280, y = 0, point = "CENTER" },
             showXPBuffOverlay = true,
+            hiddenXPBonuses = {},
             -- group
             groupFrame = {},
             showGroup = true,
@@ -376,17 +377,6 @@ function APR.settings:createBlizzOptions()
                         inline = true,
                         name = L["CURRENT_STEP"],
                         args = {
-                            showXPBuffOverlay = {
-                                order = 5.09,
-                                type = "toggle",
-                                name = L["XP_BUFF_OVERLAY"],
-                                width = optionsWidth,
-                                get = GetProfileOption,
-                                set = function(info, value)
-                                    SetProfileOption(info, value)
-                                    APR.XPBuffOverlay:Refresh()
-                                end,
-                            },
                             currentStepShow = {
                                 order = 5.1,
                                 type = "toggle",
@@ -613,6 +603,46 @@ function APR.settings:createBlizzOptions()
                     currentStepTextAppearance = TextStyleUtils:CreateAppearanceOptions(
                         "currentStepTextAppearance", "currentStep", 3,
                         TextStyleUtils.FRAME_TEXT_COLORS, true),
+                },
+            },
+            group_XP_Buff = {
+                order = 4.1,
+                type = "group",
+                name = L["XP_BUFF_OVERLAY"],
+                args = {
+                    subgroup_XP_Buff = {
+                        order = 1,
+                        type = "group",
+                        inline = true,
+                        name = L["XP_BUFF_OVERLAY"],
+                        args = {
+                            showXPBuffOverlay = {
+                                order = 5.09,
+                                type = "toggle",
+                                name = L["XP_BUFF_OVERLAY"],
+                                width = optionsWidth,
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.XPBuffOverlay:Refresh()
+                                end,
+                            },
+                            xpBonusSelection = {
+                                order = 5.095,
+                                type = "multiselect",
+                                name = L["XP_BUFF_BONUS_SELECTION"],
+                                desc = L["XP_BUFF_BONUS_SELECTION_DESC"],
+                                width = "full",
+                                values = function() return APR.XPBuffOverlay:GetBonusOptions() end,
+                                get = function(_, sourceName)
+                                    return APR.XPBuffOverlay:IsBonusEnabled(sourceName)
+                                end,
+                                set = function(_, sourceName, enabled)
+                                    APR.XPBuffOverlay:SetBonusEnabled(sourceName, enabled)
+                                end,
+                            },
+                        },
+                    },
                 },
             },
             group_gossip_automation = {

@@ -5,19 +5,67 @@ APR.XPBuffOverlay = APR:NewModule("XPBuffOverlay")
 local overlay = APR.XPBuffOverlay
 local rows = {}
 local frame
-local HEADER_HEIGHT = 26
 local PANEL_BACKDROP = {
     bgFile = "Interface\\Buttons\\WHITE8X8",
-    edgeFile = "Interface\\Buttons\\WHITE8X8",
-    edgeSize = 1,
+    tile = true,
+    tileSize = 16,
+    edgeFile = "Interface\\Tooltips\\UI-Tooltip-Border",
+    edgeSize = 16,
+    insets = { left = 4, right = 4, top = 4, bottom = 4 },
 }
+
+function overlay:IsBonusEnabled(sourceName)
+    local profile = APR.settings and APR.settings.profile
+    return not (profile and profile.hiddenXPBonuses and profile.hiddenXPBonuses[sourceName])
+end
+
+function overlay:SetBonusEnabled(sourceName, enabled)
+    local profile = APR.settings.profile
+    profile.hiddenXPBonuses = profile.hiddenXPBonuses or {}
+    profile.hiddenXPBonuses[sourceName] = not enabled or nil
+    self:Refresh()
+end
+
+function overlay:HideOverlay()
+    APR.settings.profile.showXPBuffOverlay = false
+    self:Refresh()
+end
+
+function overlay:GetBonusOptions()
+    local options = { WarMode = L["XP_BUFF_WAR_MODE"] }
+    for name, source in pairs(APR.LevelBonusSources) do
+        if source.items then
+            local spellID = source.auras and source.auras[1]
+            local spell = spellID and C_Spell.GetSpellInfo(spellID)
+            options[name] = spell and spell.name or C_Item.GetItemInfo(source.items[1]) or name
+        end
+    end
+    return options
+end
+
+local function GetItemBonusSource(itemID)
+    for name, source in pairs(APR.LevelBonusSources) do
+        for _, candidate in ipairs(source.items or {}) do
+            if candidate == itemID then return name end
+        end
+    end
+end
+
+local function SetDismissTooltip(button, message)
+    button:SetScript("OnEnter", function(self)
+        GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
+        GameTooltip:SetText(L[message], nil, nil, nil, nil, true)
+        GameTooltip:Show()
+    end)
+    button:SetScript("OnLeave", function() GameTooltip:Hide() end)
+end
 
 local function CreateRow(itemID)
     local row = CreateFrame("Frame", nil, frame)
     row:SetSize(290, 36)
     local button = CreateFrame("Button", nil, row, itemID and "SecureActionButtonTemplate" or nil)
     button:SetSize(30, 30)
-    button:SetPoint("LEFT", 3, 0)
+    button:SetPoint("LEFT", 6, 0)
     local icon = button:CreateTexture(nil, "ARTWORK")
     icon:SetAllPoints()
     icon:SetTexture(itemID and C_Item.GetItemIconByID(itemID) or 132272)
@@ -38,12 +86,23 @@ local function CreateRow(itemID)
     button:SetScript("OnLeave", function() GameTooltip:Hide() end)
     local label = row:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     label:SetPoint("LEFT", button, "RIGHT", 8, 0)
-    label:SetPoint("RIGHT", row, "RIGHT", -5, 0)
+    label:SetPoint("RIGHT", row, "RIGHT", -28, 0)
     label:SetJustifyH("LEFT")
     APR:RegisterFontString(label, "general")
     row.label, row.icon = label, icon
+    local dismiss = CreateFrame("Button", nil, row, "UIPanelCloseButton")
+    dismiss:SetSize(20, 20)
+    dismiss:SetPoint("RIGHT", row, "RIGHT", -3, 0)
+    dismiss:SetScript("OnClick", function()
+        overlay:SetBonusEnabled(row.bonusSource, false)
+    end)
+    SetDismissTooltip(dismiss, "XP_BUFF_HIDE_BONUS_DESC")
+    row.dismissButton = dismiss
     button.Icon = icon
-    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "icon", { texture = icon }) end
+    if APR.RegisterSkinTarget then
+        APR:RegisterSkinTarget(button, "icon", { texture = icon })
+        APR:RegisterSkinTarget(dismiss, "close")
+    end
     row:Hide()
     return row
 end
@@ -62,28 +121,22 @@ function overlay:Refresh()
         frame:SetMovable(true)
         frame:SetFrameStrata("LOW")
         frame:SetBackdrop(PANEL_BACKDROP)
-        frame:SetBackdropBorderColor(0.35, 0.35, 0.35, 1)
-        local header = CreateFrame("Frame", "APRXPBuffOverlayHeader", frame, "BackdropTemplate")
+        frame:SetBackdropBorderColor(1, 0.8, 0, 0.8)
+        local header = APR:CreateFrameHeader("APRXPBuffOverlayHeader", frame, L["XP_BUFF_OVERLAY"],
+            "ObjectiveTrackerContainerHeaderTemplate", "general")
         frame.Header = header
-        header:SetPoint("TOPLEFT")
-        header:SetPoint("TOPRIGHT")
-        header:SetHeight(HEADER_HEIGHT)
-        header:SetBackdrop(PANEL_BACKDROP)
-        header:SetBackdropColor(0.08, 0.08, 0.08, 0.95)
-        header:SetBackdropBorderColor(0.35, 0.35, 0.35, 1)
+        header:SetPoint("BOTTOM", frame, "TOP", 0, -1)
+        header:SetWidth(300)
         header:EnableMouse(true)
-        local title = header:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-        header.Text = title
-        title:SetPoint("LEFT", 10, 0)
-        title:SetPoint("RIGHT", -10, 0)
-        title:SetJustifyH("LEFT")
-        title:SetText(L["XP_BUFF_OVERLAY"])
-        APR:RegisterFontString(title, "general", { role = "accent" })
-        header:SetScript("OnMouseDown", function()
-            if not InCombatLockdown() then frame:StartMoving() end
+        header.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
+        header.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
+        header.MinimizeButton:SetScript("OnClick", function() overlay:HideOverlay() end)
+        SetDismissTooltip(header.MinimizeButton, "XP_BUFF_HIDE_OVERLAY_DESC")
+        header:SetScript("OnMouseDown", function(_, mouseButton)
+            if mouseButton == "LeftButton" and not InCombatLockdown() then frame:StartMoving() end
         end)
-        header:SetScript("OnMouseUp", function()
-            if not InCombatLockdown() then
+        header:SetScript("OnMouseUp", function(_, mouseButton)
+            if mouseButton == "LeftButton" and not InCombatLockdown() then
                 frame:StopMovingOrSizing()
                 LibWindow.SavePosition(frame)
             end
@@ -91,7 +144,8 @@ function overlay:Refresh()
     end
     if APR.RegisterSkinTarget then
         APR:RegisterSkinTarget(frame, "borderedPanel")
-        APR:RegisterSkinTarget(frame.Header, "borderedPanel")
+        APR:RegisterSkinTarget(frame.Header, "header")
+        APR:RegisterSkinTarget(frame.Header.MinimizeButton, "close")
     end
     if self.positionConfig ~= profile.xpBuffFrame then
         profile.xpBuffFrame = profile.xpBuffFrame or { x = 280, y = 0, point = "CENTER" }
@@ -107,11 +161,13 @@ function overlay:Refresh()
         return
     end
     local count = 0
-    local function ShowRow(key, itemID, text)
+    local function ShowRow(key, itemID, text, sourceName)
+        if not self:IsBonusEnabled(sourceName) then return end
         local row = rows[key] or CreateRow(itemID)
         rows[key] = row
+        row.bonusSource = sourceName
         row:ClearAllPoints()
-        row:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, -HEADER_HEIGHT - 5 - count * 36)
+        row:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, -8 - count * 36)
         row.label:SetText(text)
         if itemID then row.icon:SetTexture(C_Item.GetItemIconByID(itemID)) end
         row:Show()
@@ -119,13 +175,13 @@ function overlay:Refresh()
     end
     if not C_PvP.IsWarModeActive() and not C_PvP.IsWarModeDesired() and
         UnitLevel("player") >= 20 then
-        ShowRow("WarMode", nil, L["TURN_ON_WARMODE"])
+        ShowRow("WarMode", nil, L["TURN_ON_WARMODE"], "WarMode")
     end
     for _, itemID in ipairs(APR:GetLevelConsumableReminders()) do
         local name = C_Item.GetItemInfo(itemID) or ("item:" .. itemID)
-        ShowRow(itemID, itemID, string.format(L["USE_ITEM"], name))
+        ShowRow(itemID, itemID, string.format(L["USE_ITEM"], name), GetItemBonusSource(itemID))
     end
-    frame:SetHeight(HEADER_HEIGHT + math.max(40, count * 36 + 10))
+    frame:SetHeight(math.max(40, count * 36 + 16))
     frame:SetShown(count > 0)
 end
 
