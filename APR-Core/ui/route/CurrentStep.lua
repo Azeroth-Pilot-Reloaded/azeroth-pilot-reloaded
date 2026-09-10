@@ -342,7 +342,8 @@ hooksecurefunc(ObjectiveTrackerFrame, "Update",
 local function CreateButton(name, parent, width, height, text, script)
     local button = CreateFrame("Button", name, parent, "BackdropTemplate")
     button:SetSize(width, height)
-    button:SetText(text)
+    -- ElvUI arrow skinning strips text fontstrings from buttons; these controls use
+    -- icon textures, not visible text, so avoid creating a fontstring before the skin runs.
     button:SetScript("OnClick", script)
     button:SetScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
