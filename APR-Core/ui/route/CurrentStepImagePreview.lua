@@ -284,7 +284,7 @@ local function CreateOverlayWindow(imagePath)
         end)
 
         if APR.RegisterSkinTarget then
-            APR:RegisterSkinTarget(panel, "panel", { preserveBackground = true })
+            APR:RegisterSkinTarget(panel, "panel", { preserveContent = true })
             APR:RegisterSkinTarget(closeButton, "close")
         end
 
@@ -628,6 +628,7 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
     container:SetBackdropColor(unpack(APR.settings.profile.currentStepbackgroundColorAlpha or APR.Color.defaultBackdrop))
     container.key = STEP_PREVIEW_CONTAINER_KEY
     container.imagePaths = imagePaths
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(container, "row") end
     container.previewButtons = {}
 
     for _, imagePath in ipairs(imagePaths) do
@@ -672,6 +673,7 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
             end
         end)
 
+        if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "panel", { preserveContent = true }) end
         table.insert(container.previewButtons, button)
     end
 

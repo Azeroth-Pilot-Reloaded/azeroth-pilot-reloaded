@@ -144,6 +144,10 @@ local ROLE_KEYS = {
 }
 
 function APR:GetTextColor(scope, role)
+    if self.EllesmereUISkin then
+        local themed = self.EllesmereUISkin:GetTextColor(role)
+        if themed then return themed end
+    end
     local scoped, general = GetAppearance(scope)
     local key = ROLE_KEYS[role or "base"] or "color"
 
@@ -273,20 +277,24 @@ function APR:ApplyTextStyle(fontString, scope, options)
     end
     size = math.max(6, size + (options.sizeDelta or 0))
 
-    local fontFlags = NormalizeFontFlags(typography.flags)
-    local applied = fontString:SetFont(ResolveFont(typography.font), size, fontFlags)
+    local themedFont, themedFlags
+    if self.EllesmereUISkin then themedFont, themedFlags = self.EllesmereUISkin:GetFont() end
+    local fontFlags = NormalizeFontFlags(themedFont and themedFlags or typography.flags)
+    local applied = fontString:SetFont(themedFont or ResolveFont(typography.font), size, fontFlags)
     if not applied then
         fontString:SetFont(ResolveFont(nil), size, fontFlags)
     end
+    if themedFont then self.EllesmereUISkin:ApplyFont(fontString) end
 
     if fontString.SetTextColor and not options.preserveColor then
         local color
-        if options.colorProfileKey then
+        if options.colorProfileKey and not themedFont then
             local profile = GetProfile()
             color = profile and profile[options.colorProfileKey]
         end
         color = color or self:GetTextColor(scope, options.role)
         fontString:SetTextColor(color[1], color[2], color[3], color[4] or 1)
+        if self.EllesmereUISkin then self.EllesmereUISkin:ApplyHeaderTextColor(fontString) end
     end
 
     if options.onApplied then

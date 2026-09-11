@@ -7,7 +7,22 @@ function CreateFrame()
     local frame = { scripts = {}, width = 30, height = 24, attributes = { type = "item", item = "item:239142" } }
     function frame:RegisterEvent(event) self.event = event end
     function frame:SetScript(event, callback) self.scripts[event] = callback end
-    function frame:HookScript(event, callback) self.scripts[event] = callback end
+    function frame:HookScript(event, callback)
+        local previous = self.scripts[event]
+        self.scripts[event] = function(...) if previous then previous(...) end; callback(...) end
+    end
+    function frame:GetFontString() return self.label end
+    function frame:SetFontString(label) self.label = label end
+    function frame:CreateFontString() return CreateFrame() end
+    function frame:CreateTexture() return CreateFrame() end
+    function frame:SetText(text) self.text = text end
+    function frame:SetShown(shown) self.shown = shown end
+    function frame:SetTextColor(...) self.color = { ... } end
+    function frame:SetColorTexture(...) self.color = { ... } end
+    function frame:SetVertexColor(...) self.color = { ... } end
+    function frame:GetFrameLevel() return 1 end
+    frame.SetPoint, frame.SetHeight, frame.SetAllPoints = noop, noop, noop
+    frame.SetFrameLevel, frame.EnableMouse, frame.SetBackdrop = noop, noop, noop
     function frame:GetSize() return self.width, self.height end
     function frame:SetSize(width, height) assert(not combat); self.width, self.height = width, height end
     function frame:SetTemplate(template) assert(not combat); self.template = template end
@@ -26,6 +41,8 @@ local function record(kind, frame)
     assert(not combat, "Never skin protected controls in combat")
     calls[kind] = (calls[kind] or 0) + 1
     frame.skin = kind
+    frame.skinned = frame.skinned or {}
+    frame.skinned[kind] = true
 end
 function S:HandleButton(frame) record("button", frame) end
 function S:HandleNextPrevButton(frame, direction)
@@ -102,13 +119,18 @@ dofile("APR-Core/integrations/EllesmereUISkin.lua")
 assert(callback, "Register through the public API, not private EUI globals")
 local eui = { IsEnabled = function() return euiEnabled end }
 for _, kind in ipairs({ "Button", "PageButton", "ScrollBar", "CloseButton", "SquareIcon",
-    "Panel", "Shell", "EditBox", "Font", "StateButtonLabel" }) do
+    "Panel", "Shell", "EditBox", "Font", "StateButtonLabel", "FadeRegions", "ApplyBarFill" }) do
     local method = kind
     eui[method] = function(frame, options)
         record(method, frame)
         frame.options = options
     end
 end
+local looksChanged, refreshes = nil, 0
+eui.GetFont = function() return "EUI-font.ttf", "OUTLINE" end
+eui.GetAccentColor = function() return 0, 0.8, 0.6 end
+eui.OnLooksChanged = function(fn) looksChanged = fn end
+function APR:RefreshTextAppearance() refreshes = refreshes + 1 end
 euiEnabled = true
 APR.settings.profile.ellesmereuiSkin = false
 local latePreset = CreateFrame()
@@ -124,22 +146,15 @@ ElvUI = nil
 callback(eui)
 assert(latePreset.skin == "Button")
 local nextButton, vertical, overlayPanel, imagePanel, secureIcon = CreateFrame(), CreateFrame(), CreateFrame(), CreateFrame(), CreateFrame()
-function vertical:CreateFontString()
-    local label = CreateFrame()
-    label.SetPoint = noop
-    function label:SetText(text) self.text = text end
-    return label
-end
-function vertical:SetFontString(label) self.label = label end
 APR:RegisterSkinTarget(nextButton, "arrow", { direction = "right" })
 APR:RegisterSkinTarget(vertical, "arrow", { direction = "up" })
 APR:RegisterSkinTarget(overlayPanel, "borderedPanel")
-APR:RegisterSkinTarget(imagePanel, "panel", { preserveBackground = true })
+APR:RegisterSkinTarget(imagePanel, "panel", { preserveContent = true })
 APR:RegisterSkinTarget(secureIcon, "icon", { texture = icon })
 assert(nextButton.skin == "PageButton" and nextButton.options == ">")
 assert(vertical.label.text == "▲" and vertical.width == 30 and vertical.height == 24)
 assert(overlayPanel.skin == "Panel")
-assert(not imagePanel.skin, "Skinning must not fade the preview image or APR-managed backgrounds")
+assert(not imagePanel.skin and frames[#frames].skin == "Panel", "A separate panel protects preview image textures")
 assert(icon.skin == "SquareIcon" and not secureIcon.skin and secureIcon.attributes.item == "item:239142")
 local minimize = CreateFrame()
 local normal, pushed, disabled = {}, {}, {}
@@ -147,17 +162,40 @@ function minimize:GetNormalTexture() return normal end
 function minimize:GetPushedTexture() return pushed end
 function minimize:GetDisabledTexture() return disabled end
 minimize:SetScript("OnClick", onClick)
-APR:RegisterSkinTarget(minimize, "headerButton")
-assert(minimize.APRNormalIcon == normal and minimize.APRPushedIcon == pushed and minimize.APRDisabledIcon == disabled)
-assert(minimize.scripts.OnClick == onClick, "Keep APR collapse actions and live atlas states")
+local parent = CreateFrame()
+APR:RegisterSkinTarget(parent, "panel", { preserveBackground = true })
+local background = frames[#frames]
+APR:RegisterSkinTarget(minimize, "headerButton", { parent = parent })
+local glyph = frames[#frames]
+assert(glyph.text == "−" and minimize:GetNormalTexture() == normal)
+parent.collapsed = true
+minimize.scripts.OnClick()
+assert(clicked == 2 and glyph.text == "+", "Keep APR collapse actions while updating the theme glyph")
+assert(background.shown == false, "Collapsing a window also hides its themed body background")
+local header = CreateFrame()
+header.Text = CreateFrame()
+APR:RegisterSkinTarget(header, "header")
+assert(header.Text.color[2] == 0.8)
+assert(APR.EllesmereUISkin:GetFont() == "EUI-font.ttf")
+assert(APR.EllesmereUISkin:GetTextColor("success")[2] == 1)
+local beforeRefresh = refreshes
+looksChanged()
+assert(refreshes == beforeRefresh + 1, "Live theme changes refresh existing APR text")
 combat = true
+looksChanged()
+assert(refreshes == beforeRefresh + 1, "Theme relayout is deferred during combat")
 local deferredEUI = CreateFrame()
 APR:RegisterSkinTarget(deferredEUI, "editbox")
 assert(not deferredEUI.skin)
 combat = false
 events.scripts.OnEvent()
-assert(deferredEUI.skin == "EditBox")
+for _, frame in ipairs(frames) do
+    if frame.event == "PLAYER_REGEN_ENABLED" and frame ~= events then frame.scripts.OnEvent() end
+end
+assert(refreshes == beforeRefresh + 2)
+assert(deferredEUI.skinned.EditBox and deferredEUI.skinned.Font)
 euiEnabled = false
+assert(APR.EllesmereUISkin:GetFont() == nil and APR.EllesmereUISkin:GetTextColor("base") == nil)
 local euiNative = CreateFrame()
 APR:RegisterSkinTarget(euiNative, "button")
 assert(not euiNative.skin, "EllesmereUI's own per-addon switch is respected")
@@ -168,3 +206,21 @@ local count = calls.Button
 APR:RefreshRegisteredSkins()
 assert(calls.Button == count, "No duplicate styling or theme hooks")
 print("PASS: EllesmereUI public API, optional/old clients, late controls, provider priority, images and secure actions")
+
+-- Exercise the real text registry: later layout updates must not undo the skin.
+local media = { GetDefault = function() return "Native" end, Fetch = function() return "native.ttf" end }
+function LibStub() return media end
+function APR:ResolveUIFileAsset(path) return path end
+dofile("APR-Core/ui/foundations/TextStyles.lua")
+local text = CreateFrame()
+function text:SetFont(path, size, flags) self.font, self.size, self.flags = path, size, flags; return true end
+local reflows = 0
+APR:RegisterFontString(text, "currentStep", { role = "base", sizeDelta = 2,
+    onApplied = function() reflows = reflows + 1 end })
+assert(text.font == "EUI-font.ttf" and text.size == 14 and text.color[1] == 0.72 and reflows == 1)
+APR:SetFontStringRole(text, "success")
+assert(text.font == "EUI-font.ttf" and text.color[1] == 0.25 and reflows == 2)
+APR.settings.profile.ellesmereuiSkin = false
+APR:ApplyAllTextStyles()
+assert(text.font == "native.ttf" and text.color[1] == 0, "Disabled EUI restores native text preferences")
+print("PASS: EllesmereUI dynamic fonts, semantic colors, relayout callbacks and native fallback")

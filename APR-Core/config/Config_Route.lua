@@ -430,6 +430,7 @@ local function CreateCustomPathTableFrame(name)
     scrollFrame:SetAllPoints()
     scrollFrame.ScrollBar:SetPoint("TOPLEFT", scrollFrame, "TOPRIGHT", -16, -16)
     scrollFrame.ScrollBar:SetPoint("BOTTOMLEFT", scrollFrame, "BOTTOMRIGHT", -16, 16)
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(frame, "panel") end
     frame.scrollFrame = scrollFrame
     if APR.RegisterSkinTarget then APR:RegisterSkinTarget(scrollFrame.ScrollBar, "scrollbar") end
 

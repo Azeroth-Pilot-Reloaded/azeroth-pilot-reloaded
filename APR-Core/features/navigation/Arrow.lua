@@ -151,6 +151,7 @@ local t = APR.ArrowFrame.Button:CreateTexture(nil, "BACKGROUND")
 t:SetTexture("Interface\\DialogFrame\\UI-DialogBox-Background")
 t:SetAllPoints(APR.ArrowFrame.Button)
 APR.ArrowFrame.Button.texture = t
+if APR.RegisterSkinTarget then APR:RegisterSkinTarget(APR.ArrowFrame.Button, "button") end
 
 APR.ArrowFrame.Fontstring = APR.ArrowFrame:CreateFontString("CLSettingsFS2212", "ARTWORK", "ChatFontNormal")
 APR.ArrowFrame.Fontstring:SetParent(APR.ArrowFrame.Button)

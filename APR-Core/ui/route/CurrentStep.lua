@@ -450,6 +450,7 @@ function APR.currentStep:ProgressBar(key, total, current)
         end
         APR:RegisterFontString(progressBarText, "currentStep", { role = "base" })
 
+        if APR.RegisterSkinTarget then APR:RegisterSkinTarget(progressBar, "statusbar") end
         self.progressBar = progressBar
         self.progressBar.Text = progressBarText
         self.progressBar.key = key
@@ -477,6 +478,7 @@ function APR.currentStep:UpdateProgressBarColor(barOverride)
         { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
     local targetBar = barOverride or self.progressBar
     if targetBar then
+        if APR.EllesmereUISkin and APR.EllesmereUISkin:ApplyBarFill(targetBar) then return end
         targetBar:SetStatusBarColor(unpack(color))
     end
 end
@@ -549,6 +551,7 @@ local function AddExtraLineDividerFrame()
     dividerLine:SetVertexColor(0.78, 0.66, 0.35, 0.95)
 
     container.dividerLine = dividerLine
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(container, "divider") end
     return container
 end
 
@@ -1356,6 +1359,9 @@ function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
 
     RaidIconButton.npcID = npcID
     container.RaidIconButton = RaidIconButton
+    if APR.RegisterSkinTarget then
+        APR:RegisterSkinTarget(RaidIconButton, "icon", { texture = RaidIconButton:GetNormalTexture() })
+    end
     self.raidIconButton = RaidIconButton
     self:UpdateRaidIconButtonMacro()
 end
@@ -1494,6 +1500,9 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     IconButton.itemID = itemID
     IconButton.attribute = attribute
     container.IconButton = IconButton
+    if APR.RegisterSkinTarget then
+        APR:RegisterSkinTarget(IconButton, "icon", { texture = IconButton:GetNormalTexture() })
+    end
 
     local actionID = tonumber(itemID) or itemID
     if (attribute == "spell" or attribute == "item") and actionID ~= nil then

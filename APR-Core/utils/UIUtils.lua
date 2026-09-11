@@ -609,6 +609,7 @@ function APR:CreateFrameHeader(name, parent, text, template, textScope)
     local header = CreateFrame("Frame", name, parent, template or "ObjectiveTrackerModuleHeaderTemplate")
     header.Text:SetText(text)
     self:RegisterFontString(header.Text, textScope or "general", { role = "accent", sizeDelta = 2 })
+    if self.RegisterSkinTarget then self:RegisterSkinTarget(header, "header") end
     return header
 end
 
@@ -686,6 +687,7 @@ function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, ba
     end
 
     container.font = font
+    if self.RegisterSkinTarget then self:RegisterSkinTarget(container, "row") end
     container.showLeadingDash = useLeadingDash
     return container
 end
