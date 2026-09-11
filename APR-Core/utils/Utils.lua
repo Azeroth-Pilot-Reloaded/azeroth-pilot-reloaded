@@ -1,5 +1,22 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+local invalidLocalizedFormats = {}
+
+-- Community translations can contain invalid printf directives (e.g. %S or %1$s).
+-- A bad translation must never abort route progression or temporary-route cleanup.
+function APR:FormatLocalizedText(key, fallback, ...)
+    local template = L[key]
+    if type(template) == "string" and template ~= key then
+        local ok, text = pcall(string.format, template, ...)
+        if ok then return text end
+        if not invalidLocalizedFormats[key] then
+            invalidLocalizedFormats[key] = true
+            if self.Debug then self:Debug("Invalid localized format", key, template) end
+        end
+    end
+    return string.format(fallback, ...)
+end
+
 --[[
     Technical-only helpers.
     Gameplay and feature-specific utilities now live in dedicated files to keep this module focused on reusable primitives.

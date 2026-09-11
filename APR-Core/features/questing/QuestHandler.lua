@@ -314,7 +314,7 @@ local function UpdateStepOnce()
             end
 
             APR.currentStep:AddQuestSteps("ENTER_IN_" .. scenarioInfo.type,
-                format(L["ENTER_IN"], L[scenarioInfo.type], mapInfo.name), mapInfo.name)
+                APR:FormatLocalizedText("ENTER_IN", "Enter %s: %s", L[scenarioInfo.type], mapInfo.name), mapInfo.name)
             step.Coord = scenarioInfo.Coord
             APR.Arrow:SetCoord()
         elseif step.DoScenario then
@@ -345,7 +345,7 @@ local function UpdateStepOnce()
             APR.Arrow:SetCoord()
 
             APR.currentStep:AddQuestSteps("COMPLETE_SOMETHING_" .. scenarioInfo.type,
-                format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type], mapInfo.name), mapInfo.name)
+                APR:FormatLocalizedText("COMPLETE_SOMETHING", "Complete %s: %s", L[scenarioInfo.type], mapInfo.name), mapInfo.name)
         elseif step.LeaveScenario then
             local scenarioMapID = step.LeaveScenario.mapID
             local questID = step.LeaveScenario.questID
@@ -359,7 +359,7 @@ local function UpdateStepOnce()
 
             if scenarioInfo then
                 APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
-                    format(L["LEAVE_" .. scenarioInfo.type], mapInfo.name), mapInfo.name)
+                    APR:FormatLocalizedText("LEAVE_" .. scenarioInfo.type, "Leave %s", mapInfo.name), mapInfo.name)
             end
         elseif step.LeaveInstance then
             local instanceMapID = step.LeaveInstance.mapID
@@ -372,7 +372,7 @@ local function UpdateStepOnce()
 
             if scenarioInfo then
                 APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
-                    format(L["LEAVE_" .. scenarioInfo.type], mapInfo.name), mapInfo.name)
+                    APR:FormatLocalizedText("LEAVE_" .. scenarioInfo.type, "Leave %s", mapInfo.name), mapInfo.name)
             end
         end
 

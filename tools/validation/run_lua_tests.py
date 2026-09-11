@@ -83,6 +83,8 @@ def audit_route(root, runtime):
 if __name__ == "__main__":
     root = Path(__file__).resolve().parents[2]
     os.chdir(root)
+    transition_runtime = LuaRuntime(unpack_returned_tuples=True)
+    transition_runtime.execute((root / "tools/validation/route_transition_test.lua").read_text(encoding="utf-8"))
     skin_runtime = LuaRuntime(unpack_returned_tuples=True)
     skin_runtime.execute((root / "tools/validation/ui_skin_test.lua").read_text(encoding="utf-8"))
     if "--skins-only" in sys.argv:
