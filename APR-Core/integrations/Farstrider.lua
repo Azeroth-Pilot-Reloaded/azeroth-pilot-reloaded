@@ -11,6 +11,7 @@ APR.farstrider.showOutOfZoneStepContent = false
 
 local ARRIVAL_DISTANCE = 15
 local ROUTING_RETRY_DELAY = 1.5
+local PATH_CACHE_TTL = 10
 
 local function InstallSecretSafeFarstriderPredicates()
     -- Do not patch bundled library files. Replace only the runtime predicates exposed by the
@@ -312,12 +313,17 @@ function APR.farstrider:ClearActivePath()
     self.activePathStep = nil
 end
 
+function APR.farstrider:InvalidatePathCache()
+    self._pathCache = nil
+end
+
 function APR.farstrider:MarkRouteReady()
     local shouldRefreshStep = APR.IsInRouteZone == false or
         self.showOutOfZoneStepContent or self.activePathStep ~= nil
     APR.IsInRouteZone = true
     self.showOutOfZoneStepContent = false
     self._retryPending = false
+    self:InvalidatePathCache()
     self:ClearActivePath()
 
     if shouldRefreshStep then
@@ -386,6 +392,7 @@ function APR.farstrider:OnArrowUpdate(distance)
     end
 
     self._lastArrivalCheck = now
+    self:InvalidatePathCache()
     self:ForceRefresh()
     self:GetMeToRightZone(true)
 end
@@ -521,12 +528,15 @@ function APR.farstrider:GetMeToRightZone(isRetry)
     end
     self._routingForceRefresh = nil
 
-    if not C_Map.GetBestMapForUnit("player") then
+    local playerMapID = C_Map.GetBestMapForUnit("player")
+    if not playerMapID then
         APR:Debug("Farstrider: map API not ready")
         return
     end
 
+    local contextProfileStart = APR:StartPerformanceSample()
     local playerContext = APR:ResolvePlayerZoneContext()
+    APR:FinishPerformanceSample("ZoneRoutingContext", contextProfileStart)
     if not playerContext.allRelevant or #playerContext.allRelevant == 0 then
         APR:Debug("Farstrider: player zone context is not ready")
         return
@@ -550,7 +560,9 @@ function APR.farstrider:GetMeToRightZone(isRetry)
         return
     end
 
+    local questProfileStart = APR:StartPerformanceSample()
     APR:UpdateQuestAndStep()
+    APR:FinishPerformanceSample("ZoneRoutingQuestSync", questProfileStart)
     local step = GetCurrentRouteStep()
     if not step then
         return
@@ -575,20 +587,40 @@ function APR.farstrider:GetMeToRightZone(isRetry)
     end
 
     local requiresScenarioNavigation = RequiresScenarioNavigation(step)
+    local zoneProfileStart = APR:StartPerformanceSample()
     local isInRouteZone = APR:CheckIsInRouteZone()
+    APR:FinishPerformanceSample("ZoneRoutingZoneCheck", zoneProfileStart)
     local api, missingDependencies = GetFarstriderAPI()
     local pathCallOk = false
     local optimizedPath
     if api and destination then
-        pathCallOk, optimizedPath = pcall(
-            api.FindTrailTo,
-            destination.mapID,
-            destination.x,
-            destination.y,
-            0
-        )
-        if not pathCallOk then
-            APR:Debug("FarstriderLib FindTrailTo failed:", optimizedPath)
+        local stepIndex = APRData[APR.PlayerID] and APRData[APR.PlayerID][APR.ActiveRoute]
+        local cacheKey = string.format("%s|%s|%s|%s|%.5f|%.5f",
+            tostring(playerMapID), tostring(APR.ActiveRoute), tostring(step._index or stepIndex),
+            tostring(destination.mapID), destination.x or 0, destination.y or 0)
+        local pathCache = self._pathCache
+        if pathCache and pathCache.key == cacheKey and now < pathCache.expires then
+            pathCallOk, optimizedPath = true, pathCache.path
+        else
+            local pathProfileStart = APR:StartPerformanceSample()
+            pathCallOk, optimizedPath = pcall(
+                api.FindTrailTo,
+                destination.mapID,
+                destination.x,
+                destination.y,
+                0
+            )
+            APR:FinishPerformanceSample("FarstriderFindTrailTo", pathProfileStart)
+            if pathCallOk then
+                self._pathCache = {
+                    key = cacheKey,
+                    path = optimizedPath,
+                    expires = now + PATH_CACHE_TTL,
+                }
+            else
+                self:InvalidatePathCache()
+                APR:Debug("FarstriderLib FindTrailTo failed:", optimizedPath)
+            end
         end
     end
 
@@ -624,7 +656,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
         self._retryPending = true
         C_Timer.After(ROUTING_RETRY_DELAY, function()
             self._retryPending = false
-            if APR.IsInRouteZone or not APR.ActiveRoute then
+            if APR.IsInRouteZone or self:IsNavigating() or not APR.ActiveRoute then
                 return
             end
 

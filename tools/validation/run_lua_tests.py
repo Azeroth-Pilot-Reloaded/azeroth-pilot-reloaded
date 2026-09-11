@@ -36,7 +36,7 @@ def audit_route(root, runtime):
                 objectives[quest].update(indexes.values())
 
     scripts = [element.attrib["file"] for element in ET.parse(root / "Routes/RouteList.xml").getroot()]
-    route_file = f"Routes/Midnight/midnight-Speedrun/{key}.lua"
+    route_file = "Routes/Midnight/Midnight-Speedrun-alt.lua"
     assert scripts.count(route_file) == 1, "The route must be loaded exactly once"
     assert all((root / path).is_file() for path in scripts), "A registered route file is missing"
     toc = (root / "APR.toc").read_text(encoding="utf-8-sig")
@@ -85,6 +85,16 @@ if __name__ == "__main__":
     os.chdir(root)
     transition_runtime = LuaRuntime(unpack_returned_tuples=True)
     transition_runtime.execute((root / "tools/validation/route_transition_test.lua").read_text(encoding="utf-8"))
+    zone_performance_runtime = LuaRuntime(unpack_returned_tuples=True)
+    zone_performance_runtime.execute(
+        (root / "tools/validation/zone_transition_performance_test.lua").read_text(encoding="utf-8")
+    )
+    farstrider_performance_runtime = LuaRuntime(unpack_returned_tuples=True)
+    farstrider_performance_runtime.execute(
+        (root / "tools/validation/farstrider_routing_performance_test.lua").read_text(encoding="utf-8")
+    )
+    if "--zone-performance-only" in sys.argv:
+        sys.exit(0)
     skin_runtime = LuaRuntime(unpack_returned_tuples=True)
     skin_runtime.execute((root / "tools/validation/ui_skin_test.lua").read_text(encoding="utf-8"))
     settings_runtime = LuaRuntime(unpack_returned_tuples=True)
