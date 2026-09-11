@@ -62,7 +62,7 @@ end, function()
     end
 end, function()
     -- Right-click handler
-    MenuUtil.CreateContextMenu(UIParent, APR.GetMenu)
+    MenuUtil.CreateContextMenu(CurrentStepFrameHeader, APR.GetMenu)
 end)
 
 -- Also setup drag via RegisterForDrag for smoother behavior
@@ -82,12 +82,12 @@ end)
 
 -- Create the settings button (left of minimize button)
 local CurrentStepFrameSettingsButton = CreateFrame("Button", "CurrentStepFrameSettingsButton", CurrentStepFrameHeader)
-CurrentStepFrameSettingsButton:SetSize(16, 16)
+CurrentStepFrameSettingsButton:SetSize(22, 22)
 CurrentStepFrameSettingsButton:SetPoint("RIGHT", CurrentStepFrameHeader.MinimizeButton, "LEFT", -3, 0)
 CurrentStepFrameSettingsButton:SetNormalTexture("Interface\\Buttons\\UI-OptionsButton")
 CurrentStepFrameSettingsButton:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
 CurrentStepFrameSettingsButton:SetScript("OnClick", function(self, button)
-    MenuUtil.CreateContextMenu(UIParent, APR.GetMenu)
+    MenuUtil.CreateContextMenu(self, APR.GetMenu)
 end)
 CurrentStepFrameSettingsButton:SetScript("OnEnter", function(self)
     GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
@@ -1776,7 +1776,11 @@ function APR.GetMenu(owner, rootDescription)
         end)
     end
 
-    rootDescription:CreateTitle(APR.title)
+    local function sectionTitle(text)
+        return APR:WrapTextWithAppearanceColor(text, "currentStep", "accent")
+    end
+
+    rootDescription:CreateTitle(sectionTitle(APR.title))
 
     rootDescription:CreateButton(L["SHOW_MENU"], function()
         APR.settings:OpenSettings(APR.title)
@@ -1800,7 +1804,7 @@ function APR.GetMenu(owner, rootDescription)
     end)
 
     rootDescription:CreateDivider()
-    rootDescription:CreateTitle(L["CURRENT_STEP"])
+    rootDescription:CreateTitle(sectionTitle(L["CURRENT_STEP"]))
 
     createToggleItem(L["QLIST_ATTACH_QUESTLOG"], function()
         return APR.settings.profile.currentStepAttachFrameToQuestLog
@@ -1829,7 +1833,7 @@ function APR.GetMenu(owner, rootDescription)
     end)
 
     rootDescription:CreateDivider()
-    rootDescription:CreateTitle(L["FILLERS_FRAME"])
+    rootDescription:CreateTitle(sectionTitle(L["FILLERS_FRAME"]))
 
     createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.fillersFrameSnapToCurrentStep
@@ -1851,7 +1855,7 @@ function APR.GetMenu(owner, rootDescription)
 
 
     rootDescription:CreateDivider()
-    rootDescription:CreateTitle(L["QUEST_ORDER_LIST"])
+    rootDescription:CreateTitle(sectionTitle(L["QUEST_ORDER_LIST"]))
 
     createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.questOrderListSnapToCurrentStep
@@ -1870,7 +1874,7 @@ function APR.GetMenu(owner, rootDescription)
 
 
     rootDescription:CreateDivider()
-    rootDescription:CreateTitle(L["AFK"])
+    rootDescription:CreateTitle(sectionTitle(L["AFK"]))
 
     createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.afkSnapToCurrentStep

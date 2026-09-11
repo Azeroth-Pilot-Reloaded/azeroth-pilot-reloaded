@@ -137,6 +137,7 @@ end
 local ROLE_KEYS = {
     base = "color",
     accent = "accentColor",
+    title = "accentColor",
     success = "successColor",
     warning = "warningColor",
     error = "errorColor",

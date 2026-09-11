@@ -87,6 +87,8 @@ if __name__ == "__main__":
     transition_runtime.execute((root / "tools/validation/route_transition_test.lua").read_text(encoding="utf-8"))
     skin_runtime = LuaRuntime(unpack_returned_tuples=True)
     skin_runtime.execute((root / "tools/validation/ui_skin_test.lua").read_text(encoding="utf-8"))
+    settings_runtime = LuaRuntime(unpack_returned_tuples=True)
+    settings_runtime.execute((root / "tools/validation/eui_settings_test.lua").read_text(encoding="utf-8"))
     if "--skins-only" in sys.argv:
         sys.exit(0)
     overlay_runtime = LuaRuntime(unpack_returned_tuples=True)

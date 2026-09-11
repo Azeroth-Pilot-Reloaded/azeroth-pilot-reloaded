@@ -16,6 +16,9 @@ function CreateFrame()
     function frame:CreateFontString() return CreateFrame() end
     function frame:CreateTexture() return CreateFrame() end
     function frame:SetText(text) self.text = text end
+    function frame:SetTexture(texture) self.texture = texture end
+    function frame:SetDesaturated(value) self.desaturated = value end
+    function frame:SetAlpha(alpha) self.alpha = alpha end
     function frame:SetShown(shown) self.shown = shown end
     function frame:SetTextColor(...) self.color = { ... } end
     function frame:SetColorTexture(...) self.color = { ... } end
@@ -157,26 +160,47 @@ assert(overlayPanel.skin == "Panel")
 assert(not imagePanel.skin and frames[#frames].skin == "Panel", "A separate panel protects preview image textures")
 assert(icon.skin == "SquareIcon" and not secureIcon.skin and secureIcon.attributes.item == "item:239142")
 local minimize = CreateFrame()
-local normal, pushed, disabled = {}, {}, {}
+local function atlasTexture()
+    return {
+        SetAtlas = function(self, atlas) self.atlas = atlas end,
+        SetDesaturated = function(self, value) self.desaturated = value end,
+        SetVertexColor = function(self, ...) self.color = { ... } end,
+    }
+end
+local normal, pushed, highlight, disabled = atlasTexture(), atlasTexture(), atlasTexture(), atlasTexture()
 function minimize:GetNormalTexture() return normal end
 function minimize:GetPushedTexture() return pushed end
+function minimize:GetHighlightTexture() return highlight end
 function minimize:GetDisabledTexture() return disabled end
 minimize:SetScript("OnClick", onClick)
 local parent = CreateFrame()
 APR:RegisterSkinTarget(parent, "panel", { preserveBackground = true })
 local background = frames[#frames]
 APR:RegisterSkinTarget(minimize, "headerButton", { parent = parent })
-local glyph = frames[#frames]
-assert(glyph.text == "−" and minimize:GetNormalTexture() == normal)
+assert(normal.atlas == "UI-QuestTrackerButton-Secondary-Collapse" and normal.desaturated
+    and normal.color[2] == 0.8 and minimize:GetNormalTexture() == normal)
 parent.collapsed = true
 minimize.scripts.OnClick()
-assert(clicked == 2 and glyph.text == "+", "Keep APR collapse actions while updating the theme glyph")
+assert(clicked == 2 and normal.atlas == "UI-QuestTrackerButton-Secondary-Expand",
+    "Keep APR collapse actions while updating the Quest Tracker atlas")
 assert(background.shown == false, "Collapsing a window also hides its themed body background")
+local settingsButton = CreateFrame()
+APR:RegisterSkinTarget(settingsButton, "settings")
+local settingsIcon = frames[#frames]
+assert(settingsIcon.texture == "Interface\\AddOns\\EllesmereUIDamageMeters\\Media\\dm_settings.png"
+    and settingsIcon.color[2] == 0.8 and settingsIcon.color[4] == 0.4,
+    "Current Step reuses the Damage Meter settings icon and tint")
 local header = CreateFrame()
 header.Text = CreateFrame()
 APR:RegisterSkinTarget(header, "header")
 assert(header.Text.color[2] == 0.8)
+assert(header.options.noBg ~= true, "Headers must have a readable theme background")
+local stepRow = CreateFrame()
+APR:RegisterSkinTarget(stepRow, "row")
+assert(stepRow.skin == "Panel" and stepRow.options.noBg ~= true and stepRow.options.noBorder,
+    "Current-step rows beyond the root frame need a continuous background")
 assert(APR.EllesmereUISkin:GetFont() == "EUI-font.ttf")
+assert(APR.EllesmereUISkin:GetTextColor("accent")[2] == 0.8)
 assert(APR.EllesmereUISkin:GetTextColor("success")[2] == 1)
 local beforeRefresh = refreshes
 looksChanged()
