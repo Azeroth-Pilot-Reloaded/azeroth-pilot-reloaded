@@ -667,7 +667,10 @@ function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, ba
     container:SetWidth(width)
     container:SetHeight(font:GetStringHeight() + 10)
 
-    local role = color and self:ResolveTextColorRole(color, "accent") or (isExtraLine and "accent" or "base")
+    -- EllesmereUI's tracker uses gold for quest/title lines, the live accent
+    -- for section headers, and gray for objective text. "warning" maps to the
+    -- same gold in APR's native palette, so this also preserves the default UI.
+    local role = color and self:ResolveTextColorRole(color, "title") or (isExtraLine and "title" or "base")
     self:RegisterFontString(font, textScope or "general", {
         role = role,
         onApplied = function(fontString)

@@ -102,6 +102,7 @@ APR-Core/features/player/Buff.lua
 APR-Core/features/player/XPBuffOverlay.lua
 APR-Core/ui/panels/StatusReport.lua
 APR-Core/integrations/ElvUISkin.lua
+APR-Core/integrations/EllesmereUISettings.lua
 APR-Core/integrations/EllesmereUISkin.lua
 
 Routes/RouteList.xml

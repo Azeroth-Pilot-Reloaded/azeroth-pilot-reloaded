@@ -20,6 +20,24 @@ relayout requested during combat waits until combat ends. Image previews use a
 separate background surface so the panel skinner cannot fade their images.
 ElvUI retains APR's existing panel background behavior.
 
+EllesmereUI headers and contiguous current-step/filler rows receive the theme
+fill. Those rows extend past their fixed-height root, so a backdrop on the root
+alone cannot cover the objectives. Current Step headers use the Quest Tracker's
+accent-tinted secondary collapse/expand atlases, and the settings control uses
+the Damage Meter settings artwork and hover treatment. Context-menu section
+titles use the live EUI accent; step titles remain gold and objectives gray.
+
+APR's AceConfig settings pages also follow EllesmereUI, including nested groups,
+checkboxes, dropdowns and their items, sliders, color swatches and text inputs.
+The integration scopes AceGUI creation to APR's Open/FeedGroup calls and uses
+separate widget pools. Original widget types and callbacks remain intact; APR
+controls never return to the shared pool used by other addons. No global
+Blizzard settings frame is scanned or reskinned by APR. Font regions are
+snapshotted and deduplicated before styling so EUI shadow helpers cannot be
+recursively fed back into `PrimeFontShadow`. Widget children, dropdowns and
+pullout items share a visited set and a reentrancy guard, so cyclic AceGUI
+ownership cannot recursively call the skin provider either.
+
 ## Automated checks
 
 ```sh
@@ -51,6 +69,16 @@ Repeat with neither UI addon enabled, with ElvUI, and with EllesmereUI:
    per-addon switch and change its theme; registered controls should follow it.
 6. If both UI addons are installed, disable APR's ElvUI skin and reload to select
    EllesmereUI. A control must never receive both skins in the same session.
+7. With EllesmereUI, open every APR settings page, including Route, Profiles and
+   About. Change preference groups, open dropdowns, toggle checkboxes, move
+   sliders and edit colors. Switch to another addon's settings and back: only
+   APR's controls should receive APR's skin. Repeat after changing the EUI theme.
+8. Check header and objective readability over a bright world background. Add
+   enough current-step lines to exceed the root frame; their fill should remain
+   continuous, including divider and image-preview rows.
+9. Open the Current Step menu from both right-click and its settings icon. Check
+   the accent section labels, Damage Meter cog hover, and the Quest Tracker-style
+   minimize/restore button in both states.
 
 ElvUI coverage implements
 [issue #500](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/issues/500).

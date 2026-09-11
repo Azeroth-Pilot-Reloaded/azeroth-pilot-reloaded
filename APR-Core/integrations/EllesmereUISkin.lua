@@ -8,13 +8,14 @@ local skin
 local headerTexts = setmetatable({}, { __mode = "k" })
 local accents = setmetatable({}, { __mode = "k" })
 local panelBackgrounds = setmetatable({}, { __mode = "k" })
+local settingsIcons = setmetatable({}, { __mode = "k" })
 local refreshPending = false
 
 -- Semantic colors follow EllesmereUI's quest tracker (titles, objectives, completion).
 -- Header accents and typography come from the user's live EUI theme.
 local colors = {
     base = { 0.72, 0.72, 0.72, 1 },
-    accent = { 1, 0.91, 0.47, 1 },
+    title = { 1, 0.91, 0.47, 1 },
     warning = { 1, 0.91, 0.47, 1 },
     success = { 0.25, 1, 0.35, 1 },
     error = { 1, 0.3, 0.3, 1 },
@@ -39,7 +40,12 @@ function module:ApplyFont(fontString)
 end
 
 function module:GetTextColor(role)
-    if IsEnabled() then return colors[role or "base"] or colors.base end
+    if not IsEnabled() then return end
+    if role == "accent" then
+        local r, g, b = skin.GetAccentColor()
+        return { r, g, b, 1 }
+    end
+    return colors[role or "base"] or colors.base
 end
 
 function module:ApplyBarFill(bar)
@@ -72,7 +78,7 @@ local function StyleText(text)
 end
 
 local function StyleHeader(header)
-    skin.Panel(header, { noBg = true, noBorder = true })
+    skin.Panel(header, { noBorder = true })
     if header.Text then
         headerTexts[header.Text] = true
         StyleText(header.Text)
@@ -89,19 +95,61 @@ end
 
 local function StyleHeaderButton(button, options)
     if options.close then skin.CloseButton(button); return end
-    -- Keep the original atlas objects alive for APR's collapse handler.
-    skin.FadeRegions(button)
-    local label = button:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-    label:SetPoint("CENTER")
-    skin.Font(label)
-    Accent(label, "text")
-    local function UpdateGlyph()
-        label:SetText(options.parent and options.parent.collapsed and "+" or "−")
+
+    -- Match EllesmereUIQuestTracker: keep the native secondary +/- atlas,
+    -- desaturate it, then tint it with the live header accent.
+    local function Tint(texture)
+        if not texture then return end
+        if texture.SetDesaturated then texture:SetDesaturated(true) end
+        Accent(texture, "icon")
+    end
+    local function UpdateLook()
+        local collapsed = options.parent and options.parent.collapsed
+        local normalAtlas = collapsed and "UI-QuestTrackerButton-Secondary-Expand"
+            or "UI-QuestTrackerButton-Secondary-Collapse"
+        local pushedAtlas = normalAtlas .. "-Pressed"
+        local normal = button.GetNormalTexture and button:GetNormalTexture()
+        local pushed = button.GetPushedTexture and button:GetPushedTexture()
+        if normal and normal.SetAtlas then normal:SetAtlas(normalAtlas) end
+        if pushed and pushed.SetAtlas then pushed:SetAtlas(pushedAtlas) end
+        Tint(normal)
+        Tint(pushed)
+        Tint(button.GetHighlightTexture and button:GetHighlightTexture())
+        Tint(button.GetDisabledTexture and button:GetDisabledTexture())
+        if button.GetRegions then
+            for _, region in ipairs({ button:GetRegions() }) do
+                if region and region.IsObjectType and region:IsObjectType("Texture") then Tint(region) end
+            end
+        end
         local background = options.parent and panelBackgrounds[options.parent]
         if background then background:SetShown(not options.parent.collapsed) end
     end
-    UpdateGlyph()
-    button:HookScript("OnClick", UpdateGlyph)
+    UpdateLook()
+    button:HookScript("OnClick", UpdateLook)
+end
+
+local function StyleSettingsButton(button)
+    -- This is the same artwork and hover treatment as the EllesmereUI Damage
+    -- Meter header settings button. Keep APR's click and tooltip handlers.
+    skin.FadeRegions(button)
+    local icon = settingsIcons[button]
+    if not icon then
+        icon = button:CreateTexture(nil, "ARTWORK")
+        icon:SetAllPoints()
+        icon:SetTexture("Interface\\AddOns\\EllesmereUIDamageMeters\\Media\\dm_settings.png")
+        if icon.SetDesaturated then icon:SetDesaturated(true) end
+        settingsIcons[button] = icon
+        button:HookScript("OnEnter", function()
+            local r, g, b = skin.GetAccentColor()
+            icon:SetVertexColor(r, g, b, 0.9)
+        end)
+        button:HookScript("OnLeave", function()
+            local r, g, b = skin.GetAccentColor()
+            icon:SetVertexColor(r, g, b, 0.4)
+        end)
+    end
+    local r, g, b = skin.GetAccentColor()
+    icon:SetVertexColor(r, g, b, 0.4)
 end
 
 local function StyleContentPanel(frame)
@@ -123,6 +171,10 @@ local function RefreshTheme()
     for region, kind in pairs(accents) do
         Accent(region, kind)
         if kind == "text" then skin.Font(region) end
+    end
+    for _, icon in pairs(settingsIcons) do
+        local r, g, b = skin.GetAccentColor()
+        icon:SetVertexColor(r, g, b, 0.4)
     end
     if APR.RefreshTextAppearance then APR:RefreshTextAppearance() end
 end
@@ -157,9 +209,11 @@ EUI.RegisterSkin("APR", function(S)
             else
                 S.Panel(frame)
             end
-        elseif kind == "row" then S.Panel(frame, { noBg = true, noBorder = true })
+        -- Current-step/filler rows extend beyond their fixed-height root frame.
+        -- Give each contiguous row the same fill so the entire content is covered.
+        elseif kind == "row" then S.Panel(frame, { noBorder = true })
         elseif kind == "divider" then
-            S.Panel(frame, { noBg = true, noBorder = true })
+            S.Panel(frame, { noBorder = true })
             local line = frame:CreateTexture(nil, "OVERLAY")
             line:SetHeight(1)
             line:SetPoint("LEFT", frame, "LEFT", 12, 0)
@@ -168,11 +222,7 @@ EUI.RegisterSkin("APR", function(S)
         elseif kind == "header" then StyleHeader(frame)
         elseif kind == "headerButton" then StyleHeaderButton(frame, options)
         elseif kind == "settings" then
-            frame.APRNormalIcon = frame:GetNormalTexture()
-            frame.APRPushedIcon = frame:GetPushedTexture()
-            S.Button(frame, { "APRNormalIcon", "APRPushedIcon" })
-            if frame.APRNormalIcon then Accent(frame.APRNormalIcon, "icon") end
-            if frame.APRPushedIcon then Accent(frame.APRPushedIcon, "icon") end
+            StyleSettingsButton(frame)
         elseif kind == "editbox" then
             S.EditBox(frame)
             StyleText(frame)
@@ -181,6 +231,7 @@ EUI.RegisterSkin("APR", function(S)
     end
     if APR:RegisterSkinProvider("EllesmereUI", ApplySkin, IsEnabled) then
         APR:RegisterStaticSkinTargets()
+        if APR.EnableEllesmereUISettings then APR:EnableEllesmereUISettings(S) end
         S.OnLooksChanged(RefreshTheme)
         RefreshTheme()
     else
