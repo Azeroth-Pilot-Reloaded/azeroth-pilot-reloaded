@@ -52,7 +52,10 @@ function APR:RegisterStaticSkinTargets()
         if header then
             self:RegisterSkinTarget(header, "header")
             -- These retain APR's collapse/expand atlas state and click handlers.
-            self:RegisterSkinTarget(header.MinimizeButton, "headerButton")
+            self:RegisterSkinTarget(header.MinimizeButton, "headerButton", {
+                parent = header:GetParent(),
+                close = name == "RouteSelectionFrameHeader" or name == "HeirloomFrameHeader",
+            })
         end
     end
     self:RegisterSkinTarget(_G.CurrentStepFrameSettingsButton, "settings")

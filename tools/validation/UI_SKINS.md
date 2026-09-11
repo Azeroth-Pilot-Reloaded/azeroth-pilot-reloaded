@@ -12,9 +12,13 @@ including its per-addon enable switch and live theme updates. APR's own options
 require a reload when switching skins. ElvUI takes precedence if both APR skin
 options are enabled. EllesmereUI versions without `RegisterSkin` are ignored.
 
-APR keeps control of existing panel backgrounds, text preferences and image
-content. The XP overlay's border and header are themed. Never run a texture-
-stripping panel skinner over the image-preview surface.
+EllesmereUI supplies panel backgrounds, borders, fonts, teal header accents and
+icon styling across APR windows. Quest titles, objectives and completion retain
+their semantic colors using the EllesmereUI tracker palette. APR text sizes and
+layout remain configurable. Theme changes refresh existing and future text;
+relayout requested during combat waits until combat ends. Image previews use a
+separate background surface so the panel skinner cannot fade their images.
+ElvUI retains APR's existing panel background behavior.
 
 ## Automated checks
 

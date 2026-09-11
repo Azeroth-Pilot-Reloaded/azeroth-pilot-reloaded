@@ -189,6 +189,7 @@ function APR:createStatusSection(width, height, headerWidth, headerHeight, paren
     rightDivider:SetTexture([[Interface\Tooltips\UI-Tooltip-Border]])
     rightDivider:SetTexCoord(0.81, 0.94, 0.5, 1)
     section.Header.RightDivider = rightDivider
+    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(header, "header") end
 
     return section
 end

@@ -246,6 +246,9 @@ function APR.heirloom:AddHeirloomIcons()
             button = CreateHeirloomButton(HeirloomFrame_body, heirloom.icon)
         end
         if button then
+            if APR.RegisterSkinTarget then
+                APR:RegisterSkinTarget(button, "icon", { texture = button:GetNormalTexture() or button.icon })
+            end
             button:SetPoint("TOPLEFT", xOffset, yOffset)
             table.insert(self.buttons, button)
             xOffset = xOffset + 62.5
