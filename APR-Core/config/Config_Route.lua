@@ -1148,14 +1148,20 @@ function APR.routeconfig:CheckRouteResetOnLvlUp()
 
         if currentRouteData and currentRouteData.notSkippable then
             return
-        elseif APR.Level == 10 then
+        elseif APR.Level == 10 or APR.Level == APR.PreviousMaxLvl then
+            if APR.Level == APR.PreviousMaxLvl and currentRouteData and
+                currentRouteData.expansion == APR.EXPANSIONS.Midnight and
+                currentRouteData.prefab and currentRouteData.prefab[APR.PREFAB_TYPES.Speedrun] then
+                return
+            end
             APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_SPEEDRUN",
-                format(L["RESET_ROUTE_FOR_SPEEDRUN"], APR.Level), function()
+                APR:FormatLocalizedText("RESET_ROUTE_FOR_SPEEDRUN", "Level %d: switch to the Speedrun route?", APR.Level), function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:GetSpeedRunPrefab()
                 end)
         elseif APR.Level == APR.MaxLevelChromie then
-            APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_TWW", format(L["RESET_ROUTE_FOR_TWW"], APR.Level),
+            APR.questionDialog:CreateQuestionPopup("RESET_ROUTE_FOR_TWW",
+                APR:FormatLocalizedText("RESET_ROUTE_FOR_TWW", "Level %d: switch to The War Within?", APR.Level),
                 function()
                     APRCustomPath[APR.PlayerID] = {}
                     APR.routeconfig:BuildLevelingPrefab(APR.EXPANSIONS.TheWarWithin)
