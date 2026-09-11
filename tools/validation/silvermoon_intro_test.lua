@@ -17,7 +17,7 @@ APR.worldCoordinateConverter = { ConvertMapCoordinate = function(_, _, x, y) ret
 dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
-dofile("Routes/Midnight/midnight-Speedrun/2393-Midnight-Speedrun-alt.lua")
+dofile("Routes/Midnight/Midnight-Speedrun-alt.lua")
 local route = APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"]
 local intro = route.parallelSteps[11]
 local handin = route.parallelSteps[12]

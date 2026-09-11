@@ -46,6 +46,7 @@ function APR:NewModule() return {} end
 function APR:Contains(values, value) return tContains(values, value) end
 dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/data/zones/ScenarioEntrances.lua")
+dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
@@ -67,7 +68,7 @@ end
 
 local routeKey = "2393-Midnight-Speedrun-alt"
 dofile("Routes/Midnight/Midnight.lua")
-dofile("Routes/Midnight/midnight-Speedrun/2393-Midnight-Speedrun-alt.lua")
+dofile("Routes/Midnight/Midnight-Speedrun-alt.lua")
 local route = APR.RouteQuestStepList[routeKey]
 check(route and route.mapID == 2393, "Route is registered")
 check(route.conditions.HasAchievement == 42045, "Adventure Mode requires the account campaign")
@@ -214,8 +215,13 @@ for _, step in ipairs(route.steps) do inspectStep(step) end
 for _, group in ipairs(route.parallelSteps) do
     for _, step in ipairs(group.steps) do inspectStep(step) end
 end
+local levelGatedDelveQuests = {
+    [93372] = true, [93384] = true, [93385] = true, [93386] = true, [93409] = true,
+    [93410] = true, [93416] = true, [93421] = true, [93427] = true, [93428] = true,
+}
 for id, total in pairs(pickups) do
-    check(total == 1 or (id == 94993 and total == 2), "No duplicate quest pickup outside the imposed introduction")
+    check(total == 1 or (id == 94993 and total == 2) or (levelGatedDelveQuests[id] and total == 2),
+        "Only level-gated delve paths may repeat a quest pickup")
     check(handins[id] ~= nil, "Every accepted quest has a hand-in: " .. id)
 end
 for id, total in pairs(handins) do

@@ -68,6 +68,7 @@ local autoAccept, autoAcceptRoute, step = nil, nil, nil
 
 local pendingQuestUpdateTimer
 local pendingWarModeTimer
+local pendingZoneRoutingTimer
 local questShareQueue = {}
 local questShareRetries = {}
 local QUEST_SHARE_MAX_RETRIES = 10
@@ -152,6 +153,10 @@ function APR.event:CleanupEvents()
         pendingWarModeTimer:Cancel()
         pendingWarModeTimer = nil
     end
+    if pendingZoneRoutingTimer then
+        pendingZoneRoutingTimer:Cancel()
+        pendingZoneRoutingTimer = nil
+    end
     for tag, container in pairs(self.framePool) do
         if container then
             -- Unregister all events for this container
@@ -174,6 +179,23 @@ function APR.event:CleanupEvents()
     wipe(questShareRetries)
 
     CancelAdventureMapRetries()
+end
+
+local function ScheduleZoneRoutingRefresh(delay)
+    if pendingZoneRoutingTimer then
+        pendingZoneRoutingTimer:Cancel()
+    end
+
+    pendingZoneRoutingTimer = C_Timer.NewTimer(delay or 0.15, function()
+        pendingZoneRoutingTimer = nil
+        local profile = APR:GetSettingsProfile()
+        if not APR.ActiveRoute or not profile or not profile.enableAddon then return end
+
+        local profileStart = APR:StartPerformanceSample()
+        APR.farstrider:ForceRefresh()
+        APR.farstrider:GetMeToRightZone()
+        APR:FinishPerformanceSample("ZoneTransitionRouting", profileStart)
+    end)
 end
 
 ---------------------------------------------------------------------------------------
@@ -1379,6 +1401,13 @@ function APR.event.functions.zone(event, ...)
 
     -- Farstrider navigation refresh
     if event == "PLAYER_ENTERING_WORLD" then
+        if pendingZoneRoutingTimer then
+            pendingZoneRoutingTimer:Cancel()
+            pendingZoneRoutingTimer = nil
+        end
+        if APR.farstrider.InvalidatePathCache then
+            APR.farstrider:InvalidatePathCache()
+        end
         -- Invalidate cache after teleportation to ensure fresh zone detection
         APR:InvalidatePlayerZoneCache()
         -- Reset routing throttle after teleport/loading
@@ -1409,6 +1438,13 @@ function APR.event.functions.zone(event, ...)
                     APR.farstrider._worldTransitionTime = nil
                 end
 
+                -- A successful first pass makes the remaining safety retries redundant.
+                local navigationResolved = APR.IsInRouteZone or
+                    (APR.farstrider.IsNavigating and APR.farstrider:IsNavigating())
+                if retryIndex > 1 and navigationResolved then
+                    return
+                end
+
                 local profile = APR:GetSettingsProfile()
                 if not APR.ActiveRoute or not profile or not profile.enableAddon then
                     return
@@ -1421,7 +1457,9 @@ function APR.event.functions.zone(event, ...)
 
                 -- Reset throttle so this check goes through
                 APR.farstrider:ForceRefresh()
+                local profileStart = APR:StartPerformanceSample()
                 APR.farstrider:GetMeToRightZone(retryIndex > 1)
+                APR:FinishPerformanceSample("ZoneTransitionRouting", profileStart)
             end)
         end
 
@@ -1438,10 +1476,11 @@ function APR.event.functions.zone(event, ...)
         APR._lastRouteZoneCheck = nil
         APR._lastRouteZoneResult = nil
 
-        -- Reset GetMeToRightZone throttle so zone events always get through
-        APR.farstrider:ForceRefresh()
-
         if IsInInstance() and not APR:IsInstanceWithUI() then
+            if pendingZoneRoutingTimer then
+                pendingZoneRoutingTimer:Cancel()
+                pendingZoneRoutingTimer = nil
+            end
             return
         end
 
@@ -1456,7 +1495,9 @@ function APR.event.functions.zone(event, ...)
         APR:ScheduleDelveRouteRefresh(event == "ZONE_CHANGED_NEW_AREA" and 0.35 or 0.15)
 
         if APR.ActiveRoute then
-            APR.farstrider:GetMeToRightZone()
+            -- WoW emits several zone notifications for one transition. Coalesce them so
+            -- ForceRefresh cannot defeat Farstrider's own routing throttle.
+            ScheduleZoneRoutingRefresh(event == "ZONE_CHANGED_NEW_AREA" and 0.35 or 0.15)
         end
     end
 end
