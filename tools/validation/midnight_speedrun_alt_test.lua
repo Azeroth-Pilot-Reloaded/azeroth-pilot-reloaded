@@ -9,6 +9,8 @@ function tContains(values, value)
     end
     return false
 end
+tinsert = table.insert
+tremove = table.remove
 function wipe(value)
     for key in pairs(value) do value[key] = nil end
 end
@@ -71,6 +73,9 @@ dofile("Routes/Midnight/Midnight.lua")
 dofile("Routes/Midnight/Midnight-Speedrun-alt.lua")
 local route = APR.RouteQuestStepList[routeKey]
 check(route and route.mapID == 2393, "Route is registered")
+local legacyRouteLabel = locale["Midnight - Speedrun"] .. " (Alt 80-90)"
+check(route.legacyLabels[1] == legacyRouteLabel and APR:GetRouteKeyFromDisplayName(legacyRouteLabel) == routeKey,
+    "The previous alt speedrun label still resolves to the stable route key")
 check(route.conditions.HasAchievement == 42045, "Adventure Mode requires the account campaign")
 check(route.steps[1].WarMode == 91281 and route.steps[2].PickUp[1] == 91281 and route.steps[11].Done[1] == 94993,
     "The supplied introduction stays at the beginning")
@@ -292,6 +297,45 @@ scenarioResult("EnterScenario", 2405, "SCENARIO_STAY")
 -- A suggested guide replaces nearby DoScenario while retaining its quest setup.
 level = 80
 dofile("APR-Core/utils/DelveRouteUtils.lua")
+dofile("APR-Core/utils/StepUtils.lua")
+
+local inferredScenarioStep = { PickUp = { 93427 }, Zone = 2528 }
+local inferredCoord, inferredZone = APR:GetStepCoord(inferredScenarioStep, 2393)
+check(APR:GetScenarioMapIDForStep(inferredScenarioStep) == 2528,
+    "An interior-only step resolves its scenario from the registered Zone")
+check(inferredCoord == APR.ScenarioEntrances[2528].Coord and inferredZone == 2405,
+    "An interior-only step outside the scenario targets its registered entrance")
+
+APRCustomPath.test = { legacyRouteLabel }
+APR.ActiveRoute = nil
+local _, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
+check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
+    "A saved legacy label is migrated without losing the active route")
+
+APRCustomPath.test = { "Renamed route without an alias" }
+APR.ActiveRoute = routeKey
+APRData.test[routeKey] = 1
+_, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
+check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
+    "The live stable key recovers a renamed route during the same session")
+
+local missingRouteError, missingRoutePopup, emptyPathChecks
+APRCustomPath.test = { "Deleted route", route.label }
+APR.ActiveRoute = nil
+APR._missingCustomPathRouteWarnings = nil
+APR.PrintError = function(_, message) missingRouteError = message end
+APR.questionDialog = {
+    CreateRouteTriggerPopup = function(_, message) missingRoutePopup = message end,
+}
+APR.routeconfig = {
+    CheckIsCustomPathEmpty = function() emptyPathChecks = (emptyPathChecks or 0) + 1 end,
+}
+_, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
+check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
+    "A missing route is removed and the following valid route stays usable")
+check(missingRouteError and missingRoutePopup == missingRouteError and emptyPathChecks == 1,
+    "A missing route reports an error and opens the route-suggestion popup")
+
 local context = { mapID = 2528, scenarioID = 123, sessionKey = "test" }
 local prompts, accept, decline = 0, nil, nil
 function APR:GetCurrentDelveContext() return context end

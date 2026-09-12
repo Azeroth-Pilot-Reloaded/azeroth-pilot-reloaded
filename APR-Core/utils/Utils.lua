@@ -1,22 +1,5 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-local invalidLocalizedFormats = {}
-
--- Community translations can contain invalid printf directives (e.g. %S or %1$s).
--- A bad translation must never abort route progression or temporary-route cleanup.
-function APR:FormatLocalizedText(key, fallback, ...)
-    local template = L[key]
-    if type(template) == "string" and template ~= key then
-        local ok, text = pcall(string.format, template, ...)
-        if ok then return text end
-        if not invalidLocalizedFormats[key] then
-            invalidLocalizedFormats[key] = true
-            if self.Debug then self:Debug("Invalid localized format", key, template) end
-        end
-    end
-    return string.format(fallback, ...)
-end
-
 --[[
     Technical-only helpers.
     Gameplay and feature-specific utilities now live in dedicated files to keep this module focused on reusable primitives.
@@ -744,21 +727,67 @@ function APR:copyTable(source)
     end
     return result
 end
+
 -- Fold complete UTF-8 characters, never individual bytes of accented letters.
 local searchAccents = {
-    ["à"] = "a", ["â"] = "a", ["ä"] = "a", ["á"] = "a", ["ã"] = "a", ["å"] = "a",
-    ["À"] = "a", ["Â"] = "a", ["Ä"] = "a", ["Á"] = "a", ["Ã"] = "a", ["Å"] = "a",
-    ["é"] = "e", ["è"] = "e", ["ê"] = "e", ["ë"] = "e",
-    ["É"] = "e", ["È"] = "e", ["Ê"] = "e", ["Ë"] = "e",
-    ["î"] = "i", ["ï"] = "i", ["í"] = "i", ["ì"] = "i",
-    ["Î"] = "i", ["Ï"] = "i", ["Í"] = "i", ["Ì"] = "i",
-    ["ô"] = "o", ["ö"] = "o", ["ó"] = "o", ["ò"] = "o", ["õ"] = "o",
-    ["Ô"] = "o", ["Ö"] = "o", ["Ó"] = "o", ["Ò"] = "o", ["Õ"] = "o",
-    ["ù"] = "u", ["û"] = "u", ["ü"] = "u", ["ú"] = "u",
-    ["Ù"] = "u", ["Û"] = "u", ["Ü"] = "u", ["Ú"] = "u",
-    ["ç"] = "c", ["Ç"] = "c", ["ñ"] = "n", ["Ñ"] = "n",
-    ["ÿ"] = "y", ["ý"] = "y", ["Ÿ"] = "y", ["Ý"] = "y",
-    ["œ"] = "oe", ["Œ"] = "oe", ["æ"] = "ae", ["Æ"] = "ae",
+    ["à"] = "a",
+    ["â"] = "a",
+    ["ä"] = "a",
+    ["á"] = "a",
+    ["ã"] = "a",
+    ["å"] = "a",
+    ["À"] = "a",
+    ["Â"] = "a",
+    ["Ä"] = "a",
+    ["Á"] = "a",
+    ["Ã"] = "a",
+    ["Å"] = "a",
+    ["é"] = "e",
+    ["è"] = "e",
+    ["ê"] = "e",
+    ["ë"] = "e",
+    ["É"] = "e",
+    ["È"] = "e",
+    ["Ê"] = "e",
+    ["Ë"] = "e",
+    ["î"] = "i",
+    ["ï"] = "i",
+    ["í"] = "i",
+    ["ì"] = "i",
+    ["Î"] = "i",
+    ["Ï"] = "i",
+    ["Í"] = "i",
+    ["Ì"] = "i",
+    ["ô"] = "o",
+    ["ö"] = "o",
+    ["ó"] = "o",
+    ["ò"] = "o",
+    ["õ"] = "o",
+    ["Ô"] = "o",
+    ["Ö"] = "o",
+    ["Ó"] = "o",
+    ["Ò"] = "o",
+    ["Õ"] = "o",
+    ["ù"] = "u",
+    ["û"] = "u",
+    ["ü"] = "u",
+    ["ú"] = "u",
+    ["Ù"] = "u",
+    ["Û"] = "u",
+    ["Ü"] = "u",
+    ["Ú"] = "u",
+    ["ç"] = "c",
+    ["Ç"] = "c",
+    ["ñ"] = "n",
+    ["Ñ"] = "n",
+    ["ÿ"] = "y",
+    ["ý"] = "y",
+    ["Ÿ"] = "y",
+    ["Ý"] = "y",
+    ["œ"] = "oe",
+    ["Œ"] = "oe",
+    ["æ"] = "ae",
+    ["Æ"] = "ae",
 }
 
 function APR:NormalizeSearchText(value)

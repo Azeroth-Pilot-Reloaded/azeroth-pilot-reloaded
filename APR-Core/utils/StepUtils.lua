@@ -468,9 +468,7 @@ function APR:GetPreferredStepZone(step, fallbackMapID)
         local parentMapID = self:GetPlayerParentMapID()
         local isInsideScenario = currentMapID == scenarioMapID or parentMapID == scenarioMapID
 
-        if not isInsideScenario and (step and
-                (step.Scenario or step.EnterScenario or step.DoScenario or step.LeaveScenario or step.EnterInstance or
-                    step.LeaveInstance)) then
+        if not isInsideScenario then
             return scenarioInfo.zone
         end
     end
@@ -550,7 +548,7 @@ function APR:GetStepCoord(step, fallbackMapID, zoneHint)
         local parentMapID = self:GetPlayerParentMapID()
         local isInsideScenario = currentMapID == scenarioMapID or parentMapID == scenarioMapID
 
-        if not isInsideScenario and (step.Scenario or step.EnterScenario or step.DoScenario or step.LeaveScenario or step.EnterInstance or step.LeaveInstance) then
+        if not isInsideScenario then
             return scenarioInfo.Coord, scenarioInfo.zone
         end
     end

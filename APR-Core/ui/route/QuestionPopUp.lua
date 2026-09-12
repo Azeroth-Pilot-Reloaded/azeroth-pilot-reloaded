@@ -328,6 +328,7 @@ function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSe
     frame.routeSelectionButton:SetHeight(footerButtonHeight)
     frame.dontAskButton:SetHeight(footerButtonHeight)
     frame.cancelButton:SetHeight(footerButtonHeight)
+    frame.dontAskButton:SetShown(onDontAsk ~= nil)
     frame.routeSelectionButton:SetPoint("BOTTOM", frame, "BOTTOM", -132, 12)
     frame.dontAskButton:SetPoint("BOTTOM", frame, "BOTTOM", 0, 12)
     frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 132, 12)

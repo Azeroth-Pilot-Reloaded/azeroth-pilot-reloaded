@@ -54,7 +54,7 @@ local function GetCurrentRouteStep()
     return routeSteps and stepIndex and routeSteps[stepIndex] or nil
 end
 
-local function RequiresScenarioNavigation(step)
+function APR.farstrider:RequiresScenarioNavigation(step)
     local scenarioMapID = step and APR:GetScenarioMapIDForStep(step) or nil
     if not scenarioMapID then
         return false
@@ -68,8 +68,84 @@ local function RequiresScenarioNavigation(step)
         return isInsideScenario
     end
 
-    return not isInsideScenario and
-        (step.Scenario or step.EnterScenario or step.DoScenario or step.EnterInstance) ~= nil
+    -- EnterScenario/EnterInstance steps guide the player to an exterior entrance; being
+    -- outside is therefore the expected state. Any other step resolved to a registered
+    -- scenario map requires the player to already be inside.
+    if step.EnterScenario or step.EnterInstance then
+        return false
+    end
+
+    return not isInsideScenario
+end
+
+function APR.farstrider:GetScenarioNavigationRequirement(step)
+    if not step or step.EnterScenario or step.EnterInstance or step.LeaveScenario or step.LeaveInstance then
+        return nil
+    end
+
+    local scenarioMapID = APR:GetScenarioMapIDForStep(step)
+    local scenarioInfo = scenarioMapID and APR:GetScenarioZoneInfo(scenarioMapID) or nil
+    local mapInfo = scenarioMapID and APR:GetMapInfoCached(scenarioMapID) or nil
+    if not scenarioInfo or scenarioInfo.type ~= "DELVE" or not mapInfo or not mapInfo.name then
+        return nil
+    end
+
+    return string.format(
+        L["MUST_BE_IN_SCENARIO"],
+        L[scenarioInfo.type],
+        mapInfo.name
+    )
+end
+
+function APR.farstrider:ShowScenarioEntranceFallback(step, destination, playerContext)
+    if not self:RequiresScenarioNavigation(step) then
+        return false
+    end
+
+    local scenarioMapID = APR:GetScenarioMapIDForStep(step)
+    local scenarioInfo = scenarioMapID and APR:GetScenarioZoneInfo(scenarioMapID) or nil
+    local entranceCoord = scenarioInfo and scenarioInfo.Coord or nil
+    local entranceZone = scenarioInfo and scenarioInfo.zone or nil
+    if not entranceCoord or not entranceZone then
+        return false
+    end
+
+    local isInEntranceZone = false
+    for _, mapID in ipairs(playerContext and playerContext.allRelevant or {}) do
+        if mapID == entranceZone then
+            isInEntranceZone = true
+            break
+        end
+    end
+    if not isInEntranceZone then
+        return false
+    end
+
+    local mapInfo = APR:GetMapInfoCached(scenarioMapID)
+    local instruction = string.format(
+        L["ENTER_IN"],
+        L[scenarioInfo.type],
+        mapInfo and mapInfo.name or UNKNOWN
+    )
+    local entranceLocation = {
+        mapId = entranceZone,
+        pos = { x = entranceCoord.y, y = entranceCoord.x, z = 0 },
+        isUI = false,
+    }
+    local fallbackDestination = destination or {
+        mapID = entranceZone,
+        zone = entranceZone,
+        worldCoord = entranceCoord,
+    }
+
+    return self:ShowPathStep({ {
+        id = "scenario-entrance-" .. tostring(scenarioMapID),
+        loc = entranceLocation,
+        completionLoc = entranceLocation,
+        loca = instruction,
+        checkDistance = false,
+        isScenarioEntranceFallback = true,
+    } }, fallbackDestination)
 end
 
 local function GetFarstriderAPI()
@@ -424,6 +500,7 @@ function APR.farstrider:GetDestination(step, fallbackMapID)
             x = 0.5,
             y = 0.5,
             zone = targetZone,
+            worldCoord = coord,
         }
     end
 
@@ -586,7 +663,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
         end
     end
 
-    local requiresScenarioNavigation = RequiresScenarioNavigation(step)
+    local requiresScenarioNavigation = self:RequiresScenarioNavigation(step)
     local zoneProfileStart = APR:StartPerformanceSample()
     local isInRouteZone = APR:CheckIsInRouteZone()
     APR:FinishPerformanceSample("ZoneRoutingZoneCheck", zoneProfileStart)
@@ -671,7 +748,8 @@ function APR.farstrider:GetMeToRightZone(isRetry)
     local targetMapInfo = APR:GetMapInfoCached(destination.zone)
     local parentMapInfo = targetMapInfo and targetMapInfo.parentMapID and
         APR:GetMapInfoCached(targetMapInfo.parentMapID) or nil
-    local reason = farAway and L["TOO_FAR_AWAY"] or L["WRONG_ZONE"]
+    local reason = requiresScenarioNavigation and self:GetScenarioNavigationRequirement(step) or nil
+    reason = reason or (farAway and L["TOO_FAR_AWAY"] or L["WRONG_ZONE"])
     local destinationText = string.format(
         L["TRANSPORT_DESTINATION_ERROR"],
         reason,
@@ -691,6 +769,13 @@ function APR.farstrider:GetMeToRightZone(isRetry)
     end
 
     APR.Arrow:SetArrowActive(false, 0, 0)
+
+    -- FarstriderData does not carry scenario entrance nodes. When the player is
+    -- already in the recorded exterior zone, use APR's authoritative world
+    -- coordinate directly instead of showing a path-not-found error.
+    if self:ShowScenarioEntranceFallback(step, destination, playerContext) then
+        return
+    end
 
     if not api then
         ReportMissingDependencies(missingDependencies)

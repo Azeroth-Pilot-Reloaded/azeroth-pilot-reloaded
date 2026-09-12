@@ -421,10 +421,14 @@ function APR:GetLevelConsumableReminders(profileName)
             seen[name] = true
             local active = source.isActive and source.isActive()
             for _, id in ipairs(source.auras or {}) do
-                if self:HasAura(id) then active = true; break end
+                if self:HasAura(id) then
+                    active = true; break
+                end
             end
             for id in pairs(source.auraBonuses or {}) do
-                if self:HasAura(id) then active = true; break end
+                if self:HasAura(id) then
+                    active = true; break
+                end
             end
             if not active then
                 for _, itemID in ipairs(source.items) do
@@ -507,7 +511,9 @@ function APR:AreConditionalFiltersMet(conditions)
     if conditions and conditions.AnyOf then
         local matched = false
         for _, alternative in ipairs(conditions.AnyOf) do
-            if self:AreConditionalFiltersMet(alternative) then matched = true; break end
+            if self:AreConditionalFiltersMet(alternative) then
+                matched = true; break
+            end
         end
         if not matched then return false end
     end
@@ -571,6 +577,26 @@ function APR:AreConditionalFiltersMet(conditions)
         (not conditions.IsQuestsUncompletedOnAccount or not self:IsQuestsCompletedOnAccount(conditions.IsQuestsUncompletedOnAccount))
 end
 
+local function RouteMatchesDisplayName(routeData, displayName)
+    if type(routeData) ~= "table" or not displayName then
+        return false
+    end
+
+    if routeData.label == displayName then
+        return true
+    end
+
+    if type(routeData.legacyLabels) == "table" then
+        for _, legacyLabel in ipairs(routeData.legacyLabels) do
+            if legacyLabel == displayName then
+                return true
+            end
+        end
+    end
+
+    return false
+end
+
 --- Get Route zone mapID and name
 ---@return Array<number> routeZoneMapIDs MapIDs declared by the route
 ---@return number mapID  the main mapid for the route
@@ -614,7 +640,8 @@ function APR:GetRouteMapIDsAndName(targetedRoute)
     -- Display names can be duplicated (e.g. Exile's Reach A/H), so resolve deterministically.
     local matchingRouteKeys = {}
     for routeFileName, routeData in pairs(self.RouteQuestStepList) do
-        if type(routeData) == "table" and routeData.expansion and routeData.label and routeData.label == targetedRoute then
+        if type(routeData) == "table" and routeData.expansion and routeData.label and
+            RouteMatchesDisplayName(routeData, targetedRoute) then
             tinsert(matchingRouteKeys, routeFileName)
         end
     end
@@ -647,13 +674,51 @@ function APR:GetCurrentRouteMapIDsAndName()
         return self:GetRouteMapIDsAndName(self.ActiveRoute)
     end
 
+    local customPath = APRCustomPath and APRCustomPath[self.PlayerID] or nil
+    local currentRouteIndex, currentRouteName
+    if customPath then
+        currentRouteIndex, currentRouteName = next(customPath)
+    end
+
     local currentRouteKey = self:GetPrimaryCustomPathRouteKey()
     if not currentRouteKey and self.ActiveRoute and self:GetRouteData(self.ActiveRoute) then
-        currentRouteKey = self.ActiveRoute
+        local playerData = APRData and APRData[self.PlayerID] or nil
+        local activeStepIndex = playerData and playerData[self.ActiveRoute] or nil
+        local activeStep = activeStepIndex and self:GetRouteSteps(self.ActiveRoute)[activeStepIndex] or nil
+
+        -- During the same session the stable route key survives a display-name change.
+        -- Do not restore an already completed route when the next saved entry is invalid.
+        if activeStep and not activeStep.RouteCompleted then
+            currentRouteKey = self.ActiveRoute
+        end
     end
 
     if not currentRouteKey then
-        if not APRCustomPath or not APRCustomPath[self.PlayerID] then
+        if currentRouteName then
+            table.remove(customPath, currentRouteIndex)
+
+            self._missingCustomPathRouteWarnings = self._missingCustomPathRouteWarnings or {}
+            if not self._missingCustomPathRouteWarnings[currentRouteName] then
+                self._missingCustomPathRouteWarnings[currentRouteName] = true
+                local message = string.format(L["ROUTE_NO_LONGER_EXISTS"], currentRouteName)
+
+                if self.PrintError then
+                    self:PrintError(message)
+                end
+                if self.questionDialog and self.questionDialog.CreateRouteTriggerPopup then
+                    self.questionDialog:CreateRouteTriggerPopup(message, {}, nil, nil, nil)
+                end
+            end
+
+            if self.routeconfig then
+                self.routeconfig:CheckIsCustomPathEmpty()
+            end
+
+            -- Keep a later valid route usable instead of leaving the current-step frame empty.
+            if next(customPath) then
+                return self:GetCurrentRouteMapIDsAndName()
+            end
+        elseif not APRCustomPath or not APRCustomPath[self.PlayerID] then
             self:PrintError('No APRCustomPath')
         end
         return nil, 0, '', ''
@@ -671,6 +736,12 @@ function APR:GetCurrentRouteMapIDsAndName()
             self.routeconfig:CheckIsCustomPathEmpty()
         end
         return nil, 0, '', ''
+    end
+
+    local routeData = self:GetRouteData(routeFileName)
+    if currentRouteIndex and routeData and routeData.label and currentRouteName ~= routeData.label then
+        customPath[currentRouteIndex] = routeData.label
+        self:Debug("APR:GetCurrentRouteMapIDsAndName - migrated route label", currentRouteName, routeData.label)
     end
 
     return routeZoneMapIDs, mapID, routeFileName, expansion
@@ -701,7 +772,7 @@ function APR:GetRouteKeyFromDisplayName(displayName)
 
     local matchingRouteKeys = {}
     for routeKey, routeData in pairs(self.RouteQuestStepList or {}) do
-        if type(routeData) == "table" and routeData.label == displayName then
+        if RouteMatchesDisplayName(routeData, displayName) then
             tinsert(matchingRouteKeys, routeKey)
         end
     end

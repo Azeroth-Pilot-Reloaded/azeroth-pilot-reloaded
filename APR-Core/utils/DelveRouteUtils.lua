@@ -168,6 +168,46 @@ function APR:GetPrimaryCustomPathRouteKey()
     return nil
 end
 
+local scenarioMapIDByZone = {}
+
+local function FindRegisteredScenarioMapID(self, mapID)
+    local currentMapID = tonumber(mapID)
+    if not currentMapID then
+        return nil
+    end
+
+    if scenarioMapIDByZone[currentMapID] ~= nil then
+        return scenarioMapIDByZone[currentMapID] or nil
+    end
+
+    local originalMapID = currentMapID
+    local visited = {}
+    local canCacheMiss = true
+    while currentMapID and currentMapID ~= 0 and not visited[currentMapID] do
+        visited[currentMapID] = true
+        if self:GetScenarioZoneInfo(currentMapID) then
+            scenarioMapIDByZone[originalMapID] = currentMapID
+            return currentMapID
+        end
+
+        local mapInfo = self:GetMapInfoCached(currentMapID)
+        if not mapInfo then
+            canCacheMiss = false
+            break
+        end
+        local parentMapID = mapInfo.parentMapID
+        if not parentMapID or parentMapID == currentMapID then
+            break
+        end
+        currentMapID = parentMapID
+    end
+
+    if canCacheMiss then
+        scenarioMapIDByZone[originalMapID] = false
+    end
+    return nil
+end
+
 function APR:GetScenarioMapIDForStep(step, routeKey)
     if type(step) ~= "table" then
         return nil
@@ -197,6 +237,23 @@ function APR:GetScenarioMapIDForStep(step, routeKey)
         local routeData = resolvedRouteKey and self:GetRouteData(resolvedRouteKey) or nil
         if routeData and routeData.mapID and self:GetScenarioZoneInfo(routeData.mapID) then
             return routeData.mapID
+        end
+    end
+
+    -- Steps immediately after EnterScenario often only declare their interior Zone.
+    -- Resolve that zone (or one of its parents) back to the registered entrance so
+    -- navigation can still guide a player who is unexpectedly outside.
+    local scenarioMapID = FindRegisteredScenarioMapID(self, step.Zone)
+    if scenarioMapID then
+        return scenarioMapID
+    end
+
+    if type(step.Zones) == "table" then
+        for _, mapID in pairs(step.Zones) do
+            scenarioMapID = FindRegisteredScenarioMapID(self, mapID)
+            if scenarioMapID then
+                return scenarioMapID
+            end
         end
     end
 
