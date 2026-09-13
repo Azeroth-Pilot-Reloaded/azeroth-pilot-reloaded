@@ -133,11 +133,14 @@ function APR:GetTotalSteps() totals = totals + 1 end
 function APR:UpdateStep() updates = updates + 1 end
 function APR:GetRouteSteps() return reputationSteps end
 local currentReputationState = utils:GetReputationStateSignature(reputationSteps)
-APR.questOrderList = { currentRouteKey = APR.ActiveRoute, reputationState = currentReputationState,
+APR.questOrderList = {
+    currentRouteKey = APR.ActiveRoute,
+    reputationState = currentReputationState,
     DelayedUpdate = function(_, force)
-    assert(force, "Reputation changes must refresh conditional rows")
-    renders = renders + 1
-end }
+        assert(force, "Reputation changes must refresh conditional rows")
+        renders = renders + 1
+    end,
+}
 dofile("APR-Core/core/Event.lua")
 for _ = 1, 100 do APR.event.functions.reputation() end
 assert(#timers == 1 and totals == 0, "A reputation burst schedules a single refresh")
