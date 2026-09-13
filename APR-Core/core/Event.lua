@@ -1137,9 +1137,22 @@ function APR.event.functions.reputation()
         if not APR.ActiveRoute then return end
         -- One quest can award several reputations; evaluate the resulting state only once.
         local profileStart = APR:StartPerformanceSample()
-        APR:GetTotalSteps(APR.ActiveRoute)
+        local routeKey = APR.ActiveRoute
+        local previousReputationState = APR.questOrderList.currentRouteKey == routeKey and
+            APR.questOrderList.reputationState or nil
+
+        APR:GetTotalSteps(routeKey)
         APR:UpdateStep()
-        APR.questOrderList:DelayedUpdate(true)
+
+        -- UPDATE_FACTION is also emitted for many combat and quest updates. Rebuild
+        -- the full list only when a reputation threshold used by this route changed.
+        if APR.ActiveRoute == routeKey then
+            local currentReputationState = APR.questOrderListUtils:GetReputationStateSignature(
+                APR:GetRouteSteps(routeKey))
+            if previousReputationState ~= nil and previousReputationState ~= currentReputationState then
+                APR.questOrderList:DelayedUpdate(true)
+            end
+        end
         APR:FinishPerformanceSample("ReputationRefresh", profileStart)
     end)
 end

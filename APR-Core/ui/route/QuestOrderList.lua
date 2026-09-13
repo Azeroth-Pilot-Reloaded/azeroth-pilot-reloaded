@@ -8,6 +8,9 @@ APR.questOrderList.questID = nil
 APR.questOrderList.currentStepIndex = nil
 APR.questOrderList.updateTimer = nil
 APR.questOrderList.pendingUpdate = false
+APR.questOrderList.rawStepContainers = {}
+APR.questOrderList.renderComplete = false
+APR.questOrderList.visibilityState = nil
 
 local QuestOrderListUtils = APR.questOrderListUtils
 local getSnapAnchor
@@ -49,6 +52,18 @@ end
 
 local function colorByCompletion(isCompleted, currentStep, stepIndex)
     return (isCompleted or (currentStep and currentStep > stepIndex)) and "green" or "gray"
+end
+
+local function isStepVisible(step, sojournerSkipActive)
+    return APR:StepFilterQoL(step) and not (sojournerSkipActive and APR:IsStepCampaignQuest(step))
+end
+
+local function getVisibilityState(steps, sojournerSkipActive)
+    local state = {}
+    for rawIndex, step in ipairs(steps or {}) do
+        state[rawIndex] = isStepVisible(step, sojournerSkipActive) and "1" or "0"
+    end
+    return table.concat(state)
 end
 
 local function getQuestName(questID)
@@ -293,6 +308,9 @@ function APR.questOrderList:RemoveSteps(hideFrame)
     QuestOrderListUtils:CancelRender(self)
     self.currentStepIndex = nil
     self.currentRouteKey = nil
+    self.renderComplete = false
+    self.visibilityState = nil
+    wipe(self.rawStepContainers)
     for _, questContainer in pairs(self.stepList) do
         QuestOrderListUtils:ReleaseStepFrame(questContainer)
     end
@@ -301,6 +319,32 @@ function APR.questOrderList:RemoveSteps(hideFrame)
         QuestOrderListFrame:Hide()
     end
     APR:FinishPerformanceSample("QuestOrderListRelease", profileStart)
+end
+
+function APR.questOrderList:AdvanceRenderedStep(currentStepIndex, visibilityState)
+    local previousStepIndex = self.currentStepIndex
+    local currentContainer = self.rawStepContainers[currentStepIndex]
+    if not previousStepIndex or currentStepIndex <= previousStepIndex or not currentContainer then
+        return false
+    end
+
+    local layoutChanged = false
+    for rawIndex = previousStepIndex, currentStepIndex - 1 do
+        local container = self.rawStepContainers[rawIndex]
+        if container then
+            QuestOrderListUtils:SetStepFrameState(container, "green", false)
+            if container.collapseWhenPassed then
+                layoutChanged = QuestOrderListUtils:CollapseStepDetails(container) or layoutChanged
+            end
+        end
+    end
+
+    self.currentStepIndex = currentStepIndex
+    self.visibilityState = visibilityState
+    QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame,
+        currentContainer.displayIndex)
+    if layoutChanged then self:UpdateFrameContents() end
+    return true
 end
 
 function APR.questOrderList:UpdateFrameContents()
@@ -339,16 +383,29 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         return
     end
 
+    local routeKey = APR.ActiveRoute
+    local activeRouteSteps = APR:GetRouteSteps(routeKey)
+    local sojournerSkipActive = APR:IsSojournerSkipActive()
+
     -- Compare the current step index with the stored one
-    if currentStepIndex == self.currentStepIndex and self.currentRouteKey == APR.ActiveRoute and not forceRendering then
-        return
+    if self.currentRouteKey == routeKey and not forceRendering then
+        if currentStepIndex == self.currentStepIndex then return end
+
+        if self.renderComplete and currentStepIndex > (self.currentStepIndex or currentStepIndex) then
+            local visibilityState = getVisibilityState(activeRouteSteps, sojournerSkipActive)
+            if visibilityState == self.visibilityState and
+                self:AdvanceRenderedStep(currentStepIndex, visibilityState) then
+                return
+            end
+        end
     end
 
     -- Clean list
     self:RemoveSteps(false)
     self.currentStepIndex = currentStepIndex
-    self.currentRouteKey = APR.ActiveRoute
+    self.currentRouteKey = routeKey
     self.questID = nil
+    self.renderComplete = false
 
     QuestOrderListPanel:Show()
     -- No display-index adjustment needed: we compare rawIndex (ipairs) directly
@@ -363,14 +420,15 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
 
     local displayStepIndex = 1
     local currentDisplayIndex = nil
-    local activeRouteSteps = APR:GetRouteSteps(APR.ActiveRoute)
-    local sojournerSkipActive = APR:IsSojournerSkipActive()
-    local routeKey = APR.ActiveRoute
+    local visibilityParts = {}
+    self.reputationState = QuestOrderListUtils:GetReputationStateSignature(activeRouteSteps)
     local function renderRows()
     for rawIndex, step in ipairs(activeRouteSteps) do
         -- Hide step for Faction, Race, Class, Achievement
         -- Also hide sojourner-skipped campaign steps
-        if APR:StepFilterQoL(step) and not (sojournerSkipActive and APR:IsStepCampaignQuest(step)) then
+        local visible = isStepVisible(step, sojournerSkipActive)
+        visibilityParts[rawIndex] = visible and "1" or "0"
+        if visible then
             local container
             local activeQuestId
             local isCurrentStep = rawIndex == currentStepIndex
@@ -860,6 +918,11 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
             end
             if container then
                 self.stepList[displayStepIndex] = container
+                self.rawStepContainers[rawIndex] = container
+                container.rawIndex = rawIndex
+                container.displayIndex = displayStepIndex
+                container.collapseWhenPassed = (step.BuyMerchant and not step.Qpart) or step.PickUp or step.Qpart or
+                    step.QpartPart or step.Done or step.LootItems or false
                 if activeQuestId then
                     self.questID = activeQuestId
                 end
@@ -879,8 +942,13 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         return true
     end, function(finished)
         QuestOrderListFrame_ScrollChild:SetHeight(math.max(1, -layout.dataHeight))
-        if finished and currentDisplayIndex then
-            QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame, currentDisplayIndex)
+        if finished then
+            self.renderComplete = true
+            self.visibilityState = table.concat(visibilityParts)
+            if currentDisplayIndex then
+                QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame,
+                    currentDisplayIndex)
+            end
         end
     end)
 end
