@@ -97,6 +97,23 @@ owner.renderFrame.scripts.OnUpdate()
 assert(replacementRan, "A new render replaces the pending worker")
 print("Quest list scheduling: all 1224 rows rendered in bounded batches; stale/replaced work cancelled")
 
+-- Reputation refreshes only need a full redraw when a displayed threshold changes.
+local reachedReputations = {}
+function APR:IsReputationLevelReached(requirement)
+    return reachedReputations[requirement.factionID] == true
+end
+local reputationSteps = {
+    { Reputation = { factionID = 1, level = 3, type = "friendship" } },
+    { AnyOf = { { SkipForReputation = { factionID = 2, level = 5 } } } },
+}
+local initialReputationState = utils:GetReputationStateSignature(reputationSteps)
+assert(initialReputationState ~= "", "Routes with reputation thresholds expose a state signature")
+assert(initialReputationState == utils:GetReputationStateSignature(reputationSteps),
+    "Unchanged reputation progress keeps a stable signature")
+reachedReputations[2] = true
+assert(initialReputationState ~= utils:GetReputationStateSignature(reputationSteps),
+    "Crossing a nested reputation threshold changes the signature")
+
 local timers, totals, updates, renders = {}, 0, 0, 0
 C_Timer = { NewTimer = function(_, callback)
     timers[#timers + 1] = callback
@@ -104,7 +121,10 @@ C_Timer = { NewTimer = function(_, callback)
 end }
 function APR:GetTotalSteps() totals = totals + 1 end
 function APR:UpdateStep() updates = updates + 1 end
-APR.questOrderList = { DelayedUpdate = function(_, force)
+function APR:GetRouteSteps() return reputationSteps end
+local currentReputationState = utils:GetReputationStateSignature(reputationSteps)
+APR.questOrderList = { currentRouteKey = APR.ActiveRoute, reputationState = currentReputationState,
+    DelayedUpdate = function(_, force)
     assert(force, "Reputation changes must refresh conditional rows")
     renders = renders + 1
 end }
@@ -112,10 +132,15 @@ dofile("APR-Core/core/Event.lua")
 for _ = 1, 100 do APR.event.functions.reputation() end
 assert(#timers == 1 and totals == 0, "A reputation burst schedules a single refresh")
 timers[1]()
-assert(totals == 1 and updates == 1 and renders == 1, "The resulting route state is evaluated once")
+assert(totals == 1 and updates == 1 and renders == 0,
+    "Unchanged reputation state does not rebuild the Quest Order List")
+reachedReputations[1] = true
 APR.event.functions.reputation()
 assert(#timers == 2, "Later reputation changes are not lost")
-print("Reputation refresh: 100 events coalesced into one route/list update")
+timers[2]()
+assert(totals == 2 and updates == 2 and renders == 1,
+    "Crossing a route reputation threshold forces exactly one list rebuild")
+print("Reputation refresh: event bursts coalesced; list rebuilt only on a route threshold change")
 
 -- Banked, already-complete delve objectives must not rebuild the current step on every log event.
 dofile("APR-Core/features/questing/QuestHandler.lua")

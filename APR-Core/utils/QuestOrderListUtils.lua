@@ -1,6 +1,39 @@
 APR.questOrderListUtils = APR.questOrderListUtils or {}
 APR.questOrderListUtils.framePool = {}
 
+local REPUTATION_STATE_KEYS = { "Reputation", "ReputationLevel", "SkipForReputation" }
+
+local function appendReputationState(parts, conditions)
+    if type(conditions) ~= "table" then return end
+
+    for _, key in ipairs(REPUTATION_STATE_KEYS) do
+        local requirement = conditions[key]
+        if type(requirement) == "table" then
+            parts[#parts + 1] = table.concat({
+                key,
+                tostring(requirement.factionID or ""),
+                tostring(requirement.level or ""),
+                tostring(requirement.type or ""),
+                APR:IsReputationLevelReached(requirement) and "1" or "0",
+            }, ":")
+        end
+    end
+
+    for _, alternative in ipairs(conditions.AnyOf or {}) do
+        appendReputationState(parts, alternative)
+    end
+end
+
+-- Only threshold changes affect the Quest Order List: reputation progress itself
+-- is not displayed. This lets UPDATE_FACTION ignore unrelated reputation gains.
+function APR.questOrderListUtils:GetReputationStateSignature(steps)
+    local parts = {}
+    for _, step in ipairs(steps or {}) do
+        appendReputationState(parts, step)
+    end
+    return table.concat(parts, "|")
+end
+
 function APR.questOrderListUtils:CancelRender(owner)
     if owner.renderFrame then
         owner.renderFrame:SetScript("OnUpdate", nil)
@@ -45,6 +78,33 @@ function APR.questOrderListUtils:ReleaseStepFrame(container)
     container:EnableMouse(false)
     if GameTooltip:GetOwner() == container then GameTooltip:Hide() end
     self.framePool[#self.framePool + 1] = container
+end
+
+function APR.questOrderListUtils:SetStepFrameState(container, color, isCurrentStep)
+    if not container then return end
+
+    local titleRole = isCurrentStep and "warning" or (color == "green" and "success" or "muted")
+    APR:SetFontStringRole(container.indexFont, titleRole)
+    APR:SetFontStringRole(container.titleFont, titleRole)
+    for _, questFont in ipairs(container.questFonts or {}) do
+        APR:SetFontStringRole(questFont, isCurrentStep and "base" or "muted")
+    end
+end
+
+function APR.questOrderListUtils:CollapseStepDetails(container)
+    if not container or not container.questFonts or #container.questFonts == 0 then
+        return false
+    end
+
+    for _, questFont in ipairs(container.questFonts) do
+        questFont:Hide()
+    end
+    container.questFonts = {}
+    container:SetScript("OnEnter", nil)
+    container:SetScript("OnLeave", nil)
+    container:EnableMouse(false)
+    if GameTooltip:GetOwner() == container then GameTooltip:Hide() end
+    return true
 end
 
 local function bindUncompletedStepTooltip(container, questInfo)
@@ -195,11 +255,7 @@ end
 function APR.questOrderListUtils:SetCurrentStepIndicator(stepList, scrollFrame, stepindex)
     local container = stepList[stepindex]
     if not container then return end
-    APR:SetFontStringRole(container.indexFont, "warning")
-    APR:SetFontStringRole(container.titleFont, "warning")
-    for _, questFont in pairs(container.questFonts) do
-        APR:SetFontStringRole(questFont, "base")
-    end
+    self:SetStepFrameState(container, "gray", true)
 
     C_Timer.After(0.1, function()
         if scrollFrame:GetVerticalScrollRange() > 0 then
