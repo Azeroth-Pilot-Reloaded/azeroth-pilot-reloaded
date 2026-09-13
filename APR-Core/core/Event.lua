@@ -1146,10 +1146,10 @@ function APR.event.functions.reputation()
 
         -- UPDATE_FACTION is also emitted for many combat and quest updates. Rebuild
         -- the full list only when a reputation threshold used by this route changed.
-        if APR.ActiveRoute == routeKey then
+        if previousReputationState ~= nil and APR.ActiveRoute == routeKey then
             local currentReputationState = APR.questOrderListUtils:GetReputationStateSignature(
                 APR:GetRouteSteps(routeKey))
-            if previousReputationState ~= nil and previousReputationState ~= currentReputationState then
+            if previousReputationState ~= currentReputationState then
                 APR.questOrderList:DelayedUpdate(true)
             end
         end
