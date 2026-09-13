@@ -139,7 +139,8 @@ spells[2575] = true
 check(not APR:AreConditionalFiltersMet({ DontHaveSpell = 2575 }), "Scalar spell condition")
 spells[2575] = nil
 
-local questID = 93384
+local silvermoonQuestIDs = { 93384, 93372, 93386, 93385 }
+local questID = silvermoonQuestIDs[1]
 account[questID] = true
 check(not APR:IsQuestReadyForTurnIn(questID), "Warband completion alone cannot activate a hand-in")
 active[questID] = true
@@ -150,12 +151,20 @@ check(APR:EvaluateRouteConditions({ IsQuestReadyForTurnIn = questID }), "Readine
 complete[questID] = true
 check(not APR:IsQuestReadyForTurnIn(questID), "A spent reward does not activate again")
 complete[questID] = nil
+check(not APR:IsQuestReadyForTurnIn(silvermoonQuestIDs), "A grouped hand-in waits for every quest")
+for _, id in ipairs(silvermoonQuestIDs) do
+    active[id], ready[id] = true, true
+end
+check(APR:IsQuestReadyForTurnIn(silvermoonQuestIDs), "A grouped hand-in activates when every quest is ready")
+ready[silvermoonQuestIDs[#silvermoonQuestIDs]] = nil
 
 APR.ActiveRoute = routeKey
 APRData.test[routeKey] = 11
 level, zone = 87.99, 2393
 check(#APR:GetRouteSteps(routeKey) == #route.steps, "No premature parallel activation")
-check(APR:IsQuestTurnInDeferred(questID), "Automation preserves a pending reward")
+for _, id in ipairs(silvermoonQuestIDs) do
+    check(APR:IsQuestTurnInDeferred(id), "Automation preserves every pending grouped reward")
+end
 local progressed, rewarded, popup = 0, 0, 0
 function APR:GetSettingsProfile() return { autoHandIn = true } end
 function IsModifierKeyDown() return false end
@@ -172,10 +181,14 @@ check(progressed == 0 and rewarded == 0 and popup == 0, "All automatic hand-in e
 level, zone = 89, 2413
 check(#APR:GetRouteSteps(routeKey) == #route.steps, "A group remains pending outside its reward zone")
 zone = 2393
+check(#APR:GetRouteSteps(routeKey) == #route.steps, "A grouped hand-in remains pending while one quest is missing")
+ready[silvermoonQuestIDs[#silvermoonQuestIDs]] = true
 local effective = APR:GetRouteSteps(routeKey)
-check(#effective == #route.steps + 1, "A level jump past 88 still activates the reward")
-check(effective[11].Done[1] == questID, "Ready hand-in inserts at the current progression point")
-check(effective[12] == route.steps[11], "The interrupted main step is retained")
+check(#effective == #route.steps + #silvermoonQuestIDs, "A level jump past 88 still activates the grouped rewards")
+for offset, id in ipairs(silvermoonQuestIDs) do
+    check(effective[10 + offset].Done[1] == id, "Grouped hand-ins keep their route order")
+end
+check(effective[11 + #silvermoonQuestIDs] == route.steps[11], "The interrupted main step is retained")
 check(not APR:IsQuestTurnInDeferred(questID), "An activated reward can be turned in")
 APR.event.functions.done("QUEST_PROGRESS")
 check(progressed == 1, "Automatic hand-in resumes when eligible")
@@ -236,15 +249,20 @@ end
 for _, id in ipairs({ 88985, 90615, 91375, 91557, 94370, 94388, 94393, 94396, 94867 }) do
     check(not pickups[id], "Optional breadcrumb cannot block a partially quested alt: " .. id)
 end
+local silvermoonGroup
 for _, id in ipairs({ 93372, 93384, 93385, 93386, 93409, 93410, 93416, 93421, 93427, 93428 }) do
     local found = false
     for _, group in ipairs(route.parallelSteps) do
-        if group.conditions.IsQuestReadyForTurnIn == id then
+        local readiness = group.conditions.IsQuestReadyForTurnIn
+        if readiness == id or (type(readiness) == "table" and tContains(readiness, id)) then
             found = group.conditions.MinLevel == "MidnightDelves"
+            if type(readiness) == "table" then silvermoonGroup = group end
         end
     end
     check(found, "Every delve reward uses a persistent minimum-level parallel group")
 end
+check(silvermoonGroup and #silvermoonGroup.steps == #silvermoonQuestIDs,
+    "All four Silvermoon rewards share one parallel group")
 -- Exercise the real scenario handler with a reserved reward after a reload.
 dofile("APR-Core/features/questing/QuestHandler.lua")
 local scenarioStep, parentMap

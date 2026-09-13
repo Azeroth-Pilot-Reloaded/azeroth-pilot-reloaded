@@ -44,6 +44,16 @@ local row = utils:AddStepFrameWithQuest({ scrollChild = {}, frameWidth = 258, da
 assert(row.scripts.OnEnter == nil and row.scripts.OnLeave == nil, "A reused completed row has no stale tooltip")
 assert(#row.questFonts == 0 and row.questFontPool[1].hidden, "Old quest detail lines are hidden")
 assert(row.titleFont.text == "Completed" and row.titleFont.role == "success", "Reused text and color are updated")
+local progressedRow = utils:AddStepFrameWithQuest({ scrollChild = {}, frameWidth = 258, dataHeight = 0 },
+    2, "Loot", { { questID = 5, questName = "Fragments" } }, "gray", true)
+utils:SetStepFrameState(progressedRow, "gray", true)
+assert(progressedRow.titleFont.role == "warning" and progressedRow.questFonts[1].role == "base",
+    "The active row can be highlighted without rebuilding it")
+utils:SetStepFrameState(progressedRow, "green", false)
+assert(progressedRow.titleFont.role == "success" and progressedRow.questFonts[1].role == "muted",
+    "A progressed row can be completed in place")
+assert(utils:CollapseStepDetails(progressedRow) and #progressedRow.questFonts == 0,
+    "Completed loot details collapse without recreating the row")
 print("Quest list: 30 x 1000 rows; only 1000 frames / 5000 fonts allocated")
 
 -- Profiling is opt-in and retains at most 100 slow records in SavedVariables.
