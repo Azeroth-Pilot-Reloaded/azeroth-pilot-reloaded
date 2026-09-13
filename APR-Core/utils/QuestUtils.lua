@@ -15,8 +15,8 @@ function APR:IsQuestReadyForTurnIn(questID)
         return true
     end
 
-    return C_QuestLog.IsOnQuest(questID) and C_QuestLog.IsComplete(questID)
-        and not C_QuestLog.IsQuestFlaggedCompleted(questID)
+    return (C_QuestLog.IsOnQuest(questID) and C_QuestLog.IsComplete(questID))
+        or C_QuestLog.IsQuestFlaggedCompleted(questID)
 end
 
 APR.QuestPool = APR.QuestPool or { ids = {} }
