@@ -11,12 +11,17 @@ assert(APR:NormalizeSearchText("宝藏") == "宝藏")
 assert(APR:NormalizeSearchText("trésor [1]"):find(APR:NormalizeSearchText("tresor [1]"), 1, true))
 
 local auras, bags, unusable = {}, {}, {}
-local level, combat, desired, active, pet = 87, false, false, false, false
+local level, combat, desired, active, pet, canToggle, canToggleInArea = 87, false, false, false, false, true, false
 function UnitLevel() return level end
 function GetMaxLevelForPlayerExpansion() return 90 end
 function InCombatLockdown() return combat end
 function APR:HasAura(id) return auras[id] ~= nil end
-C_PvP = { IsWarModeActive = function() return active end, IsWarModeDesired = function() return desired end }
+C_PvP = {
+    IsWarModeActive = function() return active end,
+    IsWarModeDesired = function() return desired end,
+    CanToggleWarMode = function(toggle) assert(toggle == true); return canToggle end,
+    CanToggleWarModeInArea = function() return canToggleInArea end,
+}
 C_PetBattles = { IsInBattle = function() return pet end }
 C_Item = {
     GetItemCount = function(id, bank, uses, reagent, warband)
@@ -92,16 +97,41 @@ APR.settings = { profile = { enableAddon = true, xpBuffFrame = {}, currentStepba
 dofile("APR-Core/utils/UIUtils.lua")
 dofile("APR-Core/features/player/XPBuffOverlay.lua")
 APR.XPBuffOverlay:Refresh()
-assert(visibleRows() == 3, "Without a route: War Mode and two missing item buffs")
+assert(visibleRows() == 0, "XP reminders require an active route")
+APR.ActiveRoute = "route"
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 3, "With a route: War Mode and two missing item buffs")
 assert(APRXPBuffOverlay.Header.template == "ObjectiveTrackerContainerHeaderTemplate",
     "The overlay uses the same header as the other APR windows")
 APRXPBuffOverlay.Header.MinimizeButton.scripts.OnClick()
-assert(APR.settings.profile.showXPBuffOverlay == false and visibleRows() == 0)
+assert(APR.settings.profile.showXPBuffOverlay ~= false and visibleRows() == 0)
+assert(APR.settings.profile.xpBuffOverlayDismissed.route == "route")
 APR.XPBuffOverlay:QueueRefresh()
 drain()
 assert(visibleRows() == 0, "Closing the overlay survives subsequent aura/bag events")
-APR.settings.profile.showXPBuffOverlay = true
+frames[1].scripts.OnEvent(frames[1], "ZONE_CHANGED_NEW_AREA")
+drain()
+assert(visibleRows() == 0, "War Mode remains unavailable in the new area")
+canToggleInArea = true
+frames[1].scripts.OnEvent(frames[1], "ZONE_CHANGED_NEW_AREA")
+drain()
+assert(visibleRows() == 3 and not APR.settings.profile.xpBuffOverlayDismissed,
+    "The overlay reopens when War Mode becomes activatable")
+APRXPBuffOverlay.Header.MinimizeButton.scripts.OnClick()
 APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 0, "A close in an actionable area does not reopen immediately")
+canToggleInArea = false
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 0)
+canToggleInArea = true
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 3, "Returning to an actionable area reopens the reminder")
+APR.ActiveRoute = nil
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 0, "An inactive route hides reminders after they were visible")
+APR.ActiveRoute = "route"
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 3, "A route makes reminders visible again")
 local function DismissBonus(sourceName)
     for _, row in ipairs(frames) do
         if rawget(row, "bonusSource") == sourceName and row:IsShown() then
@@ -114,6 +144,16 @@ end
 DismissBonus("WarMode")
 assert(visibleRows() == 2 and not APR.XPBuffOverlay:IsBonusEnabled("WarMode"),
     "War Mode can be ignored without hiding usable item bonuses")
+APRXPBuffOverlay.Header.MinimizeButton.scripts.OnClick()
+canToggle = false
+APR.XPBuffOverlay:Refresh()
+canToggle = true
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 0, "A dismissed War Mode bonus cannot reopen the overlay")
+APR.ActiveRoute = "another-route"
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 2, "A different route can suggest the remaining bonuses")
+APR.ActiveRoute = "route"
 DismissBonus("Darkmoon")
 bags[93730] = 0
 APR.XPBuffOverlay:Refresh()
@@ -222,4 +262,4 @@ function APR:GetRouteSignature() return "definition-v2" end
 APR:CheckCurrentRouteUpToDate("route")
 assert(APRData.player.route == nil, "A real definition change still invalidates outdated indexes")
 assert(APRData.player["route-ParallelStepsState"] == nil)
-print("PASS: accent search, global XP overlay, persistent bonus dismissal, aura variants, secure buttons, combat deferral and reconnect persistence")
+print("PASS: accent search, route-scoped XP overlay, conditional reopening, persistent bonus dismissal, aura variants, secure buttons, combat deferral and reconnect persistence")

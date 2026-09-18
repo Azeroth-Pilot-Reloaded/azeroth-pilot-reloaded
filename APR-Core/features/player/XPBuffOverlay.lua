@@ -23,11 +23,7 @@ function overlay:SetBonusEnabled(sourceName, enabled)
     local profile = APR.settings.profile
     profile.hiddenXPBonuses = profile.hiddenXPBonuses or {}
     profile.hiddenXPBonuses[sourceName] = not enabled or nil
-    self:Refresh()
-end
-
-function overlay:HideOverlay()
-    APR.settings.profile.showXPBuffOverlay = false
+    if enabled then profile.xpBuffOverlayDismissed = nil end
     self:Refresh()
 end
 
@@ -49,6 +45,28 @@ local function GetItemBonusSource(itemID)
             if candidate == itemID then return name end
         end
     end
+end
+
+local function GetActionableBonuses()
+    local actionable = {}
+    if UnitLevel("player") >= 20 and not C_PvP.IsWarModeActive() and not C_PvP.IsWarModeDesired() and
+        overlay:IsBonusEnabled("WarMode") and C_PvP.CanToggleWarModeInArea() and C_PvP.CanToggleWarMode(true) then
+        actionable.WarMode = true
+    end
+    for _, itemID in ipairs(APR:GetLevelConsumableReminders()) do
+        local source = GetItemBonusSource(itemID)
+        if source and overlay:IsBonusEnabled(source) then actionable[source] = true end
+    end
+    return actionable
+end
+
+function overlay:HideOverlay()
+    APR.settings.profile.xpBuffOverlayDismissed = {
+        playerID = APR.PlayerID,
+        route = APR.ActiveRoute,
+        actionable = GetActionableBonuses(),
+    }
+    self:Refresh()
 end
 
 local function SetDismissTooltip(button, message)
@@ -155,10 +173,24 @@ function overlay:Refresh()
     end
     frame:SetBackdropColor(unpack(profile.currentStepbackgroundColorAlpha))
     for _, row in pairs(rows) do row:Hide() end
-    if not profile.enableAddon or profile.showXPBuffOverlay == false or C_PetBattles.IsInBattle() or
+    if not profile.enableAddon or not APR.ActiveRoute or profile.showXPBuffOverlay == false or C_PetBattles.IsInBattle() or
         UnitLevel("player") >= GetMaxLevelForPlayerExpansion() then
         frame:Hide()
         return
+    end
+    local dismissed = profile.xpBuffOverlayDismissed
+    if dismissed then
+        local actionable = GetActionableBonuses()
+        local newlyActionable = dismissed.playerID ~= APR.PlayerID or dismissed.route ~= APR.ActiveRoute
+        for source in pairs(actionable) do
+            if not dismissed.actionable[source] then newlyActionable = true end
+        end
+        if not newlyActionable then
+            dismissed.actionable = actionable
+            frame:Hide()
+            return
+        end
+        profile.xpBuffOverlayDismissed = nil
     end
     local count = 0
     local function ShowRow(key, itemID, text, sourceName)
@@ -198,7 +230,8 @@ end
 local events = CreateFrame("Frame")
 for _, event in ipairs({ "PLAYER_ENTERING_WORLD", "UNIT_AURA", "BAG_UPDATE_DELAYED",
     "GET_ITEM_INFO_RECEIVED", "SPELL_UPDATE_USABLE", "PLAYER_LEVEL_UP", "WAR_MODE_STATUS_UPDATE",
-    "PLAYER_FLAGS_CHANGED", "PLAYER_REGEN_ENABLED", "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE" }) do
+    "PLAYER_FLAGS_CHANGED", "PLAYER_REGEN_ENABLED", "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE",
+    "ZONE_CHANGED", "ZONE_CHANGED_INDOORS", "ZONE_CHANGED_NEW_AREA" }) do
     events:RegisterEvent(event)
 end
 events:SetScript("OnEvent", function(_, event, unit)
