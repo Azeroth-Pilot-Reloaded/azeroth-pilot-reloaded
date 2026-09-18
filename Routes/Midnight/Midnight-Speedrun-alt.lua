@@ -2,7 +2,6 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
     label = L["Midnight - Speedrun - Alt"],
-    legacyLabels = { L["Midnight - Speedrun"] .. " (Alt 80-90)" },
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Leveling,
     prefab = {
@@ -735,20 +734,53 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             _index = 84,
         },
         {
+            PickUp = { 93970 },
+            Coord = { x = -544.7, y = 712.1 },
+            Zone = 2405,
+            MinLevel = 80,
+            SkipForLvl = "MidnightDelves",
+            _index = 85,
+        },
+        {
+            Qpart = { [93970] = { 1 } },
+            Coord = { x = -549.5, y = 716 },
+            Zone = 2405,
+            GossipOptionIDs = { 137576 },
+            MinLevel = 80,
+            SkipForLvl = "MidnightDelves",
+            _index = 86,
+        },
+        {
+            Done = { 93970 },
+            Coord = { x = -544.5, y = 713 },
+            Zone = 2405,
+            MinLevel = 80,
+            SkipForLvl = "MidnightDelves",
+            _index = 87,
+        },
+        {
+            PickUp = { 91145 },
+            Coord = { x = -467.5, y = 780.6 },
+            Zone = 2405,
+            MinLevel = 80,
+            SkipForLvl = "MidnightDelves",
+            _index = 88,
+        },
+        {
             Waypoint = 91559,
             Coord = { x = -768.6, y = 2450.5 },
             Zone = 2405,
             Range = 15,
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
-            _index = 85,
+            _index = 89,
         },
         {
             EnterScenario = { mapID = 2528, questID = 93427 },
             Zone = 2405,
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
-            _index = 86,
+            _index = 90,
         },
         {
             PickUp = { 93427 },
@@ -757,14 +789,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             Coord = { x = -604.3, y = 590.2 },
             SkipForLvl = "MidnightDelves",
-            _index = 87,
+            _index = 91,
         },
         {
             DoScenario = { mapID = 2528, questID = 93427 },
             Zone = 2528,
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
-            _index = 88,
+            _index = 92,
         },
         {
             Qpart = { [93427] = { 1 } },
@@ -772,7 +804,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             NoArrow = true,
             SkipForLvl = "MidnightDelves",
-            _index = 89,
+            _index = 93,
         },
         {
             LeaveScenario = { mapID = 2571, questID = 93427 },
@@ -780,7 +812,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             NoArrow = true,
             SkipForLvl = "MidnightDelves",
-            _index = 90,
+            _index = 94,
         },
         {
             Waypoint = 91559,
@@ -789,7 +821,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 15,
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
-            _index = 91,
+            _index = 95,
         },
         {
             Waypoint = 91559,
@@ -798,14 +830,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 15,
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
-            _index = 92,
+            _index = 96,
         },
         {
             EnterScenario = { mapID = 2506, questID = 93428 },
             Zone = 2405,
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
-            _index = 93,
+            _index = 97,
         },
         {
             PickUp = { 93428 },
@@ -814,14 +846,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             Coord = { x = 1000.2, y = 2430.5 },
             SkipForLvl = "MidnightDelves",
-            _index = 94,
+            _index = 98,
         },
         {
             DoScenario = { mapID = 2506, questID = 93428 },
             Zone = 2506,
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
-            _index = 95,
+            _index = 99,
         },
         {
             Qpart = { [93428] = { 1 } },
@@ -829,7 +861,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             NoArrow = true,
             SkipForLvl = "MidnightDelves",
-            _index = 96,
+            _index = 100,
         },
         {
             LeaveScenario = { mapID = 2506, questID = 93428 },
@@ -837,7 +869,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             NoArrow = true,
             SkipForLvl = "MidnightDelves",
-            _index = 97,
+            _index = 101,
         },
         --END DELVE
         -- Voidstrom: start side quest
@@ -847,7 +879,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 98,
+            _index = 102,
         },
         {
             Qpart = { [91558] = { 1 }, [91559] = { 1 } },
@@ -856,7 +888,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 60,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 99,
+            _index = 103,
         },
         {
             Done = { 91559, 91558 },
@@ -864,7 +896,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 100,
+            _index = 104,
         },
         {
             PickUp = { 91560 },
@@ -872,7 +904,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 101,
+            _index = 105,
         },
         {
             Qpart = { [91560] = { 1 } },
@@ -881,7 +913,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 102,
+            _index = 106,
         },
         {
             Qpart = { [91560] = { 2 } },
@@ -890,7 +922,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 103,
+            _index = 107,
         },
         {
             Qpart = { [91560] = { 3 } },
@@ -899,7 +931,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 104,
+            _index = 108,
         },
         {
             Qpart = { [91560] = { 4 } },
@@ -908,7 +940,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 105,
+            _index = 109,
         },
         {
             PickUp = { 93801 },
@@ -916,7 +948,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 106,
+            _index = 110,
         },
         {
             Qpart = { [91560] = { 5 } },
@@ -926,7 +958,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 107,
+            _index = 111,
             TrigText = "1/6",
         },
         {
@@ -936,7 +968,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 108,
+            _index = 112,
             TrigText = "2/6",
         },
         {
@@ -946,7 +978,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 109,
+            _index = 113,
             TrigText = "3/6",
         },
         {
@@ -956,7 +988,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 110,
+            _index = 114,
             TrigText = "4/6",
         },
         {
@@ -966,7 +998,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 111,
+            _index = 115,
             TrigText = "5/6",
         },
         {
@@ -976,7 +1008,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 112,
+            _index = 116,
             TrigText = "6/6",
         },
         {
@@ -986,7 +1018,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 45,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 113,
+            _index = 117,
         },
         {
             Qpart = { [91560] = { 6 } },
@@ -995,7 +1027,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 114,
+            _index = 118,
         },
         {
             Done = { 91560, 93801 },
@@ -1003,7 +1035,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 115,
+            _index = 119,
         },
         {
             PickUp = { 91561 },
@@ -1011,7 +1043,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 116,
+            _index = 120,
         },
         {
             Qpart = { [91561] = { 1 } },
@@ -1020,7 +1052,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 117,
+            _index = 121,
             RaidIcon = 247672,
         },
         {
@@ -1029,53 +1061,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 118,
-        },
-        {
-            PickUp = { 91145 },
-            Coord = { x = -467.5, y = 780.6 },
-            Zone = 2405,
-            MinLevel = 80,
-            SkipForLvl = "MidnightDelves",
-            _index = 119,
-        },
-        {
-            PickUp = { 90914 },
-            Coord = { x = -387.4, y = 1052 },
-            Zone = 2405,
-            MinLevel = 80,
-            SkipForLvl = "MidnightDelves",
-            _index = 120,
-        },
-        {
-            PickUp = { 90782 },
-            Coord = { x = -912.8, y = 779.9 },
-            Zone = 2405,
-            _index = 121,
-        },
-        {
-            Qpart = { [90782] = { 1 } },
-            Coord = { x = -912.8, y = 779.9 },
-            Zone = 2405,
-            Range = 5,
             _index = 122,
-        },
-        {
-            Qpart = { [90914] = { 1 } },
-            Coord = { x = -887.4, y = 738.2 },
-            Range = 60,
-            Zone = 2405,
-            MinLevel = 80,
-            SkipForLvl = "MidnightDelves",
-            _index = 123,
-        },
-        {
-            Done = { 90914 },
-            Coord = { x = -404.3, y = 1014.4 },
-            Zone = 2405,
-            MinLevel = 80,
-            SkipForLvl = "MidnightDelves",
-            _index = 124,
         },
         {
             Qpart = { [91145] = { 1 } },
@@ -1084,7 +1070,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 125,
+            _index = 123,
         },
         {
             QpartPart = { [91145] = { 2 } },
@@ -1092,7 +1078,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 126,
+            _index = 124,
             TrigText = "1/3",
         },
         {
@@ -1101,7 +1087,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 127,
+            _index = 125,
             TrigText = "2/3",
         },
         {
@@ -1110,7 +1096,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 128,
+            _index = 126,
             TrigText = "3/3",
         },
         {
@@ -1120,7 +1106,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 129,
+            _index = 127,
         },
         {
             Done = { 91145 },
@@ -1128,7 +1114,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 130,
+            _index = 128,
         },
         {
             PickUp = { 91147, 91146 },
@@ -1136,7 +1122,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 131,
+            _index = 129,
         },
         {
             QpartPart = { [91146] = { 1 } },
@@ -1144,7 +1130,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 132,
+            _index = 130,
             TrigText = "1/3",
         },
         {
@@ -1153,7 +1139,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 133,
+            _index = 131,
             TrigText = "2/3",
         },
         {
@@ -1162,7 +1148,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 134,
+            _index = 132,
             TrigText = "3/3",
         },
         {
@@ -1171,7 +1157,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 135,
+            _index = 133,
         },
         {
             Qpart = { [91147] = { 1 } },
@@ -1180,7 +1166,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 100,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 136,
+            _index = 134,
         },
         {
             Done = { 91147 },
@@ -1188,7 +1174,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 137,
+            _index = 135,
         },
         {
             PickUp = { 91148 },
@@ -1196,7 +1182,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 138,
+            _index = 136,
         },
         {
             Qpart = { [91148] = { 1 } },
@@ -1205,7 +1191,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 139,
+            _index = 137,
         },
         {
             Qpart = { [91148] = { 2 } },
@@ -1214,7 +1200,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136581 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 140,
+            _index = 138,
         },
         {
             Qpart = { [91148] = { 3 } },
@@ -1223,7 +1209,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 141,
+            _index = 139,
         },
         {
             Done = { 91148 },
@@ -1231,7 +1217,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 142,
+            _index = 140,
         },
         {
             PickUp = { 91149 },
@@ -1239,7 +1225,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 143,
+            _index = 141,
         },
         {
             Qpart = { [91149] = { 1 } },
@@ -1248,7 +1234,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 144,
+            _index = 142,
         },
         {
             Qpart = { [91149] = { 2 } },
@@ -1257,7 +1243,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 145,
+            _index = 143,
         },
         {
             Qpart = { [91149] = { 3 } },
@@ -1266,7 +1252,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 146,
+            _index = 144,
         },
         {
             Qpart = { [91149] = { 4 } },
@@ -1275,7 +1261,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 147,
+            _index = 145,
         },
         {
             Done = { 91149 },
@@ -1283,45 +1269,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2405,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 148,
-        },
-        {
-            Waypoint = 90782,
-            Coord = { x = 710.7, y = 2324.1 },
-            Zone = 2405,
-            Range = 5,
-            _index = 149,
-        },
-        {
-            Done = { 90782 },
-            Coord = { x = 747.5, y = 2334.8 },
-            Zone = 2405,
-            _index = 150,
-        },
-        {
-            PickUp = { 93970 },
-            Coord = { x = -544.7, y = 712.1 },
-            Zone = 2405,
-            MinLevel = 80,
-            SkipForLvl = "MidnightDelves",
-            _index = 151,
-        },
-        {
-            Qpart = { [93970] = { 1 } },
-            Coord = { x = -549.5, y = 716 },
-            Zone = 2405,
-            GossipOptionIDs = { 137576 },
-            MinLevel = 80,
-            SkipForLvl = "MidnightDelves",
-            _index = 152,
-        },
-        {
-            Done = { 93970 },
-            Coord = { x = -544.5, y = 713 },
-            Zone = 2405,
-            MinLevel = 80,
-            SkipForLvl = "MidnightDelves",
-            _index = 153,
+            _index = 146,
         },
         -- Voidstrom: end side quest
         {
@@ -1329,7 +1277,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -441.1, y = 890 },
             Zone = 2405,
             SkipForLvl = "MidnightDelves",
-            _index = 154,
+            _index = 147,
         },
         -- Eversong: Fairbreeze, coastal smugglers and the theft investigation before the campaign moves south.
         {
@@ -1339,21 +1287,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
             IsQuestOnQuest = 94871,
-            _index = 155,
+            _index = 148,
         },
         {
             PickUp = { 92396 },
             Coord = { x = -4575.2, y = 8015.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 156,
+            _index = 149,
         },
         {
             Qpart = { [92396] = { 1 } },
             Coord = { x = -4573.8, y = 8012.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 157,
+            _index = 150,
         },
         {
             PickUp = { 86738, 86739 },
@@ -1361,7 +1309,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 158,
+            _index = 151,
         },
         {
             PickUp = { 86740 },
@@ -1369,14 +1317,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 159,
+            _index = 152,
         },
         {
             PickUp = { 87392 },
             Coord = { x = -4272.4, y = 7329.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 160,
+            _index = 153,
         },
         {
             Qpart = { [86738] = { 1 } },
@@ -1385,7 +1333,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 161,
+            _index = 154,
         },
         {
             Qpart = { [86738] = { 2 } },
@@ -1394,7 +1342,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 162,
+            _index = 155,
         },
         {
             Qpart = { [86740] = { 2 } },
@@ -1404,7 +1352,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86739] = { 1, 2, 3 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 163,
+            _index = 156,
             TrigText = "1/3",
         },
         {
@@ -1414,7 +1362,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86739] = { 1, 2, 3 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 164,
+            _index = 157,
             TrigText = "1/3",
         },
         {
@@ -1424,7 +1372,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86739] = { 1, 2, 3 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 165,
+            _index = 158,
             RaidIcon = 243960,
             TrigText = "1/3",
         },
@@ -1435,7 +1383,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86739] = { 1, 2, 3 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 166,
+            _index = 159,
             TrigText = "2/3",
         },
         {
@@ -1445,7 +1393,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86739] = { 1, 2, 3 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 167,
+            _index = 160,
             RaidIcon = 244042,
             TrigText = "2/3",
         },
@@ -1456,7 +1404,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86739] = { 1, 2, 3 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 168,
+            _index = 161,
             TrigText = "3/3",
         },
         {
@@ -1466,7 +1414,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86739] = { 1, 2, 3 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 169,
+            _index = 162,
             TrigText = "2/3",
         },
         {
@@ -1477,7 +1425,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86739] = { 1, 2, 3 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 170,
+            _index = 163,
             TrigText = "3/3",
         },
         {
@@ -1487,7 +1435,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86739] = { 1, 2, 3 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 171,
+            _index = 164,
             TrigText = "3/3",
         },
         {
@@ -1498,7 +1446,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["86739-2"] = 1227643 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 172,
+            _index = 165,
         },
         {
             Qpart = { [87392] = { 1 } },
@@ -1506,7 +1454,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 173,
+            _index = 166,
         },
         {
             Qpart = { [87392] = { 2 } },
@@ -1514,7 +1462,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 174,
+            _index = 167,
         },
         {
             Done = { 86740 },
@@ -1522,7 +1470,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 175,
+            _index = 168,
         },
         {
             Done = { 86738, 86739 },
@@ -1530,7 +1478,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 176,
+            _index = 169,
         },
         {
             PickUp = { 86741 },
@@ -1538,7 +1486,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 177,
+            _index = 170,
         },
         {
             Qpart = { [86741] = { 1 } },
@@ -1547,7 +1495,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133725 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 178,
+            _index = 171,
         },
         {
             Qpart = { [87392] = { 3 } },
@@ -1555,7 +1503,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 179,
+            _index = 172,
         },
         {
             Qpart = { [87392] = { 4 } },
@@ -1563,21 +1511,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 180,
+            _index = 173,
         },
         {
             Done = { 87392 },
             Coord = { x = -4272.6, y = 7329.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 181,
+            _index = 174,
         },
         {
             PickUp = { 87393, 87394 },
             Coord = { x = -4272.6, y = 7329.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 182,
+            _index = 175,
         },
         {
             Qpart = { [87394] = { 1 } },
@@ -1585,7 +1533,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 183,
+            _index = 176,
         },
         {
             Qpart = { [87394] = { 2 } },
@@ -1593,7 +1541,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 184,
+            _index = 177,
         },
         {
             Qpart = { [87394] = { 3 } },
@@ -1601,7 +1549,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 185,
+            _index = 178,
         },
         {
             Qpart = { [87394] = { 4 } },
@@ -1609,7 +1557,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 186,
+            _index = 179,
         },
         {
             Qpart = { [87393] = { 1 } },
@@ -1617,21 +1565,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 30,
             SkipForLvl = "MidnightDelves",
-            _index = 187,
+            _index = 180,
         },
         {
             Done = { 87393, 87394 },
             Coord = { x = -3570.7, y = 7342.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 188,
+            _index = 181,
         },
         {
             PickUp = { 87395 },
             Coord = { x = -3570.7, y = 7342.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 189,
+            _index = 182,
         },
         {
             Qpart = { [87395] = { 1 } },
@@ -1640,7 +1588,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             Button = { ["87395-1"] = 239022 },
             SkipForLvl = "MidnightDelves",
-            _index = 190,
+            _index = 183,
         },
         {
             Qpart = { [87395] = { 2 } },
@@ -1649,21 +1597,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             Button = { ["87395-2"] = 239022 },
             SkipForLvl = "MidnightDelves",
-            _index = 191,
+            _index = 184,
         },
         {
             Done = { 87395 },
             Coord = { x = -3226.2, y = 7412.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 192,
+            _index = 185,
         },
         {
             PickUp = { 87397, 87396 },
             Coord = { x = -3226.2, y = 7412.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 193,
+            _index = 186,
         },
         {
             Qpart = { [87396] = { 1 }, [87397] = { 1 } },
@@ -1671,21 +1619,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 60,
             SkipForLvl = "MidnightDelves",
-            _index = 194,
+            _index = 187,
         },
         {
             Done = { 87397, 87396 },
             Coord = { x = -3226.6, y = 7412.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 195,
+            _index = 188,
         },
         {
             PickUp = { 87398 },
             Coord = { x = -3226.6, y = 7412.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 196,
+            _index = 189,
         },
         {
             Qpart = { [87398] = { 2 } },
@@ -1693,7 +1641,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 197,
+            _index = 190,
             RaidIcon = 239459,
         },
         {
@@ -1701,14 +1649,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -3411.5, y = 7364.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 198,
+            _index = 191,
         },
         {
             PickUp = { 88977, 88978 },
             Coord = { x = -3726.9, y = 7748.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 199,
+            _index = 192,
         },
         {
             Qpart = { [88977] = { 1 } },
@@ -1717,7 +1665,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             Button = { ["88977-1"] = 238730 },
             SkipForLvl = "MidnightDelves",
-            _index = 200,
+            _index = 193,
         },
         {
             QpartPart = { [88977] = { 2 } },
@@ -1725,7 +1673,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Button = { ["88977-2"] = 238730 },
             SkipForLvl = "MidnightDelves",
-            _index = 201,
+            _index = 194,
             TrigText = "1/3",
         },
         {
@@ -1734,7 +1682,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Button = { ["88977-2"] = 238730 },
             SkipForLvl = "MidnightDelves",
-            _index = 202,
+            _index = 195,
             TrigText = "2/3",
         },
         {
@@ -1743,7 +1691,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Button = { ["88977-2"] = 238730 },
             SkipForLvl = "MidnightDelves",
-            _index = 203,
+            _index = 196,
             TrigText = "3/3",
         },
         {
@@ -1752,21 +1700,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 30,
             SkipForLvl = "MidnightDelves",
-            _index = 204,
+            _index = 197,
         },
         {
             Done = { 88978, 88977 },
             Coord = { x = -3586.6, y = 7707.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 205,
+            _index = 198,
         },
         {
             PickUp = { 88979 },
             Coord = { x = -3481.7, y = 7679.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 206,
+            _index = 199,
         },
         {
             Qpart = { [88979] = { 1 } },
@@ -1774,7 +1722,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 207,
+            _index = 200,
             RaidIcon = 240416,
         },
         {
@@ -1783,21 +1731,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 208,
+            _index = 201,
         },
         {
             Done = { 88979 },
             Coord = { x = -3599.8, y = 7699.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 209,
+            _index = 202,
         },
         {
             PickUp = { 90544 },
             Coord = { x = -3610.9, y = 7696.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 210,
+            _index = 203,
         },
         {
             Qpart = { [90544] = { 1 } },
@@ -1805,14 +1753,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 133262 },
             SkipForLvl = "MidnightDelves",
-            _index = 211,
+            _index = 204,
         },
         {
             Done = { 90544 },
             Coord = { x = -3521.5, y = 7740.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 212,
+            _index = 205,
         },
         {
             Qpart = { [86741] = { 2 } },
@@ -1821,7 +1769,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 213,
+            _index = 206,
         },
         {
             Qpart = { [86741] = { 3, 4 } },
@@ -1830,7 +1778,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 214,
+            _index = 207,
         },
         {
             Qpart = { [86741] = { 5 } },
@@ -1839,7 +1787,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 10,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 215,
+            _index = 208,
         },
         {
             Qpart = { [86741] = { 6 } },
@@ -1848,7 +1796,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 216,
+            _index = 209,
         },
         {
             Done = { 86741 },
@@ -1856,7 +1804,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 217,
+            _index = 210,
         },
         {
             PickUp = { 86743, 86742 },
@@ -1864,7 +1812,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 218,
+            _index = 211,
         },
         {
             QpartPart = { [86742] = { 1 } },
@@ -1873,7 +1821,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86743] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 219,
+            _index = 212,
             TrigText = "1/3",
         },
         {
@@ -1883,7 +1831,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86743] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 220,
+            _index = 213,
             TrigText = "2/3",
         },
         {
@@ -1893,7 +1841,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 45,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 221,
+            _index = 214,
         },
         {
             Qpart = { [92396] = { 2 } },
@@ -1901,7 +1849,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 222,
+            _index = 215,
             ExtraActionB = true,
         },
         {
@@ -1910,7 +1858,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 223,
+            _index = 216,
             TrigText = "3/3",
         },
         {
@@ -1920,7 +1868,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 224,
+            _index = 217,
         },
         {
             Qpart = { [86742] = { 3, 4 } },
@@ -1929,7 +1877,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 225,
+            _index = 218,
         },
         {
             Done = { 86743 },
@@ -1937,7 +1885,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 226,
+            _index = 219,
         },
         {
             Qpart = { [86742] = { 5 } },
@@ -1946,7 +1894,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 227,
+            _index = 220,
         },
         {
             Done = { 86742 },
@@ -1954,7 +1902,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 228,
+            _index = 221,
         },
         {
             PickUp = { 86744 },
@@ -1962,7 +1910,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 229,
+            _index = 222,
         },
         {
             Qpart = { [86744] = { 1 } },
@@ -1971,7 +1919,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132833 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 230,
+            _index = 223,
         },
         {
             Qpart = { [86744] = { 2 } },
@@ -1980,7 +1928,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 10,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 231,
+            _index = 224,
         },
         {
             Done = { 86744 },
@@ -1988,7 +1936,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 232,
+            _index = 225,
         },
         {
             PickUp = { 86745 },
@@ -1996,7 +1944,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 233,
+            _index = 226,
         },
         {
             Qpart = { [86745] = { 1 } },
@@ -2005,7 +1953,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136284 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 234,
+            _index = 227,
         },
         {
             Done = { 86745 },
@@ -2013,7 +1961,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 235,
+            _index = 228,
         },
         {
             PickUp = { 86621 },
@@ -2021,7 +1969,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 236,
+            _index = 229,
         },
         {
             Qpart = { [86621] = { 2 } },
@@ -2030,7 +1978,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133705 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 237,
+            _index = 230,
         },
         {
             Qpart = { [92396] = { 3 } },
@@ -2038,7 +1986,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 238,
+            _index = 231,
             ExtraActionB = true,
         },
         {
@@ -2048,7 +1996,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 239,
+            _index = 232,
         },
         {
             Qpart = { [86621] = { 3 } },
@@ -2057,13 +2005,13 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 240,
+            _index = 233,
         },
         {
             Coord = { x = -4356.4, y = 5950.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 241,
+            _index = 234,
             GetFP = 3134,
         },
         {
@@ -2073,7 +2021,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 242,
+            _index = 235,
         },
         {
             Done = { 86621 },
@@ -2081,7 +2029,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 243,
+            _index = 236,
         },
         {
             PickUp = { 86623, 86624 },
@@ -2089,7 +2037,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 244,
+            _index = 237,
         },
         {
             QpartPart = { [86624] = { 2 } },
@@ -2097,7 +2045,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 245,
+            _index = 238,
             TrigText = "10%",
         },
         {
@@ -2106,7 +2054,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 246,
+            _index = 239,
             TrigText = "25%",
         },
         {
@@ -2115,7 +2063,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 247,
+            _index = 240,
             TrigText = "35%",
         },
         {
@@ -2125,7 +2073,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133913 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 248,
+            _index = 241,
             TrigText = "1/4",
         },
         {
@@ -2134,7 +2082,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 249,
+            _index = 242,
             TrigText = "50%",
         },
         {
@@ -2143,7 +2091,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 250,
+            _index = 243,
             TrigText = "65%",
         },
         {
@@ -2153,7 +2101,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133888 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 251,
+            _index = 244,
             TrigText = "2/4",
         },
         {
@@ -2162,7 +2110,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 252,
+            _index = 245,
             TrigText = "75%",
         },
         {
@@ -2171,7 +2119,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 253,
+            _index = 246,
             TrigText = "85%",
         },
         {
@@ -2181,7 +2129,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132706 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 254,
+            _index = 247,
             TrigText = "3/4",
         },
         {
@@ -2190,7 +2138,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 255,
+            _index = 248,
         },
         {
             QpartPart = { [86624] = { 1 } },
@@ -2199,7 +2147,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132894 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 256,
+            _index = 249,
             TrigText = "4/4",
         },
         {
@@ -2209,7 +2157,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 257,
+            _index = 250,
         },
         {
             Qpart = { [86623] = { 2 } },
@@ -2218,7 +2166,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 258,
+            _index = 251,
         },
         {
             Qpart = { [86623] = { 3 } },
@@ -2227,7 +2175,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 259,
+            _index = 252,
         },
         {
             Qpart = { [86624] = { 3 } },
@@ -2236,7 +2184,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132744 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 260,
+            _index = 253,
         },
         {
             Qpart = { [86624] = { 4 } },
@@ -2246,7 +2194,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "UP_TOWER",
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 261,
+            _index = 254,
         },
         {
             Done = { 86624 },
@@ -2254,7 +2202,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 262,
+            _index = 255,
         },
         {
             Done = { 86623 },
@@ -2262,7 +2210,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 263,
+            _index = 256,
         },
         {
             PickUp = { 90907 },
@@ -2270,7 +2218,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 264,
+            _index = 257,
         },
         {
             Qpart = { [90907] = { 1 } },
@@ -2279,7 +2227,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 265,
+            _index = 258,
         },
         {
             Qpart = { [90907] = { 2 } },
@@ -2288,7 +2236,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132741 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 266,
+            _index = 259,
         },
         {
             Qpart = { [90907] = { 3 } },
@@ -2296,7 +2244,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 267,
+            _index = 260,
         },
         {
             Qpart = { [90907] = { 4 } },
@@ -2305,7 +2253,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 134001 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 268,
+            _index = 261,
         },
         {
             Done = { 90907 },
@@ -2313,7 +2261,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 269,
+            _index = 262,
         },
         {
             PickUp = { 86622 },
@@ -2321,7 +2269,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 270,
+            _index = 263,
         },
         {
             Qpart = { [86622] = { 1 } },
@@ -2330,7 +2278,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 271,
+            _index = 264,
         },
         {
             Qpart = { [86622] = { 2 } },
@@ -2339,7 +2287,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 272,
+            _index = 265,
         },
         {
             Qpart = { [86622] = { 3 } },
@@ -2348,7 +2296,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 273,
+            _index = 266,
         },
         {
             Done = { 86622 },
@@ -2356,7 +2304,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 274,
+            _index = 267,
         },
         {
             PickUp = { 86626 },
@@ -2364,7 +2312,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 275,
+            _index = 268,
         },
         {
             QpartPart = { [86626] = { 1 } },
@@ -2372,7 +2320,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 276,
+            _index = 269,
             TrigText = "1/3",
         },
         {
@@ -2381,7 +2329,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 277,
+            _index = 270,
             TrigText = "2/3",
         },
         {
@@ -2390,7 +2338,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 278,
+            _index = 271,
             TrigText = "3/3",
         },
         {
@@ -2399,7 +2347,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 279,
+            _index = 272,
         },
         {
             Done = { 86626 },
@@ -2407,7 +2355,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 280,
+            _index = 273,
         },
         {
             PickUp = { 86632 },
@@ -2415,7 +2363,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 281,
+            _index = 274,
         },
         {
             PickUp = { 90509, 90493 },
@@ -2423,7 +2371,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 282,
+            _index = 275,
         },
         {
             Qpart = { [90509] = { 1 } },
@@ -2433,7 +2381,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86632] = { 1 }, [90493] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 283,
+            _index = 276,
             RaidIcon = 241723,
         },
         {
@@ -2444,7 +2392,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86632] = { 1 }, [90493] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 284,
+            _index = 277,
             RaidIcon = 236777,
         },
         {
@@ -2455,7 +2403,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86632] = { 1 }, [90493] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 285,
+            _index = 278,
         },
         {
             Qpart = { [86632] = { 1 }, [90493] = { 1 } },
@@ -2464,7 +2412,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 60,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 286,
+            _index = 279,
         },
         {
             Done = { 86632, 90493, 90509 },
@@ -2472,7 +2420,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 287,
+            _index = 280,
         },
         {
             PickUp = { 90494 },
@@ -2480,7 +2428,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 288,
+            _index = 281,
         },
         {
             Qpart = { [90494] = { 1 } },
@@ -2489,7 +2437,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 289,
+            _index = 282,
         },
         {
             Waypoint = 90494,
@@ -2498,7 +2446,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 290,
+            _index = 283,
         },
         {
             Qpart = { [90494] = { 2 } },
@@ -2507,7 +2455,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 291,
+            _index = 284,
         },
         {
             Qpart = { [90494] = { 3 } },
@@ -2516,7 +2464,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 292,
+            _index = 285,
         },
         {
             Qpart = { [90494] = { 4 } },
@@ -2525,7 +2473,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 293,
+            _index = 286,
         },
         {
             Done = { 90494 },
@@ -2533,7 +2481,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 294,
+            _index = 287,
         },
         {
             PickUp = { 86781 },
@@ -2541,7 +2489,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 295,
+            _index = 288,
         },
         {
             Qpart = { [86781] = { 1 } },
@@ -2550,7 +2498,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 134380 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 296,
+            _index = 289,
         },
         {
             Qpart = { [86781] = { 2 } },
@@ -2559,7 +2507,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 297,
+            _index = 290,
         },
         {
             Done = { 86781 },
@@ -2567,7 +2515,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 298,
+            _index = 291,
         },
         {
             PickUp = { 86634 },
@@ -2575,14 +2523,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 299,
+            _index = 292,
         },
         {
             PickUp = { 92021, 92022 },
             Coord = { x = -3387, y = 5614.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 300,
+            _index = 293,
         },
         {
             QpartPart = { [86634] = { 1 } },
@@ -2591,7 +2539,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [92021] = { 1 }, [92022] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 301,
+            _index = 294,
             TrigText = "1/6",
         },
         {
@@ -2601,7 +2549,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [92021] = { 1 }, [92022] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 302,
+            _index = 295,
             TrigText = "2/6",
         },
         {
@@ -2611,7 +2559,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [92021] = { 1 }, [92022] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 303,
+            _index = 296,
             TrigText = "3/6",
         },
         {
@@ -2621,7 +2569,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [92021] = { 1 }, [92022] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 304,
+            _index = 297,
             TrigText = "4/6",
         },
         {
@@ -2631,7 +2579,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [92021] = { 1 }, [92022] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 305,
+            _index = 298,
             TrigText = "5/6",
         },
         {
@@ -2640,7 +2588,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 306,
+            _index = 299,
             TrigText = "6/6",
         },
         {
@@ -2649,7 +2597,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 307,
+            _index = 300,
         },
         {
             PickUp = { 86633 },
@@ -2657,7 +2605,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 308,
+            _index = 301,
         },
         {
             Qpart = { [86633] = { 2 } },
@@ -2666,7 +2614,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136044 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 309,
+            _index = 302,
         },
         {
             Qpart = { [86633] = { 1 } },
@@ -2676,7 +2624,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "UP_RAMP",
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 310,
+            _index = 303,
         },
         {
             QpartPart = { [86633] = { 3 } },
@@ -2685,7 +2633,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "PICK_UP_STONES_BRING_BACK_CENTER",
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 311,
+            _index = 304,
             TrigText = "1/4",
         },
         {
@@ -2695,7 +2643,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "PICK_UP_STONES_BRING_BACK_CENTER",
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 312,
+            _index = 305,
             TrigText = "2/4",
         },
         {
@@ -2705,7 +2653,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "PICK_UP_STONES_BRING_BACK_CENTER",
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 313,
+            _index = 306,
             TrigText = "3/4",
         },
         {
@@ -2715,7 +2663,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "PICK_UP_STONES_BRING_BACK_CENTER",
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 314,
+            _index = 307,
             TrigText = "4/4",
         },
         {
@@ -2724,7 +2672,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 315,
+            _index = 308,
         },
         {
             PickUp = { 86635 },
@@ -2732,7 +2680,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 316,
+            _index = 309,
         },
         {
             Qpart = { [92021] = { 1 }, [92022] = { 1 } },
@@ -2740,28 +2688,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 60,
             SkipForLvl = "MidnightDelves",
-            _index = 317,
+            _index = 310,
         },
         {
             Done = { 92021, 92022 },
             Coord = { x = -3387, y = 5614.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 318,
+            _index = 311,
         },
         {
             PickUp = { 92023 },
             Coord = { x = -3387, y = 5614.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 319,
+            _index = 312,
         },
         {
             PickUp = { 91493 },
             Coord = { x = -3524.4, y = 6297.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 320,
+            _index = 313,
         },
         {
             Qpart = { [91493] = { 1 } },
@@ -2769,28 +2717,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 321,
+            _index = 314,
         },
         {
             Done = { 91493 },
             Coord = { x = -3524.4, y = 6298.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 322,
+            _index = 315,
         },
         {
             PickUp = { 91505, 91494 },
             Coord = { x = -3524.4, y = 6298.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 323,
+            _index = 316,
         },
         {
             PickUp = { 91495 },
             Coord = { x = -3527, y = 6296.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 324,
+            _index = 317,
         },
         {
             Qpart = { [91494] = { 1 } },
@@ -2799,7 +2747,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             Button = { ["91494-1"] = 247593 },
             SkipForLvl = "MidnightDelves",
-            _index = 325,
+            _index = 318,
         },
         {
             Qpart = { [91495] = { 1 } },
@@ -2808,7 +2756,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [91494] = { 2 }, [91505] = { 1 } },
             GossipOptionIDs = { 134652 },
             SkipForLvl = "MidnightDelves",
-            _index = 326,
+            _index = 319,
         },
         {
             Qpart = { [91495] = { 3 } },
@@ -2817,7 +2765,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [91494] = { 2 }, [91505] = { 1 } },
             GossipOptionIDs = { 134653 },
             SkipForLvl = "MidnightDelves",
-            _index = 327,
+            _index = 320,
         },
         {
             Qpart = { [91495] = { 2 } },
@@ -2826,7 +2774,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [91494] = { 2 }, [91505] = { 1 } },
             GossipOptionIDs = { 134654 },
             SkipForLvl = "MidnightDelves",
-            _index = 328,
+            _index = 321,
         },
         {
             Qpart = { [91494] = { 2 }, [91505] = { 1 } },
@@ -2835,28 +2783,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 80,
             Button = { ["91494-2"] = 247593 },
             SkipForLvl = "MidnightDelves",
-            _index = 329,
+            _index = 322,
         },
         {
             Done = { 91495 },
             Coord = { x = -3527.1, y = 6296 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 330,
+            _index = 323,
         },
         {
             Done = { 91505, 91494 },
             Coord = { x = -3523.9, y = 6298.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 331,
+            _index = 324,
         },
         {
             PickUp = { 91504 },
             Coord = { x = -3524.2, y = 6298.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 332,
+            _index = 325,
         },
         {
             Qpart = { [91504] = { 2 } },
@@ -2864,7 +2812,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 333,
+            _index = 326,
         },
         {
             Qpart = { [91504] = { 1 } },
@@ -2872,21 +2820,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 10,
             SkipForLvl = "MidnightDelves",
-            _index = 334,
+            _index = 327,
         },
         {
             Done = { 91504 },
             Coord = { x = -3642.1, y = 6313.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 335,
+            _index = 328,
         },
         {
             Qpart = { [92023] = { 1 } },
             Coord = { x = -3551.6, y = 6329.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 336,
+            _index = 329,
             BuyMerchant = { { itemID = 254280, quantity = 1, questID = 92023 } },
         },
         {
@@ -2894,7 +2842,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -3583.7, y = 6362.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 337,
+            _index = 330,
             BuyMerchant = { { itemID = 254281, quantity = 1, questID = 92023 } },
         },
         {
@@ -2902,7 +2850,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -3689.2, y = 6391.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 338,
+            _index = 331,
             BuyMerchant = { { itemID = 254282, quantity = 1, questID = 92023 } },
         },
         {
@@ -2910,14 +2858,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -3689.2, y = 6391.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 339,
+            _index = 332,
         },
         {
             PickUp = { 92024 },
             Coord = { x = -3689.2, y = 6391.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 340,
+            _index = 333,
         },
         {
             Waypoint = 92024,
@@ -2925,7 +2873,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 341,
+            _index = 334,
         },
         {
             Qpart = { [92024] = { 1 } },
@@ -2933,7 +2881,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 136353 },
             SkipForLvl = "MidnightDelves",
-            _index = 342,
+            _index = 335,
         },
         {
             Qpart = { [92024] = { 2 } },
@@ -2941,7 +2889,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 136354 },
             SkipForLvl = "MidnightDelves",
-            _index = 343,
+            _index = 336,
         },
         {
             Qpart = { [92024] = { 3 } },
@@ -2949,21 +2897,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 136355 },
             SkipForLvl = "MidnightDelves",
-            _index = 344,
+            _index = 337,
         },
         {
             Done = { 92024 },
             Coord = { x = -3382.5, y = 5640.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 345,
+            _index = 338,
         },
         {
             PickUp = { 92025 },
             Coord = { x = -3382.5, y = 5640.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 346,
+            _index = 339,
         },
         {
             Qpart = { [92025] = { 1 } },
@@ -2971,7 +2919,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 136372 },
             SkipForLvl = "MidnightDelves",
-            _index = 347,
+            _index = 340,
         },
         {
             Qpart = { [92025] = { 2 } },
@@ -2979,7 +2927,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 348,
+            _index = 341,
         },
         {
             Qpart = { [92025] = { 3 } },
@@ -2987,7 +2935,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 349,
+            _index = 342,
             ExtraActionB = true,
         },
         {
@@ -2996,14 +2944,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 350,
+            _index = 343,
         },
         {
             Done = { 92025 },
             Coord = { x = -2945.9, y = 5219 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 351,
+            _index = 344,
         },
         {
             Qpart = { [86635] = { 1, 2 } },
@@ -3013,14 +2961,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136049 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 352,
+            _index = 345,
         },
         {
             Done = { 86635 },
             Coord = { x = -4030.3, y = 4850.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 353,
+            _index = 346,
         },
         {
             PickUp = { 86636 },
@@ -3028,7 +2976,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 354,
+            _index = 347,
         },
         {
             Waypoint = 86636,
@@ -3038,7 +2986,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 355,
+            _index = 348,
             ZoneStepTrigger = { Range = 15, x = 235.7, y = -17 },
         },
         {
@@ -3047,7 +2995,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             InstanceQuest = true,
             SkipForLvl = 90,
-            _index = 356,
+            _index = 349,
         },
         {
             PickUp = { 93372 },
@@ -3056,7 +3004,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             Coord = { x = 168.5, y = -49 },
             SkipForLvl = 90,
-            _index = 357,
+            _index = 350,
         },
         {
             Qpart = { [86636] = { 1 } },
@@ -3066,7 +3014,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 358,
+            _index = 351,
         },
         {
             Qpart = { [86636] = { 2 } },
@@ -3076,7 +3024,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 359,
+            _index = 352,
         },
         {
             DoScenario = { mapID = 2502, questID = 86636 },
@@ -3085,7 +3033,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 15,
             InstanceQuest = true,
             SkipForLvl = 90,
-            _index = 360,
+            _index = 353,
         },
         {
             Qpart = { [86636] = { 3 } },
@@ -3095,7 +3043,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 361,
+            _index = 354,
         },
         {
             LeaveScenario = { mapID = 2502, questID = 86636 },
@@ -3104,7 +3052,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             SkipForLvl = 90,
             IsCampaignQuest = true,
-            _index = 362,
+            _index = 355,
         },
         {
             Done = { 86636 },
@@ -3112,7 +3060,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 363,
+            _index = 356,
         },
         -- Eversong: Suncrown, Tor'Watha and Amani Pass; omit the fishing chain.
         {
@@ -3121,7 +3069,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 364,
+            _index = 357,
         },
         {
             Qpart = { [86637] = { 1 } },
@@ -3130,14 +3078,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133785 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 365,
+            _index = 358,
         },
         {
             PickUp = { 87399 },
             Coord = { x = -4612.7, y = 5258.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 366,
+            _index = 359,
         },
         {
             Qpart = { [87399] = { 1 } },
@@ -3145,35 +3093,35 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 30,
             SkipForLvl = "MidnightDelves",
-            _index = 367,
+            _index = 360,
         },
         {
             Done = { 87399 },
             Coord = { x = -4612.7, y = 5258.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 368,
+            _index = 361,
         },
         {
             PickUp = { 87400 },
             Coord = { x = -4612.7, y = 5258.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 369,
+            _index = 362,
         },
         {
             PickUp = { 87401 },
             Coord = { x = -4609.5, y = 5262 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 370,
+            _index = 363,
         },
         {
             QpartPart = { [87400] = { 1 } },
             Coord = { x = -4865.9, y = 5524.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 371,
+            _index = 364,
             TrigText = "1/3",
         },
         {
@@ -3181,7 +3129,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4784.4, y = 5466.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 372,
+            _index = 365,
             TrigText = "2/3",
         },
         {
@@ -3189,7 +3137,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4708.1, y = 5550.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 373,
+            _index = 366,
             TrigText = "3/3",
         },
         {
@@ -3198,7 +3146,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 374,
+            _index = 367,
             RaidIcon = 238475,
         },
         {
@@ -3206,21 +3154,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4612.6, y = 5258.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 375,
+            _index = 368,
         },
         {
             Done = { 87401 },
             Coord = { x = -4609.3, y = 5261.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 376,
+            _index = 369,
         },
         {
             PickUp = { 87402 },
             Coord = { x = -4609.3, y = 5261.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 377,
+            _index = 370,
         },
         {
             Qpart = { [87402] = { 1 } },
@@ -3229,7 +3177,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             Button = { ["87402-1"] = 246441 },
             SkipForLvl = "MidnightDelves",
-            _index = 378,
+            _index = 371,
         },
         {
             Qpart = { [87402] = { 2 } },
@@ -3237,7 +3185,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 379,
+            _index = 372,
             RaidIcon = 238495,
         },
         {
@@ -3245,7 +3193,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4609.4, y = 5261.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 380,
+            _index = 373,
         },
         {
             Done = { 86637 },
@@ -3253,7 +3201,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 381,
+            _index = 374,
         },
         {
             PickUp = { 86639 },
@@ -3261,7 +3209,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 382,
+            _index = 375,
         },
         {
             PickUp = { 86638 },
@@ -3269,7 +3217,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 383,
+            _index = 376,
         },
         {
             Qpart = { [86639] = { 2 } },
@@ -3279,7 +3227,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132652 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 384,
+            _index = 377,
         },
         {
             Qpart = { [86639] = { 3 } },
@@ -3289,7 +3237,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132680 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 385,
+            _index = 378,
         },
         {
             Qpart = { [86639] = { 5 } },
@@ -3299,7 +3247,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132684 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 386,
+            _index = 379,
         },
         {
             Qpart = { [86639] = { 4 } },
@@ -3309,7 +3257,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 135781 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 387,
+            _index = 380,
         },
         {
             Qpart = { [86638] = { 1 }, [86639] = { 1 } },
@@ -3318,7 +3266,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 388,
+            _index = 381,
         },
         {
             Done = { 86639 },
@@ -3326,7 +3274,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 389,
+            _index = 382,
         },
         {
             Done = { 86638 },
@@ -3334,7 +3282,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 390,
+            _index = 383,
         },
         {
             PickUp = { 86640 },
@@ -3342,7 +3290,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 391,
+            _index = 384,
         },
         {
             Done = { 86640 },
@@ -3350,7 +3298,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 392,
+            _index = 385,
         },
         {
             PickUp = { 86641 },
@@ -3358,7 +3306,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 393,
+            _index = 386,
         },
         {
             PickUp = { 86642 },
@@ -3366,7 +3314,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 394,
+            _index = 387,
         },
         {
             QpartPart = { [86642] = { 1 } },
@@ -3375,7 +3323,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 395,
+            _index = 388,
             TrigText = "1/5",
         },
         {
@@ -3385,7 +3333,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86641] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 396,
+            _index = 389,
             TrigText = "2/5",
         },
         {
@@ -3395,7 +3343,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86641] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 397,
+            _index = 390,
             TrigText = "3/5",
         },
         {
@@ -3405,7 +3353,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86641] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 398,
+            _index = 391,
             TrigText = "4/5",
         },
         {
@@ -3415,7 +3363,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [86641] = { 1 } },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 399,
+            _index = 392,
             TrigText = "5/5",
         },
         {
@@ -3425,7 +3373,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 400,
+            _index = 393,
         },
         {
             Done = { 86641 },
@@ -3433,7 +3381,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 401,
+            _index = 394,
         },
         {
             Done = { 86642 },
@@ -3441,7 +3389,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 402,
+            _index = 395,
         },
         {
             PickUp = { 86643 },
@@ -3449,7 +3397,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 403,
+            _index = 396,
         },
         {
             Qpart = { [86643] = { 2 } },
@@ -3458,7 +3406,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133978 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 404,
+            _index = 397,
         },
         {
             Qpart = { [92396] = { 4 } },
@@ -3466,7 +3414,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 2,
             SkipForLvl = "MidnightDelves",
-            _index = 405,
+            _index = 398,
             ExtraActionB = true,
         },
         {
@@ -3474,14 +3422,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -5668.1, y = 6217.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 406,
+            _index = 399,
         },
         {
             PickUp = { 92397 },
             Coord = { x = -5668.1, y = 6217.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 407,
+            _index = 400,
         },
         {
             Qpart = { [92397] = { 1 } },
@@ -3489,21 +3437,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 30,
             SkipForLvl = "MidnightDelves",
-            _index = 408,
+            _index = 401,
         },
         {
             Done = { 92397 },
             Coord = { x = -5668.4, y = 6217.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 409,
+            _index = 402,
         },
         {
             PickUp = { 92398 },
             Coord = { x = -5667.3, y = 6218.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 410,
+            _index = 403,
         },
         {
             Qpart = { [92398] = { 1 } },
@@ -3511,7 +3459,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 136288 },
             SkipForLvl = "MidnightDelves",
-            _index = 411,
+            _index = 404,
         },
         {
             Qpart = { [92398] = { 2 } },
@@ -3520,14 +3468,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 10,
             GossipOptionIDs = { 136288 },
             SkipForLvl = "MidnightDelves",
-            _index = 412,
+            _index = 405,
         },
         {
             Done = { 92398 },
             Coord = { x = -5668.2, y = 6217.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 413,
+            _index = 406,
         },
         {
             Qpart = { [86643] = { 1 } },
@@ -3536,7 +3484,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 414,
+            _index = 407,
         },
         {
             QpartPart = { [86643] = { 3 } },
@@ -3544,7 +3492,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 415,
+            _index = 408,
             TrigText = "1/4",
         },
         {
@@ -3553,7 +3501,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 416,
+            _index = 409,
             TrigText = "2/4",
         },
         {
@@ -3562,7 +3510,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 417,
+            _index = 410,
             TrigText = "3/4",
         },
         {
@@ -3571,7 +3519,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 418,
+            _index = 411,
             TrigText = "4/4",
         },
         {
@@ -3581,7 +3529,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132886 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 419,
+            _index = 412,
         },
         {
             Done = { 86643 },
@@ -3589,7 +3537,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 420,
+            _index = 413,
         },
         {
             PickUp = { 86644 },
@@ -3597,7 +3545,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 421,
+            _index = 414,
         },
         {
             Qpart = { [86644] = { 1 } },
@@ -3606,7 +3554,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 135806 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 422,
+            _index = 415,
         },
         {
             Qpart = { [86644] = { 2 } },
@@ -3615,14 +3563,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 423,
+            _index = 416,
         },
         {
             Coord = { x = -5005.8, y = 6001.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 424,
+            _index = 417,
             LootItems = { { itemID = 244143, quantity = 1, questID = 86644 } },
             RaidIcon = 244858,
         },
@@ -3633,7 +3581,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 425,
+            _index = 418,
             SingleWaypointDisplayDistance = true,
         },
         {
@@ -3641,7 +3589,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 426,
+            _index = 419,
             LootItems = { { itemID = 244144, quantity = 1, questID = 86644 } },
             RaidIcon = 244857,
         },
@@ -3654,7 +3602,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "TALK_WITH_THE_VASES",
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 427,
+            _index = 420,
         },
         {
             Qpart = { [86644] = { 4 } },
@@ -3664,7 +3612,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133889, 133890 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 428,
+            _index = 421,
         },
         {
             Qpart = { [86644] = { 5 } },
@@ -3674,7 +3622,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "MEMORY_GAME_FOLLOW_WAYPOINTS",
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 429,
+            _index = 422,
             PreviewImages = { "routeHelper\\86644.jpg" },
         },
         {
@@ -3683,7 +3631,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 430,
+            _index = 423,
         },
         {
             PickUp = { 86646 },
@@ -3691,7 +3639,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 431,
+            _index = 424,
         },
         {
             Waypoint = 86646,
@@ -3700,7 +3648,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 432,
+            _index = 425,
         },
         {
             Waypoint = 86646,
@@ -3709,7 +3657,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 433,
+            _index = 426,
         },
         {
             Qpart = { [86646] = { 1 } },
@@ -3718,7 +3666,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 434,
+            _index = 427,
             RaidIcon = 237386,
         },
         {
@@ -3728,7 +3676,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 435,
+            _index = 428,
         },
         {
             Waypoint = 86646,
@@ -3737,7 +3685,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 436,
+            _index = 429,
         },
         {
             Done = { 86646 },
@@ -3745,7 +3693,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 437,
+            _index = 430,
         },
         {
             PickUp = { 86647 },
@@ -3753,7 +3701,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 438,
+            _index = 431,
         },
         {
             Done = { 86647 },
@@ -3761,7 +3709,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 439,
+            _index = 432,
         },
         {
             PickUp = { 86648 },
@@ -3769,7 +3717,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 440,
+            _index = 433,
         },
         {
             QpartPart = { [86648] = { 3 } },
@@ -3777,7 +3725,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 441,
+            _index = 434,
             TrigText = "1/8",
         },
         {
@@ -3786,7 +3734,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 442,
+            _index = 435,
             TrigText = "2/8",
         },
         {
@@ -3795,7 +3743,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 443,
+            _index = 436,
             TrigText = "3/8",
         },
         {
@@ -3804,7 +3752,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 444,
+            _index = 437,
             TrigText = "4/8",
         },
         {
@@ -3813,7 +3761,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 445,
+            _index = 438,
             TrigText = "5/8",
         },
         {
@@ -3822,7 +3770,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 446,
+            _index = 439,
             TrigText = "6/8",
         },
         {
@@ -3831,7 +3779,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 447,
+            _index = 440,
             TrigText = "7/8",
         },
         {
@@ -3841,7 +3789,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 448,
+            _index = 441,
             TrigText = "8/8",
         },
         {
@@ -3850,7 +3798,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 449,
+            _index = 442,
         },
         {
             Qpart = { [86648] = { 4 } },
@@ -3859,7 +3807,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 450,
+            _index = 443,
         },
         {
             Qpart = { [86648] = { 5 } },
@@ -3868,7 +3816,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 451,
+            _index = 444,
         },
         {
             Done = { 86648 },
@@ -3876,7 +3824,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 452,
+            _index = 445,
         },
         {
             PickUp = { 86649 },
@@ -3884,7 +3832,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 453,
+            _index = 446,
         },
         {
             Qpart = { [86649] = { 1 } },
@@ -3893,7 +3841,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 132931 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 454,
+            _index = 447,
         },
         {
             Done = { 86649 },
@@ -3901,7 +3849,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 455,
+            _index = 448,
         },
         {
             PickUp = { 86650 },
@@ -3909,14 +3857,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 456,
+            _index = 449,
         },
         {
             UseHS = 86650,
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 457,
+            _index = 450,
         },
         {
             Qpart = { [86650] = { 1 } },
@@ -3925,7 +3873,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 134143 },
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 458,
+            _index = 451,
         },
         {
             Done = { 86650 },
@@ -3933,7 +3881,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 459,
+            _index = 452,
             ETA = 56,
         },
         {
@@ -3944,7 +3892,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 460,
+            _index = 453,
             IsAdventureMap = true,
         },
         -- Finish the academy and hatchling pockets already present in Follow the Arrow.
@@ -3953,7 +3901,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -3568.2, y = 9068.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 461,
+            _index = 454,
         },
         {
             Qpart = { [86997] = { 1 } },
@@ -3961,21 +3909,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 30,
             SkipForLvl = "MidnightDelves",
-            _index = 462,
+            _index = 455,
         },
         {
             Done = { 86997 },
             Coord = { x = -3377.6, y = 8988.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 463,
+            _index = 456,
         },
         {
             PickUp = { 86998 },
             Coord = { x = -3377.6, y = 8988.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 464,
+            _index = 457,
         },
         {
             Qpart = { [86998] = { 1 } },
@@ -3984,7 +3932,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             GossipOptionIDs = { 132313 },
             SkipForLvl = "MidnightDelves",
-            _index = 465,
+            _index = 458,
         },
         {
             Waypoint = 86998,
@@ -3992,7 +3940,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 466,
+            _index = 459,
         },
         {
             Waypoint = 86998,
@@ -4000,7 +3948,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 467,
+            _index = 460,
         },
         {
             Waypoint = 86998,
@@ -4008,21 +3956,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 468,
+            _index = 461,
         },
         {
             Done = { 86998 },
             Coord = { x = -3481.7, y = 8991 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 469,
+            _index = 462,
         },
         {
             PickUp = { 87002 },
             Coord = { x = -3481.7, y = 8991 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 470,
+            _index = 463,
         },
         {
             Qpart = { [87002] = { 2 } },
@@ -4031,7 +3979,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             ExtraLineText = "ON_TOP_OF_TOWER",
             SkipForLvl = "MidnightDelves",
-            _index = 471,
+            _index = 464,
             RaidIcon = 237912,
         },
         {
@@ -4039,28 +3987,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -3558.3, y = 9081.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 472,
+            _index = 465,
         },
         {
             PickUp = { 91284 },
             Coord = { x = -3865.9, y = 9249.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 473,
+            _index = 466,
         },
         {
             PickUp = { 91292 },
             Coord = { x = -3923.9, y = 9242.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 474,
+            _index = 467,
         },
         {
             PickUp = { 91291 },
             Coord = { x = -3900.8, y = 9300.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 475,
+            _index = 468,
         },
         {
             Qpart = { [91291] = { 2 } },
@@ -4069,14 +4017,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 134482 },
             ExtraLineText = "ON_TOP_OF_TOWER",
             SkipForLvl = "MidnightDelves",
-            _index = 476,
+            _index = 469,
         },
         {
             Done = { 91291 },
             Coord = { x = -3901.1, y = 9300.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 477,
+            _index = 470,
         },
         {
             Qpart = { [91284] = { 2 } },
@@ -4084,14 +4032,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 478,
+            _index = 471,
         },
         {
             PickUp = { 91288 },
             Coord = { x = -3827.2, y = 9331.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 479,
+            _index = 472,
         },
         {
             Qpart = { [91292] = { 1 } },
@@ -4099,7 +4047,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 30,
             SkipForLvl = "MidnightDelves",
-            _index = 480,
+            _index = 473,
         },
         {
             Qpart = { [91288] = { 1 } },
@@ -4107,14 +4055,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 30,
             SkipForLvl = "MidnightDelves",
-            _index = 481,
+            _index = 474,
         },
         {
             Done = { 91292 },
             Coord = { x = -3924.1, y = 9242.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 482,
+            _index = 475,
         },
         {
             Qpart = { [91284] = { 3 } },
@@ -4122,14 +4070,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 483,
+            _index = 476,
         },
         {
             Done = { 91288 },
             Coord = { x = -3827.2, y = 9331 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 484,
+            _index = 477,
         },
         {
             Qpart = { [91284] = { 1 } },
@@ -4137,21 +4085,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 485,
+            _index = 478,
         },
         {
             Done = { 91284 },
             Coord = { x = -3867.3, y = 9249 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 486,
+            _index = 479,
         },
         {
             PickUp = { 91301 },
             Coord = { x = -3867.3, y = 9249 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 487,
+            _index = 480,
         },
         {
             Qpart = { [91301] = { 1 } },
@@ -4159,7 +4107,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 134091 },
             SkipForLvl = "MidnightDelves",
-            _index = 488,
+            _index = 481,
         },
         {
             Qpart = { [91301] = { 2 } },
@@ -4167,21 +4115,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 134484 },
             SkipForLvl = "MidnightDelves",
-            _index = 489,
+            _index = 482,
         },
         {
             Done = { 91301 },
             Coord = { x = -4268, y = 8386.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 490,
+            _index = 483,
         },
         {
             PickUp = { 89383, 89384, 89386 },
             Coord = { x = -5209.1, y = 7932.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 491,
+            _index = 484,
         },
         {
             Qpart = { [89383] = { 1 } },
@@ -4189,7 +4137,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 492,
+            _index = 485,
         },
         {
             Qpart = { [89384] = { 1 }, [89386] = { 1 } },
@@ -4197,14 +4145,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 30,
             SkipForLvl = "MidnightDelves",
-            _index = 493,
+            _index = 486,
         },
         {
             Done = { 89383, 89384, 89386 },
             Coord = { x = -5208.1, y = 7932.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 494,
+            _index = 487,
         },
         -- Zul'Aman: campaign through the return to Amani'zar, with both delves and nearby side chains.
         {
@@ -4214,7 +4162,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 495,
+            _index = 488,
         },
         {
             PickUp = { 86710 },
@@ -4223,7 +4171,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 496,
+            _index = 489,
         },
         {
             Qpart = { [86710] = { 1 } },
@@ -4233,7 +4181,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 497,
+            _index = 490,
         },
         {
             Qpart = { [86710] = { 2 } },
@@ -4243,7 +4191,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 498,
+            _index = 491,
         },
         {
             Qpart = { [86710] = { 3 } },
@@ -4253,7 +4201,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 499,
+            _index = 492,
         },
         {
             Done = { 86710 },
@@ -4262,7 +4210,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 500,
+            _index = 493,
         },
         {
             PickUp = { 90749 },
@@ -4271,7 +4219,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 501,
+            _index = 494,
         },
         {
             Waypoint = 90749,
@@ -4280,14 +4228,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 15,
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
-            _index = 502,
+            _index = 495,
         },
         {
             EnterScenario = { mapID = 2535, questID = 93409 },
             Zone = 2395,
             InstanceQuest = true,
             SkipForLvl = 90,
-            _index = 503,
+            _index = 496,
         },
         {
             PickUp = { 93409 },
@@ -4296,14 +4244,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             Coord = { x = -5863.2, y = 5169.3 },
             SkipForLvl = 90,
-            _index = 504,
+            _index = 497,
         },
         {
             DoScenario = { mapID = 2535, questID = 93409 },
             Zone = 2535,
             InstanceQuest = true,
             SkipForLvl = 90,
-            _index = 505,
+            _index = 498,
         },
         {
             Qpart = { [93409] = { 1 } },
@@ -4311,7 +4259,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             NoArrow = true,
             SkipForLvl = 90,
-            _index = 506,
+            _index = 499,
         },
         {
             LeaveScenario = { mapID = 2535, questID = 93409 },
@@ -4319,7 +4267,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             NoArrow = true,
             SkipForLvl = 90,
-            _index = 507,
+            _index = 500,
         },
         {
             Waypoint = 90749,
@@ -4327,7 +4275,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2536,
             Range = 15,
             SkipForLvl = "MidnightDelves",
-            _index = 508,
+            _index = 501,
         },
         {
             Qpart = { [90749] = { 1 } },
@@ -4337,7 +4285,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 509,
+            _index = 502,
         },
         {
             Done = { 90749 },
@@ -4346,7 +4294,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 510,
+            _index = 503,
         },
         {
             PickUp = { 86868 },
@@ -4355,7 +4303,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 511,
+            _index = 504,
         },
         {
             PickUp = { 86711 },
@@ -4364,7 +4312,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 512,
+            _index = 505,
         },
         {
             QpartPart = { [86711] = { 1 } },
@@ -4374,7 +4322,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 513,
+            _index = 506,
             TrigText = "1/3",
         },
         {
@@ -4385,7 +4333,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 514,
+            _index = 507,
             TrigText = "2/3",
         },
         {
@@ -4396,7 +4344,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 515,
+            _index = 508,
             TrigText = "3/3",
         },
         {
@@ -4407,7 +4355,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 516,
+            _index = 509,
         },
         {
             Done = { 86868 },
@@ -4416,7 +4364,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 517,
+            _index = 510,
         },
         {
             Done = { 86711 },
@@ -4425,7 +4373,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 518,
+            _index = 511,
         },
         {
             PickUp = { 86717 },
@@ -4434,7 +4382,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 519,
+            _index = 512,
         },
         {
             PickUp = { 86719 },
@@ -4443,14 +4391,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 520,
+            _index = 513,
         },
         {
             Coord = { x = -6469.7, y = 5115.9 },
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 521,
+            _index = 514,
             GetFP = 3128,
         },
         {
@@ -4461,7 +4409,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 522,
+            _index = 515,
         },
         {
             Qpart = { [86719] = { 2 } },
@@ -4471,7 +4419,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 523,
+            _index = 516,
         },
         {
             Qpart = { [86717] = { 1 } },
@@ -4481,7 +4429,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 524,
+            _index = 517,
         },
         {
             Qpart = { [86719] = { 3 } },
@@ -4491,7 +4439,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 525,
+            _index = 518,
         },
         {
             Qpart = { [86719] = { 4 } },
@@ -4501,7 +4449,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 526,
+            _index = 519,
         },
         {
             Qpart = { [86719] = { 5 } },
@@ -4511,7 +4459,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 527,
+            _index = 520,
         },
         {
             Done = { 86717, 86719 },
@@ -4520,7 +4468,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 528,
+            _index = 521,
         },
         {
             PickUp = { 86716, 86721 },
@@ -4529,7 +4477,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 529,
+            _index = 522,
         },
         {
             QpartPart = { [86721] = { 1 } },
@@ -4539,7 +4487,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 530,
+            _index = 523,
             TrigText = "1/4",
         },
         {
@@ -4550,7 +4498,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 531,
+            _index = 524,
             TrigText = "2/4",
         },
         {
@@ -4561,7 +4509,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 532,
+            _index = 525,
             TrigText = "3/4",
         },
         {
@@ -4572,7 +4520,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 533,
+            _index = 526,
             TrigText = "4/4",
         },
         {
@@ -4583,7 +4531,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 534,
+            _index = 527,
         },
         {
             Qpart = { [86721] = { 2 } },
@@ -4593,7 +4541,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 535,
+            _index = 528,
         },
         {
             Done = { 86716, 86721 },
@@ -4602,7 +4550,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 536,
+            _index = 529,
         },
         {
             PickUp = { 86712 },
@@ -4611,7 +4559,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 537,
+            _index = 530,
         },
         {
             PickUp = { 86718 },
@@ -4620,7 +4568,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 538,
+            _index = 531,
         },
         {
             PickUp = { 86715 },
@@ -4629,7 +4577,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 539,
+            _index = 532,
         },
         {
             Qpart = { [86718] = { 1 } },
@@ -4639,7 +4587,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 540,
+            _index = 533,
             RaidIcon = 236562,
         },
         {
@@ -4650,7 +4598,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 541,
+            _index = 534,
         },
         {
             Done = { 86715 },
@@ -4659,7 +4607,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 542,
+            _index = 535,
         },
         {
             Done = { 86718 },
@@ -4668,7 +4616,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 543,
+            _index = 536,
         },
         {
             Done = { 86712 },
@@ -4677,7 +4625,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 544,
+            _index = 537,
         },
         {
             PickUp = { 86720 },
@@ -4686,7 +4634,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 545,
+            _index = 538,
         },
         {
             Waypoint = 86720,
@@ -4696,7 +4644,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 546,
+            _index = 539,
         },
         {
             Qpart = { [86720] = { 1 } },
@@ -4706,7 +4654,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 547,
+            _index = 540,
         },
         {
             Qpart = { [86720] = { 2 } },
@@ -4716,7 +4664,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 548,
+            _index = 541,
         },
         {
             Done = { 86720 },
@@ -4725,7 +4673,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 549,
+            _index = 542,
         },
         {
             PickUp = { 86722 },
@@ -4734,7 +4682,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 550,
+            _index = 543,
         },
         {
             Done = { 86722 },
@@ -4743,7 +4691,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 551,
+            _index = 544,
         },
         {
             PickUp = { 86723 },
@@ -4752,7 +4700,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 552,
+            _index = 545,
         },
         {
             Qpart = { [86723] = { 1 } },
@@ -4762,7 +4710,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 553,
+            _index = 546,
         },
         {
             Done = { 86723 },
@@ -4771,7 +4719,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 554,
+            _index = 547,
         },
         {
             PickUp = { 86652 },
@@ -4780,14 +4728,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 555,
+            _index = 548,
         },
         {
             Coord = { x = -7652.3, y = 4395.7 },
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 556,
+            _index = 549,
             GetFP = 3127,
         },
         {
@@ -4798,7 +4746,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 557,
+            _index = 550,
         },
         {
             Qpart = { [86652] = { 2 } },
@@ -4808,7 +4756,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 558,
+            _index = 551,
         },
         {
             Qpart = { [86652] = { 3 } },
@@ -4818,7 +4766,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 559,
+            _index = 552,
         },
         {
             Qpart = { [86652] = { 4 } },
@@ -4828,7 +4776,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 560,
+            _index = 553,
         },
         {
             Done = { 86652 },
@@ -4837,7 +4785,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 561,
+            _index = 554,
         },
         {
             PickUp = { 86653 },
@@ -4846,7 +4794,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 562,
+            _index = 555,
         },
         {
             Qpart = { [86653] = { 2 } },
@@ -4856,7 +4804,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 563,
+            _index = 556,
         },
         {
             PickUp = { 93051 },
@@ -4864,7 +4812,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 564,
+            _index = 557,
         },
         {
             PickUp = { 92450 },
@@ -4872,7 +4820,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 565,
+            _index = 558,
         },
         {
             PickUp = { 89565 },
@@ -4880,7 +4828,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 566,
+            _index = 559,
         },
         {
             Qpart = { [93051] = { 1 } },
@@ -4889,7 +4837,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137188, 138018 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 567,
+            _index = 560,
         },
         {
             Qpart = { [93051] = { 2 } },
@@ -4899,7 +4847,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137188, 138018 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 568,
+            _index = 561,
         },
         {
             Done = { 93051 },
@@ -4907,7 +4855,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 569,
+            _index = 562,
         },
         {
             Qpart = { [92450] = { 1 } },
@@ -4916,7 +4864,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 570,
+            _index = 563,
         },
         {
             Done = { 92450 },
@@ -4924,7 +4872,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 571,
+            _index = 564,
         },
         {
             PickUp = { 92451 },
@@ -4932,7 +4880,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 572,
+            _index = 565,
         },
         {
             Qpart = { [92451] = { 1 } },
@@ -4940,7 +4888,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 573,
+            _index = 566,
             ExtraActionB = true,
             NpcDismount = 251258,
         },
@@ -4950,7 +4898,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 574,
+            _index = 567,
             ExtraActionB = true,
             NpcDismount = 251258,
         },
@@ -4960,7 +4908,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 575,
+            _index = 568,
         },
         {
             Done = { 92451 },
@@ -4968,7 +4916,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 576,
+            _index = 569,
         },
         {
             PickUp = { 92452 },
@@ -4976,7 +4924,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 577,
+            _index = 570,
         },
         {
             QpartPart = { [92452] = { 1 } },
@@ -4984,7 +4932,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 578,
+            _index = 571,
             TrigText = "33%",
         },
         {
@@ -4993,7 +4941,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 579,
+            _index = 572,
             TrigText = "66%",
         },
         {
@@ -5003,7 +4951,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 0.5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 580,
+            _index = 573,
         },
         {
             Done = { 92452 },
@@ -5011,7 +4959,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 581,
+            _index = 574,
         },
         {
             PickUp = { 92453 },
@@ -5019,7 +4967,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 582,
+            _index = 575,
         },
         {
             Qpart = { [92453] = { 1 } },
@@ -5028,7 +4976,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 583,
+            _index = 576,
         },
         {
             Done = { 92453 },
@@ -5036,7 +4984,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 584,
+            _index = 577,
         },
         {
             Qpart = { [86653] = { 1 } },
@@ -5046,7 +4994,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 585,
+            _index = 578,
         },
         {
             Done = { 86653 },
@@ -5055,7 +5003,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 586,
+            _index = 579,
         },
         {
             PickUp = { 86655, 89334 },
@@ -5064,7 +5012,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 587,
+            _index = 580,
         },
         {
             PickUp = { 86654 },
@@ -5073,7 +5021,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 588,
+            _index = 581,
         },
         {
             PickUp = { 91069, 91070, 91071 },
@@ -5081,7 +5029,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 589,
+            _index = 582,
         },
         {
             Qpart = { [91071] = { 1 } },
@@ -5090,7 +5038,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 590,
+            _index = 583,
             RaidIcon = 245893,
         },
         {
@@ -5100,7 +5048,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [91069] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 591,
+            _index = 584,
             TrigText = "1/6",
         },
         {
@@ -5110,7 +5058,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [91069] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 592,
+            _index = 585,
             TrigText = "2/6",
         },
         {
@@ -5120,7 +5068,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [91069] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 593,
+            _index = 586,
             TrigText = "3/6",
         },
         {
@@ -5130,7 +5078,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [91069] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 594,
+            _index = 587,
             TrigText = "4/6",
         },
         {
@@ -5140,7 +5088,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [91069] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 595,
+            _index = 588,
             TrigText = "5/6",
         },
         {
@@ -5150,7 +5098,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 80,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 596,
+            _index = 589,
         },
         {
             QpartPart = { [91070] = { 1 } },
@@ -5158,7 +5106,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 597,
+            _index = 590,
             TrigText = "6/6",
         },
         {
@@ -5167,7 +5115,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 598,
+            _index = 591,
         },
         {
             PickUp = { 91556 },
@@ -5175,7 +5123,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 599,
+            _index = 592,
         },
         {
             Qpart = { [91556] = { 1 } },
@@ -5184,7 +5132,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 600,
+            _index = 593,
         },
         {
             Qpart = { [91556] = { 2 } },
@@ -5193,7 +5141,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 601,
+            _index = 594,
         },
         {
             Done = { 91556 },
@@ -5201,7 +5149,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 602,
+            _index = 595,
         },
         {
             QpartPart = { [86655] = { 1 } },
@@ -5210,7 +5158,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 603,
+            _index = 596,
             TrigText = "1/4",
         },
         {
@@ -5221,7 +5169,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 604,
+            _index = 597,
             RaidIcon = 241423,
         },
         {
@@ -5233,7 +5181,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 605,
+            _index = 598,
             RaidIcon = 241424,
         },
         {
@@ -5244,7 +5192,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 606,
+            _index = 599,
             TrigText = "2/4",
         },
         {
@@ -5256,7 +5204,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 607,
+            _index = 600,
         },
         {
             Qpart = { [89334] = { 1 } },
@@ -5267,7 +5215,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 608,
+            _index = 601,
             RaidIcon = 241422,
         },
         {
@@ -5278,7 +5226,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 609,
+            _index = 602,
             TrigText = "3/4",
         },
         {
@@ -5289,7 +5237,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 610,
+            _index = 603,
             TrigText = "4/4",
         },
         {
@@ -5300,7 +5248,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 611,
+            _index = 604,
         },
         {
             Qpart = { [86655] = { 2 } },
@@ -5310,7 +5258,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 612,
+            _index = 605,
         },
         {
             Done = { 86654 },
@@ -5319,7 +5267,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 613,
+            _index = 606,
         },
         {
             Done = { 86655, 89334 },
@@ -5328,7 +5276,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 614,
+            _index = 607,
         },
         {
             PickUp = { 86656 },
@@ -5337,7 +5285,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 615,
+            _index = 608,
         },
         {
             Qpart = { [86656] = { 1 } },
@@ -5349,7 +5297,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 616,
+            _index = 609,
         },
         {
             Qpart = { [86656] = { 2 } },
@@ -5360,7 +5308,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 617,
+            _index = 610,
         },
         {
             QpartPart = { [86656] = { 4 } },
@@ -5369,7 +5317,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 618,
+            _index = 611,
             TrigText = "1/3",
         },
         {
@@ -5379,7 +5327,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 619,
+            _index = 612,
             TrigText = "2/3",
         },
         {
@@ -5389,7 +5337,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 620,
+            _index = 613,
             TrigText = "3/3",
         },
         {
@@ -5399,7 +5347,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 621,
+            _index = 614,
         },
         {
             PickUp = { 86809 },
@@ -5408,7 +5356,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 622,
+            _index = 615,
         },
         {
             Qpart = { [86809] = { 1 } },
@@ -5418,7 +5366,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 623,
+            _index = 616,
         },
         {
             Qpart = { [86809] = { 2 } },
@@ -5428,7 +5376,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 624,
+            _index = 617,
         },
         {
             Done = { 86809 },
@@ -5437,7 +5385,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 625,
+            _index = 618,
         },
         {
             PickUp = { 86657 },
@@ -5446,7 +5394,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 626,
+            _index = 619,
         },
         {
             Done = { 89565 },
@@ -5454,7 +5402,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 627,
+            _index = 620,
         },
         {
             PickUp = { 89503 },
@@ -5462,7 +5410,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 628,
+            _index = 621,
         },
         {
             Qpart = { [89503] = { 1 } },
@@ -5471,7 +5419,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 629,
+            _index = 622,
         },
         {
             Done = { 89503 },
@@ -5479,7 +5427,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 630,
+            _index = 623,
         },
         {
             PickUp = { 89506 },
@@ -5487,7 +5435,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 631,
+            _index = 624,
         },
         {
             Qpart = { [89506] = { 1 } },
@@ -5496,7 +5444,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 632,
+            _index = 625,
         },
         {
             Done = { 89506 },
@@ -5504,7 +5452,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 633,
+            _index = 626,
         },
         {
             PickUp = { 89513 },
@@ -5512,7 +5460,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 634,
+            _index = 627,
         },
         {
             Qpart = { [89513] = { 1 } },
@@ -5521,7 +5469,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 635,
+            _index = 628,
         },
         {
             Done = { 89513 },
@@ -5529,7 +5477,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 636,
+            _index = 629,
         },
         {
             PickUp = { 89559 },
@@ -5537,7 +5485,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 637,
+            _index = 630,
         },
         {
             Qpart = { [89559] = { 1 } },
@@ -5546,7 +5494,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 638,
+            _index = 631,
         },
         {
             Done = { 89559 },
@@ -5554,7 +5502,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 639,
+            _index = 632,
         },
         {
             PickUp = { 89560 },
@@ -5562,7 +5510,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 640,
+            _index = 633,
         },
         {
             Qpart = { [89560] = { 1 } },
@@ -5571,7 +5519,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 641,
+            _index = 634,
         },
         {
             Qpart = { [89560] = { 2 } },
@@ -5580,7 +5528,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 642,
+            _index = 635,
         },
         {
             Qpart = { [89560] = { 3 } },
@@ -5589,7 +5537,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 643,
+            _index = 636,
         },
         {
             Qpart = { [89560] = { 4 } },
@@ -5598,7 +5546,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 644,
+            _index = 637,
         },
         {
             Qpart = { [89560] = { 5 } },
@@ -5607,7 +5555,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 645,
+            _index = 638,
         },
         {
             Done = { 89560 },
@@ -5615,7 +5563,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 646,
+            _index = 639,
         },
         {
             Waypoint = 86657,
@@ -5624,14 +5572,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 15,
             InstanceQuest = true,
             SkipForLvl = "MidnightDelves",
-            _index = 647,
+            _index = 640,
         },
         {
             EnterScenario = { mapID = 2503, questID = 93410 },
             Zone = 2437,
             InstanceQuest = true,
             SkipForLvl = 90,
-            _index = 648,
+            _index = 641,
         },
         {
             PickUp = { 93410 },
@@ -5640,14 +5588,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             Coord = { x = -665.9, y = 59.2 },
             SkipForLvl = 90,
-            _index = 649,
+            _index = 642,
         },
         {
             DoScenario = { mapID = 2503, questID = 93410 },
             Zone = 2503,
             InstanceQuest = true,
             SkipForLvl = 90,
-            _index = 650,
+            _index = 643,
         },
         {
             Qpart = { [93410] = { 1 } },
@@ -5655,7 +5603,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             NoArrow = true,
             SkipForLvl = 90,
-            _index = 651,
+            _index = 644,
         },
         {
             LeaveScenario = { mapID = 2503, questID = 93410 },
@@ -5663,7 +5611,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             InstanceQuest = true,
             NoArrow = true,
             SkipForLvl = 90,
-            _index = 652,
+            _index = 645,
         },
         {
             Qpart = { [86657] = { 2 } },
@@ -5673,7 +5621,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 653,
+            _index = 646,
         },
         {
             Done = { 86657 },
@@ -5682,7 +5630,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 654,
+            _index = 647,
         },
         {
             PickUp = { 86658, 86660 },
@@ -5691,7 +5639,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 655,
+            _index = 648,
         },
         {
             Qpart = { [86658] = { 1 } },
@@ -5701,7 +5649,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 656,
+            _index = 649,
         },
         {
             Waypoint = 86658,
@@ -5711,7 +5659,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 657,
+            _index = 650,
         },
         {
             Qpart = { [86658] = { 2 }, [86660] = { 1 } },
@@ -5721,7 +5669,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 658,
+            _index = 651,
         },
         {
             Waypoint = 86658,
@@ -5731,7 +5679,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 659,
+            _index = 652,
         },
         {
             Waypoint = 86658,
@@ -5741,7 +5689,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 660,
+            _index = 653,
         },
         {
             Qpart = { [86658] = { 3 } },
@@ -5751,7 +5699,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 661,
+            _index = 654,
             RaidIcon = 245442,
         },
         {
@@ -5762,7 +5710,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 662,
+            _index = 655,
         },
         {
             Waypoint = 86658,
@@ -5772,7 +5720,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 663,
+            _index = 656,
         },
         {
             Waypoint = 86658,
@@ -5782,7 +5730,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 664,
+            _index = 657,
         },
         {
             Done = { 86658, 86660 },
@@ -5791,7 +5739,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 665,
+            _index = 658,
         },
         {
             PickUp = { 86659 },
@@ -5800,7 +5748,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 666,
+            _index = 659,
         },
         {
             Qpart = { [86659] = { 1 } },
@@ -5810,7 +5758,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 667,
+            _index = 660,
         },
         {
             QpartPart = { [86659] = { 2 } },
@@ -5819,7 +5767,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 668,
+            _index = 661,
             TrigText = "1/3",
         },
         {
@@ -5829,7 +5777,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 669,
+            _index = 662,
             TrigText = "2/3",
         },
         {
@@ -5839,7 +5787,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 670,
+            _index = 663,
             TrigText = "3/3",
         },
         {
@@ -5850,7 +5798,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 671,
+            _index = 664,
         },
         {
             Done = { 86659 },
@@ -5859,7 +5807,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 672,
+            _index = 665,
         },
         {
             PickUp = { 92084 },
@@ -5868,7 +5816,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 673,
+            _index = 666,
         },
         {
             Qpart = { [92084] = { 1 } },
@@ -5878,7 +5826,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 674,
+            _index = 667,
         },
         {
             Done = { 92084 },
@@ -5887,7 +5835,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 675,
+            _index = 668,
         },
         {
             PickUp = { 86661 },
@@ -5896,7 +5844,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 676,
+            _index = 669,
         },
         {
             PickUp = { 93093, 93094 },
@@ -5904,7 +5852,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 677,
+            _index = 670,
         },
         {
             Waypoint = 93094,
@@ -5913,7 +5861,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 678,
+            _index = 671,
         },
         {
             QpartPart = { [93094] = { 1 } },
@@ -5922,7 +5870,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [93093] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 679,
+            _index = 672,
             TrigText = "1/6",
         },
         {
@@ -5932,7 +5880,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [93093] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 680,
+            _index = 673,
             TrigText = "2/6",
         },
         {
@@ -5942,7 +5890,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [93093] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 681,
+            _index = 674,
             TrigText = "3/6",
         },
         {
@@ -5952,7 +5900,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [93093] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 682,
+            _index = 675,
             TrigText = "4/6",
         },
         {
@@ -5961,7 +5909,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 683,
+            _index = 676,
             TrigText = "5/6",
         },
         {
@@ -5971,7 +5919,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Fillers = { [93093] = { 1 } },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 684,
+            _index = 677,
             TrigText = "6/6",
         },
         {
@@ -5981,7 +5929,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 685,
+            _index = 678,
         },
         {
             Done = { 93093, 93094 },
@@ -5989,7 +5937,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 686,
+            _index = 679,
         },
         {
             PickUp = { 93095 },
@@ -5997,7 +5945,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 687,
+            _index = 680,
         },
         {
             Waypoint = 93095,
@@ -6006,7 +5954,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 688,
+            _index = 681,
         },
         {
             Qpart = { [93095] = { 1 } },
@@ -6015,7 +5963,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 689,
+            _index = 682,
         },
         {
             Qpart = { [93095] = { 2 } },
@@ -6024,7 +5972,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 690,
+            _index = 683,
         },
         {
             Done = { 93095 },
@@ -6032,7 +5980,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 691,
+            _index = 684,
         },
         {
             PickUp = { 93096 },
@@ -6040,7 +5988,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 692,
+            _index = 685,
         },
         {
             Qpart = { [93096] = { 1 } },
@@ -6049,7 +5997,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137654, 137655, 137656, 137657, 137658, 137659, 137630, 137661, 137662 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 693,
+            _index = 686,
         },
         {
             Qpart = { [93096] = { 2 } },
@@ -6058,7 +6006,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137654, 137655, 137656, 137657, 137658, 137659, 137630, 137661, 137662 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 694,
+            _index = 687,
         },
         {
             PickUp = { 88986, 88987 },
@@ -6066,7 +6014,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 695,
+            _index = 688,
         },
         {
             Qpart = { [88986] = { 1, 2 }, [88987] = { 1 } },
@@ -6076,7 +6024,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Button = { ["88986-1"] = 238962, ["88986-2"] = 238962 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 696,
+            _index = 689,
         },
         {
             Done = { 88986, 88987 },
@@ -6084,7 +6032,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 697,
+            _index = 690,
         },
         {
             PickUp = { 88988 },
@@ -6092,7 +6040,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 698,
+            _index = 691,
         },
         {
             Qpart = { [88988] = { 1 } },
@@ -6101,7 +6049,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 699,
+            _index = 692,
         },
         {
             Qpart = { [88988] = { 2 } },
@@ -6110,7 +6058,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 700,
+            _index = 693,
         },
         {
             Qpart = { [88988] = { 3 } },
@@ -6119,7 +6067,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 701,
+            _index = 694,
         },
         {
             Qpart = { [88988] = { 4 } },
@@ -6128,7 +6076,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 702,
+            _index = 695,
             ExtraActionB = true,
         },
         {
@@ -6137,7 +6085,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 703,
+            _index = 696,
         },
         {
             PickUp = { 88989 },
@@ -6145,7 +6093,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 704,
+            _index = 697,
         },
         {
             Qpart = { [88989] = { 1 } },
@@ -6154,7 +6102,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 705,
+            _index = 698,
         },
         {
             Qpart = { [88989] = { 2, 3 } },
@@ -6163,7 +6111,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 706,
+            _index = 699,
             ExtraActionB = true,
             RaidIcon = 240530,
         },
@@ -6173,7 +6121,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 707,
+            _index = 700,
         },
         {
             Qpart = { [86661] = { 1 } },
@@ -6183,7 +6131,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 708,
+            _index = 701,
         },
         {
             Done = { 86661 },
@@ -6192,7 +6140,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 709,
+            _index = 702,
         },
         {
             PickUp = { 86808 },
@@ -6201,7 +6149,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 710,
+            _index = 703,
         },
         {
             Qpart = { [86808] = { 1 } },
@@ -6211,7 +6159,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 711,
+            _index = 704,
         },
         {
             Done = { 86808 },
@@ -6220,7 +6168,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 712,
+            _index = 705,
         },
         {
             PickUp = { 86663 },
@@ -6229,7 +6177,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 713,
+            _index = 706,
         },
         {
             Qpart = { [86663] = { 2 } },
@@ -6239,7 +6187,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 714,
+            _index = 707,
         },
         {
             Qpart = { [86663] = { 3 } },
@@ -6249,7 +6197,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 715,
+            _index = 708,
         },
         {
             Qpart = { [86663] = { 4 } },
@@ -6259,7 +6207,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 716,
+            _index = 709,
         },
         {
             Done = { 86663 },
@@ -6268,7 +6216,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 717,
+            _index = 710,
         },
         {
             PickUp = { 86664 },
@@ -6277,7 +6225,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 718,
+            _index = 711,
         },
         {
             Qpart = { [86664] = { 1 } },
@@ -6287,7 +6235,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 719,
+            _index = 712,
         },
         {
             Qpart = { [86664] = { 2 } },
@@ -6297,7 +6245,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 720,
+            _index = 713,
         },
         {
             Qpart = { [86664] = { 3 } },
@@ -6307,7 +6255,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 721,
+            _index = 714,
         },
         {
             Done = { 86664 },
@@ -6316,7 +6264,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 722,
+            _index = 715,
         },
         {
             PickUp = { 86665 },
@@ -6325,7 +6273,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 723,
+            _index = 716,
         },
         {
             Qpart = { [86665] = { 1, 2 } },
@@ -6335,7 +6283,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 724,
+            _index = 717,
         },
         {
             Done = { 86665 },
@@ -6344,7 +6292,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 725,
+            _index = 718,
         },
         {
             PickUp = { 90772 },
@@ -6353,7 +6301,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 726,
+            _index = 719,
         },
         {
             Qpart = { [90772] = { 1 } },
@@ -6363,7 +6311,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 727,
+            _index = 720,
         },
         {
             Done = { 90772 },
@@ -6372,7 +6320,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 728,
+            _index = 721,
         },
         {
             PickUp = { 86666 },
@@ -6381,7 +6329,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 729,
+            _index = 722,
         },
         {
             Done = { 93096 },
@@ -6389,7 +6337,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 730,
+            _index = 723,
         },
         {
             Done = { 86666 },
@@ -6398,7 +6346,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 731,
+            _index = 724,
         },
         {
             PickUp = { 86681 },
@@ -6407,7 +6355,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 732,
+            _index = 725,
         },
         {
             Qpart = { [86681] = { 1 } },
@@ -6417,7 +6365,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 733,
+            _index = 726,
         },
         {
             QpartPart = { [86681] = { 2 } },
@@ -6426,7 +6374,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 734,
+            _index = 727,
             ExtraActionB = true,
             TrigText = "1/3",
         },
@@ -6437,7 +6385,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 735,
+            _index = 728,
             ExtraActionB = true,
             TrigText = "2/3",
         },
@@ -6448,7 +6396,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 736,
+            _index = 729,
             ExtraActionB = true,
             TrigText = "3/3",
         },
@@ -6459,7 +6407,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 737,
+            _index = 730,
         },
         {
             PickUp = { 86682 },
@@ -6468,7 +6416,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 738,
+            _index = 731,
         },
         {
             Qpart = { [86682] = { 1 } },
@@ -6478,7 +6426,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 739,
+            _index = 732,
         },
         {
             Done = { 86682 },
@@ -6487,7 +6435,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            _index = 740,
+            _index = 733,
         },
         -- Replacement for first crafts: return to Silvermoon and complete the compact city circuits.
         {
@@ -6495,49 +6443,49 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2437,
             NoArrow = true,
             SkipForLvl = "MidnightDelves",
-            _index = 741,
+            _index = 734,
         },
         {
             PickUp = { 87455 },
             Coord = { x = -4952.6, y = 8485.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 742,
+            _index = 735,
         },
         {
             PickUp = { 90835 },
             Coord = { x = -4906.5, y = 8583.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 743,
+            _index = 736,
         },
         {
             PickUp = { 90669 },
             Coord = { x = -4865.7, y = 8623.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 744,
+            _index = 737,
         },
         {
             Done = { 90835 },
             Coord = { x = -4786.7, y = 8571.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 745,
+            _index = 738,
         },
         {
             PickUp = { 90837, 90818 },
             Coord = { x = -4786.7, y = 8571.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 746,
+            _index = 739,
         },
         {
             QpartPart = { [90818] = { 1 } },
             Coord = { x = -4805.9, y = 8583.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 747,
+            _index = 740,
             ExtraActionB = true,
             TrigText = "1/3",
         },
@@ -6548,7 +6496,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             ExtraLineText = "INSIDE_BUILDING",
             SkipForLvl = "MidnightDelves",
-            _index = 748,
+            _index = 741,
         },
         -- Finish Tailor Troubles near the southern city exit, then take the portal to Harandar.
         {
@@ -6556,7 +6504,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4693.2, y = 8752.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 749,
+            _index = 742,
         },
         {
             Qpart = { [91386] = { 1 } },
@@ -6564,7 +6512,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 750,
+            _index = 743,
         },
         {
             Qpart = { [91386] = { 2 } },
@@ -6572,7 +6520,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 751,
+            _index = 744,
         },
         {
             Qpart = { [91386] = { 3 } },
@@ -6580,7 +6528,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 752,
+            _index = 745,
         },
         {
             Qpart = { [91386] = { 4 } },
@@ -6588,7 +6536,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 753,
+            _index = 746,
         },
         {
             Qpart = { [91386] = { 5 } },
@@ -6596,7 +6544,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 754,
+            _index = 747,
         },
         {
             Qpart = { [91386] = { 6 } },
@@ -6604,28 +6552,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 135588 },
             SkipForLvl = "MidnightDelves",
-            _index = 755,
+            _index = 748,
         },
         {
             Done = { 91386 },
             Coord = { x = -4706.2, y = 8743.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 756,
+            _index = 749,
         },
         {
             PickUp = { 92408 },
             Coord = { x = -4706.2, y = 8743.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 757,
+            _index = 750,
         },
         {
             QpartPart = { [90837] = { 1 } },
             Coord = { x = -4769.1, y = 8721.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 758,
+            _index = 751,
             TrigText = "1/5",
         },
         {
@@ -6633,7 +6581,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4802.5, y = 8639.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 759,
+            _index = 752,
             ExtraActionB = true,
             TrigText = "2/3",
         },
@@ -6642,7 +6590,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4793.4, y = 8633.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 760,
+            _index = 753,
             TrigText = "2/5",
         },
         {
@@ -6650,7 +6598,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4874, y = 8629.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 761,
+            _index = 754,
             TrigText = "3/5",
         },
         {
@@ -6658,7 +6606,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4777.3, y = 8705.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 762,
+            _index = 755,
             ExtraActionB = true,
             TrigText = "3/3",
         },
@@ -6667,7 +6615,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4754, y = 8684.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 763,
+            _index = 756,
             TrigText = "4/5",
         },
         {
@@ -6675,7 +6623,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4800, y = 8726.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 764,
+            _index = 757,
             TrigText = "5/5",
         },
 
@@ -6684,14 +6632,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4911.3, y = 8711.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 765,
+            _index = 758,
         },
         {
             PickUp = { 90819 },
             Coord = { x = -4911.3, y = 8711.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 766,
+            _index = 759,
         },
         {
             Qpart = { [90819] = { 1 } },
@@ -6699,7 +6647,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 767,
+            _index = 760,
         },
         {
             QpartPart = { [90819] = { 2 } },
@@ -6707,7 +6655,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 133938 },
             SkipForLvl = "MidnightDelves",
-            _index = 768,
+            _index = 761,
             TrigText = "1/3",
         },
         {
@@ -6716,7 +6664,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 769,
+            _index = 762,
         },
         {
             QpartPart = { [90819] = { 2 } },
@@ -6724,7 +6672,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 133942 },
             SkipForLvl = "MidnightDelves",
-            _index = 770,
+            _index = 763,
             TrigText = "2/3",
         },
         {
@@ -6733,7 +6681,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 133946 },
             SkipForLvl = "MidnightDelves",
-            _index = 771,
+            _index = 764,
             TrigText = "3/3",
         },
         {
@@ -6742,7 +6690,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 772,
+            _index = 765,
         },
         {
             Qpart = { [90819] = { 4 } },
@@ -6750,7 +6698,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 773,
+            _index = 766,
         },
         {
             Qpart = { [90819] = { 5 } },
@@ -6758,7 +6706,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 133969 },
             SkipForLvl = "MidnightDelves",
-            _index = 774,
+            _index = 767,
         },
         {
             Qpart = { [90819] = { 6 } },
@@ -6766,7 +6714,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 775,
+            _index = 768,
         },
         {
             Waypoint = 90819,
@@ -6774,35 +6722,35 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 776,
+            _index = 769,
         },
         {
             Done = { 90819 },
             Coord = { x = -4864.9, y = 8747.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 777,
+            _index = 770,
         },
         {
             PickUp = { 90821 },
             Coord = { x = -4864.9, y = 8747.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 778,
+            _index = 771,
         },
         {
             Done = { 90669 },
             Coord = { x = -4850.2, y = 9135.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 779,
+            _index = 772,
         },
         {
             PickUp = { 89199 },
             Coord = { x = -4850.2, y = 9135.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 780,
+            _index = 773,
         },
         {
             Qpart = { [89199] = { 1 } },
@@ -6810,14 +6758,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 781,
+            _index = 774,
         },
         {
             QpartPart = { [89199] = { 2 } },
             Coord = { x = -4841.7, y = 9148.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 782,
+            _index = 775,
             TrigText = "1/4",
         },
         {
@@ -6825,7 +6773,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4849.7, y = 9159.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 783,
+            _index = 776,
             TrigText = "2/4",
         },
         {
@@ -6833,7 +6781,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4865.3, y = 9144.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 784,
+            _index = 777,
             TrigText = "3/4",
         },
         {
@@ -6841,7 +6789,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4859, y = 9136.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 785,
+            _index = 778,
             TrigText = "4/4",
         },
         {
@@ -6849,21 +6797,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4853.9, y = 9139.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 786,
+            _index = 779,
         },
         {
             PickUp = { 89200 },
             Coord = { x = -4853.9, y = 9139.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 787,
+            _index = 780,
         },
         {
             QpartPart = { [89200] = { 1 } },
             Coord = { x = -4840.1, y = 9140.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 788,
+            _index = 781,
             TrigText = "1/5",
         },
         {
@@ -6871,7 +6819,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4840.3, y = 9140.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 789,
+            _index = 782,
             TrigText = "1/5",
         },
         {
@@ -6879,7 +6827,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4718.4, y = 8977.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 790,
+            _index = 783,
             TrigText = "2/5",
         },
         {
@@ -6887,7 +6835,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4718.6, y = 8977.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 791,
+            _index = 784,
             TrigText = "2/5",
         },
         {
@@ -6895,7 +6843,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4817.2, y = 8941.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 792,
+            _index = 785,
             TrigText = "3/5",
         },
         {
@@ -6903,7 +6851,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4817.5, y = 8941.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 793,
+            _index = 786,
             TrigText = "3/5",
         },
         {
@@ -6911,7 +6859,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4839.1, y = 8334.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 794,
+            _index = 787,
             TrigText = "4/5",
         },
         {
@@ -6919,7 +6867,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4839, y = 8334.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 795,
+            _index = 788,
             TrigText = "4/5",
         },
         {
@@ -6927,7 +6875,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4220.3, y = 8504.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 796,
+            _index = 789,
             TrigText = "5/5",
         },
         {
@@ -6935,21 +6883,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4336.8, y = 8482.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 797,
+            _index = 790,
         },
         {
             Done = { 89200 },
             Coord = { x = -4384.5, y = 8383.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 798,
+            _index = 791,
         },
         {
             PickUp = { 89201 },
             Coord = { x = -4384.5, y = 8383.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 799,
+            _index = 792,
         },
         {
             Qpart = { [89201] = { 1 } },
@@ -6957,7 +6905,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 2,
             SkipForLvl = "MidnightDelves",
-            _index = 800,
+            _index = 793,
             ExtraActionB = true,
         },
         {
@@ -6966,21 +6914,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 1,
             SkipForLvl = "MidnightDelves",
-            _index = 801,
+            _index = 794,
         },
         {
             Done = { 89201 },
             Coord = { x = -4423.1, y = 8357 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 802,
+            _index = 795,
         },
         {
             PickUp = { 89202 },
             Coord = { x = -4423.1, y = 8357 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 803,
+            _index = 796,
         },
         {
             Waypoint = 89202,
@@ -6988,7 +6936,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 804,
+            _index = 797,
         },
         {
             Waypoint = 89202,
@@ -6996,21 +6944,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 805,
+            _index = 798,
         },
         {
             Done = { 92729 },
             Coord = { x = -4330.6, y = 8691.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 806,
+            _index = 799,
         },
         {
             PickUp = { 92728 },
             Coord = { x = -4330.6, y = 8691.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 807,
+            _index = 800,
         },
         {
             Qpart = { [92728] = { 1 } },
@@ -7018,35 +6966,35 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 30,
             SkipForLvl = "MidnightDelves",
-            _index = 808,
+            _index = 801,
         },
         {
             Done = { 92728 },
             Coord = { x = -4327.4, y = 8691 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 809,
+            _index = 802,
         },
         {
             PickUp = { 92868 },
             Coord = { x = -4327.4, y = 8691 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 810,
+            _index = 803,
         },
         {
             Done = { 92868 },
             Coord = { x = -4593.9, y = 8643.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 811,
+            _index = 804,
         },
         {
             PickUp = { 92869 },
             Coord = { x = -4593.9, y = 8643.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 812,
+            _index = 805,
         },
         {
             Qpart = { [92869] = { 1 } },
@@ -7054,21 +7002,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 45,
             SkipForLvl = "MidnightDelves",
-            _index = 813,
+            _index = 806,
         },
         {
             Done = { 92869 },
             Coord = { x = -4593.1, y = 8643.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 814,
+            _index = 807,
         },
         {
             PickUp = { 92870 },
             Coord = { x = -4593.1, y = 8643.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 815,
+            _index = 808,
         },
         {
             Qpart = { [92870] = { 1 } },
@@ -7076,7 +7024,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 15,
             SkipForLvl = "MidnightDelves",
-            _index = 816,
+            _index = 809,
         },
         {
             QpartPart = { [89202] = { 1 } },
@@ -7084,7 +7032,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 132989 },
             SkipForLvl = "MidnightDelves",
-            _index = 817,
+            _index = 810,
             TrigText = "1/8",
         },
         {
@@ -7093,7 +7041,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 132989 },
             SkipForLvl = "MidnightDelves",
-            _index = 818,
+            _index = 811,
             TrigText = "2/8",
         },
         {
@@ -7102,7 +7050,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 132989 },
             SkipForLvl = "MidnightDelves",
-            _index = 819,
+            _index = 812,
             TrigText = "3/8",
         },
         {
@@ -7111,7 +7059,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 132989 },
             SkipForLvl = "MidnightDelves",
-            _index = 820,
+            _index = 813,
             TrigText = "4/8",
         },
         {
@@ -7120,7 +7068,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 132989 },
             SkipForLvl = "MidnightDelves",
-            _index = 821,
+            _index = 814,
             TrigText = "5/8",
         },
         {
@@ -7129,7 +7077,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 132989 },
             SkipForLvl = "MidnightDelves",
-            _index = 822,
+            _index = 815,
             TrigText = "6/8",
         },
         {
@@ -7138,7 +7086,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 132989 },
             SkipForLvl = "MidnightDelves",
-            _index = 823,
+            _index = 816,
             TrigText = "7/8",
         },
         {
@@ -7147,7 +7095,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 132989 },
             SkipForLvl = "MidnightDelves",
-            _index = 824,
+            _index = 817,
             TrigText = "8/8",
         },
         {
@@ -7156,7 +7104,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 825,
+            _index = 818,
         },
         {
             Waypoint = 92870,
@@ -7164,21 +7112,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 826,
+            _index = 819,
         },
         {
             Done = { 89202 },
             Coord = { x = -4790.4, y = 8579.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 827,
+            _index = 820,
         },
         {
             PickUp = { 89203 },
             Coord = { x = -4790.4, y = 8579.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 828,
+            _index = 821,
         },
         {
             Qpart = { [89203] = { 1 } },
@@ -7186,21 +7134,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 132992 },
             SkipForLvl = "MidnightDelves",
-            _index = 829,
+            _index = 822,
         },
         {
             Done = { 89203 },
             Coord = { x = -4790.3, y = 8579.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 830,
+            _index = 823,
         },
         {
             PickUp = { 89204 },
             Coord = { x = -4790.3, y = 8579.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 831,
+            _index = 824,
         },
         {
             Waypoint = 89204,
@@ -7208,7 +7156,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 832,
+            _index = 825,
         },
         {
             Waypoint = 89204,
@@ -7216,7 +7164,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 833,
+            _index = 826,
         },
         {
             Waypoint = 89204,
@@ -7224,7 +7172,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 834,
+            _index = 827,
         },
         {
             Waypoint = 89204,
@@ -7232,7 +7180,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 835,
+            _index = 828,
         },
         {
             Qpart = { [89204] = { 1 } },
@@ -7240,7 +7188,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 133247 },
             SkipForLvl = "MidnightDelves",
-            _index = 836,
+            _index = 829,
         },
         {
             Qpart = { [89204] = { 2 } },
@@ -7248,7 +7196,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 837,
+            _index = 830,
         },
         {
             Waypoint = 89204,
@@ -7256,7 +7204,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 838,
+            _index = 831,
         },
         {
             Qpart = { [89204] = { 3 } },
@@ -7264,7 +7212,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 133298 },
             SkipForLvl = "MidnightDelves",
-            _index = 839,
+            _index = 832,
         },
         {
             Qpart = { [89204] = { 4 } },
@@ -7272,14 +7220,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 840,
+            _index = 833,
         },
         {
             Done = { 92870 },
             Coord = { x = -4336.6, y = 8481.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 841,
+            _index = 834,
         },
         {
             Waypoint = 89204,
@@ -7287,7 +7235,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 842,
+            _index = 835,
         },
         {
             Qpart = { [89204] = { 5 } },
@@ -7295,7 +7243,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 133290 },
             SkipForLvl = "MidnightDelves",
-            _index = 843,
+            _index = 836,
         },
         {
             Qpart = { [89204] = { 6 } },
@@ -7303,7 +7251,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 844,
+            _index = 837,
         },
         {
             Waypoint = 89204,
@@ -7311,21 +7259,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 845,
+            _index = 838,
         },
         {
             Done = { 89204 },
             Coord = { x = -4761, y = 8630.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 846,
+            _index = 839,
         },
         {
             PickUp = { 89205 },
             Coord = { x = -4761, y = 8630.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 847,
+            _index = 840,
         },
         {
             Qpart = { [89205] = { 1 } },
@@ -7333,7 +7281,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 848,
+            _index = 841,
         },
         {
             Qpart = { [89205] = { 2 } },
@@ -7341,7 +7289,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 849,
+            _index = 842,
         },
         {
             Qpart = { [89205] = { 3 } },
@@ -7349,7 +7297,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 850,
+            _index = 843,
         },
         {
             Qpart = { [89205] = { 4 } },
@@ -7357,7 +7305,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 851,
+            _index = 844,
         },
         {
             Qpart = { [89205] = { 5 } },
@@ -7365,7 +7313,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 852,
+            _index = 845,
         },
         {
             Waypoint = 89205,
@@ -7373,7 +7321,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 853,
+            _index = 846,
         },
         {
             Waypoint = 89205,
@@ -7381,21 +7329,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 854,
+            _index = 847,
         },
         {
             Done = { 89205 },
             Coord = { x = -4858.2, y = 9141 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 855,
+            _index = 848,
         },
         {
             PickUp = { 89206 },
             Coord = { x = -4858.2, y = 9141 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 856,
+            _index = 849,
         },
         {
             Qpart = { [89206] = { 1 } },
@@ -7403,7 +7351,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 857,
+            _index = 850,
             ExtraActionB = true,
         },
         {
@@ -7412,7 +7360,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 858,
+            _index = 851,
         },
         {
             Waypoint = 89206,
@@ -7420,14 +7368,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 859,
+            _index = 852,
         },
         {
             QpartPart = { [89206] = { 2 } },
             Coord = { x = -4856, y = 9140.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 860,
+            _index = 853,
             TrigText = "1/6",
         },
         {
@@ -7435,7 +7383,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4847, y = 9142.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 861,
+            _index = 854,
             TrigText = "2/6",
         },
         {
@@ -7443,7 +7391,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4841.8, y = 9152.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 862,
+            _index = 855,
             TrigText = "3/6",
         },
         {
@@ -7451,7 +7399,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4849.1, y = 9160.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 863,
+            _index = 856,
             TrigText = "4/6",
         },
         {
@@ -7459,7 +7407,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4860.7, y = 9156.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 864,
+            _index = 857,
             TrigText = "5/6",
         },
         {
@@ -7467,7 +7415,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4862.4, y = 9148.9 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 865,
+            _index = 858,
             TrigText = "6/6",
         },
         {
@@ -7475,14 +7423,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4857.6, y = 9139.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 866,
+            _index = 859,
         },
         {
             PickUp = { 89207 },
             Coord = { x = -4857.6, y = 9139.7 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 867,
+            _index = 860,
         },
         {
             Qpart = { [89207] = { 1 } },
@@ -7490,7 +7438,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 10,
             SkipForLvl = "MidnightDelves",
-            _index = 868,
+            _index = 861,
         },
         {
             Waypoint = 89207,
@@ -7498,7 +7446,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 869,
+            _index = 862,
         },
         {
             Waypoint = 89207,
@@ -7506,21 +7454,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 870,
+            _index = 863,
         },
         {
             Done = { 89207 },
             Coord = { x = -4822.6, y = 9151.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 871,
+            _index = 864,
         },
         {
             PickUp = { 89208 },
             Coord = { x = -4822.6, y = 9151.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 872,
+            _index = 865,
         },
         {
             Qpart = { [90821] = { 1 } },
@@ -7528,7 +7476,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 873,
+            _index = 866,
         },
         {
             Qpart = { [90821] = { 2 } },
@@ -7536,7 +7484,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 134044 },
             SkipForLvl = "MidnightDelves",
-            _index = 874,
+            _index = 867,
         },
         {
             Qpart = { [90821] = { 3 } },
@@ -7544,14 +7492,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 134044 },
             SkipForLvl = "MidnightDelves",
-            _index = 875,
+            _index = 868,
         },
         {
             Done = { 90821 },
             Coord = { x = -4238.7, y = 9286.3 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 876,
+            _index = 869,
         },
         {
             Qpart = { [89208] = { 1 } },
@@ -7559,28 +7507,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 133545 },
             SkipForLvl = "MidnightDelves",
-            _index = 877,
+            _index = 870,
         },
         {
             Done = { 89208 },
             Coord = { x = -4383.9, y = 8379.6 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 878,
+            _index = 871,
         },
         {
             Done = { 87455 },
             Coord = { x = -4272.4, y = 8101.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 879,
+            _index = 872,
         },
         {
             PickUp = { 87456, 87457 },
             Coord = { x = -4272.4, y = 8101.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 880,
+            _index = 873,
         },
         {
             Qpart = { [87456] = { 2 } },
@@ -7588,7 +7536,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 881,
+            _index = 874,
         },
         {
             Qpart = { [87457] = { 1 } },
@@ -7596,7 +7544,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 2,
             SkipForLvl = "MidnightDelves",
-            _index = 882,
+            _index = 875,
             RaidIcon = 238739,
         },
         {
@@ -7605,7 +7553,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 883,
+            _index = 876,
         },
         {
             Qpart = { [87456] = { 1 } },
@@ -7613,35 +7561,35 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 0.5,
             SkipForLvl = "MidnightDelves",
-            _index = 884,
+            _index = 877,
         },
         {
             Done = { 87456, 87457 },
             Coord = { x = -4270, y = 8082.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 885,
+            _index = 878,
         },
         {
             PickUp = { 87458 },
             Coord = { x = -4270, y = 8082.2 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 886,
+            _index = 879,
         },
         {
             Done = { 92408 },
             Coord = { x = -4274.7, y = 7931.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 887,
+            _index = 880,
         },
         {
             PickUp = { 91388 },
             Coord = { x = -4274.7, y = 7931.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 888,
+            _index = 881,
         },
         {
             Qpart = { [91388] = { 1 } },
@@ -7650,21 +7598,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 60,
             Button = { ["91388-1"] = 250919 },
             SkipForLvl = "MidnightDelves",
-            _index = 889,
+            _index = 882,
         },
         {
             Done = { 91388 },
             Coord = { x = -4274.8, y = 7931.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 890,
+            _index = 883,
         },
         {
             PickUp = { 91389 },
             Coord = { x = -4274.8, y = 7931.5 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 891,
+            _index = 884,
         },
         {
             Qpart = { [91389] = { 1 } },
@@ -7672,7 +7620,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             GossipOptionIDs = { 135911 },
             SkipForLvl = "MidnightDelves",
-            _index = 892,
+            _index = 885,
         },
         {
             Qpart = { [91389] = { 2 } },
@@ -7681,7 +7629,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             GossipOptionIDs = { 135911 },
             SkipForLvl = "MidnightDelves",
-            _index = 893,
+            _index = 886,
         },
         {
             Qpart = { [91389] = { 3 } },
@@ -7689,21 +7637,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             Range = 5,
             SkipForLvl = "MidnightDelves",
-            _index = 894,
+            _index = 887,
         },
         {
             Done = { 91389 },
             Coord = { x = -4103.5, y = 8008.1 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 895,
+            _index = 888,
         },
         {
             Done = { 87458 },
             Coord = { x = -4952.7, y = 8485.4 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 896,
+            _index = 889,
         },
         -- Finish replacing crafting XP in Harandar: Harati introductions, Late Bloomers and Tales of the Sky.
         {
@@ -7711,7 +7659,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4372.7, y = 8500.8 },
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
-            _index = 897,
+            _index = 890,
         },
         {
             PickUp = { 90533 },
@@ -7719,7 +7667,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 898,
+            _index = 891,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7730,7 +7678,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "EXIT_CAVE",
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 899,
+            _index = 892,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7739,7 +7687,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 900,
+            _index = 893,
             BuyMerchant = { { itemID = 241125, quantity = 1, questID = 90533 } },
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
@@ -7751,7 +7699,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Button = { ["90533-3"] = 241125 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 901,
+            _index = 894,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7760,7 +7708,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 902,
+            _index = 895,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7769,7 +7717,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 903,
+            _index = 896,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7779,7 +7727,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 904,
+            _index = 897,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7790,7 +7738,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "GO_INSIDE_CAVE",
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 905,
+            _index = 898,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7801,7 +7749,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "GO_INSIDE_CAVE",
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 906,
+            _index = 899,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7811,7 +7759,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 907,
+            _index = 900,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7820,7 +7768,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 908,
+            _index = 901,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7829,7 +7777,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 909,
+            _index = 902,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7839,7 +7787,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 910,
+            _index = 903,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7849,7 +7797,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 911,
+            _index = 904,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7858,7 +7806,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 912,
+            _index = 905,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7867,7 +7815,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 913,
+            _index = 906,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7877,7 +7825,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 914,
+            _index = 907,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7887,7 +7835,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 915,
+            _index = 908,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7897,7 +7845,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 916,
+            _index = 909,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7907,7 +7855,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133929 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 917,
+            _index = 910,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7916,7 +7864,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 918,
+            _index = 911,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7925,7 +7873,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 919,
+            _index = 912,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7935,7 +7883,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 60,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 920,
+            _index = 913,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7944,7 +7892,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 921,
+            _index = 914,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7953,7 +7901,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 922,
+            _index = 915,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7962,7 +7910,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 923,
+            _index = 916,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7971,7 +7919,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 924,
+            _index = 917,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7981,7 +7929,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 925,
+            _index = 918,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -7991,7 +7939,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 926,
+            _index = 919,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8001,7 +7949,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 927,
+            _index = 920,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8011,7 +7959,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 928,
+            _index = 921,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8020,7 +7968,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 929,
+            _index = 922,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8029,7 +7977,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 930,
+            _index = 923,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8038,7 +7986,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 931,
+            _index = 924,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/6",
         },
@@ -8048,7 +7996,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 932,
+            _index = 925,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/6",
         },
@@ -8058,7 +8006,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 933,
+            _index = 926,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/6",
         },
@@ -8068,7 +8016,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 934,
+            _index = 927,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "4/6",
         },
@@ -8078,7 +8026,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 935,
+            _index = 928,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "5/6",
         },
@@ -8088,7 +8036,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 936,
+            _index = 929,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "6/6",
         },
@@ -8099,7 +8047,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 937,
+            _index = 930,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8108,7 +8056,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 938,
+            _index = 931,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8117,7 +8065,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 939,
+            _index = 932,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8127,7 +8075,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 940,
+            _index = 933,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8136,7 +8084,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 941,
+            _index = 934,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8145,7 +8093,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 942,
+            _index = 935,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8155,7 +8103,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 943,
+            _index = 936,
             ExtraActionB = true,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "15%",
@@ -8167,7 +8115,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 944,
+            _index = 937,
             ExtraActionB = true,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "30%",
@@ -8179,7 +8127,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 945,
+            _index = 938,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "35%",
         },
@@ -8190,7 +8138,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 946,
+            _index = 939,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "40%",
         },
@@ -8201,7 +8149,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 947,
+            _index = 940,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "45%",
         },
@@ -8212,7 +8160,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 948,
+            _index = 941,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "50%",
         },
@@ -8223,7 +8171,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 949,
+            _index = 942,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "55%",
         },
@@ -8234,7 +8182,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 950,
+            _index = 943,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8244,7 +8192,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 951,
+            _index = 944,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "60%",
         },
@@ -8255,7 +8203,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 952,
+            _index = 945,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "65%",
         },
@@ -8266,7 +8214,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 953,
+            _index = 946,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "70%",
         },
@@ -8277,7 +8225,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SpellButton = { ["90470-2"] = 1231371 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 954,
+            _index = 947,
             ExtraActionB = true,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "85%",
@@ -8288,7 +8236,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 955,
+            _index = 948,
             ExtraActionB = true,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
@@ -8298,7 +8246,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 956,
+            _index = 949,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8307,7 +8255,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 957,
+            _index = 950,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8317,7 +8265,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 958,
+            _index = 951,
             ExtraActionB = true,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
@@ -8327,7 +8275,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 959,
+            _index = 952,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         -- Experience reserve: remaining Harandar side chains. Stop this reserve at the current buff-adjusted turn-in level.
@@ -8337,7 +8285,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 960,
+            _index = 953,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8347,7 +8295,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 134812 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 961,
+            _index = 954,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8356,7 +8304,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 962,
+            _index = 955,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/4",
         },
@@ -8366,7 +8314,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 963,
+            _index = 956,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/4",
         },
@@ -8376,7 +8324,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 964,
+            _index = 957,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/4",
         },
@@ -8386,7 +8334,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 965,
+            _index = 958,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "4/4",
         },
@@ -8396,7 +8344,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 966,
+            _index = 959,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8405,7 +8353,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 967,
+            _index = 960,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8414,7 +8362,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 968,
+            _index = 961,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/5",
         },
@@ -8424,7 +8372,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 969,
+            _index = 962,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/5",
         },
@@ -8434,7 +8382,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 970,
+            _index = 963,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/5",
         },
@@ -8444,7 +8392,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 971,
+            _index = 964,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "4/5",
         },
@@ -8454,7 +8402,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 972,
+            _index = 965,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "5/5",
         },
@@ -8465,7 +8413,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 973,
+            _index = 966,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8474,7 +8422,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 974,
+            _index = 967,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8483,7 +8431,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 975,
+            _index = 968,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8493,7 +8441,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 976,
+            _index = 969,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             RaidIcon = 247665,
         },
@@ -8503,7 +8451,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 977,
+            _index = 970,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8512,7 +8460,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 978,
+            _index = 971,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8521,7 +8469,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 979,
+            _index = 972,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8531,7 +8479,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 980,
+            _index = 973,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             RaidIcon = 248598,
         },
@@ -8542,7 +8490,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 981,
+            _index = 974,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8552,7 +8500,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 45,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 982,
+            _index = 975,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8561,7 +8509,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 983,
+            _index = 976,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8570,7 +8518,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 984,
+            _index = 977,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8580,7 +8528,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 985,
+            _index = 978,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8590,7 +8538,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 986,
+            _index = 979,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8600,7 +8548,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 987,
+            _index = 980,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8609,7 +8557,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 988,
+            _index = 981,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8618,7 +8566,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 989,
+            _index = 982,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8628,7 +8576,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 990,
+            _index = 983,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8638,7 +8586,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 991,
+            _index = 984,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8648,7 +8596,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 992,
+            _index = 985,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8657,7 +8605,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 993,
+            _index = 986,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8666,7 +8614,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 994,
+            _index = 987,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8675,7 +8623,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 995,
+            _index = 988,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8685,7 +8633,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 85,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 996,
+            _index = 989,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8694,7 +8642,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 997,
+            _index = 990,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8703,7 +8651,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 998,
+            _index = 991,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8713,7 +8661,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 100,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 999,
+            _index = 992,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8722,7 +8670,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1000,
+            _index = 993,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8731,7 +8679,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1001,
+            _index = 994,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8741,7 +8689,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 100,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1002,
+            _index = 995,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8750,7 +8698,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1003,
+            _index = 996,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8759,7 +8707,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1004,
+            _index = 997,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8768,7 +8716,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1005,
+            _index = 998,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/12",
         },
@@ -8778,7 +8726,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1006,
+            _index = 999,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/12",
         },
@@ -8788,7 +8736,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1007,
+            _index = 1000,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/12",
         },
@@ -8798,7 +8746,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1008,
+            _index = 1001,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "4/12",
         },
@@ -8808,7 +8756,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1009,
+            _index = 1002,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "5/12",
         },
@@ -8818,7 +8766,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1010,
+            _index = 1003,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "6/12",
         },
@@ -8828,7 +8776,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1011,
+            _index = 1004,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "7/12",
         },
@@ -8838,7 +8786,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1012,
+            _index = 1005,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "8/12",
         },
@@ -8848,7 +8796,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1013,
+            _index = 1006,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "9/12",
         },
@@ -8858,7 +8806,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1014,
+            _index = 1007,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "10/12",
         },
@@ -8868,7 +8816,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1015,
+            _index = 1008,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "11/12",
         },
@@ -8878,7 +8826,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1016,
+            _index = 1009,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "12/12",
         },
@@ -8888,7 +8836,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1017,
+            _index = 1010,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8897,7 +8845,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1018,
+            _index = 1011,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8907,7 +8855,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1019,
+            _index = 1012,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8916,7 +8864,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1020,
+            _index = 1013,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8925,7 +8873,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1021,
+            _index = 1014,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -8934,7 +8882,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1022,
+            _index = 1015,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/8",
         },
@@ -8944,7 +8892,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1023,
+            _index = 1016,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/8",
         },
@@ -8954,7 +8902,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1024,
+            _index = 1017,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/8",
         },
@@ -8964,7 +8912,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1025,
+            _index = 1018,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "4/8",
         },
@@ -8974,7 +8922,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1026,
+            _index = 1019,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "5/8",
         },
@@ -8984,7 +8932,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1027,
+            _index = 1020,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "6/8",
         },
@@ -8994,7 +8942,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1028,
+            _index = 1021,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "7/8",
         },
@@ -9004,7 +8952,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1029,
+            _index = 1022,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "8/8",
         },
@@ -9015,7 +8963,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 45,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1030,
+            _index = 1023,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9024,7 +8972,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1031,
+            _index = 1024,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9033,7 +8981,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1032,
+            _index = 1025,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9043,7 +8991,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1033,
+            _index = 1026,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9052,7 +9000,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1034,
+            _index = 1027,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9061,7 +9009,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1035,
+            _index = 1028,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9070,7 +9018,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1036,
+            _index = 1029,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9079,7 +9027,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1037,
+            _index = 1030,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9089,7 +9037,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1038,
+            _index = 1031,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             RaidIcon = 237655,
         },
@@ -9100,7 +9048,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1039,
+            _index = 1032,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9110,7 +9058,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1040,
+            _index = 1033,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9120,7 +9068,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1041,
+            _index = 1034,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9130,7 +9078,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1042,
+            _index = 1035,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9140,7 +9088,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 45,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1043,
+            _index = 1036,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9149,7 +9097,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1044,
+            _index = 1037,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9158,7 +9106,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1045,
+            _index = 1038,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9169,7 +9117,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "ENTER_CAVE_BEHIND_WATERFALL",
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1046,
+            _index = 1039,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9179,7 +9127,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             ExtraLineText = "ENTER_CAVE_BEHIND_WATERFALL",
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1047,
+            _index = 1040,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9188,7 +9136,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1048,
+            _index = 1041,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9198,7 +9146,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 134219 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1049,
+            _index = 1042,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9209,7 +9157,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 134219 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1050,
+            _index = 1043,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9218,7 +9166,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1051,
+            _index = 1044,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9227,7 +9175,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1052,
+            _index = 1045,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9236,7 +9184,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1053,
+            _index = 1046,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9245,7 +9193,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1054,
+            _index = 1047,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9255,7 +9203,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136773, 136774 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1055,
+            _index = 1048,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9264,7 +9212,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1056,
+            _index = 1049,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9273,7 +9221,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1057,
+            _index = 1050,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9283,7 +9231,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137251 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1058,
+            _index = 1051,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/2",
         },
@@ -9294,7 +9242,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137250 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1059,
+            _index = 1052,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/2",
         },
@@ -9305,7 +9253,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1060,
+            _index = 1053,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9315,7 +9263,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 45,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1061,
+            _index = 1054,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9325,7 +9273,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 100,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1062,
+            _index = 1055,
             ExtraActionB = true,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
@@ -9336,7 +9284,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1063,
+            _index = 1056,
             ExtraActionB = true,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
@@ -9346,7 +9294,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1064,
+            _index = 1057,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9355,7 +9303,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1065,
+            _index = 1058,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9365,7 +9313,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137321 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1066,
+            _index = 1059,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/4",
         },
@@ -9376,7 +9324,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137325 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1067,
+            _index = 1060,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/4",
         },
@@ -9388,7 +9336,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137324 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1068,
+            _index = 1061,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/4",
         },
@@ -9399,7 +9347,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 137323 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1069,
+            _index = 1062,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "4/4",
         },
@@ -9409,7 +9357,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1070,
+            _index = 1063,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9418,7 +9366,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1071,
+            _index = 1064,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9428,7 +9376,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1072,
+            _index = 1065,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9438,7 +9386,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1073,
+            _index = 1066,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9448,7 +9396,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1074,
+            _index = 1067,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9458,7 +9406,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136842 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1075,
+            _index = 1068,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9467,7 +9415,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1076,
+            _index = 1069,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9476,7 +9424,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1077,
+            _index = 1070,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9486,7 +9434,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1078,
+            _index = 1071,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9496,7 +9444,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1079,
+            _index = 1072,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9506,7 +9454,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1080,
+            _index = 1073,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9516,7 +9464,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1081,
+            _index = 1074,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9525,7 +9473,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1082,
+            _index = 1075,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9534,7 +9482,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1083,
+            _index = 1076,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9543,7 +9491,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1084,
+            _index = 1077,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9553,7 +9501,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1085,
+            _index = 1078,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9563,7 +9511,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 45,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1086,
+            _index = 1079,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9573,7 +9521,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1087,
+            _index = 1080,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9582,7 +9530,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1088,
+            _index = 1081,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9591,7 +9539,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1089,
+            _index = 1082,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9601,7 +9549,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1090,
+            _index = 1083,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9610,7 +9558,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1091,
+            _index = 1084,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9620,7 +9568,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1092,
+            _index = 1085,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9629,7 +9577,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1093,
+            _index = 1086,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9638,7 +9586,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1094,
+            _index = 1087,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9648,7 +9596,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1095,
+            _index = 1088,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9658,7 +9606,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 135600 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1096,
+            _index = 1089,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/3",
         },
@@ -9669,7 +9617,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 135599 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1097,
+            _index = 1090,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/3",
         },
@@ -9680,7 +9628,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 135601 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1098,
+            _index = 1091,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/3",
         },
@@ -9690,7 +9638,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1099,
+            _index = 1092,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9699,7 +9647,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1100,
+            _index = 1093,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9710,7 +9658,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 135664 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1101,
+            _index = 1094,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9721,7 +9669,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 135666 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1102,
+            _index = 1095,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             _comment = "insertNextHere",
         },
@@ -9732,7 +9680,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 135663 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1103,
+            _index = 1096,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9741,7 +9689,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1104,
+            _index = 1097,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9750,7 +9698,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1105,
+            _index = 1098,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9759,7 +9707,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1106,
+            _index = 1099,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9768,7 +9716,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1107,
+            _index = 1100,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9778,7 +9726,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136989, 136986, 136991 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1108,
+            _index = 1101,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9788,7 +9736,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136989, 136986, 136991 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1109,
+            _index = 1102,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9798,7 +9746,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136989, 136986, 136991 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1110,
+            _index = 1103,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9808,7 +9756,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136990, 135670 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1111,
+            _index = 1104,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9817,7 +9765,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1112,
+            _index = 1105,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9826,7 +9774,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1113,
+            _index = 1106,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9836,7 +9784,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 1,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1114,
+            _index = 1107,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9846,7 +9794,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 10,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1115,
+            _index = 1108,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9855,7 +9803,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1116,
+            _index = 1109,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9864,7 +9812,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1117,
+            _index = 1110,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9874,7 +9822,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1118,
+            _index = 1111,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9884,7 +9832,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1119,
+            _index = 1112,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9894,7 +9842,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1120,
+            _index = 1113,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9904,7 +9852,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136164, 136163, 136162 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1121,
+            _index = 1114,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9914,7 +9862,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136164, 136163, 136162 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1122,
+            _index = 1115,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9923,7 +9871,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1123,
+            _index = 1116,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9933,7 +9881,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1124,
+            _index = 1117,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9942,7 +9890,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             NoArrow = true,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1125,
+            _index = 1118,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9951,7 +9899,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1126,
+            _index = 1119,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9960,7 +9908,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1127,
+            _index = 1120,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9970,7 +9918,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1128,
+            _index = 1121,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9980,7 +9928,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 15,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1129,
+            _index = 1122,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9989,7 +9937,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1130,
+            _index = 1123,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -9998,7 +9946,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1131,
+            _index = 1124,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10007,7 +9955,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1132,
+            _index = 1125,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10017,7 +9965,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1133,
+            _index = 1126,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10026,7 +9974,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1134,
+            _index = 1127,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10036,7 +9984,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 136855 },
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1135,
+            _index = 1128,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10046,7 +9994,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1136,
+            _index = 1129,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10055,7 +10003,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = "MidnightDelves",
-            _index = 1137,
+            _index = 1130,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         -- Visit all reward hubs. Parallel groups insert only ready hand-ins and remain available across the whole route.
@@ -10064,7 +10012,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -1796.8, y = -784.9 },
             Zone = 2413,
             SkipForLvl = 90,
-            _index = 1138,
+            _index = 1131,
         },
         {
             UseSpell = { questID = 93421, spellID = 1255801 },
@@ -10072,7 +10020,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             SkipInZones = { 2393 },
             NoArrow = true,
             ZoneStepTrigger = { Range = 15, x = 54.3, y = 14.3 },
-            _index = 1139,
+            _index = 1132,
         },
         {
             TakePortal = { mapID = 2395, questID = 93421 },
@@ -10080,7 +10028,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2541,
             OnlyInZones = { 2541 },
             ZoneStepTrigger = { Range = 15, x = -4917.9, y = 8449.6 },
-            _index = 1140,
+            _index = 1133,
         },
 
         -- to voidstorm
@@ -10089,7 +10037,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -4325.2, y = 8535.4 },
             Zone = 2393,
             SkipForLvl = 90,
-            _index = 1141,
+            _index = 1134,
         },
         -- from voidstorm to harandar
         {
@@ -10097,7 +10045,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -456.8, y = 882.2 },
             Zone = 2405,
             SkipForLvl = 90,
-            _index = 1142,
+            _index = 1135,
             IsQuestsUncompleted = { 93427, 93428, 93416, 93421 },
         },
         -- from harandar to silvermoon
@@ -10106,7 +10054,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Coord = { x = -462.1, y = -270.1 },
             Zone = 2413,
             SkipForLvl = 90,
-            _index = 1143,
+            _index = 1136,
             IsQuestsUncompleted = { 93409, 93410 },
         },
         {
@@ -10116,7 +10064,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 15,
             InstanceQuest = true,
             SkipForLvl = 90,
-            _index = 1144,
+            _index = 1137,
         },
         -- Final reserve for characters that have already spent some delve rewards. No crafting requirement.
         {
@@ -10125,7 +10073,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1145,
+            _index = 1138,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10134,7 +10082,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1146,
+            _index = 1139,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10143,7 +10091,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1147,
+            _index = 1140,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10152,7 +10100,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1148,
+            _index = 1141,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/4",
         },
@@ -10162,7 +10110,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1149,
+            _index = 1142,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/4",
         },
@@ -10172,7 +10120,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1150,
+            _index = 1143,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/4",
         },
@@ -10182,7 +10130,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1151,
+            _index = 1144,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "4/4",
         },
@@ -10192,7 +10140,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1152,
+            _index = 1145,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10201,7 +10149,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1153,
+            _index = 1146,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10211,7 +10159,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1154,
+            _index = 1147,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10220,7 +10168,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1155,
+            _index = 1148,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10229,7 +10177,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1156,
+            _index = 1149,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10239,7 +10187,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1157,
+            _index = 1150,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             RaidIcon = 253558,
         },
@@ -10249,7 +10197,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1158,
+            _index = 1151,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10258,7 +10206,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1159,
+            _index = 1152,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10268,7 +10216,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1160,
+            _index = 1153,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10277,7 +10225,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1161,
+            _index = 1154,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10286,7 +10234,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1162,
+            _index = 1155,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10295,7 +10243,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1163,
+            _index = 1156,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/8",
         },
@@ -10305,7 +10253,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1164,
+            _index = 1157,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/8",
         },
@@ -10315,7 +10263,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1165,
+            _index = 1158,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/8",
         },
@@ -10325,7 +10273,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1166,
+            _index = 1159,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "4/8",
         },
@@ -10335,7 +10283,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1167,
+            _index = 1160,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "5/8",
         },
@@ -10345,7 +10293,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1168,
+            _index = 1161,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "6/8",
         },
@@ -10355,7 +10303,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1169,
+            _index = 1162,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "7/8",
         },
@@ -10365,7 +10313,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1170,
+            _index = 1163,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "8/8",
         },
@@ -10376,7 +10324,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 30,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1171,
+            _index = 1164,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10385,7 +10333,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1172,
+            _index = 1165,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10394,7 +10342,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1173,
+            _index = 1166,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10404,7 +10352,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1174,
+            _index = 1167,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10414,7 +10362,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1175,
+            _index = 1168,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             RaidIcon = 248125,
         },
@@ -10424,7 +10372,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1176,
+            _index = 1169,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10433,7 +10381,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1177,
+            _index = 1170,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10442,7 +10390,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1178,
+            _index = 1171,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10451,7 +10399,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1179,
+            _index = 1172,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10460,7 +10408,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1180,
+            _index = 1173,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/6",
         },
@@ -10470,7 +10418,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1181,
+            _index = 1174,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/6",
         },
@@ -10480,7 +10428,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1182,
+            _index = 1175,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "3/6",
         },
@@ -10490,7 +10438,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1183,
+            _index = 1176,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "4/6",
         },
@@ -10500,7 +10448,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1184,
+            _index = 1177,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "5/6",
         },
@@ -10510,7 +10458,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1185,
+            _index = 1178,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "6/6",
         },
@@ -10521,7 +10469,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 80,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1186,
+            _index = 1179,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10530,7 +10478,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1187,
+            _index = 1180,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10539,7 +10487,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1188,
+            _index = 1181,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10548,7 +10496,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1189,
+            _index = 1182,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10557,7 +10505,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1190,
+            _index = 1183,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10567,7 +10515,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133898 },
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1191,
+            _index = 1184,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10577,7 +10525,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1192,
+            _index = 1185,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10587,7 +10535,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1193,
+            _index = 1186,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10597,7 +10545,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1194,
+            _index = 1187,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10607,7 +10555,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1195,
+            _index = 1188,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10617,7 +10565,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 2,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1196,
+            _index = 1189,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10627,7 +10575,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1197,
+            _index = 1190,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10637,7 +10585,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 100,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1198,
+            _index = 1191,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10646,7 +10594,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1199,
+            _index = 1192,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10655,7 +10603,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1200,
+            _index = 1193,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10664,7 +10612,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1201,
+            _index = 1194,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "1/2",
         },
@@ -10674,7 +10622,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1202,
+            _index = 1195,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
             TrigText = "2/2",
         },
@@ -10685,7 +10633,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133930 },
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1203,
+            _index = 1196,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10695,7 +10643,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 133930 },
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1204,
+            _index = 1197,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10704,7 +10652,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1205,
+            _index = 1198,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10713,7 +10661,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1206,
+            _index = 1199,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10723,7 +10671,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 5,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1207,
+            _index = 1200,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10733,7 +10681,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             GossipOptionIDs = { 134053 },
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1208,
+            _index = 1201,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10743,7 +10691,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Range = 10,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1209,
+            _index = 1202,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10752,7 +10700,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1210,
+            _index = 1203,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10761,7 +10709,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1211,
+            _index = 1204,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10770,7 +10718,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             MinLevel = 80,
             SkipForLvl = 90,
-            _index = 1212,
+            _index = 1205,
             IsQuestsCompletedOnAccount = { 86930, 86898 },
         },
         {
@@ -10779,10 +10727,10 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2413,
             ExtraLineText = "MIDNIGHT_ALT_FINISH_LEVELING",
             SkipForLvl = 90,
-            _index = 1213,
+            _index = 1206,
         },
         {
-            _index = 1214,
+            _index = 1207,
             RouteCompleted = true,
         },
     },
@@ -10796,7 +10744,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Coord = { x = -7708, y = 4421.9 },
                     Zone = 2437,
                     SkipForLvl = 90,
-                    _index = 1215,
+                    _index = 1208,
                 },
             },
         },
@@ -10813,28 +10761,28 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Coord = { x = -4816.2, y = 8315.6 },
                     Zone = 2395,
                     SkipForLvl = 90,
-                    _index = 1216,
+                    _index = 1209,
                 },
                 {
                     Done = { 93372 },
                     Coord = { x = -4816.2, y = 8315.6 },
                     Zone = 2395,
                     SkipForLvl = 90,
-                    _index = 1217,
+                    _index = 1210,
                 },
                 {
                     Done = { 93386 },
                     Coord = { x = -4816.2, y = 8315.6 },
                     Zone = 2395,
                     SkipForLvl = 90,
-                    _index = 1218,
+                    _index = 1211,
                 },
                 {
                     Done = { 93385 },
                     Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2393, 52.54, 78.88),
                     Zone = 2393,
                     SkipForLvl = 90,
-                    _index = 1219,
+                    _index = 1212,
                 },
             },
         },
@@ -10847,7 +10795,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2405, 51.35, 67.6),
                     Zone = 2405,
                     SkipForLvl = 90,
-                    _index = 1220,
+                    _index = 1213,
                 },
             },
         },
@@ -10860,7 +10808,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Coord = { x = -524.2, y = -154.9 },
                     Zone = 2413,
                     SkipForLvl = 90,
-                    _index = 1221,
+                    _index = 1214,
                 },
             },
         },
@@ -10873,7 +10821,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Coord = { x = -1856.8, y = -706.7 },
                     Zone = 2413,
                     SkipForLvl = 90,
-                    _index = 1222,
+                    _index = 1215,
                 },
             },
         },
@@ -10899,7 +10847,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Coord = { x = -4614.4, y = 10085.4 },
                     IsCampaignQuest = true,
                     Zone = 2424,
-                    _index = 1223,
+                    _index = 1216,
                 },
                 {
                     Qpart = { [86733] = { 1 } },
@@ -10907,7 +10855,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Range = 5,
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1224,
+                    _index = 1217,
                 },
                 {
                     Waypoint = 86733,
@@ -10915,7 +10863,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Range = 10,
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1225,
+                    _index = 1218,
                 },
                 {
                     Waypoint = 86733,
@@ -10923,21 +10871,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Range = 10,
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1226,
+                    _index = 1219,
                 },
                 {
                     Done = { 86733 },
                     Coord = { x = -4610.2, y = 8457.2 },
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1227,
+                    _index = 1220,
                 },
                 {
                     PickUp = { 86734 },
                     Coord = { x = -4610.2, y = 8457.2 },
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1228,
+                    _index = 1221,
                 },
                 {
                     Qpart = { [86734] = { 1 } },
@@ -10945,14 +10893,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     GossipOptionIDs = { 132632 },
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1229,
+                    _index = 1222,
                 },
                 {
                     Done = { 86734 },
                     Coord = { x = -4610.2, y = 8457.2 },
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1230,
+                    _index = 1223,
                 },
                 {
                     PickUp = { 86735 },
@@ -10960,7 +10908,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Alliance",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1231,
+                    _index = 1224,
                 },
                 {
                     PickUp = { 86736 },
@@ -10968,7 +10916,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Horde",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1232,
+                    _index = 1225,
                 },
                 {
                     Qpart = { [86735] = { 7 } },
@@ -10977,7 +10925,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Alliance",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1233,
+                    _index = 1226,
                 },
                 {
                     Qpart = { [86736] = { 7 } },
@@ -10986,7 +10934,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Horde",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1234,
+                    _index = 1227,
                 },
                 {
                     Waypoint = 86736,
@@ -10995,7 +10943,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Range = 5,
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1235,
+                    _index = 1228,
                 },
                 {
                     Qpart = { [86735] = { 4 } },
@@ -11004,7 +10952,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Alliance",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1236,
+                    _index = 1229,
                 },
                 {
                     Qpart = { [86736] = { 4 } },
@@ -11013,7 +10961,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Horde",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1237,
+                    _index = 1230,
                 },
                 {
                     Waypoint = 86736,
@@ -11022,7 +10970,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Range = 5,
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1238,
+                    _index = 1231,
                 },
                 {
                     Waypoint = 86736,
@@ -11031,7 +10979,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Range = 5,
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1239,
+                    _index = 1232,
                 },
                 {
                     Qpart = { [86735] = { 1 } },
@@ -11040,7 +10988,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Alliance",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1240,
+                    _index = 1233,
                 },
                 {
                     Qpart = { [86736] = { 1 } },
@@ -11049,7 +10997,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Horde",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1241,
+                    _index = 1234,
                 },
                 {
                     Qpart = { [86735] = { 3 } },
@@ -11058,7 +11006,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Alliance",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1242,
+                    _index = 1235,
                 },
                 {
                     Qpart = { [86736] = { 3 } },
@@ -11067,13 +11015,13 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Horde",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1243,
+                    _index = 1236,
                 },
                 {
                     GetFP = 3131,
                     Coord = { x = -4766.1, y = 8440.2 },
                     Zone = 2395,
-                    _index = 1244,
+                    _index = 1237,
                 },
                 {
                     Qpart = { [86735] = { 5 } },
@@ -11081,7 +11029,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Alliance",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1245,
+                    _index = 1238,
                 },
                 {
                     Qpart = { [86736] = { 5 } },
@@ -11090,7 +11038,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Horde",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1246,
+                    _index = 1239,
                 },
                 {
                     Waypoint = 86736,
@@ -11099,7 +11047,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Range = 5,
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1247,
+                    _index = 1240,
                 },
                 {
                     Waypoint = 86736,
@@ -11108,7 +11056,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Range = 5,
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1248,
+                    _index = 1241,
                 },
                 {
                     Qpart = { [86735] = { 2 } },
@@ -11117,7 +11065,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Alliance",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1249,
+                    _index = 1242,
                 },
                 {
                     Qpart = { [86736] = { 2 } },
@@ -11126,7 +11074,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Horde",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1250,
+                    _index = 1243,
                 },
                 {
                     Waypoint = 86736,
@@ -11135,7 +11083,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Range = 5,
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1251,
+                    _index = 1244,
                 },
                 {
                     Qpart = { [86735] = { 6 } },
@@ -11144,7 +11092,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Alliance",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1252,
+                    _index = 1245,
                 },
                 {
                     Qpart = { [86736] = { 6 } },
@@ -11153,14 +11101,14 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Horde",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1253,
+                    _index = 1246,
                 },
                 {
                     GetFP = 3132,
                     Coord = { x = -5281.9, y = 8588.7 },
                     Faction = "Horde",
                     Zone = 2395,
-                    _index = 1254,
+                    _index = 1247,
                 },
                 {
                     Done = { 86735 },
@@ -11168,7 +11116,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Alliance",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1255,
+                    _index = 1248,
                 },
                 {
                     Done = { 86736 },
@@ -11176,21 +11124,21 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Faction = "Horde",
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1256,
+                    _index = 1249,
                 },
                 {
                     PickUp = { 86737 },
                     Coord = { x = -4610.2, y = 8457.2 },
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1257,
+                    _index = 1250,
                 },
                 {
                     Qpart = { [86737] = { 1 } },
                     Coord = { x = -4607.3, y = 8453.3 },
                     IsCampaignQuest = true,
                     Zone = 2395,
-                    _index = 1258,
+                    _index = 1251,
                 },
             },
         },
@@ -11203,7 +11151,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
                     Coord = { x = -4253.5, y = 7293.1 },
                     Zone = 2395,
                     IsCampaignQuest = true,
-                    _index = 1259,
+                    _index = 1252,
                 },
             },
         },
