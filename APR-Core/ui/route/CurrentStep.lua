@@ -104,7 +104,9 @@ APR:SetupMinimizeButton(CurrentStepFrameHeader, CurrentStepFrame, function()
     CurrentStepFrame_StepHolder:Hide()
     APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
     APR.currentStep:ButtonHide()
-    APR.currentStep.progressBar:Hide()
+    if APR.currentStep.progressBar then
+        APR.currentStep.progressBar:Hide()
+    end
     if APR.fillersFrame then
         APR.fillersFrame:Hide()
     end
@@ -118,7 +120,9 @@ end, function()
     -- Expand
     APR.currentStep:SetDefaultDisplay()
     APR.currentStep:ButtonShow()
-    APR.currentStep.progressBar:Show()
+    if APR.currentStep.progressBar then
+        APR.currentStep.progressBar:Show()
+    end
     if APR.fillersFrame then
         APR.fillersFrame:Show()
     end
@@ -457,6 +461,7 @@ function APR.currentStep:ProgressBar(key, total, current)
         self.progressBar.currentStep = currentStep
     else
         self.progressBar:SetValue(currentStep)
+        self.progressBar.currentStep = currentStep
         if totalSteps > 0 then
             self.progressBar.Text:SetText(currentStep .. " / " .. totalSteps)
         else
@@ -1973,14 +1978,24 @@ end
 
 function APR.currentStep:GetCurrentStepDetails()
     if not APR.ActiveRoute then return nil end
+    local playerData = APRData and APRData[APR.PlayerID] or {}
+    local currentIndex = playerData[APR.ActiveRoute]
+    local progressBar = self.progressBar
+    local displayedStep
+    if progressBar and progressBar.key == APR.ActiveRoute and type(progressBar.currentStep) == "number" then
+        displayedStep = progressBar.currentStep
+    elseif type(currentIndex) == "number" then
+        displayedStep = currentIndex - APR:CountSkippedStepsBefore(APR.ActiveRoute, currentIndex)
+    end
+
     local stepDetails = {
         extraLines = {},
         questSteps = {},
         fillerSteps = {},
         progress = {
-            index = APRData[APR.PlayerID][APR.ActiveRoute],
-            step = APR.currentStep.progressBar.currentStep,
-            total = APRData[APR.PlayerID][APR.ActiveRoute .. '-TotalSteps'],
+            index = currentIndex,
+            step = displayedStep,
+            total = playerData[APR.ActiveRoute .. '-TotalSteps'],
         }
     }
 
