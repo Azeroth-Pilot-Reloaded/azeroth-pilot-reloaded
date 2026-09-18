@@ -226,6 +226,7 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 -- Ensure the active route is set on load so the current step frame can populate without waiting
                 if routeFileName and routeFileName ~= "" then
                     APR.ActiveRoute = routeFileName
+                    if APR.XPBuffOverlay then APR.XPBuffOverlay:QueueRefresh() end
 
                     -- Trigger zone detection after reload - use longer delay to ensure quest log is fully synced
                     -- This prevents false "wrong zone" message that appears before quests are loaded
