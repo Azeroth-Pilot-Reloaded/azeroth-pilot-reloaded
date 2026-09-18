@@ -258,19 +258,23 @@ local function HasStartingZoneRouteForMap(parentMapID, prefabType)
 end
 
 local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parentMapID, suppressUpdate)
+    if not parentMapID then
+        return false
+    end
+
     local routeCandidates = {}
     local startingZonePrefabType = prefabType or APR.PREFAB_TYPES.StartingZone
 
     for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
-        if type(routeData) == "table" and routeData.label and APR:GetRouteVisibility(routeKey) ~= "hidden" then
+        if type(routeData) == "table" and routeData.label
+            and APR:GetRouteVisibility(routeKey) ~= "hidden"
+            and (routeData.mapID == parentMapID or RouteHasZoneCondition(routeData, parentMapID)) then
             local prefabEntry = GetRoutePrefabEntry(routeData, startingZonePrefabType)
             if prefabEntry then
                 tinsert(routeCandidates, {
                     routeKey = routeKey,
                     routeName = routeData.label,
                     index = prefabEntry.index,
-                    mapMatch = parentMapID and
-                        (routeData.mapID == parentMapID or RouteHasZoneCondition(routeData, parentMapID)) or false,
                 })
             end
         end
@@ -280,20 +284,7 @@ local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parent
         return false
     end
 
-    local hasMapMatchedCandidates = false
-    if parentMapID then
-        for _, candidate in ipairs(routeCandidates) do
-            if candidate.mapMatch then
-                hasMapMatchedCandidates = true
-                break
-            end
-        end
-    end
-
     table.sort(routeCandidates, function(a, b)
-        if hasMapMatchedCandidates and a.mapMatch ~= b.mapMatch then
-            return a.mapMatch and not b.mapMatch
-        end
         if a.index == b.index then
             return a.routeKey < b.routeKey
         end
@@ -303,8 +294,7 @@ local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parent
     local addedAny = false
     local addedRouteNames = {}
     for _, candidate in ipairs(routeCandidates) do
-        if (not hasMapMatchedCandidates or candidate.mapMatch)
-            and not addedRouteNames[candidate.routeName] then
+        if not addedRouteNames[candidate.routeName] then
             AddRouteToCustomPath(candidate.routeName, candidate.routeKey)
             addedRouteNames[candidate.routeName] = true
             addedAny = true
@@ -470,17 +460,17 @@ function APR.routeconfig:GetStartingZonePrefab(suppressUpdate, prefabType)
 
     local shouldResolveStartingZone = HasStartingZoneRouteForMap(parentMapID, prefabType) or isNewCharacterStartFlow
 
-    if shouldResolveStartingZone and BuildStartingZonePrefabFromRoutes(self, prefabType, parentMapID, suppressUpdate) then
-        return
-    end
-
     if shouldResolveStartingZone then
-        local routeKey = FindConditionBasedStartingRouteKey(parentMapID, parentMapID ~= nil)
-            or FindConditionBasedStartingRouteKey(parentMapID, false)
+        -- Race/class starts can share a map with generic routes and need priority.
+        local routeKey = parentMapID and FindConditionBasedStartingRouteKey(parentMapID, true)
         local routeData = routeKey and APR:GetRouteData(routeKey)
         if routeData and routeData.label then
             AddRouteToCustomPath(routeData.label, routeKey)
             self:SendCustomPathUpdate(suppressUpdate)
+            return
+        end
+
+        if BuildStartingZonePrefabFromRoutes(self, prefabType, parentMapID, suppressUpdate) then
             return
         end
     end
