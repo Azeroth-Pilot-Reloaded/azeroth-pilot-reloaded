@@ -3490,663 +3490,6 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
     }
 }
 
-APR.RouteQuestStepList["2395-legacy-of-the-amani"] = {
-    label = L["Midnight - The Curse of Ula'tek"],
-    expansion = APR.EXPANSIONS.Midnight,
-    category = APR.CATEGORIES.Campaign,
-    mapID = 2395,
-    prefab = {
-        [APR.PREFAB_TYPES.Leveling] = 31,
-        [APR.PREFAB_TYPES.AllQuests] = 91,
-        [APR.PREFAB_TYPES.Speedrun] = 31,
-    },
-    conditions = { Level = 90, InterfaceVersion = 120007 },
-    requiredRoute = { "2432-Midnight-Intro" },
-    nextRoute = { "2413-Midnight-Unlock-daily-Saltherils-Haven" },
-    steps = {
-        {
-            PickUp = { 92895 },
-            Coord = { x = -4608.7, y = 8462.2 },
-            Zone = 2395,
-            IsCampaignQuest = true,
-            _index = 1,
-        },
-        {
-            Qpart = { [92895] = { 1 } },
-            Coord = { x = -4373.6, y = 8501.9 },
-            Zone = 2395,
-            ZoneStepTrigger = { Range = 15, x = -444.9, y = -266.8 },
-            IsCampaignQuest = true,
-            _index = 2,
-        },
-        {
-            Qpart = { [92895] = { 2 } },
-            Coord = { x = -268.8, y = -159.9 },
-            Zone = 2413,
-            Range = 5,
-            IsCampaignQuest = true,
-            _index = 3,
-        },
-        {
-            Done = { 92895 },
-            Coord = { x = -268.5, y = -160 },
-            Zone = 2413,
-            IsCampaignQuest = true,
-            _index = 4,
-        },
-        {
-            PickUp = { 92899 },
-            Coord = { x = -268.5, y = -160 },
-            Zone = 2413,
-            IsCampaignQuest = true,
-            _index = 5,
-        },
-        {
-            QpartPart = { [92899] = { 1 } },
-            Coord = { x = -250.5, y = -135.2 },
-            Zone = 2413,
-            GossipOptionIDs = { 137861 },
-            IsCampaignQuest = true,
-            TrigText = "1/6",
-            _index = 6,
-        },
-        {
-            QpartPart = { [92899] = { 1 } },
-            Coord = { x = -254.7, y = -97.3 },
-            Zone = 2413,
-            GossipOptionIDs = { 137922 },
-            IsCampaignQuest = true,
-            TrigText = "2/6",
-            _index = 7,
-        },
-        {
-            QpartPart = { [92899] = { 1 } },
-            Coord = { x = -282.9, y = -102.4 },
-            Zone = 2413,
-            GossipOptionIDs = { 137843 },
-            IsCampaignQuest = true,
-            TrigText = "3/6",
-            _index = 8,
-        },
-        {
-            QpartPart = { [92899] = { 1 } },
-            Coord = { x = -324.9, y = -89.9 },
-            Zone = 2413,
-            GossipOptionIDs = { 137814 },
-            IsCampaignQuest = true,
-            TrigText = "4/6",
-            _index = 9,
-        },
-        {
-            QpartPart = { [92899] = { 1 } },
-            Coord = { x = -312.3, y = -165.1 },
-            Zone = 2413,
-            GossipOptionIDs = { 137842 },
-            IsCampaignQuest = true,
-            TrigText = "5/6",
-            _index = 10,
-        },
-        {
-            QpartPart = { [92899] = { 1 } },
-            Coord = { x = -273.8, y = -183.2 },
-            Zone = 2413,
-            GossipOptionIDs = { 137855 },
-            IsCampaignQuest = true,
-            TrigText = "6/6",
-            _index = 11,
-        },
-        {
-            Qpart = { [92899] = { 2 } },
-            Coord = { x = -268.6, y = -159.7 },
-            Zone = 2413,
-            GossipOptionIDs = { 138840 },
-            IsCampaignQuest = true,
-            _index = 12,
-        },
-        {
-            Done = { 92899 },
-            Coord = { x = -264.6, y = -147 },
-            Zone = 2413,
-            IsCampaignQuest = true,
-            _index = 13,
-        },
-        {
-            PickUp = { 92900 },
-            Coord = { x = -264.6, y = -147 },
-            Zone = 2413,
-            IsCampaignQuest = true,
-            _index = 14,
-        },
-        {
-            Qpart = { [92900] = { 3 } },
-            Coord = { x = -543.6, y = -121.7 },
-            Zone = 2413,
-            GossipOptionIDs = { 137073 },
-            IsCampaignQuest = true,
-            _index = 15,
-        },
-        {
-            Qpart = { [92900] = { 4 } },
-            Coord = { x = 643.3, y = 166.1 },
-            Zone = 2413,
-            Range = 5,
-            IsCampaignQuest = true,
-            _index = 16,
-        },
-        {
-            Done = { 92900 },
-            Coord = { x = 643.3, y = 166.1 },
-            Zone = 2413,
-            IsCampaignQuest = true,
-            _index = 17,
-        },
-        {
-            PickUp = { 92901 },
-            Coord = { x = 645.9, y = 166.3 },
-            Zone = 2413,
-            IsCampaignQuest = true,
-            _index = 18,
-        },
-        {
-            Qpart = { [92901] = { 1 } },
-            Coord = { x = 734.3, y = 118.9 },
-            Zone = 2413,
-            Range = 5,
-            IsCampaignQuest = true,
-            _index = 19,
-        },
-        {
-            Qpart = { [92901] = { 2 } },
-            Coord = { x = 876.5, y = 267.4 },
-            Zone = 2413,
-            Range = 60,
-            IsCampaignQuest = true,
-            _index = 20,
-        },
-        {
-            Qpart = { [92901] = { 3 } },
-            Coord = { x = 931, y = 313 },
-            Zone = 2413,
-            Range = 2,
-            ExtraActionB = true,
-            IsCampaignQuest = true,
-            _index = 21,
-        },
-        {
-            Done = { 92901 },
-            Coord = { x = 937.9, y = 307 },
-            Zone = 2413,
-            IsCampaignQuest = true,
-            _index = 22,
-        },
-        {
-            PickUp = { 92904 },
-            Coord = { x = 936.9, y = 303 },
-            Zone = 2413,
-            IsCampaignQuest = true,
-            _index = 23,
-        },
-        {
-            Qpart = { [92904] = { 1 } },
-            Coord = { x = 944.4, y = 312 },
-            Zone = 2413,
-            ZoneStepTrigger = { Range = 15, x = -6118.2, y = 5221.1 },
-            IsCampaignQuest = true,
-            _index = 24,
-        },
-        {
-            Qpart = { [92904] = { 2 } },
-            Coord = { x = -6114.8, y = 5300.7 },
-            Zone = 2437,
-            Range = 5,
-            IsCampaignQuest = true,
-            _index = 25,
-        },
-        {
-            Done = { 92904 },
-            Coord = { x = -6111.2, y = 5327.7 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 26,
-        },
-        {
-            PickUp = { 92907 },
-            Coord = { x = -6111.2, y = 5327.7 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 27,
-        },
-        {
-            Qpart = { [92907] = { 1 } },
-            Coord = { x = -6123.4, y = 5331.7 },
-            Zone = 2437,
-            GossipOptionIDs = { 137308 },
-            IsCampaignQuest = true,
-            _index = 28,
-        },
-        {
-            Qpart = { [92907] = { 2 } },
-            Coord = { x = -6101.3, y = 5309.2 },
-            Zone = 2437,
-            GossipOptionIDs = { 138044 },
-            IsCampaignQuest = true,
-            _index = 29,
-        },
-        {
-            Qpart = { [92907] = { 3 } },
-            Coord = { x = -6157.5, y = 5360.4 },
-            Zone = 2437,
-            GossipOptionIDs = { 137310 },
-            IsCampaignQuest = true,
-            _index = 30,
-        },
-        {
-            Qpart = { [92907] = { 4 } },
-            Coord = { x = -6141.1, y = 5346 },
-            Zone = 2437,
-            Range = 10,
-            IsCampaignQuest = true,
-            _index = 31,
-        },
-        {
-            Qpart = { [92907] = { 5 } },
-            Coord = { x = -6116.7, y = 5326.3 },
-            Zone = 2437,
-            GossipOptionIDs = { 137365 },
-            IsCampaignQuest = true,
-            _index = 32,
-        },
-        {
-            Qpart = { [92907] = { 6 } },
-            Coord = { x = -6078.4, y = 5345.5 },
-            Zone = 2437,
-            Range = 2,
-            IsCampaignQuest = true,
-            _index = 33,
-        },
-        {
-            Qpart = { [92907] = { 7 } },
-            Coord = { x = -6160.8, y = 5338.5 },
-            Zone = 2437,
-            Range = 1,
-            IsCampaignQuest = true,
-            _index = 34,
-        },
-        {
-            Qpart = { [92907] = { 8 } },
-            Coord = { x = -6119.4, y = 5326.1 },
-            Zone = 2437,
-            Range = 1,
-            IsCampaignQuest = true,
-            _index = 35,
-        },
-        {
-            Done = { 92907 },
-            Coord = { x = -6117.5, y = 5323.7 },
-            Zone = 2437,
-            _index = 36,
-        },
-        {
-            PickUp = { 92955 },
-            Coord = { x = -6117.5, y = 5323.7 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 37,
-        },
-        {
-            Done = { 92955 },
-            Coord = { x = -7132.7, y = 5982.2 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 38,
-        },
-        {
-            PickUp = { 92957, 92958 },
-            Coord = { x = -7132.7, y = 5982.2 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 39,
-        },
-        {
-            Waypoint = 92957,
-            Coord = { x = -7104.3, y = 6010.7 },
-            Zone = 2437,
-            Range = 5,
-            IsCampaignQuest = true,
-            _index = 40,
-        },
-        {
-            QpartPart = { [92957] = { 1 } },
-            Coord = { x = -7091.8, y = 6013.7 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            TrigText = "1/6",
-            _index = 41,
-        },
-        {
-            QpartPart = { [92957] = { 1 } },
-            Coord = { x = -7058.4, y = 6029.8 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            TrigText = "2/6",
-            _index = 42,
-        },
-        {
-            QpartPart = { [92957] = { 1 } },
-            Coord = { x = -7044.8, y = 6097.2 },
-            Zone = 2437,
-            Fillers = { [92958] = { 1 } },
-            IsCampaignQuest = true,
-            TrigText = "3/6",
-            _index = 43,
-        },
-        {
-            QpartPart = { [92957] = { 1 } },
-            Coord = { x = -7013.9, y = 6108 },
-            Zone = 2437,
-            Fillers = { [92958] = { 1 } },
-            IsCampaignQuest = true,
-            TrigText = "4/6",
-            _index = 44,
-        },
-        {
-            QpartPart = { [92957] = { 1 } },
-            Coord = { x = -7022.8, y = 6036 },
-            Zone = 2437,
-            Fillers = { [92958] = { 1 } },
-            IsCampaignQuest = true,
-            TrigText = "5/6",
-            _index = 45,
-        },
-        {
-            QpartPart = { [92957] = { 1 } },
-            Coord = { x = -6943.2, y = 6037.2 },
-            Zone = 2437,
-            Fillers = { [92958] = { 1 } },
-            IsCampaignQuest = true,
-            TrigText = "6/6",
-            _index = 46,
-        },
-        {
-            Qpart = { [92958] = { 1 } },
-            Coord = { x = -6999.6, y = 6068.5 },
-            Zone = 2437,
-            Range = 30,
-            IsCampaignQuest = true,
-            _index = 47,
-        },
-        {
-            Done = { 92958, 92957 },
-            Coord = { x = -7129.6, y = 5977.4 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 48,
-        },
-        {
-            PickUp = { 92952 },
-            Coord = { x = -7131.4, y = 5978.4 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 49,
-        },
-        {
-            Qpart = { [92952] = { 1 } },
-            Coord = { x = -7131.9, y = 5981.9 },
-            Zone = 2437,
-            GossipOptionIDs = { 138187 },
-            IsCampaignQuest = true,
-            _index = 50,
-        },
-        {
-            Qpart = { [92952] = { 2 } },
-            Coord = { x = -7620.1, y = 6114.4 },
-            Zone = 2437,
-            Range = 5,
-            IsCampaignQuest = true,
-            _index = 51,
-        },
-        {
-            Done = { 92952 },
-            Coord = { x = -7625.6, y = 6109.1 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 52,
-        },
-        {
-            PickUp = { 92953 },
-            Coord = { x = -7625.6, y = 6109.1 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 53,
-        },
-        {
-            PickUp = { 92951 },
-            Coord = { x = -7620.4, y = 6113.3 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 54,
-        },
-        {
-            Qpart = { [92953] = { 3 } },
-            Coord = { x = -7702.1, y = 6025.3 },
-            Zone = 2437,
-            Range = 5,
-            ExtraActionB = true,
-            _index = 55,
-        },
-        {
-            Qpart = { [92953] = { 1 } },
-            Coord = { x = -7810.3, y = 6058.9 },
-            Zone = 2437,
-            Range = 5,
-            ExtraActionB = true,
-            IsCampaignQuest = true,
-            RaidIcon = 256576,
-            _index = 56,
-        },
-        {
-            Qpart = { [92953] = { 2 } },
-            Coord = { x = -7801.8, y = 5833.3 },
-            Zone = 2437,
-            Range = 5,
-            ExtraActionB = true,
-            IsCampaignQuest = true,
-            RaidIcon = 256582,
-            _index = 57,
-        },
-        {
-            Qpart = { [92951] = { 1 } },
-            Coord = { x = -7715, y = 5962.1 },
-            Zone = 2437,
-            Range = 60,
-            IsCampaignQuest = true,
-            _index = 58,
-        },
-        {
-            Done = { 92953, 92951 },
-            Coord = { x = -7620.8, y = 6108.4 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 59,
-        },
-        {
-            PickUp = { 92954 },
-            Coord = { x = -7620.6, y = 6113.5 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 60,
-        },
-        {
-            EnterInstance = { mapID = 2501, questID = 92954 },
-            Zone = 2437,
-            ExtraLineText = "DO_DUNGEON_ON_NORMAL_NO_FOLLOWERS",
-            InstanceQuest = true,
-            IsCampaignQuest = true,
-            _index = 61,
-        },
-        {
-            Scenario = { criteriaID = 106472, criteriaIndex = 1, questID = 92954, scenarioID = 3127, stepID = 15977 },
-            Zone = 2514,
-            InstanceQuest = true,
-            IsCampaignQuest = true,
-            _index = 62,
-        },
-        {
-            Scenario = { criteriaID = 106473, criteriaIndex = 2, questID = 92954, scenarioID = 3127, stepID = 15977 },
-            Zone = 2437,
-            InstanceQuest = true,
-            IsCampaignQuest = true,
-            _index = 63,
-        },
-        {
-            Qpart = { [92954] = { 3 } },
-            Zone = 2437,
-            InstanceQuest = true,
-            IsCampaignQuest = true,
-            _index = 64,
-        },
-        {
-            Scenario = { criteriaID = 106474, criteriaIndex = 3, questID = 92954, scenarioID = 3127, stepID = 15977 },
-            Zone = 2437,
-            InstanceQuest = true,
-            IsCampaignQuest = true,
-            _index = 65,
-        },
-        {
-            LeaveInstance = { mapID = 2501, questID = 92954 },
-            Zone = 2437,
-            InstanceQuest = true,
-            IsCampaignQuest = true,
-            _index = 66,
-        },
-        {
-            Done = { 92954 },
-            Coord = { x = -7620.5, y = 6113.3 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 67,
-        },
-        {
-            PickUp = { 93010 },
-            Coord = { x = -7620.5, y = 6113.3 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 68,
-        },
-        {
-            Done = { 93010 },
-            Coord = { x = -6898.9, y = 5052.1 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 69,
-        },
-        {
-            PickUp = { 93011 },
-            Coord = { x = -6898.9, y = 5052.1 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 70,
-        },
-        {
-            Qpart = { [93011] = { 1 } },
-            Coord = { x = -6898.9, y = 5052.1 },
-            Zone = 2437,
-            GossipOptionIDs = { 138526 },
-            IsCampaignQuest = true,
-            _index = 71,
-        },
-        {
-            Qpart = { [93011] = { 2 } },
-            Coord = { x = -6826.6, y = 5052.9 },
-            Zone = 2437,
-            Range = 5,
-            IsCampaignQuest = true,
-            _index = 72,
-        },
-        {
-            Coord = { x = -6895.9, y = 5048 },
-            Zone = 2437,
-            GossipOptionIDs = { 139407 },
-            _index = 73,
-        },
-        {
-            Qpart = { [93011] = { 3 } },
-            Coord = { x = -6895.9, y = 5048 },
-            Zone = 2437,
-            Range = 5,
-            IsCampaignQuest = true,
-            _index = 74,
-        },
-        {
-            Done = { 93011 },
-            Coord = { x = -7610.9, y = 4322.5 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 75,
-        },
-        {
-            PickUp = { 93012 },
-            Coord = { x = -7610.9, y = 4322.5 },
-            Zone = 2437,
-            IsCampaignQuest = true,
-            _index = 76,
-        },
-        {
-            Qpart = { [93012] = { 1 } },
-            Coord = { x = -7560.3, y = 4221.1 },
-            Zone = 2437,
-            GossipOptionIDs = { 137417 },
-            IsCampaignQuest = true,
-            _index = 77,
-        },
-        {
-            Qpart = { [93012] = { 2 } },
-            Coord = { x = -7540.9, y = 4219.8 },
-            Zone = 2437,
-            Range = 1,
-            IsCampaignQuest = true,
-            _index = 78,
-        },
-        {
-            QpartPart = { [93012] = { 3 } },
-            Coord = { x = -7542.8, y = 4228.3 },
-            Zone = 2437,
-            ExtraActionB = true,
-            IsCampaignQuest = true,
-            TrigText = "1/3",
-            _index = 79,
-        },
-        {
-            QpartPart = { [93012] = { 3 } },
-            Coord = { x = -7549.5, y = 4210.6 },
-            Zone = 2437,
-            ExtraActionB = true,
-            IsCampaignQuest = true,
-            TrigText = "2/3",
-            _index = 80,
-        },
-        {
-            QpartPart = { [93012] = { 3 } },
-            Coord = { x = -7566.8, y = 4203.1 },
-            Zone = 2437,
-            ExtraActionB = true,
-            IsCampaignQuest = true,
-            TrigText = "3/3",
-            _index = 81,
-        },
-        {
-            Done = { 93012 },
-            Coord = { x = -7560.4, y = 4220.7 },
-            Zone = 2437,
-            _index = 82,
-        },
-        {
-            RouteCompleted = true,
-            _index = 83,
-        },
-    }
-}
-
 APR.RouteQuestStepList["2395-the-curse-of-ulatek"] = {
     label = L["Midnight - The Curse of Ula'tek"],
     expansion = APR.EXPANSIONS.Midnight,
@@ -4157,7 +3500,7 @@ APR.RouteQuestStepList["2395-the-curse-of-ulatek"] = {
         [APR.PREFAB_TYPES.AllQuests] = 91,
         [APR.PREFAB_TYPES.Speedrun] = 31,
     },
-    conditions = { Level = 90, InterfaceVersion = 120100 },
+    conditions = { Level = 90 },
     requiredRoute = { "2432-Midnight-Intro" },
     nextRoute = {},
     steps = {
@@ -6653,6 +5996,1147 @@ APR.RouteQuestStepList["2395-the-curse-of-ulatek"] = {
             _index = 320,
         },
     }
+}
+
+APR.RouteQuestStepList["2395-the-propose-of-Tomorrow"] = {
+    label = L["Midnight - The Propose of Tomorrow"],
+    expansion = APR.EXPANSIONS.Midnight,
+    category = APR.CATEGORIES.Campaign,
+    mapID = 2393,
+    prefab = {
+        [APR.PREFAB_TYPES.Leveling] = 32,
+        [APR.PREFAB_TYPES.AllQuests] = 93,
+        [APR.PREFAB_TYPES.Speedrun] = 32,
+    },
+    conditions = { Level = 90, InterfaceVersion = 120105 },
+    steps = {
+        {
+            PickUp = {
+                95533,
+            },
+            Coord = {
+                x = -4610.3,
+                y = 8457.4,
+            },
+            Zone = 2393,
+            IsCampaignQuest = true,
+            _index = 1,
+        },
+        {
+            Qpart = {
+                [95533] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -4638.5,
+                y = 6920.6,
+            },
+            Zone = 2395,
+            GossipOptionIDs = {
+                139393,
+            },
+            IsCampaignQuest = true,
+            _index = 2,
+        },
+        {
+            Qpart = {
+                [95533] = {
+                    2,
+                },
+            },
+            Coord = {
+                x = -4365.2,
+                y = 7845.6,
+            },
+            Zone = 2395,
+            GossipOptionIDs = {
+                139397,
+            },
+            IsCampaignQuest = true,
+            _index = 3,
+        },
+        {
+            Waypoint = 95533,
+            Coord = {
+                x = -4239.4,
+                y = 8137.7,
+            },
+            Zone = 2393,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 4,
+        },
+        {
+            Qpart = {
+                [95533] = {
+                    3,
+                },
+            },
+            Coord = {
+                x = -4224.1,
+                y = 8119.5,
+            },
+            Zone = 2393,
+            Range = 1,
+            IsCampaignQuest = true,
+            _index = 5,
+        },
+        {
+            Qpart = {
+                [95533] = {
+                    4,
+                },
+            },
+            Coord = {
+                x = -4219.4,
+                y = 8118.5,
+            },
+            Zone = 2393,
+            GossipOptionIDs = {
+                139162,
+            },
+            IsCampaignQuest = true,
+            _index = 6,
+        },
+        {
+            Scenario = {
+                criteriaID = 113497,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 17043,
+            },
+            Coord = {
+                x = -4244.8,
+                y = 8140.4,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            _index = 7,
+        },
+        {
+            Scenario = {
+                criteriaID = 113263,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 16877,
+            },
+            Coord = {
+                x = -4306.2,
+                y = 8155.1,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            TrigText = "1/7",
+            _index = 8,
+        },
+        {
+            Scenario = {
+                criteriaID = 113263,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 16877,
+            },
+            Coord = {
+                x = -4322.4,
+                y = 8245.4,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            TrigText = "2/7",
+            _index = 9,
+        },
+        {
+            Scenario = {
+                criteriaID = 113263,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 16877,
+            },
+            Coord = {
+                x = -4322.8,
+                y = 8278.6,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            TrigText = "3/7",
+            _index = 10,
+        },
+        {
+            Scenario = {
+                criteriaID = 113263,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 16877,
+            },
+            Coord = {
+                x = -4358.2,
+                y = 8274.2,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            TrigText = "4/7",
+            _index = 11,
+        },
+        {
+            Scenario = {
+                criteriaID = 113263,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 16877,
+            },
+            Coord = {
+                x = -4397.3,
+                y = 8259.3,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            TrigText = "5/7",
+            _index = 12,
+        },
+        {
+            Scenario = {
+                criteriaID = 113263,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 16877,
+            },
+            Coord = {
+                x = -4424,
+                y = 8232.5,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            TrigText = "6/7",
+            _index = 13,
+        },
+        {
+            Scenario = {
+                criteriaID = 113263,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 16877,
+            },
+            Coord = {
+                x = -4464.8,
+                y = 8224.2,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            _index = 14,
+        },
+        {
+            Scenario = {
+                criteriaID = 113513,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 16890,
+            },
+            Coord = {
+                x = -4567.7,
+                y = 8220.9,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            _index = 15,
+        },
+        {
+            Scenario = {
+                criteriaID = 113264,
+                criteriaIndex = 1,
+                questID = 95533,
+                scenarioID = 3361,
+                stepID = 16891,
+            },
+            Coord = {
+                x = -4615.8,
+                y = 8088.2,
+            },
+            Zone = 2605,
+            Range = 5,
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            _index = 16,
+        },
+        {
+            Qpart = {
+                [95533] = {
+                    5,
+                },
+            },
+            Coord = {
+                x = -4617.3,
+                y = 8095.1,
+            },
+            Zone = 2605,
+            GossipOptionIDs = {
+                139182,
+            },
+            InstanceQuest = true,
+            IsCampaignQuest = true,
+            _index = 17,
+        },
+        {
+            Done = {
+                95533,
+            },
+            Coord = {
+                x = -4610.5,
+                y = 8457.3,
+            },
+            Zone = 2393,
+            IsCampaignQuest = true,
+            _index = 18,
+        },
+        {
+            PickUp = {
+                95187,
+            },
+            Coord = {
+                x = -4610.5,
+                y = 8457.3,
+            },
+            Zone = 2393,
+            IsCampaignQuest = true,
+            _index = 19,
+        },
+        {
+            Qpart = {
+                [95187] = {
+                    2,
+                },
+            },
+            Coord = {
+                x = -4438.1,
+                y = 8271.2,
+            },
+            Zone = 2393,
+            GossipOptionIDs = {
+                142260,
+            },
+            IsCampaignQuest = true,
+            _index = 20,
+        },
+        {
+            Qpart = {
+                [95187] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -4430.9,
+                y = 8274.3,
+            },
+            Zone = 2393,
+            GossipOptionIDs = {
+                140062,
+                140769,
+            },
+            IsCampaignQuest = true,
+            _index = 21,
+        },
+        {
+            Done = {
+                95187,
+            },
+            Coord = {
+                x = -5532,
+                y = 5055.9,
+            },
+            Zone = 2395,
+            IsCampaignQuest = true,
+            _index = 22,
+        },
+        {
+            PickUp = {
+                95190,
+                95192,
+            },
+            Coord = {
+                x = -5532,
+                y = 5055.9,
+            },
+            Zone = 2395,
+            IsCampaignQuest = true,
+            _index = 23,
+        },
+        {
+            PickUp = {
+                95191,
+            },
+            Coord = {
+                x = -5532.6,
+                y = 5052.1,
+            },
+            Zone = 2395,
+            IsCampaignQuest = true,
+            _index = 24,
+        },
+        {
+            Qpart = {
+                [95190] = {
+                    3,
+                },
+            },
+            Coord = {
+                x = -5550.1,
+                y = 4911.3,
+            },
+            Zone = 2395,
+            GossipOptionIDs = {
+                139158,
+            },
+            IsCampaignQuest = true,
+            _index = 25,
+        },
+        {
+            Qpart = {
+                [95190] = {
+                    2,
+                },
+            },
+            Coord = {
+                x = -5529.2,
+                y = 5116.3,
+            },
+            Zone = 2395,
+            GossipOptionIDs = {
+                139159,
+            },
+            IsCampaignQuest = true,
+            _index = 26,
+        },
+        {
+            Qpart = {
+                [95190] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -5591.6,
+                y = 5090.8,
+            },
+            Zone = 2395,
+            GossipOptionIDs = {
+                139157,
+            },
+            IsCampaignQuest = true,
+            _index = 27,
+        },
+        {
+            Qpart = {
+                [95191] = {
+                    1,
+                    2,
+                    3,
+                },
+                [95192] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -5609.6,
+                y = 5052.4,
+            },
+            Zone = 2395,
+            Range = 60,
+            IsCampaignQuest = true,
+            _index = 28,
+        },
+        {
+            Done = {
+                95190,
+                95192,
+            },
+            Coord = {
+                x = -5734.7,
+                y = 5052.7,
+            },
+            Zone = 2395,
+            IsCampaignQuest = true,
+            _index = 29,
+        },
+        {
+            Done = {
+                95191,
+            },
+            Coord = {
+                x = -5739.5,
+                y = 5052.4,
+            },
+            Zone = 2395,
+            IsCampaignQuest = true,
+            _index = 30,
+        },
+        {
+            PickUp = {
+                95193,
+            },
+            Coord = {
+                x = -5739.5,
+                y = 5052.4,
+            },
+            Zone = 2395,
+            GossipOptionIDs = {
+                138981,
+            },
+            IsCampaignQuest = true,
+            _index = 31,
+        },
+        {
+            Qpart = {
+                [95193] = {
+                    1,
+                    2,
+                },
+            },
+            Coord = {
+                x = -5739.5,
+                y = 5052.4,
+            },
+            Zone = 2395,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 32,
+        },
+        {
+            Done = {
+                95193,
+            },
+            Coord = {
+                x = -5734.8,
+                y = 5052.4,
+            },
+            Zone = 2395,
+            ETA = 35,
+            IsCampaignQuest = true,
+            _index = 33,
+        },
+        {
+            PickUp = {
+                95197,
+            },
+            Coord = {
+                x = -5734.8,
+                y = 5052.4,
+            },
+            Zone = 2395,
+            IsCampaignQuest = true,
+            _index = 34,
+        },
+        {
+            Done = {
+                95197,
+            },
+            Coord = {
+                x = -6945.2,
+                y = 7234.2,
+            },
+            Zone = 2437,
+            IsCampaignQuest = true,
+            _index = 35,
+        },
+        {
+            PickUp = {
+                95199,
+            },
+            Coord = {
+                x = -6945.2,
+                y = 7234.2,
+            },
+            Zone = 2437,
+            IsCampaignQuest = true,
+            _index = 36,
+        },
+        {
+            PickUp = {
+                95200,
+            },
+            Coord = {
+                x = -6944,
+                y = 7230.7,
+            },
+            Zone = 2437,
+            IsCampaignQuest = true,
+            _index = 37,
+        },
+        {
+            Qpart = {
+                [95199] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -6819.5,
+                y = 7259.8,
+            },
+            Zone = 2437,
+            Range = 2,
+            IsCampaignQuest = true,
+            _index = 38,
+        },
+        {
+            Qpart = {
+                [95199] = {
+                    3,
+                },
+            },
+            Coord = {
+                x = -6753.4,
+                y = 7304.5,
+            },
+            Zone = 2437,
+            Range = 2,
+            IsCampaignQuest = true,
+            _index = 39,
+        },
+        {
+            PickUp = {
+                98831,
+            },
+            Coord = {
+                x = -6728,
+                y = 7290.2,
+            },
+            Zone = 2437,
+            IsCampaignQuest = true,
+            _index = 40,
+        },
+        {
+            Qpart = {
+                [95199] = {
+                    4,
+                },
+            },
+            Coord = {
+                x = -6701.6,
+                y = 7251.5,
+            },
+            Zone = 2437,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 41,
+        },
+        {
+            Qpart = {
+                [95199] = {
+                    2,
+                },
+            },
+            Coord = {
+                x = -6618.8,
+                y = 7365.9,
+            },
+            Zone = 2437,
+            Range = 2,
+            IsCampaignQuest = true,
+            _index = 42,
+        },
+        {
+            Qpart = {
+                [95200] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -6656.3,
+                y = 7368.3,
+            },
+            Zone = 2437,
+            Range = 60,
+            IsCampaignQuest = true,
+            _index = 43,
+        },
+        {
+            Qpart = {
+                [95200] = {
+                    2,
+                },
+            },
+            Coord = {
+                x = -6817,
+                y = 7252,
+            },
+            Zone = 2437,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 44,
+        },
+        {
+            Done = {
+                95200,
+            },
+            Coord = {
+                x = -6840.9,
+                y = 7240.3,
+            },
+            Zone = 2437,
+            IsCampaignQuest = true,
+            _index = 45,
+        },
+        {
+            Done = {
+                95199,
+            },
+            Coord = {
+                x = -6847.8,
+                y = 7246.8,
+            },
+            Zone = 2437,
+            IsCampaignQuest = true,
+            _index = 46,
+        },
+        {
+            PickUp = {
+                95203,
+            },
+            Coord = {
+                x = -6847.8,
+                y = 7246.8,
+            },
+            Zone = 2437,
+            GossipOptionIDs = {
+                139857,
+            },
+            IsCampaignQuest = true,
+            _index = 47,
+        },
+        {
+            Qpart = {
+                [95203] = {
+                    1,
+                    2,
+                },
+            },
+            Coord = {
+                x = -6847.8,
+                y = 7246.8,
+            },
+            Zone = 2437,
+            Range = 1,
+            IsCampaignQuest = true,
+            _index = 48,
+        },
+        {
+            Done = {
+                95203,
+            },
+            Coord = {
+                x = -9326.4,
+                y = 5411.2,
+            },
+            Zone = 2512,
+            IsCampaignQuest = true,
+            _index = 49,
+        },
+        {
+            PickUp = {
+                95208,
+            },
+            Coord = {
+                x = -9326.4,
+                y = 5411.2,
+            },
+            Zone = 2512,
+            IsCampaignQuest = true,
+            _index = 50,
+        },
+        {
+            PickUp = {
+                95206,
+            },
+            Coord = {
+                x = -9331.7,
+                y = 5421.1,
+            },
+            Zone = 2512,
+            IsCampaignQuest = true,
+            _index = 51,
+        },
+        {
+            Qpart = {
+                [95208] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -9438.2,
+                y = 5271.8,
+            },
+            Zone = 2512,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 52,
+        },
+        {
+            Qpart = {
+                [95208] = {
+                    4,
+                },
+            },
+            Coord = {
+                x = -9274,
+                y = 5055.3,
+            },
+            Zone = 2512,
+            Fillers = {
+                [95206] = {
+                    1,
+                },
+            },
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 53,
+        },
+        {
+            Qpart = {
+                [95208] = {
+                    3,
+                },
+            },
+            Coord = {
+                x = -9557.6,
+                y = 4900.1,
+            },
+            Zone = 2512,
+            Fillers = {
+                [95206] = {
+                    1,
+                },
+            },
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 54,
+        },
+        {
+            QpartPart = {
+                [95206] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -9489.7,
+                y = 5052.8,
+            },
+            Zone = 2512,
+            Range = 100,
+            IsCampaignQuest = true,
+            TrigText = "92%",
+            _index = 55,
+        },
+        {
+            Qpart = {
+                [95208] = {
+                    2,
+                },
+            },
+            Coord = {
+                x = -9722.6,
+                y = 5170.1,
+            },
+            Zone = 2512,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 56,
+        },
+        {
+            Qpart = {
+                [95206] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -9489.7,
+                y = 5052.8,
+            },
+            Zone = 2512,
+            Range = 100,
+            IsCampaignQuest = true,
+            _index = 57,
+        },
+        {
+            Done = {
+                95208,
+                95206,
+            },
+            Coord = {
+                x = -9672.2,
+                y = 5043.7,
+            },
+            Zone = 2512,
+            IsCampaignQuest = true,
+            _index = 58,
+        },
+        {
+            PickUp = {
+                95209,
+            },
+            Coord = {
+                x = -9669.4,
+                y = 5051.9,
+            },
+            Zone = 2512,
+            IsCampaignQuest = true,
+            _index = 59,
+        },
+        {
+            Qpart = {
+                [95209] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -9812.3,
+                y = 5051.3,
+            },
+            Zone = 2512,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 60,
+        },
+        {
+            Qpart = {
+                [95209] = {
+                    2,
+                },
+            },
+            Coord = {
+                x = -9812.1,
+                y = 5051,
+            },
+            Zone = 2512,
+            Button = {
+                ["95209-2"] = 270342,
+            },
+            IsCampaignQuest = true,
+            _index = 61,
+        },
+        {
+            Done = {
+                95209,
+            },
+            Coord = {
+                x = -9958.6,
+                y = 5052.2,
+            },
+            Zone = 2512,
+            _index = 62,
+        },
+        {
+            PickUp = {
+                95210,
+            },
+            Coord = {
+                x = -9968.3,
+                y = 5057.4,
+            },
+            Zone = 2512,
+            IsCampaignQuest = true,
+            _index = 63,
+        },
+        {
+            Waypoint = 95210,
+            Coord = {
+                x = -10108.6,
+                y = 5052,
+            },
+            Zone = 2512,
+            Range = 15,
+            IsCampaignQuest = true,
+            _index = 64,
+        },
+        {
+            Waypoint = 95210,
+            Coord = {
+                x = -10138.4,
+                y = 4937.8,
+            },
+            Zone = 2512,
+            Range = 15,
+            IsCampaignQuest = true,
+            _index = 65,
+        },
+        {
+            Waypoint = 95210,
+            Coord = {
+                x = -10253.5,
+                y = 4499.5,
+            },
+            Zone = 2509,
+            Range = 15,
+            IsCampaignQuest = true,
+            _index = 66,
+        },
+        {
+            Waypoint = 95210,
+            Coord = {
+                x = -10316.6,
+                y = 4573.7,
+            },
+            Zone = 2509,
+            Range = 15,
+            IsCampaignQuest = true,
+            _index = 67,
+        },
+        {
+            Qpart = {
+                [95210] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -10399,
+                y = 4694.9,
+            },
+            Zone = 2509,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 68,
+        },
+        {
+            Qpart = {
+                [95210] = {
+                    2,
+                },
+            },
+            Coord = {
+                x = -10402.9,
+                y = 5188.6,
+            },
+            Zone = 2509,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 69,
+        },
+        {
+            Qpart = {
+                [95210] = {
+                    3,
+                },
+            },
+            Coord = {
+                x = -10458.6,
+                y = 5192.7,
+            },
+            Zone = 2509,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 70,
+        },
+        {
+            Qpart = {
+                [95210] = {
+                    4,
+                },
+            },
+            Coord = {
+                x = -10609.6,
+                y = 5453.8,
+            },
+            Zone = 2509,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 71,
+        },
+        {
+            Qpart = {
+                [95210] = {
+                    5,
+                },
+            },
+            Coord = {
+                x = -10462.9,
+                y = 5641.1,
+            },
+            Zone = 2509,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 72,
+        },
+        {
+            Done = {
+                95210,
+            },
+            Coord = {
+                x = -10645.7,
+                y = 5643,
+            },
+            Zone = 2509,
+            IsCampaignQuest = true,
+            _index = 73,
+        },
+        {
+            PickUp = {
+                96707,
+            },
+            Coord = {
+                x = -10645.7,
+                y = 5643,
+            },
+            Zone = 2509,
+            IsCampaignQuest = true,
+            _index = 74,
+        },
+        {
+            Qpart = {
+                [96707] = {
+                    1,
+                },
+            },
+            Coord = {
+                x = -10576.8,
+                y = 5938.8,
+            },
+            Zone = 2509,
+            GossipOptionIDs = {
+                139370,
+            },
+            IsCampaignQuest = true,
+            _index = 75,
+        },
+        {
+            Qpart = {
+                [96707] = {
+                    2,
+                },
+            },
+            Coord = {
+                x = -10576.8,
+                y = 5938.8,
+            },
+            Zone = 2509,
+            Range = 5,
+            IsCampaignQuest = true,
+            _index = 76,
+        },
+    },
 }
 
 ---------------------------------------------------------------------------------------
