@@ -4,8 +4,12 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
     label = L["10-70 route by EclipseGlaives"],
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
+    prefab = {
+        [APR.PREFAB_TYPES.StartingZone] = 10,
+    },
+    autoStartOnMap = true,
     mapID = 84,
-    conditions = { Faction = "Alliance" },
+    conditions = { Level = 10, Faction = "Alliance" },
     nextRoute = { "81-TWW-Intro" },
     steps = {
         {
@@ -15,7 +19,6 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
             ExtraLineText = "SWITCH_TO_CHROMIE",
             ExtraLineText2 = "SKYRIDING_HIGHLY_RECOMMENDED",
             GossipOptionIDs = { 51901, 51902 },
-            Faction = "Alliance",
             Zone = 84,
             _index = 1,
         },
