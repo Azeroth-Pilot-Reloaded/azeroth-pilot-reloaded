@@ -1049,12 +1049,7 @@ local function UpdateStepOnce()
                 APR:UpdateNextStep()
                 return
             else
-                local _, factionID = APR:GetReputationRequirement(step.Reputation)
-                APR.currentStep:AddQuestSteps(
-                    "REPUTATION-" .. tostring(factionID or "UNKNOWN"),
-                    APR:GetReputationStepText(step.Reputation),
-                    "Reputation"
-                )
+                APR.currentStep:AddReputationStep(step.Reputation)
             end
         end
         if step.ResetRoute then

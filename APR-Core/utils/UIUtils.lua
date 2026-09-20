@@ -674,7 +674,7 @@ function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, ba
     self:RegisterFontString(font, textScope or "general", {
         role = role,
         onApplied = function(fontString)
-            container:SetHeight(fontString:GetStringHeight() + 10)
+            container:SetHeight(fontString:GetStringHeight() + 10 + (container.extraContentHeight or 0))
         end,
     })
 
