@@ -95,10 +95,11 @@ end
 
 local function HasRouteForExpansionAndPrefab(expansionName, prefabType)
     for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
+        local entry = GetRoutePrefabEntry(routeData, prefabType)
         if type(routeData) == "table"
             and routeData.expansion == expansionName
             and routeData.label
-            and GetRoutePrefabEntry(routeData, prefabType)
+            and entry and APR:AreConditionalFiltersMet(entry.conditions)
             and APR:GetRouteVisibility(routeKey) ~= "hidden" then
             return true
         end
@@ -159,7 +160,8 @@ local function BuildExpansionPrefabFromRoutes(routeConfig, expansionName, prefab
     for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
         if type(routeData) == "table" and routeData.expansion == expansionName and routeData.label then
             local prefabEntry = GetRoutePrefabEntry(routeData, prefabType)
-            if prefabEntry and APR:GetRouteVisibility(routeKey) ~= "hidden" then
+            if prefabEntry and APR:GetRouteVisibility(routeKey) ~= "hidden"
+                and APR:AreConditionalFiltersMet(prefabEntry.conditions) then
                 tinsert(routeCandidates, {
                     routeKey = routeKey,
                     routeName = routeData.label,
@@ -353,6 +355,9 @@ local function FindConditionBasedStartingRouteKey(parentMapID, requireMapMatch)
 end
 
 function APR.routeconfig:GetSpeedRunPrefab()
+    if APR:GetGameVersion() == "forever" then
+        return self:BuildLevelingPrefab(APR.EXPANSIONS.Forever)
+    end
     self._isBuildingSpeedrunPrefab = true
 
     self:GetStartingZonePrefab()
@@ -411,7 +416,7 @@ function APR.routeconfig:BuildLevelingPrefab(expansion)
     end
 
     APRCustomPath[APR.PlayerID] = {}
-    self:GetStartingZonePrefab(true)
+    if expansion ~= APR.EXPANSIONS.Forever then self:GetStartingZonePrefab(true) end
 
     if not BuildExpansionPrefabFromRoutes(self, expansion, definition.prefabType, true) then
         APR.questionDialog:CreateMessagePopup(definition.unavailableMessage, OKAY)
