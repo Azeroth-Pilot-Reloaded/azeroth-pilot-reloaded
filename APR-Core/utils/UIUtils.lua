@@ -410,7 +410,7 @@ end
 function APR:ShouldHideFrames()
     return not self.settings.profile.currentStepShow or
         not self.settings.profile.enableAddon or
-        C_PetBattles.IsInBattle() or
+        APR:IsPetBattleActive() or
         not self:IsInstanceWithUI()
 end
 

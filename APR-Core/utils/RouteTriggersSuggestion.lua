@@ -104,7 +104,7 @@ function APR:InitRouteTriggersSuggestion()
 
     for i = 1, #routeKeys do
         local routeKey = routeKeys[i]
-        local routeData = APR.RouteQuestStepList[routeKey]
+        local routeData = APR:GetRouteData(routeKey)
         if not (type(routeData) == "table" and (APR:IsDelveRoute(routeKey) or routeData.temporary or routeData.hiddenFromSelection)) then
             local stepList = routeData and routeData.steps
             local skippedSteps = 0

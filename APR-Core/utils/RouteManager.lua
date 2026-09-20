@@ -16,7 +16,22 @@ function APR:GetRouteData(routeKey)
     if not routeKey then return nil end
     local routeData = self.RouteQuestStepList[routeKey]
     if type(routeData) ~= "table" then return nil end
+    if not self:IsRouteCompatibleWithClient(routeData) then return nil end
     return routeData
+end
+
+--- Packaging selects built-in route files. This also protects unpackaged checkouts
+--- and saved custom routes copied between clients, before soft visibility filters.
+function APR:IsRouteCompatibleWithClient(routeData)
+    local gameVersion = routeData.gameVersion
+    if not gameVersion and routeData.expansion then
+        if routeData.expansion == self.EXPANSIONS.Forever then
+            gameVersion = "forever"
+        elseif routeData.expansion ~= self.EXPANSIONS.Custom then
+            gameVersion = "retail"
+        end
+    end
+    return not gameVersion or gameVersion == self:GetGameVersion()
 end
 
 local function FlattenScenarioBlocks(blocks, scenarioID)

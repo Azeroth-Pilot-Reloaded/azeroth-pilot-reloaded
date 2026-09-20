@@ -1,5 +1,17 @@
 # Route performance checks
 
+Client packaging and visibility checks:
+
+```text
+lua tools/validation/client_compatibility_test.lua
+python tools/validation/check_package.py PATH_TO_UNPACKED_APR
+```
+
+The package check expects a single release containing the generated Mainline and
+Camelot TOCs. It verifies separate route manifests and exclusion of local tooling.
+The Lua check covers hidden incompatible routes, saved imports, prefab popups and
+missing Retail APIs/events. These mocks do not replace an in-game Forever smoke test.
+
 Run the focused regressions from the repository root with Lua 5.1:
 
 ```text
@@ -57,6 +69,10 @@ locally maintained `docs/routes/2393-Midnight-Speedrun-alt-quests.csv` snapshot 
 present, it also audits quest prerequisites and objective order against that file.
 Fresh checkouts skip only this snapshot audit. The performance-only option skips the
 route-specific checks entirely.
+
+`xp_requirements_test.lua` checks absolute XP offsets through the existing level
+resolver: exact boundaries, client-specific XP totals, level filters, display and
+missing XP data. It runs alongside the client compatibility checks in the runner.
 
 ## In-game capture
 

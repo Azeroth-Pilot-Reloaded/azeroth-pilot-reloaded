@@ -34,7 +34,7 @@ local resizeButton
 
 local function isFrameSuppressed()
     return not APR.settings.profile.showQuestOrderList or not APR.settings.profile.enableAddon or
-        C_PetBattles.IsInBattle() or not APR:IsInstanceWithUI()
+        APR:IsPetBattleActive() or not APR:IsInstanceWithUI()
 end
 
 local function canRenderSteps()

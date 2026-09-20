@@ -57,6 +57,7 @@ local PREFAB_POPUP_DEFINITIONS = {
         description = L["LEVELING_DESC"],
         unavailableMessage = L["ROUTE_NOT_AVAILABLE_YET"],
         expansions = {
+            APR.EXPANSIONS.Forever,
             APR.EXPANSIONS.TheBurningCrusade,
             APR.EXPANSIONS.WarlordsOfDraenor,
             APR.EXPANSIONS.BattleForAzeroth,
@@ -93,11 +94,12 @@ local function GetRoutePrefabEntry(routeData, prefabType)
 end
 
 local function HasRouteForExpansionAndPrefab(expansionName, prefabType)
-    for _, routeData in pairs(APR.RouteQuestStepList or {}) do
+    for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
         if type(routeData) == "table"
             and routeData.expansion == expansionName
             and routeData.label
-            and GetRoutePrefabEntry(routeData, prefabType) then
+            and GetRoutePrefabEntry(routeData, prefabType)
+            and APR:GetRouteVisibility(routeKey) ~= "hidden" then
             return true
         end
     end
@@ -195,7 +197,8 @@ local function BuildPrefabPopupOptions(definition)
         local requiredLevel = definition.requiredLevels and definition.requiredLevels[expansionName]
         local isLevelLocked = requiredLevel and APR.Level < requiredLevel
 
-        if definition.showUnavailable or hasRoute then
+        local compatible = APR:IsRouteCompatibleWithClient({ expansion = expansionName })
+        if compatible and (definition.showUnavailable or hasRoute) then
             local option = {
                 key = expansionName,
                 label = GetExpansionDisplayName(expansionName),
@@ -479,8 +482,10 @@ function APR.routeconfig:GetStartingZonePrefab(suppressUpdate, prefabType)
 end
 
 function APR.routeconfig:GetPlayerSpecRoute(prefix)
-    local routeKey = prefix .. " - " .. APR:GetClassSpecName()
-    if APR.RouteQuestStepList[routeKey] then
+    local specName = APR:GetClassSpecName()
+    if not specName then return end
+    local routeKey = prefix .. " - " .. specName
+    if APR:GetRouteVisibility(routeKey) ~= "hidden" then
         AddRouteToCustomPath(L[routeKey])
     end
 end

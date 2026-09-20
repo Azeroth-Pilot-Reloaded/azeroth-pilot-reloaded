@@ -49,7 +49,8 @@ end
 
 local function GetActionableBonuses()
     local actionable = {}
-    if UnitLevel("player") >= 20 and not C_PvP.IsWarModeActive() and not C_PvP.IsWarModeDesired() and
+    if C_PvP and C_PvP.IsWarModeActive and C_PvP.IsWarModeDesired and C_PvP.CanToggleWarModeInArea and
+        C_PvP.CanToggleWarMode and UnitLevel("player") >= 20 and not C_PvP.IsWarModeActive() and not C_PvP.IsWarModeDesired() and
         overlay:IsBonusEnabled("WarMode") and C_PvP.CanToggleWarModeInArea() and C_PvP.CanToggleWarMode(true) then
         actionable.WarMode = true
     end
@@ -173,8 +174,8 @@ function overlay:Refresh()
     end
     frame:SetBackdropColor(unpack(profile.currentStepbackgroundColorAlpha))
     for _, row in pairs(rows) do row:Hide() end
-    if not profile.enableAddon or not APR.ActiveRoute or profile.showXPBuffOverlay == false or C_PetBattles.IsInBattle() or
-        UnitLevel("player") >= GetMaxLevelForPlayerExpansion() then
+    if not profile.enableAddon or not APR.ActiveRoute or profile.showXPBuffOverlay == false or APR:IsPetBattleActive() or
+        UnitLevel("player") >= APR:GetPlayerMaxLevel() then
         frame:Hide()
         return
     end
@@ -205,7 +206,8 @@ function overlay:Refresh()
         row:Show()
         count = count + 1
     end
-    if not C_PvP.IsWarModeActive() and not C_PvP.IsWarModeDesired() and
+    if C_PvP and C_PvP.IsWarModeActive and C_PvP.IsWarModeDesired and
+        not C_PvP.IsWarModeActive() and not C_PvP.IsWarModeDesired() and
         UnitLevel("player") >= 20 then
         ShowRow("WarMode", nil, L["TURN_ON_WARMODE"], "WarMode")
     end

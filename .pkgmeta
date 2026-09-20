@@ -1,4 +1,5 @@
 package-as: APR
+enable-toc-creation: yes
 
 required-dependencies:
   - libtaxidata

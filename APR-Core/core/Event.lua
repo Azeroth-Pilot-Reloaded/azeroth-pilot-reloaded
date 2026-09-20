@@ -87,6 +87,16 @@ local lastIsInstanceWithUI = nil
 ---------------------------------------------------------------------------------------
 
 function APR.event:MyRegisterEvent()
+    local function RegisterSupportedEvent(container, event)
+        if C_EventUtils and C_EventUtils.IsEventValid then
+            if C_EventUtils.IsEventValid(event) then
+                container:RegisterEvent(event)
+            end
+        else
+            -- Older clients throw for events belonging to another game family.
+            pcall(container.RegisterEvent, container, event)
+        end
+    end
     for tag, event in pairs(events) do
         local container = self.framePool[tag] or CreateFrame("Frame")
         container.tag = tag
@@ -96,11 +106,11 @@ function APR.event:MyRegisterEvent()
         self.framePool[tag] = container
 
         if type(event) == "string" then
-            container:RegisterEvent(event)
+            RegisterSupportedEvent(container, event)
             container:SetScript("OnEvent", self.EventHandler)
         elseif type(event) == "table" then
             for _, e in ipairs(event) do
-                container:RegisterEvent(e)
+                RegisterSupportedEvent(container, e)
                 container:SetScript("OnEvent", self.EventHandler)
             end
         end

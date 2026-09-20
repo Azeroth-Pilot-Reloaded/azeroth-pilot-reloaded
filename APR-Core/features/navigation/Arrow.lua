@@ -65,7 +65,7 @@ local function ShouldShowArrow()
     if not APR.settings.profile.showArrow then return false end
     if not APR.Arrow.Active then return false end
     if APR.Arrow.x == 0 then return false end
-    if C_PetBattles.IsInBattle() then return false end
+    if APR:IsPetBattleActive() then return false end
     if not APR:IsInstanceWithUI() then return false end
     return true
 end

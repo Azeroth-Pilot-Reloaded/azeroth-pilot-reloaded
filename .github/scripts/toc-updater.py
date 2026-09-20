@@ -24,6 +24,10 @@ X_INTERFACE_LINE_PATTERN = re.compile(
     r"^(?P<prefix>## X-Interface:[ \t]*)(?P<value>[^\r\n]*)(?P<ending>\r?\n|$)",
     re.MULTILINE,
 )
+RETAIL_INTERFACE_LINE_PATTERN = re.compile(
+    r"^(?P<prefix>## Interface-Retail:[ \t]*)(?P<value>[^\r\n]*)(?P<ending>\r?\n|$)",
+    re.MULTILINE,
+)
 
 LIVE_PRODUCTS = ("wow",)
 PTR_PRODUCTS = ("wowt", "wowxptr")
@@ -128,10 +132,14 @@ def update_toc_content(content: str, discovered: Iterable[int]) -> str:
     interface_value = ", ".join(str(version) for version in sorted(merged))
 
     # Replace the later match first so offsets for the earlier one remain valid.
-    replacements = (
+    replacements = [
         (interface_match, interface_value),
         (x_interface_match, str(max(merged))),
-    )
+    ]
+    if RETAIL_INTERFACE_LINE_PATTERN.search(content):
+        retail_match = find_single_line(RETAIL_INTERFACE_LINE_PATTERN, content, "## Interface-Retail")
+        retail_versions = parse_interface_list(retail_match.group("value")) | merged
+        replacements.append((retail_match, ", ".join(str(v) for v in sorted(retail_versions))))
     for match, value in sorted(
         replacements, key=lambda replacement: replacement[0].start(), reverse=True
     ):
