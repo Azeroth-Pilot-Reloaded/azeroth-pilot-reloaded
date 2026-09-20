@@ -93,6 +93,16 @@ class TocUpdaterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid TOC Interface"):
             toc_updater.update_toc_content(original, {0})
 
+    def test_repairs_mixed_fallback_without_losing_camelot_support(self) -> None:
+        original = ("## Interface: 120100, 16001\n## Interface-Retail: 120100, 16001\n"
+                    "## Interface-Camelot: 16001\n## X-Interface: 120100\n")
+        updated = toc_updater.update_toc_content(original, {120105})
+        self.assertIn("## Interface: 120100, 120105\n", updated)
+        self.assertIn("## Interface-Retail: 120100, 120105\n", updated)
+        self.assertIn("## Interface-Camelot: 16001\n", updated)
+        with self.assertRaisesRegex(ValueError, "non-Retail"):
+            toc_updater.update_toc_content(original, {16001})
+
     def test_failed_product_lookup_does_not_touch_the_toc(self) -> None:
         original = "## Interface: 120100\n## X-Interface: 120100\n"
         with tempfile.TemporaryDirectory() as directory:
