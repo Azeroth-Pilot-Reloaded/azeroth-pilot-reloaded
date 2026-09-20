@@ -94,7 +94,8 @@
         "FACTION",
         "RANK",
         "coroutine",
-        "PixelUtil"
+        "PixelUtil",
+        "NUM_BAG_SLOTS"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {

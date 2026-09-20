@@ -39,6 +39,7 @@ C_Map = {
     end,
 }
 APR = {
+    interfaceVersion = 120100,
     RouteQuestStepList = {},
     LevelRequirementProfiles = { MidnightDelves = { levels = { [0] = 89 } } },
     PlayerID = "test",

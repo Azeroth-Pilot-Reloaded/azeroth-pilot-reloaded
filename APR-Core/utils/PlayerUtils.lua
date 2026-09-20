@@ -1,6 +1,33 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+--- Client family, independent of expansion names used by route categories.
+function APR:GetGameVersion()
+    local interfaceVersion = tonumber(self.interfaceVersion) or
+        (GetBuildInfo and tonumber(select(4, GetBuildInfo()))) or 0
+    if interfaceVersion >= 16000 and interfaceVersion < 17000 then
+        return "forever"
+    end
+    if interfaceVersion >= 100000 then
+        return "retail"
+    end
+    return "classic"
+end
+
+function APR:IsPetBattleActive()
+    return C_PetBattles and C_PetBattles.IsInBattle and C_PetBattles.IsInBattle() or false
+end
+
+function APR:GetPlayerMaxLevel()
+    if GetMaxLevelForPlayerExpansion then
+        return GetMaxLevelForPlayerExpansion()
+    end
+    if GetMaxPlayerLevel then
+        return GetMaxPlayerLevel()
+    end
+    return self:GetGameVersion() == "retail" and 90 or 60
+end
+
 --- Check if a spell is known by the player (supports both classic and retail APIs).
 -- We keep the dual API call path so the add-on works on multiple client versions without crashing.
 function APR:IsSpellKnown(spellID)
@@ -35,20 +62,20 @@ end
 --- Detect Remix-specific characters based on the dedicated aura.
 -- This stays separated from general aura logic because it is strictly tied to the Remix event.
 function APR:IsRemixCharacter()
-    local aura = C_UnitAuras.GetPlayerAuraBySpellID(1232454) or
-        C_UnitAuras.GetPlayerAuraBySpellID(1213439) -- SpellID for "Remix" buff
-    return aura ~= nil
+    return self:HasAura(1232454) or self:HasAura(1213439)
 end
 
 --- Check whether the player has completed a given achievement.
 -- This stays here because it is purely about player state rather than quest steps.
 function APR:HasAchievement(achievementID)
+    if not _G.GetAchievementInfo then return false end
     local _, _, _, completed = _G.GetAchievementInfo(achievementID)
     return completed
 end
 
 --- Lightweight aura presence check for the player.
 function APR:HasAura(spellID)
+    if not C_UnitAuras or not C_UnitAuras.GetPlayerAuraBySpellID then return false end
     local aura = C_UnitAuras.GetPlayerAuraBySpellID(spellID)
     return aura ~= nil
 end

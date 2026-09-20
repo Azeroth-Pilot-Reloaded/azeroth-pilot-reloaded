@@ -83,6 +83,10 @@ def audit_route(root, runtime):
 if __name__ == "__main__":
     root = Path(__file__).resolve().parents[2]
     os.chdir(root)
+    compatibility_runtime = LuaRuntime(unpack_returned_tuples=True)
+    compatibility_runtime.execute((root / "tools/validation/client_compatibility_test.lua").read_text(encoding="utf-8"))
+    xp_runtime = LuaRuntime(unpack_returned_tuples=True)
+    xp_runtime.execute((root / "tools/validation/xp_requirements_test.lua").read_text(encoding="utf-8"))
     transition_runtime = LuaRuntime(unpack_returned_tuples=True)
     transition_runtime.execute((root / "tools/validation/route_transition_test.lua").read_text(encoding="utf-8"))
     zone_performance_runtime = LuaRuntime(unpack_returned_tuples=True)
