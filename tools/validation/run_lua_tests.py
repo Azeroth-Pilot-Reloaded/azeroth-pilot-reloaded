@@ -87,6 +87,8 @@ if __name__ == "__main__":
     compatibility_runtime.execute((root / "tools/validation/client_compatibility_test.lua").read_text(encoding="utf-8"))
     xp_runtime = LuaRuntime(unpack_returned_tuples=True)
     xp_runtime.execute((root / "tools/validation/xp_requirements_test.lua").read_text(encoding="utf-8"))
+    reputation_runtime = LuaRuntime(unpack_returned_tuples=True)
+    reputation_runtime.execute((root / "tools/validation/reputation_progress_test.lua").read_text(encoding="utf-8"))
     transition_runtime = LuaRuntime(unpack_returned_tuples=True)
     transition_runtime.execute((root / "tools/validation/route_transition_test.lua").read_text(encoding="utf-8"))
     zone_performance_runtime = LuaRuntime(unpack_returned_tuples=True)

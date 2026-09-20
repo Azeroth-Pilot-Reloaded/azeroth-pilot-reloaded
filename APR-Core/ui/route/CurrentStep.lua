@@ -620,6 +620,46 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
     self:ReOrderQuestSteps()
 end
 
+function APR.currentStep:AddReputationStep(requirement)
+    local _, factionID = APR:GetReputationRequirement(requirement)
+    local id = "REPUTATION-" .. tostring(factionID or "UNKNOWN")
+    self:AddQuestSteps(id, APR:GetReputationStepText(requirement), "Reputation", false, true, false)
+    local container = self.questsList[id .. "-Reputation"]
+    if not container then return end
+
+    local current, total, text = APR:GetReputationBarProgress(requirement)
+    local bar = self.reputationBar
+    if not current then
+        if bar then bar:Hide() end
+        return
+    end
+    if not bar then
+        bar = CreateFrame("StatusBar", nil, container, "BackdropTemplate")
+        bar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
+        bar:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8" })
+        bar:SetBackdropColor(0, 0, 0, 0.5)
+        bar.Text = bar:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        bar.Text:SetPoint("CENTER")
+        APR:RegisterFontString(bar.Text, "currentStep", { role = "base" })
+        if APR.RegisterSkinTarget then APR:RegisterSkinTarget(bar, "statusbar") end
+        self.reputationBar = bar
+    end
+    -- Reuse the bar across UPDATE_FACTION refreshes; its row owns visibility and cleanup.
+    bar:SetParent(container)
+    bar:ClearAllPoints()
+    bar:SetPoint("TOPLEFT", container.font, "BOTTOMLEFT", 0, -5)
+    bar:SetPoint("TOPRIGHT", container.font, "BOTTOMRIGHT", 0, -5)
+    bar:SetHeight(20)
+    self:UpdateProgressBarColor(bar)
+    bar:SetMinMaxValues(0, total)
+    bar:SetValue(current)
+    bar.Text:SetText(text)
+    bar:Show()
+    container.extraContentHeight = 25
+    container:SetHeight(container.font:GetStringHeight() + 10 + container.extraContentHeight)
+    self:ReOrderQuestSteps()
+end
+
 function APR.currentStep:UpdateQuestStep(questID, textObjective, objectiveIndex)
     APR:Debug("Function: APR.currentStep:UpdateQuestStep()", questID)
     if not APR.settings.profile.currentStepShow then
@@ -673,7 +713,7 @@ local function UpdateManagedExtraLineDashes(self)
         local rawText = container._rawExtraLineText or ""
         if container.font then
             container.font:SetText((useDash and "- " or "") .. rawText)
-            container:SetHeight(container.font:GetStringHeight() + 10)
+            container:SetHeight(container.font:GetStringHeight() + 10 + (container.extraContentHeight or 0))
         end
         container.showLeadingDash = useDash and true or false
     end
@@ -1062,7 +1102,7 @@ function APR.currentStep:RefreshTextLayout()
             end
             container:SetHeight(container.font:GetStringHeight() + detailHeight + 15)
         else
-            container:SetHeight(container.font:GetStringHeight() + 10)
+            container:SetHeight(container.font:GetStringHeight() + 10 + (container.extraContentHeight or 0))
         end
     end
 
