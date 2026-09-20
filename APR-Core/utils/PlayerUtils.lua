@@ -111,6 +111,13 @@ end
 local function GetStandardReputationProgress(factionID, targetLevel)
     local getFactionData = C_Reputation and C_Reputation.GetFactionDataByID
     local factionData = SafeReputationAPICall(getFactionData, factionID)
+    if not factionData and GetFactionInfoByID then
+        local ok, name, _, reaction, minimum, maximum, standing = pcall(GetFactionInfoByID, factionID)
+        if ok and name then
+            factionData = { name = name, reaction = reaction, currentReactionThreshold = minimum,
+                nextReactionThreshold = maximum, currentStanding = standing }
+        end
+    end
     if not factionData then
         return nil
     end
@@ -121,6 +128,9 @@ local function GetStandardReputationProgress(factionID, targetLevel)
         type = APR.REPUTATION_TYPE.Standard,
         name = factionData.name,
         currentLevel = tonumber(factionData.reaction),
+        currentValue = tonumber(factionData.currentStanding),
+        minimumValue = tonumber(factionData.currentReactionThreshold),
+        maximumValue = tonumber(factionData.nextReactionThreshold),
     }
 end
 
@@ -144,6 +154,9 @@ local function GetRenownReputationProgress(factionID, targetLevel)
         name = majorFactionData.name,
         currentLevel = currentLevel,
         maxLevel = tonumber(majorFactionData.maxLevel),
+        currentValue = tonumber(majorFactionData.renownReputationEarned),
+        minimumValue = 0,
+        maximumValue = tonumber(majorFactionData.renownLevelThreshold),
     }
 end
 
@@ -171,6 +184,9 @@ local function GetFriendshipReputationProgress(factionID, targetLevel)
         currentLevel = friendshipRanks and tonumber(friendshipRanks.currentLevel) or nil,
         maxLevel = friendshipRanks and tonumber(friendshipRanks.maxLevel) or nil,
         currentLabel = friendshipData.reaction,
+        currentValue = tonumber(friendshipData.standing),
+        minimumValue = tonumber(friendshipData.reactionThreshold),
+        maximumValue = tonumber(friendshipData.nextThreshold),
     }
 end
 
@@ -280,6 +296,20 @@ function APR:GetReputationStepText(requirement)
     local targetLabel = self:GetReputationLevelLabel(progress, targetLevel)
 
     return string.format("%s: %s - %s", reputationLabel, factionName, targetLabel)
+end
+
+--- Progress within the current standing/rank, using the same data as step completion.
+--- Unknown or capped ranges have no measurable bar; do not invent a zero total.
+function APR:GetReputationBarProgress(requirement)
+    local progress = self:GetReputationRequirement(requirement)
+    if not progress or not progress.currentValue or not progress.minimumValue or not progress.maximumValue then
+        return nil
+    end
+    local total = progress.maximumValue - progress.minimumValue
+    if total <= 0 then return nil end
+    local current = math.max(0, math.min(progress.currentValue - progress.minimumValue, total))
+    local label = progress.currentLabel or self:GetReputationLevelLabel(progress, progress.currentLevel)
+    return current, total, string.format("%s: %d / %d (%d%%)", label, current, total, math.floor(current / total * 100))
 end
 
 --- Uses a glider item if available in the player's inventory.

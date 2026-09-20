@@ -76,6 +76,10 @@ missing XP data. It runs alongside the client compatibility checks in the runner
 
 ## In-game capture
 
+`reputation_progress_test.lua` covers current-step bars for standing, renown and
+friendship, legacy faction APIs, unavailable data, frame reuse, text resizing and
+cleanup. Reputation events continue using the existing coalesced refresh path.
+
 The second client capture confirmed list batches below 3.5 ms, but quest removal
 still reached 95 ms. Quest removal now avoids inline navigation and duplicate step
 refreshes; combined quest/step updates synchronize the cache before rendering once.
