@@ -6,6 +6,7 @@ C_UnitAuras = { GetPlayerAuraBySpellID = function(id)
 end }
 function LibStub() return { GetLocale = function() return { GRIND = "Reach level %d", USE_ITEM = "Use %s" } end } end
 APR = {}
+dofile("APR-Core/utils/PlayerUtils.lua")
 function APR:HasAura(id) reads = reads + 1; return auras[id] end
 function APR:HasAchievement(id) reads = reads + 1; return achievements[id] end
 local level, xp = 87, 0

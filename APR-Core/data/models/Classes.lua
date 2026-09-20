@@ -68,7 +68,10 @@ function APR:GetClassNameById(id)
 end
 
 function APR:GetClassSpecName()
-    local id = C_SpecializationInfo.GetSpecializationInfo(C_SpecializationInfo.GetSpecialization())
+    if not C_SpecializationInfo or not C_SpecializationInfo.GetSpecialization then return nil end
+    local specIndex = C_SpecializationInfo.GetSpecialization()
+    if not specIndex then return nil end
+    local id = C_SpecializationInfo.GetSpecializationInfo(specIndex)
 
     for classSpecName, classSpecId in pairs(APR.Specs) do
         if classSpecId == id then

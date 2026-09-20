@@ -3,6 +3,7 @@ local L = setmetatable({ USE_ITEM = "Use %s" }, { __index = function(_, key) ret
 function LibStub() return setmetatable({ GetLocale = function() return L end }, { __index = function() return noop end }) end
 APR = { RegisterFontString = noop, Debug = noop, version = "new", PlayerID = "player" }
 function APR:NewModule() return {} end
+dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/Utils.lua")
 assert(APR:NormalizeSearchText("TRÉSOR à côté") == "tresor a cote")
 assert(APR:NormalizeSearchText("Tre\204\129sor") == "tresor")

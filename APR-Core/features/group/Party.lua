@@ -125,7 +125,7 @@ function APR.party:RefreshPartyFrameAnchor(forceShow)
         end
     end
 
-    if not allowTestVisibility and (not IsInGroup() or C_PetBattles.IsInBattle() or not hasData) then
+    if not allowTestVisibility and (not IsInGroup() or APR:IsPetBattleActive() or not hasData) then
         PartyScreenPanel:Hide()
         return
     end
@@ -135,7 +135,7 @@ function APR.party:RefreshPartyFrameAnchor(forceShow)
         return
     end
 
-    if C_PetBattles.IsInBattle() then
+    if APR:IsPetBattleActive() then
         PartyScreenPanel:Hide()
         return
     end

@@ -1,5 +1,7 @@
-## Interface: 110207, 120000, 120001, 120005, 120007, 120100, 120105
+## Interface: 110207, 120000, 120001, 120005, 120007, 120100, 120105, 16001
+## Interface-Retail: 110207, 120000, 120001, 120005, 120007, 120100, 120105
 ## X-Interface: 120105
+## Interface-Camelot: 16001
 
 ## Title: Azeroth Pilot Reloaded
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
@@ -105,4 +107,10 @@ APR-Core/integrations/ElvUISkin.lua
 APR-Core/integrations/EllesmereUISettings.lua
 APR-Core/integrations/EllesmereUISkin.lua
 
+#@version-retail@
 Routes/RouteList.xml
+#@end-version-retail@
+
+#@version-forever@
+Routes/Forever/RouteList.xml
+#@end-version-forever@

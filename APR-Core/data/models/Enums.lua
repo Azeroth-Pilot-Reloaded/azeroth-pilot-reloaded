@@ -23,6 +23,7 @@ APR.REPUTATION_TYPE = {
 }
 
 APR.EXPANSIONS = {
+    Forever = "WoW Forever",
     Vanilla = "Vanilla",
     TheBurningCrusade = "The Burning Crusade",
     WrathOfTheLichKing = "Wrath of the Lich King",
@@ -39,6 +40,7 @@ APR.EXPANSIONS = {
 }
 
 APR.EXPANSION_ORDER_KEYS = {
+    "Forever",
     "Vanilla",
     "TheBurningCrusade",
     "WrathOfTheLichKing",

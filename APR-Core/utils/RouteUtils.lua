@@ -295,6 +295,7 @@ function APR:LoadCustomRoutes()
                 label = data.label or name:match("%d+%-(.*)") or name,
                 expansion = data.expansion or APR.EXPANSIONS.Custom,
                 category = data.category or APR.CATEGORIES.Miscellaneous,
+                gameVersion = data.gameVersion,
                 conditions = data.conditions or {},
                 parallelSteps = data.parallelSteps,
                 steps = data.steps,
@@ -411,7 +412,7 @@ function APR:GetLevelConsumableReminders(profileName)
         table.sort(sources)
     end
     local level = UnitLevel("player")
-    if level >= GetMaxLevelForPlayerExpansion() then return result end
+    if level >= APR:GetPlayerMaxLevel() then return result end
     for _, name in ipairs(sources) do
         local source = self.LevelBonusSources[name]
         assert(source, "Unknown level bonus source: " .. tostring(name))
@@ -460,12 +461,34 @@ function APR:RefreshLevelProfileTargets()
 end
 
 function APR:ResolveLevelRequirement(value)
+    if type(value) == "table" then
+        local level, xp = tonumber(value.level), tonumber(value.xp)
+        assert(level and level >= 1 and level < math.huge and level == math.floor(level)
+            and xp and math.abs(xp) < math.huge and xp == math.floor(xp),
+            "Invalid absolute XP requirement: expected { level = integer, xp = integer }")
+        if xp == 0 then return level end
+        local baseLevel = xp < 0 and level - 1 or level
+        local playerLevel = UnitLevel("player") or self.Level or 0
+        if playerLevel ~= baseLevel then return baseLevel end
+        local maxXP = UnitXPMax and UnitXPMax("player") or 0
+        -- Do not complete a partially loaded threshold until the XP total is known.
+        if not maxXP or maxXP <= 0 then return baseLevel + 1 end
+        local requiredXP = xp < 0 and maxXP + xp or xp
+        return baseLevel + math.max(0, math.min(requiredXP / maxXP, 1))
+    end
     local numeric = tonumber(value)
     if numeric or type(value) ~= "string" then return numeric end
     return self:GetLevelProfileTarget(value)
 end
 
 function APR:GetGrindStepText(value)
+    if type(value) == "table" then
+        self:ResolveLevelRequirement(value) -- Validate the same structure used for progression.
+        local level, xp = tonumber(value.level), tonumber(value.xp)
+        local text = string.format(L["GRIND"], level)
+        if xp == 0 then return text end
+        return text .. string.format(xp < 0 and " - %d XP" or " + %d XP", math.abs(xp))
+    end
     local target = self:ResolveLevelRequirement(value)
     local text = string.format(L["GRIND"], math.floor(target))
     local progress = (target - math.floor(target)) * 100

@@ -59,11 +59,15 @@ function APR:OnInitialize()
     self.discord = GetAddOnMetadata("APR", "X-Discord")
     self.tocVersion = tonumber(GetAddOnMetadata("APR", "X-Interface"))
     self.interfaceVersion = select(4, GetBuildInfo())
+    if self:GetGameVersion() == "forever" then
+        self.tocVersion = tonumber(GetAddOnMetadata("APR", "Interface-Camelot")) or
+            tonumber(GetAddOnMetadata("APR", "Interface")) or self.tocVersion
+    end
     self.isBetaServer = GetCVar("portal") == "test"
 
     self.ActiveQuests = {}
     self.IsInRouteZone = false
-    self.MaxLevel = self.isBetaServer and 90 or 80
+    self.MaxLevel = self:GetPlayerMaxLevel()
 
     -- APR INIT NEW SETTING
     self:Love()
