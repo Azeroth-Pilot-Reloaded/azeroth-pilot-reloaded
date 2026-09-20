@@ -507,7 +507,7 @@ function APR:IsPlayerWithinExactLevel(targetLevel, playerLevel)
     return playerLevel >= exactLevel and playerLevel < upperBound
 end
 
-local function MatchesConditionValue(expectedValue, actualValue, alternateValue)
+function APR:MatchesConditionValue(expectedValue, actualValue, alternateValue)
     if type(expectedValue) == "table" then
         return tContains(expectedValue, actualValue) or
             (alternateValue ~= nil and tContains(expectedValue, alternateValue))
@@ -516,15 +516,24 @@ local function MatchesConditionValue(expectedValue, actualValue, alternateValue)
     return expectedValue == actualValue or (alternateValue ~= nil and expectedValue == alternateValue)
 end
 
-function APR:IsInterfaceVersion(requiredInterfaceVersion)
-    local expectedVersion = tonumber(requiredInterfaceVersion)
+local function GetCurrentInterfaceVersion(self)
     local currentVersion = tonumber(self.interfaceVersion)
-
     if not currentVersion and GetBuildInfo then
-        currentVersion = tonumber(select(4, GetBuildInfo()))
+        currentVersion = tonumber((select(4, GetBuildInfo())))
     end
+    return currentVersion
+end
 
-    return expectedVersion ~= nil and currentVersion == expectedVersion
+function APR:IsInterfaceVersion(requiredInterfaceVersion)
+    local minimumVersion = tonumber(requiredInterfaceVersion)
+    local currentVersion = GetCurrentInterfaceVersion(self)
+    return minimumVersion ~= nil and currentVersion ~= nil and currentVersion >= minimumVersion
+end
+
+function APR:IsExactInterfaceVersion(requiredInterfaceVersion)
+    local exactVersion = tonumber(requiredInterfaceVersion)
+    local currentVersion = GetCurrentInterfaceVersion(self)
+    return exactVersion ~= nil and currentVersion == exactVersion
 end
 
 function APR:AreConditionalFiltersMet(conditions)
@@ -561,10 +570,14 @@ function APR:AreConditionalFiltersMet(conditions)
     local playerMapID = C_Map.GetBestMapForUnit("player")
 
     return (not conditions.Faction or conditions.Faction == self.Faction) and
-        (not conditions.Race or MatchesConditionValue(conditions.Race, self.Race, self.RaceID)) and
+        (conditions.Hardcore == nil or self:IsHardcoreCharacter() == conditions.Hardcore) and
+        (not conditions.Money or self:CompareRouteNumber(GetMoney and GetMoney(), conditions.Money.operator or ">=", conditions.Money.copper)) and
+        (not conditions.ItemCount or self:MeetsItemCount(conditions.ItemCount)) and
+        (not conditions.EquippedItemStat or self:MeetsEquippedItemStat(conditions.EquippedItemStat)) and
+        (not conditions.Race or self:MatchesConditionValue(conditions.Race, self.Race, self.RaceID)) and
         (not conditions.Gender or conditions.Gender == self.Gender) and
-        (not conditions.Class or MatchesConditionValue(conditions.Class, self.ClassName, self.ClassId)) and
-        (not conditions.ClassNot or not MatchesConditionValue(conditions.ClassNot, self.ClassName, self.ClassId)) and
+        (not conditions.Class or self:MatchesConditionValue(conditions.Class, self.ClassName, self.ClassId)) and
+        (not conditions.ClassNot or not self:MatchesConditionValue(conditions.ClassNot, self.ClassName, self.ClassId)) and
         (not level or playerLevel >= level) and
         (not minLevel or playerLevel >= minLevel) and
         (not maxLevel or playerLevel <= maxLevel) and
@@ -577,6 +590,7 @@ function APR:AreConditionalFiltersMet(conditions)
         (conditions.AlliedRace == nil or self:IsAlliedRace() == conditions.AlliedRace) and
         (not conditions.Event or (conditions.Event ~= APR.EVENTS.Remix or self:IsRemixCharacter())) and
         (not conditions.InterfaceVersion or self:IsInterfaceVersion(conditions.InterfaceVersion)) and
+        (not conditions.InterfaceVersionExact or self:IsExactInterfaceVersion(conditions.InterfaceVersionExact)) and
         (not conditions.HasAchievement or self:HasAchievement(conditions.HasAchievement)) and
         (not conditions.DontHaveAchievement or not self:HasAchievement(conditions.DontHaveAchievement)) and
         (not conditions.HasAura or self:HasAura(conditions.HasAura)) and
@@ -598,6 +612,15 @@ function APR:AreConditionalFiltersMet(conditions)
         (not conditions.IsQuestsUncompleted or not self:IsQuestsCompleted(conditions.IsQuestsUncompleted)) and
         (not conditions.IsQuestsCompletedOnAccount or self:IsQuestsCompletedOnAccount(conditions.IsQuestsCompletedOnAccount)) and
         (not conditions.IsQuestsUncompletedOnAccount or not self:IsQuestsCompletedOnAccount(conditions.IsQuestsUncompletedOnAccount))
+end
+
+function APR:HasRouteResourceFilters(conditions)
+    if not conditions then return false end
+    if conditions.Money or conditions.ItemCount or conditions.EquippedItemStat then return true end
+    for _, alternative in ipairs(conditions.AnyOf or {}) do
+        if self:HasRouteResourceFilters(alternative) then return true end
+    end
+    return false
 end
 
 local function RouteMatchesDisplayName(routeData, displayName)

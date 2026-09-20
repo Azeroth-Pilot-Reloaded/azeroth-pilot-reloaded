@@ -15,10 +15,31 @@ dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/data/models/Classes.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/utils/RouteManager.lua")
+
+-- GetBuildInfo returns fields after the interface number as well. The fallback
+-- must pass only that number to tonumber, including during file loading.
+GetBuildInfo = function() return "12.1.0", "build", "date", "120105", "extra" end
+APR.interfaceVersion = nil
+assert(APR:GetGameVersion() == "retail")
+assert(APR:IsInterfaceVersion(120105))
+assert(APR:IsInterfaceVersion(120100))
+assert(not APR:IsInterfaceVersion(120106))
+assert(not APR:IsInterfaceVersion("invalid"))
+assert(APR:IsExactInterfaceVersion(120105))
+assert(not APR:IsExactInterfaceVersion(120100))
+assert(not APR:IsExactInterfaceVersion(120106))
+assert(not APR:IsExactInterfaceVersion("invalid"))
+local fallbackTabs = APR:GetRouteSelectionExpansions()
+assert(#fallbackTabs == #APR.EXPANSION_ORDER_KEYS - 1)
+APR.interfaceVersion = 16001
 APR.RouteQuestStepList.retail = { label = "Retail", expansion = APR.EXPANSIONS.Vanilla, conditions = { Level = 10 } }
 APR.RouteQuestStepList.forever = { label = "Forever", expansion = APR.EXPANSIONS.Forever, conditions = { Level = 10 } }
 APR.RouteQuestStepList.saved = { label = "Saved", expansion = APR.EXPANSIONS.Custom, gameVersion = "retail" }
 APR.RouteQuestStepList.shared = { label = "Shared", expansion = APR.EXPANSIONS.Custom }
+APR.RouteQuestStepList.versioned = { label = "Versioned", expansion = APR.EXPANSIONS.Vanilla,
+    conditions = { Level = 10, InterfaceVersion = 120100 } }
+APR.RouteQuestStepList.exactVersioned = { label = "Exact versioned", expansion = APR.EXPANSIONS.Vanilla,
+    conditions = { Level = 10, InterfaceVersionExact = 120105 } }
 assert(APR:GetGameVersion() == "forever")
 local tabs = APR:GetRouteSelectionExpansions()
 assert(#tabs == 2 and tabs[1] == APR.EXPANSIONS.Forever and tabs[2] == APR.EXPANSIONS.Custom)
@@ -37,6 +58,16 @@ for _, tab in ipairs(tabs) do assert(tab ~= APR.EXPANSIONS.Forever) end
 assert(APR:GetRouteVisibility("retail") == "visible")
 assert(APR:GetRouteVisibility("forever") == "hidden", "Client mismatch must not become a level lock")
 assert(APR:GetRouteVisibility("saved") == "visible")
+assert(APR:GetRouteVisibility("versioned") == "visible")
+assert(APR:GetRouteVisibility("exactVersioned") == "visible")
+assert(APR:AreConditionalFiltersMet({ InterfaceVersionExact = 120105 }))
+assert(not APR:AreConditionalFiltersMet({ InterfaceVersionExact = 120106 }))
+APR.RouteQuestStepList.versioned.conditions.InterfaceVersion = 120106
+assert(APR:GetRouteVisibility("versioned") == "hidden")
+APR.interfaceVersion = 120106
+assert(APR:GetRouteVisibility("versioned") == "visible")
+assert(APR:GetRouteVisibility("exactVersioned") == "hidden")
+assert(not APR:AreConditionalFiltersMet({ InterfaceVersionExact = 120105 }))
 APR.interfaceVersion = 11508
 assert(APR:GetRouteVisibility("retail") == "hidden")
 assert(APR:GetRouteVisibility("forever") == "hidden")

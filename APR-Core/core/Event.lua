@@ -47,6 +47,7 @@ local events = {
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
     reputation = { "UPDATE_FACTION", "MAJOR_FACTION_RENOWN_LEVEL_CHANGED" },
+    routeResources = { "PLAYER_MONEY", "PLAYER_EQUIPMENT_CHANGED", "BAG_UPDATE_DELAYED", "GET_ITEM_INFO_RECEIVED" },
     scenario = { "ACTIVE_DELVE_DATA_UPDATE", "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE",
         "WALK_IN_DATA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
@@ -159,6 +160,10 @@ end
 
 -- Cleanup function to properly unregister events and clear handlers
 function APR.event:CleanupEvents()
+    if self.resourceUpdateTimer then
+        self.resourceUpdateTimer:Cancel()
+        self.resourceUpdateTimer = nil
+    end
     if pendingWarModeTimer then
         pendingWarModeTimer:Cancel()
         pendingWarModeTimer = nil
@@ -481,6 +486,16 @@ function APR.event.functions.actionUsability(event, ...)
     if APR.currentStep then
         APR.currentStep:UpdateStepButtonUsability()
     end
+end
+
+function APR.event.functions.routeResources()
+    local playerData = APRData and APRData[APR.PlayerID]
+    if not playerData or not APR.ActiveRoute or not APR:HasRouteResourceFilters(APR:GetStep(playerData[APR.ActiveRoute])) then return end
+    if APR.event.resourceUpdateTimer then return end
+    APR.event.resourceUpdateTimer = C_Timer.NewTimer(0.1, function()
+        APR.event.resourceUpdateTimer = nil
+        if APR.ActiveRoute and APR:HasRouteResourceFilters(APR:GetStep(playerData[APR.ActiveRoute])) then APR:UpdateStep() end
+    end)
 end
 
 function APR.event.functions.buffs(event, unitTarget, updateInfo)

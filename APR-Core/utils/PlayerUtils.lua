@@ -4,7 +4,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 --- Client family, independent of expansion names used by route categories.
 function APR:GetGameVersion()
     local interfaceVersion = tonumber(self.interfaceVersion) or
-        (GetBuildInfo and tonumber(select(4, GetBuildInfo()))) or 0
+        (GetBuildInfo and tonumber((select(4, GetBuildInfo())))) or 0
     if interfaceVersion >= 16000 and interfaceVersion < 17000 then
         return "forever"
     end
@@ -16,6 +16,61 @@ end
 
 function APR:IsPetBattleActive()
     return C_PetBattles and C_PetBattles.IsInBattle and C_PetBattles.IsInBattle() or false
+end
+
+function APR:IsHardcoreCharacter()
+    return C_GameRules and C_GameRules.IsHardcoreActive and C_GameRules.IsHardcoreActive() or false
+end
+
+--- Numeric comparisons shared by resource and equipment route filters.
+function APR:CompareRouteNumber(actual, operator, expected)
+    actual, expected = tonumber(actual), tonumber(expected)
+    if not actual or not expected then return false end
+    if operator == "<" then return actual < expected end
+    if operator == "<=" then return actual <= expected end
+    if operator == ">" then return actual > expected end
+    if operator == ">=" then return actual >= expected end
+    if operator == "==" then return actual == expected end
+    if operator == "~=" then return actual ~= expected end
+    return false
+end
+
+function APR:MeetsItemCount(requirement)
+    local getCount = C_Item and C_Item.GetItemCount or GetItemCount
+    if not getCount then return false end
+    local ids = requirement.itemIDs or { requirement.itemID }
+    local total = 0
+    for _, id in ipairs(ids) do
+        local count = getCount(id, requirement.includeBank == true) or 0
+        if count == 0 and requirement.includeUsableToys and PlayerHasToy and C_ToyBox and C_ToyBox.IsToyUsable
+            and PlayerHasToy(id) and C_ToyBox.IsToyUsable(id) then
+            count = 1
+        end
+        total = total + count
+    end
+    return self:CompareRouteNumber(total, requirement.operator or ">=", requirement.count)
+end
+
+function APR:MeetsEquippedItemStat(requirement)
+    local slot, stat, value = requirement.slot, requirement.stat
+    if stat == "QUALITY" and GetInventoryItemQuality then
+        value = GetInventoryItemQuality("player", slot)
+    elseif stat == "LEVEL" and GetInventoryItemID then
+        local itemID = GetInventoryItemID("player", slot)
+        local getInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
+        if itemID and getInfo then value = select(4, getInfo(itemID)) end
+    else
+        local getStats = C_Item and C_Item.GetItemStats or GetItemStats
+        local link = GetInventoryItemLink and GetInventoryItemLink("player", slot)
+        local stats = link and getStats and getStats(link)
+        value = stats and stats[stat]
+    end
+    if value == nil then return requirement.allowMissing == true end
+    if requirement.precision and type(value) == "number" then
+        local scale = 10 ^ requirement.precision
+        value = math.floor(value * scale + 0.5) / scale
+    end
+    return self:CompareRouteNumber(value, requirement.operator or "==", requirement.value)
 end
 
 function APR:GetPlayerMaxLevel()
