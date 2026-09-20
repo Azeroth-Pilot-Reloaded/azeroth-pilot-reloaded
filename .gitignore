@@ -15,3 +15,4 @@ treasureData.txt
 .github/prompts/*
 wiki.md
 docs/*
+.DS_Store
