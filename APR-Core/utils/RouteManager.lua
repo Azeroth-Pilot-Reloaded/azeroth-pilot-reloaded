@@ -34,6 +34,18 @@ function APR:IsRouteCompatibleWithClient(routeData)
     return not gameVersion or gameVersion == self:GetGameVersion()
 end
 
+--- Only create expansion tabs supported by this client, including empty tabs.
+function APR:GetRouteSelectionExpansions()
+    local expansions = {}
+    for _, key in ipairs(self.EXPANSION_ORDER_KEYS or {}) do
+        local expansion = self.EXPANSIONS[key]
+        if expansion and self:IsRouteCompatibleWithClient({ expansion = expansion }) then
+            table.insert(expansions, expansion)
+        end
+    end
+    return expansions
+end
+
 local function FlattenScenarioBlocks(blocks, scenarioID)
     local steps = {}
     for _, block in ipairs(blocks or {}) do

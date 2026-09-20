@@ -20,6 +20,8 @@ APR.RouteQuestStepList.forever = { label = "Forever", expansion = APR.EXPANSIONS
 APR.RouteQuestStepList.saved = { label = "Saved", expansion = APR.EXPANSIONS.Custom, gameVersion = "retail" }
 APR.RouteQuestStepList.shared = { label = "Shared", expansion = APR.EXPANSIONS.Custom }
 assert(APR:GetGameVersion() == "forever")
+local tabs = APR:GetRouteSelectionExpansions()
+assert(#tabs == 2 and tabs[1] == APR.EXPANSIONS.Forever and tabs[2] == APR.EXPANSIONS.Custom)
 assert(APR:GetRouteVisibility("retail") == "hidden")
 assert(APR:GetRouteVisibility("saved") == "hidden")
 assert(APR:GetRouteVisibility("forever") == "visible")
@@ -29,6 +31,9 @@ assert(not APR:IsRequiredRouteApplicable("retail"))
 APR.RouteQuestStepList.forever.conditions.Level = 20
 assert(APR:GetRouteVisibility("forever") == "disabled", "Compatible routes still obey soft level locks")
 APR.interfaceVersion = 120105
+tabs = APR:GetRouteSelectionExpansions()
+assert(#tabs == #APR.EXPANSION_ORDER_KEYS - 1)
+for _, tab in ipairs(tabs) do assert(tab ~= APR.EXPANSIONS.Forever) end
 assert(APR:GetRouteVisibility("retail") == "visible")
 assert(APR:GetRouteVisibility("forever") == "hidden", "Client mismatch must not become a level lock")
 assert(APR:GetRouteVisibility("saved") == "visible")

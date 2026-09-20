@@ -230,13 +230,7 @@ local PREFAB_ACTION_DEFINITIONS = {
     },
 }
 
-local ROUTE_TAB_EXPANSION_VALUES = {}
-for _, expansionKey in ipairs(APR.EXPANSION_ORDER_KEYS or {}) do
-    local expansionName = APR.EXPANSIONS[expansionKey]
-    if expansionName then
-        tinsert(ROUTE_TAB_EXPANSION_VALUES, expansionName)
-    end
-end
+local ROUTE_TAB_EXPANSION_VALUES = APR:GetRouteSelectionExpansions()
 
 local function GetRouteStatusText(fileName, routeName)
     if APRZoneCompleted[APR.PlayerID][routeName] then
