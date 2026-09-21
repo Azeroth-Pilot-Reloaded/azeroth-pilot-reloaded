@@ -92,14 +92,13 @@ function APR:OnInitialize()
     APRData[self.PlayerID].WantedQuestList = APRData[self.PlayerID].WantedQuestList or {}
 
     APRCustomPath = APRCustomPath or {}
-    APRTaxiNodes = APRTaxiNodes or {}
+    self:InitializeTaxiNodes()
     APRTaxiNodesTimer = APRTaxiNodesTimer or {}
     APRZoneCompleted = APRZoneCompleted or {}
     APRScenarioMapIDCompleted = APRScenarioMapIDCompleted or {}
     APRScenarioCompleted = APRScenarioCompleted or {}
     APRItemLooted = APRItemLooted or {}
 
-    APRTaxiNodes[self.PlayerID] = APRTaxiNodes[self.PlayerID] or {}
     APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}
     APRZoneCompleted[self.PlayerID] = APRZoneCompleted[self.PlayerID] or {}
     APRScenarioMapIDCompleted[self.PlayerID] = APRScenarioMapIDCompleted[self.PlayerID] or {}

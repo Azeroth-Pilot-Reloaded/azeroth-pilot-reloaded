@@ -102,7 +102,10 @@
         { "from": "Locale/FarstriderLibData_Locale.ruRU.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.ruRU.lua" },
         { "from": "Locale/FarstriderLibData_Locale.zhCN.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.zhCN.lua" },
         { "from": "Locale/FarstriderLibData_Locale.zhTW.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.zhTW.lua" },
-        { "from": "Areas/Standard", "to": "FarstriderLibData/Areas/Standard" }
+        { "from": "Areas/Standard", "to": "FarstriderLibData/Areas/Standard" },
+        { "from": "Areas/Vanilla", "to": "FarstriderLibData/Areas/Vanilla" },
+        { "from": "Waypoints/Standard", "to": "FarstriderLibData/Waypoints/Standard" },
+        { "from": "Waypoints/Vanilla", "to": "FarstriderLibData/Waypoints/Vanilla" }
       ]
     }
   ]

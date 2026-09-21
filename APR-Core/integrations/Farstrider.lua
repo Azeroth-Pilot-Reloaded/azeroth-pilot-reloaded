@@ -129,7 +129,7 @@ function APR.farstrider:ShowScenarioEntranceFallback(step, destination, playerCo
     )
     local entranceLocation = {
         mapId = entranceZone,
-        pos = { x = entranceCoord.y, y = entranceCoord.x, z = 0 },
+        pos = { x = entranceCoord.y, y = entranceCoord.x, z = entranceCoord.z or 0 },
         isUI = false,
     }
     local fallbackDestination = destination or {
@@ -150,6 +150,9 @@ end
 
 local function GetFarstriderAPI()
     InstallSecretSafeFarstriderPredicates()
+    if APR.foreverTravel then
+        APR.foreverTravel:RefreshGraph()
+    end
 
     local api = _G.FarstriderLib_API
     local missingDependencies = {}
@@ -659,7 +662,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
         if playerY and playerX then
             local dx = playerX - destination.worldCoord.x
             local dy = playerY - destination.worldCoord.y
-            farAway = math.sqrt(dx * dx + dy * dy) > APR.Arrow.MaxDistanceWrongZone
+            farAway = math.sqrt(dx * dx + dy * dy) >= APR.Arrow.MaxDistanceWrongZone
         end
     end
 
