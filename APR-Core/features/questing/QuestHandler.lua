@@ -139,6 +139,11 @@ local function UpdateStepOnce()
     APR:ResetMissingQuests()
 
     if UnitIsDeadOrGhost("player") then
+        local deathStep = APR:GetStep(currentStepIndex)
+        if deathStep and deathStep.DeathSkip and APR.HandleRouteAction and APR:AreConditionalFiltersMet(deathStep) then
+            APR:HandleRouteAction(deathStep)
+            return
+        end
         APR:Debug("Function: APR:UpdateStep() -  Player is dead - guide to corpse")
         APR:GuideToCorpse()
         return
@@ -238,16 +243,16 @@ local function UpdateStepOnce()
         -- Check for ExtraLineText
         local extraLines = {}
         for key, value in pairs(step) do
-            if string.match(key, "ExtraLineText+") and showStepDetails then
+            if type(key) == "string" and string.match(key, "ExtraLineText+") and showStepDetails then
                 table.insert(extraLines, { key = key, text = value })
             end
         end
         table.sort(extraLines, function(a, b) return a.key < b.key end)
         for i, line in ipairs(extraLines) do
-            local key = line.text
-            local formattedMessage, colorHex = APR:ResolveStepText(line.text)
-            if formattedMessage then
-                APR.currentStep:AddExtraLineText(i .. "_" .. key, formattedMessage, colorHex)
+            for textIndex, text in ipairs(APR:ResolveStepTextList(line.text)) do
+                -- Identify the field and list position, never the raw value (which can be a table).
+                local key = i .. "_" .. line.key .. "_" .. textIndex
+                APR.currentStep:AddExtraLineText(key, text.text, text.color)
             end
         end
 
@@ -418,47 +423,20 @@ local function UpdateStepOnce()
         end
 
         if step.LootItems then
-            APR:Debug("APR.UpdateStep:Loot Item" .. APRData[APR.PlayerID][APR.ActiveRoute])
-
             local completed = 0
-
             for _, item in ipairs(step.LootItems) do
-                local itemID = item.itemID
-                local questID = item.questID
-                local requiredQuantity = math.max(item.quantity or 1, 1)
-
-                if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                local required = math.max(item.quantity or 1, 1)
+                local count = APR:GetCollectionItemCount(item.itemID)
+                if count >= required or (item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID)) then
                     completed = completed + 1
-                    APR:Debug("Loot Item quest flagged complete: " .. tostring(questID))
-                elseif itemID then
-                    -- unified quantity (bags + virtual)
-                    local bagCount = C_Item.GetItemCount(itemID, true) or 0
-                    local virtualCount = APR.QuestVirtualItemCount[itemID] or 0
-                    local currentQuantity = math.max(bagCount, virtualCount)
-
-                    local isDone =
-                        currentQuantity >= requiredQuantity
-                        or APR.lootUtils:IsLootDone(step, "ITEM", itemID)
-
-                    if isDone then
-                        completed = completed + 1
-                        APR.lootUtils:MarkLootDone(step, "ITEM", itemID)
-                    end
-
-                    -- UI
-                    local itemName = C_Item.GetItemInfo(itemID) or UNKNOWN
-                    local label = format(L["LOOT_ITEM"], itemName)
-                    if requiredQuantity > 1 then
-                        label = label .. " (" .. currentQuantity .. "/" .. requiredQuantity .. ")"
-                    end
-
-                    APR.currentStep:AddQuestSteps(itemID, label, itemID)
                 end
+                local name = C_Item.GetItemInfo(item.itemID) or UNKNOWN
+                local label = format(L["LOOT_ITEM"], name)
+                if required > 1 then label = label .. " (" .. count .. "/" .. required .. ")" end
+                APR.currentStep:AddQuestSteps(item.itemID, label, item.itemID)
             end
-
             if completed == #step.LootItems then
-                APR:NextQuestStep()
-                return
+                APR:NextQuestStep(); return
             end
         end
 
@@ -500,7 +478,35 @@ local function UpdateStepOnce()
             APR.currentStep:AddExtraLineText("SCARE_SPIDER_INTO_LUMBERMILL", L["SCARE_SPIDER_INTO_LUMBERMILL"])
         end
 
+        if step.Fillers then
+            local questIDs = step.Fillers
+            for questId, objectives in pairs(questIDs) do
+                questId = tonumber(questId)
+                local questData = APR.ActiveQuests[questId]
+                for _, objectiveId in pairs(objectives) do
+                    objectiveId = tonumber(objectiveId)
+                    if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not APRData[APR.PlayerID].BonusSkips[questId] then
+                        if questData and questData.objectives and questData.objectives[objectiveId]
+                            and questData.objectives[objectiveId].status ~= APR.QUEST_STATUS.COMPLETE
+                            and showStepDetails
+                        then
+                            local questText = APR:GetQuestTextForProgressBar(questId, objectiveId)
+                            APR.fillersFrame:AddFillerStep(questId, questText, objectiveId)
+                        end
+                    end
+                end
+            end
+        end
+
         -- Qpart (objectives)
+        if APR.HandleRouteAction and APR:HandleRouteAction(step) then
+            APR:SetButton()
+            APR.questOrderList:DelayedUpdate()
+            APR.currentStep:SetProgressBar(currentStepIndex)
+            APR.party:SendGroupMessage()
+            APR.party:RefreshPartyFrameAnchor()
+            return
+        end
         if (step.Qpart) then
             APR:Debug("Qpart step detected")
             local questIDs = step.Qpart
@@ -781,11 +787,12 @@ local function UpdateStepOnce()
         elseif step.UseItem then
             local questID = step.UseItem.questID
             local itemID = step.UseItem.itemID
+            local questKey = questID or ("ITEM_" .. itemID)
             local itemName = C_Item.GetItemInfo(itemID)
             local questText = string.format(L["USE_ITEM"], itemName or UNKNOWN)
             if showStepDetails then
-                APR.currentStep:AddQuestSteps(questID, questText, "UseItem")
-                APR.currentStep:AddStepButton(questID .. "-UseItem", itemID, 'item')
+                APR.currentStep:AddQuestSteps(questKey, questText, "UseItem", false, not questID)
+                APR.currentStep:AddStepButton(questKey .. "-UseItem", itemID, 'item')
             end
 
             if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
@@ -795,11 +802,12 @@ local function UpdateStepOnce()
         elseif step.UseSpell then
             local questID = step.UseSpell.questID
             local spellID = step.UseSpell.spellID
+            local questKey = questID or ("SPELL_" .. spellID)
             local spellInfo = C_Spell.GetSpellInfo(spellID)
-            local questText = string.format(L["USE_SPELL"], spellInfo.name or UNKNOWN)
+            local questText = string.format(L["USE_SPELL"], (spellInfo and spellInfo.name) or UNKNOWN)
             if showStepDetails then
-                APR.currentStep:AddQuestSteps(questID, questText, "UseSpell")
-                APR.currentStep:AddStepButton(questID .. "-UseSpell", spellID, 'spell')
+                APR.currentStep:AddQuestSteps(questKey, questText, "UseSpell", false, not questID)
+                APR.currentStep:AddStepButton(questKey .. "-UseSpell", spellID, 'spell')
             end
 
             if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
@@ -1018,25 +1026,6 @@ local function UpdateStepOnce()
             end
         end
 
-        if step.Fillers then
-            local questIDs = step.Fillers
-            for questId, objectives in pairs(questIDs) do
-                questId = tonumber(questId)
-                local questData = APR.ActiveQuests[questId]
-                for _, objectiveId in pairs(objectives) do
-                    objectiveId = tonumber(objectiveId)
-                    if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not APRData[APR.PlayerID].BonusSkips[questId] then
-                        if questData and questData.objectives and questData.objectives[objectiveId]
-                            and questData.objectives[objectiveId].status ~= APR.QUEST_STATUS.COMPLETE
-                            and showStepDetails
-                        then
-                            local questText = APR:GetQuestTextForProgressBar(questId, objectiveId)
-                            APR.fillersFrame:AddFillerStep(questId, questText, objectiveId)
-                        end
-                    end
-                end
-            end
-        end
         if step.Grind then
             if APR:GetPlayerEffectiveLevel() < APR:ResolveLevelRequirement(step.Grind) then
                 APR.currentStep:AddQuestSteps("GRIND", APR:GetGrindStepText(step.Grind), "Grind")
@@ -1159,18 +1148,27 @@ function APR:SetButton()
         return
     end
 
-    if step.Button then
-        for questKey, itemID in pairs(step.Button) do
-            local questID = select(1, APR:SplitQuestAndObjective(questKey))
-            if not C_QuestLog.ReadyForTurnIn(questID) then
-                APR.currentStep:AddStepButton(questKey, itemID, 'item')
-            end
-        end
-    elseif step.SpellButton then
-        for questKey, spellID in pairs(step.SpellButton) do
-            local questID = select(1, APR:SplitQuestAndObjective(questKey))
-            if not C_QuestLog.ReadyForTurnIn(questID) then
-                APR.currentStep:AddStepButton(questKey, spellID, 'spell')
+    local occupied = {}
+    for _, kind in ipairs({ "item", "spell" }) do
+        local buttons = step[kind == "item" and "Button" or "SpellButton"]
+        for questKey, actionID in pairs(buttons or {}) do
+            local questID, objective = APR:SplitQuestAndObjective(questKey)
+            if not (questID and objective and C_QuestLog.ReadyForTurnIn(questID)) then
+                local key = questKey
+                local currentStep = APR.currentStep
+                local container = (currentStep.questsList or {})[key] or (currentStep.fillersList or {})[key]
+                if not container or occupied[key] then
+                    -- Notes and quest-wide actions may have no objective row. Give
+                    -- each supporting action its own stable row, including mixed uses.
+                    local rowID = "ROUTE_BUTTON_" .. kind .. "_" .. tostring(questKey)
+                    local info = kind == "spell" and C_Spell.GetSpellInfo(actionID) or nil
+                    local name = kind == "item" and C_Item.GetItemInfo(actionID) or (info and info.name)
+                    local label = string.format(L[kind == "item" and "USE_ITEM" or "USE_SPELL"], name or UNKNOWN)
+                    currentStep:AddQuestSteps(rowID, label, "Action", false, true)
+                    key = rowID .. "-Action"
+                end
+                occupied[key] = true
+                currentStep:AddStepButton(key, actionID, kind)
             end
         end
     end

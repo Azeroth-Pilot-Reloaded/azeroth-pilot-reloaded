@@ -15,5 +15,5 @@ treasureData.txt
 .github/prompts/*
 docs/*
 .DS_Store
-tools/.cache/*
-tools/validation/__pycache__/*
+**/.cache/*
+**/__pycache__/*

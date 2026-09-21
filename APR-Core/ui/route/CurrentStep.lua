@@ -1490,7 +1490,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         IconButton:SetAttribute("item", "item:" .. tostring(itemID))
     elseif attribute == "spell" then
         IconButton:SetAttribute("type1", "spell")
-        IconButton:SetAttribute("spell", tonumber(itemID))
+        IconButton:SetAttribute("spell", tonumber(itemID) or itemID)
     elseif attribute == "housing" then
         IconButton:SetAttribute("type", "teleporthome")
         IconButton:SetAttribute("type1", "teleporthome")
@@ -1567,6 +1567,10 @@ end
 ---@param itemID number|nil
 ---@param attribute string
 function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
+    if attribute == 'spell' and type(itemID) == 'string' and C_Spell then
+        local info = C_Spell.GetSpellInfo(itemID)
+        itemID = info and info.spellID or itemID
+    end
     if not APR.settings.profile.currentStepShow then
         return
     end

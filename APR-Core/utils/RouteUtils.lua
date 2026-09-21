@@ -17,6 +17,7 @@ function APR:ResetRoute(targetedRoute)
     APRData[self.PlayerID][targetedRoute] = 1
     APRData[self.PlayerID][targetedRoute .. '-SkippedStep'] = 0
     APRData[self.PlayerID][targetedRoute .. '-ParallelStepsState'] = nil
+    self.routeActionState = nil
     self:GetTotalSteps(targetedRoute)
     APRData[self.PlayerID][targetedRoute .. '-RawTotalSteps'] = self:GetRawStepCount(targetedRoute)
     if self.InvalidateEffectiveRouteStepsCache then
@@ -537,6 +538,7 @@ function APR:IsExactInterfaceVersion(requiredInterfaceVersion)
 end
 
 function APR:AreConditionalFiltersMet(conditions)
+    if conditions and self.MeetsExtendedRouteConditions and not self:MeetsExtendedRouteConditions(conditions) then return false end
     -- Legacy route instructions are now optional global XP overlay reminders.
     -- Keep their slots in the definition so saved step indexes remain valid.
     if conditions and conditions.WarMode then return false end
@@ -614,13 +616,15 @@ function APR:AreConditionalFiltersMet(conditions)
         (not conditions.IsQuestsUncompletedOnAccount or not self:IsQuestsCompletedOnAccount(conditions.IsQuestsUncompletedOnAccount))
 end
 
-function APR:HasRouteResourceFilters(conditions)
+function APR:StepUsesAnyOption(conditions, keys)
     if not conditions then return false end
-    if conditions.Money or conditions.ItemCount or conditions.EquippedItemStat then return true end
-    for _, alternative in ipairs(conditions.AnyOf or {}) do
-        if self:HasRouteResourceFilters(alternative) then return true end
+    for _, key in ipairs(keys) do if conditions[key] ~= nil then return true end end
+    for _, name in ipairs({"AnyOf", "AllOf"}) do
+        for _, alternative in ipairs(conditions[name] or {}) do
+            if self:StepUsesAnyOption(alternative, keys) then return true end
+        end
     end
-    return false
+    return conditions.Not and self:StepUsesAnyOption(conditions.Not, keys) or false
 end
 
 local function RouteMatchesDisplayName(routeData, displayName)

@@ -46,10 +46,12 @@ function APR:DoEmote(step)
     if step and step.Emote then
         local npc_id = APR:GetTargetID() or APR:GetTargetID("mouseover")
 
-        if npc_id == step.Emote.npcID then
+        if not step.Emote.npcID or npc_id == step.Emote.npcID or npc_id == 0 then
             APR:PerformEmote(step.Emote.emote)
-        elseif npc_id == 0 then
-            APR:PerformEmote(step.Emote.emote)
+            if step.EmoteETA and APR.GetRouteActionState then
+                local state = APR:GetRouteActionState(step)
+                if not state.timerStarted then state.timerStarted = true; APR.AFK:SetAfkTimer(step.EmoteETA) end
+            end
         end
     end
 end
