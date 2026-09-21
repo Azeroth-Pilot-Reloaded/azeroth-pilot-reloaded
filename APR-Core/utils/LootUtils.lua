@@ -2,28 +2,39 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.lootUtils = APR.lootUtils or {}
 
--- Virtual counters for quest loot that is not stored in bags
-APR.QuestVirtualItemCount = APR.QuestVirtualItemCount or {}
 APR.CurrencyLooted = APR.CurrencyLooted or {}
 
-----------------------------------------------------------------
--- ITEM LOOT HANDLING
--- Handles both quest items and normal items
--- Quest items that do not enter bags are tracked virtually
-----------------------------------------------------------------
-function APR.lootUtils:OnItemLooted(itemID, quantity)
-    if not itemID then return end
-    quantity = quantity or 1
-
-    -- Bag count after loot (bags may already be updated)
-    local bagCount = C_Item.GetItemCount(itemID, true) or 0
-
-    -- Some quest items never enter bags
-    -- If bag count is zero, track them virtually
-    if bagCount == 0 then
-        APR.QuestVirtualItemCount[itemID] =
-            (APR.QuestVirtualItemCount[itemID] or 0) + quantity
+-- Bank counts are character data, independent of the active route. Refresh them
+-- only while the bank is accessible; they remain available after closing/reloading.
+function APR:SaveBankItemCounts()
+    if not self.routeBankOpen or not APRData or not APRData[self.PlayerID] then return end
+    local slots = C_Container and C_Container.GetContainerNumSlots or GetContainerNumSlots
+    local info = C_Container and C_Container.GetContainerItemInfo or GetContainerItemInfo
+    if not slots or not info or (slots(-1) or 0) == 0 then return end
+    local counts = {}
+    local bags = {-1}
+    for bag = (NUM_BAG_SLOTS or 4) + 1, (NUM_BAG_SLOTS or 4) + (NUM_BANKBAGSLOTS or 7) do bags[#bags + 1] = bag end
+    for _, bag in ipairs(bags) do
+        for slot = 1, slots(bag) or 0 do
+            local item, count, _, _, _, _, _, _, _, id = info(bag, slot)
+            if type(item) == "table" then id, count = item.itemID, item.stackCount end
+            if id then counts[id] = (counts[id] or 0) + (count or 0) end
+        end
     end
+    APRData[self.PlayerID].BankItems = counts
+end
+
+function APR:GetCollectionItemCount(itemID)
+    local fn = C_Item and C_Item.GetItemCount or GetItemCount
+    if not fn then return 0 end
+    local bags = fn(itemID, false) or 0
+    local data = APRData and APRData[self.PlayerID]
+    if data and data.BankItems then return bags + (data.BankItems[itemID] or 0) end
+    return fn(itemID, true) or bags
+end
+
+function APR:IsRouteCollectionComplete(rule)
+    return self:GetCollectionItemCount(rule.itemID) >= (rule.quantity or 1)
 end
 
 ----------------------------------------------------------------
@@ -55,62 +66,7 @@ end
 -- Unified logic for quest items and normal items
 ----------------------------------------------------------------
 function APR:RefreshLootStepDisplay(step)
-    if not step then
-        return
-    end
-
-    local allDone = true
-
-    if step.LootItems then
-        for _, lootItem in ipairs(step.LootItems) do
-            local itemID = lootItem.itemID
-            local requiredQuantity = math.max(lootItem.quantity or 1, 1)
-
-            if itemID then
-                -- Real bag count (normal items)
-                local bagCount = C_Item.GetItemCount(itemID, true) or 0
-                -- Virtual count (quest items that do not enter bags)
-                local virtualCount = APR.QuestVirtualItemCount[itemID] or 0
-
-                -- Use the highest value to avoid double counting
-                local currentQuantity = math.max(bagCount, virtualCount)
-
-                -- Step-scoped completion check (prevents cross-route/step false positives)
-                local isDone =
-                    (currentQuantity >= requiredQuantity)
-                    or APR.lootUtils:IsLootDone(step, "ITEM", itemID)
-
-                -- If requirement is met, mark this loot objective done for THIS route+step
-                if currentQuantity >= requiredQuantity and not isDone then
-                    APR.lootUtils:MarkLootDone(step, "ITEM", itemID)
-                    isDone = true
-                elseif currentQuantity >= requiredQuantity then
-                    -- Ensure it is marked done even if we reached the count without having marked it before
-                    APR.lootUtils:MarkLootDone(step, "ITEM", itemID)
-                end
-
-                if not isDone then
-                    allDone = false
-                end
-
-                -- UI label
-                local itemName = C_Item.GetItemInfo(itemID) or UNKNOWN
-                local label = format(L["LOOT_ITEM"], itemName)
-                if requiredQuantity > 1 then
-                    label = label .. " (" .. currentQuantity .. "/" .. requiredQuantity .. ")"
-                end
-
-                -- Update the step line (stable key = itemID)
-                APR.currentStep:UpdateQuestStep(itemID, label, itemID)
-            end
-        end
-    end
-
-    -- Move to next step if all loot requirements are completed
-    local hasRequirements = (step.LootItems and #step.LootItems > 0)
-    if hasRequirements and allDone then
-        APR:UpdateNextStep()
-    end
+    if step and step.LootItems then self:UpdateStep() end
 end
 
 function APR.lootUtils:GetLootKey(step, lootType, lootID)

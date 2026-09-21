@@ -22,6 +22,9 @@ end
 APR.QuestPool = APR.QuestPool or { ids = {} }
 
 function APR:AcceptQuest()
+    local data = APRData and APRData[self.PlayerID]
+    local options = data and self.ActiveRoute and self:GetStep(data[self.ActiveRoute])
+    if options and options.NoAutoAccept then return end
     AcceptQuest()
 end
 
@@ -454,6 +457,16 @@ function APR:TrigTextValueMatch(trigValue, objectiveText, currentPercent)
         if wanted and currentPercent >= wanted then
             return true
         end
+    end
+
+    -- Partial source objectives may not provide a verified total. "X/" means
+    -- at least X in the displayed counter, using the existing TrigText field.
+    local threshold = trigStr:match("^(%d+)/$")
+    if threshold then
+        for current in tostring(objectiveText):gmatch("(%d+)%s*/%s*%d+") do
+            if tonumber(current) >= tonumber(threshold) then return true end
+        end
+        return false
     end
 
     -- Ratio comparison: "X/Y" matches when objective shows "A/Y" with A >= X

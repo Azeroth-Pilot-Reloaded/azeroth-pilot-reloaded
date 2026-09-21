@@ -589,6 +589,21 @@ function APR.worldCoordinateConverter:ConvertMapCoordinate(zone, mapX, mapY)
     return nil
 end
 
+--- Radius in yards covering map points and their individual arrival radii.
+--- Computed once when route data loads; navigation still uses ordinary Coord/Range.
+function APR.worldCoordinateConverter:GetMapAreaRadius(zone, centerX, centerY, points)
+    local center = self:ConvertMapCoordinate(zone, centerX, centerY)
+    if not center then return nil end
+    local radius = 0
+    for _, point in ipairs(points) do
+        local coord = self:ConvertMapCoordinate(zone, point[1], point[2])
+        if not coord then return nil end
+        local dx, dy = coord.x - center.x, coord.y - center.y
+        radius = math.max(radius, math.sqrt(dx * dx + dy * dy) + (point[3] or 0))
+    end
+    return math.ceil(radius)
+end
+
 function APR.worldCoordinateConverter:ConvertRoute(routeName)
     local route = APR.RouteQuestStepList and APR.RouteQuestStepList[routeName]
     local convertedRoute = CopyRouteValue(route)
