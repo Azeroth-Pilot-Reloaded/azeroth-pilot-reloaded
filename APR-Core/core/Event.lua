@@ -233,6 +233,7 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
             end
             C_Timer.After(2, function()
                 -- Validate persisted progress before navigation can update live steps.
+                APR:Debug("Caller: Event.lua load handler -> GetCurrcentRouteMapIDsAndName")
                 local _, _, routeFileName = APR:GetCurrentRouteMapIDsAndName()
                 APR:CheckCurrentRouteUpToDate(routeFileName)
                 APR:UpdateMapId()
@@ -241,9 +242,6 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR.coordinate:RefreshFrameAnchor()
                 APR:UpdateStep()
 
-                APR:Debug("Caller: Event.lua load handler -> GetCurrentRouteMapIDsAndName")
-                local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
-                -- Ensure the active route is set on load so the current step frame can populate without waiting
                 if routeFileName and routeFileName ~= "" then
                     APR.ActiveRoute = routeFileName
                     if APR.XPBuffOverlay then APR.XPBuffOverlay:QueueRefresh() end
@@ -504,31 +502,35 @@ function APR.event.functions.inventory(event)
     if event == "BAG_UPDATE_DELAYED" then APR:SaveBankItemCounts() end
     if event == "BAG_UPDATE_DELAYED" or event == "GET_ITEM_INFO_RECEIVED" then APR:RefreshLevelProfileTargets() end
     if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
-    RefreshForOptions({"LootItems", "Collection", "ItemCount", "EquippedItemStat", "SellItems", "BankDeposit", "BankWithdraw", "DestroyItems"})
+    RefreshForOptions({ "LootItems", "Collection", "ItemCount", "EquippedItemStat", "SellItems", "BankDeposit",
+        "BankWithdraw", "DestroyItems" })
 end
 
 function APR.event.functions.spellbook()
     if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
-    RefreshForOptions({"LearnSkill", "LearnProfession", "HasSpell", "DontHaveSpell"})
+    RefreshForOptions({ "LearnSkill", "LearnProfession", "HasSpell", "DontHaveSpell" })
 end
 
 function APR.event.functions.money()
-    RefreshForOptions({"Money", "BuyMerchant", "LearnSkill"})
+    RefreshForOptions({ "Money", "BuyMerchant", "LearnSkill" })
 end
 
 function APR.event.functions.equipment()
-    RefreshForOptions({"EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems"})
+    RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems" })
 end
 
 function APR.event.functions.skill()
-    RefreshForOptions({"Skill", "LearnSkill", "LearnProfession"})
+    RefreshForOptions({ "Skill", "LearnSkill", "LearnProfession" })
 end
 
 function APR.event.functions.bank(event)
     if event == "BANKFRAME_OPENED" then APR.routeBankOpen = true end
-    if event == "BANKFRAME_CLOSED" then APR.routeBankOpen = false
-    else APR:SaveBankItemCounts() end
-    RefreshForOptions({"BankDeposit", "BankWithdraw", "Collection", "LootItems", "ItemCount"})
+    if event == "BANKFRAME_CLOSED" then
+        APR.routeBankOpen = false
+    else
+        APR:SaveBankItemCounts()
+    end
+    RefreshForOptions({ "BankDeposit", "BankWithdraw", "Collection", "LootItems", "ItemCount" })
 end
 
 function APR.event.functions.trainer(event)
@@ -547,7 +549,7 @@ end
 function APR.event.functions.buffs(event, unitTarget, updateInfo)
     if unitTarget == "player" then
         APR:RefreshLevelProfileTargets()
-        RefreshForOptions({"HasAura", "DontHaveAura"})
+        RefreshForOptions({ "HasAura", "DontHaveAura" })
     end
     if step and step.Buffs then
         APR.Buff:HandleUnitAuraUpdate(unitTarget, updateInfo)
@@ -1012,7 +1014,7 @@ function APR.event.functions.leaveCombat(event, ...)
         APR:UpdateStep()
     end
 
-    RefreshForOptions({"SellItems", "BankDeposit", "BankWithdraw", "DestroyItems", "LearnSkill"})
+    RefreshForOptions({ "SellItems", "BankDeposit", "BankWithdraw", "DestroyItems", "LearnSkill" })
     if step and step.LearnSkill then APR:HandleSkillTrainer(step) end
     APR:UpdateQuest()
 end
