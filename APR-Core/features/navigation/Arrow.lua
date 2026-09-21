@@ -19,7 +19,7 @@ APR.Arrow.x = 0
 APR.Arrow.y = 0
 APR.Arrow.Distance = 0
 APR.Arrow.QuestStepDistance = 0
-APR.Arrow.MaxDistanceWrongZone = 10000
+APR.Arrow.MaxDistanceWrongZone = APR:GetGameVersion() == "forever" and 1000 or 10000
 APR.Arrow.isWrongZoneDistance = false
 APR.Arrow.arrowUpdateRate = 0
 APR.Arrow.frameTicker = 0
