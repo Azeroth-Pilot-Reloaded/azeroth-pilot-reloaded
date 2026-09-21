@@ -57,6 +57,7 @@ local PREFAB_POPUP_DEFINITIONS = {
         description = L["LEVELING_DESC"],
         unavailableMessage = L["ROUTE_NOT_AVAILABLE_YET"],
         expansions = {
+            APR.EXPANSIONS.TheBurningCrusade,
             APR.EXPANSIONS.WarlordsOfDraenor,
             APR.EXPANSIONS.BattleForAzeroth,
             APR.EXPANSIONS.MistsOfPandaria,
