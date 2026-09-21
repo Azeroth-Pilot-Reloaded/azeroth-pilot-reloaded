@@ -52,6 +52,7 @@ APR-Core/utils/InstanceUtils.lua
 APR-Core/utils/DelveRouteUtils.lua
 APR-Core/config/LevelProfiles.lua
 APR-Core/utils/RouteUtils.lua
+APR-Core/utils/RouteConditions.lua
 APR-Core/utils/RouteManager.lua
 APR-Core/utils/SojournerUtils.lua
 APR-Core/utils/RouteTriggersSuggestion.lua
@@ -85,6 +86,7 @@ APR-Core/core/VersionCheck.lua
 APR-Core/core/Event.lua
 
 APR-Core/features/questing/QuestHandler.lua
+APR-Core/features/questing/RouteActions.lua
 APR-Core/integrations/Farstrider.lua
 APR-Core/integrations/ForeverTravel.lua
 APR-Core/features/navigation/FlightPath.lua

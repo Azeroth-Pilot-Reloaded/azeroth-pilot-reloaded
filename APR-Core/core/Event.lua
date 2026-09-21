@@ -17,16 +17,22 @@ APR.event.functions = {}
 ---------------------------------------------------------------------------------------
 
 local events = {
+    bank = { "BANKFRAME_OPENED", "BANKFRAME_CLOSED", "PLAYERBANKSLOTS_CHANGED", "PLAYERBANKBAGSLOTS_CHANGED" },
+    trainer = { "TRAINER_SHOW", "TRAINER_CLOSED", "TRAINER_UPDATE" },
+    tame = "UNIT_SPELLCAST_START",
+    money = "PLAYER_MONEY",
+    equipment = "PLAYER_EQUIPMENT_CHANGED",
+    skill = "SKILL_LINES_CHANGED",
     load = "ADDON_LOADED",
     accept = { "QUEST_ACCEPTED", "QUEST_ACCEPT_CONFIRM" },
     achievement = { "ACHIEVEMENT_EARNED", "CRITERIA_EARNED", "CRITERIA_COMPLETE" },
     adventureMapAccept = "ADVENTURE_MAP_OPEN",
     adventureMapClose = "ADVENTURE_MAP_CLOSE",
-    actionUsability = { "BAG_UPDATE_DELAYED", "CURSOR_CHANGED", "GET_ITEM_INFO_RECEIVED", "SPELLS_CHANGED",
-        "SPELL_UPDATE_USABLE", "TOYS_UPDATED" },
+    inventory = { "BAG_UPDATE_DELAYED", "CURSOR_CHANGED", "GET_ITEM_INFO_RECEIVED", "TOYS_UPDATED" },
+    spellbook = { "SPELLS_CHANGED", "SPELL_UPDATE_USABLE" },
     buffs = "UNIT_AURA",
     cooldowns = { "BAG_UPDATE_COOLDOWN", "SPELL_UPDATE_CHARGES", "SPELL_UPDATE_COOLDOWN" },
-    dead = { "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST" },
+    dead = { "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST", "CONFIRM_XP_LOSS" },
     detail = "QUEST_DETAIL",
     done = { "QUEST_AUTOCOMPLETE", "QUEST_COMPLETE", "QUEST_PROGRESS" },
     emote = { "CHAT_MSG_MONSTER_SAY", "PLAYER_TARGET_CHANGED", "UPDATE_MOUSEOVER_UNIT" },
@@ -38,7 +44,7 @@ local events = {
     leaveCombat = "PLAYER_REGEN_ENABLED",
     lootItems = { "CHAT_MSG_LOOT", "CURRENCY_DISPLAY_UPDATE" }, -- item , quest Item, currenies( honor, ressources, ...)
     lvlUp = "PLAYER_LEVEL_UP",
-    merchant = { "CHAT_MSG_LOOT", "MERCHANT_SHOW" },
+    merchant = { "MERCHANT_SHOW", "MERCHANT_CLOSED" },
     party = "CHAT_MSG_ADDON",
     partyData = "PLAYER_ENTERING_WORLD",
     petCombatUI = { "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE" },
@@ -47,7 +53,6 @@ local events = {
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
     reputation = { "UPDATE_FACTION", "MAJOR_FACTION_RENOWN_LEVEL_CHANGED" },
-    routeResources = { "PLAYER_MONEY", "PLAYER_EQUIPMENT_CHANGED", "BAG_UPDATE_DELAYED", "GET_ITEM_INFO_RECEIVED" },
     scenario = { "ACTIVE_DELVE_DATA_UPDATE", "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE",
         "WALK_IN_DATA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
@@ -160,9 +165,9 @@ end
 
 -- Cleanup function to properly unregister events and clear handlers
 function APR.event:CleanupEvents()
-    if self.resourceUpdateTimer then
-        self.resourceUpdateTimer:Cancel()
-        self.resourceUpdateTimer = nil
+    if self.stepRefreshTimer then
+        self.stepRefreshTimer:Cancel()
+        self.stepRefreshTimer = nil
     end
     if pendingWarModeTimer then
         pendingWarModeTimer:Cancel()
@@ -479,27 +484,71 @@ function APR.event.functions.adventureMapClose(event, ...)
     CancelAdventureMapRetries()
 end
 
-function APR.event.functions.actionUsability(event, ...)
-    if event == "BAG_UPDATE_DELAYED" or event == "GET_ITEM_INFO_RECEIVED" then
-        APR:RefreshLevelProfileTargets()
-    end
-    if APR.currentStep then
-        APR.currentStep:UpdateStepButtonUsability()
-    end
-end
-
-function APR.event.functions.routeResources()
-    local playerData = APRData and APRData[APR.PlayerID]
-    if not playerData or not APR.ActiveRoute or not APR:HasRouteResourceFilters(APR:GetStep(playerData[APR.ActiveRoute])) then return end
-    if APR.event.resourceUpdateTimer then return end
-    APR.event.resourceUpdateTimer = C_Timer.NewTimer(0.1, function()
-        APR.event.resourceUpdateTimer = nil
-        if APR.ActiveRoute and APR:HasRouteResourceFilters(APR:GetStep(playerData[APR.ActiveRoute])) then APR:UpdateStep() end
+-- Queue one refresh for an inventory/equipment burst. Only the owning event
+-- category calls this; there is no polling and no second resource event listener.
+function APR.event:QueueStepRefresh()
+    if not APR.ActiveRoute or self.stepRefreshTimer then return end
+    self.stepRefreshTimer = C_Timer.NewTimer(0.1, function()
+        self.stepRefreshTimer = nil
+        if APR.ActiveRoute then APR:UpdateStep() end
     end)
 end
 
+local function RefreshForOptions(keys)
+    local data = APRData and APRData[APR.PlayerID]
+    local current = data and APR.ActiveRoute and APR:GetStep(data[APR.ActiveRoute])
+    if APR:StepUsesAnyOption(current, keys) then APR.event:QueueStepRefresh() end
+end
+
+function APR.event.functions.inventory(event)
+    if event == "BAG_UPDATE_DELAYED" then APR:SaveBankItemCounts() end
+    if event == "BAG_UPDATE_DELAYED" or event == "GET_ITEM_INFO_RECEIVED" then APR:RefreshLevelProfileTargets() end
+    if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
+    RefreshForOptions({"LootItems", "Collection", "ItemCount", "EquippedItemStat", "SellItems", "BankDeposit", "BankWithdraw", "DestroyItems"})
+end
+
+function APR.event.functions.spellbook()
+    if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
+    RefreshForOptions({"LearnSkill", "LearnProfession", "HasSpell", "DontHaveSpell"})
+end
+
+function APR.event.functions.money()
+    RefreshForOptions({"Money", "BuyMerchant", "LearnSkill"})
+end
+
+function APR.event.functions.equipment()
+    RefreshForOptions({"EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems"})
+end
+
+function APR.event.functions.skill()
+    RefreshForOptions({"Skill", "LearnSkill", "LearnProfession"})
+end
+
+function APR.event.functions.bank(event)
+    if event == "BANKFRAME_OPENED" then APR.routeBankOpen = true end
+    if event == "BANKFRAME_CLOSED" then APR.routeBankOpen = false
+    else APR:SaveBankItemCounts() end
+    RefreshForOptions({"BankDeposit", "BankWithdraw", "Collection", "LootItems", "ItemCount"})
+end
+
+function APR.event.functions.trainer(event)
+    if event == "TRAINER_SHOW" then APR.routeTrainerOpen = true end
+    if event == "TRAINER_CLOSED" then APR.routeTrainerOpen = false end
+    if step and step.LearnSkill and APR:AreConditionalFiltersMet(step) then
+        APR:HandleSkillTrainer(step)
+        APR.event:QueueStepRefresh()
+    end
+end
+
+function APR.event.functions.tame(event, unit, castGUID, spellID)
+    APR:HandleTameBeast(step, event, unit, spellID)
+end
+
 function APR.event.functions.buffs(event, unitTarget, updateInfo)
-    if unitTarget == "player" then APR:RefreshLevelProfileTargets() end
+    if unitTarget == "player" then
+        APR:RefreshLevelProfileTargets()
+        RefreshForOptions({"HasAura", "DontHaveAura"})
+    end
     if step and step.Buffs then
         APR.Buff:HandleUnitAuraUpdate(unitTarget, updateInfo)
     end
@@ -543,10 +592,12 @@ function APR.event.functions.cooldowns(event, ...)
 end
 
 function APR.event.functions.dead(event, ...)
+    if step and step.DeathSkip then APR:HandleDeathSkip(step, event) end
     APR:UpdateStep()
 end
 
 function APR.event.functions.detail(event, questStartItemID)
+    if step and step.NoAutoAccept then return end
     -- Fired when the player is given a more detailed view of his quest.
     if IsModifierKeyDown() or (not autoAcceptRoute and not autoAccept) then return end
     -- Deny NPC
@@ -577,10 +628,11 @@ function APR.event.functions.detail(event, questStartItemID)
 end
 
 function APR.event.functions.done(event, ...)
-    local profile = APR:GetSettingsProfile()
-    if IsModifierKeyDown() then return end
     local questID = event == "QUEST_AUTOCOMPLETE" and select(1, ...) or GetQuestID()
-    if APR:IsQuestTurnInDeferred(questID) then return end
+    local questOptions = step
+    if questOptions and questOptions.NoAutoTurnIn then return end
+    local profile = APR:GetSettingsProfile()
+    if IsModifierKeyDown() or APR:IsQuestTurnInDeferred(questID) then return end
     if profile and profile.autoHandIn then
         if event == "QUEST_PROGRESS" then
             APR.event:TalkToDenyNpcLogic(step)
@@ -960,6 +1012,8 @@ function APR.event.functions.leaveCombat(event, ...)
         APR:UpdateStep()
     end
 
+    RefreshForOptions({"SellItems", "BankDeposit", "BankWithdraw", "DestroyItems", "LearnSkill"})
+    if step and step.LearnSkill then APR:HandleSkillTrainer(step) end
     APR:UpdateQuest()
 end
 
@@ -973,11 +1027,9 @@ function APR.event.functions.lootItems(event, ...)
         local itemID = select(1, C_Item.GetItemInfoInstant(itemLink))
         if not itemID then return end
         local quantity = APR:GetQuantityfromLootMessage(message) or 1
+        if step and step.BuyMerchant and not step.Qpart then APR:UpdatePurchaseTracking(itemID, quantity) end
 
-        C_Timer.After(1, function()
-            APR.lootUtils:OnItemLooted(itemID, quantity)
-            APR:RefreshLootStepDisplay(step)
-        end)
+        -- Inventory counts refresh from BAG_UPDATE_DELAYED after the bag state changes.
         return
     end
 
@@ -1022,21 +1074,12 @@ function APR.event.functions.xpUpdate()
 end
 
 function APR.event.functions.merchant(event, ...)
-    if event == "CHAT_MSG_LOOT" then
-        if step and step.BuyMerchant and not step.Qpart then
-            local message = ...
-            local itemLink = string.match(message, "|Hitem:.-|h.-|h")
-            local quantity = APR:GetQuantityfromLootMessage(message)
-            if itemLink then
-                local itemID, _, _, _, _, _, _ = C_Item.GetItemInfoInstant(itemLink)
-                APR:UpdatePurchaseTracking(itemID, quantity)
-            end
-        end
-    end
-
+    APR.routeMerchantOpen = event == "MERCHANT_SHOW"
+    if step and step.SellItems then APR.event:QueueStepRefresh() end
     if event == "MERCHANT_SHOW" then
         if IsModifierKeyDown() then return end
         if step and step.BuyMerchant then
+            if step.MerchantNPC and APR:GetTargetID('npc') ~= step.MerchantNPC then return end
             APR:StartPurchaseTracking(step.BuyMerchant)
             APR:BuyItemFromMerchant(step.BuyMerchant)
         end
@@ -1066,7 +1109,7 @@ function APR.event.functions.merchant(event, ...)
                 end
             end
         end
-        if profile and profile.autoVendor then
+        if profile and profile.autoVendor and not (step and step.SellItems) then
             local totalPrices = 0
 
             for myBags = Enum.BagIndex.Backpack, APR.MaxBagSlots do
@@ -1328,6 +1371,9 @@ function APR.event.functions.spec(event, unit)
 end
 
 function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
+    if step and step.SpellETA then APR:HandleSpellETA(step, unitTarget, spellID) end
+    if step and step.TameBeast then APR:HandleTameBeast(step, event, unitTarget, spellID) end
+    if step and step.TameBeast and unitTarget == "player" then APR.event:QueueStepRefresh() end
     if unitTarget == "player" and step then
         if step.UseGarrisonHS and spellID == APR.garrisonHSSpellID then
             APR:UpdateNextStep()
@@ -1337,10 +1383,18 @@ function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
             APR:UpdateNextStep()
             return
         end
+        local itemSpellID = step.UseItem and step.UseItem.itemSpellID
+        if step.UseItem and not itemSpellID then
+            local getItemSpell = C_Item and C_Item.GetItemSpell or GetItemSpell
+            if getItemSpell then
+                local _, id = getItemSpell(step.UseItem.itemID)
+                itemSpellID = id
+            end
+        end
         if (APR:Contains(APR.hearthStoneSpellID, spellID) and step.UseHS) or
             (step.SpellTrigger and spellID == step.SpellTrigger) or
-            (step.UseSpell.spellID and spellID == step.UseSpell.spellID) or
-            (step.UseItem.itemSpellID and spellID == step.UseSpell.itemSpellID)
+            (step.UseSpell and spellID == step.UseSpell.spellID) or
+            (itemSpellID and spellID == itemSpellID)
         then
             APR:UpdateNextStep()
         end

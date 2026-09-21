@@ -781,7 +781,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local itemID = step.UseItem.itemID
                 local itemName = C_Item.GetItemInfo(itemID)
                 local questText = string.format(L["USE_ITEM"], itemName or UNKNOWN)
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                local color = colorByCompletion(questID and C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, questText, color,
                     isCurrentStep)
             elseif step.UseSpell then
@@ -789,7 +789,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local spellID = step.UseSpell.spellID
                 local spellInfo = C_Spell.GetSpellInfo(spellID)
                 local questText = string.format(L["USE_SPELL"], (spellInfo and spellInfo.name) or UNKNOWN)
-                local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
+                local color = colorByCompletion(questID and C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex, rawIndex)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex, questText, color,
                     isCurrentStep)
             elseif step.GetFP then
