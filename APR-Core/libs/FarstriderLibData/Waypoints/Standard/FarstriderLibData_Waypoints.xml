@@ -1,0 +1,14 @@
+<Ui>
+	<Script file='FarstriderLibData_Waypoints.lua' />
+	<Script file='FarstriderLibData_Waypoints_enUS.lua' />
+	<Script file='FarstriderLibData_Waypoints_deDE.lua' />
+	<Script file='FarstriderLibData_Waypoints_esES.lua' />
+	<Script file='FarstriderLibData_Waypoints_esMX.lua' />
+	<Script file='FarstriderLibData_Waypoints_frFR.lua' />
+	<Script file='FarstriderLibData_Waypoints_itIT.lua' />
+	<Script file='FarstriderLibData_Waypoints_koKR.lua' />
+	<Script file='FarstriderLibData_Waypoints_ptBR.lua' />
+	<Script file='FarstriderLibData_Waypoints_ruRU.lua' />
+	<Script file='FarstriderLibData_Waypoints_zhCN.lua' />
+	<Script file='FarstriderLibData_Waypoints_zhTW.lua' />
+</Ui>

@@ -1,0 +1,5 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+  <Script file="libs\FarstriderLibData\FarstriderLibData~Connections.lua"/>
+  <Script file="libs\FarstriderLibData\FarstriderLibData~Finalizer.lua"/>
+  <Include file="libs\FarstriderLib\FarstriderLib.xml"/>
+</Ui>

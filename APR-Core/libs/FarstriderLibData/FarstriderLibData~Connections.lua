@@ -5,6 +5,17 @@ if not FarstriderLibData.Internal then return end
 
 local L = FarstriderLibData.L
 
+-- Some non-mainline clients (e.g. WoW Forever) can report expansion level 0.
+-- Treat this as pre-Cataclysm so classic-era route data remains available.
+local OriginalGetExpansionLevel = GetExpansionLevel
+local function GetExpansionLevel()
+    local level = OriginalGetExpansionLevel and OriginalGetExpansionLevel() or 0
+    if level == 0 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+        return 2
+    end
+    return level
+end
+
 ---@enum SpecialLocaId
 local SpecialLocaId = {
     TravelTo = 1000,
@@ -44,8 +55,11 @@ end
 local flightpathCount = 0
 
 local function addFlightpath(fromMapId, fromPos, fromIsUI, fromAreaId, toMapId, toPos, toIsUI, toAreaId, cost, condition)
-    local from = { unknown1 = 0, flags = 0, loc = { mapId = fromMapId, pos = fromPos, isUI = fromIsUI }, condition = condition, type = 1, important = true, locaId = SpecialLocaId.FlightpathTo, locaArgs = function() return { C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end } ---@type WaypointLocation
-    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, condition = condition, type = 1, important = true, locaId = SpecialLocaId.FlightpathTo, locaArgs = function() return { C_Map.GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId] } end } ---@type WaypointLocation
+    local from = { unknown1 = 0, flags = 0, loc = { mapId = fromMapId, pos = fromPos, isUI = fromIsUI }, condition =
+    condition, type = 1, important = true, locaId = SpecialLocaId.FlightpathTo, locaArgs = function() return { C_Map
+        .GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end } ---@type WaypointLocation
+    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, condition = condition, type = 1, important = true, locaId =
+    SpecialLocaId.FlightpathTo, locaArgs = function() return { C_Map.GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId] } end } ---@type WaypointLocation
     addEntry(SpecialLocaId.FlightpathTo + flightpathCount, from, to, true, cost)
     flightpathCount = flightpathCount + 1
 end
@@ -53,29 +67,41 @@ end
 -- TBC
 if GetExpansionLevel() >= 2 then
     -- Both
-    addFlightpath(122, { x = 0.4756, y = 0.2590, z = 0 }, true, 4085, 23, { x = 0.7556, y = 0.5412, z = 0 }, true, 139, 60)   -- Shattered Sun Staging Area ↔ Light's Hope Chapel, Eastern Plaguelands
-    addFlightpath(122, { x = 0.4756, y = 0.2590, z = 0 }, true, 4085, 95, { x = 0.7403, y = 0.6803, z = 0 }, true, 15947, 30) -- Shattered Sun Staging Area ↔ Zul'Aman, Ghostlands
+    addFlightpath(122, { x = 0.4756, y = 0.2590, z = 0 }, true, 4085, 23, { x = 0.7556, y = 0.5412, z = 0 }, true, 139,
+        60)                                                                                                                   -- Shattered Sun Staging Area ↔ Light's Hope Chapel, Eastern Plaguelands
+    addFlightpath(122, { x = 0.4756, y = 0.2590, z = 0 }, true, 4085, 95, { x = 0.7403, y = 0.6803, z = 0 }, true, 15947,
+        30)                                                                                                                   -- Shattered Sun Staging Area ↔ Zul'Aman, Ghostlands
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
-        addFlightpath(122, { x = 0.4756, y = 0.2590, z = 0 }, true, 4085, 94, { x = 0.5467, y = 0.5061, z = 0 }, true, 3430, 30) -- Shattered Sun Staging Area ↔ Silvermoon City
+        addFlightpath(122, { x = 0.4756, y = 0.2590, z = 0 }, true, 4085, 94, { x = 0.5467, y = 0.5061, z = 0 }, true,
+            3430, 30)                                                                                                            -- Shattered Sun Staging Area ↔ Silvermoon City
     end
 end
 
 -- Shadowlands
 if GetExpansionLevel() >= 8 then
     -- Both
-    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222, { x = -3387.6999511719, y = 5461.4599609375, z = 4275.7202148438 }, false, 10982, 10) -- Oribos to Pridefall Hamlet, Revendreth
-    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222, { x = -6143.7797851562, y = -207.12800598145, z = 5581.919921875 }, false, 11515, 10) -- Oribos to Tirna Vaal, Ardenweald
-    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222, { x = -4160.75, y = -4629.7700195312, z = 6534.1499023438 }, false, 11473, 10)        -- Oribos to Aspirant's Rest, Bastion
-    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222, { x = 2580.4699707031, y = -2520.7600097656, z = 3307.5200195312 }, false, 11465, 10) -- Oribos to Theater of Pain, Maldraxxus
-    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222, { x = -5895.6401367188, y = 4810.740234375, z = 4789.990234375 }, false, 13672, 10)   -- Oribos to Tazavesh, the Veiled Market
+    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222,
+        { x = -3387.6999511719, y = 5461.4599609375, z = 4275.7202148438 }, false, 10982, 10)                                                                                                         -- Oribos to Pridefall Hamlet, Revendreth
+    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222,
+        { x = -6143.7797851562, y = -207.12800598145, z = 5581.919921875 }, false, 11515, 10)                                                                                                         -- Oribos to Tirna Vaal, Ardenweald
+    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222,
+        { x = -4160.75, y = -4629.7700195312, z = 6534.1499023438 }, false, 11473, 10)                                                                                                                -- Oribos to Aspirant's Rest, Bastion
+    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222,
+        { x = 2580.4699707031, y = -2520.7600097656, z = 3307.5200195312 }, false, 11465, 10)                                                                                                         -- Oribos to Theater of Pain, Maldraxxus
+    addFlightpath(2222, { x = -1902.4399414062, y = 1214.7600097656, z = 5450.8701171875 }, false, 10565, 2222,
+        { x = -5895.6401367188, y = 4810.740234375, z = 4789.990234375 }, false, 13672, 10)                                                                                                           -- Oribos to Tazavesh, the Veiled Market
 end
 
 local boatCount = 0
 
 local function addBoat(fromMapId, fromPos, fromIsUI, fromAreaId, toMapId, toPos, toIsUI, toAreaId, cost, condition)
-    local from = { unknown1 = 0, flags = 0, loc = { mapId = fromMapId, pos = fromPos, isUI = fromIsUI }, condition = condition, type = 1, important = true, locaId = SpecialLocaId.BoatTo, locaArgs = function() return { C_Map.GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId], C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
-    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, condition = condition, type = 1, important = true, locaId = SpecialLocaId.BoatTo, locaArgs = function() return { C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId], C_Map.GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId] } end }
+    local from = { unknown1 = 0, flags = 0, loc = { mapId = fromMapId, pos = fromPos, isUI = fromIsUI }, condition =
+    condition, type = 1, important = true, locaId = SpecialLocaId.BoatTo, locaArgs = function() return { C_Map
+        .GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId], C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
+    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, condition = condition, type = 1, important = true, locaId =
+    SpecialLocaId.BoatTo, locaArgs = function() return { C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId], C_Map
+        .GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId] } end }
     addEntry(SpecialLocaId.BoatTo + boatCount, from, to, true, cost)
     boatCount = boatCount + 1
 end
@@ -85,7 +111,8 @@ if GetExpansionLevel() < 3 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
         addBoat(0, { x = -3831, y = -611, z = 4 }, false, 150, 1, { x = 6448, y = 835, z = 5 }, false, 442, 600)                                  -- Menethil Harbor to Auberdine
-        addBoat(1, { x = 6448, y = 835, z = 5 }, false, 442, 1, { x = 8177.5600585938, y = 1002.6599731445, z = 6.66929006577 }, false, 702, 600) -- Auberdine to Rut'theran Village
+        addBoat(1, { x = 6448, y = 835, z = 5 }, false, 442, 1,
+            { x = 8177.5600585938, y = 1002.6599731445, z = 6.66929006577 }, false, 702, 600)                                                     -- Auberdine to Rut'theran Village
 
         if GetExpansionLevel() >= 1 then
             addBoat(1, { x = 6448, y = 835, z = 5 }, false, 442, 530, { x = -4284, y = -11194, z = 13 }, false, 3574, 600) -- Auberdine to Valaar's Berth (Azuremyst Isle)
@@ -97,15 +124,20 @@ end
 if GetExpansionLevel() >= 3 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
-        addBoat(0, { x = -8645.5400390625, y = 1308.25, z = 5.23483991623 }, false, 1519, 1, { x = 8177.5600585938, y = 1002.6599731445, z = 6.66929006577 }, false, 702, 600) -- Stormwind to Rut'theran Village
+        addBoat(0, { x = -8645.5400390625, y = 1308.25, z = 5.23483991623 }, false, 1519, 1,
+            { x = 8177.5600585938, y = 1002.6599731445, z = 6.66929006577 }, false, 702, 600)                                                                                  -- Stormwind to Rut'theran Village
     end
 end
 
 local zeppelinCount = 0
 
 local function addZeppelin(fromMapId, fromPos, fromIsUI, fromAreaId, toMapId, toPos, toIsUI, toAreaId, cost, condition)
-    local from = { unknown1 = 0, flags = 0, loc = { mapId = fromMapId, pos = fromPos, isUI = fromIsUI }, condition = condition, type = 1, important = true, locaId = SpecialLocaId.ZeppelinTo, locaArgs = function() return { C_Map.GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId], C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
-    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, condition = condition, type = 1, important = true, locaId = SpecialLocaId.ZeppelinTo, locaArgs = function() return { C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId], C_Map.GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId] } end }
+    local from = { unknown1 = 0, flags = 0, loc = { mapId = fromMapId, pos = fromPos, isUI = fromIsUI }, condition =
+    condition, type = 1, important = true, locaId = SpecialLocaId.ZeppelinTo, locaArgs = function() return { C_Map
+        .GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId], C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
+    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, condition = condition, type = 1, important = true, locaId =
+    SpecialLocaId.ZeppelinTo, locaArgs = function() return { C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId], C_Map
+        .GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId] } end }
     addEntry(SpecialLocaId.ZeppelinTo + zeppelinCount, from, to, true, cost)
     zeppelinCount = zeppelinCount + 1
 end
@@ -114,10 +146,15 @@ end
 if WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
-        addZeppelin(0, { x = 2070.5122070312, y = 289.15798950195, z = 97.03157806396 }, false, 1497, 1, { x = 1842.1899414062, y = -4389.0400390625, z = 135.23300170898 }, false, 1637, 600)     --  Undercity to Orgrimmar
-        addZeppelin(0, { x = 2059.9340820312, y = 235.90972900391, z = 99.76524353027 }, false, 1497, 0, { x = -12396.400390625, y = 217.47999572754, z = 1.69035005569 }, false, 117, 600)        --  Undercity to Grom'gol Base Camp
+        addZeppelin(1, { x = 0.506, y = 0.126, z = 0 }, true, 1637, 0,
+            { x = -12396.400390625, y = 217.47999572754, z = 1.69035005569 }, false, 117, 600)                                                                                                     --  Orgrimmar (Durotar tower) to Grom'gol Base Camp (WoW Forever)
+        addZeppelin(0, { x = 2070.5122070312, y = 289.15798950195, z = 97.03157806396 }, false, 1497, 1,
+            { x = 1319.5, y = -4389.0400390625, z = 135.23300170898 }, false, 1637, 600)                                                                                                           --  Undercity to Orgrimmar
+        addZeppelin(0, { x = 2059.9340820312, y = 235.90972900391, z = 99.76524353027 }, false, 1497, 0,
+            { x = -12396.400390625, y = 217.47999572754, z = 1.69035005569 }, false, 117, 600)                                                                                                     --  Undercity to Grom'gol Base Camp
         if GetExpansionLevel() >= 2 then
-            addZeppelin(0, { x = 2063.2448730469, y = 364.23959350586, z = 82.50442504883 }, false, 1497, 571, { x = 1950.8000488281, y = -6174.2299804688, z = 24.30380058289 }, false, 495, 600) --  Undercity to Howling Fjord
+            addZeppelin(0, { x = 2063.2448730469, y = 364.23959350586, z = 82.50442504883 }, false, 1497, 571,
+                { x = 1950.8000488281, y = -6174.2299804688, z = 24.30380058289 }, false, 495, 600)                                                                                                --  Undercity to Howling Fjord
         end
     end
 end
@@ -128,14 +165,18 @@ if GetExpansionLevel() < 3 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
     if UnitFactionGroup("player") == "Alliance" then
         addBoat(56, { x = 0.0637, y = 0.6224, z = 0 }, true, 150, 70, { x = 0.7151, y = 0.5634, z = 0 }, true, 513, 600)        -- Menethil Harbor to Theramore
         if GetExpansionLevel() >= 2 then
-            addBoat(56, { x = 0.0510, y = 0.5572, z = 0 }, true, 150, 117, { x = 0.6133, y = 0.6260, z = 0 }, true, 3981, 600)  -- Menethil Harbor to Valgarde
-            addBoat(84, { x = 0.1802, y = 0.2584, z = 0 }, true, 1519, 114, { x = 0.5968, y = 0.6941, z = 0 }, true, 3537, 177) -- Stormwind to Borean Tundra
+            addBoat(56, { x = 0.0510, y = 0.5572, z = 0 }, true, 150, 117, { x = 0.6133, y = 0.6260, z = 0 }, true, 3981,
+                600)                                                                                                            -- Menethil Harbor to Valgarde
+            addBoat(84, { x = 0.1802, y = 0.2584, z = 0 }, true, 1519, 114, { x = 0.5968, y = 0.6941, z = 0 }, true, 3537,
+                177)                                                                                                            -- Stormwind to Borean Tundra
         end
     end
     -- Turtle boats (WotLK+)
     if GetExpansionLevel() >= 2 then
-        addBoat(114, { x = 0.7892, y = 0.5365, z = 0 }, true, 4113, 115, { x = 0.4794, y = 0.7876, z = 0 }, true, 4152, 600) -- Unu'pe to Moa'ki Harbor
-        addBoat(115, { x = 0.4964, y = 0.7843, z = 0 }, true, 4152, 117, { x = 0.2346, y = 0.5775, z = 0 }, true, 3988, 600) -- Moa'ki Harbor to Kamagua
+        addBoat(114, { x = 0.7892, y = 0.5365, z = 0 }, true, 4113, 115, { x = 0.4794, y = 0.7876, z = 0 }, true, 4152,
+            600)                                                                                                             -- Unu'pe to Moa'ki Harbor
+        addBoat(115, { x = 0.4964, y = 0.7843, z = 0 }, true, 4152, 117, { x = 0.2346, y = 0.5775, z = 0 }, true, 3988,
+            600)                                                                                                             -- Moa'ki Harbor to Kamagua
     end
 end
 
@@ -148,41 +189,56 @@ if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE or GetExpansionLevel() >= 3 then
     if UnitFactionGroup("player") == "Alliance" then
         addBoat(56, { x = 0.0637, y = 0.6224, z = 0 }, true, 150, 70, { x = 0.7151, y = 0.5634, z = 0 }, true, 513, 600)        -- Menethil Harbor to Theramore
         if GetExpansionLevel() >= 2 then
-            addBoat(56, { x = 0.0510, y = 0.5572, z = 0 }, true, 150, 117, { x = 0.6133, y = 0.6260, z = 0 }, true, 3981, 600)  -- Menethil Harbor to Valgarde
-            addBoat(84, { x = 0.1802, y = 0.2584, z = 0 }, true, 1519, 114, { x = 0.5968, y = 0.6941, z = 0 }, true, 3537, 177) -- Stormwind to Borean Tundra
+            addBoat(56, { x = 0.0510, y = 0.5572, z = 0 }, true, 150, 117, { x = 0.6133, y = 0.6260, z = 0 }, true, 3981,
+                600)                                                                                                            -- Menethil Harbor to Valgarde
+            addBoat(84, { x = 0.1802, y = 0.2584, z = 0 }, true, 1519, 114, { x = 0.5968, y = 0.6941, z = 0 }, true, 3537,
+                177)                                                                                                            -- Stormwind to Borean Tundra
         end
         if GetExpansionLevel() >= 9 then
-            addBoat(84, { x = 0.2251, y = 0.5618, z = 0 }, true, 1519, 2022, { x = 0.8216, y = 0.3076, z = 0 }, true, 13644, 150) -- Stormwind to The Waking Shores
+            addBoat(84, { x = 0.2251, y = 0.5618, z = 0 }, true, 1519, 2022, { x = 0.8216, y = 0.3076, z = 0 }, true,
+                13644, 150)                                                                                                       -- Stormwind to The Waking Shores
         end
     end
 
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
-        addZeppelin(85, { x = 0.4300, y = 0.6499, z = 0 }, true, 1637, 88, { x = 0.1528, y = 0.2570, z = 0 }, true, 1638, 600)      -- Orgrimmar to Thunder Bluff
-        addZeppelin(85, { x = 0.5252, y = 0.5315, z = 0 }, true, 1637, 50, { x = 0.3717, y = 0.5249, z = 0 }, true, 117, 600)       -- Orgrimmar to Grom'gol Base Camp
+        addZeppelin(85, { x = 0.4300, y = 0.6499, z = 0 }, true, 1637, 88, { x = 0.1528, y = 0.2570, z = 0 }, true, 1638,
+            600)                                                                                                                    -- Orgrimmar to Thunder Bluff
+        addZeppelin(85, { x = 0.5252, y = 0.5315, z = 0 }, true, 1637, 50, { x = 0.3717, y = 0.5249, z = 0 }, true, 117,
+            600)                                                                                                                    -- Orgrimmar to Grom'gol Base Camp
         if GetExpansionLevel() >= 2 then
-            addZeppelin(85, { x = 0.4475, y = 0.6230, z = 0 }, true, 1637, 114, { x = 0.4138, y = 0.5361, z = 0 }, true, 3537, 600) -- Orgrimmar to Borean Tundra
+            addZeppelin(85, { x = 0.4475, y = 0.6230, z = 0 }, true, 1637, 114, { x = 0.4138, y = 0.5361, z = 0 }, true,
+                3537, 600)                                                                                                          -- Orgrimmar to Borean Tundra
         end
         if GetExpansionLevel() >= 7 then
-            addZeppelin(463, { x = 0.7093, y = 0.3823, z = 0 }, true, 368, 862, { x = 0.5803, y = 0.6505, z = 0 }, true, 8499, 600) -- Echo Isles to Zuldazar
+            addZeppelin(463, { x = 0.7093, y = 0.3823, z = 0 }, true, 368, 862, { x = 0.5803, y = 0.6505, z = 0 }, true,
+                8499, 600)                                                                                                          -- Echo Isles to Zuldazar
         end
         if GetExpansionLevel() >= 9 then
-            addZeppelin(1, { x = 0.5598, y = 0.1322, z = 0 }, true, 14, 2022, { x = 0.8165, y = 0.2796, z = 0 }, true, 13644, 150) -- Durotar to The Waking Shores
+            addZeppelin(1, { x = 0.5598, y = 0.1322, z = 0 }, true, 14, 2022, { x = 0.8165, y = 0.2796, z = 0 }, true,
+                13644, 150)                                                                                                        -- Durotar to The Waking Shores
         end
     end
 
     -- Turtle boats (WotLK+)
     if GetExpansionLevel() >= 2 then
-        addBoat(114, { x = 0.7892, y = 0.5365, z = 0 }, true, 4113, 115, { x = 0.4794, y = 0.7876, z = 0 }, true, 4152, 600) -- Unu'pe to Moa'ki Harbor
-        addBoat(115, { x = 0.4964, y = 0.7843, z = 0 }, true, 4152, 117, { x = 0.2346, y = 0.5775, z = 0 }, true, 3988, 600) -- Moa'ki Harbor to Kamagua
+        addBoat(114, { x = 0.7892, y = 0.5365, z = 0 }, true, 4113, 115, { x = 0.4794, y = 0.7876, z = 0 }, true, 4152,
+            600)                                                                                                             -- Unu'pe to Moa'ki Harbor
+        addBoat(115, { x = 0.4964, y = 0.7843, z = 0 }, true, 4152, 117, { x = 0.2346, y = 0.5775, z = 0 }, true, 3988,
+            600)                                                                                                             -- Moa'ki Harbor to Kamagua
     end
 end
 
 local portalCount = 0
 
-local function addPortal(bidirectional, fromMapId, fromPos, fromIsUI, fromAreaId, toMapId, toPos, toIsUI, toAreaId, cost, condition)
-    local from = { unknown1 = 0, flags = 0, loc = { mapId = fromMapId, pos = fromPos, isUI = fromIsUI }, condition = condition, type = 1, important = true, locaId = SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
-    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, condition = bidirectional and condition or nil, type = 1, important = true, locaId = SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId] } end }
+local function addPortal(bidirectional, fromMapId, fromPos, fromIsUI, fromAreaId, toMapId, toPos, toIsUI, toAreaId, cost,
+                         condition)
+    local from = { unknown1 = 0, flags = 0, loc = { mapId = fromMapId, pos = fromPos, isUI = fromIsUI }, condition =
+    condition, type = 1, important = true, locaId = SpecialLocaId.PortalTo, locaArgs = function() return { C_Map
+        .GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
+    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, condition =
+    bidirectional and condition or nil, type = 1, important = true, locaId = SpecialLocaId.PortalTo, locaArgs = function() return {
+            C_Map.GetAreaInfo(fromAreaId) or L["Area_" .. fromAreaId] } end }
     addEntry(SpecialLocaId.PortalTo + portalCount, from, to, bidirectional, cost)
     portalCount = portalCount + 1
 end
@@ -190,19 +246,22 @@ end
 -- Wrath of the Lich King
 if GetExpansionLevel() >= 2 then
     -- Both
-    addPortal(true, 119, { x = 0.4035, y = 0.8309, z = 0 }, true, 4300, 78, { x = 0.5055, y = 0.0773, z = 0 }, true, 4381, 10, function() return C_QuestLog.IsQuestFlaggedCompleted(12546) end) -- Sholazar Basin to Un'Goro Crater
+    addPortal(true, 119, { x = 0.4035, y = 0.8309, z = 0 }, true, 4300, 78, { x = 0.5055, y = 0.0773, z = 0 }, true, 4381,
+        10, function() return C_QuestLog.IsQuestFlaggedCompleted(12546) end)                                                                                                                    -- Sholazar Basin to Un'Goro Crater
 end
 
 -- Pandaria (Retail Only)
 if GetExpansionLevel() >= 4 and WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
-        addPortal(true, 388, { x = 0.4975, y = 0.6866, z = 0 }, true, 5842, 504, { x = 0.6470, y = 0.7348, z = 0 }, true, 6507, 10) -- Townlong Steppes to Isle of Thunder
+        addPortal(true, 388, { x = 0.4975, y = 0.6866, z = 0 }, true, 5842, 504, { x = 0.6470, y = 0.7348, z = 0 }, true,
+            6507, 10)                                                                                                               -- Townlong Steppes to Isle of Thunder
     end
 
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
-        addPortal(true, 388, { x = 0.5065, y = 0.7340, z = 0 }, true, 5842, 504, { x = 0.3315, y = 0.3285, z = 0 }, true, 6507, 10) -- Townlong Steppes to Isle of Thunder
+        addPortal(true, 388, { x = 0.5065, y = 0.7340, z = 0 }, true, 5842, 504, { x = 0.3315, y = 0.3285, z = 0 }, true,
+            6507, 10)                                                                                                               -- Townlong Steppes to Isle of Thunder
     end
 end
 
@@ -210,55 +269,78 @@ end
 if GetExpansionLevel() >= 1 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
     -- Dalaran to Caverns of Time (Wrath+)
     if GetExpansionLevel() >= 2 then
-        addPortal(true, 125, { x = 0.2543, y = 0.5155, z = 661 }, true, 4613, 74, { x = 0.5460, y = 0.2830, z = 0 }, true, 2300, 10) -- Dalaran to Caverns of Time
+        addPortal(true, 125, { x = 0.2543, y = 0.5155, z = 661 }, true, 4613, 74, { x = 0.5460, y = 0.2830, z = 0 }, true,
+            2300, 10)                                                                                                                -- Dalaran to Caverns of Time
 
         -- Silver Enclave / Sunreaver's Sanctuary portals to capitals
         if UnitFactionGroup("player") == "Alliance" then
-            addPortal(false, 571, { x = 5718.9501953125, y = 719.59997558594, z = 641.72698974609 }, false, 4613, 87, { x = 0.27, y = 0.07, z = 0 }, true, 1537, 10)  -- Silver Enclave to Ironforge
-            addPortal(false, 571, { x = 5718.9501953125, y = 719.59997558594, z = 641.72698974609 }, false, 4613, 89, { x = 0.44, y = 0.78, z = 0 }, true, 1657, 10)  -- Silver Enclave to Darnassus
-            addPortal(false, 571, { x = 5718.9501953125, y = 719.59997558594, z = 641.72698974609 }, false, 4613, 103, { x = 0.26, y = 0.46, z = 0 }, true, 3557, 10) -- Silver Enclave to Exodar
+            addPortal(false, 571, { x = 5718.9501953125, y = 719.59997558594, z = 641.72698974609 }, false, 4613, 87,
+                { x = 0.27, y = 0.07, z = 0 }, true, 1537, 10)                                                                                                        -- Silver Enclave to Ironforge
+            addPortal(false, 571, { x = 5718.9501953125, y = 719.59997558594, z = 641.72698974609 }, false, 4613, 89,
+                { x = 0.44, y = 0.78, z = 0 }, true, 1657, 10)                                                                                                        -- Silver Enclave to Darnassus
+            addPortal(false, 571, { x = 5718.9501953125, y = 719.59997558594, z = 641.72698974609 }, false, 4613, 103,
+                { x = 0.26, y = 0.46, z = 0 }, true, 3557, 10)                                                                                                        -- Silver Enclave to Exodar
         end
         if UnitFactionGroup("player") == "Horde" then
-            addPortal(false, 571, { x = 5925.7900390625, y = 593.60400390625, z = 640.59301757813 }, false, 4613, 998, { x = 0.85, y = 0.17, z = 0 }, true, 1497, 10) -- Sunreaver's Sanctuary to Undercity
-            addPortal(false, 571, { x = 5925.7900390625, y = 593.60400390625, z = 640.59301757813 }, false, 4613, 88, { x = 0.22, y = 0.19, z = 0 }, true, 1638, 10)  -- Sunreaver's Sanctuary to Thunder Bluff
-            addPortal(false, 571, { x = 5925.7900390625, y = 593.60400390625, z = 640.59301757813 }, false, 4613, 110, { x = 0.56, y = 0.22, z = 0 }, true, 3487, 10) -- Sunreaver's Sanctuary to Silvermoon
+            addPortal(false, 571, { x = 5925.7900390625, y = 593.60400390625, z = 640.59301757813 }, false, 4613, 998,
+                { x = 0.85, y = 0.17, z = 0 }, true, 1497, 10)                                                                                                        -- Sunreaver's Sanctuary to Undercity
+            addPortal(false, 571, { x = 5925.7900390625, y = 593.60400390625, z = 640.59301757813 }, false, 4613, 88,
+                { x = 0.22, y = 0.19, z = 0 }, true, 1638, 10)                                                                                                        -- Sunreaver's Sanctuary to Thunder Bluff
+            addPortal(false, 571, { x = 5925.7900390625, y = 593.60400390625, z = 640.59301757813 }, false, 4613, 110,
+                { x = 0.56, y = 0.22, z = 0 }, true, 3487, 10)                                                                                                        -- Sunreaver's Sanctuary to Silvermoon
         end
     end
 
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
-        addPortal(false, 103, { x = 0.4757, y = 0.6216, z = -138 }, true, 3557, 89, { x = 0.4347, y = 0.7868, z = 0 }, true, 1657, 10)                                               -- Exodar to Darnassus
-        addPortal(false, 103, { x = 0.4815, y = 0.6302, z = -138 }, true, 3557, 17, { x = 0.5390, y = 0.4608, z = 0 }, true, 4, 10, function() return UnitLevel("player") >= 56 end) -- Exodar to Blasted Lands
+        addPortal(false, 103, { x = 0.4757, y = 0.6216, z = -138 }, true, 3557, 89, { x = 0.4347, y = 0.7868, z = 0 },
+            true, 1657, 10)                                                                                                                                                          -- Exodar to Darnassus
+        addPortal(false, 103, { x = 0.4815, y = 0.6302, z = -138 }, true, 3557, 17, { x = 0.5390, y = 0.4608, z = 0 },
+            true, 4, 10, function() return UnitLevel("player") >= 56 end)                                                                                                            -- Exodar to Blasted Lands
 
-        addPortal(false, 84, { x = 0.4897, y = 0.8736, z = 100 }, true, 1519, 17, { x = 0.5390, y = 0.4608, z = 0 }, true, 4, 10, function() return UnitLevel("player") >= 56 end)   -- Stormwind to Blasted Lands
+        addPortal(false, 84, { x = 0.4897, y = 0.8736, z = 100 }, true, 1519, 17, { x = 0.5390, y = 0.4608, z = 0 }, true,
+            4, 10, function() return UnitLevel("player") >= 56 end)                                                                                                                  -- Stormwind to Blasted Lands
 
-        addPortal(false, 87, { x = 0.2726, y = 0.0708, z = 501 }, true, 1537, 17, { x = 0.5390, y = 0.4608, z = 0 }, true, 4, 10, function() return UnitLevel("player") >= 56 end)   -- Ironforge to Blasted Lands
+        addPortal(false, 87, { x = 0.2726, y = 0.0708, z = 501 }, true, 1537, 17, { x = 0.5390, y = 0.4608, z = 0 }, true,
+            4, 10, function() return UnitLevel("player") >= 56 end)                                                                                                                  -- Ironforge to Blasted Lands
 
-        addPortal(false, 89, { x = 0.4399, y = 0.7814, z = 0 }, true, 1657, 103, { x = 0.2627, y = 0.4559, z = -138 }, true, 3557, 10)                                               -- Darnassus to Exodar
-        addPortal(false, 89, { x = 0.4422, y = 0.7870, z = 0 }, true, 1657, 17, { x = 0.5390, y = 0.4608, z = 0 }, true, 4, 10, function() return UnitLevel("player") >= 56 end)     -- Darnassus to Blasted Lands
+        addPortal(false, 89, { x = 0.4399, y = 0.7814, z = 0 }, true, 1657, 103, { x = 0.2627, y = 0.4559, z = -138 },
+            true, 3557, 10)                                                                                                                                                          -- Darnassus to Exodar
+        addPortal(false, 89, { x = 0.4422, y = 0.7870, z = 0 }, true, 1657, 17, { x = 0.5390, y = 0.4608, z = 0 }, true,
+            4, 10, function() return UnitLevel("player") >= 56 end)                                                                                                                  -- Darnassus to Blasted Lands
 
         -- Shattrath portals to capitals
-        addPortal(false, 530, { x = -1894.2399902344, y = 5387.8500976562, z = -12.42669963837 }, false, 3703, 87, { x = 0.27, y = 0.07, z = 0 }, true, 1537, 10)  -- Shattrath to Ironforge
-        addPortal(false, 530, { x = -1894.2399902344, y = 5387.8500976562, z = -12.42669963837 }, false, 3703, 89, { x = 0.44, y = 0.78, z = 0 }, true, 1657, 10)  -- Shattrath to Darnassus
-        addPortal(false, 530, { x = -1894.2399902344, y = 5387.8500976562, z = -12.42669963837 }, false, 3703, 103, { x = 0.26, y = 0.46, z = 0 }, true, 3557, 10) -- Shattrath to Exodar
+        addPortal(false, 530, { x = -1894.2399902344, y = 5387.8500976562, z = -12.42669963837 }, false, 3703, 87,
+            { x = 0.27, y = 0.07, z = 0 }, true, 1537, 10)                                                                                                         -- Shattrath to Ironforge
+        addPortal(false, 530, { x = -1894.2399902344, y = 5387.8500976562, z = -12.42669963837 }, false, 3703, 89,
+            { x = 0.44, y = 0.78, z = 0 }, true, 1657, 10)                                                                                                         -- Shattrath to Darnassus
+        addPortal(false, 530, { x = -1894.2399902344, y = 5387.8500976562, z = -12.42669963837 }, false, 3703, 103,
+            { x = 0.26, y = 0.46, z = 0 }, true, 3557, 10)                                                                                                         -- Shattrath to Exodar
     end
 
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
         addPortal(false, 0, { x = 1949, y = -98, z = 41 }, false, 153, 110, { x = 0.56, y = 0.22, z = 0 }, true, 3487, 30)                                                         -- Ruins of Lordaeron Orb of Translocation to Silvermoon
 
-        addPortal(false, 110, { x = 0.5870, y = 0.2052, z = 48 }, true, 3487, 17, { x = 0.5390, y = 0.4608, z = 0 }, true, 4, 10, function() return UnitLevel("player") >= 56 end) -- Silvermoon to Blasted Lands
+        addPortal(false, 110, { x = 0.5870, y = 0.2052, z = 48 }, true, 3487, 17, { x = 0.5390, y = 0.4608, z = 0 }, true,
+            4, 10, function() return UnitLevel("player") >= 56 end)                                                                                                                -- Silvermoon to Blasted Lands
 
-        addPortal(false, 86, { x = 0.4648, y = 0.6689, z = 0 }, true, 1637, 17, { x = 0.5390, y = 0.4608, z = 0 }, true, 4, 10, function() return UnitLevel("player") >= 56 end)   -- Orgrimmar to Blasted Lands
+        addPortal(false, 86, { x = 0.4648, y = 0.6689, z = 0 }, true, 1637, 17, { x = 0.5390, y = 0.4608, z = 0 }, true,
+            4, 10, function() return UnitLevel("player") >= 56 end)                                                                                                                -- Orgrimmar to Blasted Lands
 
-        addPortal(false, 88, { x = 0.2297, y = 0.1360, z = 111 }, true, 1638, 17, { x = 0.5390, y = 0.4608, z = 0 }, true, 4, 10, function() return UnitLevel("player") >= 56 end) -- Thunder Bluff to Blasted Lands
+        addPortal(false, 88, { x = 0.2297, y = 0.1360, z = 111 }, true, 1638, 17, { x = 0.5390, y = 0.4608, z = 0 }, true,
+            4, 10, function() return UnitLevel("player") >= 56 end)                                                                                                                -- Thunder Bluff to Blasted Lands
 
-        addPortal(false, 998, { x = 0.8527, y = 0.1727, z = 0 }, true, 1497, 17, { x = 0.5390, y = 0.4608, z = 0 }, true, 4, 10, function() return UnitLevel("player") >= 56 end)  -- Undercity to Blasted Lands
+        addPortal(false, 998, { x = 0.8527, y = 0.1727, z = 0 }, true, 1497, 17, { x = 0.5390, y = 0.4608, z = 0 }, true,
+            4, 10, function() return UnitLevel("player") >= 56 end)                                                                                                                -- Undercity to Blasted Lands
 
         -- Shattrath portals to capitals
-        addPortal(false, 530, { x = -1899.6800537109, y = 5392.7299804688, z = -12.42640018463 }, false, 3703, 998, { x = 0.85, y = 0.17, z = 0 }, true, 1497, 10) -- Shattrath to Undercity
-        addPortal(false, 530, { x = -1899.6800537109, y = 5392.7299804688, z = -12.42640018463 }, false, 3703, 88, { x = 0.22, y = 0.19, z = 0 }, true, 1638, 10)  -- Shattrath to Thunder Bluff
-        addPortal(false, 530, { x = -1899.6800537109, y = 5392.7299804688, z = -12.42640018463 }, false, 3703, 110, { x = 0.56, y = 0.22, z = 0 }, true, 3487, 10) -- Shattrath to Silvermoon
+        addPortal(false, 530, { x = -1899.6800537109, y = 5392.7299804688, z = -12.42640018463 }, false, 3703, 998,
+            { x = 0.85, y = 0.17, z = 0 }, true, 1497, 10)                                                                                                         -- Shattrath to Undercity
+        addPortal(false, 530, { x = -1899.6800537109, y = 5392.7299804688, z = -12.42640018463 }, false, 3703, 88,
+            { x = 0.22, y = 0.19, z = 0 }, true, 1638, 10)                                                                                                         -- Shattrath to Thunder Bluff
+        addPortal(false, 530, { x = -1899.6800537109, y = 5392.7299804688, z = -12.42640018463 }, false, 3703, 110,
+            { x = 0.56, y = 0.22, z = 0 }, true, 3487, 10)                                                                                                         -- Shattrath to Silvermoon
     end
 end
 
@@ -266,40 +348,60 @@ end
 if GetExpansionLevel() >= 4 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
-        addPortal(false, 84, { x = 0.6871, y = 0.1717, z = 117 }, true, 1519, 371, { x = 0.4624, y = 0.8517, z = 63 }, true, 6516, 10, function() return C_QuestLog.IsQuestFlaggedCompleted(29548) end) -- Stormwind to Paw'don Village
+        addPortal(false, 84, { x = 0.6871, y = 0.1717, z = 117 }, true, 1519, 371, { x = 0.4624, y = 0.8517, z = 63 },
+            true, 6516, 10, function() return C_QuestLog.IsQuestFlaggedCompleted(29548) end)                                                                                                            -- Stormwind to Paw'don Village
 
-        addPortal(false, 394, { x = 0.7086, y = 0.3040, z = 0 }, true, 6142, 103, { x = 0.2627, y = 0.4559, z = -138 }, true, 3557, 10)                                                                 -- Shrine of Seven Stars to Exodar
-        addPortal(false, 394, { x = 0.7168, y = 0.3598, z = 0 }, true, 6142, 84, { x = 0.4867, y = 0.8815, z = 149 }, true, 1519, 10)                                                                   -- Shrine of Seven Stars to Stormwind
-        addPortal(false, 394, { x = 0.7403, y = 0.4098, z = 0 }, true, 6142, 87, { x = 0.2551, y = 0.843, z = 501 }, true, 1537, 10)                                                                    -- Shrine of Seven Stars to Ironforge
-        addPortal(false, 394, { x = 0.7724, y = 0.4350, z = 0 }, true, 6142, 89, { x = 0.4347, y = 0.7868, z = 0 }, true, 1657, 10)                                                                     -- Shrine of Seven Stars to Darnassus
-        addPortal(false, 394, { x = 0.6848, y = 0.5298, z = 0 }, true, 6142, 111, { x = 0.5497, y = 0.4023, z = -12 }, true, 3703, 10)                                                                  -- Shrine of Seven Stars to Shattrath
-        addPortal(false, 394, { x = 0.6165, y = 0.3960, z = 0 }, true, 6142, 125, { x = 0.5592, y = 0.4679, z = 661 }, true, 4613, 10)                                                                  -- Shrine of Seven Stars to Dalaran
+        addPortal(false, 394, { x = 0.7086, y = 0.3040, z = 0 }, true, 6142, 103, { x = 0.2627, y = 0.4559, z = -138 },
+            true, 3557, 10)                                                                                                                                                                             -- Shrine of Seven Stars to Exodar
+        addPortal(false, 394, { x = 0.7168, y = 0.3598, z = 0 }, true, 6142, 84, { x = 0.4867, y = 0.8815, z = 149 },
+            true, 1519, 10)                                                                                                                                                                             -- Shrine of Seven Stars to Stormwind
+        addPortal(false, 394, { x = 0.7403, y = 0.4098, z = 0 }, true, 6142, 87, { x = 0.2551, y = 0.843, z = 501 }, true,
+            1537, 10)                                                                                                                                                                                   -- Shrine of Seven Stars to Ironforge
+        addPortal(false, 394, { x = 0.7724, y = 0.4350, z = 0 }, true, 6142, 89, { x = 0.4347, y = 0.7868, z = 0 }, true,
+            1657, 10)                                                                                                                                                                                   -- Shrine of Seven Stars to Darnassus
+        addPortal(false, 394, { x = 0.6848, y = 0.5298, z = 0 }, true, 6142, 111, { x = 0.5497, y = 0.4023, z = -12 },
+            true, 3703, 10)                                                                                                                                                                             -- Shrine of Seven Stars to Shattrath
+        addPortal(false, 394, { x = 0.6165, y = 0.3960, z = 0 }, true, 6142, 125, { x = 0.5592, y = 0.4679, z = 661 },
+            true, 4613, 10)                                                                                                                                                                             -- Shrine of Seven Stars to Dalaran
     end
 
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
-        addPortal(false, 85, { x = 0.6883, y = 0.4057, z = 40 }, true, 1637, 371, { x = 0.2851, y = 0.1402, z = 248 }, true, 6521, 10, function() return C_QuestLog.IsQuestFlaggedCompleted(29690) end) -- Orgrimmar to Honeydew Village
+        addPortal(false, 85, { x = 0.6883, y = 0.4057, z = 40 }, true, 1637, 371, { x = 0.2851, y = 0.1402, z = 248 },
+            true, 6521, 10, function() return C_QuestLog.IsQuestFlaggedCompleted(29690) end)                                                                                                            -- Orgrimmar to Honeydew Village
 
-        addPortal(false, 392, { x = 0.7625, y = 0.5261, z = 0 }, true, 6141, 110, { x = 0.5635, y = 0.2183, z = 48 }, true, 3487, 10)                                                                   -- Shrine of Two Moons to Silvermoon
-        addPortal(false, 392, { x = 0.7332, y = 0.4270, z = 0 }, true, 6141, 86, { x = 0.4891, y = 0.5435, z = 0 }, true, 1637, 10)                                                                     -- Shrine of Two Moons to Orgrimmar
-        addPortal(false, 392, { x = 0.7382, y = 0.3656, z = 0 }, true, 6141, 88, { x = 0.2238, y = 0.1877, z = 111 }, true, 1638, 10)                                                                   -- Shrine of Two Moons to Thunder Bluff
-        addPortal(false, 392, { x = 0.7429, y = 0.4786, z = 0 }, true, 6141, 998, { x = 0.8409, y = 0.1718, z = 0 }, true, 1497, 10)                                                                    -- Shrine of Two Moons to Undercity
-        addPortal(false, 392, { x = 0.6336, y = 0.5747, z = 0 }, true, 6141, 111, { x = 0.5497, y = 0.4023, z = -12 }, true, 3703, 10)                                                                  -- Shrine of Two Moons to Shattrath
-        addPortal(false, 392, { x = 0.6154, y = 0.3651, z = 0 }, true, 6141, 125, { x = 0.5592, y = 0.4679, z = 661 }, true, 4613, 10)                                                                  -- Shrine of Two Moons to Dalaran
+        addPortal(false, 392, { x = 0.7625, y = 0.5261, z = 0 }, true, 6141, 110, { x = 0.5635, y = 0.2183, z = 48 },
+            true, 3487, 10)                                                                                                                                                                             -- Shrine of Two Moons to Silvermoon
+        addPortal(false, 392, { x = 0.7332, y = 0.4270, z = 0 }, true, 6141, 86, { x = 0.4891, y = 0.5435, z = 0 }, true,
+            1637, 10)                                                                                                                                                                                   -- Shrine of Two Moons to Orgrimmar
+        addPortal(false, 392, { x = 0.7382, y = 0.3656, z = 0 }, true, 6141, 88, { x = 0.2238, y = 0.1877, z = 111 },
+            true, 1638, 10)                                                                                                                                                                             -- Shrine of Two Moons to Thunder Bluff
+        addPortal(false, 392, { x = 0.7429, y = 0.4786, z = 0 }, true, 6141, 998, { x = 0.8409, y = 0.1718, z = 0 }, true,
+            1497, 10)                                                                                                                                                                                   -- Shrine of Two Moons to Undercity
+        addPortal(false, 392, { x = 0.6336, y = 0.5747, z = 0 }, true, 6141, 111, { x = 0.5497, y = 0.4023, z = -12 },
+            true, 3703, 10)                                                                                                                                                                             -- Shrine of Two Moons to Shattrath
+        addPortal(false, 392, { x = 0.6154, y = 0.3651, z = 0 }, true, 6141, 125, { x = 0.5592, y = 0.4679, z = 661 },
+            true, 4613, 10)                                                                                                                                                                             -- Shrine of Two Moons to Dalaran
     end
 end
 
 if GetExpansionLevel() >= 6 then
     -- Both
-    addPortal(false, 627, { x = 0.7427, y = 0.4930, z = 739 }, true, 7505, 1669, { x = 500.28100585938, y = 1469.6800537109, z = 742.44201660156 }, false, 8714, 10) -- Dalaran to Argus
+    addPortal(false, 627, { x = 0.7427, y = 0.4930, z = 739 }, true, 7505, 1669,
+        { x = 500.28100585938, y = 1469.6800537109, z = 742.44201660156 }, false, 8714, 10)                                                                          -- Dalaran to Argus
 end
 
 local itemCount = 0
 local helpfulItems = {}
 
 local function addItem(itemId, toMapId, toPos, toIsUI, toAreaId, cost, condition)
-    local from = { actionOptions = { { type = "item", data = itemId } }, condition = function() return (not condition or condition()) and FarstriderLibData.Util.CanUseItem(itemId) end, unknown1 = 0, dynLoc = function() return FarstriderLibData.Util.GetPlayerLocation() end, flags = 8, type = 1, important = true, locaId = SpecialLocaId.ItemTo, locaArgs = function() return { FarstriderLibData.Util.GetItemNameSafe(itemId), C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
-    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, type = 2, locaId = SpecialLocaId.ItemTo, locaArgs = function() return { FarstriderLibData.Util.GetItemNameSafe(itemId), C_Map.GetAreaInfo(toAreaId) } end }
+    local from = { actionOptions = { { type = "item", data = itemId } }, condition = function() return (not condition or condition()) and
+        FarstriderLibData.Util.CanUseItem(itemId) end, unknown1 = 0, dynLoc = function() return FarstriderLibData.Util
+        .GetPlayerLocation() end, flags = 8, type = 1, important = true, locaId = SpecialLocaId.ItemTo, locaArgs = function() return {
+            FarstriderLibData.Util.GetItemNameSafe(itemId), C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
+    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, type = 2, locaId =
+    SpecialLocaId.ItemTo, locaArgs = function() return { FarstriderLibData.Util.GetItemNameSafe(itemId), C_Map
+            .GetAreaInfo(toAreaId) } end }
     addEntry(SpecialLocaId.ItemTo + itemCount, from, to, false, cost)
     itemCount = itemCount + 1
     if not helpfulItems[itemId] then
@@ -328,8 +430,12 @@ local function addDynamicItemWithMultipleIds(itemIds, dynLoc, dynLocaId, cost, c
         return false
     end
 
-    local from = { actionOptions = finalActionOptions, condition = finalCondition, unknown1 = 0, dynLoc = function() return FarstriderLibData.Util.GetPlayerLocation() end, flags = 8, type = 1, important = true, locaId = SpecialLocaId.ItemTo, locaArgs = function() return { FarstriderLibData.Util.GetItemNameSafe(itemIds[1]), dynLocaId() or L["Unknown Location"] } end }
-    local to = { unknown1 = 0, flags = 0, dynLoc = dynLoc, type = 2, locaId = SpecialLocaId.ItemTo, locaArgs = function() return { FarstriderLibData.Util.GetItemNameSafe(itemIds[1]), dynLocaId() or L["Unknown Location"] } end }
+    local from = { actionOptions = finalActionOptions, condition = finalCondition, unknown1 = 0, dynLoc = function() return
+        FarstriderLibData.Util.GetPlayerLocation() end, flags = 8, type = 1, important = true, locaId = SpecialLocaId
+    .ItemTo, locaArgs = function() return { FarstriderLibData.Util.GetItemNameSafe(itemIds[1]), dynLocaId() or
+        L["Unknown Location"] } end }
+    local to = { unknown1 = 0, flags = 0, dynLoc = dynLoc, type = 2, locaId = SpecialLocaId.ItemTo, locaArgs = function() return {
+            FarstriderLibData.Util.GetItemNameSafe(itemIds[1]), dynLocaId() or L["Unknown Location"] } end }
     addEntry(SpecialLocaId.ItemTo + itemCount, from, to, false, cost)
     itemCount = itemCount + 1
 
@@ -344,8 +450,13 @@ end
 local spellCount = 0
 
 local function addSpell(spellId, toMapId, toPos, toIsUI, toAreaId, cost, condition)
-    local from = { actionOptions = { { type = "spell", data = spellId } }, condition = function() return (not condition or condition()) and FarstriderLibData.Util.CanUseSpell(spellId) end, unknown1 = 0, dynLoc = function() return FarstriderLibData.Util.GetPlayerLocation() end, flags = 8, type = 1, important = true, locaId = SpecialLocaId.SpellTo, locaArgs = function() return { FarstriderLibData.Util.GetSpellNameSafe(spellId), C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
-    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, type = 2, locaId = SpecialLocaId.SpellTo, locaArgs = function() return { FarstriderLibData.Util.GetSpellNameSafe(spellId), C_Map.GetAreaInfo(toAreaId) } end }
+    local from = { actionOptions = { { type = "spell", data = spellId } }, condition = function() return (not condition or condition()) and
+        FarstriderLibData.Util.CanUseSpell(spellId) end, unknown1 = 0, dynLoc = function() return FarstriderLibData.Util
+        .GetPlayerLocation() end, flags = 8, type = 1, important = true, locaId = SpecialLocaId.SpellTo, locaArgs = function() return {
+            FarstriderLibData.Util.GetSpellNameSafe(spellId), C_Map.GetAreaInfo(toAreaId) or L["Area_" .. toAreaId] } end }
+    local to = { unknown1 = 0, flags = 0, loc = { mapId = toMapId, pos = toPos, isUI = toIsUI }, type = 2, locaId =
+    SpecialLocaId.SpellTo, locaArgs = function() return { FarstriderLibData.Util.GetSpellNameSafe(spellId), C_Map
+            .GetAreaInfo(toAreaId) } end }
     addEntry(SpecialLocaId.SpellTo + spellCount, from, to, false, cost)
     spellCount = spellCount + 1
 end
@@ -362,47 +473,61 @@ addPortal(true, 84, { x = 0.6962, y = 0.3111, z = 0 }, true, 1519, 87, { x = 0.7
 -- Allied Race Portals
 -- Void Elf portals (Alliance, quest 79010)
 if UnitFactionGroup("player") == "Alliance" then
-    addPortal(false, 971, { x = 0.2799, y = 0.2148, z = 0 }, true, 9415, 84, { x = 0.5452, y = 0.1726, z = 0 }, true, 1519, 10)                                                                   -- Telogrus Rift to Stormwind
-    addPortal(false, 84, { x = 0.5068, y = 0.0845, z = 0 }, true, 1519, 971, { x = 0.2769, y = 0.2810, z = 0 }, true, 9415, 10, function() return C_QuestLog.IsQuestFlaggedCompleted(79010) end)  -- Stormwind to Telogrus Rift
-    addPortal(false, 971, { x = 0.2494, y = 0.2791, z = 0 }, true, 9415, 629, { x = 0.3593, y = 0.7475, z = 0 }, true, 7502, 10)                                                                  -- Telogrus Rift to Dalaran
-    addPortal(false, 629, { x = 0.3372, y = 0.7888, z = 0 }, true, 7502, 971, { x = 0.2534, y = 0.2789, z = 0 }, true, 9415, 10, function() return C_QuestLog.IsQuestFlaggedCompleted(79010) end) -- Dalaran to Telogrus Rift
+    addPortal(false, 971, { x = 0.2799, y = 0.2148, z = 0 }, true, 9415, 84, { x = 0.5452, y = 0.1726, z = 0 }, true,
+        1519, 10)                                                                                                                                                                                 -- Telogrus Rift to Stormwind
+    addPortal(false, 84, { x = 0.5068, y = 0.0845, z = 0 }, true, 1519, 971, { x = 0.2769, y = 0.2810, z = 0 }, true,
+        9415, 10, function() return C_QuestLog.IsQuestFlaggedCompleted(79010) end)                                                                                                                -- Stormwind to Telogrus Rift
+    addPortal(false, 971, { x = 0.2494, y = 0.2791, z = 0 }, true, 9415, 629, { x = 0.3593, y = 0.7475, z = 0 }, true,
+        7502, 10)                                                                                                                                                                                 -- Telogrus Rift to Dalaran
+    addPortal(false, 629, { x = 0.3372, y = 0.7888, z = 0 }, true, 7502, 971, { x = 0.2534, y = 0.2789, z = 0 }, true,
+        9415, 10, function() return C_QuestLog.IsQuestFlaggedCompleted(79010) end)                                                                                                                -- Dalaran to Telogrus Rift
 end
 
 -- Lightforged Draenei (raceId=30) — Stormwind to/from Vindicaar
 if select(3, UnitRace("player")) == 30 then
-    addPortal(false, 84, { x = 0.4806, y = 0.1106, z = 0 }, true, 1519, 940, { x = 0.4995, y = 0.4623, z = 0 }, true, 8714, 10) -- Stormwind to Vindicaar (floor 1)
-    addPortal(false, 941, { x = 0.4322, y = 0.2516, z = 0 }, true, 8714, 84, { x = 0.5452, y = 0.1726, z = 0 }, true, 1519, 10) -- Vindicaar (floor 2) to Stormwind
+    addPortal(false, 84, { x = 0.4806, y = 0.1106, z = 0 }, true, 1519, 940, { x = 0.4995, y = 0.4623, z = 0 }, true,
+        8714, 10)                                                                                                               -- Stormwind to Vindicaar (floor 1)
+    addPortal(false, 941, { x = 0.4322, y = 0.2516, z = 0 }, true, 8714, 84, { x = 0.5452, y = 0.1726, z = 0 }, true,
+        1519, 10)                                                                                                               -- Vindicaar (floor 2) to Stormwind
 end
 
 -- Dark Iron Dwarf (raceId=34)
 if select(3, UnitRace("player")) == 34 then
     if UnitFactionGroup("player") == "Alliance" then
-        addPortal(false, 84, { x = 0.4974, y = 0.1067, z = 0 }, true, 1519, 1186, { x = 0.6144, y = 0.2435, z = 0 }, true, 1584, 10) -- Stormwind to Shadowforge City
-        addPortal(false, 1186, { x = 0.5930, y = 0.2643, z = 0 }, true, 1584, 84, { x = 0.5449, y = 0.1725, z = 0 }, true, 1519, 10) -- Shadowforge City to Stormwind
+        addPortal(false, 84, { x = 0.4974, y = 0.1067, z = 0 }, true, 1519, 1186, { x = 0.6144, y = 0.2435, z = 0 }, true,
+            1584, 10)                                                                                                                -- Stormwind to Shadowforge City
+        addPortal(false, 1186, { x = 0.5930, y = 0.2643, z = 0 }, true, 1584, 84, { x = 0.5449, y = 0.1725, z = 0 }, true,
+            1519, 10)                                                                                                                -- Shadowforge City to Stormwind
     end
 end
 
 -- Mechagnome (raceId=37)
 if select(3, UnitRace("player")) == 37 then
     if UnitFactionGroup("player") == "Alliance" then
-        addPortal(false, 84, { x = 0.4878, y = 0.0898, z = 0 }, true, 1519, 1573, { x = 0.2110, y = 0.6471, z = 0 }, true, 10290, 10) -- Stormwind to Mechagon City
-        addPortal(false, 1573, { x = 0.2048, y = 0.6022, z = 0 }, true, 10290, 84, { x = 0.5411, y = 0.1648, z = 0 }, true, 1519, 10) -- Mechagon City to Stormwind
+        addPortal(false, 84, { x = 0.4878, y = 0.0898, z = 0 }, true, 1519, 1573, { x = 0.2110, y = 0.6471, z = 0 }, true,
+            10290, 10)                                                                                                                -- Stormwind to Mechagon City
+        addPortal(false, 1573, { x = 0.2048, y = 0.6022, z = 0 }, true, 10290, 84, { x = 0.5411, y = 0.1648, z = 0 },
+            true, 1519, 10)                                                                                                           -- Mechagon City to Stormwind
     end
 end
 
 -- Highmountain Tauren (raceId=28)
 if select(3, UnitRace("player")) == 28 then
     if UnitFactionGroup("player") == "Horde" then
-        addPortal(false, 652, { x = 0.4604, y = 0.6374, z = 0 }, true, 7731, 85, { x = 0.4024, y = 0.7812, z = 0 }, true, 1637, 10) -- Thunder Totem to Orgrimmar
-        addPortal(false, 85, { x = 0.3815, y = 0.7528, z = 0 }, true, 1637, 652, { x = 0.4418, y = 0.6407, z = 0 }, true, 7731, 10) -- Orgrimmar to Thunder Totem
+        addPortal(false, 652, { x = 0.4604, y = 0.6374, z = 0 }, true, 7731, 85, { x = 0.4024, y = 0.7812, z = 0 }, true,
+            1637, 10)                                                                                                               -- Thunder Totem to Orgrimmar
+        addPortal(false, 85, { x = 0.3815, y = 0.7528, z = 0 }, true, 1637, 652, { x = 0.4418, y = 0.6407, z = 0 }, true,
+            7731, 10)                                                                                                               -- Orgrimmar to Thunder Totem
     end
 end
 
 -- Nightborne (raceId=27)
 if select(3, UnitRace("player")) == 27 then
     if UnitFactionGroup("player") == "Horde" then
-        addPortal(false, 680, { x = 0.5818, y = 0.8733, z = 0 }, true, 7637, 85, { x = 0.4024, y = 0.7812, z = 0 }, true, 1637, 10) -- Suramar to Orgrimmar
-        addPortal(false, 85, { x = 0.3859, y = 0.7589, z = 0 }, true, 1637, 680, { x = 0.5955, y = 0.8529, z = 0 }, true, 7637, 10) -- Orgrimmar to Suramar
+        addPortal(false, 680, { x = 0.5818, y = 0.8733, z = 0 }, true, 7637, 85, { x = 0.4024, y = 0.7812, z = 0 }, true,
+            1637, 10)                                                                                                               -- Suramar to Orgrimmar
+        addPortal(false, 85, { x = 0.3859, y = 0.7589, z = 0 }, true, 1637, 680, { x = 0.5955, y = 0.8529, z = 0 }, true,
+            7637, 10)                                                                                                               -- Orgrimmar to Suramar
     end
 end
 
@@ -419,8 +544,14 @@ addItem(22632, 42, { x = 0.4735, y = 0.7532, z = 0 }, true, 2562, 5)  -- Atiesh,
 addSpell(18960, 80, { x = 0.44, y = 0.46, z = 0 }, true, 493, 10)     -- Teleport: Moonglade
 -- Shaman: Astral Recall (teleports to hearthstone bind location)
 do
-    local from = { actionOptions = { { type = "spell", data = 556 } }, condition = function() return FarstriderLibData.Util.CanUseSpell(556) and FarstriderLibData.AreaL[GetBindLocation()] end, unknown1 = 0, dynLoc = function() return FarstriderLibData.Util.GetPlayerLocation() end, flags = 8, type = 1, important = true, locaId = SpecialLocaId.SpellTo, locaArgs = function() return { FarstriderLibData.Util.GetSpellNameSafe(556), GetBindLocation() or L["Unknown Location"] } end }
-    local to = { unknown1 = 0, flags = 0, dynLoc = FarstriderLibData.Util.GetBindingLocation, type = 2, locaId = SpecialLocaId.SpellTo, locaArgs = function() return { FarstriderLibData.Util.GetSpellNameSafe(556), GetBindLocation() or L["Unknown Location"] } end }
+    local from = { actionOptions = { { type = "spell", data = 556 } }, condition = function() return FarstriderLibData
+        .Util.CanUseSpell(556) and FarstriderLibData.AreaL[GetBindLocation()] end, unknown1 = 0, dynLoc = function() return
+        FarstriderLibData.Util.GetPlayerLocation() end, flags = 8, type = 1, important = true, locaId = SpecialLocaId
+    .SpellTo, locaArgs = function() return { FarstriderLibData.Util.GetSpellNameSafe(556), GetBindLocation() or
+        L["Unknown Location"] } end }
+    local to = { unknown1 = 0, flags = 0, dynLoc = FarstriderLibData.Util.GetBindingLocation, type = 2, locaId =
+    SpecialLocaId.SpellTo, locaArgs = function() return { FarstriderLibData.Util.GetSpellNameSafe(556), GetBindLocation() or
+        L["Unknown Location"] } end }
     addEntry(SpecialLocaId.SpellTo + spellCount, from, to, false, 10)
     spellCount = spellCount + 1
 end
@@ -644,12 +775,14 @@ if GetExpansionLevel() >= 4 then
 
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
-        addItem(95567, 504, { x = 0.6470, y = 0.7348, z = 0 }, true, 6507, 10, function() return C_Map.GetBestMapForUnit("player") == 504 end) -- Kirin Tor Beacon (Isle of Thunder only)
+        addItem(95567, 504, { x = 0.6470, y = 0.7348, z = 0 }, true, 6507, 10,
+            function() return C_Map.GetBestMapForUnit("player") == 504 end)                                                                    -- Kirin Tor Beacon (Isle of Thunder only)
     end
 
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
-        addItem(95568, 504, { x = 0.3315, y = 0.3285, z = 0 }, true, 6507, 10, function() return C_Map.GetBestMapForUnit("player") == 504 end) -- Sunreaver Beacon (Isle of Thunder only)
+        addItem(95568, 504, { x = 0.3315, y = 0.3285, z = 0 }, true, 6507, 10,
+            function() return C_Map.GetBestMapForUnit("player") == 504 end)                                                                    -- Sunreaver Beacon (Isle of Thunder only)
     end
 
     -- Brawler's Guild
@@ -676,14 +809,16 @@ end
 if GetExpansionLevel() >= 5 then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
-        addItem(110560, 582, { x = 0.2992, y = 0.3392, z = 0 }, true, 6790, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(34586) end) -- Garrison Hearthstone
+        addItem(110560, 582, { x = 0.2992, y = 0.3392, z = 0 }, true, 6790, 30,
+            function() return C_QuestLog.IsQuestFlaggedCompleted(34586) end)                                                                     -- Garrison Hearthstone
         addItem(118663, 1116, { x = 602.698, y = -1710.45, z = 26.484 }, false, 6931, 240)                                                       -- Relic of Karabor
         addItem(128353, 582, { x = 0.35, y = 0.25, z = 0 }, true, 7706, 480)                                                                     -- Admiral's Compass
     end
 
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
-        addItem(110560, 590, { x = 0.5, y = 0.5, z = 0 }, true, 7004, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(34378) end) -- Garrison Hearthstone
+        addItem(110560, 590, { x = 0.5, y = 0.5, z = 0 }, true, 7004, 30,
+            function() return C_QuestLog.IsQuestFlaggedCompleted(34378) end)                                                               -- Garrison Hearthstone
         addItem(118662, 1116, { x = 6754.56, y = 6012.54, z = 250.034 }, false, 6864, 240)                                                 -- Bladespire Relic
         addItem(128353, 590, { x = 0.55, y = 0.70, z = 0 }, true, 7703, 480)                                                               -- Admiral's Compass
     end
@@ -694,23 +829,40 @@ if GetExpansionLevel() >= 5 then
 
     -- Ever Shifting Mirror (toy 129929) — portals between Draenor and Outland
     local mirrorCond = function() return PlayerHasToy(129929) and UnitLevel("player") >= 40 end
-    addPortal(true, 550, { x = 0.5035, y = 0.5721, z = 0 }, true, 6755, 107, { x = 0.4127, y = 0.5904, z = 0 }, true, 3518, 15, mirrorCond) -- Nagrand D to Nagrand (1)
-    addPortal(true, 550, { x = 0.8836, y = 0.2284, z = 0 }, true, 6755, 102, { x = 0.6820, y = 0.8846, z = 0 }, true, 3521, 15, mirrorCond) -- Nagrand D to Zangarmarsh (1)
-    addPortal(true, 550, { x = 0.7141, y = 0.2194, z = 0 }, true, 6755, 107, { x = 0.6036, y = 0.2556, z = 0 }, true, 3518, 15, mirrorCond) -- Nagrand D to Nagrand (2)
-    addPortal(true, 550, { x = 0.8113, y = 0.0897, z = 0 }, true, 6755, 102, { x = 0.4919, y = 0.5537, z = 0 }, true, 3521, 15, mirrorCond) -- Nagrand D to Zangarmarsh (2)
-    addPortal(true, 525, { x = 0.2182, y = 0.4531, z = 0 }, true, 6720, 105, { x = 0.4640, y = 0.6405, z = 0 }, true, 3522, 15, mirrorCond) -- Frostfire Ridge to Blade's Edge (1)
-    addPortal(true, 525, { x = 0.3753, y = 0.6071, z = 0 }, true, 6720, 105, { x = 0.3963, y = 0.7739, z = 0 }, true, 3522, 15, mirrorCond) -- Frostfire Ridge to Blade's Edge (2)
-    addPortal(true, 543, { x = 0.4941, y = 0.7366, z = 0 }, true, 6721, 105, { x = 0.5911, y = 0.7169, z = 0 }, true, 3522, 15, mirrorCond) -- Gorgrond to Blade's Edge (1)
-    addPortal(true, 543, { x = 0.5082, y = 0.3143, z = 0 }, true, 6721, 105, { x = 0.6620, y = 0.2633, z = 0 }, true, 3522, 15, mirrorCond) -- Gorgrond to Blade's Edge (2)
-    addPortal(true, 534, { x = 0.7030, y = 0.5453, z = 0 }, true, 6723, 100, { x = 0.8038, y = 0.5160, z = 0 }, true, 3483, 15, mirrorCond) -- Tanaan Jungle to Hellfire Peninsula (1)
-    addPortal(true, 534, { x = 0.4956, y = 0.5073, z = 0 }, true, 6723, 100, { x = 0.5498, y = 0.4887, z = 0 }, true, 3483, 15, mirrorCond) -- Tanaan Jungle to Hellfire Peninsula (2)
-    addPortal(true, 534, { x = 0.5634, y = 0.2683, z = 0 }, true, 6723, 100, { x = 0.6404, y = 0.2173, z = 0 }, true, 3483, 15, mirrorCond) -- Tanaan Jungle to Hellfire Peninsula (3)
-    addPortal(true, 539, { x = 0.6002, y = 0.4837, z = 0 }, true, 6719, 104, { x = 0.6153, y = 0.4607, z = 0 }, true, 3520, 15, mirrorCond) -- Shadowmoon Valley D to Shadowmoon Valley (1)
-    addPortal(true, 539, { x = 0.3233, y = 0.2876, z = 0 }, true, 6719, 104, { x = 0.2710, y = 0.3336, z = 0 }, true, 3520, 15, mirrorCond) -- Shadowmoon Valley D to Shadowmoon Valley (2)
-    addPortal(true, 542, { x = 0.4740, y = 0.1245, z = 0 }, true, 6722, 108, { x = 0.7078, y = 0.7588, z = 0 }, true, 3519, 15, mirrorCond) -- Spires of Arak to Terokkar Forest
-    addPortal(true, 535, { x = 0.5785, y = 0.8053, z = 0 }, true, 6662, 108, { x = 0.4537, y = 0.4753, z = 0 }, true, 3519, 15, mirrorCond) -- Talador to Terokkar Forest (1)
-    addPortal(true, 535, { x = 0.5041, y = 0.3519, z = 0 }, true, 6662, 108, { x = 0.3526, y = 0.1251, z = 0 }, true, 3519, 15, mirrorCond) -- Talador to Terokkar Forest (2)
-    addPortal(true, 535, { x = 0.6842, y = 0.0932, z = 0 }, true, 6662, 102, { x = 0.8259, y = 0.6613, z = 0 }, true, 3521, 15, mirrorCond) -- Talador to Zangarmarsh
+    addPortal(true, 550, { x = 0.5035, y = 0.5721, z = 0 }, true, 6755, 107, { x = 0.4127, y = 0.5904, z = 0 }, true,
+        3518, 15, mirrorCond)                                                                                                               -- Nagrand D to Nagrand (1)
+    addPortal(true, 550, { x = 0.8836, y = 0.2284, z = 0 }, true, 6755, 102, { x = 0.6820, y = 0.8846, z = 0 }, true,
+        3521, 15, mirrorCond)                                                                                                               -- Nagrand D to Zangarmarsh (1)
+    addPortal(true, 550, { x = 0.7141, y = 0.2194, z = 0 }, true, 6755, 107, { x = 0.6036, y = 0.2556, z = 0 }, true,
+        3518, 15, mirrorCond)                                                                                                               -- Nagrand D to Nagrand (2)
+    addPortal(true, 550, { x = 0.8113, y = 0.0897, z = 0 }, true, 6755, 102, { x = 0.4919, y = 0.5537, z = 0 }, true,
+        3521, 15, mirrorCond)                                                                                                               -- Nagrand D to Zangarmarsh (2)
+    addPortal(true, 525, { x = 0.2182, y = 0.4531, z = 0 }, true, 6720, 105, { x = 0.4640, y = 0.6405, z = 0 }, true,
+        3522, 15, mirrorCond)                                                                                                               -- Frostfire Ridge to Blade's Edge (1)
+    addPortal(true, 525, { x = 0.3753, y = 0.6071, z = 0 }, true, 6720, 105, { x = 0.3963, y = 0.7739, z = 0 }, true,
+        3522, 15, mirrorCond)                                                                                                               -- Frostfire Ridge to Blade's Edge (2)
+    addPortal(true, 543, { x = 0.4941, y = 0.7366, z = 0 }, true, 6721, 105, { x = 0.5911, y = 0.7169, z = 0 }, true,
+        3522, 15, mirrorCond)                                                                                                               -- Gorgrond to Blade's Edge (1)
+    addPortal(true, 543, { x = 0.5082, y = 0.3143, z = 0 }, true, 6721, 105, { x = 0.6620, y = 0.2633, z = 0 }, true,
+        3522, 15, mirrorCond)                                                                                                               -- Gorgrond to Blade's Edge (2)
+    addPortal(true, 534, { x = 0.7030, y = 0.5453, z = 0 }, true, 6723, 100, { x = 0.8038, y = 0.5160, z = 0 }, true,
+        3483, 15, mirrorCond)                                                                                                               -- Tanaan Jungle to Hellfire Peninsula (1)
+    addPortal(true, 534, { x = 0.4956, y = 0.5073, z = 0 }, true, 6723, 100, { x = 0.5498, y = 0.4887, z = 0 }, true,
+        3483, 15, mirrorCond)                                                                                                               -- Tanaan Jungle to Hellfire Peninsula (2)
+    addPortal(true, 534, { x = 0.5634, y = 0.2683, z = 0 }, true, 6723, 100, { x = 0.6404, y = 0.2173, z = 0 }, true,
+        3483, 15, mirrorCond)                                                                                                               -- Tanaan Jungle to Hellfire Peninsula (3)
+    addPortal(true, 539, { x = 0.6002, y = 0.4837, z = 0 }, true, 6719, 104, { x = 0.6153, y = 0.4607, z = 0 }, true,
+        3520, 15, mirrorCond)                                                                                                               -- Shadowmoon Valley D to Shadowmoon Valley (1)
+    addPortal(true, 539, { x = 0.3233, y = 0.2876, z = 0 }, true, 6719, 104, { x = 0.2710, y = 0.3336, z = 0 }, true,
+        3520, 15, mirrorCond)                                                                                                               -- Shadowmoon Valley D to Shadowmoon Valley (2)
+    addPortal(true, 542, { x = 0.4740, y = 0.1245, z = 0 }, true, 6722, 108, { x = 0.7078, y = 0.7588, z = 0 }, true,
+        3519, 15, mirrorCond)                                                                                                               -- Spires of Arak to Terokkar Forest
+    addPortal(true, 535, { x = 0.5785, y = 0.8053, z = 0 }, true, 6662, 108, { x = 0.4537, y = 0.4753, z = 0 }, true,
+        3519, 15, mirrorCond)                                                                                                               -- Talador to Terokkar Forest (1)
+    addPortal(true, 535, { x = 0.5041, y = 0.3519, z = 0 }, true, 6662, 108, { x = 0.3526, y = 0.1251, z = 0 }, true,
+        3519, 15, mirrorCond)                                                                                                               -- Talador to Terokkar Forest (2)
+    addPortal(true, 535, { x = 0.6842, y = 0.0932, z = 0 }, true, 6662, 102, { x = 0.8259, y = 0.6613, z = 0 }, true,
+        3521, 15, mirrorCond)                                                                                                               -- Talador to Zangarmarsh
 end
 
 -- Classic class teleports (pre-Legion destinations)
@@ -731,10 +883,12 @@ if GetExpansionLevel() >= 6 then
     addItem(139599, 627, { x = 0.6092, y = 0.4472, z = 739 }, true, 7502, 30)                                                                                                               -- Empowered Ring of the Kirin Tor
     addHearthstone(142298)                                                                                                                                                                  -- Astonishingly Scarlet Slippers
     addHearthstone(142542)                                                                                                                                                                  -- Tome of Town Portal
-    addItem(140192, 627, { x = 0.6092, y = 0.4472, z = 739 }, true, 7502, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(44184) or C_QuestLog.IsQuestFlaggedCompleted(44663) end) -- Dalaran Hearthstone
+    addItem(140192, 627, { x = 0.6092, y = 0.4472, z = 739 }, true, 7502, 30,
+        function() return C_QuestLog.IsQuestFlaggedCompleted(44184) or C_QuestLog.IsQuestFlaggedCompleted(44663) end)                                                                       -- Dalaran Hearthstone
     addItem(142469, 42, { x = 0.4735, y = 0.7532, z = 0 }, true, 2562, 30)                                                                                                                  -- Violet Seal of the Grand Magus
     addItem(138448, 627, { x = 0.50, y = 0.26, z = 0 }, true, 8270, 60)                                                                                                                     -- Emblem of Margoss
-    addItem(140324, 680, { x = 0.37, y = 0.59, z = 0 }, true, 7928, 15, function() return C_Map.GetBestMapForUnit("player") == 680 end)                                                     -- Mobile Telemancy Beacon (Suramar only)
+    addItem(140324, 680, { x = 0.37, y = 0.59, z = 0 }, true, 7928, 15,
+        function() return C_Map.GetBestMapForUnit("player") == 680 end)                                                                                                                     -- Mobile Telemancy Beacon (Suramar only)
     addItem(151652, 885, { x = 0.50, y = 0.50, z = 0 }, true, 8899, 30)                                                                                                                     -- Wormhole Generator: Argus
     addItem(144341, 627, { x = 0.50, y = 0.50, z = 0 }, true, 7502, 30)                                                                                                                     -- Rechargeable Reaves Battery
     addItem(139590, 25, { x = 0.73, y = 0.24, z = 0 }, true, 3486, 480)                                                                                                                     -- Scroll of Teleport: Ravenholdt
@@ -748,7 +902,8 @@ if GetExpansionLevel() >= 6 then
     -- Druid
     addSpell(193753, 715, { x = 0.50, y = 0.50, z = 0 }, true, 7979, 10)                                                                                                                    -- Dreamwalk
     -- Zone-locked Items
-    addItem(153226, 882, { x = 0.50, y = 0.50, z = 0 }, true, 8701, 15, function() return C_Map.GetBestMapForUnit("player") == 885 end)                                                     -- Observer's Locus Resonator
+    addItem(153226, 882, { x = 0.50, y = 0.50, z = 0 }, true, 8701, 15,
+        function() return C_Map.GetBestMapForUnit("player") == 885 end)                                                                                                                     -- Observer's Locus Resonator
 end
 
 -- Battle for Azeroth
@@ -833,21 +988,32 @@ if GetExpansionLevel() >= 7 then
     end
 
     -- Alluring Bloom (zone-locked to Stormsong Valley)
-    addItem(169862, 942, { x = 0.6289, y = 0.2652, z = 0 }, true, 9042, 15, function() return C_Map.GetBestMapForUnit("player") == 942 end) -- Alluring Bloom
+    addItem(169862, 942, { x = 0.6289, y = 0.2652, z = 0 }, true, 9042, 15,
+        function() return C_Map.GetBestMapForUnit("player") == 942 end)                                                                     -- Alluring Bloom
 
     -- BFA ship NPC routes (talk to NPC to sail between continents)
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
-        addBoat(1161, { x = 0.6795, y = 0.2669, z = 0 }, true, 8568, 862, { x = 0.4068, y = 0.7086, z = 0 }, true, 8499, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(51308) end) -- Boralus to Zuldazar
-        addBoat(1161, { x = 0.6795, y = 0.2669, z = 0 }, true, 8568, 863, { x = 0.6195, y = 0.3992, z = 0 }, true, 8500, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(51571) end) -- Boralus to Nazmir
-        addBoat(1161, { x = 0.6795, y = 0.2669, z = 0 }, true, 8568, 864, { x = 0.3560, y = 0.3317, z = 0 }, true, 8501, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(51572) end) -- Boralus to Vol'dun
+        addBoat(1161, { x = 0.6795, y = 0.2669, z = 0 }, true, 8568, 862, { x = 0.4068, y = 0.7086, z = 0 }, true, 8499,
+            30, function() return C_QuestLog.IsQuestFlaggedCompleted(51308) end)                                                                                                              -- Boralus to Zuldazar
+        addBoat(1161, { x = 0.6795, y = 0.2669, z = 0 }, true, 8568, 863, { x = 0.6195, y = 0.3992, z = 0 }, true, 8500,
+            30, function() return C_QuestLog.IsQuestFlaggedCompleted(51571) end)                                                                                                              -- Boralus to Nazmir
+        addBoat(1161, { x = 0.6795, y = 0.2669, z = 0 }, true, 8568, 864, { x = 0.3560, y = 0.3317, z = 0 }, true, 8501,
+            30, function() return C_QuestLog.IsQuestFlaggedCompleted(51572) end)                                                                                                              -- Boralus to Vol'dun
     end
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
-        addBoat(862, { x = 0.5846, y = 0.6299, z = 0 }, true, 8499, 896, { x = 0.2061, y = 0.4369, z = 0 }, true, 8721, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(51801) or C_QuestLog.IsQuestFlaggedCompleted(51340) end) -- Zuldazar to Drustvar
-        addBoat(862, { x = 0.5846, y = 0.6299, z = 0 }, true, 8499, 942, { x = 0.5198, y = 0.2449, z = 0 }, true, 9042, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(51802) or C_QuestLog.IsQuestFlaggedCompleted(51532) end) -- Zuldazar to Stormsong Valley
-        addBoat(862, { x = 0.5846, y = 0.6299, z = 0 }, true, 8499, 895, { x = 0.8820, y = 0.5116, z = 0 }, true, 8567, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(51800) or C_QuestLog.IsQuestFlaggedCompleted(51421) end) -- Zuldazar to Tiragarde Sound
-        addBoat(1165, { x = 0.4175, y = 0.8743, z = 0 }, true, 8670, 1462, { x = 0.7549, y = 0.2266, z = 0 }, true, 10290, 30, function() return C_QuestLog.IsQuestFlaggedCompleted(55651) end)                                           -- Dazar'alor to Mechagon
+        addBoat(862, { x = 0.5846, y = 0.6299, z = 0 }, true, 8499, 896, { x = 0.2061, y = 0.4369, z = 0 }, true, 8721,
+            30,
+            function() return C_QuestLog.IsQuestFlaggedCompleted(51801) or C_QuestLog.IsQuestFlaggedCompleted(51340) end)                                                                                                                 -- Zuldazar to Drustvar
+        addBoat(862, { x = 0.5846, y = 0.6299, z = 0 }, true, 8499, 942, { x = 0.5198, y = 0.2449, z = 0 }, true, 9042,
+            30,
+            function() return C_QuestLog.IsQuestFlaggedCompleted(51802) or C_QuestLog.IsQuestFlaggedCompleted(51532) end)                                                                                                                 -- Zuldazar to Stormsong Valley
+        addBoat(862, { x = 0.5846, y = 0.6299, z = 0 }, true, 8499, 895, { x = 0.8820, y = 0.5116, z = 0 }, true, 8567,
+            30,
+            function() return C_QuestLog.IsQuestFlaggedCompleted(51800) or C_QuestLog.IsQuestFlaggedCompleted(51421) end)                                                                                                                 -- Zuldazar to Tiragarde Sound
+        addBoat(1165, { x = 0.4175, y = 0.8743, z = 0 }, true, 8670, 1462, { x = 0.7549, y = 0.2266, z = 0 }, true, 10290,
+            30, function() return C_QuestLog.IsQuestFlaggedCompleted(55651) end)                                                                                                                                                          -- Dazar'alor to Mechagon
     end
 end
 
@@ -882,7 +1048,8 @@ if GetExpansionLevel() >= 9 then
     addItem(198156, 2024, { x = 0.50, y = 0.50, z = 0 }, true, 13646, 30)                                                                      -- Wormhole Generator: Dragon Isles
     addItem(202046, 942, { x = 0.40, y = 0.36, z = 0 }, true, 9042, 480)                                                                       -- Lucky Tortollan Charm
     -- Niffen Diggin' Mitts (zone-locked to Zaralek Cavern)
-    addItem(205255, 2133, { x = 0.5645, y = 0.5580, z = 0 }, true, 14022, 15, function() return C_Map.GetBestMapForUnit("player") == 2133 end) -- Niffen Diggin' Mitts
+    addItem(205255, 2133, { x = 0.5645, y = 0.5580, z = 0 }, true, 14022, 15,
+        function() return C_Map.GetBestMapForUnit("player") == 2133 end)                                                                       -- Niffen Diggin' Mitts
     -- Mage Teleport
     addSpell(395277, 2112, { x = 0.58, y = 0.35, z = 0 }, true, 13862, 10)                                                                     -- Teleport: Valdrakken
 end
@@ -921,14 +1088,16 @@ if GetExpansionLevel() >= 11 then
     addItem(248485, 2537, { x = 0.50, y = 0.50, z = 0 }, true, 2037, 30)                                                                                                                            -- Wormhole Generator: Quel'Thalas
     addItem(266370, 2537, { x = 0.50, y = 0.50, z = 0 }, true, 2037, 30)                                                                                                                            -- Dundun's Abundant Travel Method
     addItem(253629, 2393, { x = 0.50, y = 0.50, z = 0 }, true, 10473, 60)                                                                                                                           -- Personal Key to the Arcantina
-    addPortal(true, 2393, { x = 0.4566, y = 0.6973, z = 0 }, true, 3487, 2541, { x = 0.5061, y = 0.8888, z = 0 }, true, 10473, 15, function() return C_QuestLog.IsQuestFlaggedCompleted(86903) end) -- Silvermoon City <-> Arcantina portal
+    addPortal(true, 2393, { x = 0.4566, y = 0.6973, z = 0 }, true, 3487, 2541, { x = 0.5061, y = 0.8888, z = 0 }, true,
+        10473, 15, function() return C_QuestLog.IsQuestFlaggedCompleted(86903) end)                                                                                                                 -- Silvermoon City <-> Arcantina portal
 
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
-        addPortal(true, 2393, { x = 0.5260, y = 0.6457, z = 0 }, true, 3487, 84, { x = 0.5450, y = 0.1726, z = 0 }, true, 1519, 15) -- Silvermoon City <-> Stormwind (portal room)
+        addPortal(true, 2393, { x = 0.5260, y = 0.6457, z = 0 }, true, 3487, 84, { x = 0.5450, y = 0.1726, z = 0 }, true,
+            1519, 15)                                                                                                               -- Silvermoon City <-> Stormwind (portal room)
     end
     -- Mage Teleport
-    addSpell(1259190, 2393, { x = 0.50, y = 0.50, z = 0 }, true, 3487, 10)                                                                                                                          -- Teleport: Silvermoon City
+    addSpell(1259190, 2393, { x = 0.50, y = 0.50, z = 0 }, true, 3487, 10) -- Teleport: Silvermoon City
 end
 
 if GetExpansionLevel() >= 10 then
@@ -937,7 +1106,8 @@ if GetExpansionLevel() >= 10 then
         local from = {
             actionOptions = { { type = "housing" } },
             condition = function()
-                local m = C_Map.GetBestMapForUnit("player"); return C_Housing and FarstriderLibData.HousingData and m ~= 2351 and m ~= 2352
+                local m = C_Map.GetBestMapForUnit("player"); return C_Housing and FarstriderLibData.HousingData and
+                m ~= 2351 and m ~= 2352
             end,
             unknown1 = 0,
             dynLoc = function() return FarstriderLibData.Util.GetPlayerLocation() end,
@@ -947,7 +1117,8 @@ if GetExpansionLevel() >= 10 then
             locaId = SpecialLocaId.PortalTo,
             locaArgs = function() return { C_Map.GetAreaInfo(15524) or "Razorwind Shores" } end
         }
-        local to = { unknown1 = 0, flags = 0, loc = { mapId = 2351, pos = { x = 0.5431, y = 0.4932, z = 0 }, isUI = true }, type = 2, locaId = SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(15524) or "Razorwind Shores" } end }
+        local to = { unknown1 = 0, flags = 0, loc = { mapId = 2351, pos = { x = 0.5431, y = 0.4932, z = 0 }, isUI = true }, type = 2, locaId =
+        SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(15524) or "Razorwind Shores" } end }
         addEntry(SpecialLocaId.PortalTo + portalCount, from, to, false, 30)
         portalCount = portalCount + 1
     end
@@ -955,7 +1126,8 @@ if GetExpansionLevel() >= 10 then
         local from = {
             actionOptions = { { type = "housing" } },
             condition = function()
-                local m = C_Map.GetBestMapForUnit("player"); return C_Housing and FarstriderLibData.HousingData and m ~= 2351 and m ~= 2352
+                local m = C_Map.GetBestMapForUnit("player"); return C_Housing and FarstriderLibData.HousingData and
+                m ~= 2351 and m ~= 2352
             end,
             unknown1 = 0,
             dynLoc = function() return FarstriderLibData.Util.GetPlayerLocation() end,
@@ -965,7 +1137,8 @@ if GetExpansionLevel() >= 10 then
             locaId = SpecialLocaId.PortalTo,
             locaArgs = function() return { C_Map.GetAreaInfo(16105) or "Founder's Point" } end
         }
-        local to = { unknown1 = 0, flags = 0, loc = { mapId = 2352, pos = { x = 0.5743, y = 0.2662, z = 0 }, isUI = true }, type = 2, locaId = SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(16105) or "Founder's Point" } end }
+        local to = { unknown1 = 0, flags = 0, loc = { mapId = 2352, pos = { x = 0.5743, y = 0.2662, z = 0 }, isUI = true }, type = 2, locaId =
+        SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(16105) or "Founder's Point" } end }
         addEntry(SpecialLocaId.PortalTo + portalCount, from, to, false, 30)
         portalCount = portalCount + 1
     end
@@ -989,7 +1162,8 @@ if GetExpansionLevel() >= 10 then
         local from = {
             actionOptions = { { type = "housing_return" } },
             condition = function()
-                local m = C_Map.GetBestMapForUnit("player"); return C_Housing and FarstriderLibData.HousingData and (m == 2351 or m == 2352)
+                local m = C_Map.GetBestMapForUnit("player"); return C_Housing and FarstriderLibData.HousingData and
+                (m == 2351 or m == 2352)
             end,
             unknown1 = 0,
             dynLoc = function() return FarstriderLibData.Util.GetPlayerLocation() end,
@@ -999,13 +1173,16 @@ if GetExpansionLevel() >= 10 then
             locaId = SpecialLocaId.PortalTo,
             locaArgs = function() return { getHousingExitAreaName() } end
         }
-        local to = { unknown1 = 0, flags = 0, dynLoc = getHousingExitLocation, type = 2, locaId = SpecialLocaId.PortalTo, locaArgs = function() return { getHousingExitAreaName() } end }
+        local to = { unknown1 = 0, flags = 0, dynLoc = getHousingExitLocation, type = 2, locaId = SpecialLocaId.PortalTo, locaArgs = function() return {
+                getHousingExitAreaName() } end }
         addEntry(SpecialLocaId.PortalTo + portalCount, from, to, false, 30)
         portalCount = portalCount + 1
     end
 end
 
-addDynamicItemWithMultipleIds(hearthstones, FarstriderLibData.Util.GetBindingLocation, GetBindLocation, (select(3, UnitRace("player")) == 1 and GetExpansionLevel() >= 10) and 12.5 or 30, function() return FarstriderLibData.AreaL[GetBindLocation()] end) -- Hearthstones
+addDynamicItemWithMultipleIds(hearthstones, FarstriderLibData.Util.GetBindingLocation, GetBindLocation,
+    (select(3, UnitRace("player")) == 1 and GetExpansionLevel() >= 10) and 12.5 or 30,
+    function() return FarstriderLibData.AreaL[GetBindLocation()] end)                                                                                                                                                                                        -- Hearthstones
 
 table.sort(Connections.helpfulItems, function(a, b) return a < b end)
 

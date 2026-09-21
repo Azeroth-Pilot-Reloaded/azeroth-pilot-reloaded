@@ -20,14 +20,13 @@ APR.flightPath.eventFrame:SetScript("OnEvent", function(self, event)
     if event == "TAXIMAP_OPENED" then
         local taxiMapID = GetTaxiMapID()
         local taxiNodes = (taxiMapID and C_TaxiMap.GetAllTaxiNodes(taxiMapID)) or {}
-        APR:CacheTaxiNodeNames(taxiNodes)
 
         APR.flightPath.CurrentTaxiNode = {}
         APR.flightPath.StepTaxiNode = {}
 
         for _, node in ipairs(taxiNodes) do
-            if node.state ~= Enum.FlightPathState.Unreachable and not APRTaxiNodes[APR.PlayerID][node.nodeID] then
-                APRTaxiNodes[APR.PlayerID][node.nodeID] = node.name
+            if node.state == Enum.FlightPathState.Current or node.state == Enum.FlightPathState.Reachable then
+                APRTaxiNodes[APR.PlayerID][node.nodeID] = true
             end
             if node.state == Enum.FlightPathState.Current then
                 APR.flightPath.CurrentTaxiNode = node
@@ -37,12 +36,17 @@ APR.flightPath.eventFrame:SetScript("OnEvent", function(self, event)
             end
         end
 
+        if APR.foreverTravel then
+            APR.foreverTravel:ObserveTaxiMap(taxiNodes)
+        end
+
         if step and step.UseFlightPath then
             local currentNodeID = APR.flightPath.CurrentTaxiNode.nodeID
             local stepNodeID = APR.flightPath.StepTaxiNode.nodeID
             if currentNodeID and stepNodeID and currentNodeID == stepNodeID then
                 APR:NextQuestStep()
-            elseif not IsModifierKeyDown() and APR.flightPath.StepTaxiNode.slotIndex then
+            elseif not IsModifierKeyDown() and APR.flightPath.StepTaxiNode.slotIndex and
+                APR.flightPath.StepTaxiNode.state == Enum.FlightPathState.Reachable then
                 if APR.settings.profile.autoFlight then
                     TakeTaxiNode(APR.flightPath.StepTaxiNode.slotIndex)
                 end
