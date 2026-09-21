@@ -10,7 +10,7 @@ def route_entries(toc):
 
 
 def validate_farstrider(root, toc, game):
-    entry = 'APR-Core/FarstriderLibData_[Game].xml'
+    entry = 'APR-Core/libs/FarstriderLibData_[Game].xml'
     entries = [line.strip().replace('\\', '/') for line in toc.read_text(encoding='utf-8-sig').splitlines()]
     assert entries.count(entry) == 1, f'{toc.name} must select Farstrider data by client'
     manifest = root / entry.replace('[Game]', game)

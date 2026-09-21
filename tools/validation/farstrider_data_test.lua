@@ -6,7 +6,7 @@ local function read(path)
     return contents
 end
 
-local entry = assert(read("APR.toc"):match("\n(APR%-Core/FarstriderLibData_%[Game%]%.xml)"))
+local entry = assert(read("APR.toc"):match("\n(APR%-Core/libs/FarstriderLibData_%[Game%]%.xml)"))
 local function loadXML(path, namespace, loaded)
     assert(not loaded[path], "Duplicate include: " .. path)
     loaded[path] = true
@@ -25,11 +25,15 @@ local function loadXML(path, namespace, loaded)
 end
 
 function debugstack() return "" end
+
 function CreateFrame()
     return { RegisterEvent = function() end, SetScript = function() end }
 end
+
 function UnitRace() return "Human", "Human", 1 end
+
 function UnitLevel() return 60 end
+
 WOW_PROJECT_MAINLINE = 1
 WOW_PROJECT_MISTS_CLASSIC = 19
 
@@ -51,14 +55,18 @@ local function loadClient(game, locale, faction, withTaxi, existingAPI)
     LibTaxiData_API = withTaxi and taxi or nil
     WOW_PROJECT_ID = game == "Standard" and WOW_PROJECT_MAINLINE or 99
     function GetExpansionLevel() return game == "Standard" and 11 or 0 end
+
     function GetLocale() return locale end
+
     function UnitFactionGroup() return faction end
+
     function GetBindLocation()
         if locale == "frFR" then
             return game == "Camelot" and "Colline des sentinelles" or "Colline des Sentinelles"
         end
         return "Sentinel Hill"
     end
+
     local namespace, loaded = {}, {}
     loadXML(entry:gsub("%[Game%]", game), namespace, loaded)
     assert(FarstriderLib_API.DATA.WAYPOINTS == FarstriderLibData_API.WAYPOINTS,
@@ -77,9 +85,12 @@ for _, game in ipairs({ "Standard", "Camelot" }) do
                 local flavor = vanilla and "Vanilla" or "Standard"
                 local otherFlavor = vanilla and "Standard" or "Vanilla"
                 assert(loaded["APR-Core/libs/FarstriderLibData/Areas/" .. flavor .. "/FarstriderLibData_Areas.lua"])
-                assert(not loaded["APR-Core/libs/FarstriderLibData/Areas/" .. otherFlavor .. "/FarstriderLibData_Areas.lua"])
-                assert(loaded["APR-Core/libs/FarstriderLibData/Waypoints/" .. flavor .. "/FarstriderLibData_Waypoints.lua"])
-                assert(not loaded["APR-Core/libs/FarstriderLibData/Waypoints/" .. otherFlavor .. "/FarstriderLibData_Waypoints.lua"])
+                assert(not loaded
+                ["APR-Core/libs/FarstriderLibData/Areas/" .. otherFlavor .. "/FarstriderLibData_Areas.lua"])
+                assert(loaded
+                ["APR-Core/libs/FarstriderLibData/Waypoints/" .. flavor .. "/FarstriderLibData_Waypoints.lua"])
+                assert(not loaded
+                ["APR-Core/libs/FarstriderLibData/Waypoints/" .. otherFlavor .. "/FarstriderLibData_Waypoints.lua"])
                 assert(api.IsBindLocationSupported())
                 local binding = data.Util.GetBindingLocation()
                 assert(binding.mapId == 0 and binding.isUI == false)
@@ -134,4 +145,5 @@ for _, game in ipairs({ "Standard", "Camelot" }) do
     assert(api == existingAPI and next(api.WAYPOINTS) == nil)
     assert(not data.Areas, "A newer standalone data library must keep ownership")
 end
-print(string.format("Farstrider data: %d client/locale/faction/taxi combinations and standalone version guards passed", cases))
+print(string.format("Farstrider data: %d client/locale/faction/taxi combinations and standalone version guards passed",
+    cases))
