@@ -26,7 +26,8 @@ jobs:
           fetch-depth: 0
 
       - name: WoW Packager
-        uses: BigWigsMods/packager@master
+        # v2.6+ recognizes WoW Forever (Interface 16001) on CurseForge and Wago.
+        uses: BigWigsMods/packager@v2.6.1
         with:
           args: -p 618667 -w 26457 -a XKq9xXKy
 
