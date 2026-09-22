@@ -1058,6 +1058,14 @@ end
 function APR.routeconfig:InitRouteConfig()
     EnsurePrefabWrappedButtonWidget()
 
+    -- Catalog changes need not reset the active step or restart navigation.
+    APR.routeconfig:RegisterMessage("APR_Route_Catalog_Update", function()
+        if APR.OptionsRoute:IsVisible() then
+            SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
+            SetRouteListTab(tabRouteListWidget, currentTabName)
+        end
+    end)
+
     APR.routeconfig:RegisterMessage("APR_Custom_Path_Update", function()
         if APR.OptionsRoute:IsVisible() then
             SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
