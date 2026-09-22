@@ -285,31 +285,57 @@ function APR:OverrideRouteData()
     end
 end
 
---- Add custom routes stored in saved variables to the live route table.
---- AprRC (Route Recorder) stores flat step arrays in APRData.CustomRoute.
---- This wraps them into the new self-describing format.
+local function CopyCustomRouteData(value)
+    if type(value) ~= "table" then return value end
+    local result = {}
+    for key, entry in pairs(value) do result[key] = CopyCustomRouteData(entry) end
+    return result
+end
+
+local function NormalizeCustomRoute(name, data)
+    if type(data) ~= "table" then return nil end
+    if data.steps ~= nil and type(data.steps) ~= "table" then return nil end
+    -- Preserve the full definition, including future metadata, and detach playback
+    -- from SavedVariables: runtime step changes must never alter the saved route.
+    local route = (data.steps or data.scenarios) and CopyCustomRouteData(data) or { steps = CopyCustomRouteData(data) }
+    route.label = route.label or name:match("%d+%-(.*)") or name
+    route.expansion = route.expansion or APR.EXPANSIONS.Custom
+    route.category = route.category or APR.CATEGORIES.Miscellaneous
+    route.conditions = route.conditions or {}
+    return route
+end
+
+--- Register a saved custom definition and refresh consumers once per frame.
+function APR:RegisterCustomRoute(name, data)
+    if type(name) ~= "string" or name == "" or not APRData then return false end
+    local route = NormalizeCustomRoute(name, data)
+    if not route then return false end
+    APRData.CustomRoute = APRData.CustomRoute or {}
+    APRData.CustomRoute[name] = CopyCustomRouteData(data)
+    self.RouteQuestStepList[name] = route
+    if self.InvalidateEffectiveRouteStepsCache then self:InvalidateEffectiveRouteStepsCache(name) end
+    self._customRouteActiveChanged = self._customRouteActiveChanged or self.ActiveRoute == name
+    if not self._customRouteUpdatePending then
+        self._customRouteUpdatePending = true
+        C_Timer.After(0, function()
+            self._customRouteUpdatePending = nil
+            local activeChanged = self._customRouteActiveChanged
+            self._customRouteActiveChanged = nil
+            if self.routeconfig then
+                self.routeconfig:SendMessage(activeChanged and "APR_Custom_Path_Update" or "APR_Route_Catalog_Update")
+            end
+        end)
+    end
+    return true
+end
+
+--- Accept both complete definitions and legacy flat arrays from the recorder.
 function APR:LoadCustomRoutes()
-    for name, data in pairs(APRData.CustomRoute) do
-        -- Guard: if data is already wrapped (has .steps), use it directly
-        if type(data) == "table" and data.steps then
-            self.RouteQuestStepList[name] = {
-                label = data.label or name:match("%d+%-(.*)") or name,
-                expansion = data.expansion or APR.EXPANSIONS.Custom,
-                category = data.category or APR.CATEGORIES.Miscellaneous,
-                gameVersion = data.gameVersion,
-                conditions = data.conditions or {},
-                parallelSteps = data.parallelSteps,
-                steps = data.steps,
-            }
-        else
-            -- Legacy flat step array from AprRC
-            self.RouteQuestStepList[name] = {
-                label = name:match("%d+%-(.*)") or name,
-                expansion = APR.EXPANSIONS.Custom,
-                category = APR.CATEGORIES.Miscellaneous,
-                conditions = {},
-                steps = data,
-            }
+    for name, data in pairs(APRData.CustomRoute or {}) do
+        local route = type(name) == "string" and NormalizeCustomRoute(name, data)
+        if route then
+            self.RouteQuestStepList[name] = route
+            if self.InvalidateEffectiveRouteStepsCache then self:InvalidateEffectiveRouteStepsCache(name) end
         end
     end
 end
