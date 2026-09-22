@@ -1,13 +1,13 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
-  <Script file="libs\FarstriderLibData\FarstriderLibData~Init.lua"/>
+  <Script file="FarstriderLibData\FarstriderLibData~Init.lua"/>
 
-  <Script file="libs\FarstriderLibData\Locale\FarstriderLibData_Locale.enUS.lua"/>
-  <Script file="libs\FarstriderLibData\Locale\FarstriderLibData_Locale.frFR.lua"/>
-  <Script file="libs\FarstriderLibData\Locale\FarstriderLibData_Locale.deDE.lua"/>
-  <Script file="libs\FarstriderLibData\Locale\FarstriderLibData_Locale.ruRU.lua"/>
-  <Script file="libs\FarstriderLibData\Locale\FarstriderLibData_Locale.zhCN.lua"/>
-  <Script file="libs\FarstriderLibData\Locale\FarstriderLibData_Locale.zhTW.lua"/>
+  <Script file="FarstriderLibData\Locale\FarstriderLibData_Locale.enUS.lua"/>
+  <Script file="FarstriderLibData\Locale\FarstriderLibData_Locale.frFR.lua"/>
+  <Script file="FarstriderLibData\Locale\FarstriderLibData_Locale.deDE.lua"/>
+  <Script file="FarstriderLibData\Locale\FarstriderLibData_Locale.ruRU.lua"/>
+  <Script file="FarstriderLibData\Locale\FarstriderLibData_Locale.zhCN.lua"/>
+  <Script file="FarstriderLibData\Locale\FarstriderLibData_Locale.zhTW.lua"/>
 
-  <Script file="libs\FarstriderLibData\FarstriderLibData~Config.lua"/>
-  <Script file="libs\FarstriderLibData\FarstriderLibData~Util.lua"/>
+  <Script file="FarstriderLibData\FarstriderLibData~Config.lua"/>
+  <Script file="FarstriderLibData\FarstriderLibData~Util.lua"/>
 </Ui>
