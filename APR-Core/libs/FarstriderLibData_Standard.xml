@@ -1,6 +1,6 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/">
   <Include file="FarstriderLibData.xml"/>
-  <Include file="libs\FarstriderLibData\Areas\Standard\FarstriderLibData_Areas.xml"/>
-  <Include file="libs\FarstriderLibData\Waypoints\Standard\FarstriderLibData_Waypoints.xml"/>
+  <Include file="FarstriderLibData\Areas\Standard\FarstriderLibData_Areas.xml"/>
+  <Include file="FarstriderLibData\Waypoints\Standard\FarstriderLibData_Waypoints.xml"/>
   <Include file="FarstriderLibData_Finalizer.xml"/>
 </Ui>
