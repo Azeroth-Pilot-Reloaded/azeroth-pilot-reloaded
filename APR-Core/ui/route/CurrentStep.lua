@@ -628,7 +628,20 @@ function APR.currentStep:AddReputationStep(requirement)
     if not container then return end
 
     local current, total, text = APR:GetReputationBarProgress(requirement)
-    local bar = self.reputationBar
+    self:AddObjectiveProgressBar(container, "reputationBar", current, total, text)
+end
+
+function APR.currentStep:AddLootMoneyStep(rule, cash, resale, required)
+    self:AddQuestSteps("LOOT_MONEY", APR:GetLootMoneyStepText(rule), "LootMoney", false, true, false)
+    local container = self.questsList["LOOT_MONEY-LootMoney"]
+    if not container then return end
+    local text = APR:FormatLootMoney(cash) .. " + " .. APR:FormatLootMoney(resale) .. " / " ..
+        APR:FormatLootMoney(required)
+    self:AddObjectiveProgressBar(container, "lootMoneyBar", math.min(cash + resale, required), required, text)
+end
+
+function APR.currentStep:AddObjectiveProgressBar(container, key, current, total, text)
+    local bar = self[key]
     if not current then
         if bar then bar:Hide() end
         return
@@ -642,9 +655,9 @@ function APR.currentStep:AddReputationStep(requirement)
         bar.Text:SetPoint("CENTER")
         APR:RegisterFontString(bar.Text, "currentStep", { role = "base" })
         if APR.RegisterSkinTarget then APR:RegisterSkinTarget(bar, "statusbar") end
-        self.reputationBar = bar
+        self[key] = bar
     end
-    -- Reuse the bar across UPDATE_FACTION refreshes; its row owns visibility and cleanup.
+    -- Reuse the bar across resource refreshes; its row owns visibility and cleanup.
     bar:SetParent(container)
     bar:ClearAllPoints()
     bar:SetPoint("TOPLEFT", container.font, "BOTTOMLEFT", 0, -5)
