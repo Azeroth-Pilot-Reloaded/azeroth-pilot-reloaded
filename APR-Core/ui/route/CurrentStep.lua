@@ -613,6 +613,8 @@ function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, i
     end
 
     self.questsList[questKey] = objectiveContainer
+    objectiveContainer.isQuestObjective = not isScenario and not noTooltip and tonumber(objectiveIndex) ~= nil
+    self:UpdateQuestObjectiveProgressBar(objectiveContainer, questID, objectiveIndex)
     self:MaybeAttachRaidIconButton(questKey)
     FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - objectiveContainer:GetHeight()
 
@@ -640,8 +642,9 @@ function APR.currentStep:AddLootMoneyStep(rule, cash, resale, required)
     self:AddObjectiveProgressBar(container, "lootMoneyBar", math.min(cash + resale, required), required, text)
 end
 
-function APR.currentStep:AddObjectiveProgressBar(container, key, current, total, text)
-    local bar = self[key]
+function APR.currentStep:AddObjectiveProgressBar(container, key, current, total, text, replaceText)
+    local owner = replaceText and container or self
+    local bar = owner[key]
     if not current then
         if bar then bar:Hide() end
         return
@@ -655,22 +658,43 @@ function APR.currentStep:AddObjectiveProgressBar(container, key, current, total,
         bar.Text:SetPoint("CENTER")
         APR:RegisterFontString(bar.Text, "currentStep", { role = "base" })
         if APR.RegisterSkinTarget then APR:RegisterSkinTarget(bar, "statusbar") end
-        self[key] = bar
+        owner[key] = bar
     end
     -- Reuse the bar across resource refreshes; its row owns visibility and cleanup.
     bar:SetParent(container)
     bar:ClearAllPoints()
-    bar:SetPoint("TOPLEFT", container.font, "BOTTOMLEFT", 0, -5)
-    bar:SetPoint("TOPRIGHT", container.font, "BOTTOMRIGHT", 0, -5)
+    if replaceText then
+        bar:SetPoint("TOPLEFT", container, "TOPLEFT", 16, -5)
+        bar:SetPoint("TOPRIGHT", container, "TOPRIGHT", -16, -5)
+        container.font:Hide()
+        container.progressBarOnly = true
+    else
+        bar:SetPoint("TOPLEFT", container.font, "BOTTOMLEFT", 0, -5)
+        bar:SetPoint("TOPRIGHT", container.font, "BOTTOMRIGHT", 0, -5)
+    end
     bar:SetHeight(20)
     self:UpdateProgressBarColor(bar)
     bar:SetMinMaxValues(0, total)
     bar:SetValue(current)
     bar.Text:SetText(text)
     bar:Show()
-    container.extraContentHeight = 25
-    container:SetHeight(container.font:GetStringHeight() + 10 + container.extraContentHeight)
+    container.extraContentHeight = replaceText and 0 or 25
+    container:SetHeight(replaceText and 30 or (container.font:GetStringHeight() + 10 + container.extraContentHeight))
     self:ReOrderQuestSteps()
+end
+
+function APR.currentStep:UpdateQuestObjectiveProgressBar(container, questID, objectiveIndex)
+    if not container.isQuestObjective then return end
+    local percent = APR:GetQuestObjectiveProgressPercent(questID, objectiveIndex)
+    if percent then
+        self:AddObjectiveProgressBar(container, "questProgressBar", percent, 100, percent .. "%", true)
+    elseif container.progressBarOnly then
+        container.questProgressBar:Hide()
+        container.progressBarOnly = nil
+        container.font:Show()
+        container:SetHeight(container.font:GetStringHeight() + 10)
+        self:ReOrderQuestSteps()
+    end
 end
 
 function APR.currentStep:UpdateQuestStep(questID, textObjective, objectiveIndex)
@@ -688,6 +712,7 @@ function APR.currentStep:UpdateQuestStep(questID, textObjective, objectiveIndex)
 
     local leading = existingContainer.showLeadingDash and '- ' or ''
     existingContainer.font:SetText(leading .. textObjective)
+    self:UpdateQuestObjectiveProgressBar(existingContainer, questID, objectiveIndex)
 end
 
 local getExtraLineHeight = function()
@@ -1105,7 +1130,9 @@ end
 function APR.currentStep:RefreshTextLayout()
     local function RefreshContainer(container)
         if not container or not container.font then return end
-        if container.detailFonts and #container.detailFonts > 0 then
+        if container.progressBarOnly then
+            container:SetHeight(30)
+        elseif container.detailFonts and #container.detailFonts > 0 then
             local detailHeight = 0
             for _, detailFont in ipairs(container.detailFonts) do
                 detailFont:ClearAllPoints()
