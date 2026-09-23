@@ -67,6 +67,7 @@ do not repeat them on child steps or prefabs.
 | `ChromiePick`     | Selects a specific Chromie Time timeline by option ID.                                                                                                                                                                                                                       | `ChromiePick = 8`                                                                                           |
 | `DeathSkip` | Wait for death, confirm resurrection at a spirit healer, then finish on resurrection. Does not kill the character or accept an ordinary player resurrection as completion. | `DeathSkip = true, Hardcore = false` |
 | `DestroyItems` | Delete all bag stacks of the explicitly listed items and wait until absent. | `DestroyItems = { items = { 12345 } }` |
+| `EquipItem` | Show the localized item name and an item button; complete once the specified slot contains the item. Use possession and level conditions for deferred parallel reminders. | `EquipItem = { itemID = 2030, slot = 16 }` |
 | `Done`            | Quests to turn in. The step completes once all listed quests are handed in. If using `DoneDB`, keep a base `Done` field as well.                                                                                                                                             | `Done = { 12345, 12400 }`                                                                                   |
 | `DoneDB`          | Alternative quest IDs counted as the same hand-in. Requires `Done`.                                                                                                                                                                                                          | `DoneDB = { 12345, 54321 }`                                                                                 |
 | `DoScenario`      | Indicates that the player should complete the scenario.                                                                                                                                                                                                                      | `DoScenario = { questID = 86912, mapID = 2505 }`                                                            |
@@ -88,6 +89,7 @@ do not repeat them on child steps or prefabs.
 | `LeaveQuests`     | Abandons multiple quests from the quest log.                                                                                                                                                                                                                                 | `LeaveQuests = { 38254, 38257 }`                                                                            |
 | `LeaveScenario`   | Prompts to leave the scenario once objectives are done.                                                                                                                                                                                                                      | `LeaveScenario = { questID = 86912, mapID = 2505 }`                                                         |
 | `LootItems` | Wait until each item reaches `quantity` (default 1), counting items in bags and the saved character bank. Optional `questID` also accepts a quest already turned in. No virtual loot or remembered completion count. | `LootItems = { { questID = 86644, itemID = 244143, quantity = 1 } }` |
+| `LootMoney` | Wait until cash plus carried items' vendor value reaches `copper`. Displays a progress bar. Optionally includes all equipped gear or selected `equippedSlots`. | `LootMoney = { copper = 10, includeEquipped = true }` |
 | `MountVehicle`    | Automatically validates when a mount / boarding event is detected.                                                                                                                                                                                                           | `MountVehicle = true`                                                                                       |
 | `Note` | Informational step accepting a string or array of strings. Seen notes are remembered and can auto-skip on later resets / revisits. | `Note = { "Open the map", "Follow the bridge north" }` |
 | `NpcDismount`     | Automatically dismounts to talk to the targeted NPC.                                                                                                                                                                                                                         | `NpcDismount = 43733`                                                                                       |
@@ -115,7 +117,17 @@ do not repeat them on child steps or prefabs.
 
 An action waits for completion; a condition controls whether it applies. Use one main action per step.
 
-The action tables for selling, training, bank transfers, destruction and taming accept optional `text`. Bank transfers use the Classic character
+Names available directly from IDs must not be duplicated in route text: `LearnSkill`
+uses localized spell names from `spellID`/`spellIDs`, and `TakePortal` uses the
+localized destination from `mapID`. Training without spell IDs can still use `text`.
+For cache-dependent names, keep `text` as a fallback: taming prefers the NPC name
+in `APRData.NPCList`, while selling, bank transfers and destruction prefer item
+names once all listed items are cached. Until then, the action's fallback remains
+visible. These lookups never overwrite route data, so the fallback remains available
+for other characters. As with `DroppableQuest.Text`, cached names take priority;
+both `text` and `Text` are accepted by these action tables.
+
+Bank transfers use the Classic character
 bank and its bank bags, not guild, reagent or warband banks. Selling, transferring
 and destruction process one full stack at a time, pause in combat, and never touch
 a foreign cursor item or locked slot. These actions do not accept a quantity limit.
@@ -166,6 +178,36 @@ the order of an achievement's criteria.
 
 When both `criteriaID` and `criteriaIndex` are provided, APR uses `criteriaID`. The criterion label is displayed in the
 current-step panel, and the step advances automatically when the criterion or achievement is completed.
+
+### Money and vendor-value objectives
+
+`LootMoney` waits until current money plus the theoretical vendor value of carried
+items reaches `copper`. The current-step bar displays **cash + resale / target**
+and fills using their sum. Bags include stack quantities and the reagent bag when
+available; bank contents and items with no vendor value are excluded. Uncached
+item prices count as zero until item information becomes available.
+
+```lua
+{
+    Coord = { x = -4299.05, y = -494.9 },
+    Zone = 1411,
+    Range = 30,
+    LootMoney = {
+        copper = 10,
+        equippedSlots = { 1, 3, 5, 6, 7, 8, 9, 10, 15 }, -- armor only
+    },
+    Note = { "Kill Mottled Boars and loot items to sell." },
+    Class = { "SHAMAN", "WARRIOR" },
+}
+```
+
+Equipment is excluded by default. Set `includeEquipped = true` to include all
+equipped gear, or `equippedSlots` to include selected inventory slots. This only
+estimates resale value; it does not sell or unequip items. The step automatically
+advances at `cash + resale >= copper`, with updates on money, bags, equipment and
+item-data events. Use this as the main objective, without `Waypoint` or a `Money`
+skip filter. `Money` remains a condition on cash actually owned, for purchases
+and other steps that require spending money.
 
 ### Reputation Examples
 

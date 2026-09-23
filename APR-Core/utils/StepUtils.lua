@@ -7,7 +7,7 @@ APR.mainStepOptions = {
     "Scenario", "EnterInstance", "LeaveInstance", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS",
     "UseDalaHS", "UseGarrisonHS",
     "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession", "LootItems", "WarMode", "Grind",
-    "Reputation",
+    "Reputation", "LootMoney",
     "Achievement", "RouteCompleted", "Note", "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw",
     "TameBeast", "DestroyItems", "EquipItem"
 }
@@ -20,6 +20,9 @@ APR.secondaryStepOptions = {
 --- Return the localized label for the first recognized step key.
 -- This keeps UI construction simple while letting steps remain data-driven.
 function APR:GetStepString(step)
+    if step and step.LootMoney then
+        return self:GetLootMoneyStepText(step.LootMoney), "LootMoney"
+    end
     for _, key in ipairs(self.routeActionKeys or {}) do
         if step and step[key] then return self:GetRouteActionText(key, step[key]), key end
     end

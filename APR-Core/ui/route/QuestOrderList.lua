@@ -821,6 +821,11 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local color = APR:IsSpellKnown(spellID) and "green" or "gray"
                 container, activeQuestId = QuestOrderListUtils:AddStepFrameWithQuest(layout, displayStepIndex,
                     L["LEARN_PROFESSION"], questInfo, color, isCurrentStep)
+            elseif step.LootMoney then
+                local cash, resale, required = APR:GetLootMoneyProgress(step.LootMoney)
+                local color = colorByCompletion(cash + resale >= required, currentStepIndex, rawIndex)
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                    APR:GetLootMoneyStepText(step.LootMoney), color, isCurrentStep)
             elseif step.LootItems then
                 local title = L["LOOT_ITEM"]
                 local itemsInfo = {}

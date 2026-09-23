@@ -507,7 +507,15 @@ local function UpdateStepOnce()
             APR.party:RefreshPartyFrameAnchor()
             return
         end
-        if (step.Qpart) then
+        if step.LootMoney then
+            local cash, resale, required = APR:GetLootMoneyProgress(step.LootMoney)
+            if cash + resale >= required then
+                APR:NextQuestStep()
+                return
+            elseif showStepDetails then
+                APR.currentStep:AddLootMoneyStep(step.LootMoney, cash, resale, required)
+            end
+        elseif (step.Qpart) then
             APR:Debug("Qpart step detected")
             local questIDs = step.Qpart
             local questToHighlight = nil

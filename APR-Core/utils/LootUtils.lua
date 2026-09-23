@@ -37,6 +37,57 @@ function APR:IsRouteCollectionComplete(rule)
     return self:GetCollectionItemCount(rule.itemID) >= (rule.quantity or 1)
 end
 
+-- Current cash plus the theoretical vendor value of carried items. Never counts
+-- bank contents, buys back items, or sells anything. Missing item data contributes
+-- zero until GET_ITEM_INFO_RECEIVED refreshes the active objective.
+function APR:GetLootMoneyProgress(rule)
+    local cash, resale = GetMoney() or 0, 0
+    local itemInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
+    local function addItem(item, count)
+        if not item or not itemInfo then return end
+        local price = select(11, itemInfo(item))
+        if type(price) == "number" and price > 0 then
+            resale = resale + price * (count or 1)
+        end
+    end
+    local slots = C_Container and C_Container.GetContainerNumSlots or GetContainerNumSlots
+    local info = C_Container and C_Container.GetContainerItemInfo or GetContainerItemInfo
+    if slots and info then
+        for bag = 0, NUM_TOTAL_EQUIPPED_BAG_SLOTS or NUM_BAG_SLOTS or 4 do
+            for slot = 1, slots(bag) or 0 do
+                local item, count, _, _, _, _, link, _, noValue, id = info(bag, slot)
+                if type(item) == "table" then
+                    link, id, count, noValue = item.hyperlink, item.itemID, item.stackCount, item.hasNoValue
+                end
+                if not noValue then addItem(link or id, count) end
+            end
+        end
+    end
+    if GetInventoryItemLink or GetInventoryItemID then
+        local selected = {}
+        if rule.includeEquipped then
+            for slot = 1, 19 do selected[slot] = true end
+        else
+            for _, slot in ipairs(rule.equippedSlots or {}) do selected[slot] = true end
+        end
+        for slot in pairs(selected) do
+            local item = GetInventoryItemLink and GetInventoryItemLink("player", slot)
+                or GetInventoryItemID and GetInventoryItemID("player", slot)
+            addItem(item, GetInventoryItemCount and GetInventoryItemCount("player", slot) or 1)
+        end
+    end
+    return cash, resale, math.max(1, tonumber(rule.copper) or 1)
+end
+
+function APR:FormatLootMoney(copper)
+    local formatMoney = C_CurrencyInfo and C_CurrencyInfo.GetCoinTextureString or GetCoinTextureString
+    return formatMoney and formatMoney(copper) or tostring(copper)
+end
+
+function APR:GetLootMoneyStepText(rule)
+    return string.format(L["LOOT_MONEY"], self:FormatLootMoney(rule.copper))
+end
+
 ----------------------------------------------------------------
 -- MONEY HANDLING (gold / silver / copper)
 -- Amount is already a delta in copper (from PLAYER_MONEY)
