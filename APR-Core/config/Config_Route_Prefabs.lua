@@ -355,7 +355,7 @@ local function FindConditionBasedStartingRouteKey(parentMapID, requireMapMatch)
 end
 
 function APR.routeconfig:GetSpeedRunPrefab()
-    if APR:GetGameVersion() == "forever" then
+    if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
         return self:BuildLevelingPrefab(APR.EXPANSIONS.Forever)
     end
     self._isBuildingSpeedrunPrefab = true

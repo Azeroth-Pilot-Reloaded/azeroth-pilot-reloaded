@@ -26,9 +26,9 @@ function APR:IsRouteCompatibleWithClient(routeData)
     local gameVersion = routeData.gameVersion
     if not gameVersion and routeData.expansion then
         if routeData.expansion == self.EXPANSIONS.Forever then
-            gameVersion = "forever"
+            gameVersion = APR.GAME_VERSIONS.Forever
         elseif routeData.expansion ~= self.EXPANSIONS.Custom then
-            gameVersion = "retail"
+            gameVersion = APR.GAME_VERSIONS.Retail
         end
     end
     return not gameVersion or gameVersion == self:GetGameVersion()
