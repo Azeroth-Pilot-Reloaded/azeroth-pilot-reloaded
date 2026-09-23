@@ -268,6 +268,12 @@ local function UpdateStepOnce()
             end
         end
 
+        if showStepDetails and step.Emote then
+            APR.currentStep:AddQuestSteps("EMOTE", string.format(L["PERFORM_EMOTE"], step.Emote.emote),
+                "Emote", false, true)
+            APR.currentStep:AddStepButton("EMOTE-Emote", step.Emote.emote, "emote")
+        end
+
         if showStepDetails and step.PreviewImages then
             APR.currentStepImagePreview:SetPreviewImages(APR.currentStep, step)
         else

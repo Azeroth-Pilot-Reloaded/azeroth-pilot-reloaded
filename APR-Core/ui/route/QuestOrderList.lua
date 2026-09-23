@@ -894,6 +894,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
                     APR:GetRouteActionText("EquipItem", rule),
                     colorByCompletion(completed, currentStepIndex, rawIndex), isCurrentStep)
+            elseif step.Emote then
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                    string.format(L["PERFORM_EMOTE"], step.Emote.emote),
+                    colorByCompletion(false, currentStepIndex, rawIndex), isCurrentStep)
             elseif step.Note then
                 local previewText = nil
                 if type(step.Note) == "table" then
