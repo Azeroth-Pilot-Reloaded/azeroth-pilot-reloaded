@@ -1,5 +1,5 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local actionKeys = { "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast", "DestroyItems" }
+local actionKeys = { "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast", "DestroyItems", "EquipItem" }
 APR.routeActionKeys = actionKeys
 
 local function CurrentNPC()
@@ -102,8 +102,53 @@ function APR:GetRouteActionState()
 end
 
 function APR:GetRouteActionText(key, rule)
-    if type(rule) == "table" and rule.text then return self:ResolveStepText(rule.text) end
-    return L[key:upper()]
+    local label = L[key:upper()]
+    if type(rule) ~= "table" then return label end
+
+    local function Fallback()
+        return self:ResolveStepText(rule.text or rule.Text) or label
+    end
+
+    if key == "LearnSkill" and (rule.spellID or rule.spellIDs) then
+        local names = {}
+        for _, id in ipairs(rule.spellID and { rule.spellID } or rule.spellIDs) do
+            local info = C_Spell and C_Spell.GetSpellInfo and C_Spell.GetSpellInfo(id)
+            local name = info and info.name or (GetSpellInfo and GetSpellInfo(id))
+            names[#names + 1] = name or ((UNKNOWN or "?") .. " (" .. id .. ")")
+        end
+        -- Spell names come from the client; a route's literal text must never override them.
+        return #names > 0 and (label .. ": " .. table.concat(names, ", ")) or label
+    end
+
+    if key == "TameBeast" and rule.npcID then
+        local name = APRData and APRData.NPCList and APRData.NPCList[rule.npcID]
+        return name and (label .. ": " .. name) or Fallback()
+    end
+
+    if key == "EquipItem" and rule.itemID then
+        local getItemInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
+        local name = getItemInfo and getItemInfo(rule.itemID)
+        return label .. ": " .. (name or ((UNKNOWN or "?") .. " (" .. rule.itemID .. ")"))
+    end
+
+    if key == "SellItems" or key == "BankDeposit" or key == "BankWithdraw" or key == "DestroyItems" then
+        local names, missing = {}, false
+        local getItemInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
+        for _, entry in ipairs(Entries(rule)) do
+            local id = type(entry) == "table" and entry.itemID or entry
+            local name = getItemInfo and getItemInfo(id)
+            if not name then
+                missing = true
+                name = type(entry) == "table" and self:ResolveStepText(entry.text or entry.Text)
+            end
+            names[#names + 1] = name or ((UNKNOWN or "?") .. " (" .. id .. ")")
+        end
+        -- Item data can be absent until cached. Keep the route fallback until every name is available.
+        if missing and (rule.text or rule.Text) then return Fallback() end
+        if #names > 0 then return label .. ": " .. table.concat(names, ", ") end
+    end
+
+    return Fallback()
 end
 
 function APR:HandleRouteAction(step)
@@ -124,6 +169,8 @@ function APR:HandleRouteAction(step)
             local complete
             if key == "DeathSkip" or key == "TameBeast" then
                 complete = state.complete
+            elseif key == "EquipItem" then
+                complete = GetInventoryItemID("player", rule.slot) == rule.itemID
             elseif key == "LearnSkill" then
                 self:HandleSkillTrainer(step)
                 complete = state.complete
@@ -143,6 +190,8 @@ function APR:HandleRouteAction(step)
             if key == "TameBeast" then
                 self.currentStep:AddStepButton(key .. "-spell", rule.spellID or 1515, "spell")
                 if rule.npcID then self.currentStep:AddRaidIconButton(key .. "-target", rule.npcID) end
+            elseif key == "EquipItem" then
+                self.currentStep:AddStepButton(key .. "-" .. key, rule.itemID, "item", rule.slot)
             end
             return true
         end

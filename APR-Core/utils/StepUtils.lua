@@ -9,7 +9,7 @@ APR.mainStepOptions = {
     "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession", "LootItems", "WarMode", "Grind",
     "Reputation",
     "Achievement", "RouteCompleted", "Note", "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw",
-    "TameBeast", "DestroyItems"
+    "TameBeast", "DestroyItems", "EquipItem"
 }
 
 -- BuyMerchant need to be first
