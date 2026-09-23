@@ -469,6 +469,13 @@ function APR.routeconfig:GetStartingZonePrefab(suppressUpdate, prefabType)
     local shouldResolveStartingZone = HasStartingZoneRouteForMap(parentMapID, prefabType) or isNewCharacterStartFlow
 
     if shouldResolveStartingZone then
+        -- Forever's generated starters are explicit; other race/class variants
+        -- on the same map must not replace the recommended starting prefab.
+        if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever
+            and BuildStartingZonePrefabFromRoutes(self, prefabType, parentMapID, suppressUpdate) then
+            return
+        end
+
         -- Race/class starts can share a map with generic routes and need priority.
         local routeKey = parentMapID and FindConditionBasedStartingRouteKey(parentMapID, true)
         local routeData = routeKey and APR:GetRouteData(routeKey)
