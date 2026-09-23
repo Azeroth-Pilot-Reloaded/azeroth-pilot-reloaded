@@ -596,6 +596,23 @@ function APR:IsScenarioTrigTextMatched(step, scenario)
     return false
 end
 
+--- Returns a percentage only for a progress-bar objective in an active quest.
+function APR:GetQuestObjectiveProgressPercent(questId, objectiveId)
+    questId, objectiveId = tonumber(questId), tonumber(objectiveId)
+    local quest = questId and self.ActiveQuests and self.ActiveQuests[questId]
+    if not quest or not quest.objectives or not quest.objectives[objectiveId]
+        or not C_QuestLog or not C_QuestLog.GetQuestObjectives then
+        return nil
+    end
+
+    local objectives = C_QuestLog.GetQuestObjectives(questId)
+    local objective = objectives and objectives[objectiveId]
+    if not objective or objective.type ~= "progressbar" then return nil end
+
+    local percent = GetQuestProgressPercentSafe(questId)
+    if percent then return math.max(0, math.min(100, percent)) end
+end
+
 --- Retrieves the quest text associated with a specific progress bar objective.
 -- @param questId number The unique identifier of the quest.
 -- @param objectiveId number The identifier of the specific objective within the quest.
