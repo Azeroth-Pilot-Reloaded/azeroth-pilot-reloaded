@@ -616,6 +616,11 @@ local function UpdateStepOnce()
                 local completedCount = 0
                 local uncompletedIDs = {}
                 for _, questID in ipairs(questIDs) do
+                    -- Force client to request title from server if missing
+                    if not C_QuestLog.GetTitleForQuestID(questID) then
+                        C_QuestLog.RequestLoadQuestByID(questID)
+                    end
+
                     local questData = APR.ActiveQuests[questID]
                     if not (questData or C_QuestLog.IsQuestFlaggedCompleted(questID)) then
                         tinsert(uncompletedIDs, questID)
@@ -754,6 +759,9 @@ local function UpdateStepOnce()
                 local completedCount = 0
                 local uncompletedIDs = {}
                 for _, questID in ipairs(doneList) do
+                    if not C_QuestLog.GetTitleForQuestID(questID) then
+                        C_QuestLog.RequestLoadQuestByID(questID)
+                    end
                     local questData = APR.ActiveQuests[questID]
                     if questData then
                         tinsert(uncompletedIDs, questID)
@@ -1299,3 +1307,12 @@ function APR:PopupAutocompleteQuest()
         C_Timer.After(1, function() APR:PopupAutocompleteQuest() end)
     end
 end
+
+local aprDataLoadFrame = CreateFrame("Frame")
+aprDataLoadFrame:RegisterEvent("QUEST_DATA_LOAD_RESULT")
+aprDataLoadFrame:SetScript("OnEvent", function(_, _, questID, success)
+    if success and APR and APR.UpdateStep then
+        -- Refresh current step text without advancing the route
+        APR:UpdateStep()
+    end
+end)
