@@ -5,11 +5,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.mainStepOptions = {
     "ExitTutorial", "PickUp", "DropQuest", "Qpart", "QpartPart", "Treasure", "Group", "Done",
     "Scenario", "EnterInstance", "LeaveInstance", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS",
-    "UseDalaHS", "UseGarrisonHS",
-    "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession", "LootItems", "WarMode", "Grind",
-    "Reputation", "LootMoney",
-    "Achievement", "RouteCompleted", "Note", "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw",
-    "TameBeast", "DestroyItems", "EquipItem"
+    "UseDalaHS", "UseGarrisonHS", "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession",
+    "LootItems", "WarMode", "Grind", "Reputation", "LootMoney", "Emote", "Achievement", "RouteCompleted", "Note",
+    "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast", "DestroyItems", "EquipItem"
 }
 
 -- BuyMerchant need to be first
@@ -47,6 +45,9 @@ function APR:GetStepString(step)
 
     if step and step.Reputation then
         return self:GetReputationStepText(step.Reputation), "Reputation"
+    end
+    if step and step.Emote then
+        return string.format(L["PERFORM_EMOTE"], step.Emote.emote), "Emote"
     end
 
     local stepMappings = {

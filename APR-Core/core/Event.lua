@@ -495,7 +495,9 @@ end
 local function RefreshForOptions(keys)
     local data = APRData and APRData[APR.PlayerID]
     local current = data and APR.ActiveRoute and APR:GetStep(data[APR.ActiveRoute])
-    if APR:StepUsesAnyOption(current, keys) then APR.event:QueueStepRefresh(); return end
+    if APR:StepUsesAnyOption(current, keys) then
+        APR.event:QueueStepRefresh(); return
+    end
     local route = APR.ActiveRoute and APR.GetRouteData and APR:GetRouteData(APR.ActiveRoute)
     for _, group in ipairs(route and route.parallelSteps or {}) do
         if APR:StepUsesAnyOption(group.conditions, keys) then
@@ -509,8 +511,8 @@ function APR.event.functions.inventory(event)
     if event == "BAG_UPDATE_DELAYED" then APR:SaveBankItemCounts() end
     if event == "BAG_UPDATE_DELAYED" or event == "GET_ITEM_INFO_RECEIVED" then APR:RefreshLevelProfileTargets() end
     if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
-    RefreshForOptions({ "LootItems", "LootMoney", "Collection", "ItemCount", "EquippedItemStat", "SellItems", "BankDeposit",
-        "BankWithdraw", "DestroyItems", "EquipItem", "BuyMerchant" })
+    RefreshForOptions({ "LootItems", "LootMoney", "Collection", "ItemCount", "EquippedItemStat", "SellItems",
+        "BankDeposit", "BankWithdraw", "DestroyItems", "EquipItem", "BuyMerchant" })
 end
 
 function APR.event.functions.spellbook()
@@ -523,7 +525,8 @@ function APR.event.functions.money()
 end
 
 function APR.event.functions.equipment()
-    RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems", "LootMoney", "EquipItem" })
+    RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems", "LootMoney",
+        "EquipItem" })
 end
 
 function APR.event.functions.skill()
@@ -874,7 +877,7 @@ function APR.event.functions.emote(event, ...)
                 for key, emote in pairs(gigglingBasket) do
                     local message = L[key]
                     if APR:ContainsText(text, message) then
-                        APR:Debug("APR: " .. L["DOING_EMOTE"] .. ": ", emote)
+                        APR:Debug("APR: " .. string.format(L["PERFORM_EMOTE"], emote))
 
                         APR:PerformEmote(emote)
                         break

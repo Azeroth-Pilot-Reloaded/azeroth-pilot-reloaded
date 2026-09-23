@@ -1247,7 +1247,9 @@ local function PositionStepButtons(container, button, anchorButton)
 end
 -- Create a icon button next to the quest/text step
 local function GetStepButtonIcon(attribute, itemID)
-    if attribute == "item" then
+    if attribute == "emote" then
+        return 6642733 -- random icon for the button (but it's cute)
+    elseif attribute == "item" then
         local _, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
         return itemTexture
     elseif attribute == "spell" then
@@ -1455,6 +1457,7 @@ end
 
 function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot)
     attribute = attribute or "item"
+    if attribute == "emote" and (type(itemID) ~= "string" or not itemID:match("^[a-zA-Z]+$")) then return end
     local container = self.questsList[questsListKey] or self.fillersList[questsListKey]
     if not container then
         return
@@ -1506,6 +1509,9 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
             IconButton:SetAttribute("type1", "item")
             IconButton:SetAttribute("item", "item:" .. tostring(itemID))
         end
+    elseif attribute == "emote" then
+        IconButton:SetAttribute("type1", "macro")
+        IconButton:SetAttribute("macrotext", '/run APR:PerformEmote("' .. itemID .. '")')
     elseif attribute == "spell" then
         IconButton:SetAttribute("type1", "spell")
         IconButton:SetAttribute("spell", tonumber(itemID) or itemID)

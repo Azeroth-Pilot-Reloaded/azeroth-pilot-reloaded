@@ -96,7 +96,8 @@
         "coroutine",
         "PixelUtil",
         "NUM_BAG_SLOTS",
-        "ERR_NEWTAXIPATH"
+        "ERR_NEWTAXIPATH",
+        "NUM_TOTAL_EQUIPPED_BAG_SLOTS"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {
