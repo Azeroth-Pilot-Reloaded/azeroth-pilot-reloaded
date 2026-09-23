@@ -6,12 +6,12 @@ function APR:GetGameVersion()
     local interfaceVersion = tonumber(self.interfaceVersion) or
         (GetBuildInfo and tonumber((select(4, GetBuildInfo())))) or 0
     if interfaceVersion >= 16000 and interfaceVersion < 17000 then
-        return "forever"
+        return APR.GAME_VERSIONS.Forever
     end
     if interfaceVersion >= 100000 then
-        return "retail"
+        return APR.GAME_VERSIONS.Retail
     end
-    return "classic"
+    return APR.GAME_VERSIONS.Classic
 end
 
 function APR:IsPetBattleActive()
@@ -80,7 +80,7 @@ function APR:GetPlayerMaxLevel()
     if GetMaxPlayerLevel then
         return GetMaxPlayerLevel()
     end
-    return self:GetGameVersion() == "retail" and 90 or 60
+    return self:GetGameVersion() == APR.GAME_VERSIONS.Retail and 90 or 60
 end
 
 --- Check if a spell is known by the player (supports both classic and retail APIs).

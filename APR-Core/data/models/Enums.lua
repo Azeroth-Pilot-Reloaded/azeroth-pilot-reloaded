@@ -5,6 +5,12 @@ APR.QUEST_STATUS = {
     PROGRESS = "IN_PROGRESS",
 }
 
+APR.GAME_VERSIONS = {
+    Retail = "retail",
+    Classic = "classic",
+    Forever = "forever",
+}
+
 APR.REPUTATION_STANDING = {
     Hated = 1,
     Hostile = 2,
@@ -111,9 +117,11 @@ APR.RACES = {
     Vulpera = "Vulpera",
     ZandalariTroll = "ZandalariTroll",
     -- Neutral
+    Pandaren = "Pandaren",
     Dracthyr = "Dracthyr",
     EarthenDwarf = "EarthenDwarf",
-    Harronir = "Harronir"
+    Harronir = "Harronir",
+    Skyborne = "Skyborne",
 }
 
 function APR:GetEnumKeyByValue(enum, value)

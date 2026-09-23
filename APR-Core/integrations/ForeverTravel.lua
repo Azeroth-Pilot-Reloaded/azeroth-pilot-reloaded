@@ -7,7 +7,7 @@ local FLIGHT_SPEED = 32
 local FLIGHT_OVERHEAD = 15
 
 local function GetCharacterData()
-    if not APR.GetGameVersion or APR:GetGameVersion() ~= "forever" then return nil end
+    if not APR.GetGameVersion or APR:GetGameVersion() ~= APR.GAME_VERSIONS.Forever then return nil end
     return APRData and APR.PlayerID and APRData[APR.PlayerID]
 end
 
