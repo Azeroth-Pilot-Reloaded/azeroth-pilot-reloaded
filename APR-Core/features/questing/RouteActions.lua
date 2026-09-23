@@ -104,6 +104,7 @@ end
 function APR:GetRouteActionText(key, rule)
     local label = L[key:upper()]
     if type(rule) ~= "table" then return label end
+    if key == "SellItems" and rule.junk then return L["VENDOR_TRASH"] end
 
     local function Fallback()
         return self:ResolveStepText(rule.text or rule.Text) or label
