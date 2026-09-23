@@ -126,6 +126,19 @@ names once all listed items are cached. Until then, the action's fallback remain
 visible. These lookups never overwrite route data, so the fallback remains available
 for other characters. As with `DroppableQuest.Text`, cached names take priority;
 both `text` and `Text` are accepted by these action tables.
+These fields accept a localization key (resolved through APR locales, then
+`AprRCData.ExtraLineTexts`) or literal text when no translation exists.
+`SellItems = { junk = true }` needs no `text`: APR automatically displays
+`L["VENDOR_TRASH"]` ("Sell junk" in English, "Vendre les objets de mauvaise qualité"
+in French), ignoring legacy `text`/`Text` fields for junk sales. Put additional
+instructions in `Note`.
+
+When a merchant visit includes both selling junk and buying supplies, use two
+successive steps: `SellItems = { junk = true }`, then
+`BuyMerchant = { { itemID = 159, quantity = 15 } }`. Keep the same location and
+character restrictions on both steps; the purchase's already-owned item filter
+belongs only on the purchase. The converter splits explicit vendor-trash advice
+this way instead of leaving it in `Note`.
 
 Bank transfers use the Classic character
 bank and its bank bags, not guild, reagent or warband banks. Selling, transferring
@@ -281,7 +294,7 @@ preferred. Renown levels and friendship ranks use their numeric value directly.
 | `Boat`                          | Indicates the player should take a boat instead of flying. Requires `UseFlightPath`.                                                                                                                                                                                                                                                                                                              | `Boat = true`                                                                              |
 | `Coord`                         | World coordinates used by the arrow (`x`, `y` in WoW units).                                                                                                                                                                                                                                                                                                                                      | `Coord = { x = 4298.4, y = -864.1 }`                                                       |
 | `Coords`                        | Multiple coordinate variants for the same step. Typically paired with `Zones`; each entry should include its own `Zone`.                                                                                                                                                                                                                                                                          | `Coords = { { Zone = 84, x = 797.7, y = -8624.9 }, { Zone = 85, x = -4436, y = 1590.3 } }` |
-| `EmoteETA` | Start the AFK timer after the step emote is performed. | `EmoteETA = 30` |
+| `EmoteETA` | Duration in seconds of the AFK countdown, started once after the matching step emote is performed via the button, chat command or APR. Displaying the step does not start it. | `EmoteETA = 60` |
 | `ETA`                           | Estimated AFK timer duration in seconds.                                                                                                                                                                                                                                                                                                                                                          | `ETA = 75`                                                                                 |
 | `GossipETA`                     | Starts an AFK timer after gossip confirmation.                                                                                                                                                                                                                                                                                                                                                    | `GossipETA = 45`                                                                           |
 | `InstanceQuest`                 | Marks the step as taking place inside an instance. Automatic Delve suggestions wait while the current step has this flag. Once eligible, accepting a suggestion preserves parent-route steps before a matching `DoScenario` at the current step or within the next five steps, then replaces that scenario step with the guide. Without a nearby match, the guide starts before the current step. | `InstanceQuest = true`                                                                     |

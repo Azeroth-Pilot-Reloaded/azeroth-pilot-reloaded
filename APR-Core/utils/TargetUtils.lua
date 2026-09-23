@@ -43,16 +43,44 @@ end
 
 --- Trigger a conditional emote on specific NPCs required by a quest step.
 function APR:DoEmote(step)
-    if step and step.Emote then
-        local npc_id = APR:GetTargetID() or APR:GetTargetID("mouseover")
-
-        if not step.Emote.npcID or npc_id == step.Emote.npcID or npc_id == 0 then
+    if step and step.Emote and not step.Emote.manual then
+        if step.EmoteETA and self.GetRouteActionState and self:GetRouteActionState().emoteTimerStarted then return end
+        local npc_id = APR:GetTargetID()
+        if not step.Emote.npcID or step.Emote.npcID == 0 or npc_id == step.Emote.npcID then
             APR:PerformEmote(step.Emote.emote)
-            if step.EmoteETA and APR.GetRouteActionState then
-                local state = APR:GetRouteActionState(step)
-                if not state.timerStarted then state.timerStarted = true; APR.AFK:SetAfkTimer(step.EmoteETA) end
-            end
+            APR:HandleEmoteETA(step, step.Emote.emote)
         end
+    end
+end
+
+function APR:HandleEmoteETA(step, emote)
+    if not step or not step.Emote or not step.EmoteETA or not self.GetRouteActionState then return end
+    if type(emote) ~= "string" or emote:lower() ~= step.Emote.emote:lower() then return end
+    local npcID = step.Emote.npcID
+    if npcID and npcID > 0 and self:GetTargetID() ~= npcID then return end
+    local state = self:GetRouteActionState()
+    if state.emoteTimerStarted then return end
+    state.emoteTimerStarted = true
+    self.AFK.lastStep = APRData[self.PlayerID][self.ActiveRoute]
+    self.AFK:SetAfkTimer(step.EmoteETA)
+end
+
+-- Observe both manually typed emotes and APR's button, without starting a timer
+-- merely because the step is displayed or a different emote is performed.
+function APR:OnStepEmote(emote)
+    local profile = self.settings and self.settings.profile
+    local data = APRData and APRData[self.PlayerID]
+    local index = data and self.ActiveRoute and data[self.ActiveRoute]
+    if not index or not profile or not profile.enableAddon then return end
+    self:HandleEmoteETA(self:GetStep(index), emote)
+end
+
+if hooksecurefunc then
+    if C_ChatInfo and C_ChatInfo.PerformEmote then
+        hooksecurefunc(C_ChatInfo, "PerformEmote", function(emote) APR:OnStepEmote(emote) end)
+    end
+    if DoEmote then
+        hooksecurefunc("DoEmote", function(emote) APR:OnStepEmote(emote) end)
     end
 end
 
@@ -66,6 +94,7 @@ function APR:PerformEmote(emote)
     else
         DoEmote(emote)
     end
+    self:OnStepEmote(emote)
 end
 
 ---Scans a unit to check if it is an NPC and retrieves NPC information.
