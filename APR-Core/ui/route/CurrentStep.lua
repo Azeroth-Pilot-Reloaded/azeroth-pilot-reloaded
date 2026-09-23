@@ -1440,7 +1440,7 @@ function APR.currentStep:UpdateRaidIconButtonMacro()
     button:SetAttribute("macrotext", APR:BuildRaidIconMacro(button.npcID, unitToken))
 end
 
-function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute)
+function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot)
     attribute = attribute or "item"
     local container = self.questsList[questsListKey] or self.fillersList[questsListKey]
     if not container then
@@ -1486,8 +1486,13 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     end
     IconButton:RegisterForClicks("AnyUp", "AnyDown")
     if attribute == "item" then
-        IconButton:SetAttribute("type1", "item")
-        IconButton:SetAttribute("item", "item:" .. tostring(itemID))
+        if equipSlot then
+            IconButton:SetAttribute("type1", "macro")
+            IconButton:SetAttribute("macrotext", "/equipslot [nocombat] " .. equipSlot .. " item:" .. itemID)
+        else
+            IconButton:SetAttribute("type1", "item")
+            IconButton:SetAttribute("item", "item:" .. tostring(itemID))
+        end
     elseif attribute == "spell" then
         IconButton:SetAttribute("type1", "spell")
         IconButton:SetAttribute("spell", tonumber(itemID) or itemID)
@@ -1566,7 +1571,7 @@ end
 ---@param questsListKey string
 ---@param itemID number|nil
 ---@param attribute string
-function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
+function APR.currentStep:AddStepButton(questsListKey, itemID, attribute, equipSlot)
     if attribute == 'spell' and type(itemID) == 'string' and C_Spell then
         local info = C_Spell.GetSpellInfo(itemID)
         itemID = info and info.spellID or itemID
@@ -1578,12 +1583,12 @@ function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
     attribute = attribute or "item"
     self:MaybeAttachRaidIconButton(questsListKey)
     if InCombatLockdown() then
-        self.pendingButtonRequests[questsListKey] = { itemID = itemID, attribute = attribute }
+        self.pendingButtonRequests[questsListKey] = { itemID = itemID, attribute = attribute, equipSlot = equipSlot }
         return
     end
 
     self.pendingButtonRequests[questsListKey] = nil
-    self:CreateSecureStepButton(questsListKey, itemID, attribute)
+    self:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot)
 end
 
 function APR.currentStep:ProcessPendingStepButtons()
@@ -1594,7 +1599,7 @@ function APR.currentStep:ProcessPendingStepButtons()
     self:ProcessPendingButtonResets()
 
     for questsListKey, data in pairs(self.pendingButtonRequests) do
-        self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute)
+        self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute, data.equipSlot)
         self.pendingButtonRequests[questsListKey] = nil
     end
 

@@ -495,7 +495,14 @@ end
 local function RefreshForOptions(keys)
     local data = APRData and APRData[APR.PlayerID]
     local current = data and APR.ActiveRoute and APR:GetStep(data[APR.ActiveRoute])
-    if APR:StepUsesAnyOption(current, keys) then APR.event:QueueStepRefresh() end
+    if APR:StepUsesAnyOption(current, keys) then APR.event:QueueStepRefresh(); return end
+    local route = APR.ActiveRoute and APR.GetRouteData and APR:GetRouteData(APR.ActiveRoute)
+    for _, group in ipairs(route and route.parallelSteps or {}) do
+        if APR:StepUsesAnyOption(group.conditions, keys) then
+            APR.event:QueueStepRefresh()
+            return
+        end
+    end
 end
 
 function APR.event.functions.inventory(event)
@@ -503,7 +510,7 @@ function APR.event.functions.inventory(event)
     if event == "BAG_UPDATE_DELAYED" or event == "GET_ITEM_INFO_RECEIVED" then APR:RefreshLevelProfileTargets() end
     if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
     RefreshForOptions({ "LootItems", "Collection", "ItemCount", "EquippedItemStat", "SellItems", "BankDeposit",
-        "BankWithdraw", "DestroyItems" })
+        "BankWithdraw", "DestroyItems", "EquipItem", "BuyMerchant" })
 end
 
 function APR.event.functions.spellbook()
@@ -516,7 +523,7 @@ function APR.event.functions.money()
 end
 
 function APR.event.functions.equipment()
-    RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems" })
+    RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems", "EquipItem" })
 end
 
 function APR.event.functions.skill()

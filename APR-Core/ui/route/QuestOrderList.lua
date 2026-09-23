@@ -883,6 +883,12 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 local color = completed and "green" or "gray"
                 container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
                     APR:GetReputationStepText(step.Reputation), color, isCurrentStep)
+            elseif step.EquipItem then
+                local rule = step.EquipItem
+                local completed = GetInventoryItemID("player", rule.slot) == rule.itemID
+                container, activeQuestId = QuestOrderListUtils:AddStepFrame(layout, displayStepIndex,
+                    APR:GetRouteActionText("EquipItem", rule),
+                    colorByCompletion(completed, currentStepIndex, rawIndex), isCurrentStep)
             elseif step.Note then
                 local previewText = nil
                 if type(step.Note) == "table" then

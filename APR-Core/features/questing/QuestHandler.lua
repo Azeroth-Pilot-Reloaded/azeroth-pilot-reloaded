@@ -396,7 +396,7 @@ local function UpdateStepOnce()
             local flagged = 0
 
             for _, item in ipairs(step.BuyMerchant) do
-                if (C_QuestLog.IsQuestFlaggedCompleted(item.questID)) then
+                if (item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID)) then
                     flagged = flagged + 1
                 end
                 local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(item.itemID)
