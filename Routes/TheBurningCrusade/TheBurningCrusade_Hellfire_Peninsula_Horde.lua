@@ -1056,6 +1056,7 @@ APR.RouteQuestStepList["85-BC-1-Horde"] = {
         },
         {
             Done = { 9498 },
+            DoneDB = { 9498, 9499 },
             Coord = { x = 4070.6, y = -593 },
             Zone = 100,
             _index = 162,
