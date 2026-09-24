@@ -915,8 +915,16 @@
             Done = {
                 9498,
             },
-            DoneDB = {
-                9498,
+            Coord = {
+                x = 4070.6,
+                y = -593,
+            },
+            Zone = 100,
+            IsQuestOnQuest = 9498,
+            _index = 73,
+        },
+        {
+            Done = {
                 9499,
             },
             Coord = {
@@ -924,7 +932,9 @@
                 y = -593,
             },
             Zone = 100,
-            _index = 73,
+            Race = "BloodElf",
+            IsQuestOnQuest = 9499,
+            _index = 74,
         },
         {
             PickUp = {
