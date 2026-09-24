@@ -235,6 +235,7 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 -- Validate persisted progress before navigation can update live steps.
                 APR:Debug("Caller: Event.lua load handler -> GetCurrcentRouteMapIDsAndName")
                 local _, _, routeFileName = APR:GetCurrentRouteMapIDsAndName()
+
                 APR:CheckCurrentRouteUpToDate(routeFileName)
                 APR:UpdateMapId()
                 APR.RouteSelection:RefreshFrameAnchor()
@@ -511,7 +512,8 @@ function APR.event.functions.inventory(event)
     if event == "BAG_UPDATE_DELAYED" then APR:SaveBankItemCounts() end
     if event == "BAG_UPDATE_DELAYED" or event == "GET_ITEM_INFO_RECEIVED" then APR:RefreshLevelProfileTargets() end
     if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
-    RefreshForOptions({ "LootItems", "LootMoney", "VendorMoney", "Collection", "ItemCount", "EquippedItemStat", "SellItems",
+    RefreshForOptions({ "LootItems", "LootMoney", "VendorMoney", "Collection", "ItemCount", "EquippedItemStat",
+        "SellItems",
         "BankDeposit", "BankWithdraw", "DestroyItems", "EquipItem", "BuyMerchant" })
 end
 
@@ -525,7 +527,8 @@ function APR.event.functions.money()
 end
 
 function APR.event.functions.equipment()
-    RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems", "LootMoney", "VendorMoney",
+    RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems", "LootMoney",
+        "VendorMoney",
         "EquipItem", "SellItems" })
 end
 
