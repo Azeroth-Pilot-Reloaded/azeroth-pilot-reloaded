@@ -504,7 +504,7 @@ APR.RouteQuestStepList["85-BC-1-Horde"] = {
         },
         {
             Qpart = { [10136] = { 1 } },
-            Fillers = { [10389] = { 1 } },
+            Fillers = { [10389] = { 1 }, [9366] = { 1 }, [9374] = { 1 } },
             Coord = { x = 3274.1, y = 392.2 },
             Zone = 100,
             Range = 5,
@@ -512,6 +512,7 @@ APR.RouteQuestStepList["85-BC-1-Horde"] = {
         },
         {
             Qpart = { [10389] = { 1 } },
+            Fillers = { [9366] = { 1 }, [9374] = { 1 } },
             Coord = { x = 3351, y = 448.3 },
             Zone = 100,
             Range = 30,
@@ -519,6 +520,7 @@ APR.RouteQuestStepList["85-BC-1-Horde"] = {
         },
         {
             Qpart = { [9366] = { 1 } },
+            Fillers = { [9374] = { 1 } },
             Coord = { x = 3429.7, y = 321.5 },
             Zone = 100,
             Range = 30,
