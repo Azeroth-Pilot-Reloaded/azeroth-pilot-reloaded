@@ -1039,6 +1039,179 @@
             _index = 79,
         },
         {
+            Waypoint = 10242,
+            Coord = {
+                x = 3802.9,
+                y = -18.8,
+            },
+            Zone = 100,
+            Range = 5,
+            IsQuestsUncompleted = {
+                9410,
+            },
+            _index = 82,
+        },
+        {
+            UseItem = {
+                itemID = 23669,
+                itemSpellID = 29916,
+                questID = 9410,
+            },
+            UseSpell = {
+                questID = 9410,
+                spellID = 29731,
+            },
+            Coord = {
+                x = 3805.2,
+                y = -18,
+            },
+            Zone = 100,
+            _index = 83,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3908,
+                y = 7.5,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 84,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3940.9,
+                y = 133.9,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 85,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3942.4,
+                y = 214.7,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 86,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 4002.5,
+                y = 310.7,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 87,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3948.7,
+                y = 352.1,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 88,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3860.4,
+                y = 337.4,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 89,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3843.8,
+                y = 329.9,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 90,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3768,
+                y = 290.7,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 91,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3713.9,
+                y = 347.2,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 92,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3777.5,
+                y = 463.7,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 93,
+        },
+        {
+            Waypoint = 9410,
+            ExtraLineText = "FOLLOW_SPIRIT_WOLF",
+            Coord = {
+                x = 3858.4,
+                y = 505.3,
+            },
+            Zone = 100,
+            Range = 50,
+            _index = 94,
+        },
+        {
+            Done = {
+                9410,
+            },
+            Coord = {
+                x = 3885.1,
+                y = 522.2,
+            },
+            Zone = 100,
+            _index = 95,
+        },
+        {
+            PickUp = {
+                9406,
+            },
+            Coord = {
+                x = 3885.1,
+                y = 522.2,
+            },
+            Zone = 100,
+            _index = 85,
+        },
+        {
             Done = {
                 10136,
             },
@@ -1059,54 +1232,6 @@
             },
             Zone = 100,
             _index = 81,
-        },
-        {
-            Waypoint = 10242,
-            Coord = {
-                x = 3802.9,
-                y = -18.8,
-            },
-            Zone = 100,
-            Range = 5,
-            IsQuestsUncompleted = {
-                9410,
-            },
-            _index = 82,
-        },
-        {
-            UseItem = {
-                itemID = 23669,
-                itemSpellID = 29916,
-                questID = 9410,
-            },
-            Coord = {
-                x = 3805.2,
-                y = -18,
-            },
-            Zone = 100,
-            _index = 83,
-        },
-        {
-            Done = {
-                9410,
-            },
-            Coord = {
-                x = 3885.1,
-                y = 522.2,
-            },
-            Zone = 100,
-            _index = 84,
-        },
-        {
-            PickUp = {
-                9406,
-            },
-            Coord = {
-                x = 3885.1,
-                y = 522.2,
-            },
-            Zone = 100,
-            _index = 85,
         },
         {
             Done = {
