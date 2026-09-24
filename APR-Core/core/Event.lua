@@ -47,6 +47,7 @@ local events = {
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
     reputation = { "UPDATE_FACTION", "MAJOR_FACTION_RENOWN_LEVEL_CHANGED" },
+	questData = "QUEST_DATA_LOAD_RESULT",
     scenario = { "ACTIVE_DELVE_DATA_UPDATE", "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE",
         "WALK_IN_DATA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
@@ -67,6 +68,7 @@ local events = {
 local autoAccept, autoAcceptRoute, step = nil, nil, nil
 
 local pendingQuestUpdateTimer
+local pendingQuestDataTimer
 local pendingWarModeTimer
 local pendingZoneRoutingTimer
 local questShareQueue = {}
@@ -157,6 +159,10 @@ function APR.event:CleanupEvents()
         pendingZoneRoutingTimer:Cancel()
         pendingZoneRoutingTimer = nil
     end
+	if pendingQuestDataTimer then 
+        pendingQuestDataTimer:Cancel()
+        pendingQuestDataTimer = nil
+    end
     for tag, container in pairs(self.framePool) do
         if container then
             -- Unregister all events for this container
@@ -173,6 +179,7 @@ function APR.event:CleanupEvents()
         C_Timer.Cancel(pendingQuestUpdateTimer)
         pendingQuestUpdateTimer = nil
     end
+
 
     -- Clear quest share queue
     wipe(questShareQueue)
@@ -213,8 +220,8 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
             end
             C_Timer.After(2, function()
                 -- Validate persisted progress before navigation can update live steps.
-                local _, _, _routeFileName = APR:GetCurrentRouteMapIDsAndName()
-                APR:CheckCurrentRouteUpToDate(_routeFileName)
+                local _, _, routeFileName = APR:GetCurrentRouteMapIDsAndName()
+                APR:CheckCurrentRouteUpToDate(routeFileName)
                 APR:UpdateMapId()
                 APR.RouteSelection:RefreshFrameAnchor()
                 APR.heirloom:RefreshFrameAnchor()
@@ -1324,6 +1331,42 @@ end
 function APR.event.functions.treasure(event, ...)
     if step and step.Treasure then
         C_Timer.After(0.2, function() APR:UpdateQuestAndStep() end)
+    end
+end
+
+function APR.event.functions.questData(event, questID, success)
+    if not success or not questID then return end
+
+    -- Check if the loaded quest belongs to the active step or the active route pool
+    local isRelevant = false
+    if step and (step.Quest == questID or (step.Done and (step.Done == questID or (type(step.Done) == "table" and step.Done[1] == questID)))) then
+        isRelevant = true
+    elseif APR:IsQuestInPool(questID) then
+        isRelevant = true
+    end
+
+    if isRelevant then
+        APR:Debug("Quest data loaded for questID: ", questID)
+
+        -- Cancel existing timer if another load result arrives before timeout
+        if pendingQuestDataTimer then
+            pendingQuestDataTimer:Cancel()
+            pendingQuestDataTimer = nil
+        end
+
+        -- Debounce UI update to coalesce multiple batch quest loads into a single refresh
+        pendingQuestDataTimer = C_Timer.NewTimer(0.15, function()
+            pendingQuestDataTimer = nil
+            local profile = APR:GetSettingsProfile()
+            if not APR.ActiveRoute or not profile or not profile.enableAddon then return end
+
+            local profileStart = APR:StartPerformanceSample()
+            APR:UpdateStep()
+            if APR.questOrderList and APR.questOrderList.DelayedUpdate then
+                APR.questOrderList:DelayedUpdate(true)
+            end
+            APR:FinishPerformanceSample("QuestDataLoadRefresh", profileStart)
+        end)
     end
 end
 
