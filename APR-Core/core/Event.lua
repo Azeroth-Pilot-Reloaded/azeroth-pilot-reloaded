@@ -213,8 +213,8 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
             end
             C_Timer.After(2, function()
                 -- Validate persisted progress before navigation can update live steps.
-                local _, _, routeFileName = APR:GetCurrentRouteMapIDsAndName()
-                APR:CheckCurrentRouteUpToDate(routeFileName)
+                local _, _, _routeFileName = APR:GetCurrentRouteMapIDsAndName()
+                APR:CheckCurrentRouteUpToDate(_routeFileName)
                 APR:UpdateMapId()
                 APR.RouteSelection:RefreshFrameAnchor()
                 APR.heirloom:RefreshFrameAnchor()
