@@ -4,4 +4,4 @@ if not L then return end
 -- Author: Kamian
 --@localization(locale="deDE", format="lua_additive_table", handle-unlocalized="ignore")@
 
-L["FOLLOW_SPIRIT_WOLF"] = "Follow the wolf. If you lose it, return to the dead orc and summon the wolf again."
+L["FOLLOW_SPIRIT_WOLF"] = "Folgt dem Ahnengeistwolf. Wenn ihr ihn verliert, kehrt zum toten Orc zurück und beschwört ihn erneut."
