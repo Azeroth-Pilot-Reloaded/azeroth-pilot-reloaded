@@ -83,8 +83,16 @@ def audit_route(root, runtime):
 if __name__ == "__main__":
     root = Path(__file__).resolve().parents[2]
     os.chdir(root)
+    if "--ui-only" in sys.argv:
+        for name in ("current_step_render_test", "route_panels_render_test", "reputation_progress_test",
+                     "quest_order_performance_test", "ui_skin_test"):
+            runtime = LuaRuntime(unpack_returned_tuples=True)
+            runtime.execute((root / f"tools/validation/{name}.lua").read_text(encoding="utf-8"))
+        sys.exit(0)
     current_step_runtime = LuaRuntime(unpack_returned_tuples=True)
     current_step_runtime.execute((root / "tools/validation/current_step_render_test.lua").read_text(encoding="utf-8"))
+    route_panels_runtime = LuaRuntime(unpack_returned_tuples=True)
+    route_panels_runtime.execute((root / "tools/validation/route_panels_render_test.lua").read_text(encoding="utf-8"))
     custom_routes_runtime = LuaRuntime(unpack_returned_tuples=True)
     custom_routes_runtime.execute((root / "tools/validation/custom_routes_test.lua").read_text(encoding="utf-8"))
     taxi_runtime = LuaRuntime(unpack_returned_tuples=True)

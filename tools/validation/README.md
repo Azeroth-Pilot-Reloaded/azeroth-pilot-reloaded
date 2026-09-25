@@ -4,6 +4,9 @@ Current-step rendering regression:
 
 ```text
 lua tools/validation/current_step_render_test.lua
+lua tools/validation/route_panels_render_test.lua
+# All focused UI checks using the Lua 5.1 runtime from lupa:
+.venv/Scripts/python.exe tools/validation/run_lua_tests.py --ui-only
 ```
 
 The test loads the frame and row modules and runs 100 identical content passes.
@@ -22,6 +25,23 @@ the successful final pass retires untouched rows and positions the result once.
 An interrupted pass retains the previous content. Callers outside a pass still
 get immediate updates. Protected rows are retired by frame identity and deferred
 anchors are applied after combat, so reusing a key cannot destroy its replacement.
+
+`route_panels_render_test.lua` loads the real Fillers and Quest Order List modules
+using the shared `route_ui_test_env.lua` widgets. It covers 100 filler refreshes
+without new frames/fonts or hidden rows, stable objective ordering, wrapping,
+collapse, snapping, and combat cleanup. It also renders a 1,200-step route to check
+budgeted preparation/recycling, unchanged-view reuse, scroll preservation, stale
+job cancellation, missing/filtered rows, resize coalescing and error recovery.
+
+The Quest Order List keeps two reusable scroll children: one visible, one being
+prepared within the existing 3 ms batch budget. It publishes the prepared child
+only when complete and changed. This trades up to two sets of route widgets for
+a stable visible list during refreshes. Ordinary forward progression still updates
+the active row in place. `QuestOrderListRows.lua` owns route presentation;
+`QuestOrderList.lua` owns the window and render lifecycle. The Fillers frame joins
+the current-step content transaction and applies pending protected geometry after
+combat. In game, also check manual scrolling during quest updates, rollback,
+resizing, independent/snapped collapse, and item buttons during combat.
 
 Client packaging and visibility checks:
 
@@ -74,7 +94,8 @@ explicit invalidation still forces a fresh path. Captures split the work into
 
 The scheduler test also renders all 1,224 rows across multiple simulated frames,
 checks the 3 ms budget between rows, and checks cancellation/replacement. The budget
-cannot interrupt a single expensive row. The list fills progressively while rendering.
+cannot interrupt a single expensive row. The hidden buffer fills progressively;
+the visible list stays in place until the replacement is complete.
 The supplied client capture measured 10 synchronous list rebuilds averaging 76.2 ms
 (87.4 ms maximum) despite widget reuse. Rendering now yields between rows and records
 `QuestOrderListBatch` per game frame instead of timing an entire synchronous build.
