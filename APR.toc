@@ -94,6 +94,7 @@ APR-Core/features/navigation/FlightPath.lua
 APR-Core/features/navigation/Arrow.lua
 APR-Core/ui/route/CurrentStepImagePreview.lua
 APR-Core/ui/route/CurrentStep.lua
+APR-Core/ui/route/CurrentStepRows.lua
 APR-Core/ui/route/FillersFrame.lua
 APR-Core/ui/route/QuestionPopUp.lua
 APR-Core/ui/route/QuestOrderList.lua

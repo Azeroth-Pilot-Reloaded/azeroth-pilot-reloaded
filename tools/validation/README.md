@@ -1,5 +1,28 @@
 # Route performance checks
 
+Current-step rendering regression:
+
+```text
+lua tools/validation/current_step_render_test.lua
+```
+
+The test loads the frame and row modules and runs 100 identical content passes.
+It checks zero additional frame/font allocations, no row/action hide calls, one
+layout per pass, updated tooltips, wrapping, route progress reuse, collapse state,
+percentage labels, and secure-row replacement and cleanup across combat. The
+Python runner runs it before the route checks. Widget mocks do not validate the
+client's rendering or taint system: also check a long objective, a pickup list,
+image previews, collapse/expand, and an item-use step during combat in game.
+
+`CurrentStep.lua` owns the window, progress bars and secure controls;
+`CurrentStepRows.lua` owns keyed rows, reconciliation and layout. `UpdateStep`
+brackets each pass with `BeginContentUpdate` / `EndContentUpdate`. During a pass,
+removal marks old rows; add/update calls retain rows with matching keys and kinds;
+the successful final pass retires untouched rows and positions the result once.
+An interrupted pass retains the previous content. Callers outside a pass still
+get immediate updates. Protected rows are retired by frame identity and deferred
+anchors are applied after combat, so reusing a key cannot destroy its replacement.
+
 Client packaging and visibility checks:
 
 ```text

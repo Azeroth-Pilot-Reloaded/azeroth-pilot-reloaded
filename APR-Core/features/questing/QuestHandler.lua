@@ -162,7 +162,7 @@ local function UpdateStepOnce()
 
         if APR.IsInRouteZone then
             APR.currentStep:Reset()
-        elseif showStepDetails and APR.currentStep.previousState.currentStepToken ~= currentStepToken then
+        elseif showStepDetails then
             APR.currentStep:RemoveStepContentPreservingNavigationUi()
         end
         APR.currentStep.previousState.currentStepToken = currentStepToken
@@ -1131,7 +1131,13 @@ function APR:UpdateStep()
     repeat
         self.stepUpdatePending = false
         local profileStart = self:StartPerformanceSample()
+        if self.currentStep.BeginContentUpdate then self.currentStep:BeginContentUpdate() end
         local ok, err = pcall(UpdateStepOnce)
+        if self.currentStep.EndContentUpdate then
+            local rendered, renderError = pcall(self.currentStep.EndContentUpdate, self.currentStep,
+                ok and not self.stepUpdatePending)
+            if not rendered then ok, err = false, renderError end
+        end
         self:FinishPerformanceSample("UpdateStepPass", profileStart)
         if not ok then
             self.stepUpdateRunning = false

@@ -86,6 +86,7 @@ APR.SetupHeaderDrag, APR.SetupMinimizeButton = noop, noop
 dofile("APR-Core/utils/UIUtils.lua")
 APR.SetupHeaderDrag, APR.SetupMinimizeButton = noop, noop
 dofile("APR-Core/ui/route/CurrentStep.lua")
+dofile("APR-Core/ui/route/CurrentStepRows.lua")
 APR.currentStep.CanSafelyHide = function() return true end
 APR.currentStep.MaybeAttachRaidIconButton = noop
 APR.currentStep.ResetSecureStepButton, APR.currentStep.ResetSecureRaidIconButton = noop, noop

@@ -83,6 +83,8 @@ def audit_route(root, runtime):
 if __name__ == "__main__":
     root = Path(__file__).resolve().parents[2]
     os.chdir(root)
+    current_step_runtime = LuaRuntime(unpack_returned_tuples=True)
+    current_step_runtime.execute((root / "tools/validation/current_step_render_test.lua").read_text(encoding="utf-8"))
     custom_routes_runtime = LuaRuntime(unpack_returned_tuples=True)
     custom_routes_runtime.execute((root / "tools/validation/custom_routes_test.lua").read_text(encoding="utf-8"))
     taxi_runtime = LuaRuntime(unpack_returned_tuples=True)
