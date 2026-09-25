@@ -347,7 +347,7 @@ function APR.party:GetStepDescription(route, stepIndex)
 
     local questNames = {}
     for _, qid in ipairs(questIDs) do
-        local name = APR:GetQuestTitle(qid, not step.Done)
+        local name = APR:GetQuestTitle(qid)
         if name then
             table.insert(questNames, "- " .. name)
         end

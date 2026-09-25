@@ -5,12 +5,8 @@ local function colorByCompletion(isCompleted, currentStep, stepIndex)
     return (isCompleted or (currentStep and currentStep > stepIndex)) and "green" or "gray"
 end
 
-local function getQuestName(questID)
-    return C_QuestLog.GetTitleForQuestID(questID) or UNKNOWN
-end
-
 local function questLabel(id)
-    return tostring(id) .. " - " .. getQuestName(id)
+    return tostring(id) .. " - " .. APR:GetQuestTitle(id)
 end
 
 -- These options can accompany a primary action. Keep their instructions on the
@@ -46,7 +42,7 @@ local function getAdditionalInstructions(step, actionKey, primaryKey)
     if step.MountVehicle then add(L["MOUNT_VEHICLE"]) end
     if step.VehicleExit then add(L["LEAVE_VEHICLE"]) end
     if step.BuyMerchant and (step.Qpart or actionKey or step.ExitTutorial or
-        primaryKey == "LeaveQuest" or primaryKey == "LeaveQuests" or primaryKey == "ResetRoute") then
+            primaryKey == "LeaveQuest" or primaryKey == "LeaveQuests" or primaryKey == "ResetRoute") then
         for _, item in ipairs(step.BuyMerchant) do
             local name = C_Item.GetItemInfo(item.itemID) or (UNKNOWN .. " (" .. item.itemID .. ")")
             add(string.format(L["BUY_ITEM"], item.quantity or 1, name),
@@ -147,7 +143,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                     local complete = true
                     for _, id in ipairs(ids) do
                         if not seen[id] then
-                            questInfo[#questInfo + 1] = { questID = id, questName = getQuestName(id) }
+                            questInfo[#questInfo + 1] = { questID = id, questName = APR:GetQuestTitle(id) }
                             if C_QuestLog.IsOnQuest(id) then complete = false end
                             seen[id] = true
                         end
@@ -202,7 +198,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                             end
                             if flagged == 0 then
                                 table.insert(questInfo,
-                                    { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                                    { questID = questID, questName = APR:GetQuestTitle(questID) })
                             end
                         end
                     end
@@ -220,7 +216,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                     local MobId = questData and questData.MobId or 1
                     local MobName = APRData.NPCList[MobId] or (questData and questData.Text or UNKNOWN)
                     local questText = format(L["Q_DROP"], MobName)
-                    local questInfo = { { questID = questID, questName = getQuestName(questID) } }
+                    local questInfo = { { questID = questID, questName = APR:GetQuestTitle(questID) } }
                     local color = QuestOrderListUtils:IsQuestCompletedOrActive(questID) and "green" or "gray"
                     container, activeQuestId = addStepFrameWithQuest(layout, displayStepIndex, questText,
                         questInfo, color, isCurrentStep)
@@ -271,7 +267,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                                     table.insert(questInfo,
                                         {
                                             questID = questID .. '-' .. objectiveIndex,
-                                            questName = getQuestName(questID)
+                                            questName = APR:GetQuestTitle(questID)
                                         })
                                 end
                             end
@@ -310,7 +306,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                                 flagged = flagged + 1
                             else
                                 table.insert(questInfo,
-                                    { questID = questObjectiveId, questName = getQuestName(questID) })
+                                    { questID = questObjectiveId, questName = APR:GetQuestTitle(questID) })
                             end
                         end
                     end
@@ -324,7 +320,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                 elseif step.Treasure then
                     local questID = step.Treasure.questID
                     local itemID = step.Treasure.itemID or nil
-                    local displayName = (itemID and C_Item.GetItemInfo(itemID)) or getQuestName(questID)
+                    local displayName = (itemID and C_Item.GetItemInfo(itemID)) or APR:GetQuestTitle(questID)
                     local questInfo = { { questID = itemID or questID, questName = displayName } }
                     local color = colorByCompletion(questID and C_QuestLog.IsQuestFlaggedCompleted(questID),
                         currentStepIndex,
@@ -333,7 +329,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                         L["GET_TREASURE"], questInfo, color, isCurrentStep)
                 elseif step.Group then
                     local questID = step.Group.questID
-                    local questInfo = { { questID = questID, questName = getQuestName(questID) } }
+                    local questInfo = { { questID = questID, questName = APR:GetQuestTitle(questID) } }
                     local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex,
                         rawIndex)
                     container, activeQuestId = addStepFrameWithQuest(layout, displayStepIndex,
@@ -357,7 +353,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                             end
                             if flagged == 0 then
                                 table.insert(questInfo,
-                                    { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                                    { questID = questID, questName = APR:GetQuestTitle(questID) })
                             end
                         end
                     end

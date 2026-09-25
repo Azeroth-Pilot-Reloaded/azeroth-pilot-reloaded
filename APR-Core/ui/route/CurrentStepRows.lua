@@ -205,9 +205,13 @@ local function ResolveDetail(entry)
         questID = entry
     end
     if not name and itemID then name = C_Item.GetItemInfo(itemID) end
-    if not name and questID then name = C_QuestLog.GetTitleForQuestID(questID) end
-    return { questID = questID, itemID = itemID, name = name or UNKNOWN,
-        text = "- " .. (name or (tostring(itemID or questID or UNKNOWN) .. " - " .. UNKNOWN)) }
+    if not name and questID then name = APR:GetQuestTitle(questID) end
+    return {
+        questID = questID,
+        itemID = itemID,
+        name = name or UNKNOWN,
+        text = "- " .. (name or (tostring(itemID or questID or UNKNOWN) .. " - " .. UNKNOWN))
+    }
 end
 
 local function DetailTooltip(font)
@@ -296,6 +300,7 @@ local function AddDivider(self, list, key)
 end
 
 function CurrentStep:AddExtraLineDivider(key) AddDivider(self, self.questsExtraTextList, key) end
+
 function CurrentStep:AddQuestDivider(key) AddDivider(self, self.questsList, key) end
 
 local function OrderedRows(list, firstKey)
@@ -355,4 +360,5 @@ function CurrentStep:ReOrderQuestSteps()
 end
 
 function CurrentStep:ReOrderExtraLineText() self:ReOrderQuestSteps() end
+
 function CurrentStep:RefreshTextLayout() self:ReOrderQuestSteps() end

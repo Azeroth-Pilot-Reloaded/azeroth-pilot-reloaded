@@ -9,7 +9,7 @@ function APR:GetQuestTitle(questID, requestMissing)
     questID = tonumber(questID)
     if not questID or questID <= 0 or questID % 1 ~= 0 then return nil end
 
-    local title = C_QuestLog.GetTitleForQuestID(questID)
+    local title = APR:GetQuestTitle(questID)
     if title and title ~= "" then return title end
     if requestMissing == false then return nil end
 
