@@ -4,21 +4,9 @@ local LibWindow = LibStub("LibWindow-1.1")
 -- Initialize APR fillers frame module
 APR.fillersFrame = APR:NewModule("FillersFrame")
 
--- Local constants
-local FRAME_WIDTH = 250
--- Distance from top where content starts (header offset)
-local FRAME_HEADER_OFFSET = -30
-local FRAME_FILLERS_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
--- Height of the collapse/expand header section
-local HEADER_HEIGHT = 22
--- Small padding before first filler item
-local FIRST_ITEM_OFFSET = -5
--- Throttle time for frame refresh (milliseconds)
-local REFRESH_THROTTLE = 0.1
-
--- Track last refresh time to prevent excessive updates
-local lastRefreshTime = 0
-
+local FRAME_WIDTH = APR.currentStep.layout.width
+local TEXT_PADDING = APR.currentStep.layout.padding
+local HEADER_HEIGHT, CONTENT_PADDING = 22, 5
 
 ---------------------------------------------------------------------------------------
 ----------------------------------- Fillers Frame -------------------------------------
@@ -33,7 +21,7 @@ APR:SetupFrameDrag(FillersFrame, function()
     -- Defensive nil check: settings may not be initialized yet
     local profile = APR:GetSettingsProfile()
     local shouldAllowDrag = profile and profile.fillersFrameSnapToCurrentStep
-    return not shouldAllowDrag
+    return not InCombatLockdown() and not shouldAllowDrag
 end, function()
     LibWindow.SavePosition(FillersFrame)
 end)
@@ -53,7 +41,7 @@ APR:SetupHeaderDrag(FillersFrameHeader, FillersFrame, function()
 
     -- Defensive nil check: settings may not be initialized yet
     local shouldAllowDrag = profile and profile.fillersFrameSnapToCurrentStep
-    return not shouldAllowDrag
+    return not InCombatLockdown() and not shouldAllowDrag
 end, function()
     LibWindow.SavePosition(FillersFrame)
 end)
@@ -61,8 +49,8 @@ end)
 -- Setup minimize button for Fillers frame
 APR:SetupMinimizeButton(FillersFrameHeader, FillersFrame, function()
     -- Collapse
-    FillersFrame_StepHolder:Hide()
-    APR.fillersFrame:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
+    FillersFrame.collapsed = true
+    APR.fillersFrame:RefreshFillersFrame(true)
 end, function()
     -- Expand
     APR.fillersFrame:SetDefaultDisplay()
@@ -90,180 +78,144 @@ end
 
 function APR.fillersFrame:SetDefaultDisplay()
     FillersFrame.collapsed = false
-    FillersFrame_StepHolder:Show()
-    FillersFrameHeader:Show()
-    self:UpdateBackgroundColorAlpha()
+    self:RefreshFillersFrame(true)
 end
 
 -- Update the frame scale
 function APR.fillersFrame:UpdateFrameScale()
+    if InCombatLockdown() then self.pendingRefresh = true; return end
     LibWindow.SetScale(FillersFrame, APR.settings.profile.currentStepScale)
 end
 
--- Helper function to destroy a filler container and clean up references
----@param container Frame The container frame to destroy
-local function DestroyFillerContainer(container)
-    if not container then return end
-
-    -- Hide and clear positioning
-    container:Hide()
-    container:ClearAllPoints()
-
-    -- Remove all scripts to prevent callback leaks
-    container:SetScript("OnEnter", nil)
-    container:SetScript("OnLeave", nil)
-    container:SetScript("OnUpdate", nil)
-
-    -- Clear all references to break circular references
-    container.font = nil
-    container.questID = nil
-    container.hiddenInCombat = nil
-
-    -- Note: We don't call :Destroy() as it doesn't exist on WoW frames
-    -- The frame will be garbage collected when all references are cleared
-end
-
--- Helper function to create step frames
-local function AddStepsFrame(questDesc, extraLineText, color)
-    local text = extraLineText or questDesc
-    return APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, extraLineText ~= nil, color, nil,
-        nil, "fillers")
-end
-
--- Add a filler step
-function APR.fillersFrame:AddFillerStep(questID, textObjective, objectiveIndex)
-    APR:Debug("Function: APR.fillersFrame:AddFillerStep()", questID)
-    if not APR.settings.profile.currentStepShow then
-        return
-    end
-
-    -- Check if fillersList is empty to reset to the default height
-    if not next(APR.currentStep.fillersList) then
-        FRAME_FILLERS_HOLDER_HEIGHT = FIRST_ITEM_OFFSET
-    end
-
-    local questKey = questID .. "-" .. (objectiveIndex or 0)
-    local existingContainer = APR.currentStep.fillersList[questKey]
-
-    -- Remove if it already exists
-    if existingContainer then
-        if APR.currentStep:CanSafelyHide(existingContainer) then
-            DestroyFillerContainer(existingContainer)
-            APR.currentStep:ResetSecureStepButton(existingContainer, questKey)
-            APR.currentStep:ResetSecureRaidIconButton(existingContainer, questKey)
+-- Content shares the current-step transaction, so Reset/Add calls never hide
+-- an unchanged panel between two update passes.
+local function MeasureRow(container)
+    local height = container.font:GetStringHeight() + 10
+    if container.IconButton or container.RaidIconButton then height = math.max(height, 30) end
+    if container:GetHeight() ~= height then
+        if APR.currentStep:CanSafelyHide(container) then
+            container:SetHeight(height)
         else
-            APR.currentStep:SoftHide(existingContainer)
-            table.insert(APR.currentStep.pendingContainerDestroy, existingContainer)
+            APR.fillersFrame.layoutDirty = true
         end
-        APR.currentStep.fillersList[questKey] = nil
     end
+end
 
-    local objectiveContainer = AddStepsFrame(textObjective)
-    objectiveContainer:SetPoint("TOPLEFT", FillersFrame_StepHolder, "TOPLEFT", 0, FRAME_FILLERS_HOLDER_HEIGHT)
-    objectiveContainer.questID = questID
+local function ShowQuestTooltip(container)
+    GameTooltip:SetOwner(container, "ANCHOR_BOTTOM")
+    APR:AddQuestTooltipDetails(GameTooltip, container.questID, {
+        objectiveIndex = container.objectiveIndex,
+        objectiveText = container.objectiveText,
+        includeCampaign = true,
+        includeStoryline = true,
+    })
+    GameTooltip:Show()
+end
 
-    -- Add tooltip
-    objectiveContainer:SetScript("OnEnter", function(self)
-        GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-        APR:AddQuestTooltipDetails(GameTooltip, questID, {
-            objectiveIndex = objectiveIndex,
-            objectiveText = textObjective,
-            includeCampaign = true,
-            includeStoryline = true,
+local function HideTooltip() GameTooltip:Hide() end
+
+function APR.fillersFrame:AddFillerStep(questID, text, objectiveIndex)
+    if not APR.settings.profile.currentStepShow then return end
+    local currentStep = APR.currentStep
+    local key = questID .. "-" .. (objectiveIndex or 0)
+    local container = currentStep.fillersList[key]
+    if container and container.hiddenInCombat then
+        currentStep:ReleaseRow(currentStep.fillersList, key)
+        container = nil
+    end
+    if not container then
+        container = APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, false,
+            nil, nil, true, "fillers")
+        container.font:ClearAllPoints()
+        container.font:SetPoint("TOPLEFT", TEXT_PADDING, -5)
+        container.font:SetWidth(FRAME_WIDTH - TEXT_PADDING * 2)
+        APR:RegisterFontString(container.font, "fillers", {
+            role = "base", onApplied = function() MeasureRow(container) end,
         })
-
-        GameTooltip:Show()
-    end)
-
-    objectiveContainer:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
-
-    APR.currentStep.fillersList[questKey] = objectiveContainer
-    APR.currentStep:MaybeAttachRaidIconButton(questKey)
-    FRAME_FILLERS_HOLDER_HEIGHT = FRAME_FILLERS_HOLDER_HEIGHT - objectiveContainer:GetHeight()
-
+        container:SetScript("OnEnter", ShowQuestTooltip)
+        container:SetScript("OnLeave", HideTooltip)
+        currentStep.fillersList[key] = container
+    end
+    currentStep:TouchRow(container)
+    container.questID, container.objectiveIndex, container.objectiveText = questID, objectiveIndex, text
+    if container.font:GetText() ~= "- " .. text then container.font:SetText("- " .. text) end
+    currentStep:MaybeAttachRaidIconButton(key)
     self:ReOrderFillerSteps()
-    -- Note: ReOrderFillerSteps() already calls RefreshFillersFrame(true)
 end
 
--- Update a filler step (called when quest objective progress changes)
-function APR.fillersFrame:UpdateFillerStep(questID, textObjective, objectiveIndex)
-    APR:Debug("Function: APR.fillersFrame:UpdateFillerStep()", questID)
-    if not APR.settings.profile.currentStepShow then
-        return
-    end
-
-    local questKey = questID .. "-" .. (objectiveIndex or 0)
-    local existingContainer = APR.currentStep.fillersList[questKey]
-
-    if existingContainer then
-        existingContainer.font:SetText('- ' .. textObjective)
-        -- Update container height if text height changed
-        local newHeight = existingContainer.font:GetStringHeight() + 10
-        if existingContainer:GetHeight() ~= newHeight then
-            existingContainer:SetHeight(newHeight)
-            self:ReOrderFillerSteps()
-        end
+function APR.fillersFrame:UpdateFillerStep(questID, text, objectiveIndex)
+    local container = APR.currentStep.fillersList[questID .. "-" .. (objectiveIndex or 0)]
+    if not container or not APR.settings.profile.currentStepShow then return end
+    container.objectiveText = text
+    if container.font:GetText() ~= "- " .. text then
+        container.font:SetText("- " .. text)
+        self:ReOrderFillerSteps()
     end
 end
 
--- Reorder filler steps
 function APR.fillersFrame:ReOrderFillerSteps()
-    APR:Debug("Function: APR.fillersFrame:ReOrderFillerSteps()")
-    if not APR.settings.profile.currentStepShow then return end
-
-    FRAME_FILLERS_HOLDER_HEIGHT = FIRST_ITEM_OFFSET
-    for id, container in pairs(APR.currentStep.fillersList) do
-        if not container.hiddenInCombat then
-            container:ClearAllPoints()
-            container:SetPoint("TOPLEFT", FillersFrame_StepHolder, "TOPLEFT", 0, FRAME_FILLERS_HOLDER_HEIGHT)
-            FRAME_FILLERS_HOLDER_HEIGHT = FRAME_FILLERS_HOLDER_HEIGHT - container:GetHeight()
-        end
+    self.layoutDirty = true
+    if APR.currentStep.contentUpdateActive then return end
+    self.layoutDirty = false
+    local keys = {}
+    for key, container in pairs(APR.currentStep.fillersList) do
+        if not container.hiddenInCombat then keys[#keys + 1] = key end
     end
-
-    self:RefreshFillersFrame(true) -- Force refresh after reordering
+    -- Quest then objective order is stable even when the quest log uses pairs().
+    table.sort(keys, function(a, b)
+        local left, right = APR.currentStep.fillersList[a], APR.currentStep.fillersList[b]
+        local leftID, rightID = tonumber(left.questID), tonumber(right.questID)
+        if leftID and rightID and leftID ~= rightID then return leftID < rightID end
+        if tostring(left.questID) ~= tostring(right.questID) then return tostring(left.questID) < tostring(right.questID) end
+        local leftIndex, rightIndex = tonumber(left.objectiveIndex) or 0, tonumber(right.objectiveIndex) or 0
+        if leftIndex ~= rightIndex then return leftIndex < rightIndex end
+        return tostring(a) < tostring(b)
+    end)
+    local offset = CONTENT_PADDING
+    for _, key in ipairs(keys) do
+        local container = APR.currentStep.fillersList[key]
+        MeasureRow(container)
+        if container.layoutOffset ~= offset then
+            if APR.currentStep:CanSafelyHide(container) then
+                container:ClearAllPoints()
+                container:SetPoint("TOPLEFT", FillersFrame_StepHolder, "TOPLEFT", 0, -offset)
+                container.layoutOffset = offset
+            else
+                self.layoutDirty = true
+            end
+        end
+        offset = offset + container:GetHeight()
+    end
+    self.contentHeight = offset + CONTENT_PADDING
+    self:RefreshFillersFrame(true)
 end
 
-function APR.fillersFrame:RefreshTextLayout()
-    for _, container in pairs(APR.currentStep.fillersList) do
-        if container and container.font then
-            container:SetHeight(container.font:GetStringHeight() + 10)
+function APR.fillersFrame:RefreshTextLayout() self:ReOrderFillerSteps() end
+
+function APR.fillersFrame:FlushPendingLayout(force)
+    if InCombatLockdown() then self:RefreshFillersFrame(true); return end
+    if self.pendingPositionReset then
+        self.pendingPositionReset = nil
+        self:ResetPosition()
+    end
+    if force or self.layoutDirty then
+        self:ReOrderFillerSteps()
+    elseif self.pendingRefresh then
+        self:RefreshFillersFrame(true)
+    end
+end
+
+function APR.fillersFrame:RemoveFillerSteps()
+    local currentStep = APR.currentStep
+    for key, container in pairs(currentStep.fillersList) do
+        if currentStep.contentUpdateActive then
+            container.stale, container.refreshActions = true, true
+            container.actionSeen, container.raidSeen = nil, nil
+        else
+            currentStep:ReleaseRow(currentStep.fillersList, key)
         end
     end
     self:ReOrderFillerSteps()
-end
-
--- Remove all filler steps
-function APR.fillersFrame:RemoveFillerSteps()
-    APR:Debug("Function: APR.fillersFrame:RemoveFillerSteps()")
-    if not APR.settings.profile.currentStepShow then return end
-
-    for id, container in pairs(APR.currentStep.fillersList) do
-        local canHide = APR.currentStep:CanSafelyHide(container)
-        if canHide then
-            -- Properly destroy the container to prevent memory leaks
-            DestroyFillerContainer(container)
-            APR.currentStep:ResetSecureStepButton(container, id)
-            APR.currentStep.pendingButtonRequests[id] = nil
-            APR.currentStep:ResetSecureRaidIconButton(container, id)
-            APR.currentStep.pendingRaidIconRequests[id] = nil
-            APR.currentStep.fillersList[id] = nil
-        else
-            APR.currentStep:SoftHide(container)
-            APR.currentStep.pendingRemoval[id] = true
-        end
-    end
-
-    if not InCombatLockdown() then
-        APR.currentStep.fillersList = {}
-    end
-
-    FRAME_FILLERS_HOLDER_HEIGHT = FIRST_ITEM_OFFSET
-    self:RefreshFillersFrame(true) -- Force refresh to immediately hide frame
-
-    -- Refresh QuestOrderList when Fillers disappears
-    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-        APR.questOrderList:ApplySnapAnchor()
-    end
 end
 
 -- Check if any filler container should be shown
@@ -276,131 +228,66 @@ local function HasActiveFillers()
     return false
 end
 
--- Refresh the fillers frame visibility and positioning
--- @param forceRefresh boolean Skip throttle and force immediate refresh
+local function SetShown(frame, shown)
+    if shown and not frame:IsShown() then frame:Show()
+    elseif not shown and frame:IsShown() then frame:Hide() end
+end
+
+-- Apply only the final geometry. Combat work is replayed from the current state
+-- after PLAYER_REGEN_ENABLED; no timer or per-frame polling is needed.
 function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
-    -- Use ShouldHideFrames from Core for consistent frame hiding logic
-    if APR:ShouldHideFrames() then
-        FillersFrame:Hide()
-        -- If Fillers just disappeared, refresh QuestOrderList
-        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-            APR.questOrderList:ApplySnapAnchor()
-        end
+    if APR.currentStep.contentUpdateActive then self.pendingRefresh = true; return end
+    local profile = APR:GetSettingsProfile()
+    if not profile then return end
+    local visible = not APR:ShouldHideFrames() and not self.hiddenByCurrentStep and HasActiveFillers()
+    local snapped = profile.fillersFrameSnapToCurrentStep
+    local collapsed = FillersFrame.collapsed and not snapped
+    FillersFrame_StepHolder:SetAlpha(collapsed and 0 or 1)
+    if InCombatLockdown() then
+        self.pendingRefresh = true
+        FillersFrame:SetAlpha(visible and 1 or 0)
         return
     end
-
-    -- Throttle refresh to prevent excessive updates (unless forced)
-    if not forceRefresh then
-        local now = GetTime()
-        -- Initialize on first call
-        if lastRefreshTime == 0 then
-            lastRefreshTime = now
+    self.pendingRefresh = false
+    FillersFrame:SetAlpha(1)
+    SetShown(FillersFrame, visible)
+    if visible then
+        local showHeader = not snapped or profile.fillersFrameShowHeader
+        SetShown(FillersFrameHeader, showHeader)
+        SetShown(FillersFrameHeader.MinimizeButton, not snapped)
+        SetShown(FillersFrame_StepHolder, not collapsed)
+        FillersFrame:EnableMouse(not snapped)
+        local height = collapsed and 1 or (self.contentHeight or CONTENT_PADDING * 2)
+        if FillersFrame:GetHeight() ~= height then FillersFrame:SetHeight(height) end
+        FillersFrameHeader:SetPoint("BOTTOM", FillersFrame, "TOP", 0, -3)
+        if snapped then
+            local anchor, anchorHeight = APR:GetSnapAnchorFrame(true)
+            if anchor then
+                local gap = profile.fillersFrameSnapGap or 0
+                local scale = anchor:GetScale() or 1
+                if self.anchor ~= anchor or self.anchorHeight ~= anchorHeight or self.anchorGap ~= gap or
+                    self.anchorHeader ~= showHeader or FillersFrame:GetScale() ~= scale then
+                    APR:SnapFrameToAnchor(FillersFrame, anchor, anchorHeight, gap, showHeader and HEADER_HEIGHT or nil)
+                    self.anchor, self.anchorHeight, self.anchorGap, self.anchorHeader = anchor, anchorHeight, gap, showHeader
+                end
+            end
+        else
+            if self.wasSnapped ~= false then
+                if profile.fillersFrame and profile.fillersFrame.point then
+                    LibWindow.RestorePosition(FillersFrame)
+                else
+                    FillersFrame:ClearAllPoints()
+                    FillersFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -100)
+                end
+                self:UpdateFrameScale()
+            end
+            self.anchor = nil
         end
-        -- Skip if throttled
-        if now - lastRefreshTime < REFRESH_THROTTLE then
-            return
-        end
-        lastRefreshTime = now
+        self.wasSnapped = snapped and true or false
+        self:UpdateBackgroundColorAlpha(collapsed and { 0, 0, 0, 0 } or nil)
     end
-
-    -- Show or hide the fillers frame based on whether there are any visible fillers
-    local wasVisible = FillersFrame:IsShown()
-    if HasActiveFillers() then
-        FillersFrame:Show()
-
-        -- Check snap settings
-        local isSnapped = APR.settings.profile.fillersFrameSnapToCurrentStep
-        local snapGap = APR.settings.profile.fillersFrameSnapGap or 0
-
-        -- Header visibility logic
-        local showHeader
-        if isSnapped then
-            showHeader = APR.settings.profile.fillersFrameShowHeader
-        else
-            showHeader = true -- Mandatory when not snapped
-        end
-
-        -- Show/hide header
-        if showHeader then
-            FillersFrameHeader:Show()
-            FillersFrameHeader:ClearAllPoints()
-            FillersFrameHeader:SetPoint("BOTTOM", FillersFrame, "TOP", 0, -3)
-        else
-            FillersFrameHeader:Hide()
-        end
-
-        -- Show/hide minimize button based on snap settings
-        if isSnapped then
-            FillersFrameHeader.MinimizeButton:Hide()
-        else
-            FillersFrameHeader.MinimizeButton:Show()
-        end
-
-        -- Enable/disable mouse based on snap settings
-        FillersFrame:EnableMouse(not isSnapped)
-
-        -- Calculate total height needed
-        local titleHeight = 0
-        local contentHeight = math.abs(FRAME_FILLERS_HOLDER_HEIGHT - FIRST_ITEM_OFFSET)
-        local totalHeight = titleHeight + contentHeight + 10
-
-        FillersFrame:SetSize(FRAME_WIDTH, totalHeight)
-
-        -- Adjust StepHolder position
-        FillersFrame_StepHolder:ClearAllPoints()
-        FillersFrame_StepHolder:SetPoint("TOPLEFT", FillersFrame, "TOPLEFT", 0, 0)
-        FillersFrame_StepHolder:SetPoint("BOTTOMRIGHT", FillersFrame, "BOTTOMRIGHT", 0, 0)
-
-        -- Position relative to anchor frame using centralized logic
-        FillersFrame:ClearAllPoints()
-
-        if isSnapped then
-            -- Use centralized anchor logic from Core
-            local anchorFrame, anchorHeight = APR:GetSnapAnchorFrame(true) -- excludeFillers=true to avoid self-anchoring
-
-            if anchorFrame then
-                -- Use centralized snap positioning helper
-                local headerAdjust = showHeader and HEADER_HEIGHT or nil
-                APR:SnapFrameToAnchor(FillersFrame, anchorFrame, anchorHeight, snapGap, headerAdjust)
-
-                -- Update backdrop color to match current step
-                self:UpdateBackgroundColorAlpha()
-            end
-        else
-            -- Not snapped - allow independent positioning
-            -- Restore position if available
-            if APR.settings.profile.fillersFrame and APR.settings.profile.fillersFrame.point then
-                LibWindow.RestorePosition(FillersFrame)
-            else
-                -- Default position when not snapped and no saved position
-                FillersFrame:SetPoint("CENTER", UIParent, "CENTER", 0, -100)
-            end
-
-            -- Update backdrop color
-            self:UpdateBackgroundColorAlpha()
-        end
-
-        -- If Fillers just appeared, refresh QuestOrderList
-        if not wasVisible then
-            if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-                APR.questOrderList:ApplySnapAnchor()
-            end
-        end
-    else
-        FillersFrame:Hide()
-
-        -- If Fillers just disappeared, refresh QuestOrderList
-        if wasVisible then
-            if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-                APR.questOrderList:ApplySnapAnchor()
-            end
-        end
-    end
-
-    -- Update positioning of AFK and QuestOrderList
-    if APR.AFK and APR.AFK.RefreshFrameAnchor then
-        APR.AFK:RefreshFrameAnchor()
-    end
+    if APR.AFK and APR.AFK.RefreshFrameAnchor then APR.AFK:RefreshFrameAnchor() end
+    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then APR.questOrderList:ApplySnapAnchor() end
 end
 
 -- Get the total height of fillers frame (for positioning)
@@ -421,28 +308,20 @@ function APR.fillersFrame:UpdateBackgroundColorAlpha(color)
     end
 end
 
--- Hide the fillers frame (used when collapsing)
 function APR.fillersFrame:Hide()
-    if FillersFrame then
-        FillersFrame:Hide()
-    end
-    if FillersFrameHeader then
-        FillersFrameHeader:Hide()
-    end
-
-    -- When Fillers hides, refresh QuestOrderList
-    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-        APR.questOrderList:ApplySnapAnchor()
-    end
+    self.hiddenByCurrentStep = true
+    self:RefreshFillersFrame(true)
 end
 
--- Show the fillers frame (used when expanding)
 function APR.fillersFrame:Show()
-    self:RefreshFillersFrame(true) -- Force refresh when explicitly showing
+    self.hiddenByCurrentStep = false
+    self:RefreshFillersFrame(true)
 end
 
 -- Reset the frame position
 function APR.fillersFrame:ResetPosition()
+    if InCombatLockdown() then self.pendingPositionReset = true; return end
+    self.anchor = nil
     if APR.settings.profile.fillersFrameSnapToCurrentStep then
         -- If snapped, just refresh to re-snap
         self:RefreshFillersFrame(true) -- Force refresh on position reset

@@ -35,11 +35,12 @@ function CurrentStep:ReleaseRow(list, key)
         table.insert(self.pendingContainerDestroy, container)
     end
     self.layoutDirty = true
+    if list == self.fillersList and APR.fillersFrame then APR.fillersFrame.layoutDirty = true end
 end
 
 function CurrentStep:EndContentUpdate(success)
     self.contentUpdateActive = false
-    for _, list in ipairs({ self.questsExtraTextList, self.questsList }) do
+    for _, list in ipairs({ self.questsExtraTextList, self.questsList, self.fillersList }) do
         for key, container in pairs(list) do
             if success and container.stale then
                 self:ReleaseRow(list, key)
@@ -57,6 +58,7 @@ function CurrentStep:EndContentUpdate(success)
         end
     end
     if self.layoutDirty then self:ReOrderQuestSteps() end
+    if APR.fillersFrame and APR.fillersFrame.FlushPendingLayout then APR.fillersFrame:FlushPendingLayout() end
 end
 
 local function MarkOrRelease(self, list, preserve)
