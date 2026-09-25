@@ -67,7 +67,7 @@ local function getVisibilityState(steps, sojournerSkipActive)
 end
 
 local function getQuestName(questID)
-    return C_QuestLog.GetTitleForQuestID(questID) or UNKNOWN
+    return APR:GetQuestTitle(questID) or UNKNOWN
 end
 
 local function isSnapEnabled()
@@ -480,7 +480,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                         end
                         if flagged == 0 then
                             table.insert(questInfo,
-                                { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                                { questID = questID, questName = APR:GetQuestTitle(questID) })
                         end
                     end
                 end
@@ -494,7 +494,7 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
                 end
             elseif step.DropQuest then
                 local questData = step.DroppableQuest
-                local questID = questData and questData.Qid or 1
+                local questID = step.DropQuest
                 local MobId = questData and questData.MobId or 1
                 local MobName = APRData.NPCList[MobId] or (questData and questData.Text or UNKNOWN)
                 local questText = format(L["Q_DROP"], MobName)

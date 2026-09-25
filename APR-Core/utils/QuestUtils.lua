@@ -1,5 +1,45 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+local questTitleRequests = {}
+local QUEST_TITLE_RETRY_DELAY = 30
+
+--- Read a title and request uncached data only when the caller needs it.
+--- Failed or unanswered requests can be retried on a later read without flooding the server.
+function APR:GetQuestTitle(questID, requestMissing)
+    questID = tonumber(questID)
+    if not questID or questID <= 0 or questID % 1 ~= 0 then return nil end
+
+    local title = C_QuestLog.GetTitleForQuestID(questID)
+    if title and title ~= "" then return title end
+    if requestMissing == false then return nil end
+
+    local request = questTitleRequests[questID]
+    local now = GetTime()
+    if not request or now - request.time >= QUEST_TITLE_RETRY_DELAY then
+        questTitleRequests[questID] = { time = now, pending = true, route = self.ActiveRoute }
+        C_QuestLog.RequestLoadQuestByID(questID)
+    elseif request.pending then
+        -- The same quest may also be displayed after switching routes.
+        request.route = self.ActiveRoute
+    end
+    return nil
+end
+
+--- Consume only results requested by APR, including quests outside the pickup pool.
+function APR:OnQuestTitleLoaded(questID, success)
+    local request = questTitleRequests[questID]
+    if not request or not request.pending then return false end
+    request.pending = false
+    if not success or not self:GetQuestTitle(questID, false) then return false end
+
+    questTitleRequests[questID] = nil
+    return request.route == self.ActiveRoute
+end
+
+function APR:ResetQuestTitleRequests()
+    wipe(questTitleRequests)
+end
+
 --- Only quests still in this character's log can activate deferred hand-ins.
 --- Lists require every quest to be ready.
 function APR:IsQuestReadyForTurnIn(questID)
@@ -360,7 +400,7 @@ function APR:MissingQuest(questId, objectiveId)
     local questTextToAdd
     questId = questId or UNKNOWN
     local questIdNum = tonumber(questId)
-    local questName = questIdNum and C_QuestLog.GetTitleForQuestID(questIdNum) or nil
+    local questName = self:GetQuestTitle(questIdNum)
     local questLabel = questName and (questName .. " (" .. tostring(questId) .. ")") or tostring(questId)
 
     if APR:Contains(APR.BonusObj, questId) then
