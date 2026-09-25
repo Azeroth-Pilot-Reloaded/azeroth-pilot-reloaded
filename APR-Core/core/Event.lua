@@ -183,6 +183,7 @@ function APR.event:CleanupEvents()
         pendingQuestDataTimer:Cancel()
         pendingQuestDataTimer = nil
     end
+    APR:ResetQuestTitleRequests()
     for tag, container in pairs(self.framePool) do
         if container then
             -- Unregister all events for this container
@@ -199,7 +200,6 @@ function APR.event:CleanupEvents()
         C_Timer.Cancel(pendingQuestUpdateTimer)
         pendingQuestUpdateTimer = nil
     end
-
 
     -- Clear quest share queue
     wipe(questShareQueue)
@@ -1439,39 +1439,21 @@ function APR.event.functions.treasure(event, ...)
 end
 
 function APR.event.functions.questData(event, questID, success)
-    if not success or not questID then return end
+    if not APR:OnQuestTitleLoaded(questID, success) or pendingQuestDataTimer then return end
 
-    -- Check if the loaded quest belongs to the active step or the active route pool
-    local isRelevant = false
-    if step and (step.Quest == questID or (step.Done and (step.Done == questID or (type(step.Done) == "table" and step.Done[1] == questID)))) then
-        isRelevant = true
-    elseif APR:IsQuestInPool(questID) then
-        isRelevant = true
-    end
+    -- Batch results without postponing the refresh indefinitely during a long route render.
+    pendingQuestDataTimer = C_Timer.NewTimer(0.15, function()
+        pendingQuestDataTimer = nil
+        local profile = APR:GetSettingsProfile()
+        if not APR.ActiveRoute or not profile or not profile.enableAddon then return end
 
-    if isRelevant then
-        APR:Debug("Quest data loaded for questID: ", questID)
-
-        -- Cancel existing timer if another load result arrives before timeout
-        if pendingQuestDataTimer then
-            pendingQuestDataTimer:Cancel()
-            pendingQuestDataTimer = nil
+        local profileStart = APR:StartPerformanceSample()
+        APR:UpdateStep()
+        if APR.questOrderList and APR.questOrderList.DelayedUpdate then
+            APR.questOrderList:DelayedUpdate(true)
         end
-
-        -- Debounce UI update to coalesce multiple batch quest loads into a single refresh
-        pendingQuestDataTimer = C_Timer.NewTimer(0.15, function()
-            pendingQuestDataTimer = nil
-            local profile = APR:GetSettingsProfile()
-            if not APR.ActiveRoute or not profile or not profile.enableAddon then return end
-
-            local profileStart = APR:StartPerformanceSample()
-            APR:UpdateStep()
-            if APR.questOrderList and APR.questOrderList.DelayedUpdate then
-                APR.questOrderList:DelayedUpdate(true)
-            end
-            APR:FinishPerformanceSample("QuestDataLoadRefresh", profileStart)
-        end)
-    end
+        APR:FinishPerformanceSample("QuestDataLoadRefresh", profileStart)
+    end)
 end
 
 function APR.event.functions.updateQuest(event, ...)

@@ -97,7 +97,9 @@ snapToAnchor = function(anchorFrame, anchorHeight)
     local owner = APR.questOrderList
     local scale = anchorFrame:GetScale() or 1
     if owner.snapAnchor == anchorFrame and owner.snapHeight == effectiveHeight and
-        QuestOrderListPanel:GetScale() == scale then return true end
+        QuestOrderListPanel:GetScale() == scale then
+        return true
+    end
     -- Use centralized snap positioning helper (no header adjustment for QuestOrderList)
     local anchored = APR:SnapFrameToAnchor(QuestOrderListPanel, anchorFrame, effectiveHeight, SNAP_ANCHOR_GAP, nil)
     if anchored then owner.snapAnchor, owner.snapHeight = anchorFrame, effectiveHeight end
@@ -306,7 +308,9 @@ function APR.questOrderList:RemoveSteps(hideFrame)
     local profileStart = APR:StartPerformanceSample()
     QuestOrderListUtils:CancelRender(self)
     QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
-    if self.updateTimer then self.updateTimer:Cancel(); self.updateTimer = nil end
+    if self.updateTimer then
+        self.updateTimer:Cancel(); self.updateTimer = nil
+    end
     self.pendingUpdate = false
     self.contentSignature = nil
     self.currentStepIndex = nil
@@ -389,7 +393,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     local routeKey = APR.ActiveRoute
     local pending = self.renderRequest
     if not forceRendering and pending and pending.route == routeKey and pending.index == currentStepIndex and
-        pending.width == FRAME_WIDTH then return end
+        pending.width == FRAME_WIDTH then
+        return
+    end
     if pending then QuestOrderListUtils:CancelRender(self) end
     local activeRouteSteps = APR:GetRouteSteps(routeKey)
     local sojournerSkipActive = APR:IsSojournerSkipActive()
@@ -412,8 +418,11 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     QuestOrderListUtils:CancelRender(self)
     local target = self.renderBuffer
     if not target then
-        target = { scrollChild = CreateFrame("Frame", nil, QuestOrderListFrame_ScrollFrame),
-            stepList = {}, rawStepContainers = {} }
+        target = {
+            scrollChild = CreateFrame("Frame", nil, QuestOrderListFrame_ScrollFrame),
+            stepList = {},
+            rawStepContainers = {}
+        }
         target.scrollChild:Hide()
         self.renderBuffer = target
     end
@@ -457,8 +466,11 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
         local scrollOffset = QuestOrderListFrame_ScrollFrame:GetVerticalScroll()
         target.scrollChild:SetHeight(math.max(1, -layout.dataHeight))
-        local previous = { scrollChild = QuestOrderListFrame_ScrollChild, stepList = self.stepList,
-            rawStepContainers = self.rawStepContainers }
+        local previous = {
+            scrollChild = QuestOrderListFrame_ScrollChild,
+            stepList = self.stepList,
+            rawStepContainers = self.rawStepContainers
+        }
         local tooltipOwner = GameTooltip:GetOwner()
         if tooltipOwner and tooltipOwner:GetParent() == previous.scrollChild then GameTooltip:Hide() end
         previous.scrollChild:Hide()

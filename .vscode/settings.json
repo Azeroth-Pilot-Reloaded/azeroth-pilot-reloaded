@@ -101,7 +101,8 @@
         "INVSLOT_FIRST_EQUIPPED",
         "INVSLOT_LAST_EQUIPPED",
         "ABANDON_QUEST",
-        "LEAVE_VEHICLE"
+        "LEAVE_VEHICLE",
+        "NUM_TOTAL_EQUIPPED_BAG_SLOTS"
     ],
     "Lua.runtime.version": "Lua 5.1",
     "Lua.runtime.builtin": {
