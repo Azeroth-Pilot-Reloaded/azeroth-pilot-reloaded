@@ -35,6 +35,7 @@ function APR.questOrderListUtils:GetReputationStateSignature(steps)
 end
 
 function APR.questOrderListUtils:CancelRender(owner)
+    owner.renderRequest = nil
     if owner.renderFrame then
         owner.renderFrame:SetScript("OnUpdate", nil)
         owner.renderFrame:Hide()
@@ -44,6 +45,7 @@ end
 -- Resume between rows, with at most one budgeted batch per rendered game frame.
 function APR.questOrderListUtils:StartRender(owner, worker, isValid, afterBatch)
     self:CancelRender(owner)
+    owner.renderFailed = nil
     owner.renderFrame = owner.renderFrame or CreateFrame("Frame")
     local thread = coroutine.create(worker)
     owner.renderFrame:SetScript("OnUpdate", function()
@@ -57,7 +59,7 @@ function APR.questOrderListUtils:StartRender(owner, worker, isValid, afterBatch)
             local ok, err = coroutine.resume(thread)
             if not ok then
                 self:CancelRender(owner)
-                owner.currentStepIndex = nil
+                owner.renderFailed = true
                 geterrorhandler()(err)
                 return
             end
@@ -71,6 +73,8 @@ function APR.questOrderListUtils:StartRender(owner, worker, isValid, afterBatch)
 end
 
 function APR.questOrderListUtils:ReleaseStepFrame(container)
+    if container.inPool then return end
+    container.inPool = true
     container:Hide()
     container:ClearAllPoints()
     container:SetScript("OnEnter", nil)
@@ -108,6 +112,9 @@ function APR.questOrderListUtils:CollapseStepDetails(container)
 end
 
 local function bindUncompletedStepTooltip(container, questInfo)
+    container:SetScript("OnEnter", nil)
+    container:SetScript("OnLeave", nil)
+    container:EnableMouse(false)
     if not container or not questInfo or #questInfo == 0 then
         return
     end
@@ -156,6 +163,7 @@ end
 
 function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepText, questInfo, color, isActiveStep)
     local container = table.remove(self.framePool) or CreateFrame("Frame", nil, layout.scrollChild, "BackdropTemplate")
+    container.inPool = nil
     container:SetParent(layout.scrollChild)
     local indexStr = tostring(stepIndex)
     local offset = 14 + 7 * string.len(indexStr)
@@ -172,24 +180,25 @@ function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepTe
         return font
     end
     local indexFont = reuseFont(container.indexFont, stepIndex, layout.frameWidth, color)
-    local titleFont = reuseFont(container.titleFont, stepText, layout.frameWidth - offset, color)
+    local titleFont = reuseFont(container.titleFont, stepText, layout.frameWidth - offset - 5, color)
     indexFont:SetPoint("TOPLEFT", container, "TOPLEFT", 5, 0)
     titleFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset, 0)
 
     container.indexFont = indexFont
     container.titleFont = titleFont
     container.questFontPool = container.questFontPool or {}
-    for _, font in ipairs(container.questFontPool) do font:Hide() end
     container.questFonts = {}
 
     local questFontHeight = 0
     local activeQuestId
-    for i, quest in pairs(questInfo or {}) do
+    local signature = { tostring(stepIndex), tostring(stepText), color or "gray", tostring(isActiveStep) }
+    for i, quest in ipairs(questInfo or {}) do
         local questName = quest.questName and ' - ' .. quest.questName or ''
         local rawQuestId = quest.questID
         local questIdString = tostring(rawQuestId)
         local questText = questIdString .. questName
-        local questFont = reuseFont(container.questFontPool[i], questText, layout.frameWidth - offset - 10 - 22)
+        local questFont = reuseFont(container.questFontPool[i], questText, layout.frameWidth - offset - 15)
+        signature[#signature + 1] = questText
         container.questFontPool[i] = questFont
 
         if isActiveStep then
@@ -203,8 +212,14 @@ function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepTe
 
         questFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset + 10,
             -titleFont:GetStringHeight() - 5 - questFontHeight)
-        questFontHeight = questFontHeight + questFont:GetStringHeight()
+        questFontHeight = questFontHeight + questFont:GetStringHeight() + 3
         container.questFonts[i] = questFont
+    end
+    for i = #container.questFonts + 1, #container.questFontPool do container.questFontPool[i]:Hide() end
+    if layout.signatureParts then
+        for _, value in ipairs(signature) do
+            layout.signatureParts[#layout.signatureParts + 1] = #value .. ":" .. value
+        end
     end
 
     container:SetWidth(layout.frameWidth)
@@ -212,9 +227,7 @@ function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepTe
     container:SetPoint("TOPLEFT", layout.scrollChild, "TOPLEFT", 0, layout.dataHeight)
     layout.dataHeight = layout.dataHeight - container:GetHeight()
 
-    if color == "gray" then
-        bindUncompletedStepTooltip(container, questInfo)
-    end
+    bindUncompletedStepTooltip(container, color == "gray" and questInfo or nil)
 
     container:Show()
 
@@ -234,14 +247,14 @@ function APR.questOrderListUtils:UpdateContainerLayout(container, layout)
 
     container:SetWidth(frameWidth)
     container.indexFont:SetWidth(frameWidth)
-    container.titleFont:SetWidth(frameWidth - offset)
+    container.titleFont:SetWidth(frameWidth - offset - 5)
 
     local questFontHeight = 0
     for _, questFont in ipairs(container.questFonts) do
-        questFont:SetWidth(frameWidth - offset - 10 - 22) -- offset - 10 - scrollbar offset
+        questFont:SetWidth(frameWidth - offset - 15)
         questFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset + 10,
             -container.titleFont:GetStringHeight() - 5 - questFontHeight)
-        questFontHeight = questFontHeight + questFont:GetStringHeight()
+        questFontHeight = questFontHeight + questFont:GetStringHeight() + 3
     end
 
     local containerHeight = container.titleFont:GetStringHeight() + questFontHeight + frameOffset
@@ -252,19 +265,28 @@ function APR.questOrderListUtils:UpdateContainerLayout(container, layout)
     return containerHeight
 end
 
-function APR.questOrderListUtils:SetCurrentStepIndicator(stepList, scrollFrame, stepindex)
+function APR.questOrderListUtils:CancelScroll(scrollFrame)
+    if scrollFrame.aprScrollTimer then
+        scrollFrame.aprScrollTimer:Cancel()
+        scrollFrame.aprScrollTimer = nil
+    end
+end
+
+function APR.questOrderListUtils:SetCurrentStepIndicator(stepList, scrollFrame, stepindex, followStep)
     local container = stepList[stepindex]
     if not container then return end
     self:SetStepFrameState(container, "gray", true)
-
-    C_Timer.After(0.1, function()
+    self:CancelScroll(scrollFrame)
+    if followStep == false then return end
+    scrollFrame.aprScrollTimer = C_Timer.NewTimer(0, function()
+        scrollFrame.aprScrollTimer = nil
         if scrollFrame:GetVerticalScrollRange() > 0 then
             local yOffset = 0
             for i = 1, stepindex - 1 do
                 local prevContainer = stepList[i]
                 yOffset = yOffset + (prevContainer and prevContainer:GetHeight() or 0)
             end
-            scrollFrame:SetVerticalScroll(yOffset)
+            scrollFrame:SetVerticalScroll(math.min(yOffset, scrollFrame:GetVerticalScrollRange()))
         end
     end)
 end
