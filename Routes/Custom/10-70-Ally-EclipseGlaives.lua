@@ -5,7 +5,7 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
     prefab = {
-        [APR.PREFAB_TYPES.StartingZone] = 10,
+        [APR.PREFAB_TYPES.Leveling] = 10,
     },
     autoStartOnMap = true,
     mapID = 84,

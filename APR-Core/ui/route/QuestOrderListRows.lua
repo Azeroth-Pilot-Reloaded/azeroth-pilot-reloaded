@@ -437,16 +437,14 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                         local questID = item.questID
                         local requiredQuantity = math.max(item.quantity or 1, 1)
 
-                        if C_QuestLog.IsQuestFlaggedCompleted(questID) then
+                        if questID and C_QuestLog.IsQuestFlaggedCompleted(questID) then
                             completed = completed + 1
                         elseif itemID then
-                            local bagCount = C_Item.GetItemCount(itemID, true) or 0
-                            local virtualCount = APR.QuestVirtualItemCount[itemID] or 0
-                            local currentQuantity = math.max(bagCount, virtualCount)
+                            -- Use the same bags/bank count as the current step.
+                            local currentQuantity = APR:GetCollectionItemCount(itemID)
 
                             local isDone =
                                 currentQuantity >= requiredQuantity
-                                or APR.lootUtils:IsLootDone(step, "ITEM", itemID)
                                 or currentStepIndex > rawIndex
 
                             if isDone then
