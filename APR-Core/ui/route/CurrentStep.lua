@@ -996,7 +996,10 @@ function APR.currentStep:ProcessPendingStepButtons()
         self.pendingRaidIconMacroRefresh = false
         self:UpdateRaidIconButtonMacro()
     end
-    if needsLayout then self:ReOrderQuestSteps() end
+    if needsLayout then
+        self:ReOrderQuestSteps()
+        if APR.fillersFrame and APR.fillersFrame.FlushPendingLayout then APR.fillersFrame:FlushPendingLayout(true) end
+    end
 end
 
 function APR.currentStep:RemoveStepButtonByKey(questsListKey)
@@ -1393,6 +1396,7 @@ function APR.currentStep:FlushPendingContainers()
 
     if not next(self.pendingRemoval) then
         if self.layoutDirty then self:ReOrderQuestSteps() end
+        if APR.fillersFrame and APR.fillersFrame.FlushPendingLayout then APR.fillersFrame:FlushPendingLayout() end
         return
     end
     for id, _ in pairs(self.pendingRemoval) do
