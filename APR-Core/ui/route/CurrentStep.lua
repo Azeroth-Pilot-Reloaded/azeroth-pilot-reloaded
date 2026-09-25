@@ -727,7 +727,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
             displayName = C_Item.GetItemInfo(itemID)
         end
         if not displayName and questID then
-            displayName = C_QuestLog.GetTitleForQuestID(questID)
+            displayName = APR:GetQuestTitle(questID)
         end
 
         local fallbackIdentifier = itemID or questID or UNKNOWN
@@ -782,7 +782,7 @@ function APR.currentStep:AddQuestStepsWithDetails(id, text, questIDList)
             displayName = C_Item.GetItemInfo(itemID)
         end
         if not displayName and questID then
-            displayName = C_QuestLog.GetTitleForQuestID(questID)
+            displayName = APR:GetQuestTitle(questID)
         end
 
         local fallbackIdentifier = itemID or questID or UNKNOWN

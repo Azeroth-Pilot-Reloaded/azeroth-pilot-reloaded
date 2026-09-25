@@ -592,11 +592,11 @@ local function UpdateStepOnce()
 
             if pickUpDB then
                 local hasQuestCompleted = false
-                local myQuestID = nil
+                local myQuestID = pickUpDB[1] or questIDs[1]
 
                 for _, questID in ipairs(pickUpDB) do
                     local questData = APR.ActiveQuests[questID]
-                    local questName = C_QuestLog.GetTitleForQuestID(questID)
+                    local questName = APR:GetQuestTitle(questID)
                     if questName then
                         myQuestID = questID
                     end
@@ -695,6 +695,7 @@ local function UpdateStepOnce()
                 APR:NextQuestStep()
                 return
             elseif showStepDetails then
+                APR:GetQuestTitle(questID)
                 if itemID then
                     local itemName = C_Item.GetItemInfo(itemID) or UNKNOWN
                     APR.currentStep:AddQuestStepsWithDetails("Treasure" .. tostring(questID or itemID),
@@ -717,6 +718,9 @@ local function UpdateStepOnce()
                 APR:NextQuestStep()
                 return
             end
+            if showStepDetails then
+                APR:GetQuestTitle(questID)
+            end
         elseif (step.Done) then
             local doneList = step.Done
             local doneDBList = step.DoneDB
@@ -730,7 +734,7 @@ local function UpdateStepOnce()
 
                 for _, questID in ipairs(doneDBList) do
                     local questData = APR.ActiveQuests[questID]
-                    local questName = C_QuestLog.GetTitleForQuestID(questID)
+                    local questName = APR:GetQuestTitle(questID)
                     if questName then
                         myQuestID = questID
                     elseif not questData and not C_QuestLog.IsQuestFlaggedCompleted(questID) then
@@ -1009,6 +1013,7 @@ local function UpdateStepOnce()
 
             if not C_QuestLog.IsQuestFlaggedCompleted(Qid) and not APR.ActiveQuests[Qid] then
                 if showStepDetails then
+                    APR:GetQuestTitle(Qid)
                     local MobId = questData.MobId
                     local MobName = APRData.NPCList[MobId] or questData.Text
                     local questText = format(L["Q_DROP"], MobName)
@@ -1195,7 +1200,7 @@ function APR:UpdateQuest(deferStepUpdate)
 
         if questInfo and questInfo.questID > 0 and not questInfo.isHeader then
             local questID = questInfo.questID
-            local questTitle = C_QuestLog.GetTitleForQuestID(questID)
+            local questTitle = APR:GetQuestTitle(questID)
             local isQuestComplete = C_QuestLog.IsComplete(questID)
             local numObjectives = C_QuestLog.GetNumQuestObjectives(questID)
             local questStatus = isQuestComplete and APR.QUEST_STATUS.COMPLETE or APR.QUEST_STATUS.PROGRESS
