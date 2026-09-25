@@ -203,4 +203,51 @@ list:RemoveSteps()
 drainTimers()
 assert(scroll:GetVerticalScroll() == 0 and #list.stepList == 0 and not QuestOrderListPanel:IsShown(),
     "Removing the list also cancels queued scrolling")
+
+-- Loot rows can render before visiting any collection step. There is no
+-- QuestVirtualItemCount table; use the same live/saved counts as Current Step.
+dofile("APR-Core/utils/LootUtils.lua")
+assert(APR.QuestVirtualItemCount == nil)
+local bagCount, bankCount, questComplete = 0, 0, false
+C_Item.GetItemCount = function(_, includeBank)
+    return bagCount and (bagCount + (includeBank and bankCount or 0)) or nil
+end
+C_QuestLog.IsQuestFlaggedCompleted = function(id)
+    assert(id ~= nil, "A collection without a quest must not query a nil quest ID")
+    return questComplete
+end
+local loot = { itemID = 100, quantity = 5, questID = 123 }
+APR.ActiveRoute = "loot"
+APRData.player.loot = 1
+APR.RouteQuestStepList.loot = { { Note = "Before collecting" }, { LootItems = { loot } } }
+local errorsBeforeLoot = #failures
+local function assertLootDetails(expected)
+    list:AddStepFromRoute(true)
+    drainRender()
+    assert(#failures == errorsBeforeLoot and not list.renderFailed, "Loot rows render without an obsolete cache")
+    assert(#list.rawStepContainers[2].questFonts == expected, "Loot completion agrees with current collection counts")
+end
+assertLootDetails(1)
+loot.questID = nil
+assertLootDetails(1)
+bagCount = nil
+assertLootDetails(1)
+bagCount = 2
+assertLootDetails(1)
+bankCount = 3
+assertLootDetails(0)
+bankCount = 0
+APRData.player.BankItems = { [100] = 3 }
+assertLootDetails(0)
+APRData.player.BankItems[100] = 0
+assertLootDetails(1)
+bagCount = 5
+assertLootDetails(0)
+bagCount, loot.questID, questComplete = 0, 123, true
+assertLootDetails(0)
+questComplete = false
+assertLootDetails(1)
+APRData.player.loot = 3
+assertLootDetails(0)
+print("Quest order loot: absent cache, optional quest, unavailable count, bags, saved/live bank, completion and passed steps passed")
 print("Quest order: 1200 rows, bounded build/recycling, atomic publishing, buffer reuse, scroll, filters, cancellation, resize and recovery passed")
