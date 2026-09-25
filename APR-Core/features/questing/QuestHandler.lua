@@ -734,7 +734,7 @@ local function UpdateStepOnce()
 
                 for _, questID in ipairs(doneDBList) do
                     local questData = APR.ActiveQuests[questID]
-                    local questName = C_QuestLog.GetTitleForQuestID(questID)
+                    local questName = APR:GetQuestTitle(questID)
                     if questName then
                         myQuestID = questID
                     elseif not questData and not C_QuestLog.IsQuestFlaggedCompleted(questID) then
@@ -1200,7 +1200,7 @@ function APR:UpdateQuest(deferStepUpdate)
 
         if questInfo and questInfo.questID > 0 and not questInfo.isHeader then
             local questID = questInfo.questID
-            local questTitle = C_QuestLog.GetTitleForQuestID(questID)
+            local questTitle = APR:GetQuestTitle(questID)
             local isQuestComplete = C_QuestLog.IsComplete(questID)
             local numObjectives = C_QuestLog.GetNumQuestObjectives(questID)
             local questStatus = isQuestComplete and APR.QUEST_STATUS.COMPLETE or APR.QUEST_STATUS.PROGRESS
