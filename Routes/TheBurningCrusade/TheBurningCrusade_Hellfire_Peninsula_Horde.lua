@@ -609,22 +609,20 @@ APR.RouteQuestStepList["85-BC-1-Horde"] = {
         },
         {
             PickUp = { 10629 },
-            Coord = { x = 2888.2, y = 425.1 },
+            Coord = { x = 2887.4, y = 432.4 },
             Zone = 100,
             _index = 92,
         },
         {
-            UseItem = { itemID = 30803, itemSpellID = 1269298, questID = 10629 },
-            Coord = { x = 2890.9, y = 440.3 },
+            UseSpell = { questID = 10629, spellID = 1269298 },
+            Coord = { x = 2890.2, y = 427.9 },
             Zone = 100,
             _index = 93,
         },
         {
             Qpart = { [10629] = { 1 } },
-            Coord = { x = 3065.3, y = 375.1 },
+            Coord = { x = 3026.4, y = 425 },
             Zone = 100,
-            Button = { ["10629-1"] = 30803 },
-            Range = 5,
             _index = 94,
         },
         {
