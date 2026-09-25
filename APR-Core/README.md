@@ -12,5 +12,3 @@ The source tree is organized by responsibility:
 - `locales/`, `assets/`, and `libs/`: translations, media, and vendored dependencies.
 
 `APR.toc` remains the source of truth for runtime load order. Keep dependencies before their consumers when adding or moving modules.
-
-`FarstriderLibData.xml` intentionally stays at this level because its embedded-library paths are resolved relative to the XML file.
