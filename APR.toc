@@ -98,6 +98,7 @@ APR-Core/ui/route/CurrentStepRows.lua
 APR-Core/ui/route/FillersFrame.lua
 APR-Core/ui/route/QuestionPopUp.lua
 APR-Core/ui/route/QuestOrderList.lua
+APR-Core/ui/route/QuestOrderListRows.lua
 APR-Core/features/questing/Gossip.lua
 APR-Core/features/group/Party.lua
 APR-Core/features/navigation/Map.lua
