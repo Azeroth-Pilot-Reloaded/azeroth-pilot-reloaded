@@ -120,6 +120,8 @@ C_EventUtils = { IsEventValid = function(event) return event ~= "ACTIVE_DELVE_DA
 dofile("APR-Core/core/Event.lua")
 APR.event:MyRegisterEvent()
 assert(registered.QUEST_ACCEPTED and registered.QUEST_LOG_UPDATE)
+assert(registered.QUEST_DATA_LOAD_RESULT and type(APR.event.functions.questData) == "function",
+    "Quest title load results must register an unconditional event handler")
 assert(not registered.ACTIVE_DELVE_DATA_UPDATE)
 C_EventUtils = nil
 APR.event:MyRegisterEvent()

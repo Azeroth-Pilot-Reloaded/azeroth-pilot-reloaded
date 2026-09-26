@@ -1452,18 +1452,6 @@ function APR.event.functions.updateQuest(event, ...)
                             table.remove(questShareQueue, index)
                             questShareRetries[questID] = nil
                         end
-
-                        function APR.event.functions.questData(_, questID, success)
-                            if not APR.OnQuestTitleLoaded or not APR:OnQuestTitleLoaded(questID, success) or pendingQuestDataTimer then return end
-                            pendingQuestDataTimer = C_Timer.NewTimer(0.15, function()
-                                pendingQuestDataTimer = nil
-                                if not APR.ActiveRoute then return end
-                                APR:UpdateStep()
-                                if APR.questOrderList and APR.questOrderList.DelayedUpdate then
-                                    APR.questOrderList:DelayedUpdate(true)
-                                end
-                            end)
-                        end
                     else
                         -- Quest no longer in log; remove from queue
                         table.remove(questShareQueue, index)
@@ -1479,6 +1467,18 @@ function APR.event.functions.updateQuest(event, ...)
             APR.event:DebouncedUpdateQuest(1)
         end
     end
+end
+
+function APR.event.functions.questData(_, questID, success)
+    if not APR.OnQuestTitleLoaded or not APR:OnQuestTitleLoaded(questID, success) or pendingQuestDataTimer then return end
+    pendingQuestDataTimer = C_Timer.NewTimer(0.15, function()
+        pendingQuestDataTimer = nil
+        if not APR.ActiveRoute then return end
+        APR:UpdateStep()
+        if APR.questOrderList and APR.questOrderList.DelayedUpdate then
+            APR.questOrderList:DelayedUpdate(true)
+        end
+    end)
 end
 
 function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isControlSeat, vehicleUIIndicatorID,

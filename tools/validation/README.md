@@ -34,6 +34,30 @@ a quest step, verify route/arrow navigation, and exercise a Hearthstone or
 travel action. Lua mocks cannot validate client API behavior, frame templates,
 or protected-combat behavior.
 
+## Retail and Forever smoke matrix
+
+Run each row in both clients unless the route or API is Retail-only. Record the
+addon version, route, step, zone, and any Lua error with a failed result. These
+checks are intentionally manual: the Lua runner cannot validate Blizzard frame
+templates, client map data, secure-combat behavior, or rendered textures.
+
+| Check | Historic issue(s) | Expected observable result |
+| --- | --- | --- |
+| Generated TOCs | #49, #441 | Retail loads `APR_Mainline.toc`; Forever loads `APR_Camelot.toc`; neither reports a missing route manifest or library-data error. |
+| Route selection and hand-in | #103, #110, #125, #482 | Select a representative route, accept and complete a quest, then hand it in once; the step order advances without a stale or duplicate turn-in. |
+| Out-of-zone Arrow | #479, #495 | Load a route from another zone/continent. The arrow remains a valid texture and recovers after entering the route zone; it never renders as white dashes. |
+| Portal and zone transitions | #90, #246 | Travel through a portal or flight boundary, including leaving and re-entering the route zone. Navigation settles on one reachable instruction and does not alternate indefinitely. |
+| Long skipped progression | #252 | Skip forward and back through a route with filtered/waypoint steps. Frame rate recovers immediately and the route remains selectable after reload. |
+| Delve chat behavior | #502 | Enter and complete a Delve route. No debug or repeated status lines flood the chat frame. |
+| Protected frames in combat | #407, #412 | While in combat, refresh a current step with an on-use item. No protected `Show`/`Hide` or ObjectiveTracker Lua error occurs; deferred UI updates apply after combat. |
+| Async quest titles | #536 | Open a route containing an uncached quest title. The list can briefly show its fallback, requests data once, then refreshes to the title after `QUEST_DATA_LOAD_RESULT`. |
+
+The automated suite validates the non-client portions of several rows:
+`step_progression_test.lua` covers bounded skipped-step progression,
+`farstrider_routing_performance_test.lua` covers cached/retried navigation, and
+the title-loading regression covers request de-duplication. It cannot mark a
+smoke row passed, so no runner option attempts to do so.
+
 The arrow-frame regression loads `Arrow.lua` with WoW-like global frame-name
 checks, ensuring its movable anchor and visible arrow never reuse a name.
 
