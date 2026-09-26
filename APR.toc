@@ -112,10 +112,4 @@ APR-Core/integrations/ElvUISkin.lua
 APR-Core/integrations/EllesmereUISettings.lua
 APR-Core/integrations/EllesmereUISkin.lua
 
-#@version-retail@
-Routes/RouteList.xml
-#@end-version-retail@
-
-#@version-forever@
-Routes/Forever/RouteList.xml
-#@end-version-forever@
+Routes/RouteList_[Game].xml
