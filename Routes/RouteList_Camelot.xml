@@ -1,3 +1,10 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..FrameXMLUI.xsd">
-    <!-- Register validated Forever routes here. Local conversion drafts are not packaged. -->
-</Ui>
+    <Script file="Routes/Forever/Forever_Alliance_Dwarf.lua" />
+    <Script file="Routes/Forever/Forever_Alliance_Gnome.lua" />
+    <Script file="Routes/Forever/Forever_Alliance_Human.lua" />
+    <Script file="Routes/Forever/Forever_Alliance_NightElf.lua" />
+    <Script file="Routes/Forever/Forever_Horde_Orc.lua" />
+    <Script file="Routes/Forever/Forever_Horde_Scourge.lua" />
+    <Script file="Routes/Forever/Forever_Horde_Tauren.lua" />
+    <Script file="Routes/Forever/Forever_Horde_Troll.lua" />
+    <Script file="Routes/Forever/Forever_Skyborne.lua" /></Ui>

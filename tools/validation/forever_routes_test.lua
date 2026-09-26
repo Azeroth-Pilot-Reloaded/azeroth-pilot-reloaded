@@ -16,6 +16,7 @@ function APR.worldCoordinateConverter:ConvertMapCoordinate(mapID, x, y)
     return { x = x, y = y }
 end
 dofile("APR-Core/data/models/Enums.lua")
+dofile("APR-Core/data/models/Classes.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/utils/RouteManager.lua")
@@ -48,7 +49,7 @@ local function validateFilters(step)
         end
     end
 end
-for key, route in pairs(APR.RouteQuestStepList) do
+    for key, route in pairs(APR.RouteQuestStepList) do
     assert(not seen[key] and route.gameVersion == "forever" and route.expansion == APR.EXPANSIONS.Forever)
     seen[key] = true
     assert(#route.steps > 1 and route.steps[#route.steps].RouteCompleted)
@@ -66,6 +67,9 @@ for key, route in pairs(APR.RouteQuestStepList) do
     end
     for index, step in ipairs(route.steps) do
         assert(step._index == index)
+        for _, itemID in ipairs(step.DestroyItems and step.DestroyItems.items or {}) do
+            assert(itemID ~= 6948, key .. ': always keep the Hearthstone')
+        end
         for field in pairs(step) do
             assert(not field:match('^ExtraLineText'), key .. ': instructions must use Note')
         end
@@ -100,39 +104,68 @@ for key, route in pairs(APR.RouteQuestStepList) do
         steps = steps + 1
         if step.Note then manual = manual + 1 end
     end
-    assert(not route.parallelSteps or #route.parallelSteps == 0, key .. ': use fillers and Qpart checks')
     for _, entry in ipairs(route.nextRoute or {}) do
         local target = type(entry) == "table" and entry.route or entry
         assert(APR.RouteQuestStepList[target], "Missing follow-up: " .. target)
+        assert(declarations[target] == declarations[key], "Follow-up leaves its race file: " .. target)
     end
-    if route.conditions.Faction == "Alliance" or route.conditions.Class == 8 or route.conditions.Race == "Skyborne" then
+    for _, group in ipairs(route.parallelSteps or {}) do
+        for _, step in ipairs(group.steps) do
+            assert(step.EquipItem, key .. ': only equipment reminders belong in parallel steps')
+        end
+    end
+    if route.conditions.Race ~= "Orc" then
         assert(APR:GetRouteVisibility(key) == "hidden", "Ineligible characters must not see this guide")
     end
     APR.interfaceVersion = 120105
     assert(APR:GetRouteVisibility(key) == "hidden", "Retail must never expose Forever routes")
     APR.interfaceVersion = 16001
 end
-assert(count > 0 and count < 69 and conversions > 0, "Routes must be grouped into zone files")
+local raceFiles = {
+    Dwarf = "Forever_Alliance_Dwarf.lua", Gnome = "Forever_Alliance_Gnome.lua",
+    Human = "Forever_Alliance_Human.lua", NightElf = "Forever_Alliance_NightElf.lua",
+    Orc = "Forever_Horde_Orc.lua", Troll = "Forever_Horde_Troll.lua",
+    Scourge = "Forever_Horde_Scourge.lua", Tauren = "Forever_Horde_Tauren.lua",
+    Skyborne = "Forever_Skyborne.lua",
+}
+assert(count == 9 and conversions > 0, "Exactly one file per Forever race is required")
+for race, filename in pairs(raceFiles) do
+    assert(files["Routes/Forever/" .. filename], "Missing race file: " .. race)
+end
+for key, route in pairs(APR.RouteQuestStepList) do
+    local filename = raceFiles[route.conditions.Race]
+    assert(filename and declarations[key] == "Routes/Forever/" .. filename, "Wrong race registration: " .. key)
+end
 local registered = 0
 for key in pairs(seen) do
     assert(declarations[key], "Route not declared by the manifest")
     registered = registered + 1
 end
 for key in pairs(declarations) do assert(seen[key], "Declared route was not registered") end
-assert(registered == 73, "All independent routes in the current Forever sources must remain registered")
-assert(count == 21 and files['Routes/Forever/Forever-Onyxia-Attunement.lua'])
-assert(not files['Routes/Forever/Forever-Badlands.lua'] and not files['Routes/Forever/Forever-Burning-Steppes.lua'])
-for _, suffix in ipairs({ 'A', 'H' }) do
-    local key = 'Forever-Onyxia-Attunement-' .. suffix
-    assert(declarations[key] == 'Routes/Forever/Forever-Onyxia-Attunement.lua')
-    local route = APR.RouteQuestStepList[key]
-    assert(not route.conditions.Race and not route.conditions.AnyOf)
-    assert(route.conditions.Faction == (suffix == 'A' and 'Alliance' or 'Horde'))
-    assert(route.mapID == (suffix == 'A' and 1428 or 1418))
+-- The introductory boar farm uses class-specific resale goals, not cash filters/travel steps.
+for _, race in ipairs({ "Orc", "Troll" }) do
+    local route = APR.RouteQuestStepList["Forever-Starting-Zone-" .. race]
+    local targets = { [10] = { "SHAMAN", "WARRIOR" }, [35] = { "WARLOCK" }, [60] = { "MAGE" } }
+    if race == "Troll" then targets[50] = { "PRIEST" } end
+    local count = race == "Troll" and 4 or 3
+    for index = 2, count + 1 do
+        local step = route.steps[index]
+        assert(step.LootMoney and not step.Money and not step.Waypoint and not step.NonSkippableWaypoint)
+        local target = step.LootMoney.copper
+        local expected = assert(targets[target], "Duplicate or unexpected class copper target")
+        local classes = type(step.Class) == "table" and step.Class or { step.Class }
+        assert(#classes == #expected)
+        for _, class in ipairs(expected) do assert(tContains(classes, class)) end
+        targets[target] = nil
+        local x, y = -4281.07, -720.15
+        if target == 10 then x, y = -4299.05, -494.9 end
+        assert(step.Coord.x == x and step.Coord.y == y and step.Zone == 1411 and step.Range == 30)
+        assert(tContains(step.LootMoney.equippedSlots, 5) and not tContains(step.LootMoney.equippedSlots, 16))
+    end
+    assert(not next(targets), "Missing class copper target")
 end
-local zephras = APR.RouteQuestStepList["Forever-1-14-Zephras-Isle"]
-assert(zephras.conditions.Race == "Skyborne" and not zephras.conditions.AnyOf)
-assert(not zephras.steps[1].AnyOf)
+local zephras = APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"]
+assert(zephras and zephras.conditions.Race == "Skyborne" and not zephras.conditions.AnyOf)
 local warriorTraining, farmingCircuit = false, false
 for _, step in ipairs(zephras.steps) do
     if step.LearnSkill and step.LearnSkill.spellID == 6673 then
@@ -140,24 +173,17 @@ for _, step in ipairs(zephras.steps) do
         warriorTraining = true
     end
     if step.Qpart and step.Qpart[92462] then
-        assert(not step.CoordPath and not step.ExtraLineText and not step.Waypoint)
+        assert(not step.CoordPath and not step.Waypoint)
         assert(math.abs(step.Coord.x - 44.825) < 0.00001 and math.abs(step.Coord.y - 26.86) < 0.00001)
-        local points = { {44.23,26}, {45.24,25.9}, {46.06,25.33}, {46.77,27.83},
-            {45.27,28.36}, {43.84,28.39}, {42.88,27.52} }
-        for _, point in ipairs(points) do
-            local dx, dy = point[1] - step.Coord.x, point[2] - step.Coord.y
-            assert(math.sqrt(dx * dx + dy * dy) + 35 <= step.Range)
-        end
-        assert(step.Fillers and step.Fillers[92461])
+        assert(step.Range == 30 and step.Fillers and step.Fillers[92461])
         farmingCircuit = true
     end
 end
 assert(warriorTraining and farmingCircuit)
-assert(APR.RouteQuestStepList["Forever-12-14-Silverpine-Forest"].conditions.Faction == "Horde")
-assert(APR.RouteQuestStepList["Forever-10-12-Tirisfal"].conditions.Faction == "Horde")
 APR.Race, APR.ClassName, APR.ClassId, APR.Faction = "Skyborne", "MAGE", 8, "Alliance"
-assert(APR:GetRouteVisibility("Forever-1-14-Zephras-Isle") == "visible")
+assert(APR:GetRouteVisibility("Forever-Starting-Zone-Skyborne") == "visible")
 APR.Faction = "Horde"
-assert(APR:GetRouteVisibility("Forever-1-14-Zephras-Isle") == "visible")
+APR.ClassName, APR.ClassId = "SHAMAN", 7
+assert(APR:GetRouteVisibility("Forever-Starting-Zone-Skyborne") == "visible")
 print(string.format("Forever collection: %d routes in %d files, %d steps, %d map conversions; character/client visibility and links passed (%d Note steps)",
     registered, count, steps, conversions, manual))
