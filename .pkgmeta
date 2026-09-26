@@ -1,5 +1,9 @@
 package-as: APR
-enable-toc-creation: yes
+enable-toc-creation: no
+
+plain-copy:
+  - APR_Mainline.toc
+  - APR_Camelot.toc
 
 required-dependencies:
   - libtaxidata

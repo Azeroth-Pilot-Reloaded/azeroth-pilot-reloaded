@@ -29,11 +29,15 @@ jobs:
           ref: ${{ github.event.inputs.tag || github.ref }}
           fetch-depth: 0
 
+      - name: Generate client TOCs
+        run: python tools/package/generate_client_tocs.py
+
       - name: WoW Packager
         # v2.6+ recognizes WoW Forever (Interface 16001) on CurseForge and Wago.
         uses: BigWigsMods/packager@v2.6.1
         with:
           args: -p 618667 -w 26457 -a XKq9xXKy
+
 
   release-alpha:
     if: github.repository == 'Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded' && github.event_name == 'push' && !startsWith(github.ref, 'refs/tags/')
@@ -44,9 +48,11 @@ jobs:
         with:
           fetch-depth: 0
 
+      - name: Generate client TOCs
+        run: python tools/package/generate_client_tocs.py
+
       - name: WoW Packager (alpha)
         # Non-tag pushes are published as alpha builds.
         uses: BigWigsMods/packager@v2.6.1
         with:
           args: -p 618667 -w 26457 -a XKq9xXKy
-

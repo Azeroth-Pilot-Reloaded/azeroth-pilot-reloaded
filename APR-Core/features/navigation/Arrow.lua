@@ -83,7 +83,7 @@ end
 ----------------------------------- Arrow Frames --------------------------------------
 ---------------------------------------------------------------------------------------
 
-APR.ArrowFrameM = CreateFrame("Button", "APR_Arrow", UIParent)
+APR.ArrowFrameM = CreateFrame("Button", "APR_ArrowAnchor", UIParent)
 APR.ArrowFrameM:SetHeight(1)
 APR.ArrowFrameM:SetWidth(1)
 APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", 0, 0)
@@ -385,7 +385,9 @@ end
 
 function APR.Arrow:SetArrowActive(isActive, x, y)
     local a = APR.Arrow
-    a.arrowUpdateRate = APR.settings.profile.arrowFPS / 100 -- Update rate in seconds (ie: 2/100 = 0.02 seconds)
+    local arrowFPS = tonumber(APR.settings.profile.arrowFPS)
+    if not arrowFPS or arrowFPS <= 0 then arrowFPS = 2 end
+    a.arrowUpdateRate = arrowFPS / 100 -- Update rate in seconds (ie: 2/100 = 0.02 seconds)
     a.Active = isActive
     a.x = x or 0
     a.y = y or 0

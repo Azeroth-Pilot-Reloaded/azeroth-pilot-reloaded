@@ -53,6 +53,7 @@ local events = {
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
     reputation = { "UPDATE_FACTION", "MAJOR_FACTION_RENOWN_LEVEL_CHANGED" },
+    questData = "QUEST_DATA_LOAD_RESULT",
     scenario = { "ACTIVE_DELVE_DATA_UPDATE", "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE",
         "WALK_IN_DATA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
     setHS = "HEARTHSTONE_BOUND",
@@ -73,6 +74,7 @@ local events = {
 local autoAccept, autoAcceptRoute, step = nil, nil, nil
 
 local pendingQuestUpdateTimer
+local pendingQuestDataTimer
 local pendingWarModeTimer
 local pendingZoneRoutingTimer
 local questShareQueue = {}
@@ -177,6 +179,11 @@ function APR.event:CleanupEvents()
         pendingZoneRoutingTimer:Cancel()
         pendingZoneRoutingTimer = nil
     end
+    if pendingQuestDataTimer then
+        pendingQuestDataTimer:Cancel()
+        pendingQuestDataTimer = nil
+    end
+    if APR.ResetQuestTitleRequests then APR:ResetQuestTitleRequests() end
     for tag, container in pairs(self.framePool) do
         if container then
             -- Unregister all events for this container
@@ -1444,6 +1451,18 @@ function APR.event.functions.updateQuest(event, ...)
                         if ok then
                             table.remove(questShareQueue, index)
                             questShareRetries[questID] = nil
+                        end
+
+                        function APR.event.functions.questData(_, questID, success)
+                            if not APR.OnQuestTitleLoaded or not APR:OnQuestTitleLoaded(questID, success) or pendingQuestDataTimer then return end
+                            pendingQuestDataTimer = C_Timer.NewTimer(0.15, function()
+                                pendingQuestDataTimer = nil
+                                if not APR.ActiveRoute then return end
+                                APR:UpdateStep()
+                                if APR.questOrderList and APR.questOrderList.DelayedUpdate then
+                                    APR.questOrderList:DelayedUpdate(true)
+                                end
+                            end)
                         end
                     else
                         -- Quest no longer in log; remove from queue

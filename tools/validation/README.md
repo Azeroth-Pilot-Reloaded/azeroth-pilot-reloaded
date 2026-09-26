@@ -1,5 +1,42 @@
 # Route performance checks
 
+## Automated validation
+
+Pull requests run the full Lua validation suite and a non-uploading package build
+in the `Validate addon` workflow. The workflow verifies the generated package
+with `check_package.py`, including client-specific TOCs, route manifests, and
+the exclusion of local tooling.
+
+Before running the packager locally, generate the ignored client TOCs:
+
+```text
+python tools/package/generate_client_tocs.py
+```
+
+`APR_Mainline.toc` and `APR_Camelot.toc` preserve the Retail and Forever route
+manifests respectively. The packager copies both generated files into the
+single addon release.
+
+BigWigs' packager requires a normal clone whose `.git` is a directory; linked
+worktrees use a `.git` file and are not supported by its repository detection.
+Do not weaken the package check for worktrees. From a normal clone with the
+packager available, run:
+
+```text
+python3 tools/package/generate_client_tocs.py
+<path-to-bigwigs-packager>/release.sh -d
+python3 tools/validation/check_package.py .release/APR
+```
+
+After automated and package validation, smoke-test the generated addon in both
+Retail and Forever clients. At minimum, load the addon, start a route, advance
+a quest step, verify route/arrow navigation, and exercise a Hearthstone or
+travel action. Lua mocks cannot validate client API behavior, frame templates,
+or protected-combat behavior.
+
+The arrow-frame regression loads `Arrow.lua` with WoW-like global frame-name
+checks, ensuring its movable anchor and visible arrow never reuse a name.
+
 Current-step rendering regression:
 
 ```text

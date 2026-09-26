@@ -110,6 +110,7 @@ end
 C_Item = { GetItemInfo = function(id) return "Item " .. id, nil, nil, nil, nil, nil, nil, nil, nil, 123 end }
 C_QuestLog = { GetTitleForQuestID = function(id) return "Quest " .. id end }
 UNKNOWN = "Unknown"
+dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/ui/route/CurrentStep.lua")
 dofile("APR-Core/ui/route/CurrentStepRows.lua")
 

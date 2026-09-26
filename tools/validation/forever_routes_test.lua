@@ -112,6 +112,11 @@ for key, route in pairs(APR.RouteQuestStepList) do
     assert(APR:GetRouteVisibility(key) == "hidden", "Retail must never expose Forever routes")
     APR.interfaceVersion = 16001
 end
+if count == 0 then
+    assert(next(declarations) == nil, "An empty Forever manifest must not register routes")
+    print("Forever routes: empty client-specific manifest passed")
+    return
+end
 assert(count > 0 and count < 69 and conversions > 0, "Routes must be grouped into zone files")
 local registered = 0
 for key in pairs(seen) do

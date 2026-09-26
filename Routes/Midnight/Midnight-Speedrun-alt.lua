@@ -2,6 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
     label = L["Midnight - Speedrun - Alt"],
+    legacyLabels = { L["Midnight - Speedrun"] .. " (Alt 80-90)" },
     expansion = APR.EXPANSIONS.Midnight,
     category = APR.CATEGORIES.Leveling,
     prefab = {
@@ -10778,7 +10779,7 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             conditions = {
                 Zones = { 2393, 2395, 2424 },
                 MinLevel = "MidnightDelves",
-                IsQuestReadyForTurnIn = { 93384, 93372, 93386, 93385, 93409, 93410 },
+                IsQuestReadyForTurnIn = { 93384, 93372, 93386, 93385 },
             },
             steps = {
                 {

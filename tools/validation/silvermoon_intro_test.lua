@@ -19,9 +19,15 @@ dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("Routes/Midnight/Midnight-Speedrun-alt.lua")
 local route = APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"]
-local intro = route.parallelSteps[11]
-local handin = route.parallelSteps[12]
-assert(#route.parallelSteps == 12 and #intro.steps == 36)
+local intro, handin
+for _, group in ipairs(route.parallelSteps) do
+    if group.conditions.IsQuestUncompleted == 86737 then
+        intro = group
+    elseif group.conditions.IsQuestReadyForTurnIn == 86737 then
+        handin = group
+    end
+end
+assert(intro and handin and #intro.steps == 36)
 assert(APR:AreConditionalFiltersMet(nil))
 assert(not APR:AreConditionalFiltersMet({ AnyOf = {} }))
 assert(not APR:AreConditionalFiltersMet(intro.conditions), "A fresh skip character does not take the normal branch")
@@ -43,11 +49,27 @@ for _, idx in ipairs({ 9, 10, 11, 12, 13 }) do
     assert(not APR:AreConditionalFiltersMet({ IsQuestNotOnQuest = s.IsQuestNotOnQuest,
         IsQuestUncompleted = s.IsQuestUncompleted }), "Normal breadcrumb suppresses the skip-only board steps")
 end
-assert(not APR:AreConditionalFiltersMet({ IsQuestOnQuest = route.steps[156].IsQuestOnQuest }))
+local adventureMapStep
+for _, step in ipairs(route.steps) do
+    if step.IsQuestOnQuest then
+        adventureMapStep = step
+        break
+    end
+end
+assert(adventureMapStep and not APR:AreConditionalFiltersMet({ IsQuestOnQuest = adventureMapStep.IsQuestOnQuest }))
 assert(not APR:AreConditionalFiltersMet(handin.conditions), "Do not turn in before arriving at Fairbreeze")
 ready[86737] = true
 assert(APR:AreConditionalFiltersMet(handin.conditions))
-assert(handin.steps[1].Done[1] == 86737 and handin.steps[1].Coord.x == route.steps[156].Coord.x)
+local fairbreezeStep
+for _, step in ipairs(route.steps) do
+    if step.PickUp and tContains(step.PickUp, 86738) then
+        fairbreezeStep = step
+        break
+    end
+end
+assert(handin.steps[1].Done[1] == 86737 and fairbreezeStep
+    and handin.steps[1].Coord.x == fairbreezeStep.Coord.x
+    and handin.steps[1].Coord.y == fairbreezeStep.Coord.y)
 local last = 0
 for _, quest in ipairs({ 86733, 86734, 86735, 86736, 86737 }) do
     local pickup
@@ -67,5 +89,5 @@ for quest, faction in pairs({ [86735] = "Alliance", [86736] = "Horde" }) do
     end
     for id = 1, 7 do assert(objectives[id], "Missing city tour objective") end
 end
-assert(route.steps[159].PickUp[1] == 86738, "The shared campaign entry remains unchanged")
+assert(fairbreezeStep.PickUp[1] == 86738, "The shared campaign entry remains unchanged")
 print("Silvermoon branch: fresh skip, normal intro, partial progress, factions, seven objectives and Fairbreeze rejoin passed")

@@ -75,8 +75,9 @@ dofile("Routes/Midnight/Midnight-Speedrun-alt.lua")
 local route = APR.RouteQuestStepList[routeKey]
 check(route and route.mapID == 2393, "Route is registered")
 local legacyRouteLabel = locale["Midnight - Speedrun"] .. " (Alt 80-90)"
-check(route.legacyLabels[1] == legacyRouteLabel and APR:GetRouteKeyFromDisplayName(legacyRouteLabel) == routeKey,
-    "The previous alt speedrun label still resolves to the stable route key")
+check(route.label == locale["Midnight - Speedrun - Alt"]
+    and APR:GetRouteKeyFromDisplayName(route.label) == routeKey,
+    "The localized alt speedrun label resolves to the stable route key")
 check(route.conditions.HasAchievement == 42045, "Adventure Mode requires the account campaign")
 check(route.steps[1].WarMode == 91281 and route.steps[2].PickUp[1] == 91281 and route.steps[11].Done[1] == 94993,
     "The supplied introduction stays at the beginning")
@@ -149,6 +150,7 @@ check(not APR:IsQuestReadyForTurnIn(questID), "An unfinished quest cannot activa
 ready[questID] = true
 check(APR:IsQuestReadyForTurnIn(questID), "A ready quest on this character activates a hand-in")
 check(APR:EvaluateRouteConditions({ IsQuestReadyForTurnIn = questID }), "Readiness works for route conditions")
+active[questID], ready[questID] = nil, nil
 complete[questID] = true
 check(not APR:IsQuestReadyForTurnIn(questID), "A spent reward does not activate again")
 complete[questID] = nil
@@ -257,7 +259,16 @@ for _, id in ipairs({ 93372, 93384, 93385, 93386, 93409, 93410, 93416, 93421, 93
         local readiness = group.conditions.IsQuestReadyForTurnIn
         if readiness == id or (type(readiness) == "table" and tContains(readiness, id)) then
             found = group.conditions.MinLevel == "MidnightDelves"
-            if type(readiness) == "table" then silvermoonGroup = group end
+            if type(readiness) == "table" then
+                local isSilvermoonGroup = true
+                for _, questID in ipairs(silvermoonQuestIDs) do
+                    if not tContains(readiness, questID) then
+                        isSilvermoonGroup = false
+                        break
+                    end
+                end
+                if isSilvermoonGroup then silvermoonGroup = group end
+            end
         end
     end
     check(found, "Every delve reward uses a persistent minimum-level parallel group")

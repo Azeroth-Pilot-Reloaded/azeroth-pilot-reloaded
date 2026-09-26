@@ -1,5 +1,32 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+APR.questTitleRequests = APR.questTitleRequests or {}
+
+function APR:GetQuestTitle(questID)
+    local questIDNum = tonumber(questID)
+    if not questIDNum then return nil end
+
+    local title = C_QuestLog.GetTitleForQuestID(questIDNum)
+    if title then return title end
+
+    if C_QuestLog.RequestLoadQuestByID and not self.questTitleRequests[questIDNum] then
+        self.questTitleRequests[questIDNum] = true
+        C_QuestLog.RequestLoadQuestByID(questIDNum)
+    end
+    return nil
+end
+
+function APR:OnQuestTitleLoaded(questID, success)
+    local questIDNum = tonumber(questID)
+    if not questIDNum or not self.questTitleRequests[questIDNum] then return false end
+    self.questTitleRequests[questIDNum] = nil
+    return success == true
+end
+
+function APR:ResetQuestTitleRequests()
+    wipe(self.questTitleRequests)
+end
+
 --- Only quests still in this character's log can activate deferred hand-ins.
 --- Lists require every quest to be ready.
 function APR:IsQuestReadyForTurnIn(questID)
@@ -15,8 +42,7 @@ function APR:IsQuestReadyForTurnIn(questID)
         return true
     end
 
-    return (C_QuestLog.IsOnQuest(questID) and C_QuestLog.IsComplete(questID))
-        or C_QuestLog.IsQuestFlaggedCompleted(questID)
+    return C_QuestLog.IsOnQuest(questID) and C_QuestLog.IsComplete(questID)
 end
 
 APR.QuestPool = APR.QuestPool or { ids = {} }

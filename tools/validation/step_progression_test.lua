@@ -78,17 +78,16 @@ APR.ResetMissingQuests = reset
 APR:UpdateStep()
 print("Step progression: Note skip + 1250 completed objectives; bounded batches, cancellation and error recovery passed")
 
--- Reproduce the reported Forever step through Farstrider's real UI refresh.
+-- Reproduce the navigation hint refresh through Farstrider's real UI path.
 dofile("APR-Core/utils/Utils.lua")
 APR.Debug = noop
 APR.CATEGORIES = { Leveling = "Leveling" }
 APR.PREFAB_TYPES = { StartingZone = "StartingZone" }
-APR.EXPANSIONS.Forever = "Forever"
-dofile("Routes/Forever/Forever-Tirisfal-Glades.lua")
-APR.ActiveRoute = "Forever-10-12-Tirisfal"
+APR.ActiveRoute = "navigation-hint-regression"
+APR.RouteQuestStepList[APR.ActiveRoute] = { steps = {} }
 APRData.player[APR.ActiveRoute] = 14
 route = APR.RouteQuestStepList[APR.ActiveRoute].steps
-assert(route[14].Waypoint == 404 and route[14].Note[1] == "Travel to Brill")
+route[14] = { Waypoint = 404, Note = { "Travel to Brill" } }
 function CreateFrame() return { RegisterEvent = noop, SetScript = noop } end
 function APR:NewModule() return {} end
 dofile("APR-Core/integrations/Farstrider.lua")

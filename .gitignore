@@ -17,3 +17,5 @@ docs/*
 .DS_Store
 **/.cache/*
 **/__pycache__/*
+APR_Mainline.toc
+APR_Camelot.toc

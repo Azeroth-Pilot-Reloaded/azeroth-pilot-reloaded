@@ -6,7 +6,7 @@ local function colorByCompletion(isCompleted, currentStep, stepIndex)
 end
 
 local function getQuestName(questID)
-    return C_QuestLog.GetTitleForQuestID(questID) or UNKNOWN
+    return APR:GetQuestTitle(questID) or UNKNOWN
 end
 
 -- Translate route entries into rows in the hidden render buffer. The window owns

@@ -1,0 +1,41 @@
+name: Validate addon
+
+on:
+  pull_request:
+    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Python
+        uses: actions/setup-python@v7
+        with:
+          python-version: '3.11'
+
+      - name: Install Lua validation dependencies
+        run: |
+          python -m pip install --upgrade pip
+          python -m pip install lupa
+
+      - name: Run Lua validation suite
+        run: python tools/validation/run_lua_tests.py
+
+      - name: Generate client TOCs
+        run: python tools/package/generate_client_tocs.py
+
+      - name: Build verification package
+        uses: BigWigsMods/packager@v2.6.1
+        with:
+          args: -d
+
+      - name: Validate packaged addon
+        run: python tools/validation/check_package.py .release/APR

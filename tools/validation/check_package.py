@@ -16,8 +16,8 @@ def validate_farstrider(root, toc, game):
     manifest = root / entry.replace('[Game]', game)
     includes = [element.attrib['file'].replace('\\', '/') for element in ET.parse(manifest).getroot()]
     flavor = 'Vanilla' if game == 'Camelot' else 'Standard'
-    expected = ['FarstriderLibData.xml', f'libs/FarstriderLibData/Areas/{flavor}/FarstriderLibData_Areas.xml']
-    expected.append(f'libs/FarstriderLibData/Waypoints/{flavor}/FarstriderLibData_Waypoints.xml')
+    expected = ['FarstriderLibData.xml', f'FarstriderLibData/Areas/{flavor}/FarstriderLibData_Areas.xml']
+    expected.append(f'FarstriderLibData/Waypoints/{flavor}/FarstriderLibData_Waypoints.xml')
     expected.append('FarstriderLibData_Finalizer.xml')
     assert includes == expected, f'Wrong Farstrider data or load order for {game}'
     for include in includes:

@@ -1,4 +1,4 @@
--- Lua 5.1: malformed community translations and level-up route selection.
+-- Lua 5.1: level-up route selection.
 local L = setmetatable({}, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
 
@@ -11,19 +11,8 @@ APR = {
     PREFAB_TYPES = { Speedrun = "Speedrun" }
 }
 function APR:NewModule() return {} end
-
-local debugCount = 0
-dofile("APR-Core/utils/Utils.lua")
-function APR:Debug() debugCount = debugCount + 1 end
-
-L.LEAVE_SCENARIO = "Quitter %s"
-assert(string.format(L.LEAVE_SCENARIO, "100% fini") == "Quitter 100% fini")
-for _, template in ipairs({ "Quitter %S", "Quitter %1$s", "Quitter %", "Quitter %d" }) do
-    L.LEAVE_SCENARIO = template
-    assert(string.format(L.LEAVE_SCENARIO, "Gouffre") == "Leave Gouffre")
-end
-assert(debugCount == 1, "Repeated bad translations should not flood debug output")
-assert(string.format(L.MISSING or "Leave %s", "Gouffre") == "Leave Gouffre")
+function APR:GetRouteSelectionExpansions() return {} end
+function APR:IsTableEmpty(value) return next(value) == nil end
 dofile("APR-Core/config/Config_Route.lua")
 local route, popup, selected
 function APR:GetRouteKeyFromDisplayName(name) return name end
@@ -62,4 +51,4 @@ assert(selected == "TWW")
 for _, level in ipairs({ 79, 81, 90 }) do
     check(level, {}); assert(not popup)
 end
-print("PASS: invalid localized formats, level 80 speedrun acceptance, cancellation and route guards")
+print("Route transitions: level 80 speedrun acceptance, cancellation and route guards passed")

@@ -21,7 +21,12 @@ C_Map = {
     GetMapPosFromWorldPos = function(_, pos) return 102, CreateVector2D(pos.x / 10000, pos.y / 10000) end,
 }
 local client = "forever"
-APR = { PlayerID = "player", taxiData = {}, farstrider = { InvalidatePathCache = noop, ScheduleRouteCheck = noop } }
+APR = {
+    PlayerID = "player",
+    GAME_VERSIONS = { Forever = "forever" },
+    taxiData = {},
+    farstrider = { InvalidatePathCache = noop, ScheduleRouteCheck = noop },
+}
 function APR:NewModule() return {} end
 function APR:GetGameVersion() return client end
 function APR:RegisterFontString() end

@@ -192,6 +192,18 @@ function APR:CheckIsInRouteZone()
         return false
     end
 
+    if step.Done and C_QuestLog and C_QuestLog.GetMapForQuestPOIs then
+        for _, questID in ipairs(step.Done) do
+            local poiMapID = C_QuestLog.GetMapForQuestPOIs(questID)
+            if poiMapID and tContains(playerContext.allRelevant, poiMapID) then
+                self:PrintZoneDebug("Matched completed quest POI map - returning TRUE")
+                self._lastRouteZoneCheck = GetTime()
+                self._lastRouteZoneResult = true
+                return true
+            end
+        end
+    end
+
 
     -- Continent check - GATING CHECK (if fails, stop here)
     if not self:CheckContinentMatch(playerContext, stepZones) then
