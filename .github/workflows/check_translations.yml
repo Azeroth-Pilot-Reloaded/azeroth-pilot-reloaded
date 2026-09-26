@@ -13,6 +13,8 @@ on:
 jobs:
   translations:
     runs-on: ubuntu-latest
+    env:
+      CF_API_KEY: ${{ secrets.CF_API_KEY }}
 
     permissions:
       contents: read
@@ -34,11 +36,16 @@ jobs:
 
       - name: Run translation check
         id: translation_check
+        if: env.CF_API_KEY != ''
         continue-on-error: true
-        env:
-          CF_API_KEY: ${{ secrets.CF_API_KEY }}
         run: |
           python .github/scripts/check_translation_string.py --skip-similarity-check
+
+      - name: Skip translation check (missing CF_API_KEY)
+        if: env.CF_API_KEY == ''
+        run: |
+          echo "CF_API_KEY is not available for this run (likely a fork PR)."
+          echo "Skipping CurseForge-backed translation validation."
 
       - name: Post PR comment with report
         if: always() && github.event_name == 'pull_request'
