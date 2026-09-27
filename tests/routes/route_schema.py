@@ -119,6 +119,10 @@ class RouteSchema:
         class_value = enum((*catalog.enums["Classes"].values(),
                             *(key.upper().replace(" ", "") for key in catalog.enums["Classes"])))
         race = union(constants("RACES"), ID)
+        equipped_stat = obj({"slot": SLOT, "stat": TEXT, "value": NUMBER,
+                             "operator": OPERATOR, "precision": COUNT, "allowMissing": BOOL},
+                            required=("slot", "stat", "value"))
+        equipped_item = obj({"slot": SLOT, "itemID": ID, "invert": BOOL}, required=("slot",))
         self.condition_fields = {
             "Faction": enum(("Alliance", "Horde", "Neutral")),
             "Hardcore": BOOL, "AlliedRace": BOOL,
@@ -131,10 +135,8 @@ class RouteSchema:
             "ItemCount": obj({"itemID": ID, "itemIDs": IDS, "count": COUNT,
                               "operator": OPERATOR, "includeBank": BOOL, "includeUsableToys": BOOL},
                              required=("count",), choices=(("itemID", "itemIDs"),)),
-            "EquippedItemStat": obj({"slot": SLOT, "stat": TEXT, "value": NUMBER,
-                                     "operator": OPERATOR, "precision": COUNT, "allowMissing": BOOL},
-                                    required=("slot", "stat", "value")),
-            "EquippedItem": obj({"slot": SLOT, "itemID": ID, "invert": BOOL}, required=("slot",)),
+            "EquippedItemStat": union(equipped_stat, array(equipped_stat, 1)),
+            "EquippedItem": union(equipped_item, array(equipped_item, 1)),
             "Collection": item,
             "Skill": obj({"skill": union(ID, TEXT), "skillID": ID, "name": TEXT,
                           "rank": COUNT, "operator": OPERATOR, "maximum": BOOL},

@@ -101,6 +101,18 @@ class RouteSchemaTests(unittest.TestCase):
                 with self.assertRaises(InvalidRoute):
                     self.schema.condition({"Not": {name: None}}, "condition")
 
+    def test_equipment_lists(self):
+        for name in ("EquippedItem", "EquippedItemStat"):
+            entry = examples()[name]
+            with self.subTest(condition=name):
+                value = seq(entry, {**entry, "slot": 17})
+                self.schema.step({name: value}, "step")
+                self.schema.condition({"AnyOf": seq({"Not": {name: value}})}, "condition")
+                for invalid in ({}, seq({}), seq(entry, {**entry, "slot": 20}),
+                                {2: entry}, {**value, "slot": 16}):
+                    with self.assertRaises(InvalidRoute):
+                        self.schema.condition({name: invalid}, "condition")
+
     def test_nested_objects_reject_unknown_fields(self):
         def mutations(value):
             if isinstance(value, dict):

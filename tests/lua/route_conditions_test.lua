@@ -114,6 +114,33 @@ do
         }))
         assert(not APR:AreConditionalFiltersMet({ EquippedItem = { slot = 16, itemID = 101 } }))
         assert(APR:AreConditionalFiltersMet({ EquippedItem = { slot = 17, invert = true } }))
+        local equipment = { EquippedItem = { { slot = 16, itemID = 100 }, { slot = 17, invert = true } } }
+        assert(APR:AreConditionalFiltersMet(equipment))
+        equipment.EquippedItem[2].invert = false
+        assert(not APR:AreConditionalFiltersMet(equipment), "Every equipped item requirement must pass")
+        assert(APR:AreConditionalFiltersMet({ Not = equipment }))
+        assert(APR:AreConditionalFiltersMet({ AnyOf = { equipment, { EquippedItem = { { slot = 16 } } } } }))
+        assert(not APR:AreConditionalFiltersMet({ EquippedItem = {} }))
+
+        local quality = 6
+        GetInventoryItemQuality = function() return quality end
+        GetItemStats = function() return { ITEM_MOD_DAMAGE_PER_SECOND_SHORT = dps } end
+        dps = 1.84
+        local stats = { EquippedItemStat = {
+            { slot = 16, stat = "QUALITY", operator = "<", value = 7, allowMissing = true },
+            { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 1.9, precision = 1 },
+        } }
+        assert(APR:AreConditionalFiltersMet(stats))
+        quality = 7
+        assert(not APR:AreConditionalFiltersMet(stats), "First list requirement must also pass")
+        quality, dps = 6, 1.86
+        assert(not APR:AreConditionalFiltersMet(stats), "List entries retain precision")
+        quality, dps = nil, nil
+        assert(not APR:AreConditionalFiltersMet(stats), "allowMissing belongs to each entry")
+        stats.EquippedItemStat[2].allowMissing = true
+        assert(APR:AreConditionalFiltersMet({ AllOf = { stats } }))
+        assert(APR:EvaluateRouteConditions(stats))
+        assert(not APR:AreConditionalFiltersMet({ EquippedItemStat = {} }))
         assert(APR:AreConditionalFiltersMet({ DontHaveSpell = { 1, 2 } }))
         known[2] = true
         assert(not APR:AreConditionalFiltersMet({ DontHaveSpell = { 1, 2 } }))
