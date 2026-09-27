@@ -57,6 +57,7 @@ local PREFAB_POPUP_DEFINITIONS = {
         description = L["LEVELING_DESC"],
         unavailableMessage = L["ROUTE_NOT_AVAILABLE_YET"],
         expansions = {
+            APR.EXPANSIONS.Forever,
             APR.EXPANSIONS.TheBurningCrusade,
             APR.EXPANSIONS.WarlordsOfDraenor,
             APR.EXPANSIONS.BattleForAzeroth,
@@ -93,11 +94,13 @@ local function GetRoutePrefabEntry(routeData, prefabType)
 end
 
 local function HasRouteForExpansionAndPrefab(expansionName, prefabType)
-    for _, routeData in pairs(APR.RouteQuestStepList or {}) do
+    for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
+        local entry = GetRoutePrefabEntry(routeData, prefabType)
         if type(routeData) == "table"
             and routeData.expansion == expansionName
             and routeData.label
-            and GetRoutePrefabEntry(routeData, prefabType) then
+            and entry and APR:AreConditionalFiltersMet(entry.conditions)
+            and APR:GetRouteVisibility(routeKey) ~= "hidden" then
             return true
         end
     end
@@ -157,7 +160,8 @@ local function BuildExpansionPrefabFromRoutes(routeConfig, expansionName, prefab
     for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
         if type(routeData) == "table" and routeData.expansion == expansionName and routeData.label then
             local prefabEntry = GetRoutePrefabEntry(routeData, prefabType)
-            if prefabEntry and APR:GetRouteVisibility(routeKey) ~= "hidden" then
+            if prefabEntry and APR:GetRouteVisibility(routeKey) ~= "hidden"
+                and APR:AreConditionalFiltersMet(prefabEntry.conditions) then
                 tinsert(routeCandidates, {
                     routeKey = routeKey,
                     routeName = routeData.label,
@@ -195,7 +199,8 @@ local function BuildPrefabPopupOptions(definition)
         local requiredLevel = definition.requiredLevels and definition.requiredLevels[expansionName]
         local isLevelLocked = requiredLevel and APR.Level < requiredLevel
 
-        if definition.showUnavailable or hasRoute then
+        local compatible = APR:IsRouteCompatibleWithClient({ expansion = expansionName })
+        if compatible and (definition.showUnavailable or hasRoute) then
             local option = {
                 key = expansionName,
                 label = GetExpansionDisplayName(expansionName),
@@ -258,19 +263,23 @@ local function HasStartingZoneRouteForMap(parentMapID, prefabType)
 end
 
 local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parentMapID, suppressUpdate)
+    if not parentMapID then
+        return false
+    end
+
     local routeCandidates = {}
     local startingZonePrefabType = prefabType or APR.PREFAB_TYPES.StartingZone
 
     for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
-        if type(routeData) == "table" and routeData.label and APR:GetRouteVisibility(routeKey) ~= "hidden" then
+        if type(routeData) == "table" and routeData.label
+            and APR:GetRouteVisibility(routeKey) ~= "hidden"
+            and (routeData.mapID == parentMapID or RouteHasZoneCondition(routeData, parentMapID)) then
             local prefabEntry = GetRoutePrefabEntry(routeData, startingZonePrefabType)
             if prefabEntry then
                 tinsert(routeCandidates, {
                     routeKey = routeKey,
                     routeName = routeData.label,
                     index = prefabEntry.index,
-                    mapMatch = parentMapID and
-                        (routeData.mapID == parentMapID or RouteHasZoneCondition(routeData, parentMapID)) or false,
                 })
             end
         end
@@ -280,20 +289,7 @@ local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parent
         return false
     end
 
-    local hasMapMatchedCandidates = false
-    if parentMapID then
-        for _, candidate in ipairs(routeCandidates) do
-            if candidate.mapMatch then
-                hasMapMatchedCandidates = true
-                break
-            end
-        end
-    end
-
     table.sort(routeCandidates, function(a, b)
-        if hasMapMatchedCandidates and a.mapMatch ~= b.mapMatch then
-            return a.mapMatch and not b.mapMatch
-        end
         if a.index == b.index then
             return a.routeKey < b.routeKey
         end
@@ -303,8 +299,7 @@ local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parent
     local addedAny = false
     local addedRouteNames = {}
     for _, candidate in ipairs(routeCandidates) do
-        if (not hasMapMatchedCandidates or candidate.mapMatch)
-            and not addedRouteNames[candidate.routeName] then
+        if not addedRouteNames[candidate.routeName] then
             AddRouteToCustomPath(candidate.routeName, candidate.routeKey)
             addedRouteNames[candidate.routeName] = true
             addedAny = true
@@ -360,6 +355,9 @@ local function FindConditionBasedStartingRouteKey(parentMapID, requireMapMatch)
 end
 
 function APR.routeconfig:GetSpeedRunPrefab()
+    if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
+        return self:BuildLevelingPrefab(APR.EXPANSIONS.Forever)
+    end
     self._isBuildingSpeedrunPrefab = true
 
     self:GetStartingZonePrefab()
@@ -418,7 +416,7 @@ function APR.routeconfig:BuildLevelingPrefab(expansion)
     end
 
     APRCustomPath[APR.PlayerID] = {}
-    self:GetStartingZonePrefab(true)
+    if expansion ~= APR.EXPANSIONS.Forever then self:GetStartingZonePrefab(true) end
 
     if not BuildExpansionPrefabFromRoutes(self, expansion, definition.prefabType, true) then
         APR.questionDialog:CreateMessagePopup(definition.unavailableMessage, OKAY)
@@ -470,17 +468,24 @@ function APR.routeconfig:GetStartingZonePrefab(suppressUpdate, prefabType)
 
     local shouldResolveStartingZone = HasStartingZoneRouteForMap(parentMapID, prefabType) or isNewCharacterStartFlow
 
-    if shouldResolveStartingZone and BuildStartingZonePrefabFromRoutes(self, prefabType, parentMapID, suppressUpdate) then
-        return
-    end
-
     if shouldResolveStartingZone then
-        local routeKey = FindConditionBasedStartingRouteKey(parentMapID, parentMapID ~= nil)
-            or FindConditionBasedStartingRouteKey(parentMapID, false)
+        -- Forever's generated starters are explicit; other race/class variants
+        -- on the same map must not replace the recommended starting prefab.
+        if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever
+            and BuildStartingZonePrefabFromRoutes(self, prefabType, parentMapID, suppressUpdate) then
+            return
+        end
+
+        -- Race/class starts can share a map with generic routes and need priority.
+        local routeKey = parentMapID and FindConditionBasedStartingRouteKey(parentMapID, true)
         local routeData = routeKey and APR:GetRouteData(routeKey)
         if routeData and routeData.label then
             AddRouteToCustomPath(routeData.label, routeKey)
             self:SendCustomPathUpdate(suppressUpdate)
+            return
+        end
+
+        if BuildStartingZonePrefabFromRoutes(self, prefabType, parentMapID, suppressUpdate) then
             return
         end
     end
@@ -489,8 +494,10 @@ function APR.routeconfig:GetStartingZonePrefab(suppressUpdate, prefabType)
 end
 
 function APR.routeconfig:GetPlayerSpecRoute(prefix)
-    local routeKey = prefix .. " - " .. APR:GetClassSpecName()
-    if APR.RouteQuestStepList[routeKey] then
+    local specName = APR:GetClassSpecName()
+    if not specName then return end
+    local routeKey = prefix .. " - " .. specName
+    if APR:GetRouteVisibility(routeKey) ~= "hidden" then
         AddRouteToCustomPath(L[routeKey])
     end
 end

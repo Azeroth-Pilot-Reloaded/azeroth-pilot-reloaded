@@ -410,7 +410,7 @@ end
 function APR:ShouldHideFrames()
     return not self.settings.profile.currentStepShow or
         not self.settings.profile.enableAddon or
-        C_PetBattles.IsInBattle() or
+        APR:IsPetBattleActive() or
         not self:IsInstanceWithUI()
 end
 
@@ -674,7 +674,8 @@ function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, ba
     self:RegisterFontString(font, textScope or "general", {
         role = role,
         onApplied = function(fontString)
-            container:SetHeight(fontString:GetStringHeight() + 10)
+            container:SetHeight(container.progressBarOnly and 30 or
+                (fontString:GetStringHeight() + 10 + (container.extraContentHeight or 0)))
         end,
     })
 

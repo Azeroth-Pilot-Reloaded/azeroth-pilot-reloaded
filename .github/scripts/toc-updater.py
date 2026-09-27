@@ -24,6 +24,10 @@ X_INTERFACE_LINE_PATTERN = re.compile(
     r"^(?P<prefix>## X-Interface:[ \t]*)(?P<value>[^\r\n]*)(?P<ending>\r?\n|$)",
     re.MULTILINE,
 )
+RETAIL_INTERFACE_LINE_PATTERN = re.compile(
+    r"^(?P<prefix>## Interface-Retail:[ \t]*)(?P<value>[^\r\n]*)(?P<ending>\r?\n|$)",
+    re.MULTILINE,
+)
 
 LIVE_PRODUCTS = ("wow",)
 PTR_PRODUCTS = ("wowt", "wowxptr")
@@ -125,13 +129,27 @@ def update_toc_content(content: str, discovered: Iterable[int]) -> str:
         raise ValueError(f"Invalid ## X-Interface value: {x_interface_value!r}")
 
     merged = existing | discovered_versions
+    if RETAIL_INTERFACE_LINE_PATTERN.search(content):
+        # The fallback TOC has one client family. Other clients keep their own
+        # metadata, otherwise packager cannot resolve version-* TOC sections.
+        other_versions: set[int] = set()
+        for client, value in re.findall(r"^## Interface-([^:]+):[ \t]*([^\r\n]+)", content, re.MULTILINE):
+            if client.lower() != "retail":
+                other_versions.update(parse_interface_list(value))
+        if discovered_versions & other_versions:
+            raise ValueError("A non-Retail interface cannot be added by the Retail TOC updater")
+        merged.difference_update(other_versions)
     interface_value = ", ".join(str(version) for version in sorted(merged))
 
     # Replace the later match first so offsets for the earlier one remain valid.
-    replacements = (
+    replacements = [
         (interface_match, interface_value),
         (x_interface_match, str(max(merged))),
-    )
+    ]
+    if RETAIL_INTERFACE_LINE_PATTERN.search(content):
+        retail_match = find_single_line(RETAIL_INTERFACE_LINE_PATTERN, content, "## Interface-Retail")
+        retail_versions = (parse_interface_list(retail_match.group("value")) | merged) - other_versions
+        replacements.append((retail_match, ", ".join(str(v) for v in sorted(retail_versions))))
     for match, value in sorted(
         replacements, key=lambda replacement: replacement[0].start(), reverse=True
     ):

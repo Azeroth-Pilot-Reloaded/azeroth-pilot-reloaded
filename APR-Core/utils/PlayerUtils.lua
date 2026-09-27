@@ -1,6 +1,88 @@
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+--- Client family, independent of expansion names used by route categories.
+function APR:GetGameVersion()
+    local interfaceVersion = tonumber(self.interfaceVersion) or
+        (GetBuildInfo and tonumber((select(4, GetBuildInfo())))) or 0
+    if interfaceVersion >= 16000 and interfaceVersion < 17000 then
+        return APR.GAME_VERSIONS.Forever
+    end
+    if interfaceVersion >= 100000 then
+        return APR.GAME_VERSIONS.Retail
+    end
+    return APR.GAME_VERSIONS.Classic
+end
+
+function APR:IsPetBattleActive()
+    return C_PetBattles and C_PetBattles.IsInBattle and C_PetBattles.IsInBattle() or false
+end
+
+function APR:IsHardcoreCharacter()
+    return C_GameRules and C_GameRules.IsHardcoreActive and C_GameRules.IsHardcoreActive() or false
+end
+
+--- Numeric comparisons shared by resource and equipment route filters.
+function APR:CompareRouteNumber(actual, operator, expected)
+    actual, expected = tonumber(actual), tonumber(expected)
+    if not actual or not expected then return false end
+    if operator == "<" then return actual < expected end
+    if operator == "<=" then return actual <= expected end
+    if operator == ">" then return actual > expected end
+    if operator == ">=" then return actual >= expected end
+    if operator == "==" then return actual == expected end
+    if operator == "~=" then return actual ~= expected end
+    return false
+end
+
+function APR:MeetsItemCount(requirement)
+    local getCount = C_Item and C_Item.GetItemCount or GetItemCount
+    if not getCount then return false end
+    local ids = requirement.itemIDs or { requirement.itemID }
+    local total = 0
+    for _, id in ipairs(ids) do
+        local count = getCount(id, requirement.includeBank == true) or 0
+        if count == 0 and requirement.includeUsableToys and PlayerHasToy and C_ToyBox and C_ToyBox.IsToyUsable
+            and PlayerHasToy(id) and C_ToyBox.IsToyUsable(id) then
+            count = 1
+        end
+        total = total + count
+    end
+    return self:CompareRouteNumber(total, requirement.operator or ">=", requirement.count)
+end
+
+function APR:MeetsEquippedItemStat(requirement)
+    local slot, stat, value = requirement.slot, requirement.stat
+    if stat == "QUALITY" and GetInventoryItemQuality then
+        value = GetInventoryItemQuality("player", slot)
+    elseif stat == "LEVEL" and GetInventoryItemID then
+        local itemID = GetInventoryItemID("player", slot)
+        local getInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
+        if itemID and getInfo then value = select(4, getInfo(itemID)) end
+    else
+        local getStats = C_Item and C_Item.GetItemStats or GetItemStats
+        local link = GetInventoryItemLink and GetInventoryItemLink("player", slot)
+        local stats = link and getStats and getStats(link)
+        value = stats and stats[stat]
+    end
+    if value == nil then return requirement.allowMissing == true end
+    if requirement.precision and type(value) == "number" then
+        local scale = 10 ^ requirement.precision
+        value = math.floor(value * scale + 0.5) / scale
+    end
+    return self:CompareRouteNumber(value, requirement.operator or "==", requirement.value)
+end
+
+function APR:GetPlayerMaxLevel()
+    if GetMaxLevelForPlayerExpansion then
+        return GetMaxLevelForPlayerExpansion()
+    end
+    if GetMaxPlayerLevel then
+        return GetMaxPlayerLevel()
+    end
+    return self:GetGameVersion() == APR.GAME_VERSIONS.Retail and 90 or 60
+end
+
 --- Check if a spell is known by the player (supports both classic and retail APIs).
 -- We keep the dual API call path so the add-on works on multiple client versions without crashing.
 function APR:IsSpellKnown(spellID)
@@ -35,20 +117,20 @@ end
 --- Detect Remix-specific characters based on the dedicated aura.
 -- This stays separated from general aura logic because it is strictly tied to the Remix event.
 function APR:IsRemixCharacter()
-    local aura = C_UnitAuras.GetPlayerAuraBySpellID(1232454) or
-        C_UnitAuras.GetPlayerAuraBySpellID(1213439) -- SpellID for "Remix" buff
-    return aura ~= nil
+    return self:HasAura(1232454) or self:HasAura(1213439)
 end
 
 --- Check whether the player has completed a given achievement.
 -- This stays here because it is purely about player state rather than quest steps.
 function APR:HasAchievement(achievementID)
+    if not _G.GetAchievementInfo then return false end
     local _, _, _, completed = _G.GetAchievementInfo(achievementID)
     return completed
 end
 
 --- Lightweight aura presence check for the player.
 function APR:HasAura(spellID)
+    if not C_UnitAuras or not C_UnitAuras.GetPlayerAuraBySpellID then return false end
     local aura = C_UnitAuras.GetPlayerAuraBySpellID(spellID)
     return aura ~= nil
 end
@@ -84,6 +166,13 @@ end
 local function GetStandardReputationProgress(factionID, targetLevel)
     local getFactionData = C_Reputation and C_Reputation.GetFactionDataByID
     local factionData = SafeReputationAPICall(getFactionData, factionID)
+    if not factionData and GetFactionInfoByID then
+        local ok, name, _, reaction, minimum, maximum, standing = pcall(GetFactionInfoByID, factionID)
+        if ok and name then
+            factionData = { name = name, reaction = reaction, currentReactionThreshold = minimum,
+                nextReactionThreshold = maximum, currentStanding = standing }
+        end
+    end
     if not factionData then
         return nil
     end
@@ -94,6 +183,9 @@ local function GetStandardReputationProgress(factionID, targetLevel)
         type = APR.REPUTATION_TYPE.Standard,
         name = factionData.name,
         currentLevel = tonumber(factionData.reaction),
+        currentValue = tonumber(factionData.currentStanding),
+        minimumValue = tonumber(factionData.currentReactionThreshold),
+        maximumValue = tonumber(factionData.nextReactionThreshold),
     }
 end
 
@@ -117,6 +209,9 @@ local function GetRenownReputationProgress(factionID, targetLevel)
         name = majorFactionData.name,
         currentLevel = currentLevel,
         maxLevel = tonumber(majorFactionData.maxLevel),
+        currentValue = tonumber(majorFactionData.renownReputationEarned),
+        minimumValue = 0,
+        maximumValue = tonumber(majorFactionData.renownLevelThreshold),
     }
 end
 
@@ -144,6 +239,9 @@ local function GetFriendshipReputationProgress(factionID, targetLevel)
         currentLevel = friendshipRanks and tonumber(friendshipRanks.currentLevel) or nil,
         maxLevel = friendshipRanks and tonumber(friendshipRanks.maxLevel) or nil,
         currentLabel = friendshipData.reaction,
+        currentValue = tonumber(friendshipData.standing),
+        minimumValue = tonumber(friendshipData.reactionThreshold),
+        maximumValue = tonumber(friendshipData.nextThreshold),
     }
 end
 
@@ -253,6 +351,20 @@ function APR:GetReputationStepText(requirement)
     local targetLabel = self:GetReputationLevelLabel(progress, targetLevel)
 
     return string.format("%s: %s - %s", reputationLabel, factionName, targetLabel)
+end
+
+--- Progress within the current standing/rank, using the same data as step completion.
+--- Unknown or capped ranges have no measurable bar; do not invent a zero total.
+function APR:GetReputationBarProgress(requirement)
+    local progress = self:GetReputationRequirement(requirement)
+    if not progress or not progress.currentValue or not progress.minimumValue or not progress.maximumValue then
+        return nil
+    end
+    local total = progress.maximumValue - progress.minimumValue
+    if total <= 0 then return nil end
+    local current = math.max(0, math.min(progress.currentValue - progress.minimumValue, total))
+    local label = progress.currentLabel or self:GetReputationLevelLabel(progress, progress.currentLevel)
+    return current, total, string.format("%s: %d / %d (%d%%)", label, current, total, math.floor(current / total * 100))
 end
 
 --- Uses a glider item if available in the player's inventory.

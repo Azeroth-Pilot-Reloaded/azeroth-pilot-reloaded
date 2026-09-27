@@ -19,7 +19,7 @@ APR.Arrow.x = 0
 APR.Arrow.y = 0
 APR.Arrow.Distance = 0
 APR.Arrow.QuestStepDistance = 0
-APR.Arrow.MaxDistanceWrongZone = 10000
+APR.Arrow.MaxDistanceWrongZone = APR:GetGameVersion() == APR.GAME_VERSIONS.Forever and 1000 or 10000
 APR.Arrow.isWrongZoneDistance = false
 APR.Arrow.arrowUpdateRate = 0
 APR.Arrow.frameTicker = 0
@@ -65,7 +65,7 @@ local function ShouldShowArrow()
     if not APR.settings.profile.showArrow then return false end
     if not APR.Arrow.Active then return false end
     if APR.Arrow.x == 0 then return false end
-    if C_PetBattles.IsInBattle() then return false end
+    if APR:IsPetBattleActive() then return false end
     if not APR:IsInstanceWithUI() then return false end
     return true
 end

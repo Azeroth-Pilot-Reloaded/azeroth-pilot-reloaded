@@ -104,7 +104,7 @@ function APR:InitRouteTriggersSuggestion()
 
     for i = 1, #routeKeys do
         local routeKey = routeKeys[i]
-        local routeData = APR.RouteQuestStepList[routeKey]
+        local routeData = APR:GetRouteData(routeKey)
         if not (type(routeData) == "table" and (APR:IsDelveRoute(routeKey) or routeData.temporary or routeData.hiddenFromSelection)) then
             local stepList = routeData and routeData.steps
             local skippedSteps = 0
@@ -146,6 +146,7 @@ function APR:ActivateRouteFromTemporaryTrigger(routeKey)
     APRCustomPath[self.PlayerID][1] = routeName
 
     APR.ActiveRoute = routeKey
+    if APR.XPBuffOverlay then APR.XPBuffOverlay:QueueRefresh() end
     APRData[self.PlayerID][routeKey] = APRData[self.PlayerID][routeKey] or 1
     APRData[self.PlayerID][routeKey .. "-SkippedStep"] = APRData[self.PlayerID][routeKey .. "-SkippedStep"] or 0
 

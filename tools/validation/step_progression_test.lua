@@ -1,6 +1,7 @@
 -- Exercise the real skip, QpartPart completion and update dispatcher without WoW.
 local function noop() end
-function LibStub() return { GetLocale = function() return {} end } end
+local L = { TEST_HINT = "[COLOR:#00ff00]Localized hint" }
+function LibStub() return { GetLocale = function() return L end } end
 function UnitIsDeadOrGhost() return false end
 local now, timers = 0, {}
 function debugprofilestop() return now end
@@ -76,5 +77,69 @@ assert(not APR.stepUpdateRunning, "Errors release the reentrancy guard")
 APR.ResetMissingQuests = reset
 APR:UpdateStep()
 print("Step progression: Note skip + 1250 completed objectives; bounded batches, cancellation and error recovery passed")
+
+-- Reproduce the reported Forever step through Farstrider's real UI refresh.
+dofile("APR-Core/utils/Utils.lua")
+APR.Debug = noop
+APR.CATEGORIES = { Leveling = "Leveling" }
+APR.PREFAB_TYPES = { StartingZone = "StartingZone" }
+APR.EXPANSIONS.Forever = "Forever"
+dofile("Routes/Forever/Forever-Tirisfal-Glades.lua")
+APR.ActiveRoute = "Forever-10-12-Tirisfal"
+APRData.player[APR.ActiveRoute] = 14
+route = APR.RouteQuestStepList[APR.ActiveRoute].steps
+assert(route[14].Waypoint == 404 and route[14].Note[1] == "Travel to Brill")
+function CreateFrame() return { RegisterEvent = noop, SetScript = noop } end
+function APR:NewModule() return {} end
+dofile("APR-Core/integrations/Farstrider.lua")
+APR.farstrider.ScheduleRouteCheck = noop
+APR.farstrider.showOutOfZoneStepContent = true
+APR.IsInRouteZone = false
+APR.currentStep.RemoveStepContentPreservingNavigationUi = noop
+APR.currentStep.Reset = noop
+APR.currentStep.UpdateStepButtonCooldowns = noop
+APR.CheckWaypointText = function() return "Waypoint" end
+
+local hints, hintKeys = {}, {}
+function APR.currentStep:AddExtraLineText(key, text, color)
+    assert(type(key) == "string" and type(text) == "string")
+    assert(not key:find("table:", 1, true) and not text:find("table:", 1, true))
+    if key:find("ExtraLineText", 1, true) or key:match("^NOTE_") then
+        assert(not hintKeys[key], "Each rendered hint needs its own key")
+        hintKeys[key] = true
+        hints[#hints + 1] = { key = key, text = text, color = color }
+    end
+end
+local function refreshHints()
+    hints, hintKeys = {}, {}
+    APR.farstrider:RefreshStepForNavigation()
+    assert(not APR.stepUpdateRunning and not APR.stepUpdatePending)
+end
+refreshHints()
+assert(#hints == 1 and hints[1].text == "Travel to Brill")
+assert(APRData.player[APR.ActiveRoute] == 14, "Showing travel hints must not advance the quest step")
+local firstKey = hints[1].key
+refreshHints()
+assert(hints[1].key == firstKey, "Refreshing the same hint keeps a stable UI key")
+
+-- Lists and legacy numbered scalar fields both preserve localization and color.
+local originalStep = route[14]
+route[14] = { Waypoint = 404, NonSkippableWaypoint = true,
+    ExtraLineText = { "TEST_HINT", "Second hint", "", "Second hint" },
+    ExtraLineText2 = "[COLOR:#ff0000]Final hint" }
+for _, inZone in ipairs({ false, true }) do
+    APR.IsInRouteZone = inZone
+    refreshHints()
+    assert(#hints == 4)
+    assert(hints[1].text == "Localized hint" and hints[1].color == "00ff00")
+    assert(hints[2].text == "Second hint" and hints[3].text == "Second hint")
+    assert(hints[4].text == "Final hint" and hints[4].color == "ff0000")
+end
+APR.IsInRouteZone = false
+APR.farstrider.showOutOfZoneStepContent = false
+refreshHints()
+assert(#hints == 0, "Hidden step details must not leak hints")
+route[14] = originalStep
+print("Extra line text: actual Tirisfal step 14, navigation refresh, lists, legacy fields, colors and visibility passed")
 
 -- Global War Mode reminder coverage lives in xp_overlay_persistence_test.lua.

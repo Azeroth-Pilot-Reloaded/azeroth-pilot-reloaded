@@ -62,6 +62,9 @@ end
 APR.QuestPool = APR.QuestPool or { ids = {} }
 
 function APR:AcceptQuest()
+    local data = APRData and APRData[self.PlayerID]
+    local options = data and self.ActiveRoute and self:GetStep(data[self.ActiveRoute])
+    if options and options.NoAutoAccept then return end
     AcceptQuest()
 end
 
@@ -496,6 +499,16 @@ function APR:TrigTextValueMatch(trigValue, objectiveText, currentPercent)
         end
     end
 
+    -- Partial source objectives may not provide a verified total. "X/" means
+    -- at least X in the displayed counter, using the existing TrigText field.
+    local threshold = trigStr:match("^(%d+)/$")
+    if threshold then
+        for current in tostring(objectiveText):gmatch("(%d+)%s*/%s*%d+") do
+            if tonumber(current) >= tonumber(threshold) then return true end
+        end
+        return false
+    end
+
     -- Ratio comparison: "X/Y" matches when objective shows "A/Y" with A >= X
     local trigNum, trigDenom = trigStr:match("^(%d+)/(%d+)$")
     if trigNum and trigDenom then
@@ -621,6 +634,23 @@ function APR:IsScenarioTrigTextMatched(step, scenario)
     end
 
     return false
+end
+
+--- Returns a percentage only for a progress-bar objective in an active quest.
+function APR:GetQuestObjectiveProgressPercent(questId, objectiveId)
+    questId, objectiveId = tonumber(questId), tonumber(objectiveId)
+    local quest = questId and self.ActiveQuests and self.ActiveQuests[questId]
+    if not quest or not quest.objectives or not quest.objectives[objectiveId]
+        or not C_QuestLog or not C_QuestLog.GetQuestObjectives then
+        return nil
+    end
+
+    local objectives = C_QuestLog.GetQuestObjectives(questId)
+    local objective = objectives and objectives[objectiveId]
+    if not objective or objective.type ~= "progressbar" then return nil end
+
+    local percent = GetQuestProgressPercentSafe(questId)
+    if percent then return math.max(0, math.min(100, percent)) end
 end
 
 --- Retrieves the quest text associated with a specific progress bar objective.

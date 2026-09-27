@@ -5,6 +5,12 @@ APR.QUEST_STATUS = {
     PROGRESS = "IN_PROGRESS",
 }
 
+APR.GAME_VERSIONS = {
+    Retail = "retail",
+    Classic = "classic",
+    Forever = "forever",
+}
+
 APR.REPUTATION_STANDING = {
     Hated = 1,
     Hostile = 2,
@@ -23,6 +29,7 @@ APR.REPUTATION_TYPE = {
 }
 
 APR.EXPANSIONS = {
+    Forever = "WoW Forever",
     Vanilla = "Vanilla",
     TheBurningCrusade = "The Burning Crusade",
     WrathOfTheLichKing = "Wrath of the Lich King",
@@ -39,6 +46,7 @@ APR.EXPANSIONS = {
 }
 
 APR.EXPANSION_ORDER_KEYS = {
+    "Forever",
     "Vanilla",
     "TheBurningCrusade",
     "WrathOfTheLichKing",
@@ -109,9 +117,11 @@ APR.RACES = {
     Vulpera = "Vulpera",
     ZandalariTroll = "ZandalariTroll",
     -- Neutral
+    Pandaren = "Pandaren",
     Dracthyr = "Dracthyr",
     EarthenDwarf = "EarthenDwarf",
-    Harronir = "Harronir"
+    Harronir = "Harronir",
+    Skyborne = "Skyborne",
 }
 
 function APR:GetEnumKeyByValue(enum, value)

@@ -94,7 +94,7 @@ function APR.heirloom:RefreshFrameAnchor()
     end
     self._pendingCombatRefresh = false
 
-    if APR:GetHeirloomWarning() or not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or APR:IsRemixCharacter() then
+    if not C_Heirloom or not C_ToyBox or APR:GetHeirloomWarning() or not APR.settings.profile.enableAddon or APR:IsPetBattleActive() or APR:IsRemixCharacter() then
         HeirloomPanel:Hide()
         return
     end

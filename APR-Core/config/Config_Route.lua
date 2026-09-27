@@ -230,13 +230,7 @@ local PREFAB_ACTION_DEFINITIONS = {
     },
 }
 
-local ROUTE_TAB_EXPANSION_VALUES = {}
-for _, expansionKey in ipairs(APR.EXPANSION_ORDER_KEYS or {}) do
-    local expansionName = APR.EXPANSIONS[expansionKey]
-    if expansionName then
-        tinsert(ROUTE_TAB_EXPANSION_VALUES, expansionName)
-    end
-end
+local ROUTE_TAB_EXPANSION_VALUES = APR:GetRouteSelectionExpansions()
 
 local function GetRouteStatusText(fileName, routeName)
     if APRZoneCompleted[APR.PlayerID][routeName] then
@@ -1064,6 +1058,14 @@ end
 function APR.routeconfig:InitRouteConfig()
     EnsurePrefabWrappedButtonWidget()
 
+    -- Catalog changes need not reset the active step or restart navigation.
+    APR.routeconfig:RegisterMessage("APR_Route_Catalog_Update", function()
+        if APR.OptionsRoute:IsVisible() then
+            SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
+            SetRouteListTab(tabRouteListWidget, currentTabName)
+        end
+    end)
+
     APR.routeconfig:RegisterMessage("APR_Custom_Path_Update", function()
         if APR.OptionsRoute:IsVisible() then
             SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
@@ -1078,6 +1080,7 @@ function APR.routeconfig:InitRouteConfig()
 
         local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
         APR.ActiveRoute = routeFileName
+        APR.XPBuffOverlay:QueueRefresh()
 
         APR:UpdateMapId()
         APR:UpdateStep()
@@ -1129,6 +1132,7 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
     APR:Debug("Function: APR.routeconfig:CheckIsCustomPathEmpty()")
     if not self:HasRouteInCustomPaht() then
         APR.ActiveRoute = nil
+        APR.XPBuffOverlay:QueueRefresh()
         APR.currentStep:Reset()
         APR.Buff:RemoveAllBuffIcon()
         APR.currentStep:AddExtraLineText("NO_ROUTE", L["NO_ROUTE"])

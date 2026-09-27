@@ -624,6 +624,7 @@ function APR.settings:createBlizzOptions()
                                 get = GetProfileOption,
                                 set = function(info, value)
                                     SetProfileOption(info, value)
+                                    if value then APR.settings.profile.xpBuffOverlayDismissed = nil end
                                     APR.XPBuffOverlay:Refresh()
                                 end,
                             },

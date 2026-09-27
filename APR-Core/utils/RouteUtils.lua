@@ -17,6 +17,7 @@ function APR:ResetRoute(targetedRoute)
     APRData[self.PlayerID][targetedRoute] = 1
     APRData[self.PlayerID][targetedRoute .. '-SkippedStep'] = 0
     APRData[self.PlayerID][targetedRoute .. '-ParallelStepsState'] = nil
+    self.routeActionState = nil
     self:GetTotalSteps(targetedRoute)
     APRData[self.PlayerID][targetedRoute .. '-RawTotalSteps'] = self:GetRawStepCount(targetedRoute)
     if self.InvalidateEffectiveRouteStepsCache then
@@ -284,30 +285,57 @@ function APR:OverrideRouteData()
     end
 end
 
---- Add custom routes stored in saved variables to the live route table.
---- AprRC (Route Recorder) stores flat step arrays in APRData.CustomRoute.
---- This wraps them into the new self-describing format.
+local function CopyCustomRouteData(value)
+    if type(value) ~= "table" then return value end
+    local result = {}
+    for key, entry in pairs(value) do result[key] = CopyCustomRouteData(entry) end
+    return result
+end
+
+local function NormalizeCustomRoute(name, data)
+    if type(data) ~= "table" then return nil end
+    if data.steps ~= nil and type(data.steps) ~= "table" then return nil end
+    -- Preserve the full definition, including future metadata, and detach playback
+    -- from SavedVariables: runtime step changes must never alter the saved route.
+    local route = (data.steps or data.scenarios) and CopyCustomRouteData(data) or { steps = CopyCustomRouteData(data) }
+    route.label = route.label or name:match("%d+%-(.*)") or name
+    route.expansion = route.expansion or APR.EXPANSIONS.Custom
+    route.category = route.category or APR.CATEGORIES.Miscellaneous
+    route.conditions = route.conditions or {}
+    return route
+end
+
+--- Register a saved custom definition and refresh consumers once per frame.
+function APR:RegisterCustomRoute(name, data)
+    if type(name) ~= "string" or name == "" or not APRData then return false end
+    local route = NormalizeCustomRoute(name, data)
+    if not route then return false end
+    APRData.CustomRoute = APRData.CustomRoute or {}
+    APRData.CustomRoute[name] = CopyCustomRouteData(data)
+    self.RouteQuestStepList[name] = route
+    if self.InvalidateEffectiveRouteStepsCache then self:InvalidateEffectiveRouteStepsCache(name) end
+    self._customRouteActiveChanged = self._customRouteActiveChanged or self.ActiveRoute == name
+    if not self._customRouteUpdatePending then
+        self._customRouteUpdatePending = true
+        C_Timer.After(0, function()
+            self._customRouteUpdatePending = nil
+            local activeChanged = self._customRouteActiveChanged
+            self._customRouteActiveChanged = nil
+            if self.routeconfig then
+                self.routeconfig:SendMessage(activeChanged and "APR_Custom_Path_Update" or "APR_Route_Catalog_Update")
+            end
+        end)
+    end
+    return true
+end
+
+--- Accept both complete definitions and legacy flat arrays from the recorder.
 function APR:LoadCustomRoutes()
-    for name, data in pairs(APRData.CustomRoute) do
-        -- Guard: if data is already wrapped (has .steps), use it directly
-        if type(data) == "table" and data.steps then
-            self.RouteQuestStepList[name] = {
-                label = data.label or name:match("%d+%-(.*)") or name,
-                expansion = data.expansion or APR.EXPANSIONS.Custom,
-                category = data.category or APR.CATEGORIES.Miscellaneous,
-                conditions = data.conditions or {},
-                parallelSteps = data.parallelSteps,
-                steps = data.steps,
-            }
-        else
-            -- Legacy flat step array from AprRC
-            self.RouteQuestStepList[name] = {
-                label = name:match("%d+%-(.*)") or name,
-                expansion = APR.EXPANSIONS.Custom,
-                category = APR.CATEGORIES.Miscellaneous,
-                conditions = {},
-                steps = data,
-            }
+    for name, data in pairs(APRData.CustomRoute or {}) do
+        local route = type(name) == "string" and NormalizeCustomRoute(name, data)
+        if route then
+            self.RouteQuestStepList[name] = route
+            if self.InvalidateEffectiveRouteStepsCache then self:InvalidateEffectiveRouteStepsCache(name) end
         end
     end
 end
@@ -411,7 +439,7 @@ function APR:GetLevelConsumableReminders(profileName)
         table.sort(sources)
     end
     local level = UnitLevel("player")
-    if level >= GetMaxLevelForPlayerExpansion() then return result end
+    if level >= APR:GetPlayerMaxLevel() then return result end
     for _, name in ipairs(sources) do
         local source = self.LevelBonusSources[name]
         assert(source, "Unknown level bonus source: " .. tostring(name))
@@ -460,12 +488,34 @@ function APR:RefreshLevelProfileTargets()
 end
 
 function APR:ResolveLevelRequirement(value)
+    if type(value) == "table" then
+        local level, xp = tonumber(value.level), tonumber(value.xp)
+        assert(level and level >= 1 and level < math.huge and level == math.floor(level)
+            and xp and math.abs(xp) < math.huge and xp == math.floor(xp),
+            "Invalid absolute XP requirement: expected { level = integer, xp = integer }")
+        if xp == 0 then return level end
+        local baseLevel = xp < 0 and level - 1 or level
+        local playerLevel = UnitLevel("player") or self.Level or 0
+        if playerLevel ~= baseLevel then return baseLevel end
+        local maxXP = UnitXPMax and UnitXPMax("player") or 0
+        -- Do not complete a partially loaded threshold until the XP total is known.
+        if not maxXP or maxXP <= 0 then return baseLevel + 1 end
+        local requiredXP = xp < 0 and maxXP + xp or xp
+        return baseLevel + math.max(0, math.min(requiredXP / maxXP, 1))
+    end
     local numeric = tonumber(value)
     if numeric or type(value) ~= "string" then return numeric end
     return self:GetLevelProfileTarget(value)
 end
 
 function APR:GetGrindStepText(value)
+    if type(value) == "table" then
+        self:ResolveLevelRequirement(value) -- Validate the same structure used for progression.
+        local level, xp = tonumber(value.level), tonumber(value.xp)
+        local text = string.format(L["GRIND"], level)
+        if xp == 0 then return text end
+        return text .. string.format(xp < 0 and " - %d XP" or " + %d XP", math.abs(xp))
+    end
     local target = self:ResolveLevelRequirement(value)
     local text = string.format(L["GRIND"], math.floor(target))
     local progress = (target - math.floor(target)) * 100
@@ -484,7 +534,7 @@ function APR:IsPlayerWithinExactLevel(targetLevel, playerLevel)
     return playerLevel >= exactLevel and playerLevel < upperBound
 end
 
-local function MatchesConditionValue(expectedValue, actualValue, alternateValue)
+function APR:MatchesConditionValue(expectedValue, actualValue, alternateValue)
     if type(expectedValue) == "table" then
         return tContains(expectedValue, actualValue) or
             (alternateValue ~= nil and tContains(expectedValue, alternateValue))
@@ -493,18 +543,28 @@ local function MatchesConditionValue(expectedValue, actualValue, alternateValue)
     return expectedValue == actualValue or (alternateValue ~= nil and expectedValue == alternateValue)
 end
 
-function APR:IsInterfaceVersion(requiredInterfaceVersion)
-    local expectedVersion = tonumber(requiredInterfaceVersion)
+local function GetCurrentInterfaceVersion(self)
     local currentVersion = tonumber(self.interfaceVersion)
-
     if not currentVersion and GetBuildInfo then
-        currentVersion = tonumber(select(4, GetBuildInfo()))
+        currentVersion = tonumber((select(4, GetBuildInfo())))
     end
+    return currentVersion
+end
 
-    return expectedVersion ~= nil and currentVersion == expectedVersion
+function APR:IsInterfaceVersion(requiredInterfaceVersion)
+    local minimumVersion = tonumber(requiredInterfaceVersion)
+    local currentVersion = GetCurrentInterfaceVersion(self)
+    return minimumVersion ~= nil and currentVersion ~= nil and currentVersion >= minimumVersion
+end
+
+function APR:IsExactInterfaceVersion(requiredInterfaceVersion)
+    local exactVersion = tonumber(requiredInterfaceVersion)
+    local currentVersion = GetCurrentInterfaceVersion(self)
+    return exactVersion ~= nil and currentVersion == exactVersion
 end
 
 function APR:AreConditionalFiltersMet(conditions)
+    if conditions and self.MeetsExtendedRouteConditions and not self:MeetsExtendedRouteConditions(conditions) then return false end
     -- Legacy route instructions are now optional global XP overlay reminders.
     -- Keep their slots in the definition so saved step indexes remain valid.
     if conditions and conditions.WarMode then return false end
@@ -538,10 +598,14 @@ function APR:AreConditionalFiltersMet(conditions)
     local playerMapID = C_Map.GetBestMapForUnit("player")
 
     return (not conditions.Faction or conditions.Faction == self.Faction) and
-        (not conditions.Race or MatchesConditionValue(conditions.Race, self.Race, self.RaceID)) and
+        (conditions.Hardcore == nil or self:IsHardcoreCharacter() == conditions.Hardcore) and
+        (not conditions.Money or self:CompareRouteNumber(GetMoney and GetMoney(), conditions.Money.operator or ">=", conditions.Money.copper)) and
+        (not conditions.ItemCount or self:MeetsItemCount(conditions.ItemCount)) and
+        (not conditions.EquippedItemStat or self:MeetsEquippedItemStat(conditions.EquippedItemStat)) and
+        (not conditions.Race or self:MatchesConditionValue(conditions.Race, self.Race, self.RaceID)) and
         (not conditions.Gender or conditions.Gender == self.Gender) and
-        (not conditions.Class or MatchesConditionValue(conditions.Class, self.ClassName, self.ClassId)) and
-        (not conditions.ClassNot or not MatchesConditionValue(conditions.ClassNot, self.ClassName, self.ClassId)) and
+        (not conditions.Class or self:MatchesConditionValue(conditions.Class, self.ClassName, self.ClassId)) and
+        (not conditions.ClassNot or not self:MatchesConditionValue(conditions.ClassNot, self.ClassName, self.ClassId)) and
         (not level or playerLevel >= level) and
         (not minLevel or playerLevel >= minLevel) and
         (not maxLevel or playerLevel <= maxLevel) and
@@ -554,6 +618,7 @@ function APR:AreConditionalFiltersMet(conditions)
         (conditions.AlliedRace == nil or self:IsAlliedRace() == conditions.AlliedRace) and
         (not conditions.Event or (conditions.Event ~= APR.EVENTS.Remix or self:IsRemixCharacter())) and
         (not conditions.InterfaceVersion or self:IsInterfaceVersion(conditions.InterfaceVersion)) and
+        (not conditions.InterfaceVersionExact or self:IsExactInterfaceVersion(conditions.InterfaceVersionExact)) and
         (not conditions.HasAchievement or self:HasAchievement(conditions.HasAchievement)) and
         (not conditions.DontHaveAchievement or not self:HasAchievement(conditions.DontHaveAchievement)) and
         (not conditions.HasAura or self:HasAura(conditions.HasAura)) and
@@ -575,6 +640,17 @@ function APR:AreConditionalFiltersMet(conditions)
         (not conditions.IsQuestsUncompleted or not self:IsQuestsCompleted(conditions.IsQuestsUncompleted)) and
         (not conditions.IsQuestsCompletedOnAccount or self:IsQuestsCompletedOnAccount(conditions.IsQuestsCompletedOnAccount)) and
         (not conditions.IsQuestsUncompletedOnAccount or not self:IsQuestsCompletedOnAccount(conditions.IsQuestsUncompletedOnAccount))
+end
+
+function APR:StepUsesAnyOption(conditions, keys)
+    if not conditions then return false end
+    for _, key in ipairs(keys) do if conditions[key] ~= nil then return true end end
+    for _, name in ipairs({"AnyOf", "AllOf"}) do
+        for _, alternative in ipairs(conditions[name] or {}) do
+            if self:StepUsesAnyOption(alternative, keys) then return true end
+        end
+    end
+    return conditions.Not and self:StepUsesAnyOption(conditions.Not, keys) or false
 end
 
 local function RouteMatchesDisplayName(routeData, displayName)

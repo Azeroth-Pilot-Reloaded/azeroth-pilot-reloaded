@@ -24,10 +24,9 @@ APR.currentStep.FrameHeight = 0
 APR.currentStep.previousState = {}
 
 --Local constant
-local FRAME_WIDTH = 250
-local FRAME_HEADER_OFFSET = -30
+APR.currentStep.layout = { width = 250, topOffset = 30, padding = 16, indent = 25, detailGap = 3 }
+local FRAME_WIDTH = APR.currentStep.layout.width
 local FRAME_ATTACH_OFFSET = -35
-local FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
 local RAID_ICON_TEXTURE = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
 
 ---------------------------------------------------------------------------------------
@@ -104,7 +103,9 @@ APR:SetupMinimizeButton(CurrentStepFrameHeader, CurrentStepFrame, function()
     CurrentStepFrame_StepHolder:Hide()
     APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
     APR.currentStep:ButtonHide()
-    APR.currentStep.progressBar:Hide()
+    if APR.currentStep.progressBar then
+        APR.currentStep.progressBar:Hide()
+    end
     if APR.fillersFrame then
         APR.fillersFrame:Hide()
     end
@@ -118,7 +119,9 @@ end, function()
     -- Expand
     APR.currentStep:SetDefaultDisplay()
     APR.currentStep:ButtonShow()
-    APR.currentStep.progressBar:Show()
+    if APR.currentStep.progressBar then
+        APR.currentStep.progressBar:Show()
+    end
     if APR.fillersFrame then
         APR.fillersFrame:Show()
     end
@@ -356,23 +359,23 @@ end
 
 -- Rollback / skip button
 function APR.currentStep:PreviousNextStepButton()
-    local rollbackButton = CreateButton("CurrentStepFrame_StepHolder_RollbackButton", CurrentStepFrameHeader, 30, 30,
+    local rollbackButton = CreateButton("CurrentStepFrame_StepHolder_RollbackButton", CurrentStepFrameHeader, 24, 24,
         L["ROLLBACK"],
         function()
             APR.command:SlashCmd('rollback')
         end)
-    rollbackButton:SetPoint("BOTTOMLEFT", CurrentStepFrameHeader, "BOTTOMLEFT", 10, -30)
+    rollbackButton:SetPoint("BOTTOMLEFT", CurrentStepFrameHeader, "BOTTOMLEFT", 8, -28)
     rollbackButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Up]])
     rollbackButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Down]])
     rollbackButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-PrevPage-Disabled]])
     rollbackButton:SetHighlightTexture([[Interface\Buttons\UI-Common-MouseHilight]])
     CurrentStepFrame_StepHolder.rollbackButton = rollbackButton
 
-    local skipButton = CreateButton("CurrentStepFrame_StepHolder_SkipButton", CurrentStepFrameHeader, 30, 30, L["SKIP"],
+    local skipButton = CreateButton("CurrentStepFrame_StepHolder_SkipButton", CurrentStepFrameHeader, 24, 24, L["SKIP"],
         function()
             APR.command:SlashCmd('skip')
         end)
-    skipButton:SetPoint("BOTTOMRIGHT", CurrentStepFrameHeader, "BOTTOMRIGHT", -10, -30)
+    skipButton:SetPoint("BOTTOMRIGHT", CurrentStepFrameHeader, "BOTTOMRIGHT", -8, -28)
     skipButton:SetNormalTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Up]])
     skipButton:SetPushedTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Down]])
     skipButton:SetDisabledTexture([[Interface\Buttons\UI-SpellbookIcon-NextPage-Disabled]])
@@ -416,11 +419,6 @@ function APR.currentStep:ProgressBar(key, total, current)
     if not profile or not profile.currentStepShow then
         return
     end
-    if (self.progressBar and self.progressBar.key ~= key) then
-        self.progressBar:Hide()
-        self.progressBar:ClearAllPoints()
-        self.progressBar = nil
-    end
 
     local totalSteps = total or 0
     local currentStep = current or 0
@@ -428,11 +426,11 @@ function APR.currentStep:ProgressBar(key, total, current)
     if not self.progressBar then
         local progressBar = CreateFrame("StatusBar", "CurrentStepFrame_StepHolder_ProgressBar", CurrentStepFrameHeader,
             "BackdropTemplate")
-        progressBar:SetSize(175, 20)
+        progressBar:SetSize(FRAME_WIDTH - 92, 18)
         progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
         progressBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
         APR.currentStep:UpdateProgressBarColor(progressBar)
-        progressBar:SetMinMaxValues(1, totalSteps)
+        progressBar:SetMinMaxValues(0, math.max(totalSteps, 1))
         progressBar:SetValue(currentStep)
         progressBar:SetBackdrop({
             bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
@@ -456,7 +454,10 @@ function APR.currentStep:ProgressBar(key, total, current)
         self.progressBar.key = key
         self.progressBar.currentStep = currentStep
     else
+        self.progressBar:SetMinMaxValues(0, math.max(totalSteps, 1))
+        self.progressBar.key = key
         self.progressBar:SetValue(currentStep)
+        self.progressBar.currentStep = currentStep
         if totalSteps > 0 then
             self.progressBar.Text:SetText(currentStep .. " / " .. totalSteps)
         else
@@ -469,6 +470,8 @@ function APR.currentStep:ProgressBar(key, total, current)
     -- Keep header-owned controls hidden until the user expands the frame.
     if CurrentStepFrame.collapsed then
         self.progressBar:Hide()
+    else
+        self.progressBar:Show()
     end
 end
 
@@ -499,179 +502,15 @@ function APR.currentStep:SetProgressBar(CurStep)
     end
 end
 
--- Displaying quest information
-local function AddStepsFrame(questDesc, extraLineText, color, showLeadingDash)
-    local text = extraLineText or questDesc
-    local container = APR:CreateStepTextContainer(
-        CurrentStepFrame_StepHolder,
-        FRAME_WIDTH,
-        text,
-        extraLineText ~= nil,
-        color,
-        APR.settings.profile.currentStepbackgroundColorAlpha,
-        showLeadingDash,
-        "currentStep"
-    )
+function APR.currentStep:AddReputationStep(requirement)
+    local _, factionID = APR:GetReputationRequirement(requirement)
+    local id = "REPUTATION-" .. tostring(factionID or "UNKNOWN")
+    self:AddQuestSteps(id, APR:GetReputationStepText(requirement), "Reputation", false, true, false)
+    local container = self.questsList[id .. "-Reputation"]
+    if not container then return end
 
-    -- Keep text visually aligned with the centered divider margins.
-    if container and container.font then
-        local textHorizontalPadding = 16
-        container.font:ClearAllPoints()
-        container.font:SetPoint("TOPLEFT", textHorizontalPadding, -5)
-        container.font:SetWidth(FRAME_WIDTH - (textHorizontalPadding * 2))
-        container:SetHeight(container.font:GetStringHeight() + 10)
-    end
-
-    return container
-end
-
--- Displaying extra line text information
-local function AddExtraLineTextFrame(extraLineText, color, showLeadingDash)
-    return AddStepsFrame(nil, extraLineText, color, showLeadingDash)
-end
-
-local function AddExtraLineDividerFrame()
-    local container = CreateFrame("Frame", nil, CurrentStepFrame_StepHolder, "BackdropTemplate")
-    container:SetWidth(FRAME_WIDTH)
-    container:SetHeight(12)
-    container:SetBackdrop({
-        bgFile = "Interface\\Buttons\\WHITE8X8",
-        tile = true,
-        tileSize = 16
-    })
-    local dividerBackdrop = (APR.settings and APR.settings.profile and APR.settings.profile.currentStepbackgroundColorAlpha)
-        or APR.Color.defaultBackdrop
-    container:SetBackdropColor(unpack(dividerBackdrop))
-
-    local dividerLine = container:CreateTexture(nil, "ARTWORK")
-    dividerLine:SetTexture("Interface\\Buttons\\WHITE8X8")
-    dividerLine:SetHeight(1)
-    dividerLine:SetPoint("LEFT", container, "LEFT", 12, 0)
-    dividerLine:SetPoint("RIGHT", container, "RIGHT", -12, 0)
-    dividerLine:SetVertexColor(0.78, 0.66, 0.35, 0.95)
-
-    container.dividerLine = dividerLine
-    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(container, "divider") end
-    return container
-end
-
--- Add/Update quest steps
-function APR.currentStep:AddQuestSteps(questID, textObjective, objectiveIndex, isScenario, noTooltip, showLeadingDash,
-                                       textColor)
-    local profile = APR:GetSettingsProfile()
-    if not profile or not profile.currentStepShow then
-        return
-    end
-
-    -- Check if questsExtraTextList or questsList are empty to reset to the default height
-    if not next(self.questsExtraTextList) or not next(self.questsList) then
-        FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
-    end
-
-    local questKey = questID .. "-" .. (objectiveIndex or 0)
-    local existingContainer = self.questsList[questKey]
-
-    -- remove if it's already exist
-    if existingContainer then
-        if self:CanSafelyHide(existingContainer) then
-            existingContainer:SetScript("OnEnter", nil)
-            existingContainer:SetScript("OnLeave", nil)
-            existingContainer:ClearAllPoints()
-            existingContainer:Hide()
-            self:ResetSecureStepButton(existingContainer, questKey)
-            self:ResetSecureRaidIconButton(existingContainer, questKey)
-        else
-            self:SoftHide(existingContainer)
-            table.insert(self.pendingContainerDestroy, existingContainer)
-        end
-        self.questsList[questKey] = nil
-    end
-
-    local objectiveContainer = AddStepsFrame(textObjective, nil, textColor, showLeadingDash)
-    objectiveContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
-    objectiveContainer.questID = questID
-    if not noTooltip then
-        objectiveContainer:SetScript("OnEnter", function(self)
-            GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
-            APR:AddQuestTooltipDetails(GameTooltip, questID, {
-                isScenario = isScenario,
-                objectiveIndex = objectiveIndex,
-                objectiveText = textObjective,
-                includeCampaign = not isScenario,
-                includeStoryline = not isScenario,
-            })
-
-            GameTooltip:Show()
-        end)
-
-        objectiveContainer:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
-    end
-
-    self.questsList[questKey] = objectiveContainer
-    self:MaybeAttachRaidIconButton(questKey)
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - objectiveContainer:GetHeight()
-
-    -- to update quest order display
-    self:ReOrderQuestSteps()
-end
-
-function APR.currentStep:UpdateQuestStep(questID, textObjective, objectiveIndex)
-    APR:Debug("Function: APR.currentStep:UpdateQuestStep()", questID)
-    if not APR.settings.profile.currentStepShow then
-        return
-    end
-
-    local questKey = questID .. "-" .. objectiveIndex
-    local existingContainer = self.questsList[questKey]
-
-    if not existingContainer then
-        return
-    end
-
-    local leading = existingContainer.showLeadingDash and '- ' or ''
-    existingContainer.font:SetText(leading .. textObjective)
-end
-
-local getExtraLineHeight = function()
-    -- Always reset to header offset with a new extra line
-    local height = FRAME_HEADER_OFFSET
-    for id, textContainer in pairs(APR.currentStep.questsExtraTextList) do
-        height = height - textContainer:GetHeight()
-    end
-    return height
-end
-
-local function UpdateManagedExtraLineDashes(self)
-    local managed = {}
-
-    for _, container in pairs(self.questsExtraTextList) do
-        if container and container._isManagedExtraLine then
-            table.insert(managed, container)
-        end
-    end
-    for _, container in pairs(self.questsList) do
-        if container and container._isManagedExtraLine then
-            table.insert(managed, container)
-        end
-    end
-
-    local autoCount = 0
-    for _, container in ipairs(managed) do
-        if container._manualLeadingDash == nil then
-            autoCount = autoCount + 1
-        end
-    end
-
-    local autoShowDash = autoCount > 1
-    for _, container in ipairs(managed) do
-        local useDash = (container._manualLeadingDash == nil) and autoShowDash or container._manualLeadingDash
-        local rawText = container._rawExtraLineText or ""
-        if container.font then
-            container.font:SetText((useDash and "- " or "") .. rawText)
-            container:SetHeight(container.font:GetStringHeight() + 10)
-        end
-        container.showLeadingDash = useDash and true or false
-    end
+    local current, total, text = APR:GetReputationBarProgress(requirement)
+    self:AddObjectiveProgressBar(container, "reputationBar", current, total, text)
 end
 
 
@@ -933,249 +772,59 @@ function APR.currentStep:AddExtraLineDivider(key)
     self:ReOrderExtraLineText()
 end
 
-function APR.currentStep:AddQuestDivider(key)
-    APR:Debug("Function: APR.currentStep:AddQuestDivider()", key)
-    if not APR.settings.profile.currentStepShow then
+function APR.currentStep:AddObjectiveProgressBar(container, key, current, total, text, replaceText)
+    local owner = (replaceText or key == "questProgressBar") and container or self
+    local bar = owner[key]
+    if not current then
+        if bar then bar:Hide() end
+        container.extraContentHeight = nil
+        self:ReOrderQuestSteps()
         return
     end
-
-    local existingContainer = self.questsList[key]
-    if existingContainer then
-        if self:CanSafelyHide(existingContainer) then
-            existingContainer:SetScript("OnEnter", nil)
-            existingContainer:SetScript("OnLeave", nil)
-            existingContainer:ClearAllPoints()
-            existingContainer:Hide()
-            self:ResetSecureStepButton(existingContainer, key)
-            self:ResetSecureRaidIconButton(existingContainer, key)
-        else
-            self:SoftHide(existingContainer)
-            table.insert(self.pendingContainerDestroy, existingContainer)
-        end
-        self.questsList[key] = nil
+    if not bar then
+        bar = CreateFrame("StatusBar", nil, container, "BackdropTemplate")
+        bar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
+        bar:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8" })
+        bar:SetBackdropColor(0, 0, 0, 0.5)
+        bar.Text = bar:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        bar.Text:SetPoint("CENTER")
+        APR:RegisterFontString(bar.Text, "currentStep", { role = "base" })
+        if APR.RegisterSkinTarget then APR:RegisterSkinTarget(bar, "statusbar") end
+        owner[key] = bar
     end
-
-    local dividerContainer = AddExtraLineDividerFrame()
-    dividerContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
-    dividerContainer.key = key
-    self.questsList[key] = dividerContainer
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - dividerContainer:GetHeight()
-
+    -- Reuse the bar across resource refreshes; its row owns visibility and cleanup.
+    bar:SetParent(container)
+    bar:ClearAllPoints()
+    if replaceText then
+        bar:SetPoint("TOPLEFT", container, "TOPLEFT", 16, -5)
+        bar:SetPoint("TOPRIGHT", container, "TOPRIGHT", -16, -5)
+        container.font:Hide()
+        container.progressBarOnly = true
+    else
+        bar:SetPoint("TOPLEFT", container.font, "BOTTOMLEFT", 0, -5)
+        bar:SetPoint("TOPRIGHT", container.font, "BOTTOMRIGHT", 0, -5)
+    end
+    bar:SetHeight(20)
+    self:UpdateProgressBarColor(bar)
+    bar:SetMinMaxValues(0, total)
+    bar:SetValue(current)
+    bar.Text:SetText(text)
+    bar:Show()
+    container.extraContentHeight = replaceText and 0 or 25
     self:ReOrderQuestSteps()
 end
 
-function APR.currentStep:ReOrderExtraLineText()
-    APR:Debug("Function: APR.currentStep:ReOrderExtraLineText()")
-    if not APR.settings.profile.currentStepShow then
-        return
+function APR.currentStep:UpdateQuestObjectiveProgressBar(container, questID, objectiveIndex)
+    local percent = container.isQuestObjective and APR:GetQuestObjectiveProgressPercent(questID, objectiveIndex)
+    if percent then
+        self:AddObjectiveProgressBar(container, "questProgressBar", percent, 100, percent .. "%")
+    elseif container.questProgressBar then
+        container.questProgressBar:Hide()
+        container.progressBarOnly = nil
+        container.extraContentHeight = nil
+        container.font:Show()
+        self:ReOrderQuestSteps()
     end
-
-    -- Convert the table into a sortable list with explicit top ordering for
-    -- out-of-zone header line: destination first.
-    local sortedList = {}
-    local usedKeys = {}
-    local destinationKey = (APR.farstrider and APR.farstrider.ErrorDestinationLineKey) or "00_ERROR_DESTINATION"
-
-    local function addByKey(key)
-        local container = self.questsExtraTextList[key]
-        if container then
-            table.insert(sortedList, container)
-            usedKeys[key] = true
-        end
-    end
-
-    addByKey(destinationKey)
-
-    local remaining = {}
-    for id, textContainer in pairs(self.questsExtraTextList) do
-        if not usedKeys[id] then
-            table.insert(remaining, textContainer)
-        end
-    end
-
-    table.sort(remaining, function(a, b)
-        return tostring(a.key) < tostring(b.key)
-    end)
-
-    for _, textContainer in ipairs(remaining) do
-        table.insert(sortedList, textContainer)
-    end
-
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
-    for _, textContainer in ipairs(sortedList) do
-        textContainer:ClearAllPoints()
-        textContainer:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
-        FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - textContainer:GetHeight()
-    end
-
-    self:ReOrderQuestSteps(false)
-end
-
---- Re order all the quest Step
---- @param hasExtraLineHeight boolean to get the extra line height
-function APR.currentStep:ReOrderQuestSteps(hasExtraLineHeight)
-    APR:Debug("Function: APR.currentStep:ReOrderQuestSteps()")
-    if not APR.settings.profile.currentStepShow then return end
-
-    hasExtraLineHeight = (hasExtraLineHeight ~= false)
-    if hasExtraLineHeight then
-        FRAME_STEP_HOLDER_HEIGHT = getExtraLineHeight()
-    end
-    local sortedList = {}
-    for id, container in pairs(self.questsList) do
-        table.insert(sortedList, { id = tostring(id), container = container })
-    end
-
-    table.sort(sortedList, function(a, b)
-        return a.id < b.id
-    end)
-
-    for _, entry in ipairs(sortedList) do
-        local container = entry.container
-        if not container.hiddenInCombat then
-            container:ClearAllPoints()
-            container:SetPoint("TOPLEFT", CurrentStepFrame, "TOPLEFT", 0, FRAME_STEP_HOLDER_HEIGHT)
-            FRAME_STEP_HOLDER_HEIGHT = FRAME_STEP_HOLDER_HEIGHT - container:GetHeight()
-        end
-    end
-
-    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-        APR.questOrderList:ApplySnapAnchor()
-    end
-end
-
-function APR.currentStep:RefreshTextLayout()
-    local function RefreshContainer(container)
-        if not container or not container.font then return end
-        if container.detailFonts and #container.detailFonts > 0 then
-            local detailHeight = 0
-            for _, detailFont in ipairs(container.detailFonts) do
-                detailFont:ClearAllPoints()
-                detailFont:SetPoint("TOPLEFT", container, "TOPLEFT", 25,
-                    -(container.font:GetStringHeight() + 10 + detailHeight))
-                detailHeight = detailHeight + detailFont:GetStringHeight()
-            end
-            container:SetHeight(container.font:GetStringHeight() + detailHeight + 15)
-        else
-            container:SetHeight(container.font:GetStringHeight() + 10)
-        end
-    end
-
-    for _, container in pairs(self.questsExtraTextList) do RefreshContainer(container) end
-    for _, container in pairs(self.questsList) do RefreshContainer(container) end
-    self:ReOrderExtraLineText()
-end
-
--- Remove all  quest steps and extra line texts
-function APR.currentStep:RemoveQuestStepsAndExtraLineTexts(removeTextOnly)
-    APR:Debug("Function: APR.currentStep:RemoveQuestStepsAndExtraLineTexts()")
-    removeTextOnly = removeTextOnly or false
-    local profile = APR:GetSettingsProfile()
-    if not profile or not profile.currentStepShow then return end
-
-    local function ResetList(list, isQuestList)
-        for id, container in pairs(list) do
-            local canHide = self:CanSafelyHide(container)
-            if canHide then
-                -- Clear tooltip scripts to prevent ghost tooltips
-                container:SetScript("OnEnter", nil)
-                container:SetScript("OnLeave", nil)
-
-                -- Explicit frame cleanup to prevent memory leaks
-                container:ClearAllPoints()
-                container:Hide()
-                if isQuestList then
-                    self:ResetSecureStepButton(container, id)
-                    self.pendingButtonRequests[id] = nil
-                end
-                self:ResetSecureRaidIconButton(container, id)
-                self.pendingRaidIconRequests[id] = nil
-
-                -- Clear frame scripts and textures to free memory
-                if container.Text then
-                    container.Text:SetText("")
-                end
-                if container.IconButton then
-                    container.IconButton:SetScript("OnEnter", nil)
-                    container.IconButton:SetScript("OnLeave", nil)
-                end
-
-                list[id] = nil
-            else
-                -- Combat: soft-hide + mark for purge post-combat
-                self:SoftHide(container)
-                self.pendingRemoval[id] = true
-                -- DO NOT remove from the list here! Keep the reference for the flush
-            end
-        end
-    end
-
-    if not removeTextOnly then
-        ResetList(self.questsList, true)
-        if not InCombatLockdown() then
-            self.questsList = {}
-        end
-    end
-
-    ResetList(self.questsExtraTextList, false)
-    if not InCombatLockdown() then
-        self.questsExtraTextList = {}
-    end
-
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
-    -- Reorder ignoring soft-hidden
-    self:ReOrderQuestSteps(true)
-end
-
--- Remove step-specific UI while keeping Farstrider navigation guidance intact.
-function APR.currentStep:RemoveStepContentPreservingNavigationUi()
-    APR:Debug("Function: APR.currentStep:RemoveStepContentPreservingNavigationUi()")
-    local profile = APR:GetSettingsProfile()
-    if not profile or not profile.currentStepShow then
-        return
-    end
-
-    if APR.currentStepImagePreview and APR.currentStepImagePreview.ClearPreviewImages then
-        APR.currentStepImagePreview:ClearPreviewImages(self)
-    end
-
-    local function ResetList(list, isQuestList, preservePredicate)
-        for id, container in pairs(list) do
-            if not preservePredicate(id) then
-                local canHide = self:CanSafelyHide(container)
-                if canHide then
-                    container:SetScript("OnEnter", nil)
-                    container:SetScript("OnLeave", nil)
-                    container:ClearAllPoints()
-                    container:Hide()
-                    if isQuestList then
-                        self:ResetSecureStepButton(container, id)
-                        self.pendingButtonRequests[id] = nil
-                    end
-                    self:ResetSecureRaidIconButton(container, id)
-                    self.pendingRaidIconRequests[id] = nil
-                    list[id] = nil
-                else
-                    self:SoftHide(container)
-                    self.pendingRemoval[id] = true
-                end
-            end
-        end
-    end
-
-    ResetList(self.questsList, true, function(id)
-        return APR:IsNavigationQuestUiKey(id)
-    end)
-    ResetList(self.questsExtraTextList, false, function(id)
-        return APR:IsNavigationExtraTextUiKey(id)
-    end)
-
-    if APR.fillersFrame and APR.fillersFrame.RemoveFillerSteps then
-        APR.fillersFrame:RemoveFillerSteps()
-    end
-
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
-    self:ReOrderQuestSteps(true)
 end
 
 local function PositionStepButtons(container, button, anchorButton)
@@ -1189,7 +838,9 @@ local function PositionStepButtons(container, button, anchorButton)
 end
 -- Create a icon button next to the quest/text step
 local function GetStepButtonIcon(attribute, itemID)
-    if attribute == "item" then
+    if attribute == "emote" then
+        return 6642733 -- random icon for the button (but it's cute)
+    elseif attribute == "item" then
         local _, _, _, _, _, _, _, _, _, itemTexture = C_Item.GetItemInfo(itemID)
         return itemTexture
     elseif attribute == "spell" then
@@ -1250,6 +901,7 @@ function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
         button.cooldown:Clear()
     end
     container.IconButton = nil
+    if container.RaidIconButton then PositionStepButtons(container, container.RaidIconButton) end
 end
 
 function APR.currentStep:ResetSecureRaidIconButton(container, questsListKey, force)
@@ -1326,6 +978,11 @@ function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
     if not container then
         return
     end
+    if container.RaidIconButton and container.RaidIconButton.npcID == npcID then
+        self.raidIconButton = container.RaidIconButton
+        self:UpdateRaidIconButtonMacro()
+        return
+    end
     if container.RaidIconButton then
         self:ResetSecureRaidIconButton(container, questsListKey)
         if container.RaidIconButton then
@@ -1359,6 +1016,7 @@ function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
 
     RaidIconButton.npcID = npcID
     container.RaidIconButton = RaidIconButton
+    container.hasSecureControls = true
     if APR.RegisterSkinTarget then
         APR:RegisterSkinTarget(RaidIconButton, "icon", { texture = RaidIconButton:GetNormalTexture() })
     end
@@ -1371,6 +1029,8 @@ function APR.currentStep:AddRaidIconButton(questsListKey, npcID)
         return
     end
 
+    local container = GetRaidIconContainer(self, questsListKey)
+    if container then container.raidSeen = true end
     if InCombatLockdown() then
         self.pendingRaidIconRequests[questsListKey] = npcID
         return
@@ -1395,13 +1055,23 @@ function APR.currentStep:UpdateRaidIconButtonMacro()
     button:SetAttribute("macrotext", APR:BuildRaidIconMacro(button.npcID, unitToken))
 end
 
-function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute)
+function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot)
     attribute = attribute or "item"
+    if attribute == "emote" and (type(itemID) ~= "string" or not itemID:match("^[a-zA-Z]+$")) then return end
     local container = self.questsList[questsListKey] or self.fillersList[questsListKey]
     if not container then
         return
     end
 
+    if container.IconButton and container.IconButton.itemID == itemID and
+        container.IconButton.attribute == attribute and container.IconButton.equipSlot == equipSlot and
+        attribute ~= "housing" then
+        PositionStepButtons(container, container.IconButton)
+        if container.RaidIconButton then
+            PositionStepButtons(container, container.RaidIconButton, container.IconButton)
+        end
+        return
+    end
     if container.IconButton then
         self:ResetSecureStepButton(container, questsListKey)
         if container.IconButton then
@@ -1441,11 +1111,19 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     end
     IconButton:RegisterForClicks("AnyUp", "AnyDown")
     if attribute == "item" then
-        IconButton:SetAttribute("type1", "item")
-        IconButton:SetAttribute("item", "item:" .. tostring(itemID))
+        if equipSlot then
+            IconButton:SetAttribute("type1", "macro")
+            IconButton:SetAttribute("macrotext", "/equipslot [nocombat] " .. equipSlot .. " item:" .. itemID)
+        else
+            IconButton:SetAttribute("type1", "item")
+            IconButton:SetAttribute("item", "item:" .. tostring(itemID))
+        end
+    elseif attribute == "emote" then
+        IconButton:SetAttribute("type1", "macro")
+        IconButton:SetAttribute("macrotext", '/run APR:PerformEmote("' .. itemID .. '")')
     elseif attribute == "spell" then
         IconButton:SetAttribute("type1", "spell")
-        IconButton:SetAttribute("spell", tonumber(itemID))
+        IconButton:SetAttribute("spell", tonumber(itemID) or itemID)
     elseif attribute == "housing" then
         IconButton:SetAttribute("type", "teleporthome")
         IconButton:SetAttribute("type1", "teleporthome")
@@ -1499,7 +1177,9 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
 
     IconButton.itemID = itemID
     IconButton.attribute = attribute
+    IconButton.equipSlot = equipSlot
     container.IconButton = IconButton
+    container.hasSecureControls = true
     if APR.RegisterSkinTarget then
         APR:RegisterSkinTarget(IconButton, "icon", { texture = IconButton:GetNormalTexture() })
     end
@@ -1521,20 +1201,26 @@ end
 ---@param questsListKey string
 ---@param itemID number|nil
 ---@param attribute string
-function APR.currentStep:AddStepButton(questsListKey, itemID, attribute)
+function APR.currentStep:AddStepButton(questsListKey, itemID, attribute, equipSlot)
+    if attribute == 'spell' and type(itemID) == 'string' and C_Spell then
+        local info = C_Spell.GetSpellInfo(itemID)
+        itemID = info and info.spellID or itemID
+    end
     if not APR.settings.profile.currentStepShow then
         return
     end
 
     attribute = attribute or "item"
+    local container = self.questsList[questsListKey] or self.fillersList[questsListKey]
+    if container then container.actionSeen = true end
     self:MaybeAttachRaidIconButton(questsListKey)
     if InCombatLockdown() then
-        self.pendingButtonRequests[questsListKey] = { itemID = itemID, attribute = attribute }
+        self.pendingButtonRequests[questsListKey] = { itemID = itemID, attribute = attribute, equipSlot = equipSlot }
         return
     end
 
     self.pendingButtonRequests[questsListKey] = nil
-    self:CreateSecureStepButton(questsListKey, itemID, attribute)
+    self:CreateSecureStepButton(questsListKey, itemID, attribute, equipSlot)
 end
 
 function APR.currentStep:ProcessPendingStepButtons()
@@ -1542,10 +1228,12 @@ function APR.currentStep:ProcessPendingStepButtons()
         return
     end
 
+    local needsLayout = next(self.pendingButtonResets) or next(self.pendingButtonRequests) or
+        next(self.pendingRaidIconRequests)
     self:ProcessPendingButtonResets()
 
     for questsListKey, data in pairs(self.pendingButtonRequests) do
-        self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute)
+        self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute, data.equipSlot)
         self.pendingButtonRequests[questsListKey] = nil
     end
 
@@ -1557,6 +1245,10 @@ function APR.currentStep:ProcessPendingStepButtons()
     if self.pendingRaidIconMacroRefresh then
         self.pendingRaidIconMacroRefresh = false
         self:UpdateRaidIconButtonMacro()
+    end
+    if needsLayout then
+        self:ReOrderQuestSteps()
+        if APR.fillersFrame and APR.fillersFrame.FlushPendingLayout then APR.fillersFrame:FlushPendingLayout(true) end
     end
 end
 
@@ -1725,6 +1417,15 @@ end
 --- Disable Button, Reset ProgressBar and Remove all quest and extra line
 function APR.currentStep:Reset()
     APR:Debug("Function: APR.currentStep:Reset()")
+    if self.contentUpdateActive then
+        self.pendingRaidIconNpcId = nil
+        self.raidIconAdded = false
+        self:ButtonShow()
+        self:ButtonDisable()
+        self:RemoveQuestStepsAndExtraLineTexts()
+        APR.fillersFrame:RemoveFillerSteps()
+        return
+    end
     self:ButtonShow()
     self:ButtonDisable()
     self:ProgressBar()
@@ -1889,8 +1590,10 @@ function APR.currentStep:IsShown()
 end
 
 function APR.currentStep:CanSafelyHide(container)
-    -- If we are in combat AND the container has a secure button, do not hide
-    return not InCombatLockdown() or not ((container.IconButton and container.IconButton:IsProtected()) or
+    -- Retired secure children still belong to their row. Remember this even
+    -- after the active button reference is cleared so reused rows stay safe.
+    return not InCombatLockdown() or not (container.hasSecureControls or
+        (container.IconButton and container.IconButton:IsProtected()) or
         (container.RaidIconButton and container.RaidIconButton:IsProtected()))
 end
 
@@ -1941,7 +1644,11 @@ function APR.currentStep:FlushPendingContainers()
     end
     wipe(self.pendingContainerDestroy)
 
-    if not next(self.pendingRemoval) then return end
+    if not next(self.pendingRemoval) then
+        if self.layoutDirty then self:ReOrderQuestSteps() end
+        if APR.fillersFrame and APR.fillersFrame.FlushPendingLayout then APR.fillersFrame:FlushPendingLayout() end
+        return
+    end
     for id, _ in pairs(self.pendingRemoval) do
         local container = self.questsList[id] or self.questsExtraTextList[id] or self.fillersList[id]
         if container then
@@ -1964,7 +1671,6 @@ function APR.currentStep:FlushPendingContainers()
         self.fillersList[id] = nil
     end
     wipe(self.pendingRemoval)
-    FRAME_STEP_HOLDER_HEIGHT = FRAME_HEADER_OFFSET
     self:ReOrderQuestSteps(true)
     if APR.fillersFrame then
         APR.fillersFrame:ReOrderFillerSteps()
@@ -1973,14 +1679,24 @@ end
 
 function APR.currentStep:GetCurrentStepDetails()
     if not APR.ActiveRoute then return nil end
+    local playerData = APRData and APRData[APR.PlayerID] or {}
+    local currentIndex = playerData[APR.ActiveRoute]
+    local progressBar = self.progressBar
+    local displayedStep
+    if progressBar and progressBar.key == APR.ActiveRoute and type(progressBar.currentStep) == "number" then
+        displayedStep = progressBar.currentStep
+    elseif type(currentIndex) == "number" then
+        displayedStep = currentIndex - APR:CountSkippedStepsBefore(APR.ActiveRoute, currentIndex)
+    end
+
     local stepDetails = {
         extraLines = {},
         questSteps = {},
         fillerSteps = {},
         progress = {
-            index = APRData[APR.PlayerID][APR.ActiveRoute],
-            step = APR.currentStep.progressBar.currentStep,
-            total = APRData[APR.PlayerID][APR.ActiveRoute .. '-TotalSteps'],
+            index = currentIndex,
+            step = displayedStep,
+            total = playerData[APR.ActiveRoute .. '-TotalSteps'],
         }
     }
 

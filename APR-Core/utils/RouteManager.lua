@@ -16,7 +16,34 @@ function APR:GetRouteData(routeKey)
     if not routeKey then return nil end
     local routeData = self.RouteQuestStepList[routeKey]
     if type(routeData) ~= "table" then return nil end
+    if not self:IsRouteCompatibleWithClient(routeData) then return nil end
     return routeData
+end
+
+--- Packaging selects built-in route files. This also protects unpackaged checkouts
+--- and saved custom routes copied between clients, before soft visibility filters.
+function APR:IsRouteCompatibleWithClient(routeData)
+    local gameVersion = routeData.gameVersion
+    if not gameVersion and routeData.expansion then
+        if routeData.expansion == self.EXPANSIONS.Forever then
+            gameVersion = APR.GAME_VERSIONS.Forever
+        elseif routeData.expansion ~= self.EXPANSIONS.Custom then
+            gameVersion = APR.GAME_VERSIONS.Retail
+        end
+    end
+    return not gameVersion or gameVersion == self:GetGameVersion()
+end
+
+--- Only create expansion tabs supported by this client, including empty tabs.
+function APR:GetRouteSelectionExpansions()
+    local expansions = {}
+    for _, key in ipairs(self.EXPANSION_ORDER_KEYS or {}) do
+        local expansion = self.EXPANSIONS[key]
+        if expansion and self:IsRouteCompatibleWithClient({ expansion = expansion }) then
+            table.insert(expansions, expansion)
+        end
+    end
+    return expansions
 end
 
 local function FlattenScenarioBlocks(blocks, scenarioID)
@@ -501,9 +528,13 @@ end
 ---@return boolean allHardMet
 EvaluateHardConditions = function(conditions)
     if not conditions then return true end
+    if conditions.AnyOf and not APR:AreConditionalFiltersMet({ AnyOf = conditions.AnyOf }) then return false end
 
-    -- InterfaceVersion (exact WoW interface version, e.g. 120007 for 12.0.7)
+    -- InterfaceVersion is a minimum; InterfaceVersionExact requires an exact match.
     if conditions.InterfaceVersion and not APR:IsInterfaceVersion(conditions.InterfaceVersion) then
+        return false
+    end
+    if conditions.InterfaceVersionExact and not APR:IsExactInterfaceVersion(conditions.InterfaceVersionExact) then
         return false
     end
 
@@ -527,23 +558,23 @@ EvaluateHardConditions = function(conditions)
         end
     end
 
-    -- Race (single string comparison, e.g. APR.RACES.Worgen)
+    -- Character conditions share scalar/list matching with step filters.
     if conditions.Race then
-        if conditions.Race ~= APR.Race then
+        if not APR:MatchesConditionValue(conditions.Race, APR.Race, APR.RaceID) then
             return false
         end
     end
 
-    -- Class (numeric classId, e.g. APR.Classes["Death Knight"] = 6)
+    -- Both numeric IDs and class tokens are supported.
     if conditions.Class then
-        if conditions.Class ~= APR.ClassId then
+        if not APR:MatchesConditionValue(conditions.Class, APR.ClassName, APR.ClassId) then
             return false
         end
     end
 
     -- ClassNot (numeric classId - route is excluded for this class)
     if conditions.ClassNot then
-        if conditions.ClassNot == APR.ClassId then
+        if APR:MatchesConditionValue(conditions.ClassNot, APR.ClassName, APR.ClassId) then
             return false
         end
     end
@@ -857,11 +888,13 @@ function APR:GetNextRouteSuggestions(completedRouteKey)
     local completedLabel = routeData.label
     local suggestions = {}
 
-    for _, nextKey in ipairs(routeData.nextRoute) do
+    for _, nextEntry in ipairs(routeData.nextRoute) do
+        local nextKey = type(nextEntry) == "table" and nextEntry.route or nextEntry
+        local conditions = type(nextEntry) == "table" and nextEntry.conditions or nil
         local nextData = self:GetRouteData(nextKey)
         if nextData and nextData.label then
             -- Only include routes whose conditions are fully met
-            if self:EvaluateRouteConditions(nextData.conditions) then
+            if self:EvaluateRouteConditions(nextData.conditions) and self:AreConditionalFiltersMet(conditions) then
                 -- Exclude the just-completed route itself
                 if nextKey ~= completedRouteKey then
                     table.insert(suggestions, {

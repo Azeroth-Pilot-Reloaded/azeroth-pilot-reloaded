@@ -89,7 +89,7 @@ function APR.RouteSelection:SetDefaultDisplay()
 end
 
 function APR.RouteSelection:RefreshFrameAnchor()
-    if not APR.settings.profile.enableAddon or C_PetBattles.IsInBattle() or not APRData[APR.PlayerID].FirstLoad then
+    if not APR.settings.profile.enableAddon or APR:IsPetBattleActive() or not APRData[APR.PlayerID].FirstLoad then
         RouteSelectionPanel:Hide()
         return
     end

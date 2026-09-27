@@ -31,7 +31,7 @@ APR.LevelBonusSources = {
         },
     },
     WarMode = {
-        isActive = function() return C_PvP.IsWarModeActive() end,
+        isActive = function() return C_PvP and C_PvP.IsWarModeActive and C_PvP.IsWarModeActive() or false end,
         bonus = 15,
     },
     Below80Mentorship = {

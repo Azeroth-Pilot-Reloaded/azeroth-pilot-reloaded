@@ -607,6 +607,9 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
 
     local existingContainer = currentStep.questsList[STEP_PREVIEW_CONTAINER_KEY]
     if existingContainer and APR:AreOrderedStringListsEqual(existingContainer.imagePaths, imagePaths) then
+        currentStep:TouchRow(existingContainer)
+        if existingContainer.step ~= step then CloseAllOverlayWindows() end
+        existingContainer.step = step
         return
     end
 
@@ -628,6 +631,7 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
     container:SetBackdropColor(unpack(APR.settings.profile.currentStepbackgroundColorAlpha or APR.Color.defaultBackdrop))
     container.key = STEP_PREVIEW_CONTAINER_KEY
     container.imagePaths = imagePaths
+    container.step = step
     if APR.RegisterSkinTarget then APR:RegisterSkinTarget(container, "row") end
     container.previewButtons = {}
 
@@ -660,17 +664,25 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
             GameTooltip:Hide()
         end)
 
-        button:SetScript("OnUpdate", function(self)
+        local probeElapsed, probeAttempts = 0, 0
+        button:SetScript("OnUpdate", function(self, elapsed)
+            probeElapsed = probeElapsed + elapsed
+            if probeElapsed < 0.05 then return end
+            probeElapsed = 0
+            probeAttempts = probeAttempts + 1
             local canReadTexture = self.previewTexture and
                 ((not self.previewTexture.IsObjectLoaded) or self.previewTexture:IsObjectLoaded())
             if canReadTexture then
                 local loadedAspectRatio = GetPreviewTextureAspectRatio(self.previewTexture)
                 if loadedAspectRatio then
                     self:SetScript("OnUpdate", nil)
+                    ApplyPreviewButtonLayout(container)
+                    currentStep:ReOrderQuestSteps(true)
                 end
-                ApplyPreviewButtonLayout(container)
-                currentStep:ReOrderQuestSteps(true)
             end
+            -- Some assets never expose dimensions. Keep the fallback layout and
+            -- stop polling instead of rearranging the whole tracker every frame.
+            if probeAttempts >= 20 then self:SetScript("OnUpdate", nil) end
         end)
 
         if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "panel", { preserveContent = true }) end

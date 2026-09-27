@@ -1,5 +1,7 @@
-## Interface: 110207, 120000, 120001, 120005, 120007, 120100, 120105
+## Interface: 16001, 110207, 120000, 120001, 120005, 120007, 120100, 120105
+## Interface-Retail: 110207, 120000, 120001, 120005, 120007, 120100, 120105
 ## X-Interface: 120105
+## Interface-Camelot: 16001
 
 ## Title: Azeroth Pilot Reloaded
 ## Notes: Continuation, optimization, and rewrite of Azeroth Auto Pilot.
@@ -31,7 +33,7 @@
 ## X-Wago-ID: XKq9xXKy
 
 APR-Core/libs/embeds.xml
-APR-Core/FarstriderLibData.xml
+APR-Core/libs/FarstriderLibData_[Game].xml
 APR-Core/locales/locales.xml
 
 APR-Core/utils/SecretUtils.lua
@@ -50,6 +52,7 @@ APR-Core/utils/InstanceUtils.lua
 APR-Core/utils/DelveRouteUtils.lua
 APR-Core/config/LevelProfiles.lua
 APR-Core/utils/RouteUtils.lua
+APR-Core/utils/RouteConditions.lua
 APR-Core/utils/RouteManager.lua
 APR-Core/utils/SojournerUtils.lua
 APR-Core/utils/RouteTriggersSuggestion.lua
@@ -83,15 +86,19 @@ APR-Core/core/VersionCheck.lua
 APR-Core/core/Event.lua
 
 APR-Core/features/questing/QuestHandler.lua
+APR-Core/features/questing/RouteActions.lua
 APR-Core/integrations/Farstrider.lua
+APR-Core/integrations/ForeverTravel.lua
 APR-Core/features/navigation/FlightPath.lua
 
 APR-Core/features/navigation/Arrow.lua
 APR-Core/ui/route/CurrentStepImagePreview.lua
 APR-Core/ui/route/CurrentStep.lua
+APR-Core/ui/route/CurrentStepRows.lua
 APR-Core/ui/route/FillersFrame.lua
 APR-Core/ui/route/QuestionPopUp.lua
 APR-Core/ui/route/QuestOrderList.lua
+APR-Core/ui/route/QuestOrderListRows.lua
 APR-Core/features/questing/Gossip.lua
 APR-Core/features/group/Party.lua
 APR-Core/features/navigation/Map.lua
@@ -105,4 +112,4 @@ APR-Core/integrations/ElvUISkin.lua
 APR-Core/integrations/EllesmereUISettings.lua
 APR-Core/integrations/EllesmereUISkin.lua
 
-Routes/RouteList.xml
+Routes/RouteList_[Game].xml

@@ -4,21 +4,24 @@ function APR:StartPurchaseTracking(BuyMerchant)
     if not BuyMerchant then return end
     currentPurchaseTracking = {} -- init or reset
     for _, item in ipairs(BuyMerchant) do
-        currentPurchaseTracking[item.itemID] = { required = item.quantity, purchased = 0 }
+        local required = item.quantity or 1
+        currentPurchaseTracking[item.itemID] = { required = required, purchased = 0 }
     end
 end
 
 function APR:CheckPurchaseCompletion()
+    if not currentPurchaseTracking then return false end
     for itemID, info in pairs(currentPurchaseTracking) do
         if info.purchased < info.required then
-            return
+            return false
         end
     end
     self:UpdateNextStep()
+    return true
 end
 
 function APR:UpdatePurchaseTracking(itemID, quantity)
-    if currentPurchaseTracking[itemID] then
+    if currentPurchaseTracking and currentPurchaseTracking[itemID] then
         currentPurchaseTracking[itemID].purchased = currentPurchaseTracking[itemID].purchased + quantity
         APR:CheckPurchaseCompletion()
     end
@@ -26,6 +29,7 @@ end
 
 function APR:BuyItemFromMerchant(BuyMerchant)
     if not BuyMerchant or #BuyMerchant == 0 then return end
+    if APR:CheckPurchaseCompletion() then return end
     local hasPurchasedAnyRequiredItem = false
     if APR.settings.profile.debug then
         for _, item in ipairs(BuyMerchant) do
@@ -36,14 +40,15 @@ function APR:BuyItemFromMerchant(BuyMerchant)
         local id = GetMerchantItemID(i)
         for _, item in ipairs(BuyMerchant) do
             if tonumber(id) == item.itemID then
-                BuyMerchantItem(i, item.quantity or 1)
+                local quantity = item.quantity or 1
+                if quantity > 0 then BuyMerchantItem(i, quantity) end
                 hasPurchasedAnyRequiredItem = true
                 APR:Debug("Purchase made: itemID=" .. item.itemID .. ", quantity=" .. (item.quantity or 1))
             end
         end
     end
     if hasPurchasedAnyRequiredItem then
-        CloseMerchant()
+        APR:CheckPurchaseCompletion()
     end
 end
 
