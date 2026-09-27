@@ -3221,7 +3221,7 @@ APR.RouteQuestStepList["630-ValSharah"] = {
             PickUp = { 39731 },
             ExtraLineText = "SCOUTING_MAP",
             IsAdventureMap = true,
-            NoArrow = 1,
+            NoArrow = true,
             Zone = 627,
             _index = 5,
         },
@@ -9838,7 +9838,7 @@ APR.RouteQuestStepList["Order Hall Druid Part 2"] = {
     expansion = APR.EXPANSIONS.Legion,
     category = APR.CATEGORIES.Events,
     mapID = 627,
-    conditions = { Event = APR.EVENTS.Remix, Class = APR.Classes },
+    conditions = { Event = APR.EVENTS.Remix, Class = APR.Classes.Druid },
     nextRoute = { "630-Azsuna" },
     steps = {
         {
@@ -9862,7 +9862,7 @@ APR.RouteQuestStepList["Artifact Weapon - Druid - Balance"] = {
     category = APR.CATEGORIES.Leveling,
     mapID = 627,
     conditions = { Class = APR.Classes.Druid, ClassSpec = APR.Specs["Druid - Balance"] },
-    extRoute = {},
+    nextRoute = {},
     steps = {
         {
             Waypoint = 1,
