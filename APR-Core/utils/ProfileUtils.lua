@@ -9,6 +9,9 @@
 -- Checks character-specific override first, then falls back to profile setting.
 -- @return boolean - true to hide the heirloom warning, false to show it
 function APR:GetHeirloomWarning()
+    if self:GetGameVersion() == self.GAME_VERSIONS.Forever then
+        return true
+    end
     if SettingsDB and SettingsDB.char and SettingsDB.char.showHeirloomWarning ~= nil then
         return SettingsDB.char.showHeirloomWarning
     end
