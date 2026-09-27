@@ -51,7 +51,29 @@ function APR:MeetsItemCount(requirement)
     return self:CompareRouteNumber(total, requirement.operator or ">=", requirement.count)
 end
 
+--- Equipment lists are conjunctions; a single requirement remains supported.
+function APR:MeetsEquippedItem(requirement)
+    if requirement[1] then
+        for _, entry in ipairs(requirement) do
+            if not self:MeetsEquippedItem(entry) then return false end
+        end
+        return true
+    end
+    if not requirement.slot then return false end
+    local id = GetInventoryItemID("player", requirement.slot)
+    local matches = requirement.itemID and id == requirement.itemID or not requirement.itemID and id ~= nil
+    if requirement.invert then matches = not matches end
+    return matches
+end
+
 function APR:MeetsEquippedItemStat(requirement)
+    if requirement[1] then
+        for _, entry in ipairs(requirement) do
+            if not self:MeetsEquippedItemStat(entry) then return false end
+        end
+        return true
+    end
+    if not requirement.slot then return false end
     local slot, stat, value = requirement.slot, requirement.stat
     if stat == "QUALITY" and GetInventoryItemQuality then
         value = GetInventoryItemQuality("player", slot)

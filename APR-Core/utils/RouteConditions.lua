@@ -91,13 +91,7 @@ function APR:MeetsExtendedRouteConditions(c)
     if c.AllOf then for _, v in ipairs(c.AllOf) do if not self:AreConditionalFiltersMet(v) then return false end end end
     if c.Not and self:AreConditionalFiltersMet(c.Not) then return false end
     if c.Skill and not self:CompareRouteNumber(self:GetRouteSkill(c.Skill), c.Skill.operator or ">=", c.Skill.rank or 1) then return false end
-    if c.EquippedItem then
-        local r = c.EquippedItem
-        local id = GetInventoryItemID("player", r.slot)
-        local matches = r.itemID and id == r.itemID or not r.itemID and id ~= nil
-        if r.invert then matches = not matches end
-        if not matches then return false end
-    end
+    if c.EquippedItem and not self:MeetsEquippedItem(c.EquippedItem) then return false end
     if c.Collection and not self:IsRouteCollectionComplete(c.Collection) then return false end
     return true
 end
