@@ -26,8 +26,9 @@ end
 
 function debugstack() return "" end
 
+local registeredEvents
 function CreateFrame()
-    return { RegisterEvent = function() end, SetScript = function() end }
+    return { RegisterEvent = function(_, event) registeredEvents[event] = true end, SetScript = function() end }
 end
 
 function UnitRace() return "Human", "Human", 1 end
@@ -48,12 +49,14 @@ local taxi = {
     IsNodeVisible = unexpectedTaxiCall,
 }
 
-local function loadClient(game, locale, faction, withTaxi, existingAPI)
+local function loadClient(game, locale, faction, withTaxi, existingAPI, projectID)
     FarstriderLibData_API = existingAPI
     FarstriderLib_API = nil
     FarstriderLibData = nil
     LibTaxiData_API = withTaxi and taxi or nil
-    WOW_PROJECT_ID = game == "Standard" and WOW_PROJECT_MAINLINE or 99
+    registeredEvents = {}
+    WOW_PROJECT_ID = projectID or WOW_PROJECT_MAINLINE
+    function GetBuildInfo() return "version", "build", "date", game == "Camelot" and 16001 or 120105, "extra" end
     function GetExpansionLevel() return game == "Standard" and 11 or 0 end
 
     function GetLocale() return locale end
@@ -110,6 +113,8 @@ for _, game in ipairs({ "Standard", "Camelot" }) do
                     end
                 end
                 if vanilla then
+                    assert(not registeredEvents.PLAYER_HOUSE_LIST_UPDATED,
+                        "Forever must not subscribe to Retail housing events")
                     assert(not portal, "Forever must not inherit the Retail portal graph")
                     assert(boat and boat.from.loc.mapId == 0 and boat.to.loc.mapId == 1,
                         "Vanilla must retain its native Menethil-Theramore transport")
@@ -136,6 +141,37 @@ for _, game in ipairs({ "Standard", "Camelot" }) do
                 cases = cases + 1
             end
         end
+    end
+end
+
+-- The world data must be independent of Forever sharing Retail's project ID.
+C_Map = { GetAreaInfo = function(id) return tostring(id) end }
+for _, faction in ipairs({ "Alliance", "Horde" }) do
+    local expectedCount
+    for _, projectID in ipairs({ WOW_PROJECT_MAINLINE, 99 }) do
+        local _, api = loadClient("Camelot", "enUS", faction, false, nil, projectID)
+        if expectedCount then assert(#api.WAYPOINTS == expectedCount) end
+        expectedCount = #api.WAYPOINTS
+        local auberdine, undercity = false, false
+        for _, waypoint in ipairs(api.WAYPOINTS) do
+            for _, endpoint in ipairs({ waypoint.from, waypoint.to }) do
+                local loc = endpoint.loc
+                if loc then
+                    assert(loc.mapId ~= 530 and loc.mapId ~= 571 and loc.mapId ~= 2222,
+                        "Forever must not inherit expansion continent connections")
+                end
+            end
+            if waypoint.from.locaId == 1003 or waypoint.from.locaId == 1004 then
+                local args = waypoint.from.locaArgs()
+                if args[1] == "150" and args[2] == "442" then auberdine = true end
+                if args[1] == "1497" and args[2] == "1637" then undercity = true end
+                assert(args[2] ~= "3981" and args[2] ~= "3537" and args[2] ~= "495"
+                    and args[2] ~= "3574" and args[2] ~= "4152" and args[2] ~= "3988",
+                    "Forever must not inherit TBC/Wrath boats or zeppelins")
+            end
+        end
+        assert(auberdine == (faction == "Alliance"))
+        assert(undercity == (faction == "Horde"))
     end
 end
 

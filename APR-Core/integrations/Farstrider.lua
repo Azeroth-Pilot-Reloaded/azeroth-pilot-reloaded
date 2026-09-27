@@ -26,7 +26,7 @@ local function InstallSecretSafeFarstriderPredicates()
         if not spellID then
             return false
         end
-        if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE and InCombatLockdown() then
+        if InCombatLockdown() then
             return false
         end
         if C_SpellBook and C_SpellBook.IsSpellInSpellBook and not C_SpellBook.IsSpellInSpellBook(spellID) then
