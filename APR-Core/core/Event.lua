@@ -511,7 +511,7 @@ function APR.event.functions.inventory(event)
     if event == "BAG_UPDATE_DELAYED" then APR:SaveBankItemCounts() end
     if event == "BAG_UPDATE_DELAYED" or event == "GET_ITEM_INFO_RECEIVED" then APR:RefreshLevelProfileTargets() end
     if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
-    RefreshForOptions({ "LootItems", "LootMoney", "Collection", "ItemCount", "EquippedItemStat", "SellItems",
+    RefreshForOptions({ "LootItems", "LootMoney", "VendorMoney", "Collection", "ItemCount", "EquippedItemStat", "SellItems",
         "BankDeposit", "BankWithdraw", "DestroyItems", "EquipItem", "BuyMerchant" })
 end
 
@@ -521,11 +521,11 @@ function APR.event.functions.spellbook()
 end
 
 function APR.event.functions.money()
-    RefreshForOptions({ "Money", "LootMoney", "BuyMerchant", "LearnSkill" })
+    RefreshForOptions({ "Money", "LootMoney", "VendorMoney", "BuyMerchant", "LearnSkill" })
 end
 
 function APR.event.functions.equipment()
-    RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems", "LootMoney",
+    RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems", "LootMoney", "VendorMoney",
         "EquipItem" })
 end
 

@@ -132,6 +132,8 @@ class RouteSchema:
             "ClassSpec": constants("Specs"), "Gender": enum((1, 2, 3)),
             "Event": constants("EVENTS"), "BeLvl": number(1),
             "Money": obj({"copper": COUNT, "operator": OPERATOR}, required=("copper",)),
+            "VendorMoney": obj({"copper": COUNT, "operator": OPERATOR, "includeEquipped": BOOL,
+                                "equippedSlots": array(SLOT, 1)}, required=("copper",)),
             "ItemCount": obj({"itemID": ID, "itemIDs": IDS, "count": COUNT,
                               "operator": OPERATOR, "includeBank": BOOL, "includeUsableToys": BOOL},
                              required=("count",), choices=(("itemID", "itemIDs"),)),

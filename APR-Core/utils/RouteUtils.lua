@@ -600,6 +600,7 @@ function APR:AreConditionalFiltersMet(conditions)
     return (not conditions.Faction or conditions.Faction == self.Faction) and
         (conditions.Hardcore == nil or self:IsHardcoreCharacter() == conditions.Hardcore) and
         (not conditions.Money or self:CompareRouteNumber(GetMoney and GetMoney(), conditions.Money.operator or ">=", conditions.Money.copper)) and
+        (not conditions.VendorMoney or self:MeetsVendorMoney(conditions.VendorMoney)) and
         (not conditions.ItemCount or self:MeetsItemCount(conditions.ItemCount)) and
         (not conditions.EquippedItemStat or self:MeetsEquippedItemStat(conditions.EquippedItemStat)) and
         (not conditions.Race or self:MatchesConditionValue(conditions.Race, self.Race, self.RaceID)) and
