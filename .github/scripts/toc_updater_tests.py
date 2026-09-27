@@ -93,15 +93,57 @@ class TocUpdaterTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "Invalid TOC Interface"):
             toc_updater.update_toc_content(original, {0})
 
-    def test_repairs_mixed_fallback_without_losing_camelot_support(self) -> None:
+    def test_filters_camelot_only_from_retail_metadata(self) -> None:
         original = ("## Interface: 120100, 16001\n## Interface-Retail: 120100, 16001\n"
                     "## Interface-Camelot: 16001\n## X-Interface: 120100\n")
         updated = toc_updater.update_toc_content(original, {120105})
-        self.assertIn("## Interface: 120100, 120105\n", updated)
+        self.assertIn("## Interface: 16001, 120100, 120105\n", updated)
         self.assertIn("## Interface-Retail: 120100, 120105\n", updated)
         self.assertIn("## Interface-Camelot: 16001\n", updated)
         with self.assertRaisesRegex(ValueError, "non-Retail"):
             toc_updater.update_toc_content(original, {16001})
+
+    def test_mixed_interface_is_unchanged_without_new_retail_versions(self) -> None:
+        original = (
+            "## Interface: 16001, 110207, 120100, 120105\r\n"
+            "## Interface-Retail: 110207, 120100, 120105\r\n"
+            "## X-Interface: 120105\r\n"
+            "## Interface-Camelot: 16001\r\n\r\n"
+            "## Title: APR\r\n"
+        )
+        self.assertEqual(
+            original, toc_updater.update_toc_content(original, {120100, 120105})
+        )
+
+    def test_adds_retail_versions_while_preserving_mixed_interface(self) -> None:
+        original = (
+            "## Interface: 16001, 120100\r\n"
+            "## Interface-Retail: 120100\r\n"
+            "## X-Interface: 120100\r\n"
+            "## Interface-Camelot: 16001\r\n"
+        )
+        expected = (
+            "## Interface: 16001, 120100, 120105\r\n"
+            "## Interface-Retail: 120100, 120105\r\n"
+            "## X-Interface: 120105\r\n"
+            "## Interface-Camelot: 16001\r\n"
+        )
+        updated = toc_updater.update_toc_content(original, {120105})
+        self.assertEqual(expected, updated)
+        self.assertEqual(updated, toc_updater.update_toc_content(updated, {120105}))
+
+    def test_x_interface_uses_retail_versions_only(self) -> None:
+        original = (
+            "## Interface: 120100, 990001\n"
+            "## Interface-Retail: 120100\n"
+            "## X-Interface: 120100\n"
+            "## Interface-Custom: 990001\n"
+        )
+        updated = toc_updater.update_toc_content(original, {120105})
+        self.assertIn("## Interface: 120100, 120105, 990001\n", updated)
+        self.assertIn("## Interface-Retail: 120100, 120105\n", updated)
+        self.assertIn("## X-Interface: 120105\n", updated)
+        self.assertIn("## Interface-Custom: 990001\n", updated)
 
     def test_failed_product_lookup_does_not_touch_the_toc(self) -> None:
         original = "## Interface: 120100\n## X-Interface: 120100\n"
