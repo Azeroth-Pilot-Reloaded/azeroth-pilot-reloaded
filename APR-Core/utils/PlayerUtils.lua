@@ -132,7 +132,7 @@ end
 function APR:HasAura(spellID)
     if not C_UnitAuras or not C_UnitAuras.GetPlayerAuraBySpellID then return false end
     local aura = C_UnitAuras.GetPlayerAuraBySpellID(spellID)
-    return aura ~= nil
+    return (not self.CanAccessValue or self:CanAccessValue(aura)) and aura ~= nil
 end
 
 local function SafeReputationAPICall(api, factionID)
@@ -169,8 +169,13 @@ local function GetStandardReputationProgress(factionID, targetLevel)
     if not factionData and GetFactionInfoByID then
         local ok, name, _, reaction, minimum, maximum, standing = pcall(GetFactionInfoByID, factionID)
         if ok and name then
-            factionData = { name = name, reaction = reaction, currentReactionThreshold = minimum,
-                nextReactionThreshold = maximum, currentStanding = standing }
+            factionData = {
+                name = name,
+                reaction = reaction,
+                currentReactionThreshold = minimum,
+                nextReactionThreshold = maximum,
+                currentStanding = standing
+            }
         end
     end
     if not factionData then

@@ -1,4 +1,5 @@
 -- Exercise real predicates/action handlers against changing game state.
+dofile("APR-Core/utils/SecretUtils.lua")
 local L = setmetatable({}, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
 

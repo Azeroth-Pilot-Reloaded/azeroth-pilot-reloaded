@@ -557,7 +557,7 @@ function APR.event.functions.tame(event, unit, castGUID, spellID)
 end
 
 function APR.event.functions.buffs(event, unitTarget, updateInfo)
-    if unitTarget == "player" then
+    if not APRSecret:CanAccessValue(unitTarget) or unitTarget == "player" then
         APR:RefreshLevelProfileTargets()
         RefreshForOptions({ "HasAura", "DontHaveAura" })
     end
@@ -578,6 +578,14 @@ function APR.event.functions.cooldowns(event, ...)
         filter = { spell = true }
     elseif event == "SPELL_UPDATE_COOLDOWN" then
         local spellID, baseSpellID, category, startRecoveryCategory, itemID = ...
+
+        if not APRSecret:CanAccessValue(spellID) or not APRSecret:CanAccessValue(baseSpellID)
+            or not APRSecret:CanAccessValue(category) or not APRSecret:CanAccessValue(startRecoveryCategory)
+            or not APRSecret:CanAccessValue(itemID) then
+            APR.currentStep:UpdateStepButtonCooldowns()
+            APR.currentStep:UpdateStepButtonUsability()
+            return
+        end
 
         -- Shared categories can affect several buttons, so favor correctness and refresh all spells.
         if category ~= nil or startRecoveryCategory ~= nil or (spellID == nil and itemID == nil) then
@@ -1383,6 +1391,7 @@ function APR.event.functions.spec(event, unit)
 end
 
 function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
+    if not APRSecret:CanAccessValue(unitTarget) or not APRSecret:CanAccessValue(spellID) then return end
     if step and step.SpellETA then APR:HandleSpellETA(step, unitTarget, spellID) end
     if step and step.TameBeast then APR:HandleTameBeast(step, event, unitTarget, spellID) end
     if step and step.TameBeast and unitTarget == "player" then APR.event:QueueStepRefresh() end

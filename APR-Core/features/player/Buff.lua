@@ -13,8 +13,6 @@ local DEFAULT_SPELL_ICON = 134400
 local PLAYER_UNIT = "player"
 local AURA_SLOT_PREFIX = "APRTrackedBuff"
 local EMPTY_SPELL_FILTER = {}
-local INTERFACE_VERSION = select(4, GetBuildInfo())
-local UNIT_AURA_PAYLOAD_CAN_BE_FULLY_SECRET = INTERFACE_VERSION >= 120100
 
 APR.Buff.auras = {}
 APR.Buff.iconPool = {}
@@ -78,7 +76,7 @@ local function GetSlotOffset(index)
 end
 
 local function GetSpellIcon(spellID, aura)
-    if aura and aura.icon then
+    if APRSecret:CanAccessTable(aura) and APRSecret:CanAccessValue(aura.icon) and aura.icon then
         return aura.icon
     end
 
@@ -94,7 +92,7 @@ end
 local function ShowTrackedBuffTooltip(icon)
     GameTooltip:SetOwner(icon, "ANCHOR_BOTTOM")
 
-    if not UNIT_AURA_PAYLOAD_CAN_BE_FULLY_SECRET and icon.auraId and icon.auraId ~= 0 then
+    if icon.auraId and icon.auraId ~= 0 then
         GameTooltip:SetUnitBuffByAuraInstanceID(PLAYER_UNIT, icon.auraId)
         APR:AddTooltipLine(GameTooltip, L[icon.tooltipMessage], "general", "muted")
     else
@@ -191,17 +189,11 @@ local function EnsureAuraSlot(index)
 end
 
 local function SetLegacyAura(icon, aura)
-    icon.auraId = aura and aura.auraInstanceID or 0
-    SetIconEnabled(icon, aura ~= nil)
-end
-
-local function SetQueriedAura(icon, aura)
-    if UNIT_AURA_PAYLOAD_CAN_BE_FULLY_SECRET then
-        icon.auraId = 0
-        SetIconEnabled(icon, aura ~= nil)
-    else
-        SetLegacyAura(icon, aura)
-    end
+    local readable = APRSecret:CanAccessTable(aura)
+    local auraID
+    if readable then auraID = aura.auraInstanceID end
+    icon.auraId = APRSecret:CanAccessValue(auraID) and auraID or 0
+    SetIconEnabled(icon, readable)
 end
 
 function APR.Buff:BuffFrameOnInit()
@@ -255,10 +247,8 @@ function APR.Buff:AddBuffIcon(buff)
         local icon = self.iconPool[index] or CreateTrackedBuffIcon()
         self.iconPool[index] = icon
         local aura = C_UnitAuras.GetPlayerAuraBySpellID(buff.spellId)
-        local iconAura = not UNIT_AURA_PAYLOAD_CAN_BE_FULLY_SECRET and aura or nil
-
-        ConfigureTrackedBuffIcon(icon, buff, index, iconAura)
-        SetQueriedAura(icon, aura)
+        ConfigureTrackedBuffIcon(icon, buff, index, aura)
+        SetLegacyAura(icon, aura)
         table.insert(self.auras, icon)
     end
 
@@ -266,7 +256,8 @@ function APR.Buff:AddBuffIcon(buff)
 end
 
 function APR.Buff:UpdateBuffIcon(aura)
-    if self:UsesAuraContainer() or not aura or not aura.spellId then
+    if self:UsesAuraContainer() or not APRSecret:CanAccessTable(aura)
+        or not APRSecret:CanAccessValue(aura.spellId) or not aura.spellId then
         return
     end
 
@@ -278,7 +269,7 @@ function APR.Buff:UpdateBuffIcon(aura)
 end
 
 function APR.Buff:DisableBuffIcon(auraId)
-    if self:UsesAuraContainer() then
+    if self:UsesAuraContainer() or not APRSecret:CanAccessValue(auraId) then
         return
     end
 
@@ -295,54 +286,22 @@ function APR.Buff:RefreshLegacyBuffs()
     end
 
     for _, icon in ipairs(self.auras) do
-        SetQueriedAura(icon, C_UnitAuras.GetPlayerAuraBySpellID(icon.spellId))
+        SetLegacyAura(icon, C_UnitAuras.GetPlayerAuraBySpellID(icon.spellId))
     end
 end
 
-function APR.Buff:HandleUnitAuraUpdate(unitTarget, updateInfo)
+function APR.Buff:HandleUnitAuraUpdate(unitTarget)
     if self:UsesAuraContainer() then
         return
     end
 
-    -- In 12.1 the UNIT_AURA payload can be fully secret. A rare fallback where the
-    -- Blizzard AuraContainer module failed to load therefore refreshes only the
-    -- explicitly tracked spell IDs and never reads that payload.
-    if UNIT_AURA_PAYLOAD_CAN_BE_FULLY_SECRET then
-        self:RefreshLegacyBuffs()
+    if APRSecret:CanAccessValue(unitTarget) and unitTarget ~= PLAYER_UNIT then
         return
     end
 
-    if unitTarget ~= PLAYER_UNIT then
-        return
-    end
-
-    if not updateInfo or updateInfo.isFullUpdate then
-        self:RefreshLegacyBuffs()
-        return
-    end
-
-    if updateInfo.addedAuras then
-        for _, aura in ipairs(updateInfo.addedAuras) do
-            self:UpdateBuffIcon(aura)
-        end
-    end
-
-    if updateInfo.updatedAuraInstanceIDs then
-        for _, auraId in ipairs(updateInfo.updatedAuraInstanceIDs) do
-            local aura = C_UnitAuras.GetAuraDataByAuraInstanceID(unitTarget, auraId)
-            if aura then
-                self:UpdateBuffIcon(aura)
-            else
-                self:DisableBuffIcon(auraId)
-            end
-        end
-    end
-
-    if updateInfo.removedAuraInstanceIDs then
-        for _, auraId in ipairs(updateInfo.removedAuraInstanceIDs) do
-            self:DisableBuffIcon(auraId)
-        end
-    end
+    -- Forever and Retail can restrict the entire payload. Query only our tracked
+    -- spell IDs; never inspect event tables or infer restrictions from TOC numbers.
+    self:RefreshLegacyBuffs()
 end
 
 function APR.Buff:RemoveAllBuffIcon()
