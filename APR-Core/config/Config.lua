@@ -1554,6 +1554,7 @@ function APR.settings:createBlizzOptions()
                 order = 10,
                 type = "group",
                 name = L["HEIRLOOM"],
+                disabled = APR:GetGameVersion() == APR.GAME_VERSIONS.Forever,
                 args = {
                     heirloomWarning = {
                         order = 10.1,
@@ -1568,7 +1569,7 @@ function APR.settings:createBlizzOptions()
                             APR:SetHeirloomWarning(value)
                             APR.heirloom:RefreshFrameAnchor()
                         end,
-                        disabled = APR:IsRemixCharacter()
+                        disabled = APR:GetGameVersion() == APR.GAME_VERSIONS.Forever or APR:IsRemixCharacter()
                     },
                     heirloomTextAppearance = TextStyleUtils:CreateAppearanceOptions(
                         "heirloomTextAppearance", "heirloom", 10.2, {

@@ -12,6 +12,7 @@ APR.heirloom._combatWatcher = nil
 ---------------------------------------------------------------------------------------
 
 local HeirloomFrame = CreateFrame("Frame", "HeirloomPanel", UIParent, "BackdropTemplate")
+HeirloomFrame:Hide()
 HeirloomFrame:SetSize(250, 75)
 HeirloomFrame:SetFrameStrata("LOW")
 HeirloomFrame:SetClampedToScreen(true)
@@ -80,6 +81,10 @@ function APR.heirloom:HeirloomOnInit()
 end
 
 function APR.heirloom:SetDefaultDisplay()
+    if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
+        HeirloomPanel:Hide()
+        return
+    end
     HeirloomPanel:SetPoint("center", UIParent, "center", 0, 0)
     HeirloomFrame_body:Show()
     HeirloomFrameHeader:Show()
@@ -87,6 +92,10 @@ function APR.heirloom:SetDefaultDisplay()
 end
 
 function APR.heirloom:RefreshFrameAnchor()
+    if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
+        HeirloomPanel:Hide()
+        return
+    end
     if InCombatLockdown() then
         self._pendingCombatRefresh = true
         EnsureHeirloomCombatWatcher()
