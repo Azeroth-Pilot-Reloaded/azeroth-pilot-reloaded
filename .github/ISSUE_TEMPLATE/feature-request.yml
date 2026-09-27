@@ -1,41 +1,58 @@
 name: "Feature request"
-description: Suggest an idea for Azeroth Pilot Reloaded.
+description: Suggest a new feature or an improvement to APR.
 title: "[FEATURE] - "
 labels: ["Feature"]
-
 body:
-- type: markdown
-  attributes:
-    value: |
-      Please [search for existing issues](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/issues) before creating a new one.
+  - type: markdown
+    attributes:
+      value: |
+        Please [search existing requests](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/issues?q=is%3Aissue+label%3AFeature) first, including closed issues.
+        Describe one idea per issue and use a title that summarizes the desired improvement.
+        If an existing feature is broken, use the [bug report form](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/issues/new?template=bug-report.yml) instead.
 
-- type: textarea
-  attributes:
-    label: Description
-    description: Describe the issues and/or needs to which your feature request relates.
-  validations:
-    required: true
+  - type: textarea
+    id: problem
+    attributes:
+      label: Problem or use case
+      description: What are you trying to do, what is missing or difficult today, and who would benefit? Give a concrete example from your use of APR.
+      placeholder: "When I ..., I currently have to ... . This is difficult because ... ."
+    validations:
+      required: true
 
-- type: textarea
-  attributes:
-    label: Solution
-    description: |
-      Describe the solution that you would like to see implemented.
-  validations:
-    required: true
+  - type: textarea
+    id: proposed-solution
+    attributes:
+      label: Proposed improvement
+      description: Describe how you would like APR to behave and what a successful result would look like. An example workflow or mockup is welcome; implementation details are not required.
+      placeholder: "I would like to ... so that ... . For example, ... ."
+    validations:
+      required: true
 
-- type: textarea
-  attributes:
-    label: Alternative solutions
-    description: |
-      Describe any alternative solutions or features you've considered.
-  validations:
-    required: true
+  - type: dropdown
+    id: flavor
+    attributes:
+      label: Relevant World of Warcraft client
+      description: Select a client if the request depends on it.
+      options:
+        - All supported clients / not client-specific
+        - Retail (including PTR and Beta)
+        - WoW Forever (Camelot)
+        - Other (specify in additional context)
+    validations:
+      required: false
 
-- type: textarea
-  attributes:
-    label: Any additional information?
-    description: |
-      If you have additional information that does not match the other fields
-  validations:
-    required: false
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives or current workaround
+      description: If you have tried other APR settings, addons, or manual workarounds, describe them and what they do not solve. Leave blank if you have not considered alternatives.
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Examples and additional context
+      description: Add screenshots, mockups, related issues, or examples of similar behavior. For route requests, include the client, zone, faction, and level range where relevant.
+    validations:
+      required: false
