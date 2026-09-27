@@ -42,6 +42,47 @@ local filters = {
     ItemCount = { itemID = 10, count = 2 },
     EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 2.05, precision = 1 }
 }
+-- Vendor eligibility counts cash, bag stacks and only the selected equipment.
+do
+    dofile("APR-Core/utils/LootUtils.lua")
+    local oldItem, oldLink, oldCopper = C_Item, GetInventoryItemLink, copper
+    local weapon, cached = "item:weapon", true
+    local rule = { VendorMoney = { copper = 102, equippedSlots = { 16, 16 } } }
+    local function price(item)
+        local value = 20
+        if item == "item:weapon" then value = cached and 12 or nil end
+        return nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, value
+    end
+    GetInventoryItemLink = function(_, slot) return slot == 16 and weapon or nil end
+    for _, modern in ipairs({ true, false }) do
+        local function slots(bag) return bag == 0 and 2 or 0 end
+        local function info(_, slot)
+            if modern then return { itemID = slot, stackCount = 2, hasNoValue = slot == 2 } end
+            return 1, 2, false, 0, false, false, nil, false, slot == 2, slot
+        end
+        C_Item = modern and { GetItemInfo = price } or nil
+        C_Container = modern and { GetContainerNumSlots = slots, GetContainerItemInfo = info } or nil
+        GetItemInfo, GetContainerNumSlots, GetContainerItemInfo = price, slots, info
+        copper = 49
+        assert(not APR:AreConditionalFiltersMet(rule), "101 copper skips the step")
+        copper = 50
+        assert(APR:AreConditionalFiltersMet(rule), "102 copper includes stacks and weapon once")
+        assert(not APR:AreConditionalFiltersMet({ Money = { copper = 102 } }), "Money remains cash-only")
+        copper = 51
+        assert(APR:AreConditionalFiltersMet(rule), "More than 102 also qualifies")
+        rule.VendorMoney.operator = "<"
+        assert(not APR:AreConditionalFiltersMet(rule))
+        rule.VendorMoney.operator = nil
+        weapon = nil
+        assert(not APR:AreConditionalFiltersMet(rule), "Missing weapon contributes zero")
+        weapon, cached = "item:weapon", false
+        assert(not APR:AreConditionalFiltersMet(rule), "Uncached prices contribute zero")
+        cached = true
+        assert(APR:AreConditionalFiltersMet({ AnyOf = { rule } }))
+    end
+    C_Item, GetInventoryItemLink, copper = oldItem, oldLink, oldCopper
+    C_Container, GetItemInfo, GetContainerNumSlots, GetContainerItemInfo = nil, nil, nil, nil
+end
 assert(APR:AreConditionalFiltersMet(filters))
 copper = 100
 assert(not APR:AreConditionalFiltersMet(filters), "Money skip threshold is exclusive")
@@ -230,6 +271,13 @@ APR.event.functions.bank('BANKFRAME_OPENED')
 assert(APR.routeBankOpen and #timers == 3, 'Bank event shares coalesced refresh')
 APR.event.functions.bank('BANKFRAME_CLOSED')
 assert(not APR.routeBankOpen)
+currentStep = { AnyOf = { { VendorMoney = { copper = 102, equippedSlots = { 16 } } } } }
+for _, event in ipairs({ "money", "equipment", "inventory" }) do
+    APR.event:CleanupEvents()
+    local before = #timers
+    APR.event.functions[event]()
+    assert(#timers == before + 1, event .. " refreshes nested VendorMoney conditions")
+end
 print("Route resources: money, inventory, equipment, Hardcore, branching and coalesced events passed")
 
 -- Zone conditions use the same evaluator for progression and list visibility.

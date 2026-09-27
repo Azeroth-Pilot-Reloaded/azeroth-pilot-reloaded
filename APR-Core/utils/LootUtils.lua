@@ -79,6 +79,12 @@ function APR:GetLootMoneyProgress(rule)
     return cash, resale, math.max(1, tonumber(rule.copper) or 1)
 end
 
+-- Eligibility filter using the same cash/resale estimate as the loot objective.
+function APR:MeetsVendorMoney(rule)
+    local cash, resale = self:GetLootMoneyProgress(rule)
+    return self:CompareRouteNumber(cash + resale, rule.operator or ">=", rule.copper)
+end
+
 function APR:FormatLootMoney(copper)
     local formatMoney = C_CurrencyInfo and C_CurrencyInfo.GetCoinTextureString or GetCoinTextureString
     return formatMoney and formatMoney(copper) or tostring(copper)

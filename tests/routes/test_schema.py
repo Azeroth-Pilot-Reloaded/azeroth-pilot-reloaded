@@ -46,6 +46,7 @@ def examples():
         "Faction": "Horde", "Race": seq("Orc", "Troll"), "Class": seq("WARRIOR", 3),
         "ClassNot": "MAGE", "ClassSpec": 253, "Gender": 3, "Event": "Remix",
         "Money": {"copper": 10, "operator": "<"},
+        "VendorMoney": {"copper": 102, "operator": ">=", "equippedSlots": seq(16), "includeEquipped": False},
         "ItemCount": {"itemIDs": seq(1, 2), "count": 2, "includeBank": True, "includeUsableToys": False},
         "EquippedItemStat": {"slot": 16, "stat": "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", "value": 3.5,
                              "operator": "<", "precision": 1, "allowMissing": False},
@@ -112,6 +113,13 @@ class RouteSchemaTests(unittest.TestCase):
                                 {2: entry}, {**value, "slot": 16}):
                     with self.assertRaises(InvalidRoute):
                         self.schema.condition({name: invalid}, "condition")
+
+    def test_vendor_money_invalid_options(self):
+        for invalid in ({}, {"copper": -1}, {"copper": 102, "operator": "="},
+                        {"copper": 102, "equippedSlots": seq(20)},
+                        {"copper": 102, "includeEquipped": 1}):
+            with self.subTest(value=invalid), self.assertRaises(InvalidRoute):
+                self.schema.condition({"VendorMoney": invalid}, "condition")
 
     def test_nested_objects_reject_unknown_fields(self):
         def mutations(value):
