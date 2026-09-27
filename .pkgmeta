@@ -10,3 +10,4 @@ ignore:
   - wiki.md
   - Update-Libraries.cmd
   - tools
+  - tests

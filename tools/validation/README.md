@@ -1,10 +1,13 @@
 # Route performance checks
 
+All regression tests now live in `tests/`. Run `python tests/run.py` for all
+Python, Lua and route syntax checks; see `tests/README.md` for dependencies and CI.
+
 Current-step rendering regression:
 
 ```text
-lua tools/validation/current_step_render_test.lua
-lua tools/validation/route_panels_render_test.lua
+lua tests/lua/current_step_render_test.lua
+lua tests/lua/route_panels_render_test.lua
 # All focused UI checks using the Lua 5.1 runtime from lupa:
 .venv/Scripts/python.exe tools/validation/run_lua_tests.py --ui-only
 ```
@@ -13,7 +16,7 @@ The test loads the frame and row modules and runs 100 identical content passes.
 It checks zero additional frame/font allocations, no row/action hide calls, one
 layout per pass, updated tooltips, wrapping, route progress reuse, collapse state,
 percentage labels, and secure-row replacement and cleanup across combat. The
-Python runner runs it before the route checks. Widget mocks do not validate the
+Python runner discovers all Lua suites automatically. Widget mocks do not validate the
 client's rendering or taint system: also check a long objective, a pickup list,
 image previews, collapse/expand, and an item-use step during combat in game.
 
@@ -46,7 +49,7 @@ resizing, independent/snapped collapse, and item buttons during combat.
 Client packaging and visibility checks:
 
 ```text
-lua tools/validation/client_compatibility_test.lua
+lua tests/lua/client_compatibility_test.lua
 python tools/validation/check_package.py PATH_TO_UNPACKED_APR
 ```
 
@@ -58,7 +61,7 @@ missing Retail APIs/events. These mocks do not replace an in-game Forever smoke 
 Run the focused regressions from the repository root with Lua 5.1:
 
 ```text
-lua tools/validation/quest_order_performance_test.lua
+lua tests/lua/quest_order_performance_test.lua
 ```
 
 Or use the Python runner with `lupa` installed:
@@ -108,13 +111,13 @@ use a reentrancy guard and iterative batches (25 passes or 3 ms between passes),
 preventing stack overflow when many steps are already complete. A single pass
 cannot be interrupted. Client testing is still needed for scenario transitions.
 
-The default runner always checks the Midnight route registration. When the optional,
-locally maintained `docs/routes/2393-Midnight-Speedrun-alt-quests.csv` snapshot is
-present, it also audits quest prerequisites and objective order against that file.
-Fresh checkouts skip only this snapshot audit. The performance-only option skips the
-route-specific checks entirely.
+`python tests/run.py --suite routes` validates Lua syntax, options, types and nested
+conditions for every route, with the same schema for every expansion. There are no
+guide-specific snapshots. `route_engine_test.lua` exercises parallel groups,
+prerequisites, saved aliases and temporary routes using synthetic guides;
+`route_conditions_test.lua` tests shared predicates independently of route data.
 
-`xp_requirements_test.lua` checks absolute XP offsets through the existing level
+`level_requirements_test.lua` checks absolute XP offsets through the existing level
 resolver: exact boundaries, client-specific XP totals, level filters, display and
 missing XP data. It runs alongside the client compatibility checks in the runner.
 

@@ -32,16 +32,15 @@ def validate(root):
     retail = root / 'APR_Mainline.toc'
     forever = root / 'APR_Camelot.toc'
     assert retail.is_file() and forever.is_file(), 'Both client TOCs must exist in the same package'
-    assert route_entries(retail) == ['Routes/RouteList.xml']
-    assert route_entries(forever) == ['Routes/Forever/RouteList.xml']
-    assert route_entries(root / 'APR.toc') == ['Routes/RouteList.xml']
+    for toc in (retail, forever, root / 'APR.toc'):
+        assert route_entries(toc) == ['Routes/RouteList_[Game].xml'], f'{toc.name} must select routes by client'
     forever_toc = forever.read_text(encoding='utf-8-sig')
     assert '## Interface: 16001' in forever_toc
     assert '120105' not in forever_toc.splitlines()[0]
     validate_farstrider(root, retail, 'Standard')
     validate_farstrider(root, forever, 'Camelot')
     validate_farstrider(root, root / 'APR.toc', 'Standard')
-    manifests = [root/'Routes/RouteList.xml', root/'Routes/Forever/RouteList.xml']
+    manifests = [root/'Routes/RouteList_Standard.xml', root/'Routes/RouteList_Camelot.xml']
     scripts = []
     for manifest in manifests:
         entries = [element.attrib['file'] for element in ET.parse(manifest).getroot()]
@@ -50,6 +49,7 @@ def validate(root):
         scripts.append(set(entries))
     assert not scripts[0] & scripts[1], 'A route file is loaded by both client families'
     assert not (root/'tools').exists(), 'Local tooling must not be distributed'
+    assert not (root/'tests').exists(), 'Tests must not be distributed'
     print(f'Package passed: one addon, Retail ({len(scripts[0])} files), Forever ({len(scripts[1])} files), client-specific Farstrider data, no local tools')
 
 

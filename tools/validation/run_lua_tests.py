@@ -1,155 +1,46 @@
-"""Run the Midnight route regression checks using the Lua 5.1 runtime from lupa.
+"""Compatibility entry point for the Lua suites now stored under tests/lua."""
 
-Alternatively, run `lua tools/validation/midnight_speedrun_alt_test.lua` from the repo root.
-"""
-
+import argparse
 from pathlib import Path
-from collections import defaultdict
-import csv
-import os
 import sys
-import xml.etree.ElementTree as ET
+import unittest
 
-from lupa.lua51 import LuaRuntime
+ROOT = Path(__file__).resolve().parents[2]
+sys.path.insert(0, str(ROOT))
+
+from tests.lua.test_regressions import LuaRegressionTests
+
+GROUPS = {
+    "forever-only": ("farstrider_data", "taxi_discovery", "forever_travel",
+                     "client_compatibility", "level_requirements", "reputation_progress",
+                     "route_conditions", "route_action_usage", "native_route_actions",
+                     "area_navigation", "route_engine", "step_progression"),
+    "ui-only": ("current_step_render", "route_panels_render", "reputation_progress",
+                "quest_order_performance", "ui_skin"),
+    "skins-only": ("ui_skin", "eui_settings"),
+    "xp-overlay-only": ("xp_overlay_persistence",),
+    "zone-performance-only": ("zone_transition_performance", "farstrider_routing_performance"),
+    "performance-only": ("quest_order_performance", "zone_transition_performance",
+                         "farstrider_routing_performance", "step_progression"),
+}
 
 
-def lua_array_values(table):
-    """Return a Lua array in numeric-index order."""
-    return [table[index] for index in range(1, len(table) + 1)]
-
-
-def audit_route(root, runtime):
-    """Compare the executable route with independently collected quest prerequisites."""
-    key = "2393-Midnight-Speedrun-alt"
-    route = runtime.globals().APR.RouteQuestStepList[key]
-    steps = lua_array_values(route.steps)
-    for group in lua_array_values(route.parallelSteps):
-        steps.extend(lua_array_values(group.steps))
-    steps.sort(key=lambda step: step._index)
-    pickups, handins, objectives = defaultdict(list), defaultdict(list), defaultdict(set)
-    for step in steps:
-        for field, records in (("PickUp", pickups), ("Done", handins)):
-            for quest in (step[field].values() if step[field] else []):
-                records[quest].append(step._index)
-        for field in ("Qpart", "QpartPart", "Fillers"):
-            for quest, indexes in (step[field].items() if step[field] else []):
-                objectives[quest].update(indexes.values())
-
-    scripts = [element.attrib["file"] for element in ET.parse(root / "Routes/RouteList.xml").getroot()]
-    route_file = "Routes/Midnight/Midnight-Speedrun-alt.lua"
-    assert scripts.count(route_file) == 1, "The route must be loaded exactly once"
-    assert all((root / path).is_file() for path in scripts), "A registered route file is missing"
-    toc = (root / "APR.toc").read_text(encoding="utf-8-sig")
-    assert "120100" in toc.splitlines()[0]
-    assert toc.index("APR-Core/features/navigation/WorldCoordinateConverter.lua") < toc.index("Routes/RouteList.xml")
-
-    reference_path = root / f"docs/routes/{key}-quests.csv"
-    if not reference_path.is_file():
-        print(f"Quest audit skipped: optional snapshot not found at {reference_path.relative_to(root)}")
-        return
-
-    with reference_path.open(encoding="utf-8", newline="") as handle:
-        records = {int(row["quest_id"]): row for row in csv.DictReader(handle)}
-    assert set(records) == set(pickups) == set(handins), "Quest audit and executable route disagree"
-    assert set(objectives) <= set(pickups), "An objective has no corresponding quest pickup"
-    for quest, record in records.items():
-        assert pickups[quest] == list(map(int, record["pickup_steps"].split())), quest
-        assert handins[quest] == list(map(int, record["turnin_steps"].split())), quest
-        assert objectives[quest] == set(map(int, record["apr_objective_indexes"].split())), quest
-        if record["att_base_min_level"] == "unknown":
-            assert quest == 91281, "Only the supplied introductory quest lacks an ATT minimum"
-        else:
-            assert int(record["att_base_min_level"]) < 90, f"Endgame quest included: {quest}"
-        for entry in filter(None, record["parent_resolution"].split("; ")):
-            parent_text, resolution = entry.split(":", 1)
-            parent = int(parent_text)
-            if resolution == "ordered":
-                assert min(handins[parent]) < min(pickups[quest]), (quest, parent)
-            elif resolution == "accepted-wrapper":
-                assert min(pickups[parent]) < min(pickups[quest]), (quest, parent)
-                assert min(handins[quest]) < min(handins[parent]), (quest, parent)
-            else:
-                assert resolution in {
-                    "optional-breadcrumb-omitted",
-                    "adventure-map-alternative-94871",
-                    "supplied-intro-skip-and-account-campaign",
-                    "account-campaign-adventure-mode",
-                }, (quest, parent, resolution)
-                assert route.conditions.HasAchievement == 42045
-
-    print(f"Quest audit: {len(records)} quests; prerequisites, objectives and XML registration passed")
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    options = parser.add_mutually_exclusive_group()
+    for group in GROUPS:
+        options.add_argument("--" + group, dest="group", action="store_const", const=group)
+    args = parser.parse_args(argv)
+    if args.group:
+        suite = unittest.TestSuite(LuaRegressionTests("test_" + name) for name in GROUPS[args.group])
+    else:
+        suite = unittest.defaultTestLoader.loadTestsFromTestCase(LuaRegressionTests)
+    if args.group == "forever-only":
+        suite.addTests(unittest.defaultTestLoader.discover(
+            str(ROOT / "tests/routes"), pattern="test_*.py", top_level_dir=str(ROOT)
+        ))
+    return 0 if unittest.TextTestRunner(verbosity=2).run(suite).wasSuccessful() else 1
 
 
 if __name__ == "__main__":
-    root = Path(__file__).resolve().parents[2]
-    os.chdir(root)
-    if "--ui-only" in sys.argv:
-        for name in ("current_step_render_test", "route_panels_render_test", "reputation_progress_test",
-                     "quest_order_performance_test", "ui_skin_test"):
-            runtime = LuaRuntime(unpack_returned_tuples=True)
-            runtime.execute((root / f"tools/validation/{name}.lua").read_text(encoding="utf-8"))
-        sys.exit(0)
-    current_step_runtime = LuaRuntime(unpack_returned_tuples=True)
-    current_step_runtime.execute((root / "tools/validation/current_step_render_test.lua").read_text(encoding="utf-8"))
-    route_panels_runtime = LuaRuntime(unpack_returned_tuples=True)
-    route_panels_runtime.execute((root / "tools/validation/route_panels_render_test.lua").read_text(encoding="utf-8"))
-    custom_routes_runtime = LuaRuntime(unpack_returned_tuples=True)
-    custom_routes_runtime.execute((root / "tools/validation/custom_routes_test.lua").read_text(encoding="utf-8"))
-    taxi_runtime = LuaRuntime(unpack_returned_tuples=True)
-    taxi_runtime.execute((root / "tools/validation/taxi_discovery_test.lua").read_text(encoding="utf-8"))
-    travel_runtime = LuaRuntime(unpack_returned_tuples=True)
-    travel_runtime.execute((root / "tools/validation/forever_travel_test.lua").read_text(encoding="utf-8"))
-    farstrider_data_runtime = LuaRuntime(unpack_returned_tuples=True)
-    farstrider_data_runtime.execute((root / "tools/validation/farstrider_data_test.lua").read_text(encoding="utf-8"))
-    compatibility_runtime = LuaRuntime(unpack_returned_tuples=True)
-    compatibility_runtime.execute((root / "tools/validation/client_compatibility_test.lua").read_text(encoding="utf-8"))
-    xp_runtime = LuaRuntime(unpack_returned_tuples=True)
-    xp_runtime.execute((root / "tools/validation/xp_requirements_test.lua").read_text(encoding="utf-8"))
-    reputation_runtime = LuaRuntime(unpack_returned_tuples=True)
-    reputation_runtime.execute((root / "tools/validation/reputation_progress_test.lua").read_text(encoding="utf-8"))
-    resources_runtime = LuaRuntime(unpack_returned_tuples=True)
-    resources_runtime.execute((root / "tools/validation/route_resource_filters_test.lua").read_text(encoding="utf-8"))
-    uses_runtime = LuaRuntime(unpack_returned_tuples=True)
-    uses_runtime.execute((root / "tools/validation/route_action_usage_test.lua").read_text(encoding="utf-8"))
-    native_runtime = LuaRuntime(unpack_returned_tuples=True)
-    native_runtime.execute((root / "tools/validation/forever_native_actions_test.lua").read_text(encoding="utf-8"))
-    areas_runtime = LuaRuntime(unpack_returned_tuples=True)
-    areas_runtime.execute((root / "tools/validation/area_navigation_test.lua").read_text(encoding="utf-8"))
-    forever_runtime = LuaRuntime(unpack_returned_tuples=True)
-    forever_runtime.execute((root / "tools/validation/forever_routes_test.lua").read_text(encoding="utf-8"))
-    transition_runtime = LuaRuntime(unpack_returned_tuples=True)
-    transition_runtime.execute((root / "tools/validation/route_transition_test.lua").read_text(encoding="utf-8"))
-    zone_performance_runtime = LuaRuntime(unpack_returned_tuples=True)
-    zone_performance_runtime.execute(
-        (root / "tools/validation/zone_transition_performance_test.lua").read_text(encoding="utf-8")
-    )
-    farstrider_performance_runtime = LuaRuntime(unpack_returned_tuples=True)
-    farstrider_performance_runtime.execute(
-        (root / "tools/validation/farstrider_routing_performance_test.lua").read_text(encoding="utf-8")
-    )
-    if "--zone-performance-only" in sys.argv:
-        sys.exit(0)
-    skin_runtime = LuaRuntime(unpack_returned_tuples=True)
-    skin_runtime.execute((root / "tools/validation/ui_skin_test.lua").read_text(encoding="utf-8"))
-    settings_runtime = LuaRuntime(unpack_returned_tuples=True)
-    settings_runtime.execute((root / "tools/validation/eui_settings_test.lua").read_text(encoding="utf-8"))
-    if "--skins-only" in sys.argv:
-        sys.exit(0)
-    overlay_runtime = LuaRuntime(unpack_returned_tuples=True)
-    overlay_runtime.execute((root / "tools/validation/xp_overlay_persistence_test.lua").read_text(encoding="utf-8"))
-    if "--xp-overlay-only" in sys.argv:
-        sys.exit(0)
-    if "--performance-only" not in sys.argv:
-        runtime = LuaRuntime(unpack_returned_tuples=True)
-        runtime.execute((root / "tools/validation/midnight_speedrun_alt_test.lua").read_text(encoding="utf-8"))
-        audit_route(root, runtime)
-    performance_runtime = LuaRuntime(unpack_returned_tuples=True)
-    performance_runtime.execute((root / "tools/validation/quest_order_performance_test.lua").read_text(encoding="utf-8"))
-    progression_runtime = LuaRuntime(unpack_returned_tuples=True)
-    progression_runtime.execute((root / "tools/validation/step_progression_test.lua").read_text(encoding="utf-8"))
-    zone_runtime = LuaRuntime(unpack_returned_tuples=True)
-    zone_runtime.execute((root / "tools/validation/zone_conditions_test.lua").read_text(encoding="utf-8"))
-    delve_level_runtime = LuaRuntime(unpack_returned_tuples=True)
-    delve_level_runtime.execute((root / "tools/validation/delve_level_policy_test.lua").read_text(encoding="utf-8"))
-    silvermoon_runtime = LuaRuntime(unpack_returned_tuples=True)
-    silvermoon_runtime.execute((root / "tools/validation/silvermoon_intro_test.lua").read_text(encoding="utf-8"))
+    raise SystemExit(main())

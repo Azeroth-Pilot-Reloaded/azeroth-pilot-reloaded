@@ -28,7 +28,7 @@ jobs:
       - name: Test the updater
         run: |
           python -m py_compile .github/scripts/toc-updater.py
-          python -m unittest discover -s .github/scripts -p 'toc_updater_tests.py'
+          python -m unittest discover -s tests/scripts -p 'test_toc_updater.py'
 
       - name: Resolve Blizzard builds and update APR.toc
         run: python .github/scripts/toc-updater.py --ptr

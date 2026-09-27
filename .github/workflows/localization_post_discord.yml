@@ -92,7 +92,7 @@ jobs:
 
       - name: Run localization notification tests
         run: |
-          python -m unittest discover -s .github/scripts -p 'localization_post_discord_tests.py'
+          python -m unittest discover -s tests/scripts -p 'test_localization_post_discord.py'
 
       # -------------------------------------------------------------------
       # Run localization scraper
