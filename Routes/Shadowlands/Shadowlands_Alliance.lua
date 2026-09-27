@@ -2283,7 +2283,7 @@ APR.RouteQuestStepList["1670-Shadowlands-StoryOnly-A"] = {
             Qpart = { [59197] = { 1 } },
             Coord = { x = -4965.7, y = -2949.5 },
             Range = 100.69,
-            ExtraActionB = 6666,
+            ExtraActionB = true,
             Gossip = 1,
             RaidIcon = 166663,
             _index = 352,

@@ -839,7 +839,6 @@ APR.RouteQuestStepList["2393-Midnight-Treasures-Eversong-Woods"] = {
             Range = 1,
             Zone = 2537,
             _index = 13,
-            k
         },
         {
             LootItems = { { itemID = 256232, quantity = 10, questID = 93061 } },

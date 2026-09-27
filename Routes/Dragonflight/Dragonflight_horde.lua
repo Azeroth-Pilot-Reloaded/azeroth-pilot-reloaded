@@ -1250,7 +1250,8 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
         },
         {
             Done = { 66033 },
-            Coord = { Zone = 2092, x = 272, y = 3101.4 },
+            Coord = { x = 272, y = 3101.4 },
+            Zone = 2092,
             _index = 128,
         },
         {
