@@ -5,15 +5,15 @@ if not FarstriderLibData.Internal then return end
 
 local L = FarstriderLibData.L
 
--- Some non-mainline clients (e.g. WoW Forever) can report expansion level 0.
--- Treat this as pre-Cataclysm so classic-era route data remains available.
+-- Forever shares the modern API family, but its world is pre-Cataclysm.
+-- This library loads before APR, so detect the client without depending on APR.
+local interfaceVersion = GetBuildInfo and tonumber((select(4, GetBuildInfo()))) or 0
+local isForever = interfaceVersion >= 16000 and interfaceVersion < 17000
+local isRetail = not isForever and WOW_PROJECT_ID == WOW_PROJECT_MAINLINE
 local OriginalGetExpansionLevel = GetExpansionLevel
 local function GetExpansionLevel()
-    local level = OriginalGetExpansionLevel and OriginalGetExpansionLevel() or 0
-    if level == 0 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
-        return 2
-    end
-    return level
+    if isForever then return 0 end
+    return OriginalGetExpansionLevel and OriginalGetExpansionLevel() or 0
 end
 
 ---@enum SpecialLocaId
@@ -107,7 +107,7 @@ local function addBoat(fromMapId, fromPos, fromIsUI, fromAreaId, toMapId, toPos,
 end
 
 -- Pre-Cataclysm boats (Classic Only - routes removed in the Shattering)
-if GetExpansionLevel() < 3 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+if GetExpansionLevel() < 3 and not isRetail then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
         addBoat(0, { x = -3831, y = -611, z = 4 }, false, 150, 1, { x = 6448, y = 835, z = 5 }, false, 442, 600)                                  -- Menethil Harbor to Auberdine
@@ -121,7 +121,7 @@ if GetExpansionLevel() < 3 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
 end
 
 -- Cataclysm+ boats (Classic Only - added in the Shattering)
-if GetExpansionLevel() >= 3 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+if GetExpansionLevel() >= 3 and not isRetail then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
         addBoat(0, { x = -8645.5400390625, y = 1308.25, z = 5.23483991623 }, false, 1519, 1,
@@ -143,7 +143,7 @@ local function addZeppelin(fromMapId, fromPos, fromIsUI, fromAreaId, toMapId, to
 end
 
 -- Undercity zeppelins (Classic Only - UC destroyed on retail in BfA)
-if WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+if not isRetail then
     -- Horde
     if UnitFactionGroup("player") == "Horde" then
         addZeppelin(1, { x = 0.506, y = 0.126, z = 0 }, true, 1637, 0,
@@ -160,7 +160,7 @@ if WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
 end
 
 -- Pre-Cataclysm Classic shared routes (zones unchanged between pre-Cata and Cata+)
-if GetExpansionLevel() < 3 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+if GetExpansionLevel() < 3 and not isRetail then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
         addBoat(56, { x = 0.0637, y = 0.6224, z = 0 }, true, 150, 70, { x = 0.7151, y = 0.5634, z = 0 }, true, 513, 600)        -- Menethil Harbor to Theramore
@@ -181,7 +181,7 @@ if GetExpansionLevel() < 3 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
 end
 
 -- Retail and Cata+ Classic boats and zeppelins (same zone maps)
-if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE or GetExpansionLevel() >= 3 then
+if isRetail or GetExpansionLevel() >= 3 then
     -- Neutral
     addBoat(210, { x = 0.3902, y = 0.6701, z = 0 }, true, 35, 10, { x = 0.7016, y = 0.7327, z = 0 }, true, 392, 600) -- Booty Bay to Ratchet
 
@@ -251,7 +251,7 @@ if GetExpansionLevel() >= 2 then
 end
 
 -- Pandaria (Retail Only)
-if GetExpansionLevel() >= 4 and WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+if GetExpansionLevel() >= 4 and isRetail then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
         addPortal(true, 388, { x = 0.4975, y = 0.6866, z = 0 }, true, 5842, 504, { x = 0.6470, y = 0.7348, z = 0 }, true,
@@ -266,7 +266,7 @@ if GetExpansionLevel() >= 4 and WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
 end
 
 -- TBC+ city portals (Classic Only - different positions than retail portal rooms)
-if GetExpansionLevel() >= 1 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+if GetExpansionLevel() >= 1 and not isRetail then
     -- Dalaran to Caverns of Time (Wrath+)
     if GetExpansionLevel() >= 2 then
         addPortal(true, 125, { x = 0.2543, y = 0.5155, z = 661 }, true, 4613, 74, { x = 0.5460, y = 0.2830, z = 0 }, true,
@@ -345,7 +345,7 @@ if GetExpansionLevel() >= 1 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
 end
 
 -- Pandaria (Classic Only)
-if GetExpansionLevel() >= 4 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+if GetExpansionLevel() >= 4 and not isRetail then
     -- Alliance
     if UnitFactionGroup("player") == "Alliance" then
         addPortal(false, 84, { x = 0.6871, y = 0.1717, z = 117 }, true, 1519, 371, { x = 0.4624, y = 0.8517, z = 63 },
@@ -562,7 +562,7 @@ addSpell(3562, 87, { x = 0.27, y = 0.07, z = 0 }, true, 1537, 10)     -- Telepor
 addSpell(3565, 89, { x = 0.44, y = 0.78, z = 0 }, true, 1657, 10)     -- Teleport: Darnassus
 addSpell(3563, 998, { x = 0.85, y = 0.17, z = 0 }, true, 1497, 10)    -- Teleport: Undercity
 addSpell(3566, 88, { x = 0.22, y = 0.19, z = 0 }, true, 1638, 10)     -- Teleport: Thunder Bluff
-if GetExpansionLevel() < 3 and WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+if GetExpansionLevel() < 3 and not isRetail then
     addSpell(3567, 85, { x = 0.50, y = 0.50, z = 0 }, true, 1637, 10) -- Teleport: Orgrimmar (pre-Cata, map center approximation)
 else
     addSpell(3567, 85, { x = 0.57, y = 0.90, z = 0 }, true, 1637, 10) -- Teleport: Orgrimmar
@@ -866,7 +866,7 @@ if GetExpansionLevel() >= 5 then
 end
 
 -- Classic class teleports (pre-Legion destinations)
-if WOW_PROJECT_ID ~= WOW_PROJECT_MAINLINE then
+if not isRetail then
     -- Death Knight: Death Gate to original Acherus over Eastern Plaguelands (WotLK+)
     if GetExpansionLevel() >= 2 then
         addSpell(50977, 23, { x = 0.84, y = 0.50, z = 0 }, true, 4281, 10) -- Death Gate
@@ -1186,7 +1186,7 @@ addDynamicItemWithMultipleIds(hearthstones, FarstriderLibData.Util.GetBindingLoc
 
 table.sort(Connections.helpfulItems, function(a, b) return a < b end)
 
-if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+if isRetail then
     local f = CreateFrame("Frame")
     f:RegisterEvent("PLAYER_HOUSE_LIST_UPDATED")
     f:SetScript("OnEvent", function(_, _, ...)
