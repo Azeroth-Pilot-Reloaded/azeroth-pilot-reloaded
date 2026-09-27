@@ -6,22 +6,7 @@
 -- The default unit is the current target, but we allow overriding so mouseover or other units can be inspected.
 function APR:GetTargetID(unit)
     unit = unit or "target"
-    if UnitCreatureID then
-        local id = UnitCreatureID(unit)
-        -- UnitCreatureID may return a secret/tainted value in 12.0+;
-        -- guard against taint propagation by checking accessibility.
-        if id and not APRSecret:CanAccessValue(id) then
-            return nil
-        end
-        return id
-    end
-    local targetGUID = APR:SafeUnitGUID(unit)
-    if targetGUID then
-        local targetID = C_CreatureInfo.GetCreatureID and C_CreatureInfo.GetCreatureID(targetGUID) or
-            select(6, strsplit("-", targetGUID))
-        return tonumber(targetID)
-    end
-    return nil
+    return APRSecret:SafeUnitCreatureID(unit)
 end
 
 --- Prevent interactions with forbidden NPCs declared on a step.

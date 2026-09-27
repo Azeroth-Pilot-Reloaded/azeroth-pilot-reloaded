@@ -1,10 +1,10 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local actionKeys = { "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast", "DestroyItems", "EquipItem" }
+local actionKeys = { "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast", "DestroyItems",
+    "EquipItem" }
 APR.routeActionKeys = actionKeys
 
 local function CurrentNPC()
-    local guid = UnitGUID and (UnitGUID("npc") or UnitGUID("target"))
-    return guid and tonumber((select(6, strsplit("-", guid))))
+    return APRSecret:SafeUnitCreatureID("npc") or APRSecret:SafeUnitCreatureID("target")
 end
 
 local function Bags(bank)
@@ -35,13 +35,20 @@ local function Entries(rule)
     return rule.items or rule
 end
 
+local function GetSpellName(spellID)
+    if C_Spell and C_Spell.GetSpellInfo then
+        local info = C_Spell.GetSpellInfo(spellID)
+        return info and info.name
+    end
+    return GetSpellInfo and GetSpellInfo(spellID)
+end
+
 local function TrainerMatchesSpell(index, name, rank, spellID)
     local link = GetTrainerServiceItemLink and GetTrainerServiceItemLink(index)
     local linkedID = link and tonumber(link:match('spell:(%d+)'))
     if linkedID then return linkedID == spellID end
     -- Classic trainers expose localized names/ranks, not a service spell-ID API.
-    local info = C_Spell and C_Spell.GetSpellInfo and C_Spell.GetSpellInfo(spellID)
-    local spellName = info and info.name or (GetSpellInfo and GetSpellInfo(spellID))
+    local spellName = GetSpellName(spellID)
     local subtext = C_Spell and C_Spell.GetSpellSubtext or GetSpellSubtext
     local spellRank = subtext and subtext(spellID)
     return spellName == name and (rank or '') == (spellRank or '')
@@ -76,8 +83,14 @@ function APR:ProcessRouteItems(key, rule, state)
                 end
                 if wanted then
                     if info.isLocked then return false end
-                    state.pending = { bag = bag, slot = slot, itemID = info.itemID, count = info.stackCount, time =
-                    GetTime() }
+                    state.pending = {
+                    bag = bag,
+                        slot = slot,
+                        itemID = info.itemID,
+                        count = info.stackCount,
+                        time =
+                            GetTime()
+                    }
                     if key == "DestroyItems" then
                         ContainerCall("PickupContainerItem", bag, slot)
                         local kind, id = GetCursorInfo()
@@ -113,8 +126,7 @@ function APR:GetRouteActionText(key, rule)
     if key == "LearnSkill" and (rule.spellID or rule.spellIDs) then
         local names = {}
         for _, id in ipairs(rule.spellID and { rule.spellID } or rule.spellIDs) do
-            local info = C_Spell and C_Spell.GetSpellInfo and C_Spell.GetSpellInfo(id)
-            local name = info and info.name or (GetSpellInfo and GetSpellInfo(id))
+            local name = GetSpellName(id)
             names[#names + 1] = name or ((UNKNOWN or "?") .. " (" .. id .. ")")
         end
         -- Spell names come from the client; a route's literal text must never override them.
@@ -240,6 +252,7 @@ function APR:HandleDeathSkip(step, event)
 end
 
 function APR:HandleTameBeast(step, event, unit, spell)
+    if not APRSecret:CanAccessValue(unit) or not APRSecret:CanAccessValue(spell) then return end
     if not step or not step.TameBeast or unit ~= "player" or spell ~= (step.TameBeast.spellID or 1515) then return end
     local state = self:GetRouteActionState()
     if event == "UNIT_SPELLCAST_START" then
@@ -250,6 +263,7 @@ function APR:HandleTameBeast(step, event, unit, spell)
 end
 
 function APR:HandleSpellETA(step, unit, spell)
+    if not APRSecret:CanAccessValue(unit) or not APRSecret:CanAccessValue(spell) then return end
     if not step or not step.SpellETA or unit ~= "player" then return end
     local r, wanted = step.SpellETA, step.SpellETA.spellID
     if r.itemID then

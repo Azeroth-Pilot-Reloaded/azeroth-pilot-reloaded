@@ -9,6 +9,9 @@ function APRSecret:Attach(target)
     target.CanAccessValue = function(_, value)
         return self:CanAccessValue(value)
     end
+    target.CanAccessTable = function(_, value)
+        return self:CanAccessTable(value)
+    end
     target.CanAccessSecrets = function(_)
         return self:CanAccessSecrets()
     end
@@ -46,6 +49,32 @@ function APRSecret:CanAccessSecrets()
     return true
 end
 
+-- A public table can still contain restricted contents (notably UNIT_AURA).
+function APRSecret:CanAccessTable(value)
+    return self:CanAccessValue(value) and type(value) == "table"
+        and (not canaccesstable or canaccesstable(value))
+end
+
+function APRSecret:SafeUnitCreatureID(unit)
+    if not self:CanAccessValue(unit) then return nil end
+    -- Prefer the namespaced API, which consumes a GUID rather than a unit token.
+    local id
+    if C_CreatureInfo and C_CreatureInfo.GetCreatureID then
+        local guid = self:SafeUnitGUID(unit)
+        if not guid then return nil end
+        id = C_CreatureInfo.GetCreatureID(guid)
+    elseif UnitCreatureID then
+        id = UnitCreatureID(unit)
+    else
+        local guid = self:SafeUnitGUID(unit)
+        if not guid then return nil end
+        local kind, _, _, _, _, creatureID = strsplit("-", guid)
+        if kind == "Creature" or kind == "Vehicle" then id = creatureID end
+    end
+    if not self:CanAccessValue(id) then return nil end
+    return tonumber(id)
+end
+
 function APRSecret:SafeUnitName(unit, fallback)
     local name, realm = UnitName(unit)
     if not self:CanAccessValue(name) then
@@ -77,6 +106,7 @@ function APRSecret:SafeUnitClass(unit)
 end
 
 function APRSecret:SafeUnitGUID(unit, fallback)
+    if not self:CanAccessValue(unit) then return fallback end
     local guid = UnitGUID(unit)
     if not self:CanAccessValue(guid) then
         return fallback

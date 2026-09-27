@@ -1,4 +1,5 @@
 -- Exercise native use progression and supporting buttons, including questless steps.
+dofile("APR-Core/utils/SecretUtils.lua")
 local function noop() end
 local L = setmetatable({ USE_ITEM = "Use %s", USE_SPELL = "Cast %s" },
     { __index = function(_, key) return key end })

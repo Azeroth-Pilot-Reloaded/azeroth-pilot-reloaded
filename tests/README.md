@@ -34,6 +34,12 @@ transitions and temporary routes with synthetic guides. `native_route_actions_te
 tests action handlers. `level_requirements_test.lua` covers bonus profiles and absolute XP.
 The Forever compatibility command reuses the common route suite.
 
+`skill_api_test.lua` verifies structured `C_SkillInfo` results and prefers modern
+APIs even when legacy globals exist. `farstrider_data_test.lua` also loads Forever
+with Retail's project ID and checks its pre-Cataclysm transport connections.
+`secret_compatibility_test.lua` rejects opaque aura payloads and NPC/cast values;
+its sentinels cannot reproduce the client's native secret-value or taint rules.
+
 When adding an engine option, update `route_schema.py` and its positive/negative
 examples. Route-level conditions only admit fields evaluated by `RouteManager`;
 step/parallel conditions also support recursive `AnyOf`, `AllOf` and `Not`.

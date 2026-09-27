@@ -384,7 +384,7 @@ function APR:GetLevelProfileTarget(name, refresh)
             local auraBonus = 0
             for spellID, value in pairs(source.auraBonuses or {}) do
                 local aura = C_UnitAuras.GetPlayerAuraBySpellID(spellID)
-                if aura then
+                if (not self.CanAccessTable or self:CanAccessTable(aura)) and aura then
                     active = true
                     local amount = value
                     if type(value) == "table" then
@@ -645,7 +645,7 @@ end
 function APR:StepUsesAnyOption(conditions, keys)
     if not conditions then return false end
     for _, key in ipairs(keys) do if conditions[key] ~= nil then return true end end
-    for _, name in ipairs({"AnyOf", "AllOf"}) do
+    for _, name in ipairs({ "AnyOf", "AllOf" }) do
         for _, alternative in ipairs(conditions[name] or {}) do
             if self:StepUsesAnyOption(alternative, keys) then return true end
         end

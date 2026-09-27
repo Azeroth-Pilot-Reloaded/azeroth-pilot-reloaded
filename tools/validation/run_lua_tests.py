@@ -14,7 +14,7 @@ GROUPS = {
     "forever-only": ("farstrider_data", "taxi_discovery", "forever_travel",
                      "client_compatibility", "level_requirements", "reputation_progress",
                      "route_conditions", "route_action_usage", "native_route_actions",
-                     "area_navigation", "route_engine", "step_progression"),
+                     "area_navigation", "route_engine", "step_progression", "skill_api", "secret_compatibility"),
     "ui-only": ("current_step_render", "route_panels_render", "reputation_progress",
                 "quest_order_performance", "ui_skin"),
     "skins-only": ("ui_skin", "eui_settings"),
