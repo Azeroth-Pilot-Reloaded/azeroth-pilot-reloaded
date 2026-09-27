@@ -54,7 +54,8 @@ jobs:
           commit-message: Update supported WoW Interface versions
           title: Update supported WoW Interface versions
           body: |
-            Automated update of `## Interface` and `## X-Interface` in `APR.toc`.
+            Automated update of `## Interface`, `## Interface-Retail` and `## X-Interface` in `APR.toc`.
 
             Builds were resolved from Blizzard's HTTPS product feeds for Retail and its PTR channels.
-            Existing supported Interface versions are preserved, and the updater's regression tests and whitespace validation completed successfully.
+            Existing supported versions (including Camelot) are preserved in `## Interface`; Retail metadata only includes Retail versions.
+            The updater's regression tests and whitespace validation completed successfully.
