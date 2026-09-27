@@ -1,89 +1,110 @@
-name: "Bug Report"
-description: Report a bug or an issue with Azeroth Pilot Reloaded.
-title: "[ISSUE] - "
+name: "Bug report"
+description: Report a route, navigation, questing, or interface problem in APR.
+title: "[BUG] - "
 labels: ["Bug"]
 body:
   - type: markdown
     attributes:
       value: |
-        Please [search for existing issues](hhttps://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/issues) before creating a new one.
+        Please [search existing issues](https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/issues?q=is%3Aissue) first, including closed issues.
+        Report one problem per issue and use a title that names the affected feature or route.
+        For setup questions or help using APR, visit [our Discord](https://discord.gg/YgcdybKdWX).
 
   - type: textarea
+    id: actual-behavior
     attributes:
-      label: Description
-      description: What did you expect to happen and what happened instead?
+      label: What happened?
+      description: Describe the problem and how it affects your progress. If it started after an update, include the last working APR version if known.
+      placeholder: "After turning in a quest, APR stays on the same step even though the quest is complete."
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected-behavior
+    attributes:
+      label: What should have happened?
+      description: Describe the behavior you expected in this situation.
+      placeholder: "APR should advance to the next step and update the arrow."
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Include the starting situation, your actions, and whether the problem happens every time or only sometimes. If you cannot reproduce it, describe what you were doing when it happened.
+      placeholder: |
+        1. Select route ... on a level ... character.
+        2. Reach step ... and interact with ...
+        3. ...
+        Frequency: every time / sometimes / only once.
     validations:
       required: true
 
   - type: dropdown
     id: flavor
     attributes:
-      label: World of Warcraft Flavor
-      description: What version of World of Warcraft are are you running?
+      label: World of Warcraft client
       options:
-        - Retail (Default)
-        - PRT (Public Test Realm)
-        - Beta
+        - Retail
+        - Retail PTR (Public Test Realm)
+        - Retail Beta
+        - WoW Forever (Camelot)
+        - Other (specify in the status field below)
     validations:
       required: true
 
   - type: textarea
+    id: apr-status
     attributes:
-      label: APR Status
+      label: APR status
       description: |
-        The current APR status (`/apr status`)
-      placeholder: "Paste status export here"
+        Run `/apr status` while the problem is happening, use the export button, and paste the report below, ideally before skipping or resetting the route.
+        If APR does not load or the export fails, say so and manually provide your APR version, WoW version/build, game language, and any known route/step and character level/faction.
+      placeholder: Paste the status export, or explain why it is unavailable and provide the details you know.
+      render: text
     validations:
       required: true
 
-  - type: checkboxes
+  - type: dropdown
     id: testing
     attributes:
-      label: Tested with only APR
-      description: Did you try having APR as the only enabled addon and everything else (especially something like ElvUI) disabled?
+      label: Addon isolation test
+      description: If possible, retry with only APR and its required dependencies (including LibTaxiData) enabled. Keep required dependencies enabled so APR can load.
       options:
-        - label: "Yes"
-        - label: "No"
-
-  - type: textarea
-    attributes:
-      label: Lua Error
-      description: |
-        Do you have an error log of what happened? If you don't see any errors, make sure that error reporting is enabled (`/console scriptErrors 1`) or install [BugSack](https://www.curseforge.com/wow/addons/bugsack) & [BugGrabber](https://www.curseforge.com/wow/addons/bug-grabber), yes both are needed.
-
-        If you are submitting an error, please wrap the error log in triple backticks (```).
-        If no error, remove the triple backticks and this section.
-      value: |
-        ```lua
-        Replace this text with the actual Lua error log.
-        ```
-    validations:
-      required: false
-
-  - type: textarea
-    attributes:
-      label: Reproduction Steps
-      description: Please list out the steps to reproduce your bug. Please verify that your reproduction steps are enough to reproduce the problem.
-      placeholder: |
-        1. Go to '...'
-        2. Click on '....'
-        3. Scroll down to '....'
-        4. See error
+        - The problem still happens with only APR and its dependencies
+        - The problem disappears when other addons are disabled
+        - Not tested yet
+        - Unable to test (explain in additional context)
     validations:
       required: true
 
   - type: textarea
+    id: route-context
     attributes:
-      label: Screenshots
-      description: If applicable, add screenshots to help explain your problem.
-      placeholder: Attach directly via "copy & paste," do not link to other sites
+      label: Route or quest details
+      description: For route or quest problems, add details missing from the status report. Include quest/NPC names or IDs if known, whether the quest is active/completed, and any recent skip or rollback. For an imported/custom route, attach its export or source link.
+      placeholder: "Quest: ...; NPC: ...; quest state: ...; recent skip/rollback: ..."
     validations:
       required: false
 
   - type: textarea
+    id: lua-error
     attributes:
-      label: Any additional information?
+      label: Lua error
       description: |
-        If you have additional information that does not match the other fields
+        Paste the full error and stack trace, preferably the first error after reproducing the problem. Leave this blank if there is no error.
+        You can enable errors with `/console scriptErrors 1`, or use both [BugSack](https://www.curseforge.com/wow/addons/bugsack) and [BugGrabber](https://www.curseforge.com/wow/addons/bug-grabber).
+        Formatting is automatic; do not add backticks.
+      placeholder: Paste the full error here.
+      render: text
+    validations:
+      required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Screenshots and additional context
+      description: Attach screenshots or a short video if helpful. Include relevant settings, a workaround, or the other addon involved if the isolation test identified one.
     validations:
       required: false
