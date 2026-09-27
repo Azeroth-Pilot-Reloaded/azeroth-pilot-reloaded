@@ -1,0 +1,375 @@
+-- Run from the repository root with Lua 5.1, or with the Python runner beside this file.
+local locale = setmetatable({}, { __index = function(_, key) return key end })
+function LibStub()
+    return { GetLocale = function() return locale end }
+end
+
+function tContains(values, value)
+    for _, entry in ipairs(values) do
+        if entry == value then return true end
+    end
+    return false
+end
+
+tinsert = table.insert
+tremove = table.remove
+function wipe(value)
+    for key in pairs(value) do value[key] = nil end
+end
+
+function CreateVector2D(x, y) return { x = x, y = y } end
+
+function CreateFrame()
+    return { RegisterEvent = function() end, SetScript = function() end }
+end
+
+function debugprofilestop() return 0 end
+
+local level, zone = 80, 2393
+local achievement = true
+local spells, active, complete, account = {}, {}, {}, {}
+local ready = {}
+function UnitLevel() return math.floor(level) end
+
+C_SpellBook = { IsSpellKnown = function(id) return spells[id] == true end }
+C_QuestLog = {
+    IsOnQuest = function(id) return active[id] == true end,
+    IsComplete = function(id) return ready[id] == true end,
+    IsQuestFlaggedCompleted = function(id) return complete[id] == true end,
+    IsQuestFlaggedCompletedOnAccount = function(id) return account[id] == true end,
+}
+C_Map = {
+    GetBestMapForUnit = function() return zone end,
+    GetWorldPosFromMapPos = function(mapID, point)
+        return 1, { x = 1000 + mapID + point.y * 100, y = -2000 - point.x * 100 }
+    end,
+}
+APR = {
+    interfaceVersion = 120100,
+    RouteQuestStepList = {},
+    PlayerID = "test",
+    Faction = "Alliance",
+}
+function APR:NewModule() return {} end
+
+function APR:Contains(values, value) return tContains(values, value) end
+
+dofile("APR-Core/data/models/Enums.lua")
+dofile("APR-Core/data/zones/ScenarioEntrances.lua")
+dofile("APR-Core/utils/Utils.lua")
+dofile("APR-Core/utils/PlayerUtils.lua")
+dofile("APR-Core/utils/QuestUtils.lua")
+dofile("APR-Core/utils/RouteUtils.lua")
+dofile("APR-Core/utils/RouteManager.lua")
+dofile("APR-Core/features/navigation/WorldCoordinateConverter.lua")
+dofile("APR-Core/core/Event.lua")
+function APR:GetPlayerEffectiveLevel() return level end
+
+function APR:IsDelveRoute() return false end
+
+function APR:HasAchievement() return achievement end
+
+APRData = { test = {} }
+APRCustomPath = { test = {} }
+APRZoneCompleted = { test = {} }
+
+local count = 0
+local function check(value, message)
+    count = count + 1
+    assert(value, message)
+end
+
+-- Synthetic declarations exercise the engine independently of packaged routes.
+local routeKey = "test-parallel-route"
+local questIDs = { 101, 102, 103, 104 }
+local route = {
+    label = "Test parallel route",
+    mapID = 2393,
+    expansion = APR.EXPANSIONS.Custom,
+    steps = {},
+    parallelSteps = {
+        { conditions = { MinLevel = 89, Zones = { 2393 }, IsQuestReadyForTurnIn = questIDs }, steps = {} },
+        { conditions = { MinLevel = 90 },                                                     steps = { { Done = { 93427 } } } },
+    },
+}
+for index = 1, 12 do route.steps[index] = { Note = "Main step", _index = index } end
+for _, id in ipairs(questIDs) do
+    table.insert(route.parallelSteps[1].steps, { Done = { id } })
+end
+APR.RouteQuestStepList[routeKey] = route
+local introKey = "test-prerequisite"
+local intro = { label = "Test prerequisite", conditions = { DontHaveAchievement = 1 } }
+APR.RouteQuestStepList[introKey] = intro
+APRCustomPath.test = {}
+check(APR:AddRouteToCustomPathByKey("missing-route") == false,
+    "A missing target route cannot modify the custom path in the isolated test")
+APR.RouteQuestStepList["test-dependent-route"] = {
+    label = "Test dependent route", requiredRoute = { introKey }, conditions = { Level = 80 },
+}
+check(not APR:IsRequiredRouteApplicable(introKey), "The account achievement waives the hidden introduction")
+check(APR:AddRouteToCustomPathByKey("test-dependent-route"), "The dependent route can be added for an eligible alt")
+check(#APRCustomPath.test == 1 and APRCustomPath.test[1] == "Test dependent route",
+    "The hidden introduction is not inserted into the alt custom path")
+achievement = false
+APRCustomPath.test = {}
+check(APR:IsRequiredRouteApplicable(introKey), "A first character still requires the introduction")
+check(APR:AddRouteToCustomPathByKey("test-dependent-route"), "The first-character path is assembled")
+check(#APRCustomPath.test == 2 and APRCustomPath.test[1] == intro.label
+    and APRCustomPath.test[2] == "Test dependent route", "The applicable introduction is prepended")
+APRZoneCompleted.test[intro.label] = true
+APRCustomPath.test = {}
+check(not APR:IsRequiredRouteApplicable(introKey), "A personally completed introduction is already satisfied")
+check(APR:AddRouteToCustomPathByKey("test-dependent-route") and #APRCustomPath.test == 1,
+    "A completed introduction is not inserted again")
+APRZoneCompleted.test[intro.label] = nil
+APR.RouteQuestStepList["test-soft-required"] = {
+    label = "Soft requirement", conditions = { Level = 90, Zones = { 9999 } },
+}
+APR.RouteQuestStepList["test-soft-target"] = {
+    label = "Soft target", requiredRoute = { "test-soft-required" },
+}
+APRCustomPath.test = {}
+check(APR:IsRequiredRouteApplicable("test-soft-required"), "Level and zone never waive a required route")
+check(APR:AddRouteToCustomPathByKey("test-soft-target") and #APRCustomPath.test == 2,
+    "A temporarily disabled required route remains in the path")
+achievement = true
+
+local questID = questIDs[1]
+for _, id in ipairs(questIDs) do active[id], ready[id] = true, true end
+ready[questIDs[#questIDs]] = nil
+
+APR.ActiveRoute = routeKey
+APRData.test[routeKey] = 11
+level, zone = 87.99, 2393
+check(#APR:GetRouteSteps(routeKey) == #route.steps, "No premature parallel activation")
+for _, id in ipairs(questIDs) do
+    check(APR:IsQuestTurnInDeferred(id), "Automation preserves every pending grouped reward")
+end
+local progressed, rewarded, popup = 0, 0, 0
+function APR:GetSettingsProfile() return { autoHandIn = true } end
+
+function IsModifierKeyDown() return false end
+
+function GetQuestID() return questID end
+
+function CompleteQuest() progressed = progressed + 1 end
+
+function GetQuestReward() rewarded = rewarded + 1 end
+
+function APR:PopupAutocompleteQuest() popup = popup + 1 end
+
+function APR.event:TalkToDenyNpcLogic() end
+
+APR.event.functions.done("QUEST_PROGRESS")
+APR.event.functions.done("QUEST_COMPLETE")
+APR.event.functions.done("QUEST_AUTOCOMPLETE", questID)
+check(progressed == 0 and rewarded == 0 and popup == 0, "All automatic hand-in entry points defer the reward")
+
+level, zone = 89, 2413
+check(#APR:GetRouteSteps(routeKey) == #route.steps, "A group remains pending outside its reward zone")
+zone = 2393
+check(#APR:GetRouteSteps(routeKey) == #route.steps, "A grouped hand-in remains pending while one quest is missing")
+ready[questIDs[#questIDs]] = true
+local effective = APR:GetRouteSteps(routeKey)
+check(#effective == #route.steps + #questIDs, "Reaching the minimum level activates grouped rewards")
+for offset, id in ipairs(questIDs) do
+    check(effective[10 + offset].Done[1] == id, "Grouped hand-ins keep their route order")
+end
+check(effective[11 + #questIDs] == route.steps[11], "The interrupted main step is retained")
+check(not APR:IsQuestTurnInDeferred(questID), "An activated reward can be turned in")
+APR.event.functions.done("QUEST_PROGRESS")
+check(progressed == 1, "Automatic hand-in resumes when eligible")
+check(#APR:GetRouteSteps(routeKey) == #effective, "A group is inserted only once")
+complete[questID] = true
+active[questID], ready[questID] = nil, nil
+check(#APR:GetRouteSteps(routeKey) == #effective, "Quest-log changes do not shift saved progression")
+APR:InvalidateEffectiveRouteStepsCache(routeKey)
+check(#APR:GetRouteSteps(routeKey) == #effective, "Reloaded parallel state preserves the effective route")
+
+check(APR:GetParallelStepsInsertionIndex(2, {
+    {}, { InstanceQuest = true }, { InstanceQuest = true }, { InstanceQuest = true }, {},
+}) == 5, "A parallel group waits for the entire instance block")
+
+local coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2393, 25, 75)
+check(coord.x == -2025 and coord.y == 3468, "Converter preserves APR's swapped world axes")
+check(APR.worldCoordinateConverter:ConvertMapCoordinate(2393, -1, 75) == nil, "Invalid map percentages are rejected")
+local projection = C_Map.GetWorldPosFromMapPos
+C_Map.GetWorldPosFromMapPos = function() return nil end
+check(APR.worldCoordinateConverter:ConvertMapCoordinate(2393, 25, 75) == nil,
+    "A missing game projection never produces fabricated world coordinates")
+C_Map.GetWorldPosFromMapPos = projection
+
+-- Exercise the real scenario handler with a reserved reward after a reload.
+dofile("APR-Core/features/questing/QuestHandler.lua")
+local scenarioStep, parentMap
+local function noop() end
+APR.StartPerformanceSample, APR.FinishPerformanceSample = noop, noop
+APR.settings = { profile = { enableAddon = true } }
+APR.currentStep = {
+    previousState = {},
+    Reset = noop,
+    ButtonEnable = noop,
+    PrepareRaidIcon = noop,
+    AddQuestSteps = function() error("SCENARIO_STAY", 0) end,
+}
+APR.currentStepImagePreview = { ClearPreviewImages = noop }
+APR.Arrow = { SetCoord = noop }
+APR.AFK = { lastStep = 1 }
+APR.IsInRouteZone = true
+APRScenarioMapIDCompleted = { test = {} }
+APRData.test[routeKey] = 1
+APR.ActiveRoute = routeKey
+APR.ResetMissingQuests, APR.Debug, APR.SendMessage = noop, noop, noop
+APR.MaybeSojournerPrompt, APR.CheckSojournerPartySync = noop, noop
+function UnitIsDeadOrGhost() return false end
+
+function APR:GetCurrentStepToken() return "scenario-test" end
+
+function APR:GetStep() return scenarioStep end
+
+function APR:SkipStepCondition() return false end
+
+function APR:ShouldSojournerSkipStep() return false end
+
+function APR:GetMapInfoCached() return { name = "Test delve" } end
+
+function APR:GetScenarioZoneInfo(id) return self.ScenarioEntrances[id] end
+
+function APR:GetPlayerParentMapID() return parentMap end
+
+function APR:UpdateNextStep() error("SCENARIO_ADVANCE", 0) end
+
+format = string.format
+local function scenarioResult(field, currentMap, expected)
+    scenarioStep = { [field] = { questID = 93427, mapID = 2528 } }
+    zone = currentMap
+    local ok, result = pcall(APR.UpdateStep, APR)
+    check(not ok and result == expected, field .. ": " .. tostring(result))
+end
+active[93427], ready[93427] = true, true
+scenarioResult("EnterScenario", 2405, "SCENARIO_ADVANCE")
+scenarioResult("DoScenario", 2405, "SCENARIO_ADVANCE")
+scenarioResult("LeaveScenario", 2405, "SCENARIO_ADVANCE")
+scenarioResult("LeaveScenario", 2528, "SCENARIO_STAY")
+parentMap = 2528
+scenarioResult("LeaveScenario", 2571, "SCENARIO_STAY")
+ready[93427] = nil
+scenarioResult("EnterScenario", 2571, "SCENARIO_ADVANCE")
+parentMap = nil
+scenarioResult("DoScenario", 2528, "SCENARIO_STAY")
+active[93427], account[93427] = nil, true
+scenarioResult("EnterScenario", 2405, "SCENARIO_STAY")
+
+-- A suggested guide replaces nearby DoScenario while retaining its quest setup.
+level = 80
+dofile("APR-Core/utils/DelveRouteUtils.lua")
+dofile("APR-Core/utils/StepUtils.lua")
+
+local inferredScenarioStep = { PickUp = { 93427 }, Zone = 2528 }
+local inferredCoord, inferredZone = APR:GetStepCoord(inferredScenarioStep, 2393)
+check(APR:GetScenarioMapIDForStep(inferredScenarioStep) == 2528,
+    "An interior-only step resolves its scenario from the registered Zone")
+check(inferredCoord == APR.ScenarioEntrances[2528].Coord and inferredZone == 2405,
+    "An interior-only step outside the scenario targets its registered entrance")
+
+-- Alias support is generic; the current route no longer declares the old label.
+local legacyRouteLabel = "Historical route label"
+route.legacyLabels = { legacyRouteLabel }
+APRCustomPath.test = { legacyRouteLabel }
+APR.ActiveRoute = nil
+local _, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
+check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
+    "A saved legacy label is migrated without losing the active route")
+
+APRCustomPath.test = { "Renamed route without an alias" }
+APR.ActiveRoute = routeKey
+APRData.test[routeKey] = 1
+_, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
+check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
+    "The live stable key recovers a renamed route during the same session")
+
+local missingRouteError, missingRoutePopup, emptyPathChecks
+APRCustomPath.test = { "Deleted route", route.label }
+APR.ActiveRoute = nil
+APR._missingCustomPathRouteWarnings = nil
+APR.PrintError = function(_, message) missingRouteError = message end
+APR.questionDialog = {
+    CreateRouteTriggerPopup = function(_, message) missingRoutePopup = message end,
+}
+APR.routeconfig = {
+    CheckIsCustomPathEmpty = function() emptyPathChecks = (emptyPathChecks or 0) + 1 end,
+}
+_, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
+check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
+    "A missing route is removed and the following valid route stays usable")
+check(missingRouteError and missingRoutePopup == missingRouteError and emptyPathChecks == 1,
+    "A missing route reports an error and opens the route-suggestion popup")
+
+local context = { mapID = 2528, scenarioID = 123, sessionKey = "test" }
+local prompts, accept, decline = 0, nil, nil
+function APR:GetCurrentDelveContext() return context end
+
+function APR:GetPrimaryCustomPathRouteKey() return "test-parent" end
+
+APR.UpdateStep, APR.UpdateMapId = noop, noop
+function APR:GetTotalSteps() return 0 end
+
+APR.questionDialog = {
+    CreateQuestionPopup = function(_, _, _, onAccept, onDecline)
+        prompts, accept, decline = prompts + 1, onAccept, onDecline
+    end,
+}
+local setup = { PickUp = { 93427 }, InstanceQuest = true }
+local completion = { DoScenario = { questID = 93427, mapID = 2528 }, InstanceQuest = true }
+local after = { Qpart = { [93427] = { 1 } } }
+local guideStep = { Note = "Guide" }
+APR.RouteQuestStepList["test-parent"] = { steps = { setup, completion, after } }
+APR.RouteQuestStepList["test-delve"] = {
+    delve = {}, scenarios = { { scenarioID = 123, steps = { guideStep } } },
+}
+APR.ActiveRoute, APRData.test["test-parent"] = "test-parent", 1
+APR:RefreshTemporaryDelveRoute()
+check(prompts == 1 and APR.ActiveRoute == "test-parent", "InstanceQuest allows a suggestion without automatic acceptance")
+APR:RefreshTemporaryDelveRoute()
+check(prompts == 1, "A pending suggestion is not repeated")
+accept()
+local injected = APR:GetRouteSteps("test-delve")
+check(#injected == 2 and injected[1] == setup and injected[2] == guideStep,
+    "The pickup precedes the inserted guide and DoScenario is replaced")
+APR.RouteQuestStepList["test-parent"].parallelSteps = {
+    { conditions = { MinLevel = 88 }, steps = { { Done = { 93427 } } } },
+}
+check(APR:IsQuestTurnInDeferred(93427), "The injected guide preserves the parent route's reserved rewards")
+APR.RouteQuestStepList["test-parent"].parallelSteps = nil
+check(APRData.test["test-parent"] == 1, "The parent is not prematurely advanced")
+APRData.test["test-delve"] = 2
+APR:InvalidateEffectiveRouteStepsCache()
+check(APR:GetRouteSteps("test-delve")[1] == setup, "Saved insertion survives cache reconstruction")
+APR:ClearTemporaryRoute()
+check(APRData.test["test-parent"] == 2, "Early exit preserves completed setup but keeps unfinished DoScenario")
+APR:ActivateTemporaryRoute("test-delve", { mapID = 2528, scenarioID = 123, sessionKey = "test" })
+APR:ClearTemporaryRoute({ completed = true, preserveSessionKey = true })
+check(APR.ActiveRoute == "test-parent" and APRData.test["test-parent"] == 3,
+    "Guide completion resumes after the replaced DoScenario")
+APR:RefreshTemporaryDelveRoute()
+check(prompts == 1, "A completed guide is not proposed again inside the same delve")
+APR.RouteQuestStepList["test-parent"].steps = { setup, {}, {}, {}, {}, completion, after }
+APRData.test["test-parent"] = 1
+local startIndex, replaceIndex = APR:GetDelveInsertionPoint("test-parent", 2528)
+check(startIndex == 1 and replaceIndex == 6, "The fifth upcoming step is included in the lookahead")
+APR.RouteQuestStepList["test-parent"].steps = { setup, {}, {}, {}, {}, {}, completion }
+startIndex, replaceIndex = APR:GetDelveInsertionPoint("test-parent", 2528)
+check(startIndex == 1 and replaceIndex == nil, "A farther DoScenario cannot consume intervening main steps")
+APR:ActivateTemporaryRoute("test-delve", { mapID = 2528, scenarioID = 123, sessionKey = "test" })
+check(#APR:GetRouteSteps("test-delve") == 1, "Without a nearby DoScenario the guide starts immediately")
+APR:ClearTemporaryRoute({ completed = true })
+check(APRData.test["test-parent"] == 1, "Insertion at the current position preserves that main step")
+APR:RefreshTemporaryDelveRoute()
+decline()
+APR:RefreshTemporaryDelveRoute()
+check(prompts == 2 and APR.ActiveRoute == "test-parent", "Declining leaves the parent active without repeated prompts")
+context = { mapID = 2528, scenarioID = 999, sessionKey = "unrecorded" }
+APR:RefreshTemporaryDelveRoute()
+check(prompts == 2, "An unrecorded scenario variant is not offered an unrelated guide")
+
+print("Route engine: " .. count .. " checks passed")

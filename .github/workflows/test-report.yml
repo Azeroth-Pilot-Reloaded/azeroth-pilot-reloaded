@@ -1,0 +1,79 @@
+name: PR Test Report
+
+on:
+  workflow_run:
+    workflows: [PR Tests]
+    types: [completed]
+
+# PR code runs only in the read-only PR Tests workflow. This workflow reads
+# GitHub's job results and never checks out or executes PR code or artifacts.
+permissions:
+  actions: read
+  pull-requests: write
+
+concurrency:
+  group: pr-test-report-${{ github.event.workflow_run.head_repository.id }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  report:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion != 'cancelled' &&
+      github.event.workflow_run.conclusion != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Update PR test report
+        uses: actions/github-script@v9
+        with:
+          script: |
+            const run = context.payload.workflow_run;
+            const repo = context.repo;
+            // workflow_run.pull_requests can be empty for fork PRs.
+            const candidates = run.pull_requests.length ? run.pull_requests :
+              await github.paginate(github.rest.repos.listPullRequestsAssociatedWithCommit, {
+                ...repo, commit_sha: run.head_sha, per_page: 100
+              });
+            const jobs = await github.paginate(github.rest.actions.listJobsForWorkflowRun, {
+              ...repo, run_id: run.id, filter: 'latest', per_page: 100
+            });
+            const suites = ['scripts', 'lua', 'routes'];
+            const labels = {
+              scripts: 'Scripts Python', lua: 'Régressions Lua 5.1', routes: 'Syntaxe de toutes les routes'
+            };
+            const statuses = {
+              success: '✅ Réussi', failure: '❌ Échec', cancelled: '⏹ Annulé',
+              skipped: '⏭ Ignoré', timed_out: '❌ Délai dépassé'
+            };
+            const rows = suites.map(suite => {
+              const job = jobs.find(job => job.name === `Tests / ${suite}`);
+              const status = job ? (statuses[job.conclusion] || '⚠️ Incomplet') : '⚠️ Résultat absent';
+              return `| ${labels[suite]} | ${status} | ${job ? `[Détails](${job.html_url})` : '—'} |`;
+            });
+            const marker = '<!-- apr-pr-tests -->';
+            const body = [
+              marker, `<!-- apr-pr-tests-run: ${run.id} -->`, '### Rapport des tests APR', '',
+              `Commit : \`${run.head_sha}\` — ${statuses[run.conclusion] || '⚠️ Incomplet'}`, '',
+              '| Suite | Résultat | Journal |', '| --- | --- | --- |', ...rows, '',
+              `[Bilan détaillé et nombre de tests](${run.html_url})`, '',
+              'Ce commentaire est actualisé à chaque exécution sur une PR prête à être relue.'
+            ].join('\n');
+            for (const candidate of candidates) {
+              const { data: pr } = await github.rest.pulls.get({ ...repo, pull_number: candidate.number });
+              // Ignore obsolete results, closed PRs and PRs converted back to draft.
+              if (pr.state !== 'open' || pr.draft || pr.head.sha !== run.head_sha ||
+                  pr.head.repo?.id !== run.head_repository.id || pr.head.ref !== run.head_branch) continue;
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                ...repo, issue_number: pr.number, per_page: 100
+              });
+              const existing = comments.find(comment =>
+                comment.user?.login === 'github-actions[bot]' && comment.body?.startsWith(marker));
+              const previousRun = existing?.body.match(/<!-- apr-pr-tests-run: (\d+) -->/);
+              if (previousRun && BigInt(previousRun[1]) > BigInt(run.id)) continue;
+              if (existing) {
+                await github.rest.issues.updateComment({ ...repo, comment_id: existing.id, body });
+              } else {
+                await github.rest.issues.createComment({ ...repo, issue_number: pr.number, body });
+              }
+            }
