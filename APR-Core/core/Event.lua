@@ -526,7 +526,7 @@ end
 
 function APR.event.functions.equipment()
     RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems", "LootMoney", "VendorMoney",
-        "EquipItem" })
+        "EquipItem", "SellItems" })
 end
 
 function APR.event.functions.skill()
