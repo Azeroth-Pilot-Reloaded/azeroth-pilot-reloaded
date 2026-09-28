@@ -35,6 +35,14 @@ local function Entries(rule)
     return rule.items or rule
 end
 
+local function IsItemEquipped(itemID)
+    if not GetInventoryItemID then return false end
+    for slot = INVSLOT_FIRST_EQUIPPED or 1, INVSLOT_LAST_EQUIPPED or 19 do
+        if GetInventoryItemID("player", slot) == itemID then return true end
+    end
+    return false
+end
+
 local function GetSpellName(spellID)
     if C_Spell and C_Spell.GetSpellInfo then
         local info = C_Spell.GetSpellInfo(spellID)
@@ -103,6 +111,12 @@ function APR:ProcessRouteItems(key, rule, state)
             end
         end
     end
+    -- Listed equipment still needs manual removal before it can be sold.
+    if key == "SellItems" then
+        for _, entry in ipairs(Entries(rule)) do
+            if IsItemEquipped(type(entry) == "table" and entry.itemID or entry) then return false end
+        end
+    end
     return true
 end
 
@@ -117,7 +131,6 @@ end
 function APR:GetRouteActionText(key, rule)
     local label = L[key:upper()]
     if type(rule) ~= "table" then return label end
-    if key == "SellItems" and rule.junk then return L["VENDOR_TRASH"] end
 
     local function Fallback()
         return self:ResolveStepText(rule.text or rule.Text) or label
@@ -154,7 +167,20 @@ function APR:GetRouteActionText(key, rule)
                 missing = true
                 name = type(entry) == "table" and self:ResolveStepText(entry.text or entry.Text)
             end
-            names[#names + 1] = name or ((UNKNOWN or "?") .. " (" .. id .. ")")
+            name = name or ((UNKNOWN or "?") .. " (" .. id .. ")")
+            if key == "SellItems" and IsItemEquipped(id) then
+                name = name .. " (" .. L["SELL_ITEM_EQUIPPED"] .. ")"
+            end
+            names[#names + 1] = name
+        end
+        if key == "SellItems" then
+            local lines = {}
+            if #names > 0 then
+                lines[#lines + 1] = label .. ": " .. table.concat(names, ", ")
+                if missing and (rule.text or rule.Text) then lines[#lines + 1] = Fallback() end
+            end
+            if rule.junk then lines[#lines + 1] = L["VENDOR_TRASH"] end
+            if #lines > 0 then return table.concat(lines, "\n") end
         end
         -- Item data can be absent until cached. Keep the route fallback until every name is available.
         if missing and (rule.text or rule.Text) then return Fallback() end

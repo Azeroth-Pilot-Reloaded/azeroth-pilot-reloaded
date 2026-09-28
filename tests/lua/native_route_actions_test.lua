@@ -204,6 +204,27 @@ assert(not APR:ProcessRouteItems('SellItems', { items = { 200 } }, {}))
 lockedCombat = false
 assert(not APR:ProcessRouteItems('SellItems', { items = { 200 }, npcID = 2163 }, {}))
 assert(bags[0][2] == nil)
+local sale = { items = { 100, { itemID = 200 } }, junk = true }
+assert(APR:GetRouteActionText('SellItems', sale) ==
+    'SELLITEMS: item 100 (SELL_ITEM_EQUIPPED), item 200\nVENDOR_TRASH')
+assert(APR:GetRouteActionText('SellItems', { junk = true, text = 'Old advice' }) == 'VENDOR_TRASH')
+assert(APR:GetRouteActionText('SellItems', { items = { 200 } }) == 'SELLITEMS: item 200')
+local itemInfo = C_Item.GetItemInfo
+C_Item.GetItemInfo = function() end
+local uncached = APR:GetRouteActionText('SellItems', { items = { 100 }, junk = true, text = 'Sell weapon' })
+assert(uncached:find('100', 1, true) and uncached:find('SELL_ITEM_EQUIPPED', 1, true))
+assert(uncached:find('Sell weapon', 1, true) and uncached:find('VENDOR_TRASH', 1, true))
+C_Item.GetItemInfo = itemInfo
+assert(not APR:ProcessRouteItems('SellItems', sale, {}), 'Equipped listed items must not silently complete')
+bags[0][1] = { itemID = 300, stackCount = 1, quality = 0 }
+assert(not APR:ProcessRouteItems('SellItems', sale, {}))
+assert(not bags[0][1], 'Junk is still sold while a listed item is equipped')
+local inventoryItem = GetInventoryItemID
+GetInventoryItemID = function() end
+bags[0][1] = { itemID = 100, stackCount = 1 }
+assert(not APR:ProcessRouteItems('SellItems', sale, {}))
+assert(APR:ProcessRouteItems('SellItems', sale, {}), 'Sale completes after removing and selling equipment')
+GetInventoryItemID = inventoryItem
 APRData.player.test = 1
 APR.RouteQuestStepList.test = { steps = { { TameBeast = { npcID = 2163, spellID = 1515 } } } }
 APR.routeActionState = nil
