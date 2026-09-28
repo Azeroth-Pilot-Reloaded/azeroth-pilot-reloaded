@@ -166,3 +166,49 @@ cast({ UseItem = { itemID = 100 } }, 1100)
 assert(advanced == before + 4)
 C_Item = itemAPI
 print("Route uses: standalone items/spells, cast completion, optional quest anchors and all supporting buttons passed")
+
+-- Quest abandonment is now a main action. Run the real update path so it cannot
+-- get stuck behind HasAnyMainStepOption, abandon twice, or complete via gossip.
+dofile("APR-Core/features/questing/RouteActions.lua")
+local activeQuests, abandoned = { [10] = true, [11] = true }, {}
+function C_QuestLog.IsOnQuest(id) return activeQuests[id] == true end
+function APR:LeaveQuest(id) abandoned[#abandoned + 1] = id end
+function APR:NextQuestStep() advanced = advanced + 1 end
+function APR:hasEveryGossipsCompleted() error("Main actions must not complete through gossip") end
+before = advanced
+current = { LeaveQuest = 10, LeaveQuests = { 10, 11 }, GossipOptionIDs = { 1 } }
+APR:UpdateStep()
+assert(advanced == before and #abandoned == 2 and abandoned[1] == 10 and abandoned[2] == 11)
+assert(APR.currentStep.questsList["10-10"] and APR.currentStep.questsList["11-11"],
+    "Pending abandonment is visible in the current step")
+activeQuests = {}
+APR:UpdateStep()
+assert(advanced == before + 1 and #abandoned == 2, "Advance once all quests have left the log")
+
+for _, step in ipairs({ { LeaveQuest = 10 }, { LeaveQuests = { 10, 11 } } }) do
+    before, current = advanced, step
+    APR:UpdateStep()
+    assert(advanced == before + 1, "Each abandonment option completes independently")
+end
+activeQuests, abandoned = { [10] = true }, {}
+before = advanced
+current = { UseSpell = { spellID = 200 }, LeaveQuest = 10 }
+APR:UpdateStep()
+assert(advanced == before and #abandoned == 1 and #buttons == 1,
+    "Abandonment accompanying another action must not advance past it")
+
+local resetCallback, refreshed
+APR.questionDialog = { CreateQuestionPopup = function(_, _, _, callback) resetCallback = callback end }
+APR.PrintInfo = noop
+function APR:WrapTextWithAppearanceColor(text) return text end
+function APR:UpdateQuestAndStep() refreshed = true end
+before, current = advanced, { ResetRoute = true, GossipOptionIDs = { 1 } }
+APRData.player.route = 5
+function APR:GetStep() return current end
+APR:UpdateStep()
+assert(advanced == before and APRData.player.route == 5 and resetCallback,
+    "Reset waits for explicit popup confirmation even when gossip is complete")
+assert(APR.currentStep.questsList["RESET_ROUTE-ResetRoute"], "Reset has a main action row")
+resetCallback()
+assert(APRData.player.route == 1 and refreshed, "Confirmed reset restarts and refreshes the route")
+print("Promoted main actions: abandonment, mixed steps, gossip guards and confirmed reset passed")
