@@ -1311,7 +1311,6 @@ APR.RouteQuestStepList["2393-Midnight-Speedrun-alt"] = {
             Zone = 2395,
             SkipForLvl = "MidnightDelves",
             IsCampaignQuest = true,
-            IsQuestOnQuest = 94871,
             _index = 151,
         },
         {
