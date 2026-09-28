@@ -604,6 +604,41 @@ function APR.worldCoordinateConverter:GetMapAreaRadius(zone, centerX, centerY, p
     return math.ceil(radius)
 end
 
+-- Mixed source points use { x, y, arrivalRadius, isMapPercentage }.
+-- Convert every point before finding the bounding center and radius in yards.
+local function GetMixedArea(converter, zone, points)
+    if not points or #points == 0 then return nil end
+    local worldPoints = {}
+    local minX, maxX, minY, maxY
+    for _, point in ipairs(points) do
+        local coord = point[4] and converter:ConvertMapCoordinate(zone, point[1], point[2])
+            or (not point[4] and { x = point[1], y = point[2] })
+        if not coord then return nil end
+        minX = minX and math.min(minX, coord.x) or coord.x
+        maxX = maxX and math.max(maxX, coord.x) or coord.x
+        minY = minY and math.min(minY, coord.y) or coord.y
+        maxY = maxY and math.max(maxY, coord.y) or coord.y
+        worldPoints[#worldPoints + 1] = { coord.x, coord.y, point[3] or 0 }
+    end
+    local center = { x = (minX + maxX) / 2, y = (minY + maxY) / 2 }
+    local radius = 0
+    for _, point in ipairs(worldPoints) do
+        local dx, dy = point[1] - center.x, point[2] - center.y
+        radius = math.max(radius, math.sqrt(dx * dx + dy * dy) + point[3])
+    end
+    return center, math.ceil(radius)
+end
+
+function APR.worldCoordinateConverter:GetMixedAreaCenter(zone, points)
+    local center = GetMixedArea(self, zone, points)
+    return center
+end
+
+function APR.worldCoordinateConverter:GetMixedAreaRadius(zone, points)
+    local _, radius = GetMixedArea(self, zone, points)
+    return radius
+end
+
 function APR.worldCoordinateConverter:ConvertRoute(routeName)
     local route = APR.RouteQuestStepList and APR.RouteQuestStepList[routeName]
     local convertedRoute = CopyRouteValue(route)
