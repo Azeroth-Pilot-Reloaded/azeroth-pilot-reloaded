@@ -41,10 +41,14 @@ def load_routes(paths=None):
                   "Classes", "Specs", "EVENTS", "REPUTATION_TYPE", "REPUTATION_STANDING")
     enums = {name: plain(runtime.globals().APR[name]) for name in enum_names}
     profiles = set(runtime.globals().APR.LevelRequirementProfiles.keys())
+    runtime.execute('function APR:NewModule() return {} end')
+    runtime.execute((ROOT / 'APR-Core/features/navigation/WorldCoordinateConverter.lua').read_text(encoding='utf-8'))
     environment, registry, execute = runtime.execute('''
         local registry = {}
         local function unknown(_, key) error("Unknown route constant/API: " .. tostring(key), 2) end
         local apr = {DelveRouteRegistry = {}, worldCoordinateConverter = {}}
+        apr.worldCoordinateConverter.GetMixedAreaCenter = APR.worldCoordinateConverter.GetMixedAreaCenter
+        apr.worldCoordinateConverter.GetMixedAreaRadius = APR.worldCoordinateConverter.GetMixedAreaRadius
         for _, name in ipairs({"CATEGORIES", "EXPANSIONS", "PREFAB_TYPES", "GAME_VERSIONS",
             "RACES", "Classes", "Specs", "EVENTS", "REPUTATION_TYPE", "REPUTATION_STANDING"}) do
             apr[name] = setmetatable(APR[name], {__index = unknown})
