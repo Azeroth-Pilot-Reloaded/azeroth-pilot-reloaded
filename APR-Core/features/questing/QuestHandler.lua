@@ -446,14 +446,6 @@ local function UpdateStepOnce()
             end
         end
 
-        if (step.LeaveQuest) then
-            APR:LeaveQuest(step.LeaveQuest)
-        end
-        if (step.LeaveQuests) then
-            for _, questID in pairs(step.LeaveQuests) do
-                APR:LeaveQuest(questID)
-            end
-        end
         if (step.VehicleExit) then
             VehicleExit()
         end
@@ -1056,6 +1048,9 @@ local function UpdateStepOnce()
             end
         end
         if step.ResetRoute then
+            if showStepDetails then
+                APR.currentStep:AddQuestSteps("RESET_ROUTE", L["RESET_ROUTE"], "ResetRoute", false, true)
+            end
             APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", function()
                 APRData[APR.PlayerID][APR.ActiveRoute] = 1
                 APR:PrintInfo(APR:WrapTextWithAppearanceColor("APR", "general", "accent") .. " Route Reseted")

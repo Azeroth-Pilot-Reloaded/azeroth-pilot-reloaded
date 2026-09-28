@@ -3,16 +3,18 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 -- Primary and secondary keys that identify the main action for a step.
 -- Keeping them here ensures other modules can reason about step intent without re-declaring lists.
 APR.mainStepOptions = {
-    "ExitTutorial", "PickUp", "DropQuest", "Qpart", "QpartPart", "Treasure", "Group", "Done",
-    "Scenario", "EnterInstance", "LeaveInstance", "EnterScenario", "DoScenario", "LeaveScenario", "UseHS",
-    "UseDalaHS", "UseGarrisonHS", "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal", "LearnProfession",
-    "LootItems", "WarMode", "Grind", "Reputation", "LootMoney", "Emote", "Achievement", "RouteCompleted", "Note",
-    "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast", "DestroyItems", "EquipItem"
+    "ExitTutorial", "PickUp", "PickUpDB", "DropQuest", "Qpart", "QpartDB", "QpartPart", "Treasure", "Group", "Done",
+    "DoneDB", "Scenario", "EnterInstance", "LeaveInstance", "EnterScenario", "DoScenario", "LeaveScenario", "SetHS",
+    "UseHS", "UseDalaHS", "UseGarrisonHS", "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal",
+    "LearnProfession", "LootItems", "WarMode", "Grind", "Reputation", "LootMoney", "Emote", "Achievement",
+    "RouteCompleted", "Note", "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast",
+    "DestroyItems", "EquipItem", "LeaveQuest", "LeaveQuests", "ResetRoute"
 }
 
 -- BuyMerchant need to be first
 APR.secondaryStepOptions = {
-    "BuyMerchant", "GossipOptionIDs"
+    "BuyMerchant", "GossipOptionIDs", "GroupTask", "ChromiePick",
+    "MountVehicle", "VehicleExit"
 }
 
 --- Return the localized label for the first recognized step key.
@@ -53,9 +55,10 @@ function APR:GetStepString(step)
     local stepMappings = {
         BuyMerchant = L["BUY"],
         Done = L["TURN_IN_Q"],
+        DoneDB = L["TURN_IN_Q"],
         DoScenario = L["SCENARIO"],
         DropQuest = L["Q_DROP"],
-        EnterInstance = "INSTANCE",
+        EnterInstance = INSTANCE,
         EnterScenario = L["SCENARIO"],
         ExitTutorial = L["SKIP_TUTORIAL"],
         GetFP = L["GET_FLIGHTPATH"],
@@ -63,12 +66,21 @@ function APR:GetStepString(step)
         GossipOptionIDs = L["TALK_NPC"],
         Grind = L["GRIND"],
         Group = L["GROUP_Q"],
+        GroupTask = L["GROUP_QUEST_TASK"],
+        LeaveQuest = L["LEAVE_QUEST"],
+        LeaveQuests = L["LEAVE_QUEST"],
+        ChromiePick = L["SWITCH_TO_CHROMIE"],
+        ResetRoute = L["RESET_ROUTE"],
+        MountVehicle = L["MOUNT_VEHICLE"],
+        VehicleExit = L["LEAVE_VEHICLE"],
         LearnProfession = L["LEARN_PROFESSION"],
         LeaveInstance = L["LEAVE_INSTANCE"],
         LeaveScenario = L["SCENARIO"],
         LootItems = L["LOOT_ITEM"],
         PickUp = L["PICK_UP_Q"],
+        PickUpDB = L["PICK_UP_Q"],
         Qpart = L["Q_PART"],
+        QpartDB = L["Q_PART"],
         QpartPart = L["Q_PART"],
         RouteCompleted = L["ROUTE_COMPLETED"],
         Scenario = L["SCENARIO"],
@@ -85,9 +97,12 @@ function APR:GetStepString(step)
         Waypoint = L["RUN_WAYPOINT"],
     }
 
-    for key, _ in pairs(step) do
-        if stepMappings[key] then
-            return stepMappings[key], key
+    -- Resolve primary actions before companion fields, regardless of table order.
+    for _, keys in ipairs({ self.mainStepOptions, { "Waypoint" }, self.secondaryStepOptions }) do
+        for _, key in ipairs(keys) do
+            if step[key] and stepMappings[key] then
+                return stepMappings[key], key
+            end
         end
     end
 
@@ -197,11 +212,11 @@ function APR:GetStepQuestIDs(step)
     return ids
 end
 
---- Quick check for any primary action flags on a step table.
-function APR:HasAnyMainStepOption(step)
+--- Quick check for primary actions, optionally excluding the action being handled.
+function APR:HasAnyMainStepOption(step, excludedKeys)
     if not step then return false end
     for _, key in ipairs(APR.mainStepOptions) do
-        if step[key] ~= nil then
+        if step[key] ~= nil and not (excludedKeys and excludedKeys[key]) then
             return true
         end
     end

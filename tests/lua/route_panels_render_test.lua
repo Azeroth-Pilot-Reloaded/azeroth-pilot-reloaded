@@ -270,5 +270,43 @@ APRData.player.loot = 3
 assertLootDetails(0)
 print(
 "Quest order loot: absent cache, optional quest, unavailable count, bags, saved/live bank, completion and passed steps passed")
+-- Merchant purchases may have no linked quest, including in future route steps.
+local completedMerchantQuests = { [123] = true }
+C_QuestLog.IsQuestFlaggedCompleted = function(id)
+    assert(type(id) == "number", "Merchant rows must not query a missing quest ID")
+    return completedMerchantQuests[id] == true
+end
+APR.ActiveRoute = "merchant"
+APRData.player.merchant = 1
+APR.RouteQuestStepList.merchant = {
+    { Note = "Before buying" },
+    { BuyMerchant = { { itemID = 2207, quantity = 1 } } },
+    { BuyMerchant = { { itemID = 159, quantity = 5, questID = 456 } } },
+    { BuyMerchant = { { itemID = 2512, quantity = 1000, questID = 123 } } },
+    { BuyMerchant = { { itemID = 2207, quantity = 1 }, { itemID = 159, quantity = 5, questID = 123 } } },
+    { Note = "After buying" },
+}
+local errorsBeforeMerchant = #failures
+local function renderMerchant()
+    list:AddStepFromRoute(true)
+    drainRender()
+    assert(#failures == errorsBeforeMerchant and not list.renderFailed,
+        "A purchase without a linked quest must not abort the route render")
+    assert(#list.stepList == 6, "Rows after merchant purchases must still render")
+end
+renderMerchant()
+assert(list.rawStepContainers[2].questFonts[1]:GetText() == "1 - Item 2207")
+assert(list.rawStepContainers[3].questFonts[1]:GetText() == "5 - Item 159")
+assert(#list.rawStepContainers[4].questFonts == 0, "Completed linked quests hide purchase details")
+assert(#list.rawStepContainers[5].questFonts == 1, "Mixed purchases retain only pending items")
+APRData.player.merchant = 2
+renderMerchant()
+assert(#list.rawStepContainers[2].questFonts == 1, "An active purchase without a quest remains pending")
+APRData.player.merchant = 6
+renderMerchant()
+for index = 2, 5 do
+    assert(#list.rawStepContainers[index].questFonts == 0, "Passed purchases hide their details")
+end
+print("Quest order merchant: optional quests, linked completion, mixed purchases, active and passed steps passed")
 print(
 "Quest order: 1200 rows, bounded build/recycling, atomic publishing, buffer reuse, scroll, filters, cancellation, resize and recovery passed")

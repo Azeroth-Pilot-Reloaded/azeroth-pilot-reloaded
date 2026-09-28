@@ -191,15 +191,26 @@ function APR:GetRouteActionText(key, rule)
 end
 
 function APR:HandleRouteAction(step)
-    if (step.LeaveQuest or step.LeaveQuests) and not self:HasAnyMainStepOption(step) then
+    if step.LeaveQuest or step.LeaveQuests then
+        local ids, seen = {}, {}
+        if step.LeaveQuest then ids[#ids + 1] = step.LeaveQuest end
+        for _, id in ipairs(step.LeaveQuests or {}) do ids[#ids + 1] = id end
         local complete = true
-        for _, id in ipairs(step.LeaveQuests or { step.LeaveQuest }) do
-            if C_QuestLog.IsOnQuest(id) then
-                complete = false; self:LeaveQuest(id)
+        local standalone = not self:HasAnyMainStepOption(step, { LeaveQuest = true, LeaveQuests = true })
+        for _, id in ipairs(ids) do
+            if not seen[id] and C_QuestLog.IsOnQuest(id) then
+                complete = false
+                self:LeaveQuest(id)
+                if standalone then
+                    self.currentStep:AddQuestSteps(id, L["LEAVE_QUEST"], id)
+                end
             end
+            seen[id] = true
         end
-        if complete then self:NextQuestStep() end
-        return true
+        if standalone then
+            if complete then self:NextQuestStep() end
+            return true
+        end
     end
     for _, key in ipairs(actionKeys) do
         if step[key] then
