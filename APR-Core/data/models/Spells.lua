@@ -129,7 +129,7 @@ APR.hearthStoneSpellID = {
     410137,  -- Lost Dragonscale (1)
     410148,  -- Lost Dragonscale (2)
     412555,  -- Path of the Naaru
-    420418,  -- Deeepdweller's Earthen Hearthstone
+    420418,  -- Deepdweller's Earthen Hearthstone
     422284,  -- Hearthstone of the Flame
     430265,  -- Tess's Peacebloom
     431644,  -- Stone of the Hearth
@@ -140,7 +140,7 @@ APR.hearthStoneSpellID = {
     463481,  -- Notorious Thread's Hearthstone
     464106,  -- Relic of Crystal Connections
     467470,  -- Delve-O Bot 7001
-    1217281, -- Redepolyment Module
+    1217281, -- Redeployment Module
     1220729, -- Explosive Hearthstone
     1221356, -- Hellscream's Reach Tabard
     1221357, -- Wrap of Unity: Orgrimmar
@@ -156,8 +156,50 @@ APR.hearthStoneSpellID = {
     1250878, -- Timerunner's Hearthstone
     1261979, -- Lightcalled Hearthstone
     1270583, -- Naaru's Enfold
-    1273401, -- Corewarden's Hearthston
+    1270814, -- Preyseeker's Hearthstone
+    1273401, -- Corewarden's Hearthstone
+}
 
+-- Only toys that return to the player's inn; fixed-destination teleports do not belong here.
+-- Verified against item use effects and the HearthRoulette / Random Hearthstone Toy Continued
+-- catalogs on 2026-09-29. Keep their cast spells in hearthStoneSpellID for UseHS completion.
+APR.hearthStoneToyItemIDs = {
+    54452,  -- Ethereal Portal
+    64488,  -- The Innkeeper's Daughter
+    93672,  -- Dark Portal
+    142542, -- Tome of Town Portal
+    162973, -- Greatfather Winter's Hearthstone
+    163045, -- Headless Horseman's Hearthstone
+    165669, -- Lunar Elder's Hearthstone
+    165670, -- Peddlefeet's Lovely Hearthstone
+    165802, -- Noble Gardener's Hearthstone
+    166746, -- Fire Eater's Hearthstone
+    166747, -- Brewfest Reveler's Hearthstone
+    168907, -- Holographic Digitalization Hearthstone
+    172179, -- Eternal Traveler's Hearthstone
+    180290, -- Night Fae Hearthstone
+    182773, -- Necrolord Hearthstone
+    183716, -- Venthyr Sinstone
+    184353, -- Kyrian Hearthstone
+    188952, -- Dominated Hearthstone
+    190196, -- Enlightened Hearthstone
+    190237, -- Broker Translocation Matrix
+    193588, -- Timewalker's Hearthstone
+    200630, -- Ohn'ir Windsage's Hearthstone
+    206195, -- Path of the Naaru
+    208704, -- Deepdweller's Earthen Hearthstone
+    209035, -- Hearthstone of the Flame
+    210455, -- Draenic Hologem
+    212337, -- Stone of the Hearth
+    228940, -- Notorious Thread's Hearthstone
+    235016, -- Redeployment Module
+    236687, -- Explosive Hearthstone
+    245970, -- P.O.S.T. Master's Express Hearthstone
+    246565, -- Cosmic Hearthstone
+    257736, -- Lightcalled Hearthstone
+    263489, -- Naaru's Enfold
+    263933, -- Preyseeker's Hearthstone
+    265100, -- Corewarden's Hearthstone
 }
 
 APR.zuldazarHSSpellID = 267381

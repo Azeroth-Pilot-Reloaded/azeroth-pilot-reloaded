@@ -864,6 +864,9 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         if equipSlot then
             IconButton:SetAttribute("type1", "macro")
             IconButton:SetAttribute("macrotext", "/equipslot [nocombat] " .. equipSlot .. " item:" .. itemID)
+        elseif PlayerHasToy and PlayerHasToy(itemID) then
+            IconButton:SetAttribute("type1", "toy")
+            IconButton:SetAttribute("toy", itemID)
         else
             IconButton:SetAttribute("type1", "item")
             IconButton:SetAttribute("item", "item:" .. tostring(itemID))

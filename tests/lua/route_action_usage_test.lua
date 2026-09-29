@@ -212,3 +212,76 @@ assert(APR.currentStep.questsList["RESET_ROUTE-ResetRoute"], "Reset has a main a
 resetCallback()
 assert(APRData.player.route == 1 and refreshed, "Confirmed reset restarts and refreshes the route")
 print("Promoted main actions: abandonment, mixed steps, gossip guards and confirmed reset passed")
+
+-- Issue #480: run real UseHS rendering and cast completion with no hearthstone in bags.
+dofile("APR-Core/data/models/Spells.lua")
+dofile("APR-Core/utils/Utils.lua")
+dofile("APR-Core/utils/PlayerUtils.lua")
+APR.Debug, APR.DebugEvent = noop, noop
+local owned, unusable, bagCount = {}, {}, 0
+function PlayerHasToy(id) return owned[id] == true end
+
+C_ToyBox = { IsToyUsable = function(id) return not unusable[id] end }
+function C_Item.GetItemCount(id) return id == 6948 and bagCount or 0 end
+
+function C_Item.IsUsableItem() return true end
+
+function C_Item.GetItemCooldown() return 1, 1800, 1 end
+
+-- Item use effects verified from the toy tooltips; every supported toy must finish UseHS.
+local toySpells = {
+    [54452] = 75136, [64488] = 94719, [93672] = 136508, [142542] = 231504,
+    [162973] = 278244, [163045] = 278559, [165669] = 285362, [165670] = 285424,
+    [165802] = 286031, [166746] = 286331, [166747] = 286353, [168907] = 298068,
+    [172179] = 308742, [180290] = 326064, [182773] = 340200, [183716] = 342122,
+    [184353] = 345393, [188952] = 363799, [190196] = 366945, [190237] = 367013,
+    [193588] = 375357, [200630] = 391042, [206195] = 412555, [208704] = 420418,
+    [209035] = 422284, [210455] = 438606, [212337] = 401802, [228940] = 463481,
+    [235016] = 1217281, [236687] = 1220729, [245970] = 1240219, [246565] = 1242509,
+    [257736] = 1261979, [263489] = 1270583, [263933] = 1270814, [265100] = 1273401,
+}
+for itemID, spellID in pairs(toySpells) do
+    owned = { [itemID] = true }
+    current, before = { UseHS = 10 }, advanced
+    APR:UpdateStep()
+    assert(#buttons == 1 and buttons[1].id == itemID and buttons[1].kind == "item",
+        "UseHS must render an owned toy even on cooldown: " .. itemID)
+    assert(advanced == before, "Rendering a hearthstone must not complete the step")
+    cast(current, spellID, "pet")
+    cast(current, 200)
+    assert(advanced == before, "Unrelated and non-player casts must not complete UseHS")
+    cast(current, spellID)
+    assert(advanced == before + 1, "The toy's successful cast must complete UseHS: " .. itemID)
+end
+local seen = {}
+for _, id in ipairs(APR.hearthStoneToyItemIDs) do
+    assert(toySpells[id] and not seen[id], "Toy catalog must contain verified, unique inn teleports")
+    seen[id] = true
+end
+
+owned = { [180290] = true, [210455] = true, [263933] = true }
+unusable = { [180290] = true, [210455] = true }
+assert(APR:GetHearthstoneItemID() == 263933, "Skip toys unavailable to this character")
+assert(APR:GetHearthstoneItemID() == 263933, "Repeated renders keep the same selection")
+bagCount = 1
+assert(APR:GetHearthstoneItemID() == 6948, "Keep using the original hearthstone when carried")
+bagCount = 0
+function C_Item.IsUsableItem() return false end
+
+assert(APR:GetHearthstoneItemID() == 6948, "Respect item usability as well as toy ownership")
+function C_Item.IsUsableItem() return true end
+
+owned = { [140192] = true, [110560] = true }
+assert(APR:GetHearthstoneItemID() == 6948, "Fixed-destination toys cannot replace an inn hearthstone")
+owned = { [263933] = true }
+C_ToyBox.IsToyUsable = function() return nil end
+assert(APR:GetHearthstoneItemID() == 6948, "Wait for toy usability data")
+C_ToyBox.IsToyUsable = function() return true end
+assert(APR:GetHearthstoneItemID() == 263933, "Refresh selection when toy data arrives")
+C_ToyBox, PlayerHasToy, C_Item = nil, nil, nil
+function GetItemCount() return bagCount end
+
+assert(APR:GetHearthstoneItemID() == 6948, "Clients without toy APIs retain the normal button")
+bagCount = 1
+assert(APR:GetHearthstoneItemID() == 6948, "Support the legacy bag API")
+print("Hearthstones: toy-only UseHS buttons, all toy cast effects, restrictions, cooldowns and legacy fallback passed")
