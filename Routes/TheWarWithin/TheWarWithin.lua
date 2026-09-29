@@ -1920,20 +1920,20 @@ APR.RouteQuestStepList["2248-TWW-The-Machines-March-to-War-storyline"] = {
         {
             DoScenario = { questID = 79026, mapID = 2251 },
             InstanceQuest = true,
-            Zone = 2215,
+            Zone = 2251,
             _index = 39,
         },
         {
             Qpart = { [79026] = { 3 } },
             Coord = { x = 314.4, y = -776 },
             InstanceQuest = true,
-            Zone = 2214,
+            Zone = 2251,
             _index = 40,
         },
         {
             LeaveScenario = { questID = 79026, mapID = 2251 },
             InstanceQuest = true,
-            Zone = 2215,
+            Zone = 2214,
             _index = 41,
         },
         {

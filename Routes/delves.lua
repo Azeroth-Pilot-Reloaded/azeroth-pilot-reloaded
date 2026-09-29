@@ -41,7 +41,7 @@ RegisterDelveRoute("FUNGAL_FOLLY_DELVE", {
                 InstanceQuest = true,
                 GossipOptionIDs = { 111366 },
                 Scenario = { questID = 1, criteriaID = 62061, criteriaIndex = 1, scenarioID = 2311, stepID = 6588 },
-                Zone = 2248,
+                Zone = 2249,
             }
             ,
             {
@@ -49,7 +49,7 @@ RegisterDelveRoute("FUNGAL_FOLLY_DELVE", {
                 InstanceQuest = true,
                 Range = 250,
                 Scenario = { questID = 1, criteriaID = 62060, criteriaIndex = 1, scenarioID = 2311, stepID = 6589 },
-                Zone = 2248,
+                Zone = 2249,
             }
             ,
             {
@@ -57,7 +57,7 @@ RegisterDelveRoute("FUNGAL_FOLLY_DELVE", {
                 InstanceQuest = true,
                 Range = 5,
                 Scenario = { questID = 1, criteriaID = 62763, criteriaIndex = 1, scenarioID = 2311, stepID = 6590 },
-                Zone = 2248,
+                Zone = 2249,
             }
             ,
         }),
@@ -78,7 +78,7 @@ RegisterDelveRoute("KRIEGVALS_REST_DELVE", {
                 GossipOptionIDs = { 119802 },
                 InstanceQuest = true,
                 Scenario = { questID = 1, criteriaID = 62874, criteriaIndex = 2, scenarioID = 2317, stepID = 6605 },
-                Zone = 2248,
+                Zone = 2250,
             }
             ,
             {
@@ -86,7 +86,7 @@ RegisterDelveRoute("KRIEGVALS_REST_DELVE", {
                 InstanceQuest = true,
                 Range = 5,
                 Scenario = { questID = 1, criteriaID = 62401, criteriaIndex = 1, scenarioID = 2317, stepID = 6605 },
-                Zone = 2248,
+                Zone = 2250,
             }
             ,
             {
@@ -94,7 +94,7 @@ RegisterDelveRoute("KRIEGVALS_REST_DELVE", {
                 InstanceQuest = true,
                 Range = 300,
                 Scenario = { questID = 1, criteriaID = 62876, criteriaIndex = 1, scenarioID = 2317, stepID = 6606 },
-                Zone = 2248,
+                Zone = 2250,
             }
             ,
             {
@@ -102,7 +102,7 @@ RegisterDelveRoute("KRIEGVALS_REST_DELVE", {
                 InstanceQuest = true,
                 Range = 5,
                 Scenario = { questID = 1, criteriaID = 62877, criteriaIndex = 1, scenarioID = 2317, stepID = 6623 },
-                Zone = 2248,
+                Zone = 2250,
             }
             ,
             {
@@ -110,7 +110,7 @@ RegisterDelveRoute("KRIEGVALS_REST_DELVE", {
                 InstanceQuest = true,
                 Range = 5,
                 Scenario = { questID = 1, criteriaID = 62680, criteriaIndex = 1, scenarioID = 2317, stepID = 6640 },
-                Zone = 2248,
+                Zone = 2250,
             }
             ,
         }),
@@ -131,7 +131,7 @@ RegisterDelveRoute("WATERWORKS_DELVE", {
                 Coord = { x = 313.6, y = 38.7 },
                 GossipOptionIDs = { 120018 },
                 InstanceQuest = true,
-                Zone = 2214
+                Zone = 2251
             }
             ,
             {
@@ -139,7 +139,7 @@ RegisterDelveRoute("WATERWORKS_DELVE", {
                 Coord = { x = 313.9, y = 45.6 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2214
+                Zone = 2251
             }
             ,
             {
@@ -147,7 +147,7 @@ RegisterDelveRoute("WATERWORKS_DELVE", {
                 Coord = { x = 265.5, y = -492.6 },
                 InstanceQuest = true,
                 Range = 600,
-                Zone = 2214
+                Zone = 2251
             }
             ,
             {
@@ -155,7 +155,7 @@ RegisterDelveRoute("WATERWORKS_DELVE", {
                 Coord = { x = 288.2, y = -752.3 },
                 InstanceQuest = true,
                 Range = 20,
-                Zone = 2214
+                Zone = 2251
             }
             ,
         }),
@@ -176,7 +176,7 @@ RegisterDelveRoute("DREAD_PIT_DELVE", {
                 Coord = { x = -129.6, y = -240.3 },
                 GossipOptionIDs = { 121508 },
                 InstanceQuest = true,
-                Zone = 2214
+                Zone = 2302
             }
             ,
             {
@@ -186,7 +186,7 @@ RegisterDelveRoute("DREAD_PIT_DELVE", {
                 GossipOptionIDs = { 121508 },
                 Range = 200,
                 InstanceQuest = true,
-                Zone = 2214
+                Zone = 2302
             }
             ,
             {
@@ -195,7 +195,7 @@ RegisterDelveRoute("DREAD_PIT_DELVE", {
                 GossipOptionIDs = { 123392 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2214
+                Zone = 2302
             }
             ,
             {
@@ -204,7 +204,7 @@ RegisterDelveRoute("DREAD_PIT_DELVE", {
                 InstanceQuest = true,
                 ExtraActionB = true,
                 Range = 5,
-                Zone = 2214
+                Zone = 2302
             }
             ,
             {
@@ -213,7 +213,7 @@ RegisterDelveRoute("DREAD_PIT_DELVE", {
                 InstanceQuest = true,
                 ExtraActionB = true,
                 Range = 5,
-                Zone = 2214
+                Zone = 2302
             }
             ,
             {
@@ -221,7 +221,7 @@ RegisterDelveRoute("DREAD_PIT_DELVE", {
                 Coord = { x = -224.4, y = -89.4 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2214
+                Zone = 2302
             }
             ,
         }),
@@ -242,7 +242,7 @@ RegisterDelveRoute("SKITTERING_BREACH_DELVE", {
                 Coord = { x = -161.7, y = -70.0 },
                 GossipOptionIDs = { 121408 },
                 InstanceQuest = true,
-                Zone = 2215
+                Zone = 2310
             }
             ,
             {
@@ -250,7 +250,7 @@ RegisterDelveRoute("SKITTERING_BREACH_DELVE", {
                 Coord = { x = 47.5, y = 28.8 },
                 InstanceQuest = true,
                 Range = 250,
-                Zone = 2215
+                Zone = 2310
             }
             ,
             {
@@ -258,7 +258,7 @@ RegisterDelveRoute("SKITTERING_BREACH_DELVE", {
                 Coord = { x = 47.5, y = 28.8 },
                 InstanceQuest = true,
                 Range = 250,
-                Zone = 2215
+                Zone = 2310
             }
             ,
             {
@@ -266,7 +266,7 @@ RegisterDelveRoute("SKITTERING_BREACH_DELVE", {
                 Coord = { x = -89.1, y = 31.3 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215
+                Zone = 2310
             }
             ,
         }),
@@ -287,14 +287,14 @@ RegisterDelveRoute("MYCOMANCER_CAVERN_DELVE", {
                 Coord = { x = 8, y = -754.60003662109 },
                 GossipOptionIDs = { 121536 },
                 InstanceQuest = true,
-                Zone = 2215
+                Zone = 2312
             }
             ,
             {
                 Scenario = { questID = 1, criteriaID = 66485, criteriaIndex = 1, scenarioID = 2434, stepID = 7094 },
                 InstanceQuest = true,
                 NoArrow = true,
-                Zone = 2215
+                Zone = 2312
             }
             ,
             {
@@ -302,7 +302,7 @@ RegisterDelveRoute("MYCOMANCER_CAVERN_DELVE", {
                 Coord = { x = -127.40000152588, y = -810.70001220703 },
                 InstanceQuest = true,
                 Range = 10,
-                Zone = 2215
+                Zone = 2312
             }
             ,
         }),
@@ -322,7 +322,7 @@ RegisterDelveRoute("SINKHOLE_DELVE", {
                 Coord = { x = -1659.5, y = -417.20001220703 },
                 InstanceQuest = true,
                 Range = 100,
-                Zone = 2215
+                Zone = 2301
             }
             ,
             {
@@ -330,7 +330,7 @@ RegisterDelveRoute("SINKHOLE_DELVE", {
                 Coord = { x = -1557.0999755859, y = -593.20001220703 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215
+                Zone = 2301
             }
             ,
             {
@@ -338,7 +338,7 @@ RegisterDelveRoute("SINKHOLE_DELVE", {
                 Coord = { x = -1478, y = -502.39999389648 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215
+                Zone = 2301
             }
             ,
         }),
@@ -359,7 +359,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
                 Coord = { x = 97.599998474121, y = -778.60003662109 },
                 InstanceQuest = true,
                 Range = 150,
-                Zone = 2215
+                Zone = 2277
             }
             ,
             {
@@ -367,7 +367,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
                 Coord = { x = 141.10000610352, y = -670.40002441406 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215
+                Zone = 2277
             }
             ,
             {
@@ -376,7 +376,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
                 ExtraLineText = "JUMP_OFF",
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215
+                Zone = 2277
             }
             ,
             {
@@ -384,7 +384,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
                 Coord = { x = 88.099998474121, y = -730.10003662109 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215
+                Zone = 2277
             }
             ,
         }),
@@ -395,7 +395,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
                 GossipOptionIDs = { 120767 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215,
+                Zone = 2277,
             }
             ,
             {
@@ -403,7 +403,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
                 Coord = { x = 105, y = -665.70001220703 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215,
+                Zone = 2277,
             }
             ,
             {
@@ -411,7 +411,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
                 Coord = { x = 174.40000915527, y = -740.79998779297 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215,
+                Zone = 2277,
             }
             ,
             {
@@ -419,7 +419,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
                 Coord = { x = -35.299999237061, y = -520.40002441406 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215,
+                Zone = 2277,
             }
             ,
             {
@@ -427,7 +427,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
                 Coord = { x = -63.100002288818, y = -540.70001220703 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2215,
+                Zone = 2277,
             }
             ,
         }),
@@ -447,7 +447,7 @@ RegisterDelveRoute("SPIRAL_WEAVE_DELVE", {
                 Coord = { x = 41.5, y = -135.10000610352 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2347,
             }
             ,
             {
@@ -455,7 +455,7 @@ RegisterDelveRoute("SPIRAL_WEAVE_DELVE", {
                 Coord = { x = 112.70000457764, y = 55.299999237061 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2347,
             }
             ,
             {
@@ -463,7 +463,7 @@ RegisterDelveRoute("SPIRAL_WEAVE_DELVE", {
                 Coord = { x = 57.5, y = -54 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2347,
             }
             ,
         }),
@@ -485,7 +485,7 @@ RegisterDelveRoute("TAK_RETHAN_ABYSS_DELVE", {
                 GossipOptionIDs = { 120132 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2259,
             }
             ,
             {
@@ -494,7 +494,7 @@ RegisterDelveRoute("TAK_RETHAN_ABYSS_DELVE", {
                 ExtraActionB = true,
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2259,
             }
             ,
             {
@@ -502,7 +502,7 @@ RegisterDelveRoute("TAK_RETHAN_ABYSS_DELVE", {
                 Coord = { x = 376.70001220703, y = -619.29998779297 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2259,
             }
             ,
             {
@@ -510,14 +510,14 @@ RegisterDelveRoute("TAK_RETHAN_ABYSS_DELVE", {
                 Coord = { x = 236.19999694824, y = -609 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2259,
             }
             ,
             {
                 Scenario = { questID = 1, criteriaID = 64738, criteriaIndex = 1, scenarioID = 2373, stepID = 6814 },
                 InstanceQuest = true,
                 NoArrow = true,
-                Zone = 2255,
+                Zone = 2259,
             }
             ,
         }),
@@ -538,7 +538,7 @@ RegisterDelveRoute("UNDERKEEP_DELVE", {
                 Coord = { x = 40.100002288818, y = -111.59999847412 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2299,
             }
             ,
             {
@@ -546,7 +546,7 @@ RegisterDelveRoute("UNDERKEEP_DELVE", {
                 Coord = { x = -107.09999847412, y = -277.5 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2299,
             }
             ,
             {
@@ -554,7 +554,7 @@ RegisterDelveRoute("UNDERKEEP_DELVE", {
                 Coord = { x = -191.90000915527, y = -335.39999389648 },
                 InstanceQuest = true,
                 Range = 5,
-                Zone = 2255,
+                Zone = 2299,
             }
             ,
         }),
