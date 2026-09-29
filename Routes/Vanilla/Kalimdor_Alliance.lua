@@ -946,6 +946,7 @@ APR.RouteQuestStepList["97-AzuremystIsle"] = {
             PickUp = { 9582 },
             Coord = { x = -12535.8, y = -4165.8 },
             Class = { "WARRIOR" },
+            MinLevel = 10,
             _index = 8,
         },
         {
@@ -1097,6 +1098,7 @@ APR.RouteQuestStepList["97-AzuremystIsle"] = {
             Fillers = { [9560] = { 1 } },
             Range = 0.61,
             Class = { "WARRIOR" },
+            IsQuestOnQuest = 9582,
             _index = 36,
         },
         {
@@ -1226,6 +1228,7 @@ APR.RouteQuestStepList["97-AzuremystIsle"] = {
             Done = { 9582 },
             Coord = { x = -12535.2, y = -4164.5 },
             Class = { "WARRIOR" },
+            IsQuestOnQuest = 9582,
             _index = 59,
         },
         {
