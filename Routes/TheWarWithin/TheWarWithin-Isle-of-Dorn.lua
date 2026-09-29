@@ -627,14 +627,14 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = -75.8, y = -213.8 },
             GossipOptionIDs = { 120330 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 88,
         },
         {
             Scenario = { criteriaID = 69234, criteriaIndex = 2, scenarioID = 2386, stepID = 6859, questID = 78464 },
             Coord = { x = -61.3, y = -212 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 89,
         },
         {
@@ -642,7 +642,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = -32.9, y = -262.6 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 90,
         },
         {
@@ -650,7 +650,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = -52.8, y = -331.9 },
             Range = 30,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 91,
         },
         {
@@ -658,7 +658,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = -56.5, y = -332 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 92,
         },
         {
@@ -667,7 +667,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             ExtraLineText = "MANUAL_SKIP",
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 93,
         },
         {
@@ -675,7 +675,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = -6.1, y = -417.9 },
             Range = 30,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 94,
         },
         {
@@ -683,7 +683,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = 23.6, y = -412.9 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 95,
         },
         {
@@ -691,7 +691,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = 42.3, y = -430.6 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 96,
         },
         {
@@ -699,7 +699,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = 55.2, y = -416 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 97,
         },
         {
@@ -707,7 +707,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = 33.1, y = -386.3 },
             GossipOptionIDs = { 120383 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 98,
         },
         {
@@ -715,7 +715,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = -11, y = -421.6 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 99,
         },
         {
@@ -723,7 +723,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = -108.4, y = -547.1 },
             Range = 30,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 100,
         },
         {
@@ -731,7 +731,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = -245.8, y = -728.4 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 101,
         },
         {
@@ -739,7 +739,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             Coord = { x = -247.5, y = -725.5 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 102,
         },
         {
@@ -748,7 +748,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
             ExtraLineText = "COLLECT_DELVE_TREASURE",
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 103,
         },
         {
@@ -1285,7 +1285,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         {
             DoScenario = { questID = 83758, mapID = 2249 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2249,
             _index = 181,
         },
         {
@@ -1540,7 +1540,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         {
             DoScenario = { questID = 78540, mapID = 2250 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2250,
             _index = 217,
         },
         {
@@ -2247,14 +2247,14 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = -75.8, y = -213.8 },
             GossipOptionIDs = { 120330 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 72,
         },
         {
             Scenario = { criteriaID = 69234, criteriaIndex = 2, scenarioID = 2386, stepID = 6859, questID = 78464 },
             Coord = { x = -61.3, y = -212 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 73,
         },
         {
@@ -2262,7 +2262,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = -32.9, y = -262.6 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 74,
         },
         {
@@ -2270,7 +2270,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = -52.8, y = -331.9 },
             Range = 30,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 75,
         },
         {
@@ -2278,7 +2278,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = -56.5, y = -332 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 76,
         },
         {
@@ -2287,7 +2287,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             ExtraLineText = "MANUAL_SKIP",
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 77,
         },
         {
@@ -2295,7 +2295,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = -6.1, y = -417.9 },
             Range = 30,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 78,
         },
         {
@@ -2303,7 +2303,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = 23.6, y = -412.9 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 79,
         },
         {
@@ -2311,7 +2311,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = 42.3, y = -430.6 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 80,
         },
         {
@@ -2319,7 +2319,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = 55.2, y = -416 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 81,
         },
         {
@@ -2327,7 +2327,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = 33.1, y = -386.3 },
             GossipOptionIDs = { 120383 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 82,
         },
         {
@@ -2335,7 +2335,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = -11, y = -421.6 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 83,
         },
         {
@@ -2343,7 +2343,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = -108.4, y = -547.1 },
             Range = 30,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 84,
         },
         {
@@ -2351,7 +2351,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = -245.8, y = -728.4 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 85,
         },
         {
@@ -2359,7 +2359,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             Coord = { x = -247.5, y = -725.5 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 86,
         },
         {
@@ -2368,7 +2368,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
             ExtraLineText = "COLLECT_DELVE_TREASURE",
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 87,
         },
         {
@@ -3571,14 +3571,14 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = -75.8, y = -213.8 },
             GossipOptionIDs = { 120330 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 98,
         },
         {
             Scenario = { criteriaID = 69234, criteriaIndex = 2, scenarioID = 2386, stepID = 6859, questID = 78464 },
             Coord = { x = -61.3, y = -212 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 99,
         },
         {
@@ -3586,7 +3586,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = -32.9, y = -262.6 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 100,
         },
         {
@@ -3594,7 +3594,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = -52.8, y = -331.9 },
             Range = 30,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 101,
         },
         {
@@ -3602,7 +3602,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = -56.5, y = -332 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 102,
         },
         {
@@ -3611,7 +3611,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             ExtraLineText = "MANUAL_SKIP",
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 103,
         },
         {
@@ -3619,7 +3619,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = -6.1, y = -417.9 },
             Range = 30,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 104,
         },
         {
@@ -3627,7 +3627,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = 23.6, y = -412.9 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 105,
         },
         {
@@ -3635,7 +3635,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = 42.3, y = -430.6 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 106,
         },
         {
@@ -3643,7 +3643,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = 55.2, y = -416 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 107,
         },
         {
@@ -3651,7 +3651,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = 33.1, y = -386.3 },
             GossipOptionIDs = { 120383 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 108,
         },
         {
@@ -3659,7 +3659,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = -11, y = -421.6 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 109,
         },
         {
@@ -3667,7 +3667,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = -108.4, y = -547.1 },
             Range = 30,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 110,
         },
         {
@@ -3675,7 +3675,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = -245.8, y = -728.4 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 111,
         },
         {
@@ -3683,7 +3683,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             Coord = { x = -247.5, y = -725.5 },
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 112,
         },
         {
@@ -3692,7 +3692,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
             ExtraLineText = "COLLECT_DELVE_TREASURE",
             Range = 5,
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2269,
             _index = 113,
         },
         {
@@ -4401,7 +4401,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         {
             DoScenario = { questID = 78996, mapID = 2249 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2249,
             _index = 217,
         },
         {
@@ -5011,7 +5011,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         {
             DoScenario = { questID = 78749, mapID = 2250 },
             InstanceQuest = true,
-            Zone = 2248,
+            Zone = 2250,
             _index = 304,
         },
         {
