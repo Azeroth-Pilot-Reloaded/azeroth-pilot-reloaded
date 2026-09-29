@@ -1150,16 +1150,19 @@ APR.RouteQuestStepList["2025-DF06A-Thaldraszus"] = {
         {
             Done = { 66028 },
             Coord = { x = -2937.1, y = -1341.3 },
+            Zone = 2085,
             _index = 114,
         },
         {
             PickUp = { 66030 },
             Coord = { x = -2937.1, y = -1341.3 },
+            Zone = 2085,
             _index = 115,
         },
         {
             PickUp = { 66031 },
             Coord = { x = -2945.3, y = -1332.3 },
+            Zone = 2085,
             _index = 116,
         },
         {
@@ -1167,6 +1170,7 @@ APR.RouteQuestStepList["2025-DF06A-Thaldraszus"] = {
             Coord = { x = -2626.3, y = -1202.3 },
             Button = { ["66029-1"] = 192749 },
             Range = 2,
+            Zone = 2085,
             _index = 117,
         },
         {
@@ -1175,27 +1179,32 @@ APR.RouteQuestStepList["2025-DF06A-Thaldraszus"] = {
             Fillers = { [66030] = { 1 } },
             SpellButton = { ["66031-1"] = 372520 },
             Range = 2,
+            Zone = 2085,
             _index = 118,
         },
         {
             Qpart = { [66030] = { 1 } },
             Coord = { x = -2617.6, y = -1093 },
             Range = 2,
+            Zone = 2085,
             _index = 119,
         },
         {
             Done = { 66030 },
             Coord = { x = -2937.1, y = -1341.3 },
+            Zone = 2085,
             _index = 120,
         },
         {
             Done = { 66031 },
             Coord = { x = -2945.3, y = -1332.3 },
+            Zone = 2085,
             _index = 121,
         },
         {
             PickUp = { 66032 },
             Coord = { x = -2937.1, y = -1341.3 },
+            Zone = 2085,
             _index = 122,
         },
         {
