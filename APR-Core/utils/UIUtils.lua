@@ -127,7 +127,7 @@ function APR:AddQuestTooltipDetails(tooltip, questID, options)
     addKeyValueLine(tooltip, ID, questIDText)
 
     if questIDNum then
-        local questTitle = C_QuestLog.GetTitleForQuestID(questIDNum)
+        local questTitle = APR:GetQuestTitle(questIDNum)
         if questTitle then
             addKeyValueLine(tooltip, NAME, questTitle)
         end

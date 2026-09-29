@@ -175,6 +175,7 @@ assert(totals == 2 and updates == 2 and renders == 1,
 print("Reputation refresh: event bursts coalesced; list rebuilt only on a route threshold change")
 
 -- Banked, already-complete delve objectives must not rebuild the current step on every log event.
+dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/features/questing/QuestHandler.lua")
 APR.QUEST_STATUS = { COMPLETE = "complete", PROGRESS = "progress" }
 APR.ActiveQuests = {

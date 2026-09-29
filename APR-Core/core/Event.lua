@@ -52,6 +52,7 @@ local events = {
     targetChanged = "PLAYER_TARGET_CHANGED",
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
+    questData = "QUEST_DATA_LOAD_RESULT",
     reputation = { "UPDATE_FACTION", "MAJOR_FACTION_RENOWN_LEVEL_CHANGED" },
     scenario = { "ACTIVE_DELVE_DATA_UPDATE", "SCENARIO_COMPLETED", "SCENARIO_CRITERIA_UPDATE",
         "WALK_IN_DATA_UPDATE", "ZONE_CHANGED_NEW_AREA" },
@@ -73,6 +74,7 @@ local events = {
 local autoAccept, autoAcceptRoute, step = nil, nil, nil
 
 local pendingQuestUpdateTimer
+local pendingQuestDataTimer
 local pendingWarModeTimer
 local pendingZoneRoutingTimer
 local questShareQueue = {}
@@ -177,6 +179,11 @@ function APR.event:CleanupEvents()
         pendingZoneRoutingTimer:Cancel()
         pendingZoneRoutingTimer = nil
     end
+    if pendingQuestDataTimer then
+        pendingQuestDataTimer:Cancel()
+        pendingQuestDataTimer = nil
+    end
+    APR:ResetQuestTitleRequests()
     for tag, container in pairs(self.framePool) do
         if container then
             -- Unregister all events for this container
@@ -1426,6 +1433,24 @@ function APR.event.functions.treasure(event, ...)
     if step and step.Treasure then
         C_Timer.After(0.2, function() APR:UpdateQuestAndStep() end)
     end
+end
+
+function APR.event.functions.questData(event, questID, success)
+    if not APR:OnQuestTitleLoaded(questID, success) or pendingQuestDataTimer then return end
+
+    -- Batch results without postponing the refresh indefinitely during a long route render.
+    pendingQuestDataTimer = C_Timer.NewTimer(0.15, function()
+        pendingQuestDataTimer = nil
+        local profile = APR:GetSettingsProfile()
+        if not APR.ActiveRoute or not profile or not profile.enableAddon then return end
+
+        local profileStart = APR:StartPerformanceSample()
+        APR:UpdateStep()
+        if APR.questOrderList and APR.questOrderList.DelayedUpdate then
+            APR.questOrderList:DelayedUpdate(true)
+        end
+        APR:FinishPerformanceSample("QuestDataLoadRefresh", profileStart)
+    end)
 end
 
 function APR.event.functions.updateQuest(event, ...)

@@ -6,7 +6,7 @@ local function colorByCompletion(isCompleted, currentStep, stepIndex)
 end
 
 local function getQuestName(questID)
-    return C_QuestLog.GetTitleForQuestID(questID) or UNKNOWN
+    return APR:GetQuestTitle(questID) or UNKNOWN
 end
 
 local function questLabel(id)
@@ -202,7 +202,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                             end
                             if flagged == 0 then
                                 table.insert(questInfo,
-                                    { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                                    { questID = questID, questName = APR:GetQuestTitle(questID) })
                             end
                         end
                     end
@@ -357,7 +357,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                             end
                             if flagged == 0 then
                                 table.insert(questInfo,
-                                    { questID = questID, questName = C_QuestLog.GetTitleForQuestID(questID) })
+                                    { questID = questID, questName = APR:GetQuestTitle(questID) })
                             end
                         end
                     end
