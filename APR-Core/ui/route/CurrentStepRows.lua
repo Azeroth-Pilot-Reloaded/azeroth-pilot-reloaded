@@ -205,7 +205,7 @@ local function ResolveDetail(entry)
         questID = entry
     end
     if not name and itemID then name = C_Item.GetItemInfo(itemID) end
-    if not name and questID then name = C_QuestLog.GetTitleForQuestID(questID) end
+    if not name and questID then name = APR:GetQuestTitle(questID) end
     return { questID = questID, itemID = itemID, name = name or UNKNOWN,
         text = "- " .. (name or (tostring(itemID or questID or UNKNOWN) .. " - " .. UNKNOWN)) }
 end

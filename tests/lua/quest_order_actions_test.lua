@@ -33,6 +33,7 @@ C_ScenarioInfo = { GetScenarioInfo = function() return { name = "Scenario" } end
     GetCriteriaInfoByStep = function() return { description = "Objective", completed = false } end }
 C_ChromieTime = { GetChromieTimeExpansionOption = function() return { name = "Legion" } end }
 dofile("APR-Core/utils/StepUtils.lua")
+dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/features/questing/RouteActions.lua")
 APR.ProcessRouteItems, APR.HandleRouteAction, APR.GetRouteActionState = forbidden, forbidden, forbidden
 APR.IsSojournerSkipActive, APR.IsDelveRoute, APR.HasTaxiNode = no, no, no
@@ -261,4 +262,16 @@ local _, abandoned = title:gsub(L.LEAVE_QUEST .. ": 12 %- Quest 12", "")
 assert(abandoned == 1, "A quest in both abandonment fields is only displayed once")
 local sale = render({ { SellItems = { items = { 20 }, junk = true } } }).stepList[1].title
 assert(sale == L.SELLITEMS .. ": Item 20 (" .. L.SELL_ITEM_EQUIPPED .. ")\n" .. L.VENDOR_TRASH)
+
+local cachedTitle = C_QuestLog.GetTitleForQuestID
+local requested = {}
+function GetTime() return 0 end
+C_QuestLog.GetTitleForQuestID = function() return nil end
+C_QuestLog.RequestLoadQuestByID = function(id) requested[id] = (requested[id] or 0) + 1 end
+local missing = render({ combined }).stepList[1].title
+assert(missing:find("11 - Unknown", 1, true), "Uncached companion titles keep a readable fallback")
+render({ combined })
+assert(requested[11] == 1, "Repeated renders must not duplicate a quest title request")
+C_QuestLog.GetTitleForQuestID = cachedTitle
+assert(render({ combined }).stepList[1].title == title, "Loaded titles replace the fallback on refresh")
 print("Quest order actions: every primary action, standalone helpers, sale details, completion, filters and read-only preview passed")
