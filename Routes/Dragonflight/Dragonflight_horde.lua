@@ -132,6 +132,7 @@ APR.RouteQuestStepList["85-DF01H-Orgrimmar"] = {
         },
         {
             RouteCompleted = true,
+            Zone = 2022,
             _index = 19,
         },
     }
@@ -152,26 +153,31 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Qpart = { [65444] = { 2 } },
             Coord = { x = -1792.7, y = 3895.3 },
             Range = 5,
+            Zone = 2022,
             _index = 1,
         },
         {
             Done = { 65444 },
             Coord = { x = -1778.3, y = 3903.7 },
+            Zone = 2022,
             _index = 2,
         },
         {
             PickUp = { 65452 },
             Coord = { x = -1778.3, y = 3903.7 },
+            Zone = 2022,
             _index = 3,
         },
         {
             PickUp = { 65453 },
             Coord = { x = -1780.9, y = 3904.6 },
+            Zone = 2022,
             _index = 4,
         },
         {
             PickUp = { 65451 },
             Coord = { x = -1777.3, y = 3901.4 },
+            Zone = 2022,
             _index = 5,
         },
         {
@@ -179,6 +185,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1758.3, y = 3970.7 },
             Fillers = { [65451] = { 1 }, [65453] = { 1 } },
             Range = 5,
+            Zone = 2022,
             _index = 6,
         },
         {
@@ -186,6 +193,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1624, y = 4075 },
             Fillers = { [65451] = { 1 }, [65453] = { 1 } },
             Range = 10,
+            Zone = 2022,
             _index = 7,
         },
         {
@@ -193,22 +201,26 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1514.2, y = 3783.7 },
             Fillers = { [65451] = { 1 }, [65453] = { 1 } },
             Range = 10,
+            Zone = 2022,
             _index = 8,
         },
         {
             Qpart = { [65451] = { 1 }, [65453] = { 1 } },
             Coord = { x = -1607, y = 3736 },
             Range = 180,
+            Zone = 2022,
             _index = 9,
         },
         {
             Done = { 65452 },
             Coord = { x = -1458.6, y = 3585.5 },
+            Zone = 2022,
             _index = 10,
         },
         {
             PickUp = { 69910 },
             Coord = { x = -1458.6, y = 3585.5 },
+            Zone = 2022,
             _index = 11,
         },
         {
@@ -217,17 +229,20 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "CHOOSE_WHY_ARENT_DRAGONS_HERE_MEET_US",
             Range = 5,
             Gossip = 1,
+            Zone = 2022,
             _index = 12,
         },
         {
             Done = { 69910 },
             Coord = { x = -1456.2, y = 3581.8 },
+            Zone = 2022,
             _index = 13,
         },
         {
             PickUp = { 72293 },
             Coord = { x = -1456.2, y = 3581.8 },
             HasAchievement = 16326,
+            Zone = 2022,
             _index = 14,
         },
         {
@@ -237,12 +252,14 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "CHOOSE_ZONE",
             Range = 5,
             HasAchievement = 16326,
+            Zone = 2022,
             _index = 15,
         },
         {
             Done = { 72293 },
             Coord = { x = -1452.5, y = 3552 },
             HasAchievement = 16326,
+            Zone = 2022,
             _index = 16,
         },
         {
@@ -251,6 +268,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "CHOOSE_ZONE",
             ExtraLineText2 = "CHOOSE_ZONE_DF_WS",
             HasAchievement = 16326,
+            Zone = 2022,
             _index = 17,
         },
         {
@@ -259,6 +277,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "CHOOSE_ZONE",
             ExtraLineText2 = "CHOOSE_ZONE_DF_OP",
             HasAchievement = 16326,
+            Zone = 2022,
             _index = 18,
         },
         {
@@ -267,6 +286,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "CHOOSE_ZONE",
             ExtraLineText2 = "CHOOSE_ZONE_DF_AS",
             HasAchievement = 16326,
+            Zone = 2022,
             _index = 19,
         },
         {
@@ -275,37 +295,44 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "CHOOSE_ZONE",
             ExtraLineText2 = "CHOOSE_ZONE_DF_THAL",
             HasAchievement = 16326,
+            Zone = 2022,
             _index = 20,
         },
         {
             Done = { 72266 },
             Coord = { x = -1456.2, y = 3581.8 },
             HasAchievement = 16326,
+            Zone = 2022,
             _index = 21,
         },
         {
             PickUp = { 69911 },
             Coord = { x = -1456.2, y = 3581.8 },
+            Zone = 2022,
             _index = 22,
         },
         {
             PickUp = { 66110 },
             Coord = { x = -1438.4, y = 3612.7 },
+            Zone = 2022,
             _index = 23,
         },
         {
             Done = { 65453 },
             Coord = { x = -1432.3, y = 3615.7 },
+            Zone = 2022,
             _index = 24,
         },
         {
             Done = { 65451 },
             Coord = { x = -1405, y = 3604 },
+            Zone = 2022,
             _index = 25,
         },
         {
             PickUp = { 66101 },
             Coord = { x = -1397.9, y = 3591.7 },
+            Zone = 2022,
             _index = 26,
         },
         {
@@ -313,6 +340,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1401.7, y = 3587 },
             ExtraLineText = "CLICK_SURVEYORS_DISC",
             Range = 5,
+            Zone = 2022,
             _index = 27,
         },
         {
@@ -320,6 +348,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1401.7, y = 3587 },
             ExtraLineText = "PRESS_1",
             Range = 5,
+            Zone = 2022,
             _index = 28,
         },
         {
@@ -327,6 +356,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1401.7, y = 3587 },
             ExtraLineText = "PRESS_2",
             Range = 5,
+            Zone = 2022,
             _index = 29,
         },
         {
@@ -334,32 +364,38 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1401.7, y = 3587 },
             ExtraLineText = "PRESS_3",
             Range = 5,
+            Zone = 2022,
             _index = 30,
         },
         {
             Done = { 66101 },
             Coord = { x = -1397.9, y = 3591.7 },
+            Zone = 2022,
             _index = 31,
         },
         {
             Done = { 66110 },
             Coord = { x = -1467.4, y = 3534.4 },
+            Zone = 2022,
             _index = 32,
         },
         {
             PickUp = { 66111 },
             Coord = { x = -1467.4, y = 3534.4 },
+            Zone = 2022,
             _index = 33,
         },
         {
             PickUp = { 69965 },
             Coord = { x = -1442.4, y = 3539.8 },
             ExtraLineText = "IF_HAEPHESTA_IS_NOT_THERE_LOG_OUT_AND_BACK_IN_BLIZZARD_BUG",
+            Zone = 2022,
             _index = 34,
         },
         {
             PickUp = { 66112 },
             Coord = { x = -1437.9, y = 3529.3 },
+            Zone = 2022,
             _index = 35,
         },
         {
@@ -368,6 +404,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Range = 5,
             Gossip = 3,
             RaidIcon = 193393,
+            Zone = 2022,
             _index = 36,
         },
         {
@@ -376,12 +413,14 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "CLICK_BOOK_CHOICES_DONT_MATTER",
             Range = 1,
             Gossip = 1,
+            Zone = 2022,
             _index = 37,
         },
         {
             GetFP = 2805,
             Coord = { x = -1411.7, y = 3508.2 },
             Range = 1,
+            Zone = 2022,
             _index = 38,
         },
         {
@@ -389,6 +428,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1378.8, y = 3556.1 },
             ExtraLineText = "CLICK_STONE_TABLET",
             Range = 5,
+            Zone = 2022,
             _index = 39,
         },
         {
@@ -396,16 +436,19 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1602.4, y = 3680.3 },
             ExtraLineText = "CLICK_BRAZIER",
             Range = 5,
+            Zone = 2022,
             _index = 40,
         },
         {
             Done = { 69911 },
             Coord = { x = -1456, y = 3582.1 },
+            Zone = 2022,
             _index = 41,
         },
         {
             PickUp = { 69912 },
             Coord = { x = -1456, y = 3582.1 },
+            Zone = 2022,
             _index = 42,
         },
         {
@@ -414,6 +457,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "SPEAK_SENDRAX_SEND_SIGNAL_FLARES",
             Range = 1,
             Gossip = 2,
+            Zone = 2022,
             _index = 43,
         },
         {
@@ -421,6 +465,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             Coord = { x = -1379, y = 3418.8 },
             ExtraLineText = "HEAD_CAVE",
             Range = 10,
+            Zone = 2022,
             _index = 44,
         },
         {
@@ -430,6 +475,7 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "ITEM_DROPS_FROM_BARON_CRUSTCORE_AT_BACK_OF_THE_CAVE",
             Range = 10,
             RaidIcon = 192266,
+            Zone = 2022,
             _index = 45,
         },
         {
@@ -439,42 +485,50 @@ APR.RouteQuestStepList["2022-DF03H-WakingShores"] = {
             ExtraLineText = "ITEM_DROPS_FROM_BARON_ASHFLOW_AT_TOP_OF_THE_LAVA_FLOW",
             Range = 10,
             RaidIcon = 192274,
+            Zone = 2022,
             _index = 46,
         },
         {
             Qpart = { [69965] = { 1 } },
             Coord = { x = -1313.7, y = 3448.3 },
             Range = 200,
+            Zone = 2022,
             _index = 47,
         },
         {
             Qpart = { [66111] = { 1 } },
             Coord = { x = -1313.7, y = 3448.3 },
             Range = 200,
+            Zone = 2022,
             _index = 48,
         },
         {
             Done = { 66112 },
             Coord = { x = -1437.9, y = 3529.3 },
+            Zone = 2022,
             _index = 49,
         },
         {
             Done = { 69965 },
             Coord = { x = -1442.4, y = 3539.8 },
+            Zone = 2022,
             _index = 50,
         },
         {
             Done = { 66111 },
             Coord = { x = -1467.4, y = 3534.4 },
+            Zone = 2022,
             _index = 51,
         },
         {
             Done = { 69912 },
             Coord = { x = -1424.7, y = 3537.5 },
+            Zone = 2022,
             _index = 52,
         },
         {
             RouteCompleted = true,
+            Zone = 2022,
             _index = 53,
         },
     }
@@ -496,17 +550,20 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -1099.5, y = 338.8 },
             ExtraLineText = "GET_INSIDE_AND_USE_PORTAL_TOP",
             Range = 2,
+            Zone = 2112,
             _index = 1,
         },
         {
             Done = { 66244 },
             Coord = { x = -1042.4, y = 306.5 },
             ExtraLineText = "GET_INSIDE_AND_USE_PORTAL_TOP",
+            Zone = 2112,
             _index = 2,
         },
         {
             PickUp = { 66159 },
             Coord = { x = -1042.4, y = 306.5 },
+            Zone = 2112,
             _index = 3,
         },
         {
@@ -514,21 +571,25 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -1042.4, y = 306.5 },
             Range = 2,
             Gossip = 1,
+            Zone = 2112,
             _index = 4,
         },
         {
             Done = { 66159 },
             Coord = { x = -1042.4, y = 306.5 },
+            Zone = 2112,
             _index = 5,
         },
         {
             PickUp = { 66163 },
             Coord = { x = -1061.9, y = 313.3 },
+            Zone = 2112,
             _index = 6,
         },
         {
             PickUp = { 66166 },
             Coord = { x = -1061.9, y = 313.3 },
+            Zone = 2112,
             _index = 7,
         },
         {
@@ -536,6 +597,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -1061.9, y = 313.3 },
             Button = { ["66163-1"] = 198859 },
             ExtraLineText = "USE_REVEALING_DRAGONS_EYE",
+            Zone = 2112,
             _index = 8,
         },
         {
@@ -544,6 +606,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Fillers = { [66163] = { 2 } },
             ExtraLineText = "INSIDE_INN",
             Range = 2,
+            Zone = 2112,
             _index = 9,
         },
         {
@@ -552,6 +615,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Fillers = { [66163] = { 2 } },
             ExtraLineText = "INSIDE_BANK",
             Range = 2,
+            Zone = 2112,
             _index = 10,
         },
         {
@@ -560,6 +624,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Fillers = { [66163] = { 2 } },
             ExtraLineText = "ON_TOP_OF_BOX",
             Range = 2,
+            Zone = 2112,
             _index = 11,
         },
         {
@@ -568,21 +633,25 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             ExtraLineText = "INFILTRATORS_ARE_ACROSS_CITY_THEY_GLOW_RED_WHEN_YOU_ARE_CLOSE",
             Range = 300,
             Gossip = 1,
+            Zone = 2112,
             _index = 12,
         },
         {
             Done = { 66163 },
             Coord = { x = -994.1, y = 191.1 },
+            Zone = 2112,
             _index = 13,
         },
         {
             Done = { 66166 },
             Coord = { x = -994.1, y = 191.1 },
+            Zone = 2112,
             _index = 14,
         },
         {
             PickUp = { 66167 },
             Coord = { x = -994.1, y = 191.1 },
+            Zone = 2112,
             _index = 15,
         },
         {
@@ -590,6 +659,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -511.3, y = -1366.2 },
             ExtraLineText = "FLY_GUARDIAN_VELOMIR",
             Range = 2,
+            Zone = 2025,
             _index = 16,
         },
         {
@@ -597,21 +667,25 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -511.3, y = -1366.2 },
             ExtraLineText = "AID_GUARDIAN",
             Range = 2,
+            Zone = 2025,
             _index = 17,
         },
         {
             Done = { 66167 },
             Coord = { x = -511.3, y = -1366.2 },
+            Zone = 2025,
             _index = 18,
         },
         {
             PickUp = { 66169 },
             Coord = { x = -511.3, y = -1366.2 },
+            Zone = 2025,
             _index = 19,
         },
         {
             PickUp = { 66246 },
             Coord = { x = -511.3, y = -1366.2 },
+            Zone = 2025,
             _index = 20,
         },
         {
@@ -621,40 +695,47 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             ExtraLineText = "VELOMIRS_UNITS_ARE_MARKED_ON_MINIMAP",
             Range = 125,
             Gossip = 1,
+            Zone = 2025,
             _index = 21,
         },
         {
             Qpart = { [66169] = { 1 } },
             Coord = { x = -550.2, y = -1493 },
             Range = 125,
+            Zone = 2025,
             _index = 22,
         },
         {
             Done = { 66169 },
             Coord = { x = -691.2, y = -1401.9 },
+            Zone = 2025,
             _index = 23,
         },
         {
             Done = { 66246 },
             Coord = { x = -691.2, y = -1401.9 },
             Gossip = 1,
+            Zone = 2025,
             _index = 24,
         },
         {
             PickUp = { 66245 },
             Coord = { x = -691.2, y = -1401.9 },
             Gossip = 1,
+            Zone = 2025,
             _index = 25,
         },
         {
             PickUp = { 66247 },
             Coord = { x = -713.7, y = -1414 },
             Gossip = 1,
+            Zone = 2025,
             _index = 26,
         },
         {
             PickUp = { 66248 },
             Coord = { x = -784.6, y = -1424 },
+            Zone = 2025,
             _index = 27,
         },
         {
@@ -662,6 +743,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -819.5, y = -1428.9 },
             Fillers = { [66245] = { 1 }, [66248] = { 1 } },
             Range = 200,
+            Zone = 2025,
             _index = 28,
         },
         {
@@ -669,32 +751,38 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -819.5, y = -1428.9 },
             Fillers = { [66245] = { 1 } },
             Range = 200,
+            Zone = 2025,
             _index = 29,
         },
         {
             Qpart = { [66245] = { 1 } },
             Coord = { x = -819.5, y = -1428.9 },
             Range = 200,
+            Zone = 2025,
             _index = 30,
         },
         {
             Done = { 66247 },
             Coord = { x = -691.2, y = -1401.9 },
+            Zone = 2025,
             _index = 31,
         },
         {
             Done = { 66248 },
             Coord = { x = -691.2, y = -1401.9 },
+            Zone = 2025,
             _index = 32,
         },
         {
             Done = { 66245 },
             Coord = { x = -691.2, y = -1401.9 },
+            Zone = 2025,
             _index = 33,
         },
         {
             PickUp = { 66249 },
             Coord = { x = -691.2, y = -1401.9 },
+            Zone = 2025,
             _index = 34,
         },
         {
@@ -702,6 +790,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -1020.2, y = -1459.9 },
             ExtraLineText = "SHOOT_DRAGONS",
             Range = 2,
+            Zone = 2025,
             _index = 35,
         },
         {
@@ -709,16 +798,19 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -1020.2, y = -1459.9 },
             ExtraLineText = "SHOOT_DRAGONS",
             Range = 2,
+            Zone = 2025,
             _index = 36,
         },
         {
             Done = { 66249 },
             Coord = { x = -987, y = -1563 },
+            Zone = 2025,
             _index = 37,
         },
         {
             PickUp = { 66250 },
             Coord = { x = -987, y = -1563 },
+            Zone = 2025,
             _index = 38,
         },
         {
@@ -726,43 +818,51 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -987, y = -1563 },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 39,
         },
         {
             Done = { 66250 },
             Coord = { x = -946.7, y = -1539.8 },
+            Zone = 2025,
             _index = 40,
         },
         {
             PickUp = { 66251 },
             Coord = { x = -946.7, y = -1539.8 },
+            Zone = 2025,
             _index = 41,
         },
         {
             Qpart = { [66251] = { 1 } },
             Coord = { x = -941.9, y = -1639.2 },
             Range = 2,
+            Zone = 2025,
             _index = 42,
         },
         {
             Done = { 66251 },
             Coord = { x = -946.7, y = -1539.8 },
+            Zone = 2025,
             _index = 43,
         },
         {
             PickUp = { 66252 },
             Coord = { x = -946.7, y = -1539.8 },
+            Zone = 2025,
             _index = 44,
         },
         {
             Waypoint = 1,
             Coord = { x = -902.5, y = 164 },
             Range = 2,
+            Zone = 2112,
             _index = 45,
         },
         {
             SetHS = 66252,
             Coord = { x = -887.5, y = 200.9 },
+            Zone = 2112,
             _index = 46,
         },
         {
@@ -770,17 +870,20 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -1099.7, y = 338.3 },
             ExtraLineText = "TAKE_TELEPORTER_SEAT_OF_ASPECTS",
             Range = 5,
+            Zone = 2112,
             _index = 47,
         },
         {
             Done = { 66252 },
             Coord = { x = -1012.9, y = 261.3 },
             ExtraLineText = "ON_TOP_OF_TOWER",
+            Zone = 2112,
             _index = 48,
         },
         {
             PickUp = { 66320 },
             Coord = { x = -1085, y = 267.6 },
+            Zone = 2112,
             _index = 49,
         },
         {
@@ -788,22 +891,26 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2699, y = -1120.5 },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 50,
         },
         {
             Done = { 66320 },
             Coord = { x = -2699, y = -1120.5 },
+            Zone = 2025,
             _index = 51,
         },
         {
             GetFP = 2816,
             Coord = { x = -2716.1, y = -1127.2 },
             Range = 2,
+            Zone = 2025,
             _index = 52,
         },
         {
             PickUp = { 66080 },
             Coord = { x = -2705.4, y = -1112.5 },
+            Zone = 2025,
             _index = 53,
         },
         {
@@ -811,23 +918,27 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2446.5, y = -899.2 },
             ExtraLineText = "COMPLETES_WHEN_YOU_GET_CLOSE",
             Range = 2,
+            Zone = 2025,
             _index = 54,
         },
         {
             Done = { 66080 },
             Coord = { x = -2446.5, y = -899.2 },
             Gossip = 1,
+            Zone = 2025,
             _index = 55,
         },
         {
             PickUp = { 70136 },
             Coord = { x = -2446.5, y = -899.2 },
+            Zone = 2025,
             _index = 56,
         },
         {
             Qpart = { [70136] = { 2 } },
             Coord = { x = -2266.5, y = -1016.9 },
             Range = 5,
+            Zone = 2025,
             _index = 57,
         },
         {
@@ -835,6 +946,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2221, y = -980.1 },
             ExtraLineText = "INSIDE_CAVE",
             Range = 5,
+            Zone = 2025,
             _index = 58,
         },
         {
@@ -842,21 +954,25 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2221, y = -980.1 },
             ExtraLineText = "LOOT_STAFF",
             Range = 5,
+            Zone = 2025,
             _index = 59,
         },
         {
             Done = { 70136 },
             Coord = { x = -2446.5, y = -899.2 },
+            Zone = 2025,
             _index = 60,
         },
         {
             PickUp = { 66081 },
             Coord = { x = -2446.5, y = -899.2 },
+            Zone = 2025,
             _index = 61,
         },
         {
             PickUp = { 66082 },
             Coord = { x = -2446.5, y = -899.2 },
+            Zone = 2025,
             _index = 62,
         },
         {
@@ -864,27 +980,32 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2391.5, y = -1012.2 },
             Fillers = { [66082] = { 1 } },
             Range = 125,
+            Zone = 2025,
             _index = 63,
         },
         {
             Qpart = { [66082] = { 1 } },
             Coord = { x = -2391.5, y = -1012.2 },
             Range = 125,
+            Zone = 2025,
             _index = 64,
         },
         {
             Done = { 66081 },
             Coord = { x = -2699, y = -1120.5 },
+            Zone = 2025,
             _index = 65,
         },
         {
             Done = { 66082 },
             Coord = { x = -2699, y = -1120.5 },
+            Zone = 2025,
             _index = 66,
         },
         {
             PickUp = { 66083 },
             Coord = { x = -2705.8, y = -1111.8 },
+            Zone = 2025,
             _index = 67,
         },
         {
@@ -892,18 +1013,21 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2718, y = -1084.3 },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 68,
         },
         {
             Qpart = { [66083] = { 2 } },
             Coord = { x = -2718.8, y = -1085 },
             Range = 2,
+            Zone = 2025,
             _index = 69,
         },
         {
             Qpart = { [66083] = { 3 } },
             Coord = { x = -2718.8, y = -1085 },
             Range = 2,
+            Zone = 2025,
             _index = 70,
         },
         {
@@ -911,21 +1035,25 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2718.8, y = -1085 },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 71,
         },
         {
             Done = { 66083 },
             Coord = { x = -2705.8, y = -1111.8 },
+            Zone = 2025,
             _index = 72,
         },
         {
             PickUp = { 66084 },
             Coord = { x = -2705.8, y = -1111.8 },
+            Zone = 2025,
             _index = 73,
         },
         {
             PickUp = { 66085 },
             Coord = { x = -2698.6, y = -1120 },
+            Zone = 2025,
             _index = 74,
         },
         {
@@ -933,6 +1061,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2810, y = -1072.5 },
             Fillers = { [66084] = { 1 } },
             Range = 2,
+            Zone = 2025,
             _index = 75,
         },
         {
@@ -941,6 +1070,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Fillers = { [66084] = { 1 } },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 76,
         },
         {
@@ -948,6 +1078,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2957.4, y = -1147.7 },
             Fillers = { [66084] = { 1 } },
             Range = 2,
+            Zone = 2025,
             _index = 77,
         },
         {
@@ -955,6 +1086,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2953.1, y = -1005 },
             Fillers = { [66084] = { 1 } },
             Range = 2,
+            Zone = 2025,
             _index = 78,
         },
         {
@@ -963,27 +1095,32 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Fillers = { [66084] = { 1 } },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 79,
         },
         {
             Qpart = { [66084] = { 1 } },
             Coord = { x = -2891.1, y = -1090.4 },
             Range = 80,
+            Zone = 2025,
             _index = 80,
         },
         {
             Done = { 66084 },
             Coord = { x = -2705.8, y = -1111.8 },
+            Zone = 2025,
             _index = 81,
         },
         {
             Done = { 66085 },
             Coord = { x = -2698.6, y = -1120 },
+            Zone = 2025,
             _index = 82,
         },
         {
             PickUp = { 66087 },
             Coord = { x = -2708, y = -1117.3 },
+            Zone = 2025,
             _index = 83,
         },
         {
@@ -991,16 +1128,19 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2660.1, y = -1385.4 },
             SpellButton = { ["66087-1"] = 376679 },
             Range = 225,
+            Zone = 2025,
             _index = 84,
         },
         {
             Done = { 66087 },
             Coord = { x = -2708, y = -1117.3 },
+            Zone = 2025,
             _index = 85,
         },
         {
             PickUp = { 65935 },
             Coord = { x = -2705.6, y = -1112.7 },
+            Zone = 2025,
             _index = 86,
         },
         {
@@ -1008,26 +1148,31 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2913.4, y = -1308 },
             ExtraLineText = "COMPLETES_ONCE_YOU_REACH_CHROMIE",
             Range = 2,
+            Zone = 2025,
             _index = 87,
         },
         {
             Done = { 65935 },
             Coord = { x = -2913.4, y = -1308 },
+            Zone = 2025,
             _index = 88,
         },
         {
             PickUp = { 65947 },
             Coord = { x = -2913.4, y = -1308 },
+            Zone = 2025,
             _index = 89,
         },
         {
             PickUp = { 65948 },
             Coord = { x = -2913.4, y = -1308 },
+            Zone = 2025,
             _index = 90,
         },
         {
             PickUp = { 66646 },
             Coord = { x = -2911.3, y = -1373 },
+            Zone = 2025,
             _index = 91,
         },
         {
@@ -1035,6 +1180,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2811.1, y = -1401 },
             Fillers = { [65947] = { 1 }, [65948] = { 3 }, [66646] = { 1 } },
             Range = 2,
+            Zone = 2025,
             _index = 92,
         },
         {
@@ -1042,32 +1188,38 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -3024.6, y = -1226.7 },
             Fillers = { [65947] = { 1 }, [65948] = { 3 }, [66646] = { 1 } },
             Range = 2,
+            Zone = 2025,
             _index = 93,
         },
         {
             Qpart = { [65947] = { 1 }, [65948] = { 3 }, [66646] = { 1 } },
             Coord = { x = -2902.9, y = -1286.9 },
             Range = 180,
+            Zone = 2025,
             _index = 94,
         },
         {
             Done = { 65948 },
             Coord = { x = -2913.4, y = -1308 },
+            Zone = 2025,
             _index = 95,
         },
         {
             Done = { 65947 },
             Coord = { x = -2913.4, y = -1308 },
+            Zone = 2025,
             _index = 96,
         },
         {
             Done = { 66646 },
             Coord = { x = -2911.3, y = -1373 },
+            Zone = 2025,
             _index = 97,
         },
         {
             PickUp = { 65938 },
             Coord = { x = -2913.4, y = -1308 },
+            Zone = 2025,
             _index = 98,
         },
         {
@@ -1075,6 +1227,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -3014.4, y = -1422.7 },
             SpellButton = { ["65938-1"] = 372959 },
             Range = 2,
+            Zone = 2025,
             _index = 99,
         },
         {
@@ -1082,16 +1235,19 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -3017.6, y = -1450 },
             ExtraLineText = "KILL_ELEMENTAL",
             Range = 2,
+            Zone = 2025,
             _index = 100,
         },
         {
             Done = { 65938 },
             Coord = { x = -2913.4, y = -1308 },
+            Zone = 2025,
             _index = 101,
         },
         {
             PickUp = { 65962 },
             Coord = { x = -2913.4, y = -1308 },
+            Zone = 2025,
             _index = 102,
         },
         {
@@ -1099,16 +1255,19 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2913.4, y = -1308 },
             Range = 2,
             Gossip = 6,
+            Zone = 2025,
             _index = 103,
         },
         {
             Done = { 65962 },
             Coord = { x = -2961, y = -1358.4 },
+            Zone = 2025,
             _index = 104,
         },
         {
             PickUp = { 70040 },
             Coord = { x = -2961, y = -1358.4 },
+            Zone = 2025,
             _index = 105,
         },
         {
@@ -1116,6 +1275,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2975.5, y = -1312.9 },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 106,
         },
         {
@@ -1123,6 +1283,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2907.1, y = -1363.8 },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 107,
         },
         {
@@ -1130,6 +1291,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2885.6, y = -1339.5 },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 108,
         },
         {
@@ -1137,21 +1299,25 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2961, y = -1358.4 },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 109,
         },
         {
             Done = { 70040 },
             Coord = { x = -2961, y = -1358.4 },
+            Zone = 2025,
             _index = 110,
         },
         {
             PickUp = { 66028 },
             Coord = { x = -2961, y = -1358.4 },
+            Zone = 2025,
             _index = 111,
         },
         {
             PickUp = { 66029 },
             Coord = { x = -2961, y = -1358.4 },
+            Zone = 2025,
             _index = 112,
         },
         {
@@ -1159,6 +1325,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2938.6, y = -1344.9 },
             ExtraLineText = "USE_PORTAL",
             Range = 2,
+            Zone = 2025,
             _index = 113,
         },
         {
@@ -1225,27 +1392,32 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Done = { 66032 },
             Coord = { x = -2961.9, y = -1359.2 },
             ExtraLineText = "LEAVE_PORTAL",
+            Zone = 2025,
             _index = 123,
         },
         {
             Done = { 66029 },
             Coord = { x = -2961.9, y = -1359.2 },
+            Zone = 2025,
             _index = 124,
         },
         {
             PickUp = { 72519 },
             Coord = { x = -2961.9, y = -1359.2 },
+            Zone = 2025,
             _index = 125,
         },
         {
             PickUp = { 66033 },
             Coord = { x = -2961.9, y = -1359.2 },
+            Zone = 2025,
             _index = 126,
         },
         {
             Qpart = { [66033] = { 1 } },
             Coord = { x = -2953.8, y = -1334.2 },
             Range = 2,
+            Zone = 2025,
             _index = 127,
         },
         {
@@ -1339,21 +1511,25 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = 277.3, y = 3102.9 },
             ExtraLineText = "ENTER_PORTAL",
             Range = 2,
+            Zone = 2092,
             _index = 141,
         },
         {
             Done = { 72519 },
             Coord = { x = -2961.6, y = -1359 },
+            Zone = 2025,
             _index = 142,
         },
         {
             Done = { 66037 },
             Coord = { x = -2961.6, y = -1359 },
+            Zone = 2025,
             _index = 143,
         },
         {
             PickUp = { 66660 },
             Coord = { x = -2961.6, y = -1359 },
+            Zone = 2025,
             _index = 144,
         },
         {
@@ -1361,6 +1537,7 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             Coord = { x = -2948.3, y = -1341.5 },
             ExtraLineText = "ENTER_PORTAL",
             Range = 2,
+            Zone = 2025,
             _index = 145,
         },
         {
@@ -1442,21 +1619,25 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             GossipOptionIDs = { 55119 },
             Range = 2,
             Gossip = 1,
+            Zone = 2025,
             _index = 157,
         },
         {
             Done = { 66040 },
             Coord = { x = -2962, y = -1359 },
+            Zone = 2025,
             _index = 158,
         },
         {
             PickUp = { 66221 },
             Coord = { x = -2962, y = -1359 },
+            Zone = 2025,
             _index = 159,
         },
         {
             UseHS = 66221,
             Button = { ["22345678-1"] = 6948 },
+            Zone = 2112,
             _index = 160,
         },
         {
@@ -1465,15 +1646,18 @@ APR.RouteQuestStepList["2025-DF06H-Thaldraszus"] = {
             ExtraLineText = "ON_TOP_OF_TOWER",
             Range = 2,
             Gossip = 1,
+            Zone = 2112,
             _index = 161,
         },
         {
             Done = { 66221 },
             Coord = { x = -1041, y = 308.2 },
+            Zone = 2112,
             _index = 162,
         },
         {
             RouteCompleted = true,
+            Zone = 2112,
             _index = 163,
         },
     }
