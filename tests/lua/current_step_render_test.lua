@@ -17,6 +17,7 @@ end
 render("Collect 0/10")
 local row, hint, detail = step.questsList["1-1"], step.questsExtraTextList.hint, step.questsList.PickUp
 local button = row.IconButton
+assert(button.attributes.type1 == "item" and button.attributes.item == "item:50")
 local initialFrames, initialFonts, initialLayouts = env.frames(), env.fonts(), env.layouts()
 local anchors = row.anchors
 for _ = 1, 100 do render("Collect 0/10") end
@@ -152,3 +153,20 @@ assert(not previewButton.scripts.OnUpdate and env.layouts() == beforeProbeLayout
     "Missing image dimensions stop probing without repeated layout")
 print(
     "Current step: 100 refreshes without allocations or hide/show; single layout, wrapping, tooltips, progress, combat and recovery passed")
+
+-- Learned toys use the secure toy action, independent of bag contents.
+function PlayerHasToy(id) return id == 263933 end
+
+step:AddQuestSteps(480, "Use hearthstone", "UseHS")
+step:AddStepButton("480-UseHS", 263933, "item")
+local toyButton = step.questsList["480-UseHS"].IconButton
+assert(toyButton.attributes.type1 == "toy" and toyButton.attributes.toy == 263933)
+assert(toyButton.attribute == "item", "Toys retain item icons, tooltips and cooldown handling")
+env.setCombat(true)
+step:AddStepButton("480-UseHS", 6948, "item")
+assert(step.questsList["480-UseHS"].IconButton == toyButton, "Action replacement is deferred in combat")
+env.setCombat(false)
+step:ProcessPendingStepButtons()
+local hearthButton = step.questsList["480-UseHS"].IconButton
+assert(hearthButton.attributes.type1 == "item" and hearthButton.attributes.item == "item:6948")
+print("Hearthstone buttons: secure toy actions, bag items and combat-deferred replacement passed")

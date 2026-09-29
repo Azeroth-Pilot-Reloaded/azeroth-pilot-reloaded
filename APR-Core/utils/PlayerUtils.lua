@@ -22,6 +22,27 @@ function APR:IsHardcoreCharacter()
     return C_GameRules and C_GameRules.IsHardcoreActive and C_GameRules.IsHardcoreActive() or false
 end
 
+--- Prefer the bag hearthstone, falling back to an owned toy usable by this character.
+function APR:GetHearthstoneItemID()
+    local getCount = C_Item and C_Item.GetItemCount or GetItemCount
+    if getCount and getCount(6948) > 0 then
+        return 6948
+    end
+
+    if PlayerHasToy and C_ToyBox and C_ToyBox.IsToyUsable then
+        for _, itemID in ipairs(self.hearthStoneToyItemIDs) do
+            -- Keep the action visible during its cooldown so the button can display it.
+            if PlayerHasToy(itemID) and C_ToyBox.IsToyUsable(itemID) and
+                self:GetRouteActionUsability("item", itemID, true) then
+                return itemID
+            end
+        end
+    end
+
+    -- Preserve the missing-item indication, including on clients without toy APIs.
+    return 6948
+end
+
 --- Numeric comparisons shared by resource and equipment route filters.
 function APR:CompareRouteNumber(actual, operator, expected)
     actual, expected = tonumber(actual), tonumber(expected)

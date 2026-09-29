@@ -112,6 +112,12 @@ function methods:SetValue(value) self.value = value end
 
 function methods:SetAlpha(alpha) self.alpha = alpha end
 
+function methods:SetAttribute(key, value)
+    check(self)
+    self.attributes = self.attributes or {}
+    self.attributes[key] = value
+end
+
 function CreateFrame(_, name, parent, template)
     frames = frames + 1
     local frame = widget(parent)

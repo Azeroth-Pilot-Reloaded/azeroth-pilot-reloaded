@@ -830,7 +830,7 @@ local function UpdateStepOnce()
                 questKey = step.UseHS
                 questText = L["USE_HEARTHSTONE"]
                 useHSKey = "UseHS"
-                spellID = 6948
+                spellID = APR:GetHearthstoneItemID()
                 type = 'item'
             elseif step.UseDalaHS then
                 questKey = step.UseDalaHS
