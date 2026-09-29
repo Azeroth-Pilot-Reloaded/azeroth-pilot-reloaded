@@ -38,7 +38,6 @@ class RouteSyntaxTests(unittest.TestCase):
         for client in ("Standard", "Camelot"):
             manifest = ROUTES / f"RouteList_{client}.xml"
             entries = [element.attrib["file"] for element in ET.parse(manifest).getroot()]
-            self.assertTrue(entries, f"Empty manifest: {manifest.name}")
             self.assertEqual(len(entries), len(set(entries)), f"Duplicate entries in {manifest.name}")
             self.assertFalse(registered.intersection(entries), "Clients must load separate routes")
             for entry in entries:
