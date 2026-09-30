@@ -225,6 +225,79 @@ bags[0][1] = { itemID = 100, stackCount = 1 }
 assert(not APR:ProcessRouteItems('SellItems', sale, {}))
 assert(APR:ProcessRouteItems('SellItems', sale, {}), 'Sale completes after removing and selling equipment')
 GetInventoryItemID = inventoryItem
+
+-- Slot sales keep the original item ID after manual removal, show its name,
+-- and wait for the actual bag sale instead of finishing with the junk sale.
+do
+    local oldBags, oldMerchant, oldInventory, oldMutated = bags, APR.routeMerchantOpen, GetInventoryItemID, mutated
+    local equipment = { [16] = 100, [18] = 400 }
+    GetInventoryItemID = function(_, slot) return equipment[slot] end
+    bags, APR.routeMerchantOpen = { [0] = {} }, false
+    local rule, state = { junk = true, equippedSlots = { 16 } }, {}
+    assert(APR:GetRouteActionText('SellItems', rule) == 'SELLITEMS: item 100 (SELL_ITEM_EQUIPPED)\nVENDOR_TRASH')
+    assert(not APR:ProcessRouteItems('SellItems', rule, state), 'Closed merchant must wait')
+    APR.routeMerchantOpen = true
+    assert(not APR:ProcessRouteItems('SellItems', rule, state), 'Equipped slot must wait even without junk')
+    bags[0][1] = { itemID = 300, stackCount = 1, quality = 0 }
+    assert(not APR:ProcessRouteItems('SellItems', rule, state))
+    assert(not bags[0][1] and equipment[16] == 100, 'Junk sale must not remove equipped weapon')
+    assert(not APR:ProcessRouteItems('SellItems', rule, state), 'Junk sale must not complete weapon sale')
+    equipment[16] = 999
+    bags[0] = {
+        { itemID = 100, stackCount = 1, quality = 1, isLocked = true },
+        { itemID = 200, stackCount = 1, quality = 1 },
+    }
+    assert(APR:GetRouteActionText('SellItems', rule, true, state) == 'SELLITEMS: item 100\nVENDOR_TRASH',
+        'Current row must retain original weapon after unequipping or replacing it')
+    assert(not APR:ProcessRouteItems('SellItems', rule, state), 'Locked original weapon must wait')
+    bags[0][1].isLocked = false
+    cursor = { itemID = 700 }
+    assert(not APR:ProcessRouteItems('SellItems', rule, state) and bags[0][1], 'Unrelated cursor must remain untouched')
+    cursor = nil
+    lockedCombat = true
+    assert(not APR:ProcessRouteItems('SellItems', rule, state) and bags[0][1], 'Combat must prevent sale')
+    lockedCombat = false
+    assert(not APR:ProcessRouteItems('SellItems', rule, state))
+    assert(not bags[0][1] and bags[0][2].itemID == 200 and equipment[16] == 999,
+        'Only original weapon and junk may be sold')
+    assert(APR:ProcessRouteItems('SellItems', rule, state), 'Original weapon sale completes the action')
+    assert(APR:GetRouteActionText('SellItems', { items = { 400 }, equippedSlots = { 18, 18 } }) ==
+        'SELLITEMS: item 400 (SELL_ITEM_EQUIPPED)', 'Explicit and slot targets must not duplicate names')
+    local rangedRule, rangedState = { equippedSlots = { 18 } }, {}
+    assert(not APR:ProcessRouteItems('SellItems', rangedRule, rangedState), 'Ranged weapon is also tracked')
+    equipment[18] = nil
+    bags[0][1] = { itemID = 400, stackCount = 1, quality = 1, hasNoValue = true }
+    assert(not APR:ProcessRouteItems('SellItems', rangedRule, rangedState), 'Valueless listed weapon must not silently complete')
+    bags[0][1].hasNoValue = false
+    assert(not APR:ProcessRouteItems('SellItems', rangedRule, rangedState))
+    assert(APR:ProcessRouteItems('SellItems', rangedRule, rangedState))
+    assert(APR:ProcessRouteItems('SellItems', { equippedSlots = { 18 } }, {}), 'Initially empty slot has no item to sell')
+    -- A fresh step must take a fresh snapshot and not keep the previous weapon.
+    assert(not APR:ProcessRouteItems('SellItems', rule, {}), 'Fresh step targets replacement weapon')
+    GetInventoryItemID = nil
+    assert(not APR:ProcessRouteItems('SellItems', rule, {}), 'Unavailable inventory API must not silently complete')
+    GetInventoryItemID = function(_, slot) return equipment[slot] end
+    local oldRoute, oldIndex, oldRows = APR.RouteQuestStepList.test, APRData.player.test, APR.currentStep.AddQuestSteps
+    APR.RouteQuestStepList.test = { steps = { { SellItems = rule }, { SellItems = rangedRule } } }
+    APRData.player.test, APR.routeActionState = 1, nil
+    local rowText
+    function APR.currentStep:AddQuestSteps(_, text) rowText = text end
+    equipment[16], equipment[18], bags[0] = 100, 400, {}
+    assert(APR:HandleRouteAction(APR:GetStep(1)))
+    assert(APRData.player.test == 1 and rowText == 'SELLITEMS: item 100 (SELL_ITEM_EQUIPPED)\nVENDOR_TRASH')
+    equipment[16] = nil
+    bags[0][1] = { itemID = 100, stackCount = 1, quality = 1 }
+    assert(APR:HandleRouteAction(APR:GetStep(1)))
+    assert(APRData.player.test == 1 and rowText == 'SELLITEMS: item 100\nVENDOR_TRASH',
+        'Current frame keeps the original target until the sale is confirmed')
+    assert(APR:HandleRouteAction(APR:GetStep(1)) and APRData.player.test == 2)
+    assert(APR:HandleRouteAction(APR:GetStep(2)))
+    assert(APRData.player.test == 2 and rowText == 'SELLITEMS: item 400 (SELL_ITEM_EQUIPPED)',
+        'Next step must capture its own selected slot')
+    APR.RouteQuestStepList.test, APRData.player.test, APR.currentStep.AddQuestSteps = oldRoute, oldIndex, oldRows
+    APR.routeActionState = nil
+    bags, APR.routeMerchantOpen, GetInventoryItemID, mutated = oldBags, oldMerchant, oldInventory, oldMutated
+end
 APRData.player.test = 1
 APR.RouteQuestStepList.test = { steps = { { TameBeast = { npcID = 2163, spellID = 1515 } } } }
 APR.routeActionState = nil
@@ -307,5 +380,42 @@ assert(emotes == 1 and #timers == 2 and timers[2] == 10)
 APR.routeActionState = nil; emoteTarget = nil
 APR:DoEmote({ Emote = { emote = 'sit' }, EmoteETA = 5 })
 assert(emotes == 2 and #timers == 3 and timers[3] == 5)
+
+-- Resetting a route must not require revisiting a vendor for a rewarded quest.
+local questCompleted = C_QuestLog.IsQuestFlaggedCompleted
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 4641 and rewarded end
+APR.routeMerchantOpen = false
+rewarded, finished, onQuest = false, false, false
+local linkedSale = { SellItems = { junk = true, questID = 4641 } }
+APRData.player.test = 1
+assert(APR:HandleRouteAction(linkedSale) and APRData.player.test == 1,
+    'An unaccepted linked quest must not skip the sale')
+finished, onQuest = true, true
+assert(APR:HandleRouteAction(linkedSale) and APRData.player.test == 1,
+    'Ready to turn in is not the same as already rewarded')
+rewarded = true
+lockedCombat = true
+cursor = { itemID = 999, stackCount = 1 }
+local mutationsBeforeSkip = mutated
+for _, rule in ipairs({ { junk = true, questID = 4641 },
+    { items = { 100 }, questID = 4641, npcID = 999 },
+    { items = { 100 }, junk = true, questID = 4641 } }) do
+    for _ = 1, 2 do
+        APRData.player.test = 1
+        APR.routeActionState = nil
+        assert(APR:HandleRouteAction({ SellItems = rule }) and APRData.player.test == 2,
+            'A rewarded quest skips the entire sale after each reset, without a merchant')
+    end
+end
+APR.routeMerchantOpen = true
+assert(APR:ProcessRouteItems('SellItems', linkedSale.SellItems, {}))
+assert(mutated == mutationsBeforeSkip and cursor.itemID == 999,
+    'Skipping must not sell equipped/bag items or touch the cursor, even at a merchant')
+lockedCombat, cursor, APR.routeMerchantOpen = false, nil, false
+assert(not APR:ProcessRouteItems('SellItems', { junk = true, questID = 4642 }, {}),
+    'Completion of a different quest must not skip this sale')
+assert(not APR:ProcessRouteItems('SellItems', { junk = true }, {}),
+    'Unlinked sales retain their normal merchant requirement')
+C_QuestLog.IsQuestFlaggedCompleted = questCompleted
 print(
     'Native route actions: inventory snapshots, safeguards, partial objectives, tame, spirit healer, spell ETA and localized trainer passed')

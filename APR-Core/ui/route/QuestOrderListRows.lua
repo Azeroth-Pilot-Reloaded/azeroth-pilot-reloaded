@@ -64,7 +64,9 @@ end
 
 -- Previewing a route must never run its actions or create/reset action state.
 local function isRouteActionComplete(key, rule, isCurrentStep)
-    if key == "EquipItem" then
+    if key == "SellItems" and rule.questID and C_QuestLog.IsQuestFlaggedCompleted(rule.questID) then
+        return true
+    elseif key == "EquipItem" then
         return GetInventoryItemID("player", rule.slot) == rule.itemID
     elseif key == "LearnSkill" and (rule.spellID or rule.spellIDs) then
         for _, id in ipairs(rule.spellID and { rule.spellID } or rule.spellIDs) do

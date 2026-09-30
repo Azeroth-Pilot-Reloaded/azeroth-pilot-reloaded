@@ -188,7 +188,7 @@ function APR:GetStepQuestIDs(step)
     end
 
     -- Nested .questID (lowercase)
-    for _, key in ipairs({ "Treasure", "TakePortal", "UseItem", "UseSpell", "EnterScenario", "DoScenario", "LeaveScenario", "EnterInstance", "LeaveInstance", "Scenario", "Group" }) do
+    for _, key in ipairs({ "Treasure", "TakePortal", "UseItem", "UseSpell", "EnterScenario", "DoScenario", "LeaveScenario", "EnterInstance", "LeaveInstance", "Scenario", "Group", "SellItems" }) do
         local sub = step[key]
         if sub and sub.questID then
             local n = tonumber(sub.questID)
