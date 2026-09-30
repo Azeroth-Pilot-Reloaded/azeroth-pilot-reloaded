@@ -274,7 +274,16 @@ function APR.Arrow:SetCoord()
 
     if self.currentStep ~= currentStepIndex and stepCoord and APR.IsInRouteZone then
         APR:Debug("APR.Arrow:SetCoord(): Setting arrow for step:" .. currentStepIndex .. " at coordinates:", stepCoord)
-        self:SetArrowActive(true, stepCoord.x, stepCoord.y)
+        local x = stepCoord.x
+        -- Step refreshes must not briefly show an arrow we already reached.
+        -- Waypoints still need OnUpdate to perform their step transition.
+        if step.Range and not step.Waypoint and not (APR.farstrider and APR.farstrider:IsNavigating()) then
+            local playerY, playerX = UnitPosition("player")
+            if playerY and DistanceBetween(playerX, playerY, x, stepCoord.y) < step.Range then
+                x = 0
+            end
+        end
+        self:SetArrowActive(true, x, stepCoord.y)
         self.currentStep = currentStepIndex
     end
 end
@@ -360,6 +369,7 @@ function APR.Arrow:CalculPosition()
         local range = questStep.Range or 0
         if distance < range then
             self.x = 0
+            APR.ArrowFrame:Hide()
             if questStep.Waypoint then
                 self.currentStep = 0
                 APR:NextQuestStep()
@@ -389,7 +399,7 @@ function APR.Arrow:SetArrowActive(isActive, x, y)
     a.Active = isActive
     a.x = x or 0
     a.y = y or 0
-    if isActive and x and y then
+    if isActive and x and y and ShouldShowArrow() then
         APR.ArrowFrame:Show()
     else
         APR.ArrowFrame:Hide()
