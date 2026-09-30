@@ -183,6 +183,18 @@ preview = render({ { PickUp = { 10 }, LeaveQuest = 11, VehicleExit = true },
 assert(preview.stepList[1].title:find("PICK_UP_Q\nLEAVE_QUEST: 11 - Quest 11\nLEAVE_VEHICLE", 1, true))
 assert(preview.stepList[2].title == "VENDOR_TRASH")
 
+local linkedSale = { SellItems = { junk = true, questID = 4641 } }
+assert(APR:GetStepQuestIDs(linkedSale)[1] == 4641, "Tooltips recognize the sale's linked quest")
+assert(#APR:GetStepQuestIDs({ SellItems = { junk = true } }) == 0)
+assert(render({ linkedSale }).stepList[1].color == "gray")
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 4641 end
+assert(render({ linkedSale }).stepList[1].color == "green",
+    "A rewarded quest marks the sale complete without running merchant actions")
+assert(render({ { Note = "First" }, linkedSale }).stepList[2].color == "green",
+    "Future sales also reflect their linked quest after a route reset")
+assert(render({ { SellItems = { junk = true, questID = 4642 } } }).stepList[1].color == "gray")
+C_QuestLog.IsQuestFlaggedCompleted = no
+
 -- Audit the actual wiki table, not just APR.mainStepOptions: companion fields
 -- must have visible content unless they are fillers or automatic actions.
 fixtures.BuyMerchant = { { itemID = 20, quantity = 2 } }
