@@ -197,6 +197,45 @@ function APR.currentStep:UpdateBackgroundColorAlpha(color)
     end
 end
 
+local trackerAnchorX, trackerAnchorY
+
+-- Read Blizzard's layout without hooking its Update or adding APR's secure
+-- buttons to the tracker's anchor chain. Only APR-owned frames are modified.
+function APR.currentStep:RefreshQuestTrackerAnchor()
+    if InCombatLockdown() then return false end
+    local tracker = ObjectiveTrackerFrame
+    if not tracker then return false end
+
+    local anchor = tracker.Header
+    local modules = tracker.modules
+    if modules then
+        for i = #modules, 1, -1 do
+            if modules[i]:IsShown() then
+                anchor = modules[i]
+                break
+            end
+        end
+    end
+    if not anchor then return false end
+
+    local x = anchor:GetCenter()
+    local y = anchor:GetBottom()
+    local scale = anchor:GetEffectiveScale()
+    if not APR:CanAccessValue(x) or not APR:CanAccessValue(y) or not APR:CanAccessValue(scale) then
+        return false
+    end
+    if not x or not y or not scale then return false end
+    local relativeScale = scale / UIParent:GetEffectiveScale()
+    x, y = x * relativeScale, y * relativeScale + FRAME_ATTACH_OFFSET
+    if x == trackerAnchorX and y == trackerAnchorY and CurrentStepFrame:GetScale() == 1 then return false end
+
+    CurrentStepFrame:SetScale(1)
+    CurrentStepFrame:ClearAllPoints()
+    CurrentStepFrame:SetPoint("TOP", UIParent, "BOTTOMLEFT", x, y)
+    trackerAnchorX, trackerAnchorY = x, y
+    return true
+end
+
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
     APR:Debug("Function: APR:RefreshCurrentStepFrameAnchor()")
@@ -224,15 +263,9 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         if not InCombatLockdown() then
             CurrentStepScreenPanel:EnableMouse(false)
         end
-        CurrentStepScreenPanel:ClearAllPoints()
-        CurrentStepFrame:SetScale(1)
-
-        if APR.currentStep.FrameAttachToModule then
-            CurrentStepScreenPanel:SetPoint("TOP", APR.currentStep.FrameAttachToModule, "BOTTOM", 0, FRAME_ATTACH_OFFSET)
-        elseif ObjectiveTrackerFrame.Header then
-            CurrentStepScreenPanel:SetPoint("TOP", ObjectiveTrackerFrame.Header, "BOTTOM", 0, FRAME_ATTACH_OFFSET)
-        end
+        self:RefreshQuestTrackerAnchor()
     else
+        trackerAnchorX, trackerAnchorY = nil, nil
         if not InCombatLockdown() then
             if not profile.currentStepLock then
                 CurrentStepScreenPanel:EnableMouse(true)
@@ -313,33 +346,26 @@ end
 
 -- Reset the frame position
 function APR.currentStep:ResetPosition()
+    trackerAnchorX, trackerAnchorY = nil, nil
     CurrentStepScreenPanel:ClearAllPoints()
     CurrentStepScreenPanel:SetPoint("center", UIParent, "center", 0, 0)
     self:SetDefaultDisplay()
 end
 
--- Hook on update for ObjectiveTrackerFrame (quests log)
-hooksecurefunc(ObjectiveTrackerFrame, "Update",
-    function()
-        if not ObjectiveTrackerFrame and not CurrentStepScreenPanel then
-            return
-        end
-
-        local modules = ObjectiveTrackerFrame.modules
-        local lastModule = nil
-
-        if modules then
-            for i = #modules, 1, -1 do
-                if modules[i]:IsShown() then
-                    lastModule = modules[i]
-                    break
-                end
-            end
-        end
-
-        APR.currentStep.FrameAttachToModule = lastModule
-        APR.currentStep:RefreshCurrentStepFrameAnchor()
-    end)
+-- Follow layout changes from APR's own update, outside Blizzard's dirty-layout
+-- callback. Disabled/detached panels do not inspect the tracker.
+local trackerAnchorElapsed = 0
+CurrentStepFrame:SetScript("OnUpdate", function(_, elapsed)
+    trackerAnchorElapsed = trackerAnchorElapsed + elapsed
+    if trackerAnchorElapsed < 0.2 then return end
+    trackerAnchorElapsed = 0
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.enableAddon or not profile.currentStepAttachFrameToQuestLog then return end
+    if APR.currentStep:RefreshQuestTrackerAnchor() then
+        if APR.AFK and APR.AFK.RefreshFrameAnchor then APR.AFK:RefreshFrameAnchor() end
+        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then APR.questOrderList:ApplySnapAnchor() end
+    end
+end)
 
 -- Helper function to create a button
 local function CreateButton(name, parent, width, height, text, script)
