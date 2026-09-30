@@ -179,6 +179,27 @@ function APR:CheckIsInRouteZone()
     -- Resolve player zone context (with caching)
     local playerContext = self:ResolvePlayerZoneContext()
 
+    -- If player is on the same continent, check if player is in the next route's zone
+    local currentRouteData = self:GetRouteData(self.ActiveRoute)
+    if currentRouteData and currentRouteData.nextRoute then
+        for _, nextEntry in ipairs(currentRouteData.nextRoute) do
+            local nextRouteKey = type(nextEntry) == "table" and nextEntry.route or nextEntry
+            local nextMapIDs = self:GetRouteMapIDsAndName(nextRouteKey)
+            if nextMapIDs then
+                for _, nMap in ipairs(nextMapIDs) do
+                    for _, pMap in ipairs(playerContext.allRelevant or {}) do
+                        if nMap == pMap then
+                            self:PrintZoneDebug("Player in next route zone (" .. tostring(pMap) .. ") - suppressing wrong zone")
+                            self._lastRouteZoneCheck = GetTime()
+                            self._lastRouteZoneResult = true
+                            return true
+                        end
+                    end
+                end
+            end
+        end
+    end
+
     self:PrintZoneDebug("=== CheckIsInRouteZone START ===")
     self:PrintZoneDebug("StepZones: {" ..
         table.concat(stepZones, ", ") ..
@@ -191,7 +212,6 @@ function APR:CheckIsInRouteZone()
         self:PrintZoneDebug("Player context empty (loading/transitioning) - skipping checks (not cached)")
         return false
     end
-
 
     -- Continent check - GATING CHECK (if fails, stop here)
     if not self:CheckContinentMatch(playerContext, stepZones) then
@@ -211,6 +231,7 @@ function APR:CheckIsInRouteZone()
         function()
             return self:CheckDirectMatch(playerContext, stepZones)
         end,
+
         -- 2. Hierarchy match - player is parent/ancestor of step zones
         function()
             return self:CheckHierarchyMatch(playerContext, stepZones)
@@ -220,12 +241,72 @@ function APR:CheckIsInRouteZone()
         function()
             return self:CheckDescendantMatch(playerContext, stepZones)
         end,
+
+        -- 4. Dynamic POI / Objective / Coordinate & Transition Match
+        function()
+            -- Check if the step's coordinate explicitly specifies the player's map
+            if step.Coord and step.Coord.mapID then
+                for _, pMap in ipairs(playerContext.allRelevant or {}) do
+                    if step.Coord.mapID == pMap then
+                        return true
+                    end
+                end
+            end
+
+            -- Check any quest association on the step (Qpart, Done, Pickup, Quest, or raw IDs)
+            if C_QuestLog and C_QuestLog.GetMapForQuestPOIs then
+                local rawQ = step.Done or step.Qpart or step.Pickup or step.Quest or step.questID or step.qID or step.QuestID
+                local questID = nil
+
+                if type(rawQ) == "table" then
+                    questID = rawQ[1] or rawQ.questID or rawQ.id or rawQ.QuestID
+                elseif type(rawQ) == "number" then
+                    questID = rawQ
+                end
+
+                if questID and type(questID) == "number" then
+                    local poiMapID = C_QuestLog.GetMapForQuestPOIs(questID)
+                    if (not poiMapID or poiMapID == 0) and C_TaskQuest and C_TaskQuest.GetQuestZoneID then
+                        poiMapID = C_TaskQuest.GetQuestZoneID(questID)
+                    end
+
+                    if poiMapID and poiMapID > 0 then
+                        for _, pMap in ipairs(playerContext.allRelevant or {}) do
+                            -- Direct match with POI map
+                            if poiMapID == pMap then
+                                return true
+                            end
+
+                            -- Match through parent tree (e.g. Coreway shaft to surface/deeps)
+                            local mapInfo = C_Map.GetMapInfo(pMap)
+                            while mapInfo and mapInfo.parentMapID and mapInfo.parentMapID > 0 do
+                                if mapInfo.parentMapID == poiMapID then
+                                    return true
+                                end
+                                mapInfo = C_Map.GetMapInfo(mapInfo.parentMapID)
+                            end
+
+                            -- Check if POI map's parent matches player map
+                            local poiInfo = C_Map.GetMapInfo(poiMapID)
+                            while poiInfo and poiInfo.parentMapID and poiInfo.parentMapID > 0 do
+                                if poiInfo.parentMapID == pMap then
+                                    return true
+                                end
+                                poiInfo = C_Map.GetMapInfo(poiInfo.parentMapID)
+                            end
+                        end
+                    end
+                end
+            end
+
+            return false
+        end,
     }
 
     -- Execute continent-filtered checks
     for index, checkFunc in ipairs(continentChecks) do
         local checkNames = {
-            "DirectMatch", "HierarchyMatch", "DescendantMatch"
+            "DirectMatch", "HierarchyMatch", "DescendantMatch", "QuestPoiOrCoordMatch"
         }
 
         self:PrintZoneDebug("Running Check #" .. index .. " (" .. (checkNames[index] or UNKNOWN) .. ")...")
