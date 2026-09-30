@@ -65,6 +65,11 @@ end
 -- Process one complete stack at a time. Never touch an unrelated cursor item,
 -- locked slot, unlisted item or a closed bank/merchant. Bag events drive retries.
 function APR:ProcessRouteItems(key, rule, state)
+    -- A linked quest already turned in makes this vendor visit obsolete after
+    -- a route reset. Check before merchant/combat guards and any item mutation.
+    if key == "SellItems" and rule.questID and C_QuestLog.IsQuestFlaggedCompleted(rule.questID) then
+        return true
+    end
     if (InCombatLockdown and InCombatLockdown()) or (CursorHasItem and CursorHasItem()) then return false end
     if key == "SellItems" and not self.routeMerchantOpen then return false end
     if (key == "BankDeposit" or key == "BankWithdraw") and not self.routeBankOpen then return false end

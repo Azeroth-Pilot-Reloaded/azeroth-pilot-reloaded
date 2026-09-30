@@ -174,6 +174,17 @@ class RouteSchemaTests(unittest.TestCase):
         for profile in self.catalog.profiles:
             self.schema.step({"MinLevel": profile}, "step")
 
+    def test_sell_items_optional_quest_link(self):
+        for sale in ({"junk": True}, {"items": seq(7073, 7074)},
+                     {"items": seq(7073), "junk": True, "npcID": 54}):
+            with self.subTest(sale=sale):
+                self.schema.step({"SellItems": {**sale, "questID": 4641}}, "step")
+        for quest_id in (0, -1, True, "4641", seq(4641), 1.5):
+            with self.subTest(quest_id=quest_id), self.assertRaises(InvalidRoute):
+                self.schema.step({"SellItems": {"junk": True, "questID": quest_id}}, "step")
+        with self.assertRaises(InvalidRoute):
+            self.schema.step({"SellItems": {"questID": 4641}}, "step")
+
     def test_invalid_types_ranges_required_fields_and_lists(self):
         for step in ({"PickUp": {2: 1}}, {"PickUp": {"1": 1}}, {"PickUp": seq(True)},
                      {"Coord": {"x": 1}}, {"Coord": {"x": float("nan"), "y": 1}},

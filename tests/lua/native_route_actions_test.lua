@@ -307,5 +307,42 @@ assert(emotes == 1 and #timers == 2 and timers[2] == 10)
 APR.routeActionState = nil; emoteTarget = nil
 APR:DoEmote({ Emote = { emote = 'sit' }, EmoteETA = 5 })
 assert(emotes == 2 and #timers == 3 and timers[3] == 5)
+
+-- Resetting a route must not require revisiting a vendor for a rewarded quest.
+local questCompleted = C_QuestLog.IsQuestFlaggedCompleted
+C_QuestLog.IsQuestFlaggedCompleted = function(id) return id == 4641 and rewarded end
+APR.routeMerchantOpen = false
+rewarded, finished, onQuest = false, false, false
+local linkedSale = { SellItems = { junk = true, questID = 4641 } }
+APRData.player.test = 1
+assert(APR:HandleRouteAction(linkedSale) and APRData.player.test == 1,
+    'An unaccepted linked quest must not skip the sale')
+finished, onQuest = true, true
+assert(APR:HandleRouteAction(linkedSale) and APRData.player.test == 1,
+    'Ready to turn in is not the same as already rewarded')
+rewarded = true
+lockedCombat = true
+cursor = { itemID = 999, stackCount = 1 }
+local mutationsBeforeSkip = mutated
+for _, rule in ipairs({ { junk = true, questID = 4641 },
+    { items = { 100 }, questID = 4641, npcID = 999 },
+    { items = { 100 }, junk = true, questID = 4641 } }) do
+    for _ = 1, 2 do
+        APRData.player.test = 1
+        APR.routeActionState = nil
+        assert(APR:HandleRouteAction({ SellItems = rule }) and APRData.player.test == 2,
+            'A rewarded quest skips the entire sale after each reset, without a merchant')
+    end
+end
+APR.routeMerchantOpen = true
+assert(APR:ProcessRouteItems('SellItems', linkedSale.SellItems, {}))
+assert(mutated == mutationsBeforeSkip and cursor.itemID == 999,
+    'Skipping must not sell equipped/bag items or touch the cursor, even at a merchant')
+lockedCombat, cursor, APR.routeMerchantOpen = false, nil, false
+assert(not APR:ProcessRouteItems('SellItems', { junk = true, questID = 4642 }, {}),
+    'Completion of a different quest must not skip this sale')
+assert(not APR:ProcessRouteItems('SellItems', { junk = true }, {}),
+    'Unlinked sales retain their normal merchant requirement')
+C_QuestLog.IsQuestFlaggedCompleted = questCompleted
 print(
     'Native route actions: inventory snapshots, safeguards, partial objectives, tame, spirit healer, spell ETA and localized trainer passed')
