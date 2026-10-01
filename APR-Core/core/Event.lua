@@ -525,7 +525,7 @@ end
 
 function APR.event.functions.spellbook()
     if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
-    RefreshForOptions({ "LearnSkill", "LearnProfession", "HasSpell", "DontHaveSpell" })
+    RefreshForOptions({ "LearnSkill", "LearnProfession", "HasSpell", "DontHaveSpell", "SkipForPrimaryProfessions" })
 end
 
 function APR.event.functions.money()
@@ -538,7 +538,7 @@ function APR.event.functions.equipment()
 end
 
 function APR.event.functions.skill()
-    RefreshForOptions({ "Skill", "LearnSkill", "LearnProfession" })
+    RefreshForOptions({ "Skill", "LearnSkill", "LearnProfession", "SkipForPrimaryProfessions" })
 end
 
 function APR.event.functions.bank(event)

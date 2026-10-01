@@ -126,6 +126,7 @@ class RouteSchema:
         self.condition_fields = {
             "Faction": enum(("Alliance", "Horde", "Neutral")),
             "Hardcore": BOOL, "AlliedRace": BOOL,
+            "SkipForPrimaryProfessions": ID,
             "Race": union(race, array(race, 1)),
             "Class": union(class_value, array(class_value, 1)),
             "ClassNot": union(class_value, array(class_value, 1)),

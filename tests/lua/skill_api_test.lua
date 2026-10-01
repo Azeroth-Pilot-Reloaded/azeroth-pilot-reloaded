@@ -40,4 +40,39 @@ GetProfessionInfo = function() return "Cuisine", nil, 50, 100, nil, nil, 185 end
 assert(APR:GetRouteSkill({ skillID = 185 }) == 50)
 GetProfessions, GetProfessionInfo = nil, nil
 assert(APR:GetRouteSkill({ skillID = 185 }) == 0)
+
+-- Profession slots are authoritative on Forever and Retail; only the first two count.
+local first, second
+GetProfessions = function() return first, second, 3, 4, 5 end
+GetNumSkillLines = unexpectedLegacy
+assert(APR:GetPrimaryProfessionCount() == 0, "Secondary professions must not count")
+first = 1
+assert(APR:GetPrimaryProfessionCount() == 1)
+second = 2
+assert(APR:GetPrimaryProfessionCount() == 2)
+first = nil
+assert(APR:GetPrimaryProfessionCount() == 1, "A nil first slot must not hide the second")
+GetProfessions = nil
+
+-- The skill-line fallback is independent of locale and collapsed UI headers.
+local learned = { [171] = 1, [333] = 75, [185] = 100, [129] = 50, [356] = 20, [762] = 75 }
+C_SkillInfo = { GetSkillLineInfoByID = function(id)
+    if learned[id] then return { skillID = id, name = "Localized", isHeader = false, rank = learned[id] } end
+end }
+assert(APR:GetPrimaryProfessionCount() == 2, "Secondary skills and riding must be excluded")
+learned[333] = 0
+assert(APR:GetPrimaryProfessionCount() == 1, "Unlearned skills must not count")
+learned[171] = nil
+assert(APR:GetPrimaryProfessionCount() == 0)
+learned[755], learned[773] = 1, 1
+assert(APR:GetPrimaryProfessionCount() == 2, "Jewelcrafting and Inscription are primary professions")
+C_SkillInfo = nil
+GetNumSkillLines = function() return 2 end
+GetSkillLineInfo = function(index)
+    local id = index == 1 and 171 or 185
+    return "Localized", false, false, 1, 0, 0, 75, nil, nil, nil, nil, nil, id
+end
+assert(APR:GetPrimaryProfessionCount() == 1, "Legacy skill lines only count primary professions")
+GetNumSkillLines, GetSkillLineInfo = nil, nil
+assert(APR:GetPrimaryProfessionCount() == 0)
 print("Skills: modern tables, collapsed headers, API priority and legacy fallbacks passed")
