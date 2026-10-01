@@ -280,6 +280,30 @@ for _, event in ipairs({ "money", "equipment", "inventory" }) do
 end
 print("Route resources: money, inventory, equipment, Hardcore, branching and coalesced events passed")
 
+-- Primary-profession limits control both visibility and automatic progression.
+do
+    local first, second
+    GetProfessions = function() return first, second, 3, 4, 5 end
+    for count = 0, 2 do
+        first, second = count >= 1 and 1 or nil, count >= 2 and 2 or nil
+        for threshold = 1, 3 do
+            local condition = { SkipForPrimaryProfessions = threshold }
+            assert(APR:StepFilterQoL(condition) == (count < threshold))
+            assert(APR:StepFilterQuestHandler(condition) == (count >= threshold))
+            assert(APR:AreConditionalFiltersMet({ Not = condition }) == (count >= threshold))
+            assert(APR:AreConditionalFiltersMet({ AllOf = { condition } }) == (count < threshold))
+        end
+    end
+    GetProfessions = nil
+    currentStep = { AnyOf = { { SkipForPrimaryProfessions = 2 } } }
+    for _, event in ipairs({ "skill", "spellbook" }) do
+        APR.event:CleanupEvents()
+        local before = #timers
+        APR.event.functions[event]()
+        assert(#timers == before + 1, event .. " refreshes nested primary-profession limits")
+    end
+end
+
 -- Zone conditions use the same evaluator for progression and list visibility.
 do
     level = 88

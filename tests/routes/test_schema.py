@@ -25,7 +25,7 @@ def examples():
          "RaidIcon SpellTrigger Zone NodeID QuestLineSkip ExtraLine Gossip Brewery SparringRing "
          "InterfaceVersion InterfaceVersionExact HasAchievement DontHaveAchievement HasAura "
          "DontHaveAura HasSpell IsQuestOnQuest IsQuestNotOnQuest IsQuestCompleted IsQuestUncompleted "
-         "InVehicle PickedLoa _index", 1),
+         "InVehicle PickedLoa _index SkipForPrimaryProfessions", 1),
         ("Bloodlust Boat DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap IsCampaignQuest "
          "MountVehicle NoArrow NoAutoFlightMap NoAutoAccept NoAutoTurnIn NonSkippableWaypoint ResetRoute "
          "RouteCompleted SingleWaypointDisplayDistance SpecialETAHide UseGlider VehicleExit Hardcore AlliedRace", True),
@@ -101,6 +101,13 @@ class RouteSchemaTests(unittest.TestCase):
                     {"conditions": condition, "steps": seq({"Note": "Example"})})})
                 with self.assertRaises(InvalidRoute):
                     self.schema.condition({"Not": {name: None}}, "condition")
+
+    def test_primary_profession_limit(self):
+        for count in (1, 2, 3):
+            self.schema.condition({"SkipForPrimaryProfessions": count}, "condition")
+        for invalid in (0, -1, 1.5, True, "2", {}, seq(1, 2)):
+            with self.subTest(value=invalid), self.assertRaises(InvalidRoute):
+                self.schema.condition({"SkipForPrimaryProfessions": invalid}, "condition")
 
     def test_equipment_lists(self):
         for name in ("EquippedItem", "EquippedItemStat"):

@@ -1324,9 +1324,10 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 169,
         },
         {
-            Note = { "This will unlock a quest. Skip this step if you already have 2 professions" },
+            Note = { "Learn Enchanting to unlock a quest" },
             LearnSkill = { spellID = 7411 },
             MinLevel = 5,
+            SkipForPrimaryProfessions = 2,
             Class = { "HUNTER", "MAGE", "PRIEST", "SHAMAN", "WARLOCK" },
             Coord = { x = -4960.0, y = -791.3 },
             Zone = 1411,
