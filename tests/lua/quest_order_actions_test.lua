@@ -207,7 +207,7 @@ fixtures.SetHS, fixtures.VehicleExit = 10, true
 local wikiFile = assert(io.open("wiki.md", "r"))
 local wiki = wikiFile:read("*a")
 wikiFile:close()
-local actionTable = assert(wiki:match("## Action / Progression Options(.-)\nAn action waits"))
+local actionTable = assert(wiki:match("## Action / Progression Options(.-)\n#+ "))
 local documented = {}
 for line in actionTable:gmatch("[^\n]+") do
     local key = line:match("^|%s*`(%w+)`%s*|")

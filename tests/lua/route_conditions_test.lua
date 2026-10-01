@@ -124,8 +124,19 @@ end
 do
     dofile("APR-Core/utils/RouteConditions.lua")
     dofile("APR-Core/utils/QuestUtils.lua")
-    local known, active, completed, ready, warband = {}, {}, {}, {}, {}
-    C_SpellBook = { IsSpellKnown = function(id) return known[id] == true end }
+    local known, petAbilities, active, completed, ready, warband = {}, {}, {}, {}, {}, {}
+    local previousEnum = Enum
+    local function isSpellKnown(id, isPetSpell)
+        if C_SpellBook and Enum and Enum.SpellBookSpellBank then
+            assert(isPetSpell == nil or isPetSpell == Enum.SpellBookSpellBank.Pet,
+                "Modern spellbook requires a spell bank instead of a boolean")
+            isPetSpell = isPetSpell == Enum.SpellBookSpellBank.Pet
+        else
+            assert(isPetSpell == nil or type(isPetSpell) == "boolean")
+        end
+        local abilities = isPetSpell and petAbilities or known
+        return abilities[id] == true
+    end
     C_Spell = { GetSpellInfo = function() return { name = "Cuisine" } end }
     C_QuestLog = {
         IsOnQuest = function(id) return active[id] == true end,
@@ -139,8 +150,11 @@ do
 
     function GetInventoryItemID(_, slot) return slot == 16 and 100 or nil end
 
-    for _, client in ipairs({ 16001, 120100 }) do
+    for _, client in ipairs({ 16001, 110200, 120100 }) do
         APR.interfaceVersion = client
+        Enum = client == 120100 and { SpellBookSpellBank = { Player = 0, Pet = 1 } } or nil
+        C_SpellBook = client ~= 16001 and { IsSpellKnown = isSpellKnown } or nil
+        _G.IsSpellKnown = client == 16001 and isSpellKnown or nil
         assert(APR:AreConditionalFiltersMet(nil))
         assert(APR:AreConditionalFiltersMet({ AllOf = {} }))
         assert(not APR:AreConditionalFiltersMet({ AnyOf = {} }))
@@ -183,11 +197,21 @@ do
         assert(APR:EvaluateRouteConditions(stats))
         assert(not APR:AreConditionalFiltersMet({ EquippedItemStat = {} }))
         assert(APR:AreConditionalFiltersMet({ DontHaveSpell = { 1, 2 } }))
+        assert(not APR:AreConditionalFiltersMet({ HasSpell = 2 }))
         known[2] = true
+        assert(APR:AreConditionalFiltersMet({ HasSpell = 2 }))
         assert(not APR:AreConditionalFiltersMet({ DontHaveSpell = { 1, 2 } }))
         assert(not APR:EvaluateRouteConditions({ DontHaveSpell = { 1, 2 } }))
         assert(not APR:AreConditionalFiltersMet({ DontHaveSpell = 2 }))
         known[2] = nil
+        petAbilities[2] = true
+        assert(APR:AreConditionalFiltersMet({ HasSpell = 2 }), "Pet abilities satisfy HasSpell")
+        assert(not APR:AreConditionalFiltersMet({ DontHaveSpell = 2 }), "Pet abilities fail DontHaveSpell")
+        assert(not APR:AreConditionalFiltersMet({ DontHaveSpell = { 1, 2 } }))
+        assert(not APR:EvaluateRouteConditions({ DontHaveSpell = { 1, 2 } }))
+        petAbilities[2] = nil
+        assert(not APR:AreConditionalFiltersMet({ HasSpell = 2 }))
+        assert(APR:AreConditionalFiltersMet({ DontHaveSpell = 2 }))
         warband[1] = true
         assert(not APR:AreConditionalFiltersMet({ IsQuestReadyForTurnIn = 1 }))
         active[1] = true
@@ -205,6 +229,8 @@ do
         known, active, completed, ready, warband = {}, {}, {}, {}, {}
     end
     APR.interfaceVersion = 16001
+    Enum = previousEnum
+    _G.IsSpellKnown = nil
 end
 local suggestions = APR:GetNextRouteSuggestions("route")
 assert(#suggestions == 2 and suggestions[1].key == "warrior" and suggestions[2].key == "shared")
@@ -279,6 +305,30 @@ for _, event in ipairs({ "money", "equipment", "inventory" }) do
     assert(#timers == before + 1, event .. " refreshes nested VendorMoney conditions")
 end
 print("Route resources: money, inventory, equipment, Hardcore, branching and coalesced events passed")
+
+-- Primary-profession limits control both visibility and automatic progression.
+do
+    local first, second
+    GetProfessions = function() return first, second, 3, 4, 5 end
+    for count = 0, 2 do
+        first, second = count >= 1 and 1 or nil, count >= 2 and 2 or nil
+        for threshold = 1, 3 do
+            local condition = { SkipForPrimaryProfessions = threshold }
+            assert(APR:StepFilterQoL(condition) == (count < threshold))
+            assert(APR:StepFilterQuestHandler(condition) == (count >= threshold))
+            assert(APR:AreConditionalFiltersMet({ Not = condition }) == (count >= threshold))
+            assert(APR:AreConditionalFiltersMet({ AllOf = { condition } }) == (count < threshold))
+        end
+    end
+    GetProfessions = nil
+    currentStep = { AnyOf = { { SkipForPrimaryProfessions = 2 } } }
+    for _, event in ipairs({ "skill", "spellbook" }) do
+        APR.event:CleanupEvents()
+        local before = #timers
+        APR.event.functions[event]()
+        assert(#timers == before + 1, event .. " refreshes nested primary-profession limits")
+    end
+end
 
 -- Zone conditions use the same evaluator for progression and list visibility.
 do

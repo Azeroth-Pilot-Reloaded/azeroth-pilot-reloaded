@@ -87,10 +87,26 @@ function APR:GetRouteSkill(requirement)
     return 0
 end
 
+--- Count learned primary professions, excluding every secondary skill.
+function APR:GetPrimaryProfessionCount()
+    if GetProfessions then
+        local first, second = GetProfessions()
+        return (first and 1 or 0) + (second and 1 or 0)
+    end
+
+    -- Older clients expose skill lines rather than profession slots.
+    local count = 0
+    for _, skillID in ipairs({ 164, 165, 171, 182, 186, 197, 202, 333, 393, 755, 773 }) do
+        if self:GetRouteSkill({ skillID = skillID }) > 0 then count = count + 1 end
+    end
+    return count
+end
+
 function APR:MeetsExtendedRouteConditions(c)
     if c.AllOf then for _, v in ipairs(c.AllOf) do if not self:AreConditionalFiltersMet(v) then return false end end end
     if c.Not and self:AreConditionalFiltersMet(c.Not) then return false end
     if c.Skill and not self:CompareRouteNumber(self:GetRouteSkill(c.Skill), c.Skill.operator or ">=", c.Skill.rank or 1) then return false end
+    if c.SkipForPrimaryProfessions and self:GetPrimaryProfessionCount() >= c.SkipForPrimaryProfessions then return false end
     if c.EquippedItem and not self:MeetsEquippedItem(c.EquippedItem) then return false end
     if c.Collection and not self:IsRouteCollectionComplete(c.Collection) then return false end
     return true

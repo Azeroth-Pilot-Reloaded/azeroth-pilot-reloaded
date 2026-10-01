@@ -126,11 +126,14 @@ function APR:GetPlayerMaxLevel()
     return self:GetGameVersion() == APR.GAME_VERSIONS.Retail and 90 or 60
 end
 
---- Check if a spell is known by the player (supports both classic and retail APIs).
+--- Check if a spell is known by the player or pet (supports both classic and retail APIs).
 -- We keep the dual API call path so the add-on works on multiple client versions without crashing.
 function APR:IsSpellKnown(spellID)
-    local IsSpellKnown = (C_SpellBook and C_SpellBook.IsSpellKnown) or _G.IsSpellKnown
-    return IsSpellKnown and IsSpellKnown(spellID)
+    if C_SpellBook and C_SpellBook.IsSpellKnown then
+        local petAbilities = Enum and Enum.SpellBookSpellBank and Enum.SpellBookSpellBank.Pet or true
+        return C_SpellBook.IsSpellKnown(spellID) or C_SpellBook.IsSpellKnown(spellID, petAbilities)
+    end
+    return _G.IsSpellKnown and (_G.IsSpellKnown(spellID) or _G.IsSpellKnown(spellID, true))
 end
 
 --- Check a spell or a list of alternative spells using the existing spellbook wrapper.
