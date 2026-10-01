@@ -599,24 +599,43 @@ and `Grind = "MidnightDelves"` for the final wait before the hand-in circuit.
 All three use the player's fractional level, so 87.5 means level 87 with 50% XP.
 Keep actual reward steps and the final fallback quests capped at level 90.
 
-This empirical policy uses two anchors: 5% mentorship + 15% War Mode -> 88,
-and 25% mentorship + 15% War Mode -> 87. The linear estimate is
-`target = 89 - totalBonus / 20`: every extra five percentage points lowers the
-target by 0.25 levels. Values outside 20-40% are extrapolated, including targets
-below 87. This is not an exact quest XP prediction or a guarantee with missing rewards.
+The profile is an empirical estimate for all ten pending Delver's Call rewards.
+A route report reached approximately 89.5 from 87.8 with six rewards, leaving four
+Silvermoon rewards unspent. With the reported 5% mentorship, 10% potion and the
+configured 15% War Mode bonus, the provisional full-tour target is **87.30 at 30%**.
+This anchor is an estimate, not a measured ten-quest completion threshold.
 
-| Mentorship | No event / no War Mode | Event only | War Mode only | Event + War Mode |
-| ---------- | ---------------------- | ---------- | ------------- | ---------------- |
-| 0%         | 89                     | 88         | 88.25         | 87.25            |
-| 5%         | 88.75                  | 87.75      | 88            | 87               |
-| 10%        | 88.5                   | 87.5       | 87.75         | 86.75            |
-| 15%        | 88.25                  | 87.25      | 87.5          | 86.5             |
-| 20%        | 88                     | 87         | 87.25         | 86.25            |
-| 25%        | 87.75                  | 86.75      | 87            | 86               |
+For lower bonuses, convert the anchor into absolute XP instead of subtracting
+fixed fractions of a level. The [published Midnight XP table](https://www.icy-veins.com/wow/news/players-need-nearly-5-million-xp-to-hit-level-90-in-midnight/)
+gives 548,535 XP for 87-88, 570,590 for 88-89 and 592,980 for 89-90.
+Thus the anchor leaves `0.70 * 548535 + 570590 + 592980 = 1547544.5` XP to earn.
+For total bonus `b`, use `1547544.5 * (1 + b / 100) / 1.30` as the provisional
+reward budget, convert the remaining XP back to a starting level, and round the
+start upward to the next 5% of a level.
 
-The [community report](https://www.reddit.com/r/wow/comments/1u8haw4/delvers_call_quests_turnins_now_take_you_from/)
-assumes all ten rewards and 25% mentorship + War Mode. It does not specify the
-War Mode percentage; 15% is the configured value requested for this profile.
+| Total active bonus | Required level |
+| ------------------ | -------------- |
+| 0%                 | 88.00          |
+| 5%                 | 87.85          |
+| 10%                | 87.75          |
+| 15%                | 87.65          |
+| 20%                | 87.55          |
+| 25%                | 87.45          |
+| 30%                | 87.30          |
+| 35%                | 87.30          |
+
+This keeps the base reward budget constant. Although reward XP scales with level,
+it does **not** invent a per-quest scaling curve or count extra XP from starting
+later. It assumes all ten rewards and the configured bonuses remain applicable;
+missing rewards, different effective bonuses and the approximate report can change
+the result. Validate these targets in game before treating them as guarantees.
+
+The 35% tier is capped at 87.30 so more bonus never raises the required level.
+The 40-110% tiers retain their older estimates and margins in
+`APR-Core/config/LevelProfiles.lua`. Their original anchors included the
+[community report](https://www.reddit.com/r/wow/comments/1u8haw4/delvers_call_quests_turnins_now_take_you_from/)
+with 25% mentorship plus War Mode. That report did not specify the War Mode
+percentage; this profile uses the requested fixed value of 15%.
 
 The event contributes 20% only while aura 1287282 OR 1214848 is present. Both
 variants together still contribute only 20%. No calendar dates or permanent event
@@ -631,9 +650,9 @@ Mastery variants 1269518, 1229050, 1258528, 471544 and 423861 grant 30%. Only th
 bonus counts, even if multiple variants or Knowledge and Mastery coexist.
 See [Blizzard's event description](https://worldofwarcraft.blizzard.com/en-us/news/24264422)
 and [Mastery 1269518](https://www.wowhead.com/spell=1269518/mastery-of-timeways).
-The table above excludes Timeways and consumables: subtract 0.25/0.5/0.75/1.5 levels for its
-5/10/15/30% bonus. The configured total now reaches 90%, targeting 84.5 by linear
-extrapolation; these early thresholds need in-game validation with all ten rewards.
+Add Timeways and consumables to the total bonus before looking up the configured
+breakpoint; do not subtract fixed level fractions. A total of 90% currently targets
+84.68. These higher-bonus estimates still need in-game validation with all ten rewards.
 
 ## XP Consumables and Optional Reminders
 
@@ -659,8 +678,8 @@ Verified catalog:
 | TenLands         | 166750, 166751 | 289982        | 10%; below level 50 only                 |
 
 MidnightDelves includes MysteriousWisdom and Darkmoon. TenLands is available for
-lower-level profiles. Two additional 10% sources extend Midnight's linear table
-to 110% total / target 83.5; this is extrapolated and not a verified completion level.
+lower-level profiles. Two additional 10% sources extend Midnight's table
+to 110% total / target 83.68; this is extrapolated and not a verified completion level.
 These sources use the same bonus model as the rest of the profile.
 
 Sources: [Bottle of Mysterious Wisdom](https://www.wowhead.com/item=239142/bottle-of-mysterious-wisdom),
