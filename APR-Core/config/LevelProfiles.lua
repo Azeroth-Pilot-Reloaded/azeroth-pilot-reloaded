@@ -70,18 +70,24 @@ APR.LevelRequirementProfiles = {
     MidnightDelves = {
         bonuses = { "MidnightMentorship", "WindsOfMysteriousFortune", "WarMode", "Timeways",
             "MysteriousWisdom", "Darkmoon" },
-        -- Calibration: a full delve turn-in ended at 89 + 570908 / 592980 XP,
-        -- leaving 22072 XP (3.72% of the level) before 90. Add a rounded 4% margin.
+        -- Provisional full-tour anchor: 87.30 at 30% bonus, based on the report of
+        -- six rewards taking ~87.8 to ~89.5 while four Silvermoon rewards were missed.
+        -- At 87.30, XP remaining to 90 is 0.70 * 548535 + 570590 + 592980.
+        -- For 0-30%, scale that XP budget by (1 + bonus / 100) / 1.30, then
+        -- convert back to a starting level and round UP to the next 5% of a level.
+        -- This assumes the same base reward budget; no unmeasured level-scaling gain is added.
+        -- Keep 35% at 87.30 and retain the older 40-110% estimates. All need in-game validation.
+        -- Derivation, assumptions and XP table source: wiki.md, Midnight Delver's Call Profile.
         levels = {
             -- Total active bonus -> required level
-            [0]   = 89.08,
-            [5]   = 88.88,
-            [10]  = 88.68,
-            [15]  = 88.38,
-            [20]  = 88.18,
-            [25]  = 87.88,
-            [30]  = 87.68,
-            [35]  = 87.38,
+            [0]   = 88.00,
+            [5]   = 87.85,
+            [10]  = 87.75,
+            [15]  = 87.65,
+            [20]  = 87.55,
+            [25]  = 87.45,
+            [30]  = 87.30,
+            [35]  = 87.30,
             [40]  = 87.18,
             [45]  = 86.88,
             [50]  = 86.68,
