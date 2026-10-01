@@ -1,6 +1,6 @@
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
-    label = "Starting Zone NightElf",
+    label = "Starting Zone NightElf - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -5450,7 +5450,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
-    label = "Alliance - NightElf - Darkshore (14-19)",
+    label = "Alliance - NightElf - Darkshore (14-19) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -11115,7 +11115,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
-    label = "Alliance - NightElf - Redridge Mountains",
+    label = "Alliance - NightElf - Redridge Mountains - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -12835,7 +12835,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
-    label = "Alliance - NightElf - Darkshore (19-21, Hunter)",
+    label = "Alliance - NightElf - Darkshore (19-21, Hunter) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -13683,7 +13683,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
-    label = "Alliance - NightElf - Darkshore (20-21)",
+    label = "Alliance - NightElf - Darkshore (20-21) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

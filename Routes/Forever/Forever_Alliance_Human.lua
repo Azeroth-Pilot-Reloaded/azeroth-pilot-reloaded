@@ -1,6 +1,6 @@
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
-    label = "Starting Zone Human",
+    label = "Starting Zone Human - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -7953,7 +7953,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Human-Westfall"] = {
-    label = "Alliance - Human - Westfall",
+    label = "Alliance - Human - Westfall - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -9441,7 +9441,7 @@ APR.RouteQuestStepList["Forever-Alliance-Human-Westfall"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Human-Darkshore-14-19"] = {
-    label = "Alliance - Human - Darkshore (14-19)",
+    label = "Alliance - Human - Darkshore (14-19) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -12755,7 +12755,7 @@ APR.RouteQuestStepList["Forever-Alliance-Human-Darkshore-14-19"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Human-Redridge-Mountains"] = {
-    label = "Alliance - Human - Redridge Mountains",
+    label = "Alliance - Human - Redridge Mountains - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -14523,7 +14523,7 @@ APR.RouteQuestStepList["Forever-Alliance-Human-Redridge-Mountains"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Human-Darkshore-19-21-Hunter"] = {
-    label = "Alliance - Human - Darkshore (19-21, Hunter)",
+    label = "Alliance - Human - Darkshore (19-21, Hunter) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -15407,7 +15407,7 @@ APR.RouteQuestStepList["Forever-Alliance-Human-Darkshore-19-21-Hunter"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Human-Darkshore-20-21"] = {
-    label = "Alliance - Human - Darkshore (20-21)",
+    label = "Alliance - Human - Darkshore (20-21) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

@@ -1,6 +1,6 @@
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf"] = {
-    label = "Starting Zone Dwarf",
+    label = "Starting Zone Dwarf - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -4305,7 +4305,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dwarf-Elwynn-Forest"] = {
-    label = "Alliance - Dwarf - Elwynn Forest",
+    label = "Alliance - Dwarf - Elwynn Forest - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -4914,7 +4914,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dwarf-Elwynn-Forest"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dwarf-Loch-Modan-12-14"] = {
-    label = "Alliance - Dwarf - Loch Modan (12-14)",
+    label = "Alliance - Dwarf - Loch Modan (12-14) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -6874,7 +6874,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dwarf-Loch-Modan-12-14"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dwarf-Loch-Modan-11-13-Hunter"] = {
-    label = "Alliance - Dwarf - Loch Modan (11-13, Hunter)",
+    label = "Alliance - Dwarf - Loch Modan (11-13, Hunter) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -8202,7 +8202,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dwarf-Loch-Modan-11-13-Hunter"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dwarf-Westfall"] = {
-    label = "Alliance - Dwarf - Westfall",
+    label = "Alliance - Dwarf - Westfall - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -9525,7 +9525,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dwarf-Westfall"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dwarf-Darkshore-14-19"] = {
-    label = "Alliance - Dwarf - Darkshore (14-19)",
+    label = "Alliance - Dwarf - Darkshore (14-19) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -12940,7 +12940,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dwarf-Darkshore-14-19"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dwarf-Redridge-Mountains"] = {
-    label = "Alliance - Dwarf - Redridge Mountains",
+    label = "Alliance - Dwarf - Redridge Mountains - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -14363,7 +14363,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dwarf-Redridge-Mountains"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dwarf-Darkshore-19-21-Hunter"] = {
-    label = "Alliance - Dwarf - Darkshore (19-21, Hunter)",
+    label = "Alliance - Dwarf - Darkshore (19-21, Hunter) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -15212,7 +15212,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dwarf-Darkshore-19-21-Hunter"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dwarf-Darkshore-20-21"] = {
-    label = "Alliance - Dwarf - Darkshore (20-21)",
+    label = "Alliance - Dwarf - Darkshore (20-21) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

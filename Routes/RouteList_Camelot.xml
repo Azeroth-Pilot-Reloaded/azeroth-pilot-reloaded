@@ -7,6 +7,6 @@
     <Script file="Routes/Forever/Forever_Horde_Scourge.lua" />
     <Script file="Routes/Forever/Forever_Horde_Tauren.lua" />
     <Script file="Routes/Forever/Forever_Horde_Troll.lua" />
-    <!-- <Script file="Routes/Forever/Forever_Horde_Troll_WIP.lua" /> -->
+    <Script file="Routes/Forever/Forever_Horde_Troll_Orc.lua" />
     <Script file="Routes/Forever/Forever_Skyborne.lua" />
 </Ui>

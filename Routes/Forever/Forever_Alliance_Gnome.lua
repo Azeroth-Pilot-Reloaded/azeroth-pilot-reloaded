@@ -1,6 +1,6 @@
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
-    label = "Starting Zone Gnome",
+    label = "Starting Zone Gnome - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -3735,7 +3735,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Gnome-Elwynn-Forest"] = {
-    label = "Alliance - Gnome - Elwynn Forest",
+    label = "Alliance - Gnome - Elwynn Forest - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -4660,7 +4660,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Elwynn-Forest"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Gnome-Loch-Modan"] = {
-    label = "Alliance - Gnome - Loch Modan",
+    label = "Alliance - Gnome - Loch Modan - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -5784,7 +5784,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Loch-Modan"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Gnome-Westfall"] = {
-    label = "Alliance - Gnome - Westfall",
+    label = "Alliance - Gnome - Westfall - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -7127,7 +7127,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Westfall"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Gnome-Darkshore-14-19"] = {
-    label = "Alliance - Gnome - Darkshore (14-19)",
+    label = "Alliance - Gnome - Darkshore (14-19) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -9884,7 +9884,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Darkshore-14-19"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
-    label = "Alliance - Gnome - Redridge Mountains",
+    label = "Alliance - Gnome - Redridge Mountains - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -11531,7 +11531,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Gnome-Darkshore-20-21"] = {
-    label = "Alliance - Gnome - Darkshore (20-21)",
+    label = "Alliance - Gnome - Darkshore (20-21) - generated",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
