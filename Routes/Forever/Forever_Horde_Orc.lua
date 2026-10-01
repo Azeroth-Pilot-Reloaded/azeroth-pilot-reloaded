@@ -3875,7 +3875,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Orc"] = {
         },
         {
             Note = { "Go inside the bunker" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "HUNTER",
             Coord = { x = -4704.07, y = 275.31 },
             Zone = 1411,
@@ -12274,7 +12274,7 @@ APR.RouteQuestStepList["Forever-Horde-Orc-The-Barrens"] = {
             _index = 471,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = -4357.36, y = 1850.41 },
             Zone = 1454,

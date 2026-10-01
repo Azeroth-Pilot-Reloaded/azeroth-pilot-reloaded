@@ -861,7 +861,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 105,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 393.53, y = -6056.72 },
             Zone = 1426,
@@ -1199,7 +1199,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 144,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = -528.87, y = -5640.0 },
             Zone = 1426,
@@ -1297,14 +1297,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 156,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = -529.51, y = -5590.66 },
             Zone = 1426,
             _index = 157,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = -537.2, y = -5587.0 },
             Zone = 1426,
@@ -1336,7 +1336,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 161,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = -540.39, y = -5604.38 },
             Zone = 1426,
@@ -1357,7 +1357,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 164,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = -530.4, y = -5605.63 },
             Zone = 1426,
@@ -1574,8 +1574,10 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
         {
             Qpart = { [313] = { 1 }, [98321] = { 1 } },
             Note = { "Kill all types of Wendigos. Loot them for their Wendigo Manes", "Loot Flintfire's Shipments on the ground inside the Grizzled Den cave" },
-            Coord = APR.worldCoordinateConverter:GetMixedAreaCenter(1426, { { 42.982, 54.755, 0, true }, { 41.918, 54.053, 0, true }, { 41.1, 48.927, 0, true }, { 42.982, 54.755, 40.0, true }, { 41.901, 55.217, 40.0, true }, { 41.918, 54.053, 40.0, true }, { 42.177, 53.274, 40.0, true }, { 41.1, 48.927, 40.0, true }, { -274.9, -5423.5, 40.0, false }, { -312.5, -5506.3, 40.0, false }, { -275.0, -5623.2, 40.0, false }, { -274.9, -5423.5, 40.0, false }, { -312.5, -5506.3, 40.0, false }, { -275.0, -5623.2, 40.0, false } }),
-            Range = APR.worldCoordinateConverter:GetMixedAreaRadius(1426, { { 42.982, 54.755, 0, true }, { 41.918, 54.053, 0, true }, { 41.1, 48.927, 0, true }, { 42.982, 54.755, 40.0, true }, { 41.901, 55.217, 40.0, true }, { 41.918, 54.053, 40.0, true }, { 42.177, 53.274, 40.0, true }, { 41.1, 48.927, 40.0, true }, { -274.9, -5423.5, 40.0, false }, { -312.5, -5506.3, 40.0, false }, { -275.0, -5623.2, 40.0, false }, { -274.9, -5423.5, 40.0, false }, { -312.5, -5506.3, 40.0, false }, { -275.0, -5623.2, 40.0, false } }),
+            Coord = APR.worldCoordinateConverter:GetMixedAreaCenter(1426,
+                { { 42.982, 54.755, 0, true }, { 41.918, 54.053, 0, true }, { 41.1, 48.927, 0, true }, { 42.982, 54.755, 40.0, true }, { 41.901, 55.217, 40.0, true }, { 41.918, 54.053, 40.0, true }, { 42.177, 53.274, 40.0, true }, { 41.1, 48.927, 40.0, true }, { -274.9, -5423.5, 40.0, false }, { -312.5, -5506.3, 40.0, false }, { -275.0, -5623.2, 40.0, false }, { -274.9, -5423.5, 40.0, false }, { -312.5, -5506.3, 40.0, false }, { -275.0, -5623.2, 40.0, false } }),
+            Range = APR.worldCoordinateConverter:GetMixedAreaRadius(1426,
+                { { 42.982, 54.755, 0, true }, { 41.918, 54.053, 0, true }, { 41.1, 48.927, 0, true }, { 42.982, 54.755, 40.0, true }, { 41.901, 55.217, 40.0, true }, { 41.918, 54.053, 40.0, true }, { 42.177, 53.274, 40.0, true }, { 41.1, 48.927, 40.0, true }, { -274.9, -5423.5, 40.0, false }, { -312.5, -5506.3, 40.0, false }, { -275.0, -5623.2, 40.0, false }, { -274.9, -5423.5, 40.0, false }, { -312.5, -5506.3, 40.0, false }, { -275.0, -5623.2, 40.0, false } }),
             Zone = 1426,
             _index = 192,
         },
@@ -2000,28 +2002,28 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 244,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = -529.51, y = -5590.66 },
             Zone = 1426,
             _index = 245,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = -537.2, y = -5587.0 },
             Zone = 1426,
             _index = 246,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = -540.39, y = -5604.38 },
             Zone = 1426,
             _index = 247,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = -530.4, y = -5605.63 },
             Zone = 1426,
@@ -3487,7 +3489,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 432,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 325.68, y = -8688.59 },
             Zone = 1453,
@@ -3599,7 +3601,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 446,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = 1029.89, y = -8971.06 },
             Zone = 1453,
@@ -3779,7 +3781,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Elwynn-Forest"] = {
             _index = 5,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = 34.28, y = -9471.61 },
             Zone = 1429,
@@ -3787,7 +3789,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Elwynn-Forest"] = {
         },
         {
             Note = { "Prioritize training `Dual Wield`" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 12.69, y = -9465.75 },
             Zone = 1429,
@@ -4319,7 +4321,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Elwynn-Forest"] = {
             _index = 70,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = 1029.89, y = -8971.06 },
             Zone = 1453,
@@ -4450,7 +4452,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Elwynn-Forest"] = {
             _index = 86,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 109.36, y = -9461.84 },
             MinLevel = 12,
@@ -4468,7 +4470,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Elwynn-Forest"] = {
             _index = 88,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = 34.28, y = -9471.61 },
             MinLevel = 12,
@@ -4476,7 +4478,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Elwynn-Forest"] = {
             _index = 89,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 33.14, y = -9460.75 },
             MinLevel = 12,
@@ -4484,7 +4486,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Elwynn-Forest"] = {
             _index = 90,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 12.69, y = -9465.75 },
             MinLevel = 12,
@@ -5510,14 +5512,14 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Loch-Modan"] = {
             _index = 97,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = -928.48, y = -4614.62 },
             Zone = 1455,
             _index = 98,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = -912.88, y = -4625.99 },
             Zone = 1455,
@@ -5531,7 +5533,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Loch-Modan"] = {
             _index = 100,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = -1120.72, y = -4650.12 },
             Zone = 1455,
@@ -5547,7 +5549,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Loch-Modan"] = {
             _index = 102,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = -1111.62, y = -4599.09 },
             Zone = 1455,
@@ -5604,7 +5606,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Loch-Modan"] = {
             _index = 108,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = -1234.65, y = -5035.67 },
             Zone = 1455,
@@ -6918,7 +6920,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Westfall"] = {
             _index = 125,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.47, y = -8752.39 },
             DontHaveSpell = 1758,
@@ -6946,7 +6948,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Westfall"] = {
             _index = 128,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             DontHaveSpell = 1160,
@@ -6980,7 +6982,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Westfall"] = {
             _index = 132,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = 1029.89, y = -8971.06 },
             DontHaveSpell = 6222,
@@ -6998,7 +7000,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Westfall"] = {
             _index = 134,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = 885.34, y = -9006.15 },
             DontHaveSpell = 2137,
@@ -7016,7 +7018,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Westfall"] = {
             _index = 136,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 862.89, y = -8519.61 },
             DontHaveSpell = 8122,
@@ -9911,7 +9913,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
             _index = 2,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = 885.34, y = -9006.15 },
             Zone = 1453,
@@ -9938,7 +9940,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
             _index = 5,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = 1029.98, y = -8971.01 },
             Zone = 1453,
@@ -9974,7 +9976,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
             _index = 9,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 862.89, y = -8519.61 },
             Zone = 1453,
@@ -10004,7 +10006,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
         },
         {
             Note = { "Ensure you train `Lockpicking` as well as you will need it for your Rogue class quest soon" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.61, y = -8752.3 },
             Zone = 1453,
@@ -10074,7 +10076,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
             _index = 21,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             Zone = 1453,
@@ -10798,7 +10800,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
             _index = 117,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = 1029.98, y = -8971.01 },
             Zone = 1453,
@@ -10822,7 +10824,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
             _index = 120,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = 885.34, y = -9006.15 },
             Zone = 1453,
@@ -10853,14 +10855,14 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
             _index = 124,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 862.89, y = -8519.61 },
             Zone = 1453,
             _index = 125,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.61, y = -8752.3 },
             Zone = 1453,
@@ -10922,7 +10924,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
             _index = 132,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             Zone = 1453,

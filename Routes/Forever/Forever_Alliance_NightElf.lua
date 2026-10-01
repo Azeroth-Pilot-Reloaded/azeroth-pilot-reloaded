@@ -492,7 +492,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 63,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 778.07, y = 10526.62 },
             Zone = 1438,
@@ -968,7 +968,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 124,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 801.64, y = 10458.75 },
             Zone = 1438,
@@ -1094,7 +1094,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 142,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 985.45, y = 9905.43 },
             Zone = 1438,
@@ -1180,14 +1180,14 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 153,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 952.0, y = 9822.22 },
             Zone = 1438,
             _index = 154,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 943.85, y = 9790.28 },
             Zone = 1438,
@@ -1255,7 +1255,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Note = { "Skip training `Wrath` if you can't afford it. Prioritize `Thorns`" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = 966.05, y = 9741.85 },
             Zone = 1438,
@@ -1607,7 +1607,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 206,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 985.45, y = 9905.43 },
             Zone = 1438,
@@ -1660,7 +1660,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 213,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "HUNTER",
             Coord = { x = 928.83, y = 9812.34 },
             MinLevel = 8,
@@ -1668,7 +1668,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 214,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 943.85, y = 9790.28 },
             MinLevel = 8,
@@ -1686,7 +1686,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 216,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 952.0, y = 9822.22 },
             MinLevel = 8,
@@ -1730,7 +1730,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 221,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = 966.05, y = 9741.85 },
             MinLevel = 8,
@@ -1943,7 +1943,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Note = { "Skip this step if you already trained level 8 spells" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = 966.05, y = 9741.85 },
             MinLevel = 8,
@@ -2005,7 +2005,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Note = { "Skip this step if you already trained level 8 spells" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "HUNTER",
             Coord = { x = 928.83, y = 9812.34 },
             MinLevel = 8,
@@ -2014,7 +2014,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Note = { "Skip this step if you already trained level 8 spells" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 943.85, y = 9790.28 },
             MinLevel = 8,
@@ -2023,7 +2023,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Note = { "Skip this step if you already trained level 8 spells" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 952.0, y = 9822.22 },
             MinLevel = 8,
@@ -2140,7 +2140,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Note = { "Skip this step if you already trained level 8 spells" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 985.45, y = 9905.43 },
             Zone = 1438,
@@ -2689,7 +2689,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 337,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = 2563.92, y = 10179.04 },
             Zone = 1457,
@@ -3923,7 +3923,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 476,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 952.0, y = 9822.22 },
             Fillers = { [937] = { 1 } },
@@ -3931,7 +3931,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 477,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 943.85, y = 9790.28 },
             Fillers = { [937] = { 1 } },
@@ -3962,7 +3962,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 481,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "HUNTER",
             Coord = { x = 928.83, y = 9812.34 },
             Zone = 1438,
@@ -4229,7 +4229,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 510,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 985.45, y = 9905.43 },
             Zone = 1438,
@@ -5794,7 +5794,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 39,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Button = { ["2118-1"] = 7586 },
             Class = "DRUID",
             Coord = { x = 2563.98, y = 10179.0 },
@@ -7186,14 +7186,14 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 204,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = 1347.6192, y = -8591.2168 },
             Zone = 1453,
             _index = 205,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "HUNTER",
             Coord = { x = 552.78, y = -8415.71 },
             Zone = 1453,
@@ -7207,14 +7207,14 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 207,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 862.89, y = -8519.61 },
             Zone = 1453,
             _index = 208,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.47, y = -8752.39 },
             Zone = 1453,
@@ -7239,7 +7239,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 211,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             Zone = 1453,
@@ -8255,7 +8255,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 334,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.47, y = -8752.39 },
             DontHaveSpell = 1758,
@@ -8283,7 +8283,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 337,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             DontHaveSpell = 1160,
@@ -8292,7 +8292,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Note = { "If you just trained earlier, skip this step" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "HUNTER",
             Coord = { x = 552.78, y = -8415.71 },
             Zone = 1453,
@@ -8305,7 +8305,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 340,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = 1347.6192, y = -8591.2168 },
             Zone = 1453,
@@ -8322,7 +8322,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 342,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 862.89, y = -8519.61 },
             DontHaveSpell = 8122,
@@ -9031,7 +9031,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 428,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = 2563.98, y = 10179.0 },
             Zone = 1457,
@@ -9974,7 +9974,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Note = { "Go to Moonglade" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -10836,7 +10836,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 633,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
             Fillers = { [1138] = { 1 } },
@@ -11161,7 +11161,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 4,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 862.89, y = -8519.61 },
             Zone = 1453,
@@ -11185,7 +11185,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Note = { "Ensure you train `Lockpicking` as well as you will need it for your Rogue class quest soon" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.61, y = -8752.3 },
             Zone = 1453,
@@ -11255,7 +11255,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 15,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             Zone = 1453,
@@ -12146,14 +12146,14 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 131,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 862.89, y = -8519.61 },
             Zone = 1453,
             _index = 132,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.61, y = -8752.3 },
             Zone = 1453,
@@ -12215,7 +12215,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 139,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             Zone = 1453,
@@ -13637,7 +13637,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
             _index = 107,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Coord = { x = 2511.04, y = 10178.01 },
             MinLevel = 22,
             Zone = 1457,
@@ -13699,7 +13699,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             Note = { "Go to Moonglade" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
             Zone = 1450,

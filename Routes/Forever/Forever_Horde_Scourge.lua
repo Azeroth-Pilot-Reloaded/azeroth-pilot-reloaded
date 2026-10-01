@@ -3051,7 +3051,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 378,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 251.14, y = 2265.28 },
             Zone = 1420,
@@ -3072,7 +3072,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 381,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 238.49, y = 2254.43 },
             IsQuestUncompleted = 1498,
@@ -3102,7 +3102,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 385,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 243.01, y = 2270.7 },
             Zone = 1420,
@@ -3221,7 +3221,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 400,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PALADIN",
             Coord = { x = 311.6, y = 2251.0 },
             Zone = 1420,
@@ -4378,7 +4378,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 527,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 251.14, y = 2265.28 },
             MinLevel = 12,
@@ -4969,7 +4969,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 598,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 251.14, y = 2265.28 },
             MinLevel = 12,
@@ -12228,7 +12228,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 379,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = -4357.36, y = 1850.41 },
             Zone = 1454,
@@ -12715,7 +12715,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 442,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 252.49, y = -956.04 },
             Zone = 1456,

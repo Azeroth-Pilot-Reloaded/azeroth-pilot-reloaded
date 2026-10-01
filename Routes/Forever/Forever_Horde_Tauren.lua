@@ -2092,7 +2092,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 164,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = -496.17, y = -2347.78 },
             Zone = 1412,
@@ -2113,7 +2113,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 167,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "SHAMAN",
             Coord = { x = -437.61, y = -2298.8 },
             Zone = 1412,
@@ -2127,14 +2127,14 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 169,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "HUNTER",
             Coord = { x = -408.32, y = -2180.3 },
             Zone = 1412,
             _index = 170,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -442.74, y = -2315.59 },
             IsQuestUncompleted = 5928,
@@ -7624,7 +7624,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 521,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -281.59, y = -1039.61 },
             Zone = 1456,

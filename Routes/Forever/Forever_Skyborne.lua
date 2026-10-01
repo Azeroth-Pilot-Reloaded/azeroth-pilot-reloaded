@@ -1118,7 +1118,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
             _index = 123,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.47, y = -8752.39 },
             DontHaveSpell = 1758,
@@ -1146,7 +1146,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
             _index = 126,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             DontHaveSpell = 1160,
@@ -1170,7 +1170,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
             _index = 129,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = 885.34, y = -9006.15 },
             DontHaveSpell = 2137,
@@ -3302,7 +3302,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
             _index = 243,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = 2563.98, y = 10179.0 },
             Zone = 1457,
@@ -4210,7 +4210,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Note = { "Go to Moonglade" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -5193,7 +5193,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
             _index = 460,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
             Fillers = { [1138] = { 1 } },
@@ -5416,7 +5416,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 2,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = 885.34, y = -9006.15 },
             Zone = 1453,
@@ -5446,7 +5446,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Note = { "Ensure you train `Lockpicking` as well as you will need it for your Rogue class quest soon" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.61, y = -8752.3 },
             Zone = 1453,
@@ -5516,7 +5516,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 14,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             Zone = 1453,
@@ -6407,7 +6407,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 129,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "MAGE",
             Coord = { x = 885.34, y = -9006.15 },
             Zone = 1453,
@@ -6428,7 +6428,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 132,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 377.61, y = -8752.3 },
             Zone = 1453,
@@ -6490,7 +6490,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 139,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 323.3, y = -8689.29 },
             Zone = 1453,
@@ -7901,7 +7901,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
             _index = 107,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Coord = { x = 2511.04, y = 10178.01 },
             MinLevel = 22,
             Zone = 1457,
@@ -7963,7 +7963,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             Note = { "Go to Moonglade" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
             Zone = 1450,
@@ -12942,7 +12942,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 527,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -281.59, y = -1039.61 },
             Zone = 1456,
@@ -16572,7 +16572,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 221,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "SHAMAN",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.454, 44.872),
             Faction = "Horde",
@@ -17319,7 +17319,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 296,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "SHAMAN",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.454, 44.872),
             Faction = "Horde",
@@ -18100,7 +18100,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 381,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "SHAMAN",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.454, 44.872),
             Faction = "Horde",
@@ -20051,7 +20051,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 589,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "SHAMAN",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.313, 78.499),
             Faction = "Horde",

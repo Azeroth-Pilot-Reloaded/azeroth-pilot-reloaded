@@ -3817,7 +3817,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll"] = {
             _index = 458,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = -4831.5, y = 295.05 },
             Zone = 1411,
@@ -4168,7 +4168,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll"] = {
         },
         {
             Note = { "Go inside the bunker" },
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "HUNTER",
             Coord = { x = -4704.07, y = 275.31 },
             Zone = 1411,
@@ -5247,7 +5247,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll"] = {
             _index = 630,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = -4831.5, y = 295.05 },
             Zone = 1411,
@@ -5888,7 +5888,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll"] = {
             _index = 703,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = -4179.79, y = 1452.58 },
             IsQuestOnQuest = 5654,
@@ -5903,7 +5903,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll"] = {
             _index = 705,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = -4179.79, y = 1452.58 },
             Zone = 1454,
@@ -12827,7 +12827,7 @@ APR.RouteQuestStepList["Forever-Horde-Troll-The-Barrens"] = {
             _index = 473,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "WARLOCK",
             Coord = { x = -4357.36, y = 1850.41 },
             Zone = 1454,
@@ -13575,7 +13575,7 @@ APR.RouteQuestStepList["Forever-Horde-Troll-The-Barrens"] = {
             _index = 565,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 252.49, y = -956.04 },
             Zone = 1456,
@@ -15024,7 +15024,7 @@ APR.RouteQuestStepList["Forever-Horde-Troll-The-Barrens"] = {
             _index = 749,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells" },
+            LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = -4179.79, y = 1452.58 },
             Zone = 1454,
