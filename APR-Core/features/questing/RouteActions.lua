@@ -133,9 +133,13 @@ function APR:GetRouteActionState()
     return self.routeActionState
 end
 
-function APR:GetRouteActionText(key, rule)
+function APR:GetRouteActionText(key, rule, isCurrentStep)
     local label = L[key:upper()]
     if type(rule) ~= "table" then return label end
+
+    if key == "LearnSkill" and rule.allAvailable == true then
+        return isCurrentStep and L["LEARNSKILL_ALL_AVAILABLE"] or label
+    end
 
     local function Fallback()
         return self:ResolveStepText(rule.text or rule.Text) or label
@@ -241,7 +245,7 @@ function APR:HandleRouteAction(step)
             if complete then
                 self:NextQuestStep(); return true
             end
-            self.currentStep:AddQuestSteps(key, self:GetRouteActionText(key, rule), key, false, true)
+            self.currentStep:AddQuestSteps(key, self:GetRouteActionText(key, rule, true), key, false, true)
             if key == "TameBeast" then
                 self.currentStep:AddStepButton(key .. "-spell", rule.spellID or 1515, "spell")
                 if rule.npcID then self.currentStep:AddRaidIconButton(key .. "-target", rule.npcID) end
