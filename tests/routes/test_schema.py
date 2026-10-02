@@ -192,6 +192,18 @@ class RouteSchemaTests(unittest.TestCase):
         with self.assertRaises(InvalidRoute):
             self.schema.step({"SellItems": {"questID": 4641}}, "step")
 
+    def test_sell_items_equipped_slots(self):
+        for sale in ({"equippedSlots": seq(16)}, {"equippedSlots": seq(16, 18), "junk": True},
+                     {"equippedSlots": seq(16), "items": seq(36), "questID": 789}):
+            with self.subTest(sale=sale):
+                self.schema.step({"SellItems": sale}, "step")
+        for slots in ({}, seq(0), seq(20), seq(True), seq("16"), seq(16.5), {2: 16}):
+            with self.subTest(slots=slots), self.assertRaises(InvalidRoute):
+                self.schema.step({"SellItems": {"equippedSlots": slots}}, "step")
+        for action in ("BankDeposit", "BankWithdraw", "DestroyItems"):
+            with self.subTest(action=action), self.assertRaises(InvalidRoute):
+                self.schema.step({action: {"items": seq(36), "equippedSlots": seq(16)}}, "step")
+
     def test_invalid_types_ranges_required_fields_and_lists(self):
         for step in ({"PickUp": {2: 1}}, {"PickUp": {"1": 1}}, {"PickUp": seq(True)},
                      {"Coord": {"x": 1}}, {"Coord": {"x": float("nan"), "y": 1}},

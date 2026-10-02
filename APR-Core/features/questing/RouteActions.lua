@@ -35,6 +35,32 @@ local function Entries(rule)
     return rule.items or rule
 end
 
+-- Remember the equipment selected on entry to the step, so removing it does
+-- not change the sale target. Previews resolve current equipment without state.
+local function ItemEntries(key, rule, state)
+    if key ~= "SellItems" or not rule.equippedSlots then return Entries(rule) end
+    local equipment = state and state.equippedItems
+    if not equipment and GetInventoryItemID then
+        equipment = {}
+        for _, slot in ipairs(rule.equippedSlots) do
+            local itemID = GetInventoryItemID("player", slot)
+            if itemID then equipment[#equipment + 1] = itemID end
+        end
+        if state then state.equippedItems = equipment end
+    end
+    local entries, seen = {}, {}
+    for _, entry in ipairs(Entries(rule)) do
+        local itemID = type(entry) == "table" and entry.itemID or entry
+        entries[#entries + 1], seen[itemID] = entry, true
+    end
+    for _, itemID in ipairs(equipment or {}) do
+        if not seen[itemID] then
+            entries[#entries + 1], seen[itemID] = itemID, true
+        end
+    end
+    return entries
+end
+
 local function IsItemEquipped(itemID)
     if not GetInventoryItemID then return false end
     for slot = INVSLOT_FIRST_EQUIPPED or 1, INVSLOT_LAST_EQUIPPED or 19 do
@@ -70,6 +96,8 @@ function APR:ProcessRouteItems(key, rule, state)
     if key == "SellItems" and rule.questID and C_QuestLog.IsQuestFlaggedCompleted(rule.questID) then
         return true
     end
+    local entries = ItemEntries(key, rule, state)
+    if key == "SellItems" and rule.equippedSlots and not state.equippedItems then return false end
     if (InCombatLockdown and InCombatLockdown()) or (CursorHasItem and CursorHasItem()) then return false end
     if key == "SellItems" and not self.routeMerchantOpen then return false end
     if (key == "BankDeposit" or key == "BankWithdraw") and not self.routeBankOpen then return false end
@@ -86,13 +114,13 @@ function APR:ProcessRouteItems(key, rule, state)
         for slot = 1, (ContainerCall("GetContainerNumSlots", bag) or 0) do
             local info = ContainerInfo(bag, slot)
             if info and info.itemID then
-                local wanted = rule.junk and info.quality == 0
-                for _, entry in ipairs(Entries(rule)) do
+                local wanted, listed = rule.junk and info.quality == 0, false
+                for _, entry in ipairs(entries) do
                     local id = type(entry) == "table" and entry.itemID or entry
-                    if id == info.itemID then wanted = true end
+                    if id == info.itemID then wanted, listed = true, true end
                 end
                 if wanted and key == 'SellItems' and info.hasNoValue then
-                    if rule.junk then wanted = false else return false end
+                    if listed then return false else wanted = false end
                 end
                 if wanted then
                     if info.isLocked then return false end
@@ -118,7 +146,7 @@ function APR:ProcessRouteItems(key, rule, state)
     end
     -- Listed equipment still needs manual removal before it can be sold.
     if key == "SellItems" then
-        for _, entry in ipairs(Entries(rule)) do
+        for _, entry in ipairs(entries) do
             if IsItemEquipped(type(entry) == "table" and entry.itemID or entry) then return false end
         end
     end
@@ -133,7 +161,7 @@ function APR:GetRouteActionState()
     return self.routeActionState
 end
 
-function APR:GetRouteActionText(key, rule, isCurrentStep)
+function APR:GetRouteActionText(key, rule, isCurrentStep, state)
     local label = L[key:upper()]
     if type(rule) ~= "table" then return label end
 
@@ -169,7 +197,7 @@ function APR:GetRouteActionText(key, rule, isCurrentStep)
     if key == "SellItems" or key == "BankDeposit" or key == "BankWithdraw" or key == "DestroyItems" then
         local names, missing = {}, false
         local getItemInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
-        for _, entry in ipairs(Entries(rule)) do
+        for _, entry in ipairs(ItemEntries(key, rule, state)) do
             local id = type(entry) == "table" and entry.itemID or entry
             local name = getItemInfo and getItemInfo(id)
             if not name then
@@ -245,7 +273,7 @@ function APR:HandleRouteAction(step)
             if complete then
                 self:NextQuestStep(); return true
             end
-            self.currentStep:AddQuestSteps(key, self:GetRouteActionText(key, rule, true), key, false, true)
+            self.currentStep:AddQuestSteps(key, self:GetRouteActionText(key, rule, true, state), key, false, true)
             if key == "TameBeast" then
                 self.currentStep:AddStepButton(key .. "-spell", rule.spellID or 1515, "spell")
                 if rule.npcID then self.currentStep:AddRaidIconButton(key .. "-target", rule.npcID) end

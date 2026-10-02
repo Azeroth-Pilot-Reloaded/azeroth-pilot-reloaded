@@ -237,8 +237,9 @@ class RouteSchema:
             if name == "SellItems":
                 fields["junk"] = BOOL
                 fields["questID"] = ID
+                fields["equippedSlots"] = array(SLOT, 1)
             self.step_fields[name] = union(array(entry, 1), obj(fields, choices=(tuple(
-                ["items", "junk"] if name == "SellItems" else ["items"]),)))
+                ["items", "junk", "equippedSlots"] if name == "SellItems" else ["items"]),)))
         self.step = obj(self.step_fields, patterns=((r"ExtraLineText\d*", union(TEXT, array(TEXT, 1))),
                                                    (r"TrigText\d*", TEXT)))
         steps = array(self.step)
