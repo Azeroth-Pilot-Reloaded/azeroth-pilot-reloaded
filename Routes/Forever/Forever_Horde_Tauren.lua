@@ -77,7 +77,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Qpart = { [747] = { 1, 2 } },
-            Note = { "Kill Plainstriders. Loot them for their Meat and Feathers" },
             Coord = { x = -432.985, y = -2991.17 },
             Range = 233,
             Zone = 1412,
@@ -164,7 +163,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Qpart = { [750] = { 1 } },
-            Note = { "Kill Mountain Cougars. Loot them for their Pelts" },
             Coord = { x = -371.59, y = -3363.465 },
             Range = 253,
             Zone = 1412,
@@ -337,7 +335,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Qpart = { [780] = { 2, 1 } },
-            Note = { "Kill Battleboars. Loot them for their Flanks and Snouts" },
             Coord = { x = -793.635, y = -3160.02 },
             Range = 267,
             Zone = 1412,
@@ -387,7 +384,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Qpart = { [3376] = { 1 } },
-            Note = { "Kill Chief Sharptusk Thornmantle inside the big hut. Loot him for his Head" },
+            Note = { "Inside the big hut." },
             Class = { "DRUID", "HUNTER", "WARRIOR" },
             Coord = { x = -1276.56, y = -2933.11 },
             Fillers = { [757] = { 1 } },
@@ -430,7 +427,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Qpart = { [3376] = { 1 } },
-            Note = { "Kill Chief Sharptusk Thornmantle inside the big hut. Loot him for his Head" },
+            Note = { "Inside the big hut." },
             Class = "SHAMAN",
             Coord = { x = -1276.56, y = -2933.11 },
             Fillers = { [757] = { 1 }, [1519] = { 1 } },
@@ -502,7 +499,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Qpart = { [757] = { 1 } },
-            Note = { "Kill Bristleback Quilboars. Loot them for their Belts" },
             Class = { "DRUID", "HUNTER", "WARRIOR" },
             Coord = { x = -1217.74, y = -2947.33 },
             Range = 160,
@@ -511,7 +507,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Qpart = { [757] = { 1 } },
-            Note = { "Kill Bristleback Quilboars. Loot them for their Belts" },
             Class = "SHAMAN",
             Coord = { x = -1217.74, y = -2947.33 },
             Fillers = { [1519] = { 1 } },
@@ -521,7 +516,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Qpart = { [1519] = { 1 } },
-            Note = { "Kill Bristleback Shamans. Loot them for their Salves" },
             Class = "SHAMAN",
             Coord = { x = -1281.7, y = -2968.9 },
             Range = 146,
@@ -586,7 +580,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Waypoint = 1520,
-            Note = { "Travel toward the rock" },
             Class = "SHAMAN",
             Coord = { x = -712.98, y = -3018.05 },
             NonSkippableWaypoint = true,
@@ -899,7 +892,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 19,
         },
         {
-            Note = { "Set your Hearthstone to Bloodhoof Village" },
             SetHS = 1656,
             Coord = { x = -347.7, y = -2365.25 },
             Zone = 1412,
@@ -1038,7 +1030,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [748] = { 1, 2 } },
-            Note = { "Kill Prairie Wolves and Adult Plainstriders. Loot them for their Paws and Talons" },
             Coord = { x = -583.515, y = -2532.05 },
             Fillers = { [766] = { 1, 2, 3, 4 }, [761] = { 1 } },
             Range = 349,
@@ -1293,7 +1284,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [756] = { 1, 2 } },
-            Note = { "Kill Stalkers and Cougars. Loot them for their Claws" },
             Coord = { x = -636.425, y = -1827.865 },
             Fillers = { [766] = { 1, 2, 3, 4 }, [761] = { 1 } },
             Range = 412,
@@ -1356,7 +1346,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [745] = { 1, 2, 3 } },
-            Note = { "Kill Palemane Tanners, Palemane Skinners and Palemane Poachers" },
             Coord = { x = 354.4, y = -2374.25 },
             Range = 169,
             Zone = 1412,
@@ -1498,7 +1487,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [761] = { 1 } },
-            Note = { "Kill Swoops throughout Mulgore. Loot them for their Quills" },
             Range = 30,
             _index = 98,
         },
@@ -1607,7 +1595,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [746] = { 1 } },
-            Note = { "Kill Bael'dun Diggers and Bael'dun Appraisers. Loot them for their Prospector's Picks", "Smash the `Picks` at the Forge", "Be careful as Bael'dun Appraisers cast `Lesser Heal` (Ranged Cast: Heals themselves or a nearby mob below 50% health for about 75 health)" },
+            Note = { "Smash the `Picks` at the Forge", "Be careful as Bael'dun Appraisers cast `Lesser Heal` (Ranged Cast: Heals themselves or a nearby mob below 50% health for about 75 health)" },
             Button = { ["746-1"] = 4702 },
             Coord = { x = 441.42, y = -1980.96 },
             Fillers = { [766] = { 1, 2, 3, 4 }, [761] = { 1 } },
@@ -1617,7 +1605,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [743] = { 1 } },
-            Note = { "Kill Windfury Wind Witches and Windfury Harpies. Loot them for their Talons" },
             Coord = { x = 363.33, y = -1710.9 },
             Fillers = { [766] = { 1, 2, 3, 4 }, [761] = { 1 } },
             Range = 144,
@@ -1678,7 +1665,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 120,
         },
         {
-            Note = { "Set your Hearthstone to Thunder Bluff" },
             SetHS = 773,
             Coord = { x = 38.32, y = -1300.48 },
             Zone = 1456,
@@ -1733,7 +1719,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [833] = { 1 } },
-            Note = { "Kill Bristleback Interlopers" },
             Coord = { x = -1090.325, y = -1045.595 },
             Range = 148,
             Zone = 1412,
@@ -1747,7 +1732,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [761] = { 1 } },
-            Note = { "Kill Swoops. Loot them for their Quills" },
             Coord = { x = -779.76, y = -1091.835 },
             Fillers = { [766] = { 1, 2, 3, 4 } },
             Range = 370,
@@ -2167,7 +2151,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [99080] = { 3 } },
-            Note = { "Kill Herak the Pillager. Loot him for his Head" },
             Coord = { x = -1246.1, y = -2181.7 },
             Fillers = { [861] = { 1 }, [759] = { 1 } },
             Range = 10,
@@ -2176,7 +2159,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [99080] = { 2, 1 } },
-            Note = { "Kill Galak Outrunners and Galak Centaurs" },
             Coord = { x = -1291.25, y = -2266.45 },
             Fillers = { [861] = { 1 }, [759] = { 1 } },
             Range = 165,
@@ -2185,7 +2167,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [759] = { 1 } },
-            Note = { "Kill Prairie Wolf Alphas in the area. Loot them for their Teeth" },
             Coord = { x = -1271.68, y = -2431.865 },
             Fillers = { [861] = { 1 } },
             Range = 256,
@@ -2194,7 +2175,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Waypoint = 764,
-            Note = { "Travel to The Venture Co. Mine" },
             Coord = { x = -1112.16, y = -1892.6 },
             NonSkippableWaypoint = true,
             Range = 20.0,
@@ -2203,7 +2183,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [765] = { 1 } },
-            Note = { "Kill Supervisor Fizsprocket. Loot him for his Clipboard and `Mulgore Expansion Plans`", "Use the `Mulgore Expansion Plans` to start the quest" },
+            Note = { "Use the `Mulgore Expansion Plans` to start the quest" },
             Coord = { x = -1288.89, y = -1756.97 },
             Fillers = { [76156] = { 1 } },
             Range = 10,
@@ -2252,7 +2232,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [764] = { 1, 2 } },
-            Note = { "Kill Venture Co. Workers and Venture Co. Supervisors" },
             Coord = { x = -1073.375, y = -1928.73 },
             Fillers = { [76156] = { 1 } },
             Range = 91,
@@ -2333,7 +2312,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [861] = { 1 } },
-            Note = { "Kill Flatland Prowlers. Loot them for their Claws" },
             Class = "HUNTER",
             Range = 30,
             _index = 203,
@@ -2467,7 +2445,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Waypoint = 5928,
-            Note = { "Travel to the Elder Rise" },
             Class = "DRUID",
             Coord = { x = -230.66, y = -1059.79 },
             NonSkippableWaypoint = true,
@@ -2553,7 +2530,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 232,
         },
         {
-            Note = { "Fly to Thunder Bluff" },
             UseFlightPath = 5932,
             Class = "DRUID",
             Coord = { x = -2403.61, y = 7785.46 },
@@ -2642,7 +2618,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [744] = { 1, 2 } },
-            Note = { "Kill Windfury Sorceresses. Loot them for their Azure Feathers", "Kill Windfury Matriarchs. Loot them for their Bronze Feathers" },
             Button = { ["770"] = 4854 },
             Coord = { x = 457.86, y = -1089.78 },
             Fillers = { [861] = { 1 }, [76160] = { 1 } },
@@ -2671,7 +2646,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [776] = { 1 } },
-            Note = { "Kill Arra'Chea (Big black kodo). Kill and loot him for his Horn", "He patrols clockwise around Northern Mulgore" },
+            Note = { "He patrols clockwise around Northern Mulgore" },
             Button = { ["770"] = 4854 },
             Coord = { x = -644.135, y = -1060.67 },
             Fillers = { [861] = { 1 } },
@@ -2681,7 +2656,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [861] = { 1 } },
-            Note = { "Kill Flatland Prowlers. Loot them for their Claws" },
             Button = { ["770"] = 4854 },
             Coord = { x = -156.585, y = -817.665 },
             Range = 433,
@@ -2872,7 +2846,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Waypoint = 860,
-            Note = { "Travel to The Barrens" },
             Class = { "HUNTER", "SHAMAN", "WARRIOR" },
             Coord = { x = -1527.78, y = -2341.62 },
             NonSkippableWaypoint = true,
@@ -2882,7 +2855,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Waypoint = 6002,
-            Note = { "Travel to The Barrens" },
             Class = "DRUID",
             Coord = { x = -1527.78, y = -2341.62 },
             NonSkippableWaypoint = true,
@@ -2902,7 +2874,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 277,
         },
         {
-            Note = { "Get the Camp Taurajo flight path" },
             GetFP = 77,
             Class = { "HUNTER", "SHAMAN", "WARRIOR" },
             Coord = { x = -1881.35, y = -2383.82 },
@@ -2911,7 +2882,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 278,
         },
         {
-            Note = { "Get the Camp Taurajo flight path", "Fly to Thunder Bluff" },
+            Note = { "Fly to Thunder Bluff" },
             GetFP = 77,
             Class = "DRUID",
             Coord = { x = -1881.35, y = -2383.82 },
@@ -2920,7 +2891,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 279,
         },
         {
-            Note = { "Get the Camp Taurajo flight path", "Fly to Thunder Bluff" },
+            Note = { "Get the Camp Taurajo flight path" },
             UseFlightPath = 6002,
             Class = "DRUID",
             Coord = { x = -1881.35, y = -2383.82 },
@@ -2931,7 +2902,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Waypoint = 6002,
-            Note = { "Travel to the Elder Rise" },
             Class = "DRUID",
             Coord = { x = -230.66, y = -1059.79 },
             NonSkippableWaypoint = true,
@@ -2947,7 +2917,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 282,
         },
         {
-            Note = { "Fly to Camp Taurajo" },
             UseFlightPath = 886,
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 47, 49.82),
@@ -3213,7 +3182,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Qpart = { [1498] = { 1 } },
-            Note = { "Kill Lightning Hides. Loot them for their Scales" },
             Class = "WARRIOR",
             Coord = { x = -4120.33, y = 842.13 },
             Range = 189,
@@ -3318,7 +3286,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [1525] = { 2 } },
-            Note = { "Kill Cultists. Loot them for a Reagent Pouch" },
             Class = "SHAMAN",
             Coord = { x = -4740.55, y = 841.605 },
             Range = 90,
@@ -3440,7 +3407,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Kill a Razormane Water Seeker or Razormane Thornweaver. Loot them for a Fire Tar" },
             Class = "SHAMAN",
             Coord = { x = -2947.38, y = -92.1 },
             Fillers = { [844] = { 1 }, [1525] = { 1 } },
@@ -3451,7 +3417,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Kill a Razormane Water Seeker or Razormane Thornweaver. Loot them for a Fire Tar" },
             Class = "SHAMAN",
             Coord = { x = -2869.35, y = -49.54 },
             Fillers = { [844] = { 1 }, [1525] = { 1 } },
@@ -3502,7 +3467,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [871] = { 1, 2, 3 } },
-            Note = { "Kill Water Seekers, Thornweavers and Hunters" },
             Class = { "DRUID", "HUNTER", "WARRIOR" },
             Coord = { x = -2918.495, y = -141.08 },
             Fillers = { [844] = { 1 } },
@@ -3512,7 +3476,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [1525] = { 1 } },
-            Note = { "Kill a Razormane Water Seeker or Razormane Thornweaver. Loot them for a Fire Tar" },
             Class = "SHAMAN",
             Coord = { x = -2805.51, y = -111.02 },
             Fillers = { [844] = { 1 } },
@@ -3522,7 +3485,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [871] = { 1, 2, 3 } },
-            Note = { "Kill Water Seekers, Thornweavers and Hunters" },
             Class = "SHAMAN",
             Coord = { x = -2918.495, y = -141.08 },
             Fillers = { [844] = { 1 }, [1525] = { 1 } },
@@ -3532,7 +3494,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [844] = { 1 } },
-            Note = { "Kill Plainstriders. Loot them for their Beaks" },
             Class = { "DRUID", "HUNTER", "WARRIOR" },
             Coord = { x = -2634.26, y = -387.01 },
             Fillers = { [869] = { 1 } },
@@ -3542,7 +3503,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [844] = { 1 } },
-            Note = { "Kill Plainstriders. Loot them for their Beaks" },
             Class = "SHAMAN",
             Coord = { x = -2634.26, y = -387.01 },
             Fillers = { [1525] = { 1 }, [869] = { 1 } },
@@ -3815,7 +3775,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 3 } },
-            Note = { "Kill Kreenig Snarlsnout. Loot him for his Tusk" },
             Class = { "DRUID", "HUNTER", "WARRIOR" },
             Coord = { x = -3324.34, y = -217.09 },
             Fillers = { [5041] = { 1 } },
@@ -3825,7 +3784,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 3 } },
-            Note = { "Kill Kreenig Snarlsnout. Loot him for his Tusk" },
             Class = "SHAMAN",
             Coord = { x = -3324.34, y = -217.09 },
             Fillers = { [1525] = { 1 }, [5041] = { 1 } },
@@ -3855,7 +3813,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 1, 2 } },
-            Note = { "Kill Razormane Geomancers and Razormane Defenders" },
             Class = { "DRUID", "HUNTER", "WARRIOR" },
             Coord = { x = -3273.165, y = -60.01 },
             Range = 208,
@@ -3864,7 +3821,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 1, 2 } },
-            Note = { "Kill Razormane Geomancers and Razormane Defenders" },
             Class = "SHAMAN",
             Coord = { x = -3273.165, y = -60.01 },
             Fillers = { [1525] = { 1 } },
@@ -3874,7 +3830,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel toward Durotar" },
             Class = "SHAMAN",
             Coord = { x = -3905.13, y = -228.41 },
             Fillers = { [1525] = { 1 }, [869] = { 1 }, [845] = { 1 } },
@@ -3886,7 +3841,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3905.13, y = -228.41 },
             Fillers = { [1525] = { 1 } },
@@ -3897,7 +3852,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3899.31, y = -241.45 },
             Fillers = { [1525] = { 1 } },
@@ -3908,7 +3863,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3899.31, y = -241.45 },
             Fillers = { [1525] = { 1 } },
@@ -3919,7 +3874,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3906.71, y = -270.71 },
             Fillers = { [1525] = { 1 } },
@@ -3930,7 +3885,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3910.94, y = -247.45 },
             Fillers = { [1525] = { 1 } },
@@ -3941,7 +3896,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3931.56, y = -240.75 },
             Fillers = { [1525] = { 1 } },
@@ -3952,7 +3907,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3964.35, y = -242.51 },
             Fillers = { [1525] = { 1 } },
@@ -3963,7 +3918,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3974.39, y = -228.76 },
             Fillers = { [1525] = { 1 } },
@@ -3974,7 +3929,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -4020.92, y = -219.95 },
             Fillers = { [1525] = { 1 } },
@@ -3985,7 +3940,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -4034.67, y = -232.64 },
             Fillers = { [1525] = { 1 } },
@@ -3996,7 +3951,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -4033.08, y = -255.91 },
             Fillers = { [1525] = { 1 } },
@@ -4007,7 +3962,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [1525] = { 1 } },
-            Note = { "Kill a Razormane Water Seeker or Razormane Thornweaver. Loot them for a Fire Tar" },
             Class = "SHAMAN",
             Coord = { x = -2805.51, y = -111.02 },
             Range = 30,
@@ -4039,7 +3993,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [1526] = { 1 } },
-            Note = { "Kill the Minor Manifestation of Fire. Loot him for a Glowing Ember" },
             Class = "SHAMAN",
             Coord = { x = -4022.51, y = -243.92 },
             Range = 10,
@@ -4090,7 +4043,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 845,
-            Note = { "Travel to Ratchet" },
             Coord = { x = -3728.66, y = -835.29 },
             Fillers = { [845] = { 1 } },
             IsQuestOnQuest = 845,
@@ -4106,7 +4058,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 87,
         },
         {
-            Note = { "Get the Ratchet flight path" },
             GetFP = 80,
             Coord = { x = -3770.2, y = -898.12 },
             Zone = 1413,
@@ -4183,7 +4134,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [895] = { 1 } },
-            Note = { "Kill Baron Longshore. Loot him for his Head", "He can be found in one of the camps" },
+            Note = { "He can be found in one of the camps" },
             Coord = { x = -3804.15, y = -1659.555 },
             Fillers = { [887] = { 1, 2 } },
             Range = 169,
@@ -4192,7 +4143,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [887] = { 1, 2 } },
-            Note = { "Kill Southsea Brigands and Southsea Cannoneers" },
             Coord = { x = -3863.43, y = -1468.01 },
             Range = 160,
             Zone = 1413,
@@ -4256,7 +4206,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [845] = { 1 } },
-            Note = { "Finish killing Zhevras. Loot them for their Hooves" },
             Coord = { x = -2626.15, y = -930.21 },
             Fillers = { [869] = { 1 } },
             Range = 437,
@@ -4324,7 +4273,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 6363,
-            Note = { "Travel to the Hunter Rise" },
             Class = { "HUNTER", "WARRIOR" },
             Coord = { x = -123.26, y = -1394.49 },
             NonSkippableWaypoint = true,
@@ -4378,7 +4326,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 123,
         },
         {
-            Note = { "Fly to Crossroads" },
             UseFlightPath = 5041,
             Coord = { x = 26.1, y = -1196.66 },
             NodeID = 25,
@@ -4387,7 +4334,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 124,
         },
         {
-            Note = { "Set your Hearthstone to Crossroads" },
             SetHS = 5041,
             AnyOf = { { IsQuestUncompleted = 903 }, { IsQuestUncompleted = 850 }, { IsQuestUncompleted = 867 }, { IsQuestUncompleted = 901 } },
             Coord = { x = -2645.4, y = -406.94 },
@@ -4461,7 +4407,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [850] = { 1 } },
-            Note = { "Kill Barak Kodobane. Loot him for his Head", "Be careful as Barak Kodobane's melee hits deal a LOT of damage and he is protected by a Kolkar Wrangler. They can net you and shoot at you from ranged distance" },
+            Note = { "Be careful as Barak Kodobane's melee hits deal a LOT of damage and he is protected by a Kolkar Wrangler. They can net you and shoot at you from ranged distance" },
             Coord = { x = -1716.18, y = 23.43 },
             Fillers = { [855] = { 1 }, [848] = { 1 } },
             Range = 10,
@@ -4488,7 +4434,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [855] = { 1 } },
-            Note = { "Kill Kolkar Wranglers and Kolkar Stormers. Loot them for their Bracers", "This quest does not have to be completed now" },
+            Note = { "This quest does not have to be completed now" },
             Range = 30,
             _index = 138,
         },
@@ -4513,7 +4459,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [867] = { 1 } },
-            Note = { "Kill Witchwing Harpies and Witchwing Roguefeathers. Loot them for their Talons" },
             Coord = { x = -1565.19, y = 469.34 },
             Fillers = { [903] = { 1 }, [821] = { 1 } },
             Range = 212,
@@ -4552,7 +4497,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [95494] = { 1 }, [821] = { 1 } },
-            Note = { "Kill Savannah Patriarchs. Loot them for their Hides and Tusks" },
             Coord = { x = -1856.4, y = 566.85 },
             Fillers = { [95507] = { 1 } },
             Range = 186,
@@ -4638,7 +4582,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [95621] = { 1 } },
-            Note = { "Kill Corporal Adamore" },
             Fillers = { [821] = { 2 } },
             Range = 10,
             _index = 157,
@@ -4766,7 +4709,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [901] = { 1 } },
-            Note = { "Kill Tinkerer Sniggles in the building. Loot him for his Console Key" },
             Coord = { x = -2731.54, y = 909.85 },
             Range = 10,
             Zone = 1413,
@@ -4788,7 +4730,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [869] = { 1 } },
-            Note = { "Kill Raptors. Loot them for their Heads" },
             Coord = { x = -2815.95, y = 746.655 },
             Fillers = { [821] = { 2, 1 }, [903] = { 1 } },
             Range = 393,
@@ -4797,7 +4738,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [903] = { 1 }, [821] = { 1 } },
-            Note = { "Kill Savannah Prowlers. Loot them for their Claws and Tusks" },
             Coord = { x = -2903.45, y = 586.45 },
             Range = 182,
             Zone = 1413,
@@ -4867,7 +4807,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [858] = { 1 } },
-            Note = { "Kill Supervisor Lugwizzle. Loot him for his Key", "He patrols up and down the platform" },
+            Note = { "He patrols up and down the platform" },
             Coord = { x = -3086.2, y = 1055.78 },
             Range = 10,
             Zone = 1413,
@@ -4920,7 +4860,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [896] = { 1 } },
-            Note = { "Kill Venture Co. Enforcers and Venture Co. Overseers. Loot them for Cats Eye Emerald", "If it hasn't dropped after 25+ mobs, feel free to skip this quest" },
+            Note = { "If it hasn't dropped after 25+ mobs, feel free to skip this quest" },
             Coord = { x = -3619.22, y = 1310.83 },
             Fillers = { [821] = { 2 } },
             Range = 125,
@@ -4983,7 +4923,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 198,
         },
         {
-            Note = { "Don't fly anywhere", "Get the Orgrimmar flight path" },
+            Note = { "Don't fly anywhere" },
             GetFP = 23,
             Coord = { x = -4313.6, y = 1676.24 },
             IsQuestUncompleted = 4921,
@@ -5010,7 +4950,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4560.0, y = 1908.5 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -5019,7 +4958,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4587.0, y = 1918.3 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -5028,7 +4966,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4608.0, y = 1897.4 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -5037,7 +4974,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4632.3, y = 1911.6 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -5210,7 +5146,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 227,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 869,
             Coord = { x = -4313.46, y = 1676.25 },
             NodeID = 25,
@@ -5315,7 +5250,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [881] = { 1 } },
-            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "Kill Echeyakee. Loot him for Echeyakee's Hide", "If Echeyakee doesn't spawn after using the `Horn of Echeyakee` or you didn't get the tag when it did spawn, skip this step" },
+            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "If Echeyakee doesn't spawn after using the `Horn of Echeyakee` or you didn't get the tag when it did spawn, skip this step" },
             Button = { ["881-1"] = 10327 },
             Coord = { x = -3031.48, y = 461.91 },
             Range = 10,
@@ -5339,7 +5274,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [881] = { 1 } },
-            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "Kill Echeyakee. Loot him for Echeyakee's Hide" },
+            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee" },
             Button = { ["881-1"] = 10327 },
             Coord = { x = -3031.48, y = 461.91 },
             Range = 10,
@@ -5371,7 +5306,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 251,
         },
         {
-            Note = { "Fly to Ratchet" },
             UseFlightPath = 902,
             Coord = { x = -2595.75, y = -437.35 },
             NodeID = 80,
@@ -5649,7 +5583,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [851] = { 1 } },
-            Note = { "Kill Verog. Loot him for his Head", "He has a chance of spawning every time a Kolkar is killed", "On a highly populated server or fresh launch, your best option is camping his spawnpoint" },
+            Note = { "He has a chance of spawning every time a Kolkar is killed", "On a highly populated server or fresh launch, your best option is camping his spawnpoint" },
             Coord = { x = -2742.68, y = -1208.23 },
             Fillers = { [848] = { 1 } },
             Range = 10,
@@ -5701,7 +5635,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             PickUp = { 883 },
-            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "Use the `Hoof of Lakota'mani` to start the quest", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him or can't kill him. You can come back for him later" },
+            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him or can't kill him. You can come back for him later" },
             Button = { ["883"] = 5099 },
             Coord = { x = -2453.88, y = -1991.28 },
             Fillers = { [821] = { 2, 3 } },
@@ -5711,7 +5645,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 883,
-            Note = { "Travel to Camp Taurajo" },
             Coord = { x = -1960.39, y = -2333.83 },
             Fillers = { [821] = { 3 } },
             NonSkippableWaypoint = true,
@@ -5720,7 +5653,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 292,
         },
         {
-            Note = { "Set your Hearthstone to Camp Taurajo" },
             SetHS = 883,
             Coord = { x = -1995.86, y = -2376.39 },
             IsQuestUncompleted = 1093,
@@ -5748,7 +5680,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 296,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 848,
             Coord = { x = -1881.35, y = -2384.5 },
             NodeID = 25,
@@ -5959,7 +5890,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [875] = { 1 } },
-            Note = { "Kill Witchwing Slayers. Loot them for their Rings", "Be careful as Witchwing Slayers cast `Execute` (deals a LOT of damage when you're at <20% health), and Witchwing Ambushers are `Stealthed` and patrol around", "Watch out for Witchwing Ambushers. They are stealthed and patrol in the area" },
+            Note = { "Be careful as Witchwing Slayers cast `Execute` (deals a LOT of damage when you're at <20% health), and Witchwing Ambushers are `Stealthed` and patrol around", "Watch out for Witchwing Ambushers. They are stealthed and patrol in the area" },
             Coord = { x = -1304.76, y = 589.94 },
             Fillers = { [821] = { 2 } },
             Range = 224,
@@ -5968,7 +5899,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            Note = { "Travel toward Seereth" },
             Coord = { x = -950.1, y = -271.14 },
             Fillers = { [821] = { 2 } },
             NonSkippableWaypoint = true,
@@ -6046,7 +5976,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [6548] = { 1, 2 } },
-            Note = { "Kill Grimtotem Ruffians and Grimtotem Mercenaries" },
             Coord = { x = -758.255, y = 54.42 },
             Range = 180,
             Zone = 1442,
@@ -6086,7 +6015,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [6629] = { 1, 2 } },
-            Note = { "Kill Grundig Darkcloud and Grimtotem Brutes", "Make sure you kill all six Grimtotem Brutes before starting the quest inside" },
+            Note = { "Make sure you kill all six Grimtotem Brutes before starting the quest inside" },
             Coord = { x = -350.74, y = 112.06 },
             IsQuestCompleted = 6548,
             Range = 30,
@@ -6164,7 +6093,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Kill Deepmoss Creepers" },
             Coord = { x = 560.49, y = 440.94 },
             Range = 30,
             Zone = 1442,
@@ -6172,7 +6100,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 6284,
-            Note = { "Travel to Sun Rock Retreat" },
             Coord = { x = 735.8, y = 925.8 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -6181,7 +6108,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 6284,
-            Note = { "Travel to Sun Rock Retreat" },
             Coord = { x = 806.12, y = 929.05 },
             NonSkippableWaypoint = true,
             Range = 5,
@@ -6235,7 +6161,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 358,
         },
         {
-            Note = { "Get the Sun Rock Retreat flight path" },
             GetFP = 29,
             Coord = { x = 1041.99, y = 967.8 },
             Zone = 1442,
@@ -6243,7 +6168,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1483,
-            Note = { "Travel toward Ziz" },
             Coord = { x = 365.16, y = 878.25 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -6264,7 +6188,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 2 } },
-            Note = { "Kill Deepmoss Venomspitters" },
             Coord = { x = 219.635, y = 915.86 },
             Fillers = { [1069] = { 1 } },
             Range = 215,
@@ -6301,7 +6224,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [1093] = { 1 } },
-            Note = { "Kill Venture Co. Operators. Loot them for their Blueprints" },
             Coord = { x = -74.83, y = 1288.545 },
             Fillers = { [1062] = { 1 } },
             Range = 444,
@@ -6310,7 +6232,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [1062] = { 1 } },
-            Note = { "Kill Venture Co. Loggers" },
             Coord = { x = 74.85, y = 1144.29 },
             Range = 322,
             Zone = 1442,
@@ -6342,7 +6263,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Finish killing Deepmoss Creepers" },
             Coord = { x = 129.535, y = 308.74 },
             Range = 436,
             Zone = 1442,
@@ -6435,7 +6355,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             PickUp = { 883 },
-            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "Use the `Hoof of Lakota'mani` to start the quest", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him" },
+            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him" },
             Button = { ["883"] = 5099 },
             Coord = { x = -2202.575, y = -1847.375 },
             Fillers = { [821] = { 3 }, [878] = { 1, 2, 3 }, [899] = { 1 } },
@@ -6445,7 +6365,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [95774] = { 1 } },
-            Note = { "Kill Razormane Raiders. Loot them for Olgra's Adornments" },
             Coord = { x = -2349.75, y = -1924.8 },
             Fillers = { [821] = { 3 } },
             Range = 198,
@@ -6454,7 +6373,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [878] = { 1, 2, 3 }, [899] = { 1 } },
-            Note = { "Kill Bristleback Quilboars. Loot them for their Tusks. Save the `Blood Shards` you get" },
+            Note = { "Save the `Blood Shards` you get" },
             Coord = { x = -2649.965, y = -2092.285 },
             Fillers = { [821] = { 3 } },
             Range = 306,
@@ -6463,7 +6382,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [821] = { 3 } },
-            Note = { "Kill Stormsnouts. Loot them for a Horn" },
             Coord = { x = -2439.19, y = -2070.33 },
             Range = 200,
             Zone = 1413,
@@ -6471,7 +6389,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [821] = { 2 } },
-            Note = { "Finish killing Plainstriders. Loot them for their Kidneys" },
             Coord = { x = -2903.8, y = -1753.47 },
             Fillers = { [865] = { 1 } },
             Range = 194,
@@ -6480,7 +6397,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [865] = { 1 } },
-            Note = { "Finish killing Sunscale Scytheclaws. Loot them for their Horns", "Be careful as they cast `Thrash` (Charges 2 extra attacks every 10 seconds)" },
+            Note = { "Be careful as they cast `Thrash` (Charges 2 extra attacks every 10 seconds)" },
             Coord = { x = -2914.95, y = -1772.385 },
             Range = 453,
             Zone = 1413,
@@ -6589,7 +6506,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 404,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 875,
             Coord = { x = -3770.2, y = -898.12 },
             NodeID = 25,
@@ -6660,7 +6576,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 414,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 1528,
             Class = "SHAMAN",
             Coord = { x = -2595.75, y = -437.35 },
@@ -6713,7 +6628,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 420,
         },
         {
-            Note = { "Fly to Ratchet" },
             UseFlightPath = 1528,
             Class = "SHAMAN",
             Coord = { x = -4313.6, y = 1676.24 },
@@ -6737,7 +6651,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 423,
         },
         {
-            Note = { "Fly to Crossroads" },
             UseFlightPath = 878,
             Class = "SHAMAN",
             Coord = { x = -3770.2, y = -898.12 },
@@ -6760,7 +6673,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 426,
         },
         {
-            Note = { "Fly to Camp Taurajo" },
             UseFlightPath = 878,
             Class = "SHAMAN",
             Coord = { x = -3770.2, y = -898.12 },
@@ -6769,7 +6681,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 427,
         },
         {
-            Note = { "Fly to Camp Taurajo" },
             UseFlightPath = 878,
             Coord = { x = -2595.75, y = -437.35 },
             NodeID = 77,
@@ -6835,7 +6746,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -1899.59, y = -2624.34 },
             Fillers = { [884] = { 1 } },
@@ -6846,7 +6757,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2016.12, y = -2650.02 },
             Fillers = { [884] = { 1 } },
@@ -6857,7 +6768,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2363.7, y = -2537.19 },
             Fillers = { [884] = { 1 } },
@@ -6868,7 +6779,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             PickUp = { 884 },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Fillers = { [884] = { 1 } },
@@ -6878,7 +6789,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [907] = { 1 } },
-            Note = { "Kill Thunder Lizards. Loot them for their Blood" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2135.695, y = -2514.895 },
             Fillers = { [884] = { 1 } },
@@ -6888,7 +6798,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [884] = { 1 } },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Range = 80.0,
@@ -6929,7 +6839,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = "SHAMAN",
             Coord = { x = -1899.59, y = -2624.34 },
@@ -6941,7 +6851,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = "SHAMAN",
             Coord = { x = -2016.12, y = -2650.02 },
@@ -6953,7 +6863,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = "SHAMAN",
             Coord = { x = -2363.7, y = -2537.19 },
@@ -6965,7 +6875,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             PickUp = { 884 },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = "SHAMAN",
             Coord = { x = -2400.18, y = -2398.01 },
@@ -7034,7 +6944,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -1899.59, y = -2624.34 },
             Fillers = { [884] = { 1 } },
@@ -7045,7 +6955,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2016.12, y = -2650.02 },
             Fillers = { [884] = { 1 } },
@@ -7056,7 +6966,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2363.7, y = -2537.19 },
             Fillers = { [884] = { 1 } },
@@ -7067,7 +6977,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             PickUp = { 884 },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Fillers = { [884] = { 1 } },
@@ -7077,7 +6987,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [913] = { 1 } },
-            Note = { "Kill a Thunderhawk Hatchling or a Thunderhawk Cloudscraper. Loot it for its Thunderhawk Wings" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2058.68, y = -2434.83 },
             Fillers = { [884] = { 1 } },
@@ -7087,7 +6996,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [884] = { 1 } },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = { "DRUID", "WARRIOR", "HUNTER", "SHAMAN" },
             Coord = { x = -2400.18, y = -2398.01 },
@@ -7148,7 +7057,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 472,
         },
         {
-            Note = { "Fly to Thunder Bluff" },
             UseFlightPath = 853,
             Coord = { x = -1881.35, y = -2384.5 },
             NodeID = 22,
@@ -7177,7 +7085,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 476,
         },
         {
-            Note = { "Set your Hearthstone to Thunder Bluff" },
             SetHS = 853,
             Coord = { x = 38.32, y = -1300.48 },
             IsQuestUncompleted = 6442,
@@ -7264,7 +7171,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1489,
-            Note = { "Travel to the Elder Rise" },
             Coord = { x = -212.71, y = -1065.01 },
             NonSkippableWaypoint = true,
             Range = 80.0,
@@ -7368,7 +7274,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 501,
         },
         {
-            Note = { "Fly to Thunder Bluff" },
             UseFlightPath = 852,
             Class = "DRUID",
             Coord = { x = -2403.61, y = 7785.31 },
@@ -7379,7 +7284,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 852,
-            Note = { "Travel to the Hunter Rise" },
             Class = "HUNTER",
             Coord = { x = -123.26, y = -1394.49 },
             NonSkippableWaypoint = true,
@@ -7430,7 +7334,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 852,
-            Note = { "Travel to the Hunter Rise" },
             Class = "WARRIOR",
             Coord = { x = -123.26, y = -1394.49 },
             NonSkippableWaypoint = true,
@@ -7551,7 +7454,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 525,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 852,
             Class = { "DRUID", "SHAMAN", "WARRIOR" },
             Coord = { x = 26.1, y = -1196.66 },
@@ -7561,7 +7463,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 526,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 852,
             Class = "HUNTER",
             Coord = { x = 26.1, y = -1196.66 },
@@ -7628,7 +7529,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [876] = { 1 } },
-            Note = { "Kill Serena Bloodfeather. Loot her for her Head" },
             Coord = { x = -1345.3, y = 790.94 },
             IsQuestCompleted = 875,
             Range = 10,
@@ -7710,7 +7610,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 547,
         },
         {
-            Note = { "Get the Splintertree Post flight path" },
             GetFP = 61,
             Class = "HUNTER",
             Coord = { x = -2520.05, y = 2305.55 },
@@ -7718,7 +7617,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 548,
         },
         {
-            Note = { "Fly to Crossroads" },
             UseFlightPath = 876,
             Class = "HUNTER",
             Coord = { x = -2520.05, y = 2305.55 },
@@ -8009,7 +7907,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [6284] = { 1 } },
-            Note = { "Kill Besseleth. Loot her for for her Fang", "Clear the area around Besseleth. Be careful as she webs you", "This quest is optional. If you can't do it, skip this quest" },
+            Note = { "Clear the area around Besseleth. Be careful as she webs you", "This quest is optional. If you can't do it, skip this quest" },
             Class = "HUNTER",
             Coord = { x = 640.82, y = 548.07 },
             Range = 130,
@@ -8167,7 +8065,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [1068] = { 2 } },
-            Note = { "Kill XT:9. It patrols the southern side of the river", "Skip this step if you can't find it" },
+            Note = { "It patrols the southern side of the river", "Skip this step if you can't find it" },
             Coord = { x = 59.95, y = 1143.965 },
             Range = 333,
             Zone = 1442,
@@ -8175,7 +8073,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [1068] = { 1 } },
-            Note = { "Kill XT:4. It patrols the northern side of the river", "Skip this step if you can't find it" },
+            Note = { "It patrols the northern side of the river", "Skip this step if you can't find it" },
             Coord = { x = -46.5, y = 1400.885 },
             Range = 263,
             Zone = 1442,
@@ -8192,7 +8090,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 6562,
-            Note = { "Travel toward the Zoram'gar Outpost", "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
+            Note = { "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
             Coord = { x = -268.74, y = 2612.28 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -8201,7 +8099,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 6562,
-            Note = { "Travel toward the Zoram'gar Outpost", "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
+            Note = { "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
             Coord = { x = 637.2, y = 3406.79 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -8210,7 +8108,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 6562,
-            Note = { "Travel toward the Zoram'gar Outpost", "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
+            Note = { "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
             Coord = { x = 1010.31, y = 3355.28 },
             NonSkippableWaypoint = true,
             Range = 80.0,
@@ -8218,7 +8116,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 609,
         },
         {
-            Note = { "Get the Zoram'gar Outpost flight path" },
             GetFP = 58,
             Coord = { x = 994.16, y = 3373.73 },
             IsQuestUncompleted = 6442,
@@ -8279,7 +8176,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Qpart = { [6442] = { 1 } },
-            Note = { "Kill Wrathtail Nagas. Loot them for their Heads" },
             Coord = { x = 942.835, y = 3798.08 },
             Range = 387,
             Zone = 1440,
@@ -8306,7 +8202,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
             _index = 621,
         },
         {
-            Note = { "Fly to Thunder Bluff" },
             UseFlightPath = 1063,
             Coord = { x = 994.16, y = 3373.73 },
             NodeID = 22,
@@ -8323,7 +8218,6 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Waypoint = 1063,
-            Note = { "Travel to the Elder Rise" },
             Coord = { x = -212.71, y = -1065.01 },
             NonSkippableWaypoint = true,
             Range = 80.0,

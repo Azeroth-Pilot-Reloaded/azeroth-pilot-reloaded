@@ -27,7 +27,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [456] = { 1, 2 } },
-            Note = { "Kill Young Nightsabers and Young Thistle Boars" },
             Class = "DRUID",
             Coord = { x = 669.5, y = 10387.3 },
             Range = 30,
@@ -91,7 +90,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [456] = { 1, 2 } },
-            Note = { "Kill Young Nightsabers and Young Thistle Boars" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = { x = 657.75, y = 10385.51 },
             Range = 30,
@@ -158,7 +156,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [456] = { 1, 2 } },
-            Note = { "Kill Young Nightsabers and Young Thistle Boars" },
             Class = { "WARRIOR", "HUNTER" },
             Coord = { x = 657.75, y = 10385.51 },
             Range = 30,
@@ -231,7 +228,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [456] = { 1, 2 } },
-            Note = { "Kill Young Nightsabers and Young Thistle Boars" },
             Class = { "ROGUE", "PRIEST" },
             Coord = { x = 657.75, y = 10385.51 },
             Range = 30,
@@ -269,7 +265,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [459] = { 1 }, [97977] = { 1 } },
-            Note = { "Kill Grell and Grellkin. Loot them for their Fel Moss", "Loot `Gnarlpine Totems` from the Grell Camps" },
+            Note = { "Loot `Gnarlpine Totems` from the Grell Camps" },
             Class = "DRUID",
             Coord = { x = 1030.2, y = 10339.8 },
             Range = 30,
@@ -487,7 +483,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [3521] = { 3 }, [916] = { 1 } },
-            Note = { "Kill Webwood Spiders. Loot them for their Ichor and Venom Sacs" },
             Coord = { x = 922.52, y = 10755.43 },
             Range = 30,
             Zone = 1438,
@@ -495,7 +490,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [3521] = { 1 }, [459] = { 1 }, [97977] = { 1 } },
-            Note = { "Kill Grell and Grellkin. Loot them for their Mushrooms and Fel Moss", "Loot `Gnarlpine Totems` from the Grell Camps" },
+            Note = { "Loot `Gnarlpine Totems` from the Grell Camps" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = { x = 1014.17, y = 10348.18 },
             Fillers = { [457] = { 2 } },
@@ -505,7 +500,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [3521] = { 1 } },
-            Note = { "Kill Grell and Grellkin. Loot them for their Mushrooms" },
             Class = "DRUID",
             Coord = { x = 1014.17, y = 10348.18 },
             Fillers = { [457] = { 2 } },
@@ -602,7 +596,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [917] = { 1 } },
-            Note = { "Kill Githyiss the Vile loot it for it's `Fang`", "Loot a Webwood Egg on the ground at the back of the Cave" },
+            Note = { "Loot a Webwood Egg on the ground at the back of the Cave" },
             Coord = { x = 912.33, y = 10935.3 },
             Range = 30,
             Zone = 1438,
@@ -671,7 +665,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [457] = { 1, 2 } },
-            Note = { "Kill Mangy Nightsabers and Thistle Boars" },
             Button = { ["921-1"] = 5185 },
             Class = { "DRUID", "HUNTER", "PRIEST", "WARRIOR" },
             Coord = { x = 769.77, y = 10673.98 },
@@ -1034,7 +1027,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 131,
         },
         {
-            Note = { "Set your Hearthstone to Dolanaar" },
             SetHS = 2159,
             Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" },
             Coord = { x = 982.65, y = 9802.19 },
@@ -1051,7 +1043,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 133,
         },
         {
-            Note = { "Buy 10 Ice Cold Milk or as much as you can afford", "Set your Hearthstone to Dolanaar" },
+            Note = { "Buy 10 Ice Cold Milk or as much as you can afford" },
             SetHS = 2159,
             Class = "PRIEST",
             Coord = { x = 982.65, y = 9802.19 },
@@ -1221,7 +1213,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [918] = { 1 }, [919] = { 1 } },
-            Note = { "Kill Timberlings. Loot them for their Seeds", "Loot the Timberling Sprouts on the ground" },
+            Note = { "Loot the Timberling Sprouts on the ground" },
             Coord = { x = 697.97, y = 9581.87 },
             Range = 30,
             Zone = 1438,
@@ -1247,7 +1239,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 475,
-            Note = { "Travel to Starbreeze Village" },
             Coord = { x = 351.23, y = 9806.54 },
             Fillers = { [488] = { 1, 2, 3 }, [87288] = { 1 }, [4161] = { 1 } },
             NonSkippableWaypoint = true,
@@ -1363,7 +1354,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [87288] = { 1 }, [488] = { 1, 2, 3 } },
-            Note = { "Kill Nightsabers. Loot them for their Fangs and Pelts", "Kill Strigid Owls. Loot them for their Feathers", "Kill Webwood Lurkers. Loot them for their Silk", "Save any `Small Eggs` and `Small Spider Legs` to use for leveling `Cooking` later", "===========================================", "Skip this step if there aren't any mobs nearby to complete the objective" },
+            Note = { "Save any `Small Eggs` and `Small Spider Legs` to use for leveling `Cooking` later", "===========================================", "Skip this step if there aren't any mobs nearby to complete the objective" },
             Coord = { x = 850.22, y = 9919.89 },
             Fillers = { [4161] = { 1 } },
             Range = 30,
@@ -1533,7 +1524,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 489,
-            Note = { "Travel to Fel Rock" },
             Class = "DRUID",
             Coord = { x = 1030.46, y = 10037.99 },
             Fillers = { [87288] = { 1 } },
@@ -1544,7 +1534,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 489,
-            Note = { "Travel to Fel Rock" },
             Class = "DRUID",
             Coord = { x = 1043.7, y = 10093.99 },
             Fillers = { [87288] = { 1 } },
@@ -1555,7 +1544,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [932] = { 1 } },
-            Note = { "Kill Lord Melenas. Loot him for his Head", "Lord Melenas may be located in many different spawn locations throughout Fel Rock" },
+            Note = { "Lord Melenas may be located in many different spawn locations throughout Fel Rock" },
             Class = "DRUID",
             Coord = { x = 1207.65, y = 10114.01 },
             Range = 30,
@@ -1593,7 +1582,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [2459] = { 2 } },
-            Note = { "Kill Ferocitas the Dream Eater. Loot him for the `Gnarlpine Necklace`. Be careful as he can `Thrash` hitting you up to three times at once", "Use the `Gnarlpine Necklace` to loot Tallonkai's Jewel" },
+            Note = { "Be careful as he can `Thrash` hitting you up to three times at once", "Use the `Gnarlpine Necklace` to loot Tallonkai's Jewel" },
             Button = { ["2459-2"] = 8049 },
             Coord = { x = 282.49, y = 10018.65 },
             Fillers = { [488] = { 1, 2, 3 }, [489] = { 1 } },
@@ -1613,7 +1602,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [2459] = { 1 } },
-            Note = { "Kill Gnarlpine Mystics", "If there aren't many Gnarlpine Mystics you may have to kill Gnarlpine Warriors to make them spawn" },
+            Note = { "If there aren't many Gnarlpine Mystics you may have to kill Gnarlpine Warriors to make them spawn" },
             Coord = { x = 282.49, y = 10018.65 },
             Fillers = { [488] = { 1, 2, 3 }, [489] = { 1 } },
             Range = 30,
@@ -1652,7 +1641,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 933,
-            Note = { "Travel to the Pools of Arlithrien" },
             Coord = { x = 1655.21, y = 9555.06 },
             Fillers = { [87288] = { 1 }, [488] = { 1, 2, 3 }, [4161] = { 1 } },
             NonSkippableWaypoint = true,
@@ -1671,7 +1659,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 933,
-            Note = { "Kill Webwood Lurkers and Webwood Venomfangs. Loot them for their Small Spider Legs" },
             Coord = { x = 1539.12, y = 9437.98 },
             Fillers = { [87288] = { 1 }, [488] = { 1, 2, 3 }, [4161] = { 1 } },
             NonSkippableWaypoint = true,
@@ -1680,7 +1667,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 209,
         },
         {
-            Note = { "Kill Webwood Lurkers and Webwood Venomfangs. Loot them for their Small Spider Legs" },
             LootItems = { { itemID = 5465, quantity = 7, questID = 4161 } },
             Coord = { x = 1529.44, y = 9325.64 },
             Fillers = { [87288] = { 1 }, [488] = { 1, 2, 3 }, [4161] = { 1 } },
@@ -1689,7 +1675,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 933,
-            Note = { "Travel to southwestern Teldrassil" },
             Coord = { x = 1645.02, y = 9245.89 },
             Fillers = { [87288] = { 1 }, [488] = { 1, 2, 3 }, [4161] = { 1 } },
             NonSkippableWaypoint = true,
@@ -1707,7 +1692,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 933,
-            Note = { "Travel to Dolanaar" },
             Coord = { x = 956.02, y = 9736.83 },
             Hardcore = true,
             NonSkippableWaypoint = true,
@@ -1736,7 +1720,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 216,
         },
         {
-            Note = { "Skip this step if you already trained level 8 spells" },
             LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = 966.05, y = 9741.85 },
@@ -1765,7 +1748,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [4161] = { 1 } },
-            Note = { "Kill Webwood Lurkers and Webwood Venomfangs. Loot them for their Small Spider Legs", "You need these for a later quest" },
+            Note = { "You need these for a later quest" },
             _index = 221,
         },
         {
@@ -1799,7 +1782,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 225,
         },
         {
-            Note = { "Skip this step if you already trained level 8 spells" },
             LearnSkill = { allAvailable = true },
             Class = "HUNTER",
             Coord = { x = 928.83, y = 9812.34 },
@@ -1808,7 +1790,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 226,
         },
         {
-            Note = { "Skip this step if you already trained level 8 spells" },
             LearnSkill = { allAvailable = true },
             Class = "ROGUE",
             Coord = { x = 943.85, y = 9790.28 },
@@ -1817,7 +1798,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 227,
         },
         {
-            Note = { "Skip this step if you already trained level 8 spells" },
             LearnSkill = { allAvailable = true },
             Class = "WARRIOR",
             Coord = { x = 952.0, y = 9822.22 },
@@ -1899,7 +1879,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [87288] = { 1 }, [488] = { 1, 2, 3 } },
-            Note = { "Kill Nightsabers. Loot them for their Fangs and Pelts", "Kill Strigid Owls. Loot them for their Feathers", "Kill Webwood Lurkers. Loot them for their Silk", "Save any `Small Eggs` and `Small Spider Legs` to use for leveling `Cooking` later", "====================================================================================", "Skip this step if there aren't any mobs nearby to complete the objective" },
+            Note = { "Save any `Small Eggs` and `Small Spider Legs` to use for leveling `Cooking` later", "====================================================================================", "Skip this step if there aren't any mobs nearby to complete the objective" },
             Coord = { x = 850.22, y = 9919.89 },
             Range = 30,
             Zone = 1438,
@@ -1927,7 +1907,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 240,
         },
         {
-            Note = { "Skip this step if you already trained level 8 spells" },
             LearnSkill = { allAvailable = true },
             Class = "PRIEST",
             Coord = { x = 985.45, y = 9905.43 },
@@ -1937,7 +1916,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 489,
-            Note = { "Travel to Fel Rock" },
             Coord = { x = 1030.46, y = 10037.99 },
             Fillers = { [87288] = { 1 } },
             NonSkippableWaypoint = true,
@@ -1947,7 +1925,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 489,
-            Note = { "Travel to Fel Rock" },
             Coord = { x = 1043.7, y = 10093.99 },
             Fillers = { [87288] = { 1 } },
             NonSkippableWaypoint = true,
@@ -1957,7 +1934,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [932] = { 1 } },
-            Note = { "Kill Lord Melenas. Loot him for his Head", "You can use the `Severed Voodoo Claws` on him to severely reduce his damage", "Lord Melenas may be located in many different spawn locations throughout Fel Rock" },
+            Note = { "You can use the `Severed Voodoo Claws` on him to severely reduce his damage", "Lord Melenas may be located in many different spawn locations throughout Fel Rock" },
             Coord = { x = 1207.65, y = 10114.01 },
             ItemCount = { operator = ">=", count = 1, includeUsableToys = true, itemID = 5457 },
             Range = 30,
@@ -1966,7 +1943,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [932] = { 1 } },
-            Note = { "Kill Lord Melenas. Loot him for his Head", "Lord Melenas may be located in many different spawn locations throughout Fel Rock" },
+            Note = { "Lord Melenas may be located in many different spawn locations throughout Fel Rock" },
             Coord = { x = 1207.65, y = 10114.01 },
             ItemCount = { operator = "<", count = 1, includeUsableToys = true, itemID = 5457 },
             Range = 30,
@@ -2029,7 +2006,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [487] = { 1 } },
-            Note = { "Kill Gnarlpine Ambushers" },
             Coord = { x = 1441.87, y = 10032.56 },
             Fillers = { [87288] = { 1 } },
             Range = 30,
@@ -2046,7 +2022,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 99046,
-            Note = { "Travel to The Oracle Glade" },
             Coord = { x = 1863.46, y = 10665.16 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -2100,7 +2075,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [937] = { 1 } },
-            Note = { "Kill Bloodfeather Harpies. Loot them for their Belts", "Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast", "Avoid fighting them as much as you can" },
+            Note = { "Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast", "Avoid fighting them as much as you can" },
             Class = { "DRUID", "PRIEST" },
             Coord = { x = 2102.82, y = 10819.27 },
             Range = 30,
@@ -2123,7 +2098,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98392] = { 1 } },
-            Note = { "Kill Hatescreech. Loot her for her `Amulet`" },
             Class = { "DRUID", "PRIEST" },
             Coord = { x = 2032.5, y = 10500.9 },
             Range = 10,
@@ -2132,7 +2106,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98392] = { 2 } },
-            Note = { "Kill Windmistress Gaedress. Loot her for her `Amulet`" },
             Class = { "DRUID", "PRIEST" },
             Coord = { x = 2103.78, y = 10623.08 },
             Range = 10,
@@ -2141,7 +2114,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98392] = { 3 } },
-            Note = { "Kill Witchmother Arysa. Loot her for her `Amulet`", "Witchmother Arysa and Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast", "Avoid fighting the Matriarchs as much as you can" },
+            Note = { "Witchmother Arysa and Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast", "Avoid fighting the Matriarchs as much as you can" },
             Class = { "DRUID", "PRIEST" },
             Coord = { x = 2042.68, y = 10860.64 },
             Range = 10,
@@ -2181,7 +2154,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Done = { 98398 },
-            Note = { "Go to the Oracle Tree Bark" },
             Class = { "DRUID", "PRIEST" },
             Coord = { x = 1932.4, y = 10673.5 },
             Zone = 1438,
@@ -2189,7 +2161,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             PickUp = { 940 },
-            Note = { "Go to the Oracle Tree Bark" },
             Class = { "DRUID", "PRIEST" },
             Coord = { x = 1932.4, y = 10673.5 },
             Zone = 1438,
@@ -2214,7 +2185,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [937] = { 1 } },
-            Note = { "Kill Bloodfeather Harpies. Loot them for their Belts", "Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast", "Avoid fighting them as much as you can" },
+            Note = { "Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast", "Avoid fighting them as much as you can" },
             Class = "HUNTER",
             Coord = { x = 2102.82, y = 10819.27 },
             Range = 30,
@@ -2248,7 +2219,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 922,
-            Note = { "Travel to Darnassus" },
             Class = "WARRIOR",
             Coord = { x = 2070.42, y = 9979.31 },
             Fillers = { [937] = { 1 } },
@@ -2260,7 +2230,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 922,
-            Note = { "Travel to Darnassus" },
             Class = { "DRUID", "HUNTER", "PRIEST" },
             Coord = { x = 2070.42, y = 9979.31 },
             Hardcore = true,
@@ -2270,7 +2239,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 281,
         },
         {
-            Note = { "Sell your vendor trash" },
             SellItems = { junk = true, questID = 922 },
             Class = "HUNTER",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1457, 58.76, 44.48),
@@ -2797,7 +2765,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [87288] = { 1 }, [488] = { 1, 2, 3 } },
-            Note = { "Kill Nightsabers. Loot them for their Fangs and Pelts", "Kill Strigid Owls. Loot them for their Feathers", "Kill Webwood Lurkers. Loot them for their Silk", "Save any `Small Eggs` and `Small Spider Legs` to use for leveling `Cooking` later", "====================================================================================", "Skip this step if there aren't any mobs nearby to complete the objective" },
+            Note = { "Save any `Small Eggs` and `Small Spider Legs` to use for leveling `Cooking` later", "====================================================================================", "Skip this step if there aren't any mobs nearby to complete the objective" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 850.22, y = 9919.89 },
             Fillers = { [937] = { 1 } },
@@ -2887,7 +2855,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [87288] = { 1 }, [488] = { 1, 2, 3 } },
-            Note = { "Kill Nightsabers. Loot them for their Fangs and Pelts", "Kill Strigid Owls. Loot them for their Feathers", "Kill Webwood Lurkers. Loot them for their Silk", "Save any `Small Eggs` and `Small Spider Legs` to use for leveling `Cooking` later", "====================================================================================", "Skip this step if there aren't any mobs nearby to complete the objective" },
+            Note = { "Save any `Small Eggs` and `Small Spider Legs` to use for leveling `Cooking` later", "====================================================================================", "Skip this step if there aren't any mobs nearby to complete the objective" },
             Class = { "DRUID", "HUNTER", "PRIEST" },
             Coord = { x = 850.22, y = 9919.89 },
             Range = 30,
@@ -3075,7 +3043,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [6063] = { 1 } },
-            Note = { "Use the `Taming Rod` on a Webwood Lurker" },
             Button = { ["6063-1"] = 15921 },
             Class = "HUNTER",
             Coord = { x = 764.68, y = 9835.73 },
@@ -3258,7 +3225,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [6101] = { 1 } },
-            Note = { "Use the `Taming Rod` on a Nightsaber Stalker", "You must right click your Pet Frame and Dismiss your pet before you can tame another one" },
+            Note = { "You must right click your Pet Frame and Dismiss your pet before you can tame another one" },
             Button = { ["6101-1"] = 15922 },
             Class = "HUNTER",
             Coord = { x = 627.2, y = 9380.96 },
@@ -3333,7 +3300,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [99050] = { 1 } },
-            Note = { "Finish killing Lasher Sproutlings. Loot them for `Dewy Lasher Fronds`" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 697.97, y = 9581.87 },
             Fillers = { [937] = { 1 } },
@@ -3408,7 +3374,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [99050] = { 1 } },
-            Note = { "Finish killing Lasher Sproutlings. Loot them for `Dewy Lasher Fronds`" },
             Class = "HUNTER",
             Coord = { x = 697.97, y = 9581.87 },
             IsQuestOnQuest = 6101,
@@ -3477,7 +3442,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [99050] = { 1 } },
-            Note = { "Finish killing Lasher Sproutlings. Loot them for `Dewy Lasher Fronds`" },
             Class = "PRIEST",
             Coord = { x = 697.97, y = 9581.87 },
             Zone = 1438,
@@ -3666,7 +3630,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [6063] = { 1 } },
-            Note = { "Use the `Taming Rod` on a Webwood Lurker" },
             Button = { ["6063-1"] = 15921 },
             Class = "HUNTER",
             Coord = { x = 764.68, y = 9835.73 },
@@ -3689,7 +3652,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [6101] = { 1 } },
-            Note = { "Use the `Taming Rod` on a Nightsaber Stalker", "You must right click your Pet Frame and Dismiss your pet before you can tame another one" },
+            Note = { "You must right click your Pet Frame and Dismiss your pet before you can tame another one" },
             Button = { ["6101-1"] = 15922 },
             Class = "HUNTER",
             Coord = { x = 627.2, y = 9380.96 },
@@ -3765,7 +3728,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [99050] = { 1 } },
-            Note = { "Finish killing Lasher Sproutlings. Loot them for `Dewy Lasher Fronds`" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 697.97, y = 9581.87 },
             Fillers = { [937] = { 1 } },
@@ -3834,7 +3796,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [99050] = { 1 } },
-            Note = { "Finish killing Lasher Sproutlings. Loot them for `Dewy Lasher Fronds`" },
             Class = { "HUNTER", "PRIEST" },
             Coord = { x = 697.97, y = 9581.87 },
             Zone = 1438,
@@ -3856,7 +3817,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [6102] = { 1 } },
-            Note = { "Use the `Taming Rod` on a Strigid Screecher", "You must right click your Pet Frame and Dismiss your pet before you can tame another one" },
+            Note = { "You must right click your Pet Frame and Dismiss your pet before you can tame another one" },
             Button = { ["6102-1"] = 15923 },
             Class = "HUNTER",
             Coord = { x = 520.28, y = 9567.62 },
@@ -4064,7 +4025,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 922,
-            Note = { "Travel to Darnassus" },
             Class = "ROGUE",
             Coord = { x = 2070.42, y = 9979.31 },
             Fillers = { [937] = { 1 } },
@@ -4144,7 +4104,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98067] = { 4 } },
-            Note = { "Go to the Gates of Darnassus and use the `Lunar Pendant`" },
+            Note = { "Use the `Lunar Pendant`" },
             Button = { ["98067-4"] = 279378 },
             Class = "ROGUE",
             Coord = { x = 2009.1, y = 9986.601 },
@@ -4163,7 +4123,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [923] = { 1 } },
-            Note = { "Kill Timberling Tramplers, Timberling Mire Beasts and Elder Timberlings. Loot them for their Tumors" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 1691.36, y = 10412.66 },
             Fillers = { [937] = { 1 } },
@@ -4173,7 +4132,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [923] = { 1 } },
-            Note = { "Kill Timberling Tramplers, Timberling Mire Beasts and Elder Timberlings. Loot them for their Tumors" },
             Class = { "DRUID", "HUNTER", "PRIEST" },
             Coord = { x = 1691.36, y = 10412.66 },
             Range = 30,
@@ -4182,7 +4140,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [2518] = { 1 } },
-            Note = { "Kill Lady Sathrah. Loot her for her Spinnerets", "Lady Sathrah can spawn in 3 different locations, check your map for a recomended path to take", "Head north along the river and check the easternmost spawn point first. Work on the `Tumors` quest as you go", "If she's not east of the river complete the `Tumors` quest before heading west" },
+            Note = { "Lady Sathrah can spawn in 3 different locations, check your map for a recomended path to take", "Head north along the river and check the easternmost spawn point first. Work on the `Tumors` quest as you go", "If she's not east of the river complete the `Tumors` quest before heading west" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 1828.6, y = 10964.8 },
             Fillers = { [937] = { 1 } },
@@ -4192,7 +4150,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [2518] = { 1 } },
-            Note = { "Kill Lady Sathrah. Loot her for her Spinnerets", "Lady Sathrah can spawn in 3 different locations, check your map for a recomended path to take", "Head north along the river and check the easternmost spawn point first. Work on the `Tumors` quest as you go", "If she's not east of the river complete the `Tumors` quest before heading west" },
+            Note = { "Lady Sathrah can spawn in 3 different locations, check your map for a recomended path to take", "Head north along the river and check the easternmost spawn point first. Work on the `Tumors` quest as you go", "If she's not east of the river complete the `Tumors` quest before heading west" },
             Class = { "DRUID", "HUNTER", "PRIEST" },
             Coord = { x = 1828.6, y = 10964.8 },
             Range = 10,
@@ -4241,7 +4199,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [937] = { 1 } },
-            Note = { "Kill Bloodfeather Harpies. Loot them for their Belts", "Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast" },
+            Note = { "Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast" },
             Class = { "ROGUE", "WARRIOR", "DRUID", "HUNTER", "PRIEST" },
             Coord = { x = 2102.82, y = 10819.27 },
             Range = 30,
@@ -4250,7 +4208,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [937] = { 1 } },
-            Note = { "Kill Bloodfeather Harpies. Loot them for their Belts", "Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast", "Avoid fighting them as much as you can" },
+            Note = { "Bloodfeather Matriarchs cast `Healing Wave` and `Lightning Bolt` which does a lot of damage. Try to burst them fast", "Avoid fighting them as much as you can" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 2102.82, y = 10819.27 },
             Range = 30,
@@ -4301,7 +4259,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98392] = { 1 } },
-            Note = { "Kill Hatescreech. Loot her for her `Amulet`" },
             Coord = { x = 2032.5, y = 10500.9 },
             Range = 10,
             Zone = 1438,
@@ -4309,7 +4266,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98392] = { 2 } },
-            Note = { "Kill Windmistress Gaedress. Loot her for her `Amulet`" },
             Coord = { x = 2103.78, y = 10623.08 },
             Range = 10,
             Zone = 1438,
@@ -4317,7 +4273,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98392] = { 3 } },
-            Note = { "Kill Witchmother Arysa. Loot her for her `Amulet`" },
             Coord = { x = 2042.68, y = 10860.64 },
             Range = 10,
             Zone = 1438,
@@ -4337,14 +4292,12 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Done = { 98398 },
-            Note = { "Go to the Oracle Tree Bark" },
             Coord = { x = 1932.4, y = 10673.5 },
             Zone = 1438,
             _index = 516,
         },
         {
             PickUp = { 940 },
-            Note = { "Go to the Oracle Tree Bark" },
             Coord = { x = 1932.4, y = 10673.5 },
             Zone = 1438,
             _index = 517,
@@ -4357,7 +4310,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 1684,
-            Note = { "Travel to Darnassus" },
             Class = "WARRIOR",
             Coord = { x = 2070.42, y = 9979.31 },
             NonSkippableWaypoint = true,
@@ -4367,7 +4319,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 940,
-            Note = { "Travel to Darnassus" },
             Class = { "HUNTER", "PRIEST", "ROGUE" },
             Coord = { x = 2070.42, y = 9979.31 },
             Hardcore = true,
@@ -4378,7 +4329,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 5931,
-            Note = { "Travel to Darnassus" },
             Class = "DRUID",
             Coord = { x = 2070.42, y = 9979.31 },
             Hardcore = true,
@@ -4389,7 +4339,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98067] = { 4 } },
-            Note = { "Go to the Gates of Darnassus and use the `Lunar Pendant`" },
+            Note = { "Use the `Lunar Pendant`" },
             Button = { ["98067-4"] = 279378 },
             Class = { "DRUID", "HUNTER", "PRIEST", "ROGUE" },
             Coord = { x = 2009.1, y = 9986.601 },
@@ -4405,7 +4355,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 940,
-            Note = { "Travel to Darnassus" },
             Class = { "HUNTER", "PRIEST", "ROGUE" },
             Coord = { x = 2070.42, y = 9979.31 },
             Hardcore = false,
@@ -4416,7 +4365,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 5931,
-            Note = { "Travel to Darnassus" },
             Class = "DRUID",
             Coord = { x = 2070.42, y = 9979.31 },
             Hardcore = false,
@@ -4453,7 +4401,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98067] = { 4 } },
-            Note = { "Go to the Gates of Darnassus and use the `Lunar Pendant`" },
+            Note = { "Use the `Lunar Pendant`" },
             Button = { ["98067-4"] = 279378 },
             Class = "WARRIOR",
             Coord = { x = 2009.1, y = 9986.601 },
@@ -4462,7 +4410,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 1683,
-            Note = { "Travel toward Vorlus Vilehoof" },
             Class = "WARRIOR",
             Coord = { x = 1334.94, y = 9720.34 },
             NonSkippableWaypoint = true,
@@ -4472,7 +4419,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [1683] = { 1 } },
-            Note = { "Kill Vorlus Vilehoof. Loot him for his Horn" },
             Class = "WARRIOR",
             Coord = { x = 1411.32, y = 9669.43 },
             Range = 10,
@@ -4490,7 +4436,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Waypoint = 1683,
-            Note = { "Travel to Darnassus" },
             Class = "WARRIOR",
             Coord = { x = 2070.42, y = 9979.31 },
             Hardcore = true,
@@ -4508,7 +4453,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98067] = { 3 } },
-            Note = { "Go to the Darnassus Inn and use the `Lunar Pendant`" },
+            Note = { "Use the `Lunar Pendant`" },
             Button = { ["98067-3"] = 279378 },
             Coord = { x = 2240.1, y = 10121.0 },
             Zone = 1457,
@@ -4594,7 +4539,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
         },
         {
             Qpart = { [98067] = { 2 } },
-            Note = { "Go to the Darnassus Bank and use the `Lunar Pendant`" },
+            Note = { "Use the `Lunar Pendant`" },
             Button = { ["98067-2"] = 279378 },
             Coord = { x = 2499.9, y = 9932.601 },
             Zone = 1457,
@@ -4881,7 +4826,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 581,
         },
         {
-            Note = { "Fly to Darkshore" },
             UseFlightPath = 6342,
             Coord = { x = 841.1, y = 8640.58 },
             NodeID = 26,
@@ -5157,7 +5101,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 1141,
-            Note = { "Travel up the ramps toward Wizbang Cranktoggle" },
+            Note = { "Go up the ramps" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.826, 44.15),
             NonSkippableWaypoint = true,
             Range = 5.0,
@@ -5166,7 +5110,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 1141,
-            Note = { "Travel up the ramps toward Wizbang Cranktoggle" },
+            Note = { "Go up the ramps" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.688, 43.952),
             NonSkippableWaypoint = true,
             Range = 8.0,
@@ -5180,7 +5124,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 6,
         },
         {
-            Note = { "Set your Hearthstone to Auberdine" },
             SetHS = 1141,
             Coord = { x = 515.55, y = 6406.32 },
             Zone = 1439,
@@ -5275,7 +5218,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [984] = { 1 } },
-            Note = { "Run toward the edge of the Furbolg Camp" },
             Button = { ["2118-1"] = 7586 },
             Coord = { x = 393.72, y = 5993.24 },
             Fillers = { [2178] = { 1 }, [983] = { 1 }, [2118] = { 1 } },
@@ -5294,7 +5236,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [983] = { 1 } },
-            Note = { "Kill Pygmy Tide Crawlers and Young Reef Crawlers. Loot them for their Crawler Legs", "You may need to go in the water for them" },
+            Note = { "You may need to go in the water for them" },
             Button = { ["2118-1"] = 7586 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.109, 50.3145),
             Fillers = { [2178] = { 1 }, [2118] = { 1 } },
@@ -5372,7 +5314,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [6001] = { 1 } },
-            Note = { "Kill Lunaclaw" },
             Button = { ["6001-1"] = 15208, ["2118-1"] = 7586 },
             Class = "DRUID",
             Coord = { x = 119.27, y = 6344.32 },
@@ -5403,7 +5344,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 32,
         },
         {
-            Note = { "Fly to Darnassus" },
             UseFlightPath = 6343,
             Button = { ["2118-1"] = 7586 },
             Class = "DRUID",
@@ -5465,7 +5405,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 38,
         },
         {
-            Note = { "Fly to Darkshore" },
             UseFlightPath = 4811,
             Button = { ["2118-1"] = 7586 },
             Class = "DRUID",
@@ -5517,7 +5456,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4681,
-            Note = { "Travel toward Cerellean Whiteclaw on the dock" },
             Button = { ["2118-1"] = 7586 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Fillers = { [2118] = { 1 } },
@@ -5528,7 +5466,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4681,
-            Note = { "Travel toward Cerellean Whiteclaw on the dock" },
             Button = { ["2118-1"] = 7586 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Fillers = { [2118] = { 1 } },
@@ -5692,7 +5629,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2178] = { 1 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "Be careful as they `Flee` at <30% health" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 5469 },
             Skill = { skill = "cooking", rank = 10, operator = ">=" },
@@ -5805,7 +5742,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1001] = { 1 } },
-            Note = { "Kill Darkshore Threshers. Loot them for their Thresher Eyes" },
             Coord = { x = 465.44, y = 6934.255 },
             Range = 282,
             Zone = 1439,
@@ -5854,7 +5790,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 954,
-            Note = { "Travel toward Asterion" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.629, 36.316),
             Fillers = { [2178] = { 1 } },
             NonSkippableWaypoint = true,
@@ -5864,7 +5799,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 954,
-            Note = { "Travel toward Asterion" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.168, 36.289),
             Fillers = { [2178] = { 1 } },
             NonSkippableWaypoint = true,
@@ -5896,7 +5830,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [955] = { 1 } },
-            Note = { "Kill Wild Grells and Vile Sprites. Loot them for their Grell Earrings", "Avoid killing Deth'ryll Satyrs for now" },
+            Note = { "Avoid killing Deth'ryll Satyrs for now" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 45.933, 37.931),
             Range = 30,
             Zone = 1439,
@@ -5932,7 +5866,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [956] = { 1 } },
-            Note = { "Kill Deth'ryll Satyrs. Loot them for the Ancient Moonstone Seal", "Be aware that they do not have dynamic respawns" },
+            Note = { "Be aware that they do not have dynamic respawns" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 46.6565, 38.1225),
             IsQuestCompleted = 955,
             Range = 30,
@@ -5990,7 +5924,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4811,
-            Note = { "Return to Auberdine" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.703, 43.393),
             Fillers = { [2178] = { 1 } },
             NonSkippableWaypoint = true,
@@ -6115,7 +6048,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4813,
-            Note = { "Return to Auberdine" },
             Class = { "DRUID", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.703, 43.393),
             IsQuestCompleted = 4811,
@@ -6141,7 +6073,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [985] = { 1, 2 } },
-            Note = { "Kill Blackwood Pathfinders and Blackwood Windtalkers" },
             Class = { "PRIEST", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.7125, 54.8815),
             IsQuestCompleted = 4811,
@@ -6151,7 +6082,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [985] = { 1, 2 } },
-            Note = { "Kill Blackwood Pathfinders and Blackwood Windtalkers" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.7125, 54.8815),
             Fillers = { [2178] = { 1 } },
@@ -6240,7 +6170,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [98025] = { 1 } },
-            Note = { "Kill Jai'vhanel. Loot it for the Feather of Jai'vhanel" },
             Coord = { x = -18.1, y = 5779.8 },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Range = 10,
@@ -6249,7 +6178,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [958] = { 1 } },
-            Note = { "Kill Cursed Highbornes, Writhing Highbornes and Wailing Highbornes. Loot them for their Relics" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8345, 60.405),
             Fillers = { [963] = { 1 } },
             Range = 30,
@@ -6258,7 +6186,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [963] = { 1 } },
-            Note = { "Kill Anaya Dawnrunner. Loot her for her Pendant" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8985, 60.3995),
             Fillers = { [958] = { 1 } },
             Range = 30,
@@ -6282,7 +6209,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [985] = { 1, 2 } },
-            Note = { "Kill Blackwood Pathfinders and Blackwood Windtalkers" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.7125, 54.8815),
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2178] = { 1 }, [1002] = { 1 }, [2138] = { 1 } },
             Range = 30,
@@ -6291,7 +6217,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4722,
-            Note = { "Return to Auberdine" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Fillers = { [963] = { 1 }, [958] = { 1 }, [1002] = { 1 } },
             IsQuestOnQuest = 4722,
@@ -6394,7 +6319,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2138] = { 1 } },
-            Note = { "Kill Rabid Thistle Bears", "Be careful as they cast `Rabies` if you dont kill them fast enough (Instant Melee: Reduces ALL health regen by 50% for 10 Minutes)" },
+            Note = { "Be careful as they cast `Rabies` if you dont kill them fast enough (Instant Melee: Reduces ALL health regen by 50% for 10 Minutes)" },
             Class = { "DRUID", "PRIEST", "ROGUE", "WARRIOR", "HUNTER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8985, 60.3995),
             Fillers = { [963] = { 1 }, [958] = { 1 } },
@@ -6504,7 +6429,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2178,
-            Note = { "Travel toward the Campfire on the ground", "Start `Cooking` `Herb Baked Eggs`. Do this until your `Cooking` has reached at least level 10", "Continue leveling your `Cooking` until you run out of `Small Eggs`", "There is a quest in Duskwood later requiring your `Cooking` to be 50 or higher. You can also cook this when you get on the boat soon", "Skip this step once you've made all `Herb Baked Eggs`" },
+            Note = { "Start `Cooking` `Herb Baked Eggs`. Do this until your `Cooking` has reached at least level 10", "Continue leveling your `Cooking` until you run out of `Small Eggs`", "There is a quest in Duskwood later requiring your `Cooking` to be 50 or higher. You can also cook this when you get on the boat soon", "Skip this step once you've made all `Herb Baked Eggs`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.511, 41.67),
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             ItemCount = { operator = ">=", count = 1, includeUsableToys = true, itemID = 6889 },
@@ -6525,7 +6450,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2178] = { 1 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "Be careful as they `Flee` at <30% health" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 5469 },
@@ -6544,7 +6469,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [958] = { 1 } },
-            Note = { "Kill Cursed Highbornes, Writhing Highbornes and Wailing Highbornes. Loot them for their Relics" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8345, 60.405),
             Fillers = { [963] = { 1 } },
             Range = 30,
@@ -6570,7 +6494,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Fillers = { [963] = { 1 } },
             NonSkippableWaypoint = true,
@@ -6580,7 +6503,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Fillers = { [963] = { 1 } },
             NonSkippableWaypoint = true,
@@ -6590,7 +6512,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [963] = { 1 } },
-            Note = { "Kill Anaya Dawnrunner. Loot her for her Pendant" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8985, 60.3995),
             Range = 30,
             Zone = 1439,
@@ -6887,7 +6808,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 209,
         },
         {
-            Note = { "Get the Stormwind Flight Path" },
             GetFP = 2,
             Coord = { x = 490.03, y = -8835.82 },
             Zone = 1453,
@@ -6895,7 +6815,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 36,
-            Note = { "Travel to Westfall" },
             Coord = { x = 875.96, y = -9814.4 },
             NonSkippableWaypoint = true,
             Range = 5,
@@ -6916,7 +6835,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 36,
-            Note = { "Travel to Saldean's Farm" },
             Coord = { x = 1055.27, y = -10128.7 },
             NonSkippableWaypoint = true,
             Range = 65.0,
@@ -6983,7 +6901,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 399,
-            Note = { "Travel to the Alexston's Farmstead", "Work on completing the other quest objectives as you move there" },
+            Note = { "Work on completing the other quest objectives as you move there" },
             Coord = { x = 1602.67, y = -10629.67 },
             Fillers = { [151] = { 1 }, [38] = { 1 }, [22] = { 1 }, [12] = { 1, 2 }, [153] = { 1 } },
             IsQuestOnQuest = 399,
@@ -7011,7 +6929,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 64,
-            Note = { "Travel to the Jansen Stead, work on the other quest objectives as you move there" },
             Coord = { x = 1266.67, y = -9927.33 },
             Fillers = { [151] = { 1 }, [9] = { 1 }, [38] = { 1 }, [103] = { 1 }, [22] = { 1 }, [12] = { 1, 2 }, [153] = { 1 } },
             NonSkippableWaypoint = true,
@@ -7109,7 +7026,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [102] = { 1 } },
-            Note = { "Kill Riverpaw Gnolls and Riverpaw Scouts. Loot them for their Gnoll Paws" },
             Coord = { x = 1028.32, y = -9710.33 },
             Fillers = { [151] = { 1 } },
             Range = 30,
@@ -7161,7 +7077,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [92744] = { 1 } },
-            Note = { "Kill Murloc Raiders and Murloc Coastrunners. Loot them for their Eyes and Gills" },
             Coord = { x = 1042.67, y = -9619.33 },
             Range = 30,
             Zone = 1436,
@@ -7241,7 +7156,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [9] = { 1 } },
-            Note = { "Kill Harvest Watchers located on any of the fields as you run by them", "Loot them for their Okra and Flasks of Oil" },
+            Note = { "Kill Harvest Watchers located on any of the fields as you run by them" },
             Range = 30,
             _index = 253,
         },
@@ -7253,7 +7168,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [22] = { 1 } },
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
             AllOf = { { IsQuestOnQuest = 38 }, { IsQuestOnQuest = 22 }, { IsQuestReadyForTurnIn = 38 }, { IsQuestReadyForTurnIn = 22 }, { IsQuestUncompleted = 38 }, { IsQuestUncompleted = 22 } },
             _index = 255,
         },
@@ -7266,7 +7180,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [38] = { 1 } },
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
             IsQuestOnQuest = 22,
             IsQuestReadyForTurnIn = 22,
             IsQuestUncompleted = 22,
@@ -7385,7 +7298,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [9] = { 1 } },
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
             Coord = { x = 1238.67, y = -9907.73 },
             IsQuestUncompleted = 38,
             Range = 30,
@@ -7490,7 +7402,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [9] = { 1 } },
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
             Coord = { x = 1238.67, y = -9907.73 },
             IsQuestCompleted = 38,
             Range = 30,
@@ -7641,7 +7552,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [12] = { 1, 2 } },
-            Note = { "Kill Defias Trappers and Defias Smugglers. Loot them for their Red Leather Bandanas", "It is a dynamic respawn area meaning if you kill enough they will keep respawning" },
+            Note = { "It is a dynamic respawn area meaning if you kill enough they will keep respawning" },
             Coord = { x = 1324.2, y = -10490.4 },
             Fillers = { [153] = { 1 } },
             Range = 30,
@@ -7650,7 +7561,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [153] = { 1 } },
-            Note = { "Kill Defias Trappers and Defias Smugglers. Loot them for their Red Leather Bandanas", "It is a dynamic respawn area meaning if you kill enough they will keep respawning" },
+            Note = { "It is a dynamic respawn area meaning if you kill enough they will keep respawning" },
             Coord = { x = 1324.2, y = -10490.4 },
             Fillers = { [12] = { 1, 2 } },
             Range = 30,
@@ -7697,7 +7608,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 307,
         },
         {
-            Note = { "Fly to Stormwind" },
             UseFlightPath = 399,
             Coord = { x = 1037.42, y = -10628.27 },
             NodeID = 2,
@@ -7790,7 +7700,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4812,
-            Note = { "Travel to the Stormwind Cathedral" },
             Class = "PRIEST",
             Coord = { x = 809.52, y = -8579.22 },
             NonSkippableWaypoint = true,
@@ -7895,7 +7804,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 1002,
-            Note = { "Travel up the ramp toward the Buzzbox 323" },
+            Note = { "Go up the ramp" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             IsQuestOnQuest = 1002,
             IsQuestReadyForTurnIn = 1002,
@@ -7907,7 +7816,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 1002,
-            Note = { "Travel up the ramp toward the Buzzbox 323" },
+            Note = { "Go up the ramp" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.288, 24.554),
             IsQuestOnQuest = 1002,
             IsQuestReadyForTurnIn = 1002,
@@ -7919,7 +7828,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1002] = { 1 } },
-            Note = { "Kill Moonstalker Runts. Loot them for their Moonstalker Fangs" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.19, 33.697),
             Range = 30,
             Zone = 1439,
@@ -7952,7 +7860,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 965,
-            Note = { "Travel toward Balthule Shadowstrike" },
             Class = "HUNTER",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             Fillers = { [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
@@ -7964,7 +7871,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 965,
-            Note = { "Travel toward Balthule Shadowstrike" },
             Class = "HUNTER",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.49, 24.368),
             Fillers = { [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
@@ -7976,7 +7882,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 965,
-            Note = { "Travel toward Balthule Shadowstrike" },
             Class = "HUNTER",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 54.973, 24.885),
             Fillers = { [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
@@ -7988,7 +7893,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 965,
-            Note = { "Travel toward Balthule Shadowstrike" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             Fillers = { [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
@@ -7999,7 +7903,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 965,
-            Note = { "Travel toward Balthule Shadowstrike" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.49, 24.368),
             Fillers = { [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
@@ -8010,7 +7913,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 965,
-            Note = { "Travel toward Balthule Shadowstrike" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 54.973, 24.885),
             Fillers = { [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
@@ -8037,7 +7939,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [966] = { 1 } },
-            Note = { "Kill Dark Strand Fanatics. Loot them for their Worn Parchments" },
             Class = { "DRUID", "HUNTER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.2545, 26.768),
             Range = 30,
@@ -8107,7 +8008,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4762,
-            Note = { "Travel to the Cliffspring River Cave" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 54.934, 32.721),
             Fillers = { [2138] = { 1 } },
             NonSkippableWaypoint = true,
@@ -8117,7 +8017,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4762,
-            Note = { "Travel to the Cliffspring River Cave" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.108, 33.6),
             Fillers = { [2138] = { 1 } },
             NonSkippableWaypoint = true,
@@ -8275,7 +8174,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2178] = { 1 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "Be careful as they `Flee` at <30% health" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Skill = { skill = "cooking", rank = 10, operator = ">=" },
@@ -8301,7 +8200,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2178] = { 1 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "Be careful as they `Flee` at <30% health" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Skill = { skill = "cooking", rank = 10, operator = ">=" },
@@ -8421,7 +8320,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1138] = { 1 } },
-            Note = { "Kill Reef Crawlers. Loot them for their Fine Crab Chunks", "Consider skipping some of the level 17 Reef Crawlers if you get decent drops. You don't have to complete this quest now", "Be careful as they can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
+            Note = { "Consider skipping some of the level 17 Reef Crawlers if you get decent drops. You don't have to complete this quest now", "Be careful as they can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 47.342, 22.3035),
             Range = 30,
             Zone = 1439,
@@ -8470,7 +8369,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 399,
         },
         {
-            Note = { "Fly to Teldrassil" },
             UseFlightPath = 6343,
             Class = "DRUID",
             Coord = { x = 561.66, y = 6343.27 },
@@ -8645,7 +8543,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [963] = { 1 } },
-            Note = { "Kill Anaya Dawnrunner. Loot her for her Pendant" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8985, 60.3995),
             Range = 30,
             Zone = 1439,
@@ -8653,7 +8550,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2138] = { 1 } },
-            Note = { "Kill Rabid Thistle Bears in southern Darkshore", "Be careful as they cast `Rabies` if you dont kill them fast enough (Instant Melee: Reduces all health regeneration by 50% for 10 minutes)" },
+            Note = { "Be careful as they cast `Rabies` if you dont kill them fast enough (Instant Melee: Reduces all health regeneration by 50% for 10 minutes)" },
             Coord = { x = 270.25, y = 5150.47 },
             Fillers = { [1002] = { 1 } },
             Range = 340,
@@ -8719,7 +8616,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 952,
-            Note = { "Travel to the Grove of the Ancients" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Fillers = { [1002] = { 1 } },
@@ -8730,7 +8626,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 952,
-            Note = { "Travel to the Grove of the Ancients" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -8773,7 +8668,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = { x = 413.37, y = 4818.17 },
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
@@ -8792,7 +8687,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Class = "DRUID",
             Coord = { x = 413.37, y = 4818.17 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
@@ -8811,7 +8706,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 944,
-            Note = { "Travel to The Master's Glaive" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = { x = 417.3, y = 4575.82 },
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
@@ -8823,7 +8717,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 944,
-            Note = { "Travel to The Master's Glaive" },
             Class = "DRUID",
             Coord = { x = 417.3, y = 4575.82 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
@@ -8981,7 +8874,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Thugs can `Disarm` you for 6 seconds", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Thugs can `Disarm` you for 6 seconds", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 414.95, y = 4564.81 },
             Fillers = { [1002] = { 1 } },
@@ -8991,7 +8884,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = { "HUNTER", "PRIEST" },
             Coord = { x = 414.95, y = 4564.81 },
             Fillers = { [1002] = { 1 } },
@@ -9001,7 +8894,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = "DRUID",
             Coord = { x = 414.95, y = 4564.81 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -9085,7 +8978,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = { x = 452.67, y = 4684.98 },
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
@@ -9155,7 +9048,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Class = "DRUID",
             Coord = { x = 452.67, y = 4684.98 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
@@ -9217,7 +9110,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             PickUp = { 968 },
-            Note = { "Use the `Book: The Powers Below` to start the quest" },
             Button = { ["968"] = 5352 },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
@@ -9226,7 +9118,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             PickUp = { 968 },
-            Note = { "Use the `Book: The Powers Below` to start the quest" },
             Button = { ["968"] = 5352 },
             Class = "DRUID",
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
@@ -9403,7 +9294,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 502,
         },
         {
-            Note = { "Go to Moonglade" },
             LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
@@ -9413,7 +9303,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
             _index = 503,
         },
         {
-            Note = { "Fly to Darkshore" },
             UseFlightPath = 963,
             Class = "DRUID",
             Coord = { x = -2491.79, y = 7454.76 },
@@ -9431,7 +9320,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Fillers = { [1002] = { 1 } },
@@ -9442,7 +9330,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Fillers = { [1002] = { 1 } },
@@ -9453,7 +9340,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -9464,7 +9350,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -9561,7 +9446,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1138] = { 1 } },
-            Note = { "Kill Encrusted Tide Crawlers and Reef Crawlers. Loot them for their Fine Crab Chunks", "Be careful as Reef Crawlers can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
+            Note = { "Be careful as Reef Crawlers can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Fillers = { [1002] = { 1 } },
             Range = 30,
@@ -9577,7 +9462,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1138] = { 1 } },
-            Note = { "Kill Encrusted Tide Crawlers and Reef Crawlers. Loot them for their Fine Crab Chunks", "Be careful as Reef Crawlers can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
+            Note = { "Be careful as Reef Crawlers can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
             Class = "DRUID",
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Range = 30,
@@ -9752,7 +9637,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2139] = { 1 } },
-            Note = { "Kill Den Mother", "Be careful as the Thistle Cubs can cast `Ravage`, a melee instant attack which stuns you for 2 seconds" },
+            Note = { "Be careful as the Thistle Cubs can cast `Ravage`, a melee instant attack which stuns you for 2 seconds" },
             Coord = { x = -430.27, y = 6662.65 },
             Fillers = { [1002] = { 1 } },
             Range = 10,
@@ -9807,7 +9692,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [4763] = { 1 } },
-            Note = { "Kill Xabraxxis. Open the Xabraxxis' Demon Bag he drops on the ground. Loot it for the Talisman of Corruption" },
+            Note = { "Open the Xabraxxis' Demon Bag he drops on the ground. Loot it for the Talisman of Corruption" },
             Button = { ["4763-1"] = 12347 },
             Coord = { x = -489.22, y = 6875.3 },
             Fillers = { [1002] = { 1 } },
@@ -9817,7 +9702,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1002] = { 1 } },
-            Note = { "Kill Moonstalker Runts and Moonstalkers. Loot them for their Moonstalker Fangs" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.113, 29.1865),
             Range = 30,
             Zone = 1439,
@@ -9853,7 +9737,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [966] = { 1 } },
-            Note = { "Kill Dark Strand Fanatics. Loot them for their Worn Parchments" },
             Class = { "PRIEST", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.2545, 26.768),
             Range = 30,
@@ -9925,7 +9808,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2098] = { 2 } },
-            Note = { "Kill Greymist Oracles and Greymist Tidehunters. Loot them for the Middle of Gelkak's Key", "Be aware of Greymist Oracles' `Lightning Bolt` damage and they can also heal with `Healing Wave`", "Care as Greymist Tidehunters can cast `Poison` while in melee leaving a dot dealing 13 damage per 3 seconds for 30 seconds", "You can LoS (Line of Sight) the Greymist Oracles'  `Lightning Bolts` around the sunken ship to avoid taking its damage" },
+            Note = { "Be aware of Greymist Oracles' `Lightning Bolt` damage and they can also heal with `Healing Wave`", "Care as Greymist Tidehunters can cast `Poison` while in melee leaving a dot dealing 13 damage per 3 seconds for 30 seconds", "You can LoS (Line of Sight) the Greymist Oracles'  `Lightning Bolts` around the sunken ship to avoid taking its damage" },
             Coord = { x = -656.25, y = 7801.04 },
             Range = 30,
             Zone = 1439,
@@ -9960,7 +9843,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2098] = { 3 } },
-            Note = { "Kill Raging Reef Crawlers and Encrusted Tide Crawlers. Loot them for the Bottom of Gelkak's Key", "Be aware of Raging Reef Crawlers' `Thrash` ability. You can take 200 damage instantly from their melee hits" },
+            Note = { "Be aware of Raging Reef Crawlers' `Thrash` ability. You can take 200 damage instantly from their melee hits" },
             Coord = { x = -767.6, y = 7805.84 },
             Range = 30,
             Zone = 1439,
@@ -9968,7 +9851,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2098,
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Coord = { x = -941.83, y = 7756.06 },
             Fillers = { [2098] = { 1 } },
             NonSkippableWaypoint = true,
@@ -9978,7 +9860,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2098,
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Coord = { x = -1080.03, y = 7922.87 },
             Fillers = { [2098] = { 1 } },
             NonSkippableWaypoint = true,
@@ -9988,7 +9869,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2098,
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Coord = { x = -1087.24, y = 7780.51 },
             Fillers = { [2098] = { 1 } },
             NonSkippableWaypoint = true,
@@ -9998,7 +9878,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2098,
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Coord = { x = -1069.55, y = 7661.74 },
             Fillers = { [2098] = { 1 } },
             NonSkippableWaypoint = true,
@@ -10018,7 +9897,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [986] = { 1 } },
-            Note = { "Kill Moonstalker Sires and Moonstalker Matriarchs. Loot them for their Pelts", "Be aware of Moonstalker Matriarchs. They always attack with a Moonstalker Runt by their side", "Moonstalker Sires can cast `Exploit Weakness` a backstab attack dealing 20-40 damage if you turn your back to them" },
+            Note = { "Be aware of Moonstalker Matriarchs. They always attack with a Moonstalker Runt by their side", "Moonstalker Sires can cast `Exploit Weakness` a backstab attack dealing 20-40 damage if you turn your back to them" },
             Coord = { x = -1146.84, y = 7998.41 },
             Fillers = { [2098] = { 1 } },
             Range = 30,
@@ -10027,7 +9906,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2098] = { 1 } },
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Class = { "ROGUE", "WARRIOR", "DRUID", "HUNTER", "PRIEST" },
             Coord = { x = -1080.03, y = 7922.87 },
             Range = 30,
@@ -10134,7 +10012,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4727,
-            Note = { "Travel to Auberdine" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = { x = 577.92, y = 6371.65 },
             NonSkippableWaypoint = true,
@@ -10185,7 +10062,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4727,
-            Note = { "Travel to Auberdine" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = { x = 577.92, y = 6371.65 },
             NonSkippableWaypoint = true,
@@ -10195,7 +10071,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4727,
-            Note = { "Travel to Auberdine" },
             Class = "DRUID",
             Coord = { x = 577.92, y = 6371.65 },
             Fillers = { [1138] = { 1 } },
@@ -10485,7 +10360,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 399,
-            Note = { "Travel to the Stormwind Cathedral" },
             Class = "PRIEST",
             Coord = { x = 809.52, y = -8579.22 },
             NonSkippableWaypoint = true,
@@ -10536,7 +10410,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Renzik \"The Shiv\"" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 374.11, y = -8762.88 },
             NonSkippableWaypoint = true,
@@ -10546,7 +10420,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Renzik \"The Shiv\"" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 326.66, y = -8818.01 },
             NonSkippableWaypoint = true,
@@ -10556,7 +10430,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Renzik \"The Shiv\"" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 323.43, y = -8817.83 },
             NonSkippableWaypoint = true,
@@ -10724,7 +10598,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 31,
         },
         {
-            Note = { "Get the Stormwind Flight Path" },
             GetFP = 2,
             Coord = { x = 490.12, y = -8835.67 },
             SkipInZones = { 1433 },
@@ -10743,7 +10616,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 244,
-            Note = { "Travel to Redridge Mountains" },
             Coord = { x = -1948.56, y = -9582.75 },
             NonSkippableWaypoint = true,
             Range = 5,
@@ -10769,7 +10641,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 37,
         },
         {
-            Note = { "Get the Redridge Mountains flight path" },
             GetFP = 5,
             Coord = { x = -2234.9, y = -9435.3 },
             Zone = 1433,
@@ -10930,7 +10801,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             Coord = { x = -2031.48, y = -9556.25 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
             NonSkippableWaypoint = true,
@@ -10940,7 +10810,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             Coord = { x = -1955.07, y = -9637.63 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
             NonSkippableWaypoint = true,
@@ -10950,7 +10819,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             Coord = { x = -1813.97, y = -9679.9 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
             NonSkippableWaypoint = true,
@@ -10960,7 +10828,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             Coord = { x = -1861.07, y = -9754.76 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
             NonSkippableWaypoint = true,
@@ -10969,7 +10836,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 64,
         },
         {
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             LootItems = { { itemID = 1081, quantity = 5, questID = 92 } },
             Coord = { x = -1980.25, y = -9641.1 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
@@ -10978,7 +10844,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Qpart = { [246] = { 1, 2 }, [98407] = { 1 } },
-            Note = { "Kill Redridge Mongrels and Redridge Poachers", "Kill Redridge Thrashers. Loot them for their Spiked Collars" },
             Coord = { x = -2211.0, y = -9632.2355 },
             Fillers = { [92] = { 1 } },
             Range = 380,
@@ -10987,7 +10852,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Qpart = { [127] = { 1 } },
-            Note = { "Kill Murloc Shorestrikers and Murloc Minor Tidecallers. Loot them for their Fins and Sunfish", "Be aware this area is a hyperspawn, meaning the Murlocs respawn quickly" },
+            Note = { "Be aware this area is a hyperspawn, meaning the Murlocs respawn quickly" },
             Coord = { x = -2634.54, y = -9588.54 },
             Fillers = { [92] = { 1 } },
             Range = 30,
@@ -11003,7 +10868,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 68,
         },
         {
-            Note = { "Kill Dire Condors. Loot them for their Tough Condor Meat", "Skip this step if you aren't seeing any Dire Condors" },
+            Note = { "Skip this step if you aren't seeing any Dire Condors" },
             LootItems = { { itemID = 1080, quantity = 5, questID = 92 } },
             Coord = { x = -2903.07, y = -9691.34 },
             Fillers = { [92] = { 1 } },
@@ -11012,7 +10877,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Qpart = { [20] = { 1 } },
-            Note = { "Kill Blackrock Grunts and Blackrock Outrunners. Loot them for their Axes", "Be aware the Blackrock Outrunners will cast `Net` on you" },
+            Note = { "Be aware the Blackrock Outrunners will cast `Net` on you" },
             Coord = { x = -3176.27, y = -9674.62 },
             Fillers = { [92] = { 1 }, [98387] = { 1, 2 } },
             Range = 197,
@@ -11069,7 +10934,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Travel to Lakeshire" },
             Coord = { x = -2298.06, y = -9284.04 },
             NonSkippableWaypoint = true,
             Range = 150.0,
@@ -11148,7 +11012,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 88,
         },
         {
-            Note = { "Set your hearthstone to Lakeshire" },
             SetHS = 92,
             Class = "DRUID",
             Coord = { x = -2152.62, y = -9223.67 },
@@ -11165,7 +11028,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Qpart = { [92] = { 1 } },
-            Note = { "Kill Great Goretusks. Loot them for their Great Goretusk Snouts", "Kill Tarantulas. Loot them for their Crisp Spider Meat", "Kill Dire Condors. Loot them for their Tough Condor Meat", "Do NOT sell any of these items until you turn the Redridge Goulash quest", "Save any `Chunks of Boar Meat` you loot as well as you can use them to level `Cooking` to 50 which is required for Duskwood later" },
+            Note = { "Do NOT sell any of these items until you turn the Redridge Goulash quest", "Save any `Chunks of Boar Meat` you loot as well as you can use them to level `Cooking` to 50 which is required for Duskwood later" },
             AllOf = { { ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 1080 } }, { ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 2296 } } },
             IsQuestOnQuest = 92,
             ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 1081 },
@@ -11228,7 +11091,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 100,
         },
         {
-            Note = { "Fly to Darnassus" },
             UseFlightPath = 98393,
             Class = "DRUID",
             Coord = { x = -2400.33, y = 7795.33 },
@@ -11286,7 +11148,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 98396,
-            Note = { "Head to the Stormrage Barrow Dens" },
             Class = "DRUID",
             Coord = { x = -3046.7, y = 7534.4 },
             NonSkippableWaypoint = true,
@@ -11343,7 +11204,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 114,
         },
         {
-            Note = { "Fly to Darnassus" },
             UseFlightPath = 98397,
             Class = "DRUID",
             Coord = { x = -2400.33, y = 7795.33 },
@@ -11354,7 +11214,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 115,
         },
         {
-            Note = { "Fly to Darnassus" },
             UseFlightPath = 98397,
             Class = "DRUID",
             Coord = { x = -2400.33, y = 7795.33 },
@@ -11381,7 +11240,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 118,
         },
         {
-            Note = { "Fly to Stormwind City" },
             UseFlightPath = 120,
             Class = { "DRUID", "PRIEST", "WARRIOR" },
             Coord = { x = -2234.89, y = -9435.35 },
@@ -11390,7 +11248,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 119,
         },
         {
-            Note = { "Fly to Stormwind City" },
             UseFlightPath = 2360,
             Class = "ROGUE",
             Coord = { x = -2234.89, y = -9435.35 },
@@ -11426,7 +11283,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            Note = { "Travel to the Stormwind Cathedral" },
             Class = "PRIEST",
             Coord = { x = 809.52, y = -8579.22 },
             NonSkippableWaypoint = true,
@@ -11452,7 +11308,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 374.11, y = -8762.88 },
             NonSkippableWaypoint = true,
@@ -11462,7 +11318,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 326.66, y = -8818.01 },
             NonSkippableWaypoint = true,
@@ -11472,7 +11328,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 323.43, y = -8817.83 },
             NonSkippableWaypoint = true,
@@ -11526,7 +11382,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            Note = { "Travel to Westfall", "Fly there if you already have the Westfall Flight Path" },
+            Note = { "Fly there if you already have the Westfall Flight Path" },
             Class = "ROGUE",
             Coord = { x = 1037.42, y = -10628.27 },
             IsQuestOnQuest = 2360,
@@ -11536,7 +11392,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 135,
         },
         {
-            Note = { "Get the Westfall flight path" },
             GetFP = 4,
             Class = "ROGUE",
             Coord = { x = 1037.42, y = -10628.27 },
@@ -11642,7 +11497,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 147,
         },
         {
-            Note = { "Fly to Stormwind" },
             UseFlightPath = 2359,
             Class = "ROGUE",
             Coord = { x = 1037.42, y = -10628.27 },
@@ -11652,7 +11506,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Travel toward Shaina Fuller" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.938, 33.878),
             HasAura = 9991,
@@ -11663,7 +11516,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Travel toward Shaina Fuller" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 41.544, 31.33),
             HasAura = 9991,
@@ -11674,7 +11526,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Travel toward Shaina Fuller" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 41.688, 28.049),
             HasAura = 9991,
@@ -11685,7 +11536,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Travel toward Shaina Fuller" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 43.07, 26.155),
             HasAura = 9991,
@@ -11738,7 +11588,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 374.11, y = -8762.88 },
             NonSkippableWaypoint = true,
@@ -11748,7 +11598,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 326.66, y = -8818.01 },
             NonSkippableWaypoint = true,
@@ -11758,7 +11608,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 323.43, y = -8817.83 },
             NonSkippableWaypoint = true,
@@ -11788,7 +11638,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 118,
-            Note = { "Travel to Goldshire" },
             Coord = { x = 84.61, y = -9457.95 },
             NonSkippableWaypoint = true,
             Range = 60.0,
@@ -11809,7 +11658,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 119,
-            Note = { "Travel to the Tower of Azora. Ascend the tower" },
+            Note = { "Ascend the tower" },
             Coord = { x = -727.57, y = -9555.16 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -11825,7 +11674,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Waypoint = 119,
-            Note = { "Travel to Redridge", "Fly to Redridge", "If you're in Goldshire it will be faster to Fly from Stormwind", "If you're at the Tower of Azora simply run to Redridge" },
+            Note = { "Fly to Redridge", "If you're in Goldshire it will be faster to Fly from Stormwind", "If you're at the Tower of Azora simply run to Redridge" },
             Coord = { x = 489.72, y = -8837.28 },
             NonSkippableWaypoint = true,
             Range = 5,
@@ -11833,7 +11682,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
             _index = 168,
         },
         {
-            Note = { "Travel to Redridge", "Fly to Redridge", "If you're in Goldshire it will be faster to Fly from Stormwind", "If you're at the Tower of Azora simply run to Redridge" },
+            Note = { "Travel to Redridge", "If you're in Goldshire it will be faster to Fly from Stormwind", "If you're at the Tower of Azora simply run to Redridge" },
             UseFlightPath = 119,
             Coord = { x = -1716.28, y = -9623.29 },
             NodeID = 5,
@@ -11969,7 +11818,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Qpart = { [124] = { 1, 2 }, [89] = { 1, 2 } },
-            Note = { "Kill Redridge Brutes and Redridge Mystics. Loot them for their Iron Pikes and Iron Rivets" },
             Coord = { x = -2231.2, y = -9090.165 },
             Fillers = { [122] = { 1 } },
             Range = 269,
@@ -12005,7 +11853,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Redridge-Mountains"] = {
         },
         {
             Qpart = { [122] = { 1 } },
-            Note = { "Kill Black Dragon Whelps. Loot them for their Scales" },
             Coord = { x = -2364.92, y = -9645.44 },
             Range = 30,
             Zone = 1433,
@@ -12271,7 +12118,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Coord = { x = 452.67, y = 4684.98 },
             Range = 30,
             Zone = 1439,
@@ -12406,7 +12253,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [970] = { 1 } },
-            Note = { "Kill Dark Strand Cultists, Dark Strand Adepts, Dark Strand Enforcers and Dark Strand Excavators. Loot them for the Glowing Soul Gem", "Be patient, this item has a low droprate" },
+            Note = { "Be patient, this item has a low droprate" },
             Coord = { x = -102.08, y = 3492.89 },
             Range = 30,
             Zone = 1440,
@@ -12550,7 +12397,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
             _index = 54,
         },
         {
-            Note = { "Get the Astranaar Flight Path" },
             GetFP = 28,
             Coord = { x = -283.73, y = 2827.92 },
             Fillers = { [93] = { 1 } },
@@ -12582,7 +12428,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
             _index = 59,
         },
         {
-            Note = { "Set your Hearthstone to Astranaar" },
             SetHS = 1020,
             Coord = { x = -433.09, y = 2781.02 },
             Zone = 1440,
@@ -12682,7 +12527,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [973] = { 1 } },
-            Note = { "Kill Ilkrud Magthrull. Loot him for his Tome", "Ilkrud Magthrull will cast `Ilkrud's Guardians` which is a 5 second long cast and will summon 2 Voidwalkers. Stop this cast if you're able to", "Clear an exit path if needed so you can reset them along with the Succubus if needed. You may skip this and do it at level 23 if you wish" },
+            Note = { "Ilkrud Magthrull will cast `Ilkrud's Guardians` which is a 5 second long cast and will summon 2 Voidwalkers. Stop this cast if you're able to", "Clear an exit path if needed so you can reset them along with the Succubus if needed. You may skip this and do it at level 23 if you wish" },
             Coord = { x = 242.76, y = 2340.53 },
             Range = 10,
             Zone = 1440,
@@ -12732,7 +12577,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1009] = { 1 } },
-            Note = { "Kill Ruuzel. Loot her for the Ring of Zoram", "Ruuzel patrols the island with a Wrathtail Myrmidon and Wrathtail Sea Witch. Kill one of them and then reset them if needed", "If you have any `Bombs`/`Grenades` you can also use them to split pull Ruuzel", "Lady Vespia is a rarespawn that can also drop the Ring of Zoram if you see her" },
+            Note = { "Ruuzel patrols the island with a Wrathtail Myrmidon and Wrathtail Sea Witch. Kill one of them and then reset them if needed", "If you have any `Bombs`/`Grenades` you can also use them to split pull Ruuzel", "Lady Vespia is a rarespawn that can also drop the Ring of Zoram if you see her" },
             Coord = { x = 1323.55, y = 4159.35 },
             Fillers = { [1008] = { 1 } },
             HasSpell = 4036,
@@ -12742,7 +12587,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1009] = { 1 } },
-            Note = { "Kill Ruuzel. Loot her for the Ring of Zoram", "Ruuzel patrols the island with a Wrathtail Myrmidon and Wrathtail Sea Witch. Kill one of them and then reset them if needed", "Lady Vespia is a rarespawn that can also drop the Ring of Zoram if you see her" },
+            Note = { "Ruuzel patrols the island with a Wrathtail Myrmidon and Wrathtail Sea Witch. Kill one of them and then reset them if needed", "Lady Vespia is a rarespawn that can also drop the Ring of Zoram if you see her" },
             Coord = { x = 1323.55, y = 4159.35 },
             Fillers = { [1008] = { 1 } },
             Range = 30,
@@ -12751,7 +12596,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1008] = { 1 } },
-            Note = { "Kill Wrathtail Nagas. Loot them for their Heads" },
             Coord = { x = 1069.7, y = 3803.65 },
             Range = 435,
             Zone = 1440,
@@ -12817,7 +12661,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1023] = { 1 } },
-            Note = { "Kill Saltspittle Murlocs. Loot them for the Glowing Gem", "Be careful as the Oracles can heal, and have a 90 damage instant-cast shock spell every few seconds" },
+            Note = { "Be careful as the Oracles can heal, and have a 90 damage instant-cast shock spell every few seconds" },
             Coord = { x = 528.79, y = 3045.86 },
             Range = 30,
             Zone = 1440,
@@ -12831,7 +12675,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
         },
         {
             Waypoint = 731,
-            Note = { "Travel to Astranaar" },
             Coord = { x = -283.73, y = 2827.92 },
             Hardcore = true,
             NonSkippableWaypoint = true,
@@ -12840,7 +12683,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
             _index = 92,
         },
         {
-            Note = { "Fly to Darkshore" },
             UseFlightPath = 731,
             Coord = { x = -284.31, y = 2828.69 },
             NodeID = 26,
@@ -12877,7 +12719,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-19-21-Hunter"] = {
             _index = 98,
         },
         {
-            Note = { "Fly to Teldrassil" },
             UseFlightPath = 741,
             Coord = { x = 561.66, y = 6343.27 },
             NodeID = 27,
@@ -12952,7 +12793,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
             _index = 1,
         },
         {
-            Note = { "Go to Moonglade" },
             LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
@@ -12999,7 +12839,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             Waypoint = 952,
-            Note = { "Travel to the Grove of the Ancients" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Fillers = { [1003] = { 1 } },
             NonSkippableWaypoint = true,
@@ -13023,7 +12862,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             Waypoint = 944,
-            Note = { "Travel to The Master's Glaive" },
             Coord = { x = 417.3, y = 4575.82 },
             Fillers = { [1003] = { 1 } },
             IsQuestOnQuest = 944,
@@ -13099,7 +12937,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Thugs can `Disarm` you for 6 seconds", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Thugs can `Disarm` you for 6 seconds", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 414.95, y = 4564.81 },
             Range = 99,
@@ -13108,7 +12946,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = { "DRUID", "PRIEST" },
             Coord = { x = 414.95, y = 4564.81 },
             Range = 99,
@@ -13117,7 +12955,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             PickUp = { 968 },
-            Note = { "Use the `Book: The Powers Below` to start the quest" },
             Button = { ["968"] = 5352 },
             ItemCount = { operator = ">=", count = 1, includeUsableToys = true, itemID = 5352 },
             _index = 23,
@@ -13198,7 +13035,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             Qpart = { [1138] = { 1 } },
-            Note = { "Kill Encrusted Tide Crawlers and Reef Crawlers. Loot them for their Fine Crab Chunks" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 34.5005, 76.808),
             Range = 30,
             Zone = 1439,
@@ -13256,7 +13092,7 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Coord = { x = 452.67, y = 4684.98 },
             Range = 30,
             Zone = 1439,
@@ -13299,7 +13135,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             Waypoint = 993,
-            Note = { "Travel toward Volcor in the Cave" },
             Coord = { x = -5.83, y = 4608.57 },
             IsQuestOnQuest = 993,
             NonSkippableWaypoint = true,
@@ -13371,7 +13206,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
         },
         {
             Qpart = { [970] = { 1 } },
-            Note = { "Kill Dark Strand Cultists and Dark Strand Adepts. Loot them for the Glowing Soul Gem" },
             Coord = { x = -102.08, y = 3492.89 },
             Range = 30,
             Zone = 1440,
@@ -13553,7 +13387,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
             _index = 76,
         },
         {
-            Note = { "Get the Astranaar Flight Path" },
             GetFP = 28,
             Coord = { x = -283.73, y = 2827.92 },
             Zone = 1440,
@@ -13584,7 +13417,6 @@ APR.RouteQuestStepList["Forever-Alliance-NightElf-Darkshore-20-21"] = {
             _index = 81,
         },
         {
-            Note = { "Set your Hearthstone to Astranaar" },
             SetHS = 1020,
             Coord = { x = -433.09, y = 2781.02 },
             Zone = 1440,

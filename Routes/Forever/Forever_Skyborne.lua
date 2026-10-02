@@ -10,7 +10,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
     prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 15 }, [APR.PREFAB_TYPES.Speedrun] = { index = 15 } },
     steps = {
         {
-            Note = { "Set your Hearthstone to Stormwind City" },
             SetHS = 36,
             Coord = { x = 673.58, y = -8867.76 },
             SkipForLvl = 15,
@@ -82,7 +81,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Waypoint = 36,
-            Note = { "Travel to Westfall" },
             Coord = { x = 875.96, y = -9814.4 },
             NonSkippableWaypoint = true,
             Range = 5,
@@ -104,7 +102,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Waypoint = 36,
-            Note = { "Travel to Saldean's Farm" },
             Coord = { x = 1055.27, y = -10128.7 },
             NonSkippableWaypoint = true,
             Range = 65.0,
@@ -173,7 +170,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Waypoint = 399,
-            Note = { "Travel to the Alexston's Farmstead", "Work on completing the other quest objectives as you move there" },
+            Note = { "Work on completing the other quest objectives as you move there" },
             Coord = { x = 1602.67, y = -10629.67 },
             IsQuestOnQuest = 399,
             NonSkippableWaypoint = true,
@@ -198,7 +195,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Waypoint = 64,
-            Note = { "Travel to the Jansen Stead, work on the other quest objectives as you move there" },
             Coord = { x = 1266.67, y = -9927.33 },
             NonSkippableWaypoint = true,
             Range = 75.0,
@@ -295,7 +291,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [102] = { 1 } },
-            Note = { "Kill Riverpaw Gnolls and Riverpaw Scouts. Loot them for their Gnoll Paws" },
             Coord = { x = 1028.32, y = -9710.33 },
             Range = 30,
             Zone = 1436,
@@ -351,7 +346,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [92744] = { 1 } },
-            Note = { "Kill Murloc Raiders and Murloc Coastrunners. Loot them for their Eyes and Gills" },
             Coord = { x = 1042.67, y = -9619.33 },
             Range = 30,
             Zone = 1436,
@@ -448,7 +442,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [9] = { 1 } },
-            Note = { "Kill Harvest Watchers located on any of the fields as you run by them", "Loot them for their Okra and Flasks of Oil" },
+            Note = { "Kill Harvest Watchers located on any of the fields as you run by them" },
             Range = 30,
             _index = 53,
         },
@@ -460,7 +454,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [22] = { 1 } },
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
             AllOf = { { IsQuestOnQuest = 38 }, { IsQuestReadyForTurnIn = 38 }, { IsQuestReadyForTurnIn = 22 }, { IsQuestUncompleted = 38 }, { IsQuestUncompleted = 22 } },
             IsQuestOnQuest = 22,
             _index = 55,
@@ -474,7 +467,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [38] = { 1 } },
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
             AllOf = { { IsQuestOnQuest = 38 }, { IsQuestOnQuest = 22 } },
             IsQuestReadyForTurnIn = 22,
             IsQuestUncompleted = 22,
@@ -601,7 +593,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [9] = { 1 } },
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
             Coord = { x = 1238.67, y = -9907.73 },
             IsQuestUncompleted = 38,
             Range = 30,
@@ -716,7 +707,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [9] = { 1 } },
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
             Coord = { x = 1238.67, y = -9907.73 },
             IsQuestCompleted = 38,
             Range = 30,
@@ -878,7 +868,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [12] = { 1, 2 }, [153] = { 1 } },
-            Note = { "Kill Defias Trappers and Defias Smugglers. Loot them for their Red Leather Bandanas", "It is a dynamic respawn area meaning if you kill enough they will keep respawning" },
+            Note = { "It is a dynamic respawn area meaning if you kill enough they will keep respawning" },
             Coord = { x = 1324.2, y = -10490.4 },
             Range = 30,
             Zone = 1436,
@@ -886,7 +876,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [12] = { 1, 2 } },
-            Note = { "Kill Defias Trappers and Defias Smugglers. Loot them for their Red Leather Bandanas" },
             Range = 30,
             _index = 101,
         },
@@ -911,7 +900,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Qpart = { [153] = { 1 } },
-            Note = { "Kill Defias Trappers and Defias Smugglers. Loot them for their Red Leather Bandanas" },
             Range = 30,
             _index = 105,
         },
@@ -937,7 +925,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
             _index = 108,
         },
         {
-            Note = { "Fly to Stormwind" },
             UseFlightPath = 399,
             Coord = { x = 1037.42, y = -10628.27 },
             NodeID = 2,
@@ -1046,7 +1033,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Westfall"] = {
         },
         {
             Waypoint = 95065,
-            Note = { "Travel to the Mage Tower" },
             Class = "MAGE",
             Coord = { x = 874.32, y = -9014.67 },
             NonSkippableWaypoint = true,
@@ -1189,7 +1175,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 1141,
-            Note = { "Travel up the ramp toward Wizbang Cranktoggle" },
+            Note = { "Go up the ramp" },
             Coord = { x = 525.8, y = 6414.8 },
             NonSkippableWaypoint = true,
             Range = 8.0,
@@ -1203,7 +1189,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
             _index = 3,
         },
         {
-            Note = { "Set your Hearthstone to Auberdine" },
             SetHS = 1141,
             Coord = { x = 515.55, y = 6406.32 },
             Zone = 1439,
@@ -1294,7 +1279,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
             _index = 16,
         },
         {
-            Note = { "Get the Auberdine flight path" },
             GetFP = 26,
             Coord = { x = 561.66, y = 6343.27 },
             Zone = 1439,
@@ -1319,7 +1303,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [984] = { 1 } },
-            Note = { "Run toward the edge of the Furbolg Camp" },
             Button = { ["2118-1"] = 7586 },
             Coord = { x = 393.72, y = 5993.24 },
             Fillers = { [2178] = { 1 }, [983] = { 1 }, [2118] = { 1 } },
@@ -1338,7 +1321,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [983] = { 1 } },
-            Note = { "Kill Pygmy Tide Crawlers and Young Reef Crawlers. Loot them for their Crawler Legs", "You may need to go in the water for them", "Even if some of these are gray, still complete the quest as it is part of a chain" },
+            Note = { "You may need to go in the water for them", "Even if some of these are gray, still complete the quest as it is part of a chain" },
             Button = { ["2118-1"] = 7586 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.109, 50.3145),
             Fillers = { [2178] = { 1 }, [2118] = { 1 } },
@@ -1392,7 +1375,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4681,
-            Note = { "Travel toward Cerellean Whiteclaw on the dock" },
             Button = { ["2118-1"] = 7586 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Fillers = { [2118] = { 1 } },
@@ -1403,7 +1385,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4681,
-            Note = { "Travel toward Cerellean Whiteclaw on the dock" },
             Button = { ["2118-1"] = 7586 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Fillers = { [2118] = { 1 } },
@@ -1531,7 +1512,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2178] = { 1 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "Be careful as they `Flee` at <30% health" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 5469 },
             Skill = { skill = "cooking", rank = 10, operator = ">=" },
@@ -1633,7 +1614,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1001] = { 1 } },
-            Note = { "Kill Darkshore Threshers. Loot them for their Thresher Eyes" },
             Coord = { x = 465.44, y = 6934.255 },
             Range = 282,
             Zone = 1439,
@@ -1682,7 +1662,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 954,
-            Note = { "Travel toward Asterion" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.629, 36.316),
             Fillers = { [2178] = { 1 } },
             NonSkippableWaypoint = true,
@@ -1692,7 +1671,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 954,
-            Note = { "Travel toward Asterion" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.168, 36.289),
             Fillers = { [2178] = { 1 } },
             NonSkippableWaypoint = true,
@@ -1724,7 +1702,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [955] = { 1 } },
-            Note = { "Kill Wild Grells and Vile Sprites. Loot them for their Grell Earrings", "Avoid killing Deth'ryll Satyrs for now" },
+            Note = { "Avoid killing Deth'ryll Satyrs for now" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 45.933, 37.931),
             Range = 30,
             Zone = 1439,
@@ -1760,7 +1738,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [956] = { 1 } },
-            Note = { "Kill Deth'ryll Satyrs. Loot them for the Ancient Moonstone Seal", "Be aware that they do not have dynamic respawns" },
+            Note = { "Be aware that they do not have dynamic respawns" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 46.6565, 38.1225),
             IsQuestCompleted = 955,
             Range = 30,
@@ -1828,7 +1806,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4811,
-            Note = { "Return to Auberdine" },
             Class = { "DRUID", "HUNTER", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.703, 43.393),
             Fillers = { [2178] = { 1 } },
@@ -1959,7 +1936,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4813,
-            Note = { "Return to Auberdine" },
             Class = { "DRUID", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.703, 43.393),
             IsQuestCompleted = 4811,
@@ -1985,7 +1961,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [985] = { 1, 2 } },
-            Note = { "Kill Blackwood Pathfinders and Blackwood Windtalkers" },
             Class = "WARRIOR",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.7125, 54.8815),
             IsQuestCompleted = 4811,
@@ -1995,7 +1970,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [985] = { 1, 2 } },
-            Note = { "Kill Blackwood Pathfinders and Blackwood Windtalkers" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.7125, 54.8815),
             Fillers = { [2178] = { 1 } },
@@ -2107,7 +2081,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [98025] = { 1 } },
-            Note = { "Kill Jai'vhanel. Loot it for the Feather of Jai'vhanel" },
             Coord = { x = -18.1, y = 5779.8 },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             Range = 10,
@@ -2116,7 +2089,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [958] = { 1 } },
-            Note = { "Kill Cursed Highbornes, Writhing Highbornes and Wailing Highbornes. Loot them for their Relics" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8345, 60.405),
             Fillers = { [963] = { 1 } },
             Range = 30,
@@ -2125,7 +2097,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [963] = { 1 } },
-            Note = { "Kill Anaya Dawnrunner. Loot her for her Pendant" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8985, 60.3995),
             Fillers = { [958] = { 1 } },
             Range = 30,
@@ -2149,7 +2120,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [985] = { 1, 2 } },
-            Note = { "Kill Blackwood Pathfinders and Blackwood Windtalkers" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.7125, 54.8815),
             Fillers = { [963] = { 1 }, [958] = { 1 }, [2178] = { 1 }, [1002] = { 1 }, [2138] = { 1 } },
             Range = 30,
@@ -2158,7 +2128,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4722,
-            Note = { "Return to Auberdine" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.701, 45.122),
             Fillers = { [963] = { 1 }, [958] = { 1 }, [1002] = { 1 } },
             IsQuestOnQuest = 4722,
@@ -2202,7 +2171,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             NonSkippableWaypoint = true,
@@ -2212,7 +2180,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Fillers = { [963] = { 1 }, [958] = { 1 } },
             NonSkippableWaypoint = true,
@@ -2222,7 +2189,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [963] = { 1 } },
-            Note = { "Kill Anaya Dawnrunner. Loot her for her Pendant" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8985, 60.3995),
             Fillers = { [958] = { 1 } },
             Range = 30,
@@ -2278,7 +2244,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2138] = { 1 } },
-            Note = { "Kill Rabid Thistle Bears", "Be careful as they cast `Rabies` if you dont kill them fast enough (Instant Melee: Reduces ALL health regen by 50% for 10 Minutes)" },
+            Note = { "Be careful as they cast `Rabies` if you dont kill them fast enough (Instant Melee: Reduces ALL health regen by 50% for 10 Minutes)" },
             Class = { "DRUID", "WARRIOR", "HUNTER", "MAGE", "ROGUE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8345, 60.405),
             Fillers = { [958] = { 1 } },
@@ -2380,7 +2346,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2178,
-            Note = { "Travel toward the Campfire on the ground", "Start `Cooking` `Herb Baked Eggs`. Do this until your `Cooking` has reached at least level 10", "Continue leveling your `Cooking` until you run out of `Small Eggs`", "There is a quest in Duskwood later requiring your `Cooking` to be 50 or higher. You can also cook this when you get on the boat soon", "Skip this step once you've made all `Herb Baked Eggs`" },
+            Note = { "Start `Cooking` `Herb Baked Eggs`. Do this until your `Cooking` has reached at least level 10", "Continue leveling your `Cooking` until you run out of `Small Eggs`", "There is a quest in Duskwood later requiring your `Cooking` to be 50 or higher. You can also cook this when you get on the boat soon", "Skip this step once you've made all `Herb Baked Eggs`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.511, 41.67),
             Fillers = { [958] = { 1 } },
             ItemCount = { operator = ">=", count = 1, includeUsableToys = true, itemID = 6889 },
@@ -2401,7 +2367,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2178] = { 1 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "Be careful as they `Flee` at <30% health" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Fillers = { [958] = { 1 } },
             ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 5469 },
@@ -2420,7 +2386,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [958] = { 1 } },
-            Note = { "Kill Cursed Highbornes, Writhing Highbornes and Wailing Highbornes. Loot them for their Relics" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8345, 60.405),
             Range = 30,
             Zone = 1439,
@@ -2508,7 +2473,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 1002,
-            Note = { "Travel up the ramp toward the Buzzbox 323" },
+            Note = { "Go up the ramp" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             IsQuestOnQuest = 1002,
             IsQuestReadyForTurnIn = 1002,
@@ -2520,7 +2485,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 1002,
-            Note = { "Travel up the ramp toward the Buzzbox 323" },
+            Note = { "Go up the ramp" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.288, 24.554),
             IsQuestOnQuest = 1002,
             IsQuestReadyForTurnIn = 1002,
@@ -2532,7 +2497,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1002] = { 1 } },
-            Note = { "Kill Moonstalker Runts. Loot them for their Moonstalker Fangs" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.19, 33.697),
             Range = 30,
             Zone = 1439,
@@ -2565,7 +2529,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 965,
-            Note = { "Travel toward Balthule Shadowstrike" },
             Class = { "DRUID", "HUNTER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.118, 23.67),
             Fillers = { [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
@@ -2577,7 +2540,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 965,
-            Note = { "Travel toward Balthule Shadowstrike" },
             Class = { "DRUID", "HUNTER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.49, 24.368),
             Fillers = { [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
@@ -2589,7 +2551,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 965,
-            Note = { "Travel toward Balthule Shadowstrike" },
             Class = { "DRUID", "HUNTER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 54.973, 24.885),
             Fillers = { [2138] = { 1 }, [2178] = { 1 }, [1002] = { 1 } },
@@ -2617,7 +2578,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [966] = { 1 } },
-            Note = { "Kill Dark Strand Fanatics. Loot them for their Worn Parchments" },
             Class = { "DRUID", "HUNTER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.2545, 26.768),
             Range = 30,
@@ -2687,7 +2647,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4762,
-            Note = { "Travel to the Cliffspring River Cave" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 54.934, 32.721),
             Fillers = { [2138] = { 1 } },
             NonSkippableWaypoint = true,
@@ -2697,7 +2656,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4762,
-            Note = { "Travel to the Cliffspring River Cave" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.108, 33.6),
             Fillers = { [2138] = { 1 } },
             NonSkippableWaypoint = true,
@@ -2855,7 +2813,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2178] = { 1 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "Be careful as they `Flee` at <30% health" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Skill = { skill = "cooking", rank = 10, operator = ">=" },
@@ -2881,7 +2839,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2178] = { 1 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "Be careful as they `Flee` at <30% health" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Skill = { skill = "cooking", rank = 10, operator = ">=" },
@@ -3016,7 +2974,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1138] = { 1 } },
-            Note = { "Kill Reef Crawlers. Loot them for their Fine Crab Chunks", "Consider skipping some of the level 17 Reef Crawlers if you get decent drops. You don't have to complete this quest now", "Be careful as they can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
+            Note = { "Consider skipping some of the level 17 Reef Crawlers if you get decent drops. You don't have to complete this quest now", "Be careful as they can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 47.342, 22.3035),
             Range = 30,
             Zone = 1439,
@@ -3065,7 +3023,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
             _index = 229,
         },
         {
-            Note = { "Fly to Teldrassil" },
             UseFlightPath = 6343,
             Class = "DRUID",
             Coord = { x = 561.66, y = 6343.27 },
@@ -3214,7 +3171,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [963] = { 1 } },
-            Note = { "Kill Anaya Dawnrunner. Loot her for her Pendant" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.8985, 60.3995),
             Range = 30,
             Zone = 1439,
@@ -3222,7 +3178,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2138] = { 1 } },
-            Note = { "Kill Rabid Thistle Bears in southern Darkshore", "Be careful as they cast `Rabies` if you dont kill them fast enough (Instant Melee: Reduces all health regeneration by 50% for 10 minutes)" },
+            Note = { "Be careful as they cast `Rabies` if you dont kill them fast enough (Instant Melee: Reduces all health regeneration by 50% for 10 minutes)" },
             Coord = { x = 270.25, y = 5150.47 },
             Fillers = { [1002] = { 1 } },
             Range = 340,
@@ -3288,7 +3244,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 948,
-            Note = { "Travel to the Grove of the Ancients" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Fillers = { [1002] = { 1 } },
@@ -3299,7 +3254,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 948,
-            Note = { "Travel to the Grove of the Ancients" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -3342,7 +3296,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = { x = 413.37, y = 4818.17 },
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
@@ -3361,7 +3315,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Class = "DRUID",
             Coord = { x = 413.37, y = 4818.17 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
@@ -3380,7 +3334,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 944,
-            Note = { "Travel to The Master's Glaive" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = { x = 417.3, y = 4575.82 },
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
@@ -3392,7 +3345,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 944,
-            Note = { "Travel to The Master's Glaive" },
             Class = "DRUID",
             Coord = { x = 417.3, y = 4575.82 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
@@ -3550,7 +3502,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Thugs can `Disarm` you for 6 seconds", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Thugs can `Disarm` you for 6 seconds", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 414.95, y = 4564.81 },
             Fillers = { [1002] = { 1 } },
@@ -3560,7 +3512,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = { "HUNTER", "MAGE" },
             Coord = { x = 414.95, y = 4564.81 },
             Fillers = { [1002] = { 1 } },
@@ -3570,7 +3522,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = "DRUID",
             Coord = { x = 414.95, y = 4564.81 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -3654,7 +3606,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = { x = 452.67, y = 4684.98 },
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
@@ -3724,7 +3676,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Class = "DRUID",
             Coord = { x = 452.67, y = 4684.98 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
@@ -3786,7 +3738,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             PickUp = { 968 },
-            Note = { "Use the `Book: The Powers Below` to start the quest" },
             Button = { ["968"] = 5352 },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Fillers = { [1002] = { 1 }, [986] = { 1 } },
@@ -3795,7 +3746,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             PickUp = { 968 },
-            Note = { "Use the `Book: The Powers Below` to start the quest" },
             Button = { ["968"] = 5352 },
             Class = "DRUID",
             Fillers = { [1002] = { 1 }, [6123] = { 1 }, [986] = { 1 } },
@@ -3972,7 +3922,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
             _index = 328,
         },
         {
-            Note = { "Go to Moonglade" },
             LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
@@ -3982,7 +3931,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
             _index = 329,
         },
         {
-            Note = { "Fly to Darkshore" },
             UseFlightPath = 963,
             Class = "DRUID",
             Coord = { x = -2491.79, y = 7454.76 },
@@ -3994,7 +3942,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Fillers = { [1002] = { 1 } },
@@ -4005,7 +3952,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Fillers = { [1002] = { 1 } },
@@ -4016,7 +3962,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.806, 44.137),
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -4027,7 +3972,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 963,
-            Note = { "Return to Cerellean Whiteclaw on the dock" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
@@ -4124,7 +4068,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1138] = { 1 } },
-            Note = { "Kill Encrusted Tide Crawlers and Reef Crawlers. Loot them for their Fine Crab Chunks", "Be careful as Reef Crawlers can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
+            Note = { "Be careful as Reef Crawlers can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Fillers = { [1002] = { 1 } },
             Range = 30,
@@ -4140,7 +4084,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1138] = { 1 } },
-            Note = { "Kill Encrusted Tide Crawlers and Reef Crawlers. Loot them for their Fine Crab Chunks", "Be careful as Reef Crawlers can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
+            Note = { "Be careful as Reef Crawlers can cast `Muscle Tear` an instant attack dealing 30-55 damage" },
             Class = "DRUID",
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
             Range = 30,
@@ -4315,7 +4259,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2139] = { 1 } },
-            Note = { "Kill Den Mother", "Be careful as the Thistle Cubs can cast `Ravage`, a melee instant attack which stuns you for 2 seconds" },
+            Note = { "Be careful as the Thistle Cubs can cast `Ravage`, a melee instant attack which stuns you for 2 seconds" },
             Coord = { x = -430.27, y = 6662.65 },
             Fillers = { [1002] = { 1 } },
             Range = 10,
@@ -4370,7 +4314,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [4763] = { 1 } },
-            Note = { "Kill Xabraxxis. Open the Xabraxxis' Demon Bag he drops on the ground. Loot it for the Talisman of Corruption" },
+            Note = { "Open the Xabraxxis' Demon Bag he drops on the ground. Loot it for the Talisman of Corruption" },
             Button = { ["4763-1"] = 12347 },
             Coord = { x = -489.22, y = 6875.3 },
             Fillers = { [1002] = { 1 } },
@@ -4380,7 +4324,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [1002] = { 1 } },
-            Note = { "Kill Moonstalker Runts and Moonstalkers. Loot them for their Moonstalker Fangs" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.113, 29.1865),
             Range = 30,
             Zone = 1439,
@@ -4416,7 +4359,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [966] = { 1 } },
-            Note = { "Kill Dark Strand Fanatics. Loot them for their Worn Parchments" },
             Class = { "MAGE", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.2545, 26.768),
             Range = 30,
@@ -4488,7 +4430,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2098] = { 2 } },
-            Note = { "Kill Greymist Oracles and Greymist Tidehunters. Loot them for the Middle of Gelkak's Key", "Be aware of Greymist Oracles' `Lightning Bolt` damage and they can also heal with `Healing Wave`", "Care as Greymist Tidehunters can cast `Poison` while in melee leaving a dot dealing 13 damage per 3 seconds for 30 seconds", "You can LoS (Line of Sight) the Greymist Oracles'  `Lightning Bolts` around the sunken ship to avoid taking its damage" },
+            Note = { "Be aware of Greymist Oracles' `Lightning Bolt` damage and they can also heal with `Healing Wave`", "Care as Greymist Tidehunters can cast `Poison` while in melee leaving a dot dealing 13 damage per 3 seconds for 30 seconds", "You can LoS (Line of Sight) the Greymist Oracles'  `Lightning Bolts` around the sunken ship to avoid taking its damage" },
             Coord = { x = -656.25, y = 7801.04 },
             Range = 30,
             Zone = 1439,
@@ -4523,7 +4465,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2098] = { 3 } },
-            Note = { "Kill Raging Reef Crawlers and Encrusted Tide Crawlers. Loot them for the Bottom of Gelkak's Key", "Be aware of Raging Reef Crawlers' `Thrash` ability. You can take 200 damage instantly from their melee hits" },
+            Note = { "Be aware of Raging Reef Crawlers' `Thrash` ability. You can take 200 damage instantly from their melee hits" },
             Coord = { x = -767.6, y = 7805.84 },
             Range = 30,
             Zone = 1439,
@@ -4531,7 +4473,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2098,
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Coord = { x = -941.83, y = 7756.06 },
             Fillers = { [2098] = { 1 } },
             NonSkippableWaypoint = true,
@@ -4541,7 +4482,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2098,
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Coord = { x = -1080.03, y = 7922.87 },
             Fillers = { [2098] = { 1 } },
             NonSkippableWaypoint = true,
@@ -4551,7 +4491,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2098,
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Coord = { x = -1087.24, y = 7780.51 },
             Fillers = { [2098] = { 1 } },
             NonSkippableWaypoint = true,
@@ -4561,7 +4500,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 2098,
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Coord = { x = -1069.55, y = 7661.74 },
             Fillers = { [2098] = { 1 } },
             NonSkippableWaypoint = true,
@@ -4581,7 +4519,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [986] = { 1 } },
-            Note = { "Kill Moonstalker Sires and Moonstalker Matriarchs. Loot them for their Pelts", "Be aware of Moonstalker Matriarchs. They always attack with a Moonstalker Runt by their side", "Moonstalker Sires can cast `Exploit Weakness` a backstab attack dealing 20-40 damage if you turn your back to them" },
+            Note = { "Be aware of Moonstalker Matriarchs. They always attack with a Moonstalker Runt by their side", "Moonstalker Sires can cast `Exploit Weakness` a backstab attack dealing 20-40 damage if you turn your back to them" },
             Coord = { x = -1146.84, y = 7998.41 },
             Fillers = { [2098] = { 1 } },
             Range = 30,
@@ -4590,7 +4528,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Qpart = { [2098] = { 1 } },
-            Note = { "Kill Giant Foreststriders. Loot them for the Top of Gelkak's Key" },
             Class = { "ROGUE", "WARRIOR", "DRUID", "HUNTER", "MAGE" },
             Coord = { x = -1080.03, y = 7922.87 },
             Range = 30,
@@ -4697,7 +4634,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4763,
-            Note = { "Travel to Auberdine" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = { x = 577.92, y = 6371.65 },
             NonSkippableWaypoint = true,
@@ -4707,7 +4643,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-14-19"] = {
         },
         {
             Waypoint = 4763,
-            Note = { "Travel to Auberdine" },
             Class = "DRUID",
             Coord = { x = 577.92, y = 6371.65 },
             Fillers = { [1138] = { 1 } },
@@ -5073,7 +5008,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 399,
-            Note = { "Travel to the Mage Tower" },
             Class = "MAGE",
             Coord = { x = 874.32, y = -9014.67 },
             NonSkippableWaypoint = true,
@@ -5130,7 +5064,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Renzik \"The Shiv\"" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 374.11, y = -8762.88 },
             NonSkippableWaypoint = true,
@@ -5140,7 +5074,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Renzik \"The Shiv\"" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 326.66, y = -8818.01 },
             NonSkippableWaypoint = true,
@@ -5150,7 +5084,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 97220,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Renzik \"The Shiv\"" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 323.43, y = -8817.83 },
             NonSkippableWaypoint = true,
@@ -5326,7 +5260,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 31,
         },
         {
-            Note = { "Fly to Redridge Mountains" },
             UseFlightPath = 244,
             Coord = { x = 490.12, y = -8835.67 },
             NodeID = 5,
@@ -5507,7 +5440,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             Coord = { x = -2031.48, y = -9556.25 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
             NonSkippableWaypoint = true,
@@ -5517,7 +5449,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             Coord = { x = -1955.07, y = -9637.63 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
             NonSkippableWaypoint = true,
@@ -5527,7 +5458,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             Coord = { x = -1813.97, y = -9679.9 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
             NonSkippableWaypoint = true,
@@ -5537,7 +5467,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             Coord = { x = -1861.07, y = -9754.76 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
             NonSkippableWaypoint = true,
@@ -5546,7 +5475,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 61,
         },
         {
-            Note = { "Kill Tarantulas. Loot them for their Crisp Spider Meat" },
             LootItems = { { itemID = 1081, quantity = 5, questID = 92 } },
             Coord = { x = -1980.25, y = -9641.1 },
             Fillers = { [92] = { 1 }, [246] = { 1, 2 }, [98407] = { 1 } },
@@ -5555,7 +5483,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Qpart = { [246] = { 1, 2 }, [98407] = { 1 } },
-            Note = { "Kill Redridge Mongrels and Redridge Poachers", "Kill Redridge Thrashers. Loot them for their Spiked Collars" },
             Coord = { x = -2211.0, y = -9632.2355 },
             Fillers = { [92] = { 1 } },
             Range = 380,
@@ -5564,7 +5491,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Qpart = { [127] = { 1 } },
-            Note = { "Kill Murloc Shorestrikers and Murloc Minor Tidecallers. Loot them for their Fins and Sunfish", "Be aware this area is a hyperspawn, meaning the Murlocs respawn quickly" },
+            Note = { "Be aware this area is a hyperspawn, meaning the Murlocs respawn quickly" },
             Coord = { x = -2634.54, y = -9588.54 },
             Fillers = { [92] = { 1 } },
             Range = 30,
@@ -5580,7 +5507,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 65,
         },
         {
-            Note = { "Kill Dire Condors. Loot them for their Tough Condor Meat", "Skip this step if you aren't seeing any Dire Condors" },
+            Note = { "Skip this step if you aren't seeing any Dire Condors" },
             LootItems = { { itemID = 1080, quantity = 5, questID = 92 } },
             Coord = { x = -2903.07, y = -9691.34 },
             Fillers = { [92] = { 1 } },
@@ -5589,7 +5516,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Qpart = { [20] = { 1 } },
-            Note = { "Kill Blackrock Grunts and Blackrock Outrunners. Loot them for their Axes", "Be aware the Blackrock Outrunners will cast `Net` on you" },
+            Note = { "Be aware the Blackrock Outrunners will cast `Net` on you" },
             Coord = { x = -3176.27, y = -9674.62 },
             Fillers = { [92] = { 1 }, [98387] = { 1, 2 } },
             Range = 197,
@@ -5646,7 +5573,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 20,
-            Note = { "Travel to Lakeshire" },
             Coord = { x = -2298.06, y = -9284.04 },
             NonSkippableWaypoint = true,
             Range = 150.0,
@@ -5725,7 +5651,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 85,
         },
         {
-            Note = { "Set your hearthstone to Lakeshire" },
             SetHS = 92,
             Class = "DRUID",
             Coord = { x = -2152.62, y = -9223.67 },
@@ -5742,7 +5667,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Qpart = { [92] = { 1 } },
-            Note = { "Kill Great Goretusks. Loot them for their Great Goretusk Snouts", "Kill Tarantulas. Loot them for their Crisp Spider Meat", "Kill Dire Condors. Loot them for their Tough Condor Meat", "Do NOT sell any of these items until you turn the Redridge Goulash quest", "Save any `Chunks of Boar Meat` you loot as well as you can use them to level `Cooking` to 50 which is required for Duskwood later" },
+            Note = { "Do NOT sell any of these items until you turn the Redridge Goulash quest", "Save any `Chunks of Boar Meat` you loot as well as you can use them to level `Cooking` to 50 which is required for Duskwood later" },
             AllOf = { { ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 1080 } }, { ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 2296 } } },
             IsQuestOnQuest = 92,
             ItemCount = { operator = ">=", count = 5, includeUsableToys = true, itemID = 1081 },
@@ -5805,7 +5730,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 97,
         },
         {
-            Note = { "Fly to Darnassus" },
             UseFlightPath = 98393,
             Class = "DRUID",
             Coord = { x = -2400.33, y = 7795.33 },
@@ -5868,7 +5792,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 98404,
-            Note = { "Head to the Stormrage Barrow Dens" },
             Class = "DRUID",
             Coord = { x = -3046.7, y = 7534.4 },
             NonSkippableWaypoint = true,
@@ -5937,7 +5860,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 112,
         },
         {
-            Note = { "Fly to Darnassus" },
             UseFlightPath = 98397,
             Class = "DRUID",
             Coord = { x = -2400.33, y = 7795.33 },
@@ -5948,7 +5870,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 113,
         },
         {
-            Note = { "Fly to Darnassus" },
             UseFlightPath = 98397,
             Class = "DRUID",
             Coord = { x = -2400.33, y = 7795.33 },
@@ -5975,7 +5896,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 116,
         },
         {
-            Note = { "Fly to Stormwind City" },
             UseFlightPath = 120,
             Class = { "DRUID", "MAGE", "WARRIOR" },
             Coord = { x = -2234.89, y = -9435.35 },
@@ -5984,7 +5904,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 117,
         },
         {
-            Note = { "Fly to Stormwind City" },
             UseFlightPath = 2360,
             Class = "ROGUE",
             Coord = { x = -2234.89, y = -9435.35 },
@@ -6014,7 +5933,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 120,
-            Note = { "Travel to the Mage Tower" },
             Class = "MAGE",
             Coord = { x = 874.32, y = -9014.67 },
             NonSkippableWaypoint = true,
@@ -6054,7 +5972,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 374.11, y = -8762.88 },
             NonSkippableWaypoint = true,
@@ -6064,7 +5982,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 326.66, y = -8818.01 },
             NonSkippableWaypoint = true,
@@ -6074,7 +5992,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2360,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 323.43, y = -8817.83 },
             NonSkippableWaypoint = true,
@@ -6127,7 +6045,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 133,
         },
         {
-            Note = { "Fly to Westfall" },
             UseFlightPath = 2360,
             Class = "ROGUE",
             Coord = { x = 490.03, y = -8835.82 },
@@ -6233,7 +6150,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 145,
         },
         {
-            Note = { "Fly to Stormwind" },
             UseFlightPath = 2359,
             Class = "ROGUE",
             Coord = { x = 1037.42, y = -10628.27 },
@@ -6243,7 +6159,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Travel toward Shaina Fuller" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 42.938, 33.878),
             HasAura = 9991,
@@ -6254,7 +6169,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Travel toward Shaina Fuller" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 41.544, 31.33),
             HasAura = 9991,
@@ -6265,7 +6179,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Travel toward Shaina Fuller" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 41.688, 28.049),
             HasAura = 9991,
@@ -6276,7 +6189,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Travel toward Shaina Fuller" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 43.07, 26.155),
             HasAura = 9991,
@@ -6329,7 +6241,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 374.11, y = -8762.88 },
             NonSkippableWaypoint = true,
@@ -6339,7 +6251,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 326.66, y = -8818.01 },
             NonSkippableWaypoint = true,
@@ -6349,7 +6261,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 2359,
-            Note = { "Enter the SI:7 Headquarters. Travel up stairs toward Master Mathias Shaw" },
+            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
             Class = "ROGUE",
             Coord = { x = 323.43, y = -8817.83 },
             NonSkippableWaypoint = true,
@@ -6379,7 +6291,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 118,
-            Note = { "Travel to Goldshire" },
             Coord = { x = 84.61, y = -9457.95 },
             NonSkippableWaypoint = true,
             Range = 60.0,
@@ -6400,7 +6311,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 119,
-            Note = { "Travel to the Tower of Azora. Ascend the tower" },
+            Note = { "Ascend the tower" },
             Coord = { x = -727.57, y = -9555.16 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -6416,7 +6327,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Waypoint = 119,
-            Note = { "Travel to Redridge", "Fly to Redridge", "If you're in Goldshire it will be faster to Fly from Stormwind", "If you're at the Tower of Azora simply run to Redridge" },
+            Note = { "Fly to Redridge", "If you're in Goldshire it will be faster to Fly from Stormwind", "If you're at the Tower of Azora simply run to Redridge" },
             Coord = { x = 489.72, y = -8837.28 },
             NonSkippableWaypoint = true,
             Range = 5,
@@ -6424,7 +6335,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
             _index = 166,
         },
         {
-            Note = { "Travel to Redridge", "Fly to Redridge", "If you're in Goldshire it will be faster to Fly from Stormwind", "If you're at the Tower of Azora simply run to Redridge" },
+            Note = { "Travel to Redridge", "If you're in Goldshire it will be faster to Fly from Stormwind", "If you're at the Tower of Azora simply run to Redridge" },
             UseFlightPath = 119,
             Coord = { x = -1716.28, y = -9623.29 },
             NodeID = 5,
@@ -6560,7 +6471,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Qpart = { [124] = { 1, 2 }, [89] = { 1, 2 } },
-            Note = { "Kill Redridge Brutes and Redridge Mystics. Loot them for their Iron Pikes and Iron Rivets" },
             Coord = { x = -2231.2, y = -9090.165 },
             Fillers = { [122] = { 1 } },
             Range = 269,
@@ -6596,7 +6506,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Redridge-Mountains"] = {
         },
         {
             Qpart = { [122] = { 1 } },
-            Note = { "Kill Black Dragon Whelps. Loot them for their Scales" },
             Coord = { x = -2364.92, y = -9645.44 },
             Range = 30,
             Zone = 1433,
@@ -6862,7 +6771,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Coord = { x = 452.67, y = 4684.98 },
             Range = 30,
             Zone = 1439,
@@ -6997,7 +6906,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [970] = { 1 } },
-            Note = { "Kill Dark Strand Cultists, Dark Strand Adepts, Dark Strand Enforcers and Dark Strand Excavators. Loot them for the Glowing Soul Gem", "Be patient, this item has a low droprate" },
+            Note = { "Be patient, this item has a low droprate" },
             Coord = { x = -102.08, y = 3492.89 },
             Range = 30,
             Zone = 1440,
@@ -7141,7 +7050,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
             _index = 54,
         },
         {
-            Note = { "Get the Astranaar Flight Path" },
             GetFP = 28,
             Coord = { x = -283.73, y = 2827.92 },
             Fillers = { [93] = { 1 } },
@@ -7173,7 +7081,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
             _index = 59,
         },
         {
-            Note = { "Set your Hearthstone to Astranaar" },
             SetHS = 1020,
             Coord = { x = -433.09, y = 2781.02 },
             Zone = 1440,
@@ -7273,7 +7180,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [973] = { 1 } },
-            Note = { "Kill Ilkrud Magthrull. Loot him for his Tome", "Ilkrud Magthrull will cast `Ilkrud's Guardians` which is a 5 second long cast and will summon 2 Voidwalkers. Stop this cast if you're able to", "Clear an exit path if needed so you can reset them along with the Succubus if needed. You may skip this and do it at level 23 if you wish" },
+            Note = { "Ilkrud Magthrull will cast `Ilkrud's Guardians` which is a 5 second long cast and will summon 2 Voidwalkers. Stop this cast if you're able to", "Clear an exit path if needed so you can reset them along with the Succubus if needed. You may skip this and do it at level 23 if you wish" },
             Coord = { x = 242.76, y = 2340.53 },
             Range = 10,
             Zone = 1440,
@@ -7323,7 +7230,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1009] = { 1 } },
-            Note = { "Kill Ruuzel. Loot her for the Ring of Zoram", "Ruuzel patrols the island with a Wrathtail Myrmidon and Wrathtail Sea Witch. Kill one of them and then reset them if needed", "If you have any `Bombs`/`Grenades` you can also use them to split pull Ruuzel", "Lady Vespia is a rarespawn that can also drop the Ring of Zoram if you see her" },
+            Note = { "Ruuzel patrols the island with a Wrathtail Myrmidon and Wrathtail Sea Witch. Kill one of them and then reset them if needed", "If you have any `Bombs`/`Grenades` you can also use them to split pull Ruuzel", "Lady Vespia is a rarespawn that can also drop the Ring of Zoram if you see her" },
             Coord = { x = 1323.55, y = 4159.35 },
             Fillers = { [1008] = { 1 } },
             HasSpell = 4036,
@@ -7333,7 +7240,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1009] = { 1 } },
-            Note = { "Kill Ruuzel. Loot her for the Ring of Zoram", "Ruuzel patrols the island with a Wrathtail Myrmidon and Wrathtail Sea Witch. Kill one of them and then reset them if needed", "Lady Vespia is a rarespawn that can also drop the Ring of Zoram if you see her" },
+            Note = { "Ruuzel patrols the island with a Wrathtail Myrmidon and Wrathtail Sea Witch. Kill one of them and then reset them if needed", "Lady Vespia is a rarespawn that can also drop the Ring of Zoram if you see her" },
             Coord = { x = 1323.55, y = 4159.35 },
             Fillers = { [1008] = { 1 } },
             Range = 30,
@@ -7342,7 +7249,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1008] = { 1 } },
-            Note = { "Kill Wrathtail Nagas. Loot them for their Heads" },
             Coord = { x = 1069.7, y = 3803.65 },
             Range = 435,
             Zone = 1440,
@@ -7408,7 +7314,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
         },
         {
             Qpart = { [1023] = { 1 } },
-            Note = { "Kill Saltspittle Murlocs. Loot them for the Glowing Gem", "Be careful as the Oracles can heal, and have a 90 damage instant-cast shock spell every few seconds" },
+            Note = { "Be careful as the Oracles can heal, and have a 90 damage instant-cast shock spell every few seconds" },
             Coord = { x = 528.79, y = 3045.86 },
             Range = 30,
             Zone = 1440,
@@ -7422,7 +7328,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
         },
         {
             Waypoint = 731,
-            Note = { "Travel to Astranaar" },
             Coord = { x = -283.73, y = 2827.92 },
             Hardcore = true,
             NonSkippableWaypoint = true,
@@ -7431,7 +7336,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
             _index = 92,
         },
         {
-            Note = { "Fly to Darkshore" },
             UseFlightPath = 731,
             Coord = { x = -284.31, y = 2828.69 },
             NodeID = 26,
@@ -7468,7 +7372,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-19-21-Hunter"] = {
             _index = 98,
         },
         {
-            Note = { "Fly to Teldrassil" },
             UseFlightPath = 741,
             Coord = { x = 561.66, y = 6343.27 },
             NodeID = 27,
@@ -7543,7 +7446,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
             _index = 1,
         },
         {
-            Note = { "Go to Moonglade" },
             LearnSkill = { allAvailable = true },
             Class = "DRUID",
             Coord = { x = -2593.82, y = 7867.06 },
@@ -7590,7 +7492,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             Waypoint = 948,
-            Note = { "Travel to the Grove of the Ancients" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.555, 76.293),
             Fillers = { [1003] = { 1 } },
             NonSkippableWaypoint = true,
@@ -7614,7 +7515,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             Waypoint = 944,
-            Note = { "Travel to The Master's Glaive" },
             Coord = { x = 417.3, y = 4575.82 },
             Fillers = { [1003] = { 1 } },
             IsQuestOnQuest = 944,
@@ -7690,7 +7590,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Thugs can `Disarm` you for 6 seconds", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Thugs can `Disarm` you for 6 seconds", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 414.95, y = 4564.81 },
             Range = 99,
@@ -7699,7 +7599,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Kill Twilight Disciples and Twilight Thugs. Loot them for the Peerless Eye and `Book: The Powers Below`", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            Note = { "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
             Class = { "DRUID", "MAGE" },
             Coord = { x = 414.95, y = 4564.81 },
             Range = 99,
@@ -7708,7 +7608,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             PickUp = { 968 },
-            Note = { "Use the `Book: The Powers Below` to start the quest" },
             Button = { ["968"] = 5352 },
             ItemCount = { operator = ">=", count = 1, includeUsableToys = true, itemID = 5352 },
             _index = 23,
@@ -7789,7 +7688,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             Qpart = { [1138] = { 1 } },
-            Note = { "Kill Encrusted Tide Crawlers and Reef Crawlers. Loot them for their Fine Crab Chunks" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 34.5005, 76.808),
             Range = 30,
             Zone = 1439,
@@ -7847,7 +7745,7 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             Qpart = { [1003] = { 1 } },
-            Note = { "Kill Grizzled Thistle Bears. Loot them for their Scalps", "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
+            Note = { "Be careful as they cast `Ravage` an instant attack dealing 20-40 damage and knocking you down for 2 seconds" },
             Coord = { x = 452.67, y = 4684.98 },
             Range = 30,
             Zone = 1439,
@@ -7890,7 +7788,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             Waypoint = 993,
-            Note = { "Travel toward Volcor in the Cave" },
             Coord = { x = -5.83, y = 4608.57 },
             IsQuestOnQuest = 993,
             NonSkippableWaypoint = true,
@@ -7962,7 +7859,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
         },
         {
             Qpart = { [970] = { 1 } },
-            Note = { "Kill Dark Strand Cultists and Dark Strand Adepts. Loot them for the Glowing Soul Gem" },
             Coord = { x = -102.08, y = 3492.89 },
             Range = 30,
             Zone = 1440,
@@ -8144,7 +8040,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
             _index = 76,
         },
         {
-            Note = { "Get the Astranaar Flight Path" },
             GetFP = 28,
             Coord = { x = -283.73, y = 2827.92 },
             Zone = 1440,
@@ -8175,7 +8070,6 @@ APR.RouteQuestStepList["Forever-Alliance-Skyborne-Darkshore-20-21"] = {
             _index = 81,
         },
         {
-            Note = { "Set your Hearthstone to Astranaar" },
             SetHS = 1020,
             Coord = { x = -433.09, y = 2781.02 },
             Zone = 1440,
@@ -8289,7 +8183,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 9,
         },
         {
-            Note = { "Get the The Crossroads flight path" },
             GetFP = 25,
             Coord = { x = -2595.75, y = -437.35 },
             IsQuestUncompleted = 1492,
@@ -8309,7 +8202,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 12,
         },
         {
-            Note = { "Set your Hearthstone to Crossroads" },
             SetHS = 844,
             Coord = { x = -2645.4, y = -406.94 },
             IsQuestUncompleted = 1492,
@@ -8318,7 +8210,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Kill a Razormane Water Seeker or Razormane Thornweaver. Loot them for a Fire Tar" },
             Class = "SHAMAN",
             Coord = { x = -2947.38, y = -92.1 },
             Fillers = { [844] = { 1 }, [1525] = { 1 } },
@@ -8329,7 +8220,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Kill a Razormane Water Seeker or Razormane Thornweaver. Loot them for a Fire Tar" },
             Class = "SHAMAN",
             Coord = { x = -2869.35, y = -49.54 },
             Fillers = { [844] = { 1 }, [1525] = { 1 } },
@@ -8380,7 +8270,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [871] = { 1, 2, 3 } },
-            Note = { "Kill Water Seekers, Thornweavers and Hunters" },
             Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" },
             Coord = { x = -2918.495, y = -141.08 },
             Fillers = { [844] = { 1 } },
@@ -8390,7 +8279,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [1525] = { 1 } },
-            Note = { "Kill a Razormane Water Seeker or Razormane Thornweaver. Loot them for a Fire Tar" },
             Class = "SHAMAN",
             Coord = { x = -2805.51, y = -111.02 },
             Fillers = { [844] = { 1 } },
@@ -8400,7 +8288,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [871] = { 1, 2, 3 } },
-            Note = { "Kill Water Seekers, Thornweavers and Hunters" },
             Class = "SHAMAN",
             Coord = { x = -2918.495, y = -141.08 },
             Fillers = { [844] = { 1 }, [1525] = { 1 } },
@@ -8410,7 +8297,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [844] = { 1 } },
-            Note = { "Kill Plainstriders. Loot them for their Beaks" },
             Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" },
             Coord = { x = -2634.26, y = -387.01 },
             Fillers = { [869] = { 1 } },
@@ -8420,7 +8306,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [844] = { 1 } },
-            Note = { "Kill Plainstriders. Loot them for their Beaks" },
             Class = "SHAMAN",
             Coord = { x = -2634.26, y = -387.01 },
             Fillers = { [1525] = { 1 }, [869] = { 1 } },
@@ -8619,7 +8504,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 3 } },
-            Note = { "Kill Kreenig Snarlsnout. Loot him for his Tusk" },
             Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" },
             Coord = { x = -3324.34, y = -217.09 },
             Fillers = { [5041] = { 1 } },
@@ -8629,7 +8513,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 3 } },
-            Note = { "Kill Kreenig Snarlsnout. Loot him for his Tusk" },
             Class = "SHAMAN",
             Coord = { x = -3324.34, y = -217.09 },
             Fillers = { [1525] = { 1 }, [5041] = { 1 } },
@@ -8659,7 +8542,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 1, 2 } },
-            Note = { "Kill Razormane Geomancers and Razormane Defenders" },
             Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" },
             Coord = { x = -3273.165, y = -60.01 },
             Range = 208,
@@ -8668,7 +8550,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 1, 2 } },
-            Note = { "Kill Razormane Geomancers and Razormane Defenders" },
             Class = "SHAMAN",
             Coord = { x = -3273.165, y = -60.01 },
             Fillers = { [1525] = { 1 } },
@@ -8693,7 +8574,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel toward Durotar" },
             Class = "SHAMAN",
             Coord = { x = -3905.13, y = -228.41 },
             Fillers = { [1525] = { 1 }, [869] = { 1 }, [845] = { 1 } },
@@ -8705,7 +8585,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3905.13, y = -228.41 },
             Fillers = { [1525] = { 1 } },
@@ -8716,7 +8596,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3899.31, y = -241.45 },
             Fillers = { [1525] = { 1 } },
@@ -8727,7 +8607,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3899.31, y = -241.45 },
             Fillers = { [1525] = { 1 } },
@@ -8738,7 +8618,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3906.71, y = -270.71 },
             Fillers = { [1525] = { 1 } },
@@ -8749,7 +8629,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3910.94, y = -247.45 },
             Fillers = { [1525] = { 1 } },
@@ -8760,7 +8640,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3931.56, y = -240.75 },
             Fillers = { [1525] = { 1 } },
@@ -8771,7 +8651,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3964.35, y = -242.51 },
             Fillers = { [1525] = { 1 } },
@@ -8782,7 +8662,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -3974.39, y = -228.76 },
             Fillers = { [1525] = { 1 } },
@@ -8793,7 +8673,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -4020.92, y = -219.95 },
             Fillers = { [1525] = { 1 } },
@@ -8804,7 +8684,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -4034.67, y = -232.64 },
             Fillers = { [1525] = { 1 } },
@@ -8815,7 +8695,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1525,
-            Note = { "Travel the path up the mountain toward Telf" },
+            Note = { "Follow the path up the mountain" },
             Class = "SHAMAN",
             Coord = { x = -4033.08, y = -255.91 },
             Fillers = { [1525] = { 1 } },
@@ -8826,7 +8706,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [1525] = { 1 } },
-            Note = { "Kill a Razormane Water Seeker or Razormane Thornweaver. Loot them for a Fire Tar" },
             Class = "SHAMAN",
             Coord = { x = -2805.51, y = -111.02 },
             Range = 30,
@@ -8858,7 +8737,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [1526] = { 1 } },
-            Note = { "Kill the Minor Manifestation of Fire. Loot him for a Glowing Ember" },
             Class = "SHAMAN",
             Coord = { x = -4022.51, y = -243.92 },
             Range = 10,
@@ -8909,7 +8787,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 845,
-            Note = { "Travel to Ratchet" },
             Coord = { x = -3728.66, y = -835.29 },
             Fillers = { [845] = { 1 } },
             IsQuestOnQuest = 845,
@@ -8925,7 +8802,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 77,
         },
         {
-            Note = { "Get the Ratchet flight path" },
             GetFP = 80,
             Coord = { x = -3770.2, y = -898.12 },
             Zone = 1413,
@@ -9012,7 +8888,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [895] = { 1 } },
-            Note = { "Kill Baron Longshore. Loot him for his Head", "He can be found in one of the camps" },
+            Note = { "He can be found in one of the camps" },
             Coord = { x = -3804.15, y = -1659.555 },
             Fillers = { [887] = { 1, 2 } },
             Range = 169,
@@ -9021,7 +8897,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [887] = { 1, 2 } },
-            Note = { "Kill Southsea Brigands and Southsea Cannoneers" },
             Coord = { x = -3863.43, y = -1468.01 },
             Range = 160,
             Zone = 1413,
@@ -9094,7 +8969,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 99,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 5041,
             Coord = { x = -3770.2, y = -898.12 },
             IsQuestOnQuest = 845,
@@ -9106,7 +8980,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [845] = { 1 } },
-            Note = { "Finish killing Zhevras. Loot them for their Hooves" },
             Coord = { x = -2626.15, y = -930.21 },
             Fillers = { [869] = { 1 } },
             Range = 437,
@@ -9115,7 +8988,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 5041,
-            Note = { "Travel to the Hunter Rise" },
             Class = { "HUNTER", "WARRIOR" },
             Coord = { x = -123.26, y = -1394.49 },
             NonSkippableWaypoint = true,
@@ -9167,7 +9039,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [850] = { 1 } },
-            Note = { "Kill Barak Kodobane. Loot him for his Head", "Be careful as Barak Kodobane's melee hits deal a LOT of damage and he is protected by a Kolkar Wrangler. They can net you and shoot at you from ranged distance" },
+            Note = { "Be careful as Barak Kodobane's melee hits deal a LOT of damage and he is protected by a Kolkar Wrangler. They can net you and shoot at you from ranged distance" },
             Coord = { x = -1716.18, y = 23.43 },
             Fillers = { [855] = { 1 }, [848] = { 1 } },
             Range = 10,
@@ -9194,7 +9066,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [855] = { 1 } },
-            Note = { "Kill Kolkar Wranglers and Kolkar Stormers. Loot them for their Bracers", "This quest does not have to be completed now" },
+            Note = { "This quest does not have to be completed now" },
             Range = 30,
             _index = 112,
         },
@@ -9219,7 +9091,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [867] = { 1 } },
-            Note = { "Kill Witchwing Harpies and Witchwing Roguefeathers. Loot them for their Talons" },
             Coord = { x = -1565.19, y = 469.34 },
             Fillers = { [903] = { 1 }, [821] = { 1 } },
             Range = 212,
@@ -9258,7 +9129,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [95494] = { 1 }, [821] = { 1 } },
-            Note = { "Kill Savannah Patriarchs. Loot them for their Hides and Tusks" },
             Coord = { x = -1856.4, y = 566.85 },
             Fillers = { [95507] = { 1 } },
             Range = 186,
@@ -9344,7 +9214,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [95621] = { 1 } },
-            Note = { "Kill Corporal Adamore" },
             Fillers = { [821] = { 2 } },
             Range = 10,
             _index = 131,
@@ -9472,7 +9341,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [901] = { 1 } },
-            Note = { "Kill Tinkerer Sniggles in the building. Loot him for his Console Key" },
             Coord = { x = -2731.54, y = 909.85 },
             Range = 10,
             Zone = 1413,
@@ -9494,7 +9362,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [869] = { 1 } },
-            Note = { "Kill Raptors. Loot them for their Heads" },
             Coord = { x = -2815.95, y = 746.655 },
             Fillers = { [821] = { 2, 1 }, [903] = { 1 } },
             Range = 393,
@@ -9503,7 +9370,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [903] = { 1 }, [821] = { 1 } },
-            Note = { "Kill Savannah Prowlers. Loot them for their Claws and Tusks" },
             Coord = { x = -2903.45, y = 586.45 },
             Range = 182,
             Zone = 1413,
@@ -9573,7 +9439,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [858] = { 1 } },
-            Note = { "Kill Supervisor Lugwizzle. Loot him for his Key", "He patrols up and down the platform" },
+            Note = { "He patrols up and down the platform" },
             Coord = { x = -3086.2, y = 1055.78 },
             Range = 10,
             Zone = 1413,
@@ -9626,7 +9492,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [896] = { 1 } },
-            Note = { "Kill Venture Co. Enforcers and Venture Co. Overseers. Loot them for Cats Eye Emerald", "If it hasn't dropped after 25+ mobs, feel free to skip this quest" },
+            Note = { "If it hasn't dropped after 25+ mobs, feel free to skip this quest" },
             Coord = { x = -3619.22, y = 1310.83 },
             Fillers = { [821] = { 2 } },
             Range = 125,
@@ -9708,7 +9574,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4560.0, y = 1908.5 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -9717,7 +9582,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4587.0, y = 1918.3 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -9726,7 +9590,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4608.0, y = 1897.4 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -9735,7 +9598,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4632.3, y = 1911.6 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -9913,7 +9775,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 201,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 869,
             Coord = { x = -4313.46, y = 1676.25 },
             NodeID = 25,
@@ -10018,7 +9879,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [881] = { 1 } },
-            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "Kill Echeyakee. Loot him for Echeyakee's Hide", "If Echeyakee doesn't spawn after using the `Horn of Echeyakee` or you didn't get the tag when it did spawn, skip this step" },
+            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "If Echeyakee doesn't spawn after using the `Horn of Echeyakee` or you didn't get the tag when it did spawn, skip this step" },
             Button = { ["881-1"] = 10327 },
             Coord = { x = -3031.48, y = 461.91 },
             Range = 10,
@@ -10042,7 +9903,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [881] = { 1 } },
-            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "Kill Echeyakee. Loot him for Echeyakee's Hide" },
+            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee" },
             Button = { ["881-1"] = 10327 },
             Coord = { x = -3031.48, y = 461.91 },
             Range = 10,
@@ -10074,7 +9935,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 225,
         },
         {
-            Note = { "Fly to Ratchet" },
             UseFlightPath = 902,
             Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" },
             Coord = { x = -2595.75, y = -437.35 },
@@ -10083,7 +9943,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 226,
         },
         {
-            Note = { "Fly to Ratchet" },
             UseFlightPath = 2382,
             Class = "ROGUE",
             Coord = { x = -2595.75, y = -437.35 },
@@ -10412,7 +10271,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [851] = { 1 } },
-            Note = { "Kill Verog. Loot him for his Head", "He has a chance of spawning every time a Kolkar is killed", "On a highly populated server or fresh launch, your best option is camping his spawnpoint" },
+            Note = { "He has a chance of spawning every time a Kolkar is killed", "On a highly populated server or fresh launch, your best option is camping his spawnpoint" },
             Coord = { x = -2742.68, y = -1208.23 },
             Fillers = { [848] = { 1 } },
             Range = 10,
@@ -10464,7 +10323,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             PickUp = { 883 },
-            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "Use the `Hoof of Lakota'mani` to start the quest", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him or can't kill him. You can come back for him later" },
+            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him or can't kill him. You can come back for him later" },
             Button = { ["883"] = 5099 },
             Coord = { x = -2453.88, y = -1991.28 },
             Fillers = { [821] = { 2, 3 } },
@@ -10474,7 +10333,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 883,
-            Note = { "Travel to Camp Taurajo" },
             Coord = { x = -1960.39, y = -2333.83 },
             Fillers = { [821] = { 3 } },
             NonSkippableWaypoint = true,
@@ -10483,7 +10341,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 273,
         },
         {
-            Note = { "Set your Hearthstone to Camp Taurajo" },
             SetHS = 883,
             Coord = { x = -1995.86, y = -2376.39 },
             IsQuestUncompleted = 1093,
@@ -10511,7 +10368,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 277,
         },
         {
-            Note = { "Get the Camp Taurajo flight path", "Fly to The Crossroads" },
+            Note = { "Fly to The Crossroads" },
             GetFP = 77,
             Coord = { x = -1881.35, y = -2384.5 },
             OnlyInZones = { 1413 },
@@ -10519,7 +10376,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 278,
         },
         {
-            Note = { "Get the Camp Taurajo flight path", "Fly to The Crossroads" },
+            Note = { "Get the Camp Taurajo flight path" },
             UseFlightPath = 848,
             Coord = { x = -1881.35, y = -2384.5 },
             NodeID = 25,
@@ -10730,7 +10587,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [875] = { 1 } },
-            Note = { "Kill Witchwing Slayers. Loot them for their Rings", "Be careful as Witchwing Slayers cast `Execute` (deals a LOT of damage when you're at <20% health), and Witchwing Ambushers are `Stealthed` and patrol around", "Watch out for Witchwing Ambushers. They are stealthed and patrol in the area" },
+            Note = { "Be careful as Witchwing Slayers cast `Execute` (deals a LOT of damage when you're at <20% health), and Witchwing Ambushers are `Stealthed` and patrol around", "Watch out for Witchwing Ambushers. They are stealthed and patrol in the area" },
             Coord = { x = -1304.76, y = 589.94 },
             Fillers = { [821] = { 2 } },
             Range = 224,
@@ -10739,7 +10596,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            Note = { "Travel toward Seereth" },
             Coord = { x = -950.1, y = -271.14 },
             Fillers = { [821] = { 2 } },
             NonSkippableWaypoint = true,
@@ -10817,7 +10673,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6548] = { 1, 2 } },
-            Note = { "Kill Grimtotem Ruffians and Grimtotem Mercenaries" },
             Coord = { x = -758.255, y = 54.42 },
             Range = 180,
             Zone = 1442,
@@ -10857,7 +10712,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6629] = { 1, 2 } },
-            Note = { "Kill Grundig Darkcloud and Grimtotem Brutes", "Make sure you kill all six Grimtotem Brutes before starting the quest inside" },
+            Note = { "Make sure you kill all six Grimtotem Brutes before starting the quest inside" },
             Coord = { x = -350.74, y = 112.06 },
             IsQuestCompleted = 6548,
             Range = 30,
@@ -10938,7 +10793,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Kill Deepmoss Creepers" },
             Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" },
             Coord = { x = 560.49, y = 440.94 },
             Range = 30,
@@ -10977,7 +10831,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Kill Deepmoss Creepers", "Save any `Small Venom Sacs` you loot" },
+            Note = { "Save any `Small Venom Sacs` you loot" },
             Class = "ROGUE",
             Coord = { x = 560.49, y = 440.94 },
             Range = 30,
@@ -10986,7 +10840,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 6284,
-            Note = { "Travel to Sun Rock Retreat" },
             Coord = { x = 735.8, y = 925.8 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -10995,7 +10848,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 6284,
-            Note = { "Travel to Sun Rock Retreat" },
             Coord = { x = 806.12, y = 929.05 },
             NonSkippableWaypoint = true,
             Range = 5,
@@ -11049,7 +10901,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 344,
         },
         {
-            Note = { "Get the Sun Rock Retreat flight path" },
             GetFP = 29,
             Coord = { x = 1041.99, y = 967.8 },
             Zone = 1442,
@@ -11057,7 +10908,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1483,
-            Note = { "Travel toward Ziz" },
             Coord = { x = 365.16, y = 878.25 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -11078,7 +10928,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 2 } },
-            Note = { "Kill Deepmoss Venomspitters" },
             Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" },
             Coord = { x = 219.635, y = 915.86 },
             Fillers = { [1069] = { 1 } },
@@ -11088,7 +10937,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 2 } },
-            Note = { "Kill Deepmoss Venomspitters", "Save any `Small Venom Sacs` you loot" },
+            Note = { "Save any `Small Venom Sacs` you loot" },
             Class = "ROGUE",
             Coord = { x = 219.635, y = 915.86 },
             Fillers = { [1069] = { 1 } },
@@ -11126,7 +10975,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [1093] = { 1 } },
-            Note = { "Kill Venture Co. Operators. Loot them for their Blueprints" },
             Coord = { x = -74.83, y = 1288.545 },
             Fillers = { [1062] = { 1 } },
             Range = 444,
@@ -11135,7 +10983,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [1062] = { 1 } },
-            Note = { "Kill Venture Co. Loggers" },
             Coord = { x = 74.85, y = 1144.29 },
             Range = 322,
             Zone = 1442,
@@ -11167,7 +11014,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Finish killing Deepmoss Creepers" },
             Class = { "DRUID", "HUNTER", "SHAMAN", "WARRIOR" },
             Coord = { x = 129.535, y = 308.74 },
             Range = 436,
@@ -11176,7 +11022,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Finish killing Deepmoss Creepers", "Save any `Small Venom Sacs` you loot" },
+            Note = { "Save any `Small Venom Sacs` you loot" },
             Class = "ROGUE",
             Coord = { x = 129.535, y = 308.74 },
             Range = 436,
@@ -11254,7 +11100,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             PickUp = { 883 },
-            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "Use the `Hoof of Lakota'mani` to start the quest", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him" },
+            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him" },
             Button = { ["883"] = 5099 },
             Coord = { x = -2202.575, y = -1847.375 },
             Fillers = { [821] = { 3 }, [878] = { 1, 2, 3 }, [899] = { 1 } },
@@ -11264,7 +11110,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [95774] = { 1 } },
-            Note = { "Kill Razormane Raiders. Loot them for Olgra's Adornments" },
             Coord = { x = -2349.75, y = -1924.8 },
             Fillers = { [821] = { 3 } },
             Range = 198,
@@ -11273,7 +11118,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [878] = { 1, 2, 3 }, [899] = { 1 } },
-            Note = { "Kill Bristleback Quilboars. Loot them for their Tusks. Save the `Blood Shards` you get" },
+            Note = { "Save the `Blood Shards` you get" },
             Coord = { x = -2649.965, y = -2092.285 },
             Fillers = { [821] = { 3 } },
             Range = 306,
@@ -11282,7 +11127,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [821] = { 3 } },
-            Note = { "Kill Stormsnouts. Loot them for a Horn" },
             Coord = { x = -2439.19, y = -2070.33 },
             Range = 200,
             Zone = 1413,
@@ -11290,7 +11134,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [821] = { 2 } },
-            Note = { "Finish killing Plainstriders. Loot them for their Kidneys" },
             Coord = { x = -2903.8, y = -1753.47 },
             Fillers = { [865] = { 1 } },
             Range = 194,
@@ -11299,7 +11142,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [865] = { 1 } },
-            Note = { "Finish killing Sunscale Scytheclaws. Loot them for their Horns", "Be careful as they cast `Thrash` (Charges 2 extra attacks every 10 seconds)" },
+            Note = { "Be careful as they cast `Thrash` (Charges 2 extra attacks every 10 seconds)" },
             Coord = { x = -2914.95, y = -1772.385 },
             Range = 453,
             Zone = 1413,
@@ -11416,7 +11259,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 391,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 875,
             Coord = { x = -3770.2, y = -898.12 },
             NodeID = 25,
@@ -11487,7 +11329,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 401,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 1528,
             Class = "SHAMAN",
             Coord = { x = -2595.75, y = -437.35 },
@@ -11540,7 +11381,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 407,
         },
         {
-            Note = { "Fly to Ratchet" },
             UseFlightPath = 1528,
             Class = "SHAMAN",
             Coord = { x = -4313.6, y = 1676.24 },
@@ -11564,7 +11404,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 410,
         },
         {
-            Note = { "Fly to Crossroads" },
             UseFlightPath = 878,
             Class = "SHAMAN",
             Coord = { x = -3770.2, y = -898.12 },
@@ -11587,7 +11426,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 413,
         },
         {
-            Note = { "Fly to Camp Taurajo" },
             UseFlightPath = 878,
             Class = "SHAMAN",
             Coord = { x = -3770.2, y = -898.12 },
@@ -11596,7 +11434,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 414,
         },
         {
-            Note = { "Fly to Camp Taurajo" },
             UseFlightPath = 878,
             Coord = { x = -2595.75, y = -437.35 },
             NodeID = 77,
@@ -11670,7 +11507,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -1899.59, y = -2624.34 },
             Fillers = { [884] = { 1 } },
@@ -11681,7 +11518,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2016.12, y = -2650.02 },
             Fillers = { [884] = { 1 } },
@@ -11692,7 +11529,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2363.7, y = -2537.19 },
             Fillers = { [884] = { 1 } },
@@ -11703,7 +11540,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             PickUp = { 884 },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Fillers = { [884] = { 1 } },
@@ -11713,7 +11550,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [907] = { 1 } },
-            Note = { "Kill Thunder Lizards. Loot them for their Blood" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2135.695, y = -2514.895 },
             Fillers = { [884] = { 1 } },
@@ -11723,7 +11559,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [884] = { 1 } },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Range = 80.0,
@@ -11764,7 +11600,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = "SHAMAN",
             Coord = { x = -1899.59, y = -2624.34 },
@@ -11776,7 +11612,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = "SHAMAN",
             Coord = { x = -2016.12, y = -2650.02 },
@@ -11788,7 +11624,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = "SHAMAN",
             Coord = { x = -2363.7, y = -2537.19 },
@@ -11800,7 +11636,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             PickUp = { 884 },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = "SHAMAN",
             Coord = { x = -2400.18, y = -2398.01 },
@@ -11869,7 +11705,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -1899.59, y = -2624.34 },
             Fillers = { [884] = { 1 } },
@@ -11880,7 +11716,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2016.12, y = -2650.02 },
             Fillers = { [884] = { 1 } },
@@ -11891,7 +11727,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2363.7, y = -2537.19 },
             Fillers = { [884] = { 1 } },
@@ -11902,7 +11738,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             PickUp = { 884 },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Fillers = { [884] = { 1 } },
@@ -11912,7 +11748,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [913] = { 1 } },
-            Note = { "Kill a Thunderhawk Hatchling or a Thunderhawk Cloudscraper. Loot it for its Thunderhawk Wings" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2058.68, y = -2434.83 },
             Fillers = { [884] = { 1 } },
@@ -11922,7 +11757,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [884] = { 1 } },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Class = { "DRUID", "ROGUE", "WARRIOR", "HUNTER", "SHAMAN" },
             Coord = { x = -2400.18, y = -2398.01 },
@@ -12015,7 +11850,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 463,
         },
         {
-            Note = { "Fly to Thunder Bluff" },
             UseFlightPath = 853,
             Class = "SHAMAN",
             Coord = { x = -1881.35, y = -2384.5 },
@@ -12061,7 +11895,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 469,
         },
         {
-            Note = { "Set your Hearthstone to Thunder Bluff" },
             SetHS = 853,
             Coord = { x = 38.32, y = -1300.48 },
             IsQuestUncompleted = 6442,
@@ -12166,7 +11999,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1489,
-            Note = { "Travel to the Elder Rise" },
             Coord = { x = -212.71, y = -1065.01 },
             NonSkippableWaypoint = true,
             Range = 80.0,
@@ -12270,7 +12102,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 496,
         },
         {
-            Note = { "Fly to Thunder Bluff" },
             UseFlightPath = 852,
             Class = "DRUID",
             Coord = { x = -2403.61, y = 7785.31 },
@@ -12281,7 +12112,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 852,
-            Note = { "Travel to the Hunter Rise" },
             Class = "HUNTER",
             Coord = { x = -123.26, y = -1394.49 },
             NonSkippableWaypoint = true,
@@ -12332,7 +12162,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 852,
-            Note = { "Travel to the Hunter Rise" },
             Class = "WARRIOR",
             Coord = { x = -123.26, y = -1394.49 },
             NonSkippableWaypoint = true,
@@ -12455,7 +12284,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 520,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 852,
             Class = { "DRUID", "ROGUE", "SHAMAN", "WARRIOR" },
             Coord = { x = 26.1, y = -1196.66 },
@@ -12465,7 +12293,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 521,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 852,
             Class = "HUNTER",
             Coord = { x = 26.1, y = -1196.66 },
@@ -12532,7 +12359,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [876] = { 1 } },
-            Note = { "Kill Serena Bloodfeather. Loot her for her Head" },
             Coord = { x = -1345.3, y = 790.94 },
             IsQuestCompleted = 875,
             Range = 10,
@@ -12614,7 +12440,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 542,
         },
         {
-            Note = { "Get the Splintertree Post flight path" },
             GetFP = 61,
             Class = "HUNTER",
             Coord = { x = -2520.05, y = 2305.55 },
@@ -12622,7 +12447,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 543,
         },
         {
-            Note = { "Fly to Crossroads" },
             UseFlightPath = 876,
             Class = "HUNTER",
             Coord = { x = -2520.05, y = 2305.55 },
@@ -12913,7 +12737,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6284] = { 1 } },
-            Note = { "Kill Besseleth. Loot her for for her Fang", "Clear the area around Besseleth. Be careful as she webs you", "This quest is optional. If you can't do it, skip this quest" },
+            Note = { "Clear the area around Besseleth. Be careful as she webs you", "This quest is optional. If you can't do it, skip this quest" },
             Class = "HUNTER",
             Coord = { x = 640.82, y = 548.07 },
             Range = 130,
@@ -13071,7 +12895,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [1068] = { 2 } },
-            Note = { "Kill XT:9. It patrols the southern side of the river", "Skip this step if you can't find it" },
+            Note = { "It patrols the southern side of the river", "Skip this step if you can't find it" },
             Coord = { x = 59.95, y = 1143.965 },
             Range = 333,
             Zone = 1442,
@@ -13079,7 +12903,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [1068] = { 1 } },
-            Note = { "Kill XT:4. It patrols the northern side of the river", "Skip this step if you can't find it" },
+            Note = { "It patrols the northern side of the river", "Skip this step if you can't find it" },
             Coord = { x = -46.5, y = 1400.885 },
             Range = 263,
             Zone = 1442,
@@ -13096,7 +12920,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 6562,
-            Note = { "Travel toward the Zoram'gar Outpost", "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
+            Note = { "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
             Coord = { x = -268.74, y = 2612.28 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -13105,7 +12929,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 6562,
-            Note = { "Travel toward the Zoram'gar Outpost", "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
+            Note = { "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
             Coord = { x = 637.2, y = 3406.79 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -13114,7 +12938,7 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 6562,
-            Note = { "Travel toward the Zoram'gar Outpost", "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
+            Note = { "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
             Coord = { x = 1010.31, y = 3355.28 },
             NonSkippableWaypoint = true,
             Range = 80.0,
@@ -13122,7 +12946,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 604,
         },
         {
-            Note = { "Get the Zoram'gar Outpost flight path" },
             GetFP = 58,
             Coord = { x = 994.16, y = 3373.73 },
             IsQuestUncompleted = 6442,
@@ -13183,7 +13006,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Qpart = { [6442] = { 1 } },
-            Note = { "Kill Wrathtail Nagas. Loot them for their Heads" },
             Coord = { x = 942.835, y = 3798.08 },
             Range = 387,
             Zone = 1440,
@@ -13210,7 +13032,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 616,
         },
         {
-            Note = { "Fly to Thunder Bluff" },
             UseFlightPath = 1063,
             Coord = { x = 994.16, y = 3373.73 },
             NodeID = 22,
@@ -13227,7 +13048,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 1063,
-            Note = { "Travel to the Elder Rise" },
             Coord = { x = -212.71, y = -1065.01 },
             NonSkippableWaypoint = true,
             Range = 80.0,
@@ -13270,7 +13090,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 624,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 2460,
             Class = "ROGUE",
             Coord = { x = 26.1, y = -1196.66 },
@@ -13288,7 +13107,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 626,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 2460,
             Class = "ROGUE",
             Coord = { x = 994.16, y = 3373.73 },
@@ -13469,7 +13287,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
         },
         {
             Waypoint = 2458,
-            Note = { "Travel toward the Sludge Ven" },
             Class = "ROGUE",
             Coord = { x = -3216.92, y = 1107.13 },
             NonSkippableWaypoint = true,
@@ -13562,7 +13379,6 @@ APR.RouteQuestStepList["Forever-Horde-Skyborne-The-Barrens"] = {
             _index = 659,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 2478,
             Class = "ROGUE",
             Coord = { x = -2595.75, y = -437.35 },
@@ -14043,7 +13859,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92462] = { 1 } },
-            Note = { "Kill Pesky Cirrusfly", "Priotize them" },
+            Note = { "Priotize them" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.825, 26.86),
             Fillers = { [92461] = { 1 } },
             RaidIcon = 251169,
@@ -14053,7 +13869,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92461] = { 1 } },
-            Note = { "Kill Juvenile Vuldren" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.825, 26.86),
             RaidIcon = 250873,
             Range = 30,
@@ -14655,7 +14470,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92465] = { 1, 2 }, [92466] = { 1 } },
-            Note = { "Kill Al'Aketh Convert and Roiling Winds", "Loot them for the `Signet of Air`", "Prioritize Roiling Winds" },
+            Note = { "Prioritize Roiling Winds" },
             Class = "SHAMAN",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 47.395, 21.15),
             Faction = "Horde",
@@ -14710,7 +14525,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92463] = { 1 } },
-            Note = { "Kill Cirrusfly Queen" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 48.41, 28.37),
             Fillers = { [93552] = { 1 } },
             RaidIcon = 251404,
@@ -14850,7 +14664,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92465] = { 1, 2 } },
-            Note = { "Kill Al'Aketh Convert and Roiling Winds", "Prioritize Roiling Winds" },
+            Note = { "Prioritize Roiling Winds" },
             Class = { "DRUID", "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 47.395, 21.15),
             Fillers = { [93552] = { 1 } },
@@ -15368,7 +15182,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92473] = { 1 } },
-            Note = { "Kill Bears. Loot them for `Scrawny Ursera Claw`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 39.15, 27.71),
             RaidIcon = 250926,
             Range = 30,
@@ -15410,7 +15223,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92470] = { 2 } },
-            Note = { "Kill Urs'anah. Loot him for `Head of Urs'anah`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 35.65, 26.06),
             RaidIcon = 251115,
             Range = 10,
@@ -15419,7 +15231,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92470] = { 1 } },
-            Note = { "Kill Ursera Scavenger" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 38.495, 26.625),
             RaidIcon = 250937,
             Range = 30,
@@ -15500,7 +15311,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 92544,
-            Note = { "Head to the upper level of the temple" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.032, 33.545),
             Fillers = { [92544] = { 3 } },
             NonSkippableWaypoint = true,
@@ -15510,7 +15320,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92544] = { 3 } },
-            Note = { "Kill Malduko Cloudcrush" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 37.04, 32.93),
             RaidIcon = 256935,
             Range = 20.0,
@@ -15519,7 +15328,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92544] = { 3 } },
-            Note = { "Kill Malduko Cloudcrush atop the temple" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.032, 33.545),
             RaidIcon = 256935,
             Range = 10,
@@ -15546,7 +15354,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92544] = { 1, 2 } },
-            Note = { "Kill Al'Aketh Brute and Al'Aketh Neophyte", "Refresh `Read Ley Line` near the Leyline" },
+            Note = { "Refresh `Read Ley Line` near the Leyline" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.705, 33.285),
             Faction = "Alliance",
             RaidIcon = 251451,
@@ -15557,7 +15365,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92544] = { 1, 2 } },
-            Note = { "Kill Al'Aketh Brute and Al'Aketh Neophyte" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 36.705, 33.285),
             Faction = "Horde",
             RaidIcon = 251451,
@@ -15791,7 +15598,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 198,
         },
         {
-            Note = { "Set your Hearthstone to Shen'dar Village" },
             SetHS = 92514,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.02, 43.24),
             Faction = "Horde",
@@ -15944,7 +15750,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 212,
         },
         {
-            Note = { "Set your Hearthstone to Shen'dar Village" },
             SetHS = 93461,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 43.02, 43.24),
             Faction = "Alliance",
@@ -16250,7 +16055,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94411] = { 1 } },
-            Note = { "Kill the High Order Apprentices" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.33, 38.82),
             Faction = "Horde",
             Fillers = { [92515] = { 1 }, [92553] = { 2, 1 } },
@@ -16337,7 +16141,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92517] = { 2 } },
-            Note = { "Kill \"Badwind\" Bennic" },
             Fillers = { [93319] = { 1 } },
             RaidIcon = 255534,
             Range = 10,
@@ -16345,7 +16148,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92517] = { 2 } },
-            Note = { "Kill \"Badwind\" Bennic" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 50.68, 34.214),
             Fillers = { [93319] = { 1 } },
             RaidIcon = 255534,
@@ -16365,7 +16167,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92517] = { 1 }, [93319] = { 1 } },
-            Note = { "Kill Highlands Bandits. Loot them for the `Pilfered Windstone`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.01, 36.035),
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             RaidIcon = 251918,
@@ -16686,7 +16487,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94413] = { 1 } },
-            Note = { "Kill the Windshaper Novice Seer", "Refresh `Read Ley Line` near the Leyline" },
+            Note = { "Refresh `Read Ley Line` near the Leyline" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 38.475, 47.79),
             Faction = "Alliance",
             Fillers = { [92515] = { 1 }, [92553] = { 2, 1 } },
@@ -16728,7 +16529,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92516] = { 1, 2, 3 } },
-            Note = { "Kill Hippogryph Youth, Hippogryph Protector and the Hippogryph Matriarch", "Prioritize the Matriarch" },
+            Note = { "Prioritize the Matriarch" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 35.855, 54.785),
             Faction = "Alliance",
             Fillers = { [92515] = { 1 }, [92553] = { 2, 1 } },
@@ -16739,7 +16540,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92516] = { 1, 2, 3 } },
-            Note = { "Kill Hippogryph Youth, Hippogryph Protector and the Hippogryph Matriarch", "Prioritize the Matriarch" },
+            Note = { "Prioritize the Matriarch" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 37.17, 54.785),
             Faction = "Horde",
             Fillers = { [92515] = { 1 }, [92553] = { 2, 1 } },
@@ -16772,7 +16573,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [93318] = { 1 } },
-            Note = { "Kill Vulgara (level 8 elite) on the mountain. Loot it for `Vulgara's Head`", "Look for a group to kill it or skip the quest; respawns are lengthy" },
+            Note = { "Level 8 elite on the mountain.", "Look for a group to kill it or skip the quest; respawns are lengthy" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.75, 52.68),
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
             RaidIcon = 254589,
@@ -16782,7 +16583,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92515] = { 1 } },
-            Note = { "Kill Prideclaws. Loot them for the `Prideclaw Pelts`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 40.315, 44.945),
             Fillers = { [92553] = { 2, 1 } },
             RaidIcon = 251245,
@@ -16837,7 +16637,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92553] = { 2 } },
-            Note = { "Kill Galestrider. Loot them for `Strider Meat` and `Small Eggs`", "Prioritize them" },
+            Note = { "Prioritize them" },
             AnyOf = { { IsQuestOnQuest = 92553, Faction = "Alliance", IsQuestReadyForTurnIn = 92553, AllOf = { { IsQuestUncompleted = 92517 }, { IsQuestUncompleted = 92553 } } }, { IsQuestOnQuest = 92553, Faction = "Horde", IsQuestReadyForTurnIn = 92553, AllOf = { { IsQuestUncompleted = 92517 }, { IsQuestUncompleted = 92553 } } } },
             RaidIcon = 251661,
             Range = 30,
@@ -16845,7 +16645,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92553] = { 1 } },
-            Note = { "Kill Galestrider. Loot them for `Strider Meat` and `Small Eggs`", "Prioritize them" },
+            Note = { "Prioritize them" },
             AnyOf = { { IsQuestOnQuest = 92553, Faction = "Alliance", IsQuestReadyForTurnIn = 92553, AllOf = { { IsQuestUncompleted = 92517 }, { IsQuestUncompleted = 92553 } } }, { IsQuestOnQuest = 92553, Faction = "Horde", IsQuestReadyForTurnIn = 92553, AllOf = { { IsQuestUncompleted = 92517 }, { IsQuestUncompleted = 92553 } } } },
             RaidIcon = 251661,
             Range = 30,
@@ -17359,7 +17159,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92528] = { 1 } },
-            Note = { "Return to the city and wait for the roleplay" },
+            Note = { "Wait for the roleplay" },
             VehicleExit = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 47.52, 53.015),
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
@@ -17762,7 +17562,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92550] = { 3 } },
-            Note = { "Kill Commander Cyclas. Loot him for `Commander Cyclas's Head`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 50.38, 56.93),
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 }, [92551] = { 1 } },
             RaidIcon = 251966,
@@ -17772,7 +17571,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92550] = { 1 } },
-            Note = { "Kill Al'Aketh Stormcaller. Loot them for the `Stolen Shen'dar Supplies`", "Click on the Supply Caches" },
+            Note = { "Click on the Supply Caches" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.0205, 55.391),
             Faction = "Alliance",
             Fillers = { [92553] = { 2, 1 } },
@@ -17783,7 +17582,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92551] = { 1 } },
-            Note = { "Kill Al'Aketh Stormcaller. Loot them for the `Stolen Shen'dar Supplies`", "Click on the Supply Caches" },
+            Note = { "Click on the Supply Caches" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.0205, 55.391),
             Faction = "Alliance",
             Fillers = { [92553] = { 2, 1 }, [92550] = { 2 } },
@@ -17794,7 +17593,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92550] = { 1 } },
-            Note = { "Kill Al'Aketh Stormcaller. Loot them for the `Stolen Shen'dar Supplies`", "Click on the Supply Caches" },
+            Note = { "Click on the Supply Caches" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.0205, 55.391),
             Faction = "Horde",
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
@@ -17805,7 +17604,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92551] = { 1 } },
-            Note = { "Kill Al'Aketh Stormcaller. Loot them for the `Stolen Shen'dar Supplies`", "Click on the Supply Caches" },
+            Note = { "Click on the Supply Caches" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.0205, 55.391),
             Faction = "Horde",
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 }, [92550] = { 2 } },
@@ -17816,7 +17615,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92550] = { 2 } },
-            Note = { "Kill Living Lightning" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.0205, 55.391),
             Faction = "Alliance",
             Fillers = { [92553] = { 2, 1 } },
@@ -17827,7 +17625,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92550] = { 2 } },
-            Note = { "Kill Living Lightning" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 49.0205, 55.391),
             Faction = "Horde",
             Fillers = { [92553] = { 2, 1 }, [92515] = { 1 } },
@@ -17847,7 +17644,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92515] = { 1 } },
-            Note = { "Kill Prideclaws. Loot them for the `Prideclaw Pelts`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 41.2015, 52.18),
             Fillers = { [92553] = { 2, 1 } },
             RaidIcon = 251245,
@@ -17857,7 +17653,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92553] = { 2, 1 } },
-            Note = { "Kill Galestrider. Loot them for `Strider Meat` and `Small Eggs`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 41.2015, 52.18),
             RaidIcon = 251661,
             Range = 30,
@@ -18185,7 +17980,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 443,
         },
         {
-            Note = { "Set your Hearthstone to Valanaar" },
             SetHS = 93948,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.18, 72.616),
             IsQuestUncompleted = 93948,
@@ -18878,7 +18672,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92850] = { 1 } },
-            Note = { "Kill Shriekling Matriarch. Loot it for `Shriekling Matriarch's Head`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 51.39, 68.2),
             Faction = "Alliance",
             RaidIcon = 253283,
@@ -18888,7 +18681,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92850] = { 1 } },
-            Note = { "Kill Shriekling Matriarch. Loot it for `Shriekling Matriarch's Head`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 52.02, 65.51),
             Faction = "Alliance",
             RaidIcon = 253283,
@@ -19015,7 +18807,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92682] = { 1, 2 } },
-            Note = { "Click on Ripe Stormapples", "Kill Hungry Bandits (stealthed)" },
+            Note = { "Click on Ripe Stormapples" },
             Button = { ["92683-1"] = 253666 },
             Class = { "DRUID", "MAGE", "ROGUE", "SHAMAN", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 47.542, 81.242),
@@ -19027,7 +18819,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92682] = { 1, 2 } },
-            Note = { "Click on Ripe Stormapples", "Kill Hungry Bandits (stealthed)", "Hunter tips: Spam tab to target them early, use Hunter's Mark on them so you can run away an hit them from farther away" },
+            Note = { "Click on Ripe Stormapples", "Hunter tips: Spam tab to target them early, use Hunter's Mark on them so you can run away an hit them from farther away" },
             Button = { ["92683-1"] = 253666 },
             Class = "HUNTER",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 47.542, 81.242),
@@ -19160,7 +18952,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [97244] = { 1 } },
-            Note = { "Kill the Skypriest Faladiel. Loot him for `Faladiel's Heart`" },
             Class = "SHAMAN",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.38, 63.586),
             Faction = "Horde",
@@ -19218,7 +19009,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92684] = { 1 } },
-            Note = { "Kill Ornery Galestrider. Loot them for `Lowlands Galestrider Tenderloins`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 50.6585, 80.474),
             RaidIcon = 251707,
             Range = 30,
@@ -19255,7 +19045,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92685] = { 1 } },
-            Note = { "Kill Bandit Highwaymen. Loot them for the `Blood-Stained Bandit Masks`" },
             Faction = "Alliance",
             RaidIcon = 252820,
             Range = 30,
@@ -19263,7 +19052,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92685] = { 1 } },
-            Note = { "Kill Bandit Highwaymen. Loot them for the `Blood-Stained Bandit Masks`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 44.6555, 75.39),
             Faction = "Alliance",
             RaidIcon = 252820,
@@ -19273,7 +19061,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92685] = { 1 } },
-            Note = { "Kill Bandit Highwaymen. Loot them for the `Blood-Stained Bandit Masks`" },
             Faction = "Horde",
             RaidIcon = 252820,
             Range = 30,
@@ -19289,7 +19076,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92685] = { 1 } },
-            Note = { "Kill Bandit Highwaymen. Loot them for the `Blood-Stained Bandit Masks`" },
             Faction = "Horde",
             Fillers = { [93737] = { 4 } },
             RaidIcon = 252820,
@@ -19304,7 +19090,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [97245] = { 1 } },
-            Note = { "Click on Kuramaa's Stump", "Kill Kuramaa. Loot it for `Kuramaa's Mask`", "He knocks you back and receives additional fire damage" },
+            Note = { "Click on Kuramaa's Stump", "He knocks you back and receives additional fire damage" },
             Class = "SHAMAN",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 42.393, 68.887),
             Faction = "Horde",
@@ -19379,7 +19165,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92693] = { 1 } },
-            Note = { "Return to Aamelia Windfield's main location and" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 46.71, 81.94),
             GossipOptionIDs = { 136302 },
             RaidIcon = 252800,
@@ -20462,7 +20247,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [93949] = { 1 } },
-            Note = { "Kill Skyhopper" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.11, 76.865),
             Faction = "Alliance",
             RaidIcon = 251314,
@@ -20472,7 +20256,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [93949] = { 1 } },
-            Note = { "Kill Skyhopper", "This quest is optional. You can skip it if there are too many other players doing it at the same time" },
+            Note = { "This quest is optional. You can skip it if there are too many other players doing it at the same time" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 62.11, 76.865),
             Faction = "Horde",
             RaidIcon = 251314,
@@ -20736,7 +20520,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92645] = { 1 } },
-            Note = { "Kill Commander Belguilos on the second floor inside the house" },
+            Note = { "On the second floor inside the house" },
             Class = "DRUID",
             Faction = "Alliance",
             RaidIcon = 252666,
@@ -20757,7 +20541,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92645] = { 1 } },
-            Note = { "Kill Commander Belguilos on the second floor inside the house" },
+            Note = { "On the second floor inside the house" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.58, 65.63),
             Faction = "Alliance",
@@ -20768,7 +20552,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92642] = { 1, 2 } },
-            Note = { "Kill Al'Aketh Brawler and Al'Aketh Healer" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.525, 66.09),
             Faction = "Alliance",
@@ -20805,7 +20588,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92645] = { 1 } },
-            Note = { "Kill Commander Belguilos on the second floor inside the house" },
+            Note = { "On the second floor inside the house" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.58, 65.63),
             Faction = "Alliance",
@@ -20817,7 +20600,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92642] = { 1, 2 } },
-            Note = { "Kill Al'Aketh Brawler and Al'Aketh Healer" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.525, 66.09),
             Faction = "Alliance",
@@ -21159,7 +20941,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [98512] = { 1 } },
-            Note = { "Kill Al'Aketh Assassin" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 55.265, 60.38),
             RaidIcon = 254626,
             Range = 30,
@@ -21175,7 +20956,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94638] = { 1 } },
-            Note = { "Kill Ur'endra" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 54.284, 65.803),
             RaidIcon = 258443,
@@ -21205,7 +20985,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [93317] = { 1 } },
-            Note = { "Kill Windsong Crawlers. Loot them for `Windsong Crawler Meat`" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.59, 66.7),
             Faction = "Alliance",
@@ -21216,7 +20995,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [93317] = { 1 } },
-            Note = { "Kill Windsong Crawlers. Loot them for `Windsong Crawler Meat`" },
             Class = "DRUID",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 53.19, 57.39),
             Faction = "Alliance",
@@ -21227,7 +21005,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [93317] = { 1 } },
-            Note = { "Kill Windsong Crawlers. Loot them for `Windsong Crawler Meat`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 53.19, 57.39),
             Faction = "Horde",
             RaidIcon = 254588,
@@ -21270,7 +21047,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94003] = { 1 } },
-            Note = { "Kill Zaal Stormshield. Loot him for the `Skybreaker Bulwark`" },
             Class = "WARRIOR",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.265, 49.125),
             Faction = "Alliance",
@@ -21281,7 +21057,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94003] = { 1 } },
-            Note = { "Kill Zaal Stormshield. Loot him for the `Skybreaker Bulwark`" },
             Class = "WARRIOR",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 56.56, 50.36),
             Faction = "Alliance",
@@ -21292,7 +21067,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94003] = { 1 } },
-            Note = { "Kill Zaal Stormshield. Loot him for the `Skybreaker Bulwark`" },
             Class = "WARRIOR",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.5605, 49.622),
             Faction = "Horde",
@@ -21303,7 +21077,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94003] = { 1 } },
-            Note = { "Kill Zaal Stormshield. Loot him for the `Skybreaker Bulwark`" },
             Class = "WARRIOR",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 56.56, 50.36),
             Faction = "Horde",
@@ -21591,7 +21364,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [93172] = { 1 } },
-            Note = { "Kill Wind Hollows" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.95, 33.385),
             Faction = "Alliance",
             RaidIcon = 251676,
@@ -21601,7 +21373,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [93172] = { 1 }, [93736] = { 1 } },
-            Note = { "Kill Wind Hollows. Loot them for `Wind Hollow Essence`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 57.95, 33.385),
             Faction = "Horde",
             RaidIcon = 251676,
@@ -21647,7 +21418,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94487] = { 1 } },
-            Note = { "Kill Al'Aketh Footsoldiers and Al'Aketh Stormchaser", "Loot them for `Bloody Heirlooms`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.01, 37.395),
             Faction = "Alliance",
             Fillers = { [92741] = { 1 }, [93160] = { 1 } },
@@ -21658,7 +21428,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94487] = { 1 } },
-            Note = { "Kill Al'Aketh Footsoldiers and Al'Aketh Stormchaser", "Loot them for `Bloody Heirlooms`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 64.01, 37.395),
             Faction = "Horde",
             Fillers = { [93160] = { 1 } },
@@ -21689,7 +21458,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92741] = { 1 }, [94486] = { 1 } },
-            Note = { "Kill Shadowgale Shrieklings", "Loot them for `Shriekling Talons` and `Pristine Shriekling Feathers`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.21, 38.15),
             Faction = "Alliance",
             RaidIcon = 256092,
@@ -21699,7 +21467,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94486] = { 1 } },
-            Note = { "Kill Shadowgale Shrieklings", "Loot them for the `Pristine Shriekling Feathers`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.21, 38.15),
             Faction = "Horde",
             RaidIcon = 256092,
@@ -21755,7 +21522,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [92741] = { 1 }, [94486] = { 1 } },
-            Note = { "Kill Shadowgale Shrieklings. Loot them for `Shriekling Talons` and `Pristine Shriekling Feathers`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.27, 38.33),
             Faction = "Alliance",
             RaidIcon = 256092,
@@ -21765,7 +21531,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94486] = { 1 } },
-            Note = { "Kill Shadowgale Shrieklings. Loot them for the `Pristine Shriekling Feathers`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.27, 38.33),
             Faction = "Horde",
             RaidIcon = 256092,
@@ -21789,7 +21554,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [94488] = { 1 } },
-            Note = { "Kill Commander Haalien. Loot him for `Severed Head` and `Ripped Missive`" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 65.54, 36.3),
             IsQuestUncompleted = 94490,
             RaidIcon = 253622,
@@ -21808,7 +21572,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             PickUp = { 94490 },
-            Note = { "Use the `Ripped Missive` in your bags to begin the quest" },
             Button = { ["94490"] = 265476 },
             _index = 809,
         },
@@ -21973,7 +21736,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [93317] = { 1 } },
-            Note = { "Kill Windsong Crawlers. Loot them for `Windsong Crawler Meat`" },
             Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" },
             Faction = "Alliance",
             GossipOptionIDs = { 96031 },
@@ -23199,7 +22961,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 954,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 95350,
             Class = { "HUNTER", "ROGUE", "SHAMAN", "WARRIOR" },
             Faction = "Horde",
@@ -23254,7 +23015,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
             _index = 959,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 95350,
             Coord = { x = 26.5, y = -1196.7 },
             Faction = "Horde",

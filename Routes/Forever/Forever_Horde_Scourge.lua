@@ -229,7 +229,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [1470] = { 1 } },
-            Note = { "Kill Rattlecage Skeletons. Loot them for their Rattlecage Skulls" },
             Class = "WARLOCK",
             Coord = { x = 1557.51, y = 1995.96 },
             Range = 121,
@@ -284,7 +283,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [364] = { 1, 2 } },
-            Note = { "Kill Mindless Zombies and Wretched Zombies" },
             Coord = { x = 1577.395, y = 1934.05 },
             Range = 122,
             Zone = 1420,
@@ -635,7 +633,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [376] = { 1, 2 } },
-            Note = { "Kill Young Scavengers and Ragged Scavengers. Loot them for their Scavenger Paws", "Kill Duskbats and Mangy Duskbats. Loot them for their Duskbat Wings", "Try to avoid Mangy Duskbats if you can due to them being much tougher to kill than Duskbats" },
+            Note = { "Try to avoid Mangy Duskbats if you can due to them being much tougher to kill than Duskbats" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = 1597.955, y = 1977.73 },
             Range = 229,
@@ -644,7 +642,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [376] = { 1, 2 } },
-            Note = { "Kill Young Scavengers and Ragged Scavengers. Loot them for their Scavenger Paws", "Kill Duskbats and Mangy Duskbats. Loot them for their Duskbat Wings", "Try to avoid Mangy Duskbats if you can due to them being much tougher to kill than Duskbats" },
+            Note = { "Try to avoid Mangy Duskbats if you can due to them being much tougher to kill than Duskbats" },
             Class = "PALADIN",
             Coord = { x = 1597.955, y = 1977.73 },
             Fillers = { [90902] = { 1 } },
@@ -654,7 +652,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [3901] = { 1 } },
-            Note = { "Kill Rattlecage Skeletons" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = 1557.51, y = 1995.96 },
             Range = 121,
@@ -663,7 +660,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [3901] = { 1 } },
-            Note = { "Kill Rattlecage Skeletons" },
             Class = "PALADIN",
             Coord = { x = 1557.51, y = 1995.96 },
             Fillers = { [90902] = { 1 } },
@@ -1031,7 +1027,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [380] = { 2 } },
-            Note = { "Kill Night Web Spiders inside the cave" },
+            Note = { "Inside the cave" },
             Coord = { x = 1914.04, y = 2043.1 },
             Fillers = { [98389] = { 1 } },
             Range = 100,
@@ -1117,7 +1113,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [381] = { 1 } },
-            Note = { "Kill Scarlet Initiates and Scarlet Converts. Loot them for their Scarlet Armbands", "Don't kill Meven Korgal yet", "Try to avoid Scarlet Initiates if you can as they have `Frost Armor` (slows your attack speed)" },
+            Note = { "Don't kill Meven Korgal yet", "Try to avoid Scarlet Initiates if you can as they have `Frost Armor` (slows your attack speed)" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 1342.19, y = 1802.71 },
             Range = 133,
@@ -1126,7 +1122,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [381] = { 1 } },
-            Note = { "Kill Scarlet Initiates and Scarlet Converts. Loot them for their Scarlet Armbands", "Don't kill Meven Korgal yet" },
+            Note = { "Don't kill Meven Korgal yet" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK" },
             Coord = { x = 1342.19, y = 1802.71 },
             Range = 133,
@@ -1239,7 +1235,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [382] = { 1 } },
-            Note = { "Kill Meven. Loot him for the Scarlet Crusade Documents" },
             Coord = { x = 1383.99, y = 1764.3 },
             Range = 10,
             Zone = 1420,
@@ -1491,7 +1486,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 181,
         },
         {
-            Note = { "Set your Hearthstone to Brill" },
             SetHS = 8,
             Button = { ["99134-1"] = 286176 },
             Coord = { x = 244.81, y = 2269.19 },
@@ -1781,7 +1775,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [404] = { 1 } },
-            Note = { "Kill Rotting Dead and Ravaged Corpses. Loot them for their Claws" },
             Button = { ["99134-1"] = 286176 },
             Coord = { x = 633.2, y = 2202.615 },
             Fillers = { [99134] = { 1 }, [5481] = { 1 }, [367] = { 1 }, [97558] = { 2 } },
@@ -1842,7 +1835,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [427] = { 1 } },
-            Note = { "Kill Scarlet Warriors", "Be careful as they have 50% increased parry for 8 seconds after they do their defense stance animation" },
+            Note = { "Be careful as they have 50% increased parry for 8 seconds after they do their defense stance animation" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 1587.11, y = 2388.64 },
             Range = 167,
@@ -1851,7 +1844,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [427] = { 1 } },
-            Note = { "Kill Scarlet Warriors" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK" },
             Coord = { x = 1587.11, y = 2388.64 },
             Range = 167,
@@ -1860,7 +1852,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [367] = { 1 }, [97558] = { 2 } },
-            Note = { "Kill Darkhounds. Loot them for their Blood and Hides" },
             Coord = { x = 1180.6, y = 2469.9 },
             Range = 154,
             Zone = 1420,
@@ -2319,7 +2310,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [375] = { 1 }, [97558] = { 1 } },
-            Note = { "Kill Duskbats. Loot them for their Pelts and Wing Membranes" },
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 735.78, y = 1993.395 },
             Range = 395,
@@ -2429,7 +2419,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [358] = { 1, 3 } },
-            Note = { "Kill Rot Hide Graverobbers. Loot them for their Ichor" },
             Coord = { x = 540.565, y = 2578.275 },
             Fillers = { [5482] = { 1 } },
             Range = 126,
@@ -2447,7 +2436,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [398] = { 1 } },
-            Note = { "Kill Maggot Eye. Loot him for his Paw" },
             Coord = { x = 382.63, y = 2910.55 },
             Fillers = { [358] = { 2, 3 } },
             Range = 10,
@@ -2456,7 +2444,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [358] = { 2, 3 } },
-            Note = { "Kill Rot Hide Mongrels. Loot them for their Ichor" },
             Coord = { x = 359.82, y = 2795.775 },
             Range = 158,
             Zone = 1420,
@@ -2464,7 +2451,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [358] = { 3 } },
-            Note = { "Kill Rot Hide Gnolls. Loot them for their Ichor" },
             Coord = { x = 359.82, y = 2795.775 },
             Range = 158,
             Zone = 1420,
@@ -2472,7 +2458,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [368] = { 1 }, [97558] = { 3 } },
-            Note = { "Kill Vile Fin Murlocs. Loot them for their Scales and Murloc Skin", "Vile Fin Puddlejumpers do NOT drop Vile Fin Murloc Skin" },
+            Note = { "Vile Fin Puddlejumpers do NOT drop Vile Fin Murloc Skin" },
             Coord = { x = 150.37, y = 2983.755 },
             Range = 258,
             Zone = 1420,
@@ -2480,7 +2466,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [375] = { 1 }, [97558] = { 1 } },
-            Note = { "Kill Duskbats. Loot them for their Pelts and Wing Membranes" },
             Coord = { x = 10.3, y = 2517.8 },
             Range = 395,
             Zone = 1420,
@@ -2903,7 +2888,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [362] = { 1 } },
-            Note = { "Kill Devlin. Loot him for his Remains" },
             Button = { ["361"] = 2839 },
             Coord = { x = 894.16, y = 2609.0 },
             Fillers = { [426] = { 1, 2 } },
@@ -2913,7 +2897,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [354] = { 2 } },
-            Note = { "Kill Nissa. Loot her for her Remains. She can be inside the building" },
+            Note = { "She can be inside the building" },
             Button = { ["361"] = 2839 },
             Coord = { x = 803.78, y = 2752.4 },
             Fillers = { [426] = { 1, 2 } },
@@ -2923,7 +2907,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [354] = { 3, 1 } },
-            Note = { "Kill Thurman and Gregor. Loot them for their Remains", "They can patrol around" },
+            Note = { "They can patrol around" },
             Button = { ["361"] = 2839 },
             Coord = { x = 1008.705, y = 2857.68 },
             Fillers = { [426] = { 1, 2 } },
@@ -2933,7 +2917,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [426] = { 1, 2 } },
-            Note = { "Kill Soldiers and Bonecasters. Loot them for their Ribs and Skulls" },
             Coord = { x = 1008.705, y = 2857.68 },
             Range = 182,
             Zone = 1420,
@@ -3433,7 +3416,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [370] = { 1, 2, 3 }, [374] = { 1 } },
-            Note = { "Kill Captain Perrine, Scarlet Zealots and Scarlet Missionaries. Loot them for their Scarlet Insignia Rings" },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             Coord = { x = 706.18, y = 1799.54 },
             Range = 115,
@@ -3442,7 +3424,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [370] = { 1, 2, 3 }, [374] = { 1 } },
-            Note = { "Kill Captain Perrine, Scarlet Zealots and Scarlet Missionaries. Loot them for their Scarlet Insignia Rings" },
             Class = "WARLOCK",
             Coord = { x = 706.18, y = 1799.54 },
             Fillers = { [1473] = { 1 } },
@@ -3870,7 +3851,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [1471] = { 1 } },
-            Note = { "Kill the Summoned Voidwalker" },
             Button = { ["1471-1"] = 6284 },
             Class = "WARLOCK",
             Coord = { x = 41.99, y = 1704.48 },
@@ -3976,7 +3956,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 468,
         },
         {
-            Note = { "Set your Hearthstone to Undercity" },
             SetHS = 374,
             Class = "PALADIN",
             Coord = { x = 223.31, y = 1634.96 },
@@ -4098,7 +4077,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [96897] = { 2, 1 }, [96898] = { 1 } },
-            Note = { "Kill Dark Enforcers and Dark Neophytes. Loot them for Necrotic Crystal Fragments", "Necrotic Crystal Fragments can also be looted on the ground", "Be careful! These mobs hit hard. Dark Enforcers also have an instant cast 50-70 damage ability" },
+            Note = { "Necrotic Crystal Fragments can also be looted on the ground", "Be careful! These mobs hit hard. Dark Enforcers also have an instant cast 50-70 damage ability" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = -130.5, y = 1907.8 },
             Range = 30,
@@ -4107,7 +4086,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [96897] = { 2, 1 }, [96898] = { 1 } },
-            Note = { "Kill Dark Enforcers and Dark Neophytes. Loot them for Necrotic Crystal Fragments", "Necrotic Crystal Fragments can also be looted on the ground", "Be careful! These mobs hit hard. Dark Enforcers also have an instant cast 50-70 damage ability" },
+            Note = { "Necrotic Crystal Fragments can also be looted on the ground", "Be careful! These mobs hit hard. Dark Enforcers also have an instant cast 50-70 damage ability" },
             Class = "ROGUE",
             Coord = { x = -130.5, y = 1907.8 },
             Fillers = { [1886] = { 1 } },
@@ -4147,7 +4126,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 356,
-            Note = { "Travel to Balnir Farmstead" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = -423.96, y = 1976.68 },
             IsQuestOnQuest = 356,
@@ -4158,7 +4136,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 356,
-            Note = { "Travel to Balnir Farmstead" },
             Class = "ROGUE",
             Coord = { x = -423.96, y = 1976.68 },
             Fillers = { [1886] = { 1 } },
@@ -4179,7 +4156,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [356] = { 1, 2 } },
-            Note = { "Kill Bleeding Horrors and Wandering Spirits" },
             Coord = { x = -420.345, y = 2012.525 },
             Fillers = { [99142] = { 1 } },
             Range = 147,
@@ -4201,7 +4177,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [371] = { 2 } },
-            Note = { "Kill Scarlet Friars and Scarlet Zealots. Loot them for their Scarlet Insignia Rings" },
             Coord = { x = -530.605, y = 2176.26 },
             Fillers = { [374] = { 1 } },
             Range = 180,
@@ -4210,7 +4185,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [374] = { 1 } },
-            Note = { "Kill Scarlet Friars and Scarlet Zealots. Loot them for their Scarlet Insignia Rings" },
             Coord = { x = -530.605, y = 2176.26 },
             Fillers = { [371] = { 2 } },
             Range = 180,
@@ -4219,7 +4193,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [371] = { 1 } },
-            Note = { "Kill Captain Vachon inside the tower" },
+            Note = { "Inside the tower" },
             Coord = { x = -528.35, y = 2146.28 },
             Fillers = { [374] = { 1 } },
             Range = 10,
@@ -4228,7 +4202,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [371] = { 2 } },
-            Note = { "Kill Scarlet Friars" },
             Coord = { x = -530.605, y = 2176.26 },
             Fillers = { [374] = { 1 } },
             IsQuestCompleted = 374,
@@ -4238,7 +4211,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [369] = { 1 } },
-            Note = { "Kill Vicious Night Web Spiders. Loot them for their Venom" },
             Coord = { x = -906.56, y = 2297.96 },
             Fillers = { [371] = { 2 }, [374] = { 1 } },
             Range = 245,
@@ -4269,7 +4241,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [371] = { 2 } },
-            Note = { "Kill Scarlet Friars and Scarlet Zealots. Loot them for their Scarlet Insignia Rings" },
             Coord = { x = -530.605, y = 2176.26 },
             Fillers = { [374] = { 1 } },
             Range = 180,
@@ -4504,7 +4475,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            Note = { "Travel to Bandarion Keep" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = 1732.5, y = 2437.9 },
             NonSkippableWaypoint = true,
@@ -4515,7 +4485,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            Note = { "Travel to Bandarion Keep" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = 1834.3, y = 2424.0 },
             NonSkippableWaypoint = true,
@@ -4526,7 +4495,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            Note = { "Travel to Bandarion Keep" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = 1963.1, y = 2340.6 },
             NonSkippableWaypoint = true,
@@ -4537,7 +4505,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            Note = { "Travel to Bandarion Keep" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = 2041.0, y = 2352.5 },
             NonSkippableWaypoint = true,
@@ -4548,7 +4515,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 96899,
-            Note = { "Travel to Bandarion Keep" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = 2049.9, y = 2463.2 },
             NonSkippableWaypoint = true,
@@ -4559,7 +4525,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 1732.5, y = 2437.9 },
             NonSkippableWaypoint = true,
@@ -4569,7 +4534,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 1834.3, y = 2424.0 },
             NonSkippableWaypoint = true,
@@ -4579,7 +4543,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 1963.1, y = 2340.6 },
             NonSkippableWaypoint = true,
@@ -4589,7 +4552,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 2041.0, y = 2352.5 },
             NonSkippableWaypoint = true,
@@ -4599,7 +4561,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 91282,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 2049.9, y = 2463.2 },
             NonSkippableWaypoint = true,
@@ -4707,7 +4668,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [91285] = { 2, 1 } },
-            Note = { "Kill Vile Fin Seers and Vile Fin Attackers" },
             Class = "PALADIN",
             Coord = { x = 2318.1, y = 2087.25 },
             Range = 175,
@@ -4789,7 +4749,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [91317] = { 3, 2 } },
-            Note = { "Kill Tarnished Zealots and Tarnished Drudges" },
             Class = "PALADIN",
             Coord = { x = 2487.7, y = 1910.0 },
             Range = 30,
@@ -4877,7 +4836,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [99152] = { 1 } },
-            Note = { "Kill Shadowvale Lurchers and Shadowvale Mystics. Loot them for their Faintly Glowing Bones" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = 2556.1, y = 1868.8 },
             Range = 30,
@@ -4886,7 +4844,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [99152] = { 1 } },
-            Note = { "Kill Shadowvale Lurchers and Shadowvale Mystics. Loot them for their Faintly Glowing Bones" },
             Class = "PALADIN",
             Coord = { x = 2556.1, y = 1868.8 },
             Fillers = { [91316] = { 1 }, [95314] = { 1 } },
@@ -4927,7 +4884,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [99152] = { 1 } },
-            Note = { "Kill Shadowvale Lurchers and Shadowvale Mystics. Loot them for their Faintly Glowing Bones" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Range = 30,
             _index = 584,
@@ -5242,7 +5198,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 622,
         },
         {
-            Note = { "Set your Hearthstone to Undercity" },
             SetHS = 98545,
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = 223.31, y = 1634.96 },
@@ -5666,7 +5621,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 1732.5, y = 2437.9 },
             NonSkippableWaypoint = true,
@@ -5676,7 +5630,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 1834.3, y = 2424.0 },
             NonSkippableWaypoint = true,
@@ -5686,7 +5639,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 1963.1, y = 2340.6 },
             NonSkippableWaypoint = true,
@@ -5696,7 +5648,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 2041.0, y = 2352.5 },
             NonSkippableWaypoint = true,
@@ -5706,7 +5657,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94435,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 2049.9, y = 2463.2 },
             NonSkippableWaypoint = true,
@@ -5753,7 +5703,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94438,
-            Note = { "Travel to Eastern Tirisfal" },
             Class = "PALADIN",
             Coord = { x = -885.2, y = 2399.8 },
             NonSkippableWaypoint = true,
@@ -5786,7 +5735,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Qpart = { [94440] = { 1 } },
-            Note = { "Kill Scarlet Friars and Scarlet Zealots. Loot them for the Scarlet Crusade Attack Plans" },
             Class = "PALADIN",
             Coord = { x = -889.7, y = 2531.4 },
             IsQuestCompleted = 94436,
@@ -5796,7 +5744,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 1732.5, y = 2437.9 },
             NonSkippableWaypoint = true,
@@ -5806,7 +5753,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 1834.3, y = 2424.0 },
             NonSkippableWaypoint = true,
@@ -5816,7 +5762,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 1963.1, y = 2340.6 },
             NonSkippableWaypoint = true,
@@ -5826,7 +5771,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 2041.0, y = 2352.5 },
             NonSkippableWaypoint = true,
@@ -5836,7 +5780,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 94440,
-            Note = { "Travel to Bandarion Keep" },
             Class = "PALADIN",
             Coord = { x = 2049.9, y = 2463.2 },
             NonSkippableWaypoint = true,
@@ -5972,7 +5915,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             Waypoint = 435,
-            Note = { "Travel to Silverpine Forest" },
             Coord = { x = 629.36, y = 1553.42 },
             NonSkippableWaypoint = true,
             Range = 5,
@@ -6449,7 +6391,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [429] = { 1 } },
-            Note = { "Kill Worgs. Loot them for their Hearts" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             _index = 32,
         },
@@ -6477,7 +6418,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [429] = { 1 } },
-            Note = { "Kill Worgs. Loot them for their Hearts" },
             Class = "ROGUE",
             Fillers = { [1886] = { 1 } },
             _index = 36,
@@ -6515,7 +6455,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 449,
-            Note = { "Travel to The Sepulcher" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1359.66, y = 864.19 },
             Hardcore = true,
@@ -6526,7 +6465,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 449,
-            Note = { "Travel to The Sepulcher" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1359.66, y = 741.27 },
             Hardcore = true,
@@ -6537,7 +6475,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 449,
-            Note = { "Travel to The Sepulcher" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1365.12, y = 607.15 },
             Hardcore = true,
@@ -6548,7 +6485,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 449,
-            Note = { "Travel to The Sepulcher" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1538.58, y = 511.39 },
             Hardcore = true,
@@ -6559,7 +6495,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 449,
-            Note = { "Travel to The Sepulcher" },
             Class = "ROGUE",
             Coord = { x = 1359.66, y = 864.19 },
             Fillers = { [1886] = { 1 } },
@@ -6571,7 +6506,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 449,
-            Note = { "Travel to The Sepulcher" },
             Class = "ROGUE",
             Coord = { x = 1359.66, y = 741.27 },
             Fillers = { [1886] = { 1 } },
@@ -6583,7 +6517,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 449,
-            Note = { "Travel to The Sepulcher" },
             Class = "ROGUE",
             Coord = { x = 1365.12, y = 607.15 },
             Fillers = { [1886] = { 1 } },
@@ -6595,7 +6528,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 449,
-            Note = { "Travel to The Sepulcher" },
             Class = "ROGUE",
             Coord = { x = 1538.58, y = 511.39 },
             Fillers = { [1886] = { 1 } },
@@ -6886,7 +6818,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [421] = { 1 } },
-            Note = { "Kill Moonrage Whitescalps" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1329.42, y = 484.23 },
             Range = 215,
@@ -6895,7 +6826,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [421] = { 1 } },
-            Note = { "Kill Moonrage Whitescalps" },
             Class = "ROGUE",
             Coord = { x = 1329.42, y = 484.23 },
             Fillers = { [1886] = { 1 } },
@@ -6935,7 +6865,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 430,
-            Note = { "Travel to Valgan's Field" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1234.92, y = 891.07 },
             NonSkippableWaypoint = true,
@@ -6945,7 +6874,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 430,
-            Note = { "Travel to Valgan's Field" },
             Class = "ROGUE",
             Coord = { x = 1234.92, y = 891.07 },
             Fillers = { [1886] = { 1 } },
@@ -7036,7 +6964,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 430,
-            Note = { "Travel to The Ivar Patch" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1207.62, y = 1293.71 },
             NonSkippableWaypoint = true,
@@ -7046,7 +6973,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 430,
-            Note = { "Travel to The Ivar Patch" },
             Class = "ROGUE",
             Coord = { x = 1207.62, y = 1293.71 },
             Fillers = { [1886] = { 1 } },
@@ -7220,7 +7146,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [447] = { 2 } },
-            Note = { "Kill Spiders. Loot them for their Blood", "Be careful of Krethis Shadowspinner as it's impossibly difficult to kill her" },
+            Note = { "Be careful of Krethis Shadowspinner as it's impossibly difficult to kill her" },
             Class = { "PALADIN", "PRIEST", "WARRIOR" },
             Coord = { x = 1953.96, y = 1231.69 },
             Range = 134,
@@ -7229,7 +7155,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [447] = { 2 } },
-            Note = { "Kill Spiders. Loot them for their Blood", "Be careful of Krethis Shadowspinner as it's difficult but doable. She has a 130 damage shield on a 15s cooldown, and 110 damage instant shock ability" },
+            Note = { "Be careful of Krethis Shadowspinner as it's difficult but doable. She has a 130 damage shield on a 15s cooldown, and 110 damage instant shock ability" },
             Class = { "MAGE", "WARLOCK" },
             Coord = { x = 1953.96, y = 1231.69 },
             Range = 134,
@@ -7238,7 +7164,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [447] = { 2 } },
-            Note = { "Kill Spiders. Loot them for their Blood", "Be careful of Krethis Shadowspinner as it's impossibly difficult to kill her" },
+            Note = { "Be careful of Krethis Shadowspinner as it's impossibly difficult to kill her" },
             Class = "ROGUE",
             Coord = { x = 1953.96, y = 1231.69 },
             Fillers = { [1886] = { 1 } },
@@ -7248,7 +7174,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [447] = { 1 } },
-            Note = { "Finish killing Bears. Loot them for their Hearts" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1613.55, y = 1019.03 },
             Range = 190,
@@ -7257,7 +7182,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [447] = { 1 } },
-            Note = { "Finish killing Bears. Loot them for their Hearts" },
             Class = "ROGUE",
             Coord = { x = 1613.55, y = 1019.03 },
             Fillers = { [1886] = { 1 } },
@@ -7267,7 +7191,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 422,
-            Note = { "Travel back to The Sepulcher" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1538.58, y = 511.39 },
             NonSkippableWaypoint = true,
@@ -7277,7 +7200,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 422,
-            Note = { "Travel back to The Sepulcher" },
             Class = "ROGUE",
             Coord = { x = 1538.58, y = 511.39 },
             Fillers = { [1886] = { 1 } },
@@ -7656,7 +7578,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [423] = { 1, 2 } },
-            Note = { "Kill Moonrage Gluttons and Moonrage Darksouls. Loot them for their Shackles", "Be careful! Moonrage Darksouls enrage when they are below 25% health. Kill them quickly when they are low" },
+            Note = { "Be careful! Moonrage Darksouls enrage when they are below 25% health. Kill them quickly when they are low" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1731.7799, y = 906.33 },
             Range = 236,
@@ -7665,7 +7587,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [423] = { 1, 2 } },
-            Note = { "Kill Moonrage Gluttons and Moonrage Darksouls. Loot them for their Shackles", "Be careful! Moonrage Darksouls enrage when they are below 25% health. Kill them quickly when they are low" },
+            Note = { "Be careful! Moonrage Darksouls enrage when they are below 25% health. Kill them quickly when they are low" },
             Class = "ROGUE",
             Coord = { x = 1731.7799, y = 906.33 },
             Fillers = { [1886] = { 1 } },
@@ -7782,7 +7704,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [425] = { 1 } },
-            Note = { "Kill Ivar the Foul. Loot him for his Head", "Ivar is protected by two Ravenclaw Slaves inside the barn. You can solopull one of them as he patrols forward" },
+            Note = { "Ivar is protected by two Ravenclaw Slaves inside the barn. You can solopull one of them as he patrols forward" },
             Class = { "MAGE", "PALADIN", "WARRIOR" },
             Coord = { x = 1285.32, y = 1277.19 },
             Range = 10,
@@ -7811,7 +7733,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [425] = { 1 } },
-            Note = { "Kill Ivar the Foul. Loot him for his Head", "Ivar is protected by two Ravenclaw Slaves inside the barn. You can solopull one of them as he patrols forward", "They are immune to fear" },
+            Note = { "Ivar is protected by two Ravenclaw Slaves inside the barn. You can solopull one of them as he patrols forward", "They are immune to fear" },
             Class = { "PRIEST", "WARLOCK" },
             Coord = { x = 1285.32, y = 1277.19 },
             Range = 10,
@@ -7842,7 +7764,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [425] = { 1 } },
-            Note = { "Kill Ivar the Foul. Loot him for his Head", "Ivar is protected by two Ravenclaw Slaves inside the barn. You can solopull one of them as he patrols forward" },
+            Note = { "Ivar is protected by two Ravenclaw Slaves inside the barn. You can solopull one of them as he patrols forward" },
             Class = "ROGUE",
             Coord = { x = 1285.32, y = 1277.19 },
             Fillers = { [1886] = { 1 } },
@@ -7901,7 +7823,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 423,
-            Note = { "Travel back to The Sepulcher" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1538.58, y = 511.39 },
             NonSkippableWaypoint = true,
@@ -7911,7 +7832,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 423,
-            Note = { "Travel back to The Sepulcher" },
             Class = "ROGUE",
             Coord = { x = 1538.58, y = 511.39 },
             Fillers = { [1886] = { 1 } },
@@ -8072,7 +7992,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [424] = { 1 } },
-            Note = { "Kill Grimson the Pale. Loot him for his Head" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 990.48, y = 410.87 },
             Range = 10,
@@ -8081,7 +8000,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Qpart = { [424] = { 1 } },
-            Note = { "Kill Grimson the Pale. Loot him for his Head" },
             Class = "ROGUE",
             Coord = { x = 990.48, y = 410.87 },
             Fillers = { [1886] = { 1 } },
@@ -8167,7 +8085,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 478,
-            Note = { "Travel back to The Sepulcher" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 1538.58, y = 511.39 },
             Hardcore = true,
@@ -8178,7 +8095,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 478,
-            Note = { "Travel back to The Sepulcher" },
             Class = "ROGUE",
             Coord = { x = 1538.58, y = 511.39 },
             Fillers = { [1886] = { 1 } },
@@ -8594,7 +8510,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 54.383, 73.014),
             NonSkippableWaypoint = true,
@@ -8604,7 +8519,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.837, 77.725),
             NonSkippableWaypoint = true,
@@ -8614,7 +8528,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.275, 79.254),
             NonSkippableWaypoint = true,
@@ -8624,7 +8537,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 51.279, 79.923),
             NonSkippableWaypoint = true,
@@ -8634,7 +8546,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 49.693, 78.903),
             NonSkippableWaypoint = true,
@@ -8644,7 +8555,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.951, 76.171),
             NonSkippableWaypoint = true,
@@ -8654,7 +8564,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 404.63, y = 1434.67 },
             NonSkippableWaypoint = true,
@@ -8664,7 +8573,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.837, 77.725),
             NonSkippableWaypoint = true,
@@ -8674,7 +8582,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 52.275, 79.254),
             NonSkippableWaypoint = true,
@@ -8684,7 +8591,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 51.279, 79.923),
             NonSkippableWaypoint = true,
@@ -8694,7 +8600,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 49.693, 78.903),
             NonSkippableWaypoint = true,
@@ -8704,7 +8609,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 47.951, 76.171),
             NonSkippableWaypoint = true,
@@ -8714,7 +8618,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-Silverpine-Forest"] = {
         },
         {
             Waypoint = 97891,
-            Note = { "Travel toward Faranell in The Apothecarium" },
             Class = "ROGUE",
             Coord = { x = 404.63, y = 1434.67 },
             NonSkippableWaypoint = true,
@@ -9375,7 +9278,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 9,
         },
         {
-            Note = { "Get the The Crossroads flight path" },
             GetFP = 25,
             Coord = { x = -2595.75, y = -437.35 },
             IsQuestUncompleted = 1492,
@@ -9408,7 +9310,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 14,
         },
         {
-            Note = { "Set your Hearthstone to Crossroads" },
             SetHS = 844,
             Coord = { x = -2645.4, y = -406.94 },
             IsQuestUncompleted = 1492,
@@ -9435,7 +9336,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [871] = { 1, 2, 3 } },
-            Note = { "Kill Water Seekers, Thornweavers and Hunters" },
             Coord = { x = -2918.495, y = -141.08 },
             Fillers = { [844] = { 1 } },
             Range = 196,
@@ -9444,7 +9344,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [844] = { 1 } },
-            Note = { "Kill Plainstriders. Loot them for their Beaks" },
             Coord = { x = -2634.26, y = -387.01 },
             Fillers = { [869] = { 1 } },
             Range = 350,
@@ -9539,7 +9438,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 3 } },
-            Note = { "Kill Kreenig Snarlsnout. Loot him for his Tusk" },
             Coord = { x = -3324.34, y = -217.09 },
             Fillers = { [5041] = { 1 } },
             Range = 10,
@@ -9557,7 +9455,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [872] = { 1, 2 } },
-            Note = { "Kill Razormane Geomancers and Razormane Defenders" },
             Coord = { x = -3273.165, y = -60.01 },
             Range = 208,
             Zone = 1413,
@@ -9565,7 +9462,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 845,
-            Note = { "Travel to Ratchet" },
             Coord = { x = -3728.66, y = -835.29 },
             Fillers = { [845] = { 1 } },
             IsQuestOnQuest = 845,
@@ -9581,7 +9477,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 35,
         },
         {
-            Note = { "Get the Ratchet flight path" },
             GetFP = 80,
             Coord = { x = -3770.2, y = -898.12 },
             Zone = 1413,
@@ -9668,7 +9563,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [895] = { 1 } },
-            Note = { "Kill Baron Longshore. Loot him for his Head", "He can be found in one of the camps" },
+            Note = { "He can be found in one of the camps" },
             Coord = { x = -3804.15, y = -1659.555 },
             Fillers = { [887] = { 1, 2 } },
             Range = 169,
@@ -9677,7 +9572,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [887] = { 1, 2 } },
-            Note = { "Kill Southsea Brigands and Southsea Cannoneers" },
             Coord = { x = -3863.43, y = -1468.01 },
             Range = 160,
             Zone = 1413,
@@ -9750,7 +9644,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 57,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 5041,
             Coord = { x = -3770.2, y = -898.12 },
             IsQuestOnQuest = 845,
@@ -9762,7 +9655,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [845] = { 1 } },
-            Note = { "Finish killing Zhevras. Loot them for their Hooves" },
             Coord = { x = -2626.15, y = -930.21 },
             Fillers = { [869] = { 1 } },
             Range = 437,
@@ -9771,7 +9663,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 5041,
-            Note = { "Travel to the Hunter Rise" },
             Class = "WARRIOR",
             Coord = { x = -123.26, y = -1394.49 },
             NonSkippableWaypoint = true,
@@ -9823,7 +9714,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [850] = { 1 } },
-            Note = { "Kill Barak Kodobane. Loot him for his Head", "Be careful as Barak Kodobane's melee hits deal a LOT of damage and he is protected by a Kolkar Wrangler. They can net you and shoot at you from ranged distance" },
+            Note = { "Be careful as Barak Kodobane's melee hits deal a LOT of damage and he is protected by a Kolkar Wrangler. They can net you and shoot at you from ranged distance" },
             Coord = { x = -1716.18, y = 23.43 },
             Fillers = { [855] = { 1 }, [848] = { 1 } },
             Range = 10,
@@ -9850,7 +9741,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [855] = { 1 } },
-            Note = { "Kill Kolkar Wranglers and Kolkar Stormers. Loot them for their Bracers", "This quest does not have to be completed now" },
+            Note = { "This quest does not have to be completed now" },
             Range = 30,
             _index = 70,
         },
@@ -9875,7 +9766,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [867] = { 1 } },
-            Note = { "Kill Witchwing Harpies and Witchwing Roguefeathers. Loot them for their Talons" },
             Coord = { x = -1565.19, y = 469.34 },
             Fillers = { [903] = { 1 }, [821] = { 1 } },
             Range = 212,
@@ -9904,7 +9794,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [95494] = { 1 }, [821] = { 1 } },
-            Note = { "Kill Savannah Patriarchs. Loot them for their Hides and Tusks" },
             Coord = { x = -1856.4, y = 566.85 },
             Fillers = { [95507] = { 1 } },
             Range = 186,
@@ -9990,7 +9879,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [95621] = { 1 } },
-            Note = { "Kill Corporal Adamore" },
             Fillers = { [821] = { 2 } },
             Range = 10,
             _index = 88,
@@ -10118,7 +10006,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [901] = { 1 } },
-            Note = { "Kill Tinkerer Sniggles in the building. Loot him for his Console Key" },
             Coord = { x = -2731.54, y = 909.85 },
             Range = 10,
             Zone = 1413,
@@ -10140,7 +10027,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [869] = { 1 } },
-            Note = { "Kill Raptors. Loot them for their Heads" },
             Coord = { x = -2815.95, y = 746.655 },
             Fillers = { [821] = { 2, 1 }, [903] = { 1 } },
             Range = 393,
@@ -10149,7 +10035,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [903] = { 1 }, [821] = { 1 } },
-            Note = { "Kill Savannah Prowlers. Loot them for their Claws and Tusks" },
             Coord = { x = -2903.45, y = 586.45 },
             Range = 182,
             Zone = 1413,
@@ -10219,7 +10104,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [858] = { 1 } },
-            Note = { "Kill Supervisor Lugwizzle. Loot him for his Key", "He patrols up and down the platform" },
+            Note = { "He patrols up and down the platform" },
             Coord = { x = -3086.2, y = 1055.78 },
             Range = 10,
             Zone = 1413,
@@ -10272,7 +10157,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [896] = { 1 } },
-            Note = { "Kill Venture Co. Enforcers and Venture Co. Overseers. Loot them for Cats Eye Emerald", "If it hasn't dropped after 25+ mobs, feel free to skip this quest" },
+            Note = { "If it hasn't dropped after 25+ mobs, feel free to skip this quest" },
             Coord = { x = -3619.22, y = 1310.83 },
             Fillers = { [821] = { 2 } },
             Range = 125,
@@ -10369,7 +10254,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 133,
         },
         {
-            Note = { "Don't fly anywhere", "Get the Orgrimmar flight path" },
+            Note = { "Don't fly anywhere" },
             GetFP = 23,
             Coord = { x = -4313.6, y = 1676.24 },
             IsQuestUncompleted = 4921,
@@ -10396,7 +10281,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4560.0, y = 1908.5 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -10405,7 +10289,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4587.0, y = 1918.3 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -10414,7 +10297,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4608.0, y = 1897.4 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -10423,7 +10305,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4632.3, y = 1911.6 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -10593,7 +10474,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 162,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 869,
             Coord = { x = -4313.46, y = 1676.25 },
             NodeID = 25,
@@ -10698,7 +10578,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [881] = { 1 } },
-            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "Kill Echeyakee. Loot him for Echeyakee's Hide", "If Echeyakee doesn't spawn after using the `Horn of Echeyakee` or you didn't get the tag when it did spawn, skip this step" },
+            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "If Echeyakee doesn't spawn after using the `Horn of Echeyakee` or you didn't get the tag when it did spawn, skip this step" },
             Button = { ["881-1"] = 10327 },
             Coord = { x = -3031.48, y = 461.91 },
             Range = 10,
@@ -10722,7 +10602,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [881] = { 1 } },
-            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "Kill Echeyakee. Loot him for Echeyakee's Hide" },
+            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee" },
             Button = { ["881-1"] = 10327 },
             Coord = { x = -3031.48, y = 461.91 },
             Range = 10,
@@ -10746,7 +10626,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 185,
         },
         {
-            Note = { "Fly to Ratchet" },
             UseFlightPath = 902,
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = -2595.75, y = -437.35 },
@@ -10755,7 +10634,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 186,
         },
         {
-            Note = { "Fly to Ratchet" },
             UseFlightPath = 2382,
             Class = "ROGUE",
             Coord = { x = -2595.75, y = -437.35 },
@@ -10992,7 +10870,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [851] = { 1 } },
-            Note = { "Kill Verog. Loot him for his Head", "He has a chance of spawning every time a Kolkar is killed", "On a highly populated server or fresh launch, your best option is camping his spawnpoint" },
+            Note = { "He has a chance of spawning every time a Kolkar is killed", "On a highly populated server or fresh launch, your best option is camping his spawnpoint" },
             Coord = { x = -2742.68, y = -1208.23 },
             Fillers = { [848] = { 1 } },
             Range = 10,
@@ -11044,7 +10922,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             PickUp = { 883 },
-            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "Use the `Hoof of Lakota'mani` to start the quest", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him or can't kill him. You can come back for him later" },
+            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him or can't kill him. You can come back for him later" },
             Button = { ["883"] = 5099 },
             Coord = { x = -2453.88, y = -1991.28 },
             Fillers = { [821] = { 2, 3 } },
@@ -11054,7 +10932,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 883,
-            Note = { "Travel to Camp Taurajo" },
             Coord = { x = -1960.39, y = -2333.83 },
             Fillers = { [821] = { 3 } },
             NonSkippableWaypoint = true,
@@ -11063,7 +10940,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 224,
         },
         {
-            Note = { "Set your Hearthstone to Camp Taurajo" },
             SetHS = 883,
             Coord = { x = -1995.86, y = -2376.39 },
             IsQuestUncompleted = 1093,
@@ -11091,7 +10967,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 228,
         },
         {
-            Note = { "Get the Camp Taurajo flight path", "Fly to The Crossroads" },
+            Note = { "Fly to The Crossroads" },
             GetFP = 77,
             Coord = { x = -1881.35, y = -2384.5 },
             OnlyInZones = { 1413 },
@@ -11099,7 +10975,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 229,
         },
         {
-            Note = { "Get the Camp Taurajo flight path", "Fly to The Crossroads" },
+            Note = { "Get the Camp Taurajo flight path" },
             UseFlightPath = 848,
             Coord = { x = -1881.35, y = -2384.5 },
             NodeID = 25,
@@ -11294,7 +11170,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [875] = { 1 } },
-            Note = { "Kill Witchwing Slayers. Loot them for their Rings", "Be careful as Witchwing Slayers cast `Execute` (deals a LOT of damage when you're at <20% health), and Witchwing Ambushers are `Stealthed` and patrol around", "Watch out for Witchwing Ambushers. They are stealthed and patrol in the area" },
+            Note = { "Be careful as Witchwing Slayers cast `Execute` (deals a LOT of damage when you're at <20% health), and Witchwing Ambushers are `Stealthed` and patrol around", "Watch out for Witchwing Ambushers. They are stealthed and patrol in the area" },
             Coord = { x = -1304.76, y = 589.94 },
             Fillers = { [821] = { 2 } },
             Range = 224,
@@ -11303,7 +11179,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 1061,
-            Note = { "Travel toward Seereth" },
             Coord = { x = -950.1, y = -271.14 },
             Fillers = { [821] = { 2 } },
             NonSkippableWaypoint = true,
@@ -11352,7 +11227,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6548] = { 1, 2 } },
-            Note = { "Kill Grimtotem Ruffians and Grimtotem Mercenaries" },
             Coord = { x = -758.255, y = 54.42 },
             Range = 180,
             Zone = 1442,
@@ -11392,7 +11266,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6629] = { 1, 2 } },
-            Note = { "Kill Grundig Darkcloud and Grimtotem Brutes", "Make sure you kill all six Grimtotem Brutes before starting the quest inside" },
+            Note = { "Make sure you kill all six Grimtotem Brutes before starting the quest inside" },
             Coord = { x = -350.74, y = 112.06 },
             IsQuestCompleted = 6548,
             Range = 30,
@@ -11452,7 +11326,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6284] = { 1 } },
-            Note = { "Kill Besseleth. Loot her for for her Fang", "Clear the area around Besseleth. Be careful as she webs you. Keep her permanently feared with dots", "This quest is optional. If you can't do it, skip this quest. You can try it again later" },
+            Note = { "Clear the area around Besseleth. Be careful as she webs you. Keep her permanently feared with dots", "This quest is optional. If you can't do it, skip this quest. You can try it again later" },
             Class = "WARLOCK",
             Coord = { x = 640.82, y = 548.07 },
             Fillers = { [6461] = { 2, 1 }, [1069] = { 1 } },
@@ -11462,7 +11336,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Kill Deepmoss Creepers" },
             Class = "WARLOCK",
             Coord = { x = 560.49, y = 440.94 },
             Range = 30,
@@ -11501,7 +11374,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Kill Deepmoss Creepers" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARRIOR" },
             Coord = { x = 560.49, y = 440.94 },
             Range = 30,
@@ -11540,7 +11412,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Kill Deepmoss Creepers", "Save any `Small Venom Sacs` you loot" },
+            Note = { "Save any `Small Venom Sacs` you loot" },
             Class = "ROGUE",
             Coord = { x = 560.49, y = 440.94 },
             Range = 30,
@@ -11549,7 +11421,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 6284,
-            Note = { "Travel to Sun Rock Retreat" },
             Coord = { x = 735.8, y = 925.8 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -11558,7 +11429,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 6284,
-            Note = { "Travel to Sun Rock Retreat" },
             Coord = { x = 806.12, y = 929.05 },
             NonSkippableWaypoint = true,
             Range = 5,
@@ -11612,7 +11482,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 293,
         },
         {
-            Note = { "Get the Sun Rock Retreat flight path" },
             GetFP = 29,
             Coord = { x = 1041.99, y = 967.8 },
             Zone = 1442,
@@ -11620,7 +11489,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 1483,
-            Note = { "Travel toward Ziz" },
             Coord = { x = 365.16, y = 878.25 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -11641,7 +11509,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 2 } },
-            Note = { "Kill Deepmoss Venomspitters" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 219.635, y = 915.86 },
             Fillers = { [1069] = { 1 } },
@@ -11651,7 +11518,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 2 } },
-            Note = { "Kill Deepmoss Venomspitters", "Save any `Small Venom Sacs` you loot" },
+            Note = { "Save any `Small Venom Sacs` you loot" },
             Class = "ROGUE",
             Coord = { x = 219.635, y = 915.86 },
             Fillers = { [1069] = { 1 } },
@@ -11703,7 +11570,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [1093] = { 1 } },
-            Note = { "Kill Venture Co. Operators. Loot them for their Blueprints" },
             Coord = { x = -74.83, y = 1288.545 },
             Fillers = { [1062] = { 1 } },
             Range = 444,
@@ -11712,7 +11578,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [1062] = { 1 } },
-            Note = { "Kill Venture Co. Loggers" },
             Coord = { x = 74.85, y = 1144.29 },
             Range = 322,
             Zone = 1442,
@@ -11744,7 +11609,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Finish killing Deepmoss Creepers" },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = 129.535, y = 308.74 },
             Range = 436,
@@ -11753,7 +11617,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6461] = { 1 } },
-            Note = { "Finish killing Deepmoss Creepers", "Save any `Small Venom Sacs` you loot" },
+            Note = { "Save any `Small Venom Sacs` you loot" },
             Class = "ROGUE",
             Coord = { x = 129.535, y = 308.74 },
             Range = 436,
@@ -11808,7 +11672,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             PickUp = { 883 },
-            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "Use the `Hoof of Lakota'mani` to start the quest", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him" },
+            Note = { "Kill Lakota'mani. Loot him for the `Hoof of Lakota'mani`", "He has 4 spawnpoints (marked on the map)", "Skip this step if you can't find him" },
             Button = { ["883"] = 5099 },
             Coord = { x = -2202.575, y = -1847.375 },
             Fillers = { [821] = { 3 }, [878] = { 1, 2, 3 }, [899] = { 1 } },
@@ -11818,7 +11682,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [95774] = { 1 } },
-            Note = { "Kill Razormane Raiders. Loot them for Olgra's Adornments" },
             Coord = { x = -2349.75, y = -1924.8 },
             Fillers = { [821] = { 3 } },
             Range = 198,
@@ -11827,7 +11690,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [878] = { 1, 2, 3 }, [899] = { 1 } },
-            Note = { "Kill Bristleback Quilboars. Loot them for their Tusks. Save the `Blood Shards` you get" },
+            Note = { "Save the `Blood Shards` you get" },
             Coord = { x = -2649.965, y = -2092.285 },
             Fillers = { [821] = { 3 } },
             Range = 306,
@@ -11836,7 +11699,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [821] = { 3 } },
-            Note = { "Kill Stormsnouts. Loot them for a Horn" },
             Coord = { x = -2439.19, y = -2070.33 },
             Range = 200,
             Zone = 1413,
@@ -11844,7 +11706,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [821] = { 2 } },
-            Note = { "Finish killing Plainstriders. Loot them for their Kidneys" },
             Coord = { x = -2903.8, y = -1753.47 },
             Fillers = { [865] = { 1 } },
             Range = 194,
@@ -11853,7 +11714,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [865] = { 1 } },
-            Note = { "Finish killing Sunscale Scytheclaws. Loot them for their Horns", "Be careful as they cast `Thrash` (Charges 2 extra attacks every 10 seconds)" },
+            Note = { "Be careful as they cast `Thrash` (Charges 2 extra attacks every 10 seconds)" },
             Coord = { x = -2914.95, y = -1772.385 },
             Range = 453,
             Zone = 1413,
@@ -11971,7 +11832,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 338,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 875,
             Coord = { x = -3770.2, y = -898.12 },
             NodeID = 25,
@@ -12035,7 +11895,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 347,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 1507,
             Class = "WARLOCK",
             Coord = { x = -2595.75, y = -437.35 },
@@ -12118,7 +11977,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 357,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 1509,
             Class = "WARLOCK",
             Coord = { x = -4313.6, y = 1676.24 },
@@ -12156,7 +12014,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 362,
         },
         {
-            Note = { "Fly to Camp Taurajo" },
             UseFlightPath = 878,
             Coord = { x = -2595.75, y = -437.35 },
             NodeID = 77,
@@ -12222,7 +12079,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -1899.59, y = -2624.34 },
             Fillers = { [884] = { 1 } },
@@ -12233,7 +12090,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2016.12, y = -2650.02 },
             Fillers = { [884] = { 1 } },
@@ -12244,7 +12101,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2363.7, y = -2537.19 },
             Fillers = { [884] = { 1 } },
@@ -12255,7 +12112,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             PickUp = { 884 },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Fillers = { [884] = { 1 } },
@@ -12265,7 +12122,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [907] = { 1 } },
-            Note = { "Kill Thunder Lizards. Loot them for their Blood" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2135.695, y = -2514.895 },
             Fillers = { [884] = { 1 } },
@@ -12275,7 +12131,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [884] = { 1 } },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Range = 80.0,
@@ -12316,7 +12172,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -1899.59, y = -2624.34 },
             Fillers = { [884] = { 1 } },
@@ -12327,7 +12183,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2016.12, y = -2650.02 },
             Fillers = { [884] = { 1 } },
@@ -12338,7 +12194,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 884,
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2363.7, y = -2537.19 },
             Fillers = { [884] = { 1 } },
@@ -12349,7 +12205,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             PickUp = { 884 },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Fillers = { [884] = { 1 } },
@@ -12359,7 +12215,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [913] = { 1 } },
-            Note = { "Kill a Thunderhawk Hatchling or a Thunderhawk Cloudscraper. Loot it for its Thunderhawk Wings" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2058.68, y = -2434.83 },
             Fillers = { [884] = { 1 } },
@@ -12369,7 +12224,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [884] = { 1 } },
-            Note = { "Kill Owatanka. Loot him for `Owatanka's Tailspike`", "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
+            Note = { "Use the `Owatanka's Tailspike` to start the quest", "He has 4 spawnpoints (marked on the map)" },
             Button = { ["884"] = 5102 },
             Coord = { x = -2400.18, y = -2398.01 },
             Range = 80.0,
@@ -12490,7 +12345,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 404,
         },
         {
-            Note = { "Set your Hearthstone to Thunder Bluff" },
             SetHS = 853,
             Coord = { x = 38.32, y = -1300.48 },
             IsQuestUncompleted = 6442,
@@ -12610,7 +12464,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 1489,
-            Note = { "Travel to the Elder Rise" },
             Coord = { x = -212.71, y = -1065.01 },
             NonSkippableWaypoint = true,
             Range = 80.0,
@@ -12637,7 +12490,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 852,
-            Note = { "Travel to the Hunter Rise" },
             Class = "WARRIOR",
             Coord = { x = -123.26, y = -1394.49 },
             NonSkippableWaypoint = true,
@@ -12732,7 +12584,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 437,
         },
         {
-            Note = { "Fly to The Crossroads" },
             UseFlightPath = 852,
             Coord = { x = 26.1, y = -1196.66 },
             IsQuestCompleted = 852,
@@ -12799,7 +12650,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [876] = { 1 } },
-            Note = { "Kill Serena Bloodfeather. Loot her for her Head" },
             Coord = { x = -1345.3, y = 790.94 },
             IsQuestCompleted = 875,
             Range = 10,
@@ -13241,7 +13091,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [1068] = { 2 } },
-            Note = { "Kill XT:9. It patrols the southern side of the river", "Skip this step if you can't find it" },
+            Note = { "It patrols the southern side of the river", "Skip this step if you can't find it" },
             Coord = { x = 59.95, y = 1143.965 },
             Range = 333,
             Zone = 1442,
@@ -13249,7 +13099,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [1068] = { 1 } },
-            Note = { "Kill XT:4. It patrols the northern side of the river", "Skip this step if you can't find it" },
+            Note = { "It patrols the northern side of the river", "Skip this step if you can't find it" },
             Coord = { x = -46.5, y = 1400.885 },
             Range = 263,
             Zone = 1442,
@@ -13266,7 +13116,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 6562,
-            Note = { "Travel toward the Zoram'gar Outpost", "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
+            Note = { "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
             Coord = { x = -268.74, y = 2612.28 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -13275,7 +13125,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 6562,
-            Note = { "Travel toward the Zoram'gar Outpost", "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
+            Note = { "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
             Coord = { x = 637.2, y = 3406.79 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -13284,7 +13134,7 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 6562,
-            Note = { "Travel toward the Zoram'gar Outpost", "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
+            Note = { "Make sure to avoid Astranaar guards en route. Follow the waypoint for safety" },
             Coord = { x = 1010.31, y = 3355.28 },
             NonSkippableWaypoint = true,
             Range = 80.0,
@@ -13292,7 +13142,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 509,
         },
         {
-            Note = { "Get the Zoram'gar Outpost flight path" },
             GetFP = 58,
             Coord = { x = 994.16, y = 3373.73 },
             IsQuestUncompleted = 6442,
@@ -13353,7 +13202,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [6442] = { 1 } },
-            Note = { "Kill Wrathtail Nagas. Loot them for their Heads" },
             Coord = { x = 942.835, y = 3798.08 },
             Range = 387,
             Zone = 1440,
@@ -13380,7 +13228,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 521,
         },
         {
-            Note = { "Fly to Thunder Bluff" },
             UseFlightPath = 1063,
             Coord = { x = 994.16, y = 3373.73 },
             NodeID = 22,
@@ -13397,7 +13244,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 1063,
-            Note = { "Travel to the Elder Rise" },
             Coord = { x = -212.71, y = -1065.01 },
             NonSkippableWaypoint = true,
             Range = 80.0,
@@ -13432,7 +13278,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 528,
         },
         {
-            Note = { "Fly to Camp Taurajo" },
             UseFlightPath = 1511,
             Class = "WARLOCK",
             Coord = { x = 26.1, y = -1196.66 },
@@ -13450,7 +13295,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 530,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 2460,
             Class = "ROGUE",
             Coord = { x = 26.1, y = -1196.66 },
@@ -13460,7 +13304,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 531,
         },
         {
-            Note = { "Fly to Camp Taurajo" },
             UseFlightPath = 1511,
             Class = "WARLOCK",
             Coord = { x = 994.16, y = 3373.73 },
@@ -13478,7 +13321,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 533,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 2460,
             Class = "ROGUE",
             Coord = { x = 994.16, y = 3373.73 },
@@ -13516,7 +13358,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 538,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 1512,
             Class = "WARLOCK",
             Coord = { x = -1881.35, y = -2384.5 },
@@ -13548,7 +13389,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Qpart = { [1513] = { 1 } },
-            Note = { "Kill the Summoned Succubus" },
             Button = { ["1513-1"] = 6626 },
             Class = "WARLOCK",
             Coord = { x = -4377.13, y = 1804.77 },
@@ -13873,7 +13713,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
         },
         {
             Waypoint = 2458,
-            Note = { "Travel toward the Sludge Ven" },
             Class = "ROGUE",
             Coord = { x = -3216.92, y = 1107.13 },
             NonSkippableWaypoint = true,
@@ -13950,7 +13789,6 @@ APR.RouteQuestStepList["Forever-Horde-Scourge-The-Barrens"] = {
             _index = 591,
         },
         {
-            Note = { "Fly to Orgrimmar" },
             UseFlightPath = 2478,
             Class = "ROGUE",
             Coord = { x = -2595.75, y = -437.35 },

@@ -15,7 +15,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 1,
         },
         {
-            Note = { "Kill and loot mobs until you have enough copper worth of vendor items" },
             LootMoney = { copper = 10 },
             Class = { "SHAMAN", "WARRIOR" },
             Coord = { x = -4299.05, y = -494.9 },
@@ -24,7 +23,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 2,
         },
         {
-            Note = { "Kill and loot mobs until you have enough copper worth of vendor items" },
             LootMoney = { copper = 40 },
             Class = { "HUNTER", "WARLOCK" },
             Coord = { x = -4281.07, y = -720.15 },
@@ -33,7 +31,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 3,
         },
         {
-            Note = { "Kill and loot mobs until you have enough copper worth of vendor items" },
             LootMoney = { copper = 50 },
             Class = "PRIEST",
             Coord = { x = -4281.07, y = -720.15 },
@@ -42,7 +39,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 4,
         },
         {
-            Note = { "Kill and loot mobs until you have enough copper worth of vendor items" },
             LootMoney = { copper = 60 },
             Class = "MAGE",
             Coord = { x = -4281.07, y = -720.15 },
@@ -217,7 +213,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 27,
         },
         {
-            Note = { "Kill and loot mobs until you have enough copper worth of vendor items" },
             LootMoney = { copper = 100 },
             Class = "WARLOCK",
             Coord = { x = -4266.0, y = -402.02 },
@@ -1692,7 +1687,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [96821] = { 2, 1 } },
-            Note = { "Kill Ridgeshade Lurkers and Ridgeshade Creepers" },
             Coord = { x = -4710.4, y = -209.4 },
             Range = 30,
             Zone = 1411,
@@ -1992,7 +1986,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [784] = { 3 } },
-            Note = { "Kill Lieutenant Benedict. Loot him for his Key" },
             Coord = { x = -5121.78, y = -245.68 },
             Fillers = { [791] = { 1 } },
             Range = 10,
@@ -2068,7 +2061,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             PickUp = { 830 },
-            Note = { "Go upstairs in the keep", "Open Benedict's Chest. Loot it for the `Aged Envelope`", "Use the `Aged Envelope` to start the quest" },
+            Note = { "Go upstairs in the keep", "Open Benedict's Chest. Loot it for the `Aged Envelope`" },
             Button = { ["830"] = 4881 },
             Coord = { x = -5096.4, y = -223.83 },
             Fillers = { [784] = { 1, 2 }, [791] = { 1 } },
@@ -2085,7 +2078,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [784] = { 1, 2 }, [791] = { 1 } },
-            Note = { "Kill Kul Tiras Sailors and Kul Tiras Marines. Loot them for their Canvas Scraps" },
             Coord = { x = -5012.33, y = -169.195 },
             ItemCount = { includeUsableToys = true, count = 8, operator = "<", itemID = 4870 },
             Range = 136,
@@ -2094,7 +2086,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [784] = { 1, 2 } },
-            Note = { "Kill Kul Tiras Sailors and Kul Tiras Marines" },
             Coord = { x = -5012.33, y = -169.195 },
             Range = 136,
             Zone = 1411,
@@ -2102,7 +2093,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [791] = { 1 } },
-            Note = { "Kill Kul Tiras Sailors and Kul Tiras Marines. Loot them for their Canvas Scraps" },
             Coord = { x = -5012.33, y = -169.195 },
             Range = 136,
             Zone = 1411,
@@ -2189,7 +2179,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel toward the tower" },
             Coord = { x = -4617.88, y = 290.47 },
             NonSkippableWaypoint = true,
             Range = 12.0,
@@ -2198,7 +2187,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel toward the tower" },
             Coord = { x = -4611.01, y = 293.64 },
             NonSkippableWaypoint = true,
             Range = 8.0,
@@ -2207,7 +2195,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel toward the tower" },
             Coord = { x = -4616.82, y = 317.26 },
             NonSkippableWaypoint = true,
             Range = 12.0,
@@ -2216,7 +2203,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel toward the tower" },
             Coord = { x = -4604.13, y = 364.49 },
             NonSkippableWaypoint = true,
             Range = 12.0,
@@ -2225,7 +2211,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel toward the tower" },
             Coord = { x = -4588.8, y = 383.53 },
             NonSkippableWaypoint = true,
             Range = 10.0,
@@ -2234,7 +2219,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel up the tower toward Furl" },
+            Note = { "Go up the tower" },
             Coord = { x = -4593.03, y = 384.94 },
             NonSkippableWaypoint = true,
             Range = 6.0,
@@ -2243,7 +2228,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel up the tower toward Furl" },
+            Note = { "Go up the tower" },
             Coord = { x = -4594.09, y = 389.87 },
             NonSkippableWaypoint = true,
             Range = 6.0,
@@ -2252,7 +2237,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel up the tower toward Furl" },
+            Note = { "Go up the tower" },
             Coord = { x = -4589.86, y = 390.93 },
             NonSkippableWaypoint = true,
             Range = 6.0,
@@ -2261,7 +2246,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel up the tower toward Furl" },
+            Note = { "Go up the tower" },
             Coord = { x = -4589.33, y = 387.76 },
             NonSkippableWaypoint = true,
             Range = 6.0,
@@ -2270,7 +2255,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel up the tower toward Furl" },
+            Note = { "Go up the tower" },
             Coord = { x = -4594.62, y = 386.35 },
             NonSkippableWaypoint = true,
             Range = 6.0,
@@ -2279,7 +2264,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel up the tower toward Furl" },
+            Note = { "Go up the tower" },
             Coord = { x = -4595.15, y = 399.74 },
             NonSkippableWaypoint = true,
             Range = 6.0,
@@ -2288,7 +2273,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 791,
-            Note = { "Travel up the tower toward Furl" },
+            Note = { "Go up the tower" },
             Coord = { x = -4585.1, y = 396.92 },
             NonSkippableWaypoint = true,
             Range = 8.0,
@@ -2437,7 +2422,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 301,
         },
         {
-            Note = { "Set your Hearthstone to Razor Hill" },
             SetHS = 2161,
             Coord = { x = -4686.09, y = 340.52 },
             Zone = 1411,
@@ -2707,7 +2691,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [97223] = { 1 } },
-            Note = { "Kill the Bloodtalon Martriarch. Loot it for the Bloodtalon Martriarch Eggs" },
             Coord = { x = -5599.5, y = -716.7 },
             Fillers = { [815] = { 1 }, [817] = { 1 }, [818] = { 2, 1 } },
             Range = 10,
@@ -2735,7 +2718,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [826] = { 3 } },
-            Note = { "Kill Zalazane. Loot him for his Head" },
             Class = { "HUNTER", "MAGE", "PRIEST", "WARLOCK", "WARRIOR" },
             Coord = { x = -5526.27, y = -1286.62 },
             Fillers = { [815] = { 1 }, [97225] = { 1 } },
@@ -2745,7 +2727,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [826] = { 3 } },
-            Note = { "Kill Zalazane. Loot him for his Head", "Save your `Gouge` for when he casts `Healing Wave`" },
+            Note = { "Save your `Gouge` for when he casts `Healing Wave`" },
             Class = "ROGUE",
             Coord = { x = -5526.27, y = -1286.62 },
             Fillers = { [815] = { 1 }, [97225] = { 1 } },
@@ -2755,7 +2737,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [826] = { 3 } },
-            Note = { "Kill Zalazane. Loot him for his Head", "Save your `Earth Shock` for when he casts `Healing Wave`" },
+            Note = { "Save your `Earth Shock` for when he casts `Healing Wave`" },
             Class = "SHAMAN",
             Coord = { x = -5526.27, y = -1286.62 },
             Fillers = { [815] = { 1 }, [97225] = { 1 } },
@@ -2765,7 +2747,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [826] = { 1, 2 }, [96873] = { 1 } },
-            Note = { "Kill Hexed Trolls and Voodoo Trolls. Loot them for Hexed Pendants", "Use `Disenchant` on the Hexed Pendants to obtain `Luminous Residue`", "Optional: collect item 275724 (quantity 3)" },
+            Note = { "Use `Disenchant` on the Hexed Pendants to obtain `Luminous Residue`", "Optional: collect item 275724 (quantity 3)" },
             Coord = { x = -5515.17, y = -1208.89 },
             Fillers = { [815] = { 1 }, [97225] = { 1 }, [817] = { 1 } },
             Range = 170,
@@ -2776,7 +2758,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [826] = { 1, 2 } },
-            Note = { "Kill Hexed Trolls and Voodoo Trolls" },
             Coord = { x = -5515.17, y = -1208.89 },
             Fillers = { [815] = { 1 }, [97225] = { 1 }, [817] = { 1 } },
             Range = 170,
@@ -2795,7 +2776,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [817] = { 1 } },
-            Note = { "Kill Durotar Tigers. Loot them for their Fur" },
             Coord = { x = -5264.81, y = -1212.77 },
             Fillers = { [815] = { 1 }, [818] = { 2, 1 } },
             Range = 300,
@@ -2813,7 +2793,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [818] = { 2, 1 } },
-            Note = { "Kill Pygmy Surf Crawlers and Surf Crawlers. Loot them for their Mucus", "Kill Makrura Shellhides and Makrura Clackers. Loot them for their Eyes" },
             Coord = { x = -4961.57, y = -958.44 },
             Range = 286,
             Zone = 1411,
@@ -2842,7 +2821,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [96873] = { 1 } },
-            Note = { "Kill Hexed Trolls and Voodoo Trolls. Loot them for Hexed Pendants", "Use `Disenchant` on the Hexed Pendants to obtain `Luminous Residue`", "Optional: collect item 275724 (quantity 3)" },
+            Note = { "Use `Disenchant` on the Hexed Pendants to obtain `Luminous Residue`", "Optional: collect item 275724 (quantity 3)" },
             Range = 30,
             HasSpell = 7411,
             IsQuestOnQuest = 96873,
@@ -2904,7 +2883,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [826] = { 1, 2 } },
-            Note = { "Kill Hexed Trolls and Voodoo Trolls. Loot them for Hexed Pendants", "Use `Disenchant` on the Hexed Pendants to obtain `Luminous Residue`", "Optional: collect item 275724 (quantity 3)" },
+            Note = { "Use `Disenchant` on the Hexed Pendants to obtain `Luminous Residue`", "Optional: collect item 275724 (quantity 3)" },
             Range = 30,
             _index = 359,
         },
@@ -2932,7 +2911,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [837] = { 1, 2 } },
-            Note = { "Kill Razormane Quilboars and Razormane Scouts" },
             Coord = { x = -4529.845, y = 65.4 },
             Fillers = { [96825] = { 1 } },
             Range = 130,
@@ -2949,7 +2927,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [837] = { 3, 4 } },
-            Note = { "Kill Razormane Dustrunners and Razormane Battleguards" },
             Coord = { x = -4239.56, y = 441.515 },
             Range = 144,
             Zone = 1411,
@@ -3194,7 +3171,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 834,
-            Note = { "Travel to Rezlak" },
             Coord = { x = -4414.31, y = 999.7 },
             NonSkippableWaypoint = true,
             Range = 50.0,
@@ -3338,7 +3314,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [806] = { 1 } },
-            Note = { "Kill Fizzle Darkstorm and loot him for his Claw", "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Kill the imp first", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
+            Note = { "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Kill the imp first", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
             Class = { "PRIEST", "WARRIOR" },
             Coord = { x = -4190.12, y = 868.22 },
             Range = 30,
@@ -3347,7 +3323,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [806] = { 1 } },
-            Note = { "Kill Fizzle Darkstorm and loot him for his Claw", "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
+            Note = { "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
             Class = "HUNTER",
             Coord = { x = -4190.12, y = 868.22 },
             Range = 30,
@@ -3356,7 +3332,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [806] = { 1 } },
-            Note = { "Kill Fizzle Darkstorm and loot him for his Claw", "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "You can cast `Polymorph` on Fizzle and kill the Imp first", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
+            Note = { "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "You can cast `Polymorph` on Fizzle and kill the Imp first", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
             Class = "MAGE",
             Coord = { x = -4190.12, y = 868.22 },
             Range = 30,
@@ -3365,7 +3341,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [806] = { 1 } },
-            Note = { "Kill Fizzle Darkstorm and loot him for his Claw", "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Kill the imp first. Use `Gouge` when he casts `Soul Siphon`", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
+            Note = { "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Kill the imp first. Use `Gouge` when he casts `Soul Siphon`", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
             Class = "ROGUE",
             Coord = { x = -4190.12, y = 868.22 },
             Range = 30,
@@ -3374,7 +3350,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [806] = { 1 } },
-            Note = { "Kill Fizzle Darkstorm and loot him for his Claw", "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Kill the imp first", "Use a `Minor Healing Potion`, `Minor Healthstone` if you have it and your `Faintly Glowing Skull` if needed" },
+            Note = { "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Kill the imp first", "Use a `Minor Healing Potion`, `Minor Healthstone` if you have it and your `Faintly Glowing Skull` if needed" },
             Class = "WARLOCK",
             Coord = { x = -4190.12, y = 868.22 },
             Range = 30,
@@ -3383,7 +3359,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [806] = { 1 } },
-            Note = { "Kill Fizzle Darkstorm and loot him for his Claw", "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Kill the imp first. Use `Earth Shock` when he casts `Soul Siphon`", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
+            Note = { "Be careful. Kill the patrolling Burning Blade Fanatic and the Lightning Hides in the back before you pull him", "Pull him backwards towards the Lightning Hides you just killed. Otherwise you may bodypull additional Burning Blade mobs", "Kill the imp first. Use `Earth Shock` when he casts `Soul Siphon`", "Use a `Minor Healing Potion` if you have it and your `Faintly Glowing Skull` if needed" },
             Class = "SHAMAN",
             Coord = { x = -4190.12, y = 868.22 },
             Range = 30,
@@ -3498,7 +3474,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            Note = { "Travel to the Valley of Honor" },
             Class = "HUNTER",
             Coord = { x = -4560.0, y = 1908.5 },
             NonSkippableWaypoint = true,
@@ -3508,7 +3483,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Class = "SHAMAN",
             Coord = { x = -4560.0, y = 1908.5 },
             NonSkippableWaypoint = true,
@@ -3518,7 +3492,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            Note = { "Travel to the Valley of Honor" },
             Class = "HUNTER",
             Coord = { x = -4587.0, y = 1918.3 },
             NonSkippableWaypoint = true,
@@ -3528,7 +3501,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Class = "SHAMAN",
             Coord = { x = -4587.0, y = 1918.3 },
             NonSkippableWaypoint = true,
@@ -3538,7 +3510,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            Note = { "Travel to the Valley of Honor" },
             Class = "HUNTER",
             Coord = { x = -4608.0, y = 1897.4 },
             NonSkippableWaypoint = true,
@@ -3548,7 +3519,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Class = "SHAMAN",
             Coord = { x = -4608.0, y = 1897.4 },
             NonSkippableWaypoint = true,
@@ -3558,7 +3528,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 6081,
-            Note = { "Travel to the Valley of Honor" },
             Class = "HUNTER",
             Coord = { x = -4632.3, y = 1911.6 },
             NonSkippableWaypoint = true,
@@ -3568,7 +3537,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Class = "SHAMAN",
             Coord = { x = -4632.3, y = 1911.6 },
             NonSkippableWaypoint = true,
@@ -4083,7 +4051,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 840,
-            Note = { "Travel to Far Watch Post" },
             AnyOf = { { IsQuestOnQuest = 840 }, { IsQuestOnQuest = 2983 }, { IsQuestOnQuest = 1522 }, { IsQuestOnQuest = 2984 }, { IsQuestOnQuest = 1523 } },
             Class = "SHAMAN",
             Coord = { x = -3686.1, y = 303.14 },
@@ -4123,7 +4090,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -3905.13, y = -228.41 },
             Fillers = { [816] = { 1 } },
@@ -4134,7 +4101,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -3899.31, y = -241.45 },
             Fillers = { [816] = { 1 } },
@@ -4145,7 +4112,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -3906.71, y = -270.71 },
             Fillers = { [816] = { 1 } },
@@ -4156,7 +4123,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -3910.94, y = -247.45 },
             Fillers = { [816] = { 1 } },
@@ -4167,7 +4134,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -3931.56, y = -240.75 },
             Fillers = { [816] = { 1 } },
@@ -4178,7 +4145,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -3964.35, y = -242.51 },
             Fillers = { [816] = { 1 } },
@@ -4189,7 +4156,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -3974.39, y = -228.76 },
             Fillers = { [816] = { 1 } },
@@ -4200,7 +4167,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -4020.92, y = -219.95 },
             Fillers = { [816] = { 1 } },
@@ -4211,7 +4178,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -4034.67, y = -232.64 },
             Fillers = { [816] = { 1 } },
@@ -4222,7 +4189,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 1524,
-            Note = { "Travel the path up the mountain toward Telf", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
+            Note = { "Follow the path up the mountain", "Be careful to not fall of the mountain, the path is very narrow. You could die if you fall" },
             Class = "SHAMAN",
             Coord = { x = -4033.08, y = -255.91 },
             Fillers = { [816] = { 1 } },
@@ -4258,7 +4225,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [1525] = { 2 } },
-            Note = { "Kill Burning Blade Cultists. Loot them for a Reagent Pouch" },
             Class = "SHAMAN",
             Coord = { x = -4740.55, y = 841.605 },
             Range = 90,
@@ -4267,7 +4233,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 828,
-            Note = { "Travel to Margoz" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = -4939.36, y = 824.51 },
             IsQuestCompleted = 806,
@@ -4278,7 +4243,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 828,
-            Note = { "Travel to Margoz" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = -4945.18, y = 1101.92 },
             IsQuestCompleted = 806,
@@ -4305,7 +4269,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            Note = { "Travel toward Dustwind Cave" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = -4949.41, y = 925.67 },
             IsQuestCompleted = 828,
@@ -4316,7 +4279,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            Note = { "Travel toward Dustwind Cave" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = -4929.32, y = 823.45 },
             IsQuestCompleted = 828,
@@ -4327,7 +4289,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            Note = { "Travel toward Dustwind Cave" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = -4774.39, y = 780.8 },
             IsQuestCompleted = 828,
@@ -4338,7 +4299,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [827] = { 1 } },
-            Note = { "Kill Burning Blade Orcs. Loot them for their Collars" },
             Class = { "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Coord = { x = -4745.045, y = 822.21 },
             IsQuestCompleted = 828,
@@ -4352,7 +4312,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [835] = { 1 } },
-            Note = { "Kill Dustwind Savages and Dustwind Storm Witches", "Loot Dustwind Storm Witches for a `Dull Storm Orb`. Use it to" },
+            Note = { "Loot Dustwind Storm Witches for a `Dull Storm Orb`. Use it to" },
             Button = { ["835-1"] = 277661 },
             Coord = { x = -4745.84, y = 990.19 },
             Range = 200,
@@ -4361,7 +4321,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [835] = { 2 } },
-            Note = { "Kill Dustwind Savages and Dustwind Storm Witches", "Loot Dustwind Storm Witches for a `Dull Storm Orb`. Use it to" },
+            Note = { "Loot Dustwind Storm Witches for a `Dull Storm Orb`. Use it to" },
             Button = { ["835-2"] = 277661 },
             Coord = { x = -4745.84, y = 990.19 },
             Range = 200,
@@ -4388,7 +4348,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            Note = { "Travel through the cave toward Rezlak" },
+            Note = { "Go through the cave" },
             Coord = { x = -4804.53, y = 830.5 },
             NonSkippableWaypoint = true,
             Range = 60.0,
@@ -4397,7 +4357,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            Note = { "Travel through the cave toward Rezlak" },
+            Note = { "Go through the cave" },
             Coord = { x = -4698.78, y = 842.48 },
             NonSkippableWaypoint = true,
             Range = 60.0,
@@ -4406,7 +4366,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 835,
-            Note = { "Travel through the cave toward Rezlak" },
+            Note = { "Go through the cave" },
             Coord = { x = -4414.31, y = 999.7 },
             NonSkippableWaypoint = true,
             Range = 60.0,
@@ -4427,7 +4387,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [813] = { 1 } },
-            Note = { "Finish killing Venomtail Scorpids. Loot them for their Poison Sacs" },
             Class = { "HUNTER", "SHAMAN" },
             Coord = { x = -4113.72, y = 1130.65 },
             ItemCount = { includeUsableToys = true, count = 1, operator = "<", itemID = 4904 },
@@ -4455,7 +4414,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [97282] = { 1 } },
-            Note = { "Kill Thunder Lizards and Lightning Hides. Loot them for their Charged Thunder Lizard Organs" },
             Coord = { x = -4047.3, y = 918.4 },
             Range = 30,
             Zone = 1411,
@@ -4469,7 +4427,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 828,
-            Note = { "Travel to Margoz" },
             Class = { "HUNTER", "SHAMAN" },
             Coord = { x = -4945.18, y = 1101.92 },
             IsQuestCompleted = 806,
@@ -4496,7 +4453,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 827,
-            Note = { "Travel toward Skull Rock" },
             Class = { "HUNTER", "SHAMAN" },
             Coord = { x = -4876.97, y = 1452.31 },
             NonSkippableWaypoint = true,
@@ -4516,7 +4472,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             PickUp = { 832 },
-            Note = { "Kill Gazz'uz. Loot him for his `Eye of Burning Shadow`", "Use the `Eye of Burning Shadow` to start the quest", "Use your `Really Sticky Glue` on the Voidwalker to avoid being hit, and `Healing Potions` to restore health. Use LoS (line of sight) to avoid Gazz'uz his Shadow Bolts", "You can run to bodies of water found within the cave to evade the Voidwalker after killing Gazz'uz", "Be careful as he is VERY difficult. You can skip this quest if you need" },
+            Note = { "Kill Gazz'uz. Loot him for his `Eye of Burning Shadow`", "Use your `Really Sticky Glue` on the Voidwalker to avoid being hit, and `Healing Potions` to restore health. Use LoS (line of sight) to avoid Gazz'uz his Shadow Bolts", "You can run to bodies of water found within the cave to evade the Voidwalker after killing Gazz'uz", "Be careful as he is VERY difficult. You can skip this quest if you need" },
             Button = { ["832"] = 4903 },
             Class = { "HUNTER", "SHAMAN" },
             Coord = { x = -4701.42, y = 1455.83 },
@@ -4526,7 +4482,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [827] = { 1 }, [5726] = { 1 } },
-            Note = { "Kill Burning Blade Orcs. Loot them for their Collars and for a Lieutenant's Insignia", "Skip the Lieutenant's Insignia if you're unlucky with the drop" },
+            Note = { "Skip the Lieutenant's Insignia if you're unlucky with the drop" },
             Class = { "HUNTER", "SHAMAN" },
             Coord = { x = -4767.785, y = 1500.955 },
             Range = 106,
@@ -4676,7 +4632,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4560.0, y = 1908.5 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -4685,7 +4640,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4587.0, y = 1918.3 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -4694,7 +4648,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4608.0, y = 1897.4 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -4703,7 +4656,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 97242,
-            Note = { "Travel to the Valley of Honor" },
             Coord = { x = -4632.3, y = 1911.6 },
             NonSkippableWaypoint = true,
             Range = 15.0,
@@ -4818,7 +4770,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Qpart = { [813] = { 1 } },
-            Note = { "Kill Venomtail Scorpids. Loot them for their Poison Sacs" },
             Class = { "HUNTER", "SHAMAN" },
             ItemCount = { includeUsableToys = true, count = 1, operator = "<", itemID = 4904 },
             Range = 30,
@@ -4942,7 +4893,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 840,
-            Note = { "Travel to Far Watch Post" },
             Class = "HUNTER",
             Coord = { x = -3686.1, y = 303.14 },
             NonSkippableWaypoint = true,
@@ -4953,7 +4903,6 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Waypoint = 809,
-            Note = { "Travel to Far Watch Post" },
             Class = "SHAMAN",
             Coord = { x = -3686.1, y = 303.14 },
             NonSkippableWaypoint = true,
