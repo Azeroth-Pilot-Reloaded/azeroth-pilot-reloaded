@@ -208,7 +208,7 @@ Conditions on the same table combine with AND. Use `AnyOf` for alternatives, `Al
 | `Collection` | Require at least `quantity` items (default 1) in bags plus the saved character bank, using the same count as `LootItems`. | `Collection = { itemID = 5465, quantity = 50 }` |
 | `DontHaveAchievement` | Visible only if the achievement is missing. | `DontHaveAchievement = 9924` |
 | `DontHaveAura` | Requires the aura to be absent. | `DontHaveAura = 32182` |
-| `DontHaveSpell` | Requires a spell to be unknown. With a list, **none** of the listed spells may be known. Uses the same spellbook wrapper as `HasSpell`. | `DontHaveSpell = { 264211, 264434 }` |
+| `DontHaveSpell` | Requires a spell to be unknown by both the player and pet. With a list, **none** of the listed spells may be known. Uses the same spellbook wrapper as `HasSpell`. | `DontHaveSpell = { 264211, 264434 }` |
 | `EquippedItem` | Require one slot entry or a nonempty list (every entry must pass). Omit `itemID` for any item; `invert = true` negates that entry. | `EquippedItem = { slot = 16, itemID = 2493 }` |
 | `EquippedItemStat` | Compare a slot's stat token, `QUALITY` or `LEVEL`. A nonempty list requires every entry to pass. See resource fields below. | `EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 3.5 }` |
 | `Event` | Restricts to a specific APR event mode, such as Remix. | `Event = APR.EVENTS.Remix` |
@@ -217,7 +217,7 @@ Conditions on the same table combine with AND. Use `AnyOf` for alternatives, `Al
 | `Hardcore` | Require Hardcore (`true`) or non-Hardcore (`false`). Clients without `C_GameRules.IsHardcoreActive` count as non-Hardcore. | `Hardcore = false` |
 | `HasAchievement` | Requires a specific achievement. | `HasAchievement = 12593` |
 | `HasAura` | Requires a specific buff or aura. | `HasAura = 178207` |
-| `HasSpell` | Requires the player to know a specific spell. | `HasSpell = 34090` |
+| `HasSpell` | Requires the player or pet to know a specific spell. | `HasSpell = 34090` |
 | `InterfaceVersion` | Minimum client interface version; route mismatches hide the route. | `InterfaceVersion = 110200` |
 | `IsOneOfQuestsCompleted` | Requires at least one quest in the list to be completed. | `IsOneOfQuestsCompleted = { 31588, 31589 }` |
 | `IsOneOfQuestsCompletedOnAccount` | Account-wide variant of `IsOneOfQuestsCompleted`. | `IsOneOfQuestsCompletedOnAccount = { 49929, 49930 }` |
