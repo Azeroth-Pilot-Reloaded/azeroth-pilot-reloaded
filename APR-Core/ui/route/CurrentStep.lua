@@ -450,12 +450,9 @@ function APR.currentStep:ProgressBar(key, total, current)
     local currentStep = current or 0
 
     if not self.progressBar then
-        local progressBar = CreateFrame("StatusBar", "CurrentStepFrame_StepHolder_ProgressBar", CurrentStepFrameHeader,
-            "BackdropTemplate")
+        local progressBar = APR:CreateStatusBar(CurrentStepFrameHeader, "CurrentStepFrame_StepHolder_ProgressBar")
         progressBar:SetSize(FRAME_WIDTH - 92, 18)
         progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
-        progressBar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-        APR.currentStep:UpdateProgressBarColor(progressBar)
         progressBar:SetMinMaxValues(0, math.max(totalSteps, 1))
         progressBar:SetValue(currentStep)
         progressBar:SetBackdrop({
@@ -465,16 +462,12 @@ function APR.currentStep:ProgressBar(key, total, current)
         })
         progressBar:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
 
-        local progressBarText = progressBar:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-        progressBarText:SetPoint("CENTER", progressBar, "CENTER", 0, 0)
+        local progressBarText = progressBar.Text
         if totalSteps > 0 then
             progressBarText:SetText(currentStep .. " / " .. totalSteps)
         else
             progressBarText:SetText("")
         end
-        APR:RegisterFontString(progressBarText, "currentStep", { role = "base" })
-
-        if APR.RegisterSkinTarget then APR:RegisterSkinTarget(progressBar, "statusbar") end
         self.progressBar = progressBar
         self.progressBar.Text = progressBarText
         self.progressBar.key = key
@@ -502,13 +495,10 @@ function APR.currentStep:ProgressBar(key, total, current)
 end
 
 function APR.currentStep:UpdateProgressBarColor(barOverride)
-    local profile = APR:GetSettingsProfile()
-    local color = (profile and profile.currentStepProgressBarColor) or
-        { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
-    local targetBar = barOverride or self.progressBar
-    if targetBar then
-        if APR.EllesmereUISkin and APR.EllesmereUISkin:ApplyBarFill(targetBar) then return end
-        targetBar:SetStatusBarColor(unpack(color))
+    if barOverride then
+        APR:ApplyStatusBarColor(barOverride)
+    else
+        APR:RefreshStatusBarColors("currentStepProgressBarColor")
     end
 end
 
@@ -558,14 +548,7 @@ function APR.currentStep:AddObjectiveProgressBar(container, key, current, total,
         return
     end
     if not bar then
-        bar = CreateFrame("StatusBar", nil, container, "BackdropTemplate")
-        bar:SetStatusBarTexture("Interface\\TargetingFrame\\UI-StatusBar")
-        bar:SetBackdrop({ bgFile = "Interface\\Buttons\\WHITE8X8" })
-        bar:SetBackdropColor(0, 0, 0, 0.5)
-        bar.Text = bar:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-        bar.Text:SetPoint("CENTER")
-        APR:RegisterFontString(bar.Text, "currentStep", { role = "base" })
-        if APR.RegisterSkinTarget then APR:RegisterSkinTarget(bar, "statusbar") end
+        bar = APR:CreateStatusBar(container)
         owner[key] = bar
     end
     -- Reuse the bar across resource refreshes; its row owns visibility and cleanup.

@@ -20,7 +20,18 @@ Python runner discovers all Lua suites automatically. Widget mocks do not valida
 client's rendering or taint system: also check a long objective, a pickup list,
 image previews, collapse/expand, and an item-use step during combat in game.
 
-`CurrentStep.lua` owns the window, progress bars and secure controls;
+`ui/foundations/StatusBars.lua` creates all APR bars as native `StatusBar` frames
+and applies their configured RGBA colors. The guide's color option refreshes its
+header, quest objectives, reputation and money bars together; AFK retains its own
+color option. `Love()` / `ApplyLoveColors()` recolor existing and future bars pink
+without changing their alpha. EllesmereUI supplies textures while APR owns fill
+colors. `status_bar_colors_test.lua` and `ui_skin_test.lua` verify these rules.
+`afk_bar_lifecycle_test.lua` covers native ownership, countdown formatting,
+restart/expiry, snapping and disable. AFK updates at most every 40 ms while its
+timer is active and removes its update script when stopped. Check the countdown,
+both color options and theme changes in game as well.
+
+`CurrentStep.lua` owns the window, progress bar placement and secure controls;
 `CurrentStepRows.lua` owns keyed rows, reconciliation and layout. `UpdateStep`
 brackets each pass with `BeginContentUpdate` / `EndContentUpdate`. During a pass,
 removal marks old rows; add/update calls retain rows with matching keys and kinds;

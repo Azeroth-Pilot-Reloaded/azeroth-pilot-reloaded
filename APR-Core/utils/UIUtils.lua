@@ -282,15 +282,10 @@ function APR:ApplyLoveColors()
         return { pink[1], pink[2], pink[3], alpha }
     end
 
-    profile.afkBarColor = copyWithAlpha(profile.afkBarColor)
-    profile.currentStepProgressBarColor = copyWithAlpha(profile.currentStepProgressBarColor)
-
-    if APR.AFK and APR.AFK.UpdateBarColor then
-        APR.AFK:UpdateBarColor()
+    for colorKey in pairs(self.STATUS_BAR_COLOR_DEFAULTS) do
+        profile[colorKey] = copyWithAlpha(profile[colorKey])
     end
-    if APR.currentStep and APR.currentStep.UpdateProgressBarColor then
-        APR.currentStep:UpdateProgressBarColor()
-    end
+    self:RefreshStatusBarColors()
 
     self.loveColorsPending = false
 end
