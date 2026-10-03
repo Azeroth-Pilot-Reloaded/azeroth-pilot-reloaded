@@ -1185,7 +1185,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
         },
         {
             Note = { "Skip this step if you don't have 1 silver, or if you wish to do it later" },
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -545.8, y = -5594.5 },
             MinLevel = 5,
             Money = { operator = ">=", copper = 100 },
@@ -1300,7 +1300,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
         },
         {
             Note = { "This will allow you to make `Rough Sharpening Stones` which increase your melee damage by 2", "If you don't want to do this, skip this step" },
-            LearnSkill = { spellID = 2018 },
+            LearnProfession = 2018,
             Class = { "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.344, 51.936),
             MinLevel = 5,
@@ -1364,7 +1364,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
         },
         {
             Note = { "If you can't afford it, skip this step" },
-            LearnSkill = { spellID = 2575 },
+            LearnProfession = 2575,
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = -660.91, y = -5528.93 },
             HasSpell = 2018,
@@ -2239,7 +2239,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 273,
         },
         {
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -1565.58, y = -5666.24 },
             MinLevel = 5,
             Zone = 1426,
@@ -2254,7 +2254,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Gnome"] = {
             _index = 275,
         },
         {
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -1565.58, y = -5666.24 },
             MinLevel = 5,
             Zone = 1426,
@@ -10400,7 +10400,7 @@ APR.RouteQuestStepList["Forever-Alliance-Gnome-Redridge-Mountains"] = {
         },
         {
             Note = { "If you have a Paladin or Druid friend, ask them to remove the `Touch of Zanzil` for you instead" },
-            LearnSkill = { spellID = 7934 },
+            LearnProfession = 7934,
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 43.07, 26.155),
             HasAura = 9991,

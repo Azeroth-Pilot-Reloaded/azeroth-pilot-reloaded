@@ -1134,7 +1134,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Note = { "This will allow you to make `Rough Sharpening Stones` which increase your melee damage by 2", "If you don't want to do this, skip this step" },
-            LearnSkill = { spellID = 2018 },
+            LearnProfession = 2018,
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 87.87, y = -9456.65 },
             MinLevel = 5,
@@ -1144,7 +1144,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Note = { "This will allow you to make `Rough Weightstones` which increase your melee damage by 2", "If you don't want to do this, skip this step" },
-            LearnSkill = { spellID = 2018 },
+            LearnProfession = 2018,
             Class = "PALADIN",
             Coord = { x = 87.87, y = -9456.65 },
             MinLevel = 5,
@@ -1272,7 +1272,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Note = { "Skip this step if you don't have 1 silver, or if you wish to do it later" },
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -5.63, y = -9467.21 },
             MinLevel = 5,
             Money = { operator = ">=", copper = 100 },
@@ -2340,7 +2340,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 284,
         },
         {
-            LearnSkill = { spellID = 3273 },
+            LearnProfession = 3273,
             Class = { "PALADIN", "ROGUE", "WARRIOR" },
             Coord = { x = 29.35, y = -9456.79 },
             MinLevel = 5,
@@ -3500,7 +3500,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 418,
         },
         {
-            LearnSkill = { spellID = 3273 },
+            LearnProfession = 3273,
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 29.35, y = -9456.79 },
             MinLevel = 5,
@@ -5556,7 +5556,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 657,
         },
         {
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -1565.58, y = -5666.24 },
             MinLevel = 5,
             Zone = 1426,
@@ -5578,7 +5578,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
         },
         {
             Note = { "This is used in conjunction with `Blacksmithing` to make `Rough Sharpening Stones` and `Rough Weightstones` to increase your weapon damage", "If you don't want to do this, skip this step" },
-            LearnSkill = { spellID = 2575 },
+            LearnProfession = 2575,
             Class = { "PALADIN", "ROGUE", "WARRIOR" },
             Coord = { x = -1612.12, y = -5697.89 },
             HasSpell = 2018,
@@ -12961,7 +12961,7 @@ APR.RouteQuestStepList["Forever-Alliance-Human-Redridge-Mountains"] = {
         },
         {
             Note = { "If you have a Paladin or Druid friend, ask them to remove the `Touch of Zanzil` for you instead" },
-            LearnSkill = { spellID = 7934 },
+            LearnProfession = 7934,
             Class = "ROGUE",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 43.07, 26.155),
             HasAura = 9991,

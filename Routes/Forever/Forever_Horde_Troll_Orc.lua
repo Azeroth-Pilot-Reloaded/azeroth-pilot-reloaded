@@ -1810,7 +1810,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 223,
         },
         {
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             MinLevel = 5,
             Coord = { x = -4663.88, y = 310.56 },
             Zone = 1411,
@@ -1926,7 +1926,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Note = { "This will allow you to find `Rough Stones` from nodes in order to craft `Sharpening Stones` (+2 Weapon Damage for 30 minutes)" },
-            LearnSkill = { spellID = 2575 },
+            LearnProfession = 2575,
             MinLevel = 5,
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = -4701.95, y = 366.96 },
@@ -1944,7 +1944,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 240,
         },
         {
-            LearnSkill = { spellID = 2018 },
+            LearnProfession = 2018,
             MinLevel = 5,
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = -4714.64, y = 372.6 },
@@ -2281,7 +2281,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         },
         {
             Note = { "This will allow you to find `Rough Stones` from nodes in order to craft `Sharpening Stones` (+2 Weapon Damage for 30 minutes)" },
-            LearnSkill = { spellID = 2575 },
+            LearnProfession = 2575,
             MinLevel = 5,
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = -4701.95, y = 366.96 },
@@ -2299,7 +2299,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 282,
         },
         {
-            LearnSkill = { spellID = 2018 },
+            LearnProfession = 2018,
             MinLevel = 5,
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = -4714.64, y = 372.6 },
@@ -2653,7 +2653,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             _index = 324,
         },
         {
-            LearnSkill = { spellID = 3273 },
+            LearnProfession = 3273,
             MinLevel = 5,
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = -4826.74, y = 330.3 },

@@ -1125,7 +1125,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 51,
         },
         {
-            LearnSkill = { spellID = 3273 },
+            LearnProfession = 3273,
             Class = "WARRIOR",
             Coord = { x = -356.43, y = -2357.03 },
             MinLevel = 5,
@@ -1194,7 +1194,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
             _index = 58,
         },
         {
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -285.0, y = -2263.4 },
             MinLevel = 5,
             Zone = 1412,
@@ -2555,7 +2555,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-Mulgore"] = {
         },
         {
             Note = { "This will unlock an easy quest" },
-            LearnSkill = { spellID = 8613 },
+            LearnProfession = 8613,
             Coord = { x = 52.93, y = -1150.53 },
             MinLevel = 1,
             SkipForPrimaryProfessions = 2,
@@ -4878,7 +4878,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Note = { "Skip this step if you did not have enough `Linen Cloth` to reach 40 skill" },
-            LearnSkill = { spellID = 3276 },
+            LearnProfession = 3276,
             Coord = { x = -4160.01, y = 1483.17 },
             HasSpell = 3273,
             MinLevel = 5,
@@ -4893,7 +4893,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Note = { "Skip this step if you did not have enough `Linen Cloth` to reach 50 skill" },
-            LearnSkill = { spellID = 3274 },
+            LearnProfession = 3274,
             Coord = { x = -4160.01, y = 1483.17 },
             MinLevel = 1,
             Skill = { skill = "firstaid", rank = 40, operator = ">=" },
@@ -7140,7 +7140,7 @@ APR.RouteQuestStepList["Forever-Horde-Tauren-The-Barrens"] = {
         },
         {
             Note = { "Skip this step if you did not have enough `Linen Cloth` to reach 80 skill" },
-            LearnSkill = { spellID = 3277 },
+            LearnProfession = 3277,
             Coord = { x = 206.88, y = -997.45 },
             HasSpell = 3273,
             MinLevel = 5,

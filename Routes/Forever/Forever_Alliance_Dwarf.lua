@@ -1198,7 +1198,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf"] = {
         },
         {
             Note = { "Skip this step if you don't have 1 silver, or if you wish to do it later" },
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -545.8, y = -5594.5 },
             MinLevel = 5,
             Money = { operator = ">=", copper = 100 },
@@ -1334,7 +1334,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf"] = {
         },
         {
             Note = { "This will allow you to make `Rough Sharpening Stones` which increase your melee damage by 2", "If you don't want to do this, skip this step" },
-            LearnSkill = { spellID = 2018 },
+            LearnProfession = 2018,
             Class = { "ROGUE", "WARRIOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.344, 51.936),
             MinLevel = 5,
@@ -1344,7 +1344,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf"] = {
         },
         {
             Note = { "This will allow you to make `Rough Weightstones` which increase your melee damage by 2", "If you don't want to do this, skip this step" },
-            LearnSkill = { spellID = 2018 },
+            LearnProfession = 2018,
             Class = "PALADIN",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 45.344, 51.936),
             MinLevel = 5,
@@ -1418,7 +1418,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf"] = {
         },
         {
             Note = { "If you can't afford it, skip this step" },
-            LearnSkill = { spellID = 2575 },
+            LearnProfession = 2575,
             Class = { "PALADIN", "ROGUE", "WARRIOR" },
             Coord = { x = -660.91, y = -5528.93 },
             HasSpell = 2018,
@@ -2602,7 +2602,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf"] = {
             _index = 316,
         },
         {
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -1565.58, y = -5666.24 },
             MinLevel = 5,
             Zone = 1426,
@@ -2617,7 +2617,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf"] = {
             _index = 318,
         },
         {
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -1565.58, y = -5666.24 },
             MinLevel = 5,
             Zone = 1426,
@@ -7588,7 +7588,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dwarf-Loch-Modan-11-13-Hunter"] = {
             _index = 129,
         },
         {
-            LearnSkill = { spellID = 2550 },
+            LearnProfession = 2550,
             Coord = { x = -1188.54, y = -4761.37 },
             MinLevel = 5,
             Zone = 1455,
