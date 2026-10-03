@@ -340,9 +340,7 @@ function APR.fillersFrame:ResetPosition()
 
             -- Check if AFK frame is visible, active, and snapped
             local afkFrame = _G.AfkFrameScreen
-            local isAfkActive = APR.AFK and (APR.AFK.fakeTimerActive == true)
-            local isAfkSnapped = APR.settings.profile.afkSnapToCurrentStep
-            if afkFrame and afkFrame:IsShown() and isAfkActive and isAfkSnapped then
+            if APR:IsAFKFrameActiveShouldSnap() then
                 anchorFrame = afkFrame
                 anchorHeight = afkFrame:GetHeight()
             end

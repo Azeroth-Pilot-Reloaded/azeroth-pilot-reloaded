@@ -45,6 +45,7 @@ APR-Core/utils/Utils.lua
 APR-Core/utils/PlayerUtils.lua
 APR-Core/utils/ProfileUtils.lua
 APR-Core/ui/foundations/TextStyles.lua
+APR-Core/ui/foundations/StatusBars.lua
 APR-Core/utils/TextStyleUtils.lua
 APR-Core/utils/TargetUtils.lua
 APR-Core/utils/QuestUtils.lua

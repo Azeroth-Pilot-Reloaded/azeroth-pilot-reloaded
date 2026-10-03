@@ -177,6 +177,7 @@ local function RefreshTheme()
         icon:SetVertexColor(r, g, b, 0.4)
     end
     if APR.RefreshTextAppearance then APR:RefreshTextAppearance() end
+    APR:RefreshStatusBarColors()
 end
 
 EUI.RegisterSkin("APR", function(S)
@@ -226,7 +227,8 @@ EUI.RegisterSkin("APR", function(S)
         elseif kind == "editbox" then
             S.EditBox(frame)
             StyleText(frame)
-        elseif kind == "statusbar" then S.ApplyBarFill(frame)
+        elseif kind == "statusbar" then
+            if not APR:ApplyStatusBarColor(frame) then S.ApplyBarFill(frame) end
         end
     end
     if APR:RegisterSkinProvider("EllesmereUI", ApplySkin, IsEnabled) then

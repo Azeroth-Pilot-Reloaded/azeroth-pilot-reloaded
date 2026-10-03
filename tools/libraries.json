@@ -44,13 +44,6 @@
       ]
     },
     {
-      "name": "LibCandyBar-3.0",
-      "source": { "type": "curseforge", "project_id": 18909, "archive_root": "LibCandyBar-3.0" },
-      "mappings": [
-        { "from": "LibCandyBar-3.0", "to": "LibCandyBar-3.0" }
-      ]
-    },
-    {
       "name": "LibDataBroker-1.1",
       "source": { "type": "github", "repository": "tekkub/libdatabroker-1-1", "ref": "master" },
       "mappings": [
