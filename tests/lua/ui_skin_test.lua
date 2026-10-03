@@ -41,10 +41,14 @@ function CreateFrame()
 
     function frame:SetVertexColor(...) self.color = { ... } end
 
+    function frame:SetStatusBarColor(...) self.color = { ... } end
+
+    function frame:SetStatusBarTexture(texture) self.statusBarTexture = texture end
+
     function frame:GetFrameLevel() return 1 end
 
     frame.SetPoint, frame.SetHeight, frame.SetAllPoints = noop, noop, noop
-    frame.SetFrameLevel, frame.EnableMouse, frame.SetBackdrop = noop, noop, noop
+    frame.SetFrameLevel, frame.EnableMouse, frame.SetBackdrop, frame.SetBackdropColor = noop, noop, noop, noop
     function frame:GetSize() return self.width, self.height end
 
     function frame:SetSize(width, height)
@@ -64,6 +68,9 @@ function hooksecurefunc() end
 
 APR = { settings = { profile = { elvuiSkin = false } } }
 function APR:NewModule() return {} end
+function APR:GetSettingsProfile() return self.settings.profile end
+
+dofile("APR-Core/ui/foundations/StatusBars.lua")
 
 dofile("APR-Core/integrations/SkinRegistry.lua")
 local events = frames[1]
@@ -300,3 +307,32 @@ APR.settings.profile.ellesmereuiSkin = false
 APR:ApplyAllTextStyles()
 assert(text.font == "native.ttf" and text.color[1] == 0, "Disabled EUI restores native text preferences")
 print("PASS: EllesmereUI dynamic fonts, semantic colors, relayout callbacks and native fallback")
+
+-- A skin's accent must not override APR's configured fill or Love colors.
+APR.Color = { blue = { 0, 0.5, 1 }, orange = { 1, 0.6, 0.1 } }
+APR.settings.profile.ellesmereuiSkin = true
+APR.settings.profile.currentStepProgressBarColor = { 0.4, 0.2, 0.8, 0.6 }
+function eui.ApplyBarFill(bar)
+    record("ApplyBarFill", bar)
+    bar:SetStatusBarColor(0, 1, 0, 1)
+end
+local themedBar = APR:CreateStatusBar(UIParent)
+assert(themedBar.color[1] == 0.4 and themedBar.color[4] == 0.6)
+looksChanged()
+assert(themedBar.color[1] == 0.4 and themedBar.color[4] == 0.6, "Theme refresh preserves APR options")
+APR.settings.profile.currentStepProgressBarColor = { 1, 0.3, 0.7, 0.6 }
+APR:RefreshStatusBarColors()
+looksChanged()
+assert(themedBar.color[1] == 1 and themedBar.color[2] == 0.3 and themedBar.color[4] == 0.6)
+combat = true
+APR.settings.profile.currentStepProgressBarColor = { 0.8, 0.6, 0.4, 0.2 }
+APR:RefreshStatusBarColors()
+assert(themedBar.color[1] == 0.8 and themedBar.color[4] == 0.2,
+    "Combat color updates must not invoke protected skin operations")
+looksChanged()
+combat = false
+for _, frame in ipairs(frames) do
+    if frame.event == "PLAYER_REGEN_ENABLED" then frame.scripts.OnEvent() end
+end
+assert(themedBar.color[1] == 0.8 and themedBar.color[4] == 0.2)
+print("PASS: EllesmereUI bar textures preserve APR options, Love fill colors, alpha and combat-safe recoloring")

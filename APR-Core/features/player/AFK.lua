@@ -1,6 +1,5 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
-local candy = LibStub("LibCandyBar-3.0")
 
 -- Initialize module
 APR.AFK = APR:NewModule("AFK")
@@ -32,13 +31,45 @@ AfkFrame:SetBackdrop({
 })
 AfkFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
 
-local bar = candy:New("Interface\\TargetingFrame\\UI-StatusBar", FRAME_WIDTH, FRAME_HEIGHT)
-bar:SetLabel(L["AFK"])
-bar:SetColor(unpack(APR.Color.blue))
-bar:SetShadowColor(0, 0, 0, 0.85)
-bar:SetPoint("CENTER", AfkFrame)
-APR:RegisterFontString(bar.candyBarLabel, "afk", { role = "base" })
-APR:RegisterFontString(bar.candyBarDuration, "afk", { role = "base" })
+local bar = APR:CreateStatusBar(AfkFrame, nil, "afk", "afkBarColor")
+bar:SetAllPoints()
+bar.Text:ClearAllPoints()
+bar.Text:SetPoint("TOPLEFT", 2, 0)
+bar.Text:SetPoint("BOTTOMRIGHT", -2, 0)
+bar.Text:SetJustifyH("LEFT")
+bar.Text:SetText(L["AFK"])
+bar.Duration = bar:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+bar.Duration:SetPoint("TOPLEFT", 2, 0)
+bar.Duration:SetPoint("BOTTOMRIGHT", -2, 0)
+bar.Duration:SetJustifyH("RIGHT")
+APR:RegisterFontString(bar.Duration, "afk", { role = "base" })
+for _, font in ipairs({ bar.Text, bar.Duration }) do
+    font:SetShadowColor(0, 0, 0, 0.85)
+end
+bar:Hide()
+
+local function UpdateCountdown(frame)
+    local remaining = math.max(0, APR.AFK.timerEnd - GetTime())
+    frame:SetValue(remaining)
+    if remaining <= 0 then
+        APR.AFK:HideFrame()
+    elseif remaining > 3599.9 then
+        local hours = math.floor(remaining / 3600)
+        frame.Duration:SetFormattedText("%d:%02d:%02d", hours, math.floor(remaining / 60) % 60,
+            math.floor(remaining) % 60)
+    elseif remaining > 59.9 then
+        frame.Duration:SetFormattedText("%d:%02d", math.floor(remaining / 60), math.floor(remaining) % 60)
+    else
+        frame.Duration:SetFormattedText(remaining < 10 and "%.1f" or "%.0f", remaining)
+    end
+end
+
+local function OnTimerUpdate(frame, elapsed)
+    APR.AFK.timerElapsed = APR.AFK.timerElapsed + elapsed
+    if APR.AFK.timerElapsed < 0.04 then return end
+    APR.AFK.timerElapsed = 0
+    UpdateCountdown(frame)
+end
 
 
 ---------------------------------------------------------------------------------------
@@ -76,17 +107,6 @@ function APR.AFK:AFKFrameOnInit()
     AfkFrameScreen:EnableMouse(true)
     AfkFrameScreen:Hide()
 
-    local function onStop()
-        AfkFrameScreen:Hide()
-        APR.AFK.fakeTimerActive = false
-        -- Wait a frame to ensure the frame is properly hidden before refreshing children
-        -- Addon enabled check is done in RefreshChildFrames
-        C_Timer.After(0, function()
-            APR.AFK:RefreshChildFrames()
-        end)
-    end
-    candy:RegisterCallback("LibCandyBar_Stop", onStop)
-
     APR.AFK.eventFrame = CreateFrame("Frame")
     APR.AFK.TaxiTimerRecorder = APR.AFK.eventFrame:CreateAnimationGroup()
     APR.AFK.TaxiTimerRecorder.anim = APR.AFK.TaxiTimerRecorder:CreateAnimation()
@@ -110,21 +130,20 @@ end
 
 function APR.AFK:SetAfkTimer(duration)
     local profile = APR:GetSettingsProfile()
-    if not profile or not profile.enableAddon then
-        bar:Stop()
-        AfkFrameScreen:Hide()
-
-        -- When AFK hides due to addon disabled, refresh child frames after a frame delay
-        C_Timer.After(0, function()
-            APR.AFK:RefreshChildFrames()
-        end)
+    if not profile or not profile.enableAddon or type(duration) ~= "number" or duration <= 0
+        or duration ~= duration or duration == math.huge then
+        self:HideFrame()
         return
     end
     local wasHidden = not AfkFrameScreen:IsShown()
     APR.AFK:RefreshFrameAnchor()
+    self.timerEnd = GetTime() + duration
+    self.timerElapsed = 0
+    bar:SetMinMaxValues(0, duration)
+    bar:SetScript("OnUpdate", OnTimerUpdate)
+    bar:Show()
     AfkFrameScreen:Show()
-    bar:SetDuration(duration)
-    bar:Start()
+    UpdateCountdown(bar)
 
     -- If AFK just appeared, refresh all child frames
     if wasHidden then
@@ -135,7 +154,12 @@ function APR.AFK:SetAfkTimer(duration)
 end
 
 function APR.AFK:HideFrame()
-    bar:Stop()
+    bar:SetScript("OnUpdate", nil)
+    bar:Hide()
+    bar:SetValue(0)
+    bar.Duration:SetText("")
+    self.timerEnd = nil
+    self.timerElapsed = 0
     AfkFrameScreen:Hide()
     self.fakeTimerActive = false
 
@@ -146,9 +170,7 @@ function APR.AFK:HideFrame()
 end
 
 function APR.AFK:UpdateBarColor()
-    local profile = APR:GetSettingsProfile()
-    local color = (profile and profile.afkBarColor) or { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 }
-    bar:SetColor(color[1], color[2], color[3], color[4])
+    APR:RefreshStatusBarColors("afkBarColor")
 end
 
 function APR.AFK:UpdateSize(width, height)
@@ -161,9 +183,6 @@ function APR.AFK:UpdateSize(width, height)
     self.lastSizeHeight = h
 
     AfkFrame:SetSize(w, h)
-    AfkFrameScreen:SetSize(w, h)
-    bar:SetWidth(w)
-    bar:SetHeight(h)
 
     if sizeChanged
         and profile
@@ -218,8 +237,8 @@ function APR.AFK:RefreshFrameAnchor(initial)
     end
 
     if wasSnapped ~= self.isSnapped
-        and APR.currentStep
-        and APR.currentStep.RefreshFillersFrame then
+        and APR.fillersFrame
+        and APR.fillersFrame.RefreshFillersFrame then
         APR.fillersFrame:RefreshFillersFrame()
     end
 
@@ -231,8 +250,7 @@ end
 
 function APR.AFK:ToggleFakeTimer()
     if self.fakeTimerActive then
-        self.fakeTimerActive = false
-        bar:Stop()
+        self:HideFrame()
         return
     end
 

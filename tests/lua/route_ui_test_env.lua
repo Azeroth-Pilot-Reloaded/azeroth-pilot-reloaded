@@ -110,6 +110,8 @@ function methods:SetMinMaxValues(low, high) self.minimum, self.maximum = low, hi
 
 function methods:SetValue(value) self.value = value end
 
+function methods:SetStatusBarColor(...) self.color = { ... } end
+
 function methods:SetAlpha(alpha) self.alpha = alpha end
 
 function methods:SetAttribute(key, value)
@@ -200,6 +202,7 @@ C_Item = { GetItemInfo = function(id) return "Item " .. id, nil, nil, nil, nil, 
 C_QuestLog = { GetTitleForQuestID = function(id) return "Quest " .. id end }
 UNKNOWN = "Unknown"
 dofile("APR-Core/utils/QuestUtils.lua")
+dofile("APR-Core/ui/foundations/StatusBars.lua")
 dofile("APR-Core/ui/route/CurrentStep.lua")
 dofile("APR-Core/ui/route/CurrentStepRows.lua")
 

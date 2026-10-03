@@ -26,15 +26,6 @@
       "date_created": "2026-08-12T06:00:41.187Z",
       "archive_sha256": "1091f67bf6ddce40f2b0852294c403914449c69232426432e25e0b43ac6d29cd"
     },
-    "LibCandyBar-3.0": {
-      "source": "curseforge",
-      "project_id": 18909,
-      "file_id": 8441627,
-      "version": "v12.0.5",
-      "file_name": "LibCandyBar-3.0-v12.0.5.zip",
-      "date_created": "2026-07-16T02:29:37.34Z",
-      "archive_sha256": "1601720461bc46e2fb4bc45f69dbe18c6f08716dd4cbcb34a4a931a6989bfbfd"
-    },
     "LibDataBroker-1.1": {
       "source": "github",
       "repository": "tekkub/libdatabroker-1-1",

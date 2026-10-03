@@ -126,6 +126,7 @@ function APR:RegisterFontString(font, _, options) font.onApplied = options.onApp
 
 APR.SetupHeaderDrag, APR.SetupMinimizeButton = noop, noop
 dofile("APR-Core/utils/UIUtils.lua")
+dofile("APR-Core/ui/foundations/StatusBars.lua")
 APR.SetupHeaderDrag, APR.SetupMinimizeButton = noop, noop
 dofile("APR-Core/ui/route/CurrentStep.lua")
 dofile("APR-Core/ui/route/CurrentStepRows.lua")
