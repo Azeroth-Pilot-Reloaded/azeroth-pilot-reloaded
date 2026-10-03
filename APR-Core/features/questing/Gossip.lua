@@ -168,11 +168,12 @@ function APR.gossip:HandleGossip(step)
         return SelectOption(gossip[1].gossipOptionID)
     end
 
-    local function PickGossipByIcon(iconId)
+    local function PickGossipByIcon(iconId, optionType)
         local gossipOption = C_GossipInfo.GetOptions()
-        if next(gossipOption) then
+        if gossipOption and next(gossipOption) then
             for _, gossip in pairs(gossipOption) do
-                if gossip.icon == iconId then
+                -- Classic/Forever can expose a service type instead of a numeric icon.
+                if (optionType and gossip.type == optionType) or gossip.icon == iconId then
                     if SelectOption(gossip.gossipOptionID) then
                         return true
                     end
@@ -193,9 +194,13 @@ function APR.gossip:HandleGossip(step)
     if step and (step.UseFlightPath or step.GetFP) and not step.NoAutoFlightMap and not step.GossipOptionIDs then
         handledByAPR = PickGossipByIcon(132057) or handledByAPR
     end
-    -- BuyMerchant
-    if step and step.BuyMerchant and not step.GossipOptionIDs then
-        handledByAPR = PickGossipByIcon(132060) or handledByAPR
+    -- Merchant (buy or sell)
+    if step and (step.BuyMerchant or step.SellItems) and not step.GossipOptionIDs then
+        handledByAPR = PickGossipByIcon(132060, "vendor") or handledByAPR
+    end
+    -- Trainer (professions or skills)
+    if step and (step.LearnProfession or step.LearnSkill) and not step.GossipOptionIDs then
+        handledByAPR = PickGossipByIcon(132058, "trainer") or handledByAPR
     end
     ------------------------------------
     -- GOSSIP
