@@ -1,12 +1,20 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..FrameXMLUI.xsd">
-    <Script file="Routes/Forever/Forever_Alliance_Dwarf.lua" />
-    <Script file="Routes/Forever/Forever_Alliance_Gnome.lua" />
-    <Script file="Routes/Forever/Forever_Alliance_Human.lua" />
-    <Script file="Routes/Forever/Forever_Alliance_NightElf.lua" />
-    <Script file="Routes/Forever/Forever_Horde_Orc.lua" />
-    <Script file="Routes/Forever/Forever_Horde_Scourge.lua" />
-    <Script file="Routes/Forever/Forever_Horde_Tauren.lua" />
-    <Script file="Routes/Forever/Forever_Horde_Troll.lua" />
-    <Script file="Routes/Forever/Forever_Horde_Troll_Orc.lua" />
-    <Script file="Routes/Forever/Forever_Skyborne.lua" />
+    <Script file="Routes/Forever/Forever_Horde_Troll_Orc.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Alliance_Darkshore.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Alliance_Elwynn_Forest.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Alliance_Horde_Zephras_Isle.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Alliance_Loch_Modan.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Alliance_Redridge_Mountains.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Alliance_Westfall.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Horde_Silverpine_Forest.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Horde_Stonetalon_Mountains.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Horde_The_Barrens.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Horde_Tirisfal_Glades.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Starting_Zone_Dwarf_Gnome.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Starting_Zone_Human.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Starting_Zone_NightElf.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Starting_Zone_Orc_Troll.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Starting_Zone_Scourge.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Starting_Zone_Skyborne.lua"/>
+    <Script file="Routes/Forever/Forever_Generated_Starting_Zone_Tauren.lua"/>
 </Ui>
