@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="320" height="100" viewBox="0 0 320 100" role="img" aria-labelledby="title desc">
+  <title id="title">Patreon</title>
+  <desc id="desc">Support the project for Azeroth Pilot Reloaded.</desc>
+  <defs>
+    <linearGradient id="surface" x2="1" y2="1"><stop stop-color="#8e3541"/><stop offset="1" stop-color="#4e2430"/></linearGradient>
+  </defs>
+  <rect x="4.5" y="4.5" width="311" height="91" rx="15.5" fill="url(#surface)" stroke="#df6f77"/>
+  <rect x="20" y="27" width="46" height="46" rx="13" fill="#ffffff" fill-opacity=".12"/>
+  <!-- Brand mark from simple-icons/simple-icons, icons/patreon.svg (CC0). -->
+  <g transform="translate(29 36) scale(1.17)" fill="#ffffff"><path d="M22.957 7.21c-.004-3.064-2.391-5.576-5.191-6.482-3.478-1.125-8.064-.962-11.384.604C2.357 3.231 1.093 7.391 1.046 11.54c-.039 3.411.302 12.396 5.369 12.46 3.765.047 4.326-4.804 6.068-7.141 1.24-1.662 2.836-2.132 4.801-2.618 3.376-.836 5.678-3.501 5.673-7.031Z"/></g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif">
+    <text x="81" y="46" fill="#ffffff" font-size="21" font-weight="700">Patreon</text>
+    <text x="81" y="67" fill="#ffe2e4" font-size="13">Support the project</text>
+  </g>
+  <path d="M282 43l7 7-7 7m-9-7h16" fill="none" stroke="#ffe2e4" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

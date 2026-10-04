@@ -8,6 +8,7 @@ ignore:
   - README.md
   - SECURITY.md
   - wiki.md
+  - readme
   - Update-Libraries.cmd
   - tools
   - tests

@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="380" height="62" viewBox="0 0 380 62" role="img" aria-labelledby="title desc">
+  <title id="title">APR Route Recorder</title>
+  <desc id="desc">Record and edit your own APR routes. Download APR Route Recorder on CurseForge.</desc>
+  <!-- Design based on APR-Route-Recorder/docs/assets/readme/apr-required.svg. -->
+  <defs>
+    <linearGradient id="surface" x2="1" y2="1">
+      <stop stop-color="#202633"/>
+      <stop offset="1" stop-color="#151a24"/>
+    </linearGradient>
+  </defs>
+  <rect x="4.5" y="4.5" width="371" height="53" rx="26.5" fill="url(#surface)" stroke="#3b4558"/>
+  <circle cx="35" cy="31" r="17" fill="#36232b"/>
+  <g fill="none" stroke="#ff9399" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M33 27l3-3a4 4 0 0 1 6 6l-3 3M37 35l-3 3a4 4 0 0 1-6-6l3-3M32 34l6-6"/>
+  </g>
+  <g font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Arial, sans-serif">
+    <text x="64" y="24" fill="#aeb8ca" font-size="9" font-weight="700" letter-spacing="1.4">ROUTE BUILDING COMPANION</text>
+    <text x="64" y="44" fill="#f4f7fd" font-size="16" font-weight="600">APR Route Recorder</text>
+  </g>
+  <path d="M340 34l9-9m-8 0h8v8" fill="none" stroke="#aeb8ca" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
