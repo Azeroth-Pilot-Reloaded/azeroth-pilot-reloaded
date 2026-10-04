@@ -718,11 +718,9 @@ function APR.currentStep:ProcessPendingButtonResets()
 end
 
 function APR.currentStep:PrepareRaidIcon(step)
-    if step and (step.RaidIcon or step.DroppableQuest) then
-        self.pendingRaidIconNpcId = tonumber(step.RaidIcon or step.DroppableQuest)
-    else
-        self.pendingRaidIconNpcId = nil
-    end
+    local droppableQuest = step and step.DroppableQuest
+    local npcID = step and (step.RaidIcon or (droppableQuest and droppableQuest.MobId))
+    self.pendingRaidIconNpcId = tonumber(npcID)
     self.raidIconAdded = false
 end
 

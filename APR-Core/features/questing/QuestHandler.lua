@@ -496,6 +496,10 @@ local function UpdateStepOnce()
             end
         end
 
+        if step.DropQuest or step.DroppableQuest then
+            APR:UseDroppedQuestItem(step)
+        end
+
         -- Qpart (objectives)
         if APR.HandleRouteAction and APR:HandleRouteAction(step) then
             APR:SetButton()

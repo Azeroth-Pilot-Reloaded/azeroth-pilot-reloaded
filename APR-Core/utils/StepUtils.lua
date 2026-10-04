@@ -640,8 +640,15 @@ end
 
 --- Determine if the provided quest id belongs to the current step.
 function APR:IsARouteQuest(questId)
-    local step = self:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
-    return step and self:IsQuestInPool(questId) or false
+    local data = APRData and APRData[self.PlayerID]
+    local step = data and self.ActiveRoute and self:GetStep(data[self.ActiveRoute])
+    if not step or not questId then return false end
+
+    -- Item-started quests can be offered during an objective step, outside the pickup pool.
+    if questId == step.DropQuest or (step.DroppableQuest and questId == step.DroppableQuest.Qid) then
+        return true
+    end
+    return self:IsQuestInPool(questId)
 end
 
 --- Quick check if the active step is a pickup step (for UI hints).

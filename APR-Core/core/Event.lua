@@ -520,7 +520,7 @@ function APR.event.functions.inventory(event)
     if event == "BAG_UPDATE_DELAYED" or event == "GET_ITEM_INFO_RECEIVED" then APR:RefreshLevelProfileTargets() end
     if APR.currentStep then APR.currentStep:UpdateStepButtonUsability() end
     RefreshForOptions({ "LootItems", "LootMoney", "VendorMoney", "Collection", "ItemCount", "EquippedItemStat", "SellItems",
-        "BankDeposit", "BankWithdraw", "DestroyItems", "EquipItem", "BuyMerchant" })
+        "BankDeposit", "BankWithdraw", "DestroyItems", "EquipItem", "BuyMerchant", "DropQuest", "DroppableQuest" })
 end
 
 function APR.event.functions.spellbook()
@@ -1040,7 +1040,7 @@ function APR.event.functions.leaveCombat(event, ...)
         APR:UpdateStep()
     end
 
-    RefreshForOptions({ "SellItems", "BankDeposit", "BankWithdraw", "DestroyItems", "LearnSkill" })
+    RefreshForOptions({ "SellItems", "BankDeposit", "BankWithdraw", "DestroyItems", "LearnSkill", "DropQuest", "DroppableQuest" })
     if step and step.LearnSkill then APR:HandleSkillTrainer(step) end
     APR:UpdateQuest()
 end
