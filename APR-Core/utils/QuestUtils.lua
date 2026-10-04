@@ -72,6 +72,44 @@ function APR:CloseQuest()
     CloseQuest()
 end
 
+--- Open only the quest starter requested by the active step; QUEST_DETAIL handles acceptance.
+function APR:UseDroppedQuestItem(step)
+    local questID = step and (step.DropQuest or (step.DroppableQuest and step.DroppableQuest.Qid))
+    local profile = self:GetSettingsProfile()
+    if not questID or not profile or not profile.enableAddon or not self.IsInRouteZone
+        or step.NoAutoAccept or not (profile.autoAccept or profile.autoAcceptQuestRoute) then
+        return false
+    end
+
+    if not C_Container or not C_Container.GetContainerItemQuestInfo then return false end
+    if IsModifierKeyDown() or InCombatLockdown() or UnitIsDeadOrGhost("player")
+        or self.routeMerchantOpen or self.routeBankOpen
+        or self.ActiveQuests[questID] or C_QuestLog.IsOnQuest(questID)
+        or C_QuestLog.IsQuestFlaggedCompleted(questID) then
+        return false
+    end
+
+    -- Bag changes and quest/UI refreshes can arrive before the offer is accepted.
+    local now = GetTime()
+    local lastUse = self.lastDroppedQuestItemUse
+    if lastUse and lastUse.questID == questID and now - lastUse.time < 1 then return false end
+
+    for bag = 0, (NUM_BAG_SLOTS or self.MaxBagSlots or 4) do
+        for slot = 1, C_Container.GetContainerNumSlots(bag) do
+            local itemInfo = C_Container.GetContainerItemInfo(bag, slot)
+            if itemInfo and not itemInfo.isLocked then
+                local questInfo = C_Container.GetContainerItemQuestInfo(bag, slot)
+                if questInfo and questInfo.questID == questID and not questInfo.isActive then
+                    self.lastDroppedQuestItemUse = { questID = questID, time = now }
+                    C_Container.UseContainerItem(bag, slot)
+                    return true
+                end
+            end
+        end
+    end
+    return false
+end
+
 local function AddQuestToPool(pool, questID)
     questID = tonumber(questID)
     if questID and not APR:Contains(pool.ids, questID) then
