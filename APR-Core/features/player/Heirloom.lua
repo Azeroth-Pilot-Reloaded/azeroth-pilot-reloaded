@@ -4,6 +4,7 @@ local LibWindow = LibStub("LibWindow-1.1")
 APR.heirloom = APR:NewModule("Heirloom")
 
 APR.heirloom.buttons = {}
+APR.heirloom.iconButtons = {}
 APR.heirloom._pendingCombatRefresh = false
 APR.heirloom._combatWatcher = nil
 
@@ -242,19 +243,21 @@ function APR.heirloom:AddHeirloomIcons()
         for _, btn in ipairs(self.buttons) do
             btn:Hide()
             btn:ClearAllPoints()
-            btn = nil
         end
     end
+    wipe(self.buttons)
 
     for _, heirloom in ipairs(heirlooms) do
         local button
         if heirloom.name == "map" and PlayerHasToy(heirloom.id) and
             (APR.Faction == heirloom.faction or heirloom.faction == "Neutral") then
-            button = CreateMapButton(HeirloomFrame_body, heirloom.id)
+            button = self.iconButtons[heirloom.id] or CreateMapButton(HeirloomFrame_body, heirloom.id)
         elseif heirloom.name == "heirloom" then
-            button = CreateHeirloomButton(HeirloomFrame_body, heirloom.icon)
+            button = self.iconButtons[heirloom.id] or CreateHeirloomButton(HeirloomFrame_body, heirloom.icon)
         end
         if button then
+            self.iconButtons[heirloom.id] = button
+            button:Show()
             if APR.RegisterSkinTarget then
                 APR:RegisterSkinTarget(button, "icon", { texture = button:GetNormalTexture() or button.icon })
             end
