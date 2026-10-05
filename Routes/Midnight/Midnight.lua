@@ -4070,6 +4070,7 @@ APR.RouteQuestStepList["2395-the-curse-of-ulatek"] = {
             Zone = 2437,
             GossipOptionIDs = { 139407 },
             IsCampaignQuest = true,
+            IsQuestUncompleted = 93011,
             _index = 73,
         },
         {
