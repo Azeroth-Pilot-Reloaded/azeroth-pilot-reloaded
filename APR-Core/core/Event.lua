@@ -435,7 +435,8 @@ function APR.event.functions.adventureMapAccept(event, followerTypeID)
         end
 
         attempt = attempt + 1
-        local numChoices = C_AdventureMap.GetNumZoneChoices()
+        -- Treat an unavailable choice count as empty so the existing retries can continue.
+        local numChoices = C_AdventureMap.GetNumZoneChoices() or 0
         APR:Debug("AdventureMap: attempt " .. attempt .. "/" .. MAX_RETRIES .. " - choices: " .. numChoices)
 
         local questStarted = false
