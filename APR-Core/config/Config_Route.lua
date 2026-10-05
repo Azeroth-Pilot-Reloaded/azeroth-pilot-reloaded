@@ -447,18 +447,35 @@ local function CreateCustomPathTableFrame(name)
     return frame
 end
 
+local function ReleaseRouteRows(widget)
+    widget.rowPools = widget.rowPools or { route = {}, empty = {} }
+    widget.fontStringsContainer = widget.fontStringsContainer or {}
+    for _, container in ipairs(widget.fontStringsContainer) do
+        container:Hide()
+        container:ClearAllPoints()
+        container:SetScript("OnEnter", nil)
+        container:SetScript("OnLeave", nil)
+        container:SetScript("OnMouseDown", nil)
+        for _, button in ipairs({ container.upButton, container.downButton }) do
+            button:SetScript("OnClick", nil)
+            button:SetScript("OnEnter", nil)
+            button:SetScript("OnLeave", nil)
+        end
+        table.insert(widget.rowPools[container.rowKind], container)
+    end
+    wipe(widget.fontStringsContainer)
+end
+
+local function AcquireRouteRow(widget, kind, parent, template)
+    local container = table.remove(widget.rowPools[kind]) or CreateFrame("Frame", nil, parent, template)
+    container.rowKind = kind
+    container:Show()
+    return container
+end
+
 function SetCustomPathListFrame(widget, name)
     customPathListeWidget = widget
-    -- Hide the content before resetting the data
-    if widget.fontStringsContainer then
-        for _, container in ipairs(widget.fontStringsContainer) do
-            container:Hide()
-            container:ClearAllPoints()
-            container:SetParent(nil)
-        end
-    else
-        widget.fontStringsContainer = {}
-    end
+    ReleaseRouteRows(widget)
 
     local routes = APRCustomPath[APR.PlayerID]
     local yOffset = -15
@@ -471,15 +488,19 @@ function SetCustomPathListFrame(widget, name)
     end
 
     if #routes == 0 then
-        local noRoutesContainer = CreateFrame("Frame", nil, widget.frame.contentFrame)
+        local noRoutesContainer = AcquireRouteRow(widget, "empty", widget.frame.contentFrame)
         noRoutesContainer:SetSize(600, 25)
         noRoutesContainer:SetPoint("TOPLEFT", 10, yOffset)
 
-        local noRoutesID = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        local noRoutesID = noRoutesContainer.routeID or
+            noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        noRoutesContainer.routeID = noRoutesID
         noRoutesID:SetPoint("LEFT")
         noRoutesID:SetText('-')
         APR:RegisterFontString(noRoutesID, "general", { role = "muted" })
-        local noRoutesText = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        local noRoutesText = noRoutesContainer.nameText or
+            noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        noRoutesContainer.nameText = noRoutesText
         noRoutesText:SetPoint("LEFT", noRoutesID, "RIGHT", 50, 0)
         noRoutesText:SetText(L["NO_ROUTE"])
         APR:RegisterFontString(noRoutesText, "general", { role = "muted" })
@@ -491,11 +512,12 @@ function SetCustomPathListFrame(widget, name)
     else
         for i, route in ipairs(routes) do
             -- Create a container for each line
-            local lineContainer = CreateFrame("Frame", nil, widget.frame.contentFrame)
+            local lineContainer = AcquireRouteRow(widget, "route", widget.frame.contentFrame)
             lineContainer:SetSize(600, 25)
             lineContainer:SetPoint("TOPLEFT", 10, yOffset)
 
-            local rowBackground = lineContainer:CreateTexture(nil, "BACKGROUND")
+            local rowBackground = lineContainer.rowBackground or lineContainer:CreateTexture(nil, "BACKGROUND")
+            lineContainer.rowBackground = rowBackground
             rowBackground:SetAllPoints()
             if i % 2 == 0 then
                 rowBackground:SetColorTexture(unpack(rowEvenBgColor))
@@ -503,24 +525,29 @@ function SetCustomPathListFrame(widget, name)
                 rowBackground:SetColorTexture(unpack(rowOddBgColor))
             end
 
-            local borderTexture = lineContainer:CreateTexture(nil, "BACKGROUND")
+            local borderTexture = lineContainer.borderTexture or lineContainer:CreateTexture(nil, "BACKGROUND")
+            lineContainer.borderTexture = borderTexture
             borderTexture:SetTexture("Interface\\Buttons\\UI-Listbox-Highlight")
             borderTexture:SetSize(600, 1)
             borderTexture:SetPoint("TOPLEFT", lineContainer, "TOPLEFT", 0, 0)
             borderTexture:SetPoint("TOPRIGHT", lineContainer, "TOPRIGHT", 0, 0)
             borderTexture:SetVertexColor(unpack(lineColor))
 
-            local routeID = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            local routeID = lineContainer.routeID or lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            lineContainer.routeID = routeID
             routeID:SetPoint("LEFT")
             routeID:SetText(tostring(i))
             APR:RegisterFontString(routeID, "general", { role = "base" })
 
-            local nameText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            local nameText = lineContainer.nameText or lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            lineContainer.nameText = nameText
             nameText:SetPoint("LEFT", routeID, "RIGHT", 50, 0)
             nameText:SetText(route)
             APR:RegisterFontString(nameText, "general", { role = "base" })
 
-            local upButton = CreateFrame("Button", nil, lineContainer, "BackdropTemplate")
+            local upButton = lineContainer.upButton or CreateFrame("Button", nil, lineContainer, "BackdropTemplate")
+            lineContainer.upButton = upButton
+            upButton:Enable()
             upButton:SetSize(22, 22)
             upButton:SetPoint("RIGHT", lineContainer, "RIGHT", -10, 7)
             upButton:SetNormalTexture("interface/minimap/ui-minimap-minimizebuttonup-up")
@@ -542,7 +569,9 @@ function SetCustomPathListFrame(widget, name)
                 upButton:Disable()
             end
 
-            local downButton = CreateFrame("Button", nil, lineContainer, "BackdropTemplate")
+            local downButton = lineContainer.downButton or CreateFrame("Button", nil, lineContainer, "BackdropTemplate")
+            lineContainer.downButton = downButton
+            downButton:Enable()
             downButton:SetSize(22, 22)
             downButton:SetPoint("RIGHT", lineContainer, "RIGHT", -10, -5)
             downButton:SetNormalTexture("interface/minimap/ui-minimap-minimizebuttondown-up")
@@ -705,16 +734,7 @@ end
 function SetRouteListTab(widget, name)
     tabRouteListWidget = widget
     UpdateRouteSortHeaderLabels(widget.frame)
-    -- Hide the content before resetting the data
-    if widget.fontStringsContainer then
-        for _, container in ipairs(widget.fontStringsContainer) do
-            container:Hide()
-            container:ClearAllPoints()
-            container:SetParent(nil)
-        end
-    else
-        widget.fontStringsContainer = {}
-    end
+    ReleaseRouteRows(widget)
 
     local sortedRoutes = {}
 
@@ -825,11 +845,13 @@ function SetRouteListTab(widget, name)
     end)
 
     if #sortedRoutes == 0 then
-        local noRoutesContainer = CreateFrame("Frame", nil, widget.frame)
+        local noRoutesContainer = AcquireRouteRow(widget, "empty", widget.frame)
         noRoutesContainer:SetSize(400, rowHeight)
         noRoutesContainer:SetPoint("TOPLEFT", 10, yOffset)
 
-        local noRoutesText = noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        local noRoutesText = noRoutesContainer.nameText or
+            noRoutesContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        noRoutesContainer.nameText = noRoutesText
         noRoutesText:SetPoint("LEFT")
         APR:RegisterFontString(noRoutesText, "general", { role = "muted" })
         if search ~= "" then
@@ -843,12 +865,13 @@ function SetRouteListTab(widget, name)
     else
         for index, route in ipairs(sortedRoutes) do
             -- Create a container for each line
-            local lineContainer = CreateFrame("Frame", nil, widget.frame, "BackdropTemplate")
+            local lineContainer = AcquireRouteRow(widget, "route", widget.frame, "BackdropTemplate")
             lineContainer:SetSize(430, rowHeight)
             lineContainer:SetPoint("TOPLEFT", 10, yOffset)
             lineContainer:SetPoint("TOPRIGHT", -10, yOffset)
 
-            local rowBackground = lineContainer:CreateTexture(nil, "BACKGROUND")
+            local rowBackground = lineContainer.rowBackground or lineContainer:CreateTexture(nil, "BACKGROUND")
+            lineContainer.rowBackground = rowBackground
             rowBackground:SetAllPoints()
             if index % 2 == 0 then
                 rowBackground:SetColorTexture(unpack(rowEvenBgColor))
@@ -856,28 +879,32 @@ function SetRouteListTab(widget, name)
                 rowBackground:SetColorTexture(unpack(rowOddBgColor))
             end
 
-            local borderTexture = lineContainer:CreateTexture(nil, "BACKGROUND")
+            local borderTexture = lineContainer.borderTexture or lineContainer:CreateTexture(nil, "BACKGROUND")
+            lineContainer.borderTexture = borderTexture
             borderTexture:SetTexture("Interface\\Buttons\\UI-Listbox-Highlight")
             borderTexture:SetSize(450, 1)
             borderTexture:SetPoint("TOPLEFT", lineContainer, "TOPLEFT", 0, 0)
             borderTexture:SetPoint("TOPRIGHT", lineContainer, "TOPRIGHT", 0, 0)
             borderTexture:SetVertexColor(unpack(lineColor))
 
-            local nameText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            local nameText = lineContainer.nameText or lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            lineContainer.nameText = nameText
             nameText:SetPoint("LEFT")
             nameText:SetWidth(270)
             nameText:SetJustifyH("LEFT")
             nameText:SetText(route.routeName)
             APR:RegisterFontString(nameText, "general", { role = "base" })
 
-            local categoryText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            local categoryText = lineContainer.categoryText or lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            lineContainer.categoryText = categoryText
             categoryText:SetPoint("LEFT", nameText, "RIGHT", 10, 0)
             categoryText:SetWidth(70)
             categoryText:SetJustifyH("LEFT")
             categoryText:SetText(route.categoryValue)
             APR:RegisterFontString(categoryText, "general", { role = "base" })
 
-            local statusText = lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            local statusText = lineContainer.statusText or lineContainer:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+            lineContainer.statusText = statusText
             statusText:SetPoint("RIGHT")
             statusText:SetWidth(58)
             statusText:SetJustifyH("RIGHT")
