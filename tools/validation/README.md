@@ -29,6 +29,14 @@ An interrupted pass retains the previous content. Callers outside a pass still
 get immediate updates. Protected rows are retired by frame identity and deferred
 anchors are applied after combat, so reusing a key cannot destroy its replacement.
 
+Retired rows now enter pools separated by parent and row kind. Their secure action
+buttons, cooldowns, detail fonts and preview thumbnails are reused. Combat cleanup
+waits until protected frames can be changed, then prefers pooled secure rows over
+converting another temporary plain row. Configuration lists also recycle their
+rows, and heirloom buttons are cached by toy ID. `memory_recycling_test.lua` checks
+1,000 step/action changes, 100 combat cycles and repeated configuration/heirloom
+refreshes without further widget allocations after warm-up.
+
 `route_panels_render_test.lua` loads the real Fillers and Quest Order List modules
 using the shared `route_ui_test_env.lua` widgets. It covers 100 filler refreshes
 without new frames/fonts or hidden rows, stable objective ordering, wrapping,

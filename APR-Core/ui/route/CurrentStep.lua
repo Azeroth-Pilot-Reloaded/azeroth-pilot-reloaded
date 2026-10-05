@@ -651,6 +651,7 @@ function APR.currentStep:ResetSecureStepButton(container, questsListKey, force)
         button.cooldown:Clear()
     end
     container.IconButton = nil
+    container.pooledStepButton = button
     if container.RaidIconButton then PositionStepButtons(container, container.RaidIconButton) end
 end
 
@@ -683,6 +684,7 @@ function APR.currentStep:ResetSecureRaidIconButton(container, questsListKey, for
     end
     button.npcID = nil
     container.RaidIconButton = nil
+    container.pooledRaidIconButton = button
     if self.raidIconButton == button then
         self.raidIconButton = nil
     end
@@ -740,8 +742,10 @@ function APR.currentStep:CreateSecureRaidIconButton(questsListKey, npcID)
         end
     end
 
-    local RaidIconButton = CreateFrame("Button", nil, container,
+    local RaidIconButton = container.pooledRaidIconButton or CreateFrame("Button", nil, container,
         "SecureActionButtonTemplate, BackdropTemplate")
+    container.pooledRaidIconButton = nil
+    RaidIconButton:Show()
     RaidIconButton:SetSize(25, 25)
     PositionStepButtons(container, RaidIconButton, container.IconButton)
     RaidIconButton:SetNormalTexture(RAID_ICON_TEXTURE)
@@ -847,8 +851,10 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         return
     end
 
-    local IconButton = CreateFrame("Button", nil, container,
+    local IconButton = container.pooledStepButton or CreateFrame("Button", nil, container,
         "SecureActionButtonTemplate, BackdropTemplate")
+    container.pooledStepButton = nil
+    IconButton:Show()
     IconButton:SetSize(25, 25)
     PositionStepButtons(container, IconButton)
     if isHousingAction then
@@ -924,7 +930,8 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
 
     IconButton:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
 
-    IconButton.cooldown = CreateFrame("Cooldown", "$parentCooldown", IconButton, "CooldownFrameTemplate")
+    IconButton.cooldown = IconButton.cooldown or CreateFrame("Cooldown", "$parentCooldown", IconButton,
+        "CooldownFrameTemplate")
     IconButton.cooldown:SetAllPoints()
     IconButton.cooldown:Hide()
 
@@ -984,6 +991,7 @@ function APR.currentStep:ProcessPendingStepButtons()
     local needsLayout = next(self.pendingButtonResets) or next(self.pendingButtonRequests) or
         next(self.pendingRaidIconRequests)
     self:ProcessPendingButtonResets()
+    self:RecycleCombatRows()
 
     for questsListKey, data in pairs(self.pendingButtonRequests) do
         self:CreateSecureStepButton(questsListKey, data.itemID, data.attribute, data.equipSlot)
@@ -1013,9 +1021,7 @@ function APR.currentStep:RemoveStepButtonByKey(questsListKey)
     if not existingButton then
         return
     end
-    existingButton:Hide()
-    existingButton:ClearAllPoints()
-    self.questsList[questsListKey] = nil
+    self:ReleaseRow(self.questsList, questsListKey)
 end
 
 local function ShouldUpdateStepButton(IconButton, filter)
@@ -1377,23 +1383,10 @@ function APR.currentStep:SoftHide(container)
 end
 
 function APR.currentStep:FlushPendingContainers()
+    if InCombatLockdown() then return end
     -- Flush orphaned containers (replaced during combat)
     for _, container in ipairs(self.pendingContainerDestroy) do
-        if container then
-            container.hiddenInCombat = nil
-            container:SetAlpha(1)
-            container:EnableMouse(true)
-            container:SetScript("OnEnter", nil)
-            container:SetScript("OnLeave", nil)
-            container:ClearAllPoints()
-            container:Hide()
-            if container.IconButton then
-                self:ResetSecureStepButton(container, nil, true)
-            end
-            if container.RaidIconButton then
-                self:ResetSecureRaidIconButton(container, nil, true)
-            end
-        end
+        self:RecycleRow(container)
     end
     wipe(self.pendingContainerDestroy)
 
@@ -1403,25 +1396,9 @@ function APR.currentStep:FlushPendingContainers()
         return
     end
     for id, _ in pairs(self.pendingRemoval) do
-        local container = self.questsList[id] or self.questsExtraTextList[id] or self.fillersList[id]
-        if container then
-            container.hiddenInCombat = nil
-            container:SetAlpha(1)
-            container:EnableMouse(true)
-            container:SetScript("OnEnter", nil)
-            container:SetScript("OnLeave", nil)
-            container:ClearAllPoints()
-            container:Hide()
-            if container.IconButton then
-                self:ResetSecureStepButton(container, id, true)
-            end
-            if container.RaidIconButton then
-                self:ResetSecureRaidIconButton(container, id, true)
-            end
+        for _, list in ipairs({ self.questsList, self.questsExtraTextList, self.fillersList }) do
+            self:ReleaseRow(list, id)
         end
-        self.questsList[id] = nil
-        self.questsExtraTextList[id] = nil
-        self.fillersList[id] = nil
     end
     wipe(self.pendingRemoval)
     self:ReOrderQuestSteps(true)

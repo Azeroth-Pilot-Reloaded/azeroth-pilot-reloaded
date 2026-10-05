@@ -14,6 +14,107 @@ function CurrentStep:TouchRow(container)
     if container then container.stale = nil end
 end
 
+function CurrentStep:AcquirePooledRow(parent, kind)
+    local pools = self.rowPools and self.rowPools[parent]
+    local pool = pools and pools[kind]
+    -- Keep plain rows available for combat. Secure rows cannot be shown or
+    -- repositioned then, so consume those first once combat has ended.
+    for pass = 1, 2 do
+        for index = #(pool or {}), 1, -1 do
+            local container = pool[index]
+            if self:CanSafelyHide(container) and (pass == 2 or container.hasSecureControls) then
+                table.remove(pool, index)
+                container.inRowPool = nil
+                container:Show()
+                return container
+            end
+        end
+    end
+end
+
+function CurrentStep:RecycleCombatRows()
+    if not APR.UpdateStep or APR.stepUpdateRunning then return end
+    local refresh = false
+    for _, requests in ipairs({ self.pendingButtonRequests, self.pendingRaidIconRequests }) do
+        for key in pairs(requests) do
+            for _, list in ipairs({ self.questsList, self.questsExtraTextList, self.fillersList }) do
+                local container = list[key]
+                local pools = container and self.rowPools and self.rowPools[container:GetParent()]
+                local pool = pools and pools[container.rowKind]
+                if container and not container.hasSecureControls then
+                    for _, candidate in ipairs(pool or {}) do
+                        if candidate.hasSecureControls then
+                            -- Re-render into an existing secure row instead of
+                            -- permanently converting another combat placeholder.
+                            self:ReleaseRow(list, key)
+                            refresh = true
+                            break
+                        end
+                    end
+                end
+            end
+        end
+    end
+    if refresh then APR:UpdateStep() end
+end
+
+function CurrentStep:RecycleRow(container, key)
+    if not container or container.inRowPool then return end
+    if not self:CanSafelyHide(container) then
+        self:SoftHide(container)
+        if not container.pendingRecycle then
+            container.pendingRecycle = true
+            table.insert(self.pendingContainerDestroy, container)
+        end
+        return
+    end
+    container.pendingRecycle, container.hiddenInCombat = nil, nil
+    container:SetAlpha(1)
+    container:EnableMouse(true)
+    container:SetScript("OnEnter", nil)
+    container:SetScript("OnLeave", nil)
+    container:Hide()
+    container:ClearAllPoints()
+    self:ResetSecureStepButton(container, key)
+    self:ResetSecureRaidIconButton(container, key)
+    if container.questProgressBar then container.questProgressBar:Hide() end
+    for _, barKey in ipairs({ "reputationBar", "lootMoneyBar" }) do
+        local bar = self[barKey]
+        if bar and bar:GetParent() == container then bar:Hide() end
+    end
+    for _, font in ipairs(container.detailFonts or {}) do
+        font:Hide()
+        font.questID = nil
+        font:SetScript("OnEnter", nil)
+        font:SetScript("OnLeave", nil)
+    end
+    for _, button in ipairs(container.previewButtons or {}) do
+        button:Hide()
+        button:SetScript("OnUpdate", nil)
+        button:SetScript("OnClick", nil)
+        button:SetScript("OnEnter", nil)
+        button:SetScript("OnLeave", nil)
+        button.imagePath = nil
+        button.previewTexture:SetTexture(nil)
+    end
+    if container.font and container.rowKind ~= "divider" then container.font:Show() end
+    container.key, container.questID, container.objectiveIndex = nil, nil, nil
+    container.objectiveText, container.isScenario, container.isQuestObjective = nil, nil, nil
+    container.step, container.imagePaths, container.layoutOffset = nil, nil, nil
+    container.extraContentHeight, container.progressBarOnly = nil, nil
+    container.stale, container.refreshActions, container.actionSeen, container.raidSeen = nil, nil, nil, nil
+    container._isManagedExtraLine, container._rawExtraLineText, container._manualLeadingDash = nil, nil, nil
+    if container.detailFonts then container.subTexts = {} end
+
+    local parent, kind = container:GetParent(), container.rowKind
+    self.rowPools = self.rowPools or {}
+    self.rowPools[parent] = self.rowPools[parent] or {}
+    local pools = self.rowPools[parent]
+    pools[kind] = pools[kind] or {}
+    container.inRowPool = true
+    table.insert(pools[kind], container)
+end
+
 function CurrentStep:ReleaseRow(list, key)
     local container = list[key]
     if not container then return end
@@ -22,18 +123,7 @@ function CurrentStep:ReleaseRow(list, key)
     self.pendingButtonRequests[key] = nil
     self.pendingRaidIconRequests[key] = nil
     self.pendingButtonResets[key] = nil
-    if self:CanSafelyHide(container) then
-        container:SetScript("OnEnter", nil)
-        container:SetScript("OnLeave", nil)
-        container:Hide()
-        container:ClearAllPoints()
-        self:ResetSecureStepButton(container, key)
-        self:ResetSecureRaidIconButton(container, key)
-    else
-        self:SoftHide(container)
-        -- Store the actual retired frame, never a key that a replacement reuses.
-        table.insert(self.pendingContainerDestroy, container)
-    end
+    self:RecycleRow(container, key)
     self.layoutDirty = true
     if list == self.fillersList and APR.fillersFrame then APR.fillersFrame.layoutDirty = true end
 end
@@ -132,7 +222,8 @@ local function AcquireRow(self, list, key, kind, text, extra, color, dash)
         container = nil
     end
     if not container then
-        container = APR:CreateStepTextContainer(CurrentStepFrame_StepHolder, WIDTH, text or "", extra,
+        container = self:AcquirePooledRow(CurrentStepFrame_StepHolder, kind) or
+            APR:CreateStepTextContainer(CurrentStepFrame_StepHolder, WIDTH, text or "", extra,
             color, APR.settings.profile.currentStepbackgroundColorAlpha, dash, "currentStep")
         container.rowKind, container.key = kind, key
         container.font:ClearAllPoints()

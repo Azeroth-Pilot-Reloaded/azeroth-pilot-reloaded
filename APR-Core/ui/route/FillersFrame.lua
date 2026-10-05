@@ -124,8 +124,10 @@ function APR.fillersFrame:AddFillerStep(questID, text, objectiveIndex)
         container = nil
     end
     if not container then
-        container = APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, false,
+        container = currentStep:AcquirePooledRow(FillersFrame_StepHolder, "filler") or
+            APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, false,
             nil, nil, true, "fillers")
+        container.rowKind, container.key = "filler", key
         container.font:ClearAllPoints()
         container.font:SetPoint("TOPLEFT", TEXT_PADDING, -5)
         container.font:SetWidth(FRAME_WIDTH - TEXT_PADDING * 2)

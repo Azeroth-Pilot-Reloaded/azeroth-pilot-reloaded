@@ -82,6 +82,18 @@ assert(step.fillersList["20-2"] == replacement and fillers.Frame:IsShown())
 assert(not fillers.pendingRefresh and not fillers.layoutDirty)
 fillers:RemoveFillerSteps()
 assert(not fillers.Frame:IsShown(), "Empty bonus list hides once the content pass completes")
+local function changingFiller(id)
+    step:BeginContentUpdate()
+    step:Reset()
+    fillers:AddFillerStep(id, "Changing bonus objective", 1)
+    step:EndContentUpdate(true)
+end
+changingFiller(30); changingFiller(40); changingFiller(30)
+initialFrames, initialFonts = env.frames(), env.fonts()
+for index = 1, 1000 do changingFiller(index % 2 == 0 and 30 or 40) end
+assert(env.frames() == initialFrames and env.fonts() == initialFonts,
+    "Changing bonus objectives must recycle rows from the filler holder's own pool")
+fillers:RemoveFillerSteps()
 print(
 "Fillers: stable rows/actions, 100 refreshes without allocation or hide/show, wrapping, order, collapse, snap and combat passed")
 

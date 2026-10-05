@@ -496,14 +496,15 @@ local function ApplyPreviewButtonLayout(container)
     local availableWidth = currentStepFrameWidth - (STEP_PREVIEW_SIDE_PADDING * 2) -
         (STEP_PREVIEW_HORIZONTAL_PADDING * 2)
     local aspectRatios = {}
-    for index, button in ipairs(container.previewButtons) do
+    for index = 1, #(container.imagePaths or {}) do
+        local button = container.previewButtons[index]
         aspectRatios[index] = ResolvePreviewAspectRatio(button.previewTexture)
     end
 
     local rowWidthOrigin = STEP_PREVIEW_SIDE_PADDING + STEP_PREVIEW_HORIZONTAL_PADDING
     local totalHeight = STEP_PREVIEW_VERTICAL_PADDING * 2
     local currentOffsetY = STEP_PREVIEW_VERTICAL_PADDING
-    local previewCount = #container.previewButtons
+    local previewCount = #(container.imagePaths or {})
 
     local rowSizes = ComputePreviewRowSizes(previewCount)
     local rowStart = 1
@@ -556,28 +557,7 @@ function APR.currentStepImagePreview:ClearPreviewImages(currentStep)
         return
     end
 
-    if currentStep:CanSafelyHide(existingContainer) then
-        if existingContainer.previewButtons then
-            for _, button in ipairs(existingContainer.previewButtons) do
-                button:SetScript("OnUpdate", nil)
-                button:SetScript("OnClick", nil)
-                button:SetScript("OnEnter", nil)
-                button:SetScript("OnLeave", nil)
-            end
-        end
-
-        existingContainer:SetScript("OnEnter", nil)
-        existingContainer:SetScript("OnLeave", nil)
-        existingContainer:ClearAllPoints()
-        existingContainer:Hide()
-        currentStep:ResetSecureStepButton(existingContainer, STEP_PREVIEW_CONTAINER_KEY)
-        currentStep:ResetSecureRaidIconButton(existingContainer, STEP_PREVIEW_CONTAINER_KEY)
-    else
-        currentStep:SoftHide(existingContainer)
-        table.insert(currentStep.pendingContainerDestroy, existingContainer)
-    end
-
-    currentStep.questsList[STEP_PREVIEW_CONTAINER_KEY] = nil
+    currentStep:ReleaseRow(currentStep.questsList, STEP_PREVIEW_CONTAINER_KEY)
     currentStep:ReOrderQuestSteps(true)
 end
 
@@ -621,7 +601,9 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
         return
     end
 
-    local container = CreateFrame("Frame", nil, currentStepFrameHolder, "BackdropTemplate")
+    local container = currentStep:AcquirePooledRow(currentStepFrameHolder, "preview") or
+        CreateFrame("Frame", nil, currentStepFrameHolder, "BackdropTemplate")
+    container.rowKind = "preview"
     container:SetWidth(currentStepFrameWidth)
     container:SetBackdrop({
         bgFile = "Interface\\BUTTONS\\WHITE8X8",
@@ -633,10 +615,11 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
     container.imagePaths = imagePaths
     container.step = step
     if APR.RegisterSkinTarget then APR:RegisterSkinTarget(container, "row") end
-    container.previewButtons = {}
+    container.previewButtons = container.previewButtons or {}
 
-    for _, imagePath in ipairs(imagePaths) do
-        local button = CreateFrame("Button", nil, container, "BackdropTemplate")
+    for index, imagePath in ipairs(imagePaths) do
+        local button = container.previewButtons[index] or CreateFrame("Button", nil, container, "BackdropTemplate")
+        button:Show()
         button:SetBackdrop({
             bgFile = "Interface\\BUTTONS\\WHITE8X8",
             tile = true,
@@ -644,7 +627,7 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
         })
         button:SetBackdropColor(0.02, 0.02, 0.02, 0.85)
 
-        local texture = button:CreateTexture(nil, "ARTWORK")
+        local texture = button.previewTexture or button:CreateTexture(nil, "ARTWORK")
         texture:SetAllPoints(button)
         texture:SetTexture(imagePath)
         texture:SetTexCoord(0, 1, 0, 1)
@@ -686,7 +669,7 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
         end)
 
         if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "panel", { preserveContent = true }) end
-        table.insert(container.previewButtons, button)
+        container.previewButtons[index] = button
     end
 
     ApplyPreviewButtonLayout(container)

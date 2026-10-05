@@ -34,6 +34,11 @@ transitions and temporary routes with synthetic guides. `native_route_actions_te
 tests action handlers. `level_requirements_test.lua` covers bonus profiles and absolute XP.
 The Forever compatibility command reuses the common route suite.
 
+`memory_recycling_test.lua` covers changing current steps and actions, repeated
+combat transitions, image previews, route configuration lists and heirloom buttons.
+Widget allocations stop after the reusable pools are warmed up; cached callbacks
+are rebound to the current content.
+
 `skill_api_test.lua` verifies structured `C_SkillInfo` results and prefers modern
 APIs even when legacy globals exist. `farstrider_data_test.lua` also loads Forever
 with Retail's project ID and checks its pre-Cataclysm transport connections.

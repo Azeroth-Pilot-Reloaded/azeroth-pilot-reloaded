@@ -90,6 +90,8 @@ function methods:GetHeight() return self.height end
 
 function methods:SetParent(parent) self.parent = parent end
 
+function methods:GetParent() return self.parent end
+
 function methods:Show() self.shown = true end
 
 function methods:Hide() self.shown = false end
@@ -147,6 +149,9 @@ assert(not bar:IsShown(), "Collapsing the step hides the bar through its parent"
 CurrentStepFrame_StepHolder:Show()
 APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
 assert(not bar:IsShown(), "Leaving the step clears its bar")
+APR.currentStep:AddQuestSteps("ORDINARY", "An unrelated objective", 1, false, true, false)
+assert(not bar:IsShown(), "Recycling the reputation row must not expose its old progress bar")
+APR.currentStep:RemoveQuestStepsAndExtraLineTexts()
 APR.currentStep:AddReputationStep(requirement)
 assert(not bar:IsShown(), "Unavailable API data does not display misleading progress")
 print("Reputation progress: standard, legacy, renown, friendship, bounds, reuse, layout and cleanup passed")
