@@ -1,3 +1,6 @@
+-- Creates the AceAddon instance, character identity and SavedVariables, then initializes APR modules.
+-- The TOC loads every module before AceAddon invokes OnInitialize.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR = {}
@@ -166,7 +169,7 @@ function APR:OnInitialize()
     self:InitZoneDetectionCache()
 
     -- Register events
-    self.event:MyRegisterEvent()
+    self.event:RegisterEvents()
 end
 
 -- Secret/taint helpers (12.0.0+). Attached during OnInitialize.

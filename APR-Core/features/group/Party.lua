@@ -692,22 +692,6 @@ function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
     end
 end
 
-function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target)
-    local msgID = tostring(math.random(10000, 99999)) .. "-" .. GetTime() -- Unique message ID with timestamp
-    local total = math.ceil(#fullMessage / MAX_MSG_LENGTH)
-    APR:Debug("Splitting message", { msgID = msgID, totalParts = total })
-
-    for i = 1, total do
-        local startIdx = (i - 1) * MAX_MSG_LENGTH + 1
-        local endIdx = math.min(i * MAX_MSG_LENGTH, #fullMessage)
-        local part = fullMessage:sub(startIdx, endIdx)
-
-        -- Format: <msgID>|<index>|<total>|<data>
-        local fragment = msgID .. "|" .. i .. "|" .. total .. "|" .. part
-        C_ChatInfo.SendAddonMessage(prefix, fragment, channel, target)
-    end
-end
-
 function APR.party:StartFragmentCleanupTicker()
     if self.fragmentCleanupTicker then
         return

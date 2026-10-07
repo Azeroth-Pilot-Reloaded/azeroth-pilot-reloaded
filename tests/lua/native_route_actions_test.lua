@@ -11,6 +11,7 @@ APR = {
     currentStep = {},
     QUEST_STATUS = { COMPLETE = 1 }
 }
+dofile("APR-Core/utils/PlayerUtils.lua")
 APRData = { player = { test = 1 } }
 function APR.currentStep:AddQuestSteps() end
 

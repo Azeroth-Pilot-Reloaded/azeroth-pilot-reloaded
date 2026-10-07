@@ -1,8 +1,7 @@
+-- Calculates collection and money objectives from live bags, cached bank contents and vendor values.
+-- Valuation is read-only; inventory-changing actions belong to RouteActions.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-
-APR.lootUtils = APR.lootUtils or {}
-
-APR.CurrencyLooted = APR.CurrencyLooted or {}
 
 -- Bank counts are character data, independent of the active route. Refresh them
 -- only while the bank is accessible; they remain available after closing/reloading.
@@ -92,63 +91,4 @@ end
 
 function APR:GetLootMoneyStepText(rule)
     return string.format(L["LOOT_MONEY"], self:FormatLootMoney(rule.copper))
-end
-
-----------------------------------------------------------------
--- MONEY HANDLING (gold / silver / copper)
--- Amount is already a delta in copper (from PLAYER_MONEY)
-----------------------------------------------------------------
-function APR.lootUtils:OnMoneyLooted(copperDelta)
-    if not copperDelta or copperDelta <= 0 then return end
-
-    -- Only track money if the current step requires it
-    if APR.currentStep and APR.currentStep.LootMoney then
-        APR.MoneyLooted = (APR.MoneyLooted or 0) + copperDelta
-    end
-end
-
-----------------------------------------------------------------
--- CURRENCY HANDLING (Honor, Resources, etc.)
--- These are NOT money and use the currency system
-----------------------------------------------------------------
-function APR.lootUtils:OnCurrencyGained(currencyID, quantity)
-    if not currencyID or not quantity or quantity <= 0 then return end
-
-    APR.CurrencyLooted[currencyID] =
-        (APR.CurrencyLooted[currencyID] or 0) + quantity
-end
-
-----------------------------------------------------------------
--- STEP DISPLAY REFRESH
--- Unified logic for quest items and normal items
-----------------------------------------------------------------
-function APR:RefreshLootStepDisplay(step)
-    if step and step.LootItems then self:UpdateStep() end
-end
-
-function APR.lootUtils:GetLootKey(step, lootType, lootID)
-    if not step or not APR.ActiveRoute then return nil end
-    local stepIndex = step._index or 1
-    return table.concat({
-        APR.ActiveRoute,
-        stepIndex,
-        lootType,
-        tostring(lootID or "NONE")
-    }, "::")
-end
-
-function APR.lootUtils:MarkLootDone(step, lootType, lootID)
-    local playerID = APR.PlayerID
-    APRItemLooted[playerID] = APRItemLooted[playerID] or {}
-
-    local key = self:GetLootKey(step, lootType, lootID)
-    if key then
-        APRItemLooted[playerID][key] = true
-    end
-end
-
-function APR.lootUtils:IsLootDone(step, lootType, lootID)
-    local playerID = APR.PlayerID
-    local key = self:GetLootKey(step, lootType, lootID)
-    return key and APRItemLooted[playerID] and APRItemLooted[playerID][key]
 end

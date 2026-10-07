@@ -1,3 +1,6 @@
+-- Decides campaign skipping on eligible Sojourner routes and handles character/group prompts.
+-- Prompt state is character-scoped; the skip preference remains in the shared profile.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Session-level guard: one party-mismatch warning per route per session.
@@ -93,7 +96,7 @@ function APR:MaybeSojournerPrompt(step)
     if not eligible or not routeData then return end
 
     -- Only prompt once per route per character
-    local charDB = SettingsDB and SettingsDB.char
+    local charDB = APR:GetCharacterSettings()
     if not charDB then return end
     charDB.sojournerSkipPromptShown = charDB.sojournerSkipPromptShown or {}
     if charDB.sojournerSkipPromptShown[self.ActiveRoute] then return end

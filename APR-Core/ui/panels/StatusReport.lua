@@ -1,3 +1,6 @@
+-- Builds a copyable diagnostic report from current route, settings and dependency state.
+-- Rendering is read-only with respect to route progress.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local CreateFrame = CreateFrame
 local GetRealZoneText = GetRealZoneText
@@ -75,7 +78,7 @@ end
 
 local function exportStatusReport()
     APR.questionDialog:CreateEditBoxPopup(L["COPY_HELPER"], L["CLOSE"],
-        APR:tableToString(APR:getStatusReportInfos(), true))
+        APR:TableToDebugString(APR:getStatusReportInfos(), true))
 end
 
 function GetCurrentStepInfo()

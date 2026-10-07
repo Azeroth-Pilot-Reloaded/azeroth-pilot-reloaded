@@ -1,3 +1,6 @@
+-- Owns the guide window, progress bars and secure item/spell/raid-marker controls.
+-- Rows/layout live in CurrentStepRows; protected changes are queued and flushed after combat.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 
@@ -1018,17 +1021,6 @@ function APR.currentStep:ProcessPendingStepButtons()
         self:ReOrderQuestSteps()
         if APR.fillersFrame and APR.fillersFrame.FlushPendingLayout then APR.fillersFrame:FlushPendingLayout(true) end
     end
-end
-
-function APR.currentStep:RemoveStepButtonByKey(questsListKey)
-    if not APR.settings.profile.currentStepShow then
-        return
-    end
-    local existingButton = self.questsList[questsListKey]
-    if not existingButton then
-        return
-    end
-    self:ReleaseRow(self.questsList, questsListKey)
 end
 
 local function ShouldUpdateStepButton(IconButton, filter)

@@ -1,3 +1,6 @@
+-- Provides the route-authoring coordinate converter and Lua export window.
+-- Conversion works on detached route data and shares area geometry with runtime navigation.
+
 local AceGUI = LibStub("AceGUI-3.0")
 local HereBeDragons = LibStub("HereBeDragons-2.0")
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
@@ -250,24 +253,6 @@ local KEY_TYPE_ORDER = {
     boolean = 3,
     table = 4,
 }
-
-local function CopyRouteValue(value, copies)
-    if type(value) ~= "table" then
-        return value
-    end
-
-    copies = copies or {}
-    if copies[value] then
-        return copies[value]
-    end
-
-    local copy = {}
-    copies[value] = copy
-    for key, childValue in pairs(value) do
-        copy[CopyRouteValue(key, copies)] = CopyRouteValue(childValue, copies)
-    end
-    return copy
-end
 
 local function GetEnumExpression(enumName, enumValues, value)
     if type(enumValues) ~= "table" then
@@ -641,7 +626,7 @@ end
 
 function APR.worldCoordinateConverter:ConvertRoute(routeName)
     local route = APR.RouteQuestStepList and APR.RouteQuestStepList[routeName]
-    local convertedRoute = CopyRouteValue(route)
+    local convertedRoute = APR:DeepCopyTable(route)
     local steps = GetRouteSteps(convertedRoute)
     if not steps then
         return TEXT.noRoute, 0, 1

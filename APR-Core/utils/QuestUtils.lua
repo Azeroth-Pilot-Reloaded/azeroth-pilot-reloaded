@@ -1,3 +1,6 @@
+-- Provides quest-title loading, pickup pools, completion checks and objective/scenario progress helpers.
+-- Asynchronous title results are bounded and ignored when their route context becomes stale.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local questTitleRequests = {}
@@ -354,28 +357,6 @@ function APR:GetQuestStorylineInfo(questID)
     return nil, nil
 end
 
-function APR:GetActiveSojournerStatus()
-    local routeData = self.RouteQuestStepList and self.ActiveRoute and self.RouteQuestStepList[self.ActiveRoute]
-    if not routeData or routeData.category ~= APR.CATEGORIES.Sojourner or not routeData.sojournerAchievementID then
-        return nil
-    end
-
-    local achievementID = routeData.sojournerAchievementID
-    local achievementName = achievementID
-    if GetAchievementInfo then
-        local _, name = GetAchievementInfo(achievementID)
-        if name and name ~= "" then
-            achievementName = name
-        end
-    end
-
-    return {
-        achievementID = achievementID,
-        achievementName = achievementName,
-        completedOnAccount = self:HasAchievement(achievementID),
-    }
-end
-
 --- Determine if a step is a campaign quest step.
 --- Fast path: checks the explicit `IsCampaignQuest` flag on the step.
 --- Fallback: extracts quest IDs via `GetStepQuestIDs` and queries the API.
@@ -411,7 +392,7 @@ function APR:GetQuestAndStepIds()
         return
     end
 
-    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    local step = APR:GetCurrentStep()
     if not step then return end
     if step.PickUp then
         return step.PickUp, "PickUp"
@@ -469,7 +450,7 @@ end
 
 --- Step through QpartPart steps and advance when the objective text matches expected triggers.
 function APR:UpdateQpartPart()
-    local step = APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil) or {}
+    local step = APR:GetCurrentStep() or {}
     local IdList = step.QpartPart or {}
 
     for questId, objectives in pairs(IdList) do
@@ -491,7 +472,7 @@ end
 
 --- Advance QpartPart steps when the quest text from the UI matches trigger values.
 --- @return boolean true if the step was advanced, false otherwise.
-function APR:UpdateQpartPartWithQuesText(step, questText, questID)
+function APR:UpdateQpartPartWithQuestText(step, questText, questID)
     if self:QpartPart_TrigTextMatch(step, questID, questText) then
         self:UpdateNextStep()
         return true

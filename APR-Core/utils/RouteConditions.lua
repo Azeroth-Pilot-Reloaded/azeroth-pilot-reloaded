@@ -1,3 +1,6 @@
+-- Normalizes client skill APIs and evaluates nested skill/equipment/collection route conditions.
+-- The same predicates feed route execution and the quest-order preview.
+
 local skills = {
     alchemy = 171,
     blacksmithing = 164,
@@ -41,12 +44,7 @@ function APR:GetRouteSkill(requirement)
         end
     end
     if spellID then
-        if C_Spell and C_Spell.GetSpellInfo then
-            local info = C_Spell.GetSpellInfo(spellID)
-            wantedName = wantedName or (info and info.name)
-        elseif GetSpellInfo then
-            wantedName = wantedName or GetSpellInfo(spellID)
-        end
+        wantedName = wantedName or self:GetSpellName(spellID)
     end
     local function Matches(name, id)
         return (wanted and id == wanted) or (wantedName and name == wantedName)
@@ -102,12 +100,20 @@ function APR:GetPrimaryProfessionCount()
     return count
 end
 
-function APR:MeetsExtendedRouteConditions(c)
-    if c.AllOf then for _, v in ipairs(c.AllOf) do if not self:AreConditionalFiltersMet(v) then return false end end end
-    if c.Not and self:AreConditionalFiltersMet(c.Not) then return false end
-    if c.Skill and not self:CompareRouteNumber(self:GetRouteSkill(c.Skill), c.Skill.operator or ">=", c.Skill.rank or 1) then return false end
-    if c.SkipForPrimaryProfessions and self:GetPrimaryProfessionCount() >= c.SkipForPrimaryProfessions then return false end
-    if c.EquippedItem and not self:MeetsEquippedItem(c.EquippedItem) then return false end
-    if c.Collection and not self:IsRouteCollectionComplete(c.Collection) then return false end
+-- Nested conditions use the full predicate set, exactly like top-level step filters.
+function APR:MeetsExtendedRouteConditions(conditions)
+    for _, required in ipairs(conditions.AllOf or {}) do
+        if not self:AreConditionalFiltersMet(required) then return false end
+    end
+    if conditions.Not and self:AreConditionalFiltersMet(conditions.Not) then return false end
+
+    local skill = conditions.Skill
+    if skill and not self:CompareRouteNumber(self:GetRouteSkill(skill), skill.operator or ">=", skill.rank or 1) then
+        return false
+    end
+    local professionLimit = conditions.SkipForPrimaryProfessions
+    if professionLimit and self:GetPrimaryProfessionCount() >= professionLimit then return false end
+    if conditions.EquippedItem and not self:MeetsEquippedItem(conditions.EquippedItem) then return false end
+    if conditions.Collection and not self:IsRouteCollectionComplete(conditions.Collection) then return false end
     return true
 end

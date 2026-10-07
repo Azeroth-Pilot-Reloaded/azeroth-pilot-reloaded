@@ -1,3 +1,6 @@
+-- Executes route actions for inventory, trainers, repair, death skips and pet taming.
+-- Actions check interaction/combat state and retain pending-operation state to avoid duplicate execution.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local actionKeys = { "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast", "DestroyItems",
     "EquipItem", "Repair" }
@@ -69,20 +72,12 @@ local function IsItemEquipped(itemID)
     return false
 end
 
-local function GetSpellName(spellID)
-    if C_Spell and C_Spell.GetSpellInfo then
-        local info = C_Spell.GetSpellInfo(spellID)
-        return info and info.name
-    end
-    return GetSpellInfo and GetSpellInfo(spellID)
-end
-
 local function TrainerMatchesSpell(index, name, rank, spellID)
     local link = GetTrainerServiceItemLink and GetTrainerServiceItemLink(index)
     local linkedID = link and tonumber(link:match('spell:(%d+)'))
     if linkedID then return linkedID == spellID end
     -- Classic trainers expose localized names/ranks, not a service spell-ID API.
-    local spellName = GetSpellName(spellID)
+    local spellName = APR:GetSpellName(spellID)
     local subtext = C_Spell and C_Spell.GetSpellSubtext or GetSpellSubtext
     local spellRank = subtext and subtext(spellID)
     return spellName == name and (rank or '') == (spellRank or '')
@@ -176,7 +171,7 @@ function APR:GetRouteActionText(key, rule, isCurrentStep, state)
     if key == "LearnSkill" and (rule.spellID or rule.spellIDs) then
         local names = {}
         for _, id in ipairs(rule.spellID and { rule.spellID } or rule.spellIDs) do
-            local name = GetSpellName(id)
+            local name = APR:GetSpellName(id)
             names[#names + 1] = name or ((UNKNOWN or "?") .. " (" .. id .. ")")
         end
         -- Spell names come from the client; a route's literal text must never override them.

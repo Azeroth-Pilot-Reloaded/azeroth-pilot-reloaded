@@ -8,6 +8,7 @@ C_Timer = { After = function(_, callback) timers[#timers + 1] = callback end }
 APR.routeconfig = { SendMessage = function(_, message) messages[#messages + 1] = message end }
 function APR:InvalidateEffectiveRouteStepsCache(key) invalidated[key] = true end
 
+dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 local definition = {
     steps = { { Note = "Saved" } },

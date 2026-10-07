@@ -36,7 +36,7 @@ function APR:SetFontStringRole(font, role) font.role = role end
 
 GameTooltip = { GetOwner = noop, Hide = noop }
 dofile("APR-Core/ui/route/QuestOrderListSupport.lua")
-local utils = APR.questOrderListUtils
+local utils = APR.questOrderListSupport
 local rows = {}
 for pass = 1, 30 do
     local layout = { scrollChild = {}, frameWidth = 258, dataHeight = 0 }

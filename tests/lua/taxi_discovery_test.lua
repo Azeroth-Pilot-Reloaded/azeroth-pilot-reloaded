@@ -8,6 +8,7 @@ end
 
 UNKNOWN = "Unknown"
 APR = { PlayerID = "player", settings = { profile = { enableAddon = true, autoFlight = true } } }
+dofile("APR-Core/utils/StepUtils.lua")
 function APR:NewModule() return {} end
 
 dofile("APR-Core/integrations/TaxiData.lua")

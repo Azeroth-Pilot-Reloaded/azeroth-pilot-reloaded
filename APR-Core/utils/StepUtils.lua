@@ -1,3 +1,6 @@
+-- Provides route-step text, shared runtime-step lookup, progression and coordinate/zone interpretation.
+-- GetStep owns the runtime copy; consumers must not mutate nested route-definition tables.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Primary and secondary keys that identify the main action for a step.
@@ -430,7 +433,8 @@ end
 
 --- Lookup helpers ---------------------------------------------------------
 
---- Retrieve the step table at an index for the active route.
+-- Return a shallow runtime copy and the effective route list. Navigation may change
+-- top-level fields on the copy; nested route data must remain read-only.
 function APR:GetStep(index)
     if (index and APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]) then
         local steps = self:GetRouteSteps(APR.ActiveRoute)
@@ -445,9 +449,19 @@ function APR:GetStep(index)
             cached = { source = source, route = self.ActiveRoute, index = index, step = step }
             self.runtimeRouteStep = cached
         end
-        return cached.step
+        return cached.step, steps
     end
     return nil
+end
+
+-- Resolve progress once for events, navigation and UI; startup/no route returns nil.
+-- Consumers share GetStep's runtime copy instead of changing the saved route definition.
+function APR:GetCurrentStep()
+    local progress = APRData and APRData[self.PlayerID]
+    local index = progress and self.ActiveRoute and progress[self.ActiveRoute]
+    if not index then return nil end
+    local step, steps = self:GetStep(index)
+    return step, index, steps
 end
 
 local function NormalizeZoneList(value)
@@ -653,6 +667,58 @@ end
 
 --- Quick check if the active step is a pickup step (for UI hints).
 function APR:IsPickupStep()
-    local step = self:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    local step = self:GetCurrentStep()
     return step and (step.PickUp or step.PickUpDB) or false
+end
+
+function APR:ExtractColorAndText(text)
+    local colorHex, message = string.match(text, "^%[COLOR:#?(%x+)%]%s*(.+)")
+    if colorHex then
+        return colorHex, message
+    else
+        return nil, text
+    end
+end
+
+function APR:ResolveStepText(rawValue)
+    if rawValue == nil then
+        return nil, nil
+    end
+
+    local key = tostring(rawValue)
+    local aprRCData = rawget(_G, "AprRCData")
+    local message = rawget(L, key) or
+        (aprRCData and aprRCData.ExtraLineTexts and rawget(aprRCData.ExtraLineTexts, key)) or
+        key
+
+    if not message or message == "" then
+        return nil, nil
+    end
+
+    local colorHex, formattedMessage = self:ExtractColorAndText(message)
+    return formattedMessage, colorHex
+end
+
+function APR:ResolveStepTextList(rawValue)
+    local resolved = {}
+
+    local function addResolvedText(value)
+        local text, color = self:ResolveStepText(value)
+        if text and text ~= "" then
+            table.insert(resolved, {
+                text = text,
+                color = color,
+            })
+        end
+    end
+
+    if type(rawValue) == "table" then
+        for _, value in ipairs(rawValue) do
+            addResolvedText(value)
+        end
+    else
+        addResolvedText(rawValue)
+    end
+
+    return resolved
 end

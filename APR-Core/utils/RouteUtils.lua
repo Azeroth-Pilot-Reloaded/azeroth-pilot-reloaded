@@ -1,3 +1,6 @@
+-- Provides route progress/filtering, XP-profile targets, saved-route imports and key/label resolution.
+-- Saved definitions are copied before runtime use; filters are shared by navigation and previews.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.ConditionalRouteRegistry = {
@@ -149,7 +152,7 @@ function APR:CheckIsInRouteZone()
         return false
     end
 
-    local step = self:GetStep(self.ActiveRoute and APRData[self.PlayerID][self.ActiveRoute] or nil)
+    local step = self:GetCurrentStep()
     if not step then
         self._lastRouteZoneCheck = now
         self._lastRouteZoneResult = false
@@ -366,19 +369,12 @@ function APR:OverrideRouteData()
     end
 end
 
-local function CopyCustomRouteData(value)
-    if type(value) ~= "table" then return value end
-    local result = {}
-    for key, entry in pairs(value) do result[key] = CopyCustomRouteData(entry) end
-    return result
-end
-
 local function NormalizeCustomRoute(name, data)
     if type(data) ~= "table" then return nil end
     if data.steps ~= nil and type(data.steps) ~= "table" then return nil end
     -- Preserve the full definition, including future metadata, and detach playback
     -- from SavedVariables: runtime step changes must never alter the saved route.
-    local route = (data.steps or data.scenarios) and CopyCustomRouteData(data) or { steps = CopyCustomRouteData(data) }
+    local route = (data.steps or data.scenarios) and APR:DeepCopyTable(data) or { steps = APR:DeepCopyTable(data) }
     route.label = route.label or name:match("%d+%-(.*)") or name
     route.expansion = route.expansion or APR.EXPANSIONS.Custom
     route.category = route.category or APR.CATEGORIES.Miscellaneous
@@ -392,7 +388,7 @@ function APR:RegisterCustomRoute(name, data)
     local route = NormalizeCustomRoute(name, data)
     if not route then return false end
     APRData.CustomRoute = APRData.CustomRoute or {}
-    APRData.CustomRoute[name] = CopyCustomRouteData(data)
+    APRData.CustomRoute[name] = APR:DeepCopyTable(data)
     self.RouteQuestStepList[name] = route
     if self.InvalidateEffectiveRouteStepsCache then self:InvalidateEffectiveRouteStepsCache(name) end
     self._customRouteActiveChanged = self._customRouteActiveChanged or self.ActiveRoute == name

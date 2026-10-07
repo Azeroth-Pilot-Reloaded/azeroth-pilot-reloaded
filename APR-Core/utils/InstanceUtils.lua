@@ -1,3 +1,6 @@
+-- Decides when guide UI is allowed in instances and manages the one-time character preference prompt.
+-- An explicit InstanceQuest step can keep the guide visible in party/raid content.
+
 local partyRaidTypes = {
     party = true,
     raid = true,
@@ -12,13 +15,6 @@ local hiddenInstanceTypes = {
 
 local function HasActiveRoute()
     return APR.ActiveRoute and APRData and APRData[APR.PlayerID] and APRData[APR.PlayerID][APR.ActiveRoute]
-end
-
-local function GetCurrentRouteStep()
-    if not HasActiveRoute() then
-        return nil
-    end
-    return APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
 end
 
 function APR:RefreshInstanceUIVisibility()
@@ -37,7 +33,7 @@ end
 
 function APR:MaybePromptInstanceUIPreference()
     local profile = self:GetSettingsProfile()
-    local charDB = SettingsDB and SettingsDB.char
+    local charDB = APR:GetCharacterSettings()
     if not profile or not charDB or charDB.instanceUiPromptShown then
         return
     end
@@ -51,7 +47,7 @@ function APR:MaybePromptInstanceUIPreference()
         return
     end
 
-    local step = GetCurrentRouteStep()
+    local step = APR:GetCurrentStep()
     if step and step.InstanceQuest then
         return
     end
@@ -83,7 +79,7 @@ function APR:IsInstanceWithUI()
     end
 
     if partyRaidTypes[instanceType] then
-        local step = GetCurrentRouteStep()
+        local step = APR:GetCurrentStep()
         if step and step.InstanceQuest then
             return true
         end
@@ -100,8 +96,8 @@ function APR:IsInstanceWithUI()
 end
 
 function APR:IsScenarioInstance()
-    local isIntance, type = IsInInstance()
-    return type == "scenario"
+    local _, instanceType = IsInInstance()
+    return instanceType == "scenario"
 end
 
 --- Check whether a scenario objective is already recorded so we do not double count progress.

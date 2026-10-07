@@ -17,8 +17,9 @@ INSTANCE = "Localized instance"
 format = string.format
 local function no() return false end
 local function forbidden() error("A preview must not perform actions or mutate action state") end
-APR = { questOrderList = {}, questOrderListUtils = {}, PlayerID = "player", ActiveRoute = "test",
+APR = { questOrderList = {}, questOrderListSupport = {}, PlayerID = "player", ActiveRoute = "test",
     ActiveQuests = {}, QUEST_STATUS = { COMPLETE = 1 }, MaxLevel = 60 }
+dofile("APR-Core/utils/PlayerUtils.lua")
 APRData = { player = { test = 1 }, NPCList = { [54] = "Vendor" } }
 local known, equipped, onQuest = {}, {}, { [10] = true }
 function GetInventoryItemID(_, slot) return equipped[slot] end
@@ -59,7 +60,7 @@ function APR:GetPlayerEffectiveLevel() return 10 end
 function APR:ResolveLevelRequirement(value) return value end
 function APR:GetGrindStepText() return "Grind" end
 function APR:GetReputationStepText() return "Reputation" end
-local utils = APR.questOrderListUtils
+local utils = APR.questOrderListSupport
 utils.IsQuestCompletedOrActive, utils.IsQuestCompleted = no, no
 function utils:AddStepFrameWithQuest(_, index, title, quests, color, current)
     assert(type(title) == "string" and title ~= "", "Every row needs a readable title")

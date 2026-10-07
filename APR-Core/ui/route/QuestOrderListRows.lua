@@ -1,5 +1,8 @@
+-- Formats every supported route action for the read-only quest-order preview.
+-- Preview checks must never execute actions, mutate progress or consume pending route state.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local QuestOrderListUtils = APR.questOrderListUtils
+local QuestOrderListUtils = APR.questOrderListSupport
 
 local function colorByCompletion(isCompleted, currentStep, stepIndex)
     return (isCompleted or (currentStep and currentStep > stepIndex)) and "green" or "gray"

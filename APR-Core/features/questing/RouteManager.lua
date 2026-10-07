@@ -1,3 +1,6 @@
+-- Resolves client-compatible routes and builds cached effective steps with scenarios/parallel groups.
+-- Hard compatibility, soft availability and prerequisite completion have separate meanings.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 ---------------------------------------------------------------------------------------
@@ -379,38 +382,6 @@ function APR:IsQuestTurnInDeferred(questID)
         end
     end
     return false
-end
-
---- Return the expansion display string for a route key.
----@param routeKey string
----@return string|nil expansion
-function APR:GetRouteExpansion(routeKey)
-    local routeData = self:GetRouteData(routeKey)
-    return routeData and routeData.expansion or nil
-end
-
---- Return the category display string for a route key.
----@param routeKey string
----@return string|nil category
-function APR:GetRouteCategory(routeKey)
-    local routeData = self:GetRouteData(routeKey)
-    return routeData and routeData.category or nil
-end
-
---- Return the mapID defined in the route, or extract it from the key as fallback.
----@param routeKey string
----@return number|nil mapID
-function APR:GetRouteMapID(routeKey)
-    local routeData = self:GetRouteData(routeKey)
-    if routeData and routeData.mapID then
-        return routeData.mapID
-    end
-    -- Fallback: parse from key prefix (e.g. "2393-Midnight-Speedrun" -> 2393)
-    if routeKey then
-        local id = string.match(routeKey, "^(%d+)")
-        return id and tonumber(id) or nil
-    end
-    return nil
 end
 
 ---------------------------------------------------------------------------------------
@@ -853,22 +824,6 @@ function APR:GetRouteVisibility(routeKey)
     end
 
     return "visible"
-end
-
---- Return true when at least one route exists for the given expansion display string
---- and is not hidden for the current player.
----@param expansion string  expansion display value (e.g. APR.EXPANSIONS.Midnight)
----@return boolean
-function APR:HasVisibleRoutesForExpansion(expansion)
-    for routeKey, routeData in pairs(self.RouteQuestStepList) do
-        if type(routeData) == "table" and routeData.expansion == expansion then
-            local vis = self:GetRouteVisibility(routeKey)
-            if vis == "visible" or vis == "disabled" then
-                return true
-            end
-        end
-    end
-    return false
 end
 
 ---------------------------------------------------------------------------------------

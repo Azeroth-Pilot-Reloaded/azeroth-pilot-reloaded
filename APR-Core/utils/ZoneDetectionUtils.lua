@@ -1,3 +1,6 @@
+-- Caches map ancestry/descendants and resolves direct, hierarchy and continent zone matches.
+-- Zone events invalidate player context; static map information has a separate cache.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 ---=============================================================================
@@ -379,36 +382,6 @@ function APR:CheckContinentMatch(playerContext, stepZones)
     return false
 end
 
---- Check if player is near step coordinates (last resort fallback)
----@param step table Current step data
----@param stepZones table Zone mapIDs for step
----@param threshold number Distance threshold in yards (default: 4000)
----@return boolean
-function APR:CheckCoordinateProximity(step, stepZones, threshold)
-    if not step or not stepZones or #stepZones == 0 then
-        return false
-    end
-
-    threshold = threshold or 4000
-
-    local playerY, playerX = UnitPosition("player")
-    if not playerY or not playerX then
-        return false
-    end
-
-    local stepCoord = self:GetStepCoord(step, nil, stepZones[1])
-    if not stepCoord then
-        return false
-    end
-
-    -- Check if player is within threshold of step coordinate
-    local dx = playerX - stepCoord.x
-    local dy = playerY - stepCoord.y
-    local distance = (dx * dx + dy * dy) ^ 0.5
-
-    return distance < threshold
-end
-
 --- Check if player is in special instance content
 ---@return boolean
 function APR:IsInSpecialContent()
@@ -426,17 +399,6 @@ end
 ---=============================================================================
 -- DEBUGGING & DIAGNOSTICS
 ---=============================================================================
-
---- Enable/disable debug mode for zone detection
----@param enabled boolean
-function APR:SetZoneDetectionDebug(enabled)
-    if self.settings and self.settings.profile then
-        self.settings.profile.zoneDetectionDebug = enabled
-    end
-    if self.ZoneDetection then
-        self.ZoneDetection.debug = enabled
-    end
-end
 
 --- Log detailled zone detection information
 ---@param context string Context label

@@ -1,3 +1,6 @@
+-- Owns the route-list window and cancellable, budgeted rendering into two reusable buffers.
+-- The visible buffer stays intact until its replacement is complete and still matches the request.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 
@@ -12,7 +15,7 @@ APR.questOrderList.rawStepContainers = {}
 APR.questOrderList.renderComplete = false
 APR.questOrderList.visibilityState = nil
 
-local QuestOrderListUtils = APR.questOrderListUtils
+local QuestOrderListUtils = APR.questOrderListSupport
 local getSnapAnchor
 local snapToAnchor
 local updateSnapSizing
@@ -38,7 +41,7 @@ local function isFrameSuppressed()
 end
 
 local function canRenderSteps()
-    return not isFrameSuppressed() and APR.RouteQuestStepList[APR.ActiveRoute] and APR.routeconfig:HasRouteInCustomPaht()
+    return not isFrameSuppressed() and APR.RouteQuestStepList[APR.ActiveRoute] and APR.routeconfig:HasRouteInCustomPath()
 end
 
 local function buildLayout(scrollChild)
