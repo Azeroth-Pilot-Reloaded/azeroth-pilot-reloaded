@@ -2,7 +2,12 @@
   "schema": 1,
   "preserve": [
     "LibWindow-1.1",
-    "FarstriderLibData/Locale/FarstriderLibData_Locale.frFR.lua"
+    "FarstriderLib",
+    "FarstriderLibData",
+    "FarstriderLibData.xml",
+    "FarstriderLibData_Camelot.xml",
+    "FarstriderLibData_Finalizer.xml",
+    "FarstriderLibData_Standard.xml"
   ],
   "libraries": [
     {
@@ -62,43 +67,6 @@
       "source": { "type": "curseforge", "project_id": 14320, "archive_root": "LibSharedMedia-3.0" },
       "mappings": [
         { "from": "LibSharedMedia-3.0", "to": "LibSharedMedia-3.0" }
-      ]
-    },
-    {
-      "name": "FarstriderLib",
-      "source": {
-        "type": "github_release",
-        "repository": "Deathwing/Mount-Route-Planner",
-        "asset": "FarstriderLib.zip",
-        "archive_root": "FarstriderLib"
-      },
-      "mappings": [
-        { "from": ".", "to": "FarstriderLib" }
-      ]
-    },
-    {
-      "name": "FarstriderLibData",
-      "source": {
-        "type": "github_release",
-        "repository": "Deathwing/Mount-Route-Planner",
-        "asset": "FarstriderLibData.zip",
-        "archive_root": "FarstriderLibData"
-      },
-      "mappings": [
-        { "from": "FarstriderLibData~Init.lua", "to": "FarstriderLibData/FarstriderLibData~Init.lua" },
-        { "from": "FarstriderLibData~Config.lua", "to": "FarstriderLibData/FarstriderLibData~Config.lua" },
-        { "from": "FarstriderLibData~Util.lua", "to": "FarstriderLibData/FarstriderLibData~Util.lua" },
-        { "from": "FarstriderLibData~Connections.lua", "to": "FarstriderLibData/FarstriderLibData~Connections.lua" },
-        { "from": "FarstriderLibData~Finalizer.lua", "to": "FarstriderLibData/FarstriderLibData~Finalizer.lua" },
-        { "from": "Locale/FarstriderLibData_Locale.enUS.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.enUS.lua" },
-        { "from": "Locale/FarstriderLibData_Locale.deDE.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.deDE.lua" },
-        { "from": "Locale/FarstriderLibData_Locale.ruRU.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.ruRU.lua" },
-        { "from": "Locale/FarstriderLibData_Locale.zhCN.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.zhCN.lua" },
-        { "from": "Locale/FarstriderLibData_Locale.zhTW.lua", "to": "FarstriderLibData/Locale/FarstriderLibData_Locale.zhTW.lua" },
-        { "from": "Areas/Standard", "to": "FarstriderLibData/Areas/Standard" },
-        { "from": "Areas/Vanilla", "to": "FarstriderLibData/Areas/Vanilla" },
-        { "from": "Waypoints/Standard", "to": "FarstriderLibData/Waypoints/Standard" },
-        { "from": "Waypoints/Vanilla", "to": "FarstriderLibData/Waypoints/Vanilla" }
       ]
     }
   ]
