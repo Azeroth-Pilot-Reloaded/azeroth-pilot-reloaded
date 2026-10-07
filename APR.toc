@@ -86,6 +86,12 @@ APR-Core/core/VersionCheck.lua
 
 APR-Core/core/Event.lua
 
+APR-Core/features/questing/StepInstructions.lua
+APR-Core/features/questing/StepQuestHandlers.lua
+APR-Core/features/questing/StepTravelHandlers.lua
+APR-Core/features/questing/StepActionHandlers.lua
+APR-Core/features/questing/StepRenderer.lua
+APR-Core/features/questing/QuestCache.lua
 APR-Core/features/questing/QuestHandler.lua
 APR-Core/features/questing/RouteActions.lua
 APR-Core/integrations/Farstrider.lua

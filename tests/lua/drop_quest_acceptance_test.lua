@@ -93,6 +93,12 @@ function APR:GetStep() return current end
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 APR.SkipStepCondition = noop
+dofile("APR-Core/features/questing/StepInstructions.lua")
+dofile("APR-Core/features/questing/StepQuestHandlers.lua")
+dofile("APR-Core/features/questing/StepTravelHandlers.lua")
+dofile("APR-Core/features/questing/StepActionHandlers.lua")
+dofile("APR-Core/features/questing/StepRenderer.lua")
+dofile("APR-Core/features/questing/QuestCache.lua")
 dofile("APR-Core/features/questing/QuestHandler.lua")
 APR.ResetMissingQuests = noop
 APR.UpdateQuest = noop

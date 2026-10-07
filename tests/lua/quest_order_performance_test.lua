@@ -176,6 +176,12 @@ print("Reputation refresh: event bursts coalesced; list rebuilt only on a route 
 
 -- Banked, already-complete delve objectives must not rebuild the current step on every log event.
 dofile("APR-Core/utils/QuestUtils.lua")
+dofile("APR-Core/features/questing/StepInstructions.lua")
+dofile("APR-Core/features/questing/StepQuestHandlers.lua")
+dofile("APR-Core/features/questing/StepTravelHandlers.lua")
+dofile("APR-Core/features/questing/StepActionHandlers.lua")
+dofile("APR-Core/features/questing/StepRenderer.lua")
+dofile("APR-Core/features/questing/QuestCache.lua")
 dofile("APR-Core/features/questing/QuestHandler.lua")
 APR.QUEST_STATUS = { COMPLETE = "complete", PROGRESS = "progress" }
 APR.ActiveQuests = {
