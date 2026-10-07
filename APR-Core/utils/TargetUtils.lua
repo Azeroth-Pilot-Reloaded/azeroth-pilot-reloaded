@@ -87,7 +87,7 @@ end
 ---@param source string The source or context of the scan request
 ---@return boolean|table Returns true if unit is an NPC with data, false otherwise
 function APR:ScanUnitForNPC(unit, source)
-    if not unit then return end
+    if not APRSecret:CanAccessValue(unit) or not unit then return end
     if not UnitExists(unit) then return end
     if UnitIsPlayer(unit) then return end
 
@@ -99,11 +99,22 @@ function APR:ScanUnitForNPC(unit, source)
     if not npcID or APRData.NPCList[npcID] then return end
 
     local name = APRSecret:SafeUnitName(unit, nil)
-    if not name or name == UNKNOWN then return end
+    if not name or name == "" or name == UNKNOWN then return end
 
     APRData.NPCList[npcID] = name
 
     APR:Debug("NPC map", { npcID, name, source })
+    if self.ActiveRoute and self.GetRouteSteps then
+        for _, step in ipairs(self:GetRouteSteps(self.ActiveRoute) or {}) do
+            if step.TameBeast and step.TameBeast.npcID == npcID then
+                if self.event and self.event.QueueStepRefresh then self.event:QueueStepRefresh() end
+                if self.questOrderList and self.questOrderList.DelayedUpdate then
+                    self.questOrderList:DelayedUpdate(true)
+                end
+                break
+            end
+        end
+    end
 end
 
 --- Gets the raid icon NPC name for a given NPC ID.

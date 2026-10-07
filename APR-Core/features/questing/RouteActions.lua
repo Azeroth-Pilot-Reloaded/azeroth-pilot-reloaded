@@ -1,6 +1,6 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local actionKeys = { "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast", "DestroyItems",
-    "EquipItem" }
+    "EquipItem", "Repair" }
 APR.routeActionKeys = actionKeys
 
 local function CurrentNPC()
@@ -183,9 +183,11 @@ function APR:GetRouteActionText(key, rule, isCurrentStep, state)
         return #names > 0 and (label .. ": " .. table.concat(names, ", ")) or label
     end
 
-    if key == "TameBeast" and rule.npcID then
-        local name = APRData and APRData.NPCList and APRData.NPCList[rule.npcID]
-        return name and (label .. ": " .. name) or Fallback()
+    if key == "TameBeast" then
+        local name = rule.npcID and APRData and APRData.NPCList and APRData.NPCList[rule.npcID]
+        name = name or self:ResolveStepText(rule.Text or rule.text) or UNKNOWN or "?"
+        -- Older localization exports may still have the label without its placeholder.
+        return label:find("%%s") and string.format(label, name) or (label .. ": " .. name)
     end
 
     if key == "EquipItem" and rule.itemID then
@@ -258,6 +260,8 @@ function APR:HandleRouteAction(step)
                 complete = state.complete
             elseif key == "EquipItem" then
                 complete = GetInventoryItemID("player", rule.slot) == rule.itemID
+            elseif key == "Repair" then
+                complete = self:HandleRouteRepair(step)
             elseif key == "LearnSkill" then
                 self:HandleSkillTrainer(step)
                 complete = state.complete
@@ -277,6 +281,8 @@ function APR:HandleRouteAction(step)
             if key == "TameBeast" then
                 self.currentStep:AddStepButton(key .. "-spell", rule.spellID or 1515, "spell")
                 if rule.npcID then self.currentStep:AddRaidIconButton(key .. "-target", rule.npcID) end
+            elseif key == "Repair" and rule.npcID then
+                self.currentStep:AddRaidIconButton(key .. "-target", rule.npcID)
             elseif key == "EquipItem" then
                 self.currentStep:AddStepButton(key .. "-" .. key, rule.itemID, "item", rule.slot)
             end
@@ -284,6 +290,36 @@ function APR:HandleRouteAction(step)
         end
     end
     return false
+end
+
+function APR:IsRouteRepairNeeded(rule)
+    if not GetInventoryItemDurability then return true end
+    local threshold = rule.minDurability or 90
+    for slot = INVSLOT_FIRST_EQUIPPED or 1, INVSLOT_LAST_EQUIPPED or 19 do
+        local current, maximum = GetInventoryItemDurability(slot)
+        if not APRSecret:CanAccessValue(current) or not APRSecret:CanAccessValue(maximum) then return true end
+        if current and maximum and maximum > 0 and current * 100 < maximum * threshold then
+            return true
+        end
+    end
+    return false
+end
+
+function APR:HandleRouteRepair(step)
+    local rule = step and step.Repair
+    if not rule or not self:AreConditionalFiltersMet(step) then return false end
+    if not self:IsRouteRepairNeeded(rule) then return true end
+    if not self.routeMerchantOpen or CurrentNPC() ~= rule.npcID then return false end
+    if (InCombatLockdown and InCombatLockdown()) or (IsModifierKeyDown and IsModifierKeyDown()) then return false end
+    if not CanMerchantRepair or not CanMerchantRepair() or not GetRepairAllCost or not RepairAllItems then return false end
+    local state = self:GetRouteActionState()
+    if state.repairPending then return false end
+    local cost, canRepair = GetRepairAllCost()
+    if not cost or not canRepair or cost <= 0 or cost > GetMoney() then return false end
+    -- Wait for the durability event before allowing a retry or advancing the step.
+    state.repairPending = true
+    RepairAllItems(false)
+    return not self:IsRouteRepairNeeded(rule)
 end
 
 function APR:HandleSkillTrainer(step)

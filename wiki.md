@@ -94,13 +94,14 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `Qpart` | Quest objectives to complete, mapped by quest ID and objective index. | `Qpart = { [12345] = { 1, 2 } }` |
 | `QpartDB` | Alternative quest IDs for the same `Qpart` block. Requires `Qpart`. | `QpartDB = { 12345, 12346 }` |
 | `QpartPart` | Splits a single objective into guided sub-parts. Commonly paired with `TrigText`. Supports fraction and percentage style progress markers. | `QpartPart = { [12345] = { 1 } }, TrigText = "1/3"` |
+| `Repair` | Open the declared NPC's vendor option and repair automatically, independently of general auto-gossip/auto-repair settings. Skip when every durable equipped item reaches `minDurability` (default 90%). Show the `REPAIR` label in both panels. | `Repair = { npcID = 3331, minDurability = 90 }` |
 | `Reputation` | Wait for the target standing, renown or friendship rank; shows progress within the current rank. See reputation types below. | `Reputation = { factionID = 2590, type = APR.REPUTATION_TYPE.Renown, level = 10 }` |
 | `ResetRoute` | Shows a confirmation popup that resets the active route back to step 1. | `ResetRoute = true` |
 | `RouteCompleted` | Marks the route as finished and triggers route completion flow. Must stay as the last step. | `RouteCompleted = true` |
 | `Scenario` | Fine-grained scenario objective tracking (`scenarioID`, `stepID`, `criteriaID`, etc.), optionally tied to a quest ID. | `Scenario = { criteriaID = 106007, criteriaIndex = 1, scenarioID = 3101, stepID = 15911, questID = 86820 }` |
 | `SellItems` | Sell listed stacks and/or grey junk at the open merchant. `npcID` restricts the vendor; no quantity limit. Junk uses the localized default label; put extra advice in `Note`. | `SellItems = { items = { 7073, 7074 }, npcID = 54 }` or `SellItems = { junk = true }` |
 | `SetHS` | Step to set the Hearthstone. | `SetHS = 31732` |
-| `TameBeast` | Offer the tame spell and target button; validate a successful cast started on the specified NPC. | `TameBeast = { npcID = 2163, spellID = 1515 }` |
+| `TameBeast` | Show `TAMEBEAST` (`Tame the %s beast`) with the cached localized NPC name, falling back to the beast name in `Text`; update both panels when a live unit reveals its name. Offer spell and target buttons; complete after a successful cast on the specified NPC. | `TameBeast = { npcID = 3127, spellID = 1515, Text = "Venomtail Scorpid" }` |
 | `Treasure` | Treasure or vignette step. The addon tracks the treasure's anchor quest, with optional item details for the tooltip. | `Treasure = { questID = 89105, itemID = 238553 }` |
 | `UseDalaHS` | Dalaran Hearthstone variant. | `UseDalaHS = 44184` |
 | `UseFlightPath` | Step for using a flight master. Validates once the flight is complete. | `UseFlightPath = 39580` |
@@ -118,7 +119,11 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `LearnSkill`: named spells | `spellID = 6673` or `spellIDs = { 6673, 100 }` supplies localized names; optional `npcID` restricts the trainer. |
 | `LearnSkill`: all services | `LearnSkill = { allAvailable = true, npcID = 911 }`; trainer ID required. Use `text` for advice when no spell IDs are supplied. |
 | `SellItems`, `BankDeposit`, `BankWithdraw`, `DestroyItems` | Process full stacks; pause in combat or on locked slots and leave foreign cursor items alone. |
-| `TameBeast`, item handling | Cached NPC/item names take priority; `text` or `Text` can supply fallback advice. These fields accept localization keys or literal text. |
+| `TameBeast` fallback | `Text` (or legacy `text`) contains only the beast name; literal names and localization keys are accepted. The cached localized NPC name has priority; target, mouseover, nameplate and name-update events refresh both panels. |
+| Item handling fallback | Cached item names take priority; `text` or `Text` supplies fallback advice. Localization keys and literal text are accepted. |
+| `Repair` threshold | `minDurability` is a percentage from 0 to 100, inclusive. Each durable equipped item is checked; a damaged weapon cannot be hidden by healthy armor. No durable equipment skips the visit; unavailable or restricted durability data keeps it pending. |
+| `Repair` guards | Only `npcID` may repair. Wait for an open repair merchant, affordable personal cost and condition eligibility. Combat and modifier overrides pause automation. Confirm completion from durability updates; previews never repair or create action state. |
+| Main actions | Use separate `SellItems` and `Repair` steps with the same coordinates; only one main action per step. |
 | Selling then buying | Use successive steps with the same coordinates and character restrictions. Put an already-owned-item purchase filter only on the purchase. |
 | `LootItems`, `Collection` | Character-bank counts are saved while the bank is accessible and reused after closing/reloading. Moving items between bags and bank does not increase the combined count. |
 | `Achievement` legacy criterion | `Achievement = { achievementID = 61576, criteriaIndex = 1 }` tracks by position; prefer a stable `criteriaID`. |

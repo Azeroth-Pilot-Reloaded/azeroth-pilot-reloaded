@@ -71,8 +71,14 @@ end
 
 function APR.gossip:HandleGossip(step)
     local profile = APR:GetSettingsProfile()
-    if not (profile and profile.autoGossip) then
+    local repair = step and step.Repair
+    if not (profile and (profile.autoGossip or repair)) then
         return
+    end
+    if repair then
+        local npcID = APRSecret:SafeUnitCreatureID("npc") or APRSecret:SafeUnitCreatureID("target")
+        if npcID ~= repair.npcID or not APR:AreConditionalFiltersMet(step) or
+            not APR:IsRouteRepairNeeded(repair) or IsModifierKeyDown() then return end
     end
 
     local selectedOption = false
@@ -194,8 +200,8 @@ function APR.gossip:HandleGossip(step)
     if step and (step.UseFlightPath or step.GetFP) and not step.NoAutoFlightMap and not step.GossipOptionIDs then
         handledByAPR = PickGossipByIcon(132057) or handledByAPR
     end
-    -- Merchant (buy or sell)
-    if step and (step.BuyMerchant or step.SellItems) and not step.GossipOptionIDs then
+    -- Merchant (buy, sell or repair)
+    if step and (step.BuyMerchant or step.SellItems or repair) and not step.GossipOptionIDs then
         handledByAPR = PickGossipByIcon(132060, "vendor") or handledByAPR
     end
     -- Trainer (professions or skills)
