@@ -1,3 +1,6 @@
+-- Adapts the public EllesmereUI Skinning API to APR controls, fonts and live theme accents.
+-- ElvUI has priority when both integrations are enabled; APR retains status-bar fill colors.
+
 -- Public API: https://github.com/EllesmereGaming/EllesmereUI/blob/main/SKINNING_API.md
 local EUI = _G.EllesmereUI
 if not EUI or type(EUI.RegisterSkin) ~= "function" then return end
@@ -129,14 +132,14 @@ local function StyleHeaderButton(button, options)
 end
 
 local function StyleSettingsButton(button)
-    -- This is the same artwork and hover treatment as the EllesmereUI Damage
-    -- Meter header settings button. Keep APR's click and tooltip handlers.
+    -- Use Blizzard artwork so EUI does not require its optional DamageMeters module.
+    -- Keep APR's click/tooltip handlers and follow EUI's live accent color.
     skin.FadeRegions(button)
     local icon = settingsIcons[button]
     if not icon then
         icon = button:CreateTexture(nil, "ARTWORK")
         icon:SetAllPoints()
-        icon:SetTexture("Interface\\AddOns\\EllesmereUIDamageMeters\\Media\\dm_settings.png")
+        icon:SetTexture("Interface\\Buttons\\UI-OptionsButton")
         if icon.SetDesaturated then icon:SetDesaturated(true) end
         settingsIcons[button] = icon
         button:HookScript("OnEnter", function()
