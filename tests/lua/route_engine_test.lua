@@ -200,6 +200,12 @@ check(APR.worldCoordinateConverter:ConvertMapCoordinate(2393, 25, 75) == nil,
 C_Map.GetWorldPosFromMapPos = projection
 
 -- Exercise the real scenario handler with a reserved reward after a reload.
+dofile("APR-Core/features/questing/StepInstructions.lua")
+dofile("APR-Core/features/questing/StepQuestHandlers.lua")
+dofile("APR-Core/features/questing/StepTravelHandlers.lua")
+dofile("APR-Core/features/questing/StepActionHandlers.lua")
+dofile("APR-Core/features/questing/StepRenderer.lua")
+dofile("APR-Core/features/questing/QuestCache.lua")
 dofile("APR-Core/features/questing/QuestHandler.lua")
 local scenarioStep, parentMap
 local function noop() end

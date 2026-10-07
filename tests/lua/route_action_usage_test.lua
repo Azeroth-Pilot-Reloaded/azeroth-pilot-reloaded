@@ -108,6 +108,12 @@ end
 dofile("APR-Core/utils/StepUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 APR.ResetMissingQuests = noop
+dofile("APR-Core/features/questing/StepInstructions.lua")
+dofile("APR-Core/features/questing/StepQuestHandlers.lua")
+dofile("APR-Core/features/questing/StepTravelHandlers.lua")
+dofile("APR-Core/features/questing/StepActionHandlers.lua")
+dofile("APR-Core/features/questing/StepRenderer.lua")
+dofile("APR-Core/features/questing/QuestCache.lua")
 dofile("APR-Core/features/questing/QuestHandler.lua")
 function APR:UpdateNextStep() advanced = advanced + 1 end
 
