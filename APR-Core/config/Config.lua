@@ -46,6 +46,7 @@ function APR.settings:InitializeSettings()
     -- Default setting
     local settingsDBDefaults = {
         profile = {
+            uiTheme = "wow",
             -- automation
             autoAccept = false,
             autoAcceptQuestRoute = true,

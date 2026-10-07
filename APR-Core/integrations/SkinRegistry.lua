@@ -8,11 +8,18 @@ local provider
 local pending = false
 
 local function ApplyTarget(frame, target)
-    if not provider or not provider.enabled() or target.applied then return end
     if InCombatLockdown() then
         pending = true
         return
     end
+    if not provider or not provider.enabled() then
+        if APR.ApplyNativeTheme and not target.nativeApplied then
+            APR:ApplyNativeTheme(frame, target.kind, target.options)
+            target.nativeApplied = true
+        end
+        return
+    end
+    if target.applied then return end
     provider.apply(frame, target.kind, target.options)
     target.applied = true
 end
@@ -27,10 +34,17 @@ function APR:RegisterSkinTarget(frame, kind, options)
     ApplyTarget(frame, target)
 end
 
-function APR:RefreshRegisteredSkins()
+function APR:RefreshRegisteredSkins(refreshNative)
+    if refreshNative then
+        for _, target in pairs(targets) do target.nativeApplied = nil end
+    end
     if InCombatLockdown() then pending = true; return end
     pending = false
     for frame, target in pairs(targets) do ApplyTarget(frame, target) end
+end
+
+function APR:GetSkinProviderName()
+    return provider and provider.enabled() and provider.name or nil
 end
 
 function APR:RegisterSkinProvider(name, apply, enabled)
