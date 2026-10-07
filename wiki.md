@@ -171,7 +171,7 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | --- | --- | --- |
 | `Bloodlust` | Adds a reminder to use Heroism / Bloodlust. | `Bloodlust = true` |
 | `Buffs` | List of buff spell IDs to recommend. | `Buffs = { { spellId = 311103, tooltipMessage = "FRESHLEAF_BUFF" } }` |
-| `Button` | Associates items to use with objectives (`"QuestID-Objective"` -> `itemID`). Can also be used with non-objective steps by using only the quest ID as the key. | `Button = { ["30778-1"] = 81356 }` |
+| `Button` | Item buttons keyed by quest ID or `questID-objective`. A value may be one item ID or a nonempty list of item IDs, displayed in list order on the same step. Keep one key per quest/objective; repeated Lua keys overwrite earlier values. | `Button = { ["30778-1"] = 81356 }` or `Button = { ["5648"] = { 12345, 67890 } }` |
 | `DenyNPC` | NPC ID whose gossip should be closed automatically. | `DenyNPC = 209914` |
 | `Dontskipvid` | Prevents automatic skipping of cutscenes or videos. | `Dontskipvid = true` |
 | `ExtraActionB` | Prompts use of the special extra action button. | `ExtraActionB = true` |
@@ -183,7 +183,7 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `NoAutoTurnIn` | Keep the quest hand-in visible but require manual interaction. | `NoAutoTurnIn = true` |
 | `PreviewImages` | Displays one or more clickable image previews in the current step panel. Relative paths are resolved from `APR-Core/assets/`; full `Interface\\...` paths are also accepted. | `PreviewImages = { "routeHelper\\86644.jpg" }` |
 | `RaidIcon` | NPC ID to mark with a raid icon. | `RaidIcon = 241743` |
-| `SpellButton` | Spell buttons keyed by quest ID or `questID-objective`. Prefer numeric spell IDs; names must be understood by the client language. | `SpellButton = { ["49939-1"] = 294197 }` |
+| `SpellButton` | Spell buttons keyed by quest ID or `questID-objective`. A value may be one spell or a nonempty list of spells, displayed in list order on the same step. Prefer numeric spell IDs; names must be understood by the client language. Keep one key per quest/objective; repeated Lua keys overwrite earlier values. | `SpellButton = { ["49939-1"] = 294197 }` or `SpellButton = { ["5648"] = { 2050, 1243 } }` |
 | `SpellTrigger` | Automatically completes the step when the given spell is cast. | `SpellTrigger = 306719` |
 | `TrigText*` | Text fragments used as completion triggers (`TrigText`, `TrigText2`, etc.). | `TrigText = "Restore the console"` |
 | `UseGlider` | Displays available gliders for controlled jumps. | `UseGlider = true` |

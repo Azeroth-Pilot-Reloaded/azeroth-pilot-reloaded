@@ -1175,24 +1175,27 @@ function APR:SetButton()
     local occupied = {}
     for _, kind in ipairs({ "item", "spell" }) do
         local buttons = step[kind == "item" and "Button" or "SpellButton"]
-        for questKey, actionID in pairs(buttons or {}) do
+        for questKey, value in pairs(buttons or {}) do
             local questID, objective = APR:SplitQuestAndObjective(questKey)
             if not (questID and objective and C_QuestLog.ReadyForTurnIn(questID)) then
-                local key = questKey
-                local currentStep = APR.currentStep
-                local container = (currentStep.questsList or {})[key] or (currentStep.fillersList or {})[key]
-                if not container or occupied[key] then
-                    -- Notes and quest-wide actions may have no objective row. Give
-                    -- each supporting action its own stable row, including mixed uses.
-                    local rowID = "ROUTE_BUTTON_" .. kind .. "_" .. tostring(questKey)
-                    local info = kind == "spell" and C_Spell.GetSpellInfo(actionID) or nil
-                    local name = kind == "item" and C_Item.GetItemInfo(actionID) or (info and info.name)
-                    local label = string.format(L[kind == "item" and "USE_ITEM" or "USE_SPELL"], name or UNKNOWN)
-                    currentStep:AddQuestSteps(rowID, label, "Action", false, true)
-                    key = rowID .. "-Action"
+                local actionIDs = type(value) == "table" and value or { value }
+                for buttonIndex, actionID in ipairs(actionIDs) do
+                    local key = questKey
+                    local currentStep = APR.currentStep
+                    local container = (currentStep.questsList or {})[key] or (currentStep.fillersList or {})[key]
+                    if not container or occupied[key] then
+                        -- Each additional action needs its own stable row and secure button.
+                        local rowID = "ROUTE_BUTTON_" .. kind .. "_" .. tostring(questKey)
+                        if buttonIndex > 1 then rowID = rowID .. "_" .. buttonIndex end
+                        local info = kind == "spell" and C_Spell.GetSpellInfo(actionID) or nil
+                        local name = kind == "item" and C_Item.GetItemInfo(actionID) or (info and info.name)
+                        local label = string.format(L[kind == "item" and "USE_ITEM" or "USE_SPELL"], name or UNKNOWN)
+                        currentStep:AddQuestSteps(rowID, label, "Action", false, true)
+                        key = rowID .. "-Action"
+                    end
+                    occupied[key] = true
+                    currentStep:AddStepButton(key, actionID, kind)
                 end
-                occupied[key] = true
-                currentStep:AddStepButton(key, actionID, kind)
             end
         end
     end
