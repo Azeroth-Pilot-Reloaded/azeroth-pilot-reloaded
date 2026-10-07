@@ -53,6 +53,21 @@ local function getAdditionalInstructions(step, actionKey, primaryKey)
                 item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID))
         end
     end
+    for _, kind in ipairs({ "item", "spell" }) do
+        local buttons = step[kind == "item" and "Button" or "SpellButton"] or {}
+        local keys = {}
+        for key in pairs(buttons) do keys[#keys + 1] = key end
+        table.sort(keys, function(a, b) return tostring(a) < tostring(b) end)
+        for _, key in ipairs(keys) do
+            local value = buttons[key]
+            for _, id in ipairs(type(value) == "table" and value or { value }) do
+                local info = kind == "spell" and C_Spell.GetSpellInfo(id) or nil
+                local name = kind == "item" and C_Item.GetItemInfo(id) or (info and info.name)
+                -- Supporting buttons describe available actions, not completion requirements.
+                add(string.format(L[kind == "item" and "USE_ITEM" or "USE_SPELL"], name or UNKNOWN), true)
+            end
+        end
+    end
     return lines, complete
 end
 
