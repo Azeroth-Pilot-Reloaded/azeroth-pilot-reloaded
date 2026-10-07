@@ -62,6 +62,7 @@ APR.RefreshInstanceUIVisibility, APR.MaybePromptInstanceUIPreference = noop, noo
 function APR:IsInstanceWithUI() return true end
 dofile("APR-Core/utils/TargetUtils.lua")
 dofile("APR-Core/features/questing/RouteActions.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 dofile("APR-Core/features/questing/Gossip.lua")
 dofile("APR-Core/core/Event.lua")

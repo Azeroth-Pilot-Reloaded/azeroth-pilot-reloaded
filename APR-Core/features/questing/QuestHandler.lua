@@ -34,9 +34,10 @@ function APR:UpdateStep()
     self.stepUpdateRunning = false
 
     if self.stepUpdatePending then
+        local context = self:CaptureStepContext()
         self.stepUpdateTimer = C_Timer.NewTimer(0, function()
             self.stepUpdateTimer = nil
-            self:UpdateStep()
+            if self:IsStepContextCurrent(context) then self:UpdateStep() end
         end)
     end
 end

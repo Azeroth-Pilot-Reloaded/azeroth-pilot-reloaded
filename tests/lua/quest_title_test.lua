@@ -32,6 +32,7 @@ APR = {
     end },
 }
 dofile("APR-Core/utils/QuestUtils.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/core/Event.lua")
 
 assert(APR:GetQuestTitle(nil) == nil)

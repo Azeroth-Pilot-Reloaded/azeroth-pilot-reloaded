@@ -42,6 +42,7 @@ C_Item = {
     GetItemIconByID = function(id) return id end,
 }
 dofile("APR-Core/config/LevelProfiles.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 bags[239142], bags[93730], bags[171364] = 1, 1, 1
 assert(#APR:GetLevelConsumableReminders() == 2, "Global list deduplicates alternative items")

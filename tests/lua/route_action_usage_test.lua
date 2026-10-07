@@ -105,6 +105,7 @@ function APR.currentStep:AddStepButton(key, id, kind)
     buttons[#buttons + 1] = { key = key, id = id, kind = kind }
 end
 
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 APR.ResetMissingQuests = noop

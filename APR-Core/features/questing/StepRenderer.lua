@@ -52,9 +52,10 @@ function APR:RenderCurrentStep()
     end
 
     if (APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute]) then
-        APRData[APR.PlayerID][APR.ActiveRoute] = 1
+        APR:SetRouteProgress(APR.ActiveRoute, 1, "initialize")
     end
 
+    local context = APR:CaptureStepContext()
     local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
     local currentStepToken = APR:GetCurrentStepToken(APR.ActiveRoute, currentStepIndex)
 
@@ -207,7 +208,7 @@ function APR:RenderCurrentStep()
         end
 
         -- For old ExtraLine step option
-        handlers.HandleExtraLine(step.ExtraLine)
+        if handlers.HandleExtraLine(step.ExtraLine) then return end
 
 
         -- REWORK LOA (BfA Loa pick)
@@ -222,6 +223,7 @@ function APR:RenderCurrentStep()
         end
 
         handlers.RenderScenarioTravel(step, currentStepIndex)
+        if not APR:IsStepContextCurrent(context) then return end
 
         if handlers.RenderRequirements(step, showStepDetails, currentStepIndex) then return end
 
@@ -239,6 +241,7 @@ function APR:RenderCurrentStep()
             return
         end
         if handlers.RenderPrimary(step, showStepDetails, currentStepIndex) then return end
+        if not APR:IsStepContextCurrent(context) then return end
 
         if handlers.RenderScenarioProgress(step) then return end
 
@@ -278,7 +281,8 @@ function APR:RenderCurrentStep()
                 APR.currentStep:AddQuestSteps("RESET_ROUTE", L["RESET_ROUTE"], "ResetRoute", false, true)
             end
             APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", function()
-                APRData[APR.PlayerID][APR.ActiveRoute] = 1
+                if not APR:IsStepContextCurrent(context) then return end
+                APR:SetRouteProgress(APR.ActiveRoute, 1, "reset")
                 APR:PrintInfo(APR:WrapTextWithAppearanceColor("APR", "general", "accent") .. " Route Reseted")
                 APR:UpdateQuestAndStep()
             end)
@@ -301,6 +305,7 @@ function APR:RenderCurrentStep()
 
             -- Define the route completion finalization as a callback
             local function finalizeRouteCompletion()
+                if not APR:IsStepContextCurrent(context) then return end
                 APRZoneCompleted[APR.PlayerID][currentRouteName] = true
                 tremove(APRCustomPath[APR.PlayerID], index)
                 APR.routeconfig:CheckIsCustomPathEmpty()

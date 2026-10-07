@@ -617,7 +617,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
 
     local routeZoneMapIDs, fallbackMapID, routeName = APR:GetCurrentRouteMapIDsAndName()
     if routeZoneMapIDs and fallbackMapID and routeName then
-        APR.ActiveRoute = routeName
+        APR:ActivateRoute(routeName)
         if not APR.currentStep:IsShown() then
             APR.currentStep:RefreshCurrentStepFrameAnchor()
         end

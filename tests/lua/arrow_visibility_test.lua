@@ -33,6 +33,7 @@ APR = {
     },
 }
 APRData = { player = { route = 1 } }
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 function APR:NewModule() return {} end
 function APR:GetGameVersion() return "forever" end

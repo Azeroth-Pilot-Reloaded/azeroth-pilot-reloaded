@@ -148,9 +148,9 @@ function APR:ActivateRouteFromTemporaryTrigger(routeKey)
     APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}
     APRCustomPath[self.PlayerID][1] = routeName
 
-    APR.ActiveRoute = routeKey
+    APR:ActivateRoute(routeKey)
     if APR.XPBuffOverlay then APR.XPBuffOverlay:QueueRefresh() end
-    APRData[self.PlayerID][routeKey] = APRData[self.PlayerID][routeKey] or 1
+    self:SetRouteProgress(routeKey, APRData[self.PlayerID][routeKey] or 1, "route_suggestion")
     APRData[self.PlayerID][routeKey .. "-SkippedStep"] = APRData[self.PlayerID][routeKey .. "-SkippedStep"] or 0
 
     self:UpdateMapId()

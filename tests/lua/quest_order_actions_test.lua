@@ -38,6 +38,7 @@ C_PvP = { IsWarModeDesired = no }
 C_ScenarioInfo = { GetScenarioInfo = function() return { name = "Scenario" } end,
     GetCriteriaInfoByStep = function() return { description = "Objective", completed = false } end }
 C_ChromieTime = { GetChromieTimeExpansionOption = function() return { name = "Legion" } end }
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/features/questing/RouteActions.lua")

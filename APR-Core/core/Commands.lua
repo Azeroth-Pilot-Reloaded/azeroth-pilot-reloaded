@@ -69,6 +69,8 @@ function APR.command:SlashCmd(input)
         APR:PrintInfo(L["SKIP"])
         APR:SkipQuestStep()
         APR:UpdateMapId()
+    elseif inputText == "undo" then
+        if not APR:UndoManualSkip() then APR:PrintInfo("No manual skip to undo for the current step.") end
     elseif (inputText == "rollback" or inputText == "rb") then
         -- Command for rollback the current quest step
         APR:PrintInfo(L["ROLLBACK"])
@@ -132,6 +134,7 @@ function APR.command:SlashCmd(input)
         printHelp("/apr reset, r", L["RESET_COMMAND"])
         printHelp("/apr resetcustom", L["RESET_CUSTOM_COMMAND"])
         printHelp("/apr rollback, rb", L["ROLLBACK_COMMAND"])
+        printHelp("/apr undo", "Undo the last manual skip")
         printHelp("/apr route", L["ROUTE_COMMAND"])
         printHelp("/apr scribe, writer", ";)")
         printHelp("/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"])
