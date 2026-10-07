@@ -1,0 +1,2 @@
+pre-commit text eol=lf
+post-index-change text eol=lf

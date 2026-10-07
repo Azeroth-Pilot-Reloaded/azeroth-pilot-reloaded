@@ -190,6 +190,7 @@ def parse_args() -> argparse.Namespace:
         action="store_true",
         help="Do not `git add` files after modification.",
     )
+    parser.add_argument("--quiet", action="store_true", help="Only report changed files or errors.")
     return parser.parse_args()
 
 
@@ -211,7 +212,8 @@ def main() -> int:
         return 2
 
     if not targets:
-        print("No route files matched the selection.")
+        if not args.quiet:
+            print("No route files matched the selection.")
         return 0
 
     try:
@@ -229,7 +231,7 @@ def main() -> int:
             except ValueError:
                 rel = path
             print(f"- {str(rel).replace('\\', '/')}")
-    else:
+    elif not args.quiet:
         print("No _index updates were required.")
 
     return 0

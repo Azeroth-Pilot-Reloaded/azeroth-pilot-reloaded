@@ -3,8 +3,19 @@
 # Normalize route step indexes and field order before commit.
 set -e
 
+# Updating staged blobs invokes post-index-change again; normalize only once.
+if [ "${APR_ROUTE_NORMALIZING:-}" = "1" ]; then
+  exit 0
+fi
+export APR_ROUTE_NORMALIZING=1
+
 REPO_ROOT="$(git rev-parse --show-toplevel)"
 cd "$REPO_ROOT"
+
+# Avoid starting Python for index refreshes or changes outside route files.
+if git diff --cached --quiet --diff-filter=ACMR -- Routes/; then
+  exit 0
+fi
 
 if command -v python >/dev/null 2>&1; then
   PYTHON_CMD="python"
@@ -17,5 +28,5 @@ else
 fi
 
 # Process staged blobs; preserve independently edited working copies.
-$PYTHON_CMD .github/scripts/fix_route_indexes.py --staged
-$PYTHON_CMD .github/scripts/reorder_route_fields.py --staged
+$PYTHON_CMD .github/scripts/fix_route_indexes.py --staged --quiet
+$PYTHON_CMD .github/scripts/reorder_route_fields.py --staged --quiet

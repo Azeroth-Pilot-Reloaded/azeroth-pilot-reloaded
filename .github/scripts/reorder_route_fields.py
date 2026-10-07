@@ -245,6 +245,7 @@ def main() -> int:
     selection.add_argument("--staged", action="store_true", help="Reorder staged route blobs only.")
     selection.add_argument("--all", action="store_true", help="Reorder every Routes/**/*.lua file.")
     parser.add_argument("--no-stage", action="store_true", help="Do not update the Git index.")
+    parser.add_argument("--quiet", action="store_true", help="Only report changes or errors.")
     args = parser.parse_args()
     root = get_repo_root()
     if args.staged:
@@ -260,7 +261,8 @@ def main() -> int:
     except (ValueError, UnicodeError) as error:
         print(f"Cannot reorder route fields: {error}", file=sys.stderr)
         return 1
-    print(f"Reordered step fields in {len(changed)} route file(s).")
+    if changed or not args.quiet:
+        print(f"Reordered step fields in {len(changed)} route file(s).")
     return 0
 
 

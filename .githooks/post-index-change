@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# git add (including editor staging) writes the index and invokes this hook.
+# Reuse the commit checks, whose environment guard prevents recursive updates.
+set -e
+
+if [ "${APR_ROUTE_NORMALIZING:-}" = "1" ]; then
+  exit 0
+fi
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+exec sh "$REPO_ROOT/.githooks/pre-commit"
