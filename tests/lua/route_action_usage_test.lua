@@ -97,7 +97,7 @@ end
 
 function APR.currentStep:AddQuestSteps(id, label, objective, _, noTooltip)
     assert(id ~= nil and type(label) == "string")
-    self.questsList[id .. "-" .. objective] = { noTooltip = noTooltip }
+    self.questsList[id .. "-" .. objective] = { noTooltip = noTooltip, label = label }
 end
 
 function APR.currentStep:AddStepButton(key, id, kind)
@@ -140,6 +140,62 @@ APR:SetButton()
 assert(#buttons == 2 and buttons[1].key ~= buttons[2].key, "Supporting items and spells must not overwrite each other")
 checkButtons({ Button = { ["10-1"] = 100 } })
 assert(#buttons == 0, "Completed quest objectives no longer need their action button")
+
+checkButtons({ SpellButton = { ["5648"] = { 2050, 1243 } } })
+assert(#buttons == 2 and buttons[1].id == 2050 and buttons[2].id == 1243,
+    "Both spells for the same quest must render in list order")
+assert(buttons[1].key ~= buttons[2].key, "Each spell must own a distinct secure-button row")
+assert(APR.currentStep.questsList[buttons[1].key].label == "Cast Spell 2050")
+assert(APR.currentStep.questsList[buttons[2].key].label == "Cast Spell 1243")
+local firstKey, secondKey = buttons[1].key, buttons[2].key
+checkButtons(current)
+assert(buttons[1].key == firstKey and buttons[2].key == secondKey, "Refreshes must keep both button keys stable")
+current = { SpellButton = { ["11-1"] = { 2050, 1243 } } }
+APR.currentStep:Reset()
+APR.currentStep.questsList["11-1"] = {}
+APR:SetButton()
+assert(#buttons == 2 and buttons[1].key == "11-1" and buttons[2].key ~= "11-1",
+    "The first spell can use the objective row; the second must not overwrite it")
+current = { Button = { ["11-1"] = 100 }, SpellButton = { ["11-1"] = { 2050, 1243 } } }
+APR.currentStep:Reset()
+APR.currentStep.fillersList["11-1"] = {}
+APR:SetButton()
+assert(#buttons == 3 and buttons[1].kind == "item" and buttons[2].id == 2050 and buttons[3].id == 1243)
+assert(buttons[1].key ~= buttons[2].key and buttons[2].key ~= buttons[3].key,
+    "An item and two spells can support the same filler objective")
+APR.currentStep.fillersList = {}
+checkButtons({ SpellButton = { ["10-1"] = { 2050, 1243 } } })
+assert(#buttons == 0, "A completed objective suppresses every associated spell button")
+checkButtons({ SpellButton = { ["5648"] = { 404, "Power Word: Fortitude" } } })
+assert(#buttons == 2 and APR.currentStep.questsList[buttons[1].key].label == "Cast Unknown",
+    "An uncached spell must not prevent the other spell from rendering")
+assert(buttons[2].id == "Power Word: Fortitude", "Lists preserve support for client-localized spell names")
+
+checkButtons({ Button = { ["5648"] = { 100, 101 } } })
+assert(#buttons == 2 and buttons[1].id == 100 and buttons[2].id == 101,
+    "Both items for the same quest must render in list order")
+assert(buttons[1].kind == "item" and buttons[2].kind == "item" and buttons[1].key ~= buttons[2].key)
+assert(APR.currentStep.questsList[buttons[1].key].label == "Use Item 100")
+assert(APR.currentStep.questsList[buttons[2].key].label == "Use Item 101")
+firstKey, secondKey = buttons[1].key, buttons[2].key
+checkButtons(current)
+assert(buttons[1].key == firstKey and buttons[2].key == secondKey, "Item button keys must stay stable on refresh")
+current = { Button = { ["11-1"] = { 100, 101 } }, SpellButton = { ["11-1"] = { 2050, 1243 } } }
+APR.currentStep:Reset()
+APR.currentStep.fillersList["11-1"] = {}
+APR:SetButton()
+assert(#buttons == 4 and buttons[1].key == "11-1" and buttons[2].id == 101 and
+    buttons[3].id == 2050 and buttons[4].id == 1243)
+local seen = {}
+for _, button in ipairs(buttons) do
+    assert(not seen[button.key], "Item and spell lists must never overwrite another secure button")
+    seen[button.key] = true
+end
+APR.currentStep.fillersList = {}
+checkButtons({ Button = { ["10-1"] = { 100, 101 } } })
+assert(#buttons == 0, "A completed objective suppresses every associated item button")
+checkButtons({ Done = { 10 }, Button = { ["10"] = { 100, 101 } } })
+assert(#buttons == 2, "Quest-wide item lists can still support travel to a ready turn-in")
 
 dofile("APR-Core/core/Event.lua")
 local function cast(step, spellID, unit)

@@ -110,6 +110,24 @@ class RouteSchemaTests(unittest.TestCase):
             with self.subTest(value=invalid), self.assertRaises(InvalidRoute):
                 self.schema.condition({"SkipForPrimaryProfessions": invalid}, "condition")
 
+    def test_multiple_spell_buttons_for_one_quest_or_objective(self):
+        for value in (2050, "Lesser Heal", seq(2050, 1243), seq(2050, "Power Word: Fortitude")):
+            for key in ("5648", "5648-1"):
+                with self.subTest(key=key, value=value):
+                    self.schema.step({"SpellButton": {key: value}}, "step")
+        for value in ({}, {2: 1243}, seq(2050, 0), seq(True), seq(""), seq(seq(2050)), seq(2050.5)):
+            with self.subTest(value=value), self.assertRaises(InvalidRoute):
+                self.schema.step({"SpellButton": {"5648": value}}, "step")
+
+    def test_multiple_item_buttons_for_one_quest_or_objective(self):
+        for value in (12345, seq(12345, 67890)):
+            for key in ("5648", "5648-1"):
+                with self.subTest(key=key, value=value):
+                    self.schema.step({"Button": {key: value}}, "step")
+        for value in ({}, {2: 12345}, seq(12345, 0), seq(True), seq("Item"), seq(seq(12345)), seq(1.5)):
+            with self.subTest(value=value), self.assertRaises(InvalidRoute):
+                self.schema.step({"Button": {"5648": value}}, "step")
+
     def test_equipment_lists(self):
         for name in ("EquippedItem", "EquippedItemStat"):
             entry = examples()[name]
