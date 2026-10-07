@@ -18,6 +18,7 @@ C_Map = { GetBestMapForUnit = function() return 1411 end }
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/data/models/Classes.lua")
+dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/features/questing/RouteManager.lua")
 
@@ -130,10 +131,10 @@ end
 
 C_EventUtils = { IsEventValid = function(event) return event ~= "ACTIVE_DELVE_DATA_UPDATE" end }
 dofile("APR-Core/core/Event.lua")
-APR.event:MyRegisterEvent()
+APR.event:RegisterEvents()
 assert(registered.QUEST_ACCEPTED and registered.QUEST_LOG_UPDATE)
 assert(not registered.ACTIVE_DELVE_DATA_UPDATE)
 C_EventUtils = nil
-APR.event:MyRegisterEvent()
+APR.event:RegisterEvents()
 assert(registered.HEARTHSTONE_BOUND)
 print("Client compatibility: visibility, saved routes, API fallbacks and event registration passed")

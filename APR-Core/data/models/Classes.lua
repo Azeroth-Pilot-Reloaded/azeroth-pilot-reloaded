@@ -1,3 +1,6 @@
+-- Maps stable class/spec IDs to the English keys used by route definitions.
+-- These keys identify routes and are independent of localized display names.
+
 APR.Classes = {
     Warrior = 1,
     Paladin = 2,
@@ -79,19 +82,4 @@ function APR:GetClassSpecName()
         end
     end
     return nil
-end
-
-function APR:GetAllClassSpecNames()
-    local className = APR.ClassName
-    if not className then return {} end
-
-    local list = {}
-    for specName in pairs(APR.Specs or {}) do
-        local specClass = specName:match("^(.-)%s*%-")
-        if specClass == className then
-            table.insert(list, specName)
-        end
-    end
-
-    return list
 end

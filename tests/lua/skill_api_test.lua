@@ -1,5 +1,7 @@
 -- Exercise the structured Forever API, with legacy globals deliberately unavailable.
+function LibStub() return { GetLocale = function() return {} end } end
 APR = {}
+dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/RouteConditions.lua")
 local info = { skillID = 185, name = "Cuisine", isHeader = false, rank = 75, maxRank = 150 }
 local function unexpectedLegacy() error("Available C_ API must take priority") end

@@ -1,3 +1,6 @@
+-- Owns AceDB defaults, AceConfig options, profile changes and the minimap launcher.
+-- Character preferences live in the AceDB char scope; visual and automation options use profiles.
+
 local _G = _G
 
 -- Locale
@@ -28,8 +31,7 @@ local function SetProfileOption(info, value)
 end
 
 function APR.settings:ResetSettings()
-    SettingsDB:ResetProfile()
-    self:RefreshProfile()
+    self.db:ResetProfile() -- AceDB invokes RefreshProfile through OnProfileReset.
 end
 
 function APR.settings:InitializeBlizOptions()
@@ -206,19 +208,18 @@ function APR.settings:InitializeSettings()
         }
     }
 
-    SettingsDB = LibStub("AceDB-3.0"):New("APRSettings", settingsDBDefaults, "Default")
+    self.db = LibStub("AceDB-3.0"):New("APRSettings", settingsDBDefaults, "Default")
 
-    SettingsDB.RegisterCallback(self, "OnProfileChanged", "RefreshProfile")
-    SettingsDB.RegisterCallback(self, "OnProfileCopied", "RefreshProfile")
-    SettingsDB.RegisterCallback(self, "OnProfileReset", "RefreshProfile")
-    self.profile = SettingsDB.profile
-    LoadedProfileKey = SettingsDB.keys.profile
+    self.db.RegisterCallback(self, "OnProfileChanged", "RefreshProfile")
+    self.db.RegisterCallback(self, "OnProfileCopied", "RefreshProfile")
+    self.db.RegisterCallback(self, "OnProfileReset", "RefreshProfile")
+    self.profile = self.db.profile
 
     -- Handle first login for new characters: enable heirloom warning for this character only
-    if SettingsDB.char.firstLogin then
+    if self.db.char.firstLogin then
         -- For new characters, override to show heirloom warning (false = show)
-        SettingsDB.char.showHeirloomWarning = false
-        SettingsDB.char.firstLogin = false
+        self.db.char.showHeirloomWarning = false
+        self.db.char.firstLogin = false
         APR:Debug("New character detected - Heirloom warning enabled for this character")
     end
 end
@@ -228,7 +229,7 @@ function APR.settings.ChatCommand(input)
 end
 
 function APR.settings:RefreshProfile()
-    self.profile = SettingsDB.profile
+    self.profile = self.db.profile
     C_UI.Reload()
 end
 
@@ -1952,7 +1953,7 @@ function APR.settings:createBlizzOptions()
     APR.OptionsRoute = aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
 
     -- add profile to bliz option
-    local profileOptions = _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(SettingsDB)
+    local profileOptions = _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
     profileOptions.args.reset_all_profiles_spacer = {
         order = 998,
         type = "description",

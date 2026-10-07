@@ -1,7 +1,10 @@
+-- Synchronizes the active quest cache and renders/progresses one route step at a time.
+-- UpdateStep batches automatic skips; row transactions and secure buttons remain owned by the UI.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local function GroupQuestPopup()
-    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    local step = APR:GetCurrentStep()
 
     if not step then return end
 
@@ -424,7 +427,7 @@ local function UpdateStepOnce()
                 APR:NextQuestStep()
                 return
             end
-            local name = C_Spell.GetSpellInfo(spellID).name
+            local name = APR:GetSpellName(spellID) or UNKNOWN
             APR.currentStep:AddQuestSteps("LEARN_PROFESSION", format(L["LEARN_PROFESSION_DETAILS"], name), name)
         end
 
@@ -939,7 +942,7 @@ local function UpdateStepOnce()
                         end
                         questToHighlight = questToHighlight or questID
                     end
-                    if APR:UpdateQpartPartWithQuesText(step, questText, questID) then
+                    if APR:UpdateQpartPartWithQuestText(step, questText, questID) then
                         return
                     end
                 end
@@ -1167,7 +1170,7 @@ function APR:SetButton()
     APR:Debug("Function: APR:SetButton()")
 
 
-    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    local step = APR:GetCurrentStep()
     if not step then
         return
     end

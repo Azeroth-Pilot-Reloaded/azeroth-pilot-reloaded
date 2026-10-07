@@ -1,3 +1,6 @@
+-- Records discovered taxi nodes and selects a route-requested flight when automation allows it.
+-- Saved taxi data contains discovery flags; localized node details come from LibTaxiData.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.flightPath = APR:NewModule("FlightPath")
@@ -12,7 +15,7 @@ APR.flightPath.eventFrame:SetScript("OnEvent", function(self, event)
         return
     end
 
-    local step = APR.ActiveRoute and APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute]) or nil
+    local step = APR.ActiveRoute and APR:GetCurrentStep() or nil
     if APR.settings.profile.showEvent then
         APR:PrintInfo(string.format(L["FLIGHT_PATH_EVENT"], event))
     end

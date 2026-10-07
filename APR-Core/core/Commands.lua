@@ -1,3 +1,6 @@
+-- Routes /apr commands and owns the opt-in, bounded performance capture.
+-- Commands delegate gameplay and UI work to their owning modules.
+
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
@@ -49,7 +52,7 @@ function APR.command:SlashCmd(input)
                 summary.count, summary.totalMs, summary.maxMs))
         end
     elseif (inputText == "step") then
-        APR:PrintInfo('step', APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil))
+        APR:PrintInfo('step', APR:GetCurrentStep())
     elseif (inputText == "reset" or inputText == "r") then
         --Command to reset the current route
         APR:ResetRoute(APR.ActiveRoute)

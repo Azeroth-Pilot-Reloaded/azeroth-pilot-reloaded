@@ -33,6 +33,7 @@ APR = {
     },
 }
 APRData = { player = { route = 1 } }
+dofile("APR-Core/utils/StepUtils.lua")
 function APR:NewModule() return {} end
 function APR:GetGameVersion() return "forever" end
 function APR:RegisterFontString() end
@@ -45,6 +46,7 @@ function APR:IsPetBattleActive() return false end
 function APR:IsInstanceWithUI() return true end
 function APR:NextQuestStep() advanced = advanced + 1 end
 
+step = APR:GetCurrentStep() -- Mutate the same runtime step that navigation consumes.
 dofile("APR-Core/features/navigation/Arrow.lua")
 local arrow, frame = APR.Arrow, APR.ArrowFrame
 local function refresh()

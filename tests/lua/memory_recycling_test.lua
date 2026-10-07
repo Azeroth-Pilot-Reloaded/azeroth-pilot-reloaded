@@ -1,5 +1,6 @@
 -- Keep widgets rooted through their parents, as the WoW client does.
 local env = dofile("tests/lua/route_ui_test_env.lua")
+dofile("APR-Core/utils/Utils.lua")
 local step = APR.currentStep
 step:PreviousNextStepButton()
 local function render(id, item)

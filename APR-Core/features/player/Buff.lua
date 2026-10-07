@@ -1,3 +1,6 @@
+-- Displays route-requested buffs through AuraContainer when available, otherwise tracked spell queries.
+-- Opaque aura payloads never drive Lua comparisons or iteration.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 
@@ -253,31 +256,6 @@ function APR.Buff:AddBuffIcon(buff)
     end
 
     self:RefreshFrameAnchor()
-end
-
-function APR.Buff:UpdateBuffIcon(aura)
-    if self:UsesAuraContainer() or not APRSecret:CanAccessTable(aura)
-        or not APRSecret:CanAccessValue(aura.spellId) or not aura.spellId then
-        return
-    end
-
-    for _, icon in ipairs(self.auras) do
-        if icon.spellId == aura.spellId then
-            SetLegacyAura(icon, aura)
-        end
-    end
-end
-
-function APR.Buff:DisableBuffIcon(auraId)
-    if self:UsesAuraContainer() or not APRSecret:CanAccessValue(auraId) then
-        return
-    end
-
-    for _, icon in ipairs(self.auras) do
-        if icon.auraId == auraId then
-            SetLegacyAura(icon, nil)
-        end
-    end
 end
 
 function APR.Buff:RefreshLegacyBuffs()

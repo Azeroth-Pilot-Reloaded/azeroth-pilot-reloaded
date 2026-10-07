@@ -1,3 +1,6 @@
+-- Adapts the travel graph into arrow targets and guide instructions, with bounded route-result caching.
+-- The adapter owns navigation state and installs compatibility predicates without editing vendor code.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.farstrider = APR:NewModule("Farstrider")
@@ -42,16 +45,6 @@ local function InstallSecretSafeFarstriderPredicates()
     end
 
     util._aprSecretSafePredicates = true
-end
-
-local function GetCurrentRouteStep()
-    if not APR.ActiveRoute or not APRData[APR.PlayerID] then
-        return nil
-    end
-
-    local stepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
-    local routeSteps = APR:GetRouteSteps(APR.ActiveRoute)
-    return routeSteps and stepIndex and routeSteps[stepIndex] or nil
 end
 
 function APR.farstrider:RequiresScenarioNavigation(step)
@@ -630,7 +623,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
         end
     end
 
-    if not APR.ActiveRoute or not APR.routeconfig:HasRouteInCustomPaht() then
+    if not APR.ActiveRoute or not APR.routeconfig:HasRouteInCustomPath() then
         APR.routeconfig:CheckIsCustomPathEmpty()
         return
     end
@@ -643,7 +636,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
     local questProfileStart = APR:StartPerformanceSample()
     APR:UpdateQuestAndStep()
     APR:FinishPerformanceSample("ZoneRoutingQuestSync", questProfileStart)
-    local step = GetCurrentRouteStep()
+    local step = APR:GetCurrentStep()
     if not step then
         return
     end

@@ -1,3 +1,6 @@
+-- Reconciles keyed guide rows in a content transaction and recycles retired rows by kind.
+-- A successful pass publishes one layout; interrupted passes retain the previous visible content.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local CurrentStep = APR.currentStep
 local Layout = CurrentStep.layout
@@ -386,7 +389,6 @@ local function AddDivider(self, list, key)
     self:ReOrderQuestSteps()
 end
 
-function CurrentStep:AddExtraLineDivider(key) AddDivider(self, self.questsExtraTextList, key) end
 function CurrentStep:AddQuestDivider(key) AddDivider(self, self.questsList, key) end
 
 local function OrderedRows(list, firstKey)
@@ -445,5 +447,4 @@ function CurrentStep:ReOrderQuestSteps()
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then APR.questOrderList:ApplySnapAnchor() end
 end
 
-function CurrentStep:ReOrderExtraLineText() self:ReOrderQuestSteps() end
 function CurrentStep:RefreshTextLayout() self:ReOrderQuestSteps() end

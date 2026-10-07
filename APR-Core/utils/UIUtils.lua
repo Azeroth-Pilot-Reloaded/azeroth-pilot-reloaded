@@ -1,7 +1,5 @@
---[[
-    UI-related helpers and lightweight cosmetic utilities.
-    Keeping them isolated prevents the base Utils.lua from mixing display logic with technical helpers.
-]]
+-- Shared frame construction, dragging/snapping, tooltips, preview paths and UI asset validation.
+-- Helpers preserve caller ownership of layout, callbacks and protected action attributes.
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
@@ -356,45 +354,6 @@ function APR:NormalizePreviewImages(step)
     return collected
 end
 
---- Compare two ordered string lists.
----@param a table|nil
----@param b table|nil
----@return boolean
-function APR:AreOrderedStringListsEqual(a, b)
-    if type(a) ~= "table" or type(b) ~= "table" then
-        return false
-    end
-    if #a ~= #b then
-        return false
-    end
-
-    for i = 1, #a do
-        if a[i] ~= b[i] then
-            return false
-        end
-    end
-
-    return true
-end
-
---- Compute responsive thumbnail size for a single-row preview strip.
----@param availableWidth number
----@param count number
----@param gap number
----@param minSize number
----@param maxSize number
----@return number
-function APR:ComputeThumbnailSize(availableWidth, count, gap, minSize, maxSize)
-    local safeCount = math.max(tonumber(count) or 0, 1)
-    local safeWidth = tonumber(availableWidth) or 0
-    local safeGap = tonumber(gap) or 0
-    local minValue = tonumber(minSize) or 24
-    local maxValue = tonumber(maxSize) or 96
-
-    local computed = math.floor((safeWidth - ((safeCount - 1) * safeGap)) / safeCount)
-    return math.max(minValue, math.min(maxValue, computed))
-end
-
 ---------------------------------------------------------------------------------------
 ---------------------------- Frame Management Utilities ------------------------------
 ---------------------------------------------------------------------------------------
@@ -722,4 +681,76 @@ function APR:SnapFrameToAnchor(frame, anchorFrame, anchorHeight, gap, adjustForH
     frame:SetPoint("TOP", anchorFrame, "TOP", 0, -totalOffset)
 
     return true
+end
+
+local reportedInvalidUIAssets = {}
+local knownUIAssetCache = {}
+
+--- Check a texture, font or other UI file without breaking clients before 12.0.7.
+--- On clients without C_UIFileAsset, the asset is trusted and the caller keeps its legacy behavior.
+---@param asset number|string|nil
+---@return boolean isKnown
+---@return boolean validationAvailable
+function APR:IsUIFileAssetKnown(asset)
+    if asset == nil or asset == "" then
+        return false, C_UIFileAsset ~= nil and type(C_UIFileAsset.IsKnownFile) == "function"
+    end
+
+    if not C_UIFileAsset or type(C_UIFileAsset.IsKnownFile) ~= "function" then
+        return true, false
+    end
+
+    if knownUIAssetCache[asset] ~= nil then
+        return knownUIAssetCache[asset], true
+    end
+
+    local ok, isKnown = pcall(C_UIFileAsset.IsKnownFile, asset)
+    knownUIAssetCache[asset] = ok and isKnown == true
+    return knownUIAssetCache[asset], true
+end
+
+--- Validate a UI file and optionally fall back to another one.
+--- Invalid assets are reported once so a bad font or route image has an actionable failure mode.
+---@param asset number|string|nil
+---@param fallback number|string|nil
+---@param context string|nil
+---@return number|string|nil
+function APR:ResolveUIFileAsset(asset, fallback, context)
+    local isKnown, validationAvailable = self:IsUIFileAssetKnown(asset)
+    if isKnown or not validationAvailable then
+        return asset
+    end
+
+    local diagnosticKey = tostring(context or "UI") .. ":" .. tostring(asset)
+    if not reportedInvalidUIAssets[diagnosticKey] then
+        reportedInvalidUIAssets[diagnosticKey] = true
+        local message = string.format("Unknown UI asset (%s): %s", context or "UI", tostring(asset))
+        if self.PrintError then
+            self:PrintError(message)
+        else
+            self:PrintInfo(message)
+        end
+    end
+
+    if fallback ~= nil then
+        local fallbackIsKnown, fallbackValidationAvailable = self:IsUIFileAssetKnown(fallback)
+        if fallbackIsKnown or not fallbackValidationAvailable then
+            return fallback
+        end
+    end
+
+    return nil
+end
+
+--- Validate the small set of files required for APR's main UI.
+--- Route preview images and configured fonts are validated lazily when used.
+function APR:ValidateBundledUIAssets()
+    for context, asset in pairs({
+        ["addon logo"] = "Interface\\AddOns\\APR\\APR-Core\\assets\\APR_logo.blp",
+        ["change log header"] = "Interface\\AddOns\\APR\\APR-Core\\assets\\header.blp",
+        ["map icon"] = "Interface\\AddOns\\APR\\APR-Core\\assets\\Icon.tga",
+        ["navigation arrow"] = "Interface\\AddOns\\APR\\APR-Core\\assets\\Arrow.blp",
+    }) do
+        self:ResolveUIFileAsset(asset, nil, context)
+    end
 end

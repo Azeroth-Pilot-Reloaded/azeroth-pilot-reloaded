@@ -123,7 +123,7 @@ APRData = { player = { route = 1, other = 1 } }
 local route = {}
 for index = 1, 1200 do route[index] = { Note = "Step " .. index } end
 APR.RouteQuestStepList = { route = route, other = { { Note = "Other route" } } }
-APR.routeconfig = { HasRouteInCustomPaht = function() return true end }
+APR.routeconfig = { HasRouteInCustomPath = function() return true end }
 function APR:GetRouteSteps(key) return self.RouteQuestStepList[key] end
 
 function APR:IsSojournerSkipActive() return false end

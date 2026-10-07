@@ -1,3 +1,6 @@
+-- Queries client family, player capabilities, resources, reputation and route-action usability.
+-- Prefer available namespaced APIs; never derive secret-value accessibility from a TOC number.
+
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
@@ -126,6 +129,15 @@ function APR:GetPlayerMaxLevel()
     return self:GetGameVersion() == APR.GAME_VERSIONS.Retail and 90 or 60
 end
 
+-- Spell data may not be cached yet. Leave the display fallback to the caller.
+function APR:GetSpellName(spellID)
+    if C_Spell and C_Spell.GetSpellInfo then
+        local info = C_Spell.GetSpellInfo(spellID)
+        return info and info.name
+    end
+    return _G.GetSpellInfo and _G.GetSpellInfo(spellID)
+end
+
 --- Check if a spell is known by the player or pet (supports both classic and retail APIs).
 -- We keep the dual API call path so the add-on works on multiple client versions without crashing.
 function APR:IsSpellKnown(spellID)
@@ -152,12 +164,6 @@ end
 --- Checks if the Player have flying rank 1, 2 or 3.
 function APR:CheckFlySkill()
     return APR:IsSpellKnown(34090) or APR:IsSpellKnown(34091) or APR:IsSpellKnown(90265)
-end
-
---- Remove the server suffix from a player name when present (used for cleaner displays).
-function APR:TrimPlayerServer(CLPName)
-    local CL_First = string.match(CLPName, "^(.-)-")
-    return CL_First or CLPName
 end
 
 --- Detect Remix-specific characters based on the dedicated aura.
@@ -449,4 +455,184 @@ function APR:UseGlider()
     end
 
     return itemName
+end
+
+local function GetOwnedItemLocation(itemID)
+    if not itemID or not ItemLocation or not C_Item or not C_Item.GetItemID then
+        return nil
+    end
+
+    local function matches(itemLocation)
+        return itemLocation and itemLocation:IsValid() and C_Item.DoesItemExist(itemLocation) and
+            C_Item.GetItemID(itemLocation) == itemID
+    end
+
+    local firstEquippedSlot = _G.INVSLOT_FIRST_EQUIPPED or 1
+    local lastEquippedSlot = _G.INVSLOT_LAST_EQUIPPED or 19
+    for slot = firstEquippedSlot, lastEquippedSlot do
+        local itemLocation = ItemLocation:CreateFromEquipmentSlot(slot)
+        if matches(itemLocation) then
+            return itemLocation
+        end
+    end
+
+    if not C_Container or not C_Container.GetContainerNumSlots then
+        return nil
+    end
+
+    local firstBag = Enum and Enum.BagIndex and Enum.BagIndex.Backpack or 0
+    local lastBag = Enum and Enum.BagIndex and Enum.BagIndex.ReagentBag or 4
+    for bag = firstBag, lastBag do
+        for slot = 1, C_Container.GetContainerNumSlots(bag) do
+            local itemLocation = ItemLocation:CreateFromBagAndSlot(bag, slot)
+            if matches(itemLocation) then
+                return itemLocation
+            end
+        end
+    end
+
+    return nil
+end
+
+--- Return the 12.1 item-targeting context for an owned route item, when a spell is targeting an item.
+--- Older clients simply return nil and retain the pre-12.1 tooltip.
+---@param itemID number
+---@return table|nil
+function APR:GetTargetSpellItemContext(itemID)
+    if not C_Spell or type(C_Spell.TargetSpellChecksItemCondition) ~= "function" or
+        not C_Item or type(C_Item.DoesItemMatchSpellItemCondition) ~= "function" or
+        not C_Spell.TargetSpellChecksItemCondition() then
+        return nil
+    end
+
+    local itemLocation = GetOwnedItemLocation(tonumber(itemID))
+    if not itemLocation then
+        return { matches = false }
+    end
+
+    local matches = C_Item.DoesItemMatchSpellItemCondition(itemLocation)
+    local cursorType, _, _, targetSpellID = GetCursorInfo()
+    local description
+    if cursorType == "spell" and targetSpellID and type(C_Spell.GetSpellDescriptionForItemLocation) == "function" then
+        description = C_Spell.GetSpellDescriptionForItemLocation(targetSpellID, itemLocation)
+    end
+
+    return {
+        description = description,
+        itemLocation = itemLocation,
+        matches = matches == true,
+        spellID = targetSpellID,
+    }
+end
+
+--- Evaluate a route action using non-secret booleans whenever cooldown restrictions are active.
+---@param actionType string
+---@param actionID number|string
+---@param ignoreCooldown boolean|nil
+---@return boolean usable
+---@return string|nil reason
+function APR:GetRouteActionUsability(actionType, actionID, ignoreCooldown)
+    actionID = tonumber(actionID)
+    if not actionID then
+        return false, "invalid"
+    end
+
+    if actionType == "spell" then
+        if not C_Spell or not C_Spell.GetSpellInfo or not C_Spell.GetSpellInfo(actionID) then
+            return false, "unknown"
+        end
+        if self.IsSpellKnown and not self:IsSpellKnown(actionID) then
+            return false, "unknown"
+        end
+
+        if C_Spell.IsSpellUsable then
+            local isUsable = C_Spell.IsSpellUsable(actionID)
+            if isUsable == false then
+                return false, "unusable"
+            end
+        end
+
+        if ignoreCooldown then
+            return true
+        end
+
+        local cooldownInfo = C_Spell.GetSpellCooldown and C_Spell.GetSpellCooldown(actionID) or nil
+        if not cooldownInfo then
+            return true
+        end
+
+        -- isActive was added in 12.0.1 specifically as a never-secret decision value.
+        if cooldownInfo.isActive ~= nil then
+            return cooldownInfo.isActive == false, cooldownInfo.isActive and "cooldown" or nil
+        end
+
+        -- 12.0.0 has DurationObject support but predates the never-secret isActive field.
+        if C_Spell.GetSpellCooldownDuration then
+            local cooldownDuration = C_Spell.GetSpellCooldownDuration(actionID)
+            if cooldownDuration and cooldownDuration.IsZero then
+                local isZero = cooldownDuration:IsZero()
+                if isZero then
+                    return true
+                end
+                return false, "cooldown"
+            end
+        end
+
+        -- Legacy fallback: compare values only when the client says they are accessible.
+        local duration = cooldownInfo.duration
+        if self.CanAccessValue and not self:CanAccessValue(duration) then
+            return false, "restricted"
+        end
+        return type(duration) ~= "number" or duration <= 0, type(duration) == "number" and duration > 0 and
+            "cooldown" or nil
+    end
+
+    if actionType == "item" then
+        local hasToy = PlayerHasToy and PlayerHasToy(actionID) or false
+        if hasToy and C_ToyBox and C_ToyBox.IsToyUsable and C_ToyBox.IsToyUsable(actionID) == false then
+            hasToy = false
+        end
+
+        local itemCount = C_Item and C_Item.GetItemCount and C_Item.GetItemCount(actionID) or 0
+        if not hasToy and itemCount <= 0 then
+            return false, "missing"
+        end
+
+        if C_Item and C_Item.IsUsableItem then
+            local isUsable = C_Item.IsUsableItem(actionID)
+            if isUsable == false then
+                return false, "unusable"
+            end
+        end
+
+        if ignoreCooldown then
+            return true
+        end
+
+        local startTime, duration, enabled
+        if C_Item and C_Item.GetItemCooldown then
+            startTime, duration, enabled = C_Item.GetItemCooldown(actionID)
+        elseif C_Container and C_Container.GetItemCooldown then
+            startTime, duration, enabled = C_Container.GetItemCooldown(actionID)
+        end
+
+        local cooldownEnabled = enabled == true or enabled == 1
+        local isActive = cooldownEnabled and type(startTime) == "number" and startTime > 0 and
+            type(duration) == "number" and duration > 0
+        return not isActive, isActive and "cooldown" or nil
+    end
+
+    return false, "invalid"
+end
+
+function APR:GetRouteActionStatusText(reason)
+    local messages = {
+        cooldown = _G.SPELL_FAILED_NOT_READY,
+        invalid = _G.SPELL_FAILED_BAD_TARGETS,
+        missing = _G.ERR_ITEM_NOT_FOUND or _G.SPELL_FAILED_ITEM_NOT_FOUND,
+        restricted = _G.SPELL_FAILED_NOT_READY,
+        unknown = _G.SPELL_FAILED_NOT_KNOWN,
+        unusable = _G.SPELL_FAILED_NOT_HERE or _G.SPELL_FAILED_NOT_READY,
+    }
+    return messages[reason]
 end

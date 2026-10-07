@@ -33,6 +33,7 @@ APR = {
     HEXColor = { red = "ff3333" },
     Arrow = { MaxDistanceWrongZone = 1000, SetArrowActive = noop },
 }
+dofile("APR-Core/utils/StepUtils.lua")
 function APR:NewModule() return {} end
 
 function APR:Debug() end
@@ -88,7 +89,7 @@ APR.currentStep = {
     AddQuestDivider = noop,
 }
 APR.routeconfig = {
-    HasRouteInCustomPaht = function() return true end,
+    HasRouteInCustomPath = function() return true end,
     CheckIsCustomPathEmpty = noop,
 }
 
@@ -101,6 +102,8 @@ FarstriderLib_API = {
     end,
 }
 
+APR.RouteQuestStepList = { [APR.ActiveRoute] = { steps = routeSteps } }
+step = APR:GetCurrentStep()
 dofile("APR-Core/integrations/Farstrider.lua")
 local realShowPathStep = APR.farstrider.ShowPathStep
 APR.farstrider.showOutOfZoneStepContent = true

@@ -1,3 +1,6 @@
+-- Owns gameplay event dispatch and coalesced quest/route refreshes.
+-- Delayed callbacks must validate the active route and step before changing progress.
+
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
@@ -24,7 +27,6 @@ local events = {
     equipment = "PLAYER_EQUIPMENT_CHANGED",
     durability = "UPDATE_INVENTORY_DURABILITY",
     skill = "SKILL_LINES_CHANGED",
-    load = "ADDON_LOADED",
     accept = { "QUEST_ACCEPTED", "QUEST_ACCEPT_CONFIRM" },
     achievement = { "ACHIEVEMENT_EARNED", "CRITERIA_EARNED", "CRITERIA_COMPLETE" },
     adventureMapAccept = "ADVENTURE_MAP_OPEN",
@@ -43,7 +45,7 @@ local events = {
     group = { "GROUP_JOINED", "GROUP_LEFT" },
     learnProfession = "LEARNED_SPELL_IN_SKILL_LINE",
     leaveCombat = "PLAYER_REGEN_ENABLED",
-    lootItems = { "CHAT_MSG_LOOT", "CURRENCY_DISPLAY_UPDATE" }, -- item , quest Item, currenies( honor, ressources, ...)
+    lootItems = "CHAT_MSG_LOOT",
     lvlUp = "PLAYER_LEVEL_UP",
     merchant = { "MERCHANT_SHOW", "MERCHANT_CLOSED" },
     party = "CHAT_MSG_ADDON",
@@ -96,17 +98,7 @@ local lastIsInstanceWithUI = nil
 ---------------------------------- Events register ------------------------------------
 ---------------------------------------------------------------------------------------
 
-function APR.event:MyRegisterEvent()
-    local function RegisterSupportedEvent(container, event)
-        if C_EventUtils and C_EventUtils.IsEventValid then
-            if C_EventUtils.IsEventValid(event) then
-                container:RegisterEvent(event)
-            end
-        else
-            -- Older clients throw for events belonging to another game family.
-            pcall(container.RegisterEvent, container, event)
-        end
-    end
+function APR.event:RegisterEvents()
     for tag, event in pairs(events) do
         local container = self.framePool[tag] or CreateFrame("Frame")
         container.tag = tag
@@ -116,13 +108,13 @@ function APR.event:MyRegisterEvent()
         self.framePool[tag] = container
 
         if type(event) == "string" then
-            RegisterSupportedEvent(container, event)
+            APR:RegisterSupportedEvent(container, event)
             container:SetScript("OnEvent", self.EventHandler)
         elseif type(event) == "table" then
             for _, e in ipairs(event) do
-                RegisterSupportedEvent(container, e)
-                container:SetScript("OnEvent", self.EventHandler)
+                APR:RegisterSupportedEvent(container, e)
             end
+            container:SetScript("OnEvent", self.EventHandler)
         end
     end
 end
@@ -155,7 +147,7 @@ function APR.event.EventHandler(self, event, ...)
         -- update Local variables before calling the callback
         autoAccept = profile.autoAccept
         autoAcceptRoute = profile.autoAcceptQuestRoute
-        step = APR:GetStep(APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute] or nil)
+        step = APR:GetCurrentStep()
 
         local profileStart = APR:StartPerformanceSample()
         pcall(self.callback, event, ...)
@@ -232,9 +224,9 @@ end
 ---------------------------------------------------------------------------------------
 
 local eventFrame = CreateFrame("Frame")
-eventFrame:RegisterEvent(events.load)
+eventFrame:RegisterEvent("ADDON_LOADED")
 eventFrame:SetScript("OnEvent", function(self, event, ...)
-    if event == events.load then
+    if event == "ADDON_LOADED" then
         local addOnName, containsBindings = ...
         if addOnName == "APR" then
             if APR.ValidateBundledUIAssets then
@@ -1067,30 +1059,6 @@ function APR.event.functions.lootItems(event, ...)
         -- Inventory counts refresh from BAG_UPDATE_DELAYED after the bag state changes.
         return
     end
-
-    -- -- MONEY (gold/silver/copper)
-    -- if event == "PLAYER_MONEY" then
-    --     local currentMoney = GetMoney()
-    --     local delta = currentMoney - (APR._lastMoney or currentMoney)
-    --     APR._lastMoney = currentMoney
-
-    --     if delta > 0 then
-    --         APR.lootUtils:OnMoneyLooted(delta)
-    --     end
-    --     return
-    -- end
-
-    -- CURRENCIES (Honor, Resources, etc.)
-    if event == "CURRENCY_DISPLAY_UPDATE" then
-        local currencyID, quantityChange = ...
-        if currencyID and quantityChange and quantityChange > 0 then
-            C_Timer.After(1, function()
-                APR.lootUtils:OnCurrencyGained(currencyID, quantityChange)
-                -- TODO add RefreshLootCurrenciesStepDisplay
-            end)
-        end
-        return
-    end
 end
 
 function APR.event.functions.lvlUp(event, level, healthDelta, powerDelta, numNewTalents, numNewPvpTalentSlots,
@@ -1259,7 +1227,7 @@ function APR.event.functions.reputation()
         -- UPDATE_FACTION is also emitted for many combat and quest updates. Rebuild
         -- the full list only when a reputation threshold used by this route changed.
         if previousReputationState ~= nil and APR.ActiveRoute == routeKey then
-            local currentReputationState = APR.questOrderListUtils:GetReputationStateSignature(
+            local currentReputationState = APR.questOrderListSupport:GetReputationStateSignature(
                 APR:GetRouteSteps(routeKey))
             if previousReputationState ~= currentReputationState then
                 APR.questOrderList:DelayedUpdate(true)

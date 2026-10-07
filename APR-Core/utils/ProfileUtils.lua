@@ -1,9 +1,11 @@
---[[
-    ProfileUtils.lua
+-- Resolves character-specific preferences and profile resets through APR-owned AceDB state.
+-- Persisted setting names stay stable even when internal Lua names change.
 
-    Utilities for handling profile and character-specific settings.
-    Provides helper functions to manage per-character overrides on shared profile settings.
-]]
+-- Keep AceDB character scope behind APR so integrations never depend on a generic global.
+function APR:GetCharacterSettings()
+    local database = self.settings and self.settings.db
+    return database and database.char
+end
 
 --- Get the effective heirloom warning value for the current character.
 -- Checks character-specific override first, then falls back to profile setting.
@@ -12,8 +14,9 @@ function APR:GetHeirloomWarning()
     if self:GetGameVersion() == self.GAME_VERSIONS.Forever then
         return true
     end
-    if SettingsDB and SettingsDB.char and SettingsDB.char.showHeirloomWarning ~= nil then
-        return SettingsDB.char.showHeirloomWarning
+    local character = self:GetCharacterSettings()
+    if character and character.showHeirloomWarning ~= nil then
+        return character.showHeirloomWarning
     end
     return APR.settings.profile.heirloomWarning
 end
@@ -23,16 +26,18 @@ end
 -- @param value boolean - true to hide the heirloom warning, false to show it
 function APR:SetHeirloomWarning(value)
     -- Set at character level to override profile
-    if SettingsDB and SettingsDB.char then
-        SettingsDB.char.showHeirloomWarning = value
+    local character = self:GetCharacterSettings()
+    if character then
+        character.showHeirloomWarning = value
     end
 end
 
 --- Get whether route suggestion popup is disabled for this character.
 -- @return boolean - true to disable route suggestion popup, false to show it
 function APR:GetRouteSuggestionDontAsk()
-    if SettingsDB and SettingsDB.char and SettingsDB.char.routeSuggestionDontAsk ~= nil then
-        return SettingsDB.char.routeSuggestionDontAsk
+    local character = self:GetCharacterSettings()
+    if character and character.routeSuggestionDontAsk ~= nil then
+        return character.routeSuggestionDontAsk
     end
     return false
 end
@@ -40,20 +45,22 @@ end
 --- Set whether route suggestion popup is disabled for this character.
 -- @param value boolean
 function APR:SetRouteSuggestionDontAsk(value)
-    if SettingsDB and SettingsDB.char then
-        SettingsDB.char.routeSuggestionDontAsk = value and true or false
+    local character = self:GetCharacterSettings()
+    if character then
+        character.routeSuggestionDontAsk = value and true or false
     end
 end
 
---- Resets all stored profiles to their default configuration.
---- This restores default settings for every profile managed by APR.
+-- Reset character-to-profile assignments while retaining the saved Default profile
+-- and character-only preferences; routes/progress live in separate SavedVariables.
 --- @return nil
 function APR:ResetAllProfilesToDefault()
     local saved = APRSettings or {}
-    local charCopy = APR:copyTable(saved.char or (SettingsDB and SettingsDB.sv and SettingsDB.sv.char) or {})
-    local defaultProfileCopy = APR:copyTable(
+    local database = self.settings and self.settings.db
+    local charCopy = APR:DeepCopyTable(saved.char or (database and database.sv and database.sv.char) or {})
+    local defaultProfileCopy = APR:DeepCopyTable(
         (saved.profiles and saved.profiles.Default) or
-        (SettingsDB and SettingsDB.sv and SettingsDB.sv.profiles and SettingsDB.sv.profiles.Default) or
+        (database and database.sv and database.sv.profiles and database.sv.profiles.Default) or
         {}
     )
 

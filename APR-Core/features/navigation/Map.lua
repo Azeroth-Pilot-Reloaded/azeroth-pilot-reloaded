@@ -1,3 +1,6 @@
+-- Owns world-map/minimap pins and route lines through HereBeDragons-Pins.
+-- Geometry is refreshed from the current route while styles follow APR settings.
+
 local hbdPins = LibStub("HereBeDragons-Pins-2.0")
 
 -- Initialize APR Map module
@@ -210,7 +213,7 @@ function APR.map:UpdateLine()
     end
 
     local mapID = WorldMapFrame:GetMapID()
-    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    local step = APR:GetCurrentStep()
 
     local stepCoord = step and APR:GetStepCoord(step, mapID) or nil
     if stepCoord then

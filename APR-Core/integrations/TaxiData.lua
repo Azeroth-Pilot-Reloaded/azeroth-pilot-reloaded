@@ -1,3 +1,6 @@
+-- Adapts the external LibTaxiData API, validating its capabilities before navigation uses it.
+-- Missing dependencies are reported once at login; successful calls preserve the API return values.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.taxiData = APR:NewModule("TaxiData")
@@ -39,10 +42,6 @@ function APR.taxiData:GetAPI()
     end
 
     return api
-end
-
-function APR.taxiData:IsAvailable()
-    return self:GetAPI() ~= nil
 end
 
 ---Call a LibTaxiData API without exposing its global table throughout APR.

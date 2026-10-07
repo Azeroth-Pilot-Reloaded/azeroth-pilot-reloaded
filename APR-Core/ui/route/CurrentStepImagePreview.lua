@@ -1,3 +1,6 @@
+-- Owns reusable route thumbnails and zoomable/pannable image windows.
+-- Layout uses actual texture aspect ratios, and delayed probes must stop when a window is recycled.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local _G = _G
 
@@ -21,10 +24,6 @@ local OVERLAY_PANEL_MAX_HEIGHT = 1000
 local OVERLAY_ZOOM_MIN = 1
 local OVERLAY_ZOOM_MAX = 3
 local OVERLAY_ZOOM_STEP = 0.1
-
-local function Clamp(value, minValue, maxValue)
-    return math.max(minValue, math.min(maxValue, value))
-end
 
 local function GetCursorPositionInUiScale()
     local scale = UIParent and UIParent:GetEffectiveScale() or 1
@@ -196,9 +195,9 @@ local function CreateOverlayWindow(imagePath)
         panel:EnableMouseWheel(true)
         panel:SetScript("OnMouseWheel", function(_, delta)
             if delta > 0 then
-                window.zoomLevel = Clamp(window.zoomLevel + OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
+                window.zoomLevel = APR:Clamp(window.zoomLevel + OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
             else
-                window.zoomLevel = Clamp(window.zoomLevel - OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
+                window.zoomLevel = APR:Clamp(window.zoomLevel - OVERLAY_ZOOM_STEP, OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
             end
 
             if ApplyOverlayTextureLayout then
@@ -400,8 +399,8 @@ ApplyOverlayTextureLayout = function(window)
 
     local maxPanX = math.max((targetWidth - availableWidth) / 2, 0)
     local maxPanY = math.max((targetHeight - availableHeight) / 2, 0)
-    window.panOffsetX = Clamp(window.panOffsetX or 0, -maxPanX, maxPanX)
-    window.panOffsetY = Clamp(window.panOffsetY or 0, -maxPanY, maxPanY)
+    window.panOffsetX = APR:Clamp(window.panOffsetX or 0, -maxPanX, maxPanX)
+    window.panOffsetY = APR:Clamp(window.panOffsetY or 0, -maxPanY, maxPanY)
 
     overlayTexture:ClearAllPoints()
     overlayTexture:SetSize(targetWidth, targetHeight)

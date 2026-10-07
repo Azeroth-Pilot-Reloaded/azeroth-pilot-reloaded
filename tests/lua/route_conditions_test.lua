@@ -12,6 +12,7 @@ APR = {
     RouteQuestStepList = {},
     Debug = noop
 }
+dofile("APR-Core/utils/Utils.lua")
 function APR:NewModule() return {} end
 
 local level, currentMap = 12, 1411
@@ -275,7 +276,7 @@ assert(#timers == 1, "Unrelated quest steps do not rebuild on money/bag changes"
 currentStep = filters
 APR.event.functions.money()
 -- Specific event ownership: each new event has only one subscription.
-APR.event:MyRegisterEvent()
+APR.event:RegisterEvents()
 for _, name in ipairs({ 'CHAT_MSG_LOOT', 'BAG_UPDATE_DELAYED', 'PLAYER_MONEY',
     'UNIT_SPELLCAST_START', 'UNIT_SPELLCAST_SUCCEEDED', 'TRAINER_SHOW', 'BANKFRAME_OPENED',
     'PLAYERBANKSLOTS_CHANGED', 'SKILL_LINES_CHANGED', 'PLAYER_EQUIPMENT_CHANGED' }) do

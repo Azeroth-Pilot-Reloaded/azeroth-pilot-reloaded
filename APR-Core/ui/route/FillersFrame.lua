@@ -1,3 +1,6 @@
+-- Renders optional quest objectives in reusable rows, independently or below the guide.
+-- It joins the current-step transaction and defers protected geometry changes during combat.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 
@@ -290,14 +293,6 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
     end
     if APR.AFK and APR.AFK.RefreshFrameAnchor then APR.AFK:RefreshFrameAnchor() end
     if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then APR.questOrderList:ApplySnapAnchor() end
-end
-
--- Get the total height of fillers frame (for positioning)
-function APR.fillersFrame:GetFillersHeight()
-    if not FillersFrame or not FillersFrame:IsShown() then
-        return 0
-    end
-    return FillersFrame:GetHeight() or 0
 end
 
 -- Update background color of fillers frame

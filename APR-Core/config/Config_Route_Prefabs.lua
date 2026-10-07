@@ -1,3 +1,6 @@
+-- Builds ordered custom paths from route metadata for starting zones, leveling and all-quest presets.
+-- Client visibility and character conditions are checked before a route enters a preset.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local function AddRouteToCustomPath(routeName, routeFileName)
@@ -500,8 +503,4 @@ function APR.routeconfig:GetPlayerSpecRoute(prefix)
     if APR:GetRouteVisibility(routeKey) ~= "hidden" then
         AddRouteToCustomPath(L[routeKey])
     end
-end
-
-function APR.routeconfig:GetRemixPrefab()
-    self:SendCustomPathUpdate(false)
 end

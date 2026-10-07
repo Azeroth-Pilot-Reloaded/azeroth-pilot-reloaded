@@ -1,5 +1,8 @@
-APR.questOrderListUtils = APR.questOrderListUtils or {}
-APR.questOrderListUtils.framePool = {}
+-- Supports the route-list UI with row pooling, budgeted coroutine jobs and progress positioning.
+-- Reputation signatures let the list ignore updates that do not change a route threshold.
+
+APR.questOrderListSupport = APR.questOrderListSupport or {}
+APR.questOrderListSupport.framePool = {}
 
 local REPUTATION_STATE_KEYS = { "Reputation", "ReputationLevel", "SkipForReputation" }
 
@@ -26,7 +29,7 @@ end
 
 -- Only threshold changes affect the Quest Order List: reputation progress itself
 -- is not displayed. This lets UPDATE_FACTION ignore unrelated reputation gains.
-function APR.questOrderListUtils:GetReputationStateSignature(steps)
+function APR.questOrderListSupport:GetReputationStateSignature(steps)
     local parts = {}
     for _, step in ipairs(steps or {}) do
         appendReputationState(parts, step)
@@ -34,7 +37,7 @@ function APR.questOrderListUtils:GetReputationStateSignature(steps)
     return table.concat(parts, "|")
 end
 
-function APR.questOrderListUtils:CancelRender(owner)
+function APR.questOrderListSupport:CancelRender(owner)
     owner.renderRequest = nil
     if owner.renderFrame then
         owner.renderFrame:SetScript("OnUpdate", nil)
@@ -43,7 +46,7 @@ function APR.questOrderListUtils:CancelRender(owner)
 end
 
 -- Resume between rows, with at most one budgeted batch per rendered game frame.
-function APR.questOrderListUtils:StartRender(owner, worker, isValid, afterBatch)
+function APR.questOrderListSupport:StartRender(owner, worker, isValid, afterBatch)
     self:CancelRender(owner)
     owner.renderFailed = nil
     owner.renderFrame = owner.renderFrame or CreateFrame("Frame")
@@ -72,7 +75,7 @@ function APR.questOrderListUtils:StartRender(owner, worker, isValid, afterBatch)
     owner.renderFrame:Show()
 end
 
-function APR.questOrderListUtils:ReleaseStepFrame(container)
+function APR.questOrderListSupport:ReleaseStepFrame(container)
     if container.inPool then return end
     container.inPool = true
     container:Hide()
@@ -84,7 +87,7 @@ function APR.questOrderListUtils:ReleaseStepFrame(container)
     self.framePool[#self.framePool + 1] = container
 end
 
-function APR.questOrderListUtils:SetStepFrameState(container, color, isCurrentStep)
+function APR.questOrderListSupport:SetStepFrameState(container, color, isCurrentStep)
     if not container then return end
 
     local titleRole = isCurrentStep and "warning" or (color == "green" and "success" or "muted")
@@ -95,7 +98,7 @@ function APR.questOrderListUtils:SetStepFrameState(container, color, isCurrentSt
     end
 end
 
-function APR.questOrderListUtils:CollapseStepDetails(container)
+function APR.questOrderListSupport:CollapseStepDetails(container)
     if not container or not container.questFonts or #container.questFonts == 0 then
         return false
     end
@@ -142,15 +145,15 @@ local function bindUncompletedStepTooltip(container, questInfo)
     end)
 end
 
-function APR.questOrderListUtils:IsQuestCompleted(questID)
+function APR.questOrderListSupport:IsQuestCompleted(questID)
     return C_QuestLog.IsQuestFlaggedCompleted(questID)
 end
 
-function APR.questOrderListUtils:IsQuestCompletedOrActive(questID)
+function APR.questOrderListSupport:IsQuestCompletedOrActive(questID)
     return self:IsQuestCompleted(questID) or APR.ActiveQuests[questID]
 end
 
-function APR.questOrderListUtils:CreateTextFont(parent, text, width, color)
+function APR.questOrderListSupport:CreateTextFont(parent, text, width, color)
     local fontString = parent:CreateFontString(nil, "OVERLAY", "GameFontNormalSmall")
     fontString:SetWordWrap(true)
     fontString:SetJustifyH("LEFT")
@@ -161,7 +164,7 @@ function APR.questOrderListUtils:CreateTextFont(parent, text, width, color)
     return fontString
 end
 
-function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepText, questInfo, color, isActiveStep)
+function APR.questOrderListSupport:AddStepFrameWithQuest(layout, stepIndex, stepText, questInfo, color, isActiveStep)
     local container = table.remove(self.framePool) or CreateFrame("Frame", nil, layout.scrollChild, "BackdropTemplate")
     container.inPool = nil
     container:SetParent(layout.scrollChild)
@@ -234,45 +237,18 @@ function APR.questOrderListUtils:AddStepFrameWithQuest(layout, stepIndex, stepTe
     return container, activeQuestId
 end
 
-function APR.questOrderListUtils:AddStepFrame(layout, stepIndex, stepText, color, isActiveStep)
+function APR.questOrderListSupport:AddStepFrame(layout, stepIndex, stepText, color, isActiveStep)
     return self:AddStepFrameWithQuest(layout, stepIndex, stepText, {}, color, isActiveStep)
 end
 
-function APR.questOrderListUtils:UpdateContainerLayout(container, layout)
-    if not container then return 0 end
-
-    local frameWidth = layout.frameWidth
-    local frameOffset = layout.frameOffset
-    local offset = container.offset or 0
-
-    container:SetWidth(frameWidth)
-    container.indexFont:SetWidth(frameWidth)
-    container.titleFont:SetWidth(frameWidth - offset - 5)
-
-    local questFontHeight = 0
-    for _, questFont in ipairs(container.questFonts) do
-        questFont:SetWidth(frameWidth - offset - 15)
-        questFont:SetPoint("TOPLEFT", container, "TOPLEFT", offset + 10,
-            -container.titleFont:GetStringHeight() - 5 - questFontHeight)
-        questFontHeight = questFontHeight + questFont:GetStringHeight() + 3
-    end
-
-    local containerHeight = container.titleFont:GetStringHeight() + questFontHeight + frameOffset
-    container:SetHeight(containerHeight)
-    container:SetPoint("TOPLEFT", layout.scrollChild, "TOPLEFT", 0, layout.dataHeight)
-    layout.dataHeight = layout.dataHeight - containerHeight
-
-    return containerHeight
-end
-
-function APR.questOrderListUtils:CancelScroll(scrollFrame)
+function APR.questOrderListSupport:CancelScroll(scrollFrame)
     if scrollFrame.aprScrollTimer then
         scrollFrame.aprScrollTimer:Cancel()
         scrollFrame.aprScrollTimer = nil
     end
 end
 
-function APR.questOrderListUtils:SetCurrentStepIndicator(stepList, scrollFrame, stepindex, followStep)
+function APR.questOrderListSupport:SetCurrentStepIndicator(stepList, scrollFrame, stepindex, followStep)
     local container = stepList[stepindex]
     if not container then return end
     self:SetStepFrameState(container, "gray", true)

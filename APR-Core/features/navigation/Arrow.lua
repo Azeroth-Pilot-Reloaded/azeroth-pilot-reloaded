@@ -1,3 +1,6 @@
+-- Updates the navigation arrow, arrival checks and distance display at the configured cadence.
+-- Farstrider owns travel segments; StepUtils supplies the shared runtime route step.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 
@@ -35,30 +38,6 @@ local function SaveArrowPosition()
     APR.ArrowFrameM:ClearAllPoints()
     APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
         APR.settings.profile.arrowtop)
-end
-
-local function GetCurrentRouteStep()
-    if not APR.ActiveRoute or not APR.RouteQuestStepList then
-        return
-    end
-
-    local playerRouteData = APRData[APR.PlayerID]
-    if not playerRouteData then
-        return
-    end
-
-    local currentStepIndex = playerRouteData[APR.ActiveRoute]
-    if not currentStepIndex then
-        return
-    end
-
-    local routeData = APR.RouteQuestStepList[APR.ActiveRoute]
-    if not routeData then
-        return
-    end
-
-    local routeSteps = APR:GetRouteSteps(APR.ActiveRoute)
-    return routeSteps, routeSteps[currentStepIndex], currentStepIndex
 end
 
 local function ShouldShowArrow()
@@ -134,7 +113,7 @@ APR.ArrowFrame:SetScript("OnUpdate", function(self, tick)
     if APR.Arrow.frameTicker < APR.Arrow.arrowUpdateRate then return end
     APR.Arrow.frameTicker = 0
 
-    APR.Arrow:CalculPosition()
+    APR.Arrow:UpdatePosition()
 end)
 
 
@@ -193,7 +172,7 @@ local function CheckDistance()
         return 0
     end
 
-    local routeSteps, currentStep, currentStepIndex = GetCurrentRouteStep()
+    local currentStep, currentStepIndex, routeSteps = APR:GetCurrentStep()
     if not routeSteps or not currentStep or currentStep.NoArrow then
         return 0
     end
@@ -253,7 +232,7 @@ end
 function APR.Arrow:SetCoord()
     APR:Debug("APR.Arrow:SetCoord()")
 
-    local routeSteps, step, currentStepIndex = GetCurrentRouteStep()
+    local step, currentStepIndex, routeSteps = APR:GetCurrentStep()
     if not routeSteps or not step then
         return
     end
@@ -288,7 +267,7 @@ function APR.Arrow:SetCoord()
     end
 end
 
-function APR.Arrow:CalculPosition()
+function APR.Arrow:UpdatePosition()
     local playerY, playerX = UnitPosition("player")
 
     if not playerY or not APR.ActiveRoute or not APR.RouteQuestStepList then
@@ -301,7 +280,7 @@ function APR.Arrow:CalculPosition()
         return
     end
 
-    local routeSteps, questStep = GetCurrentRouteStep()
+    local questStep, _, routeSteps = APR:GetCurrentStep()
     if not routeSteps then
         APR.ArrowFrame:Hide()
         return

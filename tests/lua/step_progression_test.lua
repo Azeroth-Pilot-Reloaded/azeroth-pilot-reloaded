@@ -46,7 +46,7 @@ APR = {
     MaybeSojournerPrompt = noop,
     CheckSojournerPartySync = noop,
     StepFilterQuestHandler = noop,
-    UpdateQpartPartWithQuesText = noop,
+    UpdateQpartPartWithQuestText = noop,
 }
 function APR:GetRouteSteps() return route end
 

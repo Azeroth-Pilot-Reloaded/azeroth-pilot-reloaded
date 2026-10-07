@@ -1,3 +1,6 @@
+-- Builds the route catalogue and custom-path editor with recycled AceGUI rows.
+-- Search/sort state is local to the window; route changes are broadcast through AceEvent messages.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Initialize APR Route module
@@ -17,16 +20,6 @@ local routeSortAsc = true
 local PREFAB_BUTTON_WIDGET_TYPE = "APRWrappedButton"
 local PREFAB_BUTTON_WIDGET_VERSION = 1
 local PREFAB_BUTTON_RELATIVE_SPACER = 0.02
-
-local function ClampNumber(value, minValue, maxValue)
-    if value < minValue then
-        return minValue
-    end
-    if value > maxValue then
-        return maxValue
-    end
-    return value
-end
 
 local function EnsurePrefabWrappedButtonWidget()
     local currentVersion = AceGUI:GetWidgetVersion(PREFAB_BUTTON_WIDGET_TYPE) or 0
@@ -139,7 +132,7 @@ local function BuildPrefabRelativeWidthMap()
 
     for _, key in ipairs(keys) do
         local ratio = weightedTotal > 0 and (weights[key] / weightedTotal) or 0.25
-        relativeWidths[key] = ClampNumber(ratio * available, 0.12, 0.58)
+        relativeWidths[key] = APR:Clamp(ratio * available, 0.12, 0.58)
     end
 
     local sum = 0
@@ -1144,7 +1137,7 @@ end
 ------------------------------ Route config function ----------------------------------
 ---------------------------------------------------------------------------------------
 
-function APR.routeconfig:HasRouteInCustomPaht()
+function APR.routeconfig:HasRouteInCustomPath()
     if APR:IsTemporaryRouteActive() then
         return true
     end
@@ -1157,7 +1150,7 @@ end
 
 function APR.routeconfig:CheckIsCustomPathEmpty()
     APR:Debug("Function: APR.routeconfig:CheckIsCustomPathEmpty()")
-    if not self:HasRouteInCustomPaht() then
+    if not self:HasRouteInCustomPath() then
         APR.ActiveRoute = nil
         APR.XPBuffOverlay:QueueRefresh()
         APR.currentStep:Reset()
