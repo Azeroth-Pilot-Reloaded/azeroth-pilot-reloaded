@@ -35,7 +35,7 @@ function APR:RegisterFontString() registrations = registrations + 1 end
 function APR:SetFontStringRole(font, role) font.role = role end
 
 GameTooltip = { GetOwner = noop, Hide = noop }
-dofile("APR-Core/utils/QuestOrderListUtils.lua")
+dofile("APR-Core/ui/route/QuestOrderListSupport.lua")
 local utils = APR.questOrderListUtils
 local rows = {}
 for pass = 1, 30 do

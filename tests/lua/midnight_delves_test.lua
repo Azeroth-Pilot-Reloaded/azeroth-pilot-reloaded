@@ -27,7 +27,7 @@ dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
-dofile("APR-Core/utils/RouteManager.lua")
+dofile("APR-Core/features/questing/RouteManager.lua")
 dofile("APR-Core/config/LevelProfiles.lua")
 function APR:GetPlayerEffectiveLevel() return level end
 function APR:HasAura(id) return id == 430191 or id == 1221184 end
