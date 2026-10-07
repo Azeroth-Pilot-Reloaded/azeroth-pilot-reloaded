@@ -50,6 +50,7 @@ APR = {
 }
 function APR:GetRouteSteps() return route end
 
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 local visited = {}
 function APR:GetStep(index)

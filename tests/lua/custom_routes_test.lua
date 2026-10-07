@@ -9,6 +9,7 @@ APR.routeconfig = { SendMessage = function(_, message) messages[#messages + 1] =
 function APR:InvalidateEffectiveRouteStepsCache(key) invalidated[key] = true end
 
 dofile("APR-Core/utils/Utils.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 local definition = {
     steps = { { Note = "Saved" } },

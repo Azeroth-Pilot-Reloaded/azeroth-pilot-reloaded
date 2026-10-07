@@ -120,6 +120,7 @@ C_Container = {
         end
     end,
 }
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile('APR-Core/utils/RouteUtils.lua')
 dofile('APR-Core/utils/QuestUtils.lua')
 dofile('APR-Core/utils/RouteConditions.lua')

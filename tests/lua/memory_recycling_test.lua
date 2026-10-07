@@ -94,6 +94,7 @@ function APR:Contains(list, value) for _, entry in ipairs(list) do if entry == v
 APR.RouteQuestStepList = { first = { label = "First", expansion = "Test" }, second = { label = "Second", expansion = "Test" } }
 APRCustomPath, APRData, APRZoneCompleted = { test = {} }, { test = {} }, { test = {} }
 tinsert, tremove = table.insert, table.remove
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/config/Config_Route.lua")
 local custom = { frame = env.widget() }
 custom.frame.contentFrame, custom.frame.scrollFrame = env.widget(), env.widget()

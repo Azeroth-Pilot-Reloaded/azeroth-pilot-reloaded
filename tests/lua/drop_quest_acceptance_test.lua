@@ -88,6 +88,7 @@ local ukor = {
 }
 local current = ukor
 function APR:GetRouteSteps() return { current, { PickUp = { 42 } } } end
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 function APR:GetStep() return current end
 dofile("APR-Core/utils/QuestUtils.lua")

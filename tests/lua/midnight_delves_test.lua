@@ -26,6 +26,7 @@ APR = {
 dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/features/questing/RouteManager.lua")
 dofile("APR-Core/config/LevelProfiles.lua")

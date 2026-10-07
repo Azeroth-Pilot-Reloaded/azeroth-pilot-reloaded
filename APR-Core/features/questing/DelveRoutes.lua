@@ -453,18 +453,18 @@ function APR:ActivateTemporaryRoute(routeKey, options)
     state.scenarioID = options.scenarioID
 
     if options.resume ~= true then
-        playerData[routeKey] = 1
+        self:SetRouteProgress(routeKey, 1, "temporary_route")
         playerData[routeKey .. "-SkippedStep"] = 0
         playerData[routeKey .. "-ParallelStepsState"] = nil
         playerData[routeKey .. "-TotalSteps"] = nil
         playerData[routeKey .. "-RawTotalSteps"] = nil
     else
-        playerData[routeKey] = playerData[routeKey] or 1
+        self:SetRouteProgress(routeKey, playerData[routeKey] or 1, "temporary_resume")
         playerData[routeKey .. "-SkippedStep"] = playerData[routeKey .. "-SkippedStep"] or 0
     end
 
     self:InvalidateEffectiveRouteStepsCache(routeKey)
-    self.ActiveRoute = routeKey
+    self:ActivateRoute(routeKey)
     self:GetTotalSteps(routeKey)
     playerData[routeKey .. "-RawTotalSteps"] = self:GetRawStepCount(routeKey)
 
@@ -506,14 +506,14 @@ function APR:ClearTemporaryRoute(options)
                     resumeIndex = state.replaceStepIndex + 1
                 end
             end
-            playerData[restoredRouteKey] = resumeIndex
+            self:SetRouteProgress(restoredRouteKey, resumeIndex, "temporary_complete")
         end
         playerData.TemporaryRouteState = nil
     end
 
     self:InvalidateEffectiveRouteStepsCache(state.routeKey)
 
-    self.ActiveRoute = restoredRouteKey
+    self:ActivateRoute(restoredRouteKey)
     if options.preserveSessionKey then
         self._delveRoutePromptState = {
             completed = true,
@@ -645,7 +645,7 @@ function APR:RefreshTemporaryDelveRoute()
             state.scenarioID = context.scenarioID
 
             if playerData then
-                playerData[state.routeKey] = 1
+                self:SetRouteProgress(state.routeKey, 1, "temporary_reset")
                 playerData[state.routeKey .. "-SkippedStep"] = 0
                 playerData[state.routeKey .. "-ParallelStepsState"] = nil
                 playerData[state.routeKey .. "-TotalSteps"] = nil
@@ -660,7 +660,7 @@ function APR:RefreshTemporaryDelveRoute()
         end
 
         if self.ActiveRoute ~= state.routeKey then
-            self.ActiveRoute = state.routeKey
+            self:ActivateRoute(state.routeKey)
             self:UpdateMapId()
             self:UpdateStep()
         end

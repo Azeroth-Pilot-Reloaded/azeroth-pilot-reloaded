@@ -22,6 +22,7 @@ end
 APR = { settings = { profile = { enableAddon = true } } }
 function APR:NewModule() return {} end
 dofile("APR-Core/utils/Utils.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/core/Event.lua")
 
 local frame = CreateFrame()

@@ -36,6 +36,7 @@ function GetInventoryItemLink() return "item:123" end
 
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/data/models/Enums.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/features/questing/RouteManager.lua")
 local filters = {

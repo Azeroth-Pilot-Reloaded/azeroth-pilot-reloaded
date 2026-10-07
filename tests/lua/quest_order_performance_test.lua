@@ -160,6 +160,7 @@ APR.questOrderList = {
         renders = renders + 1
     end,
 }
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/core/Event.lua")
 for _ = 1, 100 do APR.event.functions.reputation() end
 assert(#timers == 1 and totals == 0, "A reputation burst schedules a single refresh")

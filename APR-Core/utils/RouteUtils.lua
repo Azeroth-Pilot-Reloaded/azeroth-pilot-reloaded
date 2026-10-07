@@ -17,7 +17,7 @@ APR.ConditionalRouteRegistry = {
 
 function APR:ResetRoute(targetedRoute)
     self:Debug("Function: APR:ResetRoute()", targetedRoute)
-    APRData[self.PlayerID][targetedRoute] = 1
+    self:SetRouteProgress(targetedRoute, 1, "reset")
     APRData[self.PlayerID][targetedRoute .. '-SkippedStep'] = 0
     APRData[self.PlayerID][targetedRoute .. '-ParallelStepsState'] = nil
     self.routeActionState = nil
@@ -1004,7 +1004,7 @@ function APR:CheckRouteChanges(route)
         self.questionDialog:CreateMandatoryAction(
             L["ROUTE_UPDATED_NEED_RESET"],
             function()
-                APRData[APR.PlayerID][currentRoute] = 1
+                self:SetRouteProgress(currentRoute, 1, "definition_changed")
                 APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = 0
                 APRData[APR.PlayerID][currentRoute .. '-RawTotalSteps'] = currentTotalSteps
                 if currentRoute == APR.ActiveRoute then

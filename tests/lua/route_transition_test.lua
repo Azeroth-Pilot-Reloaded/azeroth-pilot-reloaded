@@ -14,6 +14,7 @@ function APR:NewModule() return {} end
 
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/features/questing/RouteManager.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/config/Config_Route.lua")
 local route, popup, selected
 function APR:GetRouteKeyFromDisplayName(name) return name end

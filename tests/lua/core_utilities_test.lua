@@ -4,6 +4,7 @@ function LibStub() return { GetLocale = function() return locale end } end
 APR = {}
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/ProfileUtils.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 
 local child = { enabled = false }

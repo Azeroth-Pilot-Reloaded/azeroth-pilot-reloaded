@@ -31,6 +31,7 @@ function UnitXPMax() return maxXP end
 
 C_Map = { GetBestMapForUnit = function() return 2413 end }
 dofile("APR-Core/config/LevelProfiles.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 local targets = { 88.00, 87.85, 87.75, 87.65, 87.55, 87.45 }
 local eventTargets = { 87.55, 87.45, 87.30, 87.30, 87.18, 86.88 }

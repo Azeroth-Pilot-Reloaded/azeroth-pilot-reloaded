@@ -125,6 +125,7 @@ APR.currentStep = {
         assert(filter == nil); usability = usability + 1
     end,
 }
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/core/Event.lua")
 APR.event.functions.buffs("UNIT_AURA", secret, restrictedTable)
 assert(refreshed == 1)

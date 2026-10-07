@@ -33,6 +33,7 @@ APR = {
     HEXColor = { red = "ff3333" },
     Arrow = { MaxDistanceWrongZone = 1000, SetArrowActive = noop },
 }
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 function APR:NewModule() return {} end
 

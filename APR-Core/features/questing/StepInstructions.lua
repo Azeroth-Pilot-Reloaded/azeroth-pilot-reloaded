@@ -9,6 +9,7 @@ function handlers.GroupQuestPopup()
 
     if not step then return end
 
+    local context = APR:CaptureStepContext()
     local questId = step.Group.questID
     if not C_QuestLog.IsQuestFlaggedCompleted(questId) and not step.QuestLineSkip then
         local sugestGroupNumber = step.Group.Number
@@ -17,10 +18,12 @@ function handlers.GroupQuestPopup()
         APR.questionDialog:CreateQuestionPopup(dialogText,
             dialogText,
             function()
+                if not APR:IsStepContextCurrent(context) then return end
                 APRData[APR.PlayerID].WantedQuestList[questId] = 1
                 APR:UpdateNextStep()
             end,
             function()
+                if not APR:IsStepContextCurrent(context) then return end
                 APRData[APR.PlayerID].WantedQuestList[questId] = 0
                 APR:UpdateNextStep()
             end

@@ -62,6 +62,7 @@ function debugprofilestop() return now end
 function IsInInstance() return false end
 
 dofile("APR-Core/core/Commands.lua")
+dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/core/Event.lua")
 
 for index = 1, 100 do

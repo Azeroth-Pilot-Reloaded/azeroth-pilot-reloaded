@@ -1099,7 +1099,7 @@ function APR.routeconfig:InitRouteConfig()
         APR.Buff:RemoveAllBuffIcon()
 
         local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
-        APR.ActiveRoute = routeFileName
+        APR:ActivateRoute(routeFileName)
         APR.XPBuffOverlay:QueueRefresh()
 
         APR:UpdateMapId()
@@ -1151,7 +1151,7 @@ end
 function APR.routeconfig:CheckIsCustomPathEmpty()
     APR:Debug("Function: APR.routeconfig:CheckIsCustomPathEmpty()")
     if not self:HasRouteInCustomPath() then
-        APR.ActiveRoute = nil
+        APR:ActivateRoute(nil)
         APR.XPBuffOverlay:QueueRefresh()
         APR.currentStep:Reset()
         APR.Buff:RemoveAllBuffIcon()

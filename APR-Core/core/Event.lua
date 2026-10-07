@@ -245,7 +245,7 @@ eventFrame:SetScript("OnEvent", function(self, event, ...)
                 APR:UpdateStep()
 
                 if routeFileName and routeFileName ~= "" then
-                    APR.ActiveRoute = routeFileName
+                    APR:ActivateRoute(routeFileName)
                     if APR.XPBuffOverlay then APR.XPBuffOverlay:QueueRefresh() end
 
                     -- Trigger zone detection after reload - use longer delay to ensure quest log is fully synced
@@ -1364,7 +1364,7 @@ function APR.event.functions.spec(event, unit)
                 if data.index == 1 then
                     local newRouteKey = data.newRouteKey
                     if newRouteKey then
-                        APR.ActiveRoute = newRouteKey
+                        APR:ActivateRoute(newRouteKey)
                         APR:ResetRoute(APR.ActiveRoute)
                     end
                 end
