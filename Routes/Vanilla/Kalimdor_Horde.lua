@@ -87,26 +87,26 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Qpart = { [14461] = { 1 } },
-            Coord = { x = -228.9, y = -3355.5 },
             Fillers = { [14459] = { 1 } },
-            Button = { ["14461-1"] = 49539 },
+            Coord = { x = -228.9, y = -3355.5 },
             Range = 0.61,
+            Button = { ["14461-1"] = 49539 },
             _index = 15
         },
         {
             Qpart = { [14461] = { 2 } },
-            Coord = { x = -207.7, y = -3387 },
             Fillers = { [14459] = { 1 } },
-            Button = { ["14461-2"] = 49539 },
+            Coord = { x = -207.7, y = -3387 },
             Range = 0.69,
+            Button = { ["14461-2"] = 49539 },
             _index = 16
         },
         {
             Qpart = { [14461] = { 3 } },
-            Coord = { x = -265.2, y = -3402.7 },
             Fillers = { [14459] = { 1 } },
-            Button = { ["14461-3"] = 49539 },
+            Coord = { x = -265.2, y = -3402.7 },
             Range = 0.61,
+            Button = { ["14461-3"] = 49539 },
             _index = 17
         },
         {
@@ -145,8 +145,8 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         {
             Qpart = { [24861] = { 1 } },
             Coord = { x = -253.9, y = -2907.5 },
-            Button = { ["24861-1"] = 50465 },
             Range = 0.61,
+            Button = { ["24861-1"] = 50465 },
             _index = 24
         },
         {
@@ -195,10 +195,10 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Waypoint = 24215,
-            Coord = { x = -40.5, y = -2933 },
-            Button = { ["24215-0"] = 49652 },
             ExtraLineText = "DRINK_WATER_VISION",
+            Coord = { x = -40.5, y = -2933 },
             Range = 24.62,
+            Button = { ["24215-0"] = 49652 },
             _index = 33
         },
         {
@@ -268,24 +268,24 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Qpart = { [14438] = { 1 } },
-            Coord = { x = -434.9, y = -2731.4 },
             Fillers = { [20440] = { 1, 2 } },
+            Coord = { x = -434.9, y = -2731.4 },
             Range = 30,
             Zone = 7,
             _index = 45
         },
         {
             Qpart = { [20440] = { 1 } },
-            Coord = { x = -532.1, y = -2547.1 },
             Fillers = { [761] = { 1 }, [20440] = { 2 } },
+            Coord = { x = -532.1, y = -2547.1 },
             Range = 30,
             Zone = 7,
             _index = 46
         },
         {
             Qpart = { [20440] = { 2 } },
-            Coord = { x = -709.5, y = -2414.3 },
             Fillers = { [761] = { 1 } },
+            Coord = { x = -709.5, y = -2414.3 },
             Range = 30,
             Zone = 7,
             _index = 47
@@ -304,8 +304,8 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Qpart = { [24440] = { 1 } },
-            Coord = { x = -710, y = -2541.6 },
             Fillers = { [761] = { 1 } },
+            Coord = { x = -710, y = -2541.6 },
             Button = { ["24440-1"] = 5411 },
             Zone = 7,
             _index = 50
@@ -355,15 +355,15 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Qpart = { [26179] = { 1 }, [26180] = { 1 } },
-            Coord = { x = -1148.9, y = -1841.1 },
             Fillers = { [26188] = { 1 } },
+            Coord = { x = -1148.9, y = -1841.1 },
             Range = 30,
             Zone = 9,
             _index = 58
         },
         {
-            Coord = { x = -949.7, y = -2152 },
             Fillers = { [26188] = { 1 } },
+            Coord = { x = -949.7, y = -2152 },
             Range = 30,
             Zone = 7,
             _index = 59
@@ -472,16 +472,16 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Waypoint = 6364,
-            Coord = { x = 174.6, y = -1305.8 },
             ExtraLineText = "DOWN_ELEVATOR",
+            Coord = { x = 174.6, y = -1305.8 },
             Range = 5,
             Zone = 88,
             _index = 76
         },
         {
             Waypoint = 6364,
-            Coord = { x = 181.1, y = -1319.5 },
             ExtraLineText = "DOWN_ELEVATOR",
+            Coord = { x = 181.1, y = -1319.5 },
             Range = 5,
             Zone = 88,
             _index = 77
@@ -495,26 +495,26 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Qpart = { [743] = { 1 } },
-            Coord = { x = 302, y = -1717.2 },
             Fillers = { [24441] = { 1, 2 } },
+            Coord = { x = 302, y = -1717.2 },
             Range = 30,
             Zone = 7,
             _index = 79
         },
         {
             Waypoint = 743,
-            Coord = { x = 257.5, y = -1853.2 },
             Fillers = { [24441] = { 1, 2 } },
+            Coord = { x = 257.5, y = -1853.2 },
             Range = 5,
             Zone = 7,
             _index = 80
         },
         {
             Qpart = { [14491] = { 1 } },
-            Coord = { x = 398.4, y = -1937.3 },
             Fillers = { [24441] = { 1, 2 } },
-            Button = { ["14491-1"] = 49647 },
+            Coord = { x = 398.4, y = -1937.3 },
             Range = 30,
+            Button = { ["14491-1"] = 49647 },
             Zone = 7,
             _index = 81
         },
@@ -575,16 +575,16 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Qpart = { [11129] = { 1 } },
+            ExtraLineText = "KILL_STRIDER_UNTIL_YOU_LOOT_TENDER_STRIDER_MEAT",
             Coord = { x = -241.8, y = -1828.2 },
             Button = { ["11129-1"] = 5411 },
-            ExtraLineText = "KILL_STRIDER_UNTIL_YOU_LOOT_TENDER_STRIDER_MEAT",
             Zone = 7,
             _index = 91
         },
         {
             Waypoint = 24457,
-            Coord = { x = -336.9, y = -1998.2 },
             ExtraLineText = "KILL_STRIDER_UNTIL_YOU_LOOT_TENDER_STRIDER_MEAT",
+            Coord = { x = -336.9, y = -1998.2 },
             Range = 5,
             Zone = 7,
             _index = 92
@@ -603,8 +603,8 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Qpart = { [11129] = { 1 } },
-            Coord = { x = -380.4, y = -2248.6 },
             ExtraLineText = "WAIT_AND_USE_MEAT_WHEN_YOU_SEE_KYLE",
+            Coord = { x = -380.4, y = -2248.6 },
             Range = 30,
             Zone = 7,
             _index = 95
@@ -629,10 +629,10 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Qpart = { [20441] = { 1 } },
-            Coord = { x = -421.7, y = -2218.7 },
-            Button = { ["20441-1"] = 49652 },
             ExtraLineText = "DRINK_WATER_VISION",
+            Coord = { x = -421.7, y = -2218.7 },
             Range = 30,
+            Button = { ["20441-1"] = 49652 },
             Zone = 7,
             _index = 99
         },
@@ -662,23 +662,23 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Qpart = { [744] = { 1, 2 } },
-            Coord = { x = -838.8, y = -732.6 },
             Fillers = { [24523] = { 1 } },
+            Coord = { x = -838.8, y = -732.6 },
             Range = 40,
             Zone = 7,
             _index = 104
         },
         {
             Done = { 773 },
-            Coord = { x = -1107.2, y = -992 },
             Fillers = { [24523] = { 1 } },
+            Coord = { x = -1107.2, y = -992 },
             Zone = 7,
             _index = 105
         },
         {
             Qpart = { [833] = { 1 } },
-            Coord = { x = -1073.8, y = -967.8 },
             Fillers = { [24523] = { 1 } },
+            Coord = { x = -1073.8, y = -967.8 },
             Range = 30,
             Zone = 7,
             _index = 106
@@ -749,24 +749,24 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Waypoint = 24550,
-            Coord = { x = -142.5, y = -946.9 },
             ExtraLineText = "USE_ELEVATOR",
+            Coord = { x = -142.5, y = -946.9 },
             Range = 5,
             Zone = 7,
             _index = 117
         },
         {
             Waypoint = 24550,
-            Coord = { x = -83, y = -1022.4 },
             ExtraLineText = "USE_ELEVATOR",
+            Coord = { x = -83, y = -1022.4 },
             Range = 5,
             Zone = 88,
             _index = 118
         },
         {
             Waypoint = 24550,
-            Coord = { x = -58.5, y = -1033.3 },
             ExtraLineText = "USE_ELEVATOR",
+            Coord = { x = -58.5, y = -1033.3 },
             Range = 5,
             Zone = 88,
             _index = 119
@@ -800,49 +800,49 @@ APR.RouteQuestStepList["462-MulgoreTauren"] = {
         },
         {
             Waypoint = 1,
-            Coord = { x = 12.2, y = -1198.9 },
             ExtraLineText = "TAKE_FLY_FOR_ORGRIMMAR_IF_YOU_HAVE_IT",
             ExtraLineText2 = "OTHERWISE_TAKE_ZEPPLIN",
+            Coord = { x = 12.2, y = -1198.9 },
             Range = 5,
             Zone = 88,
             _index = 124
         },
         {
             Waypoint = 1,
-            Coord = { x = 63.9, y = -1123.4 },
             ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+            Coord = { x = 63.9, y = -1123.4 },
             Range = 5,
             Zone = 88,
             _index = 125
         },
         {
             Waypoint = 1,
-            Coord = { x = 118.9, y = -1110.6 },
             ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+            Coord = { x = 118.9, y = -1110.6 },
             Range = 5,
             Zone = 88,
             _index = 126
         },
         {
             Waypoint = 1,
-            Coord = { x = 193.9, y = -1030.8 },
             ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+            Coord = { x = 193.9, y = -1030.8 },
             Range = 5,
             Zone = 88,
             _index = 127
         },
         {
             Waypoint = 1,
-            Coord = { x = 352.9, y = -1028.3 },
             ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+            Coord = { x = 352.9, y = -1028.3 },
             Range = 5,
             Zone = 88,
             _index = 128
         },
         {
             Waypoint = 1,
-            Coord = { x = 364.9, y = -1026.4 },
             ExtraLineText = "OTHERWISE_TAKE_ZEPPLIN",
+            Coord = { x = 364.9, y = -1026.4 },
             Range = 5,
             ETA = 300,
             Zone = 88,
@@ -946,15 +946,15 @@ APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
         },
         {
             Qpart = { [25172] = { 1 } },
-            Coord = { x = -4269.5, y = -711.3 },
             Fillers = { [25136] = { 1 } },
+            Coord = { x = -4269.5, y = -711.3 },
             Range = 38.02,
             _index = 8
         },
         {
             Done = { 25172 },
-            Coord = { x = -4247.4, y = -597.3 },
             Fillers = { [25136] = { 1 } },
+            Coord = { x = -4247.4, y = -597.3 },
             _index = 9
         },
         {
@@ -969,38 +969,38 @@ APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
         },
         {
             PickUp = { 25129 },
-            Coord = { x = -4109.3, y = -397.8 },
             Fillers = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
+            Coord = { x = -4109.3, y = -397.8 },
             _index = 12
         },
         {
             Qpart = { [25129] = { 1 } },
-            Coord = { x = -4097.9, y = -563.5 },
             Fillers = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
-            Button = { ["37446-1"] = 16114 },
+            Coord = { x = -4097.9, y = -563.5 },
             Range = 0.61,
+            Button = { ["37446-1"] = 16114 },
             RaidIcon = 3281,
             _index = 13
         },
         {
             Done = { 25129 },
-            Coord = { x = -4108.4, y = -397.5 },
             Fillers = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
+            Coord = { x = -4108.4, y = -397.5 },
             Button = { ["37446-1"] = 16114 },
             _index = 14
         },
         {
             PickUp = { 25130 },
-            Coord = { x = -4108.4, y = -397.5 },
             Fillers = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
+            Coord = { x = -4108.4, y = -397.5 },
             Button = { ["37446-1"] = 16114 },
             _index = 15
         },
         {
             Qpart = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
             Coord = { x = -4095.2, y = -406.7 },
-            Button = { ["37446-1"] = 16114 },
             Range = 92.79,
+            Button = { ["37446-1"] = 16114 },
             _index = 16
         },
         {
@@ -1053,22 +1053,22 @@ APR.RouteQuestStepList["1-ValleyOfTrialsOrc"] = {
         },
         {
             Qpart = { [25135] = { 1 } },
-            Coord = { x = -4274.4, y = -87.4 },
             Fillers = { [25132] = { 1 } },
+            Coord = { x = -4274.4, y = -87.4 },
             Range = 0.69,
             _index = 26
         },
         {
             Waypoint = 25132,
-            Coord = { x = -4258.3, y = -149 },
             Fillers = { [25132] = { 1 } },
+            Coord = { x = -4258.3, y = -149 },
             Range = 14.73,
             _index = 27
         },
         {
             Qpart = { [25132] = { 2 } },
-            Coord = { x = -4205.7, y = -77.1 },
             Fillers = { [25132] = { 1 } },
+            Coord = { x = -4205.7, y = -77.1 },
             Range = 0.69,
             RaidIcon = 3183,
             _index = 28
@@ -1165,15 +1165,15 @@ APR.RouteQuestStepList["463-EchoIslesTrollWar"] = {
         },
         {
             Qpart = { [25172] = { 1 } },
-            Coord = { x = -4269.5, y = -711.3 },
             Fillers = { [25136] = { 1 } },
+            Coord = { x = -4269.5, y = -711.3 },
             Range = 38.02,
             _index = 8
         },
         {
             Done = { 25172 },
-            Coord = { x = -4247.4, y = -597.3 },
             Fillers = { [25136] = { 1 } },
+            Coord = { x = -4247.4, y = -597.3 },
             _index = 9
         },
         {
@@ -1188,38 +1188,38 @@ APR.RouteQuestStepList["463-EchoIslesTrollWar"] = {
         },
         {
             PickUp = { 25129 },
-            Coord = { x = -4109.3, y = -397.8 },
             Fillers = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
+            Coord = { x = -4109.3, y = -397.8 },
             _index = 12
         },
         {
             Qpart = { [25129] = { 1 } },
-            Coord = { x = -4097.9, y = -563.5 },
             Fillers = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
-            Button = { ["37446-1"] = 16114 },
+            Coord = { x = -4097.9, y = -563.5 },
             Range = 0.61,
+            Button = { ["37446-1"] = 16114 },
             RaidIcon = 3281,
             _index = 13
         },
         {
             Done = { 25129 },
-            Coord = { x = -4108.4, y = -397.5 },
             Fillers = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
+            Coord = { x = -4108.4, y = -397.5 },
             Button = { ["37446-1"] = 16114 },
             _index = 14
         },
         {
             PickUp = { 25130 },
-            Coord = { x = -4108.4, y = -397.5 },
             Fillers = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
+            Coord = { x = -4108.4, y = -397.5 },
             Button = { ["37446-1"] = 16114 },
             _index = 15
         },
         {
             Qpart = { [25127] = { 1 }, [25136] = { 1 }, [37446] = { 1 } },
             Coord = { x = -4095.2, y = -406.7 },
-            Button = { ["37446-1"] = 16114 },
             Range = 92.79,
+            Button = { ["37446-1"] = 16114 },
             _index = 16
         },
         {
@@ -1272,22 +1272,22 @@ APR.RouteQuestStepList["463-EchoIslesTrollWar"] = {
         },
         {
             Qpart = { [25135] = { 1 } },
-            Coord = { x = -4274.4, y = -87.4 },
             Fillers = { [25132] = { 1 } },
+            Coord = { x = -4274.4, y = -87.4 },
             Range = 0.69,
             _index = 26
         },
         {
             Waypoint = 25132,
-            Coord = { x = -4258.3, y = -149 },
             Fillers = { [25132] = { 1 } },
+            Coord = { x = -4258.3, y = -149 },
             Range = 14.73,
             _index = 27
         },
         {
             Qpart = { [25132] = { 2 } },
-            Coord = { x = -4205.7, y = -77.1 },
             Fillers = { [25132] = { 1 } },
+            Coord = { x = -4205.7, y = -77.1 },
             Range = 0.69,
             RaidIcon = 3183,
             _index = 28
@@ -1467,18 +1467,18 @@ APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
         },
         {
             Qpart = { [24625] = { 1 } },
-            Coord = { x = -5154.5, y = -1353.5 },
             Fillers = { [24623] = { 1 }, [24624] = { 1 } },
-            Button = { ["24623-1"] = 52283 },
+            Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
+            Button = { ["24623-1"] = 52283 },
             RaidIcon = 39072,
             _index = 23
         },
         {
             Qpart = { [24623] = { 1 }, [24624] = { 1 } },
             Coord = { x = -5156.7, y = -1352.1 },
-            Button = { ["24623-1"] = 52283 },
             Range = 51.65,
+            Button = { ["24623-1"] = 52283 },
             _index = 24
         },
         {
@@ -1493,10 +1493,10 @@ APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
         },
         {
             Qpart = { [24626] = { 1 } },
-            Coord = { x = -5314.3, y = -1549.5 },
             Fillers = { [25037] = { 1 } },
-            Button = { ["24626-1"] = 50053 },
+            Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
+            Button = { ["24626-1"] = 50053 },
             RaidIcon = 38002,
             _index = 27
         },
@@ -1529,8 +1529,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
         },
         {
             Waypoint = 25035,
-            Coord = { x = -5558.3, y = -1331.3 },
             ExtraLineText = "TALK_JORNUN",
+            Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
             RaidIcon = 38989,
             _index = 33
@@ -1548,8 +1548,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollHunter"] = {
         {
             Qpart = { [24812] = { 1 }, [24813] = { 1 } },
             Coord = { x = -5599.4, y = -706.5 },
-            Button = { ["24813-1"] = 52065 },
             Range = 45.15,
+            Button = { ["24813-1"] = 52065 },
             _index = 36
         },
         {
@@ -1733,18 +1733,18 @@ APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
         },
         {
             Qpart = { [24625] = { 1 } },
-            Coord = { x = -5154.5, y = -1353.5 },
             Fillers = { [24623] = { 1 }, [24624] = { 1 } },
-            Button = { ["24623-1"] = 52283 },
+            Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
+            Button = { ["24623-1"] = 52283 },
             RaidIcon = 39072,
             _index = 22
         },
         {
             Qpart = { [24623] = { 1 }, [24624] = { 1 } },
             Coord = { x = -5156.7, y = -1352.1 },
-            Button = { ["24623-1"] = 52283 },
             Range = 51.65,
+            Button = { ["24623-1"] = 52283 },
             _index = 23
         },
         {
@@ -1759,10 +1759,10 @@ APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
         },
         {
             Qpart = { [24626] = { 1 } },
-            Coord = { x = -5314.3, y = -1549.5 },
             Fillers = { [25037] = { 1 } },
-            Button = { ["24626-1"] = 50053 },
+            Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
+            Button = { ["24626-1"] = 50053 },
             RaidIcon = 38002,
             _index = 26
         },
@@ -1795,8 +1795,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
         },
         {
             Waypoint = 25035,
-            Coord = { x = -5558.3, y = -1331.3 },
             ExtraLineText = "TALK_JORNUN",
+            Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
             RaidIcon = 38989,
             _index = 32
@@ -1814,8 +1814,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollRogue"] = {
         {
             Qpart = { [24812] = { 1 }, [24813] = { 1 } },
             Coord = { x = -5599.4, y = -706.5 },
-            Button = { ["24813-1"] = 52065 },
             Range = 45.15,
+            Button = { ["24813-1"] = 52065 },
             _index = 35
         },
         {
@@ -2081,18 +2081,18 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
         },
         {
             Qpart = { [24625] = { 1 } },
-            Coord = { x = -5154.5, y = -1353.5 },
             Fillers = { [24623] = { 1 }, [24624] = { 1 } },
-            Button = { ["24623-1"] = 52283 },
+            Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
+            Button = { ["24623-1"] = 52283 },
             RaidIcon = 39072,
             _index = 37
         },
         {
             Qpart = { [24623] = { 1 }, [24624] = { 1 } },
             Coord = { x = -5156.7, y = -1352.1 },
-            Button = { ["24623-1"] = 52283 },
             Range = 51.65,
+            Button = { ["24623-1"] = 52283 },
             _index = 38
         },
         {
@@ -2107,10 +2107,10 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
         },
         {
             Qpart = { [24626] = { 1 } },
-            Coord = { x = -5314.3, y = -1549.5 },
             Fillers = { [25037] = { 1 } },
-            Button = { ["24626-1"] = 50053 },
+            Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
+            Button = { ["24626-1"] = 50053 },
             RaidIcon = 38002,
             _index = 41
         },
@@ -2143,8 +2143,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
         },
         {
             Waypoint = 25035,
-            Coord = { x = -5558.3, y = -1331.3 },
             ExtraLineText = "TALK_JORNUN",
+            Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
             RaidIcon = 38989,
             _index = 47
@@ -2162,8 +2162,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollPriest"] = {
         {
             Qpart = { [24812] = { 1 }, [24813] = { 1 } },
             Coord = { x = -5599.4, y = -706.5 },
-            Button = { ["24813-1"] = 52065 },
             Range = 45.15,
+            Button = { ["24813-1"] = 52065 },
             _index = 50
         },
         {
@@ -2353,18 +2353,18 @@ APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
         },
         {
             Qpart = { [24625] = { 1 } },
-            Coord = { x = -5154.5, y = -1353.5 },
             Fillers = { [24623] = { 1 }, [24624] = { 1 } },
-            Button = { ["24623-1"] = 52283 },
+            Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
+            Button = { ["24623-1"] = 52283 },
             RaidIcon = 39072,
             _index = 23
         },
         {
             Qpart = { [24623] = { 1 }, [24624] = { 1 } },
             Coord = { x = -5156.7, y = -1352.1 },
-            Button = { ["24623-1"] = 52283 },
             Range = 51.65,
+            Button = { ["24623-1"] = 52283 },
             _index = 24
         },
         {
@@ -2379,10 +2379,10 @@ APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
         },
         {
             Qpart = { [24626] = { 1 } },
-            Coord = { x = -5314.3, y = -1549.5 },
             Fillers = { [25037] = { 1 } },
-            Button = { ["24626-1"] = 50053 },
+            Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
+            Button = { ["24626-1"] = 50053 },
             RaidIcon = 38002,
             _index = 27
         },
@@ -2415,8 +2415,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
         },
         {
             Waypoint = 25035,
-            Coord = { x = -5558.3, y = -1331.3 },
             ExtraLineText = "TALK_JORNUN",
+            Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
             RaidIcon = 38989,
             _index = 33
@@ -2434,8 +2434,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollShaman"] = {
         {
             Qpart = { [24812] = { 1 }, [24813] = { 1 } },
             Coord = { x = -5599.4, y = -706.5 },
-            Button = { ["24813-1"] = 52065 },
             Range = 45.15,
+            Button = { ["24813-1"] = 52065 },
             _index = 36
         },
         {
@@ -2554,8 +2554,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
         {
             Qpart = { [24754] = { 1 } },
             Coord = { x = -5529.9, y = -1157.9 },
-            GossipOptionIDs = { 37137 },
             Range = 0.69,
+            GossipOptionIDs = { 37137 },
             RaidIcon = 39062,
             _index = 10
         },
@@ -2625,18 +2625,18 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
         },
         {
             Qpart = { [24625] = { 1 } },
-            Coord = { x = -5154.5, y = -1353.5 },
             Fillers = { [24623] = { 1 }, [24624] = { 1 } },
-            Button = { ["24623-1"] = 52283 },
+            Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
+            Button = { ["24623-1"] = 52283 },
             RaidIcon = 39072,
             _index = 23
         },
         {
             Qpart = { [24623] = { 1 }, [24624] = { 1 } },
             Coord = { x = -5156.7, y = -1352.1 },
-            Button = { ["24623-1"] = 52283 },
             Range = 51.65,
+            Button = { ["24623-1"] = 52283 },
             _index = 24
         },
         {
@@ -2651,10 +2651,10 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
         },
         {
             Qpart = { [24626] = { 1 } },
-            Coord = { x = -5314.3, y = -1549.5 },
             Fillers = { [25037] = { 1 } },
-            Button = { ["24626-1"] = 50053 },
+            Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
+            Button = { ["24626-1"] = 50053 },
             RaidIcon = 38002,
             _index = 27
         },
@@ -2687,8 +2687,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
         },
         {
             Waypoint = 25035,
-            Coord = { x = -5558.3, y = -1331.3 },
             ExtraLineText = "TALK_JORNUN",
+            Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
             RaidIcon = 38989,
             _index = 33
@@ -2706,8 +2706,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollMage"] = {
         {
             Qpart = { [24812] = { 1 }, [24813] = { 1 } },
             Coord = { x = -5599.4, y = -706.5 },
-            Button = { ["24813-1"] = 52065 },
             Range = 45.15,
+            Button = { ["24813-1"] = 52065 },
             _index = 36
         },
         {
@@ -2826,8 +2826,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
         {
             Qpart = { [24754] = { 1 } },
             Coord = { x = -5529.9, y = -1157.9 },
-            GossipOptionIDs = { 37137 },
             Range = 0.69,
+            GossipOptionIDs = { 37137 },
             RaidIcon = 39062,
             _index = 10
         },
@@ -2897,18 +2897,18 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
         },
         {
             Qpart = { [24625] = { 1 } },
-            Coord = { x = -5154.5, y = -1353.5 },
             Fillers = { [24623] = { 1 }, [24624] = { 1 } },
-            Button = { ["24623-1"] = 52283 },
+            Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
+            Button = { ["24623-1"] = 52283 },
             RaidIcon = 39072,
             _index = 23
         },
         {
             Qpart = { [24623] = { 1 }, [24624] = { 1 } },
             Coord = { x = -5156.7, y = -1352.1 },
-            Button = { ["24623-1"] = 52283 },
             Range = 51.65,
+            Button = { ["24623-1"] = 52283 },
             _index = 24
         },
         {
@@ -2923,10 +2923,10 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
         },
         {
             Qpart = { [24626] = { 1 } },
-            Coord = { x = -5314.3, y = -1549.5 },
             Fillers = { [25037] = { 1 } },
-            Button = { ["24626-1"] = 50053 },
+            Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
+            Button = { ["24626-1"] = 50053 },
             RaidIcon = 38002,
             _index = 27
         },
@@ -2959,8 +2959,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
         },
         {
             Waypoint = 25035,
-            Coord = { x = -5558.3, y = -1331.3 },
             ExtraLineText = "TALK_JORNUN",
+            Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
             RaidIcon = 38989,
             _index = 33
@@ -2978,8 +2978,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollWarlock"] = {
         {
             Qpart = { [24812] = { 1 }, [24813] = { 1 } },
             Coord = { x = -5599.4, y = -706.5 },
-            Button = { ["24813-1"] = 52065 },
             Range = 45.15,
+            Button = { ["24813-1"] = 52065 },
             _index = 36
         },
         {
@@ -3169,18 +3169,18 @@ APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
         },
         {
             Qpart = { [24625] = { 1 } },
-            Coord = { x = -5154.5, y = -1353.5 },
             Fillers = { [24623] = { 1 }, [24624] = { 1 } },
-            Button = { ["24623-1"] = 52283 },
+            Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
+            Button = { ["24623-1"] = 52283 },
             RaidIcon = 39072,
             _index = 23
         },
         {
             Qpart = { [24623] = { 1 }, [24624] = { 1 } },
             Coord = { x = -5156.7, y = -1352.1 },
-            Button = { ["24623-1"] = 52283 },
             Range = 51.65,
+            Button = { ["24623-1"] = 52283 },
             _index = 24
         },
         {
@@ -3195,10 +3195,10 @@ APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
         },
         {
             Qpart = { [24626] = { 1 } },
-            Coord = { x = -5314.3, y = -1549.5 },
             Fillers = { [25037] = { 1 } },
-            Button = { ["24626-1"] = 50053 },
+            Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
+            Button = { ["24626-1"] = 50053 },
             RaidIcon = 38002,
             _index = 27
         },
@@ -3231,8 +3231,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
         },
         {
             Waypoint = 25035,
-            Coord = { x = -5558.3, y = -1331.3 },
             ExtraLineText = "TALK_JORNUN",
+            Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
             RaidIcon = 38989,
             _index = 33
@@ -3250,8 +3250,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollMonk"] = {
         {
             Qpart = { [24812] = { 1 }, [24813] = { 1 } },
             Coord = { x = -5599.4, y = -706.5 },
-            Button = { ["24813-1"] = 52065 },
             Range = 45.15,
+            Button = { ["24813-1"] = 52065 },
             _index = 36
         },
         {
@@ -3441,18 +3441,18 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
         },
         {
             Qpart = { [24625] = { 1 } },
-            Coord = { x = -5154.5, y = -1353.5 },
             Fillers = { [24623] = { 1 }, [24624] = { 1 } },
-            Button = { ["24623-1"] = 52283 },
+            Coord = { x = -5154.5, y = -1353.5 },
             Range = 0.69,
+            Button = { ["24623-1"] = 52283 },
             RaidIcon = 39072,
             _index = 23
         },
         {
             Qpart = { [24623] = { 1 }, [24624] = { 1 } },
             Coord = { x = -5156.7, y = -1352.1 },
-            Button = { ["24623-1"] = 52283 },
             Range = 51.65,
+            Button = { ["24623-1"] = 52283 },
             _index = 24
         },
         {
@@ -3467,10 +3467,10 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
         },
         {
             Qpart = { [24626] = { 1 } },
-            Coord = { x = -5314.3, y = -1549.5 },
             Fillers = { [25037] = { 1 } },
-            Button = { ["24626-1"] = 50053 },
+            Coord = { x = -5314.3, y = -1549.5 },
             Range = 77.86,
+            Button = { ["24626-1"] = 50053 },
             RaidIcon = 38002,
             _index = 27
         },
@@ -3503,8 +3503,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
         },
         {
             Waypoint = 25035,
-            Coord = { x = -5558.3, y = -1331.3 },
             ExtraLineText = "TALK_JORNUN",
+            Coord = { x = -5558.3, y = -1331.3 },
             Range = 28.7,
             RaidIcon = 38989,
             _index = 33
@@ -3522,8 +3522,8 @@ APR.RouteQuestStepList["463-EchoIslesTrollDruid"] = {
         {
             Qpart = { [24812] = { 1 }, [24813] = { 1 } },
             Coord = { x = -5599.4, y = -706.5 },
-            Button = { ["24813-1"] = 52065 },
             Range = 45.15,
+            Button = { ["24813-1"] = 52065 },
             _index = 36
         },
         {
@@ -3647,51 +3647,51 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         {
             Waypoint = 25169,
-            Coord = { x = -4661.7, y = -983.5 },
             Fillers = { [25165] = { 1 }, [25168] = { 1 } },
-            Button = { ["25165-1"] = 52505 },
+            Coord = { x = -4661.7, y = -983.5 },
             Range = 15.15,
+            Button = { ["25165-1"] = 52505 },
             _index = 10
         },
         {
             Waypoint = 25169,
-            Coord = { x = -4617.7, y = -1015.3 },
             Fillers = { [25168] = { 1 } },
+            Coord = { x = -4617.7, y = -1015.3 },
             Range = 24.79,
             _index = 11
         },
         {
             Qpart = { [25169] = { 1 } },
-            Coord = { x = -4599.5, y = -1065 },
             Fillers = { [25168] = { 1 } },
+            Coord = { x = -4599.5, y = -1065 },
             Range = 0.69,
             _index = 12
         },
         {
             Qpart = { [25169] = { 2 } },
-            Coord = { x = -4497.2, y = -923.2 },
             Fillers = { [25168] = { 1 } },
+            Coord = { x = -4497.2, y = -923.2 },
             Range = 0.61,
             _index = 13
         },
         {
             Waypoint = 25169,
-            Coord = { x = -4492.3, y = -1012.5 },
             Fillers = { [25168] = { 1 } },
+            Coord = { x = -4492.3, y = -1012.5 },
             Range = 23.14,
             _index = 14
         },
         {
             Waypoint = 25169,
-            Coord = { x = -4448.8, y = -1026.8 },
             Fillers = { [25168] = { 1 } },
+            Coord = { x = -4448.8, y = -1026.8 },
             Range = 16.16,
             _index = 15
         },
         {
             Qpart = { [25169] = { 3 } },
-            Coord = { x = -4417, y = -973.3 },
             Fillers = { [25168] = { 1 } },
+            Coord = { x = -4417, y = -973.3 },
             Range = 0.75,
             _index = 16
         },
@@ -3704,8 +3704,8 @@ APR.RouteQuestStepList["1-Durotar"] = {
         {
             Qpart = { [25165] = { 1 } },
             Coord = { x = -4767.3, y = -866.3 },
-            Button = { ["25165-1"] = 52505 },
             Range = 42.34,
+            Button = { ["25165-1"] = 52505 },
             _index = 18
         },
         {
@@ -3720,8 +3720,8 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         {
             Waypoint = 25169,
-            Coord = { x = -4880.4, y = -820.7 },
             ExtraLineText = "TALK_JHASH",
+            Coord = { x = -4880.4, y = -820.7 },
             Range = 39.7,
             RaidIcon = 10676,
             _index = 21
@@ -3754,15 +3754,15 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         {
             Waypoint = 25173,
-            Coord = { x = -5079.4, y = -245.7 },
             Fillers = { [25173] = { 1, 2 }, [25176] = { 1 } },
+            Coord = { x = -5079.4, y = -245.7 },
             Range = 11.41,
             _index = 27
         },
         {
             Qpart = { [25173] = { 3 } },
-            Coord = { x = -5119, y = -247 },
             Fillers = { [25173] = { 1, 2 }, [25176] = { 1 } },
+            Coord = { x = -5119, y = -247 },
             Range = 0.69,
             _index = 28
         },
@@ -3799,9 +3799,9 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         {
             PickUp = { 25179 },
-            Coord = { x = -5062.4, y = 103.8 },
             Fillers = { [25177] = { 1 }, [25178] = { 1 } },
             ExtraLineText = "CLICK_INJURED_GRUNT",
+            Coord = { x = -5062.4, y = 103.8 },
             RaidIcon = 39270,
             _index = 35
         },
@@ -3845,32 +3845,32 @@ APR.RouteQuestStepList["1-Durotar"] = {
         {
             Qpart = { [25187] = { 1 } },
             Coord = { x = -4581.7, y = 385.5 },
-            Button = { ["25187-1"] = 52514 },
             Range = 0.69,
+            Button = { ["25187-1"] = 52514 },
             Dontskipvid = true,
             _index = 43
         },
         {
             Qpart = { [25187] = { 2 } },
             Coord = { x = -4581.7, y = 385.5 },
-            Button = { ["25187-2"] = 52514 },
             Range = 0.69,
+            Button = { ["25187-2"] = 52514 },
             Dontskipvid = true,
             _index = 44
         },
         {
             Qpart = { [25187] = { 3 } },
             Coord = { x = -4581.7, y = 385.5 },
-            Button = { ["25187-3"] = 52514 },
             Range = 0.69,
+            Button = { ["25187-3"] = 52514 },
             Dontskipvid = true,
             _index = 45
         },
         {
             Qpart = { [25187] = { 4 } },
             Coord = { x = -4581.7, y = 385.5 },
-            Button = { ["25187-4"] = 52514 },
             Range = 0.69,
+            Button = { ["25187-4"] = 52514 },
             Dontskipvid = true,
             _index = 46
         },
@@ -4057,8 +4057,8 @@ APR.RouteQuestStepList["1-Durotar"] = {
         },
         {
             Qpart = { [25260] = { 1 } },
-            Coord = { x = -4187.7, y = 869.5 },
             Fillers = { [25236] = { 1 } },
+            Coord = { x = -4187.7, y = 869.5 },
             Range = 0.69,
             Gossip = 1,
             RaidIcon = 3203,
@@ -4176,15 +4176,15 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             PickUp = { 13878 },
-            Coord = { x = -3645.4, y = 68 },
             Fillers = { [844] = { 1 } },
+            Coord = { x = -3645.4, y = 68 },
             RaidIcon = 34284,
             _index = 3
         },
         {
             Qpart = { [871] = { 1, 2 }, [13878] = { 1 } },
-            Coord = { x = -3617.5, y = -4.1 },
             Fillers = { [844] = { 1 } },
+            Coord = { x = -3617.5, y = -4.1 },
             Range = 36.15,
             _index = 4
         },
@@ -4195,8 +4195,8 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Done = { 871 },
-            Coord = { x = -3685.9, y = 302.1 },
             Fillers = { [844] = { 1 } },
+            Coord = { x = -3685.9, y = 302.1 },
             _index = 6
         },
         {
@@ -4290,11 +4290,11 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [13961] = { 1 } },
-            Coord = { x = -3048.5, y = 267.3 },
-            Button = { ["13961-1"] = 46722 },
             ExtraLineText = "NET_PILLAGER",
+            Coord = { x = -3048.5, y = 267.3 },
             Range = 0.61,
             Gossip = 1,
+            Button = { ["13961-1"] = 46722 },
             _index = 23
         },
         {
@@ -4396,27 +4396,27 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             PickUp = { 850 },
-            Coord = { x = -1985.5, y = 38 },
             Fillers = { [845] = { 1 }, [848] = { 1 }, [903] = { 1 } },
+            Coord = { x = -1985.5, y = 38 },
             _index = 42
         },
         {
             PickUp = { 13992 },
-            Coord = { x = -1953.5, y = 53.7 },
             Fillers = { [848] = { 1 } },
+            Coord = { x = -1953.5, y = 53.7 },
             _index = 43
         },
         {
             Qpart = { [870] = { 1 } },
-            Coord = { x = -1943, y = 89.9 },
             Fillers = { [848] = { 1 }, [13992] = { 1 } },
+            Coord = { x = -1943, y = 89.9 },
             Range = 0.69,
             _index = 44
         },
         {
             Qpart = { [850] = { 1 } },
-            Coord = { x = -1713, y = 19.6 },
             Fillers = { [848] = { 1 }, [13992] = { 1 } },
+            Coord = { x = -1713, y = 19.6 },
             Range = 0.69,
             RaidIcon = 3394,
             _index = 45
@@ -4671,8 +4671,8 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Done = { 14004 },
-            Coord = { x = -2347.2, y = 858.4 },
             ExtraLineText = "FLY_BACK",
+            Coord = { x = -2347.2, y = 858.4 },
             RaidIcon = 9316,
             _index = 92
         },
@@ -4699,16 +4699,16 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Waypoint = 14006,
-            Coord = { x = -3587.5, y = 1311.5 },
             Fillers = { [29015] = { 1 } },
+            Coord = { x = -3587.5, y = 1311.5 },
             Range = 44.41,
             _index = 97
         },
         {
             Qpart = { [14006] = { 1 }, [29015] = { 1 } },
             Coord = { x = -3575.9, y = 1341.5 },
-            Button = { ["14006-1"] = 11147 },
             Range = 77.03,
+            Button = { ["14006-1"] = 11147 },
             _index = 98
         },
         {
@@ -4772,8 +4772,8 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         {
             Qpart = { [881] = { 1 } },
             Coord = { x = -2540.2, y = 126.8 },
-            Button = { ["881-1"] = 10327 },
             Range = 0.69,
+            Button = { ["881-1"] = 10327 },
             _index = 110
         },
         {
@@ -4799,22 +4799,22 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         {
             Qpart = { [905] = { 2 } },
             Coord = { x = -2556.7, y = -1105.8 },
-            Button = { ["905-2"] = 5165 },
             Range = 0.61,
+            Button = { ["905-2"] = 5165 },
             _index = 115
         },
         {
             Qpart = { [905] = { 3 } },
             Coord = { x = -2587.5, y = -1055.8 },
-            Button = { ["905-3"] = 5165 },
             Range = 0.69,
+            Button = { ["905-3"] = 5165 },
             _index = 116
         },
         {
             Qpart = { [905] = { 1 } },
             Coord = { x = -2651.2, y = -1068 },
-            Button = { ["905-1"] = 5165 },
             Range = 0.69,
+            Button = { ["905-1"] = 5165 },
             _index = 117
         },
         {
@@ -4835,16 +4835,16 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [13998] = { 1 } },
-            Coord = { x = -2990.2, y = -1192.5 },
             Fillers = { [14072] = { 1 } },
-            Button = { ["13998-1"] = 46789 },
+            Coord = { x = -2990.2, y = -1192.5 },
             Range = 0.61,
+            Button = { ["13998-1"] = 46789 },
             _index = 121
         },
         {
             Qpart = { [14072] = { 1 } },
-            Coord = { x = -3015.5, y = -1238 },
             ExtraLineText = "SEARCH_CENTAUR_TENTS",
+            Coord = { x = -3015.5, y = -1238 },
             Range = 153.44,
             _index = 122
         },
@@ -4879,8 +4879,8 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         {
             Qpart = { [13988] = { 1 } },
             Coord = { x = -3294.2, y = -1478.5 },
-            Button = { ["13988-1"] = 46782 },
             Range = 0.75,
+            Button = { ["13988-1"] = 46782 },
             _index = 128
         },
         {
@@ -4895,8 +4895,8 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [877] = { 1 } },
-            Coord = { x = -3013.2, y = -1274.8 },
             Fillers = { [880] = { 1 } },
+            Coord = { x = -3013.2, y = -1274.8 },
             Range = 0.61,
             _index = 131
         },
@@ -4954,8 +4954,8 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [852] = { 1 } },
-            Coord = { x = -2136.5, y = -973.5 },
             Fillers = { [855] = { 1 } },
+            Coord = { x = -2136.5, y = -973.5 },
             Range = 84.31,
             RaidIcon = 3396,
             _index = 142
@@ -4978,8 +4978,8 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [4021] = { 1 } },
-            Coord = { x = -1871.3, y = -273.3 },
             ExtraLineText = "KILL_CENTAURS",
+            Coord = { x = -1871.3, y = -273.3 },
             Range = 0.61,
             RaidIcon = 9456,
             _index = 146
@@ -5031,8 +5031,8 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [14034] = { 1 } },
-            Coord = { x = -3645.9, y = -1051.1 },
             Fillers = { [891] = { 3 } },
+            Coord = { x = -3645.9, y = -1051.1 },
             Range = 0.69,
             RaidIcon = 34754,
             _index = 156
@@ -5085,16 +5085,16 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [891] = { 2 } },
-            Coord = { x = -3851.5, y = -1427.4 },
             Fillers = { [891] = { 3 } },
+            Coord = { x = -3851.5, y = -1427.4 },
             Range = 0.69,
             RaidIcon = 34752,
             _index = 165
         },
         {
             Done = { 14045 },
-            Coord = { x = -3815.7, y = -1453.4 },
             Fillers = { [891] = { 3 } },
+            Coord = { x = -3815.7, y = -1453.4 },
             _index = 166
         },
         {
@@ -5116,25 +5116,25 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [14049] = { 1 } },
-            Coord = { x = -3784.2, y = -1316 },
             Fillers = { [891] = { 3 } },
+            Coord = { x = -3784.2, y = -1316 },
             Range = 0.61,
             _index = 170
         },
         {
             Qpart = { [891] = { 1 } },
-            Coord = { x = -3878.7, y = -1465 },
             Fillers = { [891] = { 3 } },
+            Coord = { x = -3878.7, y = -1465 },
             Range = 0.61,
             _index = 171
         },
         {
             Qpart = { [14038] = { 1 } },
-            Coord = { x = -3970.4, y = -1456.4 },
             Fillers = { [891] = { 3 } },
-            Button = { ["14038-1"] = 46829 },
             ExtraLineText = "UNDERNEATH",
+            Coord = { x = -3970.4, y = -1456.4 },
             Range = 7.23,
+            Button = { ["14038-1"] = 46829 },
             _index = 172
         },
         {
@@ -5155,16 +5155,16 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [895] = { 1 } },
-            Coord = { x = -4270.9, y = -1609.4 },
             Fillers = { [887] = { 1 } },
+            Coord = { x = -4270.9, y = -1609.4 },
             Range = 0.69,
             RaidIcon = 34750,
             _index = 176
         },
         {
             Done = { 14052 },
-            Coord = { x = -4236.3, y = -1690.5 },
             Fillers = { [887] = { 1 } },
+            Coord = { x = -4236.3, y = -1690.5 },
             _index = 177
         },
         {
@@ -5174,16 +5174,16 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [14056] = { 1 } },
-            Coord = { x = -4216.9, y = -1667.4 },
             Fillers = { [887] = { 1 } },
+            Coord = { x = -4216.9, y = -1667.4 },
             Range = 0.61,
             RaidIcon = 34747,
             _index = 179
         },
         {
             Done = { 14056 },
-            Coord = { x = -4235.4, y = -1690.6 },
             Fillers = { [887] = { 1 } },
+            Coord = { x = -4235.4, y = -1690.6 },
             _index = 180
         },
         {
@@ -5193,21 +5193,21 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [14057] = { 1 } },
-            Coord = { x = -4271.4, y = -1609.1 },
             Fillers = { [887] = { 1 } },
+            Coord = { x = -4271.4, y = -1609.1 },
             Range = 0.75,
             _index = 182
         },
         {
             Done = { 14057 },
-            Coord = { x = -4236, y = -1690.4 },
             Fillers = { [887] = { 1 } },
+            Coord = { x = -4236, y = -1690.4 },
             _index = 183
         },
         {
             PickUp = { 14063 },
-            Coord = { x = -4236, y = -1690.4 },
             Fillers = { [887] = { 1 } },
+            Coord = { x = -4236, y = -1690.4 },
             _index = 184
         },
         {
@@ -5219,8 +5219,8 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         {
             Qpart = { [14063] = { 1 } },
             Coord = { x = -4383.9, y = -1648.9 },
-            Button = { ["14063-1"] = 46838 },
             Range = 0.61,
+            Button = { ["14063-1"] = 46838 },
             _index = 186
         },
         {
@@ -5306,18 +5306,18 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [14067] = { 3 } },
-            Coord = { x = -3459, y = -441.7 },
             Fillers = { [14067] = { 1, 2 }, [14068] = { 1 } },
-            Button = { ["14068-1"] = 46853 },
+            Coord = { x = -3459, y = -441.7 },
             Range = 0.61,
+            Button = { ["14068-1"] = 46853 },
             _index = 202
         },
         {
             Qpart = { [14068] = { 1 } },
-            Coord = { x = -3415.4, y = -504.5 },
             Fillers = { [14067] = { 1, 2 } },
-            Button = { ["14068-1"] = 46853 },
+            Coord = { x = -3415.4, y = -504.5 },
             Range = 106.81,
+            Button = { ["14068-1"] = 46853 },
             _index = 203
         },
         {
@@ -5328,18 +5328,18 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             Qpart = { [14067] = { 3 } },
-            Coord = { x = -3459, y = -441.7 },
             Fillers = { [14067] = { 1, 2 }, [14068] = { 1 } },
-            Button = { ["14068-1"] = 46853 },
+            Coord = { x = -3459, y = -441.7 },
             Range = 0.61,
+            Button = { ["14068-1"] = 46853 },
             _index = 205
         },
         {
             Qpart = { [14068] = { 1 } },
-            Coord = { x = -3415.4, y = -504.5 },
             Fillers = { [14067] = { 1, 2 } },
-            Button = { ["14068-1"] = 46853 },
+            Coord = { x = -3415.4, y = -504.5 },
             Range = 106.81,
+            Button = { ["14068-1"] = 46853 },
             _index = 206
         },
         {
@@ -5375,9 +5375,9 @@ APR.RouteQuestStepList["10-NorthernBarrens"] = {
         },
         {
             UseFlightPath = 29109,
-            Name = "TheCrossroads,NorthernBarrens",
             NodeID = 25,
             Coord = { x = -3377.2, y = 1155.4 },
+            Name = "TheCrossroads,NorthernBarrens",
             _index = 213
         },
         {
@@ -5483,8 +5483,8 @@ APR.RouteQuestStepList["199-SouthernBarrens-H"] = {
         },
         {
             Waypoint = 24504,
-            Coord = { x = -1161.6, y = -425.7 },
             Fillers = { [24504] = { 1 } },
+            Coord = { x = -1161.6, y = -425.7 },
             Range = 15.13,
             _index = 2
         },
@@ -5511,22 +5511,22 @@ APR.RouteQuestStepList["199-SouthernBarrens-H"] = {
         },
         {
             PickUp = { 24513 },
-            Coord = { x = -1395.5, y = -482.9 },
             Fillers = { [24512] = { 1 }, [25284] = { 1 } },
+            Coord = { x = -1395.5, y = -482.9 },
             _index = 7
         },
         {
             Qpart = { [24513] = { 1 } },
-            Coord = { x = -1402, y = -485.4 },
             Fillers = { [24512] = { 1 }, [25284] = { 1 } },
+            Coord = { x = -1402, y = -485.4 },
             Range = 0.69,
             RaidIcon = 37157,
             _index = 8
         },
         {
             Done = { 24513 },
-            Coord = { x = -1396.6, y = -484.3 },
             Fillers = { [24512] = { 1 }, [25284] = { 1 } },
+            Coord = { x = -1396.6, y = -484.3 },
             _index = 9
         },
         {
@@ -5558,16 +5558,16 @@ APR.RouteQuestStepList["199-SouthernBarrens-H"] = {
         },
         {
             Qpart = { [24517] = { 1 } },
-            Coord = { x = -1592.3, y = -551.5 },
             Fillers = { [24517] = { 2 } },
+            Coord = { x = -1592.3, y = -551.5 },
             Range = 24.84,
             RaidIcon = 37216,
             _index = 15
         },
         {
             Qpart = { [24517] = { 2 } },
-            Coord = { x = -1530, y = -506.8 },
             Fillers = { [24514] = { 1 } },
+            Coord = { x = -1530, y = -506.8 },
             Range = 52.75,
             _index = 16
         },

@@ -95,15 +95,15 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         },
         {
             Waypoint = 14157,
-            Coord = { x = 1401.4, y = -1731.1 },
             Fillers = { [24930] = { 1 } },
+            Coord = { x = 1401.4, y = -1731.1 },
             Range = 9.1,
             _index = 17,
         },
         {
             Waypoint = 14157,
-            Coord = { x = 1419.9, y = -1740.4 },
             Fillers = { [24930] = { 1 } },
+            Coord = { x = 1419.9, y = -1740.4 },
             Range = 6.54,
             _index = 18,
         },
@@ -119,8 +119,8 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         },
         {
             Waypoint = 28850,
-            Coord = { x = 1457, y = -1716.5 },
             ExtraLineText = "UPSTAIRS",
+            Coord = { x = 1457, y = -1716.5 },
             Range = 14.05,
             _index = 21,
         },
@@ -191,8 +191,8 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         {
             Qpart = { [14204] = { 1 } },
             Coord = { x = 1481.2, y = -1786.4 },
-            Button = { ["14204-1"] = 48707 },
             Range = 31.54,
+            Button = { ["14204-1"] = 48707 },
             _index = 34,
         },
         {
@@ -376,8 +376,8 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         {
             Qpart = { [14347] = { 1 }, [14348] = { 1 } },
             Coord = { x = 2332.1, y = -1991.4 },
-            Button = { ["14348-1"] = 49202 },
             Range = 86.25,
+            Button = { ["14348-1"] = 49202 },
             _index = 69,
         },
         {
@@ -424,36 +424,36 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         },
         {
             Qpart = { [14368] = { 3 } },
-            Coord = { x = 2542, y = -1933.5 },
             Fillers = { [14369] = { 1 } },
+            Coord = { x = 2542, y = -1933.5 },
             Range = 0.69,
             _index = 78,
         },
         {
             Qpart = { [14368] = { 1 } },
-            Coord = { x = 2509.5, y = -1987 },
             Fillers = { [14369] = { 1 } },
+            Coord = { x = 2509.5, y = -1987 },
             Range = 0.69,
             _index = 79,
         },
         {
             Qpart = { [14368] = { 2 } },
-            Coord = { x = 2562.6, y = -1930.5 },
             Fillers = { [14369] = { 1 } },
+            Coord = { x = 2562.6, y = -1930.5 },
             Range = 0.69,
             _index = 80,
         },
         {
             Qpart = { [14382] = { 1 } },
-            Coord = { x = 2691.4, y = -2100.7 },
             Fillers = { [14369] = { 1 } },
+            Coord = { x = 2691.4, y = -2100.7 },
             Range = 0.69,
             _index = 81,
         },
         {
             Qpart = { [14382] = { 2 } },
-            Coord = { x = 2592.9, y = -2199.7 },
             Fillers = { [14369] = { 1 } },
+            Coord = { x = 2592.9, y = -2199.7 },
             Range = 0.69,
             _index = 82,
         },
@@ -476,8 +476,8 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         {
             Qpart = { [14386] = { 1 } },
             Coord = { x = 2700, y = -1950.8 },
-            Button = { ["14386-1"] = 49240 },
             Range = 0.69,
+            Button = { ["14386-1"] = 49240 },
             _index = 86,
         },
         {
@@ -565,22 +565,22 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         },
         {
             Qpart = { [14404] = { 3 } },
-            Coord = { x = 2259, y = -2336 },
             Fillers = { [14412] = { 1 } },
+            Coord = { x = 2259, y = -2336 },
             Range = 0.75,
             _index = 103,
         },
         {
             Qpart = { [14404] = { 1 } },
-            Coord = { x = 2262, y = -2361.2 },
             Fillers = { [14412] = { 1 } },
+            Coord = { x = 2262, y = -2361.2 },
             Range = 0.75,
             _index = 104,
         },
         {
             Qpart = { [14404] = { 2 } },
-            Coord = { x = 2303.3, y = -2347.5 },
             Fillers = { [14412] = { 1 } },
+            Coord = { x = 2303.3, y = -2347.5 },
             Range = 0.69,
             _index = 105,
         },
@@ -712,8 +712,8 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         },
         {
             Qpart = { [24472] = { 2 } },
-            Coord = { x = 1969, y = -2282 },
             Fillers = { [24472] = { 1 } },
+            Coord = { x = 1969, y = -2282 },
             Range = 0.69,
             _index = 130,
         },
@@ -793,8 +793,8 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         {
             Qpart = { [24616] = { 1 } },
             Coord = { x = 1433.5, y = -2237.5 },
-            Button = { ["24616-1"] = 49944 },
             Range = 0.69,
+            Button = { ["24616-1"] = 49944 },
             _index = 145,
         },
         {
@@ -841,8 +841,8 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         {
             Qpart = { [24646] = { 1 } },
             Coord = { x = 1630.5, y = -2119 },
-            Button = { ["24646-1"] = 50134 },
             Range = 0.69,
+            Button = { ["24646-1"] = 50134 },
             _index = 154,
         },
         {
@@ -906,8 +906,8 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         {
             Qpart = { [24592] = { 1 } },
             Coord = { x = 774.6, y = -2097 },
-            Button = { ["24592-1"] = 50218 },
             Range = 0.75,
+            Button = { ["24592-1"] = 50218 },
             _index = 166,
         },
         {
@@ -945,15 +945,15 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         },
         {
             Waypoint = 24674,
-            Coord = { x = 986, y = -1059 },
             Fillers = { [24575] = { 1 } },
+            Coord = { x = 986, y = -1059 },
             Range = 16.46,
             _index = 173,
         },
         {
             Qpart = { [24674] = { 1 } },
-            Coord = { x = 910.4, y = -1210.9 },
             Fillers = { [24575] = { 1 } },
+            Coord = { x = 910.4, y = -1210.9 },
             Range = 0.69,
             _index = 174,
         },
@@ -1108,8 +1108,8 @@ APR.RouteQuestStepList["179-Gilneas"] = {
         {
             Qpart = { [24679] = { 1 } },
             Coord = { x = 1904.3, y = -1644.3 },
-            Button = { ["24679-1"] = 51956 },
             Range = 0.69,
+            Button = { ["24679-1"] = 51956 },
             _index = 202,
         },
         {

@@ -17,6 +17,7 @@ import argparse
 import re
 import subprocess
 import sys
+from collections.abc import Callable
 from pathlib import Path
 
 INDEX_RE = re.compile(r"^(\s*_index\s*=\s*)(\d+)(\s*,)(\s*(?:--.*)?)$")
@@ -29,6 +30,7 @@ def _run_git(args: list[str]) -> str:
         stdout=subprocess.PIPE,
         stderr=subprocess.PIPE,
         text=True,
+        encoding="utf-8",
         check=True,
     )
     return completed.stdout
@@ -45,10 +47,10 @@ def get_repo_root() -> Path:
 
 
 def staged_route_files(repo_root: Path) -> list[Path]:
-    output = _run_git(["diff", "--cached", "--name-only", "--diff-filter=ACMR"])
+    output = _run_git(["diff", "--cached", "--name-only", "--diff-filter=ACMR", "-z"])
     files: list[Path] = []
-    for raw in output.splitlines():
-        rel = raw.strip().replace("\\", "/")
+    for raw in output.split("\0"):
+        rel = raw.replace("\\", "/")
         if not rel.startswith("Routes/") or not rel.endswith(".lua"):
             continue
         files.append(repo_root / rel)
@@ -59,12 +61,7 @@ def all_route_files(repo_root: Path) -> list[Path]:
     return sorted((repo_root / "Routes").rglob("*.lua"))
 
 
-def normalize_file(path: Path) -> bool:
-    if not path.exists() or not path.is_file():
-        return False
-
-    with path.open("r", encoding="utf-8", newline="") as handle:
-        original = handle.read()
+def normalize_text(original: str) -> str:
     lines = original.splitlines(keepends=True)
 
     current_index = 1
@@ -95,10 +92,72 @@ def normalize_file(path: Path) -> bool:
         normalized_lines.append(new_line)
         current_index += 1
 
-    if changed:
-        with path.open("w", encoding="utf-8", newline="") as handle:
-            handle.write("".join(normalized_lines))
+    return "".join(normalized_lines) if changed else original
 
+
+def normalize_file(path: Path) -> bool:
+    if not path.is_file():
+        return False
+    original = path.read_bytes()
+    normalized = normalize_text(original.decode("utf-8")).encode("utf-8")
+    if original == normalized:
+        return False
+    path.write_bytes(normalized)
+    return True
+
+
+def process_files(
+    files: list[Path], repo_root: Path, transform: Callable[[str], str],
+    *, staged: bool = False, no_stage: bool = False,
+) -> list[Path]:
+    """Transform staged blobs safely, preserving partially staged working files.
+
+    A matching working copy is updated too. An independently edited working copy
+    stays untouched; only its staged version is formatted. --no-stage operates on
+    working files without updating the index, as with explicit paths or --all.
+    """
+    updates = []
+    for path in files:
+        mode = None
+        if staged and not no_stage:
+            relative = path.relative_to(repo_root).as_posix()
+            entry = subprocess.check_output(
+                ["git", "ls-files", "--stage", "--", relative], cwd=repo_root,
+            ).decode("utf-8")
+            mode = entry.split()[0]
+            original = subprocess.check_output(["git", "show", ":" + relative], cwd=repo_root)
+        else:
+            if not path.is_file():
+                continue
+            original = path.read_bytes()
+        try:
+            normalized = transform(original.decode("utf-8")).encode("utf-8")
+        except (ValueError, UnicodeError) as error:
+            raise ValueError(f"{path}: {error}") from error
+        if normalized != original:
+            updates.append((path, original, normalized, mode))
+
+    for path, original, normalized, mode in updates:
+        if mode is not None:
+            relative = path.relative_to(repo_root).as_posix()
+            blob = subprocess.check_output(
+                ["git", "hash-object", "-w", "--stdin"], input=normalized, cwd=repo_root,
+            ).decode("ascii").strip()
+            subprocess.run(["git", "update-index", "--cacheinfo", mode, blob, relative],
+                           cwd=repo_root, check=True)
+            if path.is_file() and path.read_bytes() == original:
+                path.write_bytes(normalized)
+            elif path.is_file():
+                working = path.read_bytes()
+                # Git's autocrlf can store LF while the unchanged working file
+                # uses CRLF. Keep that file synchronized with its own newlines.
+                if b"\r\n" in working and b"\r\n" not in original and working.replace(b"\r\n", b"\n") == original:
+                    path.write_bytes(normalized.replace(b"\n", b"\r\n"))
+        else:
+            path.write_bytes(normalized)
+    changed = [path for path, *_ in updates]
+    if changed and not no_stage and not staged:
+        stage_files(changed, repo_root)
     return changed
 
 
@@ -155,16 +214,12 @@ def main() -> int:
         print("No route files matched the selection.")
         return 0
 
-    changed_files: list[Path] = []
-    for target in targets:
-        try:
-            if normalize_file(target):
-                changed_files.append(target)
-        except UnicodeDecodeError:
-            print(f"Skipped non UTF-8 file: {target}", file=sys.stderr)
-
-    if changed_files and not args.no_stage:
-        stage_files(changed_files, repo_root)
+    try:
+        changed_files = process_files(targets, repo_root, normalize_text,
+                                      staged=args.staged, no_stage=args.no_stage)
+    except ValueError as error:
+        print(f"Cannot normalize route indexes: {error}", file=sys.stderr)
+        return 1
 
     if changed_files:
         print("Updated _index sequence in:")

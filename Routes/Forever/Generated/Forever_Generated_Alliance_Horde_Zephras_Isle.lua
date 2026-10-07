@@ -29,9 +29,9 @@ APR.RouteQuestStepList["Forever-Generated-Alliance-Horde-Zephras-Isle"] = {
         },
         {
             Waypoint = 93746,
+            NonSkippableWaypoint = true,
             Note = { "137326" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 59.942, 56.938),
-            NonSkippableWaypoint = true,
             Range = 5,
             Zone = 2521,
             _index = 4,
@@ -53,8 +53,8 @@ APR.RouteQuestStepList["Forever-Generated-Alliance-Horde-Zephras-Isle"] = {
         {
             LearnSkill = { spellIDs = { 5232, 8924 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 63.983, 75.093),
-            MinLevel = 10,
             RaidIcon = 252359,
+            MinLevel = 10,
             Zone = 2521,
             _index = 7,
         },

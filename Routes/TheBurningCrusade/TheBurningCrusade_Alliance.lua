@@ -101,17 +101,17 @@ APR.RouteQuestStepList["97-AmmenVale"] = {
         },
         {
             Waypoint = 37445,
-            Coord = { x = -13875.7, y = -4458.9 },
             Fillers = { [37444] = { 1 }, [37445] = { 1 } },
-            Button = { ["37444-1"] = 22962 },
+            Coord = { x = -13875.7, y = -4458.9 },
             Range = 15.97,
+            Button = { ["37444-1"] = 22962 },
             _index = 18,
         },
         {
             Qpart = { [37444] = { 1 }, [37445] = { 1 } },
             Coord = { x = -13977.8, y = -4597.5 },
-            Button = { ["37444-1"] = 22962 },
             Range = 62.89,
+            Button = { ["37444-1"] = 22962 },
             _index = 19,
         },
         {
@@ -137,8 +137,8 @@ APR.RouteQuestStepList["97-AmmenVale"] = {
         {
             Qpart = { [9294] = { 1 } },
             Coord = { x = -13635, y = -4385.9 },
-            Button = { ["9294-1"] = 22955 },
             Range = 0.69,
+            Button = { ["9294-1"] = 22955 },
             _index = 24,
         },
         {
