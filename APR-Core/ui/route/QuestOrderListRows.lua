@@ -68,6 +68,8 @@ local function isRouteActionComplete(key, rule, isCurrentStep)
         return true
     elseif key == "EquipItem" then
         return GetInventoryItemID("player", rule.slot) == rule.itemID
+    elseif key == "Repair" then
+        return not APR:IsRouteRepairNeeded(rule)
     elseif key == "LearnSkill" and (rule.spellID or rule.spellIDs) then
         for _, id in ipairs(rule.spellID and { rule.spellID } or rule.spellIDs) do
             if not APR:IsSpellKnown(id) then return false end

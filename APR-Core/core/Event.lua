@@ -22,6 +22,7 @@ local events = {
     tame = "UNIT_SPELLCAST_START",
     money = "PLAYER_MONEY",
     equipment = "PLAYER_EQUIPMENT_CHANGED",
+    durability = "UPDATE_INVENTORY_DURABILITY",
     skill = "SKILL_LINES_CHANGED",
     load = "ADDON_LOADED",
     accept = { "QUEST_ACCEPTED", "QUEST_ACCEPT_CONFIRM" },
@@ -50,6 +51,7 @@ local events = {
     petCombatUI = { "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE" },
     playerChoice = "PLAYER_CHOICE_UPDATE",
     targetChanged = "PLAYER_TARGET_CHANGED",
+    npcName = { "UNIT_NAME_UPDATE", "UPDATE_MOUSEOVER_UNIT" },
     nameplate = { "NAME_PLATE_UNIT_ADDED", "NAME_PLATE_UNIT_REMOVED" },
     remove = "QUEST_REMOVED",
     questData = "QUEST_DATA_LOAD_RESULT",
@@ -529,12 +531,17 @@ function APR.event.functions.spellbook()
 end
 
 function APR.event.functions.money()
-    RefreshForOptions({ "Money", "LootMoney", "VendorMoney", "BuyMerchant", "LearnSkill" })
+    RefreshForOptions({ "Money", "LootMoney", "VendorMoney", "BuyMerchant", "LearnSkill", "Repair" })
 end
 
 function APR.event.functions.equipment()
     RefreshForOptions({ "EquippedItem", "EquippedItemStat", "ItemCount", "Collection", "LootItems", "LootMoney", "VendorMoney",
-        "EquipItem", "SellItems" })
+        "EquipItem", "SellItems", "Repair" })
+end
+
+function APR.event.functions.durability()
+    if APR.routeActionState then APR.routeActionState.repairPending = nil end
+    RefreshForOptions({ "Repair" })
 end
 
 function APR.event.functions.skill()
@@ -1103,7 +1110,8 @@ end
 
 function APR.event.functions.merchant(event, ...)
     APR.routeMerchantOpen = event == "MERCHANT_SHOW"
-    if step and step.SellItems then APR.event:QueueStepRefresh() end
+    if event == "MERCHANT_CLOSED" and APR.routeActionState then APR.routeActionState.repairPending = nil end
+    if step and (step.SellItems or step.Repair) then APR.event:QueueStepRefresh() end
     if event == "MERCHANT_SHOW" then
         if IsModifierKeyDown() then return end
         if step and step.BuyMerchant then
@@ -1112,7 +1120,9 @@ function APR.event.functions.merchant(event, ...)
             APR:BuyItemFromMerchant(step.BuyMerchant)
         end
         local profile = APR:GetSettingsProfile()
-        if profile and profile.autoRepair then
+        if step and step.Repair then
+            APR:HandleRouteRepair(step)
+        elseif profile and profile.autoRepair then
             if CanMerchantRepair() then
                 local repairAllCost, canRepair = GetRepairAllCost();
                 if canRepair and repairAllCost > 0 then
@@ -1207,9 +1217,14 @@ function APR.event.functions.nameplate(event, unitToken)
 end
 
 function APR.event.functions.targetChanged()
+    APR:ScanUnitForNPC("target", "TARGET")
     if APR.currentStep then
         APR.currentStep:UpdateRaidIconButtonMacro()
     end
+end
+
+function APR.event.functions.npcName(event, unit)
+    APR:ScanUnitForNPC(event == "UPDATE_MOUSEOVER_UNIT" and "mouseover" or unit, event)
 end
 
 function APR.event.functions.remove(event, questID, wasReplayQuest)

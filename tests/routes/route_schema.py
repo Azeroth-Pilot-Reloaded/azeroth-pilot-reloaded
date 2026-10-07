@@ -222,6 +222,7 @@ class RouteSchema:
             "Emote": obj({"emote": TEXT, "npcID": COUNT, "manual": BOOL}, required=("emote",)),
             "EquipItem": obj({"itemID": ID, "slot": SLOT}, required=("itemID", "slot")),
             "TameBeast": obj({"npcID": ID, "spellID": ID, "text": TEXT, "Text": TEXT}),
+            "Repair": obj({"npcID": ID, "minDurability": number(0, 100)}, required=("npcID",)),
             "LearnSkill": obj({"spellID": ID, "spellIDs": IDS, "allAvailable": BOOL, "npcID": ID,
                                "text": TEXT, "Text": TEXT}, choices=(("spellID", "spellIDs", "allAvailable"),)),
         })

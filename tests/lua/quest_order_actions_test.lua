@@ -1,10 +1,13 @@
 -- Every primary action must survive a read-only preview, including future steps.
 -- Localization keys identify labels; synthetic formats expose the arguments
 -- used by the renderer without maintaining a copy of packaged translations.
+dofile("APR-Core/utils/SecretUtils.lua")
 local L = setmetatable({
     SWITCH_TO_CHROMIE = "SWITCH_TO_CHROMIE(%s)",
     GROUP_QUEST_TASK = "GROUP_QUEST_TASK(%s)",
     BUY_ITEM = "BUY_ITEM(%s, %s)",
+    TAMEBEAST = "Tame the %s beast",
+    REPAIR = "Repair your gear",
 }, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
 UNKNOWN, ABANDON_QUEST, LEAVE_VEHICLE, DISMOUNT = "Unknown", "Abandon quest", "Leave vehicle", "Dismount"
@@ -89,6 +92,7 @@ local fixtures = {
     DeathSkip = true, SellItems = { items = { 20 }, junk = true }, LearnSkill = { spellIDs = { 20, 21 } },
     BankDeposit = { items = { 20 } }, BankWithdraw = { items = { 20 } }, TameBeast = { npcID = 54 },
     DestroyItems = { items = { 20 } }, EquipItem = { slot = 16, itemID = 20 },
+    Repair = { npcID = 54 },
 }
 fixtures.SetHS = 10
 fixtures.LeaveQuest, fixtures.LeaveQuests, fixtures.ResetRoute = 10, { 10, 11 }, true
@@ -176,6 +180,22 @@ APR.routeActionState.token = "other:3"
 assert(render(actions, 3).stepList[3].color == "gray", "Ignore stale completion from another route")
 assert(APR.routeActionState.token == "other:3", "Preview must not reset stale state")
 
+-- Preview names follow the NPC cache without performing actions; repair previews only read durability.
+local tame = { TameBeast = { npcID = 3127, Text = "Venomtail Scorpid" } }
+assert(render({ tame }).stepList[1].title == "Tame the Venomtail Scorpid beast")
+APRData.NPCList[3127] = "Scorpide venimeux"
+assert(render({ tame }).stepList[1].title == "Tame the Scorpide venimeux beast")
+RepairAllItems = forbidden
+APR.HandleRouteRepair = forbidden
+local durability = 50
+function GetInventoryItemDurability(slot) if slot == 16 then return durability, 100 end end
+local repair = { Repair = { npcID = 3331 } }
+local repairRow = render({ repair }).stepList[1]
+assert(repairRow.title == "Repair your gear" and repairRow.color == "gray")
+durability = 90
+assert(render({ repair }).stepList[1].color == "green", "An optional healthy-gear visit is already satisfied")
+GetInventoryItemDurability = nil
+
 preview = render({ { SellItems = { junk = true }, hidden = true }, { Note = "Visible" } })
 assert(#preview.stepList == 1 and preview.rawStepContainers[2].displayIndex == 1)
 preview = render({ { PickUp = { 10 }, LeaveQuest = 11, VehicleExit = true },
@@ -213,7 +233,7 @@ for line in actionTable:gmatch("[^\n]+") do
     local key = line:match("^|%s*`(%w+)`%s*|")
     if key then documented[#documented + 1] = key end
 end
-assert(#documented == 54, "Review coverage when the action table changes")
+assert(#documented == 55, "Review coverage when the action table changes")
 local hiddenOptions = { DroppableQuest = true, Fillers = true, NpcDismount = true }
 
 -- Optional and automatic fields never become the primary action or a preview row.

@@ -69,6 +69,7 @@ def examples():
         "LootMoney": {"copper": 10, "includeEquipped": True, "equippedSlots": seq(16, 17)},
         "SpellETA": {"spellID": 123, "seconds": 3}, "Emote": {"emote": "salute", "npcID": 0, "manual": True},
         "EquipItem": {"itemID": 123, "slot": 16}, "TameBeast": {"npcID": 123, "spellID": 1515},
+        "Repair": {"npcID": 123, "minDurability": 90},
         "LearnSkill": {"spellIDs": seq(123, 456), "npcID": 789},
     })
     return values
