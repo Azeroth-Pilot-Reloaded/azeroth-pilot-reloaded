@@ -1,11 +1,15 @@
+-- Installs movie/cinematic skip hooks, respecting addon settings, modifiers and Dontskipvid.
+-- Delayed skips recheck preferences before touching the cinematic.
+
 local function ShouldSkipCutscene(step)
     if IsModifierKeyDown() then
         return false
     end
-    if not APR.settings.profile.autoSkipCutScene then
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.enableAddon or not profile.autoSkipCutScene then
         return false
     end
-    if step and step.Dontskipvidthen then
+    if step and step.Dontskipvid then
         return false
     end
     return true
@@ -16,15 +20,16 @@ local function CancelCurrentMovie(step)
         return
     end
 
-    -- Mimic the old behaviour by finishing the movie immediately.
-    -- Using hooksecurefunc keeps MovieFrame_PlayMovie protected.
+    -- Defer past Blizzard's setup; recheck settings in case the addon was disabled.
     C_Timer.After(0, function()
-        CinematicFinished(Enum.CinematicType.GameMovie, true, false)
+        if ShouldSkipCutscene(APR:GetCurrentStep()) then
+            CinematicFinished(Enum.CinematicType.GameMovie, true, false)
+        end
     end)
 end
 
 hooksecurefunc("MovieFrame_PlayMovie", function(...)
-    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
+    local step = APR:GetCurrentStep()
     CancelCurrentMovie(step)
 end)
 
@@ -47,10 +52,9 @@ end)
 APR.SceneCutterEventFrame = CreateFrame("Frame")
 APR.SceneCutterEventFrame:RegisterEvent("CINEMATIC_START")
 APR.SceneCutterEventFrame:SetScript("OnEvent", function(self, event, ...)
-    if not APR.settings.profile.enableAddon or not APR.settings.profile.autoSkipCutScene or IsModifierKeyDown() then return end
-    local step = APR:GetStep(APRData[APR.PlayerID][APR.ActiveRoute])
-    if step and step.Dontskipvid then
-        return
-    end
-    C_Timer.After(0.5, CinematicFrame_CancelCinematic)
+    local step = APR:GetCurrentStep()
+    if not ShouldSkipCutscene(step) then return end
+    C_Timer.After(0.5, function()
+        if ShouldSkipCutscene(APR:GetCurrentStep()) then CinematicFrame_CancelCinematic() end
+    end)
 end)
