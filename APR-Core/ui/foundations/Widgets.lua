@@ -69,6 +69,49 @@ function UI:Tooltip(control, title, description)
     control:HookScript("OnLeave", function() GameTooltip:Hide() end)
 end
 
+function UI:Scroll(parent)
+    local scroll = CreateFrame("ScrollFrame", nil, parent, "UIPanelScrollFrameTemplate")
+    if scroll.ScrollBar then APR:RegisterSkinTarget(scroll.ScrollBar, "scrollbar") end
+    return scroll
+end
+
+-- A scrollable menu keeps expansion/category pickers usable with large imported catalogs.
+function UI:Select(parent, width, changed)
+    local button = self:Button(parent, "", width)
+    button:SetScript("OnClick", function()
+        if button.menu and button.menu:IsShown() then button.menu:Hide(); return end
+        if not button.menu then
+            local menu = self:Panel(button)
+            button.menu = menu
+            menu:SetFrameStrata("TOOLTIP")
+            menu:SetClampedToScreen(true)
+            menu:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -2)
+            menu:SetSize(width, 244)
+            local scroll = self:Scroll(menu)
+            scroll:SetPoint("TOPLEFT", 4, -4)
+            scroll:SetPoint("BOTTOMRIGHT", -26, 4)
+            menu.list = APR.VirtualList:New(scroll, function(owner)
+                return self:Button(owner, "", width - 32, function(row)
+                    button.value = row.item.value
+                    button:SetText(row.item.label)
+                    menu:Hide()
+                    changed(row.item.value)
+                end)
+            end, function(row, item) row:SetText(item.label) end, 30)
+            button:HookScript("OnHide", function() menu:Hide() end)
+        end
+        button.menu:Show()
+        button.menu.list:SetItems(button.options or {})
+    end)
+    function button:SetOptions(options, value)
+        self.options, self.value = options, value
+        for _, option in ipairs(options) do
+            if option.value == value then self:SetText(option.label); break end
+        end
+    end
+    return button
+end
+
 function UI:Window(name, title, width, height)
     local frame = self:Panel(UIParent)
     _G[name] = frame
