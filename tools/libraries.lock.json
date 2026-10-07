@@ -51,26 +51,6 @@
       "file_name": "LibSharedMedia-3.0-v12.1.0.zip",
       "date_created": "2026-08-20T14:40:02.377Z",
       "archive_sha256": "14beb11fcc1082c7b846960fde39596147a769a807601ecb0aec4de60750956d"
-    },
-    "FarstriderLib": {
-      "source": "github_release",
-      "repository": "Deathwing/Mount-Route-Planner",
-      "release_id": 371062160,
-      "version": "v2.4.5",
-      "date_created": "2026-08-15T13:57:34Z",
-      "asset_id": 515742669,
-      "asset_name": "FarstriderLib.zip",
-      "archive_sha256": "6aba5d8b64e515c390efea5af55655d81b18b8befc10c9d4e8bd886ce16f9f35"
-    },
-    "FarstriderLibData": {
-      "source": "github_release",
-      "repository": "Deathwing/Mount-Route-Planner",
-      "release_id": 371062160,
-      "version": "v2.4.5",
-      "date_created": "2026-08-15T13:57:34Z",
-      "asset_id": 515742672,
-      "asset_name": "FarstriderLibData.zip",
-      "archive_sha256": "03265b01c211bd57242d8c350c7926b4ea2da6c226c327b4daf7deb2df5e90b4"
     }
   }
 }
