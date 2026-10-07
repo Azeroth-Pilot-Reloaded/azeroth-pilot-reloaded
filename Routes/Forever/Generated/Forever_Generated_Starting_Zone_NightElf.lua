@@ -4110,7 +4110,7 @@ APR.RouteQuestStepList["Forever-Generated-Starting-Zone-NightElf"] = {
             _index = 488,
         },
         {
-            TameBeast = { npcID = 1997, spellID = 1515, text = "Cast `Tame Beast` on a Strigid Hunter to tame it" },
+            TameBeast = { npcID = 1997, spellID = 1515, Text = "Strigid Hunter" },
             Class = "HUNTER",
             Coord = { x = 1900.12, y = 10853.85 },
             DontHaveSpell = 2981,

@@ -2728,8 +2728,7 @@ APR.RouteQuestStepList["Forever-Generated-Starting-Zone-Tauren"] = {
             _index = 335,
         },
         {
-            Note = { "This will allow you to train `Bite Rank 2`" },
-            TameBeast = { npcID = 2960, spellID = 1515, text = "Tame a Prairie Wolf Alpha" },
+            TameBeast = { npcID = 2960, spellID = 1515, Text = "Prairie Wolf Alpha" },
             Class = "HUNTER",
             Coord = { x = -1271.68, y = -2431.865 },
             Fillers = { [861] = { 1 } },
