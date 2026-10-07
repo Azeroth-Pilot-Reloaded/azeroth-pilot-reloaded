@@ -1,3 +1,6 @@
+-- Fingerprints route definitions in deterministic key order for saved-progress change detection.
+-- This is a compatibility signature, not a cryptographic hash; changing it can reset progress.
+
 -- Route hashing helpers (deterministic FNV-1a) used to fingerprint route definitions
 local FNV_OFFSET = 2166136261
 local FNV_PRIME = 16777619

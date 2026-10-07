@@ -1,3 +1,6 @@
+-- Isolates APR-themed AceGUI widgets in a private pool so other addons keep their own appearance.
+-- Snapshots of widget trees prevent EUI font-shadow helpers from causing recursive styling.
+
 -- AceConfig creates and releases controls whenever a settings page changes.
 -- APR gets a separate AceGUI pool: themed controls must never enter another
 -- addon's options, and the original widget.type must remain intact for AceConfig.

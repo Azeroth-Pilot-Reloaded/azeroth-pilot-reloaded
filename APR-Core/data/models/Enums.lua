@@ -1,3 +1,6 @@
+-- Defines shared route vocabulary, client families and display ordering.
+-- Values are consumed by route files and saved data; changing them can require a migration.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.QUEST_STATUS = {

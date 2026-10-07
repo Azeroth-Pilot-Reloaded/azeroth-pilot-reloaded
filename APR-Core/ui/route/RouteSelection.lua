@@ -1,3 +1,6 @@
+-- Shows the route-selection prompt when the character has no usable custom path.
+-- Its controls delegate catalogue editing to the configuration module.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 

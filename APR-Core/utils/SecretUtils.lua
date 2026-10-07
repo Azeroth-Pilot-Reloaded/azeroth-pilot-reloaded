@@ -1,4 +1,6 @@
--- Secret/taint helpers (12.0.0+). Keep all secret-value handling centralized here.
+-- Provides capability-based secret-value guards and safe unit identity reads before APR is created.
+-- A public table may contain inaccessible values; check accessibility before indexing or comparing.
+
 APRSecret = APRSecret or {}
 
 function APRSecret:Attach(target)

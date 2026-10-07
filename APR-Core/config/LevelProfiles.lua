@@ -1,3 +1,6 @@
+-- Declares XP-bonus sources and named level thresholds consumed by the route condition resolver.
+-- Keep data here; aura reads, caching and threshold calculations belong to RouteUtils.
+
 -- Bonus percentages require an active aura or the source's isActive predicate.
 -- Aura variants within one source never stack. Achievement tiers use the maximum.
 APR.LevelBonusSources = {

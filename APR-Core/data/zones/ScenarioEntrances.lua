@@ -1,3 +1,6 @@
+-- Maps supported scenarios to entrance coordinates for navigation outside their instance.
+-- APR coordinates follow the addon convention, not normalized map percentages.
+
 -- Instance and scenario entrances remain APR-owned because route steps refer
 -- to their interior map while Farstrider needs the exterior destination.
 APR.ScenarioEntrances = {

@@ -1,3 +1,6 @@
+-- Resolves delve/scenario blocks and owns temporary-route insertion, restoration and refresh timers.
+-- Temporary progress is character-scoped and preserves the original custom-path route.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local function GetPlayerData()

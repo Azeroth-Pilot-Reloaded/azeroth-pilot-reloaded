@@ -1,3 +1,6 @@
+-- Suggests actionable XP bonuses for the active route and remembers dismissed reminders.
+-- Secure item actions and batched refreshes are kept separate from visibility decisions.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 

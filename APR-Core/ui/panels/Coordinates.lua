@@ -1,3 +1,6 @@
+-- Owns the optional developer coordinate overlay and its saved position.
+-- Coordinate display follows APR world-axis conventions used by route authors.
+
 local LibWindow = LibStub("LibWindow-1.1")
 
 -- Initialize APR Party  module

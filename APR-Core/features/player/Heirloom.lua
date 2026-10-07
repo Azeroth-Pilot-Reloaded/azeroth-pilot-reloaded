@@ -1,3 +1,6 @@
+-- Shows optional heirloom/enchant reminders and reuses secure item buttons.
+-- Button changes are deferred until combat ends; character dismissal lives outside shared profiles.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 

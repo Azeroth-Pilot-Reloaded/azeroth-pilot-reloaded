@@ -1,3 +1,6 @@
+-- Indexes first quest pickups that can suggest temporarily switching to another route.
+-- Suggestions are checked against client visibility, active route and character preferences.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteTriggersSuggestion = APR.RouteTriggersSuggestion or {

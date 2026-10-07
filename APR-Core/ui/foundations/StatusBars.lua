@@ -1,3 +1,6 @@
+-- Creates native status bars and reapplies APR-owned fill colors after theme texture changes.
+-- The weak registry covers existing and future bars without extending their lifetime.
+
 -- APR owns its bars for their entire lifetime; none enter another addon's pool.
 local bars = setmetatable({}, { __mode = "k" })
 

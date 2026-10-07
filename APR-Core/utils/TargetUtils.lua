@@ -1,6 +1,5 @@
---[[
-    NPC/target related helpers separated from generic utilities so gameplay logic stays grouped.
-]]
+-- Resolves public NPC identity and route-approved emotes/raid-marker targets.
+-- Secret-aware identity reads are delegated to SecretUtils before constructing macro text.
 
 --- Extract numeric NPC ID from a unit GUID.
 -- The default unit is the current target, but we allow overriding so mouseover or other units can be inspected.

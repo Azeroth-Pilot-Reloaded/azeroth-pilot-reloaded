@@ -1,3 +1,6 @@
+-- Tracks route-requested merchant quantities and normalizes localized loot quantity messages.
+-- Purchases and loot events share the same pending-item counters.
+
 local currentPurchaseTracking
 
 function APR:StartPurchaseTracking(BuyMerchant)

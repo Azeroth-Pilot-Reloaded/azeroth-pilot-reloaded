@@ -1,3 +1,6 @@
+-- Provides corpse guidance and normalized per-character taxi discovery access.
+-- Localized taxi names stay in LibTaxiData instead of SavedVariables.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 function APR:GuideToCorpse()

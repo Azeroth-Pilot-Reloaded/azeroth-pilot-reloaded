@@ -1,3 +1,6 @@
+-- Automates route-approved dialogue, with modifier overrides and step-specific NPC rules.
+-- Validated gossip and ETA state are scoped to the current character/step.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.gossip = APR:NewModule("Gossip")

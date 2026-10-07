@@ -1,3 +1,6 @@
+-- Registers APR-owned controls at creation so one selected provider can skin late and pooled widgets.
+-- Skin application waits for combat to end; providers must preserve secure actions and APR callbacks.
+
 -- APR-owned controls register at creation, including anonymous and pooled widgets.
 -- Providers change appearance only; callbacks, item attributes and layout stay owned by APR.
 local targets = setmetatable({}, { __mode = "k" })
