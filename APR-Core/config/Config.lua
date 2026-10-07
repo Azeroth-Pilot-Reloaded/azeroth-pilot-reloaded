@@ -2211,13 +2211,18 @@ function APR.settings:ToggleAddon()
 end
 
 function APR.settings:OpenSettings(name)
+    if name == L["ROUTE"] and APR.RouteBrowser then return APR.RouteBrowser:Show() end
+    if name == APR.title and APR.SettingsHome then return APR.SettingsHome:Show() end
+    return self:OpenAdvancedSettings(name)
+end
+
+function APR.settings:OpenAdvancedSettings(name)
     if name == APR.title then
         if InterfaceOptionsFrame_OpenToCategory then
             InterfaceOptionsFrame_OpenToCategory(APR.title)
         else
             Settings.OpenToCategory(self.category.ID)
         end
-        APR.settings:OpenSettings(L["ROUTE"])
     end
     if APR.Options then
         if SettingsPanel then

@@ -1080,6 +1080,7 @@ function APR.routeconfig:InitRouteConfig()
 
     -- Catalog changes need not reset the active step or restart navigation.
     APR.routeconfig:RegisterMessage("APR_Route_Catalog_Update", function()
+        if APR.RouteBrowser then APR.RouteBrowser:Refresh(true) end
         if APR.OptionsRoute:IsVisible() then
             SetCustomPathListFrame(customPathListeWidget, "custom_path_area")
             SetRouteListTab(tabRouteListWidget, currentTabName)
@@ -1104,6 +1105,7 @@ function APR.routeconfig:InitRouteConfig()
 
         APR:UpdateMapId()
         APR:UpdateStep()
+        if APR.RouteBrowser then APR.RouteBrowser:Refresh(true) end
 
         -- Invalidate zone check cache when route changes to ensure fresh detection
         APR._lastRouteZoneCheck = nil

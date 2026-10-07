@@ -3,6 +3,9 @@
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local labels = {
+    NO_COMMUNITY_METADATA = { "No matching community route. Routes need explicit community and author metadata.", "Aucune route communautaire correspondante. Les routes doivent renseigner leur provenance et leur auteur." },
+    PRESET_LEVELING = { "Leveling presets", "Parcours de leveling" },
+    PRESET_QUESTS = { "Questing presets", "Parcours de quêtes" },
     ROUTES = { "Route library", "Bibliothèque de routes" },
     SEARCH_ROUTES = { "Search routes, authors, zones...", "Chercher une route, un auteur, une zone..." },
     COMMUNITY = { "Community", "Communauté" },
