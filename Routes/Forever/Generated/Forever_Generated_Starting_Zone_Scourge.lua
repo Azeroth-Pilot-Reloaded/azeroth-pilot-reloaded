@@ -942,7 +942,7 @@ APR.RouteQuestStepList["Forever-Generated-Starting-Zone-Scourge"] = {
             _index = 114,
         },
         {
-            Note = { "This will allow you to find `Rough Stones` from nodes in order to craft `Sharpening Stones` (+2 Weapon Damage for 30 minutes)" },
+            Note = { "ALLOW_FIND_ROUGH_STONES_TO_CRAFT_SHARPENING" },
             LearnProfession = 2575,
             Class = { "PALADIN", "ROGUE", "WARRIOR" },
             Coord = { x = 1577.1, y = 1854.6 },
@@ -952,7 +952,7 @@ APR.RouteQuestStepList["Forever-Generated-Starting-Zone-Scourge"] = {
             _index = 115,
         },
         {
-            Note = { "This will allow you to find `Rough Stones` from nodes in order to craft `Sharpening Stones` (+2 Weapon Damage for 30 minutes)" },
+            Note = { "ALLOW_FIND_ROUGH_STONES_TO_CRAFT_SHARPENING" },
             BuyMerchant = { { itemID = 2901, quantity = 1, questID = 792 } },
             Class = { "PALADIN", "ROGUE", "WARRIOR" },
             Coord = { x = 1577.1, y = 1854.6 },
@@ -3791,7 +3791,7 @@ APR.RouteQuestStepList["Forever-Generated-Starting-Zone-Scourge"] = {
             _index = 449,
         },
         {
-            Note = { "This will allow you to find `Rough Stones` from nodes in order to craft `Sharpening Stones` (+2 Weapon Damage for 30 minutes)" },
+            Note = { "ALLOW_FIND_ROUGH_STONES_TO_CRAFT_SHARPENING" },
             LearnProfession = 2575,
             Class = { "ROGUE", "WARRIOR" },
             Coord = { x = 335.37, y = 1638.29 },
