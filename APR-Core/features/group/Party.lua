@@ -1,3 +1,6 @@
+-- Owns group-progress presentation, throttled snapshots and incoming fragment reassembly.
+-- Pooled rows retain APR ownership; incomplete messages expire without retaining a permanent ticker.
+
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
@@ -11,10 +14,11 @@ local FRAME_WIDTH = 250
 local FRAME_HEIGHT = 100
 local FRAME_OFFSET = 1
 local FRAME_MATE_HOLDER_HEIGHT = -18
-local MAX_MSG_LENGTH = 180 -- 255 is the max, we keep a bit for the header
+local MAX_FRAGMENT_COUNT = 128 -- Bound an incomplete group snapshot to 23 KiB.
 local GROUP_SEND_THROTTLE = 0.5
 local FRAGMENT_TTL = 10
 local FRAGMENT_SWEEP_INTERVAL = 5
+local UpdateGroupStep
 
 
 -- Init list
@@ -109,7 +113,6 @@ end
 function APR.party:RefreshPartyFrameAnchor(forceShow)
     APR:Debug("Function: APR.party:RefreshPartyFrameAnchor()")
     local hasData = next(APR.party.GroupListSteps)
-    local testMode = self.testSimulation
 
     local profile = APR:GetSettingsProfile()
     if not profile or not profile.enableAddon then
@@ -117,7 +120,7 @@ function APR.party:RefreshPartyFrameAnchor(forceShow)
         return
     end
 
-    local allowTestVisibility = testMode or forceShow
+    local allowTestVisibility = forceShow
     if not allowTestVisibility then
         if not profile.showGroup or not profile.receiveGroupData then
             PartyScreenPanel:Hide()
@@ -405,7 +408,7 @@ function APR.party:ReOrderTeam(order)
         end
     end
 
-    self:RefreshPartyFrameAnchor(self.testSimulation)
+    self:RefreshPartyFrameAnchor()
 end
 
 function APR.party:RefreshTextLayout()
@@ -444,9 +447,6 @@ function APR.party:RemoveTeam()
     FRAME_MATE_HOLDER_HEIGHT = FRAME_OFFSET
 end
 
-function APR.party:IsShowFrame()
-    return PartyScreenPanel:IsShown()
-end
 
 function APR.party:PopulateMissingGroupMembers(skipReorder)
     if not IsInGroup() then
@@ -678,7 +678,7 @@ function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
                 return
             end
             APR:Debug("Received APRPartyData, updating group listing", message)
-            self:SplitedMessageHandler(message)
+            self:HandleMessageFragment(message, sender)
         end
 
         if prefix == "APRPartyDelete" then
@@ -691,6 +691,7 @@ function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
         end
     end
 end
+
 
 function APR.party:StartFragmentCleanupTicker()
     if self.fragmentCleanupTicker then
@@ -717,48 +718,36 @@ function APR.party:CleanupExpiredFragments()
     end
 end
 
-function APR.party:SplitedMessageHandler(message)
-    local msgID, index, total, part = message:match("([^|]+)|([^|]+)|([^|]+)|(.+)")
-
-    if not msgID or not index or not total or not part then
-        APR:PrintError("Malformed fragment received")
+-- Fragments can arrive out of order or be duplicated. Sender-scoped keys prevent
+-- two group members with the same message ID from mixing their snapshots.
+function APR.party:HandleMessageFragment(message, sender)
+    if not APR.settings.profile.receiveGroupData or type(message) ~= "string" then return end
+    local messageID, index, total, part = message:match("^([^|]+)|(%d+)|(%d+)|(.*)$")
+    index, total = tonumber(index), tonumber(total)
+    if not messageID or #messageID > 64 or not index or not total
+        or index < 1 or index > total or total > MAX_FRAGMENT_COUNT or #part > 180 then
         return
     end
 
-    if not APR.settings.profile.receiveGroupData then
-        APR:Debug("Reception disabled, fragment ignored", msgID)
-        return
+    local key = (sender or "") .. "|" .. messageID
+    local fragments = self.incomingFragments[key]
+    if fragments and fragments.total ~= total then return end
+    if not fragments then
+        fragments = { total = total, count = 0, parts = {} }
+        self.incomingFragments[key] = fragments
     end
+    if fragments.parts[index] then return end
+    fragments.parts[index] = part
+    fragments.count = fragments.count + 1
+    self.fragmentExpiry[key] = GetTime() + FRAGMENT_TTL
 
-    index = tonumber(index)
-    total = tonumber(total)
-
-    APR:Debug("Fragment received", { msgID = msgID, index = index, total = total })
-
-
-    self.incomingFragments[msgID] = self.incomingFragments[msgID] or {}
-    self.incomingFragments[msgID][index] = part
-    self.fragmentExpiry[msgID] = GetTime() + FRAGMENT_TTL
-    self:StartFragmentCleanupTicker()
-
-    -- Check if we have received all parts
-    local receivedParts = self.incomingFragments[msgID]
-    local count = 0
-    for _, _ in pairs(receivedParts) do count = count + 1 end
-
-    if count == total then
-        APR:Debug("All fragments received, reconstructing", msgID)
-
-        -- Concat fragments in right order
-        local fullMessage = ""
-        for i = 1, total do
-            fullMessage = fullMessage .. (receivedParts[i] or "")
-        end
-
-        -- Clean
-        self.incomingFragments[msgID] = nil
-
-        self:UpdateGroupListing(fullMessage)
+    if fragments.count == total then
+        self.incomingFragments[key] = nil
+        self.fragmentExpiry[key] = nil
+        self:CleanupExpiredFragments()
+        self:UpdateGroupListing(table.concat(fragments.parts))
+    else
+        self:StartFragmentCleanupTicker()
     end
 end
 
@@ -775,92 +764,4 @@ function APR.party:RequestData()
     if IsInGroup() then
         C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", GetGroupChannel())
     end
-end
-
--- -----------------------------
--- Dev/testing helpers
--- -----------------------------
-
-local function ClampStepValue(step, total)
-    if not step or not total then
-        return step
-    end
-    return math.max(1, math.min(total, step))
-end
-
-function APR.party:StartGroupSimulation(members)
-    self.testSimulation = true
-    self:RemoveTeam()
-    wipe(self.GroupListSteps)
-
-    local baseData = self:BuildGroupPayload(APR.Username)
-    if baseData then
-        self.GroupListSteps[APR.Username] = baseData
-    end
-
-    local defaultMembers = {
-        { username = "APR_TestOne", stepOffset = 2 },
-        { username = "APR_TestTwo", stepOffset = -1 },
-        { username = "APR_NoAddon", noAddon = true },
-    }
-
-    for index, entry in ipairs(members or defaultMembers) do
-        local username = entry.username or ("APR_Sim_" .. index)
-        local payload = self:BuildGroupPayload(username) or { username = username }
-
-        if entry.noAddon then
-            payload.noAddon = true
-            payload.route = nil
-            payload.routeFileName = nil
-            payload.currentStep = nil
-            payload.totalSteps = nil
-            payload.stepFrameDetails = nil
-        else
-            if entry.stepOffset and payload.currentStep and payload.totalSteps then
-                payload.currentStep = ClampStepValue(payload.currentStep + entry.stepOffset, payload.totalSteps)
-            end
-            if entry.route then
-                payload.route = entry.route
-                payload.routeFileName = entry.routeFileName or payload.routeFileName
-            end
-            if entry.currentStep then
-                payload.currentStep = ClampStepValue(entry.currentStep, payload.totalSteps)
-            end
-            if entry.totalSteps then
-                payload.totalSteps = entry.totalSteps
-            end
-            if entry.stepFrameDetails then
-                payload.stepFrameDetails = entry.stepFrameDetails
-            end
-        end
-
-        self.GroupListSteps[username] = payload
-    end
-
-    UpdateGroupStep()
-    self:RefreshPartyFrameAnchor(true)
-end
-
-function APR.party:StopGroupSimulation()
-    self.testSimulation = false
-    self:RemoveTeam()
-    self:RefreshPartyFrameAnchor()
-end
-
-function APR.party:DebugSimulateOutgoing()
-    self.testSimulation = true
-    local payload = self:BuildGroupPayload(APR.Username)
-    if not payload then return end
-    local serialized = AceSerializer:Serialize(payload)
-    self:UpdateGroupListing(serialized)
-    self:RefreshPartyFrameAnchor(true)
-end
-
-function APR.party:DebugSimulateIncoming(data)
-    self.testSimulation = true
-    if not data or type(data) ~= "table" then return end
-    if not data.username then data.username = "APR_Recv_Sim" end
-    local serialized = AceSerializer:Serialize(data)
-    self:UpdateGroupListing(serialized)
-    self:RefreshPartyFrameAnchor(true)
 end
