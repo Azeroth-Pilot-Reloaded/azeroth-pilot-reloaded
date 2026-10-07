@@ -93,7 +93,9 @@ end
 function Util.CanUseSpell(spellId)
     if not spellId then return false end
 
-    if InCombatLockdown() then return false end
+    if WOW_PROJECT_ID == WOW_PROJECT_MAINLINE then
+        if InCombatLockdown() then return false end
+    end
 
     if not C_SpellBook.IsSpellInSpellBook(spellId) then return false end
 

@@ -447,9 +447,6 @@ function Pathfinding:FindPathBetweenLocations2(startLocation, goalLocation)
 
     -- Create virtual NavNodes for start and goal locations
     local startNavNode = self:CreateVirtualNavNode(startLocation, validTravelNodes, playerInWizardsSanctum)
-    -- A player standing on a transport node must still explore that node's
-    -- outgoing edges. Virtual endpoints cannot share its visited/cost key.
-    startNavNode.key = "virtual:start:" .. startNavNode.key
 
     local dynamicFromNode = self.allNodes["dynamic:from"]
     if dynamicFromNode then
@@ -478,7 +475,6 @@ function Pathfinding:FindPathBetweenLocations2(startLocation, goalLocation)
     end
 
     local goalNavNode = self:CreateVirtualNavNode(goalLocation, validTravelNodes)
-    goalNavNode.key = "virtual:goal:" .. goalNavNode.key
 
     local startLoc = startNavNode:getLocation()
     local goalLoc = goalNavNode:getLocation()
@@ -654,8 +650,7 @@ function Pathfinding:FindPathBetweenLocations2(startLocation, goalLocation)
 
         -- Chained taxi hops are still a single player action: pick the final
         -- destination once and let the route transfer automatically.
-        return isFlightpathEdge(edge) and not edge.separateFlight and index + 1 < #edges and
-            isFlightpathEdge(edges[index + 1]) and not edges[index + 1].separateFlight
+        return isFlightpathEdge(edge) and index + 1 < #edges and isFlightpathEdge(edges[index + 1])
     end
 
     local function getOptimizedStepLocation(index)
@@ -741,7 +736,6 @@ function Pathfinding:CreateWaypointGraph(waypoints)
                     actionOptions =
                         waypoint.from.actionOptions,
                     important = waypoint.from.important,
-                    separateFlight = waypoint.separateFlight,
                     skipOptimized = waypoint.skipOptimized
                 }
                 table.insert(fromNav.edges, navEdge)
@@ -759,7 +753,6 @@ function Pathfinding:CreateWaypointGraph(waypoints)
                         actionOptions =
                             waypoint.to.actionOptions,
                         important = waypoint.to.important,
-                        separateFlight = waypoint.separateFlight,
                         skipOptimized = waypoint.skipOptimized
                     }
                     table.insert(toNav.edges, navEdge)
@@ -838,10 +831,8 @@ end
 
 --- Override the travel cost multiplier and rebuild the graph.
 ---@param newMultiplier number
----@param directMultiplier? number Defaults to the ordinary multiplier with a 20% direct-travel discount.
-function Pathfinding:ChangeTravelCostMultiplier(newMultiplier, directMultiplier)
+function Pathfinding:ChangeTravelCostMultiplier(newMultiplier)
     TRAVEL_COST_MULTIPLIER = newMultiplier
-    DIRECT_TRAVEL_COST_MULTIPLIER = directMultiplier or newMultiplier * 0.8
     FarstriderLib.Logger:Info("Travel cost multiplier changed to:", newMultiplier)
     self:Rebuild()
 end
