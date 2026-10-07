@@ -3,6 +3,17 @@
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local labels = {
+    RECOVER_WINDOWS = { "Bring windows back on screen", "Recentrer les fenêtres" },
+    BONUS_OBJECTIVES = { "Bonus objectives", "Objectifs bonus" },
+    AFK = { "Break timer", "Minuteur de pause" },
+    COORDINATES = { "Coordinates", "Coordonnées" },
+    BUFFS = { "Buffs", "Améliorations" },
+    XP_BONUSES = { "Experience bonuses", "Bonus d'expérience" },
+    HEIRLOOMS = { "Heirlooms", "Objets héritage" },
+    AUTOMATIC = { "Automatic", "Automatique" },
+    ENABLED = { "Enabled", "Activé" },
+    DISABLED = { "Disabled", "Désactivé" },
+    LINKED = { "Linked to the guide", "Lié au guide" },
     NO_COMMUNITY_METADATA = { "No matching community route. Routes need explicit community and author metadata.", "Aucune route communautaire correspondante. Les routes doivent renseigner leur provenance et leur auteur." },
     PRESET_LEVELING = { "Leveling presets", "Parcours de leveling" },
     PRESET_QUESTS = { "Questing presets", "Parcours de quêtes" },
