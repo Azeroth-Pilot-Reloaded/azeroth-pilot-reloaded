@@ -150,7 +150,8 @@ function APR.event.EventHandler(self, event, ...)
         step = APR:GetCurrentStep()
 
         local profileStart = APR:StartPerformanceSample()
-        pcall(self.callback, event, ...)
+        local ok, errorMessage = pcall(self.callback, event, ...)
+        if not ok then geterrorhandler()(errorMessage) end
         APR:FinishPerformanceSample(event, profileStart)
     else
         APR:DebugEvent("Unregister Event", event)
@@ -191,7 +192,7 @@ function APR.event:CleanupEvents()
     end
     -- Clear the event timer if running
     if pendingQuestUpdateTimer then
-        C_Timer.Cancel(pendingQuestUpdateTimer)
+        pendingQuestUpdateTimer:Cancel()
         pendingQuestUpdateTimer = nil
     end
 

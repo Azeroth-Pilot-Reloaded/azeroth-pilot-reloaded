@@ -1,5 +1,5 @@
 -- Supports the route-list UI with row pooling, budgeted coroutine jobs and progress positioning.
--- Reputation signatures let the list ignore updates that do not change a route threshold.
+-- Reputation signatures include nested conditions so only meaningful threshold changes rebuild the list.
 
 APR.questOrderListSupport = APR.questOrderListSupport or {}
 APR.questOrderListSupport.framePool = {}
@@ -25,6 +25,10 @@ local function appendReputationState(parts, conditions)
     for _, alternative in ipairs(conditions.AnyOf or {}) do
         appendReputationState(parts, alternative)
     end
+    for _, condition in ipairs(conditions.AllOf or {}) do
+        appendReputationState(parts, condition)
+    end
+    appendReputationState(parts, conditions.Not)
 end
 
 -- Only threshold changes affect the Quest Order List: reputation progress itself
