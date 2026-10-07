@@ -1944,6 +1944,7 @@ function APR.settings:createBlizzOptions()
     }
 
     -- Register setting to the option table
+    self.optionsTable = optionsTable
     aceConfig:RegisterOptionsTable(APR.title, optionsTable)
 
     -- Add settings to bliz option
