@@ -8,6 +8,7 @@ function CreateFrame(kind, name, parent, template)
     return frame
 end
 dofile("APR-Core/utils/Utils.lua")
+dofile("APR-Core/features/group/PartyProtocol.lua")
 dofile("APR-Core/features/group/Party.lua")
 APR.settings.profile.receiveGroupData = true
 local now, tickers, completed, sent = 0, {}, {}, {}
@@ -53,4 +54,15 @@ for i = #sent, 1, -1 do
     party:HandleMessageFragment(sent[i], "roundtrip")
 end
 assert(completed[4] == payload)
+for index = 1, 10 do party:HandleMessageFragment("pending" .. index .. "|1|2|x", "busy") end
+local pending = 0
+for _ in pairs(party.incomingFragments) do pending = pending + 1 end
+assert(pending == 2, "A sender can retain at most two incomplete snapshots")
+for index = 1, 200 do party:HandleMessageFragment("pending|1|2|x", "sender" .. index) end
+pending = 0
+for _ in pairs(party.incomingFragments) do pending = pending + 1 end
+assert(pending == 80, "Pending memory and cleanup work have a global bound")
+now = now + 11
+party:CleanupExpiredFragments()
+assert(not next(party.incomingFragments) and not party.fragmentCleanupTicker)
 print("Party: sender isolation, out-of-order/duplicate fragments, expiry, invalid headers and wire roundtrip passed")

@@ -16,6 +16,7 @@ local FRAME_OFFSET = 1
 local FRAME_MATE_HOLDER_HEIGHT = -18
 local MAX_FRAGMENT_COUNT = 128 -- Bound an incomplete group snapshot to 23 KiB.
 local GROUP_SEND_THROTTLE = 0.5
+local MAX_PENDING_MESSAGES = 80 -- Two snapshots per raid member, at most.
 local FRAGMENT_TTL = 10
 local FRAGMENT_SWEEP_INTERVAL = 5
 local UpdateGroupStep
@@ -637,26 +638,29 @@ UpdateGroupStep = function()
 end
 
 
-function APR.party:UpdateGroupListing(message)
+function APR.party:UpdateGroupListing(message, sender)
     APR:Debug("Message to deserialize", message)
 
-    -- Deserialize the received data
-    local success, dataReceived = AceSerializer:Deserialize(message)
-    if success and type(dataReceived) == "table" then
-        local username = dataReceived.username or UNKNOWN
-        APR:Debug("Success deserializing message for", username)
-        -- Update or add member
-        self.GroupListSteps[username] = dataReceived
-        UpdateGroupStep()
-    else
-        local username = type(dataReceived) == "table" and dataReceived.username or UNKNOWN
-        APR:PrintError(string.format(L["DESERIALIZE_FAILED"], username), dataReceived)
+    if type(message) ~= "string" or #message > MAX_FRAGMENT_COUNT * 180 then return false end
+    local started = APR:StartPerformanceSample()
+    local success, received = AceSerializer:Deserialize(message)
+    local data, reason
+    if success then data, reason = APR.PartyProtocol.NormalizeSnapshot(received, sender) end
+    APR:FinishPerformanceSample("PartyValidate", started)
+    if not data then
+        self.rejectedMessages = (self.rejectedMessages or 0) + 1
+        self.lastRejectReason = reason or "deserialize"
+        return false
     end
+    self.GroupListSteps[data.username] = data
+    UpdateGroupStep()
+    return true
 end
 
 function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
     if not APR.settings.profile.enableAddon then return end
-    if sender == APR.Username then return end
+    if APR.PartyProtocol.PlayerKey(sender) == APR.PartyProtocol.PlayerKey(APR.Username) then return end
+    if not sender or not ((UnitInParty and UnitInParty(sender)) or (UnitInRaid and UnitInRaid(sender))) then return end
 
     local allowIncomingData = APR.settings.profile.receiveGroupData
 
@@ -733,7 +737,13 @@ function APR.party:HandleMessageFragment(message, sender)
     local fragments = self.incomingFragments[key]
     if fragments and fragments.total ~= total then return end
     if not fragments then
-        fragments = { total = total, count = 0, parts = {} }
+        local pending, fromSender = 0, 0
+        for _, record in pairs(self.incomingFragments) do
+            pending = pending + 1
+            if record.sender == sender then fromSender = fromSender + 1 end
+        end
+        if pending >= MAX_PENDING_MESSAGES or fromSender >= 2 then return end
+        fragments = { total = total, count = 0, parts = {}, sender = sender }
         self.incomingFragments[key] = fragments
     end
     if fragments.parts[index] then return end
@@ -745,7 +755,7 @@ function APR.party:HandleMessageFragment(message, sender)
         self.incomingFragments[key] = nil
         self.fragmentExpiry[key] = nil
         self:CleanupExpiredFragments()
-        self:UpdateGroupListing(table.concat(fragments.parts))
+        self:UpdateGroupListing(table.concat(fragments.parts), sender)
     else
         self:StartFragmentCleanupTicker()
     end
