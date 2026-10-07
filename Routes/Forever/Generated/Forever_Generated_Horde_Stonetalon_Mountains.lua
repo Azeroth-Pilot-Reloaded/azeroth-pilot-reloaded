@@ -1966,6 +1966,7 @@ APR.RouteQuestStepList["Forever-Generated-Horde-Stonetalon-Mountains"] = {
         },
         {
             Qpart = { [95507] = { 1 } },
+            Note = { "Loot the Sprung Traps on the ground" },
             Coord = { x = -1856.4, y = 566.85 },
             Range = 186,
             Zone = 1413,
@@ -2105,7 +2106,7 @@ APR.RouteQuestStepList["Forever-Generated-Horde-Stonetalon-Mountains"] = {
             Qpart = { [95508] = { 1 } },
             Note = { "Move behind the house as you wait for the RP to finish to avoid getting aggro by all mobs at once", "You don't actually need to assist Walton, he will survive with the help of Vrang Wildgore" },
             Coord = { x = -1629.2, y = 835.6 },
-            ETA = 68,
+            ETA = 67.0,
             IsQuestCompleted = 95494,
             Zone = 1413,
             _index = 255,
