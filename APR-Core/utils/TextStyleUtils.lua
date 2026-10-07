@@ -1,3 +1,6 @@
+-- Builds reusable AceConfig controls for text appearance and global-style inheritance.
+-- TextStyles owns the actual font/color resolution and refresh registry.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LSM = LibStub("LibSharedMedia-3.0")
 

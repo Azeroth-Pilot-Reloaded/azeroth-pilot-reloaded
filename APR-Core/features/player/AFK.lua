@@ -1,3 +1,6 @@
+-- Owns the countdown bar and its place in the snapped guide layout.
+-- The update script exists only while a real or preview timer is active.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 

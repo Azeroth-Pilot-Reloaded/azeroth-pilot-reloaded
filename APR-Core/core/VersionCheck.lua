@@ -1,3 +1,6 @@
+-- Compares interface/release versions and exchanges small version announcements with the group.
+-- Notifications are session-limited; no network requests are made from the addon.
+
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 

@@ -1,3 +1,6 @@
+-- Declares hearthstone/toy spell mappings and tracked class buffs.
+-- Item IDs drive secure actions; spell IDs identify aura and cast completion events.
+
 APR.hearthStoneSpellID = {
     556,     -- Astral Recall
     8690,    -- Hearthstone

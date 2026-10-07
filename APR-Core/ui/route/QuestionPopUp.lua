@@ -1,3 +1,6 @@
+-- Owns APR confirmation/edit dialogs and reusable route/selection popups.
+-- Actions are attached when shown so reused buttons cannot execute an earlier selection.
+
 APR.questionDialog = APR:NewModule("QuestionDialog")
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 

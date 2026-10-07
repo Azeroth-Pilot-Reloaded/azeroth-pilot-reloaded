@@ -1,3 +1,6 @@
+-- Adds character-observed Forever taxi links and travel costs to the Farstrider graph.
+-- Discovery and timing data must never leak between characters.
+
 -- Forever has ground travel and a character-specific flight network. Only add
 -- flights actually offered by a flight master, never all pairs of known nodes.
 APR.foreverTravel = APR:NewModule("ForeverTravel")

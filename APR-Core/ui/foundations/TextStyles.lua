@@ -1,3 +1,6 @@
+-- Resolves text appearance from global/per-window profiles and the active skin provider.
+-- A weak registry refreshes existing font strings and tooltip styles without owning their lifetime.
+
 local LSM = LibStub("LibSharedMedia-3.0")
 
 local function GetDefaultUIFontName()

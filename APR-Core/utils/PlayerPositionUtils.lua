@@ -1,3 +1,6 @@
+-- Converts public player world coordinates to an APR map position with HereBeDragons.
+-- APR x/y ordering differs from UnitPosition, so consumers use this boundary for conversion.
+
 -----------------------------------------------------------
 -- Player Position Utilities
 -- Functions for player position calculations, map projections,

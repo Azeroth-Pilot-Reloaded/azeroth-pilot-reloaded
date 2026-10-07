@@ -1,3 +1,6 @@
+-- Builds the release-notes panel, parses its lightweight markup and reflows localized text.
+-- Version visibility and window position are stored in the active APR profile.
+
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
 

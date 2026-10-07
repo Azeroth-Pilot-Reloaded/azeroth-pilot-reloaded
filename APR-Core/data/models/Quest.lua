@@ -1,3 +1,6 @@
+-- Declares route action precedence and shared quest/gossip rule tables.
+-- Rendering and action dispatch use the same primary-option ordering.
+
 -- //TODO Create Step option to ignore progress bar (maybe quets update?)
 APR.ProgressbarIgnore = {
     ["60520-2"] = 1,
