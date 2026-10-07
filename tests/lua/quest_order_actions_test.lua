@@ -8,6 +8,8 @@ local L = setmetatable({
     BUY_ITEM = "BUY_ITEM(%s, %s)",
     TAMEBEAST = "Tame the %s beast",
     REPAIR = "Repair your gear",
+    USE_ITEM = "Use %s",
+    USE_SPELL = "Cast %s",
 }, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
 UNKNOWN, ABANDON_QUEST, LEAVE_VEHICLE, DISMOUNT = "Unknown", "Abandon quest", "Leave vehicle", "Dismount"
@@ -120,6 +122,25 @@ assert(#render({ { Scenario = { stepID = 1, criteriaID = 2 } }, { Note = "After 
     "Unavailable future scenario details must not interrupt later rows")
 C_ScenarioInfo.GetScenarioInfo = function() return { name = "Scenario" } end
 assert(#render({ { Scenario = { stepID = 1, criteriaID = 2 } } }).stepList == 1)
+
+-- Buttons remain visible in previews after redundant cast/use notes are removed.
+local buttonPreview = render({ {
+    Note = "Prepare your actions",
+    Button = { ["10"] = { 20, 404 } },
+    SpellButton = { ["11"] = { 1243, "Named spell" }, ["10"] = 2050 },
+} }).stepList[1]
+assert(buttonPreview.title == "Note: Prepare your actions\nUse Item 20\nUse Unknown\n" ..
+    "Cast Spell 2050\nCast Spell 1243\nCast Spell Named spell",
+    "Scalar/list buttons use client names, preserve list order and handle uncached items")
+assert(buttonPreview.color == "gray", "Supporting buttons must not complete the primary step")
+local completeWithButtons = render({ {
+    LearnProfession = 20, Button = { ["10"] = 20 }, SpellButton = { ["10"] = 404 },
+} }).stepList[1]
+assert(completeWithButtons.title:find("Cast Unknown", 1, true), "Uncached spells keep a readable label")
+known[20] = true
+assert(render({ { LearnProfession = 20, SpellButton = { ["10"] = 2050 } } }).stepList[1].color == "green",
+    "Optional buttons must not turn a completed primary action into an incomplete action")
+known[20] = nil
 
 local extras = {
     { LeaveQuest = 10 }, { LeaveQuests = { 10, 11 } }, { ChromiePick = 6 }, { ResetRoute = true },
