@@ -143,6 +143,12 @@ assert(deferred.skin == "arrow" and deferred.direction == "down")
 APR:RegisterSkinTarget(CreateFrame(), "borderedPanel")
 local panel = frames[#frames]
 assert(panel.template == "Transparent", "XP overlay and its new header use the provider border")
+local preview = CreateFrame()
+preview.texture = "route illustration"
+preview.StripTextures = function() error("Preview content must survive skinning") end
+APR:RegisterSkinTarget(preview, "panel", { preserveContent = true })
+assert(preview.template == "Transparent" and preview.texture == "route illustration",
+    "Anonymous image panels receive ElvUI borders without stripping their content")
 APR.settings.profile.elvuiSkin = false
 local native = CreateFrame()
 APR:RegisterSkinTarget(native, "button")
@@ -238,9 +244,9 @@ assert(background.shown == false, "Collapsing a window also hides its themed bod
 local settingsButton = CreateFrame()
 APR:RegisterSkinTarget(settingsButton, "settings")
 local settingsIcon = frames[#frames]
-assert(settingsIcon.texture == "Interface\\AddOns\\EllesmereUIDamageMeters\\Media\\dm_settings.png"
+assert(settingsIcon.texture == "Interface\\Buttons\\UI-OptionsButton"
     and settingsIcon.color[2] == 0.8 and settingsIcon.color[4] == 0.4,
-    "Current Step reuses the Damage Meter settings icon and tint")
+    "Settings use native artwork with the EUI tint, without an optional module")
 local header = CreateFrame()
 header.Text = CreateFrame()
 APR:RegisterSkinTarget(header, "header")

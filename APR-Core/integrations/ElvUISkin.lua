@@ -1,8 +1,5 @@
---[[
-    ElvUI compatibility skinning for Azeroth Pilot Reloaded.
-    Skins all APR frames to match the ElvUI visual theme when ElvUI is active.
-    Gracefully does nothing if ElvUI is not installed or the setting is disabled.
-]]
+-- Applies ElvUI chrome to APR-owned frames and keeps snapped panel backdrops consistent.
+-- The shared registry handles dynamic controls; a reload is required to switch skin providers.
 
 -- Bail out immediately if ElvUI is not loaded
 if not _G.ElvUI then return end
@@ -442,13 +439,6 @@ local function SkinStatusReport()
     end
 end
 
---- Skin an image preview panel
----@param panel table
-local function SkinImagePreviewPanel(panel)
-    if not panel or IsSkinned(panel) then return end
-    SkinDialogFrame(panel)
-end
-
 --- Hook dynamic frame creation functions
 local function HookDynamicFrames()
     -- Hook CreateStandardFrame: skins frames as they are created
@@ -486,21 +476,6 @@ local function HookDynamicFrames()
         hooksecurefunc(APR, "showStatusReport", function()
             if IsElvUISkinEnabled() then
                 SkinStatusReport()
-            end
-        end)
-    end
-
-    -- Hook image preview overlay creation
-    if APR.currentStepImagePreview and APR.currentStepImagePreview.ShowOverlayForSlot then
-        hooksecurefunc(APR.currentStepImagePreview, "ShowOverlayForSlot", function()
-            if not IsElvUISkinEnabled() then return end
-            -- Skin any new preview panels by scanning global names
-            for i = 1, 20 do
-                local panelName = "APRCurrentStepImagePreviewFrame" .. i
-                local panel = _G[panelName]
-                if panel then
-                    SkinImagePreviewPanel(panel)
-                end
             end
         end)
     end
@@ -559,7 +534,7 @@ local function SkinRegisteredTarget(frame, kind, options)
         -- Style the texture only; never strip or rewrite secure item buttons.
         S:HandleIcon(options.texture, true)
         MarkSkinned(frame)
-    elseif kind == "borderedPanel" and not IsSkinned(frame) then
+    elseif (kind == "borderedPanel" or kind == "panel") and not IsSkinned(frame) then
         if frame.SetTemplate then frame:SetTemplate("Transparent") end
         MarkSkinned(frame)
     elseif kind == "header" then
@@ -601,19 +576,5 @@ function APR.ElvUISkin:ApplySkins()
     SkinSelectionPopup()
     SkinStatusReport()
 
-    for i = 1, 20 do
-        local panelName = "APRCurrentStepImagePreviewFrame" .. i
-        local panel = _G[panelName]
-        if panel then
-            SkinImagePreviewPanel(panel)
-        end
-    end
-
     UpdateSnappedBackdrops()
-end
-
---- Check if ElvUI is available (utility for other modules)
----@return boolean
-function APR:IsElvUILoaded()
-    return _G.ElvUI ~= nil
 end
