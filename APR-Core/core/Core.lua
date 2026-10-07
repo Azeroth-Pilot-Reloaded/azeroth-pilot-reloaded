@@ -168,6 +168,9 @@ function APR:OnInitialize()
     -- Initialize Zone Detection System (v2.0)
     self:InitZoneDetectionCache()
 
+    self:RegisterStaticSkinTargets()
+    self:RefreshRegisteredSkins(true)
+
     -- Register events
     self.event:RegisterEvents()
 end

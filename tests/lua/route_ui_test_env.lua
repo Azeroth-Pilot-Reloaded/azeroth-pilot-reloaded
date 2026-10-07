@@ -27,6 +27,42 @@ end
 local function check(frame) assert(not combat or not protected(frame), "Protected mutation in combat") end
 function methods:SetScript(key, fn) self.scripts[key] = fn end
 
+function methods:HookScript(key, fn)
+    local previous = self.scripts[key]
+    self.scripts[key] = function(...)
+        if previous then previous(...) end
+        fn(...)
+    end
+end
+
+function methods:SetShown(value) if value then self:Show() else self:Hide() end end
+
+function methods:IsEnabled() return self.enabled ~= false end
+
+function methods:SetEnabled(value) self.enabled = value end
+
+function methods:GetFrameLevel() return self.level or 1 end
+
+function methods:SetFrameLevel(value) self.level = value end
+
+function methods:SetBackdrop(value) self.backdrop = value end
+
+function methods:GetBackdrop() return self.backdrop end
+
+function methods:SetBackdropColor(...) self.backdropColor = { ... } end
+
+function methods:GetBackdropColor() return unpack(self.backdropColor or { 0, 0, 0, 1 }) end
+
+function methods:SetBackdropBorderColor(...) self.borderColor = { ... } end
+
+function methods:SetFontString(value) self.label = value end
+
+function methods:GetFontString() return self.label end
+
+function methods:StopMovingOrSizing() self.moving = false end
+
+function methods:ClearFocus() self.focused = false end
+
 function methods:SetText(text) self.text = text end
 
 function methods:GetText() return self.text end
@@ -123,6 +159,7 @@ end
 function CreateFrame(_, name, parent, template)
     frames = frames + 1
     local frame = widget(parent)
+    frame.name = name
     frame.secure = template and template:find("SecureActionButtonTemplate") ~= nil
     if parent then
         parent.children = parent.children or {}

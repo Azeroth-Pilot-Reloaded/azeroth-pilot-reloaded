@@ -152,6 +152,10 @@ function APR:GetTextColor(scope, role)
         local themed = self.EllesmereUISkin:GetTextColor(role)
         if themed then return themed end
     end
+    if self.GetNativeThemeTextColor then
+        local themed = self:GetNativeThemeTextColor(role)
+        if themed then return themed end
+    end
     local scoped, general = GetAppearance(scope)
     local key = ROLE_KEYS[role or "base"] or "color"
 
