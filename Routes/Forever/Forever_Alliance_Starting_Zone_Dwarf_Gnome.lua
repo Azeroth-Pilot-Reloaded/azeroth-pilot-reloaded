@@ -1,5 +1,7 @@
-APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
-    label = "Starting Zone Dwarf / Gnome",
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+
+APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
+    label = L["Forever - Starting Zone Dwarf / Gnome"],
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -202,11 +204,9 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Coord = { y = -6353.3, x = 361.7 },
             Zone = 1426,
             Range = 40,
-            ExtraLineText = "Level 3 is required for A Refugee's Quandary.",
             _index = 24,
         },
         {
-            Note = { "Enter Anvilmar" },
             Zone = 1426,
             NonSkippableWaypoint = true,
             Waypoint = 233,
@@ -215,7 +215,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 25,
         },
         {
-            Note = { "Enter Anvilmar" },
             Zone = 1426,
             NonSkippableWaypoint = true,
             Waypoint = 233,
@@ -866,7 +865,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Coord = { y = -5940.2, x = 456.1 },
             Zone = 1426,
             Range = 30,
-            ExtraLineText = "Level 5 is required for the priest healing quest.",
             _index = 100,
         },
         {
@@ -898,7 +896,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 104,
         },
         {
-            Note = { "Travel through Coldridge Pass" },
             NonSkippableWaypoint = true,
             Waypoint = 2160,
             Zone = 1426,
@@ -907,7 +904,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 105,
         },
         {
-            Note = { "Travel through Coldridge Pass" },
             NonSkippableWaypoint = true,
             Waypoint = 2160,
             Zone = 1426,
@@ -988,7 +984,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Coord = { y = -5600.4, x = -530.8 },
             Zone = 1426,
             DontHaveSpell = 2550,
-            ExtraLineText = "Sell grey quest loot before paying for Cooking.",
             _index = 117,
         },
         {
@@ -997,7 +992,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Coord = { y = -5595.3, x = -544.5 },
             MinLevel = 5,
             RaidIcon = 1699,
-            ExtraLineText = "Learn Cooking for Camping 101: Cooking. The apprentice lesson costs one silver.",
             _index = 118,
         },
         {
@@ -1111,8 +1105,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Coord = { y = -5669.1, x = -455.1 },
             MinLevel = 5,
             RaidIcon = 12427,
-            SpellButton = { ["5625-1"] = 2052, ["5625"] = 1243 },
-            ExtraLineText = "Cast Lesser Heal rank 2, then Power Word: Fortitude on Mountaineer Dolf.",
+            SpellButton = { ["5625-1"] = { 2052, 1243 } },
             _index = 130,
         },
         {
@@ -1322,7 +1315,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Zone = 1426,
             Range = 35,
             Coord = { y = -5503.1, x = -309.8 },
-            ExtraLineText = "Finish the Wendigo Manes and shipments before leaving the Grizzled Den.",
+            ExtraLineText = "FINISH_MOB_BEFORE_LEAVING",
             _index = 155,
         },
         {
@@ -1343,7 +1336,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Range = 65,
             Coord = { y = -5619.7, x = -672.4 },
             Fillers = { [384] = { 1 } },
-            ExtraLineText = "Keep six Crag Boar Ribs for Beer Basted Boar Ribs. Keep spare meat for Cooking.",
+            ExtraLineText = "KEEP_CRAG_BOAR_RIBS_FOR_COOKING",
             _index = 158,
         },
         {
@@ -1421,8 +1414,8 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Class = "HUNTER",
             Coord = { y = -6015.52, x = -201.51 },
             Race = "Dwarf",
-            MinLevel = 4,
             SellItems = { junk = true, npcID = 1243 },
+            MinLevel = 4,
             _index = 170,
         },
         {
@@ -1519,7 +1512,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Qpart = { [312] = { 1 } },
             Zone = 1426,
             Coord = { y = -5647.69, x = -94.88 },
-            ExtraLineText = "Wait for Old Icebeard to patrol away before looting the meat locker.",
             _index = 183,
         },
         {
@@ -1576,7 +1568,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Done = { 310 },
             Zone = 1426,
             Coord = { y = -5605.2, x = -543.8 },
-            ExtraLineText = "Interact with the Unguarded Thunder Ale Barrel after distracting Jarven.",
             _index = 191,
         },
         {
@@ -1599,7 +1590,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 194,
         },
         {
-            Note = { "Enter Frostmane Hold cave. Stay on the left side as you go further in the cave to explore it" },
+            Note = { "GO_INSIDE_CAVE", "KEEP_LEFT_INSIDE_CAVE" },
             Zone = 1426,
             NonSkippableWaypoint = true,
             Waypoint = 287,
@@ -1609,7 +1600,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 195,
         },
         {
-            Note = { "Enter Frostmane Hold cave. Stay on the left side as you go further in the cave to explore it" },
+            Note = { "GO_INSIDE_CAVE", "KEEP_LEFT_INSIDE_CAVE" },
             Zone = 1426,
             NonSkippableWaypoint = true,
             Waypoint = 287,
@@ -1619,7 +1610,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 196,
         },
         {
-            Note = { "Enter Frostmane Hold cave. Stay on the left side as you go further in the cave to explore it" },
+            Note = { "GO_INSIDE_CAVE", "KEEP_LEFT_INSIDE_CAVE" },
             Zone = 1426,
             NonSkippableWaypoint = true,
             Waypoint = 287,
@@ -1629,7 +1620,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 197,
         },
         {
-            Note = { "Enter Frostmane Hold cave. Stay on the left side as you go further in the cave to explore it" },
+            Note = { "GO_INSIDE_CAVE", "KEEP_LEFT_INSIDE_CAVE" },
             Zone = 1426,
             NonSkippableWaypoint = true,
             Waypoint = 287,
@@ -1691,13 +1682,13 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
         {
             Group = { questID = 314, Number = 2 },
             Zone = 1426,
-            ExtraLineText = "Vagash is optional. Accept this detour only if your group can handle him.",
+            ExtraLineText = "SKIP_THIS_ONE_OR_GROUP",
             _index = 207,
         },
         {
             PickUp = { 314 },
             Zone = 1426,
-            ExtraLineText = "You may need to skip this one or group up depending on your class and capabilities.",
+            ExtraLineText = "SKIP_THIS_ONE_OR_GROUP",
             Coord = { y = -5517.6, x = -1306.1 },
             GroupTask = 314,
             _index = 208,
@@ -1735,7 +1726,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Zone = 1426,
             Range = 5,
             Coord = { y = -5796.4, x = -1390.8 },
-            ExtraLineText = "Cancel the Farsight view once the objective is complete.",
             _index = 213,
         },
         {
@@ -1798,7 +1788,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             ItemCount = { itemID = 268548, count = 1 },
             Coord = { y = -5695.7, x = -1671.2 },
             Zone = 1426,
-            ExtraLineText = "Accept the Empty Powder Keg quest if you found the item during the quarry objectives.",
             _index = 222,
         },
         {
@@ -1850,7 +1839,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             DropQuest = 96391,
             DroppableQuest = { Qid = 96391, MobId = 6123, Text = "Dark Iron Spy" },
             MinLevel = 9,
-            ExtraLineText = "Loot a Dark Iron Map from the Dark Iron Spies and accept its quest.",
             _index = 229,
         },
         {
@@ -1905,7 +1893,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Coord = { y = -5745.3, x = -576.69 },
             Zone = 1426,
             Range = 60,
-            ExtraLineText = "Level 10 is required to unlock your permanent pet.",
             _index = 237,
         },
         {
@@ -2012,8 +1999,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Coord = { y = -5827.38, x = -630.87 },
             Zone = 1426,
             Range = 45,
-            ExtraLineText =
-            "Tame a Snow Leopard after the three lessons. Skip this step if you already have a permanent pet.",
             _index = 249,
         },
         {
@@ -2053,7 +2038,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 254,
         },
         {
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+
             NonSkippableWaypoint = true,
             Waypoint = 414,
             Zone = 1432,
@@ -2062,7 +2047,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 255,
         },
         {
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+
             NonSkippableWaypoint = true,
             Waypoint = 414,
             Zone = 1432,
@@ -2071,7 +2056,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 256,
         },
         {
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+
             NonSkippableWaypoint = true,
             Waypoint = 414,
             Zone = 1432,
@@ -2080,7 +2065,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 257,
         },
         {
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+
             NonSkippableWaypoint = true,
             Waypoint = 414,
             Zone = 1432,
@@ -2089,7 +2074,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 258,
         },
         {
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+
             NonSkippableWaypoint = true,
             Waypoint = 414,
             Zone = 1432,
@@ -2098,7 +2083,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 259,
         },
         {
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+
             NonSkippableWaypoint = true,
             Waypoint = 414,
             Zone = 1432,
@@ -2111,7 +2096,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Coord = { y = -5832.73, x = -2602.54 },
             Zone = 1432,
             Range = 40,
-            ExtraLineText = "Level 10 is required for the Loch Modan starting quests.",
+            ExtraLineText = "LEVEL_10_IS_REQUIRED_FOR_THE_LOCH_MODAN_STARTING_QUESTS",
             _index = 261,
         },
         {
@@ -2121,7 +2106,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 262,
         },
         {
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "GET_INSIDE", ": ", "UPSTAIRS" },
             NonSkippableWaypoint = true,
             Waypoint = 414,
             Zone = 1432,
@@ -2130,7 +2115,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 263,
         },
         {
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "GET_INSIDE", ": ", "UPSTAIRS" },
             NonSkippableWaypoint = true,
             Waypoint = 414,
             Zone = 1432,
@@ -2139,7 +2124,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 264,
         },
         {
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "GET_INSIDE", ": ", "UPSTAIRS" },
             NonSkippableWaypoint = true,
             Waypoint = 414,
             Zone = 1432,
@@ -2178,7 +2163,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 269,
         },
         {
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "HE_PATROLS" },
             Zone = 1432,
             Done = { 414 },
             Coord = { y = -5337.39, x = -3007.99 },
@@ -2186,11 +2171,11 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
         },
         {
             PickUp = { 416, 1339 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "HE_PATROLS" },
+            NoArrow = true,
             _index = 271,
         },
         {
-            Note = { "Enter the Stoutlager Inn" },
             NonSkippableWaypoint = true,
             Waypoint = 418,
             Zone = 1432,
@@ -2199,7 +2184,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 272,
         },
         {
-            Note = { "Enter the Stoutlager Inn" },
             NonSkippableWaypoint = true,
             Waypoint = 418,
             Zone = 1432,
@@ -2221,7 +2205,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 275,
         },
         {
-            Note = { "This is used to make `Basic Campfires` on Boats to level your `Cooking` skill without losing time", "You need 50 `Cooking` for a quest in Duskwood later" },
+            Note = { "MAKE_CAMPFIRES_ON_BOATS_TO_LEVEL_COOKING", "YOU_NEED_50_COOKING" },
             BuyMerchant = { { itemID = 4470, quantity = 1 } },
             Zone = 1432,
             ItemCount = { count = 1, itemID = 4470, operator = "<" },
@@ -2240,7 +2224,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 277,
         },
         {
-            Note = { "This is used to make `Basic Campfires` on Boats to level your `Cooking` skill without losing time", "You need 50 `Cooking` for a quest in Duskwood later" },
+            Note = { "MAKE_CAMPFIRES_ON_BOATS_TO_LEVEL_COOKING", "YOU_NEED_50_COOKING" },
             BuyMerchant = { { itemID = 4471, quantity = 1 } },
             Zone = 1432,
             ItemCount = { count = 1, itemID = 4471, operator = "<" },
@@ -2258,7 +2242,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 279,
         },
         {
-            Note = { "Exit the Stoutlager Inn" },
+            Note = { "EXIT_BUILDING" },
             NonSkippableWaypoint = true,
             Waypoint = 6387,
             Zone = 1432,
@@ -2298,7 +2282,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 284,
         },
         {
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "GET_INSIDE", ": ", "UPSTAIRS" },
             NonSkippableWaypoint = true,
             Waypoint = 1339,
             Zone = 1432,
@@ -2307,7 +2291,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 285,
         },
         {
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "GET_INSIDE", ": ", "UPSTAIRS" },
             NonSkippableWaypoint = true,
             Waypoint = 1339,
             Zone = 1432,
@@ -2328,14 +2312,14 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 288,
         },
         {
-            Note = { "Hearth to Thelsamar", "Buy food if needed" },
+            Note = { "BUY_FOOD_IF_NEEDED" },
             ETA = 2,
             Class = { "ROGUE", "WARRIOR" },
             UseHS = 418,
             _index = 289,
         },
         {
-            Note = { "Hearth to Thelsamar", "Buy food/water if needed" },
+            Note = { "BUY_FOOD_WATER_IF_NEEDED" },
             ETA = 2,
             Class = { "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" },
             UseHS = 418,
@@ -2346,7 +2330,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Zone = 1432,
             Range = 90,
-            ExtraLineText = "Collect the boar, bear and spider ingredients around Thelsamar.",
+            ExtraLineText = "COLLECT_THE_BOAR_BEAR_AND_SPIDER_INGREDIENTS",
             _index = 291,
         },
         {
@@ -2588,7 +2572,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 321,
         },
         {
-            Note = { "Enter the Deeprun Tram" },
+            Note = { "ENTER_TRAM" },
             Zone = 1455,
             NonSkippableWaypoint = true,
             Waypoint = 6661,
@@ -2608,7 +2592,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             NoArrow = true,
             Button = { ["6661-1"] = 17117 },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
-            Note = { "Use the `Rat Catcher's Flute` on Deeprun Rats in the Deeprun Tram" },
             _index = 324,
         },
         {
@@ -2627,7 +2610,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             NoArrow = true,
             Done = { 6662 },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
-            ExtraLineText = "Take the Deeprun Tram to Stormwind and deliver the rats on arrival.",
+            ExtraLineText = "TAKE_THE_DEEPRUN_TRAM_TO_STORMWIND_AND_DELIVER_THE_RATS_ON_ARRIVAL",
             _index = 327,
         },
         {
@@ -2641,7 +2624,6 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 328,
         },
         {
-            Note = { "Enter Stormwind" },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             Zone = 1453,
             _index = 329,
@@ -2695,7 +2677,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 335,
         },
         {
-            Note = { "Enter the Tavern" },
+            Note = { "GET_INSIDE", ": ", "TAVERN" },
             Zone = 1453,
             NonSkippableWaypoint = true,
             Waypoint = 1638,
@@ -2705,7 +2687,7 @@ APR.RouteQuestStepList["Forever-Optimized-Starting-Zone-Dwarf-Gnome"] = {
             _index = 336,
         },
         {
-            Note = { "Enter the Tavern" },
+            Note = { "GET_INSIDE", ": ", "TAVERN" },
             Zone = 1453,
             NonSkippableWaypoint = true,
             Waypoint = 1638,
