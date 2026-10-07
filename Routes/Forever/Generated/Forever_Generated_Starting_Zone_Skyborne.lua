@@ -6516,7 +6516,6 @@ APR.RouteQuestStepList["Forever-Generated-Starting-Zone-Skyborne"] = {
         },
         {
             Waypoint = 93159,
-            Note = { "NOTE: If all crabs are dead then you can also train a Ornery Galestrider until you find a crab" },
             Class = "HUNTER",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 58.339, 68.476),
             Faction = "Horde",
@@ -6527,8 +6526,7 @@ APR.RouteQuestStepList["Forever-Generated-Starting-Zone-Skyborne"] = {
             _index = 668,
         },
         {
-            Note = { "NOTE: If all crabs are dead then you can also train a Ornery Galestrider until you find a crab" },
-            TameBeast = { npcID = 254588, spellID = 1515, text = "Cast `Tame Beast` on a Windsong Crawler to tame it" },
+            TameBeast = { npcID = 254588, spellID = 1515, Text = "Windsong Crawler" },
             Class = "HUNTER",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(2521, 53.799, 72.161),
             DontHaveSpell = 2981,
