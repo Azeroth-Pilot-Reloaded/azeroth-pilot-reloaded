@@ -19,7 +19,7 @@ dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/data/models/Classes.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
-dofile("APR-Core/utils/RouteManager.lua")
+dofile("APR-Core/features/questing/RouteManager.lua")
 
 -- GetBuildInfo returns fields after the interface number as well. The fallback
 -- must pass only that number to tonumber, including during file loading.

@@ -123,7 +123,7 @@ dofile('APR-Core/utils/RouteUtils.lua')
 dofile('APR-Core/utils/QuestUtils.lua')
 dofile('APR-Core/utils/RouteConditions.lua')
 dofile('APR-Core/utils/LootUtils.lua')
-dofile('APR-Core/utils/RouteManager.lua')
+dofile('APR-Core/features/questing/RouteManager.lua')
 dofile('APR-Core/features/questing/RouteActions.lua')
 function APR:GetPlayerEffectiveLevel() return 20 end
 

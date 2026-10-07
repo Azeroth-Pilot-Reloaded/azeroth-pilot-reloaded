@@ -60,7 +60,7 @@ dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
-dofile("APR-Core/utils/RouteManager.lua")
+dofile("APR-Core/features/questing/RouteManager.lua")
 dofile("APR-Core/features/navigation/WorldCoordinateConverter.lua")
 dofile("APR-Core/core/Event.lua")
 function APR:GetPlayerEffectiveLevel() return level end
@@ -262,7 +262,7 @@ scenarioResult("EnterScenario", 2405, "SCENARIO_STAY")
 
 -- A suggested guide replaces nearby DoScenario while retaining its quest setup.
 level = 80
-dofile("APR-Core/utils/DelveRouteUtils.lua")
+dofile("APR-Core/features/questing/DelveRoutes.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 
 local inferredScenarioStep = { PickUp = { 93427 }, Zone = 2528 }

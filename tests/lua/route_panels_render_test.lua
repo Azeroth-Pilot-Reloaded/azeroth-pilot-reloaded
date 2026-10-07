@@ -132,7 +132,7 @@ function APR:StepFilterQoL(entry) return not entry.hidden end
 
 function APR:ResolveStepText(text) return text end
 
-dofile("APR-Core/utils/QuestOrderListUtils.lua")
+dofile("APR-Core/ui/route/QuestOrderListSupport.lua")
 dofile("APR-Core/ui/route/QuestOrderList.lua")
 dofile("APR-Core/ui/route/QuestOrderListRows.lua")
 local list, scroll = APR.questOrderList, QuestOrderListFrame_ScrollFrame
