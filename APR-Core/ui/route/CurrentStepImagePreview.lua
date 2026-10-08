@@ -312,7 +312,7 @@ local function CreateOverlayWindow(imagePath)
         return nil
     end
 
-    local resolvedImagePath = APR:ResolveUIFileAsset(imagePath, nil, "route preview")
+    local resolvedImagePath = APR:ResolveUIFileAsset(imagePath, nil, L["UI_ASSET_ROUTE_PREVIEW"])
     if not resolvedImagePath then
         ReturnWindowToPool(window)
         return nil
@@ -573,7 +573,7 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
     local imagePaths = APR:NormalizePreviewImages(step)
     local validImagePaths = {}
     for _, imagePath in ipairs(imagePaths) do
-        local resolvedImagePath = APR:ResolveUIFileAsset(imagePath, nil, "route preview")
+        local resolvedImagePath = APR:ResolveUIFileAsset(imagePath, nil, L["UI_ASSET_ROUTE_PREVIEW"])
         if resolvedImagePath then
             table.insert(validImagePaths, resolvedImagePath)
         end

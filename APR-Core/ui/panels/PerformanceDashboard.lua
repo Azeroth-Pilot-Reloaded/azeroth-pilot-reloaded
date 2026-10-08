@@ -3,7 +3,8 @@
 
 APR.PerformanceDashboard = { mode = "summary", sort = "totalMs", query = "", graphMetric = "maxMs", page = "resources" }
 local Dashboard, UI = APR.PerformanceDashboard, APR.UI
-local function T(key) return APR:LocalizeUI(key) end
+local function T(key, ...) return APR:LocalizeUI(key, ...) end
+local function MetricName(name) return name == "Other" and T("PERF_OTHER") or name end
 
 -- One hover target covers all seconds, including empty buckets; it allocates no per-bar frames.
 function Dashboard:UpdateGraphTooltip(force)
@@ -34,7 +35,7 @@ function Dashboard:UpdateGraphTooltip(force)
         APR:AddTooltipLine(GameTooltip, T("PERF_EMPTY_SECOND"), "general", "muted", true)
     else
         line("PERF_SLOW_COUNT", details.slowCount or T("DATA_UNAVAILABLE"))
-        line("PERF_PEAK_CALL", details.peakName or T("DATA_UNAVAILABLE"))
+        line("PERF_PEAK_CALL", MetricName(details.peakName) or T("DATA_UNAVAILABLE"))
         if details.route then APR:AddTooltipLine(GameTooltip, details.route, "general", "base", true) end
         if details.step then line("STATUS_STEP", details.step) end
     end
@@ -46,7 +47,7 @@ function Dashboard:RefreshGraph()
     self.timeline = self.frozenTimeline or APR:GetPerformanceTimeline()
     local maximum, metric = 1, self.graphMetric
     for _, bucket in ipairs(self.timeline) do maximum = math.max(maximum, bucket[metric] or 0) end
-    self.axis:SetText(metric == "count" and string.format("%d\n\n\n0", maximum) or string.format("%.2f ms\n\n\n0", maximum))
+    self.axis:SetText(metric == "count" and string.format("%d\n\n\n0", maximum) or T("TIME_MS_FORMAT", maximum) .. "\n\n\n0")
     local width, height = math.max(1, self.plot:GetWidth() - 8), math.max(1, self.plot:GetHeight() - 8)
     for index = 1, 120 do
         local bar, bucket = self.bars[index], self.timeline[index]
@@ -72,9 +73,9 @@ function Dashboard:Refresh()
         calls, total = calls + summary.count, total + summary.totalMs
         peak = math.max(peak, summary.maxMs)
     end
-    self.overview:SetText(string.format("%s: %d   |   %s: %.2f ms   |   %s: %.2f ms", T("CALLS"), calls, T("TOTAL"), total, T("MAX"), peak))
+    self.overview:SetText(T("PERF_OVERVIEW_FORMAT", calls, total, peak))
     self:RefreshGraph()
-    local rows = APR:GetPerformanceRows(self.mode, self.sort, self.query)
+    local rows = APR:GetPerformanceRows(self.mode, self.sort, self.query, MetricName)
     self.list:SetItems(rows, true)
     self.empty:SetShown(#rows == 0)
 end
@@ -168,9 +169,9 @@ function Dashboard:Create()
     end)
     self.axis = UI:Label(root, "", 11, "muted")
     self.axis:SetPoint("TOPLEFT", 0, -96)
-    local interval = UI:Label(root, "-119 s", 11, "muted")
+    local interval = UI:Label(root, T("SECONDS_FORMAT", -119), 11, "muted")
     interval:SetPoint("TOPLEFT", self.plot, "BOTTOMLEFT", 0, -4)
-    local now = UI:Label(root, "0 s", 11, "muted")
+    local now = UI:Label(root, T("SECONDS_FORMAT", 0), 11, "muted")
     now:SetPoint("TOPRIGHT", self.plot, "BOTTOMRIGHT", 0, -4)
     local mode = UI:Select(root, 220, function(value) self.mode = value; self:Refresh() end)
     mode:SetPoint("TOPLEFT", 0, -234)
@@ -199,20 +200,19 @@ function Dashboard:Create()
             local histogram = control.item and control.item.histogram
             if not histogram then return end
             GameTooltip:SetOwner(control, "ANCHOR_RIGHT")
-            APR:SetTooltipText(GameTooltip, control.item.name, "general", "accent")
-            APR:AddTooltipLine(GameTooltip, string.format("<1 ms: %d\n1–3 ms: %d\n3–10 ms: %d\n≥10 ms: %d", unpack(histogram)), "general", "base", true)
+            APR:SetTooltipText(GameTooltip, MetricName(control.item.name), "general", "accent")
+            APR:AddTooltipLine(GameTooltip, T("PERF_HISTOGRAM_FORMAT", unpack(histogram)), "general", "base", true)
             GameTooltip:Show()
         end)
         row:SetScript("OnLeave", function() GameTooltip:Hide() end)
         return row
     end, function(row, record)
-        row.title:SetText(record.name)
+        row.title:SetText(MetricName(record.name))
         if self.mode == "slow" then
-            row.detail:SetText(string.format("%.2f ms   |   %s   |   %s %s", record.ms, record.route or T("NO_ROUTE"), T("STEPS"), tostring(record.step or "?")))
-        elseif self.mode == "counters" then row.detail:SetText(T("CALLS") .. ": " .. record.count)
+            row.detail:SetText(T("PERF_SLOW_FORMAT", record.ms, record.route or T("NO_ROUTE"), tostring(record.step or "?")))
+        elseif self.mode == "counters" then row.detail:SetText(T("PERF_COUNTER_FORMAT", record.count))
         else
-            row.detail:SetText(string.format("%s: %d   |   %s: %.2f ms   |   %s: %.3f ms   |   %s: %.2f ms", T("CALLS"), record.count,
-                T("TOTAL"), record.totalMs, T("AVERAGE"), record.average, T("MAX"), record.maxMs))
+            row.detail:SetText(T("PERF_SUMMARY_FORMAT", record.count, record.totalMs, record.average, record.maxMs))
         end
     end, 62)
     self.empty = UI:Label(root, T("NO_CAPTURE"), 13, "muted")

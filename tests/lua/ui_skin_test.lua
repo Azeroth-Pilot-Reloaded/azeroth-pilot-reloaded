@@ -290,7 +290,12 @@ print("PASS: EllesmereUI public API, optional/old clients, late controls, provid
 
 -- Exercise the real text registry: later layout updates must not undo the skin.
 local media = { GetDefault = function() return "Native" end, Fetch = function() return "native.ttf" end }
-function LibStub() return media end
+local locale = {}
+function LibStub(name)
+    if name == "AceLocale-3.0" then return {GetLocale = function() return locale end} end
+    return media
+end
+dofile("tests/lua/localization_test_env.lua")
 
 function APR:ResolveUIFileAsset(path) return path end
 

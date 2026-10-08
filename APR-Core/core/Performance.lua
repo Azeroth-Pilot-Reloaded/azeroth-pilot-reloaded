@@ -98,22 +98,27 @@ function APR:GetPerformanceBucketDetails(bucket, finalSecond)
     }
 end
 
-function APR:GetPerformanceRows(mode, sortKey, query)
+function APR:GetPerformanceRows(mode, sortKey, query, displayName)
     local log, rows = APRData and APRData.PerformanceLog, {}
     if not log then return rows end
     query = string.lower(query or "")
+    -- Search translated display labels while keeping saved metric identifiers stable.
+    local function matches(name)
+        return string.lower(name):find(query, 1, true)
+            or (displayName and string.lower(displayName(name)):find(query, 1, true))
+    end
     if mode == "slow" then
         for offset = 0, #log.slow - 1 do
             local entry = log.slow[((log.cursor or #log.slow) - offset - 1) % SLOW_LIMIT + 1]
-            if entry and string.lower(entry.name):find(query, 1, true) then rows[#rows + 1] = entry end
+            if entry and matches(entry.name) then rows[#rows + 1] = entry end
         end
     elseif mode == "counters" then
         for name, count in pairs(log.counters or {}) do
-            if string.lower(name):find(query, 1, true) then rows[#rows + 1] = {name = name, count = count} end
+            if matches(name) then rows[#rows + 1] = {name = name, count = count} end
         end
     else
         for name, summary in pairs(log.summary) do
-            if string.lower(name):find(query, 1, true) then
+            if matches(name) then
                 rows[#rows + 1] = {name = name, count = summary.count, totalMs = summary.totalMs,
                     maxMs = summary.maxMs, average = summary.totalMs / math.max(1, summary.count), histogram = summary.histogram}
             end

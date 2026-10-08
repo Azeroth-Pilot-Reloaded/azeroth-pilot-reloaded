@@ -6,6 +6,7 @@ function GetLocale() return "enUS" end
 tinsert, tremove = table.insert, table.remove
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
+dofile("tests/lua/localization_test_env.lua")
 dofile("APR-Core/ui/foundations/InterfaceStrings.lua")
 APR.Color.grayAlpha = {0.4, 0.4, 0.4, 0.4}
 APR.PlayerID, APR.EXPANSIONS = "test", {Test = "Test"}

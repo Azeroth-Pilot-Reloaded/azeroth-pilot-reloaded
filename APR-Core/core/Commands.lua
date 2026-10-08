@@ -16,14 +16,14 @@ function APR.command:SlashCmd(input)
     end
     if inputText == "perf on" then
         APR:SetPerformanceCapture(true)
-        APR:PrintInfo("Performance logging enabled. /apr perf off stops capture; /reload saves APRData.PerformanceLog.")
+        APR:PrintInfo(L["UI_PERF_CAPTURE_STARTED"])
     elseif inputText == "perf off" then
         APR:SetPerformanceCapture(false)
-        APR:PrintInfo("Performance logging stopped. /reload saves APRData.PerformanceLog.")
+        APR:PrintInfo(L["UI_PERF_CAPTURE_STOPPED"])
     elseif inputText == "perf" then
         APR.PerformanceDashboard:Show()
     elseif (inputText == "step") then
-        APR:PrintInfo('step', APR:GetCurrentStep())
+        APR:PrintInfo(L["UI_STATUS_STEP"], APR:GetCurrentStep())
     elseif (inputText == "reset" or inputText == "r") then
         --Command to reset the current route
         APR:ResetRoute(APR.ActiveRoute)
@@ -79,8 +79,8 @@ function APR.command:SlashCmd(input)
             report.playerParent or 0,
             report.playerContinent or 0,
             table.concat(report.playerHierarchy or {}, ", "),
-            report.specialContent and "YES" or "NO",
-            report.cacheValid and "YES" or "NO"
+            report.specialContent and L["UI_YES"] or L["UI_NO"],
+            report.cacheValid and L["UI_YES"] or L["UI_NO"]
         )
         APR:PrintInfo(msg)
     elseif inputText == 'zonecache' then

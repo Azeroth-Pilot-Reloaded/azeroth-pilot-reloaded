@@ -1647,7 +1647,7 @@ function APR.settings:createBlizzOptions()
                                     afkWidth = {
                                         order = 10.531,
                                         type = "range",
-                                        name = "AFK width",
+                                        name = L["UI_AFK_WIDTH"],
                                         min = 150,
                                         max = 600,
                                         step = 5,
@@ -1664,7 +1664,7 @@ function APR.settings:createBlizzOptions()
                                     afkHeight = {
                                         order = 10.532,
                                         type = "range",
-                                        name = "AFK height",
+                                        name = L["UI_AFK_HEIGHT"],
                                         min = 10,
                                         max = 60,
                                         step = 1,

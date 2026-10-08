@@ -1,6 +1,7 @@
 local env = dofile("tests/lua/route_ui_test_env.lua")
 function GetLocale() return "enUS" end
 UIParent:SetSize(1920, 1080)
+dofile("tests/lua/localization_test_env.lua")
 dofile("APR-Core/ui/foundations/InterfaceStrings.lua")
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
@@ -75,6 +76,10 @@ assert(dashboard.timeline[120].second == 1001)
 cursorX = (100 + 4 + 1195) * 2
 dashboard:UpdateGraphTooltip(true)
 assert(GameTooltip.lines[APR:LocalizeUI("PERF_PEAK_CALL")] == "Other")
+local translatedRows = APR:GetPerformanceRows("summary", "totalMs", "autres", function(name)
+    return name == "Other" and "Autres" or name
+end)
+assert(#translatedRows == 1 and translatedRows[1].name == "Other", "Localized search keeps stable report identifiers")
 dashboard.plot.scripts.OnLeave()
 assert(not GameTooltip:IsShown() and not dashboard.hoverLine:IsShown())
 APR.PerformanceDashboard.mode = "slow"

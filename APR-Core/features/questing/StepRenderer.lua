@@ -267,7 +267,7 @@ function APR:RenderCurrentStep()
             APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APR:SetRouteProgress(APR.ActiveRoute, 1, "reset")
-                APR:PrintInfo(APR:WrapTextWithAppearanceColor("APR", "general", "accent") .. " Route Reseted")
+                APR:PrintInfo(L["UI_ROUTE_RESET"])
                 APR:UpdateQuestAndStep()
             end)
         end

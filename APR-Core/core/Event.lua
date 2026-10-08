@@ -1105,7 +1105,7 @@ function APR.event.functions.merchant(event, ...)
                         if available >= repairAllCost then
                             RepairAllItems(true);
                             repaired = true
-                            APR:PrintInfo("Equipment has been repaired by your Guild")
+                            APR:PrintInfo(L["UI_GUILD_REPAIR"])
                         end
                     end
                     if not repaired and repairAllCost <= GetMoney() then

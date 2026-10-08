@@ -34,6 +34,7 @@ APR.PlayerID, APR.Username, APR.ActiveRoute = "Test-Realm", "Private name", "rou
 APR.ClassId, APR.Level, APR.Faction, APR.version = 8, 90, "Horde", "test"
 APRData = {[APR.PlayerID] = {route = 1}}
 APR.RouteQuestStepList = {route = {steps = {{Qpart = {[100] = {1}}}}}}
+dofile("tests/lua/localization_test_env.lua")
 dofile("APR-Core/ui/foundations/InterfaceStrings.lua")
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")

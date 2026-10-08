@@ -68,7 +68,7 @@ APR:RegisterFontString(footerText, "general", { role = "accent", sizeDelta = -2 
 footerButton:SetScript("OnEnter", function(self)
     local url = GetGitHubReleasesUrl()
     GameTooltip:SetOwner(self, "ANCHOR_TOP")
-    APR:AddTooltipLine(GameTooltip, "Click to copy the GitHub releases link", "general", "base", true)
+    APR:AddTooltipLine(GameTooltip, L["UI_CHANGELOG_COPY_LINK"], "general", "base", true)
     APR:AddTooltipLine(GameTooltip, url, "general", "accent", true)
     GameTooltip:Show()
 end)
