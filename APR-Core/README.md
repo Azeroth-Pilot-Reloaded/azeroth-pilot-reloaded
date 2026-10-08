@@ -1,11 +1,16 @@
 # APR-Core : architecture et audit
 
-Audit du 8 octobre 2026. Périmètre : **89 fichiers Lua propres au cœur**, 11
+Audit du 8 octobre 2026. Périmètre : **85 fichiers Lua propres au cœur**, 11
 entrées de localisation, médias et dépendances chargées. Les définitions de
 `Routes/` servent à vérifier les consommateurs ; seules les métadonnées d'auteur
 et de communauté de la route EclipseGlaives sont ajoutées, à la demande du mainteneur.
 Les changements extérieurs au cœur concernent le manifeste, les tests et les
 références de validation nécessaires aux déplacements.
+
+Sur `refactor/audit-clean`, les réglages Blizzard/AceConfig et le catalogue AceGUI
+historiques sont rétablis. Les interfaces expérimentales et les thèmes multiples
+restent sur `refactor/audit-clean-ui`. Le diagnostic et le dashboard sont conservés
+et améliorés ; cette branche utilise uniquement le thème natif WoW.
 
 Principe de maintenance : **lisibilité, lisibilité, lisibilité**. Un helper est
 partagé lorsqu'il exprime le même contrat pour plusieurs consommateurs. Les
@@ -65,11 +70,11 @@ restent en lecture seule.**
 | [core/Core.lua](core/Core.lua) | Objet AceAddon, identité, sauvegardes et initialisation des modules. |
 | [core/Event.lua](core/Event.lua) | Événements, regroupement des notifications et callbacks différés. |
 | [core/Commands.lua](core/Commands.lua) | Routage des commandes `/apr` vers leurs modules. |
+| [core/Diagnostics.lua](core/Diagnostics.lua) | Relevé complet du statut, coordonnées publiques, sections et identité facultative. |
 | [core/Performance.lua](core/Performance.lua) | Capture volontaire : agrégats, histogrammes, appels lents et compteurs bornés. |
 | [core/VersionCheck.lua](core/VersionCheck.lua) | Versions client/addon et annonces au groupe, sans requêtes web. |
 | [config/Config.lua](config/Config.lua) | Défauts AceDB, options AceConfig, profils et bouton de minicarte. |
-| [config/SettingsIndex.lua](config/SettingsIndex.lua) | Index des options AceConfig ; réutilise leurs setters, conditions et descriptions. |
-| [config/Config_Route.lua](config/Config_Route.lua) | Notifications de parcours/catalogue et entrée AceConfig vers la bibliothèque unique. |
+| [config/Config_Route.lua](config/Config_Route.lua) | Catalogue AceGUI historique, tri/recherche, parcours personnalisé et notifications du moteur. |
 | [config/Config_Route_Prefabs.lua](config/Config_Route_Prefabs.lua) | Parcours prédéfinis construits depuis les métadonnées et conditions. |
 | [config/LevelProfiles.lua](config/LevelProfiles.lua) | Données des bonus XP et profils de seuils ; aucun rendu. |
 
@@ -99,7 +104,6 @@ restent en lecture seule.**
 | [features/questing/StepActionHandlers.lua](features/questing/StepActionHandlers.lua) | Argent, objets/sorts, trésors, groupes et hauts faits. |
 | [features/questing/StepTransitions.lua](features/questing/StepTransitions.lua) | Écriture de progression, contexte révisionné, historique et dernier saut annulable. |
 | [features/questing/StepDiagnostics.lua](features/questing/StepDiagnostics.lua) | Raisons d'attente à partir d'un instantané, sans exécuter le moteur. |
-| [features/questing/RouteCatalog.lua](features/questing/RouteCatalog.lua) | Recherche, provenance, disponibilité, favoris et mutations du parcours avec prérequis. |
 | [features/questing/RouteActions.lua](features/questing/RouteActions.lua) | Inventaire, banque, réparation, apprentissage, mort et domptage ; vérification du contexte avant action. |
 | [features/questing/Gossip.lua](features/questing/Gossip.lua) | Dialogues automatiques, règles NPC et délais. |
 | [features/navigation/Arrow.lua](features/navigation/Arrow.lua) | Orientation, distance, visibilité et arrivée, à cadence configurable. |
@@ -133,7 +137,7 @@ restent en lecture seule.**
 | [ui/foundations/TextStyles.lua](ui/foundations/TextStyles.lua) | Héritage des styles, couleurs sémantiques et registre faible des textes/tooltips. |
 | [ui/foundations/StatusBars.lua](ui/foundations/StatusBars.lua) | Barres natives ; APR possède les couleurs, les skins fournissent la texture. |
 | [ui/foundations/InterfaceStrings.lua](ui/foundations/InterfaceStrings.lua) | Libellés FR/EN des nouvelles interfaces, surcharge AceLocale `UI_*` possible. |
-| [ui/foundations/Themes.lua](ui/foundations/Themes.lua) | Quatre thèmes natifs et restitution des fonds/couleurs demandés. |
+| [ui/foundations/Themes.lua](ui/foundations/Themes.lua) | Style WoW des fenêtres de diagnostic/performance ; couleurs historiques des autres panneaux préservées. |
 | [ui/foundations/Widgets.lua](ui/foundations/Widgets.lua) | Fenêtres persistantes, boutons, recherche, menus, infobulles et texte copiable partagés. |
 | [ui/foundations/VirtualList.lua](ui/foundations/VirtualList.lua) | Indexation des hauteurs et recyclage des seules lignes visibles. |
 | [ui/route/CurrentStep.lua](ui/route/CurrentStep.lua) | Fenêtre, barres, boutons sécurisés et changements différés après combat. |
@@ -145,12 +149,9 @@ restent en lecture seule.**
 | [ui/route/QuestOrderListSupport.lua](ui/route/QuestOrderListSupport.lua) | Mesure partagée des modèles, lignes réutilisables, coroutine, réputation et défilement. |
 | [ui/route/QuestionPopUp.lua](ui/route/QuestionPopUp.lua) | Confirmations, saisies et sélections avec callbacks renouvelés. |
 | [ui/route/RouteSelection.lua](ui/route/RouteSelection.lua) | Invitation au choix d'une route quand le parcours est inutilisable. |
-| [ui/route/RouteBrowser.lua](ui/route/RouteBrowser.lua) | Bibliothèque redimensionnable, fiche route, filtres, communauté et parcours ordonné. |
 | [ui/panels/Coordinates.lua](ui/panels/Coordinates.lua) | Coordonnées destinées aux auteurs et position de fenêtre sauvegardée. |
 | [ui/panels/ChangeLog.lua](ui/panels/ChangeLog.lua) | Notes de version et mise en forme. |
-| [ui/panels/SettingsHome.lua](ui/panels/SettingsHome.lua) | Réglages essentiels, recherche et accès aux outils. |
-| [ui/panels/LayoutEditor.lua](ui/panels/LayoutEditor.lua) | Contours indépendants ; annulation sans mutation, sauvegarde LibWindow hors combat. |
-| [ui/panels/Diagnostics.lua](ui/panels/Diagnostics.lua) | Rapport copiable, identité facultative, raisons d'attente et annulation du saut. |
+| [ui/panels/Diagnostics.lua](ui/panels/Diagnostics.lua) | Statut en sections, raisons d'attente, volet Lua copiable et annulation du saut. |
 | [ui/panels/PerformanceDashboard.lua](ui/panels/PerformanceDashboard.lua) | Graphique de pics, agrégats triables, appels lents, compteurs et export. |
 
 ### Utilitaires partagés
@@ -214,8 +215,8 @@ options et SavedVariables sont conservés.
 
 | Accès | Usage courant |
 | --- | --- |
-| `/apr` | Réglages essentiels, recherche des options, thèmes et accès aux outils. |
-| `/apr route` | Bibliothèque, communauté, favoris, parcours et parcours prédéfinis. |
+| `/apr` | Réglages historiques Blizzard/AceConfig, boutons Statut et Performances. |
+| `/apr route` | Catalogue AceGUI historique : extensions, tri, recherche, parcours personnalisé et parcours prédéfinis. |
 | `/apr status` ou bouton `?` du guide | Raisons d'attente, historique de progression et rapport copiable. |
 | `/apr undo` | Annuler le dernier saut manuel encore valide. |
 | `/apr perf` | Ouvrir le dashboard ; démarrer/arrêter, trier, rechercher et exporter. |
@@ -301,22 +302,18 @@ La mesure `PartyValidate` permet de vérifier le coût réel en jeu. Les tests h
 jeu couvrent les entrées malformées et les limites, sans prétendre démontrer une
 absence de lag dans le client.
 
-### Bibliothèque et auteurs
+### Sélection de routes et auteurs
 
-Le catalogue sépare consultation, disponibilité et modification du parcours.
-Recherche multi-mot, extension, catégorie et onglets Communauté/Favoris/Mon parcours
-s'appliquent sans démarrer de route. Les prérequis passent par le moteur existant.
-Une route retirée du catalogue mais encore enregistrée dans un parcours reste
-visible dans celui-ci pour pouvoir être supprimée.
+Le catalogue AceGUI d’origine est rétabli : onglets d’extension, colonnes
+nom/catégorie/statut, recherche, tri, parcours personnalisé et boutons de presets.
+Le clic droit ajoute/reprend une route ; Maj + clic droit réinitialise puis ajoute.
+Les routes désactivées exposent leurs prérequis dans l’infobulle. Les mises à jour
+du parcours passent toujours par `ActivateRoute`, avec invalidation de l’annulation.
 
-Attribution demandée par le mainteneur : **APR par défaut** ; la route
-`84-EclipseGlaives-10-to-70` est attribuée à **EclipseGlaives** et mise en avant dans
-Communauté. Ces informations figurent dans les données de la route, sans exception
-codée dans le catalogue. Le champ `author` est optionnel et vaut APR par défaut ;
-`authors` permet une liste de coauteurs si `author` est absent.
-`community = true` ou `source = "community"` désigne une route
-communautaire. `description` fournit le texte facultatif de la fiche. Le schéma de
-validation connaît ces champs ; les auteurs ne sont jamais devinés depuis Git.
+Les métadonnées optionnelles `author`, `authors`, `community` et `description`
+restent dans les données et le schéma. La route EclipseGlaives garde son auteur.
+La mise en avant communautaire et les favoris de la nouvelle bibliothèque sont
+conservés sur la branche UI ; ils ne sont plus exposés par ce catalogue historique.
 
 ### Listes et mesures
 
@@ -369,13 +366,17 @@ des tests Lua ne reproduisent pas les valeurs secrètes WoW.
 
 ## UI/UX et skins
 
-- Quatre thèmes natifs : WoW, Forever disponible aussi sur Retail, Moderne bleu
-  canard et Contraste élevé. Les couleurs personnalisées et fonds repliés sont
-  conservés lors des changements de thème.
-- Bibliothèque à liste/fiche, accueil, diagnostic et dashboard utilisent les mêmes
-  contrôles. Les nouvelles fenêtres enregistrent taille et position dans le profil.
-  L'éditeur de placement manipule des contours indépendants jusqu'à Enregistrer ;
-  Annuler, Échap ou l'entrée en combat abandonnent la prévisualisation.
+- Thème natif WoW uniquement, même si un profil vient de la branche UI. Les
+  couleurs personnalisées des panneaux historiques restent respectées.
+- Réglages et choix des routes utilisent les interfaces historiques. Les fenêtres
+  de statut et de performances gardent leur position et taille dans le profil.
+- Le statut présente client, personnage, route/zone/coordonnées, raisons d’attente
+  et état du moteur. Le rapport Lua reste facultatif dans la même fenêtre ; ses
+  clés, l’indentation et les retours à la ligne sont conservés. La copie protège
+  le texte sélectionné des rafraîchissements automatiques.
+- Le graphique affiche maximum, cumul ou appels par seconde. Une seule surface
+  de survol sélectionne les 120 secondes ; l’infobulle fournit durée, nombre et
+  contexte du pic. Figer le graphique laisse la capture et les tableaux actifs.
 - Un seul fournisseur peint un contrôle : priorité ElvUI si les deux sont activés.
   Un changement de fournisseur nécessite un reload.
 - APR possède les boutons sécurisés, attributs et callbacks ; le skin modifie
@@ -413,17 +414,17 @@ erreurs, réputation imbriquée, cinématiques et assemblage des messages. Les
 fixtures chargent les helpers déplacés dans le même ordre relatif que le TOC ;
 les assertions de rendu, progression et recyclage sont conservées.
 La refonte ajoute des scénarios de transitions/annulation, validation de groupe,
-catalogue/auteurs, recherche de réglages, diagnostics, capture bornée, thèmes et
-virtualisation. Les tests utilisent le code réel des modules avec des API WoW simulées.
+catalogue historique, ouverture des options, diagnostics complets, export Lua,
+survol/gel du graphique, capture bornée et virtualisation. Les tests utilisent le code réel des modules avec des API WoW simulées.
 
-Résultat de l'audit : **46/46 suites Lua réussies ; 162/163 tests réussis** dans
+Résultat de l'audit : **45/45 suites Lua réussies ; 161/162 tests réussis** dans
 la validation complète. L'unique échec est
 `RouteHookTests.test_manual_no_stage_leaves_index_untouched`, reproduit aussi
 avec les scripts, hooks et `StepUtils.lua` extraits de `HEAD` avant refonte.
 Ce défaut préexistant du test/outillage Git reste hors périmètre ; les routes
 ne sont pas modifiées pour le contourner.
 
-Le [plan de tests en jeu](TESTS_EN_JEU.md) décrit 66 cas, les configurations à
+Le [plan de tests en jeu](TESTS_EN_JEU.md) décrit 74 cas, les configurations à
 essayer et les résultats attendus. **Ils ne sont pas exécutés par l'agent** : le
 rendu, le taint, les boutons protégés et le coût réel doivent être vérifiés
 manuellement sur les deux clients et les skins disponibles.
@@ -432,7 +433,7 @@ manuellement sur les deux clients et les skins disponibles.
 
 | Priorité | Suite proposée | Validation nécessaire |
 | --- | --- | --- |
-| P1 | Corriger les écarts constatés pendant les 66 cas de recette. | Reproduction avec client, skin, résolution et rapport ; aucune certification visuelle hors jeu. |
+| P1 | Corriger les écarts constatés pendant les 74 cas de recette. | Reproduction avec client, skin, résolution et rapport ; aucune certification visuelle hors jeu. |
 | P2 | Découper les familles d'options de `Config.lua` et d'événements de `Event.lua`. | Contrats explicites pour l'état partagé et régressions de comportement ; conserver clés et SavedVariables. |
 | P2 | Localiser les nouveaux libellés au-delà du FR/EN. | Traductions relues via les clés AceLocale `UI_*`, contrôles des longueurs en jeu. |
 | P2 | Compléter les fiches communautaires : descriptions et auteurs multiples. | Métadonnées fournies par les mainteneurs/auteurs, compatibilité recorder ; aucune attribution supposée. |
