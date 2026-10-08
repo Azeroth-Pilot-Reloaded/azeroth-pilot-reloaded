@@ -59,8 +59,11 @@ in-game checks are documented in `tools/validation/README.md`.
 Mocks validate addon behavior, not actual game rendering or API compatibility.
 `native_settings_test.lua` checks the restored Blizzard settings entry points;
 `memory_recycling_test.lua` also covers route right-click/Shift-right-click and
-disabled routes. `diagnostics_test.lua` checks the complete status, redaction,
-formatted Lua and selection preservation. `performance_dashboard_test.lua`
+disabled routes. `route_metadata_tooltip_test.lua` checks data-only attribution,
+APR fallback, descriptions and recycled catalogue/custom-path tooltips.
+`status_report_test.lua` checks the historical status, identity masking,
+formatted Lua and selection preservation. `step_transitions_test.lua` checks
+rollback undo and its normal previous-step fallback. `performance_dashboard_test.lua`
 checks scaled graph hover, peak context, frozen timelines and bounded captures.
 `tools/validation/check_package.py` still needs an unpacked release to validate a
 real package; its automated tests use a minimal package fixture.
