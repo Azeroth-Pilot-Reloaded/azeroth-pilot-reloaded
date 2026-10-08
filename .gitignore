@@ -18,3 +18,4 @@ __pycache__/
 # others
 TODO.txt
 docs/*
+.vscode/settings.json
