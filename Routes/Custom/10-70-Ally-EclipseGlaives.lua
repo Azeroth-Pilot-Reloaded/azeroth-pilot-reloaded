@@ -2,6 +2,8 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
     label = L["10-70 route by EclipseGlaives"],
+    author = "EclipseGlaives",
+    community = true,
     expansion = APR.EXPANSIONS.Vanilla,
     category = APR.CATEGORIES.Leveling,
     prefab = {

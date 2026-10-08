@@ -162,6 +162,8 @@ class RouteSchemaTests(unittest.TestCase):
 
     def test_metadata_prefabs_and_scenarios(self):
         route = {"label": "Example", "category": "Campaign", "expansion": "Midnight", "gameVersion": "retail",
+                 "author": "APR", "authors": seq("One", "Two"), "community": True,
+                 "source": "community", "description": "A route description",
                  "mapID": 1, "conditions": {"Level": 10, "AnyOf": seq({"Hardcore": False})},
                  "legacyLabels": seq("Old name"), "autoStartOnMap": True, "notSkippable": True,
                  "hiddenFromSelection": True, "temporary": True, "sojournerAchievementID": 1, "delve": {},

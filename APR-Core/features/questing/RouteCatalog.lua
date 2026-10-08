@@ -3,16 +3,14 @@
 
 APR.RouteCatalog = {}
 local Catalog = APR.RouteCatalog
--- Maintainer-approved attribution; the exception is named explicitly in the route's own label.
-local provenance = { ["84-EclipseGlaives-10-to-70"] = {author = "EclipseGlaives", community = true} }
 
-local function AuthorText(data, attribution)
+local function AuthorText(data)
     if type(data.author) == "string" and data.author ~= "" then return data.author end
     local names = {}
     for _, name in ipairs(type(data.authors) == "table" and data.authors or {}) do
         if type(name) == "string" and name ~= "" then names[#names + 1] = name end
     end
-    return #names > 0 and table.concat(names, ", ") or attribution and attribution.author or "APR"
+    return #names > 0 and table.concat(names, ", ") or "APR"
 end
 
 function Catalog:Build()
@@ -27,10 +25,9 @@ function Catalog:Build()
             local visibility = APR:GetRouteVisibility(key)
             if visibility ~= "hidden" or queued[data.label] then
                 known[data.label] = true
-                local attribution = provenance[key]
                 local record = { key = key, label = data.label, expansion = data.expansion or "",
-                    category = data.category or APR.CATEGORIES.Leveling, author = AuthorText(data, attribution),
-                    community = data.community == true or data.source == "community" or attribution and attribution.community,
+                    category = data.category or APR.CATEGORIES.Leveling, author = AuthorText(data),
+                    community = data.community == true or data.source == "community",
                     visibility = visibility,
                     favorite = favorites[key] == true, completed = completed[data.label] == true,
                     progress = progress[key] or 0, total = #(data.steps or {}), description = data.description }
@@ -44,7 +41,7 @@ function Catalog:Build()
     for label in pairs(queued) do
         if not known[label] then
             records[#records + 1] = { key = "missing:" .. label, label = label, expansion = "", category = "",
-                author = APR:LocalizeUI("AUTHOR_UNKNOWN"), visibility = "hidden", progress = 0, total = 0,
+                author = "APR", visibility = "hidden", progress = 0, total = 0,
                 search = APR:NormalizeSearchText(label) }
         end
     end

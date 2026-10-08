@@ -38,7 +38,6 @@ local labels = {
     EXPANSION = { "Expansion", "Extension" },
     CATEGORY = { "Category", "Catégorie" },
     AUTHOR = { "Author", "Auteur" },
-    AUTHOR_UNKNOWN = { "Author not specified", "Auteur non renseigné" },
     DETAILS = { "Route details", "Détails de la route" },
     NO_RESULTS = { "No routes match these filters.", "Aucune route ne correspond à ces filtres." },
     AVAILABLE = { "Available", "Disponible" },
