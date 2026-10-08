@@ -29,7 +29,7 @@ dofile("APR-Core/ui/route/RouteBrowser.lua")
 local catalog = APR.RouteCatalog
 local records = catalog:Build()
 assert(#records == 3)
-assert(records[1].author == APR:LocalizeUI("AUTHOR_UNKNOWN"))
+assert(records[1].author == "APR")
 assert(records[2].author == "Jane, John")
 assert(#catalog:Filter(records, {query = "midnight jane", facet = "community"}) == 1)
 assert(#catalog:Filter(records, {query = "other jane"}) == 0)
@@ -49,4 +49,11 @@ assert(APR.settings.profile.routeFavorites.beta)
 APR.RouteBrowser.filters.query = "no such route"
 APR.RouteBrowser:Refresh()
 assert(APR.RouteBrowser.empty:IsShown() and not APR.RouteBrowser.details:IsShown())
+APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {label = "10-70 route by EclipseGlaives", steps = {}}
+local community = catalog:Filter(catalog:Build(), {query = "EclipseGlaives", facet = "community"})
+assert(#community == 1 and community[1].author == "EclipseGlaives")
+APRCustomPath[APR.PlayerID] = {"Unavailable", "Hidden", "Removed route"}
+local path = catalog:Filter(catalog:Build(), {facet = "path"})
+assert(#path == 3 and path[2].label == "Hidden" and path[3].label == "Removed route")
+assert(catalog:ChangePath(path[3], "remove") and #APRCustomPath[APR.PlayerID] == 2)
 print("Route catalog: metadata, search, availability, path mutations and browser controls passed")

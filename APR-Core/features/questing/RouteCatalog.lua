@@ -3,14 +3,16 @@
 
 APR.RouteCatalog = {}
 local Catalog = APR.RouteCatalog
+-- Maintainer-approved attribution; the exception is named explicitly in the route's own label.
+local provenance = { ["84-EclipseGlaives-10-to-70"] = {author = "EclipseGlaives", community = true} }
 
-local function AuthorText(data)
+local function AuthorText(data, attribution)
     if type(data.author) == "string" and data.author ~= "" then return data.author end
     local names = {}
     for _, name in ipairs(type(data.authors) == "table" and data.authors or {}) do
         if type(name) == "string" and name ~= "" then names[#names + 1] = name end
     end
-    return #names > 0 and table.concat(names, ", ") or APR:LocalizeUI("AUTHOR_UNKNOWN")
+    return #names > 0 and table.concat(names, ", ") or attribution and attribution.author or "APR"
 end
 
 function Catalog:Build()
@@ -25,9 +27,11 @@ function Catalog:Build()
             local visibility = APR:GetRouteVisibility(key)
             if visibility ~= "hidden" or queued[data.label] then
                 known[data.label] = true
+                local attribution = provenance[key]
                 local record = { key = key, label = data.label, expansion = data.expansion or "",
-                    category = data.category or APR.CATEGORIES.Leveling, author = AuthorText(data),
-                    community = data.community == true or data.source == "community", visibility = visibility,
+                    category = data.category or APR.CATEGORIES.Leveling, author = AuthorText(data, attribution),
+                    community = data.community == true or data.source == "community" or attribution and attribution.community,
+                    visibility = visibility,
                     favorite = favorites[key] == true, completed = completed[data.label] == true,
                     progress = progress[key] or 0, total = #(data.steps or {}), description = data.description }
                 record.search = APR:NormalizeSearchText(table.concat({record.label, key, record.expansion,
