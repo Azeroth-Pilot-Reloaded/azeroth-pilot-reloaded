@@ -50,6 +50,7 @@ APR-Core/ui/foundations/StatusBars.lua
 APR-Core/ui/foundations/Widgets.lua
 APR-Core/ui/foundations/TimeSeriesGraph.lua
 APR-Core/ui/foundations/VirtualList.lua
+APR-Core/ui/panels/LayoutEditor.lua
 APR-Core/utils/TextStyleUtils.lua
 APR-Core/utils/TargetUtils.lua
 APR-Core/utils/QuestUtils.lua
