@@ -23,6 +23,7 @@ CurrentStepScreenPanel:SetSize(420, stepHeight)
 CurrentStepScreenPanel:SetScale(1.25)
 
 dofile("APR-Core/ui/route/FillersFrame.lua")
+dofile("APR-Core/ui/foundations/VirtualList.lua")
 dofile("APR-Core/ui/route/QuestOrderList.lua")
 dofile("APR-Core/features/player/AFK.lua")
 -- Load the shared anchor selection and positioning functions after mock widgets

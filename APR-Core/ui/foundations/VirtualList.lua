@@ -5,10 +5,10 @@ APR.VirtualList = {}
 local List = APR.VirtualList
 List.__index = List
 
-function List:New(scrollFrame, createRow, bindRow, rowHeight)
+function List:New(scrollFrame, createRow, bindRow, rowHeight, child)
     local list = setmetatable({ scroll = scrollFrame, createRow = createRow, bindRow = bindRow,
         rowHeight = rowHeight or 56, items = {}, offsets = { 0 }, rows = {}, active = {}, height = 0, generation = 0 }, self)
-    list.child = CreateFrame("Frame", nil, scrollFrame)
+    list.child = child or CreateFrame("Frame", nil, scrollFrame)
     list.child:SetSize(1, 1)
     scrollFrame:SetScrollChild(list.child)
     scrollFrame:HookScript("OnVerticalScroll", function() list:RefreshVisible() end)
@@ -75,6 +75,7 @@ function List:RenderVisible(force)
         if index < first or index > last then
             if GameTooltip and GameTooltip:GetOwner() == row then GameTooltip:Hide() end
             row:Hide()
+            if row.onRecycle then row:onRecycle() end
             row.item, row.boundGeneration = nil, nil
             self.rows[#self.rows + 1] = row
             self.active[index] = nil
@@ -92,6 +93,10 @@ function List:RenderVisible(force)
         if force or row.boundGeneration ~= self.generation or row.boundIndex ~= index or row.boundWidth ~= width then
             row.item = self.items[index]
             self.bindRow(row, row.item, index)
+            -- A binder may use a shared renderer that sets its own geometry.
+            row:ClearAllPoints()
+            row:SetPoint("TOPLEFT", self.child, "TOPLEFT", 0, -self.offsets[index])
+            row:SetSize(width, self.offsets[index + 1] - self.offsets[index])
             row.boundGeneration, row.boundIndex, row.boundWidth = self.generation, index, width
         end
         row:Show()

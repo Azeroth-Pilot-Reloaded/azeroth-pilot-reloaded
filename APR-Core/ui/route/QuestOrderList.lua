@@ -1,5 +1,5 @@
--- Owns the route-list window and cancellable, budgeted rendering into two reusable buffers.
--- The visible buffer stays intact until its replacement is complete and still matches the request.
+-- Builds route models in cancellable batches and publishes them to a bounded visible-row pool.
+-- The old models remain readable until their replacement is complete and still matches the request.
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local LibWindow = LibStub("LibWindow-1.1")
@@ -47,6 +47,7 @@ end
 local function buildLayout(scrollChild)
     return {
         scrollChild = scrollChild or QuestOrderListFrame_ScrollChild,
+        collectModels = true,
         frameWidth = math.max(1, FRAME_WIDTH - 22),
         signatureParts = { tostring(FRAME_WIDTH) },
         frameOffset = FRAME_OFFSET,
@@ -184,6 +185,16 @@ QuestOrderListFrame_ScrollChild = CreateFrame("Frame", "QuestOrderListFrame_Scro
     QuestOrderListFrame_ScrollFrame)
 QuestOrderListFrame_ScrollChild:SetSize(FRAME_WIDTH, 1)
 QuestOrderListFrame_ScrollFrame:SetScrollChild(QuestOrderListFrame_ScrollChild)
+APR.questOrderList.virtualList = APR.VirtualList:New(QuestOrderListFrame_ScrollFrame, function(parent)
+    local row = CreateFrame("Frame", nil, parent, "BackdropTemplate")
+    row.onRecycle = function(self)
+        if self.model then self.model.frame = nil; self.model = nil end
+    end
+    return row
+end, function(row, model)
+    QuestOrderListUtils:BindStepModel(row, model, QuestOrderListFrame_ScrollChild)
+end, function(model) return model.height end, QuestOrderListFrame_ScrollChild)
+QuestOrderListFrame_ScrollFrame.aprVirtualList = APR.questOrderList.virtualList
 
 -- Create the frame header
 QuestOrderListFrame_StepHolderHeader = APR:CreateFrameHeader("QuestOrderListFrame_StepHolderHeader",
@@ -317,12 +328,9 @@ function APR.questOrderList:RemoveSteps(hideFrame)
     self.renderComplete = false
     self.visibilityState = nil
     wipe(self.rawStepContainers)
-    for _, questContainer in pairs(self.stepList) do
-        QuestOrderListUtils:ReleaseStepFrame(questContainer)
-    end
     wipe(self.stepList)
+    self.virtualList:SetItems({})
     if self.renderBuffer then
-        for _, row in pairs(self.renderBuffer.stepList) do QuestOrderListUtils:ReleaseStepFrame(row) end
         wipe(self.renderBuffer.stepList)
         wipe(self.renderBuffer.rawStepContainers)
     end
@@ -411,23 +419,19 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         end
     end
 
-    -- Prepare a second scroll child while the published list remains readable.
+    -- Build lightweight models while the published viewport remains readable.
     QuestOrderListUtils:CancelRender(self)
     local target = self.renderBuffer
     if not target then
-        target = { scrollChild = CreateFrame("Frame", nil, QuestOrderListFrame_ScrollFrame),
-            stepList = {}, rawStepContainers = {} }
-        target.scrollChild:Hide()
+        target = { stepList = {}, rawStepContainers = {} }
         self.renderBuffer = target
     end
     target.visibilityParts, target.questID = {}, nil
-    local layout = buildLayout(target.scrollChild)
-    target.scrollChild:SetWidth(layout.frameWidth)
+    local layout = buildLayout()
     local renderRows = self:CreateRouteRenderer(layout, activeRouteSteps, currentStepIndex, target)
     local function worker()
-        -- Recycling is budgeted too; cancelling halfway cannot pool a row twice.
-        for index, row in pairs(target.stepList) do
-            QuestOrderListUtils:ReleaseStepFrame(row)
+        -- Release old model references incrementally before rebuilding the pending view.
+        for index in pairs(target.stepList) do
             target.stepList[index] = nil
             coroutine.yield()
         end
@@ -459,15 +463,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         local followStep = self.currentRouteKey ~= routeKey or self.currentStepIndex ~= currentStepIndex
         QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
         local scrollOffset = QuestOrderListFrame_ScrollFrame:GetVerticalScroll()
-        target.scrollChild:SetHeight(math.max(1, -layout.dataHeight))
-        local previous = { scrollChild = QuestOrderListFrame_ScrollChild, stepList = self.stepList,
+        local previous = { stepList = self.stepList,
             rawStepContainers = self.rawStepContainers }
         local tooltipOwner = GameTooltip:GetOwner()
-        if tooltipOwner and tooltipOwner:GetParent() == previous.scrollChild then GameTooltip:Hide() end
-        previous.scrollChild:Hide()
-        QuestOrderListFrame_ScrollChild = target.scrollChild
-        QuestOrderListFrame_ScrollFrame:SetScrollChild(target.scrollChild)
-        target.scrollChild:Show()
+        if tooltipOwner and tooltipOwner:GetParent() == QuestOrderListFrame_ScrollChild then GameTooltip:Hide() end
         self.stepList, self.rawStepContainers = target.stepList, target.rawStepContainers
         self.renderBuffer = previous
         self.currentStepIndex, self.currentRouteKey = currentStepIndex, routeKey
@@ -475,13 +474,13 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         self.renderComplete, self.visibilityState = true, visibilityState
         local parentCollapsed = isSnapEnabled() and _G.CurrentStepScreenPanel and _G.CurrentStepScreenPanel.collapsed
         if not parentCollapsed then QuestOrderListPanel:Show() end
+        self.virtualList:SetItems(self.stepList, not followStep)
         if target.currentDisplayIndex then
             QuestOrderListUtils:SetCurrentStepIndicator(self.stepList, QuestOrderListFrame_ScrollFrame,
                 target.currentDisplayIndex, followStep)
         end
         if not followStep then
-            QuestOrderListFrame_ScrollFrame:SetVerticalScroll(math.min(scrollOffset,
-                QuestOrderListFrame_ScrollFrame:GetVerticalScrollRange()))
+            self.virtualList:ScrollTo(scrollOffset)
         end
     end)
     self.renderRequest = request

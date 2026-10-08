@@ -1,8 +1,7 @@
--- Supports the route-list UI with row pooling, budgeted coroutine jobs and progress positioning.
+-- Supports measured step models, reusable visible rows, budgeted jobs and progress positioning.
 -- Reputation signatures include nested conditions so only meaningful threshold changes rebuild the list.
 
 APR.questOrderListSupport = APR.questOrderListSupport or {}
-APR.questOrderListSupport.framePool = {}
 
 local REPUTATION_STATE_KEYS = { "Reputation", "ReputationLevel", "SkipForReputation" }
 
@@ -79,20 +78,13 @@ function APR.questOrderListSupport:StartRender(owner, worker, isValid, afterBatc
     owner.renderFrame:Show()
 end
 
-function APR.questOrderListSupport:ReleaseStepFrame(container)
-    if container.inPool then return end
-    container.inPool = true
-    container:Hide()
-    container:ClearAllPoints()
-    container:SetScript("OnEnter", nil)
-    container:SetScript("OnLeave", nil)
-    container:EnableMouse(false)
-    if GameTooltip:GetOwner() == container then GameTooltip:Hide() end
-    self.framePool[#self.framePool + 1] = container
-end
-
 function APR.questOrderListSupport:SetStepFrameState(container, color, isCurrentStep)
     if not container then return end
+    if container.isModel then
+        container.color, container.isActiveStep = color, isCurrentStep
+        if container.frame then self:SetStepFrameState(container.frame, color, isCurrentStep) end
+        return
+    end
 
     local titleRole = isCurrentStep and "warning" or (color == "green" and "success" or "muted")
     APR:SetFontStringRole(container.indexFont, titleRole)
@@ -103,6 +95,12 @@ function APR.questOrderListSupport:SetStepFrameState(container, color, isCurrent
 end
 
 function APR.questOrderListSupport:CollapseStepDetails(container)
+    if container and container.isModel then
+        local changed = #container.questInfo > 0
+        container.questInfo = {}
+        if container.frame then self:CollapseStepDetails(container.frame) end
+        return changed
+    end
     if not container or not container.questFonts or #container.questFonts == 0 then
         return false
     end
@@ -168,9 +166,39 @@ function APR.questOrderListSupport:CreateTextFont(parent, text, width, color)
     return fontString
 end
 
+local Model = { GetHeight = function(self) return self.height end }
+Model.__index = Model
+
+-- A single hidden measurement row preserves the exact font/wrapping rules without allocating offscreen rows.
+function APR.questOrderListSupport:CreateStepModel(layout, stepIndex, stepText, questInfo, color, isActiveStep)
+    if not self.measureParent then
+        self.measureParent = CreateFrame("Frame", nil, UIParent)
+        self.measureParent:Hide()
+    end
+    local measurement = {scrollChild = self.measureParent, frameWidth = layout.frameWidth,
+        frameOffset = layout.frameOffset, dataHeight = 0, container = self.measureRow,
+        signatureParts = layout.signatureParts, measuring = true}
+    local row, activeQuestId = self:AddStepFrameWithQuest(measurement, stepIndex, stepText, questInfo, color, isActiveStep)
+    self.measureRow = row
+    local model = setmetatable({isModel = true, stepIndex = stepIndex, stepText = stepText,
+        questInfo = questInfo or {}, color = color, isActiveStep = isActiveStep,
+        height = row:GetHeight(), width = layout.frameWidth, frameOffset = layout.frameOffset}, Model)
+    layout.dataHeight = layout.dataHeight - model.height
+    return model, activeQuestId
+end
+
+function APR.questOrderListSupport:BindStepModel(row, model, parent)
+    if row.model then row.model.frame = nil end
+    row.model, model.frame = model, row
+    local layout = {scrollChild = parent, frameWidth = model.width, frameOffset = model.frameOffset,
+        dataHeight = 0, container = row}
+    self:AddStepFrameWithQuest(layout, model.stepIndex, model.stepText, model.questInfo, model.color, model.isActiveStep)
+    self:SetStepFrameState(row, model.color, model.isActiveStep)
+end
+
 function APR.questOrderListSupport:AddStepFrameWithQuest(layout, stepIndex, stepText, questInfo, color, isActiveStep)
-    local container = table.remove(self.framePool) or CreateFrame("Frame", nil, layout.scrollChild, "BackdropTemplate")
-    container.inPool = nil
+    if layout.collectModels then return self:CreateStepModel(layout, stepIndex, stepText, questInfo, color, isActiveStep) end
+    local container = layout.container or CreateFrame("Frame", nil, layout.scrollChild, "BackdropTemplate")
     container:SetParent(layout.scrollChild)
     local indexStr = tostring(stepIndex)
     local offset = 14 + 7 * string.len(indexStr)
@@ -234,7 +262,7 @@ function APR.questOrderListSupport:AddStepFrameWithQuest(layout, stepIndex, step
     container:SetPoint("TOPLEFT", layout.scrollChild, "TOPLEFT", 0, layout.dataHeight)
     layout.dataHeight = layout.dataHeight - container:GetHeight()
 
-    bindUncompletedStepTooltip(container, color == "gray" and questInfo or nil)
+    if not layout.measuring then bindUncompletedStepTooltip(container, color == "gray" and questInfo or nil) end
 
     container:Show()
 
@@ -260,6 +288,7 @@ function APR.questOrderListSupport:SetCurrentStepIndicator(stepList, scrollFrame
     if followStep == false then return end
     scrollFrame.aprScrollTimer = C_Timer.NewTimer(0, function()
         scrollFrame.aprScrollTimer = nil
+        if scrollFrame.aprVirtualList then scrollFrame.aprVirtualList:ScrollToIndex(stepindex); return end
         if scrollFrame:GetVerticalScrollRange() > 0 then
             local yOffset = 0
             for i = 1, stepindex - 1 do
