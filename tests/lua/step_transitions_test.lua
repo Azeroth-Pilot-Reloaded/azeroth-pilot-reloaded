@@ -59,4 +59,19 @@ APR.stepHandlers.GroupQuestPopup()
 APR:ActivateRoute("route")
 accept()
 assert(APRData.player.WantedQuestList[10] == nil)
-print("Transitions: context guards, batched skip undo, expiry, bounded history and stale dialogs passed")
+-- The existing rollback command/button uses the same previous-step path.
+dofile("APR-Core/utils/StepUtils.lua")
+APR.RouteQuestStepList.route = route
+function APR:GetRouteSteps() return route end
+function APR:StepFilterQuestHandler() return false end
+function APR:UpdateQuestAndStep() self:UpdateStep() end
+APR:SetRouteProgress("route", 1)
+assert(APR:CommitManualSkip(3))
+assert(APR:PreviousQuestStep() and APRData.player.route == 1,
+    "Rollback must undo the whole manual skip, not just return one step")
+APR:SetRouteProgress("route", 3)
+assert(APR:PreviousQuestStep() and APRData.player.route == 2,
+    "Without a valid skip, rollback keeps its normal previous-step behavior")
+assert(APR:PreviousQuestStep() and APRData.player.route == 1)
+assert(not APR:PreviousQuestStep() and APRData.player.route == 1)
+print("Transitions: context guards, rollback undo/fallback, expiry, bounded history and stale dialogs passed")
