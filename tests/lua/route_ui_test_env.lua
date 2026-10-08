@@ -115,6 +115,8 @@ end
 
 function methods:SetSize(width, height) self.width, self.height = width, height end
 
+function methods:GetSize() return self.width, self.height end
+
 function methods:SetParent(parent)
     check(self); self.parent = parent
 end
