@@ -111,7 +111,7 @@ function UI:CopyBox(parent)
     return scroll, edit
 end
 
-function UI:ShowTextReport(title, report)
+function UI:ShowTextReport(title, report, owner)
     local frame = self.reportWindow
     if not frame then
         frame = self:Window("APRTextReport", title, 900, 650)
@@ -126,6 +126,7 @@ function UI:ShowTextReport(title, report)
         copy:SetPoint("BOTTOMRIGHT")
         self:Tooltip(copy, APR:LocalizeUI("COPY_HINT"))
     end
+    frame.reportOwner = owner
     frame.header.Text:SetText(title)
     frame.edit:SetText(report)
     frame.edit:SetCursorPosition(0)
