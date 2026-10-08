@@ -79,7 +79,10 @@ end
 
 -- Export a snapshot; later status refreshes must not replace text being selected.
 function APR:ExportStatusReport()
-    APR.UI:ShowTextReport(L["STATUS_EXPORT"], self:FormatDebugTable(self:getStatusReportInfos()), self.StatusFrame)
+    local report = self:getStatusReportInfos()
+    -- Read the current runtime step without triggering route construction or progression.
+    report.currentStepData = self:PeekCurrentStep()
+    APR.UI:ShowTextReport(L["STATUS_EXPORT"], self:FormatDebugTable(report), self.StatusFrame)
 end
 
 local function GetCurrentStepInfo()
