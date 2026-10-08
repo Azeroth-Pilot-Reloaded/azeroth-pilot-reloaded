@@ -33,7 +33,7 @@ Un addon tiers absent du client n'est pas une régression d'APR.
 | ID | Manipulation | Résultat attendu |
 | --- | --- | --- |
 | S01 | Connexion puis `/reload`, avec et sans route active. | Aucune erreur ; progression et options conservées. |
-| S02 | Ouvrir `/apr` puis `/apr route`. | Options Blizzard/AceConfig et catalogue AceGUI d’origine ; aucun nouvel accueil ni bibliothèque. |
+| S02 | Ouvrir `/apr` puis `/apr route`. | Options Blizzard/AceConfig et catalogue AceGUI d’origine ; aucun bouton Performances dans les réglages, aucun nouvel accueil ni bibliothèque. |
 | S03 | Modifier affichage du guide, flèche, groupe et liste des étapes. | Options historiques présentes et comportement inchangé. |
 | S04 | Activer l'acceptation des quêtes de route, puis l'acceptation de toutes les quêtes dans les options avancées. | Les options mutuellement exclusives restent cohérentes. |
 | S05 | Parcourir les catégories d’automatisation, navigation, polices et couleurs. | Toutes les options historiques sont accessibles dans leur catégorie. |
@@ -58,6 +58,7 @@ Un addon tiers absent du client n'est pas une régression d'APR.
 | R11 | Modifier/importer une route via le recorder, options ouvertes puis fermées. | Catalogue actualisé ; la route active est réévaluée lorsque nécessaire. |
 | R12 | Faire Maj + clic droit sur une route de test. | Progression de cette route réinitialisée puis route ajoutée au parcours. |
 | R13 | Alterner parcours vide/rempli et onglets d’extension pendant plusieurs ouvertures. | Pas de lignes périmées, de doublons de contrôles ni de clic visant une ancienne route. |
+| R14 | Survoler une route APR sans auteur, EclipseGlaives, puis une route importée avec auteurs/description ; répéter dans le parcours personnalisé et sur une route désactivée. | Auteur depuis les données (APR par défaut), origine et description si présente ; prérequis et indications de clic conservés. Après tri/recyclage, métadonnées de la bonne route. |
 
 ## 3. Progression, callbacks et annulation
 
@@ -65,7 +66,7 @@ Un addon tiers absent du client n'est pas une régression d'APR.
 | --- | --- | --- |
 | Q01 | Enchaîner prise de quête, objectif et restitution. | Chaque étape attend sa vraie condition puis avance une seule fois. |
 | Q02 | Terminer plusieurs étapes déjà satisfaites d'une longue route. | Avance automatique par lots sans blocage prolongé de l'interface. |
-| Q03 | Sauter manuellement une étape puis utiliser `/apr undo` immédiatement, ou le bouton du diagnostic. | Retour à l'index précédant ce saut, puis réévaluation normale des conditions. Aucun état de quête WoW n'est restauré. |
+| Q03 | Sauter manuellement une étape puis cliquer immédiatement le bouton rollback du guide ; répéter avec `/apr rollback`. | Retour à l’index précédant ce saut, même si plusieurs étapes ont été traversées immédiatement. Sans saut annulable, rollback conserve le retour à l’étape précédente. Aucun état de quête WoW n’est restauré. |
 | Q04 | Sauter une étape, puis progresser automatiquement ou changer de route. | L'ancien saut n'est plus annulable ; pas de retour dans une autre route. |
 | Q05 | Faire deux sauts manuels puis annuler. | Un seul niveau d'annulation : le dernier saut. |
 | Q06 | Ouvrir un choix de quête de groupe ; changer de route avant de répondre. | L'ancien callback ne modifie pas la nouvelle étape. |
@@ -74,21 +75,19 @@ Un addon tiers absent du client n'est pas une régression d'APR.
 | Q09 | Satisfaire une condition de groupe parallèle, réputation ou niveau. | Insertion/visibilité et liste des étapes correspondent à l'état réel. |
 | Q10 | Étapes disponibles d'objet/sort, foyer, portail/taxi, achat, banque, équipement, réparation. | Même action et mêmes gardes qu'avant découpage ; aucune action métier en consultant la liste future. |
 
-## 4. Explication et rapport
+## 4. Statut historique et export Lua
 
 | ID | Manipulation | Résultat attendu |
 | --- | --- | --- |
-| D01 | Cliquer `?` dans le guide ou `/apr status`, sans route puis avec APR désactivé. | Explication adaptée, aucune erreur de nil. |
-| D02 | Étape d'objectif avec quête absente, puis quête dans le journal. | Quête absente distinguée d'un objectif restant ou de données encore indisponibles. |
-| D03 | S'éloigner de la zone d'étape ; tester une étape d'action non liée à une quête. | Indication de guidage hors zone ou texte réel de l'action attendue. Pas de cause inventée. |
-| D04 | Ouvrir le diagnostic plusieurs fois sur une route à groupes parallèles. | L'ouverture ne déclenche ni action, ni insertion, ni progression. |
-| D05 | Afficher le rapport Lua et utiliser Copier le rapport puis Ctrl+C. | Rapport avec noms de clés, indentation et retours à la ligne ; valeurs du relevé conservées. |
-| D06 | Activer/désactiver l'inclusion d'identité. | Nom et royaume absents par défaut et présents seulement sur demande. Les textes libres de routes ne sont pas anonymisés. |
-| D07 | Fermer pendant des notifications de quêtes. | Le rafraîchissement différé est annulé ; aucun travail périodique de cette fenêtre fermée. |
-| D08 | Comparer les sections au statut historique. | Version APR/client/build/interface, langue, région, date, classe/niveau/faction, route/action/étape, continent/zone et coordonnées présents. |
-| D09 | Réduire/agrandir la fenêtre, afficher/masquer le rapport Lua. | Sections réorganisées en une/deux colonnes ; corps et rapport défilants, commandes toujours accessibles. |
-| D10 | Sélectionner le rapport pendant une mise à jour de quête, puis masquer le rapport. | Sélection et texte préservés pendant la copie ; saisie libérée et rafraîchissement repris après masquage. |
-| D11 | Ouvrir le statut sans position disponible ou sans route active. | « Indisponible » explicite, aucune coordonnée inventée ni exception Lua. |
+| D01 | Ouvrir `/apr status` ou le bouton Statut des réglages, puis fermer. | Ancienne fenêtre compacte avec logo et trois sections : addon/client, route, personnage. Fermeture et réouverture des réglages comme auparavant. |
+| D02 | Examiner le guide et son menu contextuel. | Aucun bouton `?`, aucune entrée d’explication ni d’annulation supplémentaire ; bouton rollback historique conservé. |
+| D03 | Comparer le contenu au statut historique avec une route active. | Version APR/client, langue, région, date, route/index/action, continent/zone/coordonnées et classe/niveau/faction présents. Aucune explication d’attente ni section moteur ajoutée. |
+| D04 | Ouvrir le statut plusieurs fois sur une route à groupes parallèles, puis sans route et avec APR désactivé. | Aucune action, insertion ni progression provoquée par la lecture ; absence de route indiquée sans erreur. |
+| D05 | Exporter le rapport et utiliser Copier le rapport puis Ctrl+C. | Fenêtre défilante, noms des clés conservés, indentation et retours à la ligne. Informations du statut présentes. |
+| D06 | Basculer le bouton de masquage puis exporter dans chacun des deux états. | Nom et royaume masqués par défaut ; affichés dans le statut et inclus dans l’export uniquement lorsque le masquage est désactivé. |
+| D07 | Exporter avec identité visible puis réactiver le masquage dans le statut resté ouvert. | Identité retirée immédiatement du statut et du rapport déjà ouvert. Un export de performances ouvert séparément n’est pas remplacé. |
+| D08 | Sélectionner le rapport puis modifier la police des textes APR ou progresser dans le guide. | Texte et sélection de l’export préservés ; aucun rafraîchissement périodique ajouté au statut. |
+| D09 | Ouvrir le statut dans une instance ou sans position disponible. | Coordonnées indisponibles signalées selon le comportement historique ; aucune coordonnée inventée ni erreur Lua. |
 
 ## 5. Groupe
 
@@ -135,9 +134,9 @@ Une micro-mesure Lua hors jeu ne garantit pas l'absence de lag en situation rée
 | U01 | Déplacer les fenêtres de jeu par leurs en-têtes et reload. | Positions historiques conservées avec LibWindow. |
 | U02 | Modifier les ancrages guide/fillers/AFK/liste depuis les options. | Fenêtres liées positionnées selon les mêmes réglages qu’avant le retour UI. |
 | U03 | Utiliser les actions historiques de remise à zéro des positions dans les options. | Fenêtres récupérables à l’écran ; aucun éditeur de contours supplémentaire. |
-| U04 | Entrer en combat avec le diagnostic ouvert et une annulation disponible. | Annuler le saut devient immédiatement indisponible ; aucun déplacement de parent protégé. |
-| U05 | Ouvrir réglages/diagnostic pendant un combat. | Pas d'erreur ; actions incompatibles désactivées/différées. |
-| U06 | Examiner guide, groupe, liste, images, popups, diagnostic et performances en APR natif. | Aspect WoW, couleurs personnalisées conservées, actions fonctionnelles. |
+| U04 | Entrer en combat avec le statut puis exporter et masquer les identifiants. | Lecture, export et masquage fonctionnels ; aucun déplacement de parent protégé ni action de quête déclenchée. |
+| U05 | Ouvrir réglages/statut pendant un combat. | Pas d'erreur ; actions incompatibles désactivées/différées. |
+| U06 | Examiner guide, groupe, liste, images, popups, statut et performances en APR natif. | Aspect WoW, couleurs personnalisées conservées, actions fonctionnelles. |
 | U07 | Replier/déplier guide et liste. | Fonds repliés transparents et contenu correctement restauré. |
 | U08 | Charger un ancien profil utilisant Moderne/Forever/Contraste. | Sur audit-clean, le thème effectif reste WoW ; aucun choix de thème expérimental dans les réglages. |
 | U09 | Activer ElvUI ou EllesmereUI dans les options historiques puis reload. | Un seul fournisseur applique le skin ; aucun cumul de bordures. |
@@ -152,5 +151,5 @@ parcours corrects ; rendu lisible sur les configurations retenues ; aucune fuite
 de contrôles après ouvertures et défilements répétés. Les cas non applicables
 doivent être justifiés, pas marqués comme réussis.
 
-Pour un KO : joindre l'ID du cas, les versions exactes, le rapport de diagnostic,
+Pour un KO : joindre l'ID du cas, les versions exactes, le rapport de statut,
 le résultat attendu/obtenu et, si pertinent, une capture de performances exportée.
