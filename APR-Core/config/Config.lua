@@ -48,6 +48,7 @@ function APR.settings:InitializeSettings()
         profile = {
             uiTheme = "wow",
             uiWindows = {},
+            routeFavorites = {},
             -- automation
             autoAccept = false,
             autoAcceptQuestRoute = true,
@@ -250,12 +251,6 @@ function APR.settings:createBlizzOptions()
         name = APR.title .. ' - ' .. APR.version,
         type = "group",
         args = {
-            layoutEditor = {
-                order = 1.3, type = "execute", width = "full",
-                name = L["UI_LAYOUT_TITLE"], desc = L["UI_LAYOUT_HELP"],
-                func = function() APR.LayoutEditor:Show() end,
-                disabled = InCombatLockdown,
-            },
             discordButton = {
                 order = 1.1,
                 name = L["JOIN_DISCORD"],
@@ -1790,6 +1785,12 @@ function APR.settings:createBlizzOptions()
                 type = "group",
                 name = L["ENABLE_AND_DEBUG"],
                 args = {
+                    layoutEditor = {
+                        order = 0.5, type = "execute", width = "full",
+                        name = L["UI_LAYOUT_TITLE"], desc = L["UI_LAYOUT_HELP"],
+                        func = function() APR.LayoutEditor:Show() end,
+                        disabled = InCombatLockdown,
+                    },
                     subgroup_Enable = {
                         order = 1,
                         type = "group",
@@ -2026,7 +2027,7 @@ function APR.settings:CreateAboutOption()
                 type = "description",
                 width = "full",
                 fontSize = "medium",
-                name = function() return wrapHelp(string.format(L["ROUTE_DESIGNER"], "Pahonix, Ola, Clara")) end,
+                name = function() return wrapHelp(string.format(L["ROUTE_DESIGNER"], "Pahonix, Ola, Clara, Jumbonero")) end,
             },
             support = {
                 order = 2.2,
@@ -2219,13 +2220,13 @@ function APR.settings:ToggleAddon()
 end
 
 function APR.settings:OpenSettings(name)
+    if name == L["ROUTE"] then return APR.RouteBrowser:Show() end
     if name == APR.title then
         if InterfaceOptionsFrame_OpenToCategory then
             InterfaceOptionsFrame_OpenToCategory(APR.title)
         else
             Settings.OpenToCategory(self.category.ID)
         end
-        self:OpenSettings(L["ROUTE"])
     end
     if APR.Options then
         if SettingsPanel then
@@ -2245,9 +2246,6 @@ function APR.settings:OpenSettings(name)
             return
         elseif InterfaceOptionsFrame_OpenToCategory then
             InterfaceOptionsFrame_OpenToCategory(APR.Options)
-            if APR.OptionsRoute then
-                InterfaceOptionsFrame_OpenToCategory(APR.OptionsRoute)
-            end
             return
         else
             Settings.OpenToCategory(self.category.ID)
@@ -2263,6 +2261,8 @@ function APR.settings:CloseSettings()
                 SettingsPanel:Hide()
             end
             return
+        elseif InterfaceOptionsFrame then
+            InterfaceOptionsFrame:Hide()
         end
     end
 end

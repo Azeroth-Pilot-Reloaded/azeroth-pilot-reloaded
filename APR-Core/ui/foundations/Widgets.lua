@@ -5,21 +5,73 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.UI = {}
 local UI = APR.UI
 
+-- MDI exports share the Route Recorder's icon language; SVG sources/licenses are in assets/ui/mdi.
+local iconRoot = "Interface\\AddOns\\APR\\APR-Core\\assets\\ui\\"
+
+function UI:SetIcon(texture, name)
+    texture:SetTexture(iconRoot .. name .. ".tga", "CLAMPTOBLACKADDITIVE", "CLAMPTOBLACKADDITIVE", "TRILINEAR")
+    texture:SetTexCoord(0, 1, 0, 1)
+    -- Fractional UI scales must not snap the pictogram's edges to different pixels.
+    texture:SetSnapToPixelGrid(false)
+    texture:SetTexelSnappingBias(0)
+    if name == "logo" then texture:SetVertexColor(1, 1, 1, 1)
+    else APR:RegisterThemeRegion(texture, "icon", 1, true) end
+end
+
+function UI:Icon(parent, name, size)
+    local texture = parent:CreateTexture(nil, "OVERLAY")
+    texture:SetSize(size or 18, size or 18)
+    self:SetIcon(texture, name)
+    return texture
+end
+
 function UI:Label(parent, text, size, role)
     local label = parent:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     label:SetJustifyH("LEFT")
     label:SetText(text or "")
-    APR:RegisterFontString(label, "general", { role = role or "base", sizeDelta = (size or 12) - 12 })
+    APR:RegisterFontString(label, "general", { role = role or "base", sizeDelta = (size or 12) - 12, themeAccent = true })
     return label
 end
 
-function UI:Panel(parent, kind)
+function UI:Panel(parent, kind, surface)
     local frame = CreateFrame("Frame", nil, parent, "BackdropTemplate")
-    APR:RegisterSkinTarget(frame, kind or "panel", { themeSurface = true, preserveContent = true })
+    APR:RegisterSkinTarget(frame, kind or "panel", { themeSurface = true, preserveContent = true, surface = surface })
     return frame
 end
 
-function UI:Button(parent, text, width, callback)
+-- Keep the shadow above the panel and below the button, in a child that skins cannot strip.
+-- Short, tapered bands below the lower edge suggest depth without outlining the whole button.
+function UI:ElevateButton(button)
+    if button.elevation then return end
+    button:SetFrameLevel(math.max(button:GetFrameLevel(), button:GetParent():GetFrameLevel() + 2))
+    local shadow = CreateFrame("Frame", nil, button)
+    button.elevation = shadow
+    shadow:SetFrameLevel(button:GetFrameLevel() - 1)
+    shadow:SetAllPoints(button)
+    shadow:EnableMouse(false)
+    for index, opacity in ipairs({0.12, 0.065, 0.025}) do
+        local inset = 4 + index * 2
+        local layer = shadow:CreateTexture(nil, "BACKGROUND")
+        layer:SetPoint("TOPLEFT", shadow, "BOTTOMLEFT", inset, 1 - index)
+        layer:SetPoint("TOPRIGHT", shadow, "BOTTOMRIGHT", -inset, 1 - index)
+        layer:SetHeight(1)
+        layer:SetColorTexture(0.025, 0.015, 0.01, opacity)
+    end
+    local hovered, pressed = false, false
+    local function update()
+        shadow:SetAlpha(not button:IsEnabled() and 0.15 or pressed and 0.25 or hovered and 0.85 or 0.65)
+    end
+    button:HookScript("OnEnter", function() hovered = true; update() end)
+    button:HookScript("OnLeave", function() hovered, pressed = false, false; update() end)
+    button:HookScript("OnMouseDown", function(_, key) if key == "LeftButton" then pressed = true; update() end end)
+    button:HookScript("OnMouseUp", function() pressed = false; update() end)
+    button:HookScript("OnHide", function() hovered, pressed = false, false; update() end)
+    button:HookScript("OnDisable", function() hovered, pressed = false, false; update() end)
+    button:HookScript("OnEnable", update)
+    update()
+end
+
+function UI:Button(parent, text, width, callback, style)
     local button = CreateFrame("Button", nil, parent, "BackdropTemplate")
     button:SetSize(width or 130, 30)
     local label = self:Label(button, text, 12)
@@ -34,11 +86,80 @@ function UI:Button(parent, text, width, callback)
     end)
     button:SetScript("OnLeave", function(self)
         if APR:GetSkinProviderName() then return end
-        if self.SetBackdropBorderColor then self:SetBackdropBorderColor(unpack(APR:GetThemeColor("border"))) end
+        if self.SetBackdropBorderColor then self:SetBackdropBorderColor(unpack(APR:GetThemeColor(self.active and "accent" or "border"))) end
     end)
     button:SetScript("OnEnable", function() label:SetAlpha(1) end)
     button:SetScript("OnDisable", function() label:SetAlpha(0.4) end)
-    APR:RegisterSkinTarget(button, "button", { themeSurface = true })
+    if style == "flat" then
+        local highlight = button:CreateTexture(nil, "HIGHLIGHT")
+        highlight:SetAllPoints()
+        APR:RegisterThemeRegion(highlight, "accent", 0.12)
+    end
+    if style == "raised" then self:ElevateButton(button) end
+    APR:RegisterSkinTarget(button, style == "flat" and "flatButton" or "button", { themeSurface = style ~= "flat" })
+    return button
+end
+
+function UI:SetButtonActive(button, active)
+    button.active = active == true
+    APR:SetFontStringRole(button:GetFontString(), active and "accent" or "base")
+    if not APR:GetSkinProviderName() then
+        button:SetBackdropBorderColor(unpack(APR:GetThemeColor(active and "accent" or "border")))
+    end
+end
+
+-- A child frame keeps functional icons intact when an external skin strips button textures.
+function UI:ButtonIcon(button, name, size, centered)
+    local host = CreateFrame("Frame", nil, button)
+    host:SetSize(size or 18, size or 18)
+    if centered then host:SetPoint("CENTER") else host:SetPoint("LEFT", 12, 0) end
+    host:EnableMouse(false)
+    button.icon = self:Icon(host, name, size)
+    button.icon:SetAllPoints()
+    button:HookScript("OnEnable", function() host:SetAlpha(1) end)
+    button:HookScript("OnDisable", function() host:SetAlpha(0.3) end)
+    if not centered then
+        local label = button:GetFontString()
+        label:ClearAllPoints()
+        label:SetPoint("LEFT", (size or 18) + 20, 0)
+        label:SetPoint("RIGHT", -10, 0)
+    end
+    return button.icon
+end
+
+function UI:IconButton(parent, icon, size, callback, style)
+    local button = self:Button(parent, "", size, callback, style or "flat")
+    button:SetSize(size, size)
+    self:ButtonIcon(button, icon, math.min(icon == "favorite" and 16 or 20, size - 4), true)
+    return button
+end
+
+function UI:Section(parent, title, surface)
+    local panel = self:Panel(parent, "borderedPanel", surface or "inset")
+    panel.title = self:Label(panel, title, 14, "accent")
+    panel.title:SetPoint("TOPLEFT", 12, -10)
+    panel.title:SetPoint("TOPRIGHT", -12, -10)
+    panel.title:SetHeight(22)
+    panel.title:SetWordWrap(false)
+    return panel
+end
+
+-- Column labels share one header band; the sort indicator is a texture, not a font glyph.
+function UI:ColumnHeader(parent, text, callback)
+    local button = CreateFrame("Button", nil, parent, "BackdropTemplate")
+    local label = self:Label(button, text, 11)
+    label:SetPoint("LEFT", 4, 0)
+    label:SetPoint("RIGHT", -22, 0)
+    label:SetWordWrap(false)
+    button:SetFontString(label)
+    button:SetScript("OnClick", callback)
+    local hover = button:CreateTexture(nil, "HIGHLIGHT")
+    hover:SetAllPoints()
+    APR:RegisterThemeRegion(hover, "accent", 0.1)
+    APR:RegisterSkinTarget(button, "flatButton")
+    self:ButtonIcon(button, "up", 16, true)
+    button.icon:GetParent():ClearAllPoints()
+    button.icon:GetParent():SetPoint("RIGHT", -3, 0)
     return button
 end
 
@@ -47,10 +168,10 @@ function UI:SearchBox(parent, width, placeholder, changed)
     edit:SetSize(width or 280, 32)
     edit:SetAutoFocus(false)
     edit:SetFontObject(GameFontHighlight)
-    edit:SetTextInsets(10, 10, 0, 0)
+    edit:SetTextInsets(30, 10, 0, 0)
     edit:SetMaxLetters(160)
     edit.placeholder = self:Label(edit, placeholder, 12, "muted")
-    edit.placeholder:SetPoint("LEFT", 10, 0)
+    edit.placeholder:SetPoint("LEFT", 30, 0)
     edit.placeholder:SetPoint("RIGHT", -10, 0)
     edit:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
     edit:SetScript("OnEnterPressed", function(self) self:ClearFocus() end)
@@ -59,6 +180,12 @@ function UI:SearchBox(parent, width, placeholder, changed)
         changed(self:GetText())
     end)
     APR:RegisterSkinTarget(edit, "editbox", { themeSurface = true })
+    -- EUI re-fades direct input textures when other windows refresh; keep the functional icon in a child.
+    local iconHost = CreateFrame("Frame", nil, edit)
+    iconHost:SetAllPoints(edit)
+    iconHost:EnableMouse(false)
+    edit.searchIcon = self:Icon(iconHost, "search", 16)
+    edit.searchIcon:SetPoint("LEFT", 9, 0)
     APR:RegisterFontString(edit, "general", {role = "base"})
     return edit
 end
@@ -77,9 +204,37 @@ function UI:Tooltip(control, title, description)
     control:HookScript("OnLeave", function() GameTooltip:Hide() end)
 end
 
+-- Keep Blizzard's scroll behavior and hit areas, replacing only its framed arrow artwork.
+function UI:StyleScrollBar(bar)
+    for _, definition in ipairs({{bar.ScrollUpButton, "up"}, {bar.ScrollDownButton, "down"}}) do
+        local button, name = unpack(definition)
+        if button then
+            local path = iconRoot .. name .. ".tga"
+            button:SetNormalTexture(path)
+            button:SetPushedTexture(path)
+            button:SetDisabledTexture(path)
+            button:SetHighlightTexture(path, "ADD")
+            for _, state in ipairs({"Normal", "Pushed", "Disabled", "Highlight"}) do
+                local texture = button["Get" .. state .. "Texture"](button)
+                self:SetIcon(texture, name)
+                texture:ClearAllPoints()
+                texture:SetPoint("CENTER", 0, state == "Pushed" and -1 or 0)
+                texture:SetSize(16, 16)
+                texture:SetAlpha(state == "Disabled" and 0.25 or state == "Highlight" and 0.35 or 1)
+            end
+        end
+    end
+    local thumb = bar:GetThumbTexture()
+    if thumb then
+        thumb:SetTexture("Interface\\Buttons\\WHITE8X8")
+        thumb:SetVertexColor(unpack(APR:GetThemeColor("border")))
+        thumb:SetSize(6, 24)
+    end
+end
+
 function UI:Scroll(parent)
     local scroll = CreateFrame("ScrollFrame", nil, parent, "UIPanelScrollFrameTemplate")
-    if scroll.ScrollBar then APR:RegisterSkinTarget(scroll.ScrollBar, "scrollbar") end
+    if scroll.ScrollBar then APR:RegisterSkinTarget(scroll.ScrollBar, "scrollbar", { compact = true }) end
     return scroll
 end
 
@@ -138,29 +293,66 @@ end
 -- A scrollable menu keeps expansion/category pickers usable with large imported catalogs.
 function UI:Select(parent, width, changed)
     local button = self:Button(parent, "", width)
+    button:GetFontString():SetPoint("RIGHT", -30, 0)
+    button.arrow = self:ButtonIcon(button, "down", 20, true)
+    button.arrow:GetParent():ClearAllPoints()
+    button.arrow:GetParent():SetPoint("RIGHT", -6, 0)
     button:SetScript("OnClick", function()
         if button.menu and button.menu:IsShown() then button.menu:Hide(); return end
         if UI.activeMenu then UI.activeMenu:Hide() end
         if not button.menu then
             local menu = self:Panel(button)
             button.menu = menu
-            menu:SetFrameStrata("TOOLTIP")
+            menu:SetFrameStrata("FULLSCREEN_DIALOG")
             menu:SetClampedToScreen(true)
             menu:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -2)
             menu:SetSize(width, 244)
+            menu:EnableMouse(true)
+            menu:SetScript("OnShow", function()
+                UI.activeMenu = menu
+                menu:RegisterEvent("GLOBAL_MOUSE_DOWN")
+                menu:RegisterEvent("PLAYER_REGEN_DISABLED")
+                menu:EnableKeyboard(not InCombatLockdown())
+                if not InCombatLockdown() then menu:SetPropagateKeyboardInput(true) end
+                UI:SetIcon(button.arrow, "up")
+            end)
+            menu:SetScript("OnHide", function()
+                menu:UnregisterEvent("GLOBAL_MOUSE_DOWN")
+                menu:UnregisterEvent("PLAYER_REGEN_DISABLED")
+                if UI.activeMenu == menu then UI.activeMenu = nil end
+                UI:SetIcon(button.arrow, "down")
+            end)
+            -- Observe the click without an overlay: the underlying control still receives it.
+            menu:SetScript("OnEvent", function(_, event)
+                if event == "PLAYER_REGEN_DISABLED" or (not menu:IsMouseOver() and not button:IsMouseOver()) then menu:Hide() end
+            end)
+            menu:SetScript("OnKeyDown", function(_, key)
+                if not InCombatLockdown() then menu:SetPropagateKeyboardInput(key ~= "ESCAPE") end
+                if key == "ESCAPE" then menu:Hide() end
+            end)
             local scroll = self:Scroll(menu)
             scroll:SetPoint("TOPLEFT", 4, -4)
             scroll:SetPoint("BOTTOMRIGHT", -26, 4)
             menu.list = APR.VirtualList:New(scroll, function(owner)
-                return self:Button(owner, "", width - 32, function(row)
+                local row = self:Button(owner, "", width - 32, function(row)
                     button.value = row.item.value
                     button:SetText(row.item.label)
                     menu:Hide()
                     changed(row.item.value)
                 end)
-            end, function(row, item) row:SetText(item.label) end, 30)
+                self:ButtonIcon(row, "check", 16)
+                row:GetFontString():SetJustifyH("LEFT")
+                return row
+            end, function(row, item)
+                row:SetText(item.label)
+                row.icon:SetShown(item.value == button.value)
+                UI:SetButtonActive(row, item.value == button.value)
+            end, 28)
             button:HookScript("OnHide", function() menu:Hide() end)
+            menu:Hide()
         end
+        button.menu:SetHeight(math.min(244, #(button.options or {}) * 28 + 8))
+        button.menu:SetWidth(button:GetWidth())
         button.menu:Show()
         UI.activeMenu = button.menu
         button.menu.list:SetItems(button.options or {})
@@ -174,8 +366,8 @@ function UI:Select(parent, width, changed)
     return button
 end
 
-function UI:Window(name, title, width, height)
-    local frame = self:Panel(UIParent, "window")
+function UI:Window(name, title, width, height, surface, logo)
+    local frame = self:Panel(UIParent, "window", surface)
     _G[name] = frame
     local profile = APR:GetSettingsProfile()
     profile.uiWindows = profile.uiWindows or {}
@@ -199,19 +391,27 @@ function UI:Window(name, title, width, height)
         position.width, position.height = frame:GetSize()
     end
     frame.header = CreateFrame("Frame", nil, frame)
-    frame.header:SetPoint("TOPLEFT", 16, -8)
-    frame.header:SetPoint("TOPRIGHT", -52, -8)
+    frame.header:SetPoint("TOPLEFT", logo and 72 or 16, logo and -3 or -8)
+    frame.header:SetPoint("TOPRIGHT", -52, logo and -3 or -8)
     frame.header:SetHeight(42)
     frame.header:EnableMouse(true)
     frame.header.Text = self:Label(frame.header, title, 20, "accent")
     frame.header.Text:SetPoint("LEFT")
+    frame.header.Text:SetPoint("RIGHT", -8, 0)
+    frame.header.Text:SetWordWrap(false)
     APR:SetupHeaderDrag(frame.header, frame, function() return not InCombatLockdown() end, saveGeometry)
-    frame.close = self:Button(frame, "×", 30, function() frame:Hide() end)
-    frame.close:SetPoint("TOPRIGHT", -12, -12)
+    if logo then
+        -- The artwork already contains its ring; a portrait template would add a second one and its own title bar.
+        frame.logo = self:Icon(frame.header, logo, 61)
+        frame.logo:SetPoint("CENTER", frame.header, "LEFT", -46, 0)
+    end
+    frame.close = self:IconButton(frame, "close", 30, function() frame:Hide() end)
+    self:Tooltip(frame.close, CLOSE)
+    frame.close:SetPoint("CENTER", frame.header, "RIGHT", 25, 0)
     frame.content = CreateFrame("Frame", nil, frame)
     frame.content:SetPoint("TOPLEFT", 16, -58)
     frame.content:SetPoint("BOTTOMRIGHT", -16, 16)
-    frame.resize = self:Button(frame, "◢", 22, function() end)
+    frame.resize = self:IconButton(frame, "resize", 22, function() end)
     frame.resize:SetHeight(22)
     frame.resize:SetPoint("BOTTOMRIGHT", -2, 2)
     frame.resize:SetScript("OnMouseDown", function() if not InCombatLockdown() then frame:StartSizing("BOTTOMRIGHT") end end)

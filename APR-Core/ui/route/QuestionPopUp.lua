@@ -1,11 +1,10 @@
--- Owns APR confirmation/edit dialogs and reusable route/selection popups.
+-- Owns APR confirmation/edit dialogs and route suggestions; selection dialogs use the shared UI controls.
 -- Actions are attached when shown so reused buttons cannot execute an earlier selection.
 
 APR.questionDialog = APR:NewModule("QuestionDialog")
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local routeTriggerPopupFrame
-local selectionPopupFrame
 
 local function EnsureRouteTriggerPopup()
     if routeTriggerPopupFrame then
@@ -129,92 +128,6 @@ local function EnsureRouteButton(frame, index)
 
     if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "button") end
     frame.routeButtons[index] = button
-    return button
-end
-
-local function EnsureSelectionPopup()
-    if selectionPopupFrame then
-        return selectionPopupFrame
-    end
-
-    local frame = CreateFrame("Frame", "APRSelectionPopup", UIParent, "BackdropTemplate")
-    frame:SetSize(440, 320)
-    frame:SetPoint("CENTER", UIParent, "CENTER", 0, 120)
-    frame:SetFrameStrata("DIALOG")
-    frame:SetClampedToScreen(true)
-    frame:SetMovable(true)
-    frame:EnableMouse(true)
-    frame:RegisterForDrag("LeftButton")
-    frame:SetScript("OnDragStart", frame.StartMoving)
-    frame:SetScript("OnDragStop", frame.StopMovingOrSizing)
-    frame:SetBackdrop({
-        bgFile = "Interface\\DialogFrame\\UI-DialogBox-Background",
-        edgeFile = "Interface\\DialogFrame\\UI-DialogBox-Border",
-        tile = true,
-        tileSize = 16,
-        edgeSize = 16,
-        insets = { left = 4, right = 4, top = 4, bottom = 4 }
-    })
-
-    frame.title = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlightLarge")
-    frame.title:SetPoint("TOP", frame, "TOP", 0, -16)
-    frame.title:SetWidth(390)
-    frame.title:SetWordWrap(true)
-    frame.title:SetJustifyH("CENTER")
-    APR:RegisterFontString(frame.title, "general", { role = "accent", sizeDelta = 4 })
-
-    frame.description = frame:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-    frame.description:SetPoint("TOP", frame.title, "BOTTOM", 0, -10)
-    frame.description:SetWidth(390)
-    frame.description:SetWordWrap(true)
-    frame.description:SetJustifyH("CENTER")
-    APR:RegisterFontString(frame.description, "general", { role = "base" })
-
-    frame.optionContainer = CreateFrame("Frame", nil, frame)
-    frame.optionContainer:SetPoint("TOPLEFT", frame.description, "BOTTOMLEFT", -6, -10)
-    frame.optionContainer:SetPoint("TOPRIGHT", frame.description, "BOTTOMRIGHT", 6, -10)
-    frame.optionContainer:SetHeight(1)
-
-    frame.optionButtons = {}
-
-    frame.cancelButton = CreateFrame("Button", nil, frame, "UIPanelButtonTemplate")
-    frame.cancelButton:SetSize(120, 24)
-    frame.cancelButton:SetPoint("BOTTOM", frame, "BOTTOM", 0, 12)
-    frame.cancelButton:SetText(CANCEL)
-    if APR.RegisterSkinTarget then
-        APR:RegisterSkinTarget(frame, "panel")
-        APR:RegisterSkinTarget(frame.cancelButton, "button")
-    end
-    APR:RegisterButtonText(frame.cancelButton, "general", { role = "base" })
-    frame.cancelButton:SetScript("OnClick", function()
-        frame:Hide()
-        if frame.onCancel then
-            frame.onCancel()
-        end
-    end)
-
-    frame:Hide()
-    selectionPopupFrame = frame
-    return frame
-end
-
-local function EnsureSelectionButton(frame, index)
-    local button = frame.optionButtons[index]
-    if button then
-        return button
-    end
-
-    button = CreateFrame("Button", nil, frame.optionContainer, "UIPanelButtonTemplate")
-    button:SetSize(340, 30)
-    APR:RegisterButtonText(button, "general", { role = "base", sizeDelta = -2 })
-    if button.Text then
-        button.Text:SetWidth(320)
-        button.Text:SetWordWrap(true)
-        button.Text:SetJustifyH("CENTER")
-    end
-
-    if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "button") end
-    frame.optionButtons[index] = button
     return button
 end
 
@@ -387,73 +300,6 @@ function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSe
 end
 
 function APR.questionDialog:CreateSelectionPopup(titleText, descriptionText, options, onOptionSelected, onCancel)
-    local frame = EnsureSelectionPopup()
-    frame.onCancel = onCancel
-
-    frame.title:SetText(titleText or "APR")
-    frame.description:SetText(descriptionText or "")
-
-    local yOffset = 0
-    local optionCount = options and #options or 0
-
-    for i = 1, optionCount do
-        local option = options[i]
-        local button = EnsureSelectionButton(frame, i)
-        button:ClearAllPoints()
-        button:SetPoint("TOP", frame.optionContainer, "TOP", 0, -yOffset)
-        button:SetWidth(340)
-        button:SetText(option.label)
-
-        if button.Text then
-            local textHeight = button.Text:GetStringHeight()
-            button:SetHeight(math.max(30, textHeight + 10))
-        else
-            button:SetHeight(30)
-        end
-
-        local isEnabled = option.enabled ~= false
-        button:SetEnabled(isEnabled)
-
-        button:SetScript("OnClick", function()
-            if not isEnabled then
-                return
-            end
-            frame:Hide()
-            if onOptionSelected then
-                onOptionSelected(option)
-            end
-        end)
-
-        button:SetScript("OnEnter", function(self)
-            local tip = option.tooltip
-            if not tip or tip == "" then
-                return
-            end
-            GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-            APR:AddTooltipLine(GameTooltip, tip, "general", "base", true)
-            GameTooltip:Show()
-        end)
-        button:SetScript("OnLeave", function()
-            GameTooltip:Hide()
-        end)
-
-        yOffset = yOffset + button:GetHeight()
-        if i < optionCount then
-            yOffset = yOffset + 6
-        end
-        button:Show()
-    end
-
-    for i = optionCount + 1, #frame.optionButtons do
-        frame.optionButtons[i]:Hide()
-    end
-
-    frame.optionContainer:SetHeight(math.max(1, yOffset))
-
-    local titleHeight = math.max(20, frame.title:GetStringHeight() or 20)
-    local descriptionHeight = math.max(18, frame.description:GetStringHeight() or 18)
-    local desiredHeight = 64 + titleHeight + descriptionHeight + yOffset + 24 + 14
-    frame:SetHeight(math.max(170, desiredHeight))
-
-    frame:Show()
+    local owner = APR.RouteBrowser and APR.RouteBrowser.frame
+    APR.UI:ShowSelectionDialog(titleText, descriptionText, options, onOptionSelected, onCancel, owner)
 end

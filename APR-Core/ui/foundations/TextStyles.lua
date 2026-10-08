@@ -148,6 +148,10 @@ local ROLE_KEYS = {
 }
 
 function APR:GetTextColor(scope, role)
+    if self.GetThemeStatusColor then
+        local status = self:GetThemeStatusColor(role)
+        if status then return status end
+    end
     if self.EllesmereUISkin then
         local themed = self.EllesmereUISkin:GetTextColor(role)
         if themed then return themed end
@@ -301,6 +305,9 @@ function APR:ApplyTextStyle(fontString, scope, options)
             color = profile and profile[options.colorProfileKey]
         end
         color = color or self:GetTextColor(scope, options.role)
+        if options.themeAccent and options.role == "accent" and self:GetSkinProviderName() then
+            color = self:GetThemeColor("accent")
+        end
         fontString:SetTextColor(color[1], color[2], color[3], color[4] or 1)
         if self.EllesmereUISkin then self.EllesmereUISkin:ApplyHeaderTextColor(fontString) end
     end

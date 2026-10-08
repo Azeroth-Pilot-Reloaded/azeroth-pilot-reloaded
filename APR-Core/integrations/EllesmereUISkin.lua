@@ -51,6 +51,15 @@ function module:GetTextColor(role)
     return colors[role or "base"] or colors.base
 end
 
+local stripeColor = { 0.2, 0.2, 0.2, 1 }
+function module:GetThemeColor(role)
+    if not IsEnabled() then return end
+    if role == "accent" or role == "icon" or role == "selection" or role == "border" then
+        return self:GetTextColor("accent")
+    end
+    if role == "stripe" then return stripeColor end
+end
+
 function module:ApplyBarFill(bar)
     if not IsEnabled() then return false end
     skin.ApplyBarFill(bar)
@@ -180,6 +189,7 @@ local function RefreshTheme()
         icon:SetVertexColor(r, g, b, 0.4)
     end
     if APR.RefreshTextAppearance then APR:RefreshTextAppearance() end
+    if APR.RefreshThemeRegions then APR:RefreshThemeRegions() end
     APR:RefreshStatusBarColors()
 end
 
@@ -187,7 +197,11 @@ EUI.RegisterSkin("APR", function(S)
     if not IsEnabled(S) then return end
     skin = S
     local function ApplySkin(frame, kind, options)
-        if kind == "button" then
+        -- Clear native BackdropTemplate art before EUI adds its own fill and border.
+        if options.themeSurface and frame.SetBackdrop then frame:SetBackdrop(nil) end
+        if kind == "flatButton" then
+            StyleText(frame:GetFontString())
+        elseif kind == "button" then
             S.Button(frame)
             StyleText(frame:GetFontString())
         elseif kind == "arrow" then
@@ -208,7 +222,8 @@ EUI.RegisterSkin("APR", function(S)
         elseif kind == "close" then S.CloseButton(frame)
         elseif kind == "icon" then S.SquareIcon(options.texture, frame)
         elseif kind == "window" then
-            if S.Shell then S.Shell(frame) else StyleContentPanel(frame) end
+            -- APR lays out its own title row; EUI's fixed-height strip would cut across it.
+            if S.Shell then S.Shell(frame, { noTopBar = options.themeSurface }) else StyleContentPanel(frame) end
         elseif kind == "borderedPanel" or kind == "panel" then
             if options.preserveContent or options.preserveBackground then
                 StyleContentPanel(frame)

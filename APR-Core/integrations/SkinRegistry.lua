@@ -42,6 +42,8 @@ function APR:RefreshRegisteredSkins(refreshNative)
     if InCombatLockdown() then pending = true; return end
     pending = false
     for frame, target in pairs(targets) do ApplyTarget(frame, target) end
+    if self.RefreshThemeRegions then self:RefreshThemeRegions() end
+    if self.ApplyAllTextStyles then self:ApplyAllTextStyles() end
 end
 
 function APR:GetSkinProviderName()
