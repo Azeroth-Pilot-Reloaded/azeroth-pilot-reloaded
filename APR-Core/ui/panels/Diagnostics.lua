@@ -1,110 +1,146 @@
--- Creates a copyable, redacted-by-default snapshot with wait reasons, transitions and runtime health.
--- Refreshes only on request and on relevant events while visible; opening it never changes route progress.
+-- Presents the full status in readable sections, with optional formatted Lua in the same window.
+-- Copying freezes the current text while focused; visible event updates are coalesced and cancelled on hide.
 
 local UI = APR.UI
 local function T(key) return APR:LocalizeUI(key) end
 
-function APR:BuildDiagnosticSnapshot(includeIdentity)
-    local _, index = self:PeekCurrentStep()
-    local reasons, action = self:DescribeStepWait()
-    local profile = self:GetSettingsProfile() or {}
-    local version, build, _, interface = GetBuildInfo()
-    local zone = self.ZoneDetection and self.ZoneDetection.playerContextCache
-    local snapshot = {
-        addon = self.version, client = version, build = build, interface = interface, locale = GetLocale(),
-        route = self.ActiveRoute, step = index, action = action, revision = self.stepRevision,
-        reasons = reasons, transitions = self:GetRecentTransitions(), canUndo = self:CanUndoManualSkip(),
-        theme = profile.uiTheme or "wow", skin = self:GetSkinProviderName() or "APR",
-        combat = InCombatLockdown(), inRouteZone = self.IsInRouteZone,
-        character = {faction = self.Faction, level = self.Level, class = self.ClassId},
-        settings = {enabled = profile.enableAddon, routeQuestsOnly = profile.autoAcceptQuestRoute,
-            acceptAllQuests = profile.autoAccept, turnIn = profile.autoHandIn, gossip = profile.autoGossip,
-            skipCutscenes = profile.autoSkipCutScene},
-        zone = self.ZoneDetection and self.GetZoneDetectionReport and self:GetZoneDetectionReport(),
-        routing = { updatePending = self.stepUpdateTimer ~= nil,
-            renderPending = self.questOrderList and self.questOrderList.renderRequest ~= nil,
-            renderFailed = self.questOrderList and self.questOrderList.renderFailed or false,
-            zoneCacheAge = zone and zone.timestamp and math.max(0, GetTime() - zone.timestamp) },
-        party = { rejected = self.party and self.party.rejectedMessages or 0,
-            lastRejectReason = self.party and self.party.lastRejectReason },
-        performance = APRData and APRData.PerformanceLog and APRData.PerformanceLog.summary,
-    }
-    if includeIdentity then snapshot.player, snapshot.realm = self.Username, GetRealmName() end
-    return snapshot
+local function LayoutSections(frame)
+    local width = math.max(260, frame:GetWidth() - 58)
+    frame.body:SetWidth(width)
+    local columns = width >= 780 and 2 or 1
+    local columnWidth = (width - (columns - 1) * 12) / columns
+    local y, rowHeight = 0, 0
+    for index, section in ipairs(frame.sections) do
+        local column = (index - 1) % columns
+        if column == 0 and index > 1 then y, rowHeight = y + rowHeight + 12, 0 end
+        section:ClearAllPoints()
+        section:SetPoint("TOPLEFT", frame.body, "TOPLEFT", column * (columnWidth + 12), -y)
+        section:SetWidth(columnWidth)
+        section.heading:SetWidth(columnWidth - 24)
+        section.text:SetWidth(columnWidth - 24)
+        local headingHeight = section.heading:GetStringHeight()
+        section.text:ClearAllPoints()
+        section.text:SetPoint("TOPLEFT", 12, -20 - headingHeight)
+        local height = math.max(80, headingHeight + section.text:GetStringHeight() + 34)
+        section:SetHeight(height)
+        rowHeight = math.max(rowHeight, height)
+    end
+    frame.body:SetHeight(math.max(1, y + rowHeight))
 end
 
-function APR:RefreshDiagnostics()
+local function SetReportShown(frame, shown)
+    frame.reportShown = shown == true
+    frame.reportScroll:SetShown(frame.reportShown)
+    frame.reportLabel:SetShown(frame.reportShown)
+    frame.toggleReport:SetText(T(frame.reportShown and "HIDE_LUA" or "SHOW_LUA"))
+    local reportHeight = math.min(260, math.max(140, (frame:GetHeight() - 74) * 0.38))
+    frame.reportScroll:SetHeight(reportHeight)
+    frame.reportLabel:ClearAllPoints()
+    frame.reportLabel:SetPoint("BOTTOMLEFT", frame.content, "BOTTOMLEFT", 0, reportHeight + 94)
+    frame.infoScroll:ClearAllPoints()
+    frame.infoScroll:SetPoint("TOPLEFT")
+    frame.infoScroll:SetPoint("BOTTOMRIGHT", -26, frame.reportShown and reportHeight + 126 or 88)
+    if frame.reportShown and frame.snapshot then
+        if not frame.report then
+            frame.report = APR:FormatDebugTable(frame.snapshot)
+            frame.text:SetText(frame.report)
+            frame.text:SetCursorPosition(0)
+        end
+    else
+        frame.text:ClearFocus()
+    end
+end
+
+function APR:RefreshDiagnostics(resetFocus)
     local frame = self.DiagnosticsFrame
     if not frame or not frame:IsShown() then return end
-    local snapshot = self:BuildDiagnosticSnapshot(frame.includeIdentity)
-    frame.report = self:TableToDebugString(snapshot, true)
-    local heading = T("EXPLAIN") .. "\n\n" .. table.concat(snapshot.reasons, "\n\n")
-    frame.explanation:SetText(heading)
-    frame.explanationBody:SetHeight(math.max(156, frame.explanation:GetStringHeight() + 12))
-    frame.text:SetText(frame.report)
-    frame.text:SetCursorPosition(0)
-    frame.text:ClearFocus()
-    frame.undo:SetEnabled(snapshot.canUndo and not InCombatLockdown())
+    if not resetFocus and frame.text.HasFocus and frame.text:HasFocus() then return end
+    frame.snapshot = self:BuildDiagnosticSnapshot(frame.includeIdentity)
+    frame.report = nil
+    local models = self:BuildDiagnosticSections(frame.snapshot)
+    for index, model in ipairs(models) do
+        local section = frame.sections[index]
+        if not section then
+            section = UI:Panel(frame.body)
+            section.heading = UI:Label(section, "", 15, "accent")
+            section.heading:SetPoint("TOPLEFT", 12, -10)
+            section.text = UI:Label(section, "", 12)
+            section.text:SetWordWrap(true)
+            frame.sections[index] = section
+        end
+        section.heading:SetText(model.title)
+        section.text:SetText(table.concat(model.lines, "\n"))
+    end
+    LayoutSections(frame)
+    if frame.reportShown then
+        frame.report = self:FormatDebugTable(frame.snapshot)
+        frame.text:SetText(frame.report)
+        if resetFocus then frame.text:SetCursorPosition(0); frame.text:ClearFocus() end
+    end
+    frame.undo:SetEnabled(frame.snapshot.canUndo and not InCombatLockdown())
 end
 
 function APR:ShowDiagnostics()
     local frame = self.DiagnosticsFrame
     if not frame then
-        frame = UI:Window("APRDiagnostics", T("DIAGNOSTICS"), 980, 700)
+        frame = UI:Window("APRDiagnostics", T("DIAGNOSTICS"), 980, 780)
+        frame:SetResizeBounds(math.min(740, UIParent:GetWidth() - 40), math.min(660, UIParent:GetHeight() - 60))
         self.DiagnosticsFrame = frame
+        frame.sections = {}
         local root = frame.content
-        local explanationScroll = UI:Scroll(root)
-        explanationScroll:SetPoint("TOPLEFT")
-        explanationScroll:SetPoint("TOPRIGHT", -26, 0)
-        explanationScroll:SetHeight(156)
-        local explanationBody = CreateFrame("Frame", nil, explanationScroll)
-        explanationBody:SetSize(850, 156)
-        explanationScroll:SetScrollChild(explanationBody)
-        frame.explanation = UI:Label(explanationBody, "", 14)
-        frame.explanation:SetPoint("TOPLEFT", 8, -4)
-        frame.explanation:SetPoint("TOPRIGHT", -8, -4)
-        local scroll, edit = UI:CopyBox(root)
-        scroll:SetPoint("TOPLEFT", 0, -166)
-        scroll:SetPoint("BOTTOMRIGHT", -26, 84)
-        frame.text = edit
-        explanationScroll:HookScript("OnSizeChanged", function(owner)
-            explanationBody:SetWidth(owner:GetWidth())
-            explanationBody:SetHeight(math.max(156, frame.explanation:GetStringHeight() + 12))
-        end)
-        frame.explanationBody = explanationBody
-        frame.undo = UI:Button(root, T("UNDO"), 300, function() self:UndoManualSkip(); self:RefreshDiagnostics() end)
+        frame.infoScroll = UI:Scroll(root)
+        frame.body = CreateFrame("Frame", nil, frame.infoScroll)
+        frame.body:SetSize(900, 1)
+        frame.infoScroll:SetScrollChild(frame.body)
+        frame.reportScroll, frame.text = UI:CopyBox(root)
+        frame.reportScroll:SetPoint("BOTTOMLEFT", 0, 88)
+        frame.reportScroll:SetPoint("BOTTOMRIGHT", -26, 88)
+        frame.reportLabel = UI:Label(root, T("LUA_REPORT"), 13, "accent")
+        frame.undo = UI:Button(root, T("UNDO"), 280, function() self:UndoManualSkip(); self:RefreshDiagnostics(true) end)
         frame.undo:SetPoint("BOTTOMLEFT", 0, 42)
-        local refresh = UI:Button(root, T("REFRESH"), 140, function() self:RefreshDiagnostics() end)
+        local refresh = UI:Button(root, T("REFRESH"), 120, function() self:RefreshDiagnostics(true) end)
         refresh:SetPoint("LEFT", frame.undo, "RIGHT", 10, 0)
-        local redact = UI:Button(root, "", 300, function(button)
+        frame.toggleReport = UI:Button(root, T("SHOW_LUA"), 230, function()
+            SetReportShown(frame, not frame.reportShown)
+        end)
+        frame.toggleReport:SetPoint("LEFT", refresh, "RIGHT", 10, 0)
+        frame.redact = UI:Button(root, "[x] " .. T("REDACT"), 310, function(button)
             frame.includeIdentity = not frame.includeIdentity
             button:SetText((frame.includeIdentity and "[ ] " or "[x] ") .. T("REDACT"))
-            self:RefreshDiagnostics()
+            self:RefreshDiagnostics(true)
         end)
-        redact:SetText("[x] " .. T("REDACT"))
-        redact:SetPoint("BOTTOMLEFT")
-        local copy = UI:Button(root, T("EXPORT"), 140, function()
-            edit:SetFocus(); edit:HighlightText()
+        frame.redact:SetPoint("BOTTOMLEFT")
+        frame.copy = UI:Button(root, T("EXPORT"), 160, function()
+            SetReportShown(frame, true)
+            frame.text:SetFocus()
+            frame.text:HighlightText()
         end)
-        copy:SetPoint("BOTTOMRIGHT")
-        UI:Tooltip(copy, T("COPY_HINT"))
+        frame.copy:SetPoint("BOTTOMRIGHT")
+        UI:Tooltip(frame.copy, T("COPY_HINT"))
+        frame:HookScript("OnSizeChanged", function()
+            SetReportShown(frame, frame.reportShown)
+            LayoutSections(frame)
+        end)
         frame:RegisterEvent("QUEST_LOG_UPDATE")
         frame:RegisterEvent("PLAYER_REGEN_ENABLED")
         frame:RegisterEvent("PLAYER_REGEN_DISABLED")
         frame:SetScript("OnEvent", function()
+            -- Combat must disable undo immediately, even while a report is being copied.
+            frame.undo:SetEnabled(self:CanUndoManualSkip() and not InCombatLockdown())
             if not frame:IsShown() or frame.refreshTimer then return end
-            frame.refreshTimer = C_Timer.NewTimer(0.3, function()
+            frame.refreshTimer = C_Timer.NewTimer(0.5, function()
                 frame.refreshTimer = nil
                 self:RefreshDiagnostics()
             end)
         end)
         frame:HookScript("OnHide", function()
             if frame.refreshTimer then frame.refreshTimer:Cancel(); frame.refreshTimer = nil end
+            frame.text:ClearFocus()
         end)
+        SetReportShown(frame, false)
     end
     frame:Show()
-    self:RefreshDiagnostics()
-    frame.explanationBody:SetHeight(math.max(156, frame.explanation:GetStringHeight() + 12))
+    self:RefreshDiagnostics(true)
 end
 
 function APR:CreateDiagnosticsEntryPoint()

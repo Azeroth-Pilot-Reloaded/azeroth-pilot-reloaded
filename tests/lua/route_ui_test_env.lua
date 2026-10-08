@@ -63,6 +63,12 @@ function methods:StopMovingOrSizing() self.moving = false end
 
 function methods:ClearFocus() self.focused = false end
 
+function methods:SetFocus() self.focused = true end
+
+function methods:HasFocus() return self.focused == true end
+
+function methods:HighlightText() self.highlighted = true end
+
 function methods:SetText(text)
     self.text = text
     if self.label then self.label.text = text end
