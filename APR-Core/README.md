@@ -1,7 +1,7 @@
 ﻿# APR-Core: architecture and audit
 
-Audit dated 8 October 2026. Scope: **89 Lua files specific to the core**, 11
-localization entries, loaded media, and dependencies. The definitions in
+Audit dated 8 October 2026. Scope: core Lua modules, localization entries,
+loaded media, and dependencies. The definitions in
 `Routes/` are used to verify consumers; only the author and community metadata for
 the EclipseGlaives route were added at the maintainer's request. Changes outside
 the core concern the manifest, tests, and validation references required for
@@ -46,7 +46,7 @@ flowchart TD
     Engine --> Catalog[RouteCatalog / RouteBrowser]
     Catalog --> Virtual[VirtualList: visible lines]
     Preview --> Virtual
-    Transitions --> Diagnostics[Diagnostics / PerformanceDashboard]
+    Transitions --> Diagnostics[StatusReport / PerformanceDashboard]
 ```
 
 `GetRouteSteps` builds the effective list: scenarios, parallel groups, and
@@ -66,7 +66,6 @@ and events. **Nested tables in a definition remain read-only.**
 | [core/Performance.lua](core/Performance.lua)                       | Voluntary capture: aggregates, histograms, slow calls, and bounded counters. |
 | [core/VersionCheck.lua](core/VersionCheck.lua)                     | Client/addon versions and group announcements without web requests.          |
 | [config/Config.lua](config/Config.lua)                             | AceDB defaults, AceConfig options, profiles, and minimap button.             |
-| [config/SettingsIndex.lua](config/SettingsIndex.lua)               | Index of AceConfig options; reuses setters, conditions, and descriptions.    |
 | [config/Config_Route.lua](config/Config_Route.lua)                 | Route/catalog notifications and AceConfig entry to the single library.       |
 | [config/Config_Route_Prefabs.lua](config/Config_Route_Prefabs.lua) | Predefined routes built from metadata and conditions.                        |
 | [config/LevelProfiles.lua](config/LevelProfiles.lua)               | XP bonus data and threshold profiles; no rendering.                          |
@@ -96,7 +95,6 @@ and events. **Nested tables in a definition remain read-only.**
 | [features/questing/StepTravelHandlers.lua](features/questing/StepTravelHandlers.lua)                 | Hearth, portals, waypoints, taxi, and scenarios.                                                  |
 | [features/questing/StepActionHandlers.lua](features/questing/StepActionHandlers.lua)                 | Money, items/spells, treasure, groups, and achievements.                                          |
 | [features/questing/StepTransitions.lua](features/questing/StepTransitions.lua)                       | Progress writing, revised context, history, and the last undoable jump.                           |
-| [features/questing/StepDiagnostics.lua](features/questing/StepDiagnostics.lua)                       | Wait reasons from a snapshot without executing the engine.                                        |
 | [features/questing/RouteCatalog.lua](features/questing/RouteCatalog.lua)                             | Search, provenance, availability, favorites, and route mutations with prerequisites.              |
 | [features/questing/RouteActions.lua](features/questing/RouteActions.lua)                             | Inventory, bank, repair, training, death, and taming; context verification before action.         |
 | [features/questing/Gossip.lua](features/questing/Gossip.lua)                                         | Automatic dialogues, NPC rules, and delays.                                                       |
@@ -130,9 +128,10 @@ and events. **Nested tables in a definition remain read-only.**
 | ---------------------------------------------------------------------------- | --------------------------------------------------------------------------------- |
 | [ui/foundations/TextStyles.lua](ui/foundations/TextStyles.lua)               | Style inheritance, semantic colors, and low-level text/tooltip registry.          |
 | [ui/foundations/StatusBars.lua](ui/foundations/StatusBars.lua)               | Native bars; APR owns the colors, skins provide the texture.                      |
-| [ui/foundations/Themes.lua](ui/foundations/Themes.lua)                       | Four native themes and restoration of requested backgrounds/colors.               |
+| [ui/foundations/Themes.lua](ui/foundations/Themes.lua)                       | WoW surfaces and live skin colors for custom icons, highlights and selections.    |
 | [ui/foundations/Widgets.lua](ui/foundations/Widgets.lua)                     | Persistent windows, buttons, search, menus, tooltips, and shared copyable text.   |
 | [ui/foundations/VirtualList.lua](ui/foundations/VirtualList.lua)             | Height indexing and recycling of only visible lines.                              |
+| [ui/foundations/SelectionDialog.lua](ui/foundations/SelectionDialog.lua)     | Skinnable choices and confirmations, bounded scrolling and shared cancellation.   |
 | [ui/route/CurrentStep.lua](ui/route/CurrentStep.lua)                         | Window, bars, secure buttons, and delayed changes after combat.                   |
 | [ui/route/CurrentStepRows.lua](ui/route/CurrentStepRows.lua)                 | Transactions, matching by key, recycling, and line layout.                        |
 | [ui/route/CurrentStepImagePreview.lua](ui/route/CurrentStepImagePreview.lua) | Thumbnails and reusable windows; zoom, movement, and real ratio.                  |
@@ -142,12 +141,12 @@ and events. **Nested tables in a definition remain read-only.**
 | [ui/route/QuestOrderListSupport.lua](ui/route/QuestOrderListSupport.lua)     | Shared template measurement, reusable rows, coroutine, reputation, and scrolling. |
 | [ui/route/QuestionPopUp.lua](ui/route/QuestionPopUp.lua)                     | Confirmations, text inputs, and selections with refreshed callbacks.              |
 | [ui/route/RouteSelection.lua](ui/route/RouteSelection.lua)                   | Invitation to choose a route when the path is unusable.                           |
-| [ui/route/RouteBrowser.lua](ui/route/RouteBrowser.lua)                       | Resizable library, route details, filters, community, and ordered routes.         |
+| [ui/route/RouteBrowser.lua](ui/route/RouteBrowser.lua)                       | Prefabs first, expansions/community, filters, favorites and ordered path.         |
+| [ui/route/RouteBrowserRows.lua](ui/route/RouteBrowserRows.lua) | Compact catalog/path rows, metadata tooltips and recycled actions. |
 | [ui/panels/Coordinates.lua](ui/panels/Coordinates.lua)                       | Coordinates for authors and saved window position.                                |
 | [ui/panels/ChangeLog.lua](ui/panels/ChangeLog.lua)                           | Version notes and formatting.                                                     |
-| [ui/panels/SettingsHome.lua](ui/panels/SettingsHome.lua)                     | Essential settings, search, and access to tools.                                  |
 | [ui/panels/LayoutEditor.lua](ui/panels/LayoutEditor.lua)                     | Independent outlines; cancel without mutation, save LibWindow out of combat.      |
-| [ui/panels/Diagnostics.lua](ui/panels/Diagnostics.lua)                       | Copyable report, optional identity, wait reasons, and jump cancellation.          |
+| [ui/panels/StatusReport.lua](ui/panels/StatusReport.lua)                       | Historical compact status, identity masking and formatted Lua export.          |
 | [ui/panels/PerformanceDashboard.lua](ui/panels/PerformanceDashboard.lua)     | Peak graph, sortable aggregates, slow calls, counters, and export.                |
 
 ### Shared utilities
@@ -210,17 +209,17 @@ group messages, and route imports. `RegisterCustomRoute`, legacy flat lists, and
 
 | Access                                   | Common usage                                                      |
 | ---------------------------------------- | ----------------------------------------------------------------- |
-| `/apr`                                   | Essential settings, option search, themes, and access to tools.   |
-| `/apr route`                             | Library, community, favorites, route, and predefined route flows. |
-| `/apr status` or `?` button on the guide | Wait reasons, progression history, and copyable report.           |
+| `/apr`                                   | Existing Blizzard/AceConfig settings.   |
+| `/apr route`                             | Predefined paths, expansion/community browsing, filters and favorites. |
+| `/apr status` or `?` button on the guide | Compact status and copyable Lua report including current-step data.           |
 | `/apr rollback` / `/apr rb`               | Undo the last valid manual skip, otherwise return to the previous visible step. |
 | `/apr perf`                              | Open the dashboard; start/stop, sort, search, and export.         |
 | `/apr perf on` / `/apr perf off`         | Control capture without opening the dashboard.                    |
-| Placement in the home screen             | Preview positions, undo, save, or recenter.                       |
+| `/apr layout` or placement in settings             | Move previews, cancel, save or bring them back on screen.                       |
 
-Advanced settings remain accessible from the home screen. Search uses existing
-AceConfig definitions; only toggles without confirmation and with compatible
-getters/setters are directly editable.
+Settings retain their existing AceConfig categories. The route selector opens
+separately from `/apr route` and the existing route entry points. Performance
+remains available through its slash command.
 
 ## Saves and caches
 
@@ -276,12 +275,10 @@ being resolved. Later progression or a route change invalidates it. It restores
 the guide index, then the engine re-evaluates conditions; it does not restore the
 state of in-game quests.
 
-`StepDiagnostics` reads a snapshot with `PeekCurrentStep`: opening the report does
-not build an effective route and does not execute any step action. The diagnostic
-distinguishes absent quest, remaining objective, data still loading, and off-zone
-guidance. For specialized actions, it reuses the actual instruction instead of
-inventing a cause. Character/realm identity is hidden by default; free-form route
-texts are not anonymized.
+`StatusReport` retains the compact client, character and route sections. Its Lua
+export includes `currentStepData` from `PeekCurrentStep` and uses the bounded,
+indented formatter. The identity toggle applies to both the window and export;
+free-form route text is not anonymized. Wait-reason explanations are not included.
 
 ### Group messages
 
@@ -298,8 +295,14 @@ client-side lag.
 ### Library and authors
 
 The catalog separates route consultation, availability, and modification.
-Multi-word search, expansion, category, and Community/Favorites/My routes tabs
-apply without starting a route. Prerequisites pass through the existing engine.
+Three prefab actions sit above expansion navigation, a compact route table and
+an always-visible custom path. Community has its own navigation entry; type and
+favorites are combinable filters. Search also matches authors across expansions
+and returns to the selected expansion when cleared. Catalog and path rows are
+26 pixels high; narrow windows move author/progress detail into tooltips.
+Selecting or filtering never starts a route. Right-click adds/resumes; Shift-right-click
+resets and adds. The + action, prerequisite insertion and path reorder/remove
+controls use the existing route engine.
 A route removed from the catalog but still saved in a route remains visible in that
 route so it can be deleted.
 
@@ -309,7 +312,7 @@ Community. This information is stored in the route data, without a catalog-only
 exception. The `author` field is optional and defaults to APR; `authors` allows
 multiple co-authors when `author` is absent. `community = true` or
 `source = "community"` identifies a community route. `description` provides the
-optional sheet text. The validation schema knows these fields; authors are never
+optional tooltip text. The validation schema knows these fields; authors are never
 inferred from Git.
 
 ### Lists and measurements
@@ -329,14 +332,14 @@ when closed. Closing the dashboard leaves voluntary capture active. Data is save
 in `APRData.PerformanceLog`.
 
 Durations are inclusive: nested calls overlap and their sum is not the addon's total
-CPU usage. The dashboard shows instrumented call sites, not every function in the
-client or other addons.
+CPU usage. The instrumented tables show registered call sites. Separate CPU and memory
+graphs use the resource monitor; they do not attribute allocations to individual
+functions or prove a memory leak.
 
 ## UI/UX and skins
 
-- Four native themes: WoW, Forever also available on Retail, Modern Teal, and High Contrast.
-  Custom colors and fallback backgrounds are preserved when switching themes.
-- Library list/details, home, diagnostics, and dashboard all use the same controls.
+- WoW remains the only native theme; gameplay panels retain their configured colors.
+- Route browsing, placement and the performance dashboard reuse the shared controls.
   New windows record size and position in the profile. The placement editor manipulates
   independent outlines until Save; Cancel, Esc, or entering combat abandons the preview.
 - Only one provider paints a control: ElvUI takes priority if both are active. Switching
@@ -344,7 +347,6 @@ client or other addons.
 - APR owns the secure buttons, attributes, and callbacks; the skin modifies the appearance.
   Protected changes wait until combat ends.
 - Public EUI primitives and refreshed accents/fonts; bar colors remain consistent with APR options.
-- APR AceGUI pool is isolated and does not contaminate other addons' options.
 - Quest tracking anchoring maintains Blizzard frame isolation; hierarchy accounts for fillers and AFK.
 - Visible content, lines, and scrolling are preserved during refreshes. The list prepares its
   buffer in batches; a costly element may still exceed the budget of a single batch.
@@ -371,26 +373,28 @@ Regression coverage added: saves/copies, step lookup, AceDB isolation, timers,
 errors, nested reputation, cinematics, and message assembly. Fixtures load the
 moved helpers in the same relative order as the TOC; rendering, progression, and
 recycling assertions are preserved. The redesign adds scenarios for transitions/undo,
-party validation, catalog/authors, setting search, diagnostics, bounded capture,
-themes, and virtualization. Tests use the real module code with simulated WoW APIs.
+party validation, catalog/authors, preset dispatch, placement transactions, status,
+bounded capture, skins, and virtualization. Tests use the real module code with
+simulated WoW APIs.
 
-Audit result: **46/46 Lua suites passed; 162/163 tests passed** in the full
-validation run. The only failure is
-`RouteHookTests.test_manual_no_stage_leaves_index_untouched`, also reproduced with
-the scripts, hooks, and `StepUtils.lua` extracted from `HEAD` before the redesign.
-This pre-existing test/tooling defect remains out of scope; routes are not modified
-to work around it.
+For the focused UI restart, 52 Lua suites and 81 route/schema/syntax tests pass.
+These checks use simulated widgets and APIs; they do not certify the game renderer.
+The [manual UI test plan](../tools/validation/UI_MANUAL_TESTS.fr.md) covers placement,
+predefined paths, route editing, filters, small windows, client compatibility and
+skins. Run it manually in WoW; no client is started or controlled by the test runner.
 
-The [in-game test plan](TESTS_EN_JEU.md) describes 66 cases, the configurations to
-try, and the expected results. **They are not executed by the agent**: rendering,
-taint, protected buttons, and real-world cost must be checked manually on both
-client families and available skins.
+The route window displays APR's logo directly in its header: the artwork already
+includes a ring, so it needs no additional portrait frame. Its controls use
+[Material Design Icons](https://pictogrammers.com/library/mdi/) 7.4.47, as in the
+Route Recorder. SVG sources, licenses and the icon manifest are in `assets/ui/mdi`.
+Run `python tools/render_ui_icons.py` with Pillow and resvg-py to regenerate the
+antialiased TGA textures offline. The client only loads the exported textures.
 
 ## Possible improvements after validation
 
 | Priority | Proposed follow-up                                                           | Required validation                                                                                     |
 | -------- | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------- |
-| P1       | Fix the discrepancies observed during the 66 validation cases.               | Reproduction with client, skin, resolution, and report; no visual certification outside the game.       |
+| P1       | Fix discrepancies observed during manual UI validation.               | Reproduction with client, skin, resolution, and report; no visual certification outside the game.       |
 | P2       | Split the option families in `Config.lua` and event families in `Event.lua`. | Explicit contracts for shared state and behavior regressions; preserve keys and SavedVariables.         |
 | P2       | Localize the new labels beyond FR/EN.                                        | Proofreading via AceLocale `UI_*` keys and in-game length checks.                                       |
 | P2       | Complete community entries: descriptions and multiple authors.               | Metadata supplied by maintainers/authors, recorder compatibility; no inferred attribution.              |

@@ -77,6 +77,7 @@ end
 function methods:GetText() return self.text end
 
 function methods:GetStringHeight() return math.max(1, math.ceil(#(self.text or "") / 30)) * 12 end
+function methods:GetStringWidth() return #(self.text or "") * 6 end
 
 function methods:SetHeight(height)
     check(self); self.height = height
@@ -148,13 +149,14 @@ function methods:CreateLine() return widget(self) end
 function methods:SetStartPoint(...) self.startPoint = {...} end
 function methods:SetEndPoint(...) self.endPoint = {...} end
 
-function methods:SetNormalTexture() self.normal = widget(self) end
-
-function methods:GetNormalTexture() return self.normal end
-
-function methods:GetHighlightTexture() return nil end
-
-function methods:GetPushedTexture() return nil end
+for _, state in ipairs({"Normal", "Pushed", "Disabled", "Highlight", "Thumb"}) do
+    local key = state .. "Texture"
+    methods["Set" .. key] = function(self, value)
+        self[key] = rawget(self, key) or widget(self)
+        self[key].texture = value
+    end
+    methods["Get" .. key] = function(self) return rawget(self, key) end
+end
 
 function methods:SetMinMaxValues(low, high) self.minimum, self.maximum = low, high end
 
@@ -175,6 +177,11 @@ function CreateFrame(_, name, parent, template)
     local frame = widget(parent)
     frame.name = name
     frame.secure = template and template:find("SecureActionButtonTemplate") ~= nil
+    if template == "UIPanelScrollFrameTemplate" then
+        frame.ScrollBar = widget(frame)
+        frame.ScrollBar.ScrollUpButton, frame.ScrollBar.ScrollDownButton = widget(frame.ScrollBar), widget(frame.ScrollBar)
+        frame.ScrollBar:SetThumbTexture("Blizzard thumb")
+    end
     if parent then
         parent.children = parent.children or {}
         table.insert(parent.children, frame)

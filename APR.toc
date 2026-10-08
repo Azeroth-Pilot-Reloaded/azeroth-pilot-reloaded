@@ -50,6 +50,7 @@ APR-Core/ui/foundations/StatusBars.lua
 APR-Core/ui/foundations/Widgets.lua
 APR-Core/ui/foundations/TimeSeriesGraph.lua
 APR-Core/ui/foundations/VirtualList.lua
+APR-Core/ui/foundations/SelectionDialog.lua
 APR-Core/ui/panels/LayoutEditor.lua
 APR-Core/utils/TextStyleUtils.lua
 APR-Core/utils/TargetUtils.lua
@@ -60,6 +61,7 @@ APR-Core/config/LevelProfiles.lua
 APR-Core/utils/RouteUtils.lua
 APR-Core/utils/RouteConditions.lua
 APR-Core/features/questing/RouteManager.lua
+APR-Core/features/questing/RouteCatalog.lua
 APR-Core/utils/SojournerUtils.lua
 APR-Core/features/questing/RouteSuggestions.lua
 APR-Core/utils/NavigationUtils.lua
@@ -121,6 +123,8 @@ APR-Core/features/navigation/Map.lua
 APR-Core/features/player/AFK.lua
 APR-Core/features/player/Heirloom.lua
 APR-Core/ui/route/RouteSelection.lua
+APR-Core/ui/route/RouteBrowserRows.lua
+APR-Core/ui/route/RouteBrowser.lua
 APR-Core/features/player/Buff.lua
 APR-Core/features/player/XPBuffOverlay.lua
 APR-Core/ui/panels/StatusReport.lua

@@ -22,6 +22,15 @@ local function IsElvUISkinEnabled()
     return APR.settings.profile.elvuiSkin ~= false
 end
 
+-- These media colors also drive ElvUI's own buttons; decorative APR regions use the same live palette.
+local stripeColor = { 0.2, 0.2, 0.2, 1 }
+function APR.ElvUISkin:GetThemeColor(role)
+    if not IsElvUISkinEnabled() or not E.media then return end
+    if role == "accent" or role == "icon" or role == "selection" then return E.media.rgbvaluecolor end
+    if role == "border" then return E.media.bordercolor end
+    if role == "stripe" then return stripeColor end
+end
+
 local function IsSkinned(frame)
     return frame and skinnedFrames[frame]
 end
@@ -417,7 +426,10 @@ end
 
 -- Explicit targets include anonymous controls that cannot be found by global names.
 local function SkinRegisteredTarget(frame, kind, options)
-    if kind == "button" then
+    if kind == "flatButton" then
+        -- MDI actions and sort headings keep their compact, borderless hit area.
+        MarkSkinned(frame)
+    elseif kind == "button" then
         SkinButton(frame)
     elseif kind == "arrow" and not IsSkinned(frame) and S.HandleNextPrevButton then
         -- Some APR arrow controls still carry their own text label (tooltip text or older templates).
@@ -458,6 +470,7 @@ local function SkinRegisteredTarget(frame, kind, options)
     elseif kind == "settings" then
         SkinSettingsIconButton(frame)
     elseif kind == "editbox" and not IsSkinned(frame) and S.HandleEditBox then
+        if options.themeSurface and frame.SetBackdrop then frame:SetBackdrop(nil) end
         S:HandleEditBox(frame)
         MarkSkinned(frame)
     end
@@ -472,6 +485,9 @@ function APR.ElvUISkin:OnEnable()
     SkinStaticFrames()
     if not hooksInstalled then
         HookDynamicFrames()
+        if E.UpdateMedia then
+            hooksecurefunc(E, "UpdateMedia", function() APR:RefreshRegisteredSkins() end)
+        end
         hooksInstalled = true
     end
     UpdateSnappedBackdrops()

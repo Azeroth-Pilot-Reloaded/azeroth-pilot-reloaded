@@ -2,6 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["85-BC-1-Horde"] = {
     label = L["BC01 - Hellfire Peninsula"],
+    author = "Jumbonero",
     expansion = APR.EXPANSIONS.TheBurningCrusade,
     category = APR.CATEGORIES.Leveling,
     prefab = {

@@ -221,7 +221,7 @@ local function BuildPrefabPopupOptions(definition)
             end
 
             if not hasRoute and definition.showUnavailable then
-                option.label = option.label .. " - Unavailable"
+                option.label = option.label .. " - " .. UNAVAILABLE
                 option.tooltip = definition.unavailableMessage
             end
 

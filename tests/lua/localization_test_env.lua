@@ -4,7 +4,7 @@ local locale = originalLibStub("AceLocale-3.0"):GetLocale("APR")
 setmetatable(locale, {__index = function(_, key) return key end})
 locale.AUTHOR = "%s"
 for _, key in ipairs({
-    "CANCEL", "CHARACTER", "CLASS", "CLOSE", "CLUB_FINDER_COMMUNITY_TYPE", "CONTINENT",
+    "ACCEPT", "CANCEL", "CHARACTER", "CLASS", "CLOSE", "CLUB_FINDER_COMMUNITY_TYPE", "CONTINENT",
     "CONVERT", "D_MINUTES", "FACTION", "FRAMERATE_LABEL", "HUD_EDIT_MODE_SETTING_CHAT_FRAME_HEIGHT",
     "HUD_EDIT_MODE_SETTING_CHAT_FRAME_WIDTH", "INTERFACE_LABEL", "LANGUAGE", "LEVEL", "MAXIMUM",
     "MILLISECONDS_ABBR", "NAME", "NARRATION_STATUS_HIDDEN", "NO", "OTHER", "OVERVIEW", "SEARCH",

@@ -1,6 +1,7 @@
 -- Client filtering is hard visibility, regardless of otherwise valid level conditions.
 local L = setmetatable({}, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
+UNAVAILABLE = "Unavailable"
 
 APR = { RouteQuestStepList = {}, interfaceVersion = 16001, Faction = "Horde" }
 function APR:NewModule() return {} end
