@@ -279,6 +279,53 @@ function APR:TableToDebugString(value, skipKey, depth, visited)
     return "{" .. table.concat(parts, ",") .. "}"
 end
 
+-- Diagnostic Lua retains keys and stable ordering. Work/depth are bounded for unexpected runtime data.
+function APR:FormatDebugTable(value)
+    local visited, entries = {}, 0
+    local function available(item)
+        return not self.CanAccessValue or self:CanAccessValue(item)
+    end
+    local function format(item, depth)
+        if not available(item) then return '"<unavailable>"' end
+        local kind = type(item)
+        if kind == "string" then return string.format("%q", item) end
+        if kind == "number" then
+            return item == item and item ~= math.huge and item ~= -math.huge and tostring(item) or '"<non-finite>"'
+        end
+        if kind == "boolean" or kind == "nil" then return tostring(item) end
+        if kind ~= "table" then return string.format("%q", "<" .. kind .. ">") end
+        if self.CanAccessTable and not self:CanAccessTable(item) then return '"<unavailable>"' end
+        if visited[item] then return '"<circular>"' end
+        if depth >= 10 then return '"<max-depth>"' end
+        if entries >= 10000 then return '"<entry-limit>"' end
+        visited[item] = true
+        local keys, truncated, scanned = {}, false, 0
+        for key in pairs(item) do
+            if entries + scanned >= 10000 then truncated = true; break end
+            scanned = scanned + 1
+            if available(key) and (type(key) == "number" or type(key) == "string") then
+                keys[#keys + 1] = key
+            end
+        end
+        entries = entries + scanned
+        table.sort(keys, function(a, b)
+            if type(a) == type(b) then return a < b end
+            return type(a) == "number"
+        end)
+        local parts, indent = {}, string.rep("    ", depth + 1)
+        for _, key in ipairs(keys) do
+            -- Bracket every string key, including Lua keywords, so a complete plain-data report is valid Lua.
+            local label = "[" .. (type(key) == "number" and tostring(key) or string.format("%q", key)) .. "]"
+            parts[#parts + 1] = indent .. label .. " = " .. format(item[key], depth + 1) .. ","
+        end
+        if truncated then parts[#parts + 1] = indent .. "-- <entry-limit>" end
+        visited[item] = nil
+        if #parts == 0 then return "{}" end
+        return "{\n" .. table.concat(parts, "\n") .. "\n" .. string.rep("    ", depth) .. "}"
+    end
+    return format(value, 0)
+end
+
 -- Copy route/profile data without sharing nested tables with SavedVariables.
 -- Preserve cycles and repeated references, without metatables; use only for plain data.
 function APR:DeepCopyTable(value, copies)

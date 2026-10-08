@@ -70,3 +70,17 @@ assert(APRSettings.profiles.Default.size == 15 and APRSettings.char.player.showH
 APRSettings.char.player.showHeirloomWarning = true
 assert(saved.char.player.showHeirloomWarning == false)
 print("Core utilities: isolated copies, cycles, literal text, diagnostics, current-step ownership and AceDB scope passed")
+
+local formatted = APR:FormatDebugTable({z = false, a = {2, "quoted\"value"}, ["end"] = "keyword"})
+assert(formatted:find('\n    ["a"] = {', 1, true))
+assert(formatted:find('["a"]', 1, true) < formatted:find('["z"]', 1, true))
+local restored = assert(loadstring("return " .. formatted))()
+assert(restored.z == false and restored.a[2] == 'quoted"value' and restored["end"] == "keyword")
+local loop = {}; loop.self = loop
+assert(APR:FormatDebugTable(loop):find("<circular>", 1, true))
+local restricted = {}
+function APR:CanAccessValue(value) return value ~= restricted end
+assert(APR:FormatDebugTable({data = restricted}):find("<unavailable>", 1, true))
+local large = {}; for index = 1, 10020 do large[index] = index end
+assert(APR:FormatDebugTable(large):find("<entry-limit>", 1, true))
+print("Diagnostic formatting: stable keys, valid Lua, indentation, cycles, restricted values and bounded output passed")
