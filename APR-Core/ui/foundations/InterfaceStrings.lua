@@ -3,6 +3,8 @@
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local labels = {
+    PRESETS = { "Choose a preset...", "Choisir un parcours prédéfini..." },
+    REPLACE_PATH = { "Replace your current path with the speedrun preset? Route progress is preserved.", "Remplacer le parcours actuel par le parcours speedrun ? La progression des routes est conservée." },
     PERF_GRAPH = { "Largest measured call per second · last 120 seconds", "Appel mesuré le plus long par seconde · 120 dernières secondes" },
     PERF_LIMITS = { "APR instrumented calls only. Nested timings overlap. Capture is off by default; it continues when this window closes.", "Appels instrumentés d'APR uniquement. Les durées imbriquées se recouvrent. La capture est désactivée par défaut et continue après fermeture." },
     COUNTERS = { "Cache / activity counters", "Compteurs de cache / activité" },

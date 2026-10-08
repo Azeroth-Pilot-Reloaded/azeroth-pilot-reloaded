@@ -63,7 +63,10 @@ function methods:StopMovingOrSizing() self.moving = false end
 
 function methods:ClearFocus() self.focused = false end
 
-function methods:SetText(text) self.text = text end
+function methods:SetText(text)
+    self.text = text
+    if self.label then self.label.text = text end
+end
 
 function methods:GetText() return self.text end
 
@@ -194,6 +197,7 @@ APR = {
     SetupFrameDrag = noop,
     SetupMinimizeButton = noop,
     RegisterFontString = noop,
+    SetFontStringRole = function(_, font, role) if font then font.role = role end end,
     fillersFrame = { RemoveFillerSteps = noop },
     questOrderList = { ApplySnapAnchor = function() layouts = layouts + 1 end },
     GetQuestObjectiveProgressPercent = noop,
