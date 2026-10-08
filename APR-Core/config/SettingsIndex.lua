@@ -55,8 +55,13 @@ function Index:OpenAdvanced(record)
     local dialog = LibStub("AceConfigDialog-3.0")
     dialog:Open(APR.title)
     if record then
-        local path = {}
-        for i = 1, #record.info - 1 do path[i] = record.info[i] end
+        local path, node = {}, APR.settings.optionsTable
+        for i = 1, #record.info - 1 do
+            node = node and node.args and node.args[record.info[i]]
+            -- Inline groups have no selectable tree entry in AceConfigDialog.
+            if not node or node.inline then break end
+            path[#path + 1] = record.info[i]
+        end
         if #path > 0 then dialog:SelectGroup(APR.title, unpack(path)) end
     end
 end

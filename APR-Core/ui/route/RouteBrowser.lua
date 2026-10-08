@@ -19,7 +19,11 @@ function Browser:Refresh(rebuild)
     self.count:SetText(#records .. " / " .. #self.records)
     self.empty:SetShown(#records == 0)
     self.empty:SetText(self.filters.facet == "community" and T("NO_COMMUNITY_METADATA") or T("NO_RESULTS"))
-    for facet, button in pairs(self.tabs) do button:SetEnabled(facet ~= self.filters.facet) end
+    for facet, button in pairs(self.tabs) do
+        local selected = facet == self.filters.facet
+        button:SetText((selected and "• " or "") .. button.labelText)
+        APR:SetFontStringRole(button:GetFontString(), selected and "accent" or "base")
+    end
     self:ShowDetails(selected)
 end
 
@@ -72,6 +76,7 @@ function Browser:Create()
         end)
         button:SetPoint("TOPLEFT", (index - 1) * 150, -42)
         self.tabs[facet] = button
+        button.labelText = T(pair[2])
     end
     self.expansion = UI:Select(root, 245, function(value) self.filters.expansion = value or nil; self:Refresh() end)
     self.expansion:SetPoint("TOPLEFT", 0, -82)
@@ -162,10 +167,15 @@ function Browser:Create()
     end)
     self.down:SetPoint("LEFT", self.up, "RIGHT", 8, 0)
     UI:Tooltip(self.down, T("DOWN"))
-    local leveling = UI:Button(root, T("PRESET_LEVELING"), 180, function() APR.routeconfig:OpenLevelingPopup() end)
-    leveling:SetPoint("BOTTOMLEFT")
-    local quests = UI:Button(root, T("PRESET_QUESTS"), 180, function() APR.routeconfig:OpenAllQuestsPopup() end)
-    quests:SetPoint("LEFT", leveling, "RIGHT", 8, 0)
+    local presets = UI:Select(root, 260, function(value)
+        if value == "leveling" then APR.routeconfig:OpenLevelingPopup()
+        elseif value == "quests" then APR.routeconfig:OpenAllQuestsPopup()
+        elseif value == "speedrun" then APR.routeconfig:OpenSpeedrunPreset() end
+    end)
+    presets:SetOptions({{value = "leveling", label = T("PRESET_LEVELING")},
+        {value = "quests", label = T("PRESET_QUESTS")}, {value = "speedrun", label = "Speedrun"}}, false)
+    presets:SetText(T("PRESETS"))
+    presets:SetPoint("BOTTOMLEFT")
     local settings = UI:Button(root, T("SETTINGS"), 150, function() APR.settings:OpenSettings(APR.title) end)
     settings:SetPoint("BOTTOMRIGHT")
     frame:HookScript("OnShow", function() self:Refresh(true) end)
