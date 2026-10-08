@@ -28,9 +28,11 @@ function UI:Button(parent, text, width, callback)
     button:SetFontString(label)
     button:SetScript("OnClick", callback)
     button:SetScript("OnEnter", function(self)
+        if APR:GetSkinProviderName() then return end
         if self:IsEnabled() and self.SetBackdropBorderColor then self:SetBackdropBorderColor(unpack(APR:GetThemeColor("accent"))) end
     end)
     button:SetScript("OnLeave", function(self)
+        if APR:GetSkinProviderName() then return end
         if self.SetBackdropBorderColor then self:SetBackdropBorderColor(unpack(APR:GetThemeColor("border"))) end
     end)
     button:SetScript("OnEnable", function() label:SetAlpha(1) end)
@@ -128,6 +130,7 @@ function UI:Select(parent, width, changed)
     local button = self:Button(parent, "", width)
     button:SetScript("OnClick", function()
         if button.menu and button.menu:IsShown() then button.menu:Hide(); return end
+        if UI.activeMenu then UI.activeMenu:Hide() end
         if not button.menu then
             local menu = self:Panel(button)
             button.menu = menu
@@ -149,6 +152,7 @@ function UI:Select(parent, width, changed)
             button:HookScript("OnHide", function() menu:Hide() end)
         end
         button.menu:Show()
+        UI.activeMenu = button.menu
         button.menu.list:SetItems(button.options or {})
     end)
     function button:SetOptions(options, value)

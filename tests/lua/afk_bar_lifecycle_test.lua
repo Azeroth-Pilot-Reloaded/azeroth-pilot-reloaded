@@ -70,6 +70,7 @@ function APR:GetSettingsProfile() return self.settings and self.settings.profile
 function APR:RegisterFontString(font, scope) self.textStyleRegistry[font] = scope end
 function APR:SnapFrameToAnchor(frame, anchor) frame:SetPoint("TOP", anchor, "BOTTOM") end
 dofile("APR-Core/ui/foundations/StatusBars.lua")
+dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/features/player/AFK.lua")
 local afk, bar = APR.AFK
 for _, frame in ipairs(frames) do if frame.kind == "StatusBar" then assert(not bar); bar = frame end end

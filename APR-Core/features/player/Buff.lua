@@ -34,7 +34,7 @@ BuffFrame:SetBackdrop({
     tile = true,
     tileSize = 16
 })
-BuffFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+APR:SetPanelColor(BuffFrame, APR.Color.defaultBackdrop)
 
 -- Create the body frame
 local BuffFrame_body = CreateFrame("Frame", "BuffFrame_body", BuffFrame, "BackdropTemplate")
@@ -227,7 +227,7 @@ function APR.Buff:RefreshFrameAnchor()
 end
 
 function APR.Buff:UpdateBackgroundColorAlpha()
-    BuffFrameScreen:SetBackdropColor(unpack(APR.settings.profile.currentStepbackgroundColorAlpha))
+    APR:SetPanelColor(BuffFrameScreen, APR.settings.profile.currentStepbackgroundColorAlpha)
 end
 
 function APR.Buff:UsesAuraContainer()

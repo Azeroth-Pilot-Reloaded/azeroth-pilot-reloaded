@@ -301,7 +301,7 @@ function APR.fillersFrame:UpdateBackgroundColorAlpha(color)
 
     -- Update Fillers frame background
     if FillersFrame then
-        FillersFrame:SetBackdropColor(unpack(rgba))
+        APR:SetPanelColor(FillersFrame, rgba)
     end
 end
 

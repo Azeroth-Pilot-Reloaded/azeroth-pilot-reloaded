@@ -175,7 +175,7 @@ function overlay:Refresh()
         LibWindow.RegisterConfig(frame, profile.xpBuffFrame)
         LibWindow.RestorePosition(frame)
     end
-    frame:SetBackdropColor(unpack(profile.currentStepbackgroundColorAlpha))
+    APR:SetPanelColor(frame, profile.currentStepbackgroundColorAlpha)
     for _, row in pairs(rows) do row:Hide() end
     if not profile.enableAddon or not APR.ActiveRoute or profile.showXPBuffOverlay == false or APR:IsPetBattleActive() or
         UnitLevel("player") >= APR:GetPlayerMaxLevel() then

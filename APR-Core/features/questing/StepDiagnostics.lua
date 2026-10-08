@@ -50,7 +50,8 @@ function APR:DescribeStepWait()
     if #reasons == 0 then reasons[1] = T("ACTION_PENDING") end
     local text, action = self:GetStepString(step)
     if text then reasons[#reasons + 1] = text end
-    if InCombatLockdown() and (self.secureReconcilePending or self.skinRefreshPending) then
+    local pendingButtons = self.currentStep and self.currentStep.pendingButtonRequests
+    if InCombatLockdown() and ((pendingButtons and next(pendingButtons)) or (self.AreSkinsPending and self:AreSkinsPending())) then
         reasons[#reasons + 1] = T("COMBAT_PENDING")
     end
     return reasons, action

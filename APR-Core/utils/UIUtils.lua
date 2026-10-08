@@ -485,7 +485,7 @@ function APR:CreateStandardFrame(name, parent, width, height, template)
         tile = true,
         tileSize = 16
     })
-    frame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+    APR:SetPanelColor(frame, APR.Color.defaultBackdrop)
     if self.RegisterSkinTarget then self:RegisterSkinTarget(frame, "panel", { preserveBackground = true }) end
     return frame
 end
@@ -639,7 +639,7 @@ function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, ba
             tile = true,
             tileSize = 16
         })
-        container:SetBackdropColor(unpack(backdropColor))
+        APR:SetPanelColor(container, backdropColor)
     else
         container:SetBackdrop(nil)
     end

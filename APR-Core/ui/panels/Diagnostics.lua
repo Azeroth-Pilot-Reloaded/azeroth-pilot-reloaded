@@ -108,6 +108,8 @@ function APR:CreateDiagnosticsEntryPoint()
     local button = UI:Button(anchor:GetParent(), "?", 22, function() self:ShowDiagnostics() end)
     button:SetHeight(22)
     button:SetPoint("RIGHT", anchor, "LEFT", -3, 0)
+    local title = anchor:GetParent().Text
+    if title then title:SetPoint("RIGHT", button, "LEFT", -6, 0) end
     UI:Tooltip(button, T("EXPLAIN"))
     self.diagnosticsButton = button
 end

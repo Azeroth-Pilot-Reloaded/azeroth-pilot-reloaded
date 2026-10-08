@@ -239,6 +239,7 @@ C_Item = { GetItemInfo = function(id) return "Item " .. id, nil, nil, nil, nil, 
 C_QuestLog = { GetTitleForQuestID = function(id) return "Quest " .. id end }
 UNKNOWN = "Unknown"
 dofile("APR-Core/utils/QuestUtils.lua")
+dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/StatusBars.lua")
 dofile("APR-Core/ui/route/CurrentStep.lua")
 dofile("APR-Core/ui/route/CurrentStepRows.lua")

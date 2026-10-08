@@ -32,7 +32,7 @@ AfkFrame:SetBackdrop({
     tile = true,
     tileSize = 16
 })
-AfkFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+APR:SetPanelColor(AfkFrame, APR.Color.defaultBackdrop)
 
 local bar = APR:CreateStatusBar(AfkFrame, nil, "afk", "afkBarColor")
 bar:SetAllPoints()

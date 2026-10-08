@@ -125,6 +125,7 @@ function APR:GetSettingsProfile() return self.settings.profile end
 function APR:RegisterFontString(font, _, options) font.onApplied = options.onApplied end
 
 APR.SetupHeaderDrag, APR.SetupMinimizeButton = noop, noop
+dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/utils/UIUtils.lua")
 dofile("APR-Core/ui/foundations/StatusBars.lua")
 APR.SetupHeaderDrag, APR.SetupMinimizeButton = noop, noop

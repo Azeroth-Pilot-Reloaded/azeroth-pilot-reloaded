@@ -84,6 +84,7 @@ C_UnitAuras = {
         queries = queries + 1; return aura
     end
 }
+dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/features/player/Buff.lua")
 APR.Buff.RefreshFrameAnchor = noop
 aura = { spellId = 123, auraInstanceID = 42, icon = 123 }

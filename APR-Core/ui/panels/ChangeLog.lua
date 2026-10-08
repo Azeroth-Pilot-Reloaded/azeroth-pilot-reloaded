@@ -20,7 +20,7 @@ ChangeLogFrame:SetBackdrop({
     tile = true,
     tileSize = 16
 })
-ChangeLogFrame:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+APR:SetPanelColor(ChangeLogFrame, APR.Color.defaultBackdrop)
 ChangeLogFrame:EnableMouse(true)
 
 local headerFrame = CreateFrame('Frame', nil, ChangeLogFrame, 'TitleDragAreaTemplate')

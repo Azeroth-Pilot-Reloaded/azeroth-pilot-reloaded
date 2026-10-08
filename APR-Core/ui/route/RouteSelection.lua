@@ -20,7 +20,7 @@ RouteSelectionFrame:SetBackdrop({
     tile = true,
     tileSize = 16
 })
-RouteSelectionFrame:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
+APR:SetPanelColor(RouteSelectionFrame, APR.Color.defaultLightBackdrop)
 
 -- Create the frame header
 local RouteSelectionFrameHeader = CreateFrame("Frame", "RouteSelectionFrameHeader", RouteSelectionFrame,

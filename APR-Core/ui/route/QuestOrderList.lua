@@ -312,7 +312,7 @@ function APR.questOrderList:UpdateFrameScale()
 end
 
 function APR.questOrderList:UpdateBackgroundColorAlpha(color)
-    QuestOrderListFrame:SetBackdropColor(unpack(color or APR.settings.profile.questOrderListbackgroundColorAlpha))
+    APR:SetPanelColor(QuestOrderListFrame, color or APR.settings.profile.questOrderListbackgroundColorAlpha)
 end
 
 -- Remove all quest steps

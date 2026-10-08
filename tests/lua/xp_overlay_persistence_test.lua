@@ -123,6 +123,7 @@ local function visibleRows()
 end
 APR.settings = { profile = { enableAddon = true, xpBuffFrame = {}, currentStepbackgroundColorAlpha = { 0, 0, 0, 0.5 } } }
 dofile("APR-Core/utils/UIUtils.lua")
+dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/features/player/XPBuffOverlay.lua")
 APR.XPBuffOverlay:Refresh()
 assert(visibleRows() == 0, "XP reminders require an active route")
