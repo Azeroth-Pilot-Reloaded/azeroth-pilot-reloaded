@@ -59,6 +59,14 @@ assert(text:find('["currentRoute"] = {', 1, true) and text:find("\n    ", 1, tru
 assert(not text:find("Private name", 1, true) and not text:find("Private realm", 1, true))
 local decoded = assert(loadstring("return " .. text))()
 assert(decoded.currentWorldCoords[2] == "240.00, 130.00")
+assert(decoded.currentStepData.Qpart[100][1] == 1, "Export includes the complete current step")
+APR.runtimeRouteStep = {route = "route", index = 1, step = {Qpart = {[100] = {1}}, Coord = {x = 25, y = 75}}}
+APR:ExportStatusReport()
+text = export.edit:GetText()
+decoded = assert(loadstring("return " .. text))()
+assert(decoded.currentStepData.Coord.x == 25 and decoded.currentStepData.Coord.y == 75,
+    "Export uses the active runtime step, including navigation adjustments")
+assert(APR.RouteQuestStepList.route.steps[1].Coord == nil, "Export cannot modify the route definition")
 export.edit:SetFocus(); export.edit:HighlightText()
 APR.Level = 91
 APR:updateStatusFrame()
@@ -82,6 +90,9 @@ assert(APR:getStatusReportInfos().currentWorldCoords[2] == UNKNOWN)
 APR.ActiveRoute = nil
 APR.settings.profile.enableAddon = false
 assert(APR:getStatusReportInfos().currentStep[2] == "No active route")
+APR:ExportStatusReport()
+decoded = assert(loadstring("return " .. export.edit:GetText()))()
+assert(decoded.currentStepData == nil, "No active route must not export a stale runtime step")
 APR:updateStatusFrame()
 APR:showStatusReport()
 assert(not frame:IsShown(), "Original status entry toggles the window")
