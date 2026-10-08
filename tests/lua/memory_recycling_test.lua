@@ -80,50 +80,45 @@ for index = 1, 100 do previewPass(index % 3 + 1) end
 assert(env.frames() == frames, "Image rows and thumbnail buttons are recycled after changing images")
 APR.currentStepImagePreview:ClearPreviewImages(step)
 
--- Exercise the actual route library across empty/populated path changes.
-local locale = setmetatable({}, {__index = function(_, key) return key end})
-local originalLibStub = LibStub
-function LibStub(name)
-    if name == "AceLocale-3.0" then return {GetLocale = function() return locale end} end
-    return originalLibStub(name)
-end
-function GetLocale() return "enUS" end
-APR.PlayerID, APR.EXPANSIONS = "test", {Test = "Test"}
-APR.CATEGORIES = {Leveling = "Leveling"}
+-- Exercise the real configuration widgets with changing rows and callbacks.
+local locale = setmetatable({}, { __index = function(_, key) return key end })
+function LibStub() return { GetLocale = function() return locale end } end
+APR.Color.grayAlpha = { 0.4, 0.4, 0.4, 0.4 }
+APR.PlayerID, APR.EXPANSIONS = "test", { Test = "Test" }
+APR.PREFAB_TYPES = { Leveling = "Leveling", AllQuests = "AllQuests", Speedrun = "Speedrun" }
+function APR:GetRouteSelectionExpansions() return { "Test" } end
 function APR:NormalizeSearchText(text) return (text or ""):lower() end
 function APR:GetRouteVisibility() return "visible" end
-function APR:GetUnmetConditions() return {} end
-APR.RouteQuestStepList = {first = {label = "First", expansion = "Test"}, second = {label = "Second", expansion = "Test"}}
-APRCustomPath, APRData, APRZoneCompleted = {test = {}}, {test = {}}, {test = {}}
+function APR:GetRouteData(key) return self.RouteQuestStepList[key] end
+function APR:Contains(list, value) for _, entry in ipairs(list) do if entry == value then return true end end end
+APR.RouteQuestStepList = { first = { label = "First", expansion = "Test" }, second = { label = "Second", expansion = "Test" } }
+APRCustomPath, APRData, APRZoneCompleted = { test = {} }, { test = {} }, { test = {} }
+tinsert, tremove = table.insert, table.remove
 dofile("APR-Core/config/Config_Route.lua")
-APR.routeconfig.SendMessage = function() end
-APR.routeconfig.SendCustomPathUpdate = function() end
-dofile("APR-Core/ui/foundations/InterfaceStrings.lua")
-dofile("APR-Core/integrations/SkinRegistry.lua")
-dofile("APR-Core/ui/foundations/Widgets.lua")
-dofile("APR-Core/ui/foundations/VirtualList.lua")
-dofile("APR-Core/features/questing/RouteCatalog.lua")
-dofile("APR-Core/ui/route/RouteBrowser.lua")
-UIParent:SetSize(1920, 1080)
-local browser = APR.RouteBrowser
-browser.filters.facet = "path"
-browser:Show()
-APRCustomPath.test = {"First", "Second"}
-browser:Refresh(true)
+local custom = { frame = env.widget() }
+custom.frame.contentFrame, custom.frame.scrollFrame = env.widget(), env.widget()
+local catalogue = { frame = env.widget() }
+SetCustomPathListFrame(custom); SetRouteListTab(catalogue, "Test")
+APRCustomPath.test = { "First", "Second" }
+SetCustomPathListFrame(custom); SetRouteListTab(catalogue, "Test")
+APRCustomPath.test = {}
+SetCustomPathListFrame(custom); SetRouteListTab(catalogue, "Test")
 frames, fonts = env.frames(), env.fonts()
 for index = 1, 100 do
-    APRCustomPath.test = index % 2 == 0 and {"First", "Second"} or {}
-    browser:Refresh(true)
+    APRCustomPath.test = index % 2 == 0 and { "First", "Second" } or {}
+    SetCustomPathListFrame(custom); SetRouteListTab(catalogue, "Test")
 end
-assert(env.frames() == frames and env.fonts() == fonts, "Path changes reuse the visible rows")
-APRCustomPath.test = {"Second", "First"}
-browser:Refresh(true)
-local row = browser.list.active[1]
-row.scripts.OnClick(row)
-assert(browser.selected.label == "Second")
-browser.down.scripts.OnClick()
+assert(env.frames() == frames and env.fonts() == fonts, "Route lists recycle both empty and populated views")
+assert(#custom.fontStringsContainer == 2 and #catalogue.fontStringsContainer == 1,
+    "Active lists retain only the displayed rows")
+local oldSecond = custom.fontStringsContainer[2]
+APRCustomPath.test = { "Second", "First" }
+SetCustomPathListFrame(custom)
+assert(custom.fontStringsContainer[1] == oldSecond and oldSecond.nameText:GetText() == "Second")
+APR.routeconfig.SendMessage = function() end
+oldSecond.downButton.scripts.OnClick()
 assert(APRCustomPath.test[1] == "First" and APRCustomPath.test[2] == "Second",
-    "Reused controls act on the current route and path position")
+    "Reused buttons target their current route and position")
 
 -- The actual heirloom module must keep a bounded set of buttons per toy.
 local createFrame = CreateFrame
