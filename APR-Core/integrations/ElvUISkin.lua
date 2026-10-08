@@ -445,7 +445,7 @@ local function SkinRegisteredTarget(frame, kind, options)
         -- Style the texture only; never strip or rewrite secure item buttons.
         S:HandleIcon(options.texture, true)
         MarkSkinned(frame)
-    elseif (kind == "borderedPanel" or kind == "panel" or kind == "row" or kind == "divider") and not IsSkinned(frame) then
+    elseif (kind == "window" or kind == "borderedPanel" or kind == "panel" or kind == "row" or kind == "divider") and not IsSkinned(frame) then
         if frame.SetTemplate then frame:SetTemplate("Transparent") end
         MarkSkinned(frame)
     elseif kind == "header" then

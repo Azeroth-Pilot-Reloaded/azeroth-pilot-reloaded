@@ -60,6 +60,7 @@ end
 function Editor:Create()
     self.frame = UI:Window("APRLayoutEditor", T("LAYOUT"), 760, 260)
     self.frame:SetResizeBounds(680, 220)
+    self.frame:SetHeight(math.min(240, UIParent:GetHeight() - 60))
     self.frame.resize:Hide()
     self.frame:ClearAllPoints()
     self.frame:SetPoint("TOP", UIParent, "TOP", 0, -35)

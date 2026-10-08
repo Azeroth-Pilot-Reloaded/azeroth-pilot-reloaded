@@ -68,7 +68,7 @@ function APR:ApplyNativeTheme(frame, kind, options)
         self:RestoreNativeTheme(frame)
         return
     end
-    if kind == "panel" or kind == "borderedPanel" or kind == "row" or kind == "button" or kind == "editbox" then
+    if kind == "window" or kind == "panel" or kind == "borderedPanel" or kind == "row" or kind == "button" or kind == "editbox" then
         if not frame.SetBackdrop then return end
         if not options.themeSurface and not frame.aprNativeOriginal and frame.GetBackdrop then
             frame.aprNativeOriginal = {backdrop = frame:GetBackdrop(), color = {frame:GetBackdropColor()},

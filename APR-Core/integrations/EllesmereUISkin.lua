@@ -207,6 +207,8 @@ EUI.RegisterSkin("APR", function(S)
         elseif kind == "scrollbar" then S.ScrollBar(frame)
         elseif kind == "close" then S.CloseButton(frame)
         elseif kind == "icon" then S.SquareIcon(options.texture, frame)
+        elseif kind == "window" then
+            if S.Shell then S.Shell(frame) else StyleContentPanel(frame) end
         elseif kind == "borderedPanel" or kind == "panel" then
             if options.preserveContent or options.preserveBackground then
                 StyleContentPanel(frame)
