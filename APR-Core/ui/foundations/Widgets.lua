@@ -12,9 +12,9 @@ function UI:Label(parent, text, size, role)
     return label
 end
 
-function UI:Panel(parent)
+function UI:Panel(parent, kind)
     local frame = CreateFrame("Frame", nil, parent, "BackdropTemplate")
-    APR:RegisterSkinTarget(frame, "panel", { themeSurface = true, preserveContent = true })
+    APR:RegisterSkinTarget(frame, kind or "panel", { themeSurface = true, preserveContent = true })
     return frame
 end
 
@@ -165,9 +165,15 @@ function UI:Select(parent, width, changed)
 end
 
 function UI:Window(name, title, width, height)
-    local frame = self:Panel(UIParent)
+    local frame = self:Panel(UIParent, "window")
     _G[name] = frame
-    frame:SetSize(math.min(width, UIParent:GetWidth() - 40), math.min(height, UIParent:GetHeight() - 60))
+    local profile = APR:GetSettingsProfile()
+    profile.uiWindows = profile.uiWindows or {}
+    profile.uiWindows[name] = profile.uiWindows[name] or {}
+    local position = profile.uiWindows[name]
+    local window = LibStub("LibWindow-1.1")
+    frame:SetSize(math.min(tonumber(position.width) or width, UIParent:GetWidth() - 40),
+        math.min(tonumber(position.height) or height, UIParent:GetHeight() - 60))
     frame:SetPoint("CENTER")
     frame:SetClampedToScreen(true)
     frame:SetFrameStrata("DIALOG")
@@ -176,6 +182,12 @@ function UI:Window(name, title, width, height)
     frame:SetResizeBounds(math.min(680, UIParent:GetWidth() - 40), math.min(430, UIParent:GetHeight() - 60))
     frame:EnableMouse(true)
     frame:SetToplevel(true)
+    window.RegisterConfig(frame, position)
+    if position.point then window.RestorePosition(frame) end
+    local function saveGeometry()
+        window.SavePosition(frame)
+        position.width, position.height = frame:GetSize()
+    end
     frame.header = CreateFrame("Frame", nil, frame)
     frame.header:SetPoint("TOPLEFT", 16, -8)
     frame.header:SetPoint("TOPRIGHT", -52, -8)
@@ -183,7 +195,7 @@ function UI:Window(name, title, width, height)
     frame.header:EnableMouse(true)
     frame.header.Text = self:Label(frame.header, title, 20, "accent")
     frame.header.Text:SetPoint("LEFT")
-    APR:SetupHeaderDrag(frame.header, frame, function() return not InCombatLockdown() end)
+    APR:SetupHeaderDrag(frame.header, frame, function() return not InCombatLockdown() end, saveGeometry)
     frame.close = self:Button(frame, "×", 30, function() frame:Hide() end)
     frame.close:SetPoint("TOPRIGHT", -12, -12)
     frame.content = CreateFrame("Frame", nil, frame)
@@ -193,8 +205,8 @@ function UI:Window(name, title, width, height)
     frame.resize:SetHeight(22)
     frame.resize:SetPoint("BOTTOMRIGHT", -2, 2)
     frame.resize:SetScript("OnMouseDown", function() if not InCombatLockdown() then frame:StartSizing("BOTTOMRIGHT") end end)
-    frame.resize:SetScript("OnMouseUp", function() frame:StopMovingOrSizing() end)
-    frame:SetScript("OnHide", function(self) self:StopMovingOrSizing(); GameTooltip:Hide() end)
+    frame.resize:SetScript("OnMouseUp", function() frame:StopMovingOrSizing(); saveGeometry() end)
+    frame:SetScript("OnHide", function(self) self:StopMovingOrSizing(); saveGeometry(); GameTooltip:Hide() end)
     UISpecialFrames = UISpecialFrames or {}
     table.insert(UISpecialFrames, name)
     frame:Hide()

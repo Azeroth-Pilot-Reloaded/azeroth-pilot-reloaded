@@ -35,6 +35,7 @@ end
 
 function Dashboard:Create()
     local frame = UI:Window("APRPerformanceDashboard", T("PERFORMANCE"), 1040, 780)
+    frame:SetResizeBounds(math.min(680, UIParent:GetWidth() - 40), math.min(600, UIParent:GetHeight() - 60))
     self.frame, self.bars = frame, {}
     local root = frame.content
     self.capture = UI:Button(root, T("CAPTURE"), 180, function()

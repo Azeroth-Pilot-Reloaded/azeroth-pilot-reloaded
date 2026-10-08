@@ -82,7 +82,11 @@ APR.currentStepImagePreview:ClearPreviewImages(step)
 
 -- Exercise the actual route library across empty/populated path changes.
 local locale = setmetatable({}, {__index = function(_, key) return key end})
-function LibStub() return {GetLocale = function() return locale end} end
+local originalLibStub = LibStub
+function LibStub(name)
+    if name == "AceLocale-3.0" then return {GetLocale = function() return locale end} end
+    return originalLibStub(name)
+end
 function GetLocale() return "enUS" end
 APR.PlayerID, APR.EXPANSIONS = "test", {Test = "Test"}
 APR.CATEGORIES = {Leveling = "Leveling"}
