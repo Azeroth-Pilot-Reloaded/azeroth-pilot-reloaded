@@ -120,6 +120,27 @@ oldSecond.downButton.scripts.OnClick()
 assert(APRCustomPath.test[1] == "First" and APRCustomPath.test[2] == "Second",
     "Reused buttons target their current route and position")
 
+-- Preserve the catalog's right-click add/resume and Shift-right-click reset gestures.
+APRCustomPath.test = {}
+APRData.test.first, APRData.test["first-TotalSteps"] = 2, 10
+local shift, resets, checks, added = false, 0, 0, 0
+function IsShiftKeyDown() return shift end
+function APR:ResetRoute(key) assert(key == "first"); resets = resets + 1 end
+function APR:CheckRouteChanges(key) assert(key == "first"); checks = checks + 1 end
+function APR:AddRouteToCustomPathByKey(key) assert(key == "first"); added = added + 1 end
+SetRouteListTab(catalogue, "Test")
+local first = catalogue.fontStringsContainer[1]
+first.scripts.OnMouseDown(first, "LeftButton")
+assert(added == 0)
+first.scripts.OnMouseDown(first, "RightButton")
+assert(added == 1 and checks == 1 and resets == 0)
+shift = true
+first.scripts.OnMouseDown(first, "RightButton")
+assert(added == 2 and checks == 1 and resets == 1)
+function APR:GetRouteVisibility(key) return key == "first" and "disabled" or "visible" end
+SetRouteListTab(catalogue, "Test")
+assert(catalogue.fontStringsContainer[1].scripts.OnMouseDown == nil, "Disabled routes cannot be added by right click")
+
 -- The actual heirloom module must keep a bounded set of buttons per toy.
 local createFrame = CreateFrame
 function CreateFrame(kind, name, parent, template)
