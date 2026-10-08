@@ -48,7 +48,6 @@ function APR.settings:InitializeSettings()
         profile = {
             uiTheme = "wow",
             uiWindows = {},
-            routeFavorites = {},
             -- automation
             autoAccept = false,
             autoAcceptQuestRoute = true,
@@ -294,6 +293,13 @@ function APR.settings:createBlizzOptions()
                         function() APR.settings:ResetSettings() end
                     )
                 end
+            },
+            performanceButton = {
+                order = 1.6,
+                name = function() return APR:LocalizeUI("PERFORMANCE") end,
+                type = "execute",
+                width = 0.75,
+                func = function() APR.PerformanceDashboard:Show() end,
             },
             header_Automation = {
                 order = 2,
@@ -1946,7 +1952,6 @@ function APR.settings:createBlizzOptions()
     }
 
     -- Register setting to the option table
-    self.optionsTable = optionsTable
     aceConfig:RegisterOptionsTable(APR.title, optionsTable)
 
     -- Add settings to bliz option
@@ -2214,18 +2219,13 @@ function APR.settings:ToggleAddon()
 end
 
 function APR.settings:OpenSettings(name)
-    if name == L["ROUTE"] and APR.RouteBrowser then return APR.RouteBrowser:Show() end
-    if name == APR.title and APR.SettingsHome then return APR.SettingsHome:Show() end
-    return self:OpenAdvancedSettings(name)
-end
-
-function APR.settings:OpenAdvancedSettings(name)
     if name == APR.title then
         if InterfaceOptionsFrame_OpenToCategory then
             InterfaceOptionsFrame_OpenToCategory(APR.title)
         else
             Settings.OpenToCategory(self.category.ID)
         end
+        self:OpenSettings(L["ROUTE"])
     end
     if APR.Options then
         if SettingsPanel then

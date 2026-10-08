@@ -85,11 +85,6 @@ APR-Core/data/zones/ScenarioEntrances.lua
 APR-Core/config/Config.lua
 APR-Core/config/Config_Route.lua
 APR-Core/config/Config_Route_Prefabs.lua
-APR-Core/config/SettingsIndex.lua
-APR-Core/ui/panels/SettingsHome.lua
-APR-Core/ui/panels/LayoutEditor.lua
-APR-Core/features/questing/RouteCatalog.lua
-APR-Core/ui/route/RouteBrowser.lua
 APR-Core/features/navigation/WorldCoordinateConverter.lua
 APR-Core/core/Commands.lua
 APR-Core/core/Performance.lua
