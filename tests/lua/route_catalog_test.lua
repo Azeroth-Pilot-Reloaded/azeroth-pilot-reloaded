@@ -50,6 +50,11 @@ APR.RouteBrowser.filters.query = "no such route"
 APR.RouteBrowser:Refresh()
 assert(APR.RouteBrowser.empty:IsShown() and not APR.RouteBrowser.details:IsShown())
 APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {label = "10-70 route by EclipseGlaives", steps = {}}
+local withoutAuthor = catalog:Filter(catalog:Build(), {query = "EclipseGlaives"})
+assert(#withoutAuthor == 1 and withoutAuthor[1].author == "APR" and not withoutAuthor[1].community,
+    "Neither authorship nor community status may be inferred from a route's key or label")
+APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"].author = "EclipseGlaives"
+APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"].community = true
 local community = catalog:Filter(catalog:Build(), {query = "EclipseGlaives", facet = "community"})
 assert(#community == 1 and community[1].author == "EclipseGlaives")
 APRCustomPath[APR.PlayerID] = {"Unavailable", "Hidden", "Removed route"}

@@ -250,6 +250,8 @@ class RouteSchema:
         self.route_fields = {
             "category": constants("CATEGORIES"), "expansion": constants("EXPANSIONS"),
             "gameVersion": constants("GAME_VERSIONS"), "label": TEXT, "mapID": COUNT,
+            "author": TEXT, "authors": array(TEXT, 1), "community": BOOL,
+            "source": enum(("apr", "community")), "description": TEXT,
             "legacyLabels": array(TEXT, 1), "conditions": self.route_condition,
             "autoStartOnMap": BOOL, "notSkippable": BOOL, "hiddenFromSelection": BOOL, "temporary": BOOL,
             "sojournerAchievementID": ID, "delve": obj({}),
