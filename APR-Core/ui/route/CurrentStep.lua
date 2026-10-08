@@ -179,13 +179,13 @@ end
 
 function APR.currentStep:UpdateBackgroundColorAlpha(color)
     local rgba = color or APR.settings.profile.currentStepbackgroundColorAlpha
-    CurrentStepFrame:SetBackdropColor(unpack(rgba))
+    APR:SetPanelColor(CurrentStepFrame, rgba)
 
     local function UpdateColor(list)
         for _, container in pairs(list) do
             -- Don't touch soft-hidden frames during combat
             if container and not container.hiddenInCombat then
-                container:SetBackdropColor(unpack(rgba))
+                APR:SetPanelColor(container, rgba)
             end
         end
     end
@@ -463,7 +463,7 @@ function APR.currentStep:ProgressBar(key, total, current)
             tile = true,
             tileSize = 16
         })
-        progressBar:SetBackdropColor(unpack(APR.Color.defaultBackdrop))
+        APR:SetPanelColor(progressBar, APR.Color.defaultBackdrop)
 
         local progressBarText = progressBar.Text
         if totalSteps > 0 then

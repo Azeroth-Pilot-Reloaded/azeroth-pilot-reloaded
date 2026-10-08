@@ -239,7 +239,7 @@ local function AcquireTeamContainer()
             tile = true,
             tileSize = 16
         })
-        container:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
+        APR:SetPanelColor(container, APR.Color.defaultLightBackdrop)
 
         container.fontName = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         container.fontName:SetWordWrap(true)
@@ -256,7 +256,7 @@ local function AcquireTeamContainer()
         container:SetScript("OnLeave", function(self) GameTooltip:Hide() end)
     else
         container:SetParent(PartyFrame_TeamHolder)
-        container:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
+        APR:SetPanelColor(container, APR.Color.defaultLightBackdrop)
         container:Show()
     end
 
@@ -291,7 +291,7 @@ local AddTeamMate = function(playerData, isSameRoute, color, container)
         APR:SetFontStringRole(container.fontIndex, "muted")
     end
 
-    container:SetBackdropColor(unpack(APR.Color.defaultLightBackdrop))
+    APR:SetPanelColor(container, APR.Color.defaultLightBackdrop)
     container:SetWidth(FRAME_WIDTH)
     local height = math.max(container.fontIndex:GetStringHeight(), container.fontName:GetStringHeight()) + 10
     container:SetHeight(height)

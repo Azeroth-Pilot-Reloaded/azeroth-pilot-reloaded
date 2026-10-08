@@ -148,14 +148,6 @@ local function SkinBackdropFrame(frame, template)
     MarkSkinned(frame)
 end
 
---- Mark a dialog frame as processed without touching its backdrop.
----@param frame table
-local function SkinDialogFrame(frame)
-    if not frame or IsSkinned(frame) then return end
-    -- Intentionally do nothing: base addon manages frame backgrounds.
-    MarkSkinned(frame)
-end
-
 --- Skin a UIPanelButtonTemplate button
 ---@param button table
 local function SkinButton(button)
@@ -397,89 +389,8 @@ end
 ----------------------------- Dynamic Frame Skinning ----------------------------------
 ---------------------------------------------------------------------------------------
 
---- Skin the route trigger popup if it exists
-local function SkinRouteTriggerPopup()
-    local frame = _G.APRRouteTriggerPopup
-    if frame then
-        SkinDialogFrame(frame)
-        SkinChildButtons(frame)
-    end
-end
-
---- Skin the selection popup if it exists
-local function SkinSelectionPopup()
-    local frame = _G.APRSelectionPopup
-    if frame then
-        SkinDialogFrame(frame)
-        SkinChildButtons(frame)
-    end
-end
-
---- Skin the status report frame if it exists
-local function SkinStatusReport()
-    local frame = _G.APRStatusReport
-    if frame then
-        SkinDialogFrame(frame)
-        SkinChildButtons(frame)
-        -- Skin close button
-        for _, child in pairs({ frame:GetChildren() }) do
-            if child:IsObjectType("Button") then
-                local name = child.GetName and child:GetName()
-                if child:GetObjectType() == "Button" then
-                    local normal = child:GetNormalTexture()
-                    if normal then
-                        local texturePath = normal:GetTexture()
-                        if type(texturePath) == "string" and texturePath:find("UIPanelCloseButton") then
-                            SkinCloseButton(child)
-                        end
-                    end
-                end
-            end
-        end
-    end
-end
-
---- Hook dynamic frame creation functions
+-- Creation is handled by SkinRegistry; only snap geometry still needs hooks.
 local function HookDynamicFrames()
-    -- Hook CreateStandardFrame: skins frames as they are created
-    if APR.CreateStandardFrame then
-        hooksecurefunc(APR, "CreateStandardFrame", function(_, name)
-            if not IsElvUISkinEnabled() then return end
-            local frame = name and _G[name]
-            if frame then
-                SkinBackdropFrame(frame)
-            end
-        end)
-    end
-
-    -- Hook popup creation: skin popups when they're first shown
-    if APR.questionDialog then
-        if APR.questionDialog.CreateRouteTriggerPopup then
-            hooksecurefunc(APR.questionDialog, "CreateRouteTriggerPopup", function()
-                if IsElvUISkinEnabled() then
-                    SkinRouteTriggerPopup()
-                end
-            end)
-        end
-
-        if APR.questionDialog.CreateSelectionPopup then
-            hooksecurefunc(APR.questionDialog, "CreateSelectionPopup", function()
-                if IsElvUISkinEnabled() then
-                    SkinSelectionPopup()
-                end
-            end)
-        end
-    end
-
-    -- Hook status report creation
-    if APR.showStatusReport then
-        hooksecurefunc(APR, "showStatusReport", function()
-            if IsElvUISkinEnabled() then
-                SkinStatusReport()
-            end
-        end)
-    end
-
     -- Hook frame anchor refreshes to update AFK backdrop after repositioning
     if APR.currentStep and APR.currentStep.RefreshCurrentStepFrameAnchor then
         hooksecurefunc(APR.currentStep, "RefreshCurrentStepFrameAnchor", function()
@@ -534,11 +445,16 @@ local function SkinRegisteredTarget(frame, kind, options)
         -- Style the texture only; never strip or rewrite secure item buttons.
         S:HandleIcon(options.texture, true)
         MarkSkinned(frame)
-    elseif (kind == "borderedPanel" or kind == "panel") and not IsSkinned(frame) then
+    elseif (kind == "borderedPanel" or kind == "panel" or kind == "row" or kind == "divider") and not IsSkinned(frame) then
         if frame.SetTemplate then frame:SetTemplate("Transparent") end
         MarkSkinned(frame)
     elseif kind == "header" then
         SkinOTHeader(frame)
+    elseif kind == "headerButton" then
+        if options.close then SkinCloseButton(frame) else SkinSecondaryMinimizeButton(frame, options.parent) end
+    elseif kind == "statusbar" then
+        if E.media and E.media.normTex then frame:SetStatusBarTexture(E.media.normTex) end
+        APR:ApplyStatusBarColor(frame)
     elseif kind == "settings" then
         SkinSettingsIconButton(frame)
     elseif kind == "editbox" and not IsSkinned(frame) and S.HandleEditBox then
@@ -570,11 +486,6 @@ function APR.ElvUISkin:ApplySkins()
     APR:RegisterStaticSkinTargets()
 
     SkinStaticFrames()
-
-    -- Skin any lazy frames that may already exist
-    SkinRouteTriggerPopup()
-    SkinSelectionPopup()
-    SkinStatusReport()
 
     UpdateSnappedBackdrops()
 end

@@ -609,7 +609,7 @@ function APR.currentStepImagePreview:SetPreviewImages(currentStep, step)
         tile = true,
         tileSize = 16
     })
-    container:SetBackdropColor(unpack(APR.settings.profile.currentStepbackgroundColorAlpha or APR.Color.defaultBackdrop))
+    APR:SetPanelColor(container, APR.settings.profile.currentStepbackgroundColorAlpha or APR.Color.defaultBackdrop)
     container.key = STEP_PREVIEW_CONTAINER_KEY
     container.imagePaths = imagePaths
     container.step = step

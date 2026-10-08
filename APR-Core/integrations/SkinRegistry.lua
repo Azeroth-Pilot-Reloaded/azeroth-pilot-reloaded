@@ -20,6 +20,7 @@ local function ApplyTarget(frame, target)
         return
     end
     if target.applied then return end
+    if target.nativeApplied and APR.RestoreNativeTheme then APR:RestoreNativeTheme(frame) end
     provider.apply(frame, target.kind, target.options)
     target.applied = true
 end
@@ -46,6 +47,8 @@ end
 function APR:GetSkinProviderName()
     return provider and provider.enabled() and provider.name or nil
 end
+
+function APR:AreSkinsPending() return pending end
 
 function APR:RegisterSkinProvider(name, apply, enabled)
     -- A reload is required to change providers; never stack two skins on a control.
@@ -87,4 +90,8 @@ local events = CreateFrame("Frame")
 events:RegisterEvent("PLAYER_REGEN_ENABLED")
 events:SetScript("OnEvent", function()
     if pending then APR:RefreshRegisteredSkins() end
+    if APR.nativeTextRefreshPending then
+        APR.nativeTextRefreshPending = nil
+        if APR.RefreshTextAppearance then APR:RefreshTextAppearance() end
+    end
 end)

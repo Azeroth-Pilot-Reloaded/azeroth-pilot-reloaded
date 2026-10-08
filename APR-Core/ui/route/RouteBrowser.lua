@@ -113,7 +113,9 @@ function Browser:Create()
         row.title:SetText(prefix .. (record.favorite and "* " or "") .. record.label)
         row.subtitle:SetText((record.community and T("COMMUNITY") .. " · " or "") .. record.category .. " · " .. record.author)
         row:SetAlpha(record.visibility == "visible" and 1 or 0.65)
-        row:SetBackdropBorderColor(unpack(APR:GetThemeColor(record.key == self.selectedKey and "accent" or "border")))
+        if not APR:GetSkinProviderName() then
+            row:SetBackdropBorderColor(unpack(APR:GetThemeColor(record.key == self.selectedKey and "accent" or "border")))
+        end
     end, 78)
     self.empty = UI:Label(root, T("NO_RESULTS"), 13, "muted")
     self.empty:SetPoint("TOPLEFT", 12, -148)
