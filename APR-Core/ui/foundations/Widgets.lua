@@ -64,8 +64,12 @@ end
 function UI:Tooltip(control, title, description)
     control:HookScript("OnEnter", function(self)
         GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-        APR:SetTooltipText(GameTooltip, title, "general", "accent")
-        if description then APR:AddTooltipLine(GameTooltip, description, "general", "base", true) end
+        -- Resolve recycled rows at hover time, including descriptions that return nil.
+        local heading, body = title, description
+        if type(heading) == "function" then heading = heading(self) end
+        if type(body) == "function" then body = body(self) end
+        APR:SetTooltipText(GameTooltip, heading, "general", "accent")
+        if body then APR:AddTooltipLine(GameTooltip, body, "general", "base", true) end
         GameTooltip:Show()
     end)
     control:HookScript("OnLeave", function() GameTooltip:Hide() end)

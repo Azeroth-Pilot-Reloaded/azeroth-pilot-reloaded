@@ -91,6 +91,9 @@ function List:RenderVisible(force)
         row:SetPoint("TOPLEFT", self.child, "TOPLEFT", 0, -self.offsets[index])
         row:SetSize(width, self.offsets[index + 1] - self.offsets[index])
         if force or row.boundGeneration ~= self.generation or row.boundIndex ~= index or row.boundWidth ~= width then
+            if row.item ~= self.items[index] and GameTooltip and GameTooltip:IsShown() and GameTooltip:GetOwner() == row then
+                GameTooltip:Hide()
+            end
             row.item = self.items[index]
             self.bindRow(row, row.item, index)
             -- A binder may use a shared renderer that sets its own geometry.
