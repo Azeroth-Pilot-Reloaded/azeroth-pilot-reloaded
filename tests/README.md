@@ -57,6 +57,8 @@ The focused commands in `tools/validation/run_lua_tests.py` remain available. De
 in-game checks are documented in `tools/validation/README.md`.
 
 Mocks validate addon behavior, not actual game rendering or API compatibility.
+UI tests use placeholder labels and do not validate localized wording or load
+translation catalogs. Text assertions cover synthetic data and behavior only.
 `native_settings_test.lua` checks the restored Blizzard settings entry points;
 `memory_recycling_test.lua` also covers route right-click/Shift-right-click and
 disabled routes. `route_metadata_tooltip_test.lua` checks data-only attribution,

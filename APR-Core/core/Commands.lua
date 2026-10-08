@@ -23,7 +23,7 @@ function APR.command:SlashCmd(input)
     elseif inputText == "perf" then
         APR.PerformanceDashboard:Show()
     elseif (inputText == "step") then
-        APR:PrintInfo(L["UI_STATUS_STEP"], APR:GetCurrentStep())
+        APR:PrintInfo(L["CURRENT_STEP"], APR:GetCurrentStep())
     elseif (inputText == "reset" or inputText == "r") then
         --Command to reset the current route
         APR:ResetRoute(APR.ActiveRoute)
@@ -40,8 +40,6 @@ function APR.command:SlashCmd(input)
         APR:PrintInfo(L["SKIP"])
         APR:SkipQuestStep()
         APR:UpdateMapId()
-    elseif inputText == "undo" then
-        if not APR:UndoManualSkip() then APR:PrintInfo(APR:LocalizeUI("UNDO_UNAVAILABLE")) end
     elseif (inputText == "rollback" or inputText == "rb") then
         -- Command for rollback the current quest step
         APR:PrintInfo(L["ROLLBACK"])
@@ -57,7 +55,7 @@ function APR.command:SlashCmd(input)
     elseif (inputText == "github") then
         _G.StaticPopup_Show("Github_Link")
     elseif (inputText == "scribe" or inputText == "writer") then
-        APR.questionDialog:CreateMessagePopup(L["SCRIBE_HEADER"] .. "\n\n" .. L["SCRIBE"], L["CLOSE"])
+        APR.questionDialog:CreateMessagePopup(L["SCRIBE_HEADER"] .. "\n\n" .. L["SCRIBE"], CLOSE)
     elseif inputText == 'coord' then
         APR.settings.profile.coordinateShow = not APR.settings.profile.coordinateShow
         APR.coordinate:RefreshFrameAnchor()
@@ -79,8 +77,8 @@ function APR.command:SlashCmd(input)
             report.playerParent or 0,
             report.playerContinent or 0,
             table.concat(report.playerHierarchy or {}, ", "),
-            report.specialContent and L["UI_YES"] or L["UI_NO"],
-            report.cacheValid and L["UI_YES"] or L["UI_NO"]
+            report.specialContent and YES or NO,
+            report.cacheValid and YES or NO
         )
         APR:PrintInfo(msg)
     elseif inputText == 'zonecache' then
@@ -105,7 +103,6 @@ function APR.command:SlashCmd(input)
         printHelp("/apr reset, r", L["RESET_COMMAND"])
         printHelp("/apr resetcustom", L["RESET_CUSTOM_COMMAND"])
         printHelp("/apr rollback, rb", L["ROLLBACK_COMMAND"])
-        printHelp("/apr undo", APR:LocalizeUI("UNDO"))
         printHelp("/apr route", L["ROUTE_COMMAND"])
         printHelp("/apr scribe, writer", ";)")
         printHelp("/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"])

@@ -10,7 +10,7 @@ APR.worldCoordinateConverter = APR:NewModule("WorldCoordinateConverter")
 local TEXT = {
     title = L["UI_CONVERTER_TITLE"],
     route = L["UI_CONVERTER_ROUTE"],
-    convert = L["UI_CONVERTER_CONVERT"],
+    convert = CONVERT,
     output = L["UI_CONVERTER_OUTPUT"],
     selectRoute = L["UI_CONVERTER_SELECT_ROUTE"],
     noRoute = L["UI_CONVERTER_NO_ROUTE"],
@@ -671,7 +671,7 @@ function APR.worldCoordinateConverter:ConvertRoute(routeName)
     local output = {}
 
     for _, conversionError in ipairs(conversionErrors) do
-        output[#output + 1] = "-- " .. string.format(L["UI_CONVERTER_ERROR"], conversionError)
+        output[#output + 1] = "-- " .. string.format(L["ERROR_MESSAGE"], conversionError)
     end
     for _, serializationWarning in ipairs(serializationWarnings) do
         output[#output + 1] = "-- " .. string.format(L["UI_CONVERTER_WARNING"], serializationWarning)

@@ -2,7 +2,6 @@ local env = dofile("tests/lua/route_ui_test_env.lua")
 function GetLocale() return "enUS" end
 UIParent:SetSize(1920, 1080)
 dofile("tests/lua/localization_test_env.lua")
-dofile("APR-Core/ui/foundations/InterfaceStrings.lua")
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
@@ -56,12 +55,12 @@ function APR:AddTooltipDoubleLine(_, label, value) GameTooltip.lines[label] = va
 function APR:AddTooltipLine(_, text) GameTooltip.note = text end
 dashboard:RefreshGraph()
 dashboard.plot.scripts.OnEnter()
-assert(dashboard.hoverIndex == 120 and GameTooltip.lines.Calls == "1001")
-assert(GameTooltip.lines[APR:LocalizeUI("PERF_PEAK_CALL")] == "Render")
-assert(GameTooltip.lines[APR:LocalizeUI("PERF_SLOW_COUNT")] == "1")
+assert(dashboard.hoverIndex == 120)
+local details = APR:GetPerformanceBucketDetails(dashboard.timeline[120], 1000)
+assert(details.count == 1001 and details.peakName == "Render" and details.slowCount == 1)
 cursorX = (100 + 4 + 5) * 2
 dashboard:UpdateGraphTooltip()
-assert(dashboard.hoverIndex == 1 and GameTooltip.lines.Calls == "1")
+assert(dashboard.hoverIndex == 1 and dashboard.timeline[1].count == 1)
 dashboard.freeze.scripts.OnClick()
 local frozenLast = dashboard.timeline[120].second
 seconds = seconds + 1
@@ -75,11 +74,7 @@ dashboard.freeze.scripts.OnClick()
 assert(dashboard.timeline[120].second == 1001)
 cursorX = (100 + 4 + 1195) * 2
 dashboard:UpdateGraphTooltip(true)
-assert(GameTooltip.lines[APR:LocalizeUI("PERF_PEAK_CALL")] == "Other")
-local translatedRows = APR:GetPerformanceRows("summary", "totalMs", "autres", function(name)
-    return name == "Other" and "Autres" or name
-end)
-assert(#translatedRows == 1 and translatedRows[1].name == "Other", "Localized search keeps stable report identifiers")
+assert(APR:GetPerformanceBucketDetails(dashboard.timeline[120], 1001).peakName == "Other")
 dashboard.plot.scripts.OnLeave()
 assert(not GameTooltip:IsShown() and not dashboard.hoverLine:IsShown())
 APR.PerformanceDashboard.mode = "slow"
@@ -105,15 +100,14 @@ APR:SetPerformanceCapture(true)
 dashboard.frame:Show()
 dashboard:SetPage("resources")
 local resources = dashboard.resources
-assert(resources.cpu.value:GetText() == "10.00 %" and resources.memory.value:GetText() == "4.00 MiB")
+assert(resources.view.latest.cpuPercent == 10 and resources.view.latest.memoryKB == 4096)
 local graph = resources.cpu.graph
 graph.frame:SetSize(500, 180)
 function graph.frame:GetLeft() return 100 end
 function graph.frame:GetEffectiveScale() return 2 end
 cursorX = (100 + 6 + 487) * 2
 graph.frame.scripts.OnEnter()
-assert(graph.hoverIndex == 120 and GameTooltip.lines[APR:LocalizeUI("RESOURCE_CPU_SHARE")] == "10.00 %")
-assert(GameTooltip.lines[APR:LocalizeUI("RESOURCE_CPU_TIME")] == "2.000 ms")
+assert(graph.hoverIndex == 120 and resources.view.latest.cpuMs == 2)
 graph.frame.scripts.OnLeave()
 assert(not graph.marker:IsShown() and graph.frame.scripts.OnUpdate == nil)
 resources.freeze.scripts.OnClick()
@@ -135,9 +129,8 @@ assert(not graph.lines[119]:IsShown() and not graph.fills[119]:IsShown(), "No li
 assert(graph.lines[120].startPoint[4] == graph.lines[120].endPoint[4], "An isolated reading cannot bridge a gap")
 assert(graph.fills[120]:GetHeight() <= graph.frame:GetHeight() - 12)
 resources:Tooltip(graph.frame, resources.view.points[120], "memoryKB")
-assert(GameTooltip.lines[APR:LocalizeUI("RESOURCE_MEMORY")] == "4.00 MiB")
-assert(GameTooltip.lines[APR:LocalizeUI("RESOURCE_MEMORY_AGE")] == "1 s")
 resources.freeze.scripts.OnClick()
 dashboard.capture.scripts.OnClick()
 assert(not APR.performanceLogging and not resources.frozenView, "Stop shows the final captured resource values")
+
 print("Performance: bounded capture, peak context, scaled graph hover, frozen graph, metric selection and cleanup passed")

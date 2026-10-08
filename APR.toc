@@ -44,7 +44,6 @@ APR-Core/integrations/TaxiData.lua
 APR-Core/utils/Utils.lua
 APR-Core/utils/PlayerUtils.lua
 APR-Core/utils/ProfileUtils.lua
-APR-Core/ui/foundations/InterfaceStrings.lua
 APR-Core/ui/foundations/Themes.lua
 APR-Core/ui/foundations/TextStyles.lua
 APR-Core/ui/foundations/StatusBars.lua

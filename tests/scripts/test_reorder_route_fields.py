@@ -155,8 +155,6 @@ class RouteHookTests(unittest.TestCase):
         self.git("config", "core.autocrlf", "false")
         self.git("config", "commit.gpgsign", "false")
         self.git("config", "core.hooksPath", ".githooks")
-        shutil.copytree(ROOT / ".githooks", self.root / ".githooks")
-        (self.root / ".githooks/pre-commit").chmod(0o755)
         (self.root / ".github/scripts").mkdir(parents=True)
         for name in ("fix_route_indexes.py", "reorder_route_fields.py"):
             shutil.copyfile(ROOT / ".github/scripts" / name, self.root / ".github/scripts" / name)
@@ -175,6 +173,10 @@ class RouteHookTests(unittest.TestCase):
 '''
         self.path.write_text(self.original, encoding="utf-8", newline="")
         self.git("add", "--", "Routes/route with spaces.lua")
+        # Seed an unformatted index before enabling either normalization hook.
+        shutil.copytree(ROOT / ".githooks", self.root / ".githooks")
+        for name in ("pre-commit", "post-index-change"):
+            (self.root / ".githooks" / name).chmod(0o755)
 
     def git(self, *args):
         environment = os.environ.copy()
@@ -183,6 +185,20 @@ class RouteHookTests(unittest.TestCase):
 
     def expected(self):
         return reorder.normalize_text(indexes.normalize_text(self.original)).encode("utf-8")
+
+    def test_add_formats_staged_route_and_matching_working_copy(self):
+        self.git("add", "--", "Routes/route with spaces.lua")
+        self.assertEqual(self.git("show", ":Routes/route with spaces.lua"), self.expected())
+        self.assertEqual(self.path.read_bytes(), self.expected())
+        self.assertEqual(self.git("diff", "--", "Routes"), b"")
+
+    def test_add_unrelated_file_preserves_unstaged_route_edits(self):
+        working = self.original.replace("LearnSkill =", '-- unstaged text\n        LearnSkill =')
+        self.path.write_text(working, encoding="utf-8", newline="")
+        (self.root / "unrelated.txt").write_text("unrelated", encoding="utf-8")
+        self.git("add", "--", "unrelated.txt")
+        self.assertEqual(self.git("show", ":Routes/route with spaces.lua"), self.expected())
+        self.assertEqual(self.path.read_bytes(), working.encode("utf-8"))
 
     def test_commit_formats_staged_route_and_matching_working_copy(self):
         self.git("commit", "-qm", "Format route")

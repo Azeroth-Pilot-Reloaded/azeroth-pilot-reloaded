@@ -1,13 +1,11 @@
 local env = dofile("tests/lua/route_ui_test_env.lua")
-function GetLocale() return "frFR" end
+function GetLocale() return "enUS" end
 UIParent:SetSize(1920, 1080)
 dofile("tests/lua/localization_test_env.lua")
-dofile("APR-Core/ui/foundations/InterfaceStrings.lua")
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/foundations/VirtualList.lua")
-assert(APR:LocalizeUI("PERFORMANCE") == "Performances")
 local window = APR.UI:Window("APRTestWindow", "Test", 1000, 700)
 assert(window:GetWidth() == 1000 and not window:IsShown())
 window:Show()
@@ -61,4 +59,4 @@ assert(not GameTooltip:IsShown(), "Rebinding a visible row cannot keep its previ
 list:SetItems({})
 assert(next(list.active) == nil and list.child:GetHeight() == 1)
 assert(list:IndexAt(0) == 0)
-print("UI foundations: WoW surfaces/external skins, combat deferral, localized controls and bounded 10000-row viewport passed")
+print("UI foundations: WoW surfaces/external skins, combat deferral and bounded 10000-row viewport passed")

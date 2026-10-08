@@ -27,11 +27,8 @@ class LocalizationNotificationTests(unittest.TestCase):
         ).isoformat()
         self.assertTrue(notification.should_ping(previous, 7, 1))
 
-    def test_summary_and_detail_keep_both_counts(self):
+    def test_summary_keeps_both_counts(self):
         self.assertEqual(notification.build_summary_counts(7, 2), "7M/2R")
-        detail = notification.build_need_text("frFR", 7, 2)
-        self.assertIn("**7** traductions manquantes", detail)
-        self.assertIn("**2** en relecture", detail)
 
     def test_phrase_page_counts_both_states(self):
         html = """

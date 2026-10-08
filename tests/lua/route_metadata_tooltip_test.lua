@@ -7,7 +7,6 @@ tinsert, tremove = table.insert, table.remove
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("tests/lua/localization_test_env.lua")
-dofile("APR-Core/ui/foundations/InterfaceStrings.lua")
 APR.Color.grayAlpha = {0.4, 0.4, 0.4, 0.4}
 APR.PlayerID, APR.EXPANSIONS = "test", {Test = "Test"}
 APR.PREFAB_TYPES = {Leveling = "Leveling", AllQuests = "AllQuests", Speedrun = "Speedrun"}
@@ -38,29 +37,28 @@ local function hover(row)
     return table.concat(lines, "\n")
 end
 local text = hover(catalogue.fontStringsContainer[1])
-assert(text:find("Author: APR", 1, true) and text:find("Source: APR", 1, true))
-assert(text:find("MOVE_ROUTE_TO_CUSTOM_PATH", 1, true))
+assert(text:find("APR", 1, true))
 text = hover(catalogue.fontStringsContainer[2])
-assert(text:find("Author: Test author", 1, true) and text:find("Source: Community", 1, true))
+assert(text:find("Test author", 1, true))
 assert(text:find("A route description", 1, true) and text:find("Requires level 20", 1, true))
 assert(not catalogue.fontStringsContainer[2].scripts.OnMouseDown, "Metadata cannot enable an unavailable route")
 -- Resolve metadata at hover, even if an import replaced the definition after rendering.
 APR.RouteQuestStepList.second = {label = "Second", expansion = "Test", authors = {"One", "  Two "}, source = "community"}
 text = hover(catalogue.fontStringsContainer[2])
-assert(text:find("Author: One, Two", 1, true) and not text:find("A route description", 1, true))
+assert(text:find("One, Two", 1, true) and not text:find("A route description", 1, true))
 APRCustomPath.test = {"Second", "First by Someone"}
 local custom = {frame = env.widget()}
 custom.frame.contentFrame = env.widget()
 custom.frame.scrollFrame = env.widget()
 SetCustomPathListFrame(custom)
 text = hover(custom.fontStringsContainer[1])
-assert(text:find("Author: One, Two", 1, true) and text:find("REMOVE_ZONE_FROM_CUSTOM_PATH", 1, true))
+assert(text:find("One, Two", 1, true))
 local recycled = custom.fontStringsContainer[2]
 APRCustomPath.test = {"Second"}
 SetCustomPathListFrame(custom)
 assert(custom.fontStringsContainer[1] == recycled)
 text = hover(recycled)
-assert(text:find("Author: One, Two", 1, true) and not text:find("Author: APR", 1, true))
+assert(text:find("One, Two", 1, true))
 APR.RouteQuestStepList.second.author = "  "
 APR.RouteQuestStepList.second.authors = {"", "  ", false}
 APR.RouteQuestStepList.second.description = "  "

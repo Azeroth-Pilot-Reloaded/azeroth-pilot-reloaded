@@ -1,6 +1,7 @@
 -- Small APR-owned controls shared by the library, settings, diagnostics and performance windows.
 -- Windows are lazy, clamped to screen, keyboard-dismissable and registered with the selected skin.
 
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.UI = {}
 local UI = APR.UI
 
@@ -120,11 +121,11 @@ function UI:ShowTextReport(title, report, owner)
         frame.edit = edit
         scroll:SetPoint("TOPLEFT")
         scroll:SetPoint("BOTTOMRIGHT", -26, 45)
-        local copy = self:Button(frame.content, APR:LocalizeUI("EXPORT"), 150, function()
+        local copy = self:Button(frame.content, L["STATUS_EXPORT"], 150, function()
             edit:SetFocus(); edit:HighlightText()
         end)
         copy:SetPoint("BOTTOMRIGHT")
-        self:Tooltip(copy, APR:LocalizeUI("COPY_HINT"))
+        self:Tooltip(copy, L["COPY_HELPER"])
     end
     frame.reportOwner = owner
     frame.header.Text:SetText(title)

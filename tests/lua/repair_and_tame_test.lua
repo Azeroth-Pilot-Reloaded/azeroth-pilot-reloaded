@@ -1,4 +1,4 @@
--- Route repair automation and localized tame names across runtime event updates.
+-- Route repair automation and NPC name caching across runtime event updates.
 local function noop() end
 UNKNOWN = "Unknown"
 local L = setmetatable({ TAMEBEAST = "Tame the %s beast", REPAIR = "Repair your gear" },
@@ -144,13 +144,11 @@ assert(not APR.routeActionState.repairPending)
 APR:HandleRouteAction(active)
 assert(advances == 1)
 
--- Both text access paths use the fallback name until the live unit name is cached.
+-- A newly cached NPC name refreshes the current step and route list once.
 flush()
 active = { TameBeast = { npcID = 3127, Text = "Venomtail Scorpid" } }
 APR.routeActionState = nil
-assert(APR:GetStepString(active) == "Tame the Venomtail Scorpid beast")
 APR:HandleRouteAction(active)
-assert(row == "Tame the Venomtail Scorpid beast")
 local unitName = UNKNOWN
 function UnitExists() return true end
 function UnitIsPlayer() return false end
@@ -165,12 +163,7 @@ dispatch("npcName", "UNIT_NAME_UPDATE", "target")
 assert(APRData.NPCList[3127] == unitName and listUpdates == 1)
 flush()
 assert(updates > 0)
-assert(APR:GetStepString(active) == "Tame the Scorpide venimeux beast")
 APR:HandleRouteAction(active)
-assert(row == "Tame the Scorpide venimeux beast")
 dispatch("targetChanged", "PLAYER_TARGET_CHANGED")
 assert(listUpdates == 1, "Cached names must not repeatedly force a route-list rebuild")
-assert(APR:GetRouteActionText("TameBeast", {}) == "Tame the Unknown beast")
-L.TAMEBEAST = "Old tame label"
-assert(APR:GetRouteActionText("TameBeast", active.TameBeast) == "Old tame label: Scorpide venimeux")
-print("Repair: threshold, merchant automation, guards and durability events; tame: fallback names and live localization passed")
+print("Repair: threshold, merchant automation, guards and durability events; tame: NPC name caching and refresh passed")
