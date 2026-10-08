@@ -19,9 +19,6 @@ l'erreur Lua éventuelle et une capture manuelle pour les problèmes de disposit
 | Configuration | Client 12.1.5 | Client 1.60.1 |
 | --- | --- | --- |
 | APR natif, thème WoW | À tester | À tester |
-| APR natif, thème Forever | À tester | À tester |
-| APR natif, thème Moderne bleu canard | À tester | À tester |
-| APR natif, thème Contraste élevé | À tester | À tester |
 | ElvUI seul, intégration activée | À tester | Si cette version d'ElvUI prend ce client en charge |
 | EllesmereUI seul, intégration activée | À tester | Si cette version d'EUI prend ce client en charge |
 | Les deux présents, intégration Automatique | À tester : ElvUI prioritaire | Selon disponibilité des deux addons |
@@ -36,31 +33,31 @@ Un addon tiers absent du client n'est pas une régression d'APR.
 | ID | Manipulation | Résultat attendu |
 | --- | --- | --- |
 | S01 | Connexion puis `/reload`, avec et sans route active. | Aucune erreur ; progression et options conservées. |
-| S02 | Ouvrir `/apr`. | Accueil avec réglages essentiels, Routes, Placement, Performances et Diagnostic. |
-| S03 | Modifier affichage du guide, flèche, groupe et liste des étapes. | Le comportement correspond aux mêmes options dans les réglages avancés. |
+| S02 | Ouvrir `/apr` puis `/apr route`. | Options Blizzard/AceConfig et catalogue AceGUI d’origine ; aucun nouvel accueil ni bibliothèque. |
+| S03 | Modifier affichage du guide, flèche, groupe et liste des étapes. | Options historiques présentes et comportement inchangé. |
 | S04 | Activer l'acceptation des quêtes de route, puis l'acceptation de toutes les quêtes dans les options avancées. | Les options mutuellement exclusives restent cohérentes. |
-| S05 | Rechercher une option de navigation, une couleur et une option absente. | Résultats pertinents ; accès à la catégorie avancée ; message clair sans résultat. |
-| S06 | Désactiver APR depuis l'accueil, puis le réactiver. | Les fonctions de jeu suivent l'activation ; l'accueil reste accessible. |
-| S07 | Changer de profil AceDB, puis reload. | Les réglages, favoris, thème et positions suivent le profil ; les préférences personnage gardent leur scope. |
+| S05 | Parcourir les catégories d’automatisation, navigation, polices et couleurs. | Toutes les options historiques sont accessibles dans leur catégorie. |
+| S06 | Désactiver puis réactiver APR depuis les options. | Les fonctions de jeu suivent l’activation ; les réglages restent accessibles. |
+| S07 | Changer de profil AceDB puis reload, y compris un profil provenant de la branche UI. | Réglages et positions conservés ; seul le thème natif WoW est utilisé sur audit-clean. |
 | S08 | Ouvrir/fermer plusieurs fois ; fermer avec Échap. | Pas de saisie clavier capturée après fermeture, ni multiplication de fenêtres. |
 
-## 2. Bibliothèque et parcours
+## 2. Sélection de routes AceGUI et parcours
 
 | ID | Manipulation | Résultat attendu |
 | --- | --- | --- |
-| R01 | `/apr route`, sélectionner Midnight puis plusieurs catégories. | Liste filtrée, fiche lisible et nombre de résultats cohérent. |
-| R02 | Rechercher un nom avec/sans accents, plusieurs mots et un auteur. | Recherche littérale dans nom, clé, extension, catégorie et auteur. Les filtres actifs restent appliqués. |
-| R03 | Onglet Communauté sur un personnage Alliance éligible à la route 10–70. | La route `84-EclipseGlaives-10-to-70` porte l'auteur EclipseGlaives ; les autres routes sans métadonnée explicite affichent APR. |
-| R04 | Même recherche sur un personnage incompatible. | Une route incompatible reste masquée. L'onglet Communauté ne contourne pas les conditions de faction/client. |
-| R05 | Ajouter/retirer un favori, changer de filtre, fermer puis reload. | Le favori est conservé dans le profil, sans changer la progression. |
-| R06 | Inspecter une route sous le niveau requis ou hors de sa zone requise. | Fiche consultable, raison d'indisponibilité affichée, ajout désactivé. |
+| R01 | Ouvrir `/apr route`, changer d’extension et consulter catégorie/progression. | Catalogue historique en colonnes, parcours personnalisé et boutons de parcours prédéfinis présents. |
+| R02 | Chercher une route avec/sans accents puis effacer la recherche. | Recherche historique fonctionnelle, liste initiale retrouvée après effacement. |
+| R03 | Cliquer les en-têtes Nom, Catégorie et Statut. | Tri et sens de tri cohérents ; interactions des lignes toujours correctes. |
+| R04 | Consulter le catalogue sur un personnage de faction/client incompatible avec certaines routes. | Routes incompatibles masquées selon les conditions existantes. |
+| R05 | Faire un clic droit sur une route déjà commencée. | Vérification des modifications de route et ajout/reprise conservant la progression. |
+| R06 | Survoler une route désactivée, puis tenter de l’ajouter. | Infobulle avec conditions manquantes ; ajout désactivé. |
 | R07 | Ajouter une route avec des prérequis non terminés. | Les prérequis applicables sont ajoutés avant elle, sans doublon. |
-| R08 | Onglet Mon parcours : monter, descendre, retirer une route. | Ordre sauvegardé correct ; les boutons agissent sur la sélection actuelle, y compris après défilement. |
+| R08 | Dans le parcours personnalisé, monter, descendre et retirer plusieurs routes. | Ordre correct ; les boutons recyclés agissent sur leur route actuelle. |
 | R09 | Retirer la dernière route. | Guide sans route, flèche arrêtée et invitation au choix d'un parcours ; aucune erreur. |
-| R10 | Ouvrir les parcours prédéfinis leveling, quêtes et speedrun. Annuler puis accepter le remplacement speedrun. | L'annulation conserve le parcours ; l'acceptation utilise les constructeurs existants. |
-| R11 | Modifier/importer une route avec le recorder, bibliothèque ouverte puis fermée. | Catalogue actualisé ; une modification de route active relance le moteur, une autre n'y touche pas. |
-| R12 | Garder dans un parcours une route devenue indisponible/supprimée. | Elle reste visible dans Mon parcours et peut être retirée. |
-| R13 | Redimensionner, déplacer, fermer puis reload. Tester une largeur proche du minimum. | Position/dimensions conservées et fenêtre accessible ; titres longs lisibles dans la fiche/infobulle. |
+| R10 | Sur un parcours de test, utiliser les boutons Leveling, Toutes les quêtes, Speedrun puis vider le parcours. | Constructeurs et boîtes de choix historiques fonctionnels ; Speedrun conserve son comportement historique de remplacement. |
+| R11 | Modifier/importer une route via le recorder, options ouvertes puis fermées. | Catalogue actualisé ; la route active est réévaluée lorsque nécessaire. |
+| R12 | Faire Maj + clic droit sur une route de test. | Progression de cette route réinitialisée puis route ajoutée au parcours. |
+| R13 | Alterner parcours vide/rempli et onglets d’extension pendant plusieurs ouvertures. | Pas de lignes périmées, de doublons de contrôles ni de clic visant une ancienne route. |
 
 ## 3. Progression, callbacks et annulation
 
@@ -85,9 +82,13 @@ Un addon tiers absent du client n'est pas une régression d'APR.
 | D02 | Étape d'objectif avec quête absente, puis quête dans le journal. | Quête absente distinguée d'un objectif restant ou de données encore indisponibles. |
 | D03 | S'éloigner de la zone d'étape ; tester une étape d'action non liée à une quête. | Indication de guidage hors zone ou texte réel de l'action attendue. Pas de cause inventée. |
 | D04 | Ouvrir le diagnostic plusieurs fois sur une route à groupes parallèles. | L'ouverture ne déclenche ni action, ni insertion, ni progression. |
-| D05 | Actualiser et exporter ; faire Ctrl+C après sélection du rapport. | Client/build, route/étape, raisons, transitions, zone, skin et mesures sont copiables. |
+| D05 | Afficher le rapport Lua et utiliser Copier le rapport puis Ctrl+C. | Rapport avec noms de clés, indentation et retours à la ligne ; valeurs du relevé conservées. |
 | D06 | Activer/désactiver l'inclusion d'identité. | Nom et royaume absents par défaut et présents seulement sur demande. Les textes libres de routes ne sont pas anonymisés. |
 | D07 | Fermer pendant des notifications de quêtes. | Le rafraîchissement différé est annulé ; aucun travail périodique de cette fenêtre fermée. |
+| D08 | Comparer les sections au statut historique. | Version APR/client/build/interface, langue, région, date, classe/niveau/faction, route/action/étape, continent/zone et coordonnées présents. |
+| D09 | Réduire/agrandir la fenêtre, afficher/masquer le rapport Lua. | Sections réorganisées en une/deux colonnes ; corps et rapport défilants, commandes toujours accessibles. |
+| D10 | Sélectionner le rapport pendant une mise à jour de quête, puis masquer le rapport. | Sélection et texte préservés pendant la copie ; saisie libérée et rafraîchissement repris après masquage. |
+| D11 | Ouvrir le statut sans position disponible ou sans route active. | « Indisponible » explicite, aucune coordonnée inventée ni exception Lua. |
 
 ## 5. Groupe
 
@@ -118,24 +119,28 @@ il n'est pas nécessaire d'injecter des messages artificiels dans un groupe rée
 | P09 | Laisser une capture dépasser 120 secondes ; exporter. | Fenêtre glissante de 120 secondes, au plus 100 appels lents et 65 noms par famille de mesures. |
 | P10 | Effacer puis démarrer une nouvelle capture. | Anciennes mesures effacées ; l'effacement seul n'active pas une capture arrêtée. |
 | P11 | Faire reload après une capture. | Données conservées dans `APRData.PerformanceLog`, capture inactive au nouveau login. |
+| P12 | Survoler début/milieu/fin du graphique, y compris une seconde vide, à plusieurs échelles UI. | Bonne seconde sélectionnée ; appels, cumul, moyenne, maximum, appels lents et contexte du pic dans l’infobulle. Aucun chiffre inventé sur un ancien relevé. |
+| P13 | Alterner maximum, cumul et appels par seconde. | Axe et hauteur des barres correspondent à la mesure ; les barres restent dans le graphique. |
+| P14 | Figer le graphique, continuer à jouer puis reprendre. | Graphique et infobulles figés ; capture et tableaux continuent ; reprise sur les 120 dernières secondes. |
+| P15 | Figer puis effacer/démarrer une nouvelle capture ; fermer sous le curseur. | Ancien graphique libéré, nouveau relevé visible, infobulle et marqueur masqués à la fermeture. |
 
 Les durées sont celles des appels APR instrumentés. Les appels imbriqués se
 recouvrent : additionner leurs durées ne donne pas le CPU total de l'addon.
 Une micro-mesure Lua hors jeu ne garantit pas l'absence de lag en situation réelle.
 
-## 7. Placement, thèmes et combat
+## 7. Fenêtres WoW, skins et combat
 
 | ID | Manipulation | Résultat attendu |
 | --- | --- | --- |
-| U01 | Placement : déplacer plusieurs contours puis Annuler/Échap. | Les positions réelles restent inchangées. |
-| U02 | Refaire le déplacement puis Enregistrer et reload. | Positions conservées ; fenêtres liées suivent leur guide. |
-| U03 | Recentrer les fenêtres, puis Annuler ; refaire et Enregistrer. | Prévisualisation réversible, puis récupération effective à l'écran. |
-| U04 | Entrer en combat pendant l'édition. | Édition fermée et modifications non enregistrées ; aucun déplacement de parent protégé. |
+| U01 | Déplacer les fenêtres de jeu par leurs en-têtes et reload. | Positions historiques conservées avec LibWindow. |
+| U02 | Modifier les ancrages guide/fillers/AFK/liste depuis les options. | Fenêtres liées positionnées selon les mêmes réglages qu’avant le retour UI. |
+| U03 | Utiliser les actions historiques de remise à zéro des positions dans les options. | Fenêtres récupérables à l’écran ; aucun éditeur de contours supplémentaire. |
+| U04 | Entrer en combat avec le diagnostic ouvert et une annulation disponible. | Annuler le saut devient immédiatement indisponible ; aucun déplacement de parent protégé. |
 | U05 | Ouvrir réglages/diagnostic pendant un combat. | Pas d'erreur ; actions incompatibles désactivées/différées. |
-| U06 | Tester les quatre thèmes en intégration APR, avec guide, groupe, liste, images et popups. | Contraste lisible, contenu préservé, boutons fonctionnels et fonds cohérents. |
-| U07 | Replier guide/liste, changer de thème, déplier. | Le fond replié reste transparent ; contenu et boutons réapparaissent correctement. |
-| U08 | Personnaliser les couleurs WoW, choisir un autre thème puis revenir à WoW. | Les couleurs demandées et les fonds d'origine sont retrouvés. |
-| U09 | Sélectionner un skin externe et recharger via le bouton. | Le fournisseur choisi possède l'apparence ; aucun cumul de bordures/skins. |
+| U06 | Examiner guide, groupe, liste, images, popups, diagnostic et performances en APR natif. | Aspect WoW, couleurs personnalisées conservées, actions fonctionnelles. |
+| U07 | Replier/déplier guide et liste. | Fonds repliés transparents et contenu correctement restauré. |
+| U08 | Charger un ancien profil utilisant Moderne/Forever/Contraste. | Sur audit-clean, le thème effectif reste WoW ; aucun choix de thème expérimental dans les réglages. |
+| U09 | Activer ElvUI ou EllesmereUI dans les options historiques puis reload. | Un seul fournisseur applique le skin ; aucun cumul de bordures. |
 | U10 | Modifier les couleurs/polices EUI puis rouvrir les panneaux APR. | Contrôles APR actualisés ; options d'autres addons intactes. |
 | U11 | Images de route, zoom, boutons d'objets/sorts et barres sous les skins. | Images non effacées, ratio conservé, attributs sécurisés et clics préservés. |
 | U12 | Tester à échelles UI 0,8 / 1,0 / 1,2 si le client le permet, textes FR longs, petite fenêtre et autre résolution. | Pas de texte essentiel inaccessible, ni boutons superposés ; fenêtres ramenées à l'écran. |
