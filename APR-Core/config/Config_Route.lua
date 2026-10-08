@@ -3,6 +3,15 @@
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+-- Both route lists resolve current metadata at hover time, including recycled/imported rows.
+local function AddRouteMetadataTooltip(routeKey)
+    local author, community, description = APR:GetRouteAttribution(routeKey)
+    APR:AddTooltipLine(GameTooltip, APR:LocalizeUI("AUTHOR") .. ": " .. author, "general", "base", true)
+    local source = APR:LocalizeUI(community and "COMMUNITY_ROUTE" or "APR_ROUTE")
+    APR:AddTooltipLine(GameTooltip, APR:LocalizeUI("SOURCE") .. ": " .. source, "general", "muted", true)
+    if description then APR:AddTooltipLine(GameTooltip, description, "general", "base", true) end
+end
+
 -- Initialize APR Route module
 APR.routeconfig = APR:NewModule("routeconfig", "AceEvent-3.0")
 local AceGUI = LibStub("AceGUI-3.0")
@@ -593,6 +602,8 @@ function SetCustomPathListFrame(widget, name)
             lineContainer:SetScript("OnEnter", function(self)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                 APR:AddTooltipLine(GameTooltip, route, "general", "accent")
+                AddRouteMetadataTooltip(APR:GetRouteKeyFromDisplayName(route))
+                GameTooltip:AddLine(" ")
                 APR:AddTooltipLine(GameTooltip, L["REMOVE_ZONE_FROM_CUSTOM_PATH"], "general", "base", true)
                 GameTooltip:Show()
             end)
@@ -912,6 +923,7 @@ function SetRouteListTab(widget, name)
                 GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
                 -- Route name (yellow title)
                 APR:AddTooltipLine(GameTooltip, route.routeName, "general", "accent")
+                AddRouteMetadataTooltip(route.fileName)
                 -- Category & Status
                 APR:AddTooltipLine(GameTooltip, string.format(L["CATEGORY_VALUE"], route.categoryValue),
                     "general", "muted")

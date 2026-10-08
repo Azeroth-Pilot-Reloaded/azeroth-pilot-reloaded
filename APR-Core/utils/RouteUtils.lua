@@ -901,6 +901,29 @@ function APR:GetCurrentRouteMapIDsAndName()
     return routeZoneMapIDs, mapID, routeFileName, expansion
 end
 
+local function MetadataText(value)
+    if type(value) ~= "string" then return nil end
+    local text = value:match("^%s*(.-)%s*$")
+    return text ~= "" and text or nil
+end
+
+-- Attribution comes only from route data; names and filenames never imply authorship.
+-- Keep this resolution shared by route tooltips and future consumers of route metadata.
+function APR:GetRouteAttribution(routeKey)
+    local route = self.RouteQuestStepList and self.RouteQuestStepList[routeKey]
+    if type(route) ~= "table" then return "APR", false, nil end
+    local author = MetadataText(route.author)
+    if not author and type(route.authors) == "table" then
+        local names = {}
+        for _, value in ipairs(route.authors) do
+            local name = MetadataText(value)
+            if name then names[#names + 1] = name end
+        end
+        if #names > 0 then author = table.concat(names, ", ") end
+    end
+    return author or "APR", route.community == true or route.source == "community", MetadataText(route.description)
+end
+
 --- Resolve a route file name into a friendly display name.
 function APR:GetRouteDisplayName(routeFileName)
     if not routeFileName then
