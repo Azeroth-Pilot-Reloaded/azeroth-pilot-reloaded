@@ -57,9 +57,14 @@ function APR:FinishPerformanceSample(name, started, steps)
         bucket = {second = second, count = 0, totalMs = 0, maxMs = 0}
         log.timeline[slot] = bucket
     end
+    if bucket.count == 0 or elapsed > bucket.maxMs then
+        bucket.peakName, bucket.peakRoute = name, self.ActiveRoute
+        bucket.peakStep = self.PlayerID and APRData[self.PlayerID] and APRData[self.PlayerID][self.ActiveRoute]
+    end
     bucket.count, bucket.totalMs = bucket.count + 1, bucket.totalMs + elapsed
     bucket.maxMs = math.max(bucket.maxMs, elapsed)
     if elapsed >= 10 then
+        bucket.slowCount = (bucket.slowCount or 0) + 1
         log.cursor = (log.cursor or 0) % SLOW_LIMIT + 1
         log.slow[log.cursor] = {
             name = name, ms = elapsed, time = now, route = self.ActiveRoute, steps = steps,
@@ -78,6 +83,17 @@ function APR:GetPerformanceTimeline()
             {second = second, count = 0, totalMs = 0, maxMs = 0}
     end
     return result
+end
+
+-- Tooltip data is derived from the displayed bucket, which may belong to a frozen graph.
+function APR:GetPerformanceBucketDetails(bucket, finalSecond)
+    if not bucket then return end
+    local count = bucket.count or 0
+    return {
+        offset = bucket.second - finalSecond, count = count, totalMs = bucket.totalMs or 0,
+        maxMs = bucket.maxMs or 0, average = (bucket.totalMs or 0) / math.max(1, count),
+        slowCount = bucket.slowCount, peakName = bucket.peakName, route = bucket.peakRoute, step = bucket.peakStep,
+    }
 end
 
 function APR:GetPerformanceRows(mode, sortKey, query)
