@@ -88,6 +88,7 @@ APR-Core/config/Config_Route_Prefabs.lua
 APR-Core/features/navigation/WorldCoordinateConverter.lua
 APR-Core/core/Commands.lua
 APR-Core/core/Performance.lua
+APR-Core/core/Diagnostics.lua
 APR-Core/ui/panels/ChangeLog.lua
 APR-Core/core/VersionCheck.lua
 
