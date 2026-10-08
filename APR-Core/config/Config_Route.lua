@@ -1104,7 +1104,6 @@ function APR.routeconfig:InitRouteConfig()
 
         APR:UpdateMapId()
         APR:UpdateStep()
-        if APR.RefreshDiagnostics then APR:RefreshDiagnostics() end
 
         -- Invalidate zone check cache when route changes to ensure fresh detection
         APR._lastRouteZoneCheck = nil

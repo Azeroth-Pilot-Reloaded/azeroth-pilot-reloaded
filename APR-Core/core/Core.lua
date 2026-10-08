@@ -169,7 +169,6 @@ function APR:OnInitialize()
     self:InitZoneDetectionCache()
 
     self:RegisterStaticSkinTargets()
-    self:CreateDiagnosticsEntryPoint()
     self:RefreshRegisteredSkins(true)
 
     -- Register events
