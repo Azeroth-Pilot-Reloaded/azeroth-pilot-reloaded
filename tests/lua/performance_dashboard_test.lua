@@ -6,9 +6,13 @@ dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/ui/foundations/VirtualList.lua")
+dofile("APR-Core/ui/foundations/TimeSeriesGraph.lua")
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/core/Performance.lua")
+dofile("APR-Core/core/ResourceMonitor.lua")
+dofile("APR-Core/ui/panels/PerformanceResources.lua")
 dofile("APR-Core/ui/panels/PerformanceDashboard.lua")
+C_Timer = {NewTicker = function() return {Cancel = function() end} end}
 APRData = {}
 local milliseconds, seconds = 0, 0
 function GetTime() return seconds end
@@ -39,6 +43,8 @@ assert(metrics <= 65 and counters <= 65)
 APR.PerformanceDashboard:Show()
 assert(#APR.PerformanceDashboard.bars == 120)
 local dashboard = APR.PerformanceDashboard
+assert(dashboard.page == "resources" and dashboard.resourcesPanel:IsShown())
+dashboard:SetPage("calls")
 dashboard.plot:SetSize(1208, 108)
 function dashboard.plot:GetLeft() return 100 end
 function dashboard.plot:GetEffectiveScale() return 2 end
@@ -84,4 +90,49 @@ assert(APR:GetPerformanceTimeline()[120].second == 1001, "Stopped timeline must 
 APR:ResetPerformanceCapture()
 assert(not APR.performanceLogging and next(APRData.PerformanceLog.summary) == nil)
 assert(APR:GetPerformanceBucketDetails({second = 1, count = 0, totalMs = 0, maxMs = 0}, 10).average == 0)
+
+Enum = {AddOnProfilerMetric = {RecentAverageTime = 1}}
+C_AddOnProfiler = {IsEnabled = function() return true end,
+    GetAddOnMetric = function() return 2 end, GetApplicationMetric = function() return 20 end}
+function UpdateAddOnMemoryUsage() end
+function GetAddOnMemoryUsage() return 4096 end
+APR:SetPerformanceCapture(true)
+dashboard.frame:Show()
+dashboard:SetPage("resources")
+local resources = dashboard.resources
+assert(resources.cpu.value:GetText() == "10.00 %" and resources.memory.value:GetText() == "4.00 MiB")
+local graph = resources.cpu.graph
+graph.frame:SetSize(500, 180)
+function graph.frame:GetLeft() return 100 end
+function graph.frame:GetEffectiveScale() return 2 end
+cursorX = (100 + 6 + 487) * 2
+graph.frame.scripts.OnEnter()
+assert(graph.hoverIndex == 120 and GameTooltip.lines[APR:LocalizeUI("RESOURCE_CPU_SHARE")] == "10.00 %")
+assert(GameTooltip.lines[APR:LocalizeUI("RESOURCE_CPU_TIME")] == "2.000 ms")
+graph.frame.scripts.OnLeave()
+assert(not graph.marker:IsShown() and graph.frame.scripts.OnUpdate == nil)
+resources.freeze.scripts.OnClick()
+local previousView = resources.view
+seconds = seconds + 1
+APR.ResourceMonitor:Sample()
+resources:Refresh()
+assert(resources.view == previousView and resources.view.finish < seconds)
+resources.freeze.scripts.OnClick()
+assert(resources.view.finish == seconds)
+local frames, fonts = env.frames(), env.fonts()
+for _ = 1, 20 do resources:Refresh() end
+assert(env.frames() == frames and env.fonts() == fonts and #graph.lines == 120 and #graph.fills == 120)
+local points = {}
+for i = 1, 120 do points[i] = {} end
+points[118].cpuPercent, points[120].cpuPercent = 10, 20
+graph:SetData(points, "cpuPercent", 100, tostring)
+assert(not graph.lines[119]:IsShown() and not graph.fills[119]:IsShown(), "No line or area for missing data")
+assert(graph.lines[120].startPoint[4] == graph.lines[120].endPoint[4], "An isolated reading cannot bridge a gap")
+assert(graph.fills[120]:GetHeight() <= graph.frame:GetHeight() - 12)
+resources:Tooltip(graph.frame, resources.view.points[120], "memoryKB")
+assert(GameTooltip.lines[APR:LocalizeUI("RESOURCE_MEMORY")] == "4.00 MiB")
+assert(GameTooltip.lines[APR:LocalizeUI("RESOURCE_MEMORY_AGE")] == "1 s")
+resources.freeze.scripts.OnClick()
+dashboard.capture.scripts.OnClick()
+assert(not APR.performanceLogging and not resources.frozenView, "Stop shows the final captured resource values")
 print("Performance: bounded capture, peak context, scaled graph hover, frozen graph, metric selection and cleanup passed")

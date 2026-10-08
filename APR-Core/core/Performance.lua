@@ -6,11 +6,13 @@ local function Now() return GetTime and GetTime() or debugprofilestop() / 1000 e
 
 function APR:ResetPerformanceCapture()
     APRData.PerformanceLog = { summary = {}, slow = {}, timeline = {}, counters = {}, startedAt = Now() }
+    if self.ResourceMonitor then self.ResourceMonitor:Reset() end
 end
 
 function APR:SetPerformanceCapture(enabled)
-    if enabled then self:ResetPerformanceCapture() end
     self.performanceLogging = enabled == true
+    if enabled then self:ResetPerformanceCapture() end
+    if not enabled and self.ResourceMonitor then self.ResourceMonitor:Stop() end
     if not enabled and APRData.PerformanceLog then APRData.PerformanceLog.stoppedAt = Now() end
 end
 

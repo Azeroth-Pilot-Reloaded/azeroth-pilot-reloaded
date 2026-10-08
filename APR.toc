@@ -49,6 +49,7 @@ APR-Core/ui/foundations/Themes.lua
 APR-Core/ui/foundations/TextStyles.lua
 APR-Core/ui/foundations/StatusBars.lua
 APR-Core/ui/foundations/Widgets.lua
+APR-Core/ui/foundations/TimeSeriesGraph.lua
 APR-Core/ui/foundations/VirtualList.lua
 APR-Core/utils/TextStyleUtils.lua
 APR-Core/utils/TargetUtils.lua
@@ -87,6 +88,7 @@ APR-Core/config/Config_Route_Prefabs.lua
 APR-Core/features/navigation/WorldCoordinateConverter.lua
 APR-Core/core/Commands.lua
 APR-Core/core/Performance.lua
+APR-Core/core/ResourceMonitor.lua
 APR-Core/ui/panels/ChangeLog.lua
 APR-Core/core/VersionCheck.lua
 
@@ -122,6 +124,7 @@ APR-Core/ui/route/RouteSelection.lua
 APR-Core/features/player/Buff.lua
 APR-Core/features/player/XPBuffOverlay.lua
 APR-Core/ui/panels/StatusReport.lua
+APR-Core/ui/panels/PerformanceResources.lua
 APR-Core/ui/panels/PerformanceDashboard.lua
 APR-Core/integrations/ElvUISkin.lua
 APR-Core/integrations/EllesmereUISettings.lua

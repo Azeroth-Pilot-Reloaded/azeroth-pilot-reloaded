@@ -1,7 +1,7 @@
 -- Displays bounded APR instrumentation with a live peak chart, sortable aggregates and slow-call context.
--- Only a visible dashboard refreshes, once per second; capturing itself creates no ticker or graph frames.
+-- Only the visible page refreshes once per second; ResourceMonitor owns the independent capture sampler.
 
-APR.PerformanceDashboard = { mode = "summary", sort = "totalMs", query = "", graphMetric = "maxMs" }
+APR.PerformanceDashboard = { mode = "summary", sort = "totalMs", query = "", graphMetric = "maxMs", page = "resources" }
 local Dashboard, UI = APR.PerformanceDashboard, APR.UI
 local function T(key) return APR:LocalizeUI(key) end
 
@@ -66,6 +66,7 @@ function Dashboard:Refresh()
     if not self.frame or not self.frame:IsShown() then return end
     local log = APRData.PerformanceLog
     self.capture:SetText(APR.performanceLogging and T("STOP") or T("CAPTURE"))
+    if self.page == "resources" then self.resources:Refresh(); return end
     local calls, total, peak = 0, 0, 0
     for _, summary in pairs(log and log.summary or {}) do
         calls, total = calls + summary.count, total + summary.totalMs
@@ -78,13 +79,31 @@ function Dashboard:Refresh()
     self.empty:SetShown(#rows == 0)
 end
 
+function Dashboard:SetPage(page)
+    self.page = page
+    if page ~= "calls" then
+        self.graphHovered, self.hoverIndex = nil, nil
+        self.hoverLine:Hide()
+        GameTooltip:Hide()
+    end
+    self.callsPanel:SetShown(page == "calls")
+    self.resourcesPanel:SetShown(page == "resources")
+    self.resourcesTab:SetEnabled(page ~= "resources")
+    self.callsTab:SetEnabled(page ~= "calls")
+    self:Refresh()
+end
+
 function Dashboard:Create()
-    local frame = UI:Window("APRPerformanceDashboard", T("PERFORMANCE"), 1040, 780)
-    frame:SetResizeBounds(math.min(680, UIParent:GetWidth() - 40), math.min(660, UIParent:GetHeight() - 60))
+    local frame = UI:Window("APRPerformanceDashboard", T("PERFORMANCE"), 1040, 840)
+    local minimumWidth, minimumHeight = math.min(760, UIParent:GetWidth() - 40), math.min(700, UIParent:GetHeight() - 60)
+    frame:SetResizeBounds(minimumWidth, minimumHeight)
+    -- Older saved dimensions can predate the resource cards and their minimum readable size.
+    frame:SetSize(math.max(frame:GetWidth(), minimumWidth), math.max(frame:GetHeight(), minimumHeight))
     self.frame, self.bars = frame, {}
     local root = frame.content
     self.capture = UI:Button(root, T("CAPTURE"), 180, function()
         self.frozenTimeline = nil
+        self.resources.frozenView = nil
         APR:SetPerformanceCapture(not APR.performanceLogging); self:Refresh()
     end)
     self.capture:SetPoint("TOPLEFT")
@@ -94,14 +113,26 @@ function Dashboard:Create()
     end)
     clear:SetPoint("LEFT", self.capture, "RIGHT", 10, 0)
     local export = UI:Button(root, T("EXPORT"), 140, function()
-        UI:ShowTextReport(T("PERFORMANCE"), APR:FormatDebugTable(APRData.PerformanceLog or {}))
+        UI:ShowTextReport(T("PERFORMANCE"), APR:FormatDebugTable(APRData.PerformanceLog or {}, 20000))
     end)
     export:SetPoint("LEFT", clear, "RIGHT", 10, 0)
+    self.resourcesTab = UI:Button(root, T("RESOURCE_TAB"), 190, function() self:SetPage("resources") end)
+    self.resourcesTab:SetPoint("TOPLEFT", 0, -44)
+    self.callsTab = UI:Button(root, T("RESOURCE_CALLS_TAB"), 210, function() self:SetPage("calls") end)
+    self.callsTab:SetPoint("LEFT", self.resourcesTab, "RIGHT", 10, 0)
+    self.resourcesPanel = CreateFrame("Frame", nil, root)
+    self.resourcesPanel:SetPoint("TOPLEFT", 0, -86)
+    self.resourcesPanel:SetPoint("BOTTOMRIGHT")
+    self.resources = APR.PerformanceResources:New(self.resourcesPanel)
+    self.callsPanel = CreateFrame("Frame", nil, root)
+    self.callsPanel:SetPoint("TOPLEFT", 0, -86)
+    self.callsPanel:SetPoint("BOTTOMRIGHT")
+    root = self.callsPanel
     self.overview = UI:Label(root, "", 14)
-    self.overview:SetPoint("TOPLEFT", 0, -46)
-    self.overview:SetPoint("TOPRIGHT", 0, -46)
+    self.overview:SetPoint("TOPLEFT", 0, 0)
+    self.overview:SetPoint("TOPRIGHT", 0, 0)
     local graphMode = UI:Select(root, 250, function(value) self.graphMetric = value; self:RefreshGraph() end)
-    graphMode:SetPoint("TOPLEFT", 0, -76)
+    graphMode:SetPoint("TOPLEFT", 0, -30)
     graphMode:SetOptions({{value = "maxMs", label = T("PERF_METRIC_MAX")},
         {value = "totalMs", label = T("PERF_METRIC_TOTAL")}, {value = "count", label = T("PERF_METRIC_CALLS")}}, self.graphMetric)
     self.freeze = UI:Button(root, T("PERF_FREEZE_GRAPH"), 220, function()
@@ -110,11 +141,11 @@ function Dashboard:Create()
     end)
     self.freeze:SetPoint("LEFT", graphMode, "RIGHT", 10, 0)
     self.graphHint = UI:Label(root, "", 11, "muted")
-    self.graphHint:SetPoint("TOPLEFT", 0, -113)
-    self.graphHint:SetPoint("TOPRIGHT", 0, -113)
+    self.graphHint:SetPoint("TOPLEFT", 0, -67)
+    self.graphHint:SetPoint("TOPRIGHT", 0, -67)
     self.plot = UI:Panel(root)
-    self.plot:SetPoint("TOPLEFT", 75, -139)
-    self.plot:SetPoint("TOPRIGHT", 0, -139)
+    self.plot:SetPoint("TOPLEFT", 75, -93)
+    self.plot:SetPoint("TOPRIGHT", 0, -93)
     self.plot:SetHeight(108)
     self.plot:EnableMouse(true)
     for index = 1, 3 do
@@ -136,13 +167,13 @@ function Dashboard:Create()
         GameTooltip:Hide()
     end)
     self.axis = UI:Label(root, "", 11, "muted")
-    self.axis:SetPoint("TOPLEFT", 0, -142)
+    self.axis:SetPoint("TOPLEFT", 0, -96)
     local interval = UI:Label(root, "-119 s", 11, "muted")
     interval:SetPoint("TOPLEFT", self.plot, "BOTTOMLEFT", 0, -4)
     local now = UI:Label(root, "0 s", 11, "muted")
     now:SetPoint("TOPRIGHT", self.plot, "BOTTOMRIGHT", 0, -4)
     local mode = UI:Select(root, 220, function(value) self.mode = value; self:Refresh() end)
-    mode:SetPoint("TOPLEFT", 0, -280)
+    mode:SetPoint("TOPLEFT", 0, -234)
     mode:SetOptions({ {value = "summary", label = T("OVERVIEW")}, {value = "slow", label = T("SLOW_CALLS")},
         {value = "counters", label = T("COUNTERS")} }, self.mode)
     local sort = UI:Select(root, 190, function(value) self.sort = value; self:Refresh() end)
@@ -150,10 +181,10 @@ function Dashboard:Create()
     sort:SetOptions({ {value = "totalMs", label = T("TOTAL")}, {value = "maxMs", label = T("MAX")},
         {value = "average", label = T("AVERAGE")}, {value = "count", label = T("CALLS")} }, self.sort)
     self.search = UI:SearchBox(root, 200, T("SEARCH"), function(query) self.query = query; self:Refresh() end)
-    self.search:SetPoint("TOPLEFT", 0, -320)
-    self.search:SetPoint("TOPRIGHT", 0, -320)
+    self.search:SetPoint("TOPLEFT", 0, -274)
+    self.search:SetPoint("TOPRIGHT", 0, -274)
     local scroll = UI:Scroll(root)
-    scroll:SetPoint("TOPLEFT", 0, -362)
+    scroll:SetPoint("TOPLEFT", 0, -316)
     scroll:SetPoint("BOTTOMRIGHT", -26, 38)
     self.list = APR.VirtualList:New(scroll, function(parent)
         local row = UI:Panel(parent)
@@ -185,8 +216,8 @@ function Dashboard:Create()
         end
     end, 62)
     self.empty = UI:Label(root, T("NO_CAPTURE"), 13, "muted")
-    self.empty:SetPoint("TOPLEFT", 12, -378)
-    self.empty:SetPoint("TOPRIGHT", -26, -378)
+    self.empty:SetPoint("TOPLEFT", 12, -332)
+    self.empty:SetPoint("TOPRIGHT", -26, -332)
     local note = UI:Label(root, T("PERF_LIMITS"), 11, "muted")
     note:SetPoint("BOTTOMLEFT")
     note:SetPoint("BOTTOMRIGHT")
@@ -209,6 +240,7 @@ function Dashboard:Create()
         self.hoverLine:Hide()
     end)
     self.plot:HookScript("OnSizeChanged", function() self:Refresh() end)
+    self:SetPage(self.page)
 end
 
 function Dashboard:Show()

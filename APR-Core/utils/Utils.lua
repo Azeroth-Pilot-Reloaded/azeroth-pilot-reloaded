@@ -280,7 +280,9 @@ function APR:TableToDebugString(value, skipKey, depth, visited)
 end
 
 -- Diagnostic Lua retains keys and stable ordering. Work/depth are bounded for unexpected runtime data.
-function APR:FormatDebugTable(value)
+function APR:FormatDebugTable(value, entryLimit)
+    -- Larger bounded captures may opt into a higher export budget without changing status defaults.
+    entryLimit = self:Clamp(tonumber(entryLimit) or 10000, 1, 50000)
     local visited, entries = {}, 0
     local function available(item)
         return not self.CanAccessValue or self:CanAccessValue(item)
@@ -297,11 +299,11 @@ function APR:FormatDebugTable(value)
         if self.CanAccessTable and not self:CanAccessTable(item) then return '"<unavailable>"' end
         if visited[item] then return '"<circular>"' end
         if depth >= 10 then return '"<max-depth>"' end
-        if entries >= 10000 then return '"<entry-limit>"' end
+        if entries >= entryLimit then return '"<entry-limit>"' end
         visited[item] = true
         local keys, truncated, scanned = {}, false, 0
         for key in pairs(item) do
-            if entries + scanned >= 10000 then truncated = true; break end
+            if entries + scanned >= entryLimit then truncated = true; break end
             scanned = scanned + 1
             if available(key) and (type(key) == "number" or type(key) == "string") then
                 keys[#keys + 1] = key
