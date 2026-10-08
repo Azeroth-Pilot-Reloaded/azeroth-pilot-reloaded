@@ -1,33 +1,8 @@
--- Routes /apr commands and owns the opt-in, bounded performance capture.
+-- Routes /apr commands to their gameplay, settings and diagnostic owners.
 -- Commands delegate gameplay and UI work to their owning modules.
 
 local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-
--- Opt-in, bounded timings stored in the existing APRData saved variable.
-function APR:StartPerformanceSample()
-    if not self.performanceLogging then return nil end
-    return debugprofilestop()
-end
-
-function APR:FinishPerformanceSample(name, started, steps)
-    if not started or not APRData then return end
-    local elapsed = debugprofilestop() - started
-    local log = APRData.PerformanceLog
-    if not log then return end
-    local summary = log.summary[name] or { count = 0, totalMs = 0, maxMs = 0 }
-    log.summary[name] = summary
-    summary.count = summary.count + 1
-    summary.totalMs = summary.totalMs + elapsed
-    summary.maxMs = math.max(summary.maxMs, elapsed)
-    if elapsed >= 10 then
-        log.cursor = (log.cursor or 0) % 100 + 1
-        log.slow[log.cursor] = {
-            name = name, ms = elapsed, route = self.ActiveRoute, steps = steps,
-            step = self.PlayerID and APRData[self.PlayerID] and APRData[self.PlayerID][self.ActiveRoute],
-        }
-    end
-end
 
 APR.command = APR:NewModule("Command")
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
@@ -40,17 +15,13 @@ function APR.command:SlashCmd(input)
         APR:PrintInfo(L["ADDON"] .. ' ' .. L["DISABLE"])
     end
     if inputText == "perf on" then
-        APRData.PerformanceLog = { summary = {}, slow = {} }
-        APR.performanceLogging = true
+        APR:SetPerformanceCapture(true)
         APR:PrintInfo("Performance logging enabled. /apr perf off stops capture; /reload saves APRData.PerformanceLog.")
     elseif inputText == "perf off" then
-        APR.performanceLogging = false
+        APR:SetPerformanceCapture(false)
         APR:PrintInfo("Performance logging stopped. /reload saves APRData.PerformanceLog.")
     elseif inputText == "perf" then
-        for name, summary in pairs(APRData.PerformanceLog and APRData.PerformanceLog.summary or {}) do
-            APR:PrintInfo(string.format("%s: %d calls, %.1f ms total, %.1f ms max", name,
-                summary.count, summary.totalMs, summary.maxMs))
-        end
+        APR.PerformanceDashboard:Show()
     elseif (inputText == "step") then
         APR:PrintInfo('step', APR:GetCurrentStep())
     elseif (inputText == "reset" or inputText == "r") then
@@ -70,7 +41,7 @@ function APR.command:SlashCmd(input)
         APR:SkipQuestStep()
         APR:UpdateMapId()
     elseif inputText == "undo" then
-        if not APR:UndoManualSkip() then APR:PrintInfo("No manual skip to undo for the current step.") end
+        if not APR:UndoManualSkip() then APR:PrintInfo(APR:LocalizeUI("UNDO_UNAVAILABLE")) end
     elseif (inputText == "rollback" or inputText == "rb") then
         -- Command for rollback the current quest step
         APR:PrintInfo(L["ROLLBACK"])
@@ -134,7 +105,7 @@ function APR.command:SlashCmd(input)
         printHelp("/apr reset, r", L["RESET_COMMAND"])
         printHelp("/apr resetcustom", L["RESET_CUSTOM_COMMAND"])
         printHelp("/apr rollback, rb", L["ROLLBACK_COMMAND"])
-        printHelp("/apr undo", "Undo the last manual skip")
+        printHelp("/apr undo", APR:LocalizeUI("UNDO"))
         printHelp("/apr route", L["ROUTE_COMMAND"])
         printHelp("/apr scribe, writer", ";)")
         printHelp("/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"])

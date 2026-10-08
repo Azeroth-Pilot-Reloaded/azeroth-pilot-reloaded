@@ -81,13 +81,12 @@ local function exportStatusReport()
         APR:TableToDebugString(APR:getStatusReportInfos(), true))
 end
 
-function GetCurrentStepInfo()
-    local currentStepID = APRData[APR.PlayerID][APR.ActiveRoute]
+local function GetCurrentStepInfo()
+    local step, currentStepID = APR:PeekCurrentStep()
     local routeStep = NO_ACTIVE
-    if currentStepID then
-        local step = APR:GetStep(currentStepID)
+    if currentStepID and step then
         local _, key = APR:GetStepString(step)
-        routeStep = currentStepID .. ", " .. key
+        routeStep = currentStepID .. ", " .. (key or UNKNOWN)
     end
 
     return routeStep

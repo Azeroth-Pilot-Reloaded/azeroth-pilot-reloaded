@@ -212,8 +212,10 @@ function APR:BuildEffectiveRouteSteps(routeKey)
     local cacheKey = BuildEffectiveRouteCacheKey(baseSteps, groups, state)
     local cached = self._effectiveRouteStepsCache[routeKey]
     if cached and cached.key == cacheKey then
+        if self.performanceLogging then self:CountPerformanceEvent("EffectiveRouteCacheHit") end
         return cached.steps
     end
+    if self.performanceLogging then self:CountPerformanceEvent("EffectiveRouteCacheMiss") end
 
     local effectiveSteps = {}
     for index = 1, #baseSteps do

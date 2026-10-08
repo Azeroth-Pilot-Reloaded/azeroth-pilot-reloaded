@@ -3,6 +3,16 @@
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local labels = {
+    PERF_GRAPH = { "Largest measured call per second · last 120 seconds", "Appel mesuré le plus long par seconde · 120 dernières secondes" },
+    PERF_LIMITS = { "APR instrumented calls only. Nested timings overlap. Capture is off by default; it continues when this window closes.", "Appels instrumentés d'APR uniquement. Les durées imbriquées se recouvrent. La capture est désactivée par défaut et continue après fermeture." },
+    COUNTERS = { "Cache / activity counters", "Compteurs de cache / activité" },
+    REFRESH = { "Refresh", "Actualiser" },
+    COPY_HINT = { "Select the report, then press Ctrl+C.", "Sélectionnez le rapport, puis appuyez sur Ctrl+C." },
+    STEP_DATA_PENDING = { "The current step has not been loaded yet, or the route is finished.", "L'étape actuelle n'est pas encore chargée, ou la route est terminée." },
+    DEAD_PENDING = { "Resume after returning to life; follow the corpse guide if shown.", "Reprenez après la résurrection ; suivez le guidage vers le corps s'il est affiché." },
+    QUEST_ALTERNATIVE_PENDING = { "Accept one of the alternative quests for this step.", "Acceptez l'une des quêtes alternatives de cette étape." },
+    TURNIN_PENDING = { "Turn in quest %s when its objectives are complete.", "Rendez la quête %s lorsque ses objectifs sont terminés." },
+    PICKUP_PENDING = { "Accept quest %s.", "Acceptez la quête %s." },
     RECOVER_WINDOWS = { "Bring windows back on screen", "Recentrer les fenêtres" },
     BONUS_OBJECTIVES = { "Bonus objectives", "Objectifs bonus" },
     AFK = { "Break timer", "Minuteur de pause" },

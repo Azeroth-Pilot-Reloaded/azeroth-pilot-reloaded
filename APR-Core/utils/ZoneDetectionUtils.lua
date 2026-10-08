@@ -123,6 +123,7 @@ function APR:GetMapInfoCached(mapID)
     end
 
     local cache = self.ZoneDetection.mapInfoCache
+    if self.performanceLogging then self:CountPerformanceEvent(cache[mapID] and "MapInfoCacheHit" or "MapInfoCacheMiss") end
     if not cache[mapID] then
         cache[mapID] = C_Map.GetMapInfo(mapID)
     end
@@ -254,8 +255,10 @@ end
 function APR:ResolvePlayerZoneContext()
     -- Check cache validity
     if IsCacheValid(self.ZoneDetection.playerContextCache) then
+        if self.performanceLogging then self:CountPerformanceEvent("PlayerZoneCacheHit") end
         return self.ZoneDetection.playerContextCache.mapIDs
     end
+    if self.performanceLogging then self:CountPerformanceEvent("PlayerZoneCacheMiss") end
 
     if not HasMapApi() then
         return {
