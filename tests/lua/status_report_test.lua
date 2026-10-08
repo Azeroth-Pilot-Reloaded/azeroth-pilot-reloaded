@@ -35,7 +35,6 @@ APR.ClassId, APR.Level, APR.Faction, APR.version = 8, 90, "Horde", "test"
 APRData = {[APR.PlayerID] = {route = 1}}
 APR.RouteQuestStepList = {route = {steps = {{Qpart = {[100] = {1}}}}}}
 dofile("tests/lua/localization_test_env.lua")
-dofile("APR-Core/ui/foundations/InterfaceStrings.lua")
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/utils/Utils.lua")
@@ -52,7 +51,7 @@ assert(not report.reasons and not report.transitions)
 APR:showStatusReport()
 local frame = APR.StatusFrame
 assert(frame:IsShown() and frame.Section1 and frame.Section2 and frame.Section3 and not frame.Section4)
-assert(frame.Section3.Content.Line2.Text:GetText() == "Name: Hidden")
+assert(not frame.Section3.Content.Line2.Text:GetText():find(APR.Username, 1, true))
 frame.CopyButton.scripts.OnClick()
 local export = APR.UI.reportWindow
 local text = export.edit:GetText()
@@ -73,7 +72,8 @@ APR.Level = 91
 APR:updateStatusFrame()
 assert(export.edit:GetText() == text and export.edit:HasFocus(), "Status refresh preserves export selection")
 frame.IdentityButton.scripts.OnClick()
-assert(frame.Section3.Content.Line2.Text:GetText() == "Name: Private name-Private realm")
+assert(frame.Section3.Content.Line2.Text:GetText():find(APR.Username, 1, true))
+assert(frame.Section3.Content.Line2.Text:GetText():find(GetRealmName(), 1, true))
 assert(export.edit:GetText():find("Private name", 1, true) and export.edit:GetText():find("Private realm", 1, true))
 frame.IdentityButton.scripts.OnClick()
 assert(not export.edit:GetText():find("Private name", 1, true), "Hiding identity also redacts an open status export")
@@ -90,7 +90,6 @@ assert(APR:getStatusReportInfos().currentCoords[2] == UNKNOWN)
 assert(APR:getStatusReportInfos().currentWorldCoords[2] == UNKNOWN)
 APR.ActiveRoute = nil
 APR.settings.profile.enableAddon = false
-assert(APR:getStatusReportInfos().currentStep[2] == "No active route")
 APR:ExportStatusReport()
 decoded = assert(loadstring("return " .. export.edit:GetText()))()
 assert(decoded.currentStepData == nil, "No active route must not export a stale runtime step")

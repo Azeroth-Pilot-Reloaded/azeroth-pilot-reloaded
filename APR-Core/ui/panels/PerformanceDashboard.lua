@@ -1,10 +1,19 @@
 -- Displays bounded APR instrumentation with a live peak chart, sortable aggregates and slow-call context.
 -- Only the visible page refreshes once per second; ResourceMonitor owns the independent capture sampler.
 
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.PerformanceDashboard = { mode = "summary", sort = "totalMs", query = "", graphMetric = "maxMs", page = "resources" }
 local Dashboard, UI = APR.PerformanceDashboard, APR.UI
-local function T(key, ...) return APR:LocalizeUI(key, ...) end
-local function MetricName(name) return name == "Other" and T("PERF_OTHER") or name end
+local totalLabel = TOTAL .. " (" .. MILLISECONDS_ABBR .. ")"
+local maximumLabel = MAXIMUM .. " (" .. MILLISECONDS_ABBR .. ")"
+local function MetricName(name) return name == "Other" and OTHER or name end
+
+local function Summary(calls, total, peak, average)
+    local parts = {L["UI_CALLS"] .. ": " .. calls, totalLabel .. ": " .. string.format("%.2f", total)}
+    if average then parts[#parts + 1] = L["UI_AVERAGE"] .. ": " .. string.format("%.3f", average) end
+    parts[#parts + 1] = maximumLabel .. ": " .. string.format("%.2f", peak)
+    return table.concat(parts, "   |   ")
+end
 
 -- One hover target covers all seconds, including empty buckets; it allocates no per-bar frames.
 function Dashboard:UpdateGraphTooltip(force)
@@ -23,23 +32,23 @@ function Dashboard:UpdateGraphTooltip(force)
     self.hoverLine:SetHeight(math.max(1, self.plot:GetHeight() - 8))
     self.hoverLine:Show()
     GameTooltip:SetOwner(self.plot, "ANCHOR_CURSOR")
-    APR:SetTooltipText(GameTooltip, APR:LocalizeUI("PERF_SECOND", details.offset), "general", "accent")
-    local function line(key, value)
-        APR:AddTooltipDoubleLine(GameTooltip, T(key), tostring(value), "general", "muted", "base")
+    APR:SetTooltipText(GameTooltip, string.format(L["UI_PERF_SECOND"], details.offset), "general", "accent")
+    local function line(label, value)
+        APR:AddTooltipDoubleLine(GameTooltip, label, tostring(value), "general", "muted", "base")
     end
-    line("CALLS", details.count)
-    line("TOTAL", string.format("%.3f", details.totalMs))
-    line("AVERAGE", string.format("%.3f", details.average))
-    line("MAX", string.format("%.3f", details.maxMs))
+    line(L["UI_CALLS"], details.count)
+    line(totalLabel, string.format("%.3f", details.totalMs))
+    line(L["UI_AVERAGE"], string.format("%.3f", details.average))
+    line(maximumLabel, string.format("%.3f", details.maxMs))
     if details.count == 0 then
-        APR:AddTooltipLine(GameTooltip, T("PERF_EMPTY_SECOND"), "general", "muted", true)
+        APR:AddTooltipLine(GameTooltip, L["UI_PERF_EMPTY_SECOND"], "general", "muted", true)
     else
-        line("PERF_SLOW_COUNT", details.slowCount or T("DATA_UNAVAILABLE"))
-        line("PERF_PEAK_CALL", MetricName(details.peakName) or T("DATA_UNAVAILABLE"))
+        line(L["UI_CALLS"] .. " ≥ 10 " .. MILLISECONDS_ABBR, details.slowCount or UNAVAILABLE)
+        line(L["UI_PERF_PEAK_CALL"], MetricName(details.peakName) or UNAVAILABLE)
         if details.route then APR:AddTooltipLine(GameTooltip, details.route, "general", "base", true) end
-        if details.step then line("STATUS_STEP", details.step) end
+        if details.step then line(L["CURRENT_STEP"], details.step) end
     end
-    APR:AddTooltipLine(GameTooltip, T(self.frozenTimeline and "PERF_GRAPH_FROZEN" or "PERF_GRAPH_LIVE"), "general", "muted", true)
+    APR:AddTooltipLine(GameTooltip, self.frozenTimeline and L["UI_PERF_GRAPH_FROZEN"] or L["UI_PERF_GRAPH_LIVE"], "general", "muted", true)
     GameTooltip:Show()
 end
 
@@ -47,7 +56,7 @@ function Dashboard:RefreshGraph()
     self.timeline = self.frozenTimeline or APR:GetPerformanceTimeline()
     local maximum, metric = 1, self.graphMetric
     for _, bucket in ipairs(self.timeline) do maximum = math.max(maximum, bucket[metric] or 0) end
-    self.axis:SetText(metric == "count" and string.format("%d\n\n\n0", maximum) or T("TIME_MS_FORMAT", maximum) .. "\n\n\n0")
+    self.axis:SetText(metric == "count" and string.format("%d\n\n\n0", maximum) or APR:FormatMilliseconds(maximum) .. "\n\n\n0")
     local width, height = math.max(1, self.plot:GetWidth() - 8), math.max(1, self.plot:GetHeight() - 8)
     for index = 1, 120 do
         local bar, bucket = self.bars[index], self.timeline[index]
@@ -58,22 +67,22 @@ function Dashboard:RefreshGraph()
         bar:SetColorTexture(unpack(APR:GetThemeColor(bucket and bucket.maxMs >= 10 and "warning" or "accent")))
         bar:SetShown(value > 0)
     end
-    self.freeze:SetText(T(self.frozenTimeline and "PERF_RESUME_GRAPH" or "PERF_FREEZE_GRAPH"))
-    self.graphHint:SetText(T(self.frozenTimeline and "PERF_GRAPH_FROZEN" or "PERF_GRAPH_LIVE"))
+    self.freeze:SetText(self.frozenTimeline and L["UI_PERF_RESUME_GRAPH"] or L["UI_PERF_FREEZE_GRAPH"])
+    self.graphHint:SetText(self.frozenTimeline and L["UI_PERF_GRAPH_FROZEN"] or L["UI_PERF_GRAPH_LIVE"])
     self:UpdateGraphTooltip(true)
 end
 
 function Dashboard:Refresh()
     if not self.frame or not self.frame:IsShown() then return end
     local log = APRData.PerformanceLog
-    self.capture:SetText(APR.performanceLogging and T("STOP") or T("CAPTURE"))
+    self.capture:SetText(APR.performanceLogging and L["UI_STOP"] or L["UI_CAPTURE"])
     if self.page == "resources" then self.resources:Refresh(); return end
     local calls, total, peak = 0, 0, 0
     for _, summary in pairs(log and log.summary or {}) do
         calls, total = calls + summary.count, total + summary.totalMs
         peak = math.max(peak, summary.maxMs)
     end
-    self.overview:SetText(T("PERF_OVERVIEW_FORMAT", calls, total, peak))
+    self.overview:SetText(Summary(calls, total, peak))
     self:RefreshGraph()
     local rows = APR:GetPerformanceRows(self.mode, self.sort, self.query, MetricName)
     self.list:SetItems(rows, true)
@@ -95,31 +104,31 @@ function Dashboard:SetPage(page)
 end
 
 function Dashboard:Create()
-    local frame = UI:Window("APRPerformanceDashboard", T("PERFORMANCE"), 1040, 840)
+    local frame = UI:Window("APRPerformanceDashboard", L["UI_PERFORMANCE"], 1040, 840)
     local minimumWidth, minimumHeight = math.min(760, UIParent:GetWidth() - 40), math.min(700, UIParent:GetHeight() - 60)
     frame:SetResizeBounds(minimumWidth, minimumHeight)
     -- Older saved dimensions can predate the resource cards and their minimum readable size.
     frame:SetSize(math.max(frame:GetWidth(), minimumWidth), math.max(frame:GetHeight(), minimumHeight))
     self.frame, self.bars = frame, {}
     local root = frame.content
-    self.capture = UI:Button(root, T("CAPTURE"), 180, function()
+    self.capture = UI:Button(root, L["UI_CAPTURE"], 180, function()
         self.frozenTimeline = nil
         self.resources.frozenView = nil
         APR:SetPerformanceCapture(not APR.performanceLogging); self:Refresh()
     end)
     self.capture:SetPoint("TOPLEFT")
-    local clear = UI:Button(root, T("CLEAR"), 140, function()
+    local clear = UI:Button(root, L["CLEAR"], 140, function()
         self.frozenTimeline = nil
         APR:ResetPerformanceCapture(); self:Refresh()
     end)
     clear:SetPoint("LEFT", self.capture, "RIGHT", 10, 0)
-    local export = UI:Button(root, T("EXPORT"), 140, function()
-        UI:ShowTextReport(T("PERFORMANCE"), APR:FormatDebugTable(APRData.PerformanceLog or {}, 20000))
+    local export = UI:Button(root, L["STATUS_EXPORT"], 140, function()
+        UI:ShowTextReport(L["UI_PERFORMANCE"], APR:FormatDebugTable(APRData.PerformanceLog or {}, 20000))
     end)
     export:SetPoint("LEFT", clear, "RIGHT", 10, 0)
-    self.resourcesTab = UI:Button(root, T("RESOURCE_TAB"), 190, function() self:SetPage("resources") end)
+    self.resourcesTab = UI:Button(root, L["UI_RESOURCE_TAB"], 190, function() self:SetPage("resources") end)
     self.resourcesTab:SetPoint("TOPLEFT", 0, -44)
-    self.callsTab = UI:Button(root, T("RESOURCE_CALLS_TAB"), 210, function() self:SetPage("calls") end)
+    self.callsTab = UI:Button(root, L["UI_RESOURCE_CALLS_TAB"], 210, function() self:SetPage("calls") end)
     self.callsTab:SetPoint("LEFT", self.resourcesTab, "RIGHT", 10, 0)
     self.resourcesPanel = CreateFrame("Frame", nil, root)
     self.resourcesPanel:SetPoint("TOPLEFT", 0, -86)
@@ -134,9 +143,9 @@ function Dashboard:Create()
     self.overview:SetPoint("TOPRIGHT", 0, 0)
     local graphMode = UI:Select(root, 250, function(value) self.graphMetric = value; self:RefreshGraph() end)
     graphMode:SetPoint("TOPLEFT", 0, -30)
-    graphMode:SetOptions({{value = "maxMs", label = T("PERF_METRIC_MAX")},
-        {value = "totalMs", label = T("PERF_METRIC_TOTAL")}, {value = "count", label = T("PERF_METRIC_CALLS")}}, self.graphMetric)
-    self.freeze = UI:Button(root, T("PERF_FREEZE_GRAPH"), 220, function()
+    graphMode:SetOptions({{value = "maxMs", label = L["UI_PERF_METRIC_MAX"]},
+        {value = "totalMs", label = L["UI_PERF_METRIC_TOTAL"]}, {value = "count", label = L["UI_PERF_METRIC_CALLS"]}}, self.graphMetric)
+    self.freeze = UI:Button(root, L["UI_PERF_FREEZE_GRAPH"], 220, function()
         self.frozenTimeline = not self.frozenTimeline and APR:DeepCopyTable(self.timeline) or nil
         self:RefreshGraph()
     end)
@@ -169,19 +178,19 @@ function Dashboard:Create()
     end)
     self.axis = UI:Label(root, "", 11, "muted")
     self.axis:SetPoint("TOPLEFT", 0, -96)
-    local interval = UI:Label(root, T("SECONDS_FORMAT", -119), 11, "muted")
+    local interval = UI:Label(root, APR:FormatSeconds(-119), 11, "muted")
     interval:SetPoint("TOPLEFT", self.plot, "BOTTOMLEFT", 0, -4)
-    local now = UI:Label(root, T("SECONDS_FORMAT", 0), 11, "muted")
+    local now = UI:Label(root, APR:FormatSeconds(0), 11, "muted")
     now:SetPoint("TOPRIGHT", self.plot, "BOTTOMRIGHT", 0, -4)
     local mode = UI:Select(root, 220, function(value) self.mode = value; self:Refresh() end)
     mode:SetPoint("TOPLEFT", 0, -234)
-    mode:SetOptions({ {value = "summary", label = T("OVERVIEW")}, {value = "slow", label = T("SLOW_CALLS")},
-        {value = "counters", label = T("COUNTERS")} }, self.mode)
+    mode:SetOptions({ {value = "summary", label = OVERVIEW}, {value = "slow", label = L["UI_SLOW_CALLS"]},
+        {value = "counters", label = L["UI_COUNTERS"]} }, self.mode)
     local sort = UI:Select(root, 190, function(value) self.sort = value; self:Refresh() end)
     sort:SetPoint("LEFT", mode, "RIGHT", 10, 0)
-    sort:SetOptions({ {value = "totalMs", label = T("TOTAL")}, {value = "maxMs", label = T("MAX")},
-        {value = "average", label = T("AVERAGE")}, {value = "count", label = T("CALLS")} }, self.sort)
-    self.search = UI:SearchBox(root, 200, T("SEARCH"), function(query) self.query = query; self:Refresh() end)
+    sort:SetOptions({ {value = "totalMs", label = totalLabel}, {value = "maxMs", label = maximumLabel},
+        {value = "average", label = L["UI_AVERAGE"]}, {value = "count", label = L["UI_CALLS"]} }, self.sort)
+    self.search = UI:SearchBox(root, 200, SEARCH, function(query) self.query = query; self:Refresh() end)
     self.search:SetPoint("TOPLEFT", 0, -274)
     self.search:SetPoint("TOPRIGHT", 0, -274)
     local scroll = UI:Scroll(root)
@@ -201,7 +210,10 @@ function Dashboard:Create()
             if not histogram then return end
             GameTooltip:SetOwner(control, "ANCHOR_RIGHT")
             APR:SetTooltipText(GameTooltip, MetricName(control.item.name), "general", "accent")
-            APR:AddTooltipLine(GameTooltip, T("PERF_HISTOGRAM_FORMAT", unpack(histogram)), "general", "base", true)
+            for index, range in ipairs({"<1", "1–3", "3–10", "≥10"}) do
+                APR:AddTooltipDoubleLine(GameTooltip, range .. " " .. MILLISECONDS_ABBR,
+                    tostring(histogram[index]), "general", "base", "base")
+            end
             GameTooltip:Show()
         end)
         row:SetScript("OnLeave", function() GameTooltip:Hide() end)
@@ -209,16 +221,17 @@ function Dashboard:Create()
     end, function(row, record)
         row.title:SetText(MetricName(record.name))
         if self.mode == "slow" then
-            row.detail:SetText(T("PERF_SLOW_FORMAT", record.ms, record.route or T("NO_ROUTE"), tostring(record.step or "?")))
-        elseif self.mode == "counters" then row.detail:SetText(T("PERF_COUNTER_FORMAT", record.count))
+            row.detail:SetText(APR:FormatMilliseconds(record.ms) .. "   |   " .. (record.route or L["UI_STATUS_NO_ACTIVE_ROUTE"])
+                .. "   |   " .. L["CURRENT_STEP"] .. ": " .. tostring(record.step or "?"))
+        elseif self.mode == "counters" then row.detail:SetText(L["UI_CALLS"] .. ": " .. record.count)
         else
-            row.detail:SetText(T("PERF_SUMMARY_FORMAT", record.count, record.totalMs, record.average, record.maxMs))
+            row.detail:SetText(Summary(record.count, record.totalMs, record.maxMs, record.average))
         end
     end, 62)
-    self.empty = UI:Label(root, T("NO_CAPTURE"), 13, "muted")
+    self.empty = UI:Label(root, L["UI_NO_CAPTURE"], 13, "muted")
     self.empty:SetPoint("TOPLEFT", 12, -332)
     self.empty:SetPoint("TOPRIGHT", -26, -332)
-    local note = UI:Label(root, T("PERF_LIMITS"), 11, "muted")
+    local note = UI:Label(root, L["UI_PERF_LIMITS"], 11, "muted")
     note:SetPoint("BOTTOMLEFT")
     note:SetPoint("BOTTOMRIGHT")
     frame:HookScript("OnShow", function()

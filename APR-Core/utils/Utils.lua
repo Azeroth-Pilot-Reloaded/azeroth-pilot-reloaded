@@ -68,6 +68,15 @@ function APR:WrapTextInColorCode(text, hex)
     return "|c" .. normalized .. asText .. "|r"
 end
 
+function APR:FormatMilliseconds(value, precise)
+    return string.format(precise and "%.3f" or "%.2f", value) .. " " .. MILLISECONDS_ABBR
+end
+
+function APR:FormatSeconds(value)
+    -- FontStrings resolve Blizzard's |4 singular/plural markers on the game client.
+    return string.format(SECONDS_ABBR, math.floor(value + 0.5))
+end
+
 function APR:TrimString(text)
     if text == nil then
         return ""

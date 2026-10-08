@@ -255,7 +255,7 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = 0.75,
                 func = function()
-                    APR.questionDialog:CreateEditBoxPopup(L["COPY_HELPER"], L["CLOSE"], APR.discord)
+                    APR.questionDialog:CreateEditBoxPopup(L["COPY_HELPER"], CLOSE, APR.discord)
                 end
             },
             githubButton = {
@@ -264,7 +264,7 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = 0.75,
                 func = function()
-                    APR.questionDialog:CreateEditBoxPopup(L["COPY_HELPER"], L["CLOSE"], APR.github)
+                    APR.questionDialog:CreateEditBoxPopup(L["COPY_HELPER"], CLOSE, APR.github)
                 end
             },
             buttonOffset = {
@@ -1647,7 +1647,7 @@ function APR.settings:createBlizzOptions()
                                     afkWidth = {
                                         order = 10.531,
                                         type = "range",
-                                        name = L["UI_AFK_WIDTH"],
+                                        name = HUD_EDIT_MODE_SETTING_CHAT_FRAME_WIDTH,
                                         min = 150,
                                         max = 600,
                                         step = 5,
@@ -1664,7 +1664,7 @@ function APR.settings:createBlizzOptions()
                                     afkHeight = {
                                         order = 10.532,
                                         type = "range",
-                                        name = L["UI_AFK_HEIGHT"],
+                                        name = HUD_EDIT_MODE_SETTING_CHAT_FRAME_HEIGHT,
                                         min = 10,
                                         max = 60,
                                         step = 1,

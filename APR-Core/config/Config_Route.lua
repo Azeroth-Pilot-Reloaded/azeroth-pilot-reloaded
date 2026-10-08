@@ -6,9 +6,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 -- Both route lists resolve current metadata at hover time, including recycled/imported rows.
 local function AddRouteMetadataTooltip(routeKey)
     local author, community, description = APR:GetRouteAttribution(routeKey)
-    APR:AddTooltipLine(GameTooltip, APR:LocalizeUI("LABEL_VALUE_FORMAT", APR:LocalizeUI("AUTHOR"), author), "general", "base", true)
-    local source = APR:LocalizeUI(community and "COMMUNITY_ROUTE" or "APR_ROUTE")
-    APR:AddTooltipLine(GameTooltip, APR:LocalizeUI("LABEL_VALUE_FORMAT", APR:LocalizeUI("SOURCE"), source), "general", "muted", true)
+    APR:AddTooltipLine(GameTooltip, string.format(L["AUTHOR"], author), "general", "base", true)
+    local source = community and CLUB_FINDER_COMMUNITY_TYPE or "APR"
+    APR:AddTooltipLine(GameTooltip, SOURCE .. " " .. source, "general", "muted", true)
     if description then APR:AddTooltipLine(GameTooltip, description, "general", "base", true) end
 end
 
@@ -269,7 +269,7 @@ local function UpdateRouteSortHeaderLabels(frame)
     end
 
     if frame.nameColumn then
-        frame.nameColumn:SetText(L["NAME"])
+        frame.nameColumn:SetText(NAME)
     end
     if frame.categoryColumn then
         frame.categoryColumn:SetText(L["CATEGORY"])
@@ -443,7 +443,7 @@ local function CreateCustomPathTableFrame(name)
 
     local nameColumn = contentFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     nameColumn:SetPoint("TOPLEFT", idColumn, "TOPRIGHT", 50, 0)
-    nameColumn:SetText(L["NAME"])
+    nameColumn:SetText(NAME)
     APR:RegisterFontString(nameColumn, "general", { role = "accent" })
 
     return frame
@@ -637,7 +637,7 @@ local function CreateRouteTableFrame(name)
 
     local nameColumn = frame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
     nameColumn:SetPoint("TOPLEFT", 10, 0)
-    nameColumn:SetText(L["NAME"])
+    nameColumn:SetText(NAME)
     APR:RegisterFontString(nameColumn, "general", { role = "accent" })
     frame.nameColumn = nameColumn
 

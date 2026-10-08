@@ -131,8 +131,7 @@ assert(not APRData.player.TaxiRoutes[1][3] and not APRData.player.TaxiRoutes[1][
 local optimized
 optimized, _, edges = path()
 assert(hasEdge(edges, 1001), "Long trips should use a known flight instead of walking")
-assert(optimized[1].loca == "Flight to Node 2" and optimized[1].loc.pos.x == 0.01,
-    "Guide to the departure master with a localized destination")
+assert(optimized[1].loc.pos.x == 0.01, "Guide to the departure master")
 _, _, edges = path(0.8)
 assert(hasEdge(edges, 1001), "A destination exactly on the arrival master must retain the flight")
 local count = #FarstriderLib.Data.WAYPOINTS

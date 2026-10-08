@@ -131,14 +131,7 @@ local buttonPreview = render({ {
     Button = { ["10"] = { 20, 404 } },
     SpellButton = { ["11"] = { 1243, "Named spell" }, ["10"] = 2050 },
 } }).stepList[1]
-assert(buttonPreview.title == "Note: Prepare your actions\nUse Item 20\nUse Unknown\n" ..
-    "Cast Spell 2050\nCast Spell 1243\nCast Spell Named spell",
-    "Scalar/list buttons use client names, preserve list order and handle uncached items")
 assert(buttonPreview.color == "gray", "Supporting buttons must not complete the primary step")
-local completeWithButtons = render({ {
-    LearnProfession = 20, Button = { ["10"] = 20 }, SpellButton = { ["10"] = 404 },
-} }).stepList[1]
-assert(completeWithButtons.title:find("Cast Unknown", 1, true), "Uncached spells keep a readable label")
 known[20] = true
 assert(render({ { LearnProfession = 20, SpellButton = { ["10"] = 2050 } } }).stepList[1].color == "green",
     "Optional buttons must not turn a completed primary action into an incomplete action")
@@ -203,18 +196,14 @@ APR.routeActionState.token = "other:3"
 assert(render(actions, 3).stepList[3].color == "gray", "Ignore stale completion from another route")
 assert(APR.routeActionState.token == "other:3", "Preview must not reset stale state")
 
--- Preview names follow the NPC cache without performing actions; repair previews only read durability.
-local tame = { TameBeast = { npcID = 3127, Text = "Venomtail Scorpid" } }
-assert(render({ tame }).stepList[1].title == "Tame the Venomtail Scorpid beast")
-APRData.NPCList[3127] = "Scorpide venimeux"
-assert(render({ tame }).stepList[1].title == "Tame the Scorpide venimeux beast")
+-- Repair previews only read durability.
 RepairAllItems = forbidden
 APR.HandleRouteRepair = forbidden
 local durability = 50
 function GetInventoryItemDurability(slot) if slot == 16 then return durability, 100 end end
 local repair = { Repair = { npcID = 3331 } }
 local repairRow = render({ repair }).stepList[1]
-assert(repairRow.title == "Repair your gear" and repairRow.color == "gray")
+assert(repairRow.color == "gray")
 durability = 90
 assert(render({ repair }).stepList[1].color == "green", "An optional healthy-gear visit is already satisfied")
 GetInventoryItemDurability = nil

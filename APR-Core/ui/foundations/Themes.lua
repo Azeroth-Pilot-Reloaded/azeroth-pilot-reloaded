@@ -2,7 +2,7 @@
 -- External skin providers remain authoritative when enabled; no third-party artwork is bundled.
 
 APR.Themes = {
-    wow = { label = "THEME_WOW", background = { 0.08, 0.065, 0.045, 0.96 }, surface = { 0.16, 0.13, 0.09, 1 },
+    wow = { background = { 0.08, 0.065, 0.045, 0.96 }, surface = { 0.16, 0.13, 0.09, 1 },
         border = { 0.53, 0.43, 0.24, 1 }, accent = { 1, 0.82, 0.28, 1 }, base = { 0.96, 0.94, 0.88, 1 },
         muted = { 0.7, 0.67, 0.59, 1 }, edgeSize = 12, edge = "Interface\\Tooltips\\UI-Tooltip-Border" },
 }

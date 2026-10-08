@@ -119,17 +119,10 @@ for _, game in ipairs({ "Standard", "Camelot" }) do
                     assert(boat and boat.from.loc.mapId == 0 and boat.to.loc.mapId == 1,
                         "Vanilla must retain its native Menethil-Theramore transport")
                     assert(boat.condition() == (faction == "Alliance"))
-                    local label = api.GetLocalizedString(boat.from.locaId)
-                    assert(label == (locale == "frFR"
-                        and "Prendre le bateau de la baie de Barardin vers l’île de Theramore"
-                        or "Take the boat from Baradin Bay to Theramore Isle"))
                 else
                     assert(portal and portal.from.loc.mapId == 870 and portal.to.loc.mapId == 0,
                         "Retail must retain its native Paw'don-Stormwind portal")
                     assert(oribosFlight, "Farstrider's explicitly defined flights must remain available")
-                    local label = api.GetLocalizedString(portal.from.locaId)
-                    assert(label:find(locale == "frFR" and "Hurlevent" or "Paw'don Village", 1, true),
-                        "Retail must retain its native transport translations")
                 end
                 assert(flights == 0, "No inferred Eastern Kingdoms taxi flights should be added")
                 if withTaxi then

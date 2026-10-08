@@ -724,7 +724,7 @@ function APR:ResolveUIFileAsset(asset, fallback, context)
     local diagnosticKey = tostring(context or "UI") .. ":" .. tostring(asset)
     if not reportedInvalidUIAssets[diagnosticKey] then
         reportedInvalidUIAssets[diagnosticKey] = true
-        local message = string.format(L["UI_ASSET_UNKNOWN"], context or L["UI_ASSET_UI"], tostring(asset))
+        local message = string.format("Unknown UI asset (%s): %s", context or "UI", tostring(asset))
         if self.PrintError then
             self:PrintError(message)
         else
@@ -751,6 +751,6 @@ function APR:ValidateBundledUIAssets()
         UI_ASSET_MAP = "Interface\\AddOns\\APR\\APR-Core\\assets\\Icon.tga",
         UI_ASSET_ARROW = "Interface\\AddOns\\APR\\APR-Core\\assets\\Arrow.blp",
     }) do
-        self:ResolveUIFileAsset(asset, nil, L[context])
+        self:ResolveUIFileAsset(asset, nil, context)
     end
 end
