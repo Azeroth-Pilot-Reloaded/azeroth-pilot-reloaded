@@ -58,6 +58,7 @@ function UI:SearchBox(parent, width, placeholder, changed)
         changed(self:GetText())
     end)
     APR:RegisterSkinTarget(edit, "editbox", { themeSurface = true })
+    APR:RegisterFontString(edit, "general", {role = "base"})
     return edit
 end
 
@@ -104,6 +105,9 @@ function UI:CopyBox(parent)
     edit:SetScript("OnTextChanged", resize)
     scroll:HookScript("OnSizeChanged", resize)
     scroll:SetScrollChild(edit)
+    -- The measuring region and selectable text must use the same font and size.
+    APR:RegisterFontString(edit, "general", {role = "base"})
+    APR:RegisterFontString(measure, "general", {role = "base", onApplied = resize})
     return scroll, edit
 end
 
