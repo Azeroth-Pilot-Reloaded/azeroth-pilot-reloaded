@@ -231,6 +231,7 @@ function APR.settings.ChatCommand(input)
 end
 
 function APR.settings:RefreshProfile()
+    if APR.LayoutEditor then APR.LayoutEditor:Hide() end
     self.profile = self.db.profile
     C_UI.Reload()
 end
@@ -249,6 +250,12 @@ function APR.settings:createBlizzOptions()
         name = APR.title .. ' - ' .. APR.version,
         type = "group",
         args = {
+            layoutEditor = {
+                order = 1.3, type = "execute", width = "full",
+                name = L["UI_LAYOUT_TITLE"], desc = L["UI_LAYOUT_HELP"],
+                func = function() APR.LayoutEditor:Show() end,
+                disabled = InCombatLockdown,
+            },
             discordButton = {
                 order = 1.1,
                 name = L["JOIN_DISCORD"],

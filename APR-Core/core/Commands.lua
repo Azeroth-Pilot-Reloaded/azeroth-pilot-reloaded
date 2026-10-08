@@ -14,7 +14,9 @@ function APR.command:SlashCmd(input)
         APR.settings:OpenSettings(APR.title)
         APR:PrintInfo(L["ADDON"] .. ' ' .. L["DISABLE"])
     end
-    if inputText == "perf on" then
+    if inputText == "layout" then
+        APR.LayoutEditor:Show()
+    elseif inputText == "perf on" then
         APR:SetPerformanceCapture(true)
         APR:PrintInfo(L["UI_PERF_CAPTURE_STARTED"])
     elseif inputText == "perf off" then
@@ -99,6 +101,7 @@ function APR.command:SlashCmd(input)
         printHelp("/apr forcereset, fr", L["FORCERESET_COMMAND"])
         printHelp("/apr github", L["GITHUB_COMMAND"])
         printHelp("/apr help, h", L["HELP_COMMAND"])
+        printHelp("/apr layout", L["UI_LAYOUT_TITLE"])
         printHelp("/apr qol", L["QOL_COMMAND"])
         printHelp("/apr reset, r", L["RESET_COMMAND"])
         printHelp("/apr resetcustom", L["RESET_CUSTOM_COMMAND"])
