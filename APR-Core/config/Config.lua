@@ -294,13 +294,6 @@ function APR.settings:createBlizzOptions()
                     )
                 end
             },
-            performanceButton = {
-                order = 1.6,
-                name = function() return APR:LocalizeUI("PERFORMANCE") end,
-                type = "execute",
-                width = 0.75,
-                func = function() APR.PerformanceDashboard:Show() end,
-            },
             header_Automation = {
                 order = 2,
                 type = "header",

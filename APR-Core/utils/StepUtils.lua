@@ -385,10 +385,10 @@ function APR:SkipQuestStep()
     return self:CommitManualSkip(targetIndex)
 end
 
---- Walk backwards in the route until a valid non-filtered step is found.
--- Includes a guard to avoid infinite loops in malformed routes.
--- Ensures the index never goes below 1.
+-- Rollback first reverses a valid manual skip, including its immediate automatic advances.
+-- Otherwise it walks back to the preceding visible non-waypoint step.
 function APR:PreviousQuestStep()
+    if self:CanUndoManualSkip() then return self:UndoManualSkip() end
     local context = self:CaptureStepContext()
     if not context.route or not context.index then return false end
     local steps = self:GetRouteSteps(context.route)
