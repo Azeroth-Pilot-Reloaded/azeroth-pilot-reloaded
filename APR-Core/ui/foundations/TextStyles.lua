@@ -433,7 +433,7 @@ function APR:RefreshTextAppearance(scope)
     if (not scope or scope == "general") and self.RouteSelection and self.RouteSelection.UpdateTextAppearance then
         self.RouteSelection:UpdateTextAppearance()
     end
-    if (not scope or scope == "general") and self.StatusFrame and self.updateStatusFrame then
-        self:updateStatusFrame()
+    if (not scope or scope == "general") and self.RefreshDiagnostics then
+        self:RefreshDiagnostics()
     end
 end

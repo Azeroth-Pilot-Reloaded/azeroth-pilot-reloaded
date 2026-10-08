@@ -35,9 +35,7 @@ function APR.routeconfig:InitRouteConfig()
             APR.farstrider:GetMeToRightZone()
         end
 
-        if APR.StatusFrame and APR.StatusFrame:IsShown() and APR.updateStatusFrame then
-            APR:updateStatusFrame()
-        end
+        if APR.RefreshDiagnostics then APR:RefreshDiagnostics() end
     end)
     return {
         name = L["ROUTE_SELECTION"], type = "group",

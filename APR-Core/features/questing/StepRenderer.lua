@@ -136,25 +136,9 @@ function APR:RenderCurrentStep()
             local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
             local activeExpansion = activeRouteData and activeRouteData.expansion
 
-            -- Uncomment if needed for new route
-            -- if activeExpansion == APR.EXPANSIONS.Cataclysm then
-            --     checkChromieTimeline(5)
-            -- end
-            -- if activeExpansion == APR.EXPANSIONS.TheBurningCrusade then
-            --     checkChromieTimeline(6)
-            -- end
-            -- if activeExpansion == APR.EXPANSIONS.WrathOfTheLichKing then
-            --     checkChromieTimeline(7)
-            -- end
-            -- if activeExpansion == APR.EXPANSIONS.MistsOfPandaria then
-            --     checkChromieTimeline(8)
-            -- end
             if activeExpansion == APR.EXPANSIONS.WarlordsOfDraenor then
                 checkChromieTimeline(9)
             end
-            -- if activeExpansion == APR.EXPANSIONS.Legion then
-            --     checkChromieTimeline(10)
-            -- end
             if activeExpansion == APR.EXPANSIONS.BattleForAzeroth then
                 checkChromieTimeline(15)
             end
