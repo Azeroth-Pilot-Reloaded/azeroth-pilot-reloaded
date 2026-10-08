@@ -1,10 +1,8 @@
-import asyncio
 from typing import Dict, List
+from urllib.parse import urljoin
 
 from bs4 import BeautifulSoup
-from pydoll.browser import Chrome
-from pydoll.browser.options import ChromiumOptions
-from pydoll.constants import By
+from pydoll import Chrome, ChromiumOptions
 
 # URL CurseForge localization
 LOCALIZATION_URL = (
@@ -25,18 +23,6 @@ LANG_NAME_TO_LOCALE = {
     "Traditional Chinese": "zhTW",
 }
 
-USER_AGENT = (
-    "Mozilla/5.0 (Windows NT 10.0; Win64; x64) "
-    "AppleWebKit/537.36 (KHTML, like Gecko) "
-    "Chrome/122.0.0.0 Safari/537.36"
-)
-
-def safe_print(text: str) -> None:
-    try:
-        print(text)
-    except UnicodeEncodeError:
-        print(text.encode("cp1252", errors="replace").decode("cp1252"))
-
 
 def build_browser_options() -> ChromiumOptions:
     options = ChromiumOptions()
@@ -47,6 +33,7 @@ def build_browser_options() -> ChromiumOptions:
     options.password_manager_enabled = False
     options.set_accept_languages("en-US,en")
 
+    # Keep Chrome's native User-Agent so its version and platform stay consistent.
     for arg in [
         "--disable-blink-features=AutomationControlled",
         "--disable-dev-shm-usage",
@@ -54,7 +41,6 @@ def build_browser_options() -> ChromiumOptions:
         "--disable-extensions",
         "--no-sandbox",
         "--window-size=1920,1080",
-        f"--user-agent={USER_AGENT}",
     ]:
         try:
             options.add_argument(arg)
@@ -131,6 +117,7 @@ async def fetch_localization_states(locales: List[str] | None = None) -> Dict[st
     Notes:
     - Headless Chrome with safer defaults
     - Cloudflare challenges may block access in CI
+    - Missing counts raise an error so the workflow cannot report a false success
     """
 
     browser = Chrome(options=build_browser_options())
@@ -140,30 +127,29 @@ async def fetch_localization_states(locales: List[str] | None = None) -> Dict[st
         # Start browser
         tab = await browser.start()
 
-        # Navigate to CurseForge
-        await tab.enable_auto_solve_cloudflare_captcha()
-        await tab.go_to(LOCALIZATION_URL, timeout=60)
+        # Pydoll 3 handles Turnstile per navigation, not in the background.
+        async with tab.expect_cloudflare_turnstile():
+            await tab.go_to(LOCALIZATION_URL, timeout=60)
 
         # Wait for JS-rendered localization blocks
-        found = await tab.find_or_wait_element(
-            By.CSS_SELECTOR,
+        found = await tab.query(
             "div.language-state",
             timeout=30,
             raise_exc=False,
         )
 
         # Get final DOM
-        overview_html = await tab.page_source
+        overview_html = await tab.page_source()
         html_lower = overview_html.lower()
         if "just a moment" in html_lower or "cf-challenge" in html_lower:
-            safe_print("Cloudflare challenge detected; page content blocked")
-            return {}
+            raise RuntimeError("Cloudflare challenge detected; page content blocked")
 
         if not found:
-            safe_print("Localization blocks not found (DOM change or blocked)")
-            return {}
+            raise RuntimeError("Localization blocks not found (DOM change or blocked)")
 
         result = parse_overview(overview_html)
+        if not result:
+            raise RuntimeError("No localization states found in the overview")
         requested_locales = locales or list(result.keys())
 
         # The overview assigns only one bucket to each locale even when its
@@ -171,26 +157,24 @@ async def fetch_localization_states(locales: List[str] | None = None) -> Dict[st
         for locale in requested_locales:
             entry = result.get(locale)
             if not entry or not entry.get("href"):
-                continue
+                raise RuntimeError(f"Localization page link not found for {locale}")
 
-            await tab.go_to(f"https://www.curseforge.com{entry['href']}", timeout=60)
-            phrases_found = await tab.find_or_wait_element(
-                By.CSS_SELECTOR,
+            async with tab.expect_cloudflare_turnstile():
+                await tab.go_to(urljoin(LOCALIZATION_URL, entry["href"]), timeout=60)
+            phrases_found = await tab.query(
                 'li[data-target="phrase"]',
                 timeout=30,
                 raise_exc=False,
             )
             if not phrases_found:
-                safe_print(f"Localization phrases not found for {locale}")
-                continue
+                raise RuntimeError(f"Localization phrases not found for {locale}")
 
-            entry.update(parse_language_counts(await tab.page_source))
+            entry.update(parse_language_counts(await tab.page_source()))
 
         return result
 
     except Exception as e:
-        safe_print(f"⚠️ Pydoll error: {e}")
-        return {}
+        raise RuntimeError(f"Could not fetch CurseForge localization states: {e}") from e
 
     finally:
         # CRITICAL on Windows: close TAB first, then browser

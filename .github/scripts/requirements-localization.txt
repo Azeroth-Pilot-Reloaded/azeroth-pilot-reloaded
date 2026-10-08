@@ -1,0 +1,4 @@
+requests>=2.32,<3
+python-dotenv>=1,<2
+beautifulsoup4>=4.12,<5
+pydoll-python==3.0.0
