@@ -1,5 +1,2 @@
 lupa==2.8
-requests>=2.32,<3
-python-dotenv>=1,<2
-beautifulsoup4>=4.12,<5
-pydoll-python>=2,<3
+-r ../.github/scripts/requirements-localization.txt

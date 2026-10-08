@@ -17,6 +17,7 @@ concurrency:
 jobs:
   translations:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
 
     permissions:
       contents: read
@@ -43,7 +44,7 @@ jobs:
       - name: Set up Python
         uses: actions/setup-python@v7
         with:
-          python-version: "3.x"
+          python-version: "3.13"
 
       # --------------------------------------------------
       # Install Chrome system dependencies (CRITICAL)
@@ -88,11 +89,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install requests python-dotenv pydoll-python beautifulsoup4
+          python -m pip install -r .github/scripts/requirements-localization.txt
 
       - name: Run localization notification tests
         run: |
-          python -m unittest discover -s tests/scripts -p 'test_localization_post_discord.py'
+          python -m unittest discover -s tests/scripts -p 'test_*localization*.py'
 
       # -------------------------------------------------------------------
       # Run localization scraper

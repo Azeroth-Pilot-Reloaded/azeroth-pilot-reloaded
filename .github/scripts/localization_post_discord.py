@@ -288,6 +288,17 @@ def main(message_file: str | None = None):
 
     review_states = asyncio.run(fetch_localization_states(watched_locales))
 
+    unavailable_locales = [
+        locale for locale in watched_locales
+        if locale in LOCALE_CONFIG
+        and (locale not in stats or "review" not in review_states.get(locale, {}))
+    ]
+    if unavailable_locales:
+        raise RuntimeError(
+            "Localization counts could not be fetched for: "
+            + ", ".join(unavailable_locales)
+        )
+
     summary_data: Dict[str, str] = {}
     detail_lines: list[str] = []
 
@@ -296,11 +307,7 @@ def main(message_file: str | None = None):
             continue
 
         missing = stats[locale]["missing"]
-        scraped_state = review_states.get(locale, {})
-        if "review" not in scraped_state:
-            safe_print(f"Skipping {locale}: review count could not be fetched")
-            continue
-        review = scraped_state["review"]
+        review = review_states[locale]["review"]
 
         previous = state.get(locale)
 
