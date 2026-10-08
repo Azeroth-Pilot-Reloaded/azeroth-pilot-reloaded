@@ -724,7 +724,7 @@ function APR:ResolveUIFileAsset(asset, fallback, context)
     local diagnosticKey = tostring(context or "UI") .. ":" .. tostring(asset)
     if not reportedInvalidUIAssets[diagnosticKey] then
         reportedInvalidUIAssets[diagnosticKey] = true
-        local message = string.format("Unknown UI asset (%s): %s", context or "UI", tostring(asset))
+        local message = string.format(L["UI_ASSET_UNKNOWN"], context or L["UI_ASSET_UI"], tostring(asset))
         if self.PrintError then
             self:PrintError(message)
         else
@@ -746,11 +746,11 @@ end
 --- Route preview images and configured fonts are validated lazily when used.
 function APR:ValidateBundledUIAssets()
     for context, asset in pairs({
-        ["addon logo"] = "Interface\\AddOns\\APR\\APR-Core\\assets\\APR_logo.blp",
-        ["change log header"] = "Interface\\AddOns\\APR\\APR-Core\\assets\\header.blp",
-        ["map icon"] = "Interface\\AddOns\\APR\\APR-Core\\assets\\Icon.tga",
-        ["navigation arrow"] = "Interface\\AddOns\\APR\\APR-Core\\assets\\Arrow.blp",
+        UI_ASSET_LOGO = "Interface\\AddOns\\APR\\APR-Core\\assets\\APR_logo.blp",
+        UI_ASSET_CHANGELOG = "Interface\\AddOns\\APR\\APR-Core\\assets\\header.blp",
+        UI_ASSET_MAP = "Interface\\AddOns\\APR\\APR-Core\\assets\\Icon.tga",
+        UI_ASSET_ARROW = "Interface\\AddOns\\APR\\APR-Core\\assets\\Arrow.blp",
     }) do
-        self:ResolveUIFileAsset(asset, nil, context)
+        self:ResolveUIFileAsset(asset, nil, L[context])
     end
 end

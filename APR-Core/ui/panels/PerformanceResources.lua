@@ -5,8 +5,8 @@ APR.PerformanceResources = {}
 local View, UI = APR.PerformanceResources, APR.UI
 View.__index = View
 local function T(key, ...) return APR:LocalizeUI(key, ...) end
-local function Memory(kb) return kb and string.format("%.2f MiB", kb / 1024) or "—" end
-local function SignedMemory(kb) return kb and string.format("%+.2f MiB", kb / 1024) or "—" end
+local function Memory(kb) return kb and T("MEMORY_MIB_FORMAT", kb / 1024) or "—" end
+local function SignedMemory(kb) return kb and T("MEMORY_CHANGE_FORMAT", kb / 1024) or "—" end
 local function Count(value) return value and (value >= 10000 and "10000+" or tostring(value)) or "—" end
 
 function View:Tooltip(frame, point, key)
@@ -15,19 +15,19 @@ function View:Tooltip(frame, point, key)
     local function line(label, value)
         APR:AddTooltipDoubleLine(GameTooltip, T(label), tostring(value), "general", "muted", "base")
     end
-    line("RESOURCE_TIME", string.format("%+.0f…%+.0f s", point.from - self.view.finish, point.to - self.view.finish))
+    line("RESOURCE_TIME", T("TIME_RANGE_FORMAT", point.from - self.view.finish, point.to - self.view.finish))
     local sample = key == "cpuPercent" and point.cpuSample or point.memorySample
     if not sample or point[key] == nil then
         APR:AddTooltipLine(GameTooltip, T("DATA_UNAVAILABLE"), "general", "muted", true)
     elseif key == "cpuPercent" then
-        line("RESOURCE_CPU_SHARE", string.format("%.2f %%", sample.cpuPercent))
-        line("RESOURCE_CPU_TIME", string.format("%.3f ms", sample.cpuMs))
-        line("RESOURCE_FRAME_TIME", string.format("%.3f ms", sample.frameMs))
+        line("RESOURCE_CPU_SHARE", T("PERCENT_FORMAT", sample.cpuPercent))
+        line("RESOURCE_CPU_TIME", T("TIME_MS_PRECISE_FORMAT", sample.cpuMs))
+        line("RESOURCE_FRAME_TIME", T("TIME_MS_PRECISE_FORMAT", sample.frameMs))
         if sample.fps then line("RESOURCE_FPS", string.format("%.0f", sample.fps)) end
     else
         line("RESOURCE_MEMORY", Memory(sample.memoryKB))
-        line("RESOURCE_MEMORY_AGE", string.format("%.0f s", sample.time - sample.memoryAt))
-        if sample.memoryScanMs then line("RESOURCE_SCAN_TIME", string.format("%.2f ms", sample.memoryScanMs)) end
+        line("RESOURCE_MEMORY_AGE", T("SECONDS_FORMAT", sample.time - sample.memoryAt))
+        if sample.memoryScanMs then line("RESOURCE_SCAN_TIME", T("TIME_MS_FORMAT", sample.memoryScanMs)) end
     end
     if sample then
         if sample.route then APR:AddTooltipLine(GameTooltip, sample.route, "general", "base", true) end
@@ -51,7 +51,7 @@ local function CreateCard(view, title, color)
     card.graph.frame:SetPoint("BOTTOMRIGHT", -12, 35)
     card.interval = UI:Label(card, "", 11, "muted")
     card.interval:SetPoint("BOTTOMLEFT", 12, 12)
-    card.now = UI:Label(card, "0 s", 11, "muted")
+    card.now = UI:Label(card, T("SECONDS_FORMAT", 0), 11, "muted")
     card.now:SetPoint("BOTTOMRIGHT", -12, 12)
     return card
 end
@@ -113,9 +113,9 @@ function View:Refresh()
     local view = self.frozenView or APR.ResourceMonitor:GetView(self.duration)
     self.view = view
     local sample = view.latest or {}
-    self.cpu.graph:SetData(view.points, "cpuPercent", 100, function(value) return string.format("%.0f %%", value) end)
+    self.cpu.graph:SetData(view.points, "cpuPercent", 100, function(value) return T("PERCENT_AXIS_FORMAT", value) end)
     self.memory.graph:SetData(view.points, "memoryKB", 1024, Memory)
-    self.cpu.value:SetText(sample.cpuPercent and string.format("%.2f %%", sample.cpuPercent) or "—")
+    self.cpu.value:SetText(sample.cpuPercent and T("PERCENT_FORMAT", sample.cpuPercent) or "—")
     self.memory.value:SetText(Memory(sample.memoryKB))
     local fps = sample.fps and string.format("%.0f", sample.fps) or "—"
     self.cpu.detail:SetText(sample.cpuMs and T("RESOURCE_CPU_DETAIL", sample.cpuMs, fps)

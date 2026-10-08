@@ -5,11 +5,11 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local CreateFrame = CreateFrame
 local GetRealZoneText = GetRealZoneText
 
-local NO_ACTIVE = "No active route"
+local NO_ACTIVE = L["UI_STATUS_NO_ACTIVE_ROUTE"]
 local hideIdentity = true
 local function SetStatusLine(line, label, value, colorHex)
     local role = APR:ResolveTextColorRole(colorHex, "success")
-    line.Text:SetText(label .. ": " .. APR:WrapTextWithAppearanceColor(value, "general", role))
+    line.Text:SetText(string.format(L["UI_LABEL_VALUE_FORMAT"], label, APR:WrapTextWithAppearanceColor(value, "general", role)))
 end
 
 function APR:createStatusContent(num, width, parent, anchorTo, content)
@@ -122,25 +122,25 @@ function APR:getStatusReportInfos()
     local continentID = self:GetContinent()
     local continent = continentID and self:GetMapInfoCached(continentID)
     local infoTable = {
-        aprVersion = { "AddOn Version", APR.version or UNKNOWN },
-        wowVersion = { "Client Version", select(1, GetBuildInfo()) },
-        clientLanguage = { "Language", GetLocale() },
-        currentTime = { "Time & Date", date() },
-        serverType = { "Server Type", GetCVar("portal") or UNKNOWN },
-        currentRoute = { "Route", APR.ActiveRoute or NO_ACTIVE },
-        currentStep = { "Index, Step", currentStep or NO_ACTIVE },
-        currentZone = { "Zone", GetRealZoneText() or UNKNOWN },
-        currentContinent = { "Continent", continent and continent.name or UNKNOWN },
-        currentCoords = { "Coordinates", coordinates or UNKNOWN },
-        currentWorldCoords = { "World Coordinates", worldCoordinates or UNKNOWN },
-        charFaction = { "Faction", APR.Faction or UNKNOWN },
-        charLevel = { "Level", APR.Level or UNKNOWN },
-        charClass = { "Class", APR:GetClassNameById(APR.ClassId) or UNKNOWN }
+        aprVersion = { L["UI_STATUS_ADDON_VERSION"], APR.version or UNKNOWN },
+        wowVersion = { L["UI_STATUS_CLIENT_VERSION"], select(1, GetBuildInfo()) },
+        clientLanguage = { L["UI_STATUS_LANGUAGE"], GetLocale() },
+        currentTime = { L["UI_STATUS_DATE"], date() },
+        serverType = { L["UI_STATUS_SERVER_TYPE"], GetCVar("portal") or UNKNOWN },
+        currentRoute = { L["UI_STATUS_ROUTE"], APR.ActiveRoute or NO_ACTIVE },
+        currentStep = { L["UI_STATUS_INDEX_ACTION"], currentStep or NO_ACTIVE },
+        currentZone = { L["UI_STATUS_ZONE"], GetRealZoneText() or UNKNOWN },
+        currentContinent = { L["UI_STATUS_CONTINENT"], continent and continent.name or UNKNOWN },
+        currentCoords = { L["UI_STATUS_COORDINATES"], coordinates or UNKNOWN },
+        currentWorldCoords = { L["UI_STATUS_WORLD_COORDINATES"], worldCoordinates or UNKNOWN },
+        charFaction = { L["UI_STATUS_FACTION"], APR.Faction or UNKNOWN },
+        charLevel = { L["UI_STATUS_LEVEL"], APR.Level or UNKNOWN },
+        charClass = { L["UI_STATUS_CLASS"], APR:GetClassNameById(APR.ClassId) or UNKNOWN }
     }
 
     if not hideIdentity then
-        infoTable.charName = { "Name", self.Username or UNKNOWN }
-        infoTable.charRealm = { "Realm", GetRealmName() or UNKNOWN }
+        infoTable.charName = { L["UI_STATUS_NAME"], self.Username or UNKNOWN }
+        infoTable.charRealm = { L["UI_STATUS_REALM"], GetRealmName() or UNKNOWN }
     end
     return infoTable
 end
@@ -300,7 +300,7 @@ function APR:createStatusStaticContent(StatusFrame)
     --Section 1 AddOn & WoW Info
     StatusFrame.Section1 = APR:createStatusSection(300, 105, nil, 30, StatusFrame, 'TOP', StatusFrame, 'TOP', -30)
     StatusFrame.Section1.Content = APR:createStatusContent(5, 260, StatusFrame.Section1, StatusFrame.Section1.Header)
-    StatusFrame.Section1.Header.Text:SetFormattedText('Addon & Client|r')
+    StatusFrame.Section1.Header.Text:SetText(L["UI_STATUS_ADDON_CLIENT"])
 
     local wowVersionText = string.format("%s", statusInfos.wowVersion[2])
     SetStatusLine(StatusFrame.Section1.Content.Line1, statusInfos.aprVersion[1], statusInfos.aprVersion[2],
@@ -315,13 +315,13 @@ function APR:createStatusStaticContent(StatusFrame)
     StatusFrame.Section2 = APR:createStatusSection(300, 105, nil, 30, StatusFrame, 'TOP', StatusFrame.Section1, 'BOTTOM',
         0)
     StatusFrame.Section2.Content = APR:createStatusContent(5, 260, StatusFrame.Section2, StatusFrame.Section2.Header)
-    StatusFrame.Section2.Header.Text:SetFormattedText('Current Route|r')
+    StatusFrame.Section2.Header.Text:SetText(L["UI_STATUS_CURRENT_ROUTE"])
 
     --Section 3 Character Info
     StatusFrame.Section3 = APR:createStatusSection(300, 120, nil, 30, StatusFrame, 'TOP', StatusFrame.Section2, 'BOTTOM',
         0)
     StatusFrame.Section3.Content = APR:createStatusContent(4, 260, StatusFrame.Section3, StatusFrame.Section3.Header)
-    StatusFrame.Section3.Header.Text:SetFormattedText('Character|r')
+    StatusFrame.Section3.Header.Text:SetText(L["UI_STATUS_CHARACTER"])
 
     local classText = statusInfos.charClass[2]:lower():gsub("^%l", string.upper)
     SetStatusLine(StatusFrame.Section3.Content.Line1, statusInfos.charFaction[1], statusInfos.charFaction[2],
@@ -335,7 +335,7 @@ function APR:updateStatusFrame()
     local statusColors = self:getStatusColors(statusInfos)
     local charName = statusInfos.charName and (statusInfos.charName[2] .. "-" .. statusInfos.charRealm[2])
         or self:LocalizeUI("HIDDEN")
-    SetStatusLine(StatusFrame.Section3.Content.Line2, "Name", charName, APR.HEXColor.green)
+    SetStatusLine(StatusFrame.Section3.Content.Line2, L["UI_STATUS_NAME"], charName, APR.HEXColor.green)
     StatusFrame.IdentityButton:SetText((hideIdentity and "[x] " or "[ ] ") .. self:LocalizeUI("REDACT"))
 
     local coordsText = statusInfos.currentCoords[2] .. " - (" .. statusInfos.currentWorldCoords[2] .. ')'

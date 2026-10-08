@@ -8,14 +8,13 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.worldCoordinateConverter = APR:NewModule("WorldCoordinateConverter")
 
 local TEXT = {
-    title = "APR - Map to world coordinates",
-    route = "Route (type to search)",
-    convert = "Convert",
-    output = "Result (Ctrl+C to copy)",
-    selectRoute = "Select a route, then convert it. Addon route data is not modified.",
-    noRoute = "Unable to find the selected route.",
-    noCoordinates = "No convertible coordinates were found in this route.",
-    status = "%d coordinate(s) converted, %d error(s).",
+    title = L["UI_CONVERTER_TITLE"],
+    route = L["UI_CONVERTER_ROUTE"],
+    convert = L["UI_CONVERTER_CONVERT"],
+    output = L["UI_CONVERTER_OUTPUT"],
+    selectRoute = L["UI_CONVERTER_SELECT_ROUTE"],
+    noRoute = L["UI_CONVERTER_NO_ROUTE"],
+    status = L["UI_CONVERTER_STATUS"],
 }
 
 local function IsCoordinate(value)
@@ -373,8 +372,8 @@ local function SerializeScalar(value, key, tableKind, warnings)
         return "nil"
     end
 
-    warnings[#warnings + 1] = string.format("unsupported Lua value type: %s", valueType)
-    return string.format("nil --[[ unsupported %s ]]", valueType)
+    warnings[#warnings + 1] = string.format(L["UI_CONVERTER_UNSUPPORTED_VALUE"], valueType)
+    return "nil" -- The translated warning is exported above the route, without duplicating it inline.
 end
 
 local function SerializeKey(key, tableKind, warnings)
@@ -395,8 +394,8 @@ local SerializeValue
 
 local function SerializeTable(value, depth, stack, tableKind, warnings)
     if stack[value] then
-        warnings[#warnings + 1] = "cyclic table replaced with nil"
-        return "nil --[[ cyclic table ]]"
+        warnings[#warnings + 1] = L["UI_CONVERTER_CYCLIC_TABLE"]
+        return "nil"
     end
 
     if not next(value) then
@@ -646,7 +645,7 @@ function APR.worldCoordinateConverter:ConvertRoute(routeName)
                 if not zone then
                     errorCount = errorCount + 1
                     conversionErrors[#conversionErrors + 1] = string.format(
-                        "Step %02d%s: missing Zone/mapID for Local=(%.2f,%.2f)",
+                        L["UI_CONVERTER_MISSING_ZONE"],
                         stepIndex, target.path, coordinate.x, coordinate.y)
                 else
                     local worldX, worldY, resolvedZone = ConvertCoordinateToWorld(coordinate, zone)
@@ -659,7 +658,7 @@ function APR.worldCoordinateConverter:ConvertRoute(routeName)
                     else
                         errorCount = errorCount + 1
                         conversionErrors[#conversionErrors + 1] = string.format(
-                            "Step %02d%s: conversion failed for Zone=%d Local=(%.2f,%.2f)",
+                            L["UI_CONVERTER_FAILED"],
                             stepIndex, target.path, zone, coordinate.x, coordinate.y)
                     end
                 end
@@ -672,10 +671,10 @@ function APR.worldCoordinateConverter:ConvertRoute(routeName)
     local output = {}
 
     for _, conversionError in ipairs(conversionErrors) do
-        output[#output + 1] = "-- ERROR: " .. conversionError
+        output[#output + 1] = "-- " .. string.format(L["UI_CONVERTER_ERROR"], conversionError)
     end
     for _, serializationWarning in ipairs(serializationWarnings) do
-        output[#output + 1] = "-- WARNING: " .. serializationWarning
+        output[#output + 1] = "-- " .. string.format(L["UI_CONVERTER_WARNING"], serializationWarning)
         errorCount = errorCount + 1
     end
     if #output > 0 then

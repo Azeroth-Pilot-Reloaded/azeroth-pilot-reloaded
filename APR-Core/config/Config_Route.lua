@@ -6,9 +6,9 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 -- Both route lists resolve current metadata at hover time, including recycled/imported rows.
 local function AddRouteMetadataTooltip(routeKey)
     local author, community, description = APR:GetRouteAttribution(routeKey)
-    APR:AddTooltipLine(GameTooltip, APR:LocalizeUI("AUTHOR") .. ": " .. author, "general", "base", true)
+    APR:AddTooltipLine(GameTooltip, APR:LocalizeUI("LABEL_VALUE_FORMAT", APR:LocalizeUI("AUTHOR"), author), "general", "base", true)
     local source = APR:LocalizeUI(community and "COMMUNITY_ROUTE" or "APR_ROUTE")
-    APR:AddTooltipLine(GameTooltip, APR:LocalizeUI("SOURCE") .. ": " .. source, "general", "muted", true)
+    APR:AddTooltipLine(GameTooltip, APR:LocalizeUI("LABEL_VALUE_FORMAT", APR:LocalizeUI("SOURCE"), source), "general", "muted", true)
     if description then APR:AddTooltipLine(GameTooltip, description, "general", "base", true) end
 end
 

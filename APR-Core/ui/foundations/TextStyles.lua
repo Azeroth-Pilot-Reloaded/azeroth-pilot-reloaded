@@ -2,6 +2,7 @@
 -- A weak registry refreshes existing font strings and tooltip styles without owning their lifetime.
 
 local LSM = LibStub("LibSharedMedia-3.0")
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local function GetDefaultUIFontName()
     if _G.ElvUI and _G.ElvUI[1] then
@@ -108,14 +109,14 @@ local function ResolveFont(fontName)
     local requestedFont = LSM:Fetch("font", requestedFontName, true)
     if requestedFont then
         local resolvedFont = APR:ResolveUIFileAsset(requestedFont, nil,
-        "font " .. tostring(requestedFontName or "default"))
+        string.format(L["UI_ASSET_FONT"], requestedFontName or L["UI_ASSET_DEFAULT_FONT"]))
         if resolvedFont then
             return resolvedFont
         end
     end
 
     local defaultFont = fallback or "Fonts\\FRIZQT__.TTF"
-    return APR:ResolveUIFileAsset(defaultFont, "Fonts\\FRIZQT__.TTF", "default font") or
+    return APR:ResolveUIFileAsset(defaultFont, "Fonts\\FRIZQT__.TTF", L["UI_ASSET_DEFAULT_FONT"]) or
         "Fonts\\FRIZQT__.TTF"
 end
 
