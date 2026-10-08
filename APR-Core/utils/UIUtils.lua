@@ -290,7 +290,7 @@ end
 
 function APR:getStatus()
     APR.settings:CloseSettings()
-    APR:showStatusReport()
+    APR:ShowDiagnostics()
 end
 
 ---------------------------------------------------------------------------------------

@@ -75,6 +75,54 @@ function UI:Scroll(parent)
     return scroll
 end
 
+-- FontStrings expose measured text height on both clients; EditBoxes do not.
+function UI:CopyBox(parent)
+    local scroll = self:Scroll(parent)
+    local edit = CreateFrame("EditBox", nil, scroll)
+    edit:SetMultiLine(true)
+    edit:SetAutoFocus(false)
+    edit:SetFontObject(ChatFontNormal)
+    edit:SetWidth(600)
+    edit:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
+    local measure = scroll:CreateFontString(nil, "OVERLAY")
+    measure:SetFontObject(ChatFontNormal)
+    measure:SetWordWrap(true)
+    measure:Hide()
+    local function resize()
+        local width = math.max(1, scroll:GetWidth())
+        edit:SetWidth(width)
+        measure:SetWidth(width)
+        measure:SetText(edit:GetText() or "")
+        edit:SetHeight(math.max(30, measure:GetStringHeight() + 20))
+    end
+    edit:SetScript("OnTextChanged", resize)
+    scroll:HookScript("OnSizeChanged", resize)
+    scroll:SetScrollChild(edit)
+    return scroll, edit
+end
+
+function UI:ShowTextReport(title, report)
+    local frame = self.reportWindow
+    if not frame then
+        frame = self:Window("APRTextReport", title, 900, 650)
+        self.reportWindow = frame
+        local scroll, edit = self:CopyBox(frame.content)
+        frame.edit = edit
+        scroll:SetPoint("TOPLEFT")
+        scroll:SetPoint("BOTTOMRIGHT", -26, 45)
+        local copy = self:Button(frame.content, APR:LocalizeUI("EXPORT"), 150, function()
+            edit:SetFocus(); edit:HighlightText()
+        end)
+        copy:SetPoint("BOTTOMRIGHT")
+        self:Tooltip(copy, APR:LocalizeUI("COPY_HINT"))
+    end
+    frame.header.Text:SetText(title)
+    frame.edit:SetText(report)
+    frame.edit:SetCursorPosition(0)
+    frame.edit:ClearFocus()
+    frame:Show()
+end
+
 -- A scrollable menu keeps expansion/category pickers usable with large imported catalogs.
 function UI:Select(parent, width, changed)
     local button = self:Button(parent, "", width)

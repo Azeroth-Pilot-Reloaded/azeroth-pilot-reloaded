@@ -72,6 +72,7 @@ APR-Core/ui/panels/Coordinates.lua
 APR-Core/utils/RouteHashUtils.lua
 APR-Core/features/questing/StepTransitions.lua
 APR-Core/utils/StepUtils.lua
+APR-Core/features/questing/StepDiagnostics.lua
 APR-Core/ui/route/QuestOrderListSupport.lua
 
 APR-Core/data/models/Classes.lua
@@ -91,6 +92,7 @@ APR-Core/features/questing/RouteCatalog.lua
 APR-Core/ui/route/RouteBrowser.lua
 APR-Core/features/navigation/WorldCoordinateConverter.lua
 APR-Core/core/Commands.lua
+APR-Core/core/Performance.lua
 APR-Core/ui/panels/ChangeLog.lua
 APR-Core/core/VersionCheck.lua
 
@@ -126,6 +128,8 @@ APR-Core/ui/route/RouteSelection.lua
 APR-Core/features/player/Buff.lua
 APR-Core/features/player/XPBuffOverlay.lua
 APR-Core/ui/panels/StatusReport.lua
+APR-Core/ui/panels/Diagnostics.lua
+APR-Core/ui/panels/PerformanceDashboard.lua
 APR-Core/integrations/ElvUISkin.lua
 APR-Core/integrations/EllesmereUISettings.lua
 APR-Core/integrations/EllesmereUISkin.lua

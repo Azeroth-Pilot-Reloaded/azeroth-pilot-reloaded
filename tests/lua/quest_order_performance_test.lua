@@ -75,6 +75,7 @@ local now = 0
 function debugprofilestop() return now end
 
 APRData = { test = { ["long-route"] = 17 }, PerformanceLog = { summary = {}, slow = {} } }
+dofile("APR-Core/core/Performance.lua")
 dofile("APR-Core/core/Commands.lua")
 assert(APR:StartPerformanceSample() == nil, "Profiling is disabled by default")
 APR.performanceLogging = true

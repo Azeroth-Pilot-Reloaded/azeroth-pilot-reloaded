@@ -434,6 +434,20 @@ function APR:GetCurrentStep()
     return step, index, steps
 end
 
+-- Diagnostics must not activate parallel groups or initialize route action state.
+function APR:PeekCurrentStep()
+    local progress = APRData and APRData[self.PlayerID]
+    local route = self.ActiveRoute
+    local index = progress and route and progress[route]
+    if not index then return nil end
+    local runtime = self.runtimeRouteStep
+    if runtime and runtime.route == route and runtime.index == index then return runtime.step, index end
+    local cached = self._effectiveRouteStepsCache and self._effectiveRouteStepsCache[route]
+    if cached then return cached.steps[index], index end
+    local data = self.RouteQuestStepList and self.RouteQuestStepList[route]
+    return data and (data.steps or data)[index], index
+end
+
 local function NormalizeZoneList(value)
     if value == nil then
         return nil

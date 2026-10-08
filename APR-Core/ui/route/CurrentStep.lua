@@ -1249,6 +1249,10 @@ function APR.GetMenu(owner, rootDescription)
         APR.settings:OpenSettings(L["ROUTE"])
     end)
 
+    rootDescription:CreateButton(APR:LocalizeUI("EXPLAIN"), function() APR:ShowDiagnostics() end)
+    local undo = rootDescription:CreateButton(APR:LocalizeUI("UNDO"), function() APR:UndoManualSkip() end)
+    undo:SetEnabled(APR:CanUndoManualSkip() and not InCombatLockdown())
+
     rootDescription:CreateButton(L["PROFILES"], function()
         APR.settings:OpenSettings(L["PROFILES"])
     end)
