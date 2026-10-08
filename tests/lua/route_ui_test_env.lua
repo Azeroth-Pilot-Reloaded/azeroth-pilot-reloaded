@@ -144,6 +144,9 @@ function methods:CreateFontString()
 end
 
 function methods:CreateTexture() return widget(self) end
+function methods:CreateLine() return widget(self) end
+function methods:SetStartPoint(...) self.startPoint = {...} end
+function methods:SetEndPoint(...) self.endPoint = {...} end
 
 function methods:SetNormalTexture() self.normal = widget(self) end
 
