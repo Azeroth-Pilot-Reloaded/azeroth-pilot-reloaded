@@ -30,13 +30,23 @@ function APR.routeconfig:InitRouteConfig()
         local profile = APR:GetSettingsProfile()
         if APR.ActiveRoute and profile and profile.enableAddon then
             APR:InvalidatePlayerZoneCache()
-            APR.farstrider:GetMeToRightZone()
         end
 
-        APR.RouteBrowser:Refresh(true)
-        if APR.StatusFrame and APR.StatusFrame:IsShown() and APR.updateStatusFrame then
-            APR:updateStatusFrame()
-        end
+        -- Completing several routes can emit this message while a step is rendering.
+        -- Rebuild the catalog/status once after the burst, outside the step transaction.
+        if self.pathUiRefreshTimer then self.pathUiRefreshTimer:Cancel() end
+        local timer
+        timer = C_Timer.NewTimer(0.05, function()
+            if self.pathUiRefreshTimer ~= timer then return end
+            self.pathUiRefreshTimer = nil
+            local profileStart = APR:StartPerformanceSample()
+            APR.RouteBrowser:Refresh(true)
+            if APR.StatusFrame and APR.StatusFrame:IsShown() and APR.updateStatusFrame then
+                APR:updateStatusFrame()
+            end
+            APR:FinishPerformanceSample("RoutePathUiRefresh", profileStart)
+        end)
+        self.pathUiRefreshTimer = timer
     end)
     return {
         name = L["ROUTE_SELECTION"], type = "group",

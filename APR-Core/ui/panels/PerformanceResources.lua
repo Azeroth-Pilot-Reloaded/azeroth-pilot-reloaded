@@ -62,6 +62,12 @@ function View:New(parent)
     view.frame:SetAllPoints()
     view.cpu = CreateCard(view, "CPU · APR", {0.25, 0.72, 1})
     view.memory = CreateCard(view, L["UI_RESOURCE_MEMORY"], {0.73, 0.48, 1})
+    view.scanMemory = UI:Button(view.memory, L["UI_RESOURCE_SCAN_MEMORY"], 160, function()
+        APR.ResourceMonitor:ScanMemory()
+        view.frozenView = nil
+        view:Refresh()
+    end)
+    view.scanMemory:SetPoint("TOPRIGHT", -12, -8)
     view.range = UI:Select(view.frame, 165, function(value)
         view.duration, view.frozenView = value, nil
         view:Refresh()
@@ -118,6 +124,7 @@ function View:Refresh()
     local view = self.frozenView or APR.ResourceMonitor:GetView(self.duration)
     self.view = view
     local sample = view.latest or {}
+    self.scanMemory:SetEnabled(APR.performanceLogging == true)
     self.cpu.graph:SetData(view.points, "cpuPercent", 100, function(value) return string.format("%.0f %%", value) end)
     self.memory.graph:SetData(view.points, "memoryKB", 1024, Memory)
     self.cpu.value:SetText(sample.cpuPercent and string.format("%.2f %%", sample.cpuPercent) or "—")

@@ -26,15 +26,15 @@ function APR:ResetRoute(targetedRoute)
     if self.InvalidateEffectiveRouteStepsCache then
         self:InvalidateEffectiveRouteStepsCache(targetedRoute)
     end
-    self.farstrider:ForceRefresh()
-    self.farstrider:GetMeToRightZone()
+    self.farstrider:InvalidatePathCache()
+    self.farstrider:RequestRouteCheck()
     self:PrintInfo(L["RESET_ROUTE"])
 end
 
 function APR:UpdateMapId()
     self:Debug("Function: APR:UpdateMapId()")
     self:OverrideRouteData() -- Lumbermill Wod route
-    self.farstrider:GetMeToRightZone()
+    self.farstrider:RequestRouteCheck()
 end
 
 --- Evaluate if a step should be skipped based on filters (race, class, achievements...).
@@ -1031,7 +1031,8 @@ function APR:CheckRouteChanges(route)
                 APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = 0
                 APRData[APR.PlayerID][currentRoute .. '-RawTotalSteps'] = currentTotalSteps
                 if currentRoute == APR.ActiveRoute then
-                    APR.farstrider:GetMeToRightZone()
+                    APR.farstrider:InvalidatePathCache()
+                    APR.farstrider:RequestRouteCheck()
                     APR:PrintInfo(L["RESET_ROUTE"])
                 end
             end

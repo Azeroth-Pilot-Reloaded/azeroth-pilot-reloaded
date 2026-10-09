@@ -169,6 +169,17 @@ at most 100 operations lasting at least 10 ms, with the active route and step.
 Capturing is off by default and is not automatically re-enabled after a reload.
 Starting a new capture replaces only the previous performance log.
 
+CPU capture never calls `UpdateAddOnMemoryUsage` automatically. Use **Measure memory**
+on the resource page for an explicit reading, then compare its age/peak with another
+manual reading. The scan's blocking duration is included as `ResourceMemoryScan`.
+During a scan-free capture, reproduce zone changes and consecutive completed routes:
+`FarstriderFindTrailTo` should reuse ready-zone results within its ten-second TTL, and
+the navigation render should not schedule a second immediate route calculation.
+Same-map transport paths still require the solver; do not bypass them using map equality.
+Compare `StepRenderContent`, `StepRenderCommit`, and `RoutePathUiRefresh` to locate any
+remaining client-specific rendering spikes. Automated tests simulate scheduling and
+costs; repeat the capture in WoW to measure the actual FPS improvement.
+
 Recorded operations include event callbacks, deferred quest-log refreshes, coalesced
 reputation refreshes, zone-transition routing and quest-order-list rendering. Nested durations overlap and
 must not be summed as independent frame time. No per-frame polling or chat logging

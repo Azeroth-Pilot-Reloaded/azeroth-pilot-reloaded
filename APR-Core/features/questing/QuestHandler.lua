@@ -17,10 +17,14 @@ function APR:UpdateStep()
         self.stepUpdatePending = false
         local profileStart = self:StartPerformanceSample()
         if self.currentStep.BeginContentUpdate then self.currentStep:BeginContentUpdate() end
+        local renderStart = self:StartPerformanceSample()
         local ok, err = pcall(self.RenderCurrentStep, self)
+        self:FinishPerformanceSample("StepRenderContent", renderStart)
         if self.currentStep.EndContentUpdate then
+            local commitStart = self:StartPerformanceSample()
             local rendered, renderError = pcall(self.currentStep.EndContentUpdate, self.currentStep,
                 ok and not self.stepUpdatePending)
+            self:FinishPerformanceSample("StepRenderCommit", commitStart)
             if not rendered then ok, err = false, renderError end
         end
         self:FinishPerformanceSample("UpdateStepPass", profileStart)

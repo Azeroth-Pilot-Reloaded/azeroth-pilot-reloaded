@@ -395,7 +395,6 @@ function APR.farstrider:MarkRouteReady()
     APR.IsInRouteZone = true
     self.showOutOfZoneStepContent = false
     self._retryPending = false
-    self:InvalidatePathCache()
     self:ClearActivePath()
 
     if shouldRefreshStep then
@@ -406,23 +405,32 @@ function APR.farstrider:MarkRouteReady()
 end
 
 function APR.farstrider:RefreshStepForNavigation()
+    local suppressed = self._suppressScheduledRouteCheck
     self._suppressScheduledRouteCheck = true
-    APR:UpdateStep()
-    self._suppressScheduledRouteCheck = nil
+    local ok, err = pcall(APR.UpdateStep, APR)
+    self._suppressScheduledRouteCheck = suppressed
+    if not ok then error(err, 0) end
 end
 
-function APR.farstrider:ScheduleRouteCheck(stepToken)
-    if self._suppressScheduledRouteCheck or not stepToken or self._scheduledStepToken == stepToken then
+function APR.farstrider:ScheduleRouteCheck(stepToken, force)
+    if self._suppressScheduledRouteCheck or not stepToken then
         return
     end
+    if not force and self._scheduledStepToken == stepToken and
+        APR:IsStepContextCurrent(self._scheduledStepContext) then return end
 
     self._scheduledStepToken = stepToken
+    local context = APR:CaptureStepContext()
+    self._scheduledStepContext = context
     if self._stepCheckTimer then
         self._stepCheckTimer:Cancel()
     end
 
-    self._stepCheckTimer = C_Timer.NewTimer(0.05, function()
+    local timer
+    timer = C_Timer.NewTimer(0.05, function()
+        if self._stepCheckTimer ~= timer then return end
         self._stepCheckTimer = nil
+        if not APR:IsStepContextCurrent(context) then return end
         local profile = APR:GetSettingsProfile()
         if not APR.ActiveRoute or not profile or not profile.enableAddon then
             return
@@ -433,6 +441,13 @@ function APR.farstrider:ScheduleRouteCheck(stepToken)
         self:GetMeToRightZone()
         APR:FinishPerformanceSample("ScheduledNavigation", profileStart)
     end)
+    self._stepCheckTimer = timer
+end
+
+function APR.farstrider:RequestRouteCheck()
+    local progress = APRData and APRData[APR.PlayerID]
+    if not APR.ActiveRoute then return end
+    self:ScheduleRouteCheck(APR:GetCurrentStepToken(APR.ActiveRoute, progress and progress[APR.ActiveRoute]), true)
 end
 
 function APR.farstrider:OnArrowUpdate(distance)
@@ -576,7 +591,7 @@ function APR.farstrider:ShowPathError(destination, detail)
     APR.Arrow:SetArrowActive(false, 0, 0)
 end
 
-function APR.farstrider:GetMeToRightZone(isRetry)
+local function RouteToRightZone(self, isRetry)
     APR:Debug("Function: APR.farstrider:GetMeToRightZone()", isRetry and "(retry)" or "")
 
     local now = GetTime()
@@ -600,6 +615,12 @@ function APR.farstrider:GetMeToRightZone(isRetry)
         return
     end
     self._routingForceRefresh = nil
+
+    -- This pass replaces any deferred check. Suppress checks requested by its own render.
+    if self._stepCheckTimer then
+        self._stepCheckTimer:Cancel()
+        self._stepCheckTimer = nil
+    end
 
     local playerMapID = C_Map.GetBestMapForUnit("player")
     if not playerMapID then
@@ -636,6 +657,12 @@ function APR.farstrider:GetMeToRightZone(isRetry)
     local questProfileStart = APR:StartPerformanceSample()
     APR:UpdateQuestAndStep()
     APR:FinishPerformanceSample("ZoneRoutingQuestSync", questProfileStart)
+    -- A long sequence of completed steps yields to the next frame. Route only its final step.
+    if APR.stepUpdatePending or APR.stepUpdateTimer then return end
+    self._scheduledStepContext = APR:CaptureStepContext()
+    self._routedStepContext = self._scheduledStepContext
+    self._scheduledStepToken = APR:GetCurrentStepToken(
+        self._scheduledStepContext.route, self._scheduledStepContext.index)
     local step = APR:GetCurrentStep()
     if not step then
         return
@@ -668,8 +695,10 @@ function APR.farstrider:GetMeToRightZone(isRetry)
     local optimizedPath
     if api and destination then
         local stepIndex = APRData[APR.PlayerID] and APRData[APR.PlayerID][APR.ActiveRoute]
-        local cacheKey = string.format("%s|%s|%s|%s|%.5f|%.5f",
+        local cacheKey = string.format("%s|%s|%s|%s|%s|%s|%.5f|%.5f",
             tostring(playerMapID), tostring(APR.ActiveRoute), tostring(step._index or stepIndex),
+            tostring(APR.stepRevision or 0),
+            tostring(APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]),
             tostring(destination.mapID), destination.x or 0, destination.y or 0)
         local pathCache = self._pathCache
         if pathCache and pathCache.key == cacheKey and now < pathCache.expires then
@@ -688,7 +717,7 @@ function APR.farstrider:GetMeToRightZone(isRetry)
                 self._pathCache = {
                     key = cacheKey,
                     path = optimizedPath,
-                    expires = now + PATH_CACHE_TTL,
+                    expires = GetTime() + PATH_CACHE_TTL,
                 }
             else
                 self:InvalidatePathCache()
@@ -789,5 +818,21 @@ function APR.farstrider:GetMeToRightZone(isRetry)
 
     if not optimizedPath or #optimizedPath == 0 or not self:ShowPathStep(optimizedPath, destination) then
         self:ShowPathError(destination)
+    end
+end
+
+function APR.farstrider:GetMeToRightZone(isRetry)
+    -- Never run pathfinding inside a current-step transaction or recursively from route messages.
+    if self._routingInProgress then return end
+    if APR.stepUpdateRunning then self:RequestRouteCheck(); return end
+    local suppressed = self._suppressScheduledRouteCheck
+    self._routedStepContext = nil
+    self._routingInProgress, self._suppressScheduledRouteCheck = true, true
+    local ok, err = pcall(RouteToRightZone, self, isRetry)
+    self._routingInProgress, self._suppressScheduledRouteCheck = nil, suppressed
+    if not ok then error(err, 0) end
+    if APR.stepUpdatePending or APR.stepUpdateTimer or
+        (self._routedStepContext and not APR:IsStepContextCurrent(self._routedStepContext)) then
+        self:RequestRouteCheck()
     end
 end

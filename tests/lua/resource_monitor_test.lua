@@ -1,13 +1,14 @@
 -- Resource samples must be truthful, bounded and independent from the dashboard lifetime.
 local seconds, cpu, frame, memory, memoryReads = 0, 2, 20, 2048, 0
 local enabled, failMemory, restricted = true, false, false
+local profileMs = 0
 local timers = {}
 APR = {PlayerID = "player", ActiveRoute = "route", _effectiveRouteStepsCache = {route = {}},
     ZoneDetection = {mapInfoCache = {[1] = {}}}, questOrderList = {stepList = {{}, {}}}}
 APRData = {player = {route = 42}}
 function APR:CanAccessValue(value) return type(value) ~= "table" or not value.restricted end
 function GetTime() return seconds end
-function debugprofilestop() return seconds * 1000 end
+function debugprofilestop() return seconds * 1000 + profileMs end
 function GetFramerate() return 50 end
 Enum = {AddOnProfilerMetric = {RecentAverageTime = 1}}
 C_AddOnProfiler = {
@@ -20,6 +21,7 @@ C_AddOnProfiler = {
 }
 function UpdateAddOnMemoryUsage()
     memoryReads = memoryReads + 1
+    profileMs = profileMs + 280 -- Reproduce the expensive native scan from the client capture.
     if failMemory then error("Memory API unavailable") end
 end
 function GetAddOnMemoryUsage(name) assert(name == "APR"); return memory end
@@ -35,24 +37,30 @@ local monitor = APR.ResourceMonitor
 monitor:Sample()
 assert(memoryReads == 0 and #timers == 0, "Inactive monitoring has no work")
 APR:SetPerformanceCapture(true)
-assert(#timers == 1 and memoryReads == 1)
+assert(#timers == 1 and memoryReads == 0, "Starting CPU capture never scans memory")
 local view = monitor:GetView(120)
-assert(view.latest.cpuPercent == 10 and view.latest.cpuMs == 2 and view.latest.memoryKB == 2048)
+assert(view.latest.cpuPercent == 10 and view.latest.cpuMs == 2 and view.latest.memoryKB == nil)
 assert(view.latest.step == 42 and view.latest.routeCache == 1 and view.latest.stepModels == 2)
 assert(view.points[1].cpuPercent == nil and view.points[120].cpuPercent == 10)
 monitor:Sample()
 assert(APRData.PerformanceLog.resources.count == 1)
+monitor:ScanMemory()
+assert(memoryReads == 1 and monitor:GetView(120).latest.memoryKB == 2048)
 seconds, cpu, memory = 1, 4, 3072
 timers[1].callback()
 view = monitor:GetView(120)
 assert(view.latest.cpuPercent == 20 and view.latest.memoryKB == 2048 and view.latest.memoryAt == 0)
 assert(memoryReads == 1, "CPU ticks cannot trigger a full memory scan each second")
 seconds = 5; timers[1].callback()
+assert(memoryReads == 1 and monitor:GetView(120).latest.memoryAt == 0,
+    "Five-second ticks retain the timestamp of the requested reading without rescanning")
+monitor:ScanMemory()
 view = monitor:GetView(120)
 assert(view.latest.memoryKB == 3072 and view.firstMemoryKB == 2048 and view.peakMemoryKB == 3072)
 assert(view.points[119].cpuPercent == nil, "Missed ticks remain gaps")
 local frozen = monitor:GetView(600)
 seconds, memory = 10, 1024; timers[1].callback()
+monitor:ScanMemory()
 view = monitor:GetView(120)
 assert(view.latest.memoryKB == 1024 and view.peakMemoryKB == 3072, "Memory drops remain visible")
 assert(frozen.latest.memoryKB == 3072, "Frozen views cannot change under the sampler")
@@ -63,11 +71,18 @@ assert(monitor:GetView(120).latest.cpuMs == nil)
 restricted, frame, seconds = false, 0, 13; timers[1].callback()
 assert(monitor:GetView(120).latest.cpuPercent == nil, "Do not divide by zero frame time")
 failMemory, seconds = true, 15; timers[1].callback()
+monitor:ScanMemory()
 assert(monitor:GetView(120).latest.memoryKB == nil, "Failed scans cannot masquerade as fresh readings")
+assert(APRData.PerformanceLog.summary.ResourceMemoryScan.count == 4,
+    "Manual scan overhead, including failed scans, is visible in the performance summary")
+assert(APRData.PerformanceLog.summary.ResourceMemoryScan.maxMs == 280 and
+    APRData.PerformanceLog.summary.ResourceMemoryScan.totalMs == 1120,
+    "The actual blocking scan cost is recorded rather than the cheap memory read")
 frame, failMemory = 20, false
 for index = 16, 1000 do seconds = index; timers[1].callback() end
 local resources = APRData.PerformanceLog.resources
-assert(resources.count == 600 and #resources.samples == 600 and memoryReads <= 202)
+assert(resources.count == 600 and #resources.samples == 600 and memoryReads == 4,
+    "Long CPU captures never perform additional full memory scans")
 view = monitor:GetView(600)
 assert(#view.points == 120 and view.latest.time == 1000)
 -- The exported ten-minute history must survive the bounded formatter without truncation.
@@ -89,6 +104,8 @@ local restored = assert(loadstring("return " .. exported))()
 assert(restored.resources.count == 600 and restored.resources.samples[resources.cursor].time == 1000)
 APR:SetPerformanceCapture(false)
 assert(timers[1].cancelled)
+monitor:ScanMemory()
+assert(memoryReads == 4, "Stopped capture cannot trigger a memory scan")
 seconds = 1100; timers[1].callback()
 assert(resources.lastAt == 1000 and monitor:GetView(120).finish == 1000)
 APR:ResetPerformanceCapture()
@@ -99,6 +116,7 @@ APR:ResetPerformanceCapture()
 assert(timers[2].cancelled and #timers == 3, "Reset replaces the sampler rather than leaking tickers")
 C_AddOnProfiler, GetAddOnMemoryUsage, GetFramerate = nil, nil, nil
 seconds = 1200; timers[3].callback()
+monitor:ScanMemory()
 view = monitor:GetView(120)
 assert(not view.latest.cpuPercent and not view.latest.memoryKB and not view.latest.fps)
-print("Resource monitor: CPU semantics, memory cadence/drops, unavailable APIs, gaps, freeze, bounded history and lifecycle passed")
+print("Resource monitor: scan-free CPU capture, explicit memory scans/drops, unavailable APIs, gaps, freeze and lifecycle passed")

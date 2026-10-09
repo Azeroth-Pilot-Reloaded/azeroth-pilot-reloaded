@@ -97,10 +97,13 @@ C_AddOnProfiler = {IsEnabled = function() return true end,
 function UpdateAddOnMemoryUsage() end
 function GetAddOnMemoryUsage() return 4096 end
 APR:SetPerformanceCapture(true)
+assert(APR.ResourceMonitor:GetView(120).latest.memoryKB == nil)
 dashboard.frame:Show()
 dashboard:SetPage("resources")
 local resources = dashboard.resources
+resources.scanMemory.scripts.OnClick()
 assert(resources.view.latest.cpuPercent == 10 and resources.view.latest.memoryKB == 4096)
+assert(resources.scanMemory.enabled and APRData.PerformanceLog.summary.ResourceMemoryScan.count == 1)
 local graph = resources.cpu.graph
 graph.frame:SetSize(500, 180)
 function graph.frame:GetLeft() return 100 end
@@ -132,5 +135,6 @@ resources:Tooltip(graph.frame, resources.view.points[120], "memoryKB")
 resources.freeze.scripts.OnClick()
 dashboard.capture.scripts.OnClick()
 assert(not APR.performanceLogging and not resources.frozenView, "Stop shows the final captured resource values")
+assert(not resources.scanMemory.enabled, "Memory measurement is disabled after capture stops")
 
 print("Performance: bounded capture, peak context, scaled graph hover, frozen graph, metric selection and cleanup passed")
