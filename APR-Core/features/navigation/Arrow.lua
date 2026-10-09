@@ -8,11 +8,15 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.Arrow = APR:NewModule("Arrow")
 
 
-local ARROW_TEXTURE = "Interface\\Addons\\APR\\APR-Core\\assets\\Arrow.blp"
+local ARROW_TEXTURES = {
+    classic = "Interface\\Addons\\APR\\APR-Core\\assets\\Arrow.blp",
+    apr = "Interface\\Addons\\APR\\APR-Core\\assets\\Arrow-APR.tga",
+}
 local TEXTURE_COLUMNS = 9
 local TEXTURE_ROWS = 12
 local CELL_WIDTH = 56
 local CELL_HEIGHT = 42
+local APR_STYLE_SCALE = 1.8
 
 local mathAbs, mathAtan2, mathFloor = math.abs, math.atan2, math.floor
 
@@ -77,10 +81,14 @@ APR.ArrowFrame:SetPoint("TOPLEFT", APR.ArrowFrameM, "TOPLEFT", 0, 0)
 APR.ArrowFrame:EnableMouse(true)
 APR.ArrowFrame:SetMovable(true)
 APR.ArrowFrame.arrow = APR.ArrowFrame:CreateTexture(nil, "OVERLAY")
-APR.ArrowFrame.arrow:SetTexture(ARROW_TEXTURE)
+APR.ArrowFrame.arrow:SetTexture(ARROW_TEXTURES.classic)
 APR.ArrowFrame.arrow:SetAllPoints()
-APR.ArrowFrame.distance = APR.ArrowFrame:CreateFontString("distance", "ARTWORK", "ChatFontNormal")
-APR.ArrowFrame.distance:SetPoint("TOP", APR.ArrowFrame, "BOTTOM", 0, 0)
+-- Resize the artwork's frame independently; text and its action share a separate scale.
+APR.ArrowFrame.textFrame = CreateFrame("Frame", nil, APR.ArrowFrame)
+APR.ArrowFrame.textFrame:SetSize(1, 1)
+APR.ArrowFrame.textFrame:SetPoint("TOP", APR.ArrowFrame, "BOTTOM", 0, 0)
+APR.ArrowFrame.distance = APR.ArrowFrame.textFrame:CreateFontString("distance", "ARTWORK", "ChatFontNormal")
+APR.ArrowFrame.distance:SetPoint("TOP", APR.ArrowFrame.textFrame, "TOP", 0, 0)
 APR:RegisterFontString(APR.ArrowFrame.distance, "arrow", { role = "base", sizeDelta = -2 })
 APR.ArrowFrame:Hide()
 APR.ArrowFrame:SetScript("OnMouseDown", function(self, button) --Mouse clicking arrowframe
@@ -117,9 +125,8 @@ APR.ArrowFrame:SetScript("OnUpdate", function(self, tick)
 end)
 
 
-APR.ArrowFrame.Button = CreateFrame("Button", "APR_ArrowActiveButton", APR.ArrowFrame)
-APR.ArrowFrame.Button:SetParent(APR.ArrowFrame)
-APR.ArrowFrame.Button:SetPoint("BOTTOM", APR.ArrowFrame, "BOTTOM", 0, -40)
+APR.ArrowFrame.Button = CreateFrame("Button", "APR_ArrowActiveButton", APR.ArrowFrame.textFrame)
+APR.ArrowFrame.Button:SetPoint("TOP", APR.ArrowFrame.distance, "BOTTOM", 0, -6)
 APR.ArrowFrame.Button:SetScript("OnMouseDown", function(self, button)
     APR.ArrowFrame.Button:Hide()
     APR:PrintInfo("APR: " .. L["SKIP_WAYPOINT"])
@@ -157,10 +164,33 @@ APR.ArrowFrame.Button:Hide()
 
 
 function APR.Arrow:Init()
-    -- Set Arrow scale and position
-    APR.ArrowFrame:SetScale(APR.settings.profile.arrowScale)
+    -- Restore the profile's independent sizes and its saved screen anchor.
+    APR.ArrowFrameM:ClearAllPoints()
     APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
         APR.settings.profile.arrowtop)
+    self:ApplyStyle()
+end
+
+function APR.Arrow:ApplyStyle()
+    -- Both atlases share the same normalized 9 x 12 cells. Only the artwork changes;
+    -- switching style cannot update navigation, advance a waypoint or change the saved anchor.
+    APR.ArrowFrame.arrow:SetTexture(ARROW_TEXTURES[APR.settings.profile.arrowStyle] or ARROW_TEXTURES.classic)
+    self:ApplySize()
+end
+
+function APR.Arrow:GetTextScale()
+    local profile = APR.settings.profile
+    -- Previously arrowScale also scaled the text. Migrate once per profile, before either slider changes it.
+    if profile.arrowTextScale == nil then profile.arrowTextScale = profile.arrowScale or 1 end
+    return profile.arrowTextScale
+end
+
+function APR.Arrow:ApplySize()
+    local profile = APR.settings.profile
+    local scale = (profile.arrowScale or 1) * (profile.arrowStyle == "apr" and APR_STYLE_SCALE or 1)
+    APR.ArrowFrame:SetScale(1)
+    APR.ArrowFrame:SetSize(CELL_WIDTH * scale, CELL_HEIGHT * scale)
+    APR.ArrowFrame.textFrame:SetScale(self:GetTextScale())
 end
 
 function APR.Arrow:UpdateTextAppearance()
