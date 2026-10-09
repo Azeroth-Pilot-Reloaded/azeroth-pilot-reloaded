@@ -51,11 +51,11 @@ function APR.command:SlashCmd(input)
         APR.settings.profile.showQuestOrderList = not APR.settings.profile.showQuestOrderList
         APR.questOrderList:RefreshFrameAnchor()
     elseif (inputText == "discord") then
-        _G.StaticPopup_Show("Discord_Link")
+        APR.UI:ShowTextReport("Discord", APR.discord)
     elseif (inputText == "status") then
         APR:getStatus()
     elseif (inputText == "github") then
-        _G.StaticPopup_Show("Github_Link")
+        APR.UI:ShowTextReport("GitHub", APR.github)
     elseif (inputText == "scribe" or inputText == "writer") then
         APR.questionDialog:CreateMessagePopup(L["SCRIBE_HEADER"] .. "\n\n" .. L["SCRIBE"], CLOSE)
     elseif inputText == 'coord' then
