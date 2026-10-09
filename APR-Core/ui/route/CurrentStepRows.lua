@@ -4,7 +4,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local CurrentStep = APR.currentStep
 local Layout = CurrentStep.layout
-local WIDTH, TOP_OFFSET = Layout.width, Layout.topOffset
+local TOP_OFFSET = Layout.topOffset
 local PADDING, INDENT, DETAIL_GAP = Layout.padding, Layout.indent, Layout.detailGap
 
 -- Rows keep their identity across refreshes. A pass marks obsolete content and
@@ -217,6 +217,32 @@ local function MeasureRow(container)
     end
 end
 
+local function ResizeRow(container)
+    if not CurrentStep:CanSafelyHide(container) then return end
+    if container:GetWidth() ~= Layout.width then container:SetWidth(Layout.width) end
+    if container.font then container.font:SetWidth(Layout.width - PADDING * 2) end
+    for _, font in ipairs(container.detailFonts or {}) do font:SetWidth(Layout.width - INDENT - PADDING) end
+end
+
+function CurrentStep:SetContentWidth(width)
+    if InCombatLockdown() or Layout.width == width then return end
+    Layout.width = width
+    CurrentStepScreenPanel:SetWidth(width)
+    if self.progressBar then self.progressBar:SetWidth(width - 92) end
+    if APR.currentStepImagePreview then
+        APR.currentStepImagePreview:ConfigureCurrentStepPreview(CurrentStepFrame_StepHolder, width)
+    end
+    for _, list in ipairs({self.questsList, self.questsExtraTextList}) do
+        for _, row in pairs(list) do
+            ResizeRow(row)
+            if row.rowKind == "preview" and APR.currentStepImagePreview then
+                APR.currentStepImagePreview:RefreshPreviewLayout(row)
+            end
+        end
+    end
+    self:ReOrderQuestSteps()
+end
+
 local function AcquireRow(self, list, key, kind, text, extra, color, dash)
     local role = color and APR:ResolveTextColorRole(color, "title") or (extra and "title" or "base")
     local container = list[key]
@@ -226,12 +252,12 @@ local function AcquireRow(self, list, key, kind, text, extra, color, dash)
     end
     if not container then
         container = self:AcquirePooledRow(CurrentStepFrame_StepHolder, kind) or
-            APR:CreateStepTextContainer(CurrentStepFrame_StepHolder, WIDTH, text or "", extra,
+            APR:CreateStepTextContainer(CurrentStepFrame_StepHolder, Layout.width, text or "", extra,
             color, APR.settings.profile.currentStepbackgroundColorAlpha, dash, "currentStep")
         container.rowKind, container.key = kind, key
         container.font:ClearAllPoints()
         container.font:SetPoint("TOPLEFT", PADDING, -5)
-        container.font:SetWidth(WIDTH - PADDING * 2)
+        ResizeRow(container)
         container.textRole = role
         APR:RegisterFontString(container.font, "currentStep", {
             role = role,
@@ -326,7 +352,7 @@ function CurrentStep:AddQuestStepsWithDetails(key, text, entries)
         if not font then
             font = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
             font:SetWordWrap(true)
-            font:SetWidth(WIDTH - INDENT - PADDING)
+            font:SetWidth(Layout.width - INDENT - PADDING)
             font:SetJustifyH("LEFT")
             APR:RegisterFontString(font, "currentStep", { role = "base" })
             container.detailFonts[index] = font
@@ -444,7 +470,7 @@ function CurrentStep:ReOrderQuestSteps()
         end
     end
     self.FrameHeight = offset
-    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then APR.questOrderList:ApplySnapAnchor() end
+    APR:RefreshSnappedFrames()
 end
 
 function CurrentStep:RefreshTextLayout() self:ReOrderQuestSteps() end

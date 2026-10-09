@@ -562,8 +562,9 @@ end
 function APR:CreateFrameHeader(name, parent, text, template, textScope)
     local header = CreateFrame("Frame", name, parent, template or "ObjectiveTrackerModuleHeaderTemplate")
     header.Text:SetText(text)
-    self:RegisterFontString(header.Text, textScope or "general", { role = "accent", sizeDelta = 2 })
+    self:RegisterFontString(header.Text, textScope or "general", { role = "accent", sizeDelta = 2, trackerHeader = true })
     if self.RegisterSkinTarget then self:RegisterSkinTarget(header, "header") end
+    if self.QuestTracker then self.QuestTracker.headers[header] = textScope or "general" end
     return header
 end
 
@@ -663,6 +664,7 @@ function APR:SnapFrameToAnchor(frame, anchorFrame, anchorHeight, gap, adjustForH
     if not frame or not anchorFrame then
         return false
     end
+    frame:SetClampedToScreen(false)
 
     -- Synchronize scale with anchor
     local anchorScale = anchorFrame:GetScale() or 1
@@ -676,11 +678,60 @@ function APR:SnapFrameToAnchor(frame, anchorFrame, anchorHeight, gap, adjustForH
         totalOffset = totalOffset + adjustForHeader
     end
 
-    -- Position frame relative to anchor
+    -- LibWindow can restore a saved point without changing size/scale. Compare the
+    -- actual anchor, never just the last requested layout, before skipping a move.
+    if frame.GetPoint then
+        local point, relative, relativePoint, x, y = frame:GetPoint(1)
+        if point == "TOP" and relative == anchorFrame and relativePoint == "TOP" and
+            x == 0 and y == -totalOffset then return true end
+    end
     frame:ClearAllPoints()
     frame:SetPoint("TOP", anchorFrame, "TOP", 0, -totalOffset)
 
     return true
+end
+
+-- One chain definition is shared by runtime layout and the placement previews.
+function APR:GetSnappedStack(previews)
+    local profile = self:GetSettingsProfile()
+    local current = previews and previews[1] or _G.CurrentStepScreenPanel
+    if not current or not profile then return {} end
+    local height = previews and current:GetHeight() or self.currentStep:GetContentHeight(false)
+    height = math.max(1, current.collapsed and current:GetHeight() or height or current:GetHeight())
+    local stack = {{frame = current, height = height, gap = 0}}
+    local function add(frame, linked, visible, gap)
+        if frame and linked and (previews or visible) then
+            stack[#stack + 1] = {frame = frame, height = frame:GetHeight(), gap = gap}
+        end
+    end
+    local afk = previews and previews[3] or _G.AfkFrameScreen
+    local fillers = previews and previews[2] or _G.FillersScreenPanel
+    local list = previews and previews[4] or _G.QuestOrderListPanel
+    add(afk, profile.afkSnapToCurrentStep, self:IsAFKFrameActiveShouldSnap(), 0)
+    add(fillers, profile.fillersFrameSnapToCurrentStep, not current.collapsed and fillers and fillers:IsShown(),
+        (profile.fillersFrameSnapGap or 0) + (profile.fillersFrameShowHeader and 22 or 0))
+    add(list, profile.questOrderListSnapToCurrentStep, not current.collapsed and list and list:IsShown(), 30)
+    return stack
+end
+
+function APR:GetSnappedStackHeight(previews)
+    local stack, height = self:GetSnappedStack(previews), 0
+    for i, entry in ipairs(stack) do
+        if i > 1 then height = height - stack[i - 1].height + math.floor(stack[i - 1].height + entry.gap) end
+        height = height + entry.height
+    end
+    return height
+end
+
+function APR:RefreshSnappedFrames()
+    if self.refreshingSnapChain or InCombatLockdown() then return end
+    self.refreshingSnapChain = true
+    if self.AFK and self.AFK.RefreshFrameAnchor then self.AFK:RefreshFrameAnchor() end
+    if self.fillersFrame and self.fillersFrame.RefreshFillersFrame and not self.fillersFrame.layoutDirty then
+        self.fillersFrame:RefreshFillersFrame()
+    end
+    if self.questOrderList and self.questOrderList.ApplySnapAnchor then self.questOrderList:ApplySnapAnchor() end
+    self.refreshingSnapChain = nil
 end
 
 local reportedInvalidUIAssets = {}

@@ -173,6 +173,8 @@ function APR:OnInitialize()
 
     -- Register events
     self.event:RegisterEvents()
+    self.QuestTracker:Initialize()
+    self.LayoutEditor:InitializeOnboarding()
 end
 
 -- Secret/taint helpers (12.0.0+). Attached during OnInitialize.

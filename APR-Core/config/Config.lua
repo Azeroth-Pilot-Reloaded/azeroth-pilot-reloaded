@@ -43,6 +43,8 @@ function APR.settings:InitializeBlizOptions()
 end
 
 function APR.settings:InitializeSettings()
+    local existingInstallation = type(APRSettings) == "table" and
+        (next(APRSettings.profiles or {}) ~= nil or next(APRSettings.profileKeys or {}) ~= nil)
     -- Default setting
     local settingsDBDefaults = {
         profile = {
@@ -94,6 +96,7 @@ function APR.settings:InitializeSettings()
                 mutedColor = APR.Color.gray,
             }),
             currentStepAttachFrameToQuestLog = false,
+            currentStepMatchTrackerStyle = true,
             currentStepQuestButtonPositionRight = false,
             forceHideUiInPartyRaid = false,
             -- fillers frame
@@ -220,6 +223,10 @@ function APR.settings:InitializeSettings()
     self.db.RegisterCallback(self, "OnProfileCopied", "RefreshProfile")
     self.db.RegisterCallback(self, "OnProfileReset", "RefreshProfile")
     self.profile = self.db.profile
+    APR.QuestTracker:GetSide(self.profile)
+    -- Account-wide onboarding: updating APR or logging onto an alt is not a first use.
+    if self.db.global.layoutEditorSeen == nil and existingInstallation then self.db.global.layoutEditorSeen = true end
+    APR.LayoutEditor.firstUsePending = not self.db.global.layoutEditorSeen
 
     -- Handle first login for new characters: enable heirloom warning for this character only
     if self.db.char.firstLogin then
@@ -423,12 +430,33 @@ function APR.settings:createBlizzOptions()
                                 width = optionsWidth,
                                 get = GetProfileOption,
                                 set = function(info, value)
+                                    APR.QuestTracker:GetSide(self.profile)
                                     SetProfileOption(info, value)
                                     APR.currentStep:RefreshCurrentStepFrameAnchor()
                                 end,
                                 disabled = function()
                                     return not self.profile.currentStepShow
                                 end,
+                            },
+                            currentStepTrackerSide = {
+                                order = 5.115, type = "select", width = optionsWidth,
+                                name = L["UI_TRACKER_SIDE"], desc = L["UI_TRACKER_SIDE_DESC"],
+                                values = {above = L["UI_TRACKER_ABOVE"], below = L["UI_TRACKER_BELOW"]},
+                                get = function() return APR.QuestTracker:GetSide(self.profile) end,
+                                set = function(_, value)
+                                    APR.QuestTracker:SetSide(value)
+                                end,
+                                disabled = function() return not self.profile.currentStepAttachFrameToQuestLog end,
+                            },
+                            currentStepMatchTrackerStyle = {
+                                order = 5.116, type = "toggle", width = optionsWidth,
+                                name = L["UI_TRACKER_STYLE"], desc = L["UI_TRACKER_STYLE_DESC"],
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.QuestTracker:RefreshAppearance()
+                                end,
+                                disabled = function() return not self.profile.currentStepAttachFrameToQuestLog end,
                             },
                             currentStepLock = {
                                 order = 5.12,

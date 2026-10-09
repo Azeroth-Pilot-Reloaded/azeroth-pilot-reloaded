@@ -52,6 +52,15 @@ end
 
 -- The quest list must move even when there are no visible fillers.
 assertListAnchor(CurrentStepScreenPanel, stepHeight)
+-- A saved-position restore can leave cached dimensions unchanged but overwrite the point.
+QuestOrderListPanel:ClearAllPoints()
+QuestOrderListPanel:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
+APR.questOrderList:ApplySnapAnchor()
+assertListAnchor(CurrentStepScreenPanel, stepHeight)
+QuestOrderListPanel:ClearAllPoints()
+QuestOrderListPanel:SetPoint("CENTER", UIParent, "CENTER", 0, 0)
+QuestOrderListPanel.scripts.OnShow(QuestOrderListPanel)
+assertListAnchor(CurrentStepScreenPanel, stepHeight)
 startRealTimer()
 assertListAnchor(AfkFrameScreen, 20)
 afk:HideFrame()

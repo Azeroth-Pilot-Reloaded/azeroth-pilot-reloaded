@@ -53,6 +53,10 @@ local function UpdateSnappedBackdrops()
     if isApplyingBackdropOverride then
         return
     end
+    if APR.QuestTracker and APR.QuestTracker:Style("currentStep") then
+        forcedCurrentStepTransparent = false
+        return
+    end
     isApplyingBackdropOverride = true
 
     local currentStepFrame = _G.CurrentStepScreenPanel

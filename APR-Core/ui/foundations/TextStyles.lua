@@ -282,21 +282,35 @@ function APR:ApplyTextStyle(fontString, scope, options)
     options = options or {}
 
     local typography = GetTypography(scope)
+    local trackerStyle = self.QuestTracker and self.QuestTracker:Style(scope)
     local size = tonumber(typography.size) or 12
+    if trackerStyle then size = trackerStyle.size or size end
     if options.sizeScaleProfileKey then
         local profile = GetProfile()
         size = size * (tonumber(profile and profile[options.sizeScaleProfileKey]) or 1)
     end
     size = math.max(6, size + (options.sizeDelta or 0))
+    if trackerStyle and options.trackerHeader then size = trackerStyle.headerSize or size end
 
     local themedFont, themedFlags
     if self.EllesmereUISkin then themedFont, themedFlags = self.EllesmereUISkin:GetFont() end
+    if trackerStyle and trackerStyle.font then themedFont, themedFlags = trackerStyle.font, trackerStyle.flags end
+    if trackerStyle and options.trackerHeader and trackerStyle.headerFont then
+        themedFont, themedFlags = trackerStyle.headerFont, trackerStyle.headerFlags
+    end
     local fontFlags = NormalizeFontFlags(themedFont and themedFlags or typography.flags)
     local applied = fontString:SetFont(themedFont or ResolveFont(typography.font), size, fontFlags)
     if not applied then
         fontString:SetFont(ResolveFont(nil), size, fontFlags)
     end
-    if themedFont then self.EllesmereUISkin:ApplyFont(fontString) end
+    if themedFont and not trackerStyle then self.EllesmereUISkin:ApplyFont(fontString) end
+    if trackerStyle and trackerStyle.shadow ~= nil and fontString.GetShadowColor then
+        if not fontString.aprTrackerShadow then fontString.aprTrackerShadow = {fontString:GetShadowColor()} end
+        fontString:SetShadowColor(0, 0, 0, trackerStyle.shadow)
+    elseif fontString.aprTrackerShadow then
+        fontString:SetShadowColor(unpack(fontString.aprTrackerShadow))
+        fontString.aprTrackerShadow = nil
+    end
 
     if fontString.SetTextColor and not options.preserveColor then
         local color
@@ -305,11 +319,13 @@ function APR:ApplyTextStyle(fontString, scope, options)
             color = profile and profile[options.colorProfileKey]
         end
         color = color or self:GetTextColor(scope, options.role)
-        if options.themeAccent and options.role == "accent" and self:GetSkinProviderName() then
+        if trackerStyle and trackerStyle.textColors then color = trackerStyle.textColors[options.role or "base"] or color end
+        if trackerStyle and options.role == "accent" then color = trackerStyle.accent or color end
+        if not trackerStyle and options.themeAccent and options.role == "accent" and self:GetSkinProviderName() then
             color = self:GetThemeColor("accent")
         end
         fontString:SetTextColor(color[1], color[2], color[3], color[4] or 1)
-        if self.EllesmereUISkin then self.EllesmereUISkin:ApplyHeaderTextColor(fontString) end
+        if self.EllesmereUISkin and not trackerStyle then self.EllesmereUISkin:ApplyHeaderTextColor(fontString) end
     end
 
     if options.onApplied then

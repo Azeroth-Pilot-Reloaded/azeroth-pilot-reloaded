@@ -1,6 +1,6 @@
--- Lua cannot emulate WoW taint, but APR must never enter or mutate the
--- Blizzard tracker and must not anchor its secure action buttons to it.
-local function forbidden() error("APR must not hook, update or mutate Blizzard's tracker") end
+-- The legacy below layout remains read-only. Above/group translations are covered
+-- separately; neither mode may put APR's secure actions in the tracker's anchor chain.
+local function forbidden() error("Legacy below attachment must not hook, update or mutate Blizzard's tracker") end
 local originalDofile = dofile
 function dofile(path)
     if path == "APR-Core/ui/route/CurrentStep.lua" then hooksecurefunc = forbidden end

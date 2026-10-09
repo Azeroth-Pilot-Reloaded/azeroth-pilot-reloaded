@@ -543,6 +543,10 @@ local function ApplyPreviewButtonLayout(container)
     container:SetHeight(totalHeight)
 end
 
+function APR.currentStepImagePreview:RefreshPreviewLayout(container)
+    if not InCombatLockdown() then ApplyPreviewButtonLayout(container) end
+end
+
 function APR.currentStepImagePreview:ClearPreviewImages(currentStep)
     if not currentStep then
         return
