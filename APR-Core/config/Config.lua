@@ -118,6 +118,8 @@ function APR.settings:InitializeSettings()
             showArrow = true,
             lockArrow = false,
             arrowScale = 1,
+            -- arrowTextScale is initialized from arrowScale by Arrow to preserve existing text sizes.
+            arrowStyle = "classic",
             arrowFPS = 2,
             arrowleft = _G.GetScreenWidth() / 2.05,
             arrowtop = -(_G.GetScreenHeight() / 1.5),
@@ -869,6 +871,20 @@ function APR.settings:createBlizzOptions()
                                     return not self.profile.enableAddon
                                 end,
                             },
+                            arrowStyle = {
+                                order = 7.105,
+                                type = "select",
+                                name = L["UI_ARROW_STYLE"],
+                                desc = L["UI_ARROW_STYLE_DESC"],
+                                width = "full",
+                                values = {classic = L["UI_ARROW_CLASSIC"], apr = "APR"},
+                                sorting = {"classic", "apr"},
+                                get = function() return self.profile.arrowStyle == "apr" and "apr" or "classic" end,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.Arrow:ApplyStyle()
+                                end,
+                            },
                             lockArrow = {
                                 order = 7.11,
                                 type = "toggle",
@@ -893,8 +909,28 @@ function APR.settings:createBlizzOptions()
                                 isPercent = true,
                                 get = GetProfileOption,
                                 set = function(info, value)
+                                    APR.Arrow:GetTextScale()
                                     SetProfileOption(info, value)
-                                    APR.ArrowFrame:SetScale(value)
+                                    APR.Arrow:ApplySize()
+                                end,
+                                disabled = function()
+                                    return not self.profile.showArrow
+                                end,
+                            },
+                            arrowTextScale = {
+                                order = 7.205,
+                                type = "range",
+                                name = L["UI_ARROW_TEXT_SCALE"],
+                                desc = L["UI_ARROW_TEXT_SCALE_DESC"],
+                                width = optionsWidth,
+                                min = 0.01,
+                                max = 3,
+                                step = 0.05,
+                                isPercent = true,
+                                get = function() return APR.Arrow:GetTextScale() end,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.Arrow:ApplySize()
                                 end,
                                 disabled = function()
                                     return not self.profile.showArrow
@@ -930,10 +966,11 @@ function APR.settings:createBlizzOptions()
                                     self.profile.showArrow = true
                                     self.profile.lockArrow = false
                                     self.profile.arrowScale = 1
+                                    self.profile.arrowTextScale = 1
                                     self.profile.arrowFPS = 2
                                     self.profile.arrowleft = _G.GetScreenWidth() / 2.05
                                     self.profile.arrowtop = -(_G.GetScreenHeight() / 1.5)
-                                    APR.ArrowFrame:SetScale(self.profile.arrowScale)
+                                    APR.Arrow:ApplySize()
                                     APR.ArrowFrameM:ClearAllPoints()
                                     APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT",
                                         self.profile.arrowleft,

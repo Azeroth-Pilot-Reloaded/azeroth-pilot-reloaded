@@ -1,0 +1,16 @@
+{
+  "source": "Arrow-APR.png",
+  "generator": "Built-in image_gen",
+  "transparent_background": true,
+  "prompt": "Use case: stylized-concept. Asset type: a production-ready transparent game UI navigation arrow for Azeroth Pilot Reloaded, a World of Warcraft addon. Create ONE original arrow, isolated on a truly transparent background, no text, no border, no frame, no compass circle, no shadow on any ground. Orthographic straight top-down view, exactly symmetric left/right, tip points straight UP. Compact bold arrowhead with two wide swept shoulders, a short strong central shaft, tapering pointed tail, unmistakable single forward direction. Silhouette contained entirely within a circle centered on the square canvas, generous transparent margin (roughly 15%) on all sides, so it can rotate without being clipped. Style inspired by a medieval fantasy compass: bright faceted hammered silver edges, deeply beveled steel planes, a small luminous icy cyan/blue enamel inset running through its center, subtle restrained warm gold joint accents. Mostly bright neutral silver so the addon can tint it red/yellow/green according to heading. Hand-painted high-quality Warcraft UI asset aesthetic with bold, economical detailing and strong readable silhouette at 56 pixels. Light comes from above, bevel depth visible but NO isometric angle, NO perspective projection, NO view of a base. No extra symbols, no letters, no particles, no duplicate arrows, no background texture, no sheet, no scenery. Center precisely, arrow occupies about 70% of the square height. Produce the finished game asset, not a mockup.",
+  "build": "python tools/render_arrow_style.py",
+  "output": "APR-Core/assets/Arrow-APR.tga",
+  "layout": {
+    "columns": 9,
+    "rows": 12,
+    "cell_width": 112,
+    "cell_height": 84,
+    "atlas_size": 1024,
+    "headings": "Counterclockwise; 0 up, 27 left, 54 down, 81 right"
+  }
+}
