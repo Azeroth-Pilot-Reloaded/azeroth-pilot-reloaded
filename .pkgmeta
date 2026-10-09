@@ -35,6 +35,14 @@ ignore:
   - "APR-Core/libs/*.toc"
   - APR-Core/libs/FarstriderLib/Media/logo.png
 
+  # Vendored optional modules absent from the runtime TOC/XML include graph.
+  - APR-Core/libs/AceBucket-3.0
+  - APR-Core/libs/AceComm-3.0
+  - APR-Core/libs/AceHook-3.0
+  - APR-Core/libs/AceTab-3.0
+  - APR-Core/libs/AceTimer-3.0
+  - APR-Core/libs/HereBeDragons/HereBeDragons-Migrate.lua
+
   # Runtime icons are the generated TGA files. Retain the source licenses.
   - "APR-Core/assets/ui/mdi/*.svg"
   - APR-Core/assets/ui/mdi/manifest.json
