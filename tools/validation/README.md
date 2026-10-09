@@ -180,6 +180,14 @@ Compare `StepRenderContent`, `StepRenderCommit`, and `RoutePathUiRefresh` to loc
 remaining client-specific rendering spikes. Automated tests simulate scheduling and
 costs; repeat the capture in WoW to measure the actual FPS improvement.
 
+For idle comparisons, keep the same location, FPS cap and visible panels; close the
+performance dashboard while capturing. Compare `ArrowPositionUpdate`, `TrackerGeometryProbe`,
+`TrackerLayoutUpdate` and `TrackerAppearanceUpdate`. The Lua suites count actual map resolutions,
+display writes and complete layout work: unchanged arrows avoid repeated writes, tracker work
+is bounded by the one-second safety poll, and changes/combat exits invalidate the idle state.
+Move, turn, advance a waypoint, resize the tracker and enter/leave combat after the idle test
+to verify guidance and attachment in the client. Displayed CPU percentages depend on frame time.
+
 Recorded operations include event callbacks, deferred quest-log refreshes, coalesced
 reputation refreshes, zone-transition routing and quest-order-list rendering. Nested durations overlap and
 must not be summed as independent frame time. No per-frame polling or chat logging

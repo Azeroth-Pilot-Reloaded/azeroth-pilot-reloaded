@@ -1,6 +1,6 @@
 -- Tracker adapters own temporary placement, never the provider's saved settings.
 -- APR's secure children stay anchored to UIParent, outside the tracker hierarchy.
-APR.QuestTracker = {headers = setmetatable({}, {__mode = "k"})}
+APR.QuestTracker = { headers = setmetatable({}, { __mode = "k" }) }
 local Tracker = APR.QuestTracker
 local native = CreateFrame("Frame")
 local setPoint, clearPoints = native.SetPoint, native.ClearAllPoints
@@ -77,7 +77,7 @@ local function points(frame)
     for i = 1, frame:GetNumPoints() do
         local point, relative, relativePoint, x, y = frame:GetPoint(i)
         if not point or not number(x) or not number(y) then return nil end
-        result[i] = {point, relative, relativePoint, x, y}
+        result[i] = { point, relative, relativePoint, x, y }
     end
     return #result > 0 and result or nil
 end
@@ -88,7 +88,9 @@ local function samePoints(a, b)
         for j = 1, 5 do
             if j < 4 then
                 if p[j] ~= b[i][j] then return false end
-            elseif math.abs(p[j] - b[i][j]) > 0.01 then return false end
+            elseif math.abs(p[j] - b[i][j]) > 0.01 then
+                return false
+            end
         end
     end
     return true
@@ -103,7 +105,7 @@ local function place(frame, anchors, dx, dy)
     clearPoints(frame)
     local applied = {}
     for i, p in ipairs(anchors) do
-        applied[i] = {p[1], p[2], p[3], p[4] + dx, p[5] + dy}
+        applied[i] = { p[1], p[2], p[3], p[4] + dx, p[5] + dy }
         setPoint(frame, unpack(applied[i]))
     end
     if buttons and number(oldX) and number(oldY) then
@@ -132,14 +134,18 @@ function Tracker:Release(preservePosition)
         local ownsPosition = samePoints(points(state.frame), state.applied)
         if state.kaliel then
             local owner = self:GetKaliel()
-            if owner and owner.Tracker_SetSize then owner:Tracker_SetSize(true)
+            if owner and owner.Tracker_SetSize then
+                owner:Tracker_SetSize(true)
             else
                 setHeight(state.frame, state.rootHeight)
                 state.frame.Background:SetHeight(state.visibleHeight)
             end
             if ownsPosition and not preservePosition then
-                if owner and owner.Tracker_Move then owner:Tracker_Move()
-                else place(state.frame, state.original, 0, 0) end
+                if owner and owner.Tracker_Move then
+                    owner:Tracker_Move()
+                else
+                    place(state.frame, state.original, 0, 0)
+                end
             end
             setClamped(state.frame, state.clamped)
             if owner and owner.QuestButtons_Move then owner.QuestButtons_Move() end
@@ -177,7 +183,8 @@ function Tracker:WatchKaliel(owner)
     local function refreshed(moved)
         local state = self.displacement
         if self.kalielUpdating or not state or not state.kaliel then return end
-        if moved then state.ownerMoved = true
+        if moved then
+            state.ownerMoved = true
         else
             -- Kaliel skips SetHeight when its content height is unchanged. Its
             -- cached height is the natural size; Background may still be capped
@@ -204,9 +211,17 @@ function Tracker:GetKalielAnchor(frame, bounds)
         local x, top, scale = self:Geometry(bounds, "top")
         local anchors = points(frame)
         if not x or not scale or scale <= 0 or not anchors then return end
-        state = {frame = frame, kaliel = true, side = side, original = anchors, baseX = x, baseTop = top,
-            rootHeight = frame:GetHeight(), visibleHeight = bounds:GetHeight(),
-            clamped = frame.IsClampedToScreen and frame:IsClampedToScreen() or false}
+        state = {
+            frame = frame,
+            kaliel = true,
+            side = side,
+            original = anchors,
+            baseX = x,
+            baseTop = top,
+            rootHeight = frame:GetHeight(),
+            visibleHeight = bounds:GetHeight(),
+            clamped = frame.IsClampedToScreen and frame:IsClampedToScreen() or false
+        }
         self.displacement = state
     end
     local _, _, scale = self:Geometry(frame, "top")
@@ -232,9 +247,12 @@ function Tracker:GetKalielAnchor(frame, bounds)
     local height = frame.directionUp and visible or viewport
     if frame:GetHeight() ~= height then setHeight(frame, height) end
     if bounds:GetHeight() ~= visible then bounds:SetHeight(visible) end
-    local anchors = {{"TOP", UIParent, "BOTTOMLEFT", x / scale, trackerTop / scale}}
-    if not samePoints(points(frame), anchors) then state.applied = place(frame, anchors, 0, 0)
-    else state.applied = points(frame) end
+    local anchors = { { "TOP", UIParent, "BOTTOMLEFT", x / scale, trackerTop / scale } }
+    if not samePoints(points(frame), anchors) then
+        state.applied = place(frame, anchors, 0, 0)
+    else
+        state.applied = points(frame)
+    end
     if owner and owner.QuestButtons_Move then owner.QuestButtons_Move() end
     if frame.Scroll and frame.Scroll.GetVerticalScrollRange then
         local scroll = frame.Scroll
@@ -272,8 +290,15 @@ function Tracker:GetBlizzardAnchor(frame)
     if not state then
         local anchors, height = points(frame), frame:GetHeight()
         if not anchors or not number(height) then return end
-        state = {frame = frame, blizzard = true, original = anchors, baseX = x, baseTop = top,
-            rootHeight = height, clamped = frame.IsClampedToScreen and frame:IsClampedToScreen() or false}
+        state = {
+            frame = frame,
+            blizzard = true,
+            original = anchors,
+            baseX = x,
+            baseTop = top,
+            rootHeight = height,
+            clamped = frame.IsClampedToScreen and frame:IsClampedToScreen() or false
+        }
         -- The default tracker is a child of RightManagedFrameContainer. Merely
         -- shifting its points loses to the next managed layout. Use Blizzard's
         -- existing opt-out while attached, without editing any saved layout.
@@ -301,9 +326,12 @@ function Tracker:GetBlizzardAnchor(frame)
     local height = math.max(20, math.min(state.rootHeight, (trackerTop - SCREEN_MARGIN) / scale))
     setClamped(frame, false)
     if frame:GetHeight() ~= height then setHeight(frame, height) end
-    local anchors = {{"TOP", UIParent, "TOPLEFT", (state.baseX + dx) / scale, (trackerTop - screenHeight) / scale}}
-    if not samePoints(points(frame), anchors) then state.applied = place(frame, anchors, 0, 0)
-    else state.applied = points(frame) end
+    local anchors = { { "TOP", UIParent, "TOPLEFT", (state.baseX + dx) / scale, (trackerTop - screenHeight) / scale } }
+    if not samePoints(points(frame), anchors) then
+        state.applied = place(frame, anchors, 0, 0)
+    else
+        state.applied = points(frame)
+    end
     self.baseX, self.baseTop = state.baseX, state.baseTop
     return state.baseX + dx, state.baseTop + dy - headerHeight
 end
@@ -312,9 +340,13 @@ function Tracker:GetAnchor()
     if InCombatLockdown() then return end
     local profile = APR:GetSettingsProfile()
     local frame, bounds, provider, header = self:Resolve()
-    if not frame then self:Release(); return end
+    if not frame then
+        self:Release(); return
+    end
     if self.displacement and self.displacement.frame ~= frame then self:Release() end
-    if frame.IsShown and not frame:IsShown() then self:Release(); return end
+    if frame.IsShown and not frame:IsShown() then
+        self:Release(); return
+    end
     local editing
     if provider == "kaliel" then
         local editMode = LibStub("MSA-EditMode-1.0", true)
@@ -345,7 +377,7 @@ function Tracker:GetAnchor()
             if not anchors or not scale or scale <= 0 then return end
             local state = self.displacement
             if not state or not samePoints(anchors, state.applied) then
-                state = {frame = frame, original = anchors}
+                state = { frame = frame, original = anchors }
                 self.displacement = state
             end
             local nextDX, nextDY = dx / scale, dy / scale
@@ -358,7 +390,9 @@ function Tracker:GetAnchor()
         if provider == "blizzard" then
             anchor = header or frame
             for i = #(frame.modules or {}), 1, -1 do
-                if frame.modules[i]:IsShown() then anchor = frame.modules[i]; break end
+                if frame.modules[i]:IsShown() then
+                    anchor = frame.modules[i]; break
+                end
             end
         end
         local x, y = self:Geometry(anchor, "bottom")
@@ -381,7 +415,7 @@ function Tracker:GetAnchor()
         return self:GetAnchor()
     end
     if not state or not samePoints(anchors, state.applied) then
-        state = {frame = frame, original = anchors, dx = 0, dy = 0, baseX = x, baseTop = top}
+        state = { frame = frame, original = anchors, dx = 0, dy = 0, baseX = x, baseTop = top }
         self.displacement = state
     end
     -- Keep an unshifted baseline until the owner changes its anchors. Repeated
@@ -393,10 +427,16 @@ function Tracker:GetAnchor()
         state.correctionX, state.correctionY = nil, nil
     elseif state.lastTop then
         local deltaX, deltaY = x - state.lastX, top - state.lastTop
-        if width ~= state.width then state.correctionX = (state.correctionX or 0) - deltaX
-        else baseX = baseX + deltaX end
-        if boundsHeight ~= state.height then state.correctionY = (state.correctionY or 0) - deltaY
-        else baseTop = baseTop + deltaY end
+        if width ~= state.width then
+            state.correctionX = (state.correctionX or 0) - deltaX
+        else
+            baseX = baseX + deltaX
+        end
+        if boundsHeight ~= state.height then
+            state.correctionY = (state.correctionY or 0) - deltaY
+        else
+            baseTop = baseTop + deltaY
+        end
     end
     state.baseX, state.baseTop = baseX, baseTop
     local offset = profile.currentStepTrackerOffset or {}
@@ -441,9 +481,9 @@ function Tracker:ApplyPendingPosition()
     end
 end
 
-local scopes = {currentStep = true, fillers = true, questOrderList = true, afk = true}
+local scopes = { currentStep = true, fillers = true, questOrderList = true, afk = true }
 local function rgba(color)
-    if color then return {color.r, color.g, color.b, color.a or 1} end
+    if color then return { color.r, color.g, color.b, color.a or 1 } end
 end
 
 function Tracker:Style(scope)
@@ -464,42 +504,66 @@ function Tracker:Style(scope)
         local media = LibStub("LibSharedMedia-3.0", true)
         font = media and media:Fetch("font", config.trackerFontObjective, true) or font
         size, flags = config.trackerFontSizeObjective or size, config.trackerFontOutline or flags
-    elseif size then size = size - 1 end -- Kaliel's header is one point larger than its objectives.
-    local color = bounds.GetBackdropColor and {bounds:GetBackdropColor()}
-    local border = bounds.GetBackdropBorderColor and {bounds:GetBackdropBorderColor()}
+    elseif size then
+        size = size - 1
+    end                                  -- Kaliel's header is one point larger than its objectives.
+    local color = bounds.GetBackdropColor and { bounds:GetBackdropColor() }
+    local border = bounds.GetBackdropBorderColor and { bounds:GetBackdropBorderColor() }
     local backdrop = bounds.GetBackdrop and bounds:GetBackdrop()
-    local accent = fontString and fontString.GetTextColor and {fontString:GetTextColor()}
-    local style = {font = font, size = size, flags = flags, color = color, border = border, backdrop = backdrop,
-        headerFont = headerFont, headerSize = headerSize, headerFlags = headerFlags,
-        headerBackground = header and header.Background, accent = accent, provider = provider}
+    local accent = fontString and fontString.GetTextColor and { fontString:GetTextColor() }
+    local style = {
+        font = font,
+        size = size,
+        flags = flags,
+        color = color,
+        border = border,
+        backdrop = backdrop,
+        headerFont = headerFont,
+        headerSize = headerSize,
+        headerFlags = headerFlags,
+        headerBackground = header and header.Background,
+        accent = accent,
+        provider = provider
+    }
     local owner = provider == "kaliel" and self:GetKaliel()
     local config = owner and owner.db and owner.db.profile
     if config then
         style.owner, style.config = owner, config
         style.scale = frame:GetEffectiveScale() / UIParent:GetEffectiveScale()
         style.font, style.size, style.flags = owner.font, config.fontSize * style.scale, config.fontFlag
-        style.headerFont, style.headerSize, style.headerFlags = owner.font, (config.fontSize + 1) * style.scale, config.fontFlag
+        style.headerFont, style.headerSize, style.headerFlags = owner.font, (config.fontSize + 1) * style.scale,
+            config.fontFlag
         style.shadow = config.fontShadow
         style.accent = rgba(config.hdrTxtColorShare and owner.borderColor or config.hdrTxtColor)
         style.headerColor = rgba(config.hdrBgrColorShare and owner.borderColor or config.hdrBgrColor)
         style.buttonColor = rgba(owner.hdrBtnColor or config.hdrBtnColor)
         local colors = _G.KT_OBJECTIVE_TRACKER_COLOR or {}
-        style.textColors = {base = rgba(colors.Normal), title = rgba(colors.Header), muted = rgba(colors.Complete)}
+        style.textColors = { base = rgba(colors.Normal), title = rgba(colors.Header), muted = rgba(colors.Complete) }
     end
     return style
 end
 
 local function textureSnapshot(texture)
     if not texture or not texture.GetTexture then return end
-    return {path = texture:GetTexture(), atlas = texture:GetAtlas(), coords = {texture:GetTexCoord()},
-        color = {texture:GetVertexColor()}, alpha = texture:GetAlpha(), height = texture:GetHeight(),
-        width = texture.GetWidth and texture:GetWidth(), points = points(texture), shown = texture:IsShown(),
-        desaturated = texture.IsDesaturated and texture:IsDesaturated()}
+    return {
+        path = texture:GetTexture(),
+        atlas = texture:GetAtlas(),
+        coords = { texture:GetTexCoord() },
+        color = { texture:GetVertexColor() },
+        alpha = texture:GetAlpha(),
+        height = texture:GetHeight(),
+        width = texture.GetWidth and texture:GetWidth(),
+        points = points(texture),
+        shown = texture:IsShown(),
+        desaturated = texture.IsDesaturated and texture:IsDesaturated()
+    }
 end
 
 local function textureApply(texture, saved)
     if not texture then return end
-    if not saved then texture:Hide(); return end
+    if not saved then
+        texture:Hide(); return
+    end
     if saved.atlas then texture:SetAtlas(saved.atlas) else texture:SetTexture(saved.path) end
     if #saved.coords > 0 then texture:SetTexCoord(unpack(saved.coords)) end
     if #saved.color > 0 then texture:SetVertexColor(unpack(saved.color)) end
@@ -520,17 +584,17 @@ local function skinButton(button, style, kind, collapsed)
     local saved = button.aprTrackerStyle
     if kaliel then
         if not saved then
-            saved = {width = button:GetWidth(), height = button:GetHeight(), textures = {}}
-            for _, state in ipairs({"Normal", "Pushed", "Highlight", "Disabled"}) do
+            saved = { width = button:GetWidth(), height = button:GetHeight(), textures = {} }
+            for _, state in ipairs({ "Normal", "Pushed", "Highlight", "Disabled" }) do
                 local texture = button["Get" .. state .. "Texture"](button)
-                saved.textures[state] = {value = textureSnapshot(texture)}
+                saved.textures[state] = { value = textureSnapshot(texture) }
             end
             button.aprTrackerStyle = saved
         end
         local arrow = kind == "left" or kind == "right"
         local scale = style.scale or 1
         button:SetSize((arrow and 20 or 16) * scale, (arrow and 22 or 16) * scale)
-        for _, state in ipairs({"Normal", "Pushed", "Highlight", "Disabled"}) do
+        for _, state in ipairs({ "Normal", "Pushed", "Highlight", "Disabled" }) do
             local path = kaliel .. "UI-KT-HeaderButtons"
             button["Set" .. state .. "Texture"](button, path)
             local texture = button["Get" .. state .. "Texture"](button)
@@ -544,8 +608,10 @@ local function skinButton(button, style, kind, collapsed)
                     -- Kaliel's framed book glyph opens APR's menu; keep its
                     -- existing tooltip and click action, without the WoW gear.
                     texture:SetTexCoord(0.5, 1, 0, 0.25)
-                else texture:SetTexCoord(0, 0.5, collapsed and 0 or 0.25, collapsed and 0.25 or 0.5) end
-                local color = state == "Highlight" and {1, 1, 1, 1} or style.buttonColor or style.accent
+                else
+                    texture:SetTexCoord(0, 0.5, collapsed and 0 or 0.25, collapsed and 0.25 or 0.5)
+                end
+                local color = state == "Highlight" and { 1, 1, 1, 1 } or style.buttonColor or style.accent
                 if color then texture:SetVertexColor(unpack(color)) end
                 texture:SetAlpha(state == "Disabled" and 0.35 or 1)
                 if texture.SetDesaturated then texture:SetDesaturated(false) end
@@ -577,13 +643,15 @@ function Tracker:RefreshHeaders()
         local background = header.Background
         if background then
             if style then
-                if not header.aprTrackerBackground then header.aprTrackerBackground = {value = textureSnapshot(background)} end
+                if not header.aprTrackerBackground then header.aprTrackerBackground = { value = textureSnapshot(
+                    background) } end
                 if style.owner and style.owner.SetSprite then
                     local config = style.config
                     local main = scope == "currentStep"
                     local visible = config.hdrBgr > 1 and (not main or config.hdrTrackerBgrShow)
                     if visible then
-                        style.owner.SetSprite(background, (main and "tracker" or "module") .. "-header-bgr-" .. (config.hdrBgr - 1))
+                        style.owner.SetSprite(background,
+                            (main and "tracker" or "module") .. "-header-bgr-" .. (config.hdrBgr - 1))
                         background:ClearAllPoints()
                         background:SetPoint("TOPLEFT", header, "TOPLEFT", -4, -1)
                         background:SetPoint("TOPRIGHT", header, "TOPRIGHT", 4, -1)
@@ -610,10 +678,12 @@ function Tracker:RefreshHeaders()
                 if saved then
                     -- APR's original click handler has just set its new +/- art.
                     -- Save that state for opt-out, then reapply Kaliel's equivalent.
-                    for _, name in ipairs({"Normal", "Pushed"}) do
-                        saved.textures[name] = {value = textureSnapshot(button["Get" .. name .. "Texture"](button))}
+                    for _, name in ipairs({ "Normal", "Pushed" }) do
+                        saved.textures[name] = { value = textureSnapshot(button["Get" .. name .. "Texture"](button)) }
                     end
-                    if InCombatLockdown() then self.styleSignature = nil; return end
+                    if InCombatLockdown() then
+                        self.styleSignature = nil; return
+                    end
                     skinButton(button, self:Style(scope), "collapse", parent and parent.collapsed)
                 end
             end)
@@ -641,7 +711,7 @@ end
 function Tracker:RefreshWidths()
     if InCombatLockdown() or self.resizing then return end
     self.resizing = true
-    self.widths = self.widths or setmetatable({}, {__mode = "k"})
+    self.widths = self.widths or setmetatable({}, { __mode = "k" })
     local _, bounds, provider = self:Resolve()
     local width
     if provider == "kaliel" and bounds then
@@ -673,17 +743,20 @@ function Tracker:ApplyPanel(frame, fallback)
     if style and style.provider == "kaliel" then
         -- One continuous surface covers the real content height, including the
         -- linked panels. The current-step root itself is only 30px high.
-        self.panelColors = self.panelColors or setmetatable({}, {__mode = "k"})
+        self.panelColors = self.panelColors or setmetatable({}, { __mode = "k" })
         self.panelColors[frame] = fallback
-        return {0, 0, 0, 0}
+        return { 0, 0, 0, 0 }
     end
     if style and style.color and #style.color >= 4 and fallback[4] ~= 0 then
         -- Only the outer panels get a border; rows remain transparent inside them.
-        local root = frame == _G.CurrentStepScreenPanel or frame == _G.FillersScreenPanel or frame == _G.QuestOrderListPanel
+        local root = frame == _G.CurrentStepScreenPanel or frame == _G.FillersScreenPanel or
+        frame == _G.QuestOrderListPanel
         if root and frame.GetBackdrop then
             if not frame.aprTrackerBackdrop then
-                frame.aprTrackerBackdrop = {value = frame:GetBackdrop(),
-                    border = frame.GetBackdropBorderColor and {frame:GetBackdropBorderColor()}}
+                frame.aprTrackerBackdrop = {
+                    value = frame:GetBackdrop(),
+                    border = frame.GetBackdropBorderColor and { frame:GetBackdropBorderColor() }
+                }
             end
             frame:SetBackdrop(style.backdrop)
             if style.border and #style.border >= 4 then frame:SetBackdropBorderColor(unpack(style.border)) end
@@ -740,19 +813,20 @@ function Tracker:RefreshAppearance()
     self:RefreshWidths()
     self:RefreshSurface()
     local parts = {}
-    for _, scope in ipairs({"currentStep", "fillers", "questOrderList", "afk"}) do
+    for _, scope in ipairs({ "currentStep", "fillers", "questOrderList", "afk" }) do
         local style = self:Style(scope)
         parts[#parts + 1] = scope
         if style then
-            for _, key in ipairs({"provider", "font", "size", "flags", "shadow", "scale"}) do parts[#parts + 1] = tostring(style[key]) end
-            for _, key in ipairs({"color", "border", "accent", "headerColor", "buttonColor"}) do
+            for _, key in ipairs({ "provider", "font", "size", "flags", "shadow", "scale" }) do parts[#parts + 1] =
+                tostring(style[key]) end
+            for _, key in ipairs({ "color", "border", "accent", "headerColor", "buttonColor" }) do
                 for _, value in ipairs(style[key] or {}) do parts[#parts + 1] = tostring(value) end
             end
             if style.config then
                 parts[#parts + 1] = tostring(style.config.hdrBgr)
                 parts[#parts + 1] = tostring(style.config.hdrTrackerBgrShow)
             end
-            for _, key in ipairs({"bgFile", "edgeFile", "edgeSize", "tileSize"}) do
+            for _, key in ipairs({ "bgFile", "edgeFile", "edgeSize", "tileSize" }) do
                 parts[#parts + 1] = tostring(style.backdrop and style.backdrop[key])
             end
             local background = textureSnapshot(style.headerBackground)
@@ -765,14 +839,14 @@ function Tracker:RefreshAppearance()
         end
     end
     -- Include late-created controls; collapse clicks are handled immediately.
-    for _, name in ipairs({"CurrentStepFrame_StepHolder_RollbackButton", "CurrentStepFrame_StepHolder_SkipButton"}) do
+    for _, name in ipairs({ "CurrentStepFrame_StepHolder_RollbackButton", "CurrentStepFrame_StepHolder_SkipButton" }) do
         parts[#parts + 1] = tostring(_G[name])
     end
     local signature = table.concat(parts, ":")
     if self.styleSignature == signature then return end
     self.styleSignature = signature
     self:RefreshHeaders()
-    for _, scope in ipairs({"currentStep", "fillers", "questOrderList", "afk"}) do
+    for _, scope in ipairs({ "currentStep", "fillers", "questOrderList", "afk" }) do
         if APR.RefreshTextAppearance then APR:RefreshTextAppearance(scope) end
     end
     if APR.currentStep then APR.currentStep:UpdateBackgroundColorAlpha() end
@@ -780,23 +854,139 @@ function Tracker:RefreshAppearance()
     self:RefreshSurface()
 end
 
+-- Reuse the geometry probe storage: observing an unchanged tracker must not scan
+-- quest rows, rebuild styles or mutate any frames. Provider internals remain untouched.
+local OBSERVED_FRAME_METHODS = {"IsShown", "GetWidth", "GetHeight", "GetEffectiveScale"}
+local OBSERVED_GEOMETRY_METHODS = {"GetCenter", "GetTop", "GetBottom"}
+local OBSERVED_PROFILE_KEYS = {"currentStepTrackerSide", "currentStepMatchTrackerStyle", "afkSnapToCurrentStep",
+    "fillersFrameSnapToCurrentStep", "fillersFrameSnapGap", "fillersFrameShowHeader", "questOrderListSnapToCurrentStep"}
+local OBSERVED_PANEL_NAMES = {"CurrentStepScreenPanel", "AfkFrameScreen", "FillersScreenPanel", "QuestOrderListPanel"}
+
+local function ObserveValue(state, value, trusted)
+    state.count = state.count + 1
+    if not trusted and not APR:CanAccessValue(value) then
+        state.changed = true
+        value = nil
+    end
+    if state[state.count] ~= value then state.changed = true end
+    state[state.count] = value
+end
+
+local function ObserveFrame(state, frame, geometry)
+    ObserveValue(state, frame, true)
+    if not frame then return end
+    for _, method in ipairs(OBSERVED_FRAME_METHODS) do
+        ObserveValue(state, frame[method] and frame[method](frame))
+    end
+    if geometry then
+        for _, method in ipairs(OBSERVED_GEOMETRY_METHODS) do
+            ObserveValue(state, frame[method] and frame[method](frame))
+        end
+    end
+end
+
+function Tracker:LayoutInputsChanged(profile)
+    local state = self.layoutObservation or {}
+    self.layoutObservation = state
+    local previousCount = state.count
+    state.count, state.changed = 0, not state.initialized
+    local frame, bounds, provider, header = self:Resolve()
+    ObserveValue(state, APR.snappedLayoutRevision)
+    ObserveValue(state, profile, true)
+    ObserveValue(state, provider)
+    for _, key in ipairs(OBSERVED_PROFILE_KEYS) do ObserveValue(state, profile[key]) end
+    local offset, position = profile.currentStepTrackerOffset, profile.currentStepTrackerPosition
+    ObserveValue(state, offset and offset.x); ObserveValue(state, offset and offset.y)
+    ObserveValue(state, position and position.x); ObserveValue(state, position and position.y)
+    ObserveFrame(state, UIParent)
+    ObserveFrame(state, frame, true)
+    if bounds ~= frame then ObserveFrame(state, bounds, true) end
+    ObserveFrame(state, header)
+    ObserveValue(state, frame and frame.isMoving)
+    ObserveValue(state, frame and frame.isSizing)
+    ObserveValue(state, _G.EditModeManagerFrame and EditModeManagerFrame:IsShown())
+    if provider == "blizzard" and self:GetSide(profile) == "below" then
+        local anchor = header or frame
+        for i = #(frame and frame.modules or {}), 1, -1 do
+            if frame.modules[i]:IsShown() then anchor = frame.modules[i]; break end
+        end
+        ObserveFrame(state, anchor, true)
+    end
+    for _, name in ipairs(OBSERVED_PANEL_NAMES) do
+        ObserveFrame(state, _G[name])
+    end
+    local current = _G.CurrentStepScreenPanel
+    ObserveValue(state, current and current.collapsed)
+    if current and current.GetPoint then
+        local point, relative, relativePoint, x, y = current:GetPoint(1)
+        ObserveValue(state, point); ObserveValue(state, relative, true)
+        ObserveValue(state, relativePoint); ObserveValue(state, x); ObserveValue(state, y)
+    end
+    state.initialized = true
+    return state.changed or previousCount ~= state.count
+end
+
+function Tracker:RefreshObservedLayout(elapsed)
+    if InCombatLockdown() or (APR.LayoutEditor and APR.LayoutEditor.active) then
+        self.layoutObservation = nil
+        return
+    end
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.enableAddon or not profile.currentStepAttachFrameToQuestLog or
+        not CurrentStepScreenPanel:IsShown() then
+        self.layoutObservation, self.layoutSafetyElapsed = nil, 0
+        if self.displacement then self:Release() end
+        return
+    end
+    self.layoutSafetyElapsed = (self.layoutSafetyElapsed or 0) + (elapsed or 0.2)
+    local probeStart = APR.StartPerformanceSample and APR:StartPerformanceSample()
+    local changed = self:LayoutInputsChanged(profile)
+    if APR.FinishPerformanceSample then APR:FinishPerformanceSample("TrackerGeometryProbe", probeStart) end
+    -- The safety pass catches third-party changes not exposed by the geometry probe.
+    if not changed and self.layoutSafetyElapsed < 1 then return end
+    self.layoutSafetyElapsed = 0
+    local started = APR.StartPerformanceSample and APR:StartPerformanceSample()
+    if APR:ShouldHideFrames() then
+        self:Release()
+        self.layoutObservation = nil
+    else
+        APR:RefreshSnappedFrames()
+        APR.currentStep:RefreshQuestTrackerAnchor()
+        -- Remember applied geometry, including the revision from our own snapping.
+        self:LayoutInputsChanged(profile)
+    end
+    if APR.FinishPerformanceSample then APR:FinishPerformanceSample("TrackerLayoutUpdate", started) end
+end
+
 function Tracker:Initialize()
     if self.observer then return end
     self.observer = CreateFrame("Frame")
-    local elapsed = 0
+    local elapsed, appearanceElapsed = 0, 0
     self.observer:SetScript("OnUpdate", function(_, delta)
         elapsed = elapsed + delta
+        appearanceElapsed = appearanceElapsed + delta
         if elapsed < 0.2 then return end
+        local interval = elapsed
         elapsed = 0
-        if InCombatLockdown() or (APR.LayoutEditor and APR.LayoutEditor.active) then return end
+        if InCombatLockdown() or (APR.LayoutEditor and APR.LayoutEditor.active) then
+            self.layoutObservation = nil
+            return
+        end
         local profile = APR:GetSettingsProfile()
-        -- Font and width changes can alter wrapping and the height to reserve.
-        self:RefreshAppearance()
-        if profile and profile.enableAddon and profile.currentStepAttachFrameToQuestLog and
-            CurrentStepScreenPanel:IsShown() and not APR:ShouldHideFrames() then
-            APR:RefreshSnappedFrames()
-            APR.currentStep:RefreshQuestTrackerAnchor()
-        else self:Release() end
+        if not profile or not profile.enableAddon then
+            appearanceElapsed = 0
+            self:RefreshObservedLayout(interval)
+            return
+        end
+        -- External font/theme changes need a safety poll; settings already refresh
+        -- appearance explicitly. Keep it separate from the cheap geometry probe.
+        if appearanceElapsed >= 1 then
+            appearanceElapsed = 0
+            local started = APR.StartPerformanceSample and APR:StartPerformanceSample()
+            self:RefreshAppearance()
+            if APR.FinishPerformanceSample then APR:FinishPerformanceSample("TrackerAppearanceUpdate", started) end
+        end
+        self:RefreshObservedLayout(interval)
     end)
     self.observer:RegisterEvent("PLAYER_LOGOUT")
     self.observer:SetScript("OnEvent", function() self:Release() end)

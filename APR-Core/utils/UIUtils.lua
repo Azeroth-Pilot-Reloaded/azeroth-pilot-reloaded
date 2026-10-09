@@ -725,6 +725,7 @@ end
 
 function APR:RefreshSnappedFrames()
     if self.refreshingSnapChain or InCombatLockdown() then return end
+    self.snappedLayoutRevision = (self.snappedLayoutRevision or 0) + 1
     self.refreshingSnapChain = true
     if self.AFK and self.AFK.RefreshFrameAnchor then self.AFK:RefreshFrameAnchor() end
     if self.fillersFrame and self.fillersFrame.RefreshFillersFrame and not self.fillersFrame.layoutDirty then

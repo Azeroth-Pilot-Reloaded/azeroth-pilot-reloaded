@@ -17,6 +17,7 @@ local TEXTURE_ROWS = 12
 local CELL_WIDTH = 56
 local CELL_HEIGHT = 42
 local APR_STYLE_SCALE = 1.8
+local IDLE_CHECK_INTERVAL = 1
 
 local mathAbs, mathAtan2, mathFloor = math.abs, math.atan2, math.floor
 
@@ -297,19 +298,7 @@ function APR.Arrow:SetCoord()
     end
 end
 
-function APR.Arrow:UpdatePosition()
-    local playerY, playerX = UnitPosition("player")
-
-    if not playerY or not APR.ActiveRoute or not APR.RouteQuestStepList then
-        APR.ArrowFrame:Hide()
-        return
-    end
-
-    if not ShouldShowArrow() then
-        APR.ArrowFrame:Hide()
-        return
-    end
-
+local function UpdatePosition(self, playerX, playerY, facing)
     local questStep, _, routeSteps = APR:GetCurrentStep()
     if not routeSteps then
         APR.ArrowFrame:Hide()
@@ -329,11 +318,8 @@ function APR.Arrow:UpdatePosition()
         end
     end
 
-    APR.ArrowFrame:Show()
-    APR.ArrowFrame.Button:Hide()
-
-    local facing = GetPlayerFacing()
-    if not facing then return end
+    if not APR.ArrowFrame:IsShown() then APR.ArrowFrame:Show() end
+    if APR.ArrowFrame.Button:IsShown() then APR.ArrowFrame.Button:Hide() end
     local x, y = self.x, self.y
     local distance = DistanceBetween(playerX, playerY, x, y)
     local dx, dy = playerX - x, y - playerY
@@ -389,21 +375,67 @@ function APR.Arrow:UpdatePosition()
 
     -- Arrow color
     local r, g, b = GetArrowColor(perc)
-    APR.ArrowFrame.arrow:SetVertexColor(r, g, b)
+    if self.lastColorR ~= r or self.lastColorG ~= g or self.lastColorB ~= b then
+        APR.ArrowFrame.arrow:SetVertexColor(r, g, b)
+        self.lastColorR, self.lastColorG, self.lastColorB = r, g, b
+    end
 
     -- Arrow texture
     local cell = mathFloor(angle / (2 * math.pi) * (TEXTURE_COLUMNS * TEXTURE_ROWS) + 0.5) %
         (TEXTURE_COLUMNS * TEXTURE_ROWS)
-    local col, row = cell % TEXTURE_COLUMNS, mathFloor(cell / TEXTURE_COLUMNS)
-    APR.ArrowFrame.arrow:SetTexCoord((col * CELL_WIDTH) / 512, ((col + 1) * CELL_WIDTH) / 512,
-        (row * CELL_HEIGHT) / 512, ((row + 1) * CELL_HEIGHT) / 512)
+    if self.lastTextureCell ~= cell then
+        local col, row = cell % TEXTURE_COLUMNS, mathFloor(cell / TEXTURE_COLUMNS)
+        APR.ArrowFrame.arrow:SetTexCoord((col * CELL_WIDTH) / 512, ((col + 1) * CELL_WIDTH) / 512,
+            (row * CELL_HEIGHT) / 512, ((row + 1) * CELL_HEIGHT) / 512)
+        self.lastTextureCell = cell
+    end
 
     -- Distance display
-    APR.ArrowFrame.distance:SetText(mathFloor(distance + CheckDistance()) .. " " .. L["YARDS"])
+    local displayedDistance = mathFloor(distance + CheckDistance())
+    if self.lastDisplayedDistance ~= displayedDistance then
+        APR.ArrowFrame.distance:SetText(displayedDistance .. " " .. L["YARDS"])
+        self.lastDisplayedDistance = displayedDistance
+    end
+end
+
+function APR.Arrow:UpdatePosition()
+    local playerY, playerX = UnitPosition("player")
+    if not playerY or not APR.ActiveRoute or not APR.RouteQuestStepList or not ShouldShowArrow() then
+        self.positionCache = nil
+        APR.ArrowFrame:Hide()
+        return
+    end
+    local facing = GetPlayerFacing()
+    if not facing then return end
+    local progress = APRData[APR.PlayerID]
+    local index = progress and progress[APR.ActiveRoute]
+    local pathStep = APR.farstrider and APR.farstrider.activePathStep
+    local definition = APR.RouteQuestStepList[APR.ActiveRoute]
+    local now = GetTime and GetTime() or 0
+    local cache = self.positionCache
+    -- Keep the cheap position/facing checks at the configured cadence. Resolve the
+    -- route and map only on change, with a bounded retry for stationary travel actions.
+    if cache and now < cache.expires and cache.playerX == playerX and cache.playerY == playerY
+        and cache.facing == facing and cache.x == self.x and cache.y == self.y
+        and cache.route == APR.ActiveRoute and cache.index == index
+        and cache.revision == APR.stepRevision and cache.definition == definition
+        and cache.inZone == APR.IsInRouteZone and cache.pathStep == pathStep
+        and cache.currentStep == self.currentStep then return end
+    cache = cache or {}
+    self.positionCache = cache
+    cache.playerX, cache.playerY, cache.facing = playerX, playerY, facing
+    cache.x, cache.y, cache.route, cache.index = self.x, self.y, APR.ActiveRoute, index
+    cache.revision, cache.definition = APR.stepRevision, definition
+    cache.inZone, cache.pathStep, cache.currentStep = APR.IsInRouteZone, pathStep, self.currentStep
+    cache.expires = now + IDLE_CHECK_INTERVAL
+    local started = APR.StartPerformanceSample and APR:StartPerformanceSample()
+    UpdatePosition(self, playerX, playerY, facing)
+    if APR.FinishPerformanceSample then APR:FinishPerformanceSample("ArrowPositionUpdate", started) end
 end
 
 function APR.Arrow:SetArrowActive(isActive, x, y)
     local a = APR.Arrow
+    a.positionCache = nil
     a.arrowUpdateRate = APR.settings.profile.arrowFPS / 100 -- Update rate in seconds (ie: 2/100 = 0.02 seconds)
     a.Active = isActive
     a.x = x or 0
