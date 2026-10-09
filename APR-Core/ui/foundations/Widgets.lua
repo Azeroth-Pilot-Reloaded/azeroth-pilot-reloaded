@@ -243,23 +243,43 @@ function UI:CopyBox(parent)
     local scroll = self:Scroll(parent)
     local edit = CreateFrame("EditBox", nil, scroll)
     edit:SetMultiLine(true)
+    edit:EnableMouse(true)
     edit:SetAutoFocus(false)
+    edit:SetAltArrowKeyMode(false)
+    edit:SetMaxLetters(0)
     edit:SetFontObject(ChatFontNormal)
+    edit:SetJustifyH("LEFT")
+    edit:SetJustifyV("TOP")
     edit:SetWidth(600)
     edit:SetScript("OnEscapePressed", function(self) self:ClearFocus() end)
     local measure = scroll:CreateFontString(nil, "OVERLAY")
     measure:SetFontObject(ChatFontNormal)
     measure:SetWordWrap(true)
     measure:Hide()
+    local function updateHitRect()
+        local offset = scroll:GetVerticalScroll()
+        -- Long edit boxes must not intercept clicks on the header or footer outside the viewport.
+        edit:SetHitRectInsets(0, 0, offset, math.max(0, edit:GetHeight() - offset - scroll:GetHeight()))
+    end
     local function resize()
         local width = math.max(1, scroll:GetWidth())
         edit:SetWidth(width)
         measure:SetWidth(width)
         measure:SetText(edit:GetText() or "")
-        edit:SetHeight(math.max(30, measure:GetStringHeight() + 20))
+        edit:SetHeight(math.max(30, scroll:GetHeight(), measure:GetStringHeight() + 20))
+        scroll:SetVerticalScroll(math.min(scroll:GetVerticalScroll(), math.max(0, edit:GetHeight() - scroll:GetHeight())))
+        updateHitRect()
     end
     edit:SetScript("OnTextChanged", resize)
+    edit:SetScript("OnCursorChanged", function(_, _, y, _, height)
+        local top, offset = -y, scroll:GetVerticalScroll()
+        if top < offset then offset = top
+        elseif top + height > offset + scroll:GetHeight() then offset = top + height - scroll:GetHeight() end
+        scroll:SetVerticalScroll(math.max(0, math.min(offset, edit:GetHeight() - scroll:GetHeight())))
+    end)
     scroll:HookScript("OnSizeChanged", resize)
+    scroll:HookScript("OnVerticalScroll", updateHitRect)
+    scroll:HookScript("OnScrollRangeChanged", updateHitRect)
     scroll:SetScrollChild(edit)
     -- The measuring region and selectable text must use the same font and size.
     APR:RegisterFontString(edit, "general", {role = "base"})
@@ -267,27 +287,42 @@ function UI:CopyBox(parent)
     return scroll, edit
 end
 
-function UI:ShowTextReport(title, report, owner)
+function UI:FormatCodeBlock(text, language)
+    -- A diagnostic may itself contain backticks; keep the complete payload inside one code block.
+    local fence = "```"
+    while text:find(fence, 1, true) do fence = fence .. "`" end
+    return fence .. (language or "") .. "\n" .. text .. "\n" .. fence
+end
+
+function UI:ShowTextReport(title, report, owner, language)
     local frame = self.reportWindow
     if not frame then
         frame = self:Window("APRTextReport", title, 900, 650)
         self.reportWindow = frame
-        local scroll, edit = self:CopyBox(frame.content)
-        frame.edit = edit
-        scroll:SetPoint("TOPLEFT")
-        scroll:SetPoint("BOTTOMRIGHT", -26, 45)
+        local editor = self:Panel(frame.content, "borderedPanel", "inset")
+        editor:SetPoint("TOPLEFT")
+        editor:SetPoint("BOTTOMRIGHT", 0, 45)
+        local scroll, edit = self:CopyBox(editor)
+        frame.edit, frame.scroll = edit, scroll
+        scroll:SetPoint("TOPLEFT", 12, -12)
+        scroll:SetPoint("BOTTOMRIGHT", -32, 12)
         local copy = self:Button(frame.content, L["STATUS_EXPORT"], 150, function()
             edit:SetFocus(); edit:HighlightText()
         end)
         copy:SetPoint("BOTTOMRIGHT")
         self:Tooltip(copy, L["COPY_HELPER"])
+        frame:HookScript("OnHide", function() edit:ClearFocus() end)
     end
     frame.reportOwner = owner
     frame.header.Text:SetText(title)
+    if language then report = self:FormatCodeBlock(report, language) end
     frame.edit:SetText(report)
     frame.edit:SetCursorPosition(0)
-    frame.edit:ClearFocus()
     frame:Show()
+    frame:Raise()
+    frame.edit:SetFocus()
+    frame.edit:HighlightText()
+    frame.scroll:SetVerticalScroll(0)
 end
 
 -- A scrollable menu keeps expansion/category pickers usable with large imported catalogs.
@@ -305,8 +340,7 @@ function UI:Select(parent, width, changed)
             button.menu = menu
             menu:SetFrameStrata("FULLSCREEN_DIALOG")
             menu:SetClampedToScreen(true)
-            menu:SetPoint("TOPLEFT", button, "BOTTOMLEFT", 0, -2)
-            menu:SetSize(width, 244)
+            menu:SetWidth(width)
             menu:EnableMouse(true)
             menu:SetScript("OnShow", function()
                 UI.activeMenu = menu
@@ -351,7 +385,19 @@ function UI:Select(parent, width, changed)
             button:HookScript("OnHide", function() menu:Hide() end)
             menu:Hide()
         end
-        button.menu:SetHeight(math.min(244, #(button.options or {}) * 28 + 8))
+        -- Use the screen space on the roomier side, and scroll only when all rows cannot fit.
+        -- Positions returned by GetTop/GetBottom use the button's effective scale.
+        local screenHeight = UIParent:GetHeight() * UIParent:GetEffectiveScale() / button:GetEffectiveScale()
+        local below = math.max(0, (button:GetBottom() or 0) - 10)
+        local above = math.max(0, screenHeight - (button:GetTop() or screenHeight) - 10)
+        local desired = #(button.options or {}) * 28 + 8
+        local upwards = desired > below and above > below
+        local available = upwards and above or below
+        local capacity = math.max(36, math.floor((available - 8) / 28) * 28 + 8)
+        button.menu:ClearAllPoints()
+        button.menu:SetPoint(upwards and "BOTTOMLEFT" or "TOPLEFT", button,
+            upwards and "TOPLEFT" or "BOTTOMLEFT", 0, upwards and 2 or -2)
+        button.menu:SetHeight(math.min(desired, capacity))
         button.menu:SetWidth(button:GetWidth())
         button.menu:Show()
         UI.activeMenu = button.menu
@@ -378,6 +424,7 @@ function UI:Window(name, title, width, height, surface, logo)
         math.min(tonumber(position.height) or height, UIParent:GetHeight() - 60))
     frame:SetPoint("CENTER")
     frame:SetClampedToScreen(true)
+    if logo then frame:SetClampRectInsets(-24, 0, 26, 0) end
     frame:SetFrameStrata("DIALOG")
     frame:SetMovable(true)
     frame:SetResizable(true)
@@ -402,8 +449,9 @@ function UI:Window(name, title, width, height, surface, logo)
     APR:SetupHeaderDrag(frame.header, frame, function() return not InCombatLockdown() end, saveGeometry)
     if logo then
         -- The artwork already contains its ring; a portrait template would add a second one and its own title bar.
-        frame.logo = self:Icon(frame.header, logo, 61)
-        frame.logo:SetPoint("CENTER", frame.header, "LEFT", -46, 0)
+        frame.logo = self:Icon(frame.header, logo, 80)
+        -- Cover the frame's corner with the opaque part of the medallion, not its transparent margin.
+        frame.logo:SetPoint("CENTER", frame, "TOPLEFT", 18, -18)
     end
     frame.close = self:IconButton(frame, "close", 30, function() frame:Hide() end)
     self:Tooltip(frame.close, CLOSE)

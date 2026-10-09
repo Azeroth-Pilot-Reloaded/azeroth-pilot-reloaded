@@ -18,6 +18,9 @@ function methods:RegisterEvent(event)
 end
 function methods:UnregisterEvent(event) if self.events then self.events[event] = nil end end
 function methods:IsMouseOver() return self.mouseOver == true end
+function methods:GetEffectiveScale() return self:GetScale() end
+function methods:GetBottom() return self.bottom or 800 end
+function methods:GetTop() return self:GetBottom() + self:GetHeight() end
 function methods:SetPropagateKeyboardInput(value)
     assert(not InCombatLockdown(), "Keyboard propagation cannot be changed during combat")
     self.propagate = value
@@ -84,4 +87,29 @@ assert(not menu.keyboard, "A menu opened in combat must not capture gameplay key
 menu.mouseOver = false
 menu.scripts.OnEvent(menu, "GLOBAL_MOUSE_DOWN", "LeftButton")
 assert(not menu:IsShown())
+env.setCombat(false)
+local many = {}
+for index = 1, 16 do many[index] = {value = index, label = "Type " .. index} end
+select:SetOptions(many, 1)
+select.bottom = 800
+open()
+assert(menu:GetHeight() == 16 * 28 + 8 and menu.point[1] == "TOPLEFT",
+    "The route type list can show all entries instead of stopping after eight rows")
+menu:Hide()
+select.bottom = 100
+open()
+assert(menu:GetHeight() == 16 * 28 + 8 and menu.point[1] == "BOTTOMLEFT",
+    "A selector near the bottom of the screen opens upwards")
+menu:Hide()
+UIParent:SetHeight(400)
+select.bottom = 190
+open()
+assert(menu:GetHeight() < 190 and menu:GetHeight() < #many * 28 + 8,
+    "Small viewports retain scrolling without going beyond the screen")
+menu:Hide()
+UIParent:SetHeight(1080)
+UIParent:SetScale(0.75); select:SetScale(1.5); select.bottom = 60
+open()
+assert(menu.point[1] == "BOTTOMLEFT" and menu:GetHeight() <= 540 - select:GetTop() - 10,
+    "Available height accounts for the dropdown and root UI scales")
 print("Dropdown: outside click, trigger toggle, Escape, false-valued selection, switch, parent hide, combat and bounded controls passed")
