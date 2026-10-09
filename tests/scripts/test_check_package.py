@@ -46,5 +46,26 @@ class PackageValidationTests(unittest.TestCase):
 
     def test_rejects_shipped_tests(self):
         (self.root / "tests").mkdir()
-        with self.assertRaisesRegex(AssertionError, "Tests must not be distributed"):
+        with self.assertRaisesRegex(AssertionError, "Development files must not be distributed: tests"):
             validate(self.root)
+
+    def test_rejects_development_files_in_runtime_folders(self):
+        for relative in ("APR-Core/README.md", "APR-Core/assets/ui/mdi/plus.svg",
+                         "APR-Core/assets/ui/mdi/manifest.json", "APR-Core/libs/Library/Library.toc"):
+            with self.subTest(path=relative):
+                self.write(relative, "development source")
+                with self.assertRaises(AssertionError):
+                    validate(self.root)
+                (self.root / relative).unlink()
+
+    def test_rejects_missing_nested_runtime_dependency(self):
+        self.write("APR-Core/libs/FarstriderLibData.xml", '<Ui><Include file="nested.xml"/></Ui>')
+        self.write("APR-Core/libs/nested.xml", '<Ui><Script file="missing.lua"/></Ui>')
+        with self.assertRaisesRegex(AssertionError, "Missing runtime dependency"):
+            validate(self.root)
+
+    def test_keeps_runtime_artwork_and_license_notices(self):
+        for relative in ("APR-Core/assets/ui/logo.tga", "APR-Core/assets/Arrow-APR.tga",
+                         "LICENSE", "APR-Core/assets/ui/mdi/LICENSE", "APR-Core/libs/Library/LICENSE"):
+            self.write(relative, "runtime artwork or license")
+        validate(self.root)
