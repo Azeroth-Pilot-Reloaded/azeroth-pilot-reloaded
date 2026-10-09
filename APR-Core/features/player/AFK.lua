@@ -201,6 +201,7 @@ function APR.AFK:UpdateSize(width, height)
 end
 
 function APR.AFK:RefreshFrameAnchor(initial)
+    if InCombatLockdown() then return end
     local profile = APR:GetSettingsProfile()
     if not profile then return end
 
@@ -226,6 +227,7 @@ function APR.AFK:RefreshFrameAnchor(initial)
         self:UpdateSize(width, afkHeight)
     else
         self.isSnapped = false
+        AfkFrameScreen:SetClampedToScreen(true)
         AfkFrameScreen:SetScale(1)
         self:UpdateSize()
         if not initial

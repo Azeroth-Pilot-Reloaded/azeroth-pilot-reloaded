@@ -69,6 +69,7 @@ APR-Core/utils/SojournerUtils.lua
 APR-Core/features/questing/RouteSuggestions.lua
 APR-Core/utils/NavigationUtils.lua
 APR-Core/utils/UIUtils.lua
+APR-Core/integrations/QuestTracker.lua
 APR-Core/utils/BuyMerchantUtils.lua
 APR-Core/utils/LootUtils.lua
 APR-Core/utils/PlayerPositionUtils.lua

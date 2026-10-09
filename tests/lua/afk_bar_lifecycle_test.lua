@@ -1,5 +1,6 @@
 -- The AFK timer owns a native bar and never touches another addon's libraries.
 local function noop() end
+function InCombatLockdown() return false end
 local now, frames, timers = 100, {}, {}
 local methods = {}
 setmetatable(methods, { __index = function(_, key)

@@ -57,12 +57,13 @@ editor.previews[1].endDrag()
 editor.previews[2].endDrag()
 editor.previews[8].endDrag() -- A lazy XP panel can be placed before it exists.
 assert(editor:Save())
-assert(profile.currentStepFrame == saved and saved.x == 420 and saved.scale == 1.25)
-assert(not profile.fillersFrameSnapToCurrentStep and profile.xpBuffFrame.point == "TOPLEFT")
+assert(profile.currentStepFrame == saved and saved.x == 525 and saved.y == -330 and saved.scale == 1.25)
+assert(profile.fillersFrameSnapToCurrentStep and profile.xpBuffFrame.point == "TOPLEFT",
+    "Saving a linked preview must keep the saved attachment")
 assert(CurrentStepScreenPanel.restored == saved)
 editor:Show()
 editor:Recover()
-assert(editor.previews[1].changed and saved.x == 420, "Recovery must remain a draft")
+assert(editor.previews[1].changed and saved.x == 525, "Recovery must remain a draft")
 env.setCombat(true)
 CurrentStepScreenPanel.secure = true
 editor.frame.scripts.OnEvent(editor.frame, "PLAYER_REGEN_DISABLED")
@@ -182,3 +183,20 @@ flush()
 assert(editor:Save() and APR.Workspace.frame:IsShown())
 assert(#failures == 0, table.concat(failures, "\n"))
 print("Layout editor: cancel/save, linked dragging, hidden/lazy panels, scale, recovery, combat and profile isolation passed")
+
+-- Hidden panels reserve space in the same chain as real panels, with no dependency
+-- on stale screen coordinates. Linked dragging moves the root, retaining flags.
+profile.afkSnapToCurrentStep, profile.questOrderListSnapToCurrentStep = true, true
+profile.fillersFrameShowHeader, profile.fillersFrameSnapGap = true, 7
+function env.methods:StartMoving() self.moving = true end
+editor:Show()
+local previews = editor.previews
+assert(previews[3].point[2] == previews[1])
+assert(previews[2].point[2] == previews[3] and previews[2].point[5] == -(previews[3]:GetHeight() + 29))
+assert(previews[4].point[2] == previews[2] and previews[4].point[5] == -(previews[2]:GetHeight() + 30))
+previews[4].scripts.OnDragStart(previews[4])
+assert(previews[1].moving and not previews[4].moving)
+previews[4].scripts.OnDragStop(previews[4])
+assert(previews[1].changed and not previews[4].changed)
+editor:Save()
+assert(profile.afkSnapToCurrentStep and profile.fillersFrameSnapToCurrentStep and profile.questOrderListSnapToCurrentStep)

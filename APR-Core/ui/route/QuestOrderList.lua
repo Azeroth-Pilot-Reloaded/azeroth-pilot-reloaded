@@ -99,9 +99,6 @@ snapToAnchor = function(anchorFrame, anchorHeight)
 
     local effectiveHeight = (anchorHeight and anchorHeight > 0) and anchorHeight or (anchorFrame:GetHeight() or 0)
     local owner = APR.questOrderList
-    local scale = anchorFrame:GetScale() or 1
-    if owner.snapAnchor == anchorFrame and owner.snapHeight == effectiveHeight and
-        QuestOrderListPanel:GetScale() == scale then return true end
     -- Use centralized snap positioning helper (no header adjustment for QuestOrderList)
     local anchored = APR:SnapFrameToAnchor(QuestOrderListPanel, anchorFrame, effectiveHeight, SNAP_ANCHOR_GAP, nil)
     if anchored then owner.snapAnchor, owner.snapHeight = anchorFrame, effectiveHeight end
@@ -131,6 +128,7 @@ updateSnapSizing = function(anchored, anchorFrame)
             QuestOrderListFrame:SetResizeBounds(anchorWidth, FRAME_MIN_HEIGHT, anchorWidth, maxHeight)
         end
     else
+        QuestOrderListFrame:SetClampedToScreen(true)
         QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
         QuestOrderListFrame:SetResizable(true)
         if resizeButton then
@@ -149,6 +147,9 @@ end
 
 QuestOrderListFrame = APR:CreateStandardFrame("QuestOrderListPanel", UIParent, FRAME_WIDTH, FRAME_HEIGHT,
     "BackdropTemplate")
+QuestOrderListFrame:HookScript("OnShow", function()
+    if not InCombatLockdown() then APR.questOrderList:ApplySnapAnchor() end
+end)
 
 QuestOrderListFrame:SetResizable(true)
 QuestOrderListFrame:SetResizeBounds(FRAME_MIN_WIDTH, FRAME_MIN_HEIGHT)
@@ -253,6 +254,7 @@ function APR.questOrderList:QuestOrderListFrameOnInit()
 end
 
 function APR.questOrderList:ApplySnapAnchor()
+    if InCombatLockdown() then return false end
     if not QuestOrderListFrame or not QuestOrderListPanel then
         return false
     end
@@ -308,6 +310,7 @@ end
 
 -- Update the frame scale
 function APR.questOrderList:UpdateFrameScale()
+    if self:IsSnapped() then return end
     LibWindow.SetScale(QuestOrderListPanel, APR.settings.profile.questOrderListScale)
 end
 

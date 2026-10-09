@@ -70,7 +70,7 @@ function APR.fillersFrame:OnInit()
     -- Set default display
     self:SetDefaultDisplay()
 
-    if (not APR.settings.profile.currentStepAttachFrameToQuestLog) then
+    if not APR.settings.profile.fillersFrameSnapToCurrentStep then
         LibWindow.RestorePosition(FillersFrame)
         FillersFrame:EnableMouse(true)
     end
@@ -117,6 +117,17 @@ end
 
 local function HideTooltip() GameTooltip:Hide() end
 
+function APR.fillersFrame:SetContentWidth(width)
+    if InCombatLockdown() or FRAME_WIDTH == width then return end
+    FRAME_WIDTH = width
+    FillersFrame:SetWidth(width)
+    for _, row in pairs(APR.currentStep.fillersList) do
+        row:SetWidth(width)
+        if row.font then row.font:SetWidth(width - TEXT_PADDING * 2) end
+    end
+    self:ReOrderFillerSteps()
+end
+
 function APR.fillersFrame:AddFillerStep(questID, text, objectiveIndex)
     if not APR.settings.profile.currentStepShow then return end
     local currentStep = APR.currentStep
@@ -131,6 +142,7 @@ function APR.fillersFrame:AddFillerStep(questID, text, objectiveIndex)
             APR:CreateStepTextContainer(FillersFrame_StepHolder, FRAME_WIDTH, text, false,
             nil, nil, true, "fillers")
         container.rowKind, container.key = "filler", key
+        container:SetWidth(FRAME_WIDTH)
         container.font:ClearAllPoints()
         container.font:SetPoint("TOPLEFT", TEXT_PADDING, -5)
         container.font:SetWidth(FRAME_WIDTH - TEXT_PADDING * 2)
@@ -269,14 +281,11 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
             local anchor, anchorHeight = APR:GetSnapAnchorFrame(true)
             if anchor then
                 local gap = profile.fillersFrameSnapGap or 0
-                local scale = anchor:GetScale() or 1
-                if self.anchor ~= anchor or self.anchorHeight ~= anchorHeight or self.anchorGap ~= gap or
-                    self.anchorHeader ~= showHeader or FillersFrame:GetScale() ~= scale then
-                    APR:SnapFrameToAnchor(FillersFrame, anchor, anchorHeight, gap, showHeader and HEADER_HEIGHT or nil)
-                    self.anchor, self.anchorHeight, self.anchorGap, self.anchorHeader = anchor, anchorHeight, gap, showHeader
-                end
+                APR:SnapFrameToAnchor(FillersFrame, anchor, anchorHeight, gap, showHeader and HEADER_HEIGHT or nil)
+                self.anchor, self.anchorHeight, self.anchorGap, self.anchorHeader = anchor, anchorHeight, gap, showHeader
             end
         else
+            FillersFrame:SetClampedToScreen(true)
             if self.wasSnapped ~= false then
                 if profile.fillersFrame and profile.fillersFrame.point then
                     LibWindow.RestorePosition(FillersFrame)

@@ -15,6 +15,8 @@ function APR:IsInstanceWithUI() return true end
 function APR:GetSnapAnchorFrame() return CurrentStepScreenPanel, 100 end
 
 function APR:SnapFrameToAnchor(frame, anchor, height, gap, header)
+    local offset = -(height + gap + (header or 0))
+    if frame.point and frame.point[2] == anchor and frame.point[5] == offset then return true end
     frame:ClearAllPoints()
     frame:SetPoint("TOP", anchor, "TOP", 0, -(height + gap + (header or 0)))
     frame:SetScale(anchor:GetScale())

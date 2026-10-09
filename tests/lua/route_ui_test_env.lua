@@ -270,6 +270,15 @@ dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/StatusBars.lua")
 dofile("APR-Core/ui/route/CurrentStep.lua")
 dofile("APR-Core/ui/route/CurrentStepRows.lua")
+-- Use the real shared snapping functions while retaining the mock frame builders.
+local standard, header, row = APR.CreateStandardFrame, APR.CreateFrameHeader, APR.CreateStepTextContainer
+local drag, headerDrag, minimize = APR.SetupFrameDrag, APR.SetupHeaderDrag, APR.SetupMinimizeButton
+local tooltip = APR.AddQuestTooltipDetails
+dofile("APR-Core/utils/UIUtils.lua")
+APR.CreateStandardFrame, APR.CreateFrameHeader, APR.CreateStepTextContainer = standard, header, row
+APR.SetupFrameDrag, APR.SetupHeaderDrag, APR.SetupMinimizeButton = drag, headerDrag, minimize
+APR.AddQuestTooltipDetails = tooltip
+dofile("APR-Core/integrations/QuestTracker.lua")
 
 return {
     frames = function() return frames end,

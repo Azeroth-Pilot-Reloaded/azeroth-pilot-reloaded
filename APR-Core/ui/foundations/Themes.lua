@@ -53,6 +53,7 @@ end
 
 -- Legacy panels retain their configured colors, including transparent collapsed frames.
 function APR:SetPanelColor(frame, color)
+    if self.QuestTracker then color = self.QuestTracker:ApplyPanel(frame, color) end
     frame:SetBackdropColor(unpack(color))
 end
 

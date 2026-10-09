@@ -29,7 +29,6 @@ APR.currentStep.previousState = {}
 --Local constant
 APR.currentStep.layout = { width = 250, topOffset = 30, padding = 16, indent = 25, detailGap = 3 }
 local FRAME_WIDTH = APR.currentStep.layout.width
-local FRAME_ATTACH_OFFSET = -35
 local RAID_ICON_TEXTURE = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
 
 ---------------------------------------------------------------------------------------
@@ -167,14 +166,14 @@ end
 
 -- Update the frame scale
 function APR.currentStep:UpdateFrameScale()
-    LibWindow.SetScale(CurrentStepScreenPanel, APR.settings.profile.currentStepScale)
+    if InCombatLockdown() then return end
+    if APR.settings.profile.currentStepAttachFrameToQuestLog then
+        CurrentStepScreenPanel:SetScale(1)
+    else
+        LibWindow.SetScale(CurrentStepScreenPanel, APR.settings.profile.currentStepScale)
+    end
 
-    if APR.AFK and APR.AFK.RefreshFrameAnchor then
-        APR.AFK:RefreshFrameAnchor()
-    end
-    if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-        APR.questOrderList:ApplySnapAnchor()
-    end
+    APR:RefreshSnappedFrames()
 end
 
 function APR.currentStep:UpdateBackgroundColorAlpha(color)
@@ -202,36 +201,16 @@ end
 
 local trackerAnchorX, trackerAnchorY
 
--- Read Blizzard's layout without hooking its Update or adding APR's secure
--- buttons to the tracker's anchor chain. Only APR-owned frames are modified.
+-- Read tracker geometry and keep APR anchored to UIParent, outside tracker layout callbacks.
 function APR.currentStep:RefreshQuestTrackerAnchor()
     if InCombatLockdown() then return false end
-    local tracker = ObjectiveTrackerFrame
-    if not tracker then return false end
-
-    local anchor = tracker.Header
-    local modules = tracker.modules
-    if modules then
-        for i = #modules, 1, -1 do
-            if modules[i]:IsShown() then
-                anchor = modules[i]
-                break
-            end
-        end
-    end
-    if not anchor then return false end
-
-    local x = anchor:GetCenter()
-    local y = anchor:GetBottom()
-    local scale = anchor:GetEffectiveScale()
-    if not APR:CanAccessValue(x) or not APR:CanAccessValue(y) or not APR:CanAccessValue(scale) then
-        return false
-    end
-    if not x or not y or not scale then return false end
-    local relativeScale = scale / UIParent:GetEffectiveScale()
-    x, y = x * relativeScale, y * relativeScale + FRAME_ATTACH_OFFSET
-    if x == trackerAnchorX and y == trackerAnchorY and CurrentStepFrame:GetScale() == 1 then return false end
-
+    local x, y = APR.QuestTracker:GetAnchor()
+    if not x or not y then return false end
+    if APR.QuestTracker:ApplyPendingPosition() then x, y = APR.QuestTracker:GetAnchor() end
+    if not x or not y then return false end
+    local point, relative, relativePoint, px, py = CurrentStepFrame:GetPoint(1)
+    if x == trackerAnchorX and y == trackerAnchorY and CurrentStepFrame:GetScale() == 1 and
+        point == "TOP" and relative == UIParent and relativePoint == "BOTTOMLEFT" and px == x and py == y then return false end
     CurrentStepFrame:SetScale(1)
     CurrentStepFrame:ClearAllPoints()
     CurrentStepFrame:SetPoint("TOP", UIParent, "BOTTOMLEFT", x, y)
@@ -241,9 +220,12 @@ end
 
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
+    if InCombatLockdown() then self.pendingAnchorRefresh = true; return end
+    self.pendingAnchorRefresh = nil
     APR:Debug("Function: APR:RefreshCurrentStepFrameAnchor()")
     -- Use centralized frame hiding check from Core
     if APR:ShouldHideFrames() then
+        if APR.QuestTracker then APR.QuestTracker:Release() end
         CurrentStepScreenPanel:Hide()
 
         -- When CurrentStep hides, refresh all child frames
@@ -269,6 +251,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         self:RefreshQuestTrackerAnchor()
     else
         trackerAnchorX, trackerAnchorY = nil, nil
+        if APR.QuestTracker then APR.QuestTracker:Release() end
         if not InCombatLockdown() then
             if not profile.currentStepLock then
                 CurrentStepScreenPanel:EnableMouse(true)
@@ -286,12 +269,8 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
     -- InCombatLockdown to prevent the "UNKNOWN()"-Call issue which happens sometimes when we're in a combat and doing a quest step
     if not InCombatLockdown() then
         CurrentStepScreenPanel:Show()
-        if APR.AFK and APR.AFK.RefreshFrameAnchor then
-            APR.AFK:RefreshFrameAnchor()
-        end
-        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then
-            APR.questOrderList:ApplySnapAnchor()
-        end
+        APR:RefreshSnappedFrames()
+        if profile.currentStepAttachFrameToQuestLog then self:RefreshQuestTrackerAnchor() end
     end
 end
 
@@ -299,6 +278,7 @@ function APR.currentStep:GetContentHeight(includeFillers)
     if not CurrentStepScreenPanel then
         return nil
     end
+    if CurrentStepScreenPanel.collapsed then return CurrentStepScreenPanel:GetHeight() end
 
     if includeFillers == nil then
         includeFillers = true
@@ -359,14 +339,14 @@ end
 -- callback. Disabled/detached panels do not inspect the tracker.
 local trackerAnchorElapsed = 0
 CurrentStepFrame:SetScript("OnUpdate", function(_, elapsed)
+    if APR.QuestTracker and APR.QuestTracker.observer then return end
     trackerAnchorElapsed = trackerAnchorElapsed + elapsed
     if trackerAnchorElapsed < 0.2 then return end
     trackerAnchorElapsed = 0
     local profile = APR:GetSettingsProfile()
     if not profile or not profile.enableAddon or not profile.currentStepAttachFrameToQuestLog then return end
     if APR.currentStep:RefreshQuestTrackerAnchor() then
-        if APR.AFK and APR.AFK.RefreshFrameAnchor then APR.AFK:RefreshFrameAnchor() end
-        if APR.questOrderList and APR.questOrderList.ApplySnapAnchor then APR.questOrderList:ApplySnapAnchor() end
+        APR:RefreshSnappedFrames()
     end
 end)
 
@@ -454,7 +434,7 @@ function APR.currentStep:ProgressBar(key, total, current)
 
     if not self.progressBar then
         local progressBar = APR:CreateStatusBar(CurrentStepFrameHeader, "CurrentStepFrame_StepHolder_ProgressBar")
-        progressBar:SetSize(FRAME_WIDTH - 92, 18)
+        progressBar:SetSize(self.layout.width - 92, 18)
         progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
         progressBar:SetMinMaxValues(0, math.max(totalSteps, 1))
         progressBar:SetValue(currentStep)
@@ -1268,10 +1248,21 @@ function APR.GetMenu(owner, rootDescription)
     createToggleItem(L["QLIST_ATTACH_QUESTLOG"], function()
         return APR.settings.profile.currentStepAttachFrameToQuestLog
     end, function()
+        APR.QuestTracker:GetSide(APR.settings.profile)
         APR.settings.profile.currentStepAttachFrameToQuestLog = not APR.settings.profile
             .currentStepAttachFrameToQuestLog
         APR.currentStep:RefreshCurrentStepFrameAnchor()
     end)
+
+    local trackerPosition = rootDescription:CreateButton(L["UI_TRACKER_SIDE"])
+    trackerPosition:SetEnabled(APR.settings.profile.currentStepAttachFrameToQuestLog == true)
+    for _, side in ipairs({ "above", "below" }) do
+        trackerPosition:CreateRadio(L[side == "above" and "UI_TRACKER_ABOVE" or "UI_TRACKER_BELOW"], function()
+            return APR.QuestTracker:GetSide(APR.settings.profile) == side
+        end, function()
+            APR.QuestTracker:SetSide(side)
+        end)
+    end
 
     createToggleItem(L["LOCK_WINDOW"], function()
         return APR.settings.profile.currentStepLock
@@ -1383,6 +1374,7 @@ end
 
 function APR.currentStep:FlushPendingContainers()
     if InCombatLockdown() then return end
+    if self.pendingAnchorRefresh then self:RefreshCurrentStepFrameAnchor() end
     -- Flush orphaned containers (replaced during combat)
     for _, container in ipairs(self.pendingContainerDestroy) do
         self:RecycleRow(container)
@@ -1392,6 +1384,7 @@ function APR.currentStep:FlushPendingContainers()
     if not next(self.pendingRemoval) then
         if self.layoutDirty then self:ReOrderQuestSteps() end
         if APR.fillersFrame and APR.fillersFrame.FlushPendingLayout then APR.fillersFrame:FlushPendingLayout() end
+        APR:RefreshSnappedFrames()
         return
     end
     for id, _ in pairs(self.pendingRemoval) do
