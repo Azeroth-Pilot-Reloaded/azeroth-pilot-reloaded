@@ -73,7 +73,10 @@ python tools/validation/check_package.py PATH_TO_UNPACKED_APR
 ```
 
 The package check expects a single release containing the generated Mainline and
-Camelot TOCs. It verifies separate route manifests and exclusion of local tooling.
+Camelot TOCs. It follows the TOC/XML include graph to verify all runtime dependencies,
+checks separate route manifests, and rejects development files, SVG sources and
+standalone library TOCs. Runtime textures and third-party license notices stay in
+the release; `.pkgmeta` excludes the tooling, source artwork and documentation.
 The Lua check covers hidden incompatible routes, saved imports, prefab popups and
 missing Retail APIs/events. These mocks do not replace an in-game Forever smoke test.
 
