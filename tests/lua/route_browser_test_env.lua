@@ -3,6 +3,8 @@ local env = dofile("tests/lua/route_ui_test_env.lua")
 dofile("tests/lua/localization_test_env.lua")
 for _, key in ipairs({"ALL", "FAVORITES", "ADD", "REMOVE", "RESET", "TYPE", "STATUS", "EXPANSION_FILTER_TEXT"}) do _G[key] = key end
 UIParent:SetSize(1920, 1080)
+function env.methods:GetTop() return self.top or 900 end
+function env.methods:GetBottom() return self.bottom or (self:GetTop() - self:GetHeight()) end
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/data/models/Enums.lua")
@@ -36,6 +38,19 @@ APR.routeconfig = {SendCustomPathUpdate = function() APR.RouteBrowser:Refresh(tr
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
+-- This lightweight fixture does not resolve anchors. Give a window's content the
+-- dimensions its two native anchors produce, including after a resize.
+local window = APR.UI.Window
+function APR.UI:Window(...)
+    local frame = window(self, ...)
+    local resize = frame.SetSize
+    function frame:SetSize(width, height)
+        resize(self, width, height)
+        self.content:SetSize(width - 32, height - 74)
+    end
+    frame:SetSize(frame:GetWidth(), frame:GetHeight())
+    return frame
+end
 dofile("APR-Core/ui/foundations/VirtualList.lua")
 dofile("APR-Core/ui/foundations/SelectionDialog.lua")
 dofile("APR-Core/features/questing/RouteCatalog.lua")

@@ -128,7 +128,14 @@ assert(browser.catalogPanel.point[4] + browser.catalogPanel:GetWidth() < browser
 assert(browser.headers.status.point[4] + browser.headers.status:GetWidth() < browser.catalogPanel:GetWidth())
 browser.frame:SetSize(1500, 900); browser:Layout()
 assert(browser.headers.author:IsShown() and browser.headers.status:IsShown())
-assert(browser.frame.logo:GetWidth() == 61 and browser.frame.close:IsShown())
+-- Embedded pages already receive the available area from the workspace shell.
+browser.frame.content:SetSize(1468, 826)
+browser:Layout()
+local fullHeight = browser.catalogPanel:GetHeight()
+browser.frame.content:SetHeight(926); browser:Layout()
+assert(browser.catalogPanel:GetHeight() == fullHeight + 100,
+    "Every extra content pixel must reach the route list without subtracting the header again")
+assert(browser.frame.logo:GetWidth() == 80 and browser.frame.close:IsShown())
 local bar = browser.scroll.ScrollBar
 assert(bar:GetThumbTexture():GetWidth() == 6 and bar.ScrollUpButton:GetNormalTexture():GetWidth() == 16)
 assert(bar.ScrollDownButton:GetDisabledTexture().alpha == 0.25)

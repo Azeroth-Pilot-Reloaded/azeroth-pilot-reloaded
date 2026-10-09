@@ -87,6 +87,11 @@ function Dashboard:Refresh()
     local rows = APR:GetPerformanceRows(self.mode, self.sort, self.query, MetricName)
     self.list:SetItems(rows, true)
     self.empty:SetShown(#rows == 0)
+    for key, header in pairs(self.columns) do
+        UI:SetIcon(header.icon, "down")
+        header.icon:SetShown(key == self.sort and self.mode == "summary")
+        APR:SetFontStringRole(header:GetFontString(), key == self.sort and "accent" or "base")
+    end
 end
 
 function Dashboard:SetPage(page)
@@ -98,17 +103,19 @@ function Dashboard:SetPage(page)
     end
     self.callsPanel:SetShown(page == "calls")
     self.resourcesPanel:SetShown(page == "resources")
-    self.resourcesTab:SetEnabled(page ~= "resources")
-    self.callsTab:SetEnabled(page ~= "calls")
+    UI:SetButtonActive(self.resourcesTab, page == "resources")
+    UI:SetButtonActive(self.callsTab, page == "calls")
     self:Refresh()
 end
 
-function Dashboard:Create()
-    local frame = UI:Window("APRPerformanceDashboard", L["UI_PERFORMANCE"], 1040, 840)
+function Dashboard:Create(parent)
+    local frame = parent and UI:Page(parent) or UI:Window("APRPerformanceDashboard", L["UI_PERFORMANCE"], 1040, 840, "library", "logo")
     local minimumWidth, minimumHeight = math.min(760, UIParent:GetWidth() - 40), math.min(700, UIParent:GetHeight() - 60)
-    frame:SetResizeBounds(minimumWidth, minimumHeight)
-    -- Older saved dimensions can predate the resource cards and their minimum readable size.
-    frame:SetSize(math.max(frame:GetWidth(), minimumWidth), math.max(frame:GetHeight(), minimumHeight))
+    if not parent then
+        frame:SetResizeBounds(minimumWidth, minimumHeight)
+        -- Older saved dimensions can predate the resource cards and their minimum readable size.
+        frame:SetSize(math.max(frame:GetWidth(), minimumWidth), math.max(frame:GetHeight(), minimumHeight))
+    end
     self.frame, self.bars = frame, {}
     local root = frame.content
     self.capture = UI:Button(root, L["UI_CAPTURE"], 180, function()
@@ -186,33 +193,57 @@ function Dashboard:Create()
     mode:SetPoint("TOPLEFT", 0, -234)
     mode:SetOptions({ {value = "summary", label = OVERVIEW}, {value = "slow", label = L["UI_SLOW_CALLS"]},
         {value = "counters", label = L["UI_COUNTERS"]} }, self.mode)
-    local sort = UI:Select(root, 190, function(value) self.sort = value; self:Refresh() end)
-    sort:SetPoint("LEFT", mode, "RIGHT", 10, 0)
-    sort:SetOptions({ {value = "totalMs", label = totalLabel}, {value = "maxMs", label = maximumLabel},
-        {value = "average", label = L["UI_AVERAGE"]}, {value = "count", label = L["UI_CALLS"]} }, self.sort)
     self.search = UI:SearchBox(root, 200, SEARCH, function(query) self.query = query; self:Refresh() end)
-    self.search:SetPoint("TOPLEFT", 0, -274)
-    self.search:SetPoint("TOPRIGHT", 0, -274)
-    local scroll = UI:Scroll(root)
-    scroll:SetPoint("TOPLEFT", 0, -316)
-    scroll:SetPoint("BOTTOMRIGHT", -26, 38)
+    self.search:SetPoint("LEFT", mode, "RIGHT", 12, 0)
+    self.search:SetPoint("RIGHT", root, "RIGHT", 0, 0)
+    local tablePanel = UI:Panel(root, "borderedPanel", "inset")
+    tablePanel:SetPoint("TOPLEFT", 0, -276)
+    tablePanel:SetPoint("BOTTOMRIGHT", 0, 38)
+    self.columns = {}
+    local fields = {{"name", NAME}, {"count", L["UI_CALLS"]}, {"totalMs", totalLabel},
+        {"average", L["UI_AVERAGE"]}, {"maxMs", maximumLabel}}
+    for index, field in ipairs(fields) do
+        local header = UI:ColumnHeader(tablePanel, field[2], function()
+            if field[1] ~= "name" then self.sort = field[1]; self:Refresh() end
+        end)
+        if index == 1 then
+            header:SetPoint("TOPLEFT", 10, -6); header:SetPoint("TOPRIGHT", -432, -6)
+        else
+            header:SetPoint("TOPRIGHT", -28 - (5 - index) * 100, -6); header:SetWidth(100)
+        end
+        header:SetHeight(24)
+        self.columns[field[1]] = header
+    end
+    local scroll = UI:Scroll(tablePanel)
+    scroll:SetPoint("TOPLEFT", 10, -36)
+    scroll:SetPoint("BOTTOMRIGHT", -28, 8)
     self.list = APR.VirtualList:New(scroll, function(parent)
-        local row = UI:Panel(parent)
-        row.title = UI:Label(row, "", 13, "accent")
-        row.title:SetPoint("TOPLEFT", 10, -7)
-        row.title:SetPoint("TOPRIGHT", -10, -7)
-        row.detail = UI:Label(row, "", 11)
-        row.detail:SetPoint("TOPLEFT", 10, -29)
-        row.detail:SetPoint("BOTTOMRIGHT", -10, 4)
+        local row = CreateFrame("Frame", nil, parent)
+        row.title = UI:Label(row, "", 12)
+        row.title:SetPoint("LEFT", 4, 0); row.title:SetPoint("RIGHT", -404, 0)
+        row.title:SetWordWrap(false)
+        row.values = {}
+        for index, field in ipairs({"count", "totalMs", "average", "maxMs"}) do
+            local label = UI:Label(row, "", 11)
+            label:SetPoint("RIGHT", -(4 - index) * 100 - 8, 0)
+            label:SetWidth(92); label:SetJustifyH("RIGHT")
+            row.values[field] = label
+        end
+        local highlight = row:CreateTexture(nil, "HIGHLIGHT")
+        highlight:SetAllPoints(); APR:RegisterThemeRegion(highlight, "accent", 0.08)
         row:EnableMouse(true)
         row:SetScript("OnEnter", function(control)
-            local histogram = control.item and control.item.histogram
-            if not histogram then return end
+            local record = control.item
+            if not record then return end
             GameTooltip:SetOwner(control, "ANCHOR_RIGHT")
-            APR:SetTooltipText(GameTooltip, MetricName(control.item.name), "general", "accent")
+            APR:SetTooltipText(GameTooltip, MetricName(record.name), "general", "accent")
+            if record.route then APR:AddTooltipLine(GameTooltip, record.route, "general", "base", true) end
+            if record.step then APR:AddTooltipLine(GameTooltip, L["CURRENT_STEP"] .. ": " .. record.step, "general", "base") end
             for index, range in ipairs({"<1", "1–3", "3–10", "≥10"}) do
-                APR:AddTooltipDoubleLine(GameTooltip, range .. " " .. MILLISECONDS_ABBR,
-                    tostring(histogram[index]), "general", "base", "base")
+                if record.histogram then
+                    APR:AddTooltipDoubleLine(GameTooltip, range .. " " .. MILLISECONDS_ABBR,
+                        tostring(record.histogram[index]), "general", "base", "base")
+                end
             end
             GameTooltip:Show()
         end)
@@ -220,20 +251,15 @@ function Dashboard:Create()
         return row
     end, function(row, record)
         row.title:SetText(MetricName(record.name))
-        if self.mode == "slow" then
-            row.detail:SetText(APR:FormatMilliseconds(record.ms) .. "   |   " .. (record.route or L["UI_STATUS_NO_ACTIVE_ROUTE"])
-                .. "   |   " .. L["CURRENT_STEP"] .. ": " .. tostring(record.step or "?"))
-        elseif self.mode == "counters" then row.detail:SetText(L["UI_CALLS"] .. ": " .. record.count)
-        else
-            row.detail:SetText(Summary(record.count, record.totalMs, record.maxMs, record.average))
-        end
-    end, 62)
-    self.empty = UI:Label(root, L["UI_NO_CAPTURE"], 13, "muted")
-    self.empty:SetPoint("TOPLEFT", 12, -332)
-    self.empty:SetPoint("TOPRIGHT", -26, -332)
+        row.values.count:SetText(record.count or 1)
+        row.values.totalMs:SetText(record.totalMs and string.format("%.2f", record.totalMs) or record.ms and string.format("%.2f", record.ms) or "—")
+        row.values.average:SetText(record.average and string.format("%.3f", record.average) or "—")
+        row.values.maxMs:SetText(record.maxMs and string.format("%.2f", record.maxMs) or "—")
+    end, 28)
+    self.empty = UI:Label(tablePanel, L["UI_NO_CAPTURE"], 13, "muted")
+    self.empty:SetPoint("TOPLEFT", 12, -48); self.empty:SetPoint("TOPRIGHT", -26, -48)
     local note = UI:Label(root, L["UI_PERF_LIMITS"], 11, "muted")
-    note:SetPoint("BOTTOMLEFT")
-    note:SetPoint("BOTTOMRIGHT")
+    note:SetPoint("BOTTOMLEFT"); note:SetPoint("BOTTOMRIGHT")
     frame:HookScript("OnShow", function()
         self.elapsed = 0
         self.hoverElapsed = 0
@@ -257,6 +283,7 @@ function Dashboard:Create()
 end
 
 function Dashboard:Show()
+    if APR.Workspace then return APR.Workspace:Show("perf") end
     if not self.frame then self:Create() end
     self.frame:Show()
     self:Refresh()

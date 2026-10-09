@@ -63,7 +63,7 @@ end
 -- Only the small set of APR windows is enumerated, never UIParent or quest rows.
 function APR:RegisterStaticSkinTargets()
     for _, name in ipairs({ "CurrentStepScreenPanel", "FillersScreenPanel", "QuestOrderListPanel",
-        "CoordinateScreenPanel", "RouteSelectionPanel", "ChangeLogFrame", "PartyScreenPanel",
+        "CoordinateScreenPanel", "RouteSelectionPanel", "PartyScreenPanel",
         "HeirloomPanel", "BuffFrameScreen", "AfkFrameScreen" }) do
         self:RegisterSkinTarget(_G[name], "panel", { preserveBackground = true })
     end
@@ -82,7 +82,7 @@ function APR:RegisterStaticSkinTargets()
     end
     self:RegisterSkinTarget(_G.CurrentStepFrameSettingsButton, "settings")
     self:RegisterSkinTarget(_G.OpenSettingsButton, "button")
-    for _, name in ipairs({ "QuestOrderListFrame_ScrollFrame", "ChangeLogScrollFrame" }) do
+    for _, name in ipairs({ "QuestOrderListFrame_ScrollFrame" }) do
         local scroll = _G[name]
         self:RegisterSkinTarget(scroll and (scroll.ScrollBar or _G[name .. "ScrollBar"]), "scrollbar")
     end

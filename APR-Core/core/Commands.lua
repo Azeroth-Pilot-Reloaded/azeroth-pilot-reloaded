@@ -5,6 +5,35 @@ local _G = _G
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.command = APR:NewModule("Command")
+
+-- Shared by chat help and the About page; each entry corresponds to a supported command below.
+function APR.command:GetHelpEntries()
+    return {
+        {"/apr", L["SHOW_MENU"]},
+        {"/apr about", L["SHOW_ABOUT"]},
+        {"/apr coord", L["COORD_COMMAND"]},
+        {"/apr discord", L["DISCORD_COMMAND"]},
+        {"/apr forcereset, fr", L["FORCERESET_COMMAND"]},
+        {"/apr github", L["GITHUB_COMMAND"]},
+        {"/apr help, h", L["HELP_COMMAND"]},
+        {"/apr layout", L["UI_LAYOUT_TITLE"]},
+        {"/apr qol", L["QOL_COMMAND"]},
+        {"/apr reset, r", L["RESET_COMMAND"]},
+        {"/apr resetcustom", L["RESET_CUSTOM_COMMAND"]},
+        {"/apr rollback, rb", L["ROLLBACK_COMMAND"]},
+        {"/apr route", L["ROUTE_COMMAND"]},
+        {"/apr scribe, writer", L["SCRIBE_HEADER"]},
+        {"/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"]},
+        {"/apr step", L["CURRENT_STEP"]},
+        {"/apr status", L["STATUS_COMMAND"]},
+        {"/apr zoneinfo, zi", L["ZONEINFO_COMMAND"]},
+        {"/apr zonecache", L["ZONECACHE_COMMAND"]},
+        {"/apr perf", L["UI_PERFORMANCE"]},
+        {"/apr perf on", L["UI_CAPTURE"]},
+        {"/apr perf off", L["UI_STOP"]},
+        {"/apr worldcoords, wc", L["UI_STATUS_WORLD_COORDINATES"]},
+    }
+end
 -- Chat commands, such as /apr reset, /apr skip, /apr skipcamp
 function APR.command:SlashCmd(input)
     local normalizedInput = APR:TrimString(input or "")
@@ -94,24 +123,7 @@ function APR.command:SlashCmd(input)
         end
 
         APR:PrintInfo(L["COMMAND_LIST"])
-        printHelp("/apr", L["SHOW_MENU"])
-        printHelp("/apr about", L["SHOW_ABOUT"])
-        printHelp("/apr coord", L["COORD_COMMAND"])
-        printHelp("/apr discord", L["DISCORD_COMMAND"])
-        printHelp("/apr forcereset, fr", L["FORCERESET_COMMAND"])
-        printHelp("/apr github", L["GITHUB_COMMAND"])
-        printHelp("/apr help, h", L["HELP_COMMAND"])
-        printHelp("/apr layout", L["UI_LAYOUT_TITLE"])
-        printHelp("/apr qol", L["QOL_COMMAND"])
-        printHelp("/apr reset, r", L["RESET_COMMAND"])
-        printHelp("/apr resetcustom", L["RESET_CUSTOM_COMMAND"])
-        printHelp("/apr rollback, rb", L["ROLLBACK_COMMAND"])
-        printHelp("/apr route", L["ROUTE_COMMAND"])
-        printHelp("/apr scribe, writer", ";)")
-        printHelp("/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"])
-        printHelp("/apr status", L["STATUS_COMMAND"])
-        printHelp("/apr zoneinfo", L["ZONEINFO_COMMAND"])
-        printHelp("/apr zonecache", L["ZONECACHE_COMMAND"])
+        for _, entry in ipairs(self:GetHelpEntries()) do printHelp(entry[1], entry[2]) end
     else
         APR.settings:OpenSettings(APR.title)
     end

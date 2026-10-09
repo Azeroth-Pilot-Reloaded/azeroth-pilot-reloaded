@@ -73,4 +73,112 @@ editor:Show()
 APR.settings.profile = {}
 assert(not editor:Save(), "A stale draft cannot write into a different profile")
 editor:Hide()
+APR.settings.profile = profile
+local pending, opened, closed = {}, 0, 0
+C_Timer = {After = function(_, callback) pending[#pending + 1] = callback end}
+APR.Workspace = {active = "options", frame = env.widget(UIParent)}
+function APR.settings:CloseSettings()
+    closed = closed + 1
+    APR.Workspace.frame:Hide()
+end
+function APR.settings:OpenSettings()
+    opened = opened + 1
+    assert(not editor.active, "The editor is closed before settings are restored")
+    APR.Workspace.frame:Show()
+end
+local function flush()
+    local callbacks = pending
+    pending = {}
+    for _, callback in ipairs(callbacks) do callback() end
+end
+editor:ShowFromSettings()
+editor:ShowFromSettings()
+assert(#pending == 1 and closed == 0 and not editor.active,
+    "AceConfig must finish its callback before any settings widgets are released")
+flush()
+assert(editor.active and not APR.Workspace.frame:IsShown() and closed == 1)
+editor:Hide()
+assert(opened == 1 and APR.Workspace.frame:IsShown(), "Cancel returns to settings")
+editor:ShowFromSettings(); flush()
+assert(editor:Save() and opened == 2 and APR.Workspace.frame:IsShown(), "Save returns to settings")
+editor:ShowFromSettings(); flush()
+editor.frame:Hide()
+editor.frame.scripts.OnHide(editor.frame)
+assert(opened == 3 and not editor.active, "Escape/the close button also restore settings")
+editor:ShowFromSettings(); flush()
+editor:Hide(false)
+assert(opened == 3, "Explicit navigation or a profile reload must not reopen the previous settings page")
+APR.Workspace.frame:Show()
+editor:ShowFromSettings()
+env.setCombat(true)
+flush()
+assert(not editor.active and APR.Workspace.frame:IsShown(), "Combat before the deferred launch preserves settings")
+env.setCombat(false)
+editor:ShowFromSettings(); flush()
+APR.settings.profile = {}
+editor:Hide()
+assert(opened == 3, "A stale profile cannot reopen settings")
+APR.settings.profile = profile
+APR.Workspace.active = "route"
+editor:Show(); editor:Hide()
+assert(opened == 3, "The standalone command cannot open settings that were not previously visible")
+
+-- Exercise the reported crash through AceConfig's actual callback and AceGUI's release pool.
+local failures = {}
+function geterrorhandler() return function(err) failures[#failures + 1] = err end end
+local originalXpcall = xpcall
+function xpcall(fn, handler, ...)
+    local args = {...}
+    return originalXpcall(function() return fn(unpack(args)) end, handler)
+end
+function PlaySound() end
+function CloseSpecialWindows() end
+function env.methods:GetNumChildren() return 0 end
+function env.methods:GetChildren() end
+function env.methods:GetScript(event) return self.scripts[event] end
+local createFrame = CreateFrame
+function CreateFrame(kind, name, parent, template)
+    local frame = createFrame(kind, name, parent, template)
+    if template == "UIPanelButtonTemplate" then frame:SetFontString(frame:CreateFontString()) end
+    return frame
+end
+table.wipe, strmatch = wipe, string.match
+LibStub = nil
+dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
+dofile("APR-Core/libs/HereBeDragons/CallbackHandler-1.0/CallbackHandler-1.0.lua")
+dofile("APR-Core/libs/AceGUI-3.0/AceGUI-3.0.lua")
+dofile("APR-Core/libs/AceGUI-3.0/widgets/AceGUIWidget-Button.lua")
+dofile("APR-Core/libs/AceGUI-3.0/widgets/AceGUIContainer-SimpleGroup.lua")
+dofile("APR-Core/libs/AceConfig-3.0/AceConfigRegistry-3.0/AceConfigRegistry-3.0.lua")
+dofile("APR-Core/libs/AceConfig-3.0/AceConfigDialog-3.0/AceConfigDialog-3.0.lua")
+local gui, dialog = LibStub("AceGUI-3.0"), LibStub("AceConfigDialog-3.0")
+local host = gui:Create("SimpleGroup")
+LibStub("AceConfigRegistry-3.0"):RegisterOptionsTable("PlacementTest", {
+    type = "group", name = "General", args = {
+        placement = {type = "execute", name = "Place windows", func = function() editor:ShowFromSettings() end},
+    },
+})
+function APR.settings:CloseSettings()
+    APR.Workspace.frame:Hide()
+    host:ReleaseChildren()
+    host:SetUserData("appName", nil)
+end
+function APR.settings:OpenSettings()
+    APR.Workspace.frame:Show()
+    dialog:Open("PlacementTest", host)
+end
+APR.Workspace.active = "options"
+APR.settings:OpenSettings()
+local button = host.children[1]
+button.frame.scripts.OnClick(button.frame, "LeftButton")
+assert(#failures == 0, table.concat(failures, "\n"))
+assert(not editor.active and APR.Workspace.frame:IsShown(), "The real AceConfig callback completes before closing")
+flush()
+assert(editor.active and not APR.Workspace.frame:IsShown() and #host.children == 0)
+editor:Hide()
+assert(APR.Workspace.frame:IsShown() and #host.children == 1, "Returning to settings rebuilds usable controls")
+host.children[1].frame.scripts.OnClick(host.children[1].frame, "LeftButton")
+flush()
+assert(editor:Save() and APR.Workspace.frame:IsShown())
+assert(#failures == 0, table.concat(failures, "\n"))
 print("Layout editor: cancel/save, linked dragging, hidden/lazy panels, scale, recovery, combat and profile isolation passed")

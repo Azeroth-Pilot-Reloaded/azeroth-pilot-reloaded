@@ -99,18 +99,22 @@ function Browser:CreateNavigation(root)
     end, 34)
 end
 
-function Browser:Create()
-    local frame = UI:Window("APRRouteBrowser", L["ROUTE_SELECTION"], 1240, 780, "library", "logo")
+function Browser:Create(parent)
+    local frame = parent and UI:Page(parent) or UI:Window("APRRouteBrowser", L["ROUTE_SELECTION"], 1240, 780, "library", "logo")
     local minimumWidth, minimumHeight = math.min(880, UIParent:GetWidth() - 40), math.min(560, UIParent:GetHeight() - 60)
-    frame:SetResizeBounds(minimumWidth, minimumHeight)
-    frame:SetSize(math.max(minimumWidth, frame:GetWidth()), math.max(minimumHeight, frame:GetHeight()))
+    if not parent then
+        frame:SetResizeBounds(minimumWidth, minimumHeight)
+        frame:SetSize(math.max(minimumWidth, frame:GetWidth()), math.max(minimumHeight, frame:GetHeight()))
+    end
     self.frame = frame
     local root = frame.content
-    frame.headerLine = frame.header:CreateTexture(nil, "ARTWORK")
-    frame.headerLine:SetPoint("TOPLEFT", frame, "TOPLEFT", 72, -50)
-    frame.headerLine:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -16, -50)
-    frame.headerLine:SetHeight(1)
-    APR:RegisterThemeRegion(frame.headerLine, "border", 0.55)
+    if frame.header then
+        frame.headerLine = frame.header:CreateTexture(nil, "ARTWORK")
+        frame.headerLine:SetPoint("TOPLEFT", frame, "TOPLEFT", 72, -50)
+        frame.headerLine:SetPoint("TOPRIGHT", frame, "TOPRIGHT", -16, -50)
+        frame.headerLine:SetHeight(1)
+        APR:RegisterThemeRegion(frame.headerLine, "border", 0.55)
+    end
     self.prefabPanel = UI:Section(root, L["UI_ROUTE_PREFABS"], "stone")
     self.prefabTitle = self.prefabPanel.title
     self.prefabs = {}
@@ -203,7 +207,8 @@ end
 
 function Browser:Layout()
     if not self.frame or not self.pathList then return end
-    local width, height = self.frame:GetWidth() - 32, self.frame:GetHeight() - 74
+    -- Standalone and embedded pages already expose the available content rectangle.
+    local width, height = self.frame.content:GetWidth(), self.frame.content:GetHeight()
     local navWidth, pathWidth = width < 1060 and 156 or 180, width < 1060 and 244 or 292
     local tableLeft, pathLeft = navWidth + 12, width - pathWidth
     -- The existing shortcut translation is a list; reserve its measured height in every locale.
@@ -256,7 +261,8 @@ function Browser:Layout()
 end
 
 function Browser:Show()
-    if APR.LayoutEditor and APR.LayoutEditor.active then APR.LayoutEditor:Hide() end
+    if APR.Workspace then return APR.Workspace:Show("route") end
+    if APR.LayoutEditor and APR.LayoutEditor.active then APR.LayoutEditor:Hide(false) end
     if not self.frame then self:Create() end
     if APR.settings.CloseSettings then APR.settings:CloseSettings() end
     self.frame:Show()
