@@ -83,7 +83,7 @@ local function ProfileOptions(source)
     options.args = {
         active = Group(args.current and args.current.name or source.name, {choose = args.choose}, 1),
         setup = Group(L["UI_PROFILE_SETUP"], {new = args.new, copyfrom = args.copyfrom}, 2),
-        management = Group(L["UI_PROFILE_MANAGEMENT"], {
+        management = Group(L["PROFILES"], {
             delete = args.delete, reset = args.reset, reset_all_profiles = args.reset_all_profiles,
         }, 3),
     }

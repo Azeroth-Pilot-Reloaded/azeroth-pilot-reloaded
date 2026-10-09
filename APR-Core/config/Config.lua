@@ -948,7 +948,7 @@ function APR.settings:createBlizzOptions()
                             arrowTextScale = {
                                 order = 7.205,
                                 type = "range",
-                                name = L["UI_ARROW_TEXT_SCALE"],
+                                name = L["FONT_SIZE"],
                                 desc = L["UI_ARROW_TEXT_SCALE_DESC"],
                                 width = optionsWidth,
                                 min = 0.01,
