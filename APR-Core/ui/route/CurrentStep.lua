@@ -210,7 +210,9 @@ function APR.currentStep:RefreshQuestTrackerAnchor()
     if not x or not y then return false end
     local point, relative, relativePoint, px, py = CurrentStepFrame:GetPoint(1)
     if x == trackerAnchorX and y == trackerAnchorY and CurrentStepFrame:GetScale() == 1 and
-        point == "TOP" and relative == UIParent and relativePoint == "BOTTOMLEFT" and px == x and py == y then return false end
+        point == "TOP" and relative == UIParent and relativePoint == "BOTTOMLEFT" and px == x and py == y then
+        return false
+    end
     CurrentStepFrame:SetScale(1)
     CurrentStepFrame:ClearAllPoints()
     CurrentStepFrame:SetPoint("TOP", UIParent, "BOTTOMLEFT", x, y)
@@ -220,7 +222,9 @@ end
 
 -- Refresh the frame positioning
 function APR.currentStep:RefreshCurrentStepFrameAnchor()
-    if InCombatLockdown() then self.pendingAnchorRefresh = true; return end
+    if InCombatLockdown() then
+        self.pendingAnchorRefresh = true; return
+    end
     self.pendingAnchorRefresh = nil
     APR:Debug("Function: APR:RefreshCurrentStepFrameAnchor()")
     -- Use centralized frame hiding check from Core
@@ -345,9 +349,7 @@ CurrentStepFrame:SetScript("OnUpdate", function(_, elapsed)
     trackerAnchorElapsed = 0
     local profile = APR:GetSettingsProfile()
     if not profile or not profile.enableAddon or not profile.currentStepAttachFrameToQuestLog then return end
-    if APR.currentStep:RefreshQuestTrackerAnchor() then
-        APR:RefreshSnappedFrames()
-    end
+    APR.QuestTracker:RefreshObservedLayout(0.2)
 end)
 
 -- Helper function to create a button

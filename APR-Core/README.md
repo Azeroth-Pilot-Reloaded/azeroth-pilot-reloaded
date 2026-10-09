@@ -354,6 +354,16 @@ cost is recorded as `ResourceMemoryScan`. Closing or resetting capture never sta
 `StepRenderContent` and `StepRenderCommit` distinguish step logic from row/layout commits;
 `RoutePathUiRefresh` measures the catalog/status refresh coalesced outside step rendering.
 
+At rest, the arrow keeps lightweight position/facing checks and resolves route/map data
+only when its inputs change or its one-second safety interval expires. Unchanged color,
+heading cell and distance text are not rewritten. Tracker observers reuse geometry probes
+every 200 ms; complete layout and appearance safety checks run at most once a second when
+idle. Content changes invalidate the probe through the shared snapping revision. Movement,
+step changes and changed tracker geometry still update at their normal cadence. The same
+probe serves the CurrentStep fallback; it stays dormant when the main observer exists.
+`ArrowPositionUpdate`, `TrackerGeometryProbe`, `TrackerLayoutUpdate` and
+`TrackerAppearanceUpdate` identify this background work during voluntary capture.
+
 ## UI/UX and skins
 
 - Workspace options open on Automation. Its General tab combines quest preferences and

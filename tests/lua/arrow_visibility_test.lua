@@ -31,6 +31,8 @@ function CreateFrame(_, _, parent) return widget(parent) end
 function LibStub() return { GetLocale = function() return { YARDS = "yards" } end } end
 
 local playerX, playerY, facing = -4272.50, -719.40, 0
+local seconds = 0
+function GetTime() return seconds end
 function UnitPosition() return playerY, playerX end
 function GetPlayerFacing() return facing end
 local navigating, advanced, navigationUpdates = false, 0, 0
@@ -69,6 +71,7 @@ local function refresh()
     arrow:SetCoord()
 end
 local function tick()
+    seconds = seconds + 0.03
     if frame:IsShown() then frame.scripts.OnUpdate(frame, 0.03) end
 end
 
@@ -200,3 +203,49 @@ arrow:Init()
 assert(frame.distance:GetEffectiveScale() == 1 and APR.settings.profile.arrowTextScale == 1,
     "New profiles use the normal text size alongside the larger APR arrow")
 print("Arrow: navigation, headings and distances preserved; larger APR art, independent sizes and legacy profiles passed")
+
+-- An idle character still needs movement detection, but must not resolve maps or
+-- rewrite identical artwork/text at the configured high-frequency cadence.
+APR.settings.profile.showArrow, APR.settings.profile.arrowFPS = true, 2
+APR.IsInRouteZone, navigating = true, false
+step.NoArrow, step.Waypoint, step.Range = nil, nil, nil
+playerX, playerY, facing = step.Coord.x + 100, step.Coord.y, 0
+refresh(); tick()
+local mapReads, textWrites, textureWrites, colorWrites = 0, 0, 0, 0
+function APR:GetPlayerParentMapID() mapReads = mapReads + 1; return 1411 end
+local setText, setCoords, setColor = methods.SetText, methods.SetTexCoord, methods.SetVertexColor
+function methods:SetText(value)
+    if self == frame.distance then textWrites = textWrites + 1 end
+    setText(self, value)
+end
+function methods:SetTexCoord(...)
+    if self == frame.arrow then textureWrites = textureWrites + 1 end
+    setCoords(self, ...)
+end
+function methods:SetVertexColor(...)
+    if self == frame.arrow then colorWrites = colorWrites + 1 end
+    setColor(self, ...)
+end
+for _ = 1, 200 do tick() end
+assert(mapReads <= 7, "Six idle seconds need only bounded safety checks, not 200 map resolutions")
+assert(textWrites == 0 and textureWrites == 0 and colorWrites == 0,
+    "Safety checks cannot rewrite unchanged arrow output")
+local before = mapReads
+playerX = playerX + 5
+tick()
+assert(mapReads == before + 1 and textWrites == 1, "Movement updates distance on the very next tick")
+local oldCoords = table.concat(frame.arrow.coords, ",")
+facing = math.pi / 2
+tick()
+assert(table.concat(frame.arrow.coords, ",") ~= oldCoords, "Turning updates the heading immediately")
+before = mapReads
+APR:SetRouteProgress(APR.ActiveRoute, 2, "manual_skip")
+tick()
+assert(mapReads > before or not frame:IsShown(), "A step change cannot be hidden by the idle cache")
+APR:SetRouteProgress(APR.ActiveRoute, 1, "rollback")
+refresh(); tick()
+before = mapReads
+arrow:SetArrowActive(true, arrow.x + 10, arrow.y)
+tick()
+assert(mapReads == before + 1, "Replacing a target invalidates the idle cache")
+print("Idle arrow: 200 unchanged ticks avoid repeated map work and all display writes; movement/turns/steps remain immediate")
