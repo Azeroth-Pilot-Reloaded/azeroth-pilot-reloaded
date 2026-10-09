@@ -5,10 +5,36 @@ required-dependencies:
   - libtaxidata
 
 ignore:
+  # Repository metadata, local environments and developer tooling.
+  - .github
+  - .githooks
+  - .vscode
+  - .cache
+  - .venv
+  - .release
+  - .editorconfig
+  - .gitignore
+  - .luacheckrc
+  - .pkgmeta
+  - .env
+  - docs
+  - tools
+  - tests
+  - Update-Libraries.cmd
+
+  # Documentation is kept in the repository, not loaded by the addon.
   - README.md
   - SECURITY.md
   - wiki.md
   - readme
-  - Update-Libraries.cmd
-  - tools
-  - tests
+  - APR-Core/README.md
+  - APR-Core/libs/FarstriderLib/README.md
+  - APR-Core/libs/FarstriderLib/CHANGELOG.md
+
+  # Embedded libraries load through XML; their standalone TOCs/logo are unused.
+  - "APR-Core/libs/*.toc"
+  - APR-Core/libs/FarstriderLib/Media/logo.png
+
+  # Runtime icons are the generated TGA files. Retain the source licenses.
+  - "APR-Core/assets/ui/mdi/*.svg"
+  - APR-Core/assets/ui/mdi/manifest.json
