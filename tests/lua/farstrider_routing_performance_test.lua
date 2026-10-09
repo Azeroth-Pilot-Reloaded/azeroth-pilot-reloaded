@@ -38,6 +38,7 @@ dofile("APR-Core/utils/StepUtils.lua")
 function APR:NewModule() return {} end
 
 function APR:Debug() end
+function APR:GetSettingsProfile() return {enableAddon = true} end
 
 function APR:StartPerformanceSample() return profileMs end
 
@@ -88,6 +89,7 @@ APR.currentStep = {
     AddExtraLineText = noop,
     AddQuestSteps = noop,
     AddQuestDivider = noop,
+    RemoveQuestStepsAndExtraLineTexts = noop,
 }
 APR.routeconfig = {
     HasRouteInCustomPath = function() return true end,
@@ -234,6 +236,143 @@ assert(arrowActive and arrowX == -768.6 and arrowY == 2450.5,
     "The fallback arrow uses the ScenarioEntrances world coordinate")
 assert(#shownStepKeys == 1 and shownStepKeys[1] == APR.farstrider.NavigationStepKey,
     "The entrance fallback replaces the 404 path-not-found step")
+
+-- A direct same-zone result must survive MarkRouteReady, otherwise every zone event
+-- defeats the ten-second cache even though neither the step nor the goal changed.
+step.EnterScenario, step.DoScenario, step._index = nil, nil, 127
+function APR:GetStep() return step end
+function APR:CheckIsInRouteZone() return true end
+FarstriderLib_API.FindTrailTo = function()
+    findTrailCalls = findTrailCalls + 1
+    return { { loc = {}, completionLoc = {} } }
+end
+APR.farstrider:InvalidatePathCache()
+local before = findTrailCalls
+for _ = 1, 10 do
+    APR.farstrider:ForceRefresh()
+    APR.farstrider:GetMeToRightZone(true)
+    seconds = seconds + 0.5
+end
+assert(findTrailCalls == before + 1 and APR.IsInRouteZone,
+    "Repeated ready-zone checks reuse the cached direct result")
+APR:SetRouteProgress(APR.ActiveRoute, 123, "reset")
+APR.farstrider:ForceRefresh()
+APR.farstrider:GetMeToRightZone(true)
+assert(findTrailCalls == before + 2, "Progress revisions invalidate a result even with the same runtime step index")
+
+-- Sharing a map does not prove direct access: a path containing transport edges
+-- must still take over the guide. Keep the solver check on a fresh context.
+FarstriderLib_API.FindTrailTo = function()
+    findTrailCalls = findTrailCalls + 1
+    return { { loc = {} }, { loc = {} } }
+end
+APR.farstrider.ShowPathStep = function(self) self.activePathStep = {}; return true end
+APR.farstrider:InvalidatePathCache()
+APR.farstrider:ForceRefresh()
+APR.farstrider:GetMeToRightZone(true)
+assert(not APR.IsInRouteZone and APR.farstrider:IsNavigating(),
+    "Same-map routes requiring transport still enable navigation")
+
+local timers = {}
+C_Timer.NewTimer = function(_, callback)
+    local timer = {callback = callback, Cancel = function(self) self.cancelled = true end}
+    timers[#timers + 1] = timer
+    return timer
+end
+local function activeTimer()
+    local result
+    for _, timer in ipairs(timers) do
+        if not timer.cancelled and timer == APR.farstrider._stepCheckTimer then
+            assert(not result, "A request burst keeps only one active routing timer")
+            result = timer
+        end
+    end
+    return assert(result)
+end
+
+-- A routing pass renders the step itself, so that render must not enqueue a
+-- second route pass; requests from inside the pass must not recurse either.
+function APR:UpdateQuestAndStep()
+    self.farstrider:ScheduleRouteCheck(self:GetCurrentStepToken(self.ActiveRoute, APRData.test[self.ActiveRoute]))
+    self.farstrider:GetMeToRightZone(true)
+end
+APR.farstrider:InvalidatePathCache()
+before = findTrailCalls
+for _ = 1, 10 do APR.farstrider:RequestRouteCheck() end
+activeTimer().callback()
+assert(findTrailCalls == before + 1 and not APR.farstrider._stepCheckTimer,
+    "A burst and its own step render produce one solver call with no follow-up timer")
+
+-- If an immediate zone check wins the race, it cancels the already scheduled check.
+APR.farstrider:RequestRouteCheck()
+local replaced = activeTimer()
+local passes = metrics.ZoneRoutingQuestSync.count
+APR.farstrider:ForceRefresh()
+APR.farstrider:GetMeToRightZone(true)
+replaced.callback()
+assert(replaced.cancelled and metrics.ZoneRoutingQuestSync.count == passes + 1,
+    "An immediate route check supersedes the deferred check without a second render")
+
+APR.farstrider:RequestRouteCheck()
+local stale = activeTimer()
+APR:SetRouteProgress(APR.ActiveRoute, 124, "manual_skip")
+passes = metrics.ZoneRoutingQuestSync.count
+stale.callback()
+assert(metrics.ZoneRoutingQuestSync.count == passes, "A stale step callback does no routing work")
+
+-- Route changes during a render wait for the transaction to end before pathfinding.
+APR.stepUpdateRunning = true
+before = findTrailCalls
+APR.farstrider:GetMeToRightZone(true)
+assert(findTrailCalls == before, "Pathfinding cannot run inside a step render")
+APR.stepUpdateRunning = false
+activeTimer().callback()
+assert(findTrailCalls == before + 1)
+
+-- A yielded progression batch has not chosen the final goal yet.
+function APR:UpdateQuestAndStep() end
+APR.stepUpdateTimer = {}
+APR.farstrider:InvalidatePathCache()
+before = findTrailCalls
+APR.farstrider:ForceRefresh()
+APR.farstrider:GetMeToRightZone(true)
+assert(findTrailCalls == before, "Yielded progression does not calculate an intermediate destination")
+APR.stepUpdateTimer = nil
+activeTimer().callback()
+assert(findTrailCalls == before + 1, "The final destination is routed after progression settles")
+
+-- Becoming ready can render/complete another step. That final render's request is
+-- suppressed during routing, but its changed context must get a fresh deferred check.
+FarstriderLib_API.FindTrailTo = function()
+    findTrailCalls = findTrailCalls + 1
+    return { { loc = {}, completionLoc = {} } }
+end
+function APR:UpdateStep()
+    self:SetRouteProgress(self.ActiveRoute, APRData.test[self.ActiveRoute] + 1, "automatic")
+end
+APR.farstrider.showOutOfZoneStepContent, APR.IsInRouteZone = true, false
+APR.farstrider:InvalidatePathCache()
+before = findTrailCalls
+APR.farstrider:ForceRefresh()
+APR.farstrider:GetMeToRightZone(true)
+assert(findTrailCalls == before + 1 and APR.farstrider._stepCheckTimer,
+    "A step completed by the ready-zone render schedules navigation for its successor")
+activeTimer().callback()
+assert(findTrailCalls == before + 2 and not APR.farstrider._stepCheckTimer)
+
+function APR:UpdateStep() error("navigation render failed") end
+APR.farstrider._suppressScheduledRouteCheck = true
+assert(not pcall(APR.farstrider.RefreshStepForNavigation, APR.farstrider))
+assert(APR.farstrider._suppressScheduledRouteCheck,
+    "Navigation rendering preserves an enclosing suppression guard on failure")
+APR.farstrider._suppressScheduledRouteCheck = nil
+
+function APR:UpdateQuestAndStep() error("render failed") end
+APR.farstrider:ForceRefresh()
+assert(not pcall(APR.farstrider.GetMeToRightZone, APR.farstrider, true))
+assert(not APR.farstrider._routingInProgress and not APR.farstrider._suppressScheduledRouteCheck,
+    "A failed route pass releases its reentrancy and scheduling guards")
+print("Farstrider: ready-zone cache, same-map transports, request bursts, stale steps and render deferral passed")
 
 print(
     "Farstrider routing: 10 identical retries reused 1 Dijkstra result; map, step, TTL and explicit invalidation passed")

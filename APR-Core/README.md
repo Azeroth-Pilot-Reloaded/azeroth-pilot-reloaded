@@ -347,6 +347,13 @@ CPU usage. The instrumented tables show registered call sites. Separate CPU and 
 graphs use the resource monitor; they do not attribute allocations to individual
 functions or prove a memory leak.
 
+CPU/FPS samples run once per second without scanning memory. The resource page's
+Measure memory button explicitly refreshes the memory reading; its original timestamp
+is retained on subsequent CPU samples. The scan can briefly block the client, and its
+cost is recorded as `ResourceMemoryScan`. Closing or resetting capture never starts a scan.
+`StepRenderContent` and `StepRenderCommit` distinguish step logic from row/layout commits;
+`RoutePathUiRefresh` measures the catalog/status refresh coalesced outside step rendering.
+
 ## UI/UX and skins
 
 - Workspace options open on Automation. Its General tab combines quest preferences and

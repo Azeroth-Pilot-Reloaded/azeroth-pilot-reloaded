@@ -1,9 +1,9 @@
--- Samples WoW's APR CPU attribution every second and memory every five seconds during capture.
--- The ten-minute ring is bounded; no heap traversal, forced collection or profiler CVar changes.
+-- Samples WoW's APR CPU attribution every second; memory scans are explicitly requested.
+-- UpdateAddOnMemoryUsage can block for hundreds of milliseconds, so never run it on a ticker.
 
 APR.ResourceMonitor = {}
 local Monitor = APR.ResourceMonitor
-local SAMPLE_LIMIT, MEMORY_INTERVAL = 600, 5
+local SAMPLE_LIMIT, COUNT_INTERVAL = 600, 5
 
 local function Read(api, ...)
     if type(api) ~= "function" then return end
@@ -24,7 +24,21 @@ local function CountEntries(entries)
     return count
 end
 
-function Monitor:Sample()
+function Monitor:ScanMemory()
+    if not APR.performanceLogging or not APRData or not APRData.PerformanceLog then return end
+    self.memoryKB, self.memoryAt, self.scanMs = nil, nil, nil
+    if type(UpdateAddOnMemoryUsage) == "function" and type(GetAddOnMemoryUsage) == "function" then
+        local started = debugprofilestop()
+        local ok = pcall(UpdateAddOnMemoryUsage)
+        self.scanMs = math.max(0, debugprofilestop() - started)
+        APR:FinishPerformanceSample("ResourceMemoryScan", started)
+        if ok then self.memoryKB = Number(Read(GetAddOnMemoryUsage, "APR")) end
+    end
+    if self.memoryKB then self.memoryAt = GetTime() end
+    self:Sample(true)
+end
+
+function Monitor:Sample(force)
     if not APR.performanceLogging then return end
     local log = APRData and APRData.PerformanceLog
     if not log then return end
@@ -34,7 +48,7 @@ function Monitor:Sample()
         resources = {samples = {}, cursor = 0, count = 0}
         log.resources = resources
     end
-    if resources.lastAt and now - resources.lastAt < 1 then return end
+    if not force and resources.lastAt and now - resources.lastAt < 1 then return end
     local sample = {time = now, route = APR.ActiveRoute,
         step = APRData[APR.PlayerID] and APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute]}
     local profiler, metric = C_AddOnProfiler, Enum and Enum.AddOnProfilerMetric
@@ -46,21 +60,13 @@ function Monitor:Sample()
         end
     end
     sample.fps = Number(Read(GetFramerate))
-    if not self.lastMemoryAttempt or now - self.lastMemoryAttempt >= MEMORY_INTERVAL then
-        self.lastMemoryAttempt = now
-        self.memoryKB, self.memoryAt, self.scanMs = nil, nil, nil
-        if type(UpdateAddOnMemoryUsage) == "function" and type(GetAddOnMemoryUsage) == "function" then
-            local started = debugprofilestop()
-            local ok = pcall(UpdateAddOnMemoryUsage)
-            self.scanMs = math.max(0, debugprofilestop() - started)
-            if ok then self.memoryKB = Number(Read(GetAddOnMemoryUsage, "APR")) end
-        end
-        if self.memoryKB then
-            self.memoryAt = now
-            resources.firstMemoryKB = resources.firstMemoryKB or self.memoryKB
-            resources.firstMemoryAt = resources.firstMemoryAt or now
-            resources.peakMemoryKB = math.max(resources.peakMemoryKB or 0, self.memoryKB)
-        end
+    if self.memoryKB then
+        resources.firstMemoryKB = resources.firstMemoryKB or self.memoryKB
+        resources.firstMemoryAt = resources.firstMemoryAt or self.memoryAt
+        resources.peakMemoryKB = math.max(resources.peakMemoryKB or 0, self.memoryKB)
+    end
+    if not self.lastCountAt or now - self.lastCountAt >= COUNT_INTERVAL then
+        self.lastCountAt = now
         -- Counts help correlate retained data with memory growth; they are not byte estimates.
         self.counts = {
             routes = CountEntries(APR._effectiveRouteStepsCache),
@@ -82,7 +88,7 @@ end
 
 function Monitor:Reset()
     self:Stop()
-    self.lastMemoryAttempt, self.memoryKB, self.memoryAt, self.counts = nil, nil, nil, nil
+    self.lastCountAt, self.memoryKB, self.memoryAt, self.scanMs, self.counts = nil, nil, nil, nil, nil
     if APR.performanceLogging then
         self:Sample()
         self.ticker = C_Timer.NewTicker(1, function() self:Sample() end)

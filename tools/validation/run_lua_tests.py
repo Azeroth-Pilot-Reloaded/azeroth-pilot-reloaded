@@ -21,7 +21,8 @@ GROUPS = {
     "xp-overlay-only": ("xp_overlay_persistence",),
     "zone-performance-only": ("zone_transition_performance", "farstrider_routing_performance"),
     "performance-only": ("quest_order_performance", "zone_transition_performance",
-                         "farstrider_routing_performance", "step_progression"),
+                         "farstrider_routing_performance", "step_progression",
+                         "resource_monitor", "performance_dashboard", "route_path_performance"),
 }
 
 
