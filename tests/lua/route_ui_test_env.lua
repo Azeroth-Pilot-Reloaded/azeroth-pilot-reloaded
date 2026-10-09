@@ -90,6 +90,9 @@ function methods:SetWidth(width) self.width = width end
 function methods:GetWidth() return self.width end
 
 function methods:GetScale() return self.scale or 1 end
+function methods:GetEffectiveScale() return self:GetScale() * (self.parent and self.parent:GetEffectiveScale() or 1) end
+function methods:GetPoint() return unpack(self.point or {}) end
+function methods:GetNumPoints() return self.point and 1 or 0 end
 
 function methods:SetScale(value)
     check(self); self.scale = value
@@ -123,6 +126,8 @@ end
 function methods:SetSize(width, height) self.width, self.height = width, height end
 
 function methods:GetSize() return self.width, self.height end
+
+function methods:Raise() self.raised = true end
 
 function methods:SetParent(parent)
     check(self); self.parent = parent
