@@ -11,7 +11,6 @@ APR.settings = APR:NewModule("Settings", "AceConsole-3.0")
 
 -- Ace option config table
 local aceConfig = _G.LibStub("AceConfig-3.0")
-local aceDialog = _G.LibStub("AceConfigDialog-3.0")
 local TextStyleUtils = APR.TextStyleUtils
 
 -- Databroker support -- minimapIcon
@@ -36,6 +35,7 @@ end
 
 function APR.settings:InitializeBlizOptions()
     self:InitializeSettings()
+    APR:EnableWorkspaceWidgets()
     self:createBlizzOptions()
     self:CreateMiniMapButton()
 
@@ -182,6 +182,7 @@ function APR.settings:InitializeSettings()
             afkTextAppearance = APR:CreateTextAppearanceDefaults(true),
             --debug
             debug = false,
+            showPerformanceTab = false,
             showEvent = false,
             zoneDetectionDebug = false,
             enableAddon = true,
@@ -232,7 +233,7 @@ function APR.settings.ChatCommand(input)
 end
 
 function APR.settings:RefreshProfile()
-    if APR.LayoutEditor then APR.LayoutEditor:Hide() end
+    if APR.LayoutEditor then APR.LayoutEditor:Hide(false) end
     self.profile = self.db.profile
     C_UI.Reload()
 end
@@ -601,6 +602,9 @@ function APR.settings:createBlizzOptions()
                                     if APR.fillersFrame and APR.fillersFrame.ResetPosition then
                                         APR.fillersFrame:ResetPosition()
                                     end
+                                end,
+                                disabled = function()
+                                    return self.profile.fillersFrameSnapToCurrentStep
                                 end,
                             },
                         },
@@ -1788,7 +1792,7 @@ function APR.settings:createBlizzOptions()
                     layoutEditor = {
                         order = 0.5, type = "execute", width = "full",
                         name = L["UI_LAYOUT_TITLE"], desc = L["UI_LAYOUT_HELP"],
-                        func = function() APR.LayoutEditor:Show() end,
+                        func = function() APR.LayoutEditor:ShowFromSettings() end,
                         disabled = InCombatLockdown,
                     },
                     subgroup_Enable = {
@@ -1826,38 +1830,34 @@ function APR.settings:createBlizzOptions()
                                 get = GetProfileOption,
                                 set = SetProfileOption,
                             },
-                            elvuiSkin = {
+                            uiSkin = {
                                 order = 1.25,
-                                type = "toggle",
-                                name = L["ELVUI_SKIN"],
+                                type = "select",
+                                name = L["UI_THEME"],
+                                desc = L["UI_THEME_DESC"],
                                 width = "full",
-                                get = GetProfileOption,
-                                set = function(info, value)
-                                    SetProfileOption(info, value)
+                                values = function()
+                                    local skins = {wow = "World of Warcraft"}
+                                    if _G.ElvUI then skins.ElvUI = "ElvUI" end
+                                    if _G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function" then
+                                        skins.EllesmereUI = "EllesmereUI"
+                                    end
+                                    return skins
+                                end,
+                                get = function()
+                                    -- Preserve existing profiles and the integrations' ElvUI priority.
+                                    if _G.ElvUI and self.profile.elvuiSkin ~= false then return "ElvUI" end
+                                    if _G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function"
+                                        and self.profile.ellesmereuiSkin ~= false then return "EllesmereUI" end
+                                    return "wow"
+                                end,
+                                set = function(_, value)
+                                    self.profile.elvuiSkin = value == "ElvUI"
+                                    self.profile.ellesmereuiSkin = value == "EllesmereUI"
                                     ReloadUI()
                                 end,
                                 confirm = true,
-                                confirmText = L["ELVUI_CONFIRM"],
-                                hidden = function()
-                                    return not _G.ElvUI
-                                end,
-                            },
-                            ellesmereuiSkin = {
-                                order = 1.26,
-                                type = "toggle",
-                                name = L["ELLESMEREUI_SKIN"],
-                                desc = L["ELLESMEREUI_SKIN_DESC"],
-                                width = "full",
-                                get = GetProfileOption,
-                                set = function(info, value)
-                                    SetProfileOption(info, value)
-                                    ReloadUI()
-                                end,
-                                confirm = true,
-                                confirmText = L["ELLESMEREUI_CONFIRM"],
-                                hidden = function()
-                                    return not (_G.EllesmereUI and _G.EllesmereUI.RegisterSkin)
-                                end,
+                                confirmText = L["UI_THEME_CONFIRM"],
                             },
                             resetPartyPosition = {
                                 name = L["SHOW_CHANGELOG"],
@@ -1876,6 +1876,15 @@ function APR.settings:createBlizzOptions()
                         inline = true,
                         name = L["DEBUG"],
                         args = {
+                            showPerformanceTab = {
+                                order = 0.5, type = "toggle", width = "full",
+                                name = L["UI_SHOW_PERF_TAB"], desc = L["UI_SHOW_PERF_TAB_DESC"],
+                                get = GetProfileOption,
+                                set = function(info, value)
+                                    SetProfileOption(info, value)
+                                    APR.Workspace:LayoutTabs()
+                                end,
+                            },
                             coordinateShow = {
                                 order = 2.1,
                                 type = "toggle",
@@ -1953,16 +1962,13 @@ function APR.settings:createBlizzOptions()
     }
 
     -- Register setting to the option table
+    self.optionsTable = optionsTable
     aceConfig:RegisterOptionsTable(APR.title, optionsTable)
 
-    -- Add settings to bliz option
-    APR.Options = aceDialog:AddToBlizOptions(APR.title, APR.title)
-
-    -- Add setting route to bliz option
+    -- Keep option definitions available to integrations; Blizzard gets only a launcher.
     aceConfig:RegisterOptionsTable(APR.title .. "/Route", APR.routeconfig:InitRouteConfig())
-    APR.OptionsRoute = aceDialog:AddToBlizOptions(APR.title .. "/Route", L["ROUTE"], APR.title)
 
-    -- add profile to bliz option
+    -- Profiles share the same authoritative callbacks as the workspace.
     local profileOptions = _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
     profileOptions.args.reset_all_profiles_spacer = {
         order = 998,
@@ -1982,179 +1988,36 @@ function APR.settings:createBlizzOptions()
         end,
     }
     aceConfig:RegisterOptionsTable(APR.title .. "/Profile", profileOptions)
-    aceDialog:AddToBlizOptions(APR.title .. "/Profile", L["PROFILES"], APR.title)
-
-    -- Add about to bliz option
-    APR.settings:CreateAboutOption()
-
-    local category, layout = Settings.RegisterCanvasLayoutCategory(APR, APR.title);
-    APR.settings.category = category
+    self.profileOptions = profileOptions
+    self:CreateBlizzardLauncher()
 end
 
-function APR.settings:CreateAboutOption()
-    local function wrapHelp(text)
-        return APR:WrapTextWithAppearanceColor(text, "general", "accent")
+function APR.settings:CreateBlizzardLauncher()
+    if APR.Options then return end
+    local panel = CreateFrame("Frame", "APRBlizzardLauncher", UIParent)
+    panel.name = APR.title
+    panel:Hide()
+    APR.Options = panel
+    panel:SetScript("OnShow", function()
+        if panel.logo then return end
+        panel.logo = APR.UI:Icon(panel, "logo", 112)
+        panel.logo:SetPoint("CENTER", panel, "CENTER", 0, 100)
+        panel.title = APR.UI:Label(panel, APR.title, 26, "accent")
+        panel.title:SetPoint("TOPLEFT", panel, "CENTER", -280, 24)
+        panel.title:SetPoint("TOPRIGHT", panel, "CENTER", 280, 24)
+        panel.title:SetJustifyH("CENTER")
+        panel.open = APR.UI:Button(panel, L["SHOW_MENU"], 280, function()
+            self:OpenSettings(APR.title)
+        end)
+        panel.open:SetHeight(40)
+        panel.open:SetPoint("TOP", panel.title, "BOTTOM", 0, -32)
+    end)
+    if Settings and Settings.RegisterCanvasLayoutCategory and Settings.RegisterAddOnCategory then
+        self.category = Settings.RegisterCanvasLayoutCategory(panel, APR.title)
+        Settings.RegisterAddOnCategory(self.category)
+    elseif InterfaceOptions_AddCategory then
+        InterfaceOptions_AddCategory(panel)
     end
-
-    local function wrapTranslator(text)
-        return APR:WrapTextWithAppearanceColor(text, "general", "muted")
-    end
-
-    local function commandLine(command, description)
-        return wrapHelp(command) .. " - " .. description
-    end
-
-    local optionsTable = {
-        name = L["ABOUT_HELP"],
-        type = "group",
-        args = {
-            author = {
-                order = 1,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = function() return wrapHelp(string.format(L["AUTHOR"], "Neogeekmo/Neoldric")) end,
-            },
-            dev = {
-                order = 2,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = function() return wrapHelp(string.format(L["DEV"], "Neogeekmo/Neoldric, Kamian")) end,
-            },
-            route_designer = {
-                order = 2.1,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = function() return wrapHelp(string.format(L["ROUTE_DESIGNER"], "Pahonix, Ola, Clara, Jumbonero")) end,
-            },
-            support = {
-                order = 2.2,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = function() return wrapHelp(string.format(L["ABOUT_SUPPORT"], "NightofStarrs, Pahonix")) end,
-            },
-            graphic = {
-                order = 2.3,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = function()
-                    return wrapHelp(string.format(L["ABOUT_GRAPHIC"], "Rycia, Neogeekmo/Neoldric"))
-                end,
-            },
-            Translator = {
-                order = 2.4,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = function()
-                    return wrapHelp(string.format(L["ABOUT_TRANSLATOR"], "\n" ..
-                        "      " .. wrapTranslator(FRFR .. ": ") .. "Neogeekmo, Jmsche, Mania\n" ..
-                        "      " .. wrapTranslator(DEDE .. ": ") .. "Kamian, Movion\n" ..
-                        "      " .. wrapTranslator(ESMX .. ": ") .. "Jean\n" ..
-                        "      " .. wrapTranslator(RURU .. ": ") .. "ZamestoTV"))
-                end,
-            },
-            version = {
-                order = 2.5,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = function() return wrapHelp(string.format(L["VERSION"], APR.version)) end,
-            },
-            header_disable_Auto = {
-                order = 3,
-                type = "header",
-                width = "full",
-                name = L["DISABLED_AUTOMATION"],
-            },
-            blank1 = {
-                order = 3.1,
-                type = "description",
-                width = "full",
-                name = " ",
-            },
-            disable_Auto = {
-                order = 3.2,
-                type = "description",
-                name = L["DISABLED_AUTOMATION_DESC"],
-                width = "full",
-                fontSize = "medium",
-            },
-            blank11 = {
-                order = 3.3,
-                type = "description",
-                width = "full",
-                name = " ",
-            },
-            header_help = {
-                order = 4,
-                type = "header",
-                width = "full",
-                name = L["HELP"],
-            },
-            blank0 = {
-                order = 4.1,
-                type = "description",
-                width = "full",
-                name = " ",
-            },
-            command = {
-                order = 4.2,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = function()
-                    return commandLine("/apr help, h", L["HELP_COMMAND"]) .. "\n" ..
-                        commandLine("/apr", L["SHOW_MENU"]) .. "\n" ..
-                        commandLine("/apr about", L["SHOW_ABOUT"]) .. "\n" ..
-                        commandLine("/apr coord", L["COORD_COMMAND"]) .. "\n" ..
-                        commandLine("/apr discord", L["DISCORD_COMMAND"]) .. "\n" ..
-                        commandLine("/apr forcereset, fr", L["FORCERESET_COMMAND"]) .. "\n" ..
-                        commandLine("/apr github", L["GITHUB_COMMAND"]) .. "\n" ..
-                        commandLine("/apr qol", L["QOL_COMMAND"]) .. "\n" ..
-                        commandLine("/apr reset, r", L["RESET_COMMAND"]) .. "\n" ..
-                        commandLine("/apr resetcustom", L["RESET_CUSTOM_COMMAND"]) .. "\n" ..
-                        commandLine("/apr rollback, rb", L["ROLLBACK_COMMAND"]) .. "\n" ..
-                        commandLine("/apr route", L["ROUTE_COMMAND"]) .. "\n" ..
-                        commandLine("/apr scribe, writer, 42", ";)") .. "\n" ..
-                        commandLine("/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"]) .. "\n" ..
-                        commandLine("/apr status", L["STATUS_COMMAND"])
-                end,
-            },
-            blank01 = {
-                order = 4.3,
-                type = "description",
-                width = "full",
-                name = " ",
-            },
-            header_Credit_legacy = {
-                order = 5,
-                type = "header",
-                width = "full",
-                name = L["LEGACY"],
-            },
-            blank2 = {
-                order = 5.1,
-                type = "description",
-                width = "full",
-                name = " ",
-            },
-            Zyrrael = {
-                order = 5.2,
-                type = "description",
-                width = "full",
-                fontSize = "medium",
-                name = L["WELCOME_ZYRR"] ..
-                    " " .. L["LEGACY_TEAM"] .. " " .. "Deathmessinger, DesMephisto, BrutallStatic",
-            },
-        }
-    }
-    aceConfig:RegisterOptionsTable(APR.title .. "/About", optionsTable)
-    aceDialog:AddToBlizOptions(APR.title .. "/About", L["ABOUT_HELP"], APR.title)
 end
 
 function APR.settings:CreateMiniMapButton()
@@ -2168,7 +2031,8 @@ function APR.settings:CreateMiniMapButton()
                 self.profile.enableAddon = not self.profile.enableAddon
                 self:ToggleAddon()
             else
-                if SettingsPanel:IsShown() then
+                if (APR.Workspace and APR.Workspace.frame and APR.Workspace.frame:IsShown())
+                    or (SettingsPanel and SettingsPanel:IsShown()) then
                     self:CloseSettings()
                 else
                     self:OpenSettings(APR.title)
@@ -2220,51 +2084,22 @@ function APR.settings:ToggleAddon()
 end
 
 function APR.settings:OpenSettings(name)
-    if name == L["ROUTE"] then return APR.RouteBrowser:Show() end
-    if name == APR.title then
-        if InterfaceOptionsFrame_OpenToCategory then
-            InterfaceOptionsFrame_OpenToCategory(APR.title)
-        else
-            Settings.OpenToCategory(self.category.ID)
-        end
+    if APR.Workspace then
+        local page = name == L["ROUTE"] and "route" or name == L["ABOUT_HELP"] and "about" or "options"
+        return APR.Workspace:Show(page, name == L["PROFILES"] and "profiles" or nil)
     end
-    if APR.Options then
-        if SettingsPanel then
-            local category = SettingsPanel:GetCategoryList():GetCategory(APR.Options.name)
-            if category then
-                SettingsPanel:Open()
-                SettingsPanel:SelectCategory(category)
-                if APR.OptionsRoute and category:HasSubcategories() then
-                    for _, subcategory in pairs(category:GetSubcategories()) do
-                        if subcategory:GetName() == name then
-                            SettingsPanel:SelectCategory(subcategory)
-                            break
-                        end
-                    end
-                end
-            end
-            return
-        elseif InterfaceOptionsFrame_OpenToCategory then
-            InterfaceOptionsFrame_OpenToCategory(APR.Options)
-            return
-        else
-            Settings.OpenToCategory(self.category.ID)
-        end
+    if name == L["ROUTE"] then return APR.RouteBrowser:Show() end
+    if self.category and Settings and Settings.OpenToCategory then
+        Settings.OpenToCategory(self.category:GetID())
+    elseif APR.Options and InterfaceOptionsFrame_OpenToCategory then
+        InterfaceOptionsFrame_OpenToCategory(APR.Options)
     end
 end
 
 function APR.settings:CloseSettings()
-    if APR.Options then
-        if SettingsPanel then
-            local category = SettingsPanel:GetCategoryList():GetCategory(APR.Options.name)
-            if category then
-                SettingsPanel:Hide()
-            end
-            return
-        elseif InterfaceOptionsFrame then
-            InterfaceOptionsFrame:Hide()
-        end
-    end
+    if APR.Workspace then APR.Workspace:Hide() end
+    if SettingsPanel then SettingsPanel:Hide() end
+    if InterfaceOptionsFrame then InterfaceOptionsFrame:Hide() end
 end
 
 function APR.settings:SetRewardPriority(info, value)

@@ -326,16 +326,6 @@ local function SkinStaticFrames()
         SkinButton(rsButton)
     end
 
-    -- Changelog
-    local clFrame = _G.ChangeLogFrame
-    if clFrame then
-        SkinBackdropFrame(clFrame)
-    end
-    local clScroll = _G.ChangeLogScrollFrame
-    if clScroll then
-        SkinScrollBar(clScroll)
-    end
-
     -- Party Frame
     local partyPanel = _G.PartyScreenPanel
     if partyPanel then

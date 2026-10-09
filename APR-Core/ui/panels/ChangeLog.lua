@@ -1,207 +1,100 @@
--- Builds the release-notes panel, parses its lightweight markup and reflows localized text.
--- Version visibility and window position are stored in the active APR profile.
-
+-- Release notes use one formatter for startup and the Options page; no separate legacy window.
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local LibWindow = LibStub("LibWindow-1.1")
-
 APR.changelog = APR:NewModule("ChangeLog")
 
-
----------------------------------------------------------------------------------------
---------------------------------- Change log Frames -----------------------------------
----------------------------------------------------------------------------------------
-
-local ChangeLogFrame = CreateFrame("Frame", "ChangeLogFrame", UIParent, "BackdropTemplate")
-ChangeLogFrame:SetSize(600, 500)
-ChangeLogFrame:SetPoint("CENTER", 0, 0)
-ChangeLogFrame:SetFrameStrata("FULLSCREEN")
-ChangeLogFrame:SetBackdrop({
-    bgFile = "Interface\\Tooltips\\UI-Tooltip-Background",
-    tile = true,
-    tileSize = 16
-})
-APR:SetPanelColor(ChangeLogFrame, APR.Color.defaultBackdrop)
-ChangeLogFrame:EnableMouse(true)
-
-local headerFrame = CreateFrame('Frame', nil, ChangeLogFrame, 'TitleDragAreaTemplate')
-headerFrame:SetPoint('CENTER', ChangeLogFrame, 'TOP')
-headerFrame:SetSize(600, 150)
-
-local CloseButton = CreateFrame("Button", nil, headerFrame, "UIPanelCloseButton")
-CloseButton:SetSize(16, 16)
-CloseButton:SetPoint("TOPRIGHT", headerFrame, "TOPRIGHT", 0, -10)
-if APR.RegisterSkinTarget then APR:RegisterSkinTarget(CloseButton, "close") end
-CloseButton:SetScript("OnClick", function()
-    ChangeLogFrame:Hide()
-end)
-
-local headerTexture = headerFrame:CreateTexture(nil, "ARTWORK")
-headerTexture:SetSize(600, 150)
-headerTexture:SetPoint("TOP", headerFrame, "TOP", 0, 0)
-headerTexture:SetTexture("Interface\\Addons\\APR\\APR-Core\\assets\\header")
-
-local function GetGitHubReleasesUrl()
-    local base = APR and APR.github or nil
-    if type(base) ~= "string" or base == "" then
-        return "https://github.com/Azeroth-Pilot-Reloaded/azeroth-pilot-reloaded/releases"
-    end
-    base = base:gsub("/+$", "")
-    return base .. "/releases"
-end
-
-local footerFrame = CreateFrame("Frame", nil, ChangeLogFrame)
-footerFrame:SetPoint("BOTTOMLEFT", ChangeLogFrame, "BOTTOMLEFT", 16, 12)
-footerFrame:SetPoint("BOTTOMRIGHT", ChangeLogFrame, "BOTTOMRIGHT", -16, 12)
-footerFrame:SetHeight(22)
-
-local footerButton = CreateFrame("Button", nil, footerFrame, "BackdropTemplate")
-footerButton:SetAllPoints(footerFrame)
-footerButton:EnableMouse(true)
-
-local footerText = footerFrame:CreateFontString(nil, "OVERLAY", "GameFontHighlightSmall")
-footerText:SetPoint("CENTER", footerFrame, "CENTER", 0, 0)
-footerText:SetJustifyH("CENTER")
-footerText:SetWordWrap(true)
-footerText:SetWidth(ChangeLogFrame:GetWidth() - 60)
-APR:RegisterFontString(footerText, "general", { role = "accent", sizeDelta = -2 })
-
-footerButton:SetScript("OnEnter", function(self)
-    local url = GetGitHubReleasesUrl()
-    GameTooltip:SetOwner(self, "ANCHOR_TOP")
-    APR:AddTooltipLine(GameTooltip, L["UI_CHANGELOG_COPY_LINK"], "general", "base", true)
-    APR:AddTooltipLine(GameTooltip, url, "general", "accent", true)
-    GameTooltip:Show()
-end)
-
-footerButton:SetScript("OnLeave", function()
-    GameTooltip:Hide()
-end)
-
-footerButton:SetScript("OnClick", function()
-    local url = GetGitHubReleasesUrl()
-    if APR.questionDialog and APR.questionDialog.CreateEditBoxPopup then
-        APR.questionDialog:CreateEditBoxPopup(L["COPY_HELPER"], CLOSE, url)
-        return
-    end
-    print(url)
-end)
-
-local ScrollFrame = CreateFrame("ScrollFrame", "ChangeLogScrollFrame", ChangeLogFrame, "UIPanelScrollFrameTemplate")
-ScrollFrame:SetPoint("TOPLEFT", ChangeLogFrame, "TOPLEFT", 16, -68)
-ScrollFrame:SetPoint("BOTTOMRIGHT", footerFrame, "TOPRIGHT", -24, 8)
-
-local TextFrame = CreateFrame("Frame", nil, ScrollFrame)
-ScrollFrame:SetScrollChild(TextFrame)
-
-local Text = TextFrame:CreateFontString(nil, "OVERLAY", "GameFontNormal")
-Text:SetPoint("TOPLEFT", 10, -10)
-Text:SetJustifyH("LEFT")
-Text:SetWordWrap(true)
-APR:RegisterFontString(Text, "general", {
-    role = "base",
-    onApplied = function(fontString)
-        TextFrame:SetHeight(fontString:GetStringHeight())
-    end,
-})
-
-local function RefreshChangeLogLayout()
-    local scrollWidth = ScrollFrame:GetWidth() or 0
-    local scrollHeight = ScrollFrame:GetHeight() or 0
-
-    if scrollWidth <= 0 then
-        scrollWidth = (ChangeLogFrame:GetWidth() or 600) - 40
-    end
-    if scrollHeight <= 0 then
-        scrollHeight = (ChangeLogFrame:GetHeight() or 500) - 120
-    end
-
-    TextFrame:SetWidth(scrollWidth)
-    TextFrame:SetHeight(scrollHeight)
-    Text:SetWidth(scrollWidth - 20)
-    footerText:SetWidth((ChangeLogFrame:GetWidth() or 600) - 60)
-end
-
-ChangeLogFrame:HookScript("OnShow", RefreshChangeLogLayout)
-ChangeLogFrame:HookScript("OnSizeChanged", RefreshChangeLogLayout)
-
----------------------------------------------------------------------------------------
------------------------------- Function Party Frames ----------------------------------
----------------------------------------------------------------------------------------
-
 function APR.changelog:OnInit()
-    LibWindow.RegisterConfig(ChangeLogFrame, APR.settings.profile.changeLogFrame)
-    ChangeLogFrame.RegisteredForLibWindow = true
-    LibWindow.MakeDraggable(ChangeLogFrame)
-    RefreshChangeLogLayout()
-    self:SetChangeLog()
-    ChangeLogFrame:Hide()
-
-    if APR.version ~= APR.settings.profile.lastRecordedVersion then
-        if APR.settings.profile.showChangeLog then
-            self:ShowChangeLog()
-        end
+    if APR.LayoutEditor and APR.LayoutEditor.firstUsePending then return end
+    if APR.version ~= APR.settings.profile.lastRecordedVersion and APR.settings.profile.showChangeLog then
+        self:ShowChangeLog()
     end
 end
 
 function APR.changelog:ShowChangeLog()
-    ChangeLogFrame:Show()
-    LibWindow.RestorePosition(ChangeLogFrame)
+    APR.Workspace:Show("options", "changelog")
 end
 
-function APR.changelog:ParseFormatting(text)
-    -- Bold + Italic: ***text*** -> warning color
-    text = text:gsub("%*%*%*(.-)%*%*%*", function(match)
-        return APR:WrapTextWithAppearanceColor(match, "general", "warning")
-    end)
-
-    -- Bold: **text** -> accent color
-    text = text:gsub("%*%*(.-)%*%*", function(match)
-        return APR:WrapTextWithAppearanceColor(match, "general", "accent")
-    end)
-
-    -- Italic: *text* -> muted color
-    text = text:gsub("%*(.-)%*", function(match)
-        return APR:WrapTextWithAppearanceColor(match, "general", "muted")
-    end)
-
-    return text
+function APR.changelog:GetText()
+    return self:ParseChangelogText((L["New Changelog"] or "") .. "\n" .. (L["Prev Changelog"] or ""))
 end
 
--- Parse full changelog text
-function APR.changelog:ParseChangelogText(text)
-    local formatted = APR:WrapTextWithAppearanceColor(APR.title, "general", "accent")
-
-    for line in text:gmatch("[^\r\n]+") do
-        if line:match("^v%d+%.%d+%.%d+") then
-            -- Match version line: vX.Y.Z (YYYY-MM-DD)
-            local version, date = line:match("^(v%d+%.%d+%.%d+)%s*%((.-)%)")
-            if version and date then
-                formatted = formatted .. "\n\n" ..
-                    APR:WrapTextWithAppearanceColor(version, "general", "warning") .. " (" ..
-                    APR:WrapTextWithAppearanceColor(date, "general", "accent") .. "):\n"
-            end
-        elseif line ~= "" and not line:match("^#") then
-            -- Regular line
-            formatted = formatted .. self:ParseFormatting(line) .. "\n"
-        elseif line:match("^#") then
-            -- Category line
-            formatted = formatted .. "\n" .. APR:WrapTextWithAppearanceColor(line, "general", "accent") .. "\n"
-        else
-            formatted = formatted .. " \n"
-        end
-    end
-
-    return formatted
+function APR.changelog:GetBlocks()
+    return self:ParseBlocks((L["New Changelog"] or "") .. "\n\n" .. (L["Prev Changelog"] or ""))
 end
 
 function APR.changelog:SetChangeLog()
-    local newChangelog = L["New Changelog"] or ""
-    local prevChangelog = L["Prev Changelog"] or ""
-    local changelogText = newChangelog .. "\n" .. prevChangelog
-    local changelog = self:ParseChangelogText(changelogText)
-    Text:SetText(changelog)
-    TextFrame:SetHeight(Text:GetStringHeight())
+    local options = APR.OptionsPanel
+    if options and options.frame and options.frame:IsShown() and options.selected == "changelog" then
+        -- AceConfig does not track externally supplied containers in its NotifyChange refresh list.
+        options:Select("changelog")
+    end
+end
 
-    local url = GetGitHubReleasesUrl()
-    footerText:SetText(L["GITHUB_RELEASES"])
+function APR.changelog:ParseFormatting(text)
+    -- Protect literal code/escaped punctuation before interpreting emphasis.
+    local literals = {}
+    local function literal(value)
+        literals[#literals + 1] = value
+        return "\001" .. #literals .. "\002"
+    end
+    local function color(value, role) return APR:WrapTextWithAppearanceColor(value, "general", role) end
+    text = text:gsub("|", "||"):gsub("\\([%p])", literal)
+    text = text:gsub("``(.-)``", function(value) return literal(color(value, "accent")) end)
+    text = text:gsub("`([^`]+)`", function(value) return literal(color(value, "accent")) end)
+    text = text:gsub("%[([^%]]+)%]%(([^%)]+)%)", function(label, url) return label .. " (" .. url .. ")" end)
+    for _, pattern in ipairs({"%*%*%*(.-)%*%*%*", "%*%*(.-)%*%*", "__(.-)__", "%*([^*]+)%*"}) do
+        text = text:gsub(pattern, function(value) return color(value, "accent") end)
+    end
+    text = text:gsub("~~(.-)~~", function(value) return color(value, "muted") end)
+    return (text:gsub("\001(%d+)\002", function(index) return literals[tonumber(index)] end))
+end
+
+function APR.changelog:ParseBlocks(text)
+    local blocks, code, fence, gap = {}, nil, nil, 0
+    local function append(kind, value, indent, size, role)
+        blocks[#blocks + 1] = {kind = kind, text = value, indent = indent or 0,
+            size = size or 12, role = role or "base", gap = gap}
+        gap = 0
+    end
+    for line in (text:gsub("\r\n", "\n") .. "\n"):gmatch("([^\n]*)\n") do
+        local marker = line:match("^%s*(```+)") or line:match("^%s*(~~~+)")
+        if code then
+            if marker and marker:sub(1, 1) == fence:sub(1, 1) and #marker >= #fence then
+                append("code", table.concat(code, "\n"), 12)
+                code, fence = nil, nil
+            else code[#code + 1] = line:gsub("|", "||") end
+        elseif marker then
+            code, fence = {}, marker
+        elseif not line:find("%S") or line:match("^%s*%-%-%-+%s*$") then
+            gap = 10
+        else
+            local heading, title = line:match("^%s*(#+)%s+(.+)")
+            local plain = title or line
+            if plain:match("^v?%d+%.%d+%.%d+") then
+                gap = #blocks > 0 and 18 or 0
+                append("version", self:ParseFormatting(plain), 0, 18, "accent")
+            elseif heading then
+                gap = math.max(gap, 10)
+                append("heading", self:ParseFormatting(title:gsub("%s+#+$", "")), (#heading - 1) * 8, 14, "accent")
+            else
+                local indent, bullet, body = line:match("^(%s*)([%-%*+])%s+(.+)")
+                if not bullet then indent, bullet, body = line:match("^(%s*)(%d+%.)%s+(.+)") end
+                if bullet then
+                    append("list", (bullet:match("%d") and bullet or "–") .. "  " .. self:ParseFormatting(body), #indent * 6 + 4)
+                elseif line:match("^%s*>") then
+                    append("quote", self:ParseFormatting(line:gsub("^%s*>%s?", "")), 12, 12, "muted")
+                else append("paragraph", self:ParseFormatting(line)) end
+            end
+        end
+    end
+    if code then append("code", table.concat(code, "\n"), 12) end
+    return blocks
+end
+
+function APR.changelog:ParseChangelogText(text)
+    local lines = {}
+    for _, block in ipairs(self:ParseBlocks(text)) do
+        if block.gap > 0 then lines[#lines + 1] = "" end
+        lines[#lines + 1] = string.rep(" ", math.floor(block.indent / 6)) .. block.text
+    end
+    return table.concat(lines, "\n")
 end

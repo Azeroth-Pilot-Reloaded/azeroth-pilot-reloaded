@@ -19,7 +19,9 @@ Editor.definitions = {
     {key = "arrow", label = "SHOW_ARROW", arrow = true, width = 100, height = 90},
 }
 
-function Editor:Hide()
+function Editor:Hide(reopenSettings)
+    local returnToSettings = self.returnToSettings
+    self.returnToSettings = nil
     self.active = false
     for _, preview in pairs(self.previews) do
         preview:StopMovingOrSizing()
@@ -27,6 +29,9 @@ function Editor:Hide()
         preview:Hide()
     end
     if self.frame then self.frame:Hide() end
+    if returnToSettings and reopenSettings ~= false and self.profile == APR:GetSettingsProfile() then
+        APR.settings:OpenSettings()
+    end
 end
 
 function Editor:Save()
@@ -56,11 +61,11 @@ function Editor:Save()
             end
         end
     end
-    self:Hide()
     APR.currentStep:RefreshCurrentStepFrameAnchor()
     APR.fillersFrame:RefreshFillersFrame()
     APR.AFK:RefreshFrameAnchor()
     APR.questOrderList:RefreshFrameAnchor()
+    self:Hide()
     return true
 end
 
@@ -96,7 +101,7 @@ function Editor:Create()
     frame:HookScript("OnHide", function() if self.active then self:Hide() end end)
     APR:RegisterSupportedEvent(frame, "PLAYER_REGEN_DISABLED")
     APR:RegisterSupportedEvent(frame, "PET_BATTLE_OPENING_START")
-    frame:SetScript("OnEvent", function() self:Hide() end)
+    frame:SetScript("OnEvent", function() self:Hide(false) end)
 end
 
 function Editor:CreatePreview(definition)
@@ -118,11 +123,24 @@ function Editor:CreatePreview(definition)
     return preview
 end
 
+-- AceConfig still reads the clicked widget's userdata after its callback returns.
+-- Closing settings on the next frame avoids releasing that widget during the callback.
+function Editor:ShowFromSettings()
+    if self.openPending then return end
+    self.openPending = true
+    C_Timer.After(0, function()
+        self.openPending = nil
+        if self:Show() then self.returnToSettings = true end
+    end)
+end
+
 function Editor:Show()
     if InCombatLockdown() then APR:PrintInfo(L["UI_LAYOUT_COMBAT"]); return false end
     if not self.frame then self:Create() end
     if self.active then self.frame:Raise(); return true end
     self.profile, self.active = APR:GetSettingsProfile(), true
+    local workspace = APR.Workspace
+    self.returnToSettings = workspace and workspace.active == "options" and workspace.frame and workspace.frame:IsShown()
     for index, definition in ipairs(self.definitions) do
         local target = definition.arrow and APR.ArrowFrameM or _G[definition.frame]
         local preview = self.previews[index] or self:CreatePreview(definition)

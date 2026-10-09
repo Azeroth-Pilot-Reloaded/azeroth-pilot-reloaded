@@ -52,6 +52,8 @@ APR-Core/ui/foundations/Widgets.lua
 APR-Core/ui/foundations/TimeSeriesGraph.lua
 APR-Core/ui/foundations/VirtualList.lua
 APR-Core/ui/foundations/SelectionDialog.lua
+APR-Core/ui/foundations/SettingsRows.lua
+APR-Core/ui/foundations/SettingsWidgets.lua
 APR-Core/ui/panels/LayoutEditor.lua
 APR-Core/utils/TextStyleUtils.lua
 APR-Core/utils/TargetUtils.lua
@@ -85,7 +87,9 @@ APR-Core/data/models/Spells.lua
 
 APR-Core/data/zones/ScenarioEntrances.lua
 
+APR-Core/config/AboutData.lua
 APR-Core/config/Config.lua
+APR-Core/config/WorkspaceOptions.lua
 APR-Core/config/Config_Route.lua
 APR-Core/config/Config_Route_Prefabs.lua
 APR-Core/features/navigation/WorldCoordinateConverter.lua
@@ -131,6 +135,10 @@ APR-Core/features/player/XPBuffOverlay.lua
 APR-Core/ui/panels/StatusReport.lua
 APR-Core/ui/panels/PerformanceResources.lua
 APR-Core/ui/panels/PerformanceDashboard.lua
+APR-Core/ui/panels/ReleaseNotesPanel.lua
+APR-Core/ui/panels/OptionsPanel.lua
+APR-Core/ui/panels/AboutPanel.lua
+APR-Core/ui/panels/Workspace.lua
 APR-Core/integrations/ElvUISkin.lua
 APR-Core/integrations/EllesmereUISettings.lua
 APR-Core/integrations/EllesmereUISkin.lua

@@ -1,42 +1,49 @@
--- Ordinary settings retain their native categories; route entry points open the dedicated browser.
-local env = dofile("tests/lua/route_ui_test_env.lua")
-local oldLibStub = LibStub
-function LibStub(name)
-    if name == "AceLocale-3.0" then return {GetLocale = function() return {ROUTE = "Routes"} end} end
-    return oldLibStub(name)
-end
+-- Blizzard exposes one lazy launcher, with no nested settings; all editing happens in the workspace.
+dofile("tests/lua/route_ui_test_env.lua")
+dofile("tests/lua/localization_test_env.lua")
+dofile("APR-Core/integrations/SkinRegistry.lua")
+dofile("APR-Core/ui/foundations/Themes.lua")
+dofile("APR-Core/ui/foundations/Widgets.lua")
 dofile("APR-Core/config/Config.lua")
-APR.title, APR.Options, APR.OptionsRoute = "APR", {name = "APR"}, {}
-APR.settings.category = {ID = 42}
-APR.SettingsHome = {Show = function() error("Do not redirect to the removed settings home") end}
-local browserOpens = 0
-APR.RouteBrowser = {Show = function() browserOpens = browserOpens + 1 end}
-local root, routes, selections = {}, {}, {}
-local closed = 0
-function routes:GetName() return "Routes" end
-function root:HasSubcategories() return true end
-function root:GetSubcategories() return {routes} end
-SettingsPanel = {
-    GetCategoryList = function() return {GetCategory = function(_, name) assert(name == "APR"); return root end} end,
-    Open = function() end,
-    SelectCategory = function(_, category) selections[#selections + 1] = category end,
-    Hide = function() closed = closed + 1 end,
+APR.title = "APR"
+local registrations, opened, closed = 0, 0, 0
+local category = {GetID = function() return 42 end}
+Settings = {
+    RegisterCanvasLayoutCategory = function(panel, name)
+        assert(panel == APR.Options and name == APR.title)
+        return category
+    end,
+    RegisterAddOnCategory = function(value) assert(value == category); registrations = registrations + 1 end,
+    OpenToCategory = function(id) assert(id == 42); opened = opened + 1 end,
 }
-Settings = {OpenToCategory = function(id) assert(id == 42) end}
-APR.settings:OpenSettings("Routes")
-assert(browserOpens == 1 and #selections == 0)
-APR.settings:OpenSettings("APR")
-assert(selections[#selections] == root and browserOpens == 1)
-APR.settings:CloseSettings()
-assert(closed == 1)
-SettingsPanel = nil
+APR.settings:CreateBlizzardLauncher()
+APR.settings:CreateBlizzardLauncher()
+assert(registrations == 1 and not APR.Options.logo, "One category; visual content is lazy")
+APR.Options.scripts.OnShow()
+local logo, button = APR.Options.logo, APR.Options.open
+APR.Options.scripts.OnShow()
+assert(APR.Options.logo == logo and APR.Options.open == button, "Reopening cannot duplicate controls")
+assert(APR.Options.title:GetText() == APR.title)
+APR.settings:OpenSettings(APR.title)
+assert(opened == 1)
+SettingsPanel = {Hide = function() closed = closed + 1 end}
+local workspaceOpens = 0
+APR.Workspace = {Show = function(_, page)
+    assert(page == "options"); workspaceOpens = workspaceOpens + 1
+    SettingsPanel:Hide()
+end, Hide = function() end}
+button.scripts.OnClick(button)
+assert(workspaceOpens == 1 and closed == 1, "Launcher opens APR and closes Blizzard")
+
+-- Legacy clients register the same simple panel rather than loading AceConfig categories.
+APR.Options, APR.settings.category, Settings, SettingsPanel, APR.Workspace = nil, nil, nil, nil, nil
+InterfaceOptions_AddCategory = function(panel) assert(panel == APR.Options); registrations = registrations + 1 end
+APR.settings:CreateBlizzardLauncher()
+assert(registrations == 2)
+function InterfaceOptionsFrame_OpenToCategory(panel) assert(panel == APR.Options); opened = opened + 1 end
+APR.settings:OpenSettings(APR.title)
+assert(opened == 2)
 InterfaceOptionsFrame = {Hide = function() closed = closed + 1 end}
-local legacy = {}
-function InterfaceOptionsFrame_OpenToCategory(category) legacy[#legacy + 1] = category end
-APR.settings:OpenSettings("Routes")
-assert(browserOpens == 2 and #legacy == 0)
-APR.settings:OpenSettings("APR")
-assert(legacy[#legacy] == APR.Options and browserOpens == 2)
 APR.settings:CloseSettings()
-assert(closed == 2, "Opening placement or route browsing also closes legacy settings")
-print("Native settings: native modern/legacy options and dedicated route-browser entry point passed")
+assert(closed == 2)
+print("Blizzard settings: one lazy launcher, workspace handoff and modern/legacy registration passed")
