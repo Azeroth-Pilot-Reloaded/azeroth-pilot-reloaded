@@ -18,8 +18,8 @@ class PackageValidationTests(unittest.TestCase):
             self.write(f"Routes/{game}.lua", "-- route fixture\n")
             self.write(f"Routes/RouteList_{game}.xml", f'<Ui><Script file="Routes/{game}.lua"/></Ui>')
             entries = ["FarstriderLibData.xml",
-                       f"libs/FarstriderLibData/Areas/{flavor}/FarstriderLibData_Areas.xml",
-                       f"libs/FarstriderLibData/Waypoints/{flavor}/FarstriderLibData_Waypoints.xml",
+                       f"FarstriderLibData/Areas/{flavor}/FarstriderLibData_Areas.xml",
+                       f"FarstriderLibData/Waypoints/{flavor}/FarstriderLibData_Waypoints.xml",
                        "FarstriderLibData_Finalizer.xml"]
             self.write(f"APR-Core/libs/FarstriderLibData_{game}.xml",
                        "<Ui>" + "".join(f'<Include file="{entry}"/>' for entry in entries) + "</Ui>")
@@ -69,3 +69,13 @@ class PackageValidationTests(unittest.TestCase):
                          "LICENSE", "APR-Core/assets/ui/mdi/LICENSE", "APR-Core/libs/Library/LICENSE"):
             self.write(relative, "runtime artwork or license")
         validate(self.root)
+
+    def test_accepts_wow_shared_schema_prefix(self):
+        self.write("APR-Core/libs/FarstriderLibData.xml",
+                   '<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ UI.xsd">'
+                   '<Script file="embedded.lua"/></Ui>')
+        self.write("APR-Core/libs/embedded.lua", "-- embedded runtime dependency\n")
+        validate(self.root)
+        (self.root / "APR-Core/libs/embedded.lua").unlink()
+        with self.assertRaises(AssertionError):
+            validate(self.root)

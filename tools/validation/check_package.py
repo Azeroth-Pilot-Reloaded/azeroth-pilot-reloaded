@@ -1,7 +1,17 @@
 """Validate runtime dependencies and client-specific loading in an APR release."""
 from pathlib import Path
 import argparse
+import re
 import xml.etree.ElementTree as ET
+
+
+def read_manifest(path):
+    text = path.read_text(encoding='utf-8-sig')
+    # WoW accepts the shared xsi schema prefix without a local declaration;
+    # Farstrider's embedded manifest relies on that convention.
+    if 'xsi:' in text and 'xmlns:xsi=' not in text:
+        text = re.sub(r'<Ui\b', '<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"', text, count=1)
+    return ET.fromstring(text)
 
 
 def validate_runtime_files(root, toc, game):
@@ -12,7 +22,7 @@ def validate_runtime_files(root, toc, game):
         if path in visited or path.suffix != '.xml':
             return
         visited.add(path)
-        for element in ET.parse(path).iter():
+        for element in read_manifest(path).iter():
             if element.tag.rsplit('}', 1)[-1] not in ('Include', 'Script') or 'file' not in element.attrib:
                 continue
             reference = element.attrib['file'].replace('\\', '/').replace('[Game]', game)
@@ -50,16 +60,16 @@ def validate_farstrider(root, toc, game):
     entries = [line.strip().replace('\\', '/') for line in toc.read_text(encoding='utf-8-sig').splitlines()]
     assert entries.count(entry) == 1, f'{toc.name} must select Farstrider data by client'
     manifest = root / entry.replace('[Game]', game)
-    includes = [element.attrib['file'].replace('\\', '/') for element in ET.parse(manifest).getroot()]
+    includes = [element.attrib['file'].replace('\\', '/') for element in read_manifest(manifest)]
     flavor = 'Vanilla' if game == 'Camelot' else 'Standard'
-    expected = ['FarstriderLibData.xml', f'libs/FarstriderLibData/Areas/{flavor}/FarstriderLibData_Areas.xml']
-    expected.append(f'libs/FarstriderLibData/Waypoints/{flavor}/FarstriderLibData_Waypoints.xml')
+    expected = ['FarstriderLibData.xml', f'FarstriderLibData/Areas/{flavor}/FarstriderLibData_Areas.xml']
+    expected.append(f'FarstriderLibData/Waypoints/{flavor}/FarstriderLibData_Waypoints.xml')
     expected.append('FarstriderLibData_Finalizer.xml')
     assert includes == expected, f'Wrong Farstrider data or load order for {game}'
     for include in includes:
         nested = manifest.parent / include
         assert nested.is_file(), f'Missing Farstrider manifest: {nested}'
-        for element in ET.parse(nested).getroot():
+        for element in read_manifest(nested):
             reference = element.attrib['file'].replace('\\', '/')
             assert (nested.parent / reference).is_file(), f'Missing Farstrider dependency: {reference}'
 
@@ -81,7 +91,7 @@ def validate(root):
     manifests = [root/'Routes/RouteList_Standard.xml', root/'Routes/RouteList_Camelot.xml']
     scripts = []
     for manifest in manifests:
-        entries = [element.attrib['file'] for element in ET.parse(manifest).getroot()]
+        entries = [element.attrib['file'] for element in read_manifest(manifest)]
         assert all((root / entry).is_file() for entry in entries)
         assert len(entries) == len(set(entries)), f'Duplicate route in {manifest.name}'
         scripts.append(set(entries))

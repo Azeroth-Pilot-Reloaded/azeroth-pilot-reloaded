@@ -205,8 +205,9 @@ and events. **Nested tables in a definition remain read-only.**
 
 AceComm, AceBucket, AceHook, AceTab, and AceTimer are no longer loaded by
 `embeds.xml`: no executed consumer was found in APR or the embedded libraries.
-Their provider sources remain intact in `libs/`. The provider libraries are not
-renamed or annotated as APR code.
+Their provider sources remain intact in `libs/` but are excluded from releases
+by `.pkgmeta`, along with the unused HereBeDragons migration module. The provider
+libraries are not renamed or annotated as APR code.
 
 The eight media assets in `assets/` cover the logo, header, arrow, minimap icon,
 the `/apr 42` sound, and three `routeHelper/` illustrations. The illustration
