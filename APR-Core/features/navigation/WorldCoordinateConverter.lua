@@ -689,6 +689,8 @@ end
 function APR.worldCoordinateConverter:Show()
     if self.frame then
         self.frame:Show()
+        self.output:SetFocus()
+        self.output:HighlightText()
         return
     end
 
@@ -856,6 +858,7 @@ function APR.worldCoordinateConverter:Show()
     convertButton:SetCallback("OnClick", function()
         local result, convertedCount, errorCount = self:ConvertRoute(selectedRoute)
         output:SetText(result)
+        output:SetFocus()
         output:HighlightText()
         frame:SetStatusText(string.format(TEXT.status, convertedCount, errorCount))
     end)
@@ -871,8 +874,10 @@ function APR.worldCoordinateConverter:Show()
         editbox:SetScript("OnEscapePressed", originalEscapePressed)
         AceGUI:Release(widget)
         self.frame = nil
+        self.output = nil
     end)
 
     self.frame = frame
+    self.output = output
     routeSearch:SetFocus()
 end
