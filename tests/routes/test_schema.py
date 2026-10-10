@@ -26,7 +26,7 @@ def examples():
          "InterfaceVersion InterfaceVersionExact HasAchievement DontHaveAchievement HasAura "
          "DontHaveAura HasSpell IsQuestOnQuest IsQuestNotOnQuest IsQuestCompleted IsQuestUncompleted "
          "InVehicle PickedLoa _index SkipForPrimaryProfessions", 1),
-        ("Bloodlust Boat Tram DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap IsCampaignQuest "
+        ("Bloodlust Boat Tram Zeppelin DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap IsCampaignQuest "
          "MountVehicle NoArrow NoAutoFlightMap NoAutoAccept NoAutoTurnIn NonSkippableWaypoint ResetRoute "
          "RouteCompleted SingleWaypointDisplayDistance SpecialETAHide UseGlider UseHSIfAvailable VehicleExit Hardcore AlliedRace", True),
         ("Done DoneDB PickUp PickUpDB QpartDB WaypointDB LeaveQuests GossipOptionIDs Zones OnlyInZones "
@@ -58,7 +58,7 @@ def examples():
         "Not": {"AllOf": seq({"HasAura": 1}, {"Money": {"copper": 10}})},
         "Note": seq("First instruction", "Second instruction"), "PreviewImages": seq("image.jpg"),
         "Coord": {"x": -42.5, "y": 123.5}, "Coords": seq({"Zone": 1, "x": 1, "y": 2}),
-        "ZoneStepTrigger": {"x": 1, "y": 2, "Range": 10},
+        "ZoneStepTrigger": {"x": 1, "y": 2, "Range": 10, "mapID": 2},
         "Button": {"123-1": 123}, "SpellButton": {"123-1": "Spell"},
         "UseItem": {"itemID": 123, "itemSpellID": 456}, "UseSpell": {"spellID": 123},
         "Treasure": {"questID": 123, "itemID": 456},

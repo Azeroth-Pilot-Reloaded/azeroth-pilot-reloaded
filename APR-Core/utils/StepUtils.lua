@@ -11,7 +11,7 @@ APR.mainStepOptions = {
     "UseHS", "UseDalaHS", "UseGarrisonHS", "UseItem", "UseSpell", "GetFP", "UseFlightPath", "TakePortal",
     "LearnProfession", "LootItems", "WarMode", "Grind", "Reputation", "LootMoney", "Emote", "Achievement",
     "RouteCompleted", "Note", "DeathSkip", "SellItems", "LearnSkill", "BankDeposit", "BankWithdraw", "TameBeast",
-    "DestroyItems", "EquipItem", "Repair", "LeaveQuest", "LeaveQuests", "ResetRoute"
+    "DestroyItems", "EquipItem", "Repair", "LeaveQuest", "LeaveQuests", "ResetRoute", "Zeppelin", "Boat", "Tram"
 }
 
 -- BuyMerchant need to be first
@@ -20,9 +20,36 @@ APR.secondaryStepOptions = {
     "MountVehicle", "VehicleExit"
 }
 
+-- Legacy Boat flags on flight/portal steps keep their original handlers.
+function APR:IsTransportStep(step)
+    return step and step.ZoneStepTrigger and (step.Zeppelin or step.Boat or step.Tram)
+        and not step.TakePortal and not step.UseFlightPath
+end
+
+function APR:GetTransportStepText(step)
+    local trigger = step.ZoneStepTrigger
+    local mapInfo = trigger.mapID and self:GetMapInfoCached(trigger.mapID)
+    local destination = (mapInfo and mapInfo.name) or UNKNOWN
+    if step.Tram then return L["ENTER_TRAM"] .. " - " .. destination, "Tram" end
+    local kind = step.Zeppelin and "Zeppelin" or "Boat"
+    return string.format(L[step.Zeppelin and "USE_ZEPPELIN_TO" or "USE_BOAT"], destination), kind
+end
+
+function APR:IsZoneStepTriggerReached(trigger, playerX, playerY)
+    if not trigger then return false end
+    if trigger.mapID and C_Map.GetBestMapForUnit("player") ~= trigger.mapID
+        and self:GetPlayerParentMapID() ~= trigger.mapID then return false end
+    if playerX == nil or playerY == nil then
+        playerY, playerX = UnitPosition("player")
+    end
+    if playerX == nil or playerY == nil then return false end
+    return (playerX - trigger.x) ^ 2 + (playerY - trigger.y) ^ 2 < trigger.Range ^ 2
+end
+
 --- Return the localized label for the first recognized step key.
 -- This keeps UI construction simple while letting steps remain data-driven.
 function APR:GetStepString(step)
+    if self:IsTransportStep(step) then return self:GetTransportStepText(step) end
     if step and step.LootMoney then
         return self:GetLootMoneyStepText(step.LootMoney), "LootMoney"
     end
@@ -478,6 +505,14 @@ function APR:GetStepZoneList(step, fallbackMapID)
         zones = NormalizeZoneList(fallbackMapID)
     end
 
+    if self:IsTransportStep(step) and step.ZoneStepTrigger.mapID then
+        local result = {}
+        for _, zone in ipairs(zones or {}) do
+            if zone ~= step.ZoneStepTrigger.mapID then result[#result + 1] = zone end
+        end
+        result[#result + 1] = step.ZoneStepTrigger.mapID
+        return result
+    end
     return zones or {}
 end
 
@@ -561,6 +596,14 @@ end
 function APR:GetStepCoord(step, fallbackMapID, zoneHint)
     if not step then
         return nil
+    end
+
+    if self:IsTransportStep(step) then
+        local trigger = step.ZoneStepTrigger
+        if trigger.mapID and (C_Map.GetBestMapForUnit("player") == trigger.mapID
+                or self:GetPlayerParentMapID() == trigger.mapID) then
+            return trigger, trigger.mapID
+        end
     end
 
     local scenarioMapID, scenarioInfo = self:GetScenarioStepTarget(step)

@@ -96,7 +96,7 @@ local fixtures = {
     DeathSkip = true, SellItems = { items = { 20 }, junk = true }, LearnSkill = { spellIDs = { 20, 21 } },
     BankDeposit = { items = { 20 } }, BankWithdraw = { items = { 20 } }, TameBeast = { npcID = 54 },
     DestroyItems = { items = { 20 } }, EquipItem = { slot = 16, itemID = 20 },
-    Repair = { npcID = 54 },
+    Repair = { npcID = 54 }, Zeppelin = true, Boat = true, Tram = true,
 }
 fixtures.SetHS = 10
 fixtures.LeaveQuest, fixtures.LeaveQuests, fixtures.ResetRoute = 10, { 10, 11 }, true
@@ -108,6 +108,9 @@ local steps = {}
 for _, key in ipairs(APR.mainStepOptions) do
     assert(fixtures[key] ~= nil, "Add a preview fixture for main action " .. key)
     local step = { [key] = fixtures[key] }
+    if key == "Zeppelin" or key == "Boat" or key == "Tram" then
+        step.ZoneStepTrigger = { mapID = 2, x = 10, y = 20, Range = 15 }
+    end
     if companions[key] then step[companions[key]] = fixtures[companions[key]] end
     steps[#steps + 1] = step
 end

@@ -94,6 +94,30 @@ function handlers.RenderScenarioTravel(step, currentStepIndex)
     end
 end
 
+function handlers.Transport(step, showStepDetails)
+    local context = APR:CaptureStepContext()
+    if APR.transportArrivalTimer then
+        APR.transportArrivalTimer:Cancel()
+        APR.transportArrivalTimer = nil
+    end
+    local function checkArrival()
+        if not APR:IsStepContextCurrent(context) then return end
+        APR.transportArrivalTimer = nil
+        if not APR.settings.profile.enableAddon then return end
+        if not UnitIsDeadOrGhost("player") and APR:IsZoneStepTriggerReached(step.ZoneStepTrigger) then
+            APR:NextQuestStep()
+            return true
+        end
+        -- Arrival must work while the arrow is hidden or Farstrider owns navigation.
+        APR.transportArrivalTimer = C_Timer.NewTimer(0.5, checkArrival)
+    end
+    if checkArrival() then return true end
+    if showStepDetails then
+        local text, kind = APR:GetTransportStepText(step)
+        APR.currentStep:AddQuestSteps(kind, text, step.ZoneStepTrigger.mapID)
+    end
+end
+
 function handlers.TakePortal(step, showStepDetails, currentStepIndex)
     local portalData = step.TakePortal
 

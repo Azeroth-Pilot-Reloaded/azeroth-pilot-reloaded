@@ -49,6 +49,7 @@ def load_routes(paths=None):
         local apr = {DelveRouteRegistry = {}, worldCoordinateConverter = {}}
         apr.worldCoordinateConverter.GetMixedAreaCenter = APR.worldCoordinateConverter.GetMixedAreaCenter
         apr.worldCoordinateConverter.GetMixedAreaRadius = APR.worldCoordinateConverter.GetMixedAreaRadius
+        apr.worldCoordinateConverter.ConvertMapTrigger = APR.worldCoordinateConverter.ConvertMapTrigger
         for _, name in ipairs({"CATEGORIES", "EXPANSIONS", "PREFAB_TYPES", "GAME_VERSIONS",
             "RACES", "Classes", "Specs", "EVENTS", "REPUTATION_TYPE", "REPUTATION_STANDING"}) do
             apr[name] = setmetatable(APR[name], {__index = unknown})

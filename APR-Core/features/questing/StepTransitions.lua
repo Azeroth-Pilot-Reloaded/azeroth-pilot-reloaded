@@ -11,6 +11,10 @@ local function InvalidateStep(self)
     self.stepRevision = (self.stepRevision or 0) + 1
     self.runtimeRouteStep = nil
     self.routeActionState = nil
+    if self.transportArrivalTimer then
+        self.transportArrivalTimer:Cancel()
+        self.transportArrivalTimer = nil
+    end
     if self.stepUpdateTimer then
         self.stepUpdateTimer:Cancel()
         self.stepUpdateTimer = nil

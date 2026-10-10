@@ -1,4 +1,5 @@
 local env = dofile("tests/lua/route_ui_test_env.lua")
+dofile("APR-Core/utils/StepUtils.lua")
 local function noop() end
 local step, profile = APR.currentStep, APR.settings.profile
 step.UpdateStepButtonCooldowns, step.UpdateStepButtonUsability = noop, noop

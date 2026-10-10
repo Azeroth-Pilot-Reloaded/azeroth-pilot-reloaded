@@ -177,7 +177,7 @@ class RouteSchema:
                      "DenyNPC MerchantNPC RaidIcon SpellTrigger Zone NodeID QuestLineSkip ExtraLine "
                      "Gossip Brewery SparringRing").split():
             self.step_fields[name] = ID
-        for name in ("Bloodlust Boat Tram DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap "
+        for name in ("Bloodlust Boat Tram Zeppelin DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap "
                      "IsCampaignQuest MountVehicle NoArrow NoAutoFlightMap NoAutoAccept NoAutoTurnIn "
                      "NonSkippableWaypoint ResetRoute RouteCompleted SingleWaypointDisplayDistance "
                      "SpecialETAHide UseGlider UseHSIfAvailable VehicleExit").split():
@@ -201,7 +201,7 @@ class RouteSchema:
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),
             "_index": ID, "_comment": TEXT, "Grind": level,
             "Coord": union(xy, multi_coord), "Coords": multi_coord,
-            "ZoneStepTrigger": obj({"x": NUMBER, "y": NUMBER, "Range": number(0)},
+            "ZoneStepTrigger": obj({"x": NUMBER, "y": NUMBER, "Range": number(0), "mapID": ID},
                                    required=("x", "y", "Range")),
             "Button": mapping(objective, union(ID, array(ID, 1))),
             "SpellButton": mapping(objective, union(ID, TEXT, array(union(ID, TEXT), 1))),
