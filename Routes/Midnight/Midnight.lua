@@ -7137,6 +7137,10 @@ APR.RouteQuestStepList["2395-the-propose-of-Tomorrow"] = {
             Zone = 2509,
             _index = 76,
         },
+        {
+            RouteCompleted = true,
+            _index = 77,
+        },
     },
 }
 
@@ -8781,6 +8785,10 @@ APR.RouteQuestStepList["2413-Midnight-Unlock-daily-Saltherils-Haven"] = {
             Range = 10,
             Zone = 2395,
             _index = 39,
+        },
+        {
+            RouteCompleted = true,
+            _index = 40,
         },
     }
 }

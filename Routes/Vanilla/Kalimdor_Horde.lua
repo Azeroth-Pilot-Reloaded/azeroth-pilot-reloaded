@@ -5581,6 +5581,10 @@ APR.RouteQuestStepList["199-SouthernBarrens-H"] = {
             Done = { 24514, 24517 },
             Coord = { x = -1574.8, y = -789.5 },
             _index = 18
-        }
+        },
+        {
+            RouteCompleted = true,
+            _index = 19,
+        },
     }
 }
