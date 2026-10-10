@@ -178,10 +178,11 @@ class RouteHookTests(unittest.TestCase):
         for name in ("pre-commit", "post-index-change"):
             (self.root / ".githooks" / name).chmod(0o755)
 
-    def git(self, *args):
+    def git(self, *args, input=None):
         environment = os.environ.copy()
         environment["PATH"] = str(Path(sys.executable).parent) + os.pathsep + environment["PATH"]
-        return subprocess.check_output(["git", *args], cwd=self.root, env=environment, stderr=subprocess.STDOUT)
+        return subprocess.check_output(["git", *args], cwd=self.root, env=environment,
+                                       input=input, stderr=subprocess.STDOUT, timeout=20)
 
     def expected(self):
         return reorder.normalize_text(indexes.normalize_text(self.original)).encode("utf-8")

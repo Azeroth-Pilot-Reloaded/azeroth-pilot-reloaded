@@ -28,7 +28,7 @@ def examples():
          "InVehicle PickedLoa _index SkipForPrimaryProfessions", 1),
         ("Bloodlust Boat DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap IsCampaignQuest "
          "MountVehicle NoArrow NoAutoFlightMap NoAutoAccept NoAutoTurnIn NonSkippableWaypoint ResetRoute "
-         "RouteCompleted SingleWaypointDisplayDistance SpecialETAHide UseGlider VehicleExit Hardcore AlliedRace", True),
+         "RouteCompleted SingleWaypointDisplayDistance SpecialETAHide UseGlider UseHSIfAvailable VehicleExit Hardcore AlliedRace", True),
         ("Done DoneDB PickUp PickUpDB QpartDB WaypointDB LeaveQuests GossipOptionIDs Zones OnlyInZones "
          "SkipInZones DontHaveSpell IsQuestReadyForTurnIn IsOneOfQuestsCompleted IsOneOfQuestsUncompleted "
          "IsOneOfQuestsCompletedOnAccount IsOneOfQuestsUncompletedOnAccount IsQuestsCompleted "

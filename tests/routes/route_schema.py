@@ -180,7 +180,7 @@ class RouteSchema:
         for name in ("Bloodlust Boat DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap "
                      "IsCampaignQuest MountVehicle NoArrow NoAutoFlightMap NoAutoAccept NoAutoTurnIn "
                      "NonSkippableWaypoint ResetRoute RouteCompleted SingleWaypointDisplayDistance "
-                     "SpecialETAHide UseGlider VehicleExit").split():
+                     "SpecialETAHide UseGlider UseHSIfAvailable VehicleExit").split():
             self.step_fields[name] = BOOL
         for name in "Done DoneDB PickUp PickUpDB QpartDB WaypointDB LeaveQuests GossipOptionIDs".split():
             self.step_fields[name] = array(ID)

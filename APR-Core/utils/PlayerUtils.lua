@@ -593,7 +593,8 @@ function APR:GetRouteActionUsability(actionType, actionID, ignoreCooldown)
             hasToy = false
         end
 
-        local itemCount = C_Item and C_Item.GetItemCount and C_Item.GetItemCount(actionID) or 0
+        local itemCount = C_Item and C_Item.GetItemCount and C_Item.GetItemCount(actionID)
+            or (GetItemCount and GetItemCount(actionID)) or 0
         if not hasToy and itemCount <= 0 then
             return false, "missing"
         end
