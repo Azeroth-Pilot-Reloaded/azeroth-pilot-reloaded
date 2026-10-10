@@ -6,23 +6,18 @@ By default, this script can process:
 - explicitly provided file paths
 - all route files (`--all`)
 
-It replaces every `_index = <number>,` occurrence in each target file with a
-strictly increasing sequence starting at 1 for each
-`APR.RouteQuestStepList[...]` block, preserving indentation and suffix.
+It numbers direct step `_index` fields starting at 1 independently for `steps`
+and for all `parallelSteps` groups in each `APR.RouteQuestStepList[...]` block,
+preserving all other source text.
 """
 
 from __future__ import annotations
 
 import argparse
-import re
 import subprocess
 import sys
 from collections.abc import Callable
 from pathlib import Path
-
-INDEX_RE = re.compile(r"^(\s*_index\s*=\s*)(\d+)(\s*,)(\s*(?:--.*)?)$")
-ROUTE_START_RE = re.compile(r"^\s*APR\.RouteQuestStepList\[[^\]]+\]\s*=\s*\{")
-
 
 def _run_git(args: list[str]) -> str:
     completed = subprocess.run(
@@ -62,37 +57,29 @@ def all_route_files(repo_root: Path) -> list[Path]:
 
 
 def normalize_text(original: str) -> str:
-    lines = original.splitlines(keepends=True)
+    # Import lazily: the field formatter also imports this module's Git helpers.
+    from reorder_route_fields import LuaSource
 
-    current_index = 1
-    changed = False
-    normalized_lines: list[str] = []
-
-    for line in lines:
-        line_ending = ""
-        line_content = line
-        if line.endswith("\r\n"):
-            line_ending = "\r\n"
-            line_content = line[:-2]
-        elif line.endswith("\n") or line.endswith("\r"):
-            line_ending = line[-1]
-            line_content = line[:-1]
-
-        if ROUTE_START_RE.match(line_content):
-            current_index = 1
-
-        match = INDEX_RE.match(line_content)
-        if not match:
-            normalized_lines.append(line)
-            continue
-
-        new_line = f"{match.group(1)}{current_index}{match.group(3)}{match.group(4)}{line_ending}"
-        if new_line != line:
-            changed = True
-        normalized_lines.append(new_line)
-        current_index += 1
-
-    return "".join(normalized_lines) if changed else original
+    source = LuaSource(original)
+    replacements = []
+    for sequence in source.step_sequences():
+        current_index = 1
+        for step in sequence:
+            for key, _, value, last in source.fields(step):
+                token = source.tokens[value]
+                if key != "_index" or not token[0].isdigit():
+                    continue
+                # Only replace a literal integer, never part of an expression.
+                end = last - 1 if source.tokens[last][0] in (",", ";") else last
+                if value != end:
+                    continue
+                replacement = str(current_index)
+                if token[0] != replacement:
+                    replacements.append((token.start(), token.end(), replacement))
+                current_index += 1
+    for start, end, replacement in sorted(replacements, reverse=True):
+        original = original[:start] + replacement + original[end:]
+    return original
 
 
 def normalize_file(path: Path) -> bool:

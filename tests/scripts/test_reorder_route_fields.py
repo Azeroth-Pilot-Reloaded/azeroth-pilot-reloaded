@@ -192,6 +192,23 @@ class RouteHookTests(unittest.TestCase):
         self.assertEqual(self.path.read_bytes(), self.expected())
         self.assertEqual(self.git("diff", "--", "Routes"), b"")
 
+    def test_add_numbers_parallel_steps_independently(self):
+        source = '''APR.RouteQuestStepList["test"] = {
+    parallelSteps = {
+        { steps = { { Note = "parallel one", _index = 8 } } },
+        { steps = { { Note = "parallel two", _index = 9 } } },
+    },
+    steps = { { Note = "main one", _index = 10 }, { Note = "main two", _index = 11 } },
+}
+'''
+        expected = source.replace('_index = 8', '_index = 1').replace(
+            '_index = 9', '_index = 2').replace('_index = 10', '_index = 1').replace(
+            '_index = 11', '_index = 2').encode("utf-8")
+        self.path.write_text(source, encoding="utf-8", newline="")
+        self.git("add", "--", "Routes/route with spaces.lua")
+        self.assertEqual(self.git("show", ":Routes/route with spaces.lua"), expected)
+        self.assertEqual(self.path.read_bytes(), expected)
+
     def test_add_unrelated_file_preserves_unstaged_route_edits(self):
         working = self.original.replace("LearnSkill =", '-- unstaged text\n        LearnSkill =')
         self.path.write_text(working, encoding="utf-8", newline="")

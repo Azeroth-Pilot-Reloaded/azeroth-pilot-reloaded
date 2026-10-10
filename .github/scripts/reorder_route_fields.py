@@ -200,7 +200,8 @@ class LuaSource:
         body_start = self.tokens[opening].end()
         return body_start, closing, "".join(chunks[key] for key in ordered) + self.text[start:closing]
 
-    def step_tables(self):
+    def step_sequences(self):
+        """Yield independent main and parallel step sequences for each route."""
         def value_table(fields, name):
             return next((value for key, _, value, _ in fields
                          if key == name and self.tokens[value][0] == "{"), None)
@@ -219,13 +220,19 @@ class LuaSource:
             route_fields = self.fields(assignment + 1)
             main = value_table(route_fields, "steps")
             if main is not None:
-                yield from steps(main)
+                yield list(steps(main))
             parallel = value_table(route_fields, "parallelSteps")
             if parallel is not None:
+                parallel_tables = []
                 for group in steps(parallel):
                     group_steps = value_table(self.fields(group), "steps")
                     if group_steps is not None:
-                        yield from steps(group_steps)
+                        parallel_tables.extend(steps(group_steps))
+                yield parallel_tables
+
+    def step_tables(self):
+        for sequence in self.step_sequences():
+            yield from sequence
 
 
 def normalize_text(text: str) -> str:
