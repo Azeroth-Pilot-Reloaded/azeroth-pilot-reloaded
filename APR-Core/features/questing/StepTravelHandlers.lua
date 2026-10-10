@@ -115,7 +115,8 @@ function handlers.TakePortal(step, showStepDetails, currentStepIndex)
     if showStepDetails then
         local mapInfo = APR:GetMapInfoCached(mapID)
         local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
-        local text = string.format(L["USE_PORTAL_TO"], zoneName)
+        local text = step.Tram and L["ENTER_TRAM"] or
+            string.format(L[step.Boat and "USE_BOAT" or "USE_PORTAL_TO"], zoneName)
 
         APR.currentStep:AddQuestSteps("TAKE_PORTAL", text, mapID)
     end
