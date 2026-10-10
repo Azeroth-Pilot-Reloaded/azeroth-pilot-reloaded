@@ -668,6 +668,14 @@ local function RouteToRightZone(self, isRetry)
         return
     end
 
+    -- An owned book can be used anywhere. Do not route a location-free item
+    -- reminder back to the route's default map when it interrupts travel.
+    if step.UseItem and not step.UseItem.questID and not step.Coord and not step.Coords
+        and not step.Zone and not step.Zones then
+        self:MarkRouteReady()
+        return
+    end
+
     -- The route was selected from this exact delve scenario. Do not ask Farstrider to
     -- navigate to the exterior Zone stored on delve steps while the player is inside it.
     if APR:IsInDelveRouteContext(APR.ActiveRoute) then

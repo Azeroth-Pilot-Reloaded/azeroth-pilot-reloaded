@@ -42,6 +42,8 @@ APR-Core/core/ErrorLog.lua
 APR-Core/integrations/SkinRegistry.lua
 APR-Core/integrations/TaxiData.lua
 
+APR-Core/data/models/Items.lua
+
 APR-Core/utils/Utils.lua
 APR-Core/utils/PlayerUtils.lua
 APR-Core/utils/ProfileUtils.lua

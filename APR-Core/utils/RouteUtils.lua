@@ -245,6 +245,10 @@ function APR:CheckIsInRouteZone()
             return self:CheckDescendantMatch(playerContext, stepZones)
         end,
 
+        function()
+            return self:IsNearbyStepInSiblingZone(step, playerContext, fallbackMapID)
+        end,
+
         -- 4. Dynamic POI / Objective / Coordinate & Transition Match
         function()
             -- Check if the step's coordinate explicitly specifies the player's map
@@ -309,7 +313,7 @@ function APR:CheckIsInRouteZone()
     -- Execute continent-filtered checks
     for index, checkFunc in ipairs(continentChecks) do
         local checkNames = {
-            "DirectMatch", "HierarchyMatch", "DescendantMatch", "QuestPoiOrCoordMatch"
+            "DirectMatch", "HierarchyMatch", "DescendantMatch", "NearbySiblingZone", "QuestPoiOrCoordMatch"
         }
 
         self:PrintZoneDebug("Running Check #" .. index .. " (" .. (checkNames[index] or UNKNOWN) .. ")...")

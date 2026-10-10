@@ -385,6 +385,31 @@ function APR:CheckContinentMatch(playerContext, stepZones)
     return false
 end
 
+--- Accept a nearby waypoint across an outdoor zone boundary.
+-- Neighboring outdoor zones share world coordinates even before the map ID switches.
+-- Require both a shared parent and world instance so overlapping instance coordinates
+-- cannot make an inaccessible destination appear to be nearby.
+function APR:IsNearbyStepInSiblingZone(step, playerContext, fallbackMapID)
+    if not step or (IsInInstance and IsInInstance())
+        or (self.GetScenarioMapIDForStep and self:GetScenarioMapIDForStep(step)) then return false end
+    local limit = self.Arrow and self.Arrow.MaxDistanceWrongZone
+    if not limit or not C_Map.GetWorldPosFromMapPos then return false end
+    local coord, coordZone = self:GetStepCoord(step, fallbackMapID)
+    if not coord then return false end
+    local zone = coordZone or coord.mapID or self:GetPreferredStepZone(step, fallbackMapID)
+    local playerMap = playerContext and playerContext.current or C_Map.GetBestMapForUnit("player")
+    local source = playerMap and C_Map.GetMapInfo(playerMap)
+    local target = zone and C_Map.GetMapInfo(zone)
+    if not source or not target or not source.parentMapID or source.parentMapID == 0
+        or source.parentMapID ~= target.parentMapID
+        or source.mapType ~= Enum.UIMapType.Zone or target.mapType ~= Enum.UIMapType.Zone then return false end
+    local playerY, playerX, _, instanceID = UnitPosition("player")
+    local targetInstance = C_Map.GetWorldPosFromMapPos(zone, CreateVector2D(0.5, 0.5))
+    if not playerX or not playerY or instanceID == nil or targetInstance ~= instanceID then return false end
+    local dx, dy = playerX - coord.x, playerY - coord.y
+    return dx * dx + dy * dy < limit * limit
+end
+
 --- Check if player is in special instance content
 ---@return boolean
 function APR:IsInSpecialContent()

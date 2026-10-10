@@ -24,7 +24,8 @@
 | `label` | Display name shown in the route list. | `label = "Midnight - Speedrun"` |
 | `mapID` | Main map ID for the route. Used as route metadata and zone fallback. | `mapID = 2393` |
 | `nextRoute` | Follow-up route keys. Conditional entries must also pass the target route's selection rules. | `nextRoute = { "Shared", { route = "Class", conditions = { Class = "MAGE" } } }` |
-| `parallelSteps` | Insert eligible groups at the current position, or after the current `InstanceQuest` block. Inserted groups remain even if conditions change. | `parallelSteps = { { conditions = { MinLevel = 88 }, steps = { ... } } }` |
+| `parallelSteps` | Declare before `steps`. Insert eligible groups at the current position, or after the current `InstanceQuest` block. Single `EquipItem`/`UseItem` actions inherit live group conditions; other groups retain activation-only conditions. | `parallelSteps = { { conditions = { MinLevel = 88 }, steps = { ... } } }` |
+| `parallelSteps[].repeatable` | For a single `UseItem` action, allow a fresh activation after the previous action was passed and the conditions became false then true (for example, another book was received). | `repeatable = true` |
 | `prefab` | Prefab membership and ordering. Entry conditions select membership without hiding manual route selection. | `prefab = { [APR.PREFAB_TYPES.Speedrun] = { index = 20, conditions = { Class = "MAGE" } } }` |
 | `requiredRoute` | Required route keys. Applicable unfinished requirements are added before this route; hard visibility failures waive them, temporary level/spec/zone restrictions do not. | `requiredRoute = { "2432-Midnight-Intro" }` |
 | `steps` | Main ordered list of route steps. | `steps = { { PickUp = { 86733 } }, ... }` |

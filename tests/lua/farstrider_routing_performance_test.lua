@@ -374,5 +374,19 @@ assert(not APR.farstrider._routingInProgress and not APR.farstrider._suppressSch
     "A failed route pass releases its reentrancy and scheduling guards")
 print("Farstrider: ready-zone cache, same-map transports, request bursts, stale steps and render deferral passed")
 
+-- A book received while in another zone is a portable action, not a trip back
+-- to the route's default map. No path data is needed to display its use button.
+function APR:UpdateQuestAndStep() end
+function APR:UpdateStep() end
+function APR:CheckIsInRouteZone() return false end
+function APR:GetCurrentStep() return {UseItem = {itemID = 247840}, _index = 999} end
+APR.farstrider:InvalidatePathCache()
+APR.IsInRouteZone = false
+before = findTrailCalls
+APR.farstrider:ForceRefresh()
+APR.farstrider:GetMeToRightZone(true)
+assert(APR.IsInRouteZone and not APR.farstrider:IsNavigating() and findTrailCalls == before,
+    "A location-free book reminder is usable in any zone without pathfinding")
+
 print(
     "Farstrider routing: 10 identical retries reused 1 Dijkstra result; map, step, TTL and explicit invalidation passed")

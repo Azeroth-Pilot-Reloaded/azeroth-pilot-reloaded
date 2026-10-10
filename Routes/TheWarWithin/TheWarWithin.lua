@@ -7358,6 +7358,10 @@ APR.RouteQuestStepList["2248-TWW-K'aresh- Visions of a Shadowed Sun - Storyline"
             Zone = 2248,
             _index = 133,
         },
+        {
+            RouteCompleted = true,
+            _index = 134,
+        },
     }
 }
 
