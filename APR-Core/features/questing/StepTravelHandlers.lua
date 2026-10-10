@@ -3,6 +3,48 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local handlers = APR.stepHandlers
 
+-- Cooldown branches are evaluated on entry; live thresholds also release
+-- waiting/farming steps without relying on movement or XP events.
+function handlers.CheckCooldownSkips(step)
+    if not step.SkipIfCooldown then return end
+    local context = APR:CaptureStepContext()
+    if APR.cooldownSkipTimer then APR.cooldownSkipTimer:Cancel(); APR.cooldownSkipTimer = nil end
+    local token = APR:GetCurrentStepToken(APR.ActiveRoute, APRData[APR.PlayerID][APR.ActiveRoute])
+    if APR.cooldownSkipToken ~= token then
+        APR.cooldownSkipToken, APR.cooldownSkipEvaluated = token, {}
+    end
+    local function check()
+        if not APR:IsStepContextCurrent(context) then return end
+        APR.cooldownSkipTimer = nil
+        if not APR.settings.profile.enableAddon then return end
+        local live = false
+        for index, rule in ipairs(step.SkipIfCooldown) do
+            if not rule.once or not APR.cooldownSkipEvaluated[index] then
+                local start, duration
+                if rule.itemID then
+                    local getCooldown = C_Item and C_Item.GetItemCooldown or C_Container and C_Container.GetItemCooldown
+                    if getCooldown then start, duration = getCooldown(rule.itemID) end
+                elseif C_Spell and C_Spell.GetSpellCooldown then
+                    local info = C_Spell.GetSpellCooldown(rule.spellID)
+                    if info then start, duration = info.startTime, info.duration end
+                end
+                if type(start) == "number" and type(duration) == "number" then
+                    APR.cooldownSkipEvaluated[index] = true
+                    local remaining = math.max(0, start + duration - GetTime())
+                    if (rule.operator == "<" and remaining < rule.seconds)
+                        or (rule.operator == ">" and remaining > rule.seconds) then
+                        APR:NextQuestStep()
+                        return true
+                    end
+                end
+            end
+            if not rule.once then live = true end
+        end
+        if live then APR.cooldownSkipTimer = C_Timer.NewTimer(0.5, check) end
+    end
+    return check()
+end
+
 function handlers.RenderScenarioTravel(step, currentStepIndex)
     local function handleScenarioStep(stepType, scenarioMapID)
         APR:Debug(stepType .. " Step:" .. currentStepIndex)

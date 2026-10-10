@@ -574,6 +574,9 @@ function APR:ResolveLevelRequirement(value)
         assert(level and level >= 1 and level < math.huge and level == math.floor(level)
             and xp and math.abs(xp) < math.huge and xp == math.floor(xp),
             "Invalid absolute XP requirement: expected { level = integer, xp = integer }")
+        if value.questLogXP and UnitLevel("player") == level - 1 then
+            xp = xp - self:GetPendingRouteQuestXP(value.questLogXP)
+        end
         if xp == 0 then return level end
         local baseLevel = xp < 0 and level - 1 or level
         local playerLevel = UnitLevel("player") or self.Level or 0
@@ -589,10 +592,27 @@ function APR:ResolveLevelRequirement(value)
     return self:GetLevelProfileTarget(value)
 end
 
+-- Credit only completed quests still in the log. Future or already rewarded
+-- quests cannot fund a grind target; unknown reward data earns no credit.
+function APR:GetPendingRouteQuestXP(questIDs)
+    local total, seen = 0, {}
+    for _, questID in ipairs(questIDs) do
+        if not seen[questID] and C_QuestLog.IsOnQuest(questID) and C_QuestLog.IsComplete(questID) then
+            seen[questID] = true
+            local reward = GetQuestLogRewardXP and GetQuestLogRewardXP(questID)
+            if type(reward) == "number" and reward > 0 then total = total + reward end
+        end
+    end
+    return total
+end
+
 function APR:GetGrindStepText(value)
     if type(value) == "table" then
         self:ResolveLevelRequirement(value) -- Validate the same structure used for progression.
         local level, xp = tonumber(value.level), tonumber(value.xp)
+        if value.questLogXP and UnitLevel("player") == level - 1 then
+            xp = xp - self:GetPendingRouteQuestXP(value.questLogXP)
+        end
         local text = string.format(L["GRIND"], level)
         if xp == 0 then return text end
         return text .. string.format(xp < 0 and " - %d XP" or " + %d XP", math.abs(xp))

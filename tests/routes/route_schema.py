@@ -112,7 +112,7 @@ class RouteSchema:
             return enum(catalog.enums[name].values())
 
         level = union(number(1), enum(catalog.profiles),
-                      obj({"level": ID, "xp": number(integer=True)}, required=("level", "xp")))
+                      obj({"level": ID, "xp": number(integer=True), "questLogXP": IDS}, required=("level", "xp")))
         reputation = obj({"factionID": ID, "level": ID, "type": constants("REPUTATION_TYPE")},
                          required=("factionID", "level"))
         item = obj({"itemID": ID, "quantity": ID}, required=("itemID",))
@@ -172,6 +172,11 @@ class RouteSchema:
         self.route_condition = obj(route_conditions)
 
         self.step_fields = dict(self.condition_fields)
+        self.step_fields['SkipIfCooldown'] = array(union(
+            obj({'itemID': ID, 'operator': enum(('<', '>')), 'seconds': number(0), 'once': BOOL},
+                required=('itemID', 'operator', 'seconds')),
+            obj({'spellID': ID, 'operator': enum(('<', '>')), 'seconds': number(0), 'once': BOOL},
+                required=('spellID', 'operator', 'seconds'))), 1)
         for name in ("ChromiePick DropQuest ExitTutorial GetFP GroupTask LearnProfession LeaveQuest "
                      "NpcDismount SetHS UseDalaHS UseFlightPath UseGarrisonHS UseHS WarMode Waypoint "
                      "DenyNPC MerchantNPC RaidIcon SpellTrigger Zone NodeID QuestLineSkip ExtraLine "
