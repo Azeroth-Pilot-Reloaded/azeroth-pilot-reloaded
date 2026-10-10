@@ -4877,7 +4877,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             Waypoint = 96895,
             NonSkippableWaypoint = true,
             Note = { "WAIT_FOR_ZEPPELIN" },
-            Coord = { x = -4663.4, y = 1359.4 },
+            Coord = { x = -4648.7, y = 1324.4 },
             Range = 5,
             Class = { "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             SkipInZones = { 1420 },
@@ -4888,7 +4888,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
             Waypoint = 96895,
             NonSkippableWaypoint = true,
             Note = { "WAIT_FOR_ZEPPELIN", "CONJURE_WATER" },
-            Coord = { x = -4648.55, y = 1321.88 },
+            Coord = { x = -4648.7, y = 1324.4 },
             Range = 5,
             SpellButton = { ["96895"] = 5504 },
             Class = "MAGE",
@@ -4899,6 +4899,10 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Troll-Orc"] = {
         {
             LeaveQuests = { 816 },
             _index = 595,
+        },
+        {
+            RouteCompleted = true,
+            _index = 596,
         },
     },
 }
