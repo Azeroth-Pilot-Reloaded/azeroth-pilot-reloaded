@@ -116,8 +116,9 @@ for _, game in ipairs({ "Standard", "Camelot" }) do
                     assert(not registeredEvents.PLAYER_HOUSE_LIST_UPDATED,
                         "Forever must not subscribe to Retail housing events")
                     assert(not portal, "Forever must not inherit the Retail portal graph")
-                    assert(boat and boat.from.loc.mapId == 0 and boat.to.loc.mapId == 1,
-                        "Vanilla must retain its native Menethil-Theramore transport")
+                    assert(boat and boat.from.loc.mapId == 1437 and boat.to.loc.mapId == 1445
+                        and boat.from.loc.isUI and boat.to.loc.isUI,
+                        "Forever must use the measured Menethil-Theramore piers")
                     assert(boat.condition() == (faction == "Alliance"))
                 else
                     assert(portal and portal.from.loc.mapId == 870 and portal.to.loc.mapId == 0,
@@ -146,6 +147,8 @@ for _, faction in ipairs({ "Alliance", "Horde" }) do
         if expectedCount then assert(#api.WAYPOINTS == expectedCount) end
         expectedCount = #api.WAYPOINTS
         local auberdine, undercity = false, false
+        local zeppelins, loopLegs, seenPorts = 0, 0, {}
+        local skyborneShip = false
         for _, waypoint in ipairs(api.WAYPOINTS) do
             for _, endpoint in ipairs({ waypoint.from, waypoint.to }) do
                 local loc = endpoint.loc
@@ -155,9 +158,44 @@ for _, faction in ipairs({ "Alliance", "Horde" }) do
                 end
             end
             if waypoint.from.locaId == 1003 or waypoint.from.locaId == 1004 then
+                assert(waypoint.from.loc.isUI and waypoint.to.loc.isUI,
+                    "Forever transports must not retain legacy world-coordinate platforms")
+                assert(not waypoint.condition or waypoint.condition() or waypoint.id == 44,
+                    "Transports from the other faction must not enter the graph")
+                for _, endpoint in ipairs({ waypoint.from, waypoint.to }) do
+                    local loc = endpoint.loc
+                    if endpoint.locaId == 1004 then
+                        local key = string.format("%d:%.4f:%.4f", loc.mapId, loc.pos.x, loc.pos.y)
+                        assert(not seenPorts[key], "Each zeppelin leg must have its own boarding platform")
+                        seenPorts[key] = true
+                    end
+                end
+                if waypoint.from.locaId == 1004 then zeppelins = zeppelins + 1 end
+                local fromMap, toMap = waypoint.from.loc.mapId, waypoint.to.loc.mapId
+                local loopMaps = { [1439] = true, [1437] = true, [1424] = true }
+                if loopMaps[fromMap] and loopMaps[toMap] then
+                    loopLegs = loopLegs + 1
+                    assert(not waypoint.bidirectional, "The three-stop ship must retain its directed legs")
+                    if fromMap == 1439 and toMap == 1437 then
+                        assert(waypoint.cost == 293)
+                    elseif fromMap == 1437 and toMap == 1439 then
+                        assert(waypoint.cost == 498,
+                            "Menethil to Auberdine must include the stop at Southshore")
+                    end
+                end
+                if fromMap == 2521 then
+                    skyborneShip = true
+                    assert(toMap == (faction == "Horde" and 1412 or 1416),
+                        "Skyborne ships must lead to the faction's actual destination")
+                end
                 local args = waypoint.from.locaArgs()
                 if args[1] == "150" and args[2] == "442" then auberdine = true end
-                if args[1] == "1497" and args[2] == "1637" then undercity = true end
+                if args[1] == "1497" and args[2] == "1637" then
+                    undercity = true
+                    assert(fromMap == 1420 and toMap == 1411 and waypoint.bidirectional)
+                    assert(waypoint.to.loc.pos.x == 0.5080 and waypoint.to.loc.pos.y == 0.1370,
+                        "Undercity's zeppelin must board at the Durotar platform, not inside Orgrimmar")
+                end
                 assert(args[2] ~= "3981" and args[2] ~= "3537" and args[2] ~= "495"
                     and args[2] ~= "3574" and args[2] ~= "4152" and args[2] ~= "3988",
                     "Forever must not inherit TBC/Wrath boats or zeppelins")
@@ -165,8 +203,90 @@ for _, faction in ipairs({ "Alliance", "Horde" }) do
         end
         assert(auberdine == (faction == "Alliance"))
         assert(undercity == (faction == "Horde"))
+        assert(zeppelins == (faction == "Horde" and 3 or 0))
+        assert(loopLegs == (faction == "Alliance" and 6 or 0))
+        assert(skyborneShip)
     end
 end
+
+-- Render transport instructions with unavailable map/area APIs, including locales whose L table
+-- returns missing keys verbatim. Neither English dock literals nor Area_/ForeverPort_ keys
+-- should reach the displayed instructions.
+C_Map = { GetAreaInfo = function() return nil end }
+local undercityNames = {
+    enUS = "Undercity", frFR = "Fossoyeuse", deDE = "Unterstadt",
+    ruRU = "Подгород", zhCN = "幽暗城", zhTW = "幽暗城",
+}
+for locale, undercityName in pairs(undercityNames) do
+    for _, faction in ipairs({ "Alliance", "Horde" }) do
+        local _, api = loadClient("Camelot", locale, faction, false)
+        local renderedUndercity, renderedDalaran = false, false
+        for _, waypoint in ipairs(api.WAYPOINTS) do
+            if waypoint.from.locaId == 1003 or waypoint.from.locaId == 1004 then
+                for _, endpoint in ipairs({ waypoint.from, waypoint.to }) do
+                    local args = endpoint.locaArgs()
+                    assert(type(args[1]) == "string" and type(args[2]) == "string")
+                    local message = string.format(api.GetLocalizedString(endpoint.locaId), unpack(args))
+                    assert(not message:find("ForeverPort_", 1, true) and not message:find("Area_", 1, true))
+                    assert(not message:find("?", 1, true), "Translated names must retain their Unicode characters")
+                    if endpoint.locaId == 1004 and endpoint.loc.mapId == 1420
+                        and waypoint.to.loc.mapId == 1411 then
+                        renderedUndercity = true
+                        assert(args[1] == undercityName)
+                        if locale == "frFR" then
+                            assert(message == "Prenez le zeppelin de Fossoyeuse vers Orgrimmar")
+                        end
+                    end
+                    if endpoint.loc.mapId == 1416 then
+                        renderedDalaran = true
+                        assert(args[1] == rawget(FarstriderLibData.L, "ForeverPort_Dalaran"),
+                            "Dalaran's dock must display its localized name, not Alterac Mountains")
+                    end
+                end
+            end
+        end
+        assert(renderedUndercity == (faction == "Horde"))
+        assert(renderedDalaran == (faction == "Alliance"))
+    end
+end
+
+-- Prefer the client's localized map names at display time, even for ports with an area ID
+-- or a translated fallback. This also covers locales beyond the library's translations.
+local mapNames = { [1411] = "Durotar", [1420] = "Clairières de Tirisfal" }
+C_Map = {
+    GetMapInfo = function(id) return { name = mapNames[id] or "Carte " .. id } end,
+    GetAreaInfo = function() error("Map names must take precedence over area names") end,
+}
+for _, faction in ipairs({ "Alliance", "Horde" }) do
+    local _, api = loadClient("Camelot", "frFR", faction, false)
+    for _, waypoint in ipairs(api.WAYPOINTS) do
+        if waypoint.from.locaId == 1003 or waypoint.from.locaId == 1004 then
+            for _, endpoint in ipairs({ waypoint.from, waypoint.to }) do
+                local other = endpoint == waypoint.from and waypoint.to or waypoint.from
+                local args = endpoint.locaArgs()
+                assert(args[1] == C_Map.GetMapInfo(endpoint.loc.mapId).name)
+                assert(args[2] == C_Map.GetMapInfo(other.loc.mapId).name)
+                if endpoint.loc.mapId == 1411 and other.loc.mapId == 1420 then
+                    assert(string.format(api.GetLocalizedString(endpoint.locaId), unpack(args))
+                        == "Prenez le zeppelin de Durotar vers Clairières de Tirisfal")
+                end
+            end
+        end
+    end
+end
+
+-- Classic clients must keep their own expansion's transport locations, even though Forever
+-- starts from Classic-era maps. In particular, Cata+ still boards inside Orgrimmar.
+local _, classicAPI = loadClient("Standard", "enUS", "Horde", false, nil, 99)
+local classicUndercity = false
+for _, waypoint in ipairs(classicAPI.WAYPOINTS) do
+    if waypoint.from.locaId == 1004 and waypoint.from.loc.mapId == 0 and waypoint.to.loc.mapId == 1 then
+        classicUndercity = true
+        assert(not waypoint.to.loc.isUI and waypoint.to.loc.pos.y == -4389.0400390625,
+            "Forever transport overrides must not replace Cata+ Classic platforms")
+    end
+end
+assert(classicUndercity)
 
 local existingAPI = { VERSION = 9999999999, WAYPOINTS = {} }
 for _, game in ipairs({ "Standard", "Camelot" }) do
