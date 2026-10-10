@@ -671,6 +671,7 @@ function APR.event.functions.done(event, ...)
     end
 
     if event == "QUEST_COMPLETE" then
+        if APR:RequiresManualQuestReward() then return end
         -- Deny NPC
         APR.event:TalkToDenyNpcLogic(step)
 

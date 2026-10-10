@@ -6,6 +6,20 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local questTitleRequests = {}
 local QUEST_TITLE_RETRY_DELAY = 30
 
+function APR:RequiresManualQuestReward()
+    local isForever = self:GetGameVersion() == self.GAME_VERSIONS.Forever
+    for index = 1, GetNumQuestChoices() do
+        local link = GetQuestItemLink("choice", index)
+        local itemID = link and tonumber(link:match("item:(%d+)"))
+        if not itemID and GetQuestItemInfo then
+            itemID = select(6, GetQuestItemInfo("choice", index))
+        end
+        -- Do not guess a choice while its item data is still loading.
+        if not itemID or (isForever and self.ProfessionTrainingItems[itemID]) then return true end
+    end
+    return false
+end
+
 --- Read a title and request uncached data only when the caller needs it.
 --- Failed or unanswered requests can be retried on a later read without flooding the server.
 function APR:GetQuestTitle(questID, requestMissing)

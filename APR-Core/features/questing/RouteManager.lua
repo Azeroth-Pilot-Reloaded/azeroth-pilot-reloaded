@@ -160,11 +160,13 @@ local function BuildEffectiveRouteCacheKey(baseSteps, groups, state)
         local orderedEntries = {}
         for groupIndex, entry in pairs(activeGroups) do
             if type(entry) == "table" then
-                orderedEntries[#orderedEntries + 1] = {
-                    groupIndex = groupIndex,
-                    activationOrder = entry.activationOrder or 0,
-                    effectiveBeforeIndex = entry.effectiveBeforeIndex or 0,
-                }
+                for _, activation in ipairs(entry.activations or { entry }) do
+                    orderedEntries[#orderedEntries + 1] = {
+                        groupIndex = groupIndex,
+                        activationOrder = activation.activationOrder or 0,
+                        effectiveBeforeIndex = activation.effectiveBeforeIndex or 0,
+                    }
+                end
             end
         end
 
@@ -226,11 +228,13 @@ function APR:BuildEffectiveRouteSteps(routeKey)
     for groupIndex, entry in pairs(activeGroups) do
         local group = groups[groupIndex]
         if group and type(entry) == "table" then
-            orderedEntries[#orderedEntries + 1] = {
-                groupIndex = groupIndex,
-                entry = entry,
-                steps = group.steps,
-            }
+            for _, activation in ipairs(entry.activations or { entry }) do
+                orderedEntries[#orderedEntries + 1] = {
+                    groupIndex = groupIndex,
+                    entry = activation,
+                    steps = group.steps,
+                }
+            end
         end
     end
 
@@ -247,12 +251,12 @@ function APR:BuildEffectiveRouteSteps(routeKey)
         local insertIndex = math.max(1,
             math.min(item.entry.effectiveBeforeIndex or (#effectiveSteps + 1), #effectiveSteps + 1))
         for offset, step in ipairs(item.steps) do
-            -- Equipment eligibility can change after activation (loot, upgrades, combat).
+            -- Equipment/item eligibility can change after activation (loot, upgrades, combat).
             -- Keep it on the runtime copy so routes only declare it on the group.
             -- Multi-action groups retain their activation-only conditions: earlier
             -- actions may intentionally consume items needed to activate the group.
             local conditions = groups[item.groupIndex].conditions
-            if #item.steps == 1 and step.EquipItem and conditions and next(conditions) then
+            if #item.steps == 1 and (step.EquipItem or step.UseItem) and conditions and next(conditions) then
                 local inheritedStep = {}
                 for key, value in pairs(step) do inheritedStep[key] = value end
                 inheritedStep.AllOf = { conditions }
@@ -260,6 +264,13 @@ function APR:BuildEffectiveRouteSteps(routeKey)
                     inheritedStep.AllOf[#inheritedStep.AllOf + 1] = condition
                 end
                 step = inheritedStep
+            end
+            if groups[item.groupIndex].repeatable then
+                local repeatedStep = {}
+                for key, value in pairs(step) do repeatedStep[key] = value end
+                repeatedStep._parallelGroupIndex = item.groupIndex
+                repeatedStep._parallelActivationOrder = item.entry.activationOrder
+                step = repeatedStep
             end
             table.insert(effectiveSteps, insertIndex + offset - 1, step)
         end
@@ -329,7 +340,25 @@ function APR:EnsureRouteParallelStepsActivated(routeKey)
     state.groups = state.groups or {}
     local pendingGroups = {}
     for groupIndex, group in ipairs(groups) do
-        if not state.groups[groupIndex] and self:AreConditionalFiltersMet(group.conditions or {}) then
+        local entry = state.groups[groupIndex]
+        local repeatable = group.repeatable and #group.steps == 1 and group.steps[1].UseItem
+        local eligible = (not entry or repeatable) and self:AreConditionalFiltersMet(group.conditions or {})
+        local repeatReady = false
+        if entry and repeatable then
+            if not eligible then entry.rearm = true end
+            if eligible and entry.rearm then
+                local activations = entry.activations or { entry }
+                local last = activations[#activations]
+                for index, candidate in ipairs(self:BuildEffectiveRouteSteps(routeKey)) do
+                    if candidate._parallelGroupIndex == groupIndex
+                        and candidate._parallelActivationOrder == last.activationOrder then
+                        repeatReady = index < currentStepIndex
+                        break
+                    end
+                end
+            end
+        end
+        if eligible and (not entry or repeatReady) then
             pendingGroups[#pendingGroups + 1] = {
                 groupIndex = groupIndex,
                 steps = group.steps,
@@ -347,10 +376,21 @@ function APR:EnsureRouteParallelStepsActivated(routeKey)
 
     for _, pendingGroup in ipairs(pendingGroups) do
         state.activationSequence = (state.activationSequence or 0) + 1
-        state.groups[pendingGroup.groupIndex] = {
+        local activation = {
             activationOrder = state.activationSequence,
             effectiveBeforeIndex = insertionIndex + insertedSteps,
         }
+        local previous = state.groups[pendingGroup.groupIndex]
+        if previous then
+            if not previous.activations then
+                previous.activations = { { activationOrder = previous.activationOrder,
+                    effectiveBeforeIndex = previous.effectiveBeforeIndex } }
+            end
+            table.insert(previous.activations, activation)
+            previous.rearm = false
+        else
+            state.groups[pendingGroup.groupIndex] = activation
+        end
         insertedSteps = insertedSteps + #pendingGroup.steps
     end
 

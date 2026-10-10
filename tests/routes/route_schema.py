@@ -256,7 +256,7 @@ class RouteSchema:
             "autoStartOnMap": BOOL, "notSkippable": BOOL, "hiddenFromSelection": BOOL, "temporary": BOOL,
             "sojournerAchievementID": ID, "delve": obj({}),
             "steps": union(steps, array(scenario, 1)), "scenarios": array(scenario),
-            "parallelSteps": array(obj({"conditions": condition, "steps": array(self.step, 1)}, required=("steps",))),
+            "parallelSteps": array(obj({"conditions": condition, "steps": array(self.step, 1), "repeatable": BOOL}, required=("steps",))),
             "requiredRoute": array(TEXT),
             "nextRoute": array(union(TEXT, obj({"route": TEXT, "conditions": condition}, required=("route",)))),
             "prefab": mapping(constants("PREFAB_TYPES"), union(NUMBER,
