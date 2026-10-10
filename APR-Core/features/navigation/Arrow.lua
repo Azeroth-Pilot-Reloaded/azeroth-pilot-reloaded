@@ -308,10 +308,10 @@ local function UpdatePosition(self, playerX, playerY, facing)
     local isNavigating = APR.farstrider and APR.farstrider:IsNavigating()
     local stepCoord = not isNavigating and questStep and
         APR:GetStepCoord(questStep, nil, APR:GetPlayerParentMapID()) or nil
-    if not isNavigating and questStep and questStep.ZoneStepTrigger then -- to trigger a zone detection
+    if not isNavigating and questStep and questStep.ZoneStepTrigger
+        and not APR:IsTransportStep(questStep) then -- Transports poll arrival independently of the arrow.
         local trigger = questStep.ZoneStepTrigger
-        local dist = DistanceBetween(playerX, playerY, trigger.x, trigger.y)
-        if trigger.Range > dist then
+        if APR:IsZoneStepTriggerReached(trigger, playerX, playerY) then
             self.currentStep = 0
             APR:NextQuestStep()
             return

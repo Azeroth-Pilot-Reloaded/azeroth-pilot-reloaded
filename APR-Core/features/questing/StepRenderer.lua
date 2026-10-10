@@ -15,6 +15,8 @@ function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
         return handlers.PickUp(step, showStepDetails, currentStepIndex)
     elseif step.TakePortal then
         return handlers.TakePortal(step, showStepDetails, currentStepIndex)
+    elseif APR:IsTransportStep(step) then
+        return handlers.Transport(step, showStepDetails, currentStepIndex)
     elseif (step.Waypoint) then
         return handlers.Waypoint(step, showStepDetails, currentStepIndex)
     elseif (step.Treasure) then

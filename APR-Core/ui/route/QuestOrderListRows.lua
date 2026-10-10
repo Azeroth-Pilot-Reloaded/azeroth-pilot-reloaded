@@ -511,6 +511,11 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                     local questInfo = { { questID = zoneName } }
                     container, activeQuestId = addStepFrameWithQuest(layout, displayStepIndex,
                         stepText, questInfo, color, isCurrentStep)
+                elseif APR:IsTransportStep(step) then
+                    local color = colorByCompletion(APR:IsZoneStepTriggerReached(step.ZoneStepTrigger),
+                        currentStepIndex, rawIndex)
+                    container, activeQuestId = addStepFrame(layout, displayStepIndex,
+                        APR:GetTransportStepText(step), color, isCurrentStep)
                 elseif step.Waypoint then
                     local questID = step.Waypoint
                     local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex,

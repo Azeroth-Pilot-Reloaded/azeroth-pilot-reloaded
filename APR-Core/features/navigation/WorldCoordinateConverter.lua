@@ -573,6 +573,15 @@ function APR.worldCoordinateConverter:ConvertMapCoordinate(zone, mapX, mapY)
     return nil
 end
 
+--- Build an arrival trigger using the client's map geometry, in world yards.
+function APR.worldCoordinateConverter:ConvertMapTrigger(zone, mapX, mapY, range)
+    if type(range) ~= "number" or range <= 0 then return nil end
+    local coord = self:ConvertMapCoordinate(zone, mapX, mapY)
+    if not coord then return nil end
+    coord.mapID, coord.Range = zone, range
+    return coord
+end
+
 --- Radius in yards covering map points and their individual arrival radii.
 --- Computed once when route data loads; navigation still uses ordinary Coord/Range.
 function APR.worldCoordinateConverter:GetMapAreaRadius(zone, centerX, centerY, points)
