@@ -247,6 +247,20 @@ function APR:BuildEffectiveRouteSteps(routeKey)
         local insertIndex = math.max(1,
             math.min(item.entry.effectiveBeforeIndex or (#effectiveSteps + 1), #effectiveSteps + 1))
         for offset, step in ipairs(item.steps) do
+            -- Equipment eligibility can change after activation (loot, upgrades, combat).
+            -- Keep it on the runtime copy so routes only declare it on the group.
+            -- Multi-action groups retain their activation-only conditions: earlier
+            -- actions may intentionally consume items needed to activate the group.
+            local conditions = groups[item.groupIndex].conditions
+            if #item.steps == 1 and step.EquipItem and conditions and next(conditions) then
+                local inheritedStep = {}
+                for key, value in pairs(step) do inheritedStep[key] = value end
+                inheritedStep.AllOf = { conditions }
+                for _, condition in ipairs(step.AllOf or {}) do
+                    inheritedStep.AllOf[#inheritedStep.AllOf + 1] = condition
+                end
+                step = inheritedStep
+            end
             table.insert(effectiveSteps, insertIndex + offset - 1, step)
         end
     end
