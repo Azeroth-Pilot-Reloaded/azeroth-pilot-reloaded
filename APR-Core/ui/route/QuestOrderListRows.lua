@@ -506,7 +506,8 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                     local color = colorByCompletion(completed, currentStepIndex, rawIndex)
                     local mapInfo = APR:GetMapInfoCached(mapID)
                     local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
-                    local stepText = string.format(L["USE_PORTAL_TO"], zoneName)
+                    local stepText = step.Tram and L["ENTER_TRAM"] or
+                        string.format(L[step.Boat and "USE_BOAT" or "USE_PORTAL_TO"], zoneName)
                     local questInfo = { { questID = zoneName } }
                     container, activeQuestId = addStepFrameWithQuest(layout, displayStepIndex,
                         stepText, questInfo, color, isCurrentStep)

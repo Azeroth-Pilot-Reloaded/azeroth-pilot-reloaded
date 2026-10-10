@@ -177,7 +177,7 @@ class RouteSchema:
                      "DenyNPC MerchantNPC RaidIcon SpellTrigger Zone NodeID QuestLineSkip ExtraLine "
                      "Gossip Brewery SparringRing").split():
             self.step_fields[name] = ID
-        for name in ("Bloodlust Boat DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap "
+        for name in ("Bloodlust Boat Tram DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap "
                      "IsCampaignQuest MountVehicle NoArrow NoAutoFlightMap NoAutoAccept NoAutoTurnIn "
                      "NonSkippableWaypoint ResetRoute RouteCompleted SingleWaypointDisplayDistance "
                      "SpecialETAHide UseGlider UseHSIfAvailable VehicleExit").split():

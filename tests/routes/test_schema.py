@@ -26,7 +26,7 @@ def examples():
          "InterfaceVersion InterfaceVersionExact HasAchievement DontHaveAchievement HasAura "
          "DontHaveAura HasSpell IsQuestOnQuest IsQuestNotOnQuest IsQuestCompleted IsQuestUncompleted "
          "InVehicle PickedLoa _index SkipForPrimaryProfessions", 1),
-        ("Bloodlust Boat DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap IsCampaignQuest "
+        ("Bloodlust Boat Tram DeathSkip Dontskipvid ExtraActionB InstanceQuest IsAdventureMap IsCampaignQuest "
          "MountVehicle NoArrow NoAutoFlightMap NoAutoAccept NoAutoTurnIn NonSkippableWaypoint ResetRoute "
          "RouteCompleted SingleWaypointDisplayDistance SpecialETAHide UseGlider UseHSIfAvailable VehicleExit Hardcore AlliedRace", True),
         ("Done DoneDB PickUp PickUpDB QpartDB WaypointDB LeaveQuests GossipOptionIDs Zones OnlyInZones "
