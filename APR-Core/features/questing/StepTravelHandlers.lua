@@ -172,6 +172,16 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
         type = 'spell'
     end
 
+    -- Opt in only when the following route steps also support travelling there
+    -- without a hearthstone (walking, or an explicit flight fallback).
+    if step.UseHS and step.UseHSIfAvailable then
+        local usable, reason = APR:GetRouteActionUsability(type, spellID)
+        if not usable and (reason == "cooldown" or reason == "missing") then
+            APR:UpdateNextStep()
+            return true
+        end
+    end
+
     if showStepDetails then
         APR.currentStep:AddQuestSteps(questKey, questText, useHSKey)
         APR.currentStep:AddStepButton(questKey .. "-" .. useHSKey, spellID, type)

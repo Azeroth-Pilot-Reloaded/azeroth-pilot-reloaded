@@ -344,3 +344,43 @@ assert(APR:GetHearthstoneItemID() == 6948, "Clients without toy APIs retain the 
 bagCount = 1
 assert(APR:GetHearthstoneItemID() == 6948, "Support the legacy bag API")
 print("Hearthstones: toy-only UseHS buttons, all toy cast effects, restrictions, cooldowns and legacy fallback passed")
+
+-- Optional hearthstones must hand off to the route's walking/flight fallback
+-- only for an actual cooldown or missing item, never a temporary use restriction.
+local onCooldown, canUse = true, true
+C_Item = {
+    GetItemCount = function() return bagCount end,
+    IsUsableItem = function() return canUse end,
+    GetItemCooldown = function() return onCooldown and 1 or 0, onCooldown and 3600 or 0, 1 end,
+}
+before, current = advanced, { UseHS = 10, UseHSIfAvailable = true }
+APR:UpdateStep()
+assert(advanced == before + 1 and #buttons == 0, "Cooldown must select the travel fallback")
+before, current = advanced, { UseHS = 10 }
+APR:UpdateStep()
+assert(advanced == before and #buttons == 1, "Mandatory hearthstones still wait for cooldown")
+before, current = advanced, { UseHS = 10, UseHSIfAvailable = false }
+APR:UpdateStep()
+assert(advanced == before and #buttons == 1, "False must preserve mandatory behavior")
+onCooldown = false
+before, current = advanced, { UseHS = 10, UseHSIfAvailable = true }
+APR:UpdateStep()
+assert(advanced == before and #buttons == 1 and buttons[1].id == 6948,
+    "An available optional hearthstone must still be offered")
+canUse = false
+APR:UpdateStep()
+assert(advanced == before, "Temporary item restrictions must not select another journey")
+canUse, bagCount = true, 0
+APR:UpdateStep()
+assert(advanced == before + 1 and #buttons == 0, "Missing hearthstone must select the travel fallback")
+bagCount, onCooldown = 1, true
+C_Container = { GetItemCooldown = C_Item.GetItemCooldown }
+C_Item = nil
+before = advanced
+APR:UpdateStep()
+assert(advanced == before + 1, "Legacy bag and cooldown APIs must select the cooldown fallback")
+onCooldown = false
+before = advanced
+APR:UpdateStep()
+assert(advanced == before and #buttons == 1, "Legacy bags must not be mistaken for a missing hearthstone")
+print("Optional hearthstones: ready, cooldown, missing, temporary restrictions and legacy APIs passed")
