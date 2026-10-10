@@ -97,6 +97,10 @@ function APR.routeconfig:CheckIsCustomPathEmpty()
 end
 
 function APR.routeconfig:CheckRouteResetOnLvlUp()
+    if APR:GetGameVersion() ~= APR.GAME_VERSIONS.Retail then
+        return
+    end
+
     if not APR:IsTableEmpty(APRCustomPath[APR.PlayerID]) then
         local _, currentRouteName = next(APRCustomPath[APR.PlayerID])
         local currentRouteKey = APR:GetRouteKeyFromDisplayName(currentRouteName)

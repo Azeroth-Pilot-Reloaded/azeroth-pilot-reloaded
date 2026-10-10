@@ -7,10 +7,13 @@ APR = {
     PlayerID = "player",
     PreviousMaxLvl = 80,
     MaxLevelChromie = 70,
+    GAME_VERSIONS = { Retail = "retail", Forever = "forever", Classic = "classic" },
     EXPANSIONS = { Midnight = "Midnight", TheWarWithin = "TWW" },
     PREFAB_TYPES = { Speedrun = "Speedrun" }
 }
 function APR:NewModule() return {} end
+local gameVersion = APR.GAME_VERSIONS.Retail
+function APR:GetGameVersion() return gameVersion end
 
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/features/questing/RouteManager.lua")
@@ -53,4 +56,12 @@ assert(selected == "TWW")
 for _, level in ipairs({ 79, 81, 90 }) do
     check(level, {}); assert(not popup)
 end
-print("PASS: level 80 speedrun acceptance, cancellation and route guards")
+for _, version in ipairs({ APR.GAME_VERSIONS.Forever, APR.GAME_VERSIONS.Classic }) do
+    gameVersion = version
+    for _, level in ipairs({ 10, 70, 80 }) do
+        check(level, {})
+        assert(not popup and selected == nil, "Route reset must only apply to Retail")
+        assert(APRCustomPath.player[1] == "old-route", "Keep the current path outside Retail")
+    end
+end
+print("PASS: Retail level-up route selection, acceptance and client guards")
