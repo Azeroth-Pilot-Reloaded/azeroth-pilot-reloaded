@@ -43,6 +43,7 @@ def examples():
     ):
         values.update((key, deepcopy(value)) for key in names.split())
     values.update({
+        'SkipIfCooldown': seq({'itemID': 6948, 'operator': '<', 'seconds': 2, 'once': True}),
         "Faction": "Horde", "Race": seq("Orc", "Troll"), "Class": seq("WARRIOR", 3),
         "ClassNot": "MAGE", "ClassSpec": 253, "Gender": 3, "Event": "Remix",
         "Money": {"copper": 10, "operator": "<"},

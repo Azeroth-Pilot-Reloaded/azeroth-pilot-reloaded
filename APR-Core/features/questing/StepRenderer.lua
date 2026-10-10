@@ -215,6 +215,7 @@ function APR:RenderCurrentStep()
         if not APR:IsStepContextCurrent(context) then return end
 
         if handlers.RenderRequirements(step, showStepDetails, currentStepIndex) then return end
+        if handlers.CheckCooldownSkips(step) then return end
 
         if step.DropQuest or step.DroppableQuest then
             APR:UseDroppedQuestItem(step)

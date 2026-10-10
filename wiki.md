@@ -281,6 +281,8 @@ Conditions on the same table combine with AND. Use `AnyOf` for alternatives, `Al
 | `MinLevel = "MidnightDelves"` | Named dynamic threshold from the configured active XP bonuses. |
 | `Grind = { level = 3, xp = 325 }` | Level 3 with at least 325 XP into that level. |
 | `Grind = { level = 4, xp = -700 }` | At most 700 XP remaining before level 4. |
+| `Grind = { level = 60, xp = 0, questLogXP = { 4901, 4508 } }` | Deducts the current rewards of listed, completed quests still in the player's log. Unknown XP, unfinished quests and already rewarded quests give no credit. |
+| `SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } }` | Skips this step when the item cooldown exceeds the threshold on entry. Use `spellID` for a spell. Omit `once` to monitor continuously, for example `< 300` on a farming/waiting step. |
 | Supported fields | Step `Grind`, `Level`, `MinLevel`, `MaxLevel`, `SkipForLvl`. Route-selection level thresholds remain numeric; `BeLvl` does not accept profiles or absolute XP tables. |
 | Absolute XP validation | Finite integers: `level >= 1`, signed `xp`. Uses the current client's XP range for the relevant level; out-of-range targets clamp to its boundaries. Missing XP data delays completion. |
 
