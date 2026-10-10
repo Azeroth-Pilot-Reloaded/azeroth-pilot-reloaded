@@ -3,6 +3,12 @@
 All regression tests now live in `tests/`. Run `python tests/run.py` for all
 Python, Lua and route syntax checks; see `tests/README.md` for dependencies and CI.
 
+Route syntax checks append a missing `RouteCompleted = true` to ordinary route
+step lists before validation. They preserve existing steps, comments, encoding
+and line endings. Scenario routes keep their separate instance completion flow.
+Run `python tools/validation/route_completion.py` to repair endings directly, or
+add `--check` for a read-only report. A second repair makes no changes.
+
 Current-step rendering regression:
 
 ```text
