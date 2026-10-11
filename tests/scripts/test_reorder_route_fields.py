@@ -20,6 +20,27 @@ sys.path.pop(0)
 
 
 class RouteFieldOrderTests(unittest.TestCase):
+    def test_coordinate_xy_order_preserves_values_and_note_text(self):
+        text = '''APR.RouteQuestStepList["Test"] = {
+    steps = {
+        {
+            BuyMerchant = { { itemID = 1, quantity = 1 } },
+            Note = { "Coord = { y = 2, x = 1 }" },
+            Coord = { y = 2368.97, x = -1187.95 },
+            Range = 5,
+            Zone = 1420,
+            _index = 1,
+        },
+    },
+}
+'''
+        result = reorder.normalize_text(text)
+        self.assertIn('Coord = { x = -1187.95, y = 2368.97 }', result)
+        self.assertIn('Note = { "Coord = { y = 2, x = 1 }" }', result)
+        self.assertIn('Zone = 1420', result)
+        self.assertIn('Range = 5', result)
+        self.assertEqual(reorder.normalize_text(result), result)
+
     def test_recorder_field_groups_and_natural_text_order(self):
         fields = dict.fromkeys((
             "_index", "Zone", "Class", "FutureData", "NoArrow", "SpellButton", "Button",
@@ -91,7 +112,7 @@ APR.RouteQuestStepList["test"] = {
         result = reorder.normalize_text(source)
         self.assertIn('conditions = { Zone = 1, Class = "MAGE" }', result)
         self.assertIn('conditions = { Zone = 2, Class = "WARLOCK" }', result)
-        self.assertIn('steps = { { LearnSkill = {}, Coord = { y = 2, x = 1 }, Zone = 1, } }', result)
+        self.assertIn('steps = { { LearnSkill = {}, Coord = { x = 1, y = 2 }, Zone = 1, } }', result)
         self.assertIn('steps = { { BuyMerchant = {}, Coord = {}, Zone = 2, } }', result)
         self.assertEqual(source.split("\n")[:2], result.split("\n")[:2])
 
