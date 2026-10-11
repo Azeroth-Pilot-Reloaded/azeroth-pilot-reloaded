@@ -143,6 +143,7 @@ function APR:ActivateRouteFromTemporaryTrigger(routeKey)
     if not routeKey then
         return
     end
+    if self.CanStartRoute and not self:CanStartRoute(routeKey) then return end
 
     local routeName = getRouteDisplayName(routeKey, self.RouteTriggersSuggestion.routes[routeKey])
     APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}

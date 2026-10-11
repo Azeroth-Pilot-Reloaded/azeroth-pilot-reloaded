@@ -902,6 +902,13 @@ function APR:GetCurrentRouteMapIDsAndName()
         return nil, 0, '', ''
     end
 
+    -- Keep the saved path intact while its first route is locked. A level-up
+    -- or prerequisite completion can make it usable without rebuilding it.
+    if self.CanStartRoute and not self:CanStartRoute(currentRouteKey) then
+        self._blockedRouteKey = currentRouteKey
+        return nil, 0, '', ''
+    end
+    self._blockedRouteKey = nil
     local routeZoneMapIDs, mapID, routeFileName, expansion = self:GetRouteMapIDsAndName(currentRouteKey)
 
     -- Clean up invalid saved entries so the current step frame can show content.

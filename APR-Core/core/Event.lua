@@ -1067,11 +1067,18 @@ function APR.event.functions.lvlUp(event, level, healthDelta, powerDelta, numNew
                                    strengthDelta, agilityDelta, staminaDelta, intellectDelta)
     APR.Level = level
     APR.routeconfig:CheckRouteResetOnLvlUp()
+    if APR._blockedRouteKey and APR:CanStartRoute(APR._blockedRouteKey) then
+        APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+    end
+    if APR.routeconfig.SendMessage then APR.routeconfig:SendMessage("APR_Route_Catalog_Update") end
     APR:UpdateStep()
 end
 
 function APR.event.functions.xpUpdate()
     APR.Level = UnitLevel("player") or APR.Level
+    if APR._blockedRouteKey and APR:CanStartRoute(APR._blockedRouteKey) then
+        APR.routeconfig:SendMessage("APR_Custom_Path_Update")
+    end
 
     if APR.ActiveRoute then
         APR:UpdateStep()

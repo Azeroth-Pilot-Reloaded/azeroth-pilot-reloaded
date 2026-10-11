@@ -171,7 +171,8 @@ class RouteSchemaTests(unittest.TestCase):
                  "steps": seq({"Note": "Example"}), "scenarios": seq({"label": "Scenario", "scenarioID": 1,
                      "index": 1, "steps": seq({"Note": "Example"})}),
                  "parallelSteps": seq({"conditions": {"Class": 1}, "steps": seq({"Note": "Example"})}),
-                 "requiredRoute": seq("previous"), "nextRoute": seq("next", {"route": "branch", "conditions": {"Race": "Orc"}}),
+                 "requiredRoute": seq("previous"),
+                 "nextRoute": seq("next", {"route": "branch", "conditions": {"Race": "Orc"}}),
                  "prefab": {"leveling": 1, "speedrun": {"index": 2, "conditions": {"MinLevel": 10}}}}
         self.assertEqual(set(route), set(self.schema.route_fields))
         self.schema.validate("test", route)

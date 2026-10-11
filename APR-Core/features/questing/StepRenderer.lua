@@ -292,11 +292,13 @@ function APR:RenderCurrentStep()
 
             -- Capture the completed route key BEFORE removing it
             local completedRouteKey = APR.ActiveRoute
+            -- Completion is earned on reaching this step, before choosing a
+            -- successor. Its prerequisite gate must already see that result.
+            APRZoneCompleted[APR.PlayerID][currentRouteName] = true
 
             -- Define the route completion finalization as a callback
             local function finalizeRouteCompletion()
                 if not APR:IsStepContextCurrent(context) then return end
-                APRZoneCompleted[APR.PlayerID][currentRouteName] = true
                 tremove(APRCustomPath[APR.PlayerID], index)
                 APR.routeconfig:CheckIsCustomPathEmpty()
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")

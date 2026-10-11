@@ -63,6 +63,7 @@ end
 -- Route owners still decide when to refresh navigation/UI; this method only changes state.
 function APR:ActivateRoute(route, reason)
     if route ~= nil and type(route) ~= "string" then return false end
+    if route and route ~= "" and self.CanStartRoute and not self:CanStartRoute(route) then return false end
     if self.ActiveRoute == route then return false end
     local previous = self.ActiveRoute
     self.ActiveRoute = route
