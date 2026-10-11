@@ -3,6 +3,11 @@
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
+local function IsForeverRoute(data)
+    return (data.gameVersion and APR.GAME_VERSIONS and data.gameVersion == APR.GAME_VERSIONS.Forever)
+        or (data.expansion and APR.EXPANSIONS and data.expansion == APR.EXPANSIONS.Forever)
+end
+
 ---------------------------------------------------------------------------------------
 --- RouteManager: centralized route logic for definitions, conditions, visibility,
 --- steps access, and nextRoute suggestions.
@@ -506,6 +511,7 @@ function APR:AddRouteToCustomPathByKey(routeKey)
     if not routeKey or not self.PlayerID then
         return false
     end
+    if self.CanStartRoute and not self:CanStartRoute(routeKey) then return false end
 
     APRCustomPath[self.PlayerID] = APRCustomPath[self.PlayerID] or {}
     local customPath = APRCustomPath[self.PlayerID]
@@ -524,10 +530,12 @@ function APR:AddRouteToCustomPathByKey(routeKey)
             return
         end
 
-        local requiredRouteKeys = self:GetRouteRequiredRouteKeys(targetRouteKey)
-        for _, requiredRouteKey in ipairs(requiredRouteKeys) do
-            if self:IsRequiredRouteApplicable(requiredRouteKey) then
-                addRouteRecursive(requiredRouteKey)
+        -- Forever prerequisites are completion gates, not routes to enqueue.
+        if not IsForeverRoute(targetRouteData) then
+            for _, requiredRouteKey in ipairs(self:GetRouteRequiredRouteKeys(targetRouteKey)) do
+                if self:IsRequiredRouteApplicable(requiredRouteKey) then
+                    addRouteRecursive(requiredRouteKey)
+                end
             end
         end
 
@@ -674,6 +682,30 @@ local function EvaluateLevelCondition(conditions)
     return true
 end
 
+--- Forever requires one compatible completed predecessor, if any are listed.
+--- Other route families retain their existing automatic path construction.
+function APR:MeetsRoutePrerequisites(routeKey)
+    local data = self:GetRouteData(routeKey)
+    if not data then return false end
+    if not IsForeverRoute(data) then return true end
+    local keys = self:GetRouteRequiredRouteKeys(routeKey)
+    if #keys == 0 then return true end
+    for _, key in ipairs(keys) do
+        local required = self:GetRouteData(key)
+        if required and EvaluateHardConditions(required.conditions or {}) and IsRouteCompletedByKey(key) then
+            return true
+        end
+    end
+    return false
+end
+
+--- Shared by selection, saved-path loading, suggestions and direct activation.
+function APR:CanStartRoute(routeKey)
+    local data = self:GetRouteData(routeKey)
+    if not data then return false end
+    return EvaluateLevelCondition(data.conditions) and self:MeetsRoutePrerequisites(routeKey)
+end
+
 --- Evaluate the Zones condition (soft condition, like Level).
 --- Checks if the player is currently in one of the required map zones.
 --- Failing Zones results in "disabled" rather than "hidden".
@@ -740,6 +772,16 @@ function APR:GetUnmetConditions(routeKey)
     local conditions = routeData.conditions or {}
     local unmet = {}
     local playerLevel = self:GetPlayerEffectiveLevel()
+    if not self:MeetsRoutePrerequisites(routeKey) then
+        local names = {}
+        for _, key in ipairs(self:GetRouteRequiredRouteKeys(routeKey)) do
+            local required = self:GetRouteData(key)
+            if required and EvaluateHardConditions(required.conditions or {}) then
+                names[#names + 1] = required.label or key
+            end
+        end
+        tinsert(unmet, string.format(L["COMPLETE_ONE_REQUIRED_ROUTE"], table.concat(names, ", ")))
+    end
 
     -- Level
     if conditions.Level then
@@ -861,9 +903,6 @@ function APR:GetRouteVisibility(routeKey)
     end
 
     local conditions = routeData.conditions or {}
-    if not next(conditions) then
-        return "visible"
-    end
 
     local hardMet = EvaluateHardConditions(conditions)
     local levelMet = EvaluateLevelCondition(conditions)
@@ -874,7 +913,7 @@ function APR:GetRouteVisibility(routeKey)
         return "hidden"
     end
 
-    if not levelMet or not specMet or not zonesMet then
+    if not levelMet or not specMet or not zonesMet or not self:MeetsRoutePrerequisites(routeKey) then
         -- Hard conditions passed, only soft conditions (Level, ClassSpec, Zones) failed
         return "disabled"
     end
@@ -905,7 +944,8 @@ function APR:GetNextRouteSuggestions(completedRouteKey)
         local nextData = self:GetRouteData(nextKey)
         if nextData and nextData.label then
             -- Only include routes whose conditions are fully met
-            if self:EvaluateRouteConditions(nextData.conditions) and self:AreConditionalFiltersMet(conditions) then
+            if self:EvaluateRouteConditions(nextData.conditions) and self:AreConditionalFiltersMet(conditions)
+                and self:CanStartRoute(nextKey) then
                 -- Exclude the just-completed route itself
                 if nextKey ~= completedRouteKey then
                     table.insert(suggestions, {
