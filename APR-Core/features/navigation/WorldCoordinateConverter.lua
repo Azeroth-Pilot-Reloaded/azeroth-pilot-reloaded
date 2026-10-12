@@ -574,11 +574,13 @@ function APR.worldCoordinateConverter:ConvertMapCoordinate(zone, mapX, mapY)
 end
 
 --- Build an arrival trigger using the client's map geometry, in world yards.
-function APR.worldCoordinateConverter:ConvertMapTrigger(zone, mapX, mapY, range)
+-- arrivalMapID can name a zone when coordinates use a continent projection.
+function APR.worldCoordinateConverter:ConvertMapTrigger(zone, mapX, mapY, range, arrivalMapID)
+    if arrivalMapID ~= nil and (type(arrivalMapID) ~= "number" or arrivalMapID <= 0 or arrivalMapID % 1 ~= 0) then return nil end
     if type(range) ~= "number" or range <= 0 then return nil end
     local coord = self:ConvertMapCoordinate(zone, mapX, mapY)
     if not coord then return nil end
-    coord.mapID, coord.Range = zone, range
+    coord.mapID, coord.Range = arrivalMapID or zone, range
     return coord
 end
 

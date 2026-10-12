@@ -23,7 +23,7 @@ APR.secondaryStepOptions = {
 -- Flights with an arrival trigger poll destination completion like other transports.
 -- Flight steps without a trigger retain their legacy departure/quest behavior.
 function APR:IsTransportStep(step)
-    return step and step.ZoneStepTrigger and (step.UseFlightPath or step.Zeppelin or step.Boat or step.Tram)
+    return step and step.ZoneStepTrigger and (step.UseFlightPath or step.Waypoint or step.Zeppelin or step.Boat or step.Tram)
         and not step.TakePortal
 end
 
@@ -31,8 +31,12 @@ function APR:GetTransportStepText(step)
     local trigger = step.ZoneStepTrigger
     local mapInfo = trigger.mapID and self:GetMapInfoCached(trigger.mapID)
     local destination = (mapInfo and mapInfo.name) or UNKNOWN
+    if step.Waypoint then return L["WAYPOINT"], "Waypoint" end
     if step.UseFlightPath then
         return string.format(L["USE_FLIGHTPATH"], self:GetTaxiNodeName(step)), "UseFlightPath"
+    end
+    if step.TakePortal then
+        return string.format(L["USE_PORTAL_TO"], destination), "TakePortal"
     end
     if step.Tram then return L["ENTER_TRAM"] .. " - " .. destination, "Tram" end
     local kind = step.Zeppelin and "Zeppelin" or "Boat"
