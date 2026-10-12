@@ -37,20 +37,20 @@
     "LibDBIcon-1.0": {
       "source": "curseforge",
       "project_id": 15552,
-      "file_id": 8448436,
-      "version": "v12.0.3",
-      "file_name": "LibDBIcon-1.0-v12.0.3.zip",
-      "date_created": "2026-07-17T01:56:06.187Z",
-      "archive_sha256": "9f2917f1170bb0b511f336f059381d7e05fc3e143e7d05a45724e27a7b38a514"
+      "file_id": 9119909,
+      "version": "v12.1.1",
+      "file_name": "LibDBIcon-1.0-v12.1.1.zip",
+      "date_created": "2026-10-10T16:38:32.713Z",
+      "archive_sha256": "563ff9d32c02780e04d7a399dfac6e853dc3c5da6f06ac49107f91b4a5b01cea"
     },
     "LibSharedMedia-3.0": {
       "source": "curseforge",
       "project_id": 14320,
-      "file_id": 8691989,
-      "version": "v12.1.0",
-      "file_name": "LibSharedMedia-3.0-v12.1.0.zip",
-      "date_created": "2026-08-20T14:40:02.377Z",
-      "archive_sha256": "14beb11fcc1082c7b846960fde39596147a769a807601ecb0aec4de60750956d"
+      "file_id": 9119029,
+      "version": "v12.1.2",
+      "file_name": "LibSharedMedia-3.0-v12.1.2.zip",
+      "date_created": "2026-10-10T15:16:06.8Z",
+      "archive_sha256": "744f00526c3aac3f8e13dd5e9773cca5022d3ee00d34b50d474a91764ac0ce95"
     }
   }
 }
