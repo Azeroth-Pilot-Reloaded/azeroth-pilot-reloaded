@@ -162,6 +162,11 @@ function handlers.Transport(step, showStepDetails)
 end
 
 function handlers.TakePortal(step, showStepDetails, currentStepIndex)
+    -- Same-map, repeatable NPC teleports must complete on arrival,
+    -- independently of quest history or the navigation provider.
+    if step.ZoneStepTrigger then
+        return handlers.Transport(step, showStepDetails)
+    end
     local portalData = step.TakePortal
 
     local questID = portalData.questID
@@ -190,6 +195,8 @@ function handlers.TakePortal(step, showStepDetails, currentStepIndex)
 end
 
 function handlers.Waypoint(step, showStepDetails, currentStepIndex)
+    -- Explicit arrival waypoints survive completed quest anchors and hidden arrows.
+    if step.ZoneStepTrigger then return handlers.Transport(step, showStepDetails) end
     local canAutoSkipWaypoint = not step.NonSkippableWaypoint
 
     if (canAutoSkipWaypoint and APR.settings.profile.autoSkipAllWaypoints) then
