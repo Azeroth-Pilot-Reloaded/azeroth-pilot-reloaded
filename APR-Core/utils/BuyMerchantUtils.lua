@@ -1,7 +1,7 @@
 -- Route quantities are additional purchases unless targetStock explicitly requests carried stock.
 -- Completion waits for loot events; inventory deltas only prevent duplicate purchase requests.
 
-local currentPurchaseTracking, currentPurchaseItems, currentPurchaseContext, purchaseCompleted
+local currentPurchaseTracking, currentPurchaseItems, currentPurchaseContext, purchaseCompleted, purchaseRequested
 
 local function IsPurchaseContextCurrent(self)
     return not currentPurchaseContext or self:IsStepContextCurrent(currentPurchaseContext)
@@ -14,6 +14,7 @@ function APR:StartPurchaseTracking(BuyMerchant)
     currentPurchaseItems = BuyMerchant
     currentPurchaseContext = self.CaptureStepContext and self:CaptureStepContext()
     purchaseCompleted = false
+    purchaseRequested = false
     currentPurchaseTracking = {}
     for _, item in ipairs(BuyMerchant) do
         local carried = self:GetCollectionItemCount(item.itemID, false)
@@ -21,6 +22,13 @@ function APR:StartPurchaseTracking(BuyMerchant)
         if item.targetStock then required = math.max(0, required - carried) end
         currentPurchaseTracking[item.itemID] = { required = required, purchased = 0, initialCarried = carried }
     end
+end
+
+-- Cash/bag filters describe entry eligibility. Once a request is made, money
+-- and inventory events must not skip the current step before its loot receipts.
+function APR:HasPendingMerchantPurchase(items)
+    return currentPurchaseItems == items and currentPurchaseTracking and purchaseRequested
+        and not purchaseCompleted and IsPurchaseContextCurrent(self) or false
 end
 
 function APR:CheckPurchaseCompletion()
@@ -61,6 +69,7 @@ function APR:BuyItemFromMerchant(BuyMerchant)
                 local quantity = math.max(0, tracked.required - delivered)
                 if item.targetStock then quantity = math.min(quantity, math.max(0, (item.quantity or 1) - carried)) end
                 if quantity > 0 then
+                    purchaseRequested = true
                     BuyMerchantItem(i, quantity)
                     APR:Debug("Purchase requested: itemID=" .. item.itemID .. ", quantity=" .. quantity)
                 end
