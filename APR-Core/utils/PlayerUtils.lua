@@ -101,6 +101,10 @@ function APR:MeetsEquippedItemStat(requirement)
     local slot, stat, value = requirement.slot, requirement.stat
     if stat == "QUALITY" and GetInventoryItemQuality then
         value = GetInventoryItemQuality("player", slot)
+    elseif stat == "SUBCLASS" and GetInventoryItemID then
+        local itemID = GetInventoryItemID("player", slot)
+        local getInfo = C_Item and C_Item.GetItemInfoInstant or GetItemInfoInstant
+        if itemID and getInfo then value = select(7, getInfo(itemID)) end
     elseif stat == "LEVEL" and GetInventoryItemID then
         local itemID = GetInventoryItemID("player", slot)
         local getInfo = C_Item and C_Item.GetItemInfo or GetItemInfo
