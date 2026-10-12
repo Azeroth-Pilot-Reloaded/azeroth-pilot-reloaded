@@ -47,7 +47,10 @@ APR.flightPath.eventFrame:SetScript("OnEvent", function(self, event)
             local currentNodeID = APR.flightPath.CurrentTaxiNode.nodeID
             local stepNodeID = APR.flightPath.StepTaxiNode.nodeID
             if currentNodeID and stepNodeID and currentNodeID == stepNodeID then
-                APR:NextQuestStep()
+                if not step.ZoneStepTrigger or (not UnitOnTaxi("player")
+                    and APR:IsZoneStepTriggerReached(step.ZoneStepTrigger)) then
+                    APR:NextQuestStep()
+                end
             elseif not IsModifierKeyDown() and APR.flightPath.StepTaxiNode.slotIndex and
                 APR.flightPath.StepTaxiNode.state == Enum.FlightPathState.Reachable then
                 if APR.settings.profile.autoFlight then
@@ -73,7 +76,7 @@ APR.flightPath.eventFrame:SetScript("OnEvent", function(self, event)
                 end
             end
 
-            if step and step.UseFlightPath then
+            if step and step.UseFlightPath and not step.ZoneStepTrigger then
                 APR:UpdateNextStep()
             end
         end)

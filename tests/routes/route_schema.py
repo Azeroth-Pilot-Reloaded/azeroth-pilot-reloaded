@@ -206,8 +206,9 @@ class RouteSchema:
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),
             "_index": ID, "_comment": TEXT, "Grind": level,
             "Coord": union(xy, multi_coord), "Coords": multi_coord,
-            "ZoneStepTrigger": obj({"x": NUMBER, "y": NUMBER, "Range": number(0), "mapID": ID},
-                                   required=("x", "y", "Range")),
+            "ZoneStepTrigger": union(
+                obj({"x": NUMBER, "y": NUMBER, "Range": number(0), "mapID": ID}, required=("x", "y", "Range")),
+                obj({"mapID": ID}, required=("mapID",))),
             "Button": mapping(objective, union(ID, array(ID, 1))),
             "SpellButton": mapping(objective, union(ID, TEXT, array(union(ID, TEXT), 1))),
             "UseItem": obj({"itemID": ID, "questID": ID, "itemSpellID": ID}, required=("itemID",)),
@@ -249,6 +250,13 @@ class RouteSchema:
                 ["items", "junk", "equippedSlots"] if name == "SellItems" else ["items"]),)))
         self.step = obj(self.step_fields, patterns=((r"ExtraLineText\d*", union(TEXT, array(TEXT, 1))),
                                                    (r"TrigText\d*", TEXT)))
+        step_shape = self.step
+        def flight_arrival_step(value, path):
+            step_shape(value, path)
+            trigger = value.get("ZoneStepTrigger")
+            if trigger and set(trigger) == {"mapID"} and not value.get("UseFlightPath"):
+                fail(path + ".ZoneStepTrigger", "Map-only arrivals require a flight; boats, trams and zeppelins need coordinates")
+        self.step = flight_arrival_step
         steps = array(self.step)
         scenario = obj({"label": TEXT, "scenarioID": ID, "index": ID, "steps": steps},
                        required=("scenarioID", "steps"))
