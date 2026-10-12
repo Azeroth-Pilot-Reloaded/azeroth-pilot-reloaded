@@ -47,7 +47,13 @@ local function ItemEntries(key, rule, state)
         equipment = {}
         for _, slot in ipairs(rule.equippedSlots) do
             local itemID = GetInventoryItemID("player", slot)
-            if itemID then equipment[#equipment + 1] = itemID end
+            if itemID then
+                equipment[#equipment + 1] = itemID
+                if state then
+                    state.equippedItemsBySlot = state.equippedItemsBySlot or {}
+                    state.equippedItemsBySlot[slot] = itemID
+                end
+            end
         end
         if state then state.equippedItems = equipment end
     end

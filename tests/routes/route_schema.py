@@ -133,7 +133,7 @@ class RouteSchema:
             "ClassSpec": constants("Specs"), "Gender": enum((1, 2, 3)),
             "Event": constants("EVENTS"), "BeLvl": number(1),
             "Money": obj({"copper": COUNT, "operator": OPERATOR}, required=("copper",)),
-            "VendorMoney": obj({"copper": COUNT, "operator": OPERATOR, "includeEquipped": BOOL,
+            "VendorMoney": obj({"copper": COUNT, "operator": OPERATOR, "includeEquipped": BOOL, "junkOnly": BOOL,
                                 "equippedSlots": array(SLOT, 1)}, required=("copper",)),
             "ItemCount": obj({"itemID": ID, "itemIDs": IDS, "count": COUNT,
                               "operator": OPERATOR, "includeBank": BOOL, "includeUsableToys": BOOL},
@@ -206,6 +206,8 @@ class RouteSchema:
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),
             "_index": ID, "_comment": TEXT, "Grind": level,
             "Coord": union(xy, multi_coord), "Coords": multi_coord,
+            # StepUtils.NormalizeZoneList accepts navigation-only Zone lists.
+            "Zone": union(ID, IDS),
             "ZoneStepTrigger": union(
                 obj({"x": NUMBER, "y": NUMBER, "Range": number(0), "mapID": ID}, required=("x", "y", "Range")),
                 obj({"mapID": ID}, required=("mapID",))),
@@ -221,7 +223,7 @@ class RouteSchema:
             "Group": obj({"questID": ID, "Number": ID}, required=("questID", "Number")),
             "DroppableQuest": obj({"Qid": ID, "MobId": ID, "Text": TEXT}, required=("Qid", "MobId", "Text")),
             "Buffs": array(obj({"spellId": ID, "tooltipMessage": TEXT}, required=("spellId",)), 1),
-            "LootMoney": obj({"copper": ID, "includeEquipped": BOOL, "equippedSlots": array(SLOT, 1)},
+            "LootMoney": obj({"copper": ID, "includeEquipped": BOOL, "junkOnly": BOOL, "equippedSlots": array(SLOT, 1)},
                              required=("copper",)),
             "Reputation": reputation,
             "SpellETA": obj({"spellID": ID, "itemID": ID, "seconds": number(0)},
@@ -237,7 +239,10 @@ class RouteSchema:
             self.step_fields[name] = obj({"questID": ID, "mapID": ID}, required=("mapID",))
         self.step_fields["TakePortal"] = obj({"questID": ID, "mapID": ID}, choices=(("mapID", "questID"),))
         for name in "BuyMerchant LootItems".split():
-            self.step_fields[name] = array(obj({"itemID": ID, "quantity": ID, "questID": ID},
+            fields = {"itemID": ID, "quantity": ID, "questID": ID}
+            if name == "LootItems": fields["includeBank"] = BOOL
+            if name == "BuyMerchant": fields["targetStock"] = BOOL
+            self.step_fields[name] = array(obj(fields,
                                                required=("itemID", "quantity") if name == "BuyMerchant" else ("itemID",)), 1)
         entry = union(ID, obj({"itemID": ID, "text": TEXT, "Text": TEXT}, required=("itemID",)))
         for name in "SellItems BankDeposit BankWithdraw DestroyItems".split():
@@ -254,8 +259,8 @@ class RouteSchema:
         def flight_arrival_step(value, path):
             step_shape(value, path)
             trigger = value.get("ZoneStepTrigger")
-            if trigger and set(trigger) == {"mapID"} and not value.get("UseFlightPath"):
-                fail(path + ".ZoneStepTrigger", "Map-only arrivals require a flight; boats, trams and zeppelins need coordinates")
+            if trigger and set(trigger) == {"mapID"} and not (value.get("UseFlightPath") or value.get("Waypoint")):
+                fail(path + ".ZoneStepTrigger", "Map-only arrivals require a flight or waypoint; boats, trams and zeppelins need coordinates")
         self.step = flight_arrival_step
         steps = array(self.step)
         scenario = obj({"label": TEXT, "scenarioID": ID, "index": ID, "steps": steps},

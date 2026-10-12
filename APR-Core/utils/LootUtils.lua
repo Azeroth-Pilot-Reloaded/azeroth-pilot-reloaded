@@ -23,17 +23,18 @@ function APR:SaveBankItemCounts()
     APRData[self.PlayerID].BankItems = counts
 end
 
-function APR:GetCollectionItemCount(itemID)
+function APR:GetCollectionItemCount(itemID, includeBank)
     local fn = C_Item and C_Item.GetItemCount or GetItemCount
     if not fn then return 0 end
     local bags = fn(itemID, false) or 0
+    if includeBank == false then return bags end
     local data = APRData and APRData[self.PlayerID]
     if data and data.BankItems then return bags + (data.BankItems[itemID] or 0) end
     return fn(itemID, true) or bags
 end
 
 function APR:IsRouteCollectionComplete(rule)
-    return self:GetCollectionItemCount(rule.itemID) >= (rule.quantity or 1)
+    return self:GetCollectionItemCount(rule.itemID, rule.includeBank) >= (rule.quantity or 1)
 end
 
 -- Current cash plus the theoretical vendor value of carried items. Never counts
@@ -49,16 +50,35 @@ function APR:GetLootMoneyProgress(rule)
             resale = resale + price * (count or 1)
         end
     end
+    local saleItems = {}
+    if rule.junkOnly then
+        for _, slot in ipairs(rule.equippedSlots or {}) do
+            local id = GetInventoryItemID and GetInventoryItemID("player", slot)
+            if id then saleItems[id] = true end
+        end
+        -- Keep the same listed weapon eligible after manual unequip, until sale.
+        local state = self.routeActionState
+        local current = APRData and APRData[self.PlayerID] and APRData[self.PlayerID][self.ActiveRoute]
+        if state and current and state.token == self:GetCurrentStepToken(self.ActiveRoute, current) then
+            for slot, id in pairs(state.equippedItemsBySlot or {}) do
+                for _, selected in ipairs(rule.equippedSlots or {}) do
+                    if selected == slot then saleItems[id] = true end
+                end
+            end
+        end
+    end
     local slots = C_Container and C_Container.GetContainerNumSlots or GetContainerNumSlots
     local info = C_Container and C_Container.GetContainerItemInfo or GetContainerItemInfo
     if slots and info then
         for bag = 0, NUM_TOTAL_EQUIPPED_BAG_SLOTS or NUM_BAG_SLOTS or 4 do
             for slot = 1, slots(bag) or 0 do
-                local item, count, _, _, _, _, link, _, noValue, id = info(bag, slot)
+                local item, count, _, quality, _, _, link, _, noValue, id = info(bag, slot)
                 if type(item) == "table" then
-                    link, id, count, noValue = item.hyperlink, item.itemID, item.stackCount, item.hasNoValue
+                    link, id, count, noValue, quality = item.hyperlink, item.itemID, item.stackCount, item.hasNoValue, item.quality
                 end
-                if not noValue then addItem(link or id, count) end
+                if not noValue and (not rule.junkOnly or quality == 0 or saleItems[id]) then
+                    addItem(link or id, count)
+                end
             end
         end
     end

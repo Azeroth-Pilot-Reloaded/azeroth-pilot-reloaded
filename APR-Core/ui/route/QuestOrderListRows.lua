@@ -604,7 +604,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                             completed = completed + 1
                         elseif itemID then
                             -- Use the same bags/bank count as the current step.
-                            local currentQuantity = APR:GetCollectionItemCount(itemID)
+                            local currentQuantity = APR:GetCollectionItemCount(itemID, item.includeBank)
 
                             local isDone =
                                 currentQuantity >= requiredQuantity

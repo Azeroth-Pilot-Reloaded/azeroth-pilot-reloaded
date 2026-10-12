@@ -221,7 +221,7 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
         local completed = 0
         for _, item in ipairs(step.LootItems) do
             local required = math.max(item.quantity or 1, 1)
-            local count = APR:GetCollectionItemCount(item.itemID)
+            local count = APR:GetCollectionItemCount(item.itemID, item.includeBank)
             if count >= required or (item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID)) then
                 completed = completed + 1
             end
