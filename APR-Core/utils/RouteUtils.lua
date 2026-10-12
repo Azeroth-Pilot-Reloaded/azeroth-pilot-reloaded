@@ -40,6 +40,8 @@ end
 --- Evaluate if a step should be skipped based on filters (race, class, achievements...).
 -- Step filters remain centralized to avoid duplicating the skip counter logic elsewhere.
 function APR:SkipStepCondition(step)
+    if step.BuyMerchant and self.HasPendingMerchantPurchase
+        and self:HasPendingMerchantPurchase(step.BuyMerchant) then return false end
     if self:StepFilterQuestHandler(step) then
         APRData[self.PlayerID][self.ActiveRoute .. '-SkippedStep'] = (APRData[self.PlayerID]
             [self.ActiveRoute .. '-SkippedStep'] or 0) + 1
