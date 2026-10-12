@@ -146,7 +146,8 @@ function handlers.Transport(step, showStepDetails)
         if not APR:IsStepContextCurrent(context) then return end
         APR.transportArrivalTimer = nil
         if not APR.settings.profile.enableAddon then return end
-        if not UnitIsDeadOrGhost("player") and APR:IsZoneStepTriggerReached(step.ZoneStepTrigger) then
+        if not UnitIsDeadOrGhost("player") and not (step.UseFlightPath and UnitOnTaxi("player"))
+            and APR:IsZoneStepTriggerReached(step.ZoneStepTrigger) then
             APR:NextQuestStep()
             return true
         end
@@ -300,6 +301,9 @@ function handlers.GetFP(step, showStepDetails, currentStepIndex)
 end
 
 function handlers.UseFlightPath(step, showStepDetails, currentStepIndex)
+    if step.ZoneStepTrigger then
+        return handlers.Transport(step, showStepDetails)
+    end
     if showStepDetails then
         local questText = step.Boat and
             string.format(L["USE_BOAT"], APR:GetTaxiNodeName(step)) or

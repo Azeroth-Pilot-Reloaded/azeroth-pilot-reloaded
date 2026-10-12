@@ -20,16 +20,20 @@ APR.secondaryStepOptions = {
     "MountVehicle", "VehicleExit"
 }
 
--- Legacy Boat flags on flight/portal steps keep their original handlers.
+-- Flights with an arrival trigger poll destination completion like other transports.
+-- Flight steps without a trigger retain their legacy departure/quest behavior.
 function APR:IsTransportStep(step)
-    return step and step.ZoneStepTrigger and (step.Zeppelin or step.Boat or step.Tram)
-        and not step.TakePortal and not step.UseFlightPath
+    return step and step.ZoneStepTrigger and (step.UseFlightPath or step.Zeppelin or step.Boat or step.Tram)
+        and not step.TakePortal
 end
 
 function APR:GetTransportStepText(step)
     local trigger = step.ZoneStepTrigger
     local mapInfo = trigger.mapID and self:GetMapInfoCached(trigger.mapID)
     local destination = (mapInfo and mapInfo.name) or UNKNOWN
+    if step.UseFlightPath then
+        return string.format(L["USE_FLIGHTPATH"], self:GetTaxiNodeName(step)), "UseFlightPath"
+    end
     if step.Tram then return L["ENTER_TRAM"] .. " - " .. destination, "Tram" end
     local kind = step.Zeppelin and "Zeppelin" or "Boat"
     return string.format(L[step.Zeppelin and "USE_ZEPPELIN_TO" or "USE_BOAT"], destination), kind
@@ -39,6 +43,10 @@ function APR:IsZoneStepTriggerReached(trigger, playerX, playerY)
     if not trigger then return false end
     if trigger.mapID and C_Map.GetBestMapForUnit("player") ~= trigger.mapID
         and self:GetPlayerParentMapID() ~= trigger.mapID then return false end
+    -- Map-only arrivals are used by flights; their handler also waits for landing.
+    if trigger.x == nil and trigger.y == nil and trigger.Range == nil then
+        return trigger.mapID ~= nil
+    end
     if playerX == nil or playerY == nil then
         playerY, playerX = UnitPosition("player")
     end
@@ -602,6 +610,8 @@ function APR:GetStepCoord(step, fallbackMapID, zoneHint)
         local trigger = step.ZoneStepTrigger
         if trigger.mapID and (C_Map.GetBestMapForUnit("player") == trigger.mapID
                 or self:GetPlayerParentMapID() == trigger.mapID) then
+            -- A flight already over its destination only needs to wait for landing.
+            if trigger.x == nil or trigger.y == nil then return nil, trigger.mapID end
             return trigger, trigger.mapID
         end
     end
