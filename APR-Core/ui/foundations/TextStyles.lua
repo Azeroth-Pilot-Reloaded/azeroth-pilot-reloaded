@@ -54,6 +54,7 @@ function APR:CreateTextAppearanceDefaults(useGlobal, overrides)
         size = 12,
         flags = "NONE",
         color = CopyColor(DEFAULT_COLORS.color),
+        colorOverrides = {},
     }
 
     if not useGlobal then
@@ -143,21 +144,57 @@ local ROLE_KEYS = {
     title = "accentColor",
     success = "successColor",
     warning = "warningColor",
+    activeStep = "warningColor",
     error = "errorColor",
     muted = "mutedColor",
 }
 
-function APR:GetTextColor(scope, role)
+local function CustomColor(appearance, profileKey, key)
+    local color = appearance and appearance[key]
+    if not color then return end
+    local overrides = appearance.colorOverrides
+    if overrides and overrides[key] ~= nil then return overrides[key] and color or nil end
+    -- Older profiles predate explicit override flags. Retain choices that differ from AceDB defaults.
+    local defaults = APR.settings and APR.settings.db and APR.settings.db.defaults
+    defaults = defaults and defaults.profile and defaults.profile[profileKey]
+    local original = defaults and defaults[key] or DEFAULT_COLORS[key]
+    if not original then return color end
+    for index = 1, 4 do
+        if math.abs((color[index] or 1) - (original[index] or 1)) > 0.00001 then return color end
+    end
+end
+
+function APR:GetCustomTextColor(scope, role)
+    local key = ROLE_KEYS[role or "base"]
+    if not key then return end
+    local scoped, general = GetAppearance(scope)
+    if scope and scope ~= "general" then
+        local color = CustomColor(scoped, self.TEXT_APPEARANCE_SCOPES[scope], key)
+        if color then return color end
+    end
+    return CustomColor(general, self.GLOBAL_TEXT_APPEARANCE_KEY, key)
+end
+
+function APR:GetTextColor(scope, role, trackerStyle)
     if self.GetThemeStatusColor then
         local status = self:GetThemeStatusColor(role)
         if status then return status end
     end
+    local custom = self:GetCustomTextColor(scope, role)
+    if custom then return custom end
+    local themedRole = role == "activeStep" and "warning" or role or "base"
+    if trackerStyle == nil then trackerStyle = self.QuestTracker and self.QuestTracker:Style(scope) end
+    if trackerStyle then
+        local color = trackerStyle.textColors and trackerStyle.textColors[themedRole]
+        if themedRole == "accent" then color = trackerStyle.accent or color end
+        if color then return color end
+    end
     if self.EllesmereUISkin then
-        local themed = self.EllesmereUISkin:GetTextColor(role)
+        local themed = self.EllesmereUISkin:GetTextColor(themedRole, scope)
         if themed then return themed end
     end
     if self.GetNativeThemeTextColor then
-        local themed = self:GetNativeThemeTextColor(role)
+        local themed = self:GetNativeThemeTextColor(role, scope)
         if themed then return themed end
     end
     local scoped, general = GetAppearance(scope)
@@ -293,7 +330,7 @@ function APR:ApplyTextStyle(fontString, scope, options)
     if trackerStyle and options.trackerHeader then size = trackerStyle.headerSize or size end
 
     local themedFont, themedFlags
-    if self.EllesmereUISkin then themedFont, themedFlags = self.EllesmereUISkin:GetFont() end
+    if self.EllesmereUISkin then themedFont, themedFlags = self.EllesmereUISkin:GetFont(scope) end
     if trackerStyle and trackerStyle.font then themedFont, themedFlags = trackerStyle.font, trackerStyle.flags end
     if trackerStyle and options.trackerHeader and trackerStyle.headerFont then
         themedFont, themedFlags = trackerStyle.headerFont, trackerStyle.headerFlags
@@ -303,7 +340,7 @@ function APR:ApplyTextStyle(fontString, scope, options)
     if not applied then
         fontString:SetFont(ResolveFont(nil), size, fontFlags)
     end
-    if themedFont and not trackerStyle then self.EllesmereUISkin:ApplyFont(fontString) end
+    if themedFont and not trackerStyle then self.EllesmereUISkin:ApplyFont(fontString, scope) end
     if trackerStyle and trackerStyle.shadow ~= nil and fontString.GetShadowColor then
         if not fontString.aprTrackerShadow then fontString.aprTrackerShadow = {fontString:GetShadowColor()} end
         fontString:SetShadowColor(0, 0, 0, trackerStyle.shadow)
@@ -318,14 +355,14 @@ function APR:ApplyTextStyle(fontString, scope, options)
             local profile = GetProfile()
             color = profile and profile[options.colorProfileKey]
         end
-        color = color or self:GetTextColor(scope, options.role)
-        if trackerStyle and trackerStyle.textColors then color = trackerStyle.textColors[options.role or "base"] or color end
-        if trackerStyle and options.role == "accent" then color = trackerStyle.accent or color end
-        if not trackerStyle and options.themeAccent and options.role == "accent" and self:GetSkinProviderName() then
-            color = self:GetThemeColor("accent")
+        local custom = self:GetCustomTextColor(scope, options.role)
+        color = color or self:GetTextColor(scope, options.role, trackerStyle or false)
+        if not custom and not trackerStyle and options.themeAccent and options.role == "accent" and
+            (self:GetSkinProviderName(scope) or (self.GetThemeStyle and self:GetThemeStyle(scope) == "modern")) then
+            color = self:GetThemeColor("accent", scope)
         end
         fontString:SetTextColor(color[1], color[2], color[3], color[4] or 1)
-        if self.EllesmereUISkin and not trackerStyle then self.EllesmereUISkin:ApplyHeaderTextColor(fontString) end
+        if not custom and self.EllesmereUISkin and not trackerStyle then self.EllesmereUISkin:ApplyHeaderTextColor(fontString, scope) end
     end
 
     if options.onApplied then
@@ -353,18 +390,36 @@ function APR:UnregisterFontString(fontString)
     self.textStyleRegistry[fontString] = nil
 end
 
+-- Retail exposes popup elements through accessors; legacy clients and AceConfig use fields.
+function APR:GetPopupText(popup)
+    return (popup.GetTextFontString and popup:GetTextFontString()) or popup.text or popup.Text
+end
+
+function APR:GetPopupButtons(popup)
+    local buttons = {}
+    for index = 1, 4 do
+        local button = (popup.GetButton and popup:GetButton(index)) or popup["button" .. index]
+            or (popup.ButtonContainer and popup.ButtonContainer["Button" .. index])
+            or (index == 1 and popup.accept) or (index == 2 and popup.cancel)
+        if button then buttons[#buttons + 1] = button end
+    end
+    return buttons
+end
+
 function APR:StyleStaticPopup(popup)
     if not popup then return end
-
+    local buttons = self:GetPopupButtons(popup)
+    if self.UI and self.UI.StylePopupChrome then self.UI:StylePopupChrome(popup, buttons) end
     local regions = {
-        { popup.text,                                      { role = "base" } },
-        { popup.button1 and popup.button1:GetFontString(), { role = "base" } },
-        { popup.button2 and popup.button2:GetFontString(), { role = "base" } },
-        { popup.button3 and popup.button3:GetFontString(), { role = "base" } },
-        { popup.editBox,                                   { role = "base" } },
+        { self:GetPopupText(popup),                         { role = "base" } },
+        { popup.editBox or popup.EditBox,                  { role = "base" } },
     }
+    for index, button in ipairs(buttons) do
+        regions[#regions + 1] = {button:GetFontString(), {role = index == 1 and "accent" or "base"}}
+    end
 
-    popup._aprTextOriginals = {}
+    popup._aprTextOriginals = popup._aprTextOriginals or {}
+    popup._aprTextLookup = popup._aprTextLookup or {}
     for _, entry in ipairs(regions) do
         local region, options = entry[1], entry[2]
         if region and region.GetFont then
@@ -373,13 +428,16 @@ function APR:StyleStaticPopup(popup)
             if region.GetTextColor then
                 r, g, b, a = region:GetTextColor()
             end
-            table.insert(popup._aprTextOriginals, {
+            if not popup._aprTextLookup[region] then table.insert(popup._aprTextOriginals, {
                 region = region,
                 font = font,
                 size = size,
                 flags = flags,
                 color = r and { r, g, b, a } or nil,
-            })
+            }); popup._aprTextLookup[region] = true end
+            options.onApplied = function()
+                if APR.UI and APR.UI.LayoutPopupChrome then APR.UI:LayoutPopupChrome(popup, buttons) end
+            end
             self:RegisterFontString(region, "general", options)
         end
     end
@@ -397,6 +455,7 @@ function APR:StyleStaticPopup(popup)
             end
         end
         frame._aprTextOriginals = nil
+        frame._aprTextLookup = nil
     end)
 end
 

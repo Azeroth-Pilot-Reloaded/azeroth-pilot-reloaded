@@ -198,4 +198,14 @@ assert(fontCalls == 1, "Already styled fonts remain idempotent across theme refr
 assert(#changes == 1)
 APR:EnableEllesmereUISettings(S)
 assert(#changes == 1, "Installing twice must not stack wrappers")
+local customTextColors = {base = {0.2, 0.4, 0.9, 0.7}, accent = {0.6, 0.1, 0.8, 0.5}, muted = {0.3, 0.6, 0.7, 0.4}}
+function APR:GetCustomTextColor(scope, role)
+    assert(scope == "general")
+    return customTextColors[role]
+end
+for _, callback in ipairs(changes) do callback() end
+assert(root.children[1].label.color[1] == 0.2 and root.children[1].label.color[4] == 0.7,
+    "EUI settings labels retain the user's explicit base color and alpha")
+assert(root.children[5].label.color[1] == 0.6 and root.children[5].label.color[4] == 0.5,
+    "EUI settings headings retain the user's explicit accent color and alpha")
 print("PASS: EllesmereUI settings pages, private widget pools, reuse, errors, combat deferral and disabled skin")

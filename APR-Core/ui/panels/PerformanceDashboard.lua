@@ -220,7 +220,7 @@ function Dashboard:Create(parent)
     self.list = APR.VirtualList:New(scroll, function(parent)
         local row = CreateFrame("Frame", nil, parent)
         row.title = UI:Label(row, "", 12)
-        row.title:SetPoint("LEFT", 4, 0); row.title:SetPoint("RIGHT", -404, 0)
+        row.title:SetPoint("LEFT", 12, 0); row.title:SetPoint("RIGHT", -404, 0)
         row.title:SetWordWrap(false)
         row.values = {}
         for index, field in ipairs({"count", "totalMs", "average", "maxMs"}) do
@@ -229,8 +229,7 @@ function Dashboard:Create(parent)
             label:SetWidth(92); label:SetJustifyH("RIGHT")
             row.values[field] = label
         end
-        local highlight = row:CreateTexture(nil, "HIGHLIGHT")
-        highlight:SetAllPoints(); APR:RegisterThemeRegion(highlight, "accent", 0.08)
+        UI:StyleListRow(row)
         row:EnableMouse(true)
         row:SetScript("OnEnter", function(control)
             local record = control.item

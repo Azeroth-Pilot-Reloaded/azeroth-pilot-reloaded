@@ -94,6 +94,7 @@ end
 snapToAnchor = function(anchorFrame, anchorHeight)
     if not anchorFrame or not QuestOrderListPanel then
         APR.questOrderList.snapAnchor = nil
+        if APR.SetFrameSnapAnchor then APR:SetFrameSnapAnchor(QuestOrderListPanel, nil) end
         return false
     end
 
@@ -237,6 +238,7 @@ resizeButton:SetScript("OnMouseUp", function(self, button)
     QuestOrderListFrame:StopMovingOrSizing()
     LibWindow.SavePosition(QuestOrderListPanel)
 end)
+if APR.RegisterSkinTarget then APR:RegisterSkinTarget(resizeButton, "resize") end
 
 ---------------------------------------------------------------------------------------
 -------------------------- Function Quest Order List Frames ---------------------------

@@ -16,6 +16,7 @@ local forcedCurrentStepTransparent = false
 local isApplyingBackdropOverride = false
 
 local function IsElvUISkinEnabled()
+    if APR.IsSkinProviderUsed then return APR:IsSkinProviderUsed("ElvUI") end
     if not APR.settings or not APR.settings.profile then
         return true
     end
@@ -29,6 +30,8 @@ function APR.ElvUISkin:GetThemeColor(role)
     if role == "accent" or role == "icon" or role == "selection" then return E.media.rgbvaluecolor end
     if role == "border" then return E.media.bordercolor end
     if role == "stripe" then return stripeColor end
+    if role == "background" then return E.media.backdropfadecolor or E.media.backdropcolor end
+    if role == "surface" then return E.media.backdropcolor or E.media.backdropfadecolor end
 end
 
 local function IsSkinned(frame)
@@ -50,6 +53,8 @@ end
 
 --- When ElvUI skin is active and attached to quest log, keep snapped AFK backdrop transparent.
 local function UpdateSnappedBackdrops()
+    if APR.GetThemeStyle and APR:GetThemeStyle("currentStep") == "modern" then return end
+    if APR.GetAppearanceProvider and APR:GetAppearanceProvider("currentStep") ~= "ElvUI" then return end
     if isApplyingBackdropOverride then
         return
     end
@@ -152,15 +157,6 @@ end
 ------------------------------ Core Skinning Helpers ----------------------------------
 ---------------------------------------------------------------------------------------
 
---- Mark a standard frame as processed without touching its backdrop.
----@param frame table
----@param template string|nil "Transparent" (default) or "Default"
-local function SkinBackdropFrame(frame, template)
-    if not frame or IsSkinned(frame) then return end
-    -- Intentionally do nothing: base addon manages frame backgrounds.
-    MarkSkinned(frame)
-end
-
 --- Skin a UIPanelButtonTemplate button
 ---@param button table
 local function SkinButton(button)
@@ -251,147 +247,6 @@ local function SkinOTHeader(header)
     MarkSkinned(header)
 end
 
---- Skin all child buttons inside a frame
----@param frame table
-local function SkinChildButtons(frame)
-    if not frame then return end
-    for _, child in pairs({ frame:GetChildren() }) do
-        if child:IsObjectType("Button") and not IsSkinned(child) then
-            -- Detect UIPanelButtonTemplate-style buttons (they have Left/Right/Middle textures)
-            if child.Left or child.Right or child.Middle then
-                SkinButton(child)
-            end
-        end
-    end
-end
-
----------------------------------------------------------------------------------------
------------------------------- Static Frame Skinning ----------------------------------
----------------------------------------------------------------------------------------
-
-local function SkinStaticFrames()
-    -- Current Step Frame (header + buttons only, no backdrop)
-    local csHeader = _G.CurrentStepFrameHeader
-    if csHeader then
-        SkinOTHeader(csHeader)
-        if csHeader.MinimizeButton then
-            SkinSecondaryMinimizeButton(csHeader.MinimizeButton, _G.CurrentStepScreenPanel)
-        end
-    end
-
-    -- Settings button on current step header
-    local csSettings = _G.CurrentStepFrameSettingsButton
-    if csSettings then
-        SkinSettingsIconButton(csSettings)
-    end
-
-    -- Fillers Frame (header only, no backdrop)
-    local ffHeader = _G.FillersFrameHeader
-    if ffHeader then
-        SkinOTHeader(ffHeader)
-        if ffHeader.MinimizeButton then
-            SkinSecondaryMinimizeButton(ffHeader.MinimizeButton, _G.FillersScreenPanel)
-        end
-    end
-
-    -- Quest Order List (header + scrollbar only, no backdrop)
-    local qolHeader = _G.QuestOrderListFrame_StepHolderHeader
-    if qolHeader then
-        SkinOTHeader(qolHeader)
-    end
-    local qolScroll = _G.QuestOrderListFrame_ScrollFrame
-    if qolScroll then
-        SkinScrollBar(qolScroll)
-    end
-    if qolHeader and qolHeader.MinimizeButton then
-        SkinSecondaryMinimizeButton(qolHeader.MinimizeButton, _G.QuestOrderListPanel)
-    end
-
-    -- Coordinate Frame
-    local coordPanel = _G.CoordinateScreenPanel
-    if coordPanel then
-        SkinBackdropFrame(coordPanel)
-    end
-
-    -- Route Selection
-    local rsPanel = _G.RouteSelectionPanel
-    if rsPanel then
-        SkinBackdropFrame(rsPanel)
-    end
-    local rsHeader = _G.RouteSelectionFrameHeader
-    if rsHeader then
-        SkinOTHeader(rsHeader)
-        if rsHeader.MinimizeButton then
-            SkinSecondaryMinimizeButton(rsHeader.MinimizeButton, _G.RouteSelectionPanel)
-        end
-    end
-    local rsButton = _G.OpenSettingsButton
-    if rsButton then
-        SkinButton(rsButton)
-    end
-
-    -- Party Frame
-    local partyPanel = _G.PartyScreenPanel
-    if partyPanel then
-        SkinBackdropFrame(partyPanel)
-    end
-    local partyHolder = _G.PartyFrame_TeamHolder
-    if partyHolder then
-        SkinBackdropFrame(partyHolder)
-    end
-    local partyHeader = _G.PartyFrameHeader
-    if partyHeader then
-        SkinOTHeader(partyHeader)
-        if partyHeader.MinimizeButton then
-            SkinSecondaryMinimizeButton(partyHeader.MinimizeButton, _G.PartyScreenPanel)
-        end
-    end
-
-    -- Heirloom Frame
-    local heirPanel = _G.HeirloomPanel
-    if heirPanel then
-        SkinBackdropFrame(heirPanel)
-    end
-    local heirBody = _G.HeirloomFrame_body
-    if heirBody then
-        SkinBackdropFrame(heirBody)
-    end
-    local heirHeader = _G.HeirloomFrameHeader
-    if heirHeader then
-        SkinOTHeader(heirHeader)
-        if heirHeader.MinimizeButton then
-            SkinSecondaryMinimizeButton(heirHeader.MinimizeButton, _G.HeirloomPanel)
-        end
-    end
-
-    -- Buff Frame
-    local buffFrame = _G.BuffFrameScreen
-    if buffFrame then
-        SkinBackdropFrame(buffFrame)
-    end
-    local buffBody = _G.BuffFrame_body
-    if buffBody then
-        SkinBackdropFrame(buffBody)
-    end
-    local buffHeader = _G.BuffFrameHeader
-    if buffHeader then
-        SkinOTHeader(buffHeader)
-        if buffHeader.MinimizeButton then
-            SkinSecondaryMinimizeButton(buffHeader.MinimizeButton, _G.BuffFrameScreen)
-        end
-    end
-
-    -- AFK Frame
-    local afkFrame = _G.AfkFrameScreen
-    if afkFrame then
-        SkinBackdropFrame(afkFrame)
-    end
-end
-
----------------------------------------------------------------------------------------
------------------------------ Dynamic Frame Skinning ----------------------------------
----------------------------------------------------------------------------------------
-
 -- Creation is handled by SkinRegistry; only snap geometry still needs hooks.
 local function HookDynamicFrames()
     -- Hook frame anchor refreshes to update AFK backdrop after repositioning
@@ -420,6 +275,16 @@ end
 
 -- Explicit targets include anonymous controls that cannot be found by global names.
 local function SkinRegisteredTarget(frame, kind, options)
+    local scope = options.scope or APR:GetSkinScope(frame)
+    if APR.ApplyNativeTheme and APR.GetThemeStyle and APR:GetThemeStyle(scope) == "modern" then
+        APR:ApplyNativeTheme(frame, kind, options)
+        if kind == "statusbar" then
+            if E.media and E.media.normTex then frame:SetStatusBarTexture(E.media.normTex) end
+            APR:ApplyStatusBarColor(frame)
+        end
+        MarkSkinned(frame)
+        return
+    end
     if kind == "flatButton" then
         -- MDI actions and sort headings keep their compact, borderless hit area.
         MarkSkinned(frame)
@@ -476,7 +341,6 @@ function APR.ElvUISkin:OnEnable()
 
     APR:RegisterSkinProvider("ElvUI", SkinRegisteredTarget, IsElvUISkinEnabled)
     APR:RegisterStaticSkinTargets()
-    SkinStaticFrames()
     if not hooksInstalled then
         HookDynamicFrames()
         if E.UpdateMedia then
@@ -494,8 +358,5 @@ function APR.ElvUISkin:ApplySkins()
     APR:RefreshRegisteredSkins()
     if InCombatLockdown() then return end
     APR:RegisterStaticSkinTargets()
-
-    SkinStaticFrames()
-
     UpdateSnappedBackdrops()
 end

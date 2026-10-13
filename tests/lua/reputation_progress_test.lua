@@ -69,6 +69,7 @@ assert(APR:GetReputationBarProgress(requirement) == nil)
 
 -- Load the actual frame module, exercising parent visibility, reuse and font relayout.
 local methods, bars = {}, 0
+function methods:GetFrameLevel() return self.level or 1 end
 local function object(parent)
     return setmetatable({ parent = parent, shown = true, scripts = {}, height = 12 },
         {

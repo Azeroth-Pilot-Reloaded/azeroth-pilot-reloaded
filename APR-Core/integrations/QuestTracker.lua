@@ -54,13 +54,15 @@ function Tracker:SetSide(side)
     APR.currentStep:RefreshCurrentStepFrameAnchor()
 end
 
-function Tracker:Resolve()
+function Tracker:Resolve(requested)
+    local profile = APR:GetSettingsProfile()
+    requested = requested or (profile and profile.currentStepTrackerProvider) or "auto"
     local kaliel = _G["!KalielsTrackerFrame"] or _G.KalielsTrackerFrame
-    if kaliel and kaliel.Background then
+    if (requested == "auto" or requested == "kaliel") and kaliel and kaliel.Background then
         return kaliel, kaliel.Background, "kaliel", _G.KT_ObjectiveTrackerFrame and KT_ObjectiveTrackerFrame.Header
     end
     local questie = _G.Questie and Questie.db and Questie.db.profile
-    if _G.Questie_BaseFrame and questie and questie.trackerEnabled then
+    if (requested == "auto" or requested == "questie") and _G.Questie_BaseFrame and questie and questie.trackerEnabled then
         return Questie_BaseFrame, Questie_BaseFrame, "questie", _G.Questie_HeaderFrame
     end
     local frame = _G.ObjectiveTrackerFrame or _G.QuestWatchFrame
@@ -482,19 +484,44 @@ function Tracker:ApplyPendingPosition()
 end
 
 local scopes = { currentStep = true, fillers = true, questOrderList = true, afk = true }
+function Tracker:IsAppearanceScope(scope)
+    local profile = APR:GetSettingsProfile()
+    if not profile or not profile.currentStepAttachFrameToQuestLog or not scopes[scope] then return false end
+    if scope == "fillers" and not profile.fillersFrameSnapToCurrentStep then return false end
+    if scope == "questOrderList" and not profile.questOrderListSnapToCurrentStep then return false end
+    if scope == "afk" and not profile.afkSnapToCurrentStep then return false end
+    return true
+end
+
+-- Placement and appearance are independent: Kaliel may host an Ellesmere-styled guide.
+function Tracker:GetAppearanceProvider(scope)
+    if not self:IsAppearanceScope(scope) then return end
+    local profile = APR:GetSettingsProfile()
+    local choice = profile.currentStepTrackerAppearance
+    if not choice then choice = profile.currentStepMatchTrackerStyle == false and "theme" or "auto" end
+    if choice == "theme" then return end
+    if choice == "auto" then
+        local _, _, resolved = self:Resolve()
+        return resolved ~= "blizzard" and resolved or nil
+    end
+    if choice == "kaliel" or choice == "questie" then
+        local _, _, resolved = self:Resolve(choice)
+        return resolved == choice and choice or nil
+    end
+    if choice == "EllesmereUI" and not (_G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function") then return end
+    if choice == "ElvUI" and not _G.ElvUI then return end
+    if (APR.Themes and APR.Themes[choice]) or choice == "wow" or choice == "modern"
+        or choice == "EllesmereUI" or choice == "ElvUI" then return choice end
+end
 local function rgba(color)
     if color then return { color.r, color.g, color.b, color.a or 1 } end
 end
 
 function Tracker:Style(scope)
-    local profile = APR:GetSettingsProfile()
-    if not profile or not profile.currentStepAttachFrameToQuestLog or profile.currentStepMatchTrackerStyle == false then return end
-    if not scopes[scope] then return end
-    if scope == "fillers" and not profile.fillersFrameSnapToCurrentStep then return end
-    if scope == "questOrderList" and not profile.questOrderListSnapToCurrentStep then return end
-    if scope == "afk" and not profile.afkSnapToCurrentStep then return end
-    local frame, bounds, provider, header = self:Resolve()
-    if not frame or provider == "blizzard" then return end
+    local appearance = self:GetAppearanceProvider(scope)
+    if appearance ~= "kaliel" and appearance ~= "questie" then return end
+    local frame, bounds, provider, header = self:Resolve(appearance)
+    if not frame or provider ~= appearance then return end
     local fontString = header and (header.Text or (header.trackedQuests and header.trackedQuests.label))
     local font, size, flags
     if fontString and fontString.GetFont then font, size, flags = fontString:GetFont() end
@@ -712,7 +739,8 @@ function Tracker:RefreshWidths()
     if InCombatLockdown() or self.resizing then return end
     self.resizing = true
     self.widths = self.widths or setmetatable({}, { __mode = "k" })
-    local _, bounds, provider = self:Resolve()
+    local appearance = self:GetAppearanceProvider("currentStep")
+    local _, bounds, provider = self:Resolve(appearance == "kaliel" and "kaliel" or nil)
     local width
     if provider == "kaliel" and bounds then
         local scale = bounds:GetEffectiveScale() / UIParent:GetEffectiveScale()
@@ -721,7 +749,8 @@ function Tracker:RefreshWidths()
     local function resize(frame, scope, module)
         if not frame or not module or not module.SetContentWidth then return end
         local target
-        if provider == "kaliel" and self:Style(scope) and number(width) and width > 100 then
+        local style = self:Style(scope)
+        if provider == "kaliel" and style and style.provider == "kaliel" and number(width) and width > 100 then
             if not self.widths[frame] then self.widths[frame] = frame:GetWidth() end
             target = width
         elseif self.widths[frame] then
@@ -750,7 +779,7 @@ function Tracker:ApplyPanel(frame, fallback)
     if style and style.color and #style.color >= 4 and fallback[4] ~= 0 then
         -- Only the outer panels get a border; rows remain transparent inside them.
         local root = frame == _G.CurrentStepScreenPanel or frame == _G.FillersScreenPanel or
-        frame == _G.QuestOrderListPanel
+        frame == _G.QuestOrderListPanel or frame == APR.currentStep.contentBackdrop
         if root and frame.GetBackdrop then
             if not frame.aprTrackerBackdrop then
                 frame.aprTrackerBackdrop = {
@@ -858,7 +887,8 @@ end
 -- quest rows, rebuild styles or mutate any frames. Provider internals remain untouched.
 local OBSERVED_FRAME_METHODS = {"IsShown", "GetWidth", "GetHeight", "GetEffectiveScale"}
 local OBSERVED_GEOMETRY_METHODS = {"GetCenter", "GetTop", "GetBottom"}
-local OBSERVED_PROFILE_KEYS = {"currentStepTrackerSide", "currentStepMatchTrackerStyle", "afkSnapToCurrentStep",
+local OBSERVED_PROFILE_KEYS = {"currentStepTrackerSide", "currentStepMatchTrackerStyle", "currentStepTrackerAppearance",
+    "currentStepTrackerProvider", "afkSnapToCurrentStep",
     "fillersFrameSnapToCurrentStep", "fillersFrameSnapGap", "fillersFrameShowHeader", "questOrderListSnapToCurrentStep"}
 local OBSERVED_PANEL_NAMES = {"CurrentStepScreenPanel", "AfkFrameScreen", "FillersScreenPanel", "QuestOrderListPanel"}
 

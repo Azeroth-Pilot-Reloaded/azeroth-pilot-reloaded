@@ -16,7 +16,8 @@ assert(APR.settings.profile.uiWindows.APRTestWindow.width == 1100)
 assert(APR.settings.profile.uiWindows.APRTestWindow.height == 740)
 local panel = APR.UI:Panel(window)
 APR.settings.profile.uiTheme = "modern"
-assert(select(2, APR:GetTheme()) == "wow", "Saved experimental themes are ignored on audit-clean")
+assert(select(2, APR:GetTheme()) == "modern", "The modern theme can be selected independently of addons")
+APR.settings.profile.uiTheme = "wow"
 local legacy = CreateFrame("Frame", nil, UIParent, "BackdropTemplate")
 APR:SetPanelColor(legacy, {0.1, 0.2, 0.3, 0})
 APR:RegisterSkinTarget(legacy, "panel")

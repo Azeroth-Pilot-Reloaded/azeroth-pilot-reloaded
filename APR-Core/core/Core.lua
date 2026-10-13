@@ -89,8 +89,6 @@ function APR:OnInitialize()
     APRData.NPCList = APRData.NPCList or {}
     APRData.CustomRoute = APRData.CustomRoute or {}
     APRData[self.PlayerID] = APRData[self.PlayerID] or {}
-    APRData[self.PlayerID].FirstLoad = APRData[self.PlayerID].FirstLoad == nil and true or
-        APRData[self.PlayerID].FirstLoad
     APRData[self.PlayerID].BonusSkips = APRData[self.PlayerID].BonusSkips or {}
     APRData[self.PlayerID].WantedQuestList = APRData[self.PlayerID].WantedQuestList or {}
 

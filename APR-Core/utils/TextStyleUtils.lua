@@ -30,6 +30,9 @@ local TEXT_STYLE_FLAGS = {
     ["MONOCHROME,OUTLINE"] = L["FONT_STYLE_MONOCHROME_OUTLINE"],
 }
 
+local COLOR_ROLES = {color = "base", accentColor = "accent", successColor = "success",
+    warningColor = "warning", errorColor = "error", mutedColor = "muted"}
+
 function TextStyleUtils:GetFontValues()
     local values = {}
     for name in pairs(LSM:HashTable("font")) do
@@ -48,7 +51,28 @@ function TextStyleUtils:SetAppearanceValue(profileKey, key, value, scope)
     if not appearance then return end
 
     appearance[key] = value
+    if COLOR_ROLES[key] then
+        appearance.colorOverrides = appearance.colorOverrides or {}
+        appearance.colorOverrides[key] = true
+    end
     APR:RefreshTextAppearance(scope)
+end
+
+local function CopyDefaults(value)
+    if type(value) ~= "table" then return value end
+    local copy = {}
+    for key, child in pairs(value) do copy[key] = CopyDefaults(child) end
+    return copy
+end
+
+function TextStyleUtils:ResetAppearance(profileKey, scope, includeInheritance)
+    local profile = APR:GetSettingsProfile()
+    if not profile then return end
+    local defaults = APR.settings and APR.settings.db and APR.settings.db.defaults
+    defaults = defaults and defaults.profile and defaults.profile[profileKey]
+    profile[profileKey] = CopyDefaults(defaults or APR:CreateTextAppearanceDefaults(includeInheritance))
+    APR:RefreshTextAppearance(scope)
+    if APR.ThemeCustomization then APR.ThemeCustomization:UpdatePreviews() end
 end
 
 function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorOptions, includeInheritance, inline)
@@ -162,7 +186,9 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
             width = 1,
             get = function()
                 local appearance = self:GetAppearance(profileKey)
-                local color = appearance and appearance[colorKey] or { 1, 1, 1, 1 }
+                local role = scope == "questOrderList" and colorKey == "warningColor" and "activeStep" or COLOR_ROLES[colorKey]
+                local color = APR.GetTextColor and APR:GetTextColor(scope, role)
+                    or appearance and appearance[colorKey] or { 1, 1, 1, 1 }
                 return unpack(color)
             end,
             set = function(_, r, g, b, a)
@@ -171,6 +197,15 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
         }
         nextOrder = nextOrder + 1
     end
+
+    args.resetTextAppearance = {
+        order = nextOrder,
+        type = "execute",
+        name = L["UI_TEXT_APPEARANCE_RESET"],
+        desc = L["UI_TEXT_APPEARANCE_RESET_DESC"],
+        width = "full",
+        func = function() self:ResetAppearance(profileKey, scope, includeInheritance) end,
+    }
 
     return {
         order = order,

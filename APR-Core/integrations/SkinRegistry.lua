@@ -5,14 +5,72 @@
 -- Providers change appearance only; callbacks, item attributes and layout stay owned by APR.
 local targets = setmetatable({}, { __mode = "k" })
 local provider
+local providers = {}
 local pending = false
+
+-- No default for uiTheme: old profiles retain their existing integration preference.
+function APR:GetSelectedSkinName()
+    local profile = self.GetSettingsProfile and self:GetSettingsProfile() or (self.settings and self.settings.profile)
+    if profile and profile.uiTheme == "ElvUI" and _G.ElvUI then return "ElvUI" end
+    if profile and profile.uiTheme == "EllesmereUI" and _G.EllesmereUI
+        and type(_G.EllesmereUI.RegisterSkin) == "function" then return "EllesmereUI" end
+    if profile and self.Themes and self.Themes[profile.uiTheme] then return profile.uiTheme end
+    if profile and (profile.uiTheme == "wow" or profile.uiTheme == "modern") then return profile.uiTheme end
+    if _G.ElvUI and (not profile or profile.elvuiSkin ~= false) then return "ElvUI" end
+    if _G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function"
+        and (not profile or profile.ellesmereuiSkin ~= false) then return "EllesmereUI" end
+    return "wow"
+end
+
+local scopeRoots = {CurrentStepScreenPanel = "currentStep", FillersScreenPanel = "fillers",
+    QuestOrderListPanel = "questOrderList", AfkFrameScreen = "afk", PartyScreenPanel = "party",
+    HeirloomPanel = "heirloom", BuffFrameScreen = "buff", CoordinateScreenPanel = "coordinates"}
+
+function APR:GetSkinScope(frame)
+    for _ = 1, 12 do
+        if not frame then return end
+        for name, scope in pairs(scopeRoots) do if frame == _G[name] then return scope end end
+        frame = frame.GetParent and frame:GetParent()
+    end
+end
+
+function APR:GetAppearanceProvider(scope)
+    local choice = self.QuestTracker and self.QuestTracker.GetAppearanceProvider and self.QuestTracker:GetAppearanceProvider(scope)
+    return choice or self:GetSelectedSkinName()
+end
+
+-- Skins keep persistent texture hooks; changing their scope needs a clean rebuild.
+function APR:ReloadChangedTrackerAppearance(scope, previous)
+    local current = self:GetAppearanceProvider(scope)
+    local function needsRebuild(name)
+        return name == "ElvUI" or name == "EllesmereUI" or
+            (self.Themes and self.Themes[name] and self.Themes[name].style == "modern")
+    end
+    if current ~= previous and (needsRebuild(previous) or needsRebuild(current)) then
+        ReloadUI()
+        return true
+    end
+    return false
+end
+
+function APR:IsSkinProviderUsed(name)
+    if self:GetSelectedSkinName() == name then return true end
+    local profile = self.GetSettingsProfile and self:GetSettingsProfile()
+    return profile and profile.currentStepAttachFrameToQuestLog and profile.currentStepTrackerAppearance == name
+end
+
+local function TargetProvider(frame, target)
+    local name = APR:GetAppearanceProvider(target.options.scope or APR:GetSkinScope(frame))
+    return providers[name] or (provider and provider.name ~= "ElvUI" and provider.name ~= "EllesmereUI" and provider)
+end
 
 local function ApplyTarget(frame, target)
     if InCombatLockdown() then
         pending = true
         return
     end
-    if not provider or not provider.enabled() then
+    local selected = TargetProvider(frame, target)
+    if not selected or not selected.enabled() then
         if APR.ApplyNativeTheme and not target.nativeApplied then
             APR:ApplyNativeTheme(frame, target.kind, target.options)
             target.nativeApplied = true
@@ -21,7 +79,7 @@ local function ApplyTarget(frame, target)
     end
     if target.applied then return end
     if target.nativeApplied and APR.RestoreNativeTheme then APR:RestoreNativeTheme(frame) end
-    provider.apply(frame, target.kind, target.options)
+    selected.apply(frame, target.kind, target.options)
     target.applied = true
 end
 
@@ -44,18 +102,24 @@ function APR:RefreshRegisteredSkins(refreshNative)
     for frame, target in pairs(targets) do ApplyTarget(frame, target) end
     if self.RefreshThemeRegions then self:RefreshThemeRegions() end
     if self.ApplyAllTextStyles then self:ApplyAllTextStyles() end
+    if self.RefreshStatusBarColors then self:RefreshStatusBarColors() end
 end
 
-function APR:GetSkinProviderName()
-    return provider and provider.enabled() and provider.name or nil
+function APR:GetSkinProviderName(scope)
+    local selected = providers[self:GetAppearanceProvider(scope)]
+        or (provider and provider.name ~= "ElvUI" and provider.name ~= "EllesmereUI" and provider)
+    return selected and selected.enabled() and selected.name or nil
 end
 
 function APR:AreSkinsPending() return pending end
 
 function APR:RegisterSkinProvider(name, apply, enabled)
     -- A reload is required to change providers; never stack two skins on a control.
-    if provider and provider.name ~= name then return false end
+    if provider and provider.name ~= name and
+        not ((name == "ElvUI" or name == "EllesmereUI") and
+            (provider.name == "ElvUI" or provider.name == "EllesmereUI")) then return false end
     provider = { name = name, apply = apply, enabled = enabled }
+    providers[name] = provider
     self:RefreshRegisteredSkins()
     return true
 end
@@ -63,7 +127,7 @@ end
 -- Only the small set of APR windows is enumerated, never UIParent or quest rows.
 function APR:RegisterStaticSkinTargets()
     for _, name in ipairs({ "CurrentStepScreenPanel", "FillersScreenPanel", "QuestOrderListPanel",
-        "CoordinateScreenPanel", "RouteSelectionPanel", "PartyScreenPanel",
+        "CoordinateScreenPanel", "PartyScreenPanel",
         "HeirloomPanel", "BuffFrameScreen", "AfkFrameScreen" }) do
         self:RegisterSkinTarget(_G[name], "panel", { preserveBackground = true })
     end
@@ -81,7 +145,6 @@ function APR:RegisterStaticSkinTargets()
         end
     end
     self:RegisterSkinTarget(_G.CurrentStepFrameSettingsButton, "settings")
-    self:RegisterSkinTarget(_G.OpenSettingsButton, "button")
     for _, name in ipairs({ "QuestOrderListFrame_ScrollFrame" }) do
         local scroll = _G[name]
         self:RegisterSkinTarget(scroll and (scroll.ScrollBar or _G[name .. "ScrollBar"]), "scrollbar")

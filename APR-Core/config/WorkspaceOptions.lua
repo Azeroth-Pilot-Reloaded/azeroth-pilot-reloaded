@@ -4,9 +4,10 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.WorkspaceOptions = {}
 local Model = APR.WorkspaceOptions
 
-local positionResets = {
+local formResets = {
     resetCurrentStepPosition = true, fillersFrameResetPosition = true,
     arrowReset = true, afkResetPosition = true, resetPartyPosition = true,
+    resetTextAppearance = true,
 }
 
 local function CopyOption(option)
@@ -30,7 +31,7 @@ local function CopyOption(option)
     if copy.args then
         local spacing = {}
         for key, child in pairs(copy.args) do
-            if positionResets[key] and child.type == "execute" then
+            if formResets[key] and child.type == "execute" then
                 child.order = 10000
                 spacing[key .. "Spacing"] = {type = "description", name = " ", width = "full", order = 9999}
             end
@@ -53,7 +54,7 @@ local function PanelOptions(source, mainKey, placementKeys)
     placement.name, placement.order, placement.args = L["UI_SETTINGS_PLACEMENT"], 2, {}
     for _, key in ipairs(placementKeys) do
         placement.args[key], main.args[key] = main.args[key], nil
-        if positionResets[key] then
+        if formResets[key] then
             placement.args[key .. "Spacing"], main.args[key .. "Spacing"] = main.args[key .. "Spacing"], nil
         end
     end
@@ -126,7 +127,7 @@ function Model:Build(settings)
     })
 
     local current = PanelOptions(source.group_Current_Step, "subgroup_CurrentStep", {
-        "currentStepAttachFrameToQuestLog", "currentStepTrackerSide", "currentStepMatchTrackerStyle", "currentStepLock", "currentStepScale",
+        "currentStepAttachFrameToQuestLog", "currentStepTrackerSide", "currentStepMatchTrackerStyle", "currentStepTrackerProvider", "currentStepLock", "currentStepScale",
         "currentStepQuestButtonPositionRight", "resetCurrentStepPosition",
     })
     current.args.subgroup_FillersFrame = nil
@@ -144,8 +145,12 @@ function Model:Build(settings)
     category("group_Group", source.group_Group)
     category("group_Heirloom", source.group_Heirloom)
     category("group_XP_Buff", source.group_XP_Buff.args.subgroup_XP_Buff)
+    local themeOptions = {uiSkin = debug.subgroup_Enable.args.uiSkin}
+    for key, option in pairs(debug.subgroup_Enable.args) do
+        if key:match("^theme") then themeOptions[key] = option end
+    end
     section("appearance", L["UI_APPEARANCE"], {
-        {"theme", Group(L["UI_THEME"], {uiSkin = debug.subgroup_Enable.args.uiSkin})},
+        {"theme", Group(L["UI_THEME"], themeOptions)},
         {"group_GlobalTextAppearance", source.group_GlobalTextAppearance},
     })
     sections[#sections].actions = {{key = "layoutEditor", option = CopyOption(debug.layoutEditor)}}
@@ -187,7 +192,17 @@ function Model:Views(section)
         for key, value in pairs(options) do root[key] = value end
         for key, value in pairs(group or {}) do root[key] = value end
         root.args = args
-        views[#views + 1] = {id = id, label = label, options = root}
+        local entry = {id = id, label = label, options = root}
+        if section.id == "appearance" and id == "theme" then
+            entry.footerActions = {}
+            for _, key in ipairs({"themeDiscard", "themeApply"}) do
+                if args[key] then
+                    entry.footerActions[#entry.footerActions + 1] = {key = key, option = args[key]}
+                    args[key] = nil
+                end
+            end
+        end
+        views[#views + 1] = entry
     end
     if next(direct) then view("general", GENERAL, direct) end
     for _, group in ipairs(groups) do

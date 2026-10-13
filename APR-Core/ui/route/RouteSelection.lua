@@ -1,102 +1,81 @@
--- Shows the route-selection prompt when the character has no usable custom path.
--- Its controls delegate catalogue editing to the configuration module.
-
+-- The empty-route prompt belongs to Current step; route browsing stays in the APR workspace.
+-- Existing lifecycle callers can refresh it without creating a second movable window.
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
-local LibWindow = LibStub("LibWindow-1.1")
-
--- Initialize APR Route Selection module
 APR.RouteSelection = APR:NewModule("RouteSelection")
+local Selection = APR.RouteSelection
 
----------------------------------------------------------------------------------------
---------------------------------- Route Selection Frame ------------------------------
----------------------------------------------------------------------------------------
+function Selection:IsEmptyRouteState()
+    if APR.ActiveRoute and APR.ActiveRoute ~= "" then return false end
+    -- Activation can lag behind saved-path loading or pause while a route is locked.
+    local path = APRCustomPath and APR.PlayerID and APRCustomPath[APR.PlayerID]
+    return not path or not next(path)
+end
 
-local RouteSelectionFrame = CreateFrame("Frame", "RouteSelectionPanel", UIParent, "BackdropTemplate")
-RouteSelectionFrame:SetSize(250, 55)
-RouteSelectionFrame:SetFrameStrata("LOW")
-RouteSelectionFrame:SetClampedToScreen(true)
-RouteSelectionFrame:SetBackdrop({
-    bgFile = "Interface\\BUTTONS\\WHITE8X8",
-    tile = true,
-    tileSize = 16
-})
-APR:SetPanelColor(RouteSelectionFrame, APR.Color.defaultLightBackdrop)
+function Selection:Create()
+    if self.frame then return self.frame end
+    local UI = APR.UI
+    local frame = UI:Panel(CurrentStepFrame_StepHolder, "borderedPanel", "inset", "currentStep", {nativeWoW = true})
+    self.frame = frame
+    APR.currentStep.emptyRoutePrompt = frame
+    frame:SetPoint("TOPLEFT", CurrentStepFrame_StepHolder, "TOPLEFT", 8, -8)
+    frame.title = UI:Label(frame, L["UI_ROUTE_PREFABS"], 12, "accent", "currentStep")
+    frame.title:SetPoint("TOPLEFT", 10, -10)
+    frame.title:SetWordWrap(true)
+    frame.button = UI:Button(frame, L["ROUTE_SELECTION"], 1, function()
+        APR.settings:OpenSettings(L["ROUTE"])
+    end, nil, "currentStep", {nativeWoW = true})
+    frame.button:SetPoint("TOPLEFT", frame.title, "BOTTOMLEFT", 0, -8)
+    frame.button:GetFontString():SetWordWrap(true)
+    APR:RegisterFontString(frame.title, "currentStep", {role = "accent", onApplied = function() self:Layout() end})
+    APR:RegisterFontString(frame.button:GetFontString(), "currentStep", {role = "base", onApplied = function() self:Layout() end})
+    return frame
+end
 
--- Create the frame header
-local RouteSelectionFrameHeader = CreateFrame("Frame", "RouteSelectionFrameHeader", RouteSelectionFrame,
-    "ObjectiveTrackerContainerHeaderTemplate")
-RouteSelectionFrameHeader:SetPoint("bottom", RouteSelectionFrame, "top", 0, -1)
-RouteSelectionFrameHeader.Text:SetText(L["ROUTE_SELECTION"])
-APR:RegisterFontString(RouteSelectionFrameHeader.Text, "general", { role = "accent", sizeDelta = 2 })
-RouteSelectionFrameHeader.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
-RouteSelectionFrameHeader.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
-RouteSelectionFrameHeader.MinimizeButton:SetScript("OnClick", function(self)
-    RouteSelectionPanel:Hide()
-    APRData[APR.PlayerID].FirstLoad = false
-end)
-RouteSelectionFrameHeader:SetScript("OnMouseDown", function(self, button)
-    self:GetParent():StartMoving()
-end)
+function Selection:Layout()
+    local frame = self.frame
+    if not frame or not frame.button or self.layingOut or InCombatLockdown() then return end
+    self.layingOut = true
+    local width = APR.currentStep.layout.width - 16
+    frame:SetWidth(width)
+    frame.title:SetWidth(width - 20)
+    frame.button:SetWidth(width - 20)
+    local height = math.max(30, frame.button:GetFontString():GetStringHeight() + 12)
+    frame.button:SetHeight(height)
+    frame:SetHeight(10 + frame.title:GetStringHeight() + 8 + height + 10)
+    self.layingOut = nil
+end
 
-RouteSelectionFrameHeader:SetScript("OnMouseUp", function(self, button)
-    self:GetParent():StopMovingOrSizing()
-    LibWindow.SavePosition(RouteSelectionPanel)
-end)
+function Selection:UpdateTextAppearance()
+    self:Layout()
+    if self.frame and APR.currentStep.emptyRoutePromptActive then APR.currentStep:ReOrderQuestSteps() end
+end
 
--- Open settings button
-local openSettingsButton = CreateFrame("Button", "OpenSettingsButton", RouteSelectionFrame, "UIPanelButtonTemplate")
-openSettingsButton:SetSize(150, 25)
-openSettingsButton:SetPoint("center", RouteSelectionFrame, "center", 0, 0)
-openSettingsButton:SetText(L["OPEN_ROUTE_OPTIONS"])
-APR:RegisterButtonText(openSettingsButton, "general", { role = "base" })
+function Selection:RefreshFrameAnchor()
+    if InCombatLockdown() then self.pendingRefresh = true; return end
+    self.pendingRefresh = nil
+    local profile = APR:GetSettingsProfile()
+    if not profile then return end
+    local step = APR.currentStep
+    local empty = self:IsEmptyRouteState()
+    local visible = empty and not APR:ShouldHideFrames() and not CurrentStepScreenPanel.collapsed
+    step.emptyRoutePromptActive = empty
+    local frame = self.frame or (visible and self:Create())
+    if frame then self:Layout(); frame:SetShown(visible) end
+    if step.progressBar then step.progressBar:SetShown(not empty and not CurrentStepScreenPanel.collapsed) end
+    if empty then
+        if step.ButtonHide then step:ButtonHide() end
+    elseif step.ButtonShow then step:ButtonShow() end
+    step:ReOrderQuestSteps()
+end
 
-openSettingsButton.Text:SetWordWrap(true)
-openSettingsButton.Text:SetWidth(140)
+function Selection:RouteSelectionOnInit() self:RefreshFrameAnchor() end
+function Selection:SetDefaultDisplay() self:RefreshFrameAnchor() end
 
-local textHeight = openSettingsButton.Text:GetStringHeight()
-openSettingsButton:SetHeight(textHeight + 15)
-
-function APR.RouteSelection:UpdateTextAppearance()
-    local buttonText = openSettingsButton.Text or openSettingsButton:GetFontString()
-    if buttonText then
-        openSettingsButton:SetHeight(math.max(25, buttonText:GetStringHeight() + 15))
+local watcher = CreateFrame("Frame")
+watcher:RegisterEvent("PLAYER_REGEN_ENABLED")
+watcher:SetScript("OnEvent", function()
+    if Selection.pendingRefresh then
+        Selection:RefreshFrameAnchor()
+        APR.currentStep:RefreshCurrentStepFrameAnchor()
     end
-end
-
-openSettingsButton:SetScript("OnClick", function()
-    APR.settings:OpenSettings(L["ROUTE"])
-    RouteSelectionPanel:Hide()
-    APRData[APR.PlayerID].FirstLoad = false
 end)
-
-
----------------------------------------------------------------------------------------
---------------------------------- Route Selection func --------------------------------
----------------------------------------------------------------------------------------
-
--- Initialize the Route Selection frame
-function APR.RouteSelection:RouteSelectionOnInit()
-    LibWindow.RegisterConfig(RouteSelectionPanel, APR.settings.profile.routeSelectionFrame)
-    RouteSelectionPanel.RegisteredForLibWindow = true
-    LibWindow.MakeDraggable(RouteSelectionPanel)
-
-    -- Set default display
-    self:SetDefaultDisplay()
-    self:RefreshFrameAnchor()
-end
-
-function APR.RouteSelection:SetDefaultDisplay()
-    RouteSelectionPanel:SetPoint("center", UIParent, "center", 0, 0)
-    RouteSelectionFrame:Show()
-    RouteSelectionFrameHeader:Show()
-end
-
-function APR.RouteSelection:RefreshFrameAnchor()
-    if not APR.settings.profile.enableAddon or APR:IsPetBattleActive() or not APRData[APR.PlayerID].FirstLoad then
-        RouteSelectionPanel:Hide()
-        return
-    end
-    RouteSelectionPanel:EnableMouse(true)
-    LibWindow.RestorePosition(RouteSelectionPanel)
-    RouteSelectionPanel:Show()
-end

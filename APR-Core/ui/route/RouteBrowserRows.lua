@@ -38,14 +38,10 @@ end
 function Rows:Create(parent, browser, path)
     local row = CreateFrame("Button", nil, parent)
     row:RegisterForClicks("LeftButtonUp", "RightButtonUp")
-    row.background = row:CreateTexture(nil, "BACKGROUND")
-    row.background:SetAllPoints()
+    UI:StyleListRow(row)
     row.progressMarker = row:CreateTexture(nil, "ARTWORK")
     row.progressMarker:SetPoint("LEFT", 0, 0)
     row.progressMarker:SetSize(2, 14)
-    local highlight = row:CreateTexture(nil, "HIGHLIGHT")
-    highlight:SetAllPoints()
-    APR:RegisterThemeRegion(highlight, "accent", 0.10)
     row.name = UI:Label(row, "", 12)
     row.name:SetWordWrap(false)
     row:SetScript("OnEnter", function() self:Tooltip(row, path) end)
@@ -106,8 +102,7 @@ end
 
 function Rows:Bind(row, record, index, browser, path)
     local selected = browser.selectedKey == record.key
-    APR:RegisterThemeRegion(row.background, selected and "selection" or "stripe",
-        selected and 0.3 or index % 2 == 0 and 0.22 or 0)
+    UI:SetListRowState(row, selected)
     local width = row:GetWidth()
     local progress = APR.RouteCatalog.progressStates[record.progressState]
     local role = record.visibility == "visible" and progress and progress.role or "muted"

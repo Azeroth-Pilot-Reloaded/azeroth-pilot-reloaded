@@ -29,6 +29,10 @@ local function SetProfileOption(info, value)
     profile[info[#info]] = value
 end
 
+local function ReloadChangedAppearance(scope, previous)
+    return APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance(scope, previous)
+end
+
 function APR.settings:ResetSettings()
     self.db:ResetProfile() -- AceDB invokes RefreshProfile through OnProfileReset.
 end
@@ -48,8 +52,9 @@ function APR.settings:InitializeSettings()
     -- Default setting
     local settingsDBDefaults = {
         profile = {
-            uiTheme = "wow",
+            -- An unset theme detects loaded integrations; manual choices are saved by Apply.
             uiWindows = {},
+            uiThemeCustomization = {},
             routeFavorites = {},
             -- automation
             autoAccept = false,
@@ -88,6 +93,7 @@ function APR.settings:InitializeSettings()
             currentStepScale = 1,
             currentStepbackgroundColorAlpha = APR.Color.defaultLightBackdrop,
             currentStepProgressBarColor = { APR.Color.blue[1], APR.Color.blue[2], APR.Color.blue[3], 1 },
+            currentStepProgressBarColorCustom = false,
             currentStepTextAppearance = APR:CreateTextAppearanceDefaults(true, {
                 accentColor = APR.Color.gold,
                 successColor = APR.Color.green,
@@ -176,12 +182,12 @@ function APR.settings:InitializeSettings()
                 mutedColor = APR.Color.gray,
             }),
             -- route
-            routeSelectionFrame = {},
             routeSignature = {},
             --afk
             afkFrame = {},
             afkSnapToCurrentStep = true,
             afkBarColor = { APR.Color.orange[1], APR.Color.orange[2], APR.Color.orange[3], 1 },
+            afkBarColorCustom = false,
             afkWidth = 250,
             afkHeight = 20,
             afkTextAppearance = APR:CreateTextAppearanceDefaults(true),
@@ -426,12 +432,14 @@ function APR.settings:createBlizzOptions()
                                 order = 5.11,
                                 type = "toggle",
                                 name = L["QLIST_ATTACH_QUESTLOG"],
-                                desc = L["QLIST_ATTACH_QUESTLOG_DESC"],
+                                desc = L["QLIST_ATTACH_QUESTLOG_DESC"] .. "\n\n" .. L["UI_TRACKER_RELOAD_HINT"],
                                 width = optionsWidth,
                                 get = GetProfileOption,
                                 set = function(info, value)
+                                    local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("currentStep")
                                     APR.QuestTracker:GetSide(self.profile)
                                     SetProfileOption(info, value)
+                                    if ReloadChangedAppearance("currentStep", previous) then return end
                                     APR.currentStep:RefreshCurrentStepFrameAnchor()
                                 end,
                                 disabled = function()
@@ -449,13 +457,41 @@ function APR.settings:createBlizzOptions()
                                 disabled = function() return not self.profile.currentStepAttachFrameToQuestLog end,
                             },
                             currentStepMatchTrackerStyle = {
-                                order = 5.116, type = "toggle", width = optionsWidth,
-                                name = L["UI_TRACKER_STYLE"], desc = L["UI_TRACKER_STYLE_DESC"],
-                                get = GetProfileOption,
-                                set = function(info, value)
-                                    SetProfileOption(info, value)
-                                    APR.QuestTracker:RefreshAppearance()
+                                order = 5.116, type = "select", width = optionsWidth,
+                                name = L["UI_TRACKER_APPEARANCE"], desc = L["UI_TRACKER_APPEARANCE_DESC"],
+                                values = function()
+                                    local choices = APR:GetThemeChoices(L)
+                                    choices.auto, choices.theme = L["UI_TRACKER_AUTO"], L["UI_TRACKER_APR_THEME"]
+                                    if _G["!KalielsTrackerFrame"] or _G.KalielsTrackerFrame then choices.kaliel = "Kaliel’s Tracker" end
+                                    if _G.Questie_BaseFrame then choices.questie = "Questie" end
+                                    if _G.ElvUI then choices.ElvUI = "ElvUI" end
+                                    if _G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function" then choices.EllesmereUI = "EllesmereUI" end
+                                    return choices
                                 end,
+                                get = function() return self.profile.currentStepTrackerAppearance or
+                                    (self.profile.currentStepMatchTrackerStyle == false and "theme" or "auto") end,
+                                set = function(_, value)
+                                    self.profile.currentStepTrackerAppearance = value
+                                    ReloadUI()
+                                end,
+                                confirm = true, confirmText = L["UI_THEME_CONFIRM"],
+                                disabled = function() return not self.profile.currentStepAttachFrameToQuestLog end,
+                            },
+                            currentStepTrackerProvider = {
+                                order = 5.117, type = "select", width = optionsWidth,
+                                name = L["UI_TRACKER_TARGET"], desc = L["UI_TRACKER_TARGET_DESC"],
+                                values = function()
+                                    local choices = {auto = L["UI_TRACKER_AUTO"], blizzard = "Blizzard"}
+                                    if _G["!KalielsTrackerFrame"] or _G.KalielsTrackerFrame then choices.kaliel = "Kaliel’s Tracker" end
+                                    if _G.Questie_BaseFrame then choices.questie = "Questie" end
+                                    return choices
+                                end,
+                                get = function() return self.profile.currentStepTrackerProvider or "auto" end,
+                                set = function(_, value)
+                                    self.profile.currentStepTrackerProvider = value
+                                    ReloadUI()
+                                end,
+                                confirm = true, confirmText = L["UI_THEME_CONFIRM"],
                                 disabled = function() return not self.profile.currentStepAttachFrameToQuestLog end,
                             },
                             currentStepLock = {
@@ -501,10 +537,11 @@ function APR.settings:createBlizzOptions()
                                 width = optionsWidth,
                                 hasAlpha = true,
                                 get = function()
-                                    return unpack(self.profile.currentStepProgressBarColor)
+                                    return unpack(APR:GetStatusBarColor("currentStepProgressBarColor", "currentStep"))
                                 end,
                                 set = function(info, r, g, b, a)
                                     SetProfileOption(info, { r, g, b, a })
+                                    APR:GetSettingsProfile().currentStepProgressBarColorCustom = true
                                     APR.currentStep:UpdateProgressBarColor()
                                 end,
                                 disabled = function()
@@ -578,11 +615,13 @@ function APR.settings:createBlizzOptions()
                                 order = 5.61,
                                 type = "toggle",
                                 name = L["SNAP_TO_CURRENT_STEP"],
-                                desc = L["FILLERS_SNAP_TO_CURRENT_STEP_DESC"],
+                                desc = L["FILLERS_SNAP_TO_CURRENT_STEP_DESC"] .. "\n\n" .. L["UI_TRACKER_RELOAD_HINT"],
                                 width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
+                                    local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("fillers")
                                     SetProfileOption(info, value)
+                                    if ReloadChangedAppearance("fillers", previous) then return end
                                     if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
                                         APR.fillersFrame:RefreshFillersFrame()
                                     end
@@ -801,11 +840,13 @@ function APR.settings:createBlizzOptions()
                                 order = 6.25,
                                 type = "toggle",
                                 name = L["SNAP_TO_CURRENT_STEP"],
-                                desc = L["QORDERLIST_SNAP_TO_CURRENT_STEP_DESC"],
+                                desc = L["QORDERLIST_SNAP_TO_CURRENT_STEP_DESC"] .. "\n\n" .. L["UI_TRACKER_RELOAD_HINT"],
                                 width = optionsWidth,
                                 get = GetProfileOption,
                                 set = function(info, value)
+                                    local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("questOrderList")
                                     SetProfileOption(info, value)
+                                    if ReloadChangedAppearance("questOrderList", previous) then return end
                                     APR.questOrderList:RefreshFrameAnchor()
                                 end,
                                 disabled = function()
@@ -1667,15 +1708,17 @@ function APR.settings:createBlizzOptions()
                                 order = 10.51,
                                 type = "toggle",
                                 name = L["SNAP_TO_CURRENT_STEP"],
-                                desc = L["AFK_SNAP_TO_CURRENT_STEP_DESC"],
+                                desc = L["AFK_SNAP_TO_CURRENT_STEP_DESC"] .. "\n\n" .. L["UI_TRACKER_RELOAD_HINT"],
                                 width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
                                     local wasSnapped = self.profile.afkSnapToCurrentStep
+                                    local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("afk")
                                     SetProfileOption(info, value)
                                     if value and not wasSnapped and self.profile.afkHeight == 30 then
                                         self.profile.afkHeight = (APR.AFK and APR.AFK.defaultSnapHeight) or 20
                                     end
+                                    if ReloadChangedAppearance("afk", previous) then return end
                                     APR.AFK:RefreshFrameAnchor()
                                 end,
                             },
@@ -1687,10 +1730,11 @@ function APR.settings:createBlizzOptions()
                                 hasAlpha = true,
                                 width = optionsWidth,
                                 get = function()
-                                    return unpack(self.profile.afkBarColor)
+                                    return unpack(APR:GetStatusBarColor("afkBarColor", "afk"))
                                 end,
                                 set = function(info, r, g, b, a)
                                     SetProfileOption(info, { r, g, b, a })
+                                    APR:GetSettingsProfile().afkBarColorCustom = true
                                     APR.AFK:UpdateBarColor()
                                 end,
                             },
@@ -1902,7 +1946,7 @@ function APR.settings:createBlizzOptions()
                                 desc = L["UI_THEME_DESC"],
                                 width = "full",
                                 values = function()
-                                    local skins = {wow = "World of Warcraft"}
+                                    local skins = APR:GetThemeChoices(L)
                                     if _G.ElvUI then skins.ElvUI = "ElvUI" end
                                     if _G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function" then
                                         skins.EllesmereUI = "EllesmereUI"
@@ -1910,18 +1954,18 @@ function APR.settings:createBlizzOptions()
                                     return skins
                                 end,
                                 get = function()
-                                    -- Preserve existing profiles and the integrations' ElvUI priority.
-                                    if _G.ElvUI and self.profile.elvuiSkin ~= false then return "ElvUI" end
-                                    if _G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function"
-                                        and self.profile.ellesmereuiSkin ~= false then return "EllesmereUI" end
-                                    return "wow"
+                                    if APR.ThemeCustomization then return APR.ThemeCustomization:GetDraft().theme end
+                                    return APR:GetSelectedSkinName()
                                 end,
                                 set = function(_, value)
+                                    if APR.ThemeCustomization then return APR.ThemeCustomization:SetTheme(value) end
+                                    self.profile.uiTheme = value
                                     self.profile.elvuiSkin = value == "ElvUI"
                                     self.profile.ellesmereuiSkin = value == "EllesmereUI"
                                     ReloadUI()
                                 end,
-                                confirm = true,
+                                -- Theme editing previews a draft; Apply owns publishing and renderer reloads.
+                                confirm = not APR.ThemeCustomization,
                                 confirmText = L["UI_THEME_CONFIRM"],
                             },
                             resetPartyPosition = {
@@ -2027,6 +2071,10 @@ function APR.settings:createBlizzOptions()
     }
 
     -- Register setting to the option table
+    if APR.ThemeCustomization then
+        local appearance = optionsTable.args.group_Debug.args.subgroup_Enable.args
+        for key, option in pairs(APR.ThemeCustomization:GetOptions()) do appearance[key] = option end
+    end
     self.optionsTable = optionsTable
     aceConfig:RegisterOptionsTable(APR.title, optionsTable)
 

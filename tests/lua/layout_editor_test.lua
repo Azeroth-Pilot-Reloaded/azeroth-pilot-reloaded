@@ -42,7 +42,10 @@ CurrentStepScreenPanel:Hide()
 FillersScreenPanel = env.widget(UIParent)
 FillersScreenPanel:Hide()
 local editor = APR.LayoutEditor
-assert(editor:Show() and #editor.previews == 11)
+assert(editor:Show() and #editor.previews == 10)
+for _, preview in ipairs(editor.previews) do
+    assert(preview.definition.frame ~= "RouteSelectionPanel", "The empty-route prompt moves with Current step")
+end
 assert(not CurrentStepScreenPanel:IsShown(), "Hidden gameplay panels must not be forced visible")
 assert(editor.previews[1]:GetScale() == 1.25)
 assert(editor.previews[2].point[2] == editor.previews[1], "Linked previews follow the primary preview")

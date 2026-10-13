@@ -664,6 +664,7 @@ function APR:SnapFrameToAnchor(frame, anchorFrame, anchorHeight, gap, adjustForH
     if not frame or not anchorFrame then
         return false
     end
+    if self.SetFrameSnapAnchor then self:SetFrameSnapAnchor(frame, anchorFrame) end
     frame:SetClampedToScreen(false)
 
     -- Synchronize scale with anchor

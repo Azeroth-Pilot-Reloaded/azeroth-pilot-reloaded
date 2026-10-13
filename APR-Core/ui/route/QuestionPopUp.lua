@@ -147,7 +147,7 @@ function APR.questionDialog:CreateQuestionPopup(dialogName, text, onAcceptFuncti
         OnCancel = onCancelFunction,
         timeout = 0,
         whileDead = true,
-        hideOnEscape = hideOnEscape or true,
+        hideOnEscape = hideOnEscape ~= false,
     }
 
     APR:StyleStaticPopup(StaticPopup_Show(dialogName))

@@ -54,7 +54,7 @@ local function CreateSelectionDialog()
 
     frame.list = APR.VirtualList:New(frame.scroll, function(parent)
         local row = CreateFrame("Frame", nil, parent)
-        row.button = UI:Button(row, "", 1, function() frame:Choose(row.item.option) end)
+        row.button = UI:ListButton(row, "", 1, function() frame:Choose(row.item.option) end)
         -- A locked expansion still explains its level requirement on hover.
         row.button:SetMotionScriptsWhileDisabled(true)
         row.button:SetPoint("TOPLEFT")
@@ -71,6 +71,7 @@ local function CreateSelectionDialog()
         row:onRecycle()
         row.button:SetText(item.option.label)
         row.button:SetEnabled(item.option.enabled ~= false)
+        UI:SetListRowState(row.button, false, nil, item.option.enabled ~= false)
     end, function(item) return item.height end)
 
     function frame:Layout()
@@ -105,7 +106,7 @@ local function CreateSelectionDialog()
         self.cancelButton:SetSize(120, 30)
         local bodyTop = 16 + headerHeight + (descriptionHeight > 0 and 10 + descriptionHeight or 0) + 16
 
-        self.measure:SetWidth(innerWidth - 54)
+            self.measure:SetWidth(innerWidth - 54)
         local items, totalHeight = {}, 0
         for _, option in ipairs(self.options) do
             self.measure:SetText(option.label)

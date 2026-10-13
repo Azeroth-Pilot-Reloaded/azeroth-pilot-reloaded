@@ -258,6 +258,7 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
     if not profile then return end
     local visible = not APR:ShouldHideFrames() and not self.hiddenByCurrentStep and HasActiveFillers()
     local snapped = profile.fillersFrameSnapToCurrentStep
+    if not snapped and APR.SetFrameSnapAnchor then APR:SetFrameSnapAnchor(FillersFrame, nil) end
     local collapsed = FillersFrame.collapsed and not snapped
     FillersFrame_StepHolder:SetAlpha(collapsed and 0 or 1)
     if InCombatLockdown() then
@@ -283,6 +284,8 @@ function APR.fillersFrame:RefreshFillersFrame(forceRefresh)
                 local gap = profile.fillersFrameSnapGap or 0
                 APR:SnapFrameToAnchor(FillersFrame, anchor, anchorHeight, gap, showHeader and HEADER_HEIGHT or nil)
                 self.anchor, self.anchorHeight, self.anchorGap, self.anchorHeader = anchor, anchorHeight, gap, showHeader
+            elseif APR.SetFrameSnapAnchor then
+                APR:SetFrameSnapAnchor(FillersFrame, nil)
             end
         else
             FillersFrame:SetClampedToScreen(true)

@@ -59,6 +59,22 @@ dofile("APR-Core/libs/AceGUI-3.0/widgets/AceGUIWidget-DropDown.lua")
 dofile("APR-Core/libs/AceGUI-3.0/widgets/AceGUIWidget-DropDown-Items.lua")
 dofile("APR-Core/libs/AceGUI-3.0/widgets/AceGUIWidget-EditBox.lua")
 local gui = LibStub("AceGUI-3.0")
+local elvDropdownSkin = false
+local registerWidget = gui.RegisterAsWidget
+function gui:RegisterAsWidget(widget)
+    if elvDropdownSkin and widget.type == "Dropdown" then
+        -- ElvUI's Ace3 skin moves the value and arrow onto a backdrop below the dropdown.
+        -- APR later paints the dropdown itself, which would cover those borrowed regions.
+        local backdrop = CreateFrame("Frame", nil, widget.dropdown)
+        backdrop:SetFrameLevel(math.max(0, widget.dropdown:GetFrameLevel() - 1))
+        backdrop:SetBackdrop({external = true})
+        backdrop:SetBackdropColor(0.05, 0.05, 0.05, 1)
+        widget.dropdown.backdrop = backdrop
+        widget.text:SetParent(backdrop)
+        widget.button:SetParent(backdrop)
+    end
+    return registerWidget(self, widget)
+end
 gui:RegisterWidgetType("Button", function()
     local frame = CreateFrame("Button")
     for _, key in ipairs({"Left", "Middle", "Right"}) do frame[key] = frame:CreateTexture() end
@@ -114,7 +130,16 @@ end
 function APR.UI:SetIcon(texture, name) texture:SetTexture(name) end
 local provider
 function APR:GetSkinProviderName() return provider end
-function APR:RegisterSkinTarget(frame, kind, options) frame.themed, frame.skinOptions = true, options end
+function APR:GetSkinScope() return "general" end
+function APR:RegisterSkinTarget(frame, kind, options)
+    frame.themed, frame.skinOptions = true, options
+    if elvDropdownSkin and frame.name and frame.name:match("^AceGUI30DropDown%d+$") then
+        local externalBackdrop = frame.backdrop
+        self:ApplyNativeTheme(frame, kind, options)
+        -- WoW's SetBackdrop does not overwrite ElvUI's separate .backdrop child.
+        frame.nativeBackdrop, frame.backdrop = frame.backdrop, externalBackdrop
+    end
+end
 dofile("APR-Core/ui/foundations/SettingsRows.lua")
 dofile("APR-Core/ui/foundations/SettingsWidgets.lua")
 APR:EnableWorkspaceWidgets()
@@ -168,15 +193,45 @@ host:ReleaseChildren()
 dialog:FeedGroup("APR/Workspace/Options/general", {checkbox = true}, host)
 assert(host.children[1].children[1] == checkbox and not checkbox.check:IsShown(),
     "A pooled checkbox resets its value without losing its drawing layer")
+elvDropdownSkin, provider = true, "ElvUI"
+APR.settings.profile.uiTheme = "ElvUI"
+APR.ElvUISkin = {GetThemeColor = function(_, role)
+    if role == "surface" or role == "background" then return {0.05, 0.05, 0.05, 1} end
+    if role == "border" then return {0.2, 0.2, 0.2, 1} end
+    if role == "accent" then return {0, 0.6, 1, 1} end
+end}
+local media = LibStub:NewLibrary("LibSharedMedia-3.0", 1)
+function media:GetDefault() return "Native" end
+function media:Fetch() return "native.ttf" end
+function APR:ResolveUIFileAsset(path) return path end
+function env.methods:SetFont(path, size, flags) self.font, self.fontSize, self.flags = path, size, flags; return true end
+function env.methods:SetTextColor(...) self.textColor = {...} end
+dofile("APR-Core/ui/foundations/TextStyles.lua")
 dialog:FeedGroup("APR/Workspace/Options/general", {kind = "Dropdown"}, host)
 local dropdown = host.children[1].children[1]
 assert(dropdown.dropdown.themed and dropdown.text:GetParent() == dropdown.dropdown and dropdown.text.layer == "OVERLAY",
     "The selected text must render on its skinned background, not beneath another child panel")
 assert(dropdown.text:GetText() == "Left")
+assert(dropdown.dropdown.backdropColor[1] == 0.05 and dropdown.dropdown.backdropColor[4] == 1)
+assert(not dropdown.dropdown.backdrop:IsShown() and dropdown.button:GetParent() == dropdown.dropdown,
+    "APR retires ElvUI's redundant backdrop after rescuing the selected value and arrow")
+assert(dropdown.text.textColor[1] > 0.8 and dropdown.text.textColor[4] == 1,
+    "ElvUI selected values keep readable Modern text on their opaque background")
 dropdown:SetValue("right")
 assert(dropdown.text:GetText() == "Right")
 dropdown:SetDisabled(true); dropdown:SetDisabled(false)
 assert(dropdown.text:GetText() == "Right", "Disabling a select preserves its selected value")
+local appearance = APR:CreateTextAppearanceDefaults(false)
+APR.settings.profile[APR.GLOBAL_TEXT_APPEARANCE_KEY] = appearance
+appearance.color, appearance.colorOverrides.color = {0.7, 0.8, 1, 1}, true
+dropdown:SetValue("right")
+assert(dropdown.text.textColor[1] == 0.7 and dropdown.text.textColor[4] == 1,
+    "Fixing ElvUI layering must retain the user's custom text color")
+appearance.colorOverrides.color = false
+dropdown:SetDisabled(true)
+assert(dropdown.text.textColor[1] == APR:GetThemeColor("muted")[1])
+dropdown:SetDisabled(false)
+assert(dropdown.text.textColor[1] == APR:GetThemeColor("base")[1])
 local pullout = dropdown.pullout
 dropdown.button_cover.scripts.OnClick(dropdown.button_cover)
 assert(dropdown.open and pullout.frame.events.GLOBAL_MOUSE_DOWN)
@@ -196,9 +251,28 @@ assert(not pullout.frame.events.GLOBAL_MOUSE_DOWN, "Released pullouts cannot ret
 dialog:FeedGroup("APR/Workspace/Options/general", {kind = "Dropdown"}, host)
 assert(host.children[1].children[1] == dropdown and dropdown.text:GetText() == "Left",
     "Reused dropdowns keep the text and backdrop on the same frame")
+assert(dropdown.text:GetParent() == dropdown.dropdown and not dropdown.dropdown.backdrop:IsShown())
+local allocated = env.frames()
+-- Also recover if ElvUI initializes after the APR options already exist.
+dropdown.text:SetParent(dropdown.dropdown.backdrop)
+dropdown.button:SetParent(dropdown.dropdown.backdrop)
+dropdown.dropdown.backdrop:Show()
+dropdown.text:ClearAllPoints()
+dropdown.text:SetPoint("LEFT", dropdown.dropdown.backdrop, "LEFT", 2, 0)
+dropdown.frame.scripts.OnShow(dropdown.frame)
+assert(dropdown.text:GetParent() == dropdown.dropdown and dropdown.button:GetParent() == dropdown.dropdown
+    and not dropdown.dropdown.backdrop:IsShown() and env.frames() == allocated,
+    "Showing a pooled select repairs late external skinning without rebuilding it")
+assert(dropdown.text.point[2] == dropdown.button_cover and dropdown.text.point[4] == -32,
+    "Late external skinning also restores the reserved text width")
 dropdown.button_cover.scripts.OnClick(dropdown.button_cover)
 dropdown.pullout.frame.scripts.OnEvent(dropdown.pullout.frame, "GLOBAL_MOUSE_DOWN", "LeftButton")
 assert(not dropdown.open, "Outside dismissal also works after pool reuse")
+dialog:FeedGroup("AnotherAddon", {kind = "Dropdown"}, host)
+local borrowed = host.children[1].children[1]
+assert(borrowed ~= dropdown and borrowed.text:GetParent() == borrowed.dropdown.backdrop
+    and borrowed.dropdown.backdrop:IsShown() and not borrowed.dropdown.themed,
+    "Other addons retain their global ElvUI dropdown skin")
 dialog:FeedGroup("APR/Workspace/Options/general", {kind = "Slider"}, host)
 local slider = host.children[1].children[1]
 assert(slider.editbox:GetText() == "100%" and slider.lowtext:GetText() == "1%" and slider.hightext:GetText() == "200%")
@@ -265,5 +339,65 @@ assert(not action.button:IsEnabled())
 host:ReleaseChildren()
 dialog:FeedGroup("APR/Workspace/Options/profiles", {kind = "APRSettingsAction"}, host)
 assert(host.children[1].children[1] == action and not action.disabled and action.button:IsEnabled())
+-- Confirmation styling must identify a newly opened APR popup, including borrowed provider widgets.
+function env.methods:GetScript(key) return self.scripts[key] end
+local painted, accepted = 0, 0
+function APR:StyleStaticPopup(frame) assert(frame == dialog.popup); painted = painted + 1 end
+dialog.popup = CreateFrame("Frame")
+dialog.popup.accept, dialog.popup.cancel = CreateFrame("Button"), CreateFrame("Button")
+dialog.popup:Hide()
+action:SetUserData("appName", "APR/Workspace/Options/profiles")
+local acceptHandler
+action:SetCallback("OnClick", function()
+    dialog.popup:Show()
+    acceptHandler = function() accepted = accepted + 1 end
+    dialog.popup.accept:SetScript("OnClick", acceptHandler)
+end)
+action:Fire("OnClick")
+assert(painted == 1 and dialog.popup.accept:GetScript("OnClick") == acceptHandler)
+action:Fire("OnEnter")
+assert(painted == 1, "Unrelated widget events cannot repaint an already open shared popup")
+dialog.popup.accept:GetScript("OnClick")()
+assert(accepted == 1, "AceConfig retains its acceptance callback")
+action:SetUserData("appName", "AnotherAddon")
+action:Fire("OnClick")
+assert(painted == 1, "Other addons using the same AceGUI pool never receive APR popup chrome")
 assert(#failures == 0, table.concat(failures, "\n"))
+local previewLocale = LibStub:NewLibrary("AceLocale-3.0", 1)
+function previewLocale:GetLocale() return setmetatable({}, {__index = function(_, key) return key end}) end
+dofile("APR-Core/ui/foundations/ThemeCustomization.lua")
+APR.settings.profile.uiTheme = "modern"
+function APR:GetSelectedSkinName() return self.settings.profile.uiTheme end
+APR.ThemeCustomization:InstallPreviewWidget(gui)
+local themeNotice = gui:Create("APRThemeNotice")
+themeNotice:SetWidth(640)
+themeNotice:SetText("Changes stay in the preview until you click Apply.")
+assert(themeNotice.frame:GetHeight() >= themeNotice.label:GetStringHeight() + 40,
+    "The preview explanation reserves space above and below its wrapped text")
+themeNotice:SetText(string.rep("A longer translated explanation. ", 12))
+assert(themeNotice.frame:GetHeight() >= themeNotice.label:GetStringHeight() + 40,
+    "Long explanations grow without losing the paragraph margins")
+gui:Release(themeNotice)
+local noticeFrames = env.frames()
+for _ = 1, 20 do
+    themeNotice = gui:Create("APRThemeNotice")
+    themeNotice:SetWidth(400); themeNotice:SetText("Preview changes")
+    gui:Release(themeNotice)
+end
+assert(env.frames() == noticeFrames, "The padded explanation reuses its AceGUI widget on refresh")
+local themePreview = gui:Create("APRThemePreview")
+themePreview:SetText("Preview"); themePreview:SetFontObject(GameFontHighlightSmall)
+themePreview:SetImage(nil); themePreview:SetImageSize(32, 32)
+themePreview:SetFullWidth(true); themePreview:SetWidth(540)
+assert(themePreview.preview.body:GetHeight() == 120 and themePreview.frame:GetHeight() == 192)
+gui:Release(themePreview)
+local previewFrames = env.frames()
+for _ = 1, 20 do
+    themePreview = gui:Create("APRThemePreview")
+    APR.ThemeCustomization:Set("radius", 12)
+    assert(themePreview.preview.header.backdrop.edgeSize == 12)
+    gui:Release(themePreview)
+    assert(not APR.ThemeCustomization.previews[themePreview])
+end
+assert(env.frames() == previewFrames, "AceGUI reuses the native theme preview without allocating on every settings refresh")
 print("Workspace widgets: real AceGUI pool isolation, nested release, reuse, error recovery and skin delegation passed")

@@ -42,6 +42,8 @@ function methods:IsEnabled() return self.enabled ~= false end
 function methods:SetEnabled(value) self.enabled = value end
 
 function methods:GetFrameLevel() return self.level or 1 end
+function methods:GetFrameStrata() return self.strata or "MEDIUM" end
+function methods:SetFrameStrata(value) self.strata = value end
 
 function methods:SetFrameLevel(value) self.level = value end
 
@@ -206,6 +208,7 @@ function LibStub()
         GetLocale = function() return {} end,
         SetScale = function(frame, scale) frame:SetScale(scale) end,
         RegisterConfig = noop,
+        MakeDraggable = noop,
         SavePosition = noop,
         RestorePosition = noop,
     }
