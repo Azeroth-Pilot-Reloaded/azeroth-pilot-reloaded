@@ -2093,8 +2093,22 @@ function APR.settings:CreateMiniMapButton()
         icon = "Interface\\AddOns\\APR\\APR-Core\\assets\\APR_logo",
         OnClick = function(_, button)
             if button == "RightButton" then
-                self.profile.enableAddon = not self.profile.enableAddon
-                self:ToggleAddon()
+                local profile = self.profile
+                if profile.enableAddon then
+                    APR.questionDialog:CreateQuestionPopup("APR_DISABLE_ADDON",
+                        L["DISABLE"] .. " " .. APR.title .. "?",
+                        function()
+                            if self.profile ~= profile or not profile.enableAddon then return end
+                            profile.enableAddon = false
+                            self:ToggleAddon()
+                        end,
+                        nil,
+                        L["DISABLE"]
+                    )
+                else
+                    profile.enableAddon = true
+                    self:ToggleAddon()
+                end
             else
                 if (APR.Workspace and APR.Workspace.frame and APR.Workspace.frame:IsShown())
                     or (SettingsPanel and SettingsPanel:IsShown()) then
