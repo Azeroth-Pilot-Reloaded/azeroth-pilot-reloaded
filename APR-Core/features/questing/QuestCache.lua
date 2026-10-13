@@ -70,7 +70,7 @@ function APR:UpdateQuest(deferStepUpdate)
         APR:UpdateStep()
     else
         -- update for group if not a new step
-        APR.party:SendGroupMessage(true)
+        APR.party:SendGroupMessage()
         APR.party:RefreshPartyFrameAnchor()
     end
 end

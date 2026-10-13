@@ -447,10 +447,16 @@ end
 
 
 -- Preserve APR's existing group protocol; keep transport framing out of window code.
-function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target)
+function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target, onComplete)
     local payloadLength = 180 -- Leave room for the fragment header within WoW's 255-byte limit.
     local msgID = tostring(math.random(10000, 99999)) .. "-" .. GetTime() -- Unique message ID with timestamp
     local total = math.ceil(#fullMessage / payloadLength)
+    local remaining, allSent = total, true
+    local function OnFragmentSent(_, didSend)
+        allSent = allSent and didSend
+        remaining = remaining - 1
+        if remaining == 0 and onComplete then onComplete(allSent) end
+    end
     APR:Debug("Splitting message", { msgID = msgID, totalParts = total })
 
     for i = 1, total do
@@ -460,6 +466,13 @@ function APR:SendAddonMessageSplit(prefix, fullMessage, channel, target)
 
         -- Format: <msgID>|<index>|<total>|<data>
         local fragment = msgID .. "|" .. i .. "|" .. total .. "|" .. part
-        C_ChatInfo.SendAddonMessage(prefix, fragment, channel, target)
+        if ChatThrottleLib then
+            ChatThrottleLib:SendAddonMessage("BULK", prefix, fragment, channel, target, nil, OnFragmentSent)
+        else
+            local result = C_ChatInfo.SendAddonMessage(prefix, fragment, channel, target)
+            local successCode = Enum and Enum.SendAddonMessageResult and Enum.SendAddonMessageResult.Success or 0
+            OnFragmentSent(nil, result == nil or result == true or result == successCode)
+        end
     end
+    if total == 0 and onComplete then onComplete(true) end
 end

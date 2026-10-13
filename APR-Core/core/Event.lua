@@ -42,7 +42,7 @@ local events = {
     getFP = { "TAXIMAP_OPENED", "UI_INFO_MESSAGE" },
     gossip = { "GOSSIP_CLOSED", "GOSSIP_SHOW" },
     greeting = "QUEST_GREETING",
-    group = { "GROUP_JOINED", "GROUP_LEFT" },
+    group = { "GROUP_JOINED", "GROUP_LEFT", "GROUP_ROSTER_UPDATE" },
     learnProfession = "LEARNED_SPELL_IN_SKILL_LINE",
     leaveCombat = "PLAYER_REGEN_ENABLED",
     lootItems = "CHAT_MSG_LOOT",
@@ -1011,6 +1011,10 @@ function APR.event.functions.greeting(event, ...)
 end
 
 function APR.event.functions.group(event, category, partyGUID)
+    if event == "GROUP_ROSTER_UPDATE" then
+        APR.party:PopulateMissingGroupMembers()
+    end
+
     if event == "GROUP_JOINED" then
         APR.party:SendGroupMessage()
     end
@@ -1020,6 +1024,7 @@ function APR.event.functions.group(event, category, partyGUID)
         -- because wow don't send the username of the leaver
         APR.party:Delete()
     end
+    APR.party:RefreshPartyFrameAnchor()
 end
 
 function APR.event.functions.learnProfession(event, spellID, skillLineIndex, isGuildPerkSpell)
