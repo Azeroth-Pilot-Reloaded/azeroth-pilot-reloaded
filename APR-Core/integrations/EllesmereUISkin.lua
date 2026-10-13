@@ -1,5 +1,5 @@
 -- Adapts the public EllesmereUI Skinning API to APR controls, fonts and live theme accents.
--- ElvUI has priority when both integrations are enabled; APR retains status-bar fill colors.
+-- The registry chooses one provider per scope; APR retains status-bar fill colors.
 
 -- Public API: https://github.com/EllesmereGaming/EllesmereUI/blob/main/SKINNING_API.md
 local EUI = _G.EllesmereUI
@@ -28,21 +28,29 @@ local colors = {
 local function IsEnabled(candidate)
     candidate = candidate or skin
     if not candidate then return false end
+    if APR.IsSkinProviderUsed then return APR:IsSkinProviderUsed("EllesmereUI") and candidate.IsEnabled() end
     local profile = APR.settings and APR.settings.profile
     if profile and profile.ellesmereuiSkin == false then return false end
     if _G.ElvUI and (not profile or profile.elvuiSkin ~= false) then return false end
     return candidate.IsEnabled()
 end
 
-function module:GetFont()
+local function UsesScope(scope)
+    return not APR.GetAppearanceProvider or APR:GetAppearanceProvider(scope) == "EllesmereUI"
+end
+
+function module:GetFont(scope)
+    if not UsesScope(scope) then return end
     if IsEnabled() then return skin.GetFont() end
 end
 
-function module:ApplyFont(fontString)
+function module:ApplyFont(fontString, scope)
+    if not UsesScope(scope) then return end
     if IsEnabled() then skin.Font(fontString) end
 end
 
-function module:GetTextColor(role)
+function module:GetTextColor(role, scope)
+    if not UsesScope(scope) then return end
     if not IsEnabled() then return end
     if role == "accent" then
         local r, g, b = skin.GetAccentColor()
@@ -52,21 +60,54 @@ function module:GetTextColor(role)
 end
 
 local stripeColor = { 0.2, 0.2, 0.2, 1 }
-function module:GetThemeColor(role)
-    if not IsEnabled() then return end
-    if role == "accent" or role == "icon" or role == "selection" or role == "border" then
-        return self:GetTextColor("accent")
+-- The public panel primitive uses this neutral house border, independent of the accent.
+local borderColor = { 0.2, 0.2, 0.2, 1 }
+local gameplayScopes = {currentStep = true, fillers = true, questOrderList = true, afk = true,
+    party = true, buff = true, heirloom = true, coordinates = true}
+local trackerBackground = {0.035, 0.035, 0.035, 0.75}
+local borderless = {0.2, 0.2, 0.2, 0}
+
+-- Small gameplay panels follow EUI's quest tracker, rather than its window shell.
+-- Read its exposed DB accessor when available; the tracker module is optional.
+local function GetTrackerBackground()
+    local tracker = _G.EllesmereUIQuestTracker
+    if tracker and type(tracker.DB) == "function" then
+        local ok, config = pcall(tracker.DB)
+        if ok and type(config) == "table" then
+            local color = {}
+            for index, key in ipairs({"bgR", "bgG", "bgB", "bgAlpha"}) do
+                local value = tonumber(config[key])
+                color[index] = value and math.max(0, math.min(1, value)) or trackerBackground[index]
+            end
+            return color
+        end
     end
-    if role == "stripe" then return stripeColor end
+    return trackerBackground
 end
 
-function module:ApplyBarFill(bar)
+function module:GetThemeColor(role, scope)
+    if not UsesScope(scope) then return end
+    if not IsEnabled() then return end
+    if role == "accent" or role == "icon" or role == "selection" then
+        local r, g, b = skin.GetAccentColor()
+        return {r, g, b, 1}
+    end
+    if role == "stripe" then return stripeColor end
+    if role == "border" then return gameplayScopes[scope] and borderless or borderColor end
+    if gameplayScopes[scope] and (role == "background" or role == "surface") then return GetTrackerBackground() end
+    if (role == "background" or role == "surface") and skin.GetPanelColor then return {skin.GetPanelColor()} end
+    return colors[role]
+end
+
+function module:ApplyBarFill(bar, scope)
+    if not UsesScope(scope) then return false end
     if not IsEnabled() then return false end
     skin.ApplyBarFill(bar)
     return true
 end
 
-function module:ApplyHeaderTextColor(fontString)
+function module:ApplyHeaderTextColor(fontString, scope)
+    if not UsesScope(scope) then return end
     if IsEnabled() and headerTexts[fontString] then fontString:SetTextColor(skin.GetAccentColor()) end
 end
 
@@ -74,7 +115,11 @@ local function Accent(region, kind)
     kind = kind or "texture"
     accents[region] = kind
     local r, g, b = skin.GetAccentColor()
-    if kind == "text" then region:SetTextColor(r, g, b)
+    if kind == "text" then
+        local registration = APR.textStyleRegistry and APR.textStyleRegistry[region]
+        local custom = registration and APR.GetCustomTextColor
+            and APR:GetCustomTextColor(registration.scope, registration.options.role)
+        if custom then region:SetTextColor(unpack(custom)) else region:SetTextColor(r, g, b) end
     elseif kind == "icon" then region:SetVertexColor(r, g, b)
     else region:SetColorTexture(r, g, b, 1) end
 end
@@ -176,10 +221,16 @@ local function StyleContentPanel(frame)
     chrome:SetShown(not frame.collapsed)
 end
 
+local backgroundHooks = setmetatable({}, {__mode = "k"})
 local function RefreshTheme()
     if not IsEnabled() then return end
     if InCombatLockdown() then refreshPending = true; return end
     refreshPending = false
+    local tracker = _G.EllesmereUIQuestTracker
+    if tracker and type(tracker.ApplyBackground) == "function" and not backgroundHooks[tracker] then
+        backgroundHooks[tracker] = true
+        hooksecurefunc(tracker, "ApplyBackground", RefreshTheme)
+    end
     for region, kind in pairs(accents) do
         Accent(region, kind)
         if kind == "text" then skin.Font(region) end
@@ -197,6 +248,16 @@ EUI.RegisterSkin("APR", function(S)
     if not IsEnabled(S) then return end
     skin = S
     local function ApplySkin(frame, kind, options)
+        local scope = options.scope or APR:GetSkinScope(frame)
+        if APR.ApplyNativeTheme and APR.GetThemeStyle and APR:GetThemeStyle(scope) == "modern" then
+            APR:ApplyNativeTheme(frame, kind, options)
+            StyleText(frame.Text or (frame.GetFontString and frame:GetFontString()))
+            if kind == "statusbar" then
+                S.ApplyBarFill(frame)
+                APR:ApplyStatusBarColor(frame)
+            end
+            return
+        end
         -- Clear native BackdropTemplate art before EUI adds its own fill and border.
         if options.themeSurface and frame.SetBackdrop then frame:SetBackdrop(nil) end
         if kind == "flatButton" then
@@ -263,6 +324,7 @@ end)
 
 local events = CreateFrame("Frame")
 events:RegisterEvent("PLAYER_REGEN_ENABLED")
-events:SetScript("OnEvent", function()
-    if refreshPending then RefreshTheme() end
+events:RegisterEvent("ADDON_LOADED")
+events:SetScript("OnEvent", function(_, event, addon)
+    if refreshPending or (event == "ADDON_LOADED" and addon == "EllesmereUIQuestTracker") then RefreshTheme() end
 end)

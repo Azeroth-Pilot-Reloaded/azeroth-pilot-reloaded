@@ -139,7 +139,8 @@ function APR:ExportStatusReport()
         for _, key in ipairs(keys or {}) do AddField(lines, info[key][1], info[key][2]) end
     end
     section(L["UI_STATUS_ADDON_CLIENT"], {"aprVersion", "wowVersion", "clientLanguage", "serverType", "currentTime"})
-    AddField(lines, L["UI_THEME"], self:GetSkinProviderName() or "WoW")
+    local theme = self.GetSelectedSkinName and self:GetSelectedSkinName() or self:GetSkinProviderName() or "wow"
+    AddField(lines, L["UI_THEME"], theme == "wow" and "WoW" or theme == "modern" and "Modern" or theme)
     section(L["ROUTE"], {"currentRoute", "currentStep", "currentContinent", "currentZone", "currentCoords", "currentWorldCoords"})
     section(CHARACTER, {"charName", "charRealm", "charFaction", "charClass", "charLevel"})
     AddField(lines, L["UI_REDACT"], hideIdentity and YES or NO)
@@ -296,13 +297,13 @@ function Panel:Create(parent)
     local scroll = UI:Scroll(self.errorPanel)
     scroll:SetPoint("TOPLEFT", 10, -65); scroll:SetPoint("BOTTOMRIGHT", -28, 35)
     self.errors = APR.VirtualList:New(scroll, function(container)
-        local row = UI:Button(container, "", 1, function(button)
+        local row = UI:ListButton(container, "", 1, function(button)
             if button.item then
                 self.exportedError = button.item
                 UI:ShowTextReport(L["UI_LUA_ERRORS"], APR:RedactStatusText(APR:FormatDebugTable(button.item)), self.frame, "lua")
             end
-        end, "flat")
-        row.source = UI:Label(row, "", 11, "error"); row.source:SetPoint("LEFT", 4, 0); row.source:SetWidth(170)
+        end)
+        row.source = UI:Label(row, "", 11, "error"); row.source:SetPoint("LEFT", 12, 0); row.source:SetWidth(162)
         row.count = UI:Label(row, "", 11); row.count:SetPoint("LEFT", 184, 0); row.count:SetWidth(58)
         row.last = UI:Label(row, "", 11); row.last:SetPoint("LEFT", 254, 0); row.last:SetWidth(82)
         row.message = UI:Label(row, "", 11); row.message:SetPoint("LEFT", 344, 0); row.message:SetPoint("RIGHT", -8, 0)

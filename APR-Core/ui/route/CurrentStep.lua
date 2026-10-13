@@ -38,6 +38,21 @@ local RAID_ICON_TEXTURE = "Interface\\TargetingFrame\\UI-RaidTargetingIcon_8"
 -- Create the main current step frame
 local CurrentStepFrame = APR:CreateStandardFrame("CurrentStepScreenPanel", UIParent, FRAME_WIDTH, 30, "BackdropTemplate")
 
+-- Keep the movable root's geometry stable; a background child covers the measured content.
+local contentBackdrop = CreateFrame("Frame", nil, CurrentStepFrame, "BackdropTemplate")
+APR.currentStep.contentBackdrop = contentBackdrop
+CurrentStepFrame.aprContentBackdrop = contentBackdrop
+contentBackdrop:SetPoint("TOPLEFT")
+contentBackdrop:SetPoint("TOPRIGHT")
+contentBackdrop:SetHeight(30)
+contentBackdrop:SetFrameLevel(math.max(0, CurrentStepFrame:GetFrameLevel() - 1))
+contentBackdrop:EnableMouse(false)
+contentBackdrop:SetBackdrop({bgFile = "Interface\\Buttons\\WHITE8X8"})
+if APR.RegisterSkinTarget then
+    APR:RegisterSkinTarget(contentBackdrop, "panel", {preserveBackground = true, roundedGameplay = true})
+end
+APR:SetPanelColor(CurrentStepFrame, APR.Color.defaultBackdrop)
+
 -- Create the step holder frame
 local CurrentStepFrame_StepHolder = CreateFrame("Frame", "CurrentStepFrame_StepHolder", CurrentStepFrame,
     "BackdropTemplate")
@@ -103,6 +118,7 @@ end)
 APR:SetupMinimizeButton(CurrentStepFrameHeader, CurrentStepFrame, function()
     -- Collapse
     CurrentStepFrame_StepHolder:Hide()
+    APR.currentStep:UpdatePanelHeight(true)
     APR.currentStep:UpdateBackgroundColorAlpha({ 0, 0, 0, 0 })
     APR.currentStep:ButtonHide()
     if APR.currentStep.progressBar then
@@ -122,7 +138,7 @@ end, function()
     APR.currentStep:SetDefaultDisplay()
     APR.currentStep:ButtonShow()
     if APR.currentStep.progressBar then
-        APR.currentStep.progressBar:Show()
+        APR.currentStep.progressBar:SetShown(not APR.currentStep.emptyRoutePromptActive)
     end
     if APR.fillersFrame then
         APR.fillersFrame:Show()
@@ -162,6 +178,15 @@ function APR.currentStep:SetDefaultDisplay()
     CurrentStepFrame_StepHolder:Show()
     CurrentStepFrameHeader:Show()
     self:UpdateBackgroundColorAlpha()
+    if APR.RouteSelection then APR.RouteSelection:RefreshFrameAnchor() end
+end
+
+-- Grow only the background: center/bottom anchors and LibWindow positions must not jump.
+function APR.currentStep:UpdatePanelHeight(collapsed)
+    if InCombatLockdown() then self.layoutDirty = true; return end
+    local height = (collapsed or CurrentStepFrame.collapsed) and self.layout.topOffset
+        or math.max(self.layout.topOffset, self.FrameHeight)
+    if contentBackdrop:GetHeight() ~= height then contentBackdrop:SetHeight(height) end
 end
 
 -- Update the frame scale
@@ -189,8 +214,12 @@ function APR.currentStep:UpdateBackgroundColorAlpha(color)
         end
     end
 
-    UpdateColor(self.questsList)
-    UpdateColor(self.questsExtraTextList)
+    -- The root now covers the rows, so avoid stacking their opacity on top of it.
+    for _, list in ipairs({self.questsList, self.questsExtraTextList}) do
+        for _, container in pairs(list) do
+            if container and not container.hiddenInCombat then APR:SetPanelColor(container, {0, 0, 0, 0}) end
+        end
+    end
     UpdateColor(self.fillersList)
 
     -- Update Fillers frame background
@@ -205,7 +234,13 @@ local trackerAnchorX, trackerAnchorY
 function APR.currentStep:RefreshQuestTrackerAnchor()
     if InCombatLockdown() then return false end
     local x, y = APR.QuestTracker:GetAnchor()
-    if not x or not y then return false end
+    if not x or not y then
+        if APR.SetFrameSnapAnchor then APR:SetFrameSnapAnchor(CurrentStepFrame, nil) end
+        return false
+    end
+    if APR.SetFrameSnapAnchor then
+        APR:SetFrameSnapAnchor(CurrentStepFrame, APR.QuestTracker:GetSide(APR:GetSettingsProfile()) == "below" and UIParent or nil)
+    end
     if APR.QuestTracker:ApplyPendingPosition() then x, y = APR.QuestTracker:GetAnchor() end
     if not x or not y then return false end
     local point, relative, relativePoint, px, py = CurrentStepFrame:GetPoint(1)
@@ -226,6 +261,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         self.pendingAnchorRefresh = true; return
     end
     self.pendingAnchorRefresh = nil
+    if APR.RouteSelection then APR.RouteSelection:RefreshFrameAnchor() end
     APR:Debug("Function: APR:RefreshCurrentStepFrameAnchor()")
     -- Use centralized frame hiding check from Core
     if APR:ShouldHideFrames() then
@@ -255,6 +291,7 @@ function APR.currentStep:RefreshCurrentStepFrameAnchor()
         self:RefreshQuestTrackerAnchor()
     else
         trackerAnchorX, trackerAnchorY = nil, nil
+        if APR.SetFrameSnapAnchor then APR:SetFrameSnapAnchor(CurrentStepScreenPanel, nil) end
         if APR.QuestTracker then APR.QuestTracker:Release() end
         if not InCombatLockdown() then
             if not profile.currentStepLock then
@@ -308,6 +345,8 @@ function APR.currentStep:GetContentHeight(includeFillers)
     consider(CurrentStepFrame_StepHolder and CurrentStepFrame_StepHolder.rollbackButton)
     consider(CurrentStepFrame_StepHolder and CurrentStepFrame_StepHolder.skipButton)
     consider(self.progressBar)
+    consider(self.contentBackdrop)
+    consider(self.emptyRoutePrompt)
 
     local function considerList(list)
         for _, container in pairs(list) do
@@ -403,7 +442,7 @@ function APR.currentStep:PreviousNextStepButton()
     end
 
     self.ButtonShow = function()
-        if CurrentStepFrame.collapsed then
+        if CurrentStepFrame.collapsed or APR.currentStep.emptyRoutePromptActive then
             rollbackButton:Hide()
             skipButton:Hide()
             return
@@ -472,7 +511,7 @@ function APR.currentStep:ProgressBar(key, total, current)
 
     -- A refresh can rebuild the progress bar while the frame is collapsed.
     -- Keep header-owned controls hidden until the user expands the frame.
-    if CurrentStepFrame.collapsed then
+    if CurrentStepFrame.collapsed or self.emptyRoutePromptActive then
         self.progressBar:Hide()
     else
         self.progressBar:Show()
@@ -1157,6 +1196,7 @@ end
 --- Disable Button, Reset ProgressBar and Remove all quest and extra line
 function APR.currentStep:Reset()
     APR:Debug("Function: APR.currentStep:Reset()")
+    if APR.RouteSelection then APR.RouteSelection:RefreshFrameAnchor() end
     if self.contentUpdateActive then
         self.pendingRaidIconNpcId = nil
         self.raidIconAdded = false
@@ -1250,9 +1290,11 @@ function APR.GetMenu(owner, rootDescription)
     createToggleItem(L["QLIST_ATTACH_QUESTLOG"], function()
         return APR.settings.profile.currentStepAttachFrameToQuestLog
     end, function()
+        local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("currentStep")
         APR.QuestTracker:GetSide(APR.settings.profile)
         APR.settings.profile.currentStepAttachFrameToQuestLog = not APR.settings.profile
             .currentStepAttachFrameToQuestLog
+        if APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance("currentStep", previous) then return end
         APR.currentStep:RefreshCurrentStepFrameAnchor()
     end)
 
@@ -1290,7 +1332,9 @@ function APR.GetMenu(owner, rootDescription)
     createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.fillersFrameSnapToCurrentStep
     end, function()
+        local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("fillers")
         APR.settings.profile.fillersFrameSnapToCurrentStep = not APR.settings.profile.fillersFrameSnapToCurrentStep
+        if APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance("fillers", previous) then return end
         if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
             APR.fillersFrame:RefreshFillersFrame()
         end
@@ -1312,7 +1356,9 @@ function APR.GetMenu(owner, rootDescription)
     createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.questOrderListSnapToCurrentStep
     end, function()
+        local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("questOrderList")
         APR.settings.profile.questOrderListSnapToCurrentStep = not APR.settings.profile.questOrderListSnapToCurrentStep
+        if APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance("questOrderList", previous) then return end
         APR.questOrderList:RefreshFrameAnchor()
     end)
 
@@ -1331,7 +1377,9 @@ function APR.GetMenu(owner, rootDescription)
     createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.afkSnapToCurrentStep
     end, function()
+        local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("afk")
         APR.settings.profile.afkSnapToCurrentStep = not APR.settings.profile.afkSnapToCurrentStep
+        if APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance("afk", previous) then return end
         APR.AFK:RefreshFrameAnchor()
     end)
 end

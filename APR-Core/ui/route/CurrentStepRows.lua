@@ -11,6 +11,7 @@ local PADDING, INDENT, DETAIL_GAP = Layout.padding, Layout.indent, Layout.detail
 -- retires it only after its replacement has been rendered, then lays out once.
 function CurrentStep:BeginContentUpdate()
     self.contentUpdateActive = true
+    if APR.RouteSelection then APR.RouteSelection:RefreshFrameAnchor() end
 end
 
 function CurrentStep:TouchRow(container)
@@ -229,6 +230,7 @@ function CurrentStep:SetContentWidth(width)
     Layout.width = width
     CurrentStepScreenPanel:SetWidth(width)
     if self.progressBar then self.progressBar:SetWidth(width - 92) end
+    if APR.RouteSelection then APR.RouteSelection:Layout() end
     if APR.currentStepImagePreview then
         APR.currentStepImagePreview:ConfigureCurrentStepPreview(CurrentStepFrame_StepHolder, width)
     end
@@ -412,6 +414,10 @@ local function AddDivider(self, list, key)
         line:SetVertexColor(0.78, 0.66, 0.35, 0.95)
         container.dividerLine = line
         if APR.RegisterSkinTarget then APR:RegisterSkinTarget(container, "divider") end
+        if APR.GetThemeStyle and APR:GetThemeStyle("currentStep") == "modern" then
+            local provider = APR:GetSkinProviderName("currentStep")
+            APR:RegisterThemeRegion(line, provider and "border" or "accent", provider and 1 or 0.25, true)
+        end
     end
     container:SetHeight(12)
     self:ReOrderQuestSteps()
@@ -438,12 +444,19 @@ function CurrentStep:ReOrderQuestSteps()
     self.layoutDirty = true
     if self.contentUpdateActive or not APR.settings.profile.currentStepShow then return end
     self.layoutDirty = false
+    if self.emptyRoutePromptActive and self.emptyRoutePrompt and self.emptyRoutePrompt:IsShown() then
+        self.FrameHeight = self.emptyRoutePrompt:GetHeight() + 16
+        self:UpdatePanelHeight()
+        APR:RefreshSnappedFrames()
+        return
+    end
     local firstKey = APR.farstrider and APR.farstrider.ErrorDestinationLineKey or "00_ERROR_DESTINATION"
     local groups = { OrderedRows(self.questsExtraTextList, firstKey), OrderedRows(self.questsList) }
     local autoCount = 0
     for _, rows in ipairs(groups) do
         for _, entry in ipairs(rows) do
             local row = entry.container
+            APR:SetPanelColor(row, {0, 0, 0, 0})
             if row._isManagedExtraLine and row._manualLeadingDash == nil then autoCount = autoCount + 1 end
         end
     end
@@ -472,6 +485,7 @@ function CurrentStep:ReOrderQuestSteps()
         end
     end
     self.FrameHeight = offset
+    self:UpdatePanelHeight()
     APR:RefreshSnappedFrames()
 end
 

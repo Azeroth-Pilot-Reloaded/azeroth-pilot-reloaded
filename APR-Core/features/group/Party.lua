@@ -265,6 +265,7 @@ local function AcquireTeamContainer()
             tileSize = 16
         })
         APR:SetPanelColor(container, APR.Color.defaultLightBackdrop)
+        if APR.RegisterSkinTarget then APR:RegisterSkinTarget(container, "row", {scope = "party"}) end
 
         container.fontName = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
         container.fontName:SetWordWrap(true)
@@ -304,6 +305,12 @@ local AddTeamMate = function(playerData, isSameRoute, color, container)
     container.playerData = playerData
 
     container.fontName:SetText(playerData.username or UNKNOWN)
+    local modernList = APR.UI and APR.UI.StyleListRow and APR.GetThemeStyle and APR:GetThemeStyle("party") == "modern"
+    if modernList then
+        APR.UI:StyleListRow(container, nil, "party", true)
+        container.fontName:ClearAllPoints(); container.fontName:SetPoint("TOPLEFT", 12, -6)
+        container.fontName:SetWidth(FRAME_WIDTH - 50)
+    end
 
     if playerData.currentStep then
         container.fontIndex:SetText(playerData.currentStep)
@@ -319,7 +326,7 @@ local AddTeamMate = function(playerData, isSameRoute, color, container)
     APR:SetPanelColor(container, APR.Color.defaultLightBackdrop)
     container:SetWidth(FRAME_WIDTH)
     local height = math.max(container.fontIndex:GetStringHeight(), container.fontName:GetStringHeight()) + 10
-    container:SetHeight(height)
+    container:SetHeight(modernList and math.max(30, height + 2) or height)
     container:Show()
 
     return container
@@ -424,12 +431,13 @@ function APR.party:ReOrderTeam(order)
         return string.lower(a) < string.lower(b)
     end)
 
-    for _, name in ipairs(orderedNames) do
+    for index, name in ipairs(orderedNames) do
         local container = self.teamList[name]
         if container then
             container:ClearAllPoints()
             container:SetPoint("TOPLEFT", PartyFrame, "TOPLEFT", 0, FRAME_MATE_HOLDER_HEIGHT)
             container:Show()
+            if APR.UI and container.aprListRow then APR.UI:SetListRowState(container, false, index == #orderedNames) end
             FRAME_MATE_HOLDER_HEIGHT = FRAME_MATE_HOLDER_HEIGHT - container:GetHeight()
         end
     end
@@ -440,7 +448,8 @@ end
 function APR.party:RefreshTextLayout()
     for _, container in pairs(self.teamList) do
         local height = math.max(container.fontIndex:GetStringHeight(), container.fontName:GetStringHeight()) + 10
-        container:SetHeight(height)
+        local modernList = container.aprListRow and APR:GetThemeStyle("party") == "modern"
+        container:SetHeight(modernList and math.max(30, height + 2) or height)
     end
     self:ReOrderTeam()
 end

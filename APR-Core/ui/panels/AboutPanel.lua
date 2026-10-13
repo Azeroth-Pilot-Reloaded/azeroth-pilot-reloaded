@@ -17,9 +17,9 @@ local function TextList(panel, top)
             if row:IsShown() then
                 row:ClearAllPoints(); row:SetPoint("TOPLEFT", self.content, "TOPLEFT", 0, -y)
                 row:SetWidth(width)
-                row.title:SetWidth(width - 8); row.text:SetWidth(width - 8)
+                row.title:SetWidth(math.max(1, width - 24)); row.text:SetWidth(math.max(1, width - 24))
                 local titleHeight = math.max(18, row.title:GetStringHeight())
-                row.text:ClearAllPoints(); row.text:SetPoint("TOPLEFT", 0, -titleHeight - 5)
+                row.text:ClearAllPoints(); row.text:SetPoint("TOPLEFT", 12, -titleHeight - 11)
                 local height = titleHeight + row.text:GetStringHeight() + 25
                 row:SetHeight(height); y = y + height
             end
@@ -32,11 +32,13 @@ local function TextList(panel, top)
             local row = self.rows[index]
             if not row then
                 row = CreateFrame("Frame", nil, self.content)
-                row.title = UI:Label(row, "", 13, "accent"); row.title:SetPoint("TOPLEFT")
+                row.title = UI:Label(row, "", 13, "accent"); row.title:SetPoint("TOPLEFT", 12, -6)
                 row.text = UI:Label(row, "", 12)
+                UI:StyleListRow(row)
                 self.rows[index] = row
             end
             row.title:SetText(item.title); row.text:SetText(item.text); row:Show()
+            UI:SetListRowState(row, false, index == #items)
         end
         self.scroll:SetVerticalScroll(0)
         self:Layout()

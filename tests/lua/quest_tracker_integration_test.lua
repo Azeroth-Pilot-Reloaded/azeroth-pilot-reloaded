@@ -93,6 +93,9 @@ local ownBackdrop = {bgFile = "apr-bg"}
 CurrentStepScreenPanel:SetBackdrop(ownBackdrop)
 APR:SetPanelColor(CurrentStepScreenPanel, {0, 0, 0, 0.5})
 assert(CurrentStepScreenPanel:GetBackdrop().bgFile == "questie-bg")
+assert(APR.currentStep.contentBackdrop:GetBackdrop().bgFile == "questie-bg"
+    and APR.currentStep.contentBackdrop.backdropColor[4] == 0.6,
+    "Questie styles the full-height content background")
 profile.currentStepMatchTrackerStyle = false
 APR:SetPanelColor(CurrentStepScreenPanel, {0, 0, 0, 0.5})
 assert(CurrentStepScreenPanel:GetBackdrop() == ownBackdrop, "Opting out restores APR styling")

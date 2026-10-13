@@ -4,6 +4,10 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local UI = APR.UI
 APR.OptionsPanel = {}
 local Options = APR.OptionsPanel
+local categoryIcons = {automation = "automation", group_Current_Step = "current-step", group_FillersFrame = "objectives",
+    group_quest_order_list_step = "steps", group_Arrow = "arrow", group_map_minimap = "map", group_AFK = "afk",
+    group_Group = "group", group_Heirloom = "heirloom", group_XP_Buff = "xp", appearance = "appearance",
+    profiles = "profiles", changelog = "changelog", debug = "debug"}
 local function Resolve(value)
     if type(value) == "function" then return value() end
     return value
@@ -28,7 +32,11 @@ function Options:Create(parent)
     self.content:SetPoint("BOTTOMRIGHT", -12, 12)
     self.host = UI:SettingsHost(self.content)
     self.host:SetCallback("OnOptionsRefreshed", function() self:RefreshActions() end)
-    self.viewTabs, self.selectedViews, self.actionButtons = {}, {}, {}
+    self.viewTabs, self.selectedViews, self.actionButtons, self.footerButtons = {}, {}, {}, {}
+    self.footer = CreateFrame("Frame", nil, self.body)
+    self.footer:SetPoint("BOTTOMLEFT", 12, 12)
+    self.footer:SetHeight(32)
+    self.footer:Hide()
     self.sections = APR.WorkspaceOptions:Build(APR.settings)
     for _, section in ipairs(self.sections) do
         section.views = APR.WorkspaceOptions:Views(section)
@@ -41,27 +49,29 @@ function Options:Create(parent)
     scroll:SetPoint("TOPLEFT", 10, -40)
     scroll:SetPoint("BOTTOMRIGHT", -26, 12)
     self.navigation = APR.VirtualList:New(scroll, function(container)
-        local row = UI:Button(container, "", 1, function(button) self:Select(button.item.id) end, "flat")
-        row:GetFontString():SetJustifyH("LEFT")
-        row.marker = row:CreateTexture(nil, "OVERLAY")
-        row.marker:SetPoint("TOPLEFT", 0, -4); row.marker:SetPoint("BOTTOMLEFT", 0, 4)
-        row.marker:SetWidth(2)
-        APR:RegisterThemeRegion(row.marker, "accent")
+        local row = UI:ListButton(container, "", 1, function(button) self:Select(button.item.id) end, "appearance")
         return row
     end, function(row, section)
         row:SetText(section.label)
+        UI:StyleListRow(row, categoryIcons[section.id] or "appearance")
         UI:SetButtonActive(row, section.id == self.selected)
-        row.marker:SetShown(section.id == self.selected)
-    end, 38)
+    end, 42)
     self.navigation:SetItems(self.sections)
     self.body:HookScript("OnSizeChanged", function() self:LayoutViews() end)
     APR:RegisterSupportedEvent(self.frame, "PLAYER_REGEN_DISABLED")
     APR:RegisterSupportedEvent(self.frame, "PLAYER_REGEN_ENABLED")
-    self.frame:SetScript("OnEvent", function() self:RefreshActions() end)
+    self.frame:SetScript("OnEvent", function()
+        self:RefreshActions()
+        if APR.ThemeCustomization and self.selected == "appearance" and self.view and self.view.id == "theme" then
+            LibStub("AceConfigRegistry-3.0"):NotifyChange(self.view.app)
+        end
+    end)
     self.frame:SetScript("OnShow", function() self:Select(self.selected or "automation") end)
     self.frame:SetScript("OnHide", function()
         self.host:ReleaseChildren()
         self.host:SetUserData("appName", nil)
+        if self.themePreview then self.themePreview:SetPreviewActive(false) end
+        if APR.ThemeCustomization then APR.ThemeCustomization:Discard() end
         if self.releaseNotes then self.releaseNotes:Hide() end
     end)
 end
@@ -93,19 +103,48 @@ function Options:SetActions(actions)
 end
 
 function Options:RefreshActions()
-    for _, button in ipairs(self.actionButtons) do
-        local option = button.option
-        local disabled = option and option.disabled
-        if type(disabled) == "function" then disabled = disabled() end
-        button:SetEnabled(not disabled)
-        if option then button:SetText(Resolve(option.name)) end
+    for _, buttons in ipairs({self.actionButtons, self.footerButtons}) do
+        for _, button in ipairs(buttons) do
+            local option = button.option
+            local disabled = option and option.disabled
+            if type(disabled) == "function" then disabled = disabled() end
+            button:SetEnabled(not disabled)
+            if option then button:SetText(Resolve(option.name)) end
+        end
     end
+end
+
+function Options:SetFooterActions(actions)
+    self.footerActions = actions or {}
+    for _, button in ipairs(self.footerButtons) do button:Hide() end
+    for index, action in ipairs(self.footerActions) do
+        local button = self.footerButtons[index]
+        if not button then
+            button = UI:Button(self.footer, "", 200, function(control)
+                self:RefreshActions()
+                if control:IsEnabled() then
+                    control.option.func()
+                    LibStub("AceConfigRegistry-3.0"):NotifyChange(self.view.app)
+                    self:RefreshActions()
+                end
+            end)
+            UI:Tooltip(button, function() return Resolve(button.option.name) end,
+                function() return Resolve(button.option.desc) end)
+            self.footerButtons[index] = button
+        end
+        button.option = action.option
+        button:SetText(Resolve(action.option.name))
+        button:Show()
+    end
+    self.footer:SetShown(#self.footerActions > 0)
+    self:RefreshActions()
 end
 
 function Options:LayoutViews()
     if not self.section then return end
     local width, x, y = self.body:GetWidth() - 24, 0, 42
     local visible = #self.section.views > 1
+    local headingActions = self.selected == "appearance"
     local actionsWidth = 0
     for index in ipairs(self.actions or {}) do
         local button = self.actionButtons[index]
@@ -117,19 +156,18 @@ function Options:LayoutViews()
     self.body.title:SetPoint("TOPLEFT", 12, -10)
     local resetWidth = math.min(width / 2 - 18, math.max(160, self.resetButton:GetFontString():GetStringWidth() + 28))
     self.resetButton:SetWidth(resetWidth)
-    self.body.title:SetWidth(width - resetWidth - 44)
+    self.body.title:SetWidth(math.max(1, width - resetWidth - 44 - (headingActions and actionsWidth + 8 or 0)))
     if actionsWidth > 0 then
-        -- Contextual actions share the tab row; reset always stays in the title row above them.
-        local right = -44
+        local right = headingActions and -44 - resetWidth - 8 or -44
         for index = #(self.actions or {}), 1, -1 do
             local button = self.actionButtons[index]
             button:ClearAllPoints()
-            button:SetPoint("TOPRIGHT", self.body, "TOPRIGHT", right, -42)
+            button:SetPoint("TOPRIGHT", self.body, "TOPRIGHT", right, headingActions and -8 or -42)
             right = right - button:GetWidth() - 8
         end
-        if not visible then y = 82 end
+        if not visible and not headingActions then y = 82 end
     end
-    local tabRowWidth = actionsWidth > 0 and width - actionsWidth - 40 or width
+    local tabRowWidth = actionsWidth > 0 and not headingActions and width - actionsWidth - 40 or width
     for index, view in ipairs(self.section.views) do
         local tab = self.viewTabs[index]
         tab:SetShown(visible)
@@ -143,6 +181,31 @@ function Options:LayoutViews()
         UI:SetButtonActive(tab, self.selectedViews[self.selected] == view.id)
     end
     self.content:SetPoint("TOPLEFT", 12, -(visible and y + 40 or y))
+    self.content:SetPoint("BOTTOMRIGHT", -12, #self.footerActions > 0 and 56 or 12)
+    self.host.frame:ClearAllPoints()
+    self.host.frame:SetPoint("TOPLEFT")
+    if self.themePreviewActive then
+        local previewWidth = math.min(300, math.max(190, (self.body:GetWidth() - 24) * 0.35))
+        self.themePreview:SetWidth(previewWidth)
+        self.themePreview.frame:ClearAllPoints()
+        self.themePreview.frame:SetPoint("TOPRIGHT", self.content, "TOPRIGHT", 0, 0)
+        self.host.aprRightInset = previewWidth + 16
+        self.host.frame:SetPoint("BOTTOMRIGHT", -(previewWidth + 16), 0)
+    else
+        self.host.aprRightInset = 0
+        self.host.frame:SetPoint("BOTTOMRIGHT")
+    end
+    self.footer:SetPoint("BOTTOMRIGHT", self.body, "BOTTOMRIGHT", -12 - self.host.aprRightInset, 12)
+    local footerWidth = width - self.host.aprRightInset
+    local buttonWidth = math.min(280, (footerWidth - 12) / math.max(1, #self.footerActions))
+    local totalWidth = #self.footerActions * buttonWidth + math.max(0, #self.footerActions - 1) * 12
+    for index in ipairs(self.footerActions) do
+        local button = self.footerButtons[index]
+        button:ClearAllPoints()
+        button:SetPoint("LEFT", self.footer, "LEFT", (footerWidth - totalWidth) / 2 + (index - 1) * (buttonWidth + 12), 0)
+        button:SetSize(buttonWidth, 30)
+    end
+    if self.host.ResizeToParent then self.host:ResizeToParent() end
 end
 
 function Options:SelectView(id)
@@ -150,7 +213,14 @@ function Options:SelectView(id)
         if view.id == id then
             self.view = view
             self.selectedViews[self.selected] = id
+            self.themePreviewActive = APR.ThemeCustomization and self.selected == "appearance" and id == "theme" or false
+            if self.themePreviewActive and not self.themePreview then
+                self.themePreview = LibStub("AceGUI-3.0"):Create("APRThemePreview")
+                self.themePreview.frame:SetParent(self.content)
+            end
+            if self.themePreview then self.themePreview:SetPreviewActive(self.themePreviewActive) end
             self:SetActions(view.actions or self.section.actions)
+            self:SetFooterActions(view.footerActions)
             self:LayoutViews()
             if self.selected == "changelog" then
                 self.host:ReleaseChildren()

@@ -27,12 +27,12 @@ def export_chrome(destination):
             destination / name, compression=None)
 
     export("rounded-fill.tga", '<path fill="white" d="M64 0 A64 64 0 0 0 0 64 H64 Z"/>', 64, 64)
-    for radius in (4, 6, 8):
+    for radius in range(1, 17):
         scale = 56 / radius
-        parts = []
+        edges = []
         # Left, right, top, bottom. WoW rotates the last two strips through their UVs.
         for index, x in enumerate((0.5, radius - 0.5, 0.5, radius - 0.5)):
-            parts.append(f'<g transform="translate({index * 64 + 4},0) scale({scale})">'
+            edges.append(f'<g transform="translate({index * 64 + 4},0) scale({scale})">'
                          f'<path d="M{x} 0 V{64 / scale}" stroke="white" fill="none"/></g>')
         r = radius - 0.5
         paths = (
@@ -41,10 +41,21 @@ def export_chrome(destination):
             f'M{radius} {r} A{r} {r} 0 0 1 0.5 0',
             f'M{r} 0 A{r} {r} 0 0 1 0 {r}',
         )
-        for index, path in enumerate(paths, 4):
-            parts.append(f'<g transform="translate({index * 64 + 4},4) scale({scale})">'
-                         f'<path d="{path}" stroke="white" fill="none"/></g>')
-        export(f"rounded-border-{radius}.tga", ''.join(parts), 512, 64)
+        square_paths = (
+            f'M0.5 {radius} V0.5 H{radius}',
+            f'M0 0.5 H{r} V{radius}',
+            f'M{radius} {r} H0.5 V0',
+            f'M{r} 0 V{r} H0',
+        )
+        for corners in ("all", "top", "bottom"):
+            parts = edges.copy()
+            for index, path in enumerate(paths):
+                rounded = corners == "all" or (corners == "top" and index < 2) or (corners == "bottom" and index >= 2)
+                corner = path if rounded else square_paths[index]
+                parts.append(f'<g transform="translate({(index + 4) * 64 + 4},4) scale({scale})">'
+                             f'<path d="{corner}" stroke="white" fill="none"/></g>')
+            suffix = "" if corners == "all" else f"{corners}-"
+            export(f"rounded-border-{suffix}{radius}.tga", ''.join(parts), 512, 64)
 
 
 def main():

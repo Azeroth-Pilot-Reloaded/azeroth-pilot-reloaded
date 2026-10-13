@@ -37,10 +37,15 @@ local descending = catalog:Filter(records, {sort = "label", descending = true})
 assert(descending[1].key == "old" and descending[2].key == "first", "Column sorting still applies within the available group")
 browser:Show()
 assert(browser.filters.expansion == "Midnight" and #browser.list.items == 2)
-assert(browser.list.rowHeight == 26 and browser.prefabs[1].point[5] > browser.scroll.point[5])
+assert(browser.list.rowHeight == 30 and browser.prefabs[1].point[5] > browser.scroll.point[5])
 assert(browser.headers.label.icon:IsShown() and not browser.headers.author.icon:IsShown())
 assert(browser.frame.close.icon and browser.frame.resize.icon, "Window actions cannot depend on font glyphs")
 assert(browser.list.active[1].name.role == "routeNotStarted")
+assert(not browser.list.active[1].aprListRow.iconHost and browser.list.active[1].favorite.icon,
+    "Route lists omit decorative icons but preserve favorite actions")
+for _, navigationRow in pairs(browser.navigation.active) do
+    assert(not navigationRow.aprListRow.iconHost, "Expansion navigation has separators and selection without category icons")
+end
 assert(browser.list.active[2].name.role == "muted" and browser.list.active[2].progressMarker:IsShown(),
     "Disabled names stay gray while the progress marker remains readable")
 assert(#browser.legend.items == 3)
@@ -96,6 +101,7 @@ APRCustomPath.test = {}
 assert(catalog:ChangePath(browser.list.items[2], "add"))
 assert(APRCustomPath.test[1] == "First by Someone" and APRCustomPath.test[2] == "Older route")
 local row = browser.pathList.active[2]
+assert(not row.aprListRow.iconHost, "Custom paths have no decorative route icons")
 assert(row.up.icon and row.down.icon and row.remove.icon)
 row.up.scripts.OnClick()
 assert(APRCustomPath.test[1] == "Older route")
@@ -116,7 +122,7 @@ for i = 1, 100 do browser.list:ScrollToIndex(i * 10) end
 assert(env.frames() == frames and env.fonts() == fonts, "Scrolling must not allocate a widget for every route")
 local size = 0
 for _ in pairs(browser.list.active) do size = size + 1 end
-assert(size <= math.ceil(browser.scroll:GetHeight() / 26) + 3)
+assert(size <= math.ceil(browser.scroll:GetHeight() / browser.list.rowHeight) + 3)
 local scroll = browser.scroll:GetVerticalScroll()
 catalog:ToggleFavorite(browser.list.items[700]); browser:Refresh()
 assert(browser.scroll:GetVerticalScroll() == scroll, "A favorite action keeps the reader's place")

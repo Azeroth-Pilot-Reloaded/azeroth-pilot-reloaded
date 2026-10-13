@@ -51,7 +51,12 @@ end
 APR.github = "https://github.com/example/apr/"
 L["New Changelog"], L["Prev Changelog"] = text, "v6.7.0\n# Fixes\n- Earlier release"
 dofile("APR-Core/ui/panels/ReleaseNotesPanel.lua")
+function env.methods:SetTexture(path) self.texture = path end
 local panel = APR.ReleaseNotesPanel:Create(UIParent)
+assert(panel.banner.image.texture == "Interface\\AddOns\\APR\\APR-Core\\assets\\header.blp",
+    "The illustrated changelog header survives shared themed panel creation")
+panel.banner.scripts.OnSizeChanged(panel.banner, 802)
+assert(panel.banner:GetHeight() == 202, "The masthead retains its original 4:1 proportions when resized")
 panel:Show("Notes")
 assert(opens == 1 and #panel.rows > #blocks, "Both current and previous releases are shown")
 assert(panel.link:GetText() == "https://github.com/example/apr/releases")

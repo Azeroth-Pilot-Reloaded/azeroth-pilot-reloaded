@@ -86,7 +86,7 @@ function APR.questOrderListSupport:SetStepFrameState(container, color, isCurrent
         return
     end
 
-    local titleRole = isCurrentStep and "warning" or (color == "green" and "success" or "muted")
+    local titleRole = isCurrentStep and "activeStep" or (color == "green" and "success" or "muted")
     APR:SetFontStringRole(container.indexFont, titleRole)
     APR:SetFontStringRole(container.titleFont, titleRole)
     for _, questFont in ipairs(container.questFonts or {}) do

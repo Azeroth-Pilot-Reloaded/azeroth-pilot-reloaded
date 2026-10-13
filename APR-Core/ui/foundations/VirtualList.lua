@@ -103,5 +103,10 @@ function List:RenderVisible(force)
             row.boundGeneration, row.boundIndex, row.boundWidth = self.generation, index, width
         end
         row:Show()
+        local decorated = row.aprListRow and row or row.button and row.button.aprListRow and row.button
+        if decorated then
+            decorated.aprListRow.last = index == #self.items
+            APR.UI:RefreshListRow(decorated)
+        end
     end
 end

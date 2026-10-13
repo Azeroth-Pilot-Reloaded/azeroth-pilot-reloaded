@@ -1,6 +1,7 @@
 -- Every editable setting must survive the new navigation with its original callbacks and constraints.
 dofile("tests/lua/route_ui_test_env.lua")
 dofile("tests/lua/localization_test_env.lua")
+dofile("APR-Core/integrations/SkinRegistry.lua")
 GENERAL, OPTIONS = "General", "Options"
 DISPLAY = "Display"
 local oldLibStub = LibStub
@@ -38,6 +39,7 @@ for _, section in ipairs(sections) do
     for _, view in ipairs(APR.WorkspaceOptions:Views(section)) do
         walk(view.options, retain)
         for _, action in ipairs(view.actions or {}) do retain(action.option, "/" .. action.key) end
+        for _, action in ipairs(view.footerActions or {}) do retain(action.option, "/" .. action.key) end
     end
     for _, action in ipairs(section.actions or {}) do retain(action.option, "/" .. action.key) end
 end
@@ -181,6 +183,30 @@ skin.set(nil, "ElvUI")
 assert(skin.get() == "ElvUI" and APR.settings.profile.elvuiSkin and not APR.settings.profile.ellesmereuiSkin)
 skin.set(nil, "wow")
 assert(skin.get() == "wow" and not APR.settings.profile.elvuiSkin and not APR.settings.profile.ellesmereuiSkin)
+skin.set(nil, "modern")
+assert(skin.get() == "modern" and skin.values().modern and APR.settings.profile.uiTheme == "modern",
+    "The standalone modern theme has a persisted choice even when both integrations are installed")
+skin.set(nil, "wow")
+local placement = panels.group_Current_Step.placement.options.args
+local appearance, target = placement.currentStepMatchTrackerStyle, placement.currentStepTrackerProvider
+assert(appearance.type == "select" and appearance.values().ElvUI and appearance.values().EllesmereUI
+    and appearance.values().modern and target.values().blizzard)
+for _, name in ipairs({"wowModern", "modern", "graphiteModern", "emeraldModern", "violetModern", "redModern"}) do
+    assert(skin.values()[name] and appearance.values()[name], "Every variant is offered globally and for attached frames")
+    skin.set(nil, name)
+    assert(skin.get() == name and not APR.settings.profile.elvuiSkin and not APR.settings.profile.ellesmereuiSkin)
+    appearance.set(nil, "wowModern")
+    assert(appearance.get() == "wowModern" and skin.get() == name,
+        "A native variant can be selected independently for attached frames")
+end
+skin.set(nil, "wow")
+appearance.set(nil, "EllesmereUI")
+assert(appearance.get() == "EllesmereUI" and skin.get() == "wow",
+    "Choosing a tracker appearance cannot change the global theme")
+target.set(nil, "blizzard")
+assert(target.get() == "blizzard" and appearance.get() == "EllesmereUI",
+    "Choosing tracker placement cannot change its appearance")
+APR.settings.profile.currentStepTrackerAppearance, APR.settings.profile.currentStepTrackerProvider = nil, nil
 ElvUI, EllesmereUI = nil, {}
 assert(not skin.values().EllesmereUI, "An incompatible EllesmereUI version cannot be selected")
 EllesmereUI = nil
@@ -244,6 +270,19 @@ for _, section in ipairs(sections) do
     for _, view in ipairs(APR.WorkspaceOptions:Views(section)) do checkSpacing(view.options) end
 end
 assert(resetCount == 6, "Every position reset is checked")
+local textResets = 0
+for _, section in ipairs(sections) do
+    for _, view in ipairs(APR.WorkspaceOptions:Views(section)) do
+        walk(view.options, function(option, path)
+            if path:match("/resetTextAppearance$") then
+                textResets = textResets + 1
+                assert(option.type == "execute" and option.order == 10000,
+                    "Each text reset is shown after the section's controls")
+            end
+        end)
+    end
+end
+assert(textResets == 8, "Global and all seven per-frame text settings have their reset action")
 
 automation.autoAccept.set({"autoAccept"}, true)
 assert(APR.settings.profile.autoAccept and APR.settings.profile.autoAcceptQuestRoute == false)
@@ -286,6 +325,8 @@ panel.body:SetSize(760, 600)
 APR.settings.profile.enableAddon = true
 panel.frame.scripts.OnShow()
 assert(panel.selected == "automation" and panel.view.id == "main", "Options opens on Automation")
+assert(panel.navigation.active[1].aprListRow.iconName == "automation"
+    and panel.navigation.active[1].aprListRow.iconHost:IsShown(), "Category navigation retains its MDI icons")
 local resetButton = panel.resetButton
 local resetPoint, resetParent, resetRelativePoint, resetX, resetY = unpack(resetButton.point)
 local confirmedReset, resetCount = nil, 0
@@ -327,6 +368,8 @@ panel:Select("group_map_minimap")
 assert(panel.view.id == "group_minimap")
 panel:Select("appearance")
 assert(panel.view.id == "theme" and testButton:IsShown())
+assert(testButton.point[5] == -8 and testButton.point[4] < resetButton.point[4] - resetButton:GetWidth(),
+    "Placement sits in the heading beside the persistent reset")
 panel:SelectView("group_GlobalTextAppearance")
 testButton.scripts.OnClick(testButton)
 assert(launched and testButton:IsShown(), "Placement remains available across Appearance tabs")
@@ -343,3 +386,93 @@ for _, section in ipairs(panel.sections) do
     end
 end
 print("Options navigation: standalone categories, remembered tabs, persistent reset and contextual actions passed")
+
+-- The theme editor is staged in the authoritative schema, with a preview beside the scrolling form.
+dofile("APR-Core/ui/foundations/ThemeCustomization.lua")
+APR.settings.profile.uiTheme, APR.settings.profile.uiThemeCustomization = "modern", {}
+local previewFactory, notified = nil, 0
+local previewGUI = {
+    RegisterWidgetType = function(_, _, constructor) previewFactory = constructor end,
+    RegisterAsWidget = function(_, widget)
+        function widget:SetWidth(width) self.frame:SetWidth(width); self:OnWidthSet(width) end
+        function widget:SetHeight(height) self.frame:SetHeight(height) end
+        return widget
+    end,
+    Create = function() local widget = previewFactory(); widget:OnAcquire(); return widget end,
+}
+local registry = {NotifyChange = function() notified = notified + 1 end}
+local themeLibStub = LibStub
+function LibStub(name, ...)
+    if name == "AceGUI-3.0" then return previewGUI end
+    if name == "AceConfigRegistry-3.0" then return registry end
+    return themeLibStub(name, ...)
+end
+APR.ThemeCustomization:InstallPreviewWidget(previewGUI)
+APR.settings:createBlizzOptions()
+panel.sections = APR.WorkspaceOptions:Build(APR.settings)
+for _, section in ipairs(panel.sections) do
+    section.views = APR.WorkspaceOptions:Views(section)
+    for _, view in ipairs(section.views) do view.app = "APR/Workspace/Options/" .. section.id .. "/" .. view.id end
+end
+panel.selectedViews.appearance = "theme"
+panel:Select("appearance")
+assert(panel.themePreviewActive and panel.themePreview.frame:IsShown() and panel.host.aprRightInset > 200,
+    "The theme preview remains outside the scrolling form with reserved room")
+local themeArgs = panel.view.options.args
+local canonicalTheme = APR.settings.optionsTable.args.group_Debug.args.subgroup_Enable.args
+assert(not themeArgs.themeApply and not themeArgs.themeDiscard and not themeArgs.themeAccentHex and not themeArgs.themeDefaults)
+assert(themeArgs.themePreviewHint.dialogControl == "APRThemeNotice"
+    and themeArgs.themeCustomizationHeader.order > themeArgs.themePreviewHint.order
+    and themeArgs.themeCustomizationHeader.order < themeArgs.themeCustomColor.order)
+assert(panel.footer:IsShown() and #panel.footerActions == 2
+    and panel.footerButtons[1].option.func == canonicalTheme.themeDiscard.func
+    and panel.footerButtons[2].option.func == canonicalTheme.themeApply.func,
+    "Apply/Cancel are fixed outside the scrolling form and retain their authoritative callbacks")
+assert(panel.footer:GetParent() == panel.body and panel.footerButtons[1]:GetParent() == panel.footer
+    and panel.footerButtons[1].point[5] == panel.footerButtons[2].point[5]
+    and panel.footerButtons[1].point[4] < panel.footerButtons[2].point[4],
+    "Cancel and Apply share a footer row, in that order")
+local formWidth = panel.body:GetWidth() - 24 - panel.host.aprRightInset
+local cancel, apply = panel.footerButtons[1], panel.footerButtons[2]
+assert(math.abs(cancel.point[4] - (formWidth - apply.point[4] - apply:GetWidth())) < 0.001,
+    "The footer buttons are centered together in the settings column")
+assert(not panel.footerButtons[1]:IsEnabled() and not panel.footerButtons[2]:IsEnabled())
+assert(themeArgs.themePreview.hidden() and themeArgs.uiSkin.confirm == false,
+    "The pinned preview is not duplicated and selecting a draft never opens a reload confirmation")
+themeArgs.uiSkin.set(nil, "violetModern")
+themeArgs.themeCustomColor.set(nil, true)
+themeArgs.themeRadius.set(nil, 12)
+assert(APR.settings.profile.uiTheme == "modern" and not APR.settings.profile.uiThemeCustomization.rounded
+    and panel.themePreview.preview.body.backdrop.edgeSize == 12,
+    "The actual options callbacks update only the preview before Apply")
+panel.frame.scripts.OnEvent()
+assert(notified == 1, "Combat transitions refresh the form's Apply disabled state")
+assert(panel.footerButtons[1]:IsEnabled() and panel.footerButtons[2]:IsEnabled())
+panel:SelectView("group_GlobalTextAppearance")
+assert(not panel.themePreview.frame:IsShown() and panel.host.aprRightInset == 0 and not panel.footer:IsShown())
+panel:SelectView("theme")
+assert(panel.themePreview.frame:IsShown() and APR.ThemeCustomization:GetDraft().radius == 12)
+panel.footerButtons[1].scripts.OnClick(panel.footerButtons[1])
+assert(notified == 2 and APR.ThemeCustomization:GetDraft().theme == "modern"
+    and APR.ThemeCustomization:GetDraft().radius == 8 and not panel.footerButtons[2]:IsEnabled(),
+    "The fixed Cancel restores the saved draft, preview and action states")
+themeArgs.themeRadius.set(nil, 12)
+panel.host.callbacks.OnOptionsRefreshed()
+assert(panel.footerButtons[2]:IsEnabled())
+local previousCombat = InCombatLockdown
+function InCombatLockdown() return true end
+panel:RefreshActions()
+assert(not panel.footerButtons[2]:IsEnabled() and panel.footerButtons[1]:IsEnabled())
+panel.footerButtons[2].scripts.OnClick(panel.footerButtons[2])
+assert(not APR.settings.profile.uiThemeCustomization.radius and notified == 2,
+    "The fixed Apply cannot publish or notify changes during combat")
+InCombatLockdown = previousCombat
+panel:RefreshActions()
+panel.footerButtons[2].scripts.OnClick(panel.footerButtons[2])
+assert(APR.settings.profile.uiThemeCustomization.radius == 12 and notified == 3
+    and not panel.footerButtons[2]:IsEnabled(), "The fixed Apply saves the draft and updates its enabled state")
+themeArgs.themeRadius.set(nil, 5)
+panel.frame.scripts.OnHide()
+assert(not panel.themePreview.frame:IsShown() and APR.ThemeCustomization:GetDraft().theme == "modern"
+    and APR.ThemeCustomization:GetDraft().radius == 12,
+    "Closing Options discards unapplied drafts and stops preview refreshes")

@@ -28,6 +28,13 @@ end
 
 function Editor:LayoutSnappedPreviews()
     local stack = APR:GetSnappedStack(self.previews)
+    if APR.SetFrameSnapAnchor then
+        local linked = {}
+        for i = 2, #stack do linked[stack[i].frame] = true end
+        for _, preview in ipairs(self.previews) do
+            if not linked[preview] then APR:SetFrameSnapAnchor(preview, nil) end
+        end
+    end
     local root = self.previews[1]
     for i = 2, #stack do
         local entry, previous = stack[i], stack[i - 1]
@@ -64,7 +71,6 @@ Editor.definitions = {
     {frame = "BuffFrameScreen", key = "buffFrame", label = "BUFF", width = 230, height = 60},
     {frame = "APRXPBuffOverlay", key = "xpBuffFrame", label = "XP_BUFF_OVERLAY", width = 300, height = 80},
     {frame = "HeirloomPanel", key = "heirloomFrame", label = "HEIRLOOM", width = 230, height = 60},
-    {frame = "RouteSelectionPanel", key = "routeSelectionFrame", label = "ROUTE_SELECTION", width = 250, height = 55},
     {key = "arrow", label = "SHOW_ARROW", arrow = true, width = 100, height = 90},
 }
 

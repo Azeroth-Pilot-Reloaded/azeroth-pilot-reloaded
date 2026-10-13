@@ -26,6 +26,12 @@ function APR:EnableEllesmereUISettings(S)
     local function IsAPR(app)
         return type(app) == "string" and (app == APR.title or app:sub(1, #APR.title + 1) == APR.title .. "/")
     end
+    local function TextColor(text, role, r, g, b)
+        local custom = APR.GetCustomTextColor and APR:GetCustomTextColor("general", role)
+        if custom then text:SetTextColor(unpack(custom))
+        elseif r then text:SetTextColor(r, g, b)
+        else text:SetTextColor(S.GetAccentColor()) end
+    end
     local function WithContext(fn, ...)
         depth = depth + 1
         local result = { pcall(fn, ...) }
@@ -119,7 +125,7 @@ function APR:EnableEllesmereUISettings(S)
             if widget.border then S.Panel(widget.border, { noBg = true }) end
             for _, button in pairs(widget.buttons or {}) do
                 S.Button(button, { "icon" })
-                if button.text then button.text:SetTextColor(S.GetAccentColor()) end
+                if button.text then TextColor(button.text, "accent") end
                 if button.toggle then
                     local toggle = button.toggle
                     local label = toggles[toggle]
@@ -132,7 +138,7 @@ function APR:EnableEllesmereUISettings(S)
                     label:SetText(normal and normal:GetTexture() == 130838 and "+" or "−")
                     S.FadeRegions(toggle)
                     S.Font(label)
-                    label:SetTextColor(S.GetAccentColor())
+                    TextColor(label, "accent")
                 end
             end
         elseif kind == "TabGroup" then
@@ -162,20 +168,22 @@ function APR:EnableEllesmereUISettings(S)
         for _, key in ipairs({ "titletext", "title", "label" }) do
             local text = widget[key]
             if (type(text) == "table" or type(text) == "userdata") and text.SetTextColor then
-                if widget.disabled then text:SetTextColor(0.5, 0.5, 0.5)
+                if widget.disabled then TextColor(text, "muted", 0.5, 0.5, 0.5)
                 elseif kind == "Heading" or key == "titletext" or key == "title" then
-                    text:SetTextColor(S.GetAccentColor())
+                    TextColor(text, "accent")
                 else
-                    text:SetTextColor(0.85, 0.85, 0.85)
+                    TextColor(text, "base", 0.85, 0.85, 0.85)
                 end
             end
         end
         if widget.text then
-            if kind == "Heading" then widget.text:SetTextColor(S.GetAccentColor())
-            elseif widget.disabled then widget.text:SetTextColor(0.5, 0.5, 0.5)
-            else widget.text:SetTextColor(0.85, 0.85, 0.85) end
+            if kind == "Heading" then TextColor(widget.text, "accent")
+            elseif widget.disabled then TextColor(widget.text, "muted", 0.5, 0.5, 0.5)
+            else TextColor(widget.text, "base", 0.85, 0.85, 0.85) end
         end
         if widget.check and kind ~= "CheckBox" then widget.check:SetVertexColor(S.GetAccentColor()) end
+        if APR.UI and APR.UI.StyleDropdownListItem then APR.UI:StyleDropdownListItem(widget) end
+        if APR.UI and APR.UI.StyleDropdownList then APR.UI:StyleDropdownList(widget) end
         for _, child in ipairs(widget.children or {}) do Style(child, visited) end
         if widget.pullout then
             Style(widget.pullout, visited)

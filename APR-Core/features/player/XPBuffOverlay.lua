@@ -167,7 +167,7 @@ function overlay:Refresh()
     if APR.RegisterSkinTarget then
         APR:RegisterSkinTarget(frame, "borderedPanel")
         APR:RegisterSkinTarget(frame.Header, "header")
-        APR:RegisterSkinTarget(frame.Header.MinimizeButton, "headerButton")
+        APR:RegisterSkinTarget(frame.Header.MinimizeButton, "headerButton", {close = true})
     end
     if self.positionConfig ~= profile.xpBuffFrame then
         profile.xpBuffFrame = profile.xpBuffFrame or { x = 280, y = 0, point = "CENTER" }

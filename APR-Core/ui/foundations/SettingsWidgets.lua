@@ -2,6 +2,39 @@
 -- An isolated AceGUI pool prevents their textures and hooks leaking into other addons' settings.
 local styled = setmetatable({}, {__mode = "k"})
 
+-- AceConfig owns validation and acceptance. Decorate its shared popup only after an APR action.
+local confirmationWidgets = setmetatable({}, {__mode = "k"})
+local function InstallConfirmationSkin(widget, prefix, dialog, seen)
+    if not widget then return end
+    seen = seen or {}
+    if seen[widget] then return end
+    seen[widget] = true
+    if widget.Fire and not confirmationWidgets[widget] then
+        confirmationWidgets[widget] = true
+        local fire = widget.Fire
+        widget.Fire = function(self, ...)
+            local popup = dialog.popup
+            local wasShown = popup and popup:IsShown()
+            local acceptScript = popup and popup.accept and popup.accept:GetScript("OnClick")
+            local cancelScript = popup and popup.cancel and popup.cancel:GetScript("OnClick")
+            local result = {fire(self, ...)}
+            local app = self.GetUserData and self:GetUserData("appName")
+            popup = dialog.popup
+            local changed = popup and (not wasShown or
+                (popup.accept and popup.accept:GetScript("OnClick") ~= acceptScript) or
+                (popup.cancel and popup.cancel:GetScript("OnClick") ~= cancelScript))
+            if changed and type(app) == "string" and app:sub(1, #prefix) == prefix and popup and popup:IsShown() then
+                APR:StyleStaticPopup(popup)
+            end
+            return unpack(result)
+        end
+    end
+    for _, child in ipairs(widget.children or {}) do InstallConfirmationSkin(child, prefix, dialog, seen) end
+    if widget.pullout then
+        for _, item in widget.pullout:IterateItems() do InstallConfirmationSkin(item, prefix, dialog, seen) end
+    end
+end
+
 local function MatchContainerStrata(widget)
     if not widget or not widget.frame then return end
     -- AceGUI containers explicitly use FULLSCREEN_DIALOG. Embedded content must share its host's strata.
@@ -38,6 +71,23 @@ local function SkinButton(frame)
     SkinFrame(frame, "button")
 end
 
+local function RestoreDropdownContent(widget)
+    local dropdown = widget.dropdown
+    if not dropdown then return end
+    -- ElvUI's global Ace3 skin reparents these regions to dropdown.backdrop,
+    -- a frame below the dropdown. APR's opaque fill would cover its text.
+    -- Use one surface and rescue both regions before hiding the redundant one.
+    if widget.text then
+        if widget.text:GetParent() ~= dropdown then widget.text:SetParent(dropdown) end
+        widget.text:SetDrawLayer("OVERLAY", 2)
+    end
+    if widget.button and widget.button:GetParent() ~= dropdown then
+        widget.button:SetParent(dropdown)
+    end
+    local backdrop = dropdown.backdrop
+    if backdrop and backdrop ~= dropdown and backdrop.Hide then backdrop:Hide() end
+end
+
 local function Style(widget, seen)
     if not widget then return end
     seen = seen or {}
@@ -67,7 +117,6 @@ local function Style(widget, seen)
             -- Skin the text's own frame: AceGUI can reset child levels when reparenting pooled widgets.
             -- A separate background child could then cover the selected value and arrow.
             SkinFrame(widget.dropdown)
-            widget.text:SetDrawLayer("OVERLAY", 2)
             if widget.button then
                 for _, state in ipairs({"Normal", "Pushed", "Disabled", "Highlight"}) do
                     widget.button["Set" .. state .. "Texture"](widget.button, "Interface\\AddOns\\APR\\APR-Core\\assets\\ui\\down.tga")
@@ -85,7 +134,15 @@ local function Style(widget, seen)
         for _, method in ipairs({"SetDisabled", "SetValue", "SetLabel"}) do
             if widget[method] then hooksecurefunc(widget, method, function() Style(widget) end) end
         end
+        if kind == "Dropdown" then
+            -- Also recover if ElvUI's global skin initializes after this APR widget.
+            frame:HookScript("OnShow", function()
+                Style(widget)
+                APR.SettingsRows:Apply(widget)
+            end)
+        end
     end
+    if widget.type == "Dropdown" then RestoreDropdownContent(widget) end
     if widget.type == "CheckBox" then APR.UI:SetIcon(widget.check, "check") end
     for _, key in ipairs({"text", "label", "titletext", "title", "desc", "lowtext", "hightext", "editbox"}) do
         local region = widget[key]
@@ -95,6 +152,8 @@ local function Style(widget, seen)
         end
     end
     if widget.type == "Label" and widget.SetText then widget:SetText(widget.label:GetText()) end
+    if APR.UI.StyleDropdownListItem then APR.UI:StyleDropdownListItem(widget) end
+    if APR.UI.StyleDropdownList then APR.UI:StyleDropdownList(widget) end
     for _, child in ipairs(widget.children or {}) do Style(child, seen) end
     if widget.pullout then
         Style(widget.pullout, seen)
@@ -106,6 +165,7 @@ function APR:EnableWorkspaceWidgets()
     if self.workspaceWidgetsInstalled then return end
     self.workspaceWidgetsInstalled = true
     local gui, dialog = LibStub("AceGUI-3.0"), LibStub("AceConfigDialog-3.0")
+    if APR.ThemeCustomization then APR.ThemeCustomization:InstallPreviewWidget(gui) end
     -- A form action keeps its explanation separate from the clickable button.
     -- AceConfig still dispatches OnClick, including string handlers and confirmation dialogs.
     gui:RegisterWidgetType("APRSettingsAction", function()
@@ -166,6 +226,7 @@ function APR:EnableWorkspaceWidgets()
             if not result[1] then error(result[2], 0) end
             local container = method == "FeedGroup" and select(2, ...) or ...
             MatchContainerStrata(container)
+            InstallConfirmationSkin(container, prefix, self)
             if not external then Style(container) end
             APR.SettingsRows:Apply(container)
             if method == "Open" and container then container:Fire("OnOptionsRefreshed") end
@@ -193,9 +254,11 @@ function APR.UI:SettingsHost(parent)
     host.frame:SetFrameStrata(parent:GetFrameStrata())
     host.frame:SetPoint("TOPLEFT")
     host.frame:SetPoint("BOTTOMRIGHT")
-    parent:HookScript("OnSizeChanged", function()
-        host:SetWidth(parent:GetWidth()); host:SetHeight(parent:GetHeight()); host:DoLayout()
-    end)
-    host:SetWidth(parent:GetWidth()); host:SetHeight(parent:GetHeight())
+    function host:ResizeToParent()
+        self:SetWidth(math.max(1, parent:GetWidth() - (self.aprRightInset or 0)))
+        self:SetHeight(parent:GetHeight()); self:DoLayout()
+    end
+    parent:HookScript("OnSizeChanged", function() host:ResizeToParent() end)
+    host:ResizeToParent()
     return host
 end

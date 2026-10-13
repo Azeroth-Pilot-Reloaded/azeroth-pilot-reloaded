@@ -16,6 +16,27 @@
     "search": "magnify",
     "favorite": "star",
     "favorite-outline": "star-outline",
-    "check": "check"
+    "check": "check",
+    "automation": "auto-fix",
+    "current-step": "map-marker-outline",
+    "objectives": "checkbox-multiple-marked-outline",
+    "steps": "format-list-numbered",
+    "arrow": "navigation-variant-outline",
+    "map": "map-outline",
+    "afk": "timer-outline",
+    "group": "account-group-outline",
+    "heirloom": "shield-outline",
+    "xp": "star-four-points-outline",
+    "appearance": "palette-outline",
+    "profiles": "account-outline",
+    "changelog": "text-box-outline",
+    "debug": "bug-outline",
+    "routes": "map-marker-path",
+    "extension": "layers-outline",
+    "error": "alert-circle-outline",
+    "performance": "chart-line",
+    "vendor": "store-outline",
+    "completed": "check-circle-outline",
+    "pending": "circle-outline"
   }
 }

@@ -227,6 +227,7 @@ function APR.AFK:RefreshFrameAnchor(initial)
         self:UpdateSize(width, afkHeight)
     else
         self.isSnapped = false
+        if APR.SetFrameSnapAnchor then APR:SetFrameSnapAnchor(AfkFrameScreen, nil) end
         AfkFrameScreen:SetClampedToScreen(true)
         AfkFrameScreen:SetScale(1)
         self:UpdateSize()
