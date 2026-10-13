@@ -125,7 +125,11 @@ function APR:RenderCurrentStep()
 
         if (APR.ActiveRoute) then
             local function checkChromieTimeline(id)
-                if APR.Level >= APR.MaxLevelChromie then return end
+                local level = APR.Level
+                local maxLevelChromie = APR.MaxLevelChromie
+                if type(level) ~= "number" or type(maxLevelChromie) ~= "number" then return end
+                if level >= maxLevelChromie then return end
+                if not C_ChromieTime or not C_ChromieTime.GetChromieTimeExpansionOption then return end
                 local chromieExpansionOption = C_ChromieTime.GetChromieTimeExpansionOption(id)
                 if (not chromieExpansionOption) then
                     APR.currentStep:AddExtraLineText("NOT_IN_CHROMIE_TIMELINE", L["NOT_IN_CHROMIE_TIMELINE"])
