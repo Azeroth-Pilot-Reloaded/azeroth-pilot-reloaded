@@ -33,7 +33,7 @@ end
 function overlay:GetBonusOptions()
     local options = { WarMode = L["XP_BUFF_WAR_MODE"] }
     for name, source in pairs(APR.LevelBonusSources) do
-        if source.items then
+        if source.items and (not source.gameVersion or source.gameVersion == APR:GetGameVersion()) then
             local spellID = source.auras and source.auras[1]
             local spell = spellID and C_Spell.GetSpellInfo(spellID)
             options[name] = spell and spell.name or C_Item.GetItemInfo(source.items[1]) or name

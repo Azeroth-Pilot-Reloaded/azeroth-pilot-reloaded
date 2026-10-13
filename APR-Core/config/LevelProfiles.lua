@@ -4,6 +4,15 @@
 -- Bonus percentages require an active aura or the source's isActive predicate.
 -- Aura variants within one source never stack. Achievement tiers use the maximum.
 APR.LevelBonusSources = {
+    ForeverFood = {
+        gameVersion = "forever",
+        -- Herb Baked Egg grants 5% kill XP for 15 minutes after eating for 10 seconds.
+        -- The shared XP aura also suppresses the reminder when another buff food is active.
+        -- Keep this kill-only bonus out of quest XP requirement profiles.
+        auras = { 1243969 }, -- Well Fed XP Boost
+        bonus = 5,
+        items = { 6888 }, -- Herb Baked Egg
+    },
     MysteriousWisdom = {
         auras = { 1221184 },
         bonus = 10,

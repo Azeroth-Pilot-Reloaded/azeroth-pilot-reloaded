@@ -5,6 +5,7 @@ function LibStub() return setmetatable({ GetLocale = function() return L end }, 
 APR = { RegisterFontString = noop, Debug = noop, version = "new", PlayerID = "player" }
 function APR:NewModule() return {} end
 
+dofile("APR-Core/data/models/Enums.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/Utils.lua")
 assert(APR:NormalizeSearchText("TRÉSOR à côté") == "tresor a cote")
@@ -251,6 +252,57 @@ frames[1].scripts.OnEvent(frames[1], "PLAYER_REGEN_ENABLED")
 drain()
 assert(visibleRows() == 0, "Combat-end refresh applies the saved dismissal")
 
+-- Forever food is suggested only in bags and until the shared kill-XP aura appears.
+level, bags, auras = 10, { [6888] = 1 }, {}
+APR.interfaceVersion = 120105
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 0 and not APR.XPBuffOverlay:GetBonusOptions().ForeverFood,
+    "Herb Baked Egg is not an XP bonus on Retail")
+APR.interfaceVersion = 11508
+assert(#APR:GetLevelConsumableReminders() == 0 and not APR.XPBuffOverlay:GetBonusOptions().ForeverFood,
+    "Classic food does not grant the Forever XP bonus")
+APR.interfaceVersion = 16001
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 1 and APR.XPBuffOverlay:GetBonusOptions().ForeverFood,
+    "Forever exposes the food bonus in reminders and selection options")
+local foodRow
+for _, row in ipairs(frames) do
+    if rawget(row, "bonusSource") == "ForeverFood" then foodRow = row end
+end
+assert(foodRow and foodRow.label.text == "Use Item 6888")
+auras[1248377] = true
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 1, "Starting to eat does not count as gaining the XP buff")
+auras[1243969] = true
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 0, "The shared XP buff from any food suppresses the egg reminder")
+auras = {}
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 1, "Food buff expiry restores the reminder")
+DismissBonus("ForeverFood")
+assert(visibleRows() == 0 and not APR.XPBuffOverlay:IsBonusEnabled("ForeverFood"))
+APR.XPBuffOverlay:SetBonusEnabled("ForeverFood", true)
+assert(visibleRows() == 1)
+unusable[6888] = true
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 0, "Unusable food is not suggested")
+unusable, bags = {}, {}
+APR.XPBuffOverlay:Refresh()
+assert(visibleRows() == 0, "Absent food is not suggested")
+APR.LevelRequirementProfiles.ForeverFoodTest = {
+    bonuses = { "ForeverFood" }, levels = { [0] = 20, [5] = 19 },
+}
+auras[1243969] = true
+assert(APR:GetLevelProfileTarget("ForeverFoodTest", true) == 19)
+APR.interfaceVersion = 120105
+assert(APR:GetLevelProfileTarget("ForeverFoodTest", true) == 20,
+    "A Forever-only bonus cannot affect a Retail profile")
+APR.LevelRequirementProfiles.ForeverFoodTest = nil
+APR.levelProfileCache.ForeverFoodTest = nil
+APR.levelProfileCacheLevels.ForeverFoodTest = nil
+auras = {}
+APR.interfaceVersion, level = nil, 87
+
 -- A scenario's runtime navigation remains shared with the arrow, not the definition.
 APR.RouteQuestStepList = { route = { label = "Route", steps = { { DoScenario = { mapID = 1 }, Coord = { x = 1 } }, {} } } }
 APR.ActiveRoute = "route"
@@ -304,4 +356,4 @@ APR:CheckCurrentRouteUpToDate("route")
 assert(APRData.player.route == nil, "A real definition change still invalidates outdated indexes")
 assert(APRData.player["route-ParallelStepsState"] == nil)
 print(
-"PASS: accent search, route-scoped XP overlay, conditional reopening, persistent bonus dismissal, aura variants, secure buttons, combat deferral and reconnect persistence")
+"PASS: accent search, route-scoped XP overlay, conditional reopening, persistent bonus dismissal, Forever food, aura variants, secure buttons, combat deferral and reconnect persistence")
