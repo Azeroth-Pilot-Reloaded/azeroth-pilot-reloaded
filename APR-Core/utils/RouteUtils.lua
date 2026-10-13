@@ -461,7 +461,8 @@ function APR:GetLevelProfileTarget(name, refresh)
         assert(source, "Unknown level bonus source: " .. tostring(sourceName))
         local inLevelRange = (not source.minLevel or playerLevel >= source.minLevel) and
             (not source.maxLevelExclusive or playerLevel < source.maxLevelExclusive)
-        if not seen[sourceName] and inLevelRange then
+        if not seen[sourceName] and inLevelRange and
+            (not source.gameVersion or source.gameVersion == self:GetGameVersion()) then
             seen[sourceName] = true
             local active = source.isActive and source.isActive()
             local auraBonus = 0
@@ -527,6 +528,7 @@ function APR:GetLevelConsumableReminders(profileName)
         local source = self.LevelBonusSources[name]
         assert(source, "Unknown level bonus source: " .. tostring(name))
         if not seen[name] and source.items and
+            (not source.gameVersion or source.gameVersion == self:GetGameVersion()) and
             (not source.minLevel or level >= source.minLevel) and
             (not source.maxLevelExclusive or level < source.maxLevelExclusive) then
             seen[name] = true
