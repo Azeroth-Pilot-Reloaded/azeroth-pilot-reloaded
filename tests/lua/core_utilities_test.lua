@@ -2,6 +2,7 @@
 local locale = setmetatable({}, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return locale end } end
 APR = {}
+dofile("APR-Core/ui/foundations/ReloadConfirmation.lua")
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/ProfileUtils.lua")
 dofile("APR-Core/features/questing/StepTransitions.lua")
@@ -64,7 +65,15 @@ local saved = { char = { player = character }, profiles = { Default = { size = 1
 APRSettings = saved
 local reloads = 0
 C_UI = { Reload = function() reloads = reloads + 1 end }
+local acceptReset, cancelReset
+APR.UI = {ShowConfirmationDialog = function(_, _, accept, cancel) acceptReset, cancelReset = accept, cancel end}
 APR:ResetAllProfilesToDefault()
+assert(reloads == 0 and APRSettings == saved, "Bulk reset waits for confirmation before changing saved profiles")
+cancelReset()
+acceptReset()
+assert(reloads == 0 and APRSettings == saved, "Cancellation invalidates even a stale accept callback")
+APR:ResetAllProfilesToDefault()
+acceptReset()
 assert(reloads == 1 and not next(APRSettings.profileKeys) and not APRSettings.profiles.Other)
 assert(APRSettings.profiles.Default.size == 15 and APRSettings.char.player.showHeirloomWarning == false)
 APRSettings.char.player.showHeirloomWarning = true

@@ -1290,12 +1290,10 @@ function APR.GetMenu(owner, rootDescription)
     createToggleItem(L["QLIST_ATTACH_QUESTLOG"], function()
         return APR.settings.profile.currentStepAttachFrameToQuestLog
     end, function()
-        local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("currentStep")
-        APR.QuestTracker:GetSide(APR.settings.profile)
-        APR.settings.profile.currentStepAttachFrameToQuestLog = not APR.settings.profile
-            .currentStepAttachFrameToQuestLog
-        if APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance("currentStep", previous) then return end
-        APR.currentStep:RefreshCurrentStepFrameAnchor()
+        APR:ChangeTrackerOption("currentStep", "currentStepAttachFrameToQuestLog",
+            not APR.settings.profile.currentStepAttachFrameToQuestLog, function()
+                APR.currentStep:RefreshCurrentStepFrameAnchor()
+            end, function() APR.QuestTracker:GetSide(APR.settings.profile) end)
     end)
 
     local trackerPosition = rootDescription:CreateButton(L["UI_TRACKER_SIDE"])
@@ -1332,12 +1330,12 @@ function APR.GetMenu(owner, rootDescription)
     createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.fillersFrameSnapToCurrentStep
     end, function()
-        local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("fillers")
-        APR.settings.profile.fillersFrameSnapToCurrentStep = not APR.settings.profile.fillersFrameSnapToCurrentStep
-        if APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance("fillers", previous) then return end
-        if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
-            APR.fillersFrame:RefreshFillersFrame()
-        end
+        APR:ChangeTrackerOption("fillers", "fillersFrameSnapToCurrentStep",
+            not APR.settings.profile.fillersFrameSnapToCurrentStep, function()
+                if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+                    APR.fillersFrame:RefreshFillersFrame()
+                end
+            end)
     end)
 
     createToggleItem(L["FILLERS_SHOW_HEADER"], function()
@@ -1356,10 +1354,10 @@ function APR.GetMenu(owner, rootDescription)
     createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.questOrderListSnapToCurrentStep
     end, function()
-        local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("questOrderList")
-        APR.settings.profile.questOrderListSnapToCurrentStep = not APR.settings.profile.questOrderListSnapToCurrentStep
-        if APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance("questOrderList", previous) then return end
-        APR.questOrderList:RefreshFrameAnchor()
+        APR:ChangeTrackerOption("questOrderList", "questOrderListSnapToCurrentStep",
+            not APR.settings.profile.questOrderListSnapToCurrentStep, function()
+                APR.questOrderList:RefreshFrameAnchor()
+            end)
     end)
 
     createToggleItem(L["SHOW_QORDERLIST"], function()
@@ -1377,10 +1375,8 @@ function APR.GetMenu(owner, rootDescription)
     createToggleItem(L["SNAP_TO_CURRENT_STEP"], function()
         return APR.settings.profile.afkSnapToCurrentStep
     end, function()
-        local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("afk")
-        APR.settings.profile.afkSnapToCurrentStep = not APR.settings.profile.afkSnapToCurrentStep
-        if APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance("afk", previous) then return end
-        APR.AFK:RefreshFrameAnchor()
+        APR:ChangeTrackerOption("afk", "afkSnapToCurrentStep", not APR.settings.profile.afkSnapToCurrentStep,
+            function() APR.AFK:RefreshFrameAnchor() end)
     end)
 end
 

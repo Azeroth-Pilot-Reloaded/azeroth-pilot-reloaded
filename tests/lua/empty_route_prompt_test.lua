@@ -186,9 +186,13 @@ function APR:TrimString(text) return text end
 function APR:RemoveContiguousSpaces(text) return text end
 local reloaded = false
 C_UI = {Reload = function() reloaded = true; APR.ActiveRoute = nil end}
+local acceptReset
+function APR.UI:ShowConfirmationDialog(_, accept) acceptReset = accept end
 dofile("APR-Core/core/Commands.lua")
 APRCustomPath.player, APRData.player, APRZoneCompleted.player = {"route"}, {FirstLoad = false}, {route = true}
 APR.command:SlashCmd("forcereset")
+assert(not reloaded and APRCustomPath.player[1] == "route", "Force reset preserves the path until accepted")
+acceptReset()
 selection:RouteSelectionOnInit()
 assert(reloaded and not next(APRCustomPath.player) and card:IsShown() and not RouteSelectionPanel,
     "Force reset returns to the embedded route picker")

@@ -29,12 +29,8 @@ local function SetProfileOption(info, value)
     profile[info[#info]] = value
 end
 
-local function ReloadChangedAppearance(scope, previous)
-    return APR.ReloadChangedTrackerAppearance and APR:ReloadChangedTrackerAppearance(scope, previous)
-end
-
 function APR.settings:ResetSettings()
-    self.db:ResetProfile() -- AceDB invokes RefreshProfile through OnProfileReset.
+    APR:RequestReload(function() self.db:ResetProfile() end, L["UI_RELOAD_RESET_SETTINGS_CONFIRM"])
 end
 
 function APR.settings:InitializeBlizOptions()
@@ -250,7 +246,7 @@ end
 function APR.settings:RefreshProfile()
     if APR.LayoutEditor then APR.LayoutEditor:Hide(false) end
     self.profile = self.db.profile
-    C_UI.Reload()
+    APR:RequestReload()
 end
 
 function APR.settings:createBlizzOptions()
@@ -306,10 +302,7 @@ function APR.settings:createBlizzOptions()
                 type = "execute",
                 width = 0.75,
                 func = function()
-                    APR.questionDialog:CreateQuestionPopup("RESET_SETTINGS",
-                        nil,
-                        function() APR.settings:ResetSettings() end
-                    )
+                    APR.settings:ResetSettings()
                 end
             },
             header_Automation = {
@@ -436,11 +429,9 @@ function APR.settings:createBlizzOptions()
                                 width = optionsWidth,
                                 get = GetProfileOption,
                                 set = function(info, value)
-                                    local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("currentStep")
-                                    APR.QuestTracker:GetSide(self.profile)
-                                    SetProfileOption(info, value)
-                                    if ReloadChangedAppearance("currentStep", previous) then return end
-                                    APR.currentStep:RefreshCurrentStepFrameAnchor()
+                                    APR:ChangeTrackerOption("currentStep", info[#info], value, function()
+                                        APR.currentStep:RefreshCurrentStepFrameAnchor()
+                                    end, function() APR.QuestTracker:GetSide(self.profile) end)
                                 end,
                                 disabled = function()
                                     return not self.profile.currentStepShow
@@ -471,10 +462,9 @@ function APR.settings:createBlizzOptions()
                                 get = function() return self.profile.currentStepTrackerAppearance or
                                     (self.profile.currentStepMatchTrackerStyle == false and "theme" or "auto") end,
                                 set = function(_, value)
-                                    self.profile.currentStepTrackerAppearance = value
-                                    ReloadUI()
+                                    local profile = self.profile
+                                    APR:RequestReload(function() profile.currentStepTrackerAppearance = value end)
                                 end,
-                                confirm = true, confirmText = L["UI_THEME_CONFIRM"],
                                 disabled = function() return not self.profile.currentStepAttachFrameToQuestLog end,
                             },
                             currentStepTrackerProvider = {
@@ -488,10 +478,9 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 get = function() return self.profile.currentStepTrackerProvider or "auto" end,
                                 set = function(_, value)
-                                    self.profile.currentStepTrackerProvider = value
-                                    ReloadUI()
+                                    local profile = self.profile
+                                    APR:RequestReload(function() profile.currentStepTrackerProvider = value end)
                                 end,
-                                confirm = true, confirmText = L["UI_THEME_CONFIRM"],
                                 disabled = function() return not self.profile.currentStepAttachFrameToQuestLog end,
                             },
                             currentStepLock = {
@@ -619,12 +608,11 @@ function APR.settings:createBlizzOptions()
                                 width = "full",
                                 get = GetProfileOption,
                                 set = function(info, value)
-                                    local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("fillers")
-                                    SetProfileOption(info, value)
-                                    if ReloadChangedAppearance("fillers", previous) then return end
-                                    if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
-                                        APR.fillersFrame:RefreshFillersFrame()
-                                    end
+                                    APR:ChangeTrackerOption("fillers", info[#info], value, function()
+                                        if APR.fillersFrame and APR.fillersFrame.RefreshFillersFrame then
+                                            APR.fillersFrame:RefreshFillersFrame()
+                                        end
+                                    end)
                                 end,
                             },
                             fillersFrameShowHeader = {
@@ -844,10 +832,9 @@ function APR.settings:createBlizzOptions()
                                 width = optionsWidth,
                                 get = GetProfileOption,
                                 set = function(info, value)
-                                    local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("questOrderList")
-                                    SetProfileOption(info, value)
-                                    if ReloadChangedAppearance("questOrderList", previous) then return end
-                                    APR.questOrderList:RefreshFrameAnchor()
+                                    APR:ChangeTrackerOption("questOrderList", info[#info], value, function()
+                                        APR.questOrderList:RefreshFrameAnchor()
+                                    end)
                                 end,
                                 disabled = function()
                                     return not self.profile.showQuestOrderList or not self.profile.enableAddon
@@ -1713,13 +1700,13 @@ function APR.settings:createBlizzOptions()
                                 get = GetProfileOption,
                                 set = function(info, value)
                                     local wasSnapped = self.profile.afkSnapToCurrentStep
-                                    local previous = APR.GetAppearanceProvider and APR:GetAppearanceProvider("afk")
-                                    SetProfileOption(info, value)
-                                    if value and not wasSnapped and self.profile.afkHeight == 30 then
-                                        self.profile.afkHeight = (APR.AFK and APR.AFK.defaultSnapHeight) or 20
-                                    end
-                                    if ReloadChangedAppearance("afk", previous) then return end
-                                    APR.AFK:RefreshFrameAnchor()
+                                    APR:ChangeTrackerOption("afk", info[#info], value, function()
+                                        APR.AFK:RefreshFrameAnchor()
+                                    end, function()
+                                        if value and not wasSnapped and self.profile.afkHeight == 30 then
+                                            self.profile.afkHeight = (APR.AFK and APR.AFK.defaultSnapHeight) or 20
+                                        end
+                                    end)
                                 end,
                             },
 
@@ -1959,14 +1946,15 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 set = function(_, value)
                                     if APR.ThemeCustomization then return APR.ThemeCustomization:SetTheme(value) end
-                                    self.profile.uiTheme = value
-                                    self.profile.elvuiSkin = value == "ElvUI"
-                                    self.profile.ellesmereuiSkin = value == "EllesmereUI"
-                                    ReloadUI()
+                                    local profile = self.profile
+                                    APR:RequestReload(function()
+                                        profile.uiTheme = value
+                                        profile.elvuiSkin = value == "ElvUI"
+                                        profile.ellesmereuiSkin = value == "EllesmereUI"
+                                    end)
                                 end,
                                 -- Theme editing previews a draft; Apply owns publishing and renderer reloads.
-                                confirm = not APR.ThemeCustomization,
-                                confirmText = L["UI_THEME_CONFIRM"],
+                                confirm = false,
                             },
                             resetPartyPosition = {
                                 name = L["SHOW_CHANGELOG"],
@@ -2082,7 +2070,7 @@ function APR.settings:createBlizzOptions()
     aceConfig:RegisterOptionsTable(APR.title .. "/Route", APR.routeconfig:InitRouteConfig())
 
     -- Profiles share the same authoritative callbacks as the workspace.
-    local profileOptions = _G.LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db)
+    local profileOptions = APR:ConfirmProfileOptions(_G.LibStub("AceDBOptions-3.0"):GetOptionsTable(self.db))
     profileOptions.args.reset_all_profiles_spacer = {
         order = 998,
         type = "description",
@@ -2094,7 +2082,7 @@ function APR.settings:createBlizzOptions()
         type = "execute",
         width = "full",
         name = L["RESET_ALL_PROFILES"],
-        confirm = true,
+        confirm = false,
         confirmText = L["RESET_ALL_PROFILES_CONFIRM_TEXT"],
         func = function()
             APR:ResetAllProfilesToDefault()
