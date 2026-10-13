@@ -213,10 +213,10 @@ local function TeamContainerOnEnter(self)
     elseif not data.route then
         APR:AddTooltipLine(GameTooltip, L["NO_ROUTE"], "party", "warning")
     else
-        APR:AddTooltipDoubleLine(GameTooltip, L["ROUTE_LABEL"], data.route, "party", "muted", "base")
+        APR:AddTooltipDoubleLine(GameTooltip, string.format(L["ROUTE_LABEL"], " "), data.route, "party", "muted", "base")
 
         if data.currentStep and data.totalSteps then
-            APR:AddTooltipDoubleLine(GameTooltip, L["CURRENT_STEP_LABEL"],
+            APR:AddTooltipDoubleLine(GameTooltip, string.format(L["CURRENT_STEP_LABEL"], " "),
                 data.currentStep .. " / " .. data.totalSteps, "party", "muted", "success")
         end
 
