@@ -1096,6 +1096,13 @@ if GetExpansionLevel() >= 11 then
         addPortal(true, 2393, { x = 0.5260, y = 0.6457, z = 0 }, true, 3487, 84, { x = 0.5450, y = 0.1726, z = 0 }, true,
             1519, 15)                                                                                                               -- Silvermoon City <-> Stormwind (portal room)
     end
+    -- Horde
+    if UnitFactionGroup("player") == "Horde" then
+        addPortal(true, 2393, { x = 0.5220, y = 0.6520, z = 0 }, true, 3487, 85, { x = 0.5600, y = 0.8820, z = 0 }, true,
+            1637, 15)                                                                                                               -- Silvermoon City <-> Orgrimmar (Pathfinder's Den)
+        addPortal(false, 85, { x = 0.5740, y = 0.9160, z = 0 }, true, 1637, 111, { x = 0.5500, y = 0.4200, z = 0 }, true,
+            3703, 10)                                                                                                               -- Pathfinder's Den to Shattrath
+    end
     -- Mage Teleport
     addSpell(1259190, 2393, { x = 0.50, y = 0.50, z = 0 }, true, 3487, 10) -- Teleport: Silvermoon City
 end

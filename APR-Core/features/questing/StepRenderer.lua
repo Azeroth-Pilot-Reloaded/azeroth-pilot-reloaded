@@ -136,6 +136,9 @@ function APR:RenderCurrentStep()
             local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
             local activeExpansion = activeRouteData and activeRouteData.expansion
 
+            if activeExpansion == APR.EXPANSIONS.TheBurningCrusade then
+                checkChromieTimeline(6)
+            end
             if activeExpansion == APR.EXPANSIONS.WarlordsOfDraenor then
                 checkChromieTimeline(9)
             end
