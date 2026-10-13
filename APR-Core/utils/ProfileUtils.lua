@@ -55,21 +55,23 @@ end
 -- and character-only preferences; routes/progress live in separate SavedVariables.
 --- @return nil
 function APR:ResetAllProfilesToDefault()
-    local saved = APRSettings or {}
-    local database = self.settings and self.settings.db
-    local charCopy = APR:DeepCopyTable(saved.char or (database and database.sv and database.sv.char) or {})
-    local defaultProfileCopy = APR:DeepCopyTable(
-        (saved.profiles and saved.profiles.Default) or
-        (database and database.sv and database.sv.profiles and database.sv.profiles.Default) or
-        {}
-    )
+    local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+    return self:RequestReload(function()
+        local saved = APRSettings or {}
+        local database = self.settings and self.settings.db
+        local charCopy = APR:DeepCopyTable(saved.char or (database and database.sv and database.sv.char) or {})
+        local defaultProfileCopy = APR:DeepCopyTable(
+            (saved.profiles and saved.profiles.Default) or
+            (database and database.sv and database.sv.profiles and database.sv.profiles.Default) or
+            {}
+        )
 
-    APRSettings = {
-        char = charCopy,
-        profileKeys = {},
-        profiles = {
-            Default = defaultProfileCopy,
-        },
-    }
-    C_UI.Reload()
+        APRSettings = {
+            char = charCopy,
+            profileKeys = {},
+            profiles = {
+                Default = defaultProfileCopy,
+            },
+        }
+    end, (L["RESET_ALL_PROFILES_CONFIRM_TEXT"] or "") .. "\n\n" .. L["UI_RELOAD_CONFIRM"])
 end

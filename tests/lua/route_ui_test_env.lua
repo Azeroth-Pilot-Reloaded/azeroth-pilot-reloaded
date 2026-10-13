@@ -237,6 +237,7 @@ APR = {
 function APR:NewModule() return {} end
 
 function APR:GetSettingsProfile() return self.settings.profile end
+dofile("APR-Core/ui/foundations/ReloadConfirmation.lua")
 
 function APR:SetupMinimizeButton(header, parent, collapse, expand)
     header.MinimizeButton:SetScript("OnClick", function()

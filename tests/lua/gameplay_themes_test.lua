@@ -237,10 +237,14 @@ assert(APR:GetAppearanceProvider("currentStep") == "future", "Unavailable artwor
 
 local reloads = 0
 function ReloadUI() reloads = reloads + 1 end
+local acceptReload
+function APR.UI:ShowConfirmationDialog(_, accept) acceptReload = accept end
 profile.currentStepTrackerAppearance = "EllesmereUI"
 local previous = APR:GetAppearanceProvider("currentStep")
 profile.currentStepAttachFrameToQuestLog = false
-assert(APR:ReloadChangedTrackerAppearance("currentStep", previous) and reloads == 1,
+assert(APR:ReloadChangedTrackerAppearance("currentStep", previous) and reloads == 0)
+acceptReload()
+assert(reloads == 1,
     "Detaching rebuilds persistent provider chrome before the global palette is applied")
 assert(not APR:ReloadChangedTrackerAppearance("currentStep", "future") and reloads == 1,
     "Unchanged appearance never causes an extra reload")

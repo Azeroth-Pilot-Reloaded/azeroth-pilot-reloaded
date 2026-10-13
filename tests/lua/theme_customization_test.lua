@@ -94,10 +94,20 @@ editor:Apply()
 assert(APR:GetThemeColor("accent")[1] == APR.Themes.violetModern.accent[1] and body.backdrop.edgeSize == 8)
 editor:SetTheme("wow")
 assert(not editor:IsModern() and options.themeRounded.disabled() and not preview.preview.body:IsShown())
+local acceptReload, cancelReload
+function APR.UI:ShowConfirmationDialog(_, accept, cancel) acceptReload, cancelReload = accept, cancel end
 editor:Apply()
+assert(reloads == 0 and profile.uiTheme == "violetModern" and editor:IsDirty(), "Renderer changes remain drafts until accepted")
+cancelReload()
+acceptReload()
+assert(reloads == 0 and profile.uiTheme == "violetModern" and editor:GetDraft().theme == "wow")
+editor:Apply()
+acceptReload()
 assert(reloads == 1 and profile.uiTheme == "wow", "Changing to native artwork reloads only after Apply")
 editor:SetTheme("ElvUI")
 editor:Apply()
+assert(reloads == 1 and profile.uiTheme == "wow")
+acceptReload()
 assert(reloads == 2 and profile.elvuiSkin and not profile.ellesmereuiSkin)
 local fresh = {uiTheme = "modern", uiThemeCustomization = {customColor = true, color = {0.1, 0.3, 0.5, 1}, rounded = true, radius = 5}}
 APR.settings.profile = fresh

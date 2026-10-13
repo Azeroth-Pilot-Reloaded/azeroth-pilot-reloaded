@@ -59,13 +59,13 @@ function APR.command:SlashCmd(input)
         --Command to reset the current route
         APR:ResetRoute(APR.ActiveRoute)
     elseif inputText == "resetcustom" then
-        APRData.CustomRoute = {}
-        C_UI.Reload()
+        APR:RequestReload(function() APRData.CustomRoute = {} end, L["UI_RELOAD_RESET_CUSTOM_CONFIRM"])
     elseif (inputText == "forcereset" or inputText == "fr") then
-        APRData[APR.PlayerID] = {}
-        APRZoneCompleted[APR.PlayerID] = {}
-        APRCustomPath[APR.PlayerID] = {}
-        C_UI.Reload()
+        APR:RequestReload(function()
+            APRData[APR.PlayerID] = {}
+            APRZoneCompleted[APR.PlayerID] = {}
+            APRCustomPath[APR.PlayerID] = {}
+        end, L["UI_RELOAD_RESET_ROUTES_CONFIRM"])
     elseif (inputText == "skip" or inputText == "s" or inputText == "skippiedoodaa") then
         -- Command for skipping the current quest step
         APR:PrintInfo(L["SKIP"])

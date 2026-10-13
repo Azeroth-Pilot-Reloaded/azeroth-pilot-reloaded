@@ -172,38 +172,51 @@ assert(APR.settings.profile.arrowScale == 1 and APR.settings.profile.arrowTextSc
 local skin = panels.appearance.theme.options.args.uiSkin
 local reloads = 0
 function ReloadUI() reloads = reloads + 1 end
+APR.UI = APR.UI or {}
+local acceptReload, cancelReload
+function APR.UI:ShowConfirmationDialog(_, accept, cancel) acceptReload, cancelReload = accept, cancel end
+local function setConfirmed(option, value)
+    local before = reloads
+    option.set(nil, value)
+    assert(reloads == before, "A settings selection cannot reload before accepting its popup")
+    acceptReload()
+end
 assert(skin.get() == "wow" and skin.values().wow and not skin.values().ElvUI and not skin.values().EllesmereUI)
 ElvUI, EllesmereUI = {}, {RegisterSkin = function() end}
 assert(skin.get() == "ElvUI" and skin.values().ElvUI and skin.values().EllesmereUI)
-assert(skin.confirm and skin.confirmText, "Switching providers requires the existing reload confirmation flow")
+assert(not skin.confirm, "The reload helper owns confirmation; AceConfig must not ask a second time")
 skin.set(nil, "EllesmereUI")
+assert(reloads == 0 and skin.get() == "ElvUI")
+cancelReload()
+assert(reloads == 0 and skin.get() == "ElvUI")
+setConfirmed(skin, "EllesmereUI")
 assert(reloads == 1 and not APR.settings.profile.elvuiSkin and APR.settings.profile.ellesmereuiSkin)
 assert(skin.get() == "EllesmereUI")
-skin.set(nil, "ElvUI")
+setConfirmed(skin, "ElvUI")
 assert(skin.get() == "ElvUI" and APR.settings.profile.elvuiSkin and not APR.settings.profile.ellesmereuiSkin)
-skin.set(nil, "wow")
+setConfirmed(skin, "wow")
 assert(skin.get() == "wow" and not APR.settings.profile.elvuiSkin and not APR.settings.profile.ellesmereuiSkin)
-skin.set(nil, "modern")
+setConfirmed(skin, "modern")
 assert(skin.get() == "modern" and skin.values().modern and APR.settings.profile.uiTheme == "modern",
     "The standalone modern theme has a persisted choice even when both integrations are installed")
-skin.set(nil, "wow")
+setConfirmed(skin, "wow")
 local placement = panels.group_Current_Step.placement.options.args
 local appearance, target = placement.currentStepMatchTrackerStyle, placement.currentStepTrackerProvider
 assert(appearance.type == "select" and appearance.values().ElvUI and appearance.values().EllesmereUI
     and appearance.values().modern and target.values().blizzard)
 for _, name in ipairs({"wowModern", "modern", "graphiteModern", "emeraldModern", "violetModern", "redModern"}) do
     assert(skin.values()[name] and appearance.values()[name], "Every variant is offered globally and for attached frames")
-    skin.set(nil, name)
+    setConfirmed(skin, name)
     assert(skin.get() == name and not APR.settings.profile.elvuiSkin and not APR.settings.profile.ellesmereuiSkin)
-    appearance.set(nil, "wowModern")
+    setConfirmed(appearance, "wowModern")
     assert(appearance.get() == "wowModern" and skin.get() == name,
         "A native variant can be selected independently for attached frames")
 end
-skin.set(nil, "wow")
-appearance.set(nil, "EllesmereUI")
+setConfirmed(skin, "wow")
+setConfirmed(appearance, "EllesmereUI")
 assert(appearance.get() == "EllesmereUI" and skin.get() == "wow",
     "Choosing a tracker appearance cannot change the global theme")
-target.set(nil, "blizzard")
+setConfirmed(target, "blizzard")
 assert(target.get() == "blizzard" and appearance.get() == "EllesmereUI",
     "Choosing tracker placement cannot change its appearance")
 APR.settings.profile.currentStepTrackerAppearance, APR.settings.profile.currentStepTrackerProvider = nil, nil
@@ -330,10 +343,8 @@ assert(panel.navigation.active[1].aprListRow.iconName == "automation"
 local resetButton = panel.resetButton
 local resetPoint, resetParent, resetRelativePoint, resetX, resetY = unpack(resetButton.point)
 local confirmedReset, resetCount = nil, 0
-APR.questionDialog = {CreateQuestionPopup = function(_, key, _, accept)
-    assert(key == "RESET_SETTINGS"); confirmedReset = accept
-end}
-function APR.settings:ResetSettings() resetCount = resetCount + 1 end
+function APR.UI:ShowConfirmationDialog(_, accept) confirmedReset = accept end
+APR.settings.db = {ResetProfile = function() resetCount = resetCount + 1 end}
 resetButton.scripts.OnClick(resetButton)
 assert(confirmedReset and resetCount == 0, "The persistent reset still asks before modifying settings")
 confirmedReset()

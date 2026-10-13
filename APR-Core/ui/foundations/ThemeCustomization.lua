@@ -68,13 +68,18 @@ function Editor:Apply()
     local draft = self:GetDraft()
     local previous = APR:GetSelectedSkinName()
     local oldTheme, newTheme = APR.Themes[previous], APR.Themes[draft.theme]
-    self.profile.uiTheme = draft.theme
-    self.profile.elvuiSkin, self.profile.ellesmereuiSkin = draft.theme == "ElvUI", draft.theme == "EllesmereUI"
-    self.profile.uiThemeCustomization = Copy(draft, draft.theme)
-    self.draft = Copy(self.profile.uiThemeCustomization, draft.theme)
+    local pending, profile = Copy(draft, draft.theme), self.profile
+    local function publish()
+        if InCombatLockdown() or APR:GetSettingsProfile() ~= profile then return false end
+        profile.uiTheme = pending.theme
+        profile.elvuiSkin, profile.ellesmereuiSkin = pending.theme == "ElvUI", pending.theme == "EllesmereUI"
+        profile.uiThemeCustomization = Copy(pending, pending.theme)
+        self.draft = Copy(profile.uiThemeCustomization, pending.theme)
+        return true
+    end
     if previous ~= draft.theme and not (oldTheme and newTheme and oldTheme.style == "modern" and newTheme.style == "modern") then
-        ReloadUI()
-    else
+        APR:RequestReload(publish)
+    elseif publish() then
         APR:RefreshRegisteredSkins(true)
         if APR.RefreshTextAppearance then APR:RefreshTextAppearance() end
         if APR.Workspace and APR.Workspace.frame then APR.Workspace:LayoutTabs() end

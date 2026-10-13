@@ -40,16 +40,40 @@ function APR:GetAppearanceProvider(scope)
 end
 
 -- Skins keep persistent texture hooks; changing their scope needs a clean rebuild.
-function APR:ReloadChangedTrackerAppearance(scope, previous)
-    local current = self:GetAppearanceProvider(scope)
+function APR:AppearanceNeedsReload(previous, current)
     local function needsRebuild(name)
         return name == "ElvUI" or name == "EllesmereUI" or
             (self.Themes and self.Themes[name] and self.Themes[name].style == "modern")
     end
-    if current ~= previous and (needsRebuild(previous) or needsRebuild(current)) then
-        ReloadUI()
+    return current ~= previous and (needsRebuild(previous) or needsRebuild(current))
+end
+
+function APR:ReloadChangedTrackerAppearance(scope, previous)
+    if not self:AppearanceNeedsReload(previous, self:GetAppearanceProvider(scope)) then return false end
+    self:RequestReload()
+    return true
+end
+
+-- Determine the future provider without publishing the proposed setting or touching frame geometry.
+function APR:ChangeTrackerOption(scope, key, value, onChanged, prepare)
+    local profile = self:GetSettingsProfile()
+    local previous = self:GetAppearanceProvider(scope)
+    local oldValue = profile[key]
+    profile[key] = value
+    local ok, current = pcall(self.GetAppearanceProvider, self, scope)
+    profile[key] = oldValue
+    if not ok then error(current, 0) end
+    local function apply()
+        if self:GetSettingsProfile() ~= profile then return false end
+        if prepare then prepare() end
+        profile[key] = value
         return true
     end
+    if self:AppearanceNeedsReload(previous, current) then
+        self:RequestReload(apply)
+        return true
+    end
+    if apply() and onChanged then onChanged() end
     return false
 end
 
