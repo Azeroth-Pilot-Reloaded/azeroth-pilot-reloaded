@@ -15,7 +15,10 @@ local FRAME_HEIGHT = 100
 local FRAME_OFFSET = 1
 local FRAME_MATE_HOLDER_HEIGHT = -18
 local MAX_FRAGMENT_COUNT = 128 -- Bound an incomplete group snapshot to 23 KiB.
-local GROUP_SEND_THROTTLE = 0.5
+local GROUP_SEND_THROTTLE = 2
+local GROUP_SEND_COALESCE = 0.5
+local GROUP_REQUEST_THROTTLE = 5
+local MAX_OUTGOING_BYTES = 2048 -- Optional tooltip rows never grow the progression stream beyond 2 KiB.
 local MAX_PENDING_MESSAGES = 80 -- Two snapshots per raid member, at most.
 local FRAGMENT_TTL = 10
 local FRAGMENT_SWEEP_INTERVAL = 5
@@ -30,7 +33,29 @@ APR.party.fragmentExpiry = APR.party.fragmentExpiry or {}
 APR.party.containerPool = APR.party.containerPool or {}
 
 local function GetGroupChannel()
-    return IsInGroup(LE_PARTY_CATEGORY_INSTANCE) and "INSTANCE_CHAT" or "PARTY"
+    if IsInGroup(LE_PARTY_CATEGORY_INSTANCE) then return "INSTANCE_CHAT" end
+    return IsInRaid() and "RAID" or "PARTY"
+end
+
+local function CanShareGroupProgress()
+    return IsInGroup() and not IsInRaid() and APR.settings.profile.enableAddon
+end
+
+-- Addon senders are names, not unit tokens. Resolve membership from the roster
+-- and keep the realm in the identity so namesakes cannot share progress.
+local function GetGroupRoster()
+    local members = {}
+    if not IsInGroup() then return members end
+    local isRaid = IsInRaid()
+    for index = 1, isRaid and 40 or 4 do
+        local name, realm = APR:SafeUnitName((isRaid and "raid" or "party") .. index)
+        if name then
+            local fullName = realm and realm ~= "" and (name .. "-" .. realm) or name
+            local key = APR.PartyProtocol.PlayerKey(fullName)
+            if key then members[key] = APR.PartyProtocol.DisplayName(fullName) end
+        end
+    end
+    return members
 end
 
 
@@ -116,7 +141,7 @@ function APR.party:RefreshPartyFrameAnchor(forceShow)
     local hasData = next(APR.party.GroupListSteps)
 
     local profile = APR:GetSettingsProfile()
-    if not profile or not profile.enableAddon then
+    if IsInRaid() or not profile or not profile.enableAddon then
         PartyScreenPanel:Hide()
         return
     end
@@ -441,6 +466,8 @@ function APR.party:RemoveTeam()
     wipe(self.GroupListSteps)
     wipe(self.incomingFragments)
     wipe(self.fragmentExpiry)
+    self:CancelGroupSend()
+    self.lastGroupPayload = nil
     if self.fragmentCleanupTicker then
         self.fragmentCleanupTicker:Cancel()
         self.fragmentCleanupTicker = nil
@@ -450,22 +477,25 @@ end
 
 
 function APR.party:PopulateMissingGroupMembers(skipReorder)
-    if not IsInGroup() then
+    if not IsInGroup() or IsInRaid() then
         self:RemoveTeam()
+        self:RefreshPartyFrameAnchor()
         return
     end
-    local known = {}
-    for name, _ in pairs(self.GroupListSteps) do
-        known[name] = true
+    local members, known = GetGroupRoster(), {}
+    local playerKey = APR.PartyProtocol.PlayerKey(APR.Username)
+    for name, data in pairs(self.GroupListSteps) do
+        local key = APR.PartyProtocol.PlayerKey(data.sender or name)
+        if key then known[key] = true end
     end
-    for i = 1, 4 do
-        local name = APR:SafeUnitName("party" .. i)
-        if name and name ~= APR.Username and not known[name] then
+    for key, name in pairs(members) do
+        if key ~= playerKey and not known[key] then
             self:UpdateTeamMate({ username = name, noAddon = true }, false, 'gray')
         end
     end
     for name, _ in pairs(self.teamList) do
-        if name ~= APR.Username and not UnitInParty(name) then
+        local key = APR.PartyProtocol.PlayerKey(name)
+        if key ~= playerKey and not members[key] then
             self:RemoveMateByName(name, true)
             self.GroupListSteps[name] = nil
         end
@@ -550,54 +580,110 @@ function APR.party:BuildGroupPayload(username)
     }
 end
 
-function APR.party:SendGroupMessageNow()
-    self.pendingGroupSend = false
+local function SerializeGroupPayload(data)
+    -- Only transmit fields the receiving UI consumes; keep the richer local snapshot.
+    local wire = APR.PartyProtocol.NormalizeSnapshot(data, APR.Username)
+    if not wire then
+        wire = {}
+        for _, field in ipairs({ "username", "route", "routeFileName", "currentStep", "totalSteps",
+            "sojournerSkipCampaign" }) do
+            wire[field] = data[field]
+        end
+        wire.stepFrameDetails = data.stepFrameDetails and { progress = data.stepFrameDetails.progress } or nil
+        wire = APR.PartyProtocol.NormalizeSnapshot(wire, APR.Username)
+    end
+    if not wire then return end
+    wire.sender = nil
+    if wire.stepFrameDetails then
+        local textBytes = 0
+        for _, field in ipairs({ "extraLines", "questSteps", "fillerSteps" }) do
+            for _, row in ipairs(wire.stepFrameDetails[field] or {}) do
+                textBytes = textBytes + #row.text
+                for _, sub in ipairs(row.subSteps or {}) do textBytes = textBytes + #sub.text end
+            end
+        end
+        if textBytes > MAX_OUTGOING_BYTES then
+            wire.stepFrameDetails = { progress = wire.stepFrameDetails.progress }
+        end
+    end
+    local serialized = AceSerializer:Serialize(wire)
+    if #serialized > MAX_OUTGOING_BYTES then
+        wire.stepFrameDetails = wire.stepFrameDetails and { progress = wire.stepFrameDetails.progress } or nil
+        serialized = AceSerializer:Serialize(wire)
+    end
+    if #serialized <= MAX_OUTGOING_BYTES then return serialized end
+end
 
-    local dataToSend = self:BuildGroupPayload(APR.Username)
-    if IsInGroup() and APR.settings.profile.enableAddon then
-        local routeFileName = APR.ActiveRoute
-        APR:Debug("Sending group data", dataToSend)
-
-        -- Keep local cache in sync without round-tripping through CHAT_MSG_ADDON
-        self.GroupListSteps[APR.Username] = dataToSend
-
-        local serializedData = AceSerializer:Serialize(dataToSend)
-        APR:SendAddonMessageSplit("APRPartyData", serializedData, GetGroupChannel())
-        self:PopulateMissingGroupMembers()
-        UpdateGroupStep()
+function APR.party:CancelGroupSend()
+    self.pendingGroupSend, self.pendingGroupResend = false, false
+    if self.groupSendTimer then
+        self.groupSendTimer:Cancel()
+        self.groupSendTimer = nil
     end
 end
 
+function APR.party:SendGroupMessageNow()
+    if not CanShareGroupProgress() then
+        self:CancelGroupSend()
+        return
+    end
+    if self.groupSendInFlight or (self.lastGroupSendTime
+        and GetTime() - self.lastGroupSendTime < GROUP_SEND_THROTTLE) then
+        self:QueueGroupMessage(self.pendingGroupResend)
+        return
+    end
+
+    local resend = self.pendingGroupResend
+    self.pendingGroupSend, self.pendingGroupResend = false, false
+    local dataToSend = self:BuildGroupPayload(APR.Username)
+    local serializedData = SerializeGroupPayload(dataToSend)
+    if not serializedData then return end
+    local channel = GetGroupChannel()
+    self.GroupListSteps[APR.Username] = dataToSend
+    local localContainer = self.teamList[APR.Username]
+    if localContainer then localContainer.playerData = dataToSend end
+    if not resend and serializedData == self.lastGroupPayload and channel == self.lastGroupChannel then return end
+
+    -- Keep local cache in sync without round-tripping through CHAT_MSG_ADDON.
+    UpdateGroupStep()
+    self.lastGroupSendTime = GetTime()
+    self.lastGroupPayload, self.lastGroupChannel = serializedData, channel
+    self.groupSendInFlight = true
+    APR:SendAddonMessageSplit("APRPartyData", serializedData, channel, nil, function(success)
+        self.groupSendInFlight = nil
+        if not success then self.lastGroupPayload = nil end
+        -- At most one snapshot is queued in the transport, followed by the latest state.
+        if self.pendingGroupSend then self:QueueGroupMessage(self.pendingGroupResend) end
+    end)
+end
+
 function APR.party:QueueGroupMessage(force)
-    if force then
-        self.pendingGroupSend = false
-        if self.groupSendTimer then
-            self.groupSendTimer:Cancel()
-            self.groupSendTimer = nil
-        end
+    if not CanShareGroupProgress() then
+        self:CancelGroupSend()
+        return
+    end
+
+    self.pendingGroupSend = true
+    self.pendingGroupResend = self.pendingGroupResend or force
+    if self.groupSendInFlight or self.groupSendTimer then return end
+
+    local delay = self.lastGroupSendTime and math.max(0,
+        GROUP_SEND_THROTTLE - (GetTime() - self.lastGroupSendTime)) or 0
+    -- A forced response bypasses deduplication, never the send-frequency limit.
+    if force and delay == 0 then
         self:SendGroupMessageNow()
         return
     end
-
-    if not IsInGroup() or not APR.settings.profile.enableAddon then return end
-
-    self.pendingGroupSend = true
-
-    if self.groupSendTimer then
-        return
-    end
-
-    self.groupSendTimer = C_Timer.NewTimer(GROUP_SEND_THROTTLE, function()
+    self.groupSendTimer = C_Timer.NewTimer(math.max(GROUP_SEND_COALESCE, delay), function()
         self.groupSendTimer = nil
-        if self.pendingGroupSend then
-            self:SendGroupMessageNow()
-            self.pendingGroupSend = false
-        end
+        if self.pendingGroupSend then self:SendGroupMessageNow() end
     end)
 end
 
 function APR.party:SendGroupMessageDelete()
-    if IsInGroup() then
+    if CanShareGroupProgress() and (not self.lastGroupDeleteTime
+        or GetTime() - self.lastGroupDeleteTime >= GROUP_SEND_THROTTLE) then
+        self.lastGroupDeleteTime = GetTime()
         C_ChatInfo.SendAddonMessage("APRPartyDelete", APR.Username, GetGroupChannel())
     end
 end
@@ -659,8 +745,9 @@ end
 
 function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
     if not APR.settings.profile.enableAddon then return end
-    if APR.PartyProtocol.PlayerKey(sender) == APR.PartyProtocol.PlayerKey(APR.Username) then return end
-    if not sender or not ((UnitInParty and UnitInParty(sender)) or (UnitInRaid and UnitInRaid(sender))) then return end
+    local senderKey = APR.PartyProtocol.PlayerKey(sender)
+    if not senderKey or senderKey == APR.PartyProtocol.PlayerKey(APR.Username) then return end
+    if not GetGroupRoster()[senderKey] then return end
 
     local allowIncomingData = APR.settings.profile.receiveGroupData
 
@@ -670,6 +757,8 @@ function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
                 APR.versionCheck:HandleVersionMessage(message)
             end
         end
+
+        if IsInRaid() then return end
 
         if prefix == "APRPartyRequest" then
             APR:Debug("Received APRPartyRequestData, sending group data", message)
@@ -768,10 +857,11 @@ function APR.party:Delete()
 end
 
 function APR.party:RequestData()
-    if not APR.settings.profile.receiveGroupData then
+    if not CanShareGroupProgress() or not APR.settings.profile.receiveGroupData then
         return
     end
-    if IsInGroup() then
-        C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", GetGroupChannel())
-    end
+    local now = GetTime()
+    if self.lastGroupRequestTime and now - self.lastGroupRequestTime < GROUP_REQUEST_THROTTLE then return end
+    self.lastGroupRequestTime = now
+    C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", GetGroupChannel())
 end

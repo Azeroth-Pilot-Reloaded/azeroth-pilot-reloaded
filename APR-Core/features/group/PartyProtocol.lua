@@ -30,6 +30,13 @@ function protocol.PlayerKey(value)
     return name .. "-" .. (realm or home:gsub("%s", ""))
 end
 
+function protocol.DisplayName(value)
+    local name, realm = NameParts(value)
+    if not name then return end
+    local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
+    return realm and realm ~= home:gsub("%s", "") and (name .. "-" .. realm) or name
+end
+
 -- Sender is authoritative. Legacy peers may send only a character name in their payload.
 function protocol.NormalizeSnapshot(data, sender)
     if type(data) ~= "table" then return nil, "payload_type" end
@@ -38,9 +45,7 @@ function protocol.NormalizeSnapshot(data, sender)
     if not name or claimed ~= name or (claimedRealm and protocol.PlayerKey(data.username) ~= protocol.PlayerKey(sender)) then
         return nil, "sender_mismatch"
     end
-    local home = GetNormalizedRealmName and GetNormalizedRealmName() or GetRealmName and GetRealmName() or ""
-    local displayName = realm and realm ~= home:gsub("%s", "") and (name .. "-" .. realm) or name
-    local result = { username = displayName, sender = protocol.PlayerKey(sender) }
+    local result = { username = protocol.DisplayName(sender), sender = protocol.PlayerKey(sender) }
     for _, field in ipairs({ "route", "routeFileName" }) do
         if data[field] ~= nil then
             result[field] = Text(data[field], 256)

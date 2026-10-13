@@ -32,6 +32,8 @@ C_EventUtils = { IsEventValid = function(event) return event ~= "UNSUPPORTED" en
 assert(not APR:RegisterSupportedEvent(frame, "UNSUPPORTED"))
 assert(APR:RegisterSupportedEvent(frame, "PLAYER_ENTERING_WORLD"))
 APR.event:RegisterEvents()
+assert(APR.event.framePool.group.events.GROUP_ROSTER_UPDATE,
+    "Group visibility is refreshed when a party is converted to a raid")
 assert(APR.event.framePool.load == nil, "The bootstrap event must not allocate an unbound runtime handler")
 assert(not APR.event.framePool.lootItems.events.CURRENCY_DISPLAY_UPDATE)
 

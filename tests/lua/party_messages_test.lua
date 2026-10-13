@@ -66,3 +66,38 @@ now = now + 11
 party:CleanupExpiredFragments()
 assert(not next(party.incomingFragments) and not party.fragmentCleanupTicker)
 print("Party: sender isolation, out-of-order/duplicate fragments, expiry, invalid headers and wire roundtrip passed")
+
+-- Verify the embedded transport, including queued fragment completion.
+Enum = {}
+table.wipe = wipe
+function GetFramerate() return 60 end
+function securecallfunction(callback, ...) return callback(...) end
+function geterrorhandler() return function(message) error(message) end end
+-- WoW's Lua 5.1 supports arguments to xpcall; standard Lua 5.1 does not.
+local luaXpcall = xpcall
+function xpcall(callback, handler, ...)
+    local args = { ... }
+    return luaXpcall(function() return callback(unpack(args)) end, handler)
+end
+C_ChatInfo.SendAddonMessage = function(prefix, message, channel)
+    assert(prefix == "APRPartyData" and channel == "PARTY" and #message <= 255)
+    sent[#sent + 1] = message
+    party:HandleMessageFragment(message, "throttled")
+    return 0
+end
+dofile("APR-Core/libs/AceComm-3.0/ChatThrottleLib.lua")
+local before, callbacks = #sent, 0
+APR:SendAddonMessageSplit("APRPartyData", payload, "PARTY", nil, function(success)
+    assert(success)
+    callbacks = callbacks + 1
+end)
+assert(#sent == before and ChatThrottleLib.bQueueing and callbacks == 0,
+    "Fragments wait for transport bandwidth instead of being sent as a burst")
+for _ = 1, 60 do
+    now = now + 0.25
+    ChatThrottleLib.OnUpdate(ChatThrottleLib.Frame, 0.25)
+end
+assert(callbacks == 1 and completed[5] == payload and not ChatThrottleLib.bQueueing,
+    "Throttled fragments retain the legacy wire format and complete exactly once")
+assert(not next(party.incomingFragments) and not party.fragmentCleanupTicker)
+print("Party transport: embedded bandwidth limiter, complete wire roundtrip and callback passed")
