@@ -294,6 +294,8 @@ function CurrentStep:AddQuestSteps(questID, text, objectiveIndex, isScenario, no
     local profile = APR:GetSettingsProfile()
     if not profile or not profile.currentStepShow then return end
     local key = questID .. "-" .. (objectiveIndex or 0)
+    -- A main objective takes precedence over the same optional objective.
+    self:ReleaseRow(self.fillersList, key)
     local container = AcquireRow(self, self.questsList, key, "objective", text, false, color, dash)
     container.questID, container.objectiveIndex = questID, objectiveIndex
     container.objectiveText, container.isScenario = text, isScenario
