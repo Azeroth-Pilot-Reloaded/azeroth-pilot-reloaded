@@ -17,6 +17,8 @@ Tests require no credentials, running WoW client, browser, or external API calls
 - `lua/*_test.lua`: automatically discovered addon regression suites, each in its
   own Lua 5.1 runtime via `lupa.lua51`.
   `route_ui_test_env.lua` is shared test support, not an executable suite.
+  `lua/test_reload_confirmation.py` checks reload call sites using Python file
+  discovery, so the Lua runtime does not need `io.popen` or Git.
 - `routes/test_syntax.py`: loads **every** `Routes/**/*.lua` file in an isolated
   Lua 5.1 environment, then validates every route with `route_schema.py`.
   Unknown options, constants, nested fields and invalid values fail the suite.
