@@ -18,7 +18,7 @@ function Selection:Create()
     self.frame = frame
     APR.currentStep.emptyRoutePrompt = frame
     frame:SetPoint("TOPLEFT", CurrentStepFrame_StepHolder, "TOPLEFT", 8, -8)
-    frame.title = UI:Label(frame, L["UI_ROUTE_PREFABS"], 12, "accent", "currentStep")
+    frame.title = UI:Label(frame, L["UI_ROUTE_SELECT"], 12, "accent", "currentStep")
     frame.title:SetPoint("TOPLEFT", 10, -10)
     frame.title:SetWordWrap(true)
     frame.button = UI:Button(frame, L["ROUTE_SELECTION"], 1, function()
