@@ -60,7 +60,8 @@ end
 
 --- Return the localized label for the first recognized step key.
 -- This keeps UI construction simple while letting steps remain data-driven.
-function APR:GetStepString(step)
+-- skipNote lets waypoint summaries prefer destination actions over notes.
+function APR:GetStepString(step, skipNote)
     if self:IsTransportStep(step) then return self:GetTransportStepText(step) end
     if step and step.LootMoney then
         return self:GetLootMoneyStepText(step.LootMoney), "LootMoney"
@@ -68,7 +69,7 @@ function APR:GetStepString(step)
     for _, key in ipairs(self.routeActionKeys or {}) do
         if step and step[key] then return self:GetRouteActionText(key, step[key]), key end
     end
-    if step and step.Note then
+    if not skipNote and step and step.Note then
         local noteValue = step.Note
         if type(noteValue) == "table" then
             noteValue = noteValue[1]
@@ -152,9 +153,10 @@ function APR:GetStepString(step)
 end
 
 --- Build the waypoint summary text by scanning upcoming steps for actionable instructions.
--- This mirrors legacy behaviour but is wrapped in a single helper for maintainability.
+-- Notes are a fallback only when no upcoming action can describe the destination.
 function APR:CheckWaypointText()
     local currentStepIndex = APRData[APR.PlayerID][APR.ActiveRoute]
+    local noteText
 
     local function IsInList(value, list)
         for _, v in ipairs(list) do
@@ -170,7 +172,7 @@ function APR:CheckWaypointText()
         local step = steps[i]
 
         if step then
-            local stepText, stepKey = APR:GetStepString(step)
+            local stepText, stepKey = APR:GetStepString(step, true)
 
             if stepKey then
                 if IsInList(stepKey, APR.mainStepOptions) then
@@ -179,7 +181,15 @@ function APR:CheckWaypointText()
                     return "[" .. L["WAYPOINT"] .. "] - " .. stepText
                 end
             end
+
+            if not noteText and step.Note then
+                noteText = APR:GetStepString({ Note = step.Note })
+            end
         end
+    end
+
+    if noteText then
+        return "[" .. L["WAYPOINT"] .. "] - " .. noteText
     end
 
     return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
