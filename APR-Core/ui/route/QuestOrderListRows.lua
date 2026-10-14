@@ -51,9 +51,13 @@ local function getAdditionalInstructions(step, actionKey, primaryKey)
     if step.BuyMerchant and (step.Qpart or actionKey or step.ExitTutorial or
         primaryKey == "LeaveQuest" or primaryKey == "LeaveQuests" or primaryKey == "ResetRoute") then
         for _, item in ipairs(step.BuyMerchant) do
-            local name = C_Item.GetItemInfo(item.itemID) or (UNKNOWN .. " (" .. item.itemID .. ")")
-            add(string.format(L["BUY_ITEM"], item.quantity or 1, name),
-                item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID))
+            local quantity = APR.GetMerchantPurchaseQuantity and APR:GetMerchantPurchaseQuantity(item)
+                or item.quantity or 1
+            if quantity > 0 then
+                local name = C_Item.GetItemInfo(item.itemID) or (UNKNOWN .. " (" .. item.itemID .. ")")
+                add(string.format(L["BUY_ITEM"], quantity, name),
+                    item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID))
+            end
         end
     end
     for _, kind in ipairs({ "item", "spell" }) do
@@ -190,11 +194,13 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                     local questInfo = {}
                     local flagged = 0
                     for _, item in ipairs(buyMerchant) do
-                        if (item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID)) or currentStepIndex > rawIndex then
+                        local quantity = APR.GetMerchantPurchaseQuantity and APR:GetMerchantPurchaseQuantity(item)
+                            or item.quantity or 1
+                        if quantity == 0 or (item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID)) or currentStepIndex > rawIndex then
                             flagged = flagged + 1
                         else
                             local itemName = C_Item.GetItemInfo(item.itemID) or UNKNOWN
-                            table.insert(questInfo, { questID = item.quantity, questName = itemName })
+                            table.insert(questInfo, { questID = quantity, questName = itemName })
                         end
                     end
                     if #buyMerchant == flagged then

@@ -111,6 +111,29 @@ class RouteSchemaTests(unittest.TestCase):
             with self.subTest(value=invalid), self.assertRaises(InvalidRoute):
                 self.schema.condition({"SkipForPrimaryProfessions": invalid}, "condition")
 
+    def test_conditional_optional_merchant_purchases(self):
+        self.schema.step({"BuyMerchant": seq({"itemID": 2678, "quantityFromItemID": 6889,
+            "targetStock": True, "optional": True, "reserveCopper": 100,
+            "conditions": {"Skill": {"skill": "cooking", "rank": 50, "operator": "<"}}})}, "step")
+        for entry in ({"itemID": 1}, {"itemID": 1, "quantity": 1, "optional": "yes"},
+                      {"itemID": 1, "quantity": 1, "reserveCopper": -1},
+                      {"itemID": 1, "quantityFromItemID": 0},
+                      {"itemID": 1, "quantity": 1, "bagSlots": 0},
+                      {"itemID": 1, "quantity": 1, "conditions": {"BuyMerchant": seq(1)}}):
+            with self.subTest(entry=entry), self.assertRaises(InvalidRoute):
+                self.schema.step({"BuyMerchant": seq(entry)}, "step")
+
+    def test_classic_ammunition_slot_conditions(self):
+        condition = {"EquippedItemStat": {"slot": 0, "stat": "LEVEL", "value": 30,
+                                           "operator": "<=", "allowMissing": True}}
+        self.schema.condition(condition, "condition")
+        self.schema.step({"BuyMerchant": seq({"itemID": 3030, "quantity": 400,
+                                              "conditions": condition})}, "step")
+        for slot in (-1, 0.5, 20):
+            with self.subTest(slot=slot), self.assertRaises(InvalidRoute):
+                self.schema.condition({"EquippedItemStat": {
+                    **condition["EquippedItemStat"], "slot": slot}}, "condition")
+
     def test_multiple_spell_buttons_for_one_quest_or_objective(self):
         for value in (2050, "Lesser Heal", seq(2050, 1243), seq(2050, "Power Word: Fortitude")):
             for key in ("5648", "5648-1"):

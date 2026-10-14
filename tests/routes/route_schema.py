@@ -119,7 +119,8 @@ class RouteSchema:
         class_value = enum((*catalog.enums["Classes"].values(),
                             *(key.upper().replace(" ", "") for key in catalog.enums["Classes"])))
         race = union(constants("RACES"), ID)
-        equipped_stat = obj({"slot": SLOT, "stat": TEXT, "value": NUMBER,
+        # Classic ammunition uses inventory slot zero.
+        equipped_stat = obj({"slot": number(0, 19, integer=True), "stat": TEXT, "value": NUMBER,
                              "operator": OPERATOR, "precision": COUNT, "allowMissing": BOOL},
                             required=("slot", "stat", "value"))
         equipped_item = obj({"slot": SLOT, "itemID": ID, "invert": BOOL}, required=("slot",))
@@ -241,9 +242,12 @@ class RouteSchema:
         for name in "BuyMerchant LootItems".split():
             fields = {"itemID": ID, "quantity": ID, "questID": ID}
             if name == "LootItems": fields["includeBank"] = BOOL
-            if name == "BuyMerchant": fields["targetStock"] = BOOL
+            if name == "BuyMerchant":
+                fields.update(targetStock=BOOL, optional=BOOL, reserveCopper=COUNT, conditions=condition,
+                              quantityFromItemID=ID, bagSlots=number(1, 40, integer=True))
             self.step_fields[name] = array(obj(fields,
-                                               required=("itemID", "quantity") if name == "BuyMerchant" else ("itemID",)), 1)
+                                               required=("itemID",),
+                                               choices=(("quantity", "quantityFromItemID"),) if name == "BuyMerchant" else ()), 1)
         entry = union(ID, obj({"itemID": ID, "text": TEXT, "Text": TEXT}, required=("itemID",)))
         for name in "SellItems BankDeposit BankWithdraw DestroyItems".split():
             fields = {"items": array(entry, 1), "npcID": ID, "text": TEXT, "Text": TEXT}
