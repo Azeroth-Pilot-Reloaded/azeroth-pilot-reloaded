@@ -191,15 +191,19 @@ function handlers.RenderRequirements(step, showStepDetails, currentStepIndex)
         local flagged = 0
 
         for _, item in ipairs(step.BuyMerchant) do
-            if (item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID)) then
+            local quantity = APR.GetMerchantPurchaseQuantity and APR:GetMerchantPurchaseQuantity(item)
+                or item.quantity or 1
+            if quantity == 0 or (item.questID and C_QuestLog.IsQuestFlaggedCompleted(item.questID)) then
                 flagged = flagged + 1
+            else
+                local itemName = C_Item.GetItemInfo(item.itemID)
+                local name = itemName or UNKNOWN
+                APR.currentStep:AddQuestSteps("BUY_ITEM_" .. name,
+                    format(L["BUY_ITEM"], quantity, name), name)
             end
-            local itemName, _, _, _, _, _, _, _, _, _ = C_Item.GetItemInfo(item.itemID)
-            local name = itemName or UNKNOWN
-            APR.currentStep:AddQuestSteps("BUY_ITEM_" .. name,
-                format(L["BUY_ITEM"], item.quantity, name), name)
         end
-        if flagged == #step.BuyMerchant then
+        if flagged == #step.BuyMerchant and not (APR.HasPendingMerchantPurchase
+            and APR:HasPendingMerchantPurchase(step.BuyMerchant)) then
             APR:NextQuestStep()
             return true
         end
