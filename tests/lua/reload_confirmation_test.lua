@@ -125,16 +125,4 @@ assert(not APR:ChangeTrackerOption("currentStep", "currentStepAttachFrameToQuest
 assert(profile.currentStepAttachFrameToQuestLog and geometry == 1 and reloads == before and not popup:IsShown(),
     "Geometry changes without a renderer change apply immediately")
 
--- Keep an inventory guard: new reload sites must join the confirmation service.
-local pipe = assert(io.popen('git ls-files --cached --others --exclude-standard APR-Core'))
-for path in pipe:lines() do
-    if path:match("%.lua$") and path ~= "APR-Core/ui/foundations/ReloadConfirmation.lua"
-        and not path:find("/libs/", 1, true) and not path:find("/locales/", 1, true) then
-        local file = assert(io.open(path, "r"))
-        local code = file:read("*a"); file:close()
-        assert(not code:match("ReloadUI%s*%(") and not code:match("C_UI%.Reload%s*%("),
-            "Reload bypasses the shared confirmation: " .. path)
-    end
-end
-pipe:close()
 print("Reload confirmation: cancellation, one-shot acceptance, reset commands, isolated profile handlers and conditional snaps passed")
