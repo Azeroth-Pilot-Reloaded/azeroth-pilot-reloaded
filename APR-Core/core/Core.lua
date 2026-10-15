@@ -172,6 +172,7 @@ function APR:OnInitialize()
     -- Register events
     self.event:RegisterEvents()
     self.QuestTracker:Initialize()
+    self.AppearanceIntro:Initialize()
     self.LayoutEditor:InitializeOnboarding()
 end
 

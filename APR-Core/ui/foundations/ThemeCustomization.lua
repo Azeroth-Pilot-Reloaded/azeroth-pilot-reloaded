@@ -63,7 +63,7 @@ function Editor:Discard()
     self:UpdatePreviews()
 end
 
-function Editor:Apply()
+function Editor:Apply(onApplied)
     if InCombatLockdown() then return false end
     local draft = self:GetDraft()
     local previous = APR:GetSelectedSkinName()
@@ -75,6 +75,7 @@ function Editor:Apply()
         profile.elvuiSkin, profile.ellesmereuiSkin = pending.theme == "ElvUI", pending.theme == "EllesmereUI"
         profile.uiThemeCustomization = Copy(pending, pending.theme)
         self.draft = Copy(profile.uiThemeCustomization, pending.theme)
+        if onApplied then onApplied() end
         return true
     end
     if previous ~= draft.theme and not (oldTheme and newTheme and oldTheme.style == "modern" and newTheme.style == "modern") then
@@ -94,7 +95,7 @@ function Editor:GetOptions()
         themePreview = {type = "description", name = L["UI_THEME_PREVIEW"], dialogControl = "APRThemePreview", width = "full", order = 2,
             hidden = function() return APR.OptionsPanel and APR.OptionsPanel.themePreviewActive or false end},
         themePreviewHint = {type = "description", name = L["UI_THEME_PREVIEW_HINT"], dialogControl = "APRThemeNotice", width = "full", order = 3},
-        themeCustomizationHeader = {type = "header", name = L["UI_THEME_CUSTOMIZATION"], order = 3.5},
+        themeCustomizationHeader = {type = "header", name = HOUSING_ITEM_TOAST_TYPE_CUSTOMIZATION or L["UI_THEME_CUSTOMIZATION"], order = 3.5},
         themeCustomColor = {type = "toggle", name = L["UI_THEME_CUSTOM_COLOR"], desc = L["UI_THEME_CUSTOM_COLOR_DESC"], order = 4,
             disabled = disabled, get = function() return self:GetDraft().customColor end, set = function(_, value) self:Set("customColor", value) end},
         themeAccent = {type = "color", name = L["UI_THEME_ACCENT"], order = 5, hasAlpha = false,

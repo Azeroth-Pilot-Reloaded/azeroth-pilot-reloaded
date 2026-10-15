@@ -49,6 +49,7 @@ function Workspace:Create()
     frame:HookScript("OnHide", function()
         if UI.activeMenu then UI.activeMenu:Hide() end
         if UI.selectionDialog then UI.selectionDialog:Hide() end
+        if APR.LayoutEditor and APR.LayoutEditor.QueueOnboarding then APR.LayoutEditor.QueueOnboarding() end
     end)
     self:LayoutTabs()
 end

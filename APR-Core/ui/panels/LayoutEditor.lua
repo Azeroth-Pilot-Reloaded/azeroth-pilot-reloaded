@@ -16,7 +16,9 @@ function Editor:InitializeOnboarding()
             self.onboardingQueued = nil
             if not self.firstUsePending or InCombatLockdown() or (IsLoggedIn and not IsLoggedIn()) or
                 (APR.IsPetBattleActive and APR:IsPetBattleActive()) then return end
+            if APR.AppearanceIntro and APR.AppearanceIntro:IsBlockingOnboarding() then return end
             if APR.ReleaseNotesWindow and APR.ReleaseNotesWindow:IsBlockingOnboarding() then return end
+            if APR.Workspace and APR.Workspace.frame and APR.Workspace.frame:IsShown() then return end
             if self:Show() then watcher:UnregisterAllEvents() end
         end)
     end

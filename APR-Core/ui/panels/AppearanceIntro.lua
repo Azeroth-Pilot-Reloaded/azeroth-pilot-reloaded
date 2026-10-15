@@ -1,0 +1,201 @@
+-- One account-wide introduction to the new appearance system, independent of APR's release number.
+-- Revision 2 rejects beta completion markers written by closing the old chooser.
+local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+local UI = APR.UI
+APR.AppearanceIntro = {revision = 2, cards = {}}
+local Intro = APR.AppearanceIntro
+local textureRoot = "Interface\\AddOns\\APR\\APR-Core\\assets\\ui\\theme-previews\\"
+local models = {wow = true, modern = true, ElvUI = true, EllesmereUI = true, custom = true}
+
+function Intro:IsPending()
+    local database = APR.settings and APR.settings.db
+    if not database or not database.global then return false end
+    local global = database.global
+    -- Existing theme/settings values and an old seen flag do not prove a choice.
+    return (tonumber(global.appearanceIntroSeen) or 0) < self.revision
+        or not models[global.appearanceIntroChoice]
+end
+
+function Intro:IsBlockingOnboarding()
+    return self:IsPending() or (self.frame and self.frame:IsShown()) or false
+end
+
+function Intro:GetChoices()
+    local choices = {
+        {id = "wow", label = L["UI_INTRO_WOW"], description = L["UI_INTRO_WOW_DESC"]},
+        {id = "modern", theme = "wowModern", label = LAYOUT_STYLE_MODERN or UNIT_NAMEPLATES_STYLE_MODERN or L["UI_THEME_WOW_MODERN"],
+            description = L["UI_INTRO_MODERN_DESC"]},
+    }
+    if _G.ElvUI then choices[#choices + 1] = {id = "ElvUI", label = "ElvUI", description = L["UI_INTRO_DETECTED"]} end
+    if _G.EllesmereUI and type(_G.EllesmereUI.RegisterSkin) == "function" then
+        choices[#choices + 1] = {id = "EllesmereUI", label = "EllesmereUI", description = L["UI_INTRO_DETECTED"]}
+    end
+    choices[#choices + 1] = {id = "custom", label = HOUSING_ITEM_TOAST_TYPE_CUSTOMIZATION or L["UI_THEME_CUSTOMIZATION"],
+        description = string.format(L["UI_INTRO_CUSTOM_DESC"], L["UI_APPEARANCE"])}
+    return choices
+end
+
+function Intro:Complete(id)
+    if not models[id] then return false end
+    APR.settings.db.global.appearanceIntroChoice = id
+    APR.settings.db.global.appearanceIntroSeen = self.revision
+    if self.confirmation and self.confirmation:IsShown() then self.confirmation:Hide() end
+    self.confirmation = nil
+    if self.frame then self.frame:Hide() end
+    if self.watcher then self.watcher:UnregisterAllEvents() end
+    if APR.LayoutEditor and APR.LayoutEditor.QueueOnboarding then APR.LayoutEditor.QueueOnboarding() end
+    return true
+end
+
+function Intro:Choose(id)
+    if InCombatLockdown() then return false end
+    local selected
+    for _, choice in ipairs(self:GetChoices()) do if choice.id == id then selected = choice; break end end
+    if not selected then return false end
+    if id == "custom" then
+        self:Complete(id)
+        APR.Workspace:Show("options", "appearance")
+        APR.OptionsPanel:SelectView("theme")
+        return true
+    end
+    local editor = APR.ThemeCustomization
+    editor:SetTheme(selected.theme or id)
+    editor:Apply(function() self:Complete(id) end)
+    -- Canceling the shared reload popup leaves the chooser and its draft available.
+    local popup = UI.selectionDialog
+    self.confirmation = popup and popup:IsShown() and popup or nil
+    return true
+end
+
+function Intro:Layout()
+    if not self.frame or not self.choices or self.layingOut then return end
+    self.layingOut = true
+    local available = math.max(230, UIParent:GetWidth() - 60)
+    -- Double the original 142px-wide artwork without shrinking it to fit more columns.
+    local gap, cardWidth = 24, math.min(304, available - 68)
+    local columns = math.min(#self.choices, math.max(1, math.floor((available - 68 + gap) / (cardWidth + gap))))
+    local width = math.min(available, math.max(430, columns * cardWidth + (columns - 1) * gap + 68))
+    self.frame:SetWidth(width)
+    self.title:SetHeight(0)
+    self.title:SetHeight(math.max(32, self.title:GetStringHeight()))
+    self.subtitle:SetHeight(0)
+    self.subtitle:SetHeight(math.max(24, self.subtitle:GetStringHeight()))
+    local imageHeight = (cardWidth - 20) * 800 / 512
+    local cardHeight = imageHeight + 92
+    local gridHeight = math.ceil(#self.choices / columns) * (cardHeight + gap) - gap
+    local top = 20 + self.title:GetHeight() + 10 + self.subtitle:GetHeight() + 20
+    self.frame:SetHeight(math.min(top + gridHeight + 60, math.max(260, UIParent:GetHeight() - 60)))
+    local contentWidth = width - 68
+    local offset = (contentWidth - (cardWidth * columns + gap * (columns - 1))) / 2
+    for index, card in ipairs(self.cards) do
+        if card:IsShown() then
+            local row, column = math.floor((index - 1) / columns), (index - 1) % columns
+            card:ClearAllPoints()
+            card:SetPoint("TOPLEFT", self.content, "TOPLEFT", offset + column * (cardWidth + gap), -row * (cardHeight + gap))
+            card:SetSize(cardWidth, cardHeight)
+            card.image:SetSize(cardWidth - 20, imageHeight)
+        end
+    end
+    self.content:SetWidth(contentWidth)
+    self.content:SetHeight(gridHeight)
+    self.scroll:SetVerticalScroll(math.min(self.scroll:GetVerticalScroll(), self.scroll:GetVerticalScrollRange()))
+    self.layingOut = nil
+end
+
+function Intro:Create()
+    local frame = UI:Panel(UIParent, "window", "library")
+    self.frame = frame
+    _G.APRAppearanceIntro = frame
+    frame:SetPoint("CENTER")
+    frame:SetSize(1028, 680)
+    -- The standalone release window is DIALOG and always covers this HIGH chooser.
+    frame:SetFrameStrata("HIGH")
+    frame:SetToplevel(false)
+    frame:SetClampedToScreen(true)
+    frame:EnableMouse(true)
+    frame:SetMovable(true)
+    frame:RegisterForDrag("LeftButton")
+    APR:SetupFrameDrag(frame, function() return not InCombatLockdown() end)
+    local title = UI:Label(frame, L["UI_INTRO_TITLE"], 24, "accent")
+    self.title = title
+    title:SetPoint("TOPLEFT", 24, -20); title:SetPoint("TOPRIGHT", -24, -20)
+    title:SetHeight(32); title:SetWordWrap(true)
+    self.subtitle = UI:Label(frame, L["UI_INTRO_DESCRIPTION"], 14, "muted")
+    self.subtitle:SetPoint("TOPLEFT", title, "BOTTOMLEFT", 0, -10)
+    self.subtitle:SetPoint("TOPRIGHT", title, "BOTTOMRIGHT", 0, -10)
+    self.subtitle:SetHeight(42); self.subtitle:SetWordWrap(true)
+    self.scroll = UI:Scroll(frame)
+    self.scroll:SetPoint("TOPLEFT", self.subtitle, "BOTTOMLEFT", 0, -20)
+    self.scroll:SetPoint("BOTTOMRIGHT", -44, 60)
+    self.content = CreateFrame("Frame", nil, self.scroll)
+    self.scroll:SetScrollChild(self.content)
+    self.scroll:HookScript("OnSizeChanged", function() self:Layout() end)
+    UIParent:HookScript("OnSizeChanged", function()
+        if frame:IsShown() and not InCombatLockdown() then self:Layout() end
+    end)
+    -- Some bundled WoW fonts lack the arrow used in existing translations.
+    local footer = L["UI_INTRO_FOOTER"]:gsub("→", "/")
+    local note = UI:Label(frame, string.format(footer, GAMEOPTIONS_MENU, L["UI_APPEARANCE"]), 12, "muted")
+    self.footer = note
+    note:SetPoint("BOTTOMLEFT", 24, 12); note:SetPoint("BOTTOMRIGHT", -24, 12)
+    note:SetHeight(36); note:SetWordWrap(true)
+    -- Only an explicit appearance choice completes onboarding. Do not register
+    -- a close button or Escape dismissal: reloads/relogins must keep it pending.
+    frame:Hide()
+end
+
+function Intro:Show()
+    if not self:IsPending() or InCombatLockdown() or (IsLoggedIn and not IsLoggedIn())
+        or (APR.IsPetBattleActive and APR:IsPetBattleActive()) then return false end
+    if not self.frame then self:Create() end
+    self.choices = self:GetChoices()
+    for index, choice in ipairs(self.choices) do
+        local card = self.cards[index]
+        if not card then
+            card = UI:Button(self.content, "", 304, function(button) self:Choose(button.choice.id) end)
+            card:GetFontString():Hide()
+            card.image = card:CreateTexture(nil, "ARTWORK")
+            card.image:SetPoint("TOP", 0, -12)
+            card.image:SetTexCoord(0, 1, 0, 800 / 1024)
+            card.title = UI:Label(card, "", 16, "accent")
+            card.title:SetPoint("TOPLEFT", card.image, "BOTTOMLEFT", 0, -10)
+            card.title:SetPoint("TOPRIGHT", card.image, "BOTTOMRIGHT", 0, -10)
+            card.title:SetHeight(22); card.title:SetJustifyH("CENTER")
+            card.description = UI:Label(card, "", 12, "muted")
+            card.description:SetPoint("TOPLEFT", card.title, "BOTTOMLEFT", 0, -4)
+            card.description:SetPoint("TOPRIGHT", card.title, "BOTTOMRIGHT", 0, -4)
+            card.description:SetHeight(32); card.description:SetWordWrap(true); card.description:SetJustifyH("CENTER")
+            self.cards[index] = card
+        end
+        card.choice = choice
+        -- Gameplay screenshots stay in English; only the surrounding chooser copy is localized.
+        card.image:SetTexture(textureRoot .. choice.id .. "-en.tga")
+        card.title:SetText(choice.label); card.description:SetText(choice.description)
+        card:Show()
+    end
+    for index = #self.choices + 1, #self.cards do self.cards[index]:Hide() end
+    self.frame:Show()
+    self:Layout()
+    return true
+end
+
+function Intro:Initialize()
+    if not self:IsPending() or self.watcher then return end
+    -- A theme reload during a fresh installation must not turn unfinished placement
+    -- into an "existing installation" that silently skips the layout assistant.
+    if APR.LayoutEditor and APR.LayoutEditor.firstUsePending and APR.settings.db.global.layoutEditorSeen == nil then
+        APR.settings.db.global.layoutEditorSeen = false
+    end
+    local watcher = CreateFrame("Frame")
+    self.watcher = watcher
+    local function queue()
+        if self.queued or not self:IsPending() then return end
+        self.queued = true
+        C_Timer.After(1, function() self.queued = nil; self:Show() end)
+    end
+    for _, event in ipairs({"PLAYER_ENTERING_WORLD", "PLAYER_REGEN_ENABLED", "PET_BATTLE_CLOSE"}) do
+        APR:RegisterSupportedEvent(watcher, event)
+    end
+    watcher:SetScript("OnEvent", queue)
+    queue()
+end

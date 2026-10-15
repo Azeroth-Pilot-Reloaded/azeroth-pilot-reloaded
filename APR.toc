@@ -145,6 +145,7 @@ APR-Core/ui/panels/ReleaseNotesWindow.lua
 APR-Core/ui/panels/OptionsPanel.lua
 APR-Core/ui/panels/AboutPanel.lua
 APR-Core/ui/panels/Workspace.lua
+APR-Core/ui/panels/AppearanceIntro.lua
 APR-Core/integrations/ElvUISkin.lua
 APR-Core/integrations/EllesmereUISettings.lua
 APR-Core/integrations/EllesmereUISkin.lua

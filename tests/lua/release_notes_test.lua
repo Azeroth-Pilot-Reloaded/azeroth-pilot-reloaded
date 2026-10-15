@@ -221,6 +221,15 @@ window:Hide(); APR.changelog.startupVersion = nil
 APR.changelog:OnInit(); flush()
 assert(not window.frame:IsShown() and not window.pending, "Read notes stay closed on subsequent reloads")
 
+-- The required appearance choice must remain below the release window.
+APR.settings.db = {global = {}}
+dofile("APR-Core/ui/panels/AppearanceIntro.lua")
+assert(APR.AppearanceIntro:Show())
+assert(APR.AppearanceIntro.frame:GetFrameStrata() == "HIGH")
+APR.version = "7.3.0"; APR.changelog:OnInit(); flush()
+assert(window.frame:IsShown() and window.frame:GetFrameStrata() == "DIALOG"
+    and APR.AppearanceIntro.frame:IsShown(), "Release notes open above the pending appearance chooser")
+
 window:Hide()
 APR.settings.profile.lastReleaseNotesVersion = nil
 APR.settings.profile.lastRecordedVersion = APR.version
