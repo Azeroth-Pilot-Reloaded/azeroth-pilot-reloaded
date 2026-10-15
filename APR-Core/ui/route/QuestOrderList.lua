@@ -190,7 +190,9 @@ QuestOrderListFrame_ScrollFrame:SetScrollChild(QuestOrderListFrame_ScrollChild)
 APR.questOrderList.virtualList = APR.VirtualList:New(QuestOrderListFrame_ScrollFrame, function(parent)
     local row = CreateFrame("Frame", nil, parent, "BackdropTemplate")
     row.onRecycle = function(self)
-        if self.model then self.model.frame = nil; self.model = nil end
+        if self.model then
+            self.model.frame = nil; self.model = nil
+        end
     end
     return row
 end, function(row, model)
@@ -202,6 +204,9 @@ QuestOrderListFrame_ScrollFrame.aprVirtualList = APR.questOrderList.virtualList
 QuestOrderListFrame_StepHolderHeader = APR:CreateFrameHeader("QuestOrderListFrame_StepHolderHeader",
     QuestOrderListFrame, L["QUEST_ORDER_LIST"], "ObjectiveTrackerContainerHeaderTemplate", "questOrderList")
 QuestOrderListFrame_StepHolderHeader:SetPoint("TOPLEFT", QuestOrderListFrame, "TOPLEFT", 0, 30)
+-- The native header height varies with the client/template. Start the viewport
+-- below its actual lower edge so neither initial nor scrolled rows cross it.
+QuestOrderListFrame_ScrollFrame:SetPoint("TOPLEFT", QuestOrderListFrame_StepHolderHeader, "BOTTOMLEFT", 0, -2)
 
 APR:SetupHeaderDrag(QuestOrderListFrame_StepHolderHeader, QuestOrderListFrame, function()
     return not APR.settings.profile.questOrderListLock and not APR.settings.profile.questOrderListSnapToCurrentStep
@@ -238,7 +243,10 @@ resizeButton:SetScript("OnMouseUp", function(self, button)
     QuestOrderListFrame:StopMovingOrSizing()
     LibWindow.SavePosition(QuestOrderListPanel)
 end)
-if APR.RegisterSkinTarget then APR:RegisterSkinTarget(resizeButton, "resize") end
+if APR.RegisterSkinTarget then
+    APR:RegisterSkinTarget(resizeButton, "resize",
+        { bottomRightResize = true, scrollFrame = QuestOrderListFrame_ScrollFrame })
+end
 
 ---------------------------------------------------------------------------------------
 -------------------------- Function Quest Order List Frames ---------------------------
@@ -325,7 +333,9 @@ function APR.questOrderList:RemoveSteps(hideFrame)
     local profileStart = APR:StartPerformanceSample()
     QuestOrderListUtils:CancelRender(self)
     QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
-    if self.updateTimer then self.updateTimer:Cancel(); self.updateTimer = nil end
+    if self.updateTimer then
+        self.updateTimer:Cancel(); self.updateTimer = nil
+    end
     self.pendingUpdate = false
     self.contentSignature = nil
     self.currentStepIndex = nil
@@ -405,7 +415,9 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
     local routeKey = APR.ActiveRoute
     local pending = self.renderRequest
     if not forceRendering and pending and pending.route == routeKey and pending.index == currentStepIndex and
-        pending.width == FRAME_WIDTH then return end
+        pending.width == FRAME_WIDTH then
+        return
+    end
     if pending then QuestOrderListUtils:CancelRender(self) end
     local activeRouteSteps = APR:GetRouteSteps(routeKey)
     local sojournerSkipActive = APR:IsSojournerSkipActive()
@@ -468,8 +480,10 @@ function APR.questOrderList:AddStepFromRoute(forceRendering)
         local followStep = self.currentRouteKey ~= routeKey or self.currentStepIndex ~= currentStepIndex
         QuestOrderListUtils:CancelScroll(QuestOrderListFrame_ScrollFrame)
         local scrollOffset = QuestOrderListFrame_ScrollFrame:GetVerticalScroll()
-        local previous = { stepList = self.stepList,
-            rawStepContainers = self.rawStepContainers }
+        local previous = {
+            stepList = self.stepList,
+            rawStepContainers = self.rawStepContainers
+        }
         local tooltipOwner = GameTooltip:GetOwner()
         if tooltipOwner and tooltipOwner:GetParent() == QuestOrderListFrame_ScrollChild then GameTooltip:Hide() end
         self.stepList, self.rawStepContainers = target.stepList, target.rawStepContainers

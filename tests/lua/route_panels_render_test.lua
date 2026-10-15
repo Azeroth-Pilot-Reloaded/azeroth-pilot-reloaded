@@ -140,6 +140,9 @@ dofile("APR-Core/ui/foundations/VirtualList.lua")
 dofile("APR-Core/ui/route/QuestOrderList.lua")
 dofile("APR-Core/ui/route/QuestOrderListRows.lua")
 local list, scroll = APR.questOrderList, QuestOrderListFrame_ScrollFrame
+assert(scroll.point[1] == "TOPLEFT" and scroll.point[2] == QuestOrderListFrame_StepHolderHeader
+    and scroll.point[3] == "BOTTOMLEFT" and scroll.point[5] == -2,
+    "Both WoW and Modern list viewports start below the actual header, including when scrolling")
 scroll:SetSize(236, 400)
 local beforeFrames, beforeFonts = env.frames(), env.fonts()
 local function drainRender()

@@ -286,6 +286,20 @@ end
 
 -- Draw inside the existing hit area; actions, anchors and protected attributes stay untouched.
 local function ModernAction(button, kind, options, scope)
+    if kind == "resize" and options.bottomRightResize then
+        local scroll = options.scrollFrame
+        local arrow = scroll and scroll.ScrollBar and scroll.ScrollBar.ScrollDownButton
+        button:ClearAllPoints()
+        if arrow then
+            button:SetPoint("RIGHT", arrow, "LEFT", -2, 0)
+        else
+            button:SetPoint("BOTTOMRIGHT", button:GetParent(), "BOTTOMRIGHT", -22, 2)
+        end
+        -- The grip shares the arrow's row; no empty footer needs to be reserved.
+        if scroll then
+            scroll:SetPoint("BOTTOMRIGHT", scroll:GetParent(), "BOTTOMRIGHT", -22, 0)
+        end
+    end
     local look = modernButtons[button]
     if not look then
         look = {kind = kind, options = options, scope = scope}
