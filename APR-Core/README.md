@@ -195,6 +195,7 @@ and events. **Nested tables in a definition remain read-only.**
 | AceConsole                          | Registration of `/apr`.                                                         |
 | AceLocale                           | 11 locales, English by default; strings injected at packaging time.             |
 | AceSerializer                       | Serialization of progression for the group.                                     |
+| AceComm / ChatThrottleLib           | Embedded transport bandwidth limiter used by group messages.                    |
 | HereBeDragons / Pins                | Coordinates and map/minimap markers.                                            |
 | FarstriderLib / Data                | Graph and data; manifest `Standard` or `Camelot`, then finalization.            |
 | LibTaxiData                         | External dependency required by `.pkgmeta`, optional in the TOC for load order. |
@@ -203,11 +204,14 @@ and events. **Nested tables in a definition remain read-only.**
 | LibWindow                           | Window positions and scales.                                                    |
 | ElvUI / EllesmereUI                 | Optional; absence of both keeps native rendering.                               |
 
-AceComm, AceBucket, AceHook, AceTab, and AceTimer are no longer loaded by
+AceBucket, AceHook, AceTab, and AceTimer are no longer loaded by
 `embeds.xml`: no executed consumer was found in APR or the embedded libraries.
 Their provider sources remain intact in `libs/` but are excluded from releases
 by `.pkgmeta`, along with the unused HereBeDragons migration module. The provider
 libraries are not renamed or annotated as APR code.
+
+AceComm remains loaded and packaged because its XML also loads ChatThrottleLib,
+which throttles APR's outgoing group-message fragments.
 
 The eight media assets in `assets/` cover the logo, header, arrow, minimap icon,
 the `/apr 42` sound, and three `routeHelper/` illustrations. The illustration
