@@ -30,13 +30,6 @@
     "appearance": "palette-outline",
     "profiles": "account-outline",
     "changelog": "text-box-outline",
-    "debug": "bug-outline",
-    "routes": "map-marker-path",
-    "extension": "layers-outline",
-    "error": "alert-circle-outline",
-    "performance": "chart-line",
-    "vendor": "store-outline",
-    "completed": "check-circle-outline",
-    "pending": "circle-outline"
+    "debug": "bug-outline"
   }
 }
