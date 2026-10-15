@@ -101,6 +101,10 @@ local CurrentStepFrameSettingsButton = CreateFrame("Button", "CurrentStepFrameSe
 CurrentStepFrameSettingsButton:SetSize(22, 22)
 CurrentStepFrameSettingsButton:SetPoint("RIGHT", CurrentStepFrameHeader.MinimizeButton, "LEFT", -3, 0)
 CurrentStepFrameSettingsButton:SetNormalTexture("Interface\\Buttons\\UI-OptionsButton")
+local settingsIcon = CurrentStepFrameSettingsButton:GetNormalTexture()
+settingsIcon:ClearAllPoints()
+settingsIcon:SetPoint("CENTER", CurrentStepFrameSettingsButton, "CENTER", 0, 0)
+settingsIcon:SetSize(16, 16) -- Match Modern's glyph while keeping the 22px hit area.
 CurrentStepFrameSettingsButton:SetHighlightTexture("Interface\\Buttons\\UI-Common-MouseHilight", "ADD")
 CurrentStepFrameSettingsButton:SetScript("OnClick", function(self, button)
     MenuUtil.CreateContextMenu(self, APR.GetMenu)
@@ -463,6 +467,12 @@ function APR.currentStep:PreviousNextStepButton()
     end
 end
 
+-- Modern navigation leaves room for a slightly wider guide progress bar.
+function APR.currentStep:GetProgressBarWidth(width)
+    local modern = APR.GetThemeStyle and APR:GetThemeStyle("currentStep") == "modern"
+    return math.max(1, (width or self.layout.width) - (modern and 72 or 92))
+end
+
 -- Add a progress bar
 function APR.currentStep:ProgressBar(key, total, current)
     local profile = APR:GetSettingsProfile()
@@ -475,7 +485,7 @@ function APR.currentStep:ProgressBar(key, total, current)
 
     if not self.progressBar then
         local progressBar = APR:CreateStatusBar(CurrentStepFrameHeader, "CurrentStepFrame_StepHolder_ProgressBar")
-        progressBar:SetSize(self.layout.width - 92, 18)
+        progressBar:SetSize(self:GetProgressBarWidth(), 18)
         progressBar:SetPoint("BOTTOM", CurrentStepFrameHeader, "BOTTOM", 0, -25)
         progressBar:SetMinMaxValues(0, math.max(totalSteps, 1))
         progressBar:SetValue(currentStep)
@@ -497,6 +507,8 @@ function APR.currentStep:ProgressBar(key, total, current)
         self.progressBar.key = key
         self.progressBar.currentStep = currentStep
     else
+        local width = self:GetProgressBarWidth()
+        if self.progressBar:GetWidth() ~= width then self.progressBar:SetWidth(width) end
         self.progressBar:SetMinMaxValues(0, math.max(totalSteps, 1))
         self.progressBar.key = key
         self.progressBar:SetValue(currentStep)

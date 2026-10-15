@@ -229,7 +229,7 @@ function CurrentStep:SetContentWidth(width)
     if InCombatLockdown() or Layout.width == width then return end
     Layout.width = width
     CurrentStepScreenPanel:SetWidth(width)
-    if self.progressBar then self.progressBar:SetWidth(width - 92) end
+    if self.progressBar then self.progressBar:SetWidth(self:GetProgressBarWidth(width)) end
     if APR.RouteSelection then APR.RouteSelection:Layout() end
     if APR.currentStepImagePreview then
         APR.currentStepImagePreview:ConfigureCurrentStepPreview(CurrentStepFrame_StepHolder, width)
