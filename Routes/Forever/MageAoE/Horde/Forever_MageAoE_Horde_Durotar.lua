@@ -51,6 +51,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Troll-Orc"] = {
             LootMoney = { copper = 60 },
             Coord = { x = -4281.07, y = -720.15 },
             Range = 30,
+            IsQuestUncompleted = 4641,
             Zone = 1411,
             _index = 2,
         },

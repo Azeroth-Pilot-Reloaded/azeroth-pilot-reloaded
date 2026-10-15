@@ -477,6 +477,15 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 47,
         },
         {
+            LootMoney = { copper = 7579, junkOnly = true },
+            Coord = { x = -2747.6, y = -5530.54 },
+            Range = 30,
+            Class = "WARLOCK",
+            IsQuestUncompleted = 6261,
+            Zone = 1432,
+            _index = 48,
+        },
+        {
             Waypoint = 6261,
             NonSkippableWaypoint = true,
             Fillers = { [418] = { 1 } },
@@ -484,7 +493,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 5,
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK" },
             Zone = 1432,
-            _index = 48,
+            _index = 49,
         },
         {
             UseFlightPath = 6261,
@@ -496,7 +505,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             IsQuestUncompleted = 6261,
             SkipInZones = { 1455 },
             Zone = 1432,
-            _index = 49,
+            _index = 50,
         },
         {
             LearnSkill = { spellID = 2567 },
@@ -505,7 +514,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "WARRIOR",
             IsQuestUncompleted = 6261,
             Zone = 1455,
-            _index = 50,
+            _index = 51,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -515,14 +524,14 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             IsQuestUncompleted = 6261,
             OnlyInZones = { 1455 },
             Zone = 1455,
-            _index = 51,
+            _index = 52,
         },
         {
             UseHS = 6261,
             Fillers = { [418] = { 1 } },
             UseHSIfAvailable = true,
             SkipInZones = { 1436, 1439, 1453 },
-            _index = 52,
+            _index = 53,
         },
         {
             UseFlightPath = 1338,
@@ -532,7 +541,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             ZoneStepTrigger = { x = -1152.4, y = -4821.13, mapID = 1455, Range = 30 },
             OnlyInZones = { 1432 },
             Zone = 1432,
-            _index = 53,
+            _index = 54,
         },
         {
             Waypoint = 1338,
@@ -541,7 +550,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 5,
             OnlyInZones = { 1455 },
             Zone = 1455,
-            _index = 54,
+            _index = 55,
         },
         {
             Tram = true,
@@ -549,7 +558,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 5,
             ZoneStepTrigger = { x = 522, y = -8352.101, mapID = 1453, Range = 15 },
             Zone = 1455,
-            _index = 55,
+            _index = 56,
         },
         {
             BuyMerchant = { { itemID = 4470, quantity = 1 } },
@@ -563,7 +572,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Money = { copper = 40, operator = ">=" },
             Skill = { operator = "<", skill = "cooking", rank = 50 },
             Zone = 1453,
-            _index = 56,
+            _index = 57,
         },
         {
             BuyMerchant = { { itemID = 4471, quantity = 1 } },
@@ -577,7 +586,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Money = { copper = 142, operator = ">=" },
             Skill = { operator = "<", skill = "cooking", rank = 50 },
             Zone = 1453,
-            _index = 57,
+            _index = 58,
         },
         {
             Waypoint = 95065,
@@ -590,7 +599,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             ItemCount = { itemID = 5469, count = 5, operator = "<" },
             Skill = { rank = 50, skill = "cooking", operator = "<" },
             Zone = 1453,
-            _index = 58,
+            _index = 59,
         },
         {
             Waypoint = 95065,
@@ -603,7 +612,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             ItemCount = { itemID = 12238, count = 6, operator = "<" },
             Skill = { rank = 50, skill = "cooking", operator = "<" },
             Zone = 1453,
-            _index = 59,
+            _index = 60,
         },
         {
             Waypoint = 95065,
@@ -617,7 +626,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             IsQuestUncompleted = 6261,
             Skill = { rank = 50, skill = "cooking", operator = "<" },
             Zone = 1453,
-            _index = 60,
+            _index = 61,
         },
         {
             Waypoint = 95065,
@@ -630,7 +639,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             ItemCount = { count = 5, itemID = 5469, operator = "<" },
             Skill = { operator = ">=", skill = "cooking", rank = 50 },
             Zone = 1453,
-            _index = 61,
+            _index = 62,
         },
         {
             Waypoint = 95065,
@@ -643,7 +652,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             ItemCount = { count = 6, itemID = 12238, operator = "<" },
             Skill = { operator = ">=", skill = "cooking", rank = 50 },
             Zone = 1453,
-            _index = 62,
+            _index = 63,
         },
         {
             LearnSkill = { spellID = 202, text = "Train 2h Swords" },
@@ -652,7 +661,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = { "PALADIN", "WARRIOR" },
             IsQuestUncompleted = 6261,
             Zone = 1453,
-            _index = 63,
+            _index = 64,
         },
         {
             LearnSkill = { spellIDs = { 201, 227 }, text = "Train 1h Swords and Staves" },
@@ -661,7 +670,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = { "MAGE", "WARLOCK" },
             IsQuestUncompleted = 6261,
             Zone = 1453,
-            _index = 64,
+            _index = 65,
         },
         {
             LearnSkill = { spellID = 201, text = "Train 1h Swords" },
@@ -670,7 +679,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "ROGUE",
             IsQuestUncompleted = 6261,
             Zone = 1453,
-            _index = 65,
+            _index = 66,
         },
         {
             LearnSkill = { spellID = 227, text = "Train Staves" },
@@ -679,7 +688,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "PRIEST",
             IsQuestUncompleted = 6261,
             Zone = 1453,
-            _index = 66,
+            _index = 67,
         },
         {
             Done = { 6261 },
@@ -687,7 +696,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 489.99, y = -8835.76 },
             IsQuestOnQuest = 6261,
             Zone = 1453,
-            _index = 67,
+            _index = 68,
         },
         {
             Waypoint = 1338,
@@ -698,7 +707,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = { "PRIEST", "WARLOCK" },
             EquippedItemStat = { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 13.4, precision = 1, allowMissing = true },
             Zone = 1453,
-            _index = 68,
+            _index = 69,
         },
         {
             BuyMerchant = { { itemID = 5208, quantity = 1 } },
@@ -710,7 +719,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             ItemCount = { count = 1, itemID = 5208, operator = "<" },
             Money = { copper = 3515, operator = ">=" },
             Zone = 1453,
-            _index = 69,
+            _index = 70,
         },
         {
             Waypoint = 1338,
@@ -721,7 +730,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 20.0,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 70,
+            _index = 71,
         },
         {
             Waypoint = 1338,
@@ -732,7 +741,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 15.0,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 71,
+            _index = 72,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -741,7 +750,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "WARLOCK",
             IsQuestUncompleted = 1338,
             Zone = 1453,
-            _index = 72,
+            _index = 73,
         },
         {
             Waypoint = 1338,
@@ -751,7 +760,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 5,
             Class = "WARLOCK",
             Zone = 1453,
-            _index = 73,
+            _index = 74,
         },
         {
             BuyMerchant = { { itemID = 16351, quantity = 1 } },
@@ -763,7 +772,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             ItemCount = { count = 1, itemID = 16351, operator = "<" },
             Money = { copper = 1200, operator = ">=" },
             Zone = 1453,
-            _index = 74,
+            _index = 75,
         },
         {
             Waypoint = 1338,
@@ -773,7 +782,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 10.0,
             Class = "MAGE",
             Zone = 1453,
-            _index = 75,
+            _index = 76,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -782,7 +791,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "MAGE",
             IsQuestUncompleted = 1338,
             Zone = 1453,
-            _index = 76,
+            _index = 77,
         },
         {
             Waypoint = 1338,
@@ -792,7 +801,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 20.0,
             Class = "PRIEST",
             Zone = 1453,
-            _index = 77,
+            _index = 78,
         },
         {
             Waypoint = 1641,
@@ -802,7 +811,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 20.0,
             Class = "PALADIN",
             Zone = 1453,
-            _index = 78,
+            _index = 79,
         },
         {
             PickUp = { 1641 },
@@ -810,7 +819,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 845.95, y = -8545.7 },
             Class = "PALADIN",
             Zone = 1453,
-            _index = 79,
+            _index = 80,
         },
         {
             Done = { 1641 },
@@ -818,7 +827,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 845.95, y = -8545.7 },
             Class = "PALADIN",
             Zone = 1453,
-            _index = 80,
+            _index = 81,
         },
         {
             PickUp = { 1642 },
@@ -827,7 +836,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Button = { ["1642"] = 6775 },
             Class = "PALADIN",
             Zone = 1453,
-            _index = 81,
+            _index = 82,
         },
         {
             Done = { 1642 },
@@ -835,7 +844,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 845.95, y = -8545.7 },
             Class = "PALADIN",
             Zone = 1453,
-            _index = 82,
+            _index = 83,
         },
         {
             PickUp = { 1643 },
@@ -843,7 +852,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 845.95, y = -8545.7 },
             Class = "PALADIN",
             Zone = 1453,
-            _index = 83,
+            _index = 84,
         },
         {
             Waypoint = 1338,
@@ -853,7 +862,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 10.0,
             Class = "PALADIN",
             Zone = 1453,
-            _index = 84,
+            _index = 85,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -862,7 +871,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "PALADIN",
             IsQuestUncompleted = 1338,
             Zone = 1453,
-            _index = 85,
+            _index = 86,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -871,7 +880,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "PRIEST",
             IsQuestUncompleted = 1338,
             Zone = 1453,
-            _index = 86,
+            _index = 87,
         },
         {
             PickUp = { 399 },
@@ -879,14 +888,14 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 719.67, y = -8550.3 },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
             Zone = 1453,
-            _index = 87,
+            _index = 88,
         },
         {
             Done = { 1338 },
             Fillers = { [418] = { 1 } },
             Coord = { x = 600.07, y = -8427.22 },
             Zone = 1453,
-            _index = 88,
+            _index = 89,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -895,7 +904,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "HUNTER",
             IsQuestUncompleted = 95065,
             Zone = 1453,
-            _index = 89,
+            _index = 90,
         },
         {
             LearnSkill = { text = "Train your pet spells", allAvailable = true },
@@ -904,7 +913,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "HUNTER",
             IsQuestUncompleted = 95065,
             Zone = 1453,
-            _index = 90,
+            _index = 91,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -913,7 +922,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "ROGUE",
             IsQuestUncompleted = 6261,
             Zone = 1453,
-            _index = 91,
+            _index = 92,
         },
         {
             Waypoint = 6261,
@@ -923,7 +932,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 15.0,
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 92,
+            _index = 93,
         },
         {
             Waypoint = 6261,
@@ -933,7 +942,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 15.0,
             Class = "WARRIOR",
             Zone = 1453,
-            _index = 93,
+            _index = 94,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -942,7 +951,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "WARRIOR",
             IsQuestUncompleted = 6261,
             Zone = 1453,
-            _index = 94,
+            _index = 95,
         },
         {
             Done = { 1643 },
@@ -950,7 +959,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 613.66, y = -8832.26 },
             Class = "PALADIN",
             Zone = 1453,
-            _index = 95,
+            _index = 96,
         },
         {
             PickUp = { 1644 },
@@ -958,13 +967,13 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 613.66, y = -8832.26 },
             Class = "PALADIN",
             Zone = 1453,
-            _index = 96,
+            _index = 97,
         },
         {
             Qpart = { [1644] = { 1 } },
             NoArrow = true,
             Class = "PALADIN",
-            _index = 97,
+            _index = 98,
         },
         {
             Done = { 1644 },
@@ -972,7 +981,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 613.66, y = -8832.26 },
             Class = "PALADIN",
             Zone = 1453,
-            _index = 98,
+            _index = 99,
         },
         {
             PickUp = { 1780 },
@@ -980,7 +989,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 613.66, y = -8832.26 },
             Class = "PALADIN",
             Zone = 1453,
-            _index = 99,
+            _index = 100,
         },
         {
             BuyMerchant = { { itemID = 2027, quantity = 1 } },
@@ -992,7 +1001,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             ItemCount = { count = 1, itemID = 2027, operator = "<" },
             Money = { copper = 3815, operator = ">=" },
             Zone = 1453,
-            _index = 100,
+            _index = 101,
         },
         {
             BuyMerchant = { { itemID = 2027, quantity = 1 } },
@@ -1004,7 +1013,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             IsQuestUncompleted = 6261,
             Money = { copper = 3815, operator = ">=" },
             Zone = 1453,
-            _index = 101,
+            _index = 102,
         },
         {
             BuyMerchant = { { itemID = 6529, quantity = 1, questID = 95065 } },
@@ -1013,7 +1022,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "HUNTER",
             ItemCount = { itemID = 6529, count = 1, operator = "<" },
             Zone = 1453,
-            _index = 102,
+            _index = 103,
         },
         {
             BuyMerchant = { { itemID = 6530, quantity = 3, questID = 95065, targetStock = true } },
@@ -1022,7 +1031,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Class = "HUNTER",
             ItemCount = { itemID = 6530, count = 3, operator = "<" },
             Zone = 1453,
-            _index = 103,
+            _index = 104,
         },
         {
             PickUp = { 95065 },
@@ -1031,13 +1040,13 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             RaidIcon = 267118,
             Class = "HUNTER",
             Zone = 1453,
-            _index = 104,
+            _index = 105,
         },
         {
             Qpart = { [95065] = { 1 } },
             NoArrow = true,
             Class = "HUNTER",
-            _index = 105,
+            _index = 106,
         },
         {
             Done = { 95065 },
@@ -1045,18 +1054,6 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Coord = { x = 1269.1, y = -8540.601 },
             RaidIcon = 267118,
             Class = "HUNTER",
-            Zone = 1453,
-            _index = 106,
-        },
-        {
-            Note = { "CRAFT_WAITING" },
-            Boat = true,
-            Fillers = { [418] = { 1 } },
-            Coord = { x = 1330.1, y = -8645.4 },
-            Range = 5,
-            ZoneStepTrigger = { x = 929.1, y = 6543.6, mapID = 1439, Range = 20 },
-            Class = "HUNTER",
-            HasSpell = 3273,
             Zone = 1453,
             _index = 107,
         },
@@ -1068,12 +1065,24 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             Range = 5,
             ZoneStepTrigger = { x = 929.1, y = 6543.6, mapID = 1439, Range = 20 },
             Class = "HUNTER",
+            HasSpell = 3273,
             Zone = 1453,
             _index = 108,
         },
         {
-            RouteCompleted = true,
+            Note = { "CRAFT_WAITING" },
+            Boat = true,
+            Fillers = { [418] = { 1 } },
+            Coord = { x = 1330.1, y = -8645.4 },
+            Range = 5,
+            ZoneStepTrigger = { x = 929.1, y = 6543.6, mapID = 1439, Range = 20 },
+            Class = "HUNTER",
+            Zone = 1453,
             _index = 109,
+        },
+        {
+            RouteCompleted = true,
+            _index = 110,
         },
     },
 }

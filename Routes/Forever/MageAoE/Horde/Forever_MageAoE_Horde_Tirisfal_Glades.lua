@@ -157,7 +157,10 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
         },
         {
             LootMoney = { copper = 33, equippedSlots = { 1, 3, 5, 6, 7, 8, 9, 10, 15 } },
+            Coord = { x = 1577.395, y = 1934.05 },
+            Range = 30,
             IsQuestUncompleted = 364,
+            Zone = 1420,
             _index = 16,
         },
         {
