@@ -8,20 +8,8 @@ function Panel:Create(parent)
     local page = setmetatable({rows = {}}, {__index = self})
     page.frame = CreateFrame("Frame", nil, parent)
     page.frame:SetAllPoints()
-    -- Keep APR's original illustrated masthead inside the shared themed chrome.
-    page.banner = UI:Panel(page.frame, "borderedPanel")
-    page.banner:SetPoint("TOPLEFT"); page.banner:SetPoint("TOPRIGHT"); page.banner:SetHeight(108)
-    page.banner.image = page.banner:CreateTexture(nil, "ARTWORK")
-    page.banner.image:SetPoint("TOPLEFT", 1, -1); page.banner.image:SetPoint("BOTTOMRIGHT", -1, 1)
-    page.banner.image:SetTexture("Interface\\AddOns\\APR\\APR-Core\\assets\\header.blp")
-    page.banner:HookScript("OnSizeChanged", function(banner, width)
-        -- The original artwork is 1024x256; resizing must preserve its proportions.
-        local height = math.max(2, (width - 2) / 4 + 2)
-        if math.abs(banner:GetHeight() - height) > 0.5 then banner:SetHeight(height) end
-    end)
     page.preferences = UI:Section(page.frame, GAMEOPTIONS_MENU)
-    page.preferences:SetPoint("TOPLEFT", page.banner, "BOTTOMLEFT", 0, -12)
-    page.preferences:SetPoint("TOPRIGHT", page.banner, "BOTTOMRIGHT", 0, -12)
+    page.preferences:SetPoint("TOPLEFT"); page.preferences:SetPoint("TOPRIGHT")
     page.preferences:SetHeight(218)
     local controls = CreateFrame("Frame", nil, page.preferences)
     controls:SetPoint("TOPLEFT", 2, -34)
@@ -51,16 +39,22 @@ function Panel:Create(parent)
     end)
     page.copy:SetPoint("BOTTOMRIGHT", -14, 14)
     UI:Tooltip(page.copy, L["COPY_HELPER"])
-    page.notes = UI:Section(page.frame, L["UI_RELEASE_NOTES"])
+    page:CreateNotes(page.frame)
     page.notes:SetPoint("TOPLEFT", page.preferences, "BOTTOMLEFT", 0, -12)
     page.notes:SetPoint("BOTTOMRIGHT")
-    page.scroll = UI:Scroll(page.notes)
-    page.scroll:SetPoint("TOPLEFT", 14, -40)
-    page.scroll:SetPoint("BOTTOMRIGHT", -30, 14)
-    page.content = CreateFrame("Frame", nil, page.scroll)
-    page.scroll:SetScrollChild(page.content)
-    page.scroll:HookScript("OnSizeChanged", function() page:Layout() end)
     return page
+end
+
+-- Both surfaces share the formatter, row pool, theme roles and scroll behavior.
+function Panel:CreateNotes(parent)
+    self.rows = self.rows or {}
+    self.notes = UI:Section(parent, L["UI_RELEASE_NOTES"])
+    self.scroll = UI:Scroll(self.notes)
+    self.scroll:SetPoint("TOPLEFT", 14, -40)
+    self.scroll:SetPoint("BOTTOMRIGHT", -30, 14)
+    self.content = CreateFrame("Frame", nil, self.scroll)
+    self.scroll:SetScrollChild(self.content)
+    self.scroll:HookScript("OnSizeChanged", function() self:Layout() end)
 end
 
 function Panel:Layout()
@@ -84,11 +78,7 @@ function Panel:Layout()
     self.layingOut = nil
 end
 
-function Panel:Show(app)
-    self.frame:Show()
-    self.url = APR.github:gsub("/+$", "") .. "/releases"
-    self.link:SetText(self.url)
-    LibStub("AceConfigDialog-3.0"):Open(app, self.host)
+function Panel:RefreshNotes()
     self.layingOut = true
     for _, row in ipairs(self.rows) do row:Hide() end
     for index, block in ipairs(APR.changelog:GetBlocks()) do
@@ -106,6 +96,14 @@ function Panel:Show(app)
     end
     self.layingOut = nil
     self:Layout()
+end
+
+function Panel:Show(app)
+    self.frame:Show()
+    self.url = APR.github:gsub("/+$", "") .. "/releases"
+    self.link:SetText(self.url)
+    LibStub("AceConfigDialog-3.0"):Open(app, self.host)
+    self:RefreshNotes()
     self.link:SetFocus()
     self.link:HighlightText()
 end

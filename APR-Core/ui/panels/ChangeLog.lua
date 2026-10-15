@@ -1,11 +1,20 @@
--- Release notes use one formatter for startup and the Options page; no separate legacy window.
+-- One formatter feeds a dedicated startup window and the page used to revisit notes in Options.
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.changelog = APR:NewModule("ChangeLog")
 
 function APR.changelog:OnInit()
-    if APR.LayoutEditor and APR.LayoutEditor.firstUsePending then return end
-    if APR.version ~= APR.settings.profile.lastRecordedVersion and APR.settings.profile.showChangeLog then
-        self:ShowChangeLog()
+    local profile = APR.settings.profile
+    -- Route validation updates lastRecordedVersion independently of whether the
+    -- startup UI could be displayed. Keep an unread version across reloads.
+    -- The old route marker cannot prove the notes were shown: display the current
+    -- release once when first introducing this independent acknowledgement.
+    if profile.lastReleaseNotesVersion == nil then
+        profile.lastReleaseNotesVersion = ""
+    end
+    if APR.version ~= profile.lastReleaseNotesVersion and profile.showChangeLog then
+        if self.startupVersion == APR.version then return end
+        self.startupVersion = APR.version
+        APR.ReleaseNotesWindow:QueueShow()
     end
 end
 
@@ -22,6 +31,8 @@ function APR.changelog:GetBlocks()
 end
 
 function APR.changelog:SetChangeLog()
+    local window = APR.ReleaseNotesWindow
+    if window and window.frame and window.frame:IsShown() then window.reader:RefreshNotes() end
     local options = APR.OptionsPanel
     if options and options.frame and options.frame:IsShown() and options.selected == "changelog" then
         -- AceConfig does not track externally supplied containers in its NotifyChange refresh list.

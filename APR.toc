@@ -141,6 +141,7 @@ APR-Core/ui/panels/StatusReport.lua
 APR-Core/ui/panels/PerformanceResources.lua
 APR-Core/ui/panels/PerformanceDashboard.lua
 APR-Core/ui/panels/ReleaseNotesPanel.lua
+APR-Core/ui/panels/ReleaseNotesWindow.lua
 APR-Core/ui/panels/OptionsPanel.lua
 APR-Core/ui/panels/AboutPanel.lua
 APR-Core/ui/panels/Workspace.lua

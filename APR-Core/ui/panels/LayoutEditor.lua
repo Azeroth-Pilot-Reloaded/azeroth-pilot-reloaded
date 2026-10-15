@@ -16,6 +16,7 @@ function Editor:InitializeOnboarding()
             self.onboardingQueued = nil
             if not self.firstUsePending or InCombatLockdown() or (IsLoggedIn and not IsLoggedIn()) or
                 (APR.IsPetBattleActive and APR:IsPetBattleActive()) then return end
+            if APR.ReleaseNotesWindow and APR.ReleaseNotesWindow:IsBlockingOnboarding() then return end
             if self:Show() then watcher:UnregisterAllEvents() end
         end)
     end
@@ -23,6 +24,7 @@ function Editor:InitializeOnboarding()
         APR:RegisterSupportedEvent(watcher, event)
     end
     watcher:SetScript("OnEvent", queue)
+    self.QueueOnboarding = queue
     queue()
 end
 
