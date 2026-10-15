@@ -59,6 +59,8 @@ function APR:ResetAllProfilesToDefault()
     return self:RequestReload(function()
         local saved = APRSettings or {}
         local database = self.settings and self.settings.db
+        local globalCopy = APR:DeepCopyTable(saved.global or (database and database.sv and database.sv.global)
+            or (database and database.global) or {})
         local charCopy = APR:DeepCopyTable(saved.char or (database and database.sv and database.sv.char) or {})
         local defaultProfileCopy = APR:DeepCopyTable(
             (saved.profiles and saved.profiles.Default) or
@@ -67,6 +69,7 @@ function APR:ResetAllProfilesToDefault()
         )
 
         APRSettings = {
+            global = globalCopy,
             char = charCopy,
             profileKeys = {},
             profiles = {

@@ -61,7 +61,8 @@ function APR:GetGameVersion() return "retail" end
 assert(APR:GetHeirloomWarning() == false)
 APR:SetRouteSuggestionDontAsk(true)
 assert(character.routeSuggestionDontAsk and not SettingsDB.char.routeSuggestionDontAsk)
-local saved = { char = { player = character }, profiles = { Default = { size = 15 }, Other = {} }, profileKeys = { player = "Other" } }
+local saved = {global = {appearanceIntroSeen = 2, appearanceIntroChoice = "modern", layoutEditorSeen = true}, char = { player = character },
+    profiles = { Default = { size = 15 }, Other = {} }, profileKeys = { player = "Other" } }
 APRSettings = saved
 local reloads = 0
 C_UI = { Reload = function() reloads = reloads + 1 end }
@@ -76,6 +77,9 @@ APR:ResetAllProfilesToDefault()
 acceptReset()
 assert(reloads == 1 and not next(APRSettings.profileKeys) and not APRSettings.profiles.Other)
 assert(APRSettings.profiles.Default.size == 15 and APRSettings.char.player.showHeirloomWarning == false)
+assert(APRSettings.global.appearanceIntroSeen == 2 and APRSettings.global.appearanceIntroChoice == "modern"
+    and APRSettings.global.layoutEditorSeen
+    and APRSettings.global ~= saved.global, "Profile resets preserve account-wide onboarding markers")
 APRSettings.char.player.showHeirloomWarning = true
 assert(saved.char.player.showHeirloomWarning == false)
 print("Core utilities: isolated copies, cycles, literal text, diagnostics, current-step ownership and AceDB scope passed")
