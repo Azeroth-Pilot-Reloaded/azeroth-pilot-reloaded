@@ -18,20 +18,39 @@ def fetch_translations_from_curseforge(api_url, api_key):
     Fetches the localization file from CurseForge using the provided API URL and API key.
     """
     headers = {
-        'X-API-TOKEN': api_key
+        'X-Api-Token': api_key
     }
-    response = requests.get(api_url, headers=headers)
-    if response.status_code != 200:
-        raise Exception(f"Failed to fetch translations: {response.status_code}")
+    response = requests.get(api_url, headers=headers, timeout=30)
+    response.raise_for_status()
     return response.text
 
-def set_localization_url(slug, cf_token, project_site, export_type="TableAdditions"):
+def set_localization_url(
+    slug,
+    cf_token,
+    project_site,
+    export_type="TableAdditions",
+    locale="enUS",
+    unlocalized="Ignore",
+    table_name="L",
+    escape_non_ascii_characters=False,
+    true_if_value_equals_key=False,
+):
     """
     Constructs the CurseForge API URL for localization export.
     """
-    if slug and cf_token and project_site:
-        return f"{project_site}/api/projects/{slug}/localization/export?export-type={export_type}&unlocalized=Ignore"
-    return None
+    if not (slug and cf_token and project_site):
+        return None
+
+    params = [
+        ("export-type", export_type),
+        ("lang", locale),
+        ("unlocalized", unlocalized),
+        ("table-name", table_name),
+        ("escape-non-ascii-characters", "true" if escape_non_ascii_characters else "false"),
+        ("true-if-value-equals-key", "true" if true_if_value_equals_key else "false"),
+    ]
+    query = "&".join(f"{key}={value}" for key, value in params)
+    return f"{project_site.rstrip('/')}/api/projects/{slug}/localization/export?{query}"
 
 #############################################################################
 # Functions to process localization files (keys and texts)
@@ -43,20 +62,43 @@ def get_locales_kv_table_additions(locales_text):
     Returns a list of tuples (key, text).
     """
     kv_list = []
-    for line in locales_text.splitlines():
-        line = line.strip()
-        if not line or not line.startswith("L["):
+    for raw_line in locales_text.splitlines():
+        line = raw_line.strip()
+        if not line:
             continue
 
-        # On récupère la clé entre L["..."] ou L['...']
-        match_key = re.search(r'L\[\s*["\'](.*?)["\']\s*\]', line)
-        if not match_key:
+        match = re.match(r'^(?:--\s*)?L\[\s*["\'](.*?)["\']\s*\]\s*=\s*(.*)$', line)
+        if not match:
             continue
-        key = match_key.group(1)
 
-        # Et la valeur à droite du signe "=" si présente
-        match_val = re.search(r'=\s*["\'](.*?)["\']', line)
-        value = match_val.group(1) if match_val else ""
+        key = match.group(1)
+        rhs = match.group(2).strip()
+        value = ""
+        if rhs and rhs[0] in ('"', "'"):
+            quote = rhs[0]
+            chars = []
+            index = 1
+            while index < len(rhs):
+                ch = rhs[index]
+                if ch == "\\" and index + 1 < len(rhs):
+                    next_ch = rhs[index + 1]
+                    chars.append({
+                        'n': '\n',
+                        'r': '\r',
+                        't': '\t',
+                        '\\': '\\',
+                        '"': '"',
+                        "'": "'",
+                    }.get(next_ch, next_ch))
+                    index += 2
+                    continue
+                if ch == quote:
+                    value = ''.join(chars)
+                    break
+                chars.append(ch)
+                index += 1
+            else:
+                value = ''.join(chars)
 
         kv_list.append((key, value))
     return kv_list
