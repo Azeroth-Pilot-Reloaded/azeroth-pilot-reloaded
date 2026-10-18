@@ -1,17 +1,23 @@
 -- Opt-in timings and counters with bounded metric names, 100 slow calls and 120 one-second buckets.
 -- Timings are inclusive: nested operations must not be interpreted as total addon CPU usage.
 
-local METRIC_LIMIT, SLOW_LIMIT, TIMELINE_SECONDS = 64, 100, 120
+local METRIC_LIMIT, SLOW_LIMIT, TIMELINE_SECONDS = 8192, 100, 120
+APR.performanceSlowThresholdMs = 3
 local function Now() return GetTime and GetTime() or debugprofilestop() / 1000 end
 
 function APR:ResetPerformanceCapture()
-    APRData.PerformanceLog = { summary = {}, slow = {}, timeline = {}, counters = {}, startedAt = Now() }
+    APRData.PerformanceLog = { summary = {}, slow = {}, timeline = {}, counters = {}, startedAt = Now(),
+        slowThresholdMs = self.performanceSlowThresholdMs, metricLimit = METRIC_LIMIT }
+    self.performanceBreadcrumb, self.performanceBreadcrumbAt = nil, nil
+    if APRInstrumentation then APRInstrumentation.ResetLog() end
     if self.ResourceMonitor then self.ResourceMonitor:Reset() end
+    if self.SetPerformanceScopes then self:SetPerformanceScopes(self.performanceLogging) end
 end
 
 function APR:SetPerformanceCapture(enabled)
     self.performanceLogging = enabled == true
     if enabled then self:ResetPerformanceCapture() end
+    if not enabled and self.SetPerformanceScopes then self:SetPerformanceScopes(false) end
     if not enabled and self.ResourceMonitor then self.ResourceMonitor:Stop() end
     if not enabled and APRData.PerformanceLog then APRData.PerformanceLog.stoppedAt = Now() end
 end
@@ -21,32 +27,40 @@ function APR:StartPerformanceSample()
     return debugprofilestop()
 end
 
-local function BoundedName(collection, name)
+local function BoundedName(collection, name, log, counterKey)
     if collection[name] then return name end
-    local count = 0
-    for _ in pairs(collection) do count = count + 1 end
-    return count < METRIC_LIMIT and name or "Other"
+    local count = log[counterKey] or 0
+    if count >= METRIC_LIMIT then return "Other" end
+    log[counterKey] = count + 1
+    return name
 end
 
 function APR:CountPerformanceEvent(name)
     if not self.performanceLogging or not APRData or not APRData.PerformanceLog then return end
     local log = APRData.PerformanceLog
     log.counters = log.counters or {}
-    name = BoundedName(log.counters, name)
+    name = BoundedName(log.counters, name, log, "counterNames")
     log.counters[name] = (log.counters[name] or 0) + 1
 end
 
-function APR:FinishPerformanceSample(name, started, steps)
+function APR:FinishPerformanceSample(name, started, steps, parent)
     if not self.performanceLogging or not started or not APRData then return end
+    return self:RecordPerformanceDuration(name, math.max(0, debugprofilestop() - started), steps, parent)
+end
+
+function APR:RecordPerformanceDuration(name, elapsed, steps, parent, ownMs, failure)
+    if not self.performanceLogging or not APRData then return end
     local log = APRData.PerformanceLog
     if not log then return end
-    local elapsed, now = math.max(0, debugprofilestop() - started), Now()
-    name = BoundedName(log.summary, name)
+    local now = Now()
+    name = BoundedName(log.summary, name, log, "metricNames")
     local summary = log.summary[name] or { count = 0, totalMs = 0, maxMs = 0 }
     log.summary[name] = summary
     summary.count = summary.count + 1
     summary.totalMs = summary.totalMs + elapsed
     summary.maxMs = math.max(summary.maxMs, elapsed)
+    if ownMs then summary.selfMs = (summary.selfMs or 0) + ownMs end
+    if failure then summary.errors = (summary.errors or 0) + 1 end
     summary.histogram = summary.histogram or {0, 0, 0, 0}
     local band = elapsed < 1 and 1 or elapsed < 3 and 2 or elapsed < 10 and 3 or 4
     summary.histogram[band] = summary.histogram[band] + 1
@@ -65,12 +79,15 @@ function APR:FinishPerformanceSample(name, started, steps)
     end
     bucket.count, bucket.totalMs = bucket.count + 1, bucket.totalMs + elapsed
     bucket.maxMs = math.max(bucket.maxMs, elapsed)
-    if elapsed >= 10 then
+    if elapsed >= (log.slowThresholdMs or 10) then
         bucket.slowCount = (bucket.slowCount or 0) + 1
         log.cursor = (log.cursor or 0) % SLOW_LIMIT + 1
         log.slow[log.cursor] = {
             name = name, ms = elapsed, time = now, route = self.ActiveRoute, steps = steps,
             step = self.PlayerID and APRData[self.PlayerID] and APRData[self.PlayerID][self.ActiveRoute],
+            parent = parent or (APRInstrumentation and APRInstrumentation.CurrentName()) or self.performanceScope,
+            selfMs = ownMs, failure = failure,
+            breadcrumb = self.performanceBreadcrumb, breadcrumbAt = self.performanceBreadcrumbAt,
         }
     end
 end
@@ -95,10 +112,12 @@ function APR:GetPerformanceBucketDetails(bucket, finalSecond)
         offset = bucket.second - finalSecond, count = count, totalMs = bucket.totalMs or 0,
         maxMs = bucket.maxMs or 0, average = (bucket.totalMs or 0) / math.max(1, count),
         slowCount = bucket.slowCount, peakName = bucket.peakName, route = bucket.peakRoute, step = bucket.peakStep,
+        slowThresholdMs = APRData.PerformanceLog and APRData.PerformanceLog.slowThresholdMs or 10,
     }
 end
 
 function APR:GetPerformanceRows(mode, sortKey, query, displayName)
+    if mode == "logs" then return self:GetDiagnosticRows(query) end
     local log, rows = APRData and APRData.PerformanceLog, {}
     if not log then return rows end
     query = string.lower(query or "")
@@ -120,7 +139,8 @@ function APR:GetPerformanceRows(mode, sortKey, query, displayName)
         for name, summary in pairs(log.summary) do
             if matches(name) then
                 rows[#rows + 1] = {name = name, count = summary.count, totalMs = summary.totalMs,
-                    maxMs = summary.maxMs, average = summary.totalMs / math.max(1, summary.count), histogram = summary.histogram}
+                    maxMs = summary.maxMs, selfMs = summary.selfMs, errors = summary.errors,
+                    average = summary.totalMs / math.max(1, summary.count), histogram = summary.histogram}
             end
         end
     end

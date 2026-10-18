@@ -3,6 +3,36 @@
 All regression tests now live in `tests/`. Run `python tests/run.py` for all
 Python, Lua and route syntax checks; see `tests/README.md` for dependencies and CI.
 
+## Whole-addon diagnostics
+
+`python tools/validation/instrument_lua.py --write` instruments every owned Lua
+function in `APR-Core/` and `Routes/`, including local functions, nested functions,
+anonymous callbacks, and coroutine workers. Edit function bodies normally and
+rerun the generator. Its marked additions are removed before regeneration;
+running it twice produces identical output. `--check` and the Lua CI suite reject
+missing/stale instrumentation. The generated `DiagnosticManifest.lua` records
+coverage and explicit exclusions: third-party libraries, diagnostic recorders,
+resource sampling and safe error handling. Calls into libraries are measured at
+APR call sites, not attributed to individual library internals.
+The diagnostic viewer records its root cost but suppresses nested drawing/filtering
+traces, so refreshing the log cannot overwrite the gameplay events being inspected.
+
+In game, `/apr perf on` captures timings; `/apr debug on` additionally captures
+function calls in the bounded journal. `/apr debug` opens the searchable log.
+Use `/apr perf off` and `/apr debug off` before exporting from the Perf window or
+with `/apr debug export`. `/apr debug clear` clears the journal. Debug and perf
+switches are independent. Continuous debug no longer floods chat: entries include
+time, category, source, route/step, durations and repeat counts. The report lists
+all observed metrics, slow calls, client frame spikes, coverage and exclusions.
+
+Timings are inclusive; the Self column excludes instrumented child calls.
+Coroutine suspension time is excluded through APR-owned yield/resume call sites.
+Capture itself adds overhead. Disabled wrappers only forward calls; they retain
+callback identity and do no timing, stack allocation or logging. Captures retain
+up to 8,192 metric names, 100 slow calls, 1,000 journal entries, 100 frame spikes
+and 600 resource samples; older ring entries are overwritten. Coverage means
+instrumented source definitions, not proof that every function ran in a session.
+
 Route syntax checks append a missing `RouteCompleted = true` to ordinary route
 step lists before validation. They preserve existing steps, comments, encoding
 and line endings. Scenario routes keep their separate instance completion flow.

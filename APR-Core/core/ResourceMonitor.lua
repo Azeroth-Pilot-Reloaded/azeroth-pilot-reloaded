@@ -5,6 +5,29 @@ APR.ResourceMonitor = {}
 local Monitor = APR.ResourceMonitor
 local SAMPLE_LIMIT, COUNT_INTERVAL = 600, 5
 
+-- Actual frame intervals expose stalls hidden by the profiler's recent average.
+-- A slow frame is global client latency, never proof that APR caused it.
+function Monitor:ObserveFrame(elapsed)
+    if not APR.performanceLogging then return end
+    local ms = elapsed * 1000
+    self.peakFrameMs = math.max(self.peakFrameMs or 0, ms)
+    self.frameCount = (self.frameCount or 0) + 1
+    local baseline = self.frameAverageMs or ms
+    if ms >= math.max(8, baseline * 2) then
+        self.frameSpikes = (self.frameSpikes or 0) + 1
+        local log = APRData and APRData.PerformanceLog
+        if log then
+            log.frames = log.frames or {samples = {}, cursor = 0}
+            local frames = log.frames
+            frames.cursor = frames.cursor % 100 + 1
+            frames.samples[frames.cursor] = {time = GetTime(), ms = ms, baselineMs = baseline,
+                route = APR.ActiveRoute,
+                step = APRData[APR.PlayerID] and APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute]}
+        end
+    end
+    self.frameAverageMs = baseline + (ms - baseline) * 0.05
+end
+
 local function Read(api, ...)
     if type(api) ~= "function" then return end
     local ok, value = pcall(api, ...)
@@ -60,6 +83,8 @@ function Monitor:Sample(force)
         end
     end
     sample.fps = Number(Read(GetFramerate))
+    sample.peakFrameMs, sample.frameSpikes, sample.frameCount = self.peakFrameMs, self.frameSpikes or 0, self.frameCount
+    self.peakFrameMs, self.frameSpikes, self.frameCount = nil, nil, nil
     if self.memoryKB then
         resources.firstMemoryKB = resources.firstMemoryKB or self.memoryKB
         resources.firstMemoryAt = resources.firstMemoryAt or self.memoryAt
@@ -84,12 +109,17 @@ end
 
 function Monitor:Stop()
     if self.ticker then self.ticker:Cancel(); self.ticker = nil end
+    if self.frameObserver then self.frameObserver:SetScript("OnUpdate", nil); self.frameObserver:Hide() end
 end
 
 function Monitor:Reset()
     self:Stop()
     self.lastCountAt, self.memoryKB, self.memoryAt, self.scanMs, self.counts = nil, nil, nil, nil, nil
+    self.peakFrameMs, self.frameSpikes, self.frameCount, self.frameAverageMs = nil, nil, nil, nil
     if APR.performanceLogging then
+        self.frameObserver = self.frameObserver or CreateFrame("Frame")
+        self.frameObserver:SetScript("OnUpdate", function(_, elapsed) self:ObserveFrame(elapsed) end)
+        self.frameObserver:Show()
         self:Sample()
         self.ticker = C_Timer.NewTicker(1, function() self:Sample() end)
     end
@@ -112,6 +142,10 @@ function Monitor:GetView(duration)
             if sample.cpuPercent and (not point.cpuPercent or sample.cpuPercent >= point.cpuPercent) then
                 point.cpuPercent, point.cpuSample = sample.cpuPercent, sample
             end
+            if sample.peakFrameMs and (not point.frameSample or sample.peakFrameMs >= point.frameSample.peakFrameMs) then
+                point.frameSample = sample
+            end
+            point.frameSpikes = (point.frameSpikes or 0) + (sample.frameSpikes or 0)
             point.memoryKB, point.memorySample = sample.memoryKB, sample
             view.latest = sample
         end

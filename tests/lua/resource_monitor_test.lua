@@ -3,6 +3,10 @@ local seconds, cpu, frame, memory, memoryReads = 0, 2, 20, 2048, 0
 local enabled, failMemory, restricted = true, false, false
 local profileMs = 0
 local timers = {}
+function CreateFrame()
+    return {SetScript = function(self, key, fn) self[key] = fn end,
+        Show = function(self) self.shown = true end, Hide = function(self) self.shown = false end}
+end
 APR = {PlayerID = "player", ActiveRoute = "route", _effectiveRouteStepsCache = {route = {}},
     ZoneDetection = {mapInfoCache = {[1] = {}}}, questOrderList = {stepList = {{}, {}}}}
 APRData = {player = {route = 42}}
@@ -88,17 +92,26 @@ assert(#view.points == 120 and view.latest.time == 1000)
 -- The exported ten-minute history must survive the bounded formatter without truncation.
 function LibStub() return {GetLocale = function() return {} end} end
 dofile("APR-Core/utils/Utils.lua")
-for index = 1, 65 do
+for index = 1, 513 do
     APRData.PerformanceLog.summary["Scope" .. index] = {count = 20, totalMs = 100, maxMs = 12, histogram = {1, 2, 3, 4}}
 end
 for index = 1, 100 do
-    APRData.PerformanceLog.slow[index] = {name = "Scope1", ms = 12, time = index, route = "route", steps = 20, step = 42}
+    APRData.PerformanceLog.slow[index] = {name = "Scope1", ms = 12, time = index, route = "route", steps = 20, step = 42,
+        parent = "Caller", breadcrumb = "Debug context", breadcrumbAt = index}
 end
 for index = 1, 120 do
     APRData.PerformanceLog.timeline[index] = {second = index, count = 20, totalMs = 100, maxMs = 12,
         peakName = "Scope1", peakRoute = "route", peakStep = 42, slowCount = 1}
 end
-local exported = APR:FormatDebugTable(APRData.PerformanceLog, 20000)
+for _, sample in ipairs(resources.samples) do
+    sample.peakFrameMs, sample.frameSpikes, sample.frameCount = 50, 1, 100
+    sample.memoryKB, sample.memoryAt, sample.memoryScanMs = 2048, 1, 280
+end
+local log = APRData.PerformanceLog
+log.instrumented, log.frames = {}, {samples = {}, cursor = 100}
+for index = 1, 513 do log.counters["Counter" .. index] = 100; log.instrumented[index] = "Scope" .. index end
+for index = 1, 100 do log.frames.samples[index] = {time = index, ms = 50, baselineMs = 5, route = "route", step = 42} end
+local exported = APR:FormatDebugTable(APRData.PerformanceLog, 40000)
 assert(not exported:find("<entry-limit>", 1, true))
 local restored = assert(loadstring("return " .. exported))()
 assert(restored.resources.count == 600 and restored.resources.samples[resources.cursor].time == 1000)
@@ -120,3 +133,22 @@ monitor:ScanMemory()
 view = monitor:GetView(120)
 assert(not view.latest.cpuPercent and not view.latest.memoryKB and not view.latest.fps)
 print("Resource monitor: scan-free CPU capture, explicit memory scans/drops, unavailable APIs, gaps, freeze and lifecycle passed")
+
+-- A low average CPU sample must not hide a single long client frame.
+for _ = 1, 100 do monitor.frameObserver.OnUpdate(nil, 0.005) end
+monitor.frameObserver.OnUpdate(nil, 0.050)
+seconds = 1201; timers[3].callback()
+local sample = monitor:GetView(120).latest
+assert(sample.peakFrameMs == 50 and sample.frameSpikes == 1 and sample.frameCount == 101)
+assert(APRData.PerformanceLog.frames.samples[1].ms == 50)
+assert(APRData.PerformanceLog.frames.samples[1].step == 42)
+for _ = 1, 150 do
+    monitor.frameAverageMs = 5
+    monitor:ObserveFrame(0.020)
+end
+assert(#APRData.PerformanceLog.frames.samples == 100)
+APR:SetPerformanceCapture(false)
+assert(monitor.frameObserver.OnUpdate == nil and not monitor.frameObserver.shown)
+APR:ResetPerformanceCapture()
+assert(not APRData.PerformanceLog.frames and not monitor.peakFrameMs)
+print("Frame intervals: short stalls survive average CPU sampling; history and observer lifetime are bounded")

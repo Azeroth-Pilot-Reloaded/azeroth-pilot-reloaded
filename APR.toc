@@ -36,6 +36,8 @@ APR-Core/libs/embeds.xml
 APR-Core/libs/FarstriderLibData_[Game].xml
 APR-Core/locales/locales.xml
 
+APR-Core/core/Diagnostics.lua
+APR-Core/core/DiagnosticManifest.lua
 APR-Core/utils/SecretUtils.lua
 APR-Core/core/Core.lua
 APR-Core/core/ErrorLog.lua
@@ -103,6 +105,8 @@ APR-Core/config/Config_Route_Prefabs.lua
 APR-Core/features/navigation/WorldCoordinateConverter.lua
 APR-Core/core/Commands.lua
 APR-Core/core/Performance.lua
+APR-Core/core/PerformanceScopes.lua
+APR-Core/core/DiagnosticReport.lua
 APR-Core/core/ResourceMonitor.lua
 APR-Core/ui/panels/ChangeLog.lua
 APR-Core/core/VersionCheck.lua

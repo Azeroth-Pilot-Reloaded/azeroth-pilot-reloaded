@@ -249,3 +249,22 @@ arrow:SetArrowActive(true, arrow.x + 10, arrow.y)
 tick()
 assert(mapReads == before + 1, "Replacing a target invalidates the idle cache")
 print("Idle arrow: 200 unchanged ticks avoid repeated map work and all display writes; movement/turns/steps remain immediate")
+
+local pathResolutions, stepReads = 0, 0
+step = APR:GetCurrentStep()
+local getCurrentStep = APR.GetCurrentStep
+function APR:GetCurrentStep() stepReads = stepReads + 1; return getCurrentStep(self) end
+function APR:GetCurrentRouteMapIDsAndName() pathResolutions = pathResolutions + 1; return 1411, 1411 end
+for _ = 1, 100 do playerX = playerX + 1; tick() end
+assert(pathResolutions == 0 and stepReads == 100,
+    "Moving on an ordinary quest step resolves the step once and never resolves the custom path")
+step.UseHS = true
+playerX = playerX + 1; tick()
+assert(frame.Button:IsShown() and pathResolutions == 0, "Hearthstone skip button needs no route distance scan")
+step.UseHS, step.Waypoint = nil, 1
+steps[2] = {Coord = {x = step.Coord.x + 30, y = step.Coord.y + 40}}
+playerX = playerX + 1; tick()
+assert(pathResolutions == 1 and frame.Button:IsShown())
+local distance = ((playerX - arrow.x)^2 + (playerY - arrow.y)^2)^0.5
+assert(frame.distance.text == math.floor(distance + 50) .. " yards", "Waypoint distance includes the following segment")
+print("Moving arrow: no duplicate step/custom-path resolution; hearthstone button and waypoint distance preserved")

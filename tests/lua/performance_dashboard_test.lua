@@ -32,14 +32,14 @@ assert(log.summary.Render.histogram[4] == 1000 and log.counters.CacheHit == 1000
 local rows = APR:GetPerformanceRows("slow")
 assert(rows[1].time == 1000 and rows[100].time == 901)
 assert(APR:GetPerformanceTimeline()[1].second == 881)
-for index = 1, 1000 do
+for index = 1, 9000 do
     APR:CountPerformanceEvent("Name" .. index)
     APR:FinishPerformanceSample("Name" .. index, milliseconds)
 end
 local metrics, counters = 0, 0
 for _ in pairs(log.summary) do metrics = metrics + 1 end
 for _ in pairs(log.counters) do counters = counters + 1 end
-assert(metrics <= 65 and counters <= 65)
+assert(metrics == 8193 and counters == 8193)
 APR.PerformanceDashboard:Show()
 assert(#APR.PerformanceDashboard.bars == 120)
 local dashboard = APR.PerformanceDashboard
@@ -57,7 +57,7 @@ dashboard:RefreshGraph()
 dashboard.plot.scripts.OnEnter()
 assert(dashboard.hoverIndex == 120)
 local details = APR:GetPerformanceBucketDetails(dashboard.timeline[120], 1000)
-assert(details.count == 1001 and details.peakName == "Render" and details.slowCount == 1)
+assert(details.count == 9001 and details.peakName == "Render" and details.slowCount == 1)
 cursorX = (100 + 4 + 5) * 2
 dashboard:UpdateGraphTooltip()
 assert(dashboard.hoverIndex == 1 and dashboard.timeline[1].count == 1)
@@ -138,3 +138,17 @@ assert(not APR.performanceLogging and not resources.frozenView, "Stop shows the 
 assert(not resources.scanMemory.enabled, "Memory measurement is disabled after capture stops")
 
 print("Performance: bounded capture, peak context, scaled graph hover, frozen graph, metric selection and cleanup passed")
+
+dofile("APR-Core/core/PerformanceScopes.lua")
+dofile("APR-Core/core/DiagnosticReport.lua")
+dashboard.debugCapture.scripts.OnClick()
+assert(APR.debugLogging and dashboard.mode == "logs" and dashboard.modeSelect.value == "logs")
+APRInstrumentation.Message("DEBUG", "Readable trace", {enabled = false})
+dashboard.query = "Readable trace"
+dashboard:Refresh()
+assert(#dashboard.list.items == 1 and dashboard.list.items[1].data:find("enabled=false", 1, true))
+local report = APR:BuildDiagnosticReport()
+assert(report:find("Readable trace", 1, true) and report:find("[DEBUG]", 1, true))
+dashboard.debugCapture.scripts.OnClick()
+assert(not APR.debugLogging and not APRInstrumentation.enabled)
+print("Diagnostic UI: independent debug toggle, log mode, readable data, search, export and stopping passed")

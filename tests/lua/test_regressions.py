@@ -12,6 +12,8 @@ ROOT = Path(__file__).resolve().parents[2]
 
 def run_lua_suite(path: Path) -> LuaRuntime:
     runtime = LuaRuntime(unpack_returned_tuples=True)
+    runtime.execute("function GetTime() return 0 end; function debugprofilestop() return 0 end")
+    runtime.execute((ROOT / "APR-Core/core/Diagnostics.lua").read_text(encoding="utf-8-sig"))
     previous = Path.cwd()
     try:
         os.chdir(ROOT)

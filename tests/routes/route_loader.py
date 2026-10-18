@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from pathlib import Path
 
 from lupa.lua51 import LuaRuntime, lua_type
+from tools.validation.instrument_lua import clean
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -86,7 +87,9 @@ def load_routes(paths=None):
     sources = {}
     for path in sorted(paths if paths is not None else (ROOT / "Routes").rglob("*.lua")):
         name = path.relative_to(ROOT).as_posix() if path.is_relative_to(ROOT) else str(path)
-        execute(path.read_text(encoding="utf-8-sig"), "@" + name)
+        # Runtime diagnostics are not part of the declaration language. Strip
+        # generated probes rather than exposing extra APIs in this sandbox.
+        execute(clean(path.read_text(encoding="utf-8-sig")), "@" + name)
         for key in registry.keys():
             sources.setdefault(key, name)
     return RouteCatalog(plain(registry), sources, enums, profiles)

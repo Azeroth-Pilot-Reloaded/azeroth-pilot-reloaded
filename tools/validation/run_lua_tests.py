@@ -24,7 +24,7 @@ GROUPS = {
     "performance-only": ("quest_order_performance", "zone_transition_performance",
                          "farstrider_routing_performance", "step_progression",
                          "resource_monitor", "performance_dashboard", "route_path_performance",
-                         "arrow_visibility", "idle_tracker_performance"),
+                         "arrow_visibility", "idle_tracker_performance", "performance_scopes", "map_pin_performance"),
 }
 
 

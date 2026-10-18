@@ -34,7 +34,7 @@ print = function(...) messages[#messages + 1] = { ... } end
 APR.settings = { profile = { debug = false } }
 APR:Debug("nested", { value = "visible" }, true)
 print = realPrint
-assert(#messages == 2 and messages[2][2] == "visible", "Forced debug must reach nested values")
+assert(#messages == 1 and messages[1][1]:find("value=visible", 1, true), "Forced debug formats nested values into one readable line")
 
 assert(APR:GetCurrentStep() == nil and APR:GetCharacterSettings() == nil)
 APR.PlayerID, APR.ActiveRoute = "player", "route"
