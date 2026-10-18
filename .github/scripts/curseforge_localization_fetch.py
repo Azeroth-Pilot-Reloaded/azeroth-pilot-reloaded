@@ -1,6 +1,14 @@
+import logging
 import re
+import time
 from typing import Dict, List, Tuple
 import requests
+
+
+LOG = logging.getLogger(__name__)
+EXPORT_ATTEMPTS = 3
+EXPORT_TIMEOUT = (10, 30)  # Separate connection and read timeouts in seconds.
+RETRY_STATUS = {429, 500, 502, 503, 504}
 
 
 #############################################################################
@@ -39,12 +47,36 @@ def set_localization_export_url(
 
 def fetch_localization_export(api_url: str, api_token: str) -> str:
     """
-    Fetch localization export text from CurseForge.
+    Fetch localization export text, retrying transient failures with backoff.
     """
     headers = {"X-Api-Token": api_token}  # doc says X-Api-Token (case-insensitive)
-    response = requests.get(api_url, headers=headers, timeout=20)
-    response.raise_for_status()
-    return response.text
+    for attempt in range(1, EXPORT_ATTEMPTS + 1):
+        response = None
+        try:
+            response = requests.get(api_url, headers=headers, timeout=EXPORT_TIMEOUT)
+            response.raise_for_status()
+            return response.text
+        except (requests.Timeout, requests.ConnectionError, requests.HTTPError) as error:
+            if isinstance(error, requests.HTTPError) and (
+                response is None or response.status_code not in RETRY_STATUS
+            ):
+                raise
+            if attempt == EXPORT_ATTEMPTS:
+                LOG.error("CurseForge export failed after %s attempts", attempt)
+                raise
+
+            delay = 2 ** attempt
+            if response is not None:
+                retry_after = response.headers.get("Retry-After", "")
+                if retry_after.isdigit():
+                    delay = min(60, max(delay, int(retry_after)))
+            # Do not log response bodies or exception text: they can contain credentials.
+            reason = f"HTTP {response.status_code}" if response is not None else type(error).__name__
+            LOG.warning(
+                "CurseForge export: %s (attempt %s/%s); retrying in %ss",
+                reason, attempt, EXPORT_ATTEMPTS, delay,
+            )
+            time.sleep(delay)
 
 
 #############################################################################
