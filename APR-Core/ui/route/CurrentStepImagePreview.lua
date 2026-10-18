@@ -293,6 +293,34 @@ local function CreateOverlayWindow(imagePath)
             ReturnWindowToPool(window)
         end)
 
+        if APR.Gamepad then
+            resizeHandle.smartNavigationIgnored = true
+            local controls = {}
+            for index, action in ipairs({"-", "+", "", "", "", ""}) do
+                local operation = index
+                local button = APR.UI:Button(panel, action, 44, function()
+                    if operation <= 2 then
+                        window.zoomLevel = APR:Clamp(window.zoomLevel + (operation == 1 and -0.1 or 0.1),
+                            OVERLAY_ZOOM_MIN, OVERLAY_ZOOM_MAX)
+                    elseif operation <= 4 then
+                        window.panOffsetX = window.panOffsetX + (operation == 3 and -24 or 24)
+                    else
+                        window.panOffsetY = window.panOffsetY + (operation == 5 and 24 or -24)
+                    end
+                    if ApplyOverlayTextureLayout then ApplyOverlayTextureLayout(window) end
+                end)
+                button:SetPoint("BOTTOMLEFT", 12 + (index - 1) * 48, 12)
+                if index > 2 then
+                    local rotations = {math.pi / 2, -math.pi / 2, 0, math.pi}
+                    APR.UI:ButtonIcon(button, "up", 20, true):SetRotation(rotations[index - 2])
+                end
+                button:SetFrameLevel(panel:GetFrameLevel() + 10)
+                controls[#controls + 1] = button
+            end
+            APR.Gamepad:LinkHorizontal(controls)
+            APR.Gamepad:RegisterWindow(panel, true)
+        end
+
         -- Register each frame name exactly once, the first time its slot is created.
         APR:RegisterUiSpecialFrame(panelName)
     end

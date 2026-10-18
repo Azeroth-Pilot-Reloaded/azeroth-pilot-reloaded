@@ -82,6 +82,16 @@ class LocalizationPreparationTests(unittest.TestCase):
             notification.main(str(self.message_file))
         self.assert_nothing_prepared()
 
+    def test_export_timeout_preserves_state(self):
+        with patch.object(
+            notification, "fetch_localization_stats",
+            side_effect=notification.requests.ReadTimeout("CurseForge unavailable"),
+        ):
+            with self.assertRaises(notification.requests.ReadTimeout):
+                notification.main(str(self.message_file))
+        self.scrape.assert_not_called()
+        self.assert_nothing_prepared()
+
     def test_valid_counts_prepare_notification_and_persist_cooldown(self):
         self.scrape.return_value = {"frFR": {"review": 2}, "deDE": {"review": 0}}
         notification.main(str(self.message_file))

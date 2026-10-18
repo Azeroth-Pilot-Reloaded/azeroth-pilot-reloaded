@@ -982,6 +982,7 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     IconButton.attribute = attribute
     IconButton.equipSlot = equipSlot
     container.IconButton = IconButton
+    if APR.Gamepad then APR.Gamepad:RegisterActionButton(IconButton) end
     container.hasSecureControls = true
     if APR.RegisterSkinTarget then
         APR:RegisterSkinTarget(IconButton, "icon", { texture = IconButton:GetNormalTexture() })

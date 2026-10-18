@@ -216,6 +216,8 @@ end
 
 UIParent, GameTooltip = widget(), widget()
 APR = {
+    GAME_VERSIONS = { Retail = "retail", Classic = "classic", Forever = "forever" },
+    GetGameVersion = function() return "retail" end,
     Color = { defaultBackdrop = { 0, 0, 0, 1 }, blue = { 0, 0.5, 1 } },
     Debug = noop,
     settings = { profile = { currentStepShow = true, currentStepbackgroundColorAlpha = { 0, 0, 0, 1 } } },

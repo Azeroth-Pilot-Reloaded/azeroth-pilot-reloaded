@@ -106,6 +106,9 @@ local function EnsureRouteTriggerPopup()
     end)
 
     frame:Hide()
+    if APR.Gamepad then
+        APR.Gamepad:RegisterWindow(frame, true, function() frame.cancelButton:Click() end)
+    end
     routeTriggerPopupFrame = frame
     return frame
 end

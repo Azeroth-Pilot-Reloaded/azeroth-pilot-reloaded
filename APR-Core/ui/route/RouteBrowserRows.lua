@@ -44,6 +44,7 @@ function Rows:Create(parent, browser, path)
     row.progressMarker:SetSize(2, 14)
     row.name = UI:Label(row, "", 12)
     row.name:SetWordWrap(false)
+    row.aprGamepadRect = row.name
     row:SetScript("OnEnter", function() self:Tooltip(row, path) end)
     row:SetScript("OnLeave", function() GameTooltip:Hide() end)
     row:SetScript("OnClick", function(_, button)
@@ -76,6 +77,9 @@ function Rows:Create(parent, browser, path)
         row.add = UI:IconButton(row, "add", 24,
             function() APR.RouteCatalog:ChangePath(row.item, "add", IsShiftKeyDown()) end)
         UI:Tooltip(row.add, ADD, L["UI_ROUTE_SHORTCUTS"])
+    end
+    if APR.Gamepad then
+        APR.Gamepad:LinkHorizontal(path and {row, row.up, row.down, row.remove} or {row.favorite, row, row.add}, true)
     end
     return row
 end

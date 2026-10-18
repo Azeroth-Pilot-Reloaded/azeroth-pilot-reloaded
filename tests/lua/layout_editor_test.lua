@@ -203,3 +203,20 @@ previews[4].scripts.OnDragStop(previews[4])
 assert(previews[1].changed and not previews[4].changed)
 editor:Save()
 assert(profile.afkSnapToCurrentStep and profile.fillersFrameSnapToCurrentStep and profile.questOrderListSnapToCurrentStep)
+
+-- Controller nudges use the same draft, scale and linked root as mouse dragging.
+editor:Show()
+editor.selectedPreview = 2
+local savedX, savedY = profile.currentStepFrame.x, profile.currentStepFrame.y
+local root = editor.previews[1]
+local left, top, scale = root:GetLeft(), root:GetTop(), root:GetScale()
+editor:NudgeSelected(10, -10)
+assert(root.point[4] == left + 10 / scale and root.point[5] == top - 10 / scale)
+assert(root.changed and not editor.previews[2].changed)
+assert(profile.currentStepFrame.x == savedX and profile.currentStepFrame.y == savedY)
+env.setCombat(true)
+local anchor = root.point
+editor:NudgeSelected(10, 10); assert(root.point == anchor)
+env.setCombat(false)
+editor:Hide()
+assert(profile.currentStepFrame.x == savedX and profile.currentStepFrame.y == savedY)

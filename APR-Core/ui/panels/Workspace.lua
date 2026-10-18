@@ -44,6 +44,19 @@ function Workspace:Create()
         -- The shell covers the lower edge of the tab, like a folder attached behind its border.
         tab:SetFrameLevel(frame:GetFrameLevel() - 1)
         self.tabs[definition.id] = tab
+        if APR.Gamepad then
+            local id = definition.id
+            APR.Gamepad:BindDetails(tab, "DOWN", function() self:Show(id) end,
+                function() return self.pages[id] end)
+        end
+    end
+    if APR.Gamepad then
+        local tabs = {}
+        for _, definition in ipairs(definitions) do tabs[#tabs + 1] = self.tabs[definition.id] end
+        APR.Gamepad:LinkHorizontal(tabs)
+        frame.gamepadMenu = UI:Button(frame, L["GAMEPAD_MENU"], 145, function() APR.Gamepad:RunAction("menu") end)
+        frame.gamepadMenu:SetPoint("TOPRIGHT", -58, -10)
+        frame.header.Text:SetPoint("RIGHT", -170, 0)
     end
     frame:HookScript("OnSizeChanged", function() self:LayoutTabs() end)
     frame:HookScript("OnHide", function()
@@ -98,6 +111,7 @@ function Workspace:Show(id, section)
     self.frame:Raise()
     if section and controller.Select then controller:Select(section)
     elseif controller.Refresh then controller:Refresh() end
+    if APR.Gamepad then APR.Gamepad:Refresh(self.frame) end
 end
 
 function Workspace:Hide()

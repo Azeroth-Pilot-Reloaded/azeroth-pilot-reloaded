@@ -16,6 +16,7 @@ function APR.command:GetHelpEntries()
         {"/apr forcereset, fr", L["FORCERESET_COMMAND"]},
         {"/apr github", L["GITHUB_COMMAND"]},
         {"/apr help, h", L["HELP_COMMAND"]},
+        {"/apr gamepad", L["GAMEPAD_MENU"]},
         {"/apr layout", L["UI_LAYOUT_TITLE"]},
         {"/apr qol", L["QOL_COMMAND"]},
         {"/apr reset, r", L["RESET_COMMAND"]},
@@ -43,7 +44,9 @@ function APR.command:SlashCmd(input)
         APR.settings:OpenSettings(APR.title)
         APR:PrintInfo(L["ADDON"] .. ' ' .. L["DISABLE"])
     end
-    if inputText == "layout" then
+    if inputText == "gamepad" then
+        APR.Gamepad:RunAction("menu")
+    elseif inputText == "layout" then
         APR.LayoutEditor:Show()
     elseif inputText == "perf on" then
         APR:SetPerformanceCapture(true)

@@ -142,6 +142,7 @@ function Intro:Create()
     -- Only an explicit appearance choice completes onboarding. Do not register
     -- a close button or Escape dismissal: reloads/relogins must keep it pending.
     frame:Hide()
+    if APR.Gamepad then APR.Gamepad:RegisterWindow(frame, true, function() end) end
 end
 
 function Intro:Show()

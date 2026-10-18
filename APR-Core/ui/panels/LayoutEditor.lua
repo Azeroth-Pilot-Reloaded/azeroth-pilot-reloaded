@@ -151,11 +151,44 @@ function Editor:Recover()
     self:LayoutSnappedPreviews()
 end
 
+-- Controller movement edits the same draft and linked root as dragging. Save/Cancel
+-- remain the only operations that publish/discard the placement.
+function Editor:NudgeSelected(dx, dy)
+    if not self.active or InCombatLockdown() or self.profile ~= APR:GetSettingsProfile() then return end
+    local preview = self.previews[self.selectedPreview or 1]
+    if not preview then return end
+    local target = self:DragTarget(preview)
+    local x, y = target:GetLeft(), target:GetTop()
+    if not x or not y then return end
+    target:ClearAllPoints()
+    target:SetPoint("TOPLEFT", UIParent, "BOTTOMLEFT", x + dx / target:GetScale(), y + dy / target:GetScale())
+    target.changed = true
+    self:LayoutSnappedPreviews()
+end
+
 function Editor:Create()
     local frame = UI:Window("APRLayoutEditor", L["UI_LAYOUT_TITLE"], 780, 190)
     self.frame = frame
     frame:SetResizeBounds(600, 180)
     frame:SetHeight(190)
+    if APR.Gamepad then
+        frame:SetResizeBounds(600, 250)
+        frame:SetHeight(250)
+        local choose = UI:Select(frame.content, 260, function(index) self.selectedPreview = index end)
+        choose:SetPoint("TOPLEFT", 0, -58)
+        local options = {}
+        for index, definition in ipairs(self.definitions) do options[index] = {value = index, label = L[definition.label]} end
+        choose:SetOptions(options, 1)
+        local controls = {choose}
+        for index, definition in ipairs({{math.pi / 2, -10, 0}, {-math.pi / 2, 10, 0}, {0, 0, 10}, {math.pi, 0, -10}}) do
+            local dx, dy = definition[2], definition[3]
+            local button = UI:IconButton(frame.content, "up", 30, function() self:NudgeSelected(dx, dy) end)
+            button.icon:SetRotation(definition[1])
+            button:SetPoint("TOPLEFT", 272 + (index - 1) * 38, -58)
+            controls[#controls + 1] = button
+        end
+        APR.Gamepad:LinkHorizontal(controls)
+    end
     frame.resize:Hide()
     frame:ClearAllPoints()
     frame:SetPoint("TOP", UIParent, "TOP", 0, -20)

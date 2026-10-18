@@ -83,6 +83,7 @@ function UI:Button(parent, text, width, callback, style, scope, options)
     label:SetJustifyH("CENTER")
     button:SetFontString(label)
     button:SetScript("OnClick", callback)
+    button:HookScript("OnClick", function() if APR.Gamepad then APR.Gamepad:Refresh(button) end end)
     button:SetScript("OnEnter", function(self)
         if self.aprListRow or APR:GetSkinProviderName(scope) then return end
         if self:IsEnabled() and self.SetBackdropBorderColor then self:SetBackdropBorderColor(unpack(APR:GetThemeColor("accent", scope))) end
@@ -539,6 +540,7 @@ end
 function UI:Scroll(parent)
     local scroll = CreateFrame("ScrollFrame", nil, parent, "UIPanelScrollFrameTemplate")
     if scroll.ScrollBar then APR:RegisterSkinTarget(scroll.ScrollBar, "scrollbar", { compact = true }) end
+    if APR.Gamepad and APR.Gamepad.PrepareScroll then APR.Gamepad:PrepareScroll(scroll) end
     return scroll
 end
 
@@ -686,6 +688,7 @@ function UI:Select(parent, width, changed)
             end, 28)
             button:HookScript("OnHide", function() menu:Hide() end)
             menu:Hide()
+            if APR.Gamepad then APR.Gamepad:RegisterWindow(menu, true) end
         end
         -- Use the screen space on the roomier side, and scroll only when all rows cannot fit.
         -- Positions returned by GetTop/GetBottom use the button's effective scale.
@@ -770,5 +773,11 @@ function UI:Window(name, title, width, height, surface, logo)
     UISpecialFrames = UISpecialFrames or {}
     table.insert(UISpecialFrames, name)
     frame:Hide()
+    if APR.Gamepad then
+        -- Drag/resize handles are mouse-only; they must not trap native navigation.
+        frame.header.smartNavigationIgnoredDontPropagate = true
+        frame.resize.smartNavigationIgnored = true
+        APR.Gamepad:RegisterWindow(frame)
+    end
     return frame
 end

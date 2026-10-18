@@ -50,6 +50,10 @@ function Options:Create(parent)
     scroll:SetPoint("BOTTOMRIGHT", -26, 12)
     self.navigation = APR.VirtualList:New(scroll, function(container)
         local row = UI:ListButton(container, "", 1, function(button) self:Select(button.item.id) end, "appearance")
+        if APR.Gamepad then
+            APR.Gamepad:BindDetails(row, "RIGHT", function() self:Select(row.item.id) end,
+                function() return self.content end)
+        end
         return row
     end, function(row, section)
         row:SetText(section.label)
@@ -251,11 +255,17 @@ function Options:Select(id)
             for index, view in ipairs(section.views) do
                 if not self.viewTabs[index] then
                     self.viewTabs[index] = UI:Button(self.body, "", 100, function(button) self:SelectView(button.viewID) end)
+                    if APR.Gamepad then
+                        local tab = self.viewTabs[index]
+                        APR.Gamepad:BindDetails(tab, "DOWN", function() self:SelectView(tab.viewID) end,
+                            function() return self.content end)
+                    end
                 end
                 self.viewTabs[index].viewID = view.id
                 self.viewTabs[index]:SetText(view.label)
             end
             self:SelectView(requestedView or self.selectedViews[section.id] or section.views[1].id)
+            if APR.Gamepad then APR.Gamepad:LinkHorizontal(self.viewTabs) end
             self.navigation:RefreshVisible(true)
             return
         end

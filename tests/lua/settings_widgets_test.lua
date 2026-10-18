@@ -23,6 +23,7 @@ function env.methods:GetStringHeight() return math.max(1, math.ceil(#tostring(se
 local createFrame = CreateFrame
 function CreateFrame(kind, name, parent, template)
     local frame = createFrame(kind, name, parent, template)
+    frame.kind = kind
     if template == "UIDropDownMenuTemplate" then
         for _, key in ipairs({"Left", "Middle", "Right"}) do _G[name .. key] = frame:CreateTexture() end
         _G[name .. "Text"] = frame:CreateFontString()
@@ -401,3 +402,4 @@ for _ = 1, 20 do
 end
 assert(env.frames() == previewFrames, "AceGUI reuses the native theme preview without allocating on every settings refresh")
 print("Workspace widgets: real AceGUI pool isolation, nested release, reuse, error recovery and skin delegation passed")
+return {env = env, gui = gui, host = host, dialog = dialog}

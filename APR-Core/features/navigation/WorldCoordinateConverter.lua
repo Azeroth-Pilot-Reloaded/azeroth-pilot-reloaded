@@ -890,5 +890,11 @@ function APR.worldCoordinateConverter:Show()
 
     self.frame = frame
     self.output = output
+    if APR.Gamepad then
+        APR.Gamepad:RegisterWindow(frame.frame, false, function() frame:Fire("OnClose") end,
+            function() return self.frame == frame end)
+        APR.Gamepad:RegisterWindow(suggestionFrame, true)
+        APR.Gamepad:AdaptSettings(frame)
+    end
     routeSearch:SetFocus()
 end

@@ -487,6 +487,7 @@ function CurrentStep:ReOrderQuestSteps()
     self.FrameHeight = offset
     self:UpdatePanelHeight()
     APR:RefreshSnappedFrames()
+    if APR.Gamepad then APR.Gamepad:Refresh(CurrentStepScreenPanel) end
 end
 
 function CurrentStep:RefreshTextLayout() self:ReOrderQuestSteps() end

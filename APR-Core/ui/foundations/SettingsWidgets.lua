@@ -25,6 +25,10 @@ local function InstallConfirmationSkin(widget, prefix, dialog, seen)
                 (popup.cancel and popup.cancel:GetScript("OnClick") ~= cancelScript))
             if changed and type(app) == "string" and app:sub(1, #prefix) == prefix and popup and popup:IsShown() then
                 APR:StyleStaticPopup(popup)
+                if APR.Gamepad and popup.accept and popup.cancel then
+                    APR.Gamepad:RegisterWindow(popup, true, function() popup.cancel:Click() end,
+                        function() return popup._aprTextOriginals ~= nil end)
+                end
             end
             return unpack(result)
         end
@@ -229,6 +233,7 @@ function APR:EnableWorkspaceWidgets()
             InstallConfirmationSkin(container, prefix, self)
             if not external then Style(container) end
             APR.SettingsRows:Apply(container)
+            if APR.Gamepad then APR.Gamepad:AdaptSettings(container) end
             if method == "Open" and container then container:Fire("OnOptionsRefreshed") end
             return unpack(result, 2)
         end

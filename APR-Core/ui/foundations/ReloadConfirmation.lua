@@ -6,8 +6,13 @@ function APR:RequestReload(action, text, owner)
         return true
     end
     local L = LibStub("AceLocale-3.0"):GetLocale("APR")
+    -- Forever can block addon-triggered reloads even from the confirmation click.
+    -- ReloadUI wraps C_UI.Reload there too, so leave the command to the player.
+    local manualReload = self:GetGameVersion() == self.GAME_VERSIONS.Forever
+    local prompt = text or L["UI_RELOAD_CONFIRM"]
+    if manualReload then prompt = prompt .. "\n\n" .. L["UI_RELOAD_MANUAL_INSTRUCTION"] end
     local finished = false
-    return self.UI:ShowConfirmationDialog(text or L["UI_RELOAD_CONFIRM"], function()
+    return self.UI:ShowConfirmationDialog(prompt, function()
         if finished then return end
         finished = true
         self.reloadConfirmationAccepted = true
@@ -15,6 +20,10 @@ function APR:RequestReload(action, text, owner)
         self.reloadConfirmationAccepted = nil
         if not ok then error(result, 0) end
         if result == false then return end
+        if manualReload then
+            self:PrintInfo(L["UI_RELOAD_MANUAL_INSTRUCTION"])
+            return
+        end
         if C_UI and C_UI.Reload then C_UI.Reload() else ReloadUI() end
     end, function() finished = true end, owner)
 end

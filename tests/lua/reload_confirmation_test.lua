@@ -125,4 +125,39 @@ assert(not APR:ChangeTrackerOption("currentStep", "currentStepAttachFrameToQuest
 assert(profile.currentStepAttachFrameToQuestLog and geometry == 1 and reloads == before and not popup:IsShown(),
     "Geometry changes without a renderer change apply immediately")
 
-print("Reload confirmation: cancellation, one-shot acceptance, reset commands, isolated profile handlers and conditional snaps passed")
+-- Legacy clients still use the global reload entry point when C_UI is absent.
+C_UI = nil
+function ReloadUI() reloads = reloads + 1 end
+APR:RequestReload()
+popup.acceptButton.scripts.OnClick(popup.acceptButton)
+assert(reloads == before + 1, "The legacy reload fallback still works")
+
+-- Forever must never call either protected entry point, even when both exist.
+function APR:GetGameVersion() return self.GAME_VERSIONS.Forever end
+local notices = {}
+function APR:PrintInfo(message) notices[#notices + 1] = message end
+local function blockedReload() error("Forever blocked the addon reload") end
+C_UI, ReloadUI = {Reload = blockedReload}, blockedReload
+before = mutations
+APR:RequestReload(function() mutations = mutations + 1 end, "Custom confirmation")
+assert(popup.title:GetText() == "Custom confirmation\n\nUI_RELOAD_MANUAL_INSTRUCTION")
+staleAccept = popup.onAccept
+popup:Hide()
+staleAccept()
+assert(mutations == before and #notices == 0, "Forever cancellation preserves changes and suppresses the notice")
+APR:RequestReload(function()
+    mutations = mutations + 1
+    APR:RequestReload() -- Nested profile refresh must not add another notice.
+end)
+staleAccept = popup.onAccept
+popup.acceptButton.scripts.OnClick(popup.acceptButton)
+staleAccept()
+assert(mutations == before + 1 and #notices == 1 and notices[1] == "UI_RELOAD_MANUAL_INSTRUCTION"
+    and not APR.reloadConfirmationAccepted, "Forever applies once and asks the player to reload manually")
+APR:RequestReload(function() return false end)
+popup:Accept()
+APR:RequestReload(function() error("Expected failure") end)
+assert(not pcall(popup.Accept, popup) and not APR.reloadConfirmationAccepted and #notices == 1,
+    "Rejected or failed actions must not claim changes need reloading")
+
+print("Reload confirmation: cancellation, one-shot acceptance, reset commands, isolated profile handlers, conditional snaps and manual Forever reloads passed")

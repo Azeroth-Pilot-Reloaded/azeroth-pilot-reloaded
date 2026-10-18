@@ -193,6 +193,10 @@ function Browser:Create(parent)
     frame:HookScript("OnShow", function() self:Refresh(true) end)
     frame:HookScript("OnHide", function() self.search:ClearFocus() end)
     self:Layout()
+    if APR.Gamepad then
+        APR.Gamepad:LinkHorizontal(self.prefabs)
+        APR.Gamepad:LinkHorizontal({self.search, self.category, self.favorites, self.reset})
+    end
 end
 
 function Browser:Layout()

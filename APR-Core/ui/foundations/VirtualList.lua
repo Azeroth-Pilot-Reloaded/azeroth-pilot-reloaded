@@ -103,10 +103,12 @@ function List:RenderVisible(force)
             row.boundGeneration, row.boundIndex, row.boundWidth = self.generation, index, width
         end
         row:Show()
+        if APR.Gamepad then APR.Gamepad:AdaptListRow(self, row) end
         local decorated = row.aprListRow and row or row.button and row.button.aprListRow and row.button
         if decorated then
             decorated.aprListRow.last = index == #self.items
             APR.UI:RefreshListRow(decorated)
         end
     end
+    if APR.Gamepad then APR.Gamepad:Refresh(self.scroll) end
 end
