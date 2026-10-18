@@ -434,7 +434,7 @@ local canonicalTheme = APR.settings.optionsTable.args.group_Debug.args.subgroup_
 assert(not themeArgs.themeApply and not themeArgs.themeDiscard and not themeArgs.themeAccentHex and not themeArgs.themeDefaults)
 assert(themeArgs.themePreviewHint.dialogControl == "APRThemeNotice"
     and themeArgs.themeCustomizationHeader.order > themeArgs.themePreviewHint.order
-    and themeArgs.themeCustomizationHeader.order < themeArgs.themeCustomColor.order)
+    and themeArgs.themeCustomizationHeader.order < themeArgs.themeAccent.order)
 assert(panel.footer:IsShown() and #panel.footerActions == 2
     and panel.footerButtons[1].option.func == canonicalTheme.themeDiscard.func
     and panel.footerButtons[2].option.func == canonicalTheme.themeApply.func,
@@ -451,7 +451,7 @@ assert(not panel.footerButtons[1]:IsEnabled() and not panel.footerButtons[2]:IsE
 assert(themeArgs.themePreview.hidden() and themeArgs.uiSkin.confirm == false,
     "The pinned preview is not duplicated and selecting a draft never opens a reload confirmation")
 themeArgs.uiSkin.set(nil, "violetModern")
-themeArgs.themeCustomColor.set(nil, true)
+assert(not themeArgs.themeCustomColor)
 themeArgs.themeRadius.set(nil, 12)
 assert(APR.settings.profile.uiTheme == "modern" and not APR.settings.profile.uiThemeCustomization.rounded
     and panel.themePreview.preview.body.backdrop.edgeSize == 12,
@@ -484,6 +484,6 @@ assert(APR.settings.profile.uiThemeCustomization.radius == 12 and notified == 3
     and not panel.footerButtons[2]:IsEnabled(), "The fixed Apply saves the draft and updates its enabled state")
 themeArgs.themeRadius.set(nil, 5)
 panel.frame.scripts.OnHide()
-assert(not panel.themePreview.frame:IsShown() and APR.ThemeCustomization:GetDraft().theme == "modern"
+assert(not panel.themePreview.frame:IsShown() and APR.ThemeCustomization:GetDraft().theme == "customModern"
     and APR.ThemeCustomization:GetDraft().radius == 12,
     "Closing Options discards unapplied drafts and stops preview refreshes")

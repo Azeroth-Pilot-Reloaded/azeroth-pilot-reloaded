@@ -16,10 +16,27 @@ local nativeDefaults = {
     afkBarColor = { 1, 164 / 255, 26 / 255, 1 },
 }
 
+function APR:GetStatusBarClassColor()
+    local profile = self:GetSettingsProfile()
+    if self.UsesClassAccent and self:UsesClassAccent() then return self:GetPlayerClassColor() end
+    local custom = profile and profile.uiThemeCustomization
+    local name = self.GetAppearanceProvider and self:GetAppearanceProvider() or (profile and profile.uiTheme)
+    local theme = self.Themes and self.Themes[name]
+    if custom and custom.classColor and theme and theme.style == "modern" then
+        return self:GetPlayerClassColor()
+    end
+end
+
 function APR:GetStatusBarColor(colorKey, scope)
     local profile = self:GetSettingsProfile()
     local saved = profile and profile[colorKey]
     local color = saved or self.Color[self.STATUS_BAR_COLOR_DEFAULTS[colorKey]] or self.Color.blue
+    -- Class accents and full class themes own every APR fill, including explicit/legacy colors.
+    -- Retain saved RGB for when the mode is disabled, and preserve each bar's opacity.
+    local classColor = self:GetStatusBarClassColor()
+    if classColor then
+        return {classColor[1], classColor[2], classColor[3], color[4] or 1}
+    end
     local isDefault = not (profile and profile[colorKey .. "Custom"])
     if saved and nativeDefaults[colorKey] then
         for index = 1, 4 do
@@ -41,7 +58,7 @@ function APR:ApplyStatusBarColor(bar)
     if not colorKey then return false end
     local scope = (self.GetSkinScope and self:GetSkinScope(bar)) or barScopes[bar]
     local color = self:GetStatusBarColor(colorKey, scope)
-    -- Skins supply the texture; explicit APR options (including Love) keep their fill color.
+    -- Skins supply the texture; APR resolves the fill, with class themes taking priority.
     if self.EllesmereUISkin and not InCombatLockdown() then
         self.EllesmereUISkin:ApplyBarFill(bar, self.GetSkinScope and self:GetSkinScope(bar))
     end

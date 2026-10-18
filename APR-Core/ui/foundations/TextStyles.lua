@@ -164,10 +164,21 @@ local function CustomColor(appearance, profileKey, key)
     end
 end
 
-function APR:GetCustomTextColor(scope, role)
+function APR:GetCustomTextColor(scope, role, themeDraft)
     local key = ROLE_KEYS[role or "base"]
     if not key then return end
     local scoped, general = GetAppearance(scope)
+    if key == "accentColor" then
+        local profile = GetProfile()
+        local themeSettings = themeDraft or (profile and profile.uiThemeCustomization)
+        local themeName = themeDraft and themeDraft.theme or
+            (self.GetAppearanceProvider and self:GetAppearanceProvider(scope)) or (profile and profile.uiTheme)
+        local nativeModern = self.Themes and self.Themes[themeName] and self.Themes[themeName].style == "modern"
+        if (self.UsesClassAccent and self:UsesClassAccent(themeDraft)) or (nativeModern and themeSettings and themeSettings.classColor) then
+            local color = self.GetPlayerClassColor and self:GetPlayerClassColor()
+            if color then return color end
+        end
+    end
     if scope and scope ~= "general" then
         local color = CustomColor(scoped, self.TEXT_APPEARANCE_SCOPES[scope], key)
         if color then return color end
@@ -182,6 +193,16 @@ function APR:GetTextColor(scope, role, trackerStyle)
     end
     local custom = self:GetCustomTextColor(scope, role)
     if custom then return custom end
+    -- Guide instructions can carry either a title role or legacy yellow markup.
+    -- Under integrated skins both follow the provider's live accent.
+    if scope == "currentStep" and (role == "title" or role == "warning") then
+        local provider = self.GetAppearanceProvider and self:GetAppearanceProvider(scope)
+        if provider == "EllesmereUI" or provider == "ElvUI" then
+            role = "accent"
+            local accent = self:GetCustomTextColor(scope, role)
+            if accent then return accent end
+        end
+    end
     local themedRole = role == "activeStep" and "warning" or role or "base"
     if trackerStyle == nil then trackerStyle = self.QuestTracker and self.QuestTracker:Style(scope) end
     if trackerStyle then
@@ -486,6 +507,9 @@ end
 
 function APR:RefreshTextAppearance(scope)
     self:ApplyAllTextStyles(scope)
+    if (not scope or scope == "general") and self.RefreshStatusBarColors then
+        self:RefreshStatusBarColors()
+    end
 
     if ScopeAffects(scope, "currentStep") and self.currentStep and
         self.currentStep.RefreshTextLayout then

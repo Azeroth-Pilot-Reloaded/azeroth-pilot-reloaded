@@ -172,4 +172,81 @@ profile.afkTextAppearance = {useGlobal = false, font = "Custom", size = 30, colo
 afk.resetTextAppearance.func()
 assert(profile.afkTextAppearance.useGlobal and profile.afkTextAppearance.size == 12
     and not next(profile.afkTextAppearance.colorOverrides), "The fallback restores inheritance and clears customization")
-print("Text colors: effective swatches, six RGBA callbacks, all palettes, scope/global inheritance, explicit defaults, legacy settings and providers passed")
+-- Class accent choices live in the theme draft, including bar previews and publication.
+assert(not global.accentClassColor, "Class accents are no longer a text-page toggle")
+function UnitClass() return "Mage", "MAGE" end
+RAID_CLASS_COLORS = {MAGE = {r = 0.25, g = 0.78, b = 0.92}}
+local classColor = {0.25, 0.78, 0.92, 1}
+profile.currentStepProgressBarColor, profile.currentStepProgressBarColorCustom = {0.6, 0.3, 0.2, 0.4}, true
+profile.afkBarColor, profile.afkBarColorCustom = {0.2, 0.5, 0.3, 0.7}, true
+local progress = APR:CreateStatusBar(CurrentStepScreenPanel)
+local afkBar = APR:CreateStatusBar(UIParent, nil, "afk", "afkBarColor")
+afkBar:Hide()
+local editor = APR.ThemeCustomization
+editor:Set("accentClassColor", true)
+same(preview.preview.caption.textColor, classColor, "Class choice previews titles")
+same(preview.preview.bar.color, classColor, "Class choice previews progress bars")
+same(progress.color, profile.currentStepProgressBarColor, "Class choices do not leak before Apply")
+assert(editor:GetDraft().theme == "customModern")
+editor:Apply()
+same(progress.color, {0.25, 0.78, 0.92, 0.4}, "Apply updates progress preserving opacity")
+same(afkBar.color, {0.25, 0.78, 0.92, 0.7}, "Apply updates hidden AFK bars")
+same(fonts.accentColor.textColor, classColor, "Applied class accents update titles")
+same(APR:GetThemeColor("accent"), APR.Themes.redModern.accent, "Accent-only mode preserves the preset chrome")
+global.resetTextAppearance.func()
+same(progress.color, {0.25, 0.78, 0.92, 0.4}, "Text reset cannot clear theme preferences")
+editor:Set("accentClassColor", false)
+same(preview.preview.bar.color, APR.Themes.redModern.accent, "Theme swatch restores the preset accent in the preview")
+editor:Apply()
+same(progress.color, profile.currentStepProgressBarColor, "Theme choice restores saved bar fills")
+same(afkBar.color, profile.afkBarColor, "Theme choice restores saved AFK fills")
+-- Beta preferences are read without mutating SavedVariables, then migrated on Apply.
+profile.uiThemeCustomization.accentClassColor = nil
+profile.globalTextAppearance.accentClassColor = true
+editor:Discard()
+assert(editor:GetDraft().accentClassColor and not editor:IsDirty())
+editor:Set("radius", 9)
+editor:Apply()
+assert(profile.uiThemeCustomization.accentClassColor and profile.globalTextAppearance.accentClassColor == nil)
+editor:Set("accentClassColor", false)
+editor:Apply()
+-- Integrated guide instructions follow the live skin accent, including legacy yellow.
+profile.currentStepTextAppearance = APR:CreateTextAppearanceDefaults(true)
+local originalProvider = APR.GetAppearanceProvider
+local providerName = "EllesmereUI"
+function APR:GetAppearanceProvider(scope)
+    return scope == "currentStep" and providerName or "wow"
+end
+local liveAccent = {0.95, 0.35, 0.65, 1}
+APR.EllesmereUISkin = {
+    GetTextColor = function(_, role, scope)
+        if scope == "currentStep" and providerName == "EllesmereUI" then
+            return role == "accent" and liveAccent or {1, 0.91, 0.47, 1}
+        end
+    end,
+    GetThemeColor = function(_, role) if role == "accent" then return liveAccent end end,
+    GetFont = function() end, ApplyHeaderTextColor = function() end, ApplyBarFill = function() end,
+}
+APR.ElvUISkin = {GetThemeColor = function(_, role) if role == "accent" then return liveAccent end end}
+APR:RegisterSkinProvider("EllesmereUI", function() end, function() return true end)
+APR:RegisterSkinProvider("ElvUI", function() end, function() return true end)
+local instruction = CurrentStepScreenPanel:CreateFontString()
+APR:RegisterFontString(instruction, "currentStep", {role = "title"})
+for _, name in ipairs({"EllesmereUI", "ElvUI"}) do
+    providerName = name
+    for _, role in ipairs({"title", APR:ResolveTextColorRole("ffff00", "title")}) do
+        APR:SetFontStringRole(instruction, role)
+        same(instruction.textColor, liveAccent, "Integrated guide instructions use the skin accent: " .. name)
+        liveAccent = {0.2, 0.7, 0.8, 1}
+        APR:ApplyAllTextStyles()
+        same(instruction.textColor, liveAccent, "Existing instructions follow live accent changes")
+    end
+end
+same(APR:GetTextColor("currentStep", "error"), APR.Themes.modern.error or {1, 0.4, 0.4, 1},
+    "Error semantics remain separate from the accent")
+same(APR:GetTextColor("party", "warning"), {1, 1, 0, 1}, "Other scopes keep their warning colors")
+current.warningColor.set(nil, 0.8, 0.6, 0.2, 0.5)
+same(instruction.textColor, {0.8, 0.6, 0.2, 0.5}, "Explicit instruction color preferences still take precedence")
+APR.GetAppearanceProvider = originalProvider
+APR.EllesmereUISkin, APR.ElvUISkin = nil, nil
+print("Text colors: callbacks, inheritance, overrides, class accents, integrated instructions, draft isolation and reset passed")

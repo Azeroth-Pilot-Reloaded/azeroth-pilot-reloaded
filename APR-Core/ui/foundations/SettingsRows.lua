@@ -3,7 +3,7 @@
 APR.SettingsRows = {}
 local Rows, UI = APR.SettingsRows, APR.UI
 local supported = {CheckBox = true, Slider = true, Dropdown = true, ColorPicker = true, EditBox = true,
-    APRSettingsAction = true}
+    APRSettingsAction = true, APRThemeAccent = true}
 
 local function Anchor(region, point, relative, relativePoint, x, y, width, height)
     region:ClearAllPoints()
@@ -38,6 +38,7 @@ local function Layout(widget)
     if not option then return end
     widget.aprLayingOut = true
     local frame, kind = widget.frame, widget.type
+    if kind == "APRThemeAccent" then kind = "ColorPicker" end
     local width = math.max(320, frame:GetWidth())
     local controlWidth = math.min(290, math.max(190, width * 0.34))
     if kind == "APRSettingsAction" then controlWidth = 160 end

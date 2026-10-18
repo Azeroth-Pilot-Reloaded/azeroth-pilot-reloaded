@@ -68,4 +68,44 @@ profile.currentStepProgressBarColor = { 0.4, 0.5, 0.6, 0.25 }
 step:UpdateProgressBarColor()
 checkColor(later, { 0.4, 0.5, 0.6, 0.25 })
 for _, bar in ipairs(guideBars) do checkColor(bar, { 0.4, 0.5, 0.6, 0.25 }) end
-print("PASS: all native bars share creation, live option colors, independent AFK colors, Love startup, pink fills and preserved alpha")
+-- Full class themes override explicit and legacy RGB on every registered APR bar.
+dofile("APR-Core/integrations/SkinRegistry.lua")
+function UnitClass() return "Mage", "MAGE" end
+RAID_CLASS_COLORS = {MAGE = {r = 0.25, g = 0.78, b = 0.92}}
+profile.uiTheme = "modern"
+profile.uiThemeCustomization = {classColor = true}
+profile.afkBarColorCustom = true
+profile.currentStepProgressBarColorCustom = true
+local savedAFK, savedGuide = profile.afkBarColor, profile.currentStepProgressBarColor
+APR:RefreshStatusBarColors()
+for _, bar in ipairs(guideBars) do checkColor(bar, {0.25, 0.78, 0.92, 0.25}) end
+checkColor(afk, {0.25, 0.78, 0.92, 0.6})
+checkColor(foreign, {0, 1, 0, 1})
+local classBar = APR:CreateStatusBar(UIParent, nil, "afk", "afkBarColor")
+checkColor(classBar, {0.25, 0.78, 0.92, 0.6})
+render()
+for _, bar in ipairs(guideBars) do checkColor(bar, {0.25, 0.78, 0.92, 0.25}) end
+assert(profile.afkBarColor == savedAFK and profile.currentStepProgressBarColor == savedGuide,
+    "Applying class fills never replaces saved colors")
+profile.uiThemeCustomization.classColor = false
+profile.globalTextAppearance = {accentClassColor = true}
+APR:RefreshStatusBarColors()
+for _, bar in ipairs(guideBars) do checkColor(bar, {0.25, 0.78, 0.92, 0.25}) end
+checkColor(afk, {0.25, 0.78, 0.92, 0.6})
+checkColor(classBar, {0.25, 0.78, 0.92, 0.6})
+profile.uiTheme = "wow"
+APR:RefreshStatusBarColors()
+checkColor(afk, {0.25, 0.78, 0.92, 0.6})
+assert(APR:GetStatusBarClassColor(), "Class text accents also color bars under Classic")
+profile.globalTextAppearance.accentClassColor = false
+APR:RefreshStatusBarColors()
+for _, bar in ipairs(guideBars) do checkColor(bar, savedGuide) end
+checkColor(afk, savedAFK)
+checkColor(classBar, savedAFK)
+assert(not APR:GetStatusBarClassColor(), "Disabling both class options restores saved fills")
+profile.uiThemeCustomization.classColor = true
+profile.uiTheme = "wow"
+APR:RefreshStatusBarColors()
+checkColor(afk, savedAFK)
+assert(not APR:GetStatusBarClassColor(), "A dormant Modern class option cannot change Classic colors")
+print("PASS: native bars, class themes and accents, existing/future/reused bars, alpha and saved color restore")

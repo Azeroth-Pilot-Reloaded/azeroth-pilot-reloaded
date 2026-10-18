@@ -56,6 +56,7 @@ function TextStyleUtils:SetAppearanceValue(profileKey, key, value, scope)
         appearance.colorOverrides[key] = true
     end
     APR:RefreshTextAppearance(scope)
+    if APR.ThemeCustomization then APR.ThemeCustomization:UpdatePreviews() end
 end
 
 local function CopyDefaults(value)
@@ -184,6 +185,15 @@ function TextStyleUtils:CreateAppearanceOptions(profileKey, scope, order, colorO
             desc = definition.desc,
             hasAlpha = true,
             width = 1,
+            disabled = function()
+                if colorKey ~= "accentColor" then return false end
+                local profile = APR:GetSettingsProfile()
+                local name = APR.GetAppearanceProvider and APR:GetAppearanceProvider(scope) or profile.uiTheme
+                local theme = APR.Themes and APR.Themes[name]
+                return (APR.UsesClassAccent and APR:UsesClassAccent()) or
+                    (theme and theme.style == "modern" and profile.uiThemeCustomization
+                        and profile.uiThemeCustomization.classColor == true) or false
+            end,
             get = function()
                 local appearance = self:GetAppearance(profileKey)
                 local role = scope == "questOrderList" and colorKey == "warningColor" and "activeStep" or COLOR_ROLES[colorKey]

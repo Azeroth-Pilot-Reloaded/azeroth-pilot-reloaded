@@ -535,6 +535,7 @@ function APR.settings:createBlizzOptions()
                                 end,
                                 disabled = function()
                                     return not self.profile.currentStepShow or not self.profile.enableAddon
+                                        or APR:GetStatusBarClassColor() ~= nil
                                 end,
                             },
                             currentStepQuestButtonPositionRight = {
@@ -1724,6 +1725,7 @@ function APR.settings:createBlizzOptions()
                                     APR:GetSettingsProfile().afkBarColorCustom = true
                                     APR.AFK:UpdateBarColor()
                                 end,
+                                disabled = function() return APR:GetStatusBarClassColor() ~= nil end,
                             },
                             afkFakeTimer = {
                                 order = 10.525,

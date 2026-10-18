@@ -11,7 +11,7 @@ APR.Themes = {
     modern = { label = "Blue Modern", labelKey = "UI_THEME_MODERN", style = "modern",
         background = { 0.075, 0.08, 0.09, 0.94 }, surface = { 0.12, 0.13, 0.15, 0.97 },
         border = { 0.25, 0.28, 0.32, 0.85 }, accent = { 0, 176 / 255, 150 / 255, 1 }, -- Bleu canard #00B096.
-        base = { 0.88, 0.90, 0.92, 1 }, muted = { 0.52, 0.57, 0.62, 1 },
+        base = { 0.88, 0.90, 0.92, 1 }, muted = { 0.5, 0.5, 0.5, 1 },
         icon = { 0, 176 / 255, 150 / 255, 1 }, selection = { 0, 176 / 255, 150 / 255, 1 },
         warning = { 214 / 255, 184 / 255, 138 / 255, 1 },
         stripe = { 0.19, 0.21, 0.24, 1 },
@@ -32,29 +32,48 @@ end
 
 ModernVariant("wowModern", "WoW Modern", "UI_THEME_WOW_MODERN", {
     background = {0.08, 0.065, 0.045, 0.96}, surface = {0.16, 0.13, 0.09, 1},
-    border = {0.53, 0.43, 0.24, 1}, accent = RGB(213, 181, 106),
-    base = RGB(245, 239, 224), muted = RGB(170, 160, 139), stripe = {0.28, 0.20, 0.12, 1},
+    border = {0.53, 0.43, 0.24, 1}, accent = RGB(235, 190, 75),
+    base = RGB(245, 239, 224), stripe = {0.28, 0.20, 0.12, 1},
 })
 ModernVariant("graphiteModern", "Graphite Modern", "UI_THEME_GRAPHITE_MODERN", {
     background = RGB(21, 22, 25, 0.94), surface = RGB(34, 37, 42, 0.97),
-    border = RGB(69, 74, 82, 0.85), accent = RGB(196, 203, 212), muted = RGB(157, 164, 173),
+    border = RGB(69, 74, 82, 0.85), accent = RGB(196, 203, 212),
     stripe = RGB(44, 47, 53),
 })
 ModernVariant("emeraldModern", "Emerald Modern", "UI_THEME_EMERALD_MODERN", {
     background = RGB(17, 27, 23, 0.94), surface = RGB(27, 43, 35, 0.97),
-    border = RGB(52, 80, 68, 0.85), accent = RGB(85, 201, 139), muted = RGB(140, 173, 160),
+    border = RGB(52, 80, 68, 0.85), accent = RGB(85, 201, 139),
     stripe = RGB(35, 54, 45),
 })
 ModernVariant("violetModern", "Violet Modern", "UI_THEME_VIOLET_MODERN", {
     background = RGB(24, 20, 31, 0.94), surface = RGB(41, 33, 51, 0.97),
-    border = RGB(80, 64, 98, 0.85), accent = RGB(181, 147, 244), muted = RGB(167, 152, 190),
+    border = RGB(80, 64, 98, 0.85), accent = RGB(181, 147, 244),
     stripe = RGB(49, 39, 62),
 })
 ModernVariant("redModern", "Crimson Modern", "UI_THEME_RED_MODERN", {
     background = RGB(32, 21, 24, 0.94), surface = RGB(50, 32, 37, 0.97),
-    border = RGB(101, 66, 76, 0.85), accent = RGB(232, 135, 135), muted = RGB(180, 156, 163),
+    border = RGB(101, 66, 76, 0.85), accent = RGB(232, 135, 135),
     stripe = RGB(61, 38, 45),
 })
+
+ModernVariant("customModern", "Custom", "UI_THEME_CUSTOM", {})
+
+function APR:GetThemePreset(name, custom)
+    if name == "customModern" then
+        local base = custom and self.Themes[custom.baseTheme]
+        return base and base.style == "modern" and custom.baseTheme ~= "customModern" and base or self.Themes.wowModern
+    end
+    return self.Themes[name]
+end
+
+-- Legacy beta text preferences remain effective until the user applies a theme choice.
+function APR:UsesClassAccent(custom)
+    if custom then return custom.accentClassColor == true end
+    local profile = self:GetSettingsProfile()
+    custom = profile and profile.uiThemeCustomization
+    if custom and custom.accentClassColor ~= nil then return custom.accentClassColor == true end
+    return profile and profile.globalTextAppearance and profile.globalTextAppearance.accentClassColor == true or false
+end
 
 function APR:GetThemeChoices(locale)
     local choices = {}
@@ -75,6 +94,19 @@ local surfaces = { library = { 0.105, 0.075, 0.05, 1 }, inset = { 0.13, 0.095, 0
 
 local customizedThemes = setmetatable({}, {__mode = "k"})
 local integrationThemes = {}
+
+-- Resolve the current character at use time: shared profiles must not retain another class's RGB.
+function APR:GetPlayerClassColor()
+    local _, class = UnitClass("player")
+    local color = class and ((CUSTOM_CLASS_COLORS and CUSTOM_CLASS_COLORS[class])
+        or (RAID_CLASS_COLORS and RAID_CLASS_COLORS[class]))
+    if color then return {color.r, color.g, color.b, 1} end
+end
+
+local function CustomAccent(theme, custom)
+    return (custom.classColor and APR:GetPlayerClassColor()) or custom.color or theme.accent
+end
+
 function APR:GetTheme(scope)
     local profile = self.GetSettingsProfile and self:GetSettingsProfile()
     local name = self.GetAppearanceProvider and self:GetAppearanceProvider(scope) or (profile and profile.uiTheme)
@@ -89,9 +121,10 @@ function APR:GetTheme(scope)
         return theme, name
     end
     if not self.Themes[name] then name = "wow" end
-    local theme, custom = self.Themes[name], profile and profile.uiThemeCustomization
-    if theme.style ~= "modern" or not custom or not custom.customColor then return theme, name end
-    local color = custom.color or theme.accent
+    local custom = profile and profile.uiThemeCustomization
+    local theme = self:GetThemePreset(name, custom)
+    if theme.style ~= "modern" or not custom or not (custom.customColor or custom.classColor) then return theme, name end
+    local color = CustomAccent(theme, custom)
     local cache = customizedThemes[custom] or {}
     customizedThemes[custom] = cache
     local entry = cache[name]
@@ -104,8 +137,8 @@ end
 
 -- The preview uses the same pure palette builder as live frames, without changing SavedVariables.
 function APR:CustomizeTheme(theme, custom)
-    if theme.style ~= "modern" or not custom or not custom.customColor then return theme end
-    local color = custom.color or theme.accent
+    if theme.style ~= "modern" or not custom or not (custom.customColor or custom.classColor) then return theme end
+    local color = CustomAccent(theme, custom)
     local result = {}
     for key, value in pairs(theme) do result[key] = value end
     local r, g, b = color[1], color[2], color[3]
