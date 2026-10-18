@@ -34,6 +34,7 @@ APR = {
 dofile("APR-Core/utils/QuestUtils.lua")
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 
 assert(APR:GetQuestTitle(nil) == nil)
 for _, id in ipairs({ false, "invalid", 0, -1, 1.5 }) do

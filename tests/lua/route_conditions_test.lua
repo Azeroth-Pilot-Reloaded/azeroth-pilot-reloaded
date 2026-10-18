@@ -268,6 +268,7 @@ function CreateFrame()
 end
 
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 for _ = 1, 10 do APR.event.functions.money() end
 assert(#timers == 1)
 timers[1].callback()

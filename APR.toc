@@ -112,6 +112,7 @@ APR-Core/ui/panels/ChangeLog.lua
 APR-Core/core/VersionCheck.lua
 
 APR-Core/core/Event.lua
+APR-Core/features/questing/NPCInteraction.lua
 
 APR-Core/features/questing/StepInstructions.lua
 APR-Core/features/questing/StepQuestHandlers.lua

@@ -64,6 +64,7 @@ dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/features/questing/RouteManager.lua")
 dofile("APR-Core/features/navigation/WorldCoordinateConverter.lua")
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 function APR:GetPlayerEffectiveLevel() return level end
 
 function APR:IsDelveRoute() return false end

@@ -59,6 +59,7 @@ APR.GetTargetID=function(_,unit) assert(unit=='npc');return npc end
 goods={{itemID=12251,quantity=1,targetStock=true}}
 APR.GetCurrentStep=function() return {BuyMerchant=goods,MerchantNPC=4884} end
 dofile('APR-Core/core/Event.lua')
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 local event={tag='merchant',callback=APR.event.functions.merchant}
 bags={};calls={};epoch=epoch+1;advances=0
 APR.event.EventHandler(event,'MERCHANT_SHOW')

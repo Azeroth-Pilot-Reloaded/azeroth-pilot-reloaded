@@ -201,6 +201,7 @@ checkButtons({ Done = { 10 }, Button = { ["10"] = { 100, 101 } } })
 assert(#buttons == 2, "Quest-wide item lists can still support travel to a ready turn-in")
 
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 local function cast(step, spellID, unit)
     current = step
     -- Use the event dispatcher to update its active-step state, then invoke the

@@ -133,6 +133,7 @@ assert(not party.GroupListSteps["Peer-OtherRealm"] and not party.teamList["Peer-
 assert(party.GroupListSteps.Peer.currentStep == 8, "Leaving one realm must not remove the namesake")
 
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 raid = true
 roster = { raid1 = { "Local", "Home" }, raid6 = { "RaidPeer", "Other Realm" } }
 APR.event.functions.group("GROUP_ROSTER_UPDATE")

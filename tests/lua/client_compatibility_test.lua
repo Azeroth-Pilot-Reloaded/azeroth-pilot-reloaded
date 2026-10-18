@@ -133,6 +133,7 @@ end
 
 C_EventUtils = { IsEventValid = function(event) return event ~= "ACTIVE_DELVE_DATA_UPDATE" end }
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 APR.event:RegisterEvents()
 assert(registered.QUEST_ACCEPTED and registered.QUEST_LOG_UPDATE)
 assert(not registered.ACTIVE_DELVE_DATA_UPDATE)

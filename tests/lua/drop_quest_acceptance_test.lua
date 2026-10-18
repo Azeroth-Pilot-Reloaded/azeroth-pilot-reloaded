@@ -106,6 +106,7 @@ APR.UpdateQuest = noop
 function APR:UpdateNextStep() advanced = advanced + 1 end
 function APR:NextQuestStep() advanced = advanced + 1 end
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 APR.event.TalkToDenyNpcLogic = noop
 
 local function dispatch(tag, event)

@@ -226,12 +226,19 @@ function APR.gossip:HandleGossip(step)
             handledByAPR = true
         else
             local info = C_GossipInfo.GetOptions()
+            -- A step can change while the server is still replacing the previous
+            -- page. Only select an option actually offered on this page.
+            if step.GossipOptionIDs then handledByAPR = true end
             if next(info) then
                 if step.GossipOptionIDs then
                     for _, g in pairs(step.GossipOptionIDs) do
-                        if SelectOption(g) then
-                            handledByAPR = true
+                        for _, option in pairs(info) do
+                            if option.gossipOptionID == g then
+                                SelectOption(g)
+                                break
+                            end
                         end
+                        if selectedOption then break end
                     end
                 else
                     for _, v in pairs(info) do
@@ -252,7 +259,7 @@ function APR.gossip:HandleGossip(step)
                         C_ChromieTime.GetChromieTimeExpansionOption(step.ChromiePick).name)
                     APR.currentStep:AddExtraLineText('ChromiePick', extraText)
                     C_Timer.After(1,
-                        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/Gossip.lua:255:callback#6", --[[/APR_DIAG]]function() C_ChromieTime.SelectChromieTimeOption(step.ChromiePick) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                        --[[APR_DIAG]]APRTrace("APR-Core/features/questing/Gossip.lua:262:callback#6", --[[/APR_DIAG]]function() C_ChromieTime.SelectChromieTimeOption(step.ChromiePick) end--[[APR_DIAG]])--[[/APR_DIAG]])
                 end
             end
         end
@@ -303,7 +310,7 @@ function APR.gossip:HandleHardcodedGossip()
         APR:UpdateNextStep()
     end
     return count
-end--[[APR_DIAG]]; APR.gossip.HandleHardcodedGossip = APRTrace("APR-Core/features/questing/Gossip.lua:268:APR.gossip:HandleHardcodedGossip#7", APR.gossip.HandleHardcodedGossip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.gossip.HandleHardcodedGossip = APRTrace("APR-Core/features/questing/Gossip.lua:275:APR.gossip:HandleHardcodedGossip#7", APR.gossip.HandleHardcodedGossip)--[[/APR_DIAG]]
 
 function APR.gossip:TriggerGossipETA(stepIndex, step)
     if not step or not step.GossipETA or step.SpecialETAHide then
@@ -316,4 +323,4 @@ function APR.gossip:TriggerGossipETA(stepIndex, step)
 
     APR.AFK:SetAfkTimer(step.GossipETA)
     APR.AFK.lastStep = stepIndex
-end--[[APR_DIAG]]; APR.gossip.TriggerGossipETA = APRTrace("APR-Core/features/questing/Gossip.lua:308:APR.gossip:TriggerGossipETA#8", APR.gossip.TriggerGossipETA)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.gossip.TriggerGossipETA = APRTrace("APR-Core/features/questing/Gossip.lua:315:APR.gossip:TriggerGossipETA#8", APR.gossip.TriggerGossipETA)--[[/APR_DIAG]]

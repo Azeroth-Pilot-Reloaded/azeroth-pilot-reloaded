@@ -30,6 +30,7 @@ end
 dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/ui/route/QuestOrderListSupport.lua")
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 local routes = {long = {}, short = {{Note = "Short"}}}
 for index = 1, 1200 do routes.long[index] = {ReputationLevel = {factionID = index, level = 5}} end
 local reached = false

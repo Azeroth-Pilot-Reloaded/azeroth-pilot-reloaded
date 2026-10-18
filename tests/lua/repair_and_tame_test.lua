@@ -66,6 +66,7 @@ dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 dofile("APR-Core/features/questing/Gossip.lua")
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 function APR:GetStep() return active end
 function APR:NextQuestStep() advances = advances + 1 end
 local function dispatch(tag, event, ...)

@@ -65,6 +65,7 @@ dofile("APR-Core/core/Performance.lua")
 dofile("APR-Core/core/Commands.lua")
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 
 for index = 1, 100 do
     local event = index % 3 == 0 and "ZONE_CHANGED_NEW_AREA"

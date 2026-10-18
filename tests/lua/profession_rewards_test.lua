@@ -8,6 +8,7 @@ local client = APR.GAME_VERSIONS.Forever
 function APR:GetGameVersion() return client end
 dofile('APR-Core/utils/QuestUtils.lua')
 dofile('APR-Core/core/Event.lua')
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 local choices, rewarded = {}, 0
 local profile = { autoHandIn = true, autoHandInChoice = true }
 function GetNumQuestChoices() return #choices end

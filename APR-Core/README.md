@@ -62,6 +62,7 @@ and events. **Nested tables in a definition remain read-only.**
 | ------------------------------------------------------------------ | ---------------------------------------------------------------------------- |
 | [core/Core.lua](core/Core.lua)                                     | AceAddon object, identity, saves, and module initialization.                 |
 | [core/Event.lua](core/Event.lua)                                   | Events, notification grouping, and deferred callbacks.                       |
+| [features/questing/NPCInteraction.lua](features/questing/NPCInteraction.lua) | NPC interaction lifecycle, consecutive steps, quest acceptance/rewards and merchant actions. |
 | [core/Commands.lua](core/Commands.lua)                             | Routing of `/apr` commands to their modules.                                 |
 | [core/Performance.lua](core/Performance.lua)                       | Voluntary capture: aggregates, histograms, slow calls, and bounded counters. |
 | [core/VersionCheck.lua](core/VersionCheck.lua)                     | Client/addon versions and group announcements without web requests.          |

@@ -24,6 +24,7 @@ function APR:NewModule() return {} end
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/core/Event.lua")
+dofile("APR-Core/features/questing/NPCInteraction.lua")
 
 local frame = CreateFrame()
 assert(APR:RegisterSupportedEvent(frame, "QUEST_LOG_UPDATE"))
