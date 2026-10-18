@@ -67,8 +67,15 @@ dofile("APR-Core/features/questing/StepRenderer.lua")
 dofile("APR-Core/features/questing/QuestCache.lua")
 dofile("APR-Core/features/questing/QuestHandler.lua")
 APR.UpdateQuest = noop
+local mapUpdates = 0
+function APR:SendMessage(message)
+    assert(message == "APR_MAP_UPDATE")
+    mapUpdates = mapUpdates + 1
+end
 APR:SkipQuestStep()
 assert(APRData.player.route > 2 and APRData.player.route < #route, "A long skip yields before processing the whole route")
+assert(mapUpdates == 0, "Intermediate completed steps do not rebuild map pins")
+assert(not APR.lastRenderedStepContext, "Pending catch-up is not reusable by navigation")
 local function drain()
     local index = 1
     while timers[index] do
@@ -85,6 +92,8 @@ for i = 2, #route - 1 do
     assert(visited[i] == 1, "Completed objective " .. i .. " processed " .. tostring(visited[i]) .. " times")
 end
 assert(not APR.stepUpdateRunning and not APR.stepUpdateTimer, "Settled progression leaves no worker active")
+assert(mapUpdates == 1, "1250 completed objectives publish the map only at the final playable step")
+assert(APR:IsStepContextCurrent(APR.lastRenderedStepContext), "Only the settled step can be reused by navigation")
 
 -- A manual navigation during a pending batch supersedes the old continuation.
 APRData.player.route = 2
@@ -101,6 +110,7 @@ local reset = APR.ResetMissingQuests
 APR.ResetMissingQuests = function() error("test failure") end
 assert(not pcall(APR.UpdateStep, APR), "Update errors still propagate")
 assert(not APR.stepUpdateRunning, "Errors release the reentrancy guard")
+assert(not APR.lastRenderedStepContext, "Failed presentations cannot suppress navigation synchronization")
 APR.ResetMissingQuests = reset
 APR:UpdateStep()
 print("Step progression: Note skip + 1250 completed objectives; bounded batches, cancellation and error recovery passed")
@@ -175,3 +185,31 @@ print(
 "Extra line text: historical Tirisfal step 14 fixture, navigation refresh, lists, legacy fields, colors and visibility passed")
 
 -- Global War Mode reminder coverage lives in xp_overlay_persistence_test.lua.
+
+-- Completing a route publishes one path change. It must not leave a delayed
+-- duplicate that resets whichever route the player selects next.
+local completedRoute = APR.ActiveRoute
+APRCustomPath, APRZoneCompleted = { player = { "Completed route" } }, { player = {} }
+tremove = table.remove
+function APR:IsTemporaryRouteActive() return false end
+route[14] = { RouteCompleted = true }
+local pathChanges, delayedChanges, finalize = 0, 0, nil
+C_Timer.After = function() delayedChanges = delayedChanges + 1 end
+APR.routeconfig = {
+    CheckIsCustomPathEmpty = noop,
+    SendMessage = function(_, message)
+        assert(message == "APR_Custom_Path_Update")
+        pathChanges = pathChanges + 1
+        APR:ActivateRoute(nil)
+    end,
+}
+function APR:SuggestNextRoutes(key, callback)
+    assert(key == completedRoute and APRZoneCompleted.player["Completed route"])
+    finalize = callback
+    callback()
+end
+APR:UpdateStep()
+assert(pathChanges == 1 and delayedChanges == 0 and #APRCustomPath.player == 0,
+    "Route completion publishes exactly one path change without a delayed reset")
+finalize()
+assert(pathChanges == 1, "A stale completion callback cannot reset the successor route")

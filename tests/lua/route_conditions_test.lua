@@ -23,6 +23,7 @@ function tContains(t, v)
     return false
 end
 
+
 C_Map = { GetBestMapForUnit = function() return currentMap end }
 local copper, hardcore, count, dps = 99, false, 2, 2.04
 function GetMoney() return copper end
@@ -354,4 +355,50 @@ do
     check({ Zone = 2541 }, 2393, true)
     print(
         "Zone conditions: inclusion/exclusion, multiple maps, missing map, composition and navigation-only Zone passed")
+end
+
+-- Mana/cooldown usability and cursor changes must not redraw parallel groups.
+do
+    APR.event:CleanupEvents()
+    currentStep = {HasSpell = 123, ItemCount = {itemID = 10, count = 1}}
+    local buttons, before = 0, #timers
+    APR.currentStep = {UpdateStepButtonUsability = function() buttons = buttons + 1 end}
+    for i = 1, 100 do
+        APR.event.functions.spellbook("SPELL_UPDATE_USABLE")
+        APR.event.functions.inventory("CURSOR_CHANGED")
+    end
+    assert(buttons == 200 and #timers == before, "Usability-only events update buttons without scheduling full renders")
+    APR.event.functions.spellbook("SPELLS_CHANGED")
+    assert(#timers == before + 1, "Learning a spell still refreshes conditions")
+    APR.event:CleanupEvents()
+    APR.event.functions.inventory("BAG_UPDATE_DELAYED")
+    assert(#timers == before + 2, "Actual bag changes still refresh conditions")
+end
+
+do
+    local getName, getSkill = APR.GetSpellName, C_SkillInfo
+    APR.GetSpellName = function() error("Numeric skill lookup must not fetch a localized spell name") end
+    C_SkillInfo = {GetSkillLineInfoByID = function(id) assert(id == 186); return {rank = 12, maxRank = 75} end}
+    assert(APR:GetRouteSkill({skill = 'mining'}) == 12)
+    assert(APR:GetRouteSkill({skillID = 186, maximum = true}) == 75)
+    local meetsItem, extended = APR.MeetsItemCount, APR.MeetsExtendedRouteConditions
+    APR.MeetsItemCount = function() return false end
+    APR.MeetsExtendedRouteConditions = function() error("Missing item must short circuit skill checks") end
+    assert(not APR:AreConditionalFiltersMet({ItemCount = {}, Skill = {skillID = 186}}))
+    APR.MeetsItemCount, APR.MeetsExtendedRouteConditions = meetsItem, extended
+    APR.GetSpellName, C_SkillInfo = getName, getSkill
+end
+
+-- Empty/simple predicates must not query unrelated game systems.
+do
+    local getLevel, getMap, spec, extended = APR.GetPlayerEffectiveLevel, C_Map.GetBestMapForUnit,
+        C_SpecializationInfo, APR.MeetsExtendedRouteConditions
+    local function unexpected() error("Unrelated condition API queried") end
+    APR.GetPlayerEffectiveLevel, C_Map.GetBestMapForUnit = unexpected, unexpected
+    C_SpecializationInfo = {GetSpecialization = unexpected}
+    APR.MeetsExtendedRouteConditions = unexpected
+    assert(APR:AreConditionalFiltersMet({}))
+    assert(APR:AreConditionalFiltersMet({Faction = 'Horde'}))
+    APR.GetPlayerEffectiveLevel, C_Map.GetBestMapForUnit = getLevel, getMap
+    C_SpecializationInfo, APR.MeetsExtendedRouteConditions = spec, extended
 end

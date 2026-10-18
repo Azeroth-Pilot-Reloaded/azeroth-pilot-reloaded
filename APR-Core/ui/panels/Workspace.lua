@@ -104,6 +104,7 @@ function Workspace:Show(id, section)
     if UI.activeMenu then UI.activeMenu:Hide() end
     if self.active ~= id and UI.selectionDialog then UI.selectionDialog:Hide() end
     local controller = APR[definition.controller]
+    local refreshSerial = controller.refreshSerial
     if not self.pages[id] then
         controller:Create(self.frame.content)
         self.pages[id] = controller.frame
@@ -115,10 +116,10 @@ function Workspace:Show(id, section)
     self.frame:Show()
     self.frame:Raise()
     if section and controller.Select then controller:Select(section)
-    elseif controller.Refresh then controller:Refresh() end
+    elseif controller.Refresh and controller.refreshSerial == refreshSerial then controller:Refresh() end
     if APR.Gamepad then APR.Gamepad:Refresh(self.frame) end
 end--[[APR_DIAG]]; Workspace.Show = APRTrace("APR-Core/ui/panels/Workspace.lua:95:Workspace:Show#10", Workspace.Show)--[[/APR_DIAG]]
 
 function Workspace:Hide()
     if self.frame then self.frame:Hide() end
-end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:122:Workspace:Hide#11", Workspace.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:123:Workspace:Hide#11", Workspace.Hide)--[[/APR_DIAG]]

@@ -7,7 +7,9 @@ local function Now() return GetTime and GetTime() or debugprofilestop() / 1000 e
 
 function APR:ResetPerformanceCapture()
     APRData.PerformanceLog = { summary = {}, slow = {}, timeline = {}, counters = {}, startedAt = Now(),
-        slowThresholdMs = self.performanceSlowThresholdMs, metricLimit = METRIC_LIMIT }
+        slowThresholdMs = self.performanceSlowThresholdMs, metricLimit = METRIC_LIMIT,
+        diagnosticRevision = APRInstrumentation and APRInstrumentation.revision,
+        debugCallsDuringCapture = APRInstrumentation and APRInstrumentation.debug == true }
     self.performanceBreadcrumb, self.performanceBreadcrumbAt = nil, nil
     if APRInstrumentation then APRInstrumentation.ResetLog() end
     if self.ResourceMonitor then self.ResourceMonitor:Reset() end
@@ -46,6 +48,23 @@ end
 function APR:FinishPerformanceSample(name, started, steps, parent)
     if not self.performanceLogging or not started or not APRData then return end
     return self:RecordPerformanceDuration(name, math.max(0, debugprofilestop() - started), steps, parent)
+end
+
+-- Only completed main-thread roots contribute. Nested scopes overlap; coroutine
+-- workers can span several frames and are measured through their resume caller.
+-- Two timestamp buckets suffice for the observer regardless of OnUpdate order.
+function APR:RecordPerformanceFrameWork(name, elapsed)
+    local log = APRData and APRData.PerformanceLog
+    if not self.performanceLogging or not log then return end
+    local now = Now()
+    local current = log.frameWork
+    if not current or current.time ~= now then
+        log.previousFrameWork = current
+        current = {time = now, ms = 0, count = 0, peakMs = 0}
+        log.frameWork = current
+    end
+    current.ms, current.count = current.ms + elapsed, current.count + 1
+    if elapsed >= current.peakMs then current.peakMs, current.source = elapsed, name end
 end
 
 function APR:RecordPerformanceDuration(name, elapsed, steps, parent, ownMs, failure)

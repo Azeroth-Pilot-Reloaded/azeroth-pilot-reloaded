@@ -32,7 +32,16 @@ function APR.changelog:GetText()
 end--[[APR_DIAG]]; APR.changelog.GetText = APRTrace("APR-Core/ui/panels/ChangeLog.lua:30:APR.changelog:GetText#3", APR.changelog.GetText)--[[/APR_DIAG]]
 
 function APR.changelog:GetBlocks()
-    return self:ParseBlocks((L["New Changelog"] or "") .. "\n\n" .. (L["Prev Changelog"] or ""))
+    local text = (L["New Changelog"] or "") .. "\n\n" .. (L["Prev Changelog"] or "")
+    -- Inline formatting embeds colors, so text and effective colors both
+    -- invalidate the shared parsed blocks used by the window and Options page.
+    local colors = APR:WrapTextWithAppearanceColor("x", "general", "accent") ..
+        APR:WrapTextWithAppearanceColor("x", "general", "muted")
+    if self.blocksText ~= text or self.blocksColors ~= colors then
+        self.blocks = self:ParseBlocks(text)
+        self.blocksText, self.blocksColors = text, colors
+    end
+    return self.blocks
 end--[[APR_DIAG]]; APR.changelog.GetBlocks = APRTrace("APR-Core/ui/panels/ChangeLog.lua:34:APR.changelog:GetBlocks#4", APR.changelog.GetBlocks)--[[/APR_DIAG]]
 
 function APR.changelog:SetChangeLog()
@@ -43,7 +52,7 @@ function APR.changelog:SetChangeLog()
         -- AceConfig does not track externally supplied containers in its NotifyChange refresh list.
         options:Select("changelog")
     end
-end--[[APR_DIAG]]; APR.changelog.SetChangeLog = APRTrace("APR-Core/ui/panels/ChangeLog.lua:38:APR.changelog:SetChangeLog#5", APR.changelog.SetChangeLog)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.changelog.SetChangeLog = APRTrace("APR-Core/ui/panels/ChangeLog.lua:47:APR.changelog:SetChangeLog#5", APR.changelog.SetChangeLog)--[[/APR_DIAG]]
 
 function APR.changelog:ParseFormatting(text)
     -- Protect literal code/escaped punctuation before interpreting emphasis.
@@ -51,18 +60,18 @@ function APR.changelog:ParseFormatting(text)
     local function literal(value)
         literals[#literals + 1] = value
         return "\001" .. #literals .. "\002"
-    end--[[APR_DIAG]]; literal = APRTrace("APR-Core/ui/panels/ChangeLog.lua:51:literal#7", literal)--[[/APR_DIAG]]
-    local function color(value, role) return APR:WrapTextWithAppearanceColor(value, "general", role) end--[[APR_DIAG]]; color = APRTrace("APR-Core/ui/panels/ChangeLog.lua:55:color#8", color)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; literal = APRTrace("APR-Core/ui/panels/ChangeLog.lua:60:literal#7", literal)--[[/APR_DIAG]]
+    local function color(value, role) return APR:WrapTextWithAppearanceColor(value, "general", role) end--[[APR_DIAG]]; color = APRTrace("APR-Core/ui/panels/ChangeLog.lua:64:color#8", color)--[[/APR_DIAG]]
     text = text:gsub("|", "||"):gsub("\\([%p])", literal)
-    text = text:gsub("``(.-)``", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:57:callback#9", --[[/APR_DIAG]]function(value) return literal(color(value, "accent")) end--[[APR_DIAG]])--[[/APR_DIAG]])
-    text = text:gsub("`([^`]+)`", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:58:callback#10", --[[/APR_DIAG]]function(value) return literal(color(value, "accent")) end--[[APR_DIAG]])--[[/APR_DIAG]])
-    text = text:gsub("%[([^%]]+)%]%(([^%)]+)%)", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:59:callback#11", --[[/APR_DIAG]]function(label, url) return label .. " (" .. url .. ")" end--[[APR_DIAG]])--[[/APR_DIAG]])
+    text = text:gsub("``(.-)``", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:66:callback#9", --[[/APR_DIAG]]function(value) return literal(color(value, "accent")) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    text = text:gsub("`([^`]+)`", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:67:callback#10", --[[/APR_DIAG]]function(value) return literal(color(value, "accent")) end--[[APR_DIAG]])--[[/APR_DIAG]])
+    text = text:gsub("%[([^%]]+)%]%(([^%)]+)%)", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:68:callback#11", --[[/APR_DIAG]]function(label, url) return label .. " (" .. url .. ")" end--[[APR_DIAG]])--[[/APR_DIAG]])
     for _, pattern in ipairs({"%*%*%*(.-)%*%*%*", "%*%*(.-)%*%*", "__(.-)__", "%*([^*]+)%*"}) do
-        text = text:gsub(pattern, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:61:callback#12", --[[/APR_DIAG]]function(value) return color(value, "accent") end--[[APR_DIAG]])--[[/APR_DIAG]])
+        text = text:gsub(pattern, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:70:callback#12", --[[/APR_DIAG]]function(value) return color(value, "accent") end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
-    text = text:gsub("~~(.-)~~", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:63:callback#13", --[[/APR_DIAG]]function(value) return color(value, "muted") end--[[APR_DIAG]])--[[/APR_DIAG]])
-    return (text:gsub("\001(%d+)\002", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:64:callback#14", --[[/APR_DIAG]]function(index) return literals[tonumber(index)] end--[[APR_DIAG]])--[[/APR_DIAG]]))
-end--[[APR_DIAG]]; APR.changelog.ParseFormatting = APRTrace("APR-Core/ui/panels/ChangeLog.lua:48:APR.changelog:ParseFormatting#6", APR.changelog.ParseFormatting)--[[/APR_DIAG]]
+    text = text:gsub("~~(.-)~~", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:72:callback#13", --[[/APR_DIAG]]function(value) return color(value, "muted") end--[[APR_DIAG]])--[[/APR_DIAG]])
+    return (text:gsub("\001(%d+)\002", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ChangeLog.lua:73:callback#14", --[[/APR_DIAG]]function(index) return literals[tonumber(index)] end--[[APR_DIAG]])--[[/APR_DIAG]]))
+end--[[APR_DIAG]]; APR.changelog.ParseFormatting = APRTrace("APR-Core/ui/panels/ChangeLog.lua:57:APR.changelog:ParseFormatting#6", APR.changelog.ParseFormatting)--[[/APR_DIAG]]
 
 function APR.changelog:ParseBlocks(text)
     local blocks, code, fence, gap = {}, nil, nil, 0
@@ -70,7 +79,7 @@ function APR.changelog:ParseBlocks(text)
         blocks[#blocks + 1] = {kind = kind, text = value, indent = indent or 0,
             size = size or 12, role = role or "base", gap = gap}
         gap = 0
-    end--[[APR_DIAG]]; append = APRTrace("APR-Core/ui/panels/ChangeLog.lua:69:append#16", append)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; append = APRTrace("APR-Core/ui/panels/ChangeLog.lua:78:append#16", append)--[[/APR_DIAG]]
     for line in (text:gsub("\r\n", "\n") .. "\n"):gmatch("([^\n]*)\n") do
         local marker = line:match("^%s*(```+)") or line:match("^%s*(~~~+)")
         if code then
@@ -104,7 +113,7 @@ function APR.changelog:ParseBlocks(text)
     end
     if code then append("code", table.concat(code, "\n"), 12) end
     return blocks
-end--[[APR_DIAG]]; APR.changelog.ParseBlocks = APRTrace("APR-Core/ui/panels/ChangeLog.lua:67:APR.changelog:ParseBlocks#15", APR.changelog.ParseBlocks)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.changelog.ParseBlocks = APRTrace("APR-Core/ui/panels/ChangeLog.lua:76:APR.changelog:ParseBlocks#15", APR.changelog.ParseBlocks)--[[/APR_DIAG]]
 
 function APR.changelog:ParseChangelogText(text)
     local lines = {}
@@ -113,4 +122,4 @@ function APR.changelog:ParseChangelogText(text)
         lines[#lines + 1] = string.rep(" ", math.floor(block.indent / 6)) .. block.text
     end
     return table.concat(lines, "\n")
-end--[[APR_DIAG]]; APR.changelog.ParseChangelogText = APRTrace("APR-Core/ui/panels/ChangeLog.lua:109:APR.changelog:ParseChangelogText#17", APR.changelog.ParseChangelogText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.changelog.ParseChangelogText = APRTrace("APR-Core/ui/panels/ChangeLog.lua:118:APR.changelog:ParseChangelogText#17", APR.changelog.ParseChangelogText)--[[/APR_DIAG]]

@@ -18,13 +18,14 @@ GROUPS = {
                      "merchant_optional", "merchant_target_stock", "gamepad"),
     "ui-only": ("current_step_render", "route_panels_render", "reputation_progress",
                 "quest_order_performance", "ui_skin", "gamepad"),
-    "skins-only": ("ui_skin", "eui_settings"),
+    "skins-only": ("ui_skin", "eui_settings", "skin_pending_performance", "settings_widgets"),
     "xp-overlay-only": ("xp_overlay_persistence",),
     "zone-performance-only": ("zone_transition_performance", "farstrider_routing_performance"),
     "performance-only": ("quest_order_performance", "zone_transition_performance",
                          "farstrider_routing_performance", "step_progression",
                          "resource_monitor", "performance_dashboard", "route_path_performance",
-                         "arrow_visibility", "idle_tracker_performance", "performance_scopes", "map_pin_performance"),
+                         "arrow_visibility", "idle_tracker_performance", "performance_scopes", "map_pin_performance",
+                         "skin_pending_performance", "settings_widgets", "reputation_scheduling", "route_browser"),
 }
 
 

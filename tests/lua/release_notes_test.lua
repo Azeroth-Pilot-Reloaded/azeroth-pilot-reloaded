@@ -91,6 +91,21 @@ assert(not panel.banner and panel.preferences.point[1] == "TOPRIGHT",
     "Release notes in Options start with preferences and leave the image out")
 panel:Show("Notes")
 assert(opens == 1 and #panel.rows > #blocks, "Both current and previous releases are shown")
+local parseCalls, parses = APR.changelog.ParseBlocks, 0
+function APR.changelog:ParseBlocks(value) parses = parses + 1; return parseCalls(self, value) end
+local registrations, register = 0, APR.RegisterFontString
+function APR:RegisterFontString(...) registrations = registrations + 1; return register(self, ...) end
+panel:RefreshNotes()
+assert(parses == 0 and registrations == 0, "Unchanged notes reuse formatted blocks and registered rows")
+local wrap = APR.WrapTextWithAppearanceColor
+function APR:WrapTextWithAppearanceColor(value, scope, role) return "new:" .. wrap(self, value, scope, role) end
+panel:RefreshNotes()
+assert(parses == 1 and registrations == #panel.rows, "Changing inline colors refreshes the notes")
+APR.WrapTextWithAppearanceColor = wrap
+L["Prev Changelog"] = L["Prev Changelog"] .. "\n- New note"
+panel:RefreshNotes()
+assert(parses == 2 and panel.rows[#panel.rows]:GetText():find("New note"), "Changed note text invalidates the cache")
+APR.RegisterFontString = register
 assert(panel.link:GetText() == "https://github.com/example/apr/releases")
 assert(panel.link:HasFocus() and panel.link.highlighted, "The release URL is selected immediately on opening")
 panel.copy.scripts.OnClick()

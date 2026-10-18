@@ -334,10 +334,18 @@ function APR:UpdateQuestAndStep() end
 APR.stepUpdateTimer = {}
 APR.farstrider:InvalidatePathCache()
 before = findTrailCalls
+passes = metrics.ZoneRoutingQuestSync.count
 APR.farstrider:ForceRefresh()
 APR.farstrider:GetMeToRightZone(true)
 assert(findTrailCalls == before, "Yielded progression does not calculate an intermediate destination")
+assert(metrics.ZoneRoutingQuestSync.count == passes,
+    "Navigation also skips quest synchronization and UI rebuilds while progression is pending")
+APR.stepUpdatePending = true
+activeTimer().callback()
+assert(metrics.ZoneRoutingQuestSync.count == passes and findTrailCalls == before,
+    "A deferred navigation timer cannot interrupt the catch-up batch either")
 APR.stepUpdateTimer = nil
+APR.stepUpdatePending = false
 activeTimer().callback()
 assert(findTrailCalls == before + 1, "The final destination is routed after progression settles")
 
@@ -387,6 +395,30 @@ APR.farstrider:ForceRefresh()
 APR.farstrider:GetMeToRightZone(true)
 assert(APR.IsInRouteZone and not APR.farstrider:IsNavigating() and findTrailCalls == before,
     "A location-free book reminder is usable in any zone without pathfinding")
+
+-- Normal step-triggered checks reuse a committed presentation. Explicit zone
+-- requests and failed/uncommitted renders must still synchronize live quests.
+local syncCalls = 0
+function APR:UpdateQuestAndStep() syncCalls = syncCalls + 1 end
+local function scheduleNormal()
+    APR.farstrider._scheduledStepToken = nil
+    APR.farstrider:ScheduleRouteCheck(APR:GetCurrentStepToken(APR.ActiveRoute, APRData.test[APR.ActiveRoute]))
+    activeTimer().callback()
+end
+APR.lastRenderedStepContext = APR:CaptureStepContext()
+scheduleNormal()
+assert(syncCalls == 0 and metrics.ZoneRoutingReuseStep.count == 1,
+    "An ordinary check after a committed render does not scan quests or render again")
+APR.farstrider:RequestRouteCheck()
+activeTimer().callback()
+assert(syncCalls == 1, "Explicit requests retain live quest synchronization")
+APR.lastRenderedStepContext = nil
+scheduleNormal()
+assert(syncCalls == 2, "A failed or missing render cannot be reused")
+APR.lastRenderedStepContext = APR:CaptureStepContext()
+APR:SetRouteProgress(APR.ActiveRoute, APRData.test[APR.ActiveRoute] + 1, "manual")
+scheduleNormal()
+assert(syncCalls == 3, "Changing progress invalidates the prepared step")
 
 print(
     "Farstrider routing: 10 identical retries reused 1 Dijkstra result; map, step, TTL and explicit invalidation passed")

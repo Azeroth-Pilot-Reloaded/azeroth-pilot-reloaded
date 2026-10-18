@@ -62,3 +62,18 @@ assert(APRData.PerformanceLog.summary.StepRenderContent.count == 3 and
     APRData.PerformanceLog.summary.StepRenderCommit.count == 3,
     "Step content and layout commit costs remain separately observable")
 print("Route path: consecutive completions defer navigation and coalesce one measured catalog rebuild")
+
+-- A long catch-up may yield across multiple timer ticks. Do not refresh the
+-- browser for its intermediate steps, even outside the render transaction.
+APR.stepUpdatePending, APR.stepUpdateTimer = true, {}
+APR.routeconfig:SchedulePathUiRefresh()
+local waiting = APR.routeconfig.pathUiRefreshTimer
+waiting.callback()
+assert(uiRefreshes == 1 and APR.routeconfig.pathUiRefreshTimer ~= waiting,
+    "The catalog waits for the final catch-up step")
+waiting.callback()
+assert(uiRefreshes == 1, "Superseded timers cannot refresh the catalog")
+APR.stepUpdatePending, APR.stepUpdateTimer = false, nil
+APR.routeconfig.pathUiRefreshTimer.callback()
+assert(uiRefreshes == 2 and not APR.routeconfig.pathUiRefreshTimer,
+    "Settled progression publishes one final catalog refresh")

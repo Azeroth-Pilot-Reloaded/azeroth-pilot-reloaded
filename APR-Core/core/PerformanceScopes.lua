@@ -16,6 +16,9 @@ function APR:SetDebugCapture(enabled)
     diagnostic.debug = enabled == true
     diagnostic.enabled = diagnostic.debug or self.performanceLogging == true
     self.debugLogging = diagnostic.debug
+    if enabled and self.performanceLogging and APRData and APRData.PerformanceLog then
+        APRData.PerformanceLog.debugCallsDuringCapture = true
+    end
     if self.settings and self.settings.profile then self.settings.profile.debug = diagnostic.debug end
     if enabled then diagnostic.ResetLog() end
 end

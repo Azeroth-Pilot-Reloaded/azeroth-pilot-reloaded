@@ -24,6 +24,101 @@ with `/apr debug export`. `/apr debug clear` clears the journal. Debug and perf
 switches are independent. Continuous debug no longer floods chat: entries include
 time, category, source, route/step, durations and repeat counts. The report lists
 all observed metrics, slow calls, client frame spikes, coverage and exclusions.
+The report identifies the loaded diagnostic revision, the revision that started
+the performance capture and journal, and whether debug CALL tracing was enabled
+at any point during capture. Older saved captures remain marked unknown rather
+than being attributed to a newly loaded exporter. After syncing addon files,
+reload WoW's UI and start a fresh capture before comparing revisions.
+Fast debug calls below 3 ms from the same source and route/step share a journal
+entry for up to one second, even when interleaved with other calls. Counts, summed
+durations, maximum duration and first/last timestamps are retained. Slow calls
+remain individual entries and performance metrics still count every invocation.
+This bounds allocation pressure as well as retained memory during full capture.
+Frame-spike exports also include completed APR main-thread root timings from the
+preceding frame, when available, and the largest contributing source. Nested
+calls are not added twice; multi-frame coroutine workers are accounted through
+their resume caller. These timings include capture overhead. Missing attribution
+is unknown, not zero, and a client frame spike alone does not establish causation.
+
+The 2026-10-18.2 client capture confirmed low navigation call maxima, but linked
+a 102 ms client frame to 94 ms opening settings and a 100 ms frame to 78 ms of
+post-combat skin refresh. Revision 2026-10-18.3 flushes only pending skin targets
+after combat unless a full appearance refresh was explicitly requested, and
+styles an AceConfig settings tree once after nested Open/FeedGroup calls finish.
+`skin_pending_performance` checks a 1,000-control registry and explicit theme
+changes; `settings_widgets` verifies one layout pass and nested-error recovery.
+Recheck combat exit and first/repeated settings opens in WoW; the client capture
+included debug tracing, and these changes do not explain every global frame spike.
+Another .2 capture showed settings calls up to 261 ms and post-combat list refreshes
+up to 15 ms. Revision 2026-10-18.4 additionally suppresses styling hooks while
+AceConfig initializes/reuses its controls, then styles the completed tree, and
+refreshes only dirty list rows after combat. Explicit theme refreshes still visit
+the full list registry. Tests cover reacquiring real AceGUI checkboxes, error
+recovery, 1,000 idle rows, repeated dirty changes and deferred icon creation.
+
+Revision 2026-10-18.5 targets gameplay with the arrow, current step and quest list
+visible. The .2 capture still showed list batches reaching 22.45 ms: the progression
+visibility scan and the final reputation scan were outside the row budget. Both
+now run in the cancellable worker, with checkpoints through nested reputation
+conditions. Publishing a rebuilt list binds the current-step viewport directly,
+avoiding a first-page bind followed by a deferred scroll. Tests cover 1,200 route
+entries, nested reputation requirements, unchanged-model reuse, changed filters,
+cancellation and a single destination viewport bind. The 3 ms budget is checked
+between work units, not a hard limit on a native UI call or final publication.
+Repeat a gameplay capture to measure `QuestOrderListBatch` and `UpdateStepPass`;
+automated scheduling tests do not establish a new client maximum or FPS gain.
+
+Revision 2026-10-19.1 reduces menu work without changing diagnostic coverage.
+Route searches tokenize once per filter, sort comparisons use prepared keys,
+and catalog rebuilds reuse unchanged normalized metadata while rereading live
+visibility, progress and favorites. Opening Routes no longer refreshes twice
+through both OnShow and the workspace. Release-note blocks and rows are reused
+until their text or embedded colors change. Regression tests count normalization,
+parsing and refresh calls, including changes that must invalidate cached values.
+
+Reputation notifications now coalesce into cancellable 3 ms scan batches. Route
+counting and nested reputation signatures yield between entries; only a validated
+result publishes the total, with the current-step UI rebuilt on a subsequent
+timer tick. New notifications, route/progress changes and event cleanup cancel
+obsolete work. `ReputationScanBatch` measures each active batch; `ReputationRefresh`
+now measures the separate commit, so it is not directly comparable to the old
+combined operation. A single native call or the step rebuild can still exceed the
+scan budget. `reputation_scheduling` covers 1,200 steps with synthetic CPU costs,
+including capture enabled; repeat menu opens and reputation gains in WoW to
+measure actual frame-time improvement.
+
+Revision 2026-10-19.2 targets catch-up through already-completed routes. The .1
+capture recorded 623 step passes and 600 transitions in 56 seconds; commit work
+alone accumulated 1.6 seconds, and scheduled navigation reached 30 ms. Interrupted
+passes now leave geometry dirty for the next successful commit instead of laying
+out each skipped step. Map updates publish only a settled step, and navigation
+waits before quest synchronization as well as before pathfinding while progression
+is pending. Tests exercise 1,250 completed objectives, 600 interrupted UI passes,
+manual cancellation and routing deferral, including diagnostic capture enabled.
+Virtual lists also skip row binding beneath hidden ancestors until OnShow.
+`StepRenderCommit` now includes the deferred map notification; compare full passes
+and counts rather than treating changes in this submetric as a direct speedup.
+Coroutine worker totals still span multiple batches: the observed 154 ms worker
+was not a single-frame block. The client capture must validate the remaining
+quest-list publication peak (26.9 ms before these changes).
+
+Revision 2026-10-19.3 removes the delayed duplicate path notification after route
+completion. Catalog publication waits until catch-up has settled, including across
+yielded step batches. Ordinary step-triggered navigation reuses an already committed
+step only while its context is still current; explicit zone/retry requests retain
+quest synchronization. `ZoneRoutingReuseStep` counts that reuse and is nested inside
+`ZoneRoutingQuestSync`; it is not an additional cost to add to navigation totals.
+
+Quest-list prefix offsets are prepared inside the existing 3 ms model worker.
+`QuestOrderListPublish` measures model publication; the visible rows now bind in
+separate `QuestOrderListViewportBatch` slices with a 2 ms budget checked after each
+row. A single row/native call can exceed that budget. Pending viewport work follows
+the latest scroll position and model generation, stops while hidden and releases
+its worker on errors. Published models are complete before binding starts; visible
+rows can appear over several frames. Tests simulate expensive bindings, replacement,
+scrolling, hidden parents and error recovery, with diagnostics both on and off.
+Compare these new metrics and `ScheduledNavigation` in a fresh client capture;
+automated timings are not measurements of the user's hardware.
 
 Timings are inclusive; the Self column excludes instrumented child calls.
 Coroutine suspension time is excluded through APR-owned yield/resume call sites.

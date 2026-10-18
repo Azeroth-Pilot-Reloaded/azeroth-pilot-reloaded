@@ -264,7 +264,7 @@ assert(frame.Button:IsShown() and pathResolutions == 0, "Hearthstone skip button
 step.UseHS, step.Waypoint = nil, 1
 steps[2] = {Coord = {x = step.Coord.x + 30, y = step.Coord.y + 40}}
 playerX = playerX + 1; tick()
-assert(pathResolutions == 1 and frame.Button:IsShown())
+assert(pathResolutions == 0 and frame.Button:IsShown(), "Waypoints use active metadata without resolving the custom path")
 local distance = ((playerX - arrow.x)^2 + (playerY - arrow.y)^2)^0.5
 assert(frame.distance.text == math.floor(distance + 50) .. " yards", "Waypoint distance includes the following segment")
 print("Moving arrow: no duplicate step/custom-path resolution; hearthstone button and waypoint distance preserved")

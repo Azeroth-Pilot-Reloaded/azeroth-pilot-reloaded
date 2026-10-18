@@ -20,9 +20,17 @@ function Monitor:ObserveFrame(elapsed)
             log.frames = log.frames or {samples = {}, cursor = 0}
             local frames = log.frames
             frames.cursor = frames.cursor % 100 + 1
-            frames.samples[frames.cursor] = {time = GetTime(), ms = ms, baselineMs = baseline,
+            local now = GetTime()
+            local work = log.frameWork
+            if work and work.time >= now then work = log.previousFrameWork end
+            -- Never attach stale work from an earlier idle frame to a new spike.
+            if work and (work.time >= now or now - work.time > elapsed + 0.001) then work = nil end
+            frames.samples[frames.cursor] = {time = now, ms = ms, baselineMs = baseline,
                 route = APR.ActiveRoute,
-                step = APRData[APR.PlayerID] and APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute]}
+                step = APRData[APR.PlayerID] and APR.ActiveRoute and APRData[APR.PlayerID][APR.ActiveRoute],
+                aprMs = work and work.ms, aprCalls = work and work.count,
+                aprPeakMs = work and work.peakMs, aprSource = work and work.source,
+                aprAt = work and work.time}
         end
     end
     self.frameAverageMs = baseline + (ms - baseline) * 0.05

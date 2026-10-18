@@ -39,6 +39,11 @@ local skillSpells = {
 
 function APR:GetRouteSkill(requirement)
     local wanted = tonumber(requirement.skillID) or tonumber(requirement.skill) or skills[requirement.skill]
+    -- Numeric lookups do not need a localized spell name or a skill-list scan.
+    if wanted and C_SkillInfo and C_SkillInfo.GetSkillLineInfoByID then
+        local info = C_SkillInfo.GetSkillLineInfoByID(wanted)
+        return info and not info.isHeader and (requirement.maximum and info.maxRank or info.rank) or 0
+    end
     local wantedName = requirement.name
     local spellID = skillSpells[requirement.skill]
     if wanted and not spellID then
@@ -54,14 +59,10 @@ function APR:GetRouteSkill(requirement)
     local function Matches(name, id)
         return (wanted and id == wanted) or (wantedName and name == wantedName)
             or (name and requirement.skill and name:lower():gsub("%s", "") == requirement.skill)
-    end--[[APR_DIAG]]; Matches = APRTrace("APR-Core/utils/RouteConditions.lua:54:Matches#2", Matches)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; Matches = APRTrace("APR-Core/utils/RouteConditions.lua:59:Matches#2", Matches)--[[/APR_DIAG]]
 
     -- Forever exposes structured skill data, including skills in collapsed headers.
     if C_SkillInfo then
-        if wanted and C_SkillInfo.GetSkillLineInfoByID then
-            local info = C_SkillInfo.GetSkillLineInfoByID(wanted)
-            return info and not info.isHeader and (requirement.maximum and info.maxRank or info.rank) or 0
-        end
         if C_SkillInfo.GetNumSkillLines and C_SkillInfo.GetSkillLineInfo then
             for i = 1, C_SkillInfo.GetNumSkillLines() do
                 local info = C_SkillInfo.GetSkillLineInfo(i)
@@ -103,7 +104,7 @@ function APR:GetPrimaryProfessionCount()
         if self:GetRouteSkill({ skillID = skillID }) > 0 then count = count + 1 end
     end
     return count
-end--[[APR_DIAG]]; APR.GetPrimaryProfessionCount = APRTrace("APR-Core/utils/RouteConditions.lua:94:APR:GetPrimaryProfessionCount#3", APR.GetPrimaryProfessionCount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetPrimaryProfessionCount = APRTrace("APR-Core/utils/RouteConditions.lua:95:APR:GetPrimaryProfessionCount#3", APR.GetPrimaryProfessionCount)--[[/APR_DIAG]]
 
 -- Nested conditions use the full predicate set, exactly like top-level step filters.
 function APR:MeetsExtendedRouteConditions(conditions)
@@ -121,4 +122,4 @@ function APR:MeetsExtendedRouteConditions(conditions)
     if conditions.EquippedItem and not self:MeetsEquippedItem(conditions.EquippedItem) then return false end
     if conditions.Collection and not self:IsRouteCollectionComplete(conditions.Collection) then return false end
     return true
-end--[[APR_DIAG]]; APR.MeetsExtendedRouteConditions = APRTrace("APR-Core/utils/RouteConditions.lua:109:APR:MeetsExtendedRouteConditions#4", APR.MeetsExtendedRouteConditions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.MeetsExtendedRouteConditions = APRTrace("APR-Core/utils/RouteConditions.lua:110:APR:MeetsExtendedRouteConditions#4", APR.MeetsExtendedRouteConditions)--[[/APR_DIAG]]

@@ -6,6 +6,7 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- AceConfig retains validation, confirmations and profile callbacks. Only APR workspace widgets are restyled.
 -- An isolated AceGUI pool prevents their textures and hooks leaking into other addons' settings.
 local styled = setmetatable({}, {__mode = "k"})
+local rebuilding = 0
 
 -- AceConfig owns validation and acceptance. Decorate its shared popup only after an APR action.
 local confirmationWidgets = setmetatable({}, {__mode = "k"})
@@ -17,7 +18,7 @@ local function InstallConfirmationSkin(widget, prefix, dialog, seen)
     if widget.Fire and not confirmationWidgets[widget] then
         confirmationWidgets[widget] = true
         local fire = widget.Fire
-        widget.Fire = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:20:callback#2", --[[/APR_DIAG]]function(self, ...)
+        widget.Fire = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:21:callback#2", --[[/APR_DIAG]]function(self, ...)
             local popup = dialog.popup
             local wasShown = popup and popup:IsShown()
             local acceptScript = popup and popup.accept and popup.accept:GetScript("OnClick")
@@ -31,8 +32,8 @@ local function InstallConfirmationSkin(widget, prefix, dialog, seen)
             if changed and type(app) == "string" and app:sub(1, #prefix) == prefix and popup and popup:IsShown() then
                 APR:StyleStaticPopup(popup)
                 if APR.Gamepad and popup.accept and popup.cancel then
-                    APR.Gamepad:RegisterWindow(popup, true, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:34:callback#3", --[[/APR_DIAG]]function() popup.cancel:Click() end--[[APR_DIAG]])--[[/APR_DIAG]],
-                        --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:35:callback#4", --[[/APR_DIAG]]function() return popup._aprTextOriginals ~= nil end--[[APR_DIAG]])--[[/APR_DIAG]])
+                    APR.Gamepad:RegisterWindow(popup, true, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:35:callback#3", --[[/APR_DIAG]]function() popup.cancel:Click() end--[[APR_DIAG]])--[[/APR_DIAG]],
+                        --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:36:callback#4", --[[/APR_DIAG]]function() return popup._aprTextOriginals ~= nil end--[[APR_DIAG]])--[[/APR_DIAG]])
                 end
             end
             return unpack(result)
@@ -42,7 +43,7 @@ local function InstallConfirmationSkin(widget, prefix, dialog, seen)
     if widget.pullout then
         for _, item in widget.pullout:IterateItems() do InstallConfirmationSkin(item, prefix, dialog, seen) end
     end
-end--[[APR_DIAG]]; InstallConfirmationSkin = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:12:InstallConfirmationSkin#1", InstallConfirmationSkin)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; InstallConfirmationSkin = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:13:InstallConfirmationSkin#1", InstallConfirmationSkin)--[[/APR_DIAG]]
 
 local function MatchContainerStrata(widget)
     if not widget or not widget.frame then return end
@@ -52,7 +53,7 @@ local function MatchContainerStrata(widget)
         if parent then widget.frame:SetFrameStrata(parent:GetFrameStrata()) end
     end
     for _, child in ipairs(widget.children or {}) do MatchContainerStrata(child) end
-end--[[APR_DIAG]]; MatchContainerStrata = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:47:MatchContainerStrata#5", MatchContainerStrata)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; MatchContainerStrata = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:48:MatchContainerStrata#5", MatchContainerStrata)--[[/APR_DIAG]]
 
 local function SkinFrame(frame, kind, surface)
     if not frame then return end
@@ -61,7 +62,7 @@ local function SkinFrame(frame, kind, surface)
         frame:HookScript("OnSizeChanged", BackdropTemplateMixin.OnBackdropSizeChanged)
     end
     APR:RegisterSkinTarget(frame, kind or "panel", {themeSurface = true, preserveContent = true, surface = surface})
-end--[[APR_DIAG]]; SkinFrame = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:57:SkinFrame#6", SkinFrame)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SkinFrame = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:58:SkinFrame#6", SkinFrame)--[[/APR_DIAG]]
 
 local function HideTemplateEdges(frame)
     local name = frame.GetName and frame:GetName()
@@ -69,7 +70,7 @@ local function HideTemplateEdges(frame)
         local texture = frame[key] or (name and _G[name .. key])
         if texture then texture:SetAlpha(0) end
     end
-end--[[APR_DIAG]]; HideTemplateEdges = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:66:HideTemplateEdges#7", HideTemplateEdges)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; HideTemplateEdges = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:67:HideTemplateEdges#7", HideTemplateEdges)--[[/APR_DIAG]]
 
 local function SkinButton(frame)
     HideTemplateEdges(frame)
@@ -78,7 +79,7 @@ local function SkinButton(frame)
         if texture then texture:SetAlpha(0) end
     end
     SkinFrame(frame, "button")
-end--[[APR_DIAG]]; SkinButton = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:74:SkinButton#8", SkinButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SkinButton = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:75:SkinButton#8", SkinButton)--[[/APR_DIAG]]
 
 local function RestoreDropdownContent(widget)
     local dropdown = widget.dropdown
@@ -95,10 +96,10 @@ local function RestoreDropdownContent(widget)
     end
     local backdrop = dropdown.backdrop
     if backdrop and backdrop ~= dropdown and backdrop.Hide then backdrop:Hide() end
-end--[[APR_DIAG]]; RestoreDropdownContent = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:83:RestoreDropdownContent#9", RestoreDropdownContent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; RestoreDropdownContent = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:84:RestoreDropdownContent#9", RestoreDropdownContent)--[[/APR_DIAG]]
 
 local function Style(widget, seen)
-    if not widget then return end
+    if not widget or rebuilding > 0 then return end
     seen = seen or {}
     if seen[widget] then return end
     seen[widget] = true
@@ -141,11 +142,12 @@ local function Style(widget, seen)
             if widget[key] then APR:RegisterSkinTarget(widget[key], "scrollbar", {compact = true}) end
         end
         for _, method in ipairs({"SetDisabled", "SetValue", "SetLabel"}) do
-            if widget[method] then hooksecurefunc(widget, method, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:144:callback#11", --[[/APR_DIAG]]function() Style(widget) end--[[APR_DIAG]])--[[/APR_DIAG]]) end
+            if widget[method] then hooksecurefunc(widget, method, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:145:callback#11", --[[/APR_DIAG]]function() Style(widget) end--[[APR_DIAG]])--[[/APR_DIAG]]) end
         end
         if kind == "Dropdown" then
             -- Also recover if ElvUI's global skin initializes after this APR widget.
-            frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:148:callback#12", --[[/APR_DIAG]]function()
+            frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:149:callback#12", --[[/APR_DIAG]]function()
+                if rebuilding > 0 then return end
                 Style(widget)
                 APR.SettingsRows:Apply(widget)
             end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -168,7 +170,7 @@ local function Style(widget, seen)
         Style(widget.pullout, seen)
         for _, item in widget.pullout:IterateItems() do Style(item, seen) end
     end
-end--[[APR_DIAG]]; Style = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:100:Style#10", Style)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Style = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:101:Style#10", Style)--[[/APR_DIAG]]
 
 function APR:EnableWorkspaceWidgets()
     if self.workspaceWidgetsInstalled then return end
@@ -177,31 +179,31 @@ function APR:EnableWorkspaceWidgets()
     if APR.ThemeCustomization then APR.ThemeCustomization:InstallPreviewWidget(gui) end
     -- A form action keeps its explanation separate from the clickable button.
     -- AceConfig still dispatches OnClick, including string handlers and confirmation dialogs.
-    gui:RegisterWidgetType("APRSettingsAction", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:180:callback#14", --[[/APR_DIAG]]function()
+    gui:RegisterWidgetType("APRSettingsAction", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:182:callback#14", --[[/APR_DIAG]]function()
         local frame = CreateFrame("Frame", nil, UIParent)
         frame:Hide()
         local widget = {type = "APRSettingsAction", frame = frame}
         widget.label = APR.UI:Label(frame, "")
-        widget.button = APR.UI:Button(frame, APPLY, 160, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:185:callback#15", --[[/APR_DIAG]]function()
+        widget.button = APR.UI:Button(frame, APPLY, 160, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:187:callback#15", --[[/APR_DIAG]]function()
             gui:ClearFocus()
             widget:Fire("OnClick")
         end--[[APR_DIAG]])--[[/APR_DIAG]])
-        widget.button:HookScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:189:callback#16", --[[/APR_DIAG]]function() widget:Fire("OnEnter") end--[[APR_DIAG]])--[[/APR_DIAG]])
-        widget.button:HookScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:190:callback#17", --[[/APR_DIAG]]function() widget:Fire("OnLeave") end--[[APR_DIAG]])--[[/APR_DIAG]])
-        function widget:SetText(value) self.label:SetText(value or "") end--[[APR_DIAG]]; widget.SetText = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:191:widget:SetText#18", widget.SetText)--[[/APR_DIAG]]
+        widget.button:HookScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:191:callback#16", --[[/APR_DIAG]]function() widget:Fire("OnEnter") end--[[APR_DIAG]])--[[/APR_DIAG]])
+        widget.button:HookScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:192:callback#17", --[[/APR_DIAG]]function() widget:Fire("OnLeave") end--[[APR_DIAG]])--[[/APR_DIAG]])
+        function widget:SetText(value) self.label:SetText(value or "") end--[[APR_DIAG]]; widget.SetText = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:193:widget:SetText#18", widget.SetText)--[[/APR_DIAG]]
         function widget:SetDisabled(disabled)
             self.disabled = disabled
             self.button:SetEnabled(not disabled)
-        end--[[APR_DIAG]]; widget.SetDisabled = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:192:widget:SetDisabled#19", widget.SetDisabled)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; widget.SetDisabled = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:194:widget:SetDisabled#19", widget.SetDisabled)--[[/APR_DIAG]]
         function widget:OnAcquire()
             self:SetWidth(300); self:SetHeight(68)
             self:SetText(""); self:SetDisabled(false)
-        end--[[APR_DIAG]]; widget.OnAcquire = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:196:widget:OnAcquire#20", widget.OnAcquire)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; widget.OnAcquire = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:198:widget:OnAcquire#20", widget.OnAcquire)--[[/APR_DIAG]]
         return gui:RegisterAsWidget(widget)
     end--[[APR_DIAG]])--[[/APR_DIAG]], 1)
     local depth, owned = 0, setmetatable({}, {__mode = "k"})
     local create, release = gui.Create, gui.Release
-    gui.Create = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:204:callback#21", --[[/APR_DIAG]]function(self, kind)
+    gui.Create = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:206:callback#21", --[[/APR_DIAG]]function(self, kind)
         if depth == 0 then return create(self, kind) end
         local constructor = self.WidgetRegistry[kind]
         if not constructor then return create(self, kind) end
@@ -211,7 +213,7 @@ function APR:EnableWorkspaceWidgets()
         owned[widget] = privateType
         return widget
     end--[[APR_DIAG]])--[[/APR_DIAG]]
-    gui.Release = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:214:callback#22", --[[/APR_DIAG]]function(self, widget)
+    gui.Release = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:216:callback#22", --[[/APR_DIAG]]function(self, widget)
         local privateType, releasing = owned[widget], widget.isQueuedForRelease
         release(self, widget)
         if privateType and not releasing then
@@ -221,18 +223,29 @@ function APR:EnableWorkspaceWidgets()
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]]
     local prefix = self.title .. "/Workspace/"
+    local workspaceDepth = 0
     for _, method in ipairs({"Open", "FeedGroup"}) do
         local original = dialog[method]
-        dialog[method] = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:226:callback#23", --[[/APR_DIAG]]function(self, app, ...)
+        dialog[method] = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:229:callback#23", --[[/APR_DIAG]]function(self, app, ...)
             -- EllesmereUI already isolates and styles APR's AceGUI widgets with its public skin API.
             if type(app) ~= "string" or app:sub(1, #prefix) ~= prefix then
                 return original(self, app, ...)
             end
             local external = APR:GetSkinProviderName() == "EllesmereUI"
+            local outermost = workspaceDepth == 0
+            workspaceDepth = workspaceDepth + 1
+            -- Pooled controls retain setter hooks. During Acquire/FeedGroup,
+            -- those hooks must not restyle each intermediate value/label.
+            rebuilding = rebuilding + 1
             if not external then depth = depth + 1 end
             local result = {--[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](original, self, app, ...)}
             if not external then depth = depth - 1 end
+            rebuilding = rebuilding - 1
+            workspaceDepth = workspaceDepth - 1
             if not result[1] then error(result[2], 0) end
+            -- Open calls FeedGroup, which can recursively feed nested groups.
+            -- Style the final tree once, after the outer operation completes.
+            if not outermost then return unpack(result, 2) end
             local container = method == "FeedGroup" and select(2, ...) or ...
             MatchContainerStrata(container)
             InstallConfirmationSkin(container, prefix, self)
@@ -243,20 +256,20 @@ function APR:EnableWorkspaceWidgets()
             return unpack(result, 2)
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     end
-end--[[APR_DIAG]]; APR.EnableWorkspaceWidgets = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:173:APR:EnableWorkspaceWidgets#13", APR.EnableWorkspaceWidgets)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.EnableWorkspaceWidgets = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:175:APR:EnableWorkspaceWidgets#13", APR.EnableWorkspaceWidgets)--[[/APR_DIAG]]
 
 -- A fixed-size AceGUI host lets AceConfig create its own scrolling body and preserve scroll state on edits.
 function APR.UI:SettingsHost(parent)
     local gui = LibStub("AceGUI-3.0")
     if not gui:GetWidgetVersion("APRSettingsHost") then
-        gui:RegisterWidgetType("APRSettingsHost", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:252:callback#25", --[[/APR_DIAG]]function()
+        gui:RegisterWidgetType("APRSettingsHost", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:265:callback#25", --[[/APR_DIAG]]function()
             local frame = CreateFrame("Frame", nil, UIParent)
             local content = CreateFrame("Frame", nil, frame)
             content:SetAllPoints()
             return gui:RegisterAsContainer({type = "APRSettingsHost", frame = frame, content = content,
-                OnAcquire = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:257:callback#26", --[[/APR_DIAG]]function() end--[[APR_DIAG]])--[[/APR_DIAG]], LayoutFinished = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:257:callback#27", --[[/APR_DIAG]]function() end--[[APR_DIAG]])--[[/APR_DIAG]],
-                OnWidthSet = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:258:callback#28", --[[/APR_DIAG]]function(self, width) self.content.width = width; self.content:SetWidth(width) end--[[APR_DIAG]])--[[/APR_DIAG]],
-                OnHeightSet = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:259:callback#29", --[[/APR_DIAG]]function(self, height) self.content.height = height; self.content:SetHeight(height) end--[[APR_DIAG]])--[[/APR_DIAG]]})
+                OnAcquire = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:270:callback#26", --[[/APR_DIAG]]function() end--[[APR_DIAG]])--[[/APR_DIAG]], LayoutFinished = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:270:callback#27", --[[/APR_DIAG]]function() end--[[APR_DIAG]])--[[/APR_DIAG]],
+                OnWidthSet = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:271:callback#28", --[[/APR_DIAG]]function(self, width) self.content.width = width; self.content:SetWidth(width) end--[[APR_DIAG]])--[[/APR_DIAG]],
+                OnHeightSet = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:272:callback#29", --[[/APR_DIAG]]function(self, height) self.content.height = height; self.content:SetHeight(height) end--[[APR_DIAG]])--[[/APR_DIAG]]})
         end--[[APR_DIAG]])--[[/APR_DIAG]], 1)
     end
     local host = gui:Create("APRSettingsHost")
@@ -267,8 +280,8 @@ function APR.UI:SettingsHost(parent)
     function host:ResizeToParent()
         self:SetWidth(math.max(1, parent:GetWidth() - (self.aprRightInset or 0)))
         self:SetHeight(parent:GetHeight()); self:DoLayout()
-    end--[[APR_DIAG]]; host.ResizeToParent = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:267:host:ResizeToParent#30", host.ResizeToParent)--[[/APR_DIAG]]
-    parent:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:271:callback#31", --[[/APR_DIAG]]function() host:ResizeToParent() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]]; host.ResizeToParent = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:280:host:ResizeToParent#30", host.ResizeToParent)--[[/APR_DIAG]]
+    parent:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:284:callback#31", --[[/APR_DIAG]]function() host:ResizeToParent() end--[[APR_DIAG]])--[[/APR_DIAG]])
     host:ResizeToParent()
     return host
-end--[[APR_DIAG]]; APR.UI.SettingsHost = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:249:APR.UI:SettingsHost#24", APR.UI.SettingsHost)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.UI.SettingsHost = APRTrace("APR-Core/ui/foundations/SettingsWidgets.lua:262:APR.UI:SettingsHost#24", APR.UI.SettingsHost)--[[/APR_DIAG]]

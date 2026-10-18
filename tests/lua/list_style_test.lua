@@ -157,3 +157,30 @@ unrelated:Open("TOPLEFT", UIParent, "TOPLEFT", 0, 0)
 assert(unrelated.items[2].frame:GetHeight() == 17 and unrelated.items[2].frame.point[5] == -18,
     "Unstyled addons retain AceGUI's native item layout")
 print("List style: theme/custom palettes, icons, live radius toggle, rounded selection, separators, pooling, disabled options, combat and native WoW passed")
+
+-- Ending combat must not revisit every pooled row created during this session.
+local manyRows = {}
+for index = 1, 1000 do manyRows[index] = UI:ListButton(UIParent, "Row " .. index, 240, function() end) end
+UI:RefreshPendingListRows()
+local refreshed, refreshRow = 0, UI.RefreshListRow
+function UI:RefreshListRow(row) refreshed = refreshed + 1; return refreshRow(self, row) end
+UI:RefreshPendingListRows()
+assert(refreshed == 0, "A clean combat exit must not restyle any rows")
+env.setCombat(true)
+for _ = 1, 20 do UI:SetListRowState(manyRows[1], true) end
+UI:StyleListRow(manyRows[1], "favorite")
+local lateRow = UI:ListButton(UIParent, "Late", 240, function() end, "debug")
+UI:SetListRowState(lateRow, true)
+refreshed = 0
+UI:RefreshPendingListRows()
+assert(refreshed == 0 and not lateRow.aprListRow.background, "Pending artwork remains untouched during combat")
+env.setCombat(false)
+UI:RefreshPendingListRows()
+assert(refreshed == 2 and lateRow.aprListRow.background and lateRow.aprListRow.selected)
+assert(manyRows[1].aprListRow.iconName == "favorite", "Deferred icon changes are applied along with selection")
+UI:RefreshPendingListRows()
+assert(refreshed == 2, "Repeated events cannot replay completed work")
+refreshed = 0
+UI:RefreshListRows()
+assert(refreshed >= 1000, "Explicit theme refresh still visits all registered rows")
+print("List combat recovery: 1,000 idle rows untouched; repeated changes coalesce into two updates")

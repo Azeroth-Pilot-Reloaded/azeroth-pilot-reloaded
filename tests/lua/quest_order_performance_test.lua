@@ -140,6 +140,30 @@ reachedReputations[2] = true
 assert(initialReputationState ~= utils:GetReputationStateSignature(reputationSteps),
     "Crossing a nested reputation threshold changes the signature")
 
+-- Deep condition trees are also split into frames, not just the outer route loop.
+local nested = { AllOf = {} }
+for index = 1, 1200 do nested.AllOf[index] = { Reputation = { factionID = index, level = 1 } } end
+local expectedSignature = utils:GetReputationStateSignature({ nested })
+local originalReached = APR.IsReputationLevelReached
+local reputationReads, preparedSignature = 0, nil
+function APR:IsReputationLevelReached(requirement)
+    reputationReads = reputationReads + 1
+    now = now + 1
+    return originalReached(self, requirement)
+end
+utils:StartRender(owner, function()
+    preparedSignature = utils:GetReputationStateSignature({ nested }, coroutine.yield)
+end, function() return true end, noop)
+assert(reputationReads == 0)
+while owner.renderFrame.scripts.OnUpdate do
+    local before = reputationReads
+    owner.renderFrame.scripts.OnUpdate()
+    assert(reputationReads - before <= 3, "Nested reputation checks respect the batch budget")
+end
+assert(reputationReads == 1200 and preparedSignature == expectedSignature,
+    "Budgeted reputation preparation preserves the complete threshold signature")
+APR.IsReputationLevelReached = originalReached
+
 local timers, totals, updates, renders = {}, 0, 0, 0
 C_Timer = {
     NewTimer = function(_, callback)
@@ -147,7 +171,7 @@ C_Timer = {
         return { Cancel = noop }
     end
 }
-function APR:GetTotalSteps() totals = totals + 1 end
+function APR:GetTotalSteps() totals = totals + 1; return 2 end
 
 function APR:UpdateStep() updates = updates + 1 end
 
@@ -167,12 +191,18 @@ dofile("APR-Core/core/Event.lua")
 for _ = 1, 100 do APR.event.functions.reputation() end
 assert(#timers == 1 and totals == 0, "A reputation burst schedules a single refresh")
 timers[1]()
+assert(totals == 0 and updates == 0, "The event timer only schedules budgeted reputation work")
+while APR.event.reputationJob.renderFrame.scripts.OnUpdate do APR.event.reputationJob.renderFrame.scripts.OnUpdate() end
+assert(updates == 0, "The step rebuild does not share the final scan batch")
+timers[2]()
 assert(totals == 1 and updates == 1 and renders == 0,
     "Unchanged reputation state does not rebuild the Quest Order List")
 reachedReputations[1] = true
 APR.event.functions.reputation()
-assert(#timers == 2, "Later reputation changes are not lost")
-timers[2]()
+assert(#timers == 3, "Later reputation changes are not lost")
+timers[3]()
+while APR.event.reputationJob.renderFrame.scripts.OnUpdate do APR.event.reputationJob.renderFrame.scripts.OnUpdate() end
+timers[4]()
 assert(totals == 2 and updates == 2 and renders == 1,
     "Crossing a route reputation threshold forces exactly one list rebuild")
 print("Reputation refresh: event bursts coalesced; list rebuilt only on a route threshold change")

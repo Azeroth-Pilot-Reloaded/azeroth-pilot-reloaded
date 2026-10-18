@@ -25,7 +25,10 @@ local function checkResults(...)
 end
 checkResults(cachedCallback(APR))
 local log = APRData.PerformanceLog
+assert(log.diagnosticRevision == D.revision and log.debugCallsDuringCapture == false)
 assert(log.summary.GetStep.maxMs == 4 and log.summary.UpdateStep.selfMs == 2)
+assert(log.frameWork.ms == 6 and log.frameWork.count == 1 and log.frameWork.source == "UpdateStep",
+    "Frame work counts only the outer call, not overlapping children")
 assert(log.slow[1].parent == "UpdateStep" and log.slow[1].breadcrumb == "render clue")
 assert(log.slow[1].step == 4 and D.CurrentName() == nil)
 APR:SetPerformanceCapture(false)
@@ -71,6 +74,7 @@ assert(D.Resume(thread))
 assert(APRData.PerformanceLog.summary.Caught.totalMs == 2)
 assert(APRData.PerformanceLog.summary.Catcher.selfMs == 100)
 APR:SetDebugCapture(true)
+assert(APRData.PerformanceLog.debugCallsDuringCapture == true)
 APR:SetPerformanceCapture(false)
 assert(D.enabled and D.debug, "Debug can run independently of performance")
 D.Message("DEBUG", "Readable", {value = false, text = "a\nb"})
@@ -104,4 +108,38 @@ assert(report:find("GetStep", 1, true) and report:find("self ms", 1, true))
 assert(report:find("value=false", 1, true) and report:find("×2", 1, true))
 assert(report:find("route / 4", 1, true) and not report:find("table: 0x", 1, true))
 assert(report:find("1 retained / 2 events", 1, true))
+assert(report:find("Diagnostics revision: " .. D.revision, 1, true))
+assert(report:find("Capture revision: " .. D.revision .. " | debug calls during capture: yes", 1, true))
+APRData.PerformanceLog.diagnosticRevision, APRData.PerformanceLog.debugCallsDuringCapture = nil, nil
+report = APR:BuildDiagnosticReport()
+assert(report:find("Capture revision: unknown (older capture) | debug calls during capture: unknown", 1, true),
+    "Exporting an old saved capture must not attribute it to the newly loaded revision")
 print("Full diagnostics: cached callbacks, exclusive timings, nil returns, errors, coroutines, bounded readable logs and shutdown passed")
+
+-- Interleaved hot functions must not allocate/overwrite the journal per call.
+D.ResetLog()
+D.Record("EVENT", "dispatch", "BAG_UPDATE_DELAYED")
+for i = 1, 10000 do
+    D.Record("CALL", "HotA", nil, nil, 0.1, 0.05, false)
+    D.Record("CALL", "HotB", nil, nil, 0.2, 0.1, false)
+end
+assert(APRData.DebugLog.count == 3 and APRData.DebugLog.total == 20001)
+assert(APRData.DebugLog.aggregatedCalls == 19998)
+assert(APR:GetDiagnosticRows("HotA")[1].count == 10000)
+assert(#APR:GetDiagnosticRows("BAG_UPDATE_DELAYED") == 1)
+seconds = seconds + 1
+D.Record("CALL", "HotA", nil, nil, 0.1, 0.05, false)
+assert(APRData.DebugLog.count == 4, "The aggregation window expires")
+APRData.player.route = 5
+D.Record("CALL", "HotA", nil, nil, 0.1, 0.05, false)
+assert(APRData.DebugLog.count == 5, "Step changes remain separate")
+D.Record("CALL", "HotA", nil, nil, 8, 4, false)
+D.Record("CALL", "HotA", nil, nil, 9, 5, false)
+assert(APRData.DebugLog.count == 7, "Slow calls always keep separate timestamps")
+for i = 1, 1100 do D.Record("DEBUG", "source", "overwrite " .. i) end
+D.Record("CALL", "HotA", nil, nil, 0.1, 0.05, false)
+assert(APR:GetDiagnosticRows("HotA")[1].count == 1, "Evicted entries are never reused")
+local retained = 0
+for _ in pairs(APRData.DebugLog.calls) do retained = retained + 1 end
+assert(retained == 1, "Aggregation retains only live journal entries")
+print("Diagnostic aggregation: 20,000 hot calls use two entries; events, timing windows, steps and slow calls preserved")

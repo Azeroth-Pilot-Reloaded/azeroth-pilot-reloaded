@@ -92,6 +92,16 @@ assert(allocations <= 14, "10000 models cannot allocate 10000 frames")
 local count = allocations
 list:SetItems(items, true)
 assert(allocations == count, "Rebuilding reuses the viewport pool")
+local previousBindings = bindings
+list:SetItems(items, false, 5000)
+assert(list.active[5000] and scroll:GetVerticalScroll() == list.offsets[5000],
+    "Publishing a route starts at the requested step")
+local visibleRows = 0
+for _, row in pairs(list.active) do
+    visibleRows = visibleRows + 1
+    assert(row.value >= 4999, "No rows from the beginning of the route are bound before following progress")
+end
+assert(bindings - previousBindings == visibleRows, "Publishing binds only the destination viewport once")
 list:SetItems({ { key = "replacement", height = 100 } })
 assert(list.active[1].value == "replacement" and scroll:GetVerticalScroll() == 0)
 GameTooltip:SetOwner(list.active[1])
@@ -101,4 +111,86 @@ assert(not GameTooltip:IsShown(), "Rebinding a visible row cannot keep its previ
 list:SetItems({})
 assert(next(list.active) == nil and list.child:GetHeight() == 1)
 assert(list:IndexAt(0) == 0)
+local parentVisible = false
+function scroll:IsVisible() return parentVisible and self:IsShown() end
+local beforeHidden = bindings
+list:SetItems(items, false, 5000)
+assert(bindings == beforeHidden and next(list.active) == nil,
+    "A list beneath a hidden panel prepares its offsets without binding invisible rows")
+parentVisible = true
+scroll.scripts.OnShow(scroll)
+assert(list.active[5000] and bindings > beforeHidden,
+    "Showing the parent binds the destination viewport with the prepared data")
+local shownRows = 0
+for _ in pairs(list.active) do shownRows = shownRows + 1 end
+assert(bindings - beforeHidden == shownRows, "Opening a hidden list binds its viewport once")
 print("UI foundations: WoW surfaces/external skins, combat deferral and bounded 10000-row viewport passed")
+
+-- Simulated expensive bindings prove the viewport itself obeys a frame budget,
+-- including replacement/scrolling while only part of the old viewport is bound.
+local clockMs, samples, scans = 0, {}, 0
+function debugprofilestop() return clockMs end
+function APR:StartPerformanceSample() return clockMs end
+function APR:FinishPerformanceSample(name, started)
+    samples[#samples + 1] = { name = name, elapsed = clockMs - started }
+end
+local originalBind = list.bindRow
+list.bindRow = function(...)
+    clockMs = clockMs + 1
+    return originalBind(...)
+end
+local originalHeight = list.rowHeight
+list.rowHeight = function(...)
+    scans = scans + 1
+    return originalHeight(...)
+end
+list:SetRenderBudget(2, "TestViewportBatch")
+local checkpoints = 0
+local prepared = list:PrepareItems(items, function() checkpoints = checkpoints + 1 end)
+assert(checkpoints == #items and scans == #items, "Offset preparation can yield for every model")
+local oldBindings = bindings
+list:SetItems(items, false, 5000, prepared)
+assert(scans == #items and bindings == oldBindings,
+    "Publication neither scans prepared models again nor binds visible rows inline")
+for _, row in pairs(list.active) do assert(not row:IsShown(), "Old generations cannot remain clickable") end
+local function viewportTick()
+    local before = bindings
+    list.renderFrame.scripts.OnUpdate()
+    assert(bindings - before <= 2, "A 2 ms batch binds at most two simulated 1 ms rows")
+end
+viewportTick()
+assert(list.renderFrame.scripts.OnUpdate, "A partially bound viewport continues on the next frame")
+list:ScrollToIndex(8000)
+local batchCount = 0
+while list.renderFrame.scripts.OnUpdate do
+    viewportTick()
+    batchCount = batchCount + 1
+    assert(batchCount < 20)
+end
+assert(list.active[8000].value == 8000 and not list.active[5000], "Scrolling retargets the pending viewport")
+for _, sample in ipairs(samples) do assert(sample.elapsed <= 2) end
+list:SetItems(items, false, 3000, prepared)
+viewportTick()
+list:SetItems({ { key = "latest", height = 100 } })
+while list.renderFrame.scripts.OnUpdate do viewportTick() end
+assert(list.active[1].value == "latest" and not list.active[3000], "Replacement discards pending old rows")
+list:RefreshVisible(true)
+parentVisible = false
+viewportTick()
+assert(not list.renderFrame.scripts.OnUpdate, "Hidden viewports stop per-frame work")
+parentVisible = true
+scroll.scripts.OnShow(scroll)
+while list.renderFrame.scripts.OnUpdate do viewportTick() end
+assert(list.active[1]:IsShown(), "Reopening resumes the current viewport")
+list.bindRow = function() error("binder failed") end
+list:RefreshVisible(true)
+assert(not pcall(list.renderFrame.scripts.OnUpdate))
+assert(not list.rendering and not list.renderFrame.scripts.OnUpdate, "Failed bindings release and stop their worker")
+list.bindRow = originalBind
+list:RefreshVisible(true)
+while list.renderFrame.scripts.OnUpdate do viewportTick() end
+assert(list.active[1].value == "latest", "A failed binder can recover on the next refresh")
+list:SetItems({})
+while list.renderFrame.scripts.OnUpdate do viewportTick() end
+assert(not next(list.active), "Removing the list cancels all old visible content")
+print("Virtual list: prepared offsets, 2 ms viewport batches, scrolling, replacement, visibility and error recovery passed")

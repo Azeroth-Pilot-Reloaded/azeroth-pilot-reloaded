@@ -69,15 +69,21 @@ step:FlushPendingContainers()
 step:ProcessPendingStepButtons()
 assert(step.questsList["1-1"] == replacement and replacement:IsShown(), "Combat cleanup preserves replacements")
 
-step:BeginContentUpdate()
-step:Reset()
-step:EndContentUpdate(false)
+local interruptedLayouts = env.layouts()
+for _ = 1, 600 do
+    step:BeginContentUpdate()
+    step:Reset()
+    step:EndContentUpdate(false)
+end
+assert(env.layouts() == interruptedLayouts and step.layoutDirty,
+    "Skipped-step passes retain dirty geometry without repeatedly laying out the old content")
 assert(step.questsList["1-1"] == replacement and not step.contentUpdateActive,
     "An interrupted or failed pass retains content and releases the batching guard")
 step:BeginContentUpdate()
 step:Reset()
 step:AddQuestSteps(1, "Recovered", 1)
 step:EndContentUpdate(true)
+assert(env.layouts() == interruptedLayouts + 1, "The first stable step publishes the deferred layout once")
 assert(not step.questsList["2-1"], "Successful refresh removes obsolete content")
 
 -- Actions removed by a later combat refresh must not be resurrected by an

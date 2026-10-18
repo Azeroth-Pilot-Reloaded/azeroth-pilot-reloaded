@@ -357,6 +357,10 @@ is retained on subsequent CPU samples. The scan can briefly block the client, an
 cost is recorded as `ResourceMemoryScan`. Closing or resetting capture never starts a scan.
 `StepRenderContent` and `StepRenderCommit` distinguish step logic from row/layout commits;
 `RoutePathUiRefresh` measures the catalog/status refresh coalesced outside step rendering.
+`ZoneRoutingReuseStep` counts navigation checks that reuse an already committed step;
+explicit zone checks still synchronize quest state. `QuestOrderListPublish` measures
+model publication and `QuestOrderListViewportBatch` measures the subsequent visible-row
+binding slices (2 ms budget between rows, not a hard limit on a single UI call).
 
 At rest, the arrow keeps lightweight position/facing checks and resolves route/map data
 only when its inputs change or its one-second safety interval expires. Unchanged color,

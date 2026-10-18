@@ -128,6 +128,33 @@ catalog:ToggleFavorite(browser.list.items[700]); browser:Refresh()
 assert(browser.scroll:GetVerticalScroll() == scroll, "A favorite action keeps the reader's place")
 browser:SetScope("all")
 assert(browser.scroll:GetVerticalScroll() == 0, "Changing scope starts at the top")
+
+-- Count the expensive text work itself, not wall-clock time from a mocked UI.
+local normalizations, normalize = 0, APR.NormalizeSearchText
+function APR:NormalizeSearchText(value)
+    normalizations = normalizations + 1
+    return normalize(self, value)
+end
+local rebuilt = catalog:Build()
+assert(normalizations == 0, "Reopening an unchanged catalog reuses prepared search text")
+APR.RouteQuestStepList.generated10.label = "Changed searchable name"
+normalizations = 0
+rebuilt = catalog:Build()
+assert(normalizations == 2, "Only changed route text is re-normalized")
+normalizations = 0
+local filtered = catalog:Filter(rebuilt, {query = "route", sort = "author"})
+assert(#filtered > 1000 and normalizations == #filtered + 1,
+    "Search is normalized once and sort keys once per matching row, never per comparison")
+normalizations = 0
+catalog:Filter(rebuilt, {query = "route", sort = "author", descending = true})
+assert(normalizations == 1, "Changing sort direction reuses keys while preserving the search")
+filtered[1].author = "Updated author"
+normalizations = 0
+catalog:Filter(rebuilt, {sort = "author"})
+assert(normalizations <= #rebuilt - #filtered + 1, "Changed sort values invalidate only their cached key")
+assert(catalog:Filter(rebuilt, {query = "changed searchable name"})[1].key == "generated10")
+APR.NormalizeSearchText = normalize
+
 browser.frame:SetSize(900, 600); browser:Layout()
 assert(not browser.headers.author:IsShown() and not browser.headers.status:IsShown() and browser.pathScroll:GetWidth() > 180)
 assert(browser.catalogPanel.point[4] + browser.catalogPanel:GetWidth() < browser.pathPanel.point[4])

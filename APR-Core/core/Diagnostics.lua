@@ -1,6 +1,7 @@
 -- Source wrappers cover locals and callbacks, including cached references.
 -- No runtime debug hooks or modifications to Blizzard/third-party functions.
-APRInstrumentation = {enabled = false, debug = false, registry = {}, registered = 0}
+APRInstrumentation = {enabled = false, debug = false, registry = {}, registered = 0,
+    revision = "2026-10-19.3"}
 local D = APRInstrumentation
 local main = {depth = 0, frames = {}, paused = 0}
 local threads = setmetatable({}, {__mode = "k"})
@@ -49,7 +50,18 @@ end
 
 function D.ResetLog()
     APRData = APRData or {}
-    APRData.DebugLog = {entries = {}, cursor = 0, count = 0, total = 0, startedAt = GetTime(), limit = LOG_LIMIT}
+    APRData.DebugLog = {entries = {}, calls = {}, cursor = 0, count = 0, total = 0,
+        aggregatedCalls = 0, startedAt = GetTime(), limit = LOG_LIMIT, revision = D.revision}
+end
+
+local function Accumulate(entry, now, duration, ownMs)
+    entry.count, entry.lastAt = entry.count + 1, now
+    if duration then
+        entry.ms = (entry.ms or 0) + duration
+        entry.maxMs = math.max(entry.maxMs or 0, duration)
+        entry.selfMs = (entry.selfMs or 0) + (ownMs or 0)
+    end
+    return entry
 end
 
 function D.Record(kind, source, message, data, duration, ownMs, failed)
@@ -58,24 +70,35 @@ function D.Record(kind, source, message, data, duration, ownMs, failed)
     local route = APR and APR.ActiveRoute
     local progress = APR and APR.PlayerID and APRData[APR.PlayerID]
     local step = progress and route and progress[route]
+    log.total = log.total + 1
+    -- Keep every function observable, but aggregate interleaved fast calls for
+    -- one second. Millions of short-lived CALL tables otherwise trigger GC and
+    -- erase the useful event/debug messages almost immediately.
+    local fastCall = kind == "CALL" and duration and duration < 3 and not failed
+    log.calls = log.calls or {}
+    local recent = fastCall and log.calls[source]
+    if recent and log.entries[recent.slot] == recent and recent.route == route and recent.step == step
+        and now >= recent.time and now - recent.time < 1 then
+        log.aggregatedCalls = (log.aggregatedCalls or 0) + 1
+        return Accumulate(recent, now, duration, ownMs)
+    end
     message = type(message) ~= "nil" and D.Value(message) or ""
     data = type(data) ~= "nil" and D.Value(data) or nil
     source = source or D.CurrentName() or "APR"
     local previous = log.entries[log.cursor]
-    log.total = log.total + 1
     if previous and previous.kind == kind and previous.source == source and previous.message == message
-        and previous.data == data and previous.route == route and previous.step == step and previous.failed == failed then
-        previous.count, previous.lastAt = previous.count + 1, now
-        previous.ms = (previous.ms or 0) + (duration or 0)
-        previous.maxMs = math.max(previous.maxMs or 0, duration or 0)
-        previous.selfMs = (previous.selfMs or 0) + (ownMs or 0)
-        return previous
+        and previous.data == data and previous.route == route and previous.step == step and previous.failed == failed
+        and kind ~= "CALL" then
+        return Accumulate(previous, now, duration, ownMs)
     end
     log.cursor = log.cursor % LOG_LIMIT + 1
+    local replaced = log.entries[log.cursor]
+    if replaced and log.calls[replaced.source] == replaced then log.calls[replaced.source] = nil end
     local entry = {time = now, lastAt = now, kind = kind, source = source, name = source,
         message = message, data = data, route = route, step = step, count = 1,
-        ms = duration, selfMs = ownMs, maxMs = duration, failed = failed}
+        ms = duration, selfMs = ownMs, maxMs = duration, failed = failed, slot = log.cursor}
     log.entries[log.cursor], log.count = entry, math.min(LOG_LIMIT, log.count + 1)
+    if fastCall then log.calls[source] = entry end
     return entry
 end
 
@@ -119,6 +142,9 @@ local function End(context, frame, failure)
     if parent then parent.children = parent.children + elapsed + overhead end
     if APR and APR.performanceLogging and APRData and frame.log == APRData.PerformanceLog then
         frame.log.observerMs = (frame.log.observerMs or 0) + overhead
+        if not parent and not context.thread and APR.RecordPerformanceFrameWork then
+            APR:RecordPerformanceFrameWork(frame.name, elapsed + overhead)
+        end
     end
     frame.log = nil -- Reused stack slots must not retain previous captures.
 end

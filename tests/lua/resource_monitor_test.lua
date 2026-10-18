@@ -152,3 +152,26 @@ assert(monitor.frameObserver.OnUpdate == nil and not monitor.frameObserver.shown
 APR:ResetPerformanceCapture()
 assert(not APRData.PerformanceLog.frames and not monitor.peakFrameMs)
 print("Frame intervals: short stalls survive average CPU sampling; history and observer lifetime are bounded")
+
+APR:SetPerformanceCapture(true)
+seconds = 1300
+APR:RecordPerformanceFrameWork("Navigation", 10)
+APR:RecordPerformanceFrameWork("StepRender", 20)
+seconds = 1300.05
+monitor.frameAverageMs = 5
+monitor:ObserveFrame(0.05)
+local frames = APRData.PerformanceLog.frames
+local spike = frames.samples[frames.cursor]
+assert(spike.aprMs == 30 and spike.aprCalls == 2 and spike.aprSource == "StepRender" and spike.aprPeakMs == 20)
+-- A callback that ran before this frame's observer belongs to the next interval.
+APR:RecordPerformanceFrameWork("CurrentFrame", 2)
+monitor.frameAverageMs = 5
+monitor:ObserveFrame(0.05)
+spike = frames.samples[frames.cursor]
+assert(spike.aprMs == 30 and spike.aprAt == 1300, "OnUpdate order does not misattribute current-frame work")
+seconds = 1301
+monitor.frameAverageMs = 5
+monitor:ObserveFrame(0.02)
+assert(frames.samples[frames.cursor].aprMs == nil, "Stale work is unknown, never carried into an unrelated spike")
+APR:SetPerformanceCapture(false)
+print("Frame attribution: outer roots, largest source, callback order and stale-work rejection passed")

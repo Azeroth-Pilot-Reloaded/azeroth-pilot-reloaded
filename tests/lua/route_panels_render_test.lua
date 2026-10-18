@@ -145,13 +145,25 @@ assert(scroll.point[1] == "TOPLEFT" and scroll.point[2] == QuestOrderListFrame_S
     "Both WoW and Modern list viewports start below the actual header, including when scrolling")
 scroll:SetSize(236, 400)
 local beforeFrames, beforeFonts = env.frames(), env.fonts()
+local function drainViewport()
+    local batches = 0
+    local frame = list.virtualList.renderFrame
+    while frame.scripts.OnUpdate do
+        frame.scripts.OnUpdate()
+        batches = batches + 1
+        assert(batches < 100, "Viewport must settle")
+    end
+end
 local function drainRender()
     local batches = 0
     while list.renderFrame and list.renderFrame.scripts.OnUpdate do
         list.renderFrame.scripts.OnUpdate()
         batches = batches + 1
-        assert(batches < 2000, "Renderer must settle")
+        -- The synthetic clock charges every timing read, including diagnostic
+        -- wrappers: capture can reduce each batch to a single work unit.
+        assert(batches < 10000, "Renderer must settle")
     end
+    drainViewport()
     return batches
 end
 list:AddStepFromRoute(true)
@@ -161,6 +173,7 @@ assert(env.frames() - beforeFrames < 45 and env.fonts() - beforeFonts < 100,
     "1200 step models must only create viewport rows and one hidden measurement row")
 for index = 1, 1200, 79 do
     list.virtualList:ScrollToIndex(index)
+    drainViewport()
     local row = list.virtualList.active[index]
     assert(row and row.model == list.stepList[index] and row.titleFont:GetText() == row.model.stepText)
 end
@@ -168,6 +181,7 @@ assert(env.frames() - beforeFrames < 50, "Scrolling the entire route must reuse 
 list.virtualList:ScrollToIndex(1)
 drainTimers()
 list.virtualList:ScrollTo(500)
+drainViewport()
 local visibleChild, rows, swaps = scroll.scrollChild, list.stepList, scroll.swaps
 local _, hovered = next(list.virtualList.active)
 GameTooltip:SetOwner(hovered)
@@ -247,7 +261,32 @@ list:AddStepFromRoute()
 drainRender()
 assert(not list.renderFailed, "A failed refresh can retry without losing the published list")
 
+local visibilityChecks, originalFilter = 0, APR.StepFilterQoL
+function APR:StepFilterQoL(entry)
+    visibilityChecks = visibilityChecks + 1
+    return originalFilter(self, entry)
+end
+local publishedModels = list.stepList
 APRData.player.route = 20
+list:AddStepFromRoute()
+assert(visibilityChecks == 0 and list.currentStepIndex == 1,
+    "Advancing does not synchronously scan the route")
+list.renderFrame.scripts.OnUpdate()
+assert(visibilityChecks > 0 and visibilityChecks <= 3 and list.stepList == publishedModels,
+    "The fast progression path budgets visibility checks and retains published rows")
+drainRender()
+assert(list.currentStepIndex == 20 and list.stepList == publishedModels,
+    "Unchanged visibility advances using the existing models")
+drainTimers()
+route[22].hidden = true
+APRData.player.route = 21
+list:AddStepFromRoute()
+drainRender()
+assert(list.currentStepIndex == 21 and not list.rawStepContainers[22],
+    "Visibility changes still rebuild and publish the correct route")
+assert(scroll:GetVerticalScroll() == list.virtualList.offsets[list.rawStepContainers[21].displayIndex],
+    "A rebuilt view immediately follows the current step without a second scroll timer")
+APRData.player.route = 23
 list:AddStepFromRoute()
 list:RemoveSteps()
 drainTimers()

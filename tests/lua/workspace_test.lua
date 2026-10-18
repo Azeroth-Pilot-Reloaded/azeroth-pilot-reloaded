@@ -55,4 +55,22 @@ workspace:Hide()
 assert(not workspace.frame:IsShown())
 workspace:Show("options")
 assert(workspace.frame:IsShown() and workspace.pages.options:IsShown())
+
+-- A page that refreshed through OnShow must not be rebuilt by the shell too.
+local routes = APR.RouteBrowser
+function routes:Refresh()
+    self.refreshes = self.refreshes + 1
+    self.refreshSerial = (self.refreshSerial or 0) + 1
+end
+local setShown = routes.frame.SetShown
+function routes.frame:SetShown(value)
+    local wasShown = self:IsShown()
+    setShown(self, value)
+    if value and not wasShown then routes:Refresh() end
+end
+local previous = routes.refreshes
+workspace:Show("route")
+assert(routes.refreshes == previous + 1, "OnShow and workspace navigation share one refresh")
+workspace:Show("route")
+assert(routes.refreshes == previous + 2, "An already visible page still receives an explicit refresh")
 print("Workspace: lazy navigation, optional Perf tab, command access, category preservation and overlay closure passed")

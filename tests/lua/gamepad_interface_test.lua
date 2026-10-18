@@ -11,9 +11,15 @@ function env.methods:IsVisible() return self.shown and (not self.parent or self.
 function env.methods:GetChildren() return unpack(self.children or {}) end
 function env.methods:GetScript(key) return self.scripts[key] end
 local show, hide = env.methods.Show, env.methods.Hide
+local function notifyShown(frame)
+    if not frame:IsVisible() then return end
+    if frame.scripts.OnShow then frame.scripts.OnShow(frame) end
+    for _, child in ipairs(frame.children or {}) do notifyShown(child) end
+end
 function env.methods:Show()
-    local changed = not self.shown; show(self)
-    if changed and self.scripts.OnShow then self.scripts.OnShow(self) end
+    local visible = self:IsVisible(); show(self)
+    -- WoW fires OnShow on shown descendants when their hidden ancestor opens.
+    if not visible then notifyShown(self) end
 end
 function env.methods:Hide()
     local changed = self.shown; hide(self)

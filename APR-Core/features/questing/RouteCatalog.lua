@@ -20,6 +20,7 @@ end--[[APR_DIAG]]; Catalog.GetPath = APRTrace("APR-Core/features/questing/RouteC
 
 function Catalog:Build()
     local records, known, queued = {}, {}, {}
+    local previousText, nextText = self.textCache or {}, {}
     local progress = APRData[APR.PlayerID] or {}
     local completed = APRZoneCompleted[APR.PlayerID] or {}
     local favorites = APR:GetSettingsProfile().routeFavorites or {}
@@ -42,8 +43,14 @@ function Catalog:Build()
                     local total = progress[key .. "-TotalSteps"]
                     record.status = tostring(step) .. " / " .. (total and tostring(total) or "?")
                 end
-                record.search = APR:NormalizeSearchText(table.concat({record.label, key, record.expansion, record.category, author}, " "))
-                record.sortName = APR:NormalizeSearchText(record.label)
+                local source = table.concat({record.label, key, record.expansion, record.category, author}, " ")
+                local cached = previousText[key]
+                if not cached or cached.source ~= source or cached.label ~= record.label then
+                    cached = {source = source, label = record.label, search = APR:NormalizeSearchText(source),
+                        sortName = APR:NormalizeSearchText(record.label)}
+                end
+                nextText[key] = cached
+                record.search, record.sortName = cached.search, cached.sortName
                 records[#records + 1], known[data.label] = record, true
             end
         end
@@ -55,31 +62,51 @@ function Catalog:Build()
                 visibility = "hidden", status = UNAVAILABLE, search = APR:NormalizeSearchText(label), sortName = APR:NormalizeSearchText(label)}
         end
     end
+    self.textCache = nextText
     return records
 end--[[APR_DIAG]]; Catalog.Build = APRTrace("APR-Core/features/questing/RouteCatalog.lua:21:Catalog:Build#2", Catalog.Build)--[[/APR_DIAG]]
 
-function Catalog:Matches(record, filters, ignoreCategory)
+local function searchWords(query)
+    local words = {}
+    if query and query ~= "" then
+        for word in APR:NormalizeSearchText(query):gmatch("%S+") do words[#words + 1] = word end
+    end
+    return words
+end--[[APR_DIAG]]; searchWords = APRTrace("APR-Core/features/questing/RouteCatalog.lua:69:searchWords#3", searchWords)--[[/APR_DIAG]]
+
+function Catalog:Matches(record, filters, ignoreCategory, words)
     if record.visibility == "hidden" then return false end
     if filters.expansion and filters.expansion ~= record.expansion then return false end
     if filters.community and not record.community then return false end
     if filters.favorites and not record.favorite then return false end
     if not ignoreCategory and filters.category and record.category ~= filters.category then return false end
-    for word in APR:NormalizeSearchText(filters.query or ""):gmatch("%S+") do
+    for _, word in ipairs(words or searchWords(filters.query)) do
         if not record.search:find(word, 1, true) then return false end
     end
     return true
-end--[[APR_DIAG]]; Catalog.Matches = APRTrace("APR-Core/features/questing/RouteCatalog.lua:61:Catalog:Matches#3", Catalog.Matches)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.Matches = APRTrace("APR-Core/features/questing/RouteCatalog.lua:77:Catalog:Matches#4", Catalog.Matches)--[[/APR_DIAG]]
 
 function Catalog:Filter(records, filters)
-    local result = {}
-    for _, record in ipairs(records) do
-        if self:Matches(record, filters) then result[#result + 1] = record end
-    end
+    local result, values = {}, {}
+    local words = searchWords(filters.query)
     local key, descending = filters.sort or "label", filters.descending
-    table.sort(result, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:79:callback#5", --[[/APR_DIAG]]function(a, b)
+    for _, record in ipairs(records) do
+        if self:Matches(record, filters, false, words) then
+            result[#result + 1] = record
+            local raw = record[key] or ""
+            record.sortValues = record.sortValues or {}
+            local cached = record.sortValues[key]
+            if not cached or cached.raw ~= raw then
+                cached = {raw = raw, value = APR:NormalizeSearchText(raw)}
+                record.sortValues[key] = cached
+            end
+            values[record] = cached.value
+        end
+    end
+    table.sort(result, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:106:callback#6", --[[/APR_DIAG]]function(a, b)
         -- Availability stays first even when the player reverses a column's sort order.
         if (a.visibility == "visible") ~= (b.visibility == "visible") then return a.visibility == "visible" end
-        local left, right = APR:NormalizeSearchText(a[key] or ""), APR:NormalizeSearchText(b[key] or "")
+        local left, right = values[a], values[b]
         if left ~= right then
             if descending then return left > right end
             return left < right
@@ -88,24 +115,25 @@ function Catalog:Filter(records, filters)
         return a.key < b.key
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     return result
-end--[[APR_DIAG]]; Catalog.Filter = APRTrace("APR-Core/features/questing/RouteCatalog.lua:73:Catalog:Filter#4", Catalog.Filter)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.Filter = APRTrace("APR-Core/features/questing/RouteCatalog.lua:89:Catalog:Filter#5", Catalog.Filter)--[[/APR_DIAG]]
 
 function Catalog:GetCategories(records, filters)
     local options, seen = {{value = false, label = ALL}}, {}
     local scope = {expansion = filters.expansion, community = filters.community}
+    local words = {}
     for _, record in ipairs(records) do
-        if self:Matches(record, scope, true) and not seen[record.category] then
+        if self:Matches(record, scope, true, words) and not seen[record.category] then
             seen[record.category] = true
             options[#options + 1] = {value = record.category, label = record.category}
         end
     end
-    table.sort(options, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:102:callback#7", --[[/APR_DIAG]]function(a, b)
+    table.sort(options, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/RouteCatalog.lua:130:callback#8", --[[/APR_DIAG]]function(a, b)
         if a.value == false then return b.value ~= false end
         if b.value == false then return false end
         return a.label < b.label
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     return options, seen
-end--[[APR_DIAG]]; Catalog.GetCategories = APRTrace("APR-Core/features/questing/RouteCatalog.lua:93:Catalog:GetCategories#6", Catalog.GetCategories)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.GetCategories = APRTrace("APR-Core/features/questing/RouteCatalog.lua:120:Catalog:GetCategories#7", Catalog.GetCategories)--[[/APR_DIAG]]
 
 function Catalog:GetNavigation(records)
     local counts, total, community = {}, 0, 0
@@ -131,7 +159,7 @@ function Catalog:GetNavigation(records)
         result[#result + 1] = {value = APR.EXPANSIONS.Custom, label = APR.EXPANSIONS.Custom, count = counts[APR.EXPANSIONS.Custom]}
     end
     return result
-end--[[APR_DIAG]]; Catalog.GetNavigation = APRTrace("APR-Core/features/questing/RouteCatalog.lua:110:Catalog:GetNavigation#8", Catalog.GetNavigation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.GetNavigation = APRTrace("APR-Core/features/questing/RouteCatalog.lua:138:Catalog:GetNavigation#9", Catalog.GetNavigation)--[[/APR_DIAG]]
 
 function Catalog:GetPathRecords(records)
     local byLabel, result = {}, {}
@@ -140,7 +168,7 @@ function Catalog:GetPathRecords(records)
         if byLabel[label] then result[#result + 1] = byLabel[label] end
     end
     return result
-end--[[APR_DIAG]]; Catalog.GetPathRecords = APRTrace("APR-Core/features/questing/RouteCatalog.lua:136:Catalog:GetPathRecords#9", Catalog.GetPathRecords)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.GetPathRecords = APRTrace("APR-Core/features/questing/RouteCatalog.lua:164:Catalog:GetPathRecords#10", Catalog.GetPathRecords)--[[/APR_DIAG]]
 
 function Catalog:ToggleFavorite(record)
     if not record or record.visibility == "hidden" then return end
@@ -148,7 +176,7 @@ function Catalog:ToggleFavorite(record)
     profile.routeFavorites = profile.routeFavorites or {}
     profile.routeFavorites[record.key] = not profile.routeFavorites[record.key] or nil
     record.favorite = profile.routeFavorites[record.key] == true
-end--[[APR_DIAG]]; Catalog.ToggleFavorite = APRTrace("APR-Core/features/questing/RouteCatalog.lua:145:Catalog:ToggleFavorite#10", Catalog.ToggleFavorite)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.ToggleFavorite = APRTrace("APR-Core/features/questing/RouteCatalog.lua:173:Catalog:ToggleFavorite#11", Catalog.ToggleFavorite)--[[/APR_DIAG]]
 
 function Catalog:ChangePath(record, action, restart)
     if not record then return false end
@@ -165,4 +193,4 @@ function Catalog:ChangePath(record, action, restart)
     else return false end
     APR.routeconfig:SendCustomPathUpdate()
     return true
-end--[[APR_DIAG]]; Catalog.ChangePath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:153:Catalog:ChangePath#11", Catalog.ChangePath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.ChangePath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:181:Catalog:ChangePath#12", Catalog.ChangePath)--[[/APR_DIAG]]

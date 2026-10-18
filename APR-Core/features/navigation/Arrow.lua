@@ -223,9 +223,11 @@ local function CheckDistance(currentStep, currentStepIndex, routeSteps, currentC
         return 0
     end
 
-    -- Only waypoints need the remaining route distance. Ordinary quest steps
-    -- must not resolve the custom path (and its eligibility) every arrow tick.
-    local _, routeMapID = APR:GetCurrentRouteMapIDsAndName()
+    -- The active route is already resolved. Looking up its saved display name
+    -- here scans the entire catalog and rechecks eligibility every arrow tick.
+    local routeData = APR.RouteQuestStepList and APR.RouteQuestStepList[APR.ActiveRoute]
+    local routeMapID = routeData and routeData.mapID
+        or tonumber((APR.ActiveRoute or ""):match("^(%d+)")) or 0
 
     if not currentStep.NonSkippableWaypoint then
         APR.ArrowFrame.Button:Show()
@@ -302,7 +304,7 @@ function APR.Arrow:SetCoord()
         self:SetArrowActive(true, x, stepCoord.y)
         self.currentStep = currentStepIndex
     end
-end--[[APR_DIAG]]; APR.Arrow.SetCoord = APRTrace("APR-Core/features/navigation/Arrow.lua:269:APR.Arrow:SetCoord#17", APR.Arrow.SetCoord)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.SetCoord = APRTrace("APR-Core/features/navigation/Arrow.lua:271:APR.Arrow:SetCoord#17", APR.Arrow.SetCoord)--[[/APR_DIAG]]
 
 local function UpdatePosition(self, playerX, playerY, facing)
     local questStep, currentStepIndex, routeSteps = APR:GetCurrentStep()
@@ -339,7 +341,7 @@ local function UpdatePosition(self, playerX, playerY, facing)
             self.isWrongZoneDistance = true
         elseif self.isWrongZoneDistance then
             self.isWrongZoneDistance = false
-            C_Timer.After(0.3, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:342:callback#19", --[[/APR_DIAG]]function()
+            C_Timer.After(0.3, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:344:callback#19", --[[/APR_DIAG]]function()
                 APR.Arrow.currentStep = 0
                 APR:UpdateMapId()
             end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -402,7 +404,7 @@ local function UpdatePosition(self, playerX, playerY, facing)
         APR.ArrowFrame.distance:SetText(displayedDistance .. " " .. L["YARDS"])
         self.lastDisplayedDistance = displayedDistance
     end
-end--[[APR_DIAG]]; UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:307:UpdatePosition#18", UpdatePosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:309:UpdatePosition#18", UpdatePosition)--[[/APR_DIAG]]
 
 function APR.Arrow:UpdatePosition()
     local playerY, playerX = UnitPosition("player")
@@ -437,7 +439,7 @@ function APR.Arrow:UpdatePosition()
     local started = APR.StartPerformanceSample and APR:StartPerformanceSample()
     UpdatePosition(self, playerX, playerY, facing)
     if APR.FinishPerformanceSample then APR:FinishPerformanceSample("ArrowPositionUpdate", started) end
-end--[[APR_DIAG]]; APR.Arrow.UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:407:APR.Arrow:UpdatePosition#20", APR.Arrow.UpdatePosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:409:APR.Arrow:UpdatePosition#20", APR.Arrow.UpdatePosition)--[[/APR_DIAG]]
 
 function APR.Arrow:SetArrowActive(isActive, x, y)
     local a = APR.Arrow
@@ -451,4 +453,4 @@ function APR.Arrow:SetArrowActive(isActive, x, y)
     else
         APR.ArrowFrame:Hide()
     end
-end--[[APR_DIAG]]; APR.Arrow.SetArrowActive = APRTrace("APR-Core/features/navigation/Arrow.lua:442:APR.Arrow:SetArrowActive#21", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.SetArrowActive = APRTrace("APR-Core/features/navigation/Arrow.lua:444:APR.Arrow:SetArrowActive#21", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]

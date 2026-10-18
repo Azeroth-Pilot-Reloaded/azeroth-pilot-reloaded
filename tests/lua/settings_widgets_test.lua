@@ -88,7 +88,9 @@ gui:RegisterWidgetType("InlineGroup", function()
         OnAcquire = function() end})
 end, 1)
 local dialog = LibStub:NewLibrary("AceConfigDialog-3.0", 1)
+local feeding, fontsDuringFeed = false, 0
 function dialog:FeedGroup(app, options, container)
+    feeding = true
     container:ReleaseChildren()
     local group = gui:Create("InlineGroup")
     container:AddChild(group)
@@ -113,9 +115,10 @@ function dialog:FeedGroup(app, options, container)
         control:SetWidth(640); control:SetText("Reset profile")
     end
     group:AddChild(control)
+    feeding = false
     if options.fail then error("Deliberate failure") end
 end
-function dialog:Open(app, container) self:FeedGroup(app, {}, container) end
+function dialog:Open(app, container) self:FeedGroup(app, {fail = container.fail}, container) end
 APR.title, APR.UI = "APR", {}
 function APR.UI:Panel(parent) return CreateFrame("Frame", nil, parent) end
 function APR.UI:Label(parent, text)
@@ -150,6 +153,16 @@ assert(gui.Create == create, "Repeated setup cannot stack wrappers")
 local native = gui:Create("Button")
 gui:Release(native)
 local host = APR.UI:SettingsHost(UIParent)
+local registerFont = APR.RegisterFontString
+function APR:RegisterFontString(...)
+    if feeding then fontsDuringFeed = fontsDuringFeed + 1 end
+    return registerFont(self, ...)
+end
+local rowPasses, applyRows = 0, APR.SettingsRows.Apply
+function APR.SettingsRows:Apply(widget)
+    if widget == host then rowPasses = rowPasses + 1 end
+    return applyRows(self, widget)
+end
 local refreshes = 0
 host:SetCallback("OnOptionsRefreshed", function() refreshes = refreshes + 1 end)
 dialog:Open("APR/Workspace/Options/general", host)
@@ -158,6 +171,7 @@ assert(group.frame:GetFrameStrata() == host.frame:GetFrameStrata())
 assert(group.frame.skinOptions.surface == "inset", "Settings boxes use the same background as release-note sections")
 assert(button.frame.themed and button.type == "Button" and button ~= native)
 assert(refreshes == 1, "Header action state refreshes after AceConfig updates the form")
+assert(rowPasses == 1, "Nested Open/FeedGroup must style and lay out the final settings tree once")
 for _, key in ipairs({"Left", "Middle", "Right"}) do
     assert(button.frame[key].alpha == 0 and native.frame[key].alpha ~= 0, "APR hides native button art only in its own pool")
 end
@@ -168,6 +182,12 @@ dialog:Open("APR/Workspace/About", host)
 assert(host.children[1] == group and group.children[1] == button, "APR must reuse its private widgets")
 assert(not pcall(dialog.FeedGroup, dialog, "APR/Workspace/Options/general", {fail = true}, host))
 assert(not gui:Create("Button").frame.themed, "Failure cannot leave other addons inside APR's scope")
+host.fail = true
+assert(not pcall(dialog.Open, dialog, "APR/Workspace/Options/general", host))
+host.fail = nil
+local beforeRecovery = rowPasses
+dialog:Open("APR/Workspace/Options/general", host)
+assert(rowPasses == beforeRecovery + 1, "Nested errors restore the styling depth for subsequent opens")
 dialog:Open("AnotherAddon", host)
 assert(not host.children[1].children[1].frame.themed)
 provider = "EllesmereUI"
@@ -175,6 +195,7 @@ dialog:Open("APR/Workspace/Options/general", host)
 assert(not host.children[1].children[1].frame.themed, "EllesmereUI must retain control of its own settings widgets")
 provider = nil
 dialog:FeedGroup("APR/Workspace/Options/general", {checkbox = true}, host)
+assert(fontsDuringFeed == 0, "Rebuilding settings must defer font styling until the final tree is ready")
 local checkbox = host.children[1].children[1]
 local changes, value = 0
 checkbox:SetCallback("OnValueChanged", function(_, _, checked) changes, value = changes + 1, checked end)
@@ -192,6 +213,7 @@ checkbox:SetDisabled(false); checkbox:SetTriState(true); checkbox:SetValue(nil)
 assert(checkbox.check:IsShown(), "AceGUI's mixed value remains visible")
 host:ReleaseChildren()
 dialog:FeedGroup("APR/Workspace/Options/general", {checkbox = true}, host)
+assert(fontsDuringFeed == 0, "Reacquiring a styled checkbox must not restyle it on every initialization setter")
 assert(host.children[1].children[1] == checkbox and not checkbox.check:IsShown(),
     "A pooled checkbox resets its value without losing its drawing layer")
 elvDropdownSkin, provider = true, "ElvUI"

@@ -1214,7 +1214,6 @@ end--[[APR_DIAG]]; APR.currentStep.UpdateStepButtonUsability = APRTrace("APR-Cor
 --- Disable Button, Reset ProgressBar and Remove all quest and extra line
 function APR.currentStep:Reset()
     APR:Debug("Function: APR.currentStep:Reset()")
-    if APR.RouteSelection then APR.RouteSelection:RefreshFrameAnchor() end
     if self.contentUpdateActive then
         self.pendingRaidIconNpcId = nil
         self.raidIconAdded = false
@@ -1224,6 +1223,7 @@ function APR.currentStep:Reset()
         APR.fillersFrame:RemoveFillerSteps()
         return
     end
+    if APR.RouteSelection then APR.RouteSelection:RefreshFrameAnchor() end
     self:ButtonShow()
     self:ButtonDisable()
     self:ProgressBar()

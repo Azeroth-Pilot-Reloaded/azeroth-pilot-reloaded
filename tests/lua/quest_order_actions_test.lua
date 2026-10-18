@@ -10,6 +10,8 @@ local L = setmetatable({
     REPAIR = "Repair your gear",
     USE_ITEM = "Use %s",
     USE_SPELL = "Cast %s",
+    LOOT_ITEM = "Loot: %s",
+    USE_FLIGHTPATH = "Fly to %s",
 }, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
 UNKNOWN, ABANDON_QUEST, LEAVE_VEHICLE, DISMOUNT = "Unknown", "Abandon quest", "Leave vehicle", "Dismount"
@@ -65,6 +67,7 @@ local utils = APR.questOrderListSupport
 utils.IsQuestCompletedOrActive, utils.IsQuestCompleted = no, no
 function utils:AddStepFrameWithQuest(_, index, title, quests, color, current)
     assert(type(title) == "string" and title ~= "", "Every row needs a readable title")
+    assert(not title:find("%s", 1, true), "Preview titles must not display unresolved placeholders")
     return { title = title, quests = quests, color = color, current = current }
 end
 function utils:AddStepFrame(layout, index, title, color, current)
@@ -120,6 +123,23 @@ for index in ipairs(steps) do
     assert(preview.rawStepContainers[index], "Missing main action at " .. index)
 end
 assert(APR.routeActionState == nil, "Preview must not create action state")
+
+-- Loot values remain in detail rows, while known travel destinations fill the title.
+local lootStep = { LootItems = { { itemID = 20, quantity = 3 }, { itemID = 404 } } }
+local lootRow = render({ lootStep }).stepList[1]
+assert(lootRow.title == "Loot:  ")
+assert(lootRow.quests[1].questID == 3 and lootRow.quests[1].questName == "Item 20")
+assert(lootRow.quests[2].questName == UNKNOWN)
+local completedLoot = render({ lootStep }, 2).stepList[1]
+assert(completedLoot.title == "Loot:  " and completedLoot.color == "green" and #completedLoot.quests == 0)
+assert(render({ { UseFlightPath = 10 } }).stepList[1].title == "Fly to Flight destination")
+assert(render({ { UseItem = { itemID = 20 } } }).stepList[1].title == "Use Item 20")
+
+local originalTalk = L.TALK_NPC
+L.TALK_NPC = "Talk to %s at %s (100%)"
+assert(render({ { GossipOptionIDs = { 1 } } }).stepList[1].title == "Talk to   at   (100%)")
+L.TALK_NPC = originalTalk
+
 C_ScenarioInfo.GetScenarioInfo = function() end
 C_ScenarioInfo.GetScenarioStepInfo = function() end
 C_ScenarioInfo.GetCriteriaInfoByStep = function() end

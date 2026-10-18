@@ -84,9 +84,11 @@ function Panel:Layout()
 end--[[APR_DIAG]]; Panel.Layout = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:65:Panel:Layout#8", Panel.Layout)--[[/APR_DIAG]]
 
 function Panel:RefreshNotes()
+    local blocks = APR.changelog:GetBlocks()
+    if self.renderedBlocks == blocks then self:Layout(); return end
     self.layingOut = true
     for _, row in ipairs(self.rows) do row:Hide() end
-    for index, block in ipairs(APR.changelog:GetBlocks()) do
+    for index, block in ipairs(blocks) do
         local row = self.rows[index]
         if not row then
             row = UI:Label(self.content, "")
@@ -97,9 +99,10 @@ function Panel:RefreshNotes()
         row:SetText(block.text)
         row:Show()
         APR:RegisterFontString(row, "general", {role = block.role, sizeDelta = block.size - 12,
-            themeAccent = true, onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:100:callback#10", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]})
+            themeAccent = true, onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:102:callback#10", --[[/APR_DIAG]]function() self:Layout() end--[[APR_DIAG]])--[[/APR_DIAG]]})
     end
     self.layingOut = nil
+    self.renderedBlocks = blocks
     self:Layout()
 end--[[APR_DIAG]]; Panel.RefreshNotes = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:86:Panel:RefreshNotes#9", Panel.RefreshNotes)--[[/APR_DIAG]]
 
@@ -111,11 +114,11 @@ function Panel:Show(app)
     self:RefreshNotes()
     self.link:SetFocus()
     self.link:HighlightText()
-end--[[APR_DIAG]]; Panel.Show = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:106:Panel:Show#11", Panel.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.Show = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:109:Panel:Show#11", Panel.Show)--[[/APR_DIAG]]
 
 function Panel:Hide()
     self.link:ClearFocus()
     self.host:ReleaseChildren()
     self.host:SetUserData("appName", nil)
     self.frame:Hide()
-end--[[APR_DIAG]]; Panel.Hide = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:116:Panel:Hide#12", Panel.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Panel.Hide = APRTrace("APR-Core/ui/panels/ReleaseNotesPanel.lua:119:Panel:Hide#12", Panel.Hide)--[[/APR_DIAG]]
