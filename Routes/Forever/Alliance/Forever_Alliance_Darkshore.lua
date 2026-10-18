@@ -157,7 +157,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         },
         {
             PickUp = { 963 },
-            Note = { "WAIT_FOR_NPC_END_RP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             MinLevel = 11,
             Race = { "Dwarf", "Gnome", "Human", "Skyborne" },
@@ -632,7 +631,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         {
             PickUp = { 963 },
             Fillers = { [2118] = { 1 } },
-            Note = { "WAIT_FOR_NPC_END_RP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Button = { ["2118-1"] = 7586 },
             Zone = 1439,
@@ -1436,7 +1434,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         {
             Done = { 963 },
             Fillers = { [958] = { 1 } },
-            Note = { "WAIT_FOR_NPC_END_RP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Race = { "Dwarf", "Gnome", "Human", "Skyborne" },
             Zone = 1439,
@@ -1676,7 +1673,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         {
             Done = { 963 },
             Fillers = { [958] = { 1 } },
-            Note = { "WAIT_FOR_NPC_END_RP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Race = "NightElf",
             Zone = 1439,
@@ -5035,7 +5031,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         {
             Done = { 963 },
             Fillers = { [1002] = { 1 } },
-            Note = { "WAIT_FOR_NPC_END_RP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             Zone = 1439,
@@ -5044,7 +5039,6 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         {
             Done = { 963 },
             Fillers = { [1002] = { 1 }, [6123] = { 1 } },
-            Note = { "WAIT_FOR_NPC_END_RP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.743, 43.71),
             Class = "DRUID",
             Race = { "NightElf", "Skyborne" },
