@@ -178,6 +178,12 @@ assert(APR:AreConditionalFiltersMet({ Collection = { itemID = 100, quantity = 2 
 local state = {}
 APR.routeBankOpen = false
 assert(not APR:ProcessRouteItems('BankDeposit', { items = { 100 } }, state) and mutated == 0)
+assert(APR:GetRouteItemActionCount('BankDeposit', 100) == 2)
+assert(APR:GetRouteItemActionCount('DestroyItems', 100) == 2)
+assert(APR:GetRouteItemActionCount('BankWithdraw', 100) == nil, 'A closed bank is not an empty bank')
+assert(APR:GetRouteActionText('BankDeposit', {items = {100}}, true) == 'BANKDEPOSIT: 2 × item 100')
+assert(APR:GetRouteActionText('BankDeposit', {items = {100}}) == 'BANKDEPOSIT: item 100',
+    'Do not predict future inventory quantities in route previews')
 APR.routeBankOpen = true
 bags[0][1].isLocked = true
 assert(not APR:ProcessRouteItems('BankDeposit', { items = { 100 } }, state) and mutated == 0)
@@ -185,6 +191,8 @@ bags[0][1].isLocked = false
 assert(not APR:ProcessRouteItems('BankDeposit', { items = { 100 } }, state) and mutated == 1)
 assert(APR:ProcessRouteItems('BankDeposit', { items = { 100 } }, state))
 assert(bags[-1][1].itemID == 100)
+assert(APR:GetRouteItemActionCount('BankDeposit', 100) == 0)
+assert(APR:GetRouteItemActionCount('BankWithdraw', 100) == 2)
 assert(not APR:ProcessRouteItems('BankWithdraw', { items = { 100 } }, {}))
 assert(bags[0][1].itemID == 100)
 APR.routeBankOpen = false

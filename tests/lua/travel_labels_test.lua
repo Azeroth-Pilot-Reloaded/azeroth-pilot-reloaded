@@ -3,6 +3,7 @@ local L = setmetatable({
     GET_FLIGHTPATH = "Learn flight path", USE_FLIGHTPATH = "Fly to %s",
     USE_BOAT = "Boat to %s", USE_ZEPPELIN_TO = "Zeppelin to %s",
     USE_PORTAL_TO = "Portal to %s", ENTER_TRAM = "Take tram", USE_HEARTHSTONE = "Use hearthstone",
+    HS_BIND_MISMATCH = "Current bind: %s; expected zone: %s",
 }, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
 UNKNOWN = "Unknown"
@@ -49,14 +50,19 @@ end }
 assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone - Auberge")
 assert(APR:GetHearthstoneStepText({ Zone = 11 }) == "Use hearthstone - Auberge")
 assert(APR:GetHearthstoneStepText({ Zones = { 20, 10 } }) == "Use hearthstone - Auberge")
-assert(APR:GetHearthstoneStepText({ Zone = 20 }) == "Use hearthstone")
+assert(APR:GetHearthstoneStepText({ Zone = 20 }) == "Use hearthstone\nCurrent bind: Auberge; expected zone: Desert")
 assert(APR:GetHearthstoneStepText(nil) == "Use hearthstone")
 assert(APR:GetHearthstoneStepText({}) == "Use hearthstone", "No route-zone fallback")
 assert(APR:GetHearthstoneStepText({ Boat = true, Zone = 20,
-    ZoneStepTrigger = { mapID = 10 } }) == "Use hearthstone", "Compare the next step's departure zone")
+    ZoneStepTrigger = { mapID = 10 } }) == "Use hearthstone\nCurrent bind: Auberge; expected zone: Desert",
+    "Compare the next step's departure zone")
 assert(APR:GetStepString({ UseHS = 42 }, false, { Zone = 10 }) == "Use hearthstone - Auberge")
 bindMap = 20
-assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone", "Never reuse an old matching bind")
+assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone\nCurrent bind: Auberge; expected zone: Foret",
+    "Never reuse an old matching bind")
+maps[20].mapType = 2
+assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone", "A continent is too broad to prove a mismatch")
+maps[20].mapType = nil
 bindMap = nil
 assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone")
 FarstriderLibData = nil

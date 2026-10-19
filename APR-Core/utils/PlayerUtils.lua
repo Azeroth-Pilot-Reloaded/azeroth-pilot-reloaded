@@ -635,6 +635,46 @@ function APR:GetRouteActionUsability(actionType, actionID, ignoreCooldown)
     return false, "invalid"
 end--[[APR_DIAG]]; APR.GetRouteActionUsability = APRTrace("APR-Core/utils/PlayerUtils.lua:543:APR:GetRouteActionUsability#32", APR.GetRouteActionUsability)--[[/APR_DIAG]]
 
+-- Timing may be secret on modern clients. Never format or compare it until
+-- accessibility is checked; the cooldown widget can still display that timing.
+function APR:GetActionAvailabilityText(actionType, actionID, includeRemaining)
+    local usable, reason = self:GetRouteActionUsability(actionType, actionID, true)
+    if not usable then
+        if reason == "missing" then return L["ACTION_ITEM_MISSING"] end
+        if reason == "unknown" then return L["ACTION_SPELL_UNKNOWN"] end
+        return self:GetRouteActionStatusText(reason)
+    end
+    local start, duration, enabled, active, modRate
+    if actionType == "spell" then
+        local info = C_Spell and C_Spell.GetSpellCooldown and C_Spell.GetSpellCooldown(actionID)
+        if not info then return nil end
+        start, duration, enabled, active, modRate = info.startTime, info.duration, info.isEnabled, info.isActive, info.modRate
+    elseif actionType == "item" then
+        local getCooldown = C_Item and C_Item.GetItemCooldown or C_Container and C_Container.GetItemCooldown
+        if not getCooldown then return nil end
+        start, duration, enabled = getCooldown(actionID)
+    else
+        return nil
+    end
+    if self.CanAccessValue and (not self:CanAccessValue(enabled) or not self:CanAccessValue(active)) then return nil end
+    if enabled == false or enabled == 0 or active == false then return nil end
+    for _, value in pairs({ start, duration, modRate }) do
+        if self.CanAccessValue and not self:CanAccessValue(value) then
+            return active == true and L["ACTION_COOLDOWN"] or nil
+        end
+    end
+    if type(start) ~= "number" or type(duration) ~= "number" then
+        return active and L["ACTION_COOLDOWN"] or nil
+    end
+    -- Avoid adding/removing an instruction on every global cooldown.
+    if start <= 0 or duration <= 1.5 then return nil end
+    local remaining = duration / (type(modRate) == "number" and modRate > 0 and modRate or 1) - (GetTime() - start)
+    if remaining <= 0 then return nil end
+    if not includeRemaining then return L["ACTION_COOLDOWN"] end
+    remaining = math.ceil(remaining)
+    return string.format(L["ACTION_AVAILABLE_IN"], string.format("%d:%02d", math.floor(remaining / 60), remaining % 60))
+end--[[APR_DIAG]]; APR.GetActionAvailabilityText = APRTrace("APR-Core/utils/PlayerUtils.lua:640:APR:GetActionAvailabilityText#33", APR.GetActionAvailabilityText)--[[/APR_DIAG]]
+
 function APR:GetRouteActionStatusText(reason)
     local messages = {
         cooldown = _G.SPELL_FAILED_NOT_READY,
@@ -645,4 +685,4 @@ function APR:GetRouteActionStatusText(reason)
         unusable = _G.SPELL_FAILED_NOT_HERE or _G.SPELL_FAILED_NOT_READY,
     }
     return messages[reason]
-end--[[APR_DIAG]]; APR.GetRouteActionStatusText = APRTrace("APR-Core/utils/PlayerUtils.lua:638:APR:GetRouteActionStatusText#33", APR.GetRouteActionStatusText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteActionStatusText = APRTrace("APR-Core/utils/PlayerUtils.lua:678:APR:GetRouteActionStatusText#34", APR.GetRouteActionStatusText)--[[/APR_DIAG]]

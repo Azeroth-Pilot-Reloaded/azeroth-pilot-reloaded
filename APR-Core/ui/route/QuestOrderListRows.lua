@@ -545,7 +545,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                         color, isCurrentStep)
                 elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS then
                     local questID = step.UseHS or step.UseDalaHS or step.UseGarrisonHS
-                    local questText = step.UseHS and APR:GetHearthstoneStepText(activeRouteSteps[rawIndex + 1]) or
+                    local questText = step.UseHS and APR:GetHearthstoneStepText(APR:GetNextApplicableStep(activeRouteSteps, rawIndex)) or
                         (step.UseDalaHS and L["USE_DALARAN_HEARTHSTONE"] or L["USE_GARRISON_HEARTHSTONE"])
                     local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex,
                         rawIndex)

@@ -11,11 +11,14 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 APR.flightPath = APR:NewModule("FlightPath")
 APR.flightPath.CurrentTaxiNode = {}
 APR.flightPath.StepTaxiNode = {}
+APR.flightPath.unavailableNodes = {}
 
 APR.flightPath.eventFrame = CreateFrame("Frame")
 APR.flightPath.eventFrame:RegisterEvent("TAXIMAP_OPENED")
+APR.flightPath.eventFrame:RegisterEvent("TAXIMAP_CLOSED")
 APR.flightPath.eventFrame:RegisterEvent("PLAYER_CONTROL_LOST")
-APR.flightPath.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:18:callback#1", --[[/APR_DIAG]]function(self, event)
+APR.flightPath.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:20:callback#1", --[[/APR_DIAG]]function(self, event)
+    if event == "TAXIMAP_CLOSED" then APR.flightPath.unavailableNodes = {} end
     if not APR.settings.profile.enableAddon then
         return
     end
@@ -31,10 +34,15 @@ APR.flightPath.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/
 
         APR.flightPath.CurrentTaxiNode = {}
         APR.flightPath.StepTaxiNode = {}
+        APR.flightPath.unavailableNodes = {}
 
         for _, node in ipairs(taxiNodes) do
             if node.state == Enum.FlightPathState.Current or node.state == Enum.FlightPathState.Reachable then
                 APRTaxiNodes[APR.PlayerID][node.nodeID] = true
+            elseif node.state == Enum.FlightPathState.Unreachable then
+                -- Unreachable is not proof that a node is undiscovered. This
+                -- observation is valid only at the currently open flight master.
+                APR.flightPath.unavailableNodes[node.nodeID] = true
             end
             if node.state == Enum.FlightPathState.Current then
                 APR.flightPath.CurrentTaxiNode = node
@@ -43,6 +51,9 @@ APR.flightPath.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/
                 APR.flightPath.StepTaxiNode = node
             end
         end
+
+        if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
+        if APR.questOrderList then APR.questOrderList:DelayedUpdate(true) end
 
         if APR.foreverTravel then
             APR.foreverTravel:ObserveTaxiMap(taxiNodes)
@@ -63,8 +74,11 @@ APR.flightPath.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/
                 end
             end
         end
+    elseif event == "TAXIMAP_CLOSED" then
+        if APR.event and APR.event.QueueStepRefresh then APR.event:QueueStepRefresh() end
+        if APR.questOrderList then APR.questOrderList:DelayedUpdate(true) end
     elseif event == "PLAYER_CONTROL_LOST" then
-        C_Timer.After(2, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:67:callback#2", --[[/APR_DIAG]]function()
+        C_Timer.After(2, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/FlightPath.lua:81:callback#2", --[[/APR_DIAG]]function()
             if not UnitOnTaxi("player") then
                 return
             end

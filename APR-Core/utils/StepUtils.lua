@@ -42,7 +42,12 @@ function APR:GetTransportStepText(step)
     end
     if step.Waypoint then return L["WAYPOINT"], "Waypoint" end
     if step.UseFlightPath and not (step.Boat or step.Zeppelin or step.Tram) then
-        return string.format(L["USE_FLIGHTPATH"], destination), "UseFlightPath"
+        local text = string.format(L["USE_FLIGHTPATH"], destination)
+        local flight = self.flightPath
+        if flight and flight.unavailableNodes and flight.unavailableNodes[step.NodeID] then
+            text = text .. "\n" .. L["FLIGHT_PATH_UNAVAILABLE"]
+        end
+        return text, "UseFlightPath"
     end
     if step.TakePortal and not (step.Boat or step.Zeppelin or step.Tram) then
         return string.format(L["USE_PORTAL_TO"], destination), "TakePortal"
@@ -55,7 +60,56 @@ end--[[APR_DIAG]]; APR.GetTransportStepText = APRTrace("APR-Core/utils/StepUtils
 function APR:GetFlightPathDiscoveryText(step)
     local name = self:GetTaxiNodeName(step)
     return name ~= UNKNOWN and (L["GET_FLIGHTPATH"] .. " - " .. name) or L["GET_FLIGHTPATH"]
-end--[[APR_DIAG]]; APR.GetFlightPathDiscoveryText = APRTrace("APR-Core/utils/StepUtils.lua:55:APR:GetFlightPathDiscoveryText#3", APR.GetFlightPathDiscoveryText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetFlightPathDiscoveryText = APRTrace("APR-Core/utils/StepUtils.lua:60:APR:GetFlightPathDiscoveryText#3", APR.GetFlightPathDiscoveryText)--[[/APR_DIAG]]
+
+-- Location after a teleport is not the player's current location. Treat those
+-- predicates as unknown while still rejecting definite class/faction/etc. failures.
+-- Preserve unknown through Not/AnyOf/AllOf instead of inverting it into a skip.
+local function ApplicableAfterTravel(self, conditions)
+    local base, uncertain = {}, false
+    for key, value in pairs(conditions) do
+        if key == "Zones" or key == "OnlyInZones" or key == "SkipInZones" then
+            uncertain = true
+        elseif key ~= "AnyOf" and key ~= "AllOf" and key ~= "Not" then
+            base[key] = value
+        end
+    end
+    if self.StepFilterQoL and not self:StepFilterQoL(base) then return false end
+    for _, child in ipairs(conditions.AllOf or {}) do
+        local result = ApplicableAfterTravel(self, child)
+        if result == false then return false end
+        if result == nil then uncertain = true end
+    end
+    if conditions.AnyOf then
+        local matched, unknown = false, false
+        for _, child in ipairs(conditions.AnyOf) do
+            local result = ApplicableAfterTravel(self, child)
+            if result == true then matched = true end
+            if result == nil then unknown = true end
+        end
+        if not matched and not unknown then return false end
+        if not matched then uncertain = true end
+    end
+    if conditions.Not then
+        local result = ApplicableAfterTravel(self, conditions.Not)
+        if result == true then return false end
+        if result == nil then uncertain = true end
+    end
+    if uncertain then return nil end
+    return true
+end--[[APR_DIAG]]; ApplicableAfterTravel = APRTrace("APR-Core/utils/StepUtils.lua:68:ApplicableAfterTravel#4", ApplicableAfterTravel)--[[/APR_DIAG]]
+
+-- Read-only lookahead: do not run progression handlers or mutate the runtime step.
+function APR:GetNextApplicableStep(steps, index)
+    if not steps or not index then return nil end
+    for nextIndex = index + 1, #steps do
+        local candidate = steps[nextIndex]
+        if ApplicableAfterTravel(self, candidate) ~= false and
+            not (self.IsSojournerSkipActive and self:IsSojournerSkipActive() and self:IsStepCampaignQuest(candidate)) then
+            return candidate, nextIndex
+        end
+    end
+end--[[APR_DIAG]]; APR.GetNextApplicableStep = APRTrace("APR-Core/utils/StepUtils.lua:103:APR:GetNextApplicableStep#5", APR.GetNextApplicableStep)--[[/APR_DIAG]]
 
 -- A bind name is a subzone, not necessarily the zone's display name. Use the
 -- bundled travel data to resolve its world position, then compare map ancestry.
@@ -75,22 +129,37 @@ function APR:GetHearthstoneStepText(nextStep)
         bindMapID = C_Map.GetMapPosFromWorldPos(location.mapId,
             CreateVector2D(location.pos.x, location.pos.y))
     end
+    local expectedNames, comparable = {}, bindMapID ~= nil
+    local bindInfo = bindMapID and self:GetMapInfoCached(bindMapID)
+    -- A continent-only result cannot establish which zone contains the bind.
+    if not bindInfo or (bindInfo.mapType and bindInfo.mapType <= 2) then comparable = false end
     for _, zone in ipairs(zones) do
+        local zoneInfo = self:GetMapInfoCached(zone)
+        if zoneInfo and zoneInfo.name then
+            expectedNames[#expectedNames + 1] = zoneInfo.name
+        else
+            comparable = false
+        end
         local mapID, seen = bindMapID, {}
         while mapID and mapID ~= 0 and not seen[mapID] do
             if mapID == zone then return text .. " - " .. bindName end
             seen[mapID] = true
             local info = self:GetMapInfoCached(mapID)
+            if not info then comparable = false end
             mapID = info and info.parentMapID
         end
+        if mapID and seen[mapID] then comparable = false end
         -- Also support binds whose name is the zone itself without library data.
         if not bindMapID then
             local info = self:GetMapInfoCached(zone)
             if info and info.name == bindName then return text .. " - " .. bindName end
         end
     end
+    if comparable and #expectedNames > 0 then
+        return text .. "\n" .. string.format(L["HS_BIND_MISMATCH"], bindName, table.concat(expectedNames, ", "))
+    end
     return text
-end--[[APR_DIAG]]; APR.GetHearthstoneStepText = APRTrace("APR-Core/utils/StepUtils.lua:63:APR:GetHearthstoneStepText#4", APR.GetHearthstoneStepText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetHearthstoneStepText = APRTrace("APR-Core/utils/StepUtils.lua:117:APR:GetHearthstoneStepText#6", APR.GetHearthstoneStepText)--[[/APR_DIAG]]
 
 function APR:IsZoneStepTriggerReached(trigger, playerX, playerY)
     if not trigger then return false end
@@ -105,7 +174,7 @@ function APR:IsZoneStepTriggerReached(trigger, playerX, playerY)
     end
     if playerX == nil or playerY == nil then return false end
     return (playerX - trigger.x) ^ 2 + (playerY - trigger.y) ^ 2 < trigger.Range ^ 2
-end--[[APR_DIAG]]; APR.IsZoneStepTriggerReached = APRTrace("APR-Core/utils/StepUtils.lua:95:APR:IsZoneStepTriggerReached#5", APR.IsZoneStepTriggerReached)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsZoneStepTriggerReached = APRTrace("APR-Core/utils/StepUtils.lua:164:APR:IsZoneStepTriggerReached#7", APR.IsZoneStepTriggerReached)--[[/APR_DIAG]]
 
 --- Return the localized label for the first recognized step key.
 -- This keeps UI construction simple while letting steps remain data-driven.
@@ -204,7 +273,7 @@ function APR:GetStepString(step, skipNote, nextStep)
     end
 
     return ''
-end--[[APR_DIAG]]; APR.GetStepString = APRTrace("APR-Core/utils/StepUtils.lua:113:APR:GetStepString#6", APR.GetStepString)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetStepString = APRTrace("APR-Core/utils/StepUtils.lua:182:APR:GetStepString#8", APR.GetStepString)--[[/APR_DIAG]]
 
 --- Build the waypoint summary text by scanning upcoming steps for actionable instructions.
 -- Notes are a fallback only when no upcoming action can describe the destination.
@@ -219,14 +288,15 @@ function APR:CheckWaypointText()
             end
         end
         return false
-    end--[[APR_DIAG]]; IsInList = APRTrace("APR-Core/utils/StepUtils.lua:215:IsInList#8", IsInList)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; IsInList = APRTrace("APR-Core/utils/StepUtils.lua:284:IsInList#10", IsInList)--[[/APR_DIAG]]
 
     local steps = APR:GetRouteSteps(APR.ActiveRoute)
     for i = currentStepIndex, #steps do
         local step = steps[i]
 
         if step then
-            local stepText, stepKey = APR:GetStepString(step, true, steps[i + 1])
+            local nextStep = step.UseHS and self:GetNextApplicableStep(steps, i)
+            local stepText, stepKey = APR:GetStepString(step, true, nextStep)
 
             if stepKey then
                 if IsInList(stepKey, APR.mainStepOptions) then
@@ -247,7 +317,7 @@ function APR:CheckWaypointText()
     end
 
     return L["TRAVEL_TO"] .. " - " .. L["WAYPOINT"]
-end--[[APR_DIAG]]; APR.CheckWaypointText = APRTrace("APR-Core/utils/StepUtils.lua:211:APR:CheckWaypointText#7", APR.CheckWaypointText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckWaypointText = APRTrace("APR-Core/utils/StepUtils.lua:280:APR:CheckWaypointText#9", APR.CheckWaypointText)--[[/APR_DIAG]]
 
 --- Extract all quest IDs from a step, regardless of its type.
 --- Handles every primary step format: arrays (PickUp, Done), dict keys (Qpart, QpartPart),
@@ -316,7 +386,7 @@ function APR:GetStepQuestIDs(step)
     end
 
     return ids
-end--[[APR_DIAG]]; APR.GetStepQuestIDs = APRTrace("APR-Core/utils/StepUtils.lua:258:APR:GetStepQuestIDs#9", APR.GetStepQuestIDs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetStepQuestIDs = APRTrace("APR-Core/utils/StepUtils.lua:328:APR:GetStepQuestIDs#11", APR.GetStepQuestIDs)--[[/APR_DIAG]]
 
 --- Quick check for primary actions, optionally excluding the action being handled.
 function APR:HasAnyMainStepOption(step, excludedKeys)
@@ -327,7 +397,7 @@ function APR:HasAnyMainStepOption(step, excludedKeys)
         end
     end
     return false
-end--[[APR_DIAG]]; APR.HasAnyMainStepOption = APRTrace("APR-Core/utils/StepUtils.lua:322:APR:HasAnyMainStepOption#10", APR.HasAnyMainStepOption)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HasAnyMainStepOption = APRTrace("APR-Core/utils/StepUtils.lua:392:APR:HasAnyMainStepOption#12", APR.HasAnyMainStepOption)--[[/APR_DIAG]]
 
 --- Call an achievement criteria API without letting stale route data raise a Lua error.
 ---@return boolean success
@@ -342,7 +412,7 @@ local function QueryAchievementCriteriaInfo(criteriaAPI, ...)
 
     -- pcall adds its success flag before the regular API return values.
     return true, results[2], results[4], results[11]
-end--[[APR_DIAG]]; QueryAchievementCriteriaInfo = APRTrace("APR-Core/utils/StepUtils.lua:337:QueryAchievementCriteriaInfo#11", QueryAchievementCriteriaInfo)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; QueryAchievementCriteriaInfo = APRTrace("APR-Core/utils/StepUtils.lua:407:QueryAchievementCriteriaInfo#13", QueryAchievementCriteriaInfo)--[[/APR_DIAG]]
 
 --- Resolve achievement criteria by its stable ID, with index support for older route data.
 ---@param achievementData table|nil
@@ -385,7 +455,7 @@ function APR:GetAchievementCriteriaInfo(achievementData)
     end
 
     return nil, nil, nil
-end--[[APR_DIAG]]; APR.GetAchievementCriteriaInfo = APRTrace("APR-Core/utils/StepUtils.lua:352:APR:GetAchievementCriteriaInfo#12", APR.GetAchievementCriteriaInfo)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetAchievementCriteriaInfo = APRTrace("APR-Core/utils/StepUtils.lua:422:APR:GetAchievementCriteriaInfo#14", APR.GetAchievementCriteriaInfo)--[[/APR_DIAG]]
 
 --- Evaluate if an achievement step is complete based on achievement/criteria state.
 -- Returns completion state plus a display label for UI.
@@ -420,7 +490,7 @@ function APR:IsAchievementStepComplete(step)
     end
 
     return achievementCompleted, progressText
-end--[[APR_DIAG]]; APR.IsAchievementStepComplete = APRTrace("APR-Core/utils/StepUtils.lua:394:APR:IsAchievementStepComplete#13", APR.IsAchievementStepComplete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsAchievementStepComplete = APRTrace("APR-Core/utils/StepUtils.lua:464:APR:IsAchievementStepComplete#15", APR.IsAchievementStepComplete)--[[/APR_DIAG]]
 
 --- Advance helpers ---------------------------------------------------------
 
@@ -428,7 +498,7 @@ end--[[APR_DIAG]]; APR.IsAchievementStepComplete = APRTrace("APR-Core/utils/Step
 function APR:UpdateQuestAndStep()
     APR:UpdateQuest(true)
     APR:UpdateStep()
-end--[[APR_DIAG]]; APR.UpdateQuestAndStep = APRTrace("APR-Core/utils/StepUtils.lua:428:APR:UpdateQuestAndStep#14", APR.UpdateQuestAndStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.UpdateQuestAndStep = APRTrace("APR-Core/utils/StepUtils.lua:498:APR:UpdateQuestAndStep#16", APR.UpdateQuestAndStep)--[[/APR_DIAG]]
 
 --- Build a stable token for the currently rendered route step.
 ---@param route string|nil
@@ -436,17 +506,17 @@ end--[[APR_DIAG]]; APR.UpdateQuestAndStep = APRTrace("APR-Core/utils/StepUtils.l
 ---@return string
 function APR:GetCurrentStepToken(route, stepIndex)
     return tostring(route or self.ActiveRoute or "") .. ":" .. tostring(stepIndex or "")
-end--[[APR_DIAG]]; APR.GetCurrentStepToken = APRTrace("APR-Core/utils/StepUtils.lua:437:APR:GetCurrentStepToken#15", APR.GetCurrentStepToken)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetCurrentStepToken = APRTrace("APR-Core/utils/StepUtils.lua:507:APR:GetCurrentStepToken#17", APR.GetCurrentStepToken)--[[/APR_DIAG]]
 
 --- Move to the next step index, then refresh current step rendering.
 function APR:UpdateNextStep()
     return self:AdvanceStep("step")
-end--[[APR_DIAG]]; APR.UpdateNextStep = APRTrace("APR-Core/utils/StepUtils.lua:442:APR:UpdateNextStep#16", APR.UpdateNextStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.UpdateNextStep = APRTrace("APR-Core/utils/StepUtils.lua:512:APR:UpdateNextStep#18", APR.UpdateNextStep)--[[/APR_DIAG]]
 
 --- Advance both quest and step state in tandem.
 function APR:NextQuestStep()
     return self:AdvanceStep("quests")
-end--[[APR_DIAG]]; APR.NextQuestStep = APRTrace("APR-Core/utils/StepUtils.lua:447:APR:NextQuestStep#17", APR.NextQuestStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.NextQuestStep = APRTrace("APR-Core/utils/StepUtils.lua:517:APR:NextQuestStep#19", APR.NextQuestStep)--[[/APR_DIAG]]
 
 --- Manually skip to the next visible step.
 function APR:SkipQuestStep()
@@ -486,7 +556,7 @@ function APR:SkipQuestStep()
     end
 
     return self:CommitManualSkip(targetIndex)
-end--[[APR_DIAG]]; APR.SkipQuestStep = APRTrace("APR-Core/utils/StepUtils.lua:452:APR:SkipQuestStep#18", APR.SkipQuestStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SkipQuestStep = APRTrace("APR-Core/utils/StepUtils.lua:522:APR:SkipQuestStep#20", APR.SkipQuestStep)--[[/APR_DIAG]]
 
 -- Rollback first reverses a valid manual skip, including its immediate automatic advances.
 -- Otherwise it walks back to the preceding visible non-waypoint step.
@@ -502,7 +572,7 @@ function APR:PreviousQuestStep()
         target = target - 1
     end
     return self:TransitionStep(target, "manual_previous", "quests", context)
-end--[[APR_DIAG]]; APR.PreviousQuestStep = APRTrace("APR-Core/utils/StepUtils.lua:493:APR:PreviousQuestStep#19", APR.PreviousQuestStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.PreviousQuestStep = APRTrace("APR-Core/utils/StepUtils.lua:563:APR:PreviousQuestStep#21", APR.PreviousQuestStep)--[[/APR_DIAG]]
 
 --- Lookup helpers ---------------------------------------------------------
 
@@ -525,7 +595,7 @@ function APR:GetStep(index)
         return cached.step, steps
     end
     return nil
-end--[[APR_DIAG]]; APR.GetStep = APRTrace("APR-Core/utils/StepUtils.lua:511:APR:GetStep#20", APR.GetStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetStep = APRTrace("APR-Core/utils/StepUtils.lua:581:APR:GetStep#22", APR.GetStep)--[[/APR_DIAG]]
 
 -- Resolve progress once for events, navigation and UI; startup/no route returns nil.
 -- Consumers share GetStep's runtime copy instead of changing the saved route definition.
@@ -535,7 +605,7 @@ function APR:GetCurrentStep()
     if not index then return nil end
     local step, steps = self:GetStep(index)
     return step, index, steps
-end--[[APR_DIAG]]; APR.GetCurrentStep = APRTrace("APR-Core/utils/StepUtils.lua:532:APR:GetCurrentStep#21", APR.GetCurrentStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetCurrentStep = APRTrace("APR-Core/utils/StepUtils.lua:602:APR:GetCurrentStep#23", APR.GetCurrentStep)--[[/APR_DIAG]]
 
 -- Diagnostics must not activate parallel groups or initialize route action state.
 function APR:PeekCurrentStep()
@@ -549,7 +619,7 @@ function APR:PeekCurrentStep()
     if cached then return cached.steps[index], index end
     local data = self.RouteQuestStepList and self.RouteQuestStepList[route]
     return data and (data.steps or data)[index], index
-end--[[APR_DIAG]]; APR.PeekCurrentStep = APRTrace("APR-Core/utils/StepUtils.lua:541:APR:PeekCurrentStep#22", APR.PeekCurrentStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.PeekCurrentStep = APRTrace("APR-Core/utils/StepUtils.lua:611:APR:PeekCurrentStep#24", APR.PeekCurrentStep)--[[/APR_DIAG]]
 
 local function NormalizeZoneList(value)
     if value == nil then
@@ -569,7 +639,7 @@ local function NormalizeZoneList(value)
         table.insert(list, zone)
     end
     return list
-end--[[APR_DIAG]]; NormalizeZoneList = APRTrace("APR-Core/utils/StepUtils.lua:554:NormalizeZoneList#23", NormalizeZoneList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; NormalizeZoneList = APRTrace("APR-Core/utils/StepUtils.lua:624:NormalizeZoneList#25", NormalizeZoneList)--[[/APR_DIAG]]
 
 --- Normalize a step's zone definition into a list, falling back to the route map id.
 function APR:GetStepZoneList(step, fallbackMapID)
@@ -590,7 +660,7 @@ function APR:GetStepZoneList(step, fallbackMapID)
         return result
     end
     return zones or {}
-end--[[APR_DIAG]]; APR.GetStepZoneList = APRTrace("APR-Core/utils/StepUtils.lua:575:APR:GetStepZoneList#24", APR.GetStepZoneList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetStepZoneList = APRTrace("APR-Core/utils/StepUtils.lua:645:APR:GetStepZoneList#26", APR.GetStepZoneList)--[[/APR_DIAG]]
 
 --- Pick a routing target from a step zone list, preferring the current continent.
 function APR:GetPreferredStepZone(step, fallbackMapID)
@@ -618,11 +688,11 @@ function APR:GetPreferredStepZone(step, fallbackMapID)
     end
 
     return zones[1]
-end--[[APR_DIAG]]; APR.GetPreferredStepZone = APRTrace("APR-Core/utils/StepUtils.lua:596:APR:GetPreferredStepZone#25", APR.GetPreferredStepZone)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetPreferredStepZone = APRTrace("APR-Core/utils/StepUtils.lua:666:APR:GetPreferredStepZone#27", APR.GetPreferredStepZone)--[[/APR_DIAG]]
 
 local function IsCoordTable(value)
     return type(value) == "table" and value.x ~= nil and value.y ~= nil
-end--[[APR_DIAG]]; IsCoordTable = APRTrace("APR-Core/utils/StepUtils.lua:623:IsCoordTable#26", IsCoordTable)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IsCoordTable = APRTrace("APR-Core/utils/StepUtils.lua:693:IsCoordTable#28", IsCoordTable)--[[/APR_DIAG]]
 
 local function ExtractCoord(entry)
     if IsCoordTable(entry) then
@@ -634,7 +704,7 @@ local function ExtractCoord(entry)
     end
 
     return nil
-end--[[APR_DIAG]]; ExtractCoord = APRTrace("APR-Core/utils/StepUtils.lua:627:ExtractCoord#27", ExtractCoord)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ExtractCoord = APRTrace("APR-Core/utils/StepUtils.lua:697:ExtractCoord#29", ExtractCoord)--[[/APR_DIAG]]
 
 local function GetEntryZone(entry)
     if type(entry) ~= "table" then
@@ -642,7 +712,7 @@ local function GetEntryZone(entry)
     end
 
     return entry.Zone or entry.zone or entry.mapID or entry.MapID or entry.uiMapID or entry.UiMapID
-end--[[APR_DIAG]]; GetEntryZone = APRTrace("APR-Core/utils/StepUtils.lua:639:GetEntryZone#28", GetEntryZone)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetEntryZone = APRTrace("APR-Core/utils/StepUtils.lua:709:GetEntryZone#30", GetEntryZone)--[[/APR_DIAG]]
 
 --- Resolve the best-matching zone id for the player, falling back to the preferred zone.
 function APR:GetStepZoneForPlayer(step, fallbackMapID, zoneHint, zones)
@@ -666,7 +736,7 @@ function APR:GetStepZoneForPlayer(step, fallbackMapID, zoneHint, zones)
     end
 
     return self:GetPreferredStepZone(step, fallbackMapID)
-end--[[APR_DIAG]]; APR.GetStepZoneForPlayer = APRTrace("APR-Core/utils/StepUtils.lua:648:APR:GetStepZoneForPlayer#29", APR.GetStepZoneForPlayer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetStepZoneForPlayer = APRTrace("APR-Core/utils/StepUtils.lua:718:APR:GetStepZoneForPlayer#31", APR.GetStepZoneForPlayer)--[[/APR_DIAG]]
 
 --- Resolve the coordinate for a step, supporting multi-zone coordinates.
 function APR:GetStepCoord(step, fallbackMapID, zoneHint)
@@ -755,7 +825,7 @@ function APR:GetStepCoord(step, fallbackMapID, zoneHint)
     end
 
     return coord, zoneId
-end--[[APR_DIAG]]; APR.GetStepCoord = APRTrace("APR-Core/utils/StepUtils.lua:672:APR:GetStepCoord#30", APR.GetStepCoord)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetStepCoord = APRTrace("APR-Core/utils/StepUtils.lua:742:APR:GetStepCoord#32", APR.GetStepCoord)--[[/APR_DIAG]]
 
 --- Determine if the provided quest id belongs to the current step.
 function APR:IsARouteQuest(questId)
@@ -768,13 +838,13 @@ function APR:IsARouteQuest(questId)
         return true
     end
     return self:IsQuestInPool(questId)
-end--[[APR_DIAG]]; APR.IsARouteQuest = APRTrace("APR-Core/utils/StepUtils.lua:761:APR:IsARouteQuest#31", APR.IsARouteQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsARouteQuest = APRTrace("APR-Core/utils/StepUtils.lua:831:APR:IsARouteQuest#33", APR.IsARouteQuest)--[[/APR_DIAG]]
 
 --- Quick check if the active step is a pickup step (for UI hints).
 function APR:IsPickupStep()
     local step = self:GetCurrentStep()
     return step and (step.PickUp or step.PickUpDB) or false
-end--[[APR_DIAG]]; APR.IsPickupStep = APRTrace("APR-Core/utils/StepUtils.lua:774:APR:IsPickupStep#32", APR.IsPickupStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsPickupStep = APRTrace("APR-Core/utils/StepUtils.lua:844:APR:IsPickupStep#34", APR.IsPickupStep)--[[/APR_DIAG]]
 
 function APR:ExtractColorAndText(text)
     local colorHex, message = string.match(text, "^%[COLOR:#?(%x+)%]%s*(.+)")
@@ -783,7 +853,7 @@ function APR:ExtractColorAndText(text)
     else
         return nil, text
     end
-end--[[APR_DIAG]]; APR.ExtractColorAndText = APRTrace("APR-Core/utils/StepUtils.lua:779:APR:ExtractColorAndText#33", APR.ExtractColorAndText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ExtractColorAndText = APRTrace("APR-Core/utils/StepUtils.lua:849:APR:ExtractColorAndText#35", APR.ExtractColorAndText)--[[/APR_DIAG]]
 
 function APR:ResolveStepText(rawValue)
     if rawValue == nil then
@@ -802,7 +872,7 @@ function APR:ResolveStepText(rawValue)
 
     local colorHex, formattedMessage = self:ExtractColorAndText(message)
     return formattedMessage, colorHex
-end--[[APR_DIAG]]; APR.ResolveStepText = APRTrace("APR-Core/utils/StepUtils.lua:788:APR:ResolveStepText#34", APR.ResolveStepText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ResolveStepText = APRTrace("APR-Core/utils/StepUtils.lua:858:APR:ResolveStepText#36", APR.ResolveStepText)--[[/APR_DIAG]]
 
 function APR:ResolveStepTextList(rawValue)
     local resolved = {}
@@ -815,7 +885,7 @@ function APR:ResolveStepTextList(rawValue)
                 color = color,
             })
         end
-    end--[[APR_DIAG]]; addResolvedText = APRTrace("APR-Core/utils/StepUtils.lua:810:addResolvedText#36", addResolvedText)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; addResolvedText = APRTrace("APR-Core/utils/StepUtils.lua:880:addResolvedText#38", addResolvedText)--[[/APR_DIAG]]
 
     if type(rawValue) == "table" then
         for _, value in ipairs(rawValue) do
@@ -826,4 +896,4 @@ function APR:ResolveStepTextList(rawValue)
     end
 
     return resolved
-end--[[APR_DIAG]]; APR.ResolveStepTextList = APRTrace("APR-Core/utils/StepUtils.lua:807:APR:ResolveStepTextList#35", APR.ResolveStepTextList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ResolveStepTextList = APRTrace("APR-Core/utils/StepUtils.lua:877:APR:ResolveStepTextList#37", APR.ResolveStepTextList)--[[/APR_DIAG]]

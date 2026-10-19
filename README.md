@@ -2,16 +2,16 @@
 
 <p align="center">
   <a href="https://www.curseforge.com/wow/addons/azeroth-pilot-reloaded">
-    <img src="readme/assets/banner-rounded.svg" alt="Azeroth Pilot Reloaded" width="1000">
+    <img src="readme/assets/banner-rounded.svg" alt="Azeroth Pilot Reloaded — World of Warcraft leveling guide addon" width="1000">
   </a>
 </p>
 
-<h1 align="center">Your adventure. A clear path.</h1>
+<h1 align="center">Azeroth Pilot Reloaded — Leveling Guide for World of Warcraft</h1>
 
 <p align="center">
-  A quest routing and leveling addon for <strong>World of Warcraft</strong>.<br>
-  Follow the arrow, complete each objective, and shape the journey around your character.<br>
-  The continuation, optimization, and rewrite of <strong>Azeroth Auto Pilot</strong>.
+  <strong>Azeroth Pilot Reloaded (APR)</strong> is a free, open-source WoW leveling addon with in-game, step-by-step quest guides.<br>
+  Follow the waypoint arrow, track quest objectives, and choose leveling, speedrun, or campaign routes for your character.<br>
+  The continuation, optimization, and rewrite of <strong>Azeroth Auto Pilot (AAP)</strong>. Your adventure. A clear path.
 </p>
 
 <p align="center">

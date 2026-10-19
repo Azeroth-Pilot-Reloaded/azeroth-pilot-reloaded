@@ -83,6 +83,24 @@ local function IsItemEquipped(itemID)
     return false
 end--[[APR_DIAG]]; IsItemEquipped = APRTrace("APR-Core/features/questing/RouteActions.lua:78:IsItemEquipped#7", IsItemEquipped)--[[/APR_DIAG]]
 
+-- Count the same bags that the action processes. A closed bank is unknown,
+-- not empty; future previews must not promise a quantity from today's bags.
+function APR:GetRouteItemActionCount(key, itemID)
+    if key ~= "BankDeposit" and key ~= "BankWithdraw" and key ~= "DestroyItems" then return nil end
+    if key == "BankWithdraw" and not self.routeBankOpen then return nil end
+    if (ContainerCall("GetContainerNumSlots", key == "BankWithdraw" and -1 or 0) or 0) == 0 then return nil end
+    local total = 0
+    for _, bag in ipairs(Bags(key == "BankWithdraw")) do
+        local slots = ContainerCall("GetContainerNumSlots", bag)
+        if slots == nil then return nil end
+        for slot = 1, slots do
+            local info = ContainerInfo(bag, slot)
+            if info and info.itemID == itemID then total = total + (info.stackCount or 0) end
+        end
+    end
+    return total
+end--[[APR_DIAG]]; APR.GetRouteItemActionCount = APRTrace("APR-Core/features/questing/RouteActions.lua:88:APR:GetRouteItemActionCount#8", APR.GetRouteItemActionCount)--[[/APR_DIAG]]
+
 local function TrainerMatchesSpell(index, name, rank, spellID)
     local link = GetTrainerServiceItemLink and GetTrainerServiceItemLink(index)
     local linkedID = link and tonumber(link:match('spell:(%d+)'))
@@ -92,7 +110,7 @@ local function TrainerMatchesSpell(index, name, rank, spellID)
     local subtext = C_Spell and C_Spell.GetSpellSubtext or GetSpellSubtext
     local spellRank = subtext and subtext(spellID)
     return spellName == name and (rank or '') == (spellRank or '')
-end--[[APR_DIAG]]; TrainerMatchesSpell = APRTrace("APR-Core/features/questing/RouteActions.lua:86:TrainerMatchesSpell#8", TrainerMatchesSpell)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; TrainerMatchesSpell = APRTrace("APR-Core/features/questing/RouteActions.lua:104:TrainerMatchesSpell#9", TrainerMatchesSpell)--[[/APR_DIAG]]
 
 -- Process one complete stack at a time. Never touch an unrelated cursor item,
 -- locked slot, unlisted item or a closed bank/merchant. Bag events drive retries.
@@ -157,7 +175,7 @@ function APR:ProcessRouteItems(key, rule, state)
         end
     end
     return true
-end--[[APR_DIAG]]; APR.ProcessRouteItems = APRTrace("APR-Core/features/questing/RouteActions.lua:99:APR:ProcessRouteItems#9", APR.ProcessRouteItems)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ProcessRouteItems = APRTrace("APR-Core/features/questing/RouteActions.lua:117:APR:ProcessRouteItems#10", APR.ProcessRouteItems)--[[/APR_DIAG]]
 
 function APR:GetRouteActionState()
     local token = self:GetCurrentStepToken(self.ActiveRoute, APRData[self.PlayerID][self.ActiveRoute])
@@ -165,7 +183,7 @@ function APR:GetRouteActionState()
         self.routeActionState = { token = token }
     end
     return self.routeActionState
-end--[[APR_DIAG]]; APR.GetRouteActionState = APRTrace("APR-Core/features/questing/RouteActions.lua:162:APR:GetRouteActionState#10", APR.GetRouteActionState)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteActionState = APRTrace("APR-Core/features/questing/RouteActions.lua:180:APR:GetRouteActionState#11", APR.GetRouteActionState)--[[/APR_DIAG]]
 
 function APR:GetRouteActionText(key, rule, isCurrentStep, state)
     local label = L[key:upper()]
@@ -177,7 +195,7 @@ function APR:GetRouteActionText(key, rule, isCurrentStep, state)
 
     local function Fallback()
         return self:ResolveStepText(rule.text or rule.Text) or label
-    end--[[APR_DIAG]]; Fallback = APRTrace("APR-Core/features/questing/RouteActions.lua:178:Fallback#12", Fallback)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; Fallback = APRTrace("APR-Core/features/questing/RouteActions.lua:196:Fallback#13", Fallback)--[[/APR_DIAG]]
 
     if key == "LearnSkill" and (rule.spellID or rule.spellIDs) then
         local names = {}
@@ -213,6 +231,8 @@ function APR:GetRouteActionText(key, rule, isCurrentStep, state)
                 name = type(entry) == "table" and self:ResolveStepText(entry.text or entry.Text)
             end
             name = name or ((UNKNOWN or "?") .. " (" .. id .. ")")
+            local count = isCurrentStep and self:GetRouteItemActionCount(key, id)
+            if count then name = tostring(count) .. " × " .. name end
             if key == "SellItems" and IsItemEquipped(id) then
                 name = name .. " (" .. L["SELL_ITEM_EQUIPPED"] .. ")"
             end
@@ -233,7 +253,7 @@ function APR:GetRouteActionText(key, rule, isCurrentStep, state)
     end
 
     return Fallback()
-end--[[APR_DIAG]]; APR.GetRouteActionText = APRTrace("APR-Core/features/questing/RouteActions.lua:170:APR:GetRouteActionText#11", APR.GetRouteActionText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteActionText = APRTrace("APR-Core/features/questing/RouteActions.lua:188:APR:GetRouteActionText#12", APR.GetRouteActionText)--[[/APR_DIAG]]
 
 function APR:HandleRouteAction(step)
     if step.LeaveQuest or step.LeaveQuests then
@@ -296,7 +316,7 @@ function APR:HandleRouteAction(step)
         end
     end
     return false
-end--[[APR_DIAG]]; APR.HandleRouteAction = APRTrace("APR-Core/features/questing/RouteActions.lua:238:APR:HandleRouteAction#13", APR.HandleRouteAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleRouteAction = APRTrace("APR-Core/features/questing/RouteActions.lua:258:APR:HandleRouteAction#14", APR.HandleRouteAction)--[[/APR_DIAG]]
 
 function APR:IsRouteRepairNeeded(rule)
     if not GetInventoryItemDurability then return true end
@@ -309,7 +329,7 @@ function APR:IsRouteRepairNeeded(rule)
         end
     end
     return false
-end--[[APR_DIAG]]; APR.IsRouteRepairNeeded = APRTrace("APR-Core/features/questing/RouteActions.lua:301:APR:IsRouteRepairNeeded#14", APR.IsRouteRepairNeeded)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsRouteRepairNeeded = APRTrace("APR-Core/features/questing/RouteActions.lua:321:APR:IsRouteRepairNeeded#15", APR.IsRouteRepairNeeded)--[[/APR_DIAG]]
 
 function APR:HandleRouteRepair(step)
     local rule = step and step.Repair
@@ -326,7 +346,7 @@ function APR:HandleRouteRepair(step)
     state.repairPending = true
     RepairAllItems(false)
     return not self:IsRouteRepairNeeded(rule)
-end--[[APR_DIAG]]; APR.HandleRouteRepair = APRTrace("APR-Core/features/questing/RouteActions.lua:314:APR:HandleRouteRepair#15", APR.HandleRouteRepair)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleRouteRepair = APRTrace("APR-Core/features/questing/RouteActions.lua:334:APR:HandleRouteRepair#16", APR.HandleRouteRepair)--[[/APR_DIAG]]
 
 function APR:HandleSkillTrainer(step)
     if not step or not step.LearnSkill or not self.routeTrainerOpen then return end
@@ -350,7 +370,7 @@ function APR:HandleSkillTrainer(step)
         end
     end
     if rule.allAvailable and not anyAvailable then self:GetRouteActionState().complete = true end
-end--[[APR_DIAG]]; APR.HandleSkillTrainer = APRTrace("APR-Core/features/questing/RouteActions.lua:331:APR:HandleSkillTrainer#16", APR.HandleSkillTrainer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleSkillTrainer = APRTrace("APR-Core/features/questing/RouteActions.lua:351:APR:HandleSkillTrainer#17", APR.HandleSkillTrainer)--[[/APR_DIAG]]
 
 function APR:HandleDeathSkip(step, event)
     if not step or not step.DeathSkip or not self:AreConditionalFiltersMet(step) then return end
@@ -365,7 +385,7 @@ function APR:HandleDeathSkip(step, event)
         end
     end
     if event == "PLAYER_UNGHOST" and state.died and state.spiritHealer then state.complete = true end
-end--[[APR_DIAG]]; APR.HandleDeathSkip = APRTrace("APR-Core/features/questing/RouteActions.lua:355:APR:HandleDeathSkip#17", APR.HandleDeathSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleDeathSkip = APRTrace("APR-Core/features/questing/RouteActions.lua:375:APR:HandleDeathSkip#18", APR.HandleDeathSkip)--[[/APR_DIAG]]
 
 function APR:HandleTameBeast(step, event, unit, spell)
     if not APRSecret:CanAccessValue(unit) or not APRSecret:CanAccessValue(spell) then return end
@@ -376,7 +396,7 @@ function APR:HandleTameBeast(step, event, unit, spell)
     elseif event == "UNIT_SPELLCAST_SUCCEEDED" then
         state.complete = not step.TameBeast.npcID or state.target == step.TameBeast.npcID
     end
-end--[[APR_DIAG]]; APR.HandleTameBeast = APRTrace("APR-Core/features/questing/RouteActions.lua:370:APR:HandleTameBeast#18", APR.HandleTameBeast)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleTameBeast = APRTrace("APR-Core/features/questing/RouteActions.lua:390:APR:HandleTameBeast#19", APR.HandleTameBeast)--[[/APR_DIAG]]
 
 function APR:HandleSpellETA(step, unit, spell)
     if not APRSecret:CanAccessValue(unit) or not APRSecret:CanAccessValue(spell) then return end
@@ -393,4 +413,4 @@ function APR:HandleSpellETA(step, unit, spell)
         state.timerStarted = true
         self.AFK:SetAfkTimer(r.seconds)
     end
-end--[[APR_DIAG]]; APR.HandleSpellETA = APRTrace("APR-Core/features/questing/RouteActions.lua:381:APR:HandleSpellETA#19", APR.HandleSpellETA)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.HandleSpellETA = APRTrace("APR-Core/features/questing/RouteActions.lua:401:APR:HandleSpellETA#20", APR.HandleSpellETA)--[[/APR_DIAG]]

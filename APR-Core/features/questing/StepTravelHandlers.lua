@@ -262,7 +262,7 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
     if showStepDetails then
         if step.UseHS then
             local steps = APR:GetRouteSteps(APR.ActiveRoute)
-            questText = APR:GetHearthstoneStepText(currentStepIndex and steps[currentStepIndex + 1])
+            questText = APR:GetHearthstoneStepText(APR:GetNextApplicableStep(steps, currentStepIndex))
         end
         APR.currentStep:AddQuestSteps(questKey, questText, useHSKey)
         APR.currentStep:AddStepButton(questKey .. "-" .. useHSKey, spellID, type)

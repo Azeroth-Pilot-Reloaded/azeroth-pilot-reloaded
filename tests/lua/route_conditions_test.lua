@@ -403,3 +403,25 @@ do
     APR.GetPlayerEffectiveLevel, C_Map.GetBestMapForUnit = getLevel, getMap
     C_SpecializationInfo, APR.MeetsExtendedRouteConditions = spec, extended
 end
+
+-- Hearthstone lookahead skips definite exclusions without applying today's
+-- location to tomorrow's arrival or executing any route action.
+dofile("APR-Core/utils/StepUtils.lua")
+do
+    local steps = {
+        { UseHS = 42 }, { Faction = 'Alliance', Zone = 10 },
+        { Class = 'MAGE', Zone = 20 },
+        { Faction = 'Horde', Zones = { 99999 }, Zone = 30 },
+        { Zone = 40 },
+    }
+    local candidate, index = APR:GetNextApplicableStep(steps, 1)
+    assert(candidate == steps[4] and index == 4, 'Skip faction/class filters, retain arrival-zone conditions')
+    assert(steps[4].Zones[1] == 99999, 'Lookahead leaves route conditions unchanged')
+    assert(APR:GetNextApplicableStep(steps, #steps) == nil)
+    steps[2] = { Not = { OnlyInZones = { 1411 } }, Zone = 50 }
+    assert(APR:GetNextApplicableStep(steps, 1) == steps[2], 'Negating an unknown location remains unknown')
+    steps[2] = { AnyOf = { { Faction = 'Alliance' }, { OnlyInZones = { 99999 } } }, Zone = 50 }
+    assert(APR:GetNextApplicableStep(steps, 1) == steps[2])
+    steps[2] = { AllOf = { { Faction = 'Alliance' }, { OnlyInZones = { 99999 } } }, Zone = 50 }
+    assert(APR:GetNextApplicableStep(steps, 1) == steps[4])
+end

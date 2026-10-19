@@ -88,4 +88,13 @@ assert(advanced == 1, "A flight step at its destination still completes")
 step.NodeID, taken = 8, nil
 frame.callback(frame, "TAXIMAP_OPENED")
 assert(taken == nil, "An unreachable destination must never be selected automatically")
+assert(APR.flightPath.unavailableNodes[8] and not APR.flightPath.unavailableNodes[7])
+assert(APR.flightPath.unavailableNodes[999] == nil, "An unobserved node has unknown availability")
+frame.callback(frame, "TAXIMAP_CLOSED")
+assert(next(APR.flightPath.unavailableNodes) == nil, "Availability at one flight master must not persist elsewhere")
+assert(APR:HasTaxiNode(7), "Closing the map preserves discovered nodes")
+APR.flightPath.unavailableNodes[8] = true
+APR.settings.profile.enableAddon = false
+frame.callback(frame, "TAXIMAP_CLOSED")
+assert(next(APR.flightPath.unavailableNodes) == nil, "Disabled addons must still expire flight-master observations")
 print("Taxi discovery: name migration, character isolation, library names, fallbacks and flight selection passed")
