@@ -40,6 +40,8 @@ APR.ScenarioEntrances = {
     [2528] = { Coord = { x = -768.6, y = 2450.5 }, zone = 2405, type = "DELVE" },
     [2506] = { Coord = { x = 1002.1, y = 2414.8 }, zone = 2405, type = "DELVE" },
     [2529] = { Coord = { x = 202.3, y = 1265.5 }, zone = 2405, type = "RAID" },
+    [2647] = { Coord = { x = -5794.7, y = 5623.1 }, zone = 2395, type = "DELVE" },
+
 
     -- Coiled Isle
     [2633] = { Coord = { x = -13132.5, y = 5509.4 }, zone = 2512, type = "DELVE" },
