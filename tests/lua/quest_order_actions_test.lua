@@ -341,4 +341,13 @@ render({ combined })
 assert(requested[11] == 1, "Repeated renders must not duplicate a quest title request")
 C_QuestLog.GetTitleForQuestID = cachedTitle
 assert(render({ combined }).stepList[1].title == title, "Loaded titles replace the fallback on refresh")
+
+-- The preview uses the next entry belonging to the rendered route, including future HS steps.
+function GetBindLocation() return "Zone" end
+local travel = render({ { GetFP = 2 }, { UseFlightPath = 42, NodeID = 8 },
+    { UseHS = 42 }, { Note = "Arrival", Zone = 10 }, { UseHS = 42 } })
+assert(travel.rawStepContainers[1].title == L.GET_FLIGHTPATH .. " - Flight destination")
+assert(travel.rawStepContainers[2].title == "Fly to Flight destination")
+assert(travel.rawStepContainers[3].title == L.USE_HEARTHSTONE .. " - Zone")
+assert(travel.rawStepContainers[5].title == L.USE_HEARTHSTONE)
 print("Quest order actions: every primary action, standalone helpers, sale details, completion, filters and read-only preview passed")

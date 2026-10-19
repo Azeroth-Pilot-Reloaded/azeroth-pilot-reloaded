@@ -521,8 +521,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                     local color = colorByCompletion(completed, currentStepIndex, rawIndex)
                     local mapInfo = APR:GetMapInfoCached(mapID)
                     local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
-                    local stepText = step.Tram and L["ENTER_TRAM"] or
-                        string.format(L[step.Boat and "USE_BOAT" or "USE_PORTAL_TO"], zoneName)
+                    local stepText = APR:GetTransportStepText(step)
                     local questInfo = { { questID = zoneName } }
                     container, activeQuestId = addStepFrameWithQuest(layout, displayStepIndex,
                         stepText, questInfo, color, isCurrentStep)
@@ -546,7 +545,7 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                         color, isCurrentStep)
                 elseif step.UseHS or step.UseDalaHS or step.UseGarrisonHS then
                     local questID = step.UseHS or step.UseDalaHS or step.UseGarrisonHS
-                    local questText = step.UseHS and L["USE_HEARTHSTONE"] or
+                    local questText = step.UseHS and APR:GetHearthstoneStepText(activeRouteSteps[rawIndex + 1]) or
                         (step.UseDalaHS and L["USE_DALARAN_HEARTHSTONE"] or L["USE_GARRISON_HEARTHSTONE"])
                     local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex,
                         rawIndex)
@@ -573,14 +572,12 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                 elseif step.GetFP then
                     local nodeID = step.GetFP
                     local color = (APR:HasTaxiNode(nodeID) or currentStepIndex > rawIndex) and "green" or "gray"
-                    container, activeQuestId = addStepFrame(layout, displayStepIndex, L
-                        ["GET_FLIGHTPATH"],
+                    container, activeQuestId = addStepFrame(layout, displayStepIndex, APR:GetFlightPathDiscoveryText(step),
                         color, isCurrentStep)
                 elseif step.UseFlightPath then
                     local questID = step.UseFlightPath
                     local destination = APR:GetTaxiNodeName(step)
-                    local questText = string.format(step.Boat and L["USE_BOAT"] or L["USE_FLIGHTPATH"],
-                        destination or " ")
+                    local questText = APR:GetTransportStepText(step)
                     local questInfo = { { questID = destination } }
                     local color = colorByCompletion(C_QuestLog.IsQuestFlaggedCompleted(questID), currentStepIndex,
                         rawIndex)

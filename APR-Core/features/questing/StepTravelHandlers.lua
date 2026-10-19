@@ -190,10 +190,7 @@ function handlers.TakePortal(step, showStepDetails, currentStepIndex)
     end
 
     if showStepDetails then
-        local mapInfo = APR:GetMapInfoCached(mapID)
-        local zoneName = (mapInfo and mapInfo.name) or UNKNOWN
-        local text = step.Tram and L["ENTER_TRAM"] or
-            string.format(L[step.Boat and "USE_BOAT" or "USE_PORTAL_TO"], zoneName)
+        local text = APR:GetTransportStepText(step)
 
         APR.currentStep:AddQuestSteps("TAKE_PORTAL", text, mapID)
     end
@@ -228,7 +225,7 @@ function handlers.Waypoint(step, showStepDetails, currentStepIndex)
             APR.currentStep:AddExtraLineText("Waypoint" .. questID, APR:CheckWaypointText())
         end
     end
-end--[[APR_DIAG]]; handlers.Waypoint = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:202:handlers.Waypoint#8", handlers.Waypoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.Waypoint = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:199:handlers.Waypoint#8", handlers.Waypoint)--[[/APR_DIAG]]
 
 function handlers.UseHS(step, showStepDetails, currentStepIndex)
     local questKey, questText, useHSKey, spellID, type
@@ -263,6 +260,10 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
     end
 
     if showStepDetails then
+        if step.UseHS then
+            local steps = APR:GetRouteSteps(APR.ActiveRoute)
+            questText = APR:GetHearthstoneStepText(currentStepIndex and steps[currentStepIndex + 1])
+        end
         APR.currentStep:AddQuestSteps(questKey, questText, useHSKey)
         APR.currentStep:AddStepButton(questKey .. "-" .. useHSKey, spellID, type)
     end
@@ -271,7 +272,7 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:233:handlers.UseHS#9", handlers.UseHS)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.UseHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:230:handlers.UseHS#9", handlers.UseHS)--[[/APR_DIAG]]
 
 function handlers.SetHS(step, showStepDetails, currentStepIndex)
     if showStepDetails then
@@ -281,7 +282,7 @@ function handlers.SetHS(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.SetHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:276:handlers.SetHS#10", handlers.SetHS)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.SetHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:277:handlers.SetHS#10", handlers.SetHS)--[[/APR_DIAG]]
 
 function handlers.GetFP(step, showStepDetails, currentStepIndex)
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
@@ -304,29 +305,27 @@ function handlers.GetFP(step, showStepDetails, currentStepIndex)
     end
 
     if showStepDetails then
-        APR.currentStep:AddQuestSteps(step.GetFP, L["GET_FLIGHTPATH"], "GetFP")
+        APR.currentStep:AddQuestSteps(step.GetFP, APR:GetFlightPathDiscoveryText(step), "GetFP")
     end
     if APR:HasTaxiNode(step.GetFP) then
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.GetFP = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:286:handlers.GetFP#11", handlers.GetFP)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.GetFP = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:287:handlers.GetFP#11", handlers.GetFP)--[[/APR_DIAG]]
 
 function handlers.UseFlightPath(step, showStepDetails, currentStepIndex)
     if step.ZoneStepTrigger then
         return handlers.Transport(step, showStepDetails)
     end
     if showStepDetails then
-        local questText = step.Boat and
-            string.format(L["USE_BOAT"], APR:GetTaxiNodeName(step)) or
-            string.format(L["USE_FLIGHTPATH"], APR:GetTaxiNodeName(step))
+        local questText = APR:GetTransportStepText(step)
         APR.currentStep:AddQuestSteps(step.UseFlightPath, questText, "UseFlightPath")
     end
     if C_QuestLog.IsQuestFlaggedCompleted(step.UseFlightPath) then
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseFlightPath = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:315:handlers.UseFlightPath#12", handlers.UseFlightPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.UseFlightPath = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:316:handlers.UseFlightPath#12", handlers.UseFlightPath)--[[/APR_DIAG]]
 
 function handlers.RenderScenarioProgress(step)
     if step.Scenario then
@@ -377,4 +376,4 @@ function handlers.RenderScenarioProgress(step)
             end
         end
     end
-end--[[APR_DIAG]]; handlers.RenderScenarioProgress = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:331:handlers.RenderScenarioProgress#13", handlers.RenderScenarioProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.RenderScenarioProgress = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:330:handlers.RenderScenarioProgress#13", handlers.RenderScenarioProgress)--[[/APR_DIAG]]

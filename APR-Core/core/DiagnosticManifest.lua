@@ -96,7 +96,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/utils/RouteUtils.lua"] = {instrumented = 50, diagnosticHelpers = 0},
     ["APR-Core/utils/SecretUtils.lua"] = {instrumented = 18, diagnosticHelpers = 0},
     ["APR-Core/utils/SojournerUtils.lua"] = {instrumented = 6, diagnosticHelpers = 0},
-    ["APR-Core/utils/StepUtils.lua"] = {instrumented = 34, diagnosticHelpers = 0},
+    ["APR-Core/utils/StepUtils.lua"] = {instrumented = 36, diagnosticHelpers = 0},
     ["APR-Core/utils/TargetUtils.lua"] = {instrumented = 13, diagnosticHelpers = 0},
     ["APR-Core/utils/TextStyleUtils.lua"] = {instrumented = 21, diagnosticHelpers = 0},
     ["APR-Core/utils/UIUtils.lua"] = {instrumented = 44, diagnosticHelpers = 0},

@@ -50,7 +50,7 @@ function APR:GetTaxiNodeName(step)
         return UNKNOWN
     end
 
-    local nodeID = step.NodeID
+    local nodeID = step.GetFP or step.NodeID
     local libraryName = nodeID and APR.taxiData:GetNodeName(nodeID) or nil
     return libraryName or step.Name or UNKNOWN
 end--[[APR_DIAG]]; APR.GetTaxiNodeName = APRTrace("APR-Core/utils/NavigationUtils.lua:48:APR:GetTaxiNodeName#4", APR.GetTaxiNodeName)--[[/APR_DIAG]]
