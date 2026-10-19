@@ -442,6 +442,16 @@ function APR.questOrderList:CreateRouteRenderer(layout, activeRouteSteps, curren
                         container, activeQuestId = addStepFrameWithQuest(layout, displayStepIndex,
                             L["SCENARIO"] .. " - " .. scenarioInfo.name, questInfo, color, isCurrentStep)
                     end
+                elseif step.KillNPC then
+                    local rule = step.KillNPC
+                    local run = APR:GetDungeonRun(APR.ActiveRoute, rule.dungeonKey)
+                    local completed = (run and run.kills[rule.npcID]) or currentStepIndex > rawIndex
+                    container, activeQuestId = addStepFrame(layout, displayStepIndex,
+                        APR:GetDungeonKillText(rule), completed and "green" or "gray", isCurrentStep)
+                elseif (step.EnterInstance and step.EnterInstance.dungeonKey) or
+                    (step.LeaveInstance and step.LeaveInstance.dungeonKey) then
+                    container, activeQuestId = addStepFrame(layout, displayStepIndex,
+                        APR:GetDungeonTravelText(step), currentStepIndex > rawIndex and "green" or "gray", isCurrentStep)
                 elseif step.EnterScenario or step.EnterInstance then
                     local rule = step.EnterScenario or step.EnterInstance
                     local scenarioMapID, questID = rule.mapID, rule.questID

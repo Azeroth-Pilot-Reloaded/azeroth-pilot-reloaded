@@ -51,6 +51,11 @@ function handlers.CheckCooldownSkips(step)
 end--[[APR_DIAG]]; handlers.CheckCooldownSkips = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:13:handlers.CheckCooldownSkips#1", handlers.CheckCooldownSkips)--[[/APR_DIAG]]
 
 function handlers.RenderScenarioTravel(step, currentStepIndex)
+    if (step.EnterInstance and step.EnterInstance.dungeonKey)
+        or (step.LeaveInstance and step.LeaveInstance.dungeonKey) then
+        APR:RenderDungeonTravel(step)
+        return
+    end
     local function handleScenarioStep(stepType, scenarioMapID)
         APR:Debug(stepType .. " Step:" .. currentStepIndex)
 
@@ -62,7 +67,7 @@ function handlers.RenderScenarioTravel(step, currentStepIndex)
             tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID) or false
 
         return currentMapID, scenarioInfo, mapInfo, isCompleted
-    end--[[APR_DIAG]]; handleScenarioStep = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:54:handleScenarioStep#4", handleScenarioStep)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; handleScenarioStep = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:59:handleScenarioStep#4", handleScenarioStep)--[[/APR_DIAG]]
 
     if step.EnterScenario or step.EnterInstance then
         local scenarioMapID = step.EnterScenario and step.EnterScenario.mapID or step.EnterInstance.mapID
@@ -158,13 +163,13 @@ function handlers.Transport(step, showStepDetails)
         end
         -- Arrival must work while the arrow is hidden or Farstrider owns navigation.
         APR.transportArrivalTimer = C_Timer.NewTimer(0.5, checkArrival)
-    end--[[APR_DIAG]]; checkArrival = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:150:checkArrival#6", checkArrival)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; checkArrival = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:155:checkArrival#6", checkArrival)--[[/APR_DIAG]]
     if checkArrival() then return true end
     if showStepDetails then
         local text, kind = APR:GetTransportStepText(step)
         APR.currentStep:AddQuestSteps(kind, text, step.ZoneStepTrigger.mapID)
     end
-end--[[APR_DIAG]]; handlers.Transport = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:144:handlers.Transport#5", handlers.Transport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.Transport = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:149:handlers.Transport#5", handlers.Transport)--[[/APR_DIAG]]
 
 function handlers.TakePortal(step, showStepDetails, currentStepIndex)
     -- Same-map, repeatable NPC teleports must complete on arrival,
@@ -194,7 +199,7 @@ function handlers.TakePortal(step, showStepDetails, currentStepIndex)
 
         APR.currentStep:AddQuestSteps("TAKE_PORTAL", text, mapID)
     end
-end--[[APR_DIAG]]; handlers.TakePortal = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:169:handlers.TakePortal#7", handlers.TakePortal)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.TakePortal = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:174:handlers.TakePortal#7", handlers.TakePortal)--[[/APR_DIAG]]
 
 function handlers.Waypoint(step, showStepDetails, currentStepIndex)
     -- Explicit arrival waypoints survive completed quest anchors and hidden arrows.
@@ -225,7 +230,7 @@ function handlers.Waypoint(step, showStepDetails, currentStepIndex)
             APR.currentStep:AddExtraLineText("Waypoint" .. questID, APR:CheckWaypointText())
         end
     end
-end--[[APR_DIAG]]; handlers.Waypoint = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:199:handlers.Waypoint#8", handlers.Waypoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.Waypoint = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:204:handlers.Waypoint#8", handlers.Waypoint)--[[/APR_DIAG]]
 
 function handlers.UseHS(step, showStepDetails, currentStepIndex)
     local questKey, questText, useHSKey, spellID, type
@@ -272,7 +277,7 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:230:handlers.UseHS#9", handlers.UseHS)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.UseHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:235:handlers.UseHS#9", handlers.UseHS)--[[/APR_DIAG]]
 
 function handlers.SetHS(step, showStepDetails, currentStepIndex)
     if showStepDetails then
@@ -282,7 +287,7 @@ function handlers.SetHS(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.SetHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:277:handlers.SetHS#10", handlers.SetHS)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.SetHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:282:handlers.SetHS#10", handlers.SetHS)--[[/APR_DIAG]]
 
 function handlers.GetFP(step, showStepDetails, currentStepIndex)
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
@@ -311,7 +316,7 @@ function handlers.GetFP(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.GetFP = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:287:handlers.GetFP#11", handlers.GetFP)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.GetFP = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:292:handlers.GetFP#11", handlers.GetFP)--[[/APR_DIAG]]
 
 function handlers.UseFlightPath(step, showStepDetails, currentStepIndex)
     if step.ZoneStepTrigger then
@@ -325,7 +330,7 @@ function handlers.UseFlightPath(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseFlightPath = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:316:handlers.UseFlightPath#12", handlers.UseFlightPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.UseFlightPath = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:321:handlers.UseFlightPath#12", handlers.UseFlightPath)--[[/APR_DIAG]]
 
 function handlers.RenderScenarioProgress(step)
     if step.Scenario then
@@ -376,4 +381,4 @@ function handlers.RenderScenarioProgress(step)
             end
         end
     end
-end--[[APR_DIAG]]; handlers.RenderScenarioProgress = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:330:handlers.RenderScenarioProgress#13", handlers.RenderScenarioProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.RenderScenarioProgress = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:335:handlers.RenderScenarioProgress#13", handlers.RenderScenarioProgress)--[[/APR_DIAG]]

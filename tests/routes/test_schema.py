@@ -43,6 +43,8 @@ def examples():
     ):
         values.update((key, deepcopy(value)) for key in names.split())
     values.update({
+        "Dungeon": "RFC",
+        "KillNPC": {"npcID": 11520, "name": "Taragaman the Hungerer", "dungeonKey": "RFC"},
         'SkipIfCooldown': seq({'itemID': 6948, 'operator': '<', 'seconds': 2, 'once': True}),
         "Faction": "Horde", "Race": seq("Orc", "Troll"), "Class": seq("WARRIOR", 3),
         "ClassNot": "MAGE", "ClassSpec": 253, "Gender": 3, "Event": "Remix",
@@ -103,6 +105,14 @@ class RouteSchemaTests(unittest.TestCase):
                     {"conditions": condition, "steps": seq({"Note": "Example"})})})
                 with self.assertRaises(InvalidRoute):
                     self.schema.condition({"Not": {name: None}}, "condition")
+
+    def test_dungeon_instance_ids_are_not_ui_map_ids(self):
+        for name in ("EnterInstance", "LeaveInstance"):
+            self.schema.step({name: {"dungeonKey": "ROL"}}, "step")
+            self.schema.step({name: {"mapID": 1}}, "step")
+            for invalid in ({}, {"instanceID": 16611}, {"dungeonKey": None}, {"dungeonKey": "unknown"}):
+                with self.subTest(name=name, invalid=invalid), self.assertRaises(InvalidRoute):
+                    self.schema.step({name: invalid}, "step")
 
     def test_primary_profession_limit(self):
         for count in (1, 2, 3):

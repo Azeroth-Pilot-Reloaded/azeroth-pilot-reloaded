@@ -16,6 +16,7 @@ local L = setmetatable({
 function LibStub() return { GetLocale = function() return L end } end
 UNKNOWN, ABANDON_QUEST, LEAVE_VEHICLE, DISMOUNT = "Unknown", "Abandon quest", "Leave vehicle", "Dismount"
 INSTANCE = "Localized instance"
+BOSS, ENTER_DUNGEON, LEAVE_ZONE = "Boss", "Enter Dungeon", "Leave %s"
 format = string.format
 local function no() return false end
 local function forbidden() error("A preview must not perform actions or mutate action state") end
@@ -43,6 +44,8 @@ C_ChromieTime = { GetChromieTimeExpansionOption = function() return { name = "Le
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
+function CreateFrame() return { RegisterEvent = function() end, SetScript = function() end } end
+dofile("APR-Core/utils/DungeonUtils.lua")
 dofile("APR-Core/features/questing/RouteActions.lua")
 APR.ProcessRouteItems, APR.HandleRouteAction, APR.GetRouteActionState = forbidden, forbidden, forbidden
 APR.IsSojournerSkipActive, APR.IsDelveRoute, APR.HasTaxiNode = no, no, no
@@ -86,6 +89,7 @@ local function render(steps, index)
 end
 
 local fixtures = {
+    KillNPC = { npcID = 11520, name = "Taragaman", dungeonKey = "RFC" },
     ExitTutorial = 10, PickUp = { 10 }, DropQuest = 10, Qpart = { [10] = { 1 } },
     QpartPart = { [10] = { 1 } }, Treasure = { questID = 10 }, Group = { questID = 10, Number = 3 },
     Done = { 10 }, Scenario = { stepID = 1, criteriaIndex = 1 },
@@ -123,6 +127,12 @@ for index in ipairs(steps) do
     assert(preview.rawStepContainers[index], "Missing main action at " .. index)
 end
 assert(APR.routeActionState == nil, "Preview must not create action state")
+assert(APRData.player.DungeonRuns == nil, "A dungeon preview must not start a run")
+local dungeon = render({ { EnterInstance = { dungeonKey = "ROL" } },
+    { KillNPC = fixtures.KillNPC }, { LeaveInstance = { dungeonKey = "ROL" } } })
+assert(dungeon.stepList[1].title == "Enter Dungeon: Ruins of Lordaeron")
+assert(dungeon.stepList[2].title == "Boss: Taragaman")
+assert(dungeon.stepList[3].title == "Leave Ruins of Lordaeron")
 
 -- Loot values remain in detail rows, while known travel destinations fill the title.
 local lootStep = { LootItems = { { itemID = 20, quantity = 3 }, { itemID = 404 } } }
@@ -268,7 +278,7 @@ for line in actionTable:gmatch("[^\n]+") do
     local key = line:match("^|%s*`(%w+)`%s*|")
     if key then documented[#documented + 1] = key end
 end
-assert(#documented == 55, "Review coverage when the action table changes")
+assert(#documented == 56, "Review coverage when the action table changes")
 local hiddenOptions = { DroppableQuest = true, Fillers = true, NpcDismount = true }
 
 -- Optional and automatic fields never become the primary action or a preview row.

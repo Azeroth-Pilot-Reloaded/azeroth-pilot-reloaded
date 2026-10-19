@@ -276,7 +276,7 @@ function APR.Arrow:SetCoord()
         return
     end
 
-    if step and step.NoArrow and APR.IsInRouteZone then
+    if step and step.NoArrow and (APR.IsInRouteZone or step.Dungeon) then
         APR:Debug("APR.Arrow:SetCoord(): NoArrow step found, hiding arrow")
         self:SetArrowActive(false, 0, 0)
         return

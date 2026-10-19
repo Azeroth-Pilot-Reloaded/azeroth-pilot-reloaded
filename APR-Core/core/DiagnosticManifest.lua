@@ -84,6 +84,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/ui/route/RouteBrowserRows.lua"] = {instrumented = 15, diagnosticHelpers = 0},
     ["APR-Core/ui/route/RouteSelection.lua"] = {instrumented = 11, diagnosticHelpers = 0},
     ["APR-Core/utils/BuyMerchantUtils.lua"] = {instrumented = 8, diagnosticHelpers = 0},
+    ["APR-Core/utils/DungeonUtils.lua"] = {instrumented = 12, diagnosticHelpers = 0},
     ["APR-Core/utils/InstanceUtils.lua"] = {instrumented = 8, diagnosticHelpers = 0},
     ["APR-Core/utils/LootUtils.lua"] = {instrumented = 8, diagnosticHelpers = 0},
     ["APR-Core/utils/NavigationUtils.lua"] = {instrumented = 4, diagnosticHelpers = 0},

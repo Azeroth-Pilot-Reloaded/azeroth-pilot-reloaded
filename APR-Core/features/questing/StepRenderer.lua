@@ -10,7 +10,9 @@ local handlers = APR.stepHandlers
 
 -- Preserve route action precedence, including mixed legacy step definitions.
 function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
-    if step.LootMoney then
+    if step.KillNPC then
+        return APR:RenderDungeonKill(step, showStepDetails)
+    elseif step.LootMoney then
         return handlers.LootMoney(step, showStepDetails, currentStepIndex)
     elseif (step.Qpart) then
         return handlers.Qpart(step, showStepDetails, currentStepIndex)
@@ -146,7 +148,7 @@ function APR:RenderCurrentStep()
                     APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
                         string.format(L["SWITCH_TO_CHROMIE"], chromieExpansionOption.name))
                 end
-            end--[[APR_DIAG]]; checkChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:136:checkChromieTimeline#3", checkChromieTimeline)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; checkChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:138:checkChromieTimeline#3", checkChromieTimeline)--[[/APR_DIAG]]
 
             local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
             local activeExpansion = activeRouteData and activeRouteData.expansion
@@ -172,7 +174,7 @@ function APR:RenderCurrentStep()
                 table.insert(extraLines, { key = key, text = value })
             end
         end
-        table.sort(extraLines, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:175:callback#4", --[[/APR_DIAG]]function(a, b) return a.key < b.key end--[[APR_DIAG]])--[[/APR_DIAG]])
+        table.sort(extraLines, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:177:callback#4", --[[/APR_DIAG]]function(a, b) return a.key < b.key end--[[APR_DIAG]])--[[/APR_DIAG]])
         for i, line in ipairs(extraLines) do
             for textIndex, text in ipairs(APR:ResolveStepTextList(line.text)) do
                 -- Identify the field and list position, never the raw value (which can be a table).
@@ -283,7 +285,7 @@ function APR:RenderCurrentStep()
             if showStepDetails then
                 APR.currentStep:AddQuestSteps("RESET_ROUTE", L["RESET_ROUTE"], "ResetRoute", false, true)
             end
-            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:286:callback#5", --[[/APR_DIAG]]function()
+            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:288:callback#5", --[[/APR_DIAG]]function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APR:SetRouteProgress(APR.ActiveRoute, 1, "reset")
                 APR:PrintInfo(L["RESET_ROUTE"])
@@ -315,7 +317,7 @@ function APR:RenderCurrentStep()
                 tremove(APRCustomPath[APR.PlayerID], index)
                 APR.routeconfig:CheckIsCustomPathEmpty()
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:313:finalizeRouteCompletion#6", finalizeRouteCompletion)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:315:finalizeRouteCompletion#6", finalizeRouteCompletion)--[[/APR_DIAG]]
 
             -- Suggest next routes immediately; finalize after selection/skip/cancel
             APR:SuggestNextRoutes(completedRouteKey, finalizeRouteCompletion)
@@ -343,4 +345,4 @@ function APR:RenderCurrentStep()
 
         APR.routeconfig:CheckIsCustomPathEmpty()
     end
-end--[[APR_DIAG]]; APR.RenderCurrentStep = APRTrace("APR-Core/features/questing/StepRenderer.lua:56:APR:RenderCurrentStep#2", APR.RenderCurrentStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RenderCurrentStep = APRTrace("APR-Core/features/questing/StepRenderer.lua:58:APR:RenderCurrentStep#2", APR.RenderCurrentStep)--[[/APR_DIAG]]

@@ -993,8 +993,8 @@ function APR.event.functions.scenario(event, ...)
                     APR:UpdateNextStep()
                 end
             end
-            if step.LeaveInstance then
-                local instanceMapID = step.LeaveInstance
+            if step.LeaveInstance and not step.LeaveInstance.dungeonKey then
+                local instanceMapID = step.LeaveInstance.mapID
                 local isInstance, instanceType = IsInInstance()
                 if instanceMapID ~= mapID and not isInstance then
                     APR:UpdateNextStep()

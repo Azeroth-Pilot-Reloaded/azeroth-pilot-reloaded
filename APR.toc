@@ -68,6 +68,7 @@ APR-Core/utils/TextStyleUtils.lua
 APR-Core/utils/TargetUtils.lua
 APR-Core/utils/QuestUtils.lua
 APR-Core/utils/InstanceUtils.lua
+APR-Core/utils/DungeonUtils.lua
 APR-Core/features/questing/DelveRoutes.lua
 APR-Core/config/LevelProfiles.lua
 APR-Core/utils/RouteUtils.lua

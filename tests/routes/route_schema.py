@@ -204,6 +204,8 @@ class RouteSchema:
         objective = scalar("quest ID or quest-objective key", lambda v:
                            isinstance(v, str) and re.fullmatch(r"[1-9]\d*(?:-\d+)?", v) is not None)
         self.step_fields.update({
+            "Dungeon": enum(("RFC", "ROL", "WC", "HOT", "DM")),
+            "KillNPC": obj({"npcID": ID, "name": TEXT, "dungeonKey": enum(("RFC", "ROL", "WC", "HOT", "DM"))}, required=("npcID", "dungeonKey", "name")),
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),
             "_index": ID, "_comment": TEXT, "Grind": level,
             "Coord": union(xy, multi_coord), "Coords": multi_coord,
@@ -239,6 +241,9 @@ class RouteSchema:
         for name in "TakePortal EnterInstance LeaveInstance EnterScenario DoScenario LeaveScenario".split():
             self.step_fields[name] = obj({"questID": ID, "mapID": ID}, required=("mapID",))
         self.step_fields["TakePortal"] = obj({"questID": ID, "mapID": ID}, choices=(("mapID", "questID"),))
+        for name in ("EnterInstance", "LeaveInstance"):
+            self.step_fields[name] = obj({"questID": ID, "mapID": ID, "dungeonKey": enum(("RFC", "ROL", "WC", "HOT", "DM"))},
+                                         choices=(("mapID", "dungeonKey"),))
         for name in "BuyMerchant LootItems".split():
             fields = {"itemID": ID, "quantity": ID, "questID": ID}
             if name == "LootItems": fields["includeBank"] = BOOL

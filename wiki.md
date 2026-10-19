@@ -71,7 +71,7 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `DroppableQuest` | Defines passive or active dropped-quest tracking. When used without `DropQuest`, it behaves like a filler hint. | `DroppableQuest = { Qid = 41234, MobId = 133713, Text = "Fel Marauder" }` |
 | `DropQuest` | Quest obtained from a mob drop. Must be paired with a corresponding `DroppableQuest`. | `DropQuest = 48876` |
 | `Emote` | Requires performing an emote on a target or at a step. | `Emote = { emote = "salute", npcID = 12345 }` |
-| `EnterInstance` | Guides the player into an instance. | `EnterInstance = { questID = 12345, mapID = 2505 }` |
+| `EnterInstance` | Guides the player into an instance. Forever dungeon checkpoints use `dungeonKey` to match the instance ID. | `EnterInstance = { questID = 12345, mapID = 2505 }` or `{ dungeonKey = "RFC" }` |
 | `EnterScenario` | Guides the player to a scenario entrance. | `EnterScenario = { questID = 86636, mapID = 2502 }` |
 | `ExitTutorial` | Exile's Reach specific step that auto-skips if the exit quest is no longer tracked. | `ExitTutorial = 59985` |
 | `Fillers` | Optional side objectives that can progress during any step without blocking the route. | `Fillers = { [49529] = { 1 }, [49897] = { 1 } }` |
@@ -79,9 +79,10 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `Grind` | Wait until the level/XP threshold is reached; supports numbers, absolute XP and named profiles. | `Grind = 60` |
 | `Group` | Marks an optional group quest and shows a popup (`questID`, `Number`). | `Group = { questID = 51384, Number = 3 }` |
 | `GroupTask` | Associates the step with `WantedQuestList` to store the player's decision for a group quest. | `GroupTask = 51384` |
+| `KillNPC` | Wait for an observed boss death in the specified Forever dungeon. Requires `npcID`, `name` and `dungeonKey`; see dungeon checkpoints below. | `KillNPC = { npcID = 11520, name = "Taragaman the Hungerer", dungeonKey = "RFC" }` |
 | `LearnProfession` | Checks if a specific profession spell is learned. | `LearnProfession = 2259` |
 | `LearnSkill` | Train spells at a trainer. Waits if unavailable or unaffordable; add the required `MinLevel` and class filters. | `LearnSkill = { spellID = 6673 }, MinLevel = 1` |
-| `LeaveInstance` | Prompts to leave the instance once objectives are done. | `LeaveInstance = { questID = 12345, mapID = 2505 }` |
+| `LeaveInstance` | Prompts to leave the instance once objectives are done. A Forever `dungeonKey` checkpoint completes once the player is outside all instances. | `LeaveInstance = { questID = 12345, mapID = 2505 }` or `{ dungeonKey = "RFC" }` |
 | `LeaveQuest` | Abandons a single quest from the quest log. | `LeaveQuest = 38254` |
 | `LeaveQuests` | Abandons multiple quests from the quest log. | `LeaveQuests = { 38254, 38257 }` |
 | `LeaveScenario` | Prompts to leave the scenario once objectives are done. | `LeaveScenario = { questID = 86912, mapID = 2505 }` |
@@ -130,6 +131,23 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `Achievement` legacy criterion | `Achievement = { achievementID = 61576, criteriaIndex = 1 }` tracks by position; prefer a stable `criteriaID`. |
 | `LootMoney` | Use it as the main objective. `Money` checks spendable cash; it is not a replacement for this collection objective. |
 
+### Forever dungeon checkpoints
+
+`KillNPC` supports registered bosses in `RFC` (Ragefire Chasm), `ROL` (Ruins of Lordaeron), `WC` (Wailing Caverns), `HOT` (Hall of Thanes) and `DM` (The Deadmines). Dungeon keys resolve to instance IDs, independently of UI map IDs.
+
+Set `Dungeon` on other steps inside the dungeon so boss deaths observed during quest objectives also count toward later checkpoints. Use `InstanceQuest = true, NoArrow = true` for interior steps without verified coordinates; Farstrider then avoids routing to the exterior map.
+
+```lua
+steps = {
+    { EnterInstance = { dungeonKey = "RFC" }, Dungeon = "RFC", InstanceQuest = true },
+    { KillNPC = { npcID = 11520, name = "Taragaman the Hungerer", dungeonKey = "RFC" },
+        Dungeon = "RFC", InstanceQuest = true, NoArrow = true },
+    { LeaveInstance = { dungeonKey = "RFC" }, Dungeon = "RFC", InstanceQuest = true, NoArrow = true },
+}
+```
+
+Only combat-log death events observed in the matching dungeon grant credit. Credit is saved per character and route across UI reloads; resetting the route clears it. Leaving and re-entering at an entry checkpoint starts a fresh run. If the death was not observed, manually skip the checkpoint. Route previews display these steps without creating a run.
+
 ## Navigation and Targeting
 
 | Option | Description | Expected Syntax |
@@ -141,6 +159,7 @@ An action waits for completion; a failed step condition skips the step. Use one 
 | `ETA` | Estimated AFK timer duration in seconds. | `ETA = 75` |
 | `GossipETA` | Starts an AFK timer after gossip confirmation. | `GossipETA = 45` |
 | `InstanceQuest` | Marks instance steps; delays automatic Delve suggestions. A nearby matching `DoScenario` is replaced by the guide while preserving preceding setup steps. | `InstanceQuest = true` |
+| `Dungeon` | Forever dungeon context for instance detection and boss-death credit during other actions. | `Dungeon = "RFC"` |
 | `IsAdventureMap` | Allows auto-accepting quests from the Adventure Map. | `IsAdventureMap = true` |
 | `Name` | Optional custom name to override the taxi node name. | `Name = "Krasus' Landing"` |
 | `NoArrow` | Hides the navigation arrow for this step. | `NoArrow = true` |

@@ -680,6 +680,13 @@ local function RouteToRightZone(self, isRetry, preparedContext)
         return
     end
 
+    -- Interior guidance has no verified coordinate frame. Never send a dungeon
+    -- objective to the exterior route map when Farstrider builds a fallback.
+    if step.Dungeon and step.InstanceQuest and step.NoArrow then
+        self:MarkRouteReady()
+        return
+    end
+
     -- An owned book can be used anywhere. Do not route a location-free item
     -- reminder back to the route's default map when it interrupts travel.
     if step.UseItem and not step.UseItem.questID and not step.Coord and not step.Coords
@@ -776,7 +783,7 @@ local function RouteToRightZone(self, isRetry, preparedContext)
 
     if not isRetry and not self._retryPending then
         self._retryPending = true
-        C_Timer.After(ROUTING_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Farstrider.lua:779:callback#32", --[[/APR_DIAG]]function()
+        C_Timer.After(ROUTING_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Farstrider.lua:786:callback#32", --[[/APR_DIAG]]function()
             self._retryPending = false
             if APR.IsInRouteZone or self:IsNavigating() or not APR.ActiveRoute then
                 return
@@ -858,4 +865,4 @@ function APR.farstrider:GetMeToRightZone(isRetry, preparedContext)
         (self._routedStepContext and not APR:IsStepContextCurrent(self._routedStepContext)) then
         self:RequestRouteCheck()
     end
-end--[[APR_DIAG]]; APR.farstrider.GetMeToRightZone = APRTrace("APR-Core/integrations/Farstrider.lua:844:APR.farstrider:GetMeToRightZone#33", APR.farstrider.GetMeToRightZone)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.GetMeToRightZone = APRTrace("APR-Core/integrations/Farstrider.lua:851:APR.farstrider:GetMeToRightZone#33", APR.farstrider.GetMeToRightZone)--[[/APR_DIAG]]
