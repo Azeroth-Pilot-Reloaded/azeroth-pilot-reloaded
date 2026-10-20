@@ -6010,7 +6010,7 @@ APR.RouteQuestStepList["2395-the-propose-of-Tomorrow"] = {
         [APR.PREFAB_TYPES.Speedrun] = 32,
     },
     conditions = { Level = 90 },
-    nextRoute = { "2395-the-propose-of-Tomorrow" },
+    nextRoute = { "2395-the-labyrinthe" },
     steps = {
         {
             PickUp = { 95533 },
