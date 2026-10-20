@@ -5,19 +5,13 @@ APR.Faction, APR.Race, APR.RaceID = "Horde", "Orc", 2
 APR.ClassName, APR.ClassId, APR.Level = "MAGE", 8, 1
 for _, path in ipairs({
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Arathi.lua",
-    "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Badlands.lua",
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Darkshore.lua",
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Dun_Morogh.lua",
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Duskwood.lua",
-    "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Dustwallow.lua",
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Elwynn_Forest.lua",
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Hillsbrad.lua",
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Loch_Modan.lua",
-    "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Plaguelands.lua",
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Redridge.lua",
-    "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Searing_Gorge.lua",
-    "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Tanaris.lua",
-    "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Westfall.lua",
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Wetlands.lua",
     "Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Zephras_Isle.lua",
     "Routes/Forever/MageAoE/Horde/Forever_MageAoE_Horde_Arathi.lua",
@@ -28,6 +22,17 @@ for _, path in ipairs({
     "Routes/Forever/MageAoE/Horde/Forever_MageAoE_Horde_The_Barrens.lua",
     "Routes/Forever/MageAoE/Horde/Forever_MageAoE_Horde_Tirisfal_Glades.lua",
 }) do dofile(path) end
+-- Retired variants must be absent from the catalog, including mixed zone files.
+for key, route in pairs(APR.RouteQuestStepList) do
+    if key:find("^Forever%-MageAoE%-") then
+        assert(not key:find("Advanced", 1, true))
+        assert(not route.label:find("Hard", 1, true) and not route.label:find("Experienced", 1, true))
+        for _, following in ipairs(route.nextRoute or {}) do
+            local target = type(following) == "table" and following.route or following
+            assert(APR.RouteQuestStepList[target], "Missing Mage AoE continuation: " .. target)
+        end
+    end
+end
 local config = APR.routeconfig
 local popup, selectOption, messages
 APR.questionDialog = {

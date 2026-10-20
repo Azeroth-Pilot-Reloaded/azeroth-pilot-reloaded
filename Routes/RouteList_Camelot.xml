@@ -70,15 +70,9 @@
     <Script file="Routes/Forever/Horde/Forever_Horde_Tanaris.lua"/>
     <Script file="Routes/Forever/Horde/Forever_Horde_Thousand_Needles.lua"/>
     <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Arathi.lua"/>
-    <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Badlands.lua"/>
     <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Dun_Morogh.lua"/>
     <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Duskwood.lua"/>
-    <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Dustwallow.lua"/>
     <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Elwynn_Forest.lua"/>
-    <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Plaguelands.lua"/>
-    <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Searing_Gorge.lua"/>
-    <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Tanaris.lua"/>
-    <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Westfall.lua"/>
     <Script file="Routes/Forever/MageAoE/Alliance/Forever_MageAoE_Alliance_Zephras_Isle.lua"/>
     <Script file="Routes/Forever/MageAoE/Horde/Forever_MageAoE_Horde_Arathi.lua"/>
     <Script file="Routes/Forever/MageAoE/Horde/Forever_MageAoE_Horde_Durotar.lua"/>
