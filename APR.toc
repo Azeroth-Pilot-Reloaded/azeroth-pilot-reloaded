@@ -46,6 +46,9 @@ APR-Core/integrations/SkinRegistry.lua
 APR-Core/integrations/TaxiData.lua
 
 APR-Core/data/models/Items.lua
+APR-Core/data/Dungeons/DungeonsClassic.lua
+APR-Core/data/Dungeons/DungeonsForever.lua
+APR-Core/data/Dungeons/DungeonsRetail.lua
 
 APR-Core/utils/Utils.lua
 APR-Core/utils/PlayerUtils.lua

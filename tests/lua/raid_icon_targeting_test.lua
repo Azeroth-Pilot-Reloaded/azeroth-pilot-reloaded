@@ -26,6 +26,9 @@ APRData.NPCList = {}
 C_TooltipInfo.GetHyperlink = function() return { lines = { { leftText = secret } } } end
 assert(APR:BuildRaidIconMacro(61412):find("/targetexact Dark Shaman Koranthal", 1, true),
     "A supplied route name remains available without tooltip data")
+function GetLocale() return "frFR" end
+assert(APR:BuildRaidIconMacro(61412) == "/tm [@mouseover,exists][@target,exists] 8",
+    "An untranslated fallback must not clear the user's target or search for an English NPC on a French client")
 step = {}
 assert(APR:BuildRaidIconMacro(61412) == "/tm [@mouseover,exists][@target,exists] 8",
     "An unresolved target must have a usable manual mouseover/target action")

@@ -46,6 +46,7 @@ dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
 function CreateFrame() return { RegisterEvent = function() end, SetScript = function() end } end
+dofile("tests/lua/dungeon_data_test_env.lua")
 dofile("APR-Core/utils/DungeonUtils.lua")
 dofile("APR-Core/features/questing/RouteActions.lua")
 APR.ProcessRouteItems, APR.HandleRouteAction, APR.GetRouteActionState = forbidden, forbidden, forbidden

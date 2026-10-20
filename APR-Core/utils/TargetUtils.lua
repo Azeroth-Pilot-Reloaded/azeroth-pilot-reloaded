@@ -100,12 +100,18 @@ function APR:ScanUnitForNPC(unit, source)
     end
 
     local npcID = APR:GetTargetID(unit)
-    if not npcID or APRData.NPCList[npcID] then return end
+    if not npcID then return end
 
     local name = APRSecret:SafeUnitName(unit, nil)
     if not name or name == "" or name == UNKNOWN then return end
 
-    APRData.NPCList[npcID] = name
+    if not self:RememberNPCName(npcID, name) then return end
+
+    local current = self.GetCurrentStep and self:GetCurrentStep()
+    if current and current.KillNPC and current.KillNPC.npcID == npcID then
+        if self.event and self.event.QueueStepRefresh then self.event:QueueStepRefresh() end
+        if self.currentStep and self.currentStep.UpdateRaidIconButtonMacro then self.currentStep:UpdateRaidIconButtonMacro() end
+    end
 
     APR:Debug("NPC map", { npcID, name, source })
     if self.ActiveRoute and self.GetRouteSteps then
@@ -121,6 +127,24 @@ function APR:ScanUnitForNPC(unit, source)
     end
 end--[[APR_DIAG]]; APR.ScanUnitForNPC = APRTrace("APR-Core/utils/TargetUtils.lua:93:APR:ScanUnitForNPC#10", APR.ScanUnitForNPC)--[[/APR_DIAG]]
 
+-- Remember only public localized names; never persist restricted unit identity.
+function APR:PrepareNPCNameLocale()
+    if not APRData then return end
+    local locale = GetLocale and GetLocale() or "enUS"
+    if APRData.NPCNameLocale and APRData.NPCNameLocale ~= locale then APRData.NPCList = {} end
+    APRData.NPCNameLocale = locale
+end--[[APR_DIAG]]; APR.PrepareNPCNameLocale = APRTrace("APR-Core/utils/TargetUtils.lua:131:APR:PrepareNPCNameLocale#11", APR.PrepareNPCNameLocale)--[[/APR_DIAG]]
+
+function APR:RememberNPCName(npcID, name)
+    if not APRData or not APRSecret:CanAccessValue(npcID) or type(npcID) ~= "number" then return false end
+    if not APRSecret:CanAccessValue(name) or type(name) ~= "string" or name == "" or name == UNKNOWN or name:find("[\r\n|%[%];]") then return false end
+    self:PrepareNPCNameLocale()
+    APRData.NPCList = APRData.NPCList or {}
+    local changed = not APRSecret:CanAccessValue(APRData.NPCList[npcID]) or APRData.NPCList[npcID] ~= name
+    APRData.NPCList[npcID] = name
+    return changed
+end--[[APR_DIAG]]; APR.RememberNPCName = APRTrace("APR-Core/utils/TargetUtils.lua:138:APR:RememberNPCName#12", APR.RememberNPCName)--[[/APR_DIAG]]
+
 --- Gets the raid icon NPC name for a given NPC ID.
 --- @param npcID number The NPC ID to look up
 --- @return string|nil The raid icon NPC name, or nil if not found
@@ -128,8 +152,19 @@ function APR:GetRaidIconNpcName(npcID)
     if not APRSecret:CanAccessValue(npcID) or type(npcID) ~= "number" then
         return nil
     end
+    self:PrepareNPCNameLocale()
     local name = APRData and APRData.NPCList and APRData.NPCList[npcID]
     if not APRSecret:CanAccessValue(name) then name = nil end
+    local version = self.GetGameVersion and self:GetGameVersion() or "forever"
+    local journal = self.DungeonNPCJournal and self.DungeonNPCJournal[version]
+    local entry = journal and journal[npcID]
+    if not name and entry and EJ_GetCreatureInfo then
+        local _, localized = EJ_GetCreatureInfo(entry[2], entry[1])
+        if APRSecret:CanAccessValue(localized) and type(localized) == "string" and localized ~= "" and localized ~= UNKNOWN then
+            name = localized
+            self:RememberNPCName(npcID, name)
+        end
+    end
     if not name and C_TooltipInfo and C_TooltipInfo.GetHyperlink then
         local tooltip = C_TooltipInfo.GetHyperlink("unit:Creature-0-0-0-0-" .. npcID .. "-0")
         local lines = APRSecret:CanAccessTable(tooltip) and tooltip.lines
@@ -137,19 +172,17 @@ function APR:GetRaidIconNpcName(npcID)
         local localized = APRSecret:CanAccessTable(first) and first.leftText
         if APRSecret:CanAccessValue(localized) and type(localized) == "string" and localized ~= "" and localized ~= UNKNOWN then
             name = localized
-            if APRData then
-                APRData.NPCList = APRData.NPCList or {}
-                APRData.NPCList[npcID] = name
-            end
+            self:RememberNPCName(npcID, name)
         end
     end
+    local localized = name ~= nil
     if not name and self.GetCurrentStep then
         local step = self:GetCurrentStep()
         if step and step.KillNPC and step.KillNPC.npcID == npcID then name = step.KillNPC.name end
     end
     if not APRSecret:CanAccessValue(name) or type(name) ~= "string" or name == "" or name:find("[\r\n|%[%];]") then return nil end
-    return name
-end--[[APR_DIAG]]; APR.GetRaidIconNpcName = APRTrace("APR-Core/utils/TargetUtils.lua:127:APR:GetRaidIconNpcName#11", APR.GetRaidIconNpcName)--[[/APR_DIAG]]
+    return name, localized
+end--[[APR_DIAG]]; APR.GetRaidIconNpcName = APRTrace("APR-Core/utils/TargetUtils.lua:151:APR:GetRaidIconNpcName#13", APR.GetRaidIconNpcName)--[[/APR_DIAG]]
 
 --- Finds the unit token for a raid target with the specified NPC ID.
 ---
@@ -180,7 +213,7 @@ function APR:FindRaidIconUnitToken(npcID)
     end
 
     return nil
-end--[[APR_DIAG]]; APR.FindRaidIconUnitToken = APRTrace("APR-Core/utils/TargetUtils.lua:164:APR:FindRaidIconUnitToken#12", APR.FindRaidIconUnitToken)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.FindRaidIconUnitToken = APRTrace("APR-Core/utils/TargetUtils.lua:197:APR:FindRaidIconUnitToken#14", APR.FindRaidIconUnitToken)--[[/APR_DIAG]]
 
 --- Builds a raid icon macro for a specific NPC.
 --- @param npcID number The NPC ID to create the macro for
@@ -195,8 +228,8 @@ function APR:BuildRaidIconMacro(npcID, unitToken)
         return table.concat(lines, "\n")
     end
 
-    local name = self:GetRaidIconNpcName(npcID)
-    if name then
+    local name, localized = self:GetRaidIconNpcName(npcID)
+    if name and (localized or not GetLocale or GetLocale() == "enUS") then
         table.insert(lines, "/cleartarget")
         table.insert(lines, "/targetexact " .. name)
         table.insert(lines, "/tm [@target,exists] 8")
@@ -204,4 +237,4 @@ function APR:BuildRaidIconMacro(npcID, unitToken)
     end
 
     return "/tm [@mouseover,exists][@target,exists] 8"
-end--[[APR_DIAG]]; APR.BuildRaidIconMacro = APRTrace("APR-Core/utils/TargetUtils.lua:189:APR:BuildRaidIconMacro#13", APR.BuildRaidIconMacro)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.BuildRaidIconMacro = APRTrace("APR-Core/utils/TargetUtils.lua:222:APR:BuildRaidIconMacro#15", APR.BuildRaidIconMacro)--[[/APR_DIAG]]

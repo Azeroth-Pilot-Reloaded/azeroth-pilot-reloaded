@@ -14,6 +14,7 @@ function APR:GetGameVersion() return "forever" end
 function APR:GetCurrentStep() return step end
 function APR:UpdateStep() refreshes = refreshes + 1 end
 function APR:UpdateNextStep() advanced = advanced + 1 end
+dofile("tests/lua/dungeon_data_test_env.lua")
 dofile("APR-Core/utils/DungeonUtils.lua")
 
 local function forbiddenRead() error("Secret encounter contents must not be read") end

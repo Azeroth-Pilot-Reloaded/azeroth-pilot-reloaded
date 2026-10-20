@@ -23,6 +23,7 @@ function APR:GetCurrentStep() return step end
 function APR:UpdateNextStep() advanced = advanced + 1 end
 function APR:UpdateStep() refreshes = refreshes + 1 end
 function APR.currentStep:AddQuestSteps(_, text) table.insert(labels, text) end
+dofile("tests/lua/dungeon_data_test_env.lua")
 dofile("APR-Core/utils/DungeonUtils.lua")
 assert(not registered.COMBAT_LOG_EVENT_UNFILTERED, "Forever must never register the protected combat log")
 assert(registered.ENCOUNTER_END, "Forever must track public encounter completion")

@@ -16,6 +16,7 @@ function APR:GetGameVersion() return version end
 function APR:GetCurrentStep() return step end
 function APR:UpdateNextStep() advanced = advanced + 1 end
 function APR:UpdateStep() refreshes = refreshes + 1 end
+dofile("tests/lua/dungeon_data_test_env.lua")
 dofile("APR-Core/utils/DungeonUtils.lua")
 assert(APR:IsInsideDungeon("RFC"))
 assert(not APR:GetDungeonDefinition("ROL"), "Retail must not use a Forever-only definition")

@@ -3,7 +3,7 @@ local APRTrace = APRInstrumentation and APRInstrumentation.Wrap or function(_, f
 local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yield
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
--- Forever IDs come from QuestieDB support/Forever/Zones/instanceIdToAreaId.lua.
+-- Instance and encounter catalogs live in APR-Core/data/Dungeons.
 -- Area IDs and UI map IDs are deliberately not used as instance IDs.
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
@@ -18,56 +18,29 @@ local function accessibleTable(value)
         and (not canaccesstable or canaccesstable(value))
 end--[[APR_DIAG]]; accessibleTable = APRTrace("APR-Core/utils/DungeonUtils.lua:16:accessibleTable#2", accessibleTable)--[[/APR_DIAG]]
 
--- DungeonEncounter client table, Forever 1.60.1.70450. Keep these separate from
--- Retail encounters; names, NPC IDs and encounter IDs differ between clients.
-APR.ForeverDungeons = {
-    RFC = { instanceID = 389, name = "Ragefire Chasm", bosses = { [11517] = true, [11520] = true, [11518] = true, [11519] = true },
-        encounters = { [2732] = 11517, [2733] = 11520, [2734] = 11518, [2735] = 11519 } },
-    ROL = { instanceID = 2999, name = "Ruins of Lordaeron", bosses = { [250483] = true, [250660] = true, [250657] = true },
-        -- No verified encounter row for The Baron: explicit dead-unit data still applies.
-        encounters = { [3353] = 250483, [3354] = 250657 } },
-    WC = { instanceID = 43, name = "Wailing Caverns", bosses = { [3671] = true, [3669] = true, [3670] = true, [3673] = true, [5775] = true, [3654] = true },
-        encounters = { [585] = 3671, [586] = 3669, [588] = 3670, [590] = 3673, [591] = 5775, [592] = 3654 } },
-    HOT = { instanceID = 3065, name = "Hall of Thanes", bosses = { [261306] = true, [261319] = true },
-        encounters = { [3493] = 261306, [3496] = 261319 } },
-    DM = { instanceID = 36, name = "The Deadmines", bosses = { [644] = true, [642] = true, [643] = true, [1763] = true, [646] = true, [647] = true, [639] = true, [645] = true },
-        -- Sneed's successful encounter completes both the shredder and its pilot.
-        encounters = { [2741] = 644, [2742] = { 642, 643 }, [2743] = 1763,
-            [2744] = 647, [2745] = 646, [2746] = 645, [2747] = 639 },
-        bossAliases = { [274298] = 644 } },
-}
-
 local function dungeonKey(step)
     if not step then return end
     local rule = step.EnterInstance or step.LeaveInstance or step.KillNPC
     return step.Dungeon or (rule and rule.dungeonKey)
-end--[[APR_DIAG]]; dungeonKey = APRTrace("APR-Core/utils/DungeonUtils.lua:40:dungeonKey#3", dungeonKey)--[[/APR_DIAG]]
-
--- Mainline RFC has different bosses. ENCOUNTER_END uses DungeonEncounter IDs
--- (1443-1446), not JournalEncounter IDs (694-697); 389 remains the instance ID.
-APR.RetailDungeons = {
-    RFC = { instanceID = 389, name = "Ragefire Chasm",
-        bosses = { [61408] = true, [61412] = true, [61463] = true, [61528] = true },
-        encounters = { [1443] = 61408, [1444] = 61412, [1445] = 61463, [1446] = 61528 } },
-}
+end--[[APR_DIAG]]; dungeonKey = APRTrace("APR-Core/utils/DungeonUtils.lua:21:dungeonKey#3", dungeonKey)--[[/APR_DIAG]]
 
 function APR:GetDungeonDefinition(key)
-    local retail = self.GetGameVersion and self:GetGameVersion() == "retail"
-    if retail then return self.RetailDungeons[key] end
-    return self.ForeverDungeons[key]
-end--[[APR_DIAG]]; APR.GetDungeonDefinition = APRTrace("APR-Core/utils/DungeonUtils.lua:54:APR:GetDungeonDefinition#4", APR.GetDungeonDefinition)--[[/APR_DIAG]]
+    local version = self.GetGameVersion and self:GetGameVersion() or "forever"
+    local catalog = self.DungeonData and self.DungeonData[version]
+    return catalog and catalog[key]
+end--[[APR_DIAG]]; APR.GetDungeonDefinition = APRTrace("APR-Core/utils/DungeonUtils.lua:27:APR:GetDungeonDefinition#4", APR.GetDungeonDefinition)--[[/APR_DIAG]]
 
 function APR:IsInsideDungeon(key)
     local data = self:GetDungeonDefinition(key)
-    if not data or not GetInstanceInfo or not IsInInstance then return false end
+    if not data or not data.instanceID or not GetInstanceInfo or not IsInInstance then return false end
     local inside, kind = IsInInstance()
     local _, _, _, _, _, _, _, instanceID = GetInstanceInfo()
-    return inside and kind == "party" and instanceID == data.instanceID or false
-end--[[APR_DIAG]]; APR.IsInsideDungeon = APRTrace("APR-Core/utils/DungeonUtils.lua:60:APR:IsInsideDungeon#5", APR.IsInsideDungeon)--[[/APR_DIAG]]
+    return inside and kind == (data.instanceType or "party") and instanceID == data.instanceID or false
+end--[[APR_DIAG]]; APR.IsInsideDungeon = APRTrace("APR-Core/utils/DungeonUtils.lua:33:APR:IsInsideDungeon#5", APR.IsInsideDungeon)--[[/APR_DIAG]]
 
 function APR:IsInDungeonStepContext(step)
     return self:IsInsideDungeon(dungeonKey(step))
-end--[[APR_DIAG]]; APR.IsInDungeonStepContext = APRTrace("APR-Core/utils/DungeonUtils.lua:68:APR:IsInDungeonStepContext#6", APR.IsInDungeonStepContext)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsInDungeonStepContext = APRTrace("APR-Core/utils/DungeonUtils.lua:41:APR:IsInDungeonStepContext#6", APR.IsInDungeonStepContext)--[[/APR_DIAG]]
 
 function APR:GetDungeonRun(route, key, create)
     local player = APRData and self.PlayerID and APRData[self.PlayerID]
@@ -80,12 +53,12 @@ function APR:GetDungeonRun(route, key, create)
         runs[route] = run
     end
     return run and run.key == key and run or nil
-end--[[APR_DIAG]]; APR.GetDungeonRun = APRTrace("APR-Core/utils/DungeonUtils.lua:72:APR:GetDungeonRun#7", APR.GetDungeonRun)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetDungeonRun = APRTrace("APR-Core/utils/DungeonUtils.lua:45:APR:GetDungeonRun#7", APR.GetDungeonRun)--[[/APR_DIAG]]
 
 function APR:ResetDungeonRun(route)
     local player = APRData and self.PlayerID and APRData[self.PlayerID]
     if player and player.DungeonRuns then player.DungeonRuns[route] = nil end
-end--[[APR_DIAG]]; APR.ResetDungeonRun = APRTrace("APR-Core/utils/DungeonUtils.lua:85:APR:ResetDungeonRun#8", APR.ResetDungeonRun)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ResetDungeonRun = APRTrace("APR-Core/utils/DungeonUtils.lua:58:APR:ResetDungeonRun#8", APR.ResetDungeonRun)--[[/APR_DIAG]]
 
 -- A reload keeps the current run. Leaving and entering again at an entry step
 -- starts a new run; Reset route also clears credit, even if progress was already 1.
@@ -105,7 +78,7 @@ function APR:ObserveDungeonLocation(step)
         run.outsideSeen = true
     end
     return run
-end--[[APR_DIAG]]; APR.ObserveDungeonLocation = APRTrace("APR-Core/utils/DungeonUtils.lua:92:APR:ObserveDungeonLocation#9", APR.ObserveDungeonLocation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ObserveDungeonLocation = APRTrace("APR-Core/utils/DungeonUtils.lua:65:APR:ObserveDungeonLocation#9", APR.ObserveDungeonLocation)--[[/APR_DIAG]]
 
 function APR:RecordDungeonKill(npcID)
     local step = self:GetCurrentStep()
@@ -119,12 +92,13 @@ function APR:RecordDungeonKill(npcID)
     if not run then return false end
     run.kills[npcID] = true
     return true
-end--[[APR_DIAG]]; APR.RecordDungeonKill = APRTrace("APR-Core/utils/DungeonUtils.lua:110:APR:RecordDungeonKill#10", APR.RecordDungeonKill)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RecordDungeonKill = APRTrace("APR-Core/utils/DungeonUtils.lua:83:APR:RecordDungeonKill#10", APR.RecordDungeonKill)--[[/APR_DIAG]]
 
 function APR:GetDungeonKillText(rule)
-    if not rule.dungeonKey then return rule.name or tostring(rule.npcID) end
-    return BOSS .. ": " .. (rule.name or tostring(rule.npcID))
-end--[[APR_DIAG]]; APR.GetDungeonKillText = APRTrace("APR-Core/utils/DungeonUtils.lua:124:APR:GetDungeonKillText#11", APR.GetDungeonKillText)--[[/APR_DIAG]]
+    local name = self.GetRaidIconNpcName and self:GetRaidIconNpcName(rule.npcID) or rule.name or tostring(rule.npcID)
+    if not rule.dungeonKey then return name end
+    return BOSS .. ": " .. name
+end--[[APR_DIAG]]; APR.GetDungeonKillText = APRTrace("APR-Core/utils/DungeonUtils.lua:97:APR:GetDungeonKillText#11", APR.GetDungeonKillText)--[[/APR_DIAG]]
 
 function APR:RenderDungeonKill(step, showDetails)
     local rule = step.KillNPC
@@ -138,15 +112,24 @@ function APR:RenderDungeonKill(step, showDetails)
         self.currentStep:AddQuestSteps("KillNPC_" .. rule.npcID, self:GetDungeonKillText(rule), "KillNPC", false, true)
         self.currentStep:AddQuestSteps("DungeonKillHelp", L["MANUAL_SKIP"], "KillNPC", false, true)
     end
-end--[[APR_DIAG]]; APR.RenderDungeonKill = APRTrace("APR-Core/utils/DungeonUtils.lua:129:APR:RenderDungeonKill#12", APR.RenderDungeonKill)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RenderDungeonKill = APRTrace("APR-Core/utils/DungeonUtils.lua:103:APR:RenderDungeonKill#12", APR.RenderDungeonKill)--[[/APR_DIAG]]
 
 function APR:GetDungeonTravelText(step)
     local rule = step.EnterInstance or step.LeaveInstance
     local data = self:GetDungeonDefinition(rule.dungeonKey)
     local name = data and data.name or UNKNOWN
+    if data then
+        local localized
+        if data.journalInstanceID and EJ_GetInstanceInfo then localized = EJ_GetInstanceInfo(data.journalInstanceID) end
+        if (not accessible(localized) or type(localized) ~= "string" or localized == "")
+            and data.areaID and data.areaID > 0 and C_Map and C_Map.GetAreaInfo then
+            localized = C_Map.GetAreaInfo(data.areaID)
+        end
+        if accessible(localized) and type(localized) == "string" and localized ~= "" then name = localized end
+    end
     if step.EnterInstance then return ENTER_DUNGEON .. ": " .. name end
     return string.format(LEAVE_ZONE, name)
-end--[[APR_DIAG]]; APR.GetDungeonTravelText = APRTrace("APR-Core/utils/DungeonUtils.lua:143:APR:GetDungeonTravelText#13", APR.GetDungeonTravelText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetDungeonTravelText = APRTrace("APR-Core/utils/DungeonUtils.lua:117:APR:GetDungeonTravelText#13", APR.GetDungeonTravelText)--[[/APR_DIAG]]
 
 function APR:RenderDungeonTravel(step)
     local entering = step.EnterInstance ~= nil
@@ -162,7 +145,32 @@ function APR:RenderDungeonTravel(step)
     end
     local label = entering and "EnterInstance" or "LeaveInstance"
     self.currentStep:AddQuestSteps(label, self:GetDungeonTravelText(step), label, false, true)
-end--[[APR_DIAG]]; APR.RenderDungeonTravel = APRTrace("APR-Core/utils/DungeonUtils.lua:151:APR:RenderDungeonTravel#14", APR.RenderDungeonTravel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RenderDungeonTravel = APRTrace("APR-Core/utils/DungeonUtils.lua:134:APR:RenderDungeonTravel#14", APR.RenderDungeonTravel)--[[/APR_DIAG]]
+
+-- Encounter names can replace the route's English fallback when the encounter
+-- and its sole NPC have the same name in the source data. Group encounter titles
+-- must never become a targetexact macro for an individual council member.
+function APR:RememberDungeonEncounterNames(step, encounterID, encounterName, units)
+    if not self.RememberNPCName or not self:IsInDungeonStepContext(step) then return false end
+    local data = self:GetDungeonDefinition(dungeonKey(step))
+    local changed = false
+    if accessible(encounterID) and type(encounterID) == "number" then
+        local boss = data.encounters[encounterID]
+        if type(boss) == "number" and data.npcNames and data.encounterNames
+            and data.npcNames[boss] == data.encounterNames[encounterID] then
+            changed = self:RememberNPCName(boss, encounterName) or changed
+        end
+    end
+    if accessibleTable(units) then
+        for _, unit in ipairs(units) do
+            if accessibleTable(unit) and accessible(unit.creatureID) and type(unit.creatureID) == "number" then
+                local npcID = data.bossAliases and data.bossAliases[unit.creatureID] or unit.creatureID
+                if data.bosses[npcID] then changed = self:RememberNPCName(npcID, unit.creatureName) or changed end
+            end
+        end
+    end
+    return changed
+end--[[APR_DIAG]]; APR.RememberDungeonEncounterNames = APRTrace("APR-Core/utils/DungeonUtils.lua:153:APR:RememberDungeonEncounterNames#15", APR.RememberDungeonEncounterNames)--[[/APR_DIAG]]
 
 -- Successful encounters grant credit through explicit dead-boss data or a known
 -- encounter ID. Unidentified or previously killed bosses need manual completion.
@@ -170,14 +178,19 @@ local events = CreateFrame("Frame")
 -- Forever and Retail both restrict combat-log registration. ENCOUNTER_END exposes
 -- creature IDs without reading protected combat logs or polling unit health.
 events:RegisterEvent("ENCOUNTER_END")
+events:RegisterEvent("ENCOUNTER_START")
 events:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 events:RegisterEvent("PLAYER_ENTERING_WORLD")
-events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/DungeonUtils.lua:175:callback#15", --[[/APR_DIAG]]function(_, event, ...)
+events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/DungeonUtils.lua:184:callback#16", --[[/APR_DIAG]]function(_, event, ...)
     if not APR.ActiveRoute or not APR.settings or not APR.settings.profile.enableAddon then return end
     local step = APR:GetCurrentStep()
     if not dungeonKey(step) then return end
-    if event == "ENCOUNTER_END" then
-        local encounterID, _, _, _, success, units = ...
+    if event == "ENCOUNTER_START" then
+        local encounterID, encounterName = ...
+        if APR:RememberDungeonEncounterNames(step, encounterID, encounterName) and step.KillNPC then APR:UpdateStep() end
+    elseif event == "ENCOUNTER_END" then
+        local encounterID, encounterName, _, _, success, units = ...
+        local renamed = APR:RememberDungeonEncounterNames(step, encounterID, encounterName, units)
         if not accessible(success) or success ~= 1 then return end
         local recorded = false
         -- Clients can send a unit-status table even when it is empty or inaccessible.
@@ -203,7 +216,7 @@ events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/DungeonUtils.
                 end
             end
         end
-        if recorded and step.KillNPC then APR:UpdateStep() end
+        if (recorded or renamed) and step.KillNPC then APR:UpdateStep() end
     else
         APR:ObserveDungeonLocation(step)
         APR:UpdateStep()

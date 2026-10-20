@@ -28,10 +28,11 @@ for _, project in ipairs({ { 1, 14 }, { 1 }, {}, { 14, 14 }, { 1, 14, 16001 } })
     WOW_PROJECT_ID, WOW_PROJECT_CAMELOT = project[1], project[2]
     function GetBuildInfo() return "version", "build", "date", project[3] or 120105 end
     registered = {}
-    dofile("APR-Core/utils/DungeonUtils.lua")
+    dofile("tests/lua/dungeon_data_test_env.lua")
+dofile("APR-Core/utils/DungeonUtils.lua")
     assert(registered.ZONE_CHANGED_NEW_AREA and registered.PLAYER_ENTERING_WORLD)
     assert(registered.ENCOUNTER_END, "Public encounter completion must remain available")
-    assert(APR.ForeverDungeons.RFC and APR.RenderDungeonKill, "Shared helpers must remain available")
+    assert(APR.DungeonData.forever.RFC and APR.RenderDungeonKill, "Shared helpers must remain available")
     function APR:ObserveDungeonLocation() observed = observed + 1 end
     eventHandler(nil, "ZONE_CHANGED_NEW_AREA")
     eventHandler(nil, "PLAYER_ENTERING_WORLD")

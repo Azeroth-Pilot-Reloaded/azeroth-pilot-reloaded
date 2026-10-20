@@ -8,6 +8,11 @@ explicit grammar rule here. This validates declarations, not quest story order.
 
 import math
 import re
+from pathlib import Path
+
+
+DUNGEON_KEYS = frozenset(key for path in (Path(__file__).resolve().parents[2] / "APR-Core/data/Dungeons").glob("*.lua")
+                        for key in re.findall(r"^    ([A-Z][A-Z0-9_]*) = \{", path.read_text(encoding="utf-8-sig"), re.M))
 
 
 class InvalidRoute(ValueError):
@@ -204,8 +209,8 @@ class RouteSchema:
         objective = scalar("quest ID or quest-objective key", lambda v:
                            isinstance(v, str) and re.fullmatch(r"[1-9]\d*(?:-\d+)?", v) is not None)
         self.step_fields.update({
-            "Dungeon": enum(("RFC", "ROL", "WC", "HOT", "DM")),
-            "KillNPC": obj({"npcID": ID, "name": TEXT, "dungeonKey": enum(("RFC", "ROL", "WC", "HOT", "DM"))}, required=("npcID", "name")),
+            "Dungeon": enum(DUNGEON_KEYS),
+            "KillNPC": obj({"npcID": ID, "name": TEXT, "dungeonKey": enum(DUNGEON_KEYS)}, required=("npcID", "name")),
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),
             "_index": ID, "_comment": TEXT, "Grind": level,
             "Coord": union(xy, multi_coord), "Coords": multi_coord,
@@ -242,7 +247,7 @@ class RouteSchema:
             self.step_fields[name] = obj({"questID": ID, "mapID": ID}, required=("mapID",))
         self.step_fields["TakePortal"] = obj({"questID": ID, "mapID": ID}, choices=(("mapID", "questID"),))
         for name in ("EnterInstance", "LeaveInstance"):
-            self.step_fields[name] = obj({"questID": ID, "mapID": ID, "dungeonKey": enum(("RFC", "ROL", "WC", "HOT", "DM"))},
+            self.step_fields[name] = obj({"questID": ID, "mapID": ID, "dungeonKey": enum(DUNGEON_KEYS)},
                                          choices=(("mapID", "dungeonKey"),))
         for name in "BuyMerchant LootItems".split():
             fields = {"itemID": ID, "quantity": ID, "questID": ID}
