@@ -26,7 +26,13 @@ function env.methods:Hide()
     if changed and self.scripts.OnHide then self.scripts.OnHide(self) end
 end
 local active, current
-InputUtil = {IsGamepadUIEnabled = function() return true end}
+local enabled, transitions = true, {}
+InputUtil = {
+    IsGamepadUIEnabled = function() return enabled end,
+    RegisterForInterfaceTransitions = function() end,
+    RegisterGamepadInit = function(_, callback) transitions.init = callback; callback() end,
+    RegisterGamepadUninit = function(_, callback) transitions.uninit = callback end,
+}
 GamepadMode = {FrameControlsManager = {
     FrameShown = function(_, frame) active = frame; return true end,
     FrameHidden = function(_, frame) if active == frame then active = nil end end,
@@ -61,6 +67,11 @@ for _, name in ipairs({"StatusPanel", "AboutPanel", "OptionsPanel", "Performance
 end
 local workspace, pad = APR.Workspace, APR.Gamepad
 workspace:Show("route"); tick()
+assert(workspace.frame.gamepadMenu:IsShown(), "Enabled native gamepad UI exposes the controller menu")
+enabled = false; transitions.uninit()
+assert(not workspace.frame.gamepadMenu:IsShown(), "Disabling gamepad UI hides its menu immediately")
+enabled = true; transitions.init()
+assert(workspace.frame.gamepadMenu:IsShown(), "Enabling gamepad UI restores its menu without reopening settings")
 local browser = APR.RouteBrowser
 assert(browser.prefabs[2].overrides.left() == browser.prefabs[1])
 assert(browser.prefabs[2].overrides.right() == browser.prefabs[3])

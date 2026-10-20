@@ -145,12 +145,13 @@ refreshFrame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/integrations
 end--[[APR_DIAG]])--[[/APR_DIAG]])
 
 function Pad:RestoreWindows()
+    if APR.Workspace and APR.Workspace.RefreshGamepadMenu then APR.Workspace:RefreshGamepadMenu() end
     if not self:IsEnabled() or InCombatLockdown() then return end
     local frames = {}
     for frame, entry in pairs(self.windows) do
         if frame:IsVisible() and not entry.manual then frames[#frames + 1] = {frame = frame, order = entry.order} end
     end
-    table.sort(frames, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:153:callback#15", --[[/APR_DIAG]]function(a, b) return a.order < b.order end--[[APR_DIAG]])--[[/APR_DIAG]])
+    table.sort(frames, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:154:callback#15", --[[/APR_DIAG]]function(a, b) return a.order < b.order end--[[APR_DIAG]])--[[/APR_DIAG]])
     for _, entry in ipairs(frames) do self:ShowWindow(entry.frame) end
     -- These controls may have been built before Blizzard's gamepad addons were loaded.
     for list in pairs(self.lists) do
@@ -168,12 +169,13 @@ function Pad:InstallTransitions()
         or not InputUtil.RegisterGamepadUninit or not InputUtil.RegisterForInterfaceTransitions then return end
     self.transitions = true
     InputUtil.RegisterForInterfaceTransitions(self)
-    InputUtil.RegisterGamepadUninit(self, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:171:callback#17", --[[/APR_DIAG]]function()
+    InputUtil.RegisterGamepadUninit(self, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:172:callback#17", --[[/APR_DIAG]]function()
         -- Blizzard resets its manager during the high-priority transition phase.
         for _, entry in pairs(self.windows) do entry.active = nil end
+        if APR.Workspace and APR.Workspace.RefreshGamepadMenu then APR.Workspace:RefreshGamepadMenu() end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    InputUtil.RegisterGamepadInit(self, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:175:callback#18", --[[/APR_DIAG]]function() self:RestoreWindows() end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Pad.InstallTransitions = APRTrace("APR-Core/integrations/Gamepad.lua:166:Pad:InstallTransitions#16", Pad.InstallTransitions)--[[/APR_DIAG]]
+    InputUtil.RegisterGamepadInit(self, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:177:callback#18", --[[/APR_DIAG]]function() self:RestoreWindows() end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; Pad.InstallTransitions = APRTrace("APR-Core/integrations/Gamepad.lua:167:Pad:InstallTransitions#16", Pad.InstallTransitions)--[[/APR_DIAG]]
 
 -- Sliders need an explicit commit: AceConfig writes ranges on OnMouseUp, not SetValue.
 function Pad:AdjustSlider(widget, direction)
@@ -186,7 +188,7 @@ function Pad:AdjustSlider(widget, direction)
     slider:SetValue(value)
     local commit = slider:GetScript("OnMouseUp")
     if commit then commit(slider, "LeftButton") end
-end--[[APR_DIAG]]; Pad.AdjustSlider = APRTrace("APR-Core/integrations/Gamepad.lua:179:Pad:AdjustSlider#19", Pad.AdjustSlider)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.AdjustSlider = APRTrace("APR-Core/integrations/Gamepad.lua:181:Pad:AdjustSlider#19", Pad.AdjustSlider)--[[/APR_DIAG]]
 
 function Pad:AdaptSettings(widget, seen)
     if not widget then return end
@@ -214,11 +216,11 @@ function Pad:AdaptSettings(widget, seen)
             local function adjust()
                 self:AdjustSlider(widget, direction)
                 return true -- consume this direction even if AceConfig rebuilt the widget
-            end--[[APR_DIAG]]; adjust = APRTrace("APR-Core/integrations/Gamepad.lua:214:adjust#21", adjust)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; adjust = APRTrace("APR-Core/integrations/Gamepad.lua:216:adjust#21", adjust)--[[/APR_DIAG]]
             if self.SetDirection then self:SetDirection(slider, entry[1], adjust)
             else SmartNavigation_AddJumpNavigationOverride(slider, SMART_NAV_INPUT_DIRECTION[entry[1]], adjust) end
         end
-        slider.OnSmartNavClick = --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:221:callback#22", --[[/APR_DIAG]]function()
+        slider.OnSmartNavClick = --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:223:callback#22", --[[/APR_DIAG]]function()
             -- Confirm reaches exact numeric entry without moving the thumb to the mouse cursor.
             if widget.editbox and widget.editbox:IsVisible() and not widget.disabled and not InCombatLockdown() then
                 SmartNavigation:SelectButton(widget.editbox)
@@ -226,8 +228,8 @@ function Pad:AdaptSettings(widget, seen)
         end--[[APR_DIAG]])--[[/APR_DIAG]]
     elseif widget.type == "Dropdown-Pullout" and widget.frame then
         if self.AdaptAceScroll then self:AdaptAceScroll(widget, widget.scrollFrame, widget.itemFrame, widget.slider) end
-        self:RegisterWindow(widget.frame, true, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:229:callback#23", --[[/APR_DIAG]]function() widget:Close() end--[[APR_DIAG]])--[[/APR_DIAG]],
-            --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:230:callback#24", --[[/APR_DIAG]]function() return not self.OwnSettingsWidget or widget.aprPadOwned == true end--[[APR_DIAG]])--[[/APR_DIAG]])
+        self:RegisterWindow(widget.frame, true, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:231:callback#23", --[[/APR_DIAG]]function() widget:Close() end--[[APR_DIAG]])--[[/APR_DIAG]],
+            --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:232:callback#24", --[[/APR_DIAG]]function() return not self.OwnSettingsWidget or widget.aprPadOwned == true end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
     for _, child in ipairs(widget.children or {}) do self:AdaptSettings(child, seen) end
     if widget.pullout then
@@ -235,7 +237,7 @@ function Pad:AdaptSettings(widget, seen)
         for _, item in widget.pullout:IterateItems() do self:AdaptSettings(item, seen) end
     end
     if widget.frame then self:Refresh(widget.frame) end
-end--[[APR_DIAG]]; Pad.AdaptSettings = APRTrace("APR-Core/integrations/Gamepad.lua:191:Pad:AdaptSettings#20", Pad.AdaptSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.AdaptSettings = APRTrace("APR-Core/integrations/Gamepad.lua:193:Pad:AdaptSettings#20", Pad.AdaptSettings)--[[/APR_DIAG]]
 
 -- Navigate by record index, not by recycled frame identity. This reaches every record,
 -- including those for which no frame exists yet, and keeps the same action column.
@@ -256,7 +258,7 @@ function Pad:NavigateList(list, row, path, delta)
         if target and target:IsVisible() and (not target.IsEnabled or target:IsEnabled()) then return target end
         index = index + delta
     end
-end--[[APR_DIAG]]; Pad.NavigateList = APRTrace("APR-Core/integrations/Gamepad.lua:242:Pad:NavigateList#25", Pad.NavigateList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.NavigateList = APRTrace("APR-Core/integrations/Gamepad.lua:244:Pad:NavigateList#25", Pad.NavigateList)--[[/APR_DIAG]]
 
 function Pad:AdaptListRow(list, row)
     self.lists[list] = true
@@ -269,7 +271,7 @@ function Pad:AdaptListRow(list, row)
                 local delta = entry[2]
                 local function navigate()
                     return self:NavigateList(list, row, path, delta)
-                end--[[APR_DIAG]]; navigate = APRTrace("APR-Core/integrations/Gamepad.lua:270:navigate#28", navigate)--[[/APR_DIAG]]
+                end--[[APR_DIAG]]; navigate = APRTrace("APR-Core/integrations/Gamepad.lua:272:navigate#28", navigate)--[[/APR_DIAG]]
                 if self.SetDirection then self:SetDirection(frame, entry[1], navigate)
                 else SmartNavigation_AddJumpNavigationOverride(frame, SMART_NAV_INPUT_DIRECTION[entry[1]], navigate) end
             end
@@ -279,9 +281,9 @@ function Pad:AdaptListRow(list, row)
             childPath[#childPath + 1] = index
             visit(child, childPath)
         end
-    end--[[APR_DIAG]]; visit = APRTrace("APR-Core/integrations/Gamepad.lua:266:visit#27", visit)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; visit = APRTrace("APR-Core/integrations/Gamepad.lua:268:visit#27", visit)--[[/APR_DIAG]]
     visit(row, {})
-end--[[APR_DIAG]]; Pad.AdaptListRow = APRTrace("APR-Core/integrations/Gamepad.lua:261:Pad:AdaptListRow#26", Pad.AdaptListRow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.AdaptListRow = APRTrace("APR-Core/integrations/Gamepad.lua:263:Pad:AdaptListRow#26", Pad.AdaptListRow)--[[/APR_DIAG]]
 
 function Pad:RunAction(action)
     if InCombatLockdown() then APR:PrintInfo(L["GAMEPAD_COMBAT"]); return end
@@ -308,12 +310,12 @@ function Pad:RunAction(action)
         if not frame or not frame:IsVisible() or not self:IsEnabled() then return end
         -- Gameplay panels join focus only when requested, never on every quest update.
         if not self.windows[frame] then
-            self:RegisterWindow(frame, false, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:311:callback#30", --[[/APR_DIAG]]function() self:HideWindow(frame) end--[[APR_DIAG]])--[[/APR_DIAG]])
+            self:RegisterWindow(frame, false, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:313:callback#30", --[[/APR_DIAG]]function() self:HideWindow(frame) end--[[APR_DIAG]])--[[/APR_DIAG]])
             self.windows[frame].manual = true
         else self:ShowWindow(frame) end
         GamepadMode.FrameControlsManager:FocusFrame(frame)
     end
-end--[[APR_DIAG]]; Pad.RunAction = APRTrace("APR-Core/integrations/Gamepad.lua:286:Pad:RunAction#29", Pad.RunAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.RunAction = APRTrace("APR-Core/integrations/Gamepad.lua:288:Pad:RunAction#29", Pad.RunAction)--[[/APR_DIAG]]
 
 function Pad:ToggleMenu()
     if self.menu and self.menu:IsShown() then self.menu:Hide(); return end
@@ -324,7 +326,7 @@ function Pad:ToggleMenu()
         scroll:SetPoint("TOPLEFT"); scroll:SetPoint("BOTTOMRIGHT", -24, 115)
         local content = CreateFrame("Frame", nil, scroll)
         scroll:SetScrollChild(content)
-        scroll:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:327:callback#32", --[[/APR_DIAG]]function() content:SetWidth(scroll:GetWidth()) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        scroll:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:329:callback#32", --[[/APR_DIAG]]function() content:SetWidth(scroll:GetWidth()) end--[[APR_DIAG]])--[[/APR_DIAG]])
         content:SetWidth(scroll:GetWidth())
         local actions = {
             {"route", L["ROUTE_SELECTION"]}, {"options", GAMEOPTIONS_MENU},
@@ -338,7 +340,7 @@ function Pad:ToggleMenu()
         self.menuButtons = {}
         for index, entry in ipairs(actions) do
             local action = entry[1]
-            local button = UI:Button(content, entry[2], 1, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:341:callback#33", --[[/APR_DIAG]]function()
+            local button = UI:Button(content, entry[2], 1, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:343:callback#33", --[[/APR_DIAG]]function()
                 frame:Hide(); self:RunAction(action)
             end--[[APR_DIAG]])--[[/APR_DIAG]])
             self.menuButtons[action] = button
@@ -349,7 +351,7 @@ function Pad:ToggleMenu()
         local help = UI:Label(frame.content, L["GAMEPAD_HELP"], 12)
         help:SetPoint("BOTTOMLEFT", 4, 40); help:SetPoint("RIGHT", -4, 0)
         help:SetWordWrap(true)
-        local bind = UI:Button(frame.content, KEY_BINDINGS, 1, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:352:callback#34", --[[/APR_DIAG]]function() self:RunAction("binding") end--[[APR_DIAG]])--[[/APR_DIAG]])
+        local bind = UI:Button(frame.content, KEY_BINDINGS, 1, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:354:callback#34", --[[/APR_DIAG]]function() self:RunAction("binding") end--[[APR_DIAG]])--[[/APR_DIAG]])
         bind:SetPoint("BOTTOMLEFT", 4, 0); bind:SetPoint("BOTTOMRIGHT", -4, 0)
     end
     local panels = {step = CurrentStepScreenPanel, steps = QuestOrderListPanel, fillers = FillersScreenPanel,
@@ -358,14 +360,14 @@ function Pad:ToggleMenu()
         self.menuButtons[action]:SetEnabled(panels[action] and panels[action]:IsVisible() or false)
     end
     self.menu:Show()
-end--[[APR_DIAG]]; Pad.ToggleMenu = APRTrace("APR-Core/integrations/Gamepad.lua:318:Pad:ToggleMenu#31", Pad.ToggleMenu)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Pad.ToggleMenu = APRTrace("APR-Core/integrations/Gamepad.lua:320:Pad:ToggleMenu#31", Pad.ToggleMenu)--[[/APR_DIAG]]
 
 local watcher = CreateFrame("Frame")
 watcher:RegisterEvent("ADDON_LOADED")
 watcher:RegisterEvent("PLAYER_LOGIN")
 watcher:RegisterEvent("PLAYER_REGEN_ENABLED")
 watcher:RegisterEvent("PLAYER_REGEN_DISABLED")
-watcher:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:368:callback#35", --[[/APR_DIAG]]function(_, event)
+watcher:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/integrations/Gamepad.lua:370:callback#35", --[[/APR_DIAG]]function(_, event)
     if event == "PLAYER_REGEN_DISABLED" then
         -- Do not leave UI input captured while its actions are unavailable in combat.
         for frame in pairs(Pad.windows) do Pad:HideWindow(frame) end

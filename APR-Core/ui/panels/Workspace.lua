@@ -61,10 +61,9 @@ function Workspace:Create()
         APR.Gamepad:LinkHorizontal(tabs)
         frame.gamepadMenu = UI:Button(frame, L["GAMEPAD_MENU"], 145, --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:62:callback#6", --[[/APR_DIAG]]function() APR.Gamepad:RunAction("menu") end--[[APR_DIAG]])--[[/APR_DIAG]])
         frame.gamepadMenu:SetPoint("TOPRIGHT", -58, -10)
-        frame.header.Text:SetPoint("RIGHT", -170, 0)
     end
-    frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:66:callback#7", --[[/APR_DIAG]]function() self:LayoutTabs() end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:67:callback#8", --[[/APR_DIAG]]function()
+    frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:65:callback#7", --[[/APR_DIAG]]function() self:LayoutTabs() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/panels/Workspace.lua:66:callback#8", --[[/APR_DIAG]]function()
         if UI.activeMenu then UI.activeMenu:Hide() end
         if UI.selectionDialog then UI.selectionDialog:Hide() end
         if APR.LayoutEditor and APR.LayoutEditor.QueueOnboarding then APR.LayoutEditor.QueueOnboarding() end
@@ -72,8 +71,17 @@ function Workspace:Create()
     self:LayoutTabs()
 end--[[APR_DIAG]]; Workspace.Create = APRTrace("APR-Core/ui/panels/Workspace.lua:31:Workspace:Create#2", Workspace.Create)--[[/APR_DIAG]]
 
+function Workspace:RefreshGamepadMenu()
+    local frame = self.frame
+    if not frame or not frame.gamepadMenu then return end
+    local visible = APR.Gamepad and APR.Gamepad:IsEnabled()
+    frame.gamepadMenu:SetShown(visible)
+    frame.header.Text:SetPoint("RIGHT", visible and -170 or -8, 0)
+end--[[APR_DIAG]]; Workspace.RefreshGamepadMenu = APRTrace("APR-Core/ui/panels/Workspace.lua:74:Workspace:RefreshGamepadMenu#9", Workspace.RefreshGamepadMenu)--[[/APR_DIAG]]
+
 function Workspace:LayoutTabs()
     if not self.frame then return end
+    self:RefreshGamepadMenu()
     local showPerf = APR:GetSettingsProfile().showPerformanceTab == true
     local right = -16
     for index = #definitions, 1, -1 do
@@ -90,7 +98,7 @@ function Workspace:LayoutTabs()
             right = right - width - 4
         end
     end
-end--[[APR_DIAG]]; Workspace.LayoutTabs = APRTrace("APR-Core/ui/panels/Workspace.lua:75:Workspace:LayoutTabs#9", Workspace.LayoutTabs)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.LayoutTabs = APRTrace("APR-Core/ui/panels/Workspace.lua:82:Workspace:LayoutTabs#10", Workspace.LayoutTabs)--[[/APR_DIAG]]
 
 function Workspace:Show(id, section)
     id = id or "route"
@@ -118,8 +126,8 @@ function Workspace:Show(id, section)
     if section and controller.Select then controller:Select(section)
     elseif controller.Refresh and controller.refreshSerial == refreshSerial then controller:Refresh() end
     if APR.Gamepad then APR.Gamepad:Refresh(self.frame) end
-end--[[APR_DIAG]]; Workspace.Show = APRTrace("APR-Core/ui/panels/Workspace.lua:95:Workspace:Show#10", Workspace.Show)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.Show = APRTrace("APR-Core/ui/panels/Workspace.lua:103:Workspace:Show#11", Workspace.Show)--[[/APR_DIAG]]
 
 function Workspace:Hide()
     if self.frame then self.frame:Hide() end
-end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:123:Workspace:Hide#11", Workspace.Hide)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Workspace.Hide = APRTrace("APR-Core/ui/panels/Workspace.lua:131:Workspace:Hide#12", Workspace.Hide)--[[/APR_DIAG]]

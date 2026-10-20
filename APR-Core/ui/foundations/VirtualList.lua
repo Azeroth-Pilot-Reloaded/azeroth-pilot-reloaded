@@ -146,6 +146,9 @@ function List:RenderVisible(force, deadline)
                 GameTooltip:Hide()
             end
             row.item = self.items[index]
+            -- New and recycled rows need the viewport width before content
+            -- computes label widths and action positions from GetWidth().
+            if row:GetWidth() ~= width then row:SetWidth(width) end
             self.bindRow(row, row.item, index)
             -- A binder may use a shared renderer that sets its own geometry.
             row:ClearAllPoints()

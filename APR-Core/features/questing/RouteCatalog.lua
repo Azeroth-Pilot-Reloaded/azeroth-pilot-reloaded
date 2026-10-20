@@ -146,25 +146,30 @@ function Catalog:GetNavigation(records)
             counts[scope] = (counts[scope] or 0) + 1
         end
     end
-    local result = {{value = "all", label = ALL, count = total},
-        {value = "community", label = CLUB_FINDER_COMMUNITY_TYPE, count = community},
-        {heading = true, label = EXPANSION_FILTER_TEXT}}
+    local result = {{value = "all", label = ALL, count = total}}
+    if community > 0 then
+        result[#result + 1] = {value = "community", label = CLUB_FINDER_COMMUNITY_TYPE, count = community}
+    end
+    local headingIndex = #result + 1
     local expansions = APR:GetRouteSelectionExpansions()
     -- The most recent expansion is nearest to the primary actions; Custom remains last.
     for index = #expansions, 1, -1 do
         local expansion = expansions[index]
         if expansion == APR.EXPANSIONS.Forever then
             for _, scope in ipairs({expansion, "forever_dungeons", "forever_mage_aoe"}) do
-                if scope ~= "forever_mage_aoe" or APR.ClassName == "MAGE" then
-                    result[#result + 1] = {value = scope, label = APR:GetRouteSelectionScopeLabel(scope), count = counts[scope] or 0}
+                if counts[scope] and (scope ~= "forever_mage_aoe" or APR.ClassName == "MAGE") then
+                    result[#result + 1] = {value = scope, label = APR:GetRouteSelectionScopeLabel(scope), count = counts[scope]}
                 end
             end
-        elseif expansion ~= APR.EXPANSIONS.Custom then
-            result[#result + 1] = {value = expansion, label = expansion, count = counts[expansion] or 0}
+        elseif expansion ~= APR.EXPANSIONS.Custom and counts[expansion] then
+            result[#result + 1] = {value = expansion, label = expansion, count = counts[expansion]}
         end
     end
     if counts[APR.EXPANSIONS.Custom] then
         result[#result + 1] = {value = APR.EXPANSIONS.Custom, label = APR.EXPANSIONS.Custom, count = counts[APR.EXPANSIONS.Custom]}
+    end
+    if #result >= headingIndex then
+        table.insert(result, headingIndex, {heading = true, label = EXPANSION_FILTER_TEXT})
     end
     return result
 end--[[APR_DIAG]]; Catalog.GetNavigation = APRTrace("APR-Core/features/questing/RouteCatalog.lua:139:Catalog:GetNavigation#9", Catalog.GetNavigation)--[[/APR_DIAG]]
@@ -176,7 +181,7 @@ function Catalog:GetPathRecords(records)
         if byLabel[label] then result[#result + 1] = byLabel[label] end
     end
     return result
-end--[[APR_DIAG]]; Catalog.GetPathRecords = APRTrace("APR-Core/features/questing/RouteCatalog.lua:172:Catalog:GetPathRecords#10", Catalog.GetPathRecords)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.GetPathRecords = APRTrace("APR-Core/features/questing/RouteCatalog.lua:177:Catalog:GetPathRecords#10", Catalog.GetPathRecords)--[[/APR_DIAG]]
 
 function Catalog:ToggleFavorite(record)
     if not record or record.visibility == "hidden" then return end
@@ -184,7 +189,7 @@ function Catalog:ToggleFavorite(record)
     profile.routeFavorites = profile.routeFavorites or {}
     profile.routeFavorites[record.key] = not profile.routeFavorites[record.key] or nil
     record.favorite = profile.routeFavorites[record.key] == true
-end--[[APR_DIAG]]; Catalog.ToggleFavorite = APRTrace("APR-Core/features/questing/RouteCatalog.lua:181:Catalog:ToggleFavorite#11", Catalog.ToggleFavorite)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.ToggleFavorite = APRTrace("APR-Core/features/questing/RouteCatalog.lua:186:Catalog:ToggleFavorite#11", Catalog.ToggleFavorite)--[[/APR_DIAG]]
 
 function Catalog:ChangePath(record, action, restart)
     if not record then return false end
@@ -201,4 +206,4 @@ function Catalog:ChangePath(record, action, restart)
     else return false end
     APR.routeconfig:SendCustomPathUpdate()
     return true
-end--[[APR_DIAG]]; Catalog.ChangePath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:189:Catalog:ChangePath#12", Catalog.ChangePath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Catalog.ChangePath = APRTrace("APR-Core/features/questing/RouteCatalog.lua:194:Catalog:ChangePath#12", Catalog.ChangePath)--[[/APR_DIAG]]

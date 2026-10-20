@@ -79,7 +79,10 @@ local allocations, bindings = 0, 0
 local list = APR.VirtualList:New(scroll, function(parent)
     allocations = allocations + 1
     return CreateFrame("Frame", nil, parent)
-end, function(row, item) bindings = bindings + 1; row.value = item.key end, function(item) return item.height end)
+end, function(row, item)
+    assert(row:GetWidth() == scroll:GetWidth(), "Binding sees the viewport width, including on new or recycled rows")
+    bindings = bindings + 1; row.value = item.key
+end, function(item) return item.height end)
 local items = {}
 for i = 1, 10000 do items[i] = { key = i, height = i % 2 == 0 and 60 or 40 } end
 list:SetItems(items)
@@ -92,6 +95,8 @@ assert(allocations <= 14, "10000 models cannot allocate 10000 frames")
 local count = allocations
 list:SetItems(items, true)
 assert(allocations == count, "Rebuilding reuses the viewport pool")
+scroll:SetWidth(640)
+list:RefreshVisible(true)
 local previousBindings = bindings
 list:SetItems(items, false, 5000)
 assert(list.active[5000] and scroll:GetVerticalScroll() == list.offsets[5000],

@@ -5,10 +5,13 @@ GAMEOPTIONS_MENU = "Options"
 APR.title = "APR"
 function GetLocale() return "enUS" end
 function env.methods:Raise() self.raised = true end
+function env.methods:IsVisible() return self.shown and (not self.parent or self.parent:IsVisible()) end
 UIParent:SetSize(1920, 1080)
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")
+dofile("APR-Core/integrations/Gamepad.lua")
+dofile("APR-Core/integrations/GamepadNavigation.lua")
 dofile("APR-Core/ui/panels/Workspace.lua")
 
 for _, name in ipairs({"RouteBrowser", "StatusPanel", "AboutPanel", "OptionsPanel", "PerformanceDashboard"}) do
@@ -27,6 +30,8 @@ local workspace = APR.Workspace
 workspace:Show("route")
 assert(not SettingsPanel:IsShown() and not APR.LayoutEditor.active)
 assert(workspace.frame:IsShown() and workspace.pages.route:IsShown())
+assert(not workspace.frame.gamepadMenu:IsShown(), "Retail without native gamepad UI must hide the controller menu")
+assert(workspace.frame.header.Text.point[2] == -8, "A hidden controller menu leaves the title its full width")
 assert(APR.RouteBrowser.creates == 1 and APR.StatusPanel.creates == 0)
 assert(not workspace.tabs.perf:IsShown(), "Perf is hidden by default")
 assert(workspace.tabs.route.point[1] == "BOTTOMRIGHT" and workspace.tabs.route.point[3] == "TOPRIGHT",

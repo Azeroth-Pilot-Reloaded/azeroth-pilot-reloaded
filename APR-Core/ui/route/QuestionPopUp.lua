@@ -19,7 +19,8 @@ local function EnsureRouteTriggerPopup()
     local frame = CreateFrame("Frame", "APRRouteTriggerPopup", UIParent, "BackdropTemplate")
     frame:SetSize(420, 250)
     frame:SetPoint("CENTER", UIParent, "CENTER", 0, 120)
-    frame:SetFrameStrata("DIALOG")
+    frame:SetFrameStrata("FULLSCREEN_DIALOG")
+    frame:SetToplevel(true)
     frame:SetClampedToScreen(true)
     frame:SetMovable(true)
     frame:EnableMouse(true)
@@ -67,7 +68,7 @@ local function EnsureRouteTriggerPopup()
         APR:RegisterSkinTarget(frame.cancelButton, "button")
     end
     APR:RegisterButtonText(frame.cancelButton, "general", { role = "base" })
-    frame.cancelButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:70:callback#2", --[[/APR_DIAG]]function()
+    frame.cancelButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:71:callback#2", --[[/APR_DIAG]]function()
         frame:Hide()
         if frame.onCancel then
             frame.onCancel()
@@ -85,7 +86,7 @@ local function EnsureRouteTriggerPopup()
         frame.dontAskButton.Text:SetWordWrap(true)
         frame.dontAskButton.Text:SetJustifyH("CENTER")
     end
-    frame.dontAskButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:88:callback#3", --[[/APR_DIAG]]function()
+    frame.dontAskButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:89:callback#3", --[[/APR_DIAG]]function()
         frame:Hide()
         if frame.onDontAsk then
             frame.onDontAsk()
@@ -103,7 +104,7 @@ local function EnsureRouteTriggerPopup()
         frame.routeSelectionButton.Text:SetWordWrap(true)
         frame.routeSelectionButton.Text:SetJustifyH("CENTER")
     end
-    frame.routeSelectionButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:106:callback#4", --[[/APR_DIAG]]function()
+    frame.routeSelectionButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:107:callback#4", --[[/APR_DIAG]]function()
         frame:Hide()
         if APR and APR.settings and APR.settings.OpenSettings then
             APR.settings:OpenSettings(L["ROUTE"])
@@ -112,7 +113,7 @@ local function EnsureRouteTriggerPopup()
 
     frame:Hide()
     if APR.Gamepad then
-        APR.Gamepad:RegisterWindow(frame, true, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:115:callback#5", --[[/APR_DIAG]]function() frame.cancelButton:Click() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        APR.Gamepad:RegisterWindow(frame, true, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:116:callback#5", --[[/APR_DIAG]]function() frame.cancelButton:Click() end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
     routeTriggerPopupFrame = frame
     return frame
@@ -137,7 +138,7 @@ local function EnsureRouteButton(frame, index)
     if APR.RegisterSkinTarget then APR:RegisterSkinTarget(button, "button") end
     frame.routeButtons[index] = button
     return button
-end--[[APR_DIAG]]; EnsureRouteButton = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:121:EnsureRouteButton#6", EnsureRouteButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; EnsureRouteButton = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:122:EnsureRouteButton#6", EnsureRouteButton)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 --------------------------- Dialog for some actions xD --------------------------------
@@ -159,7 +160,7 @@ function APR.questionDialog:CreateQuestionPopup(dialogName, text, onAcceptFuncti
     }
 
     APR:StyleStaticPopup(StaticPopup_Show(dialogName))
-end--[[APR_DIAG]]; APR.questionDialog.CreateQuestionPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:145:APR.questionDialog:CreateQuestionPopup#7", APR.questionDialog.CreateQuestionPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questionDialog.CreateQuestionPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:146:APR.questionDialog:CreateQuestionPopup#7", APR.questionDialog.CreateQuestionPopup)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateMessagePopup(text, closeButtonText)
     local dialogName = "MESSAGE_DIALOG"
@@ -172,7 +173,7 @@ function APR.questionDialog:CreateMessagePopup(text, closeButtonText)
     }
 
     APR:StyleStaticPopup(StaticPopup_Show(dialogName))
-end--[[APR_DIAG]]; APR.questionDialog.CreateMessagePopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:164:APR.questionDialog:CreateMessagePopup#8", APR.questionDialog.CreateMessagePopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questionDialog.CreateMessagePopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:165:APR.questionDialog:CreateMessagePopup#8", APR.questionDialog.CreateMessagePopup)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateMandatoryAction(text, onAcceptFunction)
     local dialogName = "MANDATORY_DIALOG"
@@ -189,7 +190,7 @@ function APR.questionDialog:CreateMandatoryAction(text, onAcceptFunction)
     }
 
     APR:StyleStaticPopup(StaticPopup_Show(dialogName))
-end--[[APR_DIAG]]; APR.questionDialog.CreateMandatoryAction = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:177:APR.questionDialog:CreateMandatoryAction#9", APR.questionDialog.CreateMandatoryAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questionDialog.CreateMandatoryAction = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:178:APR.questionDialog:CreateMandatoryAction#9", APR.questionDialog.CreateMandatoryAction)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxText)
     local dialogName = "EDITBOX_DIALOG"
@@ -197,7 +198,7 @@ function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxTex
         text = text or "General Kenobi",
         hasEditBox = 1,
         button1 = closeButtonText or OKAY or "YES",
-        OnShow = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:200:callback#11", --[[/APR_DIAG]]function(self)
+        OnShow = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:201:callback#11", --[[/APR_DIAG]]function(self)
             if editBoxText then
                 local box = self.editBox or self.EditBox or (self:GetName() and _G[self:GetName() .. "EditBox"])
                 if box then
@@ -208,14 +209,14 @@ function APR.questionDialog:CreateEditBoxPopup(text, closeButtonText, editBoxTex
                 end
             end
         end--[[APR_DIAG]])--[[/APR_DIAG]],
-        EditBoxOnEscapePressed = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:211:callback#12", --[[/APR_DIAG]]function(self) self:GetParent():Hide() end--[[APR_DIAG]])--[[/APR_DIAG]],
+        EditBoxOnEscapePressed = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:212:callback#12", --[[/APR_DIAG]]function(self) self:GetParent():Hide() end--[[APR_DIAG]])--[[/APR_DIAG]],
         timeout = 0,
         whileDead = true,
         hideOnEscape = true,
     }
 
     APR:StyleStaticPopup(StaticPopup_Show(dialogName))
-end--[[APR_DIAG]]; APR.questionDialog.CreateEditBoxPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:194:APR.questionDialog:CreateEditBoxPopup#10", APR.questionDialog.CreateEditBoxPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questionDialog.CreateEditBoxPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:195:APR.questionDialog:CreateEditBoxPopup#10", APR.questionDialog.CreateEditBoxPopup)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSelected, onCancel, onDontAsk)
     local frame = EnsureRouteTriggerPopup()
@@ -279,7 +280,7 @@ function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSe
             button:SetHeight(30)
         end
 
-        button:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:282:callback#14", --[[/APR_DIAG]]function()
+        button:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/QuestionPopUp.lua:283:callback#14", --[[/APR_DIAG]]function()
             frame:Hide()
             if onRouteSelected then
                 onRouteSelected(route)
@@ -305,9 +306,9 @@ function APR.questionDialog:CreateRouteTriggerPopup(titleText, routes, onRouteSe
     frame:SetHeight(math.max(minFrameHeight, desiredFrameHeight))
 
     frame:Show()
-end--[[APR_DIAG]]; APR.questionDialog.CreateRouteTriggerPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:220:APR.questionDialog:CreateRouteTriggerPopup#13", APR.questionDialog.CreateRouteTriggerPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questionDialog.CreateRouteTriggerPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:221:APR.questionDialog:CreateRouteTriggerPopup#13", APR.questionDialog.CreateRouteTriggerPopup)--[[/APR_DIAG]]
 
 function APR.questionDialog:CreateSelectionPopup(titleText, descriptionText, options, onOptionSelected, onCancel)
     local owner = APR.RouteBrowser and APR.RouteBrowser.frame
     APR.UI:ShowSelectionDialog(titleText, descriptionText, options, onOptionSelected, onCancel, owner)
-end--[[APR_DIAG]]; APR.questionDialog.CreateSelectionPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:310:APR.questionDialog:CreateSelectionPopup#15", APR.questionDialog.CreateSelectionPopup)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.questionDialog.CreateSelectionPopup = APRTrace("APR-Core/ui/route/QuestionPopUp.lua:311:APR.questionDialog:CreateSelectionPopup#15", APR.questionDialog.CreateSelectionPopup)--[[/APR_DIAG]]

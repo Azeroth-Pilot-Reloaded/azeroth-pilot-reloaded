@@ -103,6 +103,18 @@ assert(APRCustomPath.test[1] == "First by Someone" and APRCustomPath.test[2] == 
 local row = browser.pathList.active[2]
 assert(not row.aprListRow.iconHost, "Custom paths have no decorative route icons")
 assert(row.up.icon and row.down.icon and row.remove.icon)
+local function assertPathGeometry()
+    for _, pathRow in pairs(browser.pathList.active) do
+        local width = browser.pathScroll:GetWidth()
+        assert(pathRow.name:GetText() == pathRow.item.label)
+        assert(pathRow.name:GetWidth() == width - 104,
+            "Custom path labels use the viewport width on their first binding")
+        assert(pathRow.up.point[4] == width - 74 and pathRow.down.point[4] == width - 50
+            and pathRow.remove.point[4] == width - 26,
+            "New custom path actions are inside the row without another refresh")
+    end
+end
+assertPathGeometry()
 row.up.scripts.OnClick()
 assert(APRCustomPath.test[1] == "Older route")
 browser.pathList.active[1].down.scripts.OnClick()
@@ -155,7 +167,10 @@ assert(normalizations <= #rebuilt - #filtered + 1, "Changed sort values invalida
 assert(catalog:Filter(rebuilt, {query = "changed searchable name"})[1].key == "generated10")
 APR.NormalizeSearchText = normalize
 
+APRCustomPath.test = {"First by Someone", "Older route"}
+browser:Refresh(true)
 browser.frame:SetSize(900, 600); browser:Layout()
+assertPathGeometry()
 assert(not browser.headers.author:IsShown() and not browser.headers.status:IsShown() and browser.pathScroll:GetWidth() > 180)
 assert(browser.catalogPanel.point[4] + browser.catalogPanel:GetWidth() < browser.pathPanel.point[4])
 assert(browser.headers.status.point[4] + browser.headers.status:GetWidth() < browser.catalogPanel:GetWidth())
@@ -203,9 +218,10 @@ assert(browser.prefabs[1].prefabKind == "speedrun" and browser.prefabs[2].prefab
     and browser.prefabs[3].prefabKind == "leveling")
 assert(browser.prefabs[2]:GetFontString():GetText() == "SPEEDRUN - " .. DUNGEONS)
 local navigation = catalog:GetNavigation(catalog:Build())
-assert(navigation[4].label == "Forever" and navigation[4].count == 1)
-assert(navigation[5].value == "forever_dungeons" and navigation[5].count == 1)
-assert(navigation[6].value == "forever_mage_aoe" and navigation[6].count == 1)
+assert(#navigation == 5, "Empty Community and Custom categories must not appear")
+assert(navigation[3].label == "Forever" and navigation[3].count == 1)
+assert(navigation[4].value == "forever_dungeons" and navigation[4].count == 1)
+assert(navigation[5].value == "forever_mage_aoe" and navigation[5].count == 1)
 APR.ClassName = "WARRIOR"
 for _, item in ipairs(catalog:GetNavigation(catalog:Build())) do
     assert(item.value ~= "forever_mage_aoe", "Mage AoE navigation is exclusive to mages")
@@ -225,3 +241,5 @@ APR.RouteQuestStepList = {}
 browser:Refresh(true)
 assert(#browser.prefabs == 0 and not browser.prefabPanel:IsShown())
 assert(browser.filterPanel.point[5] == 0)
+assert(#browser.navigation.items == 1 and browser.navigation.items[1].value == "all",
+    "An empty catalog keeps only All, without empty categories or an orphan expansion heading")

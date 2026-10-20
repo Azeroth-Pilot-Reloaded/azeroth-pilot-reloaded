@@ -14,6 +14,9 @@ function env.methods:Hide()
 end
 function APR:SetTooltipText(_, text) GameTooltip.title = text end
 function APR:AddTooltipLine(_, text) GameTooltip.description = text end
+function APR:RegisterButtonText(button, group, options)
+    self:RegisterFontString(button:GetFontString(), group, options)
+end
 UIParent:SetSize(1280, 720)
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
@@ -91,4 +94,15 @@ assert(accepted == 1 and declined == 3 and not frame.onAccept)
 open()
 assert(not frame.acceptButton:IsShown() and frame.body:IsShown() and #frame.list.items == 2)
 frame:Hide()
+-- Suggestions remain above settings even when the workspace is raised again.
+local settings = APR.UI:Window("APRWorkspaceTest", "Settings", 800, 600)
+settings:Show()
+local suggested = {key = "route", label = "Suggested route"}
+local chosenRoute
+APR.questionDialog:CreateRouteTriggerPopup("Suggested route", {suggested}, function(route) chosenRoute = route end)
+local suggestion = APRRouteTriggerPopup
+assert(suggestion:IsShown() and suggestion:GetFrameStrata() == "FULLSCREEN_DIALOG"
+    and settings:GetFrameStrata() == "DIALOG", "Route suggestions must render above the settings window")
+suggestion.routeButtons[1].scripts.OnClick()
+assert(chosenRoute == suggested and not suggestion:IsShown())
 print("Selection dialog: disabled choices, callbacks, cancellation, replacement, tooltips, bounded layout and recycled controls passed")
