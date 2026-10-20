@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
-    label = L["Forever - Alliance - Eastern Plaguelands"],
+    label = L["Forever - Alliance - Eastern Plaguelands"] .. " (57-59)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

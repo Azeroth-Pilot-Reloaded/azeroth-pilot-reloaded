@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Searing-Gorge-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Searing Gorge (Experienced)"],
+    label = L["Forever - Alliance - Mage AoE - Searing Gorge (Experienced)"] .. " (50-51)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

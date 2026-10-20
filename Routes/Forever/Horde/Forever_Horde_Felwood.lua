@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
-    label = L["Forever - Horde - Felwood"],
+    label = L["Forever - Horde - Felwood"] .. " (53-54)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -712,7 +712,7 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
 }
 
 APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
-    label = L["Forever - Horde - Felwood / Winterspring"],
+    label = L["Forever - Horde - Felwood / Winterspring"] .. " (55-56)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

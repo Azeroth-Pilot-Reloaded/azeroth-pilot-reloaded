@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
-    label = L["Forever - Alliance - Stranglethorn Vale (First Visit)"],
+    label = L["Forever - Alliance - Stranglethorn Vale (First Visit)"] .. " (34-35)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1049,7 +1049,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
-    label = L["Forever - Alliance - Stranglethorn Vale (Second Visit)"],
+    label = L["Forever - Alliance - Stranglethorn Vale (Second Visit)"] .. " (36-38)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1910,7 +1910,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] = {
-    label = L["Forever - Alliance - Stranglethorn Vale / Swamp of Sorrows"],
+    label = L["Forever - Alliance - Stranglethorn Vale / Swamp of Sorrows"] .. " (41-43)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -3318,7 +3318,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
-    label = L["Forever - Alliance - Stranglethorn Vale (Third Visit)"],
+    label = L["Forever - Alliance - Stranglethorn Vale (Third Visit)"] .. " (50-50)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

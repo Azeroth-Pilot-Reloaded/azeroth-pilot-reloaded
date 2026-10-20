@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Arathi-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Arathi (Experienced)"],
+    label = L["Forever - Alliance - Mage AoE - Arathi (Experienced)"] .. " (33-37)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -585,7 +585,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Arathi-Advanced"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
-    label = L["Forever - Alliance - Mage AoE - Arathi / Dustwallow / Tanaris / Plaguelands (33-60)"],
+    label = L["Forever - Alliance - Mage AoE - Arathi / Dustwallow / Tanaris / Plaguelands (33-60)"] .. " (33-60)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
-    label = L["Forever - Alliance - Wetlands"],
+    label = L["Forever - Alliance - Wetlands"] .. " (23-24)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -592,7 +592,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
-    label = L["Forever - Alliance - Wetlands (Alternative)"],
+    label = L["Forever - Alliance - Wetlands (Alternative)"] .. " (22-24)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1409,7 +1409,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Alternative"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
-    label = L["Forever - Alliance - Wetlands / Hillsbrad Foothills"],
+    label = L["Forever - Alliance - Wetlands / Hillsbrad Foothills"] .. " (27-29)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -2924,7 +2924,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hunter"] = {
-    label = L["Forever - Alliance - Wetlands"],
+    label = L["Forever - Alliance - Wetlands"] .. " (23-24)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

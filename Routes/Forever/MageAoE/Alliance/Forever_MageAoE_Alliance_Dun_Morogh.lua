@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Dun-Morogh-Human-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Dun Morogh (Experienced)"],
+    label = L["Forever - Alliance - Mage AoE - Dun Morogh (Experienced)"] .. " (10-11)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -517,7 +517,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Dun-Morogh-Human-Advanced"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
-    label = L["Forever - Alliance - Mage AoE - Starting Zone Gnome"],
+    label = L["Forever - Alliance - Mage AoE - Starting Zone Gnome"] .. " (1-10)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1629,7 +1629,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Starting Zone Gnome (Experienced)"],
+    label = L["Forever - Alliance - Mage AoE - Starting Zone Gnome (Experienced)"] .. " (1-10)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

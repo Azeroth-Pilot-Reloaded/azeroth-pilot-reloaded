@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
-    label = L["Forever - Horde - Southern Barrens / Stonetalon Mountains"],
+    label = L["Forever - Horde - Southern Barrens / Stonetalon Mountains"] .. " (24-26)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

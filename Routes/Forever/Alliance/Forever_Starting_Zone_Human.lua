@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
-    label = L["Forever - Alliance - Elwynn Forest"],
+    label = L["Forever - Alliance - Elwynn Forest"] .. " (11-12)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -857,7 +857,7 @@ APR.RouteQuestStepList["Forever-Alliance-Elwynn-Forest"] = {
 }
 
 APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
-    label = L["Forever - Starting Zone Human"],
+    label = L["Forever - Starting Zone Human"] .. " (1-11)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

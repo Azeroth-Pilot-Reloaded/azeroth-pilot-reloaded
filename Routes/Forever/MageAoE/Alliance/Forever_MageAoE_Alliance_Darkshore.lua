@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore"],
+    label = L["Forever - Alliance - Mage AoE - Darkshore"] .. " (12-18)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1408,7 +1408,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-1-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore 1 (Experienced)"],
+    label = L["Forever - Alliance - Mage AoE - Darkshore 1 (Experienced)"] .. " (10-12)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -2596,7 +2596,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-1-Advanced"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-1-Alternative-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore 1 Alternative (Experienced)"],
+    label = L["Forever - Alliance - Mage AoE - Darkshore 1 Alternative (Experienced)"] .. " (10-12)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -3771,7 +3771,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-1-Alternative-Advance
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-2-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore 2 (Experienced)"],
+    label = L["Forever - Alliance - Mage AoE - Darkshore 2 (Experienced)"] .. " (14-16)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -4638,7 +4638,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-2-Advanced"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-3-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore 3 (Experienced)"],
+    label = L["Forever - Alliance - Mage AoE - Darkshore 3 (Experienced)"] .. " (18-20)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

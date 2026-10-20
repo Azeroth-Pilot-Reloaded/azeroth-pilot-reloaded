@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
-    label = L["Forever - Alliance - Desolace (First Visit)"],
+    label = L["Forever - Alliance - Desolace (First Visit)"] .. " (35-37)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -770,7 +770,7 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-First-Visit"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
-    label = L["Forever - Alliance - Desolace"],
+    label = L["Forever - Alliance - Desolace"] .. " (35-36)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -1455,7 +1455,7 @@ APR.RouteQuestStepList["Forever-Alliance-Desolace-Hunter"] = {
 }
 
 APR.RouteQuestStepList["Forever-Alliance-Desolace-Second-Visit"] = {
-    label = L["Forever - Alliance - Desolace (Second Visit)"],
+    label = L["Forever - Alliance - Desolace (Second Visit)"] .. " (40-41)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
