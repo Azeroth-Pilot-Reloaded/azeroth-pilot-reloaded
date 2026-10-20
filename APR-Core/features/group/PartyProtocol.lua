@@ -65,6 +65,19 @@ function protocol.NormalizeSnapshot(data, sender)
         return nil, "progress_range"
     end
     result.currentStep, result.totalSteps = data.currentStep, data.totalSteps
+    if data.routeProgress ~= nil then
+        local progress = data.routeProgress
+        if type(progress) ~= "table" or type(progress.id) ~= "string" or #progress.id > 64
+            or not IsInteger(progress.step, 1) or not IsInteger(progress.total, 1)
+            or progress.step > progress.total + 1 then return nil, "route_progress" end
+        local mainIndex = progress.id:match("^main:(%d+)$")
+        local group, index = progress.id:match("^parallel:(%d+):(%d+)$")
+        local valid = mainIndex and tonumber(mainIndex) == progress.step and progress.step <= progress.total
+            or group and IsInteger(tonumber(group), 1) and IsInteger(tonumber(index), 1)
+            or progress.id == "end" and progress.step == progress.total + 1
+        if not valid or not result.routeFileName then return nil, "route_progress" end
+        result.routeProgress = { id = progress.id, step = progress.step, total = progress.total }
+    end
     local details = data.stepFrameDetails
     if details == nil then return result end
     if type(details) ~= "table" then return nil, "details_type" end

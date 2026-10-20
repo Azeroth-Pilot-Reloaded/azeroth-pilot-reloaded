@@ -220,13 +220,15 @@ local function TeamContainerOnEnter(self)
     else
         APR:AddTooltipDoubleLine(GameTooltip, string.format(L["ROUTE_LABEL"], " "), data.route, "party", "muted", "base")
 
-        if data.currentStep and data.totalSteps then
+        local currentStep = data.routeProgress and data.routeProgress.step or data.currentStep
+        local totalSteps = data.routeProgress and data.routeProgress.total or data.totalSteps
+        if currentStep and totalSteps then
             APR:AddTooltipDoubleLine(GameTooltip, string.format(L["CURRENT_STEP_LABEL"], " "),
-                data.currentStep .. " / " .. data.totalSteps, "party", "muted", "success")
+                currentStep .. " / " .. totalSteps, "party", "muted", "success")
         end
 
         local stepText = APR.party:GetStepDescription(data.routeFileName,
-            data.stepFrameDetails and data.stepFrameDetails.progress and data.stepFrameDetails.progress.index)
+            data.routeProgress and data.routeProgress.id)
         if stepText and stepText ~= "" then
             GameTooltip:AddLine(" ")
             APR:AddTooltipLine(GameTooltip, DESCRIPTION, "party", "accent")
@@ -284,7 +286,7 @@ local function AcquireTeamContainer()
         APR:RegisterFontString(container.fontIndex, "party", { role = "base", sizeDelta = 4 })
 
         container:SetScript("OnEnter", TeamContainerOnEnter)
-        container:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:287:callback#15", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        container:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:289:callback#15", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
     else
         container:SetParent(PartyFrame_TeamHolder)
         APR:SetPanelColor(container, APR.Color.defaultLightBackdrop)
@@ -293,7 +295,7 @@ local function AcquireTeamContainer()
 
     container:SetWidth(FRAME_WIDTH)
     return container
-end--[[APR_DIAG]]; AcquireTeamContainer = APRTrace("APR-Core/features/group/Party.lua:263:AcquireTeamContainer#14", AcquireTeamContainer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AcquireTeamContainer = APRTrace("APR-Core/features/group/Party.lua:265:AcquireTeamContainer#14", AcquireTeamContainer)--[[/APR_DIAG]]
 
 local function ReleaseTeamContainer(container)
     if not container then return end
@@ -303,9 +305,9 @@ local function ReleaseTeamContainer(container)
     if container.fontName then container.fontName:SetText("") end
     if container.fontIndex then container.fontIndex:SetText("") end
     table.insert(APR.party.containerPool, container)
-end--[[APR_DIAG]]; ReleaseTeamContainer = APRTrace("APR-Core/features/group/Party.lua:298:ReleaseTeamContainer#16", ReleaseTeamContainer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ReleaseTeamContainer = APRTrace("APR-Core/features/group/Party.lua:300:ReleaseTeamContainer#16", ReleaseTeamContainer)--[[/APR_DIAG]]
 
-local AddTeamMate = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:308:callback#17", --[[/APR_DIAG]]function(playerData, isSameRoute, color, container)
+local AddTeamMate = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:310:callback#17", --[[/APR_DIAG]]function(playerData, isSameRoute, color, container)
     container = container or AcquireTeamContainer()
     container.playerData = playerData
 
@@ -317,8 +319,9 @@ local AddTeamMate = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:30
         container.fontName:SetWidth(FRAME_WIDTH - 50)
     end
 
-    if playerData.currentStep then
-        container.fontIndex:SetText(playerData.currentStep)
+    local currentStep = playerData.routeProgress and playerData.routeProgress.step or playerData.currentStep
+    if currentStep then
+        container.fontIndex:SetText(currentStep)
     else
         container.fontIndex:SetText('-')
     end
@@ -338,14 +341,9 @@ local AddTeamMate = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:30
 end--[[APR_DIAG]])--[[/APR_DIAG]]
 
 
-function APR.party:GetStepDescription(route, stepIndex)
-    if not route or not stepIndex then return '' end
-
-    local routeData = APR.RouteQuestStepList[route]
-    if not routeData then return '' end
-
-    local routeTable = APR:GetRouteSteps(route)
-    local step = routeTable[stepIndex]
+function APR.party:GetStepDescription(route, stepID)
+    if not route or not stepID then return '' end
+    local step = APR:GetGroupRouteStep(route, stepID)
     if not step then return '' end
 
     local stepText = APR:GetStepString(step)
@@ -359,7 +357,7 @@ function APR.party:GetStepDescription(route, stepIndex)
             table.insert(questIDs, qid)
             added[qid] = true
         end
-    end--[[APR_DIAG]]; AddQuestID = APRTrace("APR-Core/features/group/Party.lua:357:AddQuestID#19", AddQuestID)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; AddQuestID = APRTrace("APR-Core/features/group/Party.lua:355:AddQuestID#19", AddQuestID)--[[/APR_DIAG]]
 
     -- PickUp
     if step.PickUp then
@@ -400,7 +398,7 @@ function APR.party:GetStepDescription(route, stepIndex)
     end
 
     return stepText
-end--[[APR_DIAG]]; APR.party.GetStepDescription = APRTrace("APR-Core/features/group/Party.lua:341:APR.party:GetStepDescription#18", APR.party.GetStepDescription)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.GetStepDescription = APRTrace("APR-Core/features/group/Party.lua:344:APR.party:GetStepDescription#18", APR.party.GetStepDescription)--[[/APR_DIAG]]
 
 function APR.party:UpdateTeamMate(playerData, isSameRoute, color)
     local username = playerData.username
@@ -409,7 +407,7 @@ function APR.party:UpdateTeamMate(playerData, isSameRoute, color)
 
     local container = AddTeamMate(playerData, isSameRoute, color, existingContainer)
     self.teamList[username] = container
-end--[[APR_DIAG]]; APR.party.UpdateTeamMate = APRTrace("APR-Core/features/group/Party.lua:405:APR.party:UpdateTeamMate#20", APR.party.UpdateTeamMate)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.UpdateTeamMate = APRTrace("APR-Core/features/group/Party.lua:403:APR.party:UpdateTeamMate#20", APR.party.UpdateTeamMate)--[[/APR_DIAG]]
 
 function APR.party:ReOrderTeam(order)
     FRAME_MATE_HOLDER_HEIGHT = FRAME_OFFSET
@@ -433,7 +431,7 @@ function APR.party:ReOrderTeam(order)
         end
     end
 
-    table.sort(orderedNames, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:436:callback#22", --[[/APR_DIAG]]function(a, b)
+    table.sort(orderedNames, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:434:callback#22", --[[/APR_DIAG]]function(a, b)
         return string.lower(a) < string.lower(b)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
@@ -449,7 +447,7 @@ function APR.party:ReOrderTeam(order)
     end
 
     self:RefreshPartyFrameAnchor()
-end--[[APR_DIAG]]; APR.party.ReOrderTeam = APRTrace("APR-Core/features/group/Party.lua:414:APR.party:ReOrderTeam#21", APR.party.ReOrderTeam)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.ReOrderTeam = APRTrace("APR-Core/features/group/Party.lua:412:APR.party:ReOrderTeam#21", APR.party.ReOrderTeam)--[[/APR_DIAG]]
 
 function APR.party:RefreshTextLayout()
     for _, container in pairs(self.teamList) do
@@ -458,7 +456,7 @@ function APR.party:RefreshTextLayout()
         container:SetHeight(modernList and math.max(30, height + 2) or height)
     end
     self:ReOrderTeam()
-end--[[APR_DIAG]]; APR.party.RefreshTextLayout = APRTrace("APR-Core/features/group/Party.lua:454:APR.party:RefreshTextLayout#23", APR.party.RefreshTextLayout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.RefreshTextLayout = APRTrace("APR-Core/features/group/Party.lua:452:APR.party:RefreshTextLayout#23", APR.party.RefreshTextLayout)--[[/APR_DIAG]]
 
 function APR.party:RemoveMateByName(name, skipReorder)
     local existingMate = self.teamList[name]
@@ -470,7 +468,7 @@ function APR.party:RemoveMateByName(name, skipReorder)
     if not skipReorder then
         self:ReOrderTeam()
     end
-end--[[APR_DIAG]]; APR.party.RemoveMateByName = APRTrace("APR-Core/features/group/Party.lua:463:APR.party:RemoveMateByName#24", APR.party.RemoveMateByName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.RemoveMateByName = APRTrace("APR-Core/features/group/Party.lua:461:APR.party:RemoveMateByName#24", APR.party.RemoveMateByName)--[[/APR_DIAG]]
 
 function APR.party:RemoveTeam()
     APR:Debug("Function: APR.party:RemoveTeam()")
@@ -488,7 +486,7 @@ function APR.party:RemoveTeam()
         self.fragmentCleanupTicker = nil
     end
     FRAME_MATE_HOLDER_HEIGHT = FRAME_OFFSET
-end--[[APR_DIAG]]; APR.party.RemoveTeam = APRTrace("APR-Core/features/group/Party.lua:475:APR.party:RemoveTeam#25", APR.party.RemoveTeam)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.RemoveTeam = APRTrace("APR-Core/features/group/Party.lua:473:APR.party:RemoveTeam#25", APR.party.RemoveTeam)--[[/APR_DIAG]]
 
 
 function APR.party:PopulateMissingGroupMembers(skipReorder)
@@ -518,7 +516,7 @@ function APR.party:PopulateMissingGroupMembers(skipReorder)
     if not skipReorder then
         self:ReOrderTeam()
     end
-end--[[APR_DIAG]]; APR.party.PopulateMissingGroupMembers = APRTrace("APR-Core/features/group/Party.lua:494:APR.party:PopulateMissingGroupMembers#26", APR.party.PopulateMissingGroupMembers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.PopulateMissingGroupMembers = APRTrace("APR-Core/features/group/Party.lua:492:APR.party:PopulateMissingGroupMembers#26", APR.party.PopulateMissingGroupMembers)--[[/APR_DIAG]]
 
 function APR.party:CheckIfPartyMemberIsFriend()
     -- If Player is NOT in a Group (not instance), do nothing
@@ -540,7 +538,7 @@ function APR.party:CheckIfPartyMemberIsFriend()
     end
 
     return false
-end--[[APR_DIAG]]; APR.party.CheckIfPartyMemberIsFriend = APRTrace("APR-Core/features/group/Party.lua:523:APR.party:CheckIfPartyMemberIsFriend#27", APR.party.CheckIfPartyMemberIsFriend)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.CheckIfPartyMemberIsFriend = APRTrace("APR-Core/features/group/Party.lua:521:APR.party:CheckIfPartyMemberIsFriend#27", APR.party.CheckIfPartyMemberIsFriend)--[[/APR_DIAG]]
 
 function APR.party:GetFriendsList()
     -- Get Number of Friends online (WoW and BNet)
@@ -566,11 +564,11 @@ function APR.party:GetFriendsList()
     end
 
     return FriendListTable
-end--[[APR_DIAG]]; APR.party.GetFriendsList = APRTrace("APR-Core/features/group/Party.lua:545:APR.party:GetFriendsList#28", APR.party.GetFriendsList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.GetFriendsList = APRTrace("APR-Core/features/group/Party.lua:543:APR.party:GetFriendsList#28", APR.party.GetFriendsList)--[[/APR_DIAG]]
 
 function APR.party:SendGroupMessage(force)
     self:QueueGroupMessage(force)
-end--[[APR_DIAG]]; APR.party.SendGroupMessage = APRTrace("APR-Core/features/group/Party.lua:571:APR.party:SendGroupMessage#29", APR.party.SendGroupMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.SendGroupMessage = APRTrace("APR-Core/features/group/Party.lua:569:APR.party:SendGroupMessage#29", APR.party.SendGroupMessage)--[[/APR_DIAG]]
 
 function APR.party:BuildGroupPayload(username)
     local routeFileName = APR.ActiveRoute
@@ -590,10 +588,12 @@ function APR.party:BuildGroupPayload(username)
         totalSteps = stepDetails and stepDetails.progress.total or 0,
         username = username or APR.Username,
         stepFrameDetails = stepDetails,
+        routeProgress = APR.GetGroupRouteProgress and APR:GetGroupRouteProgress(routeFileName,
+            stepDetails and stepDetails.progress.index) or nil,
         sojournerSkipCampaign = APR.settings and APR.settings.profile
             and APR.settings.profile.sojournerSkipCampaign or false,
     }
-end--[[APR_DIAG]]; APR.party.BuildGroupPayload = APRTrace("APR-Core/features/group/Party.lua:575:APR.party:BuildGroupPayload#30", APR.party.BuildGroupPayload)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.BuildGroupPayload = APRTrace("APR-Core/features/group/Party.lua:573:APR.party:BuildGroupPayload#30", APR.party.BuildGroupPayload)--[[/APR_DIAG]]
 
 local function SerializeGroupPayload(data)
     -- Only transmit fields the receiving UI consumes; keep the richer local snapshot.
@@ -601,7 +601,7 @@ local function SerializeGroupPayload(data)
     if not wire then
         wire = {}
         for _, field in ipairs({ "username", "route", "routeFileName", "currentStep", "totalSteps",
-            "sojournerSkipCampaign" }) do
+            "sojournerSkipCampaign", "routeProgress" }) do
             wire[field] = data[field]
         end
         wire.stepFrameDetails = data.stepFrameDetails and { progress = data.stepFrameDetails.progress } or nil
@@ -706,32 +706,32 @@ end--[[APR_DIAG]]; APR.party.SendGroupMessageDelete = APRTrace("APR-Core/feature
 UpdateGroupStep = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:706:callback#38", --[[/APR_DIAG]]function()
     APR:Debug("Function: APR.party:UpdateGroupStep()")
     local sortedGroup = {}
-    local highestStepOnSameRoute = 0
     local playerData = APR.party.GroupListSteps[APR.Username]
-    local currentRoute = playerData and playerData.route
+    local currentRoute = playerData and playerData.routeFileName
+    local playerProgress = playerData and playerData.routeProgress
 
     for _, groupData in pairs(APR.party.GroupListSteps) do
         table.insert(sortedGroup, groupData)
-        -- We only take players on the same route to compare the step
-        if currentRoute and groupData.route == currentRoute and groupData.currentStep then
-            highestStepOnSameRoute = math.max(highestStepOnSameRoute, groupData.currentStep)
-        end
     end
 
     -- Username alphabetical sorting
-    table.sort(sortedGroup, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:722:callback#39", --[[/APR_DIAG]]function(a, b)
+    table.sort(sortedGroup, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:718:callback#39", --[[/APR_DIAG]]function(a, b)
         return string.lower(a.username) < string.lower(b.username)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     for _, groupData in ipairs(sortedGroup) do
-        local isSameRoute = currentRoute and groupData.route == currentRoute
+        local progress = groupData.routeProgress
+        -- Legacy counters and effective indices are character-specific. Show them
+        -- neutrally until the peer can supply a stable definition position.
+        local isComparable = currentRoute and groupData.routeFileName == currentRoute
+            and playerProgress and progress and playerProgress.total == progress.total
         local color = "gray"
 
-        if isSameRoute then
-            color = groupData.currentStep == highestStepOnSameRoute and "green" or "yellow"
+        if isComparable then
+            color = progress.id == playerProgress.id and progress.step == playerProgress.step and "green" or "yellow"
         end
 
-        APR.party:UpdateTeamMate(groupData, isSameRoute, color)
+        APR.party:UpdateTeamMate(groupData, isComparable, color)
     end
 
     APR.party:PopulateMissingGroupMembers(true)

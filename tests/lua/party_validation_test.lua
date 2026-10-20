@@ -34,6 +34,25 @@ assert(protocol.NormalizeSnapshot(data, "Player-Home").unused == nil, "Unknown/c
 data = snapshot(); data.stepFrameDetails = nil; data.currentStep = nil; data.totalSteps = 0; data.route = nil
 assert(protocol.NormalizeSnapshot(data, "Player-Home"), "Peers without a route remain compatible")
 
+data = snapshot(); data.routeProgress = { id = "main:7", step = 7, total = 12, unused = {} }
+clean = assert(protocol.NormalizeSnapshot(data, "Player-Home"))
+assert(clean.routeProgress.id == "main:7" and clean.routeProgress.unused == nil)
+for _, progress in ipairs({
+    "7", {}, { id = "main:7", step = 6, total = 12 },
+    { id = "main:13", step = 13, total = 12 }, { id = "main:0", step = 0, total = 12 },
+    { id = "parallel:0:1", step = 7, total = 12 }, { id = "parallel:1:0", step = 7, total = 12 },
+    { id = "parallel:1:2", step = 14, total = 12 }, { id = "end", step = 12, total = 12 },
+    { id = "main:7", step = "7", total = 12 }, { id = "main:7", step = 7, total = math.huge },
+    { id = "unknown:7", step = 7, total = 12 }, { id = string.rep("x", 65), step = 7, total = 12 },
+}) do
+    data = snapshot(); data.routeProgress = progress
+    assert(not protocol.NormalizeSnapshot(data, "Player-Home"), "Invalid stable positions are rejected")
+end
+for _, progress in ipairs({ { id = "parallel:1:2", step = 7, total = 12 }, { id = "end", step = 13, total = 12 } }) do
+    data = snapshot(); data.routeProgress = progress
+    assert(protocol.NormalizeSnapshot(data, "Player-Home"))
+end
+
 data = snapshot()
 local started = os.clock()
 for _ = 1, 10000 do assert(protocol.NormalizeSnapshot(data, "Player-Home")) end

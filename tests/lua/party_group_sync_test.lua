@@ -3,6 +3,8 @@ local env = dofile("tests/lua/route_ui_test_env.lua")
 local setText = env.methods.SetText
 function env.methods:SetText(value) setText(self, value ~= nil and tostring(value) or "") end
 local uiLibStub, createFrame = LibStub, CreateFrame
+local partyLocale = setmetatable({ ROUTE_LABEL = "Route %s", CURRENT_STEP_LABEL = "Step %s" },
+    { __index = function(_, key) return key end })
 strmatch = string.match
 LibStub = nil
 dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
@@ -10,6 +12,7 @@ dofile("APR-Core/libs/AceSerializer-3.0/AceSerializer-3.0.lua")
 local serializer = LibStub("AceSerializer-3.0")
 LibStub = function(name)
     if name == "AceSerializer-3.0" then return serializer end
+    if name == "AceLocale-3.0" then return { GetLocale = function() return partyLocale end } end
     return uiLibStub(name)
 end
 function CreateFrame(kind, name, parent, template)
@@ -76,15 +79,18 @@ dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/features/group/PartyProtocol.lua")
 dofile("APR-Core/features/group/Party.lua")
 local party = APR.party
-local function receive(username, sender, step, channel)
-    local payload = party:BuildGroupPayload(username)
-    payload.currentStep, payload.stepFrameDetails.progress.step = step, step
+local function receivePayload(payload, sender, channel)
     local start = #sent + 1
     APR:SendAddonMessageSplit("APRPartyData", serializer:Serialize(payload), channel or "PARTY")
     for index = #sent, start, -1 do
         local fragment = sent[index]
         party:GroupUpdateHandler(fragment.prefix, fragment.message, fragment.channel, sender)
     end
+end
+local function receive(username, sender, step, channel)
+    local payload = party:BuildGroupPayload(username)
+    payload.currentStep, payload.stepFrameDetails.progress.step = step, step
+    receivePayload(payload, sender, channel)
 end
 
 party:SendGroupMessage(true)
@@ -266,3 +272,126 @@ grouped = false
 party:PopulateMissingGroupMembers()
 assert(not next(party.teamList) and not next(party.GroupListSteps))
 print("Party sync: real wire roundtrip, realms, raid silence, burst coalescing, deduplication, byte limits and transport backpressure passed")
+
+-- Character-specific counters and inserted profession quests must not affect
+-- either the shared party number, its synchronization color, or its tooltip.
+dofile("APR-Core/data/models/Enums.lua")
+dofile("APR-Core/features/questing/RouteManager.lua")
+function APR:IsDelveRoute() return false end
+local optional = false
+function APR:AreConditionalFiltersMet() return optional end
+local route = { label = "Shared route", steps = {}, parallelSteps = {
+    { steps = { { Note = "Profession pickup" }, { Note = "Profession hand-in" } } },
+    { conditions = { ItemCount = { [42] = 1 } }, steps = { { UseItem = { itemID = 42 } } }, repeatable = true },
+} }
+for index = 1, 1135 do route.steps[index] = { Note = "Main " .. index } end
+APR.RouteQuestStepList = { shared = route, other = { label = route.label, steps = route.steps } }
+APR.ActiveRoute, APR.PlayerID = "shared", "local"
+APRData = { ["local"] = { shared = 50 }, peer = { shared = 107 } }
+optional = true
+assert(#APR:GetRouteSteps("shared") == 1138)
+optional = false
+APRData["local"].shared = 110 -- two profession steps and one copied item action precede main step 107
+local personalStep = 107
+function APR.currentStep:GetCurrentStepDetails()
+    return { progress = { index = APRData[APR.PlayerID].shared, step = personalStep, total = 1135 } }
+end
+grouped, raid, instance = true, false, false
+roster = { party1 = { "Peer", "Home" } }
+party:RemoveTeam()
+advance(2)
+party:SendGroupMessage(true)
+assert(party.GroupListSteps.Local.routeProgress.id == "main:107")
+APR.PlayerID, personalStep = "peer", 105
+local peer = party:BuildGroupPayload("Peer")
+assert(peer.routeProgress.id == "main:107" and peer.stepFrameDetails.progress.index == 107)
+APR.PlayerID, personalStep = "local", 107
+receivePayload(peer, "Peer-Home")
+assert(party.GroupListSteps.Peer.currentStep == 105 and party.GroupListSteps.Local.currentStep == 107)
+assert(party.teamList.Local.fontIndex.text == "107" and party.teamList.Peer.fontIndex.text == "107")
+assert(party.teamList.Local.fontIndex.role == "success" and party.teamList.Peer.fontIndex.role == "success",
+    "Different personal counts and effective indices still identify the same main step")
+function APR:GetStepString(step) return step.Note or "Item action" end
+assert(party:GetStepDescription("shared", peer.routeProgress.id) == "Main 107",
+    "Remote descriptions must not resolve against our shifted effective index")
+
+APR.PlayerID, personalStep = "peer", 104
+APRData.peer.shared = 106
+peer = party:BuildGroupPayload("Peer")
+APR.PlayerID, personalStep = "local", 107
+receivePayload(peer, "Peer-Home")
+assert(party.teamList.Peer.fontIndex.text == "106" and party.teamList.Peer.fontIndex.role == "warning",
+    "A member actually on another main step remains out of sync")
+peer.routeFileName = "other"
+receivePayload(peer, "Peer-Home")
+assert(party.teamList.Peer.fontIndex.role == "muted", "Identical route labels do not identify the same route")
+peer.routeFileName, peer.routeProgress = "shared", nil
+receivePayload(peer, "Peer-Home")
+assert(party.teamList.Peer.fontIndex.text == "104" and party.teamList.Peer.fontIndex.role == "muted",
+    "Legacy peers remain visible without comparing character-specific counts")
+assert(party:GetStepDescription("shared", nil) == "", "Unknown legacy positions cannot invent a description")
+peer.routeProgress = { id = "main:106", step = 106, total = 1136 }
+receivePayload(peer, "Peer-Home")
+assert(party.teamList.Peer.fontIndex.role == "muted", "Different definition totals are not comparable")
+
+local pickup = APR:GetGroupRouteProgress("shared", 50)
+local handin = APR:GetGroupRouteProgress("shared", 51)
+local item = APR:GetGroupRouteProgress("shared", 52)
+assert(pickup.id == "parallel:1:1" and handin.id == "parallel:1:2" and pickup.step == 50)
+assert(item.id == "parallel:2:1" and item.step == 50,
+    "Runtime copies keep their definition identity, including repeatable item actions")
+assert(APR:GetGroupRouteStep("shared", pickup.id) == route.parallelSteps[1].steps[1])
+assert(APR:GetGroupRouteProgress("shared", 53).id == "main:50")
+peer.routeProgress = pickup
+APRData["local"].shared = 51
+advance(2)
+party:SendGroupMessage(true)
+receivePayload(peer, "Peer-Home")
+assert(party.teamList.Peer.fontIndex.text == "50" and party.teamList.Local.fontIndex.text == "50")
+assert(party.teamList.Peer.fontIndex.role == "warning", "Different optional actions at the same anchor are distinct")
+peer.routeProgress = handin
+receivePayload(peer, "Peer-Home")
+assert(party.teamList.Peer.fontIndex.role == "success", "Matching optional actions are synchronized")
+
+APRData["local"].shared = 1139
+local finished = APR:GetGroupRouteProgress("shared", 1139)
+assert(finished.id == "end" and finished.step == 1136 and finished.total == 1135)
+assert(not APR:GetGroupRouteProgress("shared", 1140))
+assert(not APR:GetGroupRouteStep("shared", "end"))
+APR.RouteQuestStepList.legacy = route.steps
+assert(APR:GetGroupRouteProgress("legacy", 107).id == "main:107", "Flat custom route definitions still work")
+assert(APR:GetGroupRouteStep("legacy", "main:107") == route.steps[107])
+
+-- Tooltips use the same common number as the row, while retaining personal
+-- progress on the wire for older addon versions.
+local tooltipProgress
+function APR:AddTooltipLine() end
+function APR:AddTooltipDoubleLine(_, label, value)
+    if label == "Step  " then tooltipProgress = value end
+end
+function GameTooltip:ClearLines() end
+function GameTooltip:AddLine() end
+peer.routeProgress = { id = "main:107", step = 107, total = 1135 }
+receivePayload(peer, "Peer-Home")
+party.teamList.Peer.scripts.OnEnter(party.teamList.Peer)
+assert(tooltipProgress == "107 / 1135")
+
+-- Scenario selection and temporary parent prefixes also change effective indices.
+local blocks = { { scenarioID = 1, steps = { { Note = "Scenario one" } } },
+    { scenarioID = 2, steps = { { Note = "Scenario two" }, { Note = "Scenario two finish" } } } }
+APR.RouteQuestStepList.scenario = { scenarios = blocks }
+function APR:GetDelveScenarioBlocks(key) return key == "scenario" and blocks or nil end
+function APR:IsDelveRoute(key) return key == "scenario" end
+function APR:HasDelveScenarioBlock(key, scenarioID) return key == "scenario" and scenarioID == 2 end
+function APR:GetCurrentDelveContext() return { scenarioID = 2 } end
+function APR:GetTemporaryRouteSteps(_, steps)
+    local result = { { Note = "Parent prefix" } }
+    for _, step in ipairs(steps) do result[#result + 1] = step end
+    return result
+end
+APR.ActiveRoute = "scenario"
+assert(not APR:GetGroupRouteProgress("scenario", 1), "Unmapped prefixes must not invent a common position")
+local scenarioProgress = APR:GetGroupRouteProgress("scenario", 2)
+assert(scenarioProgress.id == "main:2" and scenarioProgress.total == 3)
+assert(APR:GetGroupRouteStep("scenario", scenarioProgress.id) == blocks[2].steps[1])
+print("Party progress: shared numbering, profession branches, copied steps, route keys, descriptions, legacy peers and completion passed")
