@@ -1348,7 +1348,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Starting Zone Human (Experienced)"] .. " (1-10)",
+    label = L["Forever - Alliance - Mage AoE - Starting Zone Human (Hard)"] .. " (1-10)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

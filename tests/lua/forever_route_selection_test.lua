@@ -85,7 +85,7 @@ for _, case in ipairs({{"Human", 1, 9}, {"Gnome", 7, 9}, {"Skyborne", 97, 8}}) d
     assert(#APRCustomPath.player == case[3], case[1] .. " Mage chain")
     assert(APRCustomPath.player[#APRCustomPath.player] == APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"].label)
     for _, label in ipairs(APRCustomPath.player) do
-        assert(label:find("Mage AoE", 1, true) and not label:find("Experienced", 1, true))
+        assert(label:find("Mage AoE", 1, true) and not label:find("Hard", 1, true))
     end
 end
 assert(not messages)

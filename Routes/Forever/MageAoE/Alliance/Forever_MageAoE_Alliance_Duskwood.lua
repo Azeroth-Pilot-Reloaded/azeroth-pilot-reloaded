@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Duskwood (Experienced)"] .. " (27-32)",
+    label = L["Forever - Alliance - Mage AoE - Duskwood (Hard)"] .. " (27-32)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

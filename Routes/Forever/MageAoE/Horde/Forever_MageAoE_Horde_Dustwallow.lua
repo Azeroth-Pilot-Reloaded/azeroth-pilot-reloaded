@@ -1,7 +1,7 @@
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Horde-Leveling-Camps"] = {
-    label = L["Forever - Horde - Mage AoE - Dustwallow / Tanaris / Plaguelands (36-60)"] .. " (36-60)",
+    label = L["Forever - Horde - Mage AoE - Dustwallow / Tanaris / Plaguelands"],
     prefab = { [APR.PREFAB_TYPES.Leveling] = 7 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,

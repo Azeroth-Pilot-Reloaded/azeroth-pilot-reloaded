@@ -822,7 +822,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Hillsbrad (Experienced)"] .. " (32-33)",
+    label = L["Forever - Alliance - Mage AoE - Hillsbrad (Hard)"] .. " (32-33)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

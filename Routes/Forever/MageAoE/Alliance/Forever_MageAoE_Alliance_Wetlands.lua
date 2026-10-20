@@ -944,7 +944,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Wetlands-1-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Wetlands 1 (Experienced)"] .. " (22-26)",
+    label = L["Forever - Alliance - Mage AoE - Wetlands 1 (Hard)"] .. " (22-26)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

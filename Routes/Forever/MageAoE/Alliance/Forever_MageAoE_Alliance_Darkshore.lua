@@ -1409,7 +1409,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-1-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore 1 (Experienced)"] .. " (10-12)",
+    label = L["Forever - Alliance - Mage AoE - Darkshore 1 (Hard)"] .. " (10-12)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -2597,7 +2597,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-1-Advanced"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-1-Alternative-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore 1 Alternative (Experienced)"] .. " (10-12)",
+    label = L["Forever - Alliance - Mage AoE - Darkshore 1 Alternative (Hard)"] .. " (10-12)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -3772,7 +3772,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-1-Alternative-Advance
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-2-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore 2 (Experienced)"] .. " (14-16)",
+    label = L["Forever - Alliance - Mage AoE - Darkshore 2 (Hard)"] .. " (14-16)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -4639,7 +4639,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-2-Advanced"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Darkshore-3-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Darkshore 3 (Experienced)"] .. " (18-20)",
+    label = L["Forever - Alliance - Mage AoE - Darkshore 3 (Hard)"] .. " (18-20)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

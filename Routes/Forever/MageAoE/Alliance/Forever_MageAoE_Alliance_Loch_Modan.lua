@@ -1164,7 +1164,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan"] = {
 }
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Loch-Modan-Advanced"] = {
-    label = L["Forever - Alliance - Mage AoE - Loch Modan (Experienced)"] .. " (12-14)",
+    label = L["Forever - Alliance - Mage AoE - Loch Modan (Hard)"] .. " (12-14)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
