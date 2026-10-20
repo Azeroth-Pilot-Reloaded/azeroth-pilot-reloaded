@@ -3,8 +3,13 @@ local L = setmetatable({ MANUAL_SKIP = "Manually skip this step if it does not c
 BOSS, ENTER_DUNGEON, LEAVE_ZONE = "Boss", "Enter Dungeon", "Leave %s"
 function LibStub() return { GetLocale = function() return L end } end
 local eventHandler
+WOW_PROJECT_ID, WOW_PROJECT_CAMELOT = 14, 14
+local registered = {}
 function CreateFrame()
-    return { RegisterEvent = function() end, SetScript = function(_, _, fn) eventHandler = fn end }
+    return {
+        RegisterEvent = function(_, event) registered[event] = true end,
+        SetScript = function(_, _, fn) eventHandler = fn end,
+    }
 end
 local inside, instanceID, instanceType = false, 0, "none"
 function IsInInstance() return inside, instanceType end
@@ -19,6 +24,7 @@ function APR:UpdateNextStep() advanced = advanced + 1 end
 function APR:UpdateStep() refreshes = refreshes + 1 end
 function APR.currentStep:AddQuestSteps(_, text) table.insert(labels, text) end
 dofile("APR-Core/utils/DungeonUtils.lua")
+assert(registered.COMBAT_LOG_EVENT_UNFILTERED, "Forever must retain automatic boss death tracking")
 dofile("APR-Core/features/questing/StepTravelHandlers.lua")
 
 -- New dungeon travel must never call the scenario APIs or pass a nil quest ID.

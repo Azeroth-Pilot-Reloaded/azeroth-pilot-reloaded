@@ -131,10 +131,14 @@ end--[[APR_DIAG]]; APR.RenderDungeonTravel = APRTrace("APR-Core/utils/DungeonUti
 -- No target-health polling: an unseen or previously killed boss needs explicit
 -- manual completion. Deaths observed elsewhere or in another dungeon never count.
 local events = CreateFrame("Frame")
-events:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+-- Boss death tracking is only used by Forever routes. Retail protects combat-log
+-- registration; do not attempt it, even through pcall or an event-validity check.
+if WOW_PROJECT_CAMELOT and WOW_PROJECT_ID == WOW_PROJECT_CAMELOT then
+    events:RegisterEvent("COMBAT_LOG_EVENT_UNFILTERED")
+end
 events:RegisterEvent("ZONE_CHANGED_NEW_AREA")
 events:RegisterEvent("PLAYER_ENTERING_WORLD")
-events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/DungeonUtils.lua:137:callback#12", --[[/APR_DIAG]]function(_, event)
+events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/DungeonUtils.lua:141:callback#12", --[[/APR_DIAG]]function(_, event)
     if not APR.ActiveRoute or not APR.settings or not APR.settings.profile.enableAddon then return end
     local step = APR:GetCurrentStep()
     if not dungeonKey(step) then return end
