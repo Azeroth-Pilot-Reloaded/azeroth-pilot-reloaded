@@ -76,6 +76,7 @@ assert(anchors == before + 1)
 before = anchors
 CurrentStepScreenPanel.scripts.OnUpdate(CurrentStepScreenPanel, 0.2)
 assert(anchors == before, "CurrentStep stays dormant while the shared observer is installed")
+assert(CurrentStepScreenPanel.scripts.OnUpdate == nil, "The redundant per-frame fallback uninstalls itself")
 profile.enableAddon = false
 local previousAppearances = appearances
 for _ = 1, 10 do tick() end

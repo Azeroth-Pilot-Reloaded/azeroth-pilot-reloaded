@@ -1,7 +1,7 @@
 -- Source wrappers cover locals and callbacks, including cached references.
 -- No runtime debug hooks or modifications to Blizzard/third-party functions.
 APRInstrumentation = {enabled = false, debug = false, registry = {}, registered = 0,
-    revision = "2026-10-19.3"}
+    revision = "2026-10-20.1"}
 local D = APRInstrumentation
 local main = {depth = 0, frames = {}, paused = 0}
 local threads = setmetatable({}, {__mode = "k"})

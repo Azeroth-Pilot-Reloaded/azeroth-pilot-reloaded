@@ -131,6 +131,29 @@ graph:SetData(points, "cpuPercent", 100, tostring)
 assert(not graph.lines[119]:IsShown() and not graph.fills[119]:IsShown(), "No line or area for missing data")
 assert(graph.lines[120].startPoint[4] == graph.lines[120].endPoint[4], "An isolated reading cannot bridge a gap")
 assert(graph.fills[120]:GetHeight() <= graph.frame:GetHeight() - 12)
+local gridAnchors, fillAnchors = graph.grids[1].anchors, graph.fills[118].anchors
+local fillHides, lineHides = graph.fills[118].hideCount, graph.lines[120].hideCount
+local segment = graph.lines[120].startPoint
+for _ = 1, 20 do graph:SetData(points, "cpuPercent", 100, tostring) end
+assert(graph.grids[1].anchors == gridAnchors and graph.fills[118].anchors == fillAnchors
+    and graph.fills[118].hideCount == fillHides and graph.lines[120].hideCount == lineHides
+    and graph.lines[120].startPoint == segment,
+    "Repeated identical readings cannot mutate graph geometry or visibility")
+points[119].cpuPercent = 30
+graph:SetData(points, "cpuPercent", 100, tostring)
+assert(graph.lines[120].startPoint ~= segment and graph.lines[119]:IsShown(),
+    "A new reading redraws the segment to its unchanged neighbor")
+points[119].cpuPercent = nil
+graph:SetData(points, "cpuPercent", 100, tostring)
+assert(not graph.lines[119]:IsShown() and graph.lines[120].startPoint[4] == graph.lines[120].endPoint[4],
+    "Removing a reading restores the gap and isolated neighbor")
+local previousHeight = graph.fills[120]:GetHeight()
+graph:SetData(points, "cpuPercent", 200, tostring)
+assert(graph.fills[120]:GetHeight() < previousHeight, "Scale changes invalidate unchanged readings")
+gridAnchors = graph.grids[1].anchors
+graph.frame:SetSize(600, 200)
+graph:Draw()
+assert(graph.grids[1].anchors == gridAnchors + 1, "Resizing redraws the grid and unchanged readings")
 resources:Tooltip(graph.frame, resources.view.points[120], "memoryKB")
 resources.freeze.scripts.OnClick()
 dashboard.capture.scripts.OnClick()

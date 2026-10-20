@@ -69,36 +69,52 @@ function Graph:Draw()
     if not self.points then return end
     local frame = self.frame
     local width, height = math.max(1, frame:GetWidth() - INSET * 2), math.max(1, frame:GetHeight() - INSET - TOP_INSET)
-    for index, grid in ipairs(self.grids) do
-        grid:ClearAllPoints()
-        if index <= 3 then
-            grid:SetPoint("BOTTOMLEFT", INSET, INSET + height * index / 4)
-            grid:SetSize(width, 1)
-        else
-            grid:SetPoint("BOTTOMLEFT", INSET + width * (index - 3) / 10, INSET)
-            grid:SetSize(1, height)
+    local resized = self.drawnWidth ~= width or self.drawnHeight ~= height
+    local rescaled = resized or self.drawnMaximum ~= self.maximum
+    self.drawnValues = self.drawnValues or {}
+    if resized then
+        for index, grid in ipairs(self.grids) do
+            grid:ClearAllPoints()
+            if index <= 3 then
+                grid:SetPoint("BOTTOMLEFT", INSET, INSET + height * index / 4)
+                grid:SetSize(width, 1)
+            else
+                grid:SetPoint("BOTTOMLEFT", INSET + width * (index - 3) / 10, INSET)
+                grid:SetSize(1, height)
+            end
         end
     end
+    local previousChanged = false
     for index = 1, POINTS do
         local point, previous = self.points[index], self.points[index - 1]
         local value, previousValue = point and point[self.key], previous and previous[self.key]
-        local fill, line = self.fills[index], self.lines[index]
-        fill:Hide(); line:Hide()
-        if value then
-            local x = INSET + (index - 0.5) * width / POINTS
-            local y = INSET + value / self.maximum * height
-            fill:ClearAllPoints()
-            fill:SetPoint("BOTTOMLEFT", INSET + (index - 1) * width / POINTS, INSET)
-            fill:SetSize(width / POINTS, math.max(1, y - INSET))
-            fill:Show()
-            -- Isolated readings are short horizontal marks; never bridge missing samples.
-            local x0 = previousValue and x - width / POINTS or x - width / POINTS / 2
-            local y0 = previousValue and INSET + previousValue / self.maximum * height or y
-            line:SetStartPoint("BOTTOMLEFT", frame, x0, y0)
-            line:SetEndPoint("BOTTOMLEFT", frame, x, y)
-            line:Show()
+        local changed = rescaled or self.drawnValues[index] ~= value
+        -- A changed point also changes the segment leading into the next point.
+        if changed or previousChanged then
+            local fill, line = self.fills[index], self.lines[index]
+            if value then
+                local x = INSET + (index - 0.5) * width / POINTS
+                local y = INSET + value / self.maximum * height
+                if changed then
+                    fill:ClearAllPoints()
+                    fill:SetPoint("BOTTOMLEFT", INSET + (index - 1) * width / POINTS, INSET)
+                    fill:SetSize(width / POINTS, math.max(1, y - INSET))
+                    if not fill:IsShown() then fill:Show() end
+                end
+                -- Isolated readings are short horizontal marks; never bridge missing samples.
+                local x0 = previousValue and x - width / POINTS or x - width / POINTS / 2
+                local y0 = previousValue and INSET + previousValue / self.maximum * height or y
+                line:SetStartPoint("BOTTOMLEFT", frame, x0, y0)
+                line:SetEndPoint("BOTTOMLEFT", frame, x, y)
+                if not line:IsShown() then line:Show() end
+            else
+                if fill:IsShown() then fill:Hide() end
+                if line:IsShown() then line:Hide() end
+            end
         end
+        self.drawnValues[index], previousChanged = value, changed
     end
+    self.drawnWidth, self.drawnHeight, self.drawnMaximum = width, height, self.maximum
 end--[[APR_DIAG]]; Graph.Draw = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:68:Graph:Draw#7", Graph.Draw)--[[/APR_DIAG]]
 
 function Graph:UpdateTooltip(force)
@@ -115,4 +131,4 @@ function Graph:UpdateTooltip(force)
     self.marker:SetHeight(math.max(1, self.frame:GetHeight() - INSET * 2))
     self.marker:Show()
     self.tooltip(self.frame, self.points[index], self.key)
-end--[[APR_DIAG]]; Graph.UpdateTooltip = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:104:Graph:UpdateTooltip#8", Graph.UpdateTooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Graph.UpdateTooltip = APRTrace("APR-Core/ui/foundations/TimeSeriesGraph.lua:120:Graph:UpdateTooltip#8", Graph.UpdateTooltip)--[[/APR_DIAG]]
