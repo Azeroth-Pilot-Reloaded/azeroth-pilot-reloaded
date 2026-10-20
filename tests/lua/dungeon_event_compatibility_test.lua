@@ -1,5 +1,5 @@
--- Loading the shared dungeon helpers on Retail must never attempt protected
--- combat-log registration, even when the event and its reader still exist.
+-- Shared helpers must never attempt protected combat-log registration on either
+-- Retail or Forever, even when event-validity checks and legacy readers exist.
 function LibStub() return { GetLocale = function() return {} end } end
 function CombatLogGetCurrentEventInfo() error("Retail must not read the combat log") end
 C_EventUtils = { IsEventValid = function() return true end }
@@ -24,14 +24,16 @@ function APR:UpdateStep() refreshed = refreshed + 1 end
 
 -- Camelot constants can be present or absent on another client. In particular,
 -- two missing project constants must not accidentally compare as Forever.
-for _, project in ipairs({ { 1, 14 }, { 1 }, {} }) do
+for _, project in ipairs({ { 1, 14 }, { 1 }, {}, { 14, 14 }, { 1, 14, 16001 } }) do
     WOW_PROJECT_ID, WOW_PROJECT_CAMELOT = project[1], project[2]
+    function GetBuildInfo() return "version", "build", "date", project[3] or 120105 end
     registered = {}
     dofile("APR-Core/utils/DungeonUtils.lua")
     assert(registered.ZONE_CHANGED_NEW_AREA and registered.PLAYER_ENTERING_WORLD)
+    assert(registered.ENCOUNTER_END, "Public encounter completion must remain available")
     assert(APR.ForeverDungeons.RFC and APR.RenderDungeonKill, "Shared helpers must remain available")
     function APR:ObserveDungeonLocation() observed = observed + 1 end
     eventHandler(nil, "ZONE_CHANGED_NEW_AREA")
     eventHandler(nil, "PLAYER_ENTERING_WORLD")
 end
-assert(observed == 6 and refreshed == 6, "Safe location events must continue refreshing dungeon steps")
+assert(observed == 10 and refreshed == 10, "Safe location events must continue refreshing dungeon steps")

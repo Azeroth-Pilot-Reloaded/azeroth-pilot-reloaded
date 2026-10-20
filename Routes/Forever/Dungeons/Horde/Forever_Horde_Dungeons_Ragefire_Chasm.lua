@@ -596,7 +596,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            RaidIcon = 11517,
             _index = 67,
         },
         {
@@ -605,7 +604,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            RaidIcon = 11520,
             _index = 68,
         },
         {
@@ -623,7 +621,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            RaidIcon = 11518,
             _index = 70,
         },
         {
@@ -632,7 +629,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            RaidIcon = 11519,
             _index = 71,
         },
         {

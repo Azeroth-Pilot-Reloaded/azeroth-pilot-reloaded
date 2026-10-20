@@ -274,6 +274,16 @@ class RouteSchemaTests(unittest.TestCase):
             with self.subTest(step=step), self.assertRaises(InvalidRoute):
                 self.schema.step(step, "step")
 
+    def test_outdoor_kill_requires_explicit_map_and_dungeon_contexts_must_match(self):
+        outdoor = {"KillNPC": {"npcID": 3100, "name": "Boar"}, "Zone": 1411}
+        self.schema.step(outdoor, "step")
+        for invalid in ({"KillNPC": outdoor["KillNPC"]},
+                        {**outdoor, "Zone": seq(1411)},
+                        {**outdoor, "Dungeon": "RFC"},
+                        {"Dungeon": "RFC", "KillNPC": {"npcID": 11517, "name": "boss", "dungeonKey": "WC"}}):
+            with self.subTest(invalid=invalid), self.assertRaises(InvalidRoute):
+                self.schema.step(invalid, "step")
+
     def test_schema_covers_engine_condition_and_primary_action_names(self):
         sources = "\n".join((ROOT / path).read_text(encoding="utf8") for path in
                             ("APR-Core/utils/RouteUtils.lua", "APR-Core/utils/RouteConditions.lua"))

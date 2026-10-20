@@ -176,3 +176,27 @@ step:ProcessPendingStepButtons()
 local hearthButton = step.questsList["480-UseHS"].IconButton
 assert(hearthButton.attributes.type1 == "item" and hearthButton.attributes.item == "item:6948")
 print("Hearthstone buttons: secure toy actions, bag items and combat-deferred replacement passed")
+
+-- KillNPC supplies its own target for outdoor creatures and dungeon bosses.
+for _, definition in ipairs({
+    { KillNPC = { npcID = 3100, name = "Boar" }, Zone = 1411 },
+    { KillNPC = { npcID = 61408, name = "Adarogg", dungeonKey = "RFC" }, Dungeon = "RFC" },
+}) do
+    step:BeginContentUpdate()
+    step:Reset()
+    step:PrepareRaidIcon(definition)
+    local id = definition.KillNPC.npcID
+    step:AddQuestSteps("KillNPC_" .. id, definition.KillNPC.name, "KillNPC", false, true)
+    step:AddQuestSteps("KillHelp", "Skip manually", "KillNPC", false, true)
+    step:EndContentUpdate(true)
+    local target = step.questsList["KillNPC_" .. id .. "-KillNPC"].RaidIconButton
+    assert(target and target.npcID == id and target.attributes.type1 == "macro")
+    assert(not step.questsList["KillHelp-KillNPC"].RaidIconButton, "Only one targeting button per step")
+end
+step:PrepareRaidIcon({ RaidIcon = 123 })
+assert(step.pendingRaidIconNpcId == 123, "Legacy RaidIcon steps keep their target")
+step:PrepareRaidIcon({ DroppableQuest = { MobId = 456 } })
+assert(step.pendingRaidIconNpcId == 456, "Droppable quest targeting remains available")
+step:PrepareRaidIcon({})
+assert(not step.pendingRaidIconNpcId, "The following step does not inherit a KillNPC target")
+print("KillNPC targeting: outdoor and dungeon buttons are automatic, unique and reset between steps")

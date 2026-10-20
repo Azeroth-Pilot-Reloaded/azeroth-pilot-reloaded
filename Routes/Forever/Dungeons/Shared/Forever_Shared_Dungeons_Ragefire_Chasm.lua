@@ -22,7 +22,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            RaidIcon = 11517,
             _index = 2,
         },
         {
@@ -30,7 +29,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            RaidIcon = 11520,
             _index = 3,
         },
         {
@@ -38,7 +36,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            RaidIcon = 11518,
             _index = 4,
         },
         {
@@ -46,7 +43,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ragefire-Chasm"] = {
             NoArrow = true,
             Dungeon = "RFC",
             InstanceQuest = true,
-            RaidIcon = 11519,
             _index = 5,
         },
         {

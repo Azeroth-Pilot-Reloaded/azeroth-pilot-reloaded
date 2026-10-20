@@ -22,7 +22,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 644,
             _index = 2,
         },
         {
@@ -30,7 +29,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 642,
             _index = 3,
         },
         {
@@ -38,7 +36,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 643,
             _index = 4,
         },
         {
@@ -46,7 +43,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 1763,
             _index = 5,
         },
         {
@@ -54,7 +50,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 646,
             _index = 6,
         },
         {
@@ -62,7 +57,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 647,
             _index = 7,
         },
         {
@@ -70,7 +64,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 639,
             _index = 8,
         },
         {
@@ -78,7 +71,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 645,
             _index = 9,
         },
         {

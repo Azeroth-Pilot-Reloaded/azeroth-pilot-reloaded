@@ -763,7 +763,7 @@ end--[[APR_DIAG]]; APR.currentStep.ProcessPendingButtonResets = APRTrace("APR-Co
 
 function APR.currentStep:PrepareRaidIcon(step)
     local droppableQuest = step and step.DroppableQuest
-    local npcID = step and (step.RaidIcon or (droppableQuest and droppableQuest.MobId))
+    local npcID = step and ((step.KillNPC and step.KillNPC.npcID) or step.RaidIcon or (droppableQuest and droppableQuest.MobId))
     self.pendingRaidIconNpcId = tonumber(npcID)
     self.raidIconAdded = false
 end--[[APR_DIAG]]; APR.currentStep.PrepareRaidIcon = APRTrace("APR-Core/ui/route/CurrentStep.lua:764:APR.currentStep:PrepareRaidIcon#49", APR.currentStep.PrepareRaidIcon)--[[/APR_DIAG]]

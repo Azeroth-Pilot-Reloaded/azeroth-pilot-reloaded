@@ -22,7 +22,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            RaidIcon = 250483,
             _index = 2,
         },
         {
@@ -30,7 +29,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            RaidIcon = 250660,
             _index = 3,
         },
         {
@@ -38,7 +36,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            RaidIcon = 250657,
             _index = 4,
         },
         {

@@ -219,7 +219,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            RaidIcon = 261306,
             _index = 27,
         },
         {
@@ -258,7 +257,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            RaidIcon = 261319,
             _index = 32,
         },
         {

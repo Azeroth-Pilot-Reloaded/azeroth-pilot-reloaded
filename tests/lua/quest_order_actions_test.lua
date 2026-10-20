@@ -21,7 +21,8 @@ format = string.format
 local function no() return false end
 local function forbidden() error("A preview must not perform actions or mutate action state") end
 APR = { questOrderList = {}, questOrderListSupport = {}, PlayerID = "player", ActiveRoute = "test",
-    ActiveQuests = {}, QUEST_STATUS = { COMPLETE = 1 }, MaxLevel = 60 }
+    ActiveQuests = {}, QUEST_STATUS = { COMPLETE = 1 }, MaxLevel = 60,
+    GAME_VERSIONS = { Retail = "retail", Classic = "classic", Forever = "forever" }, interfaceVersion = 16001 }
 dofile("APR-Core/utils/PlayerUtils.lua")
 APRData = { player = { test = 1 }, NPCList = { [54] = "Vendor" } }
 local known, equipped, onQuest = {}, {}, { [10] = true }
@@ -133,6 +134,10 @@ local dungeon = render({ { EnterInstance = { dungeonKey = "ROL" } },
 assert(dungeon.stepList[1].title == "Enter Dungeon: Ruins of Lordaeron")
 assert(dungeon.stepList[2].title == "Boss: Taragaman")
 assert(dungeon.stepList[3].title == "Leave Ruins of Lordaeron")
+local outdoor = render({ { KillNPC = { npcID = 3100, name = "Boar" }, Zone = 1411 } })
+assert(outdoor.stepList[1].title == "Boar")
+assert(APR.routeActionState == nil and APRData.player.OutdoorKills == nil,
+    "An outdoor preview must not observe targets or mutate kill state")
 
 -- Loot values remain in detail rows, while known travel destinations fill the title.
 local lootStep = { LootItems = { { itemID = 20, quantity = 3 }, { itemID = 404 } } }

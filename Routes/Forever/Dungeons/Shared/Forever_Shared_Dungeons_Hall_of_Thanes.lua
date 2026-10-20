@@ -22,7 +22,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            RaidIcon = 261306,
             _index = 2,
         },
         {
@@ -30,7 +29,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            RaidIcon = 261319,
             _index = 3,
         },
         {

@@ -205,7 +205,7 @@ class RouteSchema:
                            isinstance(v, str) and re.fullmatch(r"[1-9]\d*(?:-\d+)?", v) is not None)
         self.step_fields.update({
             "Dungeon": enum(("RFC", "ROL", "WC", "HOT", "DM")),
-            "KillNPC": obj({"npcID": ID, "name": TEXT, "dungeonKey": enum(("RFC", "ROL", "WC", "HOT", "DM"))}, required=("npcID", "dungeonKey", "name")),
+            "KillNPC": obj({"npcID": ID, "name": TEXT, "dungeonKey": enum(("RFC", "ROL", "WC", "HOT", "DM"))}, required=("npcID", "name")),
             "Name": TEXT, "Note": union(TEXT, array(TEXT, 1)), "PreviewImages": array(TEXT, 1),
             "_index": ID, "_comment": TEXT, "Grind": level,
             "Coord": union(xy, multi_coord), "Coords": multi_coord,
@@ -267,6 +267,11 @@ class RouteSchema:
         step_shape = self.step
         def flight_arrival_step(value, path):
             step_shape(value, path)
+            kill = value.get("KillNPC")
+            if kill and value.get("Dungeon") and kill.get("dungeonKey") != value["Dungeon"]:
+                fail(path + ".KillNPC.dungeonKey", "KillNPC must match its Dungeon context")
+            if kill and not kill.get("dungeonKey") and not value.get("Dungeon") and type(value.get("Zone")) is not int:
+                fail(path + ".Zone", "Outdoor KillNPC requires a single explicit UI map ID")
             trigger = value.get("ZoneStepTrigger")
             if trigger and set(trigger) == {"mapID"} and not (value.get("UseFlightPath") or value.get("Waypoint")):
                 fail(path + ".ZoneStepTrigger", "Map-only arrivals require a flight or waypoint; boats, trams and zeppelins need coordinates")

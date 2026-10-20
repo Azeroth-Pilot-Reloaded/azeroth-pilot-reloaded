@@ -346,7 +346,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            RaidIcon = 250483,
             _index = 37,
         },
         {
@@ -354,7 +353,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            RaidIcon = 250660,
             _index = 38,
         },
         {
@@ -394,7 +392,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
-            RaidIcon = 250657,
             _index = 42,
         },
         {

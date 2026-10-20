@@ -367,7 +367,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 644,
             _index = 48,
         },
         {
@@ -376,7 +375,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 642,
             _index = 49,
         },
         {
@@ -385,7 +383,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 643,
             _index = 50,
         },
         {
@@ -402,7 +399,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 1763,
             _index = 52,
         },
         {
@@ -411,7 +407,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 646,
             _index = 53,
         },
         {
@@ -420,7 +415,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 647,
             _index = 54,
         },
         {
@@ -429,7 +423,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 639,
             _index = 55,
         },
         {
@@ -467,7 +460,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             NoArrow = true,
             Dungeon = "DM",
             InstanceQuest = true,
-            RaidIcon = 645,
             _index = 59,
         },
         {

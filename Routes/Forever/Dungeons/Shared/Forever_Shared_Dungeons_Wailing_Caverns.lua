@@ -40,7 +40,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3671,
             _index = 2,
         },
         {
@@ -49,7 +48,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3669,
             _index = 3,
         },
         {
@@ -58,7 +56,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3670,
             _index = 4,
         },
         {
@@ -67,7 +64,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3673,
             _index = 5,
         },
         {
@@ -76,7 +72,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 5775,
             _index = 6,
         },
         {
@@ -86,7 +81,6 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3654,
             _index = 7,
         },
         {

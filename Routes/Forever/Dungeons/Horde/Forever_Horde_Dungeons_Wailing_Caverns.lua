@@ -164,7 +164,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3671,
             _index = 18,
         },
         {
@@ -173,7 +172,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3669,
             _index = 19,
         },
         {
@@ -182,7 +180,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3670,
             _index = 20,
         },
         {
@@ -191,7 +188,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3673,
             _index = 21,
         },
         {
@@ -236,7 +232,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 5775,
             _index = 26,
         },
         {
@@ -254,7 +249,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
-            RaidIcon = 3654,
             _index = 28,
         },
         {

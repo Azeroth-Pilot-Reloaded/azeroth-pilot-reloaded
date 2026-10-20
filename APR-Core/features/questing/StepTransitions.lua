@@ -91,6 +91,10 @@ function APR:SetRouteProgress(route, index, reason)
         (reason == "reset" or reason == "definition_changed") then
         self:ResetDungeonRun(route)
     end
+    if index == 1 and self.ResetOutdoorKills and
+        (reason == "reset" or reason == "definition_changed") then
+        self:ResetOutdoorKills(route)
+    end
     if previous == index then return false end
     progress[route] = index
     if route == self.ActiveRoute then
@@ -110,14 +114,14 @@ function APR:TransitionStep(index, reason, refresh, context)
         self:UpdateStep()
     end
     return true
-end--[[APR_DIAG]]; APR.TransitionStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:104:APR:TransitionStep#9", APR.TransitionStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.TransitionStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:108:APR:TransitionStep#9", APR.TransitionStep)--[[/APR_DIAG]]
 
 function APR:AdvanceStep(refresh, context)
     local progress = GetProgress(self)
     local index = progress and self.ActiveRoute and progress[self.ActiveRoute]
     if not index then return false end
     return self:TransitionStep(index + 1, "automatic", refresh, context)
-end--[[APR_DIAG]]; APR.AdvanceStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:115:APR:AdvanceStep#10", APR.AdvanceStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.AdvanceStep = APRTrace("APR-Core/features/questing/StepTransitions.lua:119:APR:AdvanceStep#10", APR.AdvanceStep)--[[/APR_DIAG]]
 
 -- Capture before the refresh: it can synchronously complete additional steps.
 function APR:CommitManualSkip(destination)
@@ -131,15 +135,15 @@ function APR:CommitManualSkip(destination)
         self.manualSkipUndo = { before = context, after = self:CaptureStepContext() }
     end
     return changed
-end--[[APR_DIAG]]; APR.CommitManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:123:APR:CommitManualSkip#11", APR.CommitManualSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CommitManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:127:APR:CommitManualSkip#11", APR.CommitManualSkip)--[[/APR_DIAG]]
 
 function APR:CanUndoManualSkip()
     return self.manualSkipUndo ~= nil and self:IsStepContextCurrent(self.manualSkipUndo.after)
-end--[[APR_DIAG]]; APR.CanUndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:136:APR:CanUndoManualSkip#12", APR.CanUndoManualSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CanUndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:140:APR:CanUndoManualSkip#12", APR.CanUndoManualSkip)--[[/APR_DIAG]]
 
 function APR:UndoManualSkip()
     if not self:CanUndoManualSkip() then self.manualSkipUndo = nil; return false end
     local undo = self.manualSkipUndo
     self.manualSkipUndo = nil
     return self:TransitionStep(undo.before.index, "undo_manual_skip", "quests", undo.after)
-end--[[APR_DIAG]]; APR.UndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:140:APR:UndoManualSkip#13", APR.UndoManualSkip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.UndoManualSkip = APRTrace("APR-Core/features/questing/StepTransitions.lua:144:APR:UndoManualSkip#13", APR.UndoManualSkip)--[[/APR_DIAG]]

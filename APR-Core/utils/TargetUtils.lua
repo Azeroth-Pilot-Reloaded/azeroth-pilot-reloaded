@@ -125,10 +125,30 @@ end--[[APR_DIAG]]; APR.ScanUnitForNPC = APRTrace("APR-Core/utils/TargetUtils.lua
 --- @param npcID number The NPC ID to look up
 --- @return string|nil The raid icon NPC name, or nil if not found
 function APR:GetRaidIconNpcName(npcID)
-    if not npcID then
+    if not APRSecret:CanAccessValue(npcID) or type(npcID) ~= "number" then
         return nil
     end
-    return APRData and APRData.NPCList and APRData.NPCList[npcID] or nil
+    local name = APRData and APRData.NPCList and APRData.NPCList[npcID]
+    if not APRSecret:CanAccessValue(name) then name = nil end
+    if not name and C_TooltipInfo and C_TooltipInfo.GetHyperlink then
+        local tooltip = C_TooltipInfo.GetHyperlink("unit:Creature-0-0-0-0-" .. npcID .. "-0")
+        local lines = APRSecret:CanAccessTable(tooltip) and tooltip.lines
+        local first = APRSecret:CanAccessTable(lines) and lines[1]
+        local localized = APRSecret:CanAccessTable(first) and first.leftText
+        if APRSecret:CanAccessValue(localized) and type(localized) == "string" and localized ~= "" and localized ~= UNKNOWN then
+            name = localized
+            if APRData then
+                APRData.NPCList = APRData.NPCList or {}
+                APRData.NPCList[npcID] = name
+            end
+        end
+    end
+    if not name and self.GetCurrentStep then
+        local step = self:GetCurrentStep()
+        if step and step.KillNPC and step.KillNPC.npcID == npcID then name = step.KillNPC.name end
+    end
+    if not APRSecret:CanAccessValue(name) or type(name) ~= "string" or name == "" or name:find("[\r\n|%[%];]") then return nil end
+    return name
 end--[[APR_DIAG]]; APR.GetRaidIconNpcName = APRTrace("APR-Core/utils/TargetUtils.lua:127:APR:GetRaidIconNpcName#11", APR.GetRaidIconNpcName)--[[/APR_DIAG]]
 
 --- Finds the unit token for a raid target with the specified NPC ID.
@@ -160,7 +180,7 @@ function APR:FindRaidIconUnitToken(npcID)
     end
 
     return nil
-end--[[APR_DIAG]]; APR.FindRaidIconUnitToken = APRTrace("APR-Core/utils/TargetUtils.lua:144:APR:FindRaidIconUnitToken#12", APR.FindRaidIconUnitToken)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.FindRaidIconUnitToken = APRTrace("APR-Core/utils/TargetUtils.lua:164:APR:FindRaidIconUnitToken#12", APR.FindRaidIconUnitToken)--[[/APR_DIAG]]
 
 --- Builds a raid icon macro for a specific NPC.
 --- @param npcID number The NPC ID to create the macro for
@@ -171,16 +191,17 @@ function APR:BuildRaidIconMacro(npcID, unitToken)
 
     if unitToken then
         table.insert(lines, "/target [@" .. unitToken .. ",exists]")
-        table.insert(lines, "/tm 8")
+        table.insert(lines, "/tm [@" .. unitToken .. ",exists] 8")
         return table.concat(lines, "\n")
     end
 
-    local name = APRData.NPCList[npcID]
+    local name = self:GetRaidIconNpcName(npcID)
     if name then
+        table.insert(lines, "/cleartarget")
         table.insert(lines, "/targetexact " .. name)
-        table.insert(lines, "/tm 8")
+        table.insert(lines, "/tm [@target,exists] 8")
         return table.concat(lines, "\n")
     end
 
-    return ""
-end--[[APR_DIAG]]; APR.BuildRaidIconMacro = APRTrace("APR-Core/utils/TargetUtils.lua:169:APR:BuildRaidIconMacro#13", APR.BuildRaidIconMacro)--[[/APR_DIAG]]
+    return "/tm [@mouseover,exists][@target,exists] 8"
+end--[[APR_DIAG]]; APR.BuildRaidIconMacro = APRTrace("APR-Core/utils/TargetUtils.lua:189:APR:BuildRaidIconMacro#13", APR.BuildRaidIconMacro)--[[/APR_DIAG]]
