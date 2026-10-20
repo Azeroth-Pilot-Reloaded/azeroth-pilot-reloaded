@@ -586,6 +586,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Arathi-Advanced"] = {
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Leveling-Camps"] = {
     label = L["Forever - Alliance - Mage AoE - Arathi / Dustwallow / Tanaris / Plaguelands (33-60)"] .. " (33-60)",
+    prefab = { [APR.PREFAB_TYPES.Leveling] = 11 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

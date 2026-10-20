@@ -1,4 +1,10 @@
 <Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..FrameXMLUI.xsd">
+    <Script file="Routes/Forever/Dungeons/Horde/Forever_Horde_Dungeons_Silverpine.lua"/>
+    <Script file="Routes/Forever/Dungeons/Horde/Forever_Horde_Dungeons_Barrens_12_16.lua"/>
+    <Script file="Routes/Forever/Dungeons/Horde/Forever_Horde_Dungeons_Ragefire_Chasm.lua"/>
+    <Script file="Routes/Forever/Dungeons/Horde/Forever_Horde_Dungeons_Ruins_of_Lordaeron.lua"/>
+    <Script file="Routes/Forever/Dungeons/Horde/Forever_Horde_Dungeons_Barrens_18_21.lua"/>
+    <Script file="Routes/Forever/Dungeons/Horde/Forever_Horde_Dungeons_Wailing_Caverns.lua"/>
     <Script file="Routes/Forever/Alliance/Forever_Alliance_Darkshore.lua"/>
     <Script file="Routes/Forever/Alliance/Forever_Alliance_Loch_Modan.lua"/>
     <Script file="Routes/Forever/Alliance/Forever_Alliance_Redridge_Mountains.lua"/>
@@ -80,4 +86,20 @@
     <Script file="Routes/Forever/MageAoE/Horde/Forever_MageAoE_Horde_Stonetalon.lua"/>
     <Script file="Routes/Forever/MageAoE/Horde/Forever_MageAoE_Horde_Tirisfal_Glades.lua"/>
     <Script file="Routes/Forever/MageAoE/Horde/Forever_MageAoE_Horde_Dustwallow.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Darkshore.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Darkshore_Ashenvale.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Darkshore_Loch_Modan_NightElf.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Deadmines.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Elwynn_Dwarf_Gnome.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Hall_of_Thanes.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Loch_Modan_Dwarf_Gnome.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Loch_Modan_Human.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Loch_Modan_Hunter.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Ruins_of_Lordaeron.lua"/>
+    <Script file="Routes/Forever/Dungeons/Alliance/Forever_Alliance_Dungeons_Westfall.lua"/>
+    <Script file="Routes/Forever/Dungeons/Shared/Forever_Shared_Dungeons_Deadmines.lua"/>
+    <Script file="Routes/Forever/Dungeons/Shared/Forever_Shared_Dungeons_Hall_of_Thanes.lua"/>
+    <Script file="Routes/Forever/Dungeons/Shared/Forever_Shared_Dungeons_Ragefire_Chasm.lua"/>
+    <Script file="Routes/Forever/Dungeons/Shared/Forever_Shared_Dungeons_Ruins_of_Lordaeron.lua"/>
+    <Script file="Routes/Forever/Dungeons/Shared/Forever_Shared_Dungeons_Wailing_Caverns.lua"/>
 </Ui>

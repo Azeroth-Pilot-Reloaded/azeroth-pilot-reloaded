@@ -2,6 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
     label = L["Forever - Alliance - Mage AoE - Starting Zone Human"] .. " (1-10)",
+    prefab = { [APR.PREFAB_TYPES.Leveling] = 1 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

@@ -11,7 +11,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Dwarf-Gnome"] = {
         { route = "Forever-Alliance-Loch-Modan-Hunter", conditions = { Race = APR.RACES.Dwarf, Class = APR.Classes.Hunter } },
         { route = "Forever-Alliance-Elwynn-Forest",     conditions = { ClassNot = APR.Classes.Hunter } },
     },
-    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = { ItemCount = { itemID = 2946, count = 1 }, EquippedItemStat = { allowMissing = true, slot = 18, value = 3, precision = 1, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" }, Class = "ROGUE", EquippedItem = { invert = true, itemID = 2946, slot = 18 }, MinLevel = 3 },

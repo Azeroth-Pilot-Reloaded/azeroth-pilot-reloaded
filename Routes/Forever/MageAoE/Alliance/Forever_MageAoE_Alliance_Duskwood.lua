@@ -2619,6 +2619,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Advanced"] = {
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
     label = L["Forever - Alliance - Mage AoE - Duskwood First Visit"] .. " (21-22)",
+    prefab = { [APR.PREFAB_TYPES.Leveling] = 7 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,
@@ -3492,6 +3493,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-First-Visit"] = {
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Duskwood-Second-Visit"] = {
     label = L["Forever - Alliance - Mage AoE - Duskwood Second Visit"] .. " (26-31)",
+    prefab = { [APR.PREFAB_TYPES.Leveling] = 9 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

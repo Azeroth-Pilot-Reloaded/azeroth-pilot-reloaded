@@ -1,9 +1,7 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("APR", "koKR")
 if not L then return end
 
---@localization(locale="koKR", format="lua_additive_table", handle-unlocalized="ignore")@
-
--- Forever route display names.
+-- Forever route labels: keep stable keys, localize display names only.
 L["Forever - Alliance - Alterac Mountains / Arathi Highlands"] = "알터랙 산맥 / 아라시 고원"
 L["Forever - Alliance - Ashenvale"] = "잿빛 골짜기"
 L["Forever - Alliance - Ashenvale / Stonetalon Mountains"] = "잿빛 골짜기 / 돌발톱 산맥"
@@ -80,6 +78,19 @@ L["Forever - Alliance - Wetlands (Alternative)"] = "저습지 (대체 경로)"
 L["Forever - Alliance - Wetlands / Hillsbrad Foothills"] = "저습지 / 언덕마루 구릉지"
 L["Forever - Alliance - Winterspring / Silithus"] = "여명의 설원 / 실리더스"
 L["Forever - Alliance-Horde - Zephras Isle"] = "제프라스 섬"
+L["Forever - Dungeon - Darkshore"] = "던전 - 어둠해안"
+L["Forever - Dungeon - Darkshore / Ashenvale"] = "던전 - 어둠해안 / 잿빛 골짜기"
+L["Forever - Dungeon - Darkshore / Loch Modan"] = "던전 - 어둠해안 / 모단 호수"
+L["Forever - Dungeon - Deadmines"] = "던전 - 죽음의 폐광"
+L["Forever - Dungeon - Elwynn Forest"] = "던전 - 엘윈 숲"
+L["Forever - Dungeon - Hall of Thanes"] = "던전 - 영주의 전당"
+L["Forever - Dungeon - Loch Modan"] = "던전 - 모단 호수"
+L["Forever - Dungeon - Ragefire Chasm"] = "던전 - 성난불길 협곡"
+L["Forever - Dungeon - Ruins of Lordaeron"] = "던전 - 로데론의 폐허"
+L["Forever - Dungeon - Silverpine Forest"] = "던전 - 은빛소나무 숲"
+L["Forever - Dungeon - The Barrens"] = "던전 - 불모의 땅"
+L["Forever - Dungeon - Wailing Caverns"] = "던전 - 통곡의 동굴"
+L["Forever - Dungeon - Westfall"] = "던전 - 서부 몰락지대"
 L["Forever - Horde - Arathi Highlands"] = "아라시 고원"
 L["Forever - Horde - Ashenvale"] = "잿빛 골짜기"
 L["Forever - Horde - Azshara"] = "아즈샤라"
@@ -127,3 +138,6 @@ L["Forever - Starting Zone Skyborne"] = "스카이본 시작 - 제프라스 섬"
 L["Forever - Starting Zone Tauren"] = "타우렌 시작 - 멀고어"
 L["Forever - Starting Zone Troll / Orc"] = "트롤 / 오크 시작 - 듀로타"
 L["Forever - Starting Zone Undead"] = "언데드 시작 - 티리스팔 숲"
+
+L["Mage AoE"] = "마법사 AoE"
+--@localization(locale="koKR", format="lua_additive_table", handle-unlocalized="ignore")@

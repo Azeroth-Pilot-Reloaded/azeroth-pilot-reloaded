@@ -4,9 +4,7 @@ if not L then return end
 
 
 -- Translator: Neogeekmo
---@localization(locale="frFR", format="lua_additive_table", handle-unlocalized="ignore")@
-
--- Forever route display names.
+-- Forever route labels: keep stable keys, localize display names only.
 L["Forever - Alliance - Alterac Mountains / Arathi Highlands"] = "Montagnes d’Alterac / Hautes-terres Arathies"
 L["Forever - Alliance - Ashenvale"] = "Orneval"
 L["Forever - Alliance - Ashenvale / Stonetalon Mountains"] = "Orneval / Les Serres-Rocheuses"
@@ -83,6 +81,19 @@ L["Forever - Alliance - Wetlands (Alternative)"] = "Les Paluns (Alternative)"
 L["Forever - Alliance - Wetlands / Hillsbrad Foothills"] = "Les Paluns / Contreforts de Hautebrande"
 L["Forever - Alliance - Winterspring / Silithus"] = "Berceau-de-l’Hiver / Silithus"
 L["Forever - Alliance-Horde - Zephras Isle"] = "Île de Zéphras"
+L["Forever - Dungeon - Darkshore"] = "Donjon - Sombrivage"
+L["Forever - Dungeon - Darkshore / Ashenvale"] = "Donjon - Sombrivage / Orneval"
+L["Forever - Dungeon - Darkshore / Loch Modan"] = "Donjon - Sombrivage / Loch Modan"
+L["Forever - Dungeon - Deadmines"] = "Donjon - Les Mortemines"
+L["Forever - Dungeon - Elwynn Forest"] = "Donjon - Forêt d’Elwynn"
+L["Forever - Dungeon - Hall of Thanes"] = "Donjon - La salle des Thanes"
+L["Forever - Dungeon - Loch Modan"] = "Donjon - Loch Modan"
+L["Forever - Dungeon - Ragefire Chasm"] = "Donjon - Gouffre de Ragefeu"
+L["Forever - Dungeon - Ruins of Lordaeron"] = "Donjon - Ruines de Lordaeron"
+L["Forever - Dungeon - Silverpine Forest"] = "Donjon - Forêt des Pins-Argentés"
+L["Forever - Dungeon - The Barrens"] = "Donjon - Les Tarides"
+L["Forever - Dungeon - Wailing Caverns"] = "Donjon - Cavernes des Lamentations"
+L["Forever - Dungeon - Westfall"] = "Donjon - Marche de l’Ouest"
 L["Forever - Horde - Arathi Highlands"] = "Hautes-terres Arathies"
 L["Forever - Horde - Ashenvale"] = "Orneval"
 L["Forever - Horde - Azshara"] = "Azshara"
@@ -130,3 +141,6 @@ L["Forever - Starting Zone Skyborne"] = "Départ Éolides - Île de Zéphras"
 L["Forever - Starting Zone Tauren"] = "Départ Tauren - Mulgore"
 L["Forever - Starting Zone Troll / Orc"] = "Départ Troll / Orc - Durotar"
 L["Forever - Starting Zone Undead"] = "Départ Mort-vivant - Clairières de Tirisfal"
+
+L["Mage AoE"] = "Mage AoE"
+--@localization(locale="frFR", format="lua_additive_table", handle-unlocalized="ignore")@

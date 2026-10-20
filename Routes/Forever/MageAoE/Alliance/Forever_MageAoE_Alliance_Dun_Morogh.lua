@@ -518,6 +518,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Dun-Morogh-Human-Advanced"] = {
 
 APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
     label = L["Forever - Alliance - Mage AoE - Starting Zone Gnome"] .. " (1-10)",
+    prefab = { [APR.PREFAB_TYPES.Leveling] = 2 },
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Leveling,

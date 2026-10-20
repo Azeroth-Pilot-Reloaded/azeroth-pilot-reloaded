@@ -8,7 +8,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
     mapID = 2521,
     conditions = { Race = APR.RACES.Skyborne },
     nextRoute = { { route = "Forever-Alliance-Westfall", conditions = { Faction = "Alliance", ClassNot = APR.Classes.Hunter } }, { route = "Forever-Alliance-Darkshore", conditions = { Faction = "Alliance", Class = APR.Classes.Hunter } }, { route = "Forever-Horde-Silverpine-Forest", conditions = { Faction = "Horde", ClassNot = { APR.Classes.Hunter, APR.Classes.Shaman } } }, { route = "Forever-Horde-The-Barrens", conditions = { Faction = "Horde", Class = { APR.Classes.Hunter, APR.Classes.Shaman } } } },
-    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = { MinLevel = 3, Not = { IsQuestUncompleted = 92517, IsQuestReadyForTurnIn = 92517, IsQuestOnQuest = 92517 }, EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 4.2, precision = 2, allowMissing = true } }, Faction = "Horde", ItemCount = { itemID = 2495, count = 1 }, Class = "SHAMAN", EquippedItem = { invert = true, itemID = 2495, slot = 16 }, IsQuestOnQuest = 92517, HasSpell = 227 },

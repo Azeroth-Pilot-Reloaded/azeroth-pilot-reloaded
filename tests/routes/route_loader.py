@@ -28,11 +28,14 @@ class RouteCatalog:
     profiles: set
 
 
-def load_routes(paths=None):
+def load_routes(paths=None, translations=None):
     runtime = LuaRuntime(unpack_returned_tuples=True, register_eval=False, register_builtins=False)
+    runtime.globals().routeTranslations = runtime.table_from(translations or {})
     runtime.execute('''
-        local locale = setmetatable({}, {__index = function(_, key) return key end})
+        local locale = setmetatable(routeTranslations, {__index = function(_, key) return key end})
+        routeTranslations = nil
         function LibStub() return {GetLocale = function() return locale end} end
+        DUNGEONS = "DUNGEONS"
         APR = {}
     ''')
     for name in ("APR-Core/data/models/Enums.lua", "APR-Core/data/models/Classes.lua",

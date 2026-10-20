@@ -1,9 +1,7 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("APR", "ptBR")
 if not L then return end
 
---@localization(locale="ptBR", format="lua_additive_table", handle-unlocalized="ignore")@
-
--- Forever route display names.
+-- Forever route labels: keep stable keys, localize display names only.
 L["Forever - Alliance - Alterac Mountains / Arathi Highlands"] = "Montanhas de Alterac / Planalto Arathi"
 L["Forever - Alliance - Ashenvale"] = "Vale Gris"
 L["Forever - Alliance - Ashenvale / Stonetalon Mountains"] = "Vale Gris / Cordilheira das Torres de Pedra"
@@ -80,6 +78,19 @@ L["Forever - Alliance - Wetlands (Alternative)"] = "Pantanal (Alternativa)"
 L["Forever - Alliance - Wetlands / Hillsbrad Foothills"] = "Pantanal / Contraforte de Eira dos Montes"
 L["Forever - Alliance - Winterspring / Silithus"] = "Hibérnia / Silithus"
 L["Forever - Alliance-Horde - Zephras Isle"] = "Ilha de Zefras"
+L["Forever - Dungeon - Darkshore"] = "Masmorra - Costa Negra"
+L["Forever - Dungeon - Darkshore / Ashenvale"] = "Masmorra - Costa Negra / Vale Gris"
+L["Forever - Dungeon - Darkshore / Loch Modan"] = "Masmorra - Costa Negra / Loch Modan"
+L["Forever - Dungeon - Deadmines"] = "Masmorra - Minas Mortas"
+L["Forever - Dungeon - Elwynn Forest"] = "Masmorra - Floresta de Elwynn"
+L["Forever - Dungeon - Hall of Thanes"] = "Masmorra - Salão dos Thanes"
+L["Forever - Dungeon - Loch Modan"] = "Masmorra - Loch Modan"
+L["Forever - Dungeon - Ragefire Chasm"] = "Masmorra - Cavernas Ígneas"
+L["Forever - Dungeon - Ruins of Lordaeron"] = "Masmorra - Ruínas de Lordaeron"
+L["Forever - Dungeon - Silverpine Forest"] = "Masmorra - Floresta de Pinhaprata"
+L["Forever - Dungeon - The Barrens"] = "Masmorra - Sertões"
+L["Forever - Dungeon - Wailing Caverns"] = "Masmorra - Caverna Ululante"
+L["Forever - Dungeon - Westfall"] = "Masmorra - Cerro Oeste"
 L["Forever - Horde - Arathi Highlands"] = "Planalto Arathi"
 L["Forever - Horde - Ashenvale"] = "Vale Gris"
 L["Forever - Horde - Azshara"] = "Azshara"
@@ -127,3 +138,6 @@ L["Forever - Starting Zone Skyborne"] = "Início Celonatos - Ilha de Zefras"
 L["Forever - Starting Zone Tauren"] = "Início Tauren - Mulgore"
 L["Forever - Starting Zone Troll / Orc"] = "Início Troll / Orc - Durotar"
 L["Forever - Starting Zone Undead"] = "Início Morto-vivo - Clareiras de Tirisfal"
+
+L["Mage AoE"] = "Mago AoE"
+--@localization(locale="ptBR", format="lua_additive_table", handle-unlocalized="ignore")@

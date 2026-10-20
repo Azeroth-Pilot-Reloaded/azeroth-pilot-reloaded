@@ -1,9 +1,7 @@
 local L = LibStub("AceLocale-3.0"):NewLocale("APR", "zhCN")
 if not L then return end
 
---@localization(locale="zhCN", format="lua_additive_table", handle-unlocalized="ignore")@
-
--- Forever route display names.
+-- Forever route labels: keep stable keys, localize display names only.
 L["Forever - Alliance - Alterac Mountains / Arathi Highlands"] = "奥特兰克山脉 / 阿拉希高地"
 L["Forever - Alliance - Ashenvale"] = "灰谷"
 L["Forever - Alliance - Ashenvale / Stonetalon Mountains"] = "灰谷 / 石爪山脉"
@@ -80,6 +78,19 @@ L["Forever - Alliance - Wetlands (Alternative)"] = "湿地 (替代路线)"
 L["Forever - Alliance - Wetlands / Hillsbrad Foothills"] = "湿地 / 希尔斯布莱德丘陵"
 L["Forever - Alliance - Winterspring / Silithus"] = "冬泉谷 / 希利苏斯"
 L["Forever - Alliance-Horde - Zephras Isle"] = "泽风岛"
+L["Forever - Dungeon - Darkshore"] = "地下城 - 黑海岸"
+L["Forever - Dungeon - Darkshore / Ashenvale"] = "地下城 - 黑海岸 / 灰谷"
+L["Forever - Dungeon - Darkshore / Loch Modan"] = "地下城 - 黑海岸 / 洛克莫丹"
+L["Forever - Dungeon - Deadmines"] = "地下城 - 死亡矿井"
+L["Forever - Dungeon - Elwynn Forest"] = "地下城 - 艾尔文森林"
+L["Forever - Dungeon - Hall of Thanes"] = "地下城 - 领主大厅"
+L["Forever - Dungeon - Loch Modan"] = "地下城 - 洛克莫丹"
+L["Forever - Dungeon - Ragefire Chasm"] = "地下城 - 怒焰裂谷"
+L["Forever - Dungeon - Ruins of Lordaeron"] = "地下城 - 洛丹伦废墟"
+L["Forever - Dungeon - Silverpine Forest"] = "地下城 - 银松森林"
+L["Forever - Dungeon - The Barrens"] = "地下城 - 贫瘠之地"
+L["Forever - Dungeon - Wailing Caverns"] = "地下城 - 哀嚎洞穴"
+L["Forever - Dungeon - Westfall"] = "地下城 - 西部荒野"
 L["Forever - Horde - Arathi Highlands"] = "阿拉希高地"
 L["Forever - Horde - Ashenvale"] = "灰谷"
 L["Forever - Horde - Azshara"] = "艾萨拉"
@@ -127,3 +138,6 @@ L["Forever - Starting Zone Skyborne"] = "天裔起始 - 泽风岛"
 L["Forever - Starting Zone Tauren"] = "牛头人起始 - 莫高雷"
 L["Forever - Starting Zone Troll / Orc"] = "巨魔 / 兽人起始 - 杜隆塔尔"
 L["Forever - Starting Zone Undead"] = "亡灵起始 - 提瑞斯法林地"
+
+L["Mage AoE"] = "法师 AoE"
+--@localization(locale="zhCN", format="lua_additive_table", handle-unlocalized="ignore")@

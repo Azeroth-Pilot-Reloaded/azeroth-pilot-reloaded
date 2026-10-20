@@ -185,3 +185,43 @@ browser.clearPath.scripts.OnClick()
 APR.UI.selectionDialog.acceptButton.scripts.OnClick()
 assert(#APRCustomPath.test == 0 and notifications == beforeClear + 1)
 print("Route browser: prefab priority, expansion/type/community/favorites, resume/reset, prerequisites, path order, missing routes and bounded dense rows passed")
+
+-- Forever navigation separates route families without changing expansion compatibility.
+APR.ClassName = "MAGE"
+function APR:GetGameVersion() return APR.GAME_VERSIONS.Forever end
+function APR:GetRouteSelectionExpansions() return {APR.EXPANSIONS.Forever, APR.EXPANSIONS.Custom} end
+APR.RouteQuestStepList = {
+    normal = {label = "Outdoor", expansion = APR.EXPANSIONS.Forever, prefab = {leveling = 1}},
+    dungeon = {label = "Instance", expansion = APR.EXPANSIONS.Forever, category = APR.CATEGORIES.Dungeons, prefab = {dungeons = 1}},
+    ["Forever-MageAoE-Horde-Test"] = {label = "Mage route", expansion = APR.EXPANSIONS.Forever, prefab = {leveling = 1}},
+}
+APRCustomPath.test = {}
+browser.filters, browser.initialized = {sort = "label"}, nil
+browser:Refresh(true)
+assert(#browser.prefabs == 3)
+assert(browser.prefabs[1].prefabKind == "speedrun" and browser.prefabs[2].prefabKind == "dungeons"
+    and browser.prefabs[3].prefabKind == "leveling")
+assert(browser.prefabs[2]:GetFontString():GetText() == "SPEEDRUN - " .. DUNGEONS)
+local navigation = catalog:GetNavigation(catalog:Build())
+assert(navigation[4].label == "Forever" and navigation[4].count == 1)
+assert(navigation[5].value == "forever_dungeons" and navigation[5].count == 1)
+assert(navigation[6].value == "forever_mage_aoe" and navigation[6].count == 1)
+APR.ClassName = "WARRIOR"
+for _, item in ipairs(catalog:GetNavigation(catalog:Build())) do
+    assert(item.value ~= "forever_mage_aoe", "Mage AoE navigation is exclusive to mages")
+end
+APR.ClassName = "MAGE"
+for _, case in ipairs({{APR.EXPANSIONS.Forever, "normal"}, {"forever_dungeons", "dungeon"},
+    {"forever_mage_aoe", "Forever-MageAoE-Horde-Test"}}) do
+    browser:SetScope(case[1])
+    assert(#browser.list.items == 1 and browser.list.items[1].key == case[2])
+end
+browser.search:SetText("Outdoor"); browser.search.scripts.OnTextChanged(browser.search)
+assert(#browser.list.items == 1 and browser.list.items[1].key == "normal")
+browser.search:SetText(""); browser.search.scripts.OnTextChanged(browser.search)
+assert(browser.filters.expansion == "forever_mage_aoe")
+-- Empty catalogs hide the prefab panel, with a finite layout and no leftover buttons.
+APR.RouteQuestStepList = {}
+browser:Refresh(true)
+assert(#browser.prefabs == 0 and not browser.prefabPanel:IsShown())
+assert(browser.filterPanel.point[5] == 0)

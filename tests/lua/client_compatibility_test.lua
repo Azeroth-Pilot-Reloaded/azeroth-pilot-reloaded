@@ -2,6 +2,7 @@
 local L = setmetatable({}, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
 UNAVAILABLE = "Unavailable"
+DUNGEONS = "Dungeons"
 
 APR = { RouteQuestStepList = {}, interfaceVersion = 16001, Faction = "Horde" }
 function APR:NewModule() return {} end
@@ -103,20 +104,23 @@ APRData = { CustomRoute = { Imported = { label = "Imported", gameVersion = "fore
 APR:LoadCustomRoutes()
 assert(APR.RouteQuestStepList.Imported.gameVersion == "forever")
 
--- Popup options must omit incompatible expansions, including unavailable placeholders.
+-- Prefab choices contain real compatible routes, and a single choice applies directly.
 APR.routeconfig = {}
 APR.Level = 12
 tinsert = table.insert
+APR.RouteQuestStepList.forever.prefab = {leveling = 1}
+APR.RouteQuestStepList.retail.expansion = APR.EXPANSIONS.TheBurningCrusade
+APR.RouteQuestStepList.retail.prefab = {leveling = 1}
 dofile("APR-Core/config/Config_Route_Prefabs.lua")
-local popupOptions
-APR.questionDialog = { CreateSelectionPopup = function(_, _, _, options) popupOptions = options end }
+local selected
+function APR.routeconfig:BuildLevelingPrefab(expansion) selected = expansion end
+APR.questionDialog = { CreateSelectionPopup = function() error("One choice should apply directly") end }
 APR.routeconfig:OpenLevelingPopup()
-assert(#popupOptions == 1 and popupOptions[1].key == APR.EXPANSIONS.Forever)
+assert(selected == APR.EXPANSIONS.Forever)
 APR.routeconfig:GetPlayerSpecRoute("Starter") -- no specialization API on Forever
 APR.interfaceVersion = 120105
 APR.routeconfig:OpenLevelingPopup()
-assert(#popupOptions > 1)
-for _, option in ipairs(popupOptions) do assert(option.key ~= APR.EXPANSIONS.Forever) end
+assert(selected == APR.EXPANSIONS.TheBurningCrusade)
 APR.interfaceVersion = 16001
 
 -- Unknown events never prevent shared quest events from registering.

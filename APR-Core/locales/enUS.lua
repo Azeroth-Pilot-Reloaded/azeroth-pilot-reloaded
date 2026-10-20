@@ -3,9 +3,10 @@ if not L then return end
 
 
 
---@localization(locale="enUS", format="lua_additive_table", handle-unlocalized="ignore")@
 
--- Forever route display names.
+L["Mage AoE"] = "Mage AoE"
+
+-- Forever route labels: keep stable keys, localize display names only.
 L["Forever - Alliance - Alterac Mountains / Arathi Highlands"] = "Alterac Mountains / Arathi Highlands"
 L["Forever - Alliance - Ashenvale"] = "Ashenvale"
 L["Forever - Alliance - Ashenvale / Stonetalon Mountains"] = "Ashenvale / Stonetalon Mountains"
@@ -82,6 +83,19 @@ L["Forever - Alliance - Wetlands (Alternative)"] = "Wetlands (Alternative)"
 L["Forever - Alliance - Wetlands / Hillsbrad Foothills"] = "Wetlands / Hillsbrad Foothills"
 L["Forever - Alliance - Winterspring / Silithus"] = "Winterspring / Silithus"
 L["Forever - Alliance-Horde - Zephras Isle"] = "Zephras Isle"
+L["Forever - Dungeon - Darkshore"] = "Dungeon - Darkshore"
+L["Forever - Dungeon - Darkshore / Ashenvale"] = "Dungeon - Darkshore / Ashenvale"
+L["Forever - Dungeon - Darkshore / Loch Modan"] = "Dungeon - Darkshore / Loch Modan"
+L["Forever - Dungeon - Deadmines"] = "Dungeon - The Deadmines"
+L["Forever - Dungeon - Elwynn Forest"] = "Dungeon - Elwynn Forest"
+L["Forever - Dungeon - Hall of Thanes"] = "Dungeon - The Hall of Thanes"
+L["Forever - Dungeon - Loch Modan"] = "Dungeon - Loch Modan"
+L["Forever - Dungeon - Ragefire Chasm"] = "Dungeon - Ragefire Chasm"
+L["Forever - Dungeon - Ruins of Lordaeron"] = "Dungeon - Ruins of Lordaeron"
+L["Forever - Dungeon - Silverpine Forest"] = "Dungeon - Silverpine Forest"
+L["Forever - Dungeon - The Barrens"] = "Dungeon - The Barrens"
+L["Forever - Dungeon - Wailing Caverns"] = "Dungeon - Wailing Caverns"
+L["Forever - Dungeon - Westfall"] = "Dungeon - Westfall"
 L["Forever - Horde - Arathi Highlands"] = "Arathi Highlands"
 L["Forever - Horde - Ashenvale"] = "Ashenvale"
 L["Forever - Horde - Azshara"] = "Azshara"
@@ -129,3 +143,5 @@ L["Forever - Starting Zone Skyborne"] = "Start Skyborne - Zephras Isle"
 L["Forever - Starting Zone Tauren"] = "Start Tauren - Mulgore"
 L["Forever - Starting Zone Troll / Orc"] = "Start Troll / Orc - Durotar"
 L["Forever - Starting Zone Undead"] = "Start Undead - Tirisfal Glades"
+
+--@localization(locale="enUS", format="lua_additive_table", handle-unlocalized="ignore")@

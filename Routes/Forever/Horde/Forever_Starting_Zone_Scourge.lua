@@ -8,7 +8,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
     mapID = 1420,
     conditions = { Race = APR.RACES.Scourge, Faction = "Horde" },
     nextRoute = { "Forever-Horde-Silverpine-Forest", "Forever-Horde-The-Barrens" },
-    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1, conditions = { Faction = "Horde" } }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = { EquippedItemStat = { { slot = 18, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 2.9, precision = 1, allowMissing = true } }, ItemCount = { itemID = 3131, count = 1 }, EquippedItem = { slot = 18, itemID = 3131, invert = true }, Class = "ROGUE", MinLevel = 3 },
@@ -6509,6 +6509,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
     mapID = 1420,
     conditions = { MinLevel = 10, Race = { APR.RACES.Orc, APR.RACES.Troll }, Class = { APR.Classes.Mage, APR.Classes.Priest, APR.Classes.Rogue, APR.Classes.Warlock, APR.Classes.Warrior } },
     nextRoute = { { route = "Forever-Horde-Silverpine-Forest" } },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 2, conditions = { Faction = "Horde" } } },
     -- prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 2 }, [APR.PREFAB_TYPES.Speedrun] = { index = 2 } },
     parallelSteps = {
         {

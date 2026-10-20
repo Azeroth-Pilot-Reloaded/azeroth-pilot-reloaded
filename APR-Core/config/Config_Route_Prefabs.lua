@@ -8,7 +8,7 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
-local function AddRouteToCustomPath(routeName, routeFileName)
+local function AddRouteToCustomPath(routeName, routeFileName, queueDungeonChapter)
     if not routeName or not APR.PlayerID then
         return
     end
@@ -26,7 +26,13 @@ local function AddRouteToCustomPath(routeName, routeFileName)
         end
     end
 
-    if routeFileName then
+    if routeFileName and queueDungeonChapter then
+        -- Queue future chapters without waiving CanStartRoute at activation.
+        -- The preset already filters client/race/class; only level gates wait.
+        if APR:IsRequiredRouteApplicable(routeFileName) and not APR:Contains(APRCustomPath[APR.PlayerID], routeName) then
+            tinsert(APRCustomPath[APR.PlayerID], routeName)
+        end
+    elseif routeFileName then
         APR:AddRouteToCustomPathByKey(routeFileName)
     else
         tinsert(APRCustomPath[APR.PlayerID], routeName)
@@ -35,14 +41,21 @@ end--[[APR_DIAG]]; AddRouteToCustomPath = APRTrace("APR-Core/config/Config_Route
 
 local function GetExpansionDisplayName(expansion)
     return APR.EXPANSIONS[expansion] or expansion
-end--[[APR_DIAG]]; GetExpansionDisplayName = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:36:GetExpansionDisplayName#2", GetExpansionDisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetExpansionDisplayName = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:42:GetExpansionDisplayName#2", GetExpansionDisplayName)--[[/APR_DIAG]]
 
 local function BuildLockedLabel(expansion, requiredLevel)
     return GetExpansionDisplayName(expansion) .. " " .. string.format(L["LVL_LOCK"], requiredLevel)
-end--[[APR_DIAG]]; BuildLockedLabel = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:40:BuildLockedLabel#3", BuildLockedLabel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; BuildLockedLabel = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:46:BuildLockedLabel#3", BuildLockedLabel)--[[/APR_DIAG]]
 
 -- Central registry for prefab popup content and option composition.
 local PREFAB_POPUP_DEFINITIONS = {
+    dungeons = {
+        prefabType = APR.PREFAB_TYPES.Dungeons,
+        title = string.format(L["PREFAB_TITLE"], L["SPEEDRUN"] .. " - " .. DUNGEONS),
+        description = L["SPEEDRUN_TOOLTIPS"],
+        unavailableMessage = L["ROUTE_NOT_AVAILABLE_YET"],
+        expansions = { APR.EXPANSIONS.Forever },
+    },
     all_quests = {
         prefabType = APR.PREFAB_TYPES.AllQuests,
         title = string.format(L["PREFAB_TITLE"], L["ALL_QUESTS"]),
@@ -53,7 +66,6 @@ local PREFAB_POPUP_DEFINITIONS = {
             APR.EXPANSIONS.TheWarWithin,
             APR.EXPANSIONS.Midnight,
         },
-        showUnavailable = true,
         requiredLevels = {
             [APR.EXPANSIONS.TheWarWithin] = 70,
             [APR.EXPANSIONS.Midnight] = 80,
@@ -75,7 +87,6 @@ local PREFAB_POPUP_DEFINITIONS = {
             APR.EXPANSIONS.TheWarWithin,
             APR.EXPANSIONS.Midnight,
         },
-        showUnavailable = true,
         requiredLevels = {
             [APR.EXPANSIONS.TheWarWithin] = 70,
             [APR.EXPANSIONS.Midnight] = 80,
@@ -99,14 +110,23 @@ local function GetRoutePrefabEntry(routeData, prefabType)
     end
 
     return nil
-end--[[APR_DIAG]]; GetRoutePrefabEntry = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:88:GetRoutePrefabEntry#4", GetRoutePrefabEntry)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetRoutePrefabEntry = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:99:GetRoutePrefabEntry#4", GetRoutePrefabEntry)--[[/APR_DIAG]]
 
-local function HasRouteForExpansionAndPrefab(expansionName, prefabType)
+local function MatchesPrefabScope(routeKey, routeData, scope)
+    if not scope then return true end
+    local routeScope = APR:GetRouteSelectionScope(routeKey, routeData)
+    -- The dungeon path reuses outdoor starting zones carrying a dungeon prefab index.
+    if scope == "forever_dungeons" then return routeScope ~= "forever_mage_aoe" end
+    return routeScope == scope
+end--[[APR_DIAG]]; MatchesPrefabScope = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:115:MatchesPrefabScope#5", MatchesPrefabScope)--[[/APR_DIAG]]
+
+local function HasRouteForExpansionAndPrefab(expansionName, prefabType, scope)
     for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
         local entry = GetRoutePrefabEntry(routeData, prefabType)
         if type(routeData) == "table"
             and routeData.expansion == expansionName
             and routeData.label
+            and MatchesPrefabScope(routeKey, routeData, scope)
             and entry and APR:AreConditionalFiltersMet(entry.conditions)
             and APR:GetRouteVisibility(routeKey) ~= "hidden" then
             return true
@@ -114,7 +134,7 @@ local function HasRouteForExpansionAndPrefab(expansionName, prefabType)
     end
 
     return false
-end--[[APR_DIAG]]; HasRouteForExpansionAndPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:104:HasRouteForExpansionAndPrefab#5", HasRouteForExpansionAndPrefab)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; HasRouteForExpansionAndPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:123:HasRouteForExpansionAndPrefab#6", HasRouteForExpansionAndPrefab)--[[/APR_DIAG]]
 
 local function IsExpansionInPopupDefinition(definition, expansionName)
     for _, expansion in ipairs(definition.expansions or {}) do
@@ -123,7 +143,7 @@ local function IsExpansionInPopupDefinition(definition, expansionName)
         end
     end
     return false
-end--[[APR_DIAG]]; IsExpansionInPopupDefinition = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:119:IsExpansionInPopupDefinition#6", IsExpansionInPopupDefinition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; IsExpansionInPopupDefinition = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:139:IsExpansionInPopupDefinition#7", IsExpansionInPopupDefinition)--[[/APR_DIAG]]
 
 local function GetOrderedPopupExpansions(definition)
     local expansions = definition and definition.expansions or {}
@@ -150,7 +170,7 @@ local function GetOrderedPopupExpansions(definition)
         definitionOrder[expansionName] = index
     end
 
-    table.sort(ordered, --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:153:callback#8", --[[/APR_DIAG]]function(a, b)
+    table.sort(ordered, --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:173:callback#9", --[[/APR_DIAG]]function(a, b)
         local aOrder = expansionOrder[a] or math.huge
         local bOrder = expansionOrder[b] or math.huge
         if aOrder == bOrder then
@@ -160,15 +180,15 @@ local function GetOrderedPopupExpansions(definition)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     return ordered
-end--[[APR_DIAG]]; GetOrderedPopupExpansions = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:128:GetOrderedPopupExpansions#7", GetOrderedPopupExpansions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetOrderedPopupExpansions = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:148:GetOrderedPopupExpansions#8", GetOrderedPopupExpansions)--[[/APR_DIAG]]
 
-local function BuildExpansionPrefabFromRoutes(routeConfig, expansionName, prefabType, suppressUpdate)
+local function BuildExpansionPrefabFromRoutes(routeConfig, expansionName, prefabType, suppressUpdate, scope)
     local routeCandidates = {}
 
     for routeKey, routeData in pairs(APR.RouteQuestStepList or {}) do
         if type(routeData) == "table" and routeData.expansion == expansionName and routeData.label then
             local prefabEntry = GetRoutePrefabEntry(routeData, prefabType)
-            if prefabEntry and APR:GetRouteVisibility(routeKey) ~= "hidden"
+            if prefabEntry and MatchesPrefabScope(routeKey, routeData, scope) and APR:GetRouteVisibility(routeKey) ~= "hidden"
                 and APR:AreConditionalFiltersMet(prefabEntry.conditions) then
                 tinsert(routeCandidates, {
                     routeKey = routeKey,
@@ -183,7 +203,7 @@ local function BuildExpansionPrefabFromRoutes(routeConfig, expansionName, prefab
         return false
     end
 
-    table.sort(routeCandidates, --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:186:callback#10", --[[/APR_DIAG]]function(a, b)
+    table.sort(routeCandidates, --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:206:callback#11", --[[/APR_DIAG]]function(a, b)
         if a.index == b.index then
             return a.routeKey < b.routeKey
         end
@@ -191,51 +211,75 @@ local function BuildExpansionPrefabFromRoutes(routeConfig, expansionName, prefab
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     for _, route in ipairs(routeCandidates) do
-        AddRouteToCustomPath(route.routeName, route.routeKey)
+        AddRouteToCustomPath(route.routeName, route.routeKey, prefabType == APR.PREFAB_TYPES.Dungeons or scope == "forever_mage_aoe")
     end
 
     routeConfig:SendCustomPathUpdate(suppressUpdate)
     return true
-end--[[APR_DIAG]]; BuildExpansionPrefabFromRoutes = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:165:BuildExpansionPrefabFromRoutes#9", BuildExpansionPrefabFromRoutes)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; BuildExpansionPrefabFromRoutes = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:185:BuildExpansionPrefabFromRoutes#10", BuildExpansionPrefabFromRoutes)--[[/APR_DIAG]]
 
 local function BuildPrefabPopupOptions(definition)
     local options = {}
-    local orderedExpansions = GetOrderedPopupExpansions(definition)
-
-    for _, expansionName in ipairs(orderedExpansions) do
-        local hasRoute = HasRouteForExpansionAndPrefab(expansionName, definition.prefabType)
-        local requiredLevel = definition.requiredLevels and definition.requiredLevels[expansionName]
-        local isLevelLocked = requiredLevel and APR.Level < requiredLevel
-
-        local compatible = APR:IsRouteCompatibleWithClient({ expansion = expansionName })
-        if compatible and (definition.showUnavailable or hasRoute) then
-            local option = {
-                key = expansionName,
-                label = GetExpansionDisplayName(expansionName),
-                enabled = hasRoute and not isLevelLocked,
-            }
-
-            if requiredLevel then
-                if isLevelLocked then
-                    option.label = BuildLockedLabel(expansionName, requiredLevel)
-                    option.tooltip = string.format(L["LEVEL_REQUIRED_TITLE"], requiredLevel)
-                else
-                    option.label = GetExpansionDisplayName(expansionName) ..
-                        " (" .. string.format(L["LEVEL_REQUIRED"], requiredLevel) .. ")"
-                end
+    local function add(expansion, prefabType, scope)
+        if not APR:IsRouteCompatibleWithClient({expansion = expansion})
+            or not HasRouteForExpansionAndPrefab(expansion, prefabType, scope) then return end
+        local requiredLevel = definition.requiredLevels and definition.requiredLevels[expansion]
+        local locked = requiredLevel and APR.Level < requiredLevel
+        local label = scope and APR:GetRouteSelectionScopeLabel(scope) or GetExpansionDisplayName(expansion)
+        local option = {key = scope or expansion, expansion = expansion, scope = scope,
+            prefabType = prefabType, label = label, enabled = not locked}
+        if locked then
+            option.label = BuildLockedLabel(expansion, requiredLevel)
+            option.tooltip = string.format(L["LEVEL_REQUIRED_TITLE"], requiredLevel)
+        elseif requiredLevel then
+            option.label = label .. " (" .. string.format(L["LEVEL_REQUIRED"], requiredLevel) .. ")"
+        end
+        tinsert(options, option)
+    end--[[APR_DIAG]]; add = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:223:add#13", add)--[[/APR_DIAG]]
+    for _, expansion in ipairs(GetOrderedPopupExpansions(definition)) do
+        if expansion == APR.EXPANSIONS.Forever then
+            if definition.prefabType == APR.PREFAB_TYPES.Leveling then
+                add(expansion, APR.PREFAB_TYPES.Leveling, expansion)
             end
-
-            if not hasRoute and definition.showUnavailable then
-                option.label = option.label .. " - " .. UNAVAILABLE
-                option.tooltip = definition.unavailableMessage
-            end
-
-            tinsert(options, option)
+            add(expansion, APR.PREFAB_TYPES.Dungeons, "forever_dungeons")
+            add(expansion, definition.prefabType, "forever_mage_aoe")
+        else
+            add(expansion, definition.prefabType)
         end
     end
-
     return options
-end--[[APR_DIAG]]; BuildPrefabPopupOptions = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:201:BuildPrefabPopupOptions#11", BuildPrefabPopupOptions)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; BuildPrefabPopupOptions = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:221:BuildPrefabPopupOptions#12", BuildPrefabPopupOptions)--[[/APR_DIAG]]
+
+function APR.routeconfig:GetPrefabOptions(kind)
+    local definition = PREFAB_POPUP_DEFINITIONS[kind]
+    return definition and BuildPrefabPopupOptions(definition) or {}
+end--[[APR_DIAG]]; APR.routeconfig.GetPrefabOptions = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:253:APR.routeconfig:GetPrefabOptions#14", APR.routeconfig.GetPrefabOptions)--[[/APR_DIAG]]
+
+function APR.routeconfig:HasPrefab(kind)
+    if kind ~= "speedrun" then return #self:GetPrefabOptions(kind) > 0 end
+    if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
+        return HasRouteForExpansionAndPrefab(APR.EXPANSIONS.Forever, APR.PREFAB_TYPES.Leveling, APR.EXPANSIONS.Forever)
+    end
+    for _, expansion in ipairs({APR.EXPANSIONS.WarlordsOfDraenor, APR.EXPANSIONS.Dragonflight,
+        APR.EXPANSIONS.TheWarWithin, APR.EXPANSIONS.Midnight}) do
+        local prefabType = expansion == APR.EXPANSIONS.Midnight and APR.PREFAB_TYPES.Speedrun or APR.PREFAB_TYPES.Leveling
+        if APR:IsRouteCompatibleWithClient({expansion = expansion})
+            and HasRouteForExpansionAndPrefab(expansion, prefabType) then return true end
+    end
+    return false
+end--[[APR_DIAG]]; APR.routeconfig.HasPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:258:APR.routeconfig:HasPrefab#15", APR.routeconfig.HasPrefab)--[[/APR_DIAG]]
+
+local function SelectPrefab(definition, options, onSelect)
+    local available, only = 0, nil
+    for _, option in ipairs(options) do
+        if option.enabled then available, only = available + 1, option end
+    end
+    if available == 1 then return onSelect(only) end
+    if #options == 0 then
+        return APR.questionDialog:CreateMessagePopup(definition.unavailableMessage, OKAY)
+    end
+    return APR.questionDialog:CreateSelectionPopup(definition.title, definition.description, options, onSelect)
+end--[[APR_DIAG]]; SelectPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:272:SelectPrefab#16", SelectPrefab)--[[/APR_DIAG]]
 
 local function RouteHasZoneCondition(routeData, parentMapID)
     local conditions = type(routeData) == "table" and routeData.conditions
@@ -250,7 +294,7 @@ local function RouteHasZoneCondition(routeData, parentMapID)
     end
 
     return false
-end--[[APR_DIAG]]; RouteHasZoneCondition = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:240:RouteHasZoneCondition#12", RouteHasZoneCondition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; RouteHasZoneCondition = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:284:RouteHasZoneCondition#17", RouteHasZoneCondition)--[[/APR_DIAG]]
 
 local function HasStartingZoneRouteForMap(parentMapID, prefabType)
     if not parentMapID then
@@ -268,7 +312,7 @@ local function HasStartingZoneRouteForMap(parentMapID, prefabType)
     end
 
     return false
-end--[[APR_DIAG]]; HasStartingZoneRouteForMap = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:255:HasStartingZoneRouteForMap#13", HasStartingZoneRouteForMap)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; HasStartingZoneRouteForMap = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:299:HasStartingZoneRouteForMap#18", HasStartingZoneRouteForMap)--[[/APR_DIAG]]
 
 local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parentMapID, suppressUpdate)
     if not parentMapID then
@@ -297,7 +341,7 @@ local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parent
         return false
     end
 
-    table.sort(routeCandidates, --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:300:callback#15", --[[/APR_DIAG]]function(a, b)
+    table.sort(routeCandidates, --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:344:callback#20", --[[/APR_DIAG]]function(a, b)
         if a.index == b.index then
             return a.routeKey < b.routeKey
         end
@@ -320,7 +364,7 @@ local function BuildStartingZonePrefabFromRoutes(routeConfig, prefabType, parent
 
     routeConfig:SendCustomPathUpdate(suppressUpdate)
     return true
-end--[[APR_DIAG]]; BuildStartingZonePrefabFromRoutes = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:273:BuildStartingZonePrefabFromRoutes#14", BuildStartingZonePrefabFromRoutes)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; BuildStartingZonePrefabFromRoutes = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:317:BuildStartingZonePrefabFromRoutes#19", BuildStartingZonePrefabFromRoutes)--[[/APR_DIAG]]
 
 local function FindConditionBasedStartingRouteKey(parentMapID, requireMapMatch)
     local bestRouteKey = nil
@@ -360,7 +404,7 @@ local function FindConditionBasedStartingRouteKey(parentMapID, requireMapMatch)
     end
 
     return bestRouteKey
-end--[[APR_DIAG]]; FindConditionBasedStartingRouteKey = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:325:FindConditionBasedStartingRouteKey#16", FindConditionBasedStartingRouteKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; FindConditionBasedStartingRouteKey = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:369:FindConditionBasedStartingRouteKey#21", FindConditionBasedStartingRouteKey)--[[/APR_DIAG]]
 
 function APR.routeconfig:GetSpeedRunPrefab()
     if APR:GetGameVersion() == APR.GAME_VERSIONS.Forever then
@@ -390,7 +434,7 @@ function APR.routeconfig:GetSpeedRunPrefab()
 
     self._isBuildingSpeedrunPrefab = nil
     self:SendMessage("APR_Custom_Path_Update")
-end--[[APR_DIAG]]; APR.routeconfig.GetSpeedRunPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:365:APR.routeconfig:GetSpeedRunPrefab#17", APR.routeconfig.GetSpeedRunPrefab)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.routeconfig.GetSpeedRunPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:409:APR.routeconfig:GetSpeedRunPrefab#22", APR.routeconfig.GetSpeedRunPrefab)--[[/APR_DIAG]]
 
 function APR.routeconfig:BuildAllQuestsPrefab(expansion)
     local definition = PREFAB_POPUP_DEFINITIONS.all_quests
@@ -408,9 +452,28 @@ function APR.routeconfig:BuildAllQuestsPrefab(expansion)
     end
 
     self:SendCustomPathUpdate(false)
-end--[[APR_DIAG]]; APR.routeconfig.BuildAllQuestsPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:395:APR.routeconfig:BuildAllQuestsPrefab#18", APR.routeconfig.BuildAllQuestsPrefab)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.routeconfig.BuildAllQuestsPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:439:APR.routeconfig:BuildAllQuestsPrefab#23", APR.routeconfig.BuildAllQuestsPrefab)--[[/APR_DIAG]]
 
-function APR.routeconfig:BuildLevelingPrefab(expansion)
+function APR.routeconfig:BuildDungeonPrefab(scope)
+    scope = scope or "forever_dungeons"
+    local faction = UnitFactionGroup("player")
+    if APR:GetGameVersion() ~= APR.GAME_VERSIONS.Forever or (faction ~= "Horde" and faction ~= "Alliance") then return false end
+    if not HasRouteForExpansionAndPrefab(APR.EXPANSIONS.Forever, APR.PREFAB_TYPES.Dungeons, scope) then return false end
+    APRCustomPath[APR.PlayerID] = {}
+    return BuildExpansionPrefabFromRoutes(self, APR.EXPANSIONS.Forever, APR.PREFAB_TYPES.Dungeons, false, scope)
+end--[[APR_DIAG]]; APR.routeconfig.BuildDungeonPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:457:APR.routeconfig:BuildDungeonPrefab#24", APR.routeconfig.BuildDungeonPrefab)--[[/APR_DIAG]]
+
+function APR.routeconfig:OpenDungeonPopup()
+    local definition = PREFAB_POPUP_DEFINITIONS.dungeons
+    return SelectPrefab(definition, BuildPrefabPopupOptions(definition), --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:468:callback#26", --[[/APR_DIAG]]function(option)
+        self:BuildDungeonPrefab(option.scope)
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; APR.routeconfig.OpenDungeonPopup = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:466:APR.routeconfig:OpenDungeonPopup#25", APR.routeconfig.OpenDungeonPopup)--[[/APR_DIAG]]
+
+function APR.routeconfig:BuildLevelingPrefab(expansion, scope, prefabType)
+    scope = scope or (expansion == APR.EXPANSIONS.Forever and expansion or nil)
+    prefabType = prefabType or APR.PREFAB_TYPES.Leveling
+    if prefabType == APR.PREFAB_TYPES.Dungeons then return self:BuildDungeonPrefab(scope) end
     local definition = PREFAB_POPUP_DEFINITIONS.leveling
     local requiredLevel = definition.requiredLevels and definition.requiredLevels[expansion]
     if requiredLevel and APR.Level < requiredLevel then
@@ -423,49 +486,31 @@ function APR.routeconfig:BuildLevelingPrefab(expansion)
         return
     end
 
+    if not HasRouteForExpansionAndPrefab(expansion, prefabType, scope) then return false end
     APRCustomPath[APR.PlayerID] = {}
     if expansion ~= APR.EXPANSIONS.Forever then self:GetStartingZonePrefab(true) end
 
-    if not BuildExpansionPrefabFromRoutes(self, expansion, definition.prefabType, true) then
+    if not BuildExpansionPrefabFromRoutes(self, expansion, prefabType, true, scope) then
         APR.questionDialog:CreateMessagePopup(definition.unavailableMessage, OKAY)
         return
     end
 
     self:SendCustomPathUpdate(false)
-end--[[APR_DIAG]]; APR.routeconfig.BuildLevelingPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:413:APR.routeconfig:BuildLevelingPrefab#19", APR.routeconfig.BuildLevelingPrefab)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.routeconfig.BuildLevelingPrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:473:APR.routeconfig:BuildLevelingPrefab#27", APR.routeconfig.BuildLevelingPrefab)--[[/APR_DIAG]]
 
 function APR.routeconfig:OpenAllQuestsPopup()
     local definition = PREFAB_POPUP_DEFINITIONS.all_quests
-    local options = BuildPrefabPopupOptions(definition)
-
-    if #options == 0 then
-        APR.questionDialog:CreateMessagePopup(definition.unavailableMessage, OKAY)
-        return
-    end
-
-    APR.questionDialog:CreateSelectionPopup(
-        definition.title,
-        definition.description,
-        options,
-        --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:450:callback#21", --[[/APR_DIAG]]function(option)
-            self:BuildAllQuestsPrefab(option.key)
-        end--[[APR_DIAG]])--[[/APR_DIAG]]
-    )
-end--[[APR_DIAG]]; APR.routeconfig.OpenAllQuestsPopup = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:437:APR.routeconfig:OpenAllQuestsPopup#20", APR.routeconfig.OpenAllQuestsPopup)--[[/APR_DIAG]]
+    return SelectPrefab(definition, BuildPrefabPopupOptions(definition), --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:503:callback#29", --[[/APR_DIAG]]function(option)
+        self:BuildAllQuestsPrefab(option.expansion)
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; APR.routeconfig.OpenAllQuestsPopup = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:501:APR.routeconfig:OpenAllQuestsPopup#28", APR.routeconfig.OpenAllQuestsPopup)--[[/APR_DIAG]]
 
 function APR.routeconfig:OpenLevelingPopup()
     local definition = PREFAB_POPUP_DEFINITIONS.leveling
-    local options = BuildPrefabPopupOptions(definition)
-
-    APR.questionDialog:CreateSelectionPopup(
-        definition.title,
-        definition.description,
-        options,
-        --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:464:callback#23", --[[/APR_DIAG]]function(option)
-            self:BuildLevelingPrefab(option.key)
-        end--[[APR_DIAG]])--[[/APR_DIAG]]
-    )
-end--[[APR_DIAG]]; APR.routeconfig.OpenLevelingPopup = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:456:APR.routeconfig:OpenLevelingPopup#22", APR.routeconfig.OpenLevelingPopup)--[[/APR_DIAG]]
+    return SelectPrefab(definition, BuildPrefabPopupOptions(definition), --[[APR_DIAG]]APRTrace("APR-Core/config/Config_Route_Prefabs.lua:510:callback#31", --[[/APR_DIAG]]function(option)
+        self:BuildLevelingPrefab(option.expansion, option.scope, option.prefabType)
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; APR.routeconfig.OpenLevelingPopup = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:508:APR.routeconfig:OpenLevelingPopup#30", APR.routeconfig.OpenLevelingPopup)--[[/APR_DIAG]]
 
 function APR.routeconfig:GetStartingZonePrefab(suppressUpdate, prefabType)
     local parentMapID = APR:GetPlayerParentMapID()
@@ -499,7 +544,7 @@ function APR.routeconfig:GetStartingZonePrefab(suppressUpdate, prefabType)
     end
 
     self:SendCustomPathUpdate(suppressUpdate)
-end--[[APR_DIAG]]; APR.routeconfig.GetStartingZonePrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:470:APR.routeconfig:GetStartingZonePrefab#24", APR.routeconfig.GetStartingZonePrefab)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.routeconfig.GetStartingZonePrefab = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:515:APR.routeconfig:GetStartingZonePrefab#32", APR.routeconfig.GetStartingZonePrefab)--[[/APR_DIAG]]
 
 function APR.routeconfig:GetPlayerSpecRoute(prefix)
     local specName = APR:GetClassSpecName()
@@ -508,4 +553,4 @@ function APR.routeconfig:GetPlayerSpecRoute(prefix)
     if APR:GetRouteVisibility(routeKey) ~= "hidden" then
         AddRouteToCustomPath(L[routeKey])
     end
-end--[[APR_DIAG]]; APR.routeconfig.GetPlayerSpecRoute = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:504:APR.routeconfig:GetPlayerSpecRoute#25", APR.routeconfig.GetPlayerSpecRoute)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.routeconfig.GetPlayerSpecRoute = APRTrace("APR-Core/config/Config_Route_Prefabs.lua:549:APR.routeconfig:GetPlayerSpecRoute#33", APR.routeconfig.GetPlayerSpecRoute)--[[/APR_DIAG]]

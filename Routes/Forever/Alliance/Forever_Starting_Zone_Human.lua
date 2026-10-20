@@ -864,7 +864,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
     mapID = 1429,
     conditions = { Race = APR.RACES.Human, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Loch-Modan-Human" },
-    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = { EquippedItem = { itemID = 2139, invert = true, slot = 16 }, Class = "ROGUE", EquippedItemStat = { operator = "<", slot = 16, value = 1.25, precision = 2, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", allowMissing = true }, ItemCount = { itemID = 2139, count = 1 }, HasSpell = 1180 },

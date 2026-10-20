@@ -71,6 +71,7 @@ APR.EXPANSION_ORDER_KEYS = {
 }
 
 APR.CATEGORIES = {
+    Dungeons = DUNGEONS,
     Leveling = L["LEVELING_CAT"],
     Sojourner = L["Sojourner"],
     Campaign = L["Campaign"],
@@ -86,6 +87,7 @@ APR.CATEGORIES = {
 }
 
 APR.PREFAB_TYPES = {
+    Dungeons = "dungeons",
     Leveling = "leveling",
     AllQuests = "all_quests",
     Speedrun = "speedrun",
@@ -139,4 +141,4 @@ function APR:GetEnumKeyByValue(enum, value)
         end
     end
     return nil
-end--[[APR_DIAG]]; APR.GetEnumKeyByValue = APRTrace("APR-Core/data/models/Enums.lua:135:APR:GetEnumKeyByValue#1", APR.GetEnumKeyByValue)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetEnumKeyByValue = APRTrace("APR-Core/data/models/Enums.lua:137:APR:GetEnumKeyByValue#1", APR.GetEnumKeyByValue)--[[/APR_DIAG]]

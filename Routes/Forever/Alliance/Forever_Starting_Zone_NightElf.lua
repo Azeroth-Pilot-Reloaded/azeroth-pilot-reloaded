@@ -8,7 +8,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
     mapID = 1438,
     conditions = { Race = APR.RACES.NightElf, Faction = "Alliance" },
     nextRoute = { "Forever-Alliance-Darkshore" },
-    prefab = { [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
+    prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 1 }, [APR.PREFAB_TYPES.Leveling] = { index = 1 }, [APR.PREFAB_TYPES.Speedrun] = { index = 1 }, [APR.PREFAB_TYPES.StartingZone] = 1 },
     parallelSteps = {
         {
             conditions = { Class = { "HUNTER", "ROGUE" }, ItemCount = { itemID = 5392, count = 1 }, EquippedItemStat = { allowMissing = true, slot = 16, value = 2.05, precision = 2, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<" }, EquippedItem = { invert = true, itemID = 5392, slot = 16 } },

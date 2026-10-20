@@ -20,7 +20,7 @@ end
 function APR:GetRouteSelectionExpansions() return {"Old", "Midnight", "Custom"} end
 APR.PlayerID = "test"
 APR.RouteQuestStepList = {
-    first = {label = "First by Someone", expansion = "Midnight", category = "Campaign"},
+    first = {label = "First by Someone", expansion = "Midnight", category = "Campaign", prefab = {leveling = 1, speedrun = 1, all_quests = 1}},
     second = {label = "Second", expansion = "Midnight", category = "Daily", author = "  Test author  ", community = true,
         description = "A route description", visibility = "disabled"},
     old = {label = "Older route", expansion = "Old", category = "Campaign", author = "Writer"},
@@ -35,6 +35,9 @@ function APR:SetTooltipText(_, text) tooltipLines = {text} end
 function APR:AddTooltipLine(_, text) tooltipLines[#tooltipLines + 1] = text end
 function env.tooltip() return table.concat(tooltipLines, "\n") end
 APR.routeconfig = {SendCustomPathUpdate = function() APR.RouteBrowser:Refresh(true) end}
+APR.Level = 80
+tinsert = table.insert
+dofile("APR-Core/config/Config_Route_Prefabs.lua")
 dofile("APR-Core/integrations/SkinRegistry.lua")
 dofile("APR-Core/ui/foundations/Themes.lua")
 dofile("APR-Core/ui/foundations/Widgets.lua")

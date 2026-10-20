@@ -112,6 +112,8 @@ function APR:OnInitialize()
     APRScenarioCompleted[self.PlayerID] = APRScenarioCompleted[self.PlayerID] or {}
     APRItemLooted[self.PlayerID] = APRItemLooted[self.PlayerID] or {}
 
+    if self.NormalizeSavedRouteLabels then self:NormalizeSavedRouteLabels() end
+
     APRGossipValidated = APRGossipValidated or {}
     APRGossipValidated[self.PlayerID] = APRGossipValidated[self.PlayerID] or {}
 
@@ -189,7 +191,7 @@ function APR:InitSecretUtils()
     else
         self.Secret = {}
     end
-end--[[APR_DIAG]]; APR.InitSecretUtils = APRTrace("APR-Core/core/Core.lua:186:APR:InitSecretUtils#2", APR.InitSecretUtils)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.InitSecretUtils = APRTrace("APR-Core/core/Core.lua:188:APR:InitSecretUtils#2", APR.InitSecretUtils)--[[/APR_DIAG]]
 
 function APR:InitIdentity()
     local userId = (self.SafeUnitGUID and self:SafeUnitGUID("player", UNKNOWN))
@@ -208,4 +210,4 @@ function APR:InitIdentity()
             self.ClassLocalName, self.ClassName, self.ClassId = classLocal, className, classId
         end
     end
-end--[[APR_DIAG]]; APR.InitIdentity = APRTrace("APR-Core/core/Core.lua:194:APR:InitIdentity#3", APR.InitIdentity)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.InitIdentity = APRTrace("APR-Core/core/Core.lua:196:APR:InitIdentity#3", APR.InitIdentity)--[[/APR_DIAG]]
