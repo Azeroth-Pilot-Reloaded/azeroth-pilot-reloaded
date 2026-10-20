@@ -268,6 +268,12 @@ local function GameplayCorners(frame, radius, corners)
     local root = gameplayRoots[scope] and _G[gameplayRoots[scope]] or frame
     if frame ~= root and frame ~= root.aprContentBackdrop and not frame.aprGameplayCorners then return radius, corners end
     local top, bottom = corners ~= "bottom", corners ~= "top"
+    if frame == root or frame == root.aprContentBackdrop then
+        -- A visible header owns the outer upper corners; its body joins it squarely.
+        for header in pairs(modernHeaders) do
+            if header:GetParent() == root and header:IsShown() then top = false; break end
+        end
+    end
     if root.aprSnapAnchor then top = false end
     for child in pairs(snappedFrames) do
         if child.aprSnapAnchor == root and child:IsShown() then bottom = false; break end
@@ -288,7 +294,7 @@ function APR:RefreshSnappedTheme()
     for frame, entry in pairs(themeSurfaces) do
         if entry.options.roundedGameplay or frame.aprSnapCornersInitialized then self:ApplyNativeTheme(frame, entry.kind, entry.options) end
     end
-end--[[APR_DIAG]]; APR.RefreshSnappedTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:279:APR:RefreshSnappedTheme#20", APR.RefreshSnappedTheme)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RefreshSnappedTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:285:APR:RefreshSnappedTheme#20", APR.RefreshSnappedTheme)--[[/APR_DIAG]]
 
 function APR:SetFrameSnapAnchor(frame, anchor)
     if InCombatLockdown() or not frame or frame.aprSnapAnchor == anchor then return end
@@ -297,13 +303,13 @@ function APR:SetFrameSnapAnchor(frame, anchor)
     snappedFrames[frame] = anchor and true or nil
     if not frame.aprSnapVisibilityHook and frame.HookScript then
         frame.aprSnapVisibilityHook = true
-        frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:300:callback#22", --[[/APR_DIAG]]function() APR:RefreshSnappedTheme() end--[[APR_DIAG]])--[[/APR_DIAG]])
-        frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:301:callback#23", --[[/APR_DIAG]]function() APR:RefreshSnappedTheme() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:306:callback#22", --[[/APR_DIAG]]function() APR:RefreshSnappedTheme() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:307:callback#23", --[[/APR_DIAG]]function() APR:RefreshSnappedTheme() end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
     self:RefreshSnappedTheme()
-end--[[APR_DIAG]]; APR.SetFrameSnapAnchor = APRTrace("APR-Core/ui/foundations/Themes.lua:293:APR:SetFrameSnapAnchor#21", APR.SetFrameSnapAnchor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SetFrameSnapAnchor = APRTrace("APR-Core/ui/foundations/Themes.lua:299:APR:SetFrameSnapAnchor#21", APR.SetFrameSnapAnchor)--[[/APR_DIAG]]
 
-FlatPanel = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:306:callback#24", --[[/APR_DIAG]]function(frame, scope, role, border, radius)
+FlatPanel = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:312:callback#24", --[[/APR_DIAG]]function(frame, scope, role, border, radius)
     local profile = APR:GetSettingsProfile()
     local custom = profile and profile.uiThemeCustomization
     if radius and ((custom and next(custom)) or frame.aprSnapAnchor) then
@@ -378,7 +384,7 @@ local function ModernAction(button, kind, options, scope)
                 local color = options.parent.aprExpandedPanelColor or APR:GetThemeColor("background", scope)
                 APR:SetPanelColor(options.parent, collapsed and {0, 0, 0, 0} or color)
             end
-        end--[[APR_DIAG]]; update = APRTrace("APR-Core/ui/foundations/Themes.lua:371:update#26", update)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; update = APRTrace("APR-Core/ui/foundations/Themes.lua:377:update#26", update)--[[/APR_DIAG]]
         look.update = update
         button:HookScript("OnClick", update)
         button:HookScript("OnEnable", update)
@@ -391,7 +397,7 @@ local function ModernAction(button, kind, options, scope)
         APR:RegisterFontString(look.label, scope or "general", {role = "accent", sizeDelta = 6})
     end
     look.update()
-end--[[APR_DIAG]]; ModernAction = APRTrace("APR-Core/ui/foundations/Themes.lua:326:ModernAction#25", ModernAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ModernAction = APRTrace("APR-Core/ui/foundations/Themes.lua:332:ModernAction#25", ModernAction)--[[/APR_DIAG]]
 
 function APR:ApplyModernTheme(frame, kind, options, scope)
     if kind == "flatButton" then return end
@@ -405,6 +411,8 @@ function APR:ApplyModernTheme(frame, kind, options, scope)
             chrome:SetFrameLevel(frame:GetFrameLevel())
             frame.aprModernHeader = chrome
             chrome.aprGameplayCorners = true
+            frame:HookScript("OnShow", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:414:callback#28", --[[/APR_DIAG]]function() APR:RefreshSnappedTheme() end--[[APR_DIAG]])--[[/APR_DIAG]])
+            frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:415:callback#29", --[[/APR_DIAG]]function() APR:RefreshSnappedTheme() end--[[APR_DIAG]])--[[/APR_DIAG]])
             chrome.line = chrome:CreateTexture(nil, "OVERLAY")
             chrome.line:SetPoint("TOPLEFT"); chrome.line:SetPoint("TOPRIGHT"); chrome.line:SetHeight(1)
             chrome.marker = chrome:CreateTexture(nil, "OVERLAY")
@@ -415,7 +423,7 @@ function APR:ApplyModernTheme(frame, kind, options, scope)
                     if not InCombatLockdown() and math.abs(frame:GetWidth() - parent:GetWidth()) > 0.01 then
                         frame:SetWidth(parent:GetWidth())
                     end
-                end--[[APR_DIAG]]; matchWidth = APRTrace("APR-Core/ui/foundations/Themes.lua:414:matchWidth#28", matchWidth)--[[/APR_DIAG]]
+                end--[[APR_DIAG]]; matchWidth = APRTrace("APR-Core/ui/foundations/Themes.lua:422:matchWidth#30", matchWidth)--[[/APR_DIAG]]
                 parent:HookScript("OnSizeChanged", matchWidth)
                 frame:HookScript("OnShow", matchWidth)
                 matchWidth()
@@ -444,6 +452,13 @@ function APR:ApplyModernTheme(frame, kind, options, scope)
             provider and 1 or 0.65)
         self:RegisterThemeRegion(chrome.marker, "accent", 1)
         chrome.marker:SetShown(not provider)
+        -- Static panels can be skinned before their header is registered.
+        local parent = frame:GetParent()
+        local panel = parent and modernPanels[parent]
+        if panel and panel.radius then
+            FlatPanel(parent, panel.scope, panel.role, panel.border, panel.radius)
+            if parent.aprPanelColor then self:SetPanelColor(parent, parent.aprPanelColor) end
+        end
     elseif kind == "headerButton" or kind == "settings" or kind == "arrow" or kind == "close" or kind == "resize" then
         ModernAction(frame, kind, options, scope)
     elseif kind == "icon" then
@@ -490,7 +505,7 @@ function APR:ApplyModernTheme(frame, kind, options, scope)
             self:RegisterThemeRegion(frame.dividerLine, provider and "border" or "accent", provider and 1 or 0.25, true)
         end
     end
-end--[[APR_DIAG]]; APR.ApplyModernTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:396:APR:ApplyModernTheme#27", APR.ApplyModernTheme)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ApplyModernTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:402:APR:ApplyModernTheme#27", APR.ApplyModernTheme)--[[/APR_DIAG]]
 
 function APR:RefreshModernTheme()
     if InCombatLockdown() then return end
@@ -499,13 +514,13 @@ function APR:RefreshModernTheme()
         if frame.aprPanelColor then self:SetPanelColor(frame, frame.aprPanelColor) end
     end
     for button, entry in pairs(modernButtons) do self:ApplyModernTheme(button, entry.kind, entry.options, entry.scope) end
-end--[[APR_DIAG]]; APR.RefreshModernTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:495:APR:RefreshModernTheme#29", APR.RefreshModernTheme)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RefreshModernTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:510:APR:RefreshModernTheme#31", APR.RefreshModernTheme)--[[/APR_DIAG]]
 
 local chromeRoot = "Interface\\AddOns\\APR\\APR-Core\\assets\\ui\\"
 
 -- Backdrop's center is rectangular. Six non-overlapping fill pieces complete its
 -- rounded ends, leaving the outer corners transparent instead of leaking a square.
-RoundedBackdrop = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:508:callback#30", --[[/APR_DIAG]]function(frame, radius, corners)
+RoundedBackdrop = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:523:callback#32", --[[/APR_DIAG]]function(frame, radius, corners)
     frame.aprCornerSpec = radius > 8 and {radius = radius, corners = corners} or nil
     if radius > 8 then
         local width, height = frame:GetSize()
@@ -514,7 +529,7 @@ RoundedBackdrop = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:508
         end
         if not frame.aprCornerBoundsHooked then
             frame.aprCornerBoundsHooked = true
-            frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:517:callback#31", --[[/APR_DIAG]]function()
+            frame:HookScript("OnSizeChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:532:callback#33", --[[/APR_DIAG]]function()
                 local spec = frame.aprCornerSpec
                 if not spec or InCombatLockdown() then return end
                 local color = {frame:GetBackdropColor()}
@@ -544,7 +559,7 @@ RoundedBackdrop = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:508
             texture:SetTexelSnappingBias(0)
             fill.pieces[index] = texture
         end
-        hooksecurefunc(frame, "SetBackdropColor", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:547:callback#32", --[[/APR_DIAG]]function(_, r, g, b, a)
+        hooksecurefunc(frame, "SetBackdropColor", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/Themes.lua:562:callback#34", --[[/APR_DIAG]]function(_, r, g, b, a)
             if fill.enabled then
                 for _, piece in ipairs(fill.pieces) do piece:SetVertexColor(r, g, b, a or 1) end
             end
@@ -577,7 +592,7 @@ function APR:RenderThemePreviewPanel(frame, theme, radius, corners, role)
     RoundedBackdrop(frame, radius, corners)
     frame:SetBackdropColor(unpack(theme[role or "background"]))
     frame:SetBackdropBorderColor(unpack(theme.border))
-end--[[APR_DIAG]]; APR.RenderThemePreviewPanel = APRTrace("APR-Core/ui/foundations/Themes.lua:576:APR:RenderThemePreviewPanel#33", APR.RenderThemePreviewPanel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RenderThemePreviewPanel = APRTrace("APR-Core/ui/foundations/Themes.lua:591:APR:RenderThemePreviewPanel#35", APR.RenderThemePreviewPanel)--[[/APR_DIAG]]
 
 -- Late skin registration must also retire the native corner fills before the provider adds its chrome.
 function APR:RestoreNativeTheme(frame)
@@ -588,7 +603,7 @@ function APR:RestoreNativeTheme(frame)
         for _, piece in ipairs(frame.aprRoundedFill.pieces) do piece:Hide() end
         frame:SetBackdrop(nil)
     end
-end--[[APR_DIAG]]; APR.RestoreNativeTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:583:APR:RestoreNativeTheme#34", APR.RestoreNativeTheme)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RestoreNativeTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:598:APR:RestoreNativeTheme#36", APR.RestoreNativeTheme)--[[/APR_DIAG]]
 
 -- Opt-in surfaces leave gameplay panel colors intact; external providers take precedence.
 function APR:ApplyNativeTheme(frame, kind, options)
@@ -636,7 +651,7 @@ function APR:ApplyNativeTheme(frame, kind, options)
                 frame.aprWoWButtonArt[texture] = texture:GetAlpha()
             end
             texture:SetAlpha(0)
-        end--[[APR_DIAG]]; hide = APRTrace("APR-Core/ui/foundations/Themes.lua:633:hide#36", hide)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; hide = APRTrace("APR-Core/ui/foundations/Themes.lua:648:hide#38", hide)--[[/APR_DIAG]]
         for _, key in ipairs({"Left", "Middle", "Right"}) do
             hide(frame[key])
         end
@@ -661,4 +676,4 @@ function APR:ApplyNativeTheme(frame, kind, options)
     local color = inset and theme.surface or theme.background
     frame:SetBackdropColor(color[1], color[2], color[3], modern and 1 or color[4])
     frame:SetBackdropBorderColor(unpack(theme.border))
-end--[[APR_DIAG]]; APR.ApplyNativeTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:594:APR:ApplyNativeTheme#35", APR.ApplyNativeTheme)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ApplyNativeTheme = APRTrace("APR-Core/ui/foundations/Themes.lua:609:APR:ApplyNativeTheme#37", APR.ApplyNativeTheme)--[[/APR_DIAG]]
