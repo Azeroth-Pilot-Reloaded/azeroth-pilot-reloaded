@@ -1122,10 +1122,10 @@ if GetExpansionLevel() >= 10 then
             type = 1,
             important = true,
             locaId = SpecialLocaId.PortalTo,
-            locaArgs = function() return { C_Map.GetAreaInfo(15524) or "Razorwind Shores" } end
+            locaArgs = function() return { C_Map.GetAreaInfo(15524) or FarstriderLibData.WaypointL[569] or L["Unknown Location"] } end
         }
         local to = { unknown1 = 0, flags = 0, loc = { mapId = 2351, pos = { x = 0.5431, y = 0.4932, z = 0 }, isUI = true }, type = 2, locaId =
-        SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(15524) or "Razorwind Shores" } end }
+        SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(15524) or FarstriderLibData.WaypointL[569] or L["Unknown Location"] } end }
         addEntry(SpecialLocaId.PortalTo + portalCount, from, to, false, 30)
         portalCount = portalCount + 1
     end
@@ -1142,10 +1142,10 @@ if GetExpansionLevel() >= 10 then
             type = 1,
             important = true,
             locaId = SpecialLocaId.PortalTo,
-            locaArgs = function() return { C_Map.GetAreaInfo(16105) or "Founder's Point" } end
+            locaArgs = function() return { C_Map.GetAreaInfo(16105) or FarstriderLibData.WaypointL[567] or L["Unknown Location"] } end
         }
         local to = { unknown1 = 0, flags = 0, loc = { mapId = 2352, pos = { x = 0.5743, y = 0.2662, z = 0 }, isUI = true }, type = 2, locaId =
-        SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(16105) or "Founder's Point" } end }
+        SpecialLocaId.PortalTo, locaArgs = function() return { C_Map.GetAreaInfo(16105) or FarstriderLibData.WaypointL[567] or L["Unknown Location"] } end }
         addEntry(SpecialLocaId.PortalTo + portalCount, from, to, false, 30)
         portalCount = portalCount + 1
     end

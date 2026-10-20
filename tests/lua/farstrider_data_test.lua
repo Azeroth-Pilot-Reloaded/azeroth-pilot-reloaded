@@ -95,6 +95,9 @@ for _, game in ipairs({ "Standard", "Camelot" }) do
                 assert(not loaded
                     ["APR-Core/libs/FarstriderLibData/Waypoints/" .. otherFlavor .. "/FarstriderLibData_Waypoints.lua"])
                 assert(api.IsBindLocationSupported())
+                assert(api.GetLocalizedString(1000) ==
+                    (locale == "frFR" and "Atteindre la destination" or "Reach the destination"),
+                    "The bundled generic destination instruction follows the client locale")
                 local binding = data.Util.GetBindingLocation()
                 assert(binding.mapId == 0 and binding.isUI == false)
                 local expectedX = vanilla and -10628.889648438 or -10551.900390625
@@ -209,13 +212,13 @@ for _, faction in ipairs({ "Alliance", "Horde" }) do
     end
 end
 
--- Render transport instructions with unavailable map/area APIs, including locales whose L table
--- returns missing keys verbatim. Neither English dock literals nor Area_/ForeverPort_ keys
--- should reach the displayed instructions.
+-- Render transport instructions in every shipped locale with unavailable map/area APIs.
+-- Neither English dock literals nor Area_/ForeverPort_ keys should reach the instructions.
 C_Map = { GetAreaInfo = function() return nil end }
 local undercityNames = {
     enUS = "Undercity", frFR = "Fossoyeuse", deDE = "Unterstadt",
     ruRU = "Подгород", zhCN = "幽暗城", zhTW = "幽暗城",
+    esES = "Entrañas", esMX = "Entrañas", itIT = "Sepulcra", koKR = "언더시티", ptBR = "Cidade Baixa",
 }
 for locale, undercityName in pairs(undercityNames) do
     for _, faction in ipairs({ "Alliance", "Horde" }) do

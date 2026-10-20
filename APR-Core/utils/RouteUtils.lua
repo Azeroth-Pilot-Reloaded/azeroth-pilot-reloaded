@@ -263,7 +263,7 @@ function APR:CheckIsInRouteZone()
         end--[[APR_DIAG]])--[[/APR_DIAG]],
 
         --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteUtils.lua:265:callback#11", --[[/APR_DIAG]]function()
-            return self:IsNearbyStepInSiblingZone(step, playerContext, fallbackMapID)
+            return self:IsNearbyStepInConnectedZone(step, playerContext, fallbackMapID)
         end--[[APR_DIAG]])--[[/APR_DIAG]],
 
         -- 4. Dynamic POI / Objective / Coordinate & Transition Match
@@ -330,7 +330,7 @@ function APR:CheckIsInRouteZone()
     -- Execute continent-filtered checks
     for index, checkFunc in ipairs(continentChecks) do
         local checkNames = {
-            "DirectMatch", "HierarchyMatch", "DescendantMatch", "NearbySiblingZone", "QuestPoiOrCoordMatch"
+            "DirectMatch", "HierarchyMatch", "DescendantMatch", "NearbyConnectedZone", "QuestPoiOrCoordMatch"
         }
 
         self:PrintZoneDebug("Running Check #" .. index .. " (" .. (checkNames[index] or UNKNOWN) .. ")...")

@@ -80,22 +80,20 @@ function NavNode:__tostring()
     return string.format("NavNode<%s map=%d (%.4f, %.4f)>", self.key, loc.mapId or 0, loc.pos.x or 0, loc.pos.y or 0)
 end
 
---- Iterate over all edges (permanent + temporary) via a coroutine.
+--- Iterate over permanent then temporary edges without a coroutine per node.
 ---@param self NavNode
 ---@return fun(): NavEdge
 function NavNode.iterateAllEdges(self)
-    return coroutine.wrap(function()
-        if self.edges then
-            for _, edge in ipairs(self.edges) do
-                coroutine.yield(edge)
-            end
+    local edges, index, temporary = self.edges, 0, false
+    return function()
+        index = index + 1
+        local edge = edges and edges[index]
+        if edge then return edge end
+        if not temporary then
+            edges, index, temporary = self.tempEdges, 1, true
+            return edges and edges[index]
         end
-        if self.tempEdges then
-            for _, tempEdge in ipairs(self.tempEdges) do
-                coroutine.yield(tempEdge)
-            end
-        end
-    end)
+    end
 end
 
 return NavNode

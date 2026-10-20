@@ -1,13 +1,10 @@
--- FarstriderLibData_Locale.ruRU.lua
+-- Navigation labels for ruRU; English supplies missing-key fallbacks.
 local _, FarstriderLibData = ...
 
 if not FarstriderLibData.Internal then return end
+if GetLocale() ~= "ruRU" then return end
 
-if (GetLocale() ~= "ruRU") then
-    return;
-end
-
-FarstriderLibData.L = {
+FarstriderLibData.L = setmetatable({
     ["ForeverPort_Auberdine"] = "Аубердин",
     ["ForeverPort_BootyBay"] = "Пиратская Бухта",
     ["ForeverPort_Dalaran"] = "Даларан",
@@ -35,10 +32,6 @@ FarstriderLibData.L = {
     ["Waypoint_1004"] = "Сядьте на дирижабль из %s в %s",
     ["Waypoint_1005"] = "Используйте %s для %s",
     ["Waypoint_1006"] = "Каст %s на %s",
-};
-
-setmetatable(FarstriderLibData.L, {
-    __index = function(t, k)
-        rawset(t, k, k); return k;
-    end
-})
+    ["Unknown Item"] = "Неизвестный предмет",
+    ["Unknown Spell"] = "Неизвестное заклинание",
+}, { __index = FarstriderLibData.L })

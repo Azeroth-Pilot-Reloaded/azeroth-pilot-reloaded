@@ -116,6 +116,8 @@ end
 APR.foreverTravel:RefreshGraph()
 local _, _, edges = path()
 assert(not hasEdge(edges, 1001), "No taxis may be invented before a flight master is observed")
+local direct = path()
+assert(direct[1].locaId == 1000, "Public path segments expose their instruction type independently of localized text")
 local total = 0
 for _, edge in ipairs(edges) do total = total + edge.cost end
 assert(math.abs(total - 8900 / 7) < 0.001, "The direct shortcut must use walking speed too")

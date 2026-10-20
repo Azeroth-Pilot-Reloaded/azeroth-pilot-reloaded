@@ -1,13 +1,10 @@
--- FarstriderLibData_Locale.deDE.lua
+-- Navigation labels for deDE; English supplies missing-key fallbacks.
 local _, FarstriderLibData = ...
 
 if not FarstriderLibData.Internal then return end
+if GetLocale() ~= "deDE" then return end
 
-if (GetLocale() ~= "deDE") then
-    return;
-end
-
-FarstriderLibData.L = {
+FarstriderLibData.L = setmetatable({
     ["ForeverPort_Auberdine"] = "Auberdine",
     ["ForeverPort_BootyBay"] = "Beutebucht",
     ["ForeverPort_Dalaran"] = "Dalaran",
@@ -35,10 +32,6 @@ FarstriderLibData.L = {
     ["Waypoint_1004"] = "Nehmt den Zeppelin von %s nach %s",
     ["Waypoint_1005"] = "Benutze %s nach %s",
     ["Waypoint_1006"] = "Wirke %s nach %s",
-};
-
-setmetatable(FarstriderLibData.L, {
-    __index = function(t, k)
-        rawset(t, k, k); return k;
-    end
-})
+    ["Unknown Item"] = "Unbekannter Gegenstand",
+    ["Unknown Spell"] = "Unbekannter Zauber",
+}, { __index = FarstriderLibData.L })

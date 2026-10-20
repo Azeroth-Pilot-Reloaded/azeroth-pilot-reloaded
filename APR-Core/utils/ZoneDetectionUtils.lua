@@ -376,7 +376,7 @@ function APR:CheckContinentMatch(playerContext, stepZones)
     end
 
     local playerContinent = playerContext.continent
-    if not playerContinent then
+    if not playerContinent or playerContinent == 0 then
         return false
     end
 
@@ -390,11 +390,37 @@ function APR:CheckContinentMatch(playerContext, stepZones)
     return false
 end--[[APR_DIAG]]; APR.CheckContinentMatch = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:373:APR:CheckContinentMatch#18", APR.CheckContinentMatch)--[[/APR_DIAG]]
 
---- Accept a nearby waypoint across an outdoor zone boundary.
--- Neighboring outdoor zones share world coordinates even before the map ID switches.
--- Require both a shared parent and world instance so overlapping instance coordinates
--- cannot make an inaccessible destination appear to be nearby.
-function APR:IsNearbyStepInSiblingZone(step, playerContext, fallbackMapID)
+-- Follow outdoor ancestry symmetrically, including a city's parent zone.
+-- Do not cross dungeon maps, unknown hierarchy, or Farstrider isolation groups.
+local function GetOutdoorMapContext(self, mapID)
+    local config = GetFarstriderConfig() or {}
+    local visited, isolation, outerZone = {}, nil, nil
+    for _ = 1, 50 do
+        if not mapID or mapID == 0 or visited[mapID] then return nil end
+        visited[mapID] = true
+        local info = self:GetMapInfoCached(mapID)
+        if not info then return nil end
+        local override = config.MapTypeOverrides and config.MapTypeOverrides[mapID]
+        local mapType = override and override.mapType or info.mapType
+        if mapType ~= Enum.UIMapType.Zone and mapType ~= (Enum.UIMapType.Micro or 5)
+            and mapType ~= (Enum.UIMapType.Continent or 2) then return nil end
+        local group = config.IsolatedAreas and config.IsolatedAreas[mapID]
+        if group ~= nil and isolation == nil then isolation = group end
+        local continentOverride = config.ContinentMapOverrides and config.ContinentMapOverrides[mapID]
+        if mapType == (Enum.UIMapType.Continent or 2) or continentOverride then
+            return { isolation = isolation, continent = continentOverride or mapID,
+                isolatedContinent = config.IsolatedContinents and config.IsolatedContinents[mapID],
+                outerZone = outerZone }
+        end
+        outerZone = mapID
+        mapID = info.parentMapID
+    end
+end--[[APR_DIAG]]; GetOutdoorMapContext = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:395:GetOutdoorMapContext#19", GetOutdoorMapContext)--[[/APR_DIAG]]
+
+--- Accept a nearby step across connected outdoor maps, including nested cities.
+-- Shared world coordinates establish proximity; the solver still checks whether
+-- a transport action is required before APR publishes ordinary step guidance.
+function APR:IsNearbyStepInConnectedZone(step, playerContext, fallbackMapID)
     if not step or (IsInInstance and IsInInstance())
         or (self.GetScenarioMapIDForStep and self:GetScenarioMapIDForStep(step)) then return false end
     local limit = self.Arrow and self.Arrow.MaxDistanceWrongZone
@@ -403,17 +429,21 @@ function APR:IsNearbyStepInSiblingZone(step, playerContext, fallbackMapID)
     if not coord then return false end
     local zone = coordZone or coord.mapID or self:GetPreferredStepZone(step, fallbackMapID)
     local playerMap = playerContext and playerContext.current or C_Map.GetBestMapForUnit("player")
-    local source = playerMap and C_Map.GetMapInfo(playerMap)
-    local target = zone and C_Map.GetMapInfo(zone)
-    if not source or not target or not source.parentMapID or source.parentMapID == 0
-        or source.parentMapID ~= target.parentMapID
-        or source.mapType ~= Enum.UIMapType.Zone or target.mapType ~= Enum.UIMapType.Zone then return false end
+    if not playerMap or not zone then return false end
     local playerY, playerX, _, instanceID = UnitPosition("player")
     local targetInstance = C_Map.GetWorldPosFromMapPos(zone, CreateVector2D(0.5, 0.5))
     if not playerX or not playerY or instanceID == nil or targetInstance ~= instanceID then return false end
     local dx, dy = playerX - coord.x, playerY - coord.y
-    return dx * dx + dy * dy < limit * limit
-end--[[APR_DIAG]]; APR.IsNearbyStepInSiblingZone = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:397:APR:IsNearbyStepInSiblingZone#19", APR.IsNearbyStepInSiblingZone)--[[/APR_DIAG]]
+    if dx * dx + dy * dy >= limit * limit then return false end
+    local source = GetOutdoorMapContext(self, playerMap)
+    local target = GetOutdoorMapContext(self, zone)
+    if not source or not target or source.continent ~= target.continent
+        or source.isolation ~= target.isolation then return false end
+    if source.isolatedContinent or target.isolatedContinent then
+        return source.outerZone == target.outerZone
+    end
+    return true
+end--[[APR_DIAG]]; APR.IsNearbyStepInConnectedZone = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:423:APR:IsNearbyStepInConnectedZone#20", APR.IsNearbyStepInConnectedZone)--[[/APR_DIAG]]
 
 --- Check if player is in special instance content
 ---@return boolean
@@ -427,7 +457,7 @@ function APR:IsInSpecialContent()
     end
 
     return false
-end--[[APR_DIAG]]; APR.IsInSpecialContent = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:420:APR:IsInSpecialContent#20", APR.IsInSpecialContent)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsInSpecialContent = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:450:APR:IsInSpecialContent#21", APR.IsInSpecialContent)--[[/APR_DIAG]]
 
 ---=============================================================================
 -- DEBUGGING & DIAGNOSTICS
@@ -456,7 +486,7 @@ function APR:DebugZoneDetection(context, playerContext, stepZones, result)
     )
 
     self:PrintZoneDebug(msg)
-end--[[APR_DIAG]]; APR.DebugZoneDetection = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:441:APR:DebugZoneDetection#21", APR.DebugZoneDetection)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.DebugZoneDetection = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:471:APR:DebugZoneDetection#22", APR.DebugZoneDetection)--[[/APR_DIAG]]
 
 --- Get complete zone detection report
 ---@return table report Detailed diagnostic info
@@ -473,7 +503,7 @@ function APR:GetZoneDetectionReport()
         specialContent = self:IsInSpecialContent(),
         timestamp = GetTime()
     }
-end--[[APR_DIAG]]; APR.GetZoneDetectionReport = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:463:APR:GetZoneDetectionReport#22", APR.GetZoneDetectionReport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetZoneDetectionReport = APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:493:APR:GetZoneDetectionReport#23", APR.GetZoneDetectionReport)--[[/APR_DIAG]]
 
 ---=============================================================================
 -- INITIALIZATION
@@ -484,7 +514,7 @@ local zoneChangeFrame = CreateFrame("Frame")
 zoneChangeFrame:RegisterEvent("ZONE_CHANGED")
 zoneChangeFrame:RegisterEvent("ZONE_CHANGED_INDOORS")
 zoneChangeFrame:RegisterEvent("ZONE_CHANGED_NEW_AREA")
-zoneChangeFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:487:callback#23", --[[/APR_DIAG]]function(self, event)
+zoneChangeFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/utils/ZoneDetectionUtils.lua:517:callback#24", --[[/APR_DIAG]]function(self, event)
     if APR and APR.InvalidatePlayerZoneCache then
         APR:InvalidatePlayerZoneCache()
     end

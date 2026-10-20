@@ -69,7 +69,7 @@ end
 ---@param itemId number
 ---@return string itemName
 function Util.GetItemNameSafe(itemId)
-    return Util.GetItem(itemId):GetItemName() or L["Item_" .. itemId]
+    return Util.GetItem(itemId):GetItemName() or L["Item_" .. itemId] or L["Unknown Item"]
 end
 
 ---@type table<number, SpellMixin>
@@ -84,7 +84,7 @@ function Util.GetSpell(spellId)
 end
 
 function Util.GetSpellNameSafe(spellId)
-    return Util.GetSpell(spellId):GetSpellName() or L["Spell_" .. spellId]
+    return Util.GetSpell(spellId):GetSpellName() or L["Spell_" .. spellId] or L["Unknown Spell"]
 end
 
 --- Returns whether the player can currently use a given spell.

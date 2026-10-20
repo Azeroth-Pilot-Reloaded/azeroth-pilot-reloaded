@@ -1,13 +1,10 @@
--- FarstriderLibData_Locale.zhCN.lua
+-- Navigation labels for zhCN; English supplies missing-key fallbacks.
 local _, FarstriderLibData = ...
 
 if not FarstriderLibData.Internal then return end
+if GetLocale() ~= "zhCN" then return end
 
-if (GetLocale() ~= "zhCN") then
-    return;
-end
-
-FarstriderLibData.L = {
+FarstriderLibData.L = setmetatable({
     ["ForeverPort_Auberdine"] = "奥伯丁",
     ["ForeverPort_BootyBay"] = "藏宝海湾",
     ["ForeverPort_Dalaran"] = "达拉然",
@@ -35,10 +32,6 @@ FarstriderLibData.L = {
     ["Waypoint_1004"] = "从%s搭飞艇到%s",
     ["Waypoint_1005"] = "使用%s到%s",
     ["Waypoint_1006"] = "施放%s到%s",
-};
-
-setmetatable(FarstriderLibData.L, {
-    __index = function(t, k)
-        rawset(t, k, k); return k;
-    end
-})
+    ["Unknown Item"] = "未知物品",
+    ["Unknown Spell"] = "未知法术",
+}, { __index = FarstriderLibData.L })

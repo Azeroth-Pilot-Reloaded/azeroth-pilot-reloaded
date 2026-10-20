@@ -1,13 +1,10 @@
--- FarstriderLibData_Locale.frFR.lua
+-- Navigation labels for frFR; English supplies missing-key fallbacks.
 local _, FarstriderLibData = ...
 
 if not FarstriderLibData.Internal then return end
+if GetLocale() ~= "frFR" then return end
 
-if (GetLocale() ~= "frFR") then
-    return;
-end
-
-FarstriderLibData.L = {
+FarstriderLibData.L = setmetatable({
     ["ForeverPort_Auberdine"] = "Auberdine",
     ["ForeverPort_BootyBay"] = "Baie-du-Butin",
     ["ForeverPort_Dalaran"] = "Dalaran",
@@ -35,4 +32,6 @@ FarstriderLibData.L = {
     ["Waypoint_1004"] = "Prenez le zeppelin de %s vers %s",
     ["Waypoint_1005"] = "Utilisez %s vers %s",
     ["Waypoint_1006"] = "Lancez %s vers %s",
-};
+    ["Unknown Item"] = "Objet inconnu",
+    ["Unknown Spell"] = "Sort inconnu",
+}, { __index = FarstriderLibData.L })

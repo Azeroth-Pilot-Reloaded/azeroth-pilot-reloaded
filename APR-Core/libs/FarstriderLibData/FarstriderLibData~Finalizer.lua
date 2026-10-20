@@ -11,6 +11,11 @@ FarstriderLibData_API = {
     WAYPOINTS = FarstriderLibData.Waypoints,
     CONFIG = FarstriderLibData.Config,
     GetLocalizedString = function(locaId)
+        -- Edge-type IDs are reserved for generic, locale-specific instructions.
+        -- An older waypoint label must not shadow their active locale.
+        if type(locaId) == "number" and locaId >= 1000 and locaId <= 1006 then
+            return FarstriderLibData.L["Waypoint_" .. locaId]
+        end
         return FarstriderLibData.WaypointL[locaId] or FarstriderLibData.L["Waypoint_" .. locaId]
     end,
     IsBindLocationSupported = function()

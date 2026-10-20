@@ -102,7 +102,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/utils/TextStyleUtils.lua"] = {instrumented = 21, diagnosticHelpers = 0},
     ["APR-Core/utils/UIUtils.lua"] = {instrumented = 44, diagnosticHelpers = 0},
     ["APR-Core/utils/Utils.lua"] = {instrumented = 22, diagnosticHelpers = 10},
-    ["APR-Core/utils/ZoneDetectionUtils.lua"] = {instrumented = 23, diagnosticHelpers = 0},
+    ["APR-Core/utils/ZoneDetectionUtils.lua"] = {instrumented = 24, diagnosticHelpers = 0},
     ["Routes/delves.lua"] = {instrumented = 3, diagnosticHelpers = 0},
 }
 APRInstrumentation.excluded = {

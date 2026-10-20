@@ -4,16 +4,8 @@ local _, FarstriderLib = ...
 
 if not FarstriderLib.Internal then return end
 
-local L = {
-    ["Unknown Location"] = "Unknown Location",
-    ["Waypoint_1000"] = "Reach the destination",
-    ["Waypoint_1001"] = "Talk to the Flightmaster to travel to %s",
-    ["Waypoint_1002"] = "Take the portal to %s",
-    ["Waypoint_1003"] = "Take the boat from %s to %s",
-    ["Waypoint_1004"] = "Take the zeppelin from %s to %s",
-    ["Waypoint_1005"] = "Use %s to %s",
-    ["Waypoint_1006"] = "Cast %s to %s",
-};
+-- Locale files load first; the fallback does not depend on the data addon's API.
+local L = FarstriderLib.Locale
 
 ---@type FarstriderLibDataAPI
 local defaults = {

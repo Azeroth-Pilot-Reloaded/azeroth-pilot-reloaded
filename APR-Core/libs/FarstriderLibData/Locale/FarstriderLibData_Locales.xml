@@ -1,0 +1,13 @@
+<Ui xmlns="http://www.blizzard.com/wow/ui/">
+    <Script file="FarstriderLibData_Locale.enUS.lua"/>
+    <Script file="FarstriderLibData_Locale.deDE.lua"/>
+    <Script file="FarstriderLibData_Locale.esES.lua"/>
+    <Script file="FarstriderLibData_Locale.esMX.lua"/>
+    <Script file="FarstriderLibData_Locale.frFR.lua"/>
+    <Script file="FarstriderLibData_Locale.itIT.lua"/>
+    <Script file="FarstriderLibData_Locale.koKR.lua"/>
+    <Script file="FarstriderLibData_Locale.ptBR.lua"/>
+    <Script file="FarstriderLibData_Locale.ruRU.lua"/>
+    <Script file="FarstriderLibData_Locale.zhCN.lua"/>
+    <Script file="FarstriderLibData_Locale.zhTW.lua"/>
+</Ui>

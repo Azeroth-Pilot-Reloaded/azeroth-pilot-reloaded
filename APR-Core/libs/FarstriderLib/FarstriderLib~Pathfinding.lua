@@ -37,7 +37,7 @@ end
 -- Initialize continent cache
 Pathfinding._continentCache = {}
 
---- Return all nodes that have at least one active (condition-passing) edge.
+--- Return both endpoints of active (condition-passing) edges.
 --- Results are cached for 2 seconds to avoid redundant re-evaluation.
 ---@return table<NavKey, NavNode>
 function Pathfinding:GetValidTravelNodes()
@@ -49,8 +49,14 @@ function Pathfinding:GetValidTravelNodes()
 
     local validTravelNodes = {} ---@type table<NavKey, NavNode>
     for _, navNode in pairs(self.allNodes) do
-        if self:NodeContainsAnyActiveEdge(navNode) then
-            validTravelNodes[navNode.key] = navNode
+        for _, edge in ipairs(navNode.edges or {}) do
+            if not edge.condition or edge.condition() then
+                validTravelNodes[navNode.key] = navNode
+                -- A one-way portal's arrival can have no outgoing edge. It
+                -- still needs a connection to the virtual goal. Only adding
+                -- sources made valid directed paths appear unreachable.
+                validTravelNodes[edge.to.key] = edge.to
+            end
         end
     end
     self._validTravelNodesCache = validTravelNodes
@@ -349,12 +355,14 @@ function Pathfinding:FindClosestNavConnections(location, nodes, isWizardsSanctum
             -- nodes and vice-versa.  Mismatched pairs are skipped.
             if (isWizardsSanctum or false) ~= (navNode.wizardsSanctum or false) then
                 -- skip
-            elseif self:HasDirectFlyPath(location, navNode:getLocation()) then
+            else
                 local navNodeLoc = navNode:getLocation()
+                -- Distance already checks reachability, including map/area
+                -- isolation. Avoid resolving that ancestry twice per pair.
                 local dist = self:GetWorldDistanceBetween(location, navNodeLoc)
                 if dist and dist ~= math.huge then
                     table.insert(connections, { navNode = navNode, cost = dist * TRAVEL_COST_MULTIPLIER })
-                else
+                elseif not dist then
                     FarstriderLib.Logger:Warning(string.format("  Could not resolve world position for node %d",
                         navNodeLoc.mapId))
                 end
@@ -384,12 +392,12 @@ end
 ---@return string
 function Pathfinding:GetNodeLocaDirect(locaId)
     if not locaId then
-        return "Unknown Location (no locaId provided)"
+        return FarstriderLib.Locale["Unknown Location"]
     end
 
     local loca = FarstriderLib.Data.GetLocalizedString(locaId)
     if not loca then
-        return "Unknown Location (locaId " .. locaId .. ")"
+        return FarstriderLib.Locale["Unknown Location"]
     end
 
     return loca
@@ -680,6 +688,7 @@ function Pathfinding:FindPathBetweenLocations2(startLocation, goalLocation)
                 loc = getOptimizedStepLocation(i),
                 completionLoc = getOptimizedStepCompletionLocation(i),
                 loca = self:GetNodeLoca(edge.locaId, edge.locaArgs),
+                locaId = edge.locaId,
                 actionOptions = edge.actionOptions,
                 checkDistance = i ~= #edges
             })

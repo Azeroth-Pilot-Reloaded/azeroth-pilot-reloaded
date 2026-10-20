@@ -331,13 +331,16 @@ local function PathRequiresTravelAction(path)
     end
 
     local pathStep = path[1]
+    if pathStep.locaId ~= nil and pathStep.locaId ~= 1000 then
+        return true
+    end
     return (type(pathStep.actionOptions) == "table" and #pathStep.actionOptions > 0) or
         LocationsDiffer(pathStep.loc, pathStep.completionLoc)
 end--[[APR_DIAG]]; PathRequiresTravelAction = APRTrace("APR-Core/integrations/Farstrider.lua:324:PathRequiresTravelAction#16", PathRequiresTravelAction)--[[/APR_DIAG]]
 
 function APR.farstrider:IsNavigating()
     return self.activePathStep ~= nil and APR.IsInRouteZone ~= true
-end--[[APR_DIAG]]; APR.farstrider.IsNavigating = APRTrace("APR-Core/integrations/Farstrider.lua:338:APR.farstrider:IsNavigating#17", APR.farstrider.IsNavigating)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.IsNavigating = APRTrace("APR-Core/integrations/Farstrider.lua:341:APR.farstrider:IsNavigating#17", APR.farstrider.IsNavigating)--[[/APR_DIAG]]
 
 function APR.farstrider:ForceRefresh()
     local now = GetTime()
@@ -347,7 +350,7 @@ function APR.farstrider:ForceRefresh()
         self._routingThrottle.lastCall = 0
     end
     self._routingForceRefresh = true
-end--[[APR_DIAG]]; APR.farstrider.ForceRefresh = APRTrace("APR-Core/integrations/Farstrider.lua:342:APR.farstrider:ForceRefresh#18", APR.farstrider.ForceRefresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.ForceRefresh = APRTrace("APR-Core/integrations/Farstrider.lua:345:APR.farstrider:ForceRefresh#18", APR.farstrider.ForceRefresh)--[[/APR_DIAG]]
 
 function APR.farstrider:ClearNavigationUiLines()
     local currentStep = APR.currentStep
@@ -384,15 +387,15 @@ function APR.farstrider:ClearNavigationUiLines()
     if not inCombat and next(currentStep.pendingRemoval) then
         currentStep:FlushPendingContainers()
     end
-end--[[APR_DIAG]]; APR.farstrider.ClearNavigationUiLines = APRTrace("APR-Core/integrations/Farstrider.lua:352:APR.farstrider:ClearNavigationUiLines#19", APR.farstrider.ClearNavigationUiLines)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.ClearNavigationUiLines = APRTrace("APR-Core/integrations/Farstrider.lua:355:APR.farstrider:ClearNavigationUiLines#19", APR.farstrider.ClearNavigationUiLines)--[[/APR_DIAG]]
 
 function APR.farstrider:ClearActivePath()
     self.activePathStep = nil
-end--[[APR_DIAG]]; APR.farstrider.ClearActivePath = APRTrace("APR-Core/integrations/Farstrider.lua:389:APR.farstrider:ClearActivePath#20", APR.farstrider.ClearActivePath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.ClearActivePath = APRTrace("APR-Core/integrations/Farstrider.lua:392:APR.farstrider:ClearActivePath#20", APR.farstrider.ClearActivePath)--[[/APR_DIAG]]
 
 function APR.farstrider:InvalidatePathCache()
     self._pathCache = nil
-end--[[APR_DIAG]]; APR.farstrider.InvalidatePathCache = APRTrace("APR-Core/integrations/Farstrider.lua:393:APR.farstrider:InvalidatePathCache#21", APR.farstrider.InvalidatePathCache)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.InvalidatePathCache = APRTrace("APR-Core/integrations/Farstrider.lua:396:APR.farstrider:InvalidatePathCache#21", APR.farstrider.InvalidatePathCache)--[[/APR_DIAG]]
 
 function APR.farstrider:MarkRouteReady()
     local shouldRefreshStep = APR.IsInRouteZone == false or
@@ -407,7 +410,7 @@ function APR.farstrider:MarkRouteReady()
         APR.Arrow.currentStep = 0
         APR:UpdateStep()
     end
-end--[[APR_DIAG]]; APR.farstrider.MarkRouteReady = APRTrace("APR-Core/integrations/Farstrider.lua:397:APR.farstrider:MarkRouteReady#22", APR.farstrider.MarkRouteReady)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.MarkRouteReady = APRTrace("APR-Core/integrations/Farstrider.lua:400:APR.farstrider:MarkRouteReady#22", APR.farstrider.MarkRouteReady)--[[/APR_DIAG]]
 
 function APR.farstrider:RefreshStepForNavigation()
     local suppressed = self._suppressScheduledRouteCheck
@@ -415,7 +418,7 @@ function APR.farstrider:RefreshStepForNavigation()
     local ok, err = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](APR.UpdateStep, APR)
     self._suppressScheduledRouteCheck = suppressed
     if not ok then error(err, 0) end
-end--[[APR_DIAG]]; APR.farstrider.RefreshStepForNavigation = APRTrace("APR-Core/integrations/Farstrider.lua:412:APR.farstrider:RefreshStepForNavigation#23", APR.farstrider.RefreshStepForNavigation)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.RefreshStepForNavigation = APRTrace("APR-Core/integrations/Farstrider.lua:415:APR.farstrider:RefreshStepForNavigation#23", APR.farstrider.RefreshStepForNavigation)--[[/APR_DIAG]]
 
 function APR.farstrider:ScheduleRouteCheck(stepToken, force)
     if self._suppressScheduledRouteCheck or not stepToken then
@@ -432,7 +435,7 @@ function APR.farstrider:ScheduleRouteCheck(stepToken, force)
     end
 
     local timer
-    timer = C_Timer.NewTimer(0.05, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Farstrider.lua:435:callback#25", --[[/APR_DIAG]]function()
+    timer = C_Timer.NewTimer(0.05, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Farstrider.lua:438:callback#25", --[[/APR_DIAG]]function()
         if self._stepCheckTimer ~= timer then return end
         self._stepCheckTimer = nil
         if not APR:IsStepContextCurrent(context) then return end
@@ -449,13 +452,13 @@ function APR.farstrider:ScheduleRouteCheck(stepToken, force)
         APR:FinishPerformanceSample("ScheduledNavigation", profileStart)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self._stepCheckTimer = timer
-end--[[APR_DIAG]]; APR.farstrider.ScheduleRouteCheck = APRTrace("APR-Core/integrations/Farstrider.lua:420:APR.farstrider:ScheduleRouteCheck#24", APR.farstrider.ScheduleRouteCheck)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.ScheduleRouteCheck = APRTrace("APR-Core/integrations/Farstrider.lua:423:APR.farstrider:ScheduleRouteCheck#24", APR.farstrider.ScheduleRouteCheck)--[[/APR_DIAG]]
 
 function APR.farstrider:RequestRouteCheck()
     local progress = APRData and APRData[APR.PlayerID]
     if not APR.ActiveRoute then return end
     self:ScheduleRouteCheck(APR:GetCurrentStepToken(APR.ActiveRoute, progress and progress[APR.ActiveRoute]), true)
-end--[[APR_DIAG]]; APR.farstrider.RequestRouteCheck = APRTrace("APR-Core/integrations/Farstrider.lua:454:APR.farstrider:RequestRouteCheck#26", APR.farstrider.RequestRouteCheck)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.RequestRouteCheck = APRTrace("APR-Core/integrations/Farstrider.lua:457:APR.farstrider:RequestRouteCheck#26", APR.farstrider.RequestRouteCheck)--[[/APR_DIAG]]
 
 function APR.farstrider:OnArrowUpdate(distance)
     local pathStep = self.activePathStep
@@ -489,7 +492,7 @@ function APR.farstrider:OnArrowUpdate(distance)
     self:InvalidatePathCache()
     self:ForceRefresh()
     self:GetMeToRightZone(true)
-end--[[APR_DIAG]]; APR.farstrider.OnArrowUpdate = APRTrace("APR-Core/integrations/Farstrider.lua:460:APR.farstrider:OnArrowUpdate#27", APR.farstrider.OnArrowUpdate)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.OnArrowUpdate = APRTrace("APR-Core/integrations/Farstrider.lua:463:APR.farstrider:OnArrowUpdate#27", APR.farstrider.OnArrowUpdate)--[[/APR_DIAG]]
 
 function APR.farstrider:GetDestination(step, fallbackMapID)
     local preferredZone = APR:GetPreferredStepZone(step, fallbackMapID)
@@ -529,7 +532,7 @@ function APR.farstrider:GetDestination(step, fallbackMapID)
         zone = targetZone,
         worldCoord = coord,
     }
-end--[[APR_DIAG]]; APR.farstrider.GetDestination = APRTrace("APR-Core/integrations/Farstrider.lua:494:APR.farstrider:GetDestination#28", APR.farstrider.GetDestination)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.GetDestination = APRTrace("APR-Core/integrations/Farstrider.lua:497:APR.farstrider:GetDestination#28", APR.farstrider.GetDestination)--[[/APR_DIAG]]
 
 function APR.farstrider:ShowPathStep(path, destination)
     local pathStep = path and path[1] or nil
@@ -578,7 +581,7 @@ function APR.farstrider:ShowPathStep(path, destination)
 
     APR.currentStep:AddQuestDivider(self.NavigationDividerStepKey)
     return true
-end--[[APR_DIAG]]; APR.farstrider.ShowPathStep = APRTrace("APR-Core/integrations/Farstrider.lua:534:APR.farstrider:ShowPathStep#29", APR.farstrider.ShowPathStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.ShowPathStep = APRTrace("APR-Core/integrations/Farstrider.lua:537:APR.farstrider:ShowPathStep#29", APR.farstrider.ShowPathStep)--[[/APR_DIAG]]
 
 function APR.farstrider:ShowPathError(destination, detail)
     local mapInfo = destination and APR:GetMapInfoCached(destination.zone or destination.mapID) or nil
@@ -596,7 +599,7 @@ function APR.farstrider:ShowPathError(destination, detail)
     )
     APR.currentStep:AddQuestDivider(self.NavigationDividerStepKey)
     APR.Arrow:SetArrowActive(false, 0, 0)
-end--[[APR_DIAG]]; APR.farstrider.ShowPathError = APRTrace("APR-Core/integrations/Farstrider.lua:583:APR.farstrider:ShowPathError#30", APR.farstrider.ShowPathError)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.ShowPathError = APRTrace("APR-Core/integrations/Farstrider.lua:586:APR.farstrider:ShowPathError#30", APR.farstrider.ShowPathError)--[[/APR_DIAG]]
 
 local function RouteToRightZone(self, isRetry, preparedContext)
     APR:Debug("Function: APR.farstrider:GetMeToRightZone()", isRetry and "(retry)" or "")
@@ -783,7 +786,7 @@ local function RouteToRightZone(self, isRetry, preparedContext)
 
     if not isRetry and not self._retryPending then
         self._retryPending = true
-        C_Timer.After(ROUTING_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Farstrider.lua:786:callback#32", --[[/APR_DIAG]]function()
+        C_Timer.After(ROUTING_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/integrations/Farstrider.lua:789:callback#32", --[[/APR_DIAG]]function()
             self._retryPending = false
             if APR.IsInRouteZone or self:IsNavigating() or not APR.ActiveRoute then
                 return
@@ -846,7 +849,7 @@ local function RouteToRightZone(self, isRetry, preparedContext)
     if not optimizedPath or #optimizedPath == 0 or not self:ShowPathStep(optimizedPath, destination) then
         self:ShowPathError(destination)
     end
-end--[[APR_DIAG]]; RouteToRightZone = APRTrace("APR-Core/integrations/Farstrider.lua:601:RouteToRightZone#31", RouteToRightZone)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; RouteToRightZone = APRTrace("APR-Core/integrations/Farstrider.lua:604:RouteToRightZone#31", RouteToRightZone)--[[/APR_DIAG]]
 
 function APR.farstrider:GetMeToRightZone(isRetry, preparedContext)
     -- Never run pathfinding inside a current-step transaction or recursively from route messages.
@@ -865,4 +868,4 @@ function APR.farstrider:GetMeToRightZone(isRetry, preparedContext)
         (self._routedStepContext and not APR:IsStepContextCurrent(self._routedStepContext)) then
         self:RequestRouteCheck()
     end
-end--[[APR_DIAG]]; APR.farstrider.GetMeToRightZone = APRTrace("APR-Core/integrations/Farstrider.lua:851:APR.farstrider:GetMeToRightZone#33", APR.farstrider.GetMeToRightZone)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.farstrider.GetMeToRightZone = APRTrace("APR-Core/integrations/Farstrider.lua:854:APR.farstrider:GetMeToRightZone#33", APR.farstrider.GetMeToRightZone)--[[/APR_DIAG]]

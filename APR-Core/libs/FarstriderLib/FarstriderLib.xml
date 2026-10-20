@@ -4,6 +4,7 @@
 	<Script file="FarstriderLib~Init.lua" />
 
 	<!-- Module files (load order matters) -->
+	<Include file="Locale/FarstriderLib_Locales.xml" />
 	<Script file='FarstriderLib~Data.lua' />
 	<Script file='FarstriderLib~Stub.lua' />
 	<Script file='FarstriderLib~NavNode.lua' />

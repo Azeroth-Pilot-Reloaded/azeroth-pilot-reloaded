@@ -420,5 +420,30 @@ APR:SetRouteProgress(APR.ActiveRoute, APRData.test[APR.ActiveRoute] + 1, "manual
 scheduleNormal()
 assert(syncCalls == 3, "Changing progress invalidates the prepared step")
 
+-- The library owns its labels: APR displays them without a second translation.
+local displayedInstruction
+APR.farstrider.ShowPathStep = realShowPathStep
+APR.currentStep.AddQuestSteps = function(_, _, text) displayedInstruction = text end
+local location = {mapId = 2393, isUI = false, pos = {x = 10, y = 20, z = 0}}
+local navigationStep = {loc = location, completionLoc = location, loca = "Library destination instruction", locaId = 1000}
+assert(APR.farstrider:ShowPathStep({navigationStep}, {mapID = 2393}))
+assert(displayedInstruction == navigationStep.loca, 'Typed direct edges retain the library translation')
+navigationStep.locaId = nil
+APR.farstrider:ShowPathStep({navigationStep}, {mapID = 2393})
+assert(displayedInstruction == navigationStep.loca, 'Legacy providers retain their own translation')
+navigationStep.locaId, navigationStep.loca = 1002, "Named transport instruction"
+APR.farstrider:ShowPathStep({navigationStep}, {mapID = 2393})
+assert(displayedInstruction == 'Named transport instruction', 'Transport labels are preserved')
+
+-- A typed transport is not a direct walk merely because it has one segment and
+-- coincident display/completion locations (e.g. an unimportant portal arrival).
+function APR:GetCurrentStep() return step end
+function APR:CheckIsInRouteZone() return true end
+FarstriderLib_API.FindTrailTo = function() return {navigationStep} end
+APR.farstrider:InvalidatePathCache()
+APR.farstrider:ForceRefresh()
+APR.farstrider:GetMeToRightZone(true)
+assert(not APR.IsInRouteZone and APR.farstrider:IsNavigating(), 'A single typed transport still requires navigation')
+
 print(
     "Farstrider routing: 10 identical retries reused 1 Dijkstra result; map, step, TTL and explicit invalidation passed")
