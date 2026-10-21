@@ -35,6 +35,7 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
             ExtraLineText = "NPC_TELEPORT",
             ExtraLineText2 = "MANUAL_SKIP",
             Coord = { x = 1078.4, y = -8494.8 },
+            IsQuestUncompleted = 44184,
             Zone = 84,
             _index = 3,
         },

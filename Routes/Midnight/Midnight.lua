@@ -3097,6 +3097,7 @@ APR.RouteQuestStepList["2395-The-War-of-Light-and-Shadow"] = {
         {
             GossipOptionIDs = { 133560 },
             Coord = { x = -4622.2, y = 8457.2 },
+            IsQuestUncompleted = 88769,
             Zone = 2395,
             _index = 138,
         },
@@ -4559,6 +4560,7 @@ APR.RouteQuestStepList["2395-the-curse-of-ulatek"] = {
             GossipOptionIDs = { 138170 },
             Coord = { x = -12085.4, y = 6082.2 },
             IsCampaignQuest = true,
+            IsQuestUncompleted = 93454,
             Zone = 2512,
             _index = 136,
         },
@@ -5251,6 +5253,7 @@ APR.RouteQuestStepList["2395-the-curse-of-ulatek"] = {
             GossipOptionIDs = { 141760 },
             Coord = { x = -10238.2, y = 5768.5 },
             IsCampaignQuest = true,
+            IsQuestUncompleted = 98388,
             Zone = 2512,
             _index = 223,
         },
@@ -5377,6 +5380,7 @@ APR.RouteQuestStepList["2395-the-curse-of-ulatek"] = {
         {
             GossipOptionIDs = { 141707 },
             Coord = { x = -10477, y = 5033.5 },
+            IsQuestUncompleted = 93417,
             Zone = 2512,
             _index = 240,
         },
@@ -7104,6 +7108,7 @@ APR.RouteQuestStepList["2395-the-labyrinthe"] = {
         {
             GossipOptionIDs = { 142816 },
             Coord = { x = 1214.2, y = 668.4 },
+            IsQuestUncompleted = 98834,
             Zone = 2647,
             _index = 28,
         },
@@ -8700,6 +8705,7 @@ APR.RouteQuestStepList["2413-Midnight-Unlock-daily-Saltherils-Haven"] = {
         {
             GossipOptionIDs = { 133862 },
             Coord = { x = -3869.3, y = 7267.3 },
+            IsQuestUncompleted = 91693,
             Zone = 2395,
             _index = 24,
         },
@@ -8712,12 +8718,14 @@ APR.RouteQuestStepList["2413-Midnight-Unlock-daily-Saltherils-Haven"] = {
         {
             GossipOptionIDs = { 133865 },
             Coord = { x = -3892.3, y = 7251.5 },
+            IsQuestUncompleted = 91693,
             Zone = 2395,
             _index = 26,
         },
         {
             GossipOptionIDs = { 133866 },
             Coord = { x = -3887.4, y = 7300.2 },
+            IsQuestUncompleted = 91693,
             Zone = 2395,
             _index = 27,
         },
@@ -8730,6 +8738,7 @@ APR.RouteQuestStepList["2413-Midnight-Unlock-daily-Saltherils-Haven"] = {
         {
             GossipOptionIDs = { 133865 },
             Coord = { x = -3892.6, y = 7250.2 },
+            IsQuestUncompleted = 91693,
             Zone = 2395,
             _index = 29,
         },
@@ -8754,6 +8763,7 @@ APR.RouteQuestStepList["2413-Midnight-Unlock-daily-Saltherils-Haven"] = {
         {
             GossipOptionIDs = { 133865 },
             Coord = { x = -3891.8, y = 7250.2 },
+            IsQuestUncompleted = 91966,
             Zone = 2395,
             _index = 33,
         },

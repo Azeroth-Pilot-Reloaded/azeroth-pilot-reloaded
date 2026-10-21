@@ -870,6 +870,7 @@ APR.RouteQuestStepList["2393-Midnight-Treasures-Eversong-Woods"] = {
         {
             GossipOptionIDs = { 136684 },
             Coord = { x = -3663.4, y = 6342.1 },
+            IsQuestUncompleted = 93061,
             Zone = 2395,
             _index = 18,
         },
@@ -897,7 +898,7 @@ APR.RouteQuestStepList["2393-Midnight-Treasures-Eversong-Woods"] = {
             Zone = 2537,
             _index = 21,
         },
-        { RouteCompleted = true, _index = 10 },
+        { RouteCompleted = true, _index = 22 },
     },
 }
 
@@ -1144,6 +1145,7 @@ APR.RouteQuestStepList["2413-Midnight-Treasures-Harandar"] = {
         {
             GossipOptionIDs = { 137233 },
             Coord = { x = 1569.3, y = -901.7 },
+            IsQuestUncompleted = 93508,
             Zone = 2413,
             _index = 11,
         },
@@ -1181,18 +1183,21 @@ APR.RouteQuestStepList["2413-Midnight-Treasures-Harandar"] = {
         {
             GossipOptionIDs = { 136764 },
             Coord = { x = -294.4, y = -428.3 },
+            IsQuestUncompleted = 93144,
             Zone = 2413,
             _index = 16,
         },
         {
             GossipOptionIDs = { 136767 },
             Coord = { x = -294.4, y = -428.3 },
+            IsQuestUncompleted = 93144,
             Zone = 2413,
             _index = 17,
         },
         {
             GossipOptionIDs = { 136757 },
             Coord = { x = 6.4, y = -154.8 },
+            IsQuestUncompleted = 93144,
             Zone = 2413,
             _index = 18,
         },
@@ -1205,12 +1210,14 @@ APR.RouteQuestStepList["2413-Midnight-Treasures-Harandar"] = {
         {
             GossipOptionIDs = { 136757 },
             Coord = { x = 6.5, y = -155.4 },
+            IsQuestUncompleted = 93144,
             Zone = 2413,
             _index = 20,
         },
         {
             GossipOptionIDs = { 136760 },
             Coord = { x = 6.5, y = -155.4 },
+            IsQuestUncompleted = 93144,
             Zone = 2413,
             _index = 21,
         },
@@ -1223,12 +1230,14 @@ APR.RouteQuestStepList["2413-Midnight-Treasures-Harandar"] = {
         {
             GossipOptionIDs = { 136716 },
             Coord = { x = -293.3, y = 127.8 },
+            IsQuestUncompleted = 93144,
             Zone = 2413,
             _index = 23,
         },
         {
             GossipOptionIDs = { 136721 },
             Coord = { x = -293.3, y = 127.8 },
+            IsQuestUncompleted = 93144,
             Zone = 2413,
             _index = 24,
         },
@@ -1256,7 +1265,7 @@ APR.RouteQuestStepList["2413-Midnight-Treasures-Harandar"] = {
             Zone = 2413,
             _index = 27,
         },
-        { RouteCompleted = true, _index = 10 },
+        { RouteCompleted = true, _index = 28 },
     },
 }
 
@@ -1518,6 +1527,7 @@ APR.RouteQuestStepList["2512-Midnight-Treasures-Coiled-Isle"] = {
             GossipOptionIDs = { 139435 },
             Coord = { x = -12069.3, y = 6102.2 },
             RaidIcon = 263265,
+            IsQuestUncompleted = 95976,
             Zone = 2512,
             _index = 1,
         },
@@ -1525,6 +1535,7 @@ APR.RouteQuestStepList["2512-Midnight-Treasures-Coiled-Isle"] = {
             GossipOptionIDs = { 139436 },
             Coord = { x = -12059.3, y = 5932.4 },
             RaidIcon = 262204,
+            IsQuestUncompleted = 95976,
             Zone = 2512,
             _index = 2,
         },
@@ -1532,6 +1543,7 @@ APR.RouteQuestStepList["2512-Midnight-Treasures-Coiled-Isle"] = {
             GossipOptionIDs = { 139438 },
             Coord = { x = -11991.1, y = 5951.5 },
             RaidIcon = 253837,
+            IsQuestUncompleted = 95976,
             Zone = 2512,
             _index = 3,
         },
@@ -1539,6 +1551,7 @@ APR.RouteQuestStepList["2512-Midnight-Treasures-Coiled-Isle"] = {
             GossipOptionIDs = { 139436, 139437 },
             Coord = { x = -12060.1, y = 5932.6 },
             RaidIcon = 262204,
+            IsQuestUncompleted = 95976,
             Zone = 2512,
             _index = 4,
         },
@@ -1654,18 +1667,21 @@ APR.RouteQuestStepList["2512-Midnight-Treasures-Coiled-Isle"] = {
         {
             GossipOptionIDs = { 139428 },
             Coord = { x = -12961.5, y = 5718.9 },
+            IsQuestUncompleted = 95956,
             Zone = 2512,
             _index = 20,
         },
         {
             GossipOptionIDs = { 139430 },
             Coord = { x = -13073.8, y = 5408.3 },
+            IsQuestUncompleted = 95956,
             Zone = 2512,
             _index = 21,
         },
         {
             GossipOptionIDs = { 139431 },
             Coord = { x = -12746.7, y = 5470.5 },
+            IsQuestUncompleted = 95956,
             Zone = 2512,
             _index = 22,
         },
@@ -1792,6 +1808,7 @@ APR.RouteQuestStepList["2512-Midnight-Treasures-Coiled-Isle"] = {
         {
             GossipOptionIDs = { 139164 },
             Coord = { x = -12879.8, y = 4997.6 },
+            IsQuestUncompleted = 95571,
             Zone = 2512,
             _index = 40,
         },
@@ -1997,6 +2014,6 @@ APR.RouteQuestStepList["2512-Midnight-Student-of-Hissstory"] = {
             _index = 20,
         },
 
-        { RouteCompleted = true, _index = 12 },
+        { RouteCompleted = true, _index = 21 },
     },
 }

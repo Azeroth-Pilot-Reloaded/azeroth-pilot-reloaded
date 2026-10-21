@@ -1142,6 +1142,7 @@ APR.RouteQuestStepList["23-ScarletEnclave"] = {
         {
             GossipOptionIDs = { 36227 },
             Coord = { x = -5136.8, y = 2432.1 },
+            IsQuestUncompleted = 12801,
             Zone = 23,
             _index = 168,
         },

@@ -1061,6 +1061,7 @@ APR.RouteQuestStepList["2393-Coiled-Isle"] = {
             GossipOptionIDs = { 138057 },
             Coord = { x = -13290, y = 5671.1 },
             RaidIcon = 258793,
+            IsQuestUncompleted = 93906,
             Zone = 2512,
             _index = 159,
         },
@@ -1712,6 +1713,7 @@ APR.RouteQuestStepList["2393-Coiled-Isle"] = {
         {
             GossipOptionIDs = { 141705 },
             Coord = { x = -10476.6, y = 5033.6 },
+            IsQuestUncompleted = 95522,
             Zone = 2512,
             _index = 254,
         },
@@ -1726,6 +1728,7 @@ APR.RouteQuestStepList["2393-Coiled-Isle"] = {
         {
             GossipOptionIDs = { 141718 },
             Coord = { x = -10238.4, y = 5768.4 },
+            IsQuestUncompleted = 95522,
             Zone = 2512,
             _index = 256,
         },

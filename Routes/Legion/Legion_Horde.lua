@@ -1318,6 +1318,7 @@ APR.RouteQuestStepList["634-Stormheim - H"] = {
             GossipOptionIDs = { 44644 },
             ExtraLineText = "TALK_DREAD_RIDER_CULLEN",
             Coord = { x = 1554, y = 3191.5 },
+            IsQuestUncompleted = 38872,
             _index = 170,
         },
         {
@@ -1781,6 +1782,7 @@ APR.RouteQuestStepList["634-Stormheim - H"] = {
             Waypoint = 42447,
             Coord = { x = 1902.4, y = 4008.6 },
             GossipOptionIDs = { 45871 },
+            IsQuestUncompleted = 42447,
             Zone = 634,
             _index = 243,
         },
