@@ -100,7 +100,6 @@ APR-Core/ui/route/QuestOrderListSupport.lua
 APR-Core/data/models/Classes.lua
 APR-Core/data/models/Enums.lua
 APR-Core/data/models/Quest.lua
-APR-Core/data/models/Spells.lua
 
 
 APR-Core/config/AboutData.lua

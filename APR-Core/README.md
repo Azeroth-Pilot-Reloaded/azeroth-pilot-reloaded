@@ -112,7 +112,6 @@ the authored route changes, rather than copied on every map refresh.
 | [data/models/Classes.lua](data/models/Classes.lua)                   | Class/specialization IDs and locale-independent route keys. |
 | [data/models/Enums.lua](data/models/Enums.lua)                       | Shared clients, categories, expansions, and orders.         |
 | [data/models/Quest.lua](data/models/Quest.lua)                       | Priority of primary actions and quest/dialogue rules.       |
-| [data/models/Spells.lua](data/models/Spells.lua)                     | Hearthstone item/spell matches, toys, and buffs.            |
 | [integrations/NavigationEntrances.lua](integrations/NavigationEntrances.lua) | Compatibility view of library-owned instance entrances.    |
 
 ### Features and route engine
@@ -278,7 +277,7 @@ remains available through its slash command.
 | `APRTaxiNodes` / `APRTaxiNodesTimer`                 | Discoveries and trip measurements; legacy names normalized to booleans.                    |
 | `APRScenarioCompleted` / `APRScenarioMapIDCompleted` | Scenario progression per character.                                                        |
 | `APRItemLooted` / `APRGossipValidated`               | Historical state of items/dialogues; keys preserved for existing progression paths.        |
-| `APRNavigationCharacterSettings`                | Character housing exit and observed binding locations; migrated legacy housing saves.       |
+| `APRNavigationCharacterSettings`                | Character housing exit and observed binding locations.                                      |
 | Memory caches                                        | Steps, titles, XP, maps, paths, widgets, and skins; invalidation by owner.                 |
 
 Deep import copy (`DeepCopyTable`) isolates saves. Shallow runtime copy (`GetStep`)

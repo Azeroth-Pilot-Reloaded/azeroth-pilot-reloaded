@@ -67,13 +67,14 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("forever", "items", {
         },
         {
             id = "item-hearthstone-alternatives",
+            routeAction = "UseHS",
             kind = "item",
             bidirectional = false,
             from = { dynamic = "player" },
             to = { dynamic = "bind" },
-            actions = { { id = 6948, type = "item" } },
+            actions = { { id = 6948, type = "item", useSpellID = 8690 } },
             cooldownGroup = "hearthstone",
             selection = "random",
         },
     },
-}, 31)
+}, 32)

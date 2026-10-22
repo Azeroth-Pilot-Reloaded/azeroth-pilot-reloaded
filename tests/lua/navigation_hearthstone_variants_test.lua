@@ -1,6 +1,5 @@
 local fixture = dofile("tests/lua/navigation_fixture.lua")
 local data = fixture:Load()
-dofile("APR-Core/data/models/Spells.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 local owned, restricted, cooling, bagCount = {}, {}, false, 0
 function PlayerHasToy(id) return owned[id] == true end
@@ -28,11 +27,11 @@ end
 assert(count == 1 and definition.selection == "random", "There is one random inn-hearth edge, regardless of race")
 local options = {}
 for _, option in ipairs(definition.actions) do assert(not options[option.id]); options[option.id] = option end
-for _, id in ipairs(APR.hearthStoneToyItemIDs) do assert(options[id], "Every APR UseHS toy is a library alternative: " .. id) end
+assert(#definition.actions == 42, "The shared catalogue retains all inn hearthstone alternatives")
 assert(not options[140192] and not options[110560], "Fixed-destination hearthstones cannot return to the inn")
 local nextChoice = 1
 data.env.random = function(size) assert(nextChoice <= size); return nextChoice end
-for _, id in ipairs(APR.hearthStoneToyItemIDs) do
+for id in pairs(options) do
     if id ~= 210455 then
         owned = { [id] = true }
         local action = data:GetHearthstoneAction()
@@ -55,7 +54,7 @@ assert(APR:GetHearthstoneItemID() ~= selected, "A new authored step can choose a
 C_Item.GetItemSpell = function(id) return "New toy effect", 999000 + id end
 local chosen = APR:GetHearthstoneItemID()
 assert(APR:IsHearthstoneSpell(999000 + chosen) and not APR:IsHearthstoneSpell(999999),
-    "The selected variant's client cast effect extends the historical UseHS spell list")
+    "The selected variant's client cast effect is resolved by the library")
 currentStep = {}
 assert(not APR:IsHearthstoneSpell(999000 + chosen), "An obsolete selection cannot complete a new step")
 nextChoice, owned = 1, { [210455] = true }
@@ -78,4 +77,15 @@ for _, edge in ipairs(edges) do
     end
 end
 assert(hearthEdges == 1 and metadata.resources["cooldown:hearthstone"] == 1)
+local dalaran, garrison = data:GetTravelAction("UseDalaHS"), data:GetTravelAction("UseGarrisonHS")
+assert(dalaran.type == "item" and dalaran.data == 140192)
+assert(garrison.type == "item" and garrison.data == 110560)
+assert(data:IsTravelActionSpell("UseDalaHS", 222695) and data:IsTravelActionSpell("UseGarrisonHS", 171253))
+assert(not data:IsTravelActionSpell("UseHS", 222695) and not data:IsTravelActionSpell("UseHS", 171253),
+    "Fixed destinations cannot complete a return-to-inn instruction")
+assert(data:IsTravelActionSpell("UseHS", 556), "A learned recall still completes an inn return")
+fixture.profile = "forever"
+local forever = fixture:Load()
+assert(forever:GetTravelAction("UseHS").data == 6948 and forever:IsTravelActionSpell("UseHS", 8690))
+assert(not forever:GetTravelAction("UseDalaHS") and not forever:GetTravelAction("UseGarrisonHS"))
 print("Hearthstone variants: complete UseHS toy coverage, random usable choices, stable buttons, race/cooldown restrictions and one shared resource passed")
