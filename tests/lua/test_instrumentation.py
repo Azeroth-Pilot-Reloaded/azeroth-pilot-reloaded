@@ -8,6 +8,7 @@ from tools.validation.instrument_lua import ROOT, clean, instrument, run
 class InstrumentationTests(unittest.TestCase):
     def test_production_paths_with_debug_enabled(self):
         for name in ('current_step_render', 'quest_order_performance', 'arrow_visibility',
+                     'arrow_action_text', 'arrow_action_settings', 'action_text_source',
                      'event_lifecycle', 'npc_interaction_chain', 'party_group_sync', 'secret_compatibility', 'reputation_scheduling',
                      'step_progression', 'navigation_scheduling', 'route_path_performance',
                      'ui_foundations', 'route_panels_render'):
