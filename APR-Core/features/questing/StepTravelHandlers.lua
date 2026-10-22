@@ -207,14 +207,14 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
         questKey = step.UseDalaHS
         questText = L["USE_DALARAN_HEARTHSTONE"]
         useHSKey = "UseDalaHS"
-        spellID = APR.dalaHSSpellID
-        type = 'spell'
+        local action = APR:GetRouteTravelAction(useHSKey)
+        spellID, type = action and action.data, action and action.type
     else
         questKey = step.UseGarrisonHS
         questText = L["USE_GARRISON_HEARTHSTONE"]
         useHSKey = "UseGarrisonHS"
-        spellID = APR.garrisonHSSpellID
-        type = 'spell'
+        local action = APR:GetRouteTravelAction(useHSKey)
+        spellID, type = action and action.data, action and action.type
     end
 
     -- Opt in only when the following route steps also support travelling there

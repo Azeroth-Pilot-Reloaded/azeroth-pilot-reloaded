@@ -17,9 +17,10 @@ their position caches, resources or searches.
 | `Conditions.lua` | Availability predicates; missing answers remain unknown |
 | `Entrances.lua` | Native instance identities and verified exterior approaches; no guessed interior landings |
 | `Catalog.lua` | Character-specific transport edges, instructions and cumulative resources |
+| `TravelActions.lua` | Shared route actions and item cast effects for inn, Dalaran and garrison hearthstones |
 | `Search.lua` | Incremental Dijkstra, binary heap and non-dominated time/money/resource labels |
 | `Data/retail/`, `Data/forever/` | Positions, directions, costs and requirements, separated by client and transport type |
-| APR `NavigationAdapter.lua` | WoW API access, client locale/names, bind/house observations and save migration |
+| APR `NavigationAdapter.lua` | WoW API access, client locale/names, bind/house observations and character settings |
 | APR `integrations/NavigationEntrances.lua` | Lazy compatibility facade over the library entrance registry; contains no coordinates |
 | APR `Navigation.lua`, `NavigationTaxi.lua`, `Preview.lua` | Route lifecycle, character taxi knowledge, secure buttons and rendering |
 | APR `NavigationPlanner.lua` | One scheduler for preparation, search, optional probes and guidance rows |
