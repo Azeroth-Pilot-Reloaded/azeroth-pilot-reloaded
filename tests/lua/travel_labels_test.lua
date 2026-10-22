@@ -41,12 +41,7 @@ assert(APR:GetTransportStepText({ TakePortal = { mapID = 20 } }) == "Portal to D
 local bindName, bindMap = "Auberge", 11
 function GetBindLocation() return bindName end
 function CreateVector2D(x, y) return { x = x, y = y } end
-FarstriderLibData = { AreaL = { Auberge = 1 }, Areas = { [1] = { mapId = 0, pos = { x = 125, y = -50 } } } }
-C_Map = { GetMapPosFromWorldPos = function(continent, pos, override)
-    assert(continent == 0 and pos.x == 125 and pos.y == -50 and override == nil,
-        "Resolve the actual bind map without forcing it into the requested zone")
-    return bindMap
-end }
+APR.NavigationData = { GetBindLocationMapID = function() return bindMap end }
 assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone - Auberge")
 assert(APR:GetHearthstoneStepText({ Zone = 11 }) == "Use hearthstone - Auberge")
 assert(APR:GetHearthstoneStepText({ Zones = { 20, 10 } }) == "Use hearthstone - Auberge")
@@ -65,7 +60,7 @@ assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone", "A contin
 maps[20].mapType = nil
 bindMap = nil
 assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone")
-FarstriderLibData = nil
+APR.NavigationData = nil
 assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone")
 bindName = "Foret"
 assert(APR:GetHearthstoneStepText({ Zone = 10 }) == "Use hearthstone - Foret")

@@ -201,3 +201,95 @@ APR:updateStatusFrame()
 APR:closeStatusReport()
 assert(not frame:IsShown() and not frame.scripts.OnUpdate, "Hidden status stops its refresh work")
 print("Status: complete overview, error details, identity toggle, readable export, selection and restricted coordinates passed")
+
+-- Export the published navigation state without asking the controller to
+-- update, resolve a route or validate an arrival while diagnosing a mismatch.
+local textReads, activeStepReads, zoneReportReads = 0, 0, 0
+local zoneReport = {
+    playerCurrent = 2576, playerParent = 1550, playerContinent = 947,
+    playerHierarchy = { 2576, 1550, 947 }, allRelevantMaps = { [2576] = true },
+    specialContent = false, cacheValid = true, timestamp = 12345,
+}
+function APR:GetZoneDetectionReport() zoneReportReads = zoneReportReads + 1; return zoneReport end
+local navigationFont = env.widget()
+navigationFont:SetText("Private_name: Take the portal")
+function navigationFont:GetText() textReads = textReads + 1; return self.text end
+local navigationStep = {
+    id = "12:1", kind = "spell", label = "Teleport to Orgrimmar", sourceFree = true,
+    action = { type = "spell", data = 3567 }, Coord = { x = -263.9, y = -439.8, mapID = 2576 },
+    from = { x = -439.8, y = -263.9, uiMapID = 2576, instanceID = 2695 },
+    to = { x = 1570, y = -4397, uiMapID = 85, instanceID = 1 },
+    diagnosticDetail = { arrivalRadius = 17, note = "Private_name: pending arrival" },
+    canStart = function() error("Status must not check travel availability") end,
+}
+APR.navigation = {
+    NavigationStepKey = "01_NAVIGATION_PATH", state = "guiding", generation = 12, cursor = 1,
+    queue = { navigationStep }, search = { privateGraph = "never-export-the-graph" },
+    retainedArrow = { Coord = { x = 10, y = 20 }, instanceID = 2695,
+        context = { privateContext = "never-export-the-context" } },
+    GetActiveStep = function(self)
+        activeStepReads = activeStepReads + 1
+        return self.queue[self.cursor or 1]
+    end,
+    Update = function() error("Status must not start routing") end,
+}
+APR.Arrow = { Active = true, x = -263.9, y = -439.8, Distance = 38, currentStep = 0 }
+APR.currentStep.questsList = {
+    ["01_NAVIGATION_PATH-12:1"] = { font = navigationFont, objectiveText = "Take the portal",
+        IconButton = { itemID = 3567, attribute = "spell" } },
+    ["01_NAVIGATION_PATH-restricted"] = { font = { restricted = true,
+        GetText = function() error("A restricted font must not be inspected") end } },
+    ordinary = { font = { GetText = function() error("Only navigation rows belong in this snapshot") end } },
+}
+APR:getStatusReportInfos()
+assert(textReads == 0 and activeStepReads == 0 and zoneReportReads == 0,
+    "Periodic overview refreshes do not collect diagnostic command results")
+APR:ExportStatusReport()
+text = export.edit:GetText()
+assert(textReads == 1 and text:find("- **Navigation**:", 1, true)
+    and text:find("**state**: guiding", 1, true) and text:find("**generation**: 12", 1, true))
+assert(activeStepReads == 1 and zoneReportReads == 1,
+    "An export captures each manual diagnostic source once")
+assert(text:find("\n## /apr zi\n", 1, true) and text:find("**playerCurrent**: 2576", 1, true)
+    and text:find("**playerParent**: 1550", 1, true) and text:find("**playerContinent**: 947", 1, true)
+    and text:find("**playerHierarchy**:", 1, true) and text:find("**allRelevantMaps**:", 1, true)
+    and text:find("**specialContent**: false", 1, true) and text:find("**cacheValid**: true", 1, true),
+    "Zone diagnostics retain the map hierarchy and cache/content flags from /apr zi")
+assert(text:find("\n## /dump APR.navigation:GetActiveStep()\n", 1, true)
+    and text:find("**diagnosticDetail**:", 1, true) and text:find("**arrivalRadius**: 17", 1, true),
+    "The active-step dump includes data beyond the navigation summary")
+assert(text:find("**kind**: spell", 1, true) and text:find("**data**: 3567", 1, true)
+    and text:find("**sourceFree**: true", 1, true) and text:find("**mapID**: 2576", 1, true)
+    and text:find("**uiMapID**: 85", 1, true), "The active leg includes its action and both endpoints")
+assert(text:find("**retainedArrow**:", 1, true) and text:find("**actualArrow**:", 1, true)
+    and text:find("**Distance**: 38", 1, true) and text:find("**renderedRows**:", 1, true)
+    and text:find("**itemID**: 3567", 1, true) and text:find("Take the portal", 1, true),
+    "The export can distinguish the selected leg, retained direction and visible instruction/button")
+assert(not text:find("Private_name", 1, true) and not text:find("Private\\_name", 1, true)
+    and not text:find("never-export", 1, true) and not text:find("canStart", 1, true),
+    "Navigation snapshots keep identity masking and exclude callbacks, contexts and the search graph")
+assert(APR.navigation.queue[1] == navigationStep and navigationStep.action.data == 3567,
+    "Export leaves published guidance untouched")
+navigationStep.action.data = opaque
+APR:ExportStatusReport()
+assert(export.edit:GetText():find("**data**: " .. UNKNOWN, 1, true), "Restricted action values are not serialized")
+for index = 1, 12 do
+    APR.currentStep.questsList["01_NAVIGATION_PATH-bounded:" .. index] = { objectiveText = "bounded-row-" .. index }
+end
+APR:ExportStatusReport()
+text = export.edit:GetText()
+local _, rows = text:gsub("bounded%-row%-", "")
+assert(rows <= 8 and text:find("**rowsTruncated**: true", 1, true), "Unexpected navigation rows are bounded")
+APR.navigation.cursor = nil
+APR:ExportStatusReport()
+assert(export.edit:GetText():find("**arrivalRadius**: 17", 1, true),
+    "The dump follows GetActiveStep's default cursor")
+APR.navigation.queue = {}
+APR:ExportStatusReport()
+assert(export.edit:GetText():find("**ActiveStep**: nil", 1, true), "No active navigation step is explicit")
+APR.navigation, APR.GetZoneDetectionReport = nil, nil
+APR:ExportStatusReport()
+assert(export.edit:GetText():find("**ActiveStep**: nil", 1, true)
+    and export.edit:GetText():find("**ZoneDetection**: nil", 1, true),
+    "Exports still work when diagnostic modules are unavailable")
+print("Status navigation: export-only, bounded, redacted snapshots preserve active and rendered state without routing")

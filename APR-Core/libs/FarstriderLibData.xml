@@ -1,8 +1,0 @@
-<Ui xmlns="http://www.blizzard.com/wow/ui/" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.blizzard.com/wow/ui/ ..\FrameXML\UI.xsd">
-  <Script file="FarstriderLibData\FarstriderLibData~Init.lua"/>
-
-  <Include file="FarstriderLibData\Locale\FarstriderLibData_Locales.xml"/>
-
-  <Script file="FarstriderLibData\FarstriderLibData~Config.lua"/>
-  <Script file="FarstriderLibData\FarstriderLibData~Util.lua"/>
-</Ui>

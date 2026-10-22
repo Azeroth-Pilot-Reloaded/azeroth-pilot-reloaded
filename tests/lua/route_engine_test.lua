@@ -55,7 +55,8 @@ function APR:NewModule() return {} end
 function APR:Contains(values, value) return tContains(values, value) end
 
 dofile("APR-Core/data/models/Enums.lua")
-dofile("APR-Core/data/zones/ScenarioEntrances.lua")
+dofile("tests/lua/navigation_entrance_test_env.lua")("retail")
+dofile("APR-Core/integrations/NavigationEntrances.lua")
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
