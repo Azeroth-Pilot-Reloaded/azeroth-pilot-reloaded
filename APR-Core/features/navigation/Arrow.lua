@@ -23,6 +23,7 @@ local CELL_WIDTH = 56
 local CELL_HEIGHT = 42
 local APR_STYLE_SCALE = 1.8
 local IDLE_CHECK_INTERVAL = 1
+local ACTION_TEXT_WIDTH = 260
 
 local mathAbs, mathAtan2, mathFloor = math.abs, math.atan2, math.floor
 
@@ -40,7 +41,7 @@ APR.Arrow.frameTicker = 0
 local function DistanceBetween(ax, ay, bx, by)
     local dx, dy = ax - bx, by - ay
     return (dx * dx + dy * dy) ^ 0.5
-end--[[APR_DIAG]]; DistanceBetween = APRTrace("APR-Core/features/navigation/Arrow.lua:40:DistanceBetween#1", DistanceBetween)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; DistanceBetween = APRTrace("APR-Core/features/navigation/Arrow.lua:41:DistanceBetween#1", DistanceBetween)--[[/APR_DIAG]]
 
 local function SaveArrowPosition()
     APR.settings.profile.arrowleft = APR.ArrowFrameM:GetLeft()
@@ -48,7 +49,7 @@ local function SaveArrowPosition()
     APR.ArrowFrameM:ClearAllPoints()
     APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
         APR.settings.profile.arrowtop)
-end--[[APR_DIAG]]; SaveArrowPosition = APRTrace("APR-Core/features/navigation/Arrow.lua:45:SaveArrowPosition#2", SaveArrowPosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SaveArrowPosition = APRTrace("APR-Core/features/navigation/Arrow.lua:46:SaveArrowPosition#2", SaveArrowPosition)--[[/APR_DIAG]]
 
 local function ShouldShowArrow()
     if not APR.settings.profile.showArrow then return false end
@@ -61,7 +62,7 @@ local function ShouldShowArrow()
     if APR:IsPetBattleActive() then return false end
     if not APR:IsInstanceWithUI() then return false end
     return true
-end--[[APR_DIAG]]; ShouldShowArrow = APRTrace("APR-Core/features/navigation/Arrow.lua:53:ShouldShowArrow#3", ShouldShowArrow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ShouldShowArrow = APRTrace("APR-Core/features/navigation/Arrow.lua:54:ShouldShowArrow#3", ShouldShowArrow)--[[/APR_DIAG]]
 
 local function GetArrowColor(percentage)
     if percentage > 0.98 then
@@ -70,7 +71,7 @@ local function GetArrowColor(percentage)
         return (1 - percentage) * 2, 1, 0
     end
     return 1, percentage * 2, 0
-end--[[APR_DIAG]]; GetArrowColor = APRTrace("APR-Core/features/navigation/Arrow.lua:66:GetArrowColor#4", GetArrowColor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetArrowColor = APRTrace("APR-Core/features/navigation/Arrow.lua:67:GetArrowColor#4", GetArrowColor)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 ----------------------------------- Arrow Frames --------------------------------------
@@ -100,15 +101,20 @@ APR.ArrowFrame.textFrame:SetPoint("TOP", APR.ArrowFrame, "BOTTOM", 0, 0)
 APR.ArrowFrame.distance = APR.ArrowFrame.textFrame:CreateFontString("distance", "ARTWORK", "ChatFontNormal")
 APR.ArrowFrame.distance:SetPoint("TOP", APR.ArrowFrame.textFrame, "TOP", 0, 0)
 APR:RegisterFontString(APR.ArrowFrame.distance, "arrow", { role = "base", sizeDelta = -2 })
+APR.ArrowFrame.actionTextFrame = CreateFrame("Frame", nil, APR.ArrowFrame.textFrame)
+APR.ArrowFrame.actionTextFrame:SetSize(ACTION_TEXT_WIDTH, 1)
+APR.ArrowFrame.actionTextFrame:SetPoint("TOP", APR.ArrowFrame.distance, "BOTTOM", 0, -4)
+APR.ArrowFrame.actionTextFrame:Hide()
+APR.ArrowFrame.actionTexts = {}
 APR.ArrowFrame:Hide()
-APR.ArrowFrame:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:104:callback#5", --[[/APR_DIAG]]function(self, button) --Mouse clicking arrowframe
+APR.ArrowFrame:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:110:callback#5", --[[/APR_DIAG]]function(self, button) --Mouse clicking arrowframe
     if button == "LeftButton" and not APR.ArrowFrameM.isMoving and not APR.settings.profile.lockArrow then
         APR.ArrowFrameM:StartMoving()
         APR.ArrowFrameM.isMoving = true
     end
 end--[[APR_DIAG]])--[[/APR_DIAG]])
 --Mouse unclicking arrowframe (releasing mouse)
-APR.ArrowFrame:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:111:callback#6", --[[/APR_DIAG]]function(self, button)
+APR.ArrowFrame:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:117:callback#6", --[[/APR_DIAG]]function(self, button)
     if button == "LeftButton" and APR.ArrowFrameM.isMoving then
         APR.ArrowFrameM:StopMovingOrSizing()
         APR.ArrowFrameM.isMoving = false
@@ -116,7 +122,7 @@ APR.ArrowFrame:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/
     end
 end--[[APR_DIAG]])--[[/APR_DIAG]])
 --When arrowframe hides
-APR.ArrowFrame:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:119:callback#7", --[[/APR_DIAG]]function(self)
+APR.ArrowFrame:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:125:callback#7", --[[/APR_DIAG]]function(self)
     if APR.ArrowFrameM.isMoving then
         APR.ArrowFrameM:StopMovingOrSizing() -- prevent it from moving or rescaling in the background, it cant be seen anyway
         APR.ArrowFrameM.isMoving = false
@@ -124,7 +130,7 @@ APR.ArrowFrame:SetScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/features/nav
     end
 end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-APR.ArrowFrame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:127:callback#8", --[[/APR_DIAG]]function(self, tick)
+APR.ArrowFrame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:133:callback#8", --[[/APR_DIAG]]function(self, tick)
     if not APR.ArrowFrame:IsShown() then return end
 
     APR.Arrow.frameTicker = APR.Arrow.frameTicker + tick
@@ -137,7 +143,7 @@ end--[[APR_DIAG]])--[[/APR_DIAG]])
 
 APR.ArrowFrame.Button = CreateFrame("Button", "APR_ArrowActiveButton", APR.ArrowFrame.textFrame)
 APR.ArrowFrame.Button:SetPoint("TOP", APR.ArrowFrame.distance, "BOTTOM", 0, -6)
-APR.ArrowFrame.Button:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:140:callback#9", --[[/APR_DIAG]]function(self, button)
+APR.ArrowFrame.Button:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Arrow.lua:146:callback#9", --[[/APR_DIAG]]function(self, button)
     APR.ArrowFrame.Button:Hide()
     if APR.navigation and (APR.navigation.retainedArrow or APR.navigation:IsNavigating()) then return end
     APR:PrintInfo("APR: " .. L["SKIP_WAYPOINT"])
@@ -164,7 +170,7 @@ local function UpdateSkipButtonTextLayout()
     APR.ArrowFrame.Fontstring:SetWidth(skipWidth)
     local skipHeight = APR.ArrowFrame.Fontstring:GetStringHeight() + 10
     APR.ArrowFrame.Button:SetSize(skipWidth, skipHeight)
-end--[[APR_DIAG]]; UpdateSkipButtonTextLayout = APRTrace("APR-Core/features/navigation/Arrow.lua:160:UpdateSkipButtonTextLayout#10", UpdateSkipButtonTextLayout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdateSkipButtonTextLayout = APRTrace("APR-Core/features/navigation/Arrow.lua:166:UpdateSkipButtonTextLayout#10", UpdateSkipButtonTextLayout)--[[/APR_DIAG]]
 
 UpdateSkipButtonTextLayout()
 APR.ArrowFrame.Button:Hide()
@@ -180,7 +186,7 @@ function APR.Arrow:Init()
     APR.ArrowFrameM:SetPoint("TOPLEFT", UIParent, "TOPLEFT", APR.settings.profile.arrowleft,
         APR.settings.profile.arrowtop)
     self:ApplyStyle()
-end--[[APR_DIAG]]; APR.Arrow.Init = APRTrace("APR-Core/features/navigation/Arrow.lua:177:APR.Arrow:Init#11", APR.Arrow.Init)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.Init = APRTrace("APR-Core/features/navigation/Arrow.lua:183:APR.Arrow:Init#11", APR.Arrow.Init)--[[/APR_DIAG]]
 
 function APR.Arrow:ApplyStyle()
     -- Both atlases share the same normalized 9 x 12 cells. Only the artwork changes;
@@ -188,14 +194,14 @@ function APR.Arrow:ApplyStyle()
     APR.ArrowFrame.arrow:SetTexture(ARROW_TEXTURES[APR.settings.profile.arrowStyle]
         or ARROW_TEXTURES.classic)
     self:ApplySize()
-end--[[APR_DIAG]]; APR.Arrow.ApplyStyle = APRTrace("APR-Core/features/navigation/Arrow.lua:185:APR.Arrow:ApplyStyle#12", APR.Arrow.ApplyStyle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.ApplyStyle = APRTrace("APR-Core/features/navigation/Arrow.lua:191:APR.Arrow:ApplyStyle#12", APR.Arrow.ApplyStyle)--[[/APR_DIAG]]
 
 function APR.Arrow:GetTextScale()
     local profile = APR.settings.profile
     -- Previously arrowScale also scaled the text. Migrate once per profile, before either slider changes it.
     if profile.arrowTextScale == nil then profile.arrowTextScale = profile.arrowScale or 1 end
     return profile.arrowTextScale
-end--[[APR_DIAG]]; APR.Arrow.GetTextScale = APRTrace("APR-Core/features/navigation/Arrow.lua:193:APR.Arrow:GetTextScale#13", APR.Arrow.GetTextScale)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.GetTextScale = APRTrace("APR-Core/features/navigation/Arrow.lua:199:APR.Arrow:GetTextScale#13", APR.Arrow.GetTextScale)--[[/APR_DIAG]]
 
 function APR.Arrow:ApplySize()
     local profile = APR.settings.profile
@@ -203,11 +209,62 @@ function APR.Arrow:ApplySize()
     APR.ArrowFrame:SetScale(1)
     APR.ArrowFrame:SetSize(CELL_WIDTH * scale, CELL_HEIGHT * scale)
     APR.ArrowFrame.textFrame:SetScale(self:GetTextScale())
-end--[[APR_DIAG]]; APR.Arrow.ApplySize = APRTrace("APR-Core/features/navigation/Arrow.lua:200:APR.Arrow:ApplySize#14", APR.Arrow.ApplySize)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.ApplySize = APRTrace("APR-Core/features/navigation/Arrow.lua:206:APR.Arrow:ApplySize#14", APR.Arrow.ApplySize)--[[/APR_DIAG]]
 
 function APR.Arrow:UpdateTextAppearance()
     UpdateSkipButtonTextLayout()
-end--[[APR_DIAG]]; APR.Arrow.UpdateTextAppearance = APRTrace("APR-Core/features/navigation/Arrow.lua:208:APR.Arrow:UpdateTextAppearance#15", APR.Arrow.UpdateTextAppearance)--[[/APR_DIAG]]
+    self:UpdateActionText()
+end--[[APR_DIAG]]; APR.Arrow.UpdateTextAppearance = APRTrace("APR-Core/features/navigation/Arrow.lua:214:APR.Arrow:UpdateTextAppearance#15", APR.Arrow.UpdateTextAppearance)--[[/APR_DIAG]]
+
+-- The guide publishes resolved action lines after a successful step render.
+-- Keep them out of the movement loop: quest events and text/skin settings own refreshes.
+function APR.Arrow:UpdateActionText()
+    local frame = APR.ArrowFrame
+    local lines = APR.settings.profile.arrowActionText and APR.currentStep
+        and APR.currentStep.GetActionTextLines and APR.currentStep:GetActionTextLines() or {}
+    local height, count = 0, 0
+    for _, line in ipairs(lines) do
+        if line.text and line.text ~= "" then
+            count = count + 1
+            local font = frame.actionTexts[count]
+            local role = line.role or "base"
+            if not font then
+                font = frame.actionTextFrame:CreateFontString(nil, "ARTWORK", "ChatFontNormal")
+                font:SetWidth(ACTION_TEXT_WIDTH)
+                font:SetWordWrap(true)
+                font:SetNonSpaceWrap(true)
+                font:SetJustifyH("CENTER")
+                font:SetJustifyV("TOP")
+                frame.actionTexts[count] = font
+                APR:RegisterFontString(font, "arrow", { role = role, sizeDelta = -2 })
+            elseif font.actionTextRole ~= role then
+                APR:SetFontStringRole(font, role)
+            end
+            font.actionTextRole = role
+            if font:GetText() ~= line.text then font:SetText(line.text) end
+            if font.actionTextOffset ~= height then
+                font:ClearAllPoints()
+                font:SetPoint("TOP", frame.actionTextFrame, "TOP", 0, -height)
+                font.actionTextOffset = height
+            end
+            height = height + font:GetStringHeight() + 2
+            font:Show()
+        end
+    end
+    for index = count + 1, #frame.actionTexts do frame.actionTexts[index]:Hide() end
+    local hasText = count > 0
+    if hasText then
+        frame.actionTextFrame:SetHeight(height - 2)
+        frame.actionTextFrame:Show()
+    else
+        frame.actionTextFrame:Hide()
+    end
+    if frame.actionTextAnchor ~= hasText then
+        frame.Button:ClearAllPoints()
+        frame.Button:SetPoint("TOP", hasText and frame.actionTextFrame or frame.distance, "BOTTOM", 0, -6)
+        frame.actionTextAnchor = hasText
+    end
+end--[[APR_DIAG]]; APR.Arrow.UpdateActionText = APRTrace("APR-Core/features/navigation/Arrow.lua:221:APR.Arrow:UpdateActionText#16", APR.Arrow.UpdateActionText)--[[/APR_DIAG]]
 
 function APR.Arrow:SetDisplayAction(action)
     local previous = self.displayAction
@@ -224,7 +281,7 @@ function APR.Arrow:SetDisplayAction(action)
     end
     self.lastTextureCell, self.lastDisplayedDistance = nil, nil
     self.lastColorR, self.lastColorG, self.lastColorB = nil, nil, nil
-end--[[APR_DIAG]]; APR.Arrow.SetDisplayAction = APRTrace("APR-Core/features/navigation/Arrow.lua:212:APR.Arrow:SetDisplayAction#16", APR.Arrow.SetDisplayAction)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.SetDisplayAction = APRTrace("APR-Core/features/navigation/Arrow.lua:269:APR.Arrow:SetDisplayAction#17", APR.Arrow.SetDisplayAction)--[[/APR_DIAG]]
 
 local function CheckDistance(currentStep, currentStepIndex, routeSteps, currentCoord, displayOnly)
     if displayOnly or (APR.navigation and APR.navigation:IsNavigating()) then
@@ -300,7 +357,7 @@ local function CheckDistance(currentStep, currentStepIndex, routeSteps, currentC
     end
 
     return mathFloor(distance + 0.5)
-end--[[APR_DIAG]]; CheckDistance = APRTrace("APR-Core/features/navigation/Arrow.lua:229:CheckDistance#17", CheckDistance)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CheckDistance = APRTrace("APR-Core/features/navigation/Arrow.lua:286:CheckDistance#18", CheckDistance)--[[/APR_DIAG]]
 
 function APR.Arrow:SetCoord()
     APR:Debug("APR.Arrow:SetCoord()")
@@ -361,7 +418,7 @@ function APR.Arrow:SetCoord()
         self:SetArrowActive(true, x, stepCoord.y)
         self.currentStep = currentStepIndex
     end
-end--[[APR_DIAG]]; APR.Arrow.SetCoord = APRTrace("APR-Core/features/navigation/Arrow.lua:305:APR.Arrow:SetCoord#18", APR.Arrow.SetCoord)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.SetCoord = APRTrace("APR-Core/features/navigation/Arrow.lua:362:APR.Arrow:SetCoord#19", APR.Arrow.SetCoord)--[[/APR_DIAG]]
 
 local function UpdatePosition(self, playerX, playerY, facing, instanceID)
     local navigation = APR.navigation
@@ -461,7 +518,7 @@ local function UpdatePosition(self, playerX, playerY, facing, instanceID)
         APR.ArrowFrame.distance:SetText(displayedDistance .. " " .. L["YARDS"])
         self.lastDisplayedDistance = displayedDistance
     end
-end--[[APR_DIAG]]; UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:366:UpdatePosition#19", UpdatePosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:423:UpdatePosition#20", UpdatePosition)--[[/APR_DIAG]]
 
 function APR.Arrow:UpdatePosition()
     local playerY, playerX, _, instanceID = UnitPosition("player")
@@ -506,12 +563,12 @@ function APR.Arrow:UpdatePosition()
     local started = APR.StartPerformanceSample and APR:StartPerformanceSample()
     UpdatePosition(self, playerX, playerY, facing, instanceID)
     if APR.FinishPerformanceSample then APR:FinishPerformanceSample("ArrowPositionUpdate", started) end
-end--[[APR_DIAG]]; APR.Arrow.UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:466:APR.Arrow:UpdatePosition#20", APR.Arrow.UpdatePosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.UpdatePosition = APRTrace("APR-Core/features/navigation/Arrow.lua:523:APR.Arrow:UpdatePosition#21", APR.Arrow.UpdatePosition)--[[/APR_DIAG]]
 
 function APR.Arrow:RefreshVisibility()
     self.positionCache = nil
     self:UpdatePosition()
-end--[[APR_DIAG]]; APR.Arrow.RefreshVisibility = APRTrace("APR-Core/features/navigation/Arrow.lua:511:APR.Arrow:RefreshVisibility#21", APR.Arrow.RefreshVisibility)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.RefreshVisibility = APRTrace("APR-Core/features/navigation/Arrow.lua:568:APR.Arrow:RefreshVisibility#22", APR.Arrow.RefreshVisibility)--[[/APR_DIAG]]
 
 function APR.Arrow:SetArrowActive(isActive, x, y, displayAction)
     local a = APR.Arrow
@@ -521,9 +578,10 @@ function APR.Arrow:SetArrowActive(isActive, x, y, displayAction)
     a.Active = isActive
     a.x = x or 0
     a.y = y or 0
+    a:UpdateActionText()
     if isActive and x and y and ShouldShowArrow() then
         APR.ArrowFrame:Show()
     else
         APR.ArrowFrame:Hide()
     end
-end--[[APR_DIAG]]; APR.Arrow.SetArrowActive = APRTrace("APR-Core/features/navigation/Arrow.lua:516:APR.Arrow:SetArrowActive#22", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.Arrow.SetArrowActive = APRTrace("APR-Core/features/navigation/Arrow.lua:573:APR.Arrow:SetArrowActive#23", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]
