@@ -12,7 +12,7 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- and world/map coordinate conversion
 --
 -- NOTE: Zone hierarchy functions (GetContinent, GetPlayerParentMapID, etc)
---       have been moved to ZoneDetectionUtils.lua for better organization
+--       have been moved to NavigationZones.lua for better organization
 -----------------------------------------------------------
 
 -- Cache of map bounds so we can quickly convert world coords to map coords.

@@ -2,12 +2,7 @@
   "schema": 1,
   "preserve": [
     "LibWindow-1.1",
-    "FarstriderLib",
-    "FarstriderLibData",
-    "FarstriderLibData.xml",
-    "FarstriderLibData_Camelot.xml",
-    "FarstriderLibData_Finalizer.xml",
-    "FarstriderLibData_Standard.xml"
+    "LibAPRNavigation-1.0"
   ],
   "libraries": [
     {

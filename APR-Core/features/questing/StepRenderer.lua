@@ -81,22 +81,23 @@ function APR:RenderCurrentStep()
         return
     end
 
-    if APR.farstrider then
-        APR.farstrider:ScheduleRouteCheck(currentStepToken)
+    if APR.navigation then
+        APR.navigation:ScheduleRouteCheck(currentStepToken)
     end
 
     APR:Debug("APR.UpdateStep:Current Step:", currentStepIndex)
 
     local step = APR:GetStep(currentStepIndex)
     if step then
-        local showStepDetails = APR.IsInRouteZone or
-            (APR.farstrider and APR.farstrider.showOutOfZoneStepContent)
+        -- Keep the authored objective visible underneath transient guidance.
+        local showStepDetails = APR.IsInRouteZone or APR.navigation ~= nil
 
         if APR.IsInRouteZone then
             APR.currentStep:Reset()
         elseif showStepDetails then
             APR.currentStep:RemoveStepContentPreservingNavigationUi()
         end
+        if APR.navigation and APR.navigation.Render then APR.navigation:Render() end
         APR.currentStep.previousState.currentStepToken = currentStepToken
 
         APR.currentStep:ButtonEnable()
@@ -148,7 +149,7 @@ function APR:RenderCurrentStep()
                     APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
                         string.format(L["SWITCH_TO_CHROMIE"], chromieExpansionOption.name))
                 end
-            end--[[APR_DIAG]]; checkChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:138:checkChromieTimeline#3", checkChromieTimeline)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; checkChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:139:checkChromieTimeline#3", checkChromieTimeline)--[[/APR_DIAG]]
 
             local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
             local activeExpansion = activeRouteData and activeRouteData.expansion
@@ -174,7 +175,7 @@ function APR:RenderCurrentStep()
                 table.insert(extraLines, { key = key, text = value })
             end
         end
-        table.sort(extraLines, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:177:callback#4", --[[/APR_DIAG]]function(a, b) return a.key < b.key end--[[APR_DIAG]])--[[/APR_DIAG]])
+        table.sort(extraLines, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:178:callback#4", --[[/APR_DIAG]]function(a, b) return a.key < b.key end--[[APR_DIAG]])--[[/APR_DIAG]])
         for i, line in ipairs(extraLines) do
             for textIndex, text in ipairs(APR:ResolveStepTextList(line.text)) do
                 -- Identify the field and list position, never the raw value (which can be a table).
@@ -243,6 +244,7 @@ function APR:RenderCurrentStep()
             APR.currentStep:SetProgressBar(currentStepIndex)
             APR.party:SendGroupMessage()
             APR.party:RefreshPartyFrameAnchor()
+            if APR.navigation and APR.navigation.Render then APR.navigation:Render() end
             return
         end
         if handlers.RenderPrimary(step, showStepDetails, currentStepIndex) then return end
@@ -285,7 +287,7 @@ function APR:RenderCurrentStep()
             if showStepDetails then
                 APR.currentStep:AddQuestSteps("RESET_ROUTE", L["RESET_ROUTE"], "ResetRoute", false, true)
             end
-            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:288:callback#5", --[[/APR_DIAG]]function()
+            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:290:callback#5", --[[/APR_DIAG]]function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APR:SetRouteProgress(APR.ActiveRoute, 1, "reset")
                 APR:PrintInfo(L["RESET_ROUTE"])
@@ -317,7 +319,7 @@ function APR:RenderCurrentStep()
                 tremove(APRCustomPath[APR.PlayerID], index)
                 APR.routeconfig:CheckIsCustomPathEmpty()
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:315:finalizeRouteCompletion#6", finalizeRouteCompletion)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:317:finalizeRouteCompletion#6", finalizeRouteCompletion)--[[/APR_DIAG]]
 
             -- Suggest next routes immediately; finalize after selection/skip/cancel
             APR:SuggestNextRoutes(completedRouteKey, finalizeRouteCompletion)
@@ -334,6 +336,7 @@ function APR:RenderCurrentStep()
         -- update for group
         APR.party:SendGroupMessage()
         APR.party:RefreshPartyFrameAnchor()
+        if APR.navigation and APR.navigation.Render then APR.navigation:Render() end
     else
         APR.currentStep.previousState.currentStepToken = nil
         APR:Debug("APR.UpdateStep:No step found for current step:", currentStepIndex)

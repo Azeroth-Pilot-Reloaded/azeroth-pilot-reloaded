@@ -137,7 +137,7 @@ function handlers.HandleExtraLine(extraline)
 end--[[APR_DIAG]]; handlers.HandleExtraLine = APRTrace("APR-Core/features/questing/StepInstructions.lua:43:handlers.HandleExtraLine#4", handlers.HandleExtraLine)--[[/APR_DIAG]]
 
 function APR:SetButton()
-    if not (APR.IsInRouteZone or (APR.farstrider and APR.farstrider.showOutOfZoneStepContent)) then
+    if not (APR.IsInRouteZone or APR.navigation ~= nil) then
         return
     end
     APR:Debug("Function: APR:SetButton()")

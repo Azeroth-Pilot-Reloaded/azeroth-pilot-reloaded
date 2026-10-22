@@ -314,6 +314,11 @@ for itemID, spellID in pairs(toySpells) do
     assert(advanced == before + 1, "The toy's successful cast must complete UseHS: " .. itemID)
 end
 local seen = {}
+current, before = { UseHS = 10 }, advanced
+APR._hearthstoneSelection = { step = current, route = APR.ActiveRoute, revision = APR.stepRevision, id = 260221 }
+C_Item.GetItemSpell = function(id) return "Client hearthstone effect", id == 260221 and 999001 end
+cast(current, 999001)
+assert(advanced == before + 1, "A selected new variant completes UseHS through its actual client spell")
 for _, id in ipairs(APR.hearthStoneToyItemIDs) do
     assert(toySpells[id] and not seen[id], "Toy catalog must contain verified, unique inn teleports")
     seen[id] = true
@@ -324,7 +329,7 @@ unusable = { [180290] = true, [210455] = true }
 assert(APR:GetHearthstoneItemID() == 263933, "Skip toys unavailable to this character")
 assert(APR:GetHearthstoneItemID() == 263933, "Repeated renders keep the same selection")
 bagCount = 1
-assert(APR:GetHearthstoneItemID() == 6948, "Keep using the original hearthstone when carried")
+assert(APR:GetHearthstoneItemID() == 263933, "Keep the selected available variant stable during repeated rendering")
 bagCount = 0
 function C_Item.IsUsableItem() return false end
 

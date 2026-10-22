@@ -236,17 +236,17 @@ rendering latency. The original allocation path was also checked using the Git H
 version: 30,000 frames and 150,000 font strings versus 1,000 and 5,000 with reuse.
 
 `zone_transition_performance_test.lua` sends a burst of 100 `ZONE_CHANGED*` events and
-asserts that they schedule one Farstrider route calculation instead of 100 synchronous
+asserts that they schedule one Navigation route calculation instead of 100 synchronous
 calculations. It also verifies that a simulated 25 ms calculation is recorded as
 `ZoneTransitionRouting` in the bounded performance log. A loading-screen transition
 also keeps its bounded safety retries, but skips the final three as soon as the first
 route check succeeds or produces a valid navigation path.
 
-`farstrider_routing_performance_test.lua` verifies that ten identical transition
+`navigation_scheduling_test.lua` verifies that ten identical transition
 retries reuse one Dijkstra result. A map change, route-step change, cache expiry or
 explicit invalidation still forces a fresh path. Captures split the work into
 `ZoneRoutingContext`, `ZoneRoutingQuestSync`, `ZoneRoutingZoneCheck` and
-`FarstriderFindTrailTo`.
+`NavigationSearch`.
 
 The scheduler test also renders all 1,224 rows across multiple simulated frames,
 checks the 3 ms budget between rows, and checks cancellation/replacement. The budget
@@ -304,7 +304,7 @@ CPU capture never calls `UpdateAddOnMemoryUsage` automatically. Use **Measure me
 on the resource page for an explicit reading, then compare its age/peak with another
 manual reading. The scan's blocking duration is included as `ResourceMemoryScan`.
 During a scan-free capture, reproduce zone changes and consecutive completed routes:
-`FarstriderFindTrailTo` should reuse ready-zone results within its ten-second TTL, and
+`NavigationSearch` should reuse ready-zone results within its ten-second TTL, and
 the navigation render should not schedule a second immediate route calculation.
 Same-map transport paths still require the solver; do not bypass them using map equality.
 Compare `StepRenderContent`, `StepRenderCommit`, and `RoutePathUiRefresh` to locate any
@@ -323,3 +323,9 @@ Recorded operations include event callbacks, deferred quest-log refreshes, coale
 reputation refreshes, zone-transition routing and quest-order-list rendering. Nested durations overlap and
 must not be summed as independent frame time. No per-frame polling or chat logging
 is performed during capture. The list renderer uses OnUpdate only while a build is pending.
+
+## Navigation catalogue review
+
+Navigation catalogue research, generation and static data audits live in
+`Route-generator/tools/validation/navigation_data` in the route-gen repository.
+APR's runtime tests and CI do not depend on that checkout.
