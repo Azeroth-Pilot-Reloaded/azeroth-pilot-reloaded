@@ -3,6 +3,7 @@
 from dataclasses import dataclass
 from pathlib import Path
 
+
 from lupa.lua51 import LuaRuntime, lua_type
 from tools.validation.instrument_lua import clean
 
@@ -34,7 +35,8 @@ def load_routes(paths=None, translations=None):
     runtime.execute('''
         local locale = setmetatable(routeTranslations, {__index = function(_, key) return key end})
         routeTranslations = nil
-        function LibStub() return {GetLocale = function() return locale end} end
+        function GetLocale() return "enUS" end
+        function LibStub() return {GetLocale = function() return locale end, GetText = function(_, key) return locale[key] end} end
         DUNGEONS = "DUNGEONS"
         APR = {}
     ''')
@@ -72,7 +74,7 @@ def load_routes(paths=None, translations=None):
             end
         })
         setmetatable(apr, {__index = unknown})
-        local env = setmetatable({APR = apr, LibStub = LibStub, ipairs = ipairs, pairs = pairs,
+        local env = setmetatable({APR = apr, LibStub = LibStub, GetLocale = GetLocale, ipairs = ipairs, pairs = pairs,
             type = type, tostring = tostring, tonumber = tonumber, table = {insert = table.insert},
             math = {min = math.min, max = math.max}, string = {format = string.format}},
             {__index = unknown, __newindex = unknown})

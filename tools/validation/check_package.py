@@ -8,7 +8,7 @@ import xml.etree.ElementTree as ET
 def read_manifest(path):
     text = path.read_text(encoding='utf-8-sig')
     # WoW accepts the shared xsi schema prefix without a local declaration;
-    # Farstrider's embedded manifest relies on that convention.
+    # Embedded library manifests can rely on that convention.
     if 'xsi:' in text and 'xmlns:xsi=' not in text:
         text = re.sub(r'<Ui\b', '<Ui xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"', text, count=1)
     return ET.fromstring(text)
@@ -55,23 +55,12 @@ def route_entries(toc):
             if line.strip().startswith('Routes/')]
 
 
-def validate_farstrider(root, toc, game):
-    entry = 'APR-Core/libs/FarstriderLibData_[Game].xml'
+def validate_navigation(root, toc, game):
     entries = [line.strip().replace('\\', '/') for line in toc.read_text(encoding='utf-8-sig').splitlines()]
-    assert entries.count(entry) == 1, f'{toc.name} must select Farstrider data by client'
-    manifest = root / entry.replace('[Game]', game)
-    includes = [element.attrib['file'].replace('\\', '/') for element in read_manifest(manifest)]
-    flavor = 'Vanilla' if game == 'Camelot' else 'Standard'
-    expected = ['FarstriderLibData.xml', f'FarstriderLibData/Areas/{flavor}/FarstriderLibData_Areas.xml']
-    expected.append(f'FarstriderLibData/Waypoints/{flavor}/FarstriderLibData_Waypoints.xml')
-    expected.append('FarstriderLibData_Finalizer.xml')
-    assert includes == expected, f'Wrong Farstrider data or load order for {game}'
-    for include in includes:
-        nested = manifest.parent / include
-        assert nested.is_file(), f'Missing Farstrider manifest: {nested}'
-        for element in read_manifest(nested):
-            reference = element.attrib['file'].replace('\\', '/')
-            assert (nested.parent / reference).is_file(), f'Missing Farstrider dependency: {reference}'
+    entry = 'APR-Core/libs/LibAPRNavigation-1.0/LibAPRNavigation.xml'
+    assert entries.count(entry) == 1, f'{toc.name} must load the navigation catalogue once'
+    assert not any('Farstrider' in line for line in entries if line and not line.startswith('#')), 'Legacy navigation must not be loaded'
+    assert (root / entry).is_file(), 'Missing navigation catalogue'
 
 
 def validate(root):
@@ -83,9 +72,9 @@ def validate(root):
     forever_toc = forever.read_text(encoding='utf-8-sig')
     assert '## Interface: 16001' in forever_toc
     assert '120105' not in forever_toc.splitlines()[0]
-    validate_farstrider(root, retail, 'Standard')
-    validate_farstrider(root, forever, 'Camelot')
-    validate_farstrider(root, root / 'APR.toc', 'Standard')
+    validate_navigation(root, retail, 'Standard')
+    validate_navigation(root, forever, 'Camelot')
+    validate_navigation(root, root / 'APR.toc', 'Standard')
     for toc, game in ((retail, 'Standard'), (forever, 'Camelot'), (root / 'APR.toc', 'Standard')):
         validate_runtime_files(root, toc, game)
     manifests = [root/'Routes/RouteList_Standard.xml', root/'Routes/RouteList_Camelot.xml']

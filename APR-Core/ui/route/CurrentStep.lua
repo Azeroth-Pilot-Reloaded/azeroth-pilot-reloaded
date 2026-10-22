@@ -890,9 +890,9 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
     end
 
     local isHousingAction = attribute == "housing" or attribute == "housing_return"
-    local farstriderData = attribute == "housing" and APR.farstrider and APR.farstrider:GetData() or nil
-    local housingData = attribute == "housing" and farstriderData and
-        type(farstriderData.GetHousingData) == "function" and farstriderData.GetHousingData() or nil
+    local navigationData = attribute == "housing" and APR.navigation and APR.navigation:GetData() or nil
+    local housingData = attribute == "housing" and navigationData and
+        type(navigationData.GetHousingData) == "function" and navigationData:GetHousingData() or nil
     if attribute == "housing" and not housingData then
         return
     end
@@ -941,8 +941,8 @@ function APR.currentStep:CreateSecureStepButton(questsListKey, itemID, attribute
         IconButton:SetAttribute("house-guid", housingData.houseGUID)
         IconButton:SetAttribute("house-plot-id", housingData.plotID)
         IconButton:SetScript("PreClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:943:callback#57", --[[/APR_DIAG]]function()
-            if farstriderData and type(farstriderData.UpdateHousingExitLocation) == "function" then
-                farstriderData.UpdateHousingExitLocation()
+            if navigationData and type(navigationData.UpdateHousingExitLocation) == "function" then
+                navigationData:UpdateHousingExitLocation()
             end
         end--[[APR_DIAG]])--[[/APR_DIAG]])
     elseif attribute == "housing_return" then

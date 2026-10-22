@@ -201,7 +201,7 @@ class RouteSchema:
             self.step_fields[name] = number(0)
         for name in "InVehicle PickedLoa".split():
             self.step_fields[name] = enum((1, 2))
-        xy = obj({"x": NUMBER, "y": NUMBER}, required=("x", "y"))
+        xy = obj({"x": NUMBER, "y": NUMBER, "mapID": ID, "instanceID": COUNT}, required=("x", "y"))
         zone_aliases = {key: ID for key in ("Zone", "zone", "mapID", "MapID", "uiMapID", "UiMapID")}
         coord_entry = union(obj({"x": NUMBER, "y": NUMBER, **zone_aliases}, required=("x", "y")),
                             obj({"Coord": xy, **zone_aliases}, required=("Coord",)))

@@ -128,9 +128,10 @@ function CreateFrame() return { RegisterEvent = noop, SetScript = noop } end
 
 function APR:NewModule() return {} end
 
-dofile("APR-Core/integrations/Farstrider.lua")
-APR.farstrider.ScheduleRouteCheck = noop
-APR.farstrider.showOutOfZoneStepContent = true
+dofile("APR-Core/features/navigation/NavigationPlanner.lua")
+dofile("APR-Core/features/navigation/Navigation.lua")
+APR.navigation.ScheduleRouteCheck = noop
+APR.navigation.showOutOfZoneStepContent = true
 APR.IsInRouteZone = false
 APR.currentStep.RemoveStepContentPreservingNavigationUi = noop
 APR.currentStep.Reset = noop
@@ -150,7 +151,7 @@ end
 
 local function refreshHints()
     hints, hintKeys = {}, {}
-    APR.farstrider:RefreshStepForNavigation()
+    APR.navigation:RefreshStepForNavigation()
     assert(not APR.stepUpdateRunning and not APR.stepUpdatePending)
 end
 refreshHints()
@@ -177,9 +178,9 @@ for _, inZone in ipairs({ false, true }) do
     assert(hints[4].text == "Final hint" and hints[4].color == "ff0000")
 end
 APR.IsInRouteZone = false
-APR.farstrider.showOutOfZoneStepContent = false
+APR.navigation.showOutOfZoneStepContent = false
 refreshHints()
-assert(#hints == 0, "Hidden step details must not leak hints")
+assert(#hints == 4, "Transient navigation preserves the authored objective and hints")
 route[14] = originalStep
 print(
 "Extra line text: historical Tirisfal step 14 fixture, navigation refresh, lists, legacy fields, colors and visibility passed")

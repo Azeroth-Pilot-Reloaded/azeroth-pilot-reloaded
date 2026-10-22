@@ -21,7 +21,7 @@ APR = {
         uiRefreshes = uiRefreshes + 1
         milliseconds = milliseconds + 50
     end},
-    farstrider = {
+    navigation = {
         RequestRouteCheck = function() requests = requests + 1 end,
         GetMeToRightZone = function() error("Route selection cannot run inline pathfinding") end,
     },

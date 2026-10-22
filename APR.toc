@@ -11,7 +11,7 @@
 ## OptionalDeps: LibTaxiData, ElvUI, EllesmereUI
 
 ## SavedVariables: APRSettings, APRData, APRCustomPath, APRZoneCompleted, APRTaxiNodes, APRTaxiNodesTimer, APRScenarioCompleted, APRScenarioMapIDCompleted, APRItemLooted, APRGossipValidated
-## SavedVariablesPerCharacter: FarstriderLibData_CharacterSettings
+## SavedVariablesPerCharacter: APRNavigationCharacterSettings
 
 ## Category-enUS: Quests
 ## Category-deDE: Quests
@@ -33,7 +33,7 @@
 ## X-Wago-ID: XKq9xXKy
 
 APR-Core/libs/embeds.xml
-APR-Core/libs/FarstriderLibData_[Game].xml
+APR-Core/libs/LibAPRNavigation-1.0/LibAPRNavigation.xml
 APR-Core/locales/locales.xml
 
 APR-Core/core/Diagnostics.lua
@@ -43,7 +43,7 @@ APR-Core/core/Core.lua
 APR-Core/core/ErrorLog.lua
 APR-Core/ui/foundations/ReloadConfirmation.lua
 APR-Core/integrations/SkinRegistry.lua
-APR-Core/integrations/TaxiData.lua
+APR-Core/features/navigation/NavigationTaxi.lua
 
 APR-Core/data/models/Items.lua
 APR-Core/data/Dungeons/DungeonsClassic.lua
@@ -87,7 +87,9 @@ APR-Core/integrations/QuestTracker.lua
 APR-Core/utils/BuyMerchantUtils.lua
 APR-Core/utils/LootUtils.lua
 APR-Core/utils/PlayerPositionUtils.lua
-APR-Core/utils/ZoneDetectionUtils.lua
+APR-Core/features/navigation/NavigationAdapter.lua
+APR-Core/integrations/NavigationEntrances.lua
+APR-Core/utils/NavigationZones.lua
 APR-Core/features/player/Cutscenes.lua
 APR-Core/ui/panels/Coordinates.lua
 APR-Core/utils/RouteHashUtils.lua
@@ -100,7 +102,6 @@ APR-Core/data/models/Enums.lua
 APR-Core/data/models/Quest.lua
 APR-Core/data/models/Spells.lua
 
-APR-Core/data/zones/ScenarioEntrances.lua
 
 APR-Core/config/AboutData.lua
 APR-Core/config/Config.lua
@@ -127,8 +128,9 @@ APR-Core/features/questing/StepRenderer.lua
 APR-Core/features/questing/QuestCache.lua
 APR-Core/features/questing/QuestHandler.lua
 APR-Core/features/questing/RouteActions.lua
-APR-Core/integrations/Farstrider.lua
-APR-Core/integrations/ForeverTravel.lua
+APR-Core/features/navigation/Preview.lua
+APR-Core/features/navigation/NavigationPlanner.lua
+APR-Core/features/navigation/Navigation.lua
 APR-Core/features/navigation/FlightPath.lua
 
 APR-Core/features/navigation/Arrow.lua

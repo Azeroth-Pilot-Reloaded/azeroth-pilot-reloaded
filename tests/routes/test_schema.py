@@ -114,6 +114,14 @@ class RouteSchemaTests(unittest.TestCase):
                 with self.subTest(name=name, invalid=invalid), self.assertRaises(InvalidRoute):
                     self.schema.step({name: invalid}, "step")
 
+    def test_recorded_world_coordinate_identity_is_optional_and_explicit(self):
+        self.schema.step({"Coord": {"x": 12.5, "y": -40, "mapID": 2512, "instanceID": 0}}, "step")
+        self.schema.step({"EnterScenario": {"mapID": 2269}}, "step")
+        self.schema.step({"LeaveScenario": {"mapID": 2269}, "NoArrow": True}, "step")
+        for invalid in ({"x": 1, "y": 2, "instanceID": -1}, {"x": 1, "y": 2, "instanceID": "2601"}):
+            with self.assertRaises(InvalidRoute):
+                self.schema.step({"Coord": invalid}, "step")
+
     def test_primary_profession_limit(self):
         for count in (1, 2, 3):
             self.schema.condition({"SkipForPrimaryProfessions": count}, "condition")

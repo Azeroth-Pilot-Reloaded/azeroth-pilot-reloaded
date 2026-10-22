@@ -31,7 +31,7 @@ function APR:ScheduleDelveRouteRefresh() delveRefreshes = delveRefreshes + 1 end
 
 function APR:Debug() end
 
-APR.farstrider = {
+APR.navigation = {
     ForceRefresh = function() forceRefreshes = forceRefreshes + 1 end,
     GetMeToRightZone = function()
         routeCalls = routeCalls + 1
@@ -84,8 +84,8 @@ end
 assert(#activeTimers == 1, "One hundred zone events must coalesce into one routing timer")
 activeTimers[1].callback()
 
-assert(routeCalls == 1 and forceRefreshes == 1,
-    "The coalesced transition performs exactly one fresh routing calculation")
+assert(routeCalls == 1 and forceRefreshes == 0,
+    "The coalesced transition checks current inputs once without discarding a valid route")
 local summary = APRData.PerformanceLog.summary.ZoneTransitionRouting
 assert(summary and summary.count == 1 and summary.totalMs == 25 and summary.maxMs == 25,
     "The delayed routing cost must be captured by /apr perf")
@@ -102,7 +102,7 @@ print("Zone transition: 100 events coalesced into 1 route calculation; 25 ms sam
 -- first pass confirms the route zone, the later timers must be cheap no-ops.
 timers, routeCalls, forceRefreshes = {}, 0, 0
 APR.IsInRouteZone = nil
-APR.farstrider.GetMeToRightZone = function()
+APR.navigation.GetMeToRightZone = function()
     routeCalls = routeCalls + 1
     now = now + 25
     APR.IsInRouteZone = true
@@ -124,7 +124,7 @@ print("World transition: first successful route check skipped 3 redundant safety
 -- is still ahead. Safety retries must not repeatedly solve that same path.
 timers, routeCalls, forceRefreshes = {}, 0, 0
 APR.IsInRouteZone, navigating = nil, false
-APR.farstrider.GetMeToRightZone = function()
+APR.navigation.GetMeToRightZone = function()
     routeCalls = routeCalls + 1
     now = now + 25
     navigating = true
