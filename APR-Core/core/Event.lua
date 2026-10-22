@@ -1078,11 +1078,11 @@ function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
     if step and step.TameBeast then APR:HandleTameBeast(step, event, unitTarget, spellID) end
     if step and step.TameBeast and unitTarget == "player" then APR.event:QueueStepRefresh() end
     if unitTarget == "player" and step then
-        if step.UseGarrisonHS and spellID == APR.garrisonHSSpellID then
+        if step.UseGarrisonHS and APR:IsTravelActionSpell("UseGarrisonHS", spellID) then
             APR:UpdateNextStep()
             return
         end
-        if step.UseDalaHS and spellID == APR.dalaHSSpellID then
+        if step.UseDalaHS and APR:IsTravelActionSpell("UseDalaHS", spellID) then
             APR:UpdateNextStep()
             return
         end
@@ -1094,8 +1094,7 @@ function APR.event.functions.spell(event, unitTarget, castGUID, spellID)
                 itemSpellID = id
             end
         end
-        local hearthstoneCast = step.UseHS and (APR.IsHearthstoneSpell and APR:IsHearthstoneSpell(spellID)
-            or APR:Contains(APR.hearthStoneSpellID, spellID))
+        local hearthstoneCast = step.UseHS and APR:IsHearthstoneSpell(spellID)
         if hearthstoneCast or
             (step.SpellTrigger and spellID == step.SpellTrigger) or
             (step.UseSpell and spellID == step.UseSpell.spellID) or
@@ -1108,15 +1107,15 @@ end--[[APR_DIAG]]; APR.event.functions.spell = APRTrace("APR-Core/core/Event.lua
 
 function APR.event.functions.treasure(event, ...)
     if step and step.Treasure then
-        C_Timer.After(0.2, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1111:callback#72", --[[/APR_DIAG]]function() APR:UpdateQuestAndStep() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        C_Timer.After(0.2, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1110:callback#72", --[[/APR_DIAG]]function() APR:UpdateQuestAndStep() end--[[APR_DIAG]])--[[/APR_DIAG]])
     end
-end--[[APR_DIAG]]; APR.event.functions.treasure = APRTrace("APR-Core/core/Event.lua:1109:APR.event.functions.treasure#71", APR.event.functions.treasure)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.functions.treasure = APRTrace("APR-Core/core/Event.lua:1108:APR.event.functions.treasure#71", APR.event.functions.treasure)--[[/APR_DIAG]]
 
 function APR.event.functions.questData(event, questID, success)
     if not APR:OnQuestTitleLoaded(questID, success) or pendingQuestDataTimer then return end
 
     -- Batch results without postponing the refresh indefinitely during a long route render.
-    pendingQuestDataTimer = C_Timer.NewTimer(0.15, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1119:callback#74", --[[/APR_DIAG]]function()
+    pendingQuestDataTimer = C_Timer.NewTimer(0.15, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1118:callback#74", --[[/APR_DIAG]]function()
         pendingQuestDataTimer = nil
         local profile = APR:GetSettingsProfile()
         if not APR.ActiveRoute or not profile or not profile.enableAddon then return end
@@ -1128,7 +1127,7 @@ function APR.event.functions.questData(event, questID, success)
         end
         APR:FinishPerformanceSample("QuestDataLoadRefresh", profileStart)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.event.functions.questData = APRTrace("APR-Core/core/Event.lua:1115:APR.event.functions.questData#73", APR.event.functions.questData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.functions.questData = APRTrace("APR-Core/core/Event.lua:1114:APR.event.functions.questData#73", APR.event.functions.questData)--[[/APR_DIAG]]
 
 function APR.event.functions.updateQuest(event, ...)
     if event == "QUEST_LOG_UPDATE" then
@@ -1171,7 +1170,7 @@ function APR.event.functions.updateQuest(event, ...)
             APR.event:DebouncedUpdateQuest(1)
         end
     end
-end--[[APR_DIAG]]; APR.event.functions.updateQuest = APRTrace("APR-Core/core/Event.lua:1133:APR.event.functions.updateQuest#75", APR.event.functions.updateQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.functions.updateQuest = APRTrace("APR-Core/core/Event.lua:1132:APR.event.functions.updateQuest#75", APR.event.functions.updateQuest)--[[/APR_DIAG]]
 
 function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isControlSeat, vehicleUIIndicatorID,
                                      vehicleGUID, mayChooseExit, hasPitch)
@@ -1183,14 +1182,14 @@ function APR.event.functions.vehicle(event, unitTarget, showVehicleFrame, isCont
     if step and step.MountVehicle then
         APR:NextQuestStep()
     end
-end--[[APR_DIAG]]; APR.event.functions.vehicle = APRTrace("APR-Core/core/Event.lua:1176:APR.event.functions.vehicle#76", APR.event.functions.vehicle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.functions.vehicle = APRTrace("APR-Core/core/Event.lua:1175:APR.event.functions.vehicle#76", APR.event.functions.vehicle)--[[/APR_DIAG]]
 
 function APR.event.functions.warMode(event, unit)
     if event == "PLAYER_FLAGS_CHANGED" and unit ~= "player" then return end
     if pendingWarModeTimer then return end
     -- Status notifications may precede the updated desired state. Read it next tick,
     -- rather than treating the event payload as the step completion condition.
-    pendingWarModeTimer = C_Timer.NewTimer(0.1, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1193:callback#78", --[[/APR_DIAG]]function()
+    pendingWarModeTimer = C_Timer.NewTimer(0.1, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1192:callback#78", --[[/APR_DIAG]]function()
         pendingWarModeTimer = nil
         local profile = APR:GetSettingsProfile()
         if not profile or not profile.enableAddon then return end
@@ -1201,7 +1200,7 @@ function APR.event.functions.warMode(event, unit)
             APR:UpdateStep()
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.event.functions.warMode = APRTrace("APR-Core/core/Event.lua:1188:APR.event.functions.warMode#77", APR.event.functions.warMode)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.functions.warMode = APRTrace("APR-Core/core/Event.lua:1187:APR.event.functions.warMode#77", APR.event.functions.warMode)--[[/APR_DIAG]]
 
 function APR.event.functions.zone(event, ...)
     if event ~= "WAYPOINT_UPDATE" then APR:RefreshLevelProfileTargets() end
@@ -1236,7 +1235,7 @@ function APR.event.functions.zone(event, ...)
         -- Cancel any previous post-teleport retry timers
         if APR.navigation._pewRetryTimers then
             for _, timer in ipairs(APR.navigation._pewRetryTimers) do
-                if timer then --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1239:callback#80", --[[/APR_DIAG]]function() timer:Cancel() end--[[APR_DIAG]])--[[/APR_DIAG]]) end
+                if timer then --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](--[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1238:callback#80", --[[/APR_DIAG]]function() timer:Cancel() end--[[APR_DIAG]])--[[/APR_DIAG]]) end
             end
         end
         APR.navigation._pewRetryTimers = {}
@@ -1248,7 +1247,7 @@ function APR.event.functions.zone(event, ...)
         local delays = { 1.0, 2.0, 3.5, 5.0 }
         for i, delay in ipairs(delays) do
             local retryIndex = i
-            APR.navigation._pewRetryTimers[retryIndex] = C_Timer.NewTimer(delay, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1251:callback#81", --[[/APR_DIAG]]function()
+            APR.navigation._pewRetryTimers[retryIndex] = C_Timer.NewTimer(delay, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1250:callback#81", --[[/APR_DIAG]]function()
                 -- Clear the transition window on the first scheduled check
                 if retryIndex == 1 then
                     APR.navigation._worldTransitionTime = nil
@@ -1317,7 +1316,7 @@ function APR.event.functions.zone(event, ...)
             ScheduleZoneRoutingRefresh(event == "ZONE_CHANGED_NEW_AREA" and 0.35 or 0.15)
         end
     end
-end--[[APR_DIAG]]; APR.event.functions.zone = APRTrace("APR-Core/core/Event.lua:1206:APR.event.functions.zone#79", APR.event.functions.zone)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.functions.zone = APRTrace("APR-Core/core/Event.lua:1205:APR.event.functions.zone#79", APR.event.functions.zone)--[[/APR_DIAG]]
 
 ---------------------------------------------------------------------------------------
 ---------------------------------- Events utils ---------------------------------------
@@ -1330,17 +1329,17 @@ function APR.event:TalkToDenyNpcLogic(step)
     if step and step.NpcDismount == npcId then
         Dismount()
     end
-end--[[APR_DIAG]]; APR.event.TalkToDenyNpcLogic = APRTrace("APR-Core/core/Event.lua:1327:APR.event:TalkToDenyNpcLogic#82", APR.event.TalkToDenyNpcLogic)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.TalkToDenyNpcLogic = APRTrace("APR-Core/core/Event.lua:1326:APR.event:TalkToDenyNpcLogic#82", APR.event.TalkToDenyNpcLogic)--[[/APR_DIAG]]
 
 function APR.event:DebouncedUpdateQuest(delay)
     if pendingQuestUpdateTimer then
         pendingQuestUpdateTimer:Cancel()
     end
-    pendingQuestUpdateTimer = C_Timer.NewTimer(delay, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1339:callback#84", --[[/APR_DIAG]]function()
+    pendingQuestUpdateTimer = C_Timer.NewTimer(delay, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1338:callback#84", --[[/APR_DIAG]]function()
         local profileStart = APR:StartPerformanceSample()
         APR:UpdateQuest()
         APR:FinishPerformanceSample("QuestRefresh", profileStart)
         APR:Debug("Extra UpdQuestThing (debounced)")
         pendingQuestUpdateTimer = nil
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.event.DebouncedUpdateQuest = APRTrace("APR-Core/core/Event.lua:1335:APR.event:DebouncedUpdateQuest#83", APR.event.DebouncedUpdateQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.DebouncedUpdateQuest = APRTrace("APR-Core/core/Event.lua:1334:APR.event:DebouncedUpdateQuest#83", APR.event.DebouncedUpdateQuest)--[[/APR_DIAG]]

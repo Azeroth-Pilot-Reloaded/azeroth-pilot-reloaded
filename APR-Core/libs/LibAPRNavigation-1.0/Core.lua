@@ -1,6 +1,6 @@
 -- A rendering-free navigation library. Game APIs and saved state belong to the
 -- consumer's environment, so separate consumers never share character state.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 12)
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 13)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}

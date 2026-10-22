@@ -6,6 +6,7 @@
   <Script file="Diagnostics.lua"/>
   <Script file="Entrances.lua"/>
   <Script file="Catalog.lua"/>
+  <Script file="TravelActions.lua"/>
   <Script file="Search.lua"/>
   <Script file="Data/retail/Geography.lua"/>
   <Script file="Data/retail/InstanceEntrances.lua"/>
