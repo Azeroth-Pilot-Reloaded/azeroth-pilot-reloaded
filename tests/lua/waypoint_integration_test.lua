@@ -1,15 +1,16 @@
 -- Exercise the public WUI and AWP contracts without installing either addon.
 -- WUI NewUserNavigation accepts percentages, returns its normalized session,
 -- and synchronizes a native UiMapPoint. AWP already owns the APR provider and
--- carrier: APR only decorates its extractor and requests normal evaluations.
+-- carrier: the library decorates its extractor and requests normal evaluations.
 local function noop() end
+strmatch = string.match
 local function near(actual, expected, message)
     assert(type(actual) == "number" and math.abs(actual - expected) < 0.000001,
         (message or "Coordinate") .. ": " .. tostring(actual) .. " ~= " .. tostring(expected))
 end
 
 local function fixture()
-    local t = { completed = {}, timers = {}, frames = {}, combat = false,
+    local t = { completed = {}, timers = {}, tickers = {}, frames = {}, combat = false,
         position = { x = 0, y = 0, mapID = 1, instanceID = 0 }, summary = "Travel to goal",
         creates = {}, clears = {}, nativeWrites = 0, nativeClears = 0, summaryReads = 0,
         maps = { [1] = { parentMapID = 10, mapType = 3, instanceID = 0 },
@@ -24,11 +25,18 @@ local function fixture()
     function hbd:GetZoneCoordinatesFromWorldInstance(x, y, instanceID, mapID)
         if t.maps[mapID] and t.maps[mapID].instanceID == instanceID then return x / 1000, y / 1000 end
     end
-    function LibStub(name)
-        if name == "HereBeDragons-2.0" then return hbd end
-        assert(name == "AceLocale-3.0")
-        return { GetLocale = function() return locale end }
-    end
+    LibStub = nil
+    dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
+    local dragons = LibStub:NewLibrary("HereBeDragons-2.0", 1)
+    for key, value in pairs(hbd) do dragons[key] = value end
+    local aceLocale = LibStub:NewLibrary("AceLocale-3.0", 1)
+    function aceLocale:GetLocale() return locale end
+    local root = "APR-Core/libs/LibAPRNavigation-1.0/"
+    local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
+    local xml = manifest:read("*a"); manifest:close()
+    for path in xml:gmatch('file="([^"]+)"') do dofile(root .. path) end
+    function GetBuildInfo() return "12.1.0", "1", "", 120100 end
+    function GetLocale() return "enUS" end
     function GetTime() return 10 end
     function UnitIsDeadOrGhost() return t.dead end
     function InCombatLockdown() return t.combat end
@@ -37,7 +45,8 @@ local function fixture()
     end
     function CreateVector2D(x, y) return { x = x, y = y } end
     function CreateFrame()
-        local frame = { scripts = {} }
+        local frame = { scripts = {}, events = {} }
+        function frame:RegisterEvent(name) self.events[name] = true end
         function frame:SetScript(name, callback) self.scripts[name] = callback end
         t.frames[#t.frames + 1] = frame
         return frame
@@ -45,7 +54,11 @@ local function fixture()
     UiMapPoint = { CreateFromCoordinates = function(mapID, x, y)
         return { uiMapID = mapID, position = CreateVector2D(x, y) }
     end }
-    C_Timer = { NewTimer = function(delay, callback)
+    C_Timer = { NewTicker = function(delay, callback)
+        local ticker = { delay = delay, callback = callback, Cancel = function(self) self.cancelled = true end }
+        t.tickers[#t.tickers + 1] = ticker
+        return ticker
+    end, NewTimer = function(delay, callback)
         local timer = { delay = delay, callback = callback, Cancel = function(self) self.cancelled = true end }
         t.timers[#t.timers + 1] = timer
         return timer
@@ -122,8 +135,14 @@ local function fixture()
         local retained = self.retainedArrow
         if retained and (not retained.context or APR:IsStepContextCurrent(retained.context)) then return retained end
     end
-    dofile("APR-Core/integrations/Waypoint.lua")
-    t.integration, t.step, t.source = APR.WaypointIntegration, APR:GetCurrentStep(), authored
+    dofile("APR-Core/features/navigation/NavigationAdapter.lua")
+    t.integration = {}
+    function t.integration:Refresh() APR.NavigationData:RefreshWaypoints() end
+    function t.integration:Release(suppress) APR.NavigationData:ReleaseWaypoints(suppress) end
+    function t.integration:RequestRefresh() APR.NavigationData:RefreshWaypoints() end
+    function t.integration:OnEnable() APR.NavigationData:SetWaypointsEnabled(true) end
+    function t.integration:OnDisable() APR.NavigationData:SetWaypointsEnabled(false) end
+    t.step, t.source = APR:GetCurrentStep(), authored
     function t:WUI()
         local api = {}
         api.GetUserNavigation = function() return self.session end
@@ -190,6 +209,7 @@ local function fixture()
         end
     end
     function t:Tick()
+        for _, ticker in ipairs(self.tickers) do if not ticker.cancelled then ticker.callback() end end
         for _, frame in ipairs(self.frames) do if frame.scripts.OnUpdate then frame.scripts.OnUpdate(frame, 0.5) end end
     end
     function t:Guidance(id, x, y, mapID)
@@ -211,17 +231,76 @@ scenario("optional providers absent", function(t)
     assert(t.nativeWrites == 0 and APRData.p.route == 1)
 end)
 
+for _, provider in ipairs({ "WUI", "AWP" }) do
+    scenario("legacy disabled waypoint option does not prevent automatic " .. provider .. " output", function(t)
+        APR.settings.profile.waypointUI = false
+        t[provider](t)
+        t:Tick()
+        local function Published()
+            if provider == "WUI" then return t.session end
+            return t.providers.apr.extractTarget()
+        end
+        assert(Published(), "An installed provider receives APR guidance automatically, including older profiles")
+        APR.NavigationAdapter:RefreshWaypoints()
+        assert(Published(), "Profile synchronization must ignore the removed waypointUI setting")
+        assert(APR.settings.profile.showArrow == false and APRData.p.route == 1,
+            "Automatic output remains independent of APR arrow visibility and guide progression")
+    end)
+end
+
+scenario("APR exports normalized guidance and a stable authored context", function(t)
+    local target, options = APR.NavigationAdapter.environment.getWaypointTarget()
+    assert(target.space == "map" and target.uiMapID == 1 and target.mapID == 1)
+    near(target.x, 0.2); near(target.y, 0.3)
+    assert(target.worldPosition.instanceID == 0 and target.worldPosition.x == 300
+        and target.worldPosition.y == 200 and options.guideMode == "override")
+    local context = options.context
+    APR.navigation.state, APR.navigation.active = "guiding", t:Guidance("7:1", 650, 750, 2)
+    local transient, activeOptions = APR.NavigationAdapter.environment.getWaypointTarget()
+    assert(transient.transient and transient.mapID == 2 and activeOptions.context == context
+        and activeOptions.token ~= options.token,
+        "Generated legs change presentation identity without changing their authored context")
+end)
+
+scenario("navigation cancellation delegates cleanup and context suppression to the library", function(t)
+    t:WUI(); t:Refresh(); assert(t.session)
+    dofile("APR-Core/features/navigation/Navigation.lua")
+    APR.navigation:Cancel("replan", true)
+    assert(t.session and #t.clears == 0, "Retained guidance keeps its provider session")
+    APR.navigation:ClearActivePath(); t:Refresh()
+    assert(not t.session and #t.creates == 1 and #t.clears == 1,
+        "Clearing the APR path also suppresses its authored context")
+    APR.stepRevision = APR.stepRevision + 1; t:Refresh()
+    assert(t.session and #t.creates == 2)
+    APR.navigation:Cancel("step_changed"); t:Refresh()
+    assert(t.session and #t.creates == 3, "Technical cleanup remains eligible for a fresh publication")
+end)
+
+scenario("committed step rendering refreshes the library after pending flags reset", function(t)
+    t:WUI(); APR.currentStep = {}
+    function APR:StartPerformanceSample() return 0 end
+    function APR:FinishPerformanceSample() end
+    function APR:RenderCurrentStep()
+        assert(self.stepUpdateRunning and not self.stepUpdatePending)
+    end
+    dofile("APR-Core/features/questing/QuestHandler.lua")
+    APR:UpdateStep()
+    assert(t.session and not APR.stepUpdateRunning and not APR.stepUpdatePending,
+        "The finalized step publishes immediately through the library")
+end)
+
 scenario("WUI public contract, runtime target and authored hints", function(t)
     t:WUI(); t.step.Coord = { x = 250, y = 350 }
     t:Refresh()
-    assert(#t.creates == 1 and t.session == t.integration.owned.session)
+    assert(#t.creates == 1 and APR.NavigationData:GetWaypointUIStatus())
     near(t.creates[1].x, 25); near(t.creates[1].y, 35)
     near(t.session.x, 0.25); near(t.native.position.y, 0.35)
-    assert(t.creates[1].flags == "APR_Guidance" and t.creates[1].suppressAudio == true)
+    assert(type(t.creates[1].flags) == "string" and t.creates[1].suppressAudio == true)
     assert(t.session.name == "Travel to goal\nLocalized hint\nSame hint\nAnother hint")
     assert(t.source.Coord.x == 200 and APRData.p.route == 1, "Waypoint consumers cannot rewrite the route")
+    local summaryReads = t.summaryReads
     for _ = 1, 8 do t:Refresh() end
-    assert(#t.creates == 1 and #t.clears == 0 and t.summaryReads == 1,
+    assert(#t.creates == 1 and #t.clears == 0 and t.summaryReads == summaryReads,
         "An unchanged target preserves session identity and avoids API churn")
 end)
 
@@ -428,31 +507,23 @@ scenario("profile disable and reenable", function(t)
     assert(t.session and #t.creates == 2, "Reenabling APR may restore its active waypoint")
 end)
 
-scenario("module disable, queued work and reenable", function(t)
-    t:WUI(); t.integration:OnEnable(); t:Drain(); assert(t.session)
-    t.integration:RequestRefresh(); local pending = t.integration.refreshTimer
+scenario("library disable stops scheduled work and reenable resumes it", function(t)
+    t:WUI(); t.integration:OnEnable(); t:Tick(); assert(t.session)
+    local pending = t.tickers[#t.tickers]
     t.integration:OnDisable()
-    assert(pending.cancelled and not t.session and not next(t.integration.events) and not next(t.integration.messages))
+    assert(pending.cancelled and not t.session)
     t:Drain(); t:Tick(); assert(#t.creates == 1)
-    t.integration:OnEnable(); t:Drain()
-    assert(t.session and #t.creates == 2, "A reenabled optional module restores the active target")
+    pending.callback(); assert(#t.creates == 1, "Cancelled observers cannot publish")
+    t.integration:OnEnable(); t:Tick()
+    assert(t.session and #t.creates == 2, "The library restores the current authored target")
 end)
 
-scenario("event registration, coalescing and hidden arrow refresh", function(t)
-    t:WUI(); t.integration:OnEnable()
-    assert(t.integration.messages.APR_MAP_UPDATE == "RequestRefresh")
-    for _, name in ipairs({ "ADDON_LOADED", "PLAYER_ENTERING_WORLD", "ZONE_CHANGED_NEW_AREA", "ZONE_CHANGED",
-        "ZONE_CHANGED_INDOORS", "USER_WAYPOINT_UPDATED", "SUPER_TRACKING_CHANGED", "SUPER_TRACKING_PATH_UPDATED",
-        "PLAYER_REGEN_ENABLED", "PLAYER_DEAD", "PLAYER_ALIVE", "PLAYER_UNGHOST" }) do
-        assert(t.integration.events[name] == "RequestRefresh", "Missing lifecycle event " .. name)
-    end
-    local pending = t.integration.refreshTimer
-    t.integration:RequestRefresh(); assert(t.integration.refreshTimer == pending and #t.timers == 1)
-    t:Drain(); assert(#t.creates == 1 and APR.settings.profile.showArrow == false)
+scenario("polling cleans up after combat with the APR arrow hidden", function(t)
+    t:WUI(); t:Tick()
+    assert(#t.creates == 1 and APR.settings.profile.showArrow == false)
     APR.settings.profile.enableAddon = false; t.combat = true; t:Tick(); assert(t.session)
-    t.combat = false
-    t.integration[t.integration.events.PLAYER_REGEN_ENABLED](t.integration); t:Drain()
-    assert(not t.session, "Cleanup after combat remains registered while APR gameplay events are disabled")
+    t.combat = false; t:Tick()
+    assert(not t.session, "The library observes combat cleanup while APR gameplay events are disabled")
 end)
 
 scenario("native APR support avoids duplicate WUI sessions", function(t)
@@ -559,7 +630,9 @@ end)
 scenario("disabled AWP wrapper cannot advertise APR targets", function(t)
     t:AWP(); t:Refresh(); APR.settings.profile.enableAddon = false; t:Refresh()
     local target, blocked = t.providers.apr.extractTarget()
-    assert(target == nil and blocked == true and #t.awClears == 1 and APRData.p.route == 1)
+    assert(target == nil and blocked == true and #t.awClears == 1 and APRData.p.route == 1,
+        "Disabled provider state: target=" .. tostring(target) .. ", blocked=" .. tostring(blocked)
+            .. ", clears=" .. tostring(#t.awClears))
 end)
 
 assert(#failures == 0, table.concat(failures, "\n\n"))

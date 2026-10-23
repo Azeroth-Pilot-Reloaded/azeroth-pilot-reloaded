@@ -584,4 +584,6 @@ function APR.Arrow:SetArrowActive(isActive, x, y, displayAction)
     else
         APR.ArrowFrame:Hide()
     end
+    local data = APR.NavigationData
+    if data and data.RefreshWaypoints then data:RefreshWaypoints() end
 end--[[APR_DIAG]]; APR.Arrow.SetArrowActive = APRTrace("APR-Core/features/navigation/Arrow.lua:573:APR.Arrow:SetArrowActive#23", APR.Arrow.SetArrowActive)--[[/APR_DIAG]]

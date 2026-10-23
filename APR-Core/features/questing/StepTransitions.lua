@@ -13,8 +13,8 @@ local function GetProgress(self)
 end--[[APR_DIAG]]; GetProgress = APRTrace("APR-Core/features/questing/StepTransitions.lua:11:GetProgress#1", GetProgress)--[[/APR_DIAG]]
 
 local function InvalidateStep(self)
+    if self.NavigationData and self.NavigationData.ReleaseWaypoints then self.NavigationData:ReleaseWaypoints() end
     self.stepRevision = (self.stepRevision or 0) + 1
-    if self.WaypointIntegration then self.WaypointIntegration:Release() end
     if self.navigation and self.navigation.Cancel then self.navigation:Cancel("step_changed") end
     if self.navigation and self.navigation.RequestUpdate then self.navigation:RequestUpdate() end
     self.runtimeRouteStep = nil
