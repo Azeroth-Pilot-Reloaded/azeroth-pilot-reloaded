@@ -19,8 +19,13 @@ local function loadLocale(locale, published)
         source = source:gsub("%-%-@localization.-@", function() return import end)
         assert(loadstring(source))()
     end
+    dofile("APR-Core/config/LocaleDefaults.lua")
     return library:GetLocale("APR")
 end
+local tocFile = assert(io.open("APR.toc"))
+local toc = tocFile:read("*a"); tocFile:close()
+assert(toc:find("APR-Core/locales/locales.xml", 1, true) <
+    toc:find("APR-Core/config/LocaleDefaults.lua", 1, true), "Fallbacks load after all imported translations")
 for _, locale in ipairs({ "enUS", "frFR" }) do
     local translated = loadLocale(locale, true)
     for _, key in ipairs(keys) do

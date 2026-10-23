@@ -115,7 +115,8 @@ def instrument(source, path):
 def run(write=False):
     changed, coverage = [], []
     sources = list(ROOT.joinpath('APR-Core').rglob('*.lua')) + list(ROOT.joinpath('Routes').rglob('*.lua'))
-    for path in sorted(sources):
+    # WindowsPath sorts without case; use the same POSIX string order on every host.
+    for path in sorted(sources, key=lambda path: path.relative_to(ROOT).as_posix()):
         relative = path.relative_to(ROOT).as_posix()
         if 'libs' in path.parts or 'locales' in path.parts or relative in EXCLUDED:
             continue
