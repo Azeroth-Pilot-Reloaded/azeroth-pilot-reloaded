@@ -496,10 +496,13 @@ t.edges = { { id = "personal", kind = "spell", sourceFree = true,
     from = t.position, to = { x = 15000, y = 0, instanceID = 0, uiMapID = 3 } } }
 t:Update()
 assert(next(t.buttons), "The original personal transport exposes its secure action")
+local originalGuidance = t.nav:GetActiveStep()
 hides = t.arrowHides
 t.usable = false
 holdReplacement(t)
 local retained = t.nav:GetRetainedArrow()
+assert(retained and retained.uiMapID == originalGuidance.uiMapID and retained.label == originalGuidance.label
+    and retained.id == originalGuidance.id, "Retained navigation preserves its native map, text and consumer identity")
 assert(retained and not retained.Coord and retained.displayAction and retained.displayAction.data == 123
     and not retained.action
     and t.arrowActive and t.arrowHides == hides,
@@ -512,6 +515,8 @@ local staleGeneration, staleContext = t.nav.generation, t.nav.context
 holdReplacement(t)
 assert(t.nav:GetRetainedArrow() and t.arrowHides == hides,
     "Further invalidations preserve a retained target even when its world X coordinate is zero")
+assert(t.nav:GetRetainedArrow().uiMapID == retained.uiMapID and t.nav:GetRetainedArrow().label == retained.label
+    and t.nav:GetRetainedArrow().id == retained.id, "Repeated replanning cannot lose the retained waypoint metadata")
 t.nav:Publish({ queue = {} }, staleContext, staleGeneration)
 assert(t.nav.search and t.nav:GetRetainedArrow() and t.arrowHides == hides,
     "A stale result cannot replace or clear the display from a newer search")
