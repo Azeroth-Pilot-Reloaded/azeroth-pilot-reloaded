@@ -211,24 +211,36 @@ the release; `.pkgmeta` excludes the tooling, source artwork and documentation.
 The Lua check covers hidden incompatible routes, saved imports, prefab popups and
 missing Retail APIs/events. These mocks do not replace an in-game Forever smoke test.
 
-Optional waypoint integrations:
+Automatic external waypoints:
 
-`APR-Core/integrations/Waypoint.lua` publishes the effective authored Waypoint or
-the current transient/retained navigation target after step rendering settles.
-It uses `GetStepCoord` and the shared preview projection, including native map,
-floor and world-instance identity. Retained guidance keeps its map, label and ID
-while replacement navigation is calculated. The integration never advances a
-route; completed WaypointDB anchors and direct arrivals only retire presentation.
+`APR-Core/features/navigation/NavigationAdapter.lua` supplies the effective authored
+Waypoint or accepted transient/retained target after step rendering settles.
+The library's `WaypointUI.lua` and `AzerothWaypoint.lua` own publication, provider
+selection, ownership and cleanup. APR enables this integration automatically while
+the addon is active, independently of its arrow visibility; a former profile's
+`waypointUI = false` is ignored. No separate APR waypoint setting is exposed.
+Target resolution uses `GetStepCoord` and the shared preview projection, including
+native map, floor and world-instance identity. Retained guidance keeps its map,
+label and ID while replacement navigation is calculated. The integration never
+advances a route; completed WaypointDB anchors and direct arrivals only retire
+presentation.
+
+Outside APR, consumers can enable the library's `waypoints` option and provide
+`environment.getWaypointTarget()`, or use `SetWaypoint`, `SetWaypointForSegment`
+and `ClearWaypoint` manually. `RefreshWaypoints()` synchronizes immediately;
+`ReleaseWaypoints()` performs technical cleanup, and `ReleaseWaypoints(true)`
+also suppresses the current authored context until it changes. APR's navigation,
+step-transition, rendering and profile hooks call these library APIs.
 
 Consumer precedence and API contracts (checked 2026-10-23):
 
-- AzerothWaypoint's existing `apr` guide provider takes precedence. APR decorates
+- AzerothWaypoint's existing `apr` guide provider takes precedence. The library decorates
   its extractor and activation token through the exported registry, preserving
   its visibility, hooks, ordinary quest presentation, provider selection, manual
   authority, routing and TomTom carrier. It signals normal provider evaluation
   without explicit takeover. No second Blizzard/TomTom waypoint is created.
   Unsupported or missing registry contracts are left alone.
-- Otherwise APR uses `WaypointUIAPI.Navigation.NewUserNavigation`, unless
+- Otherwise the library uses `WaypointUIAPI.Navigation.NewUserNavigation`, unless
   Waypoint UI's own `APRSupportEnabled` setting is enabled. In that case the
   native adapter keeps ownership. APR does not change third-party settings.
   Existing quest/other supertracking is sufficient when its next waypoint
@@ -236,7 +248,7 @@ Consumer precedence and API contracts (checked 2026-10-23):
   still needs guidance. Existing player/addon pins always keep ownership.
 - Waypoint UI receives percentages and a `name` containing the current summary,
   localized notes and extra instructions; its returned session uses normalized
-  coordinates. APR retains that session object and its distinct `APR_Guidance`
+  coordinates. The library retains that session object and its unique instance
   flag. Cleanup verifies ownership, preserves a replacement native marker and
   calls `ClearUserNavigation(preserveWaypoint)` without `suppressAdvance`, which
   would also prevent Waypoint UI's own path cleanup. No persistent pin is added.
@@ -260,11 +272,15 @@ Next-waypoint detection supports the current `C_Navigation` API and older
 `C_SuperTrack` form used by the installed WUI, with capability checks.
 
 `waypoint_integration_test.lua` exercises real APR step/context/projection code
-with isolated consumer API fixtures. It covers ownership, relevant supertracking,
+through the library with isolated consumer API fixtures. Its 50 scenarios cover
+automatic publication with older disabled profile values, ownership, relevant supertracking,
 native adapter handoff, AWP provider decoration, transit/retained targets, text,
 combat, cancellation, arrival, WaypointDB, zone/floor/instance changes and disabled
 or missing APIs. Step-transition, progression and controller suites also check the
-publication/cleanup hooks. Run the full Lua suite and regenerate diagnostics:
+publication/cleanup hooks. `navigation_waypoint_ui_test.lua`,
+`navigation_waypoint_ui_auto_test.lua` and `navigation_azeroth_waypoint_test.lua`
+also exercise manual/automatic library use without APR. Run the full Lua suite
+and regenerate diagnostics:
 
 ```text
 python tools/validation/instrument_lua.py --write

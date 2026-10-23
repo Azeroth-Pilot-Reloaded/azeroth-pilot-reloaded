@@ -78,8 +78,8 @@ assert(not APR:PreviousQuestStep() and APRData.player.route == 1)
 -- External waypoint ownership follows active route identity, independently of
 -- whether the caller refreshes the presentation immediately.
 local waypointReleases = 0
-APR.WaypointIntegration = { Release = function(self)
-    assert(self == APR.WaypointIntegration)
+APR.NavigationData = { ReleaseWaypoints = function(self)
+    assert(self == APR.NavigationData)
     waypointReleases = waypointReleases + 1
 end }
 assert(APR:SetRouteProgress("route", 2, "waypoint_test"))
@@ -92,7 +92,7 @@ assert(APR:ActivateRoute("other"))
 assert(waypointReleases == 2, "Switching routes releases ownership even when the step index is unchanged")
 assert(APR:ActivateRoute(nil))
 assert(waypointReleases == 3, "Removing the active route releases its external waypoint")
-APR.WaypointIntegration = nil
+APR.NavigationData = nil
 assert(APR:ActivateRoute("route") and APR:SetRouteProgress("route", 3, "waypoint_test"),
     "Route and step transitions remain safe when the optional integration is absent")
 print("Transitions: context guards, rollback undo/fallback, expiry, bounded history and stale dialogs passed")

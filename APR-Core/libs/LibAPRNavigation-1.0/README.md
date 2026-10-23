@@ -1,10 +1,13 @@
 # LibAPRNavigation-1.0
 
-An embedded, rendering-free Lua 5.1 travel planner. Load `LibAPRNavigation.xml`
-after LibStub. The library does not access APR, AceLocale, frames, SavedVariables,
-protected actions or WoW globals. Each consumer supplies an environment and owns
-its character observations. Two consumers can plan concurrently without sharing
-their position caches, resources or searches.
+An embedded Lua 5.1 travel planner with optional external waypoint output. Load
+`LibAPRNavigation.xml` after LibStub. Planning does not access APR, AceLocale,
+frames, SavedVariables, protected actions or WoW globals. Each consumer supplies
+an environment and owns its character observations. Two consumers can plan
+concurrently without sharing their position caches, resources or searches.
+Only waypoint output resolves optional provider globals; environment callbacks
+can supply their APIs instead. Manual output and automatic
+target synchronization are both available.
 
 ## Ownership
 
@@ -19,6 +22,8 @@ their position caches, resources or searches.
 | `Catalog.lua` | Character-specific transport edges, instructions and cumulative resources |
 | `TravelActions.lua` | Shared route actions and item cast effects for inn, Dalaran and garrison hearthstones |
 | `Search.lua` | Incremental Dijkstra, binary heap and non-dominated time/money/resource labels |
+| `WaypointUI.lua` | Shared manual/automatic output, lifecycle, projection, ownership and Waypoint UI fallback |
+| `AzerothWaypoint.lua` | Independent guide-provider wrapper, metadata preservation, provider arbitration and combat-safe release |
 | `Data/retail/`, `Data/forever/` | Positions, directions, costs and requirements, separated by client and transport type |
 | APR `NavigationAdapter.lua` | WoW API access, client locale/names, bind/house observations and character settings |
 | APR `integrations/NavigationEntrances.lua` | Lazy compatibility facade over the library entrance registry; contains no coordinates |
@@ -98,6 +103,104 @@ Instances also expose `GetProfile`, `GetConfig`, `GetConnections`, `GetBindings`
 Returned configuration and data belong to that instance. Modify data before
 planning and invalidate cached positions after a geometry change.
 Each edge build caches repeated quest, spell, item and name queries for that build.
+
+### External waypoint output
+
+Both automatic and manual output are included in `LibAPRNavigation.xml`, without
+APR. The library selects [AzerothWaypoint](https://github.com/MorningStarGG/AzerothWaypoint)
+when the configured guide provider is available, then falls back to
+[Waypoint UI](https://github.com/Adaptvx/Waypoint-UI/blob/main/API.lua).
+
+```lua
+local activeTarget
+local environment = {
+    -- Supply the same world/map projection capabilities used by planning.
+    getWaypointTarget = function()
+        return activeTarget -- A segment, map/world location, or nil.
+    end,
+}
+local navigator = library:New({
+    profile = "retail", environment = environment,
+    waypoints = { guideProviderID = "my-guide" },
+})
+-- Existing guidance updates activeTarget; no waypoint API calls are needed.
+```
+
+Use `waypoints = true` for Waypoint UI without a guide-provider identity.
+AzerothWaypoint integration decorates an existing registered guide provider with
+`guideProviderID`; it preserves that provider's availability, priority, selection,
+routing and TomTom carrier. Missing or incomplete registries fall back to Waypoint
+UI. For APR the identity is `apr`; other consumers supply their own existing ID.
+`waypointUI = true` remains a compatibility alias for automatic output, and
+`waypoints = { enabled = false, guideProviderID = ... }` configures manual output.
+Planning and diagnostic searches never select an active target implicitly.
+
+Automatic output samples `environment.getWaypointTarget()` every 0.2 seconds.
+The optional second return value contains display options and stable `token` and
+`context` identities. `guideMode = "override"` publishes this target;
+`"fallback"` delegates ordinary objectives to AzerothWaypoint's original extractor;
+`"blocked"` suppresses it, including when a target is unavailable. Authored
+normalized targets can supply `title`, `subtext`, `source`, `kind`, `guideProvider`
+and `transient`. Authored overrides preserve the original extractor's quest
+metadata; transient navigation never inherits unrelated objective metadata.
+
+The default scheduler is WoW's `C_Timer.NewTicker`. Other hosts can supply
+`environment.newWaypointTicker(interval, callback)` returning an object with
+`Cancel()`. Late provider loading and failed target resolution are retried.
+`SetWaypointsEnabled(false)` stops automatic output and cleans up its own carrier;
+combat cleanup keeps the observer alive until mutation is possible. Reenabling
+resamples current guidance. A manually published point remains until explicitly
+cleared or replaced. `RefreshWaypoints()` optionally synchronizes immediately,
+and `GetWaypointStatus()` returns the last point and reason. The previous
+`SetWaypointUIEnabled`, `RefreshWaypointUI` and `GetWaypointUIStatus` names remain
+aliases.
+
+Manual callers retain the same API, with the same provider precedence:
+
+```lua
+navigator:SetWaypointForSegment(route.segments[activeIndex])
+navigator:SetWaypoint({ space = "map", uiMapID = 84, x = 0.5, y = 0.6 }, {
+    name = "Destination", subtext = "Optional hint",
+})
+navigator:ClearWaypoint()
+```
+
+Map locations use normalized coordinates from zero to one; world locations use
+`instanceID`, `x`, `y` and an optional `uiMapID` hint. World output needs all three
+`worldToMap` results: map ID and normalized X/Y. Waypoint UI receives percentages;
+AzerothWaypoint receives normalized coordinates. Unsupported native waypoint maps
+are projected onto a supported ancestor using child rectangles or world geometry.
+`SetWaypointForSegment` selects arrival for walking/same-world passages and
+departure for transports. Source-free actions and a nil segment clear output.
+The consumer owns arrival detection and its route cursor.
+
+Automatic Waypoint UI output preserves existing player markers, other consumers,
+relevant objective tracking, and explicit dismissals until the target identity
+changes. Ownership requires the original returned session object, its unique flag
+and matching position. Path-step markers are treated as the provider's own carrier.
+Cleanup preserves a newer native marker and runs Waypoint UI's normal path cleanup;
+no saved pin is created or advanced. Creation and release defer during combat.
+A successful manual request overrides automatic publication until guidance changes.
+
+`ReleaseWaypoints()` performs technical cleanup that can be republished;
+`ReleaseWaypoints(true)` additionally suppresses the current authored `context`,
+including AzerothWaypoint's ordinary-objective fallback, until that context changes.
+Use these lifecycle methods for accepted route cancellation and transitions.
+
+APR supplies authored waypoint or accepted transient/retained guidance, current
+context, and localized notes through its environment. Its navigation cancellation,
+step transition, completed render and profile hooks call this library. Ordinary
+quest objectives remain with AzerothWaypoint's native extractor. Hidden APR arrows,
+completed quest anchors, explicit positional arrivals and combat cleanup retain
+the original integration behavior. APR enables external waypoints automatically
+while the addon is active. The library respects Waypoint UI's native APR support
+through the configured
+`nativeSupportSetting = "APRSupportEnabled"`, without adding another APR adapter.
+
+Missing providers report `waypoint_ui_unavailable`; invalid input or unavailable
+projection reports `invalid_position` or `projection_unavailable`. Errors do not
+escape the observer. `waypoint_combat` indicates deferred mutation, and
+`waypoint_scheduler_unavailable` allows explicit refresh without a ticker.
 
 ### Instance entrances
 
@@ -201,7 +304,14 @@ their corresponding transports unavailable; they never authorize a requirement.
 | `getMapArtID(uiMapID)` | Current map phase artwork ID; `nil` while unavailable |
 | `getAreaName(areaID)` | Localized subzone/area name |
 | `mapToWorld(uiMapID, x, y)` | `instanceID, worldX, worldY` |
-| `worldToMap(instanceID, x, y, hint)` | `uiMapID` |
+| `worldToMap(instanceID, x, y, hint)` | `uiMapID`; also return normalized map X/Y for optional world waypoint output |
+| `getWaypointUIAPI()` | Optional late lookup of the full `WaypointUIAPI` table |
+| `getAzerothWaypointAPI()` | Optional late lookup of the full `AzerothWaypointNS` namespace |
+| `getWaypointTarget()` | Current segment or map/world location; optional display, token, context and guideMode options as the second result |
+| `isWaypointCombatLocked()` | Optional combat predicate; defaults to the live client |
+| `getNativeWaypoint()`, `isWaypointTrackingRelevant(target)` | Optional native-marker and relevant-objective observations |
+| `canSetWaypointOnMap(id)`, `getMapRectOnMap(child, parent)` | Optional waypoint map support and parent rectangle capabilities |
+| `newWaypointTicker(interval, callback)` | Optional automatic-output scheduler returning a cancellable ticker; defaults to WoW's `C_Timer.NewTicker` only when enabled |
 | `getCharacter()` | `faction`, `level`, `raceID`, `class`, `inGroup`, `mapID`, `indoors`, `inInstance` |
 | `getDynamicPosition(kind)` | Current world position for `bind`, `housing`, `housing_exit`; unknown is `nil` |
 | `getActionUsability(kind, id)` | `usable, reason`; pending reasons are `pending_data` or `restricted` |
