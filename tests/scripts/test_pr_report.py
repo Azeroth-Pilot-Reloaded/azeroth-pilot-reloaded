@@ -71,7 +71,7 @@ class PrReportTests(unittest.TestCase):
         self.assertEqual(calls[0][0], "create")
         self.assertEqual(calls[0][1]["issue_number"], 7)
         body = calls[0][1]["body"]
-        for text in ("abc123", "Scripts Python", "Régressions Lua", "Syntaxe de toutes les routes"):
+        for text in ("abc123", "Python scripts", "Lua 5.1 regressions", "Syntax of all routes"):
             self.assertIn(text, body)
 
     def test_updates_own_comment_without_touching_other_comments(self):
@@ -114,5 +114,5 @@ class PrReportTests(unittest.TestCase):
             "name": "Tests / lua", "conclusion": "failure", "html_url": "https://example.test/job",
         }]))
         body = calls[0][1]["body"]
-        self.assertIn("❌ Échec", body)
-        self.assertIn("⚠️ Résultat absent", body)
+        self.assertIn("❌ Failure", body)
+        self.assertIn("⚠️ Missing result", body)

@@ -40,24 +40,24 @@ jobs:
             });
             const suites = ['scripts', 'lua', 'routes'];
             const labels = {
-              scripts: 'Scripts Python', lua: 'Régressions Lua 5.1', routes: 'Syntaxe de toutes les routes'
+              scripts: 'Python scripts', lua: 'Lua 5.1 regressions', routes: 'Syntax of all routes'
             };
             const statuses = {
-              success: '✅ Réussi', failure: '❌ Échec', cancelled: '⏹ Annulé',
-              skipped: '⏭ Ignoré', timed_out: '❌ Délai dépassé'
+              success: '✅ Success', failure: '❌ Failure', cancelled: '⏹ Cancelled',
+              skipped: '⏭ Skipped', timed_out: '❌ Timed out'
             };
             const rows = suites.map(suite => {
               const job = jobs.find(job => job.name === `Tests / ${suite}`);
-              const status = job ? (statuses[job.conclusion] || '⚠️ Incomplet') : '⚠️ Résultat absent';
-              return `| ${labels[suite]} | ${status} | ${job ? `[Détails](${job.html_url})` : '—'} |`;
+              const status = job ? (statuses[job.conclusion] || '⚠️ Incomplete') : '⚠️ Missing result';
+              return `| ${labels[suite]} | ${status} | ${job ? `[Details](${job.html_url})` : '—'} |`;
             });
             const marker = '<!-- apr-pr-tests -->';
             const body = [
-              marker, `<!-- apr-pr-tests-run: ${run.id} -->`, '### Rapport des tests APR', '',
-              `Commit : \`${run.head_sha}\` — ${statuses[run.conclusion] || '⚠️ Incomplet'}`, '',
-              '| Suite | Résultat | Journal |', '| --- | --- | --- |', ...rows, '',
-              `[Bilan détaillé et nombre de tests](${run.html_url})`, '',
-              'Ce commentaire est actualisé à chaque exécution sur une PR prête à être relue.'
+              marker, `<!-- apr-pr-tests-run: ${run.id} -->`, '### APR Test Report', '',
+              `Commit: \`${run.head_sha}\` — ${statuses[run.conclusion] || '⚠️ Incomplete'}`, '',
+              '| Suite | Result | Log |', '| --- | --- | --- |', ...rows, '',
+              `[Detailed summary and test counts](${run.html_url})`, '',
+              'This comment is updated after each run on a pull request ready for review.'
             ].join('\n');
             for (const candidate of candidates) {
               const { data: pr } = await github.rest.pulls.get({ ...repo, pull_number: candidate.number });
