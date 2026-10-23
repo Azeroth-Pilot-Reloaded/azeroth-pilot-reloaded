@@ -107,7 +107,7 @@ step:FlushPendingContainers()
 
 APR.IsNavigationQuestUiKey = function(_, key) return key == "01_NAV" end
 APR.IsNavigationExtraTextUiKey = function(_, key) return key == "00_DEST" end
-APR.farstrider = {
+APR.navigation = {
     showOutOfZoneStepContent = true,
     NavigationDividerStepKey = "01_NAV",
     ErrorDestinationLineKey = "00_DEST"
@@ -125,7 +125,7 @@ assert(step.questsList["01_NAV"] == navigation and step.questsExtraTextList["00_
 assert(step.questsList["04_EXTRA_LINE_route-hint-EXTRA"] == redirected)
 assert(destination.layoutOffset < navigation.layoutOffset and navigation.layoutOffset < redirected.layoutOffset)
 assert(redirected.font:GetText() == "Updated hint", "Explicit dash preference survives redirection")
-APR.farstrider = nil
+APR.navigation = nil
 
 -- Preview rows participate in reconciliation, and missing texture dimensions
 -- must not leave a perpetual layout loop running on every client frame.
@@ -200,3 +200,46 @@ assert(step.pendingRaidIconNpcId == 456, "Droppable quest targeting remains avai
 step:PrepareRaidIcon({})
 assert(not step.pendingRaidIconNpcId, "The following step does not inherit a KillNPC target")
 print("KillNPC targeting: outdoor and dungeon buttons are automatic, unique and reset between steps")
+
+-- Navigation must replace its instruction and secure action together. Exercise
+-- the real renderer and row pool, including a replacement deferred by combat.
+APR.ActiveRoute = "navigation-render-test"
+APR.settings.profile.enableAddon = true
+APR.fillersFrame.ReOrderFillerSteps = noop
+function APR:IsStepContextCurrent() return true end
+function APR:GetNavigationPlayerPosition() return { x = 0, y = 0, instanceID = 0, uiMapID = 1 } end
+function UnitIsDeadOrGhost() return false end
+C_Spell = { GetSpellInfo = function(id) return { spellID = id, iconID = 123 } end }
+dofile("APR-Core/features/navigation/Navigation.lua")
+local navigation = APR.navigation
+navigation.context, navigation.state, navigation.cursor = {}, "guiding", 1
+navigation.queue = {
+    { id = "4:1", kind = "spell", sourceFree = true, label = "Teleport to Orgrimmar",
+        action = { type = "spell", data = 3567 }, from = { x = 0, y = 0, instanceID = 0 } },
+    { id = "4:2", kind = "portal", label = "Take the portal to Silvermoon",
+        from = { x = 38, y = 0, instanceID = 0 } },
+}
+for _, inCombat in ipairs({ false, true }) do
+    navigation.cursor = 1
+    navigation:Render()
+    local teleportRow = step.questsList["01_NAVIGATION_PATH-4:1"]
+    assert(teleportRow.font:GetText() == "Teleport to Orgrimmar"
+        and teleportRow.IconButton.attributes.spell == 3567)
+    env.setCombat(inCombat)
+    navigation.cursor = 2
+    navigation:Render()
+    local portalRow = step.questsList["01_NAVIGATION_PATH-4:2"]
+    assert(not step.questsList["01_NAVIGATION_PATH-4:1"]
+        and portalRow.font:GetText() == "Take the portal to Silvermoon" and not portalRow.IconButton,
+        "Advancing navigation replaces both the old teleport instruction and its secure button")
+    if inCombat then
+        assert(teleportRow.hiddenInCombat and teleportRow.alpha == 0.001,
+            "The old protected row is visually retired while combat prevents recycling")
+    end
+    env.setCombat(false)
+    step:FlushPendingContainers()
+    step:ProcessPendingStepButtons()
+    assert(not portalRow.IconButton and not step.questsList["01_NAVIGATION_PATH-4:1"],
+        "Deferred cleanup must not restore a retired navigation action")
+end
+print("Navigation rows: teleport-to-portal transitions clear old instructions and actions in and out of combat")

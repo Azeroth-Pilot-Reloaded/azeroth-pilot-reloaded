@@ -8,6 +8,10 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 local handlers = APR.stepHandlers
 
+local function ActionTextScope(scope, action)
+    if APR.currentStep.SetActionTextScope then APR.currentStep:SetActionTextScope(scope, action) end
+end--[[APR_DIAG]]; ActionTextScope = APRTrace("APR-Core/features/questing/StepRenderer.lua:11:ActionTextScope#1", ActionTextScope)--[[/APR_DIAG]]
+
 -- Preserve route action precedence, including mixed legacy step definitions.
 function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
     if step.KillNPC then
@@ -53,7 +57,7 @@ function handlers.RenderPrimary(step, showStepDetails, currentStepIndex)
     elseif step.GossipOptionIDs and not APR:HasAnyMainStepOption(step) then
         return handlers.GossipOptionIDs(step, showStepDetails, currentStepIndex)
     end
-end--[[APR_DIAG]]; handlers.RenderPrimary = APRTrace("APR-Core/features/questing/StepRenderer.lua:12:handlers.RenderPrimary#1", handlers.RenderPrimary)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.RenderPrimary = APRTrace("APR-Core/features/questing/StepRenderer.lua:16:handlers.RenderPrimary#2", handlers.RenderPrimary)--[[/APR_DIAG]]
 
 function APR:RenderCurrentStep()
     if not APR.settings.profile.enableAddon then
@@ -81,22 +85,24 @@ function APR:RenderCurrentStep()
         return
     end
 
-    if APR.farstrider then
-        APR.farstrider:ScheduleRouteCheck(currentStepToken)
+    if APR.navigation then
+        APR.navigation:ScheduleRouteCheck(currentStepToken)
     end
 
     APR:Debug("APR.UpdateStep:Current Step:", currentStepIndex)
 
     local step = APR:GetStep(currentStepIndex)
     if step then
-        local showStepDetails = APR.IsInRouteZone or
-            (APR.farstrider and APR.farstrider.showOutOfZoneStepContent)
+        if APR.currentStep.SetActionTextStep then APR.currentStep:SetActionTextStep(step, currentStepToken) end
+        -- Keep the authored objective visible underneath transient guidance.
+        local showStepDetails = APR.IsInRouteZone or APR.navigation ~= nil
 
         if APR.IsInRouteZone then
             APR.currentStep:Reset()
         elseif showStepDetails then
             APR.currentStep:RemoveStepContentPreservingNavigationUi()
         end
+        if APR.navigation and APR.navigation.Render then APR.navigation:Render() end
         APR.currentStep.previousState.currentStepToken = currentStepToken
 
         APR.currentStep:ButtonEnable()
@@ -148,7 +154,7 @@ function APR:RenderCurrentStep()
                     APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
                         string.format(L["SWITCH_TO_CHROMIE"], chromieExpansionOption.name))
                 end
-            end--[[APR_DIAG]]; checkChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:138:checkChromieTimeline#3", checkChromieTimeline)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; checkChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:144:checkChromieTimeline#4", checkChromieTimeline)--[[/APR_DIAG]]
 
             local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
             local activeExpansion = activeRouteData and activeRouteData.expansion
@@ -168,13 +174,14 @@ function APR:RenderCurrentStep()
         end
 
         -- Check for ExtraLineText
+        ActionTextScope("secondary")
         local extraLines = {}
         for key, value in pairs(step) do
             if type(key) == "string" and string.match(key, "ExtraLineText+") and showStepDetails then
                 table.insert(extraLines, { key = key, text = value })
             end
         end
-        table.sort(extraLines, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:177:callback#4", --[[/APR_DIAG]]function(a, b) return a.key < b.key end--[[APR_DIAG]])--[[/APR_DIAG]])
+        table.sort(extraLines, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:184:callback#5", --[[/APR_DIAG]]function(a, b) return a.key < b.key end--[[APR_DIAG]])--[[/APR_DIAG]])
         for i, line in ipairs(extraLines) do
             for textIndex, text in ipairs(APR:ResolveStepTextList(line.text)) do
                 -- Identify the field and list position, never the raw value (which can be a table).
@@ -184,6 +191,7 @@ function APR:RenderCurrentStep()
         end
 
         if showStepDetails and step.Note then
+            ActionTextScope("primary")
             local noteLines = APR:ResolveStepTextList(step.Note)
             for index, note in ipairs(noteLines) do
                 APR.currentStep:AddExtraLineText(
@@ -196,6 +204,7 @@ function APR:RenderCurrentStep()
         end
 
         if showStepDetails and step.Emote then
+            ActionTextScope("primary")
             APR.currentStep:AddQuestSteps("EMOTE", string.format(L["PERFORM_EMOTE"], step.Emote.emote),
                 "Emote", false, true)
             APR.currentStep:AddStepButton("EMOTE-Emote", step.Emote.emote, "emote")
@@ -208,10 +217,12 @@ function APR:RenderCurrentStep()
         end
 
         if step.ExtraActionB then
+            ActionTextScope("secondary")
             APR.currentStep:AddExtraLineText("USE_EXTRAACTIONBUTTON", L["USE_EXTRAACTIONBUTTON"])
         end
 
         -- For old ExtraLine step option
+        ActionTextScope("primary")
         if handlers.HandleExtraLine(step.ExtraLine) then return end
 
 
@@ -230,6 +241,7 @@ function APR:RenderCurrentStep()
         if not APR:IsStepContextCurrent(context) then return end
 
         if handlers.RenderRequirements(step, showStepDetails, currentStepIndex) then return end
+        ActionTextScope("primary")
         if handlers.CheckCooldownSkips(step) then return end
 
         if step.DropQuest or step.DroppableQuest then
@@ -238,16 +250,22 @@ function APR:RenderCurrentStep()
 
         -- Qpart (objectives)
         if APR.HandleRouteAction and APR:HandleRouteAction(step) then
+            ActionTextScope("secondary")
             APR:SetButton()
             APR.questOrderList:DelayedUpdate()
             APR.currentStep:SetProgressBar(currentStepIndex)
             APR.party:SendGroupMessage()
             APR.party:RefreshPartyFrameAnchor()
+            ActionTextScope(nil)
+            if APR.navigation and APR.navigation.Render then APR.navigation:Render() end
             return
         end
+        local gossipOnly = step.GossipOptionIDs and not APR:HasAnyMainStepOption(step)
+        ActionTextScope(gossipOnly and "secondary" or "primary", gossipOnly and "GossipOptionIDs")
         if handlers.RenderPrimary(step, showStepDetails, currentStepIndex) then return end
         if not APR:IsStepContextCurrent(context) then return end
 
+        ActionTextScope("primary")
         if handlers.RenderScenarioProgress(step) then return end
 
         if step.DroppableQuest then
@@ -257,9 +275,7 @@ function APR:RenderCurrentStep()
             if not C_QuestLog.IsQuestFlaggedCompleted(Qid) and not APR.ActiveQuests[Qid] then
                 if showStepDetails then
                     APR:GetQuestTitle(Qid)
-                    local MobId = questData.MobId
-                    local MobName = APRData.NPCList[MobId] or questData.Text
-                    local questText = format(L["Q_DROP"], MobName)
+                    local questText = APR:GetDropQuestStepText(step)
 
                     APR.currentStep:AddQuestSteps(Qid, questText, "DroppableQuest")
                 end
@@ -285,7 +301,7 @@ function APR:RenderCurrentStep()
             if showStepDetails then
                 APR.currentStep:AddQuestSteps("RESET_ROUTE", L["RESET_ROUTE"], "ResetRoute", false, true)
             end
-            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:288:callback#5", --[[/APR_DIAG]]function()
+            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:304:callback#6", --[[/APR_DIAG]]function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APR:SetRouteProgress(APR.ActiveRoute, 1, "reset")
                 APR:PrintInfo(L["RESET_ROUTE"])
@@ -317,7 +333,7 @@ function APR:RenderCurrentStep()
                 tremove(APRCustomPath[APR.PlayerID], index)
                 APR.routeconfig:CheckIsCustomPathEmpty()
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:315:finalizeRouteCompletion#6", finalizeRouteCompletion)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:331:finalizeRouteCompletion#7", finalizeRouteCompletion)--[[/APR_DIAG]]
 
             -- Suggest next routes immediately; finalize after selection/skip/cancel
             APR:SuggestNextRoutes(completedRouteKey, finalizeRouteCompletion)
@@ -326,6 +342,7 @@ function APR:RenderCurrentStep()
 
 
         -- Set Quest Item Button
+        ActionTextScope("secondary")
         APR:SetButton()
         APR.questOrderList:DelayedUpdate()
         -- set Progress bar with the right total
@@ -334,6 +351,8 @@ function APR:RenderCurrentStep()
         -- update for group
         APR.party:SendGroupMessage()
         APR.party:RefreshPartyFrameAnchor()
+        ActionTextScope(nil)
+        if APR.navigation and APR.navigation.Render then APR.navigation:Render() end
     else
         APR.currentStep.previousState.currentStepToken = nil
         APR:Debug("APR.UpdateStep:No step found for current step:", currentStepIndex)
@@ -345,4 +364,4 @@ function APR:RenderCurrentStep()
 
         APR.routeconfig:CheckIsCustomPathEmpty()
     end
-end--[[APR_DIAG]]; APR.RenderCurrentStep = APRTrace("APR-Core/features/questing/StepRenderer.lua:58:APR:RenderCurrentStep#2", APR.RenderCurrentStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RenderCurrentStep = APRTrace("APR-Core/features/questing/StepRenderer.lua:62:APR:RenderCurrentStep#3", APR.RenderCurrentStep)--[[/APR_DIAG]]

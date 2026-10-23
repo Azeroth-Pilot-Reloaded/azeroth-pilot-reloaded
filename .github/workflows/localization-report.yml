@@ -1,0 +1,123 @@
+name: PR Localization Report
+
+on:
+  workflow_run:
+    workflows: [Check translations]
+    types: [completed]
+
+permissions:
+  actions: read
+  pull-requests: write
+
+concurrency:
+  group: localization-report-${{ github.event.workflow_run.head_repository.id }}-${{ github.event.workflow_run.head_branch }}
+  cancel-in-progress: false
+
+jobs:
+  report:
+    if: >-
+      github.event.workflow_run.event == 'pull_request' &&
+      github.event.workflow_run.conclusion != 'cancelled' &&
+      github.event.workflow_run.conclusion != 'skipped'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      # No checkout: neither PR code nor artifact files are ever executed. The
+      # artifact is isolated from the workspace and read only as bounded text.
+      - name: Download localization report
+        id: download_report
+        continue-on-error: true
+        uses: actions/download-artifact@v8
+        with:
+          name: localization-report-${{ github.event.workflow_run.run_attempt }}
+          run-id: ${{ github.event.workflow_run.id }}
+          github-token: ${{ github.token }}
+          path: ${{ runner.temp }}/localization-report
+
+      - name: Update PR localization report
+        uses: actions/github-script@v9
+        env:
+          REPORT_DOWNLOAD_OUTCOME: ${{ steps.download_report.outcome }}
+        with:
+          script: |
+            const fs = require('node:fs');
+            const path = require('node:path');
+            const run = context.payload.workflow_run;
+            const repo = context.repo;
+            const marker = '<!-- apr-localization-report -->';
+            const title = '## 🌍 Localization check report';
+
+            async function isCurrentRun() {
+              const { data: latest } = await github.rest.actions.getWorkflowRun({ ...repo, run_id: run.id });
+              // GitHub may append a ref, for example check_translations.yml@main.
+              if (latest.event !== 'pull_request' || latest.path?.split('@')[0] !== '.github/workflows/check_translations.yml' ||
+                  latest.status !== 'completed' || latest.conclusion === 'cancelled' || latest.conclusion === 'skipped' ||
+                  latest.run_attempt !== run.run_attempt || latest.workflow_id !== run.workflow_id ||
+                  latest.head_sha !== run.head_sha || latest.head_branch !== run.head_branch ||
+                  !run.head_repository?.id || latest.head_repository?.id !== run.head_repository.id) return false;
+              // A rerun/new run may already be pending for this same commit.
+              const runs = await github.paginate(github.rest.actions.listWorkflowRuns, {
+                ...repo, workflow_id: run.workflow_id, event: 'pull_request', head_sha: run.head_sha, per_page: 100
+              });
+              return !runs.some(other => BigInt(other.id) > BigInt(run.id) &&
+                other.head_sha === run.head_sha && other.head_branch === run.head_branch &&
+                other.head_repository?.id === run.head_repository.id);
+            }
+
+            if (!await isCurrentRun()) return;
+            // workflow_run.pull_requests may be empty for fork PRs.
+            const candidates = run.pull_requests?.length ? run.pull_requests :
+              await github.paginate(github.rest.repos.listPullRequestsAssociatedWithCommit, {
+                ...repo, commit_sha: run.head_sha, per_page: 100
+              });
+
+            let report;
+            try {
+              if (process.env.REPORT_DOWNLOAD_OUTCOME !== 'success') throw Error('Artifact download failed.');
+              const reportPath = path.join(process.env.RUNNER_TEMP, 'localization-report', 'translation-report.md');
+              const stat = fs.lstatSync(reportPath);
+              if (!stat.isFile() || stat.size > 250000) throw Error('Invalid report file or size.');
+              report = fs.readFileSync(reportPath, 'utf8').trimEnd();
+              if (!report.startsWith(title + '\n') || report.length > 60000 || report.includes('\0')) {
+                throw Error('Invalid report content or length.');
+              }
+            } catch {
+              core.warning('The localization report is missing or invalid. Publishing a report-generation failure.');
+              report = [title, '', '| Check | Result | Warnings | Errors |', '| --- | --- | ---: | ---: |',
+                '| Report generation | ❌ Failed | — | — |', '', '<details>', '<summary>Details</summary>', '',
+                'The report could not be generated or downloaded. Translation coverage was not validated. See the workflow logs below.',
+                '', '</details>'].join('\n');
+            }
+
+            const runUrl = `${process.env.GITHUB_SERVER_URL}/${repo.owner}/${repo.repo}/actions/runs/${run.id}/attempts/${run.run_attempt}`;
+            const body = [marker, `<!-- apr-localization-run: ${run.id}; attempt: ${run.run_attempt} -->`, report, '',
+              `Commit: \`${run.head_sha}\` · [Workflow logs (attempt ${run.run_attempt})](${runUrl})`, '',
+              'This comment is updated on each localization check.'].join('\n');
+
+            function matches(pr) {
+              return pr.state === 'open' && pr.head.sha === run.head_sha &&
+                pr.head.repo?.id === run.head_repository.id && pr.head.ref === run.head_branch;
+            }
+            for (const candidate of candidates) {
+              const { data: pr } = await github.rest.pulls.get({ ...repo, pull_number: candidate.number });
+              if (!matches(pr)) continue;
+              const comments = await github.paginate(github.rest.issues.listComments, {
+                ...repo, issue_number: pr.number, per_page: 100
+              });
+              const own = comments.filter(comment => comment.user?.login === 'github-actions[bot]');
+              const newest = entries => entries.sort((a, b) => a.id < b.id ? 1 : a.id > b.id ? -1 : 0)[0];
+              const existing = newest(own.filter(comment => comment.body?.startsWith(marker))) ||
+                newest(own.filter(comment => comment.body?.trimStart().startsWith(title + '\n')));
+              const previous = existing?.body?.match(/^<!-- apr-localization-run: (\d+); attempt: (\d+) -->$/m);
+              if (previous && (BigInt(previous[1]) > BigInt(run.id) ||
+                  (BigInt(previous[1]) === BigInt(run.id) && Number(previous[2]) > run.run_attempt))) continue;
+              // Recheck after downloading/listing: the PR may have moved, or a
+              // newer attempt may have started while this reporter was waiting.
+              const { data: currentPr } = await github.rest.pulls.get({ ...repo, pull_number: pr.number });
+              if (!matches(currentPr) || !await isCurrentRun()) continue;
+              if (existing) {
+                if (existing.body !== body) await github.rest.issues.updateComment({ ...repo, comment_id: existing.id, body });
+              } else {
+                await github.rest.issues.createComment({ ...repo, issue_number: pr.number, body });
+              }
+            }

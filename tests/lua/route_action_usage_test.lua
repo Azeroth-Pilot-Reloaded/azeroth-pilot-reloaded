@@ -274,7 +274,21 @@ assert(APRData.player.route == 1 and refreshed, "Confirmed reset restarts and re
 print("Promoted main actions: abandonment, mixed steps, gossip guards and confirmed reset passed")
 
 -- Issue #480: run real UseHS rendering and cast completion with no hearthstone in bags.
-dofile("APR-Core/data/models/Spells.lua")
+local travelLibrary = dofile("tests/lua/navigation_catalog_fixture.lua")
+APR.NavigationData = travelLibrary:New({ profile = "retail", environment = {
+    getCharacter = function() return { raceID = 11, level = 90 } end,
+    getActionUsability = function(kind, id, ignoreCooldown)
+        return APR:GetRouteActionUsability(kind, id, ignoreCooldown)
+    end,
+    getActionUsabilityIgnoringCooldown = function(kind, id)
+        return APR:GetRouteActionUsability(kind, id, true)
+    end,
+    getItemSpellID = function(id)
+        local getSpell = C_Item and C_Item.GetItemSpell or GetItemSpell
+        if getSpell then local _, spellID = getSpell(id); return spellID end
+    end,
+} })
+function APR:GetCurrentStep() return current end
 dofile("APR-Core/utils/Utils.lua")
 dofile("APR-Core/utils/PlayerUtils.lua")
 APR.Debug, APR.DebugEvent = noop, noop
@@ -300,6 +314,15 @@ local toySpells = {
     [235016] = 1217281, [236687] = 1220729, [245970] = 1240219, [246565] = 1242509,
     [257736] = 1261979, [263489] = 1270583, [263933] = 1270814, [265100] = 1273401,
 }
+for _, case in ipairs({ { key = "UseDalaHS", item = 140192, effect = 222695 },
+    { key = "UseGarrisonHS", item = 110560, effect = 171253 } }) do
+    current, before = { [case.key] = 10 }, advanced
+    APR:UpdateStep()
+    assert(#buttons == 1 and buttons[1].id == case.item and buttons[1].kind == "item",
+        "Fixed hearthstones use the library's item action, including collected toys")
+    cast(current, case.effect)
+    assert(advanced == before + 1, "The fixed hearthstone's library cast effect completes its own action")
+end
 for itemID, spellID in pairs(toySpells) do
     owned = { [itemID] = true }
     current, before = { UseHS = 10 }, advanced
@@ -314,8 +337,14 @@ for itemID, spellID in pairs(toySpells) do
     assert(advanced == before + 1, "The toy's successful cast must complete UseHS: " .. itemID)
 end
 local seen = {}
-for _, id in ipairs(APR.hearthStoneToyItemIDs) do
-    assert(toySpells[id] and not seen[id], "Toy catalog must contain verified, unique inn teleports")
+current, before = { UseHS = 10 }, advanced
+APR._hearthstoneSelection = { step = current, route = APR.ActiveRoute, revision = APR.stepRevision, id = 260221 }
+C_Item.GetItemSpell = function(id) return "Client hearthstone effect", id == 260221 and 999001 end
+cast(current, 999001)
+assert(advanced == before + 1, "A selected new variant completes UseHS through its actual client spell")
+for id, spellID in pairs(toySpells) do
+    local option = APR.NavigationData.actionDefinitions["item:" .. id]
+    assert(option and option.useSpellID == spellID and not seen[id], "The library owns every verified toy cast effect")
     seen[id] = true
 end
 
@@ -324,7 +353,7 @@ unusable = { [180290] = true, [210455] = true }
 assert(APR:GetHearthstoneItemID() == 263933, "Skip toys unavailable to this character")
 assert(APR:GetHearthstoneItemID() == 263933, "Repeated renders keep the same selection")
 bagCount = 1
-assert(APR:GetHearthstoneItemID() == 6948, "Keep using the original hearthstone when carried")
+assert(APR:GetHearthstoneItemID() == 263933, "Keep the selected available variant stable during repeated rendering")
 bagCount = 0
 function C_Item.IsUsableItem() return false end
 
@@ -339,7 +368,7 @@ assert(APR:GetHearthstoneItemID() == 6948, "Wait for toy usability data")
 C_ToyBox.IsToyUsable = function() return true end
 assert(APR:GetHearthstoneItemID() == 263933, "Refresh selection when toy data arrives")
 C_ToyBox, PlayerHasToy, C_Item = nil, nil, nil
-function GetItemCount() return bagCount end
+function GetItemCount(id) return id == 6948 and bagCount or 0 end
 
 assert(APR:GetHearthstoneItemID() == 6948, "Clients without toy APIs retain the normal button")
 bagCount = 1
@@ -350,7 +379,7 @@ print("Hearthstones: toy-only UseHS buttons, all toy cast effects, restrictions,
 -- only for an actual cooldown or missing item, never a temporary use restriction.
 local onCooldown, canUse = true, true
 C_Item = {
-    GetItemCount = function() return bagCount end,
+    GetItemCount = function(id) return id == 6948 and bagCount or 0 end,
     IsUsableItem = function() return canUse end,
     GetItemCooldown = function() return onCooldown and 1 or 0, onCooldown and 3600 or 0, 1 end,
 }

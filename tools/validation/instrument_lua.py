@@ -4,7 +4,8 @@ No runtime debug hooks or global API monkey-patching. Local functions, recursive
 functions and anonymous callbacks keep their lexical bindings. Run --write after
 editing Lua; --check is enforced by the regression suite. Generated additions are
 stripped before regenerating, so line identifiers remain stable and edits remain
-ordinary Lua. Libraries are an explicit external boundary, not a coverage claim.
+ordinary Lua. Embedded libraries are a deliberate boundary: reusable owned library internals
+remain independent of APRInstrumentation; their APR call sites are instrumented.
 """
 import argparse
 import re
@@ -114,7 +115,8 @@ def instrument(source, path):
 def run(write=False):
     changed, coverage = [], []
     sources = list(ROOT.joinpath('APR-Core').rglob('*.lua')) + list(ROOT.joinpath('Routes').rglob('*.lua'))
-    for path in sorted(sources):
+    # WindowsPath sorts without case; use the same POSIX string order on every host.
+    for path in sorted(sources, key=lambda path: path.relative_to(ROOT).as_posix()):
         relative = path.relative_to(ROOT).as_posix()
         if 'libs' in path.parts or 'locales' in path.parts or relative in EXCLUDED:
             continue
@@ -133,7 +135,8 @@ def run(write=False):
     manifest += '}\nAPRInstrumentation.excluded = {\n'
     for path, reason in sorted(EXCLUDED.items()):
         manifest += f'    ["{path}"] = "{reason}",\n'
-    manifest += '    ["APR-Core/libs/**"] = "third-party libraries; APR call sites are instrumented",\n}\n'
+    manifest += '    ["APR-Core/libs/LibAPRNavigation-1.0/**"] = "owned reusable library; independent of APRInstrumentation, covered by isolated library tests",\n'
+    manifest += '    ["APR-Core/libs/**"] = "embedded library boundary; APR call sites are instrumented",\n}\n'
     manifest += ('APRInstrumentation.observers = {\n'
                  '    ["APR-Core/ui/panels/Performance*.lua"] = "viewer root timings only; nested diagnostic drawing is suppressed",\n}\n')
     destination = ROOT / 'APR-Core/core/DiagnosticManifest.lua'

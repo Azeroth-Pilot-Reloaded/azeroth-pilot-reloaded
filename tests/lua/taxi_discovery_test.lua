@@ -12,7 +12,7 @@ dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 function APR:NewModule() return {} end
 
-dofile("APR-Core/integrations/TaxiData.lua")
+dofile("APR-Core/features/navigation/NavigationTaxi.lua")
 dofile("APR-Core/utils/NavigationUtils.lua")
 
 APRTaxiNodes = {
@@ -52,6 +52,9 @@ assert(APR:GetTaxiNodeName({ NodeID = 2, Name = "Fallback" }) == "Fallback")
 
 Enum = { FlightPathState = { Current = 0, Reachable = 1, Unreachable = 2 } }
 function GetTaxiMapID() return 1415 end
+function GetMoney() return 100 end
+function TaxiNodeCost() return 10 end
+function APR:GetGameVersion() return "forever" end
 
 C_TaxiMap = {
     GetAllTaxiNodes = function()

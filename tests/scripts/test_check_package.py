@@ -13,18 +13,12 @@ class PackageValidationTests(unittest.TestCase):
         self.addCleanup(self.directory.cleanup)
         self.root = Path(self.directory.name)
         for name, interface in (("APR.toc", 120105), ("APR_Mainline.toc", 120105), ("APR_Camelot.toc", 16001)):
-            self.write(name, f"## Interface: {interface}\nAPR-Core/libs/FarstriderLibData_[Game].xml\nRoutes/RouteList_[Game].xml\n")
+            self.write(name, f"## Interface: {interface}\nAPR-Core/libs/LibAPRNavigation-1.0/LibAPRNavigation.xml\nRoutes/RouteList_[Game].xml\n")
         for game, flavor in (("Standard", "Standard"), ("Camelot", "Vanilla")):
             self.write(f"Routes/{game}.lua", "-- route fixture\n")
             self.write(f"Routes/RouteList_{game}.xml", f'<Ui><Script file="Routes/{game}.lua"/></Ui>')
-            entries = ["FarstriderLibData.xml",
-                       f"FarstriderLibData/Areas/{flavor}/FarstriderLibData_Areas.xml",
-                       f"FarstriderLibData/Waypoints/{flavor}/FarstriderLibData_Waypoints.xml",
-                       "FarstriderLibData_Finalizer.xml"]
-            self.write(f"APR-Core/libs/FarstriderLibData_{game}.xml",
-                       "<Ui>" + "".join(f'<Include file="{entry}"/>' for entry in entries) + "</Ui>")
-            for entry in entries:
-                self.write(f"APR-Core/libs/{entry}", "<Ui/>")
+        self.write("APR-Core/libs/LibAPRNavigation-1.0/LibAPRNavigation.xml", '<Ui><Include file="Catalogue.xml"/></Ui>')
+        self.write("APR-Core/libs/LibAPRNavigation-1.0/Catalogue.xml", '<Ui/>')
 
     def write(self, relative, content):
         path = self.root / relative
@@ -59,8 +53,8 @@ class PackageValidationTests(unittest.TestCase):
                 (self.root / relative).unlink()
 
     def test_rejects_missing_nested_runtime_dependency(self):
-        self.write("APR-Core/libs/FarstriderLibData.xml", '<Ui><Include file="nested.xml"/></Ui>')
-        self.write("APR-Core/libs/nested.xml", '<Ui><Script file="missing.lua"/></Ui>')
+        self.write("APR-Core/libs/LibAPRNavigation-1.0/Catalogue.xml", '<Ui><Include file="nested.xml"/></Ui>')
+        self.write("APR-Core/libs/LibAPRNavigation-1.0/nested.xml", '<Ui><Script file="missing.lua"/></Ui>')
         with self.assertRaisesRegex(AssertionError, "Missing runtime dependency"):
             validate(self.root)
 
@@ -71,11 +65,11 @@ class PackageValidationTests(unittest.TestCase):
         validate(self.root)
 
     def test_accepts_wow_shared_schema_prefix(self):
-        self.write("APR-Core/libs/FarstriderLibData.xml",
+        self.write("APR-Core/libs/LibAPRNavigation-1.0/Catalogue.xml",
                    '<Ui xsi:schemaLocation="http://www.blizzard.com/wow/ui/ UI.xsd">'
                    '<Script file="embedded.lua"/></Ui>')
-        self.write("APR-Core/libs/embedded.lua", "-- embedded runtime dependency\n")
+        self.write("APR-Core/libs/LibAPRNavigation-1.0/embedded.lua", "-- embedded runtime dependency\n")
         validate(self.root)
-        (self.root / "APR-Core/libs/embedded.lua").unlink()
+        (self.root / "APR-Core/libs/LibAPRNavigation-1.0/embedded.lua").unlink()
         with self.assertRaises(AssertionError):
             validate(self.root)

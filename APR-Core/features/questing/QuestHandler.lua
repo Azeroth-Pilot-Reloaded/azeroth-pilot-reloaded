@@ -50,6 +50,7 @@ function APR:UpdateStep()
     self.stepUpdateRunning = false
     if not self.stepUpdatePending then
         self.lastRenderedStepContext = self:CaptureStepContext()
+        if self.NavigationData and self.NavigationData.RefreshWaypoints then self.NavigationData:RefreshWaypoints() end
         if self.npcInteraction then
             self.npcInteraction:QueueResume()
         end
@@ -57,7 +58,7 @@ function APR:UpdateStep()
 
     if self.stepUpdatePending then
         local context = self:CaptureStepContext()
-        self.stepUpdateTimer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestHandler.lua:60:callback#3", --[[/APR_DIAG]]function()
+        self.stepUpdateTimer = C_Timer.NewTimer(0, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestHandler.lua:61:callback#3", --[[/APR_DIAG]]function()
             self.stepUpdateTimer = nil
             if self:IsStepContextCurrent(context) then self:UpdateStep() end
         end--[[APR_DIAG]])--[[/APR_DIAG]])

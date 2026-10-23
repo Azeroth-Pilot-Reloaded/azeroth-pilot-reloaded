@@ -10,19 +10,26 @@ on:
         required: false
         default: ''
 
+permissions:
+  contents: read
+
+concurrency:
+  group: localization-check-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
   translations:
     runs-on: ubuntu-latest
-    env:
-      CF_API_KEY: ${{ secrets.CF_API_KEY }}
-
-    permissions:
-      contents: read
-      pull-requests: write
+    timeout-minutes: 10
 
     steps:
       - name: Checkout repository
         uses: actions/checkout@v7
+        with:
+          # Compare the actual PR head with its merge base, including fork PRs.
+          ref: ${{ github.event.pull_request.head.sha || inputs.branch || github.ref }}
+          fetch-depth: 0
+          persist-credentials: false
 
       - name: Set up Python
         uses: actions/setup-python@v7
@@ -36,47 +43,41 @@ jobs:
 
       - name: Run translation check
         id: translation_check
-        if: env.CF_API_KEY != ''
         continue-on-error: true
+        shell: bash
+        env:
+          CF_API_KEY: ${{ secrets.CF_API_KEY }}
+          PR_BASE_SHA: ${{ github.event.pull_request.base.sha || '' }}
         run: |
-          python .github/scripts/check_translation_string.py --skip-similarity-check
+          args=(--skip-similarity-check --json-output translation-report.json)
+          if [ -n "$PR_BASE_SHA" ]; then
+            args+=(--base-ref "$PR_BASE_SHA")
+          fi
+          if [ -n "$CF_API_KEY" ]; then
+            python .github/scripts/check_translation_string.py "${args[@]}"
+          else
+            python .github/scripts/check_translation_string.py "${args[@]}" --skip-reason "CF_API_KEY is unavailable (for example, on a fork PR). CurseForge validation was skipped."
+          fi
 
-      - name: Skip translation check (missing CF_API_KEY)
-        if: env.CF_API_KEY == ''
+      - name: Add report to job summary
+        if: always()
         run: |
-          echo "CF_API_KEY is not available for this run (likely a fork PR)."
-          echo "Skipping CurseForge-backed translation validation."
+          if [ -f translation-report.md ]; then
+            cat translation-report.md >> "$GITHUB_STEP_SUMMARY"
+          fi
 
-      - name: Post PR comment with report
-        if: always() && github.event_name == 'pull_request'
-        uses: actions/github-script@v9
+      # Publishing happens in the trusted workflow_run reporter, including for
+      # fork PRs whose GITHUB_TOKEN cannot write comments.
+      - name: Upload localization report
+        if: always()
+        uses: actions/upload-artifact@v7
         with:
-          script: |
-            const fs = require('fs');
-            const reportPath = 'translation-report.md';
-            if (!fs.existsSync(reportPath)) {
-              core.warning(`Report file not found at ${reportPath}, skipping comment.`);
-              return;
-            }
-            const body = fs.readFileSync(reportPath, 'utf8').trimEnd();
-            const { data: comments } = await github.rest.issues.listComments({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              per_page: 100
-            });
-            const lastComment = comments[comments.length - 1];
-            if (lastComment && lastComment.body.trimEnd() === body) {
-              core.info('Skipping comment: last comment is identical.');
-              return;
-            }
-
-            await github.rest.issues.createComment({
-              owner: context.repo.owner,
-              repo: context.repo.repo,
-              issue_number: context.issue.number,
-              body
-            });
+          name: localization-report-${{ github.run_attempt }}
+          path: |
+            translation-report.md
+            translation-report.json
+          if-no-files-found: warn
+          retention-days: 7
 
       - name: Fail job if translations check failed
         if: steps.translation_check.outcome == 'failure'

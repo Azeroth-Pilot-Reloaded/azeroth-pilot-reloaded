@@ -74,4 +74,25 @@ assert(APR:PreviousQuestStep() and APRData.player.route == 2,
     "Without a valid skip, rollback keeps its normal previous-step behavior")
 assert(APR:PreviousQuestStep() and APRData.player.route == 1)
 assert(not APR:PreviousQuestStep() and APRData.player.route == 1)
+
+-- External waypoint ownership follows active route identity, independently of
+-- whether the caller refreshes the presentation immediately.
+local waypointReleases = 0
+APR.NavigationData = { ReleaseWaypoints = function(self)
+    assert(self == APR.NavigationData)
+    waypointReleases = waypointReleases + 1
+end }
+assert(APR:SetRouteProgress("route", 2, "waypoint_test"))
+assert(waypointReleases == 1, "Changing the authored step releases its external waypoint")
+assert(not APR:SetRouteProgress("route", 2, "waypoint_test"))
+assert(not APR:ActivateRoute("route"))
+assert(APR:SetRouteProgress("other", 2, "waypoint_test"))
+assert(waypointReleases == 1, "Idempotent changes and inactive route progress retain the active waypoint")
+assert(APR:ActivateRoute("other"))
+assert(waypointReleases == 2, "Switching routes releases ownership even when the step index is unchanged")
+assert(APR:ActivateRoute(nil))
+assert(waypointReleases == 3, "Removing the active route releases its external waypoint")
+APR.NavigationData = nil
+assert(APR:ActivateRoute("route") and APR:SetRouteProgress("route", 3, "waypoint_test"),
+    "Route and step transitions remain safe when the optional integration is absent")
 print("Transitions: context guards, rollback undo/fallback, expiry, bounded history and stale dialogs passed")

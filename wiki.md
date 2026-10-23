@@ -135,7 +135,7 @@ An action waits for completion; a failed step condition skips the step. Use one 
 
 `KillNPC` supports registered bosses in `RFC` (Ragefire Chasm), `ROL` (Ruins of Lordaeron), `WC` (Wailing Caverns), `HOT` (Hall of Thanes) and `DM` (The Deadmines). Dungeon keys resolve to instance IDs, independently of UI map IDs.
 
-Set `Dungeon` on other steps inside the dungeon so boss deaths observed during quest objectives also count toward later checkpoints. Use `InstanceQuest = true, NoArrow = true` for interior steps without verified coordinates; Farstrider then avoids routing to the exterior map.
+Set `Dungeon` on other steps inside the dungeon so boss deaths observed during quest objectives also count toward later checkpoints. Use `InstanceQuest = true, NoArrow = true` for interior steps without verified coordinates; APR navigation then avoids routing to the exterior map.
 
 ```lua
 steps = {

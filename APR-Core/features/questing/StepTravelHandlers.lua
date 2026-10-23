@@ -53,96 +53,59 @@ end--[[APR_DIAG]]; handlers.CheckCooldownSkips = APRTrace("APR-Core/features/que
 function handlers.RenderScenarioTravel(step, currentStepIndex)
     if (step.EnterInstance and step.EnterInstance.dungeonKey)
         or (step.LeaveInstance and step.LeaveInstance.dungeonKey) then
-        APR:RenderDungeonTravel(step)
-        return
+        return APR:RenderDungeonTravel(step)
     end
-    local function handleScenarioStep(stepType, scenarioMapID)
-        APR:Debug(stepType .. " Step:" .. currentStepIndex)
-
-        local currentMapID    = C_Map.GetBestMapForUnit('player')
-        local mapInfo         = APR:GetMapInfoCached(scenarioMapID)
-        local scenarioInfo    = APR:GetScenarioZoneInfo(scenarioMapID)
-        local isDelveScenario = scenarioInfo and scenarioInfo.type == "DELVE"
-        local isCompleted     = (not isDelveScenario) and
-            tContains(APRScenarioMapIDCompleted[APR.PlayerID], scenarioMapID) or false
-
-        return currentMapID, scenarioInfo, mapInfo, isCompleted
-    end--[[APR_DIAG]]; handleScenarioStep = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:59:handleScenarioStep#4", handleScenarioStep)--[[/APR_DIAG]]
+    local rule = step.EnterScenario or step.EnterInstance or step.DoScenario or step.LeaveScenario or step.LeaveInstance
+    local mapID = rule and rule.mapID
+    if not mapID then return end
+    local info = APR:GetScenarioZoneInfo(mapID)
+    local kind = info and info.type or ((step.EnterInstance or step.LeaveInstance) and "DUNGEON" or "SCENARIO")
+    local mapInfo = APR:GetMapInfoCached(mapID)
+    local name = mapInfo and mapInfo.name or UNKNOWN or "?"
+    local inside
+    if APR.IsInScenarioMap then inside = APR:IsInScenarioMap(mapID)
+    else inside = C_Map.GetBestMapForUnit("player") == mapID or APR:GetPlayerParentMapID() == mapID end
+    local questID = rule.questID
+    local completedQuest = questID and C_QuestLog.IsQuestFlaggedCompleted(questID)
+    local readyQuest = questID and APR:IsQuestReadyForTurnIn(questID)
+    local history = APRScenarioMapIDCompleted and APRScenarioMapIDCompleted[APR.PlayerID]
+    -- Delves and repeatable dungeon/raid visits require a fresh physical entry.
+    local completedScenario = questID and kind == "SCENARIO" and history and tContains(history, mapID)
 
     if step.EnterScenario or step.EnterInstance then
-        local scenarioMapID = step.EnterScenario and step.EnterScenario.mapID or step.EnterInstance.mapID
-        local questID = step.EnterScenario and step.EnterScenario.questID or step.EnterInstance.questID
-        local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Enter Scenario", scenarioMapID)
-
-
-        if isCompleted or scenarioMapID == currentMapID or scenarioMapID == APR:GetPlayerParentMapID()
-            or C_QuestLog.IsQuestFlaggedCompleted(questID)
-            or APR:IsQuestReadyForTurnIn(questID) then
-            APR:UpdateNextStep()
+        if inside or completedScenario or completedQuest or readyQuest then
+            return APR:UpdateNextStep()
         end
-
-        APR.currentStep:AddQuestSteps("ENTER_IN_" .. scenarioInfo.type,
-            string.format(L["ENTER_IN"], L[scenarioInfo.type], mapInfo.name), mapInfo.name)
-        step.Coord = scenarioInfo.Coord
+        APR.currentStep:AddQuestSteps("ENTER_IN_" .. kind,
+            string.format(L["ENTER_IN"], L[kind], name), name)
+        -- GetStepCoord resolves the exterior through the library. Do not copy
+        -- that outside coordinate into an authored interior step.
         APR.Arrow:SetCoord()
     elseif step.DoScenario then
-        local scenarioMapID = step.DoScenario.mapID
-        local doScenarioQuestID = step.DoScenario.questID
-        local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Do Scenario", scenarioMapID)
-
         if step.Qpart then
-            local questID, objectiveIndex = next(step.Qpart)
-            local questData = APR.ActiveQuests[questID]
-            local objectiveData = questData and questData.objectives and questData.objectives[objectiveIndex] or nil
-            if (objectiveData and objectiveData.status == APR.QUEST_STATUS.COMPLETE) and isCompleted then
-                APR:UpdateNextStep()
+            local id, objectiveIndex = next(step.Qpart)
+            local quest = APR.ActiveQuests[id]
+            local objective = quest and quest.objectives and quest.objectives[objectiveIndex]
+            if objective and objective.status == APR.QUEST_STATUS.COMPLETE and completedScenario then
+                return APR:UpdateNextStep()
             end
-        elseif isCompleted or C_QuestLog.IsQuestFlaggedCompleted(doScenarioQuestID)
-            or APR:IsQuestReadyForTurnIn(doScenarioQuestID) then
-            APR:UpdateNextStep()
+        elseif completedScenario or completedQuest or readyQuest then
+            return APR:UpdateNextStep()
         end
-
-        -- IF you're not inside the scenario, add coord to the entrance
-        if scenarioMapID ~= currentMapID then
-            step.Coord = scenarioInfo.Coord
-            step.NoArrow = false
-        else
-            step.Coord = nil
-            step.NoArrow = true
-        end
+        step.NoArrow = inside
         APR.Arrow:SetCoord()
-
-        APR.currentStep:AddQuestSteps("COMPLETE_SOMETHING_" .. scenarioInfo.type,
-            string.format(L["COMPLETE_SOMETHING"], L[scenarioInfo.type], mapInfo.name),
-            mapInfo.name)
-    elseif step.LeaveScenario then
-        local scenarioMapID = step.LeaveScenario.mapID
-        local questID = step.LeaveScenario.questID
-        local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Leave Scenario", scenarioMapID)
-
-        if (isCompleted or APR:IsQuestReadyForTurnIn(questID)) and scenarioMapID ~= currentMapID
-            and scenarioMapID ~= APR:GetPlayerParentMapID()
-            or C_QuestLog.IsQuestFlaggedCompleted(questID) then
-            APR:UpdateNextStep()
+        APR.currentStep:AddQuestSteps("COMPLETE_SOMETHING_" .. kind,
+            string.format(L["COMPLETE_SOMETHING"], L[kind], name), name)
+    else
+        -- A map-only test visit has no quest anchor. It completes only after
+        -- leaving every native floor of the registered instance.
+        if completedQuest or (not inside and (not questID or completedScenario or readyQuest)) then
+            return APR:UpdateNextStep()
         end
-
-        if scenarioInfo then
-            APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
-                string.format(L["LEAVE_" .. scenarioInfo.type], mapInfo.name), mapInfo.name)
-        end
-    elseif step.LeaveInstance then
-        local instanceMapID = step.LeaveInstance.mapID
-        local questID = step.LeaveInstance.questID
-        local currentMapID, scenarioInfo, mapInfo, isCompleted = handleScenarioStep("Leave Instance", instanceMapID)
-
-        if isCompleted and instanceMapID ~= currentMapID or C_QuestLog.IsQuestFlaggedCompleted(questID) then
-            APR:UpdateNextStep()
-        end
-
-        if scenarioInfo then
-            APR.currentStep:AddQuestSteps("LEAVE_" .. scenarioInfo.type,
-                string.format(L["LEAVE_" .. scenarioInfo.type], mapInfo.name), mapInfo.name)
-        end
+        local template = L["LEAVE_" .. kind]
+        local text = template and template ~= "LEAVE_" .. kind and string.format(template, name)
+            or string.format(LEAVE_ZONE or "%s", name)
+        APR.currentStep:AddQuestSteps("LEAVE_" .. kind, text, name)
     end
 end--[[APR_DIAG]]; handlers.RenderScenarioTravel = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:53:handlers.RenderScenarioTravel#3", handlers.RenderScenarioTravel)--[[/APR_DIAG]]
 
@@ -161,15 +124,15 @@ function handlers.Transport(step, showStepDetails)
             APR:NextQuestStep()
             return true
         end
-        -- Arrival must work while the arrow is hidden or Farstrider owns navigation.
+        -- Arrival must work while the arrow is hidden or temporary guidance is active.
         APR.transportArrivalTimer = C_Timer.NewTimer(0.5, checkArrival)
-    end--[[APR_DIAG]]; checkArrival = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:155:checkArrival#6", checkArrival)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; checkArrival = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:118:checkArrival#5", checkArrival)--[[/APR_DIAG]]
     if checkArrival() then return true end
     if showStepDetails then
         local text, kind = APR:GetTransportStepText(step)
         APR.currentStep:AddQuestSteps(kind, text, step.ZoneStepTrigger.mapID)
     end
-end--[[APR_DIAG]]; handlers.Transport = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:149:handlers.Transport#5", handlers.Transport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.Transport = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:112:handlers.Transport#4", handlers.Transport)--[[/APR_DIAG]]
 
 function handlers.TakePortal(step, showStepDetails, currentStepIndex)
     -- Same-map, repeatable NPC teleports must complete on arrival,
@@ -199,7 +162,7 @@ function handlers.TakePortal(step, showStepDetails, currentStepIndex)
 
         APR.currentStep:AddQuestSteps("TAKE_PORTAL", text, mapID)
     end
-end--[[APR_DIAG]]; handlers.TakePortal = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:174:handlers.TakePortal#7", handlers.TakePortal)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.TakePortal = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:137:handlers.TakePortal#6", handlers.TakePortal)--[[/APR_DIAG]]
 
 function handlers.Waypoint(step, showStepDetails, currentStepIndex)
     -- Explicit arrival waypoints survive completed quest anchors and hidden arrows.
@@ -230,7 +193,7 @@ function handlers.Waypoint(step, showStepDetails, currentStepIndex)
             APR.currentStep:AddExtraLineText("Waypoint" .. questID, APR:CheckWaypointText())
         end
     end
-end--[[APR_DIAG]]; handlers.Waypoint = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:204:handlers.Waypoint#8", handlers.Waypoint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.Waypoint = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:167:handlers.Waypoint#7", handlers.Waypoint)--[[/APR_DIAG]]
 
 function handlers.UseHS(step, showStepDetails, currentStepIndex)
     local questKey, questText, useHSKey, spellID, type
@@ -244,14 +207,14 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
         questKey = step.UseDalaHS
         questText = L["USE_DALARAN_HEARTHSTONE"]
         useHSKey = "UseDalaHS"
-        spellID = APR.dalaHSSpellID
-        type = 'spell'
+        local action = APR:GetRouteTravelAction(useHSKey)
+        spellID, type = action and action.data, action and action.type
     else
         questKey = step.UseGarrisonHS
         questText = L["USE_GARRISON_HEARTHSTONE"]
         useHSKey = "UseGarrisonHS"
-        spellID = APR.garrisonHSSpellID
-        type = 'spell'
+        local action = APR:GetRouteTravelAction(useHSKey)
+        spellID, type = action and action.data, action and action.type
     end
 
     -- Opt in only when the following route steps also support travelling there
@@ -277,7 +240,7 @@ function handlers.UseHS(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:235:handlers.UseHS#9", handlers.UseHS)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.UseHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:198:handlers.UseHS#8", handlers.UseHS)--[[/APR_DIAG]]
 
 function handlers.SetHS(step, showStepDetails, currentStepIndex)
     if showStepDetails then
@@ -287,7 +250,7 @@ function handlers.SetHS(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.SetHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:282:handlers.SetHS#10", handlers.SetHS)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.SetHS = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:245:handlers.SetHS#9", handlers.SetHS)--[[/APR_DIAG]]
 
 function handlers.GetFP(step, showStepDetails, currentStepIndex)
     local routeZoneMapIDs, mapID, routeName, expansion = APR:GetCurrentRouteMapIDsAndName()
@@ -316,7 +279,7 @@ function handlers.GetFP(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.GetFP = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:292:handlers.GetFP#11", handlers.GetFP)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.GetFP = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:255:handlers.GetFP#10", handlers.GetFP)--[[/APR_DIAG]]
 
 function handlers.UseFlightPath(step, showStepDetails, currentStepIndex)
     if step.ZoneStepTrigger then
@@ -330,7 +293,7 @@ function handlers.UseFlightPath(step, showStepDetails, currentStepIndex)
         APR:UpdateNextStep()
         return true
     end
-end--[[APR_DIAG]]; handlers.UseFlightPath = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:321:handlers.UseFlightPath#12", handlers.UseFlightPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.UseFlightPath = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:284:handlers.UseFlightPath#11", handlers.UseFlightPath)--[[/APR_DIAG]]
 
 function handlers.RenderScenarioProgress(step)
     if step.Scenario then
@@ -381,4 +344,4 @@ function handlers.RenderScenarioProgress(step)
             end
         end
     end
-end--[[APR_DIAG]]; handlers.RenderScenarioProgress = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:335:handlers.RenderScenarioProgress#13", handlers.RenderScenarioProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; handlers.RenderScenarioProgress = APRTrace("APR-Core/features/questing/StepTravelHandlers.lua:298:handlers.RenderScenarioProgress#12", handlers.RenderScenarioProgress)--[[/APR_DIAG]]

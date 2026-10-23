@@ -8,9 +8,10 @@ from tools.validation.instrument_lua import ROOT, clean, instrument, run
 class InstrumentationTests(unittest.TestCase):
     def test_production_paths_with_debug_enabled(self):
         for name in ('current_step_render', 'quest_order_performance', 'arrow_visibility',
+                     'arrow_action_text', 'arrow_action_settings', 'action_text_source',
                      'event_lifecycle', 'npc_interaction_chain', 'party_group_sync', 'secret_compatibility', 'reputation_scheduling',
-                     'step_progression', 'farstrider_routing_performance', 'route_path_performance',
-                     'ui_foundations', 'route_panels_render'):
+                     'step_progression', 'navigation_scheduling', 'route_path_performance',
+                     'ui_foundations', 'route_panels_render', 'waypoint_integration'):
             with self.subTest(suite=name):
                 runtime = LuaRuntime(unpack_returned_tuples=True)
                 runtime.execute('function GetTime() return 0 end; function debugprofilestop() return 0 end')
@@ -31,6 +32,11 @@ class InstrumentationTests(unittest.TestCase):
                 if 'libs' not in path.parts:
                     with self.subTest(path=path):
                         self.assertIsNone(compile_lua(path.read_text(encoding='utf-8-sig'), '@' + path.as_posix()))
+
+    def test_manifest_order_is_platform_independent(self):
+        _, coverage = run()
+        paths = [path for path, _, _ in coverage]
+        self.assertEqual(paths, sorted(paths), 'Coverage must use case-sensitive POSIX ordering on Windows and Linux')
 
     def test_callbacks_recursion_comments_and_yields(self):
         source = '''

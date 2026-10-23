@@ -68,6 +68,19 @@ dofile("APR-Core/features/questing/QuestCache.lua")
 dofile("APR-Core/features/questing/QuestHandler.lua")
 APR.UpdateQuest = noop
 local mapUpdates = 0
+local waypointRefreshes, waypointTargets = 0, {}
+APR.NavigationData = {
+    ReleaseWaypoints = noop,
+    RefreshWaypoints = function(self)
+        assert(self == APR.NavigationData)
+        assert(not APR.stepUpdateRunning and not APR.stepUpdatePending and not APR.stepUpdateTimer,
+            "External waypoint publication waits for the complete step-update batch")
+        assert(APR:IsStepContextCurrent(APR.lastRenderedStepContext),
+            "External waypoints reuse the settled presentation context")
+        waypointRefreshes = waypointRefreshes + 1
+        waypointTargets[waypointRefreshes] = APRData.player[APR.ActiveRoute]
+    end,
+}
 function APR:SendMessage(message)
     assert(message == "APR_MAP_UPDATE")
     mapUpdates = mapUpdates + 1
@@ -75,6 +88,7 @@ end
 APR:SkipQuestStep()
 assert(APRData.player.route > 2 and APRData.player.route < #route, "A long skip yields before processing the whole route")
 assert(mapUpdates == 0, "Intermediate completed steps do not rebuild map pins")
+assert(waypointRefreshes == 0, "Completed objectives cannot briefly publish external waypoints")
 assert(not APR.lastRenderedStepContext, "Pending catch-up is not reusable by navigation")
 local function drain()
     local index = 1
@@ -94,6 +108,8 @@ end
 assert(not APR.stepUpdateRunning and not APR.stepUpdateTimer, "Settled progression leaves no worker active")
 assert(mapUpdates == 1, "1250 completed objectives publish the map only at the final playable step")
 assert(APR:IsStepContextCurrent(APR.lastRenderedStepContext), "Only the settled step can be reused by navigation")
+assert(waypointRefreshes == 1 and waypointTargets[1] == #route,
+    "The final playable objective publishes its external waypoint exactly once")
 
 -- A manual navigation during a pending batch supersedes the old continuation.
 APRData.player.route = 2
@@ -108,10 +124,16 @@ assert(APRData.player.route == #route, "Cancelled work cannot advance the new se
 -- An unrelated error cannot leave all subsequent updates locked out.
 local reset = APR.ResetMissingQuests
 APR.ResetMissingQuests = function() error("test failure") end
+local refreshesBeforeError = waypointRefreshes
 assert(not pcall(APR.UpdateStep, APR), "Update errors still propagate")
 assert(not APR.stepUpdateRunning, "Errors release the reentrancy guard")
 assert(not APR.lastRenderedStepContext, "Failed presentations cannot suppress navigation synchronization")
+assert(waypointRefreshes == refreshesBeforeError, "A failed presentation cannot publish an external waypoint")
 APR.ResetMissingQuests = reset
+APR:UpdateStep()
+assert(waypointRefreshes == refreshesBeforeError + 1,
+    "A recovered presentation resumes external waypoint synchronization")
+APR.NavigationData = nil
 APR:UpdateStep()
 print("Step progression: Note skip + 1250 completed objectives; bounded batches, cancellation and error recovery passed")
 
@@ -128,9 +150,10 @@ function CreateFrame() return { RegisterEvent = noop, SetScript = noop } end
 
 function APR:NewModule() return {} end
 
-dofile("APR-Core/integrations/Farstrider.lua")
-APR.farstrider.ScheduleRouteCheck = noop
-APR.farstrider.showOutOfZoneStepContent = true
+dofile("APR-Core/features/navigation/NavigationPlanner.lua")
+dofile("APR-Core/features/navigation/Navigation.lua")
+APR.navigation.ScheduleRouteCheck = noop
+APR.navigation.showOutOfZoneStepContent = true
 APR.IsInRouteZone = false
 APR.currentStep.RemoveStepContentPreservingNavigationUi = noop
 APR.currentStep.Reset = noop
@@ -150,7 +173,7 @@ end
 
 local function refreshHints()
     hints, hintKeys = {}, {}
-    APR.farstrider:RefreshStepForNavigation()
+    APR.navigation:RefreshStepForNavigation()
     assert(not APR.stepUpdateRunning and not APR.stepUpdatePending)
 end
 refreshHints()
@@ -177,9 +200,9 @@ for _, inZone in ipairs({ false, true }) do
     assert(hints[4].text == "Final hint" and hints[4].color == "ff0000")
 end
 APR.IsInRouteZone = false
-APR.farstrider.showOutOfZoneStepContent = false
+APR.navigation.showOutOfZoneStepContent = false
 refreshHints()
-assert(#hints == 0, "Hidden step details must not leak hints")
+assert(#hints == 4, "Transient navigation preserves the authored objective and hints")
 route[14] = originalStep
 print(
 "Extra line text: historical Tirisfal step 14 fixture, navigation refresh, lists, legacy fields, colors and visibility passed")

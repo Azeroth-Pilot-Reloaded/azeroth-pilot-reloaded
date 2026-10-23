@@ -42,7 +42,7 @@ Widget allocations stop after the reusable pools are warmed up; cached callbacks
 are rebound to the current content.
 
 `skill_api_test.lua` verifies structured `C_SkillInfo` results and prefers modern
-APIs even when legacy globals exist. `farstrider_data_test.lua` also loads Forever
+APIs even when legacy globals exist. `navigation_catalog_profiles_test.lua` also loads Forever
 with Retail's project ID and checks its pre-Cataclysm transport connections.
 `secret_compatibility_test.lua` rejects opaque aura payloads and NPC/cast values;
 its sentinels cannot reproduce the client's native secret-value or taint rules.
@@ -71,6 +71,28 @@ rollback undo and its normal previous-step fallback. `performance_dashboard_test
 checks scaled graph hover, peak context, frozen timelines and bounded captures.
 `tools/validation/check_package.py` still needs an unpacked release to validate a
 real package; its automated tests use a minimal package fixture.
+
+The `navigation_*` suites exercise directed travel, cumulative fare/reagent
+budgets, access regions, transient guidance, quote changes, confirmed taxi
+measurements, stale callbacks and shared preview geometry. Package validation
+also checks that no retired navigation module is loaded.
+
+The navigation performance tests use controlled clocks and API-call counters to
+check the 1 ms planning budget, cache invalidation and cancellation. They cover
+catalogue preparation, taxi indexing, search ingestion and guidance publication.
+Timing benchmarks are separate from regression assertions because wall-clock
+results depend on the host, client APIs, garbage collection and scheduling.
+
+On both Retail and Forever, manually verify a flight with a connection, a boat
+or zeppelin, a secure travel button, death/resurrection and reload during
+guidance. Check the 2,000-yard threshold (10,000 with usable Retail skyriding),
+restricted entries including Silvermoon/Harandar, and Forever ground crossings.
+Finish a quest during travel, then use skip/back/undo and confirm authored route
+progress remains correct. Check five waypoints followed by a pickup: six line
+segments remain visible regardless of the next-marker limit, including map
+changes and rotating minimap. Confirm labels use the client's language in at
+least French and English. These checks need the actual clients and are not
+certified by simulated WoW APIs.
 
 ## Pull requests
 

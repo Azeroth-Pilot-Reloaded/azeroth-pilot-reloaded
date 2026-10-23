@@ -28,12 +28,10 @@ ignore:
   - wiki.md
   - readme
   - APR-Core/README.md
-  - APR-Core/libs/FarstriderLib/README.md
-  - APR-Core/libs/FarstriderLib/CHANGELOG.md
+  - APR-Core/libs/LibAPRNavigation-1.0/README.md
 
   # Embedded libraries load through XML; their standalone TOCs/logo are unused.
   - "APR-Core/libs/*.toc"
-  - APR-Core/libs/FarstriderLib/Media/logo.png
 
   # Vendored optional modules absent from the runtime TOC/XML include graph.
   - APR-Core/libs/AceBucket-3.0

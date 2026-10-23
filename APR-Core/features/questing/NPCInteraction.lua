@@ -356,7 +356,7 @@ function APR.npcInteraction:HandleGossip(event, step, ...)
         local availableQuests = C_GossipInfo.GetAvailableQuests()
         local activeQuests = C_GossipInfo.GetActiveQuests()
         -- Handin
-        local profile = APR:GetSettingsProfile()
+        profile = APR:GetSettingsProfile()
         if profile and profile.autoHandIn then
             if activeQuests then
                 for _, questInfo in ipairs(activeQuests) do
@@ -403,7 +403,7 @@ function APR.npcInteraction:HandleQuestGreeting(event, step, ...)
     end
 
     -- Done (Handin)
-    local profile = APR:GetSettingsProfile()
+    profile = APR:GetSettingsProfile()
     if profile and profile.autoHandIn then
         for i = 1, GetNumActiveQuests() do
             local title, isComplete = GetActiveTitle(i)

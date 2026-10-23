@@ -10,8 +10,8 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 local PREVIEW_IMAGE_ASSET_ROOT = "Interface\\AddOns\\APR\\APR-Core\\assets\\"
 local NAVIGATION_QUEST_UI_KEY_PATTERNS = {
-    "^01_FARSTRIDER_PATH%-",
-    "^01_FARSTRIDER_ERROR%-",
+    "^01_NAVIGATION_PATH%-",
+    "^01_NAVIGATION_ERROR%-",
     "^04_EXTRA_LINE_DESTINATION%-EXTRA$",
 }
 
@@ -401,7 +401,7 @@ function APR:IsAFKFrameActiveShouldSnap()
     return true
 end--[[APR_DIAG]]; APR.IsAFKFrameActiveShouldSnap = APRTrace("APR-Core/utils/UIUtils.lua:379:APR:IsAFKFrameActiveShouldSnap#21", APR.IsAFKFrameActiveShouldSnap)--[[/APR_DIAG]]
 
---- Return true when the quest-step UI key belongs to Farstrider navigation guidance.
+--- Return true when the quest-step UI key belongs to transient navigation guidance.
 ---@param key string|number|nil
 ---@return boolean
 function APR:IsNavigationQuestUiKey(key)
@@ -409,7 +409,8 @@ function APR:IsNavigationQuestUiKey(key)
         return false
     end
 
-    if self.farstrider and key == self.farstrider.NavigationDividerStepKey then
+    if self.navigation and (key == self.navigation.NavigationDividerStepKey or
+        key == self.navigation.NavigationStepKey or key == self.navigation.ErrorStepKey) then
         return true
     end
 
@@ -422,16 +423,16 @@ function APR:IsNavigationQuestUiKey(key)
     return false
 end--[[APR_DIAG]]; APR.IsNavigationQuestUiKey = APRTrace("APR-Core/utils/UIUtils.lua:407:APR:IsNavigationQuestUiKey#22", APR.IsNavigationQuestUiKey)--[[/APR_DIAG]]
 
---- Return true when the extra-line UI key belongs to Farstrider navigation guidance.
+--- Return true when the extra-line UI key belongs to transient navigation guidance.
 ---@param key string|number|nil
 ---@return boolean
 function APR:IsNavigationExtraTextUiKey(key)
-    if not self.farstrider then
+    if not self.navigation then
         return false
     end
 
-    return key == self.farstrider.ErrorDestinationLineKey or key == "DESTINATION"
-end--[[APR_DIAG]]; APR.IsNavigationExtraTextUiKey = APRTrace("APR-Core/utils/UIUtils.lua:428:APR:IsNavigationExtraTextUiKey#23", APR.IsNavigationExtraTextUiKey)--[[/APR_DIAG]]
+    return key == self.navigation.ErrorDestinationLineKey or key == "DESTINATION"
+end--[[APR_DIAG]]; APR.IsNavigationExtraTextUiKey = APRTrace("APR-Core/utils/UIUtils.lua:429:APR:IsNavigationExtraTextUiKey#23", APR.IsNavigationExtraTextUiKey)--[[/APR_DIAG]]
 
 --- Get the proper snap anchor frame implementing the snap hierarchy
 --- Other frames can anchor to this in order: Fillers > AFK > CurrentStep
@@ -471,7 +472,7 @@ function APR:GetSnapAnchorFrame(excludeFillers)
     end
 
     return currentStepPanel, contentHeight
-end--[[APR_DIAG]]; APR.GetSnapAnchorFrame = APRTrace("APR-Core/utils/UIUtils.lua:442:APR:GetSnapAnchorFrame#24", APR.GetSnapAnchorFrame)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetSnapAnchorFrame = APRTrace("APR-Core/utils/UIUtils.lua:443:APR:GetSnapAnchorFrame#24", APR.GetSnapAnchorFrame)--[[/APR_DIAG]]
 
 --- Create a standard APR UI frame with default backdrop styling.
 ---@param name string
@@ -493,7 +494,7 @@ function APR:CreateStandardFrame(name, parent, width, height, template)
     APR:SetPanelColor(frame, APR.Color.defaultBackdrop)
     if self.RegisterSkinTarget then self:RegisterSkinTarget(frame, "panel", { preserveBackground = true }) end
     return frame
-end--[[APR_DIAG]]; APR.CreateStandardFrame = APRTrace("APR-Core/utils/UIUtils.lua:483:APR:CreateStandardFrame#25", APR.CreateStandardFrame)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CreateStandardFrame = APRTrace("APR-Core/utils/UIUtils.lua:484:APR:CreateStandardFrame#25", APR.CreateStandardFrame)--[[/APR_DIAG]]
 
 --- Setup drag handlers for a frame with a guard function and optional stop callback.
 ---@param frame table
@@ -502,14 +503,14 @@ end--[[APR_DIAG]]; APR.CreateStandardFrame = APRTrace("APR-Core/utils/UIUtils.lu
 function APR:SetupFrameDrag(frame, canDrag, onStop)
     frame:SetMovable(true)
     frame:RegisterForDrag("LeftButton")
-    frame:SetScript("OnDragStart", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:505:callback#27", --[[/APR_DIAG]]function(self)
+    frame:SetScript("OnDragStart", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:506:callback#27", --[[/APR_DIAG]]function(self)
         if canDrag and not canDrag() then
             return
         end
         self:StartMoving()
         self.isMoving = true
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    frame:SetScript("OnDragStop", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:512:callback#28", --[[/APR_DIAG]]function(self)
+    frame:SetScript("OnDragStop", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:513:callback#28", --[[/APR_DIAG]]function(self)
         if not self.isMoving then
             return
         end
@@ -519,7 +520,7 @@ function APR:SetupFrameDrag(frame, canDrag, onStop)
             onStop(self)
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.SetupFrameDrag = APRTrace("APR-Core/utils/UIUtils.lua:502:APR:SetupFrameDrag#26", APR.SetupFrameDrag)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SetupFrameDrag = APRTrace("APR-Core/utils/UIUtils.lua:503:APR:SetupFrameDrag#26", APR.SetupFrameDrag)--[[/APR_DIAG]]
 
 --- Setup drag handlers on a header to move its parent frame.
 ---@param header table
@@ -528,7 +529,7 @@ end--[[APR_DIAG]]; APR.SetupFrameDrag = APRTrace("APR-Core/utils/UIUtils.lua:502
 ---@param onStop fun(frame: table)|nil
 ---@param rightClickHandler fun()|nil Optional handler for right-click events
 function APR:SetupHeaderDrag(header, parentFrame, canDrag, onStop, rightClickHandler)
-    header:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:531:callback#30", --[[/APR_DIAG]]function(self, button)
+    header:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:532:callback#30", --[[/APR_DIAG]]function(self, button)
         if button == "RightButton" and rightClickHandler then
             rightClickHandler()
             return
@@ -542,7 +543,7 @@ function APR:SetupHeaderDrag(header, parentFrame, canDrag, onStop, rightClickHan
         parentFrame:StartMoving()
         parentFrame.isMoving = true
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    header:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:545:callback#31", --[[/APR_DIAG]]function(self, button)
+    header:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:546:callback#31", --[[/APR_DIAG]]function(self, button)
         if button ~= "LeftButton" then
             return
         end
@@ -555,7 +556,7 @@ function APR:SetupHeaderDrag(header, parentFrame, canDrag, onStop, rightClickHan
             onStop(parentFrame)
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.SetupHeaderDrag = APRTrace("APR-Core/utils/UIUtils.lua:530:APR:SetupHeaderDrag#29", APR.SetupHeaderDrag)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SetupHeaderDrag = APRTrace("APR-Core/utils/UIUtils.lua:531:APR:SetupHeaderDrag#29", APR.SetupHeaderDrag)--[[/APR_DIAG]]
 
 --- Create an ObjectiveTracker-style header frame.
 ---@param name string
@@ -571,7 +572,7 @@ function APR:CreateFrameHeader(name, parent, text, template, textScope)
     if self.RegisterSkinTarget then self:RegisterSkinTarget(header, "header") end
     if self.QuestTracker then self.QuestTracker.headers[header] = textScope or "general" end
     return header
-end--[[APR_DIAG]]; APR.CreateFrameHeader = APRTrace("APR-Core/utils/UIUtils.lua:567:APR:CreateFrameHeader#32", APR.CreateFrameHeader)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CreateFrameHeader = APRTrace("APR-Core/utils/UIUtils.lua:568:APR:CreateFrameHeader#32", APR.CreateFrameHeader)--[[/APR_DIAG]]
 
 --- Setup minimize/collapse behavior for a frame header.
 ---@param header table The header with MinimizeButton
@@ -586,7 +587,7 @@ function APR:SetupMinimizeButton(header, parentFrame, onCollapse, onExpand, coll
     local expandNormal = expandAtlas or "ui-questtrackerbutton-secondary-expand"
     local expandPressed = expandNormal .. "-pressed"
 
-    header.MinimizeButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:589:callback#34", --[[/APR_DIAG]]function(self)
+    header.MinimizeButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:590:callback#34", --[[/APR_DIAG]]function(self)
         if parentFrame.collapsed then
             -- Expand
             if onExpand then onExpand() end
@@ -601,7 +602,7 @@ function APR:SetupMinimizeButton(header, parentFrame, onCollapse, onExpand, coll
             parentFrame.collapsed = true
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.SetupMinimizeButton = APRTrace("APR-Core/utils/UIUtils.lua:583:APR:SetupMinimizeButton#33", APR.SetupMinimizeButton)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SetupMinimizeButton = APRTrace("APR-Core/utils/UIUtils.lua:584:APR:SetupMinimizeButton#33", APR.SetupMinimizeButton)--[[/APR_DIAG]]
 
 --- Create a text container used by step/filler lists.
 ---@param parent table
@@ -633,7 +634,7 @@ function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, ba
     local role = color and self:ResolveTextColorRole(color, "title") or (isExtraLine and "title" or "base")
     self:RegisterFontString(font, textScope or "general", {
         role = role,
-        onApplied = --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:636:callback#36", --[[/APR_DIAG]]function(fontString)
+        onApplied = --[[APR_DIAG]]APRTrace("APR-Core/utils/UIUtils.lua:637:callback#36", --[[/APR_DIAG]]function(fontString)
             container:SetHeight(container.progressBarOnly and 30 or
                 (fontString:GetStringHeight() + 10 + (container.extraContentHeight or 0)))
         end--[[APR_DIAG]])--[[/APR_DIAG]],
@@ -654,7 +655,7 @@ function APR:CreateStepTextContainer(parent, width, text, isExtraLine, color, ba
     if self.RegisterSkinTarget then self:RegisterSkinTarget(container, "row") end
     container.showLeadingDash = useLeadingDash
     return container
-end--[[APR_DIAG]]; APR.CreateStepTextContainer = APRTrace("APR-Core/utils/UIUtils.lua:616:APR:CreateStepTextContainer#35", APR.CreateStepTextContainer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CreateStepTextContainer = APRTrace("APR-Core/utils/UIUtils.lua:617:APR:CreateStepTextContainer#35", APR.CreateStepTextContainer)--[[/APR_DIAG]]
 
 --- Snap a frame to an anchor frame at a calculated distance.
 -- Centralizes the snap positioning logic used by multiple modules (FillersFrame, QuestOrderList, AFK).
@@ -695,7 +696,7 @@ function APR:SnapFrameToAnchor(frame, anchorFrame, anchorHeight, gap, adjustForH
     frame:SetPoint("TOP", anchorFrame, "TOP", 0, -totalOffset)
 
     return true
-end--[[APR_DIAG]]; APR.SnapFrameToAnchor = APRTrace("APR-Core/utils/UIUtils.lua:668:APR:SnapFrameToAnchor#37", APR.SnapFrameToAnchor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.SnapFrameToAnchor = APRTrace("APR-Core/utils/UIUtils.lua:669:APR:SnapFrameToAnchor#37", APR.SnapFrameToAnchor)--[[/APR_DIAG]]
 
 -- One chain definition is shared by runtime layout and the placement previews.
 function APR:GetSnappedStack(previews)
@@ -709,7 +710,7 @@ function APR:GetSnappedStack(previews)
         if frame and linked and (previews or visible) then
             stack[#stack + 1] = {frame = frame, height = frame:GetHeight(), gap = gap}
         end
-    end--[[APR_DIAG]]; add = APRTrace("APR-Core/utils/UIUtils.lua:708:add#39", add)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; add = APRTrace("APR-Core/utils/UIUtils.lua:709:add#39", add)--[[/APR_DIAG]]
     local afk = previews and previews[3] or _G.AfkFrameScreen
     local fillers = previews and previews[2] or _G.FillersScreenPanel
     local list = previews and previews[4] or _G.QuestOrderListPanel
@@ -718,7 +719,7 @@ function APR:GetSnappedStack(previews)
         (profile.fillersFrameSnapGap or 0) + (profile.fillersFrameShowHeader and 22 or 0))
     add(list, profile.questOrderListSnapToCurrentStep, not current.collapsed and list and list:IsShown(), 30)
     return stack
-end--[[APR_DIAG]]; APR.GetSnappedStack = APRTrace("APR-Core/utils/UIUtils.lua:701:APR:GetSnappedStack#38", APR.GetSnappedStack)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetSnappedStack = APRTrace("APR-Core/utils/UIUtils.lua:702:APR:GetSnappedStack#38", APR.GetSnappedStack)--[[/APR_DIAG]]
 
 function APR:GetSnappedStackHeight(previews)
     local stack, height = self:GetSnappedStack(previews), 0
@@ -727,7 +728,7 @@ function APR:GetSnappedStackHeight(previews)
         height = height + entry.height
     end
     return height
-end--[[APR_DIAG]]; APR.GetSnappedStackHeight = APRTrace("APR-Core/utils/UIUtils.lua:723:APR:GetSnappedStackHeight#40", APR.GetSnappedStackHeight)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetSnappedStackHeight = APRTrace("APR-Core/utils/UIUtils.lua:724:APR:GetSnappedStackHeight#40", APR.GetSnappedStackHeight)--[[/APR_DIAG]]
 
 function APR:RefreshSnappedFrames()
     if self.refreshingSnapChain or InCombatLockdown() then return end
@@ -739,7 +740,7 @@ function APR:RefreshSnappedFrames()
     end
     if self.questOrderList and self.questOrderList.ApplySnapAnchor then self.questOrderList:ApplySnapAnchor() end
     self.refreshingSnapChain = nil
-end--[[APR_DIAG]]; APR.RefreshSnappedFrames = APRTrace("APR-Core/utils/UIUtils.lua:732:APR:RefreshSnappedFrames#41", APR.RefreshSnappedFrames)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RefreshSnappedFrames = APRTrace("APR-Core/utils/UIUtils.lua:733:APR:RefreshSnappedFrames#41", APR.RefreshSnappedFrames)--[[/APR_DIAG]]
 
 local reportedInvalidUIAssets = {}
 local knownUIAssetCache = {}
@@ -765,7 +766,7 @@ function APR:IsUIFileAssetKnown(asset)
     local ok, isKnown = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_UIFileAsset.IsKnownFile, asset)
     knownUIAssetCache[asset] = ok and isKnown == true
     return knownUIAssetCache[asset], true
-end--[[APR_DIAG]]; APR.IsUIFileAssetKnown = APRTrace("APR-Core/utils/UIUtils.lua:752:APR:IsUIFileAssetKnown#42", APR.IsUIFileAssetKnown)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.IsUIFileAssetKnown = APRTrace("APR-Core/utils/UIUtils.lua:753:APR:IsUIFileAssetKnown#42", APR.IsUIFileAssetKnown)--[[/APR_DIAG]]
 
 --- Validate a UI file and optionally fall back to another one.
 --- Invalid assets are reported once so a bad font or route image has an actionable failure mode.
@@ -798,7 +799,7 @@ function APR:ResolveUIFileAsset(asset, fallback, context)
     end
 
     return nil
-end--[[APR_DIAG]]; APR.ResolveUIFileAsset = APRTrace("APR-Core/utils/UIUtils.lua:776:APR:ResolveUIFileAsset#43", APR.ResolveUIFileAsset)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ResolveUIFileAsset = APRTrace("APR-Core/utils/UIUtils.lua:777:APR:ResolveUIFileAsset#43", APR.ResolveUIFileAsset)--[[/APR_DIAG]]
 
 --- Validate the small set of files required for APR's main UI.
 --- Route preview images and configured fonts are validated lazily when used.
@@ -811,4 +812,4 @@ function APR:ValidateBundledUIAssets()
     }) do
         self:ResolveUIFileAsset(asset, nil, context)
     end
-end--[[APR_DIAG]]; APR.ValidateBundledUIAssets = APRTrace("APR-Core/utils/UIUtils.lua:805:APR:ValidateBundledUIAssets#44", APR.ValidateBundledUIAssets)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ValidateBundledUIAssets = APRTrace("APR-Core/utils/UIUtils.lua:806:APR:ValidateBundledUIAssets#44", APR.ValidateBundledUIAssets)--[[/APR_DIAG]]

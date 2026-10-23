@@ -211,6 +211,87 @@ the release; `.pkgmeta` excludes the tooling, source artwork and documentation.
 The Lua check covers hidden incompatible routes, saved imports, prefab popups and
 missing Retail APIs/events. These mocks do not replace an in-game Forever smoke test.
 
+Automatic external waypoints:
+
+`APR-Core/features/navigation/NavigationAdapter.lua` supplies the effective authored
+Waypoint or accepted transient/retained target after step rendering settles.
+The library's `WaypointUI.lua` and `AzerothWaypoint.lua` own publication, provider
+selection, ownership and cleanup. APR enables this integration automatically while
+the addon is active, independently of its arrow visibility; a former profile's
+`waypointUI = false` is ignored. No separate APR waypoint setting is exposed.
+Target resolution uses `GetStepCoord` and the shared preview projection, including
+native map, floor and world-instance identity. Retained guidance keeps its map,
+label and ID while replacement navigation is calculated. The integration never
+advances a route; completed WaypointDB anchors and direct arrivals only retire
+presentation.
+
+Outside APR, consumers can enable the library's `waypoints` option and provide
+`environment.getWaypointTarget()`, or use `SetWaypoint`, `SetWaypointForSegment`
+and `ClearWaypoint` manually. `RefreshWaypoints()` synchronizes immediately;
+`ReleaseWaypoints()` performs technical cleanup, and `ReleaseWaypoints(true)`
+also suppresses the current authored context until it changes. APR's navigation,
+step-transition, rendering and profile hooks call these library APIs.
+
+Consumer precedence and API contracts (checked 2026-10-23):
+
+- AzerothWaypoint's existing `apr` guide provider takes precedence. The library decorates
+  its extractor and activation token through the exported registry, preserving
+  its visibility, hooks, ordinary quest presentation, provider selection, manual
+  authority, routing and TomTom carrier. It signals normal provider evaluation
+  without explicit takeover. No second Blizzard/TomTom waypoint is created.
+  Unsupported or missing registry contracts are left alone.
+- Otherwise the library uses `WaypointUIAPI.Navigation.NewUserNavigation`, unless
+  Waypoint UI's own `APRSupportEnabled` setting is enabled. In that case the
+  native adapter keeps ownership. APR does not change third-party settings.
+  Existing quest/other supertracking is sufficient when its next waypoint
+  matches APR's effective position; an intermediate waypoint at another position
+  still needs guidance. Existing player/addon pins always keep ownership.
+- Waypoint UI receives percentages and a `name` containing the current summary,
+  localized notes and extra instructions; its returned session uses normalized
+  coordinates. The library retains that session object and its unique instance
+  flag. Cleanup verifies ownership, preserves a replacement native marker and
+  calls `ClearUserNavigation(preserveWaypoint)` without `suppressAdvance`, which
+  would also prevent Waypoint UI's own path cleanup. No persistent pin is added.
+
+An explicitly cleared itinerary remains suppressed for its step context;
+technical replanning can republish the same target. Manual dismissal and direct
+arrival stay suppressed for the same target identity. Route/step/revision changes
+and re-enabling permit fresh guidance. Mutations are deferred during combat and
+the latest target is resolved afterwards, including when APR settings are disabled.
+Waypoint UI's transport overlay can temporarily remove native supertracking
+without abandoning the owned destination. AWP retains its own combat handling.
+
+API sources: Waypoint UI 1.7.4 was installed locally; AzerothWaypoint was not.
+The official sources inspected were Waypoint UI
+[`API.lua`](https://github.com/Adaptvx/Waypoint-UI/blob/c3fdd2077debfde6d0dd768a4a7513e6ede0358e/API.lua),
+[`MapPin.lua`](https://github.com/Adaptvx/Waypoint-UI/blob/c3fdd2077debfde6d0dd768a4a7513e6ede0358e/Code/MapPin/MapPin.lua)
+and its native APR/TomTom adapters, plus AzerothWaypoint
+[`apr_provider.lua`](https://github.com/MorningStarGG/AzerothWaypoint/blob/a40b7fce8c0115f0b6c0204c94a787b26595e98c/integrations/guides/apr/apr_provider.lua)
+and [`guide.lua`](https://github.com/MorningStarGG/AzerothWaypoint/blob/a40b7fce8c0115f0b6c0204c94a787b26595e98c/bridge/routing/guide.lua).
+Next-waypoint detection supports the current `C_Navigation` API and older
+`C_SuperTrack` form used by the installed WUI, with capability checks.
+
+`waypoint_integration_test.lua` exercises real APR step/context/projection code
+through the library with isolated consumer API fixtures. Its 50 scenarios cover
+automatic publication with older disabled profile values, ownership, relevant supertracking,
+native adapter handoff, AWP provider decoration, transit/retained targets, text,
+combat, cancellation, arrival, WaypointDB, zone/floor/instance changes and disabled
+or missing APIs. Step-transition, progression and controller suites also check the
+publication/cleanup hooks. `navigation_waypoint_ui_test.lua`,
+`navigation_waypoint_ui_auto_test.lua` and `navigation_azeroth_waypoint_test.lua`
+also exercise manual/automatic library use without APR. Run the full Lua suite
+and regenerate diagnostics:
+
+```text
+python tools/validation/instrument_lua.py --write
+python tests/run.py --suite lua
+```
+
+In-game smoke checks still include WUI pathfinding through a transport overlay,
+manual marker replacement during combat, both addons together with TomTom, and
+changing an APR route while temporary guidance is active. Native third-party
+adapters retain their own lifecycle rules when they own navigation.
+
 Run the focused regressions from the repository root with Lua 5.1:
 
 ```text
@@ -236,17 +317,17 @@ rendering latency. The original allocation path was also checked using the Git H
 version: 30,000 frames and 150,000 font strings versus 1,000 and 5,000 with reuse.
 
 `zone_transition_performance_test.lua` sends a burst of 100 `ZONE_CHANGED*` events and
-asserts that they schedule one Farstrider route calculation instead of 100 synchronous
+asserts that they schedule one Navigation route calculation instead of 100 synchronous
 calculations. It also verifies that a simulated 25 ms calculation is recorded as
 `ZoneTransitionRouting` in the bounded performance log. A loading-screen transition
 also keeps its bounded safety retries, but skips the final three as soon as the first
 route check succeeds or produces a valid navigation path.
 
-`farstrider_routing_performance_test.lua` verifies that ten identical transition
+`navigation_scheduling_test.lua` verifies that ten identical transition
 retries reuse one Dijkstra result. A map change, route-step change, cache expiry or
 explicit invalidation still forces a fresh path. Captures split the work into
 `ZoneRoutingContext`, `ZoneRoutingQuestSync`, `ZoneRoutingZoneCheck` and
-`FarstriderFindTrailTo`.
+`NavigationSearch`.
 
 The scheduler test also renders all 1,224 rows across multiple simulated frames,
 checks the 3 ms budget between rows, and checks cancellation/replacement. The budget
@@ -304,7 +385,7 @@ CPU capture never calls `UpdateAddOnMemoryUsage` automatically. Use **Measure me
 on the resource page for an explicit reading, then compare its age/peak with another
 manual reading. The scan's blocking duration is included as `ResourceMemoryScan`.
 During a scan-free capture, reproduce zone changes and consecutive completed routes:
-`FarstriderFindTrailTo` should reuse ready-zone results within its ten-second TTL, and
+`NavigationSearch` should reuse ready-zone results within its ten-second TTL, and
 the navigation render should not schedule a second immediate route calculation.
 Same-map transport paths still require the solver; do not bypass them using map equality.
 Compare `StepRenderContent`, `StepRenderCommit`, and `RoutePathUiRefresh` to locate any
@@ -323,3 +404,9 @@ Recorded operations include event callbacks, deferred quest-log refreshes, coale
 reputation refreshes, zone-transition routing and quest-order-list rendering. Nested durations overlap and
 must not be summed as independent frame time. No per-frame polling or chat logging
 is performed during capture. The list renderer uses OnUpdate only while a build is pending.
+
+## Navigation catalogue review
+
+Navigation catalogue research, generation and static data audits live in
+`Route-generator/tools/validation/navigation_data` in the route-gen repository.
+APR's runtime tests and CI do not depend on that checkout.

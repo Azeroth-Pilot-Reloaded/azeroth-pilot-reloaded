@@ -18,7 +18,7 @@ Comments explain constraints and side effects; they do not repeat accessor names
 responsibilities, not the order itself: a function may reference a module loaded
 later as long as it is not called until after initialization.
 
-1. Libraries, Farstrider data selected by client, and AceLocale.
+1. Libraries, the independent LibAPRNavigation catalogue, and AceLocale.
 2. `SecretUtils`, creation of the AceAddon `APR` object, skin registry, and taxi adapter.
 3. Helpers, visual foundations, route engine, and models.
 4. Configuration, events, features, windows, and visual integrations.
@@ -38,7 +38,7 @@ flowchart TD
     Step --> Quest
     Renderer --> Current[CurrentStep / Rows / Fillers]
     Engine --> Preview[QuestOrderList / Rows / Support]
-    Step --> Navigation[Farstrider / Arrow / Map]
+    Step --> Navigation[Navigation engine / Arrow / Map]
     Navigation --> Taxi[LibTaxiData / HereBeDragons]
     Current --> Registry[SkinRegistry / Themes / TextStyles / StatusBars]
     Preview --> Registry
@@ -53,6 +53,45 @@ flowchart TD
 temporary routes. `GetStep` returns a shallow copy for navigation adjustments.
 `GetCurrentStep` resolves the saved progression and shares this copy with the arrow
 and events. **Nested tables in a definition remain read-only.**
+
+Navigation keeps its guidance queue separate from authored route progress. The
+incremental engine chooses directed crossings and transports using cumulative
+money and consumable budgets. LibTaxiData supplies taxi links and estimated
+times; APR records confirmed journeys and checks the actual offer before boarding.
+Zone-display thresholds are 10,000 yards with usable Retail skyriding and 2,000
+otherwise. They never exclude a faster portal, spell, toy or taxi. The search
+compares complete travel times at every distance. Mandatory entries and separated
+floors override proximity and map ancestry.
+
+Display names come from WoW APIs (`C_Map.GetMapInfo`, area, spell, item and live
+taxi names). WoW Global Strings take priority over APR's existing CurseForge
+translations. Binding positions are matched through the client area API or learned
+when binding and after a confirmed hearth arrival; no translated aliases are stored. Coordinates, access conditions and documented
+crossings remain necessary static data. Map, minimap and arrow share the same
+remaining guidance and authored waypoint chain.
+
+The reusable [LibAPRNavigation-1.0](libs/LibAPRNavigation-1.0/README.md) owns the
+search, declarative conditions and geographic access model.
+Its optional `SetWaypoint`, `SetWaypointForSegment` and `ClearWaypoint` API can
+publish guidance through AzerothWaypoint or Waypoint UI without loading APR.
+The `waypoints` option synchronizes a consumer's `environment.getWaypointTarget()`
+automatically. APR supplies its accepted guidance and localized hints; navigation,
+step, render and profile hooks call the library for synchronization and cleanup.
+Provider selection, ownership, combat deferral and native-carrier management live
+inside the library. APR enables this integration automatically while the addon is
+active, using AzerothWaypoint when available and Waypoint UI as its fallback.
+`NavigationAdapter.lua` supplies WoW APIs and APR localization/state; transport
+data lives under the library’s `Data/retail` and `Data/forever` directories, split
+by type. The [nine-addon source review](../../Route-generator/tools/validation/NAVIGATION_RESEARCH.fr.md)
+records the inspected versions and the architectural decisions.
+
+`NavigationPlanner.lua` schedules catalogue preparation, taxi data, graph search,
+optional flight-master probes and guidance rows under one 1 ms slice budget.
+Provider jobs resume on later frames and cancel with their route context. The
+`NavigationPlanningSlice` metric records actual slice durations in `/apr perf`.
+The budget is cooperative: client APIs and garbage collection finish before the
+next deadline check. Shared preview points are rebuilt when guidance advances or
+the authored route changes, rather than copied on every map refresh.
 
 ## File map
 
@@ -81,8 +120,7 @@ and events. **Nested tables in a definition remain read-only.**
 | [data/models/Classes.lua](data/models/Classes.lua)                   | Class/specialization IDs and locale-independent route keys. |
 | [data/models/Enums.lua](data/models/Enums.lua)                       | Shared clients, categories, expansions, and orders.         |
 | [data/models/Quest.lua](data/models/Quest.lua)                       | Priority of primary actions and quest/dialogue rules.       |
-| [data/models/Spells.lua](data/models/Spells.lua)                     | Hearthstone item/spell matches, toys, and buffs.            |
-| [data/zones/ScenarioEntrances.lua](data/zones/ScenarioEntrances.lua) | Scenario entries for external guidance.                     |
+| [integrations/NavigationEntrances.lua](integrations/NavigationEntrances.lua) | Compatibility view of library-owned instance entrances.    |
 
 ### Features and route engine
 
@@ -118,9 +156,9 @@ and events. **Nested tables in a definition remain read-only.**
 
 | File                                                                         | External boundary                                                               |
 | ---------------------------------------------------------------------------- | ------------------------------------------------------------------------------- |
-| [integrations/TaxiData.lua](integrations/TaxiData.lua)                       | `LibTaxiData_API` facade, capability control, and login diagnostics.            |
-| [integrations/Farstrider.lua](integrations/Farstrider.lua)                   | Graph to instructions/arrow, path cache, and compatibility predicates.          |
-| [integrations/ForeverTravel.lua](integrations/ForeverTravel.lua)             | Flight links observed on Forever, tied to the character.                        |
+| [features/navigation/NavigationTaxi.lua](features/navigation/NavigationTaxi.lua)                       | `LibTaxiData_API` facade, capability control, and login diagnostics.            |
+| [features/navigation/Navigation.lua](features/navigation/Navigation.lua)                   | Transient guidance queue, incremental planning and independent arrival checks.          |
+| [libs/LibAPRNavigation-1.0/Search.lua](libs/LibAPRNavigation-1.0/Search.lua)             | Incremental shortest-time search with cumulative money and consumable budgets.                        |
 | [integrations/SkinRegistry.lua](integrations/SkinRegistry.lua)               | Low-level APR control registry, single provider, and out-of-combat application. |
 | [integrations/ElvUISkin.lua](integrations/ElvUISkin.lua)                     | ElvUI appearance and anchored panel backgrounds.                                |
 | [integrations/EllesmereUISkin.lua](integrations/EllesmereUISkin.lua)         | Public EUI API, updated theme fonts and colors.                                 |
@@ -180,7 +218,7 @@ and events. **Nested tables in a definition remain read-only.**
 | [utils/InstanceUtils.lua](utils/InstanceUtils.lua)             | Instance visibility and character initial preference.                                  |
 | [utils/NavigationUtils.lua](utils/NavigationUtils.lua)         | Player body and normalized taxi discoveries.                                           |
 | [utils/PlayerPositionUtils.lua](utils/PlayerPositionUtils.lua) | Position and axis order at the WoW/APR boundary.                                       |
-| [utils/ZoneDetectionUtils.lua](utils/ZoneDetectionUtils.lua)   | Map cache, parent/child relationships, and player zone.                                |
+| [utils/NavigationZones.lua](utils/NavigationZones.lua)   | Map cache, parent/child relationships, and player zone.                                |
 | [utils/BuyMerchantUtils.lua](utils/BuyMerchantUtils.lua)       | Purchased quantities and localized loot messages.                                      |
 | [utils/LootUtils.lua](utils/LootUtils.lua)                     | Collections, remembered bank, and sale value without selling.                          |
 
@@ -198,7 +236,7 @@ and events. **Nested tables in a definition remain read-only.**
 | AceSerializer                       | Serialization of progression for the group.                                     |
 | AceComm / ChatThrottleLib           | Embedded transport bandwidth limiter used by group messages.                    |
 | HereBeDragons / Pins                | Coordinates and map/minimap markers.                                            |
-| FarstriderLib / Data                | Graph and data; manifest `Standard` or `Camelot`, then finalization.            |
+| APR navigation catalogues                | Directed graph, client-specific crossings and access regions; no external routing engine.            |
 | LibTaxiData                         | External dependency required by `.pkgmeta`, optional in the TOC for load order. |
 | LibDataBroker / LibDBIcon           | Minimap launcher.                                                               |
 | LibSharedMedia                      | Font resolution.                                                                |
@@ -247,7 +285,7 @@ remains available through its slash command.
 | `APRTaxiNodes` / `APRTaxiNodesTimer`                 | Discoveries and trip measurements; legacy names normalized to booleans.                    |
 | `APRScenarioCompleted` / `APRScenarioMapIDCompleted` | Scenario progression per character.                                                        |
 | `APRItemLooted` / `APRGossipValidated`               | Historical state of items/dialogues; keys preserved for existing progression paths.        |
-| `FarstriderLibData_CharacterSettings`                | Character save data for the movement library.                                              |
+| `APRNavigationCharacterSettings`                | Character housing exit and observed binding locations.                                      |
 | Memory caches                                        | Steps, titles, XP, maps, paths, widgets, and skins; invalidation by owner.                 |
 
 Deep import copy (`DeepCopyTable`) isolates saves. Shallow runtime copy (`GetStep`)
