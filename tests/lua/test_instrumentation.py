@@ -11,7 +11,7 @@ class InstrumentationTests(unittest.TestCase):
                      'arrow_action_text', 'arrow_action_settings', 'action_text_source',
                      'event_lifecycle', 'npc_interaction_chain', 'party_group_sync', 'secret_compatibility', 'reputation_scheduling',
                      'step_progression', 'navigation_scheduling', 'route_path_performance',
-                     'ui_foundations', 'route_panels_render'):
+                     'ui_foundations', 'route_panels_render', 'waypoint_integration'):
             with self.subTest(suite=name):
                 runtime = LuaRuntime(unpack_returned_tuples=True)
                 runtime.execute('function GetTime() return 0 end; function debugprofilestop() return 0 end')

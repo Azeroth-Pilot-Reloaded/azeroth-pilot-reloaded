@@ -52,6 +52,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/integrations/NavigationEntrances.lua"] = {instrumented = 4, diagnosticHelpers = 0},
     ["APR-Core/integrations/QuestTracker.lua"] = {instrumented = 43, diagnosticHelpers = 0},
     ["APR-Core/integrations/SkinRegistry.lua"] = {instrumented = 18, diagnosticHelpers = 0},
+    ["APR-Core/integrations/Waypoint.lua"] = {instrumented = 24, diagnosticHelpers = 0},
     ["APR-Core/ui/foundations/ReloadConfirmation.lua"] = {instrumented = 7, diagnosticHelpers = 0},
     ["APR-Core/ui/foundations/SelectionDialog.lua"] = {instrumented = 21, diagnosticHelpers = 0},
     ["APR-Core/ui/foundations/SettingsRows.lua"] = {instrumented = 14, diagnosticHelpers = 0},

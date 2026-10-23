@@ -2204,6 +2204,7 @@ end--[[APR_DIAG]]; APR.settings.CreateMiniMapButton = APRTrace("APR-Core/config/
 
 function APR.settings:ToggleAddon()
     APR:Debug("Function: APR.settings:ToggleAddon(), state: ", self.profile.enableAddon)
+    if APR.WaypointIntegration then APR.WaypointIntegration:Refresh() end
     if not self.profile.enableAddon then
         -- settings disable
         self.profile.showArrow = false
@@ -2239,13 +2240,13 @@ function APR.settings:OpenSettings(name)
     elseif APR.Options and InterfaceOptionsFrame_OpenToCategory then
         InterfaceOptionsFrame_OpenToCategory(APR.Options)
     end
-end--[[APR_DIAG]]; APR.settings.OpenSettings = APRTrace("APR-Core/config/Config.lua:2231:APR.settings:OpenSettings#203", APR.settings.OpenSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.OpenSettings = APRTrace("APR-Core/config/Config.lua:2232:APR.settings:OpenSettings#203", APR.settings.OpenSettings)--[[/APR_DIAG]]
 
 function APR.settings:CloseSettings()
     if APR.Workspace then APR.Workspace:Hide() end
     if SettingsPanel then SettingsPanel:Hide() end
     if InterfaceOptionsFrame then InterfaceOptionsFrame:Hide() end
-end--[[APR_DIAG]]; APR.settings.CloseSettings = APRTrace("APR-Core/config/Config.lua:2244:APR.settings:CloseSettings#204", APR.settings.CloseSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.CloseSettings = APRTrace("APR-Core/config/Config.lua:2245:APR.settings:CloseSettings#204", APR.settings.CloseSettings)--[[/APR_DIAG]]
 
 function APR.settings:SetRewardPriority(info, value)
     local key = info[#info] -- e.g. "rewardPriority2"
@@ -2260,4 +2261,4 @@ function APR.settings:SetRewardPriority(info, value)
         end
     end
     self.profile[key] = value
-end--[[APR_DIAG]]; APR.settings.SetRewardPriority = APRTrace("APR-Core/config/Config.lua:2250:APR.settings:SetRewardPriority#205", APR.settings.SetRewardPriority)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.settings.SetRewardPriority = APRTrace("APR-Core/config/Config.lua:2251:APR.settings:SetRewardPriority#205", APR.settings.SetRewardPriority)--[[/APR_DIAG]]

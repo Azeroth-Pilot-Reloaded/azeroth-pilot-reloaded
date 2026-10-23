@@ -211,6 +211,71 @@ the release; `.pkgmeta` excludes the tooling, source artwork and documentation.
 The Lua check covers hidden incompatible routes, saved imports, prefab popups and
 missing Retail APIs/events. These mocks do not replace an in-game Forever smoke test.
 
+Optional waypoint integrations:
+
+`APR-Core/integrations/Waypoint.lua` publishes the effective authored Waypoint or
+the current transient/retained navigation target after step rendering settles.
+It uses `GetStepCoord` and the shared preview projection, including native map,
+floor and world-instance identity. Retained guidance keeps its map, label and ID
+while replacement navigation is calculated. The integration never advances a
+route; completed WaypointDB anchors and direct arrivals only retire presentation.
+
+Consumer precedence and API contracts (checked 2026-10-23):
+
+- AzerothWaypoint's existing `apr` guide provider takes precedence. APR decorates
+  its extractor and activation token through the exported registry, preserving
+  its visibility, hooks, ordinary quest presentation, provider selection, manual
+  authority, routing and TomTom carrier. It signals normal provider evaluation
+  without explicit takeover. No second Blizzard/TomTom waypoint is created.
+  Unsupported or missing registry contracts are left alone.
+- Otherwise APR uses `WaypointUIAPI.Navigation.NewUserNavigation`, unless
+  Waypoint UI's own `APRSupportEnabled` setting is enabled. In that case the
+  native adapter keeps ownership. APR does not change third-party settings.
+  Existing quest/other supertracking is sufficient when its next waypoint
+  matches APR's effective position; an intermediate waypoint at another position
+  still needs guidance. Existing player/addon pins always keep ownership.
+- Waypoint UI receives percentages and a `name` containing the current summary,
+  localized notes and extra instructions; its returned session uses normalized
+  coordinates. APR retains that session object and its distinct `APR_Guidance`
+  flag. Cleanup verifies ownership, preserves a replacement native marker and
+  calls `ClearUserNavigation(preserveWaypoint)` without `suppressAdvance`, which
+  would also prevent Waypoint UI's own path cleanup. No persistent pin is added.
+
+An explicitly cleared itinerary remains suppressed for its step context;
+technical replanning can republish the same target. Manual dismissal and direct
+arrival stay suppressed for the same target identity. Route/step/revision changes
+and re-enabling permit fresh guidance. Mutations are deferred during combat and
+the latest target is resolved afterwards, including when APR settings are disabled.
+Waypoint UI's transport overlay can temporarily remove native supertracking
+without abandoning the owned destination. AWP retains its own combat handling.
+
+API sources: Waypoint UI 1.7.4 was installed locally; AzerothWaypoint was not.
+The official sources inspected were Waypoint UI
+[`API.lua`](https://github.com/Adaptvx/Waypoint-UI/blob/c3fdd2077debfde6d0dd768a4a7513e6ede0358e/API.lua),
+[`MapPin.lua`](https://github.com/Adaptvx/Waypoint-UI/blob/c3fdd2077debfde6d0dd768a4a7513e6ede0358e/Code/MapPin/MapPin.lua)
+and its native APR/TomTom adapters, plus AzerothWaypoint
+[`apr_provider.lua`](https://github.com/MorningStarGG/AzerothWaypoint/blob/a40b7fce8c0115f0b6c0204c94a787b26595e98c/integrations/guides/apr/apr_provider.lua)
+and [`guide.lua`](https://github.com/MorningStarGG/AzerothWaypoint/blob/a40b7fce8c0115f0b6c0204c94a787b26595e98c/bridge/routing/guide.lua).
+Next-waypoint detection supports the current `C_Navigation` API and older
+`C_SuperTrack` form used by the installed WUI, with capability checks.
+
+`waypoint_integration_test.lua` exercises real APR step/context/projection code
+with isolated consumer API fixtures. It covers ownership, relevant supertracking,
+native adapter handoff, AWP provider decoration, transit/retained targets, text,
+combat, cancellation, arrival, WaypointDB, zone/floor/instance changes and disabled
+or missing APIs. Step-transition, progression and controller suites also check the
+publication/cleanup hooks. Run the full Lua suite and regenerate diagnostics:
+
+```text
+python tools/validation/instrument_lua.py --write
+python tests/run.py --suite lua
+```
+
+In-game smoke checks still include WUI pathfinding through a transport overlay,
+manual marker replacement during combat, both addons together with TomTom, and
+changing an APR route while temporary guidance is active. Native third-party
+adapters retain their own lifecycle rules when they own navigation.
+
 Run the focused regressions from the repository root with Lua 5.1:
 
 ```text
