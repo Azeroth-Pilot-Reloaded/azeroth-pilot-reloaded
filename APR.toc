@@ -145,7 +145,6 @@ APR-Core/features/questing/Gossip.lua
 APR-Core/features/group/PartyProtocol.lua
 APR-Core/features/group/Party.lua
 APR-Core/features/navigation/Map.lua
-APR-Core/integrations/Waypoint.lua
 APR-Core/features/player/AFK.lua
 APR-Core/features/player/Heirloom.lua
 APR-Core/ui/route/RouteSelection.lua

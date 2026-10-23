@@ -50,7 +50,7 @@ function APR:UpdateStep()
     self.stepUpdateRunning = false
     if not self.stepUpdatePending then
         self.lastRenderedStepContext = self:CaptureStepContext()
-        if self.WaypointIntegration then self.WaypointIntegration:Refresh() end
+        if self.NavigationData and self.NavigationData.RefreshWaypoints then self.NavigationData:RefreshWaypoints() end
         if self.npcInteraction then
             self.npcInteraction:QueueResume()
         end

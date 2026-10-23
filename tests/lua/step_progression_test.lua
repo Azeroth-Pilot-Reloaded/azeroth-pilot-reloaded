@@ -69,10 +69,10 @@ dofile("APR-Core/features/questing/QuestHandler.lua")
 APR.UpdateQuest = noop
 local mapUpdates = 0
 local waypointRefreshes, waypointTargets = 0, {}
-APR.WaypointIntegration = {
-    Release = noop,
-    Refresh = function(self)
-        assert(self == APR.WaypointIntegration)
+APR.NavigationData = {
+    ReleaseWaypoints = noop,
+    RefreshWaypoints = function(self)
+        assert(self == APR.NavigationData)
         assert(not APR.stepUpdateRunning and not APR.stepUpdatePending and not APR.stepUpdateTimer,
             "External waypoint publication waits for the complete step-update batch")
         assert(APR:IsStepContextCurrent(APR.lastRenderedStepContext),
@@ -133,7 +133,7 @@ APR.ResetMissingQuests = reset
 APR:UpdateStep()
 assert(waypointRefreshes == refreshesBeforeError + 1,
     "A recovered presentation resumes external waypoint synchronization")
-APR.WaypointIntegration = nil
+APR.NavigationData = nil
 APR:UpdateStep()
 print("Step progression: Note skip + 1250 completed objectives; bounded batches, cancellation and error recovery passed")
 

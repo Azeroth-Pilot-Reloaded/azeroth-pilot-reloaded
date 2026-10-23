@@ -72,6 +72,14 @@ remaining guidance and authored waypoint chain.
 
 The reusable [LibAPRNavigation-1.0](libs/LibAPRNavigation-1.0/README.md) owns the
 search, declarative conditions and geographic access model.
+Its optional `SetWaypoint`, `SetWaypointForSegment` and `ClearWaypoint` API can
+publish guidance through AzerothWaypoint or Waypoint UI without loading APR.
+The `waypoints` option synchronizes a consumer's `environment.getWaypointTarget()`
+automatically. APR supplies its accepted guidance and localized hints; navigation,
+step, render and profile hooks call the library for synchronization and cleanup.
+Provider selection, ownership, combat deferral and native-carrier management live
+inside the library. APR enables this integration automatically while the addon is
+active, using AzerothWaypoint when available and Waypoint UI as its fallback.
 `NavigationAdapter.lua` supplies WoW APIs and APR localization/state; transport
 data lives under the library’s `Data/retail` and `Data/forever` directories, split
 by type. The [nine-addon source review](../../Route-generator/tools/validation/NAVIGATION_RESEARCH.fr.md)

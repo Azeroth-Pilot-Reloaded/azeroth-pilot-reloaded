@@ -8,6 +8,8 @@
   <Script file="Catalog.lua"/>
   <Script file="TravelActions.lua"/>
   <Script file="Search.lua"/>
+  <Script file="WaypointUI.lua"/>
+  <Script file="AzerothWaypoint.lua"/>
   <Script file="Data/retail/Geography.lua"/>
   <Script file="Data/retail/InstanceEntrances.lua"/>
   <Script file="Data/retail/Bindings.lua"/>

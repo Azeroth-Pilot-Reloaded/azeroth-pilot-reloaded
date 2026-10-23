@@ -79,16 +79,17 @@ assert(nav:GetThreshold()==10000)
 C_PlayerInfo.GetGlidingInfo=function() return false,false,0 end
 assert(nav:GetThreshold()==2000)
 local waypointReleases = 0
-APR.WaypointIntegration = { Release = function(self)
-    assert(self == APR.WaypointIntegration)
+local previousReleaseWaypoints = APR.NavigationData.ReleaseWaypoints
+APR.NavigationData.ReleaseWaypoints = function(self, suppressContext)
+    assert(self == APR.NavigationData and suppressContext == true)
     waypointReleases = waypointReleases + 1
-end }
+end
 local authoredProgress = APRData.p.r
 nav:Cancel("replan", true)
 assert(waypointReleases == 0, "Replanning with a retained arrow preserves external waypoint ownership")
 nav:Cancel("cleared")
 assert(waypointReleases == 1, "Cancelling guidance releases the externally owned waypoint immediately")
 assert(APRData.p.r == authoredProgress, "Releasing an external waypoint cannot advance authored progress")
-APR.WaypointIntegration = nil
+APR.NavigationData.ReleaseWaypoints = previousReleaseWaypoints
 nav:Cancel("cleared")
 print("Navigation controller: complete transient itinerary, independent arrivals, generation guards, death/progress and client thresholds passed")

@@ -1,6 +1,6 @@
--- A rendering-free navigation library. Game APIs and saved state belong to the
--- consumer's environment, so separate consumers never share character state.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 13)
+-- Planning uses the consumer's environment and never shares character state.
+-- Optional waypoint output is isolated in WaypointUI.lua.
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 16)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}
@@ -107,6 +107,7 @@ function Lib:New(options)
     local instance = setmetatable({
         profile = options.profile,
         env = options.environment,
+        waypointOptions = type(options.waypoints) == "table" and Copy(options.waypoints) or {},
         connections = {},
         entrances = {},
         entranceMaps = {},
@@ -193,6 +194,11 @@ function Lib:New(options)
         end
     end
     instance.supported = #categories > 0
+    if (options.waypoints == true or (type(options.waypoints) == "table" and options.waypoints.enabled ~= false)
+        or options.waypointUI == true)
+        and instance.SetWaypointUIEnabled then
+        instance:SetWaypointUIEnabled(true)
+    end
     return instance
 end
 
