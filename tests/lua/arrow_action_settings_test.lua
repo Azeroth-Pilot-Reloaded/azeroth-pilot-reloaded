@@ -1,6 +1,8 @@
 -- The optional arrow caption preserves existing profiles and updates without a reload.
 local env = dofile("tests/lua/route_ui_test_env.lua")
-dofile("tests/lua/localization_test_env.lua")
+local locale = dofile("tests/lua/localization_test_env.lua")
+locale.UI_ARROW_ACTION_TEXT = "Localized arrow action label"
+locale.UI_ARROW_ACTION_TEXT_DESC = "Localized arrow action description"
 local stub, defaults = LibStub, nil
 function LibStub(name, ...)
     if name == "AceDB-3.0" then return {New = function(_, _, value)
@@ -28,8 +30,8 @@ APR.settings:createBlizzOptions()
 local profile = APR.settings.profile
 local options = APR.settings.optionsTable.args.group_Arrow.args.subgroup_Arrow.args
 local caption = options.arrowActionText
-assert(caption.name == "Show action text" and caption.desc:find("secondary actions", 1, true),
-    "Untranslated options must retain usable labels without adding locale files")
+assert(caption.name == locale.UI_ARROW_ACTION_TEXT and caption.desc == locale.UI_ARROW_ACTION_TEXT_DESC,
+    "Arrow option text must come directly from the imported CurseForge translations")
 assert(caption.get({"arrowActionText"}) == false)
 profile.enableAddon, profile.showArrow = true, true
 assert(not caption.disabled())

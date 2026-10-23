@@ -971,9 +971,9 @@ function APR.settings:createBlizzOptions()
                             arrowActionText = {
                                 order = 7.12,
                                 type = "toggle",
-                                name = rawget(L, "UI_ARROW_ACTION_TEXT") or "Show action text",
-                                desc = rawget(L, "UI_ARROW_ACTION_TEXT_DESC") or
-                                    "Show the current step's main actions below the arrow, or its secondary actions when there are no main actions.",
+                                name = L["UI_ARROW_ACTION_TEXT"],
+                                desc = L["UI_ARROW_ACTION_TEXT_DESC"],
+
                                 width = "full",
                                 get = GetProfileOption,
                                 set = --[[APR_DIAG]]APRTrace("APR-Core/config/Config.lua:979:callback#90", --[[/APR_DIAG]]function(info, value)
