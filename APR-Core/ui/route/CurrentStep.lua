@@ -116,7 +116,7 @@ CurrentStepFrameSettingsButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-
 end--[[APR_DIAG]])--[[/APR_DIAG]])
 CurrentStepFrameSettingsButton:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:117:callback#7", --[[/APR_DIAG]]function(self)
     GameTooltip:SetOwner(self, "ANCHOR_RIGHT")
-    APR:SetTooltipText(GameTooltip, L["SHOW_MENU"] or "Settings", "currentStep", "base")
+    APR:SetTooltipText(GameTooltip, L["SHOW_MENU"], "currentStep", "base")
     GameTooltip:Show()
 end--[[APR_DIAG]])--[[/APR_DIAG]])
 CurrentStepFrameSettingsButton:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:122:callback#8", --[[/APR_DIAG]]function(self)

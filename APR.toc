@@ -35,7 +35,6 @@
 APR-Core/libs/embeds.xml
 APR-Core/libs/LibAPRNavigation-1.0/LibAPRNavigation.xml
 APR-Core/locales/locales.xml
-APR-Core/config/LocaleDefaults.lua
 
 APR-Core/core/Diagnostics.lua
 APR-Core/core/DiagnosticManifest.lua
