@@ -33,6 +33,11 @@ class InstrumentationTests(unittest.TestCase):
                     with self.subTest(path=path):
                         self.assertIsNone(compile_lua(path.read_text(encoding='utf-8-sig'), '@' + path.as_posix()))
 
+    def test_manifest_order_is_platform_independent(self):
+        _, coverage = run()
+        paths = [path for path, _, _ in coverage]
+        self.assertEqual(paths, sorted(paths), 'Coverage must use case-sensitive POSIX ordering on Windows and Linux')
+
     def test_callbacks_recursion_comments_and_yields(self):
         source = '''
 -- function fake() end
