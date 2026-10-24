@@ -3,89 +3,123 @@ local APRTrace = APRInstrumentation and APRInstrumentation.Wrap or function(_, f
 local APRYield = APRInstrumentation and APRInstrumentation.Yield or coroutine.yield
 local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.resume
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
--- Compares interface/release versions and exchanges small version announcements with the group.
--- Notifications are session-limited; no network requests are made from the addon.
-
-local _G = _G
+-- Compares packaged releases and remembers the newest installed/observed version.
+-- WoW cannot query CurseForge; group and shared-channel peers provide evidence.
 local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 APR.versionCheck = APR:NewModule("VersionCheck")
 
--- Session-scoped flag: only show the peer-outdated notification once per session
-local peerOutdatedShown = false
+local PREFIX = "APRVersionCheck"
+local RELEASES_URL = "https://www.curseforge.com/wow/addons/azeroth-pilot-reloaded/files/all"
+local BROADCAST_RETRY_DELAY = 5
+local BROADCAST_THROTTLE = 5
+local SHARED_CHANNEL = "APRVersion"
+local SHARED_RESPONSE_THROTTLE = 10
+local SHARED_QUERY_RETRY_DELAY = 12
+local versionAlertShown = false
+local interfaceAlertShown = false
 
----------------------------------------------------------------------------------------
----------------------------------- Version Parsing ------------------------------------
----------------------------------------------------------------------------------------
+-- BigWigs packages untagged builds as v7.2.1-12-gabcdef0: these are
+-- AFTER v7.2.1, unlike a prerelease such as v7.3.0-beta.2.
+local function ParseVersion(value)
+    if type(value) ~= "string" or #value == 0 or #value > 64 then return nil end
+    local str = value:gsub("^[vV]", "")
+    local revision = str:match("^[rR]?(%d+)$")
+    if revision then return { kind = "revision", tonumber(revision) } end
 
--- Parse a version string like "v1.2.3" or "1.2.3" into a comparable integer.
--- Returns nil if the string cannot be parsed or is a dev placeholder.
-local function ParseVersion(versionStr)
-    if not versionStr or versionStr == "" or versionStr:find("@") then
-        return nil
+    local build = str:match("%+([%w%.%-]+)$")
+    if build then str = str:sub(1, #str - #build - 1) end
+    local base, commits = str:match("^(.-)%-(%d+)%-g%x+$")
+    if base then str = base end
+    local core, prerelease = str:match("^(%d+%.%d+%.?%d*)%-([%w%.%-]+)$")
+    core = core or str
+    local major, minor, patch = core:match("^(%d+)%.(%d+)%.(%d+)$")
+    if not major then major, minor = core:match("^(%d+)%.(%d+)$") end
+    if not major then return nil end
+    local identifiers = {}
+    if prerelease then
+        if prerelease:find("..", 1, true) or prerelease:match("^%.") or prerelease:match("%.$") then
+            return nil
+        end
+        for identifier in prerelease:gmatch("[^%.]+") do identifiers[#identifiers + 1] = identifier end
     end
-    local str = versionStr:match("^[vV](.+)$") or versionStr
-    local major, minor, patch = str:match("^(%d+)%.(%d+)%.(%d+)$")
-    if major then
-        return tonumber(major) * 1000000 + tonumber(minor) * 1000 + tonumber(patch)
+    return { kind = "release", tonumber(major), tonumber(minor), tonumber(patch) or 0,
+        prerelease = prerelease and identifiers, commits = tonumber(commits) or 0 }
+end--[[APR_DIAG]]; ParseVersion = APRTrace("APR-Core/core/VersionCheck.lua:24:ParseVersion#1", ParseVersion)--[[/APR_DIAG]]
+
+local function IsNewerVersion(first, second)
+    if first == second then return false end
+    local a, b = ParseVersion(first), ParseVersion(second)
+    if not a or not b or a.kind ~= b.kind then return false end
+    for index = 1, a.kind == "revision" and 1 or 3 do
+        if a[index] ~= b[index] then return a[index] > b[index] end
     end
-    local m, n = str:match("^(%d+)%.(%d+)$")
-    if m then
-        return tonumber(m) * 1000000 + tonumber(n) * 1000
+    if a.kind == "revision" then return false end
+    if not a.prerelease and b.prerelease then return true end
+    if a.prerelease and not b.prerelease then return false end
+    if a.prerelease then
+        for index = 1, math.max(#a.prerelease, #b.prerelease) do
+            local left, right = a.prerelease[index], b.prerelease[index]
+            if not left or not right then return left ~= nil end
+            if left ~= right then
+                local ln = left:match("^%d+$") and tonumber(left)
+                local rn = right:match("^%d+$") and tonumber(right)
+                if ln and rn then
+                    if ln ~= rn then return ln > rn end
+                elseif ln or rn then
+                    return rn ~= nil
+                else
+                    return left > right
+                end
+            end
+        end
     end
-    local rev = str:match("^(%d+)$")
-    if rev then
-        return tonumber(rev)
+    return a.commits > b.commits
+end--[[APR_DIAG]]; IsNewerVersion = APRTrace("APR-Core/core/VersionCheck.lua:50:IsNewerVersion#2", IsNewerVersion)--[[/APR_DIAG]]
+
+function APR.versionCheck:RememberVersion(version)
+    if not ParseVersion(version) then return end
+    APRData.versionCheck = type(APRData.versionCheck) == "table" and APRData.versionCheck or {}
+    local client = APR:GetGameVersion()
+    local known = APRData.versionCheck[client]
+    if known == version then return end
+    if not ParseVersion(known) or IsNewerVersion(version, known) then
+        APRData.versionCheck[client] = version
     end
-    return nil
-end--[[APR_DIAG]]; ParseVersion = APRTrace("APR-Core/core/VersionCheck.lua:23:ParseVersion#1", ParseVersion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.RememberVersion = APRTrace("APR-Core/core/VersionCheck.lua:80:APR.versionCheck:RememberVersion#3", APR.versionCheck.RememberVersion)--[[/APR_DIAG]]
 
--- Returns true if v1 is strictly newer than v2.
-local function IsNewerVersion(v1, v2)
-    local n1 = ParseVersion(v1)
-    local n2 = ParseVersion(v2)
-    if not n1 or not n2 then return false end
-    return n1 > n2
-end--[[APR_DIAG]]; IsNewerVersion = APRTrace("APR-Core/core/VersionCheck.lua:44:IsNewerVersion#2", IsNewerVersion)--[[/APR_DIAG]]
+function APR.versionCheck:CheckKnownVersion()
+    if versionAlertShown or not APR.settings.profile.checkForUpdate then return end
+    local versions = APRData.versionCheck
+    local known = type(versions) == "table" and versions[APR:GetGameVersion()]
+    if IsNewerVersion(known, APR.version) then
+        versionAlertShown = true
+        APR.questionDialog:CreateMessagePopup(string.format(L["OUTDATED_VERSION_ALERT"],
+            APR:WrapTextWithAppearanceColor(known, "general", "warning"), RELEASES_URL), OKAY)
+    end
+end--[[APR_DIAG]]; APR.versionCheck.CheckKnownVersion = APRTrace("APR-Core/core/VersionCheck.lua:91:APR.versionCheck:CheckKnownVersion#4", APR.versionCheck.CheckKnownVersion)--[[/APR_DIAG]]
 
----------------------------------------------------------------------------------------
------------------------------- Version Check Functions --------------------------------
----------------------------------------------------------------------------------------
-
-local function GetReleasesUrl()
-    return "https://www.curseforge.com/wow/addons/azeroth-pilot-reloaded/files/all"
-end--[[APR_DIAG]]; GetReleasesUrl = APRTrace("APR-Core/core/VersionCheck.lua:55:GetReleasesUrl#3", GetReleasesUrl)--[[/APR_DIAG]]
-
--- Check if the live game interface version has advanced beyond what this addon declared.
--- This catches the case where WoW patched forward and the addon hasn't been updated yet.
 function APR.versionCheck:CheckInterfaceVersion()
-    if not APR.settings.profile.checkForUpdate then return end
-    local addonTOC = APR.tocVersion
-    local gameTOC = APR.interfaceVersion
-    if not addonTOC or not gameTOC then return end
-    if gameTOC > addonTOC then
-        APR.questionDialog:CreateMessagePopup(string.format(L["OUTDATED_TOC_ALERT"], GetReleasesUrl()), OKAY)
+    if versionAlertShown or interfaceAlertShown or not APR.settings.profile.checkForUpdate then return end
+    local addonTOC, gameTOC = APR.tocVersion, APR.interfaceVersion
+    if addonTOC and gameTOC and gameTOC > addonTOC then
+        interfaceAlertShown = true
+        APR.questionDialog:CreateMessagePopup(string.format(L["OUTDATED_TOC_ALERT"], RELEASES_URL), OKAY)
     end
-end--[[APR_DIAG]]; APR.versionCheck.CheckInterfaceVersion = APRTrace("APR-Core/core/VersionCheck.lua:61:APR.versionCheck:CheckInterfaceVersion#4", APR.versionCheck.CheckInterfaceVersion)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.versionCheck.CheckInterfaceVersion = APRTrace("APR-Core/core/VersionCheck.lua:102:APR.versionCheck:CheckInterfaceVersion#5", APR.versionCheck.CheckInterfaceVersion)--[[/APR_DIAG]]
 
--- Called when a version broadcast is received from a group member.
--- Shows a one-per-session notification if the sender is running a newer release.
+-- Party.lua validates channel, sender identity and current group membership first.
+-- Reply only to older clients, including legacy clients using the same prefix.
+-- This lets a downgraded/reloaded player discover already-connected newer peers.
 function APR.versionCheck:HandleVersionMessage(senderVersion)
-    if peerOutdatedShown then return end
-    if not APR.settings.profile.checkForUpdate then return end
-    if IsNewerVersion(senderVersion, APR.version) then
-        peerOutdatedShown = true
-        APR.questionDialog:CreateMessagePopup(string.format(L["OUTDATED_PEER_ALERT"],
-            APR:WrapTextWithAppearanceColor(senderVersion, "general", "warning"),
-            GetReleasesUrl()
-        ), OKAY)
-    end
-end--[[APR_DIAG]]; APR.versionCheck.HandleVersionMessage = APRTrace("APR-Core/core/VersionCheck.lua:73:APR.versionCheck:HandleVersionMessage#5", APR.versionCheck.HandleVersionMessage)--[[/APR_DIAG]]
+    if not ParseVersion(senderVersion) then return end
+    self:RememberVersion(senderVersion)
+    self:CheckKnownVersion()
+    if IsNewerVersion(APR.version, senderVersion) then self:BroadcastVersion() end
+end--[[APR_DIAG]]; APR.versionCheck.HandleVersionMessage = APRTrace("APR-Core/core/VersionCheck.lua:114:APR.versionCheck:HandleVersionMessage#6", APR.versionCheck.HandleVersionMessage)--[[/APR_DIAG]]
 
--- Broadcast our version to the group so peers can compare against it.
 function APR.versionCheck:BroadcastVersion()
-    if not IsInGroup() then return end
-    if not APR.version or APR.version:find("@") then return end
+    if not APR.settings.profile.enableAddon or not IsInGroup() or not ParseVersion(APR.version) then return end
     local channel
     if IsInGroup(LE_PARTY_CATEGORY_INSTANCE) then
         channel = "INSTANCE_CHAT"
@@ -94,9 +128,177 @@ function APR.versionCheck:BroadcastVersion()
     else
         channel = "PARTY"
     end
-    C_ChatInfo.SendAddonMessage("APRVersionCheck", APR.version, channel)
-end--[[APR_DIAG]]; APR.versionCheck.BroadcastVersion = APRTrace("APR-Core/core/VersionCheck.lua:86:APR.versionCheck:BroadcastVersion#6", APR.versionCheck.BroadcastVersion)--[[/APR_DIAG]]
+    local now = GetTime()
+    if self.lastChannel == channel and self.lastBroadcast and now - self.lastBroadcast < BROADCAST_THROTTLE then
+        return
+    end
+    self.lastChannel, self.lastBroadcast = channel, now
+    C_ChatInfo.SendAddonMessage(PREFIX, APR.version, channel)
+end--[[APR_DIAG]]; APR.versionCheck.BroadcastVersion = APRTrace("APR-Core/core/VersionCheck.lua:121:APR.versionCheck:BroadcastVersion#7", APR.versionCheck.BroadcastVersion)--[[/APR_DIAG]]
+
+function APR.versionCheck:StopBroadcasts()
+    if self.broadcastTimer then self.broadcastTimer:Cancel(); self.broadcastTimer = nil end
+    if self.broadcastRetryTimer then self.broadcastRetryTimer:Cancel(); self.broadcastRetryTimer = nil end
+end--[[APR_DIAG]]; APR.versionCheck.StopBroadcasts = APRTrace("APR-Core/core/VersionCheck.lua:139:APR.versionCheck:StopBroadcasts#8", APR.versionCheck.StopBroadcasts)--[[/APR_DIAG]]
+
+function APR.versionCheck:ScheduleBroadcast()
+    self:CheckKnownVersion()
+    if not IsInGroup() then
+        self:StopBroadcasts()
+        self.lastChannel, self.lastBroadcast = nil, nil
+        return
+    end
+    -- Our plain version is also a request: only newer peers need to reply.
+    -- Retain the legacy prefix/payload so older APR clients can understand it.
+    -- Coalesce roster bursts and let the channel settle after login/reload.
+    if self.broadcastTimer or self.broadcastRetryTimer then return end
+    self.broadcastTimer = C_Timer.NewTimer(2, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:155:callback#10", --[[/APR_DIAG]]function()
+        self.broadcastTimer = nil
+        self:BroadcastVersion()
+        if not IsInGroup() then return end
+        -- One bounded retry covers peers still loading or a throttled first send.
+        -- No ticker, OnUpdate or polling remains after this exchange.
+        self.broadcastRetryTimer = C_Timer.NewTimer(BROADCAST_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:161:callback#11", --[[/APR_DIAG]]function()
+            self.broadcastRetryTimer = nil
+            self:BroadcastVersion()
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; APR.versionCheck.ScheduleBroadcast = APRTrace("APR-Core/core/VersionCheck.lua:144:APR.versionCheck:ScheduleBroadcast#9", APR.versionCheck.ScheduleBroadcast)--[[/APR_DIAG]]
+
+-- Shared-channel state is constant-sized: one pending response, one startup
+-- query/retry, and a join timeout. No roster requests, ticker or frame polling.
+local function SharedEnabled()
+    return APR.settings.profile.enableAddon and APR.settings.profile.checkForUpdate
+        and ParseVersion(APR.version) ~= nil
+end--[[APR_DIAG]]; SharedEnabled = APRTrace("APR-Core/core/VersionCheck.lua:170:SharedEnabled#12", SharedEnabled)--[[/APR_DIAG]]
+
+function APR.versionCheck:StopSharedChannel()
+    for _, name in ipairs({ "sharedStartTimer", "sharedJoinTimer", "sharedQueryTimer", "sharedResponseTimer" }) do
+        if self[name] then self[name]:Cancel(); self[name] = nil end
+    end
+    if self.channelFrame then self.channelFrame:UnregisterEvent("CHANNEL_UI_UPDATE") end
+    if self.sharedOwnsChannel and LeaveChannelByName then LeaveChannelByName(SHARED_CHANNEL) end
+    self.sharedChannelID, self.sharedOwnsChannel = nil, nil
+end--[[APR_DIAG]]; APR.versionCheck.StopSharedChannel = APRTrace("APR-Core/core/VersionCheck.lua:175:APR.versionCheck:StopSharedChannel#13", APR.versionCheck.StopSharedChannel)--[[/APR_DIAG]]
+
+function APR.versionCheck:SendSharedMessage(kind)
+    if not SharedEnabled() or not self.sharedChannelID then return false end
+    local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_ChatInfo.SendAddonMessage, PREFIX, kind .. ":" .. APR.version,
+        "CHANNEL", self.sharedChannelID)
+    local codes = Enum and Enum.SendAddonMessageResult
+    if not ok or (codes and ((codes.InvalidChatType ~= nil and result == codes.InvalidChatType)
+        or (codes.InvalidChannel ~= nil and result == codes.InvalidChannel))) then
+        -- Some clients/realms prohibit CHANNEL addon messages. Never substitute
+        -- visible chat messages or keep retrying an unsupported transport.
+        self:StopSharedChannel()
+        return false
+    end
+    return result == nil or result == true or result == 0
+end--[[APR_DIAG]]; APR.versionCheck.SendSharedMessage = APRTrace("APR-Core/core/VersionCheck.lua:184:APR.versionCheck:SendSharedMessage#14", APR.versionCheck.SendSharedMessage)--[[/APR_DIAG]]
+
+function APR.versionCheck:RefreshSharedChannel()
+    if not SharedEnabled() then self:StopSharedChannel(); return end
+    local channelID = GetChannelName(SHARED_CHANNEL)
+    if not channelID or channelID == 0 then
+        if self.sharedChannelID then self:StopSharedChannel() end
+        return
+    end
+    self.sharedChannelID = channelID
+    if self.sharedQuerySent then return end
+    self.sharedQuerySent = true
+    if self.sharedJoinTimer then self.sharedJoinTimer:Cancel(); self.sharedJoinTimer = nil end
+    self:SendSharedMessage("Q")
+    if not self.sharedChannelID then return end
+    -- This one retry also covers peers whose reply was recently rate-limited.
+    self.sharedQueryTimer = C_Timer.NewTimer(SHARED_QUERY_RETRY_DELAY, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:213:callback#16", --[[/APR_DIAG]]function()
+        self.sharedQueryTimer = nil
+        self:SendSharedMessage("Q")
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; APR.versionCheck.RefreshSharedChannel = APRTrace("APR-Core/core/VersionCheck.lua:199:APR.versionCheck:RefreshSharedChannel#15", APR.versionCheck.RefreshSharedChannel)--[[/APR_DIAG]]
+
+function APR.versionCheck:StartSharedChannel()
+    if self.sharedStarted or not SharedEnabled() then return end
+    -- Blizzard disabled custom-channel addon transport on Classic. Forever
+    -- has its own client; use the API result there rather than assume support.
+    if APR:GetGameVersion() == APR.GAME_VERSIONS.Classic then return end
+    if not JoinTemporaryChannel or not GetChannelName or not C_ChatInfo.SendAddonMessage then return end
+    self.sharedStarted = true
+    self.channelFrame:RegisterEvent("CHANNEL_UI_UPDATE")
+    self.sharedStartTimer = C_Timer.NewTimer(2, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:227:callback#18", --[[/APR_DIAG]]function()
+        self.sharedStartTimer = nil
+        if not SharedEnabled() then self:StopSharedChannel(); return end
+        local channelID = GetChannelName(SHARED_CHANNEL)
+        if channelID and channelID > 0 then
+            self:RefreshSharedChannel()
+            return
+        end
+        self.sharedOwnsChannel = true
+        -- Temporary membership does not change saved chat windows/channels.
+        self.sharedJoinTimer = C_Timer.NewTimer(10, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:237:callback#19", --[[/APR_DIAG]]function()
+            self.sharedJoinTimer = nil
+            self:RefreshSharedChannel()
+            if not self.sharedChannelID then self:StopSharedChannel() end
+        end--[[APR_DIAG]])--[[/APR_DIAG]])
+        local ok = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](JoinTemporaryChannel, SHARED_CHANNEL)
+        if ok then self:RefreshSharedChannel() else self:StopSharedChannel() end
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; APR.versionCheck.StartSharedChannel = APRTrace("APR-Core/core/VersionCheck.lua:219:APR.versionCheck:StartSharedChannel#17", APR.versionCheck.StartSharedChannel)--[[/APR_DIAG]]
+
+function APR.versionCheck:HandleSharedMessage(prefix, message, channel, sender, target, zoneChannelID, localID, name)
+    if prefix ~= PREFIX or channel ~= "CHANNEL" or not self.sharedChannelID then return end
+    if localID ~= self.sharedChannelID or type(name) ~= "string" or name:lower() ~= SHARED_CHANNEL:lower() then
+        return
+    end
+    if not SharedEnabled() then self:StopSharedChannel(); return end
+    if type(message) ~= "string" or #message > 66 then return end
+    local kind, version = message:match("^([QV]):(.+)$")
+    if not kind or not ParseVersion(version) then return end
+    local senderKey = APR.PartyProtocol.PlayerKey(sender)
+    if not senderKey or senderKey == APR.PartyProtocol.PlayerKey(APR.Username) then return end
+
+    self:RememberVersion(version)
+    self:CheckKnownVersion()
+    if IsNewerVersion(version, APR.version) and self.sharedQueryTimer then
+        self.sharedQueryTimer:Cancel()
+        self.sharedQueryTimer = nil
+    end
+    -- Stagger responses so one broadcast from an equally new/newer peer can
+    -- silence all pending duplicates, even in a very populated APR channel.
+    if not IsNewerVersion(APR.version, version) then
+        if self.sharedResponseTimer then self.sharedResponseTimer:Cancel(); self.sharedResponseTimer = nil end
+        if kind == "V" then self.sharedLastResponse = GetTime() end
+        return
+    end
+    if kind ~= "Q" or self.sharedResponseTimer then return end
+    if self.sharedLastResponse and GetTime() - self.sharedLastResponse < SHARED_RESPONSE_THROTTLE then return end
+    self.sharedResponseTimer = C_Timer.NewTimer(math.random(5, 15) / 10, --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:274:callback#21", --[[/APR_DIAG]]function()
+        self.sharedResponseTimer = nil
+        self.sharedLastResponse = GetTime()
+        self:SendSharedMessage("V")
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; APR.versionCheck.HandleSharedMessage = APRTrace("APR-Core/core/VersionCheck.lua:247:APR.versionCheck:HandleSharedMessage#20", APR.versionCheck.HandleSharedMessage)--[[/APR_DIAG]]
+
+function APR.versionCheck:OnSharedChannelEvent(event, initialLogin, reloadingUI)
+    if event == "PLAYER_ENTERING_WORLD" then
+        if initialLogin or reloadingUI then self:StartSharedChannel() end
+    else
+        self:RefreshSharedChannel()
+    end
+end--[[APR_DIAG]]; APR.versionCheck.OnSharedChannelEvent = APRTrace("APR-Core/core/VersionCheck.lua:281:APR.versionCheck:OnSharedChannelEvent#22", APR.versionCheck.OnSharedChannelEvent)--[[/APR_DIAG]]
+
+function APR.versionCheck:OnDisable()
+    self:StopBroadcasts()
+    self:StopSharedChannel()
+    if self.channelFrame then self.channelFrame:UnregisterAllEvents(); self.channelFrame:SetScript("OnEvent", nil) end
+end--[[APR_DIAG]]; APR.versionCheck.OnDisable = APRTrace("APR-Core/core/VersionCheck.lua:289:APR.versionCheck:OnDisable#23", APR.versionCheck.OnDisable)--[[/APR_DIAG]]
 
 function APR.versionCheck:OnInit()
+    self:RememberVersion(APR.version)
+    self:CheckKnownVersion()
     self:CheckInterfaceVersion()
-end--[[APR_DIAG]]; APR.versionCheck.OnInit = APRTrace("APR-Core/core/VersionCheck.lua:100:APR.versionCheck:OnInit#7", APR.versionCheck.OnInit)--[[/APR_DIAG]]
+    self.channelFrame = self.channelFrame or CreateFrame("Frame")
+    self.channelFrame:RegisterEvent("PLAYER_ENTERING_WORLD")
+    self.channelFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/core/VersionCheck.lua:301:callback#25", --[[/APR_DIAG]]function(_, event, ...)
+        self:OnSharedChannelEvent(event, ...)
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; APR.versionCheck.OnInit = APRTrace("APR-Core/core/VersionCheck.lua:295:APR.versionCheck:OnInit#24", APR.versionCheck.OnInit)--[[/APR_DIAG]]
