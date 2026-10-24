@@ -2648,7 +2648,7 @@ APR.RouteQuestStepList["630-Azsuna"] = {
         },
         {
             Waypoint = 37657,
-            ExtraLineText = "OUT_CAVE",
+            ExtraLineText = "EXIT_CAVE",
             Coord = { x = 5688.6, y = -893.3 },
             Range = 10,
             Zone = 630,

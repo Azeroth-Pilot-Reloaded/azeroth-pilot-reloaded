@@ -595,7 +595,7 @@ function APR.settings:createBlizzOptions()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
                             resetCurrentStepPosition = {
-                                name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
+                                name = L["RESET_POSITION"],
                                 order = 5.5,
                                 type = 'execute',
                                 width = "full",
@@ -1890,7 +1890,7 @@ function APR.settings:createBlizzOptions()
                                 end--[[APR_DIAG]])--[[/APR_DIAG]],
                             },
                             resetPartyPosition = {
-                                name = L['RESET_CURRENT_STEP_FRAME_POSITION'],
+                                name = L["RESET_POSITION"],
                                 order = 11.4,
                                 type = 'execute',
                                 width = "full",

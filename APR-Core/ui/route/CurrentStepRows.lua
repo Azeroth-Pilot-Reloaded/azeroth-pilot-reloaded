@@ -321,7 +321,7 @@ local function ResizeRow(container)
     if container:GetWidth() ~= Layout.width then container:SetWidth(Layout.width) end
     if container.font then container.font:SetWidth(Layout.width - PADDING * 2) end
     for _, font in ipairs(container.detailFonts or {}) do font:SetWidth(Layout.width - INDENT - PADDING) end
-end--[[APR_DIAG]]; ResizeRow = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:319:ResizeRow#23", ResizeRow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ResizeRow = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:321:ResizeRow#23", ResizeRow)--[[/APR_DIAG]]
 
 function CurrentStep:SetContentWidth(width)
     if InCombatLockdown() or Layout.width == width then return end
@@ -341,7 +341,7 @@ function CurrentStep:SetContentWidth(width)
         end
     end
     self:ReOrderQuestSteps()
-end--[[APR_DIAG]]; CurrentStep.SetContentWidth = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:326:CurrentStep:SetContentWidth#24", CurrentStep.SetContentWidth)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentStep.SetContentWidth = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:328:CurrentStep:SetContentWidth#24", CurrentStep.SetContentWidth)--[[/APR_DIAG]]
 
 local function AcquireRow(self, list, key, kind, text, extra, color, dash)
     local role = color and APR:ResolveTextColorRole(color, "title") or (extra and "title" or "base")
@@ -361,7 +361,7 @@ local function AcquireRow(self, list, key, kind, text, extra, color, dash)
         container.textRole = role
         APR:RegisterFontString(container.font, "currentStep", {
             role = role,
-            onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:364:callback#26", --[[/APR_DIAG]]function() MeasureRow(container) end--[[APR_DIAG]])--[[/APR_DIAG]],
+            onApplied = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:366:callback#26", --[[/APR_DIAG]]function() MeasureRow(container) end--[[APR_DIAG]])--[[/APR_DIAG]],
         })
         list[key] = container
     end
@@ -374,7 +374,7 @@ local function AcquireRow(self, list, key, kind, text, extra, color, dash)
     end
     MeasureRow(container)
     return container
-end--[[APR_DIAG]]; AcquireRow = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:346:AcquireRow#25", AcquireRow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AcquireRow = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:348:AcquireRow#25", AcquireRow)--[[/APR_DIAG]]
 
 local function QuestTooltip(container)
     GameTooltip:SetOwner(container, "ANCHOR_BOTTOM")
@@ -386,9 +386,9 @@ local function QuestTooltip(container)
         includeStoryline = not container.isScenario,
     })
     GameTooltip:Show()
-end--[[APR_DIAG]]; QuestTooltip = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:379:QuestTooltip#27", QuestTooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; QuestTooltip = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:409:QuestTooltip#27", QuestTooltip)--[[/APR_DIAG]]
 
-local function HideTooltip() GameTooltip:Hide() end--[[APR_DIAG]]; HideTooltip = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:391:HideTooltip#28", HideTooltip)--[[/APR_DIAG]]
+local function HideTooltip() GameTooltip:Hide() end--[[APR_DIAG]]; HideTooltip = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:421:HideTooltip#28", HideTooltip)--[[/APR_DIAG]]
 
 function CurrentStep:AddQuestSteps(questID, text, objectiveIndex, isScenario, noTooltip, dash, color)
     local profile = APR:GetSettingsProfile()
@@ -411,7 +411,7 @@ function CurrentStep:AddQuestSteps(questID, text, objectiveIndex, isScenario, no
     self:UpdateQuestObjectiveProgressBar(container, questID, objectiveIndex)
     self:MaybeAttachRaidIconButton(key)
     self:ReOrderQuestSteps()
-end--[[APR_DIAG]]; CurrentStep.AddQuestSteps = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:393:CurrentStep:AddQuestSteps#29", CurrentStep.AddQuestSteps)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentStep.AddQuestSteps = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:423:CurrentStep:AddQuestSteps#29", CurrentStep.AddQuestSteps)--[[/APR_DIAG]]
 
 function CurrentStep:UpdateQuestStep(questID, text, objectiveIndex)
     local key = questID .. "-" .. objectiveIndex
@@ -432,7 +432,7 @@ function CurrentStep:UpdateQuestStep(questID, text, objectiveIndex)
     self:UpdateQuestObjectiveProgressBar(container, questID, objectiveIndex)
     MeasureRow(container)
     self:ReOrderQuestSteps()
-end--[[APR_DIAG]]; CurrentStep.UpdateQuestStep = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:416:CurrentStep:UpdateQuestStep#30", CurrentStep.UpdateQuestStep)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentStep.UpdateQuestStep = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:447:CurrentStep:UpdateQuestStep#30", CurrentStep.UpdateQuestStep)--[[/APR_DIAG]]
 
 -- Keep the instruction as the source text so live availability can disappear
 -- without accumulating suffixes or replacing quest/objective identity.
@@ -444,7 +444,7 @@ function CurrentStep:UpdateActionStatus(container, status)
     SetText(container.font, text)
     MeasureRow(container)
     self:ReOrderQuestSteps()
-end--[[APR_DIAG]]; CurrentStep.UpdateActionStatus = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:439:CurrentStep:UpdateActionStatus#31", CurrentStep.UpdateActionStatus)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentStep.UpdateActionStatus = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:470:CurrentStep:UpdateActionStatus#31", CurrentStep.UpdateActionStatus)--[[/APR_DIAG]]
 
 local function ResolveDetail(entry)
     local questID, itemID, name
@@ -458,7 +458,7 @@ local function ResolveDetail(entry)
     if not name and questID then name = APR:GetQuestTitle(questID) end
     return { questID = questID, itemID = itemID, name = name or UNKNOWN,
         text = "- " .. (name or (tostring(itemID or questID or UNKNOWN) .. " - " .. UNKNOWN)) }
-end--[[APR_DIAG]]; ResolveDetail = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:449:ResolveDetail#32", ResolveDetail)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ResolveDetail = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:480:ResolveDetail#32", ResolveDetail)--[[/APR_DIAG]]
 
 local function DetailTooltip(font)
     GameTooltip:SetOwner(font, "ANCHOR_BOTTOM")
@@ -468,7 +468,7 @@ local function DetailTooltip(font)
         APR:AddTooltipLine(GameTooltip, L["QUEST_INFO"], "currentStep", "base")
     end
     GameTooltip:Show()
-end--[[APR_DIAG]]; DetailTooltip = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:463:DetailTooltip#33", DetailTooltip)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; DetailTooltip = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:494:DetailTooltip#33", DetailTooltip)--[[/APR_DIAG]]
 
 function CurrentStep:AddQuestStepsWithDetails(key, text, entries)
     local capturing = self.pendingActionText and self.pendingActionText.scope
@@ -517,7 +517,7 @@ function CurrentStep:AddQuestStepsWithDetails(key, text, entries)
     MeasureRow(container)
     self:MaybeAttachRaidIconButton(key)
     self:ReOrderQuestSteps()
-end--[[APR_DIAG]]; CurrentStep.AddQuestStepsWithDetails = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:473:CurrentStep:AddQuestStepsWithDetails#34", CurrentStep.AddQuestStepsWithDetails)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentStep.AddQuestStepsWithDetails = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:504:CurrentStep:AddQuestStepsWithDetails#34", CurrentStep.AddQuestStepsWithDetails)--[[/APR_DIAG]]
 
 function CurrentStep:AddExtraLineText(key, text, color, dash)
     if self.pendingActionText and self.pendingActionText.scope then
@@ -543,7 +543,7 @@ function CurrentStep:AddExtraLineText(key, text, color, dash)
     container._rawExtraLineText, container._manualLeadingDash = text, dash
     self:MaybeAttachRaidIconButton(rowKey)
     self:ReOrderQuestSteps()
-end--[[APR_DIAG]]; CurrentStep.AddExtraLineText = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:522:CurrentStep:AddExtraLineText#35", CurrentStep.AddExtraLineText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentStep.AddExtraLineText = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:553:CurrentStep:AddExtraLineText#35", CurrentStep.AddExtraLineText)--[[/APR_DIAG]]
 
 local function AddDivider(self, list, key)
     if not APR.settings.profile.currentStepShow then return end
@@ -565,9 +565,9 @@ local function AddDivider(self, list, key)
     end
     container:SetHeight(12)
     self:ReOrderQuestSteps()
-end--[[APR_DIAG]]; AddDivider = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:548:AddDivider#36", AddDivider)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AddDivider = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:579:AddDivider#36", AddDivider)--[[/APR_DIAG]]
 
-function CurrentStep:AddQuestDivider(key) AddDivider(self, self.questsList, key) end--[[APR_DIAG]]; CurrentStep.AddQuestDivider = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:570:CurrentStep:AddQuestDivider#37", CurrentStep.AddQuestDivider)--[[/APR_DIAG]]
+function CurrentStep:AddQuestDivider(key) AddDivider(self, self.questsList, key) end--[[APR_DIAG]]; CurrentStep.AddQuestDivider = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:601:CurrentStep:AddQuestDivider#37", CurrentStep.AddQuestDivider)--[[/APR_DIAG]]
 
 local function OrderedRows(list, firstKey)
     local rows = {}
@@ -576,13 +576,13 @@ local function OrderedRows(list, firstKey)
             rows[#rows + 1] = { key = key, container = container }
         end
     end
-    table.sort(rows, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:579:callback#39", --[[/APR_DIAG]]function(a, b)
+    table.sort(rows, --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStepRows.lua:610:callback#39", --[[/APR_DIAG]]function(a, b)
         if a.key == firstKey then return b.key ~= firstKey end
         if b.key == firstKey then return false end
         return tostring(a.key) < tostring(b.key)
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     return rows
-end--[[APR_DIAG]]; OrderedRows = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:572:OrderedRows#38", OrderedRows)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; OrderedRows = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:603:OrderedRows#38", OrderedRows)--[[/APR_DIAG]]
 
 function CurrentStep:ReOrderQuestSteps()
     self.layoutDirty = true
@@ -632,6 +632,6 @@ function CurrentStep:ReOrderQuestSteps()
     self:UpdatePanelHeight()
     APR:RefreshSnappedFrames()
     if APR.Gamepad then APR.Gamepad:Refresh(CurrentStepScreenPanel) end
-end--[[APR_DIAG]]; CurrentStep.ReOrderQuestSteps = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:587:CurrentStep:ReOrderQuestSteps#40", CurrentStep.ReOrderQuestSteps)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CurrentStep.ReOrderQuestSteps = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:618:CurrentStep:ReOrderQuestSteps#40", CurrentStep.ReOrderQuestSteps)--[[/APR_DIAG]]
 
-function CurrentStep:RefreshTextLayout() self:ReOrderQuestSteps() end--[[APR_DIAG]]; CurrentStep.RefreshTextLayout = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:637:CurrentStep:RefreshTextLayout#41", CurrentStep.RefreshTextLayout)--[[/APR_DIAG]]
+function CurrentStep:RefreshTextLayout() self:ReOrderQuestSteps() end--[[APR_DIAG]]; CurrentStep.RefreshTextLayout = APRTrace("APR-Core/ui/route/CurrentStepRows.lua:668:CurrentStep:RefreshTextLayout#41", CurrentStep.RefreshTextLayout)--[[/APR_DIAG]]

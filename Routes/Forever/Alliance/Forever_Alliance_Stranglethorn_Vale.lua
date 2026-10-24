@@ -3682,7 +3682,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Qpart = { [8551] = { 1 } },
-            Note = { "NOT_TRY_SOLO_GROUP_COOLDOWNS_POTION_CDS", "KITE_TARGET_GUARDS_HELP" },
+            Note = { "NOT_TRY_SOLO_GROUP_COOLDOWNS_POTION_CDS", "KITE_TARGET_GUARDS" },
             Coord = { x = -137.04, y = -14135.18 },
             Range = 10,
             Class = { "PALADIN", "ROGUE", "WARRIOR" },
@@ -3691,7 +3691,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
         },
         {
             Qpart = { [8551] = { 1 } },
-            Note = { "KITE_TARGET_GUARDS_HELP" },
+            Note = { "KITE_TARGET_GUARDS" },
             Coord = { x = -137.04, y = -14135.18 },
             Range = 10,
             ClassNot = { "PALADIN", "ROGUE", "WARRIOR" },

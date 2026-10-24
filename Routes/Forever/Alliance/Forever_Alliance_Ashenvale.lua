@@ -1310,7 +1310,7 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             BuyMerchant = { { itemID = 4471, quantity = 1 } },
-            Note = { "COOK_SPARE_INGREDIENTS_50_WAITING" },
+            Note = { "COOKING_50_WAITING" },
             Coord = { x = -309.63, y = 2717.68 },
             IsQuestUncompleted = 942,
             ItemCount = { count = 1, itemID = 4471, operator = "<" },
@@ -1320,7 +1320,7 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
         },
         {
             BuyMerchant = { { itemID = 4470, quantity = 1 } },
-            Note = { "COOK_SPARE_INGREDIENTS_50_WAITING" },
+            Note = { "COOKING_50_WAITING" },
             Coord = { x = -309.63, y = 2717.68 },
             IsQuestUncompleted = 942,
             ItemCount = { count = 1, itemID = 4470, operator = "<" },

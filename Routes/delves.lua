@@ -1560,7 +1560,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
                 Waypoint = 1,
                 Coord = { x = 132.8, y = -5.3 },
                 Zone = 2395,
-                ExtraLineText = "TAKE_TELEPORT",
+                ExtraLineText = "USE_TELEPORT",
                 ZoneStepTrigger = { Range = 15, x = 68.2, y = 37.2 },
                 _index = 103,
             },

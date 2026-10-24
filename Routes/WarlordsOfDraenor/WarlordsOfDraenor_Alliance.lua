@@ -5442,7 +5442,7 @@ APR.RouteQuestStepList["542-DesMephisto-SpiresOfArak - A"] = {
         },
         {
             Treasure = { questID = 36418 },
-            ExtraLineText = "IN_HOUSE",
+            ExtraLineText = "INSIDE_HOUSE",
             Coord = { x = 2473.4, y = -950.8 },
             Range = 0.75,
             _index = 51,

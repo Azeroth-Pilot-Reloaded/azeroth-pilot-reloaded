@@ -4588,7 +4588,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
         },
         {
             LootItems = { { itemID = 2589, quantity = 10, includeBank = false } },
-            Note = { "KEEP_LISTED_ITEMS_LATER" },
+            Note = { "KEEP_ITEMS_LATER" },
             Class = "PALADIN",
             IsQuestUncompleted = 369,
             _index = 515,
@@ -6640,7 +6640,7 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
         },
         {
             Qpart = { [1819] = { 1 } },
-            Note = { "CLICK_MAUSOLEUM_TRIGGER_GROUND_SUMMON_ULAG_KILL" },
+            Note = { "CLICK_SKULL_GROUND_SUMMON_ULAG_KILL" },
             Coord = { x = 360.04, y = 2376.14 },
             Range = 10,
             Class = "WARRIOR",

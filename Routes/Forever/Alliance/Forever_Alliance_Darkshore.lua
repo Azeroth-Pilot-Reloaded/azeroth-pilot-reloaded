@@ -2105,7 +2105,7 @@ APR.RouteQuestStepList["Forever-Alliance-Darkshore"] = {
         {
             Qpart = { [314] = { 1 } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
-            Note = { "KITE_TARGET_GUARDS_HELP", "DEAL_MORE_50_DAMAGE_YOURSELF_GET_CREDIT" },
+            Note = { "KITE_TARGET_GUARDS", "DEAL_MORE_50_DAMAGE_YOURSELF_GET_CREDIT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 62.8, 54.6),
             Range = 10.0,
             Race = "NightElf",
