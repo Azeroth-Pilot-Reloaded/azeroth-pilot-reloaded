@@ -1209,9 +1209,8 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 16,
         },
         {
+            EquipItem = { itemID = 7297, slot = 17 },
             Note = { "CLEAR_WAY_2ND_FLOOR_HOUSE", "EQUIP_MORBENT_BANE_OFF_HAND", "EQUIP_WEAPON_OFF_HAND_WEAKENING_TARGET" },
-            Button = { ["55-1"] = 7297 },
-            SpellButton = { ["55-1"] = 8913 },
             IsQuestUncompleted = 55,
             _index = 17,
         },
@@ -1494,8 +1493,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 52,
         },
         {
-            Button = { ["207-2"] = 5996 },
-            SpellButton = { ["207-2"] = 7178 },
+            UseItem = { itemID = 5996, itemSpellID = 7178 },
             DontHaveAura = 7178,
             IsQuestUncompleted = 195,
             ItemCount = { operator = ">=", count = 1, itemID = 5996 },
@@ -2610,9 +2608,8 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 80,
         },
         {
+            UseItem = { itemID = 5996, itemSpellID = 7178 },
             Note = { "WATCH_BREATH_BAR" },
-            Button = { ["611"] = 5996 },
-            SpellButton = { ["611"] = 7178 },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             DontHaveAura = 7178,
             IsQuestOnQuest = 611,
@@ -2621,10 +2618,9 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 81,
         },
         {
+            UseItem = { itemID = 4027, itemSpellID = 3678 },
             Note = { "UNDERWATER_ALTAR" },
             Coord = { x = 628.26, y = -12172.14 },
-            Button = { ["611"] = 4027 },
-            SpellButton = { ["611"] = 3678 },
             IsQuestOnQuest = 611,
             IsQuestUncompleted = 600,
             Zone = 1434,

@@ -2029,7 +2029,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-18-21"] = {
             Note = { "Use the `Shrine Bauble` at the Shrine of Remulos" },
             Coord = { x = -2221.48, y = 7844.89 },
             Button = { ["28-1"] = 15877 },
-            SpellButton = { ["28-1"] = 19719 },
             Class = "DRUID",
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,

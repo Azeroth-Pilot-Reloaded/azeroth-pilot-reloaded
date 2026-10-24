@@ -850,7 +850,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 97,
         },
         {
-            Button = { ["6142-1"] = 5996 },
+            UseItem = { itemID = 5996 },
             Buffs = { { spellId = 7178 } },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             DontHaveAura = 7178,
@@ -1056,15 +1056,25 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 124,
         },
         {
-            Note = { "CAST_TAME_BEAST_SCORPASHI_LASHER_TAME", "FIGHT_PET_LEARN_ABILITIES", "TEACH_PET_LEARNED_ABILITIES" },
+            UseSpell = { spellID = 1515 },
+            Note = { "CAST_TAME_BEAST_SCORPASHI_LASHER_TAME" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.79, 67.365),
             Range = 30,
-            SpellButton = { ["5763"] = 1515 },
             Class = "HUNTER",
             IsQuestUncompleted = 5381,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1443,
             _index = 125,
+        },
+        {
+            Note = { "FIGHT_PET_LEARN_ABILITIES", "TEACH_PET_LEARNED_ABILITIES" },
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 40.79, 67.365),
+            Range = 30,
+            Class = "HUNTER",
+            IsQuestUncompleted = 5381,
+            Race = { "Orc", "Skyborne", "Tauren", "Troll" },
+            Zone = 1443,
+            _index = 126,
         },
         {
             Note = { "ABANDON_TEMPORARY_PET_RETRIEVE_REGULAR_PET" },
@@ -1073,31 +1083,31 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             Class = "HUNTER",
             IsQuestUncompleted = 5381,
             Zone = 1443,
-            _index = 126,
+            _index = 127,
         },
         {
             PickUp = { 5763 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 25.1, 72.2),
             Zone = 1443,
-            _index = 127,
+            _index = 128,
         },
         {
             Done = { 5381 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 25.8, 68.2),
             Zone = 1443,
-            _index = 128,
+            _index = 129,
         },
         {
             Done = { 6143 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 23.4, 72.8),
             Zone = 1443,
-            _index = 129,
+            _index = 130,
         },
         {
             Done = { 6142 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1443, 22.7, 72.1),
             Zone = 1443,
-            _index = 130,
+            _index = 131,
         },
         {
             UseSpell = { spellID = 3567 },
@@ -1106,7 +1116,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             ItemCount = { itemID = 17031, count = 1, operator = ">=" },
             Race = { "Orc", "Scourge", "Troll" },
             SkipInZones = { 1454 },
-            _index = 131,
+            _index = 132,
         },
         {
             UseFlightPath = 1436,
@@ -1115,7 +1125,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             ZoneStepTrigger = { mapID = 1456 },
             ClassNot = "MAGE",
             Zone = 1443,
-            _index = 132,
+            _index = 133,
         },
         {
             UseFlightPath = 1436,
@@ -1124,7 +1134,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             ZoneStepTrigger = { mapID = 1454 },
             Class = "MAGE",
             Zone = 1443,
-            _index = 133,
+            _index = 134,
         },
         {
             LearnSkill = { spellID = 9493 },
@@ -1135,7 +1145,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             Race = { "Skyborne", "Tauren" },
             SkipForLvl = 38,
             Zone = 1456,
-            _index = 134,
+            _index = 135,
         },
         {
             LearnSkill = { spellID = 5201 },
@@ -1145,7 +1155,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             MinLevel = 38,
             Race = { "Skyborne", "Tauren" },
             Zone = 1456,
-            _index = 135,
+            _index = 136,
         },
         {
             LearnSkill = { spellID = 14303 },
@@ -1156,7 +1166,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipForLvl = 38,
             Zone = 1456,
-            _index = 136,
+            _index = 137,
         },
         {
             LearnSkill = { spellID = 14320 },
@@ -1166,7 +1176,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             MinLevel = 38,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 137,
+            _index = 138,
         },
         {
             LearnSkill = { spellID = 24560 },
@@ -1176,7 +1186,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             MinLevel = 36,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 138,
+            _index = 139,
         },
         {
             LearnSkill = { spellID = 1680 },
@@ -1186,7 +1196,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             MinLevel = 36,
             SkipForLvl = 38,
             Zone = 1456,
-            _index = 139,
+            _index = 140,
         },
         {
             LearnSkill = { spellID = 8820 },
@@ -1195,11 +1205,11 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             IsQuestUncompleted = 1436,
             MinLevel = 38,
             Zone = 1456,
-            _index = 140,
+            _index = 141,
         },
         {
             RouteCompleted = true,
-            _index = 141,
+            _index = 142,
         },
     },
 }

@@ -1405,8 +1405,8 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
             _index = 154,
         },
         {
+            UseItem = { itemID = 5996 },
             Note = { "WATCH_BREATH_BAR" },
-            Button = { ["662-2"] = 5996 },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             DontHaveAura = 7178,
             IsQuestUncompleted = 662,

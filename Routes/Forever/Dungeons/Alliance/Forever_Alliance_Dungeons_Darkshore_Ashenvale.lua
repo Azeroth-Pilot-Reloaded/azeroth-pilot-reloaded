@@ -424,10 +424,9 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
             _index = 46,
         },
         {
+            UseItem = { itemID = 12347, itemSpellID = 16072 },
             Note = { "Use the `Filled Cleansing Bowl` at the Bonfire to summon Xabraxxis" },
             Coord = { x = -489.22, y = 6875.3 },
-            Button = { ["4763"] = 12347 },
-            SpellButton = { ["4763"] = 16072 },
             SpellETA = { seconds = 17.0, spellID = 16072 },
             IsQuestOnQuest = 4763,
             Zone = 1439,
@@ -745,9 +744,8 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
             _index = 87,
         },
         {
+            UseItem = { itemID = 5251, itemSpellID = 5809 },
             Note = { "Use the `Phial of Scrying` and place it on the ground" },
-            Button = { ["944"] = 5251 },
-            SpellButton = { ["944"] = 5809 },
             _index = 88,
         },
         {

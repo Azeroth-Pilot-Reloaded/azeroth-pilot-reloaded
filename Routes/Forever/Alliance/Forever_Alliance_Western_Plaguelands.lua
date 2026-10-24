@@ -485,9 +485,9 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
             _index = 59,
         },
         {
+            EquipItem = { itemID = 12846, slot = 13 },
             Note = { "EQUIP_ARGENT_DAWN_COMMISSION_COLLECT_SCOURGESTONES" },
             Coord = { x = -1430.96, y = 971.68 },
-            Button = { ["5092-1"] = 12846 },
             AnyOf = { { IsQuestUncompleted = 8414, Race = { "Dwarf", "Human" }, Class = "PALADIN" }, { IsQuestUncompleted = 5092, Class = { "DRUID", "HUNTER", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" } } },
             ItemCount = { itemID = 12846, count = 1, operator = ">=" },
             Zone = 1422,

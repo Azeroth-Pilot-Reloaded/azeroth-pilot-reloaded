@@ -1401,7 +1401,6 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             UseItem = { itemID = 6636, questID = 1526 },
             Coord = { x = -3981.27, y = -256.61 },
             Button = { ["1526-1"] = 6636 },
-            SpellButton = { ["1526-1"] = 8898 },
             Class = "SHAMAN",
             IsQuestOnQuest = 1526,
             Race = { "Orc", "Tauren", "Troll" },

@@ -282,10 +282,9 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 30,
         },
         {
+            UseItem = { itemID = 15208, itemSpellID = 18974 },
             Note = { "Use the `Cenarion Moondust` at the Moonkin Stone inside the cave to summon Lunaclaw at the entrance of the cave" },
             Coord = { x = 92.42, y = 6325.98 },
-            Button = { ["6001"] = 15208 },
-            SpellButton = { ["6001"] = 18974 },
             SpellETA = { seconds = 4.0, spellID = 18974 },
             Class = "DRUID",
             IsQuestOnQuest = 6001,

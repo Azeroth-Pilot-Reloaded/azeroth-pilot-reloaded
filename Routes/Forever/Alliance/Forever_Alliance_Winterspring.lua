@@ -804,9 +804,8 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             _index = 94,
         },
         {
+            EquipItem = { itemID = 11522, slot = 17 },
             Note = { "EQUIP_SILVER_TOTEM_AQUEMENTAS_OFF_HAND", "KEEP_AURA_DISPELLED_CAUSES_KNOCKBACK_REAPPLIED_DURING" },
-            Button = { ["3962"] = 11522 },
-            SpellButton = { ["3962"] = 14247 },
             IsQuestOnQuest = 3962,
             _index = 95,
         },
@@ -838,9 +837,8 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             _index = 98,
         },
         {
+            UseItem = { itemID = 11833, itemSpellID = 15627 },
             Note = { "THREE_WAVES_ATTACK_KILL_FINAL_ENEMY_WAVE" },
-            Button = { ["4507"] = 11833 },
-            SpellButton = { ["4507"] = 15627 },
             IsQuestOnQuest = 4507,
             _index = 99,
         },

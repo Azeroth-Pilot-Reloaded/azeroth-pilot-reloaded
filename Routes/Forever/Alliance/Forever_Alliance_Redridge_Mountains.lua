@@ -1816,8 +1816,8 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
             _index = 200,
         },
         {
+            EquipItem = { itemID = 15396, slot = 16 },
             Note = { "EQUIP_CURVEWOOD_DAGGER_QUEST_NOT_ALREADY_DAGGER" },
-            Button = { ["2359"] = 15396 },
             Class = "ROGUE",
             IsQuestUncompleted = 2359,
             ItemCount = { itemID = 15396, count = 1, operator = ">=" },
@@ -1844,9 +1844,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
             _index = 203,
         },
         {
-            Note = { "USE_ANTI_VENOM_REMOVE_QUEST_POISON" },
-            Button = { ["2359"] = 6452 },
-            SpellButton = { ["2359"] = 7932 },
+            UseItem = { itemID = 6452, itemSpellID = 7932 },
             Class = "ROGUE",
             HasAura = 9991,
             IsQuestUncompleted = 2359,
@@ -1951,9 +1949,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
             _index = 213,
         },
         {
-            Note = { "USE_ANTI_VENOM_REMOVE_QUEST_POISON" },
-            Button = { ["2359"] = 6452 },
-            SpellButton = { ["2359"] = 7932 },
+            UseItem = { itemID = 6452, itemSpellID = 7932 },
             Class = "ROGUE",
             HasAura = 9991,
             IsQuestUncompleted = 2359,

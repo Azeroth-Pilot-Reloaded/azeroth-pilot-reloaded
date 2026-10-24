@@ -422,8 +422,8 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
             _index = 36,
         },
         {
+            UseItem = { itemID = 6052 },
             Note = { "CYCLONIAN_LEVEL_40_ELITE_BRING_HELP_CANNOT" },
-            Button = { ["1713"] = 6052 },
             Class = "WARRIOR",
             IsQuestUncompleted = 1713,
             _index = 37,
@@ -615,7 +615,7 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
             _index = 60,
         },
         {
-            Button = { ["507-1"] = 10592 },
+            UseItem = { itemID = 10592 },
             Buffs = { { spellId = 12608 } },
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             DontHaveAura = 12608,
@@ -1107,7 +1107,7 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
             _index = 127,
         },
         {
-            Button = { ["662-2"] = 5996 },
+            UseItem = { itemID = 5996 },
             Buffs = { { spellId = 7178 } },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" },
             DontHaveAura = 7178,
