@@ -9,7 +9,7 @@ APR.RouteQuestStepList["2451-Arathi-Highlands-Returning-Player"] = {
     },
     autoStartOnMap = true,
     mapID = 2451,
-    conditions = { Level = 70 },
+    conditions = {},
     nextRoute = {},
     steps = {
         {
