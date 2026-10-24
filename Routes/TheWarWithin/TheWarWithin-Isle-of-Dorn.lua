@@ -843,7 +843,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         },
         {
             Qpart = { [78463] = { 1 }, [79553] = { 1 } },
-            ExtraLineText = "OUT_CAVE",
+            ExtraLineText = "EXIT_CAVE",
             Coord = { x = -1425.6, y = 870.5 },
             Range = 125,
             Zone = 2248,
@@ -3784,7 +3784,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         },
         {
             Qpart = { [78463] = { 1 }, [79553] = { 1 } },
-            ExtraLineText = "OUT_CAVE",
+            ExtraLineText = "EXIT_CAVE",
             Coord = { x = -1425.6, y = 870.5 },
             Range = 125,
             Zone = 2248,

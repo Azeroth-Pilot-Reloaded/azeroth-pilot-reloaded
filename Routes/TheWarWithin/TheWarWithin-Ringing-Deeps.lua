@@ -793,7 +793,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         },
         {
             Scenario = { criteriaID = 64739, criteriaIndex = 1, scenarioID = 2352, stepID = 6878, questID = 78642 },
-            ExtraLineText = "DISGUISE_YOURSELF",
+            ExtraLineText = "USE_DISGUISE",
             Coord = { x = -155.4, y = 593.5 },
             Range = 5,
             ExtraActionB = true,
@@ -829,7 +829,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps"] = {
         },
         {
             Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844, questID = 78642 },
-            ExtraLineText = "DISGUISE_YOURSELF",
+            ExtraLineText = "USE_DISGUISE",
             Coord = { x = -155, y = 223 },
             Range = 5,
             ExtraActionB = true,
@@ -2864,7 +2864,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         },
         {
             Scenario = { criteriaID = 64739, criteriaIndex = 1, scenarioID = 2352, stepID = 6878, questID = 78642 },
-            ExtraLineText = "DISGUISE_YOURSELF",
+            ExtraLineText = "USE_DISGUISE",
             Coord = { x = -155.4, y = 593.5 },
             Range = 5,
             ExtraActionB = true,
@@ -2892,7 +2892,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-campaign-only"] = {
         },
         {
             Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844, questID = 78642 },
-            ExtraLineText = "DISGUISE_YOURSELF",
+            ExtraLineText = "USE_DISGUISE",
             Coord = { x = -155, y = 223 },
             Range = 5,
             ExtraActionB = true,
@@ -4722,7 +4722,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         },
         {
             Scenario = { criteriaID = 64739, criteriaIndex = 1, scenarioID = 2352, stepID = 6878, questID = 78642 },
-            ExtraLineText = "DISGUISE_YOURSELF",
+            ExtraLineText = "USE_DISGUISE",
             Coord = { x = -155.4, y = 593.5 },
             Range = 5,
             ExtraActionB = true,
@@ -4758,7 +4758,7 @@ APR.RouteQuestStepList["2214-TWW-Ringing-Deeps-Full"] = {
         },
         {
             Scenario = { criteriaID = 64698, criteriaIndex = 1, scenarioID = 2352, stepID = 6844, questID = 78642 },
-            ExtraLineText = "DISGUISE_YOURSELF",
+            ExtraLineText = "USE_DISGUISE",
             Coord = { x = -155, y = 223 },
             Range = 5,
             ExtraActionB = true,

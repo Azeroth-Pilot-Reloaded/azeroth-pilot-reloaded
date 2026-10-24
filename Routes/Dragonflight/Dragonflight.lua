@@ -4047,7 +4047,7 @@ APR.RouteQuestStepList["2024-DF05-AzureSpan"] = {
         },
         {
             Done = { 65864 },
-            ExtraLineText = "WAIT_FOR_RP_END",
+            ExtraLineText = "WAIT_FOR_NPC_END_RP",
             Coord = { x = 1656.2, y = -3611.1 },
             _index = 101,
         },

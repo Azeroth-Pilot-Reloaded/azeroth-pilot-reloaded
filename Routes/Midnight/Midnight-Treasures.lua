@@ -1318,7 +1318,7 @@ APR.RouteQuestStepList["2405-Midnight-Treasures-Voidstorm"] = {
         },
         {
             Waypoint = 94454,
-            ExtraLineText = "OUT_CAVE",
+            ExtraLineText = "EXIT_CAVE",
             Coord = { x = -170.1, y = 344 },
             Range = 5,
             Zone = 2405,

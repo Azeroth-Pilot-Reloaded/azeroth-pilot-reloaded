@@ -438,7 +438,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
         },
         {
             Qpart = { [34] = { 1 } },
-            Note = { "KITE_TARGET_GUARDS_HELP", "CAREFUL_TREMORS_INSTANT_80_AOE_DAMAGE_CHARGES", "DEAL_MORE_50_DAMAGE_YOURSELF_GET_CREDIT", "HARD_STEP_GROUP" },
+            Note = { "KITE_TARGET_GUARDS", "CAREFUL_TREMORS_INSTANT_80_AOE_DAMAGE_CHARGES", "DEAL_MORE_50_DAMAGE_YOURSELF_GET_CREDIT", "HARD_STEP_GROUP" },
             Coord = { x = -1910.79, y = -9288.97 },
             Range = 10,
             Zone = 1433,

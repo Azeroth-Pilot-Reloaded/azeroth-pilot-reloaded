@@ -27,7 +27,7 @@ function APR.command:GetHelpEntries()
         {"/apr reset, r", L["RESET_COMMAND"]},
         {"/apr resetcustom", L["RESET_CUSTOM_COMMAND"]},
         {"/apr rollback, rb", L["ROLLBACK_COMMAND"]},
-        {"/apr route", L["ROUTE_COMMAND"]},
+        {"/apr route", L["OPEN_ROUTE_OPTIONS"]},
         {"/apr scribe, writer", L["SCRIBE_HEADER"]},
         {"/apr skip, s, skippiedoodaa", L["SKIP_COMMAND"]},
         {"/apr step", L["CURRENT_STEP"]},

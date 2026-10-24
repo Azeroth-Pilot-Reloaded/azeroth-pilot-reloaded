@@ -598,7 +598,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
         },
         {
             Qpart = { [34] = { 1 } },
-            Note = { "KITE_TARGET_GUARDS_HELP", "HARD_STEP_GROUP" },
+            Note = { "KITE_TARGET_GUARDS", "HARD_STEP_GROUP" },
             Coord = { x = -1911.22, y = -9288.82 },
             Range = 10,
             Class = "WARLOCK",

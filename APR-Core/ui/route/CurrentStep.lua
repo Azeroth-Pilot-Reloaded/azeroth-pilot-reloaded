@@ -1349,7 +1349,7 @@ function APR.GetMenu(owner, rootDescription)
             APR:UpdateMapId()
         end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-    rootDescription:CreateButton(L["RESET_CURRENT_STEP_FRAME_POSITION"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1352:callback#91", --[[/APR_DIAG]]function()
+    rootDescription:CreateButton(L["RESET_POSITION"], --[[APR_DIAG]]APRTrace("APR-Core/ui/route/CurrentStep.lua:1352:callback#91", --[[/APR_DIAG]]function()
         APR.currentStep:ResetPosition()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 

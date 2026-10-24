@@ -2711,7 +2711,7 @@ APR.RouteQuestStepList["376-Valley of the four winds"] = {
         },
         {
             Qpart = { [30057] = { 1 } },
-            ExtraLineText = "OUT_CAVE",
+            ExtraLineText = "EXIT_CAVE",
             Coord = { x = 950.6, y = 202 },
             Range = 30,
             Zone = 376,
@@ -5132,7 +5132,7 @@ APR.RouteQuestStepList["390-Dread Wastes"] = {
         },
         {
             Waypoint = 31020,
-            ExtraLineText = "OUT_CAVE",
+            ExtraLineText = "EXIT_CAVE",
             Coord = { x = 2567.1, y = -857 },
             Range = 5,
             Zone = 422,
