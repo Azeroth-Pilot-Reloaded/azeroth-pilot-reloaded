@@ -4159,7 +4159,7 @@ APR.RouteQuestStepList["895-Tiragarde Sound"] = {
 }
 
 APR.RouteQuestStepList["942-Stormsong Valley"] = {
-    label = L["BFA03 - Dustvar"],
+    label = L["BFA04 - Stormsong Valley"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
     prefab = {
@@ -7053,7 +7053,7 @@ APR.RouteQuestStepList["942-Stormsong Valley"] = {
 }
 
 APR.RouteQuestStepList["896-Dustvar"] = {
-    label = L["BFA04 - Stormsong Valley"],
+    label = L["BFA03 - Dustvar"],
     expansion = APR.EXPANSIONS.BattleForAzeroth,
     category = APR.CATEGORIES.Leveling,
     prefab = {
