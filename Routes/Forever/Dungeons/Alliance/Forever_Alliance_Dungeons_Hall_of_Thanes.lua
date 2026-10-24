@@ -19,12 +19,12 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             _index = 1,
         },
         {
-            Note = { "You will now complete a pre-quest for the Hall of Thanes, then run the dungeon" },
+            Note = { "COMPLETE_PRE_QUEST_HALL_THANES_RUN_DUNGEON" },
             Race = { "Dwarf", "Gnome", "Human", "Skyborne" },
             _index = 2,
         },
         {
-            Note = { "Travel to Dun Morogh" },
+            Note = { "TRAVEL_DUN_MOROGH" },
             Race = { "Dwarf", "Gnome", "Human", "Skyborne" },
             Zone = 1426,
             _index = 3,
@@ -39,7 +39,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96392,
             NonSkippableWaypoint = true,
-            Note = { "You can cancel the Farsight once the objective completes" },
+            Note = { "CANCEL_FARSIGHT_OBJECTIVE_COMPLETES" },
             Coord = { x = -1394.24, y = -5797.83 },
             Range = 5,
             IsQuestOnQuest = 96392,
@@ -48,7 +48,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             _index = 5,
         },
         {
-            Note = { "Press ESCAPE to cancel the Farsight" },
+            Note = { "PRESS_ESCAPE_CANCEL_FARSIGHT" },
             HasAura = 1293681,
             IsQuestOnQuest = 96392,
             Race = { "Dwarf", "Gnome", "Human", "Skyborne" },
@@ -56,7 +56,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Done = { 96392 },
-            Note = { "Press ESCAPE to cancel the Farsight" },
+            Note = { "PRESS_ESCAPE_CANCEL_FARSIGHT" },
             Coord = { x = -1394.24, y = -5797.83 },
             Race = { "Dwarf", "Gnome", "Human", "Skyborne" },
             Zone = 1426,
@@ -65,7 +65,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96391,
             NonSkippableWaypoint = true,
-            Note = { "Kill Dark Iron Spies. Loot them for the `Dark Iron Map`" },
+            Note = { "KILL_DARK_IRON_SPIES_LOOT_DARK_IRON_MAP" },
             Coord = { x = -2009.87, y = -5860.22 },
             Range = 40.0,
             Race = { "Dwarf", "Gnome", "Human", "Skyborne" },
@@ -105,18 +105,18 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             _index = 12,
         },
         {
-            Note = { "Start looking for a group for the Hall of Thanes" },
+            Note = { "START_LOOKING_GROUP_HALL_THANES" },
             _index = 13,
         },
         {
-            Note = { "Travel to Ironforge" },
+            Note = { "TRAVEL_IRONFORGE" },
             Zone = 1455,
             _index = 14,
         },
         {
             Waypoint = 96395,
             NonSkippableWaypoint = true,
-            Note = { "Travel down into Old Ironforge via King Magni's room" },
+            Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1054.3, y = -4843.2 },
             Range = 10.0,
             Zone = 1455,
@@ -125,7 +125,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96395,
             NonSkippableWaypoint = true,
-            Note = { "Travel down into Old Ironforge via King Magni's room" },
+            Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1081.9, y = -4850.1 },
             Range = 10.0,
             Zone = 1455,
@@ -134,7 +134,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96395,
             NonSkippableWaypoint = true,
-            Note = { "Travel down into Old Ironforge via King Magni's room" },
+            Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1082.8, y = -4886.0 },
             Range = 10.0,
             Zone = 1455,
@@ -143,7 +143,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96395,
             NonSkippableWaypoint = true,
-            Note = { "Travel down into Old Ironforge via King Magni's room" },
+            Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1087.7, y = -4821.9 },
             Range = 10.0,
             Zone = 1455,
@@ -152,7 +152,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96395,
             NonSkippableWaypoint = true,
-            Note = { "Travel down into Old Ironforge via King Magni's room" },
+            Note = { "TRAVEL_OLD_IRONFORGE_KING_MAGNI_ROOM" },
             Coord = { x = -1010.3, y = -4850.9 },
             Range = 10.0,
             Zone = 1455,
@@ -167,7 +167,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96395,
             NonSkippableWaypoint = true,
-            Note = { "Drop down onto the ramp below" },
+            Note = { "DROP_RAMP_BELOW" },
             Coord = { x = -996.1, y = -4821.2 },
             Range = 10.0,
             Zone = 1455,
@@ -176,7 +176,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96395,
             NonSkippableWaypoint = true,
-            Note = { "Drop down onto the ramp below" },
+            Note = { "DROP_RAMP_BELOW" },
             Coord = { x = -972.0, y = -4803.0 },
             Range = 10.0,
             Zone = 1455,
@@ -185,7 +185,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96395,
             NonSkippableWaypoint = true,
-            Note = { "Drop down onto the ramp below" },
+            Note = { "DROP_RAMP_BELOW" },
             Coord = { x = -988.9, y = -4854.4 },
             Range = 10.0,
             Zone = 1455,
@@ -230,7 +230,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             _index = 28,
         },
         {
-            Note = { "Return to the Ghostly Attendant" },
+            Note = { "RETURN_GHOSTLY_ATTENDANT" },
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
@@ -245,7 +245,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Qpart = { [96394] = { 1, 2 } },
-            Note = { "Complete this now as you may not have a chance to finish it later" },
+            Note = { "COMPLETE_NOT_CHANCE_FINISH" },
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
@@ -270,7 +270,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             PickUp = { 98423 },
             Fillers = { [96403] = { 1 } },
-            Note = { "Click the Treaty of Understanding" },
+            Note = { "CLICK_TREATY_UNDERSTANDING" },
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
@@ -278,7 +278,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         },
         {
             Qpart = { [96403] = { 1 } },
-            Note = { "Loot the Dwarven Heirlooms on the ground through the Hall of Thanes" },
+            Note = { "LOOT_DWARVEN_HEIRLOOMS_GROUND_HALL_THANES" },
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
@@ -286,7 +286,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         },
         {
             LeaveInstance = { dungeonKey = "HOT" },
-            Note = { "Exit the Hall of Thanes. Fastest way is running straight down the corridor from the final boss room" },
+            Note = { "EXIT_HALL_THANES_FASTEST_WAY_RUNNING_STRAIGHT" },
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
@@ -301,7 +301,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96394,
             NonSkippableWaypoint = true,
-            Note = { "Return to Afadra Dunwall up the ramp" },
+            Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -1006.6, y = -4841.6 },
             Range = 10.0,
             Zone = 1455,
@@ -310,7 +310,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96394,
             NonSkippableWaypoint = true,
-            Note = { "Return to Afadra Dunwall up the ramp" },
+            Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -969.7, y = -4841.5 },
             Range = 10.0,
             Zone = 1455,
@@ -319,7 +319,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96394,
             NonSkippableWaypoint = true,
-            Note = { "Return to Afadra Dunwall up the ramp" },
+            Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -964.3, y = -4807.5 },
             Range = 10.0,
             Zone = 1455,
@@ -328,7 +328,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96394,
             NonSkippableWaypoint = true,
-            Note = { "Return to Afadra Dunwall up the ramp" },
+            Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -993.5, y = -4817.6 },
             Range = 10.0,
             Zone = 1455,
@@ -337,7 +337,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96394,
             NonSkippableWaypoint = true,
-            Note = { "Return to Afadra Dunwall up the ramp" },
+            Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -983.7, y = -4847.8 },
             Range = 10.0,
             Zone = 1455,
@@ -346,7 +346,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96394,
             NonSkippableWaypoint = true,
-            Note = { "Return to Afadra Dunwall up the ramp" },
+            Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -1022.0, y = -4842.1 },
             Range = 10.0,
             Zone = 1455,
@@ -355,7 +355,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96394,
             NonSkippableWaypoint = true,
-            Note = { "Return to Afadra Dunwall up the ramp" },
+            Note = { "RETURN_AFADRA_DUNWALL_RAMP" },
             Coord = { x = -994.0, y = -4843.1 },
             Range = 10.0,
             Zone = 1455,
@@ -370,7 +370,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96393,
             NonSkippableWaypoint = true,
-            Note = { "Go up to ramp to" },
+            Note = { "UP_RAMP" },
             Coord = { x = -1030.2, y = -4831.0 },
             Range = 10.0,
             Zone = 1455,
@@ -379,7 +379,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96393,
             NonSkippableWaypoint = true,
-            Note = { "Go up to ramp to" },
+            Note = { "UP_RAMP" },
             Coord = { x = -1090.9, y = -4830.4 },
             Range = 10.0,
             Zone = 1455,
@@ -388,7 +388,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96393,
             NonSkippableWaypoint = true,
-            Note = { "Go up to ramp to" },
+            Note = { "UP_RAMP" },
             Coord = { x = -1079.6, y = -4884.1 },
             Range = 10.0,
             Zone = 1455,
@@ -397,7 +397,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 96393,
             NonSkippableWaypoint = true,
-            Note = { "Go up to ramp to" },
+            Note = { "UP_RAMP" },
             Coord = { x = -1058.0, y = -4842.5 },
             Range = 10.0,
             Zone = 1455,
@@ -476,7 +476,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Buy `Grimoire of Sacrifice (Rank 1)`" },
+            Note = { "BUY_GRIMOIRE_SACRIFICE_RANK_1" },
             Coord = { x = -1134.2, y = -4610.39 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -488,7 +488,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Buy `Grimoire of Sacrifice (Rank 1)`" },
+            Note = { "BUY_GRIMOIRE_SACRIFICE_RANK_1" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
             Class = "WARLOCK",

@@ -209,6 +209,28 @@ class LocalizationCheckOutcomeTests(unittest.TestCase):
         self.assertTrue(any(d["code"] == "placeholder_mismatch" and d["locale"] == "frFR"
                             for d in payload["diagnostics"]))
 
+    def test_route_templates_without_format_arguments_fail_in_scalar_and_list_fields(self):
+        (self.root / "Routes/Test.lua").write_text(
+            'local x = {\n Note = "READY",\n ExtraLineText = {"READY"},\n ExtraLineText2 = { {text="READY"} }\n}',
+            encoding="utf-8",
+        )
+        status, body, payload = self.run_check()
+        self.assertEqual(status, 1)
+        errors = [d for d in payload["diagnostics"] if d["code"] == "unformatted_route_text"]
+        self.assertEqual([(d["path"], d["line"], d["key"]) for d in errors],
+                         [("Routes/Test.lua", line, "READY") for line in (2, 3, 4)])
+        self.assertIn("Format parameters without route arguments", body)
+
+    def test_route_literal_percent_and_date_formats_do_not_require_arguments(self):
+        for locale in self.exports:
+            self.exports[locale] += '\nL["PERCENT"] = "100% complete %%s"\nL["DATE"] = "%Y-%m-%d"'
+        (self.root / "Routes/Test.lua").write_text(
+            'local x = { Note = {"PERCENT", "DATE"} }', encoding="utf-8",
+        )
+        status, _, payload = self.run_check()
+        self.assertEqual(status, 0)
+        self.assertFalse(any(d["code"] == "unformatted_route_text" for d in payload["diagnostics"]))
+
     def test_locale_export_failure_preserves_available_results_and_blocks(self):
         self.exports["frFR"] = script.requests.HTTPError("sensitive-response")
         status, body, payload = self.run_check()

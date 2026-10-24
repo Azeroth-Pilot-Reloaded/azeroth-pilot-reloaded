@@ -12,7 +12,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 2 } },
     steps = {
         {
-            Note = { "Cast `Life Tap` repeatedly until you have <10% health while on the way to Dungar Longdrink" },
+            Note = { "CAST_LIFE_TAP_REPEATEDLY_10_HEALTH_WAY_DUNGAR" },
             Class = "WARLOCK",
             Hardcore = false,
             Race = "Gnome",
@@ -26,7 +26,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             DeathSkip = true,
-            Note = { "Cast `Life Tap` repeatedly until you have <10% health then jump down the ledge (NOT into the water) next to the flight master and die intentionally", "Respawn at the Spirit Healer" },
+            Note = { "CAST_LIFE_TAP_REPEATEDLY_10_HEALTH_JUMP_LEDGE_NOT", "RESPAWN_SPIRIT_HEALER" },
             Class = "WARLOCK",
             Hardcore = false,
             Race = "Gnome",
@@ -34,13 +34,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
             _index = 3,
         },
         {
-            Note = { "Travel to Goldshire" },
+            Note = { "TRAVEL_GOLDSHIRE" },
             _index = 4,
         },
         {
             Waypoint = 40,
             NonSkippableWaypoint = true,
-            Note = { "Travel upstairs in the Inn" },
+            Note = { "TRAVEL_UPSTAIRS_INN" },
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
             Class = { "MAGE", "ROGUE" },
@@ -94,7 +94,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             PickUp = { 176 },
-            Note = { "Click the Wanted Poster" },
+            Note = { "CLICK_WANTED_POSTER" },
             Coord = { x = 683.4, y = -9667.93 },
             Class = "WARLOCK",
             Race = "Gnome",
@@ -104,14 +104,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             DropQuest = 123,
             DroppableQuest = { MobId = 97, Qid = 123, Text = "Riverpaw Runt" },
-            Note = { "The `Gold Pickup Schedule` is a very rare drop. Ignore this step if you don't get it", "Gruff Swiftbite a rare spawn, does have a 100% drop chance" },
+            Note = { "GOLD_PICKUP_SCHEDULE_RARE_DROP_IGNORE_STEP_NOT_GET", "GRUFF_SWIFTBITE_RARE_SPAWN_100_DROP_CHANCE" },
             Class = "WARLOCK",
             Race = "Gnome",
             _index = 13,
         },
         {
             Qpart = { [176] = { 1 } },
-            Note = { "Hogger can spawn in multiple locations", "Cast `Fear` on Hogger continously and use your regular DoTs to kill him", "This quest is difficult. Find a group for him if needed. Skip this step if you're unable to find a group or solo him" },
+            Note = { "HOGGER_SPAWN_MULTIPLE_LOCATIONS", "CAST_FEAR_HOGGER_CONTINOUSLY_USE_REGULAR_TS_KILL", "QUEST_DIFFICULT_FIND_GROUP_SKIP_STEP_UNABLE_FIND" },
             Coord = { x = 629.53, y = -10029.65 },
             Range = 30,
             Class = "WARLOCK",
@@ -128,7 +128,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Waypoint = 35,
             NonSkippableWaypoint = true,
-            Note = { "Travel east to Guard Thomas" },
+            Note = { "TRAVEL_EAST_GUARD_THOMAS" },
             Coord = { x = -1032.06, y = -9610.23 },
             Range = 30.0,
             Zone = 1429,
@@ -149,7 +149,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Done = { 37 },
             Fillers = { [52] = { 1, 2 } },
-            Note = { "Click A half-eaten body on the ground" },
+            Note = { "CLICK_HALF_EATEN_BODY_GROUND" },
             Coord = { x = -986.35, y = -9336.06 },
             Zone = 1429,
             _index = 19,
@@ -157,7 +157,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             PickUp = { 45 },
             Fillers = { [52] = { 1, 2 } },
-            Note = { "Click A half-eaten body on the ground" },
+            Note = { "CLICK_HALF_EATEN_BODY_GROUND" },
             Coord = { x = -986.35, y = -9336.06 },
             Zone = 1429,
             _index = 20,
@@ -172,7 +172,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Done = { 45 },
             Fillers = { [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "Click Rolf's corpse on the ground", "CAREFUL_NEARBY_MURLOCS_AGGRO_CLICK_ROLF_CORPSE", "Murloc Foragers will cast `Drink Minor Potion` which heals themselves for 61-68" },
+            Note = { "CLICK_ROLF_CORPSE_GROUND", "CAREFUL_NEARBY_MURLOCS_AGGRO_CLICK_ROLF_CORPSE", "MURLOC_FORAGERS_CAST_DRINK_MINOR_POTION_HEALS_61" },
             Coord = { x = -1234.31, y = -9224.18 },
             Zone = 1429,
             _index = 22,
@@ -180,7 +180,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             PickUp = { 71 },
             Fillers = { [52] = { 1, 2 }, [5545] = { 1 } },
-            Note = { "Click Rolf's corpse on the ground", "CAREFUL_NEARBY_MURLOCS_AGGRO_CLICK_ROLF_CORPSE", "Murloc Foragers will cast `Drink Minor Potion` which heals themselves for 61-68" },
+            Note = { "CLICK_ROLF_CORPSE_GROUND", "CAREFUL_NEARBY_MURLOCS_AGGRO_CLICK_ROLF_CORPSE", "MURLOC_FORAGERS_CAST_DRINK_MINOR_POTION_HEALS_61" },
             Coord = { x = -1234.31, y = -9224.18 },
             Zone = 1429,
             _index = 23,
@@ -188,7 +188,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Qpart = { [5545] = { 1 } },
             Fillers = { [52] = { 1, 2 } },
-            Note = { "Loot the Bundles of Wood on the ground at the base of the trees" },
+            Note = { "LOOT_BUNDLES_WOOD_GROUND_BASE_TREES" },
             Coord = { x = -1296.085, y = -9268.27 },
             Range = 30,
             Zone = 1429,
@@ -211,7 +211,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Qpart = { [91733] = { 2 } },
             Fillers = { [52] = { 1, 2 } },
-            Note = { "Loot the Waterlogged Saw on the ground" },
+            Note = { "LOOT_WATERLOGGED_SAW_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 74.3, 76.4),
             Zone = 1429,
             _index = 27,
@@ -219,7 +219,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Qpart = { [91733] = { 1 } },
             Fillers = { [52] = { 1, 2 } },
-            Note = { "Loot the Waterlogged Axe on the ground" },
+            Note = { "LOOT_WATERLOGGED_AXE_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 76.7, 82.5),
             Zone = 1429,
             _index = 28,
@@ -227,7 +227,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Qpart = { [91733] = { 3 } },
             Fillers = { [52] = { 1, 2 } },
-            Note = { "Loot the Waterlogged Toolbox on the ground" },
+            Note = { "LOOT_WATERLOGGED_TOOLBOX_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1429, 77.3, 86.8),
             Zone = 1429,
             _index = 29,
@@ -235,7 +235,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             DropQuest = 91740,
             DroppableQuest = { MobId = 248278, Qid = 91740, Text = "Croaky" },
-            Note = { "He is a level 11 elite. Skip this step if you are unable to kill him" },
+            Note = { "LEVEL_11_ELITE_SKIP_STEP_UNABLE_KILL" },
             Coord = { x = -1119.8, y = -9931.3 },
             Zone = 1429,
             _index = 30,
@@ -249,7 +249,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Qpart = { [1688] = { 1 } },
-            Note = { "FOCUS_KILLING_SURENA_CALEDON_QUICKLY", "Cast `Fear` on Morgan the Collector continously" },
+            Note = { "FOCUS_KILLING_SURENA_CALEDON_QUICKLY", "CAST_FEAR_MORGAN_COLLECTOR_CONTINOUSLY" },
             Coord = { x = -932.35, y = -9806.53 },
             Range = 30,
             Class = "WARLOCK",
@@ -260,7 +260,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Qpart = { [147] = { 1 } },
-            Note = { "FOCUS_KILLING_SURENA_CALEDON_QUICKLY", "Cast `Fear` on Morgan the Collector continously" },
+            Note = { "FOCUS_KILLING_SURENA_CALEDON_QUICKLY", "CAST_FEAR_MORGAN_COLLECTOR_CONTINOUSLY" },
             Coord = { x = -932.35, y = -9806.53 },
             Range = 30,
             Class = "WARLOCK",
@@ -271,7 +271,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Qpart = { [1688] = { 1 } },
-            Note = { "FOCUS_KILLING_SURENA_CALEDON_QUICKLY", "Cast `Fear` on Morgan the Collector continously" },
+            Note = { "FOCUS_KILLING_SURENA_CALEDON_QUICKLY", "CAST_FEAR_MORGAN_COLLECTOR_CONTINOUSLY" },
             Coord = { x = -932.35, y = -9806.53 },
             Range = 10,
             Class = "WARLOCK",
@@ -281,7 +281,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Qpart = { [88] = { 1 } },
-            Note = { "Princess will aggro with both of her Porcine Entourage", "Princess will also cast `Rushing Charge` which deals heavy damage", "Pool 100 Rage before you engage Princess", "Be ready to use a `Lesser Healing Potion`" },
+            Note = { "PRINCESS_AGGRO_PORCINE_ENTOURAGE", "TARGET_CHARGE_DEALS_HEAVY_DAMAGE", "POOL_100_RAGE_ENGAGING", "READY_USE_LESSER_HEALING_POTION" },
             Coord = { x = -869.87, y = -9768.1 },
             Range = 10,
             Class = "WARRIOR",
@@ -290,7 +290,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Qpart = { [88] = { 1 } },
-            Note = { "Princess will aggro with both of her Porcine Entourage", "Princess will also cast `Rushing Charge` which deals heavy damage", "SURE_EVASION_READY_STRUGGLING_USE_FENCE_THROWING", "Be ready to use a `Lesser Healing Potion`" },
+            Note = { "PRINCESS_AGGRO_PORCINE_ENTOURAGE", "TARGET_CHARGE_DEALS_HEAVY_DAMAGE", "SURE_EVASION_READY_STRUGGLING_USE_FENCE_THROWING", "READY_USE_LESSER_HEALING_POTION" },
             Coord = { x = -869.87, y = -9768.1 },
             Range = 10,
             Class = "ROGUE",
@@ -299,7 +299,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Qpart = { [88] = { 1 } },
-            Note = { "Princess will aggro with both of her Porcine Entourage", "Princess will also cast `Rushing Charge` which deals heavy damage", "Be ready to use a `Lesser Healing Potion`" },
+            Note = { "PRINCESS_AGGRO_PORCINE_ENTOURAGE", "TARGET_CHARGE_DEALS_HEAVY_DAMAGE", "READY_USE_LESSER_HEALING_POTION" },
             Coord = { x = -869.87, y = -9768.1 },
             Range = 10,
             Class = { "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" },
@@ -327,7 +327,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
             _index = 40,
         },
         {
-            Note = { "Travel to Ridgepoint Tower" },
+            Note = { "TRAVEL_RIDGEPOINT_TOWER" },
             _index = 41,
         },
         {
@@ -354,14 +354,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             Done = { 244 },
-            Note = { "Be careful of high level mobs en route" },
+            Note = { "BEWARE_HIGH_LEVEL_ENEMIES" },
             Coord = { x = -2238.0, y = -9443.69 },
             Zone = 1433,
             _index = 45,
         },
         {
             GetFP = 5,
-            Note = { "Fly to Stormwind" },
             Coord = { x = -2234.9, y = -9435.3 },
             Zone = 1433,
             _index = 46,
@@ -369,7 +368,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             UseFlightPath = 39,
             NodeID = 2,
-            Note = { "Get the Redridge Mountains flight path" },
             Coord = { x = -2234.9, y = -9435.3 },
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 1433,
@@ -378,7 +376,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             UseFlightPath = 1688,
             NodeID = 2,
-            Note = { "Get the Redridge Mountains flight path" },
+            Note = { "GET_REDRIDGE_MOUNTAINS_FLIGHT_PATH" },
             Coord = { x = -2234.9, y = -9435.3 },
             Class = "WARLOCK",
             Zone = 1433,
@@ -386,7 +384,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             BuyMerchant = { { itemID = 729, quantity = 3, questID = 38 }, { itemID = 730, quantity = 3, questID = 38 }, { itemID = 731, quantity = 3, questID = 38 }, { itemID = 732, quantity = 3, questID = 38 }, { itemID = 723, quantity = 8, questID = 22 } },
-            Note = { "If you don't want to or can't do this, skip this step", "`Stringy Vulture Meat`", "`Murloc Eye`", "`Goretusk Snout`", "`Okra`", "`Goretusk Liver`" },
+            Note = { "NOT_WANT_CANNOT_SKIP_STEP", "STRINGY_VULTURE_MEAT", "MURLOC_EYE", "GORETUSK_SNOUT", "OKRA", "GORETUSK_LIVER" },
             Coord = { x = 660.28, y = -8814.55 },
             AnyOf = { { ItemCount = { itemID = 729, count = 3, operator = "<" } }, { ItemCount = { itemID = 730, count = 3, operator = "<" } }, { ItemCount = { itemID = 731, count = 3, operator = "<" } }, { ItemCount = { itemID = 732, count = 3, operator = "<" } }, { ItemCount = { itemID = 723, count = 8, operator = "<" } } },
             Zone = 1453,
@@ -395,7 +393,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Waypoint = 1688,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
             Class = "WARLOCK",
@@ -406,7 +404,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Waypoint = 1688,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -442,7 +440,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Waypoint = 1689,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the bottom of The Slaughtered Lamb", "Use the `Bloodstone Choker` to call forth a Summoned Voidwalker" },
+            Note = { "TRAVEL_BOTTOM_SLAUGHTERED_LAMB", "USE_BLOODSTONE_CHOKER_CALL_FORTH_SUMMONED" },
             Coord = { x = 1042.22, y = -9002.21 },
             Range = 18.0,
             Class = "WARLOCK",
@@ -453,7 +451,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Waypoint = 1689,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the bottom of The Slaughtered Lamb", "Use the `Bloodstone Choker` to call forth a Summoned Voidwalker" },
+            Note = { "TRAVEL_BOTTOM_SLAUGHTERED_LAMB", "USE_BLOODSTONE_CHOKER_CALL_FORTH_SUMMONED" },
             Coord = { x = 1069.1, y = -8991.45 },
             Range = 18.0,
             Class = "WARLOCK",
@@ -464,7 +462,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Waypoint = 1689,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the bottom of The Slaughtered Lamb", "Use the `Bloodstone Choker` to call forth a Summoned Voidwalker" },
+            Note = { "TRAVEL_BOTTOM_SLAUGHTERED_LAMB", "USE_BLOODSTONE_CHOKER_CALL_FORTH_SUMMONED" },
             Coord = { x = 1027.43, y = -8991.45 },
             Range = 18.0,
             Class = "WARLOCK",
@@ -474,7 +472,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             UseItem = { itemID = 6928, itemSpellID = 7728 },
-            Note = { "Travel to the bottom of The Slaughtered Lamb", "Use the `Bloodstone Choker` to call forth a Summoned Voidwalker" },
+            Note = { "TRAVEL_BOTTOM_SLAUGHTERED_LAMB", "USE_BLOODSTONE_CHOKER_CALL_FORTH_SUMMONED" },
             Coord = { x = 1042.83, y = -8972.68 },
             Class = "WARLOCK",
             Race = "Gnome",
@@ -492,7 +490,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
             _index = 59,
         },
         {
-            Note = { "Start casting `Life Tap` on your way back up to Gakin the Darkbinder as you will do a deathskip momentarily" },
+            Note = { "START_CASTING_LIFE_TAP_WAY_BACK_GAKIN_DARKBINDER" },
             Class = "WARLOCK",
             Hardcore = false,
             Race = "Gnome",
@@ -508,7 +506,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             DeathSkip = true,
-            Note = { "Die and respawn at the Spirit Healer by using `Life Tap` and standing on the Bonfire next to you" },
+            Note = { "DIE_RESPAWN_SPIRIT_HEALER_USING_LIFE_TAP_STANDING" },
             Class = "WARLOCK",
             Hardcore = false,
             Race = "Gnome",
@@ -518,7 +516,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Waypoint = 39,
             NonSkippableWaypoint = true,
-            Note = { "Exit Stormwind. Travel to Goldshire" },
+            Note = { "EXIT_STORMWIND_TRAVEL_GOLDSHIRE" },
             Coord = { x = 74.02, y = -9465.52 },
             Range = 5,
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -528,7 +526,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Waypoint = 147,
             NonSkippableWaypoint = true,
-            Note = { "Exit Stormwind. Travel to Goldshire" },
+            Note = { "EXIT_STORMWIND_TRAVEL_GOLDSHIRE" },
             Coord = { x = 74.02, y = -9465.52 },
             Range = 5,
             Class = "WARLOCK",
@@ -579,7 +577,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         {
             Waypoint = 88,
             NonSkippableWaypoint = true,
-            Note = { "Travel upstairs in the Inn" },
+            Note = { "TRAVEL_UPSTAIRS_INN" },
             Coord = { x = 12.52, y = -9479.85 },
             Range = 9.0,
             Class = { "MAGE", "PRIEST", "ROGUE" },
@@ -619,7 +617,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             LootItems = { { itemID = 2589, quantity = 10, questID = 1648 } },
-            Note = { "Kill Riverpaw Runts and Riverpaw Outrunners. Loot them for `Linen Cloth`", "Ensure you have 10 `Linen Cloth` for your upcoming Paladin class quest" },
+            Note = { "KILL_RIVERPAW_RUNTS_RIVERPAW_OUTRUNNERS_LOOT_LINEN", "ENSURE_10_LINEN_CLOTH_UPCOMING_PALADIN_CLASS_QUEST" },
             Coord = { x = 629.53, y = -10029.65 },
             Range = 30,
             Class = "PALADIN",
@@ -694,7 +692,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             DeathSkip = true,
-            Note = { "Die and respawn at the Spirit Healer or run to Sentinel Hill" },
+            Note = { "DIE_RESPAWN_SPIRIT_HEALER_RUN_SENTINEL_HILL" },
             Hardcore = false,
             SkipForLvl = 10,
             _index = 85,
@@ -731,7 +729,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             UseHS = 2999,
-            Note = { "Hearth to Ironforge", "BUY_FOOD_WATER_IF_NEEDED" },
+            Note = { "BUY_FOOD_WATER_IF_NEEDED" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             Class = "PALADIN",
             Race = "Dwarf",
@@ -749,7 +747,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             UseHS = 418,
-            Note = { "Hearth to Thelsamar", "BUY_FOOD_IF_NEEDED" },
+            Note = { "BUY_FOOD_IF_NEEDED" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             Class = { "ROGUE", "WARRIOR" },
             SkipInZones = { 1432 },
@@ -757,7 +755,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
         },
         {
             UseHS = 418,
-            Note = { "Hearth to Thelsamar", "BUY_FOOD_WATER_IF_NEEDED" },
+            Note = { "BUY_FOOD_WATER_IF_NEEDED" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             Class = { "MAGE", "PRIEST", "SHAMAN", "WARLOCK" },
             SkipInZones = { 1432 },

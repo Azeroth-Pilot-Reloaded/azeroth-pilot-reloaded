@@ -251,7 +251,10 @@ class RouteSchema:
                                          choices=(("mapID", "dungeonKey"),))
         for name in "BuyMerchant LootItems".split():
             fields = {"itemID": ID, "quantity": ID, "questID": ID}
-            if name == "LootItems": fields["includeBank"] = BOOL
+            if name == "LootItems":
+                fields["includeBank"] = BOOL
+                fields["quantityFromSkill"] = obj({"skill": union(ID, TEXT), "skillID": ID, "rank": ID},
+                                                   required=("rank",), choices=(("skill", "skillID"),))
             if name == "BuyMerchant":
                 fields.update(targetStock=BOOL, optional=BOOL, reserveCopper=COUNT, conditions=condition,
                               quantityFromItemID=ID, bagSlots=number(1, 40, integer=True))

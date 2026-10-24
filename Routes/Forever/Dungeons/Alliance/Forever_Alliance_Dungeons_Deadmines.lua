@@ -22,14 +22,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             UseFlightPath = 65,
             NodeID = 4,
-            Note = { "If you do not already have the Westfall flight path, skip this step" },
+            Note = { "NOT_ALREADY_WESTFALL_FLIGHT_PATH_SKIP_STEP" },
             Coord = { x = 490.03, y = -8835.82 },
             Race = { "NightElf", "Skyborne" },
             Zone = 1453,
             _index = 2,
         },
         {
-            Note = { "Travel to Westfall" },
+            Note = { "TRAVEL_WESTFALL" },
             Zone = 1436,
             _index = 3,
         },
@@ -42,7 +42,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 65,
             NonSkippableWaypoint = true,
-            Note = { "Fly to Redridge Mountains" },
+            Note = { string.format(L["FLY_TO"], L["Redridge Mountains"]) },
             Coord = { x = 490.03, y = -8835.82 },
             Range = 5,
             AnyOf = { { SkipInZones = { 1429, 1433 }, Race = "Human" }, { SkipInZones = { 1429, 1433 }, Race = "Dwarf" }, { SkipInZones = { 1429, 1433 }, Race = "Gnome" } },
@@ -60,7 +60,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 65,
             NonSkippableWaypoint = true,
-            Note = { "If you do not already have the Redridge Mountains flight path, skip this step", "Fly to Redridge Mountains" },
+            Note = { "NOT_ALREADY_REDRIDGE_MOUNTAINS_FLIGHT_PATH_SKIP", string.format(L["FLY_TO"], L["Redridge Mountains"]) },
             Coord = { x = 490.03, y = -8835.82 },
             Range = 5,
             AnyOf = { { SkipInZones = { 1429, 1433 }, Race = "NightElf" }, { SkipInZones = { 1429, 1433 }, Race = "Skyborne" } },
@@ -70,7 +70,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             UseFlightPath = 65,
             NodeID = 5,
-            Note = { "If you do not already have the Redridge Mountains flight path, skip this step" },
+            Note = { "NOT_ALREADY_REDRIDGE_MOUNTAINS_FLIGHT_PATH_SKIP" },
             Coord = { x = 1037.42, y = -10628.27 },
             AnyOf = { { SkipInZones = { 1429, 1433 }, Race = "NightElf" }, { SkipInZones = { 1429, 1433 }, Race = "Skyborne" } },
             Zone = 1436,
@@ -119,7 +119,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Qpart = { [3741] = { 1 } },
-            Note = { "JUMP_LAKE", "Open the Glinting Mud. Loot it for Hilary's Necklace", "It has multiple spawn locations in the Lake" },
+            Note = { "JUMP_LAKE", "OPEN_GLINTING_MUD_LOOT_HILARY_NECKLACE", "MULTIPLE_SPAWN_LOCATIONS_LAKE" },
             Coord = { x = -2192.23, y = -9347.32 },
             Range = 30,
             Zone = 1433,
@@ -127,7 +127,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Qpart = { [125] = { 1 } },
-            Note = { "Open the Sunken Chest. Loot it for Oslow's Toolbox" },
+            Note = { "OPEN_SUNKEN_CHEST_LOOT_OSLOW_TOOLBOX" },
             Coord = { x = -2472.16, y = -9366.72 },
             Zone = 1433,
             _index = 16,
@@ -173,7 +173,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 135,
             NonSkippableWaypoint = true,
-            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
+            Note = { "ENTER_SI_7_HEADQUARTERS_GO_STAIRS" },
             Coord = { x = 374.11, y = -8762.88 },
             Range = 20.0,
             Zone = 1453,
@@ -182,7 +182,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 135,
             NonSkippableWaypoint = true,
-            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
+            Note = { "ENTER_SI_7_HEADQUARTERS_GO_STAIRS" },
             Coord = { x = 326.66, y = -8818.01 },
             Range = 20.0,
             Zone = 1453,
@@ -191,7 +191,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 135,
             NonSkippableWaypoint = true,
-            Note = { "Enter the SI:7 Headquarters. Go up stairs" },
+            Note = { "ENTER_SI_7_HEADQUARTERS_GO_STAIRS" },
             Coord = { x = 323.43, y = -8817.83 },
             Range = 10.0,
             Zone = 1453,
@@ -211,7 +211,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             BuyMerchant = { { itemID = 814, quantity = 5, questID = 103 } },
-            Note = { "If you don't want to or can't do this, skip this step", "`Flask of Oil`" },
+            Note = { "NOT_WANT_CANNOT_SKIP_STEP", "FLASK_OIL" },
             Coord = { x = 660.28, y = -8814.55 },
             ItemCount = { itemID = 814, count = 5, operator = "<" },
             Zone = 1453,
@@ -254,7 +254,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Qpart = { [142] = { 1 } },
-            Note = { "The Defias Messenger spawns in Moonbrook. He walks along the road north of Moonbrook, to the Gold Coast Quarry and Jangolode Mine. If you don't see him along the road, wait for him to spawn in Moonbrook" },
+            Note = { "DEFIAS_MESSENGER_SPAWNS_MOONBROOK_WALKS_ROAD_NORTH" },
             Coord = { x = 1459.17, y = -11024.47 },
             Range = 30,
             Zone = 1436,
@@ -268,14 +268,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 155 },
-            Note = { "You may need to wait for The Defias Traitor to spawn if he's not there" },
+            Note = { "WAIT_DEFIAS_TRAITOR_SPAWN_NOT" },
             Coord = { x = 1067.87, y = -10508.33 },
             Zone = 1436,
             _index = 36,
         },
         {
             Qpart = { [155] = { 1 } },
-            Note = { "Escort the The Defias Traitor to the Deadmines" },
+            Note = { "ESCORT_DEFIAS_TRAITOR_DEADMINES" },
             Coord = { x = 1527.07, y = -11073.23 },
             Zone = 1436,
             _index = 37,
@@ -301,7 +301,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 103,
             NonSkippableWaypoint = true,
-            Note = { "Grind Gnolls south of Sentinel Hill whilst assembling a Deadmines group", "When your group has been assembled, travel to Moonbrook" },
+            Note = { "GRIND_GNOLLS_SOUTH_SENTINEL_HILL_WHILST_ASSEMBLING", "GROUP_ASSEMBLED_TRAVEL_MOONBROOK" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 42.649, 71.376),
             Range = 5,
             Zone = 1436,
@@ -310,7 +310,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 103,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Defias Hideout with your group" },
+            Note = { "ENTER_DEFIAS_HIDEOUT_GROUP" },
             Coord = { x = 1527.42, y = -11072.77 },
             Range = 5,
             Zone = 1436,
@@ -319,7 +319,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Qpart = { [167] = { 1 } },
             Fillers = { [214] = { 1 }, [168] = { 1 } },
-            Note = { "This is completed OUTSIDE of the Dungeon" },
+            Note = { "COMPLETED_OUTSIDE_DUNGEON" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 41.05, 79.955),
             Range = 30,
             Zone = 1415,
@@ -328,7 +328,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Qpart = { [168] = { 1 } },
             Fillers = { [214] = { 1 } },
-            Note = { "NOTE: This quest does NOT give bonus XP similar to other dungeon quests, and takes significantly longer to complete. Consider skipping this quest if your group agrees", "This is completed OUTSIDE of the Dungeon" },
+            Note = { "NOTE_QUEST_NOT_GIVE_BONUS_XP_SIMILAR_DUNGEON", "COMPLETED_OUTSIDE_DUNGEON" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 41.05, 79.955),
             Range = 30,
             Zone = 1415,
@@ -428,7 +428,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             LootItems = { { itemID = 2874, quantity = 1, questID = 373 } },
             Fillers = { [214] = { 1 } },
-            Note = { "Kill Edwin VanCleef. Loot him for his Head and `An Unsent Letter`", "Use `An Unsent Letter` to start the quest" },
+            Note = { "KILL_EDWIN_VAN_CLEEF_LOOT_HEAD_UNSENT_LETTER", "USE_UNSENT_LETTER_START_QUEST" },
             Button = { ["166"] = 2874 },
             NoArrow = true,
             Dungeon = "DM",
@@ -438,7 +438,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Qpart = { [166] = { 1 } },
             Fillers = { [214] = { 1 } },
-            Note = { "Use `An Unsent Letter` to start the quest" },
+            Note = { "USE_UNSENT_LETTER_START_QUEST" },
             Button = { ["166-1"] = 2874 },
             NoArrow = true,
             Dungeon = "DM",
@@ -448,7 +448,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             PickUp = { 373 },
             Fillers = { [214] = { 1 } },
-            Note = { "Kill Edwin VanCleef. Loot him for his Head and `An Unsent Letter`" },
+            Note = { "KILL_EDWIN_VAN_CLEEF_LOOT_HEAD_UNSENT_LETTER" },
             Button = { ["373"] = 2874 },
             NoArrow = true,
             Dungeon = "DM",
@@ -515,7 +515,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 79008 },
-            Note = { "Click the Burned-Out Remains on the ground" },
+            Note = { "CLICK_BURNED_REMAINS_GROUND" },
             Coord = { x = 1707.2116, y = -10583.0227 },
             Class = "DRUID",
             Race = { "NightElf", "Skyborne" },
@@ -525,7 +525,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 272,
             NonSkippableWaypoint = true,
-            Note = { "Swim out to sea" },
+            Note = { "SWIM_SEA" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 17.928, 33.099),
             Range = 50.0,
             Class = "DRUID",
@@ -535,7 +535,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             LootItems = { { itemID = 15882, quantity = 1, questID = 272 } },
-            Note = { "Open the Strange Lockbox. Loot it for the Half Pendant of Aquatic Endurance" },
+            Note = { "OPEN_STRANGE_LOCKBOX_AQUATIC_ENDURANCE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1436, 17.928, 33.099),
             Class = "DRUID",
             Race = { "NightElf", "Skyborne" },
@@ -559,7 +559,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Qpart = { [272] = { 1 } },
-            Note = { "Use the `Half Pendant of Aquatic Agility` to combine it with the `Half Pendant of Aquatic Endurance` at the Shrine of Remulos" },
+            Note = { "USE_HALF_PENDANT_AQUATIC_AGILITY_COMBINE_HALF" },
             Coord = { x = -2212.25, y = 7854.28 },
             Button = { ["272-1"] = 15883 },
             Class = "DRUID",
@@ -569,7 +569,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             UseSpell = { spellID = 18960, questID = 272 },
-            Note = { "This will save you time from running back" },
+            Note = { "SAVE_TIME_RUNNING_BACK" },
             Class = "DRUID",
             Race = { "NightElf", "Skyborne" },
             _index = 73,
@@ -592,14 +592,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             UseHS = 166,
-            Note = { "Hearth to Sentinel Hill" },
             Class = "DRUID",
             Race = { "NightElf", "Skyborne" },
             _index = 76,
         },
         {
             PickUp = { 79008 },
-            Note = { "Click the Burned-Out Remains on the ground" },
+            Note = { "CLICK_BURNED_REMAINS_GROUND" },
             Coord = { x = 1707.2116, y = -10583.0227 },
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             Zone = 1436,
@@ -669,7 +668,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             PickUp = { 95999 },
-            Note = { "Click the Wanted Poster" },
+            Note = { "CLICK_WANTED_POSTER" },
             Coord = { x = -2208.6, y = -9243.5 },
             SkipForLvl = 20,
             Zone = 1433,
@@ -685,7 +684,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Qpart = { [20] = { 1 } },
-            Note = { "Be aware the Blackrock Outrunners will cast `Net` on you" },
+            Note = { "AWARE_BLACKROCK_OUTRUNNERS_CAST_NET" },
             Coord = { x = -3176.27, y = -9674.62 },
             Range = 30,
             SkipForLvl = 20,
@@ -694,7 +693,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Qpart = { [98387] = { 1, 2 } },
-            Note = { "Loot the Grain Sacks and Meat Haunches on the ground for Stolen Supplies", "Loot the Weapon Racks and Stolen Weapons the ground" },
+            Note = { "LOOT_GRAIN_SACKS_MEAT_HAUNCHES_GROUND_STOLEN", "LOOT_WEAPON_RACKS_STOLEN_WEAPONS_GROUND" },
             Coord = { x = -3176.27, y = -9674.62 },
             Range = 30,
             SkipForLvl = 20,
@@ -703,7 +702,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Qpart = { [95999] = { 1 } },
-            Note = { "INSIDE_CAVE", "Skip this step if you are unable to find a group for him" },
+            Note = { "INSIDE_CAVE", "SKIP_STEP_UNABLE_FIND_GROUP" },
             Coord = { x = -3261.4, y = -9824.7 },
             Range = 10,
             IsQuestOnQuest = 95999,
@@ -713,7 +712,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Qpart = { [94499] = { 1 } },
-            Note = { "Use the `Unfilled Red Waterskin` at Stonewatch Falls" },
+            Note = { "USE_UNFILLED_RED_WATERSKIN_STONEWATCH_FALLS" },
             Coord = { x = -3121.1, y = -9485.0 },
             Button = { ["94499-1"] = 265747 },
             Class = "SHAMAN",
@@ -739,14 +738,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Qpart = { [98387] = { 1 } },
-            Note = { "Loot the Grain Sacks and Meat Haunches on the ground for Stolen Supplies", "Loot the Weapon Racks and Stolen Weapons the ground" },
+            Note = { "LOOT_GRAIN_SACKS_MEAT_HAUNCHES_GROUND_STOLEN", "LOOT_WEAPON_RACKS_STOLEN_WEAPONS_GROUND" },
             IsQuestOnQuest = 98387,
             SkipForLvl = 20,
             _index = 94,
         },
         {
             Qpart = { [98387] = { 2 } },
-            Note = { "Loot the Grain Sacks and Meat Haunches on the ground for Stolen Supplies", "Loot the Weapon Racks and Stolen Weapons the ground" },
+            Note = { "LOOT_GRAIN_SACKS_MEAT_HAUNCHES_GROUND_STOLEN", "LOOT_WEAPON_RACKS_STOLEN_WEAPONS_GROUND" },
             IsQuestOnQuest = 98387,
             SkipForLvl = 20,
             _index = 95,
@@ -782,13 +781,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Grind = 20,
-            Note = { "Grind to 20" },
             SkipForLvl = 20,
             _index = 99,
         },
         {
             UseHS = 167,
-            Note = { "Hearth to Stormwind" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             AnyOf = { { SkipInZones = { 1439, 1453 }, Race = "Human" }, { SkipInZones = { 1439, 1453 }, Race = "Dwarf" }, { SkipInZones = { 1439, 1453 }, Race = "Gnome" }, { SkipInZones = { 1439, 1453 }, Race = "NightElf", Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" } }, { SkipInZones = { 1439, 1453 }, Race = "Skyborne", Class = { "HUNTER", "MAGE", "ROGUE", "WARRIOR" } } },
             _index = 100,
@@ -796,7 +793,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 167,
             NonSkippableWaypoint = true,
-            Note = { "Fly to Stormwind" },
             Coord = { x = -2234.9, y = -9435.3 },
             Range = 5,
             AnyOf = { { SkipInZones = { 1439, 1453 }, Race = "Human" }, { SkipInZones = { 1439, 1453 }, Race = "Dwarf" }, { SkipInZones = { 1439, 1453 }, Race = "Gnome" }, { SkipInZones = { 1439, 1453 }, Race = "NightElf" }, { SkipInZones = { 1439, 1453 }, Race = "Skyborne" } },
@@ -880,7 +876,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             _index = 110,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your pet spells" },
+            LearnSkill = { allAvailable = true, npcID = 2879 },
             Coord = { x = 553.22, y = -8422.23 },
             Class = "HUNTER",
             MinLevel = 1,
@@ -899,7 +895,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Tram = true,
-            Note = { "Enter the Deeprun Tram. Take the Tram to Ironforge" },
+            Note = { "ENTER_DEEPRUN_TRAM_TAKE_TRAM_IRONFORGE" },
             Coord = { x = 522, y = -8352.101 },
             Range = 5,
             ZoneStepTrigger = { x = -1330.28, y = -4840.43, mapID = 1455, Range = 15 },
@@ -910,7 +906,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         },
         {
             Tram = true,
-            Note = { "Enter the Deeprun Tram. Take the Tram to Ironforge" },
+            Note = { "ENTER_DEEPRUN_TRAM_TAKE_TRAM_IRONFORGE" },
             Coord = { x = 522, y = -8352.101 },
             Range = 5,
             ZoneStepTrigger = { x = -1330.28, y = -4840.43, mapID = 1455, Range = 15 },
@@ -977,7 +973,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 3765,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
             Class = "WARLOCK",
@@ -988,7 +984,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
         {
             Waypoint = 3765,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -1076,7 +1072,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             _index = 131,
         },
         {
-            Note = { "Level your `First Aid` while waiting for the boat to Darkshore if needed" },
+            Note = { "LEVEL_FIRST_AID_WAITING_BOAT_DARKSHORE" },
             Boat = true,
             Coord = { x = 1330.1, y = -8645.4 },
             Range = 5,
@@ -1096,7 +1092,8 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Deadmines"] = {
             _index = 133,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 95999" },
+            LeaveQuest = 95999,
+            IsQuestOnQuest = 95999,
             _index = 134,
         },
         {

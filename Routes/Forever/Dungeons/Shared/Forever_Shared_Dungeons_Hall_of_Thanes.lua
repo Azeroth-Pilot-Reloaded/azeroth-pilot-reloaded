@@ -33,7 +33,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Hall-of-Thanes"] = {
         },
         {
             LeaveInstance = { dungeonKey = "HOT" },
-            Note = { "Exit the Hall of Thanes. Fastest way is running straight down the corridor from the final boss room" },
+            Note = { "EXIT_HALL_THANES_FASTEST_WAY_RUNNING_STRAIGHT" },
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,

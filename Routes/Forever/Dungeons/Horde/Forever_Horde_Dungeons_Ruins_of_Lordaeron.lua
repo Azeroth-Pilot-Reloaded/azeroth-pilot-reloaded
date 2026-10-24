@@ -12,11 +12,11 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 6 } },
     steps = {
         {
-            Note = { "Now you should be looking for a group to Ruins of Lordaeron" },
+            Note = { "LOOKING_GROUP_RUINS_LORDAERON" },
             _index = 1,
         },
         {
-            Note = { "Leave Orgrimmar" },
+            Note = { "LEAVE_ORGRIMMAR" },
             AnyOf = { { SkipInZones = { 1421, 1458, 1420 }, Race = "Orc" }, { SkipInZones = { 1421, 1458, 1420 }, Race = "Troll" }, { SkipInZones = { 1421, 1458, 1420 }, Race = "Tauren" }, { SkipInZones = { 1421, 1458, 1420 }, Race = "Scourge" }, { SkipInZones = { 1421, 1458, 1420 }, Race = "Skyborne" } },
             Zone = 1411,
             _index = 2,
@@ -24,7 +24,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Go up the Zeppelin Tower", "Take the Zeppelin to Tirisfal Glades" },
+            Note = { "GO_ZEPPELIN_TOWER", "TAKE_ZEPPELIN_TIRISFAL_GLADES" },
             Coord = { x = -4648.55, y = 1321.88 },
             Range = 40.0,
             AnyOf = { { SkipInZones = { 1421, 1458 }, Race = "Orc", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" } }, { SkipInZones = { 1421, 1458 }, Race = "Troll", Class = { "HUNTER", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" } }, { SkipInZones = { 1421, 1458 }, Race = "Tauren" }, { SkipInZones = { 1421, 1458 }, Race = "Scourge", Class = { "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { SkipInZones = { 1421, 1458 }, Race = "Skyborne" } },
@@ -34,7 +34,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Go up the Zeppelin Tower", "Take the Zeppelin to Tirisfal Glades", "CONJURE_WATER" },
+            Note = { "GO_ZEPPELIN_TOWER", "TAKE_ZEPPELIN_TIRISFAL_GLADES", "CONJURE_WATER" },
             Coord = { x = -4648.55, y = 1321.88 },
             Range = 40.0,
             Class = "MAGE",
@@ -52,13 +52,13 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             PickUp = { 92401 },
-            Note = { "If possible, have somebody in your group share the following quest" },
+            Note = { "POSSIBLE_SOMEBODY_GROUP_SHARE_FOLLOWING_QUEST" },
             _index = 6,
         },
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Travel to Undercity" },
+            Note = { "TRAVEL_UNDERCITY" },
             Coord = { x = 240.75, y = 1877.57 },
             Range = 5,
             Zone = 1420,
@@ -67,7 +67,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
             Zone = 1458,
@@ -76,7 +76,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
             Zone = 1458,
@@ -85,7 +85,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
             Zone = 1458,
@@ -94,7 +94,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
             Zone = 1458,
@@ -103,7 +103,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
             Zone = 1458,
@@ -112,7 +112,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
             Zone = 1458,
@@ -121,7 +121,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 266.3, y = 1567.2 },
             Range = 20.0,
             Zone = 1458,
@@ -243,7 +243,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92422,
             NonSkippableWaypoint = true,
-            Note = { "Leave Undercity through the Sewers" },
+            Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 419.89, y = 1627.54 },
             Range = 50.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -257,7 +257,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92422,
             NonSkippableWaypoint = true,
-            Note = { "Leave Undercity through the Sewers" },
+            Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 428.52, y = 1597.2 },
             Range = 10.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -271,7 +271,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92422,
             NonSkippableWaypoint = true,
-            Note = { "Leave Undercity through the Sewers" },
+            Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 439.17, y = 1626.06 },
             Range = 10.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -285,7 +285,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92422,
             NonSkippableWaypoint = true,
-            Note = { "Leave Undercity through the Sewers" },
+            Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 476.78, y = 1632.15 },
             Range = 10.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -299,7 +299,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92422,
             NonSkippableWaypoint = true,
-            Note = { "Leave Undercity through the Sewers" },
+            Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 482.34, y = 1660.63 },
             Range = 10.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -313,7 +313,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92422,
             NonSkippableWaypoint = true,
-            Note = { "Leave Undercity through the Sewers" },
+            Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 539.33, y = 1665.49 },
             Range = 15.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -327,7 +327,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92422,
             NonSkippableWaypoint = true,
-            Note = { "Leave Undercity through the Sewers" },
+            Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 610.42, y = 1684.44 },
             Range = 35.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -341,7 +341,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92422,
             NonSkippableWaypoint = true,
-            Note = { "Leave Undercity through the Sewers" },
+            Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 663.19, y = 1600.46 },
             Range = 35.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -355,7 +355,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92422,
             NonSkippableWaypoint = true,
-            Note = { "Leave Undercity through the Sewers" },
+            Note = { "LEAVE_UNDERCITY_SEWERS" },
             Coord = { x = 724.25, y = 1682.66 },
             Range = 50.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -483,7 +483,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             PickUp = { 95204 },
             Fillers = { [92421] = { 1 } },
-            Note = { "Loot and use the `Crest of Lordaeron` to start the quest", "It has 5 possible spawn locations" },
+            Note = { "LOOT_USE_CREST_LORDAERON_START_QUEST", "QUEST_5_POSSIBLE_SPAWN_LOCATIONS" },
             Button = { ["95204"] = 275521 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -521,7 +521,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             LootItems = { { itemID = 280438, quantity = 1, questID = 97288 } },
             Fillers = { [92421] = { 1 } },
-            Note = { "Kill The Baron. Loot and use his `Abominable Head` to start the quest" },
+            Note = { "KILL_BARON_LOOT_USE_ABOMINABLE_HEAD_START_QUEST" },
             Button = { ["97288"] = 280438 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -534,7 +534,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             PickUp = { 97288 },
             Fillers = { [92421] = { 1 } },
-            Note = { "Kill The Baron. Loot and use his `Abominable Head` to start the quest" },
+            Note = { "KILL_BARON_LOOT_USE_ABOMINABLE_HEAD_START_QUEST" },
             Button = { ["97288"] = 280438 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -564,7 +564,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Qpart = { [92401] = { 1 } },
-            Note = { "Approach the body of Edward Heartweaver near Rath'mael" },
+            Note = { "APPROACH_BODY_EDWARD_HEARTWEAVER_RATH_MAEL" },
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
@@ -583,7 +583,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             LootItems = { { itemID = 275521, quantity = 1, questID = 95204 } },
-            Note = { "Loot and use the `Crest of Lordaeron` to start the quest", "It has 5 possible spawn locations" },
+            Note = { "LOOT_USE_CREST_LORDAERON_START_QUEST", "QUEST_5_POSSIBLE_SPAWN_LOCATIONS" },
             Button = { ["95204"] = 275521 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -594,7 +594,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             PickUp = { 95204 },
-            Note = { "Loot and use the `Crest of Lordaeron` to start the quest", "It has 5 possible spawn locations" },
+            Note = { "LOOT_USE_CREST_LORDAERON_START_QUEST", "QUEST_5_POSSIBLE_SPAWN_LOCATIONS" },
             Button = { ["95204"] = 275521 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -623,7 +623,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95216,
             NonSkippableWaypoint = true,
-            Note = { "Return to Undercity" },
+            Note = { "RETURN_UNDERCITY" },
             Coord = { x = 240.75, y = 1877.57 },
             Range = 5,
             Zone = 1420,
@@ -632,7 +632,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95216,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 239.14, y = 1749.54 },
             Range = 35.0,
             Zone = 1458,
@@ -641,7 +641,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95216,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 255.64, y = 1724.7 },
             Range = 35.0,
             Zone = 1458,
@@ -650,7 +650,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95216,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 240.68, y = 1706.97 },
             Range = 10.0,
             Zone = 1458,
@@ -659,7 +659,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95216,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 241.06, y = 1660.12 },
             Range = 10.0,
             Zone = 1458,
@@ -668,7 +668,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95216,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 257.08, y = 1623.38 },
             Range = 10.0,
             Zone = 1458,
@@ -677,7 +677,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95216,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 244.51, y = 1598.73 },
             Range = 15.0,
             Zone = 1458,
@@ -686,7 +686,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95216,
             NonSkippableWaypoint = true,
-            Note = { "Take the lift down to the Undercity" },
+            Note = { "TAKE_LIFT_UNDERCITY" },
             Coord = { x = 266.3, y = 1567.2 },
             Range = 20.0,
             Zone = 1458,
@@ -866,7 +866,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92421,
             NonSkippableWaypoint = true,
-            Note = { "Choose `The Stitcher` for a main-hand upgrade. Train Maces if needed" },
+            Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 344.0, y = 1423.8 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -881,7 +881,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92421,
             NonSkippableWaypoint = true,
-            Note = { "Choose `The Stitcher` for a main-hand upgrade. Train Maces if needed" },
+            Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 373.2, y = 1362.1 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -896,7 +896,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92421,
             NonSkippableWaypoint = true,
-            Note = { "Choose `The Stitcher` for a main-hand upgrade. Train Maces if needed" },
+            Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 371.6, y = 1465.6 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -911,7 +911,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92421,
             NonSkippableWaypoint = true,
-            Note = { "Choose `The Stitcher` for a main-hand upgrade. Train Maces if needed" },
+            Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 437.1, y = 1399.3 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -926,7 +926,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92421,
             NonSkippableWaypoint = true,
-            Note = { "Choose `The Stitcher` for a main-hand upgrade. Train Maces if needed" },
+            Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 430.6, y = 1342.1 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -941,7 +941,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 92421,
             NonSkippableWaypoint = true,
-            Note = { "Choose `The Stitcher` for a main-hand upgrade. Train Maces if needed" },
+            Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 397.5, y = 1311.4 },
             Range = 50.0,
             RaidIcon = 266484,
@@ -955,7 +955,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Done = { 92421 },
-            Note = { "Choose `The Stitcher` for a main-hand upgrade. Train Maces if needed" },
+            Note = { "CHOOSE_STITCHER_MAIN_HAND_UPGRADE_TRAIN_MACES" },
             Coord = { x = 315.8, y = 1304.8 },
             RaidIcon = 266484,
             Class = "ROGUE",
@@ -968,7 +968,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Qpart = { [97291] = { 2 } },
-            Note = { "Loot a `Blisterweed` from the pot behind Katrina Alliestar" },
+            Note = { "LOOT_BLISTERWEED_POT_KATRINA_ALLIESTAR" },
             Coord = { x = 356.7, y = 1563.5 },
             IsQuestOnQuest = 97291,
             Zone = 1458,
@@ -976,7 +976,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Qpart = { [97291] = { 3 } },
-            Note = { "Buy an `Essence of Agony`" },
+            Note = { "BUY_ESSENCE_AGONY" },
             Coord = { x = 151.5, y = 1550.2 },
             RaidIcon = 4585,
             IsQuestOnQuest = 97291,
@@ -985,7 +985,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             LootItems = { { itemID = 275521, quantity = 1, questID = 95204 } },
-            Note = { "Loot and use the `Crest of Lordaeron` to start the quest", "It has 5 possible spawn locations" },
+            Note = { "LOOT_USE_CREST_LORDAERON_START_QUEST", "QUEST_5_POSSIBLE_SPAWN_LOCATIONS" },
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
@@ -1002,7 +1002,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Qpart = { [97291] = { 1 } },
-            Note = { "Buy a `Toxic Skullcap`" },
+            Note = { "BUY_TOXIC_SKULLCAP" },
             Coord = { x = 241.7, y = 1633.2 },
             RaidIcon = 4554,
             IsQuestOnQuest = 97291,
@@ -1047,7 +1047,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Qpart = { [97292] = { 1 } },
-            Note = { "Use `Hissing Serum` by the worm upstairs" },
+            Note = { "USE_HISSING_SERUM_WORM_UPSTAIRS" },
             Coord = { x = 448.85, y = 1444.15 },
             Range = 30,
             Button = { ["97292-1"] = 281327 },
@@ -1081,7 +1081,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Done = { 92401 },
-            Note = { "Only turn in now for an off-hand upgrade", "Take the sewers and follow the road to the Sepulcher if you cannot fly" },
+            Note = { "TURN_HAND_UPGRADE", "TAKE_SEWERS_FOLLOW_ROAD_SEPULCHER_CANNOT_FLY" },
             Coord = { x = 1579.6, y = 461.7 },
             RaidIcon = 250686,
             Class = "ROGUE",

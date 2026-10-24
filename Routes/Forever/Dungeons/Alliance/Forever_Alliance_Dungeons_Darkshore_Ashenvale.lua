@@ -156,7 +156,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [98396] = { 2 } },
-            Note = { "GO_DEEP_CAVE_TRAVEL_ACROSS_BRIDGE_LOOK", "Loot Relic of the Claw" },
+            Note = { "GO_DEEP_CAVE_TRAVEL_ACROSS_BRIDGE_LOOK", "LOOT_RELIC_CLAW" },
             Coord = { x = -3117.4, y = 7455.3 },
             Class = "DRUID",
             Race = "NightElf",
@@ -165,7 +165,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [98404] = { 2 } },
-            Note = { "GO_DEEP_CAVE_TRAVEL_ACROSS_BRIDGE_LOOK", "Loot Relic of the Claw" },
+            Note = { "GO_DEEP_CAVE_TRAVEL_ACROSS_BRIDGE_LOOK", "LOOT_RELIC_CLAW" },
             Coord = { x = -3117.4, y = 7455.3 },
             Class = "DRUID",
             Race = "Skyborne",
@@ -174,7 +174,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [98396] = { 3 } },
-            Note = { "Click on the small orb next to the cat statue", "Loot Relic of the Silent Shadow" },
+            Note = { "CLICK_SMALL_ORB_BESIDE_CAT_STATUE", "LOOT_RELIC_SILENT_SHADOW" },
             Coord = { x = -3099.2, y = 7485.7 },
             Class = "DRUID",
             Race = "NightElf",
@@ -183,7 +183,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [98404] = { 3 } },
-            Note = { "Click on the small orb next to the cat statue", "Loot Relic of the Silent Shadow" },
+            Note = { "CLICK_SMALL_ORB_BESIDE_CAT_STATUE", "LOOT_RELIC_SILENT_SHADOW" },
             Coord = { x = -3099.2, y = 7485.7 },
             Class = "DRUID",
             Race = "Skyborne",
@@ -192,7 +192,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [98396] = { 1 } },
-            Note = { "Click on the small orb next to the cat statue", "Loot Relic of the Fang" },
+            Note = { "CLICK_SMALL_ORB_BESIDE_CAT_STATUE", "LOOT_RELIC_FANG" },
             Coord = { x = -3054.1, y = 7476.8 },
             Class = "DRUID",
             Race = "NightElf",
@@ -201,7 +201,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [98404] = { 1 } },
-            Note = { "Click on the small orb next to the cat statue", "Loot Relic of the Fang" },
+            Note = { "CLICK_SMALL_ORB_BESIDE_CAT_STATUE", "LOOT_RELIC_FANG" },
             Coord = { x = -3054.1, y = 7476.8 },
             Class = "DRUID",
             Race = "Skyborne",
@@ -244,7 +244,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 98397 },
-            Note = { "Teleport to Moonglade and talk to Dendrite Starblaze" },
+            Note = { "TELEPORT_MOONGLADE_TALK_DENDRITE_STARBLAZE" },
             Coord = { x = -2678.2, y = 8021.5 },
             SpellButton = { ["98397"] = 18960 },
             RaidIcon = 11802,
@@ -255,7 +255,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Done = { 98738 },
-            Note = { "Teleport to Moonglade and talk to Dendrite Starblaze" },
+            Note = { "TELEPORT_MOONGLADE_TALK_DENDRITE_STARBLAZE" },
             Coord = { x = -2678.2, y = 8021.5 },
             SpellButton = { ["98738"] = 18960 },
             RaidIcon = 11802,
@@ -266,7 +266,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 98397 },
-            Note = { "Teleport to Moonglade and talk to Dendrite Starblaze" },
+            Note = { "TELEPORT_MOONGLADE_TALK_DENDRITE_STARBLAZE" },
             Coord = { x = -2678.2, y = 8021.5 },
             SpellButton = { ["98397"] = 18960 },
             RaidIcon = 11802,
@@ -335,7 +335,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             LootItems = { { itemID = 12347, quantity = 1, questID = 4763 } },
-            Note = { "Use the `Empty Cleansing Bowl` at the Auberdine moonwell" },
+            Note = { "FILL_EMPTY_BOWL_MOONWELL" },
             Coord = { x = 467.08, y = 6409.38 },
             Button = { ["4763"] = 12346 },
             IsQuestOnQuest = 4763,
@@ -377,7 +377,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             LootItems = { { itemID = 12347, quantity = 1, questID = 4763 } },
-            Note = { "Use the `Empty Cleansing Bowl` at the Auberdine moonwell" },
+            Note = { "FILL_EMPTY_BOWL_MOONWELL" },
             Coord = { x = 467.08, y = 6409.38 },
             Button = { ["4763"] = 12346 },
             IsQuestOnQuest = 4763,
@@ -386,7 +386,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [2139] = { 1 } },
-            Note = { "Be careful as the Thistle Cubs can cast `Ravage`, a melee instant attack which stuns you for 2 seconds" },
+            Note = { "CAREFUL_THISTLE_CUBS_CAST_RAVAGE_MELEE_INSTANT" },
             Coord = { x = -466.95, y = 6697.8 },
             Range = 30,
             IsQuestOnQuest = 2139,
@@ -396,7 +396,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             LootItems = { { itemID = 12342, quantity = 1, questID = 4763 } },
             Fillers = { [4763] = { 1 } },
-            Note = { "Open the Blackwood Grain Stores. Loot it for the `Blackwood Grain Sample`", "LOOTING_SPAWN_2_BLACKWOOD_FURBOLGS_AGGRO_RUN", "SEE_XABRAXXIS_YELL_CHAT_SEE_SOMEONE_FIGHTING" },
+            Note = { "OPEN_BLACKWOOD_GRAIN_STORES_LOOT_BLACKWOOD_GRAIN", "LOOTING_SPAWN_2_BLACKWOOD_FURBOLGS_AGGRO_RUN", "SEE_XABRAXXIS_YELL_CHAT_SEE_SOMEONE_FIGHTING" },
             Coord = { x = -376.56, y = 6807.62 },
             IsQuestOnQuest = 4763,
             ItemCount = { operator = "<", count = 1, itemID = 12355 },
@@ -406,7 +406,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             LootItems = { { itemID = 12343, quantity = 1, questID = 4763 } },
             Fillers = { [4763] = { 1 } },
-            Note = { "Open the Blackwood Nut Stores. Loot it for the `Blackwood Nut Sample`", "LOOTING_SPAWN_2_BLACKWOOD_FURBOLGS_AGGRO_RUN", "SEE_XABRAXXIS_YELL_CHAT_SEE_SOMEONE_FIGHTING" },
+            Note = { "LOOT_BLACKWOOD_NUT_SAMPLE_BARREL", "LOOTING_SPAWN_2_BLACKWOOD_FURBOLGS_AGGRO_RUN", "SEE_XABRAXXIS_YELL_CHAT_SEE_SOMEONE_FIGHTING" },
             Coord = { x = -453.2, y = 6870.5 },
             IsQuestOnQuest = 4763,
             ItemCount = { operator = "<", count = 1, itemID = 12355 },
@@ -416,7 +416,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             LootItems = { { itemID = 12341, quantity = 1, questID = 4763 } },
             Fillers = { [4763] = { 1 } },
-            Note = { "Open the Blackwood Fruit Stores. Loot it for the `Blackwood Fruit Sample`", "LOOTING_SPAWN_2_BLACKWOOD_FURBOLGS_AGGRO_RUN", "SEE_XABRAXXIS_YELL_CHAT_SEE_SOMEONE_FIGHTING" },
+            Note = { "OPEN_BLACKWOOD_FRUIT_STORES_LOOT_BLACKWOOD_FRUIT", "LOOTING_SPAWN_2_BLACKWOOD_FURBOLGS_AGGRO_RUN", "SEE_XABRAXXIS_YELL_CHAT_SEE_SOMEONE_FIGHTING" },
             Coord = { x = -520.66, y = 6874.43 },
             IsQuestOnQuest = 4763,
             ItemCount = { operator = "<", count = 1, itemID = 12355 },
@@ -425,7 +425,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             UseItem = { itemID = 12347, itemSpellID = 16072 },
-            Note = { "Use the `Filled Cleansing Bowl` at the Bonfire to summon Xabraxxis" },
+            Note = { "USE_ITEM_BONFIRE_SUMMON_ENEMY" },
             Coord = { x = -489.22, y = 6875.3 },
             SpellETA = { seconds = 17.0, spellID = 16072 },
             IsQuestOnQuest = 4763,
@@ -434,7 +434,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [4763] = { 1 } },
-            Note = { "Open the Xabraxxis' Demon Bag he drops on the ground. Loot it for the Talisman of Corruption" },
+            Note = { "OPEN_XABRAXXIS_DEMON_BAG_DROPS_GROUND_LOOT" },
             Coord = { x = -489.22, y = 6875.3 },
             Range = 10,
             Button = { ["4763-1"] = 12347 },
@@ -444,7 +444,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [947] = { 1, 2 } },
-            Note = { "Loot the Scaber Stalks and a Death Cap on the ground", "Stay on the upper section. If there is not a Death Cap at the end of the top side, drop down and get one from the southern room below", "Be careful as Stormscale Wave Riders cast `Aqua Jet` (Ranged Instant: Deals damage to nearby enemies and knocks them back) - make sure you're not in a position to get knocked off the upper level of the cave" },
+            Note = { "LOOT_SCABER_STALKS_DEATH_CAP_GROUND", "STAY_UPPER_SECTION_NOT_DEATH_CAP_END_TOP_SIDE_DROP", "CAREFUL_STORMSCALE_WAVE_RIDERS_CAST_AQUA_JET" },
             Coord = { x = -691.29, y = 6811.99 },
             Range = 30,
             Zone = 1439,
@@ -490,7 +490,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             Qpart = { [2098] = { 2 } },
             Fillers = { [2098] = { 3 } },
-            Note = { "AWARE_GREYMIST_ORACLES_LIGHTNING_BOLT_DAMAGE_HEAL", "CARE_GREYMIST_TIDEHUNTERS_CAST_POISON_MELEE_LEAVING", "You can LoS (Line of Sight) the Greymist Oracles'  `Lightning Bolts` around the sunken ship to avoid taking its damage" },
+            Note = { "AWARE_GREYMIST_ORACLES_LIGHTNING_BOLT_DAMAGE_HEAL", "CARE_GREYMIST_TIDEHUNTERS_CAST_POISON_MELEE_LEAVING", "USE_SUNKEN_SHIP_BREAK_LINE_SIGHT_AVOID" },
             Coord = { x = -656.25, y = 7801.04 },
             Range = 30,
             Zone = 1439,
@@ -513,7 +513,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Done = { 2098 },
-            Note = { "Start looking for a group for Gyromast's Revenge/The Threshwackonator 4100" },
+            Note = { "START_LOOKING_GROUP_GYROMAST_REVENGE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.654, 13.484),
             Class = { "PALADIN", "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 1439,
@@ -521,7 +521,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 2078 },
-            Note = { "Start looking for a group for Gyromast's Revenge/The Threshwackonator 4100" },
+            Note = { "START_LOOKING_GROUP_GYROMAST_REVENGE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.654, 13.484),
             Class = { "PALADIN", "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 1439,
@@ -544,7 +544,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             Waypoint = 2078,
             NonSkippableWaypoint = true,
-            Note = { "This quest is VERY difficult" },
+            Note = { "QUEST_DIFFICULT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.802, 18.29),
             Range = 5,
             Class = { "PALADIN", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -555,7 +555,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             Waypoint = 2078,
             NonSkippableWaypoint = true,
-            Note = { "This quest is VERY difficult" },
+            Note = { "QUEST_DIFFICULT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 55.802, 18.29),
             Range = 5,
             Class = { "DRUID", "HUNTER", "MAGE", "PRIEST", "WARLOCK" },
@@ -564,7 +564,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [2078] = { 1 } },
-            Note = { "Escort The Threshwackonator 4100 to Gelkak Gyromast", "Kill The Threshwackonator 4100 once it turns hostile", "This quest is VERY difficult", "TRY_QUEST_SAVE_TIME_LATER_REWARDS_ELIXIRS", "If you are unable to kill the The Threshwackonator 4100, skip this step" },
+            Note = { "ESCORT_THRESHWACKONATOR_4100_GELKAK_GYROMAST", "KILL_THRESHWACKONATOR_4100_TURNS_HOSTILE", "QUEST_DIFFICULT", "TRY_QUEST_SAVE_TIME_LATER_REWARDS_ELIXIRS", "UNABLE_KILL_THRESHWACKONATOR_4100_SKIP_STEP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.654, 13.484),
             Range = 30,
             Class = { "PALADIN", "ROGUE", "WARRIOR" },
@@ -574,7 +574,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [2078] = { 1 } },
-            Note = { "Escort The Threshwackonator 4100 to Gelkak Gyromast", "Kill The Threshwackonator 4100 once it turns hostile", "This quest is VERY difficult", "TRY_QUEST_SAVE_TIME_LATER_REWARDS_ELIXIRS", "If you are unable to kill the The Threshwackonator 4100, skip this step" },
+            Note = { "ESCORT_THRESHWACKONATOR_4100_GELKAK_GYROMAST", "KILL_THRESHWACKONATOR_4100_TURNS_HOSTILE", "QUEST_DIFFICULT", "TRY_QUEST_SAVE_TIME_LATER_REWARDS_ELIXIRS", "UNABLE_KILL_THRESHWACKONATOR_4100_SKIP_STEP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.654, 13.484),
             Range = 30,
             Class = { "HUNTER", "MAGE", "PRIEST" },
@@ -583,7 +583,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [2078] = { 1 } },
-            Note = { "Escort The Threshwackonator 4100 to Gelkak Gyromast", "Kill The Threshwackonator 4100 once it turns hostile", "This quest is VERY difficult", "If you are unable to kill the The Threshwackonator 4100, skip this step" },
+            Note = { "ESCORT_THRESHWACKONATOR_4100_GELKAK_GYROMAST", "KILL_THRESHWACKONATOR_4100_TURNS_HOSTILE", "QUEST_DIFFICULT", "UNABLE_KILL_THRESHWACKONATOR_4100_SKIP_STEP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.654, 13.484),
             Range = 30,
             Class = "WARLOCK",
@@ -593,7 +593,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [2078] = { 1 } },
-            Note = { "Escort The Threshwackonator 4100 to Gelkak Gyromast", "Kill The Threshwackonator 4100 once it turns hostile", "This quest is VERY difficult", "If you are unable to kill the The Threshwackonator 4100, skip this step" },
+            Note = { "ESCORT_THRESHWACKONATOR_4100_GELKAK_GYROMAST", "KILL_THRESHWACKONATOR_4100_TURNS_HOSTILE", "QUEST_DIFFICULT", "UNABLE_KILL_THRESHWACKONATOR_4100_SKIP_STEP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.654, 13.484),
             Range = 30,
             Class = "SHAMAN",
@@ -604,7 +604,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [2078] = { 1 } },
-            Note = { "Escort The Threshwackonator 4100 to Gelkak Gyromast", "Kill The Threshwackonator 4100 once it turns hostile", "This quest is VERY difficult", "Only use ranged attacks while running from it, avoid being at melee range", "Use `Entangling Roots` on him when he turns hostile then create distance and kite using instant cast spells", "If you are unable to kill the The Threshwackonator 4100, skip this step" },
+            Note = { "ESCORT_THRESHWACKONATOR_4100_GELKAK_GYROMAST", "KILL_THRESHWACKONATOR_4100_TURNS_HOSTILE", "QUEST_DIFFICULT", "KITE_RANGED_ATTACKS_AVOID_MELEE", "ROOT_TARGET_TURNS_HOSTILE_KITE_INSTANT_SPELLS", "UNABLE_KILL_THRESHWACKONATOR_4100_SKIP_STEP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 56.654, 13.484),
             Range = 30,
             Class = "DRUID",
@@ -623,7 +623,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 4727 },
-            Note = { "Click the Beached Sea Turtle" },
+            Note = { "CLICK_BEACHED_SEA_TURTLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 53.113, 18.099),
             IsQuestCompleted = 4681,
             Zone = 1439,
@@ -631,7 +631,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             LootItems = { { itemID = 15883, quantity = 1, questID = 272 } },
-            Note = { "Swim out in the water", "Open the Strange Lockbox. Loot it for the Half Pendant of Aquatic Agility" },
+            Note = { "SWIM_WATER", "OPEN_STRANGE_LOCKBOX_AQUATIC_AGILITY" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 48.87, 11.32),
             Class = "DRUID",
             Race = { "NightElf", "Skyborne" },
@@ -639,11 +639,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
             _index = 72,
         },
         {
-            DestroyItems = { items = { 7442 }, text = "Delete [Gyromast's Key] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 7442 } },
             _index = 73,
         },
         {
-            Note = { "Return to Auberdine" },
+            Note = { "RETURN_AUBERDINE" },
             _index = 74,
         },
         {
@@ -678,7 +678,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 4740 },
-            Note = { "Click the Wanted Poster" },
+            Note = { "CLICK_WANTED_POSTER" },
             Coord = { x = 504.41, y = 6402.39 },
             Zone = 1439,
             _index = 79,
@@ -701,7 +701,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 4728 },
-            Note = { "Click the Beached Sea Creature" },
+            Note = { "CLICK_BEACHED_SEA_CREATURE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.968, 70.807),
             IsQuestCompleted = 4681,
             Zone = 1439,
@@ -709,7 +709,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [4740] = { 1 } },
-            Note = { "CHECK_MURKDEEP_ALREADY_UP_WATER_SOMEONE_PREVIOUSLY", "Kill the Greymist Warriors and Greymist Hunters in the camp", "MOVE_BONFIRE_CENTER_CAMP_START_MURKDEEP_ENCOUNTER", "3_WAVES_SPAWN_WATER_KILLING_PREVIOUS_WAVE" },
+            Note = { "CHECK_MURKDEEP_ALREADY_UP_WATER_SOMEONE_PREVIOUSLY", "KILL_GREYMIST_WARRIORS_GREYMIST_HUNTERS_CAMP", "MOVE_BONFIRE_CENTER_CAMP_START_MURKDEEP_ENCOUNTER", "3_WAVES_SPAWN_WATER_KILLING_PREVIOUS_WAVE" },
             Coord = APR.worldCoordinateConverter:GetMixedAreaCenter(1439, { { 35.429, 76.566, 0, true }, { 35.429, 76.566, 60.0, true }, { 541.75, 4991.52, 0, false } }),
             Range = math.min(30, APR.worldCoordinateConverter:GetMixedAreaRadius(1439, { { 35.429, 76.566, 0, true }, { 35.429, 76.566, 60.0, true }, { 541.75, 4991.52, 0, false } })),
             Zone = 1439,
@@ -738,19 +738,19 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [944] = { 1 } },
-            Note = { "Discover The Master's Glaive" },
+            Note = { "DISCOVER_MASTER_GLAIVE" },
             Coord = { x = 390.7, y = 4542.7 },
             Zone = 1439,
             _index = 87,
         },
         {
             UseItem = { itemID = 5251, itemSpellID = 5809 },
-            Note = { "Use the `Phial of Scrying` and place it on the ground" },
+            Note = { "USE_PHIAL_SCRYING_PLACE_GROUND" },
             _index = 88,
         },
         {
             Done = { 944 },
-            Note = { "Click the Scrying Bowl on the ground" },
+            Note = { "CLICK_SCRYING_BOWL_GROUND" },
             Coord = { x = 417.3, y = 4575.82 },
             Button = { ["944"] = 5251 },
             Zone = 1439,
@@ -758,7 +758,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 949 },
-            Note = { "Click the Scrying Bowl on the ground" },
+            Note = { "CLICK_SCRYING_BOWL_GROUND" },
             Coord = { x = 417.3, y = 4575.82 },
             Button = { ["949"] = 5251 },
             Zone = 1439,
@@ -781,7 +781,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             PickUp = { 945 },
             Fillers = { [98042] = { 1 } },
-            Note = { "This will start an escort", "Skip this step if she is not there" },
+            Note = { "START_ESCORT", "SKIP_STEP_NOT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 38.66, 87.305),
             Zone = 1439,
             _index = 93,
@@ -789,7 +789,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             Qpart = { [945] = { 1 } },
             Fillers = { [98042] = { 1 } },
-            Note = { "Escort Therylune out of The Masters Glaive" },
+            Note = { "ESCORT_THERYLUNE_MASTERS_GLAIVE" },
             Coord = { x = 288.26, y = 4530.4 },
             IsQuestOnQuest = 945,
             Zone = 1439,
@@ -797,7 +797,8 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "CAREFUL_TWILIGHT_THUGS_DISARM_6_SECONDS", "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            DroppableQuest = { Qid = 968, MobId = 2338, Text = "Twilight Disciple" },
+            Note = { "CAREFUL_TWILIGHT_THUGS_DISARM_6_SECONDS", "CAREFUL_TWILIGHT_DISCIPLES_CAST_RENEW_3_SECOND" },
             Coord = { x = 414.95, y = 4564.81 },
             Range = 30,
             Class = { "PALADIN", "ROGUE", "SHAMAN", "WARRIOR" },
@@ -806,7 +807,8 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [98042] = { 1 } },
-            Note = { "Be careful as Twilight Disciples cast `Renew` and a 3 second `Heal`", "Optional: collect item 5352 (quantity 1)" },
+            DroppableQuest = { Qid = 968, MobId = 2338, Text = "Twilight Disciple" },
+            Note = { "CAREFUL_TWILIGHT_DISCIPLES_CAST_RENEW_3_SECOND" },
             Coord = { x = 414.95, y = 4564.81 },
             Range = 30,
             Class = { "DRUID", "HUNTER", "MAGE", "PRIEST", "WARLOCK" },
@@ -814,20 +816,20 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
             _index = 96,
         },
         {
-            DestroyItems = { items = { 5251 }, text = "Delete the [Phial of Scrying] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 5251 } },
             IsQuestCompleted = 949,
             _index = 97,
         },
         {
             Done = { 729 },
-            Note = { "You may have to wait for him to respawn or for others to finish the escort" },
+            Note = { "WAIT_RESPAWN_OTHERS_FINISH_ESCORT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 35.724, 83.696),
             Zone = 1439,
             _index = 98,
         },
         {
             PickUp = { 731 },
-            Note = { "This will start an escort" },
+            Note = { "START_ESCORT" },
             Coord = { x = 602.01, y = 4678.87 },
             NoAutoAccept = true,
             Zone = 1439,
@@ -835,13 +837,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [731] = { 1 } },
-            Note = { "Escort Prospector Remtravel through the Excavation" },
+            Note = { "ESCORT_PROSPECTOR_REMTRAVEL_EXCAVATION" },
             IsQuestOnQuest = 731,
             _index = 100,
         },
         {
             PickUp = { 4730 },
-            Note = { "Click the Beached Sea Creature" },
+            Note = { "CLICK_BEACHED_SEA_CREATURE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 32.644, 80.711),
             IsQuestCompleted = 4681,
             Zone = 1439,
@@ -849,7 +851,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 4731 },
-            Note = { "Be aware of Greymist Oracles' `Lightning Bolt` damage, they can also heal with `Healing Wave`", "Click the Beached Sea Turtle" },
+            Note = { "AWARE_GREYMIST_ORACLES_LIGHTNING_BOLT_DAMAGE_HEAL", "CLICK_BEACHED_SEA_TURTLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 31.69, 83.7),
             IsQuestCompleted = 4681,
             Zone = 1439,
@@ -857,7 +859,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 4732 },
-            Note = { "Be aware of Greymist Oracles' `Lightning Bolt` damage, they can also heal with `Healing Wave`", "Click the Beached Sea Turtle" },
+            Note = { "AWARE_GREYMIST_ORACLES_LIGHTNING_BOLT_DAMAGE_HEAL", "CLICK_BEACHED_SEA_TURTLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 31.229, 85.564),
             IsQuestCompleted = 4681,
             Zone = 1439,
@@ -865,7 +867,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 4733 },
-            Note = { "Click the Beached Sea Creature", "Be aware of Greymist Oracles' `Lightning Bolt` damage, they can also heal with `Healing Wave`" },
+            Note = { "CLICK_BEACHED_SEA_CREATURE", "AWARE_GREYMIST_ORACLES_LIGHTNING_BOLT_DAMAGE_HEAL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 31.251, 87.419),
             IsQuestCompleted = 4681,
             Zone = 1439,
@@ -886,7 +888,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 5321 },
-            Note = { "Skip this step if he is not there. It can take up to 25 minutes for him to respawn", "This is a timed quest, you have to escort him to his bag in 20 minutes" },
+            Note = { "SKIP_STEP_NOT_TAKE_25_MINUTES_RESPAWN", "COMPLETE_ESCORT_WITHIN_20_MINUTES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.401, 76.425),
             IsQuestCompleted = 731,
             Zone = 1439,
@@ -894,7 +896,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [5321] = { 1 } },
-            Note = { "Open Kerlonian's Chest. Loot it for the `Horn of Awakening`" },
+            Note = { "OPEN_KERLONIAN_CHEST_LOOT_HORN_AWAKENING" },
             Coord = { x = 34.78, y = 5001.57 },
             IsQuestCompleted = 731,
             IsQuestOnQuest = 5321,
@@ -903,7 +905,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             PickUp = { 5321 },
-            Note = { "Skip this step if he is not there. It can take up to 25 minutes for him to respawn", "This is a timed quest, you have to escort him to his bag in 20 minutes" },
+            Note = { "SKIP_STEP_NOT_TAKE_25_MINUTES_RESPAWN", "COMPLETE_ESCORT_WITHIN_20_MINUTES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.401, 76.425),
             ItemCount = { operator = "<", count = 1, itemID = 13536 },
             Zone = 1439,
@@ -911,7 +913,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [5321] = { 1 } },
-            Note = { "Open Kerlonian's Chest. Loot it for the `Horn of Awakening`" },
+            Note = { "OPEN_KERLONIAN_CHEST_LOOT_HORN_AWAKENING" },
             Coord = { x = 34.78, y = 5001.57 },
             IsQuestOnQuest = 5321,
             ItemCount = { operator = "<", count = 1, itemID = 13536 },
@@ -920,7 +922,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [5321] = { 2 } },
-            Note = { "Escort Kerlonian to his bag in Darkshore", "Use the `Horn of Awakening` whenever Kerlonian falls asleep next to him", "Avoid running on the main road as much as possible. Enemies will only spawn if you're on the road" },
+            Note = { "ESCORT_KERLONIAN_BAG_DARKSHORE", "USE_HORN_AWAKENING_KERLONIAN_FALLS_ASLEEP", "AVOID_RUNNING_MAIN_ROAD_POSSIBLE_ENEMIES_SPAWN" },
             Coord = { x = 206.4, y = 4402.5 },
             Button = { ["5321-2"] = 13536 },
             IsQuestOnQuest = 5321,
@@ -930,7 +932,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         {
             Waypoint = 5321,
             NonSkippableWaypoint = true,
-            Note = { "Travel south to Ashenvale" },
+            Note = { "TRAVEL_SOUTH_ASHENVALE" },
             Coord = { x = -12.7, y = 4150.17 },
             Range = 5,
             Zone = 1440,
@@ -973,14 +975,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Grind = { level = 20, xp = -1650 },
-            Note = { "Keep killing Dark Strand mobs until you have enough xp to reach level 20" },
+            Note = { "KEEP_KILLING_DARK_STRAND_MOBS_XP_REACH_LEVEL_20" },
             Coord = { x = -102.08, y = 3492.89 },
             Zone = 1440,
             _index = 118,
         },
         {
             Qpart = { [1010] = { 1 } },
-            Note = { "Open the Plant Bundles in the ground. Loot them for Bathran's Hairs", "They look like small brown sacks and can be partially buried into the ground. They can be hard to see", "FIND_HERBS_ENABLED_SEE_MINIMAP" },
+            Note = { "OPEN_PLANT_BUNDLES_GROUND_LOOT_BATHRAN_HAIRS", "LOOK_SMALL_BROWN_SACKS_SOMETIMES_PARTLY_BURIED", "FIND_HERBS_ENABLED_SEE_MINIMAP" },
             Coord = { x = -103.24, y = 3793.85 },
             Range = 30,
             HasSpell = 2366,
@@ -990,7 +992,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [1010] = { 1 } },
-            Note = { "Open the Plant Bundles in the ground. Loot them for Bathran's Hairs", "They look like small brown sacks and can be partially buried into the ground. They can be hard to see" },
+            Note = { "OPEN_PLANT_BUNDLES_GROUND_LOOT_BATHRAN_HAIRS", "LOOK_SMALL_BROWN_SACKS_SOMETIMES_PARTLY_BURIED" },
             Coord = { x = -103.24, y = 3793.85 },
             Range = 30,
             DontHaveSpell = { 2366 },
@@ -1037,7 +1039,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Grind = 20,
-            Note = { "Grind to level 20" },
             Coord = { x = -138.99, y = 3806.92 },
             Zone = 1440,
             _index = 126,
@@ -1050,7 +1051,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [1010] = { 1 } },
-            Note = { "Open the Plant Bundles in the ground. Loot them for Bathran's Hairs", "They look like small brown sacks and can be partially buried into the ground. They can be hard to see", "FIND_HERBS_ENABLED_SEE_MINIMAP" },
+            Note = { "OPEN_PLANT_BUNDLES_GROUND_LOOT_BATHRAN_HAIRS", "LOOK_SMALL_BROWN_SACKS_SOMETIMES_PARTLY_BURIED", "FIND_HERBS_ENABLED_SEE_MINIMAP" },
             Coord = { x = -103.24, y = 3793.85 },
             Range = 30,
             HasSpell = 2366,
@@ -1059,7 +1060,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
         },
         {
             Qpart = { [1010] = { 1 } },
-            Note = { "Open the Plant Bundles in the ground. Loot them for Bathran's Hairs", "They look like small brown sacks and can be partially buried into the ground. They can be hard to see" },
+            Note = { "OPEN_PLANT_BUNDLES_GROUND_LOOT_BATHRAN_HAIRS", "LOOK_SMALL_BROWN_SACKS_SOMETIMES_PARTLY_BURIED" },
             Coord = { x = -103.24, y = 3793.85 },
             Range = 30,
             DontHaveSpell = { 2366 },
@@ -1079,7 +1080,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Ashenvale"] = {
             _index = 131,
         },
         {
-            Note = { "Travel to Astranaar" },
+            Note = { "TRAVEL_ASTRANAAR" },
             _index = 132,
         },
         {

@@ -14,27 +14,27 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 1491,
             NonSkippableWaypoint = true,
-            Note = { "Now you should be looking for a group to Wailing Caverns" },
+            Note = { "LOOKING_GROUP_WAILING_CAVERNS" },
             Coord = { x = -2216.5, y = -742.43 },
             Range = 30.0,
             Zone = 1414,
             _index = 1,
         },
         {
-            Note = { "Run back into the Barrens" },
+            Note = { "RUN_BACK_BARRENS" },
             Class = "WARLOCK",
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1413,
             _index = 2,
         },
         {
-            Note = { "Travel to the Lushwater Oasis" },
+            Note = { "TRAVEL_LUSHWATER_OASIS" },
             IsQuestCompleted = 851,
             _index = 3,
         },
         {
             Qpart = { [852] = { 1 } },
-            Note = { "Find & kill Hezrul Bloodmark. Loot him for his Head", "Hezrul patrols around the lake" },
+            Note = { "FIND_KILL_HEZRUL_BLOODMARK_LOOT_HEAD", "HEZRUL_PATROLS_LAKE" },
             Coord = { x = -2151.91, y = -1052.84 },
             Range = 30,
             IsQuestCompleted = 851,
@@ -44,7 +44,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 1491,
             NonSkippableWaypoint = true,
-            Note = { "Run up the mountain at the Wailing Caverns meeting stone", "Follow the arrow closely to reach the hidden cave" },
+            Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2134.68, y = -764.35 },
             Range = 30.0,
             Zone = 1413,
@@ -53,7 +53,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 1491,
             NonSkippableWaypoint = true,
-            Note = { "Run up the mountain at the Wailing Caverns meeting stone", "Follow the arrow closely to reach the hidden cave" },
+            Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2122.52, y = -734.62 },
             Range = 20.0,
             Zone = 1413,
@@ -62,7 +62,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 1491,
             NonSkippableWaypoint = true,
-            Note = { "Run up the mountain at the Wailing Caverns meeting stone", "Follow the arrow closely to reach the hidden cave" },
+            Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2061.94, y = -781.68 },
             Range = 20.0,
             Zone = 1414,
@@ -71,7 +71,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 1491,
             NonSkippableWaypoint = true,
-            Note = { "Run up the mountain at the Wailing Caverns meeting stone", "Follow the arrow closely to reach the hidden cave" },
+            Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2028.82, y = -828.29 },
             Range = 10.0,
             Zone = 1414,
@@ -80,7 +80,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 1491,
             NonSkippableWaypoint = true,
-            Note = { "Run up the mountain at the Wailing Caverns meeting stone", "Follow the arrow closely to reach the hidden cave" },
+            Note = { "RUN_MOUNTAIN_WAILING_CAVERNS_MEETING_STONE", "FOLLOW_ARROW_CLOSELY_REACH_HIDDEN_CAVE" },
             Coord = { x = -2021.46, y = -816.03 },
             Range = 10.0,
             Zone = 1414,
@@ -89,7 +89,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 1486,
             NonSkippableWaypoint = true,
-            Note = { "They are located above the the Wailing Caverns cave entrance" },
+            Note = { "NPCS_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2036.18, y = -796.4 },
             Range = 5,
             Zone = 1414,
@@ -97,20 +97,20 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             PickUp = { 1486, 1487 },
-            Note = { "They are located above the the Wailing Caverns cave entrance" },
+            Note = { "NPCS_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2039.86, y = -801.31 },
             Zone = 1414,
             _index = 11,
         },
         {
-            Note = { "It is recommended to divide the quests \"Serpentbloom\" and \"Deviate Hides\" if you're doing only 1 run", "There won't enough Serpentbloom and Deviate Hides for everybody" },
+            Note = { "RECOMMENDED_DIVIDE_QUESTS_SERPENTBLOOM_DEVIATE", "NOT_SERPENTBLOOM_DEVIATE_HIDES_EVERYBODY" },
             AnyOf = { { AnyOf = { { IsQuestOnQuest = 962 }, { IsQuestOnQuest = 1486 } }, Race = "Orc" }, { AnyOf = { { IsQuestOnQuest = 962 }, { IsQuestOnQuest = 1486 } }, Race = "Troll" }, { AnyOf = { { IsQuestOnQuest = 962 }, { IsQuestOnQuest = 1486 } }, Race = "Tauren" }, { AnyOf = { { IsQuestOnQuest = 962 }, { IsQuestOnQuest = 1486 } }, Race = "Scourge" }, { AnyOf = { { IsQuestOnQuest = 962 }, { IsQuestOnQuest = 1486 } }, Race = "Skyborne" } },
             _index = 12,
         },
         {
             Qpart = { [959] = { 1 } },
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
-            Note = { "He has a long respawn timer. Skip this step if you cannot find him" },
+            Note = { "LONG_RESPAWN_TIMER_SKIP_STEP_CANNOT_FIND" },
             Coord = { x = -2063.78, y = -704.4 },
             Range = 30,
             IsQuestOnQuest = 959,
@@ -121,7 +121,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             Waypoint = 1491,
             NonSkippableWaypoint = true,
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
-            Note = { "Enter the WC Instance portal. Zone in" },
+            Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2028.82, y = -636.93 },
             Range = 20.0,
             Zone = 1414,
@@ -131,7 +131,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             Waypoint = 1491,
             NonSkippableWaypoint = true,
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
-            Note = { "Enter the WC Instance portal. Zone in" },
+            Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2050.9, y = -585.41 },
             Range = 20.0,
             Zone = 1414,
@@ -141,7 +141,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             Waypoint = 1491,
             NonSkippableWaypoint = true,
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
-            Note = { "Enter the WC Instance portal. Zone in" },
+            Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2168.66, y = -607.49 },
             Range = 30.0,
             Zone = 1414,
@@ -150,7 +150,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             EnterInstance = { dungeonKey = "WC" },
             Fillers = { [1486] = { 1 }, [1491] = { 1 } },
-            Note = { "Enter the WC Instance portal. Zone in" },
+            Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2216.5, y = -742.43 },
             Range = 30.0,
             Dungeon = "WC",
@@ -235,7 +235,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 26,
         },
         {
-            Note = { "Escort him safely to Naralex" },
+            Note = { "ESCORT_SAFELY_NARALEX" },
             Fillers = { [1491] = { 1 }, [1487] = { 1, 2, 3, 4 } },
             NoArrow = true,
             Dungeon = "WC",
@@ -255,7 +255,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             DropQuest = 6981,
             DroppableQuest = { MobId = 3654, Qid = 6981, Text = "Mutanus the Devourer" },
             Fillers = { [1491] = { 1 }, [1487] = { 1, 2, 3, 4 } },
-            Note = { "Once you have reached Naralex you will get attack by two waves of enemies and finally by Mutanus the Devourer", "Kill him and loot him for the `Glowing Shard` and use it to start the quest" },
+            Note = { "REACHED_NARALEX_GET_ATTACK_TWO_WAVES_ENEMIES", "KILL_LOOT_GLOWING_SHARD_USE_START_QUEST" },
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
@@ -352,7 +352,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Qpart = { [962] = { 1 } },
-            Note = { "Loot the Serpentbloom on the ground", "It is recommended that maximum 3 players attempt to complete this quest if you're doing only 1 run. There aren't enough Serpentbloom for everybody", "Cast `Find Herbs` to see them on your minimap" },
+            Note = { "LOOT_SERPENTBLOOM_GROUND", "RECOMMENDED_MAXIMUM_3_PLAYERS_ATTEMPT_COMPLETE", "FIND_HERBS_ENABLED_SEE_MINIMAP" },
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
@@ -362,7 +362,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Qpart = { [962] = { 1 } },
-            Note = { "Loot the Serpentbloom on the ground", "It is recommended that maximum 3 players attempt to complete this quest if you're doing only 1 run. There aren't enough Serpentbloom for everybody" },
+            Note = { "LOOT_SERPENTBLOOM_GROUND", "RECOMMENDED_MAXIMUM_3_PLAYERS_ATTEMPT_COMPLETE" },
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
@@ -372,7 +372,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             LeaveInstance = { dungeonKey = "WC" },
-            Note = { "Exit through the portal, or leave the party manually to be teleported outside after one minute" },
+            Note = { "EXIT_PORTAL_LEAVE_PARTY_MANUALLY_TELEPORTED" },
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,
@@ -604,7 +604,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Qpart = { [873] = { 1 } },
-            Note = { "He has four different spawn locations alongside the coast" },
+            Note = { "FOUR_DIFFERENT_SPAWN_LOCATIONS_ALONGSIDE_COAST" },
             Coord = { x = -3931.83, y = -1725.76 },
             Range = 30,
             IsQuestCompleted = 874,
@@ -646,7 +646,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 72,
         },
         {
-            Note = { "This next quest is very hard & grouping up is recommended. You can kite Warlord Krom'zar around using the building where the quest giver is located" },
+            Note = { "QUEST_HARD_GROUPING_RECOMMENDED_KITE_WARLORD_KROM" },
             _index = 73,
         },
         {
@@ -658,7 +658,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Qpart = { [4021] = { 1 } },
-            Note = { "Kill Warlord Krom'zar once he appears. Loot the Banner that he drops on the ground", "CAREFUL_STRONG_ELITE_GUARDED_LEAST_TWO_KOLKAR", "It can take up to 3 minutes until he spawns" },
+            Note = { "KILL_WARLORD_KROM_ZAR_APPEARS_LOOT_BANNER_DROPS", "CAREFUL_STRONG_ELITE_GUARDED_LEAST_TWO_KOLKAR", "TAKE_3_MINUTES_SPAWNS" },
             Coord = { x = -1884.39, y = -289.38 },
             Range = 30,
             IsQuestCompleted = 852,
@@ -684,13 +684,14 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 77,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 855" },
+            LeaveQuest = 855,
+            IsQuestOnQuest = 855,
             _index = 78,
         },
         {
             Waypoint = 6981,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -2493.4, y = -708.95 },
             Range = 20.0,
             Zone = 1413,
@@ -699,7 +700,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 6981,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -2404.23, y = -721.11 },
             Range = 20.0,
             Zone = 1413,
@@ -708,7 +709,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 6981,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -2356.6, y = -685.98 },
             Range = 20.0,
             Zone = 1413,
@@ -717,7 +718,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 6981,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -2259.32, y = -602.2 },
             Range = 50.0,
             Zone = 1413,
@@ -747,7 +748,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 1486,
             NonSkippableWaypoint = true,
-            Note = { "They are located above the the Wailing Caverns cave entrance" },
+            Note = { "NPCS_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2036.18, y = -796.4 },
             Range = 5,
             AnyOf = { { Race = "Orc", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Troll", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Tauren", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Scourge", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Skyborne", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } } },
@@ -756,7 +757,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Done = { 1486 },
-            Note = { "They are located above the the Wailing Caverns cave entrance" },
+            Note = { "NPCS_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2039.86, y = -801.31 },
             AnyOf = { { Race = "Orc", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Troll", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Tauren", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Scourge", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Skyborne", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } } },
             Zone = 1414,
@@ -764,7 +765,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Done = { 1487 },
-            Note = { "They are located above the the Wailing Caverns cave entrance" },
+            Note = { "NPCS_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2039.86, y = -801.31 },
             AnyOf = { { Race = "Orc", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Troll", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Tauren", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Scourge", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } }, { Race = "Skyborne", AllOf = { { IsQuestOnQuest = 1486 }, { IsQuestOnQuest = 1487 }, { IsQuestReadyForTurnIn = 1486 }, { IsQuestReadyForTurnIn = 1487 }, { IsQuestUncompleted = 1486 }, { IsQuestUncompleted = 1487 } } } },
             Zone = 1414,
@@ -772,7 +773,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Done = { 1487 },
-            Note = { "He is located above the the Wailing Caverns cave entrance" },
+            Note = { "NPC_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2039.86, y = -801.31 },
             IsQuestOnQuest = 1487,
             IsQuestReadyForTurnIn = 1487,
@@ -782,7 +783,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Done = { 1486 },
-            Note = { "He is located above the the Wailing Caverns cave entrance" },
+            Note = { "NPC_WAILING_CAVERNS_ENTRANCE_ABOVE" },
             Coord = { x = -2036.18, y = -796.4 },
             IsQuestOnQuest = 1486,
             IsQuestReadyForTurnIn = 1486,
@@ -792,7 +793,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             UseHS = 914,
-            Note = { "Hearth to Thunder Bluff" },
             Button = { ["914"] = 6948 },
             SkipInZones = { 1456 },
             _index = 91,
@@ -816,7 +816,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 962,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Spirit Rise and enter the pools of vision" },
+            Note = { "TRAVEL_SPIRIT_RISE_ENTER_POOLS_VISION" },
             Coord = { x = 219.09, y = -1051.44 },
             Range = 10.0,
             IsQuestOnQuest = 962,
@@ -854,27 +854,33 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 97,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 1486" },
+            LeaveQuest = 1486,
+            IsQuestOnQuest = 1486,
             _index = 98,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 1487" },
+            LeaveQuest = 1487,
+            IsQuestOnQuest = 1487,
             _index = 99,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 1491" },
+            LeaveQuest = 1491,
+            IsQuestOnQuest = 1491,
             _index = 100,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 959" },
+            LeaveQuest = 959,
+            IsQuestOnQuest = 959,
             _index = 101,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 914" },
+            LeaveQuest = 914,
+            IsQuestOnQuest = 914,
             _index = 102,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 962" },
+            LeaveQuest = 962,
+            IsQuestOnQuest = 962,
             _index = 103,
         },
         {
@@ -932,7 +938,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 1530,
             NonSkippableWaypoint = true,
-            Note = { "Travel South toward Brine" },
+            Note = { "TRAVEL_SOUTH_BRINE" },
             Coord = { x = -1776.98, y = -3617.51 },
             Range = 60.0,
             Class = "SHAMAN",
@@ -957,7 +963,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 112,
         },
         {
-            Note = { "Travel back toward Camp Taurajo" },
+            Note = { "TRAVEL_BACK_CAMP_TAURAJO" },
             Class = { "SHAMAN", "WARLOCK" },
             _index = 113,
         },
@@ -1037,7 +1043,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             UseItem = { itemID = 6626, itemSpellID = 9224 },
-            Note = { "Use `Dogran's Pendant` at the Summoning Circle" },
+            Note = { "SUMMONING_CIRCLE" },
             Class = "WARLOCK",
             Race = { "Orc", "Scourge", "Troll" },
             _index = 122,
@@ -1144,7 +1150,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Qpart = { [2460] = { 1 } },
             Emote = { emote = "salute", npcID = 0, manual = true },
-            Note = { "After Shenthul does his salute, salute while targeting him" },
+            Note = { "WAIT_NPC_SALUTE_SALUTE_BACK" },
             Coord = { x = -4284.42, y = 1771.28 },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
@@ -1253,7 +1259,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 2458,
             NonSkippableWaypoint = true,
-            Note = { "Enter The Barrens through the Western Exit" },
+            Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -4048.36, y = 1697.85 },
             Range = 80.0,
             Class = "ROGUE",
@@ -1265,7 +1271,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 3301,
             NonSkippableWaypoint = true,
-            Note = { "Enter The Barrens through the Western Exit" },
+            Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -4048.36, y = 1697.85 },
             Range = 80.0,
             Class = "DRUID",
@@ -1277,7 +1283,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 2458,
             NonSkippableWaypoint = true,
-            Note = { "Enter The Barrens through the Western Exit" },
+            Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -3900.25, y = 1681.48 },
             Range = 30.0,
             Class = "ROGUE",
@@ -1289,7 +1295,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 3301,
             NonSkippableWaypoint = true,
-            Note = { "Enter The Barrens through the Western Exit" },
+            Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -3900.25, y = 1681.48 },
             Range = 30.0,
             Class = "DRUID",
@@ -1301,7 +1307,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 2458,
             NonSkippableWaypoint = true,
-            Note = { "Enter The Barrens through the Western Exit" },
+            Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -3933.49, y = 1707.86 },
             Range = 50.0,
             Class = "ROGUE",
@@ -1313,7 +1319,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 3301,
             NonSkippableWaypoint = true,
-            Note = { "Enter The Barrens through the Western Exit" },
+            Note = { "ENTER_BARRENS_WESTERN_EXIT" },
             Coord = { x = -3933.49, y = 1707.86 },
             Range = 50.0,
             Class = "DRUID",
@@ -1342,7 +1348,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             LootItems = { { itemID = 15883, quantity = 1, questID = 31 } },
-            Note = { "Loot the Strange Lockbox in the water for the `Half Pendant of Aquatic Agility`" },
+            Note = { "LOOT_STRANGE_LOCKBOX_WATER_HALF_PENDANT_AQUATIC" },
             Coord = { x = -3119.64, y = 1050.38 },
             Class = "DRUID",
             Race = { "Skyborne", "Tauren" },
@@ -1377,7 +1383,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Qpart = { [2478] = { 5 } },
-            Note = { "Use `Pick Pocket` on Foreman Silixiz for his Tower Key" },
+            Note = { "USE_PICK_POCKET_FOREMAN_SILIXIZ_TOWER_KEY" },
             Coord = { x = -2930.15, y = 1209.15 },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
@@ -1392,7 +1398,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Qpart = { [2478] = { 1, 3, 2 } },
-            Note = { "Run into the Rogue Tower and kill Drones, Patrollers and Lookouts" },
+            Note = { "RUN_ROGUE_TOWER_KILL_DRONES_PATROLLERS_LOOKOUTS" },
             Coord = { x = -2922.04, y = 1224.69 },
             Range = 30,
             Class = "ROGUE",
@@ -1402,7 +1408,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Qpart = { [2478] = { 4 } },
-            Note = { "At the top of the tower you'll find Gallywix. Loot him for his Head", "USE_AMBUSH_REDUCE_HP_HALF_USE_GOUGE", "Remember to use a Potion and `Thistle Tea` if needed" },
+            Note = { "TOP_TOWER_FIND_GALLYWIX_LOOT_HEAD", "USE_AMBUSH_REDUCE_HP_HALF_USE_GOUGE", "REMEMBER_USE_POTION_THISTLE_TEA" },
             Coord = { x = -2927.11, y = 1236.18 },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
@@ -1411,7 +1417,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             Qpart = { [2478] = { 6 } },
-            Note = { "Use your lock picking to open Gallywix's Lockbox & loot the Mixture" },
+            Note = { "USE_LOCK_PICKING_OPEN_GALLYWIX_LOCKBOX_LOOT" },
             Coord = { x = -2927.11, y = 1236.18 },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
@@ -1451,7 +1457,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 2478,
             NonSkippableWaypoint = true,
-            Note = { "Enter Orgrimmar through the western entrance" },
+            Note = { "ENTER_ORGRIMMAR_WESTERN_ENTRANCE" },
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 5,
             Class = "ROGUE",
@@ -1463,7 +1469,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         {
             Waypoint = 3301,
             NonSkippableWaypoint = true,
-            Note = { "Enter Orgrimmar through the western entrance" },
+            Note = { "ENTER_ORGRIMMAR_WESTERN_ENTRANCE" },
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 5,
             Class = "DRUID",
@@ -1607,7 +1613,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
         },
         {
             UseItem = { itemID = 6452, questID = 3301 },
-            Note = { "If you have any `Anti-Venom`, use one to cure yourself of `Touch of Zanzil`" },
+            Note = { "ANTI_VENOM_USE_ONE_CURE_TOUCH_ZANZIL" },
             Class = "ROGUE",
             HasAura = 9991,
             ItemCount = { operator = ">=", count = 1, itemID = 6452 },
@@ -1615,13 +1621,13 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 183,
         },
         {
-            DestroyItems = { items = { 8051 }, text = "Delete the [Flare Gun] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 8051 } },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             _index = 184,
         },
         {
-            DestroyItems = { items = { 8066 }, text = "Delete [Fizzule's Whistle] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 8066 } },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             _index = 185,

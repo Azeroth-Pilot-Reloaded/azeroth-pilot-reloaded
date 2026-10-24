@@ -139,6 +139,8 @@ assert(not party.GroupListSteps["Peer-OtherRealm"] and not party.teamList["Peer-
 assert(party.GroupListSteps.Peer.currentStep == 8, "Leaving one realm must not remove the namesake")
 
 dofile("APR-Core/core/Event.lua")
+APRData = {}
+dofile("APR-Core/core/VersionCheck.lua")
 dofile("APR-Core/features/questing/NPCInteraction.lua")
 raid = true
 roster = { raid1 = { "Local", "Home" }, raid6 = { "RaidPeer", "Other Realm" } }
@@ -395,3 +397,45 @@ local scenarioProgress = APR:GetGroupRouteProgress("scenario", 2)
 assert(scenarioProgress.id == "main:2" and scenarioProgress.total == 3)
 assert(APR:GetGroupRouteStep("scenario", scenarioProgress.id) == blocks[2].steps[1])
 print("Party progress: shared numbering, profession branches, copied steps, route keys, descriptions, legacy peers and completion passed")
+
+-- Version checks use the same authenticated roster path, independently of the
+-- optional progression stream, and remain available in raids/instance groups.
+APR.version = "7.2.2"
+APR.settings.profile.checkForUpdate = true
+APR.settings.profile.receiveGroupData = false
+partyLocale.OUTDATED_VERSION_ALERT = "version=%s url=%s"
+function APR:WrapTextWithAppearanceColor(value) return value end
+local alerts = {}
+APR.questionDialog = { CreateMessagePopup = function(_, text) alerts[#alerts + 1] = text end }
+APR.versionCheck:OnInit()
+local client = APR:GetGameVersion()
+local safeUnitName, rosterReads = APR.SafeUnitName, 0
+function APR:SafeUnitName(...)
+    rosterReads = rosterReads + 1
+    return safeUnitName(self, ...)
+end
+for _ = 1, 1000 do
+    party:GroupUpdateHandler("OTHER_ADDON", "irrelevant", "PARTY", "Peer-Home")
+end
+assert(rosterReads == 0, "Other addons' traffic must not scan the group roster")
+APR.SafeUnitName = safeUnitName
+for _, sender in ipairs({ "Stranger-Home", "Peer-WrongRealm", "Local-Home" }) do
+    party:GroupUpdateHandler("APRVersionCheck", "9.0.0", "PARTY", sender)
+end
+party:GroupUpdateHandler("APRVersionCheck", "9.0.0", "WHISPER", "Peer-Home")
+party:GroupUpdateHandler("APRVersionCheck", {}, "PARTY", "Peer-Home")
+party:GroupUpdateHandler("APRVersionCheck", string.rep("9", 65), "PARTY", "Peer-Home")
+assert(#alerts == 0 and APRData.versionCheck[client] == "7.2.2", "Invalid senders/channels/payloads cannot affect version state")
+local versionStart = #sent
+party:GroupUpdateHandler("APRVersionCheck", "7.2.1", "PARTY", "Peer-Home")
+assert(#sent == versionStart + 1 and sent[#sent].message == "7.2.2", "A legacy older client receives our version")
+party:GroupUpdateHandler("APRVersionCheck", "7.3.0", "PARTY", "Peer-Home")
+assert(#alerts == 1 and alerts[1]:find("7.3.0", 1, true), "Progress reception is not required for update alerts")
+raid = true
+roster = { raid1 = { "Local", "Home" }, raid2 = { "Peer", "Home" } }
+party:GroupUpdateHandler("APRVersionCheck", "7.3.1", "RAID", "Peer-Home")
+assert(APRData.versionCheck[client] == "7.3.1", "Version messages are handled before the raid progression guard")
+instance = true
+party:GroupUpdateHandler("APRVersionCheck", "7.3.2", "INSTANCE_CHAT", "Peer-Home")
+assert(APRData.versionCheck[client] == "7.3.2" and #alerts == 1, "Instance versions are remembered without repeated alerts")
+print("Party versions: member validation, legacy replies, opt-out isolation, raid and instance delivery passed")

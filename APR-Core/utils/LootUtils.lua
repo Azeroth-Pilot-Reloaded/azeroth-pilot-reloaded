@@ -38,9 +38,18 @@ function APR:GetCollectionItemCount(itemID, includeBank)
     return fn(itemID, true) or bags
 end--[[APR_DIAG]]; APR.GetCollectionItemCount = APRTrace("APR-Core/utils/LootUtils.lua:31:APR:GetCollectionItemCount#2", APR.GetCollectionItemCount)--[[/APR_DIAG]]
 
+function APR:GetCollectionRequiredQuantity(rule)
+    if rule.quantityFromSkill then
+        local target = rule.quantityFromSkill
+        local remaining = math.max(0, target.rank - self:GetRouteSkill(target))
+        return math.min(rule.quantity or target.rank, remaining)
+    end
+    return math.max(rule.quantity or 1, 1)
+end--[[APR_DIAG]]; APR.GetCollectionRequiredQuantity = APRTrace("APR-Core/utils/LootUtils.lua:41:APR:GetCollectionRequiredQuantity#3", APR.GetCollectionRequiredQuantity)--[[/APR_DIAG]]
+
 function APR:IsRouteCollectionComplete(rule)
-    return self:GetCollectionItemCount(rule.itemID, rule.includeBank) >= (rule.quantity or 1)
-end--[[APR_DIAG]]; APR.IsRouteCollectionComplete = APRTrace("APR-Core/utils/LootUtils.lua:41:APR:IsRouteCollectionComplete#3", APR.IsRouteCollectionComplete)--[[/APR_DIAG]]
+    return self:GetCollectionItemCount(rule.itemID, rule.includeBank) >= self:GetCollectionRequiredQuantity(rule)
+end--[[APR_DIAG]]; APR.IsRouteCollectionComplete = APRTrace("APR-Core/utils/LootUtils.lua:50:APR:IsRouteCollectionComplete#4", APR.IsRouteCollectionComplete)--[[/APR_DIAG]]
 
 -- Current cash plus the theoretical vendor value of carried items. Never counts
 -- bank contents, buys back items, or sells anything. Missing item data contributes
@@ -54,7 +63,7 @@ function APR:GetLootMoneyProgress(rule)
         if type(price) == "number" and price > 0 then
             resale = resale + price * (count or 1)
         end
-    end--[[APR_DIAG]]; addItem = APRTrace("APR-Core/utils/LootUtils.lua:51:addItem#5", addItem)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; addItem = APRTrace("APR-Core/utils/LootUtils.lua:60:addItem#6", addItem)--[[/APR_DIAG]]
     local saleItems = {}
     if rule.junkOnly then
         for _, slot in ipairs(rule.equippedSlots or {}) do
@@ -101,19 +110,19 @@ function APR:GetLootMoneyProgress(rule)
         end
     end
     return cash, resale, math.max(1, tonumber(rule.copper) or 1)
-end--[[APR_DIAG]]; APR.GetLootMoneyProgress = APRTrace("APR-Core/utils/LootUtils.lua:48:APR:GetLootMoneyProgress#4", APR.GetLootMoneyProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetLootMoneyProgress = APRTrace("APR-Core/utils/LootUtils.lua:57:APR:GetLootMoneyProgress#5", APR.GetLootMoneyProgress)--[[/APR_DIAG]]
 
 -- Eligibility filter using the same cash/resale estimate as the loot objective.
 function APR:MeetsVendorMoney(rule)
     local cash, resale = self:GetLootMoneyProgress(rule)
     return self:CompareRouteNumber(cash + resale, rule.operator or ">=", rule.copper)
-end--[[APR_DIAG]]; APR.MeetsVendorMoney = APRTrace("APR-Core/utils/LootUtils.lua:107:APR:MeetsVendorMoney#6", APR.MeetsVendorMoney)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.MeetsVendorMoney = APRTrace("APR-Core/utils/LootUtils.lua:116:APR:MeetsVendorMoney#7", APR.MeetsVendorMoney)--[[/APR_DIAG]]
 
 function APR:FormatLootMoney(copper)
     local formatMoney = C_CurrencyInfo and C_CurrencyInfo.GetCoinTextureString or GetCoinTextureString
     return formatMoney and formatMoney(copper) or tostring(copper)
-end--[[APR_DIAG]]; APR.FormatLootMoney = APRTrace("APR-Core/utils/LootUtils.lua:112:APR:FormatLootMoney#7", APR.FormatLootMoney)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.FormatLootMoney = APRTrace("APR-Core/utils/LootUtils.lua:121:APR:FormatLootMoney#8", APR.FormatLootMoney)--[[/APR_DIAG]]
 
 function APR:GetLootMoneyStepText(rule)
     return string.format(L["LOOT_MONEY"], self:FormatLootMoney(rule.copper))
-end--[[APR_DIAG]]; APR.GetLootMoneyStepText = APRTrace("APR-Core/utils/LootUtils.lua:117:APR:GetLootMoneyStepText#8", APR.GetLootMoneyStepText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetLootMoneyStepText = APRTrace("APR-Core/utils/LootUtils.lua:126:APR:GetLootMoneyStepText#9", APR.GetLootMoneyStepText)--[[/APR_DIAG]]

@@ -20,7 +20,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Waypoint = 1141,
             NonSkippableWaypoint = true,
-            Note = { "Go up the ramp" },
+            Note = { "UP_RAMP" },
             Coord = { x = 525.8, y = 6414.8 },
             Range = 8.0,
             Zone = 1439,
@@ -58,7 +58,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             PickUp = { 98025 },
-            Note = { "Click the Wanted Poster" },
+            Note = { "CLICK_WANTED_POSTER" },
             Coord = { x = 503.1, y = 6402.1 },
             Zone = 1439,
             _index = 8,
@@ -112,17 +112,17 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Qpart = { [3524] = { 1 } },
             Fillers = { [983] = { 1 } },
-            Note = { "Open the Beached Sea Creature. Loot it for the Sea Creature Bones" },
+            Note = { "OPEN_BEACHED_SEA_CREATURE_LOOT_SEA_CREATURE_BONES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.371, 50.92),
             Zone = 1439,
             _index = 15,
         },
         {
-            Note = { "LEVEL_HERBALISM_15_ABLE_HERB_EARTHROOT_IMPORTANT", "RATHER_PURCHASE_5_EARTHROOT_AUCTION_HOUSE_LATER", "Optional: collect item 2449 (quantity 5)" },
-            Fillers = { [983] = { 1 } },
+            LootItems = { { itemID = 2449, quantity = 5, questID = 6123 } },
+            Fillers = { [983] = { 1 }, [6123] = { 1 } },
+            Note = { "LEVEL_HERBALISM_15_ABLE_HERB_EARTHROOT_IMPORTANT", "RATHER_PURCHASE_5_EARTHROOT_AUCTION_HOUSE_LATER" },
             Class = "DRUID",
             Race = "Skyborne",
-            Skill = { skill = "herbalism", rank = 15, operator = "<" },
             _index = 16,
         },
         {
@@ -136,7 +136,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Qpart = { [2118] = { 1 } },
             Fillers = { [983] = { 1 } },
-            Note = { "Use `Tharnariun's Hope` on a Rabid Thistle Bear", "You can waste the trap and make the quest impossible to complete! If it happens to you you need to return to the questgiver and ask for another trap" },
+            Note = { "USE_THARNARIUN_HOPE_RABID_THISTLE_BEAR", "WASTE_TRAP_MAKE_QUEST_IMPOSSIBLE_COMPLETE_HAPPENS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 38.583, 55.978),
             Range = 30,
             Button = { ["2118-1"] = 7586 },
@@ -145,7 +145,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [983] = { 1 } },
-            Note = { "You may need to go in the water for them", "EVEN_GRAY_STILL_COMPLETE_QUEST_PART_CHAIN" },
+            Note = { "GO_WATER", "EVEN_GRAY_STILL_COMPLETE_QUEST_PART_CHAIN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.109, 50.3145),
             Range = 30,
             IsQuestOnQuest = 983,
@@ -159,14 +159,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Done = { 983 },
-            Note = { "Click the Buzzbox 827 on the ground" },
+            Note = { "CLICK_BUZZBOX_827_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.634, 46.25),
             Zone = 1439,
             _index = 21,
         },
         {
             PickUp = { 1001 },
-            Note = { "Click the Buzzbox 827 on the ground" },
+            Note = { "CLICK_BUZZBOX_827_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.634, 46.25),
             Zone = 1439,
             _index = 22,
@@ -216,7 +216,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Waypoint = 4681,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the end of the dock, then jump into the water" },
+            Note = { "TRAVEL_END_DOCK_JUMP_WATER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 32.432, 43.744),
             Range = 15.0,
             Zone = 1439,
@@ -225,7 +225,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Qpart = { [4681] = { 1 } },
             Fillers = { [1001] = { 1 } },
-            Note = { "Open the Skeletal Sea Turtle. Loot it for the Sea Turtle Remains" },
+            Note = { "OPEN_SKELETAL_SEA_TURTLE_LOOT_SEA_TURTLE_REMAINS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 31.841, 46.304),
             Zone = 1439,
             _index = 30,
@@ -260,7 +260,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [2118] = { 1 } },
-            Note = { "Use `Tharnariun's Hope` on a Rabid Thistle Bear", "You can waste the trap and make the quest impossible to complete! If it happens to you you need to return to the questgiver and ask for another trap" },
+            Note = { "USE_THARNARIUN_HOPE_RABID_THISTLE_BEAR", "WASTE_TRAP_MAKE_QUEST_IMPOSSIBLE_COMPLETE_HAPPENS" },
             Button = { ["2118-1"] = 7586 },
             IsQuestOnQuest = 2118,
             _index = 35,
@@ -314,7 +314,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Waypoint = 4761,
             NonSkippableWaypoint = true,
-            Note = { "Buy as many `Small Brown Pouches` or `Brown Leather Satchels` as you need from him" },
+            Note = { "BUY_MANY_SMALL_BROWN_POUCHES_BROWN_LEATHER" },
             Coord = { x = 488.69, y = 6564.83 },
             Range = 5,
             RaidIcon = 4182,
@@ -325,7 +325,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Waypoint = 4761,
             NonSkippableWaypoint = true,
-            Note = { "Buy as many `Small Brown Pouches` or `Brown Leather Satchels` as you need from him", "Buy `Sharp Arrows` or `Heavy Shots` from him until your Quiver/Ammo Pouch is full" },
+            Note = { "BUY_MANY_SMALL_BROWN_POUCHES_BROWN_LEATHER", "BUY_SHARP_ARROWS_HEAVY_SHOTS_QUIVER_AMMO_POUCH" },
             Coord = { x = 488.69, y = 6564.83 },
             Range = 5,
             RaidIcon = 4182,
@@ -375,12 +375,12 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
             _index = 50,
         },
         {
-            Note = { "PRESS_ESCAPE_GO_OPTIONS_CONTROLS", "Check \"Enable Interact Key\" and bind the \"Interact with Target\" option to a key" },
+            Note = { "PRESS_ESCAPE_GO_OPTIONS_CONTROLS", "CHECK_ENABLE_INTERACT_KEY_BIND_INTERACT_TARGET" },
             _index = 51,
         },
         {
             Qpart = { [982] = { 1 } },
-            Note = { "AWARE_BREATH_METER", "Swim underwater to the outside of the back of the boat", "On the arrow location, press your \"Interact with Target\" keybind to loot the Silver Dawning's Lockbox from outside the boat", "If you don't want to do this, swim underwater into the bottom floor of the boat then loot the Silver Dawning's Lockbox inside" },
+            Note = { "AWARE_BREATH_METER", "SWIM_UNDERWATER_OUTSIDE_BACK_BOAT", "LOOT_LOCKBOX_INTERACT_KEY", "SWIM_BOTTOM_BOAT_LOOT_SILVER_DAWNING_LOCKBOX" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 38.213, 28.754),
             IsQuestOnQuest = 982,
             Zone = 1439,
@@ -388,7 +388,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [982] = { 2 } },
-            Note = { "AWARE_BREATH_METER", "Swim underwater to the outside of the back of the boat", "On the arrow location, press your \"Interact with Target\" keybind to loot the Mist Veil's Lockbox from outside the boat", "If you don't want to do this, swim underwater into the bottom floor of the boat then loot the Mist Veil's Lockbox inside" },
+            Note = { "AWARE_BREATH_METER", "SWIM_UNDERWATER_OUTSIDE_BACK_BOAT", "LOOT_LOCKBOX_INTERACT_KEY", "SWIM_BOTTOM_BOAT_LOOT_MIST_VEIL_LOCKBOX" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.581, 27.487),
             IsQuestOnQuest = 982,
             Zone = 1439,
@@ -404,14 +404,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             PickUp = { 4723 },
-            Note = { "Click the Beached Sea Creature" },
+            Note = { "CLICK_BEACHED_SEA_CREATURE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 41.901, 31.339),
             Zone = 1439,
             _index = 55,
         },
         {
             Done = { 1001 },
-            Note = { "Click the Buzzbox 411 on the ground" },
+            Note = { "CLICK_BUZZBOX_411_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 41.96, 28.616),
             IsQuestOnQuest = 1001,
             IsQuestReadyForTurnIn = 1001,
@@ -496,7 +496,8 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
             _index = 65,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 955" },
+            LeaveQuest = 955,
+            IsQuestOnQuest = 955,
             _index = 66,
         },
         {
@@ -535,7 +536,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [4811] = { 1 } },
-            Note = { "Travel up to the Mysterious Red Crystal", "Be careful of the two group of 2 Raging Moonkins west of the Mysterious Red Crystal as the duos closest to each other are leashed together" },
+            Note = { "TRAVEL_MYSTERIOUS_RED_CRYSTAL", "CAREFUL_2_GROUPS_2_RAGING_MOONKINS_WEST" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 47.314, 48.676),
             Zone = 1439,
             _index = 71,
@@ -551,7 +552,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Qpart = { [953] = { 2 } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
-            Note = { "Click the The Fall of Ameth'Aran" },
+            Note = { "CLICK_FALL_AMETH_ARAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.652, 63.145),
             IsQuestOnQuest = 953,
             Zone = 1439,
@@ -560,7 +561,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Qpart = { [957] = { 1 } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
-            Note = { "Click the Ancient Flame" },
+            Note = { "CLICK_ANCIENT_FLAME" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.373, 61.815),
             IsQuestOnQuest = 957,
             Zone = 1439,
@@ -569,7 +570,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Qpart = { [953] = { 1 } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
-            Note = { "Click the The Lay of Ameth'Aran" },
+            Note = { "CLICK_LAY_AMETH_ARAN" },
             Coord = { x = 105.52, y = 5770.1 },
             IsQuestOnQuest = 953,
             Zone = 1439,
@@ -612,7 +613,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             PickUp = { 4722 },
             Fillers = { [2138] = { 1 } },
-            Note = { "Click the Beached Sea Turtle" },
+            Note = { "CLICK_BEACHED_SEA_TURTLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.105, 62.167),
             Zone = 1439,
             _index = 80,
@@ -694,7 +695,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [4812] = { 1 } },
-            Note = { "Use the `Empty Water Tube` at the Auberdine moonwell" },
+            Note = { "FILL_EMPTY_WATER_TUBE_MOONWELL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.767, 44.001),
             Button = { ["4812-1"] = 14338 },
             Zone = 1439,
@@ -791,14 +792,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Done = { 4812 },
-            Note = { "Click the Mysterious Red Crystal", "CAREFUL_2_GROUPS_2_RAGING_MOONKINS_WEST" },
+            Note = { "CLICK_MYSTERIOUS_RED_CRYSTAL", "CAREFUL_2_GROUPS_2_RAGING_MOONKINS_WEST" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 47.314, 48.676),
             Zone = 1439,
             _index = 103,
         },
         {
             PickUp = { 4813 },
-            Note = { "Click the Mysterious Red Crystal", "CAREFUL_2_GROUPS_2_RAGING_MOONKINS_WEST" },
+            Note = { "CLICK_MYSTERIOUS_RED_CRYSTAL", "CAREFUL_2_GROUPS_2_RAGING_MOONKINS_WEST" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 47.314, 48.676),
             Zone = 1439,
             _index = 104,
@@ -813,14 +814,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             PickUp = { 4725 },
             Fillers = { [2138] = { 1 } },
-            Note = { "Click the Beached Sea Turtle" },
+            Note = { "CLICK_BEACHED_SEA_TURTLE" },
             Coord = { x = 47.88, y = 7433.8 },
             Zone = 1439,
             _index = 106,
         },
         {
             Qpart = { [4762] = { 1 } },
-            Note = { "Use the `Empty Sampling Tube` at the base of the Cliffspring River" },
+            Note = { "USE_EMPTY_SAMPLING_TUBE_BASE_CLIFFSPRING_RIVER" },
             Coord = { x = -386.39, y = 7219.83 },
             Button = { ["4762-1"] = 12350 },
             Zone = 1439,
@@ -828,7 +829,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [2138] = { 1 } },
-            Note = { "Be careful as they cast `Rabies` if you dont kill them fast enough (Instant Melee: Reduces ALL health regen by 50% for 10 Minutes)" },
+            Note = { "CAREFUL_CAST_RABIES_NOT_KILL_FAST_INSTANT_MELEE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 51.113, 29.1865),
             Range = 30,
             Zone = 1439,
@@ -852,7 +853,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [6122] = { 1 } },
-            Note = { "Use the `Empty Cliffspring Falls Sampler` in the water at the entrance of the Cliffspring River Cave" },
+            Note = { "USE_EMPTY_CLIFFSPRING_FALLS_SAMPLER_WATER_ENTRANCE" },
             Coord = { x = -660.18, y = 6874.43 },
             Class = "DRUID",
             IsQuestOnQuest = 6122,
@@ -862,7 +863,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [947] = { 1, 2 } },
-            Note = { "Loot the Scaber Stalks and a Death Cap on the ground", "Stay on the upper section. If there is not a Death Cap at the end of the top side, drop down and get one from the southern room below", "Be careful as Stormscale Wave Riders cast `Aqua Jet` (Ranged Instant: Deals damage to nearby enemies and knocks them back) - make sure you're not in a position to get knocked off the upper level of the cave" },
+            Note = { "LOOT_SCABER_STALKS_DEATH_CAP_GROUND", "STAY_UPPER_SECTION_NOT_DEATH_CAP_END_TOP_SIDE_DROP", "CAREFUL_STORMSCALE_WAVE_RIDERS_CAST_AQUA_JET" },
             Coord = { x = -691.29, y = 6811.99 },
             Range = 30,
             Zone = 1439,
@@ -870,13 +871,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             DeathSkip = true,
-            Note = { "Die and respawn at the Auberdine graveyard" },
+            Note = { "DIE_RESPAWN_AUBERDINE_GRAVEYARD" },
             Hardcore = false,
             SkipForLvl = 10,
             _index = 113,
         },
         {
-            Note = { "Travel to Auberdine" },
+            Note = { "TRAVEL_AUBERDINE" },
             _index = 114,
         },
         {
@@ -976,7 +977,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             PickUp = { 4740 },
-            Note = { "Click the Wanted Poster" },
+            Note = { "CLICK_WANTED_POSTER" },
             Coord = { x = 504.41, y = 6402.39 },
             Zone = 1439,
             _index = 128,
@@ -1041,8 +1042,9 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
             _index = 135,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 729" },
+            LeaveQuest = 729,
             Class = "DRUID",
+            IsQuestOnQuest = 729,
             Race = "Skyborne",
             _index = 136,
         },
@@ -1071,7 +1073,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             LootItems = { { itemID = 15877, quantity = 1, questID = 29 } },
-            Note = { "Swim into Lake Elune'Ara", "Open a Bauble Container. Loot it for a `Shrine Bauble`", "SPAWN_DIFFERENT_LOCATIONS_UNDERWATER" },
+            Note = { "SWIM_LAKE_ELUNE_ARA", "OPEN_BAUBLE_CONTAINER_LOOT_SHRINE_BAUBLE", "SPAWN_DIFFERENT_LOCATIONS_UNDERWATER" },
             Coord = { x = -2595.43, y = 7697.24 },
             Class = "DRUID",
             Race = "Skyborne",
@@ -1087,7 +1089,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [29] = { 1 } },
-            Note = { "Use the `Shrine Bauble` at the Shrine of Remulos tree" },
+            Note = { "USE_SHRINE_BAUBLE_SHRINE_REMULOS_TREE" },
             Coord = { x = -2212.85, y = 7854.68 },
             Button = { ["29-1"] = 15877 },
             Class = "DRUID",
@@ -1113,7 +1115,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             UseHS = 97220,
-            Note = { "Hearth to Stormwind" },
             AnyOf = { { SkipInZones = { 1455, 1439, 1453 }, Race = "Human" }, { SkipInZones = { 1455, 1439, 1453 }, Race = "Dwarf" }, { SkipInZones = { 1455, 1439, 1453 }, Race = "Gnome" }, { SkipInZones = { 1455, 1439, 1453 }, Race = "Skyborne" } },
             _index = 145,
         },
@@ -1133,7 +1134,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         },
         {
             Qpart = { [97222] = { 1 } },
-            Note = { "Use the `Gatehouse Shipment` in front of the Gatehouse Door upstairs" },
+            Note = { "GO_UPSTAIRS_USE_SHIPMENT_FRONT_GATEHOUSE_DOOR" },
             Coord = { x = 568.3, y = -8862.2 },
             Button = { ["97222-1"] = 277198 },
             Zone = 1453,
@@ -1159,7 +1160,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Waypoint = 96392,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
             Class = "WARLOCK",
@@ -1171,7 +1172,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
         {
             Waypoint = 96392,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -1262,7 +1263,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore"] = {
             _index = 160,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your pet spells" },
+            LearnSkill = { allAvailable = true, npcID = 2879 },
             Coord = { x = 553.22, y = -8422.23 },
             Class = "HUNTER",
             MinLevel = 1,

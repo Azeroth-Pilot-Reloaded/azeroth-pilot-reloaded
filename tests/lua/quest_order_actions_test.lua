@@ -12,6 +12,10 @@ local L = setmetatable({
     USE_SPELL = "Cast %s",
     LOOT_ITEM = "Loot: %s",
     USE_FLIGHTPATH = "Fly to %s",
+    LEAVE_DELVE = "Leave delve: %s",
+    LEAVE_DUNGEON = "Leave dungeon: %s",
+    LEAVE_INSTANCE = "Leave instance: %s",
+    GRIND = "Grind to level %s",
 }, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
 UNKNOWN, ABANDON_QUEST, LEAVE_VEHICLE, DISMOUNT = "Unknown", "Abandon quest", "Leave vehicle", "Dismount"
@@ -45,6 +49,7 @@ C_ChromieTime = { GetChromieTimeExpansionOption = function() return { name = "Le
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/utils/StepUtils.lua")
 dofile("APR-Core/utils/QuestUtils.lua")
+dofile("APR-Core/utils/LootUtils.lua")
 function CreateFrame() return { RegisterEvent = function() end, SetScript = function() end } end
 dofile("tests/lua/dungeon_data_test_env.lua")
 dofile("APR-Core/utils/DungeonUtils.lua")
@@ -72,7 +77,6 @@ local utils = APR.questOrderListSupport
 utils.IsQuestCompletedOrActive, utils.IsQuestCompleted = no, no
 function utils:AddStepFrameWithQuest(_, index, title, quests, color, current)
     assert(type(title) == "string" and title ~= "", "Every row needs a readable title")
-    assert(not title:find("%s", 1, true), "Preview titles must not display unresolved placeholders")
     return { title = title, quests = quests, color = color, current = current }
 end
 function utils:AddStepFrame(layout, index, title, color, current)
@@ -127,6 +131,7 @@ local preview = render(steps)
 assert(#preview.stepList == #steps, "All main actions must be visible")
 for index in ipairs(steps) do
     assert(preview.rawStepContainers[index], "Missing main action at " .. index)
+    assert(not preview.stepList[index].title:find("%s", 1, true), "Preview titles must resolve format arguments")
 end
 assert(APR.routeActionState == nil, "Preview must not create action state")
 assert(APRData.player.DungeonRuns == nil, "A dungeon preview must not start a run")
@@ -143,18 +148,40 @@ assert(APR.routeActionState == nil and APRData.player.OutdoorKills == nil,
 -- Loot values remain in detail rows, while known travel destinations fill the title.
 local lootStep = { LootItems = { { itemID = 20, quantity = 3 }, { itemID = 404 } } }
 local lootRow = render({ lootStep }).stepList[1]
-assert(lootRow.title == "Loot:  ")
+assert(lootRow.title == "Loot: Item 20, Unknown")
 assert(lootRow.quests[1].questID == 3 and lootRow.quests[1].questName == "Item 20")
 assert(lootRow.quests[2].questName == UNKNOWN)
 local completedLoot = render({ lootStep }, 2).stepList[1]
-assert(completedLoot.title == "Loot:  " and completedLoot.color == "green" and #completedLoot.quests == 0)
+assert(completedLoot.title == "Loot: Item 20, Unknown" and completedLoot.color == "green" and #completedLoot.quests == 0)
 assert(render({ { UseFlightPath = 10 } }).stepList[1].title == "Fly to Flight destination")
 assert(render({ { UseItem = { itemID = 20 } } }).stepList[1].title == "Use Item 20")
 
 local originalTalk = L.TALK_NPC
-L.TALK_NPC = "Talk to %s at %s (100%)"
-assert(render({ { GossipOptionIDs = { 1 } } }).stepList[1].title == "Talk to   at   (100%)")
+L.TALK_NPC = "Talk (100%)"
+assert(render({ { GossipOptionIDs = { 1 } } }).stepList[1].title == "Talk (100%)")
 L.TALK_NPC = originalTalk
+
+-- Preserve the preview's requested suppression of remaining %s sequences.
+local originalItemInfo = C_Item.GetItemInfo
+C_Item.GetItemInfo = function() return "Item %s (100%)" end
+assert(render({ { UseItem = { itemID = 20 } } }).stepList[1].title == "Use Item   (100%)")
+C_Item.GetItemInfo = originalItemInfo
+local originalScenarioInfo = APR.GetScenarioZoneInfo
+APR.GetScenarioZoneInfo = function() return { type = "DELVE" } end
+assert(render({ { LeaveScenario = { mapID = 2 } } }).stepList[1].title == "Leave delve: Zone")
+APR.GetScenarioZoneInfo = function() return { type = "DUNGEON" } end
+assert(render({ { LeaveInstance = { mapID = 2 } } }).stepList[1].title == "Leave dungeon: Zone")
+APR.GetScenarioZoneInfo = originalScenarioInfo
+
+-- Waypoint/action summaries fill the same parameters as the detailed rows.
+assert(APR:GetStepString({ UseItem = { itemID = 20 } }) == "Use Item 20")
+assert(APR:GetStepString({ UseItem = { itemID = 404 } }) == "Use Unknown")
+assert(APR:GetStepString({ UseSpell = { spellID = 20 } }) == "Cast Spell 20")
+assert(APR:GetStepString({ UseSpell = { spellID = 404 } }) == "Cast Unknown")
+assert(APR:GetStepString(lootStep) == "Loot: Item 20, Unknown")
+assert(APR:GetStepString({ Grind = 20 }) == "Grind")
+assert(APR:GetStepString({ LeaveInstance = { mapID = 2 } }) == "Leave instance: Zone")
+assert(APR:GetStepString({ LeaveInstance = { dungeonKey = "ROL" } }) == "Leave Ruins of Lordaeron")
 
 C_ScenarioInfo.GetScenarioInfo = function() end
 C_ScenarioInfo.GetScenarioStepInfo = function() end

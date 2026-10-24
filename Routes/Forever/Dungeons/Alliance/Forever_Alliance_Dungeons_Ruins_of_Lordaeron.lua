@@ -12,13 +12,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
     prefab = { [APR.PREFAB_TYPES.Dungeons] = { index = 7 } },
     steps = {
         {
-            Note = { "You will now run Ruins of Lordaeron", "All the quests are picked up inside the dungeon" },
+            Note = { "RUN_RUINS_LORDAERON", "QUESTS_PICKED_INSIDE_DUNGEON" },
             _index = 1,
         },
         {
             UseFlightPath = 95250,
             NodeID = 7,
-            Note = { "If you do not have the Wetlands flight path, skip this step" },
+            Note = { "NOT_WETLANDS_FLIGHT_PATH_SKIP_STEP" },
             Coord = { x = -1152.4, y = -4821.1 },
             OnlyInZones = { 1455 },
             Zone = 1455,
@@ -27,7 +27,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Exit Ironforge. Travel to the Dun Morogh -> Wetlands deathskip location" },
+            Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -826.4, y = -5027.1 },
             Range = 30.0,
             AnyOf = { { SkipInZones = { 1424, 1437 }, Race = "Human" }, { SkipInZones = { 1424, 1437 }, Race = "Dwarf" }, { SkipInZones = { 1424, 1437 }, Race = "Gnome" }, { SkipInZones = { 1424, 1437 }, Race = "NightElf" }, { SkipInZones = { 1424, 1437 }, Race = "Skyborne" } },
@@ -37,7 +37,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Exit Ironforge. Travel to the Dun Morogh -> Wetlands deathskip location" },
+            Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -721.9, y = -5078.9 },
             Range = 30.0,
             AnyOf = { { SkipInZones = { 1424, 1437 }, Race = "Human" }, { SkipInZones = { 1424, 1437 }, Race = "Dwarf" }, { SkipInZones = { 1424, 1437 }, Race = "Gnome" }, { SkipInZones = { 1424, 1437 }, Race = "NightElf" }, { SkipInZones = { 1424, 1437 }, Race = "Skyborne" } },
@@ -47,7 +47,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Exit Ironforge. Travel to the Dun Morogh -> Wetlands deathskip location" },
+            Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -426.5, y = -5181.0 },
             Range = 70.0,
             AnyOf = { { SkipInZones = { 1424, 1437 }, Race = "Human" }, { SkipInZones = { 1424, 1437 }, Race = "Dwarf" }, { SkipInZones = { 1424, 1437 }, Race = "Gnome" }, { SkipInZones = { 1424, 1437 }, Race = "NightElf" }, { SkipInZones = { 1424, 1437 }, Race = "Skyborne" } },
@@ -57,7 +57,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Exit Ironforge. Travel to the Dun Morogh -> Wetlands deathskip location" },
+            Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -230.4, y = -5154.6 },
             Range = 80.0,
             AnyOf = { { SkipInZones = { 1424, 1437 }, Race = "Human" }, { SkipInZones = { 1424, 1437 }, Race = "Dwarf" }, { SkipInZones = { 1424, 1437 }, Race = "Gnome" }, { SkipInZones = { 1424, 1437 }, Race = "NightElf" }, { SkipInZones = { 1424, 1437 }, Race = "Skyborne" } },
@@ -67,7 +67,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Exit Ironforge. Travel to the Dun Morogh -> Wetlands deathskip location" },
+            Note = { "EXIT_IRONFORGE_TRAVEL_DUN_MOROGH_WETLANDS" },
             Coord = { x = -65.0, y = -5115.0 },
             Range = 100.0,
             AnyOf = { { SkipInZones = { 1424, 1437 }, Race = "Human" }, { SkipInZones = { 1424, 1437 }, Race = "Dwarf" }, { SkipInZones = { 1424, 1437 }, Race = "Gnome" }, { SkipInZones = { 1424, 1437 }, Race = "NightElf" }, { SkipInZones = { 1424, 1437 }, Race = "Skyborne" } },
@@ -77,7 +77,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Climb the mountain, then walk down past the jagged pattern until your zone changes to the Wetlands" },
+            Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 30.741, 34.269),
             Range = 15.0,
             SkipInZones = { 1424 },
@@ -87,7 +87,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Climb the mountain, then walk down past the jagged pattern until your zone changes to the Wetlands" },
+            Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 30.812, 33.548),
             Range = 15.0,
             SkipInZones = { 1424 },
@@ -97,7 +97,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Climb the mountain, then walk down past the jagged pattern until your zone changes to the Wetlands" },
+            Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 31.06, 32.543),
             Range = 15.0,
             SkipInZones = { 1424 },
@@ -107,7 +107,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Climb the mountain, then walk down past the jagged pattern until your zone changes to the Wetlands" },
+            Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 31.439, 32.356),
             Range = 15.0,
             SkipInZones = { 1424 },
@@ -117,7 +117,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Climb the mountain, then walk down past the jagged pattern until your zone changes to the Wetlands" },
+            Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 31.675, 29.636),
             Range = 15.0,
             SkipInZones = { 1424 },
@@ -127,7 +127,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Climb the mountain, then walk down past the jagged pattern until your zone changes to the Wetlands" },
+            Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 32.209, 28.777),
             Range = 15.0,
             SkipInZones = { 1424 },
@@ -137,7 +137,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Climb the mountain, then walk down past the jagged pattern until your zone changes to the Wetlands" },
+            Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 32.645, 27.74),
             Range = 15.0,
             SkipInZones = { 1424 },
@@ -147,7 +147,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Climb the mountain, then walk down past the jagged pattern until your zone changes to the Wetlands" },
+            Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 44.91, 52.022),
             Range = 15.0,
             SkipInZones = { 1424 },
@@ -157,7 +157,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Climb the mountain, then walk down past the jagged pattern until your zone changes to the Wetlands" },
+            Note = { "CLIMB_MOUNTAIN_WALK_PAST_JAGGED_PATTERN_ZONE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1415, 44.91, 52.03),
             Range = 5,
             SkipInZones = { 1424 },
@@ -167,7 +167,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Jump off the mountain toward the north or north-west", "Die and respawn at the Baradin Bay Spirit Healer" },
+            Note = { "JUMP_MOUNTAIN_NORTH_NORTH_WEST", "DIE_RESPAWN_BARADIN_BAY_SPIRIT_HEALER" },
             Coord = { x = 254.0285, y = -4708.3416 },
             Range = 5,
             SkipInZones = { 1424 },
@@ -176,7 +176,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             DeathSkip = true,
-            Note = { "Jump off the mountain toward the north or north-west", "Die and respawn at the Baradin Bay Spirit Healer" },
+            Note = { "JUMP_MOUNTAIN_NORTH_NORTH_WEST", "DIE_RESPAWN_BARADIN_BAY_SPIRIT_HEALER" },
             Coord = { x = -874.7, y = -3341.4 },
             Hardcore = false,
             SkipForLvl = 10,
@@ -187,7 +187,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Swim over to Menethil Harbor" },
+            Note = { "SWIM_MENETHIL_HARBOR" },
             Coord = { x = -839.8, y = -3657.9 },
             Range = 5,
             SkipInZones = { 1424 },
@@ -204,7 +204,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Take the boat to Southshore" },
+            Note = { "TAKE_BOAT_SOUTHSHORE" },
             Coord = { x = -581.8, y = -3722.4 },
             Range = 5,
             Zone = 1437,
@@ -219,7 +219,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -272.0, y = -381.8 },
             Range = 100.0,
             Zone = 1424,
@@ -228,7 +228,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -47.4, y = -249.4 },
             Range = 100.0,
             Zone = 1424,
@@ -237,7 +237,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 68.4, y = -46.2 },
             Range = 130.0,
             Zone = 1416,
@@ -246,7 +246,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 45.3, y = 257.1 },
             Range = 150.0,
             Zone = 1416,
@@ -255,7 +255,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -54.7, y = 812.6 },
             Range = 100.0,
             Zone = 1416,
@@ -264,7 +264,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 7.6, y = 1530.5 },
             Range = 70.0,
             Zone = 1420,
@@ -273,7 +273,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -21.8, y = 1668.6 },
             Range = 20.0,
             Zone = 1420,
@@ -282,7 +282,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -56.6, y = 1692.0 },
             Range = 10.0,
             Zone = 1420,
@@ -291,7 +291,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = -55.2, y = 1779.6 },
             Range = 15.0,
             Zone = 1420,
@@ -300,7 +300,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 6.3, y = 1791.5 },
             Range = 25.0,
             Zone = 1420,
@@ -309,7 +309,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 4.3, y = 1847.5 },
             Range = 10.0,
             Zone = 1420,
@@ -318,7 +318,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 95250,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 238.4, y = 1872.2 },
             Range = 20.0,
             Zone = 1458,
@@ -326,7 +326,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             EnterInstance = { dungeonKey = "ROL" },
-            Note = { "Travel to the Ruins of Lordaeron in Undercity. Enter the dungeon", "Be careful of higher level Cats, Bears, Spiders or Murlocs as you run over. Run through the Hillsbrad fields if needed instead", "As soon as you enter Undercity you will be automatically PVP flagged, becoming attackable by Horde" },
+            Note = { "TRAVEL_RUINS_LORDAERON_UNDERCITY_ENTER_DUNGEON", "CAREFUL_HIGHER_LEVEL_CATS_BEARS_SPIDERS_MURLOCS", "ENTER_UNDERCITY_AUTOMATICALLY_PVP_FLAGGED_BECOMING" },
             Coord = { x = 170.7, y = 1804.7 },
             Range = 20.0,
             Dungeon = "ROL",
@@ -358,7 +358,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             LootItems = { { itemID = 268535, quantity = 1, questID = 95195 } },
             Fillers = { [95250] = { 1 } },
-            Note = { "Loot all mobs for the `Bloodied Insignia`", "Use the `Bloodied Insignia` to start the quest" },
+            Note = { "LOOT_MOBS_BLOODIED_INSIGNIA", "USE_BLOODIED_INSIGNIA_START_QUEST" },
             Button = { ["95195"] = 268535 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -368,7 +368,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             PickUp = { 95195 },
             Fillers = { [95250] = { 1 } },
-            Note = { "Loot all mobs for the `Bloodied Insignia`" },
+            Note = { "LOOT_MOBS_BLOODIED_INSIGNIA" },
             Button = { ["95195"] = 268535 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -378,7 +378,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             PickUp = { 95189 },
             Fillers = { [95250] = { 1 }, [95195] = { 1 } },
-            Note = { "Loot the `Crest of Lordaeron` on the ground or hanging on a wall", "Keep an eye out for this. It can spawn in many different locations and be hard to see" },
+            Note = { "LOOT_CREST_LORDAERON_GROUND_HANGING_WALL", "KEEP_EYE_SPAWN_MANY_DIFFERENT_LOCATIONS_HARD_SEE" },
             Button = { ["95189"] = 268579 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -397,7 +397,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             PickUp = { 92415 },
             Fillers = { [95250] = { 1 }, [95195] = { 1 } },
-            Note = { "Click the Crumpled Paper on the ground near Rath'mael", "You can do this after you've killed him" },
+            Note = { "CLICK_CRUMPLED_PAPER_GROUND_RATH_MAEL", "KILLED" },
             Button = { ["95189"] = 268579 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -414,7 +414,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
             _index = 44,
         },
         {
-            Note = { "Complete the objectives in this area" },
+            Note = { "COMPLETE_OBJECTIVES_AREA" },
             Fillers = { [95195] = { 1 } },
             Button = { ["95189"] = 268579 },
             NoArrow = true,
@@ -424,7 +424,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Qpart = { [95195] = { 1 } },
-            Note = { "Loot all mobs for their Bloodied Insignias" },
+            Note = { "LOOT_MOBS_BLOODIED_INSIGNIAS" },
             Button = { ["95189"] = 268579 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -432,7 +432,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
             _index = 46,
         },
         {
-            Note = { "Complete the objectives in this area" },
+            Note = { "COMPLETE_OBJECTIVES_AREA" },
             Button = { ["95189"] = 268579 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -441,7 +441,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             LootItems = { { itemID = 268579, quantity = 1, questID = 95189 } },
-            Note = { "Loot the `Crest of Lordaeron` on the ground or hanging on a wall", "Keep an eye out for this. It can spawn in many different locations and be hard to see", "Use the `Crest of Lordaeron` to start the quest" },
+            Note = { "LOOT_CREST_LORDAERON_GROUND_HANGING_WALL", "KEEP_EYE_SPAWN_MANY_DIFFERENT_LOCATIONS_HARD_SEE", "USE_CREST_LORDAERON_START_QUEST" },
             Button = { ["95189"] = 268579 },
             NoArrow = true,
             Dungeon = "ROL",
@@ -449,14 +449,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
             _index = 48,
         },
         {
-            Note = { "Complete the objectives in this area" },
+            Note = { "COMPLETE_OBJECTIVES_AREA" },
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
             _index = 49,
         },
         {
-            Note = { "Complete the objectives in this area" },
+            Note = { "COMPLETE_OBJECTIVES_AREA" },
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
@@ -472,7 +472,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Done = { 95250 },
-            Note = { "Captain Truman is back at the start of the dungeon" },
+            Note = { "CAPTAIN_TRUMAN_BACK_START_DUNGEON" },
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
@@ -480,7 +480,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             UseHS = 92415,
-            Note = { "Hearth to Stormwind" },
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
@@ -489,7 +488,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             UseHS = 92415,
-            Note = { "Hearth to Ironforge" },
             NoArrow = true,
             Dungeon = "ROL",
             InstanceQuest = true,
@@ -513,7 +511,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
             _index = 56,
         },
         {
-            Note = { "Make your way to Stormwind" },
+            Note = { "MAKE_WAY_STORMWIND" },
             Zone = 1453,
             _index = 57,
         },
@@ -581,7 +579,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         },
         {
             Done = { 95189 },
-            Note = { "She walks around slightly in the Royal Gallery" },
+            Note = { "WALKS_SLIGHTLY_ROYAL_GALLERY" },
             Coord = { x = 531.0, y = -8322.4 },
             IsQuestOnQuest = 95189,
             Zone = 1453,
@@ -656,7 +654,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 65,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
             Class = "WARLOCK",
@@ -667,7 +665,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 65,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
             Class = "WARLOCK",

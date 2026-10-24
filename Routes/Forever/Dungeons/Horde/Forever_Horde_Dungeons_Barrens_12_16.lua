@@ -96,7 +96,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Go into Dustwind Cave" },
+            Note = { "GO_DUSTWIND_CAVE" },
             Coord = { x = -4834.14, y = 418.07 },
             Range = 30.0,
             Class = "SHAMAN",
@@ -107,7 +107,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Go into Dustwind Cave" },
+            Note = { "GO_DUSTWIND_CAVE" },
             Coord = { x = -4754.3, y = 796.66 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -143,7 +143,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 1502,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2902.79, y = -276.55 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -154,7 +154,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 1502,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -3004.12, y = -298.17 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -165,7 +165,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 1502,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -3110.52, y = -320.46 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -191,7 +191,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Qpart = { [1503] = { 1 } },
-            Note = { "Loot the Stolen Iron Chest for its Forged Steel Bars" },
+            Note = { "LOOT_STOLEN_IRON_CHEST_FORGED_STEEL_BARS" },
             Coord = { x = -2955.48, y = -188.04 },
             Class = "WARRIOR",
             Race = "Tauren",
@@ -201,7 +201,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 1503,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2902.79, y = -276.55 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -212,7 +212,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 1503,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -3004.12, y = -298.17 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -223,7 +223,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 1503,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -3110.52, y = -320.46 },
             Range = 30.0,
             Class = "WARRIOR",
@@ -248,14 +248,14 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 17,
         },
         {
-            Note = { "Travel to The Crossroads" },
+            Note = { "TRAVEL_CROSSROADS" },
             Hardcore = false,
             MinLevel = 15,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             _index = 18,
         },
         {
-            Note = { "Travel to The Crossroads" },
+            Note = { "TRAVEL_CROSSROADS" },
             Hardcore = true,
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             _index = 19,
@@ -352,7 +352,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Done = { 6365 },
-            Note = { "Do NOT fly to Orgrimmar" },
+            Note = { "NOT_FLY_ORGRIMMAR" },
             Coord = { x = -2595.75, y = -437.35 },
             Hardcore = true,
             Race = { "Orc", "Troll" },
@@ -361,7 +361,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             PickUp = { 6384 },
-            Note = { "Do NOT fly to Orgrimmar" },
+            Note = { "NOT_FLY_ORGRIMMAR" },
             Coord = { x = -2595.75, y = -437.35 },
             Hardcore = true,
             Race = { "Orc", "Troll" },
@@ -448,7 +448,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Waypoint = 924,
             NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2554.2, y = 80.18 },
             Range = 40.0,
             IsQuestOnQuest = 924,
@@ -460,7 +460,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Waypoint = 924,
             NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2477.19, y = 136.26 },
             Range = 40.0,
             IsQuestOnQuest = 924,
@@ -472,7 +472,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Waypoint = 924,
             NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2363.7, y = 232.87 },
             Range = 40.0,
             IsQuestOnQuest = 924,
@@ -484,7 +484,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Waypoint = 924,
             NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
-            Note = { "Travel to the top of the mountain" },
+            Note = { "TRAVEL_TOP_MOUNTAIN" },
             Coord = { x = -2205.62, y = 314.62 },
             Range = 100.0,
             IsQuestOnQuest = 924,
@@ -496,7 +496,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Waypoint = 924,
             NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
-            Note = { "Go inside Dreadmist Den" },
+            Note = { "GO_INSIDE_DREADMIST_DEN" },
             Coord = { x = -2205.62, y = 314.62 },
             Range = 15.0,
             IsQuestOnQuest = 924,
@@ -507,7 +507,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             LootItems = { { itemID = 4986, quantity = 1, questID = 924 } },
             Fillers = { [869] = { 1 }, [844] = { 1 } },
-            Note = { "Right click the Altar", "FLAWED_POWER_STONE_30_MINUTE_DURATION" },
+            Note = { "RIGHT_CLICK_ALTAR", "FLAWED_POWER_STONE_30_MINUTE_DURATION" },
             Coord = { x = -2238.04, y = 324.08 },
             IsQuestOnQuest = 924,
             Race = { "Orc", "Troll" },
@@ -517,7 +517,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [924] = { 1 } },
             Fillers = { [869] = { 1 }, [844] = { 1 } },
-            Note = { "Right click the Altar", "FLAWED_POWER_STONE_30_MINUTE_DURATION" },
+            Note = { "RIGHT_CLICK_ALTAR", "FLAWED_POWER_STONE_30_MINUTE_DURATION" },
             Coord = { x = -2238.04, y = 324.08 },
             IsQuestOnQuest = 924,
             Race = { "Orc", "Troll" },
@@ -527,7 +527,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             LootItems = { { itemID = 4926, quantity = 1, questID = 819 } },
             Fillers = { [869] = { 1 }, [844] = { 1 }, [871] = { 1, 2, 3 } },
-            Note = { "Loot Chen's Empty Keg from the ground and start the quest", "You can get it later if it's not there" },
+            Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "GET_NOT" },
             Coord = { x = -3021.35, y = -231.96 },
             Button = { ["819"] = 4926 },
             AnyOf = { { Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Class = { "DRUID", "HUNTER", "WARRIOR" } }, { Race = "Scourge" }, { Race = "Skyborne" } },
@@ -538,7 +538,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             PickUp = { 819 },
             Fillers = { [869] = { 1 }, [844] = { 1 }, [871] = { 1, 2, 3 } },
-            Note = { "Loot Chen's Empty Keg from the ground and start the quest", "You can get it later if it's not there" },
+            Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "GET_NOT" },
             Coord = { x = -3021.35, y = -231.96 },
             Button = { ["819"] = 4926 },
             AnyOf = { { Class = { "HUNTER", "MAGE", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { Class = { "DRUID", "HUNTER", "WARRIOR" } }, { Race = "Scourge" }, { Race = "Skyborne" } },
@@ -549,7 +549,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             LootItems = { { itemID = 4926, quantity = 1, questID = 819 } },
             Fillers = { [869] = { 1 }, [844] = { 1 }, [1525] = { 1 }, [871] = { 1, 2, 3 } },
-            Note = { "Loot Chen's Empty Keg from the ground and start the quest", "You can get it later if it's not there" },
+            Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "GET_NOT" },
             Coord = { x = -3021.35, y = -231.96 },
             Button = { ["819"] = 4926 },
             Class = "SHAMAN",
@@ -561,7 +561,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             PickUp = { 819 },
             Fillers = { [869] = { 1 }, [844] = { 1 }, [1525] = { 1 }, [871] = { 1, 2, 3 } },
-            Note = { "Loot Chen's Empty Keg from the ground and start the quest", "You can get it later if it's not there" },
+            Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "GET_NOT" },
             Coord = { x = -3021.35, y = -231.96 },
             Button = { ["819"] = 4926 },
             Class = "SHAMAN",
@@ -693,7 +693,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             PickUp = { 867 },
-            Note = { "He is at the top of the tower" },
+            Note = { "ON_TOP_OF_TOWER" },
             Coord = { x = -2607.91, y = -475.18 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -701,7 +701,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Done = { 6365 },
-            Note = { "Do NOT fly to Orgrimmar" },
+            Note = { "NOT_FLY_ORGRIMMAR" },
             Coord = { x = -2595.75, y = -437.35 },
             Hardcore = false,
             Race = { "Orc", "Troll" },
@@ -710,7 +710,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             PickUp = { 6384 },
-            Note = { "Do NOT fly to Orgrimmar" },
+            Note = { "NOT_FLY_ORGRIMMAR" },
             Coord = { x = -2595.75, y = -437.35 },
             Hardcore = false,
             Race = { "Orc", "Troll" },
@@ -740,7 +740,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 71,
         },
         {
-            Note = { "Check if Lizzarik is in the Crossroads. He sells potions and `Heavy Spiked Mace` which is a limited supply item" },
+            Note = { "CHECK_LIZZARIK_CROSSROADS_SELLS_POTIONS_HEAVY" },
             Coord = { x = -2697.08, y = -461.67 },
             Class = "WARRIOR",
             EquippedItemStat = { { slot = 16, stat = "QUALITY", operator = "<", value = 7.0, precision = 1, allowMissing = true }, { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 12.5, precision = 1, allowMissing = true } },
@@ -752,7 +752,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 872,
             NonSkippableWaypoint = true,
-            Note = { "Stock up on food" },
+            Note = { "STOCK_FOOD" },
             Coord = { x = -2645.4, y = -406.94 },
             Range = 5,
             AnyOf = { { AnyOf = { { IsQuestOnQuest = 872 }, { IsQuestOnQuest = 5041 }, { IsQuestOnQuest = 845 } }, Race = { "Orc", "Scourge", "Skyborne", "Troll" }, Class = { "ROGUE", "WARRIOR" } }, { AnyOf = { { IsQuestOnQuest = 872 }, { IsQuestOnQuest = 5041 }, { IsQuestOnQuest = 845 } }, Race = "Tauren", Class = "WARRIOR" } },
@@ -762,7 +762,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 872,
             NonSkippableWaypoint = true,
-            Note = { "Stock up on food and water" },
+            Note = { "BUY_FOOD_WATER_IF_NEEDED" },
             Coord = { x = -2645.4, y = -406.94 },
             Range = 5,
             AnyOf = { { AnyOf = { { IsQuestOnQuest = 872 }, { IsQuestOnQuest = 5041 }, { IsQuestOnQuest = 845 } }, Race = "Orc", Class = { "HUNTER", "MAGE", "SHAMAN", "WARLOCK" } }, { AnyOf = { { IsQuestOnQuest = 872 }, { IsQuestOnQuest = 5041 }, { IsQuestOnQuest = 845 } }, Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "SHAMAN", "WARLOCK" } }, { AnyOf = { { IsQuestOnQuest = 872 }, { IsQuestOnQuest = 5041 }, { IsQuestOnQuest = 845 } }, Race = { "Skyborne", "Tauren" }, Class = { "DRUID", "HUNTER", "SHAMAN" } }, { AnyOf = { { IsQuestOnQuest = 872 }, { IsQuestOnQuest = 5041 }, { IsQuestOnQuest = 845 } }, Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK" } } },
@@ -772,7 +772,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 819,
             NonSkippableWaypoint = true,
-            Note = { "Loot Chen's Empty Keg from the ground and start the quest", "Wait for the respawn if it's not up" },
+            Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "WAIT_RESPAWN_NOT" },
             Coord = { x = -3021.35, y = -231.96 },
             Range = 20.0,
             IsQuestOnQuest = 872,
@@ -781,7 +781,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             LootItems = { { itemID = 4926, quantity = 1, questID = 819 } },
-            Note = { "Loot Chen's Empty Keg from the ground and start the quest", "Wait for the respawn if it's not up" },
+            Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "WAIT_RESPAWN_NOT" },
             Coord = { x = -3029.46, y = 261.25 },
             Button = { ["819"] = 4926 },
             IsQuestOnQuest = 872,
@@ -790,7 +790,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             PickUp = { 819 },
-            Note = { "Loot Chen's Empty Keg from the ground and start the quest", "Wait for the respawn if it's not up" },
+            Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "WAIT_RESPAWN_NOT" },
             Coord = { x = -3029.46, y = 261.25 },
             Button = { ["819"] = 4926 },
             IsQuestOnQuest = 872,
@@ -809,7 +809,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [5041] = { 1 } },
             Fillers = { [872] = { 1, 2 } },
-            Note = { "Loot the Crossroads' Supply Crates", "It has multiple spawn locations" },
+            Note = { "LOOT_CROSSROADS_SUPPLY_CRATES", "MULTIPLE_SPAWN_LOCATIONS" },
             Coord = { x = -3347.64, y = -130.275 },
             Range = 30,
             IsQuestOnQuest = 872,
@@ -1032,7 +1032,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Done = { 1526 },
-            Note = { "Click the Brazier on the ground" },
+            Note = { "CLICK_BRAZIER_GROUND" },
             Coord = { x = -4022.51, y = -243.92 },
             Class = "SHAMAN",
             Race = { "Orc", "Tauren", "Troll" },
@@ -1041,7 +1041,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             PickUp = { 1527 },
-            Note = { "Click the Brazier on the ground" },
+            Note = { "CLICK_BRAZIER_GROUND" },
             Coord = { x = -4022.51, y = -243.92 },
             Class = "SHAMAN",
             Race = { "Orc", "Tauren", "Troll" },
@@ -1059,7 +1059,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             LootItems = { { itemID = 4926, quantity = 1, questID = 819 } },
-            Note = { "Loot Chen's Empty Keg from the ground and start the quest", "Wait for the respawn if it's not up" },
+            Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "WAIT_RESPAWN_NOT" },
             Coord = { x = -3029.46, y = 261.25 },
             Button = { ["819"] = 4926 },
             Class = "SHAMAN",
@@ -1069,7 +1069,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             PickUp = { 819 },
-            Note = { "Loot Chen's Empty Keg from the ground and start the quest", "Wait for the respawn if it's not up" },
+            Note = { "LOOT_CHEN_EMPTY_KEG_GROUND_START_QUEST", "WAIT_RESPAWN_NOT" },
             Coord = { x = -3029.46, y = 261.25 },
             Button = { ["819"] = 4926 },
             Class = "SHAMAN",
@@ -1237,7 +1237,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 124,
         },
         {
-            DestroyItems = { items = { 5088 }, text = "Delete the [Control Console Operating Manual] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 5088 } },
             _index = 125,
         },
         {
@@ -1281,7 +1281,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Qpart = { [97253] = { 1 } },
-            Note = { "Loot the Handful of Complicated Parts on the ground" },
+            Note = { "LOOT_HANDFUL_COMPLICATED_PARTS_GROUND" },
             Coord = { x = -3639.5, y = -1528.3 },
             Range = 30,
             AnyOf = { { Class = { "HUNTER", "MAGE", "PRIEST", "SHAMAN", "WARLOCK", "WARRIOR" } }, { Race = "Tauren" }, { Race = "Scourge" }, { Race = "Skyborne" } },
@@ -1292,7 +1292,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [97253] = { 1 } },
             Fillers = { [1963] = { 1 } },
-            Note = { "Loot the Handful of Complicated Parts on the ground" },
+            Note = { "LOOT_HANDFUL_COMPLICATED_PARTS_GROUND" },
             Coord = { x = -3639.5, y = -1528.3 },
             Range = 30,
             Class = "ROGUE",
@@ -1303,7 +1303,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Qpart = { [1963] = { 1 } },
-            Note = { "He spawns at the first camp and patrols up the hill" },
+            Note = { "SPAWNS_FIRST_CAMP_PATROLS_HILL" },
             Coord = { x = -3786.795, y = -1426.15 },
             Range = 30,
             Class = "ROGUE",
@@ -1482,7 +1482,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             UseHS = 6362,
-            Note = { "Hearth to Thunder Bluff" },
             Button = { ["6362"] = 6948 },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = false } },
             Race = "Tauren",
@@ -1602,7 +1601,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Qpart = { [5041] = { 1 } },
-            Note = { "Loot the Crossroads' Supply Crates", "It has multiple spawn locations" },
+            Note = { "LOOT_CROSSROADS_SUPPLY_CRATES", "MULTIPLE_SPAWN_LOCATIONS" },
             IsQuestCompleted = 871,
             IsQuestOnQuest = 5041,
             _index = 166,
@@ -1654,7 +1653,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             BuyMerchant = { { itemID = 2515, quantity = 1200 } },
-            Note = { "If it's not up, buy a `Reinforced Bow` instead" },
+            Note = { "NOT_BUY_REINFORCED_BOW" },
             Coord = { x = -2556.23, y = -351.54 },
             Class = "HUNTER",
             IsQuestOnQuest = 903,
@@ -1689,7 +1688,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [870] = { 1 } },
             Fillers = { [855] = { 1 }, [848] = { 1 } },
-            Note = { "Dive underwater to the Bubbling Fissure" },
+            Note = { "DIVE_UNDERWATER_BUBBLING_FISSURE" },
             Coord = { x = -1943.16, y = 89.64 },
             Zone = 1413,
             _index = 177,
@@ -1795,7 +1794,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             SellItems = { junk = true, questID = 95494 },
-            Note = { "repair" },
+            Note = { "REPAIR" },
             Coord = { x = -1815.48, y = 786.89 },
             AnyOf = { { AnyOf = { { IsQuestUncompleted = 95494 }, { IsQuestUncompleted = 95507 } }, Race = { "Orc", "Troll" }, Class = { "HUNTER", "SHAMAN" } }, { AnyOf = { { IsQuestUncompleted = 95494 }, { IsQuestUncompleted = 95507 } }, Race = { "Skyborne", "Tauren" }, Class = "HUNTER" } },
             Zone = 1413,
@@ -1803,7 +1802,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             SellItems = { junk = true, questID = 95494 },
-            Note = { "Vrang sells `Heavy Spiked Mace` which is a limited supply item", "repair" },
+            Note = { "VRANG_SELLS_HEAVY_SPIKED_MACE_LIMITED_SUPPLY_ITEM", "REPAIR" },
             Coord = { x = -1815.48, y = 786.89 },
             AnyOf = { { IsQuestUncompleted = 95494 }, { IsQuestUncompleted = 95507 } },
             Class = { "DRUID", "SHAMAN", "WARRIOR" },
@@ -1832,7 +1831,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Qpart = { [95507] = { 1 } },
-            Note = { "Loot the Sprung Traps on the ground" },
+            Note = { "LOOT_SPRUNG_TRAPS_GROUND" },
             Coord = { x = -1856.4, y = 566.85 },
             Range = 30,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1872,7 +1871,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 95495,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1778.1, y = 684.2 },
             Range = 25.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1882,7 +1881,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 95495,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1892,7 +1891,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 95495,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1643.9, y = 786.0 },
             Range = 25.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1902,7 +1901,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 95495,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1927,7 +1926,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Qpart = { [95621] = { 1 } },
-            Note = { "Be careful! You may aggro 2-3 mobs at the same time" },
+            Note = { "BEWARE_AGGRO_2_3_ENEMIES" },
             Coord = { x = -1611.5, y = 549.0 },
             Range = 10,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1938,7 +1937,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 95621,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1736.9, y = 650.3 },
             Range = 25.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1948,7 +1947,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 95621,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1741.7, y = 721.4 },
             Range = 25.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1958,7 +1957,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 95621,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1643.9, y = 786.0 },
             Range = 25.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1968,7 +1967,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 95621,
             NonSkippableWaypoint = true,
-            Note = { "Travel up the mountain" },
+            Note = { "TRAVEL_MOUNTAIN" },
             Coord = { x = -1605.3, y = 818.3 },
             Range = 20.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -1993,7 +1992,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Qpart = { [95508] = { 1 } },
-            Note = { "MOVE_BEHIND_HOUSE_WAIT_RP_FINISH_AVOID", "You don't actually need to assist Walton, he will survive with the help of Vrang Wildgore" },
+            Note = { "MOVE_BEHIND_HOUSE_WAIT_RP_FINISH_AVOID", "NOT_ACTUALLY_ASSIST_WALTON_SURVIVE_HELP_VRANG" },
             Coord = { x = -1629.2, y = 835.6 },
             ETA = 67.0,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -2011,14 +2010,13 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             UseHS = 869,
-            Note = { "Hearth to The Crossroads" },
             Button = { ["869"] = 6948 },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = false } },
             _index = 213,
         },
         {
             SellItems = { junk = true, questID = 869 },
-            Note = { "restock on food if necessary" },
+            Note = { "BUY_FOOD_IF_NEEDED" },
             Coord = { x = -2645.4, y = -406.94 },
             AnyOf = { { AnyOf = { { IsQuestUncompleted = 901 }, { IsQuestUncompleted = 881 } }, Race = { "Orc", "Scourge", "Skyborne", "Troll" }, Class = { "ROGUE", "WARRIOR" } }, { AnyOf = { { IsQuestUncompleted = 901 }, { IsQuestUncompleted = 881 } }, Race = "Tauren", Class = "WARRIOR" } },
             Zone = 1413,
@@ -2026,7 +2024,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             SellItems = { junk = true, questID = 869 },
-            Note = { "restock on food and water if necessary" },
+            Note = { "BUY_FOOD_WATER_IF_NEEDED" },
             Coord = { x = -2645.4, y = -406.94 },
             AnyOf = { { AnyOf = { { IsQuestUncompleted = 901 }, { IsQuestUncompleted = 881 } }, Race = "Orc", Class = { "HUNTER", "MAGE", "SHAMAN", "WARLOCK" } }, { AnyOf = { { IsQuestUncompleted = 901 }, { IsQuestUncompleted = 881 } }, Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "SHAMAN", "WARLOCK" } }, { AnyOf = { { IsQuestUncompleted = 901 }, { IsQuestUncompleted = 881 } }, Race = { "Skyborne", "Tauren" }, Class = { "DRUID", "HUNTER", "SHAMAN" } }, { AnyOf = { { IsQuestUncompleted = 901 }, { IsQuestUncompleted = 881 } }, Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK" } } },
             Zone = 1413,
@@ -2106,7 +2104,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [881] = { 1 } },
             Fillers = { [869] = { 1 } },
-            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee", "ECHEYAKEE_NOT_SPAWN_USING_HORN_ECHEYAKEE_NOT" },
+            Note = { "USE_HORN_ECHEYAKEE_SUMMON_ECHEYAKEE", "ECHEYAKEE_NOT_SPAWN_USING_HORN_ECHEYAKEE_NOT" },
             Coord = { x = -3031.48, y = 461.91 },
             Range = 10,
             Button = { ["881-1"] = 10327 },
@@ -2115,10 +2113,11 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 226,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 881" },
+            LeaveQuest = 881,
             Fillers = { [869] = { 1 } },
             Coord = { x = -2669.72, y = -481.94 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
+            IsQuestOnQuest = 881,
             ItemCount = { operator = "<", count = 1, itemID = 5100 },
             Zone = 1413,
             _index = 227,
@@ -2135,7 +2134,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [881] = { 1 } },
             Fillers = { [869] = { 1 } },
-            Note = { "Use the `Horn of Echeyakee` to summon Echeyakee" },
+            Note = { "USE_HORN_ECHEYAKEE_SUMMON_ECHEYAKEE" },
             Coord = { x = -3031.48, y = 461.91 },
             Range = 10,
             Button = { ["881-1"] = 10327 },
@@ -2146,7 +2145,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Done = { 894 },
             Fillers = { [869] = { 1 } },
-            Note = { "Click on the Control Console" },
+            Note = { "CLICK_CONTROL_CONSOLE" },
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2155,7 +2154,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             PickUp = { 900 },
             Fillers = { [869] = { 1 } },
-            Note = { "Click on the Control Console" },
+            Note = { "CLICK_CONTROL_CONSOLE" },
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2164,7 +2163,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [900] = { 1 } },
             Fillers = { [869] = { 1 } },
-            Note = { "Click the Valve", "CAREFUL_TWO_MOBS_SPAWN_SHUT_OFF_VALVE" },
+            Note = { "CLICK_VALVE", "CAREFUL_TWO_MOBS_SPAWN_SHUT_OFF_VALVE" },
             Coord = { x = -2686.95, y = 842.29 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2173,7 +2172,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [900] = { 3 } },
             Fillers = { [869] = { 1 } },
-            Note = { "Click the Valve", "One mob will spawn after you shut off the Valve" },
+            Note = { "CLICK_VALVE", "ONE_MOB_SPAWN_SHUT_VALVE" },
             Coord = { x = -2675.8, y = 842.29 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2182,7 +2181,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Qpart = { [900] = { 2 } },
             Fillers = { [869] = { 1 } },
-            Note = { "Click the Valve" },
+            Note = { "CLICK_VALVE" },
             Coord = { x = -2679.86, y = 830.8 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2191,7 +2190,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Done = { 900 },
             Fillers = { [869] = { 1 } },
-            Note = { "Click the Control Console" },
+            Note = { "CLICK_CONTROL_CONSOLE" },
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2200,7 +2199,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             PickUp = { 901 },
             Fillers = { [869] = { 1 } },
-            Note = { "Click the Control Console" },
+            Note = { "CLICK_CONTROL_CONSOLE" },
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2218,7 +2217,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Done = { 901 },
             Fillers = { [869] = { 1 } },
-            Note = { "Click the Control Console" },
+            Note = { "CLICK_CONTROL_CONSOLE" },
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2227,7 +2226,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             PickUp = { 902 },
             Fillers = { [869] = { 1 } },
-            Note = { "Click the Control Console" },
+            Note = { "CLICK_CONTROL_CONSOLE" },
             Coord = { x = -2686.95, y = 825.4 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2251,7 +2250,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             PickUp = { 858 },
-            Note = { "Wizzlecrank's Shredder has a long respawn timer. Consider skipping this quest if there is a lot of competition" },
+            Note = { "WIZZLECRANK_SHREDDER_LONG_RESPAWN_TIMER_CONSIDER" },
             Coord = { x = -3104.44, y = 1109.16 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             Zone = 1413,
@@ -2274,7 +2273,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Done = { 858 },
-            Note = { "Wizzlecrank's Shredder has a long respawn timer. Consider skipping this quest if there is a lot of competition", "This will begin an escort. Make sure you're at full health" },
+            Note = { "WIZZLECRANK_SHREDDER_LONG_RESPAWN_TIMER_CONSIDER", "BEGIN_ESCORT_MAKE_SURE_FULL_HEALTH" },
             Coord = { x = -3104.44, y = 1109.16 },
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
             IsQuestOnQuest = 858,
@@ -2285,7 +2284,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             PickUp = { 863 },
-            Note = { "Wizzlecrank's Shredder has a long respawn timer. Consider skipping this quest if there is a lot of competition", "This will begin an escort. Make sure you're at full health" },
+            Note = { "WIZZLECRANK_SHREDDER_LONG_RESPAWN_TIMER_CONSIDER", "BEGIN_ESCORT_MAKE_SURE_FULL_HEALTH" },
             Coord = { x = -3104.44, y = 1109.16 },
             NoAutoAccept = true,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -2297,7 +2296,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             PickUp = { 863 },
-            Note = { "Wizzlecrank's Shredder has a long respawn timer. Consider skipping this quest if there is a lot of competition", "This will begin an escort. Make sure you're at full health" },
+            Note = { "WIZZLECRANK_SHREDDER_LONG_RESPAWN_TIMER_CONSIDER", "BEGIN_ESCORT_MAKE_SURE_FULL_HEALTH" },
             Coord = { x = -3104.44, y = 1109.16 },
             NoAutoAccept = true,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
@@ -2307,7 +2306,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         },
         {
             Qpart = { [863] = { 1 } },
-            Note = { "Two Venture Co. Mercenaries will spawn when the shredder moves onto the higher ground. Kill them then wait for his RP event at the end" },
+            Note = { "TWO_VENTURE_CO_MERCENARIES_SPAWN_SHREDDER_MOVES" },
             Coord = { x = -3016.79, y = 1109.495 },
             Range = 30,
             AnyOf = { { Class = { "HUNTER", "SHAMAN" }, Race = { "Orc", "Troll" } }, { Race = "Tauren" }, { Class = "HUNTER" } },
