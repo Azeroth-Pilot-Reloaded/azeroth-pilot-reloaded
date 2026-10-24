@@ -36,11 +36,11 @@ end--[[APR_DIAG]]; RegisterDelveRoute = APRTrace("Routes/delves.lua:30:RegisterD
 --------------------------------- The War Within --------------------------------------
 ---------------------------------------------------------------------------------------
 RegisterDelveRoute("FUNGAL_FOLLY_DELVE", {
-    label = "Fungal Folly",
+    label = L["FUNGAL_FOLLY"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2249,
     scenarios = {
-        DelveScenarioBlock(2311, 1, "Lost Miners", {
+        DelveScenarioBlock(2311, 1, L["LOST_MINERS"], {
             {
                 Coord = { x = -234.80000305176, y = -488.60000610352 },
                 InstanceQuest = true,
@@ -73,11 +73,11 @@ RegisterDelveRoute("FUNGAL_FOLLY_DELVE", {
 })
 
 RegisterDelveRoute("KRIEGVALS_REST_DELVE", {
-    label = "Kriegval's Rest",
+    label = L["KRIEGVAL_REST"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2250,
     scenarios = {
-        DelveScenarioBlock(2317, 1, "Lost Keepsakes", {
+        DelveScenarioBlock(2317, 1, L["LOST_KEEPSAKES"], {
             {
                 Coord = { x = -47.200000762939, y = -349.20001220703 },
                 GossipOptionIDs = { 119802 },
@@ -126,11 +126,11 @@ RegisterDelveRoute("KRIEGVALS_REST_DELVE", {
 })
 
 RegisterDelveRoute("WATERWORKS_DELVE", {
-    label = "Waterworks",
+    label = L["WATERWORKS"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2251,
     scenarios = {
-        DelveScenarioBlock(2354, 1, "Captured Engineers", {
+        DelveScenarioBlock(2354, 1, L["CAPTURED_ENGINEERS"], {
             {
                 Scenario = { questID = 1, criteriaID = 63492, criteriaIndex = 1, scenarioID = 2354, stepID = 6757 },
                 Coord = { x = 313.6, y = 38.7 },
@@ -171,11 +171,11 @@ RegisterDelveRoute("WATERWORKS_DELVE", {
 })
 
 RegisterDelveRoute("DREAD_PIT_DELVE", {
-    label = "Dread Pit",
+    label = L["DREAD_PIT"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2302,
     scenarios = {
-        DelveScenarioBlock(2415, 1, "Lost Gems", {
+        DelveScenarioBlock(2415, 1, L["LOST_GEMS"], {
             {
                 Scenario = { questID = 1, criteriaID = 66407, criteriaIndex = 1, scenarioID = 2415, stepID = 7007 },
                 Coord = { x = -129.6, y = -240.3 },
@@ -237,11 +237,11 @@ RegisterDelveRoute("DREAD_PIT_DELVE", {
 })
 
 RegisterDelveRoute("SKITTERING_BREACH_DELVE", {
-    label = "Skittering Breach",
+    label = L["SKITTERING_BREACH"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2310,
     scenarios = {
-        DelveScenarioBlock(2422, 1, "Old Rituals", {
+        DelveScenarioBlock(2422, 1, L["OLD_RITUALS"], {
             {
                 Scenario = { questID = 1, criteriaID = 66541, criteriaIndex = 1, scenarioID = 2422, stepID = 7029 },
                 Coord = { x = -161.7, y = -70.0 },
@@ -282,11 +282,11 @@ RegisterDelveRoute("SKITTERING_BREACH_DELVE", {
 })
 
 RegisterDelveRoute("MYCOMANCER_CAVERN_DELVE", {
-    label = "Mycomancer Cavern",
+    label = L["MYCOMANCER_CAVERN"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2312,
     scenarios = {
-        DelveScenarioBlock(2434, 1, "Missing Pigs", {
+        DelveScenarioBlock(2434, 1, L["MISSING_PIGS"], {
             {
                 Scenario = { questID = 1, criteriaID = 66719, criteriaIndex = 1, scenarioID = 2434, stepID = 7152 },
                 Coord = { x = 8, y = -754.60003662109 },
@@ -317,11 +317,11 @@ RegisterDelveRoute("MYCOMANCER_CAVERN_DELVE", {
 })
 
 RegisterDelveRoute("SINKHOLE_DELVE", {
-    label = "Sinkhole",
+    label = L["SINKHOLE"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2301,
     scenarios = {
-        DelveScenarioBlock(2409, 1, "Illusory Rescue", {
+        DelveScenarioBlock(2409, 1, L["ILLUSORY_RESCUE"], {
             {
                 Scenario = { questID = 1, criteriaID = 66466, criteriaIndex = 1, scenarioID = 2409, stepID = 7001 },
                 Coord = { x = -1659.5, y = -417.20001220703 },
@@ -354,11 +354,11 @@ RegisterDelveRoute("SINKHOLE_DELVE", {
 })
 
 RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
-    label = "Nightfall Sanctum",
+    label = L["NIGHTFALL_SANCTUM"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2277,
     scenarios = {
-        DelveScenarioBlock(2397, 1, "Dark Ritual", {
+        DelveScenarioBlock(2397, 1, L["DARK_RITUAL"], {
             {
                 Scenario = { questID = 1, criteriaID = 66008, criteriaIndex = 1, scenarioID = 2397, stepID = 6944 },
                 Coord = { x = 97.599998474121, y = -778.60003662109 },
@@ -393,7 +393,7 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
             }
             ,
         }),
-        DelveScenarioBlock(2398, 2, "Signal Noise", {
+        DelveScenarioBlock(2398, 2, L["SIGNAL_NOISE"], {
             {
                 Scenario = { questID = 1, criteriaID = 66010, criteriaIndex = 1, scenarioID = 2398, stepID = 6945 },
                 Coord = { x = -60.100002288818, y = -559.29998779297 },
@@ -442,11 +442,11 @@ RegisterDelveRoute("NIGHTFALL_SANCTUM_DELVE", {
 })
 
 RegisterDelveRoute("SPIRAL_WEAVE_DELVE", {
-    label = "Spiral Weave",
+    label = L["SPIRAL_WEAVE"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2347,
     scenarios = {
-        DelveScenarioBlock(2401, 1, "Tortured Hostages", {
+        DelveScenarioBlock(2401, 1, L["TORTURED_HOSTAGES"], {
             {
                 Scenario = { questID = 1, criteriaID = 66065, criteriaIndex = 1, scenarioID = 2401, stepID = 6972 },
                 Coord = { x = 41.5, y = -135.10000610352 },
@@ -479,11 +479,11 @@ RegisterDelveRoute("SPIRAL_WEAVE_DELVE", {
 })
 
 RegisterDelveRoute("TAK_RETHAN_ABYSS_DELVE", {
-    label = "Tak-Rethan Abyss",
+    label = L["TAK_RETHAN_ABYSS"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2259,
     scenarios = {
-        DelveScenarioBlock(2373, 1, "Goblin Mischief", {
+        DelveScenarioBlock(2373, 1, L["GOBLIN_MISCHIEF"], {
             {
                 Scenario = { questID = 1, criteriaID = 64509, criteriaIndex = 1, scenarioID = 2373, stepID = 6812 },
                 Coord = { x = 235.69999694824, y = -328.20001220703 },
@@ -533,11 +533,11 @@ RegisterDelveRoute("TAK_RETHAN_ABYSS_DELVE", {
 })
 
 RegisterDelveRoute("UNDERKEEP_DELVE", {
-    label = "Underkeep",
+    label = L["UNDERKEEP"],
     expansion = APR.EXPANSIONS.TheWarWithin,
     mapID = 2299,
     scenarios = {
-        DelveScenarioBlock(2426, 1, "Torture Victims", {
+        DelveScenarioBlock(2426, 1, L["TORTURE_VICTIMS"], {
             {
                 Scenario = { questID = 1, criteriaID = 66431, criteriaIndex = 1, scenarioID = 2426, stepID = 7041 },
                 Coord = { x = 40.100002288818, y = -111.59999847412 },
@@ -574,11 +574,11 @@ RegisterDelveRoute("UNDERKEEP_DELVE", {
 --------------------------------- Midnight --------------------------------------------
 ---------------------------------------------------------------------------------------
 RegisterDelveRoute("THE_GRUDGE_PIT_DELVE", {
-    label = "The Grudge Pit",
+    label = L["GRUDGE_PIT"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2510,
     scenarios = {
-        DelveScenarioBlock(3097, 1, "Dastardly Rotstalk", {
+        DelveScenarioBlock(3097, 1, L["DASTARDLY_ROTSTALK"], {
             {
                 Scenario = { questID = 1, criteriaID = 106065, criteriaIndex = 1, scenarioID = 3097, stepID = 15912 },
                 Coord = { x = -1809.3, y = -791.7 },
@@ -655,7 +655,7 @@ RegisterDelveRoute("THE_GRUDGE_PIT_DELVE", {
             ,
         }),
         -- DelveScenarioBlock(3098, 2, "Arena Champion", {}),
-        DelveScenarioBlock(3099, 3, "Lightbloom Invasion", {
+        DelveScenarioBlock(3099, 3, L["LIGHTBLOOM_INVASION"], {
             {
                 Scenario = { criteriaID = 106322, criteriaIndex = 1, questID = 1, scenarioID = 3099, stepID = 15943 },
                 Coord = { x = -1816.6, y = -834.3 },
@@ -779,11 +779,11 @@ RegisterDelveRoute("THE_GRUDGE_PIT_DELVE", {
 })
 
 RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
-    label = "Parhelion Plaza",
+    label = L["PARHELION_PLAZA"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2545,
     scenarios = {
-        DelveScenarioBlock(3074, 1, "Holding the Line", {
+        DelveScenarioBlock(3074, 1, L["HOLDING_LINE"], {
             {
                 Scenario = { criteriaID = 105376, criteriaIndex = 1, questID = 1, scenarioID = 3074, stepID = 15844 },
                 Coord = { x = -4391.7, y = 11107 },
@@ -831,7 +831,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
             },
         }),
         -- DelveScenarioBlock(3075, 2, "March of the Arcane Brigade", {}),
-        DelveScenarioBlock(3100, 3, "Bombing Run", {
+        DelveScenarioBlock(3100, 3, L["BOMBING_RUN"], {
             {
                 Scenario = { criteriaID = 105376, criteriaIndex = 1, questID = 1, scenarioID = 3100, stepID = 15906 },
                 Coord = { x = -4393.7, y = 11108.6 },
@@ -1006,7 +1006,7 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
                 _index = 48,
             },
         }),
-        DelveScenarioBlock(3298, 4, "Caustic Crush", {
+        DelveScenarioBlock(3298, 4, L["CAUSTIC_CRUSH"], {
             {
                 Scenario = { criteriaID = 105376, criteriaIndex = 1, questID = 1, scenarioID = 3298, stepID = 16608 },
                 Coord = { x = -4401.6, y = 11107.5 },
@@ -1132,11 +1132,11 @@ RegisterDelveRoute("PARHELION_PLAZA_DELVE", {
 })
 
 RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
-    label = "Collegiate Calamity",
+    label = L["COLLEGIATE_CALAMITY"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2577,
     scenarios = {
-        DelveScenarioBlock(3183, 1, "Invasive Glow", {
+        DelveScenarioBlock(3183, 1, L["INVASIVE_GLOW"], {
             {
                 Scenario = { criteriaID = 108804, criteriaIndex = 1, questID = 1, scenarioID = 3183, stepID = 16097 },
                 Coord = { x = -4428.7, y = 8815.4 },
@@ -1257,7 +1257,7 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 _index = 75,
             },
         }),
-        DelveScenarioBlock(3187, 2, "Academy Under Siege", {
+        DelveScenarioBlock(3187, 2, L["ACADEMY_SIEGE"], {
             {
                 Scenario = { criteriaID = 108804, criteriaIndex = 1, questID = 1, scenarioID = 3187, stepID = 16112 },
                 Coord = { x = -4438.6, y = 8802.6 },
@@ -1403,7 +1403,7 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
                 _index = 94,
             },
         }),
-        DelveScenarioBlock(3193, 3, "Faculty of Fear", {
+        DelveScenarioBlock(3193, 3, L["FACULTY_FEAR"], {
             {
                 Scenario = { questID = 1, criteriaID = 108804, criteriaIndex = 1, scenarioID = 3193, stepID = 16121 },
                 Coord = { x = -4451.7, y = 8802.5 },
@@ -1445,11 +1445,11 @@ RegisterDelveRoute("COLLEGIATE_CALAMITY_DELVE", {
 })
 
 RegisterDelveRoute("SHADOW_ENCLAVE", {
-    label = "Shadow Enclave",
+    label = L["SHADOW_ENCLAVE"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2502,
     scenarios = {
-        DelveScenarioBlock(3257, 1, "Traitor's Due", {
+        DelveScenarioBlock(3257, 1, L["TRAITOR_DUE"], {
             {
                 Scenario = { questID = 1, criteriaID = 111078, criteriaIndex = 1, scenarioID = 3257, stepID = 16447 },
                 Coord = { x = 125.6, y = -8.6 },
@@ -1523,7 +1523,7 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
             }
             ,
         }),
-        DelveScenarioBlock(3262, 2, "Mirror Shine", {
+        DelveScenarioBlock(3262, 2, L["MIRROR_SHINE"], {
             {
                 Scenario = { criteriaID = 111078, criteriaIndex = 1, questID = 1, scenarioID = 3262, stepID = 16460 },
                 Coord = { x = 131.5, y = -14.2 },
@@ -1633,11 +1633,11 @@ RegisterDelveRoute("SHADOW_ENCLAVE", {
 })
 
 RegisterDelveRoute("THE_DARKWAY_DELVE", {
-    label = "The Darkway",
+    label = L["DARKWAY"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2525,
     scenarios = {
-        DelveScenarioBlock(3184, 1, "Focusers Under Pressure", {
+        DelveScenarioBlock(3184, 1, L["FOCUSERS_PRESSURE"], {
             {
                 Scenario = { criteriaID = 105376, criteriaIndex = 1, questID = 1, scenarioID = 3184, stepID = 16133 },
                 Coord = { x = 4799.3, y = 3544.5 },
@@ -1832,7 +1832,7 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
             }
         }),
         -- DelveScenarioBlock(3185, 2, "Leyline Technician", {}),
-        DelveScenarioBlock(3256, 3, "Ogre Powered", {
+        DelveScenarioBlock(3256, 3, L["OGRE_POWERED"], {
             {
                 Scenario = { criteriaID = 105376, criteriaIndex = 1, questID = 1, scenarioID = 3256, stepID = 16445 },
                 Coord = { x = 4799.2, y = 3544.9 },
@@ -1926,16 +1926,16 @@ RegisterDelveRoute("THE_DARKWAY_DELVE", {
                 _index = 144,
             },
         }),
-        DelveScenarioBlock(3514, 4, "Euphoric Growth", {}),
+        DelveScenarioBlock(3514, 4, L["EUPHORIC_GROWTH"], {}),
     },
 })
 
 RegisterDelveRoute("ATAL_AMAN_DELVE", {
-    label = "Atal'Aman",
+    label = L["ATAL_AMAN"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2535,
     scenarios = {
-        DelveScenarioBlock(3147, 1, "Totem Annihilation", {
+        DelveScenarioBlock(3147, 1, L["TOTEM_ANNIHILATION"], {
             {
                 Scenario = { criteriaID = 109254, criteriaIndex = 1, questID = 1, scenarioID = 3147, stepID = 16161 },
                 Coord = { x = -5951.8, y = 5180.8 },
@@ -2051,7 +2051,7 @@ RegisterDelveRoute("ATAL_AMAN_DELVE", {
                 _index = 158,
             },
         }),
-        DelveScenarioBlock(3148, 2, "Toadly Unbecoming", {
+        DelveScenarioBlock(3148, 2, L["TOADLY_UNBECOMING"], {
             {
                 Scenario = { questID = 1, criteriaID = 109254, criteriaIndex = 1, scenarioID = 3148, stepID = 16162 },
                 Coord = { x = -5952.3, y = 5185.9 },
@@ -2098,12 +2098,12 @@ RegisterDelveRoute("ATAL_AMAN_DELVE", {
 })
 
 RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
-    label = "Twilight Crypts",
+    label = L["TWILIGHT_CRYPTS"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2503,
     scenarios = {
         -- DelveScenarioBlock(3123, 1, "Party Crasher", {}),
-        DelveScenarioBlock(3124, 2, "Loosed Loa", {
+        DelveScenarioBlock(3124, 2, L["LOOSED_LOA"], {
             {
                 Scenario = { criteriaID = 105376, criteriaIndex = 1, questID = 1, scenarioID = 3124, stepID = 15965 },
                 Coord = { x = -675, y = 38.4 },
@@ -2287,7 +2287,7 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
             }
             ,
         }),
-        DelveScenarioBlock(3125, 3, "Trapped!", {
+        DelveScenarioBlock(3125, 3, L["TRAPPED"], {
             {
                 Scenario = { questID = 1, criteriaID = 105376, criteriaIndex = 1, scenarioID = 3125, stepID = 15970 },
                 Coord = { x = -669.1, y = 32.9 },
@@ -2339,13 +2339,13 @@ RegisterDelveRoute("TWILIGHT_CRYPTS_DELVE", {
 })
 
 RegisterDelveRoute("GULD_OF_MEMORY_DELVE", {
-    label = "The Gulf of Memory",
+    label = L["GULF_MEMORY"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2505,
     scenarios = {
         -- DelveScenarioBlock(3177, 1, "Descent of the Haranir", {}),
         -- DelveScenarioBlock(3242, 2,"Alnmoth Munchies", {}),
-        DelveScenarioBlock(3243, 3, "Sporasaur Special", {
+        DelveScenarioBlock(3243, 3, L["SPORASAUR_SPECIAL"], {
             {
                 Scenario = { criteriaID = 111078, criteriaIndex = 1, questID = 1, scenarioID = 3243, stepID = 16416 },
                 Coord = { x = 647.3, y = 138.1 },
@@ -2431,12 +2431,12 @@ RegisterDelveRoute("GULD_OF_MEMORY_DELVE", {
 })
 
 RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
-    label = "Sunkiller Sanctum",
+    label = L["SUNKILLER_SANCTUM"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2528,
     scenarios = {
         -- DelveScenarioBlock(3194, 1, "Core of the Problem", {}),
-        DelveScenarioBlock(3201, 2, "The Gravitational Effect", {
+        DelveScenarioBlock(3201, 2, L["GRAVITATIONAL_EFFECT"], {
             {
                 Scenario = { criteriaID = 108804, criteriaIndex = 1, questID = 1, scenarioID = 3201, stepID = 16146 },
                 Coord = { x = -602.2, y = 559.9 },
@@ -2520,12 +2520,12 @@ RegisterDelveRoute("SUNKILLER_SANCTUM_DELVE", {
 })
 
 RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
-    label = "Shadowguard Point",
+    label = L["SHADOWGUARD_POINT"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 0,
     scenarios = {
         -- DelveScenarioBlock(3126, 1, "Stolen Mana", {}),
-        DelveScenarioBlock(3150, 2, "Calamitous", {
+        DelveScenarioBlock(3150, 2, L["CALAMITOUS"], {
             {
                 Scenario = { criteriaID = 108627, criteriaIndex = 1, questID = 1, scenarioID = 3150, stepID = 16075 },
                 Coord = { x = 985.4, y = 2485.8 },
@@ -2635,11 +2635,11 @@ RegisterDelveRoute("SHADOWGUARD_POINT_DELVE", {
 -- coiled isle
 
 RegisterDelveRoute("GNARLDOR_ISLE_DELVE", {
-    label = "Gnarldor Isle",
+    label = L["GNARLDOR_ISLE"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2635,
     scenarios = {
-        DelveScenarioBlock(3385, 1, "Olds and Ends", {
+        DelveScenarioBlock(3385, 1, L["OLDS_ENDS"], {
             {
                 Scenario = { criteriaID = 111078, criteriaIndex = 1, questID = 1, scenarioID = 3385, stepID = 16908 },
                 Coord = { x = -12566.4, y = 4335.1 },
@@ -2736,7 +2736,7 @@ RegisterDelveRoute("GNARLDOR_ISLE_DELVE", {
             },
         }),
         -- DelveScenarioBlock(3415, 2, "Speaking Their Language", {}),
-        DelveScenarioBlock(3414, 3, "Minchi's Osseous Adventure", {
+        DelveScenarioBlock(3414, 3, L["MINCHI_OSSEOUS_ADVENTURE"], {
             {
                 Scenario = { criteriaID = 111078, criteriaIndex = 1, questID = 1, scenarioID = 3414, stepID = 17090 },
                 Coord = { x = -12571.5, y = 4335.5 },
@@ -2815,7 +2815,7 @@ RegisterDelveRoute("GNARLDOR_ISLE_DELVE", {
 })
 
 RegisterDelveRoute("RING_OF_GLORY_DELVE", {
-    label = "The Ring of Glory",
+    label = L["RING_GLORY"],
     expansion = APR.EXPANSIONS.Midnight,
     mapID = 2633,
     scenarios = {
