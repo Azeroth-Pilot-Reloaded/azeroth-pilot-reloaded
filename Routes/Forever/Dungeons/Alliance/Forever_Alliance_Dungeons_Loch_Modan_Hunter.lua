@@ -55,7 +55,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
             Zone = 1432,
@@ -64,7 +64,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
             Zone = 1432,
@@ -73,7 +73,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
             Zone = 1432,
@@ -82,7 +82,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
             Zone = 1432,
@@ -91,7 +91,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
             Zone = 1432,
@@ -100,7 +100,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
             Zone = 1432,
@@ -108,7 +108,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Done = { 414 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             IsQuestOnQuest = 414,
             Zone = 1432,
@@ -116,7 +116,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             PickUp = { 416, 1339 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Zone = 1432,
             _index = 12,
@@ -246,7 +246,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 1339,
             NonSkippableWaypoint = true,
-            Note = { "Travel north to the Algaz Station" },
+            Note = { "TRAVEL_NORTH_ALGAZ_STATION" },
             Coord = { x = -2651.61, y = -4817.15 },
             Range = 100.0,
             Zone = 1432,
@@ -267,7 +267,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 307,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Silver Stream Mine" },
+            Note = { "ENTER_SILVER_STREAM_MINE" },
             Coord = { x = -2972.96, y = -4835.187 },
             Range = 20.0,
             Zone = 1432,
@@ -275,7 +275,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Qpart = { [307] = { 1 } },
-            Note = { "Open the Miners' League Crates. Loot them for the Miners' Gear", "The Miners' League Crates can be found all throughout the Mine", "You will be able to do this quest at a higher level if you wish to skip it for now" },
+            Note = { "OPEN_MINERS_LEAGUE_CRATES_LOOT_MINERS_GEAR", "MINERS_LEAGUE_CRATES_FOUND_THROUGHOUT_MINE", "QUEST_HIGHER_LEVEL_WISH_SKIP" },
             Coord = { x = -2984.82, y = -4902.33 },
             Zone = 1432,
             _index = 35,
@@ -288,7 +288,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Qpart = { [416] = { 1 } },
-            Note = { "Tunnel Rats can spawn throughout Loch Modan. Check your World Map for their locations" },
+            Note = { "TUNNEL_RATS_SPAWN_THROUGHOUT_LOCH_MODAN_CHECK" },
             Coord = { x = -2859.315, y = -5041.76 },
             Range = 30,
             Zone = 1432,
@@ -297,7 +297,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
             Zone = 1432,
@@ -306,7 +306,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
             Zone = 1432,
@@ -315,7 +315,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
             Zone = 1432,
@@ -324,7 +324,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
             Zone = 1432,
@@ -333,7 +333,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
             Zone = 1432,
@@ -342,7 +342,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
             Zone = 1432,
@@ -351,7 +351,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
             Zone = 1432,
@@ -360,7 +360,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
             Zone = 1432,
@@ -369,7 +369,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
             Zone = 1432,
@@ -378,7 +378,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
             Zone = 1432,
@@ -387,7 +387,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
             Zone = 1432,
@@ -396,7 +396,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
             Zone = 1432,
@@ -405,7 +405,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 5,
             Zone = 1432,
@@ -414,7 +414,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
             Zone = 1432,
@@ -423,7 +423,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
             Zone = 1432,
@@ -432,7 +432,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
             Zone = 1432,
@@ -441,7 +441,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
             Zone = 1432,
@@ -450,7 +450,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
             Zone = 1432,
@@ -459,7 +459,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
             Zone = 1432,
@@ -468,7 +468,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
             Zone = 1432,
@@ -477,7 +477,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
             Zone = 1432,
@@ -486,7 +486,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
             Zone = 1432,
@@ -495,7 +495,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
             Zone = 1432,
@@ -504,7 +504,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 5,
             Zone = 1432,
@@ -513,7 +513,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
             Zone = 1432,
@@ -522,7 +522,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
             Zone = 1432,
@@ -531,7 +531,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
             Zone = 1432,
@@ -540,7 +540,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
             Zone = 1432,
@@ -549,7 +549,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
             Zone = 1432,
@@ -558,7 +558,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
             Zone = 1432,
@@ -567,7 +567,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
             Zone = 1432,
@@ -576,7 +576,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
             Zone = 1432,
@@ -585,7 +585,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
             Zone = 1432,
@@ -594,7 +594,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
             Zone = 1432,
@@ -602,7 +602,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             LootItems = { { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Zone = 1432,
             _index = 72,
@@ -610,7 +610,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
             Zone = 1432,
@@ -619,7 +619,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
             Zone = 1432,
@@ -628,7 +628,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
             Zone = 1432,
@@ -637,7 +637,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
             Zone = 1432,
@@ -646,7 +646,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
             Zone = 1432,
@@ -655,7 +655,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
             Zone = 1432,
@@ -663,20 +663,20 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Done = { 416 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Zone = 1432,
             _index = 79,
         },
         {
             LootItems = { { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             IsQuestOnQuest = 418,
             _index = 80,
         },
         {
             LootItems = { { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             IsQuestOnQuest = 418,
             _index = 81,
         },
@@ -708,7 +708,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 86667,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the snowy patch on the ground just outside the South Gate Pass tunnel" },
+            Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2534.38, y = -5648.28 },
             Range = 5.0,
             Zone = 1432,
@@ -716,7 +716,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Qpart = { [86667] = { 1 } },
-            Note = { "Use the `Ceramic Jar` while standing on the snowy patch to collect the `Jar of Snow`" },
+            Note = { "USE_CERAMIC_JAR_STANDING_SNOWY_PATCH_COLLECT_JAR" },
             Coord = { x = -2534.38, y = -5648.28 },
             Button = { ["86667-1"] = 279380 },
             Zone = 1432,
@@ -724,7 +724,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Done = { 86667 },
-            Note = { "10 minute timer to turn in quest", "Ensure to turn this in before the 10 minute expiry on the `Jar of Snow`" },
+            Note = { "QUEST_TURNIN_TIMER_10_MINUTES", "JAR_SNOW_EXPIRES_10_MINUTES_HAND" },
             Coord = { x = -3146.73, y = -4837.02 },
             Zone = 1432,
             _index = 88,
@@ -732,7 +732,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 86614,
             NonSkippableWaypoint = true,
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE: This can spawn in one of many different locations. Swim around until you see the exclamation point on your minimap", "Be careful of high level Young Threshadon" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3319.8, y = -5217.6 },
             Range = 20.0,
             MinLevel = 13,
@@ -742,7 +742,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 86614,
             NonSkippableWaypoint = true,
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE: This can spawn in one of many different locations. Swim around until you see the exclamation point on your minimap", "Be careful of high level Young Threshadon" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3251.5499, y = -5285.879 },
             Range = 20.0,
             MinLevel = 13,
@@ -752,7 +752,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         {
             Waypoint = 86614,
             NonSkippableWaypoint = true,
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE: This can spawn in one of many different locations. Swim around until you see the exclamation point on your minimap", "Be careful of high level Young Threshadon" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3342.5748, y = -5484.554 },
             Range = 20.0,
             MinLevel = 13,
@@ -761,7 +761,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             PickUp = { 86614 },
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE: This can spawn in one of many different locations. Swim around until you see the exclamation point on your minimap", "Be careful of high level Young Threshadon" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3386.7082, y = -5462.479 },
             Range = 20.0,
             MinLevel = 13,
@@ -824,7 +824,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Qpart = { [257] = { 1 } },
-            Note = { "You must complete this quest and return to Daryl the Youngling within 15 minutes. If you fail the quest, abandon it and pick it up again" },
+            Note = { "COMPLETE_QUEST_RETURN_DARYL_YOUNGLING_15_MINUTES" },
             Coord = { x = -4074.5, y = -5698.13 },
             Range = 30,
             Zone = 1432,
@@ -838,7 +838,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             BuyMerchant = { { itemID = 4470, quantity = 1 }, { itemID = 4471, quantity = 1 } },
-            Note = { "This is used to make `Basic Campfires` on Boats to level your `Cooking` skill without losing time", "YOU_NEED_50_COOKING" },
+            Note = { "MAKE_CAMPFIRES_ON_BOATS_TO_LEVEL_COOKING", "YOU_NEED_50_COOKING" },
             Coord = { x = -4269.26, y = -5653.23 },
             AllOf = { { Skill = { skill = "cooking", rank = 50, operator = "<" } }, { AnyOf = { { ItemCount = { itemID = 4470, count = 1, operator = "<" } }, { ItemCount = { itemID = 4471, count = 1, operator = "<" } } } } },
             Zone = 1432,
@@ -846,7 +846,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             UseHS = 298,
-            Note = { "Hearth to Thelsamar" },
             Hardcore = true,
             _index = 103,
         },
@@ -913,7 +912,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Qpart = { [6661] = { 1 } },
-            Note = { "Use the `Rat Catcher's Flute` on Deeprun Rats" },
+            Note = { "USE_RAT_CATCHER_FLUTE_DEEPRUN_RATS" },
             Button = { ["6661-1"] = 17117 },
             _index = 113,
         },
@@ -928,11 +927,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
         },
         {
             Done = { 6662 },
-            Note = { "Take the Deeprun Tram to the Stormwind side" },
+            Note = { "TAKE_DEEPRUN_TRAM_STORMWIND_SIDE" },
             _index = 116,
         },
         {
-            Note = { "Enter Stormwind" },
+            Note = { "ENTER_STORMWIND" },
             Zone = 1453,
             _index = 117,
         },
@@ -957,7 +956,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Hunter"] = {
             _index = 120,
         },
         {
-            LearnSkill = { text = "Train Staves", spellID = 227 },
+            LearnSkill = { spellID = 227 },
             Coord = { x = 613.0, y = -8796.03 },
             MinLevel = 1,
             Zone = 1453,

@@ -32,13 +32,13 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
     },
     steps = {
         {
-            Note = { "Now you should be looking for a group to Ragefire Chasm" },
+            Note = { "LOOKING_GROUP_RAGEFIRE_CHASM" },
             _index = 1,
         },
         {
             Waypoint = 6384,
             NonSkippableWaypoint = true,
-            Note = { "Enter Orgrimmar through the western entrance" },
+            Note = { "ENTER_ORGRIMMAR_WESTERN_ENTRANCE" },
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 5,
             Class = { "HUNTER", "SHAMAN" },
@@ -49,7 +49,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         {
             Waypoint = 5726,
             NonSkippableWaypoint = true,
-            Note = { "Enter Orgrimmar through the western entrance" },
+            Note = { "ENTER_ORGRIMMAR_WESTERN_ENTRANCE" },
             Coord = { x = -3839.37, y = 1644.65 },
             Range = 5,
             AnyOf = { { Race = "Tauren" }, { Class = "HUNTER", Race = "Skyborne" } },
@@ -79,7 +79,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             LearnProfession = 3276,
-            Note = { "Skip this step if you did not have enough `Linen Cloth` to reach 40 skill" },
+            Note = { "SKIP_STEP_NOT_LINEN_CLOTH_REACH_40_SKILL" },
             Coord = { x = -4160.01, y = 1483.17 },
             HasSpell = 3273,
             MinLevel = 5,
@@ -93,7 +93,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             LearnProfession = 3274,
-            Note = { "Skip this step if you did not have enough `Linen Cloth` to reach 50 skill" },
+            Note = { "SKIP_STEP_NOT_LINEN_CLOTH_REACH_50_SKILL" },
             Coord = { x = -4160.01, y = 1483.17 },
             MinLevel = 1,
             Skill = { skill = "firstaid", rank = 40, operator = ">=" },
@@ -180,7 +180,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             GetFP = 23,
-            Note = { "Don't fly anywhere" },
+            Note = { "NOT_FLY_ANYWHERE" },
             Coord = { x = -4313.6, y = 1676.24 },
             IsQuestUncompleted = 4921,
             Race = { "Scourge", "Tauren" },
@@ -321,7 +321,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         {
             Waypoint = 5726,
             NonSkippableWaypoint = true,
-            Note = { "Exit Orgrimmar" },
+            Note = { "EXIT_ORGRIMMAR" },
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,
             Zone = 1454,
@@ -329,7 +329,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Qpart = { [5726] = { 1 } },
-            Note = { "Kill Burning Blade mobs in Skull Rock until Lieutenant's Insignia drops" },
+            Note = { "KILL_BURNING_BLADE_MOBS_SKULL_ROCK_LIEUTENANT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1411, 53.08, 9.19),
             Range = 30,
             Zone = 1411,
@@ -338,7 +338,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         {
             Waypoint = 5726,
             NonSkippableWaypoint = true,
-            Note = { "Enter Orgrimmar" },
+            Note = { "ENTER_ORGRIMMAR" },
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,
             Zone = 1454,
@@ -426,7 +426,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
         },
         {
             Qpart = { [1858] = { 1 } },
-            Note = { "Use `Pick Lock` to open `Tazan's Satchel`" },
+            Note = { "USE_PICK_LOCK_OPEN_TAZAN_SATCHEL" },
             Coord = { x = -4280.07, y = 1773.24 },
             Class = "ROGUE",
             Money = { operator = ">=", copper = 1500 },
@@ -536,12 +536,12 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
             _index = 59,
         },
         {
-            DestroyItems = { items = { 14544 }, text = "Destroy [Lieutenant's Insignia] as you no longer need it" },
+            DestroyItems = { items = { 14544 } },
             _index = 60,
         },
         {
             EnterInstance = { dungeonKey = "RFC" },
-            Note = { "Optional: ask the party to share quests 5722, 5723 and 5725. Continue if no share is available" },
+            Note = { "PARTY_SHARE_RAGEFIRE_CHASM_QUESTS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 52.77, 48.97),
             Dungeon = "RFC",
             InstanceQuest = true,

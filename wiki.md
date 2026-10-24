@@ -291,6 +291,11 @@ Conditions on the same table combine with AND. Use `AnyOf` for alternatives, `Al
 | Collection objective vs filter | `LootItems = { { itemID = 2589, quantity = 10 } }` waits for ten cloth; `ItemCount = { itemID = 2589, count = 10 }` skips another action unless ten are already owned. |
 | Primary-profession threshold | `SkipForPrimaryProfessions = 1` skips a reminder once any primary profession is learned; `2` skips only once two are learned. Learning or unlearning refreshes the condition. |
 
+For one reagent per skill point, `LootItems = { { itemID = 769, quantityFromSkill = { skill = "cooking", rank = 50 } } }`
+collects only the amount needed to reach the target skill rank. The current step and preview
+recalculate the target from the live skill; an optional `quantity` caps the collection amount.
+This counts reagents and does not craft items or predict random skill gains.
+
 ### Level requirement forms
 
 | Form | Meaning / supported fields |

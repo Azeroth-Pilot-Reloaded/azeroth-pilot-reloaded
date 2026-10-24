@@ -26,7 +26,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
     steps = {
         {
             EnterInstance = { dungeonKey = "WC" },
-            Note = { "Enter the WC Instance portal. Zone in" },
+            Note = { "ENTER_WC_INSTANCE_PORTAL_ZONE" },
             Coord = { x = -2216.5, y = -742.43 },
             Range = 30.0,
             Dungeon = "WC",
@@ -77,7 +77,7 @@ APR.RouteQuestStepList["Forever-Shared-Dungeons-Wailing-Caverns"] = {
         {
             KillNPC = { dungeonKey = "WC", npcID = 3654, name = "Mutanus the Devourer" },
             Fillers = { [1491] = { 1 }, [1487] = { 1, 2, 3, 4 }, [1486] = { 1 } },
-            Note = { "Escort: Talk to the Disciple of Naralex at the entrance of Wailing Caverns. Escort him safely to Naralex", "Once you have reached Naralex you will get attack by two waves of enemies and finally by Mutanus the Devourer" },
+            Note = { "ESCORT_TALK_DISCIPLE_NARALEX_ENTRANCE_WAILING", "REACHED_NARALEX_GET_ATTACK_TWO_WAVES_ENEMIES" },
             NoArrow = true,
             Dungeon = "WC",
             InstanceQuest = true,

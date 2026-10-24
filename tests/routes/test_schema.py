@@ -202,6 +202,14 @@ class RouteSchemaTests(unittest.TestCase):
                 with self.subTest(option=name), self.assertRaises(InvalidRoute):
                     self.schema.step({name: mutated}, "step")
 
+    def test_collection_quantity_from_skill(self):
+        for goal in ({"skill": "cooking", "rank": 50}, {"skillID": 185, "rank": 10}):
+            self.schema.step({"LootItems": seq({"itemID": 769, "quantityFromSkill": goal})}, "step")
+        for goal in ({"rank": 50}, {"skill": "cooking"}, {"skill": "cooking", "rank": 0},
+                     {"skill": "cooking", "rank": 10, "unknown": True}):
+            with self.subTest(goal=goal), self.assertRaises(InvalidRoute):
+                self.schema.step({"LootItems": seq({"itemID": 769, "quantityFromSkill": goal})}, "step")
+
     def test_metadata_prefabs_and_scenarios(self):
         route = {"label": "Example", "category": "Campaign", "expansion": "Midnight", "gameVersion": "retail",
                  "author": "APR", "authors": seq("One", "Two"), "community": True,

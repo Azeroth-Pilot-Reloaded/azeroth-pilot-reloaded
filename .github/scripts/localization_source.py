@@ -431,6 +431,34 @@ def _route_literals(tokens, start, end, pairs):
     return result
 
 
+def route_text_literals(tokens, pairs):
+    """Yield authored instructions, excluding raw creature/drop-quest data."""
+    fields = list(_fields(tokens, pairs))
+    excluded = sorted((start, pairs[start]) for name, start in fields
+                      if name in {"DroppableQuest", "TameBeast", "KillNPC"}
+                      and start in pairs and tokens[start].value == "{")
+    interval = 0
+    for name, start in fields:
+        while interval < len(excluded) and excluded[interval][1] < start:
+            interval += 1
+        if interval < len(excluded) and excluded[interval][0] <= start <= excluded[interval][1]:
+            continue
+        if name not in {"Note", "text", "Text", "label", "tooltipMessage"} and not re.fullmatch(r"ExtraLineText\d*", name):
+            continue
+        end = _expression_end(tokens, start, len(tokens), pairs)
+        yield from _route_literals(tokens, start, end, pairs)
+    # Delve scenario labels are passed positionally to the local data helper.
+    for index, token in enumerate(tokens):
+        if token.kind != "word" or token.value != "DelveScenarioBlock" or index + 1 not in pairs:
+            continue
+        start, end = index + 2, pairs[index + 1]
+        for argument in range(3):
+            finish = _expression_end(tokens, start, end, pairs)
+            if argument == 2:
+                yield from _route_literals(tokens, start, finish, pairs)
+            start = finish + 1
+
+
 def scan_sources(root: Path):
     """Scan runtime APR-Core and Routes; all paths are repository-relative."""
     root = Path(root)
@@ -508,14 +536,10 @@ def scan_sources(root: Path):
                 for key, origin in choices:
                     references.append(dict(key=key, path=path, line=origin.line, kind="lookup"))
             if relative.parts[0] == "Routes":
-                for name, start in _fields(tokens, pairs):
-                    if name not in {"Note", "text", "Text", "label", "tooltipMessage"} and not re.fullmatch(r"ExtraLineText\d*", name):
-                        continue
-                    end = _expression_end(tokens, start, len(tokens), pairs)
-                    for key, origin in _route_literals(tokens, start, end, pairs):
-                        key = re.sub(r"^\[COLOR:#?[0-9A-Fa-f]+\]\s*", "", key)
-                        if key.strip():
-                            references.append(dict(key=key, path=path, line=origin.line, kind="route_text"))
+                for key, origin in route_text_literals(tokens, pairs):
+                    key = re.sub(r"^\[COLOR:#?[0-9A-Fa-f]+\]\s*", "", key)
+                    if key.strip():
+                        references.append(dict(key=key, path=path, line=origin.line, kind="route_text"))
     # Deduplicate field-list entries discovered by both the outer and inner text
     # traversal, retaining separate occurrences and exact source locations.
     references = list({(ref["key"], ref["path"], ref["line"], ref["kind"]): ref for ref in references}.values())

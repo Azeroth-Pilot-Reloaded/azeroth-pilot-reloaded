@@ -71,7 +71,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
     steps = {
         {
             PickUp = { 435 },
-            Note = { "If he is not there, skip this quest for now" },
+            Note = { "NOT_SKIP_QUEST" },
             Coord = { x = 1090.44, y = 1409.63 },
             NoAutoAccept = true,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -81,7 +81,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             PickUp = { 435 },
             Fillers = { [1886] = { 1 } },
-            Note = { "If he is not there, skip this quest for now" },
+            Note = { "NOT_SKIP_QUEST" },
             Coord = { x = 1090.44, y = 1409.63 },
             NoAutoAccept = true,
             Class = "ROGUE",
@@ -91,7 +91,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             PickUp = { 435 },
-            Note = { "If he is not there, skip this quest for now" },
+            Note = { "NOT_SKIP_QUEST" },
             Coord = { x = 1090.44, y = 1409.63 },
             NoAutoAccept = true,
             Race = "Skyborne",
@@ -101,7 +101,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [435] = { 1 } },
-            Note = { "Escort Erland safely to Rane Yorick", "Worgs can spawn on top of each other, eat and drink whenever you are able to" },
+            Note = { "ESCORT_ERLAND_SAFELY_RANE_YORICK", "ENEMIES_SPAWN_TOP_OTHER_EAT_DRINK_WHENEVER" },
             Coord = { x = 1146.09, y = 1334.59 },
             Range = 30,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -112,7 +112,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Qpart = { [435] = { 1 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Escort Erland safely to Rane Yorick", "Worgs can spawn on top of each other, eat and drink whenever you are able to" },
+            Note = { "ESCORT_ERLAND_SAFELY_RANE_YORICK", "ENEMIES_SPAWN_TOP_OTHER_EAT_DRINK_WHENEVER" },
             Coord = { x = 1146.09, y = 1334.59 },
             Range = 30,
             Class = "ROGUE",
@@ -123,7 +123,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [435] = { 1 } },
-            Note = { "Escort Erland safely to Rane Yorick", "Worgs can spawn on top of each other, eat and drink whenever you are able to" },
+            Note = { "ESCORT_ERLAND_SAFELY_RANE_YORICK", "ENEMIES_SPAWN_TOP_OTHER_EAT_DRINK_WHENEVER" },
             Coord = { x = 1146.09, y = 1334.59 },
             Range = 30,
             IsQuestOnQuest = 435,
@@ -224,7 +224,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             LootItems = { { itemID = 730, quantity = 3, questID = 91920 } },
-            Note = { "Kill Vile Fin Murlocs. Loot them for their `Murloc Eyes`" },
+            Note = { "KILL_VILE_FIN_MURLOCS_LOOT_MURLOC_EYES" },
             Coord = { x = 824.0, y = 1263.9 },
             Range = 30,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -234,7 +234,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             LootItems = { { itemID = 730, quantity = 3, questID = 91920 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Kill Vile Fin Murlocs. Loot them for their `Murloc Eyes`" },
+            Note = { "KILL_VILE_FIN_MURLOCS_LOOT_MURLOC_EYES" },
             Coord = { x = 824.0, y = 1263.9 },
             Range = 30,
             Class = "ROGUE",
@@ -244,7 +244,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             LootItems = { { itemID = 730, quantity = 3, questID = 91920 } },
-            Note = { "Kill Vile Fin Murlocs. Loot them for their `Murloc Eyes`" },
+            Note = { "KILL_VILE_FIN_MURLOCS_LOOT_MURLOC_EYES" },
             Coord = { x = 824.0, y = 1263.9 },
             Range = 30,
             Race = "Skyborne",
@@ -281,7 +281,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [435] = { 1 } },
-            Note = { "Escort Erland safely to Rane Yorick", "Worgs can spawn on top of each other, eat and drink whenever you are able to" },
+            Note = { "ESCORT_ERLAND_SAFELY_RANE_YORICK", "ENEMIES_SPAWN_TOP_OTHER_EAT_DRINK_WHENEVER" },
             Coord = { x = 1146.09, y = 1334.59 },
             Range = 30,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -292,7 +292,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Qpart = { [435] = { 1 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Escort Erland safely to Rane Yorick", "Worgs can spawn on top of each other, eat and drink whenever you are able to" },
+            Note = { "ESCORT_ERLAND_SAFELY_RANE_YORICK", "ENEMIES_SPAWN_TOP_OTHER_EAT_DRINK_WHENEVER" },
             Coord = { x = 1146.09, y = 1334.59 },
             Range = 30,
             Class = "ROGUE",
@@ -303,7 +303,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [435] = { 1 } },
-            Note = { "Escort Erland safely to Rane Yorick", "Worgs can spawn on top of each other, eat and drink whenever you are able to" },
+            Note = { "ESCORT_ERLAND_SAFELY_RANE_YORICK", "ENEMIES_SPAWN_TOP_OTHER_EAT_DRINK_WHENEVER" },
             Coord = { x = 1146.09, y = 1334.59 },
             Range = 30,
             IsQuestOnQuest = 435,
@@ -314,7 +314,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             LootItems = { { itemID = 3164, quantity = 3, questID = 429 } },
-            Note = { "Kill Worgs. Loot them for their Hearts" },
+            Note = { "KILL_WORGS_LOOT_HEARTS" },
             Coord = { x = 1012.53, y = 1299.17 },
             Range = 30,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -324,7 +324,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             LootItems = { { itemID = 3164, quantity = 3, questID = 429 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Kill Worgs. Loot them for their Hearts" },
+            Note = { "KILL_WORGS_LOOT_HEARTS" },
             Coord = { x = 1012.53, y = 1299.17 },
             Range = 30,
             Class = "ROGUE",
@@ -334,7 +334,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             LootItems = { { itemID = 3164, quantity = 3, questID = 429 } },
-            Note = { "Kill Worgs. Loot them for their Hearts" },
+            Note = { "KILL_WORGS_LOOT_HEARTS" },
             Coord = { x = 1012.53, y = 1299.17 },
             Range = 30,
             Race = "Skyborne",
@@ -536,7 +536,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             BuyMerchant = { { itemID = 4605, quantity = 20 } },
-            Note = { "Do NOT sell your `Murloc Eyes`" },
+            Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1599.9, y = 552.83 },
             RaidIcon = 5886,
             AnyOf = { { Class = { "ROGUE", "WARLOCK", "WARRIOR" }, Race = { "Orc", "Troll" } }, { Class = { "PALADIN", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -548,7 +548,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             BuyMerchant = { { itemID = 4605, quantity = 20 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Do NOT sell your `Murloc Eyes`" },
+            Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1599.9, y = 552.83 },
             RaidIcon = 5886,
             Class = "ROGUE",
@@ -560,7 +560,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             BuyMerchant = { { itemID = 4605, quantity = 20 } },
-            Note = { "Do NOT sell your `Murloc Eyes`" },
+            Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1599.9, y = 552.83 },
             RaidIcon = 5886,
             ItemCount = { itemID = 4605, count = 20, operator = "<" },
@@ -573,7 +573,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 449,
             NonSkippableWaypoint = true,
-            Note = { "Buy `Lesser Healing Potions` from him if they're up", "Do NOT sell your `Murloc Eyes`" },
+            Note = { "BUY_LESSER_HEALING_POTIONS", "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
             AnyOf = { { Class = { "ROGUE", "WARRIOR" }, Race = { "Orc", "Troll" } }, { Class = { "PALADIN", "WARRIOR" }, Race = "Scourge" } },
@@ -582,7 +582,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             BuyMerchant = { { itemID = 1179, quantity = 20 } },
-            Note = { "Do NOT sell your `Murloc Eyes`" },
+            Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
             RaidIcon = 2140,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -595,7 +595,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 449,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Buy `Lesser Healing Potions` from him if they're up", "Do NOT sell your `Murloc Eyes`" },
+            Note = { "BUY_LESSER_HEALING_POTIONS", "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
             Class = "ROGUE",
@@ -606,7 +606,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 449,
             NonSkippableWaypoint = true,
-            Note = { "Buy `Lesser Healing Potions` from him if they're up", "Do NOT sell your `Murloc Eyes`" },
+            Note = { "BUY_LESSER_HEALING_POTIONS", "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
             Class = { "ROGUE", "WARRIOR" },
@@ -617,7 +617,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             BuyMerchant = { { itemID = 1179, quantity = 20 } },
-            Note = { "Do NOT sell your `Murloc Eyes`" },
+            Note = { "KEEP_MURLOC_EYES" },
             Coord = { x = 1602.84, y = 549.75 },
             RaidIcon = 2140,
             Class = "DRUID",
@@ -872,7 +872,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             LootItems = { { itemID = 3164, quantity = 3, questID = 429 } },
-            Note = { "Kill Worgs. Loot them for their Hearts" },
+            Note = { "KILL_WORGS_LOOT_HEARTS" },
             AnyOf = { { Race = "Orc", AllOf = { { IsQuestOnQuest = 429 }, { IsQuestOnQuest = 445 } } }, { Race = "Troll", AllOf = { { IsQuestOnQuest = 429 }, { IsQuestOnQuest = 445 } } }, { Race = "Scourge", Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, AllOf = { { IsQuestOnQuest = 429 }, { IsQuestOnQuest = 445 } } } },
             _index = 82,
         },
@@ -911,7 +911,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             LootItems = { { itemID = 3164, quantity = 3, questID = 429 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Kill Worgs. Loot them for their Hearts" },
+            Note = { "KILL_WORGS_LOOT_HEARTS" },
             AllOf = { { IsQuestOnQuest = 429 }, { IsQuestOnQuest = 445 } },
             Class = "ROGUE",
             Race = "Scourge",
@@ -959,7 +959,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             LootItems = { { itemID = 3164, quantity = 3, questID = 429 } },
-            Note = { "Kill Worgs. Loot them for their Hearts" },
+            Note = { "KILL_WORGS_LOOT_HEARTS" },
             AllOf = { { IsQuestOnQuest = 429 }, { IsQuestOnQuest = 445 } },
             Race = "Skyborne",
             SkipForLvl = 14,
@@ -1177,7 +1177,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [422] = { 1 } },
-            Note = { "Enter the house and go to the second floor. Loot the Dusty Spellbooks on the ground" },
+            Note = { "ENTER_HOUSE_GO_SECOND_FLOOR_LOOT_DUSTY_SPELLBOOKS" },
             Coord = { x = 1226.73, y = 879.03 },
             Range = 23,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -1187,7 +1187,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Qpart = { [422] = { 1 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Enter the house and go to the second floor. Loot the Dusty Spellbooks on the ground" },
+            Note = { "ENTER_HOUSE_GO_SECOND_FLOOR_LOOT_DUSTY_SPELLBOOKS" },
             Coord = { x = 1226.73, y = 879.03 },
             Range = 23,
             Class = "ROGUE",
@@ -1197,7 +1197,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [422] = { 1 } },
-            Note = { "Enter the house and go to the second floor. Loot the Dusty Spellbooks on the ground" },
+            Note = { "ENTER_HOUSE_GO_SECOND_FLOOR_LOOT_DUSTY_SPELLBOOKS" },
             Coord = { x = 1226.73, y = 879.03 },
             Range = 23,
             Race = "Skyborne",
@@ -1375,7 +1375,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             LootItems = { { itemID = 730, quantity = 3, questID = 91920 } },
-            Note = { "Kill Vile Fin Murlocs. Loot them for their `Murloc Eyes`" },
+            Note = { "KILL_VILE_FIN_MURLOCS_LOOT_MURLOC_EYES" },
             Coord = { x = 824.0, y = 1263.9 },
             Range = 30,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -1385,7 +1385,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             LootItems = { { itemID = 730, quantity = 3, questID = 91920 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Kill Vile Fin Murlocs. Loot them for their `Murloc Eyes`" },
+            Note = { "KILL_VILE_FIN_MURLOCS_LOOT_MURLOC_EYES" },
             Coord = { x = 824.0, y = 1263.9 },
             Range = 30,
             Class = "ROGUE",
@@ -1395,7 +1395,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             LootItems = { { itemID = 730, quantity = 3, questID = 91920 } },
-            Note = { "Kill Vile Fin Murlocs. Loot them for their `Murloc Eyes`" },
+            Note = { "KILL_VILE_FIN_MURLOCS_LOOT_MURLOC_EYES" },
             Coord = { x = 824.0, y = 1263.9 },
             Range = 30,
             Race = "Skyborne",
@@ -1492,7 +1492,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [447] = { 2 } },
-            Note = { "Be careful of Krethis Shadowspinner as it's impossibly difficult to kill her" },
+            Note = { "CAREFUL_KRETHIS_SHADOWSPINNER_IMPOSSIBLY_DIFFICULT" },
             Coord = { x = 1953.96, y = 1231.69 },
             Range = 30,
             AnyOf = { { Class = { "ROGUE", "WARRIOR" }, Race = "Orc" }, { Class = { "PRIEST", "ROGUE", "WARRIOR" }, Race = "Troll" }, { Class = { "PALADIN", "PRIEST", "WARRIOR" }, Race = "Scourge" } },
@@ -1512,7 +1512,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Qpart = { [447] = { 2 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Be careful of Krethis Shadowspinner as it's impossibly difficult to kill her" },
+            Note = { "CAREFUL_KRETHIS_SHADOWSPINNER_IMPOSSIBLY_DIFFICULT" },
             Coord = { x = 1953.96, y = 1231.69 },
             Range = 30,
             Class = "ROGUE",
@@ -1522,7 +1522,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [447] = { 2 } },
-            Note = { "Be careful of Krethis Shadowspinner as it's impossibly difficult to kill her" },
+            Note = { "CAREFUL_KRETHIS_SHADOWSPINNER_IMPOSSIBLY_DIFFICULT" },
             Coord = { x = 1953.96, y = 1231.69 },
             Range = 30,
             Race = "Skyborne",
@@ -1923,7 +1923,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
-            Note = { "Buy `Lesser Healing Potions` from him if they're up" },
+            Note = { "BUY_LESSER_HEALING_POTIONS" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
             AnyOf = { { Class = { "MAGE", "ROGUE", "WARRIOR" }, Race = { "Orc", "Troll" } }, { Class = { "MAGE", "PALADIN", "WARRIOR" }, Race = "Scourge" } },
@@ -1944,7 +1944,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Buy `Lesser Healing Potions` from him if they're up" },
+            Note = { "BUY_LESSER_HEALING_POTIONS" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
             Class = "ROGUE",
@@ -1955,7 +1955,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
-            Note = { "Buy `Lesser Healing Potions` from him if they're up" },
+            Note = { "BUY_LESSER_HEALING_POTIONS" },
             Coord = { x = 1602.84, y = 549.75 },
             Range = 5,
             Class = { "ROGUE", "WARRIOR" },
@@ -2073,7 +2073,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
-            Note = { "Travel down the hill" },
+            Note = { "TRAVEL_HILL" },
             Coord = { x = 1593.6, y = 597.91 },
             Range = 15.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -2083,7 +2083,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
-            Note = { "Travel down the hill" },
+            Note = { "TRAVEL_HILL" },
             Coord = { x = 1582.68, y = 640.47 },
             Range = 15.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -2093,7 +2093,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
-            Note = { "Travel down the hill" },
+            Note = { "TRAVEL_HILL" },
             Coord = { x = 1563.78, y = 738.75 },
             Range = 30.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -2104,7 +2104,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Travel down the hill" },
+            Note = { "TRAVEL_HILL" },
             Coord = { x = 1593.6, y = 597.91 },
             Range = 15.0,
             Class = "ROGUE",
@@ -2116,7 +2116,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Travel down the hill" },
+            Note = { "TRAVEL_HILL" },
             Coord = { x = 1582.68, y = 640.47 },
             Range = 15.0,
             Class = "ROGUE",
@@ -2128,7 +2128,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Travel down the hill" },
+            Note = { "TRAVEL_HILL" },
             Coord = { x = 1563.78, y = 738.75 },
             Range = 30.0,
             Class = "ROGUE",
@@ -2139,7 +2139,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
-            Note = { "Travel down the hill" },
+            Note = { "TRAVEL_HILL" },
             Coord = { x = 1593.6, y = 597.91 },
             Range = 15.0,
             Race = "Skyborne",
@@ -2150,7 +2150,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
-            Note = { "Travel down the hill" },
+            Note = { "TRAVEL_HILL" },
             Coord = { x = 1582.68, y = 640.47 },
             Range = 15.0,
             Race = "Skyborne",
@@ -2161,7 +2161,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 91921,
             NonSkippableWaypoint = true,
-            Note = { "Travel down the hill" },
+            Note = { "TRAVEL_HILL" },
             Coord = { x = 1563.78, y = 738.75 },
             Range = 30.0,
             Race = "Skyborne",
@@ -2394,7 +2394,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Done = { 438 },
-            Note = { "Click the Boat at the side of the docks" },
+            Note = { "CLICK_BOAT_SIDE_DOCKS" },
             Coord = { x = 997.62, y = 692.55 },
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
             Zone = 1421,
@@ -2402,7 +2402,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             PickUp = { 439 },
-            Note = { "Click the Boat at the side of the docks" },
+            Note = { "CLICK_BOAT_SIDE_DOCKS" },
             Coord = { x = 997.62, y = 692.55 },
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
             Zone = 1421,
@@ -2411,7 +2411,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Done = { 438 },
             Fillers = { [1886] = { 1 } },
-            Note = { "Click the Boat at the side of the docks" },
+            Note = { "CLICK_BOAT_SIDE_DOCKS" },
             Coord = { x = 997.62, y = 692.55 },
             Class = "ROGUE",
             Race = "Scourge",
@@ -2421,7 +2421,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             PickUp = { 439 },
             Fillers = { [1886] = { 1 } },
-            Note = { "Click the Boat at the side of the docks" },
+            Note = { "CLICK_BOAT_SIDE_DOCKS" },
             Coord = { x = 997.62, y = 692.55 },
             Class = "ROGUE",
             Race = "Scourge",
@@ -2430,7 +2430,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Done = { 438 },
-            Note = { "Click the Boat at the side of the docks" },
+            Note = { "CLICK_BOAT_SIDE_DOCKS" },
             Coord = { x = 997.62, y = 692.55 },
             Race = "Skyborne",
             SkipForLvl = 14,
@@ -2439,7 +2439,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             PickUp = { 439 },
-            Note = { "Click the Boat at the side of the docks" },
+            Note = { "CLICK_BOAT_SIDE_DOCKS" },
             Coord = { x = 997.62, y = 692.55 },
             Race = "Skyborne",
             SkipForLvl = 14,
@@ -2448,7 +2448,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [423] = { 1, 2 } },
-            Note = { "Be careful! Moonrage Darksouls enrage when they are below 25% health. Kill them quickly when they are low" },
+            Note = { "CAREFUL_MOONRAGE_DARKSOULS_ENRAGE_BELOW_25_HEALTH" },
             Coord = { x = 1075.15, y = 359.2 },
             Range = 30,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -2458,7 +2458,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Qpart = { [423] = { 1, 2 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Be careful! Moonrage Darksouls enrage when they are below 25% health. Kill them quickly when they are low" },
+            Note = { "CAREFUL_MOONRAGE_DARKSOULS_ENRAGE_BELOW_25_HEALTH" },
             Coord = { x = 1075.15, y = 359.2 },
             Range = 30,
             Class = "ROGUE",
@@ -2468,7 +2468,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [423] = { 1, 2 } },
-            Note = { "Be careful! Moonrage Darksouls enrage when they are below 25% health. Kill them quickly when they are low" },
+            Note = { "CAREFUL_MOONRAGE_DARKSOULS_ENRAGE_BELOW_25_HEALTH" },
             Coord = { x = 1075.15, y = 359.2 },
             Range = 30,
             Race = "Skyborne",
@@ -2540,7 +2540,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [423] = { 1, 2 } },
-            Note = { "Be careful! Moonrage Darksouls enrage when they are below 25% health. Kill them quickly when they are low" },
+            Note = { "CAREFUL_MOONRAGE_DARKSOULS_ENRAGE_BELOW_25_HEALTH" },
             Coord = { x = 1731.7799, y = 906.33 },
             Range = 30,
             IsQuestOnQuest = 423,
@@ -2748,7 +2748,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 477,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Mine" },
+            Note = { "INTO_MINE" },
             Coord = { x = 1077.84, y = 380.35 },
             Range = 10.0,
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
@@ -2759,7 +2759,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 477,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Enter the Mine" },
+            Note = { "INTO_MINE" },
             Coord = { x = 1077.84, y = 380.35 },
             Range = 10.0,
             Class = "ROGUE",
@@ -2770,7 +2770,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 477,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Mine" },
+            Note = { "INTO_MINE" },
             Coord = { x = 1077.84, y = 380.35 },
             Range = 10.0,
             Race = "Skyborne",
@@ -2807,7 +2807,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Done = { 477 },
-            Note = { "Click the Crate in the camp", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
+            Note = { "CLICK_CRATE_CAMP", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
             Coord = { x = 1354.62, y = -22.57 },
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
             Hardcore = true,
@@ -2816,7 +2816,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             PickUp = { 478 },
-            Note = { "Click the Crate in the camp", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
+            Note = { "CLICK_CRATE_CAMP", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
             Coord = { x = 1354.62, y = -22.57 },
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
             Hardcore = true,
@@ -2826,7 +2826,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Done = { 477 },
             Fillers = { [1886] = { 1 } },
-            Note = { "Click the Crate in the camp", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
+            Note = { "CLICK_CRATE_CAMP", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
             Coord = { x = 1354.62, y = -22.57 },
             Class = "ROGUE",
             Hardcore = true,
@@ -2837,7 +2837,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             PickUp = { 478 },
             Fillers = { [1886] = { 1 } },
-            Note = { "Click the Crate in the camp", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
+            Note = { "CLICK_CRATE_CAMP", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
             Coord = { x = 1354.62, y = -22.57 },
             Class = "ROGUE",
             Hardcore = true,
@@ -2847,7 +2847,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Done = { 477 },
-            Note = { "Click the Crate in the camp", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
+            Note = { "CLICK_CRATE_CAMP", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
             Coord = { x = 1354.62, y = -22.57 },
             Hardcore = true,
             Race = "Skyborne",
@@ -2857,7 +2857,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             PickUp = { 478 },
-            Note = { "Click the Crate in the camp", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
+            Note = { "CLICK_CRATE_CAMP", "CAREFUL_MOBS_CAST_FROSTBOLT_FLEE_LOW_HEALTH" },
             Coord = { x = 1354.62, y = -22.57 },
             Hardcore = true,
             Race = "Skyborne",
@@ -2867,7 +2867,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Done = { 477 },
-            Note = { "Click the Crate in the camp", "Be careful, these mobs cast `Frostbolt`" },
+            Note = { "CLICK_CRATE_CAMP", "ENEMIES_CAST_FROSTBOLT" },
             Coord = { x = 1354.62, y = -22.57 },
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
             Hardcore = false,
@@ -2876,7 +2876,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             PickUp = { 478 },
-            Note = { "Click the Crate in the camp", "Be careful, these mobs cast `Frostbolt`" },
+            Note = { "CLICK_CRATE_CAMP", "ENEMIES_CAST_FROSTBOLT" },
             Coord = { x = 1354.62, y = -22.57 },
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" } },
             Hardcore = false,
@@ -2886,7 +2886,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Done = { 477 },
             Fillers = { [1886] = { 1 } },
-            Note = { "Click the Crate in the camp", "Be careful, these mobs cast `Frostbolt`" },
+            Note = { "CLICK_CRATE_CAMP", "ENEMIES_CAST_FROSTBOLT" },
             Coord = { x = 1354.62, y = -22.57 },
             Class = "ROGUE",
             Hardcore = false,
@@ -2897,7 +2897,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             PickUp = { 478 },
             Fillers = { [1886] = { 1 } },
-            Note = { "Click the Crate in the camp", "Be careful, these mobs cast `Frostbolt`" },
+            Note = { "CLICK_CRATE_CAMP", "ENEMIES_CAST_FROSTBOLT" },
             Coord = { x = 1354.62, y = -22.57 },
             Class = "ROGUE",
             Hardcore = false,
@@ -2907,7 +2907,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Done = { 477 },
-            Note = { "Click the Crate in the camp", "Be careful, these mobs cast `Frostbolt`" },
+            Note = { "CLICK_CRATE_CAMP", "ENEMIES_CAST_FROSTBOLT" },
             Coord = { x = 1354.62, y = -22.57 },
             Hardcore = false,
             Race = "Skyborne",
@@ -2917,7 +2917,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             PickUp = { 478 },
-            Note = { "Click the Crate in the camp", "Be careful, these mobs cast `Frostbolt`" },
+            Note = { "CLICK_CRATE_CAMP", "ENEMIES_CAST_FROSTBOLT" },
             Coord = { x = 1354.62, y = -22.57 },
             Hardcore = false,
             Race = "Skyborne",
@@ -3166,7 +3166,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             GetFP = 10,
-            Note = { "Fly to the Undercity" },
             Coord = { x = 1533.96, y = 474.43 },
             Race = { "Orc", "Troll" },
             SkipInZones = { 1458 },
@@ -3176,7 +3175,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             UseFlightPath = 97891,
             NodeID = 11,
-            Note = { "Get the Sepulcher flight path" },
             Coord = { x = 1533.96, y = 474.43 },
             Race = { "Orc", "Troll" },
             SkipInZones = { 1458 },
@@ -3223,7 +3221,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             GetFP = 10,
-            Note = { "Fly to the Undercity" },
             Coord = { x = 1533.96, y = 474.43 },
             Race = "Skyborne",
             SkipForLvl = 14,
@@ -3234,7 +3231,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             UseFlightPath = 97891,
             NodeID = 11,
-            Note = { "Get the Sepulcher flight path" },
             Coord = { x = 1533.96, y = 474.43 },
             Race = "Skyborne",
             SkipForLvl = 14,
@@ -3244,7 +3240,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             UseHS = 6323,
-            Note = { "Hearth to the Undercity" },
             Button = { ["6323"] = 6948 },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Race = "Scourge",
@@ -3254,7 +3249,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             UseHS = 6323,
             Fillers = { [1886] = { 1 } },
-            Note = { "Hearth to the Undercity" },
             Button = { ["6323"] = 6948 },
             Class = "ROGUE",
             Race = "Scourge",
@@ -3297,7 +3291,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             BuyMerchant = { { itemID = 2027, quantity = 1 } },
-            Note = { "Alternatively, check the Auction House for something better or cheaper" },
+            Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 286.53, y = 1616.21 },
             RaidIcon = 4557,
             Class = "ROGUE",
@@ -3311,7 +3305,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             BuyMerchant = { { itemID = 2027, quantity = 1 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Alternatively, check the Auction House for something better or cheaper" },
+            Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 286.53, y = 1616.21 },
             RaidIcon = 4557,
             Class = "ROGUE",
@@ -3324,7 +3318,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             BuyMerchant = { { itemID = 2027, quantity = 1 } },
-            Note = { "Alternatively, check the Auction House for something better or cheaper" },
+            Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 286.53, y = 1616.21 },
             RaidIcon = 4557,
             Class = "ROGUE",
@@ -3923,7 +3917,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [447] = { 2 } },
-            Note = { "Be careful of Krethis Shadowspinner as it's impossibly difficult to kill her" },
+            Note = { "CAREFUL_KRETHIS_SHADOWSPINNER_IMPOSSIBLY_DIFFICULT" },
             Range = 30,
             IsQuestOnQuest = 447,
             Race = "Skyborne",
@@ -4163,7 +4157,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             BuyMerchant = { { itemID = 5208, quantity = 1 } },
-            Note = { "Alternatively, check the Auction House for something better or cheaper" },
+            Note = { "CHECK_AUCTION_HOUSE_GEAR_UPGRADE" },
             Coord = { x = 206.04, y = 1705.57 },
             RaidIcon = 5754,
             Class = { "MAGE", "PRIEST", "WARLOCK" },
@@ -4174,7 +4168,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             _index = 427,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 1886" },
+            LeaveQuest = 1886,
             Fillers = { [1886] = { 1 } },
             Class = "ROGUE",
             IsQuestOnQuest = 1886,
@@ -4184,7 +4178,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Exit Undercity" },
+            Note = { "EXIT_UNDERCITY" },
             Coord = { x = 235.32, y = 1883.89 },
             Range = 50.0,
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
@@ -4197,7 +4191,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Exit Undercity" },
+            Note = { "EXIT_UNDERCITY" },
             Coord = { x = 235.32, y = 1883.89 },
             Range = 50.0,
             Class = "ROGUE",
@@ -4209,7 +4203,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12.0,
             Class = "WARRIOR",
@@ -4221,7 +4215,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10.0,
             Class = "WARRIOR",
@@ -4233,7 +4227,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8.0,
             Class = "WARRIOR",
@@ -4245,7 +4239,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8.0,
             Class = "WARRIOR",
@@ -4257,7 +4251,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8.0,
             Class = "WARRIOR",
@@ -4269,7 +4263,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 261.53, y = 2055.0 },
             Range = 8.0,
             Class = "WARRIOR",
@@ -4281,7 +4275,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 299.04, y = 2069.46 },
             Range = 5,
             Class = "WARRIOR",
@@ -4293,7 +4287,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 279.61, y = 2441.21 },
             Range = 5,
             Class = "WARRIOR",
@@ -4305,7 +4299,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Conjure Food/water while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12.0,
             Class = "MAGE",
@@ -4317,7 +4311,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Conjure Food/water while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10.0,
             Class = "MAGE",
@@ -4329,7 +4323,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Conjure Food/water while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8.0,
             Class = "MAGE",
@@ -4341,7 +4335,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Conjure Food/water while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8.0,
             Class = "MAGE",
@@ -4353,7 +4347,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Conjure Food/water while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8.0,
             Class = "MAGE",
@@ -4365,7 +4359,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Conjure Food/water while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 261.53, y = 2055.0 },
             Range = 8.0,
             Class = "MAGE",
@@ -4377,7 +4371,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Conjure Food/water while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 299.04, y = 2069.46 },
             Range = 5,
             Class = "MAGE",
@@ -4389,7 +4383,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar", "Conjure Food/water while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "CONJURE_FOOD_WATER_WAIT" },
             Coord = { x = 279.61, y = 2441.21 },
             Range = 5,
             Class = "MAGE",
@@ -4402,7 +4396,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12.0,
             Class = "ROGUE",
@@ -4415,7 +4409,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10.0,
             Class = "ROGUE",
@@ -4428,7 +4422,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8.0,
             Class = "ROGUE",
@@ -4441,7 +4435,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8.0,
             Class = "ROGUE",
@@ -4454,7 +4448,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8.0,
             Class = "ROGUE",
@@ -4467,7 +4461,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 261.53, y = 2055.0 },
             Range = 8.0,
             Class = "ROGUE",
@@ -4480,7 +4474,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 299.04, y = 2069.46 },
             Range = 5,
             Class = "ROGUE",
@@ -4493,7 +4487,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Take the Zeppelin to Durotar", "Make Sharpening Stones/Bandages while you wait" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR", "MAKE_SHARPENING_STONES_BANDAGES_WAIT" },
             Coord = { x = 279.61, y = 2441.21 },
             Range = 5,
             Class = "ROGUE",
@@ -4505,7 +4499,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 278.7, y = 2071.27 },
             Range = 12.0,
             Class = { "PALADIN", "PRIEST", "WARLOCK" },
@@ -4517,7 +4511,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 253.85, y = 2059.82 },
             Range = 10.0,
             Class = { "PALADIN", "PRIEST", "WARLOCK" },
@@ -4529,7 +4523,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 264.7, y = 2053.5 },
             Range = 8.0,
             Class = { "PALADIN", "PRIEST", "WARLOCK" },
@@ -4541,7 +4535,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 271.02, y = 2064.94 },
             Range = 8.0,
             Class = { "PALADIN", "PRIEST", "WARLOCK" },
@@ -4553,7 +4547,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 259.72, y = 2068.86 },
             Range = 8.0,
             Class = { "PALADIN", "PRIEST", "WARLOCK" },
@@ -4565,7 +4559,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 261.53, y = 2055.0 },
             Range = 8.0,
             Class = { "PALADIN", "PRIEST", "WARLOCK" },
@@ -4577,7 +4571,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 299.04, y = 2069.46 },
             Range = 5,
             Class = { "PALADIN", "PRIEST", "WARLOCK" },
@@ -4589,7 +4583,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Take the Zeppelin to Durotar" },
+            Note = { "TAKE_ZEPPELIN_DUROTAR" },
             Coord = { x = 279.61, y = 2441.21 },
             Range = 5,
             Class = { "PALADIN", "PRIEST", "WARLOCK" },
@@ -4636,7 +4630,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             UseHS = 840,
-            Note = { "Hearth to Orgrimmar" },
             Button = { ["5726"] = 6948 },
             Race = "Skyborne",
             SkipForLvl = 14,
@@ -4666,7 +4659,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             GetFP = 23,
-            Note = { "Don't fly anywhere" },
+            Note = { "NOT_FLY_ANYWHERE" },
             Coord = { x = -4313.6, y = 1676.24 },
             Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" },
             Race = "Scourge",
@@ -4676,7 +4669,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             GetFP = 23,
             Fillers = { [1886] = { 1 } },
-            Note = { "Don't fly anywhere" },
+            Note = { "NOT_FLY_ANYWHERE" },
             Coord = { x = -4313.6, y = 1676.24 },
             Class = "ROGUE",
             Race = "Scourge",
@@ -4702,7 +4695,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "Exit Orgrimmar" },
+            Note = { "EXIT_ORGRIMMAR" },
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,
             AnyOf = { { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" }, { Race = "Skyborne" } },
@@ -4713,7 +4706,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             Waypoint = 840,
             NonSkippableWaypoint = true,
             Fillers = { [1886] = { 1 } },
-            Note = { "Exit Orgrimmar" },
+            Note = { "EXIT_ORGRIMMAR" },
             Coord = { x = -4367.46, y = 1405.44 },
             Range = 50.0,
             Class = "ROGUE",
@@ -4723,7 +4716,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             Qpart = { [5726] = { 1 } },
-            Note = { "Kill Burning Blade mobs in Skull Rock until Lieutenant's Insignia drops" },
+            Note = { "KILL_BURNING_BLADE_MOBS_SKULL_ROCK_LIEUTENANT" },
             Coord = { x = -4769.1, y = 1484.39 },
             Range = 30,
             AnyOf = { { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" }, { Race = "Skyborne" } },
@@ -4733,7 +4726,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         {
             Qpart = { [5726] = { 1 } },
             Fillers = { [1886] = { 1 } },
-            Note = { "Kill Burning Blade mobs in Skull Rock until Lieutenant's Insignia drops" },
+            Note = { "KILL_BURNING_BLADE_MOBS_SKULL_ROCK_LIEUTENANT" },
             Coord = { x = -4769.1, y = 1484.39 },
             Range = 30,
             Class = "ROGUE",
@@ -4742,12 +4735,12 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             _index = 477,
         },
         {
-            Note = { "Travel to Razor Hill" },
+            Note = { "TRAVEL_RAZOR_HILL" },
             AnyOf = { { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" }, Race = "Scourge" }, { Race = "Skyborne" } },
             _index = 478,
         },
         {
-            Note = { "Travel to Razor Hill" },
+            Note = { "TRAVEL_RAZOR_HILL" },
             Fillers = { [1886] = { 1 } },
             Class = "ROGUE",
             Race = "Scourge",
@@ -4755,7 +4748,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
         },
         {
             UseHS = 840,
-            Note = { "Hearth to Razor Hill" },
             Button = { ["840"] = 6948 },
             Race = { "Orc", "Troll" },
             _index = 480,
@@ -4863,12 +4855,12 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Silverpine"] = {
             _index = 491,
         },
         {
-            Note = { "Travel to Far Watch Post" },
+            Note = { "TRAVEL_FAR_WATCH_POST" },
             AnyOf = { { Race = "Orc" }, { Race = "Troll" }, { Class = { "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" } }, { Race = "Skyborne" } },
             _index = 492,
         },
         {
-            Note = { "Travel to Far Watch Post" },
+            Note = { "TRAVEL_FAR_WATCH_POST" },
             Fillers = { [1886] = { 1 } },
             Class = "ROGUE",
             Race = "Scourge",

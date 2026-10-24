@@ -1,5 +1,10 @@
 local env = dofile("tests/lua/route_ui_test_env.lua")
+local originalLibStub = LibStub
+function LibStub()
+    return { GetLocale = function() return { LOOT_ITEM = "LOOT_ITEM(%s)" } end }
+end
 dofile("APR-Core/utils/StepUtils.lua")
+LibStub = originalLibStub
 local function noop() end
 local step, profile = APR.currentStep, APR.settings.profile
 step.UpdateStepButtonCooldowns, step.UpdateStepButtonUsability = noop, noop
@@ -336,6 +341,17 @@ bagCount, loot.questID, questComplete = 0, 123, true
 assertLootDetails(0)
 questComplete = false
 assertLootDetails(1)
+local previousSkill = APR.GetRouteSkill
+local cookingRank = 8
+function APR:GetRouteSkill() return cookingRank end
+loot.quantityFromSkill = { skill = "cooking", rank = 10 }
+loot.questID, bagCount = nil, 2
+assertLootDetails(0)
+cookingRank = 7
+assertLootDetails(1)
+cookingRank, bagCount = 10, 0
+assertLootDetails(0)
+loot.quantityFromSkill, APR.GetRouteSkill = nil, previousSkill
 APRData.player.loot = 3
 assertLootDetails(0)
 print(

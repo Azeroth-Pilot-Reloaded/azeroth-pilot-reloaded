@@ -28,7 +28,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             BuyMerchant = { { itemID = 729, quantity = 3, questID = 38 }, { itemID = 730, quantity = 3, questID = 38 }, { itemID = 731, quantity = 3, questID = 38 }, { itemID = 732, quantity = 3, questID = 38 }, { itemID = 723, quantity = 8, questID = 22 }, { itemID = 255007, quantity = 14, questID = 92909 }, { itemID = 255010, quantity = 5, questID = 92909 } },
-            Note = { "If you don't want to or can't do this, skip this step", "`Stringy Vulture Meat`", "`Murloc Eye`", "`Goretusk Snout`", "`Okra`", "`Goretusk Liver`", "`Golem Isospring`", "`Harvester Gyrostabilizer`" },
+            Note = { "NOT_WANT_CANNOT_SKIP_STEP", "STRINGY_VULTURE_MEAT", "MURLOC_EYE", "GORETUSK_SNOUT", "OKRA", "GORETUSK_LIVER", "GOLEM_ISOSPRING", "HARVESTER_GYROSTABILIZER" },
             Coord = { x = 660.28, y = -8814.55 },
             AnyOf = { { ItemCount = { itemID = 729, count = 3, operator = "<" } }, { ItemCount = { itemID = 730, count = 3, operator = "<" } }, { ItemCount = { itemID = 731, count = 3, operator = "<" } }, { ItemCount = { itemID = 732, count = 3, operator = "<" } }, { ItemCount = { itemID = 723, count = 8, operator = "<" } }, { ItemCount = { itemID = 255007, count = 14, operator = "<" } }, { ItemCount = { itemID = 255010, count = 5, operator = "<" } } },
             SkipForLvl = 15,
@@ -172,14 +172,15 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
             _index = 20,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 102" },
+            LeaveQuest = 102,
+            IsQuestOnQuest = 102,
             SkipForLvl = 15,
             _index = 21,
         },
         {
             Waypoint = 399,
             NonSkippableWaypoint = true,
-            Note = { "Work on completing the other quest objectives as you move there" },
+            Note = { "WORK_COMPLETING_QUEST_OBJECTIVES_MOVE" },
             Coord = { x = 1602.67, y = -10629.67 },
             Range = 75.0,
             IsQuestOnQuest = 399,
@@ -189,7 +190,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [399] = { 1 } },
-            Note = { "Open Alexston's Chest. Loot it for A Simple Compass", "Avoid the mobs in front of the burnt building. Loot it from the back, beside the chimney. Use the chimney to LoS the casts of Pillagers if required" },
+            Note = { "OPEN_ALEXSTON_CHEST_LOOT_SIMPLE_COMPASS", "AVOID_MOBS_FRONT_BURNT_BUILDING_LOOT_BACK_CHIMNEY" },
             Coord = { x = 1748.27, y = -10672.13 },
             IsQuestOnQuest = 399,
             SkipForLvl = 15,
@@ -207,7 +208,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [64] = { 1 } },
-            Note = { "Open Furlbrow's Wardrobe. Loot it for Furlbrow's Pocket Watch", "You can loot Furlbrow's Wardrobe from outside if you angle your camera correctly", "Be aware of Benny Blanco. He hits hard" },
+            Note = { "OPEN_FURLBROW_WARDROBE_LOOT_FURLBROW_POCKET_WATCH", "LOOT_WARDROBE_OUTSIDE_ADJUSTING_CAMERA_ANGLE", "AWARE_BENNY_BLANCO_HITS_HARD" },
             Coord = { x = 1289.77, y = -9849.63 },
             SkipForLvl = 15,
             Zone = 1436,
@@ -215,7 +216,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [92742] = { 1 } },
-            Note = { "Use the `Well Water Sample Kit` at the Jansen Stead well" },
+            Note = { "USE_WELL_WATER_SAMPLE_KIT_JANSEN_STEAD_WELL" },
             Coord = { x = 1035.3, y = -9835.101 },
             Button = { ["92742-1"] = 254545 },
             SkipForLvl = 15,
@@ -225,7 +226,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 92744,
             NonSkippableWaypoint = true,
-            Note = { "Kill Murloc Raiders and Murloc Coastrunners. Loot them for their Eyes and Gills", "If you don't have many Gills by the time you have finished Eyes, skip this step" },
+            Note = { "KILL_MURLOC_RAIDERS_MURLOC_COASTRUNNERS_LOOT_EYES", "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1192.12, y = -9641.73 },
             Range = 60.0,
             SkipForLvl = 15,
@@ -235,7 +236,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 92744,
             NonSkippableWaypoint = true,
-            Note = { "Kill Murloc Raiders and Murloc Coastrunners. Loot them for their Eyes and Gills", "If you don't have many Gills by the time you have finished Eyes, skip this step" },
+            Note = { "KILL_MURLOC_RAIDERS_MURLOC_COASTRUNNERS_LOOT_EYES", "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1042.67, y = -9619.33 },
             Range = 60.0,
             SkipForLvl = 15,
@@ -245,7 +246,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 92744,
             NonSkippableWaypoint = true,
-            Note = { "Kill Murloc Raiders and Murloc Coastrunners. Loot them for their Eyes and Gills", "If you don't have many Gills by the time you have finished Eyes, skip this step" },
+            Note = { "KILL_MURLOC_RAIDERS_MURLOC_COASTRUNNERS_LOOT_EYES", "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1192.12, y = -9641.73 },
             Range = 60.0,
             SkipForLvl = 15,
@@ -255,7 +256,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 92744,
             NonSkippableWaypoint = true,
-            Note = { "Kill Murloc Raiders and Murloc Coastrunners. Loot them for their Eyes and Gills", "If you don't have many Gills by the time you have finished Eyes, skip this step" },
+            Note = { "KILL_MURLOC_RAIDERS_MURLOC_COASTRUNNERS_LOOT_EYES", "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1042.67, y = -9619.33 },
             Range = 60.0,
             SkipForLvl = 15,
@@ -264,7 +265,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             LootItems = { { itemID = 730, quantity = 3, questID = 38 } },
-            Note = { "Kill Murloc Raiders and Murloc Coastrunners. Loot them for their Eyes and Gills", "If you don't have many Gills by the time you have finished Eyes, skip this step" },
+            Note = { "KILL_MURLOC_RAIDERS_MURLOC_COASTRUNNERS_LOOT_EYES", "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1192.12, y = -9641.73 },
             SkipForLvl = 15,
             Zone = 1436,
@@ -272,7 +273,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [92744] = { 1 } },
-            Note = { "If you don't have many Gills by the time you have finished Eyes, skip this step" },
+            Note = { "NOT_MANY_GILLS_TIME_FINISHED_EYES_SKIP_STEP" },
             Coord = { x = 1192.12, y = -9641.73 },
             Range = 30,
             SkipForLvl = 15,
@@ -281,7 +282,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [151] = { 1 } },
-            Note = { "Open the Sacks of Oats on the ground. Loot them for the Handful of Oats", "You can usually find them near Farm Fences or Buildings" },
+            Note = { "OPEN_SACKS_OATS_GROUND_LOOT_HANDFUL_OATS", "USUALLY_FIND_FARM_FENCES_BUILDINGS" },
             Coord = { x = 1098.495, y = -9960.585 },
             Range = 30,
             SkipForLvl = 15,
@@ -322,7 +323,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [151] = { 1 } },
-            Note = { "Open the Sacks of Oats on the ground. Loot them for the Handful of Oats", "You can usually find them near Farm Fences or Buildings" },
+            Note = { "OPEN_SACKS_OATS_GROUND_LOOT_HANDFUL_OATS", "USUALLY_FIND_FARM_FENCES_BUILDINGS" },
             AllOf = { { IsQuestOnQuest = 151 }, { IsQuestOnQuest = 184 } },
             Class = "WARLOCK",
             Race = "Human",
@@ -359,7 +360,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [151] = { 1 } },
-            Note = { "Open the Sacks of Oats on the ground. Loot them for the Handful of Oats", "You can usually find them near Farm Fences or Buildings" },
+            Note = { "OPEN_SACKS_OATS_GROUND_LOOT_HANDFUL_OATS", "USUALLY_FIND_FARM_FENCES_BUILDINGS" },
             AnyOf = { { Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" } }, { Race = "Dwarf" }, { Race = "Gnome" }, { Race = "Skyborne" } },
             IsQuestOnQuest = 151,
             SkipForLvl = 15,
@@ -395,7 +396,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             SellItems = { junk = true, questID = 9 },
-            Note = { "Do NOT sell `Murloc Eyes`, `Goretusk Snouts`, `Goretusk Livers` or `Stringy Vulture Meat`" },
+            Note = { "NOT_SELL_MURLOC_EYES_GORETUSK_SNOUTS_GORETUSK" },
             Coord = { x = 1055.27, y = -10128.7 },
             SkipForLvl = 15,
             Zone = 1436,
@@ -464,7 +465,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 60.0,
             IsQuestUncompleted = 38,
@@ -475,7 +476,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             Range = 80.0,
             IsQuestUncompleted = 38,
@@ -486,7 +487,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 80.0,
             IsQuestUncompleted = 38,
@@ -497,7 +498,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 80.0,
             IsQuestUncompleted = 38,
@@ -508,7 +509,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             Range = 80.0,
             IsQuestUncompleted = 38,
@@ -519,7 +520,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 80.0,
             IsQuestUncompleted = 38,
@@ -530,7 +531,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 60.0,
             IsQuestUncompleted = 38,
@@ -541,7 +542,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 60.0,
             IsQuestUncompleted = 38,
@@ -560,7 +561,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             LootItems = { { itemID = 732, quantity = 3, questID = 38 }, { itemID = 814, quantity = 5, questID = 103 } },
-            Note = { "Kill Harvest Watchers. Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_OKRA_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             IsQuestUncompleted = 38,
             SkipForLvl = 15,
@@ -570,7 +571,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 60.0,
             IsQuestCompleted = 38,
@@ -581,7 +582,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             Range = 80.0,
             IsQuestCompleted = 38,
@@ -592,7 +593,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 80.0,
             IsQuestCompleted = 38,
@@ -603,7 +604,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 80.0,
             IsQuestCompleted = 38,
@@ -614,7 +615,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             Range = 80.0,
             IsQuestCompleted = 38,
@@ -625,7 +626,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 80.0,
             IsQuestCompleted = 38,
@@ -636,7 +637,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1132.27, y = -10146.67 },
             Range = 60.0,
             IsQuestCompleted = 38,
@@ -647,7 +648,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1460.22, y = -10224.83 },
             Range = 60.0,
             IsQuestCompleted = 38,
@@ -666,7 +667,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             LootItems = { { itemID = 814, quantity = 5, questID = 103 } },
-            Note = { "Kill Harvest Watchers. Loot them for their Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOOT_FLASKS_OIL" },
             Coord = { x = 1238.67, y = -9907.73 },
             IsQuestCompleted = 38,
             SkipForLvl = 15,
@@ -702,7 +703,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1179.52, y = -10382.57 },
             Range = 75.0,
             SkipForLvl = 15,
@@ -712,7 +713,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1138.22, y = -10474.97 },
             Range = 75.0,
             SkipForLvl = 15,
@@ -722,7 +723,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 860.67, y = -10462.83 },
             Range = 75.0,
             SkipForLvl = 15,
@@ -732,7 +733,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 904.07, y = -10038.87 },
             Range = 75.0,
             SkipForLvl = 15,
@@ -742,7 +743,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1104.62, y = -9848.0 },
             Range = 75.0,
             SkipForLvl = 15,
@@ -752,7 +753,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1298.52, y = -10028.13 },
             Range = 75.0,
             SkipForLvl = 15,
@@ -762,7 +763,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 9,
             NonSkippableWaypoint = true,
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1340.52, y = -10401.93 },
             Range = 75.0,
             SkipForLvl = 15,
@@ -771,7 +772,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             LootItems = { { itemID = 729, quantity = 3, questID = 38 }, { itemID = 731, quantity = 3, questID = 38 }, { itemID = 723, quantity = 8, questID = 22 } },
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             Coord = { x = 1111.97, y = -10342.2 },
             SkipForLvl = 15,
             Zone = 1436,
@@ -779,7 +780,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [9] = { 1 } },
-            Note = { "Kill Harvest Watchers located on any of the fields as you run by them" },
+            Note = { "KILL_HARVEST_WATCHERS_LOCATED_FIELDS_RUN" },
             Range = 30,
             IsQuestOnQuest = 9,
             SkipForLvl = 15,
@@ -794,21 +795,21 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             LootItems = { { itemID = 729, quantity = 3, questID = 38 }, { itemID = 731, quantity = 3, questID = 38 } },
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             IsQuestOnQuest = 38,
             SkipForLvl = 15,
             _index = 86,
         },
         {
             LootItems = { { itemID = 732, quantity = 3, questID = 38 } },
-            Note = { "Kill Harvest Watchers located on any of the fields as you run by them", "Loot them for their Okra and Flasks of Oil" },
+            Note = { "KILL_HARVEST_WATCHERS_LOCATED_FIELDS_RUN", "LOOT_OKRA_FLASKS_OIL" },
             IsQuestOnQuest = 38,
             SkipForLvl = 15,
             _index = 87,
         },
         {
             LootItems = { { itemID = 729, quantity = 3, questID = 38 }, { itemID = 731, quantity = 3, questID = 38 } },
-            Note = { "Kill Young Goretusks and Young Fleshrippers. Loot them for their Vulture Meat, Snouts and Livers" },
+            Note = { "KILL_YOUNG_GORETUSKS_YOUNG_FLESHRIPPERS_LOOT" },
             IsQuestOnQuest = 38,
             SkipForLvl = 15,
             _index = 88,
@@ -851,7 +852,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [92742] = { 2 } },
-            Note = { "Use the `Well Water Sample Kit` at the Molsen Farm well" },
+            Note = { "USE_WELL_WATER_SAMPLE_KIT_MOLSEN_FARM_WELL" },
             Coord = { x = 1404.2, y = -10290.9 },
             Button = { ["92742-2"] = 254545 },
             SkipForLvl = 15,
@@ -860,7 +861,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [12] = { 1, 2 } },
-            Note = { "It is a dynamic respawn area meaning if you kill enough they will keep respawning", "If you are still very far behind on Red Leather Bandanas and have killed all required Defias, abandon the quest `Red Leather Bandanas`" },
+            Note = { "DYNAMIC_RESPAWN_AREA_MEANING_KILL_KEEP_RESPAWNING", "STILL_FAR_RED_LEATHER_BANDANAS_KILLED_REQUIRED" },
             Coord = { x = 1324.2, y = -10490.4 },
             Range = 30,
             IsQuestOnQuest = 153,
@@ -870,7 +871,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [153] = { 1 } },
-            Note = { "It is a dynamic respawn area meaning if you kill enough they will keep respawning", "If you are still very far behind on Red Leather Bandanas and have killed all required Defias, abandon the quest `Red Leather Bandanas`" },
+            Note = { "DYNAMIC_RESPAWN_AREA_MEANING_KILL_KEEP_RESPAWNING", "STILL_FAR_RED_LEATHER_BANDANAS_KILLED_REQUIRED" },
             Coord = { x = 1324.2, y = -10490.4 },
             Range = 30,
             IsQuestOnQuest = 153,
@@ -880,7 +881,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             Qpart = { [12] = { 1, 2 } },
-            Note = { "It is a dynamic respawn area meaning if you kill enough they will keep respawning" },
+            Note = { "DYNAMIC_RESPAWN_AREA_MEANING_KILL_KEEP_RESPAWNING" },
             Coord = { x = 1324.2, y = -10490.4 },
             Range = 30,
             SkipForLvl = 15,
@@ -968,7 +969,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             UseHS = 399,
-            Note = { "Hearth to Stormwind" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             AnyOf = { { SkipInZones = { 1439, 1453 }, SkipForLvl = 15, Race = "Human" }, { SkipInZones = { 1439, 1453 }, SkipForLvl = 15, Race = "Dwarf" }, { SkipInZones = { 1439, 1453 }, SkipForLvl = 15, Race = "Gnome" }, { SkipInZones = { 1439, 1453 }, SkipForLvl = 15, Race = "Skyborne" } },
             _index = 107,
@@ -984,7 +984,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 399,
             NonSkippableWaypoint = true,
-            Note = { "Buy a `Scimitar` from her or something better from the Auction House and equip it your off-hand" },
+            Note = { "BUY_SCIMITAR_SOMETHING_BETTER_AUCTION_HOUSE_EQUIP" },
             Coord = { x = 609.63, y = -8787.71 },
             Range = 5,
             RaidIcon = 1287,
@@ -1048,7 +1048,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             LearnSkill = { allAvailable = true },
-            Note = { "If you just trained earlier, skip this step" },
+            Note = { "TRAINED_EARLIER_SKIP_STEP" },
             Coord = { x = 552.78, y = -8415.71 },
             Class = "HUNTER",
             MinLevel = 1,
@@ -1070,7 +1070,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 95065,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 988.44, y = -8942.15 },
             Range = 20.0,
             Class = "WARLOCK",
@@ -1082,7 +1082,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         {
             Waypoint = 95065,
             NonSkippableWaypoint = true,
-            Note = { "Travel to The Slaughtered Lamb and go downstairs" },
+            Note = { "TRAVEL_SLAUGHTERED_LAMB_GO_DOWNSTAIRS" },
             Coord = { x = 1015.33, y = -8978.9 },
             Range = 15.0,
             Class = "WARLOCK",
@@ -1178,12 +1178,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
             _index = 126,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 153" },
+            LeaveQuest = 153,
+            IsQuestOnQuest = 153,
             SkipForLvl = 15,
             _index = 127,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 92744" },
+            LeaveQuest = 92744,
+            IsQuestOnQuest = 92744,
             SkipForLvl = 15,
             _index = 128,
         },
@@ -1194,8 +1196,8 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
             _index = 129,
         },
         {
-            BuyMerchant = { { itemID = 5469, quantity = 5, questID = 2178 }, { itemID = 12238, quantity = 6, questID = 1141 } },
-            Note = { "Your `Cooking` skill must be 10 for the turn in at Darkshore for `Strider Meat`", "If you don't want to or can't do this, skip this step", "`Strider Meat`", "`Darkshore Grouper`", "`Chunks of Boar Meat`", "`Stringy Wolf Meat`", "Collect item 769 only as needed to reach 50 cooking; the amount decreases with your current skill", "Collect item 2672 only as needed to reach 50 cooking; the amount decreases with your current skill" },
+            LootItems = { { quantity = 5, itemID = 5469, questID = 2178 }, { quantity = 6, itemID = 12238, questID = 1141 } },
+            Note = { "COOKING_SKILL_10_TURN_DARKSHORE_STRIDER_MEAT", "NOT_WANT_CANNOT_SKIP_STEP", "BUY_COOKING_MEAT_AUCTION_HOUSE" },
             Coord = { x = 660.28, y = -8814.55 },
             AnyOf = { { Race = "Human", AllOf = { { HasSpell = 2550 }, { AnyOf = { { ItemCount = { itemID = 5469, count = 5, operator = "<" } }, { ItemCount = { itemID = 12238, count = 6, operator = "<" } } } } } }, { Race = "Dwarf", AllOf = { { HasSpell = 2550 }, { AnyOf = { { ItemCount = { itemID = 5469, count = 5, operator = "<" } }, { ItemCount = { itemID = 12238, count = 6, operator = "<" } } } } } }, { Race = "Gnome", AllOf = { { HasSpell = 2550 }, { AnyOf = { { ItemCount = { itemID = 5469, count = 5, operator = "<" } }, { ItemCount = { itemID = 12238, count = 6, operator = "<" } } } } } }, { Race = "Skyborne", AllOf = { { HasSpell = 2550 }, { AnyOf = { { ItemCount = { itemID = 5469, count = 5, operator = "<" } }, { ItemCount = { itemID = 12238, count = 6, operator = "<" } } } } } } },
             Zone = 1453,
@@ -1203,7 +1205,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             BuyMerchant = { { itemID = 12238, quantity = 6, questID = 1141 } },
-            Note = { "If you don't want to or can't do this, skip this step", "`Darkshore Grouper`" },
+            Note = { "NOT_WANT_CANNOT_SKIP_STEP", "DARKSHORE_GROUPER" },
             Coord = { x = 660.28, y = -8814.55 },
             ItemCount = { itemID = 12238, count = 6, operator = "<" },
             Zone = 1453,
@@ -1232,25 +1234,25 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             UseSpell = { spellID = 818, questID = 1141 },
-            Note = { "While waiting for the Boat on the dock:", "Create a `Basic Campfire` (in your Profession Book)" },
+            Note = { "WAITING_BOAT_DOCK", "CREATE_BASIC_CAMPFIRE_PROFESSION_BOOK" },
             AnyOf = { { Race = "Human", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Dwarf", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Gnome", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Skyborne", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } } },
             _index = 135,
         },
         {
             UseSpell = { spellID = 818, questID = 1141 },
-            Note = { "While waiting for the Boat on the dock:", "Create a `Basic Campfire` (in your Profession Book)" },
+            Note = { "WAITING_BOAT_DOCK", "CREATE_BASIC_CAMPFIRE_PROFESSION_BOOK" },
             AnyOf = { { Race = "Human", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = "<", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Dwarf", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = "<", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Gnome", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = "<", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Skyborne", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = "<", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } } },
             _index = 136,
         },
         {
             UseSpell = { spellID = 818, questID = 1141 },
-            Note = { "While waiting for the Boat on the dock:", "Create a `Basic Campfire` (in your Profession Book)" },
+            Note = { "WAITING_BOAT_DOCK", "CREATE_BASIC_CAMPFIRE_PROFESSION_BOOK" },
             AnyOf = { { Race = "Human", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Dwarf", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Gnome", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } }, { Race = "Skyborne", Skill = { skill = "cooking", rank = 50, operator = "<" }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 } }, { ItemCount = { operator = ">=", count = 1, itemID = 4470 } }, { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } }, SkipInZones = { 1439 } } },
             _index = 137,
         },
         {
             UseSpell = { spellID = 2550, questID = 1141 },
-            Note = { "YOU_NEED_50_COOKING", "`Cook` the following items:", "`Cook` the `Chunks of Boar Meat` into `Roasted Boar Meat`", "COOK_STRINGY_WOLF_MEAT_CHARRED_WOLF_MEAT" },
+            Note = { "YOU_NEED_50_COOKING", "COOK_FOLLOWING_ITEMS", "COOK_CHUNKS_BOAR_MEAT_ROASTED_BOAR_MEAT", "COOK_STRINGY_WOLF_MEAT_CHARRED_WOLF_MEAT" },
             AnyOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 }, Race = "Human", Skill = { skill = "cooking", rank = 50, operator = "<" }, SkipInZones = { 1439 }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } } }, { ItemCount = { operator = ">=", count = 1, itemID = 4471 }, Race = "Dwarf", Skill = { skill = "cooking", rank = 50, operator = "<" }, SkipInZones = { 1439 }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } } }, { ItemCount = { operator = ">=", count = 1, itemID = 4471 }, Race = "Gnome", Skill = { skill = "cooking", rank = 50, operator = "<" }, SkipInZones = { 1439 }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } } }, { ItemCount = { operator = ">=", count = 1, itemID = 4471 }, Race = "Skyborne", Skill = { skill = "cooking", rank = 50, operator = "<" }, SkipInZones = { 1439 }, AllOf = { { ItemCount = { operator = ">=", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } } } },
             _index = 138,
         },
@@ -1262,12 +1264,12 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Westfall"] = {
         },
         {
             UseSpell = { spellID = 2550, questID = 1141 },
-            Note = { "YOU_NEED_50_COOKING", "`Cook` the `Chunks of Boar Meat` into `Roasted Boar Meat`" },
+            Note = { "YOU_NEED_50_COOKING", "COOK_CHUNKS_BOAR_MEAT_ROASTED_BOAR_MEAT" },
             AnyOf = { { ItemCount = { operator = ">=", count = 1, itemID = 4471 }, Race = "Human", Skill = { skill = "cooking", rank = 50, operator = "<" }, SkipInZones = { 1439 }, AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } } }, { ItemCount = { operator = ">=", count = 1, itemID = 4471 }, Race = "Dwarf", Skill = { skill = "cooking", rank = 50, operator = "<" }, SkipInZones = { 1439 }, AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } } }, { ItemCount = { operator = ">=", count = 1, itemID = 4471 }, Race = "Gnome", Skill = { skill = "cooking", rank = 50, operator = "<" }, SkipInZones = { 1439 }, AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } } }, { ItemCount = { operator = ">=", count = 1, itemID = 4471 }, Race = "Skyborne", Skill = { skill = "cooking", rank = 50, operator = "<" }, SkipInZones = { 1439 }, AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 2672 } }, { ItemCount = { operator = ">=", count = 1, itemID = 769 } } } } },
             _index = 140,
         },
         {
-            Note = { "Level your `First Aid` while waiting for the boat to Darkshore if needed" },
+            Note = { "LEVEL_FIRST_AID_WAITING_BOAT_DARKSHORE" },
             Boat = true,
             Coord = { x = 1330.1, y = -8645.4 },
             Range = 5,

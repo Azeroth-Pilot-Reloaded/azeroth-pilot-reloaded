@@ -21,7 +21,7 @@ import requests
 from dotenv import load_dotenv
 
 from curseforge_localization_fetch import fetch_localization_export
-from localization_quality import evaluate_catalogs, evaluate_local_catalogs, parse_catalog
+from localization_quality import evaluate_catalogs, evaluate_local_catalogs, parse_catalog, printf_parameters
 from localization_source import analyze_sources, scan_sources
 
 load_dotenv()
@@ -36,6 +36,7 @@ CHECKS = {
     "unresolved_dynamic": "Dynamic keys requiring review",
     "placeholder_mismatch": "Format parameters",
     "invalid_placeholder": "Invalid format parameters",
+    "unformatted_route_text": "Format parameters without route arguments",
     "invalid_markup": "WoW markup",
     "markup_mismatch": "Missing WoW markup",
     "missing_translation": "Translation coverage",
@@ -125,6 +126,16 @@ def analyze_tree(root, catalogs):
     quality = evaluate_catalogs(catalogs, used_keys=used)
     local = evaluate_local_catalogs(root)
     diagnostics = analyze_sources(scan, set(catalogs["enUS"]))
+    for entry in scan["references"]:
+        if entry["kind"] != "route_text" or entry["key"] not in catalogs["enUS"]:
+            continue
+        parameters, _ = printf_parameters(catalogs["enUS"][entry["key"]])
+        if parameters:
+            diagnostics.append({
+                "code": "unformatted_route_text", "severity": "error", "locale": "enUS",
+                "key": entry["key"], "path": entry["path"], "line": entry["line"],
+                "message": f"Route text supplies no arguments for format parameters {parameters!r}.",
+            })
     diagnostics.extend(quality["diagnostics"])
     diagnostics.extend(local["diagnostics"])
     locations = defaultdict(list)

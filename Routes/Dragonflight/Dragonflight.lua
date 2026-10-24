@@ -454,7 +454,6 @@ APR.RouteQuestStepList["2022-DF03N-WakingShores"] = {
         },
         {
             Qpart = { [70132] = { 1 } },
-            ExtraLineText = "USE_EXTRAACTIONBUTTON",
             Coord = { x = 39.3, y = 1818.4 },
             Range = 1,
             SpellButton = { ["70132-1"] = 383740 },
@@ -2618,7 +2617,6 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         },
         {
             Qpart = { [66834] = { 3 } },
-            ExtraLineText = "USE_EXTRAACTIONBUTTON",
             Coord = { x = 3776.2, y = -1501.7 },
             Range = 1,
             SpellButton = { ["66834-3"] = 384389 },
@@ -2634,7 +2632,6 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         },
         {
             Qpart = { [66834] = { 5 } },
-            ExtraLineText = "USE_EXTRAACTIONBUTTON",
             Coord = { x = 3786.7, y = -1496 },
             Range = 1,
             SpellButton = { ["66834-5"] = 384564 },
@@ -2650,7 +2647,6 @@ APR.RouteQuestStepList["2023-DF04-OhnahranPlains"] = {
         },
         {
             Qpart = { [66834] = { 7 } },
-            ExtraLineText = "USE_EXTRAACTIONBUTTON",
             Coord = { x = 3787.8, y = -1493.9 },
             Range = 1,
             SpellButton = { ["66834-7"] = 384588 },

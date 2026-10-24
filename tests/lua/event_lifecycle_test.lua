@@ -22,6 +22,7 @@ end
 APR = { settings = { profile = { enableAddon = true } } }
 function APR:NewModule() return {} end
 dofile("APR-Core/utils/Utils.lua")
+dofile("APR-Core/utils/RouteUtils.lua")
 dofile("APR-Core/features/questing/StepTransitions.lua")
 dofile("APR-Core/core/Event.lua")
 dofile("APR-Core/features/questing/NPCInteraction.lua")
@@ -52,6 +53,18 @@ APR.event:DebouncedUpdateQuest(1)
 assert(timers[1].cancelled and not timers[2].cancelled)
 APR.event:CleanupEvents()
 assert(timers[2].cancelled, "Cleanup cancels the timer handle; there is no C_Timer.Cancel API")
+
+APR.PlayerID, APR.ActiveRoute = "player", "route"
+APRData = { player = { route = 1 } }
+APR.GetStep = function()
+    return { LootItems = { { itemID = 769, quantityFromSkill = { skill = "cooking", rank = 50 } } } }
+end
+local refreshes = 0
+APR.UpdateStep = function() refreshes = refreshes + 1 end
+APR.event.functions.skill()
+assert(APR.event.stepRefreshTimer, "Skill changes refresh collection goals without a separate Skill condition")
+APR.event.stepRefreshTimer.callback()
+assert(refreshes == 1)
 
 dofile("APR-Core/ui/route/QuestOrderListSupport.lua")
 local standings = { [1] = false, [2] = false }

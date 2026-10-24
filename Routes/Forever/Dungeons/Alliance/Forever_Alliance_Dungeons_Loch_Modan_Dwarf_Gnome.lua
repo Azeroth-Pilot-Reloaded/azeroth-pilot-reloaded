@@ -254,7 +254,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 1778,
             NonSkippableWaypoint = true,
-            Note = { "Travel toward the staircase underneath Tiza Battleforge" },
+            Note = { "TRAVEL_STAIRCASE_UNDERNEATH_TIZA_BATTLEFORGE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 27.228, 12.724),
             Range = 15.0,
             Class = "PALADIN",
@@ -265,7 +265,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 1778,
             NonSkippableWaypoint = true,
-            Note = { "Travel toward the staircase underneath Tiza Battleforge" },
+            Note = { "TRAVEL_STAIRCASE_UNDERNEATH_TIZA_BATTLEFORGE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 25.4, 2.676),
             Range = 12.0,
             Class = "PALADIN",
@@ -393,7 +393,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 6392,
             NonSkippableWaypoint = true,
-            Note = { "Buy `Small Brown Pouches` from her if needed" },
+            Note = { "BUY_SMALL_BROWN_POUCHES" },
             Coord = { x = -2952.46, y = -5381.87 },
             Range = 5,
             RaidIcon = 1682,
@@ -403,7 +403,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 6392,
             NonSkippableWaypoint = true,
-            Note = { "Buy some `Freshly Baked Bread` if needed" },
+            Note = { "BUY_FRESHLY_BAKED_BREAD" },
             Coord = { x = -2973.9, y = -5377.93 },
             Range = 5,
             RaidIcon = 6734,
@@ -414,7 +414,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 6392,
             NonSkippableWaypoint = true,
-            Note = { "Buy some `Freshly Baked Bread` and `Ice Cold Milk` from her if needed" },
+            Note = { "BUY_FRESHLY_BAKED_BREAD_ICE_COLD_MILK" },
             Coord = { x = -2973.9, y = -5377.93 },
             Range = 5,
             RaidIcon = 6734,
@@ -445,7 +445,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 86667,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the snowy patch on the ground just outside the South Gate Pass tunnel" },
+            Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2619.2, y = -5783.3 },
             Range = 20.0,
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -455,7 +455,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94449,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the snowy patch on the ground just outside the South Gate Pass tunnel" },
+            Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2619.2, y = -5783.3 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -465,7 +465,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 86667,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the snowy patch on the ground just outside the South Gate Pass tunnel" },
+            Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2534.38, y = -5648.28 },
             Range = 5.0,
             Class = { "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" },
@@ -475,7 +475,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94449,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the snowy patch on the ground just outside the South Gate Pass tunnel" },
+            Note = { "TRAVEL_SNOWY_PATCH_GROUND_OUTSIDE_SOUTH_GATE_PASS" },
             Coord = { x = -2534.38, y = -5648.28 },
             Range = 5.0,
             Class = "SHAMAN",
@@ -484,7 +484,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Qpart = { [86667] = { 1 } },
-            Note = { "Use the `Ceramic Jar` while standing on the snowy patch to collect the `Jar of Snow`" },
+            Note = { "USE_CERAMIC_JAR_STANDING_SNOWY_PATCH_COLLECT_JAR" },
             Coord = { x = -2534.38, y = -5648.28 },
             Button = { ["86667-1"] = 279380 },
             Zone = 1432,
@@ -493,7 +493,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94449,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS" },
             Coord = { x = -2521.9, y = -5631.0 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -504,7 +504,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94449,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS" },
             Coord = { x = -2437.6, y = -5549.7 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -553,7 +553,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94465,
             NonSkippableWaypoint = true,
-            Note = { "Carefully drop down the mountain into Loch Modan" },
+            Note = { "CAREFULLY_DROP_MOUNTAIN_LOCH_MODAN" },
             Coord = { x = -2594.1, y = -5335.9 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -565,7 +565,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94465,
             NonSkippableWaypoint = true,
-            Note = { "Carefully drop down the mountain into Loch Modan" },
+            Note = { "CAREFULLY_DROP_MOUNTAIN_LOCH_MODAN" },
             Coord = { x = -2641.0, y = -5375.7 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -577,7 +577,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94465,
             NonSkippableWaypoint = true,
-            Note = { "Go up the mountain trail" },
+            Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2915.5, y = -5576.5 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -588,7 +588,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94465,
             NonSkippableWaypoint = true,
-            Note = { "Go up the mountain trail" },
+            Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2874.5, y = -5608.6 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -599,7 +599,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94465,
             NonSkippableWaypoint = true,
-            Note = { "Go up the mountain trail" },
+            Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2846.1, y = -5657.6 },
             Range = 15.0,
             Class = "SHAMAN",
@@ -626,14 +626,16 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             _index = 58,
         },
         {
-            Note = { "Kill Mountain Boars. Loot them for their `Chunks of Boar Meat`", "Collect item 769 only as needed to reach 10 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 769, quantityFromSkill = { skill = "cooking", rank = 10 } } },
+            Note = { "KILL_MOUNTAIN_BOARS_LOOT_CHUNKS_BOAR_MEAT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 80.583, 36.04),
             Skill = { skill = "cooking", rank = 10, operator = "<" },
             Zone = 1426,
             _index = 59,
         },
         {
-            Note = { "Kill Mountain Boars. Loot them for their `Chunks of Boar Meat`", "Don't go out of your way to farm this now. Simply kill and loot all the boars you're passing by", "Collect item 769 only as needed to reach 50 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 769, quantityFromSkill = { skill = "cooking", rank = 50 } } },
+            Note = { "KILL_MOUNTAIN_BOARS_LOOT_CHUNKS_BOAR_MEAT", "NOT_GO_WAY_FARM_SIMPLY_KILL_LOOT_BOARS_PASSING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 80.583, 36.04),
             Skill = { skill = "cooking", rank = 50, operator = "<" },
             Zone = 1426,
@@ -641,7 +643,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Done = { 86667 },
-            Note = { "10 minute timer to turn in quest", "Ensure to turn this in before the 10 minute expiry on the `Jar of Snow`" },
+            Note = { "QUEST_TURNIN_TIMER_10_MINUTES", "JAR_SNOW_EXPIRES_10_MINUTES_HAND" },
             Coord = { x = -3146.73, y = -4837.02 },
             Zone = 1432,
             _index = 61,
@@ -659,7 +661,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             Waypoint = 307,
             NonSkippableWaypoint = true,
             Fillers = { [416] = { 1 }, [94466] = { 1 } },
-            Note = { "Enter the Silver Stream Mine" },
+            Note = { "ENTER_SILVER_STREAM_MINE" },
             Coord = { x = -2972.96, y = -4835.187 },
             Range = 20.0,
             Zone = 1432,
@@ -668,7 +670,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Qpart = { [307] = { 1 } },
             Fillers = { [416] = { 1 }, [94466] = { 1 } },
-            Note = { "Open the Miners' League Crates inside the mine. Loot them for the Miners' Gear" },
+            Note = { "OPEN_MINERS_LEAGUE_CRATES_INSIDE_MINE_LOOT_MINERS" },
             Coord = { x = -2984.82, y = -4902.33 },
             Class = { "PALADIN", "WARRIOR", "MAGE", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK" },
             Zone = 1432,
@@ -677,7 +679,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             BuyMerchant = { { itemID = 4778, quantity = 1, questID = 307 }, { itemID = 4777, quantity = 1, questID = 307 } },
             Fillers = { [416] = { 1 }, [94466] = { 1 } },
-            Note = { "If you can't afford this, then grind money from the nearby Tunnel Rats until you have enough", "Do this quickly as another player may purchase it before you do", "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
+            Note = { "CANNOT_AFFORD_GRIND_MONEY_NEARBY_TUNNEL_RATS", "QUICKLY_ANOTHER_PLAYER_PURCHASE", "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
             Coord = { x = -3176.16, y = -4669.34 },
             AnyOf = { { ItemCount = { operator = "<", count = 1, itemID = 4777 }, EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 11.8, precision = 1, allowMissing = true }, Race = "Dwarf", Class = { "PALADIN", "WARRIOR" }, AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 4778 } }, { AnyOf = { { ItemCount = { itemID = 4778, count = 1, operator = "<" } }, { ItemCount = { itemID = 4777, count = 1, operator = "<" } } } } } }, { ItemCount = { operator = "<", count = 1, itemID = 4777 }, EquippedItemStat = { slot = 16, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 11.8, precision = 1, allowMissing = true }, Race = "Gnome", Class = "WARRIOR", AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 4778 } }, { AnyOf = { { ItemCount = { itemID = 4778, count = 1, operator = "<" } }, { ItemCount = { itemID = 4777, count = 1, operator = "<" } } } } } } },
             Zone = 1432,
@@ -693,7 +695,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Qpart = { [416] = { 1 }, [94466] = { 1 } },
-            Note = { "Tunnel Rat Geomancers are only found inside the mine" },
+            Note = { "TUNNEL_RAT_GEOMANCERS_FOUND_INSIDE_MINE" },
             Coord = { x = -2859.315, y = -5041.76 },
             Range = 30,
             Class = "SHAMAN",
@@ -702,14 +704,16 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             _index = 67,
         },
         {
-            Note = { "Kill Mountain Boars. Loot them for their `Chunks of Boar Meat`", "Collect item 769 only as needed to reach 10 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 769, quantityFromSkill = { skill = "cooking", rank = 10 } } },
+            Note = { "KILL_MOUNTAIN_BOARS_LOOT_CHUNKS_BOAR_MEAT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 80.583, 36.04),
             Skill = { skill = "cooking", rank = 10, operator = "<" },
             Zone = 1426,
             _index = 68,
         },
         {
-            Note = { "Kill Mountain Boars. Loot them for their `Chunks of Boar Meat`", "Don't go out of your way to farm this now. Simply kill and loot all the boars you're passing by", "Collect item 769 only as needed to reach 50 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 769, quantityFromSkill = { skill = "cooking", rank = 50 } } },
+            Note = { "KILL_MOUNTAIN_BOARS_LOOT_CHUNKS_BOAR_MEAT", "NOT_GO_WAY_FARM_SIMPLY_KILL_LOOT_BOARS_PASSING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 80.583, 36.04),
             Skill = { skill = "cooking", rank = 50, operator = "<" },
             Zone = 1426,
@@ -718,7 +722,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 307,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Bunker" },
+            Note = { "ENTER_BUNKER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Range = 15.0,
             Zone = 1432,
@@ -727,7 +731,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 307,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Bunker" },
+            Note = { "ENTER_BUNKER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.279, 17.959),
             Range = 15.0,
             Zone = 1432,
@@ -736,7 +740,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 307,
             NonSkippableWaypoint = true,
-            Note = { "Vendor and repair if needed" },
+            Note = { "VENDOR_REPAIR_NECESSARY" },
             Coord = { x = -2659.45, y = -4822.45 },
             Range = 5,
             RaidIcon = 1362,
@@ -750,14 +754,16 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             _index = 73,
         },
         {
-            Note = { "Kill Mountain Boars. Loot them for their `Chunks of Boar Meat`", "Collect item 769 only as needed to reach 10 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 769, quantityFromSkill = { skill = "cooking", rank = 10 } } },
+            Note = { "KILL_MOUNTAIN_BOARS_LOOT_CHUNKS_BOAR_MEAT" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 80.583, 36.04),
             Skill = { skill = "cooking", rank = 10, operator = "<" },
             Zone = 1426,
             _index = 74,
         },
         {
-            Note = { "Kill Mountain Boars. Loot them for their `Chunks of Boar Meat`", "Don't go out of your way to farm this now. Simply kill and loot all the boars you're passing by", "Collect item 769 only as needed to reach 50 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 769, quantityFromSkill = { skill = "cooking", rank = 50 } } },
+            Note = { "KILL_MOUNTAIN_BOARS_LOOT_CHUNKS_BOAR_MEAT", "NOT_GO_WAY_FARM_SIMPLY_KILL_LOOT_BOARS_PASSING" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 80.583, 36.04),
             Skill = { skill = "cooking", rank = 50, operator = "<" },
             Zone = 1426,
@@ -766,7 +772,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
             Zone = 1432,
@@ -775,7 +781,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
             Zone = 1432,
@@ -784,7 +790,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
             Zone = 1432,
@@ -793,7 +799,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
             Zone = 1432,
@@ -802,7 +808,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
             Zone = 1432,
@@ -811,7 +817,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
             Zone = 1432,
@@ -820,7 +826,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
             Zone = 1432,
@@ -829,7 +835,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
             Zone = 1432,
@@ -838,7 +844,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
             Zone = 1432,
@@ -847,7 +853,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
             Zone = 1432,
@@ -856,7 +862,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
             Zone = 1432,
@@ -865,7 +871,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
             Zone = 1432,
@@ -874,7 +880,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 5,
             Zone = 1432,
@@ -883,7 +889,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
             Zone = 1432,
@@ -892,7 +898,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
             Zone = 1432,
@@ -901,7 +907,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
             Zone = 1432,
@@ -910,7 +916,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
             Zone = 1432,
@@ -919,7 +925,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
             Zone = 1432,
@@ -928,7 +934,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
             Zone = 1432,
@@ -937,7 +943,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
             Zone = 1432,
@@ -946,7 +952,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
             Zone = 1432,
@@ -955,7 +961,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
             Zone = 1432,
@@ -964,7 +970,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
             Zone = 1432,
@@ -973,7 +979,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 5,
             Zone = 1432,
@@ -982,7 +988,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
             Zone = 1432,
@@ -991,7 +997,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
             Zone = 1432,
@@ -1000,7 +1006,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
             Zone = 1432,
@@ -1009,7 +1015,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
             Zone = 1432,
@@ -1018,7 +1024,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
             Zone = 1432,
@@ -1027,7 +1033,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
             Zone = 1432,
@@ -1036,7 +1042,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
             Zone = 1432,
@@ -1045,7 +1051,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
             Zone = 1432,
@@ -1054,7 +1060,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
             Zone = 1432,
@@ -1063,7 +1069,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
             Zone = 1432,
@@ -1071,20 +1077,20 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             LootItems = { { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Zone = 1432,
             _index = 110,
         },
         {
             Done = { 416 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             _index = 111,
         },
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Stoutlager Inn" },
+            Note = { "ENTER_STOUTLAGER_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10.0,
             Zone = 1432,
@@ -1093,7 +1099,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Stoutlager Inn" },
+            Note = { "ENTER_STOUTLAGER_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12.0,
             Zone = 1432,
@@ -1101,13 +1107,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             LootItems = { { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             IsQuestOnQuest = 418,
             _index = 114,
         },
         {
             LootItems = { { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             IsQuestOnQuest = 418,
             _index = 115,
         },
@@ -1119,7 +1125,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             BuyMerchant = { { itemID = 4470, quantity = 1 }, { itemID = 4471, quantity = 1 } },
-            Note = { "This is used to make `Basic Campfires` on Boats to level your `Cooking` skill without losing time", "YOU_NEED_50_COOKING" },
+            Note = { "MAKE_CAMPFIRES_ON_BOATS_TO_LEVEL_COOKING", "YOU_NEED_50_COOKING" },
             Coord = { x = -2952.46, y = -5381.87 },
             AnyOf = { { Race = "Dwarf", AllOf = { { Skill = { skill = "cooking", rank = 50, operator = "<" } }, { AnyOf = { { ItemCount = { itemID = 4470, count = 1, operator = "<" } }, { ItemCount = { itemID = 4471, count = 1, operator = "<" } } } } } }, { Race = "Gnome", AllOf = { { Skill = { skill = "cooking", rank = 50, operator = "<" } }, { AnyOf = { { ItemCount = { itemID = 4470, count = 1, operator = "<" } }, { ItemCount = { itemID = 4471, count = 1, operator = "<" } } } } } } },
             Zone = 1432,
@@ -1128,7 +1134,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
             Zone = 1432,
@@ -1137,7 +1143,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
             Zone = 1432,
@@ -1146,7 +1152,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
             Zone = 1432,
@@ -1155,7 +1161,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
             Zone = 1432,
@@ -1164,7 +1170,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
             Zone = 1432,
@@ -1173,7 +1179,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
             Zone = 1432,
@@ -1181,14 +1187,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Done = { 416 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Zone = 1432,
             _index = 124,
         },
         {
             Qpart = { [224] = { 1, 2 } },
-            Note = { "Be careful as Stonesplinter Scouts cast `Shoot` (Ranged Cast: Deals 14-20 damage)", "This is a hyperspawn area. You should not need to move from here" },
+            Note = { "CAREFUL_STONESPLINTER_SCOUTS_CAST_SHOOT_RANGED", "HYPERSPAWN_AREA_NOT_MOVE" },
             Coord = { x = -2729.4, y = -5534.96 },
             Range = 30,
             AnyOf = { { Race = "Dwarf", AllOf = { { IsQuestOnQuest = 267 }, { IsQuestOnQuest = 224 } } }, { Race = "Gnome", AllOf = { { IsQuestOnQuest = 267 }, { IsQuestOnQuest = 224 } } } },
@@ -1197,7 +1203,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Qpart = { [267] = { 1 } },
-            Note = { "Be careful as Stonesplinter Scouts cast `Shoot` (Ranged Cast: Deals 14-20 damage)", "This is a hyperspawn area. You should not need to move from here" },
+            Note = { "CAREFUL_STONESPLINTER_SCOUTS_CAST_SHOOT_RANGED", "HYPERSPAWN_AREA_NOT_MOVE" },
             Coord = { x = -2729.4, y = -5534.96 },
             Range = 30,
             AnyOf = { { Race = "Dwarf", AllOf = { { IsQuestOnQuest = 267 }, { IsQuestOnQuest = 224 } } }, { Race = "Gnome", AllOf = { { IsQuestOnQuest = 267 }, { IsQuestOnQuest = 224 } } } },
@@ -1206,7 +1212,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Grind = { level = 13, xp = 9600 },
-            Note = { "Grind to 9600+/11400xp", "If you're planning on running the Hall of Thanes dungeon in Ironforge later, skip this step" },
+            Note = { "PLANNING_RUNNING_HALL_THANES_DUNGEON_IRONFORGE" },
             Coord = { x = -2729.4, y = -5534.96 },
             Zone = 1432,
             _index = 127,
@@ -1214,7 +1220,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94466,
             NonSkippableWaypoint = true,
-            Note = { "Go up the mountain trail" },
+            Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2915.5, y = -5576.5 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -1225,7 +1231,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94466,
             NonSkippableWaypoint = true,
-            Note = { "Go up the mountain trail" },
+            Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2874.5, y = -5608.6 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -1236,7 +1242,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94466,
             NonSkippableWaypoint = true,
-            Note = { "Go up the mountain trail" },
+            Note = { "FOLLOW_THE_PATH_UP_THE_MOUNTAIN" },
             Coord = { x = -2846.1, y = -5657.6 },
             Range = 15.0,
             Class = "SHAMAN",
@@ -1264,7 +1270,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             UseItem = { itemID = 6636, itemSpellID = 8898 },
-            Note = { "CONTINUE_UP_TRAIL", "Use the `Fire Sapta` next to the rock statue to summon the Minor Manifestation of Fire" },
+            Note = { "CONTINUE_UP_TRAIL", "USE_FIRE_SAPTA_ROCK_STATUE_SUMMON_MINOR" },
             Coord = { x = -2873.8, y = -5672.5 },
             Class = "SHAMAN",
             Race = "Dwarf",
@@ -1282,7 +1288,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Done = { 94467 },
-            Note = { "Click the Brazier of the Dormant Flame" },
+            Note = { "CLICK_BRAZIER_DORMANT_FLAME" },
             Coord = { x = -2870.7, y = -5674.6 },
             Class = "SHAMAN",
             Race = "Dwarf",
@@ -1291,7 +1297,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             PickUp = { 94468 },
-            Note = { "Click the Brazier of the Dormant Flame" },
+            Note = { "CLICK_BRAZIER_DORMANT_FLAME" },
             Coord = { x = -2870.7, y = -5674.6 },
             Class = "SHAMAN",
             Race = "Dwarf",
@@ -1337,7 +1343,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94468,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS" },
             Coord = { x = -2521.9, y = -5631.0 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -1348,7 +1354,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 94468,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS" },
             Coord = { x = -2437.6, y = -5549.7 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -1388,7 +1394,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 86614,
             NonSkippableWaypoint = true,
-            Note = { "Carefully drop down the mountain into Loch Modan" },
+            Note = { "CAREFULLY_DROP_MOUNTAIN_LOCH_MODAN" },
             Coord = { x = -2594.1, y = -5335.9 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -1400,7 +1406,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 86614,
             NonSkippableWaypoint = true,
-            Note = { "Carefully drop down the mountain into Loch Modan" },
+            Note = { "CAREFULLY_DROP_MOUNTAIN_LOCH_MODAN" },
             Coord = { x = -2641.0, y = -5375.7 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -1411,7 +1417,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             PickUp = { 86614 },
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE: This can spawn in one of many different locations. Swim around until you see the exclamation point on your minimap", "Be careful of high level Young Threshadon" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3319.12905, y = -5351.077 },
             Range = 30,
             MinLevel = 13,
@@ -1525,7 +1531,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             UseItem = { itemID = 6866, itemSpellID = 8593 },
-            Note = { "Use the `Symbol of Life` on Narm Faulk on the ground" },
+            Note = { "USE_SYMBOL_LIFE_NARM_FAULK_GROUND" },
             Coord = { x = -2055.23, y = -5784.31 },
             Class = "PALADIN",
             Race = "Dwarf",
@@ -1561,7 +1567,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             UseHS = 1784,
-            Note = { "Hearth to Ironforge" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             Class = "PALADIN",
             IsQuestOnQuest = 1784,
@@ -1738,7 +1743,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 36,
             NonSkippableWaypoint = true,
-            Note = { "Enter Jubahl Corpseseeker's house" },
+            Note = { "ENTER_JUBAHL_CORPSESEEKER_HOUSE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 53.164, 7.037),
             Range = 10.0,
             Class = "WARLOCK",
@@ -1749,7 +1754,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         {
             Waypoint = 36,
             NonSkippableWaypoint = true,
-            Note = { "Buy `Grimoire of Consume Shadows (Rank 1)` and `Grimoire of Sacrifice (Rank 1)` if you can afford it" },
+            Note = { "BUY_GRIMOIRES_CONSUME_SHADOWS_SACRIFICE_RANK_1" },
             Coord = { x = -1130.26, y = -4601.27 },
             Range = 5,
             RaidIcon = 6382,
@@ -1806,7 +1811,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Tram = true,
-            Note = { "Level your `First Aid` while waiting for the Tram to Stormwind City if needed" },
+            Note = { "LEVEL_FIRST_AID_WAITING_TRAM_STORMWIND_CITY" },
             Coord = { x = -1330.28, y = -4840.43 },
             Range = 5,
             ZoneStepTrigger = { x = 522, y = -8352.101, mapID = 1453, Range = 15 },
@@ -1825,7 +1830,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             Tram = true,
-            Note = { "Level your `First Aid` while waiting for the Tram to Stormwind City if needed", "You will need your `First Aid` to be 80 for a quest at level 24" },
+            Note = { "LEVEL_FIRST_AID_WAITING_TRAM_STORMWIND_CITY", "FIRST_AID_80_NEEDED_QUEST_LEVEL_24" },
             Coord = { x = -1330.28, y = -4840.43 },
             Range = 5,
             ZoneStepTrigger = { x = 522, y = -8352.101, mapID = 1453, Range = 15 },
@@ -1863,7 +1868,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
         },
         {
             BuyMerchant = { { itemID = 11288, quantity = 1 } },
-            Note = { "If you don't want to or can't do this, skip this step" },
+            Note = { "NOT_WANT_CANNOT_SKIP_STEP" },
             Coord = { x = 660.28, y = -8814.55 },
             Class = { "MAGE", "PRIEST", "WARLOCK" },
             EquippedItemStat = { slot = 18, stat = "ITEM_MOD_DAMAGE_PER_SECOND_SHORT", operator = "<", value = 17.5, precision = 1, allowMissing = true },

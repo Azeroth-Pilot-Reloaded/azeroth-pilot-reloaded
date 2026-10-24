@@ -1138,7 +1138,6 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         },
         {
             UseHS = 78570,
-            ExtraLineText = "HEARTHSTONE_TO_STONELIGHT_REST",
             Zone = 2248,
             _index = 159,
         },
@@ -1679,7 +1678,6 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         },
         {
             UseHS = 78545,
-            ExtraLineText = "HEARTHSTONE_TO_STONELIGHT_REST",
             Zone = 2248,
             _index = 238,
         },
@@ -2822,7 +2820,6 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         },
         {
             UseHS = 78545,
-            ExtraLineText = "HEARTHSTONE_TO_STONELIGHT_REST",
             Zone = 2248,
             _index = 152,
         },
@@ -4254,7 +4251,6 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         },
         {
             UseHS = 78465,
-            ExtraLineText = "HEARTHSTONE_TO_STONELIGHT_REST",
             Zone = 2248,
             _index = 195,
         },

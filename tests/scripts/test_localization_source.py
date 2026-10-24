@@ -119,6 +119,29 @@ label = "Plain route label",
         self.assertEqual({entry["key"] for entry in findings if entry["severity"] == "error"},
                          {"MISSING_SYMBOL", "Go inside", "Plain route label"})
 
+    def test_creature_names_and_drop_quest_data_remain_raw(self):
+        self.write("Routes/Test.lua", '''local steps = {
+{ DroppableQuest = { MobId=12, Qid=34, Text="Named Creature", Note="Raw drop data" },
+  Note="VISIBLE_NOTE", ExtraLineText="VISIBLE_EXTRA" },
+{ TameBeast = { npcID=56, Text="Named Pet" }, Note="PET_INSTRUCTION" },
+{ KillNPC = { npcID=78, Text="Named Boss" } },
+{ LearnSkill = { Text="TRAIN_INSTRUCTION", spellID=90 } },
+{ ["DroppableQuest"] = { Text="Another Creature" }, Note="AFTER_DROP" },
+}''')
+        keys = {entry["key"] for entry in self.scan()["references"]}
+        self.assertEqual(keys, {"VISIBLE_NOTE", "VISIBLE_EXTRA", "PET_INSTRUCTION",
+                                "TRAIN_INSTRUCTION", "AFTER_DROP"})
+
+    def test_delve_scenario_labels_are_usage_but_helper_parameters_are_not(self):
+        self.write("Routes/delves.lua", '''local function DelveScenarioBlock(id, index, label, steps)
+return {label=label, steps=steps}
+end
+DelveScenarioBlock(123, 1, "SCENARIO_LABEL", {{Note="STEP_NOTE"}})
+-- DelveScenarioBlock(456, 2, "COMMENTED_LABEL", {})
+''')
+        self.assertEqual({entry["key"] for entry in self.scan()["references"]},
+                         {"SCENARIO_LABEL", "STEP_NOTE"})
+
     def test_hardcoded_fallbacks_are_errors_with_lookup_key_and_location(self):
         self.write("APR-Core/Test.lua", '''local a = L["BRACKET"] or "English label"
 local b = L.DOTTED or 'English description'

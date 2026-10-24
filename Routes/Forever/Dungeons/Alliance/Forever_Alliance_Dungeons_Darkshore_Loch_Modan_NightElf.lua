@@ -83,7 +83,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 1141,
             NonSkippableWaypoint = true,
-            Note = { "Go up the ramps" },
+            Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.826, 44.15),
             Range = 5.0,
             Zone = 1439,
@@ -92,7 +92,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 1141,
             NonSkippableWaypoint = true,
-            Note = { "Go up the ramps" },
+            Note = { "UP_RAMP" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.688, 43.952),
             Range = 8.0,
             Zone = 1439,
@@ -138,7 +138,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             PickUp = { 98025 },
-            Note = { "Click the Wanted Poster" },
+            Note = { "CLICK_WANTED_POSTER" },
             Coord = { x = 503.1, y = 6402.1 },
             Zone = 1439,
             _index = 12,
@@ -183,16 +183,16 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Qpart = { [3524] = { 1 } },
             Fillers = { [983] = { 1 } },
-            Note = { "Open the Beached Sea Creature. Loot it for the Sea Creature Bones" },
+            Note = { "OPEN_BEACHED_SEA_CREATURE_LOOT_SEA_CREATURE_BONES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.371, 50.92),
             Zone = 1439,
             _index = 18,
         },
         {
-            Note = { "LEVEL_HERBALISM_15_ABLE_HERB_EARTHROOT_IMPORTANT", "RATHER_PURCHASE_5_EARTHROOT_AUCTION_HOUSE_LATER", "Optional: collect item 2449 (quantity 5)" },
-            Fillers = { [983] = { 1 } },
+            LootItems = { { itemID = 2449, quantity = 5, questID = 6123 } },
+            Fillers = { [983] = { 1 }, [6123] = { 1 } },
+            Note = { "LEVEL_HERBALISM_15_ABLE_HERB_EARTHROOT_IMPORTANT", "RATHER_PURCHASE_5_EARTHROOT_AUCTION_HOUSE_LATER" },
             Class = "DRUID",
-            Skill = { skill = "herbalism", rank = 15, operator = "<" },
             _index = 19,
         },
         {
@@ -206,7 +206,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Grind = { level = 11, xp = 7300 },
             Fillers = { [983] = { 1 }, [2118] = { 1 } },
-            Note = { "Grind to 7300+/8800xp" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.109, 50.3145),
             Range = 30,
             Button = { ["2118-1"] = 7586 },
@@ -216,7 +215,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Qpart = { [2118] = { 1 } },
             Fillers = { [983] = { 1 } },
-            Note = { "Use `Tharnariun's Hope` on a Rabid Thistle Bear", "You can waste the trap and make the quest impossible to complete! If it happens to you you need to return to the questgiver and ask for another trap" },
+            Note = { "USE_THARNARIUN_HOPE_RABID_THISTLE_BEAR", "WASTE_TRAP_MAKE_QUEST_IMPOSSIBLE_COMPLETE_HAPPENS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 38.583, 55.978),
             Range = 30,
             Button = { ["2118-1"] = 7586 },
@@ -225,7 +224,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [983] = { 1 } },
-            Note = { "You may need to go in the water for them" },
+            Note = { "GO_WATER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.109, 50.3145),
             Range = 30,
             IsQuestOnQuest = 983,
@@ -239,14 +238,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Done = { 983 },
-            Note = { "Click the Buzzbox 827 on the ground" },
+            Note = { "CLICK_BUZZBOX_827_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.634, 46.25),
             Zone = 1439,
             _index = 25,
         },
         {
             PickUp = { 1001 },
-            Note = { "Click the Buzzbox 827 on the ground" },
+            Note = { "CLICK_BUZZBOX_827_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 36.634, 46.25),
             Zone = 1439,
             _index = 26,
@@ -274,7 +273,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 6343,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Moonkin Stone cave" },
+            Note = { "ENTER_MOONKIN_STONE_CAVE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.126, 45.593),
             Range = 15.0,
             Class = "DRUID",
@@ -283,7 +282,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             UseItem = { itemID = 15208, itemSpellID = 18974 },
-            Note = { "Use the `Cenarion Moondust` at the Moonkin Stone inside the cave to summon Lunaclaw at the entrance of the cave" },
+            Note = { "USE_CENARION_MOONDUST_MOONKIN_STONE_INSIDE_CAVE" },
             Coord = { x = 92.42, y = 6325.98 },
             SpellETA = { seconds = 4.0, spellID = 18974 },
             Class = "DRUID",
@@ -302,7 +301,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [4811] = { 1 } },
-            Note = { "Travel up to the Mysterious Red Crystal", "Be careful of the two group of 2 Raging Moonkins west of the Mysterious Red Crystal as the duos closest to each other are leashed together" },
+            Note = { "TRAVEL_MYSTERIOUS_RED_CRYSTAL", "CAREFUL_2_GROUPS_2_RAGING_MOONKINS_WEST" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 47.314, 48.676),
             Class = "DRUID",
             IsQuestOnQuest = 4811,
@@ -400,7 +399,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [4812] = { 1 } },
-            Note = { "Use the `Empty Water Tube` at the Auberdine moonwell" },
+            Note = { "FILL_EMPTY_WATER_TUBE_MOONWELL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.767, 44.001),
             Button = { ["4812-1"] = 14338 },
             Class = "DRUID",
@@ -433,7 +432,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 4681,
             NonSkippableWaypoint = true,
-            Note = { "Travel to the end of the dock, then jump into the water" },
+            Note = { "TRAVEL_END_DOCK_JUMP_WATER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 32.432, 43.744),
             Range = 15.0,
             Zone = 1439,
@@ -442,7 +441,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Qpart = { [4681] = { 1 } },
             Fillers = { [1001] = { 1 } },
-            Note = { "Open the Skeletal Sea Turtle. Loot it for the Sea Turtle Remains" },
+            Note = { "OPEN_SKELETAL_SEA_TURTLE_LOOT_SEA_TURTLE_REMAINS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 31.841, 46.304),
             Zone = 1439,
             _index = 50,
@@ -485,7 +484,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [2118] = { 1 } },
-            Note = { "Use `Tharnariun's Hope` on a Rabid Thistle Bear", "You can waste the trap and make the quest impossible to complete! If it happens to you you need to return to the questgiver and ask for another trap" },
+            Note = { "USE_THARNARIUN_HOPE_RABID_THISTLE_BEAR", "WASTE_TRAP_MAKE_QUEST_IMPOSSIBLE_COMPLETE_HAPPENS" },
             Button = { ["2118-1"] = 7586 },
             IsQuestOnQuest = 2118,
             _index = 56,
@@ -525,7 +524,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 2178,
             NonSkippableWaypoint = true,
-            Note = { "This will allow you to make `Rough Sharpening Stones` which increase your melee damage by 2", "If you don't want to do this, skip this step" },
+            Note = { "ALLOW_MAKE_ROUGH_SHARPENING_STONES_INCREASE_MELEE", "NOT_WANT_SKIP_STEP" },
             Coord = { x = 436.36, y = 6542.65 },
             Range = 5,
             Class = { "ROGUE", "WARRIOR" },
@@ -534,7 +533,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LearnProfession = 2575,
-            Note = { "This will allow you to make `Rough Sharpening Stones` which increase your melee damage by 2", "If you don't want to do this, skip this step" },
+            Note = { "ALLOW_MAKE_ROUGH_SHARPENING_STONES_INCREASE_MELEE", "NOT_WANT_SKIP_STEP" },
             Coord = { x = 440.16, y = 6545.84 },
             SkipForPrimaryProfessions = 2,
             Class = { "ROGUE", "WARRIOR" },
@@ -544,7 +543,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LearnProfession = 2018,
-            Note = { "This will allow you to make `Rough Sharpening Stones` which increase your melee damage by 2", "If you don't want to do this, skip this step" },
+            Note = { "ALLOW_MAKE_ROUGH_SHARPENING_STONES_INCREASE_MELEE", "NOT_WANT_SKIP_STEP" },
             Coord = { x = 440.16, y = 6545.84 },
             SkipForPrimaryProfessions = 2,
             Class = { "ROGUE", "WARRIOR" },
@@ -577,7 +576,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             IsQuestOnQuest = 2178,
             ItemCount = { operator = ">=", count = 5, itemID = 5469 },
@@ -607,7 +606,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 4761,
             NonSkippableWaypoint = true,
-            Note = { "Buy as many `Small Brown Pouches` or `Brown Leather Satchels` as you need from him" },
+            Note = { "BUY_MANY_SMALL_BROWN_POUCHES_BROWN_LEATHER" },
             Coord = { x = 488.69, y = 6564.83 },
             Range = 5,
             RaidIcon = 4182,
@@ -618,7 +617,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 4761,
             NonSkippableWaypoint = true,
-            Note = { "Buy as many `Small Brown Pouches` or `Brown Leather Satchels` as you need from him", "Buy `Sharp Arrows` or `Heavy Shots` from him until your Quiver/Ammo Pouch is full" },
+            Note = { "BUY_MANY_SMALL_BROWN_POUCHES_BROWN_LEATHER", "BUY_SHARP_ARROWS_HEAVY_SHOTS_QUIVER_AMMO_POUCH" },
             Coord = { x = 488.69, y = 6564.83 },
             Range = 5,
             RaidIcon = 4182,
@@ -667,12 +666,12 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 78,
         },
         {
-            Note = { "PRESS_ESCAPE_GO_OPTIONS_CONTROLS", "Check \"Enable Interact Key\" and bind the \"Interact with Target\" option to a key" },
+            Note = { "PRESS_ESCAPE_GO_OPTIONS_CONTROLS", "CHECK_ENABLE_INTERACT_KEY_BIND_INTERACT_TARGET" },
             _index = 79,
         },
         {
             Qpart = { [982] = { 1 } },
-            Note = { "AWARE_BREATH_METER", "Swim underwater to the outside of the back of the boat", "On the arrow location, press your \"Interact with Target\" keybind to loot the Silver Dawning's Lockbox from outside the boat", "If you don't want to do this, swim underwater into the bottom floor of the boat then loot the Silver Dawning's Lockbox inside" },
+            Note = { "AWARE_BREATH_METER", "SWIM_UNDERWATER_OUTSIDE_BACK_BOAT", "LOOT_LOCKBOX_INTERACT_KEY", "SWIM_BOTTOM_BOAT_LOOT_SILVER_DAWNING_LOCKBOX" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 38.213, 28.754),
             IsQuestOnQuest = 982,
             Zone = 1439,
@@ -680,7 +679,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [982] = { 2 } },
-            Note = { "AWARE_BREATH_METER", "Swim underwater to the outside of the back of the boat", "On the arrow location, press your \"Interact with Target\" keybind to loot the Mist Veil's Lockbox from outside the boat", "If you don't want to do this, swim underwater into the bottom floor of the boat then loot the Mist Veil's Lockbox inside" },
+            Note = { "AWARE_BREATH_METER", "SWIM_UNDERWATER_OUTSIDE_BACK_BOAT", "LOOT_LOCKBOX_INTERACT_KEY", "SWIM_BOTTOM_BOAT_LOOT_MIST_VEIL_LOCKBOX" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 39.581, 27.487),
             IsQuestOnQuest = 982,
             Zone = 1439,
@@ -696,7 +695,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             PickUp = { 4723 },
-            Note = { "Click the Beached Sea Creature" },
+            Note = { "CLICK_BEACHED_SEA_CREATURE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 41.901, 31.339),
             IsQuestOnQuest = 1001,
             Zone = 1439,
@@ -704,7 +703,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             PickUp = { 4723 },
-            Note = { "Click the Beached Sea Creature" },
+            Note = { "CLICK_BEACHED_SEA_CREATURE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 41.901, 31.339),
             IsQuestOnQuest = 982,
             Zone = 1439,
@@ -712,7 +711,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Done = { 1001 },
-            Note = { "Click the Buzzbox 411 on the ground" },
+            Note = { "CLICK_BUZZBOX_411_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 41.96, 28.616),
             IsQuestOnQuest = 1001,
             IsQuestReadyForTurnIn = 1001,
@@ -722,7 +721,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             PickUp = { 1002 },
-            Note = { "Click the Buzzbox 411 on the ground" },
+            Note = { "CLICK_BUZZBOX_411_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 41.96, 28.616),
             IsQuestOnQuest = 1001,
             IsQuestReadyForTurnIn = 1001,
@@ -732,7 +731,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             PickUp = { 1002 },
-            Note = { "Click the Buzzbox 411 on the ground" },
+            Note = { "CLICK_BUZZBOX_411_GROUND" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 41.96, 28.616),
             IsQuestCompleted = 1001,
             Zone = 1439,
@@ -815,7 +814,8 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 96,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 955" },
+            LeaveQuest = 955,
+            IsQuestOnQuest = 955,
             IsQuestUncompleted = 955,
             _index = 97,
         },
@@ -855,40 +855,39 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Grind = 13,
-            Note = { "Grind to level 13" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 45.933, 37.931),
             Range = 30,
             Zone = 1439,
             _index = 102,
         },
         {
-            Note = { "Kill Moonkin. Loot them for their `Small Eggs`", "This will be used to level your `Cooking` to 10 later", "Collect item 6889 only as needed to reach 10 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 6889, quantityFromSkill = { skill = "cooking", rank = 10 } } },
+            Note = { "KILL_MOONKIN_LOOT_SMALL_EGGS", "USED_LEVEL_COOKING_10" },
             HasSpell = 2550,
             Skill = { skill = "cooking", rank = 10, operator = "<" },
             _index = 103,
         },
         {
-            Note = { "Kill Moonkin. Loot them for their `Small Eggs`", "This will be used to level your `Cooking` to 50 later", "Don't go out of your way to farm this now. Just remember to hold onto the eggs and start thinking how many skillups you still need to reach 50 cooking", "Collect item 6889 only as needed to reach 50 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 6889, quantityFromSkill = { skill = "cooking", rank = 50 } } },
+            Note = { "KILL_MOONKIN_LOOT_SMALL_EGGS", "USED_LEVEL_COOKING_50", "NOT_GO_WAY_FARM_REMEMBER_HOLD_EGGS_START_THINKING" },
             AllOf = { { Skill = { skill = "cooking", rank = 50, operator = "<" } }, { Skill = { skill = "cooking", rank = 10, operator = ">=" } } },
             _index = 104,
         },
         {
             Qpart = { [4811] = { 1 } },
-            Note = { "Travel up to the Mysterious Red Crystal", "Be careful of the two group of 2 Raging Moonkins west of the Mysterious Red Crystal as the duos closest to each other are leashed together" },
+            Note = { "TRAVEL_MYSTERIOUS_RED_CRYSTAL", "CAREFUL_2_GROUPS_2_RAGING_MOONKINS_WEST" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 47.314, 48.676),
             Zone = 1439,
             _index = 105,
         },
         {
             UseHS = 4811,
-            Note = { "Hearth to Auberdine" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             _index = 106,
         },
         {
             UseHS = 4811,
-            Note = { "Hearth to Auberdine" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             Class = "DRUID",
             IsQuestCompleted = 6001,
@@ -971,7 +970,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [4812] = { 1 } },
-            Note = { "Use the `Empty Water Tube` at the Auberdine moonwell" },
+            Note = { "FILL_EMPTY_WATER_TUBE_MOONWELL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.767, 44.001),
             Button = { ["4812-1"] = 14338 },
             IsQuestCompleted = 4811,
@@ -979,21 +978,23 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 118,
         },
         {
-            Note = { "Kill Moonkin. Loot them for their `Small Eggs`", "This will be used to level your `Cooking` to 10 later", "Collect item 6889 only as needed to reach 10 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 6889, quantityFromSkill = { skill = "cooking", rank = 10 } } },
+            Note = { "KILL_MOONKIN_LOOT_SMALL_EGGS", "USED_LEVEL_COOKING_10" },
             HasSpell = 2550,
             IsQuestCompleted = 4811,
             Skill = { skill = "cooking", rank = 10, operator = "<" },
             _index = 119,
         },
         {
-            Note = { "Kill Moonkin. Loot them for their `Small Eggs`", "This will be used to level your `Cooking` to 50 later", "Don't go out of your way to farm this now. Just remember to hold onto the eggs and start thinking how many skillups you still need to reach 50 cooking", "Collect item 6889 only as needed to reach 50 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 6889, quantityFromSkill = { skill = "cooking", rank = 50 } } },
+            Note = { "KILL_MOONKIN_LOOT_SMALL_EGGS", "USED_LEVEL_COOKING_50", "NOT_GO_WAY_FARM_REMEMBER_HOLD_EGGS_START_THINKING" },
             AllOf = { { Skill = { skill = "cooking", rank = 50, operator = "<" } }, { Skill = { skill = "cooking", rank = 10, operator = ">=" } } },
             IsQuestCompleted = 4811,
             _index = 120,
         },
         {
             Done = { 4812 },
-            Note = { "Click the Mysterious Red Crystal", "Be careful of the two group of 2 Raging Moonkins west of the Mysterious Red Crystal as the duos closest to each other are leashed together" },
+            Note = { "CLICK_MYSTERIOUS_RED_CRYSTAL", "CAREFUL_2_GROUPS_2_RAGING_MOONKINS_WEST" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 47.314, 48.676),
             IsQuestCompleted = 4811,
             Zone = 1439,
@@ -1001,14 +1002,15 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             PickUp = { 4813 },
-            Note = { "Click the Mysterious Red Crystal", "Be careful of the two group of 2 Raging Moonkins west of the Mysterious Red Crystal as the duos closest to each other are leashed together" },
+            Note = { "CLICK_MYSTERIOUS_RED_CRYSTAL", "CAREFUL_2_GROUPS_2_RAGING_MOONKINS_WEST" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 47.314, 48.676),
             IsQuestCompleted = 4811,
             Zone = 1439,
             _index = 122,
         },
         {
-            Note = { "Kill Moonkin. Loot them for their `Small Eggs`", "This will be used to level your `Cooking` to 10 later", "Collect item 6889 only as needed to reach 10 cooking; the amount decreases with your current skill" },
+            LootItems = { { itemID = 6889, quantityFromSkill = { skill = "cooking", rank = 10 } } },
+            Note = { "KILL_MOONKIN_LOOT_SMALL_EGGS", "USED_LEVEL_COOKING_10" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 44.5775, 49.3685),
             Range = 30,
             HasSpell = 2550,
@@ -1019,7 +1021,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             UseHS = 4813,
-            Note = { "Hearth to Auberdine" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             Class = { "PRIEST", "ROGUE", "WARRIOR" },
             IsQuestCompleted = 4811,
@@ -1027,7 +1028,6 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             UseHS = 4813,
-            Note = { "Hearth to Auberdine" },
             SkipIfCooldown = { { itemID = 6948, operator = ">", seconds = 2, once = true } },
             AllOf = { { IsQuestCompleted = 4811 }, { IsQuestCompleted = 6001 } },
             Class = "DRUID",
@@ -1072,7 +1072,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             PickUp = { 4722 },
-            Note = { "Click the Beached Sea Turtle" },
+            Note = { "CLICK_BEACHED_SEA_TURTLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.105, 62.167),
             Class = { "DRUID", "PRIEST", "ROGUE", "WARRIOR" },
             IsQuestCompleted = 4811,
@@ -1099,7 +1099,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Qpart = { [953] = { 2 } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
-            Note = { "Click the The Fall of Ameth'Aran" },
+            Note = { "CLICK_FALL_AMETH_ARAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.652, 63.145),
             IsQuestOnQuest = 953,
             Zone = 1439,
@@ -1108,7 +1108,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Qpart = { [957] = { 1 } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
-            Note = { "Click the Ancient Flame" },
+            Note = { "CLICK_ANCIENT_FLAME" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 42.373, 61.815),
             IsQuestOnQuest = 957,
             Zone = 1439,
@@ -1117,7 +1117,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Qpart = { [953] = { 1 } },
             Fillers = { [963] = { 1 }, [958] = { 1 } },
-            Note = { "Click the The Lay of Ameth'Aran" },
+            Note = { "CLICK_LAY_AMETH_ARAN" },
             Coord = { x = 105.52, y = 5770.1 },
             IsQuestOnQuest = 953,
             Zone = 1439,
@@ -1160,7 +1160,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             PickUp = { 4722 },
             Fillers = { [1002] = { 1 }, [2138] = { 1 } },
-            Note = { "Click the Beached Sea Turtle" },
+            Note = { "CLICK_BEACHED_SEA_TURTLE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.105, 62.167),
             Zone = 1439,
             _index = 140,
@@ -1264,7 +1264,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [4812] = { 1 } },
-            Note = { "Use the `Empty Water Tube` at the Auberdine moonwell" },
+            Note = { "FILL_EMPTY_WATER_TUBE_MOONWELL" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.767, 44.001),
             Button = { ["4812-1"] = 14338 },
             Zone = 1439,
@@ -1332,8 +1332,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 161,
         },
         {
-            BuyMerchant = { { itemID = 2678, quantity = 50 }, { itemID = 6889, quantity = 50 } },
-            Note = { "Buy `Mild Spices` from him until you have `Mild Spices` equal or more than the amount of `Small Eggs` that you currently have", "Collect item 2678 only as needed to reach 50 cooking; the amount decreases with your current skill", "Collect item 6889 only as needed to reach 50 cooking; the amount decreases with your current skill" },
+            BuyMerchant = { { itemID = 2678, quantityFromItemID = 6889, targetStock = true } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 38.107, 41.165),
             MerchantNPC = 6301,
             RaidIcon = 6301,
@@ -1367,7 +1366,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 2178,
             NonSkippableWaypoint = true,
-            Note = { "Start `Cooking` `Herb Baked Eggs`. Do this until your `Cooking` has reached at least level 10", "CONTINUE_LEVELING_COOKING_RUN_OUT_SMALL_EGGS", "There is a quest in Duskwood later requiring your `Cooking` to be 50 or higher. You can also cook this when you get on the boat soon", "Skip this step once you've made all `Herb Baked Eggs`" },
+            Note = { "START_COOKING_HERB_BAKED_EGGS_COOKING_REACHED", "CONTINUE_LEVELING_COOKING_RUN_OUT_SMALL_EGGS", "QUEST_DUSKWOOD_REQUIRING_COOKING_50_HIGHER_COOK", "SKIP_STEP_MADE_HERB_BAKED_EGGS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 37.511, 41.67),
             Range = 5,
             ItemCount = { operator = ">=", count = 1, itemID = 6889 },
@@ -1386,7 +1385,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             IsQuestOnQuest = 2178,
@@ -1397,7 +1396,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             IsQuestOnQuest = 2178,
@@ -1408,7 +1407,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             IsQuestOnQuest = 2178,
             ItemCount = { operator = ">=", count = 5, itemID = 5469 },
@@ -1417,7 +1416,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             IsQuestOnQuest = 2178,
             ItemCount = { operator = ">=", count = 5, itemID = 5469 },
@@ -1426,7 +1425,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Class = { "HUNTER", "PRIEST", "ROGUE", "WARRIOR" },
             IsQuestOnQuest = 2178,
             ItemCount = { operator = ">=", count = 5, itemID = 5469 },
@@ -1444,7 +1443,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Class = "DRUID",
             IsQuestOnQuest = 2178,
@@ -1455,7 +1454,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1439, 43.509, 33.207),
             Class = "DRUID",
             IsQuestOnQuest = 2178,
@@ -1466,7 +1465,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Class = "DRUID",
             IsQuestOnQuest = 2178,
             ItemCount = { operator = ">=", count = 5, itemID = 5469 },
@@ -1475,7 +1474,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Class = "DRUID",
             IsQuestOnQuest = 2178,
             ItemCount = { operator = ">=", count = 5, itemID = 5469 },
@@ -1484,7 +1483,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Class = "DRUID",
             IsQuestOnQuest = 2178,
             ItemCount = { operator = ">=", count = 5, itemID = 5469 },
@@ -1493,7 +1492,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 5469, quantity = 5, questID = 2178 } },
-            Note = { "Kill Foreststrider Fledglings. Loot them for their Strider Meat", "Be careful as they `Flee` at <30% health" },
+            Note = { "KILL_FORESTSTRIDER_FLEDGLINGS_LOOT_STRIDER_MEAT", "CAREFUL_FLEE_30_HEALTH" },
             Class = "DRUID",
             IsQuestOnQuest = 2178,
             ItemCount = { operator = ">=", count = 5, itemID = 5469 },
@@ -1553,7 +1552,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 185,
         },
         {
-            Note = { "Level your `First Aid` while waiting for the boat" },
+            Note = { "LEVEL_FIRST_AID_WAITING_BOAT" },
             Boat = true,
             Coord = { x = 929.1, y = 6543.6 },
             Range = 5,
@@ -1596,7 +1595,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 97914,
             NonSkippableWaypoint = true,
-            Note = { "Exit the Stormwind Harbor" },
+            Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 1194.2, y = -8360.9 },
             Range = 10.0,
             Class = { "HUNTER", "ROGUE", "WARRIOR" },
@@ -1606,7 +1605,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 97914,
             NonSkippableWaypoint = true,
-            Note = { "Exit the Stormwind Harbor" },
+            Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 1076.3, y = -8408.5 },
             Range = 15.0,
             Class = { "HUNTER", "ROGUE", "WARRIOR" },
@@ -1616,7 +1615,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 97914,
             NonSkippableWaypoint = true,
-            Note = { "Exit the Stormwind Harbor" },
+            Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 1001.4, y = -8499.7 },
             Range = 10.0,
             Class = { "HUNTER", "ROGUE", "WARRIOR" },
@@ -1626,7 +1625,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 97914,
             NonSkippableWaypoint = true,
-            Note = { "Exit the Stormwind Harbor" },
+            Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 985.5, y = -8471.3 },
             Range = 15.0,
             Class = { "HUNTER", "ROGUE", "WARRIOR" },
@@ -1636,7 +1635,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 97914,
             NonSkippableWaypoint = true,
-            Note = { "Exit the Stormwind Harbor" },
+            Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 960.1, y = -8501.8 },
             Range = 15.0,
             Class = { "HUNTER", "ROGUE", "WARRIOR" },
@@ -1646,7 +1645,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 97914,
             NonSkippableWaypoint = true,
-            Note = { "Exit the Stormwind Harbor" },
+            Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 981.2, y = -8581.8 },
             Range = 15.0,
             Class = { "HUNTER", "ROGUE", "WARRIOR" },
@@ -1656,7 +1655,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 97914,
             NonSkippableWaypoint = true,
-            Note = { "Exit the Stormwind Harbor" },
+            Note = { "EXIT_STORMWIND_HARBOR" },
             Coord = { x = 875.5, y = -8680.9 },
             Range = 10.0,
             Class = { "HUNTER", "ROGUE", "WARRIOR" },
@@ -1757,7 +1756,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 209,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your pet spells" },
+            LearnSkill = { allAvailable = true, npcID = 2879 },
             Coord = { x = 553.22, y = -8422.23 },
             Class = "HUNTER",
             MinLevel = 1,
@@ -1799,7 +1798,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [6661] = { 1 } },
-            Note = { "Use the `Rat Catcher's Flute` on Deeprun Rats in the Deeprun Tram" },
+            Note = { "USE_RAT_CATCHER_FLUTE_DEEPRUN_RATS_DEEPRUN_TRAM" },
             Button = { ["6661-1"] = 17117 },
             _index = 215,
         },
@@ -1824,7 +1823,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 314,
             NonSkippableWaypoint = true,
-            Note = { "Train Thrown and 2h Maces if you didn't earlier" },
+            Note = { "TRAIN_THROWN_2H_MACES_NOT_EARLIER" },
             Coord = { x = -1205.65, y = -5042.12 },
             Range = 5,
             Class = "WARRIOR",
@@ -1833,7 +1832,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LearnSkill = { spellIDs = { 2567, 199 } },
-            Note = { "Train Thrown and 2h Maces if you didn't earlier" },
+            Note = { "TRAIN_THROWN_2H_MACES_NOT_EARLIER" },
             Coord = { x = -1197.27, y = -5041.49 },
             Class = "WARRIOR",
             MinLevel = 1,
@@ -1851,20 +1850,20 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             SetHS = 314,
-            Note = { "If you have a Mage in your group you will set your Hearth to Lakeshire instead" },
+            Note = { "MAGE_GROUP_SET_HEARTH_LAKESHIRE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 18.1, 51.6),
             Zone = 1455,
             _index = 222,
         },
         {
-            Note = { "Travel to Dun Morogh" },
+            Note = { "TRAVEL_DUN_MOROGH" },
             Zone = 1426,
             _index = 223,
         },
         {
             Waypoint = 314,
             NonSkippableWaypoint = true,
-            Note = { "Run up the ramp to Vagash" },
+            Note = { "RUN_RAMP_VAGASH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 59.9, 49.5),
             Range = 30.0,
             Zone = 1426,
@@ -1873,7 +1872,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 314,
             NonSkippableWaypoint = true,
-            Note = { "Run up the ramp to Vagash" },
+            Note = { "RUN_RAMP_VAGASH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 61.2, 47.2),
             Range = 15.0,
             Zone = 1426,
@@ -1882,14 +1881,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 314,
             NonSkippableWaypoint = true,
-            Note = { "Run up the ramp to Vagash" },
+            Note = { "RUN_RAMP_VAGASH" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 62.1, 47.3),
             Range = 20.0,
             Zone = 1426,
             _index = 226,
         },
         {
-            Note = { "Kite Vagash to Rudra Amberstill", "Try to avoid getting close to him or he will cast `Glacial Roar` which stuns you for 3 seconds" },
+            Note = { "KITE_VAGASH_RUDRA_AMBERSTILL", "TRY_AVOID_GETTING_CLOSE_CAST_GLACIAL_ROAR_STUNS_3" },
             _index = 227,
         },
         {
@@ -1900,7 +1899,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [314] = { 1 } },
-            Note = { "Kite Vagash into the Dun Morogh Mountaineer", "Make sure you deal at least 50% damage to him" },
+            Note = { "KITE_VAGASH_DUN_MOROGH_MOUNTAINEER", "MAKE_SURE_DEAL_LEAST_50_DAMAGE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1426, 62.8, 54.6),
             Range = 10.0,
             Zone = 1426,
@@ -1921,7 +1920,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 96392,
             NonSkippableWaypoint = true,
-            Note = { "You can cancel the Farsight once the objective completes" },
+            Note = { "CANCEL_FARSIGHT_OBJECTIVE_COMPLETES" },
             Coord = { x = -1394.24, y = -5797.83 },
             Range = 5,
             IsQuestOnQuest = 96392,
@@ -1929,14 +1928,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 232,
         },
         {
-            Note = { "Press ESCAPE to cancel the Farsight" },
+            Note = { "PRESS_ESCAPE_CANCEL_FARSIGHT" },
             HasAura = 1293681,
             IsQuestOnQuest = 96392,
             _index = 233,
         },
         {
             Done = { 96392 },
-            Note = { "Press ESCAPE to cancel the Farsight" },
+            Note = { "PRESS_ESCAPE_CANCEL_FARSIGHT" },
             Coord = { x = -1394.24, y = -5797.83 },
             Zone = 1426,
             _index = 234,
@@ -1944,7 +1943,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 96391,
             NonSkippableWaypoint = true,
-            Note = { "Kill Dark Iron Spies. Loot them for the `Dark Iron Map`" },
+            Note = { "KILL_DARK_IRON_SPIES_LOOT_DARK_IRON_MAP" },
             Coord = { x = -2009.87, y = -5860.22 },
             Range = 40.0,
             Zone = 1426,
@@ -1981,7 +1980,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 16.494, 58.424),
             Range = 20.0,
             SkipInZones = { 1432 },
@@ -1991,7 +1990,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 19.594, 62.735),
             Range = 20.0,
             SkipInZones = { 1432 },
@@ -2001,7 +2000,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 20.749, 64.326),
             Range = 20.0,
             SkipInZones = { 1432 },
@@ -2011,7 +2010,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.106, 65.007),
             Range = 20.0,
             SkipInZones = { 1432 },
@@ -2021,7 +2020,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.388, 66.357),
             Range = 20.0,
             SkipInZones = { 1432 },
@@ -2031,7 +2030,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Travel through the South Gate Pass into Loch Modan" },
+            Note = { "TRAVEL_SOUTH_GATE_PASS_LOCH_MODAN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 21.498, 67.84),
             Range = 5,
             SkipInZones = { 1432 },
@@ -2047,7 +2046,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = { x = -2635.61, y = -5879.14 },
             Range = 12.0,
             Zone = 1432,
@@ -2056,7 +2055,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = { x = -2645.27, y = -5874.91 },
             Range = 12.0,
             Zone = 1432,
@@ -2065,7 +2064,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = { x = -2631.48, y = -5847.5 },
             Range = 12.0,
             Zone = 1432,
@@ -2079,7 +2078,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [224] = { 1, 2 } },
-            Note = { "Be careful as Stonesplinter Scouts cast `Shoot` (Ranged Cast: Deals 14-20 damage)", "This is a hyperspawn area. You should not need to move from here" },
+            Note = { "CAREFUL_STONESPLINTER_SCOUTS_CAST_SHOOT_RANGED", "HYPERSPAWN_AREA_NOT_MOVE" },
             Coord = { x = -2729.4, y = -5534.96 },
             Range = 30,
             AllOf = { { IsQuestOnQuest = 267 }, { IsQuestOnQuest = 224 } },
@@ -2088,7 +2087,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [267] = { 1 } },
-            Note = { "Be careful as Stonesplinter Scouts cast `Shoot` (Ranged Cast: Deals 14-20 damage)", "This is a hyperspawn area. You should not need to move from here" },
+            Note = { "CAREFUL_STONESPLINTER_SCOUTS_CAST_SHOOT_RANGED", "HYPERSPAWN_AREA_NOT_MOVE" },
             Coord = { x = -2729.4, y = -5534.96 },
             Range = 30,
             AllOf = { { IsQuestOnQuest = 267 }, { IsQuestOnQuest = 224 } },
@@ -2096,12 +2095,12 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 252,
         },
         {
-            Note = { "Travel to Thelsamar" },
+            Note = { "TRAVEL_THELSAMAR" },
             _index = 253,
         },
         {
             PickUp = { 416, 1339 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             _index = 254,
         },
         {
@@ -2120,13 +2119,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 256,
         },
         {
-            Note = { "Optional: abandon these quests only if you do not intend to finish them: 1338" },
+            LeaveQuest = 1338,
+            IsQuestOnQuest = 1338,
             _index = 257,
         },
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
             Zone = 1432,
@@ -2135,7 +2135,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
             Zone = 1432,
@@ -2144,7 +2144,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
             Zone = 1432,
@@ -2153,7 +2153,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
             Zone = 1432,
@@ -2162,7 +2162,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
             Zone = 1432,
@@ -2171,7 +2171,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
             Zone = 1432,
@@ -2179,7 +2179,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             PickUp = { 416, 1339 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Zone = 1432,
             _index = 264,
@@ -2237,7 +2237,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 1339,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Range = 15.0,
             Zone = 1432,
@@ -2246,7 +2246,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 1339,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Bunker. Go to the top floor" },
+            Note = { "ENTER_BUNKER_GO_TOP_FLOOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.279, 17.959),
             Range = 12.0,
             Zone = 1432,
@@ -2268,7 +2268,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             Waypoint = 307,
             NonSkippableWaypoint = true,
             Fillers = { [416] = { 1 } },
-            Note = { "Enter the Silver Stream Mine" },
+            Note = { "ENTER_SILVER_STREAM_MINE" },
             Coord = { x = -2972.96, y = -4835.187 },
             Range = 20.0,
             Zone = 1432,
@@ -2277,7 +2277,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Qpart = { [307] = { 1 } },
             Fillers = { [416] = { 1 } },
-            Note = { "Open the Miners' League Crates inside the mine. Loot them for the Miners' Gear" },
+            Note = { "OPEN_MINERS_LEAGUE_CRATES_INSIDE_MINE_LOOT_MINERS" },
             Coord = { x = -2984.82, y = -4902.33 },
             Zone = 1432,
             _index = 276,
@@ -2285,7 +2285,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             BuyMerchant = { { itemID = 4778, quantity = 1, questID = 307 }, { itemID = 4777, quantity = 1, questID = 307 } },
             Fillers = { [416] = { 1 } },
-            Note = { "If you can't afford this, then grind money from the nearby Tunnel Rats until you have enough", "Do this quickly as another player may purchase it before you do", "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
+            Note = { "CANNOT_AFFORD_GRIND_MONEY_NEARBY_TUNNEL_RATS", "QUICKLY_ANOTHER_PLAYER_PURCHASE", "NOT_WISH_RATHER_TRY_BUY_CHEAPER_BETTER" },
             Coord = { x = -3176.16, y = -4669.34 },
             AllOf = { { ItemCount = { operator = "<", count = 1, itemID = 4778 } }, { AnyOf = { { ItemCount = { itemID = 4778, count = 1, operator = "<" } }, { ItemCount = { itemID = 4777, count = 1, operator = "<" } } } } },
             Class = "WARRIOR",
@@ -2304,7 +2304,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 307,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Bunker" },
+            Note = { "ENTER_BUNKER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 23.49, 18.008),
             Range = 15.0,
             Zone = 1432,
@@ -2313,7 +2313,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 307,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Bunker" },
+            Note = { "ENTER_BUNKER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 24.279, 17.959),
             Range = 15.0,
             Zone = 1432,
@@ -2322,7 +2322,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 307,
             NonSkippableWaypoint = true,
-            Note = { "Vendor and repair if needed" },
+            Note = { "VENDOR_REPAIR_NECESSARY" },
             Coord = { x = -2659.45, y = -4822.45 },
             Range = 5,
             RaidIcon = 1362,
@@ -2338,7 +2338,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
             Zone = 1432,
@@ -2347,7 +2347,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
             Zone = 1432,
@@ -2356,7 +2356,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
             Zone = 1432,
@@ -2365,7 +2365,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
             Zone = 1432,
@@ -2374,7 +2374,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
             Zone = 1432,
@@ -2383,7 +2383,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
             Zone = 1432,
@@ -2392,7 +2392,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 90.0,
             Zone = 1432,
@@ -2401,7 +2401,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2846.07, y = -4682.5 },
             Range = 90.0,
             Zone = 1432,
@@ -2410,7 +2410,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4770.8 },
             Range = 90.0,
             Zone = 1432,
@@ -2419,7 +2419,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2835.04, y = -4976.83 },
             Range = 90.0,
             Zone = 1432,
@@ -2428,7 +2428,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2915.03, y = -5044.89 },
             Range = 90.0,
             Zone = 1432,
@@ -2437,7 +2437,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3080.53, y = -5100.08 },
             Range = 90.0,
             Zone = 1432,
@@ -2446,7 +2446,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2735.74, y = -4684.34 },
             Range = 5,
             Zone = 1432,
@@ -2455,7 +2455,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
             Zone = 1432,
@@ -2464,7 +2464,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
             Zone = 1432,
@@ -2473,7 +2473,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
             Zone = 1432,
@@ -2482,7 +2482,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
             Zone = 1432,
@@ -2491,7 +2491,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
             Zone = 1432,
@@ -2500,7 +2500,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 90.0,
             Zone = 1432,
@@ -2509,7 +2509,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3017.09, y = -5219.65 },
             Range = 90.0,
             Zone = 1432,
@@ -2518,7 +2518,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2815.73, y = -5147.91 },
             Range = 90.0,
             Zone = 1432,
@@ -2527,7 +2527,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2757.81, y = -4952.91 },
             Range = 90.0,
             Zone = 1432,
@@ -2536,7 +2536,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2782.63, y = -4903.25 },
             Range = 90.0,
             Zone = 1432,
@@ -2545,7 +2545,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3041.92, y = -5129.51 },
             Range = 5,
             Zone = 1432,
@@ -2554,7 +2554,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
             Zone = 1432,
@@ -2563,7 +2563,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
             Zone = 1432,
@@ -2572,7 +2572,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
             Zone = 1432,
@@ -2581,7 +2581,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
             Zone = 1432,
@@ -2590,7 +2590,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
             Zone = 1432,
@@ -2599,7 +2599,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Range = 90.0,
             Zone = 1432,
@@ -2608,7 +2608,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2766.08, y = -4866.45 },
             Range = 90.0,
             Zone = 1432,
@@ -2617,7 +2617,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2926.07, y = -5232.53 },
             Range = 90.0,
             Zone = 1432,
@@ -2626,7 +2626,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2992.27, y = -5055.93 },
             Range = 90.0,
             Zone = 1432,
@@ -2635,7 +2635,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -3069.5, y = -5078.01 },
             Range = 90.0,
             Zone = 1432,
@@ -2643,20 +2643,20 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             Coord = { x = -2873.66, y = -4789.19 },
             Zone = 1432,
             _index = 317,
         },
         {
             Done = { 416 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             _index = 318,
         },
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Stoutlager Inn" },
+            Note = { "ENTER_STOUTLAGER_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.273, 47.75),
             Range = 10.0,
             Zone = 1432,
@@ -2665,7 +2665,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 418,
             NonSkippableWaypoint = true,
-            Note = { "Enter the Stoutlager Inn" },
+            Note = { "ENTER_STOUTLAGER_INN" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 35.433, 48.243),
             Range = 12.0,
             Zone = 1432,
@@ -2673,19 +2673,19 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Spider Ichor", "Save any `Chunks of Boar Meat` to use for leveling `Cooking` later", "Don't go out of your way to complete this right now. You'll come back to Loch Modan soon" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR", "KEEP_BOAR_MEAT_COOKING", "NOT_GO_WAY_COMPLETE_RIGHT_COME_BACK_LOCH_MODAN" },
             IsQuestOnQuest = 418,
             _index = 321,
         },
         {
             LootItems = { { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Spider Ichor", "Save any `Chunks of Boar Meat` to use for leveling `Cooking` later", "Don't go out of your way to complete this right now. You'll come back to Loch Modan soon" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR", "KEEP_BOAR_MEAT_COOKING", "NOT_GO_WAY_COMPLETE_RIGHT_COME_BACK_LOCH_MODAN" },
             IsQuestOnQuest = 418,
             _index = 322,
         },
         {
             LootItems = { { itemID = 3172, quantity = 3, questID = 418 }, { itemID = 3173, quantity = 3, questID = 418 }, { itemID = 3174, quantity = 3, questID = 418 } },
-            Note = { "Kill Elder Black Bears. Loot them for their Bear Meat", "Kill Mountain Boars. Loot them for their Boar Intestines", "Kill Forest Lurkers. Loot them for their Ichor" },
+            Note = { "KILL_ELDER_BLACK_BEARS_LOOT_BEAR_MEAT", "KILL_MOUNTAIN_BOARS_LOOT_BOAR_INTESTINES", "KILL_FOREST_LURKERS_LOOT_SPIDER_ICHOR" },
             IsQuestOnQuest = 418,
             _index = 323,
         },
@@ -2712,7 +2712,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3006.61, y = -5259.57 },
             Range = 15.0,
             Zone = 1432,
@@ -2721,7 +2721,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3020.95, y = -5282.02 },
             Range = 15.0,
             Zone = 1432,
@@ -2730,7 +2730,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3023.44, y = -5326.9 },
             Range = 15.0,
             Zone = 1432,
@@ -2739,7 +2739,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Range = 15.0,
             Zone = 1432,
@@ -2748,7 +2748,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2964.41, y = -5349.9 },
             Range = 15.0,
             Zone = 1432,
@@ -2757,7 +2757,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 416,
             NonSkippableWaypoint = true,
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -2894.9, y = -5401.96 },
             Range = 20.0,
             Zone = 1432,
@@ -2765,14 +2765,14 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Done = { 416 },
-            Note = { "Mountaineer Kadrell patrols the road through Thelsamar" },
+            Note = { "MOUNTAINEER_KADRELL_PATROLS_ROAD_THELSAMAR" },
             Coord = { x = -3007.99, y = -5337.39 },
             Zone = 1432,
             _index = 333,
         },
         {
             PickUp = { 86614 },
-            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE: This can spawn in one of many different locations. Swim around until you see the exclamation point on your minimap", "Be careful of high level Young Threshadon" },
+            Note = { "CLICK_DISCARDED_FISHING_TOOLBOX_LAKE_FLOOR", "NOTE_SPAWN_ONE_MANY_DIFFERENT_LOCATIONS_SWIM_SEE", "CAREFUL_HIGH_LEVEL_YOUNG_THRESHADON" },
             Coord = { x = -3319.12905, y = -5351.077 },
             Range = 30,
             Zone = 1432,
@@ -2799,7 +2799,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Waypoint = 257,
             NonSkippableWaypoint = true,
-            Note = { "Buy `Agile Boots` from her if they're up" },
+            Note = { "BUY_AGILE_BOOTS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 82.6, 64),
             Range = 5,
             Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" },
@@ -2808,7 +2808,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [257] = { 1 } },
-            Note = { "You must complete this quest and return to Daryl the Youngling within 15 minutes. If you fail the quest, abandon it and pick it up again" },
+            Note = { "COMPLETE_QUEST_RETURN_DARYL_YOUNGLING_15_MINUTES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 75.435, 65.81),
             Range = 30,
             Zone = 1432,
@@ -2845,7 +2845,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         {
             Qpart = { [86758] = { 1 } },
             Fillers = { [385] = { 1, 2 } },
-            Note = { "Kill Daggerfang, he might be patroling along the shore. Loot him for `Marek's Croc-Hunting Knife`" },
+            Note = { "KILL_DAGGERFANG_PATROLING_SHORE_LOOT_MAREK_CROC" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 62, 44),
             Range = 10,
             Zone = 1432,
@@ -2881,7 +2881,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [258] = { 1 } },
-            Note = { "You must complete this quest and return to Daryl the Youngling with 12 minutes. If you fail the quest, abandon it and pick it up again" },
+            Note = { "COMPLETE_QUEST_RETURN_DARYL_YOUNGLING_12_MINUTES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1432, 68.73, 41.935),
             Range = 30,
             IsQuestOnQuest = 258,
@@ -2913,12 +2913,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Grind = { level = 16, xp = -2360 },
-            Note = { "Grind untill you're 2360 xp away from level 16 (12.040/14.400)" },
             _index = 353,
         },
         {
             DeathSkip = true,
-            Note = { "Jump out of the lodge and die to the mobs below", "Die and respawn at the Thelsamar graveyard" },
+            Note = { "JUMP_LODGE_DIE_MOBS_BELOW", "DIE_RESPAWN_THELSAMAR_GRAVEYARD" },
             Hardcore = false,
             SkipForLvl = 10,
             _index = 354,
@@ -3011,7 +3010,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             LootItems = { { itemID = 15877, quantity = 1, questID = 29 } },
-            Note = { "Swim into Lake Elune'Ara", "Open a Bauble Container. Loot it for a `Shrine Bauble`", "SPAWN_DIFFERENT_LOCATIONS_UNDERWATER" },
+            Note = { "SWIM_LAKE_ELUNE_ARA", "OPEN_BAUBLE_CONTAINER_LOOT_SHRINE_BAUBLE", "SPAWN_DIFFERENT_LOCATIONS_UNDERWATER" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 52.6, 51.6),
             Class = "DRUID",
             Zone = 1450,
@@ -3025,7 +3024,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             Qpart = { [29] = { 1 } },
-            Note = { "Use the `Shrine Bauble` at the Shrine of Remulos tree" },
+            Note = { "USE_SHRINE_BAUBLE_SHRINE_REMULOS_TREE" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1450, 36.026, 41.374),
             Button = { ["29-1"] = 15877 },
             Class = "DRUID",
@@ -3048,13 +3047,12 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             UseHS = 301,
-            Note = { "Hearthstone to Ironforge" },
             SkipInZones = { 1455 },
             _index = 372,
         },
         {
             BuyMerchant = { { itemID = 20744, quantity = 1 }, { itemID = 21072, quantity = 20 } },
-            Note = { "`Minor Wizard Oil` and `Smoked Sagefish`", "CHECK_HIGH_DPS_WAND_UPGRADES_USE_NOW", "These will provide a high DPS increase in early levels. If you don't want to or can't do this, skip this step" },
+            Note = { "MINOR_WIZARD_OIL_SMOKED_SAGEFISH", "CHECK_HIGH_DPS_WAND_UPGRADES_USE_NOW", "PROVIDE_HIGH_DPS_INCREASE_EARLY_LEVELS_NOT_WANT" },
             Coord = { x = -909.665, y = -4957.82 },
             Range = 13,
             AnyOf = { { ItemCount = { itemID = 20744, count = 1, operator = "<" } }, { ItemCount = { itemID = 21072, count = 20, operator = "<" } } },
@@ -3064,7 +3062,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
         },
         {
             BuyMerchant = { { itemID = 20744, quantity = 1 }, { itemID = 21072, quantity = 20 } },
-            Note = { "`Minor Wizard Oil` and `Smoked Sagefish`", "These will provide a high DPS increase in early levels. If you don't want to or can't do this, skip this step" },
+            Note = { "MINOR_WIZARD_OIL_SMOKED_SAGEFISH", "PROVIDE_HIGH_DPS_INCREASE_EARLY_LEVELS_NOT_WANT" },
             Coord = { x = -909.665, y = -4957.82 },
             Range = 13,
             AnyOf = { { ItemCount = { itemID = 20744, count = 1, operator = "<" } }, { ItemCount = { itemID = 21072, count = 20, operator = "<" } } },
