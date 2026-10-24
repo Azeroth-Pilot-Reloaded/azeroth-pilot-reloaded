@@ -15,11 +15,15 @@ target synchronization are both available.
 | --- | --- |
 | `Core.lua` | LibStub registration, declarative data validation, independent instances |
 | `Locales.lua` | Complete navigation wording for all 11 client languages, with enGB/ptPT aliases |
+| `UnlockRunner.lua`, `Unlocks.lua` | Native access detours, bounded discovery, quest/objective progression and resumable destinations |
+| `UnlockLocales.lua` | Independent action wording in all eleven client languages |
 | `Diagnostics.lua` | Localized, structured explanations of blocked access without host UI dependencies |
 | `Geography.lua` | Map projection, access regions, legal free movement, names through the environment |
 | `Conditions.lua` | Availability predicates; missing answers remain unknown |
 | `Entrances.lua` | Native instance identities and verified exterior approaches; no guessed interior landings |
 | `Catalog.lua` | Character-specific transport edges, instructions and cumulative resources |
+| `ZoneRouting.lua` | Indexed preferred zone entrances and direct local unlock guidance |
+| `ZoneGraph.lua` | Shared physical region topology, bounded transfer search and live access conditions |
 | `TravelActions.lua` | Shared route actions and item cast effects for inn, Dalaran and garrison hearthstones |
 | `Search.lua` | Incremental Dijkstra, binary heap and non-dominated time/money/resource labels |
 | `WaypointUI.lua` | Shared manual/automatic output, lifecycle, projection, ownership and Waypoint UI fallback |
@@ -68,6 +72,151 @@ The default is one millisecond. The scheduler checks the clock between operation
 a synchronous host API call, garbage collection or OS preemption can overrun it.
 `BuildEdges` remains available as a synchronous compatibility helper.
 
+APR opts into `CreateZoneRoute(context)` before preparing the world graph.
+`config.ZoneRoutes[mapID]` selects a preferred physical connection by ID; the
+instance builds `connectionLookup` once at initialization. K'aresh (both native
+map IDs) and Undermine currently have listed entrances, inherited by child maps.
+The job checks only that connection: a failed condition returns its blocker to
+the existing unlock session; a permitted entrance reachable on foot returns the
+approach, crossing and arrival directly. Unknown flags remain pending data.
+Already being in the destination bypasses its entrance condition. Every locally
+walkable objective returns a direct walking segment without scanning transports.
+
+This host policy prefers the listed entrance rather than comparing every optional
+teleport. `preferZoneAccess = true` enables it in APR's planner. Unlisted zones and
+entrances requiring another transport use the shared physical region graph.
+Its vertices are walkable access regions, with exact separate vertices for
+mandatory passage points; directed portals, boats and passages form its links.
+The index is built cooperatively once, reused across objectives and invalidated
+with the position cache. Missing geometry is retried separately without scanning
+successful records again. Each request checks fresh character flags only on
+visited links. A breadth-first search prefers fewer physical transfers, retaining
+cheaper later arrivals when needed for the remaining fare. A relaxed pass returns
+only blockers on a connected potential itinerary; it never publishes locked links
+as guidance. Only the chosen connections are materialized into live route rows.
+Parallel direct crossings between the start and goal regions are indexed
+separately and compared by their complete walking/crossing/arrival duration.
+This avoids choosing a distant neutral boat before a nearby faction zeppelin
+merely because its record came first in the Forever catalogue.
+The APR adapter keeps this geometry across quest, bag and dialogue refreshes;
+readable map-art changes invalidate it, with conservative quest-turn-in refreshes
+on clients without map art. Bind and house changes still refresh live navigation
+without clearing unrelated static transport coordinates.
+Forever uses the same routing, cache, cancellation and rendering code with its
+own data and unlock coverage. Without a native map-rectangle API, the APR preview
+derives a cacheable parent transform from HBD's same-instance affine conversion.
+Different-instance artwork and unavailable map data keep the retryable path.
+Run `py -3 tools/validation/benchmark_navigation.py --scenario forever` for the
+Alliance/Horde cold/warm zone routes and legacy projection benchmarks.
+
+If the physical graph has no supported route, the host falls back to the general
+planner for optional personal travel and taxi networks. Consumers using the
+search API directly retain full shortest-time graph competition. APR diagnostic
+counters distinguish `NavigationZoneReady`, `NavigationZoneBlocked` and
+`NavigationFullGraph`, so residual fallbacks can be identified in captures.
+`CreateEdgeBuild({ connectionID = id, ... })` prepares only the indexed connection.
+
+`GetBlockedRouteText(blockers)` returns plain text followed by semantic display
+lines (`{ kind, text }`). Kinds are `status`, `spacer`, `passage`, `requirement`
+and `operator`; consumers may apply their own appearance to each line. Passages
+are separated by blank lines, conditions appear as indented lists, and localized
+AND/OR separators preserve nested groups without generated parentheses.
+
+`GetQuestUnlockPlans(blockers)` remains a compatibility API for quest-only
+alternatives. Native unlock guidance now lives entirely inside the library:
+`Data/*/UnlockRoutes.lua`, `UnlockRunner.lua` and `UnlockLocales.lua`. No APR
+route table, route engine, localization service or initialization is required.
+
+```lua
+local session = navigator:CreateUnlockSession({
+    blockers = blockers, destination = originalGoal, clock = millisecondsClock,
+})
+-- Call once per scheduler slice, then continue on a later frame.
+local status, action, originalGoal = session:Step(64, 1)
+-- planning: continue on a later frame.
+-- action: route to action.target with the normal travel planner, show
+--         action.label, action.gossipOptionIDs, action.npcID and action.useActions.
+--         Keep polling; arriving at the coordinate does not complete a quest.
+-- waiting_data: wait for client observations or map projection.
+-- missing_data: show the missing evidence; do not invent or skip an action.
+-- resume: replan to originalGoal, which retains the original map/world/position.
+-- cancelled: release the consumer's output.
+```
+
+Only pass blockers found on a diagnostic path to the actual destination.
+Never publish the relaxed diagnostic path itself as accessible guidance.
+`CreateUnlockBuild(blockers, options):Step(operations, milliseconds)` exposes
+incremental discovery separately. It returns status, plans and missing data;
+alternative expansion is bounded to 64 plans and reports truncation. Steps are
+bounded to 4096. Library and host callbacks use the caller's scheduler budget;
+a single synchronous client callback can still overrun it.
+
+The environment supplies `isQuestCompleted`, `isQuestActive`,
+`isQuestCompletedOnAccount`, `isQuestReadyForTurnIn`,
+`isQuestObjectiveCompleted(questID, objectiveIndex)` and optional
+`getQuestObjectiveText(questID, objectiveIndex)`, plus the normal character,
+geometry and name callbacks. `isQuestAvailable(questID, acceptance)` reports an
+actual offer in the current NPC interaction: true when offered, false only when
+the matching starter's complete offer list proves absence, and nil outside an
+observable interaction. APR implements this using gossip, greeting and quest
+detail APIs. A different NPC or a closed dialog cannot prove unavailability.
+Return nil for unknown observations. Waypoint
+actions also need `getPlayerPosition`. Quest acceptance, every authored objective,
+and reward remain separate states; abandonment returns to the observed pickup.
+Names and objective descriptions come from the game client. All generic action
+wording is owned by the library and packaged in all eleven supported languages.
+The library never executes protected interactions or presses buttons.
+
+`session:BeginDetour(blockers, options)` handles an inaccessible unlock target,
+then resumes its parent action. It rejects repeated edge identities and depths
+over 32. Every nested action shares the frame budget. A live unlock of the
+parent passage cancels an unnecessary child immediately. `session:Retry()` lets
+the consumer retry discovery after previously missing character/client data
+becomes available. `session:Cancel()` releases discovery and child sessions.
+
+Persist `session:ExportState()` in the consumer's own storage and reconstruct it
+with `navigator:RestoreUnlockSession(state, options)`. Checkpoints contain only
+declarative access evidence and the original destination, never closures or an
+APR route key. Restore rechecks live flags instead of trusting a saved cursor.
+
+`GetUnlockRoutes()`, `GetUnlockSources()` and `GetUnlockCoverage()` return detached
+catalogue copies. `action.prerequisitesKnown == false` marks non-exhaustive source
+knowledge. Every accept action carries `acceptance = { requirements, known,
+complete, blockingGaps, advisoryGaps, sources, starterNPCIDs }`. `known` means the
+supplied evidence was interpreted; `complete` is a separate exhaustive claim.
+Recipe requirements, action requirements and acceptance conditions recursively
+resolve before a target is published. An unknown offer permits sourced guidance
+when known conditions pass; it never completes acceptance. Semantic gaps and a
+negative live offer remain blockers. A positive live offer is direct evidence.
+
+The offline compiler reads Route-generator's pinned ATT, BtW, DB2 and APR data.
+BtW's explicit `completed` predicate overrides `upto`: a sourced quest can guide
+a hidden tracker, but only the actual client tracker confirms that goal.
+Authored positions, objective counters, alternative positions, scenarios and
+transport observations remain declarative. Missing actions or positions stay
+explicit gaps. An inn hearthstone without a proven binding/arrival is a travel
+hint to the next real target, never a fabricated landing.
+
+Non-quest recipes use the same runner: an exact `{ key, value }` goal, ordered
+steps, `requirements`, selection-only `availability` and `progressive = true`.
+Proven reward quests and NPC activities can progress currency, reputation,
+items, toys or other predicates. A reward does not imply the final threshold:
+the runner rereads it and chooses another eligible source when necessary.
+Exhausted sources and the selected source survive reload; obtaining a reward
+cannot cancel a following inventory registration action. Faction/class/race
+restrictions select alternatives, and are never treated as obtainable rewards.
+Positive reputation gains cannot safely solve an upper-bound deficit.
+Renown/friendship native values are distinct from standard reaction ranks.
+
+Additional sources register through `RegisterData` with `unlockRoutes`.
+`completeWhen` always describes a client observation. Unknown predicates,
+unproven acquisitions and missing Forever data are retained as gaps; Retail
+requirements never fill Forever gaps. Generic wording stays in all eleven
+library-owned locales, and client APIs provide localized quest/NPC/item names.
+
+The route key, route progress, source routes, custom path and temporary route
+engine are untouched during an unlock.
+
 A direct-distance A* heuristic would overestimate routes using
 portals; Dijkstra preserves the shortest-time result. Resource labels retain a
 slower arrival if it preserves money or reagents needed later. Directed edges
@@ -80,6 +229,12 @@ predicate stable until a search completes or is cancelled. Walking candidates ar
 indexed by world instance; a bounded cache reuses legal distances when several
 resource labels reach the same node.
 
+Hosts can supply `walkingRegionFor(position)` when walking requires matching
+region, access key and floor. Search then partitions its walking candidates by
+these properties even with a host `canWalk` callback. APR supplies its geography
+region lookup, so disconnected regions in one world never produce pairwise
+walking checks. Custom predicates without that contract retain instance buckets.
+
 A permitted direct walk bounds the useful alternatives by its total time.
 `walkingIsTransitive = true` also lets search omit endpoints belonging only to
 slower transports. Use this flag only when permission to walk from A to B and
@@ -88,6 +243,25 @@ The built-in walking rule already has this property. Other custom predicates
 retain those endpoints because they may serve as required walking bridges.
 Actions usable only after moving also preserve their possible departure points;
 an action already usable at the start needs no detour to reach its fixed target.
+
+With transitive walking at a uniform speed, search also skips consecutive
+automatic walks: the parent's direct link is already at least as fast. Transport
+and action expansion at the arrival point still runs. `walkSpeedAt(position)`
+can supply a stable speed per endpoint; search snapshots it once per unique node
+and uses the minimum of the two endpoint speeds. It takes precedence over
+`walkSpeedFor(from, to)`. Mixed endpoint speeds and arbitrary pair-speed callbacks
+retain the full walking graph because intermediate points can improve those
+travel times. With incomplete heights, search still checks destinations with Z
+when a heightless intermediate point can reduce the vertical cost. Callback
+results must stay stable for the lifetime of a search.
+
+Unlock ranking indexes recipes once per session cache, then discovers only the
+failed prerequisites reachable from the requested goals. Its monotone AND/OR
+worklist handles shared dependencies and cycles without scanning unrelated
+campaign actions. Nested detours extend the same map-local graph; observations
+and retries invalidate its scores, and cancellation discards an unfinished graph.
+The APR host resumes pending discovery on the next frame with a one-millisecond
+budget, using 4096 operations with a profiling clock and 64 without one.
 
 Edges with requirements expose `canStart(position, live)`: search uses the planned
 departure and its character snapshot; `live = true` refreshes character state for

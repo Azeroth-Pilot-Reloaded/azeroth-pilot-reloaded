@@ -63,6 +63,7 @@ function APR:RenderCurrentStep()
     if not APR.settings.profile.enableAddon then
         return
     end
+    if self.RefreshNavigationUnlockRoute and self:RefreshNavigationUnlockRoute() then return end
 
     if (APR.ActiveRoute and not APRData[APR.PlayerID][APR.ActiveRoute]) then
         APR:SetRouteProgress(APR.ActiveRoute, 1, "initialize")
@@ -154,7 +155,7 @@ function APR:RenderCurrentStep()
                     APR.currentStep:AddExtraLineText("SWITCH_TO_CHROMIE" .. chromieExpansionOption.name,
                         string.format(L["SWITCH_TO_CHROMIE"], chromieExpansionOption.name))
                 end
-            end--[[APR_DIAG]]; checkChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:144:checkChromieTimeline#4", checkChromieTimeline)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; checkChromieTimeline = APRTrace("APR-Core/features/questing/StepRenderer.lua:145:checkChromieTimeline#4", checkChromieTimeline)--[[/APR_DIAG]]
 
             local activeRouteData = APR.RouteQuestStepList[APR.ActiveRoute]
             local activeExpansion = activeRouteData and activeRouteData.expansion
@@ -181,7 +182,7 @@ function APR:RenderCurrentStep()
                 table.insert(extraLines, { key = key, text = value })
             end
         end
-        table.sort(extraLines, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:184:callback#5", --[[/APR_DIAG]]function(a, b) return a.key < b.key end--[[APR_DIAG]])--[[/APR_DIAG]])
+        table.sort(extraLines, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:185:callback#5", --[[/APR_DIAG]]function(a, b) return a.key < b.key end--[[APR_DIAG]])--[[/APR_DIAG]])
         for i, line in ipairs(extraLines) do
             for textIndex, text in ipairs(APR:ResolveStepTextList(line.text)) do
                 -- Identify the field and list position, never the raw value (which can be a table).
@@ -301,7 +302,7 @@ function APR:RenderCurrentStep()
             if showStepDetails then
                 APR.currentStep:AddQuestSteps("RESET_ROUTE", L["RESET_ROUTE"], "ResetRoute", false, true)
             end
-            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:304:callback#6", --[[/APR_DIAG]]function()
+            APR.questionDialog:CreateQuestionPopup("RESET", "RESET" .. "?", --[[APR_DIAG]]APRTrace("APR-Core/features/questing/StepRenderer.lua:305:callback#6", --[[/APR_DIAG]]function()
                 if not APR:IsStepContextCurrent(context) then return end
                 APR:SetRouteProgress(APR.ActiveRoute, 1, "reset")
                 APR:PrintInfo(L["RESET_ROUTE"])
@@ -333,7 +334,7 @@ function APR:RenderCurrentStep()
                 tremove(APRCustomPath[APR.PlayerID], index)
                 APR.routeconfig:CheckIsCustomPathEmpty()
                 APR.routeconfig:SendMessage("APR_Custom_Path_Update")
-            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:331:finalizeRouteCompletion#7", finalizeRouteCompletion)--[[/APR_DIAG]]
+            end--[[APR_DIAG]]; finalizeRouteCompletion = APRTrace("APR-Core/features/questing/StepRenderer.lua:332:finalizeRouteCompletion#7", finalizeRouteCompletion)--[[/APR_DIAG]]
 
             -- Suggest next routes immediately; finalize after selection/skip/cancel
             APR:SuggestNextRoutes(completedRouteKey, finalizeRouteCompletion)

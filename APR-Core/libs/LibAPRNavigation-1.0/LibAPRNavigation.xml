@@ -4,8 +4,13 @@
   <Script file="Geography.lua"/>
   <Script file="Conditions.lua"/>
   <Script file="Diagnostics.lua"/>
+  <Script file="Unlocks.lua"/>
+  <Script file="UnlockLocales.lua"/>
+  <Script file="UnlockRunner.lua"/>
   <Script file="Entrances.lua"/>
   <Script file="Catalog.lua"/>
+  <Script file="ZoneRouting.lua"/>
+  <Script file="ZoneGraph.lua"/>
   <Script file="TravelActions.lua"/>
   <Script file="Search.lua"/>
   <Script file="WaypointUI.lua"/>
@@ -20,6 +25,7 @@
   <Script file="Data/retail/Items.lua"/>
   <Script file="Data/retail/Spells.lua"/>
   <Script file="Data/retail/Passages.lua"/>
+  <Script file="Data/retail/UnlockRoutes.lua"/>
   <Script file="Data/forever/Geography.lua"/>
   <Script file="Data/forever/InstanceEntrances.lua"/>
   <Script file="Data/forever/Bindings.lua"/>
@@ -30,4 +36,5 @@
   <Script file="Data/forever/Items.lua"/>
   <Script file="Data/forever/Spells.lua"/>
   <Script file="Data/forever/Passages.lua"/>
+  <Script file="Data/forever/UnlockRoutes.lua"/>
 </Ui>

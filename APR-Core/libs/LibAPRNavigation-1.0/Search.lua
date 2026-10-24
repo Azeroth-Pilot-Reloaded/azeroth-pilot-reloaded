@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 5) then return end
+if not Lib:BeginModule("search", 7) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -79,8 +79,13 @@ local function DefaultCanWalk(from, to)
     return from.region ~= nil and from.region == to.region and from.accessKey == to.accessKey and from.floor == to.floor
 end
 
-function Search:GetWalkSeconds(from, to)
-    local speed = self.walkSpeedFor and self.walkSpeedFor(from, to) or self.walkSpeed
+function Search:GetWalkSeconds(from, to, fromNode, toNode)
+    local speed
+    if self.walkSpeedAt then
+        speed = math.min(self.walkingSpeeds[fromNode], self.walkingSpeeds[toNode])
+    else
+        speed = self.walkSpeedFor and self.walkSpeedFor(from, to) or self.walkSpeed
+    end
     if not IsFinite(speed) or speed <= 0 then speed = self.walkSpeed end
     local dx, dy = to.x - from.x, to.y - from.y
     local dz = IsFinite(from.z) and IsFinite(to.z) and to.z - from.z or 0
@@ -95,20 +100,38 @@ function Search:GetWalkingBucket(position, create)
         self.walkingByInstance[position.instanceID] = bucket
     end
     if not bucket then return EMPTY end
-    if self.defaultWalking then
+    if self.defaultWalking or self.walkingRegionFor then
         -- Only the built-in predicate can be narrowed by region and access key.
         -- A host predicate may deliberately allow walking between two regions.
-        if position.region == nil then return EMPTY end
+        local region = self.walkingRegionFor and self.walkingRegionFor(position) or position.region
+        if region == nil then return EMPTY end
         local regions = bucket
-        bucket = regions[position.region]
-        if not bucket and create then bucket = {}; regions[position.region] = bucket end
+        bucket = regions[region]
+        if not bucket and create then bucket = {}; regions[region] = bucket end
         if not bucket then return EMPTY end
         local access = position.accessKey or false
         local entries = bucket[access]
         if not entries and create then entries = {}; bucket[access] = entries end
-        return entries or EMPTY
+        if not entries then return EMPTY end
+        local floor = position.floor or false
+        local floors = entries[floor]
+        if not floors and create then floors = {}; entries[floor] = floors end
+        return floors or EMPTY
     end
     return bucket
+end
+
+function Search:PrepareNodeSpeed(index)
+    if self.walkingSpeeds[index] then return end
+    local position = self.nodes[index]
+    local speed = self.walkSpeedAt and self.walkSpeedAt(position) or self.walkSpeed
+    if not IsFinite(speed) or speed <= 0 then speed = self.walkSpeed end
+    self.walkingSpeeds[index] = speed
+    local bucket = self:GetWalkingBucket(position, true)
+    if bucket ~= EMPTY then
+        if bucket.speed and bucket.speed ~= speed then bucket.mixedSpeed = true end
+        bucket.speed = speed
+    end
 end
 
 function Search:AddNode(position)
@@ -118,7 +141,16 @@ function Search:AddNode(position)
     index = #self.nodes + 1
     self.nodes[index], self.nodeKeys[key] = position, index
     local bucket = self:GetWalkingBucket(position, true)
-    if bucket ~= EMPTY then bucket[#bucket + 1] = index end
+    if bucket ~= EMPTY then
+        bucket[#bucket + 1] = index
+        if IsFinite(position.z) then
+            bucket.withZ = bucket.withZ or {}
+            bucket.withZ[#bucket.withZ + 1] = index
+        end
+    end
+    -- Start and goal are inserted by CreateSearch. Defer their host callbacks
+    -- to scheduled work just like walking permissions and edge ingestion.
+    if self.phase ~= "resources" then self:PrepareNodeSpeed(index) end
     return index
 end
 
@@ -154,6 +186,8 @@ function Search:IngestEdge(edge)
 end
 
 function Search:PrepareDirectWalk()
+    self:PrepareNodeSpeed(self.startNode)
+    self:PrepareNodeSpeed(self.goalNode)
     if self.startNode == self.goalNode then self.directSeconds = 0; return end
     local from, to = self.nodes[self.startNode], self.nodes[self.goalNode]
     if from.instanceID ~= to.instanceID or from.noAutoconnect or to.noAutoconnect
@@ -164,7 +198,7 @@ function Search:PrepareDirectWalk()
     self.walkChecks = self.walkChecks + 1
     local seconds = false
     if self.canWalk(from, to) then
-        seconds = self:GetWalkSeconds(from, to)
+        seconds = self:GetWalkSeconds(from, to, self.startNode, self.goalNode)
         self.directSeconds = seconds
     end
     self:GetWalkingCache(self.startNode)[self.goalNode] = seconds
@@ -253,7 +287,8 @@ function Search:AcceptCandidate(candidate)
     -- only for an edge that actually consumes something.
     self.serial = self.serial + 1
     local label = { node = candidate.node, previous = previous, edge = edge, used = candidate.used,
-        copper = candidate.copper, seconds = candidate.seconds, serial = self.serial }
+        copper = candidate.copper, seconds = candidate.seconds, serial = self.serial,
+        walked = candidate.walkSeconds ~= nil }
     local labels = self.labels[candidate.node]
     if not labels then labels = {}; self.labels[candidate.node] = labels end
     labels[#labels + 1] = label
@@ -322,7 +357,7 @@ function Search:CheckWalk(pending, target)
         local from, to = self.nodes[label.node], self.nodes[target]
         self.walkChecks = self.walkChecks + 1
         if self.canWalk(from, to) then
-            seconds = self:GetWalkSeconds(from, to)
+            seconds = self:GetWalkSeconds(from, to, label.node, target)
         else
             seconds = false
         end
@@ -359,6 +394,23 @@ function Search:ExpandOne()
         end
         pending.stage, pending.index = "walking", 1
         pending.walking = self:GetWalkingBucket(self.nodes[label.node])
+        -- In a transitive region with one Euclidean speed, two consecutive
+        -- automatic walks cannot beat the direct link already relaxed by the
+        -- parent. Keep transport/action expansion, but avoid a quadratic scan
+        -- of the walking clique. Mixed speeds still need all links. If a walk
+        -- loses its origin's Z, only destinations with Z can improve: the
+        -- intermediate point suppresses their otherwise nonzero vertical cost.
+        if label.walked and self.walkingIsTransitive and not pending.walking.mixedSpeed
+            and (self.walkSpeedAt or not self.walkSpeedFor) then
+            if IsFinite(self.nodes[label.previous.node].z) and not IsFinite(self.nodes[label.node].z) then
+                pending.walking = pending.walking.withZ or EMPTY
+                self.walkingExpansionsNarrowed = self.walkingExpansionsNarrowed + 1
+            else
+                self.walkingExpansionsSkipped = self.walkingExpansionsSkipped + 1
+                self.pending = nil
+                return
+            end
+        end
         if #pending.walking > 0 then pending.walkCache = self:GetWalkingCache(label.node) end
     else
         local target = pending.walking[index]
@@ -429,7 +481,7 @@ function Search:Cancel()
     self.sourceEdges, self.sourceGroups, self.sourceResources = nil, nil, nil
     self.omittedEdges = nil
     self.nodes, self.nodeKeys, self.outgoing, self.actions = {}, {}, {}, {}
-    self.walkingByInstance, self.walkingCache, self.walkingCacheOrder = {}, {}, {}
+    self.walkingByInstance, self.walkingCache, self.walkingCacheOrder, self.walkingSpeeds = {}, {}, {}, {}
 end
 
 function Search:GetResult() return self.result, self.status end
@@ -444,12 +496,14 @@ function Engine:CreateSearch(request)
         sourceGroups = type(request.edgeGroups) == "table" and request.edgeGroups or EMPTY,
         edgeGroup = 0, edgeIndex = 1, ingestedEdges = 0,
         walkingByInstance = {}, walkingCache = {}, walkingCacheOrder = {}, walkingCacheCursor = 1,
-        walkChecks = 0, walkingCacheHits = 0, defaultWalking = request.canWalk == nil,
+        walkChecks = 0, walkingCacheHits = 0, walkingExpansionsSkipped = 0, walkingExpansionsNarrowed = 0, walkingSpeeds = {},
+        defaultWalking = request.canWalk == nil,
         walkingIsTransitive = request.canWalk == nil or request.walkingIsTransitive == true,
         budget = IsFinite(request.budget) and math.max(0, request.budget) or 0,
-        walkSpeedFor = request.walkSpeedFor,
+        walkSpeedFor = request.walkSpeedFor, walkSpeedAt = request.walkSpeedAt,
         walkSpeed = IsFinite(request.walkSpeed) and request.walkSpeed > 0 and request.walkSpeed or 7,
         canWalk = request.canWalk or DefaultCanWalk,
+        walkingRegionFor = request.walkingRegionFor,
     }, Search)
     if not IsPosition(request.start) or not IsPosition(request.goal) then
         search.status, search.reason = "no_path", "invalid_position"

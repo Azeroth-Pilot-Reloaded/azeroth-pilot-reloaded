@@ -1,5 +1,5 @@
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("conditions", 7) then return end
+if not Lib:BeginModule("conditions", 8) then return end
 local Instance = Lib.Instance
 
 local function Contains(values, wanted)
@@ -73,6 +73,74 @@ function Instance:CheckRequirements(requirements, character)
             if artID ~= nil then result = artID == value.artID end
         elseif key == "questActive" then
             if self.env.isQuestActive then result = self.env.isQuestActive(value) end
+        elseif key == "reputation" then
+            if type(value) ~= "table" or type(value.factionID or value.id) ~= "number" then return false, "invalid_requirements" end
+            local id, standing = value.factionID or value.id, value.standing or value.minStanding
+            local minimum = value.minNativeValue or value.minAmount or (standing == nil and value.amount or nil)
+            local relative = value.minStandingAmount or (standing ~= nil and value.amount or nil)
+            local maximum = value.maxNativeValue or value.maxAmount
+            if standing == nil and relative ~= nil then return false, "invalid_requirements" end
+            if standing == nil and minimum == nil and maximum == nil then return false, "invalid_requirements" end
+            local unknown, actualStanding = false
+            result = true
+            if standing ~= nil then
+                if type(standing) ~= "number" then return false, "invalid_requirements" end
+                actualStanding = self.env.getReputationStanding and self.env.getReputationStanding(id)
+                if type(actualStanding) ~= "number" then unknown = true
+                elseif actualStanding < standing then result = false end
+            end
+            if minimum ~= nil then
+                if type(minimum) ~= "number" then return false, "invalid_requirements" end
+                local amount = self.env.getReputationAmount and self.env.getReputationAmount(id)
+                if type(amount) ~= "number" then unknown = true
+                elseif amount < minimum then result = false end
+            end
+            -- BtW's amount is relative to the required reaction rank. Higher
+            -- ranks already satisfy it; ATT's native bounds are independent.
+            if relative ~= nil then
+                if type(relative) ~= "number" then return false, "invalid_requirements" end
+                if actualStanding == standing then
+                    local amount = self.env.getReputationProgressAmount and self.env.getReputationProgressAmount(id)
+                    if type(amount) ~= "number" then unknown = true
+                    elseif amount < relative then result = false end
+                elseif actualStanding == nil then unknown = true end
+            end
+            if maximum ~= nil then
+                if type(maximum) ~= "number" then return false, "invalid_requirements" end
+                local amount = self.env.getReputationAmount and self.env.getReputationAmount(id)
+                if type(amount) ~= "number" then unknown = true
+                elseif amount > maximum then result = false end
+            end
+            if result ~= false and unknown then result = nil end
+        elseif key == "currency" or key == "item" or key == "skill" then
+            if type(value) ~= "table" then return false, "invalid_requirements" end
+            local id = value.id
+            local minimum
+            if key == "currency" then minimum = value.amount or value.min
+            elseif key == "item" then minimum = value.count or value.minCount or value.min
+            elseif key == "skill" then minimum = value.min or value.level end
+            if type(id) ~= "number" or type(minimum) ~= "number" then return false, "invalid_requirements" end
+            local getter
+            if key == "currency" then getter = self.env.getCurrencyQuantity
+            elseif key == "item" then getter = self.env.getItemCount
+            elseif key == "skill" then getter = self.env.getSkillLevel end
+            local amount = getter and getter(id)
+            if type(amount) == "number" then result = amount >= minimum end
+        elseif key == "minTime" then
+            if type(value) ~= "number" then return false, "invalid_requirements" end
+            local now = self.env.getServerTime and self.env.getServerTime()
+            if type(now) == "number" then result = now >= value end
+        elseif key == "chromieTime" then
+            if type(value) ~= "boolean" then return false, "invalid_requirements" end
+            local active = self.env.isChromieTimeActive and self.env.isChromieTimeActive()
+            if type(active) == "boolean" then result = active == value end
+        elseif key == "chromieTimeID" then
+            if type(value) ~= "number" then return false, "invalid_requirements" end
+            local current = self.env.getChromieTimeID and self.env.getChromieTimeID()
+            if type(current) == "number" then result = current == value end
+        elseif key == "spellKnown" or key == "spell" then
+            if type(value) ~= "number" then return false, "invalid_requirements" end
+            if self.env.isSpellKnown then result = self.env.isSpellKnown(value) end
         elseif key == "auraSpellID" then
             if self.env.hasAura then result = self.env.hasAura(value) end
         elseif key == "toyID" then

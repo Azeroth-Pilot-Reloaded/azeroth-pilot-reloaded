@@ -440,7 +440,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
         },
         {
             LearnSkill = { allAvailable = true },
-            ExtraLineText = "GO_UPSTAIRS_TRAIN_CLASS_SPELLS",
+            ExtraLineText = "UPSTAIRS",
             Coord = { x = 36.02, y = -9471.84 },
             IsQuestUncompleted = 85,
             MinLevel = 1,
@@ -748,7 +748,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
         },
         {
             LearnSkill = { allAvailable = true },
-            ExtraLineText = "GO_UPSTAIRS_TRAIN_CLASS_SPELLS",
+            ExtraLineText = "UPSTAIRS",
             Coord = { x = 36.02, y = -9471.84 },
             IsQuestUncompleted = 35,
             MinLevel = 1,

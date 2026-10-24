@@ -40,7 +40,7 @@ def percentile(values: list[float], fraction: float) -> float:
     return ordered[lower] + (ordered[upper] - ordered[lower]) * (position - lower)
 
 
-def timed_job(factory, options) -> dict:
+def timed_job(factory, options, expected_status="ready") -> dict:
     started = milliseconds()
     job = factory()
     created = milliseconds()
@@ -59,7 +59,7 @@ def timed_job(factory, options) -> dict:
             break
         if len(slices) > 1_000_000:
             raise RuntimeError("Navigation job did not finish after one million slices")
-    if state != "ready":
+    if state != expected_status:
         raise RuntimeError(f"Navigation job ended with {state!r}")
     return {
         "creation_ms": created - started,
@@ -100,7 +100,7 @@ local counters = {}
 local function count(name) counters[name] = (counters[name] or 0) + 1 end
 local function noop() end
 function LibStub()
-    return { GetLocale = function()
+    return { GetText = function(_, key) return key end, GetLocale = function()
         return { USE_FLIGHTPATH = "Fly to %s", NAVIGATION_CONSULT_TAXI = "Consult the flight master" }
     end }
 end
@@ -267,6 +267,251 @@ def benchmark_search(options) -> dict:
     return {"search": summarize(measurements, edges=1200, world_instances=20)}
 
 
+DENSE_SEARCH_FIXTURE = """
+local engine = dofile("tests/lua/navigation_engine_fixture.lua").Engine
+local points, edges = {}, {}
+for i = 1, 601 do
+    points[i] = { x = i * 10, y = i % 7, instanceID = 0, region = "mainland" }
+end
+local goal = { x = 0, y = 0, instanceID = 1, region = "island" }
+for i = 1, 600 do
+    edges[i] = { id = i, from = points[i], to = points[i + 1], seconds = 300, kind = "portal" }
+end
+edges[601] = { id = "exit", from = points[601], to = goal, seconds = 1, kind = "portal" }
+return {
+    counters = {},
+    reset = function() collectgarbage("collect") end,
+    create = function()
+        return engine:CreateSearch({ start = points[1], goal = goal, edges = edges, clock = benchmarkClock })
+    end,
+}
+"""
+
+
+UNLOCK_FIXTURE = """
+local fixture = dofile("tests/lua/navigation_fixture.lua")
+local data = fixture:Load()
+local counters = {}
+data.env.getCharacter = function()
+    return { faction = "Horde", class = "PALADIN", raceID = 10, level = 90, mapID = 2339 }
+end
+data.env.isQuestCompleted = function() counters.quest = (counters.quest or 0) + 1; return false end
+data.env.isQuestActive = function() return false end
+data.env.isQuestCompletedOnAccount = function() return false end
+data.env.isQuestAvailable = function() counters.offer = (counters.offer or 0) + 1; return nil end
+data.env.getCurrencyQuantity = function() return 0 end
+data.env.getReputationStanding = function() return 4 end
+local blockers = { { id = "karesh", from = { uiMapID = 2248 },
+    blockedRequirements = { minLevel = 80, any = { { quest = 84957 }, { questActive = 84957 } } } } }
+return {
+    counters = counters,
+    reset = function()
+        for key in pairs(counters) do counters[key] = 0 end
+        collectgarbage("collect")
+    end,
+    create = function() return data:CreateUnlockBuild(blockers, { clock = benchmarkClock }) end,
+}
+"""
+
+
+ZONE_ROUTE_FIXTURE = """
+local fixture = dofile("tests/lua/navigation_fixture.lua")
+local data = fixture:Load()
+dofile("APR-Core/features/navigation/NavigationPlanner.lua")
+local counters = { quest = 0, taxi = 0, search = 0, catalogue = 0 }
+data.env.getCharacter = function() return { faction = "Horde", level = 90, mapID = 2339 } end
+data.env.isQuestCompleted = function() counters.quest = counters.quest + 1; return false end
+data.env.isQuestActive = function() counters.quest = counters.quest + 1; return false end
+local build = data.CreateEdgeBuild
+function data:CreateEdgeBuild(context)
+    assert(context.connectionID == "additional-dornogal-karesh")
+    counters.catalogue = counters.catalogue + 1
+    return build(self, context)
+end
+return {
+    expectedStatus = "no_path", counters = counters,
+    reset = function()
+        for key in pairs(counters) do counters[key] = 0 end
+        collectgarbage("collect")
+    end,
+    create = function()
+        return APR.NavigationPlanner:Create({ preferZoneAccess = true, data = data, clock = benchmarkClock,
+            start = { x = 400, y = 230, uiMapID = 2339, instanceID = 2552 },
+            goal = { x = -1343, y = -515.6, uiMapID = 2472, instanceID = 2738 },
+            taxiData = { BuildEdges = function() counters.taxi = counters.taxi + 1; error("Unexpected taxi scan") end },
+            engine = { CreateSearch = function() counters.search = counters.search + 1; error("Unexpected world search") end } })
+    end,
+}
+"""
+
+
+GENERAL_ZONE_ROUTE_FIXTURE = """
+local fixture = dofile("tests/lua/navigation_fixture.lua")
+local data = fixture:Load()
+dofile("APR-Core/features/navigation/NavigationPlanner.lua")
+local counters = { quest = 0, taxi = 0, search = 0, selected = 0, projection = 0 }
+local project = data.env.mapToWorld
+data.env.mapToWorld = function(...) counters.projection = counters.projection + 1; return project(...) end
+data.env.isQuestCompleted = function() counters.quest = counters.quest + 1; return true end
+local build = data.CreateEdgeBuild
+function data:CreateEdgeBuild(context)
+    assert(context.connectionID, "Unexpected whole catalogue build")
+    counters.selected = counters.selected + 1
+    return build(self, context)
+end
+return {
+    counters = counters,
+    reset = function(cold)
+        for key in pairs(counters) do counters[key] = 0 end
+        if cold then data:InvalidatePositionCache() end
+        collectgarbage("collect")
+    end,
+    create = function()
+        return APR.NavigationPlanner:Create({ preferZoneAccess = true, data = data, clock = benchmarkClock, walkSpeed = 7,
+            start = { x = 100, y = 200, uiMapID = 2395, instanceID = 0 },
+            goal = { x = -100, y = -100, uiMapID = 2413, instanceID = 2694 },
+            prepareSegment = function(edge) return edge end,
+            taxiData = { BuildEdges = function() counters.taxi = counters.taxi + 1; error("Unexpected taxi scan") end },
+            engine = { CreateSearch = function() counters.search = counters.search + 1; error("Unexpected coordinate search") end } })
+    end,
+}
+"""
+
+
+FOREVER_ZONE_ROUTE_FIXTURE = """
+local fixture = dofile("tests/lua/navigation_forever_fixture.lua")
+fixture.faction = benchmarkFaction
+local horde = fixture.faction == "Horde"
+fixture.currentMap = horde and 1411 or 1453
+local data = fixture:Load()
+dofile("APR-Core/features/navigation/NavigationPlanner.lua")
+local counters = { taxi = 0, search = 0, selected = 0, projection = 0 }
+local project = data.env.mapToWorld
+data.env.mapToWorld = function(...) counters.projection = counters.projection + 1; return project(...) end
+local build = data.CreateEdgeBuild
+function data:CreateEdgeBuild(context)
+    assert(context.connectionID, "Unexpected whole Forever catalogue build")
+    counters.selected = counters.selected + 1
+    return build(self, context)
+end
+local function point(map, x, y)
+    return assert(data:NormalizeLocation({ space = "map", uiMapID = map, x = x, y = y }))
+end
+local start = horde and point(1411, 0.508, 0.137) or point(1453, 0.2255, 0.5613)
+local goal = horde and point(1420, 0.607, 0.588) or point(1439, 0.3077, 0.4101)
+return {
+    counters = counters,
+    reset = function(cold)
+        for key in pairs(counters) do counters[key] = 0 end
+        if cold then data:InvalidatePositionCache() end
+        collectgarbage("collect")
+    end,
+    create = function()
+        return APR.NavigationPlanner:Create({ preferZoneAccess = true, data = data, clock = benchmarkClock,
+            start = start, goal = goal, walkSpeed = 7, prepareSegment = function(edge) return edge end,
+            taxiData = { BuildEdges = function() counters.taxi = counters.taxi + 1; error("Unexpected Forever taxi scan") end },
+            engine = { CreateSearch = function() counters.search = counters.search + 1; error("Unexpected Forever coordinate search") end } })
+    end,
+}
+"""
+
+
+def benchmark_general_zones(options, profile="retail", faction="Alliance") -> dict:
+    runtime = new_runtime()
+    runtime.globals().benchmarkFaction = faction
+    fixture = runtime.execute(FOREVER_ZONE_ROUTE_FIXTURE if profile == "forever" else GENERAL_ZONE_ROUTE_FIXTURE)
+    measurements = {"cold": [], "warm": []}
+    for _ in range(options.runs):
+        for mode, runs in measurements.items():
+            fixture.reset(mode == "cold")
+            run = timed_job(fixture.create, options)
+            run["api_calls"] = capture_counters(fixture.counters)
+            runs.append(run)
+    prefix = f"general_zone_forever_{faction.lower()}" if profile == "forever" else "general_zone"
+    destination = ("Tirisfal" if faction == "Horde" else "Darkshore") if profile == "forever" else "Harandar"
+    return {f"{prefix}_{mode}": summarize(runs, profile=profile, destination=destination)
+            for mode, runs in measurements.items()}
+
+
+PROJECTION_FIXTURE = """
+APR = {}
+local calls, now = 0, 0
+function GetTime() return now end
+local hbd = { GetZoneCoordinatesFromWorldInstance = function(_, x, y)
+    calls = calls + 1
+    return x / 10000, y / 10000
+end }
+function LibStub() return hbd end
+C_Map = {
+    GetMapInfo = function(map) return { parentMapID = map == 1 and 2 or 0, mapType = map == 1 and 3 or 2 } end,
+    GetMapRectOnMap = function() return 0.1, 0.9, 0.1, 0.9 end,
+}
+if benchmarkProjectionProfile == "forever" then
+    C_Map.GetMapRectOnMap = nil
+    C_Map.GetWorldPosFromMapPos = function() return 0, {} end
+    function CreateVector2D(x, y) return { x = x, y = y } end
+    hbd.TranslateZoneCoordinates = function(_, x, y) return 0.1 + x * 0.8, 0.1 + y * 0.8 end
+end
+dofile("APR-Core/features/navigation/Preview.lua")
+local preview, points = APR.navigationPreview, {}
+for i = 1, 120 do points[i] = { Coord = { x = i * 10, y = i * 15 }, uiMapID = 1, instanceID = 0 } end
+return {
+    reset = function()
+        calls, now = 0, 0
+        preview:InvalidateProjectionCache()
+        collectgarbage("collect")
+    end,
+    run = function(cached)
+        local project = cached and preview.ProjectPoint or preview.ComputeProjection
+        local checksum = 0
+        for tick = 1, 100 do
+            now = tick * 0.3
+            for _, point in ipairs(points) do
+                local x, y = project(preview, point, 2)
+                checksum = checksum + x + y
+            end
+        end
+        return calls, checksum
+    end,
+}
+"""
+
+
+def benchmark_projection(options, profile="retail") -> dict:
+    runtime = new_runtime()
+    runtime.globals().benchmarkProjectionProfile = profile
+    fixture = runtime.execute(PROJECTION_FIXTURE)
+    results = {}
+    for name, cached in (("uncached", False), ("cached", True)):
+        runs, backends, checksums = [], [], []
+        for _ in range(options.runs):
+            fixture.reset()
+            started = milliseconds()
+            calls, checksum = fixture.run(cached)
+            runs.append(milliseconds() - started)
+            backends.append(calls)
+            checksums.append(checksum)
+        prefix = "projection_forever" if profile == "forever" else "projection"
+        results[f"{prefix}_{name}"] = {
+            "runs": options.runs, "points": 120, "redraws": 100, "profile": profile,
+            "total_ms_median": round(median(runs), 4),
+            "backend_calls_median": median(backends),
+            "checksum": checksums[0],
+        }
+    return results
+
+
+def benchmark_fixture(options, name, source) -> dict:
+    fixture = new_runtime().execute(source)
+    runs = []
+    for _ in range(options.runs):
+        fixture.reset()
+        run = timed_job(fixture.create, options, fixture.expectedStatus or "ready")
+        run["api_calls"] = capture_counters(fixture.counters)
+        runs.append(run)
+    return {name: summarize(runs)}
+
+
 def clock_callback_cost() -> float:
     runtime = new_runtime()
     loop = runtime.eval("function(n) for i = 1, n do benchmarkClock() end end")
@@ -284,7 +529,7 @@ def main(argv=None) -> int:
     parser.add_argument("--max-operations", type=int, default=4096)
     parser.add_argument("--slice-ms", type=float, default=0.9,
                         help="Provider budget; APR reserves 0.1 ms of its 1 ms slice for orchestration")
-    parser.add_argument("--scenario", choices=("all", "taxi", "catalog", "search"), default="all")
+    parser.add_argument("--scenario", choices=("all", "taxi", "catalog", "search", "dense", "unlock", "zone", "general-zone", "projection", "forever"), default="all")
     options = parser.parse_args(argv)
     if options.runs < 1 or options.max_operations < 1 or not 0 < options.slice_ms < float("inf"):
         parser.error("runs, max-operations and slice-ms must be positive finite values")
@@ -301,6 +546,20 @@ def main(argv=None) -> int:
                 scenarios.update(benchmark_catalog(options, profile))
         if options.scenario in ("all", "search"):
             scenarios.update(benchmark_search(options))
+        if options.scenario in ("all", "dense"):
+            scenarios.update(benchmark_fixture(options, "dense_search", DENSE_SEARCH_FIXTURE))
+        if options.scenario in ("all", "unlock"):
+            scenarios.update(benchmark_fixture(options, "unlock", UNLOCK_FIXTURE))
+        if options.scenario in ("all", "zone"):
+            scenarios.update(benchmark_fixture(options, "zone_access_blocked", ZONE_ROUTE_FIXTURE))
+        if options.scenario in ("all", "general-zone"):
+            scenarios.update(benchmark_general_zones(options))
+        if options.scenario in ("all", "projection"):
+            scenarios.update(benchmark_projection(options))
+        if options.scenario in ("all", "forever"):
+            for faction in ("Alliance", "Horde"):
+                scenarios.update(benchmark_general_zones(options, "forever", faction))
+            scenarios.update(benchmark_projection(options, "forever"))
         report = {
             "runtime": "lupa.lua51",
             "clock": "Python time.perf_counter_ns, injected into Lua",

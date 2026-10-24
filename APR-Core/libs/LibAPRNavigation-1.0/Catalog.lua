@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 11) then return end
+if not Lib:BeginModule("catalog", 13) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -307,7 +307,7 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
 end
 
 function EdgeBuild:Advance()
-    local definition = self.owner.connections[self.index]
+    local definition = self.definitions[self.index]
     if self.reverse then
         self:AddDirection(definition, self.prepared, definition.to, definition.from, ":reverse")
         self.reverse, self.prepared = false, nil
@@ -347,15 +347,23 @@ function EdgeBuild:Step(maxOperations, maxMilliseconds)
         local operations = 0
         -- One operation handles one direction or one rejected definition.
         -- A frame may stop between the two directions of the same connection.
-        while self.index <= #self.owner.connections and operations < maxOperations do
+        while self.index <= #self.definitions and operations < maxOperations do
             if deadline and self.clock() >= deadline then break end
             self:Advance()
             operations = operations + 1
         end
-        if self.index > #self.owner.connections then self.status = "ready" end
+        if self.index > #self.definitions then self.status = "ready" end
     end
     local edges, metadata = self:GetResult()
     return self.status, edges, metadata
+end
+
+function Instance:CreatePlanningSnapshot(context)
+    local environment = SnapshotEnvironment(self.env)
+    local snapshot = setmetatable({ env = environment, dynamicPositions = {} }, { __index = self })
+    local character = Lib.Copy(self.env.getCharacter and self.env.getCharacter() or {})
+    if context and context.inGroup ~= nil then character.inGroup = context.inGroup end
+    return snapshot, character
 end
 
 function Instance:CreateEdgeBuild(context)
@@ -368,6 +376,7 @@ function Instance:CreateEdgeBuild(context)
     }
     local build = setmetatable({
         owner = self,
+        definitions = context.connectionID and { self.connectionLookup[context.connectionID] } or self.connections,
         context = context,
         metadata = metadata,
         edges = {},
@@ -384,10 +393,7 @@ function Instance:CreateEdgeBuild(context)
 
     -- Each builder owns its API answers and character snapshot. Shared map
     -- projections remain safe because only successful static geometry is cached.
-    local environment = SnapshotEnvironment(self.env)
-    build.snapshot = setmetatable({ env = environment, dynamicPositions = {} }, { __index = self })
-    build.character = Lib.Copy(self.env.getCharacter and self.env.getCharacter() or {})
-    if context.inGroup ~= nil then build.character.inGroup = context.inGroup end
+    build.snapshot, build.character = self:CreatePlanningSnapshot(context)
     return build
 end
 

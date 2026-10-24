@@ -11,7 +11,9 @@ class InstrumentationTests(unittest.TestCase):
                      'arrow_action_text', 'arrow_action_settings', 'action_text_source',
                      'event_lifecycle', 'npc_interaction_chain', 'party_group_sync', 'version_shared_channel',
                      'secret_compatibility', 'reputation_scheduling',
-                     'step_progression', 'navigation_scheduling', 'route_path_performance',
+                     'step_progression', 'navigation_scheduling', 'navigation_unlock_routes',
+                     'navigation_map_projection', 'navigation_projection_cache', 'route_path_performance',
+                     'navigation_forever_performance', 'navigation_forever_projection',
                      'ui_foundations', 'route_panels_render', 'waypoint_integration'):
             with self.subTest(suite=name):
                 runtime = LuaRuntime(unpack_returned_tuples=True)

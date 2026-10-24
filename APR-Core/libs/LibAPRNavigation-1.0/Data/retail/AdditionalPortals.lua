@@ -1,5 +1,12 @@
 -- Declarative travel data. Names are resolved through the game client.
 LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "additional_portals", {
+    config = {
+        ZoneRoutes = {
+            [2371] = "additional-dornogal-karesh",
+            [2472] = "additional-dornogal-karesh",
+            [2346] = "additional-dornogal-undermine",
+        },
+    },
     connections = {
         {
             id = "additional-stormwind-ruttheran-past",
@@ -492,4 +499,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "additional_portals", {
             seconds = 5,
         },
     },
-}, 31)
+}, 32)

@@ -129,6 +129,7 @@ APR-Core/features/questing/QuestHandler.lua
 APR-Core/features/questing/RouteActions.lua
 APR-Core/features/navigation/Preview.lua
 APR-Core/features/navigation/NavigationPlanner.lua
+APR-Core/features/navigation/NavigationUnlocks.lua
 APR-Core/features/navigation/Navigation.lua
 APR-Core/features/navigation/FlightPath.lua
 
