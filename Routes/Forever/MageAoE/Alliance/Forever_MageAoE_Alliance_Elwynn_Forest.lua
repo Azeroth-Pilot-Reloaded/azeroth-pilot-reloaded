@@ -439,7 +439,8 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 60,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Go Upstairs. Train your class spells" },
+            LearnSkill = { allAvailable = true },
+            ExtraLineText = "GO_UPSTAIRS_TRAIN_CLASS_SPELLS",
             Coord = { x = 36.02, y = -9471.84 },
             IsQuestUncompleted = 85,
             MinLevel = 1,
@@ -746,7 +747,8 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 105,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Go Upstairs. Train your class spells" },
+            LearnSkill = { allAvailable = true },
+            ExtraLineText = "GO_UPSTAIRS_TRAIN_CLASS_SPELLS",
             Coord = { x = 36.02, y = -9471.84 },
             IsQuestUncompleted = 35,
             MinLevel = 1,
@@ -1121,7 +1123,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 159,
         },
         {
-            LearnSkill = { text = "Train 1h Swords", spellID = 201 },
+            LearnSkill = { spellID = 201 },
             Coord = { x = 613.39, y = -8796.05 },
             IsQuestUncompleted = 6281,
             MinLevel = 1,
@@ -1294,7 +1296,8 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Human"] = {
             _index = 184,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train Cooking from Ghilm. You'll need this to pick up 2 extra quests later" },
+            LearnProfession = 2550,
+            ExtraLineText = "NEED_PICK_2_EXTRA_QUESTS",
             Coord = { x = -1576.47, y = -5673.07 },
             IsQuestUncompleted = 419,
             MinLevel = 1,

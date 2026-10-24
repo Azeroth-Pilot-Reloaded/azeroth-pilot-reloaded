@@ -999,7 +999,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Starting-Zone-Scourge"] = {
             _index = 126,
         },
         {
-            DestroyItems = { items = { 286176 }, text = "Destroy the [Executor's Motivator] as it's no longed needed for anything" },
+            DestroyItems = { items = { 286176 } },
             IsQuestUncompleted = 99144,
             _index = 127,
         },

@@ -1038,7 +1038,8 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Starting-Zone-Gnome"] = {
             _index = 138,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train Cooking from Ghilm. You'll need this to pick up 2 extra quests later" },
+            LearnProfession = 2550,
+            ExtraLineText = "NEED_PICK_2_EXTRA_QUESTS",
             Coord = { x = -1576.47, y = -5673.07 },
             IsQuestUncompleted = 419,
             MinLevel = 1,

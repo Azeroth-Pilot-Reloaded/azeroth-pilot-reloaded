@@ -170,7 +170,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Redridge"] = {
             _index = 20,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train 1h Swords and Daggers" },
+            LearnSkill = { spellIDs = { 201, 1180 } },
             Coord = { x = 612.99, y = -8796.14 },
             IsQuestUncompleted = 120,
             MinLevel = 1,

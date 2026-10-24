@@ -529,7 +529,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Alliance-Hillsbrad"] = {
             _index = 70,
         },
         {
-            DestroyItems = { items = { 3248 }, text = "Throw away the Translated Letter from The Embalmer" },
+            DestroyItems = { items = { 3248 } },
             IsQuestUncompleted = 229,
             _index = 71,
         },
