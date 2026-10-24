@@ -20,9 +20,12 @@ local function Related(text)
     end
 end
 
-function Log:Record(message, stack, occurrences, timestamp)
+function Log:Record(message, stack, occurrences, timestamp, attributedAddon)
     message, stack = PublicString(message, 4096), PublicString(stack, 12000)
     local source = Related(message) or Related(stack)
+    -- Protected-action failures can contain only Blizzard paths. Preserve the
+    -- client's explicit attribution without relying on translated error text.
+    if not source and attributedAddon == "APR" then source = "APR" end
     if not source then return end
     local entry
     for _, candidate in ipairs(self.entries) do
@@ -42,11 +45,11 @@ function Log:Record(message, stack, occurrences, timestamp)
     self.revision = self.revision + 1
 end
 
-local function Capture(message, stack, count, timestamp)
+local function Capture(message, stack, count, timestamp, attributedAddon)
     if capturing then return end
     capturing = true
     -- Diagnostics must never prevent WoW or an installed error handler from showing the original error.
-    pcall(Log.Record, Log, message, stack, count, timestamp)
+    pcall(Log.Record, Log, message, stack, count, timestamp, attributedAddon)
     capturing = false
 end
 
@@ -98,5 +101,15 @@ end
 local events = CreateFrame("Frame")
 events:RegisterEvent("ADDON_LOADED")
 events:RegisterEvent("PLAYER_LOGIN")
-events:SetScript("OnEvent", function() Log:Connect() end)
+events:RegisterEvent("ADDON_ACTION_BLOCKED")
+events:RegisterEvent("ADDON_ACTION_FORBIDDEN")
+events:SetScript("OnEvent", function(_, event, addonName, addonFunc)
+    if event == "ADDON_ACTION_BLOCKED" or event == "ADDON_ACTION_FORBIDDEN" then
+        if PublicString(addonName, 128) ~= "APR" then return end
+        local stack = debugstack and debugstack(2, 20, 20) or ""
+        Capture(event .. ": " .. PublicString(addonFunc, 512), stack, nil, nil, "APR")
+        return
+    end
+    Log:Connect()
+end)
 Log:Connect()
