@@ -1355,7 +1355,7 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
             _index = 9,
         },
         {
-            DestroyItems = { items = { 18904 }, text = "Destroy [Zorbin's Ultra-Shrinker]" },
+            DestroyItems = { items = { 18904 } },
             AnyOf = { { Class = { "DRUID", "PALADIN", "ROGUE", "WARRIOR" }, IsQuestUncompleted = 2844 }, { Class = { "HUNTER", "MAGE", "PRIEST", "SHAMAN", "WARLOCK" }, IsQuestUncompleted = 4142 } },
             _index = 10,
         },

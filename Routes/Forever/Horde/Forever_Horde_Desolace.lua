@@ -71,7 +71,7 @@ APR.RouteQuestStepList["Forever-Horde-Desolace-First-Visit"] = {
             _index = 3,
         },
         {
-            DestroyItems = { items = { 5838 }, text = "Destroy the [Kodo Skin Scroll] as you no longer need it" },
+            DestroyItems = { items = { 5838 } },
             IsQuestCompleted = 1136,
             IsQuestUncompleted = 1088,
             _index = 4,

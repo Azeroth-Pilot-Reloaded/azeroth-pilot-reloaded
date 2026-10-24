@@ -179,7 +179,7 @@ APR.RouteQuestStepList["Forever-Alliance-Western-Plaguelands"] = {
             _index = 18,
         },
         {
-            BankWithdraw = { items = { 10819, 9328, 9330 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 10819, 9328, 9330 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 35.9, 60.17),
             Zone = 1455,
             _index = 19,

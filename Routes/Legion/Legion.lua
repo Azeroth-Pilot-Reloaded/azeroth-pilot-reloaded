@@ -12923,7 +12923,7 @@ APR.RouteQuestStepList["Artifact Weapon - Paladin - Retribution"] = {
         },
         {
             Done = { 42774 },
-            ExtraLineText = "FLY_TO",
+            ExtraLineText = "MOUNT_AND_FLY_TO_TURN_IN",
             Coord = { x = -5282.3, y = 2273.2 },
             Zone = 23,
             _index = 24,

@@ -273,7 +273,7 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
             _index = 22,
         },
         {
-            DestroyItems = { items = { 5877 }, text = "Destroy the [Cracked Silithid Carapace] as you no longer need it" },
+            DestroyItems = { items = { 5877 } },
             IsQuestUncompleted = 583,
             _index = 23,
         },
@@ -1497,7 +1497,7 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-First-Visit"] = {
             _index = 164,
         },
         {
-            BankDeposit = { items = { 2725, 2728, 2735, 2730, 2742, 2732, 2748, 2751, 2734, 2740, 2749, 2745, 2738, 2744, 2750 }, text = "Deposit all your [Green Hills of Stranglethorn Pages] onto the bank" },
+            BankDeposit = { items = { 2725, 2728, 2735, 2730, 2742, 2732, 2748, 2751, 2734, 2740, 2749, 2745, 2738, 2744, 2750 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.57, 69.07),
             Zone = 1454,
             _index = 165,
@@ -3135,7 +3135,7 @@ APR.RouteQuestStepList["Forever-Horde-Stranglethorn-Vale-Third-Visit"] = {
             _index = 83,
         },
         {
-            BankWithdraw = { items = { 2725, 2728, 2735, 2730, 2742, 2732, 2748, 2751, 2734, 2740, 2749, 2745, 2738, 2744, 2750, 10699, 5862, 9628, 8564 }, text = "Withdraw the following from your bank:" },
+            BankWithdraw = { items = { 2725, 2728, 2735, 2730, 2742, 2732, 2748, 2751, 2734, 2740, 2749, 2745, 2738, 2744, 2750, 10699, 5862, 9628, 8564 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.55, 76.57),
             Zone = 1434,
             _index = 84,

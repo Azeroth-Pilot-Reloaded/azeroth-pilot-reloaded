@@ -593,7 +593,7 @@ APR.RouteQuestStepList["Forever-Horde-Badlands"] = {
             _index = 69,
         },
         {
-            DestroyItems = { items = { 7846 }, text = "Delete any extra [Crag Coyote Fangs] you still have" },
+            DestroyItems = { items = { 7846 } },
             Fillers = { [782] = { 1 } },
             IsQuestCompleted = 2258,
             ItemCount = { itemID = 7846, count = 1, operator = ">=" },

@@ -521,7 +521,7 @@ APR.RouteQuestStepList["Forever-Alliance-Un-Goro-Crater"] = {
             _index = 63,
         },
         {
-            DestroyItems = { items = { 11482 }, text = "Destroy the [Crystal Pylon User's Manual]" },
+            DestroyItems = { items = { 11482 } },
             _index = 64,
         },
         {
@@ -651,7 +651,7 @@ APR.RouteQuestStepList["Forever-Alliance-Un-Goro-Crater"] = {
             _index = 81,
         },
         {
-            BankWithdraw = { items = { 11682, 12906, 11511, 12383 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 11682, 12906, 11511, 12383 } },
             Coord = { x = -3827.24, y = -7205.09 },
             Zone = 1446,
             _index = 82,

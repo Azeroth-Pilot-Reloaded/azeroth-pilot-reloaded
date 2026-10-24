@@ -987,7 +987,7 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 93,
         },
         {
-            DestroyItems = { items = { 5085 }, text = "Delete any leftover [Bristleback Quilboar Tusks] you may still have" },
+            DestroyItems = { items = { 5085 } },
             AnyOf = { { IsQuestUncompleted = 1528, Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "SHAMAN" }, { IsQuestUncompleted = 1507, Race = { "Orc", "Scourge", "Troll" }, Class = "WARLOCK" }, { IsQuestUncompleted = 878, Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARRIOR" } } },
             ItemCount = { count = 1, itemID = 5085, operator = ">=" },
             _index = 94,
@@ -1632,14 +1632,14 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 163,
         },
         {
-            BankDeposit = { items = { 5075 }, text = "Deposit your [Blood Shards]" },
+            BankDeposit = { items = { 5075 } },
             Coord = { x = 24.85, y = -1252.75 },
             ItemCount = { itemID = 5075, count = 1, operator = ">=", includeBank = false },
             Zone = 1456,
             _index = 164,
         },
         {
-            BankDeposit = { items = { 5059 }, text = "Deposit your [Digging Claw]" },
+            BankDeposit = { items = { 5059 } },
             Coord = { x = 24.85, y = -1252.75 },
             IsQuestOnQuest = 868,
             ItemCount = { itemID = 5059, count = 1, operator = ">=" },
@@ -4125,13 +4125,13 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 434,
         },
         {
-            DestroyItems = { items = { 8051 }, text = "Delete the [Flare Gun] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 8051 } },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             _index = 435,
         },
         {
-            DestroyItems = { items = { 8066 }, text = "Delete [Fizzule's Whistle] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 8066 } },
             Class = "ROGUE",
             Race = { "Orc", "Scourge", "Skyborne", "Troll" },
             _index = 436,

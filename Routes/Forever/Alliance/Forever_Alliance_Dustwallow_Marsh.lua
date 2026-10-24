@@ -100,7 +100,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
             _index = 7,
         },
         {
-            DestroyItems = { items = { 16991 }, text = "Delete the [Triage Bandage]. You no longer need it" },
+            DestroyItems = { items = { 16991 } },
             IsQuestCompleted = 6624,
             _index = 8,
         },
@@ -207,7 +207,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh"] = {
             _index = 21,
         },
         {
-            DestroyItems = { items = { 5884 }, text = "Delete any extra [Unpopped Darkmist Eyes] you still have" },
+            DestroyItems = { items = { 5884 } },
             IsQuestCompleted = 1206,
             _index = 22,
         },
@@ -672,7 +672,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
             _index = 18,
         },
         {
-            DestroyItems = { items = { 16991 }, text = "Delete the [Triage Bandage]. You no longer need it" },
+            DestroyItems = { items = { 16991 } },
             IsQuestCompleted = 6624,
             _index = 19,
         },
@@ -840,7 +840,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dustwallow-Marsh-Desolace"] = {
             _index = 38,
         },
         {
-            DestroyItems = { items = { 5884 }, text = "Delete any extra [Unpopped Darkmist Eyes] you still have" },
+            DestroyItems = { items = { 5884 } },
             IsQuestCompleted = 1206,
             _index = 39,
         },

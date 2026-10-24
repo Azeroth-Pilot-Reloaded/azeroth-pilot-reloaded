@@ -1037,7 +1037,7 @@ APR.RouteQuestStepList["Forever-Alliance-Redridge-Mountains"] = {
             _index = 118,
         },
         {
-            DestroyItems = { items = { 7907 }, text = "Destroy the [Certificate of Thievery]. You don't need it" },
+            DestroyItems = { items = { 7907 } },
             Class = "ROGUE",
             IsQuestUncompleted = 246,
             _index = 119,

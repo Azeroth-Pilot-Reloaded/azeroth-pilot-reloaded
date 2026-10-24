@@ -42,7 +42,7 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
     },
     steps = {
         {
-            BankDeposit = { items = { 11682, 11511, 11947, 11949 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 11682, 11511, 11947, 11949 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.68, 37.395),
             Range = 5,
             IsQuestUncompleted = 4502,
@@ -50,7 +50,7 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
             _index = 1,
         },
         {
-            BankWithdraw = { items = { 10445, 10444 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 10445, 10444 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.68, 37.395),
             Range = 5,
             IsQuestOnQuest = 3449,
@@ -487,7 +487,7 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
             _index = 53,
         },
         {
-            DestroyItems = { items = { 10444 }, text = "Destroy the [Standard Issue Flare Gun]" },
+            DestroyItems = { items = { 10444 } },
             IsQuestCompleted = 3449,
             _index = 54,
         },
@@ -607,7 +607,7 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
             _index = 65,
         },
         {
-            BankWithdraw = { items = { 11568, 11569, 11570, 11830, 11018, 11114, 11831 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 11568, 11569, 11570, 11830, 11018, 11114, 11831 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.68, 37.395),
             Range = 5,
             IsQuestUncompleted = 4502,
@@ -615,7 +615,7 @@ APR.RouteQuestStepList["Forever-Alliance-Azshara"] = {
             _index = 66,
         },
         {
-            BankDeposit = { items = { 10445, 12906 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 10445, 12906 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.68, 37.395),
             Range = 5,
             IsQuestUncompleted = 4502,

@@ -68,7 +68,7 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
             _index = 4,
         },
         {
-            BankWithdraw = { items = { 10445, 11947, 11949, 12724, 10575 }, text = "Withdraw the following from your bank:" },
+            BankWithdraw = { items = { 10445, 11947, 11949, 12724, 10575 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 35.9, 60.17),
             ClassNot = { "DRUID", "HUNTER", "MAGE" },
             Zone = 1455,
@@ -790,7 +790,7 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
             _index = 89,
         },
         {
-            DestroyItems = { items = { 11467 }, text = "Delete any leftover [Blackrock Medallions]" },
+            DestroyItems = { items = { 11467 } },
             IsQuestCompleted = 4283,
             _index = 90,
         },
@@ -1202,13 +1202,13 @@ APR.RouteQuestStepList["Forever-Alliance-Burning-Steppes"] = {
             _index = 135,
         },
         {
-            BankWithdraw = { items = { 15788, 15790, 12891, 12896, 12897, 12898, 12899 }, text = "Withdraw the following items:" },
+            BankWithdraw = { items = { 15788, 15790, 12891, 12896, 12897, 12898, 12899 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 35.9, 60.17),
             Zone = 1455,
             _index = 136,
         },
         {
-            BankDeposit = { items = { 12438 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 12438 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 35.9, 60.17),
             Zone = 1455,
             _index = 137,

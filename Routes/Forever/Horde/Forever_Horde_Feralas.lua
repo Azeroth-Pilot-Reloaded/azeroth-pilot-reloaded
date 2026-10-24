@@ -423,7 +423,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 49,
         },
         {
-            DestroyItems = { items = { 9460 }, text = "Destroy the leftover [Grimtotem Horn] in your bag as it's no longer needed" },
+            DestroyItems = { items = { 9460 } },
             _index = 50,
         },
         {
@@ -981,7 +981,7 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-First-Visit"] = {
             _index = 111,
         },
         {
-            BankDeposit = { items = { 10699, 5862, 9628, 8564, 4589 }, text = "Deposit the following onto your bank:" },
+            BankDeposit = { items = { 10699, 5862, 9628, 8564, 4589 } },
             Coord = { x = -4376.01, y = 1627.22 },
             IsQuestUncompleted = 197,
             Zone = 1454,
@@ -1588,17 +1588,17 @@ APR.RouteQuestStepList["Forever-Horde-Feralas-Second-Visit"] = {
             _index = 61,
         },
         {
-            DestroyItems = { items = { 11107 }, text = "Destroy [A Small Pack]" },
+            DestroyItems = { items = { 11107 } },
             IsQuestUncompleted = 3884,
             _index = 62,
         },
         {
-            DestroyItems = { items = { 3108 }, text = "Destroy the [Heavy Throwing Daggers]" },
+            DestroyItems = { items = { 3108 } },
             IsQuestUncompleted = 3884,
             _index = 63,
         },
         {
-            DestroyItems = { items = { 11108 }, text = "Destroy the [Faded Photograph]" },
+            DestroyItems = { items = { 11108 } },
             IsQuestUncompleted = 3884,
             _index = 64,
         },

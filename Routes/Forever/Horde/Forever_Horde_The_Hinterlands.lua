@@ -193,7 +193,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             _index = 15,
         },
         {
-            BankWithdraw = { items = { 8526 }, text = "Withdraw your Violet Tragan if banked" },
+            BankWithdraw = { items = { 8526 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.99, 44.91),
             AllOf = { { ItemCount = { itemID = 8526, count = 1, includeBank = true } } },
             IsQuestOnQuest = 2641,
@@ -202,7 +202,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             _index = 16,
         },
         {
-            BankWithdraw = { items = { 9618 }, text = "Withdraw your Wildkin Muisek Vessel if banked" },
+            BankWithdraw = { items = { 9618 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.99, 44.91),
             AllOf = { { ItemCount = { itemID = 9618, count = 1, includeBank = true } } },
             IsQuestOnQuest = 3123,
@@ -211,7 +211,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             _index = 17,
         },
         {
-            BankWithdraw = { items = { 4589 }, text = "Withdraw [Long Elegant Feathers] from the bank" },
+            BankWithdraw = { items = { 4589 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.99, 44.91),
             IsQuestUncompleted = 7842,
             ItemCount = { itemID = 4589, count = 10, operator = "<" },
@@ -1259,7 +1259,7 @@ APR.RouteQuestStepList["Forever-Horde-The-Hinterlands"] = {
             _index = 144,
         },
         {
-            BankDeposit = { items = { 10695, 10687, 10688, 10689, 10690 }, text = "Put the following on the bank:" },
+            BankDeposit = { items = { 10695, 10687, 10688, 10689, 10690 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1446, 52.3, 28.91),
             IsQuestOnQuest = 3568,
             Zone = 1446,

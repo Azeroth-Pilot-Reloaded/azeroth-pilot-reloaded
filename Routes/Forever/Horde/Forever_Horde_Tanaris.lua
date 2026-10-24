@@ -438,7 +438,7 @@ APR.RouteQuestStepList["Forever-Horde-Tanaris-First-Visit"] = {
             _index = 50,
         },
         {
-            DestroyItems = { items = { 5866 }, text = "Destroy the [Sample of Indurium Ore] as it's not needed for anything" },
+            DestroyItems = { items = { 5866 } },
             IsQuestUncompleted = 1169,
             ItemCount = { itemID = 5866, count = 1, operator = ">=" },
             _index = 51,

@@ -688,7 +688,7 @@ APR.RouteQuestStepList["Forever-Horde-Swamp-of-Sorrows-First-Visit"] = {
             _index = 70,
         },
         {
-            BankDeposit = { items = { 2725, 2728, 2735, 2730, 2742, 2732, 2748, 2751, 2734, 2740, 2749, 2745, 2738, 2744, 2750 }, text = "Deposit all your [Green Hills of Stranglethorn Pages] onto the bank" },
+            BankDeposit = { items = { 2725, 2728, 2735, 2730, 2742, 2732, 2748, 2751, 2734, 2740, 2749, 2745, 2738, 2744, 2750 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.55, 76.57),
             IsQuestUncompleted = 1270,
             Zone = 1434,

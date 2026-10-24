@@ -238,13 +238,13 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood"] = {
             _index = 22,
         },
         {
-            BankDeposit = { items = { 12724, 10444, 10445 }, text = "Deposit the following items:" },
+            BankDeposit = { items = { 12724, 10444, 10445 } },
             Coord = { x = 2518.2, y = 9941.2 },
             Zone = 1457,
             _index = 23,
         },
         {
-            BankWithdraw = { items = { 9368, 11466, 8594, 11133, 11912, 11018 }, text = "Withdraw the following items:" },
+            BankWithdraw = { items = { 9368, 11466, 8594, 11133, 11912, 11018 } },
             Coord = { x = 2518.2, y = 9941.2 },
             Zone = 1457,
             _index = 24,
@@ -1679,7 +1679,7 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
             _index = 72,
         },
         {
-            DestroyItems = { items = { 11243 }, text = "Delete any remaining [Videre Elixirs] you have" },
+            DestroyItems = { items = { 11243 } },
             IsQuestCompleted = 3913,
             _index = 73,
         },
@@ -1748,7 +1748,7 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
             _index = 81,
         },
         {
-            DestroyItems = { items = { 11445 }, text = "Throw away the [Flute of the Ancients]" },
+            DestroyItems = { items = { 11445 } },
             IsQuestCompleted = 4261,
             _index = 82,
         },
@@ -2012,7 +2012,7 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
             _index = 117,
         },
         {
-            BankDeposit = { items = { 15788, 15790, 11511, 11172, 11173, 17355, 13562, 13207, 12891, 12896, 12897, 12898, 12899 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 15788, 15790, 11511, 11172, 11173, 17355, 13562, 13207, 12891, 12896, 12897, 12898, 12899 } },
             Coord = { x = -4679.97, y = 6783.28 },
             Zone = 1452,
             _index = 118,
@@ -2350,7 +2350,7 @@ APR.RouteQuestStepList["Forever-Alliance-Felwood-Winterspring"] = {
             _index = 157,
         },
         {
-            BankWithdraw = { items = { 10445, 11947, 11949, 12724, 10575 }, text = "Withdraw the following from your bank:" },
+            BankWithdraw = { items = { 10445, 11947, 11949, 12724, 10575 } },
             Coord = { x = 2518.2, y = 9941.2 },
             Class = { "DRUID", "HUNTER", "MAGE" },
             OnlyInZones = { 1457 },

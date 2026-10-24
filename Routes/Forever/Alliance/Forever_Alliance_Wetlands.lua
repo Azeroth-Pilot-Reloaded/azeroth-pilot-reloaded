@@ -1465,7 +1465,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
             _index = 2,
         },
         {
-            BankDeposit = { items = { 916, 1451, 2378, 1130 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 916, 1451, 2378, 1130 } },
             Coord = { x = 613.93, y = -8933.64 },
             IsQuestUncompleted = 269,
             SkipInZones = { 1455 },
@@ -1473,7 +1473,7 @@ APR.RouteQuestStepList["Forever-Alliance-Wetlands-Hillsbrad-Foothills"] = {
             _index = 3,
         },
         {
-            BankWithdraw = { items = { 3618, 3347, 3397, 5233, 5234, 3349, 2611 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 3618, 3347, 3397, 5233, 5234, 3349, 2611 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = "HUNTER",
             IsQuestUncompleted = 269,

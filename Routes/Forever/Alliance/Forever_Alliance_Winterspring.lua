@@ -255,7 +255,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             _index = 25,
         },
         {
-            BankWithdraw = { items = { 12438 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 12438 } },
             Coord = { x = -4679.97, y = 6783.28 },
             IsQuestOnQuest = 4808,
             IsQuestUncompleted = 4808,
@@ -791,7 +791,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             _index = 92,
         },
         {
-            DestroyItems = { items = { 11169 }, text = "Delete the [Book of Aquor]" },
+            DestroyItems = { items = { 11169 } },
             IsQuestCompleted = 4005,
             IsQuestUncompleted = 1124,
             _index = 93,
@@ -1050,7 +1050,7 @@ APR.RouteQuestStepList["Forever-Alliance-Winterspring-Silithus"] = {
             _index = 125,
         },
         {
-            DestroyItems = { items = { 17345 }, text = "Delete the [Silithid Goo]. It isn't used for anything" },
+            DestroyItems = { items = { 17345 } },
             Fillers = { [8280] = { 1 }, [8277] = { 2, 1 } },
             IsQuestUncompleted = 8284,
             _index = 126,

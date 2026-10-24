@@ -281,7 +281,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
             _index = 30,
         },
         {
-            DestroyItems = { items = { 5505 }, text = "Destroy [Teronis' Journal]. You no longer need it" },
+            DestroyItems = { items = { 5505 } },
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             IsQuestUncompleted = 1008,
             _index = 31,
@@ -684,7 +684,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stonetalon-Ashenvale"] = {
             _index = 75,
         },
         {
-            DestroyItems = { items = { 5505 }, text = "Destroy [Teronis' Journal]. You no longer need it" },
+            DestroyItems = { items = { 5505 } },
             Class = "WARLOCK",
             IsQuestUncompleted = 1034,
             Race = { "Gnome", "Human" },

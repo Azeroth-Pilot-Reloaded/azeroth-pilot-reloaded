@@ -1921,13 +1921,13 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 167,
         },
         {
-            DestroyItems = { items = { 5088 }, text = "Delete the [Control Console Operating Manual] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 5088 } },
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
             IsQuestUncompleted = 97253,
             _index = 168,
         },
         {
-            DestroyItems = { items = { 5088 }, text = "Delete the [Control Console Operating Manual] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 5088 } },
             Coord = { x = -3664.82, y = -1050.14 },
             Range = 30,
             Class = "SHAMAN",
@@ -4470,13 +4470,13 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 427,
         },
         {
-            DestroyItems = { items = { 10327 }, text = "Destroy [Horn of Echeyakee] as you no longer need it" },
+            DestroyItems = { items = { 10327 } },
             AnyOf = { { AnyOf = { { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "WARLOCK", "WARRIOR" } }, { Race = "Troll", Class = { "HUNTER", "MAGE", "PRIEST", "SHAMAN", "WARLOCK", "WARRIOR" } }, { Race = "Orc", Class = { "HUNTER", "MAGE", "SHAMAN", "WARLOCK", "WARRIOR" } }, { Race = "Tauren" } } }, { Race = { "Orc", "Scourge", "Skyborne", "Troll" }, Class = "ROGUE" } },
             IsQuestCompleted = 881,
             _index = 428,
         },
         {
-            DestroyItems = { items = { 10327 }, text = "Destroy [Horn of Echeyakee] as you no longer need it" },
+            DestroyItems = { items = { 10327 } },
             Coord = { x = -2670.74, y = -482.61 },
             Range = 30,
             Class = "SHAMAN",
@@ -5418,14 +5418,14 @@ APR.RouteQuestStepList["Forever-Horde-The-Barrens"] = {
             _index = 526,
         },
         {
-            DestroyItems = { items = { 5165 }, text = "Delete any leftover [Sunscale Feathers] you still have" },
+            DestroyItems = { items = { 5165 } },
             AnyOf = { { Class = { "DRUID", "HUNTER", "ROGUE", "WARRIOR" } }, { Race = { "Orc", "Scourge", "Tauren", "Troll" } } },
             IsQuestUncompleted = 851,
             ItemCount = { itemID = 5165, count = 1, operator = ">=" },
             _index = 527,
         },
         {
-            DestroyItems = { items = { 5165 }, text = "Delete any leftover [Sunscale Feathers] you still have" },
+            DestroyItems = { items = { 5165 } },
             Coord = { x = -2639.32, y = -436 },
             Range = 30,
             Class = "SHAMAN",

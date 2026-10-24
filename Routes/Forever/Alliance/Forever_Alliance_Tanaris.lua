@@ -119,7 +119,7 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-First-Visit"] = {
             _index = 8,
         },
         {
-            DestroyItems = { items = { 16991 }, text = "Delete the [Triage Bandage]. You no longer need it" },
+            DestroyItems = { items = { 16991 } },
             IsQuestCompleted = 6624,
             IsQuestUncompleted = 1258,
             _index = 9,
@@ -419,7 +419,7 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-First-Visit"] = {
             _index = 44,
         },
         {
-            DestroyItems = { items = { 5866 }, text = "Delete the [Sample of Indurium Ore] you do not need it" },
+            DestroyItems = { items = { 5866 } },
             IsQuestUncompleted = 2872,
             _index = 45,
         },
@@ -533,7 +533,7 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-First-Visit"] = {
             _index = 59,
         },
         {
-            BankDeposit = { items = { 5807, 6257 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 5807, 6257 } },
             Fillers = { [1452] = { 1 } },
             Coord = { x = -3827.24, y = -7205.09 },
             IsQuestUncompleted = 1690,
@@ -612,7 +612,7 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Second-Visit"] = {
     },
     steps = {
         {
-            BankWithdraw = { items = { 6257 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 6257 } },
             Coord = { x = -3827.24, y = -7205.09 },
             IsQuestUncompleted = 2741,
             Zone = 1446,
@@ -1024,7 +1024,7 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Second-Visit"] = {
             _index = 56,
         },
         {
-            BankDeposit = { items = { 9328, 9330, 10819, 3900, 6287 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 9328, 9330, 10819, 3900, 6287 } },
             Coord = { x = -3827.24, y = -7205.09 },
             IsQuestUncompleted = 3445,
             Zone = 1446,
@@ -1551,13 +1551,13 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Second-Visit"] = {
             _index = 126,
         },
         {
-            DestroyItems = { items = { 11108 }, text = "Destroy the [Faded Photograph]" },
+            DestroyItems = { items = { 11108 } },
             Class = { "HUNTER", "MAGE", "PRIEST", "SHAMAN", "WARLOCK" },
             IsQuestUncompleted = 3884,
             _index = 127,
         },
         {
-            DestroyItems = { items = { 3108 }, text = "Destroy the [Heavy Throwing Daggers]" },
+            DestroyItems = { items = { 3108 } },
             Class = { "HUNTER", "MAGE", "PRIEST", "SHAMAN", "WARLOCK" },
             IsQuestUncompleted = 3884,
             _index = 128,
@@ -1691,19 +1691,19 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Second-Visit"] = {
             _index = 145,
         },
         {
-            DestroyItems = { items = { 11108 }, text = "Destroy the [Faded Photograph]" },
+            DestroyItems = { items = { 11108 } },
             Class = { "DRUID", "PALADIN", "WARRIOR" },
             IsQuestUncompleted = 3884,
             _index = 146,
         },
         {
-            DestroyItems = { items = { 3108 }, text = "Destroy the [Heavy Throwing Daggers]" },
+            DestroyItems = { items = { 3108 } },
             Class = { "DRUID", "PALADIN", "WARRIOR" },
             IsQuestUncompleted = 3884,
             _index = 147,
         },
         {
-            DestroyItems = { items = { 11108 }, text = "Destroy the [Faded Photograph]" },
+            DestroyItems = { items = { 11108 } },
             Class = "ROGUE",
             IsQuestUncompleted = 3884,
             _index = 148,
@@ -1773,14 +1773,14 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Second-Visit"] = {
             _index = 155,
         },
         {
-            BankWithdraw = { items = { 2799, 4098, 5807, 3900, 6287 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 2799, 4098, 5807, 3900, 6287 } },
             Coord = { x = -3827.24, y = -7205.09 },
             IsQuestUncompleted = 2605,
             Zone = 1446,
             _index = 156,
         },
         {
-            BankDeposit = { items = { 11568, 11569, 11570, 11830, 11018, 11133, 11114, 11831 }, text = "Deposit the following items in your bank:" },
+            BankDeposit = { items = { 11568, 11569, 11570, 11830, 11018, 11133, 11114, 11831 } },
             Coord = { x = -3827.24, y = -7205.09 },
             IsQuestUncompleted = 2605,
             Zone = 1446,
@@ -2234,7 +2234,7 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Warlock"] = {
             _index = 37,
         },
         {
-            DestroyItems = { items = { 5866 }, text = "Delete the [Sample of Indurium Ore] you do not need it" },
+            DestroyItems = { items = { 5866 } },
             IsQuestUncompleted = 1799,
             _index = 38,
         },
@@ -2373,7 +2373,7 @@ APR.RouteQuestStepList["Forever-Alliance-Tanaris-Warlock"] = {
             _index = 55,
         },
         {
-            BankDeposit = { items = { 5807, 6257 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 5807, 6257 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.68, 37.395),
             IsQuestUncompleted = 4124,
             Zone = 1413,

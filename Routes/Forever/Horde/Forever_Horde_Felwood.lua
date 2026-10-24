@@ -396,7 +396,7 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
             _index = 44,
         },
         {
-            BankWithdraw = { items = { 12771 }, text = "Withdraw the quest item from your bank, then follow the route back to its objective" },
+            BankWithdraw = { items = { 12771 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.45, 36.97),
             AllOf = { { Collection = { itemID = 12771, quantity = 1 }, Not = { ItemCount = { itemID = 12771, count = 1 } } }, { IsQuestNotOnQuest = 5083, IsQuestUncompleted = 5083 } },
             Zone = 1452,
@@ -459,7 +459,7 @@ APR.RouteQuestStepList["Forever-Horde-Felwood"] = {
             _index = 52,
         },
         {
-            BankDeposit = { items = { 10691, 10692, 10693, 10694 }, text = "Put the following on the bank:" },
+            BankDeposit = { items = { 10691, 10692, 10693, 10694 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.45, 36.97),
             IsQuestOnQuest = 3568,
             IsQuestUncompleted = 4505,
@@ -924,14 +924,14 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
             _index = 21,
         },
         {
-            BankWithdraw = { items = { 12565 }, text = "Withdraw the quest item from your bank, then follow the route back to its objective" },
+            BankWithdraw = { items = { 12565 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.45, 36.97),
             AllOf = { { Collection = { itemID = 12565, quantity = 1 }, Not = { ItemCount = { itemID = 12565, count = 1 } } }, { IsQuestOnQuest = 4506, Not = { IsQuestReadyForTurnIn = 4506 } } },
             Zone = 1452,
             _index = 22,
         },
         {
-            BankWithdraw = { items = { 13140 }, text = "Withdraw the quest item from your bank, then follow the route back to its objective" },
+            BankWithdraw = { items = { 13140 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1452, 61.45, 36.97),
             AllOf = { { Collection = { itemID = 13140, quantity = 1 }, Not = { ItemCount = { itemID = 13140, count = 1 } } }, { IsQuestNotOnQuest = 5202, IsQuestUncompleted = 5202 } },
             Zone = 1452,
@@ -1511,7 +1511,7 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
             _index = 92,
         },
         {
-            DestroyItems = { items = { 11243 }, text = "Delete any remaining [Videre Elixirs] you have" },
+            DestroyItems = { items = { 11243 } },
             IsQuestCompleted = 3913,
             _index = 93,
         },
@@ -2551,7 +2551,8 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
             _index = 208,
         },
         {
-            BankWithdraw = { items = { 8529 }, text = "Withdraw [Noggenfogger Elixir] from your bank if you have any. Try to have at least 40 in your bags for a mountain skip in EPL" },
+            BankWithdraw = { items = { 8529 } },
+            ExtraLineText = "WITHDRAW_NOGGENFOGGER_ELIXIR_BANK_TRY_LEAST_40",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.57, 69.07),
             Class = { "DRUID", "HUNTER", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             IsQuestCompleted = 2641,
@@ -2560,8 +2561,9 @@ APR.RouteQuestStepList["Forever-Horde-Felwood-Winterspring"] = {
             _index = 209,
         },
         {
-            BankWithdraw = { items = { 8529 }, text = "Withdraw [Noggenfogger Elixir] from your bank if you have any. Try to have at least 40 in your bags for a mountain skip in EPL" },
+            BankWithdraw = { items = { 8529 } },
             Note = { "ALTERNATIVELY_LIGHT_FEATHERS_WORK_SLOW_FALL" },
+            ExtraLineText = "WITHDRAW_NOGGENFOGGER_ELIXIR_BANK_TRY_LEAST_40",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.57, 69.07),
             Class = "MAGE",
             IsQuestUncompleted = 5095,
