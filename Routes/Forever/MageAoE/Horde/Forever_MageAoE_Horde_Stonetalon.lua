@@ -621,7 +621,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Stonetalon-Barrens"] = {
             _index = 86,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class spells if needed" },
+            LearnSkill = { allAvailable = true },
             Note = { "SWITCH_FROST_AOE_TALENT_BUILD_NOT_ALREADY" },
             Coord = { x = 254.06, y = -995.78 },
             IsQuestUncompleted = 876,

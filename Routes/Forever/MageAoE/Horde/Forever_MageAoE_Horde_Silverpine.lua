@@ -43,10 +43,10 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
     },
     steps = {
         {
-            LearnSkill = { allAvailable = true, text = "Go Upstairs. Train Portal: Orgrimmar" },
+            LearnSkill = { spellID = 3567 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 38.69, 85.38),
             IsQuestUncompleted = 3301,
-            MinLevel = 1,
+            MinLevel = 20,
             Zone = 1454,
             _index = 1,
         },
@@ -124,11 +124,11 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
             _index = 11,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train the Undercity Portal" },
+            LearnSkill = { spellID = 3563 },
             Note = { "NOT_ENOUGH_MONEY_VENDOR_THINGS_REAGENT_VENDOR" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 84.2, 15.55),
             IsQuestUncompleted = 3301,
-            MinLevel = 1,
+            MinLevel = 20,
             Zone = 1458,
             _index = 12,
         },
@@ -345,7 +345,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
             _index = 41,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train 1h Swords, Daggers" },
+            LearnSkill = { spellIDs = { 201, 1180 } },
             Fillers = { [527] = { 4 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 57.3, 32.76),
             IsQuestUncompleted = 527,
