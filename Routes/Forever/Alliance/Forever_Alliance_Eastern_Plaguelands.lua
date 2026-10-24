@@ -419,7 +419,7 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
             _index = 52,
         },
         {
-            DestroyItems = { items = { 12815 }, text = "Delete the [Beacon Torch]" },
+            DestroyItems = { items = { 12815 } },
             IsQuestCompleted = 5097,
             _index = 53,
         },
@@ -884,7 +884,7 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
             _index = 112,
         },
         {
-            DestroyItems = { items = { 15043 }, text = "Delete any left over [Plagueland Termites]" },
+            DestroyItems = { items = { 15043 } },
             IsQuestCompleted = 5903,
             _index = 113,
         },

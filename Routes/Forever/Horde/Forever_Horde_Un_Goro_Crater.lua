@@ -836,7 +836,7 @@ APR.RouteQuestStepList["Forever-Horde-Un-Goro-Crater"] = {
             _index = 88,
         },
         {
-            DestroyItems = { items = { 11482 }, text = "Destroy [Crystal Pylon User's Manual] as it's not needed for anything" },
+            DestroyItems = { items = { 11482 } },
             IsQuestUncompleted = 4301,
             _index = 89,
         },

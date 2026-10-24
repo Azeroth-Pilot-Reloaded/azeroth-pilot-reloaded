@@ -214,14 +214,14 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
             _index = 19,
         },
         {
-            BankDeposit = { items = { 5862, 5826, 4502 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 5862, 5826, 4502 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 35.9, 60.17),
             IsQuestUncompleted = 707,
             Zone = 1455,
             _index = 20,
         },
         {
-            BankWithdraw = { items = { 4611, 3404, 5827 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 4611, 3404, 5827 } },
             Note = { "9_BLUE_PEARLS" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 35.9, 60.17),
             IsQuestUncompleted = 707,
@@ -960,7 +960,7 @@ APR.RouteQuestStepList["Forever-Alliance-Badlands"] = {
             _index = 110,
         },
         {
-            DestroyItems = { items = { 7846 }, text = "Delete any extra [Crag Coyote Fangs] you still have" },
+            DestroyItems = { items = { 7846 } },
             IsQuestCompleted = 2500,
             _index = 111,
         },

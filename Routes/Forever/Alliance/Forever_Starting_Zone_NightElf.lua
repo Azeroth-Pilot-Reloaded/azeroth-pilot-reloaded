@@ -266,7 +266,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 14,
         },
         {
-            LearnSkill = { text = "Train [Battle Shout]", spellID = 6673 },
+            LearnSkill = { spellID = 6673 },
             Coord = { x = 778.07, y = 10526.62 },
             Class = "WARRIOR",
             IsQuestUncompleted = 4495,
@@ -3805,7 +3805,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-NightElf"] = {
             _index = 437,
         },
         {
-            LearnSkill = { text = "Train pet spells", allAvailable = true },
+            LearnSkill = { allAvailable = true },
             Note = { "UP_RAMP" },
             Coord = { x = 2491.75, y = 10176.21 },
             Class = "HUNTER",

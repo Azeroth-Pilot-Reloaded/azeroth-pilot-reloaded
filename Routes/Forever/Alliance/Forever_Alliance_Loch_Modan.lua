@@ -655,7 +655,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 63,
         },
         {
-            LearnSkill = { spellID = 202, text = "Train 2h Swords" },
+            LearnSkill = { spellID = 202 },
             Fillers = { [418] = { 1 } },
             Coord = { x = 613, y = -8796.03 },
             Class = { "PALADIN", "WARRIOR" },
@@ -664,7 +664,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 64,
         },
         {
-            LearnSkill = { spellIDs = { 201, 227 }, text = "Train 1h Swords and Staves" },
+            LearnSkill = { spellIDs = { 201, 227 } },
             Fillers = { [418] = { 1 } },
             Coord = { x = 613, y = -8796.03 },
             Class = { "MAGE", "WARLOCK" },
@@ -673,7 +673,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 65,
         },
         {
-            LearnSkill = { spellID = 201, text = "Train 1h Swords" },
+            LearnSkill = { spellID = 201 },
             Fillers = { [418] = { 1 } },
             Coord = { x = 613, y = -8796.03 },
             Class = "ROGUE",
@@ -682,7 +682,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 66,
         },
         {
-            LearnSkill = { spellID = 227, text = "Train Staves" },
+            LearnSkill = { spellID = 227 },
             Fillers = { [418] = { 1 } },
             Coord = { x = 613, y = -8796.03 },
             Class = "PRIEST",
@@ -907,7 +907,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Human"] = {
             _index = 90,
         },
         {
-            LearnSkill = { text = "Train your pet spells", allAvailable = true },
+            LearnSkill = { allAvailable = true },
             Fillers = { [418] = { 1 } },
             Coord = { x = 553.22, y = -8422.23 },
             Class = "HUNTER",
@@ -3304,7 +3304,7 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Hunter"] = {
             _index = 77,
         },
         {
-            LearnSkill = { spellID = 227, text = "Train Staves" },
+            LearnSkill = { spellID = 227 },
             Coord = { x = 613, y = -8796.03 },
             IsQuestUncompleted = 95065,
             Zone = 1453,

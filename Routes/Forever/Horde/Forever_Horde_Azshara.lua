@@ -58,7 +58,7 @@ APR.RouteQuestStepList["Forever-Horde-Azshara"] = {
             _index = 2,
         },
         {
-            BankWithdraw = { items = { 10695, 10687, 10688, 10689, 10690 }, text = "Withdraw the following from the bank:" },
+            BankWithdraw = { items = { 10695, 10687, 10688, 10689, 10690 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 49.57, 69.07),
             IsQuestOnQuest = 3568,
             Zone = 1454,

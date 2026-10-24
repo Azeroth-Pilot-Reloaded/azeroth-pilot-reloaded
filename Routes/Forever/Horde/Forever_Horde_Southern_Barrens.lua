@@ -63,25 +63,25 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 2,
         },
         {
-            BankDeposit = { items = { 3692 }, text = "Deposit your [Hillsbrad Human Skulls] if you have them" },
+            BankDeposit = { items = { 3692 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 47.12, 57.88),
             Zone = 1456,
             _index = 3,
         },
         {
-            BankDeposit = { items = { 3564 }, text = "Deposit [Shipment of Iron]" },
+            BankDeposit = { items = { 3564 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 47.12, 57.88),
             Zone = 1456,
             _index = 4,
         },
         {
-            BankWithdraw = { items = { 5075 }, text = "Withdraw your [Blood Shards]" },
+            BankWithdraw = { items = { 5075 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 47.12, 57.88),
             Zone = 1456,
             _index = 5,
         },
         {
-            BankWithdraw = { items = { 5059 }, text = "Withdraw your [Digging Claw]" },
+            BankWithdraw = { items = { 5059 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 47.12, 57.88),
             Zone = 1456,
             _index = 6,
@@ -1043,7 +1043,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             _index = 113,
         },
         {
-            DestroyItems = { items = { 5058 }, text = "Destroy any extra [Silithid Eggs] you still have" },
+            DestroyItems = { items = { 5058 } },
             IsQuestUncompleted = 874,
             _index = 114,
         },

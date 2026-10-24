@@ -1140,7 +1140,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
         },
         {
             Qpart = { [99108] = { 1 } },
-            Note = { "Talk to a Novice Warrior, then defeat them in combat." },
+            Note = { "TALK_NOVICE_WARRIOR_DEFEAT_COMBAT" },
             Coord = { x = -521.6, y = -2345.4 },
             Range = 30,
             Zone = 1412,
@@ -2113,7 +2113,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 226,
         },
         {
-            DestroyItems = { items = { 4823 }, text = "You can delete [Water of the Seers] from your bags, as it's no longer needed" },
+            DestroyItems = { items = { 4823 } },
             IsQuestUncompleted = 773,
             _index = 227,
         },
@@ -2344,7 +2344,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Tauren"] = {
             _index = 257,
         },
         {
-            DestroyItems = { items = { 4702 }, text = "You can delete [Prospector's Picks] from your bags, as they're no longer needed" },
+            DestroyItems = { items = { 4702 } },
             IsQuestUncompleted = 766,
             _index = 258,
         },

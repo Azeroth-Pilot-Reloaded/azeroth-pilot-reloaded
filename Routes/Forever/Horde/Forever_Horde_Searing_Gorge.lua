@@ -638,7 +638,7 @@ APR.RouteQuestStepList["Forever-Horde-Searing-Gorge"] = {
             _index = 70,
         },
         {
-            DestroyItems = { items = { 10515 }, text = "You can destroy the [Torch of Retribution] as it's no longer needed" },
+            DestroyItems = { items = { 10515 } },
             IsQuestCompleted = 3463,
             _index = 71,
         },

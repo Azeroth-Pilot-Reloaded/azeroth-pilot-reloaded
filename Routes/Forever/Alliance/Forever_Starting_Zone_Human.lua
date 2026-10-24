@@ -2311,7 +2311,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 153,
         },
         {
-            DestroyItems = { items = { 2947 }, text = "Delete the [Small Throwing Knife] from your bags, as it is no longer needed" },
+            DestroyItems = { items = { 2947 } },
             Class = "ROGUE",
             IsQuestUncompleted = 85,
             ItemCount = { operator = ">=", count = 1, itemID = 2946 },
@@ -4468,7 +4468,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 385,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your pet spells" },
+            LearnSkill = { allAvailable = true },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 85.0, y = -9475.8 },
             RaidIcon = 258930,
@@ -5001,7 +5001,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 443,
         },
         {
-            LearnSkill = { text = "Train 2h Swords", spellID = 202 },
+            LearnSkill = { spellID = 202 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 613.0, y = -8796.03 },
             Class = "WARRIOR",
@@ -5022,7 +5022,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 445,
         },
         {
-            LearnSkill = { text = "Train 1h Swords and Staves", spellIDs = { 201, 227 } },
+            LearnSkill = { spellIDs = { 201, 227 } },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 613.0, y = -8796.03 },
             AnyOf = { { Class = "MAGE", IsQuestUncompleted = 6281 }, { Class = "WARLOCK", IsQuestUncompleted = 1685 } },
@@ -5033,7 +5033,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 446,
         },
         {
-            LearnSkill = { text = "Train 1h Swords", spellID = 201 },
+            LearnSkill = { spellID = 201 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 613.0, y = -8796.03 },
             Class = "ROGUE",
@@ -5044,7 +5044,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 447,
         },
         {
-            LearnSkill = { text = "Train Staves", spellID = 227 },
+            LearnSkill = { spellID = 227 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 613.0, y = -8796.03 },
             AnyOf = { { Class = "WARLOCK", IsQuestUncompleted = 1685 }, { Class = { "MAGE", "PRIEST" }, IsQuestUncompleted = 6281 } },
@@ -5054,7 +5054,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Human"] = {
             _index = 448,
         },
         {
-            LearnSkill = { text = "Train 2h Swords", spellID = 202 },
+            LearnSkill = { spellID = 202 },
             Fillers = { [91775] = { 2 } },
             Coord = { x = 613.0, y = -8796.03 },
             Class = "PALADIN",

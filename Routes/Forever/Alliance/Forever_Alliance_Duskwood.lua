@@ -296,7 +296,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
             _index = 31,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your pet spells" },
+            LearnSkill = { allAvailable = true },
             Note = { "NATURE_FROST_RESISTANCES_MAXED_PET" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.576, 15.996),
             Class = "HUNTER",
@@ -341,7 +341,8 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
             _index = 37,
         },
         {
-            LearnSkill = { allAvailable = true, text = "If you hit level 30 turning in the next few quests in Stormwind, remember to train class/pet skills if you haven't already" },
+            LearnSkill = { allAvailable = true },
+            ExtraLineText = "HIT_LEVEL_30_TURNING_FEW_QUESTS_STORMWIND_REMEMBER",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.609, 15.269),
             Class = "HUNTER",
             IsQuestUncompleted = 1241,
@@ -375,14 +376,14 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
             _index = 42,
         },
         {
-            BankWithdraw = { items = { 916, 1451, 2378, 1130 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 916, 1451, 2378, 1130 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57, 72.88),
             IsOneOfQuestsUncompleted = { 74, 159, 101 },
             Zone = 1453,
             _index = 43,
         },
         {
-            BankDeposit = { items = { 2784, 5849, 3712 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 2784, 5849, 3712 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57, 72.88),
             IsOneOfQuestsUncompleted = { 335, 1179, 555 },
             Zone = 1453,
@@ -943,7 +944,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
             _index = 119,
         },
         {
-            DestroyItems = { items = { 2154 }, text = "Throw away [The Story of Morgan Ladimore]" },
+            DestroyItems = { items = { 2154 } },
             IsQuestUncompleted = 221,
             _index = 120,
         },
@@ -1363,7 +1364,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
             _index = 165,
         },
         {
-            DestroyItems = { items = { 3248 }, text = "Throw away the [Translated Letter from The Embalmer] you no longer need it" },
+            DestroyItems = { items = { 3248 } },
             Fillers = { [335] = { 1 } },
             Coord = { x = -1108.78, y = -10552.05 },
             IsQuestUncompleted = 229,
@@ -1467,7 +1468,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
             _index = 177,
         },
         {
-            BankWithdraw = { items = { 2784, 5849, 3712, 2794 }, text = "Withdraw the following items:" },
+            BankWithdraw = { items = { 2784, 5849, 3712, 2794 } },
             Fillers = { [335] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57, 72.88),
             Class = "MAGE",
@@ -1491,7 +1492,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood"] = {
             _index = 180,
         },
         {
-            BankWithdraw = { items = { 2784, 5849, 3712, 2794 }, text = "Withdraw the following items:" },
+            BankWithdraw = { items = { 2784, 5849, 3712, 2794 } },
             Fillers = { [335] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 57, 72.88),
             Class = { "DRUID", "HUNTER", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
@@ -2128,7 +2129,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
             _index = 22,
         },
         {
-            BankDeposit = { items = { 3618, 3347, 3397, 5233, 5234, 5996, 3349, 2698 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 3618, 3347, 3397, 5233, 5234, 5996, 3349, 2698 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = "HUNTER",
             IsQuestUncompleted = 90,
@@ -2137,7 +2138,7 @@ APR.RouteQuestStepList["Forever-Alliance-Duskwood-Redridge-Mountains"] = {
             _index = 23,
         },
         {
-            BankWithdraw = { items = { 2251, 1015 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 2251, 1015 } },
             Coord = { x = 613.93, y = -8933.64 },
             IsQuestUncompleted = 90,
             Zone = 1453,

@@ -1772,7 +1772,7 @@ APR.RouteQuestStepList["Forever-Alliance-Alterac-Arathi"] = {
             _index = 193,
         },
         {
-            DestroyItems = { items = { 4529 }, text = "Delete the [Enchanted Agate] from your bags. You will no longer need it." },
+            DestroyItems = { items = { 4529 } },
             IsQuestCompleted = 695,
             _index = 194,
         },

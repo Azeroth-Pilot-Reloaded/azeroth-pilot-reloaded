@@ -2629,7 +2629,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [96101] = { 2 } },
-            Note = { "REMAIN_SEATED_FOOD_BUFF_APPEARS", "CRAFT_WAITING", "REFRESH_BUFFS_WAITING", "Do not move or jump. If the rest effect ends before quest completion, sit again to restart it", "You can eat buff food while waiting" },
+            Note = { "REMAIN_SEATED_FOOD_BUFF_APPEARS", "CRAFT_WAITING", "REFRESH_BUFFS_WAITING", "NOT_MOVE_JUMP_REST_EFFECT_ENDS_QUEST_COMPLETION", "EAT_BUFF_FOOD_WAITING" },
             NoArrow = true,
             AllOf = { { HasSpell = 2550 } },
             HasSpell = 3273,
@@ -2637,7 +2637,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [96101] = { 2 } },
-            Note = { "REMAIN_SEATED_FOOD_BUFF_APPEARS", "CRAFT_WAITING", "REFRESH_BUFFS_WAITING", "Do not move or jump. If the rest effect ends before quest completion, sit again to restart it", "You can eat buff food while waiting" },
+            Note = { "REMAIN_SEATED_FOOD_BUFF_APPEARS", "CRAFT_WAITING", "REFRESH_BUFFS_WAITING", "NOT_MOVE_JUMP_REST_EFFECT_ENDS_QUEST_COMPLETION", "EAT_BUFF_FOOD_WAITING" },
             NoArrow = true,
             DontHaveSpell = 2550,
             HasSpell = 3273,
@@ -2645,7 +2645,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [96101] = { 2 } },
-            Note = { "REMAIN_SEATED_FOOD_BUFF_APPEARS", "CRAFT_WAITING", "REFRESH_BUFFS_WAITING", "Do not move or jump. If the rest effect ends before quest completion, sit again to restart it", "You can eat buff food while waiting" },
+            Note = { "REMAIN_SEATED_FOOD_BUFF_APPEARS", "CRAFT_WAITING", "REFRESH_BUFFS_WAITING", "NOT_MOVE_JUMP_REST_EFFECT_ENDS_QUEST_COMPLETION", "EAT_BUFF_FOOD_WAITING" },
             NoArrow = true,
             DontHaveSpell = 3273,
             HasSpell = 2550,
@@ -2653,7 +2653,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Skyborne"] = {
         },
         {
             Qpart = { [96101] = { 2 } },
-            Note = { "REMAIN_SEATED_FOOD_BUFF_APPEARS", "REFRESH_BUFFS_WAITING", "Do not move or jump. If the rest effect ends before quest completion, sit again to restart it", "You can eat buff food while waiting" },
+            Note = { "REMAIN_SEATED_FOOD_BUFF_APPEARS", "REFRESH_BUFFS_WAITING", "NOT_MOVE_JUMP_REST_EFFECT_ENDS_QUEST_COMPLETION", "EAT_BUFF_FOOD_WAITING" },
             NoArrow = true,
             DontHaveSpell = { 3273, 2550 },
             _index = 257,

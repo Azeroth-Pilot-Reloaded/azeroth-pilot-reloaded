@@ -1440,9 +1440,7 @@ APR.RouteQuestStepList["862-Zuldazar"] = {
             _index = 142,
         },
         {
-            Waypoint = 49969,
             GetFP = 2066,
-            ExtraLineText = "USE_FLIGHTPATH",
             Coord = { x = -1057.9, y = -955.7 },
             Range = 6.58,
             _index = 143,

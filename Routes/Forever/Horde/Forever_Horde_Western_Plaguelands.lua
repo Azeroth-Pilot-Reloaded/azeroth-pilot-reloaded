@@ -42,7 +42,7 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
     },
     steps = {
         {
-            BankWithdraw = { items = { 12814, 12738, 12739, 12886, 12887, 12888, 10540, 15788, 15790, 12846 }, text = "Withdraw banked quest items and your Argent Dawn Commission before leaving Undercity." },
+            BankWithdraw = { items = { 12814, 12738, 12739, 12886, 12887, 12888, 10540, 15788, 15790, 12846 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.99, 44.91),
             AnyOf = { { ItemCount = { itemID = 12814, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 12814, count = 1, operator = "<" } }, { IsQuestUncompleted = 5096 } } }, { ItemCount = { itemID = 12738, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 12738, count = 1, operator = "<" } }, { IsQuestUncompleted = 5059 } } }, { ItemCount = { itemID = 12739, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 12739, count = 1, operator = "<" } }, { IsQuestUncompleted = 5060 } } }, { ItemCount = { itemID = 12886, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 12886, count = 1, operator = "<" } }, { IsQuestUncompleted = 5149 } } }, { ItemCount = { itemID = 12887, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 12887, count = 1, operator = "<" } }, { IsQuestUncompleted = 5149 } } }, { ItemCount = { itemID = 12888, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 12888, count = 1, operator = "<" } }, { IsQuestUncompleted = 5149 } } }, { ItemCount = { itemID = 10540, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 10540, count = 1, operator = "<" } }, { IsQuestUncompleted = 3542 } } }, { ItemCount = { itemID = 15788, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 15788, count = 1, operator = "<" } }, { IsQuestUncompleted = 6029 } } }, { ItemCount = { itemID = 15790, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 15790, count = 1, operator = "<" } }, { IsQuestUncompleted = 6030 } } }, { ItemCount = { itemID = 12846, count = 1, includeBank = true }, AllOf = { { ItemCount = { itemID = 12846, count = 1, operator = "<" } } } } },
             Zone = 1458,
@@ -343,7 +343,7 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
             _index = 44,
         },
         {
-            DestroyItems = { items = { 12815 }, text = "Destroy the [Beacon Torch] as you no longer need it" },
+            DestroyItems = { items = { 12815 } },
             IsQuestUncompleted = 838,
             _index = 45,
         },
@@ -1098,7 +1098,7 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
             _index = 140,
         },
         {
-            DestroyItems = { items = { 15043 }, text = "Delete any left over [Plagueland Termites]" },
+            DestroyItems = { items = { 15043 } },
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1420, 83.29, 72.34),
             Range = 30,
@@ -1183,7 +1183,7 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
             _index = 148,
         },
         {
-            LearnSkill = { text = "Upgrade your pet's abilities", allAvailable = true },
+            LearnSkill = { allAvailable = true },
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 85.7, 16.07),
             Class = "WARLOCK",
@@ -1281,7 +1281,7 @@ APR.RouteQuestStepList["Forever-Horde-Western-Plaguelands"] = {
             _index = 159,
         },
         {
-            BankWithdraw = { items = { 10691, 10692, 10693, 10694 }, text = "Withdraw the following from the bank:" },
+            BankWithdraw = { items = { 10691, 10692, 10693, 10694 } },
             Fillers = { [5211] = { 1 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1458, 65.99, 44.91),
             IsQuestOnQuest = 3568,

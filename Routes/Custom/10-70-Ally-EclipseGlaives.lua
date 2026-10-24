@@ -17,8 +17,7 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
         {
             PickUp = { 40519 },
             ChromiePick = 10,
-            ExtraLineText = "SWITCH_TO_CHROMIE",
-            ExtraLineText2 = "SKYRIDING_HIGHLY_RECOMMENDED",
+            ExtraLineText = "SKYRIDING_HIGHLY_RECOMMENDED",
             Coord = { x = 747.5, y = -8194.6 },
             GossipOptionIDs = { 51901, 51902 },
             Zone = 84,
@@ -2317,7 +2316,6 @@ APR.RouteQuestStepList["84-EclipseGlaives-10-to-70"] = {
         {
             PickUp = { 34398 },
             ChromiePick = 9,
-            ExtraLineText = "SWITCH_TO_CHROMIE",
             Coord = { x = 745.5, y = -8196.4 },
             GossipOptionIDs = { 51901, 51902 },
             Zone = 84,

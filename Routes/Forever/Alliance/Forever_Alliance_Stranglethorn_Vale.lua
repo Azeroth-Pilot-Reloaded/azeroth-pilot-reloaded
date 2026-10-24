@@ -133,7 +133,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 14,
         },
         {
-            DestroyItems = { items = { 3898 }, text = "Throw away the [Library Scrip]" },
+            DestroyItems = { items = { 3898 } },
             IsQuestUncompleted = 231,
             _index = 15,
         },
@@ -160,7 +160,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 18,
         },
         {
-            DestroyItems = { items = { 2154 }, text = "Delete the [The Story of Morgan Ladimore]" },
+            DestroyItems = { items = { 2154 } },
             IsQuestUncompleted = 198,
             _index = 19,
         },
@@ -762,7 +762,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 99,
         },
         {
-            BankWithdraw = { items = { 3721, 3521, 4521, 5996 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 3721, 3521, 4521, 5996 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             IsQuestUncompleted = 563,
@@ -770,7 +770,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 100,
         },
         {
-            BankWithdraw = { items = { 3721, 3521, 4521 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 3721, 3521, 4521 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = "WARLOCK",
             IsQuestUncompleted = 563,
@@ -779,7 +779,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 101,
         },
         {
-            BankDeposit = { items = { 2725, 2728, 2730, 2732, 2734, 2735, 2738, 2740, 2742, 2744, 2745, 2748, 2749, 2750, 2751 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 2725, 2728, 2730, 2732, 2734, 2735, 2738, 2740, 2742, 2744, 2745, 2748, 2749, 2750, 2751 } },
             Coord = { x = 613.93, y = -8933.64 },
             IsQuestUncompleted = 563,
             Zone = 1453,
@@ -838,7 +838,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-First-Visit"] = {
             _index = 108,
         },
         {
-            LearnSkill = { text = "Train your pet spells", allAvailable = true },
+            LearnSkill = { allAvailable = true },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.576, 15.996),
             Class = "HUNTER",
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
@@ -1098,7 +1098,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 1,
         },
         {
-            BankDeposit = { items = { 6253, 3518, 5539, 6245, 5827, 3404 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 6253, 3518, 5539, 6245, 5827, 3404 } },
             Coord = { x = 528.84, y = -14421.95 },
             IsQuestUncompleted = 1115,
             Zone = 1434,
@@ -1114,7 +1114,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 3,
         },
         {
-            BankWithdraw = { items = { 2719, 5996 }, text = "Withdraw the [Small Brass Key] from your bank (if you have it)" },
+            BankWithdraw = { items = { 2719, 5996 } },
             Coord = { x = 528.84, y = -14421.95 },
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             IsQuestUncompleted = 1115,
@@ -1131,7 +1131,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Second-Visit"] = {
             _index = 5,
         },
         {
-            BankWithdraw = { items = { 2719 }, text = "Withdraw the [Small Brass Key] from your bank (if you have it)" },
+            BankWithdraw = { items = { 2719 } },
             Coord = { x = 528.84, y = -14421.95 },
             Class = "WARLOCK",
             IsQuestUncompleted = 1115,
@@ -1951,7 +1951,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
     },
     steps = {
         {
-            BankWithdraw = { items = { 3684, 3660, 5826, 4502 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 3684, 3660, 5826, 4502 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1455, 35.9, 60.17),
             IsQuestUncompleted = 543,
             Zone = 1455,
@@ -2050,7 +2050,8 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 12,
         },
         {
-            LearnSkill = { text = "Ensure your pets [Frost Resistance] is maxed", allAvailable = true },
+            LearnSkill = { allAvailable = true },
+            ExtraLineText = "ENSURE_PETS_FROST_RESISTANCE_MAXED",
             Coord = { x = -1273.8, y = -5022.13 },
             Class = "HUNTER",
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
@@ -2744,7 +2745,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 95,
         },
         {
-            BankWithdraw = { items = { 6065, 2725, 2728, 2730, 2732, 2734, 2735, 2738, 2740, 2742, 2744, 2745, 2748, 2749, 2750, 2751 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 6065, 2725, 2728, 2730, 2732, 2734, 2735, 2738, 2740, 2742, 2744, 2745, 2748, 2749, 2750, 2751 } },
             Coord = { x = 528.84, y = -14421.95 },
             IsQuestUncompleted = 606,
             Zone = 1434,
@@ -3263,7 +3264,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 164,
         },
         {
-            BankDeposit = { items = { 2799, 4098 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 2799, 4098 } },
             Coord = { x = 528.84, y = -14421.95 },
             IsQuestUncompleted = 609,
             Zone = 1434,
@@ -3278,7 +3279,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Swamp-of-Sorrows"] =
             _index = 166,
         },
         {
-            BankWithdraw = { items = { 5862 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 5862 } },
             Coord = { x = 528.84, y = -14421.95 },
             IsQuestUncompleted = 609,
             Zone = 1434,
@@ -3802,7 +3803,7 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
             _index = 52,
         },
         {
-            BankWithdraw = { items = { 4306 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 4306 } },
             Note = { "15_SILK_CLOTH" },
             Coord = { x = 613.93, y = -8933.64 },
             Zone = 1453,
@@ -3913,7 +3914,8 @@ APR.RouteQuestStepList["Forever-Alliance-Stranglethorn-Vale-Third-Visit"] = {
             _index = 66,
         },
         {
-            LearnSkill = { text = "Retrain your pet. Learn Fire Resistance (Rank 4) and Shadow Resistance (Rank 3)", allAvailable = true },
+            LearnSkill = { allAvailable = true },
+            ExtraLineText = "RETRAIN_PET_LEARN_FIRE_RESISTANCE_RANK_4_SHADOW",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.576, 15.996),
             Class = "HUNTER",
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },

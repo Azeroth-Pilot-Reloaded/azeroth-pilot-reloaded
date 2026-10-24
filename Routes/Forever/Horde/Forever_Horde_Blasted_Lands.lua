@@ -198,7 +198,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             _index = 19,
         },
         {
-            BankWithdraw = { items = { 4306, 8391, 8392, 8393, 8396, 8394 }, text = "Withdraw the following from your bank:" },
+            BankWithdraw = { items = { 4306, 8391, 8392, 8393, 8396, 8394 } },
             Note = { "WITHDRAW_USEFUL_STORED_SUPPLIES" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1434, 26.55, 76.57),
             OnlyInZones = { 1434 },

@@ -726,7 +726,7 @@ APR.RouteQuestStepList["Forever-Alliance-Thousand-Needles"] = {
             _index = 92,
         },
         {
-            BankDeposit = { items = { 3721, 3521, 4521, 5847 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 3721, 3521, 4521, 5847 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 62.68, 37.395),
             Zone = 1413,
             _index = 93,

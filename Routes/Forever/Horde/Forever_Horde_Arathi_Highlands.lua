@@ -1024,7 +1024,7 @@ APR.RouteQuestStepList["Forever-Horde-Arathi-Highlands"] = {
             _index = 115,
         },
         {
-            DestroyItems = { items = { 16991 }, text = "Delete the [Triage Bandage]. You no longer need it" },
+            DestroyItems = { items = { 16991 } },
             IsQuestCompleted = 6622,
             IsQuestUncompleted = 663,
             _index = 116,

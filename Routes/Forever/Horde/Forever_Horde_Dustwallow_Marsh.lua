@@ -414,7 +414,7 @@ APR.RouteQuestStepList["Forever-Horde-Dustwallow-Marsh"] = {
             _index = 42,
         },
         {
-            DestroyItems = { items = { 5884 }, text = "Delete any extra [Unpopped Darkmist Eyes] you still have" },
+            DestroyItems = { items = { 5884 } },
             IsQuestCompleted = 1206,
             ItemCount = { itemID = 5884, count = 1, operator = ">=" },
             _index = 43,

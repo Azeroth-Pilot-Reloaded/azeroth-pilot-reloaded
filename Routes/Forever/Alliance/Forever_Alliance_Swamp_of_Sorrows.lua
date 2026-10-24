@@ -42,14 +42,14 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
     },
     steps = {
         {
-            BankDeposit = { items = { 4306, 2725, 2728, 2730, 2732, 2734, 2735, 2738, 2740, 2742, 2744, 2745, 2748, 2749, 2750, 2751, 5796, 4611, 3960, 5996 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 4306, 2725, 2728, 2730, 2732, 2734, 2735, 2738, 2740, 2742, 2744, 2745, 2748, 2749, 2750, 2751, 5796, 4611, 3960, 5996 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = { "DRUID", "HUNTER", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 1453,
             _index = 1,
         },
         {
-            BankDeposit = { items = { 4306, 2725, 2728, 2730, 2732, 2734, 2735, 2738, 2740, 2742, 2744, 2745, 2748, 2749, 2750, 2751, 5796, 4611, 3960 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 4306, 2725, 2728, 2730, 2732, 2734, 2735, 2738, 2740, 2742, 2744, 2745, 2748, 2749, 2750, 2751, 5796, 4611, 3960 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = "WARLOCK",
             Race = { "Gnome", "Human" },
@@ -218,7 +218,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             _index = 22,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your pet spells" },
+            LearnSkill = { allAvailable = true },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.576, 15.996),
             Class = "HUNTER",
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
@@ -226,7 +226,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             _index = 23,
         },
         {
-            BankDeposit = { items = { 4306 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 4306 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = "MAGE",
             Race = { "Gnome", "Human", "Skyborne" },
@@ -548,14 +548,14 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             _index = 64,
         },
         {
-            BankWithdraw = { items = { 6253, 3518, 5539, 6245, 3960, 5796, 5847, 5996 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 6253, 3518, 5539, 6245, 3960, 5796, 5847, 5996 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 1453,
             _index = 65,
         },
         {
-            BankWithdraw = { items = { 6253, 3518, 5539, 6245, 3960, 5796, 5847 }, text = "Withdraw the following items from your bank:" },
+            BankWithdraw = { items = { 6253, 3518, 5539, 6245, 3960, 5796, 5847 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = "WARLOCK",
             Race = { "Gnome", "Human" },
@@ -563,14 +563,14 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             _index = 66,
         },
         {
-            BankDeposit = { items = { 6065, 4306 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 6065, 4306 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = { "DRUID", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
             Zone = 1453,
             _index = 67,
         },
         {
-            BankDeposit = { items = { 6065, 4611, 4306 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 6065, 4611, 4306 } },
             Coord = { x = 613.93, y = -8933.64 },
             Class = "HUNTER",
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
@@ -704,7 +704,7 @@ APR.RouteQuestStepList["Forever-Alliance-Swamp-of-Sorrows"] = {
             _index = 82,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your pet spells" },
+            LearnSkill = { allAvailable = true },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1453, 61.576, 15.996),
             Class = "HUNTER",
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },

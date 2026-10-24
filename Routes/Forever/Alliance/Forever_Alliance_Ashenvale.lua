@@ -733,7 +733,7 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale"] = {
             _index = 97,
         },
         {
-            BankDeposit = { items = { 2784 }, text = "Deposit the following items into your bank:" },
+            BankDeposit = { items = { 2784 } },
             Coord = { x = 2518.2, y = 9941.2 },
             IsQuestUncompleted = 637,
             ItemCount = { itemID = 2784, count = 1, operator = ">=" },
@@ -958,7 +958,7 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
             _index = 9,
         },
         {
-            DestroyItems = { items = { 5505 }, text = "Destroy [Teronis' Journal]. You no longer need it" },
+            DestroyItems = { items = { 5505 } },
             IsQuestUncompleted = 1034,
             _index = 10,
         },
@@ -1138,7 +1138,7 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
             _index = 34,
         },
         {
-            LearnSkill = { allAvailable = true, text = "Train your class skills" },
+            LearnSkill = { allAvailable = true },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 50.137, 67.949),
             IsQuestUncompleted = 1016,
             Zone = 1440,

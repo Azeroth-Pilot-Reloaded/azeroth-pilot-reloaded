@@ -753,7 +753,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn"] = {
         },
         {
             Qpart = { [78464] = { 8 } },
-            ExtraLineText = "LEAVE_DELVE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             ExtraLineText2 = "SPEAK_TO_BRANN",
             Coord = { x = -1649.1, y = 965.1 },
             GossipOptionIDs = { 120969 },
@@ -2373,7 +2373,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-campaign-only"] = {
         },
         {
             Qpart = { [78464] = { 8 } },
-            ExtraLineText = "LEAVE_DELVE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             ExtraLineText2 = "SPEAK_TO_BRANN",
             Coord = { x = -1649.1, y = 965.1 },
             GossipOptionIDs = { 120969 },
@@ -3697,7 +3697,7 @@ APR.RouteQuestStepList["2248-TWW-Isle-of-Dorn-Full"] = {
         },
         {
             Qpart = { [78464] = { 8 } },
-            ExtraLineText = "LEAVE_DELVE",
+            ExtraLineText = "LEAVE_THIS_INSTANCE",
             ExtraLineText2 = "SPEAK_TO_BRANN",
             Coord = { x = -1649.1, y = 965.1 },
             GossipOptionIDs = { 120969 },
