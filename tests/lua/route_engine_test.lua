@@ -297,6 +297,11 @@ _, _, migratedRouteKey = APR:GetCurrentRouteMapIDsAndName()
 check(migratedRouteKey == routeKey and APRCustomPath.test[1] == route.label,
     "The live stable key recovers a renamed route during the same session")
 
+APRCustomPath.test = {}
+local emptyMaps, emptyMapID, emptyRouteKey = APR:GetCurrentRouteMapIDsAndName()
+check(emptyMaps == nil and emptyMapID == 0 and emptyRouteKey == "",
+    "An empty path cannot resurrect the active route through display-name recovery")
+
 local missingRouteError, missingRoutePopup, emptyPathChecks
 APRCustomPath.test = { "Deleted route", route.label }
 APR.ActiveRoute = nil

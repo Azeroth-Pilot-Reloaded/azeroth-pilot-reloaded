@@ -109,6 +109,10 @@ local cave = preview:Point({ Coord = { x = -500, y = 2600 }, uiMapID = 610 })
 local x, y = preview:ProjectPoint(cave, 2215)
 near(x, 0.15); near(y, 0.35)
 assert(preview:ProjectPoint(cave, 611) == nil, "Overlapping sibling floors do not inherit each other's markers")
+local rejectedProjects, rejectedReads = projections, mapReads
+for _ = 1, 100 do assert(preview:ProjectPoint(cave, 611) == nil) end
+assert(projections == rejectedProjects and mapReads == rejectedReads,
+    "A known incompatible floor must not rebuild the same rejection on every redraw")
 local remote = preview:Point({ Coord = cave.Coord, uiMapID = 700 })
 x, y = preview:ProjectPoint(remote, 2274)
 near(x, 0.75); near(y, 0.15)
@@ -193,6 +197,22 @@ assert(projections == beforeProjects and rectReads == beforeRects and mapReads =
 WorldMapFrame:SetSize(500, 400); tick()
 near(APR.map.worldSegments[1].bx, expected[2274][1] * 500)
 near(worldPins[APR.map.pinlist][1].x, expected[2274][1], "Resizing preserves continent pin coordinates")
+beforeProjects, beforeRects, beforeReads = projections, rectReads, mapReads
+for _ = 1, 100 do playerX = playerX + 0.5; tick() end
+assert(projections - beforeProjects <= 200 and rectReads == beforeRects and mapReads == beforeReads,
+    "Moving redraws reproject only the player; fixed route points reuse their native/parent projections")
+beforeProjects = projections
+APR.navigationGeometryRevision = (APR.navigationGeometryRevision or 0) + 1
+tick()
+assert(projections > beforeProjects, "Stationary renderers refresh point projections after a geometry revision")
+APR.NavigationData = { positions = {} }
+tick()
+beforeProjects = projections
+APR.NavigationData.positions = {}
+tick()
+assert(projections > beforeProjects, "A library position-cache invalidation also refreshes stationary line renderers")
+APR.NavigationData = nil
+tick()
 local miniX = APR.map.minimapSegments[1].bx
 Minimap:SetSize(300, 300); tick()
 near(APR.map.minimapSegments[1].bx, miniX * 1.5, "Minimap resize redraws stationary geometry")

@@ -72,7 +72,7 @@ assert(job.status == "no_path" and #job.blockers == 2 and rows == 0,
     "Only gates on a connected potential itinerary explain failure; diagnostic edges never become guidance")
 local text = APR.NavigationAdapter:GetBlockedRouteText(job.blockers)
 assert(text:find("Return to the Veiled Market", 1, true) and text:find("84957", 1, true)
-    and text:find("Test achievement", 1, true) and text:find(" or ", 1, true))
+    and text:find("Test achievement", 1, true) and text:find("\n  or\n", 1, true))
 assert(not text:find("999", 1, true), "Unrelated locked transports are not reported")
 local edges, metadata = data:BuildEdges({ start = start, playerPosition = start })
 local reverse = false

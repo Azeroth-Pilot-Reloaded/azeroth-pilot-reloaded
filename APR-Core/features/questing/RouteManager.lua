@@ -509,7 +509,7 @@ function APR:IsQuestTurnInDeferred(questID)
     local routeKey = self.ActiveRoute
     local playerData = APRData and APRData[self.PlayerID]
     local temporary = playerData and playerData.TemporaryRouteState
-    if temporary and temporary.routeKey == routeKey and temporary.previousRouteKey then
+    if temporary and temporary.kind ~= "navigation_unlock" and temporary.routeKey == routeKey and temporary.previousRouteKey then
         routeKey = temporary.previousRouteKey
     end
     local groups = GetParallelGroups(self:GetRouteData(routeKey))

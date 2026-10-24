@@ -41,7 +41,7 @@ function APR.routeconfig:InitRouteConfig()
         APR.Buff:RemoveAllBuffIcon()
 
         local routeZoneMapIDs, mapID, routeFileName, expansion = APR:GetCurrentRouteMapIDsAndName()
-        APR:ActivateRoute(routeFileName)
+        APR:ActivateRoute(routeFileName ~= "" and routeFileName or nil)
         APR.XPBuffOverlay:QueueRefresh()
 
         APR:UpdateMapId()

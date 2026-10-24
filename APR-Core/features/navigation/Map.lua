@@ -126,17 +126,26 @@ local function Connects(a, b)
     return a and b and not a.breakAfter and not b.breakBefore
         and (a.instanceID == nil or b.instanceID == nil or a.instanceID == b.instanceID)
 end--[[APR_DIAG]]; Connects = APRTrace("APR-Core/features/navigation/Map.lua:124:Connects#12", Connects)--[[/APR_DIAG]]
+local connectionMasks = setmetatable({}, { __mode = "k" })
+local function ConnectionMask(points)
+    local cached = connectionMasks[points]
+    if cached and cached.preview == APR.navigationPreview then return cached end
+    cached = { preview = APR.navigationPreview }
+    for index = 2, #points do cached[index] = Connects(points[index - 1], points[index]) end
+    connectionMasks[points] = cached
+    return cached
+end--[[APR_DIAG]]; ConnectionMask = APRTrace("APR-Core/features/navigation/Map.lua:130:ConnectionMask#13", ConnectionMask)--[[/APR_DIAG]]
 local function Project(point, mapID)
     if not point or not point.Coord then return nil end
     if APR.navigationPreview then return APR.navigationPreview:ProjectPoint(point, mapID) end
     return APR:GetPlayerMapPos(mapID, point.Coord.y, point.Coord.x)
-end--[[APR_DIAG]]; Project = APRTrace("APR-Core/features/navigation/Map.lua:129:Project#13", Project)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Project = APRTrace("APR-Core/features/navigation/Map.lua:138:Project#14", Project)--[[/APR_DIAG]]
 function APR.map:RemoveMinimapLine()
     if self.minimapRenderCache then HideUnused(self.minimapSegments, 0); self.minimapRenderCache = nil end
-end--[[APR_DIAG]]; APR.map.RemoveMinimapLine = APRTrace("APR-Core/features/navigation/Map.lua:134:APR.map:RemoveMinimapLine#14", APR.map.RemoveMinimapLine)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.map.RemoveMinimapLine = APRTrace("APR-Core/features/navigation/Map.lua:143:APR.map:RemoveMinimapLine#15", APR.map.RemoveMinimapLine)--[[/APR_DIAG]]
 function APR.map:RemoveMapLine()
     if self.worldRenderCache then HideUnused(self.worldSegments, 0); self.worldRenderCache = nil end
-end--[[APR_DIAG]]; APR.map.RemoveMapLine = APRTrace("APR-Core/features/navigation/Map.lua:137:APR.map:RemoveMapLine#15", APR.map.RemoveMapLine)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.map.RemoveMapLine = APRTrace("APR-Core/features/navigation/Map.lua:146:APR.map:RemoveMapLine#16", APR.map.RemoveMapLine)--[[/APR_DIAG]]
 function APR.map:UpdateMinimapLine()
     if not self.minimapSegments then return end
     if not APR.settings.profile.enableAddon or not APR.settings.profile.showMiniMapLine or not APR:IsInstanceWithUI() then
@@ -154,12 +163,18 @@ function APR.map:UpdateMinimapLine()
     -- A stationary character needs no projection, clipping or line iteration.
     if cache and cache.points == points and cache.x == player.Coord.x and cache.y == player.Coord.y
         and cache.instanceID == player.instanceID and cache.playerMapID == player.uiMapID
+        and cache.geometryRevision == APR.navigationGeometryRevision
+        and cache.projectionData == APR.NavigationData
+        and cache.projectionPositions == (APR.NavigationData and APR.NavigationData.positions)
+        and cache.projectionRevision == (APR.navigationPreview and APR.navigationPreview.projectionRevision)
         and cache.facing == facing and cache.radius == mapRadius
         and cache.width == minimapWidth and cache.height == minimapHeight and cache.shape == minimapShape then return end
     cache = cache or {}
     self.minimapRenderCache = cache
     cache.points, cache.x, cache.y, cache.instanceID, cache.playerMapID = points, player.Coord.x, player.Coord.y, player.instanceID, player.uiMapID
     cache.facing, cache.radius, cache.width, cache.height, cache.shape = facing, mapRadius, minimapWidth, minimapHeight, minimapShape
+    cache.geometryRevision = APR.navigationGeometryRevision
+    cache.projectionData, cache.projectionPositions = APR.NavigationData, APR.NavigationData and APR.NavigationData.positions
     local sin, cos = math.sin(facing), math.cos(facing)
     local function project(point)
         if not point or not point.Coord or (point.instanceID ~= nil and player.instanceID ~= nil
@@ -167,12 +182,15 @@ function APR.map:UpdateMinimapLine()
         if APR.navigationPreview and player.uiMapID and not Project(point, player.uiMapID) then return nil end
         local dx, dy = point.Coord.x - player.Coord.x, point.Coord.y - player.Coord.y
         return -(dx * cos - dy * sin) / mapRadius, (dx * sin + dy * cos) / mapRadius
-    end--[[APR_DIAG]]; project = APRTrace("APR-Core/features/navigation/Map.lua:164:project#17", project)--[[/APR_DIAG]]
-    local previous, used = player, 0
-    for _, point in ipairs(points) do
-        if Connects(previous, point) then
-            local ax, ay = project(previous)
+    end--[[APR_DIAG]]; project = APRTrace("APR-Core/features/navigation/Map.lua:179:project#18", project)--[[/APR_DIAG]]
+    local previous, used, projected, previousX, previousY = player, 0, false
+    local connections = ConnectionMask(points)
+    for index, point in ipairs(points) do
+        if (index == 1 and Connects(previous, point)) or (index > 1 and connections[index]) then
+            if not projected then previousX, previousY = project(previous) end
+            local ax, ay = previousX, previousY
             local bx, by = project(point)
+            previousX, previousY, projected = bx, by, true
             if ax and bx then
                 if APR.navigationPreview then ax, ay, bx, by = APR.navigationPreview:ClipMinimapSegment(ax, ay, bx, by, minimapShape)
                 else
@@ -185,11 +203,12 @@ function APR.map:UpdateMinimapLine()
                         bx * minimapWidth, by * minimapHeight, false)
                 end
             end
-        end
+        else projected = false end
         previous = point
     end
     HideUnused(self.minimapSegments, used)
-end--[[APR_DIAG]]; APR.map.UpdateMinimapLine = APRTrace("APR-Core/features/navigation/Map.lua:140:APR.map:UpdateMinimapLine#16", APR.map.UpdateMinimapLine)--[[/APR_DIAG]]
+    cache.projectionRevision = APR.navigationPreview and APR.navigationPreview.projectionRevision
+end--[[APR_DIAG]]; APR.map.UpdateMinimapLine = APRTrace("APR-Core/features/navigation/Map.lua:149:APR.map:UpdateMinimapLine#17", APR.map.UpdateMinimapLine)--[[/APR_DIAG]]
 function APR.map:UpdateLine()
     if not self.worldSegments then return end
     local mapID = WorldMapFrame:GetMapID()
@@ -206,18 +225,29 @@ function APR.map:UpdateLine()
     local mapX, mapY = playerPos and playerPos.x, playerPos and playerPos.y
     if cache and cache.points == points and cache.mapID == mapID and cache.width == width and cache.height == height
         and cache.x == playerX and cache.y == playerY and cache.instanceID == instanceID and cache.playerMapID == playerMapID
+        and cache.geometryRevision == APR.navigationGeometryRevision
+        and cache.projectionData == APR.NavigationData
+        and cache.projectionPositions == (APR.NavigationData and APR.NavigationData.positions)
+        and cache.projectionRevision == (APR.navigationPreview and APR.navigationPreview.projectionRevision)
         and cache.mapX == mapX and cache.mapY == mapY then return end
     cache = cache or {}
     self.worldRenderCache = cache
     cache.points, cache.mapID, cache.width, cache.height = points, mapID, width, height
     cache.x, cache.y, cache.instanceID, cache.playerMapID, cache.mapX, cache.mapY = playerX, playerY, instanceID, playerMapID, mapX, mapY
+    cache.geometryRevision = APR.navigationGeometryRevision
+    cache.projectionData, cache.projectionPositions = APR.NavigationData, APR.NavigationData and APR.NavigationData.positions
     if not previous and playerPos then previous = { player = true } end
-    for _, point in ipairs(points) do
-        if Connects(previous, point) then
-            local ax, ay
-            if previous.player and playerPos then ax, ay = playerPos.x, playerPos.y
-            else ax, ay = Project(previous, mapID) end
+    local projected, previousX, previousY = false
+    local connections = ConnectionMask(points)
+    for index, point in ipairs(points) do
+        if (index == 1 and Connects(previous, point)) or (index > 1 and connections[index]) then
+            if not projected then
+                if previous.player and playerPos then previousX, previousY = playerPos.x, playerPos.y
+                else previousX, previousY = Project(previous, mapID) end
+            end
+            local ax, ay = previousX, previousY
             local bx, by = Project(point, mapID)
+            previousX, previousY, projected = bx, by, true
             if ax and bx then
                 if APR.navigationPreview then ax, ay, bx, by = APR.navigationPreview:ClipRectangle(ax, ay, bx, by, 0, 0, 1, 1) end
                 if ax then
@@ -225,23 +255,24 @@ function APR.map:UpdateLine()
                     DrawSegment(self.worldSegments, used, ax * width, -ay * height, bx * width, -by * height, true)
                 end
             end
-        end
+        else projected = false end
         previous = point
     end
     HideUnused(self.worldSegments, used)
-end--[[APR_DIAG]]; APR.map.UpdateLine = APRTrace("APR-Core/features/navigation/Map.lua:193:APR.map:UpdateLine#18", APR.map.UpdateLine)--[[/APR_DIAG]]
+    cache.projectionRevision = APR.navigationPreview and APR.navigationPreview.projectionRevision
+end--[[APR_DIAG]]; APR.map.UpdateLine = APRTrace("APR-Core/features/navigation/Map.lua:212:APR.map:UpdateLine#19", APR.map.UpdateLine)--[[/APR_DIAG]]
 function APR.map:UpdateMapLineStyle()
     for _, segment in ipairs(self.worldSegments or {}) do
         segment.line:SetColorTexture(unpack(APR.settings.profile.showMapLineColor))
         segment.line:SetThickness(APR.settings.profile.showMapLineThickness)
     end
-end--[[APR_DIAG]]; APR.map.UpdateMapLineStyle = APRTrace("APR-Core/features/navigation/Map.lua:233:APR.map:UpdateMapLineStyle#19", APR.map.UpdateMapLineStyle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.map.UpdateMapLineStyle = APRTrace("APR-Core/features/navigation/Map.lua:264:APR.map:UpdateMapLineStyle#20", APR.map.UpdateMapLineStyle)--[[/APR_DIAG]]
 function APR.map:UpdateMinimapLineStyle()
     for _, segment in ipairs(self.minimapSegments or {}) do
         segment.line:SetColorTexture(unpack(APR.settings.profile.showMiniMapLineColor))
         segment.line:SetThickness(APR.settings.profile.showMiniMapLineThickness)
     end
-end--[[APR_DIAG]]; APR.map.UpdateMinimapLineStyle = APRTrace("APR-Core/features/navigation/Map.lua:239:APR.map:UpdateMinimapLineStyle#20", APR.map.UpdateMinimapLineStyle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.map.UpdateMinimapLineStyle = APRTrace("APR-Core/features/navigation/Map.lua:270:APR.map:UpdateMinimapLineStyle#21", APR.map.UpdateMinimapLineStyle)--[[/APR_DIAG]]
 APR.map.pinlist, APR.map.minimapPinlist = {}, {}
 APR.map.guidancePinlist, APR.map.guidanceMinimapPinlist = {}, {}
 local guidanceIcons = {
@@ -265,7 +296,7 @@ function APR.map:CreatePin(index, step, size, color, textScope, textColorProfile
     pin.text:SetPoint("CENTER", pin, "CENTER", 0, 0); pin.text:SetText(index or "")
     APR:RegisterFontString(pin.text, textScope, { colorProfileKey = textColorProfileKey, sizeScaleProfileKey = textScaleProfileKey })
     pin.stepIndex, pin.step = index, step
-    pin:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:268:callback#22", --[[/APR_DIAG]]function(self)
+    pin:SetScript("OnEnter", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:299:callback#23", --[[/APR_DIAG]]function(self)
         local generated = self.guidancePoint
         local text = generated and (generated.label or generated.instruction) or
             (APR.GetStepString and select(1, APR:GetStepString(self.step))) or ""
@@ -278,9 +309,9 @@ function APR.map:CreatePin(index, step, size, color, textScope, textColorProfile
         end
         GameTooltip:Show()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-    pin:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:281:callback#23", --[[/APR_DIAG]]function() GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    pin:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:312:callback#24", --[[/APR_DIAG]]function() GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
     return pin
-end--[[APR_DIAG]]; APR.map.CreatePin = APRTrace("APR-Core/features/navigation/Map.lua:258:APR.map:CreatePin#21", APR.map.CreatePin)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.map.CreatePin = APRTrace("APR-Core/features/navigation/Map.lua:289:APR.map:CreatePin#22", APR.map.CreatePin)--[[/APR_DIAG]]
 local function StylePins(pool, scope)
     local prefix = scope == "map" and "mapshowNextSteps" or "minimapshowNextSteps"
     local profile = APR.settings.profile
@@ -290,15 +321,15 @@ local function StylePins(pool, scope)
         else pin.icon:SetVertexColor(unpack(profile[prefix .. "Color"])) end
         APR:ApplyTextStyle(pin.text, scope, { colorProfileKey = prefix .. "ColorText", sizeScaleProfileKey = prefix .. "TextScale" })
     end
-end--[[APR_DIAG]]; StylePins = APRTrace("APR-Core/features/navigation/Map.lua:284:StylePins#24", StylePins)--[[/APR_DIAG]]
-function APR.map:UpdateMapIconsStyle() StylePins(self.pinlist, "map"); StylePins(self.guidancePinlist, "map") end--[[APR_DIAG]]; APR.map.UpdateMapIconsStyle = APRTrace("APR-Core/features/navigation/Map.lua:294:APR.map:UpdateMapIconsStyle#25", APR.map.UpdateMapIconsStyle)--[[/APR_DIAG]]
-function APR.map:UpdateMiniMapIconsStyle() StylePins(self.minimapPinlist, "minimap"); StylePins(self.guidanceMinimapPinlist, "minimap") end--[[APR_DIAG]]; APR.map.UpdateMiniMapIconsStyle = APRTrace("APR-Core/features/navigation/Map.lua:295:APR.map:UpdateMiniMapIconsStyle#26", APR.map.UpdateMiniMapIconsStyle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; StylePins = APRTrace("APR-Core/features/navigation/Map.lua:315:StylePins#25", StylePins)--[[/APR_DIAG]]
+function APR.map:UpdateMapIconsStyle() StylePins(self.pinlist, "map"); StylePins(self.guidancePinlist, "map") end--[[APR_DIAG]]; APR.map.UpdateMapIconsStyle = APRTrace("APR-Core/features/navigation/Map.lua:325:APR.map:UpdateMapIconsStyle#26", APR.map.UpdateMapIconsStyle)--[[/APR_DIAG]]
+function APR.map:UpdateMiniMapIconsStyle() StylePins(self.minimapPinlist, "minimap"); StylePins(self.guidanceMinimapPinlist, "minimap") end--[[APR_DIAG]]; APR.map.UpdateMiniMapIconsStyle = APRTrace("APR-Core/features/navigation/Map.lua:326:APR.map:UpdateMiniMapIconsStyle#27", APR.map.UpdateMiniMapIconsStyle)--[[/APR_DIAG]]
 local function RemovePins(pool, world)
     for _, pin in pairs(pool) do pin:Hide(); pin:ClearAllPoints() end
     if world then hbdPins:RemoveAllWorldMapIcons(pool) else hbdPins:RemoveAllMinimapIcons(pool) end
-end--[[APR_DIAG]]; RemovePins = APRTrace("APR-Core/features/navigation/Map.lua:296:RemovePins#27", RemovePins)--[[/APR_DIAG]]
-function APR.map:RemoveMapIcons() RemovePins(self.pinlist, true); RemovePins(self.guidancePinlist, true) end--[[APR_DIAG]]; APR.map.RemoveMapIcons = APRTrace("APR-Core/features/navigation/Map.lua:300:APR.map:RemoveMapIcons#28", APR.map.RemoveMapIcons)--[[/APR_DIAG]]
-function APR.map:RemoveMiniMapIcons() RemovePins(self.minimapPinlist, false); RemovePins(self.guidanceMinimapPinlist, false) end--[[APR_DIAG]]; APR.map.RemoveMiniMapIcons = APRTrace("APR-Core/features/navigation/Map.lua:301:APR.map:RemoveMiniMapIcons#29", APR.map.RemoveMiniMapIcons)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; RemovePins = APRTrace("APR-Core/features/navigation/Map.lua:327:RemovePins#28", RemovePins)--[[/APR_DIAG]]
+function APR.map:RemoveMapIcons() RemovePins(self.pinlist, true); RemovePins(self.guidancePinlist, true) end--[[APR_DIAG]]; APR.map.RemoveMapIcons = APRTrace("APR-Core/features/navigation/Map.lua:331:APR.map:RemoveMapIcons#29", APR.map.RemoveMapIcons)--[[/APR_DIAG]]
+function APR.map:RemoveMiniMapIcons() RemovePins(self.minimapPinlist, false); RemovePins(self.guidanceMinimapPinlist, false) end--[[APR_DIAG]]; APR.map.RemoveMiniMapIcons = APRTrace("APR-Core/features/navigation/Map.lua:332:APR.map:RemoveMiniMapIcons#30", APR.map.RemoveMiniMapIcons)--[[/APR_DIAG]]
 local function AcquirePin(self, pool, key, stepIndex, step, scope, guidance)
     local prefix = scope == "map" and "mapshowNextSteps" or "minimapshowNextSteps"
     local profile, pin = APR.settings.profile, pool[key]
@@ -314,11 +345,11 @@ local function AcquirePin(self, pool, key, stepIndex, step, scope, guidance)
         if icon then pin.icon:SetVertexColor(1, 1, 1) end
     end
     return pin
-end--[[APR_DIAG]]; AcquirePin = APRTrace("APR-Core/features/navigation/Map.lua:302:AcquirePin#30", AcquirePin)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AcquirePin = APRTrace("APR-Core/features/navigation/Map.lua:333:AcquirePin#31", AcquirePin)--[[/APR_DIAG]]
 local function PlaceWorldPin(pool, pin, mapID, x, y)
     if mapID == WORLD_MAP_ID or mapID == COSMIC_MAP_ID then return end
     hbdPins:AddWorldMapIconMap(pool, pin, mapID, x, y, 3)
-end--[[APR_DIAG]]; PlaceWorldPin = APRTrace("APR-Core/features/navigation/Map.lua:318:PlaceWorldPin#31", PlaceWorldPin)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; PlaceWorldPin = APRTrace("APR-Core/features/navigation/Map.lua:349:PlaceWorldPin#32", PlaceWorldPin)--[[/APR_DIAG]]
 
 function APR.map:AddMapPins()
     self.pinMapID = WorldMapFrame:GetMapID()
@@ -388,12 +419,12 @@ function APR.map:AddMapPins()
             end
         end
     end
-end--[[APR_DIAG]]; APR.map.AddMapPins = APRTrace("APR-Core/features/navigation/Map.lua:323:APR.map:AddMapPins#32", APR.map.AddMapPins)--[[/APR_DIAG]]
-function APR.map:ToggleMapPins() self:AddMapPins() end--[[APR_DIAG]]; APR.map.ToggleMapPins = APRTrace("APR-Core/features/navigation/Map.lua:392:APR.map:ToggleMapPins#33", APR.map.ToggleMapPins)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.map.AddMapPins = APRTrace("APR-Core/features/navigation/Map.lua:354:APR.map:AddMapPins#33", APR.map.AddMapPins)--[[/APR_DIAG]]
+function APR.map:ToggleMapPins() self:AddMapPins() end--[[APR_DIAG]]; APR.map.ToggleMapPins = APRTrace("APR-Core/features/navigation/Map.lua:423:APR.map:ToggleMapPins#34", APR.map.ToggleMapPins)--[[/APR_DIAG]]
 APR.map.eventFrame = CreateFrame("Frame")
 for _, event in ipairs({ "CVAR_UPDATE", "QUEST_LOG_UPDATE", "MINIMAP_UPDATE_ZOOM", "ZONE_CHANGED", "ZONE_CHANGED_INDOORS",
     "ZONE_CHANGED_NEW_AREA", "NEW_WMO_CHUNK", "PLAYER_ENTERING_WORLD" }) do APR.map.eventFrame:RegisterEvent(event) end
-APR.map.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:396:callback#34", --[[/APR_DIAG]]function(_, event, ...)
+APR.map.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:427:callback#35", --[[/APR_DIAG]]function(_, event, ...)
     if not APR.settings.profile.enableAddon then
         APR.map:RemoveMapIcons(); APR.map:RemoveMiniMapIcons(); APR.map:RemoveMapLine(); APR.map:RemoveMinimapLine(); return
     end

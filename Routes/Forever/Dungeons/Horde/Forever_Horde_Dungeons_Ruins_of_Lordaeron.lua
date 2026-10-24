@@ -24,7 +24,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "GO_ZEPPELIN_TOWER", "TAKE_ZEPPELIN_TIRISFAL_GLADES" },
+            Note = { "UP_TOWER", "TAKE_ZEPPELIN_TIRISFAL_GLADES" },
             Coord = { x = -4648.55, y = 1321.88 },
             Range = 40.0,
             AnyOf = { { SkipInZones = { 1421, 1458 }, Race = "Orc", Class = { "HUNTER", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" } }, { SkipInZones = { 1421, 1458 }, Race = "Troll", Class = { "HUNTER", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" } }, { SkipInZones = { 1421, 1458 }, Race = "Tauren" }, { SkipInZones = { 1421, 1458 }, Race = "Scourge", Class = { "PALADIN", "PRIEST", "ROGUE", "WARLOCK", "WARRIOR" } }, { SkipInZones = { 1421, 1458 }, Race = "Skyborne" } },
@@ -34,7 +34,7 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
         {
             Waypoint = 5725,
             NonSkippableWaypoint = true,
-            Note = { "GO_ZEPPELIN_TOWER", "TAKE_ZEPPELIN_TIRISFAL_GLADES", "CONJURE_WATER" },
+            Note = { "UP_TOWER", "TAKE_ZEPPELIN_TIRISFAL_GLADES", "CONJURE_WATER" },
             Coord = { x = -4648.55, y = 1321.88 },
             Range = 40.0,
             Class = "MAGE",

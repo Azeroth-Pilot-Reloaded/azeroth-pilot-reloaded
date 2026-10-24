@@ -1,6 +1,6 @@
 -- Planning uses the consumer's environment and never shares character state.
 -- Optional waypoint output is isolated in WaypointUI.lua.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 16)
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 21)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}
@@ -92,6 +92,62 @@ function Lib:RegisterData(profile, category, data, revision)
         if entrance.exterior then ValidatePosition(entrance.exterior) end
         assert(entrance.reviewStatus ~= "confirmed" or entrance.exterior, "confirmed exterior required")
     end
+    local recipeIDs = {}
+    for _, recipe in ipairs(copy.unlockRoutes or {}) do
+        assert(type(recipe.id) == "string" and not recipeIDs[recipe.id], "unique unlock identity required")
+        recipeIDs[recipe.id] = true
+        assert(type(recipe.goal) == "table" and type(recipe.goal.key) == "string"
+            and recipe.goal.value ~= nil, "unlock goal required")
+        assert(type(recipe.steps) == "table" and #recipe.steps > 0 and #recipe.steps <= 4096, "bounded unlock steps required")
+        for _, step in ipairs(recipe.steps) do
+            assert(step.kind == "accept" or step.kind == "turnin" or step.kind == "objective"
+                or step.kind == "waypoint" or step.kind == "missing" or step.kind == "interact"
+                or step.kind == "scenario" or step.kind == "transport" or step.kind == "action", "unknown unlock action")
+            if step.kind == "accept" or step.kind == "turnin" or step.kind == "objective" then
+                assert(NonnegativeNumber(step.questID) and step.questID > 0 and step.questID % 1 == 0, "unlock quest required")
+            end
+            if step.acceptance ~= nil then
+                assert(type(step.acceptance) == "table" and type(step.acceptance.known) == "boolean"
+                    and type(step.acceptance.requirements) == "table", "invalid quest acceptance metadata")
+                if step.acceptance.autoAccept == true then step.autoAccept = true end
+            end
+            if step.position then ValidatePosition(step.position) end
+            for _, position in ipairs(step.positions or {}) do ValidatePosition(position) end
+            if not step.position and #(step.positions or {}) > 0 then step.position = Copy(step.positions[1]) end
+            if step.kind ~= "missing" and not step.position then
+                local sourced = step.sourceID ~= nil or (type(step.source) == "string" and step.source ~= "")
+                    or #(step.acceptance and step.acceptance.sources or {}) > 0
+                assert(sourced and (step.positionOptional == true or step.noArrow == true or step.autoAccept == true),
+                    "sourced positionless unlock action required")
+                assert(step.kind ~= "accept" or step.autoAccept == true, "sourced auto acceptance required")
+                step.positionOptional = true
+            end
+            assert(step.radius == nil or NonnegativeNumber(step.radius), "invalid unlock radius")
+            for _, threshold in ipairs(step.progressAny or {}) do
+                assert(type(threshold) == "table" and ((NonnegativeNumber(threshold.percent) and threshold.percent <= 100)
+                    or (NonnegativeNumber(threshold.count) and NonnegativeNumber(threshold.total) and threshold.total > 0)),
+                    "numeric unlock progress required")
+            end
+            if step.arrival then
+                assert(type(step.arrival) == "table", "invalid unlock arrival")
+                if step.arrival.x ~= nil or step.arrival.y ~= nil then ValidatePosition(step.arrival) end
+            end
+            if step.kind == "scenario" then assert(type(step.scenario) == "table", "scenario identity required") end
+            if step.kind == "transport" then assert(type(step.transport) == "table", "transport identity required") end
+            if step.kind == "action" then assert(type(step.actionType) == "string", "action identity required") end
+            if step.kind == "interact" then assert(type(step.completeWhen) == "table", "observed interaction completion required") end
+            for _, action in ipairs(step.useActions or {}) do
+                assert((action.type == "item" or action.type == "spell") and NonnegativeNumber(action.id)
+                    and action.id > 0 and action.id % 1 == 0, "invalid unlock use action")
+            end
+            if step.kind == "objective" then
+                assert(type(step.objectiveIndices) == "table" and #step.objectiveIndices > 0, "unlock objective indices required")
+                for _, index in ipairs(step.objectiveIndices) do
+                    assert(NonnegativeNumber(index) and index > 0 and index % 1 == 0, "invalid unlock objective index")
+                end
+            end
+        end
+    end
     local dataset = self.datasets[profile]
     if not dataset then
         dataset = {}
@@ -109,6 +165,10 @@ function Lib:New(options)
         env = options.environment,
         waypointOptions = type(options.waypoints) == "table" and Copy(options.waypoints) or {},
         connections = {},
+        connectionLookup = {},
+        unlockRoutes = {},
+        unlockSources = {},
+        unlockCoverage = {},
         entrances = {},
         entranceMaps = {},
         entranceInstances = {},
@@ -125,14 +185,29 @@ function Lib:New(options)
         categories[#categories + 1] = category
     end
     table.sort(categories)
-    local ids, entranceIDs = {}, {}
+    local ids, entranceIDs, unlockIDs = {}, {}, {}
     for _, category in ipairs(categories) do
         local data = self.datasets[options.profile][category]
+        local sourceOffset = #instance.unlockSources
+        for _, recipe in ipairs(data.unlockRoutes or {}) do
+            assert(not unlockIDs[recipe.id], "duplicate unlock id")
+            unlockIDs[recipe.id] = true
+            local copy = Copy(recipe)
+            for _, step in ipairs(copy.steps) do
+                if step.sourceID then step.sourceID = step.sourceID + sourceOffset end
+            end
+            instance.unlockRoutes[#instance.unlockRoutes + 1] = copy
+        end
+        for _, source in ipairs(data.unlockSources or {}) do
+            instance.unlockSources[#instance.unlockSources + 1] = Copy(source)
+        end
+        if data.unlockCoverage then instance.unlockCoverage = Copy(data.unlockCoverage) end
         for _, connection in ipairs(data.connections or {}) do
             connection = Copy(connection)
             assert(type(connection.id) == "string" and not ids[connection.id], "duplicate or missing connection id")
             ids[connection.id] = true
             instance.connections[#instance.connections + 1] = connection
+            instance.connectionLookup[connection.id] = connection
             for _, action in ipairs(connection.actions or {}) do
                 instance.actionDefinitions[action.type .. ":" .. tostring(action.id)] = action
                 if action.groupSpellID then
@@ -161,11 +236,13 @@ function Lib:New(options)
                         local id = entrance.id .. ":approach:" .. index
                         assert(not ids[id], "duplicate entrance approach id")
                         ids[id] = true
-                        instance.connections[#instance.connections + 1] = {
+                        local connection = {
                             id = id, kind = "passage", costMode = "ground",
                             from = entrance.approach[index - 1], to = position,
                             requirements = Copy(entrance.requirements),
                         }
+                        instance.connections[#instance.connections + 1] = connection
+                        instance.connectionLookup[id] = connection
                     end
                 end
                 entrance.exterior = Copy(entrance.approach[#entrance.approach])
@@ -222,6 +299,7 @@ function Instance:InvalidatePositionCache()
     self.mapInfos = {}
     self.regions = {}
     self.entranceLookup = {}
+    self.zoneGraph = nil
 end
 
 function Instance:GetText(key)

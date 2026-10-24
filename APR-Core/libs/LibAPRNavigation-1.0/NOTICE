@@ -6,3 +6,9 @@ The accompanying LICENSE-GPL3 contains the original license text.
 
 The independent navigation runtime is maintained by Azeroth Pilot Reloaded.
 Runtime travel records contain game identifiers, positions and access rules.
+
+The standalone UnlockRoutes.lua catalogues are compiled offline by Route-generator
+from APR-authored route observations. Each packaged source identity retains its
+source file, route and SHA-256. The detailed Route-generator unlock_routes.json
+report retains ATT/BtW/DB2 evidence and candidate data separately; no external
+addon implementation is embedded in the native unlock runner.

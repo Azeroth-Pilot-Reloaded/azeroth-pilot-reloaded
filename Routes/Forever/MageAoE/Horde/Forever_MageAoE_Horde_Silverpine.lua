@@ -44,6 +44,7 @@ APR.RouteQuestStepList["Forever-MageAoE-Horde-Silverpine-Hillsbrad"] = {
     steps = {
         {
             LearnSkill = { spellID = 3567 },
+            ExtraLineText = "UPSTAIRS",
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 38.69, 85.38),
             IsQuestUncompleted = 3301,
             MinLevel = 20,

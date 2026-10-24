@@ -668,6 +668,7 @@ end--[[APR_DIAG]]; APR.GetRouteMapIDsAndName = APRTrace("APR-Core/utils/RouteUti
 ---@return string routeFileName Route File Name
 ---@return string expansion expansion name
 function APR:GetCurrentRouteMapIDsAndName()
+    if self.RestoreNavigationUnlockRoute then self:RestoreNavigationUnlockRoute() end
     if self.ActiveRoute and self:GetRouteData(self.ActiveRoute) and self:IsTemporaryRoute(self.ActiveRoute) then
         return self:GetRouteMapIDsAndName(self.ActiveRoute)
     end
@@ -679,12 +680,13 @@ function APR:GetCurrentRouteMapIDsAndName()
     end
 
     local currentRouteKey = self:GetPrimaryCustomPathRouteKey()
-    if not currentRouteKey and self.ActiveRoute and self:GetRouteData(self.ActiveRoute) then
+    if currentRouteName and not currentRouteKey and self.ActiveRoute and self:GetRouteData(self.ActiveRoute) then
         local playerData = APRData and APRData[self.PlayerID] or nil
         local activeStepIndex = playerData and playerData[self.ActiveRoute] or nil
         local activeStep = activeStepIndex and self:GetRouteSteps(self.ActiveRoute)[activeStepIndex] or nil
 
         -- During the same session the stable route key survives a display-name change.
+        -- An empty path explicitly deselects it; never recover a removed route.
         -- Do not restore an already completed route when the next saved entry is invalid.
         if activeStep and not activeStep.RouteCompleted then
             currentRouteKey = self.ActiveRoute
@@ -756,7 +758,7 @@ local function MetadataText(value)
     if type(value) ~= "string" then return nil end
     local text = value:match("^%s*(.-)%s*$")
     return text ~= "" and text or nil
-end--[[APR_DIAG]]; MetadataText = APRTrace("APR-Core/utils/RouteUtils.lua:755:MetadataText#34", MetadataText)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; MetadataText = APRTrace("APR-Core/utils/RouteUtils.lua:757:MetadataText#34", MetadataText)--[[/APR_DIAG]]
 
 -- Attribution comes only from route data; names and filenames never imply authorship.
 -- Keep this resolution shared by route tooltips and future consumers of route metadata.
@@ -773,7 +775,7 @@ function APR:GetRouteAttribution(routeKey)
         if #names > 0 then author = table.concat(names, ", ") end
     end
     return author or "APR", route.community == true or route.source == "community", MetadataText(route.description)
-end--[[APR_DIAG]]; APR.GetRouteAttribution = APRTrace("APR-Core/utils/RouteUtils.lua:763:APR:GetRouteAttribution#35", APR.GetRouteAttribution)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteAttribution = APRTrace("APR-Core/utils/RouteUtils.lua:765:APR:GetRouteAttribution#35", APR.GetRouteAttribution)--[[/APR_DIAG]]
 
 --- Resolve a route file name into a friendly display name.
 function APR:GetRouteDisplayName(routeFileName)
@@ -787,7 +789,7 @@ function APR:GetRouteDisplayName(routeFileName)
     end
 
     return nil
-end--[[APR_DIAG]]; APR.GetRouteDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:779:APR:GetRouteDisplayName#36", APR.GetRouteDisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:781:APR:GetRouteDisplayName#36", APR.GetRouteDisplayName)--[[/APR_DIAG]]
 
 --- Resolve a route display name into a route file name.
 function APR:GetRouteKeyFromDisplayName(displayName)
@@ -823,7 +825,7 @@ function APR:GetRouteKeyFromDisplayName(displayName)
     end
 
     return nil
-end--[[APR_DIAG]]; APR.GetRouteKeyFromDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:793:APR:GetRouteKeyFromDisplayName#37", APR.GetRouteKeyFromDisplayName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.GetRouteKeyFromDisplayName = APRTrace("APR-Core/utils/RouteUtils.lua:795:APR:GetRouteKeyFromDisplayName#37", APR.GetRouteKeyFromDisplayName)--[[/APR_DIAG]]
 
 --- Clear all saved state for a route.
 function APR:ClearSavedRouteData(routeFileName)
@@ -850,7 +852,7 @@ function APR:ClearSavedRouteData(routeFileName)
     if self.InvalidateEffectiveRouteStepsCache then
         self:InvalidateEffectiveRouteStepsCache(routeFileName)
     end
-end--[[APR_DIAG]]; APR.ClearSavedRouteData = APRTrace("APR-Core/utils/RouteUtils.lua:829:APR:ClearSavedRouteData#38", APR.ClearSavedRouteData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ClearSavedRouteData = APRTrace("APR-Core/utils/RouteUtils.lua:831:APR:ClearSavedRouteData#38", APR.ClearSavedRouteData)--[[/APR_DIAG]]
 
 --- Compare saved step totals and signatures to the live route to detect changes.
 function APR:CheckRouteChanges(route)
@@ -865,7 +867,7 @@ function APR:CheckRouteChanges(route)
     if currentRouteName and not self.RouteQuestStepList[currentRoute] then
         self.questionDialog:CreateMandatoryAction(
             L["ROUTE_DELETED_NEED_RESET"],
-            --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteUtils.lua:868:callback#40", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteUtils.lua:870:callback#40", --[[/APR_DIAG]]function()
                 APRZoneCompleted[APR.PlayerID][currentRoute] = nil
                 APR:ClearSavedRouteData(currentRoute)
 
@@ -877,7 +879,7 @@ function APR:CheckRouteChanges(route)
     elseif savedTotalSteps and savedTotalSteps ~= currentTotalSteps then
         self.questionDialog:CreateMandatoryAction(
             L["ROUTE_UPDATED_NEED_RESET"],
-            --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteUtils.lua:880:callback#41", --[[/APR_DIAG]]function()
+            --[[APR_DIAG]]APRTrace("APR-Core/utils/RouteUtils.lua:882:callback#41", --[[/APR_DIAG]]function()
                 self:SetRouteProgress(currentRoute, 1, "definition_changed")
                 APRData[APR.PlayerID][currentRoute .. '-SkippedStep'] = 0
                 APRData[APR.PlayerID][currentRoute .. '-RawTotalSteps'] = currentTotalSteps
@@ -892,7 +894,7 @@ function APR:CheckRouteChanges(route)
         -- Ensure raw total is persisted even if no change detected
         APRData[APR.PlayerID][currentRoute .. '-RawTotalSteps'] = currentTotalSteps
     end
-end--[[APR_DIAG]]; APR.CheckRouteChanges = APRTrace("APR-Core/utils/RouteUtils.lua:856:APR:CheckRouteChanges#39", APR.CheckRouteChanges)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckRouteChanges = APRTrace("APR-Core/utils/RouteUtils.lua:858:APR:CheckRouteChanges#39", APR.CheckRouteChanges)--[[/APR_DIAG]]
 
 --- Check saved routes (progress, custom paths, completed routes) against the current
 --- live route definitions and clear/refresh stored data if definitions changed.
@@ -1049,12 +1051,12 @@ function APR:CheckCurrentRouteUpToDate(currentRoute)
 
     -- 8) Record current addon version to detect upgrades later
     self.settings.profile.lastRecordedVersion = self.version
-end--[[APR_DIAG]]; APR.CheckCurrentRouteUpToDate = APRTrace("APR-Core/utils/RouteUtils.lua:900:APR:CheckCurrentRouteUpToDate#42", APR.CheckCurrentRouteUpToDate)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CheckCurrentRouteUpToDate = APRTrace("APR-Core/utils/RouteUtils.lua:902:APR:CheckCurrentRouteUpToDate#42", APR.CheckCurrentRouteUpToDate)--[[/APR_DIAG]]
 
 function APR:BuildSpecRouteKey(prefix, specName)
     if not prefix or not specName then return nil end
     return prefix .. " - " .. specName
-end--[[APR_DIAG]]; APR.BuildSpecRouteKey = APRTrace("APR-Core/utils/RouteUtils.lua:1054:APR:BuildSpecRouteKey#43", APR.BuildSpecRouteKey)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.BuildSpecRouteKey = APRTrace("APR-Core/utils/RouteUtils.lua:1056:APR:BuildSpecRouteKey#43", APR.BuildSpecRouteKey)--[[/APR_DIAG]]
 
 function APR:FindAllSpecRoutesInCustomPath()
     local results = {}
@@ -1082,7 +1084,7 @@ function APR:FindAllSpecRoutesInCustomPath()
     end
 
     return results
-end--[[APR_DIAG]]; APR.FindAllSpecRoutesInCustomPath = APRTrace("APR-Core/utils/RouteUtils.lua:1059:APR:FindAllSpecRoutesInCustomPath#44", APR.FindAllSpecRoutesInCustomPath)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.FindAllSpecRoutesInCustomPath = APRTrace("APR-Core/utils/RouteUtils.lua:1061:APR:FindAllSpecRoutesInCustomPath#44", APR.FindAllSpecRoutesInCustomPath)--[[/APR_DIAG]]
 
 function APR:ResolveSpecRouteReplacements(specName, foundRoutes)
     local replacements = {}
@@ -1102,4 +1104,4 @@ function APR:ResolveSpecRouteReplacements(specName, foundRoutes)
     end
 
     return replacements
-end--[[APR_DIAG]]; APR.ResolveSpecRouteReplacements = APRTrace("APR-Core/utils/RouteUtils.lua:1087:APR:ResolveSpecRouteReplacements#45", APR.ResolveSpecRouteReplacements)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ResolveSpecRouteReplacements = APRTrace("APR-Core/utils/RouteUtils.lua:1089:APR:ResolveSpecRouteReplacements#45", APR.ResolveSpecRouteReplacements)--[[/APR_DIAG]]

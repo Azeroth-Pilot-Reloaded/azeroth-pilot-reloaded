@@ -96,7 +96,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "GO_DUSTWIND_CAVE" },
             Coord = { x = -4834.14, y = 418.07 },
             Range = 30.0,
             Class = "SHAMAN",
@@ -107,7 +106,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
         {
             Waypoint = 840,
             NonSkippableWaypoint = true,
-            Note = { "GO_DUSTWIND_CAVE" },
             Coord = { x = -4754.3, y = 796.66 },
             Range = 20.0,
             Class = "SHAMAN",
@@ -496,7 +494,6 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             Waypoint = 924,
             NonSkippableWaypoint = true,
             Fillers = { [869] = { 1 }, [844] = { 1 } },
-            Note = { "GO_INSIDE_DREADMIST_DEN" },
             Coord = { x = -2205.62, y = 314.62 },
             Range = 15.0,
             IsQuestOnQuest = 924,

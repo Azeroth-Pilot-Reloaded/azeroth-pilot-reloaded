@@ -59,7 +59,9 @@ local function fixture()
     end
     local ui = { pendingRemoval = {}, pendingButtonRequests = {}, pendingContainerDestroy = {},
         questsList = t.rows, questsExtraTextList = {}, SoftHide = noop }
-    function ui:AddQuestSteps(key, text, id) self.questsList[key .. "-" .. tostring(id)] = { text = text } end
+    function ui:AddQuestSteps(key, text, id, _, _, _, _, presentation)
+        self.questsList[key .. "-" .. tostring(id)] = { text = text, presentation = presentation }
+    end
     function ui:AddQuestDivider(key) self.questsList[key] = { divider = true } end
     function ui:AddStepButton(key, id) t.buttons[key] = id end
     function ui:FlushPendingContainers()
@@ -610,14 +612,32 @@ t = fixture()
 local lockedEdge = t.edges[1]
 lockedEdge.blockedRequirements = { quest = 84957 }
 t.edges, t.blockedEdges = {}, { lockedEdge }
-APR.NavigationAdapter.GetBlockedRouteText = function(_, blockers)
+APR.NavigationAdapter.GetBlockedRouteText = function(_, blockers, styled)
     assert(blockers and blockers[1].id == lockedEdge.id and blockers[1].blockedRequirements.quest == 84957)
+    assert(styled == true, "The guide requests themed access diagnostics")
     return "Missing quest 84957"
 end
+local unlockRequests = 0
+function APR:StartNavigationUnlock(blockers, context)
+    assert(blockers[1].id == lockedEdge.id and self:IsStepContextCurrent(context))
+    unlockRequests = unlockRequests + 1
+end
 t:Update()
+assert(unlockRequests == 1, "A failed plan requests quest guidance for the original authored step")
 assert(t.nav.state == "no_path" and t.nav.blockers[1].id == lockedEdge.id and not t.arrowActive)
 local displayed
 for _, row in pairs(t.rows) do displayed = displayed or row.text == "Missing quest 84957" end
 assert(displayed, "A failed plan retains and renders its gate diagnostic after cancellation")
+assert(not t.rows[t.nav.ErrorStepKey .. "-3"].presentation
+    and t.rows[t.nav.NavigationDividerStepKey].divider, "Blocked routes use a separator without an enclosure")
+t.nav.state = "waiting_data"
+t.nav:Render()
+displayed = false
+for _, row in pairs(t.rows) do
+    displayed = displayed or row.text == "NAVIGATION_WAITING\n\nMissing quest 84957"
+end
+assert(displayed, "Pending client data remains separate from the access requirements")
+assert(not t.rows[t.nav.NavigationStepKey .. "-0"].presentation
+    and t.rows[t.nav.NavigationDividerStepKey].divider, "Pending access diagnostics use the same separator")
 t.nav:Cancel("cleared")
 assert(not t.nav.blockers and not t:HasError(), "Cancellation clears stale prerequisite diagnostics")

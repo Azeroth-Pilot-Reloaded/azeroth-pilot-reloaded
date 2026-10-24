@@ -13,6 +13,10 @@ from tests.lua.test_regressions import LuaRegressionTests
 
 GROUPS = {
     "forever-only": ("navigation_library", "navigation_adapter", "navigation_data", "navigation_catalog_profiles", "navigation_required_crossings", "navigation_zones", "taxi_discovery",
+                     "navigation_forever_performance", "navigation_forever_projection",
+                     "navigation_search_performance", "navigation_search_walking_performance", "navigation_zone_graph",
+                     "navigation_catalog_performance", "navigation_taxi_performance", "navigation_scheduling",
+                     "navigation_adapter_geometry_cache", "navigation_projection_cache", "navigation_map_projection", "idle_map_lines",
                      "client_compatibility", "level_requirements", "reputation_progress",
                      "route_conditions", "route_action_usage", "native_route_actions",
                      "area_navigation", "route_engine", "step_progression", "skill_api", "secret_compatibility",
