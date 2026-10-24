@@ -1073,11 +1073,10 @@ APR.RouteQuestStepList["Forever-Horde-Winterspring"] = {
             _index = 123,
         },
         {
+            EquipItem = { itemID = 11522, slot = 17 },
             Note = { "EQUIP_SILVER_TOTEM_AQUEMENTAS_OFF_HAND", "KEEP_AURA_DISPELLED_CAUSES_KNOCKBACK_REAPPLIED_DURING" },
             Coord = { x = -1294.5, y = -7182.86 },
             Range = 20,
-            Button = { ["3962"] = 11522 },
-            SpellButton = { ["3962"] = 14247 },
             IsQuestOnQuest = 3962,
             Zone = 1449,
             _index = 124,

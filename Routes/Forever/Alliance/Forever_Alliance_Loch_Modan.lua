@@ -2019,10 +2019,9 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
             _index = 89,
         },
         {
+            UseItem = { itemID = 6636, itemSpellID = 8898 },
             Note = { "CONTINUE_UP_TRAIL", "BESIDE_STONE_STATUE" },
             Coord = { x = -2873.8, y = -5672.5 },
-            Button = { ["94467-1"] = 6636 },
-            SpellButton = { ["94467-1"] = 8898 },
             Class = "SHAMAN",
             IsQuestUncompleted = 94467,
             Race = "Dwarf",
@@ -2279,9 +2278,8 @@ APR.RouteQuestStepList["Forever-Alliance-Loch-Modan-Dwarf-Gnome"] = {
             _index = 116,
         },
         {
+            UseItem = { itemID = 6866, itemSpellID = 8593 },
             Coord = { x = -2055.23, y = -5784.31 },
-            Button = { ["1783"] = 6866 },
-            SpellButton = { ["1783"] = 8593 },
             Class = "PALADIN",
             IsQuestUncompleted = 1783,
             Race = "Dwarf",

@@ -1036,9 +1036,8 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Wailing-Caverns"] = {
             _index = 121,
         },
         {
+            UseItem = { itemID = 6626, itemSpellID = 9224 },
             Note = { "Use `Dogran's Pendant` at the Summoning Circle" },
-            Button = { ["1513-1"] = 6626 },
-            SpellButton = { ["1513-1"] = 9224 },
             Class = "WARLOCK",
             Race = { "Orc", "Scourge", "Troll" },
             _index = 122,

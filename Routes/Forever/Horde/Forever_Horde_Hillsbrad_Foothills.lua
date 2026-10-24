@@ -3350,9 +3350,9 @@ APR.RouteQuestStepList["Forever-Horde-Hillsbrad-Foothills-Arathi-Highlands"] = {
             _index = 53,
         },
         {
+            UseItem = { itemID = 6637 },
             Note = { "DRINK_WATER_SAPTA_SEE_CORRUPT_MINOR_MANIFESTION" },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1421, 38.09, 44.4),
-            Button = { ["63"] = 6637 },
             Buffs = { { spellId = 8899 } },
             Class = "SHAMAN",
             DontHaveAura = 8899,

@@ -107,9 +107,8 @@ APR.RouteQuestStepList["Forever-Alliance-Eastern-Plaguelands"] = {
             _index = 9,
         },
         {
+            EquipItem = { itemID = 12846, slot = 13 },
             Note = { "EQUIP_ARGENT_DAWN_COMMISSION_COLLECT_SCOURGESTONES" },
-            Button = { ["5092-1"] = 12846 },
-            SpellButton = { ["5092-1"] = 17670 },
             IsQuestUncompleted = 5092,
             _index = 10,
         },

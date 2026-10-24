@@ -1263,10 +1263,9 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             _index = 132,
         },
         {
+            UseItem = { itemID = 6636, itemSpellID = 8898 },
             Note = { "CONTINUE_UP_TRAIL", "Use the `Fire Sapta` next to the rock statue to summon the Minor Manifestation of Fire" },
             Coord = { x = -2873.8, y = -5672.5 },
-            Button = { ["94467-1"] = 6636 },
-            SpellButton = { ["94467-1"] = 8898 },
             Class = "SHAMAN",
             Race = "Dwarf",
             Zone = 1432,
@@ -1525,10 +1524,9 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Loch-Modan-Dwarf-Gnome"] = {
             _index = 159,
         },
         {
+            UseItem = { itemID = 6866, itemSpellID = 8593 },
             Note = { "Use the `Symbol of Life` on Narm Faulk on the ground" },
             Coord = { x = -2055.23, y = -5784.31 },
-            Button = { ["1783"] = 6866 },
-            SpellButton = { ["1783"] = 8593 },
             Class = "PALADIN",
             Race = "Dwarf",
             Zone = 1426,

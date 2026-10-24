@@ -1145,8 +1145,7 @@ APR.RouteQuestStepList["Forever-Alliance-Ashenvale-Stonetalon-Hunter"] = {
             _index = 35,
         },
         {
-            Button = { ["1016"] = 5996 },
-            SpellButton = { ["1016"] = 7178 },
+            UseItem = { itemID = 5996, itemSpellID = 7178 },
             IsQuestUncompleted = 1016,
             ItemCount = { itemID = 5996, count = 1, operator = ">=" },
             _index = 36,

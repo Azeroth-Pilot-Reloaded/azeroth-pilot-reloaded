@@ -1955,7 +1955,6 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             Qpart = { [28] = { 1 } },
             Coord = { x = -2221.48, y = 7844.89 },
             Button = { ["28-1"] = 15877 },
-            SpellButton = { ["28-1"] = 19719 },
             Class = "DRUID",
             Race = { "Skyborne", "Tauren" },
             Zone = 1450,
@@ -3571,9 +3570,8 @@ APR.RouteQuestStepList["Forever-Horde-Stonetalon-Mountains"] = {
             _index = 378,
         },
         {
+            UseItem = { itemID = 6626, itemSpellID = 9224 },
             Note = { "SUMMONING_CIRCLE" },
-            Button = { ["1513-1"] = 6626 },
-            SpellButton = { ["1513-1"] = 9224 },
             Class = "WARLOCK",
             IsQuestUncompleted = 1513,
             Race = { "Orc", "Scourge", "Troll" },

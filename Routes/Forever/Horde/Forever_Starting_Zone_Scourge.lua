@@ -4249,9 +4249,8 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 473,
         },
         {
+            UseItem = { itemID = 6284, itemSpellID = 9221 },
             Note = { "SUMMONING_CIRCLE" },
-            Button = { ["1471-1"] = 6284 },
-            SpellButton = { ["1471-1"] = 9221 },
             Class = "WARLOCK",
             IsQuestUncompleted = 1471,
             _index = 474,
@@ -6306,8 +6305,7 @@ APR.RouteQuestStepList["Forever-Starting-Zone-Scourge"] = {
             _index = 714,
         },
         {
-            Button = { ["94438"] = 6866 },
-            SpellButton = { ["94438"] = 8593 },
+            UseItem = { itemID = 6866, itemSpellID = 8593 },
             Class = "PALADIN",
             IsQuestUncompleted = 94438,
             _index = 715,
@@ -7107,10 +7105,9 @@ APR.RouteQuestStepList["Forever-Horde-Tirisfal-Glades"] = {
             _index = 57,
         },
         {
+            UseItem = { itemID = 6284, itemSpellID = 9221 },
             Note = { "SUMMONING_CIRCLE" },
             Coord = { x = 41.99, y = 1704.48 },
-            Button = { ["1471-1"] = 6284 },
-            SpellButton = { ["1471-1"] = 9221 },
             Class = "WARLOCK",
             DontHaveSpell = 697,
             IsQuestUncompleted = 1471,

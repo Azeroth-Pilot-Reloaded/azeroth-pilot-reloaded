@@ -1014,10 +1014,8 @@ APR.RouteQuestStepList["Forever-Horde-Dungeons-Barrens-12-16"] = {
             _index = 99,
         },
         {
-            Note = { "Use the `Fire Sapta`" },
+            UseItem = { itemID = 6636, itemSpellID = 8898 },
             Coord = { x = -3981.27, y = -256.61 },
-            Button = { ["1526-1"] = 6636 },
-            SpellButton = { ["1526-1"] = 8898 },
             Class = "SHAMAN",
             Race = { "Orc", "Tauren", "Troll" },
             Zone = 1411,

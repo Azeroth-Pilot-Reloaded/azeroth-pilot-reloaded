@@ -473,10 +473,9 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Elwynn-Dwarf-Gnome"] = {
             _index = 57,
         },
         {
+            UseItem = { itemID = 6928, itemSpellID = 7728 },
             Note = { "Travel to the bottom of The Slaughtered Lamb", "Use the `Bloodstone Choker` to call forth a Summoned Voidwalker" },
             Coord = { x = 1042.83, y = -8972.68 },
-            Button = { ["1689-1"] = 6928 },
-            SpellButton = { ["1689-1"] = 7728 },
             Class = "WARLOCK",
             Race = "Gnome",
             Zone = 1453,

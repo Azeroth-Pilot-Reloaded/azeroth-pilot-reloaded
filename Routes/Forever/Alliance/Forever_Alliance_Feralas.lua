@@ -1400,10 +1400,9 @@ APR.RouteQuestStepList["Forever-Alliance-Feralas-Second-Visit"] = {
             _index = 15,
         },
         {
+            UseItem = { itemID = 11141, itemSpellID = 14008 },
             Note = { "PLACE_BAIT_BESIDE_GUARDIAN_OPEN_RUINS" },
             Coord = { x = 2340.09, y = -2856.32 },
-            Button = { ["3909"] = 11141 },
-            SpellButton = { ["3909"] = 14008 },
             IsQuestOnQuest = 3909,
             IsQuestUncompleted = 2844,
             Zone = 1444,
