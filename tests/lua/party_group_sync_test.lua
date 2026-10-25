@@ -316,7 +316,7 @@ trackingUI = false
 local wireOK, lean = serializer:Deserialize(party.lastGroupPayload)
 assert(wireOK and not lean.sojournerSkipCampaign and not lean.stepFrameDetails.progress
     and not lean.stepFrameDetails.fillerSteps and not lean.stepFrameDetails.questSteps[1].key,
-    "The wire only carries displayed fields and live tooltip text")
+    "The wire omits filler rows and duplicated progress while preserving consumed fields")
 local legacy = APR.PartyProtocol.NormalizeSnapshot(party.GroupListSteps.Local, APR.Username)
 legacy.sender = nil
 local legacyBytes, leanBytes = #serializer:Serialize(legacy), #party.lastGroupPayload
@@ -619,3 +619,70 @@ instance = true
 party:GroupUpdateHandler("APRVersionCheck", "7.3.2", "INSTANCE_CHAT", "Peer-Home")
 assert(APRData.versionCheck[client] == "7.3.2" and #alerts == 1, "Instance versions are remembered without repeated alerts")
 print("Party versions: member validation, legacy replies, opt-out isolation, raid and instance delivery passed")
+
+-- The skip preference drives Sojourner mismatch warnings even when counters,
+-- route identity and tooltip content do not change. Keep that bit in the wire
+-- and the send comparison without re-rendering unchanged progress rows.
+grouped, raid, instance = true, false, false
+roster = { party1 = { "Peer", "Home" } }
+APR.settings.profile.receiveGroupData = true
+APR.settings.profile.sojournerSkipCampaign = false
+APR.ActiveRoute = "sojourner-wire-test"
+function APR.currentStep:GetCurrentStepDetails()
+    return { progress = { index = 3, step = 3, total = 12 }, questSteps = {
+        { text = string.rep("x", 1000) }, { text = string.rep("y", 1000) }, { text = string.rep("z", 1000) },
+    } }
+end
+party:RemoveTeam()
+advance(2)
+party:SendGroupMessage(true)
+before = #sent
+startTrackingUI()
+APR.settings.profile.sojournerSkipCampaign = true
+party:SendGroupMessage()
+advance(2)
+assert(#sent > before, "Enabling Sojourner skipping alone must publish the new setting")
+assertNoUIWork()
+trackingUI = false
+local enabledOK, enabledWire = serializer:Deserialize(party.lastGroupPayload)
+assert(enabledOK and enabledWire.sojournerSkipCampaign == true and not enabledWire.stepFrameDetails.questSteps,
+    "The enabled preference survives tooltip trimming and serialization")
+before, serializedBefore = #sent, serializations
+startTrackingUI()
+for _ = 1, 1000 do party:SendGroupMessage() end
+advance(2)
+assert(#sent == before and serializations == serializedBefore, "An unchanged enabled setting remains deduplicated")
+assertNoUIWork()
+trackingUI = false
+APR.settings.profile.sojournerSkipCampaign = false
+party:SendGroupMessage()
+advance(2)
+assert(#sent > before, "Disabling Sojourner skipping alone must publish the default state")
+local disabledOK, disabledWire = serializer:Deserialize(party.lastGroupPayload)
+assert(disabledOK and APR.PartyProtocol.NormalizeSnapshot(disabledWire, "Local-Home").sojournerSkipCampaign == false)
+
+dofile("APR-Core/utils/SojournerUtils.lua")
+function APR:IsSojournerSkipEligible() return true end
+function APR:WrapTextWithAppearanceColor(value) return value end
+local mismatches = {}
+APR.questionDialog = { CreateMessagePopup = function(_, text) mismatches[#mismatches + 1] = text end }
+disabledWire.username = "Peer"
+receivePayload(disabledWire, "Peer-Home")
+enabledWire.username = "Peer"
+startTrackingUI()
+receivePayload(enabledWire, "Peer-Home")
+assertNoUIWork()
+trackingUI = false
+assert(party.GroupListSteps.Peer.sojournerSkipCampaign == true)
+APR:CheckSojournerPartySync()
+APR:CheckSojournerPartySync()
+assert(#mismatches == 1 and mismatches[1]:find("Peer", 1, true),
+    "An enabled peer warns a disabled local player once per route after a real wire roundtrip")
+APR.ActiveRoute = "sojourner-wire-test-off"
+APR.settings.profile.sojournerSkipCampaign = true
+disabledWire.username, disabledWire.routeFileName = "Peer", APR.ActiveRoute
+receivePayload(disabledWire, "Peer-Home")
+APR:CheckSojournerPartySync()
+assert(#mismatches == 2 and party.GroupListSteps.Peer.sojournerSkipCampaign == false,
+    "A disabled peer also warns an enabled local player")
+print("Party Sojourner: setting-only changes, deduplication, oversized snapshots and mismatch warnings in both directions passed")
