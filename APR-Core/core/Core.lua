@@ -156,6 +156,7 @@ function APR:OnInitialize()
     -- APR Global Variables, UI oriented
     BINDING_HEADER_APR = self.title -- Header text for APR's main frame
     _G["BINDING_NAME_" .. "CLICK APR_ItemButton:LeftButton"] = L["USE_QUEST_ITEM"]
+    _G["BINDING_NAME_" .. "CLICK APR_TargetButton:LeftButton"] = _G.TARGET
 
     -- Register tot party frame
     C_ChatInfo.RegisterAddonMessagePrefix("APRPartyRequest")
@@ -191,7 +192,7 @@ function APR:InitSecretUtils()
     else
         self.Secret = {}
     end
-end--[[APR_DIAG]]; APR.InitSecretUtils = APRTrace("APR-Core/core/Core.lua:188:APR:InitSecretUtils#2", APR.InitSecretUtils)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.InitSecretUtils = APRTrace("APR-Core/core/Core.lua:189:APR:InitSecretUtils#2", APR.InitSecretUtils)--[[/APR_DIAG]]
 
 function APR:InitIdentity()
     local userId = (self.SafeUnitGUID and self:SafeUnitGUID("player", UNKNOWN))
@@ -210,4 +211,4 @@ function APR:InitIdentity()
             self.ClassLocalName, self.ClassName, self.ClassId = classLocal, className, classId
         end
     end
-end--[[APR_DIAG]]; APR.InitIdentity = APRTrace("APR-Core/core/Core.lua:196:APR:InitIdentity#3", APR.InitIdentity)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.InitIdentity = APRTrace("APR-Core/core/Core.lua:197:APR:InitIdentity#3", APR.InitIdentity)--[[/APR_DIAG]]
