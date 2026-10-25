@@ -9,7 +9,7 @@ class InstrumentationTests(unittest.TestCase):
     def test_production_paths_with_debug_enabled(self):
         for name in ('current_step_render', 'quest_order_performance', 'arrow_visibility',
                      'arrow_action_text', 'arrow_action_settings', 'action_text_source',
-                     'event_lifecycle', 'npc_interaction_chain', 'party_group_sync', 'version_shared_channel',
+                     'event_lifecycle', 'npc_interaction_chain', 'merchant_sales', 'party_group_sync', 'version_shared_channel',
                      'secret_compatibility', 'reputation_scheduling',
                      'step_progression', 'navigation_scheduling', 'navigation_unlock_routes',
                      'navigation_map_projection', 'navigation_projection_cache', 'route_path_performance',

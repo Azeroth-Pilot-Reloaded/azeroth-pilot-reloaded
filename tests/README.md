@@ -36,6 +36,12 @@ transitions and temporary routes with synthetic guides. `native_route_actions_te
 tests action handlers. `level_requirements_test.lua` covers bonus profiles and absolute XP.
 The Forever compatibility command reuses the common route suite.
 
+`merchant_sales_test.lua` exercises both auto-vendor and `SellItems` with native
+junk selling and the container fallback: large inventories, delayed/rejected
+sales, locks, missing item data, equipped targets and cancelled retries. In game,
+verify both paths with full bags on Retail and Forever, confirm native junk
+selling opens no popup, and close the merchant during a sale to check cancellation.
+
 `memory_recycling_test.lua` covers changing current steps and actions, repeated
 combat transitions, image previews, route configuration lists and heirloom buttons.
 Widget allocations stop after the reusable pools are warmed up; cached callbacks
