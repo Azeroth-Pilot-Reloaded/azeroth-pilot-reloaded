@@ -151,6 +151,25 @@ Python runner discovers all Lua suites automatically. Widget mocks do not valida
 client's rendering or taint system: also check a long objective, a pickup list,
 image previews, collapse/expand, and an item-use step during combat in game.
 
+Quest-action bindings keep `CLICK APR_ItemButton:LeftButton` for the primary
+action and expose `CLICK APR_TargetButton:LeftButton` separately for the NPC
+target/raid-marker control. The action shortcut never retargets implicitly.
+Visible guide actions take precedence over optional filler actions, following
+each panel's displayed row order rather than frame creation or pool order.
+The first action stays selected on repeated presses; other actions remain
+clickable. Cooldowns and missing items do not silently select a different action.
+With no matching visible control the shortcut clears its payload and does nothing.
+
+`gamepad_test.lua` models restricted frame handles (without native Button methods)
+and verifies scalar action dispatch, payload cleanup, stable ordering, separate
+targeting, combat resolution and housing bookkeeping. `quest_action_binding_test.lua`
+also exercises registration through the actual guide renderer and recycled rows.
+In game, `/reload`, bind both shortcuts in APR's key-binding category and check
+an item, two simultaneous actions, target plus item, a target-only step, an empty
+step and a filler. Check both ActionButtonUseKeyDown preferences, modifiers and
+an already-created item button during combat. New/reconfigured protected controls
+still wait for combat to end; simulated widgets cannot certify native taint rules.
+
 `ui/foundations/StatusBars.lua` creates all APR bars as native `StatusBar` frames
 and applies their configured RGBA colors. The guide's color option refreshes its
 header, quest objectives, reputation and money bars together; AFK retains its own

@@ -6,4 +6,5 @@
     <Binding name="APR_PREVIOUS" category="BINDING_HEADER_APR">APR.Gamepad:RunAction("rollback")</Binding>
     <Binding name="APR_STEP" category="BINDING_HEADER_APR">APR.Gamepad:RunAction("step")</Binding>
     <Binding name="CLICK APR_ItemButton:LeftButton" header="Use Items" category="BINDING_HEADER_APR"/>
+    <Binding name="CLICK APR_TargetButton:LeftButton" category="BINDING_HEADER_APR"/>
 </Bindings>

@@ -47,7 +47,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/integrations/EllesmereUISettings.lua"] = {instrumented = 13, diagnosticHelpers = 0},
     ["APR-Core/integrations/EllesmereUISkin.lua"] = {instrumented = 23, diagnosticHelpers = 0},
     ["APR-Core/integrations/ElvUISkin.lua"] = {instrumented = 22, diagnosticHelpers = 0},
-    ["APR-Core/integrations/Gamepad.lua"] = {instrumented = 35, diagnosticHelpers = 0},
+    ["APR-Core/integrations/Gamepad.lua"] = {instrumented = 38, diagnosticHelpers = 0},
     ["APR-Core/integrations/GamepadControls.lua"] = {instrumented = 20, diagnosticHelpers = 0},
     ["APR-Core/integrations/GamepadNavigation.lua"] = {instrumented = 30, diagnosticHelpers = 0},
     ["APR-Core/integrations/NavigationEntrances.lua"] = {instrumented = 4, diagnosticHelpers = 0},

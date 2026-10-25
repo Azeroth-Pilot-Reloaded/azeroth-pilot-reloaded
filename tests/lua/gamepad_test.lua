@@ -16,6 +16,9 @@ function methods:GetScript(key) return self.scripts[key] end
 function methods:GetAttribute(key) return (self.attributes or {})[key] end
 function methods:SetFrameRef(key, value) self.refs = self.refs or {}; self.refs[key] = value end
 function methods:GetFrameRef(key) return self.refs[key] end
+function methods:EnableMouse(value) self.mouseEnabled = value end
+function methods:IsMouseEnabled() return self.mouseEnabled ~= false end
+function methods:RegisterForClicks(...) self.clicks = {...} end
 function methods:GetMinMaxValues() return self.minimum, self.maximum end
 function methods:GetValue() return self.value end
 function methods:GetValueStep() return self.step or 1 end
@@ -40,9 +43,33 @@ APR.settings = {profile = {enableAddon = true}}
 APR.command = {SlashCmd = function(self, command) self.last = command end}
 APR.Workspace = {Show = function(self, page) self.page = page end}
 function APR:PrintInfo(message) self.message = message end
+-- Secure snippets receive restricted handles, not native widget tables. Only
+-- expose APIs actually provided by RestrictedFrames.lua; in particular no Click.
+local handles = setmetatable({}, {__mode = "k"})
+local function handle(frame)
+    if not handles[frame] then
+        handles[frame] = {
+            GetAttribute = function(_, key) return frame:GetAttribute(key) end,
+            SetAttribute = function(_, key, value)
+                frame.attributes = frame.attributes or {}
+                frame.attributes[key] = value -- secure writes are allowed in combat
+            end,
+            GetFrameRef = function(_, key)
+                local ref = frame:GetFrameRef(key)
+                return ref and handle(ref)
+            end,
+            IsVisible = function() return frame:IsVisible() end,
+            IsMouseEnabled = function() return frame:IsMouseEnabled() end,
+        }
+    end
+    return handles[frame]
+end
 function SecureHandlerWrapScript(frame, script, owner, body)
     assert(script == "PreClick" and frame == owner)
-    frame.secureClick = assert(loadstring("return function(self) " .. body .. " end"))()
+    local chunk = assert(loadstring("return function(self) " .. body .. " end"))
+    setfenv(chunk, {ipairs = ipairs, newtable = function(...) return {...} end})
+    local snippet = chunk()
+    frame.secureClick = function() snippet(handle(frame)) end
 end
 
 -- Old clients have no native navigation. Loading, bindings and normal windows still work.
@@ -199,15 +226,96 @@ row = list.active[1].overrides.down()
 assert(row.item == 7, "Rebound rows must navigate the new model")
 list:SetItems({}); assert(row.overrides.down() == true)
 
--- The secure proxy uses currently visible controls, clears old targets and reuses pooled refs.
+-- Reproduce the old failure: the native click handler cannot click a restricted handle.
 local first, second = CreateFrame("Button", nil, UIParent), CreateFrame("Button", nil, UIParent)
-first:SetAttribute("type1", "item"); second:SetAttribute("type1", "spell")
-pad:RegisterActionButton(first); pad:RegisterActionButton(second); pad:RegisterActionButton(first)
+local ok, failure = pcall(function() handle(first):Click("LeftButton") end)
+assert(not ok and failure:find("nil value"), "The fixture must reproduce the reported native/handle mismatch")
+first:SetAttribute("type1", "item"); first:SetAttribute("item", "item:100")
+second:SetAttribute("type1", "spell"); second:SetAttribute("spell", 200)
+-- Register in reverse order, as happens after pooling or deferred combat work.
+pad:RegisterActionButton(second, "20-1"); pad:RegisterActionButton(first, "10-1")
+pad:RegisterActionButton(first, "10-1")
 assert(#pad.actionButtons == 2 and APR_ItemButton == pad.itemProxy)
-pad.itemProxy:secureClick(); assert(pad.itemProxy:GetAttribute("clickbutton") == first)
-first:Hide(); pad.itemProxy:secureClick(); assert(pad.itemProxy:GetAttribute("clickbutton") == second)
-second:SetAttribute("type1", nil); pad.itemProxy:secureClick(); assert(not pad.itemProxy:GetAttribute("clickbutton"))
-env.setCombat(true); pad:RegisterActionButton(CreateFrame("Button")); assert(#pad.actionButtons == 2)
+assert(APR_TargetButton == pad.targetProxy)
+local function selectAction(proxy)
+    proxy:secureClick()
+    assert(not proxy:GetAttribute("clickbutton"), "Never pass a restricted handle to Blizzard's click handler")
+    for _, value in pairs(proxy.attributes) do assert(type(value) ~= "table", "Action payloads must be scalar") end
+    return proxy:GetAttribute("type")
+end
+assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("item") == "item:100")
+first:Hide()
+assert(selectAction(pad.itemProxy) == "spell" and pad.itemProxy:GetAttribute("spell") == 200)
+assert(not pad.itemProxy:GetAttribute("item"), "Switching actions must clear the previous payload")
+second:SetAttribute("type1", nil)
+assert(selectAction(pad.itemProxy) == nil and not pad.itemProxy:GetAttribute("spell"), "Empty bindings must be harmless")
+
+-- Targeting never steals the action shortcut, even on a row with both controls.
+local target = CreateFrame("Button", nil, UIParent)
+target:SetAttribute("type1", "macro"); target:SetAttribute("macrotext", "/targetexact NPC\n/tm 8")
+pad:RegisterActionButton(target, "00-1", false, "target")
+first:Show()
+assert(selectAction(pad.itemProxy) == "item")
+assert(selectAction(pad.targetProxy) == "macro" and pad.targetProxy:GetAttribute("macrotext") == "/targetexact NPC\n/tm 8")
+target:SetAttribute("macrotext", "/target [@nameplate2,exists]")
+selectAction(pad.targetProxy)
+assert(pad.targetProxy:GetAttribute("macrotext") == "/target [@nameplate2,exists]", "Target refreshes reach the binding")
+first:Hide()
+assert(selectAction(pad.itemProxy) == nil, "A target-only step must not repurpose the item shortcut")
+target:Hide(); assert(selectAction(pad.targetProxy) == nil and not pad.targetProxy:GetAttribute("macrotext"))
+
+-- Main actions precede fillers; optional rows follow numeric quest/objective order.
+local fillerRow = CreateFrame("Frame", nil, UIParent); fillerRow.questID, fillerRow.objectiveIndex = 2, 1
+local filler = CreateFrame("Button", nil, fillerRow)
+filler:SetAttribute("type1", "toy"); filler:SetAttribute("toy", 300)
+pad:RegisterActionButton(filler, "2-1", true)
+first:Show(); assert(selectAction(pad.itemProxy) == "item")
+first:Hide(); assert(selectAction(pad.itemProxy) == "toy" and pad.itemProxy:GetAttribute("toy") == 300)
+local otherRow = CreateFrame("Frame", nil, UIParent); otherRow.questID, otherRow.objectiveIndex = 10, 1
+local otherFiller = CreateFrame("Button", nil, otherRow)
+otherFiller:SetAttribute("type1", "item"); otherFiller:SetAttribute("item", "item:400")
+pad:RegisterActionButton(otherFiller, "10-1", true)
+assert(selectAction(pad.itemProxy) == "toy", "Filler 2 must precede filler 10")
+fillerRow:Hide()
+assert(selectAction(pad.itemProxy) == "item" and not pad.itemProxy:GetAttribute("toy"), "Hidden parent rows are ignored")
+
+-- Secure resolution works in combat without mutating refs/attributes from addon Lua.
+env.setCombat(true)
+local registered = #pad.actionButtons
+pad:RegisterActionButton(CreateFrame("Button")); assert(#pad.actionButtons == registered)
+assert(selectAction(pad.itemProxy) == "item" and pad.itemProxy:GetAttribute("item") == "item:400")
+assert(selectAction(pad.targetProxy) == nil)
+env.setCombat(false)
+
+-- Rebinding a pooled control changes its priority as well as its action payload.
+first:Show(); first:SetAttribute("type1", "macro"); first:SetAttribute("item", nil)
+first:SetAttribute("macrotext", "/equipslot [nocombat] 16 item:500")
+pad:RegisterActionButton(first, "30-1")
+second:SetAttribute("type1", "spell"); second:Show()
+assert(selectAction(pad.itemProxy) == "spell", "Reused frames must use their new row's order")
+second:EnableMouse(false)
+assert(selectAction(pad.itemProxy) == "macro" and not pad.itemProxy:GetAttribute("spell"))
+first:Hide(); second:Hide(); filler:Hide(); otherFiller:Hide()
+
+-- The proxy retains housing's non-protected departure bookkeeping.
+local housing = CreateFrame("Button", nil, UIParent)
+housing:SetAttribute("type1", "teleporthome")
+housing:SetAttribute("house-neighborhood-guid", "neighborhood")
+housing:SetAttribute("house-guid", "house"); housing:SetAttribute("house-plot-id", 7)
+pad:RegisterActionButton(housing, "housing")
+local departures = 0
+APR.navigation = {GetData = function() return {UpdateHousingExitLocation = function() departures = departures + 1 end} end}
+assert(selectAction(pad.itemProxy) == "teleporthome" and pad.itemProxy:GetAttribute("house-plot-id") == 7)
+pad.itemProxy.scripts.PreClick(pad.itemProxy)
+assert(departures == 1)
+housing:SetAttribute("type1", "returnhome"); housing:SetAttribute("house-neighborhood-guid", nil)
+housing:SetAttribute("house-guid", nil); housing:SetAttribute("house-plot-id", nil)
+assert(selectAction(pad.itemProxy) == "returnhome" and not pad.itemProxy:GetAttribute("house-guid"))
+housing:Hide(); APR.navigation = nil
+
+-- Native SecureActionButton dispatch must receive both hardware phases so it can
+-- honor either ActionButtonUseKeyDown preference.
+assert(table.concat(pad.itemProxy.clicks, ",") == "AnyDown,AnyUp")
 env.setCombat(false)
 print("Gamepad: native lifecycle, modal ownership, deferred refresh, combat, sliders, 1000 recycled routes and secure action routing passed")
-return {env = env, pad = pad, manager = manager, window = window, tick = tick, created = created}
+return {env = env, pad = pad, manager = manager, window = window, tick = tick, created = created, selectAction = selectAction}
