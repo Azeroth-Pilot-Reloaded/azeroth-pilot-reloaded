@@ -124,8 +124,8 @@ function Browser:Create(parent)
         {kind = "leveling", label = "LEVELING_PREFAB", tooltip = "LEVELING_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:124:callback#10", --[[/APR_DIAG]]function() APR.routeconfig:OpenLevelingPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]},
         {kind = "all_quests", label = "ALL_QUESTS", tooltip = "ALL_QUESTS_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:125:callback#11", --[[/APR_DIAG]]function() APR.routeconfig:OpenAllQuestsPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]},
     }
-    table.insert(definitions, 2, {kind = "dungeons", text = L["SPEEDRUN"] .. " - " .. DUNGEONS,
-        tooltip = "SPEEDRUN_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:128:callback#12", --[[/APR_DIAG]]function() APR.routeconfig:OpenDungeonPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]})
+    table.insert(definitions, 2, {kind = "dungeons", text = DUNGEONS,
+        tooltip = "LEVELING_TOOLTIPS", action = --[[APR_DIAG]]APRTrace("APR-Core/ui/route/RouteBrowser.lua:128:callback#12", --[[/APR_DIAG]]function() APR.routeconfig:OpenDungeonPopup() end--[[APR_DIAG]])--[[/APR_DIAG]]})
     self.prefabButtons = {}
     for _, definition in ipairs(definitions) do
         local label = definition.text or L[definition.label]

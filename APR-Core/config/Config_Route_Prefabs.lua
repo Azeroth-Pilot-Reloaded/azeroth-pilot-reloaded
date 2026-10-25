@@ -51,8 +51,8 @@ end--[[APR_DIAG]]; BuildLockedLabel = APRTrace("APR-Core/config/Config_Route_Pre
 local PREFAB_POPUP_DEFINITIONS = {
     dungeons = {
         prefabType = APR.PREFAB_TYPES.Dungeons,
-        title = string.format(L["PREFAB_TITLE"], L["SPEEDRUN"] .. " - " .. DUNGEONS),
-        description = L["SPEEDRUN_TOOLTIPS"],
+        title = string.format(L["PREFAB_TITLE"], DUNGEONS),
+        description = L["LEVELING_TOOLTIPS"],
         unavailableMessage = L["ROUTE_NOT_AVAILABLE_YET"],
         expansions = { APR.EXPANSIONS.Forever },
     },

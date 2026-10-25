@@ -36,7 +36,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/features/questing/QuestHandler.lua"] = {instrumented = 3, diagnosticHelpers = 0},
     ["APR-Core/features/questing/RouteActions.lua"] = {instrumented = 20, diagnosticHelpers = 0},
     ["APR-Core/features/questing/RouteCatalog.lua"] = {instrumented = 12, diagnosticHelpers = 0},
-    ["APR-Core/features/questing/RouteManager.lua"] = {instrumented = 43, diagnosticHelpers = 0},
+    ["APR-Core/features/questing/RouteManager.lua"] = {instrumented = 44, diagnosticHelpers = 0},
     ["APR-Core/features/questing/RouteSuggestions.lua"] = {instrumented = 10, diagnosticHelpers = 0},
     ["APR-Core/features/questing/StepActionHandlers.lua"] = {instrumented = 8, diagnosticHelpers = 0},
     ["APR-Core/features/questing/StepInstructions.lua"] = {instrumented = 8, diagnosticHelpers = 0},

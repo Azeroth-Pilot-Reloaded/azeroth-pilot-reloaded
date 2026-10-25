@@ -2,7 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Horde-Dungeons-Ruins-of-Lordaeron"] = {
-    label = L["Forever - Dungeon - Ruins of Lordaeron"] .. " (17-18)",
+    label = L["Forever - Leveling Dungeon - Ruins of Lordaeron"] .. " (17-18)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

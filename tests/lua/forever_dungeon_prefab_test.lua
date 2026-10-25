@@ -1,5 +1,5 @@
 -- A level-one preset must queue future chapters, while activation stays gated.
-local L = setmetatable({}, { __index = function(_, key) return key end })
+local L = setmetatable({PREFAB_TITLE = "%s"}, { __index = function(_, key) return key end })
 function LibStub() return { GetLocale = function() return L end } end
 DUNGEONS = "Dungeons"
 tinsert, tremove = table.insert, table.remove

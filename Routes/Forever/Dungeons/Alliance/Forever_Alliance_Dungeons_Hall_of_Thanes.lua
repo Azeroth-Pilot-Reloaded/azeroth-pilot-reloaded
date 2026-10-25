@@ -2,7 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
-    label = L["Forever - Dungeon - Hall of Thanes"] .. " (17-18)",
+    label = L["Forever - Leveling Dungeon - Hall of Thanes"] .. " (17-18)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,
@@ -37,11 +37,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             _index = 4,
         },
         {
-            Waypoint = 96392,
-            NonSkippableWaypoint = true,
+            Qpart = { [96392] = { 1 } },
             Note = { "CANCEL_FARSIGHT_OBJECTIVE_COMPLETES" },
             Coord = { x = -1394.24, y = -5797.83 },
             Range = 5,
+            GossipOptionIDs = { 139831 },
             IsQuestOnQuest = 96392,
             Race = { "Dwarf", "Gnome", "Human", "Skyborne" },
             Zone = 1426,
@@ -252,7 +252,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             _index = 31,
         },
         {
-            KillNPC = { dungeonKey = "HOT", npcID = 261319, name = "Durgen Dirgehammer" },
+            KillNPC = { dungeonKey = "HOT", npcID = 261316, name = "Magmatus" },
             Fillers = { [96403] = { 1 } },
             NoArrow = true,
             Dungeon = "HOT",
@@ -260,12 +260,28 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             _index = 32,
         },
         {
-            Qpart = { [96393] = { 1 } },
+            KillNPC = { dungeonKey = "HOT", npcID = 261311, name = "Plunder" },
             Fillers = { [96403] = { 1 } },
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
             _index = 33,
+        },
+        {
+            KillNPC = { dungeonKey = "HOT", npcID = 261319, name = "Durgen Dirgehammer" },
+            Fillers = { [96403] = { 1 } },
+            NoArrow = true,
+            Dungeon = "HOT",
+            InstanceQuest = true,
+            _index = 34,
+        },
+        {
+            Qpart = { [96393] = { 1 } },
+            Fillers = { [96403] = { 1 } },
+            NoArrow = true,
+            Dungeon = "HOT",
+            InstanceQuest = true,
+            _index = 35,
         },
         {
             PickUp = { 98423 },
@@ -274,7 +290,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            _index = 34,
+            _index = 36,
         },
         {
             Qpart = { [96403] = { 1 } },
@@ -282,7 +298,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            _index = 35,
+            _index = 37,
         },
         {
             LeaveInstance = { dungeonKey = "HOT" },
@@ -290,13 +306,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             NoArrow = true,
             Dungeon = "HOT",
             InstanceQuest = true,
-            _index = 36,
+            _index = 38,
         },
         {
             Done = { 96403 },
             Coord = { x = -968.2, y = -4803.7 },
             Zone = 1455,
-            _index = 37,
+            _index = 39,
         },
         {
             Waypoint = 96394,
@@ -305,7 +321,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -1006.6, y = -4841.6 },
             Range = 10.0,
             Zone = 1455,
-            _index = 38,
+            _index = 40,
         },
         {
             Waypoint = 96394,
@@ -314,7 +330,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -969.7, y = -4841.5 },
             Range = 10.0,
             Zone = 1455,
-            _index = 39,
+            _index = 41,
         },
         {
             Waypoint = 96394,
@@ -323,7 +339,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -964.3, y = -4807.5 },
             Range = 10.0,
             Zone = 1455,
-            _index = 40,
+            _index = 42,
         },
         {
             Waypoint = 96394,
@@ -332,7 +348,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -993.5, y = -4817.6 },
             Range = 10.0,
             Zone = 1455,
-            _index = 41,
+            _index = 43,
         },
         {
             Waypoint = 96394,
@@ -341,7 +357,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -983.7, y = -4847.8 },
             Range = 10.0,
             Zone = 1455,
-            _index = 42,
+            _index = 44,
         },
         {
             Waypoint = 96394,
@@ -350,7 +366,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -1022.0, y = -4842.1 },
             Range = 10.0,
             Zone = 1455,
-            _index = 43,
+            _index = 45,
         },
         {
             Waypoint = 96394,
@@ -359,13 +375,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -994.0, y = -4843.1 },
             Range = 10.0,
             Zone = 1455,
-            _index = 44,
+            _index = 46,
         },
         {
             Done = { 96394 },
             Coord = { x = -971.8, y = -4820.7 },
             Zone = 1455,
-            _index = 45,
+            _index = 47,
         },
         {
             Waypoint = 96393,
@@ -374,7 +390,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -1030.2, y = -4831.0 },
             Range = 10.0,
             Zone = 1455,
-            _index = 46,
+            _index = 48,
         },
         {
             Waypoint = 96393,
@@ -383,7 +399,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -1090.9, y = -4830.4 },
             Range = 10.0,
             Zone = 1455,
-            _index = 47,
+            _index = 49,
         },
         {
             Waypoint = 96393,
@@ -392,7 +408,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -1079.6, y = -4884.1 },
             Range = 10.0,
             Zone = 1455,
-            _index = 48,
+            _index = 50,
         },
         {
             Waypoint = 96393,
@@ -401,13 +417,13 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Coord = { x = -1058.0, y = -4842.5 },
             Range = 10.0,
             Zone = 1455,
-            _index = 49,
+            _index = 51,
         },
         {
             Done = { 96393, 98423 },
             Coord = { x = -1022.6, y = -4865.7 },
             Zone = 1455,
-            _index = 50,
+            _index = 52,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -417,7 +433,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             MinLevel = 1,
             Race = "Dwarf",
             Zone = 1455,
-            _index = 51,
+            _index = 53,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -426,7 +442,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             MinLevel = 1,
             Race = { "Gnome", "Human", "Skyborne" },
             Zone = 1455,
-            _index = 52,
+            _index = 54,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -435,7 +451,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             MinLevel = 1,
             Race = { "Dwarf", "Gnome", "Human", "NightElf" },
             Zone = 1455,
-            _index = 53,
+            _index = 55,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -444,7 +460,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             MinLevel = 1,
             Race = { "Dwarf", "Human" },
             Zone = 1455,
-            _index = 54,
+            _index = 56,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -452,7 +468,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Class = "ROGUE",
             MinLevel = 1,
             Zone = 1455,
-            _index = 55,
+            _index = 57,
         },
         {
             Waypoint = 95250,
@@ -462,7 +478,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Class = "WARLOCK",
             Race = { "Gnome", "Human" },
             Zone = 1455,
-            _index = 56,
+            _index = 58,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -471,7 +487,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             MinLevel = 1,
             Race = { "Gnome", "Human" },
             Zone = 1455,
-            _index = 57,
+            _index = 59,
         },
         {
             Waypoint = 95250,
@@ -483,7 +499,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             DontHaveSpell = 20381,
             Race = { "Gnome", "Human" },
             Zone = 1455,
-            _index = 58,
+            _index = 60,
         },
         {
             Waypoint = 95250,
@@ -495,7 +511,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             DontHaveSpell = 20381,
             Race = { "Gnome", "Human" },
             Zone = 1455,
-            _index = 59,
+            _index = 61,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -503,7 +519,7 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             Class = "WARRIOR",
             MinLevel = 1,
             Zone = 1455,
-            _index = 60,
+            _index = 62,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -512,11 +528,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Hall-of-Thanes"] = {
             MinLevel = 1,
             Race = { "Dwarf", "Human", "NightElf", "Skyborne" },
             Zone = 1455,
-            _index = 61,
+            _index = 63,
         },
         {
             RouteCompleted = true,
-            _index = 62,
+            _index = 64,
         },
     },
 }

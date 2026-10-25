@@ -2,7 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"] = {
-    label = L["Forever - Dungeon - Darkshore / Loch Modan"] .. " (11-16)",
+    label = L["Forever - Leveling Dungeon - Darkshore / Loch Modan"] .. " (11-16)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,
@@ -1918,11 +1918,11 @@ APR.RouteQuestStepList["Forever-Alliance-Dungeons-Darkshore-Loch-Modan-NightElf"
             _index = 231,
         },
         {
-            Waypoint = 96392,
-            NonSkippableWaypoint = true,
+            Qpart = { [96392] = { 1 } },
             Note = { "CANCEL_FARSIGHT_OBJECTIVE_COMPLETES" },
             Coord = { x = -1394.24, y = -5797.83 },
             Range = 5,
+            GossipOptionIDs = { 139831 },
             IsQuestOnQuest = 96392,
             Zone = 1426,
             _index = 232,

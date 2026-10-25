@@ -2,7 +2,7 @@ local L = LibStub("AceLocale-3.0"):GetLocale("APR")
 
 -- Generated locally by the APR route converter.
 APR.RouteQuestStepList["Forever-Horde-Dungeons-Ragefire-Chasm"] = {
-    label = L["Forever - Dungeon - Ragefire Chasm"] .. " (16-17)",
+    label = L["Forever - Leveling Dungeon - Ragefire Chasm"] .. " (16-17)",
     expansion = APR.EXPANSIONS.Forever,
     gameVersion = APR.GAME_VERSIONS.Forever,
     category = APR.CATEGORIES.Dungeons,

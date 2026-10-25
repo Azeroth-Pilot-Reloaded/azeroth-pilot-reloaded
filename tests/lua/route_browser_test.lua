@@ -216,7 +216,7 @@ browser:Refresh(true)
 assert(#browser.prefabs == 3)
 assert(browser.prefabs[1].prefabKind == "speedrun" and browser.prefabs[2].prefabKind == "dungeons"
     and browser.prefabs[3].prefabKind == "leveling")
-assert(browser.prefabs[2]:GetFontString():GetText() == "SPEEDRUN - " .. DUNGEONS)
+assert(browser.prefabs[2]:GetFontString():GetText() == DUNGEONS)
 local navigation = catalog:GetNavigation(catalog:Build())
 assert(#navigation == 5, "Empty Community and Custom categories must not appear")
 assert(navigation[3].label == "Forever" and navigation[3].count == 1)

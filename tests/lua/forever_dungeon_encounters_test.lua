@@ -28,7 +28,8 @@ local cases = {
     { "RFC", 389, 2732, { 11517 } }, { "RFC", 389, 2733, { 11520 } },
     { "RFC", 389, 2734, { 11518 } }, { "RFC", 389, 2735, { 11519 } },
     { "ROL", 2999, 3353, { 250483 } }, { "ROL", 2999, 3354, { 250657 } },
-    { "HOT", 3065, 3493, { 261306 } }, { "HOT", 3065, 3496, { 261319 } },
+    { "HOT", 3065, 3493, { 261306 } }, { "HOT", 3065, 3495, { 261316 } },
+    { "HOT", 3065, 3494, { 261311 } }, { "HOT", 3065, 3496, { 261319 } },
     { "WC", 43, 585, { 3671 } }, { "WC", 43, 586, { 3669 } },
     { "WC", 43, 588, { 3670 } }, { "WC", 43, 590, { 3673 } },
     { "WC", 43, 591, { 5775 } }, { "WC", 43, 592, { 3654 } },
@@ -83,4 +84,4 @@ for _, encounter in ipairs({ 1443, 1444, 1445, 1446 }) do
     handler(nil, "ENCOUNTER_END", encounter, "Retail boss", 1, 5, 1, {})
 end
 assert(not APR:GetDungeonRun(APR.ActiveRoute, "RFC"))
-print("Forever: 21 encounters across five dungeons, secret payloads, Sneed phases and client isolation passed")
+print("Forever: 23 encounters across five dungeons, secret payloads, Sneed phases and client isolation passed")
