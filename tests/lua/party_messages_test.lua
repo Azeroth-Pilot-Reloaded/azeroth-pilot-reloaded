@@ -101,3 +101,8 @@ assert(callbacks == 1 and completed[5] == payload and not ChatThrottleLib.bQueue
     "Throttled fragments retain the legacy wire format and complete exactly once")
 assert(not next(party.incomingFragments) and not party.fragmentCleanupTicker)
 print("Party transport: embedded bandwidth limiter, complete wire roundtrip and callback passed")
+local tickerCount = #tickers
+party:HandleMessageFragment("single|1|1|small", "one")
+assert(completed[#completed] == "small" and #tickers == tickerCount
+    and not next(party.incomingFragments) and not next(party.fragmentExpiry),
+    "Single-fragment snapshots bypass reassembly tables and expiry tickers")

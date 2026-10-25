@@ -1479,7 +1479,7 @@ function APR.currentStep:FlushPendingContainers()
     end
 end--[[APR_DIAG]]; APR.currentStep.FlushPendingContainers = APRTrace("APR-Core/ui/route/CurrentStep.lua:1455:APR.currentStep:FlushPendingContainers#108", APR.currentStep.FlushPendingContainers)--[[/APR_DIAG]]
 
-function APR.currentStep:GetCurrentStepDetails()
+function APR.currentStep:GetCurrentStepDetails(includeFillers)
     if not APR.ActiveRoute then return nil end
     local playerData = APRData and APRData[APR.PlayerID] or {}
     local currentIndex = playerData[APR.ActiveRoute]
@@ -1494,7 +1494,7 @@ function APR.currentStep:GetCurrentStepDetails()
     local stepDetails = {
         extraLines = {},
         questSteps = {},
-        fillerSteps = {},
+        fillerSteps = includeFillers ~= false and {} or nil,
         progress = {
             index = currentIndex,
             step = displayedStep,
@@ -1536,15 +1536,22 @@ function APR.currentStep:GetCurrentStepDetails()
         end
     end
 
-    -- Filler steps
-    for key, container in pairs(self.fillersList) do
-        if container.font and container.font:GetText() then
-            table.insert(stepDetails.fillerSteps, {
-                key = key,
-                text = container.font:GetText(),
-            })
+    -- Fillers are not consumed by the party tooltip.
+    if includeFillers ~= false then
+        for key, container in pairs(self.fillersList) do
+            if container.font and container.font:GetText() then
+                table.insert(stepDetails.fillerSteps, {
+                    key = key,
+                    text = container.font:GetText(),
+                })
+            end
         end
     end
 
+    -- Stable order prevents a recycled row from changing an otherwise identical
+    -- snapshot just because Lua's table traversal order changed.
+    local function ByKey(a, b) return tostring(a.key) < tostring(b.key) end--[[APR_DIAG]]; ByKey = APRTrace("APR-Core/ui/route/CurrentStep.lua:1553:ByKey#110", ByKey)--[[/APR_DIAG]]
+    table.sort(stepDetails.extraLines, ByKey)
+    table.sort(stepDetails.questSteps, ByKey)
     return stepDetails
 end--[[APR_DIAG]]; APR.currentStep.GetCurrentStepDetails = APRTrace("APR-Core/ui/route/CurrentStep.lua:1482:APR.currentStep:GetCurrentStepDetails#109", APR.currentStep.GetCurrentStepDetails)--[[/APR_DIAG]]
