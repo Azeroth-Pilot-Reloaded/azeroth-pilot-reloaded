@@ -79,8 +79,13 @@ map IDs) and Undermine currently have listed entrances, inherited by child maps.
 The job checks only that connection: a failed condition returns its blocker to
 the existing unlock session; a permitted entrance reachable on foot returns the
 approach, crossing and arrival directly. Unknown flags remain pending data.
-Already being in the destination bypasses its entrance condition. Every locally
-walkable objective returns a direct walking segment without scanning transports.
+Already being in the destination bypasses its entrance condition. Walkable
+objectives within `config.threshold` (2,000 yards by default) return a direct
+walking segment without scanning transports. More distant objectives use the
+full shortest-time search, including personal teleports, physical portal chains
+and taxis, even when both endpoints share a region or map. This optimization
+limit stays at the base threshold when skyriding is available; the larger
+skyriding proximity threshold only controls authored objective visibility.
 
 This host policy prefers the listed entrance rather than comparing every optional
 teleport. `preferZoneAccess = true` enables it in APR's planner. Unlisted zones and
