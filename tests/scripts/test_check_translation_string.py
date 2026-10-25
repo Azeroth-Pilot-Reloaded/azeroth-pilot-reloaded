@@ -231,6 +231,39 @@ class LocalizationCheckOutcomeTests(unittest.TestCase):
         self.assertEqual(status, 0)
         self.assertFalse(any(d["code"] == "unformatted_route_text" for d in payload["diagnostics"]))
 
+    def test_console_commands_do_not_fail_reports_but_adjacent_prose_does(self):
+        for locale in self.exports:
+            self.exports[locale] += '\nL["DISABLE"] = "Disable interaction"\nL["ENABLE"] = "Enable interaction"'
+        route = self.root / "Routes/Test.lua"
+        route.write_text('''local route = { Note = {"DISABLE", "/console interactQuestItems 0",
+                                                  "ENABLE", "/console interactQuestItems 1"} }''', encoding="utf-8")
+        status, _, payload = self.run_check()
+        self.assertEqual(status, 0)
+        self.assertFalse(any(d["key"].startswith("/console") for d in payload["diagnostics"]))
+        route.write_text('local route = { Note = "/console interactQuestItems 0 then click the orb" }',
+                         encoding="utf-8")
+        status, _, payload = self.run_check()
+        self.assertEqual(status, 1)
+        self.assertTrue(any(d["code"] == "raw_text" and d["key"].endswith("then click the orb")
+                            for d in payload["diagnostics"]))
+
+    def test_theme_label_keys_require_target_translations(self):
+        for locale in ("enUS", "deDE"):
+            self.exports[locale] += '\nL["New Theme"] = "A new theme"'
+        themes = self.root / "APR-Core/ui/foundations/Themes.lua"
+        themes.parent.mkdir(parents=True)
+        themes.write_text('''ModernVariant("new", "New", "New Theme", {})
+function APR:GetThemeChoices(locale) return locale[theme.labelKey] end''', encoding="utf-8")
+        status, _, payload = self.run_check()
+        self.assertEqual(status, 1)
+        self.assertTrue(any(d["code"] == "missing_translation" and d["key"] == "New Theme"
+                            and d["locale"] == "frFR" and d["severity"] == "error"
+                            for d in payload["diagnostics"]))
+        self.assertFalse(any(d["code"] == "unused_key" and d["key"] == "New Theme"
+                             for d in payload["diagnostics"]))
+        self.exports["frFR"] += '\nL["New Theme"] = "Un nouveau thème"'
+        self.assertEqual(self.run_check()[0], 0)
+
     def test_locale_export_failure_preserves_available_results_and_blocks(self):
         self.exports["frFR"] = script.requests.HTTPError("sensitive-response")
         status, body, payload = self.run_check()

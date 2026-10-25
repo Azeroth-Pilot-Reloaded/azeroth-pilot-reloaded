@@ -16,9 +16,9 @@ local AceSerializer = _G.LibStub("AceSerializer-3.0")
 
 --Local constant
 local FRAME_WIDTH = 250
-local FRAME_HEIGHT = 100
-local FRAME_OFFSET = 1
-local FRAME_MATE_HOLDER_HEIGHT = -18
+local MIN_ROW_HEIGHT = 40
+local ROW_PADDING = 6
+local ROW_TEXT_GAP = 2
 local MAX_FRAGMENT_COUNT = 128 -- Bound an incomplete group snapshot to 23 KiB.
 local GROUP_SEND_THROTTLE = 2
 local GROUP_SEND_COALESCE = 0.5
@@ -27,6 +27,7 @@ local MAX_OUTGOING_BYTES = 2048 -- Optional tooltip rows never grow the progress
 local MAX_PENDING_MESSAGES = 80 -- Two snapshots per raid member, at most.
 local FRAGMENT_TTL = 10
 local FRAGMENT_SWEEP_INTERVAL = 5
+local TOOLTIP_FIELDS = { "extraLines", "questSteps" }
 local UpdateGroupStep
 
 
@@ -36,15 +37,16 @@ APR.party.GroupListSteps = {}
 APR.party.incomingFragments = APR.party.incomingFragments or {}
 APR.party.fragmentExpiry = APR.party.fragmentExpiry or {}
 APR.party.containerPool = APR.party.containerPool or {}
+APR.party.lastReceivedMessages = {}
 
 local function GetGroupChannel()
     if IsInGroup(LE_PARTY_CATEGORY_INSTANCE) then return "INSTANCE_CHAT" end
     return IsInRaid() and "RAID" or "PARTY"
-end--[[APR_DIAG]]; GetGroupChannel = APRTrace("APR-Core/features/group/Party.lua:40:GetGroupChannel#1", GetGroupChannel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetGroupChannel = APRTrace("APR-Core/features/group/Party.lua:42:GetGroupChannel#1", GetGroupChannel)--[[/APR_DIAG]]
 
 local function CanShareGroupProgress()
     return IsInGroup() and not IsInRaid() and APR.settings.profile.enableAddon
-end--[[APR_DIAG]]; CanShareGroupProgress = APRTrace("APR-Core/features/group/Party.lua:45:CanShareGroupProgress#2", CanShareGroupProgress)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; CanShareGroupProgress = APRTrace("APR-Core/features/group/Party.lua:47:CanShareGroupProgress#2", CanShareGroupProgress)--[[/APR_DIAG]]
 
 -- Addon senders are names, not unit tokens. Resolve membership from the roster
 -- and keep the realm in the identity so namesakes cannot share progress.
@@ -61,7 +63,7 @@ local function GetGroupRoster()
         end
     end
     return members
-end--[[APR_DIAG]]; GetGroupRoster = APRTrace("APR-Core/features/group/Party.lua:51:GetGroupRoster#3", GetGroupRoster)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; GetGroupRoster = APRTrace("APR-Core/features/group/Party.lua:53:GetGroupRoster#3", GetGroupRoster)--[[/APR_DIAG]]
 
 
 ---------------------------------------------------------------------------------------
@@ -69,7 +71,7 @@ end--[[APR_DIAG]]; GetGroupRoster = APRTrace("APR-Core/features/group/Party.lua:
 ---------------------------------------------------------------------------------------
 
 local PartyFrame = CreateFrame("Frame", "PartyScreenPanel", UIParent, "BackdropTemplate")
-PartyFrame:SetSize(FRAME_WIDTH, FRAME_HEIGHT)
+PartyFrame:SetSize(FRAME_WIDTH, 1)
 PartyFrame:SetFrameStrata("LOW")
 PartyFrame:SetClampedToScreen(true)
 
@@ -86,7 +88,7 @@ PartyFrameHeader.Text:SetText(L["GROUP"])
 APR:RegisterFontString(PartyFrameHeader.Text, "party", { role = "accent", sizeDelta = 2 })
 
 -- Create the minimize button
-PartyFrameHeader.MinimizeButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:89:callback#4", --[[/APR_DIAG]]function(self)
+PartyFrameHeader.MinimizeButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:91:callback#4", --[[/APR_DIAG]]function(self)
     if PartyFrame.collapsed then
         APR.party:SetDefaultDisplay()
         self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-collapse-all")
@@ -94,16 +96,17 @@ PartyFrameHeader.MinimizeButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR
     else
         PartyFrame.collapsed = true
         PartyFrame_TeamHolder:Hide()
+        PartyFrame:SetHeight(1)
         self:GetNormalTexture():SetAtlas("ui-questtrackerbutton-expand-all")
         self:GetPushedTexture():SetAtlas("ui-questtrackerbutton-expand-all-pressed")
     end
 end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-PartyFrameHeader:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:102:callback#5", --[[/APR_DIAG]]function(self, button)
+PartyFrameHeader:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:105:callback#5", --[[/APR_DIAG]]function(self, button)
     self:GetParent():StartMoving()
 end--[[APR_DIAG]])--[[/APR_DIAG]])
 
-PartyFrameHeader:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:106:callback#6", --[[/APR_DIAG]]function(self, button)
+PartyFrameHeader:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:109:callback#6", --[[/APR_DIAG]]function(self, button)
     self:GetParent():StopMovingOrSizing()
     LibWindow.SavePosition(PartyScreenPanel)
 end--[[APR_DIAG]])--[[/APR_DIAG]])
@@ -128,18 +131,20 @@ function APR.party:PartyFrameOnInit()
     end
 
     self:RefreshPartyFrameAnchor()
-end--[[APR_DIAG]]; APR.party.PartyFrameOnInit = APRTrace("APR-Core/features/group/Party.lua:118:APR.party:PartyFrameOnInit#7", APR.party.PartyFrameOnInit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.PartyFrameOnInit = APRTrace("APR-Core/features/group/Party.lua:121:APR.party:PartyFrameOnInit#7", APR.party.PartyFrameOnInit)--[[/APR_DIAG]]
 
 function APR.party:SetDefaultDisplay()
     PartyFrame.collapsed = false
     PartyFrame_TeamHolder:Show()
     PartyFrameHeader:Show()
-end--[[APR_DIAG]]; APR.party.SetDefaultDisplay = APRTrace("APR-Core/features/group/Party.lua:133:APR.party:SetDefaultDisplay#8", APR.party.SetDefaultDisplay)--[[/APR_DIAG]]
+    if self.presentationDirty then UpdateGroupStep() else self:ReOrderTeam() end
+end--[[APR_DIAG]]; APR.party.SetDefaultDisplay = APRTrace("APR-Core/features/group/Party.lua:136:APR.party:SetDefaultDisplay#8", APR.party.SetDefaultDisplay)--[[/APR_DIAG]]
 
 -- Update the frame scale
 function APR.party:UpdateFrameScale()
-    LibWindow.SetScale(PartyScreenPanel, APR.settings.profile.groupScale)
-end--[[APR_DIAG]]; APR.party.UpdateFrameScale = APRTrace("APR-Core/features/group/Party.lua:140:APR.party:UpdateFrameScale#9", APR.party.UpdateFrameScale)--[[/APR_DIAG]]
+    local scale = APR.settings.profile.groupScale
+    if PartyScreenPanel:GetScale() ~= scale then LibWindow.SetScale(PartyScreenPanel, scale) end
+end--[[APR_DIAG]]; APR.party.UpdateFrameScale = APRTrace("APR-Core/features/group/Party.lua:144:APR.party:UpdateFrameScale#9", APR.party.UpdateFrameScale)--[[/APR_DIAG]]
 
 function APR.party:RefreshPartyFrameAnchor(forceShow)
     APR:Debug("Function: APR.party:RefreshPartyFrameAnchor()")
@@ -147,44 +152,55 @@ function APR.party:RefreshPartyFrameAnchor(forceShow)
 
     local profile = APR:GetSettingsProfile()
     if IsInRaid() or not profile or not profile.enableAddon then
-        PartyScreenPanel:Hide()
+        if PartyScreenPanel:IsShown() then PartyScreenPanel:Hide() end
         return
     end
 
     local allowTestVisibility = forceShow
     if not allowTestVisibility then
         if not profile.showGroup or not profile.receiveGroupData then
-            PartyScreenPanel:Hide()
+            if PartyScreenPanel:IsShown() then PartyScreenPanel:Hide() end
             return
         end
     end
 
     if not allowTestVisibility and (not IsInGroup() or APR:IsPetBattleActive() or not hasData) then
-        PartyScreenPanel:Hide()
+        if PartyScreenPanel:IsShown() then PartyScreenPanel:Hide() end
         return
     end
 
     if not hasData then
-        PartyScreenPanel:Hide()
+        if PartyScreenPanel:IsShown() then PartyScreenPanel:Hide() end
         return
     end
 
     if APR:IsPetBattleActive() then
-        PartyScreenPanel:Hide()
+        if PartyScreenPanel:IsShown() then PartyScreenPanel:Hide() end
         return
     end
+    if self.presentationDirty and not PartyFrame.collapsed then
+        UpdateGroupStep(nil, forceShow)
+        if not forceShow then return end
+    end
     self:UpdateFrameScale()
-    PartyScreenPanel:EnableMouse(true)
-    LibWindow.RestorePosition(PartyScreenPanel)
-    PartyScreenPanel:Show()
-end--[[APR_DIAG]]; APR.party.RefreshPartyFrameAnchor = APRTrace("APR-Core/features/group/Party.lua:144:APR.party:RefreshPartyFrameAnchor#10", APR.party.RefreshPartyFrameAnchor)--[[/APR_DIAG]]
+    local position = profile.groupFrame or {}
+    if not self.positionInitialized or self.positionX ~= position.x or self.positionY ~= position.y
+        or self.positionPoint ~= position.point or self.positionScale ~= position.scale then
+        LibWindow.RestorePosition(PartyScreenPanel)
+        self.positionInitialized = true
+        self.positionX, self.positionY = position.x, position.y
+        self.positionPoint, self.positionScale = position.point, position.scale
+    end
+    if not self.mouseEnabled then PartyScreenPanel:EnableMouse(true); self.mouseEnabled = true end
+    if not PartyScreenPanel:IsShown() then PartyScreenPanel:Show() end
+end--[[APR_DIAG]]; APR.party.RefreshPartyFrameAnchor = APRTrace("APR-Core/features/group/Party.lua:149:APR.party:RefreshPartyFrameAnchor#10", APR.party.RefreshPartyFrameAnchor)--[[/APR_DIAG]]
 
 -- Reset the frame position
 function APR.party:ResetPosition()
     PartyScreenPanel:ClearAllPoints()
     PartyScreenPanel:SetPoint("center", UIParent, "center", 0, 0)
     LibWindow.SavePosition(PartyScreenPanel)
-end--[[APR_DIAG]]; APR.party.ResetPosition = APRTrace("APR-Core/features/group/Party.lua:183:APR.party:ResetPosition#11", APR.party.ResetPosition)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.ResetPosition = APRTrace("APR-Core/features/group/Party.lua:199:APR.party:ResetPosition#11", APR.party.ResetPosition)--[[/APR_DIAG]]
 
 function APR.party:HandleReceiveGroupDataToggle(isEnabled)
     local enabled = isEnabled
@@ -199,7 +215,7 @@ function APR.party:HandleReceiveGroupDataToggle(isEnabled)
         self:RequestData()
         self:RefreshPartyFrameAnchor()
     end
-end--[[APR_DIAG]]; APR.party.HandleReceiveGroupDataToggle = APRTrace("APR-Core/features/group/Party.lua:189:APR.party:HandleReceiveGroupDataToggle#12", APR.party.HandleReceiveGroupDataToggle)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.HandleReceiveGroupDataToggle = APRTrace("APR-Core/features/group/Party.lua:205:APR.party:HandleReceiveGroupDataToggle#12", APR.party.HandleReceiveGroupDataToggle)--[[/APR_DIAG]]
 
 local function TeamContainerOnEnter(self)
     GameTooltip:SetOwner(self, "ANCHOR_BOTTOM")
@@ -220,11 +236,18 @@ local function TeamContainerOnEnter(self)
     else
         APR:AddTooltipDoubleLine(GameTooltip, string.format(L["ROUTE_LABEL"], " "), data.route, "party", "muted", "base")
 
-        local currentStep = data.routeProgress and data.routeProgress.step or data.currentStep
-        local totalSteps = data.routeProgress and data.routeProgress.total or data.totalSteps
+        local currentStep, totalSteps = data.currentStep, data.totalSteps
         if currentStep and totalSteps then
             APR:AddTooltipDoubleLine(GameTooltip, string.format(L["CURRENT_STEP_LABEL"], " "),
-                currentStep .. " / " .. totalSteps, "party", "muted", "success")
+                currentStep .. " / " .. totalSteps, "party", "muted", self.progressRole or "muted")
+        end
+        if self.progressStatus then
+            APR:AddTooltipLine(GameTooltip, self.progressStatus, "party", self.progressRole, true)
+        end
+        if self.progressHasGap then
+            APR:AddTooltipLine(GameTooltip, L["GROUP_GAP_EXPLANATION"], "party", "muted", true)
+        elseif self.progressRole == "success" then
+            APR:AddTooltipLine(GameTooltip, L["GROUP_SYNC_EXPLANATION"], "party", "muted", true)
         end
 
         local stepText = APR.party:GetStepDescription(data.routeFileName,
@@ -260,7 +283,7 @@ local function TeamContainerOnEnter(self)
     end
 
     GameTooltip:Show()
-end--[[APR_DIAG]]; TeamContainerOnEnter = APRTrace("APR-Core/features/group/Party.lua:204:TeamContainerOnEnter#13", TeamContainerOnEnter)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; TeamContainerOnEnter = APRTrace("APR-Core/features/group/Party.lua:220:TeamContainerOnEnter#13", TeamContainerOnEnter)--[[/APR_DIAG]]
 
 local function AcquireTeamContainer()
     local container = table.remove(APR.party.containerPool)
@@ -275,67 +298,105 @@ local function AcquireTeamContainer()
         if APR.RegisterSkinTarget then APR:RegisterSkinTarget(container, "row", {scope = "party"}) end
 
         container.fontName = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-        container.fontName:SetWordWrap(true)
-        container.fontName:SetWidth(FRAME_WIDTH)
-        container.fontName:SetPoint("TOPLEFT", 5, -5)
+        container.fontName:SetWordWrap(false)
+        container.fontName:SetMaxLines(1)
         container.fontName:SetJustifyH("LEFT")
         APR:RegisterFontString(container.fontName, "party", { role = "base" })
 
         container.fontIndex = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
-        container.fontIndex:SetPoint("TOPRIGHT", 0, -2)
+        container.fontIndex:SetWordWrap(false)
         APR:RegisterFontString(container.fontIndex, "party", { role = "base", sizeDelta = 4 })
 
+        container.fontStatus = container:CreateFontString(nil, "OVERLAY", "GameFontHighlight")
+        container.fontStatus:SetJustifyH("LEFT")
+        container.fontStatus:SetWordWrap(true)
+        APR:RegisterFontString(container.fontStatus, "party", { role = "muted", sizeDelta = -1 })
+
         container:SetScript("OnEnter", TeamContainerOnEnter)
-        container:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:289:callback#15", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        container:SetScript("OnLeave", --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:316:callback#15", --[[/APR_DIAG]]function(self) GameTooltip:Hide() end--[[APR_DIAG]])--[[/APR_DIAG]])
     else
         container:SetParent(PartyFrame_TeamHolder)
         APR:SetPanelColor(container, APR.Color.defaultLightBackdrop)
-        container:Show()
     end
 
     container:SetWidth(FRAME_WIDTH)
+    container.layoutDirty = true
     return container
-end--[[APR_DIAG]]; AcquireTeamContainer = APRTrace("APR-Core/features/group/Party.lua:265:AcquireTeamContainer#14", AcquireTeamContainer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; AcquireTeamContainer = APRTrace("APR-Core/features/group/Party.lua:288:AcquireTeamContainer#14", AcquireTeamContainer)--[[/APR_DIAG]]
 
 local function ReleaseTeamContainer(container)
     if not container then return end
     container:Hide()
     container:ClearAllPoints()
     container.playerData = nil
+    container.progressStatus, container.progressRole, container.progressHasGap = nil, nil, nil
+    container.indexText, container.nameText = nil, nil
+    container.layoutInset, container.layoutIndexWidth, container.layoutTitleHeight = nil, nil, nil
+    container.desiredHeight, container.rowOffset, container.isLastRow = nil, nil, nil
     if container.fontName then container.fontName:SetText("") end
     if container.fontIndex then container.fontIndex:SetText("") end
+    if container.fontStatus then container.fontStatus:SetText("") end
     table.insert(APR.party.containerPool, container)
-end--[[APR_DIAG]]; ReleaseTeamContainer = APRTrace("APR-Core/features/group/Party.lua:300:ReleaseTeamContainer#16", ReleaseTeamContainer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; ReleaseTeamContainer = APRTrace("APR-Core/features/group/Party.lua:327:ReleaseTeamContainer#16", ReleaseTeamContainer)--[[/APR_DIAG]]
 
-local AddTeamMate = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:310:callback#17", --[[/APR_DIAG]]function(playerData, isSameRoute, color, container)
+local function LayoutTeamContainer(container)
+    if not container.layoutDirty then return container.desiredHeight end
+    local modernList = APR.GetThemeStyle and APR:GetThemeStyle("party") == "modern"
+    if modernList and APR.UI and APR.UI.StyleListRow and not container.aprListRow then
+        APR.UI:StyleListRow(container, nil, "party", true)
+    end
+    local inset = modernList and 12 or ROW_PADDING
+    local indexWidth = container.fontIndex:GetStringWidth()
+    if container.layoutInset ~= inset then
+        container.fontIndex:ClearAllPoints()
+        container.fontIndex:SetPoint("TOPRIGHT", -inset, -ROW_PADDING)
+        container.fontName:ClearAllPoints()
+        container.fontName:SetPoint("TOPLEFT", inset, -ROW_PADDING)
+    end
+    if container.layoutInset ~= inset or container.layoutIndexWidth ~= indexWidth then
+        container.fontName:SetWidth(math.max(1, FRAME_WIDTH - inset * 2 - indexWidth - 10))
+    end
+    local titleHeight = math.max(container.fontIndex:GetStringHeight(), container.fontName:GetStringHeight())
+    if container.layoutInset ~= inset or container.layoutTitleHeight ~= titleHeight then
+        container.fontStatus:ClearAllPoints()
+        container.fontStatus:SetPoint("TOPLEFT", inset, -(ROW_PADDING + titleHeight + ROW_TEXT_GAP))
+        container.fontStatus:SetWidth(FRAME_WIDTH - inset * 2)
+    end
+    container.layoutInset, container.layoutIndexWidth, container.layoutTitleHeight = inset, indexWidth, titleHeight
+    container.desiredHeight = math.max(MIN_ROW_HEIGHT, ROW_PADDING * 2 + titleHeight + ROW_TEXT_GAP
+        + container.fontStatus:GetStringHeight())
+    container.layoutDirty = nil
+    return container.desiredHeight
+end--[[APR_DIAG]]; LayoutTeamContainer = APRTrace("APR-Core/features/group/Party.lua:342:LayoutTeamContainer#17", LayoutTeamContainer)--[[/APR_DIAG]]
+
+local AddTeamMate = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:372:callback#18", --[[/APR_DIAG]]function(playerData, status, role, hasGap, container)
     container = container or AcquireTeamContainer()
     container.playerData = playerData
 
-    container.fontName:SetText(playerData.username or UNKNOWN)
-    local modernList = APR.UI and APR.UI.StyleListRow and APR.GetThemeStyle and APR:GetThemeStyle("party") == "modern"
-    if modernList then
-        APR.UI:StyleListRow(container, nil, "party", true)
-        container.fontName:ClearAllPoints(); container.fontName:SetPoint("TOPLEFT", 12, -6)
-        container.fontName:SetWidth(FRAME_WIDTH - 50)
+    local nameText = playerData.username or UNKNOWN
+    if container.nameText ~= nameText then
+        container.fontName:SetText(nameText)
+        container.nameText, container.layoutDirty = nameText, true
     end
 
-    local currentStep = playerData.routeProgress and playerData.routeProgress.step or playerData.currentStep
-    if currentStep then
-        container.fontIndex:SetText(currentStep)
-    else
-        container.fontIndex:SetText('-')
+    -- Personal counters match Current Step; stable definition IDs determine sync.
+    local currentStep = playerData.currentStep
+    local indexText = currentStep and tostring(currentStep) or "-"
+    if container.indexText ~= indexText then
+        container.fontIndex:SetText(indexText)
+        container.indexText, container.layoutDirty = indexText, true
     end
-    if isSameRoute then
-        APR:SetFontStringRole(container.fontIndex, color == "green" and "success" or "warning")
-    else
-        APR:SetFontStringRole(container.fontIndex, "muted")
+    if container.progressStatus ~= status then
+        container.fontStatus:SetText(status)
+        container.progressStatus, container.layoutDirty = status, true
     end
-
-    APR:SetPanelColor(container, APR.Color.defaultLightBackdrop)
-    container:SetWidth(FRAME_WIDTH)
-    local height = math.max(container.fontIndex:GetStringHeight(), container.fontName:GetStringHeight()) + 10
-    container:SetHeight(modernList and math.max(30, height + 2) or height)
-    container:Show()
+    if container.progressRole ~= role then
+        APR:SetFontStringRole(container.fontIndex, role)
+        APR:SetFontStringRole(container.fontStatus, role)
+        container.progressRole, container.layoutDirty = role, true
+    end
+    container.progressHasGap = hasGap
+    if not container:IsShown() then container:Show() end
 
     return container
 end--[[APR_DIAG]])--[[/APR_DIAG]]
@@ -357,7 +418,7 @@ function APR.party:GetStepDescription(route, stepID)
             table.insert(questIDs, qid)
             added[qid] = true
         end
-    end--[[APR_DIAG]]; AddQuestID = APRTrace("APR-Core/features/group/Party.lua:355:AddQuestID#19", AddQuestID)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; AddQuestID = APRTrace("APR-Core/features/group/Party.lua:416:AddQuestID#20", AddQuestID)--[[/APR_DIAG]]
 
     -- PickUp
     if step.PickUp then
@@ -398,77 +459,81 @@ function APR.party:GetStepDescription(route, stepID)
     end
 
     return stepText
-end--[[APR_DIAG]]; APR.party.GetStepDescription = APRTrace("APR-Core/features/group/Party.lua:344:APR.party:GetStepDescription#18", APR.party.GetStepDescription)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.GetStepDescription = APRTrace("APR-Core/features/group/Party.lua:405:APR.party:GetStepDescription#19", APR.party.GetStepDescription)--[[/APR_DIAG]]
 
-function APR.party:UpdateTeamMate(playerData, isSameRoute, color)
+function APR.party:UpdateTeamMate(playerData, status, role, hasGap)
     local username = playerData.username
     APR:Debug("Function: APR.party:UpdateTeamMate() for", username)
     local existingContainer = self.teamList[username]
 
-    local container = AddTeamMate(playerData, isSameRoute, color, existingContainer)
+    local container = AddTeamMate(playerData, status, role, hasGap, existingContainer)
     self.teamList[username] = container
-end--[[APR_DIAG]]; APR.party.UpdateTeamMate = APRTrace("APR-Core/features/group/Party.lua:403:APR.party:UpdateTeamMate#20", APR.party.UpdateTeamMate)--[[/APR_DIAG]]
+    if not existingContainer then self.orderDirty = true end
+end--[[APR_DIAG]]; APR.party.UpdateTeamMate = APRTrace("APR-Core/features/group/Party.lua:464:APR.party:UpdateTeamMate#21", APR.party.UpdateTeamMate)--[[/APR_DIAG]]
 
-function APR.party:ReOrderTeam(order)
-    FRAME_MATE_HOLDER_HEIGHT = FRAME_OFFSET
-
-    local orderedNames = {}
-    local added = {}
-
-    if order then
-        for _, entry in ipairs(order) do
-            local name = type(entry) == "table" and entry.username or entry
-            if name and self.teamList[name] then
-                table.insert(orderedNames, name)
-                added[name] = true
-            end
-        end
+function APR.party:ReOrderTeam()
+    local orderedNames = self.orderedNames
+    if self.orderDirty or not orderedNames then
+        orderedNames = {}
+        for name in pairs(self.teamList) do orderedNames[#orderedNames + 1] = name end
+        table.sort(orderedNames, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:479:callback#23", --[[/APR_DIAG]]function(a, b) return string.lower(a) < string.lower(b) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        self.orderedNames, self.orderDirty = orderedNames, nil
     end
 
-    for name in pairs(self.teamList) do
-        if not added[name] then
-            table.insert(orderedNames, name)
-        end
+    local rowHeight = MIN_ROW_HEIGHT
+    for _, name in ipairs(orderedNames) do
+        rowHeight = math.max(rowHeight, LayoutTeamContainer(self.teamList[name]))
     end
-
-    table.sort(orderedNames, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:434:callback#22", --[[/APR_DIAG]]function(a, b)
-        return string.lower(a) < string.lower(b)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
 
     for index, name in ipairs(orderedNames) do
         local container = self.teamList[name]
         if container then
-            container:ClearAllPoints()
-            container:SetPoint("TOPLEFT", PartyFrame, "TOPLEFT", 0, FRAME_MATE_HOLDER_HEIGHT)
-            container:Show()
-            if APR.UI and container.aprListRow then APR.UI:SetListRowState(container, false, index == #orderedNames) end
-            FRAME_MATE_HOLDER_HEIGHT = FRAME_MATE_HOLDER_HEIGHT - container:GetHeight()
+            if container:GetHeight() ~= rowHeight then container:SetHeight(rowHeight) end
+            local offset = -(index - 1) * rowHeight
+            if container.rowOffset ~= offset then
+                container:ClearAllPoints()
+                container:SetPoint("TOPLEFT", PartyFrame_TeamHolder, "TOPLEFT", 0, offset)
+                container.rowOffset = offset
+            end
+            local last = index == #orderedNames
+            if APR.UI and container.aprListRow and container.isLastRow ~= last then
+                APR.UI:SetListRowState(container, false, last)
+                container.isLastRow = last
+            end
         end
     end
 
+    local height = PartyFrame.collapsed and 1 or math.max(1, #orderedNames * rowHeight)
+    if PartyFrame:GetHeight() ~= height then PartyFrame:SetHeight(height) end
     self:RefreshPartyFrameAnchor()
-end--[[APR_DIAG]]; APR.party.ReOrderTeam = APRTrace("APR-Core/features/group/Party.lua:412:APR.party:ReOrderTeam#21", APR.party.ReOrderTeam)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.ReOrderTeam = APRTrace("APR-Core/features/group/Party.lua:474:APR.party:ReOrderTeam#22", APR.party.ReOrderTeam)--[[/APR_DIAG]]
 
 function APR.party:RefreshTextLayout()
     for _, container in pairs(self.teamList) do
-        local height = math.max(container.fontIndex:GetStringHeight(), container.fontName:GetStringHeight()) + 10
-        local modernList = container.aprListRow and APR:GetThemeStyle("party") == "modern"
-        container:SetHeight(modernList and math.max(30, height + 2) or height)
+        container.layoutDirty = true
+        container.layoutInset, container.layoutIndexWidth, container.layoutTitleHeight = nil, nil, nil
+    end
+    if PartyFrame.collapsed or not PartyScreenPanel:IsShown() then
+        self.presentationDirty = true
+        return
     end
     self:ReOrderTeam()
-end--[[APR_DIAG]]; APR.party.RefreshTextLayout = APRTrace("APR-Core/features/group/Party.lua:452:APR.party:RefreshTextLayout#23", APR.party.RefreshTextLayout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.RefreshTextLayout = APRTrace("APR-Core/features/group/Party.lua:511:APR.party:RefreshTextLayout#24", APR.party.RefreshTextLayout)--[[/APR_DIAG]]
 
 function APR.party:RemoveMateByName(name, skipReorder)
+    local key = APR.PartyProtocol.PlayerKey(name)
+    if key then self.lastReceivedMessages[key] = nil end
     local existingMate = self.teamList[name]
     if not existingMate then
         return
     end
     ReleaseTeamContainer(existingMate)
     self.teamList[name] = nil
+    self.orderDirty = true
     if not skipReorder then
         self:ReOrderTeam()
     end
-end--[[APR_DIAG]]; APR.party.RemoveMateByName = APRTrace("APR-Core/features/group/Party.lua:461:APR.party:RemoveMateByName#24", APR.party.RemoveMateByName)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.RemoveMateByName = APRTrace("APR-Core/features/group/Party.lua:523:APR.party:RemoveMateByName#25", APR.party.RemoveMateByName)--[[/APR_DIAG]]
 
 function APR.party:RemoveTeam()
     APR:Debug("Function: APR.party:RemoveTeam()")
@@ -479,14 +544,17 @@ function APR.party:RemoveTeam()
     wipe(self.GroupListSteps)
     wipe(self.incomingFragments)
     wipe(self.fragmentExpiry)
+    wipe(self.lastReceivedMessages)
+    self.orderedNames, self.orderDirty, self.presentationDirty = nil, nil, nil
     self:CancelGroupSend()
     self.lastGroupPayload = nil
+    self.lastGroupSnapshot = nil
     if self.fragmentCleanupTicker then
         self.fragmentCleanupTicker:Cancel()
         self.fragmentCleanupTicker = nil
     end
-    FRAME_MATE_HOLDER_HEIGHT = FRAME_OFFSET
-end--[[APR_DIAG]]; APR.party.RemoveTeam = APRTrace("APR-Core/features/group/Party.lua:473:APR.party:RemoveTeam#25", APR.party.RemoveTeam)--[[/APR_DIAG]]
+    if PartyFrame:GetHeight() ~= 1 then PartyFrame:SetHeight(1) end
+end--[[APR_DIAG]]; APR.party.RemoveTeam = APRTrace("APR-Core/features/group/Party.lua:538:APR.party:RemoveTeam#26", APR.party.RemoveTeam)--[[/APR_DIAG]]
 
 
 function APR.party:PopulateMissingGroupMembers(skipReorder)
@@ -497,13 +565,25 @@ function APR.party:PopulateMissingGroupMembers(skipReorder)
     end
     local members, known = GetGroupRoster(), {}
     local playerKey = APR.PartyProtocol.PlayerKey(APR.Username)
+    local profile = APR:GetSettingsProfile()
+    local canPresent = not PartyFrame.collapsed and profile and profile.enableAddon
+        and profile.showGroup and profile.receiveGroupData and not APR:IsPetBattleActive()
     for name, data in pairs(self.GroupListSteps) do
         local key = APR.PartyProtocol.PlayerKey(data.sender or name)
-        if key then known[key] = true end
+        if key ~= playerKey and not members[key] then
+            self.GroupListSteps[name] = nil
+            self:RemoveMateByName(name, true)
+        elseif key then
+            known[key] = true
+        end
     end
     for key, name in pairs(members) do
         if key ~= playerKey and not known[key] then
-            self:UpdateTeamMate({ username = name, noAddon = true }, false, 'gray')
+            if canPresent then
+                self:UpdateTeamMate({ username = name, noAddon = true }, L["NO_ADDON"], "muted")
+            else
+                self.presentationDirty, self.orderDirty = true, true
+            end
         end
     end
     for name, _ in pairs(self.teamList) do
@@ -514,9 +594,9 @@ function APR.party:PopulateMissingGroupMembers(skipReorder)
         end
     end
     if not skipReorder then
-        self:ReOrderTeam()
+        if canPresent then self:ReOrderTeam() else self:RefreshPartyFrameAnchor() end
     end
-end--[[APR_DIAG]]; APR.party.PopulateMissingGroupMembers = APRTrace("APR-Core/features/group/Party.lua:492:APR.party:PopulateMissingGroupMembers#26", APR.party.PopulateMissingGroupMembers)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.PopulateMissingGroupMembers = APRTrace("APR-Core/features/group/Party.lua:560:APR.party:PopulateMissingGroupMembers#27", APR.party.PopulateMissingGroupMembers)--[[/APR_DIAG]]
 
 function APR.party:CheckIfPartyMemberIsFriend()
     -- If Player is NOT in a Group (not instance), do nothing
@@ -538,7 +618,7 @@ function APR.party:CheckIfPartyMemberIsFriend()
     end
 
     return false
-end--[[APR_DIAG]]; APR.party.CheckIfPartyMemberIsFriend = APRTrace("APR-Core/features/group/Party.lua:521:APR.party:CheckIfPartyMemberIsFriend#27", APR.party.CheckIfPartyMemberIsFriend)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.CheckIfPartyMemberIsFriend = APRTrace("APR-Core/features/group/Party.lua:601:APR.party:CheckIfPartyMemberIsFriend#28", APR.party.CheckIfPartyMemberIsFriend)--[[/APR_DIAG]]
 
 function APR.party:GetFriendsList()
     -- Get Number of Friends online (WoW and BNet)
@@ -564,16 +644,15 @@ function APR.party:GetFriendsList()
     end
 
     return FriendListTable
-end--[[APR_DIAG]]; APR.party.GetFriendsList = APRTrace("APR-Core/features/group/Party.lua:543:APR.party:GetFriendsList#28", APR.party.GetFriendsList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.GetFriendsList = APRTrace("APR-Core/features/group/Party.lua:623:APR.party:GetFriendsList#29", APR.party.GetFriendsList)--[[/APR_DIAG]]
 
 function APR.party:SendGroupMessage(force)
     self:QueueGroupMessage(force)
-end--[[APR_DIAG]]; APR.party.SendGroupMessage = APRTrace("APR-Core/features/group/Party.lua:569:APR.party:SendGroupMessage#29", APR.party.SendGroupMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.SendGroupMessage = APRTrace("APR-Core/features/group/Party.lua:649:APR.party:SendGroupMessage#30", APR.party.SendGroupMessage)--[[/APR_DIAG]]
 
 function APR.party:BuildGroupPayload(username)
     local routeFileName = APR.ActiveRoute
-    local _, _, _, expansion = APR:GetCurrentRouteMapIDsAndName()
-    local stepDetails = APR.currentStep:GetCurrentStepDetails()
+    local stepDetails = APR.currentStep:GetCurrentStepDetails(false)
     local route
     if routeFileName then
         route = APR:GetRouteDisplayName(routeFileName) or routeFileName
@@ -593,41 +672,52 @@ function APR.party:BuildGroupPayload(username)
         sojournerSkipCampaign = APR.settings and APR.settings.profile
             and APR.settings.profile.sojournerSkipCampaign or false,
     }
-end--[[APR_DIAG]]; APR.party.BuildGroupPayload = APRTrace("APR-Core/features/group/Party.lua:573:APR.party:BuildGroupPayload#30", APR.party.BuildGroupPayload)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.BuildGroupPayload = APRTrace("APR-Core/features/group/Party.lua:653:APR.party:BuildGroupPayload#31", APR.party.BuildGroupPayload)--[[/APR_DIAG]]
 
 local function SerializeGroupPayload(data)
-    -- Only transmit fields the receiving UI consumes; keep the richer local snapshot.
-    local wire = APR.PartyProtocol.NormalizeSnapshot(data, APR.Username)
-    if not wire then
-        wire = {}
-        for _, field in ipairs({ "username", "route", "routeFileName", "currentStep", "totalSteps",
-            "sojournerSkipCampaign", "routeProgress" }) do
-            wire[field] = data[field]
+    -- Keep live objective text, but omit fillers and duplicate progress fields.
+    -- Bound local tooltip work before sanitizing or serializing oversized rows.
+    local details = data.stepFrameDetails
+    local textBytes, rows = 0, 0
+    for _, field in ipairs(TOOLTIP_FIELDS) do
+        if details and details[field] then
+            for _, row in ipairs(details[field]) do
+                rows, textBytes = rows + 1, textBytes + #row.text
+                if rows > 128 or textBytes > MAX_OUTGOING_BYTES then break end
+                if row.subSteps then
+                    for _, sub in ipairs(row.subSteps) do
+                        rows, textBytes = rows + 1, textBytes + #sub.text
+                        if rows > 128 or textBytes > MAX_OUTGOING_BYTES then break end
+                    end
+                end
+            end
         end
-        wire.stepFrameDetails = data.stepFrameDetails and { progress = data.stepFrameDetails.progress } or nil
-        wire = APR.PartyProtocol.NormalizeSnapshot(wire, APR.Username)
+        if rows > 128 or textBytes > MAX_OUTGOING_BYTES then break end
+    end
+    local candidate = {
+        username = data.username, route = data.route, routeFileName = data.routeFileName,
+        currentStep = data.currentStep, totalSteps = data.totalSteps, routeProgress = data.routeProgress,
+        sojournerSkipCampaign = data.sojournerSkipCampaign,
+        stepFrameDetails = details and textBytes <= MAX_OUTGOING_BYTES and rows <= 128
+            and { extraLines = details.extraLines, questSteps = details.questSteps } or {},
+    }
+    local wire = APR.PartyProtocol.NormalizeSnapshot(candidate, APR.Username)
+    if not wire then
+        candidate.stepFrameDetails = {}
+        wire = APR.PartyProtocol.NormalizeSnapshot(candidate, APR.Username)
     end
     if not wire then return end
     wire.sender = nil
-    if wire.stepFrameDetails then
-        local textBytes = 0
-        for _, field in ipairs({ "extraLines", "questSteps", "fillerSteps" }) do
-            for _, row in ipairs(wire.stepFrameDetails[field] or {}) do
-                textBytes = textBytes + #row.text
-                for _, sub in ipairs(row.subSteps or {}) do textBytes = textBytes + #sub.text end
-            end
-        end
-        if textBytes > MAX_OUTGOING_BYTES then
-            wire.stepFrameDetails = { progress = wire.stepFrameDetails.progress }
-        end
-    end
+    -- Missing means false for legacy receivers. Keep true for Sojourner mismatch
+    -- warnings, including snapshots whose oversized tooltip was discarded.
+    wire.sojournerSkipCampaign = wire.sojournerSkipCampaign or nil
     local serialized = AceSerializer:Serialize(wire)
     if #serialized > MAX_OUTGOING_BYTES then
-        wire.stepFrameDetails = wire.stepFrameDetails and { progress = wire.stepFrameDetails.progress } or nil
+        wire.stepFrameDetails = {}
         serialized = AceSerializer:Serialize(wire)
     end
     if #serialized <= MAX_OUTGOING_BYTES then return serialized end
-end--[[APR_DIAG]]; SerializeGroupPayload = APRTrace("APR-Core/features/group/Party.lua:598:SerializeGroupPayload#31", SerializeGroupPayload)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; SerializeGroupPayload = APRTrace("APR-Core/features/group/Party.lua:677:SerializeGroupPayload#32", SerializeGroupPayload)--[[/APR_DIAG]]
 
 function APR.party:CancelGroupSend()
     self.pendingGroupSend, self.pendingGroupResend = false, false
@@ -635,7 +725,7 @@ function APR.party:CancelGroupSend()
         self.groupSendTimer:Cancel()
         self.groupSendTimer = nil
     end
-end--[[APR_DIAG]]; APR.party.CancelGroupSend = APRTrace("APR-Core/features/group/Party.lua:632:APR.party:CancelGroupSend#32", APR.party.CancelGroupSend)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.CancelGroupSend = APRTrace("APR-Core/features/group/Party.lua:722:APR.party:CancelGroupSend#33", APR.party.CancelGroupSend)--[[/APR_DIAG]]
 
 function APR.party:SendGroupMessageNow()
     if not CanShareGroupProgress() then
@@ -651,26 +741,33 @@ function APR.party:SendGroupMessageNow()
     local resend = self.pendingGroupResend
     self.pendingGroupSend, self.pendingGroupResend = false, false
     local dataToSend = self:BuildGroupPayload(APR.Username)
-    local serializedData = SerializeGroupPayload(dataToSend)
-    if not serializedData then return end
     local channel = GetGroupChannel()
+    local progressChanged = not APR.PartyProtocol.SameProgress(self.GroupListSteps[APR.Username], dataToSend)
     self.GroupListSteps[APR.Username] = dataToSend
     local localContainer = self.teamList[APR.Username]
     if localContainer then localContainer.playerData = dataToSend end
+    local sameSnapshot = APR.PartyProtocol.SameProgress(self.lastGroupSnapshot, dataToSend)
+        and self.lastGroupSnapshot.sojournerSkipCampaign == dataToSend.sojournerSkipCampaign
+        and APR.PartyProtocol.SameDetails(self.lastGroupSnapshot.stepFrameDetails, dataToSend.stepFrameDetails)
+        and channel == self.lastGroupChannel and self.lastGroupPayload ~= nil
+    if sameSnapshot and not resend then return end
+    local serializedData = sameSnapshot and self.lastGroupPayload or SerializeGroupPayload(dataToSend)
+    if not serializedData then return end
+    self.lastGroupSnapshot = dataToSend
     if not resend and serializedData == self.lastGroupPayload and channel == self.lastGroupChannel then return end
 
     -- Keep local cache in sync without round-tripping through CHAT_MSG_ADDON.
-    UpdateGroupStep()
+    if progressChanged or self.presentationDirty then UpdateGroupStep() end
     self.lastGroupSendTime = GetTime()
     self.lastGroupPayload, self.lastGroupChannel = serializedData, channel
     self.groupSendInFlight = true
-    APR:SendAddonMessageSplit("APRPartyData", serializedData, channel, nil, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:667:callback#34", --[[/APR_DIAG]]function(success)
+    APR:SendAddonMessageSplit("APRPartyData", serializedData, channel, nil, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:764:callback#35", --[[/APR_DIAG]]function(success)
         self.groupSendInFlight = nil
         if not success then self.lastGroupPayload = nil end
         -- At most one snapshot is queued in the transport, followed by the latest state.
         if self.pendingGroupSend then self:QueueGroupMessage(self.pendingGroupResend) end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.party.SendGroupMessageNow = APRTrace("APR-Core/features/group/Party.lua:640:APR.party:SendGroupMessageNow#33", APR.party.SendGroupMessageNow)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.SendGroupMessageNow = APRTrace("APR-Core/features/group/Party.lua:730:APR.party:SendGroupMessageNow#34", APR.party.SendGroupMessageNow)--[[/APR_DIAG]]
 
 function APR.party:QueueGroupMessage(force)
     if not CanShareGroupProgress() then
@@ -689,11 +786,11 @@ function APR.party:QueueGroupMessage(force)
         self:SendGroupMessageNow()
         return
     end
-    self.groupSendTimer = C_Timer.NewTimer(math.max(GROUP_SEND_COALESCE, delay), --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:692:callback#36", --[[/APR_DIAG]]function()
+    self.groupSendTimer = C_Timer.NewTimer(math.max(GROUP_SEND_COALESCE, delay), --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:789:callback#37", --[[/APR_DIAG]]function()
         self.groupSendTimer = nil
         if self.pendingGroupSend then self:SendGroupMessageNow() end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.party.QueueGroupMessage = APRTrace("APR-Core/features/group/Party.lua:675:APR.party:QueueGroupMessage#35", APR.party.QueueGroupMessage)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.QueueGroupMessage = APRTrace("APR-Core/features/group/Party.lua:772:APR.party:QueueGroupMessage#36", APR.party.QueueGroupMessage)--[[/APR_DIAG]]
 
 function APR.party:SendGroupMessageDelete()
     if CanShareGroupProgress() and (not self.lastGroupDeleteTime
@@ -701,48 +798,82 @@ function APR.party:SendGroupMessageDelete()
         self.lastGroupDeleteTime = GetTime()
         C_ChatInfo.SendAddonMessage("APRPartyDelete", APR.Username, GetGroupChannel())
     end
-end--[[APR_DIAG]]; APR.party.SendGroupMessageDelete = APRTrace("APR-Core/features/group/Party.lua:698:APR.party:SendGroupMessageDelete#37", APR.party.SendGroupMessageDelete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.SendGroupMessageDelete = APRTrace("APR-Core/features/group/Party.lua:795:APR.party:SendGroupMessageDelete#38", APR.party.SendGroupMessageDelete)--[[/APR_DIAG]]
 
-UpdateGroupStep = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:706:callback#38", --[[/APR_DIAG]]function()
-    APR:Debug("Function: APR.party:UpdateGroupStep()")
-    local sortedGroup = {}
-    local playerData = APR.party.GroupListSteps[APR.Username]
+local function GetGroupDisplayPositions(playerData, changedName)
+    local playerProgress = playerData.routeProgress
+    local requested = { [playerProgress.id] = true }
+    for name, peer in pairs(APR.party.GroupListSteps) do
+        local position = peer.routeProgress
+        if (not changedName or changedName == APR.Username or name == changedName)
+            and peer.routeFileName == playerData.routeFileName and position
+            and position.total == playerProgress.total then requested[position.id] = true end
+    end
+    return APR:GetGroupRouteDisplayPositions(playerData.routeFileName, requested)
+end--[[APR_DIAG]]; GetGroupDisplayPositions = APRTrace("APR-Core/features/group/Party.lua:803:GetGroupDisplayPositions#39", GetGroupDisplayPositions)--[[/APR_DIAG]]
+
+local function GetMemberPresentation(groupData, playerData, changedName, displayPositions)
     local currentRoute = playerData and playerData.routeFileName
     local playerProgress = playerData and playerData.routeProgress
-
-    for _, groupData in pairs(APR.party.GroupListSteps) do
-        table.insert(sortedGroup, groupData)
+    local progress = groupData.routeProgress
+    if not groupData.route then return L["NO_ROUTE"], "muted", false, displayPositions end
+    if currentRoute and groupData.routeFileName and groupData.routeFileName ~= currentRoute then
+        return L["GROUP_OTHER_ROUTE"], "muted", false, displayPositions
     end
-
-    -- Username alphabetical sorting
-    table.sort(sortedGroup, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:718:callback#39", --[[/APR_DIAG]]function(a, b)
-        return string.lower(a.username) < string.lower(b.username)
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-
-    for _, groupData in ipairs(sortedGroup) do
-        local progress = groupData.routeProgress
-        -- Legacy counters and effective indices are character-specific. Show them
-        -- neutrally until the peer can supply a stable definition position.
-        local isComparable = currentRoute and groupData.routeFileName == currentRoute
-            and playerProgress and progress and playerProgress.total == progress.total
-        local color = "gray"
-
-        if isComparable then
-            color = progress.id == playerProgress.id and progress.step == playerProgress.step and "green" or "yellow"
+    if not (currentRoute and groupData.routeFileName == currentRoute and playerProgress
+        and progress and playerProgress.total == progress.total) then
+        return L["GROUP_SYNC_UNAVAILABLE"], "muted", false, displayPositions
+    end
+    if progress.id == playerProgress.id and progress.step == playerProgress.step then
+        return L["GROUP_SYNCED"], "success", false, displayPositions
+    end
+    -- Optional branches have no reliable cross-character distance. For common
+    -- steps, share one projection of the relevant interval across this refresh.
+    if not progress.id:match("^parallel:") and not playerProgress.id:match("^parallel:")
+        and APR.GetGroupRouteDisplayPositions and APR.StepFilterQuestHandler then
+        displayPositions = displayPositions or GetGroupDisplayPositions(playerData, changedName)
+        local own, peer = displayPositions[playerProgress.id], displayPositions[progress.id]
+        local gap = own and peer and peer - own
+        if gap and gap ~= 0 then
+            local template = gap < 0 and (gap == -1 and L["GROUP_STEP_BEHIND"] or L["GROUP_STEPS_BEHIND"])
+                or (gap == 1 and L["GROUP_STEP_AHEAD"] or L["GROUP_STEPS_AHEAD"])
+            return string.format(template, math.abs(gap)), "warning", true, displayPositions
         end
-
-        APR.party:UpdateTeamMate(groupData, isComparable, color)
     end
+    local status = L["GROUP_DIFFERENT_STEP"]
+    if progress.step ~= playerProgress.step then
+        status = progress.step < playerProgress.step and L["GROUP_BEHIND"] or L["GROUP_AHEAD"]
+    end
+    return status, "warning", false, displayPositions
+end--[[APR_DIAG]]; GetMemberPresentation = APRTrace("APR-Core/features/group/Party.lua:815:GetMemberPresentation#40", GetMemberPresentation)--[[/APR_DIAG]]
 
-    APR.party:PopulateMissingGroupMembers(true)
-    APR.party:ReOrderTeam(sortedGroup)
+UpdateGroupStep = --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:850:callback#41", --[[/APR_DIAG]]function(changedName, forceShow)
+    local profile = APR:GetSettingsProfile()
+    if PartyFrame.collapsed or not profile or not profile.enableAddon or APR:IsPetBattleActive()
+        or (not forceShow and (not profile.showGroup or not profile.receiveGroupData or not IsInGroup())) then
+        APR.party.presentationDirty = true
+        APR.party:RefreshPartyFrameAnchor(forceShow)
+        return
+    end
+    APR.party.presentationDirty = nil
+    local playerData = APR.party.GroupListSteps[APR.Username]
+    local displayPositions
+    for name, groupData in pairs(APR.party.GroupListSteps) do
+        if not changedName or changedName == APR.Username or name == changedName then
+            local status, role, hasGap
+            status, role, hasGap, displayPositions = GetMemberPresentation(groupData, playerData, changedName, displayPositions)
+            APR.party:UpdateTeamMate(groupData, status, role, hasGap)
+        end
+    end
+    if APR.party.orderDirty or not APR.party.orderedNames then APR.party:PopulateMissingGroupMembers(true) end
+    APR.party:ReOrderTeam()
 end--[[APR_DIAG]])--[[/APR_DIAG]]
 
 
 function APR.party:UpdateGroupListing(message, sender)
-    APR:Debug("Message to deserialize", message)
-
     if type(message) ~= "string" or #message > MAX_FRAGMENT_COUNT * 180 then return false end
+    local senderKey = APR.PartyProtocol.PlayerKey(sender)
+    if senderKey and self.lastReceivedMessages[senderKey] == message then return true end
     local started = APR:StartPerformanceSample()
     local success, received = AceSerializer:Deserialize(message)
     local data, reason
@@ -753,10 +884,14 @@ function APR.party:UpdateGroupListing(message, sender)
         self.lastRejectReason = reason or "deserialize"
         return false
     end
+    local previous = self.GroupListSteps[data.username]
     self.GroupListSteps[data.username] = data
-    UpdateGroupStep()
+    self.lastReceivedMessages[data.sender] = message
+    local container = self.teamList[data.username]
+    if container then container.playerData = data end
+    if not APR.PartyProtocol.SameProgress(previous, data) then UpdateGroupStep(data.username) end
     return true
-end--[[APR_DIAG]]; APR.party.UpdateGroupListing = APRTrace("APR-Core/features/group/Party.lua:742:APR.party:UpdateGroupListing#40", APR.party.UpdateGroupListing)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.UpdateGroupListing = APRTrace("APR-Core/features/group/Party.lua:873:APR.party:UpdateGroupListing#42", APR.party.UpdateGroupListing)--[[/APR_DIAG]]
 
 function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
     if prefix ~= "APRVersionCheck" and prefix ~= "APRPartyRequest"
@@ -789,7 +924,6 @@ function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
                 APR:Debug("Ignoring APRPartyData because reception is disabled", sender)
                 return
             end
-            APR:Debug("Received APRPartyData, updating group listing", message)
             self:HandleMessageFragment(message, sender)
         end
 
@@ -799,10 +933,13 @@ function APR.party:GroupUpdateHandler(prefix, message, channel, sender)
                 return
             end
             APR:Debug("Received APRPartyDelete, removing team member", message)
-            self:Delete()
+            local name = APR.PartyProtocol.DisplayName(sender)
+            self.GroupListSteps[name] = nil
+            self:RemoveMateByName(name, true)
+            self:PopulateMissingGroupMembers()
         end
     end
-end--[[APR_DIAG]]; APR.party.GroupUpdateHandler = APRTrace("APR-Core/features/group/Party.lua:761:APR.party:GroupUpdateHandler#41", APR.party.GroupUpdateHandler)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.GroupUpdateHandler = APRTrace("APR-Core/features/group/Party.lua:896:APR.party:GroupUpdateHandler#43", APR.party.GroupUpdateHandler)--[[/APR_DIAG]]
 
 
 function APR.party:StartFragmentCleanupTicker()
@@ -810,10 +947,10 @@ function APR.party:StartFragmentCleanupTicker()
         return
     end
 
-    self.fragmentCleanupTicker = C_Timer.NewTicker(FRAGMENT_SWEEP_INTERVAL, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:813:callback#43", --[[/APR_DIAG]]function()
+    self.fragmentCleanupTicker = C_Timer.NewTicker(FRAGMENT_SWEEP_INTERVAL, --[[APR_DIAG]]APRTrace("APR-Core/features/group/Party.lua:950:callback#45", --[[/APR_DIAG]]function()
         self:CleanupExpiredFragments()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.party.StartFragmentCleanupTicker = APRTrace("APR-Core/features/group/Party.lua:808:APR.party:StartFragmentCleanupTicker#42", APR.party.StartFragmentCleanupTicker)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.StartFragmentCleanupTicker = APRTrace("APR-Core/features/group/Party.lua:945:APR.party:StartFragmentCleanupTicker#44", APR.party.StartFragmentCleanupTicker)--[[/APR_DIAG]]
 
 function APR.party:CleanupExpiredFragments()
     local now = GetTime()
@@ -828,7 +965,7 @@ function APR.party:CleanupExpiredFragments()
         self.fragmentCleanupTicker:Cancel()
         self.fragmentCleanupTicker = nil
     end
-end--[[APR_DIAG]]; APR.party.CleanupExpiredFragments = APRTrace("APR-Core/features/group/Party.lua:818:APR.party:CleanupExpiredFragments#44", APR.party.CleanupExpiredFragments)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.CleanupExpiredFragments = APRTrace("APR-Core/features/group/Party.lua:955:APR.party:CleanupExpiredFragments#46", APR.party.CleanupExpiredFragments)--[[/APR_DIAG]]
 
 -- Fragments can arrive out of order or be duplicated. Sender-scoped keys prevent
 -- two group members with the same message ID from mixing their snapshots.
@@ -838,6 +975,11 @@ function APR.party:HandleMessageFragment(message, sender)
     index, total = tonumber(index), tonumber(total)
     if not messageID or #messageID > 64 or not index or not total
         or index < 1 or index > total or total > MAX_FRAGMENT_COUNT or #part > 180 then
+        return
+    end
+
+    if total == 1 then
+        self:UpdateGroupListing(part, sender)
         return
     end
 
@@ -867,13 +1009,13 @@ function APR.party:HandleMessageFragment(message, sender)
     else
         self:StartFragmentCleanupTicker()
     end
-end--[[APR_DIAG]]; APR.party.HandleMessageFragment = APRTrace("APR-Core/features/group/Party.lua:835:APR.party:HandleMessageFragment#45", APR.party.HandleMessageFragment)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.HandleMessageFragment = APRTrace("APR-Core/features/group/Party.lua:972:APR.party:HandleMessageFragment#47", APR.party.HandleMessageFragment)--[[/APR_DIAG]]
 
 function APR.party:Delete()
     self:RemoveTeam()
     self:SendGroupMessage(true)
     self:RefreshPartyFrameAnchor()
-end--[[APR_DIAG]]; APR.party.Delete = APRTrace("APR-Core/features/group/Party.lua:872:APR.party:Delete#46", APR.party.Delete)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.Delete = APRTrace("APR-Core/features/group/Party.lua:1014:APR.party:Delete#48", APR.party.Delete)--[[/APR_DIAG]]
 
 function APR.party:RequestData()
     if not CanShareGroupProgress() or not APR.settings.profile.receiveGroupData then
@@ -883,4 +1025,4 @@ function APR.party:RequestData()
     if self.lastGroupRequestTime and now - self.lastGroupRequestTime < GROUP_REQUEST_THROTTLE then return end
     self.lastGroupRequestTime = now
     C_ChatInfo.SendAddonMessage("APRPartyRequest", "APRPartyRequest", GetGroupChannel())
-end--[[APR_DIAG]]; APR.party.RequestData = APRTrace("APR-Core/features/group/Party.lua:878:APR.party:RequestData#47", APR.party.RequestData)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.party.RequestData = APRTrace("APR-Core/features/group/Party.lua:1020:APR.party:RequestData#49", APR.party.RequestData)--[[/APR_DIAG]]

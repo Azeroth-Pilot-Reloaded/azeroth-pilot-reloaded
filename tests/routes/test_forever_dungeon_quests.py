@@ -114,7 +114,7 @@ class ForeverDungeonQuests(unittest.TestCase):
         leveling = catalog.routes["Forever-Alliance-Dungeons-Deadmines"]["label"]
         standalone = catalog.routes[SHARED + "Deadmines"]["label"]
         self.assertEqual(leveling, "Progression avec les Mortemines (19-20)")
-        self.assertEqual(standalone, "Les Mortemines : donjon seul (18-20)")
+        self.assertEqual(standalone, "Les Mortemines : donjon seul")
         self.assertNotEqual(leveling, standalone)
 
     def test_forever_has_no_legacy_labels_and_dungeon_names_use_one_full_key(self):
@@ -126,7 +126,13 @@ class ForeverDungeonQuests(unittest.TestCase):
         for path in (ROOT / "Routes/Forever/Dungeons").rglob("*.lua"):
             label = next(line.strip() for line in path.read_text(encoding="utf-8").splitlines()
                          if line.strip().startswith("label ="))
-            self.assertRegex(label, r'^label = L\["Forever - (?:Leveling Dungeon|Dungeon) - [^"]+"\] \.\. " \([0-9]+-[0-9]+\)",$')
+            # Leveling chapters advertise their level range; standalone dungeon
+            # runs retain their complete translated name without a level suffix.
+            with self.subTest(path=path.relative_to(ROOT)):
+                if path.parent.name == "Shared":
+                    self.assertRegex(label, r'^label = L\["Forever - Dungeon - [^"]+"\],$')
+                else:
+                    self.assertRegex(label, r'^label = L\["Forever - Leveling Dungeon - [^"]+"\] \.\. " \([0-9]+-[0-9]+\)",$')
 
     def test_dungeon_routes_keep_existing_keys_and_leveling_uses_its_own_family(self):
         labels = set()

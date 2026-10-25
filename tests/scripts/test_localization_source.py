@@ -1,3 +1,4 @@
+import json
 import sys
 import tempfile
 import unittest
@@ -118,6 +119,51 @@ label = "Plain route label",
                          {"Go inside", "Plain route label"})
         self.assertEqual({entry["key"] for entry in findings if entry["severity"] == "error"},
                          {"MISSING_SYMBOL", "Go inside", "Plain route label"})
+
+    def test_mixed_case_route_keys_are_exact_references_in_all_supported_fields(self):
+        keys = {"Forever - Leveling Dungeon - Darkshore / Loch Modan", "WOTLK - Zul'Drak",
+                "Use the portal", "Artifact Weapon - Mage - Frost"}
+        self.write("Routes/Test.lua", '''local route = {
+label = L["Forever - Leveling Dungeon - Darkshore / Loch Modan"] .. " (11-16)",
+Note = {"WOTLK - Zul'Drak", {text="Use the portal", color="ff00ff"}},
+ExtraLineText = "Artifact Weapon - Mage - Frost",
+}''')
+        self.assertEqual({entry["key"] for entry in self.scan()["references"]}, keys)
+        findings = self.findings(keys | {"WOTLK - Unused Zone"})
+        self.assertEqual([(entry["code"], entry["key"]) for entry in findings],
+                         [("unused_key", "WOTLK - Unused Zone")])
+
+    def test_standalone_console_commands_are_not_translation_keys(self):
+        self.write("Routes/Test.lua", r'''local route = {
+Note = {"DISABLE_INTERACTION", "/console interactQuestItems 0",
+        "ENABLE_INTERACTION", "/console interactQuestItems 1"},
+ExtraLineText = { {text="[COLOR:#ff0000]/console cameraDistanceMaxZoomFactor 2.6"},
+                 '/console testCVar "a value with spaces"', "/console testCVar 'another value'",
+                 "/console testCVar", "/console testCVar -0.5", "/console testCVar on" },
+ExtraLineText2 = "  /console interactQuestItems 0\n\n/console interactQuestItems 1  ",
+}''')
+        self.assertEqual({entry["key"] for entry in self.scan()["references"]},
+                         {"DISABLE_INTERACTION", "ENABLE_INTERACTION"})
+        self.assertEqual(self.findings({"DISABLE_INTERACTION", "ENABLE_INTERACTION"}), [])
+
+    def test_adjacent_prose_and_invalid_console_commands_still_require_translation(self):
+        values = [
+            "/console interactQuestItems 0 then click the orb",
+            "Type /console interactQuestItems 1", "/console interactQuestItems 1; click",
+            "/console", "/console-ish interactQuestItems 0", "/console 0invalid 1",
+            '/console testCVar "unfinished', "/console testCVar value extra",
+            "/console interactQuestItems 0\nClick the orb",
+            "Click the orb\n/console interactQuestItems 1",
+            "/console interactQuestItems 0\nEXISTING_KEY",
+        ]
+        # A multiline value is looked up as one string at runtime. Its adjacent
+        # prose/key must not become a valid reference after stripping commands.
+        self.write("Routes/Test.lua", "local route = { Note = {" + ",".join(
+            json.dumps(value) for value in values) + '} , ExtraLineText="VISIBLE_KEY" }')
+        findings = self.findings({"Click the orb", "EXISTING_KEY", "VISIBLE_KEY"})
+        self.assertEqual({entry["key"] for entry in findings if entry["code"] == "raw_text"}, set(values))
+        self.assertEqual({entry["key"] for entry in findings if entry["code"] == "unused_key"},
+                         {"Click the orb", "EXISTING_KEY"})
 
     def test_creature_names_and_drop_quest_data_remain_raw(self):
         self.write("Routes/Test.lua", '''local steps = {
@@ -256,6 +302,65 @@ print(L[credit.label])''')
         scan = self.scan()
         self.assertEqual({entry["key"] for entry in scan["references"]}, {"AUTHOR", "TRANSLATOR"})
         self.assertEqual(scan["diagnostics"], [])
+
+    def test_theme_locale_parameter_resolves_label_keys_and_variant_arguments(self):
+        self.write("APR-Core/ui/foundations/Themes.lua", '''APR.Themes = {
+modern = {label="Blue Modern", labelKey="UI_THEME_MODERN", unrelated="UI_THEME_UNUSED"},
+}
+local function ModernVariant(name, label, labelKey, overrides)
+    theme.label, theme.labelKey = label, labelKey
+end
+ModernVariant("customModern", "Custom", "UI_THEME_CUSTOM", {})
+ModernVariant("newModern", "New", "UI_THEME_" .. "NEW", {})
+-- ModernVariant("deleted", "Deleted", "UI_THEME_DELETED", {})
+local example = [=[ModernVariant("example", "Example", "UI_THEME_EXAMPLE", {})]=]
+function APR:GetThemeChoices(locale)
+    choices[name] = (theme.labelKey and locale and locale[theme.labelKey]) or theme.label or name
+end''')
+        scan = self.scan()
+        self.assertEqual({entry["key"] for entry in scan["references"]},
+                         {"UI_THEME_MODERN", "UI_THEME_CUSTOM", "UI_THEME_NEW"})
+        self.assertEqual(scan["diagnostics"], [])
+        findings = self.findings({"UI_THEME_MODERN", "UI_THEME_CUSTOM", "UI_THEME_UNUSED",
+                                  "UI_THEME_DELETED", "UI_THEME_EXAMPLE"})
+        self.assertEqual({entry["key"] for entry in findings if entry["code"] == "unused_key"},
+                         {"UI_THEME_UNUSED", "UI_THEME_DELETED", "UI_THEME_EXAMPLE"})
+        self.assertEqual([(entry["key"], entry["line"]) for entry in findings if entry["code"] == "missing_key"],
+                         [("UI_THEME_NEW", 8)])
+
+    def test_theme_keys_require_the_known_consumer_and_do_not_match_a_prefix(self):
+        self.write("APR-Core/ui/foundations/Themes.lua", '''local theme = {labelKey="UI_THEME_DEAD"}
+ModernVariant("dead", "Dead", "UI_THEME_DEAD_VARIANT", {})''')
+        self.write("APR-Core/Other.lua", 'print(L[theme.labelKey], L["UI_THEME_LIVE"])')
+        findings = self.findings({"UI_THEME_DEAD", "UI_THEME_DEAD_VARIANT", "UI_THEME_LIVE", "UI_THEME_OTHER"})
+        self.assertEqual({entry["key"] for entry in findings if entry["code"] == "unused_key"},
+                         {"UI_THEME_DEAD", "UI_THEME_DEAD_VARIANT", "UI_THEME_OTHER"})
+        self.assertEqual([(entry["key"], entry["path"]) for entry in findings if entry["code"] == "unresolved_dynamic"],
+                         [("theme.labelKey", "APR-Core/Other.lua")])
+
+    def test_buff_tooltip_consumer_is_covered_by_route_data_without_hiding_unknown_keys(self):
+        self.write("APR-Core/features/player/Buff.lua", '''print(L[icon.tooltipMessage])
+print(L[icon.tooltipMessage], L[icon.otherMessage])''')
+        self.write("APR-Core/Other.lua", 'print(L[icon.tooltipMessage])')
+        self.write("Routes/Test.lua", '''local route = {
+Buffs = {{spellId=1, tooltipMessage="Mixed Case Buff"}, {spellId=2, tooltipMessage="MISSING_BUFF"}},
+}''')
+        findings = self.findings({"Mixed Case Buff", "UNUSED_BUFF"})
+        self.assertEqual({entry["key"] for entry in findings if entry["code"] == "unused_key"}, {"UNUSED_BUFF"})
+        self.assertEqual([(entry["key"], entry["path"]) for entry in findings if entry["code"] == "missing_key"],
+                         [("MISSING_BUFF", "Routes/Test.lua")])
+        self.assertEqual({(entry["key"], entry["path"]) for entry in findings if entry["code"] == "unresolved_dynamic"},
+                         {("icon.otherMessage", "APR-Core/features/player/Buff.lua"),
+                          ("icon.tooltipMessage", "APR-Core/Other.lua")})
+
+    def test_spec_route_parameters_remain_unresolved_without_finite_keys(self):
+        self.write("APR-Core/config/Config_Route_Prefabs.lua", 'print(L[routeKey])')
+        self.write("APR-Core/utils/RouteUtils.lua", 'print(L[newRouteKey])')
+        findings = self.findings({"Artifact Weapon - Mage - Frost", "WOTLK - Grizzly Hills"})
+        self.assertEqual({entry["key"] for entry in findings if entry["code"] == "unresolved_dynamic"},
+                         {"routeKey", "newRouteKey"})
+        self.assertEqual({entry["key"] for entry in findings if entry["code"] == "unused_key"},
+                         {"Artifact Weapon - Mage - Frost", "WOTLK - Grizzly Hills"})
 
     def test_modeled_emote_keys_are_dictionary_keys_not_actions(self):
         self.write("APR-Core/core/Event.lua", '''local gigglingBasket = {

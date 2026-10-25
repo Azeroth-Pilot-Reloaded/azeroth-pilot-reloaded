@@ -221,6 +221,20 @@ def _field_literals(tokens, pairs, field):
             if name == field and start < len(tokens) and tokens[start].kind == "string"]
 
 
+def _call_argument_literals(tokens, pairs, name, argument):
+    """Literal results of one positional argument; helper parameters are not keys."""
+    for index, token in enumerate(tokens):
+        if (token.kind != "word" or token.value != name or index + 1 not in pairs
+                or tokens[index + 1].value != "("):
+            continue
+        start, end = index + 2, pairs[index + 1]
+        for position in range(argument + 1):
+            finish = _expression_end(tokens, start, end, pairs)
+            if position == argument:
+                yield from _choices(tokens, start, finish, pairs) or []
+            start = finish + 1
+
+
 def _named_table(tokens, pairs, name, *, keys=False):
     for field, start in _fields(tokens, pairs):
         if field != name or start not in pairs or tokens[start].value != "{":
@@ -252,9 +266,18 @@ _FIELD_CONSUMERS = {
 _SCENARIO_FILES = {"APR-Core/features/questing/StepTravelHandlers.lua",
                    "APR-Core/ui/route/QuestOrderListRows.lua"}
 _SCENARIO_KINDS = ("DUNGEON", "SCENARIO", "DELVE", "RAID")
+# These exact consumers receive the route text fields scanned below. Keeping
+# them here does not mark arbitrary dynamic keys or whole key families as used.
+_ROUTE_TEXT_CONSUMERS = {
+    ("APR-Core/utils/StepUtils.lua", "key"),
+    ("APR-Core/features/player/Buff.lua", "icon.tooltipMessage"),
+}
 
 
 def _modeled_choices(path, expression, tokens, pairs, lookup):
+    if path == "APR-Core/ui/foundations/Themes.lua" and expression == "theme.labelKey":
+        return (_field_literals(tokens, pairs, "labelKey")
+                + list(_call_argument_literals(tokens, pairs, "ModernVariant", 2)))
     field = _FIELD_CONSUMERS.get((path, expression))
     if field:
         return _field_literals(tokens, pairs, field)
@@ -459,6 +482,23 @@ def route_text_literals(tokens, pairs):
             start = finish + 1
 
 
+_CONSOLE_COMMAND = re.compile(
+    r'''/console[ \t]+[A-Za-z_][A-Za-z_0-9]*(?:[ \t]+(?:[-+A-Za-z_0-9.]+|"[^"\r\n]*"|'[^'\r\n]*'))?[ \t]*'''
+)
+
+
+def _is_console_command_text(value):
+    """Only standalone commands are exempt from route text localization.
+
+    A command has a CVar name and at most one value. Extra prose or punctuation
+    on the same line must still be reported, as must text on neighboring lines.
+    Keep mixed strings intact: ResolveStepText looks up the entire value, so a
+    key adjacent to a command is not a translated reference on its own.
+    """
+    lines = [line.strip() for line in value.splitlines() if line.strip()]
+    return bool(lines) and all(_CONSOLE_COMMAND.fullmatch(line) for line in lines)
+
+
 def scan_sources(root: Path):
     """Scan runtime APR-Core and Routes; all paths are repository-relative."""
     root = Path(root)
@@ -483,6 +523,8 @@ def scan_sources(root: Path):
                 diagnostic["operational"] = True
                 diagnostics.append(diagnostic)
                 continue
+            # GetThemeChoices receives AceLocale as its locale parameter.
+            lookup_names = {"L", "locale"} if path == "APR-Core/ui/foundations/Themes.lua" else {"L"}
             for index, token in enumerate(tokens):
                 if token.kind == "word" and token.value == "rawget" and index + 1 in pairs:
                     end = pairs[index + 1]
@@ -492,12 +534,10 @@ def scan_sources(root: Path):
                             references.append(dict(key=key, path=path, line=origin.line, kind="lookup"))
                         diagnostics.extend(_fallback_diagnostics(tokens, index, end + 1, pairs, choices, path))
                         expression = _expression_label(tokens, index + 4, end)
-                        # ResolveStepText is the documented route-text consumer;
-                        # its callers/data fields are scanned above and below.
-                        if choices is None and (path, expression) != ("APR-Core/utils/StepUtils.lua", "key"):
+                        if choices is None and (path, expression) not in _ROUTE_TEXT_CONSUMERS:
                             diagnostics.append(_diagnostic("unresolved_dynamic", "warning", expression, path, token.line,
                                                            "Dynamic localization lookup cannot be resolved statically; review its possible keys."))
-                if token.kind != "word" or token.value != "L" or index + 2 >= len(tokens):
+                if token.kind != "word" or token.value not in lookup_names or index + 2 >= len(tokens):
                     continue
                 start, end, after = None, None, None
                 if tokens[index + 1].value == "[" and index + 1 in pairs:
@@ -528,6 +568,8 @@ def scan_sources(root: Path):
                 diagnostics.extend(_fallback_diagnostics(tokens, index, after, pairs, choices, path))
                 if choices is None:
                     expression = _expression_label(tokens, start, end)
+                    if (path, expression) in _ROUTE_TEXT_CONSUMERS:
+                        continue
                     choices = _modeled_choices(path, expression, tokens, pairs, token)
                     if choices is None or not choices:
                         diagnostics.append(_diagnostic("unresolved_dynamic", "warning", expression, path, token.line,
@@ -538,7 +580,7 @@ def scan_sources(root: Path):
             if relative.parts[0] == "Routes":
                 for key, origin in route_text_literals(tokens, pairs):
                     key = re.sub(r"^\[COLOR:#?[0-9A-Fa-f]+\]\s*", "", key)
-                    if key.strip():
+                    if key.strip() and not _is_console_command_text(key):
                         references.append(dict(key=key, path=path, line=origin.line, kind="route_text"))
     # Deduplicate field-list entries discovered by both the outer and inner text
     # traversal, retaining separate occurrences and exact source locations.
