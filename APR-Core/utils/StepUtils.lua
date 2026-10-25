@@ -903,7 +903,14 @@ function APR:ResolveStepText(rawValue)
 
     local key = tostring(rawValue)
     local aprRCData = rawget(_G, "AprRCData")
-    local message = rawget(L, key) or
+    local globalText = rawget(_G, key)
+    -- This field supplies no format arguments. Keep formatted globals with their callers.
+    if type(globalText) ~= "string" or globalText == "" or
+        globalText:find("%%[-+ #0]*%d*%.?%d*[cdiouxXeEfgGaAqs]") or
+        globalText:find("%%%d+%$[-+ #0]*%d*%.?%d*[cdiouxXeEfgGaAqs]") or globalText:find("%%%%") then
+        globalText = nil
+    end
+    local message = globalText or rawget(L, key) or
         (aprRCData and aprRCData.ExtraLineTexts and rawget(aprRCData.ExtraLineTexts, key)) or
         key
 
@@ -926,7 +933,7 @@ function APR:ResolveStepTextList(rawValue)
                 color = color,
             })
         end
-    end--[[APR_DIAG]]; addResolvedText = APRTrace("APR-Core/utils/StepUtils.lua:921:addResolvedText#41", addResolvedText)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; addResolvedText = APRTrace("APR-Core/utils/StepUtils.lua:928:addResolvedText#41", addResolvedText)--[[/APR_DIAG]]
 
     if type(rawValue) == "table" then
         for _, value in ipairs(rawValue) do
@@ -937,4 +944,4 @@ function APR:ResolveStepTextList(rawValue)
     end
 
     return resolved
-end--[[APR_DIAG]]; APR.ResolveStepTextList = APRTrace("APR-Core/utils/StepUtils.lua:918:APR:ResolveStepTextList#40", APR.ResolveStepTextList)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.ResolveStepTextList = APRTrace("APR-Core/utils/StepUtils.lua:925:APR:ResolveStepTextList#40", APR.ResolveStepTextList)--[[/APR_DIAG]]
