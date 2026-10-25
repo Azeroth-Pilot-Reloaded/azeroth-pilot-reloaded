@@ -1,6 +1,6 @@
 -- Planning uses the consumer's environment and never shares character state.
 -- Optional waypoint output is isolated in WaypointUI.lua.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 21)
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 22)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}

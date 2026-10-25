@@ -1,7 +1,7 @@
 -- Preferred authored zone entrances bypass whole-world transport searches.
 -- The host opts in; the generic shortest-time engine keeps its existing API.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("zone_routing", 2) then return end
+if not Lib:BeginModule("zone_routing", 3) then return end
 local Instance = Lib.Instance
 local Job = {}
 Job.__index = Job
@@ -27,6 +27,16 @@ function Job:AdvanceLookup()
         if not start or not goal then self.status = "fallback"; return self.status end
         local id = (data.config.ZoneRoutes or {})[self.mapID]
         if data:CanWalk(start, goal) then
+            -- Sharing a continent permits direct travel; it does not prove
+            -- that travel beats a teleport or a chain of physical portals.
+            -- Only nearby objectives can bypass the complete time comparison.
+            local dx, dy = goal.x - start.x, goal.y - start.y
+            local dz = type(start.z) == "number" and type(goal.z) == "number" and goal.z - start.z or 0
+            local threshold = data.config.threshold or 2000
+            if dx * dx + dy * dy + dz * dz > threshold * threshold then
+                self.status = "fallback"
+                return self.status
+            end
             local walk = Walk(context, start, goal)
             self.result = { segments = { walk }, totalSeconds = walk.seconds, totalCopper = 0, resourcesUsed = {} }
             self.status = "ready"
