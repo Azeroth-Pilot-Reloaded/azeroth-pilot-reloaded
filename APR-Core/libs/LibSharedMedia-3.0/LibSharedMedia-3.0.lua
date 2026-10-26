@@ -1,7 +1,7 @@
 --@curseforge-project-slug: libsharedmedia-3-0@
 --[[
 Name: LibSharedMedia-3.0
-Revision: $Revision: 181 $
+Revision: $Revision: 184 $
 Author: Elkano (elkano@gmx.de)
 Inspired By: SurfaceLib by Haste/Otravi (troeks@gmail.com)
 Website: https://www.curseforge.com/wow/addons/libsharedmedia-3-0
@@ -10,7 +10,7 @@ Dependencies: LibStub, CallbackHandler-1.0
 License: LGPL v2.1
 ]]
 
-local MAJOR, MINOR = "LibSharedMedia-3.0", 12000004 -- 12.0.0 v4 / increase manually on changes
+local MAJOR, MINOR = "LibSharedMedia-3.0", 12000005 -- 12.0.0 v5 / increase manually on changes
 local lib = LibStub:NewLibrary(MAJOR, MINOR)
 
 if not lib then return end
@@ -249,8 +249,8 @@ do
         mediatype = mediatype:lower()
         if mediatype == lib.MediaType.FONT then
             if not IsKnownFile(data) then -- Reject fonts that don't exist
-                --error(("%s: Attempt to register a font that doesn't exist ('%s')"):format(MAJOR, data))
-                geterrorhandler()(("%s: Attempt to register a font that doesn't exist ('%s')"):format(MAJOR, data))
+                --error(("%s: Attempt to register an invalid font ('%s')"):format(MAJOR, data))
+                geterrorhandler()(("%s: Attempt to register an invalid font ('%s')"):format(MAJOR, data))
                 return false
             end
             if (langmask and band(langmask, LOCALE_MASK) == 0) or not (langmask or locale_is_western) then
@@ -260,17 +260,21 @@ do
         end
         if type(data) == "string" and (mediatype == lib.MediaType.BACKGROUND or mediatype == lib.MediaType.BORDER or mediatype == lib.MediaType.STATUSBAR or mediatype == lib.MediaType.SOUND) then
             if not IsKnownFile(data) then -- Reject files that don't exist
-                --error(("%s: Attempt to register a file that doesn't exist ('%s')"):format(MAJOR, data))
-                geterrorhandler()(("%s: Attempt to register a file that doesn't exist ('%s')"):format(MAJOR, data))
+                --error(("%s: Attempt to register an invalid file ('%s')"):format(MAJOR, data))
+                geterrorhandler()(("%s: Attempt to register an invalid file ('%s')"):format(MAJOR, data))
                 return false
             end
             local path = data:lower()
             if not path:find("^interface") then
                 -- files accessed via path only allowed from interface folder
+                --error(("%s: The media path must start with 'interface' ('%s')"):format(MAJOR, data))
+                geterrorhandler()(("%s: The media path must start with 'interface' ('%s')"):format(MAJOR, data))
                 return false
             end
             if mediatype == lib.MediaType.SOUND and not (path:find(".ogg", nil, true) or path:find(".mp3", nil, true)) then
                 -- only ogg and mp3 are valid sounds
+                --error(("%s: Sound files must end in .ogg or .mp3 ('%s')"):format(MAJOR, data))
+                geterrorhandler()(("%s: Sound files must end in .ogg or .mp3 ('%s')"):format(MAJOR, data))
                 return false
             end
         end

@@ -5,9 +5,9 @@
       "source": "github",
       "repository": "WoWUIDev/Ace3",
       "ref": "master",
-      "commit": "40f4cc1356ae7fcc0cf71fc0a19dc7d50d6ae6c2",
-      "date_created": "2026-10-02T13:14:33Z",
-      "archive_sha256": "4630c213d47cdddb3b3cc7ecc7006eed08964b8c401b36f3adf5721d66ccd088"
+      "commit": "5a9344990ef9b437012e9d9e8531c3c6f88f4f8e",
+      "date_created": "2026-10-21T14:30:56Z",
+      "archive_sha256": "e3c20c84cd6ab78b01145178a784eb36562bcb3f6eb6aa46fefc0715b400a135"
     },
     "HereBeDragons": {
       "source": "github",
@@ -37,20 +37,20 @@
     "LibDBIcon-1.0": {
       "source": "curseforge",
       "project_id": 15552,
-      "file_id": 9119909,
-      "version": "v12.1.1",
-      "file_name": "LibDBIcon-1.0-v12.1.1.zip",
-      "date_created": "2026-10-10T16:38:32.713Z",
-      "archive_sha256": "563ff9d32c02780e04d7a399dfac6e853dc3c5da6f06ac49107f91b4a5b01cea"
+      "file_id": 9278071,
+      "version": "v12.1.2",
+      "file_name": "LibDBIcon-1.0-v12.1.2.zip",
+      "date_created": "2026-10-21T15:11:45.313Z",
+      "archive_sha256": "390eaec313bc6ae8c81cb4ad3aa0ae53fe4fd29867311b3d85a07498de49e01c"
     },
     "LibSharedMedia-3.0": {
       "source": "curseforge",
       "project_id": 14320,
-      "file_id": 9119029,
-      "version": "v12.1.2",
-      "file_name": "LibSharedMedia-3.0-v12.1.2.zip",
-      "date_created": "2026-10-10T15:16:06.8Z",
-      "archive_sha256": "744f00526c3aac3f8e13dd5e9773cca5022d3ee00d34b50d474a91764ac0ce95"
+      "file_id": 9277931,
+      "version": "v12.1.3",
+      "file_name": "LibSharedMedia-3.0-v12.1.3.zip",
+      "date_created": "2026-10-21T15:02:10.553Z",
+      "archive_sha256": "cb9ddb72a651e2455c8804fdea74e01c44e9fc17c6aaed73ccea1f2208dee8f9"
     }
   }
 }
