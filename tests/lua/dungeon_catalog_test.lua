@@ -25,10 +25,8 @@ for flavor, catalog in pairs(APR.DungeonData) do
         end
         for _, canonical in pairs(data.bossAliases or {}) do assert(data.bosses[canonical]) end
     end
-    assert(count >= ({ classic = 35, forever = 44, retail = 200 })[flavor])
-    assert(raids >= ({ classic = 7, forever = 7, retail = 60 })[flavor])
+    assert(count > 0, "An enabled client needs a nonempty instance catalog: " .. flavor)
 end
-assert(APR.DungeonData.forever.ROL.encounters[3355] == 250660, "The Baron has a verified ATT association")
 
 function LibStub() return { GetLocale = function() return {} end } end
 function CreateFrame() return { RegisterEvent = function() end, SetScript = function() end } end

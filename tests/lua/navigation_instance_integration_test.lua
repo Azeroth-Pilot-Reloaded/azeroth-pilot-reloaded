@@ -1,4 +1,4 @@
--- Real entrance catalogue -> APR compatibility view -> route target/controller.
+-- Synthetic entrance catalogue -> real compatibility view -> target/controller.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
 fixture.translations = { ENTER_IN = "Enter %s %s", COMPLETE_SOMETHING = "Complete %s %s",
     DELVE = "delve", DUNGEON = "dungeon", RAID = "raid", SCENARIO = "scenario" }
@@ -27,7 +27,16 @@ C_QuestLog.IsOnQuest = function(id)
     questReads = questReads + 1
     return active[id]
 end
-local data = fixture:Load() -- This deliberately resets APR before the bridge loads.
+local data = fixture:Load({ entrances = {
+    { id = "fixture-delve", kind = "delve", reviewStatus = "confirmed", interiorMapIDs = { 2269 },
+        exterior = { instanceID = 2552, uiMapID = 2248, x = 929.3, y = -1631.8 } },
+    { id = "fixture-siblings", kind = "delve", reviewStatus = "confirmed", interiorMapIDs = { 2300, 2301 },
+        exterior = { space = "map", uiMapID = 2215, x = 0.3, y = 0.4 } },
+    { id = "fixture-dungeon", kind = "dungeon", reviewStatus = "confirmed", interiorMapIDs = { 129 },
+        exterior = { space = "map", uiMapID = 114, x = 0.3, y = 0.4 } },
+    { id = "fixture-locked", kind = "dungeon", reviewStatus = "confirmed", interiorMapIDs = { 306 },
+        exterior = { space = "map", uiMapID = 22, x = 0.3, y = 0.4 }, requirements = { quest = 76249 } },
+} })
 local function noop() end
 function tContains(values, expected)
     for _, value in ipairs(values or {}) do if value == expected then return true end end
@@ -210,6 +219,10 @@ assert(APRData.p.r == 1, "A stale prior arrival cannot skip a replacement author
 -- exists. A dungeon key must resolve through the library without a fake map.
 outside()
 local library = LibStub("LibAPRNavigation-1.0")
+library:RegisterData("forever", "fixture", { entrances = {
+    { id = "fixture-world-only", kind = "dungeon", reviewStatus = "confirmed", instanceID = 389,
+        interiorMapIDs = {}, exterior = { space = "map", uiMapID = 1454, x = 0.3, y = 0.4 } },
+} })
 APR.NavigationData = library:New({ profile = "forever", environment = data.env })
 fixture.maps[1454] = { mapID = 1454, parentMapID = 1414, mapType = 3 }
 fixture.currentMap = 1454

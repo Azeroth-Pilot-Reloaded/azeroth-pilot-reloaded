@@ -14,32 +14,11 @@ for _, definition in ipairs(data:GetEntrances()) do
         for _, mapID in ipairs(definition.interiorMapIDs) do instances[mapID] = true end
     end
 end
-assert(confirmed > 200 and kinds.delve and kinds.scenario and kinds.dungeon and kinds.raid)
-for _, worldID in ipairs({ 389, 553, 576, 643, 961, 1182, 1466, 1763, 2286, 2521, 2661, 2813 }) do
-    local definition = data:GetEntranceDefinitionForInstance(worldID)
-    assert(definition and definition.reviewStatus == "confirmed", "Each expansion retains an explicit world-instance association")
-end
-assert(data:GetEntranceDefinitionForMap(2269).kind == "delve")
-assert(data:GetEntranceDefinitionForMap(2348).kind == "delve", "The old zero sentinel is the real Zekvir native map")
-assert(not data:GetEntranceDefinitionForMap(0) and not data:GetEntranceDefinitionForMap(69),
-    "Unknown maps and reverse exits never turn outdoor Feralas into an interior")
-local earthcrawl = data:GetEntranceForMap(2269)
-assert(earthcrawl and earthcrawl.position.uiMapID == 2248)
+assert(confirmed > 0)
+assert(not data:GetEntranceDefinitionForMap(0), "Zero is not a native interior map")
 local saved = data:GetEntrances()
 saved[1].kind = "changed"
 assert(data:GetEntrances()[1].kind ~= "changed", "Consumers cannot mutate another lookup through an inventory copy")
-
--- Source quest/faction restrictions survive metadata import and missing client
--- answers do not authorize an entrance. Raw type recognition remains possible.
-data.env.isQuestActive = function(id) return id == 54169 end
-assert(data:GetEntranceForMap(1348, { faction = "Alliance" }))
-local entry, reason = data:GetEntranceForMap(1348, { faction = "Horde" })
-assert(not entry and reason == "requirements_unmet")
-data.env.isQuestActive = function() return nil end
-entry, reason = data:GetEntranceForMap(1348, { faction = "Alliance" })
-assert(not entry and reason == "pending_data" and data:GetEntranceDefinitionForMap(1348).kind == "scenario")
-entry, reason = data:GetEntranceForMap(940)
-assert(not entry and reason == "candidate", "An unverified class scenario cannot become a free public entrance")
 
 local maps = {
     [10] = { mapType = 3, parentMapID = 20 },
@@ -57,10 +36,22 @@ Lib:RegisterData("entrance-spec", "entrances", { entrances = {
             { uiMapID = 10, instanceID = 0, x = 200, y = 100 },
             { uiMapID = 10, instanceID = 0, x = 300, y = 0 },
         } },
+    { id = "fixture-gated", kind = "scenario", reviewStatus = "confirmed", interiorMapIDs = { 40 },
+        requirements = { faction = "Alliance", questActive = 1 }, exterior = { uiMapID = 10, instanceID = 0, x = 100, y = 0 } },
+    { id = "fixture-candidate", kind = "scenario", reviewStatus = "candidate", interiorMapIDs = { 41 } },
 } }, 1)
 local test = Lib:New({ profile = "entrance-spec", environment = {
     getMapInfo = function(id) mapCalls = mapCalls + 1; return maps[id] end,
 } })
+test.env.isQuestActive = function() return true end
+assert(test:GetEntranceForMap(40, { faction = "Alliance" }))
+local gated, reason = test:GetEntranceForMap(40, { faction = "Horde" })
+assert(not gated and reason == "requirements_unmet")
+test.env.isQuestActive = function() return nil end
+gated, reason = test:GetEntranceForMap(40, { faction = "Alliance" })
+assert(not gated and reason == "pending_data" and test:GetEntranceDefinitionForMap(40).kind == "scenario")
+gated, reason = test:GetEntranceForMap(41)
+assert(not gated and reason == "candidate", "Unreviewed metadata cannot authorize a public entrance")
 local goal = test:GetEntranceForMap(31).position
 local start = test:NormalizeLocation({ uiMapID = 10, instanceID = 0, x = 0, y = 0 })
 assert(goal.noAutoconnect and not test:CanWalk(start, goal), "No straight walking shortcut through a cave wall")

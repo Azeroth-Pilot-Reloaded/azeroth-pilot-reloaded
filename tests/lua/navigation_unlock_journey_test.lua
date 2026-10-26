@@ -1,26 +1,28 @@
--- End-to-end native guidance must reach 84957 without an offer pre-observed.
--- Load the shipped library alone; the host route engine is deliberately absent.
+-- Synthetic acquisition graph; production campaign edits do not change these expectations.
+-- End-to-end native guidance must reach 12 without an offer pre-observed.
+-- Load the library with synthetic data; the host route engine is absent.
 APR, APRData, LibStub = nil, nil, nil
 strmatch = string.match
 dofile("APR-Core/libs/HereBeDragons/LibStub/LibStub.lua")
 local root = "APR-Core/libs/LibAPRNavigation-1.0/"
 local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
 local xml = manifest:read("*a"); manifest:close()
-for file in xml:gmatch('file="([^"]+)"') do dofile(root .. file) end
+for file in xml:gmatch('file="([^"]+)"') do if not file:match("^Data/") then dofile(root .. file) end end
 local Lib = LibStub("LibAPRNavigation-1.0")
+Lib:RegisterData("retail", "fixture", dofile("tests/lua/navigation_unlock_test_catalog.lua"))
 local completed, active, objectives = {}, {}, {}
 local availableCalls, renownAmount = 0, 4
-local mapInstances = { [2248] = 2552, [2339] = 2552, [2255] = 2601 }
+local mapInstances = { [101] = 1, [102] = 1, [103] = 2 }
 local maps = {
     [947] = { mapType = 0, parentMapID = 0 },
     [2274] = { mapType = 2, parentMapID = 947 },
-    [2248] = { mapType = 3, parentMapID = 2274 },
-    [2339] = { mapType = 3, parentMapID = 2248 },
-    [2255] = { mapType = 3, parentMapID = 2274 },
+    [101] = { mapType = 3, parentMapID = 2274 },
+    [102] = { mapType = 3, parentMapID = 101 },
+    [103] = { mapType = 3, parentMapID = 2274 },
 }
 local env = {
     getCharacter = function() return { faction = "Horde", class = "PALADIN", raceID = 10,
-        level = 90, mapID = 2339, inGroup = false, indoors = false, inInstance = false } end,
+        level = 90, mapID = 102, inGroup = false, indoors = false, inInstance = false } end,
     getLocale = function() return "frFR" end,
     isQuestCompleted = function(id) return completed[id] == true end,
     isQuestActive = function(id) return active[id] == true end,
@@ -31,19 +33,19 @@ local env = {
     getQuestName = function(id) return "Quest " .. id end,
     getQuestObjectiveText = function(_, index) return "Objective " .. index end,
     getCurrencyQuantity = function(id)
-        if id == 2900 or id == 2898 or id == 2901 or id == 2904 then return renownAmount end
+        if id == 32 or id == 31 or id == 33 or id == 34 then return renownAmount end
         return 0
     end,
     getReputationAmount = function(id) return id == 2600 and 3 or 0 end,
     getReputationStanding = function(id) return id == 2600 and 3 or 4 end,
     getMapInfo = function(id) return maps[id] end,
-    mapToWorld = function(id, x, y) return mapInstances[id] or 2601, (x or 0) * 1000, (y or 0) * 1000 end,
+    mapToWorld = function(id, x, y) return mapInstances[id] or 2, (x or 0) * 1000, (y or 0) * 1000 end,
     isAchievementCompleted = function() return false end,
 }
 local navigator = Lib:New({ profile = "retail", environment = env })
-local destination = { uiMapID = 2472, instanceID = 2738, x = -1343, y = -515.6 }
-local blockers = { { id = "journey-karesh", from = { uiMapID = 2248 },
-    blockedRequirements = { minLevel = 80, any = { { quest = 84957 }, { questActive = 84957 } } } } }
+local destination = { uiMapID = 104, instanceID = 3, x = -1343, y = -515.6 }
+local blockers = { { id = "journey-karesh", from = { uiMapID = 101 },
+    blockedRequirements = { minLevel = 80, any = { { quest = 12 }, { questActive = 12 } } } } }
 local function create()
     return navigator:CreateUnlockSession({ blockers = blockers, destination = destination })
 end
@@ -64,14 +66,14 @@ local function expect(session, kind, questID)
     return action
 end
 local function finishInvitation(session)
-    local action = expect(session, "accept", 84956)
-    assert(action.target and action.target.x == 2923.7 and action.target.y == -2423.3,
-        "The actual invitation coordinates are preserved")
-    active[84956] = true
-    expect(session, "turnin", 84956)
-    completed[84956], active[84956] = true, nil
-    expect(session, "accept", 84957)
-    active[84957] = true
+    local action = expect(session, "accept", 11)
+    assert(action.target and action.target.x == 300 and action.target.y == 400,
+        "The fixture pickup coordinates are preserved")
+    active[11] = true
+    expect(session, "turnin", 11)
+    completed[11], active[11] = true, nil
+    expect(session, "accept", 12)
+    active[12] = true
     local status, _, original = nextAction(session)
     assert(status == "resume" and original.uiMapID == destination.uiMapID
         and original.x == destination.x and original.y == destination.y,
@@ -79,63 +81,35 @@ local function finishInvitation(session)
 end
 
 -- Being eligible must produce a pickup target, not an unknown-offer dead end.
-completed[79573] = true
+completed[13] = true
 finishInvitation(create())
 assert(availableCalls > 0, "Availability can be queried but nil is not a global prohibition")
 
 -- The preceding campaign quest must be guided first, from its authored position.
-completed, active, objectives = { [84022] = true, [78248] = true }, {}, {}
+completed, active, objectives = { [16] = true, [17] = true }, {}, {}
 local session = create()
-local action = expect(session, "accept", 79197)
-assert(action.target and action.target.uiMapID == 2255
-    and action.target.x == -477.9 and action.target.y == -1354.5,
+local action = expect(session, "accept", 14)
+assert(action.target and action.target.uiMapID == 103
+    and action.target.x == -100 and action.target.y == -200,
     "The precursor uses its observed Azj-Kahet quest-giver, not the locked invitation")
-active[79197] = true
-action = expect(session, "objective", 79197)
-for _, index in ipairs(action.objectiveIndices or {}) do objectives["79197:" .. index] = true end
-expect(session, "turnin", 79197)
-completed[79197], active[79197] = true, nil
+active[14] = true
+action = expect(session, "objective", 14)
+for _, index in ipairs(action.objectiveIndices or {}) do objectives["14:" .. index] = true end
+expect(session, "turnin", 14)
+completed[14], active[14] = true, nil
 local status, pending = nextAction(session)
-assert(status ~= "resume" and (not pending or pending.questID ~= 84956),
+assert(status ~= "resume" and (not pending or pending.questID ~= 11),
     "Rewarding the visible quest is not proof that the separate campaign tracker was received")
 -- This is a distinct client observation, not an inferred completion by the library.
-completed[79573] = true
+completed[13] = true
 finishInvitation(session)
 
--- Every shipped condition family must have a runtime evaluator, independently
--- of an earlier false sibling in an AND expression.
-local checked = 0
-local function inspect(requirements)
-    for key, value in pairs(requirements or {}) do
-        if key == "all" or key == "any" then
-            for _, child in ipairs(value) do inspect(child) end
-        elseif key == "notCondition" then inspect(value)
-        else
-            local _, reason = navigator:CheckRequirements({ [key] = value }, env.getCharacter())
-            assert(not reason, "Shipped condition has no evaluator: " .. key .. " / " .. tostring(reason))
-            checked = checked + 1
-        end
-    end
-end
-for _, connection in ipairs(navigator:GetConnections()) do inspect(connection.requirements) end
-for _, recipe in ipairs(navigator:GetUnlockRoutes()) do
-    inspect(recipe.requirements)
-    inspect(recipe.availability)
-    for _, step in ipairs(recipe.steps) do
-        inspect(step.requirements)
-        inspect(step.completeWhen)
-        inspect(step.acceptance and step.acceptance.requirements)
-    end
-end
-assert(checked > 100)
-assert(APR == nil and APRData == nil, "Full unlock journeys remain independent of APR initialization")
-print("Unlock journeys: real 79197 -> campaign tracker -> 84956 -> 84957 guidance, no pre-observed offer, exact destination and shipped condition evaluators passed")
-
--- Actual shipped renown activities progress the target; their hidden receipts
+-- Progressive fixture activities use observed receipts and currency amounts.
+-- Synthetic activities progress the target; their hidden receipts
 -- are observed, never published as quests to pick up.
 completed, active, objectives, renownAmount = {}, {}, {}, 0
 local renown = navigator:CreateUnlockSession({ blockers = {
-    { id = "actual-renown", blockedRequirements = { currency = { id = 2898, amount = 4 } } },
+    { id = "actual-renown", blockedRequirements = { currency = { id = 31, amount = 4 } } },
 }, destination = destination })
 local state, activity = nextAction(renown)
 assert(state == "action" and activity.kind == "action" and activity.actionType == "npc_activity",

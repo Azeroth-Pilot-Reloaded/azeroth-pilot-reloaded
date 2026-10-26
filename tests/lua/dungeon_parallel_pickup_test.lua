@@ -121,11 +121,15 @@ assert(#steps == 13 and steps[5].PickUp[1] == 6006 and steps[6] == main[3]
 APR:InvalidateEffectiveRouteStepsCache("synthetic")
 assert(#APR:GetRouteSteps("synthetic") == 13 and savedState.activationSequence == 6)
 
--- Exercise the maintained ROL declaration: the insignia starter must be
--- accepted while the route still has dungeon trash available to collect it.
-dofile("Routes/Forever/Dungeons/Shared/Forever_Shared_Dungeons_Ruins_of_Lordaeron.lua")
-local key = "Forever-Shared-Dungeons-Ruins-of-Lordaeron"
-local live = APR.RouteQuestStepList[key]
+-- Exercise collection after an inserted starter using a second synthetic guide.
+local key = "fixture-collection"
+local live = { label = "Synthetic collection", steps = {
+    {KillNPC = {dungeonKey = "ROL", npcID = 250483}, Dungeon = "ROL", InstanceQuest = true},
+    {Qpart = {[7007] = {1}}, Dungeon = "ROL", InstanceQuest = true, IsQuestOnQuest = 7007},
+    {LeaveInstance = {dungeonKey = "ROL"}, Dungeon = "ROL", InstanceQuest = true},
+    {RouteCompleted = true},
+}, parallelSteps = {group(777, {pickup(7007)})} }
+APR.RouteQuestStepList[key] = live
 bags, onQuest, completed, APR.ActiveQuests = {}, {}, {}, {}
 APR.ActiveRoute = key
 local bossIndex
@@ -133,30 +137,30 @@ for index, step in ipairs(live.steps) do if step.KillNPC then bossIndex = index;
 assert(bossIndex)
 APRData.player[key] = bossIndex
 assert(#APR:GetRouteSteps(key) == #live.steps)
-bags[268535] = 1
+bags[777] = 1
 steps = APR:GetRouteSteps(key)
-assert(steps[bossIndex].PickUp[1] == 95195 and steps[bossIndex + 1] == live.steps[bossIndex])
+assert(steps[bossIndex].PickUp[1] == 7007 and steps[bossIndex + 1] == live.steps[bossIndex])
 local objectiveIndex, leaveIndex
 for index, step in ipairs(steps) do
-    if step.Qpart and step.Qpart[95195] and step.Dungeon == "ROL" then objectiveIndex = index end
+    if step.Qpart and step.Qpart[7007] and step.Dungeon == "ROL" then objectiveIndex = index end
     if step.LeaveInstance then leaveIndex = index end
 end
 assert(bossIndex < objectiveIndex and objectiveIndex < leaveIndex,
-    "The item pickup precedes the real insignia objective and instance exit")
-onQuest[95195] = true
-APR.ActiveQuests[95195] = {objectives = {{status = APR.QUEST_STATUS.PROGRESS}}}
+    "The item pickup precedes collection and the instance exit")
+onQuest[7007] = true
+APR.ActiveQuests[7007] = {objectives = {{status = APR.QUEST_STATUS.PROGRESS}}}
 APR.stepHandlers.PickUp(steps[bossIndex], false)
 assert(APRData.player[key] == bossIndex + 1)
 assert(APR:AreConditionalFiltersMet(steps[objectiveIndex]))
 APRData.player[key] = objectiveIndex
 APR.stepHandlers.Qpart(steps[objectiveIndex], false)
 assert(APRData.player[key] == objectiveIndex, "The dungeon objective waits for actual collection")
-APR.ActiveQuests[95195].objectives[1].status = APR.QUEST_STATUS.COMPLETE
+APR.ActiveQuests[7007].objectives[1].status = APR.QUEST_STATUS.COMPLETE
 APR.stepHandlers.Qpart(steps[objectiveIndex], false)
 assert(APRData.player[key] == objectiveIndex + 1)
-bags[268535] = 0
+bags[777] = 0
 APR:InvalidateEffectiveRouteStepsCache(key)
 dofile("APR-Core/features/questing/RouteManager.lua")
 assert(#APR:GetRouteSteps(key) == #live.steps + 1
     and APRData.player[key] == objectiveIndex + 1, "The live quest resumes without another acceptance after reload")
-print("Dungeon parallel pickups: narrow eligibility, mixed ordering, late drops, reload and ROL insignia flow passed")
+print("Dungeon parallel pickups: eligibility, mixed ordering, late drops, collection and reload passed")

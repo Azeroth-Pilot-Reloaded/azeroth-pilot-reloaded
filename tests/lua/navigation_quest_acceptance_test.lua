@@ -1,18 +1,19 @@
+-- Synthetic acquisition graph; production campaign edits do not change these expectations.
 -- Accept actions must resolve their own prerequisites before publishing a target.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
-local data = fixture:Load()
+local data = fixture:Load(dofile("tests/lua/navigation_unlock_test_catalog.lua"))
 local Lib = LibStub("LibAPRNavigation-1.0")
 local completed, active, offers = {}, {}, {}
 local unknownQuest
 local env = {
-    getCharacter = function() return { level = 90, faction = "Horde", mapID = 2248 } end,
+    getCharacter = function() return { level = 90, faction = "Horde", mapID = 101 } end,
     isQuestCompleted = function(id) if id ~= unknownQuest then return completed[id] == true end end,
     isQuestActive = function(id) return active[id] == true end,
     isQuestAvailable = function(id) return offers[id] end,
     getLocale = function() return "frFR" end,
     getQuestName = function(id) return "Quête " .. id end,
 }
-local position = { space = "world", uiMapID = 2248, instanceID = 2552, x = 2923, y = -2418.2 }
+local position = { space = "world", uiMapID = 101, instanceID = 1, x = 350, y = 450 }
 local function quest(id, prerequisite)
     return { id = "quest:" .. id, goal = { key = "quest", value = id }, steps = {
         { kind = "accept", questID = id, position = position,
@@ -22,7 +23,7 @@ local function quest(id, prerequisite)
 end
 Lib:RegisterData("acceptance-tests", "unlocks", { unlockRoutes = { quest(42, 41), quest(41, 40), quest(40) } })
 local navigator = Lib:New({ profile = "acceptance-tests", environment = env })
-local destination = { instanceID = 2738, uiMapID = 2472, x = -1343, y = -515.6 }
+local destination = { instanceID = 3, uiMapID = 104, x = -1343, y = -515.6 }
 local gate = { id = "destination", blockedRequirements = { quest = 42 } }
 local function create(instance)
     return (instance or navigator):CreateUnlockSession({ blockers = { gate }, destination = destination })
@@ -57,7 +58,7 @@ assert(status == "action" and action.questID == 42)
 completed[42] = true
 local original
 status, action, original = tick(session)
-assert(status == "resume" and original.uiMapID == 2472 and original.x == -1343)
+assert(status == "resume" and original.uiMapID == 104 and original.x == -1343)
 
 -- An incomplete authored entry has no right to claim that a quest is available.
 completed, active, offers = {}, {}, {}
@@ -85,36 +86,36 @@ status, action = tick(session)
 assert(status == "waiting_data" and not action.target)
 unknownQuest = nil
 
--- The reported K'aresh failure uses real generated acceptance data, not a test-only gate.
+-- Independent offer metadata preserves a character-only tracker prerequisite.
 data.env = env
-gate = { id = "karesh", from = { uiMapID = 2248 },
-    blockedRequirements = { any = { { quest = 84957 }, { questActive = 84957 } }, minLevel = 80 } }
+gate = { id = "karesh", from = { uiMapID = 101 },
+    blockedRequirements = { any = { { quest = 12 }, { questActive = 12 } }, minLevel = 80 } }
 session = create(data)
 status, action = tick(session)
-assert(status ~= "action" or action.questID ~= 84956,
-    "The Horde level-90 character is never sent to accept 84956 with missing campaign conditions")
+assert(status ~= "action" or action.questID ~= 11,
+    "The Horde level-90 character is never sent to accept 11 with missing campaign conditions")
 local invitation
 for _, recipe in ipairs(data:GetUnlockRoutes()) do
     for _, step in ipairs(recipe.steps) do
-        if step.kind == "accept" and step.questID == 84956 then invitation = step.acceptance; break end
+        if step.kind == "accept" and step.questID == 11 then invitation = step.acceptance; break end
     end
     if invitation then break end
 end
 assert(invitation and invitation.known == true and invitation.complete ~= true,
     "All supplied conditions are interpreted without claiming exhaustive world knowledge")
-completed[79573] = true
+completed[13] = true
 assert(data:CheckRequirements(invitation.requirements, env.getCharacter()) == true)
-completed[79573] = nil
+completed[13] = nil
 assert(data:CheckRequirements(invitation.requirements, env.getCharacter()) == false,
-    "BtW's explicit 79573 completion test is applied before the invitation")
-completed[79197] = true
+    "The character's tracker completion is required before the next offer")
+completed[14] = true
 assert(data:CheckRequirements(invitation.requirements, env.getCharacter()) == false,
     "The authored upto quest does not replace the actual campaign tracker")
 local marker
 for _, recipe in ipairs(data:GetUnlockRoutes()) do
-    if recipe.goal.key == "quest" and recipe.goal.value == 79573 then marker = recipe end
+    if recipe.goal.key == "quest" and recipe.goal.value == 13 then marker = recipe end
 end
-assert(marker and marker.guidanceQuestID == 79197, "Tracker guidance uses the sourced upto quest without fabricated coordinates")
+assert(marker and marker.guidanceQuestID == 14, "Tracker guidance uses the sourced upto quest without fabricated coordinates")
 
 for _, locale in ipairs({ "enUS", "deDE", "esES", "esMX", "frFR", "itIT", "koKR", "ptBR", "ruRU", "zhCN", "zhTW" }) do
     for _, suffix in ipairs({ "accept_unverified", "accept_unavailable" }) do
@@ -122,4 +123,4 @@ for _, locale in ipairs({ "enUS", "deDE", "esES", "esMX", "frFR", "itIT", "koKR"
         assert(Lib:GetText(key, locale) ~= key)
     end
 end
-print("Quest acceptance: recursive prerequisites, live availability, cycles, hidden trackers, original destination and real K'aresh regression passed")
+print("Quest acceptance: recursive prerequisites, live availability, cycles, hidden trackers and original destination passed")

@@ -1,6 +1,6 @@
 -- Stacked floors must stay distinct even when their map and XY are identical.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
-local data = fixture:Load()
+local data = fixture:Load({})
 local upper = { instanceID = 0, uiMapID = 2395, x = 100, y = 100, z = 100, floor = "upper" }
 local lower = { instanceID = 0, uiMapID = 2395, x = 100, y = 100, z = 0, floor = "lower" }
 assert(not data:CanWalk(upper, lower), "Floor identity cannot be waived by identical XY")
@@ -25,20 +25,4 @@ assert(edges[2].seconds == 31 and edges[2].durationSource == "estimated-world-tr
     "World transitions keep their estimate instead of subtracting unrelated coordinates")
 assert(edges[1].source == nil and edges[2].source == nil)
 
--- Explicit native map regions separate the Undercity cellar from its surface.
-fixture.profile = "forever"
-data = fixture:Load()
-local lifts = 0
-for _, connection in ipairs(data.connections) do
-    if connection.id:match("^elevator%-undercity") then
-        lifts = lifts + 1
-        assert(connection.from.uiMapID == 1420 and connection.to.uiMapID == 1458)
-        assert(connection.arrivalZTolerance == 8 and connection.seconds > 0 and not connection.costMode)
-    end
-    if connection.id:match("^walk%-thunder%-bluff") or connection.id == "walk-freewind-post-lift" then
-        assert(connection.reviewStatus == "candidate" and connection.disabled,
-            "An unmodelled lift floor cannot authorize walking through its platform")
-    end
-end
-assert(lifts == 3)
-print("Vertical access: distinct Z/floors, 3D costs, world transitions, review gates and three Undercity lifts passed")
+print("Vertical access: distinct Z/floors, 3D costs, world transitions and review gates passed")

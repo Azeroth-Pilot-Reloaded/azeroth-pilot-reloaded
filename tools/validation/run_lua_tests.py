@@ -12,7 +12,7 @@ sys.path.insert(0, str(ROOT))
 from tests.lua.test_regressions import LuaRegressionTests
 
 GROUPS = {
-    "forever-only": ("navigation_library", "navigation_adapter", "navigation_data", "navigation_catalog_profiles", "navigation_required_crossings", "navigation_zones", "taxi_discovery",
+    "forever-only": ("navigation_library", "navigation_adapter", "navigation_action_selection", "navigation_catalog_profiles", "navigation_mandatory_chain", "navigation_zones", "taxi_discovery",
                      "navigation_forever_performance", "navigation_forever_projection",
                      "navigation_search_performance", "navigation_search_walking_performance", "navigation_zone_graph",
                      "navigation_catalog_performance", "navigation_taxi_performance", "navigation_scheduling",

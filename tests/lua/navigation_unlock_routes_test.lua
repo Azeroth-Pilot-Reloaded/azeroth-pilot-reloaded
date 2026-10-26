@@ -1,12 +1,13 @@
+-- Synthetic acquisition graph; production campaign edits do not change these expectations.
 -- APR hosts the standalone library session without activating temporary routes.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
-local data = fixture:Load()
-local completed, active = { [79573] = true }, {}
-data.env.isQuestAvailable = function(id) return id ~= 84957 or completed[84956] == true end
+local data = fixture:Load(dofile("tests/lua/navigation_unlock_test_catalog.lua"))
+local completed, active = { [13] = true }, {}
+data.env.isQuestAvailable = function(id) return id ~= 12 or completed[11] == true end
 data.env.isQuestCompleted = function(id) return completed[id] == true end
 data.env.isQuestActive = function(id) return active[id] == true end
 data.env.isQuestCompletedOnAccount = function() return false end
-data.env.getCharacter = function() return { level = 90, faction = "Alliance", mapID = 2248 } end
+data.env.getCharacter = function() return { level = 90, faction = "Alliance", mapID = 101 } end
 local timers = {}
 C_Timer = { NewTimer = function(_, callback)
     local timer = { callback = callback, Cancel = function(self) self.cancelled = true end }
@@ -29,17 +30,17 @@ APR.SendMessage = noop
 function APR:NewModule() return {} end
 function APR:GetGameVersion() return "retail" end
 APR.GAME_VERSIONS = { Forever = "forever" }
-local parent = { Zone = 2371, Coord = { x = 44, y = 99, mapID = 2371, instanceID = 2738 } }
+local parent = { Zone = 105, Coord = { x = 44, y = 99, mapID = 105, instanceID = 3 } }
 local context = { route = "parent", index = 8, definition = { steps = { [8] = parent } } }
 function APR:CaptureStepContext() return context end
 function APR:IsStepContextCurrent(value) return value == context end
 function APR:GetCurrentStep() return parent, 8 end
 function APR:PeekCurrentStep() return parent end
-function APR:GetCurrentRouteMapIDsAndName() return { 2371 }, 2371 end
+function APR:GetCurrentRouteMapIDsAndName() return { 105 }, 105 end
 function APR:GetStepCoord(step) return step.Coord, step.Zone end
 function APR:GetPreferredStepZone(step) return step.Zone end
 function APR:CheckNavigationZoneReady() return true end
-local position = { x = 2923, y = -2418.2, instanceID = 2552, uiMapID = 2248 }
+local position = { x = 350, y = 450, instanceID = 1, uiMapID = 101 }
 function APR:GetNavigationPlayerPosition() return position end
 function APR:ActivateTemporaryRoute() error("An unlock cannot use APR's route engine") end
 function APR:GetRouteData() error("An unlock cannot look up APR routes") end
@@ -57,9 +58,9 @@ dofile("APR-Core/features/navigation/NavigationPlanner.lua")
 dofile("APR-Core/features/navigation/Navigation.lua")
 dofile("APR-Core/features/navigation/NavigationUnlocks.lua")
 local nav = APR.navigation
-nav.destination = { x = 99, y = 44, instanceID = 2738, uiMapID = 2371 }
-local edge = { id = "karesh", from = { uiMapID = 2248 },
-    blockedRequirements = { minLevel = 80, any = { { quest = 84957 }, { questActive = 84957 } } } }
+nav.destination = { x = 99, y = 44, instanceID = 3, uiMapID = 105 }
+local edge = { id = "karesh", from = { uiMapID = 101 },
+    blockedRequirements = { minLevel = 80, any = { { quest = 12 }, { questActive = 12 } } } }
 local function drain()
     for _ = 1, 10000 do
         local timer = table.remove(timers, 1)
@@ -71,7 +72,7 @@ end
 assert(APR:StartNavigationUnlock({ edge }, context))
 drain()
 local step = assert(APR:GetNavigationUnlockStep())
-assert(step.unlockAction.questID == 84956 and step.unlockAction.kind == "accept")
+assert(step.unlockAction.questID == 11 and step.unlockAction.kind == "accept")
 assert(nav:GetActiveStep().kind == "unlock" and nav:IsNavigating(), "Arrival displays the native quest action")
 assert(APR.ActiveRoute == "parent" and APRData.test.parent == 8 and APRCustomPath.test[1] == "parent")
 assert(not APRData.test.TemporaryRouteState and APRData.test.NavigationUnlockState,
@@ -87,19 +88,19 @@ APR:RefreshNavigationUnlockRoute()
 assert(nav:GetActiveStep().label:find("Loaded quest", 1, true), "Client names arriving later refresh the existing native action")
 nav:PollArrival(); drain()
 assert(APR:GetNavigationUnlockStep() == step, "Arrival alone does not advance the native quest action")
-active[84956] = true
+active[11] = true
 nav:Update(); drain()
 step = APR:GetNavigationUnlockStep()
 assert(step.unlockAction.kind == "turnin" and APRData.test.parent == 8)
-completed[84956], active[84956] = true, nil
+completed[11], active[11] = true, nil
 nav:Update(); drain()
-assert(APR:GetNavigationUnlockStep().unlockAction.questID == 84957)
+assert(APR:GetNavigationUnlockStep().unlockAction.questID == 12)
 -- Simulate a reload with only the persisted standalone checkpoint.
 APR._navigationUnlock = nil
 assert(APR:RestoreNavigationUnlockRoute())
 nav:Update(); drain()
-assert(APR:GetNavigationUnlockStep().unlockAction.questID == 84957)
-active[84957] = true
+assert(APR:GetNavigationUnlockStep().unlockAction.questID == 12)
+active[12] = true
 assert(APR:RefreshNavigationUnlockRoute() == false and not APR._navigationUnlock)
 assert(not APRData.test.NavigationUnlockState and nav.dirty and APR.ActiveRoute == "parent" and APRData.test.parent == 8,
     "Live access resumes the same authored step without incrementing its progress")

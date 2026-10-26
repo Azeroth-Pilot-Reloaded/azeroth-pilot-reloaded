@@ -8,7 +8,6 @@ from lupa.lua51 import LuaRuntime
 
 from tests.routes.route_loader import load_routes
 from tests.routes.route_schema import RouteSchema
-from tools.validation.route_completion import ensure_route_completions
 
 
 ROOT = Path(__file__).resolve().parents[2]
@@ -18,7 +17,6 @@ ROUTES = ROOT / "Routes"
 class RouteSyntaxTests(unittest.TestCase):
     @classmethod
     def setUpClass(cls):
-        ensure_route_completions(ROUTES)
         cls.catalog = load_routes()
         cls.schema = RouteSchema(cls.catalog)
         cls.runtime = LuaRuntime(unpack_returned_tuples=True)
@@ -52,24 +50,17 @@ class RouteSyntaxTests(unittest.TestCase):
         self.assertEqual(registered, {path.relative_to(ROOT).as_posix() for path in FILES},
                          "Every route file must be registered in a client manifest")
 
-
-def make_syntax_test(path):
-    def test(self):
-        name = path.relative_to(ROOT).as_posix()
-        for key, source in self.catalog.sources.items():
-            if source == name:
-                with self.subTest(route=key):
-                    route = self.catalog.routes[key]
-                    self.schema.validate(key, route)
-                    steps = route.get('steps')
-                    if steps is not None and (not steps or 'steps' not in steps.get(1, {})):
-                        self.assertTrue(steps and steps[len(steps)].get('RouteCompleted') is True)
-    return test
+    def test_all_route_declarations(self):
+        self.assertTrue(self.catalog.routes, "No route declarations found")
+        for key, route in self.catalog.routes.items():
+            with self.subTest(file=self.catalog.sources[key], route=key):
+                self.schema.validate(key, route)
+                steps = route.get("steps")
+                if steps is not None and (not steps or "steps" not in steps.get(1, {})):
+                    self.assertTrue(steps and steps[len(steps)].get("RouteCompleted") is True,
+                                    "An ordinary route must end with RouteCompleted; run the explicit repair tool")
 
 
 FILES = sorted(ROUTES.rglob("*.lua"))
 if not FILES:
     raise RuntimeError("No Lua route files found")
-for index, path in enumerate(FILES):
-    name = f"test_route_{index:03d}_" + path.stem.replace("-", "_")
-    setattr(RouteSyntaxTests, name, make_syntax_test(path))

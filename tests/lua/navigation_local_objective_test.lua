@@ -1,9 +1,9 @@
--- Reproduce the 2026-10-22 report through real geography and controller code.
+-- A local objective uses the real geography/controller with no shipped data.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
 fixture.currentMap, fixture.faction = 2393, "Horde"
 fixture.player = { x = 8547.3, y = -4815.3, instanceID = 0 }
 fixture.translations = setmetatable({}, { __index = function(_, key) return key end })
-local data = fixture:Load()
+local data = fixture:Load({ config = { IsolatedAreas = {} } })
 local noop = function() end
 dofile("APR-Core/utils/Utils.lua")
 APR.Debug = noop
@@ -72,4 +72,4 @@ data.config.IsolatedAreas[2393] = "test-interior"
 data:InvalidatePositionCache()
 nav:ForceRefresh(); nav:Update()
 assert(plans == count + 1 and nav.search and not nav.zoneReady)
-print("Silvermoon: compare shortcuts, retain direct arrow, reject stale results and preserve access restrictions")
+print("Local objectives: compare shortcuts, retain direct arrow, reject stale results and preserve access restrictions")
