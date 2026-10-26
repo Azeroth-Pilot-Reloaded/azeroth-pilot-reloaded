@@ -3,13 +3,11 @@ fixture.spells[312372] = true
 fixture.player = { x = 100, y = 200, z = 0, instanceID = 0 }
 function UnitRace() return "Vulpera", "Vulpera", 35 end
 APRNavigationCharacterSettings = nil
-local data = fixture:Load()
-local camp
-for _, definition in ipairs(data.connections) do
-    if definition.id == "spell-312372-return-to-personal-camp" then camp = definition end
-end
-assert(camp and camp.to.dynamic == "camp")
-data.connections = { camp }
+-- These spell IDs are client event contracts; the connection is synthetic.
+local data = fixture:Load({ connections = { { id = "fixture-camp", kind = "spell",
+    from = { dynamic = "player" }, to = { dynamic = "camp" },
+    actions = { { type = "spell", id = 312372 } }, requirements = { raceID = 35 },
+} } })
 local function Edges() return data:BuildEdges({ playerPosition = fixture.player }) end
 local edges, metadata = Edges()
 assert(#edges == 0 and not metadata.waitingData, "An unobserved personal camp is an unavailable optional shortcut")

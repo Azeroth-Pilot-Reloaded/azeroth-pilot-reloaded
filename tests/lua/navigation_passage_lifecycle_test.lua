@@ -1,47 +1,43 @@
--- Native TWW entrances retain their distinct access regions in both directions.
+-- Synthetic native passages retain distinct access regions in both directions.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
 fixture.translations = { RUN_WAYPOINT = "Walk", TRAVEL_TO = "Travel to", WAYPOINT = "Waypoint" }
-fixture.maps[2274] = { mapID = 2274, mapType = 2, parentMapID = 947 }
-fixture.maps[1978] = { mapID = 1978, mapType = 2, parentMapID = 947 }
-for _, entry in ipairs({ { 2214, 2274, 3 }, { 2215, 2274, 3 }, { 2255, 2274, 3 },
-    { 2256, 2274, 3 }, { 2213, 2255, 3 }, { 2200, 1978, 3 },
-    { 2253, 2200, 5 }, { 2254, 2200, 5 } }) do
+fixture.maps[100] = { mapID = 100, mapType = 2, parentMapID = 947 }
+fixture.maps[200] = { mapID = 200, mapType = 2, parentMapID = 947 }
+for _, entry in ipairs({ { 101, 100, 3 }, { 102, 100, 3 }, { 103, 100, 3 },
+    { 104, 100, 3 }, { 105, 103, 3 }, { 108, 200, 3 },
+    { 106, 108, 5 }, { 107, 108, 5 } }) do
     fixture.maps[entry[1]] = { mapID = entry[1], parentMapID = entry[2], mapType = entry[3] }
 end
 -- Deliberately synthetic affine projections exercise native map identity and
 -- endpoint costs. They cannot establish the real tunnel's distance or speed.
-local origins = { [2214] = 0, [2215] = 2000, [2255] = 4000 }
+local origins = { [101] = 0, [102] = 2000, [103] = 4000 }
 local projections = 0
 C_Map.GetWorldPosFromMapPos = function(mapID, point)
     if not origins[mapID] then return nil end
     assert(point.x >= 0 and point.x <= 1 and point.y >= 0 and point.y <= 1,
         "Only normalized coordinates can be projected as native map points")
     projections = projections + 1
-    return 2601, { x = origins[mapID] + point.x * 10000, y = point.y * 10000 }
+    return 7, { x = origins[mapID] + point.x * 10000, y = point.y * 10000 }
 end
-local data = fixture:Load()
-local ids = {
-    ["passage-ringing-deeps-hallowfall"] = true,
-    ["passage-hallowfall-azj-kahet-east"] = true,
-    ["passage-ringing-deeps-azj-kahet"] = true,
-    ["passage-hallowfall-azj-kahet-west"] = true,
+local ids = { ["fixture-first-middle"] = true, ["fixture-middle-last"] = true }
+local definitions = {
+    ["fixture-first-middle"] = { id = "fixture-first-middle", kind = "passage", bidirectional = true, costMode = "ground",
+        from = { space = "map", uiMapID = 101, x = 0.4, y = 0.5 },
+        to = { space = "map", uiMapID = 102, x = 0.4, y = 0.5 } },
+    ["fixture-middle-last"] = { id = "fixture-middle-last", kind = "passage", bidirectional = true, costMode = "ground",
+        from = { space = "map", uiMapID = 102, x = 0.8, y = 0.5 },
+        to = { space = "map", uiMapID = 103, x = 0.8, y = 0.5 } },
 }
-local definitions, nativeEdges = {}, {}
-for _, definition in ipairs(data.connections) do
-    if ids[definition.id] then
-        definitions[definition.id] = definition
-        assert(definition.kind == "passage" and definition.bidirectional and definition.costMode == "ground")
-        assert(definition.from.space == "map" and definition.to.space == "map")
-    end
-end
-local count = 0
-for id in pairs(ids) do assert(definitions[id], "Missing public TWW crossing: " .. id); count = count + 1 end
-assert(count == 4)
+local data = fixture:Load({ config = { IsolatedAreas = {
+    [101] = "first", [102] = "middle", [103] = "last", [104] = "lower",
+    [106] = "interior-a", [107] = "interior-b",
+} }, connections = { definitions["fixture-first-middle"], definitions["fixture-middle-last"] } })
+local nativeEdges = {}
 local function at(point, mapID, instanceID, dx, dy)
     return assert(data:NormalizeLocation({ space = "world", instanceID = instanceID or point.instanceID,
         uiMapID = mapID or point.uiMapID, x = point.x + (dx or 0), y = point.y + (dy or 0) }))
 end
-local player = assert(data:NormalizeLocation({ space = "map", uiMapID = 2215, x = 0.5, y = 0.5 }))
+local player = assert(data:NormalizeLocation({ space = "map", uiMapID = 102, x = 0.5, y = 0.5 }))
 local allEdges = data:BuildEdges({ playerPosition = player, walkSpeed = 10 })
 for _, edge in ipairs(allEdges) do
     local id, direction = edge.id:match("^retail:(.-):(%a+)$")
@@ -51,14 +47,14 @@ for _, edge in ipairs(allEdges) do
         local from = direction == "forward" and definition.from or definition.to
         local to = direction == "forward" and definition.to or definition.from
         assert(edge.from.uiMapID == from.uiMapID and edge.to.uiMapID == to.uiMapID)
-        assert(edge.from.instanceID == 2601 and edge.to.instanceID == 2601)
+        assert(edge.from.instanceID == 7 and edge.to.instanceID == 7)
         assert(edge.mandatory and edge.seconds > 0 and not data:CanWalk(edge.from, edge.to),
             "A public crossing remains a costed mandatory edge between isolated regions")
         local dx, dy = edge.to.x - edge.from.x, edge.to.y - edge.from.y
         assert(math.abs(edge.seconds - math.sqrt(dx * dx + dy * dy) / 10) < 0.000001)
     end
 end
-assert(#nativeEdges == 8 and projections > 0, "All four catalogue passages must build forward and reverse edges")
+assert(#nativeEdges == 4 and projections > 0, "Both fixture passages build forward and reverse edges")
 
 local function search(start, goal)
     local job = data:CreateSearch({ start = start, goal = goal, edges = nativeEdges, walkSpeed = 10,
@@ -87,19 +83,19 @@ end
 
 local azj
 for _, edge in ipairs(nativeEdges) do
-    if edge.id == "retail:passage-hallowfall-azj-kahet-east:forward" then azj = edge end
+    if edge.id == "retail:fixture-middle-last:forward" then azj = edge end
 end
 assert(azj)
-local outdoorChild = at(azj.to, 2213)
+local outdoorChild = at(azj.to, 105)
 assert(data:CanWalk(azj.to, outdoorChild) and data:CanWalk(outdoorChild, azj.to),
-    "Ordinary outdoor City of Threads descendants share Azj-Kahet access")
+    "Ordinary outdoor descendants share parent access")
 assert(search(at(azj.from), outdoorChild) == "ready", "A passage can serve an ordinary destination subzone")
-for _, mapID in ipairs({ 2253, 2254, 2256 }) do
+for _, mapID in ipairs({ 106, 107, 104 }) do
     local isolated = at(azj.to, mapID)
     assert(not data:CanWalk(azj.to, isolated) and not data:CanWalk(isolated, azj.to),
         "Overlapping XY cannot connect unrelated interiors or the lower layer: " .. mapID)
     assert(search(at(azj.from), isolated) == "no_path",
-        "Public TWW entrances do not invent access to an unrelated interior or lower map: " .. mapID)
+        "Public passages do not invent access to an unrelated interior or lower map: " .. mapID)
 end
 assert(not data:CanWalk(azj.to, at(azj.to, nil, 0)), "Matching native map/XY in another instance is inaccessible")
 local private = at(azj.to); private.accessKey = "private"
@@ -178,8 +174,8 @@ for _, edge in ipairs(nativeEdges) do
     fixture.player = at(edge.to, nil, 0)
     nav:PollArrival()
     assert(nav:GetActiveStep().connectionID == edge.id, "Another world instance cannot complete the passage")
-    if edge.to.uiMapID == 2255 then
-        for _, mapID in ipairs({ 2253, 2254, 2256 }) do
+    if edge.to.uiMapID == 103 then
+        for _, mapID in ipairs({ 106, 107, 104 }) do
             fixture.player, fixture.currentMap = at(edge.to, mapID), mapID
             nav:PollArrival()
             assert(nav:GetActiveStep().connectionID == edge.id,
@@ -188,7 +184,7 @@ for _, edge in ipairs(nativeEdges) do
     end
     fixture.player, fixture.currentMap = at(edge.to), edge.to.uiMapID
     if edge == azj then
-        fixture.player, fixture.currentMap = at(edge.to, 2213), 2213
+        fixture.player, fixture.currentMap = at(edge.to, 105), 105
     end
     nav:PollArrival()
     assert(nav:GetActiveStep().kind == "walk" and APRData.p.r == 1,
@@ -204,4 +200,4 @@ for _, edge in ipairs(nativeEdges) do
     APR.transportArrivalTimer.callback()
     assert(APRData.p.r == 2, "The next distant waypoint cannot validate at the preceding destination")
 end
-print("TWW crossings: four real native passages in both directions; descendants, isolated layers, costs and authored/controller arrivals passed")
+print("Synthetic passages in both directions; descendants, isolated layers, costs and authored/controller arrivals passed")

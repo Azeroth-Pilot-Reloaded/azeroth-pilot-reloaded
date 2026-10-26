@@ -128,11 +128,11 @@ up to 8,192 metric names, 100 slow calls, 1,000 journal entries, 100 frame spike
 and 600 resource samples; older ring entries are overwritten. Coverage means
 instrumented source definitions, not proof that every function ran in a session.
 
-Route syntax checks append a missing `RouteCompleted = true` to ordinary route
-step lists before validation. They preserve existing steps, comments, encoding
-and line endings. Scenario routes keep their separate instance completion flow.
-Run `python tools/validation/route_completion.py` to repair endings directly, or
-add `--check` for a read-only report. A second repair makes no changes.
+Route syntax checks report a missing `RouteCompleted = true` without modifying
+the route. Scenario routes keep their separate instance completion flow. Run
+`python tools/validation/route_completion.py` explicitly to repair ordinary
+endings, or add `--check` for a read-only report. The repair preserves existing
+steps, comments, encoding and line endings; a second repair makes no changes.
 
 Current-step rendering regression:
 

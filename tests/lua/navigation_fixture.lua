@@ -58,7 +58,7 @@ C_Map = {
     GetWorldPosFromMapPos = function(id, pos) return id == 2413 and 2694 or 0, { x = pos.x * 10000, y = pos.y * 10000 } end,
     GetMapPosFromWorldPos = function(instance) return instance == 2694 and 2413 or instance == 2771 and 2405 or 2395, {} end,
 }
-function fixture:Load()
+function fixture:Load(catalog)
     APR = {}
     function APR:GetRouteActionUsability(kind, id) return self.fixture[kind == "item" and "items" or "spells"][id] ~= nil end
     APR.fixture = self
@@ -69,7 +69,12 @@ function fixture:Load()
     local root = "APR-Core/libs/LibAPRNavigation-1.0/"
     local file = assert(io.open(root .. "LibAPRNavigation.xml"))
     local xml = file:read("*a"); file:close()
-    for path in xml:gmatch('file="([^"]+)"') do dofile(root .. path) end
+    for path in xml:gmatch('file="([^"]+)"') do
+        if catalog == nil or not path:match("^Data/") then dofile(root .. path) end
+    end
+    if catalog then
+        LibStub("LibAPRNavigation-1.0"):RegisterData(self.profile, "fixture", catalog)
+    end
     dofile("APR-Core/features/navigation/NavigationAdapter.lua")
     return APR.NavigationData
 end

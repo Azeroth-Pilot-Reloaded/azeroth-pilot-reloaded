@@ -1,4 +1,4 @@
--- Load the shipped library without replacing an APR test's mocked client globals.
+-- Load the library and synthetic actions without changing mocked client globals.
 local environment = {
     assert = assert, error = error, ipairs = ipairs, pairs = pairs, next = next,
     type = type, tonumber = tonumber, tostring = tostring, select = select,
@@ -17,5 +17,11 @@ local root = "APR-Core/libs/LibAPRNavigation-1.0/"
 local manifest = assert(io.open(root .. "LibAPRNavigation.xml"))
 local xml = manifest:read("*a")
 manifest:close()
-for path in xml:gmatch('file="([^"]+)"') do loadModule(root .. path) end
-return environment.LibStub("LibAPRNavigation-1.0")
+for path in xml:gmatch('file="([^"]+)"') do
+    if not path:match("^Data/") then loadModule(root .. path) end
+end
+local Lib = environment.LibStub("LibAPRNavigation-1.0")
+for profile, catalog in pairs(dofile("tests/lua/navigation_travel_action_test_catalog.lua")) do
+    Lib:RegisterData(profile, "fixture", catalog)
+end
+return Lib

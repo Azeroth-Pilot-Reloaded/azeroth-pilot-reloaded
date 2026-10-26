@@ -1,13 +1,14 @@
+-- Synthetic acquisition graph; production campaign edits do not change these expectations.
 -- Map/UI readers use the real RouteUtils getter in the client. It must not
 -- restore a SavedVariables checkpoint over an already active native session.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
-local data = fixture:Load()
-local completed, active, timers, rows = { [79573] = true }, {}, {}, {}
+local data = fixture:Load(dofile("tests/lua/navigation_unlock_test_catalog.lua"))
+local completed, active, timers, rows = { [13] = true }, {}, {}, {}
 data.env.isQuestAvailable = function() return nil end
 data.env.isQuestCompleted = function(id) return completed[id] == true end
 data.env.isQuestActive = function(id) return active[id] == true end
 data.env.isQuestCompletedOnAccount = function() return false end
-data.env.getCharacter = function() return { level = 90, faction = "Horde", class = "PALADIN", mapID = 2248 } end
+data.env.getCharacter = function() return { level = 90, faction = "Horde", class = "PALADIN", mapID = 101 } end
 local function noop() end
 function debugprofilestop() return 0 end
 function UnitIsDeadOrGhost() return false end
@@ -15,10 +16,10 @@ function UnitOnTaxi() return false end
 function InCombatLockdown() return false end
 function IsFlyableArea() return false end
 function GetMoney() return 0 end
-APR.PlayerID, APR.ActiveRoute = "live", "2339-Navigation-World-Tour (2) - Custom"
+APR.PlayerID, APR.ActiveRoute = "live", "fixture-parent-guide"
 local route = APR.ActiveRoute
-local original = { Zone = 2472, Waypoint = 1, NonSkippableWaypoint = true,
-    Coord = { x = -515.6, y = -1343, mapID = 2472, instanceID = 2738 } }
+local original = { Zone = 104, Waypoint = 1, NonSkippableWaypoint = true,
+    Coord = { x = -515.6, y = -1343, mapID = 104, instanceID = 3 } }
 local definition = { label = route, expansion = "Custom", steps = { [8] = original } }
 APRData, APRCustomPath = { live = { [route] = 8 } }, { live = { route } }
 APR.RouteQuestStepList = { [route] = definition }
@@ -32,19 +33,19 @@ function APR:GetPrimaryCustomPathRouteKey() return APRCustomPath.live[1] and rou
 function APR:GetRouteData(key) return key == route and definition or nil end
 function APR:GetRouteSteps(key) return key == route and definition.steps or {} end
 function APR:IsTemporaryRoute() return false end
-function APR:GetRouteMapIDsAndName() return { 2472 }, 2472, route, "Custom" end
+function APR:GetRouteMapIDsAndName() return { 104 }, 104, route, "Custom" end
 function APR:GetCurrentStep() return original, 8, definition.steps end
 function APR:PeekCurrentStep() return original end
 function APR:GetStepCoord(step) return step.Coord, step.Zone end
 function APR:GetPreferredStepZone(step) return step.Zone end
 function APR:CheckNavigationZoneReady() return true end
-function APR:GetNavigationPlayerPosition() return { x = 2922.4, y = -2407.6, uiMapID = 2248, instanceID = 2552 } end
+function APR:GetNavigationPlayerPosition() return { x = 2922.4, y = -2407.6, uiMapID = 101, instanceID = 1 } end
 function APR:ActivateTemporaryRoute() error("Unlocks cannot activate an APR temporary route") end
 dofile("APR-Core/features/questing/StepTransitions.lua")
 local mapReads = 0
 local function readMaps()
     local _, map, key = APR:GetCurrentRouteMapIDsAndName()
-    assert(map == 2472 and key == route)
+    assert(map == 104 and key == route)
     mapReads = mapReads + 1
 end
 APR.Arrow = { SetCoord = readMaps, SetArrowActive = noop }
@@ -67,9 +68,9 @@ dofile("APR-Core/features/navigation/NavigationPlanner.lua")
 dofile("APR-Core/features/navigation/NavigationUnlocks.lua")
 dofile("APR-Core/features/navigation/Navigation.lua")
 local nav = APR.navigation
-nav.destination = { x = -1343, y = -515.6, uiMapID = 2472, instanceID = 2738 }
-local blocker = { id = "karesh-live", from = { uiMapID = 2248 }, blockedRequirements = {
-    minLevel = 80, any = { { quest = 84957 }, { questActive = 84957 } },
+nav.destination = { x = -1343, y = -515.6, uiMapID = 104, instanceID = 3 }
+local blocker = { id = "karesh-live", from = { uiMapID = 101 }, blockedRequirements = {
+    minLevel = 80, any = { { quest = 12 }, { questActive = 12 } },
 } }
 local context = APR:CaptureStepContext()
 nav.context = context
@@ -91,7 +92,7 @@ local function drain()
 end
 drain()
 local step = assert(APR:GetNavigationUnlockStep())
-assert(step.unlockAction.kind == "accept" and step.unlockAction.questID == 84956)
+assert(step.unlockAction.kind == "accept" and step.unlockAction.questID == 11)
 assert(nav:IsNavigating() and nav:GetActiveStep().kind == "unlock" and #rows > 0)
 local signature, cursor = state.signature, session.cursor
 for _ = 1, 25 do readMaps() end
@@ -106,7 +107,7 @@ state, session = APR._navigationUnlock, APR._navigationUnlock.session
 assert(state and session)
 for _ = 1, 25 do readMaps(); assert(APR._navigationUnlock == state and state.session == session) end
 nav:Update(); drain()
-assert(APR:GetNavigationUnlockStep().unlockAction.questID == 84956)
+assert(APR:GetNavigationUnlockStep().unlockAction.questID == 11)
 assert(nav:IsNavigating() and APRData.live[route] == 8)
 APR.stepRevision = (APR.stepRevision or 0) + 1
 readMaps()

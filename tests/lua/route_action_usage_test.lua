@@ -296,26 +296,17 @@ local owned, unusable, bagCount = {}, {}, 0
 function PlayerHasToy(id) return owned[id] == true end
 
 C_ToyBox = { IsToyUsable = function(id) return not unusable[id] end }
-function C_Item.GetItemCount(id) return id == 6948 and bagCount or 0 end
+function C_Item.GetItemCount(id) return id == 1 and bagCount or 0 end
 
 function C_Item.IsUsableItem() return true end
 
 function C_Item.GetItemCooldown() return 1, 1800, 1 end
 
--- Item use effects verified from the toy tooltips; every supported toy must finish UseHS.
-local toySpells = {
-    [54452] = 75136, [64488] = 94719, [93672] = 136508, [142542] = 231504,
-    [162973] = 278244, [163045] = 278559, [165669] = 285362, [165670] = 285424,
-    [165802] = 286031, [166746] = 286331, [166747] = 286353, [168907] = 298068,
-    [172179] = 308742, [180290] = 326064, [182773] = 340200, [183716] = 342122,
-    [184353] = 345393, [188952] = 363799, [190196] = 366945, [190237] = 367013,
-    [193588] = 375357, [200630] = 391042, [206195] = 412555, [208704] = 420418,
-    [209035] = 422284, [210455] = 438606, [212337] = 401802, [228940] = 463481,
-    [235016] = 1217281, [236687] = 1220729, [245970] = 1240219, [246565] = 1242509,
-    [257736] = 1261979, [263489] = 1270583, [263933] = 1270814, [265100] = 1273401,
-}
-for _, case in ipairs({ { key = "UseDalaHS", item = 140192, effect = 222695 },
-    { key = "UseGarrisonHS", item = 110560, effect = 171253 } }) do
+-- Every synthetic toy variant must finish UseHS using its declared or client-resolved effect.
+local toySpells = { [2] = 12, [3] = 13, [4] = 14 }
+
+for _, case in ipairs({ { key = "UseDalaHS", item = 5, effect = 15 },
+    { key = "UseGarrisonHS", item = 6, effect = 16 } }) do
     current, before = { [case.key] = 10 }, advanced
     APR:UpdateStep()
     assert(#buttons == 1 and buttons[1].id == case.item and buttons[1].kind == "item",
@@ -338,8 +329,8 @@ for itemID, spellID in pairs(toySpells) do
 end
 local seen = {}
 current, before = { UseHS = 10 }, advanced
-APR._hearthstoneSelection = { step = current, route = APR.ActiveRoute, revision = APR.stepRevision, id = 260221 }
-C_Item.GetItemSpell = function(id) return "Client hearthstone effect", id == 260221 and 999001 end
+APR._hearthstoneSelection = { step = current, route = APR.ActiveRoute, revision = APR.stepRevision, id = 8 }
+C_Item.GetItemSpell = function(id) return "Client hearthstone effect", id == 8 and 999001 end
 cast(current, 999001)
 assert(advanced == before + 1, "A selected new variant completes UseHS through its actual client spell")
 for id, spellID in pairs(toySpells) do
@@ -348,38 +339,38 @@ for id, spellID in pairs(toySpells) do
     seen[id] = true
 end
 
-owned = { [180290] = true, [210455] = true, [263933] = true }
-unusable = { [180290] = true, [210455] = true }
-assert(APR:GetHearthstoneItemID() == 263933, "Skip toys unavailable to this character")
-assert(APR:GetHearthstoneItemID() == 263933, "Repeated renders keep the same selection")
+owned = { [180290] = true, [4] = true, [3] = true }
+unusable = { [180290] = true, [4] = true }
+assert(APR:GetHearthstoneItemID() == 3, "Skip toys unavailable to this character")
+assert(APR:GetHearthstoneItemID() == 3, "Repeated renders keep the same selection")
 bagCount = 1
-assert(APR:GetHearthstoneItemID() == 263933, "Keep the selected available variant stable during repeated rendering")
+assert(APR:GetHearthstoneItemID() == 3, "Keep the selected available variant stable during repeated rendering")
 bagCount = 0
 function C_Item.IsUsableItem() return false end
 
-assert(APR:GetHearthstoneItemID() == 6948, "Respect item usability as well as toy ownership")
+assert(APR:GetHearthstoneItemID() == 1, "Respect item usability as well as toy ownership")
 function C_Item.IsUsableItem() return true end
 
-owned = { [140192] = true, [110560] = true }
-assert(APR:GetHearthstoneItemID() == 6948, "Fixed-destination toys cannot replace an inn hearthstone")
-owned = { [263933] = true }
+owned = { [5] = true, [6] = true }
+assert(APR:GetHearthstoneItemID() == 1, "Fixed-destination toys cannot replace an inn hearthstone")
+owned = { [3] = true }
 C_ToyBox.IsToyUsable = function() return nil end
-assert(APR:GetHearthstoneItemID() == 6948, "Wait for toy usability data")
+assert(APR:GetHearthstoneItemID() == 1, "Wait for toy usability data")
 C_ToyBox.IsToyUsable = function() return true end
-assert(APR:GetHearthstoneItemID() == 263933, "Refresh selection when toy data arrives")
+assert(APR:GetHearthstoneItemID() == 3, "Refresh selection when toy data arrives")
 C_ToyBox, PlayerHasToy, C_Item = nil, nil, nil
-function GetItemCount(id) return id == 6948 and bagCount or 0 end
+function GetItemCount(id) return id == 1 and bagCount or 0 end
 
-assert(APR:GetHearthstoneItemID() == 6948, "Clients without toy APIs retain the normal button")
+assert(APR:GetHearthstoneItemID() == 1, "Clients without toy APIs retain the normal button")
 bagCount = 1
-assert(APR:GetHearthstoneItemID() == 6948, "Support the legacy bag API")
+assert(APR:GetHearthstoneItemID() == 1, "Support the legacy bag API")
 print("Hearthstones: toy-only UseHS buttons, all toy cast effects, restrictions, cooldowns and legacy fallback passed")
 
 -- Optional hearthstones must hand off to the route's walking/flight fallback
 -- only for an actual cooldown or missing item, never a temporary use restriction.
 local onCooldown, canUse = true, true
 C_Item = {
-    GetItemCount = function(id) return id == 6948 and bagCount or 0 end,
+    GetItemCount = function(id) return id == 1 and bagCount or 0 end,
     IsUsableItem = function() return canUse end,
     GetItemCooldown = function() return onCooldown and 1 or 0, onCooldown and 3600 or 0, 1 end,
 }
@@ -395,7 +386,7 @@ assert(advanced == before and #buttons == 1, "False must preserve mandatory beha
 onCooldown = false
 before, current = advanced, { UseHS = 10, UseHSIfAvailable = true }
 APR:UpdateStep()
-assert(advanced == before and #buttons == 1 and buttons[1].id == 6948,
+assert(advanced == before and #buttons == 1 and buttons[1].id == 1,
     "An available optional hearthstone must still be offered")
 canUse = false
 APR:UpdateStep()

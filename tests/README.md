@@ -12,6 +12,39 @@ The standard `python -m unittest discover -s tests -t . -v` command works too.
 All suites run even when one fails, and any failure produces a nonzero exit code.
 Tests require no credentials, running WoW client, browser, or external API calls.
 
+## Testing policy
+
+Engine tests describe behavior using small synthetic inputs. Shipped routes and
+navigation catalogs are editable content, not regression fixtures. Do not assert
+that a named guide exists, has a fixed label/count, contains a particular quest,
+boss order, coordinate or optional condition, or takes a particular world tour.
+A valid rename, removed optional guard, or edited guide must not require changing
+an engine test. Never copy a live guide or its expected quest list into a fixture.
+
+Use two complementary layers:
+
+- **Behavior:** synthetic routes, characters, items and transport graphs with
+  independently chosen expected results. Cover both acceptance and rejection,
+  boundaries, state changes, persistence and cancellation. Exact values and
+  counts are useful here because the fixture controls them.
+- **Content contracts:** discover all current declarations and apply the same
+  schema/integrity checks to every entry. Check supported fields, value types,
+  required references and internal consistency. Optional authoring choices stay
+  optional; do not invent minimum content counts or per-guide exceptions.
+
+For a reported route bug, identify the engine rule involved and reproduce it
+with a minimal invented guide. For example, test that one ready reward can
+activate an `AnyOf` group despite absent siblings; do not list a live guide's
+reward IDs or require it to retain that particular group. If only authored
+content changed, run the common route validator instead of adding a regression
+that locks in the edit. API-specific item/spell identifiers are appropriate when
+the identifier itself is the client contract being tested.
+
+Tests never repair tracked sources. Generators and repair tools are exercised on
+temporary fixtures; content validation only reports invalid input. Keep tests
+deterministic and run the complete suite before finishing. Repository-wide agent
+instructions are in [AGENTS.md](../AGENTS.md).
+
 - `scripts/test_*.py`: TOC updates, localization notifications, package validation
   and PR report behavior against a mocked GitHub API. The latter uses Node.js.
 - `lua/*_test.lua`: automatically discovered addon regression suites, each in its
@@ -22,7 +55,8 @@ Tests require no credentials, running WoW client, browser, or external API calls
 - `routes/test_syntax.py`: loads **every** `Routes/**/*.lua` file in an isolated
   Lua 5.1 environment, then validates every route with `route_schema.py`.
   Unknown options, constants, nested fields and invalid values fail the suite.
-  Errors identify the file, route and field (Lua errors also include the line).
+  One common test visits every declaration using subtests. Errors identify the
+  file, route and field (Lua errors also include the line).
   Core files are compiled separately. Both client manifests must register all
   route files exactly once.
 - `routes/test_schema.py`: valid/invalid examples of every option and condition,
@@ -35,6 +69,21 @@ All routes use the same validation rules, including Forever and Speedrun Alt.
 transitions and temporary routes with synthetic guides. `native_route_actions_test.lua`
 tests action handlers. `level_requirements_test.lua` covers bonus profiles and absolute XP.
 The Forever compatibility command reuses the common route suite.
+
+`route_prefab_test_env.lua` supplies invented guides for prefab ordering,
+character eligibility, future chapters, popup scope and label/progress tests.
+`reward_groups_test.lua` varies group size and checks readiness, level/zone
+boundaries, fallback hand-ins and character/account separation.
+
+Navigation behavior can pass a synthetic declaration to `navigation_fixture:Load`
+to load the real library/adapter without any shipped data. The shortcut,
+mandatory-chain, passage-lifecycle and action-selection suites use this path.
+`navigation_unlock_test_catalog.lua` supplies an independent acquisition graph
+with shared prerequisites, cycles, tracker progress and progressive activities;
+the same graph exercises library and APR host lifecycles. The shortest-path oracle
+also compares 200 generated graphs against exhaustive enumeration. Shipped
+navigation data is checked separately for schema and catalog integrity across
+client/faction/language combinations; no expected inventory counts are frozen.
 
 `merchant_sales_test.lua` exercises both auto-vendor and `SellItems` with native
 junk selling and the container fallback: large inventories, delayed/rejected

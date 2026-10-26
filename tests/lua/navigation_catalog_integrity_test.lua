@@ -29,22 +29,58 @@ assert(not FactionPossible(contradiction, "Alliance") and not FactionPossible(co
 local alternatives = { any = { { faction = "Alliance" }, { faction = "Horde" } } }
 assert(FactionPossible(alternatives, "Alliance") and FactionPossible(alternatives, "Horde"))
 
-local removed = {
-    ["portal-crossing-114"] = true, ["portal-crossing-115"] = true,
-    ["portal-crossing-116"] = true, ["portal-crossing-117"] = true,
-}
 local checked = 0
 for _, profile in ipairs({ "retail", "forever" }) do
     fixture.profile = profile
     local data = fixture:Load()
+    local function inspect(requirements)
+        for key, value in pairs(requirements or {}) do
+            if key == "all" or key == "any" then
+                for _, child in ipairs(value) do inspect(child) end
+            elseif key == "notCondition" then inspect(value)
+            else
+                local _, reason = data:CheckRequirements({ [key] = value }, { faction = "Alliance", level = 90, class = "MAGE" })
+                assert(not reason, "A declared condition needs a runtime evaluator: " .. key .. " / " .. tostring(reason))
+            end
+        end
+    end
+    local seen = {}
     for _, connection in ipairs(data:GetConnections()) do
+        assert(not seen[connection.id], "Duplicate connection: " .. connection.id)
+        seen[connection.id] = true
+        inspect(connection.requirements)
         assert(FactionPossible(connection.requirements, "Alliance")
             or FactionPossible(connection.requirements, "Horde"),
             connection.id .. " requires incompatible factions")
-        if profile == "retail" then
-            assert(not removed[connection.id], "Impossible legacy Tanaan transition was restored without evidence")
+        for _, action in ipairs(connection.actions or {}) do
+            assert(action.type == "item" or action.type == "spell" or action.type == "housing"
+                or action.type == "housing_return", connection.id)
+            if action.type == "item" or action.type == "spell" then
+                assert(type(action.id) == "number" and action.id > 0 and action.id % 1 == 0, connection.id)
+            end
         end
         checked = checked + 1
+    end
+    for _, recipe in ipairs(data:GetUnlockRoutes()) do
+        inspect(recipe.requirements)
+        inspect(recipe.availability)
+        for _, step in ipairs(recipe.steps) do
+            inspect(step.requirements)
+            inspect(step.completeWhen)
+            inspect(step.acceptance and step.acceptance.requirements)
+        end
+    end
+    for mapID, id in pairs(data:GetConfig().ZoneRoutes or {}) do
+        assert(data.connectionLookup[id], "Zone " .. mapID .. " references an unknown connection: " .. id)
+    end
+    local edges = data:BuildEdges({ playerPosition = { instanceID = 0, uiMapID = 2395, x = 0, y = 0 } })
+    for _, edge in ipairs(edges) do
+        local id = edge.id:match("^[^:]+:(.*):forward$") or edge.id:match("^[^:]+:(.*):reverse$")
+        local definition = id and data.connectionLookup[id]
+        if definition then
+            assert(not definition.disabled and (not definition.reviewStatus or definition.reviewStatus == "confirmed"),
+                "Unreviewed/disabled records cannot publish usable connections: " .. id)
+        end
     end
 end
 print("Navigation catalogue integrity: " .. checked .. " faction-consistent connections passed")
