@@ -1,6 +1,6 @@
 -- Planning uses the consumer's environment and never shares character state.
 -- Optional waypoint output is isolated in WaypointUI.lua.
-local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 22)
+local Lib = LibStub:NewLibrary("LibAPRNavigation-1.0", 25)
 if not Lib then return end
 
 Lib.datasets = Lib.datasets or {}
@@ -293,6 +293,7 @@ function Instance:GetBindings() return self.bindings end
 function Instance:GetConnections() return self.connections end
 function Instance:InvalidatePositionCache()
     self.groundMaps = nil
+    self.mapAccessRequirements = nil
     -- Clear both projected positions and their map ancestry. Failed API reads
     -- are never cached, so a later frame can recover without an invalidation.
     self.positions = {}

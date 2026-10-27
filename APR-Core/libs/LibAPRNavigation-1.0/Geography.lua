@@ -1,7 +1,7 @@
 -- Project endpoints into world coordinates and identify their access regions.
 -- A shared position alone does not permit walking through a required entrance.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("geography", 6) then return end
+if not Lib:BeginModule("geography", 7) then return end
 local Instance = Lib.Instance
 
 local function Finite(value)
@@ -49,6 +49,7 @@ function Instance:NormalizeLocation(location, hint)
         nameGlobal = location.nameGlobal,
         accessKey = location.accessKey,
         noAutoconnect = location.noAutoconnect,
+        phaseAgnostic = location.phaseAgnostic,
         isInstance = location.isInstance,
         region = location.region,
     }
@@ -118,6 +119,10 @@ end
 
 function Instance:CanWalk(from, to)
     if not from or not to or from.noAutoconnect or to.noAutoconnect then return false end
+    if not to.phaseAgnostic and self.config.MapRequirements then
+        local requirements = self:GetMapAccessRequirements(to.uiMapID)
+        if requirements and self:CheckRequirements(requirements, {}) ~= true then return false end
+    end
     return self:IsSameAccessRegion(from, to)
 end
 

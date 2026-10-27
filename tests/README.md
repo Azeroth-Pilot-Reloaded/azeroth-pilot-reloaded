@@ -132,11 +132,61 @@ budgets, access regions, transient guidance, quote changes, confirmed taxi
 measurements, stale callbacks and shared preview geometry. Package validation
 also checks that no retired navigation module is loaded.
 
+`navigation_conditional_access_test.lua` uses a synthetic city and timelines to
+cover required elevators, per-map restrictions, observer detours, unknown phase
+evidence, event closure and initiative rotation. `navigation_conditional_adapter_test.lua`
+checks native calendar argument order, viewed-month offsets, exact server-time
+boundaries, unavailable responses and neighborhood identity without live APIs.
+
 The navigation performance tests use controlled clocks and API-call counters to
 check the 1 ms planning budget, cache invalidation and cancellation. They cover
 catalogue preparation, taxi indexing, search ingestion and guidance publication.
 Timing benchmarks are separate from regression assertions because wall-clock
 results depend on the host, client APIs, garbage collection and scheduling.
+
+`navigation_search_action_performance_test.lua` covers personal teleports from
+a separate world, cooldowns no future leg can consume, shared reagents, later-map
+actions and 160 independently enumerated feasible-path oracles. Operation counts
+bound the dense fixture without requiring a particular machine speed.
+
+`navigation_travel_time_test.lua` drives APR's real controller, planner and a
+synthetic transport catalogue. It compares a long approach to a physical portal
+with a personal spell or item, then changes distance, movement speed and action
+availability. Cast, loading and arrival costs decide the winner; ordinary travel
+must not stop at an access-only physical itinerary.
+
+`navigation_controller_lifecycle_test.lua` also retains full synthetic trips
+across expected spell, item and portal arrivals. It tests missing loading data,
+consumed cooldowns, repeated native world-event retries, arrival/event ordering,
+stale candidates and final completion without another provider build. Wrong
+worlds, maps, access keys, floors, altitude, distance, changed objectives and
+closed future gates must still trigger fresh planning.
+Loading coverage interleaves native world events with quest/bag updates and
+partially refreshed map/world positions, including events before the world
+handler and arrivals after the cast timeout. A bounded settling window must
+not keep an unconfirmed crossing forever. The adapter/controller integration
+uses real geography checks; report snapshots expose the continuation decision
+and controller revision without serializing its private queue or graph.
+Native departure/loading-screen coverage holds a published route through a
+90-second loading interval, in both return-event orders, while position/action
+and death observations are unavailable. It rejects stale candidate publication
+and retains explicit skip, clear and disable semantics. House-list updates
+cancel unrelated background candidates without clearing non-housing guidance;
+published housing actions retain their stricter invalidation tests.
+`navigation_travel_time_test.lua` also reproduces a city teleport whose native
+map temporarily reports the parent continent. It uses the real adapter,
+geography and controller, retains the queue/cursor with zero provider rebuilds,
+and checks refinement to the city after geometry refresh. An ancestor map is
+accepted only with matching world/coordinates and proven walking access. Wrong
+continents, sibling maps, floors, private access and isolated interiors cannot
+use that fallback; interiors still require their native arrival evidence.
+Housing recovery in the same synthetic controller test asserts that a usable
+native return appears with zero catalogue/taxi/search preparation, even for a
+visitor with no recorded return point. Repeated neighborhood geometry events
+keep that instruction. Local housing objectives and unavailable/unknown return
+actions use normal routing. An action-only escape cannot masquerade as a free
+complete journey; actual outside-world arrival resumes the authored objective
+without advancing its quest cursor.
 
 On both Retail and Forever, manually verify a flight with a connection, a boat
 or zeppelin, a secure travel button, death/resurrection and reload during

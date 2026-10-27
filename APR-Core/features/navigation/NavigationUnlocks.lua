@@ -146,7 +146,9 @@ function APR:RefreshNavigationUnlockRoute()
         state.signature = signature
         state.step = { _navigationUnlock = true, Zone = target and target.uiMapID, label = action.label,
             NoArrow = target == nil,
-            Coord = target and { x = target.y, y = target.x, z = target.z, mapID = target.uiMapID, instanceID = target.instanceID },
+            Coord = target and { x = target.y, y = target.x, z = target.z, mapID = target.uiMapID, instanceID = target.instanceID,
+                accessKey = target.accessKey, noAutoconnect = target.noAutoconnect, floor = target.floor,
+                phaseAgnostic = target.phaseAgnostic },
             unlockAction = action }
         nav.dirty, nav.unlockMissingText = true, nil
     elseif state.step then

@@ -2,7 +2,7 @@
 -- region, not every coordinate in that region. Character flags are never cached
 -- in this shared geometry index; each request owns a fresh condition snapshot.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("zone_graph", 2) then return end
+if not Lib:BeginModule("zone_graph", 3) then return end
 local Instance = Lib.Instance
 
 local function Encode(value)
@@ -92,9 +92,10 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
             local cached = conditions[link]
             if cached then return cached end
             character.mapID = link.from.uiMapID
-            cached = { possible = not Lib.RequirementsApplicable
-                or Lib.RequirementsApplicable(snapshot, link.definition.requirements, character) }
-            if cached.possible then cached.allowed = snapshot:CheckPlanningRequirements(link.definition.requirements, character) end
+            local requirements = snapshot:GetTravelRequirements(link.definition.requirements, link.from, link.to)
+            cached = { requirements = requirements, possible = not Lib.RequirementsApplicable
+                or Lib.RequirementsApplicable(snapshot, requirements, character) }
+            if cached.possible then cached.allowed = snapshot:CheckPlanningRequirements(requirements, character) end
             conditions[link] = cached
             job.checkedLinks = job.checkedLinks + 1
             return cached
@@ -168,7 +169,7 @@ function Instance:CreateZoneGraphRoute(context, makeWalk)
                     metadata.blockers[#metadata.blockers + 1] = {
                         id = self.profile .. ":" .. link.definition.id .. link.suffix,
                         from = link.from, to = link.to, kind = link.definition.kind,
-                        blockedRequirements = link.definition.requirements,
+                        blockedRequirements = state.requirements,
                         instruction = self:GetInstruction(link.definition.kind, nil, link.to),
                     }
                     if state.allowed == nil then metadata.waitingData = true end

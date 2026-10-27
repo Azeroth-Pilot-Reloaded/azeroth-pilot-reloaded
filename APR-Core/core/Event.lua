@@ -1227,12 +1227,12 @@ function APR.event.functions.zone(event, ...)
             pendingZoneRoutingTimer = nil
         end
         if APR.navigation.InvalidatePathCache then
-            APR.navigation:InvalidatePathCache()
+            APR.navigation:InvalidatePathCache("world_transition")
         end
         -- Invalidate cache after teleportation to ensure fresh zone detection
         APR:InvalidatePlayerZoneCache()
         -- Reset routing throttle after teleport/loading
-        APR.navigation:ForceRefresh()
+        APR.navigation:ForceRefresh("world_transition")
         -- Flag that we are transitioning (loading screen / instance exit / teleport).
         -- Zone change events that fire during this window should NOT call GetMeToRightZone
         -- immediately because the map API is not yet reliable.
@@ -1259,9 +1259,11 @@ function APR.event.functions.zone(event, ...)
                     APR.navigation._worldTransitionTime = nil
                 end
 
-                -- A successful first pass makes the remaining safety retries redundant.
+                -- A settled path or an active cooperative search owns the next
+                -- update. Safety timers must not restart its completed work.
                 local navigationResolved = APR.IsInRouteZone or
-                    (APR.navigation.IsNavigating and APR.navigation:IsNavigating())
+                    (APR.navigation.IsNavigating and APR.navigation:IsNavigating()) or
+                    APR.navigation.search ~= nil
                 if retryIndex > 1 and navigationResolved then
                     return
                 end
@@ -1277,7 +1279,7 @@ function APR.event.functions.zone(event, ...)
                 APR._lastRouteZoneResult = nil
 
                 -- Reset throttle so this check goes through
-                APR.navigation:ForceRefresh()
+                APR.navigation:ForceRefresh("world_transition")
                 local profileStart = APR:StartPerformanceSample()
                 APR.navigation:GetMeToRightZone(retryIndex > 1)
                 APR:FinishPerformanceSample("ZoneTransitionRouting", profileStart)
@@ -1335,17 +1337,17 @@ function APR.event:TalkToDenyNpcLogic(step)
     if step and step.NpcDismount == npcId then
         Dismount()
     end
-end--[[APR_DIAG]]; APR.event.TalkToDenyNpcLogic = APRTrace("APR-Core/core/Event.lua:1332:APR.event:TalkToDenyNpcLogic#82", APR.event.TalkToDenyNpcLogic)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.TalkToDenyNpcLogic = APRTrace("APR-Core/core/Event.lua:1334:APR.event:TalkToDenyNpcLogic#82", APR.event.TalkToDenyNpcLogic)--[[/APR_DIAG]]
 
 function APR.event:DebouncedUpdateQuest(delay)
     if pendingQuestUpdateTimer then
         pendingQuestUpdateTimer:Cancel()
     end
-    pendingQuestUpdateTimer = C_Timer.NewTimer(delay, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1344:callback#84", --[[/APR_DIAG]]function()
+    pendingQuestUpdateTimer = C_Timer.NewTimer(delay, --[[APR_DIAG]]APRTrace("APR-Core/core/Event.lua:1346:callback#84", --[[/APR_DIAG]]function()
         local profileStart = APR:StartPerformanceSample()
         APR:UpdateQuest()
         APR:FinishPerformanceSample("QuestRefresh", profileStart)
         APR:Debug("Extra UpdQuestThing (debounced)")
         pendingQuestUpdateTimer = nil
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; APR.event.DebouncedUpdateQuest = APRTrace("APR-Core/core/Event.lua:1340:APR.event:DebouncedUpdateQuest#83", APR.event.DebouncedUpdateQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.event.DebouncedUpdateQuest = APRTrace("APR-Core/core/Event.lua:1342:APR.event:DebouncedUpdateQuest#83", APR.event.DebouncedUpdateQuest)--[[/APR_DIAG]]

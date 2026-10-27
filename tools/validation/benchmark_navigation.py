@@ -288,6 +288,33 @@ return {
 """
 
 
+PERSONAL_ACTION_FIXTURE = """
+local engine = dofile("tests/lua/navigation_engine_fixture.lua").Engine
+local points, edges, resources, counters = {}, {}, {}, { canStart = 0 }
+local start = { x = 0, y = 0, instanceID = 9, region = "phase" }
+local goal = { x = 10000, y = 0, instanceID = 0, region = "outdoor" }
+for i = 1, 80 do points[i] = { x = i * 100, y = 0, instanceID = 0, region = "outdoor" } end
+for i = 1, 18 do
+    local key = "cooldown:" .. i
+    resources[key] = 1
+    edges[#edges + 1] = { id = "teleport" .. i, kind = "spell", from = start, to = points[i],
+        sourceFree = true, seconds = 10, resources = { [key] = 1 },
+        canStart = function() counters.canStart = counters.canStart + 1; return true end }
+end
+for i = 19, 80 do
+    edges[#edges + 1] = { from = points[i], to = points[i], kind = "portal", seconds = 999 }
+end
+return {
+    counters = counters,
+    reset = function() counters.canStart = 0; collectgarbage("collect") end,
+    create = function()
+        return engine:CreateSearch({ start = start, goal = goal, edges = edges,
+            resources = resources, walkSpeed = 60, clock = benchmarkClock })
+    end,
+}
+"""
+
+
 UNLOCK_FIXTURE = """
 local fixture = dofile("tests/lua/navigation_fixture.lua")
 local data = fixture:Load()
@@ -529,7 +556,7 @@ def main(argv=None) -> int:
     parser.add_argument("--max-operations", type=int, default=4096)
     parser.add_argument("--slice-ms", type=float, default=0.9,
                         help="Provider budget; APR reserves 0.1 ms of its 1 ms slice for orchestration")
-    parser.add_argument("--scenario", choices=("all", "taxi", "catalog", "search", "dense", "unlock", "zone", "general-zone", "projection", "forever"), default="all")
+    parser.add_argument("--scenario", choices=("all", "taxi", "catalog", "search", "dense", "actions", "unlock", "zone", "general-zone", "projection", "forever"), default="all")
     options = parser.parse_args(argv)
     if options.runs < 1 or options.max_operations < 1 or not 0 < options.slice_ms < float("inf"):
         parser.error("runs, max-operations and slice-ms must be positive finite values")
@@ -548,6 +575,8 @@ def main(argv=None) -> int:
             scenarios.update(benchmark_search(options))
         if options.scenario in ("all", "dense"):
             scenarios.update(benchmark_fixture(options, "dense_search", DENSE_SEARCH_FIXTURE))
+        if options.scenario in ("all", "actions"):
+            scenarios.update(benchmark_fixture(options, "personal_actions", PERSONAL_ACTION_FIXTURE))
         if options.scenario in ("all", "unlock"):
             scenarios.update(benchmark_fixture(options, "unlock", UNLOCK_FIXTURE))
         if options.scenario in ("all", "zone"):

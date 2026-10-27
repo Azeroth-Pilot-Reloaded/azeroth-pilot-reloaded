@@ -313,12 +313,13 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             bidirectional = false,
             from = { space = "world", instanceID = 530, x = -247.29499816895, y = 895.95098876953, z = 84.34970092773 },
             to = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
-            requirements = { maxLevel = 255, minLevel = 1 },
+            requirements = { phase = { group = "blasted_lands", phase = "past" }, maxLevel = 255, minLevel = 1 },
         },
         {
             id = "portal-eastern-kingdoms-to-outland-at-minus-11897-minus-3207-arrive-minus-248-923",
             kind = "portal",
             bidirectional = false,
+            requirements = { phase = { group = "blasted_lands", phase = "past" } },
             from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
             to = { space = "world", instanceID = 530, x = -248.1130065918, y = 922.90002441406, z = 84.34970092773 },
         },
@@ -328,7 +329,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
             to = { space = "world", instanceID = 1116, x = 3667.8000488281, y = -3843, z = 44.13999938965, noAutoconnect = true },
-            requirements = { auraSpellID = 176111, faction = "Alliance", minLevel = 35, questsAny = { 34586, 34378 } },
+            requirements = { phase = { group = "blasted_lands", phase = "present" }, auraSpellID = 176111, faction = "Alliance", minLevel = 35, questsAny = { 34586, 34378 } },
         },
         {
             id = "portal-eastern-kingdoms-to-draenor-at-minus-11897-minus-3207-arrive-2309-447",
@@ -336,7 +337,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
             to = { space = "world", instanceID = 1116, x = 2308.5700683594, y = 447.4700012207, z = 5.11999988556, noAutoconnect = true },
-            requirements = { auraSpellID = 176111, faction = "Alliance", minLevel = 35 },
+            requirements = { phase = { group = "blasted_lands", phase = "present" }, auraSpellID = 176111, faction = "Alliance", minLevel = 35 },
         },
         {
             id = "portal-eastern-kingdoms-to-draenor-at-minus-11897-minus-3207-arrive-2309-447-auraspellid-176111-faction-alliance-minlevel-35-questsany-35884-34446",
@@ -344,12 +345,13 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
             to = { space = "world", instanceID = 1116, x = 2308.5700683594, y = 447.4700012207, z = 5.11999988556, noAutoconnect = true },
-            requirements = { auraSpellID = 176111, faction = "Alliance", minLevel = 35, questsAny = { 35884, 34446 } },
+            requirements = { phase = { group = "blasted_lands", phase = "present" }, auraSpellID = 176111, faction = "Alliance", minLevel = 35, questsAny = { 35884, 34446 } },
         },
         {
             id = "portal-eastern-kingdoms-to-world-1265",
             kind = "portal",
             bidirectional = false,
+            requirements = { phase = { group = "blasted_lands", phase = "present" } },
             from = { space = "world", instanceID = 0, x = -11896.799804688, y = -3206.7700195312, z = -11.59619998932 },
             to = { space = "world", instanceID = 1265, x = 4066.5, y = -2382.25, z = 94.84999847412 },
         },
@@ -575,7 +577,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             bidirectional = false,
             from = { space = "world", instanceID = 1642, x = -1142.6500244141, y = 760.22399902344, z = 433.62298583984 },
             to = { space = "world", instanceID = 1, x = -7096.169921875, y = 1294.5799560547, z = -93.40570068359 },
-            requirements = { faction = "Horde", minLevel = 50 },
+            requirements = { phase = { group = "silithus", phase = "present" }, faction = "Horde", minLevel = 50 },
         },
         {
             id = "portal-kalimdor-to-world-870",
@@ -622,7 +624,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             kind = "portal",
             bidirectional = false,
             from = { space = "world", instanceID = 1, x = 1842.1899414062, y = -4389.0400390625, z = 135.23300170898 },
-            to = { space = "world", instanceID = 0, x = 1947.2600097656, y = -98.15000152588, z = 41.14670181274 },
+            to = { space = "map", uiMapID = 2070, x = 0.6941, y = 0.6274 },
             requirements = { faction = "Horde" },
         },
         {
@@ -636,6 +638,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
         {
             id = "portal-kalimdor-to-world-2532",
             kind = "portal",
+            reviewStatus = "candidate", -- Story instance; public arrival/phase not verified.
             bidirectional = false,
             from = { space = "world", instanceID = 1, x = 1842.1899414062, y = -4389.0400390625, z = 135.23300170898 },
             to = { space = "world", instanceID = 2532, x = 1805, y = 327, z = 70.5 },
@@ -663,7 +666,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             bidirectional = false,
             from = { space = "world", instanceID = 1, x = -7096.169921875, y = 1294.5799560547, z = -93.40570068359 },
             to = { space = "world", instanceID = 1642, x = -1128.3900146484, y = 771.86602783203, z = 433.38598632813 },
-            requirements = { faction = "Horde", minLevel = 50 },
+            requirements = { phase = { group = "silithus", phase = "present" }, faction = "Horde", minLevel = 50 },
         },
         {
             id = "portal-kul-tiras-to-world-1718",
@@ -711,7 +714,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             bidirectional = false,
             from = { space = "world", instanceID = 1643, x = 1142.9499511719, y = -515.96600341797, z = 17.53300094604 },
             to = { space = "world", instanceID = 1, x = -7096, y = 1302.6999511719, z = -93.30000305176 },
-            requirements = { faction = "Alliance", minLevel = 50 },
+            requirements = { phase = { group = "silithus", phase = "present" }, faction = "Alliance", minLevel = 50 },
         },
         {
             id = "portal-kalimdor-to-kul-tiras",
@@ -719,7 +722,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             bidirectional = false,
             from = { space = "world", instanceID = 1, x = -7086.5698242188, y = 1299.6800537109, z = -93.4049987793 },
             to = { space = "world", instanceID = 1643, x = 1143.5999755859, y = -525.59997558594, z = 17.5 },
-            requirements = { faction = "Alliance", minLevel = 50 },
+            requirements = { phase = { group = "silithus", phase = "present" }, faction = "Alliance", minLevel = 50 },
         },
         {
             id = "portal-kalimdor-to-kalimdor-at-minus-8153-minus-4808-arrive-1445-minus-4500",
@@ -765,14 +768,14 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             kind = "portal",
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -8645.5400390625, y = 1308.25, z = 5.23483991623 },
-            to = { space = "world", instanceID = 1, x = 8177.5600585938, y = 1002.6599731445, z = 6.66929006577 },
+            to = { space = "world", uiMapID = 57, instanceID = 1, x = 8177.5600585938, y = 1002.6599731445, z = 6.66929006577 },
             requirements = { faction = "Alliance" },
         },
         {
             id = "portal-kalimdor-to-eastern-kingdoms-at-8178-1003-arrive-minus-9004-871",
             kind = "portal",
             bidirectional = false,
-            from = { space = "world", instanceID = 1, x = 8177.5600585938, y = 1002.6599731445, z = 6.66929006577 },
+            from = { space = "world", uiMapID = 57, instanceID = 1, x = 8177.5600585938, y = 1002.6599731445, z = 6.66929006577 },
             to = { space = "world", instanceID = 0, x = -9004.4443359375, y = 870.625, z = 64.86025238037, accessKey = "wizards-sanctum" },
             requirements = { faction = "Alliance" },
         },
@@ -780,7 +783,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             id = "portal-eastern-kingdoms-to-kalimdor-at-2071-289-arrive-1445-minus-4500",
             kind = "portal",
             bidirectional = false,
-            from = { space = "world", instanceID = 0, x = 2070.5122070312, y = 289.15798950195, z = 97.03157806396 },
+            from = { space = "world", uiMapID = 18, instanceID = 0, x = 2070.5122070312, y = 289.15798950195, z = 97.03157806396 },
             to = { space = "world", instanceID = 1, x = 1445.2099609375, y = -4499.5600585938, z = 18.30640029907 },
             requirements = { faction = "Horde" },
         },
@@ -788,7 +791,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             id = "portal-eastern-kingdoms-to-northrend-at-2063-364-arrive-1951-minus-6174",
             kind = "portal",
             bidirectional = false,
-            from = { space = "world", instanceID = 0, x = 2063.2448730469, y = 364.23959350586, z = 82.50442504883 },
+            from = { space = "world", uiMapID = 18, instanceID = 0, x = 2063.2448730469, y = 364.23959350586, z = 82.50442504883 },
             to = { space = "world", instanceID = 571, x = 1950.8000488281, y = -6174.2299804688, z = 24.30380058289 },
             requirements = { faction = "Horde" },
         },
@@ -796,7 +799,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             id = "portal-eastern-kingdoms-to-eastern-kingdoms-at-2060-236-arrive-minus-12396-217",
             kind = "portal",
             bidirectional = false,
-            from = { space = "world", instanceID = 0, x = 2059.9340820312, y = 235.90972900391, z = 99.76524353027 },
+            from = { space = "world", uiMapID = 18, instanceID = 0, x = 2059.9340820312, y = 235.90972900391, z = 99.76524353027 },
             to = { space = "world", instanceID = 0, x = -12396.400390625, y = 217.47999572754, z = 1.69035005569 },
             requirements = { faction = "Horde" },
         },
@@ -863,26 +866,29 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
         {
             id = "portal-eastern-kingdoms-to-northrend-at-1821-317-arrive-1951-minus-6174",
             kind = "portal",
+            reviewStatus = "candidate", -- Present courtyard unlock not verified.
             bidirectional = false,
-            from = { space = "world", instanceID = 0, x = 1821.1999511719, y = 317.39898681641, z = 70.81479644775 },
+            from = { space = "world", uiMapID = 2070, instanceID = 0, x = 1821.1999511719, y = 317.39898681641, z = 70.81479644775 },
             to = { space = "world", instanceID = 571, x = 1950.8000488281, y = -6174.2299804688, z = 24.30380058289 },
-            requirements = { faction = "Horde", quest = 52758 },
+            requirements = { phase = { group = "tirisfal", phase = "present" }, faction = "Horde", quest = 52758 },
         },
         {
             id = "portal-eastern-kingdoms-to-kalimdor-at-1821-345-arrive-1445-minus-4500",
             kind = "portal",
+            reviewStatus = "candidate", -- Present courtyard unlock not verified.
             bidirectional = false,
-            from = { space = "world", instanceID = 0, x = 1820.7299804688, y = 344.56399536133, z = 70.81079864502 },
+            from = { space = "world", uiMapID = 2070, instanceID = 0, x = 1820.7299804688, y = 344.56399536133, z = 70.81079864502 },
             to = { space = "world", instanceID = 1, x = 1445.2099609375, y = -4499.5600585938, z = 18.30640029907 },
-            requirements = { faction = "Horde", quest = 52758 },
+            requirements = { phase = { group = "tirisfal", phase = "present" }, faction = "Horde", quest = 52758 },
         },
         {
             id = "portal-eastern-kingdoms-to-eastern-kingdoms-at-1791-345-arrive-minus-12396-217",
             kind = "portal",
+            reviewStatus = "candidate", -- Present courtyard unlock not verified.
             bidirectional = false,
-            from = { space = "world", instanceID = 0, x = 1790.5899658203, y = 344.55899047852, z = 70.81420135498 },
+            from = { space = "world", uiMapID = 2070, instanceID = 0, x = 1790.5899658203, y = 344.55899047852, z = 70.81420135498 },
             to = { space = "world", instanceID = 0, x = -12396.400390625, y = 217.47999572754, z = 1.69035005569 },
-            requirements = { faction = "Horde", quest = 52758 },
+            requirements = { phase = { group = "tirisfal", phase = "present" }, faction = "Horde", quest = 52758 },
         },
         {
             id = "portal-kalimdor-to-dragon-isles",
@@ -992,24 +998,25 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             to = { space = "world", instanceID = 2444, x = -1222.21875, y = 5429.3818359375, z = 41.27021789551 },
         },
         {
-            id = "portal-northrend-to-world-2532",
+            id = "portal-howling-fjord-to-tirisfal",
             kind = "portal",
             bidirectional = false,
             from = { space = "world", instanceID = 571, x = 1976.2900390625, y = -6096.2700195312, z = 67.15950012207 },
-            to = { space = "world", instanceID = 2532, x = 1805, y = 327, z = 70.5 },
+            to = { space = "map", uiMapID = 2070, x = 0.6941, y = 0.6274 },
             requirements = { faction = "Horde" },
         },
         {
-            id = "portal-eastern-kingdoms-to-world-2532",
+            id = "portal-gromgol-to-tirisfal",
             kind = "portal",
             bidirectional = false,
             from = { space = "world", instanceID = 0, x = -12396.400390625, y = 217.47999572754, z = 1.69035005569 },
-            to = { space = "world", instanceID = 2532, x = 1805, y = 327, z = 70.5 },
+            to = { space = "map", uiMapID = 2070, x = 0.6941, y = 0.6274 },
             requirements = { faction = "Horde" },
         },
         {
             id = "portal-world-2532-to-kalimdor",
             kind = "portal",
+            reviewStatus = "candidate", -- Story instance; public arrival/phase not verified.
             bidirectional = false,
             from = { space = "world", instanceID = 2532, x = 1820.7299804688, y = 344.56399536133, z = 70.81079864502 },
             to = { space = "world", instanceID = 1, x = 1445.2099609375, y = -4499.5600585938, z = 18.30640029907 },
@@ -1018,6 +1025,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
         {
             id = "portal-world-2532-to-northrend",
             kind = "portal",
+            reviewStatus = "candidate", -- Story instance; public arrival/phase not verified.
             bidirectional = false,
             from = { space = "world", instanceID = 2532, x = 1821.1999511719, y = 317.39898681641, z = 70.81479644775 },
             to = { space = "world", instanceID = 571, x = 1950.8000488281, y = -6174.2299804688, z = 24.30380058289 },
@@ -1026,6 +1034,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
         {
             id = "portal-world-2532-to-eastern-kingdoms",
             kind = "portal",
+            reviewStatus = "candidate", -- Story instance; public arrival/phase not verified.
             bidirectional = false,
             from = { space = "world", instanceID = 2532, x = 1790.5899658203, y = 344.55899047852, z = 70.81420135498 },
             to = { space = "world", instanceID = 0, x = -12396.400390625, y = 217.47999572754, z = 1.69035005569 },
@@ -1104,6 +1113,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
         {
             id = "portal-kalimdor-to-world-2532-at-7416-minus-455-arrive-1805-327",
             kind = "portal",
+            reviewStatus = "candidate", -- Story instance; public arrival/phase not verified.
             bidirectional = false,
             from = { space = "world", instanceID = 1, x = 7416.259765625, y = -454.78500366211, z = 0.31614199281 },
             to = { space = "world", instanceID = 2532, x = 1805, y = 327, z = 70.5 },
@@ -1860,4 +1870,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "portals", {
             requirements = { faction = "Horde", raceID = 28 },
         },
     },
-}, 32)
+}, 33)

@@ -136,3 +136,17 @@ assert(routeCalls == 1 and forceRefreshes == 2,
     "A valid navigation path skips the three remaining post-load retries")
 
 print("World transition: active navigation skipped 3 redundant path calculations")
+
+-- A cooperative search can legitimately span several post-load timers. They
+-- must not restart its completed work merely because guidance is not ready yet.
+timers, routeCalls, forceRefreshes = {}, 0, 0
+APR.IsInRouteZone, navigating, APR.navigation.search = nil, false, nil
+APR.navigation.GetMeToRightZone = function()
+    routeCalls = routeCalls + 1
+    APR.navigation.search = { status = "planning" }
+end
+APR.event.functions.zone("PLAYER_ENTERING_WORLD")
+for _, timer in ipairs(timers) do timer.callback() end
+assert(routeCalls == 1 and forceRefreshes == 2 and APR.navigation.search.status == "planning",
+    "Safety retries must leave an active post-load search running instead of rebuilding it")
+print("World transition: an active cooperative search survives all later safety retries")

@@ -72,7 +72,32 @@ The default is one millisecond. The scheduler checks the clock between operation
 a synchronous host API call, garbage collection or OS preemption can overrun it.
 `BuildEdges` remains available as a synchronous compatibility helper.
 
-APR opts into `CreateZoneRoute(context)` before preparing the world graph.
+Source-free actions have a fixed destination, duration and resource cost. When
+one is usable at the initial position, its direct use dominates repeating it
+after another leg. The search seeds it once. Actions unavailable initially can
+still become usable at later departure maps. Dominance comparisons ignore a
+start action's consumed cooldown only when no remaining connection needs that
+resource; the final `resourcesUsed` always retains the complete consumption.
+
+APR compares ordinary travel with the full shortest-time search. Every physical
+approach, crossing, action cast, loading estimate and arrival leg contributes
+its duration in seconds. Personal spells, usable items, physical portal chains
+and taxis compete even when an entrance is already reachable on foot. A long
+walk to a portal cannot bypass a faster teleport to the same city. No fixed
+transport preference or distance penalty overrides that duration comparison.
+
+`HousingMaps` identifies housing maps and their descendants. When the current
+objective is outside housing and the native return action is confirmed usable,
+`GetHousingExitAction(start, goal)` supplies an immediate escape instruction.
+This does not require owning the visited house. Its destination can be absent:
+it is guidance for the native return button, never an edge with invented world
+coordinates. APR bypasses world-graph preparation while offering this exit,
+then resumes normal objective routing from the actual outside arrival. Housing
+objectives and unavailable return actions retain ordinary transport comparison.
+
+For generated unlock objectives, APR opts into `CreateZoneRoute(context)` before
+preparing the world graph. This access-only policy is also available to other
+consumers that explicitly choose `preferZoneAccess = true` in APR's planner.
 `config.ZoneRoutes[mapID]` selects a preferred physical connection by ID; the
 instance builds `connectionLookup` once at initialization. K'aresh (both native
 map IDs) and Undermine currently have listed entrances, inherited by child maps.
@@ -87,8 +112,7 @@ and taxis, even when both endpoints share a region or map. This optimization
 limit stays at the base threshold when skyriding is available; the larger
 skyriding proximity threshold only controls authored objective visibility.
 
-This host policy prefers the listed entrance rather than comparing every optional
-teleport. `preferZoneAccess = true` enables it in APR's planner. Unlisted zones and
+This access-only policy prefers the listed entrance. Unlisted zones and
 entrances requiring another transport use the shared physical region graph.
 Its vertices are walkable access regions, with exact separate vertices for
 mandatory passage points; directed portals, boats and passages form its links.
@@ -114,7 +138,7 @@ Different-instance artwork and unavailable map data keep the retryable path.
 Run `py -3 tools/validation/benchmark_navigation.py --scenario forever` for the
 Alliance/Horde cold/warm zone routes and legacy projection benchmarks.
 
-If the physical graph has no supported route, the host falls back to the general
+If the physical graph has no supported route, access-only planning falls back to the general
 planner for optional personal travel and taxi networks. Consumers using the
 search API directly retain full shortest-time graph competition. APR diagnostic
 counters distinguish `NavigationZoneReady`, `NavigationZoneBlocked` and
@@ -481,6 +505,7 @@ their corresponding transports unavailable; they never authorize a requirement.
 | --- | --- |
 | `getMapInfo(uiMapID)` | Blizzard-shaped map information, including localized `name`, `parentMapID`, `mapType` |
 | `getMapArtID(uiMapID)` | Current map phase artwork ID; `nil` while unavailable |
+| `getCurrentMapID()` | Optional lightweight actual player UI map; phase detection otherwise uses `getCharacter().mapID` |
 | `getAreaName(areaID)` | Localized subzone/area name |
 | `mapToWorld(uiMapID, x, y)` | `instanceID, worldX, worldY` |
 | `worldToMap(instanceID, x, y, hint)` | `uiMapID`; also return normalized map X/Y for optional world waypoint output |
@@ -568,6 +593,63 @@ Requirements support `faction`, `raceID`, `class`, `minLevel`, `maxLevel`, `ques
 `mapArt = { mapID = ..., artID = ... }`, and
 `garrison = { type = ..., minLevel = ... }`. Compose them using `all`, `any`, or
 `notCondition`. Unknown predicate names fail closed.
+
+Retail also supports `phase = { group = "tirisfal", phase = "past" }`,
+`holiday = "darkmoon_faire"` and `housingInitiative = { id = initiativeID,
+neighborhoodGUID = guid, cycleID = cycleID }` (the latter two identity fields
+are optional constraints). All three retain true/false/unknown semantics and
+are rechecked on retained edges immediately before departure. A completed
+endeavor still exists until its cycle ends; completion alone does not close it.
+
+`config.PhaseGroups` records verified map artworks and unambiguous local map
+identities. Two separate maps each reporting their static artwork do not prove
+the selected timeline. A verified phase recipe may guide to Zidormi even when
+the initial phase is unknown, but only native phase evidence completes that
+interaction. `phaseAgnostic=true` is reserved for an observer's approach, where
+the NPC exists on both sides; it is not an authorization for a portal.
+
+`config.MapRequirements` applies common access rules to every connection whose
+resolved endpoint belongs to the map or a descendant, including personal
+teleports, physical region routing and instance approaches. Walking to an absent
+map also fails closed. Retain explicit requirements on shared-map phases such
+as the Dark Portal and Silithus: their UI map alone cannot identify a timeline.
+
+`environment.isHolidayActive(key)` must return a Boolean or nil. APR reads
+native holiday icons and exact start/end times against the server calendar,
+including a calendar viewed in another month. Unloaded or restricted calendar
+data remains unknown. Sombrelune's entrances and faction-specific return portals
+share this gate. The adapter refreshes on calendar, zone and endeavor changes
+and checks calendar boundaries while the player stays in a zone.
+
+`environment.getHousingInitiative(departureMapID)` supplies loaded native
+initiative/cycle/neighborhood identities for the actual visited neighborhood,
+or the selected house while outside. Data for another dashboard neighborhood,
+an unloaded response or an expired cycle cannot authorize a link. Do not infer
+an initiative from the date, localized title, quest completion or another
+neighborhood that uses the same UI map. No initiative portal currently has both
+its departure and arrival verified in this catalogue; these rotations remain
+excluded rather than acquiring an invented landing. The ordinary home and
+return-home actions remain independent of endeavor portals.
+
+The phase map/art pairs and Zidormi approaches were checked against
+[the maintained phase records](https://github.com/tr0tsky0/Mapzeroth/blob/main/Data/Modern/Containers.lua)
+and the existing local source-fact inventory. Native API contracts are in
+[CalendarDocumentation](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/CalendarDocumentation.lua)
+and [NeighborhoodInitiativeDocumentation](https://github.com/Gethe/wow-ui-source/blob/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/NeighborhoodInitiativeDocumentation.lua).
+The elevator retains the recorded world XY and upper/lower Z already used by
+the Forever catalogue, with Retail map identities. Its wait and ride duration
+remains an estimate. Public arrivals from Orgrimmar, Grom'gol, Howling Fjord,
+old Silvermoon and Teleport: Undercity lead to the exterior near Zidormi.
+Story-instance variants and present-courtyard portals with unverified unlock
+conditions remain candidates.
+
+Retail smoke checks: start outside Tirisfal in each timeline; take a portal to
+the exterior, follow Zidormi guidance, descend the elevator and reach an
+underground portal. Repeat upward, with no Z observation and after a reload.
+Also switch Darkshore, the Blasted Lands, Silithus, Dustwallow, Uldum and the
+Vale; cross a Faire opening/closing boundary; select and visit different
+neighborhoods on the same UI map. Arathi's extra modern/warfront variants and
+other unverified story phases are not inferred from these two-sided records.
 
 Actions contain `type`, `id`, optional `reagentID`, `reagentCount`, `consumable`,
 `groupSpellID` and `groupReagentID`. Mage portal preference is applied among usable

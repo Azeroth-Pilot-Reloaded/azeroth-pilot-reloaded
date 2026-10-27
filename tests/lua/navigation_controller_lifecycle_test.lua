@@ -217,6 +217,227 @@ assert(t.nav:GetActiveStep() == active, "Matching XY in the departure map does n
 t.position.uiMapID = 3; t.nav:PollArrival()
 assert(t.nav:GetState() == "ready" and APRData.p.r == 1, "Only actual arrival resumes the authored objective")
 
+-- Every leg is already planned. Expected loading/arrival consumes the used
+-- transport and validates the remaining queue instead of rebuilding providers.
+local function plannedTransition(kind)
+    local sample = fixture()
+    local personal = kind == "spell" or kind == "item"
+    local landing = { x = 1000, y = 0, instanceID = 1, uiMapID = 4 }
+    local gate = { x = 1200, y = 0, instanceID = 1, uiMapID = 4 }
+    local goal = { x = 15000, y = 0, instanceID = 0, uiMapID = 3 }
+    sample.edges = {
+        { id = "first-crossing", kind = kind, from = sample.position, to = landing, seconds = 5,
+            sourceFree = personal, action = personal and { type = kind, data = 123 } or nil },
+        { id = "second-crossing", kind = "portal", from = gate, to = goal, seconds = 5,
+            canStart = function() return not sample.gateClosed end },
+    }
+    sample:Update()
+    assert(sample.nav:GetActiveStep().connectionID == "first-crossing")
+    sample.landing, sample.gate = landing, gate
+    return sample
+end
+
+-- Leaving the world is an explicit suspension, not a failed position/action
+-- check. Loading can outlast every cast and map-settling timeout.
+for _, reversed in ipairs({ false, true }) do
+    t = plannedTransition("spell")
+    local cached, builds, frame = t.nav.queue, t.builds, t.frame
+    local oldGeneration, context, cancelled = t.nav.generation, t.nav.context, false
+    t.nav.search = { Cancel = function() cancelled = true end }
+    for _, event in ipairs({ "PLAYER_LEAVING_WORLD", "LOADING_SCREEN_ENABLED",
+        "PLAYER_ENTERING_WORLD", "LOADING_SCREEN_DISABLED" }) do
+        assert(frame.events[event], "Navigation must observe the complete native world/loading lifecycle")
+    end
+    frame.scripts.OnEvent(frame, reversed and "LOADING_SCREEN_ENABLED" or "PLAYER_LEAVING_WORLD")
+    frame.scripts.OnEvent(frame, reversed and "PLAYER_LEAVING_WORLD" or "LOADING_SCREEN_ENABLED")
+    assert(t.nav.worldLoading and cancelled and not t.nav.search and t.nav.queue == cached,
+        "World departure discards only an obsolete candidate, preserving published guidance")
+    local previousCancellation = t.nav.lastCancellation
+    t.position, t.dead, t.usable, t.now = nil, true, false, t.now + 90
+    frame.scripts.OnEvent(frame, "QUEST_LOG_UPDATE")
+    frame.scripts.OnEvent(frame, "BAG_UPDATE_DELAYED")
+    t.nav:Update(); t.nav:Render(); t.nav:PollArrival()
+    frame.scripts.OnUpdate(frame, 1)
+    assert(t.nav.queue == cached and t.builds == builds and t.nav.lastCancellation == previousCancellation,
+        "Unavailable world observations cannot cancel or rebuild a suspended trip")
+    t.position, t.dead = t.landing, false
+    frame.scripts.OnEvent(frame, reversed and "LOADING_SCREEN_DISABLED" or "PLAYER_ENTERING_WORLD")
+    t.nav:Update()
+    assert(t.nav.worldLoading and t.nav.queue == cached and t.builds == builds,
+        "Both the world and loading-screen notifications must settle before resuming")
+    frame.scripts.OnEvent(frame, reversed and "PLAYER_ENTERING_WORLD" or "LOADING_SCREEN_DISABLED")
+    t.nav:Update()
+    assert(not t.nav.worldLoading and t.nav.queue == cached and t.nav:GetActiveStep().kind == "walk"
+        and t.builds == builds and not t.nav.search,
+        "Even a long native loading screen resumes the full itinerary without a provider rebuild")
+    t.nav:Publish({ segments = {} }, context, oldGeneration)
+    assert(t.nav.queue == cached, "A discarded pre-loading candidate cannot overwrite the resumed cursor")
+end
+
+for _, cancellation in ipairs({ "step", "disable", "clear" }) do
+    t = plannedTransition("spell")
+    local cached, frame = t.nav.queue, t.frame
+    frame.scripts.OnEvent(frame, "PLAYER_LEAVING_WORLD")
+    if cancellation == "step" then APR:SetRouteProgress("r", 2, "manual_skip")
+    elseif cancellation == "disable" then APR.settings.profile.enableAddon = false; t.nav:Update()
+    else t.nav:ClearActivePath() end
+    frame.scripts.OnEvent(frame, "PLAYER_ENTERING_WORLD")
+    assert(t.nav.queue ~= cached and #t.nav.queue == 0,
+        "Explicit " .. cancellation .. " changes during loading cannot resurrect an old itinerary")
+end
+for _, kind in ipairs({ "spell", "item", "portal" }) do
+    t = plannedTransition(kind)
+    local cached, builds = t.nav.queue, t.builds
+    local first = t.nav:GetActiveStep()
+    t.position = nil
+    t.nav:ForceRefresh("world_transition"); t.nav:Update()
+    assert(t.nav.queue == cached and t.builds == builds and t.nav:IsNavigating(),
+        "Unavailable map data during loading must preserve the complete itinerary")
+    t.usable = false -- The consumed action's cooldown is irrelevant after arrival.
+    t.position = { x = 1003, y = 0, instanceID = 1, uiMapID = 4 }
+    APR.navigationGeometryRevision = 1
+    t.nav:ForceRefresh("world_transition"); t.nav:Update()
+    assert(t.nav.queue == cached and t.nav:GetActiveStep().kind == "walk"
+        and t.builds == builds and not t.nav.search and not t.nav.dirty,
+        "Expected arrival resumes the precomputed walk without a new provider build")
+    assert(t.nav._routeInputs.position.instanceID == 1 and t.nav._routeInputs.geometryRevision == 1,
+        "The movement/geometry baseline follows the confirmed landing")
+    t.position.x = 1050
+    t.nav:ForceRefresh("world_transition"); t.nav:Update()
+    assert(t.nav.queue == cached and t.builds == builds,
+        "Repeated post-load notifications cannot restart a settled continuation")
+    t.position = t.gate
+    t.nav:PollArrival()
+    assert(t.nav:GetActiveStep().connectionID == "second-crossing")
+    t.nav:PollArrival()
+    t.position = { x = 15000, y = 0, instanceID = 0, uiMapID = 3 }
+    t.nav:ForceRefresh("world_transition"); t.nav:Update()
+    assert(t.nav:GetState() == "ready" and t.builds == builds and APRData.p.r == 1,
+        "The cached final crossing completes guidance without recalculation or quest progress")
+end
+APR.navigationGeometryRevision = nil
+
+-- Native loading does not deliver one atomic position or an isolated world
+-- event. Cast, quest/bag updates and source/destination map observations mix.
+for _, beforeWorldEvent in ipairs({ true, false }) do
+    t = plannedTransition("spell")
+    local cached, builds = t.nav.queue, t.builds
+    t.frame.scripts.OnEvent(t.frame, "UNIT_SPELLCAST_START", "player", "cast", 123)
+    t.nav:Update()
+    assert(t.nav.queue == cached and t.builds == builds and not t.nav.search,
+        "Starting the planned cast must not launch another full search")
+    if not beforeWorldEvent then
+        t.nav._worldTransitionTime = t.now
+        t.nav:ForceRefresh("world_transition")
+    end
+    -- World and coordinates have arrived, but the map API still names source.
+    t.position = { x = 1000, y = 0, instanceID = 1, uiMapID = 2 }
+    APR.navigationGeometryRevision = 1
+    t.frame.scripts.OnEvent(t.frame, "QUEST_LOG_UPDATE")
+    t.frame.scripts.OnEvent(t.frame, "BAG_UPDATE_DELAYED")
+    t.nav:Update()
+    assert(t.nav.queue == cached and t.builds == builds and not t.nav.search,
+        "A partial destination snapshot cannot discard the precomputed queue")
+    -- A successful cast may have cooled down long before a slow load ends.
+    t.now, t.usable = t.now + 40, false
+    t.position.uiMapID = 4
+    t.frame.scripts.OnEvent(t.frame, "QUEST_LOG_UPDATE")
+    t.nav:Update()
+    assert(t.nav.queue == cached and t.nav:GetActiveStep().kind == "walk"
+        and t.builds == builds and not t.nav.search,
+        "Actual arrival wins even when unrelated events preceded the world event and the cast timeout elapsed")
+    -- The delayed world event can itself be followed by a generic refresh.
+    t.nav:ForceRefresh("world_transition")
+    t.frame.scripts.OnEvent(t.frame, "BAG_UPDATE_DELAYED")
+    t.nav:Update()
+    assert(t.nav.queue == cached and t.builds == builds and not t.nav.search,
+        "Generic post-load updates must not erase an expected-transition validation")
+end
+APR.navigationGeometryRevision = nil
+
+t = plannedTransition("spell")
+do
+    local cached, builds = t.nav.queue, t.builds
+    t.position = { x = 400, y = 0, instanceID = 0, uiMapID = 8 }
+    t.frame.scripts.OnEvent(t.frame, "UNIT_SPELLCAST_START", "player", "cast", 123)
+    t.nav:Update()
+    assert(t.nav.queue == cached and t.builds == builds and not t.nav.search,
+        "Personal casts use their observed origin even after leaving the originally planned map")
+    t.position = t.landing
+    t.nav:Update()
+    assert(t.nav.queue == cached and t.builds == builds and t.nav:GetActiveStep().kind == "walk")
+end
+
+t = plannedTransition("portal")
+do
+    local cached, builds = t.nav.queue, t.builds
+    t.nav._worldTransitionTime = t.now
+    t.nav:ForceRefresh("world_transition"); t.nav:Update()
+    assert(t.nav.queue == cached and t.builds == builds and not t.nav.search,
+        "A source snapshot immediately after the world event is still loading data")
+    t.now = t.now + 6
+    t.nav:ForceRefresh("world_transition"); t.nav:Update()
+    assert(t.nav.search or t.builds > builds, "An unconfirmed crossing must eventually fall back to fresh planning")
+end
+
+t = plannedTransition("spell")
+do
+    local first, builds = t.nav:GetActiveStep(), t.builds
+    first.to.instanceID, first.to.uiMapID = 0, 2
+    t.frame.scripts.OnEvent(t.frame, "UNIT_SPELLCAST_START", "player", "cast", 123)
+    t.position = { x = 5000, y = 0, instanceID = 0, uiMapID = 2 }
+    t.nav:Update()
+    assert(t.nav.search or t.builds > builds,
+        "A different same-map landing cannot be mistaken for a cast still at its origin")
+end
+
+-- PollArrival may run before the delayed world handler. Its continuation must
+-- survive both orders, as well as an obsolete background candidate.
+t = plannedTransition("spell")
+local cached, builds = t.nav.queue, t.builds
+t.position = t.landing
+t.nav:PollArrival()
+local cancelledCandidate = false
+t.nav.search = { Cancel = function() cancelledCandidate = true end }
+t.nav:ForceRefresh("world_transition"); t.nav:Update()
+assert(t.nav.queue == cached and t.builds == builds and cancelledCandidate and not t.nav.search,
+    "A delayed world callback reuses the already-advanced cursor and cancels an old-origin candidate")
+
+for _, mismatch in ipairs({ "world", "map", "distance", "access", "floor", "height" }) do
+    t = plannedTransition("spell")
+    if mismatch == "height" then
+        t.nav:GetActiveStep().to.z, t.nav:GetActiveStep().arrivalZTolerance = 100, 5
+    end
+    t.position = { x = 1000, y = 0, instanceID = 1, uiMapID = 4, z = 0 }
+    if mismatch == "world" then t.position.instanceID = 2 end
+    if mismatch == "map" then t.position.uiMapID = 5 end
+    if mismatch == "distance" then t.position.x = 2000 end
+    if mismatch == "access" then t.position.accessKey = "private" end
+    if mismatch == "floor" then t.position.floor = "lower" end
+    function APR.NavigationData:IsSameAccessRegion(a, b)
+        return a.instanceID == b.instanceID and a.uiMapID == b.uiMapID
+            and a.accessKey == b.accessKey and a.floor == b.floor
+    end
+    builds = t.builds
+    t.nav:ForceRefresh("world_transition"); t.nav:Update()
+    assert(t.nav.search or t.builds > builds,
+        "An unexpected " .. mismatch .. " must trigger fresh planning")
+end
+
+t = plannedTransition("spell")
+t.position, t.gateClosed = t.landing, true
+builds = t.builds
+t.nav:ForceRefresh("world_transition"); t.nav:Update()
+assert(t.nav.search or t.builds > builds, "A closed later gate cannot reuse the cached continuation")
+
+t = plannedTransition("spell")
+t.position = t.landing
+local changedObjective = APR:GetCurrentStep()
+changedObjective.Coord.y = 25000
+builds = t.builds
+t.nav:ForceRefresh("world_transition"); t.nav:Update()
+assert(t.nav.search or t.builds > builds, "A changed objective cannot inherit the previous itinerary")
+
 t = fixture()
 t.edges[1].action = { type = "spell", data = 123 }
 t:Update()
@@ -641,3 +862,29 @@ assert(not t.rows[t.nav.NavigationStepKey .. "-0"].presentation
     and t.rows[t.nav.NavigationDividerStepKey].divider, "Pending access diagnostics use the same separator")
 t.nav:Cancel("cleared")
 assert(not t.nav.blockers and not t:HasError(), "Cancellation clears stale prerequisite diagnostics")
+
+-- Drive the real loading-event retries as well as the controller: even the
+-- geometry invalidation performed by that handler must not rebuild the trip.
+t = plannedTransition("item")
+cached, builds = t.nav.queue, t.builds
+t.position, t.usable = t.landing, false
+function APR:GetSettingsProfile() return self.settings.profile end
+function APR:RefreshLevelProfileTargets() end
+function APR:InvalidatePlayerZoneCache()
+    self.navigationGeometryRevision = (self.navigationGeometryRevision or 0) + 1
+end
+function APR:ScheduleDelveRouteRefresh() end
+function APR:StartPerformanceSample() end
+function APR:FinishPerformanceSample() end
+dofile("APR-Core/core/Event.lua")
+function APR.event:QueueStepRefresh() end
+for _ = 1, 2 do
+    APR.event.functions.zone("PLAYER_ENTERING_WORLD")
+    local retries = t.nav._pewRetryTimers
+    for _, timer in ipairs(retries) do if not timer.cancelled then timer.callback() end end
+    assert(t.nav.queue == cached and t.nav:GetActiveStep().kind == "walk"
+        and t.builds == builds and not t.nav.search,
+        "Native loading-event retries resume the cached itinerary after fresh geometry detection")
+end
+assert(t.nav.continuationReuses == 2 and APRData.p.r == 1)
+print("Precomputed continuation: spell/item/portal landings, loading, event order, native retries, invalid arrivals and live future gates passed")
