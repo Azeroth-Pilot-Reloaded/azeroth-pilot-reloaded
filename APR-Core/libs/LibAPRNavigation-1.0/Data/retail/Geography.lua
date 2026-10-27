@@ -1,8 +1,9 @@
 -- Declarative travel data. Names are resolved through the game client.
 LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
     config = {
+        HousingMaps = { [2351] = true, [2352] = true },
         ContinentMapOverrides = { [2509] = 13, [2537] = 13 },
-        GroundOnlyAreas = { [1670] = true, [1671] = true, [2266] = true, [2346] = true, [2509] = true, [2541] = true },
+        GroundOnlyAreas = { [90] = true, [407] = true, [1670] = true, [1671] = true, [2266] = true, [2346] = true, [2509] = true, [2541] = true },
         IsolatedAreas = {
             [2] = "floor:2",
             [3] = "floor:3",
@@ -28,6 +29,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
             [40] = "floor:40",
             [54] = "floor:54",
             [55] = "floor:55",
+            [57] = "area:57",
             [58] = "floor:58",
             [59] = "floor:59",
             [60] = "floor:60",
@@ -37,6 +39,8 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
             [72] = "floor:72",
             [73] = "floor:73",
             [82] = "floor:82",
+            [89] = "area:57",
+            [90] = "area:90",
             [94] = "area:94",
             [95] = "area:94",
             [97] = "area:97",
@@ -70,6 +74,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
             [387] = "floor:387",
             [389] = "floor:389",
             [395] = "floor:395",
+            [407] = "area:407",
             [419] = "floor:419",
             [420] = "floor:420",
             [421] = "floor:421",
@@ -199,4 +204,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "geography", {
         skyridingThreshold = 10000,
         threshold = 2000,
     },
-}, 31)
+}, 33)

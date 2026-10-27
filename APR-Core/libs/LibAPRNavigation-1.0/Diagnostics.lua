@@ -1,6 +1,6 @@
 -- Format structured access failures without depending on a host UI or locale library.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("diagnostics", 3) then return end
+if not Lib:BeginModule("diagnostics", 4) then return end
 local Instance = Lib.Instance
 
 function Instance:GetBlockedRouteText(blockers)
@@ -49,7 +49,8 @@ function Instance:GetBlockedRouteText(blockers)
         if type(value) == "table" then
             local ids = {}
             for _, id in ipairs(value) do ids[#ids + 1] = tostring(id) end
-            value = #ids > 0 and table.concat(ids, ", ") or value.minLevel or value.artID or "?"
+            value = #ids > 0 and table.concat(ids, ", ") or value.minLevel or value.artID
+                or (value.group and (value.group .. ": " .. tostring(value.phase))) or value.id or "?"
         end
         local label = localText("NAVIGATION_REQUIRES_" .. key)
         local text = string.format(label, display or (name and (name .. " [" .. tostring(value) .. "]") or tostring(value)))

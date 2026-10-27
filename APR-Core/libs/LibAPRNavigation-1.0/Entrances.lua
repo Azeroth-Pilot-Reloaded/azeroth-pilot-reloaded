@@ -1,7 +1,7 @@
 -- Instance entrances are destinations outside an instance, never fabricated
 -- teleport edges to an interior map's centre or a guessed return landing.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("entrances", 1) then return end
+if not Lib:BeginModule("entrances", 2) then return end
 local Instance = Lib.Instance
 
 function Instance:GetEntrances()
@@ -56,7 +56,8 @@ function Instance:ResolveEntranceDefinitions(entries, character)
     local result, reason = {}, "candidate"
     for _, definition in ipairs(entries) do
         if definition.reviewStatus == "confirmed" then
-            local allowed, invalid = self:CheckRequirements(definition.requirements, character)
+            local requirements = self:GetTravelRequirements(definition.requirements, definition.exterior)
+            local allowed, invalid = self:CheckRequirements(requirements, character)
             if allowed == nil then reason = "pending_data"
             elseif not allowed then
                 if reason ~= "pending_data" then reason = invalid or "requirements_unmet" end

@@ -208,7 +208,11 @@ function Job:Step(maxOperations, maxMilliseconds)
     if remaining > 0 then self:AdvancePhase(maxOperations, remaining) end
     self.slices = self.slices + 1
     if started then
-        self.lastSliceMilliseconds = math.max(0, clock() - started)
+        local finished = clock()
+        self.startedAt = self.startedAt or started
+        self.elapsedMilliseconds = math.max(0, finished - self.startedAt)
+        self.lastSliceMilliseconds = math.max(0, finished - started)
+        self.totalSliceMilliseconds = (self.totalSliceMilliseconds or 0) + self.lastSliceMilliseconds
         self.maxSliceMilliseconds = math.max(self.maxSliceMilliseconds, self.lastSliceMilliseconds)
     end
     return self.status, self.result
@@ -218,8 +222,8 @@ function Job:Cancel()
     if self.status == "planning" then self.status = "cancelled" end
     if self.active and self.active.Cancel then self.active:Cancel() end
     self.active, self.catalogueEdges, self.taxiEdges, self.diagnosticSegments, self.blockers = nil, nil, nil, nil, nil
-end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:217:Job:Cancel#10", Job.Cancel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.Cancel = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:221:Job:Cancel#10", Job.Cancel)--[[/APR_DIAG]]
 
 function Job:GetResult()
     return self.result, self.status
-end--[[APR_DIAG]]; Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:223:Job:GetResult#11", Job.GetResult)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Job.GetResult = APRTrace("APR-Core/features/navigation/NavigationPlanner.lua:227:Job:GetResult#11", Job.GetResult)--[[/APR_DIAG]]

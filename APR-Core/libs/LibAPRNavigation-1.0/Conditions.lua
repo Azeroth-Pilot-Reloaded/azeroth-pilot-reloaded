@@ -1,5 +1,5 @@
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("conditions", 8) then return end
+if not Lib:BeginModule("conditions", 9) then return end
 local Instance = Lib.Instance
 
 local function Contains(values, wanted)
@@ -19,6 +19,79 @@ local function CheckQuestList(environment, questIDs, requireAll)
     end
     if pending then return nil end
     return requireAll
+end
+
+-- Different UI maps can each retain their own artwork even while the other
+-- timeline is active. Only the actual player map disambiguates those groups;
+-- never substitute the simulated departure map of a later journey leg.
+function Instance:GetWorldPhase(group)
+    local definition = (self.config.PhaseGroups or {})[group]
+    if not definition then return nil end
+    local mapID
+    if self.phaseCharacter then mapID = self.phaseCharacter.mapID
+    elseif self.env.getCurrentMapID then mapID = self.env.getCurrentMapID()
+    else
+        local current = self.env.getCharacter and self.env.getCharacter()
+        mapID = current and current.mapID
+    end
+    if definition.localMaps then
+        local seen = {}
+        for _ = 1, 50 do
+            if not mapID or mapID == 0 or seen[mapID] then break end
+            seen[mapID] = true
+            local localPhase = definition.localMaps[mapID]
+            if localPhase then return localPhase end
+            local info = self:GetMapAncestryInfo(mapID)
+            mapID = info and info.parentMapID
+        end
+    end
+    local phase
+    for _, side in ipairs(definition.sides or {}) do
+        local art = self.env.getMapArtID and self.env.getMapArtID(side.mapID)
+        if art == nil then return nil end
+        if art == side.artID then
+            if phase and phase ~= side.phase then return nil end
+            phase = side.phase
+        end
+    end
+    return phase
+end
+
+-- Map-wide access rules apply to every transport type, including personal
+-- teleports and projected world coordinates. Geometry itself stays reusable.
+function Instance:GetMapAccessRequirements(mapID)
+    local rules = self.config.MapRequirements
+    if not rules or not mapID then return nil end
+    self.mapAccessRequirements = self.mapAccessRequirements or {}
+    local cached = self.mapAccessRequirements[mapID]
+    if cached ~= nil then return cached or nil end
+    local original, seen = mapID, {}
+    for _ = 1, 50 do
+        if not mapID or mapID == 0 or seen[mapID] then
+            self.mapAccessRequirements[original] = false
+            return nil
+        end
+        seen[mapID] = true
+        if rules[mapID] then self.mapAccessRequirements[original] = rules[mapID]; return rules[mapID] end
+        local info = self:GetMapAncestryInfo(mapID)
+        if not info then return nil end -- Retry incomplete ancestry later.
+        mapID = info.parentMapID
+    end
+end
+
+function Instance:GetTravelRequirements(requirements, from, to)
+    if not self.config.MapRequirements then return requirements end
+    local additions, seen = {}, {}
+    for _, point in ipairs({ from or false, to or false }) do
+        local rule = point and not point.phaseAgnostic and self:GetMapAccessRequirements(point.uiMapID)
+        if rule and not seen[rule] then
+            seen[rule] = true
+            additions[#additions + 1] = rule
+        end
+    end
+    if #additions == 0 then return requirements end
+    if requirements then table.insert(additions, 1, requirements) end
+    return { all = additions }
 end
 
 -- Three outcomes: true, false, or nil (the client cannot currently answer).
@@ -71,6 +144,28 @@ function Instance:CheckRequirements(requirements, character)
             end
             local artID = self.env.getMapArtID and self.env.getMapArtID(value.mapID)
             if artID ~= nil then result = artID == value.artID end
+        elseif key == "phase" then
+            if type(value) ~= "table" or type(value.group) ~= "string" or type(value.phase) ~= "string" then
+                return false, "invalid_requirements"
+            end
+            local phase = self:GetWorldPhase(value.group)
+            if phase ~= nil then result = phase == value.phase end
+        elseif key == "holiday" then
+            if type(value) ~= "string" or value == "" then return false, "invalid_requirements" end
+            local active = self.env.isHolidayActive and self.env.isHolidayActive(value)
+            if type(active) == "boolean" then result = active end
+        elseif key == "housingInitiative" then
+            if type(value) ~= "table" or type(value.id) ~= "number" or value.id <= 0 or value.id % 1 ~= 0
+                or (value.cycleID ~= nil and type(value.cycleID) ~= "number")
+                or (value.neighborhoodGUID ~= nil and type(value.neighborhoodGUID) ~= "string") then
+                return false, "invalid_requirements"
+            end
+            local info = self.env.getHousingInitiative and self.env.getHousingInitiative(character.mapID)
+            if type(info) == "table" and info.isLoaded == true and type(info.initiativeID) == "number" then
+                result = info.initiativeID == value.id
+                if value.cycleID then result = result and info.currentCycleID == value.cycleID end
+                if value.neighborhoodGUID then result = result and info.neighborhoodGUID == value.neighborhoodGUID end
+            end
         elseif key == "questActive" then
             if self.env.isQuestActive then result = self.env.isQuestActive(value) end
         elseif key == "reputation" then

@@ -287,3 +287,172 @@ Live ground vehicle speed is retained only in its verified current map.
 The catalogue remains incremental: importing more facts does not add an
 unbounded synchronous source scan in game. Audit inventories and source parsing
 are development tooling, excluded from the package.
+
+## Personal actions from phased worlds — 26 October 2026
+
+A mage leaving a separate phased world exposed repeated expansion of personal
+teleports at every intermediate location. Each cooldown also kept a separate
+Pareto arrival alive even when no remaining connection could consume it.
+
+The search now seeds fixed-destination personal actions usable at the start
+only from that start. Using the same action after another leg cannot improve
+its duration, fare or remaining resources. Actions that require a later map
+remain eligible there. A cooperative pass identifies resources needed by
+remaining connections; exclusive start-action cooldowns do not distinguish
+equivalent arrivals, but their actual consumption stays in the final result.
+Shared reagents, cooldowns used by later actions, and money still constrain
+every candidate.
+
+Paired five-run measurements used the same synthetic graph: 18 personal
+teleports from a separate world and 80 mainland positions, with Lua 5.1 and a
+0.9 ms provider slice. The optimum remained 146.666667 seconds, including the
+selected teleport and final walk.
+
+| Measurement | Before | After |
+| --- | ---: | ---: |
+| Operations | 208,686 | 5,625 |
+| Action availability queries | 25,938 | 18 |
+| Median total computation | 127.716 ms | 8.669 ms |
+| Median scheduled slices | 141 | 10 |
+
+Reproduce the current result with
+`python tools/validation/benchmark_navigation.py --scenario actions --runs 5`.
+The regression uses operation/API counters rather than timing thresholds and
+compares 160 generated action graphs with exhaustive feasible simple paths.
+It explicitly preserves shared resources and actions unlocked by a later map.
+These fixture measurements do not establish a new in-game completion time.
+
+Status exports now include `Navigation.planning`: elapsed milliseconds from the
+first planning slice, total milliseconds spent inside planning callbacks,
+maximum slice duration and number of slices. Waiting between frames contributes
+to elapsed time only. Completed calculations retain these bounded counters so
+a report captured after guidance appears can still distinguish computation
+from scheduling latency.
+
+## Compare ordinary travel by complete duration — 27 October 2026
+
+The access-only dispatcher could return a physical route before personal travel
+was compared. Its long walking approach could therefore win without entering
+the shortest-time search. APR now reserves that policy for generated unlock
+objectives. Ordinary travel uses the cooperative full graph and the existing
+resource/cooldown pruning. Costs remain elapsed seconds, including walking,
+casts, loading and arrival; no artificial preference makes an unavailable or
+slower action win.
+
+The synthetic controller regression reproduces that dispatch failure before the
+fix. At 10 yards/second, an 8-second action plus a 20-second approach, a 5-second
+crossing and a 60-second arrival beats the 665-second physical route. Starting
+50 yards from the crossing instead favours direct travel (70 seconds). Faster
+movement, unavailable spells and an owned consumable exercise the other choices.
+These are controlled fixtures, not measured in-game travel times.
+
+## Reuse the full itinerary after expected arrivals — 27 October 2026
+
+The planner already finishes every segment before publishing the first travel
+action. Native world-loading handlers previously forced fresh planning from
+the new origin, even when the remaining trip was already available. They now
+identify transition refreshes explicitly. The controller confirms the transport
+arrival before testing the remaining queue, so the consumed action's cooldown
+cannot reject a successful teleport.
+
+Confirmed landings rebase movement and geometry observations, retain the queue
+and cursor, and cancel any candidate measured from the preceding origin. A
+short-lived arrival receipt handles polling and native loading callbacks in
+either order, including repeated post-load notifications. Missing position
+data retains guidance while loading; mismatched arrival evidence, an edited
+objective or an invalid remaining leg falls back to the existing planner.
+Ordinary refreshes can still compare better routes in the background.
+
+The controller regression checks zero additional provider builds for successful
+multi-leg continuations and exercises native world-handler retries. Status
+exports include `Navigation.continuationReuses`; `/apr perf` counts successful
+checks under `NavigationContinuationReused`. The previous planning duration
+remains available to distinguish a reused trip from another full calculation.
+
+The loading regression also interleaves quest/bag updates with world events.
+Those notifications no longer erase a transition awaiting validation. Actual
+arrival is checked independently of event ordering or cast timeout. While a
+cast is still at its observed origin, or map/world observations are partially
+updated, the existing queue remains visible. Unconfirmed loading observations
+have a five-second settling window; repeated refreshes cannot extend it. A
+coherent unexpected landing still triggers fresh planning.
+
+Status exports identify this controller with `controllerRevision = 5` and
+include a bounded `continuation` record: waiting/reused/rejected status, reason,
+last invalidation, map/world IDs, distance and queue size. This distinguishes an
+event-order failure from a genuinely mismatched arrival without dumping search
+graphs or executing client availability checks during export.
+
+### Explicit world departure and background-candidate ownership
+
+Navigation now observes `PLAYER_LEAVING_WORLD`, `PLAYER_ENTERING_WORLD`,
+`LOADING_SCREEN_ENABLED` and `LOADING_SCREEN_DISABLED`. Published guidance stays
+in memory while either the world or loading-screen state is unavailable. During
+that interval, arrival checks, rendering validation, cooldown scans and route
+search callbacks pause. A candidate from the preceding origin is discarded;
+the published queue and cursor stay intact. The short settling allowance begins
+after return, so a long loading screen cannot expire the continuation itself.
+Explicit guide changes, clearing navigation and disabling the addon still
+discard the route. The client declares loading-screen events as synchronous in
+its [generated API documentation](https://raw.githubusercontent.com/Gethe/wow-ui-source/live/Interface/AddOns/Blizzard_APIDocumentationGenerated/LoadingScreenDocumentation.lua).
+
+House-list/selection updates previously cancelled the complete itinerary when
+any candidate was pending, including trips with no housing segment. They now
+discard only that candidate when the published trip is independent of housing.
+An itinerary with a housing action is still cancelled because its secure target
+may have changed. The regressions reproduce both failures before the repair,
+then verify long loading, both event orders, zero additional provider builds,
+stale publication and the separate housing invalidation contracts.
+
+Status adds `worldLoading`, `lastWorldEvent`, current `queuedSteps`,
+`lastCancellation` and `lastCandidateDiscard`. Each is bounded to primitive
+diagnostic fields, so a missing queue can be traced to the operation that
+actually discarded it rather than to a later arrival check with no itinerary.
+
+### Destination continent before destination city — 28 October 2026
+
+An in-game continuation record showed the correct destination world and a
+0.041-yard distance, but a native continent map instead of its child city. The
+strict map check rejected the cached trip before the city became available.
+Controller revision 4 accepts an ancestor-map arrival only when the world and
+distance checks pass and `CanWalk` proves the same accessible region, including
+floor, private-access and phase restrictions. The ancestor relationship alone
+never establishes entry into an isolated interior or a mandatory passage.
+
+The arrival receipt remembers that map detail is pending. Refinement from the
+continent to the city revalidates the remaining queue and rebases map/geometry
+observations without a new graph search or another cursor advance. Diagnostics
+record `parent_map_arrival` for the coarse observation. Restricted arrivals
+wait for native map evidence; wrong continents and sibling maps are rejected.
+
+The synthetic regression first fails on the old controller, then verifies the
+full loading sequence, real adapter events and real geography. It asserts zero
+additional provider builds for both continent arrival and city refinement,
+plus independently chosen negative worlds, maps, distance and access cases.
+
+## Immediate native housing exit — 28 October 2026
+
+Housing-to-outside objectives no longer prepare the global transport catalogue,
+taxi network or shortest-path search before offering the confirmed native return.
+Controller revision 5 uses the library's `HousingMaps` ancestry and
+`GetHousingExitAction` helper. A usable return does not require ownership or a
+known destination: the secure native action remains available to visitors.
+Unknown return coordinates stay absent, instead of borrowing an inn or placing
+a fabricated endpoint in the transport graph.
+
+Neighborhood map updates revalidate this local instruction without another
+world search. Objectives in housing keep their normal local route; unavailable
+returns use the other usable transports. The outside journey is calculated
+after observing the real departure from the housing world. Its quest cursor
+never advances just because the escape completed. The action-only prefix is
+not compared with complete journeys as a zero-second path if availability is
+lost or becomes unknown.
+
+The real adapter/controller fixture asserts zero provider builds for initial
+publication and twenty neighborhood-map refreshes, no invented destination,
+local-objective and unavailable-action fallbacks, and genuine outside arrival.
+
+Post-load safety retries also leave an active cooperative search running. Only
+the first timer starts the route check; later timers do not cancel work just
+because guidance has not yet been published. A synthetic event regression
+verifies one search start across all four safety timers.

@@ -224,7 +224,14 @@ local navigationStep = {
 }
 APR.navigation = {
     NavigationStepKey = "01_NAVIGATION_PATH", state = "guiding", generation = 12, cursor = 1,
-    queue = { navigationStep }, search = { privateGraph = "never-export-the-graph" },
+    controllerRevision = 5, continuationReuses = 3, lastInvalidation = "BAG_UPDATE_DELAYED", worldLoading = false,
+    lastWorldEvent = "LOADING_SCREEN_DISABLED",
+    lastCancellation = { reason = "replan", queuedSteps = 0, generation = 1, privateGraph = "never-export-cancel-graph" },
+    lastCandidateDiscard = { reason = "world_loading", queuedSteps = 4, generation = 11 },
+    lastContinuation = { status = "reused", reason = "expected_arrival", queuedSteps = 4, distance = 0.1,
+        privateGraph = "never-export-the-continuation-graph" },
+    queue = { navigationStep }, search = { privateGraph = "never-export-the-graph",
+        status = "planning", slices = 7, elapsedMilliseconds = 125, totalSliceMilliseconds = 5 },
     retainedArrow = { Coord = { x = 10, y = 20 }, instanceID = 2695,
         context = { privateContext = "never-export-the-context" } },
     GetActiveStep = function(self)
@@ -250,6 +257,17 @@ assert(textReads == 1 and text:find("- **Navigation**:", 1, true)
     and text:find("**state**: guiding", 1, true) and text:find("**generation**: 12", 1, true))
 assert(activeStepReads == 1 and zoneReportReads == 1,
     "An export captures each manual diagnostic source once")
+assert(text:find("**elapsedMilliseconds**: 125", 1, true)
+    and text:find("**totalSliceMilliseconds**: 5", 1, true) and text:find("**slices**: 7", 1, true),
+    "The bounded navigation snapshot reports actual planning latency and CPU work")
+assert(text:find("**continuationReuses**: 3", 1, true), "Status identifies reuse of a precomputed continuation")
+assert(text:find("**controllerRevision**: 5", 1, true) and text:find("**reason**: expected\\_arrival", 1, true)
+    and text:find("**lastInvalidation**: BAG\\_UPDATE\\_DELAYED", 1, true)
+    and not text:find("never-export-the-continuation-graph", 1, true),
+    "Continuation diagnostics identify runtime, event and decision without exporting route internals")
+assert(text:find("**worldLoading**: false", 1, true) and text:find("**lastCancellation**:", 1, true)
+    and text:find("**lastCandidateDiscard**:", 1, true) and not text:find("never-export-cancel-graph", 1, true),
+    "The report distinguishes a discarded candidate from a cancelled published itinerary")
 assert(text:find("\n## /apr zi\n", 1, true) and text:find("**playerCurrent**: 2576", 1, true)
     and text:find("**playerParent**: 1550", 1, true) and text:find("**playerContinent**: 947", 1, true)
     and text:find("**playerHierarchy**:", 1, true) and text:find("**allRelevantMaps**:", 1, true)
@@ -285,8 +303,13 @@ APR:ExportStatusReport()
 assert(export.edit:GetText():find("**arrivalRadius**: 17", 1, true),
     "The dump follows GetActiveStep's default cursor")
 APR.navigation.queue = {}
+APR.navigation.search = nil
+APR.navigation.lastPlanning = { status = "ready", elapsedMilliseconds = 250, totalSliceMilliseconds = 8, slices = 12 }
 APR:ExportStatusReport()
 assert(export.edit:GetText():find("**ActiveStep**: nil", 1, true), "No active navigation step is explicit")
+assert(export.edit:GetText():find("**elapsedMilliseconds**: 250", 1, true)
+    and export.edit:GetText():find("**totalSliceMilliseconds**: 8", 1, true),
+    "Completed planning timings remain available after its search graph is released")
 APR.navigation, APR.GetZoneDetectionReport = nil, nil
 APR:ExportStatusReport()
 assert(export.edit:GetText():find("**ActiveStep**: nil", 1, true)

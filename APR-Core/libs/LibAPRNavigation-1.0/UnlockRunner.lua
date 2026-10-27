@@ -1,7 +1,7 @@
 -- Native, declarative unlock guidance. No APR route registry, engine, globals,
 -- frames or saved variables are read. The consumer owns scheduling and storage.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("unlock_runner", 7) then return end
+if not Lib:BeginModule("unlock_runner", 8) then return end
 local Instance, Copy = Lib.Instance, Lib.Copy
 local MAX_STEPS = 4096
 local Session = {}
@@ -130,7 +130,9 @@ local function AccessPlans(data, blockers, checkpoint, overflow)
         checkpoint()
         if not node then return {} end
         if not node.children then
-            if node.unknown or fixed[node.key] then return {} end
+            -- A phase recipe can lead to the verified observer (Zidormi).
+            -- Unknown still never authorizes the blocked transport itself.
+            if (node.unknown and node.key ~= "phase") or fixed[node.key] then return {} end
             -- Rewarded quests cannot be uncompleted, even if a malformed
             -- catalogue claims to provide an inverse recipe.
             if node.negated and (node.key == "quest" or node.key == "questAccount" or node.key == "achievement") then return {} end
@@ -474,7 +476,8 @@ function Instance:GetUnlockStepText(step)
     local getter = step.questID and self.env.getQuestName or self.env.getNPCName
     local name = id and getter and getter(id)
     local label = name and (name .. " [" .. id .. "]") or (id and tostring(id) or self:GetText("UNKNOWN"))
-    if customText and step.kind == "action" and step.actionType == "npc_activity" then
+    if customText and step.kind == "action" and (step.actionType == "npc_activity"
+        or step.actionType == "phase_past" or step.actionType == "phase_present") then
         customText = string.format(customText, label)
     end
     local text = customText or string.format(self:GetText("NAVIGATION_UNLOCK_" .. step.kind), label)

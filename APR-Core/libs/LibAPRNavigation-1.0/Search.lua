@@ -2,7 +2,7 @@
 -- arrival can still be useful if it leaves enough resources to finish.
 -- Graph loading, candidate checks and result assembly all run through Step.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("search", 7) then return end
+if not Lib:BeginModule("search", 8) then return end
 Lib.Engine = {}
 local Engine = Lib.Engine
 local Search = {}
@@ -58,11 +58,11 @@ local function Pop(heap)
     return first
 end
 
-local function Dominates(left, right)
+local function Dominates(left, right, futureResources)
     if left.seconds > right.seconds or left.copper > right.copper then return false end
     if left.used == right.used then return true end
     for key, count in pairs(left.used) do
-        if count > (right.used[key] or 0) then return false end
+        if (not futureResources or futureResources[key]) and count > (right.used[key] or 0) then return false end
     end
     return true
 end
@@ -175,12 +175,23 @@ function Search:IngestEdge(edge)
     local link = { target = target, edge = CopyEdge(edge, edge.from, edge.to) }
     if edge.sourceFree then
         link.allowedAtStart = not edge.canStart or not not edge.canStart(self.nodes[self.startNode])
-        if not link.allowedAtStart then self.keepActionOrigins = true end
-        self.actions[#self.actions + 1] = link
+        if link.allowedAtStart then
+            -- A fixed-destination action usable at the start always beats the
+            -- same action after another leg: it costs no more time, money or
+            -- resources. Seed it once, rather than from every arrival label.
+            self.startActions[#self.startActions + 1] = link
+        else
+            self.keepActionOrigins = true
+            self.actions[#self.actions + 1] = link
+        end
     else
         local outgoing = self.outgoing[from]
         if not outgoing then outgoing = {}; self.outgoing[from] = outgoing end
         outgoing[#outgoing + 1] = link
+    end
+    if (not edge.sourceFree or not link.allowedAtStart)
+        and (edge.resourceKey ~= nil or next(edge.resources or EMPTY) ~= nil) then
+        self.resourceEdges[#self.resourceEdges + 1] = link.edge
     end
     self.ingestedEdges = self.ingestedEdges + 1
 end
@@ -217,6 +228,21 @@ function Search:LoadOne()
         return
     end
 
+    if self.phase == "resource_relevance" then
+        local edge = self.resourceEdges[self.resourceIndex]
+        if edge then
+            local key = next(edge.resources or EMPTY, self.resourceCursor)
+            self.resourceCursor = key
+            if key ~= nil then self.futureResources[key] = true; return end
+            if edge.resourceKey ~= nil then self.futureResources[edge.resourceKey] = true end
+            self.resourceIndex = self.resourceIndex + 1
+            return
+        end
+        self.resourceEdges, self.phase = nil, "search"
+        self:QueueCandidate(self.startNode)
+        return
+    end
+
     if self.phase == "action_origins" then
         local edge = self.omittedEdges[self.omittedIndex]
         if edge then
@@ -225,8 +251,8 @@ function Search:LoadOne()
             self.omittedIndex = self.omittedIndex + 1
             return
         end
-        self.omittedEdges, self.phase = nil, "search"
-        self:QueueCandidate(self.startNode)
+        self.omittedEdges = nil
+        self:BeginSearch()
         return
     end
 
@@ -247,8 +273,22 @@ function Search:LoadOne()
         self.phase, self.omittedIndex = "action_origins", 1
         return
     end
-    self.omittedEdges, self.phase = nil, "search"
-    self:QueueCandidate(self.startNode)
+    self.omittedEdges = nil
+    self:BeginSearch()
+end
+
+function Search:BeginSearch()
+    if #self.startActions > 0 then
+        -- Cooldowns consumed only by start actions cannot constrain any future
+        -- leg. Retain their actual usage in the result, but exclude those dead
+        -- resources from Pareto comparisons. Shared reagents and map-restricted
+        -- actions stay relevant. Discover one resource per scheduled operation.
+        self.futureResources = {}
+        self.phase, self.resourceIndex, self.resourceCursor = "resource_relevance", 1, nil
+    else
+        self.resourceEdges, self.phase = nil, "search"
+        self:QueueCandidate(self.startNode)
+    end
 end
 
 function Search:QueueCandidate(node, previous, edge, walkSeconds)
@@ -324,8 +364,8 @@ function Search:CheckCandidate()
     local labels = self.labels[candidate.node] or EMPTY
     local other = labels[candidate.index]
     if not other then self:AcceptCandidate(candidate); return end
-    if not other.stale and Dominates(other, candidate) then self.candidate = nil; return end
-    if other.stale or Dominates(candidate, other) then
+    if not other.stale and Dominates(other, candidate, self.futureResources) then self.candidate = nil; return end
+    if other.stale or Dominates(candidate, other, self.futureResources) then
         other.stale = true
         -- Frontier order is irrelevant. Swap removal avoids retaining stale
         -- labels and repeatedly scanning them at this destination.
@@ -378,11 +418,12 @@ function Search:ExpandOne()
         if link then self:QueueCandidate(link.target, label, link.edge); return end
         pending.stage, pending.index = "actions", 1
     elseif pending.stage == "actions" then
-        local link = self.actions[index]
+        local atStart = label.node == self.startNode
+        local link = (atStart and self.startActions or self.actions)[index]
         if link then
             local from = self.nodes[label.node]
             local allowed
-            if label.node == self.startNode then
+            if atStart then
                 allowed = link.allowedAtStart
             else
                 allowed = not link.edge.canStart or link.edge.canStart(from)
@@ -480,7 +521,8 @@ function Search:Cancel()
     self.winner = nil
     self.sourceEdges, self.sourceGroups, self.sourceResources = nil, nil, nil
     self.omittedEdges = nil
-    self.nodes, self.nodeKeys, self.outgoing, self.actions = {}, {}, {}, {}
+    self.nodes, self.nodeKeys, self.outgoing, self.actions, self.startActions = {}, {}, {}, {}, {}
+    self.resourceEdges, self.futureResources = nil, nil
     self.walkingByInstance, self.walkingCache, self.walkingCacheOrder, self.walkingSpeeds = {}, {}, {}, {}
 end
 
@@ -489,7 +531,8 @@ function Search:GetResult() return self.result, self.status end
 function Engine:CreateSearch(request)
     request = type(request) == "table" and request or {}
     local search = setmetatable({
-        status = "planning", phase = "resources", nodes = {}, nodeKeys = {}, outgoing = {}, actions = {},
+        status = "planning", phase = "resources", nodes = {}, nodeKeys = {}, outgoing = {}, actions = {}, startActions = {},
+        resourceEdges = {},
         labels = {}, heap = {}, serial = 0, expansions = 0, resources = {}, emptyUsage = {}, clock = request.clock,
         sourceResources = type(request.resources) == "table" and request.resources or EMPTY,
         sourceEdges = type(request.edges) == "table" and request.edges or EMPTY,

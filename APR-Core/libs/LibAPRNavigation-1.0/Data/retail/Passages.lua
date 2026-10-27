@@ -1,6 +1,31 @@
 -- Declarative travel data. Names are resolved through the game client.
 LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
     connections = {
+        -- Surface courtyard, corridor and elevator are distinct mandatory legs.
+        {
+            id = "passage-undercity-courtyard",
+            kind = "passage", bidirectional = true, costMode = "ground",
+            from = { space = "map", uiMapID = 18, x = 0.619, y = 0.65 },
+            to = { space = "map", uiMapID = 18, x = 0.6185, y = 0.652, accessKey = "undercity-courtyard" },
+            requirements = { phase = { group = "tirisfal", phase = "past" } },
+        },
+        {
+            id = "passage-undercity-elevator-approach",
+            kind = "passage", bidirectional = true, costMode = "ground",
+            from = { space = "map", uiMapID = 18, x = 0.6185, y = 0.652, accessKey = "undercity-courtyard" },
+            to = { space = "world", uiMapID = 18, instanceID = 0, x = 1596.15, y = 291.8, z = 55.718,
+                accessKey = "undercity-courtyard", noAutoconnect = true },
+            requirements = { phase = { group = "tirisfal", phase = "past" } },
+        },
+        {
+            id = "elevator-undercity-west-surface-to-city",
+            kind = "elevator", bidirectional = true,
+            from = { space = "world", uiMapID = 18, instanceID = 0, x = 1596.15, y = 291.8, z = 55.718,
+                accessKey = "undercity-courtyard", noAutoconnect = true },
+            to = { space = "world", uiMapID = 90, instanceID = 0, x = 1596.15, y = 291.8, z = -40.784 },
+            requirements = { phase = { group = "tirisfal", phase = "past" } },
+            seconds = 13, durationSource = "estimated-wait-and-ride", arrivalZTolerance = 8,
+        },
         -- Public TWW tunnels/holes have a native map on each side. Keep the
         -- cavern regions isolated: only these entrances authorize a crossing.
         -- Unresolved world-only floor points below remain non-autoconnecting.
@@ -2205,4 +2230,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "passages", {
             costMode = "ground",
         },
     },
-}, 33)
+}, 34)

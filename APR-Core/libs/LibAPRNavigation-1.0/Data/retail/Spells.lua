@@ -166,7 +166,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "spells", {
             kind = "spell",
             bidirectional = false,
             from = { dynamic = "player" },
-            to = { space = "world", instanceID = 0, x = 1947.2600097656, y = -98.15000152588, z = 41.14670181274 },
+            to = { space = "map", uiMapID = 2070, x = 0.6941, y = 0.6274 },
             actions = { { id = 3563, groupSpellID = 11418, type = "spell" } },
         },
         {
@@ -1087,7 +1087,7 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "spells", {
             from = { dynamic = "player" },
             to = { dynamic = "housing_exit" },
             actions = { { type = "housing_return" } },
-            requirements = { housing = true, maps = { 2351, 2352 } },
+            requirements = { maps = { 2351, 2352 } },
             seconds = 30,
             cooldownGroup = "housing",
         },
@@ -1383,4 +1383,4 @@ LibStub("LibAPRNavigation-1.0"):RegisterData("retail", "spells", {
             cooldownGroup = "personal-camp",
         },
     },
-}, 30)
+}, 32)

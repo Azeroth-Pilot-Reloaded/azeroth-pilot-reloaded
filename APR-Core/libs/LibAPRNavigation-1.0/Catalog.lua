@@ -1,7 +1,7 @@
 -- Turn declarative connections into usable edges for one character snapshot.
 -- Each build owns its API cache and yields between connection directions.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("catalog", 13) then return end
+if not Lib:BeginModule("catalog", 14) then return end
 local Instance = Lib.Instance
 local EdgeBuild = {}
 EdgeBuild.__index = EdgeBuild
@@ -12,7 +12,7 @@ local instructionKeys = {
     zeppelin = "USE_ZEPPELIN_TO",
     tram = "ENTER_TRAM",
     flight = "USE_FLIGHTPATH",
-    elevator = "TRAVEL_TO",
+    elevator = "USE_ELEVATOR_TO",
 }
 
 local function Format(template, name)
@@ -98,6 +98,7 @@ local snapshotQueries = {
     "isQuestCompleted", "isQuestCompletedOnAccount", "isQuestActive", "isAchievementCompleted", "hasAura", "hasToy", "getGarrisonLevel",
     "getDynamicPosition", "getItemCount", "getActionUsability", "getActionCastSeconds",
     "getSpellInfo", "getSpellName", "getItemName", "getAreaName", "getMapInfo", "getMapArtID", "getLocale", "getGlobalText",
+    "isHolidayActive", "getHousingInitiative",
 }
 
 local function MemoizeQuery(callback)
@@ -247,12 +248,21 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         return
     end
 
+    local requirements = self.snapshot:GetTravelRequirements(definition.requirements, from, to)
+    local canStart = prepared.canStart
+    if requirements ~= definition.requirements then
+        canStart = CreateDepartureCheck(self.owner, self.snapshot, requirements, self.character)
+        local allowed = self.snapshot:CheckPlanningRequirements(requirements, self.character)
+        if allowed == nil then self.metadata.waitingData = true end
+        if allowed ~= true then blockedRequirements = requirements end
+    end
+
     -- Fixed transports depart from their recorded entrance, not from the
     -- player's initial map. Personal actions are checked at each search node.
-    if source.dynamic ~= "player" and prepared.canStart then
-        local allowed = prepared.canStart(from)
+    if source.dynamic ~= "player" and canStart then
+        local allowed = canStart(from)
         if allowed == nil then self.metadata.waitingData = true end
-        if allowed ~= true then blockedRequirements = definition.requirements end
+        if allowed ~= true then blockedRequirements = requirements end
     end
 
     local seconds, durationSource
@@ -290,7 +300,7 @@ function EdgeBuild:AddDirection(definition, prepared, source, destination, suffi
         rawDynamicDestination = destination.dynamic ~= nil,
         arrivalZTolerance = definition.arrivalZTolerance,
         verifiedBuild = definition.verifiedBuild,
-        canStart = prepared.canStart,
+        canStart = canStart,
     }
     edge.instruction = self.snapshot:GetInstruction(edge.kind, edge.action, to)
     if blockedRequirements or prepared.blockedActions then
@@ -362,6 +372,9 @@ function Instance:CreatePlanningSnapshot(context)
     local environment = SnapshotEnvironment(self.env)
     local snapshot = setmetatable({ env = environment, dynamicPositions = {} }, { __index = self })
     local character = Lib.Copy(self.env.getCharacter and self.env.getCharacter() or {})
+    -- Physical graph routing mutates its departure character's map per link.
+    -- That simulation must never become evidence of a native phase change.
+    snapshot.phaseCharacter = Lib.Copy(character)
     if context and context.inGroup ~= nil then character.inGroup = context.inGroup end
     return snapshot, character
 end

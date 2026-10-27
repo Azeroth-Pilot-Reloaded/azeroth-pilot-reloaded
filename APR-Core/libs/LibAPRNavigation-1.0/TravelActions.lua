@@ -1,7 +1,34 @@
 -- Route consumers use the same item definitions as the navigation graph.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("travel-actions", 1) then return end
+if not Lib:BeginModule("travel-actions", 2) then return end
 local Instance = Lib.Instance
+
+function Instance:IsHousingLocation(position)
+    local maps = self.config.HousingMaps
+    if not maps then return false end
+    local current, seen = position and position.uiMapID, {}
+    if not current then return nil end
+    for _ = 1, 50 do
+        if not current or current == 0 then return false end
+        if maps[current] then return true end
+        if seen[current] then return nil end
+        seen[current] = true
+        local info = self:GetMapAncestryInfo(current)
+        if not info then return nil end
+        current = info.parentMapID
+    end
+end
+
+-- This is a native escape instruction, not a graph edge. Returning does not
+-- require owning the visited house or knowing its server-side return point.
+function Instance:GetHousingExitAction(start, goal)
+    if self:IsHousingLocation(start) ~= true or self:IsHousingLocation(goal) ~= false then return nil end
+    if self:GetActionUsability("housing_return") ~= true then return nil end
+    local destination = self.env.getDynamicPosition and self.env.getDynamicPosition("housing_exit")
+    if destination and self:IsHousingLocation(destination) ~= false then destination = nil end
+    return { kind = "housing_return", action = { type = "housing_return" }, from = start, to = destination,
+        sourceFree = true, mandatory = true, exitHousing = true, label = self:GetText("EXIT_HOUSING") }
+end
 
 local function Action(definition)
     local option = definition.actions and definition.actions[1]

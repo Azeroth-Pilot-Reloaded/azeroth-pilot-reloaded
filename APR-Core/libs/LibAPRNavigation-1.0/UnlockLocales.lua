@@ -1,6 +1,6 @@
 -- Autonomous library wording; quest names/objectives still come from the client.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("unlock_locales", 4) then return end
+if not Lib:BeginModule("unlock_locales", 5) then return end
 local translations = {
     enUS = { "Accept %s", "Turn in %s", "Complete %s", "Verified unlock guidance is incomplete.", "Interact: %s" },
     frFR = { "Accepte %s", "Rends %s", "Accomplis %s", "Le parcours de déblocage vérifié est incomplet.", "Interagis : %s" },

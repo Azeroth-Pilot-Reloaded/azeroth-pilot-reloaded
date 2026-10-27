@@ -61,8 +61,19 @@ assert(job.status == "ready" and #job:GetResult().queue == 30 and job.waitingDat
     "The resumable pipeline publishes all rows and preserves provider coverage")
 assert(created.prepare == 1 and created.catalogue == 1 and created.taxi == 1
     and created.search == 1 and created.probe == 1, "Resuming a phase never recreates its job")
+assert(job.totalSliceMilliseconds == 32.5 and job.elapsedMilliseconds == 32.5,
+    "The report distinguishes total computation from elapsed scheduling time")
 local completedAt = now
 assert(job:Step(64, 1) == "ready" and now == completedAt, "Completed planning performs no more clock or API work")
+
+local delayed = APR.NavigationPlanner:Create(request)
+repeat
+    delayed:Step(64, 1)
+    if delayed.status == "planning" then now = now + 10 end
+until delayed.status ~= "planning"
+assert(delayed.status == "ready" and delayed.totalSliceMilliseconds == 32.5
+    and delayed.elapsedMilliseconds > 42.5,
+    "Time waiting between frames is not charged as CPU computation")
 
 job = APR.NavigationPlanner:Create(request)
 job:Step(1, 1)

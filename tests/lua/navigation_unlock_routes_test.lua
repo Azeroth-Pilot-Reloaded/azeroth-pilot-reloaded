@@ -2,6 +2,8 @@
 -- APR hosts the standalone library session without activating temporary routes.
 local fixture = dofile("tests/lua/navigation_fixture.lua")
 local data = fixture:Load(dofile("tests/lua/navigation_unlock_test_catalog.lua"))
+data.unlockRoutes[1].steps[1].position.phaseAgnostic = true
+data.unlockRoutes[1].steps[1].position.accessKey = "fixture-observer-approach"
 local completed, active = { [13] = true }, {}
 data.env.isQuestAvailable = function(id) return id ~= 12 or completed[11] == true end
 data.env.isQuestCompleted = function(id) return completed[id] == true end
@@ -73,6 +75,9 @@ assert(APR:StartNavigationUnlock({ edge }, context))
 drain()
 local step = assert(APR:GetNavigationUnlockStep())
 assert(step.unlockAction.questID == 11 and step.unlockAction.kind == "accept")
+local target = assert(nav:GetDestination(step))
+assert(target.phaseAgnostic and target.accessKey == "fixture-observer-approach",
+    "The host preserves observer access metadata through its temporary coordinate representation")
 assert(nav:GetActiveStep().kind == "unlock" and nav:IsNavigating(), "Arrival displays the native quest action")
 assert(APR.ActiveRoute == "parent" and APRData.test.parent == 8 and APRCustomPath.test[1] == "parent")
 assert(not APRData.test.TemporaryRouteState and APRData.test.NavigationUnlockState,

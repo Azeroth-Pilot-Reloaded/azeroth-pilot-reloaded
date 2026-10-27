@@ -45,6 +45,20 @@ for _, profile in ipairs({ "retail", "forever" }) do
         end
     end
     local seen = {}
+    for _, requirements in pairs(data:GetConfig().MapRequirements or {}) do inspect(requirements) end
+    for group, definition in pairs(data:GetConfig().PhaseGroups or {}) do
+        assert(type(group) == "string" and type(definition.sides) == "table")
+        for _, side in ipairs(definition.sides) do
+            assert(type(side.phase) == "string" and type(side.mapID) == "number" and type(side.artID) == "number")
+        end
+        for mapID, phase in pairs(definition.localMaps or {}) do
+            assert(type(mapID) == "number" and type(phase) == "string")
+        end
+    end
+    for holiday, icons in pairs(data:GetConfig().Holidays or {}) do
+        assert(type(holiday) == "string" and type(icons) == "table")
+        for icon, active in pairs(icons) do assert(type(icon) == "number" and active == true) end
+    end
     for _, connection in ipairs(data:GetConnections()) do
         assert(not seen[connection.id], "Duplicate connection: " .. connection.id)
         seen[connection.id] = true
