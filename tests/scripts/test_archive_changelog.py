@@ -34,6 +34,84 @@ class MemoryAPI:
 
 
 class ArchiveChangelogTests(unittest.TestCase):
+    def test_backup_recovers_from_windows_replace_locks_without_truncating_previous_backup(self):
+        replace = Path.replace
+        for winerror in (5, 32, 33):
+            with self.subTest(winerror=winerror), tempfile.TemporaryDirectory() as directory:
+                path = Path(directory) / "backup.json"
+                path.write_text('{"previous": true}\n', encoding="utf-8")
+                temporary = path.with_suffix(".json.tmp")
+                record = {"notes": "Traduit : é 中文", "phase": "upload"}
+                error = PermissionError("File locked")
+                error.winerror = winerror
+                attempts = 0
+
+                def locked_replace(source, target):
+                    nonlocal attempts
+                    attempts += 1
+                    self.assertEqual(json.loads(path.read_text(encoding="utf-8")), {"previous": True})
+                    self.assertEqual(json.loads(source.read_text(encoding="utf-8")), record)
+                    if attempts <= 5:
+                        raise error
+                    return replace(source, target)
+
+                with patch.object(Path, "replace", autospec=True, side_effect=locked_replace), patch.object(script.time, "sleep") as sleep, self.assertLogs(script.LOG, level="WARNING") as logs:
+                    script.save_backup(path, record)
+                self.assertEqual(attempts, 6)
+                self.assertEqual([call.args[0] for call in sleep.call_args_list], [0.1, 0.2, 0.4, 0.8, 1.6])
+                self.assertEqual(len(logs.output), 5)
+                self.assertEqual(json.loads(path.read_text(encoding="utf-8")), record)
+                self.assertFalse(temporary.exists())
+
+    def test_backup_persistent_lock_preserves_both_snapshots_and_propagates_failure(self):
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "backup.json"
+            path.write_text('{"previous": true}\n', encoding="utf-8")
+            error = PermissionError("File locked")
+            error.winerror = 5
+            with patch.object(Path, "replace", side_effect=error) as replace, patch.object(script.time, "sleep") as sleep, self.assertLogs(script.LOG) as logs:
+                with self.assertRaises(PermissionError) as raised:
+                    script.save_backup(path, {"latest": True})
+            self.assertIs(raised.exception, error)
+            self.assertEqual(replace.call_count, 6)
+            self.assertEqual(sleep.call_count, 5)
+            self.assertEqual(json.loads(path.read_text(encoding="utf-8")), {"previous": True})
+            self.assertEqual(json.loads(path.with_suffix(".json.tmp").read_text(encoding="utf-8")), {"latest": True})
+            self.assertIn(str(path.with_suffix(".json.tmp")), logs.output[-1])
+
+    def test_backup_does_not_retry_other_filesystem_errors(self):
+        for error in (PermissionError("Access denied"), OSError("Disk failure")):
+            with self.subTest(error=error), tempfile.TemporaryDirectory() as directory:
+                path = Path(directory) / "backup.json"
+                with patch.object(Path, "replace", side_effect=error) as replace, patch.object(script.time, "sleep") as sleep, self.assertLogs(script.LOG):
+                    with self.assertRaises(OSError) as raised:
+                        script.save_backup(path, {"latest": True})
+                self.assertIs(raised.exception, error)
+                replace.assert_called_once()
+                sleep.assert_not_called()
+                self.assertEqual(json.loads(path.with_suffix(".json.tmp").read_text(encoding="utf-8")), {"latest": True})
+
+    def test_backup_lock_before_upload_stops_without_remote_writes(self):
+        api = MemoryAPI({"frFR": {"New Changelog": release("6.8.0")}})
+        replace = Path.replace
+        error = PermissionError("File locked")
+        error.winerror = 5
+
+        def lock_upload_checkpoint(source, target):
+            if json.loads(source.read_text(encoding="utf-8"))["phase"] == "upload":
+                raise error
+            return replace(source, target)
+
+        with tempfile.TemporaryDirectory() as directory, patch.dict(os.environ, {"CF_API_KEY": "test"}), patch.object(script, "CurseForge", return_value=api), patch.object(Path, "replace", autospec=True, side_effect=lock_upload_checkpoint), patch.object(script.time, "sleep"), contextlib.redirect_stdout(io.StringIO()):
+            self.assertEqual(script.main(["--locales", "frFR", "--backup-dir", directory]), 1)
+            backup = json.loads(next(Path(directory).glob("*.json")).read_text(encoding="utf-8"))
+            pending = json.loads(next(Path(directory).glob("*.json.tmp")).read_text(encoding="utf-8"))
+            self.assertEqual(backup["phase"], "download")
+            self.assertEqual(backup["locales"]["frFR"]["before"], {"New Changelog": release("6.8.0")})
+            self.assertEqual(pending["phase"], "upload")
+            self.assertEqual(pending["result"], "failed")
+        self.assertEqual(api.uploads, [])
+
     def test_prepends_with_blank_line_and_keeps_four_distinct_versions(self):
         before = {"New Changelog": release("6.8.0"), "Prev Changelog": "\n\n".join(
             release(version) for version in ("6.7.1", "6.7.0", "6.6.0", "6.5.0")

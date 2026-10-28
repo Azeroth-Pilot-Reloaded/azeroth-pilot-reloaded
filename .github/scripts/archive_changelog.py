@@ -354,7 +354,20 @@ def save_backup(path: Path, record: dict) -> None:
     with temporary.open("w", encoding="utf-8") as handle:
         json.dump(record, handle, ensure_ascii=False, indent=2)
         handle.write("\n")
-    temporary.replace(path)
+    # Windows readers can briefly prevent replacement even after our handle closes.
+    # Retry the atomic replace; never truncate the last successfully saved backup.
+    for attempt in range(6):
+        try:
+            temporary.replace(path)
+            return
+        except OSError as error:
+            if getattr(error, "winerror", None) not in (5, 32, 33) or attempt == 5:
+                LOG.error("[BACKUP] Could not replace %s; latest snapshot retained at %s", path, temporary)
+                raise
+            delay = 0.1 * 2 ** attempt
+            LOG.warning("[BACKUP] Windows error %s replacing %s; retry %s/5 in %.1fs",
+                        error.winerror, path, attempt + 1, delay)
+            time.sleep(delay)
 
 
 def close_logging() -> None:
