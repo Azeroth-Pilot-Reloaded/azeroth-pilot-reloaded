@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Archive CurseForge changelogs for every APR locale (preview by default).
+"""Archive CurseForge changelogs for every APR locale (apply by default).
 
 Logs each download, upload, retry and verification to the console and a .log
 file. A matching JSON backup records original values and progress per language.
@@ -400,8 +400,8 @@ def main(argv: list[str] | None = None) -> int:
     load_dotenv(ROOT / ".env")
     parser = argparse.ArgumentParser(description=__doc__)
     mode = parser.add_mutually_exclusive_group()
-    mode.add_argument("--apply", action="store_true", help="Upload changes to CurseForge")
-    mode.add_argument("--dry-run", action="store_true", help="Preview only (default)")
+    mode.add_argument("--apply", action="store_true", default=True, help="Upload changes to CurseForge (default)")
+    mode.add_argument("--dry-run", dest="apply", action="store_false", help="Preview only; do not upload changes")
     parser.add_argument("--project-id", type=int, default=PROJECT_ID)
     parser.add_argument("--locales", default=",".join(LOCALES), help="Comma-separated locales (default: all eleven APR locales)")
     parser.add_argument("--backup-dir", type=Path, default=ROOT / ".cache/changelog", help="Directory for JSON backups/progress and .log files (default: .cache/changelog)")

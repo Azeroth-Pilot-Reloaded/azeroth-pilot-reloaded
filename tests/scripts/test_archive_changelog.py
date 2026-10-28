@@ -203,9 +203,9 @@ v6.7.1
                 self.assertEqual(api.values["frFR"]["New Changelog"], release("6.8.0"))
                 self.assertEqual(api.values["frFR"]["Prev Changelog"], release("6.8.0"))
 
-    def test_cli_previews_by_default_and_writes_backup_before_first_upload(self):
-        for apply in (False, True):
-            with self.subTest(apply=apply), tempfile.TemporaryDirectory() as directory:
+    def test_cli_applies_by_default_and_writes_backup_before_first_upload(self):
+        for flags, apply in (([], True), (["--apply"], True), (["--dry-run"], False)):
+            with self.subTest(flags=flags), tempfile.TemporaryDirectory() as directory:
                 api = MemoryAPI({"frFR": {"New Changelog": release("6.8.0")}})
                 upload = api.upload
                 def assert_backed_up(locale, values, **_kwargs):
@@ -213,10 +213,21 @@ v6.7.1
                     self.assertEqual(backup["locales"]["frFR"]["before"]["New Changelog"], release("6.8.0"))
                     upload(locale, values)
                 api.upload = assert_backed_up
-                args = ["--locales", "frFR", "--backup-dir", directory] + (["--apply"] if apply else [])
+                args = ["--locales", "frFR", "--backup-dir", directory] + flags
                 with patch.dict(os.environ, {"CF_API_KEY": "test-token"}), patch.object(script, "CurseForge", return_value=api), contextlib.redirect_stdout(io.StringIO()):
                     self.assertEqual(script.main(args), 0)
                 self.assertEqual(len(api.uploads), 2 if apply else 0)
+                self.assertEqual(api.values["frFR"]["New Changelog"], "" if apply else release("6.8.0"))
+                backup = json.loads(next(Path(directory).glob("*.json")).read_text(encoding="utf-8"))
+                self.assertEqual(backup["mode"], "apply" if apply else "dry-run")
+                self.assertEqual(backup["result"], "success")
+
+    def test_cli_rejects_conflicting_modes_before_contacting_curseforge(self):
+        with patch.object(script, "CurseForge") as api, contextlib.redirect_stderr(io.StringIO()):
+            with self.assertRaises(SystemExit) as error:
+                script.main(["--apply", "--dry-run"])
+        self.assertEqual(error.exception.code, 2)
+        api.assert_not_called()
 
     def test_all_locales_are_validated_before_any_upload(self):
         api = MemoryAPI({"enUS": {"New Changelog": release("6.8.0")}, "frFR": {"New Changelog": "Invalid"}})
