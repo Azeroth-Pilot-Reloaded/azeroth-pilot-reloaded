@@ -33,7 +33,12 @@ local function walk(option, callback, path)
         for key, child in pairs(option.args) do walk(child, callback, (path or "") .. "/" .. key) end
     elseif option.type ~= "header" and option.type ~= "description" then callback(option, path) end
 end
-local function retain(option, path) rendered[#rendered + 1] = {option = option, key = path:match("([^/]+)$")} end
+local function retain(option, path)
+    if option.type == "multiselect" then
+        assert(option.dialogControl == "Dropdown", "Every workspace multiselect uses the shared dropdown presentation")
+    end
+    rendered[#rendered + 1] = {option = option, key = path:match("([^/]+)$")}
+end
 retain(APR.WorkspaceOptions:ResetAction(APR.settings), "/resetButton")
 for _, section in ipairs(sections) do
     for _, view in ipairs(APR.WorkspaceOptions:Views(section)) do

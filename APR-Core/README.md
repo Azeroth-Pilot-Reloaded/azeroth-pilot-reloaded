@@ -239,7 +239,7 @@ the authored route changes, rather than copied on every map refresh.
 | APR navigation catalogues                | Directed graph, client-specific crossings and access regions; no external routing engine.            |
 | LibTaxiData                         | External dependency required by `.pkgmeta`, optional in the TOC for load order. |
 | LibDataBroker / LibDBIcon           | Minimap launcher.                                                               |
-| LibSharedMedia                      | Font resolution.                                                                |
+| LibSharedMedia                      | Shared fonts and sounds, including bundled APR audio.                            |
 | LibWindow                           | Window positions and scales.                                                    |
 | ElvUI / EllesmereUI                 | Optional; absence of both keeps native rendering.                               |
 

@@ -292,8 +292,8 @@ function Pad:NavigateList(list, row, path, delta)
     local index = row.boundIndex
     if not index or list.active[index] ~= row then return end
     index = index + delta
-    while index >= 1 and index <= #list.items do
-        local top, bottom = list.offsets[index], list.offsets[index + 1]
+    while index >= 1 and index <= list:GetCount() do
+        local top, bottom = list:GetOffset(index), list:GetOffset(index + 1)
         local offset, height = list.scroll:GetVerticalScroll(), list.scroll:GetHeight()
         if top < offset then list:ScrollTo(top)
         elseif bottom > offset + height then list:ScrollTo(bottom - height) end
