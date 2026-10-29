@@ -256,7 +256,7 @@ local integerFields = {
     range = { 0, 100 }, minLevel = { 0, 1000 }, maxLevel = { 0, 1000 },
     map = { 1, MAX_PROGRESS }, level = { 1, 1000 }, class = { 1, 20 }, groupSize = { 0, 5 },
 }
-local validModes = { nearby = true, step = true, zone = true }
+local validModes = { nearby = true, step = true, zone = true, world = true }
 local validStatuses = { accepted = true, declined = true, expired = true, failed = true }
 
 local function NormalizeField(field, value, fromWire)

@@ -146,6 +146,15 @@ local wire = assert(P.Encode("Q", query))
 assert(wire == "1|Q|q-1|11111111|12345678|abcdef12|main:3|3|12|nearby|5|0|0|fr|3")
 local decoded = assert(P.Decode(wire))
 assert(decoded.kind == "Q" and decoded.range == 5 and decoded.languages == 3 and decoded.total == 12)
+local worldQuery = {id = "world-query", context = "11111111", route = "00000000", revision = "00000000",
+    progressId = "unknown", step = 0, total = 0, mode = "world", range = 5,
+    minLevel = 10, maxLevel = 30, primary = "fr", languages = 3}
+local worldWire = assert(P.Encode("Q", worldQuery))
+local worldDecoded = assert(P.Decode(worldWire))
+assert(worldDecoded.mode == "world" and worldDecoded.route == "00000000"
+    and worldDecoded.minLevel == 10 and worldDecoded.maxLevel == 30)
+worldQuery.mode = "unsupported-scope"
+assert(not P.Encode("Q", worldQuery), "The new scope does not allow arbitrary modes")
 assert(P.Encode("W", {}) == "1|W" and P.Decode("1|W").kind == "W")
 assert(P.Encode("D", { id = "done-7" }) == "1|D|done-7")
 assert(P.Encode("R", { id = "i-1", status = "declined" }) == "1|R|i-1|declined")
