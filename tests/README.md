@@ -114,8 +114,27 @@ The focused commands in `tools/validation/run_lua_tests.py` remain available. De
 in-game checks are documented in `tools/validation/README.md`.
 
 Mocks validate addon behavior, not actual game rendering or API compatibility.
+The `party_finder_*` suites use invented players and routes to cover private
+discovery, multilingual policies, bounded queues/caches, timer cancellation,
+native-invitation correlation, sound cooldowns and pooled companion rows. Verify
+channel/whisper delivery, flags and secure invitation dialogs in the actual
+Retail and Forever clients before releasing the feature.
 UI tests use placeholder labels and do not validate localized wording or load
 translation catalogs. Text assertions cover synthetic data and behavior only.
+`settings_audio_test.lua` covers responsive sound-event cards and the real AceGUI
+audio adapter with a synthetic 10,000-sound catalog: no catalog access when the
+page opens, bounded visible rows, late registrations, callbacks and pooled release.
+It also checks the shared-font adapter's current catalog and unprefixed saved names.
+`font_media_test.lua` checks every declared text scope against synthetic shared
+fonts, late registration, inheritance and missing-font resolution. Shared-media
+registration tests discover bundled audio files and validate their registrations
+and manifest order with the embedded library.
+`ui_foundations_test.lua` covers indexed catalogs without dense rows or offsets,
+including scrolling, source replacement and fallback to ordinary variable-height lists.
+`party_finder_lifecycle_test.lua` covers invisible idle operation, temporary manual/automatic
+search membership, refused sends, cancelled fingerprints, coalesced expiry and renewed invitation rows.
+Protocol/invitation/UI fixtures also cover translated presentation, changed invitation nonces,
+route context and combat-deferred disabling without persistent listeners.
 `native_settings_test.lua` checks the restored Blizzard settings entry points;
 `memory_recycling_test.lua` also covers route right-click/Shift-right-click and
 disabled routes. `route_metadata_tooltip_test.lua` checks data-only attribution,

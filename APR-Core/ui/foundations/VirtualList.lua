@@ -28,6 +28,9 @@ function List:New(scrollFrame, createRow, bindRow, rowHeight, child)
 end--[[APR_DIAG]]; List.New = APRTrace("APR-Core/ui/foundations/VirtualList.lua:13:List:New#1", List.New)--[[/APR_DIAG]]
 
 function List:IndexAt(offset)
+    if self.source then
+        return math.min(self.sourceCount, math.max(1, math.floor(offset / self.rowHeight) + 1))
+    end
     local first, last = 1, #self.items
     while first <= last do
         local middle = math.floor((first + last) / 2)
@@ -36,17 +39,35 @@ function List:IndexAt(offset)
     return math.min(first, #self.items)
 end--[[APR_DIAG]]; List.IndexAt = APRTrace("APR-Core/ui/foundations/VirtualList.lua:30:List:IndexAt#7", List.IndexAt)--[[/APR_DIAG]]
 
+function List:GetCount()
+    return self.source and self.sourceCount or #self.items
+end--[[APR_DIAG]]; List.GetCount = APRTrace("APR-Core/ui/foundations/VirtualList.lua:42:List:GetCount#8", List.GetCount)--[[/APR_DIAG]]
+
+function List:GetItem(index)
+    if self.source then return self.source.get(self.source, index) end
+    return self.items[index]
+end--[[APR_DIAG]]; List.GetItem = APRTrace("APR-Core/ui/foundations/VirtualList.lua:46:List:GetItem#9", List.GetItem)--[[/APR_DIAG]]
+
+function List:GetOffset(index)
+    if self.source then
+        if index >= 1 and index <= self.sourceCount + 1 then return (index - 1) * self.rowHeight end
+        return nil
+    end
+    return self.offsets[index]
+end--[[APR_DIAG]]; List.GetOffset = APRTrace("APR-Core/ui/foundations/VirtualList.lua:51:List:GetOffset#10", List.GetOffset)--[[/APR_DIAG]]
+
 function List:ScrollTo(offset)
     local maximum = math.max(0, self.height - self.scroll:GetHeight())
     offset = math.max(0, math.min(maximum, offset))
     self.scroll:SetVerticalScroll(offset)
     if self.scroll.ScrollBar then self.scroll.ScrollBar:SetValue(offset) end
     self:RefreshVisible()
-end--[[APR_DIAG]]; List.ScrollTo = APRTrace("APR-Core/ui/foundations/VirtualList.lua:39:List:ScrollTo#8", List.ScrollTo)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.ScrollTo = APRTrace("APR-Core/ui/foundations/VirtualList.lua:59:List:ScrollTo#11", List.ScrollTo)--[[/APR_DIAG]]
 
 function List:ScrollToIndex(index)
-    if self.offsets[index] then self:ScrollTo(self.offsets[index]) end
-end--[[APR_DIAG]]; List.ScrollToIndex = APRTrace("APR-Core/ui/foundations/VirtualList.lua:47:List:ScrollToIndex#9", List.ScrollToIndex)--[[/APR_DIAG]]
+    local offset = self:GetOffset(index)
+    if offset then self:ScrollTo(offset) end
+end--[[APR_DIAG]]; List.ScrollToIndex = APRTrace("APR-Core/ui/foundations/VirtualList.lua:67:List:ScrollToIndex#12", List.ScrollToIndex)--[[/APR_DIAG]]
 
 -- A coroutine can prepare a long list without scanning it again at publication.
 function List:PrepareItems(items, checkpoint)
@@ -58,11 +79,12 @@ function List:PrepareItems(items, checkpoint)
         if checkpoint then checkpoint() end
     end
     return { offsets = offsets, height = height }
-end--[[APR_DIAG]]; List.PrepareItems = APRTrace("APR-Core/ui/foundations/VirtualList.lua:52:List:PrepareItems#10", List.PrepareItems)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.PrepareItems = APRTrace("APR-Core/ui/foundations/VirtualList.lua:73:List:PrepareItems#13", List.PrepareItems)--[[/APR_DIAG]]
 
 function List:SetItems(items, preserveScroll, initialIndex, prepared)
     prepared = prepared or self:PrepareItems(items)
     self.updatingItems = true
+    self.source, self.sourceCount = nil, nil
     self.items, self.offsets, self.height = items or {}, prepared.offsets, prepared.height
     self.generation = self.generation + 1
     self.child:SetHeight(math.max(1, self.height))
@@ -72,14 +94,34 @@ function List:SetItems(items, preserveScroll, initialIndex, prepared)
         (preserveScroll and self.scroll:GetVerticalScroll() or 0))
     self.updatingItems = nil
     self:RefreshVisible()
-end--[[APR_DIAG]]; List.SetItems = APRTrace("APR-Core/ui/foundations/VirtualList.lua:63:List:SetItems#11", List.SetItems)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.SetItems = APRTrace("APR-Core/ui/foundations/VirtualList.lua:84:List:SetItems#14", List.SetItems)--[[/APR_DIAG]]
+
+-- Uniform source lists borrow an indexed catalog; they never materialize its
+-- rows or offsets. Only the current viewport asks the source for a value.
+function List:SetSource(source, preserveScroll, initialIndex)
+    assert(type(self.rowHeight) == "number" and self.rowHeight > 0 and self.rowHeight < math.huge,
+        "A data source requires a uniform positive row height")
+    assert(type(source) == "table" and type(source.get) == "function"
+        and type(source.count) == "number" and source.count >= 0 and source.count < math.huge,
+        "A data source requires a count and indexed getter")
+    self.updatingItems = true
+    self.source, self.sourceCount = source, math.floor(source.count)
+    self.items, self.offsets = {}, {0}
+    self.height = self.sourceCount * self.rowHeight
+    self.generation = self.generation + 1
+    self.child:SetHeight(math.max(1, self.height))
+    self:ScrollTo(initialIndex and self:GetOffset(initialIndex) or
+        (preserveScroll and self.scroll:GetVerticalScroll() or 0))
+    self.updatingItems = nil
+    self:RefreshVisible()
+end--[[APR_DIAG]]; List.SetSource = APRTrace("APR-Core/ui/foundations/VirtualList.lua:101:List:SetSource#15", List.SetSource)--[[/APR_DIAG]]
 
 -- Opt-in for expensive quest rows. Each frame binds only a small slice of the
 -- current viewport; scrolling or replacing data automatically retargets the work.
 function List:SetRenderBudget(milliseconds, sampleName)
     self.renderBudgetMs, self.renderSampleName = milliseconds, sampleName
     self.renderFrame = self.renderFrame or CreateFrame("Frame", nil, self.scroll)
-end--[[APR_DIAG]]; List.SetRenderBudget = APRTrace("APR-Core/ui/foundations/VirtualList.lua:79:List:SetRenderBudget#12", List.SetRenderBudget)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.SetRenderBudget = APRTrace("APR-Core/ui/foundations/VirtualList.lua:121:List:SetRenderBudget#16", List.SetRenderBudget)--[[/APR_DIAG]]
 
 function List:RunRenderBatch()
     if not self.scroll:IsShown() or (self.scroll.IsVisible and not self.scroll:IsVisible()) then
@@ -93,7 +135,7 @@ function List:RunRenderBatch()
     APR:FinishPerformanceSample(self.renderSampleName or "VirtualListViewportBatch", sample)
     if not ok or finished then self.renderFrame:SetScript("OnUpdate", nil) end
     if not ok then error(finished, 0) end
-end--[[APR_DIAG]]; List.RunRenderBatch = APRTrace("APR-Core/ui/foundations/VirtualList.lua:84:List:RunRenderBatch#13", List.RunRenderBatch)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.RunRenderBatch = APRTrace("APR-Core/ui/foundations/VirtualList.lua:126:List:RunRenderBatch#17", List.RunRenderBatch)--[[/APR_DIAG]]
 
 function List:RefreshVisible(force)
     if self.rendering or self.updatingItems or not self.scroll:IsShown() then return end
@@ -103,19 +145,19 @@ function List:RefreshVisible(force)
     if self.renderBudgetMs then
         if force then self.generation = self.generation + 1 end
         for index, row in pairs(self.active) do
-            if row.boundGeneration ~= self.generation or row.item ~= self.items[index] then
+            if row.boundGeneration ~= self.generation or row.item ~= self:GetItem(index) then
                 if GameTooltip and GameTooltip:IsShown() and GameTooltip:GetOwner() == row then GameTooltip:Hide() end
                 row:Hide()
             end
         end
-        self.renderFrame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/VirtualList.lua:111:callback#15", --[[/APR_DIAG]]function() self:RunRenderBatch() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        self.renderFrame:SetScript("OnUpdate", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/VirtualList.lua:153:callback#19", --[[/APR_DIAG]]function() self:RunRenderBatch() end--[[APR_DIAG]])--[[/APR_DIAG]])
         return
     end
     self.rendering = true
     local ok, message = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](self.RenderVisible, self, force)
     self.rendering = nil
     if not ok then error(message, 0) end
-end--[[APR_DIAG]]; List.RefreshVisible = APRTrace("APR-Core/ui/foundations/VirtualList.lua:98:List:RefreshVisible#14", List.RefreshVisible)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.RefreshVisible = APRTrace("APR-Core/ui/foundations/VirtualList.lua:140:List:RefreshVisible#18", List.RefreshVisible)--[[/APR_DIAG]]
 
 -- Always release the reentrancy guard, including when a caller's row binder fails.
 function List:RenderVisible(force, deadline)
@@ -123,7 +165,7 @@ function List:RenderVisible(force, deadline)
     self.child:SetWidth(width)
     local offset = self.scroll:GetVerticalScroll()
     local first = math.max(1, self:IndexAt(offset) - 1)
-    local last = math.min(#self.items, self:IndexAt(offset + self.scroll:GetHeight()) + 1)
+    local last = math.min(self:GetCount(), self:IndexAt(offset + self.scroll:GetHeight()) + 1)
     for index, row in pairs(self.active) do
         if index < first or index > last then
             if GameTooltip and GameTooltip:GetOwner() == row then GameTooltip:Hide() end
@@ -142,18 +184,20 @@ function List:RenderVisible(force, deadline)
         end
         local needsBinding = force or row.boundGeneration ~= self.generation or row.boundIndex ~= index or row.boundWidth ~= width
         if needsBinding then
-            if row.item ~= self.items[index] and GameTooltip and GameTooltip:IsShown() and GameTooltip:GetOwner() == row then
+            local item = self:GetItem(index)
+            if row.item ~= item and GameTooltip and GameTooltip:IsShown() and GameTooltip:GetOwner() == row then
                 GameTooltip:Hide()
             end
-            row.item = self.items[index]
+            row.item = item
             -- New and recycled rows need the viewport width before content
             -- computes label widths and action positions from GetWidth().
             if row:GetWidth() ~= width then row:SetWidth(width) end
             self.bindRow(row, row.item, index)
             -- A binder may use a shared renderer that sets its own geometry.
             row:ClearAllPoints()
-            row:SetPoint("TOPLEFT", self.child, "TOPLEFT", 0, -self.offsets[index])
-            row:SetSize(width, self.offsets[index + 1] - self.offsets[index])
+            local top = self:GetOffset(index)
+            row:SetPoint("TOPLEFT", self.child, "TOPLEFT", 0, -top)
+            row:SetSize(width, self:GetOffset(index + 1) - top)
             row.boundGeneration, row.boundIndex, row.boundWidth = self.generation, index, width
         end
         if needsBinding or not deadline then
@@ -161,7 +205,7 @@ function List:RenderVisible(force, deadline)
             if APR.Gamepad then APR.Gamepad:AdaptListRow(self, row) end
             local decorated = row.aprListRow and row or row.button and row.button.aprListRow and row.button
             if decorated then
-                decorated.aprListRow.last = index == #self.items
+                decorated.aprListRow.last = index == self:GetCount()
                 APR.UI:RefreshListRow(decorated)
             end
         end
@@ -171,4 +215,4 @@ function List:RenderVisible(force, deadline)
     end
     if APR.Gamepad then APR.Gamepad:Refresh(self.scroll) end
     return true
-end--[[APR_DIAG]]; List.RenderVisible = APRTrace("APR-Core/ui/foundations/VirtualList.lua:121:List:RenderVisible#16", List.RenderVisible)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; List.RenderVisible = APRTrace("APR-Core/ui/foundations/VirtualList.lua:163:List:RenderVisible#20", List.RenderVisible)--[[/APR_DIAG]]

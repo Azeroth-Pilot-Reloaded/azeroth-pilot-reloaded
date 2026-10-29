@@ -199,3 +199,99 @@ list:SetItems({})
 while list.renderFrame.scripts.OnUpdate do viewportTick() end
 assert(not next(list.active), "Removing the list cancels all old visible content")
 print("Virtual list: prepared offsets, 2 ms viewport batches, scrolling, replacement, visibility and error recovery passed")
+
+-- An indexed, fixed-height catalog does not need an item/offset allocation for
+-- every entry. Its getter is touched only by visible-row binding.
+local sourceScroll = CreateFrame("ScrollFrame", nil, UIParent)
+sourceScroll:SetSize(320, 260)
+local sourceReads, sourceRows = 0, 0
+local source = {count = 100000, get = function(_, index)
+    sourceReads = sourceReads + 1
+    assert(index >= 1 and index <= 100000)
+    return "Value " .. index
+end}
+local sourceList = APR.VirtualList:New(sourceScroll, function(owner)
+    sourceRows = sourceRows + 1
+    return CreateFrame("Frame", nil, owner)
+end, function(row, item) row.value = item end, 26)
+sourceList:SetSource(source, false, 5000)
+assert(sourceList.active[5000].value == "Value 5000" and sourceScroll:GetVerticalScroll() == 129974)
+assert(sourceList.height == 2600000 and sourceList:GetCount() == 100000
+    and sourceList:GetOffset(5000) == 129974 and #sourceList.offsets == 1)
+assert(sourceRows <= 13 and sourceReads <= 13, "Opening a large source reads and creates only its viewport")
+assert(sourceList:IndexAt(-30) == 1 and sourceList:IndexAt(2600000) == 100000)
+local beforeSourceRows, beforeSourceReads = sourceRows, sourceReads
+sourceList:ScrollToIndex(90000)
+assert(sourceList.active[90000].value == "Value 90000" and not sourceList.active[5000])
+assert(sourceRows <= beforeSourceRows + 1 and sourceReads - beforeSourceReads <= 13,
+    "Scrolling a large source reuses rows without traversing the catalog")
+sourceList:SetItems({{key = "array"}}, false)
+-- The same binder accepts either source strings or ordinary model tables.
+assert(sourceList.active[1].value.key == "array" and not sourceList.source and sourceList:GetCount() == 1,
+    "Returning to array mode drops the borrowed source and restores offsets")
+sourceList:SetSource({count = 0, get = function() error("An empty source must never be queried") end})
+assert(sourceList:IndexAt(0) == 0 and not next(sourceList.active) and sourceList.child:GetHeight() == 1)
+sourceList.bindRow = function(row, item) clockMs = clockMs + 1; row.value = item end
+sourceList:SetRenderBudget(2, "SourceViewportBatch")
+local readsBeforeBudget = sourceReads
+sourceList:SetSource(source, false, 5000)
+assert(sourceReads == readsBeforeBudget, "Budgeted publication defers even its viewport reads")
+sourceList.renderFrame.scripts.OnUpdate()
+assert(sourceReads - readsBeforeBudget == 2 and sourceList.renderFrame.scripts.OnUpdate)
+sourceList:SetSource({count = 2, get = function(_, index)
+    assert(index <= 2, "A replaced source cannot receive stale indexes")
+    return "Small " .. index
+end})
+for _, row in pairs(sourceList.active) do assert(not row:IsShown()) end
+while sourceList.renderFrame.scripts.OnUpdate do sourceList.renderFrame.scripts.OnUpdate() end
+assert(sourceList.active[1].value == "Small 1" and sourceList.active[2].value == "Small 2"
+    and not sourceList.active[5000], "Source replacement retargets an unfinished render batch")
+
+-- Select setup/selected captions never open or scan a catalog. A source getter
+-- supplies primitive option values, so only visible rows need labels.
+local providerCalls, optionReads, selectedValue = 0, 0, nil
+function env.methods:IsVisible() return self:IsShown() and (not self.parent or self.parent:IsVisible()) end
+local sourceCount = 10000
+local selector = APR.UI:Select(UIParent, 320, function(value) selectedValue = value end)
+function selector:GetBottom() return 600 end
+function selector:GetTop() return 630 end
+selector:SetSourceProvider(function()
+    providerCalls = providerCalls + 1
+    return {count = sourceCount, get = function(_, index)
+        optionReads = optionReads + 1
+        return "item:" .. index
+    end}
+end, function(value) return value and "Caption " .. value or "" end, 280)
+selector:SetValue("item:5000", "Selected synthetic audio")
+assert(providerCalls == 0 and optionReads == 0 and selector:GetText() == "Selected synthetic audio")
+local framesBeforeSelect = env.frames()
+selector.scripts.OnClick(selector)
+-- The opened viewport now has its actual height immediately: at most eleven
+-- intersecting rows plus overscan may be read, regardless of catalog size.
+assert(providerCalls == 1 and optionReads <= 13 and selector.menu:GetHeight() <= 280)
+assert(env.frames() - framesBeforeSelect < 40, "Opening ten thousand choices only creates viewport controls")
+local menuList = selector.menu.list
+menuList.scroll:SetSize(286, 260)
+menuList:RefreshVisible(true)
+local framesAfterViewport, readsAfterViewport = env.frames(), optionReads
+menuList:ScrollToIndex(7500)
+assert(menuList.active[7500].item == "item:7500" and optionReads - readsAfterViewport <= 13)
+assert(env.frames() <= framesAfterViewport + 4, "Scrolling retains the small visible-row pool")
+menuList.active[7500].scripts.OnClick(menuList.active[7500])
+assert(selectedValue == "item:7500" and selector.value == selectedValue
+    and selector:GetText() == "Caption item:7500" and not selector.menu:IsShown())
+sourceCount = 3
+selector:SetWidth(440)
+selector.scripts.OnClick(selector)
+assert(providerCalls == 2 and selector.menu:GetWidth() == 440 and menuList:GetCount() == 3
+    and not menuList.active[7500] and menuList.active[1].item == "item:1",
+    "Reopening gets the current source and width without retaining stale large-catalog rows")
+selector:SetSourceProvider(nil)
+assert(not selector.menu:IsShown() and not menuList.source and menuList:GetCount() == 0,
+    "Widget release can drop the borrowed source and close the menu")
+selector:SetOptions({{value = "ordinary", label = "Ordinary choice"}}, "ordinary")
+selector.scripts.OnClick(selector)
+assert(selector:GetText() == "Ordinary choice" and menuList:GetCount() == 1)
+menuList.active[1].scripts.OnClick(menuList.active[1])
+assert(selectedValue == "ordinary" and providerCalls == 2, "Array selectors retain their existing callbacks")
+print("Virtual catalog: bounded source reads/rows, direct captions, lazy opens, scrolling, refreshed sources and array fallback passed")

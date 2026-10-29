@@ -225,6 +225,15 @@ list:SetItems({8, 7, 6})
 row = list.active[1].overrides.down()
 assert(row.item == 7, "Rebound rows must navigate the new model")
 list:SetItems({}); assert(row.overrides.down() == true)
+list:SetSource({count = 1000, get = function(_, index) return index end})
+list:ScrollToIndex(998)
+row = list.active[998].overrides.down()
+assert(row.item == 999)
+row = row.overrides.down()
+assert(row.item == 1000 and row.overrides.up().item == 999,
+    "Indexed media catalogs remain reachable with arithmetic offsets and no dense item array")
+assert(#list.offsets == 1 and rows < 10, "Source navigation keeps the same bounded recycled viewport")
+list:SetItems({})
 
 -- Reproduce the old failure: the native click handler cannot click a restricted handle.
 local first, second = CreateFrame("Button", nil, UIParent), CreateFrame("Button", nil, UIParent)
