@@ -119,6 +119,18 @@ discovery, multilingual policies, bounded queues/caches, timer cancellation,
 native-invitation correlation, sound cooldowns and pooled companion rows. Verify
 channel/whisper delivery, flags and secure invitation dialogs in the actual
 Retail and Forever clients before releasing the feature.
+`party_finder_world_test.lua` uses controlled channel memberships and populations
+to exercise discovery across zones, scope isolation, visibility, cancellation,
+and bounded work under request bursts. Worldwide discovery keeps its own channel
+alongside legacy zone discovery. It uses cached channel counts without requesting
+a roster; unknown counts suppress replies. Sampling targets 24 responses, with
+at most 30 accepted results. Worldwide queries have a 60-second minimum interval;
+auto-scans yield after a recently observed worldwide query. Pending replies are
+cancelled when a query finishes, and worldwide presence sends are spaced by five
+seconds. These local budgets and best-effort sampling do not guarantee a complete
+directory or eliminate all network cost as the population grows. In-game checks
+must include different zones, the server/faction reach of custom channels, a
+missing member count, and rapid visibility/instance changes on both clients.
 UI tests use placeholder labels and do not validate localized wording or load
 translation catalogs. Text assertions cover synthetic data and behavior only.
 `settings_audio_test.lua` covers responsive sound-event cards and the real AceGUI

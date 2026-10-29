@@ -6,6 +6,7 @@ locale.GF_LAST_SEEN, locale.GF_LEVEL_CLASS, locale.GF_GROUP_SIZE = "Age %d", "%d
 locale.GF_MATCH_CRITERIA, locale.GF_INVITE_CONTEXT = "%s / %s", "%s / %s"
 GAMEOPTIONS_MENU = "Options"
 ALL, LANGUAGES_LABEL, LFG_LIST_SEARCH_AGAIN = "All entries", "Languages", "Refresh"
+WORLD = "Native world scope"
 GROUP_INVITE, REQUEST_INVITE, WHISPER = "Invite", "Request", "Whisper"
 UIParent:SetSize(1920, 1080)
 function env.methods:SetChecked(value) self.checked = value end
@@ -173,12 +174,26 @@ panel.match.scripts.OnClick(panel.match)
 local matchMenu = panel.match.menu
 matchMenu.list.scroll:SetSize(200, 104)
 matchMenu.list:RefreshVisible()
-assert(matchMenu and #matchMenu.list.items == 3 and matchMenu.list.active[1].check:IsShown())
+assert(matchMenu and #matchMenu.list.items == 4 and matchMenu.list.active[1].check:IsShown())
 matchMenu.list.active[3].scripts.OnClick(matchMenu.list.active[3])
 assert(settings.matchMode == "zone" and panel.match:GetText() == locale.GF_MATCH_ZONE
     and calls[#calls].kind == "option" and calls[#calls].key == "matchMode",
     "The criterion menu updates the same saved preference as the options page")
 assert(not matchMenu:IsShown())
+panel.match.scripts.OnClick(panel.match)
+matchMenu.list:RefreshVisible()
+assert(matchMenu.list.items[4].value == "world" and matchMenu.list.items[4].label == WORLD)
+matchMenu.list.active[4].scripts.OnClick(matchMenu.list.active[4])
+assert(settings.matchMode == "world" and panel.match:GetText() == WORLD
+    and calls[#calls].kind == "option" and calls[#calls].key == "matchMode",
+    "World matching uses the native label and the same saved callback as the other scopes")
+assert(not matchMenu:IsShown())
+panel:Refresh()
+assert(panel.match:GetText() == WORLD, "Refreshing the panel preserves the saved world scope")
+settings.matchMode = "step"
+panel:Refresh()
+assert(panel.match:GetText() == locale.GF_MATCH_STEP,
+    "An external options or profile change replaces the world selection")
 settings.matchMode = "nearby"
 panel:Refresh()
 

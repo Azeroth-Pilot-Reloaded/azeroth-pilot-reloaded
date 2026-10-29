@@ -148,6 +148,7 @@ APR-Core/features/group/PartyProtocol.lua
 APR-Core/features/group/PartyFinderProtocol.lua
 APR-Core/features/group/Party.lua
 APR-Core/features/group/PartyFinder.lua
+APR-Core/features/group/PartyFinderWorld.lua
 APR-Core/features/group/PartyFinderInvites.lua
 APR-Core/features/navigation/Map.lua
 APR-Core/features/player/AFK.lua
