@@ -10,7 +10,7 @@ local UI = APR.UI
 APR.OptionsPanel = {}
 local Options = APR.OptionsPanel
 local categoryIcons = {automation = "automation", group_Current_Step = "current-step", group_FillersFrame = "objectives",
-    group_quest_order_list_step = "steps", group_Arrow = "arrow", group_map_minimap = "map", group_AFK = "afk",
+    group_quest_order_list_step = "steps", group_Arrow = "arrow", group_map_minimap = "map", group_AFK = "afk", groupFinder = "group",
     group_Group = "group", group_Heirloom = "heirloom", group_XP_Buff = "xp", appearance = "appearance",
     profiles = "profiles", changelog = "changelog", debug = "debug"}
 local function Resolve(value)

@@ -8,14 +8,50 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 APR.SettingsRows = {}
 local Rows, UI = APR.SettingsRows, APR.UI
 local supported = {CheckBox = true, Slider = true, Dropdown = true, ColorPicker = true, EditBox = true,
-    APRSettingsAction = true, APRThemeAccent = true}
+    APRSettingsAction = true, APRSettingsSoundSelect = true, APRSettingsFontSelect = true, APRThemeAccent = true}
+
+-- Only the audio section uses this layout. Shared AceGUI Flow still lays out
+-- each card's controls, while the parent keeps a gap between event cards.
+function Rows:InstallLayouts(gui)
+    gui:RegisterLayout("APRSettingsSoundGrid", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:16:callback#2", --[[/APR_DIAG]]function(content, children)
+        local owner = content.obj
+        if owner.aprSoundGridLayingOut then return end
+        owner.aprSoundGridLayingOut = true
+        local width = math.max(1, content.width or content:GetWidth())
+        local columns = width >= 620 and 2 or 1
+        local gap, y, column, rowHeight = 12, 0, 0, 0
+        for _, child in ipairs(children) do
+            local card = child.aprSoundCard
+            if not card and column > 0 then
+                y, column, rowHeight = y + rowHeight + gap, 0, 0
+            end
+            local childWidth = card and (width - (columns - 1) * gap) / columns or width
+            child:SetWidth(childWidth)
+            if child.DoLayout then child:DoLayout() end
+            child.frame:ClearAllPoints()
+            child.frame:SetPoint("TOPLEFT", content, "TOPLEFT", card and column * (childWidth + gap) or 0, -y)
+            child.frame:Show()
+            local height = child.frame:GetHeight()
+            if card then
+                rowHeight = math.max(rowHeight, height)
+                column = column + 1
+                if column == columns then y, column, rowHeight = y + rowHeight + gap, 0, 0 end
+            else
+                y = y + height + gap
+            end
+        end
+        if column > 0 then y = y + rowHeight + gap end
+        owner:LayoutFinished(nil, math.max(0, y - gap))
+        owner.aprSoundGridLayingOut = nil
+    end--[[APR_DIAG]])--[[/APR_DIAG]])
+end--[[APR_DIAG]]; Rows.InstallLayouts = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:15:Rows:InstallLayouts#1", Rows.InstallLayouts)--[[/APR_DIAG]]
 
 local function Anchor(region, point, relative, relativePoint, x, y, width, height)
     region:ClearAllPoints()
     region:SetPoint(point, relative, relativePoint, x, y)
     if width then region:SetWidth(width) end
     if height then region:SetHeight(height) end
-end--[[APR_DIAG]]; Anchor = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:13:Anchor#1", Anchor)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Anchor = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:49:Anchor#3", Anchor)--[[/APR_DIAG]]
 
 function Rows:Checkbox(widget)
     if not widget.aprCheckBox then
@@ -35,35 +71,95 @@ function Rows:Checkbox(widget)
     end
     UI:SetIcon(widget.check, "check")
     widget.aprCheckBox:SetAlpha(widget.disabled and 0.45 or 1)
-end--[[APR_DIAG]]; Rows.Checkbox = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:20:Rows:Checkbox#2", Rows.Checkbox)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Rows.Checkbox = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:56:Rows:Checkbox#4", Rows.Checkbox)--[[/APR_DIAG]]
+
+local function PlaceDropdown(widget, width, x, y)
+    Anchor(widget.dropdown, "TOPRIGHT", widget.frame, "TOPRIGHT", x, y, width, 28)
+    Anchor(widget.button_cover, "TOPRIGHT", widget.frame, "TOPRIGHT", x, y, width, 28)
+    Anchor(widget.button, "RIGHT", widget.button_cover, "RIGHT", -4, 0, 22, 22)
+    widget.text:ClearAllPoints()
+    widget.text:SetPoint("LEFT", widget.button_cover, "LEFT", 10, 0)
+    widget.text:SetPoint("RIGHT", widget.button_cover, "RIGHT", -32, 0)
+    widget.text:SetJustifyH("LEFT")
+    widget:SetPulloutWidth(width)
+end--[[APR_DIAG]]; PlaceDropdown = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:76:PlaceDropdown#5", PlaceDropdown)--[[/APR_DIAG]]
+
+-- Cells in a sound-event row keep their explicit AceConfig widths. Reapply all
+-- anchors because these widgets also serve full-width settings through the pool.
+local function LayoutInline(widget, label, width)
+    local frame, kind = widget.frame, widget.type
+    if kind == "CheckBox" then
+        Rows:Checkbox(widget)
+        Anchor(widget.aprCheckBox, "LEFT", frame, "LEFT", 4, 0)
+        Anchor(widget.checkbg, "CENTER", widget.aprCheckBox, "CENTER", 0, 0, 22, 22)
+        Anchor(label, "LEFT", frame, "LEFT", 32, 0, math.max(24, width - 36), 0)
+        label:SetJustifyH("LEFT"); label:SetWordWrap(true)
+        widget:SetHeight(math.max(32, label:GetStringHeight() + 8))
+        widget.alignoffset = widget.frame:GetHeight() / 2
+    else
+        Anchor(label, "TOPLEFT", frame, "TOPLEFT", 4, -2, width - 8, 0)
+        label:SetJustifyH("LEFT"); label:SetWordWrap(true)
+        local labelHeight = math.max(18, label:GetStringHeight())
+        if kind == "Dropdown" then
+            PlaceDropdown(widget, width - 8, -4, -labelHeight - 6)
+            widget:SetHeight(labelHeight + 36)
+        elseif kind == "APRSettingsSoundSelect" or kind == "APRSettingsFontSelect" then
+            Anchor(widget.select, "TOPLEFT", frame, "TOPLEFT", 4, -labelHeight - 6, width - 8, 28)
+            widget:SetHeight(labelHeight + 36)
+        elseif kind == "Slider" then
+            Anchor(widget.slider, "TOPLEFT", frame, "TOPLEFT", 4, -labelHeight - 14, math.max(32, width - 64), 14)
+            Anchor(widget.editbox, "TOPRIGHT", frame, "TOPRIGHT", -4, -labelHeight - 6, 48, 28)
+            -- Keep the editable value without a second visible line of bounds.
+            widget.lowtext:Hide(); widget.hightext:Hide()
+            widget:SetHeight(labelHeight + 36)
+        end
+        widget.alignoffset = labelHeight + 20
+    end
+end--[[APR_DIAG]]; LayoutInline = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:89:LayoutInline#6", LayoutInline)--[[/APR_DIAG]]
 
 local function Layout(widget)
-    if widget.aprLayingOut or not widget.aprRow then return end
+    if Rows.rebuilding or widget.aprLayingOut or not widget.aprRow then return end
     local option = widget:GetUserData("option")
     if not option then return end
     widget.aprLayingOut = true
     local frame, kind = widget.frame, widget.type
     if kind == "APRThemeAccent" then kind = "ColorPicker" end
+    local presentation = type(option.arg) == "table" and option.arg or nil
+    local inline = presentation and presentation.aprInline
+    local compact = presentation and presentation.aprCompact
+    local label = (kind == "CheckBox" or kind == "ColorPicker") and widget.text or widget.label
+    local note = widget.aprRow.note
+    if kind == "Dropdown" and widget.multiselect and presentation and presentation.aprEmptyText
+        and widget.text:GetText() == "" then
+        widget:SetText(presentation.aprEmptyText)
+    end
+    if widget.aprRow.separator then widget.aprRow.separator:SetShown(not inline) end
+    if inline then
+        note:SetText(""); note:Hide()
+        LayoutInline(widget, label, math.max(80, frame:GetWidth()))
+        widget.aprLayingOut = nil
+        return
+    end
     local width = math.max(320, frame:GetWidth())
     local controlWidth = math.min(290, math.max(190, width * 0.34))
     if kind == "APRSettingsAction" then controlWidth = 160 end
-    local label = (kind == "CheckBox" or kind == "ColorPicker") and widget.text or widget.label
-    Anchor(label, "TOPLEFT", frame, "TOPLEFT", 12, -14, width - controlWidth - 40, 0)
+    local inset, top = compact and 8 or 12, compact and 10 or 14
+    Anchor(label, "TOPLEFT", frame, "TOPLEFT", inset, -top, width - controlWidth - 40, 0)
     label:SetJustifyH("LEFT"); label:SetWordWrap(true)
     local labelHeight = math.max(18, label:GetStringHeight())
-    local description = type(option.desc) == "string" and option.desc or ""
+    local description = not compact and type(option.desc) == "string" and option.desc or ""
     if description == label:GetText() then description = "" end
-    local note = widget.aprRow.note
     note:SetText(description)
     note:SetShown(description ~= "")
     Anchor(note, "TOPLEFT", frame, "TOPLEFT", 12, -18 - labelHeight, width - controlWidth - 40, 0)
-    local height = math.max(kind == "Slider" and 68 or 52,
-        labelHeight + (description ~= "" and note:GetStringHeight() + 6 or 0) + 28)
+    local height = math.max(kind == "Slider" and (compact and 56 or 68) or (compact and 40 or 52),
+        labelHeight + (description ~= "" and note:GetStringHeight() + 6 or 0) + (compact and 20 or 28))
     if kind == "CheckBox" then
         Rows:Checkbox(widget)
-        Anchor(widget.aprCheckBox, "TOPRIGHT", frame, "TOPRIGHT", -12, -14)
+        Anchor(widget.aprCheckBox, "TOPRIGHT", frame, "TOPRIGHT", -inset, -top)
         Anchor(widget.checkbg, "CENTER", widget.aprCheckBox, "CENTER", 0, 0, 22, 22)
     elseif kind == "Slider" then
+        widget.lowtext:Show(); widget.hightext:Show()
         Anchor(widget.slider, "TOPRIGHT", frame, "TOPRIGHT", -96, -20, controlWidth - 84, 16)
         Anchor(widget.editbox, "TOPRIGHT", frame, "TOPRIGHT", -12, -14, 72, 28)
         local limitWidth = (controlWidth - 84) / 2 - 6
@@ -72,14 +168,10 @@ local function Layout(widget)
         widget.lowtext:SetJustifyH("LEFT"); widget.hightext:SetJustifyH("RIGHT")
         height = math.max(height, 20 + 16 + 6 + math.max(widget.lowtext:GetStringHeight(), widget.hightext:GetStringHeight()) + 12)
     elseif kind == "Dropdown" then
-        Anchor(widget.dropdown, "TOPRIGHT", frame, "TOPRIGHT", -12, -12, controlWidth, 30)
-        Anchor(widget.button_cover, "TOPRIGHT", frame, "TOPRIGHT", -12, -12, controlWidth, 30)
-        Anchor(widget.button, "RIGHT", widget.button_cover, "RIGHT", -4, 0, 22, 22)
-        widget.text:ClearAllPoints()
-        widget.text:SetPoint("LEFT", widget.button_cover, "LEFT", 10, 0)
-        widget.text:SetPoint("RIGHT", widget.button_cover, "RIGHT", -32, 0)
-        widget.text:SetJustifyH("LEFT")
-        widget:SetPulloutWidth(controlWidth)
+        PlaceDropdown(widget, controlWidth, -inset, compact and -6 or -12)
+        if not compact then widget.dropdown:SetHeight(30); widget.button_cover:SetHeight(30) end
+    elseif kind == "APRSettingsSoundSelect" or kind == "APRSettingsFontSelect" then
+        Anchor(widget.select, "TOPRIGHT", frame, "TOPRIGHT", -inset, compact and -6 or -12, controlWidth, 28)
     elseif kind == "EditBox" then
         Anchor(widget.editbox, "TOPRIGHT", frame, "TOPRIGHT", -12, -12, controlWidth, 30)
         Anchor(widget.button, "TOPRIGHT", widget.editbox, "BOTTOMRIGHT", 0, -8, 64, 28)
@@ -95,10 +187,20 @@ local function Layout(widget)
     widget.alignoffset = 0
     widget:SetHeight(height)
     widget.aprLayingOut = nil
-end--[[APR_DIAG]]; Layout = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:40:Layout#3", Layout)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Layout = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:120:Layout#7", Layout)--[[/APR_DIAG]]
 
 function Rows:Apply(widget)
     if not widget then return end
+    local option = widget.GetUserData and widget:GetUserData("option")
+    local presentation = option and type(option.arg) == "table" and option.arg
+    local relative = presentation and presentation.aprSoundWidth
+    if relative then
+        widget:SetRelativeWidth(relative)
+        widget.aprSoundRelative = relative
+    elseif widget.aprSoundRelative then
+        if widget.width == "relative" and widget.relWidth == widget.aprSoundRelative then widget.width = nil end
+        widget.aprSoundRelative = nil
+    end
     if supported[widget.type] and widget:GetUserData("option") then
         if not widget.aprRow then
             local frame = widget.frame
@@ -106,31 +208,31 @@ function Rows:Apply(widget)
             separator:SetPoint("BOTTOMLEFT", 12, 0); separator:SetPoint("BOTTOMRIGHT", -12, 0)
             separator:SetHeight(1)
             APR:RegisterThemeRegion(separator, "border", 0.28)
-            widget.aprRow = {note = UI:Label(frame, "", 11, "muted")}
+            widget.aprRow = {note = UI:Label(frame, "", 11, "muted"), separator = separator}
             local original = widget.OnWidthSet
-            widget.OnWidthSet = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:111:callback#5", --[[/APR_DIAG]]function(self, width)
+            widget.OnWidthSet = --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:213:callback#9", --[[/APR_DIAG]]function(self, width)
                 if original then original(self, width) end
                 Layout(self)
             end--[[APR_DIAG]])--[[/APR_DIAG]]
             for _, method in ipairs({"SetLabel", "SetValue", "SetDisabled", "SetType", "SetSliderValues", "SetIsPercent",
                 "SetText", "DisableButton"}) do
-                if widget[method] then hooksecurefunc(widget, method, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:117:callback#6", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]]) end
+                if widget[method] then hooksecurefunc(widget, method, --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:219:callback#10", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]]) end
             end
             if widget.type == "CheckBox" then
-                frame:HookScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:120:callback#7", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
-                frame:HookScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:121:callback#8", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                frame:HookScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:222:callback#11", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                frame:HookScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:223:callback#12", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
             elseif widget.type == "EditBox" then
                 -- AceGUI still owns validation/visibility; keep its submit button outside the typing area.
                 widget.button:SetParent(frame)
-                widget.editbox:HookScript("OnTextChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:125:callback#9", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
-                widget.editbox:HookScript("OnEnterPressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:126:callback#10", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
-                widget.button:HookScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:127:callback#11", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                widget.editbox:HookScript("OnTextChanged", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:227:callback#13", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                widget.editbox:HookScript("OnEnterPressed", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:228:callback#14", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
+                widget.button:HookScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:229:callback#15", --[[/APR_DIAG]]function() Layout(widget) end--[[APR_DIAG]])--[[/APR_DIAG]])
             end
         end
         -- Dropdown pullouts are released separately and recreated when their owner is reused.
         if widget.type == "Dropdown" and widget.pullout and not widget.pullout.aprRowAnchor then
             widget.pullout.aprRowAnchor = true
-            hooksecurefunc(widget.pullout, "Open", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:133:callback#12", --[[/APR_DIAG]]function(pullout)
+            hooksecurefunc(widget.pullout, "Open", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:235:callback#16", --[[/APR_DIAG]]function(pullout)
                 local owner = pullout:GetUserData("obj")
                 if owner and owner.aprRow then
                     pullout.frame:ClearAllPoints()
@@ -139,7 +241,7 @@ function Rows:Apply(widget)
                 end
             end--[[APR_DIAG]])--[[/APR_DIAG]])
             local pullout = widget.pullout
-            pullout.frame:HookScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:142:callback#13", --[[/APR_DIAG]]function(frame, event)
+            pullout.frame:HookScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:244:callback#17", --[[/APR_DIAG]]function(frame, event)
                 local owner = pullout:GetUserData("obj")
                 if event == "GLOBAL_MOUSE_DOWN" and owner and owner.open
                     and not frame:IsMouseOver() and not owner.button_cover:IsMouseOver() then
@@ -148,10 +250,21 @@ function Rows:Apply(widget)
                     owner:ClearFocus()
                 end
             end--[[APR_DIAG]])--[[/APR_DIAG]])
-            pullout.frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:151:callback#14", --[[/APR_DIAG]]function(frame) frame:UnregisterEvent("GLOBAL_MOUSE_DOWN") end--[[APR_DIAG]])--[[/APR_DIAG]])
+            pullout.frame:HookScript("OnHide", --[[APR_DIAG]]APRTrace("APR-Core/ui/foundations/SettingsRows.lua:253:callback#18", --[[/APR_DIAG]]function(frame) frame:UnregisterEvent("GLOBAL_MOUSE_DOWN") end--[[APR_DIAG]])--[[/APR_DIAG]])
         end
         Layout(widget)
     end
-    for _, child in ipairs(widget.children or {}) do self:Apply(child) end
+    local soundCard, soundGrid = false, false
+    for _, child in ipairs(widget.children or {}) do
+        self:Apply(child)
+        local childOption = child.GetUserData and child:GetUserData("option")
+        local childArg = childOption and type(childOption.arg) == "table" and childOption.arg
+        soundCard = soundCard or childArg and childArg.aprSoundEvent ~= nil
+        soundGrid = soundGrid or child.aprSoundCard == true
+    end
+    widget.aprSoundCard = soundCard == true
+    if soundGrid then widget:SetLayout("APRSettingsSoundGrid")
+    elseif widget.aprSoundGrid then widget:SetLayout("Flow") end
+    widget.aprSoundGrid = soundGrid
     if widget.DoLayout then widget:DoLayout() end
-end--[[APR_DIAG]]; Rows.Apply = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:100:Rows:Apply#4", Rows.Apply)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Rows.Apply = APRTrace("APR-Core/ui/foundations/SettingsRows.lua:192:Rows:Apply#8", Rows.Apply)--[[/APR_DIAG]]

@@ -22,6 +22,7 @@ function APR.command:GetHelpEntries()
         {"/apr github", L["GITHUB_COMMAND"]},
         {"/apr help, h", L["HELP_COMMAND"]},
         {"/apr gamepad", L["GAMEPAD_MENU"]},
+        {"/apr group", L["GF_HEADER_TOOLTIP"]},
         {"/apr layout", L["UI_LAYOUT_TITLE"]},
         {"/apr qol", L["QOL_COMMAND"]},
         {"/apr reset, r", L["RESET_COMMAND"]},
@@ -51,6 +52,8 @@ function APR.command:SlashCmd(input)
     end
     if inputText == "gamepad" then
         APR.Gamepad:RunAction("menu")
+    elseif inputText == "group" then
+        if APR.PartyFinderPanel then APR.PartyFinderPanel:Show() end
     elseif inputText == "layout" then
         APR.LayoutEditor:Show()
     elseif inputText == "debug on" then
@@ -81,9 +84,9 @@ function APR.command:SlashCmd(input)
         --Command to reset the current route
         APR:ResetRoute(APR.ActiveRoute)
     elseif inputText == "resetcustom" then
-        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:84:callback#3", --[[/APR_DIAG]]function() APRData.CustomRoute = {} end--[[APR_DIAG]])--[[/APR_DIAG]], L["UI_RELOAD_RESET_CUSTOM_CONFIRM"])
+        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:87:callback#3", --[[/APR_DIAG]]function() APRData.CustomRoute = {} end--[[APR_DIAG]])--[[/APR_DIAG]], L["UI_RELOAD_RESET_CUSTOM_CONFIRM"])
     elseif (inputText == "forcereset" or inputText == "fr") then
-        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:86:callback#4", --[[/APR_DIAG]]function()
+        APR:RequestReload(--[[APR_DIAG]]APRTrace("APR-Core/core/Commands.lua:89:callback#4", --[[/APR_DIAG]]function()
             APRData[APR.PlayerID] = {}
             APRZoneCompleted[APR.PlayerID] = {}
             APRCustomPath[APR.PlayerID] = {}
@@ -142,11 +145,11 @@ function APR.command:SlashCmd(input)
     elseif (inputText == "help" or inputText == "h") then
         local function printHelp(command, description)
             print(APR:WrapTextWithAppearanceColor(command, "general", "accent") .. " - " .. description)
-        end--[[APR_DIAG]]; printHelp = APRTrace("APR-Core/core/Commands.lua:143:printHelp#5", printHelp)--[[/APR_DIAG]]
+        end--[[APR_DIAG]]; printHelp = APRTrace("APR-Core/core/Commands.lua:146:printHelp#5", printHelp)--[[/APR_DIAG]]
 
         APR:PrintInfo(L["COMMAND_LIST"])
         for _, entry in ipairs(self:GetHelpEntries()) do printHelp(entry[1], entry[2]) end
     else
         APR.settings:OpenSettings(APR.title)
     end
-end--[[APR_DIAG]]; APR.command.SlashCmd = APRTrace("APR-Core/core/Commands.lua:44:APR.command:SlashCmd#2", APR.command.SlashCmd)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.command.SlashCmd = APRTrace("APR-Core/core/Commands.lua:45:APR.command:SlashCmd#2", APR.command.SlashCmd)--[[/APR_DIAG]]
