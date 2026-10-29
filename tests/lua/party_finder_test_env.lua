@@ -16,6 +16,7 @@ function Fixture.New(options)
         channelID = options.prejoined and 7 or 0, options = options, soundEvents = {},
         instance = options.instance == true, restricted = options.restricted == true,
         outgoingRestricted = options.outgoingRestricted == true,
+        channels = {}, population = options.population or 2, populationReads = 0,
     }
     local locale = setmetatable({ GROUP_STEPS_AHEAD = "%d ahead", GROUP_STEPS_BEHIND = "%d behind" },
         { __index = function(_, key) return key end })
@@ -77,16 +78,46 @@ function Fixture.New(options)
         return timer
     end, NewTicker = function() error("Finder must use cancellable one-shot timers") end }
     function GetChannelName(name)
+        if options.world then
+            local id = env.channels[name]
+            if not id and name:sub(1, 8) == "APRFindW" and options.prejoinedWorld then
+                env.channels[name] = 8; id = 8
+            end
+            return id or 0, id and name or nil
+        end
         return env.channelID, env.channelID > 0 and name or nil
     end
     function JoinTemporaryChannel(name)
         env.joined[#env.joined + 1] = name
         if options.joinError then error("Channel unavailable") end
-        if not options.delayedJoin then env.channelID = 7 end
+        if not options.delayedJoin then
+            if options.world then
+                local world = name:sub(1, 8) == "APRFindW"
+                env.channels[name] = world and 8 or 7
+                if not world then env.channelID = 7 end
+            else env.channelID = 7 end
+        end
     end
     function LeaveChannelByName(name)
         env.left[#env.left + 1] = name
-        env.channelID = 0
+        if options.world then
+            if env.channels[name] == 7 then env.channelID = 0 end
+            env.channels[name] = nil
+        else env.channelID = 0 end
+    end
+    GetNumDisplayChannels, GetChannelDisplayInfo = nil, nil
+    if options.world then
+        function GetNumDisplayChannels()
+            env.populationReads = env.populationReads + 1
+            return 3
+        end
+        function GetChannelDisplayInfo(index)
+            if index == 1 then return "Synthetic header", true, false, 0, 0, true end
+            for name, id in pairs(env.channels) do
+                if index == 3 and id == 8 then return name, false, false, id, env.population, true end
+                if index == 2 and id == 7 then return name, false, false, id, 1, true end
+            end
+        end
     end
     C_ChatInfo = {
         RegisterAddonMessagePrefix = function(prefix) assert(prefix == "APRFindV1") end,
@@ -134,6 +165,7 @@ function Fixture.New(options)
     dofile("APR-Core/features/group/PartyFinderProtocol.lua")
     dofile("APR-Core/features/group/PartyProtocol.lua")
     dofile("APR-Core/features/group/PartyFinder.lua")
+    dofile("APR-Core/features/group/PartyFinderWorld.lua")
     local finder = APR.partyFinder
     function finder:MaybeNotifyCandidate(candidate) env.lastCandidate = candidate end
     function finder:HandleInviteMessage() end
@@ -187,7 +219,8 @@ function Fixture.New(options)
     end
     function env:Presence(overrides)
         local own = finder:GetLocalState()
-        local packet = { id = finder.query and finder.query.id or "unrequested", context = own.context,
+        local packet = { id = finder.query and finder.query.id or "unrequested",
+            context = finder.query and finder.query.mode == "world" and own.worldContext or own.context,
             route = own.route, revision = own.revision, progressId = "main:3", step = 3, total = 20,
             map = env.map, level = 18, class = 1, primary = "fr", languages = 2, groupSize = 0,
             leader = true, recruiting = false, afk = false, dnd = false, warMode = false, languageSource = "player" }
@@ -203,7 +236,9 @@ function Fixture.New(options)
         details = details or {}
         channel = channel or "CHANNEL"
         finder:HandleAddonMessage(details.prefix or "APRFindV1", wire, channel, sender or "Peer-Home",
-            details.target or "Local-Home", 0, details.localID or self.channelID, details.name or finder.channelName)
+            details.target or "Local-Home", 0,
+            details.localID or (details.world and finder.worldChannelID or self.channelID),
+            details.name or (details.world and finder.worldChannelName or finder.channelName))
     end
     function env:SetStep(step)
         self.step = step

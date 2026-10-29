@@ -4,7 +4,7 @@ dofile("tests/lua/localization_test_env.lua")
 for _, key in ipairs({
     "GAMEOPTIONS_MENU", "LFG_LIST_SEARCH_AGAIN", "GROUP_INVITE", "WHISPER", "LANGUAGES_LABEL",
     "DEFAULT", "PREVIEW", "ENABLE_SOUND", "MASTER_VOLUME", "FX_VOLUME", "DIALOG_VOLUME",
-    "ENABLE", "LFG_TITLE", "ALL", "NONE", "AUDIO_LABEL", "REQUEST_INVITE", "SECONDS",
+    "ENABLE", "LFG_TITLE", "ALL", "NONE", "AUDIO_LABEL", "REQUEST_INVITE", "SECONDS", "WORLD",
 }) do
     _G[key] = "Native:" .. key
 end
@@ -92,6 +92,20 @@ assert(not general.enabled.disabled() and general.visible.disabled(),
 general.enabled.set({ "enabled" }, true)
 
 local criteria = finderOptions.args.general.args.criteria.args
+local modeCount = 0
+for _ in pairs(criteria.matchMode.values) do modeCount = modeCount + 1 end
+assert(modeCount == 4 and criteria.matchMode.values.world == WORLD,
+    "The four matching scopes include Blizzard's native world label")
+for _, mode in ipairs({"nearby", "step", "zone", "world"}) do
+    assert(type(criteria.matchMode.values[mode]) == "string")
+    criteria.matchMode.set({ "matchMode" }, mode)
+    assert(criteria.matchMode.get({ "matchMode" }) == mode
+        and APR.settings.profile.groupFinder.matchMode == mode
+        and calls[#calls].kind == "option" and calls[#calls].key == "matchMode" and calls[#calls].value == mode,
+        "Every matching scope uses the shared saved preference callback")
+    assert(criteria.stepRange.disabled() == (mode ~= "nearby"),
+        "Only nearby-step matching enables the margin")
+end
 criteria.matchMode.set({ "matchMode" }, "step")
 assert(criteria.stepRange.disabled(), "A nearby-step margin is irrelevant to exact-step matching")
 criteria.matchMode.set({ "matchMode" }, "nearby")

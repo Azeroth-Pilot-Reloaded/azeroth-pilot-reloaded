@@ -129,7 +129,7 @@ function APR:CreateGroupFinderOptions()
     general.enabled.disabled = Unavailable
     local criteria = {
         matchMode = { type = "select", name = L["GF_MATCH_MODE"], order = 1, width = "full", arg = {aprCompact = true},
-            values = { step = L["GF_MATCH_STEP"], nearby = L["GF_MATCH_NEARBY"], zone = L["GF_MATCH_ZONE"] },
+            values = { step = L["GF_MATCH_STEP"], nearby = L["GF_MATCH_NEARBY"], zone = L["GF_MATCH_ZONE"], world = WORLD },
             get = Get, set = Set, disabled = Disabled },
         stepRange = { type = "range", name = L["GF_STEP_RANGE"], order = 2, min = 1, max = 30,
             step = 1, width = "full", arg = {aprCompact = true}, get = Get, set = Set,
