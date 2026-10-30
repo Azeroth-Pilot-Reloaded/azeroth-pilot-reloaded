@@ -14,7 +14,9 @@ function LibStub(name, ...)
     if name == "HereBeDragons-Pins-2.0" then return pins end
     return originalLibStub(name, ...)
 end
-function APR:NewModule() return {RegisterMessage = function() end} end
+function APR:NewModule()
+    return { messages = {}, RegisterMessage = function(self, message, callback) self.messages[message] = callback end }
+end
 C_Map = {GetBestMapForUnit = function() return 1 end, GetPlayerMapPosition = function() return {} end}
 local steps = {}
 for i = 1, 10000 do steps[i] = {Coord = {x = i, y = i}, id = i} end
@@ -36,6 +38,7 @@ function APR:GetStepCoord(step)
     return step.Coord
 end
 dofile("APR-Core/features/navigation/Map.lua")
+local createPin = APR.map.CreatePin
 function APR.map:CreatePin() return {text = {SetText = function() end}, Hide = function() end, ClearAllPoints = function() end} end
 APR.map:AddMapPins()
 assert(filters == 9 and coords == 6, "A 10,000-step route must not trigger 10,000 coordinate/filter evaluations")
@@ -44,3 +47,5 @@ assert(worldPins[1].stepIndex == 3 and worldPins[1].step.id == 4, "Filtered numb
 APR.map:AddMapPins()
 assert(#worldPins == 5 and #miniPins == 2, "Refreshing retains the correct displayed counts")
 print("Map pins: bounded coordinate work, ordered filtered numbering and display limits passed")
+return { env = env, profile = profile, createPin = createPin,
+    worldPins = function() return worldPins end, miniPins = function() return miniPins end }

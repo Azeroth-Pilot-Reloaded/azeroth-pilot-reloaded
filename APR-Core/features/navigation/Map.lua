@@ -7,7 +7,7 @@ local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- frames and pins, and never rewrite unchanged line endpoints.
 local hbdPins = LibStub("HereBeDragons-Pins-2.0")
 APR.map = APR:NewModule("MAP", "AceEvent-3.0")
-APR.map:RegisterMessage("APR_MAP_UPDATE", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:10:callback#1", --[[/APR_DIAG]]function() APR.map:AddMapPins() end--[[APR_DIAG]])--[[/APR_DIAG]])
+APR.map:RegisterMessage("APR_MAP_UPDATE", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:10:callback#1", --[[/APR_DIAG]]function() APR.map:QueueMapPins() end--[[APR_DIAG]])--[[/APR_DIAG]])
 local COSMIC_MAP_ID, WORLD_MAP_ID = 946, 947
 local WorldMapButton = WorldMapFrame:GetCanvas()
 local MapLineFrame
@@ -93,9 +93,9 @@ function APR.map:OnInit()
     self.stepLines.anim = self.stepLines:CreateAnimation(); self.stepLines.anim:SetDuration(0.1)
     self.stepLines:SetLooping("REPEAT")
     self.stepLines:SetScript("OnLoop", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:95:callback#9", --[[/APR_DIAG]]function()
-        if WorldMapFrame:IsShown() and APR.settings.profile.mapshowNextSteps
+        if self.pendingPinRefresh or (WorldMapFrame:IsShown() and APR.settings.profile.mapshowNextSteps
             and (self.pinMapID ~= WorldMapFrame:GetMapID() or self.pinWidth ~= WorldMapButton:GetWidth()
-                or self.pinHeight ~= WorldMapButton:GetHeight()) then self:AddMapPins() end
+                or self.pinHeight ~= WorldMapButton:GetHeight())) then self:AddMapPins() end
         if APR.settings.profile.showMiniMapLine and Minimap:IsShown() then self:UpdateMinimapLine()
         elseif self.minimapRenderCache then self:RemoveMinimapLine() end
         if APR.settings.profile.showMapLine and WorldMapFrame:IsShown() then self:UpdateLine()
@@ -352,6 +352,7 @@ local function PlaceWorldPin(pool, pin, mapID, x, y)
 end--[[APR_DIAG]]; PlaceWorldPin = APRTrace("APR-Core/features/navigation/Map.lua:349:PlaceWorldPin#32", PlaceWorldPin)--[[/APR_DIAG]]
 
 function APR.map:AddMapPins()
+    self.pendingPinRefresh = nil
     self.pinMapID = WorldMapFrame:GetMapID()
     self.pinWidth, self.pinHeight = WorldMapButton:GetWidth(), WorldMapButton:GetHeight()
     if APR.navigationPreview then APR.navigationPreview.routeCache = nil end
@@ -406,32 +407,39 @@ function APR.map:AddMapPins()
             if showWorldPins and worldUsed < worldCount then
                 local x, y = Project(point, mapID)
                 if x and y and x >= 0 and x <= 1 and y >= 0 and y <= 1 then
-                    local pin = AcquirePin(self, self.pinlist, stepIndex, stepIndex, step, "map")
+                    local pin = AcquirePin(self, self.pinlist, worldUsed + 1, stepIndex, step, "map")
                     PlaceWorldPin(self.pinlist, pin, mapID, x, y); worldUsed = worldUsed + 1
                 end
             end
             if profile.minimapshowNextSteps and miniUsed < miniCount then
                 local x, y = Project(point, playerMapID)
                 if x and y then
-                    local pin = AcquirePin(self, self.minimapPinlist, stepIndex, stepIndex, step, "minimap")
+                    local pin = AcquirePin(self, self.minimapPinlist, miniUsed + 1, stepIndex, step, "minimap")
                     hbdPins:AddMinimapIconMap(self.minimapPinlist, pin, playerMapID, x, y, true, true); miniUsed = miniUsed + 1
                 end
             end
         end
     end
 end--[[APR_DIAG]]; APR.map.AddMapPins = APRTrace("APR-Core/features/navigation/Map.lua:354:APR.map:AddMapPins#33", APR.map.AddMapPins)--[[/APR_DIAG]]
-function APR.map:ToggleMapPins() self:AddMapPins() end--[[APR_DIAG]]; APR.map.ToggleMapPins = APRTrace("APR-Core/features/navigation/Map.lua:423:APR.map:ToggleMapPins#34", APR.map.ToggleMapPins)--[[/APR_DIAG]]
+-- The existing map animation observes final state every 0.1 seconds. Share that
+-- cadence across quest/message bursts, with no extra timer or hidden worker.
+function APR.map:QueueMapPins()
+    if self.stepLines then self.pendingPinRefresh = true
+    else self:AddMapPins() end
+end--[[APR_DIAG]]; APR.map.QueueMapPins = APRTrace("APR-Core/features/navigation/Map.lua:426:APR.map:QueueMapPins#34", APR.map.QueueMapPins)--[[/APR_DIAG]]
+function APR.map:ToggleMapPins() self:AddMapPins() end--[[APR_DIAG]]; APR.map.ToggleMapPins = APRTrace("APR-Core/features/navigation/Map.lua:430:APR.map:ToggleMapPins#35", APR.map.ToggleMapPins)--[[/APR_DIAG]]
 APR.map.eventFrame = CreateFrame("Frame")
 for _, event in ipairs({ "CVAR_UPDATE", "QUEST_LOG_UPDATE", "MINIMAP_UPDATE_ZOOM", "ZONE_CHANGED", "ZONE_CHANGED_INDOORS",
     "ZONE_CHANGED_NEW_AREA", "NEW_WMO_CHUNK", "PLAYER_ENTERING_WORLD" }) do APR.map.eventFrame:RegisterEvent(event) end
-APR.map.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:427:callback#35", --[[/APR_DIAG]]function(_, event, ...)
+APR.map.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/Map.lua:434:callback#36", --[[/APR_DIAG]]function(_, event, ...)
     if not APR.settings.profile.enableAddon then
+        APR.map.pendingPinRefresh = nil
         APR.map:RemoveMapIcons(); APR.map:RemoveMiniMapIcons(); APR.map:RemoveMapLine(); APR.map:RemoveMinimapLine(); return
     end
     if event == "CVAR_UPDATE" then
         local cvar, value = ...
         if cvar == "rotateMinimap" or cvar == "ROTATE_MINIMAP" then rotateMinimap = value == "1" end
-    elseif event == "QUEST_LOG_UPDATE" then APR.map:AddMapPins()
+    elseif event == "QUEST_LOG_UPDATE" then APR.map:QueueMapPins()
     elseif event == "MINIMAP_UPDATE_ZOOM" then UpdateMinimapData()
     else
         if APR.navigationPreview then APR.navigationPreview:InvalidateProjectionCache() end
