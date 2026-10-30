@@ -78,9 +78,9 @@ for _, frame in ipairs(frames) do if frame.kind == "StatusBar" then assert(not b
 assert(bar and bar:GetParent() == AfkFrameScreen)
 afk:AFKFrameOnInit()
 local allocated = #frames
-afk:HideFrame()
-afk:HideFrame()
+for _ = 1, 1250 do afk:HideFrame() end
 assert(not AfkFrameScreen:IsShown() and not bar.scripts.OnUpdate)
+assert(#timers == 0, "1,250 ordinary steps without an AFK timer must not queue layout callbacks")
 drain()
 
 local function tick(elapsed)
@@ -112,13 +112,17 @@ tick(20)
 assert(not AfkFrameScreen:IsShown() and not bar.scripts.OnUpdate and not afk.timerEnd,
     "Natural expiry clears the timer and its update script")
 afk:HideFrame()
+drain()
+local beforeBurstRefreshes = refreshes
 for _ = 1, 50 do
     afk:SetAfkTimer(15)
     afk:HideFrame()
     afk:HideFrame()
 end
 assert(#frames == allocated, "Restarting a timer reuses its native bar and font strings")
+assert(#timers == 1, "50 show/hide cycles in one burst must share one deferred layout refresh")
 drain()
+assert(refreshes == beforeBurstRefreshes + 1, "Only the final visibility state refreshes dependent panels")
 
 afk:ToggleFakeTimer()
 assert(afk.fakeTimerActive and bar.value == 300)

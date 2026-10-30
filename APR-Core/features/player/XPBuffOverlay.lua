@@ -131,6 +131,7 @@ local function CreateRow(itemID)
         APR:RegisterSkinTarget(dismiss, "close")
     end
     row:Hide()
+    row.active = false
     return row
 end--[[APR_DIAG]]; CreateRow = APRTrace("APR-Core/features/player/XPBuffOverlay.lua:90:CreateRow#10", CreateRow)--[[/APR_DIAG]]
 
@@ -157,12 +158,12 @@ function overlay:Refresh()
         header:EnableMouse(true)
         header.MinimizeButton:GetNormalTexture():SetAtlas("redbutton-exit")
         header.MinimizeButton:GetPushedTexture():SetAtlas("redbutton-exit-pressed")
-        header.MinimizeButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:160:callback#15", --[[/APR_DIAG]]function() overlay:HideOverlay() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        header.MinimizeButton:SetScript("OnClick", --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:161:callback#15", --[[/APR_DIAG]]function() overlay:HideOverlay() end--[[APR_DIAG]])--[[/APR_DIAG]])
         SetDismissTooltip(header.MinimizeButton, "XP_BUFF_HIDE_OVERLAY_DESC")
-        header:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:162:callback#16", --[[/APR_DIAG]]function(_, mouseButton)
+        header:SetScript("OnMouseDown", --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:163:callback#16", --[[/APR_DIAG]]function(_, mouseButton)
             if mouseButton == "LeftButton" and not InCombatLockdown() then frame:StartMoving() end
         end--[[APR_DIAG]])--[[/APR_DIAG]])
-        header:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:165:callback#17", --[[/APR_DIAG]]function(_, mouseButton)
+        header:SetScript("OnMouseUp", --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:166:callback#17", --[[/APR_DIAG]]function(_, mouseButton)
             if mouseButton == "LeftButton" and not InCombatLockdown() then
                 frame:StopMovingOrSizing()
                 LibWindow.SavePosition(frame)
@@ -181,9 +182,9 @@ function overlay:Refresh()
         LibWindow.RestorePosition(frame)
     end
     APR:SetPanelColor(frame, profile.currentStepbackgroundColorAlpha)
-    for _, row in pairs(rows) do row:Hide() end
     if not profile.enableAddon or not APR.ActiveRoute or profile.showXPBuffOverlay == false or APR:IsPetBattleActive() or
         UnitLevel("player") >= APR:GetPlayerMaxLevel() then
+        for _, row in pairs(rows) do if row.active then row:Hide(); row.active = false end end
         frame:Hide()
         return
     end
@@ -202,18 +203,24 @@ function overlay:Refresh()
         profile.xpBuffOverlayDismissed = nil
     end
     local count = 0
+    for _, row in pairs(rows) do row.used = false end
     local function ShowRow(key, itemID, text, sourceName)
         if not self:IsBonusEnabled(sourceName) then return end
         local row = rows[key] or CreateRow(itemID)
         rows[key] = row
         row.bonusSource = sourceName
-        row:ClearAllPoints()
-        row:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, -8 - count * 36)
-        row.label:SetText(text)
-        if itemID then row.icon:SetTexture(C_Item.GetItemIconByID(itemID)) end
-        row:Show()
+        row.used = true
+        if row.rowIndex ~= count then
+            row:ClearAllPoints()
+            row:SetPoint("TOPLEFT", frame, "TOPLEFT", 5, -8 - count * 36)
+            row.rowIndex = count
+        end
+        if row.labelText ~= text then row.label:SetText(text); row.labelText = text end
+        local icon = itemID and C_Item.GetItemIconByID(itemID)
+        if icon and row.iconTexture ~= icon then row.icon:SetTexture(icon); row.iconTexture = icon end
+        if not row.active then row:Show(); row.active = true end
         count = count + 1
-    end--[[APR_DIAG]]; ShowRow = APRTrace("APR-Core/features/player/XPBuffOverlay.lua:205:ShowRow#18", ShowRow)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; ShowRow = APRTrace("APR-Core/features/player/XPBuffOverlay.lua:207:ShowRow#18", ShowRow)--[[/APR_DIAG]]
     if C_PvP and C_PvP.IsWarModeActive and C_PvP.IsWarModeDesired and
         not C_PvP.IsWarModeActive() and not C_PvP.IsWarModeDesired() and
         UnitLevel("player") >= 20 then
@@ -223,18 +230,27 @@ function overlay:Refresh()
         local name = C_Item.GetItemInfo(itemID) or ("item:" .. itemID)
         ShowRow(itemID, itemID, string.format(L["USE_ITEM"], name), GetItemBonusSource(itemID))
     end
-    frame:SetHeight(math.max(40, count * 36 + 16))
-    frame:SetShown(count > 0)
-end--[[APR_DIAG]]; overlay.Refresh = APRTrace("APR-Core/features/player/XPBuffOverlay.lua:137:overlay:Refresh#14", overlay.Refresh)--[[/APR_DIAG]]
+    for _, row in pairs(rows) do if not row.used and row.active then row:Hide(); row.active = false end end
+    local height = math.max(40, count * 36 + 16)
+    if self.contentHeight ~= height then frame:SetHeight(height); self.contentHeight = height end
+    if frame:IsShown() ~= (count > 0) then frame:SetShown(count > 0) end
+end--[[APR_DIAG]]; overlay.Refresh = APRTrace("APR-Core/features/player/XPBuffOverlay.lua:138:overlay:Refresh#14", overlay.Refresh)--[[/APR_DIAG]]
 
 function overlay:QueueRefresh()
-    if self.refreshPending then return end
+    if self.refreshPending or InCombatLockdown() then return end
+    local profile = APR.settings and APR.settings.profile
+    if not profile or not profile.enableAddon or not APR.ActiveRoute or profile.showXPBuffOverlay == false
+        or UnitLevel("player") >= APR:GetPlayerMaxLevel() then
+        -- A visible panel still needs one refresh to hide. An inactive overlay
+        -- must not allocate a timer/UI on every aura, item or usability event.
+        if not frame or not frame:IsShown() then return end
+    end
     self.refreshPending = true
-    C_Timer.After(0.1, --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:233:callback#20", --[[/APR_DIAG]]function()
+    C_Timer.After(0.1, --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:249:callback#20", --[[/APR_DIAG]]function()
         self.refreshPending = false
         self:Refresh()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; overlay.QueueRefresh = APRTrace("APR-Core/features/player/XPBuffOverlay.lua:230:overlay:QueueRefresh#19", overlay.QueueRefresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; overlay.QueueRefresh = APRTrace("APR-Core/features/player/XPBuffOverlay.lua:239:overlay:QueueRefresh#19", overlay.QueueRefresh)--[[/APR_DIAG]]
 
 -- These events are independent of the active route and the route event dispatcher.
 local events = CreateFrame("Frame")
@@ -242,9 +258,11 @@ for _, event in ipairs({ "PLAYER_ENTERING_WORLD", "UNIT_AURA", "BAG_UPDATE_DELAY
     "GET_ITEM_INFO_RECEIVED", "SPELL_UPDATE_USABLE", "PLAYER_LEVEL_UP", "WAR_MODE_STATUS_UPDATE",
     "PLAYER_FLAGS_CHANGED", "PLAYER_REGEN_ENABLED", "PET_BATTLE_OPENING_START", "PET_BATTLE_CLOSE",
     "ZONE_CHANGED", "ZONE_CHANGED_INDOORS", "ZONE_CHANGED_NEW_AREA" }) do
-    events:RegisterEvent(event)
+    APR:RegisterSupportedEvent(events, event, event == "UNIT_AURA" and "player" or nil)
 end
-events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:247:callback#21", --[[/APR_DIAG]]function(_, event, unit)
+events:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/player/XPBuffOverlay.lua:263:callback#21", --[[/APR_DIAG]]function(_, event, unit)
     if event == "UNIT_AURA" and ((issecretvalue and issecretvalue(unit)) or unit ~= "player") then return end
+    if event == "PLAYER_FLAGS_CHANGED" and unit ~= "player" then return end
+    if event == "GET_ITEM_INFO_RECEIVED" and not GetItemBonusSource(unit) then return end
     overlay:QueueRefresh()
 end--[[APR_DIAG]])--[[/APR_DIAG]])
