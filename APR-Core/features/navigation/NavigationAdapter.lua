@@ -1070,7 +1070,13 @@ local frame = CreateFrame("Frame")
 Adapter.frame = frame
 frame:RegisterEvent("HEARTHSTONE_BOUND")
 frame:RegisterEvent("PLAYER_ENTERING_WORLD")
-frame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
+if APR.RegisterSupportedEvent then
+    APR:RegisterSupportedEvent(frame, "UNIT_SPELLCAST_SUCCEEDED", "player")
+elseif frame.RegisterUnitEvent then
+    frame:RegisterUnitEvent("UNIT_SPELLCAST_SUCCEEDED", "player")
+else
+    frame:RegisterEvent("UNIT_SPELLCAST_SUCCEEDED")
+end
 frame:RegisterEvent("ADDONS_UNLOADING")
 local availabilityChanges = { QUEST_ACCEPTED = true, QUEST_REMOVED = true, QUEST_TURNED_IN = true,
     QUEST_LOG_UPDATE = true, PLAYER_LEVEL_UP = true, ACHIEVEMENT_EARNED = true,
@@ -1091,7 +1097,11 @@ if C_Housing then
     frame:RegisterEvent("NEIGHBORHOOD_MAP_DATA_UPDATED")
     frame:RegisterEvent("TRACKED_HOUSE_CHANGED")
 end
-frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1094:callback#107", --[[/APR_DIAG]]function(_, event, payload, _, spellID)
+frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1100:callback#107", --[[/APR_DIAG]]function(_, event, payload, _, spellID)
+    -- Keep the Lua filter for clients without unit-scoped registration. Combat
+    -- traffic from other units must not invalidate a published travel plan.
+    if event == "UNIT_SPELLCAST_SUCCEEDED"
+        and (not Accessible(payload) or payload ~= "player" or not Number(spellID)) then return end
     if event == "CALENDAR_UPDATE_EVENT_LIST" then Adapter.calendarReady = true end
     if event == "PLAYER_ENTERING_WORLD" then
         Adapter.calendarReady = false
@@ -1150,7 +1160,7 @@ frame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/
                 deadline = (GetTime and GetTime() or 0) + 60 }
             if Adapter.bindTicker then Adapter.bindTicker:Cancel() end
             if C_Timer and C_Timer.NewTicker then
-                Adapter.bindTicker = C_Timer.NewTicker(0.25, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1153:callback#108", --[[/APR_DIAG]]function() Adapter:CheckBindLanding() end--[[APR_DIAG]])--[[/APR_DIAG]])
+                Adapter.bindTicker = C_Timer.NewTicker(0.25, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1163:callback#108", --[[/APR_DIAG]]function() Adapter:CheckBindLanding() end--[[APR_DIAG]])--[[/APR_DIAG]])
             end
         end
     elseif event == "PLAYER_HOUSE_LIST_UPDATED" then
@@ -1171,7 +1181,7 @@ end--[[APR_DIAG]])--[[/APR_DIAG]])
 -- Holiday boundaries can pass while the player remains in one zone. No saved
 -- calendar result survives them; live departure checks use the server clock.
 if C_Timer and C_Timer.NewTicker and C_Calendar and next(Data.config.Holidays or {}) then
-    Adapter.availabilityTicker = C_Timer.NewTicker(60, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1174:callback#109", --[[/APR_DIAG]]function()
+    Adapter.availabilityTicker = C_Timer.NewTicker(60, --[[APR_DIAG]]APRTrace("APR-Core/features/navigation/NavigationAdapter.lua:1184:callback#109", --[[/APR_DIAG]]function()
         Call(C_Calendar.OpenCalendar)
         Changed(nil, "CALENDAR_UPDATE_EVENT_LIST")
     end--[[APR_DIAG]])--[[/APR_DIAG]])
