@@ -88,7 +88,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/ui/route/FillersFrame.lua"] = {instrumented = 28, diagnosticHelpers = 0},
     ["APR-Core/ui/route/QuestOrderList.lua"] = {instrumented = 39, diagnosticHelpers = 0},
     ["APR-Core/ui/route/QuestOrderListRows.lua"] = {instrumented = 16, diagnosticHelpers = 0},
-    ["APR-Core/ui/route/QuestOrderListSupport.lua"] = {instrumented = 22, diagnosticHelpers = 0},
+    ["APR-Core/ui/route/QuestOrderListSupport.lua"] = {instrumented = 25, diagnosticHelpers = 0},
     ["APR-Core/ui/route/QuestionPopUp.lua"] = {instrumented = 15, diagnosticHelpers = 0},
     ["APR-Core/ui/route/RouteBrowser.lua"] = {instrumented = 32, diagnosticHelpers = 0},
     ["APR-Core/ui/route/RouteBrowserRows.lua"] = {instrumented = 15, diagnosticHelpers = 0},
