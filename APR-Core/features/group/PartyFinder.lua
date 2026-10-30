@@ -12,8 +12,8 @@ local Finder = APR.partyFinder
 local PREFIX = "APRFindV1"
 local ZERO = "00000000"
 local CACHE_TTL, CACHE_LIMIT, RESULT_LIMIT = 120, 200, 30
-local QUERY_INTERVAL, QUERY_TTL, RESPONSE_INTERVAL = 15, 10, 30
-local WORLD_QUERY_INTERVAL, WORLD_AUTO_QUIET, WORLD_RESPONSE_INTERVAL = 60, 30, 5
+local QUERY_INTERVAL, QUERY_TTL, RESPONSE_INTERVAL = 60, 10, 30
+local AUTO_QUERY_QUIET, RESPONSE_PACE = 30, 5
 local PRESENTATION_OPTIONS = { showButton = true, showBadge = true }
 local ALERT_OPTIONS = { notifications = true, notificationCooldown = true, soundEnabled = true, soundChannel = true }
 local PROGRESS_KEYS = {
@@ -133,7 +133,6 @@ function Finder:GetZone()
 end--[[APR_DIAG]]; Finder.GetZone = APRTrace("APR-Core/features/group/PartyFinder.lua:123:Finder:GetZone#16", Finder.GetZone)--[[/APR_DIAG]]
 
 function Finder:GetContext(map)
-    if not map then return end
     local client = APR:GetGameVersion()
     local faction = UnitFactionGroup("player") or "Unknown"
     local rules = {}
@@ -146,7 +145,7 @@ function Finder:GetContext(map)
     local chromie = C_PlayerInfo and C_PlayerInfo.IsPlayerInChromieTime and C_PlayerInfo.IsPlayerInChromieTime() or false
     local fields = {client, faction, table.concat(rules), tostring(map),
         warMode and "1" or "0", chromie and "1" or "0"}
-    local context = P.Hash(table.concat(fields, ":"))
+    local context = map and P.Hash(table.concat(fields, ":")) or nil
     fields[4] = "world"
     return context, warMode, P.Hash(table.concat(fields, ":"))
 end--[[APR_DIAG]]; Finder.GetContext = APRTrace("APR-Core/features/group/PartyFinder.lua:135:Finder:GetContext#17", Finder.GetContext)--[[/APR_DIAG]]
@@ -171,11 +170,12 @@ function Finder:StartFingerprint(route, definition)
         if done then
             self.revision, self.fingerprintJob = digest, nil
             self.localDirty = true
-            if self.searchWanted then self:Search() else self:Notify() end
+            if self.searchWanted then self:Search()
+            else self:QueueStateRefresh(true); self:Notify() end
         else self:SetTimer("fingerprintTimer", 0, run) end
-    end--[[APR_DIAG]]; run = APRTrace("APR-Core/features/group/PartyFinder.lua:162:run#19", run)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; run = APRTrace("APR-Core/features/group/PartyFinder.lua:161:run#19", run)--[[/APR_DIAG]]
     self:SetTimer("fingerprintTimer", 0, run)
-end--[[APR_DIAG]]; Finder.StartFingerprint = APRTrace("APR-Core/features/group/PartyFinder.lua:154:Finder:StartFingerprint#18", Finder.StartFingerprint)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.StartFingerprint = APRTrace("APR-Core/features/group/PartyFinder.lua:153:Finder:StartFingerprint#18", Finder.StartFingerprint)--[[/APR_DIAG]]
 
 function Finder:GetLocalState()
     if self.localState and not self.localDirty then return self.localState end
@@ -231,36 +231,25 @@ function Finder:Notify()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
 end--[[APR_DIAG]]; Finder.Notify = APRTrace("APR-Core/features/group/PartyFinder.lua:224:Finder:Notify#23", Finder.Notify)--[[/APR_DIAG]]
 
-function Finder:Send(kind, data, channel, target, control)
+function Finder:Send(kind, data, channel, target, control, guard, ttl)
     if (not self:IsEnabled() and kind ~= "W") or self:IsRestricted() then self.status = "restricted"; return false end
     local wire = P.Encode(kind, data)
     if not wire or not C_ChatInfo or not C_ChatInfo.SendAddonMessage then return false end
-    local function complete(_, sent)
-        if sent == false then self.status = "throttled"; self:Notify() end
-    end--[[APR_DIAG]]; complete = APRTrace("APR-Core/features/group/PartyFinder.lua:238:complete#26", complete)--[[/APR_DIAG]]
-    -- Low-rate control sends retain the API result so unsupported transports are visible.
-    -- Presence is paced by our cancellable queue. Do not leave private snapshots
-    -- in an uncancellable library queue after visibility/language preferences change.
-    if ChatThrottleLib and kind == "D" then
-        ChatThrottleLib:SendAddonMessage("BULK", PREFIX, wire, channel, target, nil, complete)
-        self.sentCount = (self.sentCount or 0) + 1
-        return true
+    if channel == "WHISPER" then
+        return self:SendDirect(kind, wire, target, guard, ttl)
     end
+    local transport = APR.CommunicationChannel
+    target = transport and transport:GetSendChannelID()
+    if not target then return false end
+    -- Discovery controls are tiny, already bounded and require the native result.
+    -- No snapshot or expired query is left in an uncancellable library queue.
     local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](C_ChatInfo.SendAddonMessage, PREFIX, wire, channel, target)
     local codes = Enum and Enum.SendAddonMessageResult or {}
     if not ok or (codes.InvalidChatType ~= nil and result == codes.InvalidChatType)
         or (codes.InvalidChannel ~= nil and result == codes.InvalidChannel) then
-        -- A withdrawal may race the channel already disappearing. It is best
-        -- effort cleanup and must never tear down another active transport.
-        if kind == "W" then return false end
-        if channel == "CHANNEL" and target == self.worldChannelID then
-            local context = self.worldContext
-            self:ReleaseWorldChannel(false)
-            self.worldFailedContext, self.worldStatus = context, "unavailable"
-        else
-            self.failedContext = self.context
-            self:StopTransport(false)
-        end
+        if kind == "W" or kind == "D" then return false end
+        self:ReleaseChannel(false)
+        self.transportFailed = true
         self.status = "unavailable"
         return false
     end
@@ -273,35 +262,46 @@ function Finder:Send(kind, data, channel, target, control)
     return true
 end--[[APR_DIAG]]; Finder.Send = APRTrace("APR-Core/features/group/PartyFinder.lua:234:Finder:Send#25", Finder.Send)--[[/APR_DIAG]]
 
--- Leaving discovery must not revoke private invitation context or discard recent results.
-function Finder:ReleaseZoneChannel(withdraw)
-    if withdraw and self.channelID and self.context then self:Send("W", {}, "CHANNEL", self.channelID, true) end
-    self:CancelTimer("joinTimer")
-    if self.ownsChannel and self.channelName and LeaveChannelByName then LeaveChannelByName(self.channelName) end
-    self.channelID, self.channelName, self.ownsChannel = nil, nil, nil
-end--[[APR_DIAG]]; Finder.ReleaseZoneChannel = APRTrace("APR-Core/features/group/PartyFinder.lua:277:Finder:ReleaseZoneChannel#27", Finder.ReleaseZoneChannel)--[[/APR_DIAG]]
-
+-- The shared membership belongs to owners, never to maps or individual filters.
 function Finder:ReleaseChannel(withdraw)
-    self:ReleaseZoneChannel(withdraw)
-    self:ReleaseWorldChannel(withdraw)
-    for _, timer in ipairs({"queryTimer", "replyTimer"}) do self:CancelTimer(timer) end
+    if withdraw and self.channelID then self:Send("W", {}, "CHANNEL", self.channelID, true) end
+    if self.CancelDirectPresence then self:CancelDirectPresence() end
+    if APR.CommunicationChannel then APR.CommunicationChannel:Release("partyFinder") end
+    for _, timer in ipairs({"queryTimer", "replyTimer", "worldCountTimer"}) do self:CancelTimer(timer) end
+    self.channelID, self.channelName, self.worldChannelID, self.worldChannelName = nil, nil, nil, nil
+    self.worldPopulation, self.worldDisplayIndex = nil, nil
     self.query, self.searchWanted = nil, nil
     self.responses, self.requestTimes = {}, {}
-end--[[APR_DIAG]]; Finder.ReleaseChannel = APRTrace("APR-Core/features/group/PartyFinder.lua:284:Finder:ReleaseChannel#28", Finder.ReleaseChannel)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.ReleaseChannel = APRTrace("APR-Core/features/group/PartyFinder.lua:266:Finder:ReleaseChannel#26", Finder.ReleaseChannel)--[[/APR_DIAG]]
 
 function Finder:StopTransport(withdraw)
     self:ReleaseChannel(withdraw)
     self:CancelTimer("stateTimer")
     self:CancelTimer("expiryTimer")
-    self.context = nil
+    self.context, self.worldContext, self.discoverySuspended = nil, nil, nil
     self.responses, self.candidates, self.requestTimes, self.repliedTo = {}, {}, {}, {}
     self.candidateList, self.candidatesDirty, self.listExpires = nil, true, nil
-end--[[APR_DIAG]]; Finder.StopTransport = APRTrace("APR-Core/features/group/PartyFinder.lua:292:Finder:StopTransport#29", Finder.StopTransport)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.StopTransport = APRTrace("APR-Core/features/group/PartyFinder.lua:277:Finder:StopTransport#27", Finder.StopTransport)--[[/APR_DIAG]]
+
+function Finder:SuspendDiscovery(status)
+    self.discoverySuspended, self.status = status, status
+    if self.query and self.channelID and not self:IsRestricted() then
+        self:Send("D", {id = self.query.id}, "CHANNEL", self.channelID, true)
+    end
+    self:CancelTimer("queryTimer")
+    self:CancelTimer("replyTimer")
+    self.query, self.responses = nil, {}
+    self.candidates, self.requestTimes, self.repliedTo = {}, {}, {}
+    self.candidateList, self.candidatesDirty, self.listExpires = nil, true, nil
+    self:ScheduleExpiry()
+    if self.CancelDirectPresence then self:CancelDirectPresence() end
+end--[[APR_DIAG]]; Finder.SuspendDiscovery = APRTrace("APR-Core/features/group/PartyFinder.lua:286:Finder:SuspendDiscovery#28", Finder.SuspendDiscovery)--[[/APR_DIAG]]
 
 function Finder:RefreshTransport(noResume)
     if not self:IsEnabled() then self:StopTransport(true); self.status = "disabled"; return end
-    if not self:GetSettings().visible and not self.query and not self.searchWanted then
-        if self.channelName or self.worldChannelName then self:ReleaseChannel(false); self:ScheduleExpiry() end
+    local settings = self:GetSettings()
+    if not settings.visible and not self.query and not self.searchWanted then
+        if self.channelName then self:ReleaseChannel(false); self:ScheduleExpiry() end
         if self.fingerprintJob and not next(self.candidates) then
             self:CancelTimer("fingerprintTimer")
             self.fingerprintJob, self.fingerprintRoute, self.fingerprintDefinition, self.revision = nil, nil, nil, nil
@@ -310,80 +310,51 @@ function Finder:RefreshTransport(noResume)
         self.status = "idle"
         return
     end
-    if self:IsRestricted() then self:StopTransport(true); self.status = "restricted"; return end
-    if self:IsDiscoveryInstance() then self:StopTransport(true); self.status = "instance"; return end
-    local state = self:GetLocalState()
-    if not state or not state.context then self:StopTransport(true); self.status = "unavailable"; return end
-    if self.context ~= state.context then
-        local wanted = self.searchWanted
-        if self.worldContext and self.worldContext == state.worldContext then
-            -- A zone transition must not churn worldwide membership or its query.
-            if self.query and self.query.mode ~= "world" then
-                self:Send("D", {id = self.query.id}, "CHANNEL", self.query.channelID or self.channelID, true)
-                self.query = nil
-                self:CancelTimer("queryTimer")
-            end
-            self:ReleaseZoneChannel(true)
-            for sender, pending in pairs(self.responses) do
-                if pending.query.mode ~= "world" then self.responses[sender] = nil end
-            end
-            self:CancelTimer("replyTimer")
-            self:ScheduleResponses()
-        else self:StopTransport(true) end
-        self.searchWanted = wanted
-        self.context = state.context
-    end
-    self:RefreshWorldChannel(state, noResume)
-    local settings = self:GetSettings()
-    if settings.visible or settings.matchMode ~= "world" then self:RefreshZoneChannel(state, noResume) end
-    if settings.matchMode == "world" then
-        self.status = self.query and "searching" or self.worldStatus or "unavailable"
-    end
-end--[[APR_DIAG]]; Finder.RefreshTransport = APRTrace("APR-Core/features/group/PartyFinder.lua:301:Finder:RefreshTransport#30", Finder.RefreshTransport)--[[/APR_DIAG]]
-
-function Finder:RefreshZoneChannel(state, noResume)
+    local transport = APR.CommunicationChannel
+    if not transport then self:SuspendDiscovery("unavailable"); return end
+    if self.transportFailed then self:SuspendDiscovery("unavailable"); return end
     if not self.channelName then
-        self.channelName = "APRFind" .. state.context:gsub("%x", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:346:callback#32", --[[/APR_DIAG]]function(char) return string.char(97 + tonumber(char, 16)) end--[[APR_DIAG]])--[[/APR_DIAG]])
+        if self:IsRestricted() then self:SuspendDiscovery("restricted"); return end
+        if self:IsDiscoveryInstance() then self:SuspendDiscovery("instance"); return end
     end
-    if not JoinTemporaryChannel or not GetChannelName or not C_ChatInfo or APR:GetGameVersion() == "classic"
-        or self.failedContext == self.context then self.status = "unavailable"; return end
-    local id = GetChannelName(self.channelName)
-    if id and id > 0 then
-        self.channelID = id
-        self:CancelTimer("joinTimer")
-        if self.status ~= "searching" then self.status = "ready" end
-        if self.searchWanted and not noResume and self:GetSettings().matchMode ~= "world" then
-            self.searchWanted = nil; self:Search()
+    if not self.channelReadyCallback then
+        self.channelReadyCallback = --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:321:callback#30", --[[/APR_DIAG]]function(id, status)
+            local changed = self.channelID ~= id
+            self.channelID, self.channelName = id, transport.name
+            -- Kept as local aliases for population/discovery helpers, never a second membership.
+            self.worldChannelID, self.worldChannelName = id, transport.name
+            if self.query and id then self.query.channelID = id end
+            if changed then self:RefreshWorldPopulation() end
+            self.status = self.query and "searching" or status
+            self:QueueStateRefresh(true)
+        end--[[APR_DIAG]])--[[/APR_DIAG]]
+    end
+    local status, id = transport:Acquire("partyFinder", self.channelReadyCallback)
+    self.channelID, self.channelName = id, transport.name
+    self.worldChannelID, self.worldChannelName = id, transport.name
+    if status == "unavailable" and not id then self:SuspendDiscovery("unavailable"); return end
+    if self:IsRestricted() then self:SuspendDiscovery("restricted"); return end
+    if self:IsDiscoveryInstance() then self:SuspendDiscovery("instance"); return end
+    local state = self:GetLocalState()
+    if not state or not state.context then self:SuspendDiscovery("unavailable"); return end
+    local zoneChanged, compatibilityChanged = self.context ~= state.context, self.worldContext ~= state.worldContext
+    if zoneChanged or compatibilityChanged then
+        if self.query and (compatibilityChanged or self.query.mode ~= "world") then self:FinishQuery() end
+        if compatibilityChanged and self.worldContext then
+            if id then self:Send("W", {}, "CHANNEL", id, true) end
+            self.candidates, self.candidateList, self.candidatesDirty = {}, nil, true
         end
-        return
+        for sender, pending in pairs(self.responses) do
+            if compatibilityChanged or pending.query.mode ~= "world" then self.responses[sender] = nil end
+        end
+        if self.CancelDirectPresence then self:CancelDirectPresence() end
+        self:CancelTimer("replyTimer")
+        self:ScheduleResponses()
     end
-    if self.joinTimer then return end
-    self.status, self.ownsChannel = "joining", true
-    local name, context = self.channelName, self.context
-    self:SetTimer("joinTimer", 10, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:363:callback#33", --[[/APR_DIAG]]function()
-        if self.context ~= context then return end
-        local joined = GetChannelName(name)
-        if joined and joined > 0 then
-            self.channelID = joined
-            if self:GetSettings().matchMode ~= "world" then self.status = "ready" end
-            if self.searchWanted and self:GetSettings().matchMode ~= "world" then self:Search() end
-        else self:FailZoneChannel(context) end
-        self:Notify()
-    end--[[APR_DIAG]])--[[/APR_DIAG]])
-    local ok = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](JoinTemporaryChannel, name)
-    if not ok then self:FailZoneChannel(context); return end
-    id = GetChannelName(name)
-    if id and id > 0 then self.channelID = id; self:CancelTimer("joinTimer"); self.status = "ready" end
-end--[[APR_DIAG]]; Finder.RefreshZoneChannel = APRTrace("APR-Core/features/group/PartyFinder.lua:344:Finder:RefreshZoneChannel#31", Finder.RefreshZoneChannel)--[[/APR_DIAG]]
-
-function Finder:FailZoneChannel(context)
-    self:ReleaseZoneChannel(false)
-    self.failedContext = context
-    if self:GetSettings().matchMode ~= "world" then
-        self:StopTransport(false)
-        self.status = "unavailable"
-    end
-end--[[APR_DIAG]]; Finder.FailZoneChannel = APRTrace("APR-Core/features/group/PartyFinder.lua:379:Finder:FailZoneChannel#34", Finder.FailZoneChannel)--[[/APR_DIAG]]
+    self.context, self.worldContext, self.discoverySuspended = state.context, state.worldContext, nil
+    self.status = self.query and "searching" or status
+    if id and self.searchWanted and not noResume then self:Search() end
+end--[[APR_DIAG]]; Finder.RefreshTransport = APRTrace("APR-Core/features/group/PartyFinder.lua:300:Finder:RefreshTransport#29", Finder.RefreshTransport)--[[/APR_DIAG]]
 
 function Finder:Matches(state, query)
     if not state or not query then return false end
@@ -402,7 +373,7 @@ function Finder:Matches(state, query)
     if query.mode == "step" then return status == "same" end
     -- Unknown revisions/branches can be browsed in zone mode without inventing proximity.
     return status == "same" or gap ~= nil and math.abs(gap) <= (query.range or 5)
-end--[[APR_DIAG]]; Finder.Matches = APRTrace("APR-Core/features/group/PartyFinder.lua:388:Finder:Matches#35", Finder.Matches)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.Matches = APRTrace("APR-Core/features/group/PartyFinder.lua:359:Finder:Matches#31", Finder.Matches)--[[/APR_DIAG]]
 
 function Finder:MakeQuery(state)
     local settings = self:GetSettings()
@@ -417,28 +388,23 @@ function Finder:MakeQuery(state)
         mode = settings.matchMode, range = settings.stepRange, minLevel = settings.minLevel,
         maxLevel = settings.maxLevel, primary = state.primary, languages = state.languages,
     }
-end--[[APR_DIAG]]; Finder.MakeQuery = APRTrace("APR-Core/features/group/PartyFinder.lua:407:Finder:MakeQuery#36", Finder.MakeQuery)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.MakeQuery = APRTrace("APR-Core/features/group/PartyFinder.lua:378:Finder:MakeQuery#32", Finder.MakeQuery)--[[/APR_DIAG]]
 
 function Finder:Search(automatic)
     if not self:IsEnabled() then self.status = "disabled"; self:Notify(); return false, self.status end
     local now = GetTime()
-    local world = self:GetSettings().matchMode == "world"
-    -- Co-operating auto-scans yield after another worldwide query. Manual
-    -- searches remain available, with their own longer minimum interval.
-    if world and automatic and self.lastWorldQuerySeen and now - self.lastWorldQuerySeen < WORLD_AUTO_QUIET then
-        return false, "throttled"
-    end
     if self.lastSearch and now - self.lastSearch < QUERY_INTERVAL
-        or world and self.lastWorldSearch and now - self.lastWorldSearch < WORLD_QUERY_INTERVAL then
+        or automatic and self.lastDiscoveryQuerySeen and now - self.lastDiscoveryQuerySeen < AUTO_QUERY_QUIET then
         if not self.query then self.status = "throttled" end
         self:Notify(); return false, "throttled"
     end
-    if not automatic then self.failedContext, self.worldFailedContext = nil, nil end
+    local world = self:GetSettings().matchMode == "world"
+    if not automatic then self.transportFailed = nil end
     self.localDirty, self.searchWanted = true, true
     self:RefreshTransport(true)
-    local channelID
-    if world then channelID = self.worldChannelID else channelID = self.channelID end
-    if not channelID then self:Notify(); return false, self.status end
+    if not automatic and APR.CommunicationChannel then APR.CommunicationChannel:Retry() end
+    local channelID = self.channelID
+    if not channelID or self.discoverySuspended then self:Notify(); return false, self.status end
     local state = self:GetLocalState()
     if state.route == ZERO and self:GetSettings().matchMode ~= "zone" and not world then
         self.searchWanted = nil
@@ -448,47 +414,48 @@ function Finder:Search(automatic)
     if self.fingerprintJob and not world then self:Notify(); return false, "joining" end
     local query = self:MakeQuery(state)
     query.id = tostring(math.floor(GetTime() * 1000)) .. "-" .. tostring(math.random(100000, 999999))
-    self.searchWanted = nil
-    self.lastSearch = now
-    if world then self.lastWorldSearch = now end
+    self.searchWanted, self.lastSearch = nil, now
     if not self:Send("Q", query, "CHANNEL", channelID, true) then
         if not self:GetSettings().visible and not self.query then self:ReleaseChannel(false); self:ScheduleExpiry() end
         self:Notify(); return false, self.status
     end
-    self.query, self.lastSearch, self.status = query, now, "searching"
-    query.channelID = channelID
-    if world then self.lastWorldQuerySeen = now end
-    query.count, query.expires = 0, now + QUERY_TTL
-    self:SetTimer("queryTimer", QUERY_TTL, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:462:callback#38", --[[/APR_DIAG]]function() self:FinishQuery() end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self.query, self.status = query, "searching"
+    self.lastDiscoveryQuerySeen, self.lastWorldQuerySeen = now, now
+    if world then self.lastWorldSearch = now end
+    query.channelID, query.count, query.expires = self.channelID, 0, now + QUERY_TTL
+    self:SetTimer("queryTimer", QUERY_TTL, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:426:callback#34", --[[/APR_DIAG]]function() self:FinishQuery() end--[[APR_DIAG]])--[[/APR_DIAG]])
     self:Notify()
     return true
-end--[[APR_DIAG]]; Finder.Search = APRTrace("APR-Core/features/group/PartyFinder.lua:422:Finder:Search#37", Finder.Search)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.Search = APRTrace("APR-Core/features/group/PartyFinder.lua:393:Finder:Search#33", Finder.Search)--[[/APR_DIAG]]
 
 function Finder:FinishQuery()
     local query = self.query
     self.query = nil
     self:CancelTimer("queryTimer")
-    if query and (query.channelID or self.channelID) then
-        self:Send("D", {id = query.id}, "CHANNEL", query.channelID or self.channelID, true)
+    if query and self.channelID then
+        self:Send("D", {id = query.id}, "CHANNEL", self.channelID, true)
     end
     if not self:GetSettings().visible then self:RefreshTransport() end
     self.status = self:GetCount() > 0 and ((self.channelID or self.worldChannelID) and "ready" or "idle") or "empty"
     self:Notify()
-end--[[APR_DIAG]]; Finder.FinishQuery = APRTrace("APR-Core/features/group/PartyFinder.lua:467:Finder:FinishQuery#39", Finder.FinishQuery)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.FinishQuery = APRTrace("APR-Core/features/group/PartyFinder.lua:431:Finder:FinishQuery#35", Finder.FinishQuery)--[[/APR_DIAG]]
 
 function Finder:CanAnswer(query, sender)
     local settings = self:GetSettings()
-    if not self:IsEnabled() or not settings.visible or self:IsRestricted() or self:IsDiscoveryInstance() then return false end
+    if not self:IsEnabled() or not settings.visible or self:IsRestricted() or self:IsDiscoveryInstance() or self.discoverySuspended then return false end
     local state = self:GetLocalState()
     return state
         and (query.mode == "world" or not self.fingerprintJob) and self:Matches(state, query)
-        and (query.mode ~= "world" or not self.lastWorldResponse or GetTime() - self.lastWorldResponse >= WORLD_RESPONSE_INTERVAL)
+        and (not self.lastResponseAttempt or GetTime() - self.lastResponseAttempt >= RESPONSE_PACE)
         and P.AcceptLanguages(P.LanguagesFromMask(query.languages), settings.visibleLanguages, settings.blockedLanguages)
         and (not self.repliedTo[sender] or GetTime() - self.repliedTo[sender] >= RESPONSE_INTERVAL)
-end--[[APR_DIAG]]; Finder.CanAnswer = APRTrace("APR-Core/features/group/PartyFinder.lua:479:Finder:CanAnswer#40", Finder.CanAnswer)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.CanAnswer = APRTrace("APR-Core/features/group/PartyFinder.lua:443:Finder:CanAnswer#36", Finder.CanAnswer)--[[/APR_DIAG]]
 
 function Finder:QueueResponse(query, sender)
     if not self:IsEnabled() or not self:GetSettings().visible then return end
+    if self.discoverySuspended or self.localDirty then return end
+    local context = query.mode == "world" and self.worldContext or self.context
+    if not context or query.context ~= context then return end
     if query.mode == "world" and not self:CanQueueWorldResponse(query) then return end
     if self.requestTimes[sender] and GetTime() - self.requestTimes[sender] < 1 then return end
     local count = 0
@@ -501,10 +468,10 @@ function Finder:QueueResponse(query, sender)
     self.requestTimes[sender] = GetTime()
     self:ScheduleExpiry()
     if not self:CanAnswer(query, sender) then return end
-    self.responses[sender] = {query = query, due = GetTime() + math.random(25, query.mode == "world" and 900 or 300) / 100,
+    self.responses[sender] = {query = query, due = GetTime() + self:GetDiscoveryResponseDelay(query),
         expires = GetTime() + QUERY_TTL}
     self:ScheduleResponses()
-end--[[APR_DIAG]]; Finder.QueueResponse = APRTrace("APR-Core/features/group/PartyFinder.lua:490:Finder:QueueResponse#41", Finder.QueueResponse)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.QueueResponse = APRTrace("APR-Core/features/group/PartyFinder.lua:454:Finder:QueueResponse#37", Finder.QueueResponse)--[[/APR_DIAG]]
 
 function Finder:ScheduleResponses()
     if self.replyTimer then return end
@@ -515,14 +482,14 @@ function Finder:ScheduleResponses()
     if not next(self.responses) then return end
     local due = math.huge
     for _, entry in pairs(self.responses) do
-        local ready = entry.query.mode == "world" and math.max(entry.due, (self.lastWorldResponse or -100) + WORLD_RESPONSE_INTERVAL) or entry.due
+        local ready = math.max(entry.due, (self.lastResponseAttempt or -100) + RESPONSE_PACE)
         due = math.min(due, ready, entry.expires)
     end
-    self:SetTimer("replyTimer", math.max(0.05, due - GetTime(), (self.lastResponse or -1) + 1 - GetTime()), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:521:callback#43", --[[/APR_DIAG]]function()
+    self:SetTimer("replyTimer", math.max(0.05, due - GetTime(), (self.lastResponse or -1) + 1 - GetTime()), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:488:callback#39", --[[/APR_DIAG]]function()
         local chosen, entry
         local earliest
         for sender, pending in pairs(self.responses) do
-            local ready = pending.query.mode == "world" and math.max(pending.due, (self.lastWorldResponse or -100) + WORLD_RESPONSE_INTERVAL) or pending.due
+            local ready = math.max(pending.due, (self.lastResponseAttempt or -100) + RESPONSE_PACE)
             ready = math.min(ready, pending.expires)
             if not earliest or ready < earliest then chosen, entry, earliest = sender, pending, ready end
         end
@@ -534,10 +501,18 @@ function Finder:ScheduleResponses()
                 data.id = entry.query.id
                 if entry.query.mode == "world" then
                     data.context = data.worldContext
-                    -- Failed/offline sends consume the world attempt budget too.
                     self.lastWorldResponse = GetTime()
                 end
-                if self:Send("P", data, "WHISPER", chosen) then
+                -- Attempts share the budget even if a target is offline or CTL is busy.
+                self.lastResponseAttempt = GetTime()
+                local policy = self.visibilityPolicy
+                local function current()
+                    return GetTime() < entry.expires and self.visibilityPolicy == policy
+                        and self:IsEnabled() and self:GetSettings().visible and not self:IsRestricted()
+                        and not self:IsDiscoveryInstance() and not self.discoverySuspended
+                        and self:Matches(self:GetLocalState(), entry.query)
+                end--[[APR_DIAG]]; current = APRTrace("APR-Core/features/group/PartyFinder.lua:509:current#40", current)--[[/APR_DIAG]]
+                if self:Send("P", data, "WHISPER", chosen, false, current, entry.expires - GetTime()) then
                     self.repliedTo[chosen], self.lastResponse = GetTime(), GetTime()
                 end
             end
@@ -545,7 +520,7 @@ function Finder:ScheduleResponses()
         self:ScheduleResponses()
         self:ScheduleExpiry()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Finder.ScheduleResponses = APRTrace("APR-Core/features/group/PartyFinder.lua:509:Finder:ScheduleResponses#42", Finder.ScheduleResponses)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.ScheduleResponses = APRTrace("APR-Core/features/group/PartyFinder.lua:476:Finder:ScheduleResponses#38", Finder.ScheduleResponses)--[[/APR_DIAG]]
 
 function Finder:HandlePresence(data, sender)
     local query = self.query
@@ -572,7 +547,7 @@ function Finder:HandlePresence(data, sender)
     self:MaybeNotifyCandidate(data)
     self:ScheduleExpiry()
     if query.count >= RESULT_LIMIT then self:FinishQuery() else self:Notify() end
-end--[[APR_DIAG]]; Finder.HandlePresence = APRTrace("APR-Core/features/group/PartyFinder.lua:550:Finder:HandlePresence#44", Finder.HandlePresence)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.HandlePresence = APRTrace("APR-Core/features/group/PartyFinder.lua:525:Finder:HandlePresence#41", Finder.HandlePresence)--[[/APR_DIAG]]
 
 function Finder:GetCandidates()
     if not self:IsEnabled() then return {} end
@@ -600,23 +575,23 @@ function Finder:GetCandidates()
             self.listExpires = math.min(self.listExpires, data.seenAt + CACHE_TTL)
         end
     end
-    table.sort(list, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:603:callback#46", --[[/APR_DIAG]]function(a, b)
+    table.sort(list, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:578:callback#43", --[[/APR_DIAG]]function(a, b)
         local left, right = math.abs(a.gap or 1000000), math.abs(b.gap or 1000000)
         if left ~= right then return left < right end
         return a.key < b.key
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     return list
-end--[[APR_DIAG]]; Finder.GetCandidates = APRTrace("APR-Core/features/group/PartyFinder.lua:577:Finder:GetCandidates#45", Finder.GetCandidates)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.GetCandidates = APRTrace("APR-Core/features/group/PartyFinder.lua:552:Finder:GetCandidates#42", Finder.GetCandidates)--[[/APR_DIAG]]
 
 function Finder:GetCount()
     return #self:GetCandidates()
-end--[[APR_DIAG]]; Finder.GetCount = APRTrace("APR-Core/features/group/PartyFinder.lua:611:Finder:GetCount#47", Finder.GetCount)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.GetCount = APRTrace("APR-Core/features/group/PartyFinder.lua:586:Finder:GetCount#44", Finder.GetCount)--[[/APR_DIAG]]
 
 function Finder:GetCandidateDescription(candidate)
     local status, gap = P.CompareProgress(self:GetLocalState() or {}, candidate)
     if gap and gap ~= 0 then return string.format(L[PROGRESS_KEYS[status]], math.abs(gap)) end
     return L[PROGRESS_KEYS[status]]
-end--[[APR_DIAG]]; Finder.GetCandidateDescription = APRTrace("APR-Core/features/group/PartyFinder.lua:615:Finder:GetCandidateDescription#48", Finder.GetCandidateDescription)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.GetCandidateDescription = APRTrace("APR-Core/features/group/PartyFinder.lua:590:Finder:GetCandidateDescription#45", Finder.GetCandidateDescription)--[[/APR_DIAG]]
 
 function Finder:ScheduleExpiry()
     local earliest = math.huge
@@ -627,7 +602,7 @@ function Finder:ScheduleExpiry()
     if earliest == math.huge then self:CancelTimer("expiryTimer"); return end
     -- Keeping an earlier wakeup is safe; later arrivals should not allocate replacement timers.
     if self.expiryTimer and self.expiryAt <= earliest then return end
-    self:SetTimer("expiryTimer", math.max(0.1, earliest - GetTime()), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:630:callback#50", --[[/APR_DIAG]]function()
+    self:SetTimer("expiryTimer", math.max(0.1, earliest - GetTime()), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:605:callback#47", --[[/APR_DIAG]]function()
         for key, data in pairs(self.candidates) do
             if GetTime() - data.seenAt >= CACHE_TTL then self.candidates[key], self.candidatesDirty = nil, true end
         end
@@ -639,17 +614,17 @@ function Finder:ScheduleExpiry()
         self:ScheduleExpiry()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
     self.expiryAt = math.max(GetTime() + 0.1, earliest)
-end--[[APR_DIAG]]; Finder.ScheduleExpiry = APRTrace("APR-Core/features/group/PartyFinder.lua:621:Finder:ScheduleExpiry#49", Finder.ScheduleExpiry)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.ScheduleExpiry = APRTrace("APR-Core/features/group/PartyFinder.lua:596:Finder:ScheduleExpiry#46", Finder.ScheduleExpiry)--[[/APR_DIAG]]
 
 function Finder:ScheduleAutoScan()
     self:CancelTimer("autoTimer")
     local settings = self:GetSettings()
     if not self:IsEnabled() or not settings.autoScan then return end
-    self:SetTimer("autoTimer", math.random(75, 105), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:648:callback#52", --[[/APR_DIAG]]function()
+    self:SetTimer("autoTimer", math.random(75, 105), --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:623:callback#49", --[[/APR_DIAG]]function()
         if not self:IsRestricted() and not self:IsDiscoveryInstance() then self:Search(true) end
         self:ScheduleAutoScan()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Finder.ScheduleAutoScan = APRTrace("APR-Core/features/group/PartyFinder.lua:644:Finder:ScheduleAutoScan#51", Finder.ScheduleAutoScan)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.ScheduleAutoScan = APRTrace("APR-Core/features/group/PartyFinder.lua:619:Finder:ScheduleAutoScan#48", Finder.ScheduleAutoScan)--[[/APR_DIAG]]
 
 function Finder:RefreshSettings()
     if not self.initialized then return end
@@ -662,9 +637,6 @@ function Finder:RefreshSettings()
     if self:IsEnabled() and self.channelID and policy ~= self.visibilityPolicy then
         self:Send("W", {}, "CHANNEL", self.channelID, true)
     end
-    if self:IsEnabled() and self.worldChannelID and policy ~= self.visibilityPolicy then
-        self:Send("W", {}, "CHANNEL", self.worldChannelID, true)
-    end
     if self.query and self.query.mode ~= settings.matchMode then self:FinishQuery() end
     if policy ~= self.visibilityPolicy then
         self.repliedTo = {}
@@ -673,9 +645,11 @@ function Finder:RefreshSettings()
     self.visibilityPolicy, self.wasEnabled = policy, self:IsEnabled()
     self.localDirty = true
     self.responses = {}
+    if self.CancelDirectPresence then self:CancelDirectPresence() end
     self:CancelTimer("replyTimer")
     self:CancelTimer("autoTimer")
     if not self:IsEnabled() then
+        self:StopDirectTransport()
         self:CancelTimer("fingerprintTimer")
         self.fingerprintJob, self.fingerprintRoute, self.fingerprintDefinition = nil, nil, nil
         if self.ClearInvitations then self:ClearInvitations() end
@@ -683,29 +657,30 @@ function Finder:RefreshSettings()
     self:RefreshTransport()
     self:ScheduleAutoScan()
     self:Notify()
-end--[[APR_DIAG]]; Finder.RefreshSettings = APRTrace("APR-Core/features/group/PartyFinder.lua:654:Finder:RefreshSettings#53", Finder.RefreshSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.RefreshSettings = APRTrace("APR-Core/features/group/PartyFinder.lua:629:Finder:RefreshSettings#50", Finder.RefreshSettings)--[[/APR_DIAG]]
 
 function Finder:QueueStateRefresh(transportOnly)
     if not self.initialized or not self:IsEnabled() then return end
     if not transportOnly then self.localDirty = true end
     if not self:GetSettings().visible and not self.query and not self.searchWanted and not next(self.candidates) then return end
     if self.stateTimer then return end
-    self:SetTimer("stateTimer", 0.1, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:693:callback#55", --[[/APR_DIAG]]function()
+    self:SetTimer("stateTimer", 0.1, --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:667:callback#52", --[[/APR_DIAG]]function()
         self:RefreshTransport()
         self:Notify()
     end--[[APR_DIAG]])--[[/APR_DIAG]])
-end--[[APR_DIAG]]; Finder.QueueStateRefresh = APRTrace("APR-Core/features/group/PartyFinder.lua:688:Finder:QueueStateRefresh#54", Finder.QueueStateRefresh)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.QueueStateRefresh = APRTrace("APR-Core/features/group/PartyFinder.lua:662:Finder:QueueStateRefresh#51", Finder.QueueStateRefresh)--[[/APR_DIAG]]
 
 function Finder:HandleAddonMessage(prefix, message, channel, sender, target, _, localID, name)
     if not Public(prefix) or prefix ~= PREFIX or not self:IsEnabled() then return end
-    if not Public(message) or not Public(sender) or not Public(channel) then return end
+    if not Public(message) or type(message) ~= "string" or #message > 240 or #message < 3
+        or message:find("[%z\1-\31\127]") or not Public(sender) or not Public(channel) then return end
     if channel ~= "CHANNEL" and channel ~= "WHISPER" then return end
-    local worldChannel = channel == "CHANNEL" and self.worldChannelID and localID == self.worldChannelID and name == self.worldChannelName
-    if channel == "CHANNEL" and not worldChannel
-        and (not self.channelID or localID ~= self.channelID or name ~= self.channelName) then return end
-    if worldChannel and not self:AcceptWorldMessage() then return end
-    local key = self:PlayerKey(sender)
-    if not key or key == self.playerKey then return end
+    if channel == "CHANNEL" then
+        if not self.channelID or not Public(name) or not Public(localID)
+            or type(name) ~= "string" or localID ~= self.channelID or name:lower() ~= self.channelName:lower() then return end
+        local control = message:sub(1, 4) == "1|D|" or message == "1|W"
+        if not self:AcceptWorldMessage(control) then return end
+    end
     local second = math.floor(GetTime())
     if self.receiveSecond ~= second then self.receiveSecond, self.receiveCount = second, 0 end
     self.receiveCount = self.receiveCount + 1
@@ -713,42 +688,41 @@ function Finder:HandleAddonMessage(prefix, message, channel, sender, target, _, 
     local data = P.Decode(message)
     if not data then return end
     if data.kind == "Q" and channel == "CHANNEL" then
-        if (data.mode == "world") ~= (worldChannel == true) then return end
-        if worldChannel and data.context == self.worldContext then self.lastWorldQuerySeen = GetTime() end
-        self:QueueResponse(data, key)
+        self.lastDiscoveryQuerySeen, self.lastWorldQuerySeen = GetTime(), GetTime()
+        if self.discoverySuspended or self.localDirty or data.context ~= (data.mode == "world" and self.worldContext or self.context) then return end
+    end
+    local key = self:PlayerKey(sender)
+    if not key or key == self.playerKey then return end
+    if data.kind == "Q" and channel == "CHANNEL" then self:QueueResponse(data, key)
     elseif data.kind == "P" and channel == "WHISPER" then self:HandlePresence(data, key)
     elseif data.kind == "W" and channel == "CHANNEL" then
-        local candidate = self.candidates[key]
-        -- A world-visible peer can leave its old zone while remaining available
-        -- worldwide. Unknown withdrawals also need no list rebuild or UI work.
-        if candidate and (worldChannel or candidate.discoveryScope ~= "world") then
+        if self.candidates[key] then
             self.candidates[key], self.candidatesDirty = nil, true
             self:Notify()
         end
     elseif data.kind == "D" and channel == "CHANNEL" then
-        if self.responses[key] and self.responses[key].query.id == data.id
-            and (self.responses[key].query.mode == "world") == (worldChannel == true) then self.responses[key] = nil end
+        if self.responses[key] and self.responses[key].query.id == data.id then self.responses[key] = nil end
+        if self.CancelDirectPresence then self:CancelDirectPresence(key, data.id) end
         if not next(self.responses) then self:CancelTimer("replyTimer") end
-    elseif channel == "WHISPER" and (data.kind == "I" or data.kind == "R") then
-        self:HandleInviteMessage(data, key)
-    end
-end--[[APR_DIAG]]; Finder.HandleAddonMessage = APRTrace("APR-Core/features/group/PartyFinder.lua:699:Finder:HandleAddonMessage#56", Finder.HandleAddonMessage)--[[/APR_DIAG]]
+    elseif channel == "WHISPER" and (data.kind == "I" or data.kind == "R") then self:HandleInviteMessage(data, key) end
+end--[[APR_DIAG]]; Finder.HandleAddonMessage = APRTrace("APR-Core/features/group/PartyFinder.lua:673:Finder:HandleAddonMessage#53", Finder.HandleAddonMessage)--[[/APR_DIAG]]
 
 function Finder:Open()
     if APR.PartyFinderPanel and APR.PartyFinderPanel.Show then APR.PartyFinderPanel:Show() else self:Search() end
-end--[[APR_DIAG]]; Finder.Open = APRTrace("APR-Core/features/group/PartyFinder.lua:737:Finder:Open#57", Finder.Open)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.Open = APRTrace("APR-Core/features/group/PartyFinder.lua:710:Finder:Open#54", Finder.Open)--[[/APR_DIAG]]
 
 function Finder:OpenSettings()
     if APR.Workspace then APR.Workspace:Show("options", "groupFinder") end
-end--[[APR_DIAG]]; Finder.OpenSettings = APRTrace("APR-Core/features/group/PartyFinder.lua:741:Finder:OpenSettings#58", Finder.OpenSettings)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.OpenSettings = APRTrace("APR-Core/features/group/PartyFinder.lua:714:Finder:OpenSettings#55", Finder.OpenSettings)--[[/APR_DIAG]]
 
 function Finder:OnDisable()
     self:StopTransport(true)
+    if self.StopDirectTransport then self:StopDirectTransport() end
     for _, timer in ipairs({"autoTimer", "expiryTimer", "fingerprintTimer", "notifyTimer", "inviteTimer", "incomingInviteTimer"}) do self:CancelTimer(timer) end
     self.fingerprintJob, self.fingerprintRoute, self.fingerprintDefinition = nil, nil, nil
     if self.eventFrame then self.eventFrame:UnregisterAllEvents() end
     if self.ClearInvitations then self:ClearInvitations() end
-end--[[APR_DIAG]]; Finder.OnDisable = APRTrace("APR-Core/features/group/PartyFinder.lua:745:Finder:OnDisable#59", Finder.OnDisable)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.OnDisable = APRTrace("APR-Core/features/group/PartyFinder.lua:718:Finder:OnDisable#56", Finder.OnDisable)--[[/APR_DIAG]]
 
 function Finder:SetListening(enabled)
     if not self.eventFrame or self.eventsEnabled == enabled then return end
@@ -760,7 +734,7 @@ function Finder:SetListening(enabled)
         "CHANNEL_COUNT_UPDATE"}) do
         if APR.RegisterSupportedEvent then APR:RegisterSupportedEvent(self.eventFrame, event) else self.eventFrame:RegisterEvent(event) end
     end
-end--[[APR_DIAG]]; Finder.SetListening = APRTrace("APR-Core/features/group/PartyFinder.lua:753:Finder:SetListening#60", Finder.SetListening)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.SetListening = APRTrace("APR-Core/features/group/PartyFinder.lua:727:Finder:SetListening#57", Finder.SetListening)--[[/APR_DIAG]]
 
 function Finder:OnInit()
     self.initialized = true
@@ -769,13 +743,15 @@ function Finder:OnInit()
     self.playerKey = self:PlayerKey(name)
     if C_ChatInfo and C_ChatInfo.RegisterAddonMessagePrefix then C_ChatInfo.RegisterAddonMessagePrefix(PREFIX) end
     self.eventFrame = self.eventFrame or CreateFrame("Frame")
-    self.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:772:callback#62", --[[/APR_DIAG]]function(_, event, ...)
+    self.eventFrame:SetScript("OnEvent", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:746:callback#59", --[[/APR_DIAG]]function(_, event, ...)
         if event == "CHAT_MSG_ADDON" then self:HandleAddonMessage(...)
         elseif event == "CHANNEL_COUNT_UPDATE" then self:QueueWorldPopulationRefresh()
         elseif event == "CHANNEL_UI_UPDATE" then
             self:QueueWorldPopulationRefresh()
             self:QueueStateRefresh(true)
-        elseif event == "ADDON_LOADED" then self:HookInvitationDialogs()
+        elseif event == "ADDON_LOADED" then
+            self:HookInvitationDialogs()
+            self:InitializeDirectTransport()
         elseif event == "PARTY_INVITE_REQUEST" then self:OnNativeInvitation(...)
         elseif event == "PARTY_INVITE_CANCEL" then self:CloseIncomingInvitation()
         elseif event == "PLAYER_LOGOUT" then self:OnDisable()
@@ -784,10 +760,11 @@ function Finder:OnInit()
             self:QueueStateRefresh()
         end
     end--[[APR_DIAG]])--[[/APR_DIAG]])
+    self:InitializeDirectTransport()
     self:HookInvitationDialogs()
     if hooksecurefunc and APR.party and not self.progressHooked then
-        hooksecurefunc(APR.party, "SendGroupMessage", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:789:callback#63", --[[/APR_DIAG]]function() self:QueueStateRefresh() end--[[APR_DIAG]])--[[/APR_DIAG]])
+        hooksecurefunc(APR.party, "SendGroupMessage", --[[APR_DIAG]]APRTrace("APR-Core/features/group/PartyFinder.lua:766:callback#60", --[[/APR_DIAG]]function() self:QueueStateRefresh() end--[[APR_DIAG]])--[[/APR_DIAG]])
         self.progressHooked = true
     end
     self:RefreshSettings()
-end--[[APR_DIAG]]; Finder.OnInit = APRTrace("APR-Core/features/group/PartyFinder.lua:765:Finder:OnInit#61", Finder.OnInit)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; Finder.OnInit = APRTrace("APR-Core/features/group/PartyFinder.lua:739:Finder:OnInit#58", Finder.OnInit)--[[/APR_DIAG]]

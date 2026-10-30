@@ -24,7 +24,8 @@ assert(not P.AcceptLanguageMask(0 / 0, unrestricted))
 -- queries. Four equal populations have independently chosen language masks.
 local masks, primaries = { 1, 2, 3, 512 }, { "en", "fr", "en", "zhTW" }
 for batch = 1, 7 do
-    if batch > 1 then env:Advance(15) end
+    -- Isolate full-cache filtering from the discovery rate limiter.
+    if batch > 1 then env:Advance(1); finder.lastSearch = nil end
     assert(finder:Search())
     for index = 1, 30 do
         local number = (batch - 1) * 30 + index

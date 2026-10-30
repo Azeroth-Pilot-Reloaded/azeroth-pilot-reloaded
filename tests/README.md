@@ -119,18 +119,53 @@ discovery, multilingual policies, bounded queues/caches, timer cancellation,
 native-invitation correlation, sound cooldowns and pooled companion rows. Verify
 channel/whisper delivery, flags and secure invitation dialogs in the actual
 Retail and Forever clients before releasing the feature.
-`party_finder_world_test.lua` uses controlled channel memberships and populations
-to exercise discovery across zones, scope isolation, visibility, cancellation,
-and bounded work under request bursts. Worldwide discovery keeps its own channel
-alongside legacy zone discovery. It uses cached channel counts without requesting
-a roster; unknown counts suppress replies. Sampling targets 24 responses, with
-at most 30 accepted results. Worldwide queries have a 60-second minimum interval;
-auto-scans yield after a recently observed worldwide query. Pending replies are
-cancelled when a query finishes, and worldwide presence sends are spaced by five
-seconds. These local budgets and best-effort sampling do not guarantee a complete
-directory or eliminate all network cost as the population grows. In-game checks
-must include different zones, the server/faction reach of custom channels, a
-missing member count, and rapid visibility/instance changes on both clients.
+`party_finder_world_test.lua` and `party_finder_load_test.lua` use controlled
+memberships/populations to exercise all discovery filters on the single stable
+`APR` channel. `communication_channel_test.lua` and
+`version_shared_channel_integration_test.lua` exercise independent discovery and
+version-check owners of that same membership. Startup is delayed by two seconds;
+joining has one ten-second timeout. Map, instance and chat-lockdown transitions
+retain membership, while traffic is suspended as needed. No channel permutation,
+native-channel reset, chat-window modification or roster request is permitted.
+Prejoined channels are not owned or left, and a manual leave requires an explicit
+retry. Version queries/replies keep their prefix, persisted cache, suppression
+and one bounded twelve-second startup retry; no `APRVersion` channel is joined.
+Version ingress has its own sixty-four-packet per-second budget before any
+version parsing or sender normalization. Profile/toggle changes immediately
+release or reacquire that owner's reference without disturbing discovery.
+
+All discovery searches have a sixty-second minimum interval. Automatic scans
+yield after a recently observed query, including another zone's query; manual
+searches are not starved by a busy channel. Each search accepts thirty results.
+Cached channel counts admit a best-effort sample targeting twenty-four world
+responses; unknown counts suppress world responses. Local matches are not
+excluded by sampling against the entire channel population. Instead their
+population-aware delays spread replies up to nine seconds, allowing early
+completion/cancellation of crowded searches. Presence attempts are spaced by
+five seconds across all filters, including offline/failed attempts.
+
+Public discovery work is bounded before decoding to sixteen normal packets plus
+four cancellation/withdrawal packets per second; private decoding is capped at
+sixty-four. Queued discovery replies and queued direct messages each have a
+thirty-two-entry bound. The shared fixture loads the actual embedded AceComm and
+ChatThrottleLib. `party_finder_direct_test.lua` verifies native send results,
+expiry/revocation at eventual dispatch, other addons' untouched traffic and
+multipart rejection before AceComm can allocate a spool for APR's tiny packets.
+The adapter explicitly checks the inspected AceComm14/CTL32 queue contracts;
+unfamiliar contracts refuse private sends. Library files and Blizzard API
+functions are never modified. Cancelled CTL records continue to count toward the
+bound until CTL retires them, including after discovery is disabled/re-enabled.
+
+Load fixtures include thousands of public/private messages, coalesced event
+bursts, a small matching zone in a large population, and stale queued presence
+after cancellation, hiding, disabling, policy/context changes, instance entry,
+lockdown and expiry. These local budgets and best-effort sampling do not guarantee
+a complete directory or eliminate network reception as population grows. In-game
+checks must include both clients, mixed addon releases, native channel numbering,
+different zones, server/faction reach, missing counts and chat restrictions. The
+wire protocol remains compatible, but discovery peers must use the new shared
+channel; this release does not join legacy channels as a bridge. Group version
+checks continue to communicate with older APR releases.
 UI tests use placeholder labels and do not validate localized wording or load
 translation catalogs. Text assertions cover synthetic data and behavior only.
 `settings_audio_test.lua` covers responsive sound-event cards and the real AceGUI

@@ -29,7 +29,9 @@ finder = env.finder
 env:Receive("Q", env:Query())
 env:Advance(4)
 assert(#env:Messages("P") == 0)
-assert(finder:Search() and #env:Messages("Q") == 1)
+assert(not finder:Search(), "An invisible search waits for the shared channel to settle")
+env:Advance(3)
+assert(#env:Messages("Q") == 1)
 finder:SetOption("visible", true)
 env:Advance(0.5)
 env:Receive("Q", env:Query({ id = "visible-now" }))
@@ -108,7 +110,7 @@ env.map = 502
 for _ = 1, 100 do env:Event("ZONE_CHANGED_NEW_AREA") end
 assert(env:ActiveTimers() == 1, "Zone bursts coalesce before any route or transport refresh")
 env:Advance(0.5)
-assert(finder.context ~= previousContext and #env.joined == 2 and #env.left == 1,
+assert(finder.context ~= previousContext and #env.joined == 1 and #env.left == 0,
     "Changing zone replaces exactly one discovery membership")
 
 -- Zone mode works without a route; route-based modes explain the missing prerequisite.
@@ -136,10 +138,10 @@ env:Receive("Q", env:Query({ id = "other-a" }), "Second-Home")
 env:Receive("Q", env:Query({ id = "other-b" }), "Third-Home")
 env:Receive("Q", env:Query({ id = "cancelled" }), "Cancelled-Home")
 env:Receive("D", { id = "cancelled" }, "Cancelled-Home")
-env:Advance(6)
+env:Advance(10)
 replies = env:Messages("P")
 assert(#replies == 3)
-for index = 2, #replies do assert(replies[index].at - replies[index - 1].at >= 1) end
+for index = 2, #replies do assert(replies[index].at - replies[index - 1].at >= 5) end
 for _, reply in ipairs(replies) do assert(reply.channel == "WHISPER" and reply.target ~= "Cancelled-Home") end
 
 env = Fixture.New()
@@ -159,10 +161,11 @@ success, reason = finder:Search()
 assert(not success and reason == "unavailable" and finder:GetStatus() == "unavailable")
 assert(not finder.channelID and not finder.query)
 local failedAttempts = #env.sent
-env:Advance(30)
+env:Advance(60)
 assert(#env.sent == failedAttempts, "An unsupported transport does not create an automatic retry loop")
 env.sendResult = 0
-assert(finder:Search(), "A deliberate manual search must retry a transport that has become available")
+finder:Search()
+env:Advance(3)
 assert(#env:Messages("Q") == 1 and finder:GetStatus() == "searching")
 
 -- Rejected searches must not fill permanent sender accounting and silence future legitimate peers.
@@ -218,7 +221,8 @@ assert(#env:Messages("Q") == scans and env:ActiveTimers() == 0,
 env = Fixture.New({ settings = { matchMode = "zone" } })
 finder = env.finder
 for batch = 1, 7 do
-    if batch > 1 then env:Advance(15) end
+    -- Isolate cache capacity from the separately tested search cooldown.
+    if batch > 1 then env:Advance(1); finder.lastSearch = nil end
     assert(finder:Search())
     for index = 1, 30 do
         env:Receive("P", env:Presence(), "Dense" .. ((batch - 1) * 30 + index) .. "-Home", "WHISPER")
