@@ -22,7 +22,7 @@ APRInstrumentation.coverage = {
     ["APR-Core/features/navigation/Arrow.lua"] = {instrumented = 23, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/FlightPath.lua"] = {instrumented = 2, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/Map.lua"] = {instrumented = 35, diagnosticHelpers = 0},
-    ["APR-Core/features/navigation/Navigation.lua"] = {instrumented = 71, diagnosticHelpers = 0},
+    ["APR-Core/features/navigation/Navigation.lua"] = {instrumented = 72, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/NavigationAdapter.lua"] = {instrumented = 109, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/NavigationPlanner.lua"] = {instrumented = 11, diagnosticHelpers = 0},
     ["APR-Core/features/navigation/NavigationTaxi.lua"] = {instrumented = 52, diagnosticHelpers = 0},

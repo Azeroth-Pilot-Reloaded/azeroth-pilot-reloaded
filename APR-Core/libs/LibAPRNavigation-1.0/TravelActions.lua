@@ -1,7 +1,8 @@
 -- Route consumers use the same item definitions as the navigation graph.
 local Lib = LibStub("LibAPRNavigation-1.0")
-if not Lib:BeginModule("travel-actions", 2) then return end
+if not Lib:BeginModule("travel-actions", 3) then return end
 local Instance = Lib.Instance
+local EMPTY = {}
 
 function Instance:IsHousingLocation(position)
     local maps = self.config.HousingMaps
@@ -62,17 +63,34 @@ end
 
 function Instance:IsTravelActionSpell(key, spellID, selectedItemID)
     if type(key) ~= "string" or type(spellID) ~= "number" then return false end
-    for _, definition in ipairs(self.connections) do
-        -- Learned recalls also return to the inn; fixed teleports never complete UseHS.
-        local innRecall = key == "UseHS" and definition.kind == "spell"
-            and definition.to and definition.to.dynamic == "bind"
-        if definition.routeAction == key or innRecall then
-            for _, option in ipairs(definition.actions or {}) do
-                local effect = option.type == "spell" and option.id or option.useSpellID
-                if effect == spellID then return true end
-                if option.type == "item" and (key ~= "UseHS" or option.id == selectedItemID)
-                    and self:GetActionSpellID(option.type, option.id) == spellID then return true end
+    -- Cast events are frequent in combat. Index the small subset of route
+    -- actions once instead of revisiting every physical transport for each cast.
+    -- Keep definition references so client-resolved item effects remain live.
+    local index = self.travelActionConnections
+    if not index or index.source ~= self.connections or index.count ~= #self.connections then
+        index = { source = self.connections, count = #self.connections, keys = {} }
+        for _, definition in ipairs(self.connections) do
+            local actionKey = definition.routeAction
+            local innRecall = definition.kind == "spell" and definition.to and definition.to.dynamic == "bind"
+            if actionKey or innRecall then
+                local function Add(action)
+                    local entries = index.keys[action]
+                    if not entries then entries = {}; index.keys[action] = entries end
+                    entries[#entries + 1] = definition
+                end
+                if actionKey then Add(actionKey) end
+                -- Learned recalls also return to the inn; fixed teleports do not.
+                if innRecall and actionKey ~= "UseHS" then Add("UseHS") end
             end
+        end
+        self.travelActionConnections = index
+    end
+    for _, definition in ipairs(index.keys[key] or EMPTY) do
+        for _, option in ipairs(definition.actions or {}) do
+            local effect = option.type == "spell" and option.id or option.useSpellID
+            if effect == spellID then return true end
+            if option.type == "item" and (key ~= "UseHS" or option.id == selectedItemID)
+                and self:GetActionSpellID(option.type, option.id) == spellID then return true end
         end
     end
     return false
