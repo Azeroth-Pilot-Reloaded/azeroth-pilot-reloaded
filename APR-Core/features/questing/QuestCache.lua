@@ -5,8 +5,8 @@ local APRResume = APRInstrumentation and APRInstrumentation.Resume or coroutine.
 local APRPCall = APRInstrumentation and APRInstrumentation.PCall or pcall
 -- Synchronizes quest-log objectives and completion state; cache refreshes are coalesced before rendering.
 
-function APR:UpdateQuest(deferStepUpdate)
-    APR:Debug("Function: APR_UpdateQuest()")
+local function UpdateQuest(self, deferStepUpdate)
+    self:Debug("Function: APR_UpdateQuest()")
 
     local updateStep = false
 
@@ -85,7 +85,21 @@ function APR:UpdateQuest(deferStepUpdate)
         APR.party:SendGroupMessage()
         APR.party:RefreshPartyFrameAnchor()
     end
-end--[[APR_DIAG]]; APR.UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:8:APR:UpdateQuest#1", APR.UpdateQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:8:UpdateQuest#1", UpdateQuest)--[[/APR_DIAG]]
+
+function APR:UpdateQuest(deferStepUpdate)
+    local rows = self.currentStep
+    if deferStepUpdate or not rows or not rows.BeginQuestUpdates or not rows.EndQuestUpdates then
+        return UpdateQuest(self, deferStepUpdate)
+    end
+    rows:BeginQuestUpdates()
+    local ok, result = --[[APR_DIAG]]APRPCall--[=[--[[/APR_DIAG]]pcall--[[APR_DIAG]]]=]--[[/APR_DIAG]](UpdateQuest, self, deferStepUpdate)
+    -- Always release the nesting guard. A failed refresh retains dirty geometry
+    -- for recovery instead of publishing a partially synchronized layout.
+    rows:EndQuestUpdates(ok)
+    if not ok then error(result, 0) end
+    return result
+end--[[APR_DIAG]]; APR.UpdateQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:90:APR:UpdateQuest#2", APR.UpdateQuest)--[[/APR_DIAG]]
 
 function APR:RemoveQuest(questID)
     if not questID then return end
@@ -111,12 +125,12 @@ function APR:RemoveQuest(questID)
     -- here, which also rebuilds the quest tracker and the current step.
     self:OverrideRouteData()
     self:UpdateStep()
-end--[[APR_DIAG]]; APR.RemoveQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:90:APR:RemoveQuest#2", APR.RemoveQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.RemoveQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:104:APR:RemoveQuest#3", APR.RemoveQuest)--[[/APR_DIAG]]
 
 function APR:CancelAutocompleteQuest()
     if self.autocompleteQuestTimer then self.autocompleteQuestTimer:Cancel() end
     self.autocompleteQuestTimer = nil
-end--[[APR_DIAG]]; APR.CancelAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:116:APR:CancelAutocompleteQuest#3", APR.CancelAutocompleteQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.CancelAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:130:APR:CancelAutocompleteQuest#4", APR.CancelAutocompleteQuest)--[[/APR_DIAG]]
 
 function APR:PopupAutocompleteQuest()
     if self.routeValidationPending or self.routeValidationFailed then return end
@@ -137,13 +151,13 @@ function APR:PopupAutocompleteQuest()
         elseif retries < 5 then
             retries = retries + 1
             local timer
-            timer = C_Timer.NewTimer(1, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestCache.lua:140:callback#6", --[[/APR_DIAG]]function()
+            timer = C_Timer.NewTimer(1, --[[APR_DIAG]]APRTrace("APR-Core/features/questing/QuestCache.lua:154:callback#7", --[[/APR_DIAG]]function()
                 if self.autocompleteQuestTimer ~= timer then return end
                 self.autocompleteQuestTimer = nil
                 check()
             end--[[APR_DIAG]])--[[/APR_DIAG]])
             self.autocompleteQuestTimer = timer
         end
-    end--[[APR_DIAG]]; check = APRTrace("APR-Core/features/questing/QuestCache.lua:128:check#5", check)--[[/APR_DIAG]]
+    end--[[APR_DIAG]]; check = APRTrace("APR-Core/features/questing/QuestCache.lua:142:check#6", check)--[[/APR_DIAG]]
     check()
-end--[[APR_DIAG]]; APR.PopupAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:121:APR:PopupAutocompleteQuest#4", APR.PopupAutocompleteQuest)--[[/APR_DIAG]]
+end--[[APR_DIAG]]; APR.PopupAutocompleteQuest = APRTrace("APR-Core/features/questing/QuestCache.lua:135:APR:PopupAutocompleteQuest#5", APR.PopupAutocompleteQuest)--[[/APR_DIAG]]
