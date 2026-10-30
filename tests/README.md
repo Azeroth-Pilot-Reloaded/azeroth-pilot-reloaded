@@ -175,6 +175,94 @@ catalogue preparation, taxi indexing, search ingestion and guidance publication.
 Timing benchmarks are separate from regression assertions because wall-clock
 results depend on the host, client APIs, garbage collection and scheduling.
 
+`quest_cache_performance_test.lua` uses 150 synthetic objectives to check stable
+record identities, zero unchanged layouts, percentage-only updates and shrinking
+objective lists. `bank_refresh_performance_test.lua` checks burst coalescing,
+close-time snapshots and stale/disabled callbacks. `quest_autocomplete_lifecycle_test.lua`
+covers bounded retry chains, duplicate bursts, delayed native data and cancellation.
+`route_cache_performance_test.lua` checks 1,000 warm reads without activation-key
+sorting/formatting or scenario reconstruction, including in-place mutations,
+same-length scenario changes and a missing scenario's bounded fallback cache.
+`navigation_combat_events_performance_test.lua` covers Retail/Forever with native
+unit registration and its fallback: combat bursts reuse the travel-action index,
+while recalls, live item effects, catalogue extension/replacement, camp locations,
+unlock observations and opaque payload rejection retain their behavior.
+`diagnostic_value_performance_test.lua` counts sanitization input bytes for large
+strings, including nested payloads, whitespace, pipe escaping and output boundaries.
+The route-panel and idle-tracker suites also assert zero route scans while the
+list is collapsed, cancellation of pending work, current-progress recovery and
+no recurring appearance probes while the guide is hidden or detached.
+`inventory_action_performance_test.lua` checks one fresh bag snapshot per action
+label render, unknown/incomplete bank data, empty actions and future previews.
+`loot_money_performance_test.lua` checks one price lookup per exact item variant
+within an estimate, including late data and modern/legacy container APIs.
+The AFK lifecycle suite also checks dormant hides and coalesced show/hide bursts.
+`party_roster_performance_test.lua` covers frame-local roster reuse, native roster
+notifications, realm identities and party/raid/reset transitions.
+`party_finder_filter_performance_test.lua` checks compiled language policies over
+200 synthetic candidates, bilingual/unknown cases, changed preferences and expiry.
+`party_text_performance_test.lua` bounds scans of malformed link/art markup while
+preserving labels, complete tags, colors, control filtering and text limits.
+`route_suggestions_performance_test.lua` checks startup work in operation/time
+slices, oversized quest fields, queued requests, deterministic choices,
+cancellation, preferences and partial-index cleanup/recovery after errors.
+`performance_rows_performance_test.lua` checks reusable viewer rows, independent
+export snapshots and clean filtering/mode/reset transitions. The dashboard suite
+also checks indexed publication and zero repeated row builds for stopped captures.
+`temporary_route_cache_performance_test.lua` checks one reusable temporary-prefix
+snapshot, parent/scenario edits, range and character changes, invalidation and
+completion without repeated effective-route reconstruction.
+`navigation_mount_performance_test.lua` checks candidate reuse across replans,
+live ownership/usability, missing/opaque responses and Retail/Forever fallbacks.
+`quest_order_dense_step_performance_test.lua` puts 300 objectives in one step and
+charges synthetic API/font costs: model preparation, viewport binding and later
+state/collapse updates remain budgeted. It covers partial-row visibility,
+replacement, scrolling, cancellation, pooling and error recovery with capture on.
+`release_notes_layout_performance_test.lua` checks coalesced font/resize callbacks,
+hidden ancestors, stale requests, immediate content publication and reopening.
+`diagnostic_coroutine_lifecycle_test.lua` uses Lua 5.1 weak observations and explicit
+test-only collections to verify retired workers can be freed while owned suspended
+workers still resume and completed timings remain available.
+`gamepad_geometry_performance_test.lua` counts rectangle queries in nested scroll
+frames and checks clipping, live movement/scaling, disabled controls and reveal.
+`changelog_parser_performance_test.lua` checks linear scan/copy work for malformed
+links and whitespace-heavy headings, with independent formatting expectations.
+`navigation_catalog_action_budget_test.lua` puts 500 alternatives in one invented
+transport definition and covers per-alternative budgets, shared random selection,
+missing observations, cancellation and the direct single-action path.
+`test_route_hash_startup.py` checks historical signature bytes with LuaBitOp's
+double-number normalization, cooperative hashing and atomic startup publication.
+It covers cancellation, errors, replacement and explicit progress/reset choices.
+Native level/scenario evidence stays observable; NPC/taxi actions wait, visible
+NPC pages reconcile afterward, and duplicate completion receipts advance once.
+`test_route_validation_toggle.py` calls the real settings toggle during suspended
+validation, then checks resumption, preserved reset/clear intentions and stale
+callbacks without re-registering gameplay events.
+It also executes the real instrumented startup worker with debug/performance
+capture enabled and checks coroutine-stack release and one completed timing.
+Escort confirmations recheck validation, route context, enabled settings and
+modifiers when their delayed callback runs.
+Event lifecycle tests also cover native/fallback player filters and foreign addon
+traffic; the XP overlay fixture checks zero unchanged UI writes and dormant
+inactive/combat scheduling with an independent invented bonus source.
+
+`addon_quest_journey_test.lua` connects the real event dispatcher, suggestion
+index, route conditions, quest cache, renderer and step transitions through an
+invented quest chain. `test_addon_journey_quest.py` adds real suggestion-popup
+actions and CurrentStep/FillersFrame widgets: conditional parallel insertion,
+optional-objective removal, missing native data and cancelled/resumed signature
+validation with one native completion. Neither fixture loads a shipped guide.
+`group_instance_journey_test.lua` composes real Party/Finder/World/Invites, codecs,
+core events and temporary-route lifecycles on Retail/Forever: private/world
+search, invitation/roster, party/instance channels, raid/scenario/delve transitions,
+early/complete exit, reload, missing maps and parent/custom-path restoration.
+`navigation_journey_integration_test.lua` uses the real controller, adapter,
+planner, taxi and library on both profiles. It joins access changes, wrong worlds,
+movement, geometry invalidation, event bursts, manual boarding, portals, combat,
+teleport/loading, consumed cooldowns, death, cancellation and temporary detours.
+These journeys supplement the smaller behavior/boundary suites; native APIs and
+widgets remain simulated and do not certify actual client security or rendering.
+
 `navigation_search_action_performance_test.lua` covers personal teleports from
 a separate world, cooldowns no future leg can consume, shared reagents, later-map
 actions and 160 independently enumerated feasible-path oracles. Operation counts
