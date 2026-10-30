@@ -854,6 +854,56 @@ profiles passed with the correction, including wrong-destination rejection.
 Instrumentation consistency passed for 2,877 definitions across 115 files.
 The authorized runtime/test commits exclude the local `Routes/` changes.
 
+## Additional lag-spike pass
+
+This pass closes two nested operations that escaped cooperative budgets and
+removes repeated work in guide-action registration and group snapshots. No
+third-party library, authored guide, translation or SavedVariables schema changed.
+The changes use existing APIs; the new scheduling/indexing logic is ordinary Lua.
+
+| Controlled workload | Before | After |
+| --- | --- | --- |
+| One 1 ms search slice comparing arrivals with 500 resources, charging 0.25 ms per resource observation | 125.25 ms on the controlled clock | At most 1.25 ms, including one small atomic observation |
+| Display-name resolution among 2,003 declarations at 0.02 ms per visited entry | One 40.06 ms operation inside startup validation | 20 cooperative batches, largest 2.02 ms; total scan work remains 40.06 ms |
+| A group tooltip with 3,000 populated rows | 6,000 font reads and 3,000 rows sorted before the tooltip is discarded | 129 font reads, no sort; the entire oversized tooltip is still omitted |
+| 100 warm re-registrations of 200 action buttons | 2,090,000 retained-registry visits | Zero registry visits, sorting or secure writes |
+
+Resource dominance now advances through resource keys as part of `Search:Step`,
+without allocating a coroutine or comparison table. Empty/one-resource and
+scalar rejection paths finish inline. A controlled ordinary 80-node/18-action
+workload used the same 5,625 operations before and after. Exhaustive route
+oracles, reverse pruning, preserved consumables and cancellation retain their
+behavior. Initial isolated instance copies and native calls remain atomic.
+
+Route-label resolution selects the same lexical/visible variant in one scan
+without sorting. Exact keys retain their direct path, and only duplicate labels
+need candidate records. Startup callers pass checkpoints through the lookup.
+Candidate identities, aliases and catalogue replacement are rechecked; custom
+imports increment a session revision so a retired lookup restarts through the
+existing startup worker before publishing saved state. There is no persistent
+label cache. Ordinary synchronous lookups still traverse the current catalogue.
+
+The group sender passes its existing 128-row/2,048-byte limits into snapshot
+construction. Overflow retains authoritative progress and discards the entire
+optional tooltip, matching its existing wire behavior. Ordinary exports remain
+complete and independent. A wire comparison under the limits was byte-for-byte
+identical to HEAD. On the audit host, 30 repetitions of the dense fixture averaged
+18.929 ms before and 0.036 ms after; these are indicative host timings, not WoW
+frame measurements. Containers with no emitted text still need to be visited.
+
+The gamepad membership index shares the retained button registry's lifetime.
+Priority sorting, action-kind changes, scalar secure attributes, hardware click
+dispatch and combat guards are unchanged. First registration or rebinding still
+sorts and republishes frame references; the secure click-time scan is necessary
+and remains in place.
+
+Focused tests include instrumented execution with diagnostic/performance capture
+enabled. The four new fixtures use invented data, exact boundaries and failure
+recovery; no maintained route is frozen as expected output.
+The full `.venv/Scripts/python.exe tests/run.py` run passed **520 tests** in
+107.629 seconds, with no failures or errors. Generated instrumentation is current
+for 2,912 definitions across 117 files, and `git diff --check` is clean.
+
 ## Navigation catalogue review
 
 Navigation catalogue research, generation and static data audits live in
