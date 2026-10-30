@@ -138,11 +138,35 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
         {
             Waypoint = 1067,
             NonSkippableWaypoint = true,
+            Coord = { x = 1.3, y = -1333.2 },
+            Range = 6,
+            ZoneStepTrigger = { x = 1.3, y = -1333.2, Range = 6, mapID = 1456 },
+            AnyOf = { { Class = "HUNTER", Race = { "Orc", "Skyborne", "Tauren", "Troll" }, AnyOf = { { DontHaveSpell = 14262, SkipForLvl = 26 }, { DontHaveSpell = 3045, MinLevel = 26 }, { DontHaveSpell = 24558 } } }, { Class = "WARRIOR", AnyOf = { { DontHaveSpell = 5308, SkipForLvl = 26 }, { DontHaveSpell = 6178, MinLevel = 26 } } } },
+            MinLevel = 24,
+            OnlyInZones = { 1456 },
+            Zone = 1456,
+            _index = 11,
+        },
+        {
+            Waypoint = 1067,
+            NonSkippableWaypoint = true,
+            Coord = { x = -63.3, y = -1397.2 },
+            Range = 6,
+            ZoneStepTrigger = { x = -63.3, y = -1397.2, Range = 6, mapID = 1456 },
+            AnyOf = { { Class = "HUNTER", Race = { "Orc", "Skyborne", "Tauren", "Troll" }, AnyOf = { { DontHaveSpell = 14262, SkipForLvl = 26 }, { DontHaveSpell = 3045, MinLevel = 26 }, { DontHaveSpell = 24558 } } }, { Class = "WARRIOR", AnyOf = { { DontHaveSpell = 5308, SkipForLvl = 26 }, { DontHaveSpell = 6178, MinLevel = 26 } } } },
+            MinLevel = 24,
+            OnlyInZones = { 1456 },
+            Zone = 1456,
+            _index = 12,
+        },
+        {
+            Waypoint = 1067,
+            NonSkippableWaypoint = true,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 61.31, 78.25),
             Range = 20,
             Class = { "HUNTER", "WARRIOR" },
             Zone = 1456,
-            _index = 11,
+            _index = 13,
         },
         {
             LearnSkill = { spellID = 14262 },
@@ -152,7 +176,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipForLvl = 26,
             Zone = 1456,
-            _index = 12,
+            _index = 14,
         },
         {
             LearnSkill = { spellID = 3045 },
@@ -161,7 +185,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             MinLevel = 26,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 13,
+            _index = 15,
         },
         {
             LearnSkill = { spellID = 24558 },
@@ -170,7 +194,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             MinLevel = 24,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 14,
+            _index = 16,
         },
         {
             LearnSkill = { spellID = 5308 },
@@ -179,7 +203,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             MinLevel = 24,
             SkipForLvl = 26,
             Zone = 1456,
-            _index = 15,
+            _index = 17,
         },
         {
             LearnSkill = { spellID = 6178 },
@@ -187,7 +211,43 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "WARRIOR",
             MinLevel = 26,
             Zone = 1456,
-            _index = 16,
+            _index = 18,
+        },
+        {
+            Waypoint = 31,
+            NonSkippableWaypoint = true,
+            Coord = { x = 1, y = -1108.2 },
+            Range = 6,
+            Class = "DRUID",
+            IsQuestOnQuest = 31,
+            OnlyInZones = { 1456 },
+            Race = { "Skyborne", "Tauren" },
+            Zone = 1456,
+            _index = 19,
+        },
+        {
+            Waypoint = 31,
+            NonSkippableWaypoint = true,
+            Coord = { x = -66.5, y = -1089.7 },
+            Range = 6,
+            Class = "DRUID",
+            IsQuestOnQuest = 31,
+            OnlyInZones = { 1456 },
+            Race = { "Skyborne", "Tauren" },
+            Zone = 1456,
+            _index = 20,
+        },
+        {
+            Waypoint = 31,
+            NonSkippableWaypoint = true,
+            Coord = { x = -209.4, y = -1044.8 },
+            Range = 6,
+            Class = "DRUID",
+            IsQuestOnQuest = 31,
+            OnlyInZones = { 1456 },
+            Race = { "Skyborne", "Tauren" },
+            Zone = 1456,
+            _index = 21,
         },
         {
             Waypoint = 31,
@@ -197,7 +257,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "DRUID",
             IsQuestOnQuest = 31,
             Zone = 1456,
-            _index = 17,
+            _index = 22,
         },
         {
             LearnSkill = { allAvailable = true },
@@ -208,7 +268,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             MinLevel = 1,
             Race = { "Skyborne", "Tauren" },
             Zone = 1456,
-            _index = 18,
+            _index = 23,
         },
         {
             Done = { 31 },
@@ -217,7 +277,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 31,
             Race = { "Skyborne", "Tauren" },
             Zone = 1456,
-            _index = 19,
+            _index = 24,
         },
         {
             BuyMerchant = { { quantity = 1, itemID = 11306, targetStock = true, optional = true } },
@@ -234,7 +294,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Money = { copper = 20491, operator = ">=" },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 20,
+            _index = 25,
         },
         {
             Waypoint = 1067,
@@ -243,7 +303,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 28.14, 32.97),
             Range = 20,
             Zone = 1456,
-            _index = 21,
+            _index = 26,
         },
         {
             Waypoint = 1067,
@@ -252,7 +312,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 28.51, 28.95),
             Range = 10.0,
             Zone = 1456,
-            _index = 22,
+            _index = 27,
         },
         {
             Done = { 1067 },
@@ -260,14 +320,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestCompleted = 1066,
             IsQuestOnQuest = 1067,
             Zone = 1456,
-            _index = 23,
+            _index = 28,
         },
         {
             PickUp = { 1086 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 22.9, 21),
             IsQuestCompleted = 1067,
             Zone = 1456,
-            _index = 24,
+            _index = 29,
         },
         {
             LearnSkill = { spellID = 3747 },
@@ -278,7 +338,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Race = { "Scourge", "Troll" },
             SkipForLvl = 26,
             Zone = 1456,
-            _index = 25,
+            _index = 30,
         },
         {
             LearnSkill = { spellID = 992 },
@@ -288,7 +348,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             MinLevel = 26,
             Race = { "Scourge", "Troll" },
             Zone = 1456,
-            _index = 26,
+            _index = 31,
         },
         {
             LearnSkill = { spellID = 8400 },
@@ -299,7 +359,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Race = { "Orc", "Scourge", "Troll" },
             SkipForLvl = 26,
             Zone = 1456,
-            _index = 27,
+            _index = 32,
         },
         {
             LearnSkill = { spellID = 120 },
@@ -309,7 +369,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             MinLevel = 26,
             Race = { "Orc", "Scourge", "Troll" },
             Zone = 1456,
-            _index = 28,
+            _index = 33,
         },
         {
             LearnSkill = { spellID = 905 },
@@ -320,7 +380,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipForLvl = 26,
             Zone = 1456,
-            _index = 29,
+            _index = 34,
         },
         {
             LearnSkill = { spellID = 8190 },
@@ -330,14 +390,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             MinLevel = 26,
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1456,
-            _index = 30,
+            _index = 35,
         },
         {
             Note = { "CREATE_WOOL_BANDAGES_SKILL_115_SKIP_OPTIONAL" },
             DontHaveSpell = { 3278 },
             HasSpell = 3277,
             Skill = { operator = "<", skill = "firstaid", rank = 115 },
-            _index = 31,
+            _index = 36,
         },
         {
             LearnProfession = 3278,
@@ -348,17 +408,17 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Money = { copper = 1000, operator = ">=" },
             Skill = { skill = "firstaid", rank = 115, operator = ">=" },
             Zone = 1456,
-            _index = 32,
+            _index = 37,
         },
         {
             LeaveQuests = { 264, 3301 },
-            _index = 33,
+            _index = 38,
         },
         {
             PickUp = { 1195 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1456, 54.96, 51.42),
             Zone = 1456,
-            _index = 34,
+            _index = 39,
         },
         {
             UseFlightPath = 1823,
@@ -368,7 +428,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "WARRIOR",
             SkipInZones = { 1413 },
             Zone = 1456,
-            _index = 35,
+            _index = 40,
         },
         {
             UseFlightPath = 843,
@@ -378,7 +438,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "WARLOCK" },
             SkipInZones = { 1413 },
             Zone = 1456,
-            _index = 36,
+            _index = 41,
         },
         {
             UseFlightPath = 1536,
@@ -389,39 +449,39 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipInZones = { 1413 },
             Zone = 1456,
-            _index = 37,
+            _index = 42,
         },
         {
             PickUp = { 879 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.55, 59.27),
             IsQuestCompleted = 5052,
             Zone = 1413,
-            _index = 38,
+            _index = 43,
         },
         {
             PickUp = { 893 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.1, 57.68),
             Zone = 1413,
-            _index = 39,
+            _index = 44,
         },
         {
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS", "POSSIBLE_SAVE_10_BLOOD_SHARDS_ABLE_UTILIZE", "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
             AnyOf = { { Race = { "Orc", "Skyborne", "Tauren", "Troll" }, Class = "SHAMAN", IsQuestUncompleted = 1536 }, { Class = "WARRIOR", IsQuestUncompleted = 1823 }, { Class = { "HUNTER", "PALADIN", "PRIEST", "ROGUE", "WARLOCK" }, IsQuestUncompleted = 843 } },
             Class = { "HUNTER", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARLOCK", "WARRIOR" },
-            _index = 40,
+            _index = 45,
         },
         {
             Note = { "USE_REMAINING_BLOOD_SHARDS_BUFFS", "POSSIBLE_SAVE_10_BLOOD_SHARDS_ABLE_UTILIZE", "DISABLE_AUTOMATIC_EXTRA_TURN_INS" },
             Class = { "DRUID", "MAGE" },
             IsQuestUncompleted = 843,
-            _index = 41,
+            _index = 46,
         },
         {
             PickUp = { 235 },
             PickUpDB = { 235, 742, 6382 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.85, 59.14),
             Zone = 1413,
-            _index = 42,
+            _index = 47,
         },
         {
             Done = { 1823 },
@@ -429,7 +489,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "WARRIOR",
             IsQuestOnQuest = 1823,
             Zone = 1413,
-            _index = 43,
+            _index = 48,
         },
         {
             PickUp = { 1824 },
@@ -437,28 +497,28 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "WARRIOR",
             IsQuestCompleted = 1823,
             Zone = 1413,
-            _index = 44,
+            _index = 49,
         },
         {
             SetHS = 1824,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.58, 59.04),
             Class = "WARRIOR",
             Zone = 1413,
-            _index = 45,
+            _index = 50,
         },
         {
             SetHS = 843,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.58, 59.04),
             Class = "ROGUE",
             Zone = 1413,
-            _index = 46,
+            _index = 51,
         },
         {
             SellItems = { junk = true, questID = 1824 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.58, 59.04),
             Class = "WARRIOR",
             Zone = 1413,
-            _index = 47,
+            _index = 52,
         },
         {
             BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
@@ -468,14 +528,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             RaidIcon = 7714,
             Class = "WARRIOR",
             Zone = 1413,
-            _index = 48,
+            _index = 53,
         },
         {
             SellItems = { junk = true, questID = 843 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.58, 59.04),
             Class = "ROGUE",
             Zone = 1413,
-            _index = 49,
+            _index = 54,
         },
         {
             BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
@@ -485,28 +545,28 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             RaidIcon = 7714,
             Class = "ROGUE",
             Zone = 1413,
-            _index = 50,
+            _index = 55,
         },
         {
             SetHS = 843,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.58, 59.04),
             ClassNot = { "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 1413,
-            _index = 51,
+            _index = 56,
         },
         {
             SetHS = 1536,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.58, 59.04),
             Class = "SHAMAN",
             Zone = 1413,
-            _index = 52,
+            _index = 57,
         },
         {
             SellItems = { junk = true, questID = 843 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.58, 59.04),
             ClassNot = { "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 1413,
-            _index = 53,
+            _index = 58,
         },
         {
             BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
@@ -516,14 +576,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             RaidIcon = 7714,
             ClassNot = { "ROGUE", "SHAMAN", "WARRIOR" },
             Zone = 1413,
-            _index = 54,
+            _index = 59,
         },
         {
             SellItems = { junk = true, questID = 1536 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.58, 59.04),
             Class = "SHAMAN",
             Zone = 1413,
-            _index = 55,
+            _index = 60,
         },
         {
             BuyMerchant = { { itemID = 4536, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 4537, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 4538, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 4539, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4602, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8953, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
@@ -533,7 +593,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             RaidIcon = 7714,
             Class = "SHAMAN",
             Zone = 1413,
-            _index = 56,
+            _index = 61,
         },
         {
             DropQuest = 884,
@@ -542,7 +602,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 47.1, 61.225),
             Range = 30,
             Zone = 1413,
-            _index = 57,
+            _index = 62,
         },
         {
             Qpart = { [1824] = { 1 } },
@@ -552,7 +612,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "WARRIOR",
             IsQuestOnQuest = 1824,
             Zone = 1413,
-            _index = 58,
+            _index = 63,
         },
         {
             Done = { 1824 },
@@ -560,7 +620,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "WARRIOR",
             IsQuestOnQuest = 1824,
             Zone = 1413,
-            _index = 59,
+            _index = 64,
         },
         {
             Qpart = { [868] = { 1 } },
@@ -570,7 +630,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 868,
             SkipForLvl = 28,
             Zone = 1413,
-            _index = 60,
+            _index = 65,
         },
         {
             Waypoint = 1536,
@@ -580,7 +640,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             AnyOf = { { IsQuestOnQuest = 1536 }, { IsQuestCompleted = 1536, IsQuestUncompleted = 1534 } },
             Class = "SHAMAN",
             Zone = 1413,
-            _index = 61,
+            _index = 66,
         },
         {
             Waypoint = 1536,
@@ -590,7 +650,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             AnyOf = { { IsQuestOnQuest = 1536 }, { IsQuestCompleted = 1536, IsQuestUncompleted = 1534 } },
             Class = "SHAMAN",
             Zone = 1413,
-            _index = 62,
+            _index = 67,
         },
         {
             Waypoint = 1536,
@@ -600,7 +660,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             AnyOf = { { IsQuestOnQuest = 1536 }, { IsQuestCompleted = 1536, IsQuestUncompleted = 1534 } },
             Class = "SHAMAN",
             Zone = 1413,
-            _index = 63,
+            _index = 68,
         },
         {
             Done = { 1536 },
@@ -608,7 +668,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "SHAMAN",
             IsQuestOnQuest = 1536,
             Zone = 1413,
-            _index = 64,
+            _index = 69,
         },
         {
             PickUp = { 1534 },
@@ -616,7 +676,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "SHAMAN",
             IsQuestCompleted = 1536,
             Zone = 1413,
-            _index = 65,
+            _index = 70,
         },
         {
             PickUp = { 843 },
@@ -625,7 +685,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             SkipForLvl = 29,
             Zone = 1413,
-            _index = 66,
+            _index = 71,
         },
         {
             Qpart = { [879] = { 1 } },
@@ -634,7 +694,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestOnQuest = 879,
             Zone = 1413,
-            _index = 67,
+            _index = 72,
         },
         {
             Qpart = { [879] = { 3 } },
@@ -642,7 +702,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestOnQuest = 879,
             Zone = 1413,
-            _index = 68,
+            _index = 73,
         },
         {
             LootItems = { { quantity = 1, itemID = 5092, questID = 893, includeBank = false }, { quantity = 1, itemID = 5094, questID = 893, includeBank = false } },
@@ -651,7 +711,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestUncompleted = 893,
             Zone = 1413,
-            _index = 69,
+            _index = 74,
         },
         {
             Qpart = { [879] = { 2 } },
@@ -659,7 +719,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 10,
             IsQuestOnQuest = 879,
             Zone = 1413,
-            _index = 70,
+            _index = 75,
         },
         {
             LootItems = { { quantity = 1, itemID = 5093, questID = 893, includeBank = false } },
@@ -669,7 +729,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestUncompleted = 893,
             Zone = 1413,
-            _index = 71,
+            _index = 76,
         },
         {
             Qpart = { [843] = { 3 } },
@@ -678,7 +738,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestOnQuest = 843,
             Zone = 1413,
-            _index = 72,
+            _index = 77,
         },
         {
             Qpart = { [843] = { 1, 2 } },
@@ -686,7 +746,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestOnQuest = 843,
             Zone = 1413,
-            _index = 73,
+            _index = 78,
         },
         {
             Done = { 843 },
@@ -696,7 +756,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 843,
             IsQuestReadyForTurnIn = 843,
             Zone = 1413,
-            _index = 74,
+            _index = 79,
         },
         {
             PickUp = { 846 },
@@ -705,7 +765,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestCompleted = 843,
             Zone = 1413,
-            _index = 75,
+            _index = 80,
         },
         {
             Waypoint = 846,
@@ -714,7 +774,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             IsQuestCompleted = 843,
             Zone = 1413,
-            _index = 76,
+            _index = 81,
         },
         {
             Qpart = { [846] = { 1, 2, 3 } },
@@ -724,7 +784,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = { "DRUID", "ROGUE", "SHAMAN", "WARRIOR" },
             IsQuestCompleted = 843,
             Zone = 1413,
-            _index = 77,
+            _index = 82,
         },
         {
             Qpart = { [846] = { 1, 2, 3 } },
@@ -733,7 +793,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = { "HUNTER", "MAGE", "PALADIN", "PRIEST", "WARLOCK" },
             IsQuestCompleted = 843,
             Zone = 1413,
-            _index = 78,
+            _index = 83,
         },
         {
             Done = { 846 },
@@ -742,7 +802,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestCompleted = 843,
             Zone = 1413,
-            _index = 79,
+            _index = 84,
         },
         {
             PickUp = { 849 },
@@ -751,7 +811,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestCompleted = 846,
             Zone = 1413,
-            _index = 80,
+            _index = 85,
         },
         {
             Qpart = { [849] = { 1 } },
@@ -759,7 +819,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 46.97, 85.63),
             IsQuestCompleted = 843,
             Zone = 1413,
-            _index = 81,
+            _index = 86,
         },
         {
             Done = { 849 },
@@ -768,7 +828,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestCompleted = 843,
             Zone = 1413,
-            _index = 82,
+            _index = 87,
         },
         {
             DropQuest = 885,
@@ -776,7 +836,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.18, 77.975),
             Range = 30,
             Zone = 1413,
-            _index = 83,
+            _index = 88,
         },
         {
             Waypoint = 893,
@@ -785,7 +845,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipInZones = { 1445 },
             Zone = 1413,
-            _index = 84,
+            _index = 89,
         },
         {
             Waypoint = 893,
@@ -794,7 +854,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 30.65, 45.34),
             Range = 20,
             Zone = 1445,
-            _index = 85,
+            _index = 90,
         },
         {
             Waypoint = 893,
@@ -803,7 +863,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 32.28, 42.8),
             Range = 20,
             Zone = 1445,
-            _index = 86,
+            _index = 91,
         },
         {
             Waypoint = 893,
@@ -812,7 +872,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 33.12, 40.85),
             Range = 20,
             Zone = 1445,
-            _index = 87,
+            _index = 92,
         },
         {
             Waypoint = 893,
@@ -821,7 +881,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 33.55, 38.71),
             Range = 20,
             Zone = 1445,
-            _index = 88,
+            _index = 93,
         },
         {
             Waypoint = 893,
@@ -830,7 +890,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 34.73, 37.66),
             Range = 20,
             Zone = 1445,
-            _index = 89,
+            _index = 94,
         },
         {
             Waypoint = 893,
@@ -839,7 +899,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 34.31, 34.4),
             Range = 20,
             Zone = 1445,
-            _index = 90,
+            _index = 95,
         },
         {
             Waypoint = 893,
@@ -848,7 +908,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 33.3, 31.23),
             Range = 20,
             Zone = 1445,
-            _index = 91,
+            _index = 96,
         },
         {
             Waypoint = 893,
@@ -857,7 +917,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 36.64, 31.72),
             Range = 20,
             Zone = 1445,
-            _index = 92,
+            _index = 97,
         },
         {
             BuyMerchant = { { quantity = 1, itemID = 12251, targetStock = true, optional = true } },
@@ -874,7 +934,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Money = { copper = 53896, operator = ">=" },
             OnlyInZones = { 1445 },
             Zone = 1445,
-            _index = 93,
+            _index = 98,
         },
         {
             BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
@@ -886,7 +946,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
 
             OnlyInZones = { 1445 },
             Zone = 1445,
-            _index = 94,
+            _index = 99,
         },
         {
             BuyMerchant = { { itemID = 16112, quantity = 1 } },
@@ -898,7 +958,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             ItemCount = { itemID = 16112, count = 1, operator = "<", includeBank = true },
             Money = { copper = 2200, operator = ">=" },
             Zone = 1445,
-            _index = 95,
+            _index = 100,
         },
         {
             BuyMerchant = { { itemID = 16113, quantity = 1 } },
@@ -910,7 +970,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             ItemCount = { itemID = 16113, count = 1, operator = "<", includeBank = true },
             Money = { copper = 5000, operator = ">=" },
             Zone = 1445,
-            _index = 96,
+            _index = 101,
         },
         {
             BuyMerchant = { { itemID = 16084, quantity = 1 } },
@@ -922,19 +982,19 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             ItemCount = { itemID = 16084, count = 1, operator = "<", includeBank = true },
             Money = { copper = 10000, operator = ">=" },
             Zone = 1445,
-            _index = 97,
+            _index = 102,
         },
         {
             GetFP = 55,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1445, 35.57, 31.87),
             Zone = 1445,
-            _index = 98,
+            _index = 103,
         },
         {
             UseHS = 893,
             UseHSIfAvailable = true,
             OnlyInZones = { 1445 },
-            _index = 99,
+            _index = 104,
         },
         {
             UseFlightPath = 893,
@@ -943,14 +1003,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             ZoneStepTrigger = { mapID = 1413 },
             OnlyInZones = { 1445 },
             Zone = 1445,
-            _index = 100,
+            _index = 105,
         },
         {
             Done = { 893 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 45.1, 57.68),
             IsQuestOnQuest = 893,
             Zone = 1413,
-            _index = 101,
+            _index = 106,
         },
         {
             PickUp = { 1153 },
@@ -958,7 +1018,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestCompleted = 893,
             MinLevel = 25,
             Zone = 1413,
-            _index = 102,
+            _index = 107,
         },
         {
             PickUp = { 884 },
@@ -966,14 +1026,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Button = { ["884"] = 5102 },
             ItemCount = { itemID = 5102, count = 1, includeBank = false },
             Zone = 1413,
-            _index = 103,
+            _index = 108,
         },
         {
             Done = { 884 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.86, 59.13),
             IsQuestOnQuest = 884,
             Zone = 1413,
-            _index = 104,
+            _index = 109,
         },
         {
             PickUp = { 885 },
@@ -981,14 +1041,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Button = { ["885"] = 5103 },
             ItemCount = { itemID = 5103, count = 1, includeBank = false },
             Zone = 1413,
-            _index = 105,
+            _index = 110,
         },
         {
             Done = { 885 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.86, 59.13),
             IsQuestOnQuest = 885,
             Zone = 1413,
-            _index = 106,
+            _index = 111,
         },
         {
             PickUp = { 897 },
@@ -996,28 +1056,28 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Button = { ["897"] = 5138 },
             ItemCount = { itemID = 5138, count = 1, includeBank = false },
             Zone = 1413,
-            _index = 107,
+            _index = 112,
         },
         {
             Done = { 897 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.86, 59.13),
             IsQuestOnQuest = 897,
             Zone = 1413,
-            _index = 108,
+            _index = 113,
         },
         {
             Done = { 879 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.54, 59.27),
             IsQuestOnQuest = 879,
             Zone = 1413,
-            _index = 109,
+            _index = 114,
         },
         {
             PickUp = { 906 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.54, 59.27),
             IsQuestCompleted = 879,
             Zone = 1413,
-            _index = 110,
+            _index = 115,
         },
         {
             UseFlightPath = 906,
@@ -1025,14 +1085,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 44.45, 59.16),
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1413, 51.5, 30.34, 30),
             Zone = 1413,
-            _index = 111,
+            _index = 116,
         },
         {
             Done = { 906 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 51.5, 30.87),
             IsQuestOnQuest = 906,
             Zone = 1413,
-            _index = 112,
+            _index = 117,
         },
         {
             Done = { 868 },
@@ -1040,23 +1100,23 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 868,
             IsQuestReadyForTurnIn = 868,
             Zone = 1413,
-            _index = 113,
+            _index = 118,
         },
         {
             DestroyItems = { items = { 5058 } },
             IsQuestUncompleted = 874,
-            _index = 114,
+            _index = 119,
         },
         {
             LeaveQuests = { 868 },
             IsQuestOnQuest = 868,
-            _index = 115,
+            _index = 120,
         },
         {
             SetHS = 874,
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 51.99, 29.89),
             Zone = 1413,
-            _index = 116,
+            _index = 121,
         },
         {
             BuyMerchant = { { itemID = 5140, quantity = 20, targetStock = true, optional = true }, { itemID = 2928, quantity = 40, targetStock = true, optional = true }, { itemID = 3371, quantity = 40, targetStock = true, optional = true } },
@@ -1066,7 +1126,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 5,
             Class = "ROGUE",
             Zone = 1413,
-            _index = 117,
+            _index = 122,
         },
         {
             UseFlightPath = 874,
@@ -1077,7 +1137,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             SkipInZones = { 1454 },
             Zone = 1413,
-            _index = 118,
+            _index = 123,
         },
         {
             BuyMerchant = { { quantity = 1800, itemID = 3030 } },
@@ -1088,7 +1148,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Money = { copper = 2835, operator = ">=" },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 119,
+            _index = 124,
         },
         {
             UseFlightPath = 874,
@@ -1097,7 +1157,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1413, 63.08, 37.17, 30),
             Class = "HUNTER",
             Zone = 1454,
-            _index = 120,
+            _index = 125,
         },
         {
             UseFlightPath = 874,
@@ -1106,21 +1166,21 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1413, 63.08, 37.17, 30),
             ClassNot = "HUNTER",
             Zone = 1413,
-            _index = 121,
+            _index = 126,
         },
         {
             Done = { 874 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 65.84, 43.86),
             IsQuestOnQuest = 874,
             Zone = 1413,
-            _index = 122,
+            _index = 127,
         },
         {
             PickUp = { 873 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 65.84, 43.86),
             IsQuestCompleted = 874,
             Zone = 1413,
-            _index = 123,
+            _index = 128,
         },
         {
             Qpart = { [873] = { 1 } },
@@ -1129,14 +1189,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             IsQuestOnQuest = 873,
             Zone = 1413,
-            _index = 124,
+            _index = 129,
         },
         {
             Done = { 873 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1413, 65.84, 43.86),
             IsQuestOnQuest = 873,
             Zone = 1413,
-            _index = 125,
+            _index = 130,
         },
         {
             UseFlightPath = 6401,
@@ -1146,21 +1206,21 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             SkipForLvl = 28,
             SkipInZones = { 1442 },
             Zone = 1413,
-            _index = 126,
+            _index = 131,
         },
         {
             PickUp = { 1087 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 45.9, 60.4),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 127,
+            _index = 132,
         },
         {
             PickUp = { 5881, 6282 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.3, 61.1),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 128,
+            _index = 133,
         },
         {
             Done = { 6401 },
@@ -1168,14 +1228,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 6401,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 129,
+            _index = 134,
         },
         {
             PickUp = { 6301 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.46, 58.37),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 130,
+            _index = 135,
         },
         {
             SellItems = { junk = true, questID = 1095 },
@@ -1184,7 +1244,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6301,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 131,
+            _index = 136,
         },
         {
             BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
@@ -1196,7 +1256,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6301,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 132,
+            _index = 137,
         },
         {
             SellItems = { junk = true, questID = 1095 },
@@ -1205,7 +1265,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6301,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 133,
+            _index = 138,
         },
         {
             BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
@@ -1217,7 +1277,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6301,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 134,
+            _index = 139,
         },
         {
             BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
@@ -1229,7 +1289,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6301,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 135,
+            _index = 140,
         },
         {
             Waypoint = 6393,
@@ -1238,7 +1298,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 136,
+            _index = 141,
         },
         {
             Waypoint = 6393,
@@ -1247,7 +1307,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 137,
+            _index = 142,
         },
         {
             Waypoint = 6393,
@@ -1256,7 +1316,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 138,
+            _index = 143,
         },
         {
             Waypoint = 6393,
@@ -1265,14 +1325,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 139,
+            _index = 144,
         },
         {
             PickUp = { 6393 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.36, 64.25),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 140,
+            _index = 145,
         },
         {
             PickUp = { 6562 },
@@ -1280,7 +1340,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6562,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 141,
+            _index = 146,
         },
         {
             PickUp = { 6284 },
@@ -1288,7 +1348,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 142,
+            _index = 147,
         },
         {
             Qpart = { [6284] = { 1 } },
@@ -1298,7 +1358,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "ROGUE", "SHAMAN", "WARRIOR" },
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 143,
+            _index = 148,
         },
         {
             Waypoint = 1095,
@@ -1307,7 +1367,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 144,
+            _index = 149,
         },
         {
             Done = { 1095 },
@@ -1315,7 +1375,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1095,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 145,
+            _index = 150,
         },
         {
             PickUp = { 1096 },
@@ -1323,7 +1383,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestCompleted = 1095,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 146,
+            _index = 151,
         },
         {
             Qpart = { [1068] = { 2 } },
@@ -1333,7 +1393,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1068,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 147,
+            _index = 152,
         },
         {
             Qpart = { [1068] = { 1 } },
@@ -1343,7 +1403,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1068,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 148,
+            _index = 153,
         },
         {
             Qpart = { [1086] = { 1 } },
@@ -1354,7 +1414,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1086,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 149,
+            _index = 154,
         },
         {
             Waypoint = 1096,
@@ -1364,7 +1424,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1096,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 150,
+            _index = 155,
         },
         {
             Waypoint = 1096,
@@ -1374,7 +1434,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1096,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 151,
+            _index = 156,
         },
         {
             Waypoint = 1096,
@@ -1384,7 +1444,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1096,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 152,
+            _index = 157,
         },
         {
             Waypoint = 1096,
@@ -1394,7 +1454,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1096,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 153,
+            _index = 158,
         },
         {
             Qpart = { [1096] = { 1 } },
@@ -1404,7 +1464,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1096,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 154,
+            _index = 159,
         },
         {
             Waypoint = 1096,
@@ -1415,7 +1475,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1096,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 155,
+            _index = 160,
         },
         {
             Done = { 1096 },
@@ -1423,7 +1483,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1096,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 156,
+            _index = 161,
         },
         {
             Done = { 6284 },
@@ -1432,7 +1492,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestReadyForTurnIn = 6284,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 157,
+            _index = 162,
         },
         {
             Waypoint = 1087,
@@ -1442,7 +1502,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             AnyOf = { { IsQuestOnQuest = 1058 }, { IsQuestOnQuest = 1087 } },
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 158,
+            _index = 163,
         },
         {
             Qpart = { [1058] = { 2 } },
@@ -1451,7 +1511,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1058,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 159,
+            _index = 164,
         },
         {
             Qpart = { [1087] = { 1, 2, 3 } },
@@ -1459,7 +1519,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 160,
+            _index = 165,
         },
         {
             Qpart = { [1058] = { 4 } },
@@ -1468,7 +1528,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1058,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 161,
+            _index = 166,
         },
         {
             Qpart = { [1058] = { 1 } },
@@ -1478,7 +1538,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1058,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 162,
+            _index = 167,
         },
         {
             Qpart = { [1058] = { 3 } },
@@ -1487,7 +1547,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1058,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 163,
+            _index = 168,
         },
         {
             Qpart = { [6301] = { 1 } },
@@ -1495,7 +1555,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 164,
+            _index = 169,
         },
         {
             Waypoint = 6393,
@@ -1504,7 +1564,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 165,
+            _index = 170,
         },
         {
             Waypoint = 6393,
@@ -1513,7 +1573,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 166,
+            _index = 171,
         },
         {
             Waypoint = 6393,
@@ -1522,7 +1582,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 167,
+            _index = 172,
         },
         {
             Qpart = { [6282] = { 1, 2, 3, 4 } },
@@ -1531,7 +1591,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 168,
+            _index = 173,
         },
         {
             Waypoint = 6393,
@@ -1540,7 +1600,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 169,
+            _index = 174,
         },
         {
             Waypoint = 6393,
@@ -1549,7 +1609,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 170,
+            _index = 175,
         },
         {
             Waypoint = 6393,
@@ -1558,7 +1618,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 171,
+            _index = 176,
         },
         {
             Waypoint = 6393,
@@ -1567,7 +1627,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 172,
+            _index = 177,
         },
         {
             Waypoint = 6393,
@@ -1576,7 +1636,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 173,
+            _index = 178,
         },
         {
             Waypoint = 6393,
@@ -1585,7 +1645,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 174,
+            _index = 179,
         },
         {
             Done = { 6393 },
@@ -1594,35 +1654,35 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestReadyForTurnIn = 6393,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 175,
+            _index = 180,
         },
         {
             Done = { 6301 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.4, 58.4),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 176,
+            _index = 181,
         },
         {
             PickUp = { 6381 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.4, 58.4),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 177,
+            _index = 182,
         },
         {
             Done = { 6282 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.2, 61.16),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 178,
+            _index = 183,
         },
         {
             PickUp = { 6283 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.2, 61.16),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 179,
+            _index = 184,
         },
         {
             SellItems = { junk = true, questID = 1087 },
@@ -1631,7 +1691,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6381,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 180,
+            _index = 185,
         },
         {
             BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } } },
@@ -1643,7 +1703,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6381,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 181,
+            _index = 186,
         },
         {
             SellItems = { junk = true, questID = 1087 },
@@ -1652,7 +1712,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6381,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 182,
+            _index = 187,
         },
         {
             BuyMerchant = { { itemID = 117, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", SkipForLvl = 5 } }, { itemID = 2287, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 5, SkipForLvl = 15 } }, { itemID = 3770, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 15, SkipForLvl = 25 } }, { itemID = 3771, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 25, SkipForLvl = 35 } }, { itemID = 4599, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8952, quantity = 20, targetStock = true, optional = true, conditions = { ClassNot = "MAGE", MinLevel = 45 } }, { itemID = 159, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, SkipForLvl = 5 } }, { itemID = 1179, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 5, SkipForLvl = 15 } }, { itemID = 1205, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 15, SkipForLvl = 25 } }, { itemID = 1708, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 25, SkipForLvl = 35 } }, { itemID = 1645, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 35, SkipForLvl = 45 } }, { itemID = 8766, quantity = 40, targetStock = true, optional = true, conditions = { Class = { "DRUID", "HUNTER", "MAGE", "PALADIN", "PRIEST", "SHAMAN", "WARLOCK" }, MinLevel = 45 } } },
@@ -1664,7 +1724,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6381,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 183,
+            _index = 188,
         },
         {
             BuyMerchant = { { itemID = 929, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 12 } } },
@@ -1676,14 +1736,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestUncompleted = 6381,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 184,
+            _index = 189,
         },
         {
             Done = { 1087 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 45.9, 60.4),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 185,
+            _index = 190,
         },
         {
             PickUp = { 1088 },
@@ -1691,7 +1751,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestCompleted = 1087,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 186,
+            _index = 191,
         },
         {
             Waypoint = 6381,
@@ -1700,7 +1760,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 187,
+            _index = 192,
         },
         {
             Waypoint = 6381,
@@ -1709,7 +1769,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 188,
+            _index = 193,
         },
         {
             Waypoint = 6381,
@@ -1718,7 +1778,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 189,
+            _index = 194,
         },
         {
             Waypoint = 6381,
@@ -1727,7 +1787,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 190,
+            _index = 195,
         },
         {
             Waypoint = 6381,
@@ -1736,7 +1796,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 191,
+            _index = 196,
         },
         {
             Qpart = { [6283] = { 1 } },
@@ -1745,7 +1805,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 10,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 192,
+            _index = 197,
         },
         {
             Qpart = { [6393] = { 1 } },
@@ -1753,7 +1813,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 193,
+            _index = 198,
         },
         {
             Qpart = { [6381] = { 1 } },
@@ -1762,14 +1822,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 30,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 194,
+            _index = 199,
         },
         {
             Grind = { level = 26, xp = 0, questLogXP = { 6393, 6381, 6283, 1058, 1060, 1068 } },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 33.155, 66.61),
             Range = 30,
             Zone = 1442,
-            _index = 195,
+            _index = 200,
         },
         {
             Waypoint = 6381,
@@ -1778,7 +1838,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 196,
+            _index = 201,
         },
         {
             Waypoint = 6381,
@@ -1787,7 +1847,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 197,
+            _index = 202,
         },
         {
             Waypoint = 6381,
@@ -1796,7 +1856,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 198,
+            _index = 203,
         },
         {
             Waypoint = 6381,
@@ -1805,7 +1865,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 199,
+            _index = 204,
         },
         {
             Waypoint = 6381,
@@ -1814,7 +1874,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 200,
+            _index = 205,
         },
         {
             Waypoint = 6381,
@@ -1823,21 +1883,21 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 20,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 201,
+            _index = 206,
         },
         {
             Done = { 6393 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.36, 64.25),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 202,
+            _index = 207,
         },
         {
             Done = { 6381 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1442, 47.4, 58.4),
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 203,
+            _index = 208,
         },
         {
             Done = { 6283 },
@@ -1846,7 +1906,19 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestReadyForTurnIn = 6283,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 204,
+            _index = 209,
+        },
+        {
+            Waypoint = 1058,
+            NonSkippableWaypoint = true,
+            Coord = { x = -364, y = -233 },
+            Range = 6,
+            ZoneStepTrigger = { x = -364, y = -233, Range = 6, mapID = 1442 },
+            AnyOf = { { IsQuestOnQuest = 1058 }, { IsQuestOnQuest = 1060 } },
+            OnlyInZones = { 1442 },
+            SkipForLvl = 28,
+            Zone = 1442,
+            _index = 210,
         },
         {
             Done = { 1058 },
@@ -1854,7 +1926,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1058,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 205,
+            _index = 211,
         },
         {
             Done = { 1060 },
@@ -1862,7 +1934,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1060,
             SkipForLvl = 28,
             Zone = 1442,
-            _index = 206,
+            _index = 212,
         },
         {
             Done = { 1068 },
@@ -1870,14 +1942,14 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             IsQuestOnQuest = 1068,
             IsQuestReadyForTurnIn = 1068,
             Zone = 1413,
-            _index = 207,
+            _index = 213,
         },
         {
             UseSpell = { spellID = 18960 },
             Class = "DRUID",
             HasSpell = 18960,
             SkipInZones = { 1450 },
-            _index = 208,
+            _index = 214,
         },
         {
             LearnSkill = { spellID = 1850 },
@@ -1885,7 +1957,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "DRUID",
             MinLevel = 26,
             Zone = 1450,
-            _index = 209,
+            _index = 215,
         },
         {
             LearnSkill = { spellID = 3029 },
@@ -1893,7 +1965,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "DRUID",
             MinLevel = 28,
             Zone = 1450,
-            _index = 210,
+            _index = 216,
         },
         {
             UseFlightPath = 1088,
@@ -1903,7 +1975,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "DRUID",
             OnlyInZones = { 1450 },
             Zone = 1450,
-            _index = 211,
+            _index = 217,
         },
         {
             UseFlightPath = 1088,
@@ -1913,21 +1985,21 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Class = "DRUID",
             OnlyInZones = { 1456 },
             Zone = 1456,
-            _index = 212,
+            _index = 218,
         },
         {
             UseSpell = { spellID = 3567 },
             Class = "MAGE",
             HasSpell = 3567,
             SkipInZones = { 1454 },
-            _index = 213,
+            _index = 219,
         },
         {
             UseHS = 1088,
             UseHSIfAvailable = true,
             ClassNot = "DRUID",
             OnlyInZones = { 1413 },
-            _index = 214,
+            _index = 220,
         },
         {
             Waypoint = 1088,
@@ -1936,7 +2008,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Range = 5,
             OnlyInZones = { 1413 },
             Zone = 1413,
-            _index = 215,
+            _index = 221,
         },
         {
             UseFlightPath = 1088,
@@ -1945,13 +2017,13 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             ZoneStepTrigger = { mapID = 1454 },
             OnlyInZones = { 1413 },
             Zone = 1413,
-            _index = 216,
+            _index = 222,
         },
         {
             Note = { "ONLY_BUY_MISSING_PAGES_COMPLETE_THREE_CHAPTERS" },
             Coord = { x = -4460.31, y = 1685.31 },
             Zone = 1454,
-            _index = 217,
+            _index = 223,
         },
         {
             BuyMerchant = { { quantity = 1, itemID = 11306, targetStock = true, optional = true } },
@@ -1968,7 +2040,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Money = { copper = 20491, operator = ">=" },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 218,
+            _index = 224,
         },
         {
             BuyMerchant = { { quantity = 1800, itemID = 3030 } },
@@ -1979,7 +2051,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Money = { copper = 2835, operator = ">=" },
             Race = { "Orc", "Skyborne", "Tauren", "Troll" },
             Zone = 1454,
-            _index = 219,
+            _index = 225,
         },
         {
             Waypoint = 1088,
@@ -1987,7 +2059,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 26.22, 61.58),
             Range = 20,
             Zone = 1454,
-            _index = 220,
+            _index = 226,
         },
         {
             Waypoint = 1088,
@@ -1995,7 +2067,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1454, 15.66, 63.33),
             Range = 20,
             Zone = 1454,
-            _index = 221,
+            _index = 227,
         },
         {
             Waypoint = 1088,
@@ -2003,7 +2075,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1414, 56.8, 45.45),
             Range = 15,
             Zone = 1414,
-            _index = 222,
+            _index = 228,
         },
         {
             Waypoint = 1088,
@@ -2011,7 +2083,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 94.54, 76.15),
             Range = 20,
             Zone = 1440,
-            _index = 223,
+            _index = 229,
         },
         {
             Waypoint = 1088,
@@ -2019,7 +2091,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 93.49, 73.76),
             Range = 20,
             Zone = 1440,
-            _index = 224,
+            _index = 230,
         },
         {
             Waypoint = 1088,
@@ -2027,7 +2099,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 92.47, 71.18),
             Range = 20,
             Zone = 1440,
-            _index = 225,
+            _index = 231,
         },
         {
             Waypoint = 1088,
@@ -2035,7 +2107,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 91.85, 68.71),
             Range = 20,
             Zone = 1440,
-            _index = 226,
+            _index = 232,
         },
         {
             Waypoint = 1088,
@@ -2043,7 +2115,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 91.39, 65.86),
             Range = 20,
             Zone = 1440,
-            _index = 227,
+            _index = 233,
         },
         {
             Waypoint = 1088,
@@ -2052,7 +2124,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 89.87, 68.07),
             Range = 20,
             Zone = 1440,
-            _index = 228,
+            _index = 234,
         },
         {
             Waypoint = 1088,
@@ -2061,7 +2133,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 86.89, 68.65),
             Range = 20,
             Zone = 1440,
-            _index = 229,
+            _index = 235,
         },
         {
             Waypoint = 1088,
@@ -2070,7 +2142,7 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 79.89, 68.38),
             Range = 20,
             Zone = 1440,
-            _index = 230,
+            _index = 236,
         },
         {
             Waypoint = 1088,
@@ -2079,11 +2151,11 @@ APR.RouteQuestStepList["Forever-Horde-Southern-Barrens-Stonetalon"] = {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1440, 73.52, 63.5),
             Range = 20,
             Zone = 1440,
-            _index = 231,
+            _index = 237,
         },
         {
             RouteCompleted = true,
-            _index = 232,
+            _index = 238,
         },
     },
 }

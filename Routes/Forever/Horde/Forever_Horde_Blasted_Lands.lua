@@ -327,12 +327,23 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             _index = 32,
         },
         {
+            Waypoint = 8423,
+            NonSkippableWaypoint = true,
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 35.3, 60.1),
+            Range = 20,
+            ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 35.3, 60.1, 20),
+            AnyOf = { { Class = "WARRIOR", IsQuestOnQuest = 8417 }, { IsQuestOnQuest = 8423 }, { IsQuestOnQuest = 8424 }, { SkipForLvl = 52 } },
+            OnlyInZones = { 1435 },
+            Zone = 1435,
+            _index = 33,
+        },
+        {
             Done = { 8417 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 34.2, 66),
             Class = "WARRIOR",
             IsQuestOnQuest = 8417,
             Zone = 1435,
-            _index = 33,
+            _index = 34,
         },
         {
             PickUp = { 8423 },
@@ -340,7 +351,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             Class = "WARRIOR",
             SkipForLvl = 52,
             Zone = 1435,
-            _index = 34,
+            _index = 35,
         },
         {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 34.2, 66),
@@ -349,7 +360,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             AnyOf = { { IsQuestOnQuest = 8423 }, { IsQuestOnQuest = 8424 }, { SkipForLvl = 52 } },
             OnlyInZones = { 1435 },
             Zone = 1435,
-            _index = 35,
+            _index = 36,
         },
         {
             Qpart = { [8423] = { 1 } },
@@ -358,7 +369,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             Class = "WARRIOR",
             IsQuestOnQuest = 8423,
             Zone = 1419,
-            _index = 36,
+            _index = 37,
         },
         {
             Done = { 8423 },
@@ -366,7 +377,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             Class = "WARRIOR",
             IsQuestOnQuest = 8423,
             Zone = 1435,
-            _index = 37,
+            _index = 38,
         },
         {
             PickUp = { 8424 },
@@ -375,7 +386,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestCompleted = 8423,
             SkipForLvl = 52,
             Zone = 1435,
-            _index = 38,
+            _index = 39,
         },
         {
             LootItems = { { quantity = 3, itemID = 8393, questID = 2585 }, { quantity = 2, itemID = 8396, questID = 2585 }, { quantity = 1, itemID = 8392, questID = 2585 } },
@@ -386,7 +397,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestUncompleted = 2585,
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 39,
+            _index = 40,
         },
         {
             PickUp = { 2585 },
@@ -397,7 +408,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestUncompleted = 2585,
             ItemCount = { itemID = 8392, count = 1, operator = ">=" },
             Zone = 1419,
-            _index = 40,
+            _index = 41,
         },
         {
             Done = { 2585 },
@@ -405,7 +416,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             Class = { "HUNTER", "ROGUE" },
             IsQuestReadyForTurnIn = 2585,
             Zone = 1419,
-            _index = 41,
+            _index = 42,
         },
         {
             LootItems = { { quantity = 3, itemID = 8391, questID = 2581 }, { quantity = 2, itemID = 8392, questID = 2581 }, { quantity = 1, itemID = 8393, questID = 2581 } },
@@ -416,7 +427,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestUncompleted = 2581,
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 42,
+            _index = 43,
         },
         {
             PickUp = { 2581 },
@@ -427,7 +438,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestUncompleted = 2581,
             ItemCount = { itemID = 8393, count = 1, operator = ">=" },
             Zone = 1419,
-            _index = 43,
+            _index = 44,
         },
         {
             Done = { 2581 },
@@ -435,7 +446,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             Class = { "DRUID", "SHAMAN", "WARRIOR" },
             IsQuestReadyForTurnIn = 2581,
             Zone = 1419,
-            _index = 44,
+            _index = 45,
         },
         {
             LootItems = { { itemID = 8394, quantity = 1 }, { itemID = 8392, quantity = 3 }, { itemID = 8393, quantity = 2 } },
@@ -446,7 +457,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2601, 2585, 2581, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 45,
+            _index = 46,
         },
         {
             LootItems = { { itemID = 8396, quantity = 2 }, { itemID = 8394, quantity = 10 } },
@@ -457,7 +468,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2585, 2581, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 46,
+            _index = 47,
         },
         {
             LootItems = { { itemID = 8396, quantity = 2 }, { itemID = 8394, quantity = 11 }, { itemID = 8392, quantity = 3 }, { itemID = 8393, quantity = 2 } },
@@ -468,7 +479,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2585, 2581, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 47,
+            _index = 48,
         },
         {
             LootItems = { { itemID = 8396, quantity = 2 }, { itemID = 8392, quantity = 1 }, { itemID = 8393, quantity = 3 } },
@@ -479,7 +490,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2601, 2581, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 48,
+            _index = 49,
         },
         {
             LootItems = { { itemID = 8396, quantity = 2 }, { itemID = 8394, quantity = 1 }, { itemID = 8392, quantity = 4 }, { itemID = 8393, quantity = 5 } },
@@ -490,7 +501,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2601, 2581, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 49,
+            _index = 50,
         },
         {
             LootItems = { { itemID = 8396, quantity = 4 }, { itemID = 8394, quantity = 10 }, { itemID = 8392, quantity = 1 }, { itemID = 8393, quantity = 3 } },
@@ -501,7 +512,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2581, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 50,
+            _index = 51,
         },
         {
             LootItems = { { itemID = 8396, quantity = 4 }, { itemID = 8394, quantity = 11 }, { itemID = 8392, quantity = 4 }, { itemID = 8393, quantity = 5 } },
@@ -512,7 +523,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2581, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 51,
+            _index = 52,
         },
         {
             LootItems = { { itemID = 8392, quantity = 2 }, { itemID = 8393, quantity = 1 }, { itemID = 8391, quantity = 3 } },
@@ -523,7 +534,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2601, 2585, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 52,
+            _index = 53,
         },
         {
             LootItems = { { itemID = 8394, quantity = 1 }, { itemID = 8392, quantity = 5 }, { itemID = 8393, quantity = 3 }, { itemID = 8391, quantity = 3 } },
@@ -534,7 +545,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2601, 2585, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 53,
+            _index = 54,
         },
         {
             LootItems = { { itemID = 8396, quantity = 2 }, { itemID = 8394, quantity = 10 }, { itemID = 8392, quantity = 2 }, { itemID = 8393, quantity = 1 }, { itemID = 8391, quantity = 3 } },
@@ -545,7 +556,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2585, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 54,
+            _index = 55,
         },
         {
             LootItems = { { itemID = 8396, quantity = 2 }, { itemID = 8394, quantity = 11 }, { itemID = 8392, quantity = 5 }, { itemID = 8393, quantity = 3 }, { itemID = 8391, quantity = 3 } },
@@ -556,7 +567,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2585, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 55,
+            _index = 56,
         },
         {
             LootItems = { { itemID = 8396, quantity = 2 }, { itemID = 8392, quantity = 3 }, { itemID = 8393, quantity = 4 }, { itemID = 8391, quantity = 3 } },
@@ -567,7 +578,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2601, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 56,
+            _index = 57,
         },
         {
             LootItems = { { itemID = 8396, quantity = 2 }, { itemID = 8394, quantity = 1 }, { itemID = 8392, quantity = 6 }, { itemID = 8393, quantity = 6 }, { itemID = 8391, quantity = 3 } },
@@ -578,7 +589,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2601, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 57,
+            _index = 58,
         },
         {
             LootItems = { { itemID = 8396, quantity = 4 }, { itemID = 8394, quantity = 10 }, { itemID = 8392, quantity = 3 }, { itemID = 8393, quantity = 4 }, { itemID = 8391, quantity = 3 } },
@@ -589,7 +600,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 58,
+            _index = 59,
         },
         {
             LootItems = { { itemID = 8396, quantity = 4 }, { itemID = 8394, quantity = 11 }, { itemID = 8392, quantity = 6 }, { itemID = 8393, quantity = 6 }, { itemID = 8391, quantity = 3 } },
@@ -600,7 +611,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 59,
+            _index = 60,
         },
         {
             LootItems = { { itemID = 8396, quantity = 10 }, { itemID = 8391, quantity = 2 } },
@@ -611,7 +622,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2601, 2585, 2581 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 60,
+            _index = 61,
         },
         {
             LootItems = { { itemID = 8396, quantity = 10 }, { itemID = 8394, quantity = 1 }, { itemID = 8392, quantity = 3 }, { itemID = 8393, quantity = 2 }, { itemID = 8391, quantity = 2 } },
@@ -622,7 +633,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2601, 2585, 2581 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 61,
+            _index = 62,
         },
         {
             LootItems = { { itemID = 8396, quantity = 12 }, { itemID = 8394, quantity = 10 }, { itemID = 8391, quantity = 2 } },
@@ -633,7 +644,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2585, 2581 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 62,
+            _index = 63,
         },
         {
             LootItems = { { itemID = 8396, quantity = 12 }, { itemID = 8394, quantity = 11 }, { itemID = 8392, quantity = 3 }, { itemID = 8393, quantity = 2 }, { itemID = 8391, quantity = 2 } },
@@ -644,7 +655,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2585, 2581 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 63,
+            _index = 64,
         },
         {
             LootItems = { { itemID = 8396, quantity = 12 }, { itemID = 8392, quantity = 1 }, { itemID = 8393, quantity = 3 }, { itemID = 8391, quantity = 2 } },
@@ -655,7 +666,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2601, 2581 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 64,
+            _index = 65,
         },
         {
             LootItems = { { itemID = 8396, quantity = 12 }, { itemID = 8394, quantity = 1 }, { itemID = 8392, quantity = 4 }, { itemID = 8393, quantity = 5 }, { itemID = 8391, quantity = 2 } },
@@ -666,7 +677,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2601, 2581 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 65,
+            _index = 66,
         },
         {
             LootItems = { { itemID = 8396, quantity = 14 }, { itemID = 8394, quantity = 10 }, { itemID = 8392, quantity = 1 }, { itemID = 8393, quantity = 3 }, { itemID = 8391, quantity = 2 } },
@@ -677,7 +688,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2581 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 66,
+            _index = 67,
         },
         {
             LootItems = { { itemID = 8396, quantity = 14 }, { itemID = 8394, quantity = 11 }, { itemID = 8392, quantity = 4 }, { itemID = 8393, quantity = 5 }, { itemID = 8391, quantity = 2 } },
@@ -688,7 +699,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2581 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 67,
+            _index = 68,
         },
         {
             LootItems = { { itemID = 8396, quantity = 10 }, { itemID = 8392, quantity = 2 }, { itemID = 8393, quantity = 1 }, { itemID = 8391, quantity = 5 } },
@@ -699,7 +710,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2601, 2585 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 68,
+            _index = 69,
         },
         {
             LootItems = { { itemID = 8396, quantity = 10 }, { itemID = 8394, quantity = 1 }, { itemID = 8392, quantity = 5 }, { itemID = 8393, quantity = 3 }, { itemID = 8391, quantity = 5 } },
@@ -710,7 +721,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2601, 2585 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 69,
+            _index = 70,
         },
         {
             LootItems = { { itemID = 8396, quantity = 12 }, { itemID = 8394, quantity = 10 }, { itemID = 8392, quantity = 2 }, { itemID = 8393, quantity = 1 }, { itemID = 8391, quantity = 5 } },
@@ -721,7 +732,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2585 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 70,
+            _index = 71,
         },
         {
             LootItems = { { itemID = 8396, quantity = 12 }, { itemID = 8394, quantity = 11 }, { itemID = 8392, quantity = 5 }, { itemID = 8393, quantity = 3 }, { itemID = 8391, quantity = 5 } },
@@ -732,7 +743,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2585 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 71,
+            _index = 72,
         },
         {
             LootItems = { { itemID = 8396, quantity = 12 }, { itemID = 8392, quantity = 3 }, { itemID = 8393, quantity = 4 }, { itemID = 8391, quantity = 5 } },
@@ -743,7 +754,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583, 2601 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 72,
+            _index = 73,
         },
         {
             LootItems = { { itemID = 8396, quantity = 12 }, { itemID = 8394, quantity = 1 }, { itemID = 8392, quantity = 6 }, { itemID = 8393, quantity = 6 }, { itemID = 8391, quantity = 5 } },
@@ -754,7 +765,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2601 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 73,
+            _index = 74,
         },
         {
             LootItems = { { itemID = 8396, quantity = 14 }, { itemID = 8394, quantity = 10 }, { itemID = 8392, quantity = 3 }, { itemID = 8393, quantity = 4 }, { itemID = 8391, quantity = 5 } },
@@ -765,7 +776,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestsCompleted = { 2583 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 74,
+            _index = 75,
         },
         {
             LootItems = { { itemID = 8396, quantity = 14 }, { itemID = 8394, quantity = 11 }, { itemID = 8392, quantity = 6 }, { itemID = 8393, quantity = 6 }, { itemID = 8391, quantity = 5 } },
@@ -775,7 +786,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsOneOfQuestsUncompleted = { 2583, 2601, 2585, 2581, 2603 },
             SkipForLvl = 52,
             Zone = 1419,
-            _index = 75,
+            _index = 76,
         },
         {
             PickUp = { 2601 },
@@ -785,14 +796,14 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestUncompleted = 2601,
             ItemCount = { itemID = 8394, count = 10, operator = ">=" },
             Zone = 1419,
-            _index = 76,
+            _index = 77,
         },
         {
             Done = { 2601 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 50.64, 14.299),
             IsQuestReadyForTurnIn = 2601,
             Zone = 1419,
-            _index = 77,
+            _index = 78,
         },
         {
             PickUp = { 2603 },
@@ -802,14 +813,14 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestUncompleted = 2603,
             ItemCount = { itemID = 8396, count = 10, operator = ">=" },
             Zone = 1419,
-            _index = 78,
+            _index = 79,
         },
         {
             Done = { 2603 },
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1419, 50.64, 14.299),
             IsQuestReadyForTurnIn = 2603,
             Zone = 1419,
-            _index = 79,
+            _index = 80,
         },
         {
             PickUp = { 2585 },
@@ -819,14 +830,14 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestUncompleted = 2585,
             ItemCount = { itemID = 8392, count = 1, operator = ">=" },
             Zone = 1419,
-            _index = 80,
+            _index = 81,
         },
         {
             Done = { 2585 },
             Coord = { x = -2935.02, y = -10883.89 },
             IsQuestReadyForTurnIn = 2585,
             Zone = 1419,
-            _index = 81,
+            _index = 82,
         },
         {
             PickUp = { 2583 },
@@ -836,14 +847,14 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestUncompleted = 2583,
             ItemCount = { itemID = 8394, count = 1, operator = ">=" },
             Zone = 1419,
-            _index = 82,
+            _index = 83,
         },
         {
             Done = { 2583 },
             Coord = { x = -2935.02, y = -10883.89 },
             IsQuestReadyForTurnIn = 2583,
             Zone = 1419,
-            _index = 83,
+            _index = 84,
         },
         {
             PickUp = { 2581 },
@@ -853,42 +864,42 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             IsQuestUncompleted = 2581,
             ItemCount = { itemID = 8393, count = 1, operator = ">=" },
             Zone = 1419,
-            _index = 84,
+            _index = 85,
         },
         {
             Done = { 2581 },
             Coord = { x = -2935.02, y = -10883.89 },
             IsQuestReadyForTurnIn = 2581,
             Zone = 1419,
-            _index = 85,
+            _index = 86,
         },
         {
             PickUp = { 3501 },
             Coord = { x = -2976.93, y = -11362.54 },
             ItemCount = { itemID = 10593, count = 1, operator = ">=" },
             Zone = 1419,
-            _index = 86,
+            _index = 87,
         },
         {
             Done = { 3501 },
             Coord = { x = -2976.93, y = -11362.54 },
             IsQuestReadyForTurnIn = 3501,
             Zone = 1419,
-            _index = 87,
+            _index = 88,
         },
         {
             PickUp = { 2521 },
             Coord = { x = -2976.93, y = -11362.54 },
             ItemCount = { itemID = 8244, count = 1, operator = ">=" },
             Zone = 1419,
-            _index = 88,
+            _index = 89,
         },
         {
             Done = { 2521 },
             Coord = { x = -2976.93, y = -11362.54 },
             IsQuestReadyForTurnIn = 2521,
             Zone = 1419,
-            _index = 89,
+            _index = 90,
         },
         {
             Grind = 51,
@@ -897,7 +908,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             Range = 30,
             ClassNot = "WARRIOR",
             Zone = 1419,
-            _index = 90,
+            _index = 91,
         },
         {
             Qpart = { [8424] = { 1, 2, 3 } },
@@ -906,7 +917,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             Class = "WARRIOR",
             IsQuestOnQuest = 8424,
             Zone = 1419,
-            _index = 91,
+            _index = 92,
         },
         {
             Grind = { level = 51, xp = 0, questLogXP = { 8424 } },
@@ -915,7 +926,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             Range = 30,
             Class = "WARRIOR",
             Zone = 1419,
-            _index = 92,
+            _index = 93,
         },
         {
             Done = { 8424 },
@@ -923,7 +934,17 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             Class = "WARRIOR",
             IsQuestOnQuest = 8424,
             Zone = 1435,
-            _index = 93,
+            _index = 94,
+        },
+        {
+            Waypoint = 3441,
+            NonSkippableWaypoint = true,
+            Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 35.3, 60.1),
+            Range = 20,
+            ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 35.3, 60.1, 20),
+            OnlyInZones = { 1419, 1435 },
+            Zone = 1435,
+            _index = 95,
         },
         {
             Coord = APR.worldCoordinateConverter:ConvertMapCoordinate(1435, 46.1, 54.7),
@@ -931,7 +952,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             ZoneStepTrigger = APR.worldCoordinateConverter:ConvertMapTrigger(1435, 46.1, 54.7, 15),
             OnlyInZones = { 1419, 1435 },
             Zone = 1435,
-            _index = 94,
+            _index = 96,
         },
         {
             BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
@@ -942,7 +963,7 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             OnlyInZones = { 1435 },
             SkipForLvl = 52,
             Zone = 1435,
-            _index = 95,
+            _index = 97,
         },
         {
             BuyMerchant = { { itemID = 3928, quantity = 5, targetStock = true, optional = true, conditions = { MinLevel = 35 } } },
@@ -953,11 +974,11 @@ APR.RouteQuestStepList["Forever-Horde-Blasted-Lands"] = {
             OnlyInZones = { 1435 },
             SkipForLvl = 52,
             Zone = 1435,
-            _index = 96,
+            _index = 98,
         },
         {
             RouteCompleted = true,
-            _index = 97,
+            _index = 99,
         },
     },
 }
