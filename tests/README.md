@@ -260,11 +260,24 @@ test-only collections to verify retired workers can be freed while owned suspend
 workers still resume and completed timings remain available.
 `gamepad_geometry_performance_test.lua` counts rectangle queries in nested scroll
 frames and checks clipping, live movement/scaling, disabled controls and reveal.
+`gamepad_action_membership_performance_test.lua` repeats 20,000 warm registrations
+without registry scans or secure writes, then checks immediate reordering, action
+kind changes and rejected/retried combat registration.
 `changelog_parser_performance_test.lua` checks linear scan/copy work for malformed
 links and whitespace-heavy headings, with independent formatting expectations.
 `navigation_catalog_action_budget_test.lua` puts 500 alternatives in one invented
 transport definition and covers per-alternative budgets, shared random selection,
 missing observations, cancellation and the direct single-action path.
+`navigation_resource_dominance_budget_test.lua` compares 500-resource arrivals
+inside the search budget: equivalent/better/incomparable labels, relevant or
+ignored future consumables, operation boundaries and suspended cancellation.
+`party_snapshot_budget_performance_test.lua` bounds optional group-tooltip
+construction before copying/sorting dense rows. It preserves progress, complete
+ordinary exports, exact row/byte limits, all-or-nothing overflow and nil/empty
+containers, including real serialization/send/receive.
+`route_label_budget_performance_test.lua` resolves invented aliases and duplicate
+labels without sorting, budgets completed-route lookups, and rejects imports,
+renames or catalogue replacement during suspension before saved-state publication.
 `test_route_hash_startup.py` checks historical signature bytes with LuaBitOp's
 double-number normalization, cooperative hashing and atomic startup publication.
 It covers cancellation, errors, replacement and explicit progress/reset choices.
