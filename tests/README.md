@@ -279,6 +279,8 @@ containers, including real serialization/send/receive.
 optional objectives through the real cache and widgets. Layout/action-text
 publication is shared across the refresh, including nesting, error recovery,
 deferred reads, an existing content owner and unchanged refreshes during combat.
+Its real `UpdateStep` continuation case runs 25 then five passes: the cache batch
+cannot publish intermediate geometry, and the final content commit retires demands.
 `map_pin_lifecycle_performance_test.lua` advances 200 invented steps with bounded
 world/minimap pin pools, then checks live tooltips/numbering, route replacement,
 display limits, burst coalescing, direct refreshes, resize and disable/re-enable.

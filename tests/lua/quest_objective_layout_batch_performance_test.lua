@@ -148,6 +148,54 @@ env.setCombat(false)
 step:ReOrderQuestSteps()
 fillers:FlushPendingLayout(true)
 assert(main:GetHeight() > 30 and not step.layoutDirty and not fillers.pendingRefresh)
+
+-- A real bounded renderer may still own an unfinished step cascade when the
+-- cache call returns. Its next timer, not the cache batch, owns publication.
+local savedUpdate, savedRender = APR.UpdateStep, APR.RenderCurrentStep
+local savedCapture, savedCurrent = APR.CaptureStepContext, APR.IsStepContextCurrent
+local savedStart, savedFinish = APR.StartPerformanceSample, APR.FinishPerformanceSample
+local savedTimers, savedClock = C_Timer, debugprofilestop
+local context, renderPasses = {}, 0
+APR.StartPerformanceSample, APR.FinishPerformanceSample = noop, noop
+function APR:CaptureStepContext() return context end
+function APR:IsStepContextCurrent(value) return value == context end
+function debugprofilestop() return 0 end
+C_Timer = { NewTimer = function(_, callback)
+    return { callback = callback, Cancel = noop }
+end }
+function APR:RenderCurrentStep()
+    renderPasses = renderPasses + 1
+    step:Reset()
+    fillers:RemoveFillerSteps()
+    step:SetActionTextStep({ Qpart = { [1] = { 1 } } }, "invented:1")
+    step:SetActionTextScope("primary", "Qpart")
+    for index = 1, count do
+        step:AddQuestSteps(1, model[1][index].text, index)
+        fillers:AddFillerStep(2, model[2][index].text, index)
+    end
+    step:AddStepButton("1-1", 50, "item")
+    if renderPasses < 30 then self.stepUpdatePending = true end
+end
+dofile("APR-Core/features/questing/QuestHandler.lua")
+change("Main deferred to continuation", "Extra deferred to continuation")
+before, arrowUpdates = env.layouts(), 0
+APR:UpdateQuest()
+assert(renderPasses == 25 and APR.stepUpdatePending and APR.stepUpdateTimer)
+assert(env.layouts() == before and arrowUpdates == 0 and not step.questUpdateDepth
+    and step.layoutDirty and fillers.layoutDirty,
+    "A cache batch cannot publish an intermediate layout while the renderer owns a continuation")
+local continuation = APR.stepUpdateTimer
+continuation.callback()
+assert(renderPasses == 30 and not APR.stepUpdatePending and not APR.stepUpdateTimer)
+assert(env.layouts() - before == 2 and arrowUpdates == 5,
+    "The final render publishes geometry once; its five passes retain their existing arrow-refresh contract")
+assert(not step.questLayoutPending and not step.questFillerLayoutPending and not step.pendingQuestActionText
+    and not step.questUpdateDepth and not step.contentUpdateActive and not step.layoutDirty and not fillers.layoutDirty,
+    "The final content owner retires batch demands instead of stranding stale requests")
+APR.UpdateStep, APR.RenderCurrentStep = savedUpdate, savedRender
+APR.CaptureStepContext, APR.IsStepContextCurrent = savedCapture, savedCurrent
+APR.StartPerformanceSample, APR.FinishPerformanceSample = savedStart, savedFinish
+C_Timer, debugprofilestop = savedTimers, savedClock
 env.methods.GetStringHeight = nativeHeight
 fillers.RefreshFillersFrame = nativeFillerRefresh
 print("Quest UI batching: 100 main +100 fillers, 300 ->2 publications, 20100 ->300 font reads; nested/error/deferred/content/combat recovery passed")
