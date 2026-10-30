@@ -904,6 +904,54 @@ The full `.venv/Scripts/python.exe tests/run.py` run passed **520 tests** in
 107.629 seconds, with no failures or errors. Generated instrumentation is current
 for 2,912 definitions across 117 files, and `git diff --check` is clean.
 
+## Guide layout and map lifecycle pass
+
+This pass removes retained map frames, repeated marker refreshes, repeated
+objective layout and exponential prerequisite traversal. All fixtures use
+invented data; no authored guide, translated text, third-party library or
+SavedVariables schema changed.
+
+| Controlled workload | Before | After |
+| --- | --- | --- |
+| Advance 200 steps while displaying five world and two minimap markers | 405 marker frames created/retained | Seven marker frames reused |
+| 200 quest/addon-map notifications before one existing animation pass | 200 marker rebuilds | One rebuild using final state |
+| One refresh changing 100 main objectives and 100 fillers | 300 layout publications, 20,100 height measurements, 100 arrow-text refreshes | Two publications, 300 measurements, one arrow-text refresh |
+| Add an invented prerequisite graph containing 25 declarations and 12 shared diamonds | 8,191 expansions | 25 expansions, same path and ordering |
+
+Authored map markers are pooled by simultaneous visible slot, separately for
+world/minimap/guidance, instead of retaining each step number ever displayed.
+Each reuse replaces the step, filtered number and tooltip source. Pools grow
+only when the required simultaneous display count grows. Quest/message bursts
+share the existing 0.1-second map animation; direct settings/geometry refreshes
+consume pending work, and pre-initialization calls retain their immediate path.
+No additional timer or worker was introduced.
+
+Quest cache and text updates remain synchronous. A nested update counter merges
+their layout and arrow-text publications after successful synchronization.
+Errors release the guard and preserve pending work for recovery; an existing
+content transaction keeps ownership of its final publication. Combat deferral
+is preserved. After changed combat content leaves geometry pending, 30 unchanged
+refreshes perform zero layout, measurement, filler-refresh or arrow-text work.
+
+Prerequisite traversal retains its visited set for one operation, rather than
+forgetting completed branches on each recursive return. A new call gets a fresh
+set and reevaluates eligibility/completion. Cycles, absent dependencies, shared
+labels and Forever completion gates keep their prior behavior. At a controlled
+0.05 ms per expansion, the diamond fixture falls from 409.55 ms to 1.25 ms;
+these are simulated costs, not elapsed WoW time.
+
+Navigation preparation/search/taxi stages were reviewed again without finding
+another demonstrated cause warranting a change. Initial isolated instance
+copies, native taxi signatures and individual large condition/diagnostic calls
+remain atomic. They require real-client captures before a broader redesign is
+justified. Ordinary long-route prefix filtering for marker numbering also
+remains synchronous; this pass reduces its repeated invocation and retained pins.
+The full `.venv/Scripts/python.exe tests/run.py` run passed **523 tests** in
+125.229 seconds, with no failures or errors. Independent review and focused
+execution covered maps, prerequisite ordering and nested/error/combat layout
+recovery, including debug/performance capture. Generated instrumentation covers
+2,916 definitions across 117 files and `git diff --check` is clean.
+
 ## Navigation catalogue review
 
 Navigation catalogue research, generation and static data audits live in

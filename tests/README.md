@@ -275,6 +275,16 @@ ignored future consumables, operation boundaries and suspended cancellation.
 construction before copying/sorting dense rows. It preserves progress, complete
 ordinary exports, exact row/byte limits, all-or-nothing overflow and nil/empty
 containers, including real serialization/send/receive.
+`quest_objective_layout_batch_performance_test.lua` changes 100 main and 100
+optional objectives through the real cache and widgets. Layout/action-text
+publication is shared across the refresh, including nesting, error recovery,
+deferred reads, an existing content owner and unchanged refreshes during combat.
+`map_pin_lifecycle_performance_test.lua` advances 200 invented steps with bounded
+world/minimap pin pools, then checks live tooltips/numbering, route replacement,
+display limits, burst coalescing, direct refreshes, resize and disable/re-enable.
+`route_prerequisite_graph_performance_test.lua` expands shared diamonds once per
+declaration while retaining prerequisite order, cycles, missing routes, duplicate
+labels, current character eligibility and a fresh traversal after errors.
 `route_label_budget_performance_test.lua` resolves invented aliases and duplicate
 labels without sorting, budgets completed-route lookups, and rejects imports,
 renames or catalogue replacement during suspension before saved-state publication.
