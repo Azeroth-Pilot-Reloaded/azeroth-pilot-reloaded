@@ -79,7 +79,7 @@ dashboard.plot.scripts.OnLeave()
 assert(not GameTooltip:IsShown() and not dashboard.hoverLine:IsShown())
 APR.PerformanceDashboard.mode = "slow"
 APR.PerformanceDashboard:Refresh()
-assert(#APR.PerformanceDashboard.list.items == 100)
+assert(APR.PerformanceDashboard.list:GetCount() == 100)
 APR.PerformanceDashboard.frame:Hide()
 assert(APR.PerformanceDashboard.frame.scripts.OnUpdate == nil and APR.performanceLogging)
 APR:SetPerformanceCapture(false)
@@ -169,9 +169,40 @@ assert(APR.debugLogging and dashboard.mode == "logs" and dashboard.modeSelect.va
 APRInstrumentation.Message("DEBUG", "Readable trace", {enabled = false})
 dashboard.query = "Readable trace"
 dashboard:Refresh()
-assert(#dashboard.list.items == 1 and dashboard.list.items[1].data:find("enabled=false", 1, true))
+assert(dashboard.list:GetCount() == 1 and dashboard.list:GetItem(1).data:find("enabled=false", 1, true))
 local report = APR:BuildDiagnosticReport()
 assert(report:find("Readable trace", 1, true) and report:find("[DEBUG]", 1, true))
 dashboard.debugCapture.scripts.OnClick()
 assert(not APR.debugLogging and not APRInstrumentation.enabled)
 print("Diagnostic UI: independent debug toggle, log mode, readable data, search, export and stopping passed")
+
+-- Frozen captures are stable datasets; idle redraws must not sort/rebind them.
+APR:SetPerformanceCapture(true)
+for index = 1, 1200 do APR:RecordPerformanceDuration("Dense" .. index, index) end
+dashboard.mode, dashboard.sort, dashboard.query = "summary", "totalMs", ""
+local oldPrepare = dashboard.list.PrepareItems
+dashboard.list.PrepareItems = function() error("Uniform metric rows must not build dense offset arrays") end
+dashboard:Refresh()
+assert(dashboard.list:GetCount() == 1200 and #dashboard.list.offsets == 1)
+APR:RecordPerformanceDuration("Dense1", 5000)
+APR:SetPerformanceCapture(false)
+dashboard:Refresh()
+assert(dashboard.list:GetItem(1).name == "Dense1" and dashboard.list:GetItem(1).count == 2,
+    "Stopping captures the final measurements after the preceding refresh")
+local previousRows, reads = APR.GetPerformanceRows, 0
+APR.GetPerformanceRows = function(self, ...)
+    reads = reads + 1
+    return previousRows(self, ...)
+end
+local generation = dashboard.list.generation
+for _ = 1, 100 do dashboard:Refresh() end
+assert(reads == 0 and dashboard.list.generation == generation,
+    "A stopped capture performs zero repeated row construction or list rebinding")
+dashboard.query = "Dense1200"
+dashboard:Refresh()
+assert(reads == 1 and dashboard.list:GetCount() == 1 and dashboard.list:GetItem(1).name == "Dense1200")
+APR:ResetPerformanceCapture()
+dashboard:Refresh()
+assert(dashboard.list:GetCount() == 0, "Reset invalidates the viewer's stopped-data cache")
+APR.GetPerformanceRows, dashboard.list.PrepareItems = previousRows, oldPrepare
+print("Performance viewer: indexed publication, final stop update, zero idle row rebuilds, search and reset passed")
